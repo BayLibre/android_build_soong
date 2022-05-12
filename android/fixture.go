@@ -697,6 +697,8 @@ func (b *baseFixturePreparer) RunTestWithConfig(t *testing.T, config Config) *Te
 	// Discard the mock filesystem as otherwise that will override the one in the config.
 	fixture.mockFS = nil
 
+	nameResolver := getNameResolver(fixture.config)
+
 	// Replace the config with the supplied one in the fixture.
 	fixture.config = config
 
@@ -707,6 +709,7 @@ func (b *baseFixturePreparer) RunTestWithConfig(t *testing.T, config Config) *Te
 	if ctx.config.mockBpList != "" {
 		ctx.SetModuleListFile(ctx.config.mockBpList)
 	}
+	ctx.SetNameInterface(nameResolver)
 
 	return fixture.RunTest()
 }

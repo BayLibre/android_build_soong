@@ -2135,7 +2135,7 @@ func (m *ModuleBase) generateModuleTarget(ctx ModuleContext) {
 		// not be created if the module is not exported to make.
 		// Those could depend on the build target and fail to compile
 		// for the current build target.
-		if !ctx.Config().KatiEnabled() || !shouldSkipAndroidMkProcessing(a) {
+		if !ctx.Config().KatiEnabled() || !shouldSkipAndroidMkProcessing(ctx.Config(), ctx.OtherModuleDir(module), a) {
 			allCheckbuildFiles = append(allCheckbuildFiles, a.checkbuildFiles...)
 		}
 	})
@@ -3210,6 +3210,17 @@ func (m *moduleContext) skipInstall() bool {
 	// namespaces to install.  For now, reuse the list of namespaces exported to Make as the
 	// list of namespaces to install in a Soong-only build.
 	if !m.module.base().commonProperties.NamespaceExportedToMake {
+		return true
+	}
+
+	r := getNameResolver(m.Config())
+	namespace := r.findNamespace(m.ModuleDir())
+	if namespace.protected {
+		if namespace.active {
+			return false
+		} else if _, ok := namespace.exportedModules[m.ModuleName()]; ok {
+			return false
+		}
 		return true
 	}
 

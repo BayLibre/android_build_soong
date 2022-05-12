@@ -2364,6 +2364,10 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 	// Assume that source module(sdk_library) is installed in /<sdk_library partition>/framework
 	module.installFile = android.PathForModuleInstall(ctx, "framework", module.Stem()+".jar")
 
+	// Collate the components exported by this module. All scope specific modules are exported but
+	// the impl and xml component modules are not.
+	exportedComponents := map[string]struct{}{}
+
 	// Record the paths to the prebuilt stubs library and stubs source.
 	ctx.VisitDirectDeps(func(to android.Module) {
 		tag := ctx.OtherModuleDependencyTag(to)
@@ -2376,6 +2380,8 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 			// Extract information from the dependency. The exact information extracted
 			// is determined by the nature of the dependency which is determined by the tag.
 			scopeTag.extractDepInfo(ctx, to, scopePaths)
+
+			exportedComponents[ctx.OtherModuleName(to)] = struct{}{}
 		} else if tag == implLibraryTag {
 			if implLibrary, ok := to.(*Library); ok {
 				module.implLibraryModule = implLibrary
@@ -2390,6 +2396,10 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 			}
 		}
 	})
+
+	// Make the set of components exported by this module available for use elsewhere.
+	exportedComponentInfo := android.ExportedComponentsInfo{Components: android.SortedStringKeys(exportedComponents)}
+	ctx.SetProvider(android.ExportedComponentsInfoProvider, exportedComponentInfo)
 
 	// Populate the scope paths with information from the properties.
 	for apiScope, scopeProperties := range module.scopeProperties {

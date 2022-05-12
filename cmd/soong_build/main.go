@@ -96,6 +96,395 @@ func init() {
 	androidProtobuf.DisableRand()
 }
 
+type MainlineModule struct {
+	// The short name of the module.
+	ShortName string
+
+	// The root directories belonging to the module's source namespace.
+	SourcePaths []string
+
+	// The root directories belonging to the module's prebuilt SDK snapshot namespace.
+	PrebuiltSdkPaths []string
+
+	// The root directories belonging to the module's prebuilt APEX namespace.
+	//
+	// If the module does not require a prebuilt APEX then this should be set to an empty array.
+	PrebuiltApexPaths []string
+
+	// Additional exports that have to be exported from the source namespace to other Soong modules.
+	AdditionalSoongExports []string
+
+	// Additional exports that have to be exported from the source namespace to make.
+	AdditionalMakeExports []string
+}
+
+var MainlineModules = []MainlineModule{
+	{
+		ShortName: "art",
+		SourcePaths: []string{
+			"art",
+			"external/apache-harmony",
+			"external/apache-xml",
+			"external/okhttp",
+			"external/vixl",
+			"libcore",
+			"libnativehelper",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/art",
+		},
+		AdditionalSoongExports: []string{
+			"artd-aidl-java-source",
+			"artd-aidl-ndk-source",
+			"artd-aidl_interface",
+			"dmtracedump",
+			"libctstiagent",
+		},
+		AdditionalMakeExports: []string{
+			"ahat",
+			"dexdiag",
+			"dexlist",
+			"dexoptanalyzer",
+			"libartservice",
+			"libdt_fd_forward",
+			"libjavacore-benchmarks",
+			"libjavacore-unit-tests",
+			"libnativehelper_tests",
+			"libopenjdkd",
+		},
+	},
+	{
+		ShortName: "conscrypt",
+		SourcePaths: []string{
+			"external/conscrypt",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/conscrypt",
+		},
+		PrebuiltApexPaths: []string{
+			"prebuilts/runtime/mainline/conscrypt/apex",
+		},
+		AdditionalSoongExports: []string{
+			"conscrypt-support",
+		},
+	},
+	{
+		ShortName: "appsearch",
+		SourcePaths: []string{
+			"packages/modules/AppSearch",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/AppSearch",
+		},
+		AdditionalSoongExports: []string{
+			"AppSearchTestUtils",
+			"com.android.appsearch-bootclasspath-fragment",
+			"framework-appsearch",
+			"framework-appsearch-sources",
+			"framework-appsearch.impl",
+			"framework-appsearch.stubs",
+			"framework-appsearch.stubs.module_lib",
+			"framework-appsearch.stubs.system",
+		},
+		AdditionalMakeExports: []string{
+			"service-appsearch",
+		},
+	},
+	{
+		ShortName: "bluetooth",
+		SourcePaths: []string{
+			"packages/modules/Bluetooth",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/Bluetooth",
+		},
+		AdditionalSoongExports: []string{
+			"android.hardware.bluetooth@1.1-service.btlinux",
+			"async_fd_watcher",
+			"bluetooth_packetgen",
+			"controller_properties.json",
+			"framework-bluetooth",
+			"framework-bluetooth-sources",
+			"framework-bluetooth.stubs",
+			"framework-bluetooth.stubs.module_lib",
+			"framework-bluetooth.stubs.system",
+			"h4_packetizer_lib",
+			"libbluetooth",
+			"libbluetooth-binder-aidl",
+			"libbluetooth-binder-common",
+			"libbluetooth-types",
+			"libbluetooth-types-header",
+			"libbluetooth_headers",
+			"libbt-rootcanal",
+			"libbtcore",
+			"libosi",
+			"service-bluetooth-tests-sources",
+			"services.bluetooth-sources",
+		},
+		AdditionalMakeExports: []string{
+			"BluetoothInstrumentationTests",
+			"BluetoothTests",
+			"audio.bluetooth.default",
+			"audio_set_configurations_bfbs",
+			"audio_set_configurations_json",
+			"audio_set_scenarios_bfbs",
+			"audio_set_scenarios_json",
+			"bluetooth_stack_with_facade",
+			"bluetooth_test_common",
+			"bluetoothtbd_test",
+			"bt_did.conf",
+			"bt_stack.conf",
+			"net_test_audio_a2dp_hw",
+			"net_test_avrcp",
+			"net_test_bluetooth",
+			"net_test_bta",
+			"net_test_btcore",
+			"net_test_btif",
+			"net_test_btif_profile_queue",
+			"net_test_btpackets",
+			"net_test_device",
+			"net_test_hci",
+			"net_test_osi",
+			"net_test_performance",
+			"net_test_stack",
+			"net_test_stack_ad_parser",
+			"net_test_stack_multi_adv",
+			"net_test_stack_rfcomm",
+			"net_test_stack_smp",
+			"net_test_types",
+			"root-canal",
+		},
+	},
+	{
+		ShortName: "connectivity",
+		SourcePaths: []string{
+			"packages/modules/Connectivity",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/Connectivity",
+		},
+		AdditionalSoongExports: []string{
+			"ConnectivityNextEnableDefaults",
+			"bpf_connectivity_headers",
+			"connectivity-mainline-presubmit-cc-defaults",
+			"connectivity-mainline-presubmit-java-defaults",
+			"connectivity_native_aidl_interface-V1-cpp-source",
+			"connectivity_native_aidl_interface-V1-java-source",
+			"connectivity_native_aidl_interface-V1-ndk-source",
+			"connectivity_native_aidl_interface-V2-cpp-source",
+			"connectivity_native_aidl_interface-V2-java-source",
+			"connectivity_native_aidl_interface-V2-ndk-source",
+			"connectivity_native_aidl_interface-api",
+			"connectivity_native_aidl_interface_interface",
+			"cts-net-utils",
+			"framework-connectivity-protos",
+			"framework-connectivity-sources",
+			"framework-connectivity-t.impl",
+			"framework-connectivity-test-defaults",
+			"framework-connectivity-tiramisu-updatable-sources",
+			"framework-connectivity.impl",
+			"framework-tethering-srcs",
+			"framework-tethering.impl",
+			"libnetd_updatable",
+			"libnetworkstats",
+			"libnetworkstatsfactorytestjni",
+			"service-connectivity-tiramisu-pre-jarjar",
+		},
+		AdditionalMakeExports: []string{
+			"FrameworksNetSmokeTests",
+			"FrameworksNetTests",
+			"libnetworkstats_test",
+			"privapp_allowlist_com.android.tethering",
+		},
+	},
+	// {
+	// 	ShortName: "dnsresolver",
+	// 	SourcePaths: []string{
+	// 		"packages/modules/DnsResolver",
+	// 	},
+	// 	AdditionalMakeExports: []string{
+	// 		"doh_ffi_test",
+	// 		"doh_unit_test",
+	// 		"resolv_gold_test",
+	// 		"resolv_integration_test",
+	// 		"resolv_unit_test",
+	// 	},
+	// },
+	// {
+	// 	ShortName: "extservices",
+	// 	SourcePaths: []string{
+	// 		"packages/modules/ExtServices",
+	// 	},
+	// 	AdditionalMakeExports: []string{
+	// 		"ExtServicesUnitTests",
+	// 		"privapp_allowlist_android.ext.services.xml",
+	// 	},
+	// },
+	{
+		ShortName: "ipsec",
+		SourcePaths: []string{
+			"packages/modules/IPsec",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/IPsec",
+		},
+		AdditionalSoongExports: []string{
+			"android.net.ipsec.ike.impl",
+			"android.net.ipsec.ike.xml",
+			"ike-aes-xcbc",
+			"ike-srcs",
+			"ike-tun-utils",
+		},
+	},
+	{
+		SourcePaths: []string{
+			"packages/modules/Media",
+			"frameworks/av/apex",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/Media",
+		},
+		AdditionalSoongExports: []string{
+			"updatable-media-srcs",
+		},
+	},
+	{
+		ShortName: "permission",
+		SourcePaths: []string{
+			"packages/modules/Permission",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/Permission",
+		},
+		AdditionalSoongExports: []string{
+			"framework-permission-s-sources",
+			"framework-permission-s.impl",
+			"framework-permission-sources",
+			"framework-permission.impl",
+			"service-permission-protos",
+			"service-permission.impl",
+		},
+	},
+	{
+		ShortName: "i18n",
+		SourcePaths: []string{
+			"packages/modules/RuntimeI18n",
+			"external/icu",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/runtime/mainline/i18n/sdk",
+			"prebuilts/runtime/mainline/i18n/test-exports",
+		},
+		PrebuiltApexPaths: []string{
+			"prebuilts/runtime/mainline/i18n/apex",
+		},
+		AdditionalSoongExports: []string{
+			"ICU4CTestRunner",
+			"android-icu4j-tests",
+			"cintltst32",
+			"cintltst64",
+			"icu4c_test_data",
+			"icu4j",
+			"icu4j-icudata-jarjar",
+			"icu4j-icutzdata-jarjar",
+			"icu4j_calendar_astronomer",
+			"intltest32",
+			"intltest64",
+			"libandroidicu",
+			"libicu.ndk",
+			"libicutest_static",
+			"libicuuc_stubdata",
+		},
+		AdditionalMakeExports: []string{
+			"icu4j-platform-compat-config",
+			"icu-data_host_i18n_apex",
+		},
+	},
+	{
+		ShortName: "scheduling",
+		SourcePaths: []string{
+			"packages/modules/Scheduling",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/Scheduling",
+		},
+		AdditionalSoongExports: []string{
+			"framework-scheduling-sources",
+			"framework-scheduling.impl",
+		},
+	},
+	{
+		ShortName: "sdkext",
+		SourcePaths: []string{
+			"packages/modules/SdkExtensions",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/SdkExtensions",
+		},
+		AdditionalSoongExports: []string{
+			"framework-sdkextensions-sources",
+			"framework-sdkextensions.impl",
+			"sdkinfo_45",
+		},
+	},
+	{
+		ShortName: "statsd",
+		SourcePaths: []string{
+			"packages/modules/StatsD",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/StatsD",
+		},
+		AdditionalSoongExports: []string{
+			"CtsStatsdApp",
+			"framework-statsd-sources",
+			"framework-statsd.impl",
+			"libkll",
+			"libstatspull",
+			"libstatspull_headers",
+			"libstatssocket_headers",
+			"statsd-aidl-ndk",
+			"statsd-aidl-ndk-source",
+			"statsd-aidl_interface",
+			"statsd_internal_protos",
+			"statsdprotolite",
+			"statsdprotonano",
+		},
+		AdditionalMakeExports: []string{
+			"statsd_test",
+		},
+	},
+	{
+		ShortName: "uwb",
+		SourcePaths: []string{
+			"packages/modules/Uwb",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/Uwb",
+		},
+		AdditionalSoongExports: []string{},
+	},
+	{
+		ShortName: "wifi",
+		SourcePaths: []string{
+			"packages/modules/Wifi",
+		},
+		PrebuiltSdkPaths: []string{
+			"prebuilts/module_sdk/Wifi",
+		},
+		AdditionalSoongExports: []string{
+			"framework-wifi-annotations",
+			"framework-wifi-test-defaults",
+			"framework-wifi-updatable-sources",
+			"framework-wifi.impl",
+		},
+		AdditionalMakeExports: []string{
+			"FrameworksWifiApiTests",
+			"FrameworksWifiTests",
+		},
+	},
+}
+
 func newNameResolver(config android.Config) *android.NameResolver {
 	namespacePathsToExport := make(map[string]bool)
 
@@ -109,13 +498,57 @@ func newNameResolver(config android.Config) *android.NameResolver {
 		return namespacePathsToExport[namespace.Path]
 	}
 
-	return android.NewNameResolver(exportFilter)
+	fmt.Printf("PAUL: Configuring protected namespaces\n")
+	var protectedNamespaces []*android.ProtectedNamespaceConfig
+	if android.EnableApiBoundaryEnforcement(config) {
+		for _, mainline := range MainlineModules {
+			// Create the source namespace.
+			sourceNamespace := &android.ProtectedNamespaceConfig{
+				Paths:                  mainline.SourcePaths,
+				AdditionalSoongExports: mainline.AdditionalSoongExports,
+				AdditionalMakeExports:  mainline.AdditionalMakeExports,
+			}
+
+			// Create the prebuilt namespace.
+			prebuiltPaths := append([]string(nil), mainline.PrebuiltSdkPaths...)
+			prebuiltPaths = append(prebuiltPaths, mainline.PrebuiltApexPaths...)
+
+			prebuiltNamespace := &android.ProtectedNamespaceConfig{
+				Paths: prebuiltPaths,
+			}
+
+			if mainline.PrebuiltApexPaths != nil {
+				// The prebuilt namespace cannot exclude the source namespace as that causes breakages in
+				// branches that have SDK snapshots but no corresponding prebuilt APEX.
+				prebuiltNamespace.Exclude(sourceNamespace)
+			}
+
+			sourceNamespace.Exclude(prebuiltNamespace)
+
+			envName := fmt.Sprintf("%s_USE_PREBUILTS", strings.ToUpper(mainline.ShortName))
+			prebuilts := config.IsEnvTrue(envName)
+
+			if prebuilts {
+				// The prebuilts namespace is active, source is not.
+				prebuiltNamespace.Active = true
+			} else {
+				// The source namespace is active, prebuilt is not.
+				sourceNamespace.Active = true
+			}
+
+			// Add the namespaces.
+			protectedNamespaces = append(protectedNamespaces, sourceNamespace, prebuiltNamespace)
+		}
+	}
+
+	return android.NewNameResolver(exportFilter, protectedNamespaces)
 }
 
 func newContext(configuration android.Config) *android.Context {
 	ctx := android.NewContext(configuration)
 	ctx.Register()
-	ctx.SetNameInterface(newNameResolver(configuration))
+	resolver := newNameResolver(configuration)
+	ctx.SetNameInterface(resolver)
 	ctx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())
 	return ctx
 }

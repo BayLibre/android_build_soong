@@ -272,7 +272,7 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 			dists = append(dists, mctx.dists...)
 		}
 
-		if m.ExportedToMake() {
+		if m.ExportedToMake() && !shouldSkipAndroidMkProcessing(ctx.Config(), ctx.ModuleDir(m), m.base()) {
 			katiInstalls = append(katiInstalls, m.base().katiInstalls...)
 			katiSymlinks = append(katiSymlinks, m.base().katiSymlinks...)
 		}

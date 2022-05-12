@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"io"
 	"strconv"
+	"strings"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -171,11 +172,6 @@ func (s *sdk) snapshot() bool {
 }
 
 func (s *sdk) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	if s.snapshot() {
-		// We don't need to create a snapshot out of sdk_snapshot.
-		// That doesn't make sense. We need a snapshot to create sdk_snapshot.
-		return
-	}
 
 	// This method is guaranteed to be called on OsType specific variants before it is called
 	// on their corresponding CommonOS variant.
@@ -183,6 +179,12 @@ func (s *sdk) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		// Update the OsType specific sdk variant with information about its members.
 		s.collectMembers(ctx)
 	} else {
+		if s.snapshot() {
+			// We don't need to create a snapshot out of sdk_snapshot.
+			// That doesn't make sense. We need a snapshot to create sdk_snapshot.
+			return
+		}
+
 		// Get the OsType specific variants on which the CommonOS depends.
 		osSpecificVariants := android.GetOsSpecificVariantsOfCommonOSVariant(ctx)
 		var sdkVariants []*sdk
@@ -253,6 +255,49 @@ func (s *sdk) newDependencyContext(mctx android.BottomUpMutatorContext) android.
 		requiredTraits:         traits,
 	}
 }
+
+func (s *sdk) ExportModulesFromNamespace() []string {
+	if s.IsCommonOSVariant() {
+		return nil
+	}
+
+	strip := func(name string) string {
+		name = android.RemoveOptionalPrebuiltPrefix(name)
+		// TODO: Stop stripping @current once snapshots contains prebuilt sdk_snapshot.
+		if index := strings.LastIndex(name, "@"); index != -1 {
+			if name[index:] == "@current" {
+				name = name[:index]
+			} else {
+				name = ""
+			}
+		}
+		return name
+	}
+
+	sdkPrefix := strip(s.Name()) + "_"
+
+	addExport := func(exported []string, name string) []string {
+		stripped := strip(name)
+		if stripped != "" {
+			stripped = strings.TrimPrefix(stripped, sdkPrefix)
+			exported = append(exported, stripped)
+		}
+		return exported
+	}
+
+	exported := []string{}
+	for _, member := range s.memberVariantDeps {
+		exported = addExport(exported, member.variant.Name())
+
+		for _, component := range member.exportedComponentsInfo.Components {
+			exported = addExport(exported, component)
+		}
+	}
+
+	return exported
+}
+
+var _ android.ExportModulesFromNamespace = (*sdk)(nil)
 
 type dependencyContext struct {
 	android.BottomUpMutatorContext

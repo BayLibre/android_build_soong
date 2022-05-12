@@ -104,7 +104,7 @@ func BazelLabelForModuleDeps(ctx BazelConversionPathContext, modules []string) b
 }
 
 // BazelLabelForModuleWholeDepsExcludes expects two lists: modules (containing modules to include in
-// the list), and excludes (modules to exclude from the list). Both of these should contain
+// the list), and excludes (modules to ignoreNamespaceVisibleToRoot from the list). Both of these should contain
 // references to other modules, ("<module>" or ":<module>"). It returns a Bazel-compatible label
 // list which corresponds to dependencies on the module within the given ctx, and the excluded
 // dependencies.  Prebuilt dependencies will be appended with _alwayslink so they can be handled as
@@ -143,7 +143,7 @@ func BazelLabelForModuleDepsWithFn(ctx BazelConversionPathContext, modules []str
 }
 
 // BazelLabelForModuleDepsExcludesWithFn expects two lists: modules (containing modules to include in the
-// list), and excludes (modules to exclude from the list). Both of these should contain references
+// list), and excludes (modules to ignoreNamespaceVisibleToRoot from the list). Both of these should contain references
 // to other modules, ("<module>" or ":<module>"). It applies moduleToLabelFn to determine and return a
 // Bazel-compatible label list which corresponds to dependencies on the module within the given ctx, and
 // the excluded dependencies.

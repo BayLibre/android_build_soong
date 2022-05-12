@@ -1269,7 +1269,7 @@ func TestPathsForModuleSrc(t *testing.T) {
 			rels: []string{"gen/c"},
 		},
 		{
-			name: "output file provider with exclude",
+			name: "output file provider with ignoreNamespaceVisibleToRoot",
 			bp: `
 			test {
 				name: "foo",

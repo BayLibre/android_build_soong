@@ -37,6 +37,8 @@ type sortableComponent interface {
 
 	// register registers this component in the supplied context.
 	register(ctx *Context)
+
+	String() string
 }
 
 type sortableComponents []sortableComponent
@@ -90,6 +92,10 @@ func (s singleton) register(ctx *Context) {
 	}
 }
 
+func (s singleton) String() string {
+	return s.name
+}
+
 var _ sortableComponent = singleton{}
 
 var singletons sortableComponents
@@ -100,6 +106,10 @@ type mutator struct {
 	bottomUpMutator blueprint.BottomUpMutator
 	topDownMutator  blueprint.TopDownMutator
 	parallel        bool
+}
+
+func (m mutator) String() string {
+	return m.name
 }
 
 var _ sortableComponent = &mutator{}
@@ -167,6 +177,15 @@ func (ctx *Context) SetRunningAsBp2build() {
 	ctx.config.runningAsBp2Build = true
 }
 
+var nameInterfaceKey = NewOnceKey("NameInterface")
+
+func (ctx *Context) SetNameInterface(i blueprint.NameInterface) {
+	ctx.Context.SetNameInterface(i)
+	ctx.config.Once(nameInterfaceKey, func() interface{} {
+		return i
+	})
+}
+
 // RegisterForBazelConversion registers an alternate shadow pipeline of
 // singletons, module types and mutators to register for converting Blueprint
 // files to semantically equivalent BUILD files.
@@ -200,7 +219,11 @@ func (ctx *Context) Register() {
 }
 
 func collateGloballyRegisteredSingletons() sortableComponents {
-	allSingletons := append(sortableComponents(nil), singletons...)
+	allSingletons := []sortableComponent{
+		// Register a namespace boundary enforcer the first singleton.
+		singleton{false, "boundaryenforcer", namespaceBoundaryEnforcerSingleton},
+	}
+	allSingletons = append(allSingletons, singletons...)
 	allSingletons = append(allSingletons,
 		singleton{false, "bazeldeps", BazelSingleton},
 
@@ -210,8 +233,8 @@ func collateGloballyRegisteredSingletons() sortableComponents {
 		// Register makevars after other singletons so they can export values through makevars
 		singleton{false, "makevars", makeVarsSingletonFunc},
 
-		// Register env and ninjadeps last so that they can track all used environment variables and
-		// Ninja file dependencies stored in the config.
+		// Register ninjadeps last so that it can track all Ninja file dependencies stored in the
+		// config.
 		singleton{false, "ninjadeps", ninjaDepsSingletonFactory},
 	)
 

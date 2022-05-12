@@ -661,6 +661,10 @@ func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext, nativeM
 	ctx.AddFarVariationDependencies(target.Variations(), fsTag, nativeModules.Filesystems...)
 }
 
+func (a *apexBundle) ExportModulesFromNamespace() []string {
+	return []string{a.Name()}
+}
+
 func (a *apexBundle) combineProperties(ctx android.BottomUpMutatorContext) {
 	if ctx.Device() {
 		proptools.AppendProperties(&a.properties.Multilib, &a.targetProperties.Target.Android.Multilib, nil)

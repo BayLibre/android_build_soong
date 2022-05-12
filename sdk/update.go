@@ -193,9 +193,11 @@ func (s *sdk) collectMembers(ctx android.ModuleContext) {
 				return false
 			}
 
-			// Make sure that the resolved module is allowed in the member list property.
-			if !memberType.IsInstance(child) {
-				ctx.ModuleErrorf("module %q is not valid in property %s", ctx.OtherModuleName(child), memberType.SdkPropertyName())
+			if !s.snapshot() {
+				// Make sure that the resolved module is allowed in the member list property.
+				if !memberType.IsInstance(child) {
+					ctx.ModuleErrorf("module %q is not valid in property %s", ctx.OtherModuleName(child), memberType.SdkPropertyName())
+				}
 			}
 
 			// Keep track of which multilib variants are used by the sdk.
