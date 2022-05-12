@@ -760,7 +760,9 @@ filegroup {
 }
 EOF
 
-  if run_soong bp2build >& "$MOCK_TOP/errors"; then
+  exit_code=0
+  run_soong bp2build >& "$MOCK_TOP/errors" || exit_code=$?
+  if [[ "$exit_code" != 0 ]]; then
     fail "Build should have failed"
   fi
 
