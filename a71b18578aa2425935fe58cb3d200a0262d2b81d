@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2efe0699_decfdf2f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-05-12T02:15:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b8ff88c5_23928391",
+      "range": {
+        "startLine": 2462,
+        "startChar": 1,
+        "endLine": 2462,
+        "endChar": 94
+      },
+      "revId": "a71b18578aa2425935fe58cb3d200a0262d2b81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0be88781_57f08bca",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-10T08:29:50Z",
       "side": 1,
       "message": "Can you add a test for this and file_contexts where they\u0027re in the same/different directories?",
+      "range": {
+        "startLine": 2469,
+        "startChar": 5,
+        "endLine": 2477,
+        "endChar": 6
+      },
+      "revId": "a71b18578aa2425935fe58cb3d200a0262d2b81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c92cde2_b5f1dbf4",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2477,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-05-12T02:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0be88781_57f08bca",
       "range": {
         "startLine": 2469,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db71d28_56a7bedb",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-05-12T02:15:47Z",
+      "side": 1,
+      "message": "This is copy/pasted from TestApexBundleSimple() which actually is useless here. So removed all TODO from the test cases.",
+      "parentUuid": "e1148e52_c1ed4a55",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 59
+      },
+      "revId": "a71b18578aa2425935fe58cb3d200a0262d2b81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2c42828_55154aa2",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "024c41e2_29ae52fd",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-05-12T02:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2c42828_55154aa2",
+      "range": {
+        "startLine": 430,
+        "startChar": 2,
+        "endLine": 430,
+        "endChar": 3
+      },
+      "revId": "a71b18578aa2425935fe58cb3d200a0262d2b81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8321d32_668bb1d6",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-05-10T08:29:50Z",
       "side": 1,
       "message": "fix indent",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 18
+      },
+      "revId": "a71b18578aa2425935fe58cb3d200a0262d2b81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cbf5e54_66e42446",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-05-12T02:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8321d32_668bb1d6",
       "range": {
         "startLine": 478,
         "startChar": 0,
