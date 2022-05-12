@@ -231,6 +231,23 @@
       "message": "No objections, since this doesn\u0027t impact T, and is for U and beyond.  Thanks!",
       "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55a6f259_f83ecde7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-05-12T16:02:20Z",
+      "side": 1,
+      "message": "(seems like a bug that srhines is an owner for cc/config/global.go but not cc/cc_test.go? anyway, +ccross for the test...)",
+      "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
