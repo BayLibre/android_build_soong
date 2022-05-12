@@ -50,6 +50,10 @@ type bazelPythonLibraryAttributes struct {
 	Srcs_version *string
 }
 
+type bazelPythonProtoLibraryAttributes struct {
+	Deps bazel.LabelListAttribute
+}
+
 func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	// TODO(b/182306917): this doesn't fully handle all nested props versioned
 	// by the python version, which would have been handled by the version split
@@ -96,6 +100,30 @@ func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	}
 
 	baseAttrs := m.makeArchVariantBaseAttributes(ctx)
+
+	partitionedSrcs := bazel.PartitionLabelListAttribute(ctx, &baseAttrs.Srcs, bazel.LabelPartitions{
+		"proto": android.ProtoSrcLabelPartition,
+		"py":    bazel.LabelPartition{Keep_remainder: true},
+	})
+	baseAttrs.Srcs = partitionedSrcs["py"]
+
+	if !partitionedSrcs["proto"].IsEmpty() {
+		protoInfo, _ := android.Bp2buildProtoProperties(ctx, &m.ModuleBase, partitionedSrcs["proto"])
+		protoLabel := bazel.Label{Label: ":" + protoInfo.Name}
+
+		pyProtoLibraryName := m.Name() + "_py_proto"
+		ctx.CreateBazelTargetModule(bazel.BazelTargetModuleProperties{
+			Rule_class:        "py_proto_library",
+			Bzl_load_location: "//build/bazel/rules/python:py_proto.bzl",
+		}, android.CommonAttributes{
+			Name: pyProtoLibraryName,
+		}, &bazelPythonProtoLibraryAttributes{
+			Deps: bazel.MakeSingleLabelListAttribute(protoLabel),
+		})
+
+		baseAttrs.Deps.Add(bazel.MakeLabelAttribute(":" + pyProtoLibraryName))
+	}
+
 	attrs := &bazelPythonLibraryAttributes{
 		Srcs:         baseAttrs.Srcs,
 		Deps:         baseAttrs.Deps,
