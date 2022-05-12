@@ -288,7 +288,7 @@ var (
 		"libbase_ndk", // TODO(b/186826477): fails to link libctscamera2_jni for device (required for CtsCameraTestCases)
 
 		// python protos
-		"libprotobuf-python",                           // TODO(b/196084681): contains .proto sources
+		//"libprotobuf-python",                           // TODO(b/196084681): contains .proto sources
 		"apex_build_info_proto", "apex_manifest_proto", // TODO(b/196084681): a python lib with proto sources
 		"linker_config_proto", // TODO(b/196084681): contains .proto sources
 
@@ -302,14 +302,14 @@ var (
 		"prebuilt_platform-robolectric-4.5.1-prebuilt", // aosp/1999250, needs .aar support in Jars
 
 		// path property for filegroups
-		"conscrypt",                        // TODO(b/210751803), we don't handle path property for filegroups
-		"conscrypt-for-host",               // TODO(b/210751803), we don't handle path property for filegroups
-		"host-libprotobuf-java-full",       // TODO(b/210751803), we don't handle path property for filegroups
-		"libprotobuf-internal-protos",      // TODO(b/210751803), we don't handle path property for filegroups
-		"libprotobuf-internal-python-srcs", // TODO(b/210751803), we don't handle path property for filegroups
-		"libprotobuf-java-full",            // TODO(b/210751803), we don't handle path property for filegroups
-		"libprotobuf-java-util-full",       // TODO(b/210751803), we don't handle path property for filegroups
-		"auto_value_plugin_resources",      // TODO(b/210751803), we don't handle path property for filegroups
+		"conscrypt",                  // TODO(b/210751803), we don't handle path property for filegroups
+		"conscrypt-for-host",         // TODO(b/210751803), we don't handle path property for filegroups
+		"host-libprotobuf-java-full", // TODO(b/210751803), we don't handle path property for filegroups
+		//"libprotobuf-internal-protos",      // TODO(b/210751803), we don't handle path property for filegroups
+		//"libprotobuf-internal-python-srcs", // TODO(b/210751803), we don't handle path property for filegroups
+		"libprotobuf-java-full",       // TODO(b/210751803), we don't handle path property for filegroups
+		"libprotobuf-java-util-full",  // TODO(b/210751803), we don't handle path property for filegroups
+		"auto_value_plugin_resources", // TODO(b/210751803), we don't handle path property for filegroups
 
 		// go deps:
 		"analyze_bcpf",                                                                               // depends on bpmodify a blueprint_go_binary.

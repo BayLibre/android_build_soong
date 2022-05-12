@@ -15,9 +15,10 @@
 package android
 
 import (
-	"android/soong/bazel"
 	"regexp"
 	"strings"
+
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
