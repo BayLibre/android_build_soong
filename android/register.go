@@ -167,6 +167,15 @@ func (ctx *Context) SetRunningAsBp2build() {
 	ctx.config.runningAsBp2Build = true
 }
 
+var nameInterfaceKey = NewOnceKey("NameInterface")
+
+func (ctx *Context) SetNameInterface(i blueprint.NameInterface) {
+	ctx.Context.SetNameInterface(i)
+	ctx.config.Once(nameInterfaceKey, func() interface{} {
+		return i
+	})
+}
+
 // RegisterForBazelConversion registers an alternate shadow pipeline of
 // singletons, module types and mutators to register for converting Blueprint
 // files to semantically equivalent BUILD files.
@@ -210,8 +219,11 @@ func collateGloballyRegisteredSingletons() sortableComponents {
 		// Register makevars after other singletons so they can export values through makevars
 		singleton{false, "makevars", makeVarsSingletonFunc},
 
-		// Register env and ninjadeps last so that they can track all used environment variables and
-		// Ninja file dependencies stored in the config.
+		// Register a namespa
+		singleton{false, "boundaryenforcer", namespaceBoundaryEnforcerSingleton},
+
+		// Register ninjadeps last so that it can track all Ninja file dependencies stored in the
+		// config.
 		singleton{false, "ninjadeps", ninjaDepsSingletonFactory},
 	)
 
