@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9201e91_c5a70869",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-12T11:26:28Z",
+      "side": 1,
+      "message": "nit: if you negate the condition, you spare a level of indentation:\n\n```\nif statErr \u003d\u003d nil {\n  return fi2.isDir()\n}\n\n...\n```",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 19
+      },
+      "revId": "d8f64b0c16872ec664cdaddd3a2ed94b02ebb4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8516d384_8e3348ad",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-12T11:26:28Z",
+      "side": 1,
+      "message": "nit: \"unresolved\" is Bazel parlance (\u003dwe don\u0027t care where it points), you mean \"dangling\"",
+      "range": {
+        "startLine": 105,
+        "startChar": 16,
+        "endLine": 105,
+        "endChar": 26
+      },
+      "revId": "d8f64b0c16872ec664cdaddd3a2ed94b02ebb4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
