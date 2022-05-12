@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b64f2e_61188832",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-12T02:41:18Z",
+      "side": 1,
+      "message": "since this test is just for the file_contexts, remove all other non-required properties?",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 3
+      },
+      "revId": "73070b883cfed66604ffa2033cef9a6e2213e03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f45253b_8a61336a",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-12T02:41:18Z",
+      "side": 1,
+      "message": "since this test is just for the file_contexts, remove all other non-required properties?",
+      "range": {
+        "startLine": 336,
+        "startChar": 1,
+        "endLine": 357,
+        "endChar": 3
+      },
+      "revId": "73070b883cfed66604ffa2033cef9a6e2213e03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3187eaa3_4c252544",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-12T02:41:18Z",
+      "side": 1,
+      "message": "since this test is just for the file_contexts, remove all other non-required properties?",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 3
+      },
+      "revId": "73070b883cfed66604ffa2033cef9a6e2213e03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f88037_effe4d77",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-12T02:41:18Z",
+      "side": 1,
+      "message": "nit: fix indent",
+      "range": {
+        "startLine": 866,
+        "startChar": 0,
+        "endLine": 869,
+        "endChar": 18
+      },
+      "revId": "73070b883cfed66604ffa2033cef9a6e2213e03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
