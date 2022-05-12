@@ -97,8 +97,13 @@ func isDir(path string, fi os.FileInfo) bool {
 
 	fi2, err := os.Stat(path)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Cannot stat '%s': %s\n", path, err)
-		os.Exit(1)
+		_, err := os.Lstat(path)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Cannot stat or lstat '%s': %s\n", path, err)
+			os.Exit(1)
+		}
+		// This is an unresolved symlink, treat it like a file, not a dir.
+		return false
 	}
 
 	return fi2.IsDir()
