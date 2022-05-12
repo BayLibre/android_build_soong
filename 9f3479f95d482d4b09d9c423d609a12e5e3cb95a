@@ -50,6 +50,24 @@
       "message": "This is brand new code that isn\u0027t quite finished, it would be used by aosp/2077938 but is blocked by b/231370928.",
       "revId": "9f3479f95d482d4b09d9c423d609a12e5e3cb95a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0510b1df_62a0a6ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-12T16:15:14Z",
+      "side": 1,
+      "message": "Thanks for chiming in! Another strike for \"obviously wrong\" code not being wrong, grump.\n\nI have a few questions, though:\n\n1. How come no test case fails after this change?\n\n2. What does the \"Sanitizeable\" interface mean? I thought it meant \"contains binaries that can themselves be sanitized\", which java_fuzz_host probably doesn\u0027t, if I understand the code correctly. Maybe it\u0027s simply \"contains C++ code and therefore should have its own sanitized/non-sanitized variants?\"",
+      "parentUuid": "6815b472_b6f1883a",
+      "revId": "9f3479f95d482d4b09d9c423d609a12e5e3cb95a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
