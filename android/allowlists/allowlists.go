@@ -45,6 +45,7 @@ var (
 		"bootable/recovery/tools/recovery_l10n": Bp2BuildDefaultTrue,
 		"build/bazel/examples/soong_config_variables":        Bp2BuildDefaultTrueRecursively,
 		"build/bazel/examples/apex/minimal":                  Bp2BuildDefaultTrueRecursively,
+		"build/bazel/examples/python":                        Bp2BuildDefaultTrueRecursively,
 		"build/make/tools/signapk":                           Bp2BuildDefaultTrue,
 		"build/make/target/product/security":                 Bp2BuildDefaultTrue,
 		"build/soong":                                        Bp2BuildDefaultTrue,
@@ -289,7 +290,6 @@ var (
 		"libbase_ndk", // TODO(b/186826477): fails to link libctscamera2_jni for device (required for CtsCameraTestCases)
 
 		// python protos
-		"libprotobuf-python",                           // TODO(b/196084681): contains .proto sources
 		"apex_build_info_proto", "apex_manifest_proto", // TODO(b/196084681): a python lib with proto sources
 		"linker_config_proto", // TODO(b/196084681): contains .proto sources
 
