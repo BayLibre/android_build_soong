@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a4a214_fcde5a97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-12T14:42:20Z",
+      "side": 1,
+      "message": "Hold on, I may have made a mistake in comparing .ninja files.",
+      "revId": "9f3479f95d482d4b09d9c423d609a12e5e3cb95a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
