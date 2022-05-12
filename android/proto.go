@@ -15,9 +15,10 @@
 package android
 
 import (
-	"android/soong/bazel"
 	"regexp"
 	"strings"
+
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -163,8 +164,9 @@ func ProtoRule(rule *RuleBuilder, protoFile Path, flags ProtoFlags, deps Paths,
 
 // Bp2buildProtoInfo contains information necessary to pass on to language specific conversion.
 type Bp2buildProtoInfo struct {
-	Type *string
-	Name string
+	Type               *string
+	Name               string
+	Local_include_dirs []string
 }
 
 type protoAttrs struct {
@@ -200,6 +202,7 @@ func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, m *ModuleBase, srcs baz
 					path := ""
 					attrs.Strip_import_prefix = &path
 				}
+				info.Local_include_dirs = props.Proto.Local_include_dirs
 			} else if props.Proto.Type != info.Type && props.Proto.Type != nil {
 				ctx.ModuleErrorf("Cannot handle arch-variant types for protos at this time.")
 			}

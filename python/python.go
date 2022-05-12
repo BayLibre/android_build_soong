@@ -131,7 +131,8 @@ type baseAttributes struct {
 	Srcs bazel.LabelListAttribute
 	Deps bazel.LabelListAttribute
 	// Combines Data and Java_data (invariant)
-	Data bazel.LabelListAttribute
+	Data    bazel.LabelListAttribute
+	Imports bazel.StringListAttribute
 }
 
 // Used to store files of current module after expanding dependencies

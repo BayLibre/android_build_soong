@@ -17,6 +17,8 @@ package python
 // This file contains the module types for building Python library.
 
 import (
+	"fmt"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -48,6 +50,10 @@ type bazelPythonLibraryAttributes struct {
 	Deps         bazel.LabelListAttribute
 	Imports      bazel.StringListAttribute
 	Srcs_version *string
+}
+
+type bazelPythonProtoLibraryAttributes struct {
+	Deps bazel.LabelListAttribute
 }
 
 func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
@@ -96,6 +102,34 @@ func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	}
 
 	baseAttrs := m.makeArchVariantBaseAttributes(ctx)
+
+	if m.Name() == "libprotobuf-python" {
+		fmt.Fprintf(os.Stderr, "Srcs: %#v\n", baseAttrs.Srcs)
+	}
+
+	partitionedSrcs := bazel.PartitionLabelListAttribute(ctx, &baseAttrs.Srcs, bazel.LabelPartitions{
+		"proto": android.ProtoSrcLabelPartition,
+		"py":    bazel.LabelPartition{Keep_remainder: true},
+	})
+	baseAttrs.Srcs = partitionedSrcs["py"]
+
+	if !partitionedSrcs["proto"].IsEmpty() {
+		protoInfo, _ := android.Bp2buildProtoProperties(ctx, &m.ModuleBase, partitionedSrcs["proto"])
+		protoLabel := bazel.Label{Label: ":" + protoInfo.Name}
+
+		pyProtoLibraryName := m.Name() + "_py_proto"
+		ctx.CreateBazelTargetModule(bazel.BazelTargetModuleProperties{
+			Rule_class:        "py_proto_library",
+			Bzl_load_location: "//build/bazel/rules/python:py_proto.bzl",
+		}, android.CommonAttributes{
+			Name: pyProtoLibraryName,
+		}, &bazelPythonProtoLibraryAttributes{
+			Deps: bazel.MakeSingleLabelListAttribute(protoLabel),
+		})
+
+		baseAttrs.Deps.Add(bazel.MakeLabelAttribute(":" + pyProtoLibraryName))
+	}
+
 	attrs := &bazelPythonLibraryAttributes{
 		Srcs:         baseAttrs.Srcs,
 		Deps:         baseAttrs.Deps,
@@ -103,11 +137,21 @@ func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		Imports:      bazel.MakeStringListAttribute([]string{imports}),
 	}
 
+	// TODO(b/210751803), we don't handle path property for filegroups.
+	// libprotobuf-python depends on a filegroup that has a path: "python" attribute.
+	// Since we can't convert that yet, hardcode it here.
+	if m.Name() == "libprotobuf-python" {
+		attrs.Imports.Value = []string{"python"}
+	}
+
 	props := bazel.BazelTargetModuleProperties{
 		// Use the native py_library rule.
 		Rule_class: "py_library",
 	}
 
+	if m.Name() == "fg_foo" {
+		fmt.Fprintf(os.Stderr, "Creating bazel target for fg_foo: %#v\n", baseAttrs.Data)
+	}
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
 		Name: m.Name(),
 		Data: baseAttrs.Data,
