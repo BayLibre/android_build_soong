@@ -434,6 +434,9 @@ be unnecessary as every module in the sdk already has its own licenses property.
 	traits := s.gatherTraits()
 	for _, member := range members {
 		memberType := member.memberType
+		if !memberType.ArePrebuiltsRequired() {
+			continue
+		}
 
 		name := member.name
 		requiredTraits := traits[name]
@@ -917,6 +920,11 @@ func (s *sdk) addSnapshotPropertiesToPropertySet(builder *snapshotBuilder, prope
 
 	dynamicMemberTypeListProperties := combined.dynamicProperties
 	for _, memberListProperty := range s.memberTypeListProperties() {
+		// Member type that do not add prebuilts do not need to add properties in the sdk_snapshot that
+		// refer to them.
+		if !memberListProperty.memberType.ArePrebuiltsRequired() {
+			continue
+		}
 		if memberListProperty.getter == nil {
 			continue
 		}

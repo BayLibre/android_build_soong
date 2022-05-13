@@ -22,7 +22,7 @@ import (
 	"android/soong/java"
 )
 
-func TestSnapshotWithSystemServerClasspathFragment(t *testing.T) {
+func testSnapshotWithSystemServerClasspathFragment(t *testing.T, sdk string) {
 	result := android.GroupFixturePreparers(
 		prepareForSdkTestWithJava,
 		java.PrepareForTestWithJavaDefaultModules,
@@ -31,19 +31,7 @@ func TestSnapshotWithSystemServerClasspathFragment(t *testing.T) {
 		dexpreopt.FixtureSetApexSystemServerJars("myapex:mylib", "myapex:mysdklibrary"),
 		prepareForSdkTestWithApex,
 
-		android.FixtureWithRootAndroidBp(`
-			sdk {
-				name: "mysdk",
-				systemserverclasspath_fragments: ["mysystemserverclasspathfragment"],
-				java_sdk_libs: [
-					// This is not strictly needed as it should be automatically added to the sdk_snapshot as
-					// a java_sdk_libs module because it is used in the mysystemserverclasspathfragment's
-					// contents property. However, it is specified here to ensure that duplicates are
-					// correctly deduped.
-					"mysdklibrary",
-				],
-			}
-
+		android.FixtureWithRootAndroidBp(sdk+`
 			apex {
 				name: "myapex",
 				key: "myapex.key",
@@ -168,4 +156,31 @@ sdk_snapshot {
 }
 `),
 	)
+}
+
+func TestSnapshotWithSystemServerClasspathFragment(t *testing.T) {
+	t.Run("added-directly", func(t *testing.T) {
+		testSnapshotWithSystemServerClasspathFragment(t, `
+			sdk {
+				name: "mysdk",
+				systemserverclasspath_fragments: ["mysystemserverclasspathfragment"],
+				java_sdk_libs: [
+					// This is not strictly needed as it should be automatically added to the sdk_snapshot as
+					// a java_sdk_libs module because it is used in the mysystemserverclasspathfragment's
+					// contents property. However, it is specified here to ensure that duplicates are
+					// correctly deduped.
+					"mysdklibrary",
+				],
+			}
+`)
+	})
+
+	t.Run("added-via-apex", func(t *testing.T) {
+		testSnapshotWithSystemServerClasspathFragment(t, `
+			sdk {
+				name: "mysdk",
+				apexes: ["myapex"],
+			}
+		`)
+	})
 }

@@ -670,6 +670,10 @@ type SdkMemberType interface {
 	// host OS variant explicitly and disable all other host OS'es.
 	IsHostOsDependent() bool
 
+	// ArePrebuiltsRequired returns true if prebuilts are required in the sdk snapshot, false
+	// otherwise.
+	ArePrebuiltsRequired() bool
+
 	// AddDependencies adds dependencies from the SDK module to all the module variants the member
 	// type contributes to the SDK. `names` is the list of module names given in the member type
 	// property (as returned by SdkPropertyName()) in the SDK module. The exact set of variants
@@ -760,13 +764,22 @@ type SdkMemberTypeBase struct {
 	// property to be specifiable in an Android.bp file.
 	BpPropertyNotRequired bool
 
-	SupportsSdk     bool
+	// Set to true if this must be usable with the sdk/sdk_snapshot module types. Otherwise, it will
+	// only be usable with module_exports/module_exports_snapshots module types.
+	SupportsSdk bool
+
+	// Set to true if prebuilt host artifacts of this member may be specific to the host OS. Only
+	// applicable to modules where HostSupported() is true.
 	HostOsDependent bool
 
 	// When set to true UseSourceModuleTypeInSnapshot indicates that the member type creates a source
 	// module type in its SdkMemberType.AddPrebuiltModule() method. That prevents the sdk snapshot
 	// code from automatically adding a prefer: true flag.
 	UseSourceModuleTypeInSnapshot bool
+
+	// Set to true if this member does not generate prebuilts but is only provided to allow the sdk
+	// to gather members from this member's dependencies.
+	PrebuiltsNotRequired bool
 
 	// The list of supported traits.
 	Traits []SdkMemberTrait
@@ -786,6 +799,10 @@ func (b *SdkMemberTypeBase) UsableWithSdkAndSdkSnapshot() bool {
 
 func (b *SdkMemberTypeBase) IsHostOsDependent() bool {
 	return b.HostOsDependent
+}
+
+func (b *SdkMemberTypeBase) ArePrebuiltsRequired() bool {
+	return !b.PrebuiltsNotRequired
 }
 
 func (b *SdkMemberTypeBase) UsesSourceModuleTypeInSnapshot() bool {

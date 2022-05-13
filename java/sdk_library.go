@@ -2877,6 +2877,12 @@ func (s *sdkLibrarySdkMemberProperties) PopulateFromVariant(ctx android.SdkMembe
 	s.Naming_scheme = sdk.commonSdkLibraryProperties.Naming_scheme
 	s.Shared_library = proptools.BoolPtr(sdk.sharedLibrary())
 	s.Compile_dex = sdk.dexProperties.Compile_dex
+	// If the compile_dex property was only set because this library is in an apex then clear it. This
+	// ensures consistency in the sdk snapshot when the library is added directly, indirectly via a
+	// *classpath_fragment or indirectly via an apex.
+	if sdk.dexProperties.Compile_dex_was_set_for_apex {
+		s.Compile_dex = nil
+	}
 	s.Doctag_paths = sdk.doctagPaths
 	s.Permitted_packages = sdk.PermittedPackagesForUpdatableBootJars()
 	s.On_bootclasspath_since = sdk.commonSdkLibraryProperties.On_bootclasspath_since
