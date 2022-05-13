@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c219b897_939464eb",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-13T17:06:46Z",
+      "side": 1,
+      "message": "No, I meant by ID. In the aquery proto, depset definitions specify their direct artifacts by artifactId, an int.",
+      "parentUuid": "287f8096_b52678f6",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19635adb_eb7c85fa",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-13T16:21:20Z",
       "side": 1,
       "message": "nit: I am on board with calling them IDs, but you are renaming them as ContentHashes. (Also while when used of ID\u0027ing purpose maybe call it a hash instead of a checksum, which sounds like used for error detection)\nIf you were using \"ID\" in its English meaning then maybe reword as \"ContentHash is an ID for a Depset...\"",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74f24615_3ab3cb57",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-13T17:06:46Z",
+      "side": 1,
+      "message": "Fair enough. Reworded.",
+      "parentUuid": "19635adb_eb7c85fa",
       "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -69,6 +105,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a9d4287_a212ff87",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-13T17:06:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cb90507_0c713c9e",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfa4c5a6_e418ed30",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-05-13T16:21:20Z",
       "side": 1,
       "message": "nit: `type depsetId int` etc. might make things more descriptive - also I think Go has no runtime penalty for an integer type (i.e. a type whose underlying type is `int`) compared to the `built-in` type `int`.",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a097e15_793e198e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-13T17:06:46Z",
+      "side": 1,
+      "message": "I\u0027m not sure I agree with this, as this is an internal structure. Additionally, one of the ints here is an artifactId (milddlemanIdToDepsetIds).\n\nWe can chat about it more if you feel strongly :)",
+      "parentUuid": "cfa4c5a6_e418ed30",
       "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -103,6 +175,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c5b2ce_60a7e92a",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-13T17:06:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52822d40_dfc527e7",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a62b1cc4_b553fb22",
@@ -116,6 +206,24 @@
       "writtenOn": "2022-05-13T16:21:20Z",
       "side": 1,
       "message": "extreme nit: `var x []T` might be preferable to `x :\u003d[]T{}`\ngo/go-style/best-practices#vardeclinitialization\n^it doesn\u0027t explicitly say prefer `var` when initializing to \"zero\"\nThe zero of a slice is nil.\n\tx :\u003d []int{}\n\tvar y []int\n\tfmt.Println(x \u003d\u003d nil)\n\tfmt.Println(y \u003d\u003d nil)",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "099e9329_3752368f",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-13T17:06:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a62b1cc4_b553fb22",
       "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -137,6 +245,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9404accb_2801b0bd",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-13T17:06:46Z",
+      "side": 1,
+      "message": "I already have, see above. \"each output file may only have one action which generates it\". \n\nWhether multiple outputs are expected is irrelevant here -- multiple outputs are OK here.",
+      "parentUuid": "120693ec_5eba7e08",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42c949dd_273d808b",
@@ -154,6 +280,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00f4df89_f739cd05",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-13T17:06:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42c949dd_273d808b",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04d25551_953fdfa3",
@@ -167,6 +311,24 @@
       "writtenOn": "2022-05-13T16:21:20Z",
       "side": 1,
       "message": "I\u0027d suggest \"%016x\" to force left 0-padding (unlikely as it is we might drop a few leading 0s and not get a consistent length otherwise, granted you maybe truncating it anyways later - although I didn\u0027t see a truncation anywhere)",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3914bc18_a103d5dd",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-13T17:06:46Z",
+      "side": 1,
+      "message": "Yep, not doing any truncation. This is a reasonable idea. Thanks!",
+      "parentUuid": "04d25551_953fdfa3",
       "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
