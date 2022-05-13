@@ -268,13 +268,18 @@ func (s *sdk) groupMemberVariantsByMemberThenType(ctx android.ModuleContext, mem
 			member = &sdkMember{memberType: memberType, name: name}
 			byName[name] = member
 			byType[memberType] = append(byType[memberType], member)
+		} else if member.memberType != memberType {
+			if memberType.Overrides(member.memberType) {
+				member.memberType = memberType
+			} else if !member.memberType.Overrides(memberType) {
+				ctx.ModuleErrorf("Incompatible member types %q %q", member.memberType, memberType)
+			}
 		}
 
 		// Only append new variants to the list. This is needed because a member can be both
 		// exported by the sdk and also be a transitive sdk member.
 		member.variants = appendUniqueVariants(member.variants, variant)
 	}
-
 	var members []*sdkMember
 	for _, memberListProperty := range s.memberTypeListProperties() {
 		membersOfType := byType[memberListProperty.memberType]
@@ -1777,7 +1782,7 @@ func newArchSpecificInfo(ctx android.SdkMemberContext, archId archId, osType and
 	// added.
 	archInfo.Properties = variantPropertiesFactory()
 
-	if len(archVariants) == 1 {
+	if len(archVariants) == 1 && len(ctx.MemberType().SupportedLinkages()) <= 1 {
 		archInfo.Properties.PopulateFromVariant(ctx, archVariants[0])
 	} else {
 		// Group the variants by image type.
@@ -1904,7 +1909,9 @@ func newImageVariantSpecificInfo(ctx android.SdkMemberContext, imageVariant stri
 	// Create the properties into which the image variant specific properties will be added.
 	imageInfo.Properties = variantPropertiesFactory()
 
-	if len(imageVariants) == 1 {
+	// There is more than one variant for this image variant which must be differentiated by link
+	// type.
+	if len(imageVariants) == 1 && len(ctx.MemberType().SupportedLinkages()) <= 1 {
 		imageInfo.Properties.PopulateFromVariant(ctx, imageVariants[0])
 	} else {
 		// There is more than one variant for this image variant which must be differentiated by link
@@ -1952,8 +1959,19 @@ func (imageInfo *imageVariantSpecificInfo) addToPropertySet(ctx *memberContext, 
 
 	addSdkMemberPropertiesToSet(ctx, imageInfo.Properties, propertySet)
 
+	usedLinkages := make(map[string]bool, len(imageInfo.linkInfos))
 	for _, linkInfo := range imageInfo.linkInfos {
+		usedLinkages[linkInfo.linkType] = true
 		linkInfo.addToPropertySet(ctx, propertySet)
+	}
+
+	if len(imageInfo.linkInfos) < len(ctx.MemberType().SupportedLinkages()) {
+		for _, l := range ctx.MemberType().SupportedLinkages() {
+			if _, ok := usedLinkages[l]; !ok {
+				otherLinkagePropertySet := propertySet.AddPropertySet(l)
+				otherLinkagePropertySet.AddProperty("enabled", false)
+			}
+		}
 	}
 
 	// If this is for a non-core image variant then make sure that the property set does not contain
