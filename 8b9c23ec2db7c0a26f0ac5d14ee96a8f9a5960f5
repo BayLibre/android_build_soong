@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure why this would be removable.  `sanitizerDepsMutator` and `sanitizerMutator` each return a lambda that is used as the mutator, and is called for asan, hwasan, fuzzer, etc. to create pairs of mutators for each.  The SanitizeDep flag is used by each of the mutator pairs in turn to communicate between `sanitizerDepsMutator(foo)` and `sanitizerMutator(foo)`, and needs to be reset to false for all modules before the next `sanitizerDepsMutator(bar)`.  I\u0027d expect the result of removing this to be more sanitizers than expected to be enabled, but that would change `build.ninja`.",
       "revId": "8b9c23ec2db7c0a26f0ac5d14ee96a8f9a5960f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7612168f_e1c8ec71",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-13T14:31:31Z",
+      "side": 0,
+      "message": "Well it\u0027s time then to regain some intellectual control!\n\nI assume that if you don\u0027t understand it and I don\u0027t understand it after staring about it a while, then no one understands it and it\u0027s not a good situation to be in.\n\nHow about turning the one \"sanitizeDep\" bit into a set of bits, one for each sanitizer? That way, we don\u0027t need to rely on the interleaving of sanitizerDepsMutator and sanitizerMutator instances and the information flow is top-\u003edown then bottom-\u003eup, thereby making things simpler? (at the cost of a bit of RAM, but TBH I\u0027m more worried about the fact that no one understands the code than about RAM use...)\n\nHow about this plan:\n\n1. I submit this change without the removal `c.SetSanitizeDep(false)`\n2. I submit another change that turns `sanitizeDep` into a set of bits, one for each sanitizer",
+      "parentUuid": "a9a9f7ad_af2d433f",
+      "revId": "8b9c23ec2db7c0a26f0ac5d14ee96a8f9a5960f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
