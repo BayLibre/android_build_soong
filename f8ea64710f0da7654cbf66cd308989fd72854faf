@@ -22,6 +22,92 @@
       },
       "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "800eaed5_6c84ed83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T02:15:05Z",
+      "side": 1,
+      "message": "Sorry, I missed the update.\n",
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76f518b2_bd4b3608",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T02:15:05Z",
+      "side": 1,
+      "message": "There\u0027s no real advantage in having separate instances here.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 144
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d0fcbd_1b664abc",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T02:15:05Z",
+      "side": 1,
+      "message": "Check the type here not individual instances.",
+      "range": {
+        "startLine": 226,
+        "startChar": 8,
+        "endLine": 226,
+        "endChar": 104
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4583d32_27650728",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T02:15:05Z",
+      "side": 1,
+      "message": "Instead of having cleanedDepNames separate from adding the dependencies rename it to something like \"addDeps\", take an extra systemServerClasspathContentType parameter and have it also add the dependencies.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 93
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
