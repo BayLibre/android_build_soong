@@ -1740,6 +1740,385 @@ myinclude/Test.h -> include/myinclude/Test.h
 	)
 }
 
+func TestSnapshotSameLibraryWithNativeLibsAndNativeSharedLib(t *testing.T) {
+	result := testSdkWithCc(t, `
+		module_exports {
+			host_supported: true,
+			name: "myexports",
+			target: {
+				android: {
+						native_shared_libs: [
+								"mynativelib",
+						],
+				},
+				not_windows: {
+						native_libs: [
+								"mynativelib",
+						],
+				},
+			},
+		}
+
+		cc_library {
+			name: "mynativelib",
+			host_supported: true,
+			srcs: [
+				"Test.cpp",
+			],
+			stl: "none",
+			recovery_available: true,
+			vendor_available: true,
+		}
+	`)
+
+	CheckSnapshot(t, result, "myexports", "",
+		checkUnversionedAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_library {
+    name: "mynativelib",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    host_supported: true,
+    vendor_available: true,
+    stl: "none",
+    compile_multilib: "both",
+    target: {
+        host: {
+            enabled: false,
+        },
+        android_arm64: {
+            shared: {
+                srcs: ["android/arm64/lib/mynativelib.so"],
+            },
+            static: {
+                enabled: false,
+            },
+        },
+        android_arm: {
+            shared: {
+                srcs: ["android/arm/lib/mynativelib.so"],
+            },
+            static: {
+                enabled: false,
+            },
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+            static: {
+                srcs: ["linux_glibc/x86_64/lib/mynativelib.a"],
+            },
+            shared: {
+                srcs: ["linux_glibc/x86_64/lib/mynativelib.so"],
+            },
+        },
+        linux_glibc_x86: {
+            enabled: true,
+            static: {
+                srcs: ["linux_glibc/x86/lib/mynativelib.a"],
+            },
+            shared: {
+                srcs: ["linux_glibc/x86/lib/mynativelib.so"],
+            },
+        },
+    },
+}
+`),
+		// Make sure that the generated sdk_snapshot uses the native_libs property.
+		checkVersionedAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_library {
+    name: "myexports_mynativelib@current",
+    sdk_member_name: "mynativelib",
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    host_supported: true,
+    installable: false,
+    vendor_available: true,
+    stl: "none",
+    compile_multilib: "both",
+    target: {
+        host: {
+            enabled: false,
+        },
+        android_arm64: {
+            shared: {
+                srcs: ["android/arm64/lib/mynativelib.so"],
+            },
+            static: {
+                enabled: false,
+            },
+        },
+        android_arm: {
+            shared: {
+                srcs: ["android/arm/lib/mynativelib.so"],
+            },
+            static: {
+                enabled: false,
+            },
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+            static: {
+                srcs: ["linux_glibc/x86_64/lib/mynativelib.a"],
+            },
+            shared: {
+                srcs: ["linux_glibc/x86_64/lib/mynativelib.so"],
+            },
+        },
+        linux_glibc_x86: {
+            enabled: true,
+            static: {
+                srcs: ["linux_glibc/x86/lib/mynativelib.a"],
+            },
+            shared: {
+                srcs: ["linux_glibc/x86/lib/mynativelib.so"],
+            },
+        },
+    },
+}
+
+module_exports_snapshot {
+    name: "myexports@current",
+    visibility: ["//visibility:public"],
+    host_supported: true,
+    target: {
+        android: {
+            native_shared_libs: ["myexports_mynativelib@current"],
+        },
+        linux_glibc: {
+            native_libs: ["myexports_mynativelib@current"],
+        },
+        host: {
+            enabled: false,
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+        },
+        linux_glibc_x86: {
+            enabled: true,
+        },
+    },
+}
+`),
+		checkAllCopyRules(`
+.intermediates/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> android/arm64/lib/mynativelib.so
+.intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> android/arm/lib/mynativelib.so
+.intermediates/mynativelib/linux_glibc_x86_64_static/mynativelib.a -> linux_glibc/x86_64/lib/mynativelib.a
+.intermediates/mynativelib/linux_glibc_x86_64_shared/mynativelib.so -> linux_glibc/x86_64/lib/mynativelib.so
+.intermediates/mynativelib/linux_glibc_x86_static/mynativelib.a -> linux_glibc/x86/lib/mynativelib.a
+.intermediates/mynativelib/linux_glibc_x86_shared/mynativelib.so -> linux_glibc/x86/lib/mynativelib.so
+`),
+	)
+}
+
+func TestSnapshotSameLibraryWithAndroidNativeLibsAndHostNativeSharedLib(t *testing.T) {
+	result := testSdkWithCc(t, `
+		module_exports {
+			host_supported: true,
+			name: "myexports",
+			target: {
+				android: {
+						native_libs: [
+								"mynativelib",
+						],
+				},
+				not_windows: {
+						native_shared_libs: [
+								"mynativelib",
+						],
+				},
+			},
+		}
+
+		cc_library {
+			name: "mynativelib",
+			host_supported: true,
+			srcs: [
+				"Test.cpp",
+			],
+			stl: "none",
+			recovery_available: true,
+			vendor_available: true,
+		}
+	`)
+
+	CheckSnapshot(t, result, "myexports", "",
+		checkUnversionedAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_library {
+    name: "mynativelib",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    host_supported: true,
+    vendor_available: true,
+    stl: "none",
+    compile_multilib: "both",
+    target: {
+        host: {
+            enabled: false,
+        },
+        android_arm64: {
+            static: {
+                srcs: ["android/arm64/lib/mynativelib.a"],
+            },
+            shared: {
+                srcs: ["android/arm64/lib/mynativelib.so"],
+            },
+        },
+        android_arm: {
+            static: {
+                srcs: ["android/arm/lib/mynativelib.a"],
+            },
+            shared: {
+                srcs: ["android/arm/lib/mynativelib.so"],
+            },
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+            shared: {
+                srcs: ["linux_glibc/x86_64/lib/mynativelib.so"],
+            },
+            static: {
+                enabled: false,
+            },
+        },
+        linux_glibc_x86: {
+            enabled: true,
+            shared: {
+                srcs: ["linux_glibc/x86/lib/mynativelib.so"],
+            },
+            static: {
+                enabled: false,
+            },
+        },
+    },
+}
+`),
+		// Make sure that the generated sdk_snapshot uses the native_libs property.
+		checkVersionedAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_library {
+    name: "myexports_mynativelib@current",
+    sdk_member_name: "mynativelib",
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    host_supported: true,
+    installable: false,
+    vendor_available: true,
+    stl: "none",
+    compile_multilib: "both",
+    target: {
+        host: {
+            enabled: false,
+        },
+        android_arm64: {
+            static: {
+                srcs: ["android/arm64/lib/mynativelib.a"],
+            },
+            shared: {
+                srcs: ["android/arm64/lib/mynativelib.so"],
+            },
+        },
+        android_arm: {
+            static: {
+                srcs: ["android/arm/lib/mynativelib.a"],
+            },
+            shared: {
+                srcs: ["android/arm/lib/mynativelib.so"],
+            },
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+            shared: {
+                srcs: ["linux_glibc/x86_64/lib/mynativelib.so"],
+            },
+            static: {
+                enabled: false,
+            },
+        },
+        linux_glibc_x86: {
+            enabled: true,
+            shared: {
+                srcs: ["linux_glibc/x86/lib/mynativelib.so"],
+            },
+            static: {
+                enabled: false,
+            },
+        },
+    },
+}
+
+module_exports_snapshot {
+    name: "myexports@current",
+    visibility: ["//visibility:public"],
+    host_supported: true,
+    target: {
+        android: {
+            native_libs: ["myexports_mynativelib@current"],
+        },
+        linux_glibc: {
+            native_shared_libs: ["myexports_mynativelib@current"],
+        },
+        host: {
+            enabled: false,
+        },
+        linux_glibc_x86_64: {
+            enabled: true,
+        },
+        linux_glibc_x86: {
+            enabled: true,
+        },
+    },
+}
+`),
+		checkAllCopyRules(`
+.intermediates/mynativelib/android_arm64_armv8-a_static/mynativelib.a -> android/arm64/lib/mynativelib.a
+.intermediates/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> android/arm64/lib/mynativelib.so
+.intermediates/mynativelib/android_arm_armv7-a-neon_static/mynativelib.a -> android/arm/lib/mynativelib.a
+.intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> android/arm/lib/mynativelib.so
+.intermediates/mynativelib/linux_glibc_x86_64_shared/mynativelib.so -> linux_glibc/x86_64/lib/mynativelib.so
+.intermediates/mynativelib/linux_glibc_x86_shared/mynativelib.so -> linux_glibc/x86/lib/mynativelib.so
+`),
+	)
+}
+
+func TestSnapshotSameLibraryWithNativeStaticLibsAndNativeSharedLib(t *testing.T) {
+	testSdkError(t, "Incompatible member types", `
+		module_exports {
+			host_supported: true,
+			name: "myexports",
+			target: {
+				android: {
+						native_shared_libs: [
+								"mynativelib",
+						],
+				},
+				not_windows: {
+						native_static_libs: [
+								"mynativelib",
+						],
+				},
+			},
+		}
+
+		cc_library {
+			name: "mynativelib",
+			host_supported: true,
+			srcs: [
+			],
+			stl: "none",
+			recovery_available: true,
+			vendor_available: true,
+		}
+	`)
+}
+
 func TestHostSnapshotWithMultiLib64(t *testing.T) {
 	result := testSdkWithCc(t, `
 		module_exports {
