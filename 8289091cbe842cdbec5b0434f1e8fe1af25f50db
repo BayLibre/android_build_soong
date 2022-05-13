@@ -51,6 +51,24 @@
       "message": "FWIW, haven\u0027t looked at the whole change yet, but we shouldn\u0027t cp this to tm-dev. Agreed?",
       "revId": "8289091cbe842cdbec5b0434f1e8fe1af25f50db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f2c4d38_758aac8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T16:26:59Z",
+      "side": 1,
+      "message": "On its own it does nothing. So, I think it would be pretty safe in tm-dev but equally it gives us no benefit. The benefit will come from going through the mainline modules and replacing their *fragments properties on the sdk with apexes[...]. And we won\u0027t be doing that in tm-dev.\n\nThis definitely needs to go into tm-mainline-prod though.",
+      "parentUuid": "d3a181af_3e1843d2",
+      "revId": "8289091cbe842cdbec5b0434f1e8fe1af25f50db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
