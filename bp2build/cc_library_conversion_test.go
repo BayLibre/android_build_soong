@@ -2313,6 +2313,7 @@ func TestCcLibraryDisabledArchAndTargetWithDefault(t *testing.T) {
 	name: "foo",
 	srcs: ["foo.cpp"],
   enabled: false,
+	host_supported: true,
 	target: {
 		darwin: {
 			enabled: true,
@@ -2377,6 +2378,7 @@ func TestCcLibraryStaticDisabledForSomeArch(t *testing.T) {
 		moduleTypeUnderTestFactory: cc.LibraryFactory,
 		blueprint: soongCcProtoPreamble + `cc_library {
 	name: "foo",
+	host_supported: true,
 	srcs: ["foo.cpp"],
 	shared: {
 		enabled: false
