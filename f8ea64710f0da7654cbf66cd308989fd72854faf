@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ae2a2d3c_e4e5bd02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-13T04:15:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad98a72a_5268cab0",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "800eaed5_6c84ed83",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -37,6 +61,24 @@
       "writtenOn": "2022-05-13T02:15:05Z",
       "side": 1,
       "message": "Sorry, I missed the update.\n",
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d11b58_304dd5bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-13T04:15:38Z",
+      "side": 1,
+      "message": "No problem, thanks for the review",
+      "parentUuid": "800eaed5_6c84ed83",
       "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2022-05-13T02:15:05Z",
       "side": 1,
       "message": "There\u0027s no real advantage in having separate instances here.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 144
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86f1dd9e_2dd624e6",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-13T04:15:38Z",
+      "side": 1,
+      "message": "I use these objects in the ComponentDepsMutator. By creating these objects globally, I avoid the overhead of creating a new object for every dependency",
+      "parentUuid": "76f518b2_bd4b3608",
       "range": {
         "startLine": 222,
         "startChar": 0,
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8094a6_d739083e",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-13T04:15:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37d0fcbd_1b664abc",
+      "range": {
+        "startLine": 226,
+        "startChar": 8,
+        "endLine": 226,
+        "endChar": 104
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4583d32_27650728",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-05-13T02:15:05Z",
       "side": 1,
       "message": "Instead of having cleanedDepNames separate from adding the dependencies rename it to something like \"addDeps\", take an extra systemServerClasspathContentType parameter and have it also add the dependencies.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 93
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e58a152_3afb934c",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-13T04:15:38Z",
+      "side": 1,
+      "message": "I have updated the implementation to something closer to your suggestion. \n\nThe only difference is that the extra argument is a `blueprint.DependencyTag` object and not `systemServerClasspathContentType`. This allows us to reuse an instantiated `DependencyTag` object, and not create a new one object for each dep",
+      "parentUuid": "d4583d32_27650728",
       "range": {
         "startLine": 247,
         "startChar": 0,
