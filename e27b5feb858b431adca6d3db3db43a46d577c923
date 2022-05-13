@@ -265,6 +265,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ffcf264_24d0f850",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-13T17:34:48Z",
+      "side": 1,
+      "message": "I meant in case of multiple outputs if bazel doesn\u0027t guarantee deterministic order for them, wouldn\u0027t this comparison function also risk inderminism? (although,I actually didn\u0027t see any multiple output instances while manually scanning)",
+      "parentUuid": "9404accb_2801b0bd",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42c949dd_273d808b",
         "filename": "bazel/aquery.go",
         "patchSetId": 3
