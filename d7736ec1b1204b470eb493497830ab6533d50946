@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f4d23f8_d4f941eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-05-13T06:46:48Z",
+      "side": 1,
+      "message": "See ag/18364674 for the soong plugin.",
+      "revId": "d7736ec1b1204b470eb493497830ab6533d50946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
