@@ -29,6 +29,9 @@ type DexProperties struct {
 	// If set to true, compile dex regardless of installable.  Defaults to false.
 	Compile_dex *bool
 
+	// Set to true if the Compile_dex property was only set for the apex.
+	Compile_dex_was_set_for_apex bool `blueprint:"mutated"`
+
 	// list of module-specific flags that will be used for dex compiles
 	Dxflags []string `android:"arch_variant"`
 

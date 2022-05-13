@@ -407,6 +407,9 @@ be unnecessary as every module in the sdk already has its own licenses property.
 	traits := s.gatherTraits()
 	for _, member := range members {
 		memberType := member.memberType
+		if !memberType.ArePrebuiltsRequired() {
+			continue
+		}
 
 		name := member.name
 		requiredTraits := traits[name]
