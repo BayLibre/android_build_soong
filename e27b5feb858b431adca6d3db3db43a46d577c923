@@ -281,6 +281,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c2dbf2_b374702e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-13T17:46:19Z",
+      "side": 1,
+      "message": "File ordering should be deterministic (this includes output ordering). I\u0027ll add a comment.",
+      "parentUuid": "4ffcf264_24d0f850",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42c949dd_273d808b",
