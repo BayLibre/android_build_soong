@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ac8ec7_ad57b940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T11:03:29Z",
+      "side": 1,
+      "message": "Anton, this is the first of 3 changes that will help prevent unnecessary implementation details accidentally leaking into the hidden API flags by breaking the build if the developers have not specified the packages that belong to the mainline module.\n\nIf they don\u0027t then the error message will explain what to do to avoid the error as well as advice to run the analyze_bcpf tool which will try and work out what properties are needed.\n\nThat check will not be needed for test fragments, hence why this change is added. The second change temporarily treats existing fragments that have not yet been switched to bootclasspath_fragment_test as test fragments based on their name. Once they have been switched over then that change will be reverted.\n\nThe final change detects the error.",
+      "revId": "8b271dae63682317d590f76efe96395b84e289d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
