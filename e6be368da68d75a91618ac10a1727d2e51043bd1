@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2564169_80109cff",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-13T12:08:36Z",
+      "side": 1,
+      "message": "Could we add some verification that testonly bcp_fragment can only be depended on by testonly apexes? (I think test apexes are currently called apex_test though...).",
+      "range": {
+        "startLine": 822,
+        "startChar": 38,
+        "endLine": 822,
+        "endChar": 52
+      },
+      "revId": "e6be368da68d75a91618ac10a1727d2e51043bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
