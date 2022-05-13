@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "591dd53a_d6e5d04f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-13T16:21:20Z",
+      "side": 1,
+      "message": "a few nitpicks",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287f8096_b52678f6",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-13T16:21:20Z",
+      "side": 1,
+      "message": "I am guessing you meant \"instead of by ~Id~ **Hash**\"",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19635adb_eb7c85fa",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-13T16:21:20Z",
+      "side": 1,
+      "message": "nit: I am on board with calling them IDs, but you are renaming them as ContentHashes. (Also while when used of ID\u0027ing purpose maybe call it a hash instead of a checksum, which sounds like used for error detection)\nIf you were using \"ID\" in its English meaning then maybe reword as \"ContentHash is an ID for a Depset...\"",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cb90507_0c713c9e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-13T16:21:20Z",
+      "side": 1,
+      "message": "Maybe break the description to the pertinent fields.\nThe comment on the latter could be shorter e.g. \"similar to `depsetIdToAqueryDepset` but uses content hash instead of ID\"",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa4c5a6_e418ed30",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-13T16:21:20Z",
+      "side": 1,
+      "message": "nit: `type depsetId int` etc. might make things more descriptive - also I think Go has no runtime penalty for an integer type (i.e. a type whose underlying type is `int`) compared to the `built-in` type `int`.",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52822d40_dfc527e7",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-13T16:21:20Z",
+      "side": 1,
+      "message": "not a change from this CL but py3wrapperFileName should be a `const`",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a62b1cc4_b553fb22",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-13T16:21:20Z",
+      "side": 1,
+      "message": "extreme nit: `var x []T` might be preferable to `x :\u003d[]T{}`\ngo/go-style/best-practices#vardeclinitialization\n^it doesn\u0027t explicitly say prefer `var` when initializing to \"zero\"\nThe zero of a slice is nil.\n\tx :\u003d []int{}\n\tvar y []int\n\tfmt.Println(x \u003d\u003d nil)\n\tfmt.Println(y \u003d\u003d nil)",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "120693ec_5eba7e08",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-13T16:21:20Z",
+      "side": 1,
+      "message": "nit: maybe add a comment saying \"outputs are guaranteed to be unique per buildStatment\" and \"multiple outputs are not expected\" (or if they are they are guaranteed to be in a deterministic order)",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c949dd_273d808b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-13T16:21:20Z",
+      "side": 1,
+      "message": "comment on choice of \"\\n\" - i.e. because it won\u0027t occur in a path.",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04d25551_953fdfa3",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-13T16:21:20Z",
+      "side": 1,
+      "message": "I\u0027d suggest \"%016x\" to force left 0-padding (unlikely as it is we might drop a few leading 0s and not get a consistent length otherwise, granted you maybe truncating it anyways later - although I didn\u0027t see a truncation anywhere)",
+      "revId": "e27b5feb858b431adca6d3db3db43a46d577c923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
