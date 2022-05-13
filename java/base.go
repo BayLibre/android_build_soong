@@ -1422,6 +1422,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	if j.DirectlyInAnyApex() && !apexInfo.IsForPlatform() {
 		if j.dexProperties.Compile_dex == nil {
 			j.dexProperties.Compile_dex = proptools.BoolPtr(true)
+			j.dexProperties.Compile_dex_was_set_for_apex = true
 		}
 		if j.deviceProperties.Hostdex == nil {
 			j.deviceProperties.Hostdex = proptools.BoolPtr(true)
