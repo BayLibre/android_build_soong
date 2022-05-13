@@ -196,6 +196,7 @@ var (
 		"system/libziparchive":                               Bp2BuildDefaultTrueRecursively,
 		"system/logging/liblog":                              Bp2BuildDefaultTrueRecursively,
 		"system/media/audio":                                 Bp2BuildDefaultTrueRecursively,
+		"system/memory/libion":                               Bp2BuildDefaultTrueRecursively,
 		"system/memory/libmemunreachable":                    Bp2BuildDefaultTrueRecursively,
 		"system/sepolicy/apex":                               Bp2BuildDefaultTrueRecursively,
 		"system/timezone/apex":                               Bp2BuildDefaultTrueRecursively,
