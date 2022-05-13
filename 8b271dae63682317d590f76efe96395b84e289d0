@@ -39,6 +39,30 @@
       },
       "revId": "8b271dae63682317d590f76efe96395b84e289d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba73a6ee_54785690",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-13T11:20:47Z",
+      "side": 1,
+      "message": "Docs here https://g3doc.corp.google.com/devtools/blaze/g3doc/be/common-definitions.html?cl\u003dhead#common-attributes",
+      "parentUuid": "6dd8ace1_06186442",
+      "range": {
+        "startLine": 45,
+        "startChar": 25,
+        "endLine": 45,
+        "endChar": 52
+      },
+      "revId": "8b271dae63682317d590f76efe96395b84e289d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
