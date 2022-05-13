@@ -33,6 +33,24 @@
       "message": "What happens if you don\u0027t use OncePer? ",
       "revId": "d7736ec1b1204b470eb493497830ab6533d50946",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eecd9db_01b8cd69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-05-13T19:39:15Z",
+      "side": 1,
+      "message": "Originally this was done in ag/18365132, which might have multiple instances of bp2buildAllowlist created if the getBp2buildAllowlist() is called concurrently, which actually is not harmful. But just in case I changed it to onceper.",
+      "parentUuid": "e473f314_05494fb6",
+      "revId": "d7736ec1b1204b470eb493497830ab6533d50946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
