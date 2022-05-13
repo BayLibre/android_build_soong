@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a9f7ad_af2d433f",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-13T00:23:41Z",
+      "side": 0,
+      "message": "I\u0027m not sure why this would be removable.  `sanitizerDepsMutator` and `sanitizerMutator` each return a lambda that is used as the mutator, and is called for asan, hwasan, fuzzer, etc. to create pairs of mutators for each.  The SanitizeDep flag is used by each of the mutator pairs in turn to communicate between `sanitizerDepsMutator(foo)` and `sanitizerMutator(foo)`, and needs to be reset to false for all modules before the next `sanitizerDepsMutator(bar)`.  I\u0027d expect the result of removing this to be more sanitizers than expected to be enabled, but that would change `build.ninja`.",
+      "revId": "8b9c23ec2db7c0a26f0ac5d14ee96a8f9a5960f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
