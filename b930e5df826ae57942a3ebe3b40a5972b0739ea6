@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54aa331e_5b19c8be",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-05-13T21:12:58Z",
+      "side": 1,
+      "message": "gofmt is responsible for these.",
+      "revId": "b930e5df826ae57942a3ebe3b40a5972b0739ea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
