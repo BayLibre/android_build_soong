@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "040dcaef_97d6af72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T16:23:41Z",
+      "side": 1,
+      "message": "Liz, I\u0027ve added you to the reviewers because this change is failing in bp2build-incremental because the testonly property I added here is conflicting with the Bazel one. This property is intended to have the same behavior as that.\n\nIs there any way that I can patch the bp2build to skip the testonly property for now?\n\nI\u0027ve raised http://b/232535266 to track supporting testonly in Soong properly.",
+      "revId": "e6be368da68d75a91618ac10a1727d2e51043bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2564169_80109cff",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-05-13T12:08:36Z",
       "side": 1,
       "message": "Could we add some verification that testonly bcp_fragment can only be depended on by testonly apexes? (I think test apexes are currently called apex_test though...).",
+      "range": {
+        "startLine": 822,
+        "startChar": 38,
+        "endLine": 822,
+        "endChar": 52
+      },
+      "revId": "e6be368da68d75a91618ac10a1727d2e51043bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fd45d55_9e3b1b35",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T16:23:41Z",
+      "side": 1,
+      "message": "I\u0027ve raised http://b/232535266 to track that.",
+      "parentUuid": "d2564169_80109cff",
       "range": {
         "startLine": 822,
         "startChar": 38,
