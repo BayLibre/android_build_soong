@@ -610,6 +610,7 @@ func TestGenerateBazelTargetModules_OneToMany_LoadedFromStarlark(t *testing.T) {
 		{
 			bp: `custom {
     name: "bar",
+    host_supported: true,
     one_to_many_prop: true,
     bazel_module: { bp2build_available: true  },
 }`,
@@ -680,7 +681,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
     bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{}),
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{}),
 			},
 		},
 		{
@@ -693,7 +694,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
     bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{}),
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{}),
 			},
 		},
 		{
@@ -706,7 +707,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
     bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{
 					"srcs": `[
         "a",
         "b",
@@ -725,7 +726,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
     bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{
 					"srcs": `["b"]`,
 				}),
 			},
@@ -740,7 +741,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
     bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{
 					"srcs": `[
         "other/a.txt",
         "other/b.txt",
@@ -772,7 +773,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
 				"other/file":         "",
 			},
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{
 					"srcs": `[
         "a.txt",
         "b.txt",
@@ -801,7 +802,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
 }`,
 			},
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{
 					"srcs": `[
         "//other:foo",
         "c",
@@ -1092,7 +1093,7 @@ func TestCombineBuildFilesBp2buildTargets(t *testing.T) {
 				"other/BUILD.bazel": `// definition for fg_bar`,
 			},
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{}),
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{}),
 				`// definition for fg_bar`,
 			},
 		},
@@ -1118,7 +1119,7 @@ func TestCombineBuildFilesBp2buildTargets(t *testing.T) {
         },
     }`,
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_bar", map[string]string{}),
+				makeBazelTargetNoRestrictions("filegroup", "fg_bar", map[string]string{}),
 				`// BUILD file`,
 			},
 		},
@@ -1203,7 +1204,7 @@ func TestGlobExcludeSrcs(t *testing.T) {
 				"dir/f.txt":      "",
 			},
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{
 					"srcs": `[
         "a.txt",
         "b.txt",
@@ -1234,7 +1235,7 @@ func TestGlobExcludeSrcs(t *testing.T) {
 				"dir/subdir/f.txt":      "",
 			},
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{
 					"srcs": `[
         "a.txt",
         "//dir/subdir:e.txt",
@@ -1265,7 +1266,7 @@ filegroup {
     bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{
 					"data": `[":reqd"]`,
 				}),
 			},
@@ -1335,7 +1336,7 @@ filegroup {
     bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{
-				makeBazelTarget("filegroup", "fg_foo", map[string]string{
+				makeBazelTargetNoRestrictions("filegroup", "fg_foo", map[string]string{
 					"data": `[":reqd"]`,
 				}),
 			},

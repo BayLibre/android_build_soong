@@ -1181,8 +1181,31 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 	archVariantProps := mod.GetArchVariantProperties(ctx, &commonProperties{})
 
 	var enabledProperty bazel.BoolAttribute
+
+	onlyAndroid := false
+	isEnabled := true
 	if props.Enabled != nil {
 		enabledProperty.Value = props.Enabled
+		isEnabled = *props.Enabled
+	}
+
+	// if the target is enabled and supports arch variance, determine the defaults based on the module
+	// type's host or device property and host_supported/device_supported properties
+	if isEnabled && mod.commonProperties.HostOrDeviceSupported != NeitherHostNorDeviceSupported {
+		moduleSupportsDevice := mod.DeviceSupported()
+		moduleSupportsHost := mod.HostSupported()
+		if moduleSupportsHost && !moduleSupportsDevice {
+			// for host only, we specify as unsupported on android rather than listing all host oses
+			// TODO(b/220874839): consider replacing this with a constraint that covers all host oses
+			// instead
+			enabledProperty.SetSelectValue(bazel.OsConfigurationAxis, Android.Name, proptools.BoolPtr(false))
+		} else if moduleSupportsDevice && !moduleSupportsHost {
+			// specify as a positive to ensure any target-specific enabled can be resolved
+			enabledProperty.SetSelectValue(bazel.OsConfigurationAxis, Android.Name, proptools.BoolPtr(true))
+			// also save that a target is only android, as if there is only the positive restriction on
+			// android, it'll be dropped, so we may need to add it back later
+			onlyAndroid = true
+		}
 	}
 
 	for axis, configToProps := range archVariantProps {
@@ -1224,16 +1247,18 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 		productConfigEnabledLabels, nil,
 	})
 
-	moduleSupportsDevice := mod.commonProperties.HostOrDeviceSupported&deviceSupported == deviceSupported
-	if mod.commonProperties.HostOrDeviceSupported != NeitherHostNorDeviceSupported && !moduleSupportsDevice {
-		enabledProperty.SetSelectValue(bazel.OsConfigurationAxis, Android.Name, proptools.BoolPtr(false))
-	}
-
 	platformEnabledAttribute, err := enabledProperty.ToLabelListAttribute(
 		bazel.LabelList{[]bazel.Label{bazel.Label{Label: "@platforms//:incompatible"}}, nil},
 		bazel.LabelList{[]bazel.Label{}, nil})
 	if err != nil {
 		ctx.ModuleErrorf("Error processing platform enabled attribute: %s", err)
+	}
+
+	// if android is the only arch/os enabled, then add a restriction to only be compatible with android
+	if platformEnabledAttribute.IsNil() && onlyAndroid {
+		l := bazel.LabelAttribute{}
+		l.SetValue(bazel.Label{Label: bazel.OsConfigurationAxis.SelectKey(Android.Name)})
+		platformEnabledAttribute.Add(&l)
 	}
 
 	data.Append(required)
