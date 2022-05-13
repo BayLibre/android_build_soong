@@ -85,6 +85,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00512903_9c1c6bdc",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T07:04:37Z",
+      "side": 1,
+      "message": "If you are going to create specific instances then these should use one of the instances. That way you ensure that if you changed how the instances were initialized that they would still support these interfaces.",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 0
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76f518b2_bd4b3608",
         "filename": "java/systemserver_classpath_fragment.go",
         "patchSetId": 4
@@ -120,6 +143,30 @@
       "side": 1,
       "message": "I use these objects in the ComponentDepsMutator. By creating these objects globally, I avoid the overhead of creating a new object for every dependency",
       "parentUuid": "76f518b2_bd4b3608",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 144
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854e9821_bf1c13c7",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T07:04:37Z",
+      "side": 1,
+      "message": "Actually you don\u0027t. If these were pointers to the struct then you would be correct, however as these are just plain structs then they are passed by value and copied everywhere. They are passed by value even when the struct is hidden behind an interface. So, every dependency that uses this tag gets its own copy.\n\nEquality is checked by comparing the value of each field in the struct.\n\nEven calls to methods like ExportMember pass a copy of the struct on the stack.\n\nWhile passing pointers would be more efficient I am not sure that the advantage is worth having in this case. If the struct was bigger and had more fields then it might.\n\nIf you want to change it to pass by pointer then you would need to:\n* Take the address of the struct when initializing these fields.\n* Change the type of the struct the methods are implemented on to *systemServerClasspathFragmentContentDependencyTag.",
+      "parentUuid": "86f1dd9e_2dd624e6",
       "range": {
         "startLine": 222,
         "startChar": 0,
@@ -214,6 +261,30 @@
       "side": 1,
       "message": "I have updated the implementation to something closer to your suggestion. \n\nThe only difference is that the extra argument is a `blueprint.DependencyTag` object and not `systemServerClasspathContentType`. This allows us to reuse an instantiated `DependencyTag` object, and not create a new one object for each dep",
       "parentUuid": "d4583d32_27650728",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 93
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9200ffa0_31ad6292",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T07:04:37Z",
+      "side": 1,
+      "message": "That\u0027s fine too.",
+      "parentUuid": "9e58a152_3afb934c",
       "range": {
         "startLine": 247,
         "startChar": 0,
