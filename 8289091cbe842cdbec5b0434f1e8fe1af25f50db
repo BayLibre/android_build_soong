@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de10400_47b3f59b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-13T16:14:18Z",
+      "side": 1,
+      "message": "Artur, Anton, I am sure that both of you have at times suggested that we dedup the contents of sdk and apex (although maybe not in those exact words) and I have said that it was not possible. I was wrong. \n\nIt is possible that the discussion got mixed up with the related, but much more difficult problem, of the exported*fragments on apex_set modules. That is a separate issue which we should be able to address but it would require LOTS more work.\n\nApologies for only realizing we could do this now. It is too late to help us in T but should make things a little easier moving forwards.",
+      "revId": "8289091cbe842cdbec5b0434f1e8fe1af25f50db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
