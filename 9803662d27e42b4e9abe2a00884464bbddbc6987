@@ -105,6 +105,99 @@
       },
       "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b17d3a_993ec42c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-13T15:02:20Z",
+      "side": 1,
+      "message": "+1, I\u0027m struggling to understand without context what/why we\u0027re doing",
+      "parentUuid": "0b1fe148_9b261ee0",
+      "range": {
+        "startLine": 884,
+        "startChar": 2,
+        "endLine": 884,
+        "endChar": 3
+      },
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5586ec1e_f7060724",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-13T15:02:20Z",
+      "side": 1,
+      "message": "rather than generating this prefix each time we see a depfile, could we do this once?",
+      "range": {
+        "startLine": 885,
+        "startChar": 3,
+        "endLine": 888,
+        "endChar": 107
+      },
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfb90b09_55a235b0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-13T15:02:20Z",
+      "side": 1,
+      "message": "is there any deduplication we should do with `PathForBazelOut` given the similarities in path generation?",
+      "range": {
+        "startLine": 888,
+        "startChar": 20,
+        "endLine": 888,
+        "endChar": 106
+      },
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "907ab2a1_74d2eaf7",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-13T15:02:20Z",
+      "side": 1,
+      "message": "Can we add a test case for this?",
+      "range": {
+        "startLine": 890,
+        "startChar": 3,
+        "endLine": 890,
+        "endChar": 96
+      },
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
