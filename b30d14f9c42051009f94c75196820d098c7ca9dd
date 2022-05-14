@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e2ff71_eebb7748",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-14T09:39:18Z",
+      "side": 1,
+      "message": "Really nice. How did you find the code to work with? I always turn my brain into a pretzel every time I so much as look at that.",
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5853456_19512ade",
+        "filename": "android/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-14T09:39:18Z",
+      "side": 1,
+      "message": "nit: space",
+      "range": {
+        "startLine": 673,
+        "startChar": 43,
+        "endLine": 673,
+        "endChar": 53
+      },
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46934edd_00af0d17",
+        "filename": "android/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-14T09:39:18Z",
+      "side": 1,
+      "message": "You can simplify this to:\n    return b.OverridesPropertyNames[other.SdkPropertyName()]\n\nSearching a nil map in go always fails to find the key. If the key cannot be found then a map returns the Zero value (default) for the value type, i.e. false in the case of bool.",
+      "range": {
+        "startLine": 813,
+        "startChar": 1,
+        "endLine": 817,
+        "endChar": 10
+      },
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194d4b19_a11e043a",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-14T09:39:18Z",
+      "side": 1,
+      "message": "I wouldn\u0027t bother with this. This should only be used for tests that affect the output of the versioned snapshot. e.g. to make sure that references to other modules are correctly versioned.",
+      "range": {
+        "startLine": 1829,
+        "startChar": 2,
+        "endLine": 1829,
+        "endChar": 33
+      },
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
