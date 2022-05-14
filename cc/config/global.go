@@ -305,7 +305,7 @@ var (
 		"-w",
 	}
 
-	CStdVersion               = "gnu11"
+	CStdVersion               = "gnu17"
 	CppStdVersion             = "gnu++17"
 	ExperimentalCStdVersion   = "gnu17"
 	ExperimentalCppStdVersion = "gnu++2a"
