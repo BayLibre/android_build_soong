@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d5786f_77c4721e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-05-16T16:21:46Z",
+      "side": 1,
+      "message": "As we discussed over chat, we need to add the API text file gen path of each scope of each module.  ",
+      "revId": "4694c6c628a7fecf6358ed7ebb58eddafad3a558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
