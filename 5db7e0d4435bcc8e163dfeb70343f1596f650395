@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd5a2cec_3524657a",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-16T22:37:56Z",
+      "side": 1,
+      "message": "You\u0027ll end up in SingletonContext.Build instead of ModuleContext.Build, which won\u0027t use `${moduleDesc}`",
+      "parentUuid": "52b93620_281d5d2d",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5307a624_80d2faa7",
         "filename": "android/gen_notice.go",
         "patchSetId": 3
