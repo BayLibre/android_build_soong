@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1d58b6c_aa3c1cd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-16T20:16:13Z",
+      "side": 1,
+      "message": "This breaks bp2build/queryview. I could fix it but I am unsure whether we would want to tag all test_* fragments as testonly. According to the description of testonly in https://docs.bazel.build/versions/main/be/common-definitions.html#common-attributes.\n\n\u003e This attribute is intended to mean that the target should not be contained in binaries that are released to production.\n\u003e \n\u003e Because testonly is enforced at build time, not run time, and propagates virally through the dependency tree, it should be applied judiciously. For example, stubs and fakes that are useful for unit tests may also be useful for integration tests involving the same binaries that will be released to production, and therefore should probably not be marked testonly. Conversely, rules that are dangerous to even link in, perhaps because they unconditionally override normal behavior, should definitely be marked testonly.\n\nIf we use testonly here then that will mean that all the apex_test modules will also need to be marked as testonly which would preclude them being used in production whatever that would mean. What concerns me is that \"integration tests\" are considered production and I know that some of these modules are used for end-to-end integration testing.\n\nI guess it all comes down to what do we think testonly means in an Android context?",
+      "revId": "e6be368da68d75a91618ac10a1727d2e51043bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2564169_80109cff",
