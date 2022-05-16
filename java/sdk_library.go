@@ -203,6 +203,24 @@ func (scope *apiScope) String() string {
 	return scope.name
 }
 
+// snapshotRelativeDir returns the snapshot directory into which the files related to scopes will
+// be stored.
+func (scope *apiScope) snapshotRelativeDir() string {
+	return filepath.Join("sdk_library", scope.name)
+}
+
+// snapshotRelativeCurrentApiTxtPath returns the snapshot path to the API .txt file for the named
+// library.
+func (scope *apiScope) snapshotRelativeCurrentApiTxtPath(name string) string {
+	return filepath.Join(scope.snapshotRelativeDir(), name+".txt")
+}
+
+// snapshotRelativeRemovedApiTxtPath returns the snapshot path to the removed API .txt file for the
+// named library.
+func (scope *apiScope) snapshotRelativeRemovedApiTxtPath(name string) string {
+	return filepath.Join(scope.snapshotRelativeDir(), name+"-removed.txt")
+}
+
 type apiScopes []*apiScope
 
 func (scopes apiScopes) Strings(accessor func(*apiScope) string) []string {
@@ -1274,6 +1292,18 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	// Make the set of components exported by this module available for use elsewhere.
 	exportedComponentInfo := android.ExportedComponentsInfo{Components: android.SortedStringKeys(exportedComponents)}
 	ctx.SetProvider(android.ExportedComponentsInfoProvider, exportedComponentInfo)
+
+	// Provide additional information for inclusion in an sdk's generated .info file.
+	additionalSdkInfo := map[string]interface{}{}
+	additionalSdkInfo["dist_stem"] = module.distStem()
+	baseModuleName := module.BaseModuleName()
+	for scope, _ := range module.scopePaths {
+		scopeInfo := map[string]interface{}{}
+		additionalSdkInfo[scope.name] = scopeInfo
+		scopeInfo["current_api"] = scope.snapshotRelativeCurrentApiTxtPath(baseModuleName)
+		scopeInfo["removed_api"] = scope.snapshotRelativeRemovedApiTxtPath(baseModuleName)
+	}
+	ctx.SetProvider(android.AdditionalSdkInfoProvider, android.AdditionalSdkInfo{additionalSdkInfo})
 }
 
 func (module *SdkLibrary) AndroidMkEntries() []android.AndroidMkEntries {
@@ -2903,7 +2933,7 @@ func (s *sdkLibrarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberCo
 		if properties, ok := s.Scopes[apiScope]; ok {
 			scopeSet := propertySet.AddPropertySet(apiScope.propertyName)
 
-			scopeDir := filepath.Join("sdk_library", s.OsPrefix(), apiScope.name)
+			scopeDir := apiScope.snapshotRelativeDir()
 
 			var jars []string
 			for _, p := range properties.Jars {
@@ -2927,13 +2957,13 @@ func (s *sdkLibrarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberCo
 			}
 
 			if properties.CurrentApiFile != nil {
-				currentApiSnapshotPath := filepath.Join(scopeDir, ctx.Name()+".txt")
+				currentApiSnapshotPath := apiScope.snapshotRelativeCurrentApiTxtPath(ctx.Name())
 				ctx.SnapshotBuilder().CopyToSnapshot(properties.CurrentApiFile, currentApiSnapshotPath)
 				scopeSet.AddProperty("current_api", currentApiSnapshotPath)
 			}
 
 			if properties.RemovedApiFile != nil {
-				removedApiSnapshotPath := filepath.Join(scopeDir, ctx.Name()+"-removed.txt")
+				removedApiSnapshotPath := apiScope.snapshotRelativeRemovedApiTxtPath(ctx.Name())
 				ctx.SnapshotBuilder().CopyToSnapshot(properties.RemovedApiFile, removedApiSnapshotPath)
 				scopeSet.AddProperty("removed_api", removedApiSnapshotPath)
 			}

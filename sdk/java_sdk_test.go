@@ -826,7 +826,12 @@ sdk_snapshot {
   },
   {
     "@type": "java_sdk_library",
-    "@name": "myjavalib"
+    "@name": "myjavalib",
+    "dist_stem": "myjavalib",
+    "public": {
+      "current_api": "sdk_library/public/myjavalib.txt",
+      "removed_api": "sdk_library/public/myjavalib-removed.txt"
+    }
   },
   {
     "@type": "java_library",
