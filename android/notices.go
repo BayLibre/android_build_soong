@@ -15,31 +15,101 @@
 package android
 
 import (
+	"path/filepath"
 	"strings"
 )
 
-// BuildNoticeTextOutputFromLicenseMetadata writes out a notice text file based on the module's
-// generated license metadata file.
-func BuildNoticeTextOutputFromLicenseMetadata(ctx ModuleContext, outputFile WritablePath) {
-	depsFile := outputFile.ReplaceExtension(ctx, strings.TrimPrefix(outputFile.Ext()+".d", "."))
-	rule := NewRuleBuilder(pctx, ctx)
-	rule.Command().
-		BuiltTool("textnotice").
-		FlagWithOutput("-o ", outputFile).
-		FlagWithDepFile("-d ", depsFile).
-		Input(ctx.Module().base().licenseMetadataFile)
-	rule.Build("text_notice", "container notice file")
+func modulesOutputDirs(ctx ModuleContext, modules ...Module) []string {
+	dirs := make(map[string]struct{})
+	for _, module := range modules {
+		paths, err := outputFilesForModule(ctx, module, "")
+		if err != nil {
+			continue
+		}
+		for _, path := range paths {
+			if path != nil {
+				dirs[filepath.Dir(path.String())] = struct{}{}
+			}
+		}
+	}
+	result := make([]string, 0, len(dirs))
+	for dir := range dirs {
+		result = append(result, dir)
+	}
+	return result
 }
 
-// BuildNoticeHtmlOutputFromLicenseMetadata writes out a notice text file based on the module's
-// generated license metadata file.
-func BuildNoticeHtmlOutputFromLicenseMetadata(ctx ModuleContext, outputFile WritablePath) {
+func modulesLicenseMetadata(ctx ModuleContext, modules ...Module) Paths {
+	size := 0
+	for _, module := range modules {
+		b := module.base()
+		if b == nil {
+			continue
+		}
+		if b.licenseMetadataFile == nil {
+			continue
+		}
+		size++
+	}
+	result := make(Paths, 0, size)
+	for _, module := range modules {
+		b := module.base()
+		if b == nil {
+			continue
+		}
+		if b.licenseMetadataFile == nil {
+			continue
+		}
+		result = append(result, b.licenseMetadataFile)
+	}
+	return result
+}
+
+// buildNoticeOutputFromLicenseMetadata writes out a notice file.
+func buildNoticeOutputFromLicenseMetadata(ctx ModuleContext, tool, name string, outputFile WritablePath, productName, stripPrefix string, modules ...Module) {
 	depsFile := outputFile.ReplaceExtension(ctx, strings.TrimPrefix(outputFile.Ext()+".d", "."))
 	rule := NewRuleBuilder(pctx, ctx)
-	rule.Command().
-		BuiltTool("htmlnotice").
+	if len(modules) == 0 {
+		modules = []Module{ctx.Module()}
+	}
+	if productName == "" {
+		productName = modules[0].Name()
+	}
+	cmd := rule.Command().
+		BuiltTool(tool).
 		FlagWithOutput("-o ", outputFile).
-		FlagWithDepFile("-d ", depsFile).
-		Input(ctx.Module().base().licenseMetadataFile)
-	rule.Build("html_notice", "container notice file")
+		FlagWithDepFile("-d ", depsFile)
+	if stripPrefix != "" {
+		cmd = cmd.FlagWithArg("--strip_prefix ", stripPrefix)
+	}
+	outputs := modulesOutputDirs(ctx, modules...)
+	if len(outputs) > 0 {
+		cmd = cmd.FlagForEachArg("--strip_prefix ", outputs)
+	}
+	if productName != "" {
+		cmd = cmd.FlagWithArg("--product ", productName)
+	}
+	cmd = cmd.Inputs(modulesLicenseMetadata(ctx, modules...))
+	rule.Build(name, "container notice file")
+}
+
+// BuildNoticeTextOutputFromLicenseMetadata writes out a notice text file based
+// on the license metadata files for the input `modules` defaulting to the
+// current context module if none given.
+func BuildNoticeTextOutputFromLicenseMetadata(ctx ModuleContext, outputFile WritablePath, productName, stripPrefix string, modules ...Module) {
+	buildNoticeOutputFromLicenseMetadata(ctx, "textnotice", "text_notice", outputFile, productName, stripPrefix, modules...)
+}
+
+// BuildNoticeHtmlOutputFromLicenseMetadata writes out a notice text file based
+// on the license metadata files for the input `modules` defaulting to the
+// current context module if none given.
+func BuildNoticeHtmlOutputFromLicenseMetadata(ctx ModuleContext, outputFile WritablePath, productName, stripPrefix string, modules ...Module) {
+	buildNoticeOutputFromLicenseMetadata(ctx, "htmlnotice", "html_notice", outputFile, productName, stripPrefix, modules...)
+}
+
+// BuildNoticeXmlOutputFromLicenseMetadata writes out a notice text file based
+// on the license metadata files for the input `modules` defaulting to the
+// current context module if none given.
+func BuildNoticeXmlOutputFromLicenseMetadata(ctx ModuleContext, outputFile WritablePath, productName, stripPrefix string, modules ...Module) {
+	buildNoticeOutputFromLicenseMetadata(ctx, "xmlnotice", "xml_notice", outputFile, productName, stripPrefix, modules...)
 }
