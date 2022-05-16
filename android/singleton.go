@@ -28,6 +28,8 @@ type SingletonContext interface {
 	ModuleSubDir(module blueprint.Module) string
 	ModuleType(module blueprint.Module) string
 	BlueprintFile(module blueprint.Module) string
+	ContextForModule(module Module) ModuleContext
+	ModuleVariantsFromName(mctx ModuleContext, name string) []Module
 
 	// ModuleProvider returns the value, if any, for the provider for a module.  If the value for the
 	// provider was not set it returns the zero value of the type of the provider, which means the
@@ -250,4 +252,27 @@ func (s *singletonContextAdaptor) PrimaryModule(module Module) Module {
 
 func (s *singletonContextAdaptor) FinalModule(module Module) Module {
 	return s.SingletonContext.FinalModule(module).(Module)
+}
+
+func (s *singletonContextAdaptor) ContextForModule(module Module) ModuleContext {
+	bpctx := s.SingletonContext.ContextForModule(module)
+	ctx := &moduleContext{
+		module:            module,
+		bp:                bpctx,
+		baseModuleContext: module.base().baseModuleContextFactory(bpctx),
+		variables:         make(map[string]string),
+	}
+	setModuleDescVariables(ctx)
+	return ctx
+}
+
+func (s *singletonContextAdaptor) ModuleVariantsFromName(mctx ModuleContext, name string) []Module {
+	modules := s.SingletonContext.ModuleVariantsFromName(mctx.blueprintModuleContext(), name)
+	result := make([]Module, 0, len(modules))
+	for _, m := range modules {
+		if module, ok := m.(Module); ok {
+			result = append(result, module)
+		}
+	}
+	return result
 }

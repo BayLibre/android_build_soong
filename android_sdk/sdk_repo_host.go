@@ -122,12 +122,6 @@ func (s *sdkRepoHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	s.CopySpecsToDir(ctx, builder, packageSpecs, dir)
 
-	noticeFile := android.PathForModuleOut(ctx, "NOTICES.txt")
-	android.BuildNoticeTextOutputFromLicenseMetadata(ctx, noticeFile)
-	builder.Command().Text("cp").
-		Input(noticeFile).
-		Text(filepath.Join(dir.String(), "NOTICE.txt"))
-
 	// Handle `merge_zips` by extracting their contents into our tmpdir
 	for _, zip := range android.PathsForModuleSrc(ctx, s.properties.Merge_zips) {
 		builder.Command().
@@ -219,6 +213,12 @@ func (s *sdkRepoHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	builder.Command().Text("rm").Flag("-rf").Text(dir.String())
 
 	builder.Build("build_sdk_repo", "Creating sdk-repo-"+s.BaseModuleName())
+
+	noticeFile := android.PathForModuleOut(ctx, "NOTICES.txt")
+	android.BuildNoticeTextOutputFromLicenseMetadata(ctx, noticeFile, "", outputZipFile.String())
+	builder.Command().Text("cp").
+		Input(noticeFile).
+		Text(filepath.Join(dir.String(), "NOTICE.txt"))
 
 	osName := ctx.Os().String()
 	if osName == "linux_glibc" {
