@@ -227,6 +227,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d86e9e06_69c58410",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-16T01:00:05Z",
+      "side": 1,
+      "message": "\u003e Will it also require adding a new method signature in build/blueprint. Something like  AddDependency(module Module, tag *DependencyTag, name ...string) []Module ?\n\nNo. There are already plenty of places where dependency tags are passed as pointers instead of structs. e.g. I recently converted a pass by struct tag to pass by pointer in https://r.android.com/c/2096446.\n\nDependencgTag is an interface. The implementation of that interface can be provided by either a struct or a pointer to a struct. The code that takes an interface just does not care about the underlying implementation (unless it wants to cast it to that implementation).",
+      "parentUuid": "682d0943_f04bcacc",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 144
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37d0fcbd_1b664abc",
         "filename": "java/systemserver_classpath_fragment.go",
         "patchSetId": 4
