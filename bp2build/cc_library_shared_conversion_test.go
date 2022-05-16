@@ -569,3 +569,27 @@ func TestCcLibrarySharedConvertLex(t *testing.T) {
 		},
 	})
 }
+
+func TestCcLibrarySharedClangUnknownFlags(t *testing.T) {
+	runCcLibrarySharedTestCase(t, bp2buildTestCase{
+		blueprint: soongCcProtoPreamble + `cc_library_shared {
+	name: "foo",
+	conlyflags: ["-a", "-finline-functions"],
+	cflags: ["-b","-finline-functions"],
+	cppflags: ["-c", "-finline-functions"],
+	ldflags: ["-d","-finline-functions", "-e"],
+	include_build_directory: false,
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("cc_library_shared", "foo", attrNameToString{
+				"conlyflags": `["-a"]`,
+				"copts":      `["-b"]`,
+				"cppflags":   `["-c"]`,
+				"linkopts": `[
+        "-d",
+        "-e",
+    ]`,
+			}),
+		},
+	})
+}
