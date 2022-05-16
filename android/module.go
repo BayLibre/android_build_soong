@@ -2183,6 +2183,28 @@ func (m *ModuleBase) baseModuleContextFactory(ctx blueprint.BaseModuleContext) b
 	}
 }
 
+func setModuleDescVariables(ctx *moduleContext) {
+	desc := "//" + ctx.ModuleDir() + ":" + ctx.ModuleName() + " "
+	var suffix []string
+	if ctx.Os().Class != Device && ctx.Os().Class != Generic {
+		suffix = append(suffix, ctx.Os().String())
+	}
+	if !ctx.PrimaryArch() {
+		suffix = append(suffix, ctx.Arch().ArchType.String())
+	}
+	if apexInfo := ctx.Provider(ApexInfoProvider).(ApexInfo); !apexInfo.IsForPlatform() {
+		suffix = append(suffix, apexInfo.ApexVariationName)
+	}
+
+	ctx.Variable(pctx, "moduleDesc", desc)
+
+	s := ""
+	if len(suffix) > 0 {
+		s = " [" + strings.Join(suffix, " ") + "]"
+	}
+	ctx.Variable(pctx, "moduleDescSuffix", s)
+}
+
 func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) {
 	ctx := &moduleContext{
 		module:            m.module,
@@ -2215,25 +2237,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		ctx.ruleParams = make(map[blueprint.Rule]blueprint.RuleParams)
 	}
 
-	desc := "//" + ctx.ModuleDir() + ":" + ctx.ModuleName() + " "
-	var suffix []string
-	if ctx.Os().Class != Device && ctx.Os().Class != Generic {
-		suffix = append(suffix, ctx.Os().String())
-	}
-	if !ctx.PrimaryArch() {
-		suffix = append(suffix, ctx.Arch().ArchType.String())
-	}
-	if apexInfo := ctx.Provider(ApexInfoProvider).(ApexInfo); !apexInfo.IsForPlatform() {
-		suffix = append(suffix, apexInfo.ApexVariationName)
-	}
-
-	ctx.Variable(pctx, "moduleDesc", desc)
-
-	s := ""
-	if len(suffix) > 0 {
-		s = " [" + strings.Join(suffix, " ") + "]"
-	}
-	ctx.Variable(pctx, "moduleDescSuffix", s)
+	setModuleDescVariables(ctx)
 
 	// Some common property checks for properties that will be used later in androidmk.go
 	checkDistProperties(ctx, "dist", &m.distProperties.Dist)

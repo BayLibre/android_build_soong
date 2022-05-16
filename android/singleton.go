@@ -15,6 +15,8 @@
 package android
 
 import (
+	"fmt"
+
 	"github.com/google/blueprint"
 )
 
@@ -28,6 +30,10 @@ type SingletonContext interface {
 	ModuleSubDir(module blueprint.Module) string
 	ModuleType(module blueprint.Module) string
 	BlueprintFile(module blueprint.Module) string
+
+	// ModuleVariantsFromName returns the list of module variants named `name` in the same namespace as `referer` enforcing visibility rules.
+	// Allows generating build actions for `referer` based on the metadata for `name` deferred until the singleton context.
+	ModuleVariantsFromName(referer Module, name string) []Module
 
 	// ModuleProvider returns the value, if any, for the provider for a module.  If the value for the
 	// provider was not set it returns the zero value of the type of the provider, which means the
@@ -89,6 +95,9 @@ type SingletonContext interface {
 	// builder whenever a file matching the pattern as added or removed, without rerunning if a
 	// file that does not match the pattern is added to a searched directory.
 	GlobWithDeps(pattern string, excludes []string) ([]string, error)
+
+	// missingReferencesRule emits an ErrorRule for missing module references.
+	missingReferencesRule(name, desc string, module Module, output OutputPath, missing ...string)
 }
 
 type singletonAdaptor struct {
@@ -250,4 +259,41 @@ func (s *singletonContextAdaptor) PrimaryModule(module Module) Module {
 
 func (s *singletonContextAdaptor) FinalModule(module Module) Module {
 	return s.SingletonContext.FinalModule(module).(Module)
+}
+
+func (s *singletonContextAdaptor) ModuleVariantsFromName(referer Module, name string) []Module {
+	// get qualified module name for visibility enforcement
+	qualified := createQualifiedModuleName(s.ModuleName(referer), s.ModuleDir(referer))
+
+	modules := s.SingletonContext.ModuleVariantsFromName(referer, name)
+	result := make([]Module, 0, len(modules))
+	for _, m := range modules {
+		if module, ok := m.(Module); ok {
+			// enforce visibility
+			depName := s.ModuleName(module)
+			depDir := s.ModuleDir(module)
+			depQualified := qualifiedModuleName{depDir, depName}
+			// Targets are always visible to other targets in their own package.
+			if depQualified.pkg != qualified.pkg {
+				rule := effectiveVisibilityRules(s.Config(), depQualified)
+				if !rule.matches(qualified) {
+					s.ModuleErrorf(referer, "references %s which is not visible to this module\nYou may need to add %q to its visibility", depQualified, "//"+s.ModuleDir(m))
+					continue
+				}
+			}
+			result = append(result, module)
+		}
+	}
+	return result
+}
+
+func (s *singletonContextAdaptor) missingReferencesRule(name, desc string, module Module, output OutputPath, missing ...string) {
+	if len(missing) < 1 {
+		panic(fmt.Errorf("missing references rule requested with no missing references"))
+	}
+
+	rule := NewRuleBuilder(pctx, s)
+	rule.MissingDeps(missing)
+	rule.Command().Output(output)
+	rule.Build(name, desc)
 }
