@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1faf0fce_98758082",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-16T21:07:54Z",
+      "side": 1,
+      "message": "I tried to implement testonly properly and it opened the biggest can of worms you can imagine.\n\nSo, I have two choices, make this the only module type in Soong that supports testonly, and make bp2build ignore it for now (causing problems later), or follow the conventions of all other Soong module types and create an _test module type.",
+      "revId": "1f095065a5c34673483f817100394ff6b8d61601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
