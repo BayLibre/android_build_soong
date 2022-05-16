@@ -106,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de4dfbe8_69b58a77",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-16T00:53:42Z",
+      "side": 1,
+      "message": "This is deprecated now, since I am no longer creating separate instances globablly",
+      "parentUuid": "00512903_9c1c6bdc",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 0
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76f518b2_bd4b3608",
@@ -167,6 +191,30 @@
       "side": 1,
       "message": "Actually you don\u0027t. If these were pointers to the struct then you would be correct, however as these are just plain structs then they are passed by value and copied everywhere. They are passed by value even when the struct is hidden behind an interface. So, every dependency that uses this tag gets its own copy.\n\nEquality is checked by comparing the value of each field in the struct.\n\nEven calls to methods like ExportMember pass a copy of the struct on the stack.\n\nWhile passing pointers would be more efficient I am not sure that the advantage is worth having in this case. If the struct was bigger and had more fields then it might.\n\nIf you want to change it to pass by pointer then you would need to:\n* Take the address of the struct when initializing these fields.\n* Change the type of the struct the methods are implemented on to *systemServerClasspathFragmentContentDependencyTag.",
       "parentUuid": "86f1dd9e_2dd624e6",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 144
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "682d0943_f04bcacc",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-16T00:53:42Z",
+      "side": 1,
+      "message": "\u003e Actually you don\u0027t. If these were pointers to the struct then you would be \u003ecorrect, however as these are just plain structs then they are passed by value and \u003ecopied everywhere. They are passed by value even when the struct is hidden behind \u003ean interface. So, every dependency that uses this tag\nWithout these globals, won\u0027t we still create _twice_ the number of structs though? Once within the scope of `ComponentDepsMutator` and another copy of it that gets passed to `ctx.AddDependency`? O(N/2) is still O(N), so probably its not a strong enough argument to declare these global variables (The factor of 2 is also an upper limit)\n\n\n\u003e If you want to change it to pass by pointer then you would need to: [...]\nWill it also require adding a new method signature in build/blueprint. Something like `AddDependency(module Module, tag *DependencyTag, name ...string) []Module`?\nI think accepting the overhead of passing structs by value should be ok, which is something you alluded to\n\nI have updated the implementation so that it does not require these global variables. It uses `systemServerClasspathContentType` in the method signature now. It also required a minor refactoring of the `[standalone]configuredJars` function.",
+      "parentUuid": "854e9821_bf1c13c7",
       "range": {
         "startLine": 222,
         "startChar": 0,
