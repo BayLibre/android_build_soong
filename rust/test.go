@@ -106,6 +106,7 @@ func NewRustTest(hod android.HostOrDeviceSupported) (*Module, *testDecorator) {
 		multilib = android.MultilibFirst
 	}
 	module := newModule(hod, multilib)
+	module.MarkAsTestonly()
 
 	test := &testDecorator{
 		binaryDecorator: &binaryDecorator{

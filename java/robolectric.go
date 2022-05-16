@@ -336,6 +336,7 @@ func (r *robolectricTest) writeTestRunner(w io.Writer, module, name string, test
 // name, or match the package name when the prefix "src/" is removed.
 func RobolectricTestFactory() android.Module {
 	module := &robolectricTest{}
+	module.MarkAsTestonly()
 
 	module.addHostProperties()
 	module.AddProperties(

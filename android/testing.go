@@ -147,6 +147,7 @@ var PrepareForTestWithAndroidBuildComponents = GroupFixturePreparers(
 	PrepareForTestWithPackageModule,
 	PrepareForTestWithPrebuilts,
 	PrepareForTestWithVisibility,
+	PrepareForTestWithTestonly,
 )
 
 // Prepares an integration test with all build components from the android package.

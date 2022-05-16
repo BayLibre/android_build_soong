@@ -489,6 +489,7 @@ func TestRuleBuilder(t *testing.T) {
 func testRuleBuilderFactory() Module {
 	module := &testRuleBuilderModule{}
 	module.AddProperties(&module.properties)
+	module.MarkAsTestonly()
 	InitAndroidModule(module)
 	return module
 }

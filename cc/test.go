@@ -483,6 +483,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 
 func NewTest(hod android.HostOrDeviceSupported) *Module {
 	module, binary := newBinary(hod, false)
+	module.MarkAsTestonly()
 	module.multilib = android.MultilibBoth
 	binary.baseInstaller = NewTestInstaller()
 
@@ -534,6 +535,7 @@ func (test *testLibrary) installerProps() []interface{} {
 
 func NewTestLibrary(hod android.HostOrDeviceSupported) *Module {
 	module, library := NewLibrary(android.HostAndDeviceSupported)
+	module.MarkAsTestonly()
 	library.baseInstaller = NewTestInstaller()
 	test := &testLibrary{
 		testDecorator: &testDecorator{
@@ -623,6 +625,7 @@ func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Pat
 
 func NewBenchmark(hod android.HostOrDeviceSupported) *Module {
 	module, binary := newBinary(hod, false)
+	module.MarkAsTestonly()
 	module.multilib = android.MultilibBoth
 	binary.baseInstaller = NewBaseInstaller("benchmarktest", "benchmarktest64", InstallInData)
 

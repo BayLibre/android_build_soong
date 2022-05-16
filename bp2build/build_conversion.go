@@ -473,6 +473,9 @@ func generateSoongModuleTarget(ctx bpToBuildContext, m blueprint.Module) BazelTa
 	}
 
 	for p := range ignoredPropNames {
+		if p == "testonly" {
+			continue
+		}
 		delete(props.Attrs, p)
 	}
 	attributes := propsToAttributes(props.Attrs)

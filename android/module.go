@@ -505,6 +505,7 @@ type Module interface {
 	HideFromMake()
 	IsHideFromMake() bool
 	IsSkipInstall() bool
+	IsTestonly() bool
 	MakeUninstallable()
 	ReplacedByPrebuilt()
 	IsReplacedByPrebuilt() bool
@@ -684,6 +685,8 @@ type commonProperties struct {
 	// disabled as that will prevent them from being built by the checkbuild target
 	// and so prevent early detection of changes that have broken those modules.
 	Enabled *bool `android:"arch_variant"`
+
+	Testonly *bool
 
 	// Controls the visibility of this module to other modules. Allowable values are one or more of
 	// these formats:
@@ -1900,6 +1903,14 @@ func (m *ModuleBase) Enabled() bool {
 
 func (m *ModuleBase) Disable() {
 	m.commonProperties.ForcedDisabled = true
+}
+
+func (m *ModuleBase) IsTestonly() bool {
+	return proptools.Bool(m.commonProperties.Testonly)
+}
+
+func (m *ModuleBase) MarkAsTestonly() {
+	m.commonProperties.Testonly = proptools.BoolPtr(true)
 }
 
 // HideFromMake marks this variant so that it is not emitted in the generated Android.mk file.

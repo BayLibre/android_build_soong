@@ -528,6 +528,7 @@ func AndroidTestImportFactory() android.Module {
 		module.processVariants(ctx)
 	})
 
+	module.MarkAsTestonly()
 	module.dexpreopter.isTest = true
 
 	android.InitApexModule(module)

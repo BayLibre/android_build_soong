@@ -499,6 +499,7 @@ func ShBinaryHostFactory() android.Module {
 // sh_test defines a shell script based test module.
 func ShTestFactory() android.Module {
 	module := &ShTest{}
+	module.MarkAsTestonly()
 	InitShBinaryModule(&module.ShBinary)
 	module.AddProperties(&module.testProperties)
 
@@ -509,6 +510,7 @@ func ShTestFactory() android.Module {
 // sh_test_host defines a shell script based test module that runs on a host.
 func ShTestHostFactory() android.Module {
 	module := &ShTest{}
+	module.MarkAsTestonly()
 	InitShBinaryModule(&module.ShBinary)
 	module.AddProperties(&module.testProperties)
 	// Default sh_test_host to unit_tests = true

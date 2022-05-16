@@ -26,6 +26,7 @@ func init() {
 // copy of the output jar to $HOST_OUT/tradefed.
 func tradefedJavaLibraryFactory() android.Module {
 	module := LibraryHostFactory().(*Library)
+	module.MarkAsTestonly()
 	module.InstallMixin = tradefedJavaLibraryInstall
 	return module
 }

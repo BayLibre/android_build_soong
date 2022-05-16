@@ -1260,6 +1260,7 @@ func TestFactory() android.Module {
 	module.addHostAndDeviceProperties()
 	module.AddProperties(&module.testProperties)
 
+	module.MarkAsTestonly()
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.test = true
@@ -1276,6 +1277,7 @@ func TestHelperLibraryFactory() android.Module {
 	module.addHostAndDeviceProperties()
 	module.AddProperties(&module.testHelperLibraryProperties)
 
+	module.MarkAsTestonly()
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.test = true
@@ -1299,6 +1301,7 @@ func JavaTestImportFactory() android.Module {
 		&module.Import.properties,
 		&module.prebuiltTestProperties)
 
+	module.MarkAsTestonly()
 	module.Import.properties.Installable = proptools.BoolPtr(true)
 
 	android.InitPrebuiltModule(module, &module.properties.Jars)
@@ -1319,6 +1322,8 @@ func TestHostFactory() android.Module {
 	module.addHostProperties()
 	module.AddProperties(&module.testProperties)
 	module.AddProperties(&module.testHostProperties)
+
+	module.MarkAsTestonly()
 
 	InitTestHost(
 		module,

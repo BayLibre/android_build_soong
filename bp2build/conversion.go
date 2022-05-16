@@ -162,6 +162,7 @@ var (
 		"visibility": true, // Bazel has native visibility semantics. Handle later.
 		"features":   true, // There is already a built-in attribute 'features' which cannot be overridden.
 		"for":        true, // reserved keyword, b/233579439
+		"testonly":   true, // There is already a built-in attribute 'testonly' which cannot be overridden.
 	}
 )
 

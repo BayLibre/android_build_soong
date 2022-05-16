@@ -2552,6 +2552,7 @@ func ApexBundleFactory(testApex bool) android.Module {
 func testApexBundleFactory() android.Module {
 	bundle := newApexBundle()
 	bundle.testApex = true
+	bundle.MarkAsTestonly()
 	return bundle
 }
 
