@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0f5234_a031f4c2",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-16T20:36:14Z",
+      "side": 1,
+      "message": "We generally avoid global variables, they make testing difficult.  Each `blueprint.Context` should get its own singleton, which means each call to the factory should return a unique object.  You can make that work by instead of having the module register with the singleton, have the singleton call `SingletonContext.VisitAllModules` and use `SingletonContext.ModuleProvider` to query for a provider struct from each one.  `gen_notice` modules can call `ModuleContext.SetProvider` to export a provider struct.",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7fce695_380c3d92",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-16T20:36:14Z",
+      "side": 1,
+      "message": "Most other module types handle invert these semantics, instead of guessing the type from the extension they don\u0027t specify the extension in the Android.bp file and let the Go code choose the appropriate extension.  That generally means using ctx.BaseModuleName() as the file name, with the `stem:` property to override it, and then boolean properties for `xml`, `html`, and `gzip`.",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3453f9a8_563b12ba",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-16T20:36:14Z",
+      "side": 1,
+      "message": "I don\u0027t think you need a `ModuleContext`, make `BuildNoticeTextOutputFromLicenseMetadata` take a `BuilderContext` instead, which is a subset of both `ModuleContext` and `SingletonContext`.  You may also need to pass it a rule name to pass to `RuleBuilder.Build`, as those have to be unique to the context, but you already need that in case two `gen_notices` modules refer to the same module.",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5307a624_80d2faa7",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-16T20:36:14Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem necessary, just use `modules :\u003d make([]Module)` and let Go increase the size for you as necessary in `append`.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c78bd40_43657831",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-16T20:36:14Z",
+      "side": 1,
+      "message": "Singletons usually use `ctx.VisitAllModules` and find the one with the name they want, but adding this seems reasonable too.",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63035e3b_5d130dc0",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-16T20:36:14Z",
+      "side": 1,
+      "message": "Can you define what you mean by \"product name\"?  \"product\" already has a meaning in Android builds, `cf_x86_64_phone` or `bramble` are products.  Maybe \"artifact name\"?",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51cea15c_8efeae7c",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-16T20:36:14Z",
+      "side": 1,
+      "message": "You\u0027ll probably need to add support for `ctx.Config().AllowMissingDependencies \u003d\u003d true` here so that parsing a `gen_notices` modules in a partial manifest that is missing it\u0027s `for` modules doesn\u0027t fail parsing the Android.bp files but does cause the rules for the `gen_notices` file to exit with an error if built.  That\u0027s usually handled automatically when you add a missing dependency through the normal dependency functions or call `ctx.AddMissingDependencies` to add one, but it works by overwriting the module\u0027s rules, and this module doesn\u0027t have any rules because they are in the singleton, so you\u0027ll probably have to manually create an `android.ErrorRule`.",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
