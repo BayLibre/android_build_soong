@@ -249,6 +249,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20fd02d_94a77107",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-16T01:43:36Z",
+      "side": 1,
+      "message": "Thanks.\n\nI have updated the implementation to use pointers to the struct instead",
+      "parentUuid": "d86e9e06_69c58410",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 144
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37d0fcbd_1b664abc",
