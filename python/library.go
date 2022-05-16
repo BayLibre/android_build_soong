@@ -50,7 +50,8 @@ type bazelPythonLibraryAttributes struct {
 }
 
 type bazelPythonProtoLibraryAttributes struct {
-	Deps bazel.LabelListAttribute
+	Deps               bazel.LabelListAttribute
+	Local_include_dirs []string
 }
 
 func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
@@ -88,59 +89,42 @@ func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		fmt.Fprintf(os.Stderr, "partitionedSrcs[py]: %#v\n", partitionedSrcs["py"])
 	}
 
-	// There are 2 cases that could happen when we handle protos:
-	// - There are only .proto sources in this module, in which case we create a
-	//   proto_library and py_proto_library, with the py_proto_library having
-	//   the same name as the original soong module.
-	// - There are .proto and .py sources, which means we need a proto_library,
-	//   py_proto_library, and py_library. The py_library will have the same name
-	//   as the original soong module.
-	needSeparatePyProtoLibrary := !partitionedSrcs["py"].IsEmpty() || !baseAttrs.Deps.IsEmpty() || !baseAttrs.Data.IsEmpty()
-
-	pyProtoLibraryName := m.Name()
 	if !partitionedSrcs["proto"].IsEmpty() {
 		protoInfo, _ := android.Bp2buildProtoProperties(ctx, &m.ModuleBase, partitionedSrcs["proto"])
 		protoLabel := bazel.Label{Label: ":" + protoInfo.Name}
 
-		if needSeparatePyProtoLibrary {
-			pyProtoLibraryName = m.Name() + "_py_proto"
-		}
+		pyProtoLibraryName := m.Name() + "_py_proto"
 		ctx.CreateBazelTargetModule(bazel.BazelTargetModuleProperties{
 			Rule_class:        "py_proto_library",
 			Bzl_load_location: "//build/bazel/rules/python:py_proto.bzl",
 		}, android.CommonAttributes{
 			Name: pyProtoLibraryName,
-		}, &bazelPythonProtoLibraryAttributes{bazel.MakeSingleLabelListAttribute(protoLabel)})
+		}, &bazelPythonProtoLibraryAttributes{
+			Deps:               bazel.MakeSingleLabelListAttribute(protoLabel),
+			Local_include_dirs: protoInfo.Local_include_dirs,
+		})
+
+		baseAttrs.Deps.Add(bazel.MakeLabelAttribute(":" + pyProtoLibraryName))
+	}
+
+	attrs := &bazelPythonLibraryAttributes{
+		Srcs:         baseAttrs.Srcs,
+		Deps:         baseAttrs.Deps,
+		Srcs_version: python_version,
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "py_library",
+		Bzl_load_location: "//build/bazel/rules/python:library.bzl",
 	}
 
 	if m.Name() == "fg_foo" {
-		fmt.Fprintf(os.Stderr, "fg_foo needs separeate py proto library? %t\n", needSeparatePyProtoLibrary)
+		fmt.Fprintf(os.Stderr, "Creating bazel target for fg_foo: %#v\n", baseAttrs.Data)
 	}
-
-	if needSeparatePyProtoLibrary {
-		if !partitionedSrcs["proto"].IsEmpty() {
-			baseAttrs.Deps.Add(bazel.MakeLabelAttribute(":" + pyProtoLibraryName))
-		}
-
-		attrs := &bazelPythonLibraryAttributes{
-			Srcs:         baseAttrs.Srcs,
-			Deps:         baseAttrs.Deps,
-			Srcs_version: python_version,
-		}
-
-		props := bazel.BazelTargetModuleProperties{
-			Rule_class:        "py_library",
-			Bzl_load_location: "//build/bazel/rules/python:library.bzl",
-		}
-
-		if m.Name() == "fg_foo" {
-			fmt.Fprintf(os.Stderr, "Creating bazel target for fg_foo: %#v\n", baseAttrs.Data)
-		}
-		ctx.CreateBazelTargetModule(props, android.CommonAttributes{
-			Name: m.Name(),
-			Data: baseAttrs.Data,
-		}, attrs)
-	}
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
+		Name: m.Name(),
+		Data: baseAttrs.Data,
+	}, attrs)
 }
 
 func PythonLibraryFactory() android.Module {

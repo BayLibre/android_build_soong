@@ -45,6 +45,7 @@ var (
 		"bootable/recovery/tools/recovery_l10n": Bp2BuildDefaultTrue,
 		"build/bazel/examples/soong_config_variables":        Bp2BuildDefaultTrueRecursively,
 		"build/bazel/examples/apex/minimal":                  Bp2BuildDefaultTrueRecursively,
+		"build/bazel/examples/python":                        Bp2BuildDefaultTrueRecursively,
 		"build/make/tools/signapk":                           Bp2BuildDefaultTrue,
 		"build/make/target/product/security":                 Bp2BuildDefaultTrue,
 		"build/soong":                                        Bp2BuildDefaultTrue,
