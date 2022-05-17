@@ -37,6 +37,7 @@ var (
 		"-Winit-self",
 		"-Wpointer-arith",
 		"-Wunreachable-code-loop-increment",
+		"-Wmisleading-indentation",
 
 		// Make paths in deps files relative
 		"-no-canonical-prefixes",
@@ -222,7 +223,6 @@ var (
 		// New warnings to be fixed after clang-r383902.
 		"-Wno-deprecated-copy",                      // http://b/153746672
 		"-Wno-range-loop-construct",                 // http://b/153747076
-		"-Wno-misleading-indentation",               // http://b/153746954
 		"-Wno-zero-as-null-pointer-constant",        // http://b/68236239
 		"-Wno-deprecated-anon-enum-enum-conversion", // http://b/153746485
 		"-Wno-string-compare",                       // http://b/153764102
