@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd4a8dab_47c051a6",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T01:18:52Z",
+      "side": 1,
+      "message": "Why not?  I only see `ctx` passed to `outputFilesForModules`, which takes a `PathContext` that is a subset of `SingletonContext`.",
+      "parentUuid": "c20a23ee_21876220",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5307a624_80d2faa7",
         "filename": "android/gen_notice.go",
         "patchSetId": 3

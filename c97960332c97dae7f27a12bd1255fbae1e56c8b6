@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c95d8a46_c420921d",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T01:18:52Z",
+      "side": 1,
+      "message": "replace this too",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "c97960332c97dae7f27a12bd1255fbae1e56c8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097218d4_109acac8",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T01:18:52Z",
+      "side": 1,
+      "message": "What does Library mean here?  This doesn\u0027t seem specific to cc_library or java_library.",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "c97960332c97dae7f27a12bd1255fbae1e56c8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d11c9d32_49bcec76",
+        "filename": "android/notices.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T01:18:52Z",
+      "side": 1,
+      "message": "Suggest just keeping a list of paths or strings and then using android.SortedUnique(Paths|Strings)",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "c97960332c97dae7f27a12bd1255fbae1e56c8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b26254_ddcf3e66",
+        "filename": "android/notices.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T01:18:52Z",
+      "side": 1,
+      "message": "This will have a non-deterministic order, leading to a non-deterministic build.ninja file and unnecessary rebuilds.",
+      "revId": "c97960332c97dae7f27a12bd1255fbae1e56c8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc0a16ad_2e0c8618",
+        "filename": "android/notices.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T01:18:52Z",
+      "side": 1,
+      "message": "Remove this",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "c97960332c97dae7f27a12bd1255fbae1e56c8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570dbda7_9a485dc9",
+        "filename": "android/notices.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T01:18:52Z",
+      "side": 1,
+      "message": "`module.base()` will never be nil, you can use `module.base().licenseMetadataFile`",
+      "revId": "c97960332c97dae7f27a12bd1255fbae1e56c8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
