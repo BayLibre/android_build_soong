@@ -1775,21 +1775,24 @@ func GetSubnameProperty(actx android.ModuleContext, c LinkableInterface) string 
 
 // Returns true if Bazel was successfully used for the analysis of this module.
 func (c *Module) maybeGenerateBazelActions(actx android.ModuleContext) bool {
-	var bazelModuleLabel string
-	if c.typ() == fullLibrary && c.static() {
-		// cc_library is a special case in bp2build; two targets are generated -- one for each
-		// of the shared and static variants. The shared variant keeps the module name, but the
-		// static variant uses a different suffixed name.
-		bazelModuleLabel = bazelLabelForStaticModule(actx, c)
-	} else {
-		bazelModuleLabel = c.GetBazelLabel(actx, c)
-	}
-
 	bazelActionsUsed := false
 	// Mixed builds mode is disabled for modules outside of device OS.
 	// TODO(b/200841190): Support non-device OS in mixed builds.
 	if android.MixedBuildsEnabled(actx) && c.bazelHandler != nil {
-		bazelActionsUsed = c.bazelHandler.GenerateBazelBuildActions(actx, bazelModuleLabel)
+		var bazelModuleLabel string
+		if c.typ() == fullLibrary && c.static() {
+			// cc_library is a special case in bp2build; two targets are generated -- one for each
+			// of the shared and static variants. The shared variant keeps the module name, but the
+			// static variant uses a different suffixed name.
+			bazelModuleLabel = bazelLabelForStaticModule(actx, c)
+		} else {
+			bazelModuleLabel = c.GetBazelLabel(actx, c)
+		}
+		labelNoPrebuilt := bazelModuleLabel
+		if c.IsPrebuilt() {
+			labelNoPrebuilt = android.RemoveOptionalPrebuiltPrefixFromBazelLabel(bazelModuleLabel)
+		}
+		bazelActionsUsed = c.bazelHandler.GenerateBazelBuildActions(actx, labelNoPrebuilt)
 	}
 	return bazelActionsUsed
 }

@@ -20,6 +20,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/bazel"
+	"android/soong/bazel/cquery"
 )
 
 func init() {
@@ -60,6 +61,13 @@ type prebuiltLinker struct {
 	android.Prebuilt
 
 	properties prebuiltLinkerProperties
+
+	// mixedBuildsDisabled is true if and only if building this prebuilt is explicitly disabled in mixed builds for either
+	// its static or shared version on the current build variant. This is to prevent the generation of Bazel targets for
+	// build variants with which either the static or shared version is incompatible. Please note that this is an override
+	// and does not fully determine whether Bazel or Soong will be used. For the full determination, see
+	// cc.maybeGenerateBazelActions.
+	mixedBuildsDisabled bool
 }
 
 func (p *prebuiltLinker) prebuilt() *android.Prebuilt {
@@ -243,6 +251,7 @@ func (p *prebuiltLibraryLinker) nativeCoverage() bool {
 
 func (p *prebuiltLibraryLinker) disablePrebuilt() {
 	p.properties.Srcs = nil
+	p.mixedBuildsDisabled = true
 }
 
 // Implements versionedInterface
@@ -254,6 +263,7 @@ func NewPrebuiltLibrary(hod android.HostOrDeviceSupported, srcsProperty string) 
 	module, library := NewLibrary(hod)
 	module.compiler = nil
 	module.bazelable = true
+	module.bazelHandler = &prebuiltLibraryBazelHandler{module: module, library: library}
 
 	prebuilt := &prebuiltLibraryLinker{
 		libraryDecorator: library,
@@ -309,8 +319,6 @@ func PrebuiltSharedTestLibraryFactory() android.Module {
 func NewPrebuiltSharedLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
 	module, library := NewPrebuiltLibrary(hod, "srcs")
 	library.BuildOnlyShared()
-	module.bazelable = true
-	module.bazelHandler = &prebuiltSharedLibraryBazelHandler{module: module, library: library}
 
 	// Prebuilt shared libraries can be included in APEXes
 	android.InitApexModule(module)
@@ -328,8 +336,7 @@ func PrebuiltStaticLibraryFactory() android.Module {
 func NewPrebuiltStaticLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
 	module, library := NewPrebuiltLibrary(hod, "srcs")
 	library.BuildOnlyStatic()
-	module.bazelable = true
-	module.bazelHandler = &prebuiltStaticLibraryBazelHandler{module: module, library: library}
+
 	return module, library
 }
 
@@ -405,22 +412,14 @@ type prebuiltObjectLinker struct {
 	properties prebuiltObjectProperties
 }
 
-type prebuiltStaticLibraryBazelHandler struct {
+type prebuiltLibraryBazelHandler struct {
 	android.BazelHandler
 
 	module  *Module
 	library *libraryDecorator
 }
 
-func (h *prebuiltStaticLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
-	bazelCtx := ctx.Config().BazelContext
-	ccInfo, ok, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
-	if err != nil {
-		ctx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
-	}
-	if !ok {
-		return false
-	}
+func (h *prebuiltLibraryBazelHandler) generateStaticBazelBuildActions(ctx android.ModuleContext, label string, ccInfo cquery.CcInfo) bool {
 	staticLibs := ccInfo.CcStaticLibraryFiles
 	if len(staticLibs) > 1 {
 		ctx.ModuleErrorf("expected 1 static library from bazel target %q, got %s", label, staticLibs)
@@ -455,24 +454,9 @@ func (h *prebuiltStaticLibraryBazelHandler) GenerateBazelBuildActions(ctx androi
 	return true
 }
 
-type prebuiltSharedLibraryBazelHandler struct {
-	android.BazelHandler
-
-	module  *Module
-	library *libraryDecorator
-}
-
-func (h *prebuiltSharedLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
-	bazelCtx := ctx.Config().BazelContext
-	ccInfo, ok, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
-	if err != nil {
-		ctx.ModuleErrorf("Error getting Bazel CcInfo for %s: %s", label, err)
-	}
-	if !ok {
-		return false
-	}
+func (h *prebuiltLibraryBazelHandler) generateSharedBazelBuildActions(ctx android.ModuleContext, label string, ccInfo cquery.CcInfo) bool {
 	sharedLibs := ccInfo.CcSharedLibraryFiles
-	if len(sharedLibs) != 1 {
+	if len(sharedLibs) > 1 {
 		ctx.ModuleErrorf("expected 1 shared library from bazel target %s, got %q", label, sharedLibs)
 		return false
 	}
@@ -481,11 +465,6 @@ func (h *prebuiltSharedLibraryBazelHandler) GenerateBazelBuildActions(ctx androi
 
 	// TODO(eakammer):Add stub-related flags if this library is a stub library.
 	// h.library.exportVersioningMacroIfNeeded(ctx)
-
-	// Dependencies on this library will expect collectedSnapshotHeaders to be set, otherwise
-	// validation will fail. For now, set this to an empty list.
-	// TODO(cparsons): More closely mirror the collectHeadersForSnapshot implementation.
-	h.library.collectedSnapshotHeaders = android.Paths{}
 
 	if len(sharedLibs) == 0 {
 		h.module.outputFile = android.OptionalPath{}
@@ -512,8 +491,42 @@ func (h *prebuiltSharedLibraryBazelHandler) GenerateBazelBuildActions(ctx androi
 	}
 	ctx.SetProvider(SharedLibraryInfoProvider, info)
 
+	return true
+}
+
+func (h *prebuiltLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+	if h.module.linker.(*prebuiltLibraryLinker).mixedBuildsDisabled {
+		return false
+	}
+
+	bazelCtx := ctx.Config().BazelContext
+	ccInfo, ok, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
+	if err != nil {
+		ctx.ModuleErrorf("Error getting Bazel CcInfo for %s: %s", label, err)
+	}
+	if !ok {
+		return false
+	}
+
+	if h.module.static() {
+		if ok := h.generateStaticBazelBuildActions(ctx, label, ccInfo); !ok {
+			return false
+		}
+	} else if h.module.Shared() {
+		if ok := h.generateSharedBazelBuildActions(ctx, label, ccInfo); !ok {
+			return false
+		}
+	} else {
+		return false
+	}
+
 	h.library.setFlagExporterInfoFromCcInfo(ctx, ccInfo)
 	h.module.maybeUnhideFromMake()
+
+	// Dependencies on this library will expect collectedSnapshotHeaders to be set, otherwise
+	// validation will fail. For now, set this to an empty list.
+	// TODO(cparsons): More closely mirror the collectHeadersForSnapshot implementation.
+	h.library.collectedSnapshotHeaders = android.Paths{}
 
 	return true
 }
