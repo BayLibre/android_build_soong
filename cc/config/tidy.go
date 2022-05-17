@@ -42,6 +42,7 @@ func init() {
 			"-bugprone-easily-swappable-parameters",
 			"-bugprone-narrowing-conversions",
 			"-google-readability*",
+			"-google-runtime-int",
 			"-google-runtime-references",
 			"-misc-no-recursion",
 			"-misc-non-private-member-variables-in-classes",
