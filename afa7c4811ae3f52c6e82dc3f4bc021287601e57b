@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e407e038_29765be7",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T20:28:45Z",
+      "side": 1,
+      "message": "Is that true even for a branch that has no device java modules?",
+      "parentUuid": "47747d5f_60748431",
+      "range": {
+        "startLine": 229,
+        "startChar": 39,
+        "endLine": 229,
+        "endChar": 62
+      },
+      "revId": "afa7c4811ae3f52c6e82dc3f4bc021287601e57b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23339c26_3d0be363",
         "filename": "dexpreopt/config.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-02T15:14:09Z",
       "side": 1,
       "message": "Isn\u0027t it better to do this in getGlobalConfigRaw?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "afa7c4811ae3f52c6e82dc3f4bc021287601e57b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "986350dc_e9b1ea9e",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T20:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23339c26_3d0be363",
       "range": {
         "startLine": 223,
         "startChar": 0,
