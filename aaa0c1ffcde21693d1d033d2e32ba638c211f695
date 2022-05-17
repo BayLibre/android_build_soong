@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand what\u0027s going on here, but from the build errors it appears this creates incorrect jar dependencies when prebuilts get used on master-art.",
       "revId": "aaa0c1ffcde21693d1d033d2e32ba638c211f695",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d447f28c_d0cbe04f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-05-17T12:15:04Z",
+      "side": 1,
+      "message": "I don\u0027t know if this change just exposes a problem with conscrypt sdk or there is still a problem. Paul, WDYT?",
+      "parentUuid": "ea190f16_c3bfc71d",
+      "revId": "aaa0c1ffcde21693d1d033d2e32ba638c211f695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
