@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "836389b9_50aee23a",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2022-05-17T15:26:53Z",
+      "side": 0,
+      "message": "You\u0027ll need to remove this line.",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 68
+      },
+      "revId": "7583481570551f92b69ae8668bc069c9ff7ae4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
