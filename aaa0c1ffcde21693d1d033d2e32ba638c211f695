@@ -34,6 +34,24 @@
       "parentUuid": "ea190f16_c3bfc71d",
       "revId": "aaa0c1ffcde21693d1d033d2e32ba638c211f695",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b82012b_ea923eeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-17T12:39:19Z",
+      "side": 1,
+      "message": "The build failure on master-art is unrelated to this change. It seems as though it is already failing.\n\nThe master-art breakage was probably caused by a downstream update of the conscrypt prebuilts - http://ag/18351439.",
+      "parentUuid": "d447f28c_d0cbe04f",
+      "revId": "aaa0c1ffcde21693d1d033d2e32ba638c211f695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
