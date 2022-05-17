@@ -54,6 +54,7 @@ var (
 		"-fno-strict-aliasing",
 
 		"-Werror=date-time",
+		"-Werror=misleading-indentation",
 		"-Werror=pragma-pack",
 		"-Werror=pragma-pack-suspicious-include",
 		"-Werror=string-plus-int",
@@ -222,7 +223,6 @@ var (
 		// New warnings to be fixed after clang-r383902.
 		"-Wno-deprecated-copy",                      // http://b/153746672
 		"-Wno-range-loop-construct",                 // http://b/153747076
-		"-Wno-misleading-indentation",               // http://b/153746954
 		"-Wno-zero-as-null-pointer-constant",        // http://b/68236239
 		"-Wno-deprecated-anon-enum-enum-conversion", // http://b/153746485
 		"-Wno-string-compare",                       // http://b/153764102
@@ -249,6 +249,9 @@ var (
 	extraExternalCflags = []string{
 		"-Wno-enum-compare",
 		"-Wno-enum-compare-switch",
+
+		// We cleaned up our code, but not all of external/.
+		"-Wno-misleading-indentation",
 
 		// http://b/72331524 Allow null pointer arithmetic until the instances detected by
 		// this new warning are fixed.
