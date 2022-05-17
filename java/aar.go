@@ -613,6 +613,8 @@ type AARImportProperties struct {
 	// If not blank, set the minimum version of the sdk that the compiled artifacts will run against.
 	// Defaults to sdk_version if not set. See sdk_version for possible values.
 	Min_sdk_version *string
+	// If not blank, set the maxSdkVersion attributes on Permission and uses-permission tags if the value is set to -1 in the manifest.
+	Max_sdk_version *string
 	// List of java static libraries that the included ARR (android library prebuilts) has dependencies to.
 	Static_libs []string
 	// List of java libraries that the included ARR (android library prebuilts) has dependencies to.
@@ -676,6 +678,13 @@ func (a *AARImport) MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpe
 		return android.SdkSpecFrom(ctx, *a.properties.Min_sdk_version)
 	}
 	return a.SdkVersion(ctx)
+}
+
+func (a *AARImport) MaxSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	if a.properties.Max_sdk_version != nil {
+		return android.SdkSpecFrom(ctx, *a.properties.Max_sdk_version)
+	}
+	return android.SdkSpecFrom(ctx, "10001")
 }
 
 func (a *AARImport) TargetSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
