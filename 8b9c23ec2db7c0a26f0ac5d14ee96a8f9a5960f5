@@ -52,6 +52,24 @@
       "parentUuid": "7612168f_e1c8ec71",
       "revId": "8b9c23ec2db7c0a26f0ac5d14ee96a8f9a5960f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24998bbd_cc20c442",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-17T09:26:19Z",
+      "side": 0,
+      "message": "Ack! First step: add back the `SetSanitizeDep(false)` call here. PTAL!",
+      "parentUuid": "53980a92_89da720c",
+      "revId": "8b9c23ec2db7c0a26f0ac5d14ee96a8f9a5960f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
