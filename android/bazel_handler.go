@@ -92,7 +92,7 @@ type BazelContext interface {
 
 	// Issues commands to Bazel to receive results for all cquery requests
 	// queued in the BazelContext.
-	InvokeBazel() error
+	InvokeBazel(config Config) error
 
 	// Returns true if bazel is enabled for the given configuration.
 	BazelEnabled() bool
@@ -168,7 +168,7 @@ func (m MockBazelContext) GetPythonBinary(label string, cfgKey configKey) (strin
 	return result, ok
 }
 
-func (m MockBazelContext) InvokeBazel() error {
+func (m MockBazelContext) InvokeBazel(config Config) error {
 	panic("unimplemented")
 }
 
@@ -231,7 +231,7 @@ func (n noopBazelContext) GetPythonBinary(label string, cfgKey configKey) (strin
 	panic("unimplemented")
 }
 
-func (n noopBazelContext) InvokeBazel() error {
+func (n noopBazelContext) InvokeBazel(config Config) error {
 	panic("unimplemented")
 }
 
@@ -349,6 +349,7 @@ type bazelCommand struct {
 type mockBazelRunner struct {
 	bazelCommandResults map[bazelCommand]string
 	commands            []bazelCommand
+	extraFlags          []string
 }
 
 func (r *mockBazelRunner) issueBazelCommand(paths *bazelPaths,
@@ -356,6 +357,7 @@ func (r *mockBazelRunner) issueBazelCommand(paths *bazelPaths,
 	command bazelCommand,
 	extraFlags ...string) (string, string, error) {
 	r.commands = append(r.commands, command)
+	r.extraFlags = append(r.extraFlags, strings.Join(extraFlags, " "))
 	if ret, ok := r.bazelCommandResults[command]; ok {
 		return ret, "", nil
 	}
@@ -664,7 +666,7 @@ func (p *bazelPaths) outDir() string {
 
 // Issues commands to Bazel to receive results for all cquery requests
 // queued in the BazelContext.
-func (context *bazelContext) InvokeBazel() error {
+func (context *bazelContext) InvokeBazel(config Config) error {
 	context.results = make(map[cqueryKey]string)
 
 	var cqueryOutput string
@@ -749,13 +751,33 @@ func (context *bazelContext) InvokeBazel() error {
 	//
 	// TODO(cparsons): Use --target_pattern_file to avoid command line limits.
 	var aqueryOutput string
+	var coverageFlags []string
+	if Bool(config.productVariables.ClangCoverage) {
+		coverageFlags = append(coverageFlags, "--collect_code_coverage")
+		if len(config.productVariables.NativeCoveragePaths) > 0 ||
+			len(config.productVariables.NativeCoverageExcludePaths) > 0 {
+			includePaths := buildInstrumentationPath("+", config.productVariables.NativeCoveragePaths)
+			excludePaths := buildInstrumentationPath("-", config.productVariables.NativeCoverageExcludePaths)
+			if len(includePaths) > 0 && len(excludePaths) > 0 {
+				includePaths += ","
+			}
+			coverageFlags = append(coverageFlags, fmt.Sprintf(`--instrumentation_filter=%s`,
+				includePaths + excludePaths))
+		}
+	}
+
+	extraFlags := []string{"--output=jsonproto"}
+	if len(coverageFlags) > 0 {
+		extraFlags = append(extraFlags, coverageFlags...)
+	}
+
 	aqueryOutput, _, err = context.issueBazelCommand(
 		context.paths,
 		bazel.AqueryBuildRootRunName,
 		bazelCommand{"aquery", fmt.Sprintf("deps(%s)", buildrootLabel)},
 		// Use jsonproto instead of proto; actual proto parsing would require a dependency on Bazel's
 		// proto sources, which would add a number of unnecessary dependencies.
-		"--output=jsonproto")
+		extraFlags...)
 
 	if err != nil {
 		return err
@@ -781,6 +803,22 @@ func (context *bazelContext) InvokeBazel() error {
 	// Clear requests.
 	context.requests = map[cqueryKey]bool{}
 	return nil
+}
+
+func buildInstrumentationPath(prefix string, paths []string) string {
+	ret := ""
+	for _, path := range paths {
+		if len(path) > 0 {
+			ret += prefix + path + ","
+		}
+	}
+
+	if len(ret) > 0 {
+		// Remove the trailing ","
+		return ret[:len(ret)-1]
+	} else {
+		return ret
+	}
 }
 
 func (context *bazelContext) BuildStatementsToRegister() []bazel.BuildStatement {

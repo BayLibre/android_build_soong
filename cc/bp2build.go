@@ -53,6 +53,8 @@ type staticOrSharedAttributes struct {
 
 	Enabled bazel.BoolAttribute
 
+	Native_coverage bazel.BoolAttribute
+
 	sdkAttributes
 }
 
@@ -269,6 +271,7 @@ type baseAttributes struct {
 	linkerAttributes
 
 	protoDependency *bazel.LabelAttribute
+	nativeCoverage bazel.BoolAttribute
 }
 
 // Convenience struct to hold all attributes parsed from compiler properties.
@@ -570,10 +573,16 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 	(&linkerAttrs).wholeArchiveDeps.Add(protoDep.wholeStaticLib)
 	(&linkerAttrs).implementationWholeArchiveDeps.Add(protoDep.implementationWholeStaticLib)
 
+	var nativeCoverage bazel.BoolAttribute
+	if module.coverage != nil {
+		nativeCoverage.SetSelectValue(bazel.NoConfigAxis, "", module.coverage.Properties.Native_coverage)
+	}
+
 	return baseAttributes{
 		compilerAttrs,
 		linkerAttrs,
 		protoDep.protoDep,
+		nativeCoverage,
 	}
 }
 

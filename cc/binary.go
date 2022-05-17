@@ -633,6 +633,8 @@ func binaryBp2build(ctx android.TopDownMutatorContext, m *Module, typ string) {
 		Features: baseAttrs.features,
 
 		sdkAttributes: bp2BuildParseSdkAttributes(m),
+
+		Native_coverage: baseAttrs.nativeCoverage,
 	}
 
 	ctx.CreateBazelTargetModule(bazel.BazelTargetModuleProperties{
@@ -677,6 +679,8 @@ type binaryAttributes struct {
 	Strip stripAttributes
 
 	Features bazel.StringListAttribute
+
+	Native_coverage bazel.BoolAttribute
 
 	sdkAttributes
 }

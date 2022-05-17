@@ -144,7 +144,7 @@ func runMixedModeBuild(configuration android.Config, firstCtx *android.Context, 
 
 	firstCtx.EventHandler.Begin("bazel")
 	// Invoke bazel commands and save results for second pass.
-	if err := configuration.BazelContext.InvokeBazel(); err != nil {
+	if err := configuration.BazelContext.InvokeBazel(configuration); err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
 	}
