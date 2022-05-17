@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "facea27f_803140b8",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-17T00:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc0f5234_a031f4c2",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7fce695_380c3d92",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-16T20:36:14Z",
       "side": 1,
       "message": "Most other module types handle invert these semantics, instead of guessing the type from the extension they don\u0027t specify the extension in the Android.bp file and let the Go code choose the appropriate extension.  That generally means using ctx.BaseModuleName() as the file name, with the `stem:` property to override it, and then boolean properties for `xml`, `html`, and `gzip`.",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "193862af_de1d83d6",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-17T00:42:51Z",
+      "side": 1,
+      "message": "I replaced out: with stem: and suffix: to parallel other module types, but I kept the logic that determines the format from the suffix. Is that okay?",
+      "parentUuid": "d7fce695_380c3d92",
       "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -88,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20a23ee_21876220",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-17T00:42:51Z",
+      "side": 1,
+      "message": "Won\u0027t work. The function for determining the paths to the output directories to strip out only works for a ModuleContext.",
+      "parentUuid": "fd5a2cec_3524657a",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5307a624_80d2faa7",
@@ -101,6 +155,30 @@
       "writtenOn": "2022-05-16T20:36:14Z",
       "side": 1,
       "message": "This doesn\u0027t seem necessary, just use `modules :\u003d make([]Module)` and let Go increase the size for you as necessary in `append`.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6494ae29_12f1e18b",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-17T00:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5307a624_80d2faa7",
       "range": {
         "startLine": 58,
         "startChar": 2,
@@ -128,6 +206,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a115a87_a8980e08",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-17T00:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c78bd40_43657831",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63035e3b_5d130dc0",
@@ -141,6 +237,24 @@
       "writtenOn": "2022-05-16T20:36:14Z",
       "side": 1,
       "message": "Can you define what you mean by \"product name\"?  \"product\" already has a meaning in Android builds, `cf_x86_64_phone` or `bramble` are products.  Maybe \"artifact name\"?",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49b8dde7_7513c09d",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-17T00:42:51Z",
+      "side": 1,
+      "message": "Changed to LibraryName",
+      "parentUuid": "63035e3b_5d130dc0",
       "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
