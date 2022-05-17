@@ -37,6 +37,7 @@ var (
 		"-Winit-self",
 		"-Wpointer-arith",
 		"-Wunreachable-code-loop-increment",
+		"-Wmisleading-indentation",
 
 		// Make paths in deps files relative
 		"-no-canonical-prefixes",
