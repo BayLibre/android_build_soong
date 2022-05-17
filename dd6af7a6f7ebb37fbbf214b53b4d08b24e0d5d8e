@@ -46,6 +46,30 @@
       },
       "revId": "dd6af7a6f7ebb37fbbf214b53b4d08b24e0d5d8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4d9c7b2_db300caf",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2022-05-17T15:54:02Z",
+      "side": 1,
+      "message": "We *deliberately* turn on tons of warnings, it is infeasible to list them all.",
+      "parentUuid": "08307ffa_2d294599",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "dd6af7a6f7ebb37fbbf214b53b4d08b24e0d5d8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
