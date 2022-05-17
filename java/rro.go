@@ -66,6 +66,7 @@ type RuntimeResourceOverlayProperties struct {
 	// if not blank, set the minimum version of the sdk that the compiled artifacts will run against.
 	// Defaults to sdk_version if not set.
 	Min_sdk_version *string
+	Max_sdk_version *string
 
 	// list of android_library modules whose resources are extracted and linked against statically
 	Static_libs []string
@@ -169,6 +170,13 @@ func (r *RuntimeResourceOverlay) SystemModules() string {
 func (r *RuntimeResourceOverlay) MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
 	if r.properties.Min_sdk_version != nil {
 		return android.SdkSpecFrom(ctx, *r.properties.Min_sdk_version)
+	}
+	return r.SdkVersion(ctx)
+}
+
+func (r *RuntimeResourceOverlay) MaxSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	if r.properties.Max_sdk_version != nil {
+		return android.SdkSpecFrom(ctx, *r.properties.Max_sdk_version)
 	}
 	return r.SdkVersion(ctx)
 }

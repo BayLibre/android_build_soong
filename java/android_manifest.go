@@ -136,6 +136,11 @@ func ManifestFixer(ctx android.ModuleContext, manifest android.Path,
 			ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
 		}
 
+		maxSdkVersion, err := params.SdkContext.MaxSdkVersion(ctx).EffectiveVersion(ctx)
+		if err != nil {
+			ctx.ModuleErrorf("invalid maxSdkVersion: %s", err)
+		}
+
 		if UseApiFingerprint(ctx) && ctx.ModuleName() != "framework-res" {
 			minSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", ApiFingerprintPath(ctx).String())
 			deps = append(deps, ApiFingerprintPath(ctx))
@@ -145,6 +150,7 @@ func ManifestFixer(ctx android.ModuleContext, manifest android.Path,
 			ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
 		}
 		args = append(args, "--minSdkVersion ", minSdkVersion)
+		args = append(args, "--maxSdkVersion ", strconv.Itoa(maxSdkVersion.FinalOrFutureInt()))
 		args = append(args, "--raise-min-sdk-version")
 	}
 
