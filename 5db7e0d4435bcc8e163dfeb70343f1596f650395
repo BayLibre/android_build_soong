@@ -160,6 +160,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5d06a8d_50bc8113",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-17T18:21:08Z",
+      "side": 1,
+      "message": "Harumph! I swear I got a compile error last time. Must have had a typo I didn\u0027t notice.",
+      "parentUuid": "cd4a8dab_47c051a6",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5307a624_80d2faa7",
