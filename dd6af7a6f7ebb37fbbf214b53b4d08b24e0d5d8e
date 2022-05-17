@@ -22,6 +22,30 @@
       },
       "revId": "dd6af7a6f7ebb37fbbf214b53b4d08b24e0d5d8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08307ffa_2d294599",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-05-17T15:50:26Z",
+      "side": 1,
+      "message": "hmm... is it worth calling it out explicitly though as something we\u0027ve done deliberately?\n\n(i\u0027m assuming this isn\u0027t the patch we want to submit anyway, so i\u0027ll leave that for now and just kick off another run.)",
+      "parentUuid": "c74b062a_1d01e8f3",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "dd6af7a6f7ebb37fbbf214b53b4d08b24e0d5d8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
