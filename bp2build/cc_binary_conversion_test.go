@@ -131,6 +131,7 @@ func TestBasicCcBinary(t *testing.T) {
     sdk_version: "current",
     min_sdk_version: "29",
     use_version_lib: true,
+    native_coverage: true,
 }
 `,
 		targets: []testBazelTarget{
@@ -157,6 +158,7 @@ func TestBasicCcBinary(t *testing.T) {
 				"sdk_version":     `"current"`,
 				"min_sdk_version": `"29"`,
 				"use_version_lib": `True`,
+				"native_coverage": `True`,
 			},
 			},
 		},

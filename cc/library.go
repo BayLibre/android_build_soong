@@ -317,6 +317,7 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		Whole_archive_deps:                *linkerAttrs.wholeArchiveDeps.Clone().Append(staticAttrs.Whole_archive_deps),
 		System_dynamic_deps:               *linkerAttrs.systemDynamicDeps.Clone().Append(staticAttrs.System_dynamic_deps),
 		sdkAttributes:                     bp2BuildParseSdkAttributes(m),
+		Native_coverage:                   baseAttributes.nativeCoverage,
 	}
 
 	sharedCommonAttrs := staticOrSharedAttributes{
@@ -333,6 +334,7 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		Whole_archive_deps:          *linkerAttrs.wholeArchiveDeps.Clone().Append(sharedAttrs.Whole_archive_deps),
 		System_dynamic_deps:         *linkerAttrs.systemDynamicDeps.Clone().Append(sharedAttrs.System_dynamic_deps),
 		sdkAttributes:               bp2BuildParseSdkAttributes(m),
+		Native_coverage:             baseAttributes.nativeCoverage,
 	}
 
 	staticTargetAttrs := &bazelCcLibraryStaticAttributes{
@@ -2485,6 +2487,7 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 		Implementation_whole_archive_deps: linkerAttrs.implementationWholeArchiveDeps,
 		System_dynamic_deps:               linkerAttrs.systemDynamicDeps,
 		sdkAttributes:                     bp2BuildParseSdkAttributes(module),
+		Native_coverage:                   baseAttributes.nativeCoverage,
 	}
 
 	var attrs interface{}
