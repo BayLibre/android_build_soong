@@ -33,6 +33,24 @@
       "message": "I\u0027d suggest handling the proguard files here.  That means putting them into the  JavaInfoProvider instead of using the LibraryDependency interface.  The java code has been partially converted from the old interface style to the new bazel inspired Provider style.",
       "revId": "b7e9a96ab05fb35fe80fa2e747eee06cee8bc589",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf27f16_c658801b",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1923,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2022-05-17T16:50:54Z",
+      "side": 1,
+      "message": "Sounds good, will try to make an update later this week.",
+      "parentUuid": "2c160b43_2f9690b2",
+      "revId": "b7e9a96ab05fb35fe80fa2e747eee06cee8bc589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
