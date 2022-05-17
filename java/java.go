@@ -1327,6 +1327,10 @@ type ImportProperties struct {
 	// specified.
 	Min_sdk_version *string
 
+	// The minimum version of the SDK that this module supports. Defaults to empty string "" if not
+	// specified.
+	Max_sdk_version *string
+
 	Installable *bool
 
 	// If not empty, classes are restricted to the specified packages and their sub-packages.
@@ -1404,6 +1408,13 @@ func (j *Import) MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
 		return android.SdkSpecFrom(ctx, *j.properties.Min_sdk_version)
 	}
 	return j.SdkVersion(ctx)
+}
+
+func (j *Import) MaxSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	if j.properties.Max_sdk_version != nil {
+		return android.SdkSpecFrom(ctx, *j.properties.Max_sdk_version)
+	}
+	return android.SdkSpecFrom(ctx, "")
 }
 
 func (j *Import) TargetSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
