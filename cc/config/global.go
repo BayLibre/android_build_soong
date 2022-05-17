@@ -54,6 +54,7 @@ var (
 		"-fno-strict-aliasing",
 
 		"-Werror=date-time",
+		"-Werror=misleading-indentation",
 		"-Werror=pragma-pack",
 		"-Werror=pragma-pack-suspicious-include",
 		"-Werror=string-plus-int",
