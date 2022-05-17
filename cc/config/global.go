@@ -54,6 +54,7 @@ var (
 		"-fno-strict-aliasing",
 
 		"-Werror=date-time",
+		"-Werror=misleading-indentation",
 		"-Werror=pragma-pack",
 		"-Werror=pragma-pack-suspicious-include",
 		"-Werror=string-plus-int",
@@ -222,7 +223,6 @@ var (
 		// New warnings to be fixed after clang-r383902.
 		"-Wno-deprecated-copy",                      // http://b/153746672
 		"-Wno-range-loop-construct",                 // http://b/153747076
-		"-Wno-misleading-indentation",               // http://b/153746954
 		"-Wno-zero-as-null-pointer-constant",        // http://b/68236239
 		"-Wno-deprecated-anon-enum-enum-conversion", // http://b/153746485
 		"-Wno-string-compare",                       // http://b/153764102
