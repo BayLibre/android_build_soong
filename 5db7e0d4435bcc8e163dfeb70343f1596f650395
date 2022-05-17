@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ba1c08c_2e289680",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T20:52:01Z",
+      "side": 1,
+      "message": "Is there some reason you prefer that over the way other modules work?  It\u0027s always better to have bool properties rather than magic strings.",
+      "parentUuid": "193862af_de1d83d6",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3453f9a8_563b12ba",
         "filename": "android/gen_notice.go",
         "patchSetId": 3

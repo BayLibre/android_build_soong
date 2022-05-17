@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2577970a_be5a9ee6",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T20:52:01Z",
+      "side": 1,
+      "message": "ctx.ModuleName",
+      "range": {
+        "startLine": 66,
+        "startChar": 15,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "b5f6fb371fcf4320bf3abf77983f0d10422ba8d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c1b1d44_675a3632",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T20:52:01Z",
+      "side": 1,
+      "message": "ctx.ModuleDir",
+      "range": {
+        "startLine": 67,
+        "startChar": 14,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "b5f6fb371fcf4320bf3abf77983f0d10422ba8d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f743062_a79dc8c3",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-17T20:52:01Z",
+      "side": 1,
+      "message": "This should probably all go in the `android.SingletonContext.ModuleVariantsFromName` wrapper",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 5
+      },
+      "revId": "b5f6fb371fcf4320bf3abf77983f0d10422ba8d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
