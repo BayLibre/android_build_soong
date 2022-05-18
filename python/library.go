@@ -43,6 +43,7 @@ func PythonLibraryHostFactory() android.Module {
 type bazelPythonLibraryAttributes struct {
 	Srcs         bazel.LabelListAttribute
 	Deps         bazel.LabelListAttribute
+	Imports      bazel.StringListAttribute
 	Srcs_version *string
 }
 
@@ -64,16 +65,29 @@ func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		// do nothing, since python_version defaults to PY2ANDPY3
 	}
 
+	// Bazel normally requires `import path.from.top.of.tree` statements in
+	// python code, but with soong you can directly import modules from libraries.
+	// Add "imports" attributes to the bazel library so it matches soong's behavior.
+	imports := "."
+	if m.properties.Pkg_path != nil {
+		// TODO(b/215119317) This is a hack to handle the fact that we don't convert
+		// pkg_path properly right now. We're counting on pkg_path to be the same as
+		// the folder that contains the Android.bp file, in which case
+		// imports = ".." will work.
+		imports = ".."
+	}
+
 	baseAttrs := m.makeArchVariantBaseAttributes(ctx)
 	attrs := &bazelPythonLibraryAttributes{
 		Srcs:         baseAttrs.Srcs,
 		Deps:         baseAttrs.Deps,
 		Srcs_version: python_version,
+		Imports:      bazel.MakeStringListAttribute([]string{imports}),
 	}
 
 	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "py_library",
-		Bzl_load_location: "//build/bazel/rules/python:library.bzl",
+		// Use the native py_library rule.
+		Rule_class: "py_library",
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
