@@ -109,6 +109,7 @@ func TestSimplePythonLib(t *testing.T) {
         "b/d.py",
     ]`,
 						"srcs_version": `"PY3"`,
+						"imports":      `["."]`,
 					},
 				},
 			},
@@ -136,6 +137,7 @@ func TestSimplePythonLib(t *testing.T) {
 					attrs: attrNameToString{
 						"srcs":         `["a.py"]`,
 						"srcs_version": `"PY2"`,
+						"imports":      `["."]`,
 					},
 				},
 			},
@@ -163,6 +165,7 @@ func TestSimplePythonLib(t *testing.T) {
 					attrs: attrNameToString{
 						"srcs":         `["a.py"]`,
 						"srcs_version": `"PY3"`,
+						"imports":      `["."]`,
 					},
 				},
 			},
@@ -189,7 +192,8 @@ func TestSimplePythonLib(t *testing.T) {
 					typ:  "py_library",
 					name: "foo",
 					attrs: attrNameToString{
-						"srcs": `["a.py"]`,
+						"srcs":    `["a.py"]`,
+						"imports": `["."]`,
 					},
 				},
 			},
@@ -232,6 +236,7 @@ func TestPythonArchVariance(t *testing.T) {
         "//conditions:default": [],
     })`,
 					"srcs_version": `"PY3"`,
+					"imports":      `["."]`,
 				},
 			},
 		},
