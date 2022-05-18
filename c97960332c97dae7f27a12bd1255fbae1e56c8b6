@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "525f995c_14aa1563",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T01:20:33Z",
+      "side": 1,
+      "message": "They are all libraries to the lawyers, which is at least half of the world I live in.\n\nDo you have a specific suggestion? What color would you like this bikeshed? I will happily change it to whatever you want.",
+      "parentUuid": "a328ee04_89f517bf",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "c97960332c97dae7f27a12bd1255fbae1e56c8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d11c9d32_49bcec76",
         "filename": "android/notices.go",
         "patchSetId": 4

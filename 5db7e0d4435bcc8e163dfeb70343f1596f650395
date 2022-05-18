@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdd4ff70_66a57249",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T01:20:33Z",
+      "side": 1,
+      "message": "For one, the tools that generate the output will conditionally gzip it base on the file extension. If a blueprint specifies a suffix that doesn\u0027t end in .gz, it would be an error to request zipping and vice versa.\n\nI don\u0027t necessarily agree with your assertion about booleans. I worked on one project where the tactic of using boolean properties led to an awful mess. Not saying that necessarily applies here, but it does suggest at least the \"always\" is suspect.\n\nWe have a hard deadline for 1 instance of this in a week.\n\nAfter we merge the code for that 1 instance, we can change the gzip feature to a separate flag independent of file extension as a separate topic, and introduce the boolean properties in that topic. The 1 existing instance will use the default text format so it\u0027s blueprint won\u0027t need any changes.",
+      "parentUuid": "9ba1c08c_2e289680",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3453f9a8_563b12ba",
         "filename": "android/gen_notice.go",
         "patchSetId": 3
@@ -326,6 +344,24 @@
       "writtenOn": "2022-05-16T20:36:14Z",
       "side": 1,
       "message": "You\u0027ll probably need to add support for `ctx.Config().AllowMissingDependencies \u003d\u003d true` here so that parsing a `gen_notices` modules in a partial manifest that is missing it\u0027s `for` modules doesn\u0027t fail parsing the Android.bp files but does cause the rules for the `gen_notices` file to exit with an error if built.  That\u0027s usually handled automatically when you add a missing dependency through the normal dependency functions or call `ctx.AddMissingDependencies` to add one, but it works by overwriting the module\u0027s rules, and this module doesn\u0027t have any rules because they are in the singleton, so you\u0027ll probably have to manually create an `android.ErrorRule`.",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75df7589_3f5ad2cc",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T01:20:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51cea15c_8efeae7c",
       "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
