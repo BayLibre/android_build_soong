@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dba96f7_26351e04",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-18T19:23:57Z",
+      "side": 1,
+      "message": "SanitizerType is an int, this could be more efficient as a `[MaxSanitizerType]SanitizerType` if that is supported for a property.",
+      "revId": "c86fb197a65b94db3bf0883ecc6d068fabfbfabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "187385df_21d5a3a8",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-18T19:23:57Z",
+      "side": 1,
+      "message": "This is unnecessary, range over a nil slice is well defined behavior equivalent to an empty slice.",
+      "range": {
+        "startLine": 1319,
+        "startChar": 1,
+        "endLine": 1321,
+        "endChar": 2
+      },
+      "revId": "c86fb197a65b94db3bf0883ecc6d068fabfbfabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a7714cc_7c644244",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-18T19:23:57Z",
+      "side": 1,
+      "message": "Unnecessary",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 450,
+        "endChar": 2
+      },
+      "revId": "c86fb197a65b94db3bf0883ecc6d068fabfbfabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
