@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49b1ff0f_576b1195",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T21:37:28Z",
+      "side": 1,
+      "message": "I am only asking to defer that to a later change topic.\n\nThe principal reason is changing the notice output binaries to use a flag greatly expands the scope. It pulls in another project, and it requires examining and possibly changing everywhere those binaries are currently used.\n\nI wish to defer that work to a later topic so that I can get to work on the tests for the feature now -- before the hard deadline -- and take my time to make that change carefully.\n\nYour earlier comment caused me to learn that stem and suffix properties are idiomatic in Soong. The suffix property suffices for now to control the output format without expanding the scope of the change.\n\nI intentionally did not bother adding support for .htm.gz because that is not a common combination. I will remove support for .htm to avoid that issue.",
+      "parentUuid": "c1efd508_54ad87a1",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3453f9a8_563b12ba",
         "filename": "android/gen_notice.go",
         "patchSetId": 3

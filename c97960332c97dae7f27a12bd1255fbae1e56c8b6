@@ -167,6 +167,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3614fb30_5567c51b",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T21:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe46b6ba_b4177a13",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "c97960332c97dae7f27a12bd1255fbae1e56c8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d11c9d32_49bcec76",

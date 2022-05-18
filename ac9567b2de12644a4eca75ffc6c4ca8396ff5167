@@ -41,6 +41,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "051cb6e7_76b2fdf2",
+        "filename": "android/singleton.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T21:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47784aac_f7b7c9c7",
+      "range": {
+        "startLine": 290,
+        "startChar": 75,
+        "endLine": 290,
+        "endChar": 88
+      },
+      "revId": "ac9567b2de12644a4eca75ffc6c4ca8396ff5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89eee512_48824a83",
+        "filename": "android/singleton.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T21:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "180e0521_cce51099",
+      "revId": "ac9567b2de12644a4eca75ffc6c4ca8396ff5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d5ff983_6a8692fb",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-05-18T19:48:54Z",
       "side": 1,
       "message": "This can\u0027t be moved here, otherwise it will copy the file into the directory after the directory has already been zipped.",
+      "revId": "ac9567b2de12644a4eca75ffc6c4ca8396ff5167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "089ee686_fa7ed4f3",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T21:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d5ff983_6a8692fb",
       "revId": "ac9567b2de12644a4eca75ffc6c4ca8396ff5167",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
