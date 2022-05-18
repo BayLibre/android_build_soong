@@ -199,6 +199,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d571dc1e_d0f3f689",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T22:36:53Z",
+      "side": 1,
+      "message": "I think I know how to do this without changing the binaries...",
+      "parentUuid": "951c6382_9052f6bc",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3453f9a8_563b12ba",
         "filename": "android/gen_notice.go",
         "patchSetId": 3
