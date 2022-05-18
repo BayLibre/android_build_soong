@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe46b6ba_b4177a13",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-18T19:48:54Z",
+      "side": 1,
+      "message": "\"artifact\" was my previous suggestion, or \"module\", but it\u0027s not clear to me what this is for so it\u0027s hard to give a good suggestion.  Maybe it would help to put more in the documentation about where exactly in the notice file this ends up?",
+      "parentUuid": "525f995c_14aa1563",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "c97960332c97dae7f27a12bd1255fbae1e56c8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d11c9d32_49bcec76",
         "filename": "android/notices.go",
         "patchSetId": 4

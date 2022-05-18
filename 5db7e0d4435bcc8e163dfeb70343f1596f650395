@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1efd508_54ad87a1",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-18T19:48:54Z",
+      "side": 1,
+      "message": "That\u0027s why I\u0027m suggesting the blueprint file doesn\u0027t specify the extension.  The output filename will be `\u003cstem\u003e(.txt|.xml|.html)(.gz)?` based on the properties.  The current system seems error prone, for example I think the current implementation would produce a text notice file for `.htm.gz`.",
+      "parentUuid": "fdd4ff70_66a57249",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3453f9a8_563b12ba",
         "filename": "android/gen_notice.go",
         "patchSetId": 3
