@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51d36918_e68d4593",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-05-18T07:34:23Z",
+      "side": 1,
+      "message": "Yes. If what you want is only a few google-* checks. That would be a shorter list.",
+      "parentUuid": "b2156f15_7194cf8c",
+      "revId": "93adc4dcf8986d25b41573f26581e9497363ddca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53bfb5fd_939e68f9",
         "filename": "cc/config/tidy.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-18T00:20:56Z",
       "side": 1,
       "message": "not `google-*`?\n\nof all the google- stuff i found in the clang docs, only https://clang.llvm.org/extra/clang-tidy/checks/google-explicit-constructor.html and https://clang.llvm.org/extra/clang-tidy/checks/google-readability-casting.html seemed like ones whose signal-to-noise ratio we\u0027d be at all likely to defend as part of the default set?",
+      "revId": "93adc4dcf8986d25b41573f26581e9497363ddca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30624ffd_16886a4b",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-05-18T07:34:23Z",
+      "side": 1,
+      "message": "I tried to enable google-readability-casting and found more than 20K cases within the first 5% of tidy-soong_subset build. It had also triggered 500+ warnings-as-errors, because some projects just selected too general check list patterns to treat as errors. We will need to fix those before enabling this check by default.\n\nHere is a rough count of cases from enabled google- checks:\n   5063 google-runtime-int\n   3207 google-explicit-constructor\n   2735 google-build-using-namespace\n   2257 google-global-names-in-headers\n   1623 google-default-arguments\n    186 google-upgrade-googletest-case\n     55 google-runtime-operator\n     35 google-build-namespaces\n     24 google-build-explicit-make-pair\n\nWould you like to disable all checks with too many cases?",
+      "parentUuid": "53bfb5fd_939e68f9",
       "revId": "93adc4dcf8986d25b41573f26581e9497363ddca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
