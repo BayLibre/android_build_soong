@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2156f15_7194cf8c",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-05-18T00:20:56Z",
+      "side": 1,
+      "message": "(actually, wouldn\u0027t just _removing_ this line solve our problem? we could then remove L45-46 too, and wouldn\u0027t need to add anything more.)",
+      "revId": "93adc4dcf8986d25b41573f26581e9497363ddca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53bfb5fd_939e68f9",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-05-18T00:20:56Z",
+      "side": 1,
+      "message": "not `google-*`?\n\nof all the google- stuff i found in the clang docs, only https://clang.llvm.org/extra/clang-tidy/checks/google-explicit-constructor.html and https://clang.llvm.org/extra/clang-tidy/checks/google-readability-casting.html seemed like ones whose signal-to-noise ratio we\u0027d be at all likely to defend as part of the default set?",
+      "revId": "93adc4dcf8986d25b41573f26581e9497363ddca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
