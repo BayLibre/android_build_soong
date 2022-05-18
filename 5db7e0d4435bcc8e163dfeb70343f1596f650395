@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "951c6382_9052f6bc",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T22:04:05Z",
+      "side": 1,
+      "message": "I saw examples to switch between .h and .c ...\n\nAre you suggesting I remove the `suffix:` property? I could do that. But then I would be forced to use .txt as the default suffix, and I prefer the default to be no suffix at all. It is more common to have a LICENSE or NOTICE or COPYING file with no extension.\n\nYihan\u0027s original change used a .txt extension so having the `suffix:` property is necessary to override that in the 1 and only instance we have right now.\n\nIt\u0027s not like I am refusing the idea. I only want to defer it.",
+      "parentUuid": "474b1afc_bd2edff3",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3453f9a8_563b12ba",
         "filename": "android/gen_notice.go",
         "patchSetId": 3
