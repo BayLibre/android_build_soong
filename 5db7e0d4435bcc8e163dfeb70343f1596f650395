@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "474b1afc_bd2edff3",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-18T21:51:05Z",
+      "side": 1,
+      "message": "I\u0027m not suggesting modifying the notice output binaries, although that would be a reasonable later change.  I\u0027m suggesting modifying the `getSuffix()` method to be:\n\n```\nfunc (m *genNoticeModule) getExtension() string {\n        ext :\u003d \"\"\n\tswitch {\n\tcase proptools.Bool(m.properties.Html):\n\t    ext \u003d \".html\"\n\tcase proptools.Bool(m.properties.Xml):\n\t    ext \u003d \".xml\"\n        default:\n            ext \u003d \".txt\"\n        }\n        if proptools.Bool(m.properties.Gzipped) {\n            ext +\u003d \".gz\"\n        }\n        return ext\n}\n```\n\nThe `suffix` property in other modules is not used to override the extension, it\u0027s used to append to the `stem` property under certain conditions, for example to differentiate between the a 32-bit binary and a 64-bit binary (`dhry32` vs. `dhry64`).",
+      "parentUuid": "49b1ff0f_576b1195",
+      "revId": "5db7e0d4435bcc8e163dfeb70343f1596f650395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3453f9a8_563b12ba",
         "filename": "android/gen_notice.go",
         "patchSetId": 3
