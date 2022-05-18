@@ -118,6 +118,7 @@ func (afdo *afdo) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.Local.CFlags = append(flags.Local.CFlags, profileUseFlag)
 			flags.Local.LdFlags = append(flags.Local.LdFlags, profileUseFlag)
 			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,-mllvm,-no-warn-sample-unused=true")
+			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--no-call-graph-profile-sort")
 
 			// Update CFlagsDeps and LdFlagsDeps so the module is rebuilt
 			// if profileFile gets updated
