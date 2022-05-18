@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8277ceb_02abb726",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-05-18T21:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51d36918_e68d4593",
+      "revId": "93adc4dcf8986d25b41573f26581e9497363ddca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53bfb5fd_939e68f9",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "ah, sorry, i hadn\u0027t noticed that `-google-readability*` covered the casting.\n\nyeah, i think _any_ warning that already has thousands of instances is likely to be unworkable... if we make too much noise on every change we\u0027re just going to train people to ignore _all_ errors. (and for the exceptions, they can always opt themselves in.)\n\neven if long-term we end up with a larger set, i think it makes most sense to start small, and \"spend\" our \"being annoying\" budget on the most important stuff --- warnings with *both* a low false-positive rate but also a high likelihood that it\u0027s a _bug_ that really needs to be fixed. (so definitely nothing that\u0027s \"just\" a stylistic opinion.)",
       "parentUuid": "30624ffd_16886a4b",
+      "revId": "93adc4dcf8986d25b41573f26581e9497363ddca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5dfc95a_8e3cb3bf",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-05-18T21:57:06Z",
+      "side": 1,
+      "message": "Now, keep only 4 google- checks with small number of warnings.",
+      "parentUuid": "7fb64575_fede7439",
       "revId": "93adc4dcf8986d25b41573f26581e9497363ddca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
