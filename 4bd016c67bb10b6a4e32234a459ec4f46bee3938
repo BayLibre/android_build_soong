@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "346ca067_90263813",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T17:26:14Z",
+      "side": 1,
+      "message": "self-review",
+      "revId": "4bd016c67bb10b6a4e32234a459ec4f46bee3938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d7a235_4432b5e7",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2186,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-05-18T17:26:14Z",
+      "side": 1,
+      "message": "This change is no longer needed.",
+      "revId": "4bd016c67bb10b6a4e32234a459ec4f46bee3938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
