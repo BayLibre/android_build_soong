@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dae0b479_19e9d0dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-05-18T16:25:40Z",
+      "side": 1,
+      "message": "You should be using paths (and dependencies) to the tools used from the source tree or built output, not relying it being in $PATH (which wouldn\u0027t be the case on the build servers, and can cause other issues).\n\nIt is possible for a build rule to make a local addition to PATH so that tools that alway use $PATH for lookups can still function, by doing something like:\n\n  PATH\u003dmy/path:$$PATH path/to/my/script\n\nBut in general I recommend supporting explicit paths so that a variable can be used and the dependencies and used scripts never get out of sync.",
+      "revId": "53bfc9386e6ccdbe25106b4849d05e3a4ea747f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
