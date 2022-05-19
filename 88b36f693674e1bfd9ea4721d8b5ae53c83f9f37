@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9922be2c_ed685609",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "Indeed :) Thanks for the pointer, let\u0027s follow up in a separate CL. b/233206562",
+      "parentUuid": "a41b36a5_2d98afcf",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4c48404_2b6bb69b",
@@ -99,6 +117,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c62c02fe_ad71c178",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "I\u0027m not crazy about Merge either, because I feel like that\u0027s an overloaded term in graph theory.\n\nHow about \"ProcessBazelQueryResponse\" ?",
+      "parentUuid": "ca9ca043_8ffab5e2",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edac2579_433f4cf0",
@@ -112,6 +154,30 @@
       "writtenOn": "2022-05-19T07:30:44Z",
       "side": 1,
       "message": "Why does this need to be changed to BaseModuleContext?",
+      "range": {
+        "startLine": 366,
+        "startChar": 28,
+        "endLine": 366,
+        "endChar": 45
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "706e0f54_4aeb2551",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "It is now called from a mutator, so we can pass a mutator context instead. Both contexts implement BaseModuleContext",
+      "parentUuid": "edac2579_433f4cf0",
       "range": {
         "startLine": 366,
         "startChar": 28,
@@ -139,6 +205,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf2326f1_a010c11b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "Totally a fair request. PTAL.",
+      "parentUuid": "9abfb40b_350c6920",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17389117_fe725f0d",
@@ -152,6 +236,24 @@
       "writtenOn": "2022-05-19T16:21:49Z",
       "side": 1,
       "message": "Nit: I don\u0027t think you need this `else`. You can just return.",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db55508d_51e11bea",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17389117_fe725f0d",
       "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -173,6 +275,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ad23a3_1e13b71e",
+        "filename": "android/filegroup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "Changed to IsMixedBuildSupported",
+      "parentUuid": "91eeefb8_7832429a",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "663f076b_e0309708",
@@ -186,6 +306,24 @@
       "writtenOn": "2022-05-19T21:32:18Z",
       "side": 1,
       "message": "is this supposed to be `isHandledByBazel`? \n\nIt seems to return more than a bool",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "085a764f_bb60f499",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "663f076b_e0309708",
       "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -209,6 +347,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "092dde24_235d52c1",
+        "filename": "cc/binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "cc\u0027s BazelHandler is definitely still quite a bit of a mess, and I\u0027d love to clean this up as part of a followup CL. (See Caveats in CL description)",
+      "parentUuid": "d80d7eef_5b1f50ef",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ef4cfc5d_8a1c3be2",
         "filename": "cc/cc.go",
         "patchSetId": 9
@@ -220,6 +376,24 @@
       "writtenOn": "2022-05-19T16:21:49Z",
       "side": 1,
       "message": "Just curious, what does this do?",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1851e9e8_9385c437",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "This is best practice for ensuring that Module implements MixedBuildsBuildable.\n\nhttps://stackoverflow.com/a/27804417/5843554",
+      "parentUuid": "ef4cfc5d_8a1c3be2",
       "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -247,6 +421,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c97e65_c3118fff",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "maybeInstall has to come after HandleBazelMetadata, because the installer implementation may require properties set by HandleBazelMetadata.\n\nIf we reorder these two lines, we get:\n\n```\nerror: external/libcap/Android.bp:133:1: module \"cap_names.h\": host tool \"_makenames\" missing output file\n17:11:38 soong bootstrap failed with: exit status 1\n```\n\nI also wanted to originally refactor common pieces between bazel mode and soong mode, but I don\u0027t think this is an improvement:\n\nWe want to keep the non-bazelHandler piece of this function small. Having the two copies coming out of sync is mostly ok, because we don\u0027t want functionally added to the bazel function without thinking more about it.\n\nAlso, I don\u0027t think there\u0027s much semantic meaning to the common piece.\n\nThat said, tinkering with this again has allowed me to reduce the function a bit.\n\nWhat do you think?",
+      "parentUuid": "1c294f8d_02d0202f",
+      "range": {
+        "startLine": 1824,
+        "startChar": 0,
+        "endLine": 1838,
+        "endChar": 16
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd3cdc55_e8bb84b6",
@@ -260,6 +458,30 @@
       "writtenOn": "2022-05-19T07:30:44Z",
       "side": 1,
       "message": "Is it by design that this code is not evaluated in mixed mode?",
+      "range": {
+        "startLine": 1878,
+        "startChar": 1,
+        "endLine": 1880,
+        "endChar": 2
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "491c5631_38dab3b3",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "We want to minimize Soong logic when a module is handled by Bazel. Particularly in this line, we don\u0027t want the value of Soong module properties to cause errors, as they\u0027re not actually used for registering actions for the module anymore.",
+      "parentUuid": "cd3cdc55_e8bb84b6",
       "range": {
         "startLine": 1878,
         "startChar": 1,
@@ -316,6 +538,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f36f1b_a476561c",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "Indeed, missed this one from refactoring :)",
+      "parentUuid": "34d7befc_8c41e326",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 7
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b156d971_e5709f5c",
@@ -329,6 +575,30 @@
       "writtenOn": "2022-05-19T07:30:44Z",
       "side": 1,
       "message": "nit: now that the invariant \"at most one Blueprint invocation per soong_build invocation\" holds it looks like the code can now be re-structured so that writeBuildGlobsNinjaFile / writeDepsFile are only called from one place, but it doesn\u0027t necessarily need to happen in this change, it\u0027s complicated enough as it is.\n\nI am also toying with the idea of taking RunBlueprint() apart so that things like SetBeforePrepareBuildActionsHook() don\u0027t need to exist but that also can happen later, in my copious free time.",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 10
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "205d0bc0_af5fa308",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "I agree. There\u0027s probably more refactoring we can do here, but lets keep it to another CL.\n\nAnything actionable here? :)",
+      "parentUuid": "b156d971_e5709f5c",
       "range": {
         "startLine": 146,
         "startChar": 1,
@@ -362,6 +632,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e07055d_0847e214",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "204d7ba4_358f4693",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 104
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17fea8d8_62f0a1b5",
@@ -375,6 +669,24 @@
       "writtenOn": "2022-05-19T16:21:49Z",
       "side": 1,
       "message": "What is meant by users here and why 6?",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "436dd25e_fc3e9cdc",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "I did not write this, only unindented / moved it. I frankly have no idea.",
+      "parentUuid": "17fea8d8_62f0a1b5",
       "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -415,6 +727,24 @@
       "writtenOn": "2022-05-19T16:21:49Z",
       "side": 1,
       "message": "Is there a way to extract this as a function? All instances of this seem pretty similar.",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a65045b7_32aabb12",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 1,
+      "message": "The difference between these functions is important, however.\n\nThey may differ in:\n1. The label this module corresponds with\n2. The cquery request (GetOutputFiles vs. GetCcInfo)\n3. The configuration key\n\nThus I\u0027m not sure we can generalize further than this.",
+      "parentUuid": "b2ea4f2e_fe32ad05",
       "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

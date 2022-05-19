@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dfc2f6b_d47ab70e",
+        "filename": "android/filegroup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-19T22:47:32Z",
+      "side": 0,
+      "message": "We used to queue up bazel requests for filegroup using the arch and variant, but this makes no difference to Bazel results, as they are not archvariant dependent. So, it makes the code cleaner here to just use Common and CommonOS in all cases.",
+      "parentUuid": "fc96072a_dad38a75",
+      "revId": "7583481570551f92b69ae8668bc069c9ff7ae4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd7a9e4b_ce12a722",
