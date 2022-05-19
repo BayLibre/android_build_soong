@@ -46,6 +46,30 @@
       },
       "revId": "7583481570551f92b69ae8668bc069c9ff7ae4e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f275b5c_bb83fe53",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2022-05-19T07:29:01Z",
+      "side": 0,
+      "message": "Okay, we should fix the name to something more descriptive.",
+      "parentUuid": "11a74728_aabb0d29",
+      "range": {
+        "startLine": 592,
+        "startChar": 25,
+        "endLine": 592,
+        "endChar": 44
+      },
+      "revId": "7583481570551f92b69ae8668bc069c9ff7ae4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
