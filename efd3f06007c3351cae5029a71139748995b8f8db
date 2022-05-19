@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66527672_3722428e",
+        "filename": "bp2build/python_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-19T10:13:44Z",
+      "side": 1,
+      "message": "Add tests for the `..` case, and also the failure case if the dirs don\u0027t match?",
+      "range": {
+        "startLine": 112,
+        "startChar": 6,
+        "endLine": 112,
+        "endChar": 30
+      },
+      "revId": "efd3f06007c3351cae5029a71139748995b8f8db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bd53686_dac8df99",
         "filename": "python/library.go",
         "patchSetId": 2
