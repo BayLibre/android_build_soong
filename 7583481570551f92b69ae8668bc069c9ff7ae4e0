@@ -22,6 +22,30 @@
       },
       "revId": "7583481570551f92b69ae8668bc069c9ff7ae4e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a74728_aabb0d29",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-05-19T06:14:56Z",
+      "side": 0,
+      "message": "I think the name is deceptive here. This list is actually modules where warnings aren\u0027t enforced as errors yet. See the heading `\"# Modules added default -Wall\"` in the `wall_werror.txt` file created for builds like https://storage.googleapis.com/android-build/builds/aosp-master-plus-llvm-linux-aosp_raven-eng/8610540/8b7d997621de0bf81ee6cf942398e8823902e8ff71109dc908220deb9ac443a2/wall_werror.txt?GoogleAccessId\u003dgcs-sign@android-builds-project.google.com.iam.gserviceaccount.com\u0026Expires\u003d1652941111\u0026Signature\u003dBJF64AvlfW%2BoBHDTsoLhyrhw94uVvej5buaRb1Orc0H9ABSUg3A6I1JiaygFTIcybyKnMCarjVonZrxc%2ByhheUH6HZnlKCmLMz4L/hrJxJBgK2mA468BfrWw0LgI28NJdLd%2BHfg4MKZPpDXgz9xnlxwY0ThfFOOlYOKgtdGOfQMt/790OGHLUVXymYfHw7YCU/BER8eGHzQ24iTgQa0KgsuxdPLbcfi7V7j2metrcXsiOh3LL4yMZ5lICwfxgK6UjJkX0Dg9fmxaQoeAqlCISPLUqrqEl%2Bxvmxl6JBd89HcVHi/uUcWjElwJwq043k9X2jGQd%2B6m4qYkqyG8sjq5HA%3D%3D.",
+      "parentUuid": "2875b06d_7ea77146",
+      "range": {
+        "startLine": 592,
+        "startChar": 25,
+        "endLine": 592,
+        "endChar": 44
+      },
+      "revId": "7583481570551f92b69ae8668bc069c9ff7ae4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
