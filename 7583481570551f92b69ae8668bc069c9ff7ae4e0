@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc96072a_dad38a75",
+        "filename": "android/filegroup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-05-19T16:55:34Z",
+      "side": 0,
+      "message": "Is this changing the semantics from what it used to be? Seems like we are ignoring arch-variant filegroups by doing this, but I am not sure if there are any arch-variant filegroups.",
+      "revId": "7583481570551f92b69ae8668bc069c9ff7ae4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd7a9e4b_ce12a722",
         "filename": "android/filegroup.go",
         "patchSetId": 9

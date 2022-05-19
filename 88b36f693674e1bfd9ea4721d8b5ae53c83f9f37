@@ -156,6 +156,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d80d7eef_5b1f50ef",
+        "filename": "cc/binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-05-19T16:55:34Z",
+      "side": 1,
+      "message": "I\u0027m not clear on why this should be nested in this struct when it is also accessible via module.bazelHandler?",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ef4cfc5d_8a1c3be2",
