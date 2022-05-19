@@ -158,6 +158,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91eeefb8_7832429a",
+        "filename": "android/filegroup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-05-19T21:32:18Z",
+      "side": 1,
+      "message": "Something about the naming is a little grating but I can\u0027t fathom renaming a bool method to `Are\u003cCondition\u003e`. Is `Builds` proper?",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "663f076b_e0309708",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-05-19T21:32:18Z",
+      "side": 1,
+      "message": "is this supposed to be `isHandledByBazel`? \n\nIt seems to return more than a bool",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d80d7eef_5b1f50ef",
         "filename": "cc/binary.go",
         "patchSetId": 9
