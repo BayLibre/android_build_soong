@@ -39,6 +39,7 @@ func IsFilegroup(ctx bazel.OtherModuleContext, m blueprint.Module) bool {
 // https://docs.bazel.build/versions/master/be/general.html#filegroup
 type bazelFilegroupAttributes struct {
 	Srcs bazel.LabelListAttribute
+	Path *string
 }
 
 // ConvertWithBp2build performs bp2build conversion of filegroup
@@ -68,6 +69,7 @@ func (fg *fileGroup) ConvertWithBp2build(ctx TopDownMutatorContext) {
 
 	attrs := &bazelFilegroupAttributes{
 		Srcs: srcs,
+		Path: fg.properties.Path,
 	}
 
 	props := bazel.BazelTargetModuleProperties{

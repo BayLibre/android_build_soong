@@ -15,10 +15,10 @@
 package bp2build
 
 import (
-	"android/soong/android"
 	"fmt"
-
 	"testing"
+
+	"android/soong/android"
 )
 
 func runFilegroupTestCase(t *testing.T, tc bp2buildTestCase) {
@@ -40,7 +40,8 @@ filegroup {
     srcs: ["foo"],
 }
 `,
-		expectedBazelTargets: []string{}})
+		expectedBazelTargets: []string{},
+	})
 }
 
 func TestFilegroupSameNameAsFile_MultipleFiles(t *testing.T) {
@@ -54,5 +55,26 @@ filegroup {
 }
 `,
 		expectedErr: fmt.Errorf("filegroup 'foo' cannot contain a file with the same name"),
+	})
+}
+
+func TestFilegroupPath(t *testing.T) {
+	runFilegroupTestCase(t, bp2buildTestCase{
+		description: "filegroup - path attr",
+		filesystem:  map[string]string{},
+		blueprint: `
+filegroup {
+	name: "foo",
+	srcs: ["src/foo.c", "src/bar.c"],
+	path: "src",
+}`,
+		expectedBazelTargets: []string{`filegroup(
+    name = "foo",
+    path = "src",
+    srcs = [
+        "src/foo.c",
+        "src/bar.c",
+    ],
+)`},
 	})
 }
