@@ -15,6 +15,7 @@
 package android
 
 import (
+	"path/filepath"
 	"strings"
 
 	"android/soong/bazel"
@@ -36,9 +37,24 @@ func IsFilegroup(ctx bazel.OtherModuleContext, m blueprint.Module) bool {
 	return ctx.OtherModuleType(m) == "filegroup"
 }
 
+func has_path_prefix(path, prefix string) bool {
+	prefix = filepath.Clean(prefix)
+	if prefix == "." {
+		return true
+	}
+	if !strings.HasPrefix(path, prefix) {
+		return false
+	}
+	if !strings.HasPrefix(strings.TrimPrefix(path, prefix), "/") {
+		return false
+	}
+	return true
+}
+
 // https://docs.bazel.build/versions/master/be/general.html#filegroup
 type bazelFilegroupAttributes struct {
-	Srcs bazel.LabelListAttribute
+	Srcs         bazel.LabelListAttribute
+	Strip_prefix *string
 }
 
 // ConvertWithBp2build performs bp2build conversion of filegroup
@@ -64,10 +80,16 @@ func (fg *fileGroup) ConvertWithBp2build(ctx TopDownMutatorContext) {
 			}
 			return
 		}
+
+		if fg.properties.Path != nil && !has_path_prefix(f.Label, *fg.properties.Path) {
+			ctx.ModuleErrorf("filegroup '%s' cannot contain a file that does not start with %s: %s", fg.Name(), *fg.properties.Path, f.Label)
+			return
+		}
 	}
 
 	attrs := &bazelFilegroupAttributes{
-		Srcs: srcs,
+		Srcs:         srcs,
+		Strip_prefix: fg.properties.Path,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
