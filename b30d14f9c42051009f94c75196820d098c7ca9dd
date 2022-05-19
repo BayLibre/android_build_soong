@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6719c58a_8ecac473",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-05-19T18:25:02Z",
+      "side": 1,
+      "message": "Will this address the issue this CL is for? https://android-review.googlesource.com/c/platform/prebuilts/runtime/+/2098261",
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5853456_19512ade",
@@ -60,6 +77,23 @@
         "endLine": 817,
         "endChar": 10
       },
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e26d95f5_89959425",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-05-19T18:25:02Z",
+      "side": 1,
+      "message": "What generated this? Maybe consider adding a comment that mentions that, as well.",
       "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
