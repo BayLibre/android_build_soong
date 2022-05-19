@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f227bb55_0d60abe1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-19T10:13:00Z",
+      "side": 1,
+      "message": "Liz is OOO till next week, but please get her review for this CL as well. Thanks!",
+      "revId": "efd3f06007c3351cae5029a71139748995b8f8db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bd53686_dac8df99",
+        "filename": "python/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-19T10:13:00Z",
+      "side": 1,
+      "message": "I think we can make this a bit smarter by comparing Pkg_path with ctx.ModuleDir.\n\ne.g. \n\n../.. with https://cs.android.com/android/platform/superproject/+/master:tools/treble/gki/Android.bp;l\u003d33;drc\u003d3cf56a2aa3b7c13d6fcc86996c39c5a0878230aa\n\n../../.. with https://cs.android.com/android/platform/superproject/+/master:test/vts/utils/python/Android.bp;l\u003d21;drc\u003d197e663fedcdd9834b498702371c2cc0a9218186\n\nand also make it fail if the parent dir does not patch pkg_path for now, so this failure mode is visible during future conversions.",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 16
+      },
+      "revId": "efd3f06007c3351cae5029a71139748995b8f8db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
