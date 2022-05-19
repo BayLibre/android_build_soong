@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd1605ab_d9fc13d6",
+        "filename": "android/filegroup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-19T09:38:43Z",
+      "side": 0,
+      "message": "Instead of only querying file targets for the commonos and filegroups for the arch variant, it looks like all filegroups and file targets all now equally cquery\u0027d for the commonos configuration in line 156, which makes sense.",
+      "parentUuid": "cd7a9e4b_ce12a722",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 61
+      },
+      "revId": "7583481570551f92b69ae8668bc069c9ff7ae4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1b80b2bf_09803262",

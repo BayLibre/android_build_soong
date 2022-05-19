@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3601ac6c_306fc2b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-19T09:38:43Z",
+      "side": 1,
+      "message": "Clean :)",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4c48404_2b6bb69b",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-05-19T07:30:44Z",
       "side": 1,
       "message": "nit: the word \"handle\" is quite generic. Maybe replace with \"merge\"? (not that it\u0027s much better, but it\u0027s a bit better)",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca9ca043_8ffab5e2",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-19T09:38:43Z",
+      "side": 1,
+      "message": "or be more specific: MergeBazelQueryResponse?",
+      "parentUuid": "b4c48404_2b6bb69b",
       "range": {
         "startLine": 131,
         "startChar": 4,
@@ -105,6 +146,52 @@
         "startChar": 1,
         "endLine": 1880,
         "endChar": 2
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8888386b_1dbdd18f",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-19T09:38:43Z",
+      "side": 1,
+      "message": "unnecessary?",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 7
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34d7befc_8c41e326",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-19T09:38:43Z",
+      "side": 1,
+      "message": "unnecessary?",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 7
       },
       "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
