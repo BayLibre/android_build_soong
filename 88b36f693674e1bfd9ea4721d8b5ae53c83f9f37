@@ -124,6 +124,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9abfb40b_350c6920",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-05-19T16:21:49Z",
+      "side": 1,
+      "message": "Would you mind documenting? Even if the meaning is \"obvious\" to someone who understands mixed builds more generally, I think it may be valuable to have documentation for all of this. If you disagree, feel free to just resolve this comment.",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17389117_fe725f0d",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-05-19T16:21:49Z",
+      "side": 1,
+      "message": "Nit: I don\u0027t think you need this `else`. You can just return.",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef4cfc5d_8a1c3be2",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-05-19T16:21:49Z",
+      "side": 1,
+      "message": "Just curious, what does this do?",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c294f8d_02d0202f",
         "filename": "cc/cc.go",
         "patchSetId": 9
@@ -260,6 +311,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "17fea8d8_62f0a1b5",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-05-19T16:21:49Z",
+      "side": 1,
+      "message": "What is meant by users here and why 6?",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "356fc970_2482aecd",
@@ -279,6 +347,23 @@
         "endLine": 600,
         "endChar": 27
       },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ea4f2e_fe32ad05",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-05-19T16:21:49Z",
+      "side": 1,
+      "message": "Is there a way to extract this as a function? All instances of this seem pretty similar.",
       "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
