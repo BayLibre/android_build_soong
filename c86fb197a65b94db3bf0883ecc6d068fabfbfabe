@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d001267_cff13b99",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:49:35Z",
+      "side": 1,
+      "message": "I wanted to turn this into a bit field, but Blueprint said \"unsupported kind for field sanitizeDep\", so it has to stay this way, grump.\n\nI suppose the limitation is there for mutated fields so that Blueprint can duplicate the module when creating new variations of it?",
+      "parentUuid": "4dba96f7_26351e04",
+      "revId": "c86fb197a65b94db3bf0883ecc6d068fabfbfabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "187385df_21d5a3a8",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f14a44_ee17faa2",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:49:35Z",
+      "side": 1,
+      "message": "Thanks, I didn\u0027t know that.",
+      "parentUuid": "187385df_21d5a3a8",
+      "range": {
+        "startLine": 1319,
+        "startChar": 1,
+        "endLine": 1321,
+        "endChar": 2
+      },
+      "revId": "c86fb197a65b94db3bf0883ecc6d068fabfbfabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a7714cc_7c644244",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-05-18T19:23:57Z",
       "side": 1,
       "message": "Unnecessary",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 450,
+        "endChar": 2
+      },
+      "revId": "c86fb197a65b94db3bf0883ecc6d068fabfbfabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "831340fd_b63925be",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a7714cc_7c644244",
       "range": {
         "startLine": 448,
         "startChar": 1,
