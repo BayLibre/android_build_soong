@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09c392d_dcd5fc08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:30:44Z",
+      "side": 1,
+      "message": "Hey, this is nice! Based on yesterday\u0027s chat, I expected something much more convoluted, but this is pleasantly readable, modulo a few mysteries (all of which I marked with a comment)",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c48404_2b6bb69b",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:30:44Z",
+      "side": 1,
+      "message": "nit: the word \"handle\" is quite generic. Maybe replace with \"merge\"? (not that it\u0027s much better, but it\u0027s a bit better)",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edac2579_433f4cf0",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:30:44Z",
+      "side": 1,
+      "message": "Why does this need to be changed to BaseModuleContext?",
+      "range": {
+        "startLine": 366,
+        "startChar": 28,
+        "endLine": 366,
+        "endChar": 45
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c294f8d_02d0202f",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:30:44Z",
+      "side": 1,
+      "message": "Factor this code out so that it\u0027s not duplicated between `GenerateAndroidBuildActions()` and `HandleBazelMetadata()`\n\nIt\u0027s long and mysterious enough (at least to me) that there is a large risk of the two copies coming out of sync.\n\nMaybe you can move `maybeInstall()` above the `HandleBazelMetadata()` call and remove that little duplication also?",
+      "range": {
+        "startLine": 1824,
+        "startChar": 0,
+        "endLine": 1838,
+        "endChar": 16
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd3cdc55_e8bb84b6",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:30:44Z",
+      "side": 1,
+      "message": "Is it by design that this code is not evaluated in mixed mode?",
+      "range": {
+        "startLine": 1878,
+        "startChar": 1,
+        "endLine": 1880,
+        "endChar": 2
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b156d971_e5709f5c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:30:44Z",
+      "side": 1,
+      "message": "nit: now that the invariant \"at most one Blueprint invocation per soong_build invocation\" holds it looks like the code can now be re-structured so that writeBuildGlobsNinjaFile / writeDepsFile are only called from one place, but it doesn\u0027t necessarily need to happen in this change, it\u0027s complicated enough as it is.\n\nI am also toying with the idea of taking RunBlueprint() apart so that things like SetBeforePrepareBuildActionsHook() don\u0027t need to exist but that also can happen later, in my copious free time.",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 10
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "204d7ba4_358f4693",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:30:44Z",
+      "side": 1,
+      "message": "nit: this is now out of date",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 104
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "356fc970_2482aecd",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:30:44Z",
+      "side": 1,
+      "message": "wtf",
+      "range": {
+        "startLine": 600,
+        "startChar": 4,
+        "endLine": 600,
+        "endChar": 27
+      },
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

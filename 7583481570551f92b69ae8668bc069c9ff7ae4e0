@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd7a9e4b_ce12a722",
+        "filename": "android/filegroup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:30:44Z",
+      "side": 0,
+      "message": "Why isn\u0027t this code necessary anymore?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 61
+      },
+      "revId": "7583481570551f92b69ae8668bc069c9ff7ae4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b80b2bf_09803262",
+        "filename": "cc/object.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-19T07:30:44Z",
+      "side": 0,
+      "message": "it\u0027s lovely how you can now remove all these branches",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 6
+      },
+      "revId": "7583481570551f92b69ae8668bc069c9ff7ae4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
