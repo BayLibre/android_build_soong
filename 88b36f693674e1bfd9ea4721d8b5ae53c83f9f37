@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a41b36a5_2d98afcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-19T09:40:05Z",
+      "side": 1,
+      "message": "Not necessary to be done in this CL, but I realized we don\u0027t have any integration tests for mixed mode builds: https://cs.android.com/android/platform/superproject/+/master:build/soong/tests/mixed_mode_test.sh",
+      "revId": "88b36f693674e1bfd9ea4721d8b5ae53c83f9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4c48404_2b6bb69b",
         "filename": "android/bazel.go",
         "patchSetId": 9
