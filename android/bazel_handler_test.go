@@ -65,13 +65,9 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
 	var testCases = []testCase{
 		{`
 {
-  "artifacts": [{
-    "id": 1,
-    "pathFragmentId": 1
-  }, {
-    "id": 2,
-    "pathFragmentId": 2
-  }],
+  "artifacts": [
+    { "id": 1, "pathFragmentId": 1 },
+    { "id": 2, "pathFragmentId": 2 }],
   "actions": [{
     "targetId": 1,
     "actionKey": "x",
@@ -81,28 +77,18 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
     "outputIds": [1],
     "primaryOutputId": 1
   }],
-  "depSetOfFiles": [{
-    "id": 1,
-    "directArtifactIds": [1, 2]
-  }],
-  "pathFragments": [{
-    "id": 1,
-    "label": "one"
-  }, {
-    "id": 2,
-    "label": "two"
-  }]
+  "depSetOfFiles": [
+    { "id": 1, "directArtifactIds": [1, 2] }],
+  "pathFragments": [
+    { "id": 1, "label": "one" },
+    { "id": 2, "label": "two" }]
 }`,
 			"cd 'er' && rm -f one && touch foo",
 		}, {`
 {
-  "artifacts": [{
-    "id": 1,
-    "pathFragmentId": 10
-  }, {
-    "id": 2,
-    "pathFragmentId": 20
-  }],
+  "artifacts": [
+    { "id": 1, "pathFragmentId": 10 },
+    { "id": 2, "pathFragmentId": 20 }],
   "actions": [{
     "targetId": 100,
     "actionKey": "x",
@@ -111,18 +97,10 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
     "outputIds": [1, 2],
     "primaryOutputId": 1
   }],
-  "pathFragments": [{
-    "id": 10,
-    "label": "one",
-    "parentId": 30
-  }, {
-    "id": 20,
-    "label": "one.d",
-    "parentId": 30
-  }, {
-    "id": 30,
-    "label": "parent"
-  }]
+  "pathFragments": [
+    { "id": 10, "label": "one", "parentId": 30 },
+    { "id": 20, "label": "one.d", "parentId": 30 },
+    { "id": 30, "label": "parent" }]
 }`,
 			`cd 'er' && rm -f parent/one && bogus command && sed -i'' -E 's@(^|\s|")bazel-out/@\1bo/@g' 'parent/one.d'`,
 		},
@@ -130,7 +108,7 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
 
 	for _, testCase := range testCases {
 		bazelContext, _ := testBazelContext(t, map[bazelCommand]string{
-			bazelCommand{command: "aquery", expression: "deps(@soong_injection//mixed_builds:buildroot)"}: testCase.input})
+			bazelCommand{command: "aquery", expression: ""}: testCase.input})
 
 		err := bazelContext.InvokeBazel(testConfig)
 		if err != nil {
@@ -139,7 +117,7 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
 
 		got := bazelContext.BuildStatementsToRegister()
 		if want := 1; len(got) != want {
-			t.Errorf("expected %d registered build statements, but got %#v", want, got)
+			t.Fatalf("expected %d registered build statements, but got %#v", want, got)
 		}
 
 		cmd := RuleBuilderCommand{}
@@ -186,7 +164,7 @@ func verifyExtraFlags(t *testing.T, config Config, expected string) string {
 	}
 
 	flags := bazelContext.bazelRunner.(*mockBazelRunner).extraFlags
-	if expected := 3; len(flags) != expected {
+	if expected := 4; len(flags) != expected {
 		t.Errorf("Expected %d extra flags got %#v", expected, flags)
 	}
 
@@ -205,7 +183,7 @@ func testBazelContext(t *testing.T, bazelCommandResults map[bazelCommand]string)
 		outputBase:   "outputbase",
 		workspaceDir: "workspace_dir",
 	}
-	aqueryCommand := bazelCommand{command: "aquery", expression: "deps(@soong_injection//mixed_builds:buildroot)"}
+	aqueryCommand := bazelCommand{command: "aquery", expression: ""}
 	if _, exists := bazelCommandResults[aqueryCommand]; !exists {
 		bazelCommandResults[aqueryCommand] = "{}\n"
 	}
