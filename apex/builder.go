@@ -181,12 +181,12 @@ var (
 // different formats are generated. a.manifestJsonOut is JSON format for Q devices, and
 // a.manifest.PbOut is protobuf format for R+ devices.
 // TODO(jiyong): make this to return paths instead of directly storing the paths to apexBundle
-func (a *apexBundle) buildManifest(ctx android.ModuleContext, provideNativeLibs, requireNativeLibs []string) {
+func (a *apexBundle) buildManifest(ctx android.ModuleContext) {
 	src := android.PathForModuleSrc(ctx, proptools.StringDefault(a.properties.Manifest, "apex_manifest.json"))
 
 	// Put dependency({provide|require}NativeLibs) in apex_manifest.json
-	provideNativeLibs = android.SortedUniqueStrings(provideNativeLibs)
-	requireNativeLibs = android.SortedUniqueStrings(android.RemoveListFromList(requireNativeLibs, provideNativeLibs))
+	provideNativeLibs := android.SortedUniqueStrings(a.provideNativeLibs)
+	requireNativeLibs := android.SortedUniqueStrings(android.RemoveListFromList(a.requireNativeLibs, provideNativeLibs))
 
 	// APEX name can be overridden
 	optCommands := []string{}
