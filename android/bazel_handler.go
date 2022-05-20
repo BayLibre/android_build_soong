@@ -28,7 +28,6 @@ import (
 	"sync"
 
 	"android/soong/bazel/cquery"
-	"android/soong/shared"
 	"github.com/google/blueprint"
 
 	"android/soong/bazel"
@@ -36,6 +35,7 @@ import (
 
 func init() {
 	RegisterMixedBuildsMutator(InitRegistrationContext)
+	pctx.HostBinToolVariable("build-runfiles", "build-runfiles")
 }
 
 func RegisterMixedBuildsMutator(ctx RegistrationContext) {
@@ -76,11 +76,20 @@ type configKey struct {
 	osType OsType
 }
 
+func (c configKey) String() string {
+	return fmt.Sprintf("%s::%s", c.arch, c.osType)
+}
+
 // Map key to describe bazel cquery requests.
 type cqueryKey struct {
 	label       string
 	requestType cqueryRequest
 	configKey   configKey
+}
+
+func (c cqueryKey) String() string {
+	return fmt.Sprintf("cquery(%s,%s,%s)", c.label, c.requestType.Name(), c.configKey)
+
 }
 
 // BazelContext is a context object useful for interacting with Bazel during
@@ -395,41 +404,46 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 		"--output_base=" + absolutePath(paths.outputBase),
 		command.command,
 	}
-	cmdFlags = append(cmdFlags, command.expression)
-	cmdFlags = append(cmdFlags, "--profile="+shared.BazelMetricsFilename(paths, runName))
+	if command.expression != "" {
+		cmdFlags = append(cmdFlags, command.expression)
+	}
+	cmdFlags = append(cmdFlags,
+		// TODO(asmundak): investigate profile's performance impact
+		// "--profile="+shared.BazelMetricsFilename(paths, runName),
 
-	// Set default platforms to canonicalized values for mixed builds requests.
-	// If these are set in the bazelrc, they will have values that are
-	// non-canonicalized to @sourceroot labels, and thus be invalid when
-	// referenced from the buildroot.
-	//
-	// The actual platform values here may be overridden by configuration
-	// transitions from the buildroot.
-	cmdFlags = append(cmdFlags,
-		fmt.Sprintf("--platforms=%s", "//build/bazel/platforms:android_target"))
-	cmdFlags = append(cmdFlags,
-		fmt.Sprintf("--extra_toolchains=%s", "//prebuilts/clang/host/linux-x86:all"))
-	// This should be parameterized on the host OS, but let's restrict to linux
-	// to keep things simple for now.
-	cmdFlags = append(cmdFlags,
-		fmt.Sprintf("--host_platform=%s", "//build/bazel/platforms:linux_x86_64"))
-
-	// Explicitly disable downloading rules (such as canonical C++ and Java rules) from the network.
-	cmdFlags = append(cmdFlags, "--experimental_repository_disable_download")
+		// Set default platforms to canonicalized values for mixed builds requests.
+		// If these are set in the bazelrc, they will have values that are
+		// non-canonicalized to @sourceroot labels, and thus be invalid when
+		// referenced from the buildroot.
+		//
+		// The actual platform values here may be overridden by configuration
+		// transitions from the buildroot.
+		fmt.Sprintf("--platforms=%s", "//build/bazel/platforms:android_target"),
+		fmt.Sprintf("--extra_toolchains=%s", "//prebuilts/clang/host/linux-x86:all"),
+		// This should be parameterized on the host OS, but let's restrict to linux
+		// to keep things simple for now.
+		fmt.Sprintf("--host_platform=%s", "//build/bazel/platforms:linux_x86_64"),
+		// Suppress noise
+		"--ui_event_filters=-INFO",
+		"--noshow_progress",
+		// Explicitly disable downloading rules (such as canonical C++ and Java rules) from the network.
+		"--experimental_repository_disable_download")
 	cmdFlags = append(cmdFlags, extraFlags...)
 
 	bazelCmd := exec.Command(paths.bazelPath, cmdFlags...)
 	bazelCmd.Dir = absolutePath(paths.syntheticWorkspaceDir())
-	bazelCmd.Env = append(os.Environ(),
-		"HOME="+paths.homeDir,
+	extraEnv := []string{
+		"HOME=" + paths.homeDir,
 		pwdPrefix(),
-		"BUILD_DIR="+absolutePath(paths.soongOutDir),
+		"BUILD_DIR=" + absolutePath(paths.soongOutDir),
 		// Make OUT_DIR absolute here so tools/bazel.sh uses the correct
 		// OUT_DIR at <root>/out, instead of <root>/out/soong/workspace/out.
-		"OUT_DIR="+absolutePath(paths.outDir()),
+		"OUT_DIR=" + absolutePath(paths.outDir()),
 		// Disables local host detection of gcc; toolchain information is defined
 		// explicitly in BUILD files.
-		"BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1")
+		"BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1",
+	}
+	bazelCmd.Env = append(os.Environ(), extraEnv...)
 	stderr := &bytes.Buffer{}
 	bazelCmd.Stderr = stderr
 
@@ -726,15 +740,17 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 		return err
 	}
 
-	buildrootLabel := "@soong_injection//mixed_builds:buildroot"
+	const buildrootLabel = "@soong_injection//mixed_builds:buildroot"
 	cqueryOutput, cqueryErr, err = context.issueBazelCommand(
 		context.paths,
 		bazel.CqueryBuildRootRunName,
 		bazelCommand{"cquery", fmt.Sprintf("deps(%s, 2)", buildrootLabel)},
 		"--output=starlark",
 		"--starlark:file="+absolutePath(cqueryFileRelpath))
-	err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"),
-		[]byte(cqueryOutput), 0666)
+	if err == nil {
+		err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"),
+			[]byte(cqueryOutput), 0666)
+	}
 	if err != nil {
 		return err
 	}
@@ -777,16 +793,28 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 				includePaths+excludePaths))
 		}
 	}
-
-	extraFlags := append([]string{"--output=jsonproto", "--include_file_write_contents"}, coverageFlags...)
+	// We used to issue `bazel aquery 'deps(<buildrootlabel>)'`. However, according to Bazel's team member:
+	// "Note that aquery is an estimate of what happens during the execution phase: its scope of knowledge stops at the
+	// end of the analysis phase. Maybe you can try building the target, then query against the state of Skyframe?
+	// Then you'd have the full picture."
+	// The new approach is to run `bazel build --nobuild <buildrootlabel>` to set up Skyframe, immediately followed
+	// by `bazel aquery --skyframe_state`
+	_, _, err = context.issueBazelCommand(
+		context.paths,
+		bazel.AqueryBuildRootRunName,
+		bazelCommand{command: "build", expression: buildrootLabel},
+		append([]string{"--nobuild", "--nolegacy_external_runfiles"}, coverageFlags...)...)
+	if err != nil {
+		return err
+	}
 
 	aqueryOutput, _, err = context.issueBazelCommand(
 		context.paths,
 		bazel.AqueryBuildRootRunName,
-		bazelCommand{"aquery", fmt.Sprintf("deps(%s)", buildrootLabel)},
+		bazelCommand{command: "aquery"},
 		// Use jsonproto instead of proto; actual proto parsing would require a dependency on Bazel's
 		// proto sources, which would add a number of unnecessary dependencies.
-		extraFlags...)
+		append([]string{"--output=jsonproto", "--include_file_write_contents", "--skyframe_state", "--nolegacy_external_runfiles"}, coverageFlags...)...)
 
 	if err != nil {
 		return err
@@ -874,9 +902,6 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 	executionRoot := path.Join(ctx.Config().BazelContext.OutputBase(), "execroot", "__main__")
 	bazelOutDir := path.Join(executionRoot, "bazel-out")
 	for index, buildStatement := range ctx.Config().BazelContext.BuildStatementsToRegister() {
-		if len(buildStatement.Command) < 1 {
-			panic(fmt.Sprintf("unhandled build statement: %v", buildStatement))
-		}
 		rule := NewRuleBuilder(pctx, ctx)
 		createCommand(rule.Command(), buildStatement, executionRoot, bazelOutDir, ctx)
 		// This is required to silence warnings pertaining to unexpected timestamps. Particularly,
@@ -892,25 +917,50 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 
 // Register bazel-owned build statements (obtained from the aquery invocation).
 func createCommand(cmd *RuleBuilderCommand, buildStatement bazel.BuildStatement, executionRoot string, bazelOutDir string, ctx PathContext) {
-	// executionRoot is the action cwd.
-	cmd.Text(fmt.Sprintf("cd '%s' &&", executionRoot))
-
-	// Remove old outputs, as some actions might not rerun if the outputs are detected.
-	if len(buildStatement.OutputPaths) > 0 {
-		cmd.Text("rm -f")
-		for _, outputPath := range buildStatement.OutputPaths {
-			cmd.Text(outputPath)
+	// If BuildStatement were an interface implementing buildRule(ctx) function, the
+	// code here would just call it. Unfortunately, the BuildStatement is defined in
+	// the 'bazel' package, which cannot depend on 'android' package where ctx is defined,
+	// because this would cause circular dependency. So, until we move aquery processing
+	// to the 'android' package, we need a hack to handle SymlinkTree action: its command
+	// is synthezied here because the path to the tool 'build-runfiles' it uses is not
+	// available when the BuildStatement for it is created.
+	if buildStatement.Mnemonic == "SymlinkTree" {
+		cmd.BuiltTool("build-runfiles")
+		// build-runfiles arguments are the manifest file and the target directory
+		// where it creates the symlink tree according to this manifest, and then
+		// writes the MANIFEST file to it.
+		cmd.Text(PathForBazelOut(ctx, buildStatement.InputPaths[0]).String())
+		// The action's output artifact is <target-dir>/MANIFEST, get the second
+		// argument from it.
+		outManifest := PathForBazelOut(ctx, buildStatement.OutputPaths[0]).String()
+		if !strings.HasSuffix(outManifest, "MANIFEST") {
+			panic("the base name of the symlink tree action should be MANIFEST, got " + outManifest)
 		}
-		cmd.Text("&&")
-	}
+		cmd.Text(filepath.Dir(outManifest))
+	} else {
+		if len(buildStatement.Command) < 1 {
+			panic(fmt.Sprintf("unhandled build statement: %v", buildStatement))
+		}
+		// executionRoot is the action cwd.
+		cmd.Text(fmt.Sprintf("cd '%s' &&", executionRoot))
 
-	for _, pair := range buildStatement.Env {
-		// Set per-action env variables, if any.
-		cmd.Flag(pair.Key + "=" + pair.Value)
-	}
+		// Remove old outputs, as some actions might not rerun if the outputs are detected.
+		if len(buildStatement.OutputPaths) > 0 {
+			cmd.Text("rm -f")
+			for _, outputPath := range buildStatement.OutputPaths {
+				cmd.Text(outputPath)
+			}
+			cmd.Text("&&")
+		}
 
-	// The actual Bazel action.
-	cmd.Text(buildStatement.Command)
+		for _, pair := range buildStatement.Env {
+			// Set per-action env variables, if any.
+			cmd.Flag(pair.Key + "=" + pair.Value)
+		}
+
+		// The actual Bazel action.
+		cmd.Text(buildStatement.Command)
+	}
 
 	for _, outputPath := range buildStatement.OutputPaths {
 		cmd.ImplicitOutput(PathForBazelOut(ctx, outputPath))
