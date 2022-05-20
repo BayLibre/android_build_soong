@@ -215,7 +215,7 @@ func createCommandScript(rawCommand, scriptPath, scriptPathInSandbox string) (*e
 		return nil, fmt.Errorf("failed to write command %s... to %s",
 			rawCommand[0:40], scriptPath)
 	}
-	return exec.Command("bash", scriptPathInSandbox), nil
+	return exec.Command("/bin/bash", scriptPathInSandbox), nil
 }
 
 // readManifest reads an sbox manifest from a textproto file.

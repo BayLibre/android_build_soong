@@ -201,6 +201,11 @@ func SetupPath(ctx Context, config Config) {
 
 	// Compute the full list of binaries available in the original $PATH.
 	var execs []string
+	mandirs := map[string]bool{
+		"/usr/bin": true,
+		"/bin":     true,
+	}
+
 	for _, pathEntry := range filepath.SplitList(origPath) {
 		if pathEntry == "" {
 			// Ignore the current directory
@@ -212,8 +217,16 @@ func SetupPath(ctx Context, config Config) {
 		// (Except for the JDK, which is configured in ui/build/config.go)
 
 		execs = append(execs, parsePathDir(pathEntry)...)
+		if _, found := mandirs[pathEntry]; found {
+			mandirs[pathEntry] = false
+		}
 	}
-
+	for d, v := range mandirs {
+		if v {
+			execs = append(execs, parsePathDir(d)...)
+			fmt.Fprintf(os.Stderr, "added %s to the interposer for %s\n", d, myPath)
+		}
+	}
 	if config.Environment().IsEnvTrue("TEMPORARY_DISABLE_PATH_RESTRICTIONS") {
 		ctx.Fatalln("TEMPORARY_DISABLE_PATH_RESTRICTIONS was a temporary migration method, and is now obsolete.")
 	}
