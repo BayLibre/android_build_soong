@@ -81,20 +81,20 @@ func buildNoticeOutputFromLicenseMetadata(ctx BuilderContext, tool, name string,
 // BuildNoticeTextOutputFromLicenseMetadata writes out a notice text file based
 // on the license metadata files for the input `modules` defaulting to the
 // current context module if none given.
-func BuildNoticeTextOutputFromLicenseMetadata(ctx BuilderContext, outputFile WritablePath, libraryName, stripPrefix string, modules ...Module) {
-	buildNoticeOutputFromLicenseMetadata(ctx, "textnotice", "text_notice", outputFile, libraryName, stripPrefix, modules...)
+func BuildNoticeTextOutputFromLicenseMetadata(ctx BuilderContext, outputFile WritablePath, name, libraryName, stripPrefix string, modules ...Module) {
+	buildNoticeOutputFromLicenseMetadata(ctx, "textnotice", "text_notice_"+name, outputFile, libraryName, stripPrefix, modules...)
 }
 
 // BuildNoticeHtmlOutputFromLicenseMetadata writes out a notice text file based
 // on the license metadata files for the input `modules` defaulting to the
 // current context module if none given.
-func BuildNoticeHtmlOutputFromLicenseMetadata(ctx BuilderContext, outputFile WritablePath, libraryName, stripPrefix string, modules ...Module) {
-	buildNoticeOutputFromLicenseMetadata(ctx, "htmlnotice", "html_notice", outputFile, libraryName, stripPrefix, modules...)
+func BuildNoticeHtmlOutputFromLicenseMetadata(ctx BuilderContext, outputFile WritablePath, name, libraryName, stripPrefix string, modules ...Module) {
+	buildNoticeOutputFromLicenseMetadata(ctx, "htmlnotice", "html_notice_"+name, outputFile, libraryName, stripPrefix, modules...)
 }
 
 // BuildNoticeXmlOutputFromLicenseMetadata writes out a notice text file based
 // on the license metadata files for the input `modules` defaulting to the
 // current context module if none given.
-func BuildNoticeXmlOutputFromLicenseMetadata(ctx BuilderContext, outputFile WritablePath, libraryName, stripPrefix string, modules ...Module) {
-	buildNoticeOutputFromLicenseMetadata(ctx, "xmlnotice", "xml_notice", outputFile, libraryName, stripPrefix, modules...)
+func BuildNoticeXmlOutputFromLicenseMetadata(ctx BuilderContext, outputFile WritablePath, name, libraryName, stripPrefix string, modules ...Module) {
+	buildNoticeOutputFromLicenseMetadata(ctx, "xmlnotice", "xml_notice_"+name, outputFile, libraryName, stripPrefix, modules...)
 }
