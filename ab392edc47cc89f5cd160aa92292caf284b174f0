@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20780b0_6fb1fdb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-20T13:29:30Z",
+      "side": 1,
+      "message": "This does change build.ninja but the tests pass and presubmits are promising, too.",
+      "revId": "ab392edc47cc89f5cd160aa92292caf284b174f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
