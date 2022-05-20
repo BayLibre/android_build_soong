@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc46f22_b637f880",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-20T23:31:20Z",
+      "side": 1,
+      "message": "`name` is too generic, maybe `ruleName` or `ruleNameSuffix`?",
+      "range": {
+        "startLine": 84,
+        "startChar": 91,
+        "endLine": 84,
+        "endChar": 95
+      },
+      "revId": "b9ee03f1b2431e9a866ab1552b6d7bcbf808a781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba697545_a3abad4f",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-20T23:31:20Z",
+      "side": 1,
+      "message": "This looks like a bug fix not directly related to the tests, can it be a separate commit with a commit message describing it?",
+      "revId": "b9ee03f1b2431e9a866ab1552b6d7bcbf808a781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
