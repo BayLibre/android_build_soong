@@ -295,6 +295,22 @@ func (a *aqueryArtifactHandler) artifactPathsFromDepsetHash(depsetHash string) (
 	}
 }
 
+func (ah aqueryArtifactHandler) asString(a action) string {
+	var buf strings.Builder
+	outputs, _, _ := ah.getOutputPaths(a)
+	buf.WriteString(strings.Join(outputs, ", "))
+	buf.WriteString(": ")
+	buf.WriteString("templatecontent: ")
+	buf.WriteString(a.TemplateContent)
+	buf.WriteString(", mnemonic: ")
+	buf.WriteString(a.Mnemonic)
+	buf.WriteString(", deps: ")
+	inputPaths, _ := ah.getInputPaths(a.InputDepSetIds)
+	buf.WriteString(strings.Join(inputPaths, ", "))
+
+	return buf.String()
+}
+
 // AqueryBuildStatements returns a slice of BuildStatements and a slice of AqueryDepset
 // which should be registered (and output  to a ninja file) to correspond with Bazel's
 // action graph, as described by the given action graph json proto.
@@ -326,6 +342,8 @@ func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, []AqueryDe
 		} else if isPythonZipperAction(actionEntry) {
 			buildStatement, err = aqueryHandler.pythonZipperActionBuildStatement(actionEntry, buildStatements)
 		} else if len(actionEntry.Arguments) < 1 {
+			panic(fmt.Errorf("received action with no command, action: %s\n",
+				aqueryHandler.asString(actionEntry)))
 			return nil, nil, fmt.Errorf("received action with no command: [%s]", actionEntry.Mnemonic)
 		} else {
 			buildStatement, err = aqueryHandler.normalActionBuildStatement(actionEntry)

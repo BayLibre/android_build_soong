@@ -455,5 +455,7 @@ var (
 		"simpleperf_ndk",
 		"toybox-static",
 		"zlib_bench",
+
+		"test_com.android.adbd",
 	}
 )
