@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b72756c_433e170f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-20T20:08:29Z",
+      "side": 1,
+      "message": "The combination of enabled plus shrink/optimize/obfuscate seems confusing, maybe we should make shrink/optimize/obfuscate \u003d\u003d true imply enabled\u003dtrue, and only use enabled\u003dfalse as a shortcut for shrink/optimize/obfuscate\u003dfalse.  That\u0027s hard semantics to describe in the docs though.",
+      "revId": "02edc1004757f6d6d5c2e2a93f1e8656ae2435cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
