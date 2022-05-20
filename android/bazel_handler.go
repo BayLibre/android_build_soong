@@ -23,6 +23,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"sort"
 	"strings"
 	"sync"
 
@@ -75,12 +76,22 @@ type configKey struct {
 	osType OsType
 }
 
+func (c configKey) String() string {
+	return fmt.Sprintf("%s::%s", c.arch, c.osType)
+}
+
 // Map key to describe bazel cquery requests.
 type cqueryKey struct {
 	label       string
 	requestType cqueryRequest
 	configKey   configKey
 }
+
+func (c cqueryKey) String() string {
+	return fmt.Sprintf("cquery(%s,%s,%s)", c.label, c.requestType.Name(), c.configKey)
+
+}
+
 
 // BazelContext is a context object useful for interacting with Bazel during
 // the course of a build. Use of Bazel to evaluate part of the build graph
@@ -417,6 +428,17 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 
 	bazelCmd := exec.Command(paths.bazelPath, cmdFlags...)
 	bazelCmd.Dir = absolutePath(paths.syntheticWorkspaceDir())
+	extraEnv := []string{
+		"HOME=" + paths.homeDir,
+		pwdPrefix(),
+		"BUILD_DIR=" + absolutePath(paths.soongOutDir),
+		// Make OUT_DIR absolute here so tools/bazel.sh uses the correct
+		// OUT_DIR at <root>/out, instead of <root>/out/soong/workspace/out.
+		"OUT_DIR=" + absolutePath(paths.outDir()),
+		// Disables local host detection of gcc; toolchain information is defined
+		// explicitly in BUILD files.
+		"BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1",
+	}
 	bazelCmd.Env = append(os.Environ(),
 		"HOME="+paths.homeDir,
 		pwdPrefix(),
@@ -431,9 +453,11 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 	bazelCmd.Stderr = stderr
 
 	if output, err := bazelCmd.Output(); err != nil {
+		fmt.Fprintf(os.Stderr, "$ env -C %s %s %s\n", bazelCmd.Dir, strings.Join(extraEnv, " "), bazelCmd)
 		return "", string(stderr.Bytes()),
-			fmt.Errorf("bazel command failed. command: [%s], env: [%s], error [%s]", bazelCmd, bazelCmd.Env, stderr)
+			fmt.Errorf("bazel command failed:\n. command: [%s]\nenv: [%s], \nstdout\n[%s]\n", bazelCmd, bazelCmd.Env, stderr)
 	} else {
+		fmt.Fprintf(os.Stderr, "\n$ %s\n%s\n\n", bazelCmd, output)
 		return string(output), string(stderr.Bytes()), nil
 	}
 }
@@ -533,7 +557,8 @@ config_node(name = "%s",
 	}
 
 	allLabels := []string{}
-	for configString, labels := range labelsByConfig {
+	for _, configString := range SortedStringKeys(labelsByConfig) {
+		labels := labelsByConfig[configString]
 		configTokens := strings.Split(configString, "|")
 		if len(configTokens) != 2 {
 			panic(fmt.Errorf("Unexpected config string format: %s", configString))
@@ -588,15 +613,22 @@ def %s(target):
     return id_string + ">>" + %s(target)
 `
 
-	for requestType := range requestTypeToCqueryIdEntries {
-		labelMapName := requestType.Name() + "_Labels"
-		functionName := requestType.Name() + "_Fn"
+	var sortedRt []cqueryRequest
+	for rte := range requestTypeToCqueryIdEntries {
+		sortedRt = append(sortedRt, rte)
+	}
+	sort.Slice(sortedRt, func(i, j int) bool { return sortedRt[i].Name() < sortedRt[j].Name() })
+	for _, rt := range sortedRt {
+		rtVal := requestTypeToCqueryIdEntries[rt]
+		labelMapName := rt.Name() + "_Labels"
+		functionName := rt.Name() + "_Fn"
+		sort.Strings(rtVal)
 		labelRegistrationMapSection += fmt.Sprintf(mapDeclarationFormatString,
 			labelMapName,
-			strings.Join(requestTypeToCqueryIdEntries[requestType], ",\n  "))
+			strings.Join(rtVal, ",\n  "))
 		functionDefSection += fmt.Sprintf(functionDefFormatString,
 			functionName,
-			indent(requestType.StarlarkFunctionBody()))
+			indent(rt.StarlarkFunctionBody()))
 		mainSwitchSection += fmt.Sprintf(mainSwitchSectionFormatString,
 			labelMapName, functionName)
 	}
@@ -730,8 +762,10 @@ func (context *bazelContext) InvokeBazel() error {
 		bazelCommand{"cquery", fmt.Sprintf("deps(%s, 2)", buildrootLabel)},
 		"--output=starlark",
 		"--starlark:file="+absolutePath(cqueryFileRelpath))
-	err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"),
-		[]byte(cqueryOutput), 0666)
+	if err == nil {
+		err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"),
+			[]byte(cqueryOutput), 0666)
+	}
 	if err != nil {
 		return err
 	}
@@ -853,10 +887,12 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 	}
 
 	// Register bazel-owned build statements (obtained from the aquery invocation).
+	fmt.Fprintf(os.Stderr, "Bazel build statements\n")
 	for index, buildStatement := range ctx.Config().BazelContext.BuildStatementsToRegister() {
 		if len(buildStatement.Command) < 1 {
 			panic(fmt.Sprintf("unhandled build statement: %v", buildStatement))
 		}
+		fmt.Fprintf(os.Stderr, "%d: %v <- %v\n", index, buildStatement.OutputPaths, buildStatement.InputPaths)
 		rule := NewRuleBuilder(pctx, ctx)
 		cmd := rule.Command()
 

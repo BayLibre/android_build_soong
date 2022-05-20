@@ -18,6 +18,7 @@ package apex
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -1790,6 +1791,18 @@ func (f fsType) string() string {
 	}
 }
 
+func (a *apexBundle) maybeGenerateBazelActions(ctx android.ModuleContext) bool {
+	bazelTarget := a.GetBazelLabel(ctx, a)
+	if android.MixedBuildsEnabled(ctx) {
+		cfgKey := android.GetConfigKey(ctx)
+		outputs, ok := ctx.Config().BazelContext.GetOutputFiles(bazelTarget, android.GetConfigKey(ctx))
+		fmt.Fprintf(os.Stderr, "apex Bazel output(%q, %s): %v %t\n", bazelTarget, cfgKey, outputs, ok)
+		if ok {
+		}
+	}
+	return false
+}
+
 // Creates build rules for an APEX. It consists of the following major steps:
 //
 // 1) do some validity checks such as apex_available, min_sdk_version, etc.
@@ -1806,6 +1819,9 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.checkStaticExecutables(ctx)
 	if len(a.properties.Tests) > 0 && !a.testApex {
 		ctx.PropertyErrorf("tests", "property allowed only in apex_test module type")
+		return
+	}
+	if a.maybeGenerateBazelActions(ctx) {
 		return
 	}
 
