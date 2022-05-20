@@ -17,6 +17,7 @@
 package apex
 
 import (
+	"android/soong/bazel/cquery"
 	"fmt"
 	"path/filepath"
 	"regexp"
@@ -459,6 +460,9 @@ type apexBundle struct {
 
 	// Collect the module directory for IDE info in java/jdeps.go.
 	modulePaths []string
+
+	provideNativeLibs []string
+	requireNativeLibs []string
 }
 
 // apexFileClass represents a type of file that can be included in APEX.
@@ -1790,13 +1794,52 @@ func (f fsType) string() string {
 	}
 }
 
-// Creates build rules for an APEX. It consists of the following major steps:
-//
-// 1) do some validity checks such as apex_available, min_sdk_version, etc.
-// 2) traverse the dependency tree to collect apexFile structs from them.
-// 3) some fields in apexBundle struct are configured
-// 4) generate the build rules to create the APEX. This is mostly done in builder.go.
-func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+func (a *apexBundle) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
+	return ctx.ModuleType() == "apex" && a.properties.ApexType == imageApex
+}
+
+func (a *apexBundle) QueueBazelCall(ctx android.BaseModuleContext) {
+	bazelCtx := ctx.Config().BazelContext
+	bazelCtx.QueueBazelRequest(a.GetBazelLabel(ctx, a), cquery.GetOutputFiles, android.GetConfigKey(ctx))
+}
+
+func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
+	a.generateCommonBuildActions(ctx)
+	// TODO: common stuff
+	bazelTarget := a.GetBazelLabel(ctx, a)
+	bazelCtx := ctx.Config().BazelContext
+	outputs, err := bazelCtx.GetOutputFiles(bazelTarget, android.GetConfigKey(ctx))
+	if err != nil {
+		ctx.ModuleErrorf(err.Error())
+		return
+	}
+	a.outputApexFile = android.PathForBazelOut(ctx, outputs[0])
+	apexType := a.properties.ApexType
+	a.isCompressed = (apexType == imageApex) &&
+		((ctx.Config().CompressedApex() &&
+			proptools.BoolDefault(a.overridableProperties.Compressible, false) &&
+			!a.testApex && !ctx.Config().UnbundledBuildApps()) ||
+			a.testOnlyShouldForceCompression())
+	installSuffix := imageApexSuffix
+	if a.isCompressed {
+		installSuffix = imageCapexSuffix
+	}
+	a.outputFile = a.outputApexFile
+	switch apexType {
+	case flattenedApex:
+	case zipApex, imageApex:
+		a.htmlGzNotice = android.PathForModuleOut(ctx, "NOTICE.html.gz") // TODO(asmundak): is it needed
+		a.bundleModuleFile = android.PathForModuleOut(ctx, a.Name()+apexType.suffix()+"-base.zip")
+		a.nativeApisUsedByModuleFile = android.PathForModuleOut(ctx, a.Name()+"_using.txt")
+		a.nativeApisBackedByModuleFile = android.PathForModuleOut(ctx, a.Name()+"_backing.txt")
+		a.javaApisUsedByModuleFile = android.PathForModuleOut(ctx, a.Name()+"_using.xml")
+		a.installedFile = ctx.InstallFile(a.installDir, a.Name()+installSuffix, a.outputFile, a.compatSymlinks.Paths()...)
+	}
+}
+
+var _ android.MixedBuildBuildable = (*apexBundle)(nil)
+
+func (a *apexBundle) generateCommonBuildActions(ctx android.ModuleContext) {
 	////////////////////////////////////////////////////////////////////////////////////////////
 	// 1) do some validity checks such as apex_available, min_sdk_version, etc.
 	a.checkApexAvailability(ctx)
@@ -2264,10 +2307,22 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if a.properties.ApexType != zipApex {
 		a.compatSymlinks = makeCompatSymlinks(a.BaseModuleName(), ctx, a.primaryApexType)
 	}
+	a.provideNativeLibs = provideNativeLibs
+	a.requireNativeLibs = requireNativeLibs
 
+}
+
+// Creates build rules for an APEX. It consists of the following major steps:
+//
+// 1) do some validity checks such as apex_available, min_sdk_version, etc.
+// 2) traverse the dependency tree to collect apexFile structs from them.
+// 3) some fields in apexBundle struct are configured
+// 4) generate the build rules to create the APEX. This is mostly done in builder.go.
+func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	a.generateCommonBuildActions(ctx)
 	////////////////////////////////////////////////////////////////////////////////////////////
 	// 4) generate the build rules to create the APEX. This is done in builder.go.
-	a.buildManifest(ctx, provideNativeLibs, requireNativeLibs)
+	a.buildManifest(ctx)
 	if a.properties.ApexType == flattenedApex {
 		a.buildFlattenedApex(ctx)
 	} else {
