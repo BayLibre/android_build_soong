@@ -787,6 +787,7 @@ func NewGenSrcs() *Module {
 func GenSrcsFactory() android.Module {
 	m := NewGenSrcs()
 	android.InitAndroidModule(m)
+	android.InitBazelModule(m)
 	return m
 }
 
@@ -796,6 +797,13 @@ type genSrcsProperties struct {
 
 	// maximum number of files that will be passed on a single command line.
 	Shard_size *int64
+}
+
+type bazelGensrcsAttributes struct {
+	Srcs             bazel.LabelListAttribute
+	Output_extension string
+	Tools            bazel.LabelListAttribute
+	Cmd              string
 }
 
 const defaultShardSize = 50
@@ -862,8 +870,14 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	// Replace in and out variables with $< and $@
 	var cmd string
 	if m.properties.Cmd != nil {
-		cmd = strings.Replace(*m.properties.Cmd, "$(in)", "$(SRCS)", -1)
-		cmd = strings.Replace(cmd, "$(out)", "$(OUTS)", -1)
+		if ctx.ModuleType() == "gensrcs" {
+			cmd = strings.Replace(*m.properties.Cmd, "$(in)", "$(SRC)", -1)
+			cmd = strings.Replace(cmd, "$(out)", "$(OUT)", -1)
+		} else {
+			cmd = strings.Replace(*m.properties.Cmd, "$(in)", "$(SRCS)", -1)
+			cmd = strings.Replace(cmd, "$(out)", "$(OUTS)", -1)
+		}
+
 		genDir := "$(GENDIR)"
 		if t := ctx.ModuleType(); t == "cc_genrule" || t == "java_genrule" || t == "java_genrule_host" {
 			genDir = "$(RULEDIR)"
@@ -883,30 +897,50 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		}
 	}
 
-	// The Out prop is not in an immediately accessible field
-	// in the Module struct, so use GetProperties and cast it
-	// to the known struct prop.
-	var outs []string
-	for _, propIntf := range m.GetProperties() {
-		if props, ok := propIntf.(*genRuleProperties); ok {
-			outs = props.Out
-			break
+	if ctx.ModuleType() == "gensrcs" {
+		// The Output_extension prop is not in an immediately accessible field
+		// in the Module struct, so use GetProperties and cast it
+		// to the known struct prop.
+		var output_extension string
+		for _, propIntf := range m.GetProperties() {
+			if props, ok := propIntf.(*genSrcsProperties); ok {
+				output_extension = *props.Output_extension
+				break
+			}
 		}
+		props := bazel.BazelTargetModuleProperties{
+			Rule_class:        "gensrcs",
+			Bzl_load_location: "//build/bazel/rules:gensrcs.bzl",
+		}
+		attrs := &bazelGensrcsAttributes{
+			Srcs:             srcs,
+			Output_extension: output_extension,
+			Cmd:              cmd,
+			Tools:            tools,
+		}
+		ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
+	} else {
+		// The Out prop is not in an immediately accessible field
+		// in the Module struct, so use GetProperties and cast it
+		// to the known struct prop.
+		var outs []string
+		for _, propIntf := range m.GetProperties() {
+			if props, ok := propIntf.(*genRuleProperties); ok {
+				outs = props.Out
+				break
+			}
+		}
+		attrs := &bazelGenruleAttributes{
+			Srcs:  srcs,
+			Outs:  outs,
+			Cmd:   cmd,
+			Tools: tools,
+		}
+		props := bazel.BazelTargetModuleProperties{
+			Rule_class: "genrule",
+		}
+		ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
 	}
-
-	attrs := &bazelGenruleAttributes{
-		Srcs:  srcs,
-		Outs:  outs,
-		Cmd:   cmd,
-		Tools: tools,
-	}
-
-	props := bazel.BazelTargetModuleProperties{
-		Rule_class: "genrule",
-	}
-
-	// Create the BazelTargetModule.
-	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
 }
 
 var Bool = proptools.Bool
