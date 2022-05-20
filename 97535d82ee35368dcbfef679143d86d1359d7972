@@ -22,6 +22,30 @@
       },
       "revId": "97535d82ee35368dcbfef679143d86d1359d7972",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "621461f8_d0001934",
+        "filename": "bp2build/filegroup_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-05-20T17:50:16Z",
+      "side": 1,
+      "message": "There is no failure in that case at the bp2build level. It would be a failure when trying to actually build the filegroup though. I could add it here as well, but it seemed redundant to check for the same error both when doing a bp2build and when actually building the target.",
+      "parentUuid": "304e15eb_5e7d4b5a",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "97535d82ee35368dcbfef679143d86d1359d7972",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
