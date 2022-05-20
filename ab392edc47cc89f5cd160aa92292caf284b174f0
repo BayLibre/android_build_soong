@@ -16,6 +16,23 @@
       "message": "This does change build.ninja but the tests pass and presubmits are promising, too.",
       "revId": "ab392edc47cc89f5cd160aa92292caf284b174f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b1323a1_6b02f5e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-20T13:49:04Z",
+      "side": 1,
+      "message": "The art failures in presubmit have nothing to do with this change. They have been fixed and should clear up soon.\n\nThanks for doing this.",
+      "revId": "ab392edc47cc89f5cd160aa92292caf284b174f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
