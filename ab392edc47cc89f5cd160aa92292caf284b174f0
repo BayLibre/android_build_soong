@@ -51,6 +51,24 @@
       "parentUuid": "5b1323a1_6b02f5e7",
       "revId": "ab392edc47cc89f5cd160aa92292caf284b174f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc008eb_76e3d597",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-20T15:27:31Z",
+      "side": 1,
+      "message": "It seems a waste of your time and energy for you to learn about some code only to remove it. I am happy to remove the code, after all its basically mine and at least I wouldn\u0027t have to learn it in the process and I can then purge it from my own memory.\n\nIf you want a chat so I can take you through it I\u0027d be happy to do that too. Just not this week.",
+      "parentUuid": "c8f4a276_d398aeed",
+      "revId": "ab392edc47cc89f5cd160aa92292caf284b174f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
