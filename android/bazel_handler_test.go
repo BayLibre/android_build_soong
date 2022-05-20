@@ -58,7 +58,7 @@ func TestInvokeBazelWritesBazelFiles(t *testing.T) {
 
 func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
 	bazelContext, _ := testBazelContext(t, map[bazelCommand]string{
-		bazelCommand{command: "aquery", expression: "deps(@soong_injection//mixed_builds:buildroot)"}: `
+		bazelCommand{command: "aquery", expression: ""}: `
 {
   "artifacts": [{
     "id": 1,
@@ -136,7 +136,7 @@ func verifyExtraFlags(t *testing.T, config Config, expected string) string {
 	}
 
 	flags := bazelContext.bazelRunner.(*mockBazelRunner).extraFlags
-	if expected := 3; len(flags) != expected {
+	if expected := 4; len(flags) != expected {
 		t.Errorf("Expected %d extra flags got %#v", expected, flags)
 	}
 
@@ -155,7 +155,7 @@ func testBazelContext(t *testing.T, bazelCommandResults map[bazelCommand]string)
 		outputBase:   "outputbase",
 		workspaceDir: "workspace_dir",
 	}
-	aqueryCommand := bazelCommand{command: "aquery", expression: "deps(@soong_injection//mixed_builds:buildroot)"}
+	aqueryCommand := bazelCommand{command: "aquery", expression: ""}
 	if _, exists := bazelCommandResults[aqueryCommand]; !exists {
 		bazelCommandResults[aqueryCommand] = "{}\n"
 	}
