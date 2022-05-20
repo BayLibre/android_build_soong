@@ -16,6 +16,24 @@
       "message": "FYI this MAY (I repeat MAY) no confirmation have resulted in hundreds of test failures with a symptom of \"libbinder ProcessState can not be used after fork\".\n\nThere is a forrest run - see http://b/233340428#comment5 - currently testing that theory.\n\nI am leaving work now so I will leave it to you to follow the status on that bug. If this revert does not fix it then accept my apologies for wasting your time.\n\nIf it does then please make sure the problems are fixed before submitting again.\n\nEither way we need to try and make sure that issues like this are detected in presubmit and not after because it was a huge waste of time.",
       "revId": "d8b58663ff5dbd09027abdfecf12943c21540cd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ac3397_f2be58a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-20T16:13:51Z",
+      "side": 1,
+      "message": "Keeping it open.",
+      "parentUuid": "99dfcc5a_0dff54dc",
+      "revId": "d8b58663ff5dbd09027abdfecf12943c21540cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
