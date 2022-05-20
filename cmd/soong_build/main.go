@@ -566,7 +566,9 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 	// Only report metrics when in bp2build mode. The metrics aren't relevant
 	// for queryview, since that's a total repo-wide conversion and there's a
 	// 1:1 mapping for each module.
-	metrics.Print()
+	if !configuration.IsEnvTrue("ANDROID_QUIET_BUILD") {
+		metrics.Print()
+	}
 	writeBp2BuildMetrics(&metrics, configuration, eventHandler)
 }
 
