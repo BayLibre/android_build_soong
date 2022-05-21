@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "121d76cf_151bb7a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-05-21T05:20:51Z",
+      "side": 1,
+      "message": "Somehow I missed these logic of converting property \"manifest\" when copying code from internal master to aosp/2092595. So added them back with some new test cases.",
+      "revId": "a584e8397c7da662a883d110d76c6bcaaa7f0869",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
