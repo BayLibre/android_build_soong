@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccda6c49_3c568198",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-23T19:54:18Z",
+      "side": 1,
+      "message": "hmm... at some point i\u0027d added support to have maps as supported only for `blueprint:\"mutated\"` we could consider doing the same for arrays",
+      "parentUuid": "8d001267_cff13b99",
+      "revId": "c86fb197a65b94db3bf0883ecc6d068fabfbfabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "187385df_21d5a3a8",
