@@ -69,6 +69,24 @@
       "parentUuid": "c8f4a276_d398aeed",
       "revId": "ab392edc47cc89f5cd160aa92292caf284b174f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3486618_da59200f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-23T08:07:06Z",
+      "side": 1,
+      "message": "This time, I used Chesterton\u0027s fence as a sneaky way to learn about the intricacies of the development of Mainline modules 😊 IOW, understanding the code to be deleted was indeed useless, but learning about why it existed was not.",
+      "parentUuid": "1bc008eb_76e3d597",
+      "revId": "ab392edc47cc89f5cd160aa92292caf284b174f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
