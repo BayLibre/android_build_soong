@@ -35,6 +35,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f53cc4_02a944ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-23T15:05:04Z",
+      "side": 1,
+      "message": "iteratively hacking to get something to work :) and then cleaning up that into something that hopefully is readable...",
+      "parentUuid": "f8e2ff71_eebb7748",
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0926cf4_a1c613e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-23T15:05:04Z",
+      "side": 1,
+      "message": "It should --  I got a bit nerd-sniped by how that Android.bp file was written in the first place.",
+      "parentUuid": "6719c58a_8ecac473",
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5853456_19512ade",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-05-14T09:39:18Z",
       "side": 1,
       "message": "nit: space",
+      "range": {
+        "startLine": 673,
+        "startChar": 43,
+        "endLine": 673,
+        "endChar": 53
+      },
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24edc9e_67fbc2e1",
+        "filename": "android/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-23T15:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5853456_19512ade",
       "range": {
         "startLine": 673,
         "startChar": 43,
@@ -83,6 +143,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8bc52773_0b92d158",
+        "filename": "android/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-23T15:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46934edd_00af0d17",
+      "range": {
+        "startLine": 813,
+        "startChar": 1,
+        "endLine": 817,
+        "endChar": 10
+      },
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e26d95f5_89959425",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 4
@@ -94,6 +178,24 @@
       "writtenOn": "2022-05-19T18:25:02Z",
       "side": 1,
       "message": "What generated this? Maybe consider adding a comment that mentions that, as well.",
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d67ca8_fef33122",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-23T15:05:04Z",
+      "side": 1,
+      "message": "It\u0027s added in `build/soong/sdk/update.go`. Updating that comment to have more detail is a separate goal from this CL. We could consider it as a separate CL though.",
+      "parentUuid": "e26d95f5_89959425",
       "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -111,6 +213,30 @@
       "writtenOn": "2022-05-14T09:39:18Z",
       "side": 1,
       "message": "I wouldn\u0027t bother with this. This should only be used for tests that affect the output of the versioned snapshot. e.g. to make sure that references to other modules are correctly versioned.",
+      "range": {
+        "startLine": 1829,
+        "startChar": 2,
+        "endLine": 1829,
+        "endChar": 33
+      },
+      "revId": "b30d14f9c42051009f94c75196820d098c7ca9dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e616310_a2557773",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-23T15:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "194d4b19_a11e043a",
       "range": {
         "startLine": 1829,
         "startChar": 2,
