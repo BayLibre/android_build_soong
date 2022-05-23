@@ -46,6 +46,30 @@
       },
       "revId": "97535d82ee35368dcbfef679143d86d1359d7972",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "090dba67_7d61efa5",
+        "filename": "bp2build/filegroup_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-23T10:16:19Z",
+      "side": 1,
+      "message": "Why not both? I think we should fail fast at the bp2build level by not generatinb ad filegroups, and keep the Starlark one for new filegroups created in Bazel only, in the future.",
+      "parentUuid": "621461f8_d0001934",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "97535d82ee35368dcbfef679143d86d1359d7972",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
