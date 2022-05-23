@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85097c61_403b51bd",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-05-23T15:05:48Z",
+      "side": 1,
+      "message": "Note that the call to dexpreopt happens under `ctx.Device()` condition on line 1509, and likewise in [base.go](https://source.corp.google.com/aosp-master/build/soong/java/base.go;l\u003d1469?q\u003d%22.dexpreopt(%22\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Faosp-master).",
+      "range": {
+        "startLine": 1528,
+        "startChar": 0,
+        "endLine": 1528,
+        "endChar": 35
+      },
+      "revId": "61df14acce0c642f18730eefff5ebd20ee1463dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
