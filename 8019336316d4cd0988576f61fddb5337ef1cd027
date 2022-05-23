@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5574ae14_46d7f2a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-23T18:58:25Z",
+      "side": 1,
+      "message": "Can you add unit testing?",
+      "revId": "8019336316d4cd0988576f61fddb5337ef1cd027",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "296140bb_52de90e9",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-23T18:58:25Z",
+      "side": 1,
+      "message": "Can you add documentation on this?",
+      "range": {
+        "startLine": 655,
+        "startChar": 5,
+        "endLine": 655,
+        "endChar": 33
+      },
+      "revId": "8019336316d4cd0988576f61fddb5337ef1cd027",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e33a76c0_515d2c54",
+        "filename": "python/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-23T18:58:25Z",
+      "side": 1,
+      "message": "are proto sources only ever used in libraries or would it make sense to move this to `makeArchVariantBaseAttributes` such that it will work for both libraries and binaries?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 98
+      },
+      "revId": "8019336316d4cd0988576f61fddb5337ef1cd027",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
