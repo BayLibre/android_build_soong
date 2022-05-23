@@ -16,6 +16,144 @@
       "message": "Somehow I missed these logic of converting property \"manifest\" when copying code from internal master to aosp/2092595. So added them back with some new test cases.",
       "revId": "a584e8397c7da662a883d110d76c6bcaaa7f0869",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6797e0_e336734b",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2501,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-23T10:08:14Z",
+      "side": 1,
+      "message": "rm comma",
+      "range": {
+        "startLine": 2501,
+        "startChar": 13,
+        "endLine": 2501,
+        "endChar": 14
+      },
+      "revId": "a584e8397c7da662a883d110d76c6bcaaa7f0869",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a880327e_faadcf21",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2504,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-23T10:08:14Z",
+      "side": 1,
+      "message": "that looks like",
+      "range": {
+        "startLine": 2504,
+        "startChar": 63,
+        "endLine": 2504,
+        "endChar": 74
+      },
+      "revId": "a584e8397c7da662a883d110d76c6bcaaa7f0869",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "169bb364_5098bbb3",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2508,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-23T10:08:14Z",
+      "side": 1,
+      "message": "Use `ctx.OtherModuleDir(baseApex)`?",
+      "range": {
+        "startLine": 2508,
+        "startChar": 21,
+        "endLine": 2508,
+        "endChar": 71
+      },
+      "revId": "a584e8397c7da662a883d110d76c6bcaaa7f0869",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a162d71b_bbe70541",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2510,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-23T10:08:14Z",
+      "side": 1,
+      "message": "Use `ctx.ModuleDir()`?",
+      "range": {
+        "startLine": 2510,
+        "startChar": 26,
+        "endLine": 2510,
+        "endChar": 83
+      },
+      "revId": "a584e8397c7da662a883d110d76c6bcaaa7f0869",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8229b069_50a280c0",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3499,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-23T10:08:14Z",
+      "side": 1,
+      "message": "Use `manifest :\u003d proptools.StringDefault(a.properties.Manifest, \"apex_manifest.json\")`, or even better, extract to a function and share it with https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/builder.go;l\u003d185;drc\u003da5ea2479d3e7311face6baf38dbd9d5059c9907a",
+      "range": {
+        "startLine": 3496,
+        "startChar": 1,
+        "endLine": 3499,
+        "endChar": 2
+      },
+      "revId": "a584e8397c7da662a883d110d76c6bcaaa7f0869",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "735a5bd8_3664375b",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-23T10:08:14Z",
+      "side": 1,
+      "message": "fix indent, here and below",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 2
+      },
+      "revId": "a584e8397c7da662a883d110d76c6bcaaa7f0869",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
