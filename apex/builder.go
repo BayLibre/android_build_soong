@@ -34,6 +34,8 @@ var (
 	pctx = android.NewPackageContext("android/apex")
 )
 
+const defaultManifestVersion = "339990000"
+
 func init() {
 	pctx.Import("android/soong/android")
 	pctx.Import("android/soong/cc/config")
@@ -649,6 +651,8 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			implicitInputs = append(implicitInputs, a.manifestJsonOut)
 			optFlags = append(optFlags, "--manifest_json "+a.manifestJsonOut.String())
 		}
+
+		optFlags = append(optFlags, "--apex_version "+defaultManifestVersion)
 
 		optFlags = append(optFlags, "--payload_fs_type "+a.payloadFsType.string())
 
