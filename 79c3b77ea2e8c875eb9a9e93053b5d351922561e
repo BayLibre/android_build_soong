@@ -16,6 +16,24 @@
       "message": "Is rust_test executing test data because it is marked executable a separate bug?",
       "revId": "79c3b77ea2e8c875eb9a9e93053b5d351922561e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "792a21d5_54ff944a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-05-24T15:18:44Z",
+      "side": 1,
+      "message": "Yes; issue 233732515 is tracking both. I\u0027m not sure how to fix that though, suggestions are welcome.",
+      "parentUuid": "df3fb85b_19c1787f",
+      "revId": "79c3b77ea2e8c875eb9a9e93053b5d351922561e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
