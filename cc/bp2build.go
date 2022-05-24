@@ -581,12 +581,14 @@ func bp2BuildParseSdkAttributes(module *Module) sdkAttributes {
 	return sdkAttributes{
 		Sdk_version:     module.Properties.Sdk_version,
 		Min_sdk_version: module.Properties.Min_sdk_version,
+		Apex_available:  module.ApexAvailable(),
 	}
 }
 
 type sdkAttributes struct {
 	Sdk_version     *string
 	Min_sdk_version *string
+	Apex_available  []string
 }
 
 // Convenience struct to hold all attributes parsed from linker properties.
