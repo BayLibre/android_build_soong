@@ -15,6 +15,8 @@
 package android
 
 import (
+	"os"
+	"path/filepath"
 	"strings"
 
 	"android/soong/bazel"
@@ -161,7 +163,15 @@ func (fg *fileGroup) ProcessBazelQueryResponse(ctx ModuleContext) {
 
 	bazelOuts := make(Paths, 0, len(filePaths))
 	for _, p := range filePaths {
-		src := PathForBazelOut(ctx, p)
+		moduleDirPrefix := ctx.ModuleDir() + string(os.PathSeparator)
+		var src BazelOutPath
+		if strings.HasPrefix(p, moduleDirPrefix) {
+			relativeRoot := []string{filepath.Clean(moduleDirPrefix)}
+			relativePath := filepath.Clean(strings.TrimPrefix(p, moduleDirPrefix))
+			src = PathForBazelOutRelative(ctx, relativeRoot, relativePath)
+		} else {
+			src = PathForBazelOut(ctx, p)
+		}
 		bazelOuts = append(bazelOuts, src)
 	}
 

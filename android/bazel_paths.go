@@ -449,23 +449,68 @@ func (p BazelOutPath) objPathWithExt(ctx ModuleOutPathContext, subdir, ext strin
 	return PathForModuleObj(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
 }
 
-// PathForBazelOut returns a Path representing the paths... under an output directory dedicated to
-// bazel-owned outputs.
-func PathForBazelOut(ctx PathContext, paths ...string) BazelOutPath {
-	execRootPathComponents := append([]string{"execroot", "__main__"}, paths...)
+// BazelOutputBasePath returns the path prefix for the Bazel output directory for most
+// sources. This would not be accurate for a path like "../bazel-tools/xyz" passed to
+// PathForBazelOut.
+func BazelOutputBasePath(ctx PathContext) []string {
+	return []string{
+		ctx.Config().BazelContext.OutputBase(),
+		"execroot",
+		"__main__",
+	}
+}
+
+// PathForBazelOutRelative returns a Path representing the relative paths... from relativeRoot
+// under an output directory dedicated to bazel-owned outputs.
+func PathForBazelOutRelative(ctx PathContext, relativeRoot []string, paths ...string) BazelOutPath {
+	execRootPathComponents := append([]string{"execroot", "__main__"}, relativeRoot...)
+	execRootPathComponents = append(execRootPathComponents, paths...)
+	// join paths to evaluate any relative path changes e.g. transform a/b/../c => a/c
 	execRootPath := filepath.Join(execRootPathComponents...)
 	validatedExecRootPath, err := validatePath(execRootPath)
 	if err != nil {
 		reportPathError(ctx, err)
 	}
 
-	outputPath := OutputPath{basePath{"", ""},
+	// find actual relative path by overlap with execRootPath
+	pathsString := filepath.Join(paths...)
+	lastMatchingIndex := 0
+	for i := 0; i < len(pathsString); i++ {
+		if pathsString[len(pathsString)-i-1] != validatedExecRootPath[len(validatedExecRootPath)-i-1] {
+			if i > 0 && pathsString[len(pathsString)-i] == '/' {
+				// if previous char was '/', remove it
+				lastMatchingIndex = len(pathsString) - i + 1
+			} else {
+				lastMatchingIndex = len(pathsString) - i
+			}
+			break
+		}
+	}
+	relativePathString := pathsString[lastMatchingIndex:]
+	validatedRelativePath, err := validatePath(relativePathString)
+	if err != nil {
+		reportPathError(ctx, err)
+	}
+
+	// remove relative path from root path
+	relativeRootEndIndex := len(validatedExecRootPath) - len(relativePathString)
+	validatedExecRootPath = validatedExecRootPath[:relativeRootEndIndex]
+
+	outputPath := OutputPath{
+		basePath{},
 		ctx.Config().soongOutDir,
-		ctx.Config().BazelContext.OutputBase()}
+		filepath.Join(ctx.Config().BazelContext.OutputBase(), validatedExecRootPath),
+	}
 
 	return BazelOutPath{
-		OutputPath: outputPath.withRel(validatedExecRootPath),
+		OutputPath: outputPath.withRel(validatedRelativePath),
 	}
+}
+
+// PathForBazelOut returns a Path representing the paths... under an output directory dedicated to
+// bazel-owned outputs.
+func PathForBazelOut(ctx PathContext, paths ...string) BazelOutPath {
+	return PathForBazelOutRelative(ctx, []string{}, paths...)
 }
 
 // PathsForBazelOut returns a list of paths representing the paths under an output directory

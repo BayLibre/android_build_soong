@@ -306,6 +306,7 @@ var (
 		"networkstack-aidl-interfaces_interface",
 		"ipmemorystore-aidl-interfaces_interface",
 		"networkstack-aidl-latest",
+		"networkstack-aidl-test",
 		// sources for //frameworks/base/core/java:framework-base-core-java-aidl-headers
 		// needed for networkstack-aidl-interfaces
 		"framework-core-aidl-sources",

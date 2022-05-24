@@ -15,6 +15,8 @@
 package java
 
 import (
+	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -116,12 +118,18 @@ func genLogtags(ctx android.ModuleContext, logtagsFile android.Path) android.Pat
 	return javaFile
 }
 
-func genAidlIncludeFlags(srcFiles android.Paths) string {
+func genAidlIncludeFlags(ctx android.PathContext, srcFiles android.Paths, excludeDirs android.Paths) string {
 	var baseDirs []string
+	excludeDirsStrings := excludeDirs.Strings()
+	bazelOutBasePath := filepath.Join(android.BazelOutputBasePath(ctx)...) + string(os.PathSeparator)
 	for _, srcFile := range srcFiles {
 		if srcFile.Ext() == ".aidl" {
 			baseDir := strings.TrimSuffix(srcFile.String(), srcFile.Rel())
-			if baseDir != "" && !android.InList(baseDir, baseDirs) {
+			// do not duplicate existing directories if provided by Bazel
+			baseDir = strings.TrimPrefix(baseDir, bazelOutBasePath)
+			// ensure trailing slashes, etc. do not invalidate deduplication
+			baseDir = filepath.Clean(baseDir)
+			if baseDir != "" && !android.InList(baseDir, baseDirs) && !android.InList(baseDir, excludeDirsStrings) {
 				baseDirs = append(baseDirs, baseDir)
 			}
 		}
@@ -135,8 +143,6 @@ func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 	outSrcFiles := make(android.Paths, 0, len(srcFiles))
 	var protoSrcs android.Paths
 	var aidlSrcs android.Paths
-
-	aidlIncludeFlags := genAidlIncludeFlags(srcFiles)
 
 	for _, srcFile := range srcFiles {
 		switch srcFile.Ext() {
@@ -168,7 +174,7 @@ func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 				individualFlags[aidlSrc.String()] = flags
 			}
 		}
-		srcJarFiles := genAidl(ctx, aidlSrcs, flags.aidlFlags+aidlIncludeFlags, individualFlags, flags.aidlDeps)
+		srcJarFiles := genAidl(ctx, aidlSrcs, flags.aidlFlags, individualFlags, flags.aidlDeps)
 		outSrcFiles = append(outSrcFiles, srcJarFiles...)
 	}
 
