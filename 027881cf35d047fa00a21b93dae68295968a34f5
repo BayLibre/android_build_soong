@@ -16,6 +16,24 @@
       "message": "how come your ide or the compiler didn\u0027t complain(warn) about unused parameter, btw?",
       "revId": "027881cf35d047fa00a21b93dae68295968a34f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28689f6_c564bc84",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-24T20:06:38Z",
+      "side": 1,
+      "message": "My IDE does syntax highlighting for unused parameter, but doesn\u0027t warn loudly. So, I just missed it.",
+      "parentUuid": "57c56014_60ad8826",
+      "revId": "027881cf35d047fa00a21b93dae68295968a34f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
