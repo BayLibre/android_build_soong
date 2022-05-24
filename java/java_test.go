@@ -1557,3 +1557,31 @@ func TestDataDeviceBinsAutogenTradefedConfig(t *testing.T) {
 		t.Errorf("foo extraConfigs %v does not contain %q", autogen.Args["extraConfigs"], expectedAutogenConfig)
 	}
 }
+
+func TestGenAidlIncludeFlagsForMixedBuilds(t *testing.T) {
+	bazelOutputBaseDir := filepath.Join("out", "bazel")
+	result := android.GroupFixturePreparers(
+		PrepareForIntegrationTestWithJava,
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.BazelContext = android.MockBazelContext{
+				OutputBaseDir: bazelOutputBaseDir,
+			}
+		}),
+	).RunTest(t)
+
+	ctx := &android.TestPathContext{TestResult: result}
+	testDirectory := filepath.Join("frameworks", "base", "core", "java")
+	bazelRootPath := filepath.Join(append(android.BazelOutputBasePath(ctx), testDirectory)...)
+	srcs := android.Paths{
+		android.NewRelativeTestPath(bazelRootPath, "bazelAidl.aidl"),
+		android.NewRelativeTestPath(bazelRootPath, "bazelAidl2.aidl"),
+	}
+	excludeDirs := android.Paths{
+		android.NewTestPath(filepath.Join(testDirectory)),
+	}
+
+	flags := genAidlIncludeFlags(ctx, srcs, excludeDirs)
+	if flags != "" {
+		t.Errorf("expected flags to be empty because all source directories were provided in excludeDirs; got %q", flags)
+	}
+}
