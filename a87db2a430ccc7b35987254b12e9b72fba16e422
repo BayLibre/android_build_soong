@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dede737_380dae01",
+        "filename": "android/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-24T03:13:06Z",
+      "side": 1,
+      "message": "Soong\u0027s Go style uses camel case instead of snake case.",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "a87db2a430ccc7b35987254b12e9b72fba16e422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
