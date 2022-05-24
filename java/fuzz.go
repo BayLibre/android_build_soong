@@ -65,7 +65,9 @@ func (j *JavaFuzzLibrary) IsSanitizerEnabled(ctx android.BaseModuleContext, sani
 // cc.JniSanitizeable. It returns a bool for whether a cc dependency should be
 // sanitized for the given sanitizer or not.
 func (j *JavaFuzzLibrary) IsSanitizerEnabledForJni(ctx android.BaseModuleContext, sanitizerName string) bool {
-	return j.IsSanitizerEnabled(ctx, sanitizerName)
+	// TODO: Once b/231370928 is resolved:
+	// return j.IsSanitizerEnabled(ctx, sanitizerName)
+	return false
 }
 
 // EnableSanitizer implemented to make JavaFuzzLibrary implement
