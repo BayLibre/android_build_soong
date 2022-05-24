@@ -161,7 +161,18 @@ func (fg *fileGroup) ProcessBazelQueryResponse(ctx ModuleContext) {
 
 	bazelOuts := make(Paths, 0, len(filePaths))
 	for _, p := range filePaths {
-		src := PathForBazelOut(ctx, p)
+		var relativeRoot []string
+		var relativePath string
+		moduleDirPrefix := ctx.ModuleDir()
+		if strings.HasPrefix(p, moduleDirPrefix) {
+			relativeRoot = []string{moduleDirPrefix}
+			// slice[1:] to remove final directory separator
+			relativePath = strings.TrimPrefix(p, moduleDirPrefix)[1:]
+		} else {
+			relativeRoot = []string{}
+			relativePath = p
+		}
+		src := PathForBazelOutRelative(ctx, relativeRoot, relativePath)
 		bazelOuts = append(bazelOuts, src)
 	}
 

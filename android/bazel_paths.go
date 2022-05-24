@@ -449,23 +449,39 @@ func (p BazelOutPath) objPathWithExt(ctx ModuleOutPathContext, subdir, ext strin
 	return PathForModuleObj(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
 }
 
-// PathForBazelOut returns a Path representing the paths... under an output directory dedicated to
-// bazel-owned outputs.
-func PathForBazelOut(ctx PathContext, paths ...string) BazelOutPath {
-	execRootPathComponents := append([]string{"execroot", "__main__"}, paths...)
-	execRootPath := filepath.Join(execRootPathComponents...)
-	validatedExecRootPath, err := validatePath(execRootPath)
+// PathForBazelOutRelative returns a Path representing the relative paths... from relativeRoot
+// under an output directory dedicated to bazel-owned outputs.
+func PathForBazelOutRelative(ctx PathContext, relativeRoot []string, paths ...string) BazelOutPath {
+	execRootPathComponents := []string{"execroot", "__main__"}
+	execRootPathComponents = append(execRootPathComponents, relativeRoot...)
+
+	// validate combined path to ensure we can proceed
+	execRootPath := filepath.Join(append(execRootPathComponents, paths...)...)
+	_, err := validatePath(execRootPath)
 	if err != nil {
 		reportPathError(ctx, err)
 	}
 
-	outputPath := OutputPath{basePath{"", ""},
-		ctx.Config().soongOutDir,
-		ctx.Config().BazelContext.OutputBase()}
+	outputBasePathComponents := []string{ctx.Config().BazelContext.OutputBase()}
+	outputBasePathComponents = append(outputBasePathComponents, execRootPathComponents...)
+	outputBasePath := filepath.Join(outputBasePathComponents...)
 
-	return BazelOutPath{
-		OutputPath: outputPath.withRel(validatedExecRootPath),
+	outputPath := OutputPath{
+		basePath{"", ""},
+		ctx.Config().soongOutDir,
+		outputBasePath,
 	}
+
+	relativePath := filepath.Join(paths...)
+	return BazelOutPath{
+		OutputPath: outputPath.withRel(relativePath),
+	}
+}
+
+// PathForBazelOut returns a Path representing the paths... under an output directory dedicated to
+// bazel-owned outputs.
+func PathForBazelOut(ctx PathContext, paths ...string) BazelOutPath {
+	return PathForBazelOutRelative(ctx, []string{}, paths...)
 }
 
 // PathsForBazelOut returns a list of paths representing the paths under an output directory
