@@ -15,6 +15,7 @@
 package java
 
 import (
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -116,12 +117,26 @@ func genLogtags(ctx android.ModuleContext, logtagsFile android.Path) android.Pat
 	return javaFile
 }
 
-func genAidlIncludeFlags(srcFiles android.Paths) string {
+func genAidlIncludeFlags(ctx android.PathContext, srcFiles android.Paths, excludeDirs android.Paths) string {
 	var baseDirs []string
+	excludeDirsStrings := excludeDirs.Strings()
 	for _, srcFile := range srcFiles {
 		if srcFile.Ext() == ".aidl" {
 			baseDir := strings.TrimSuffix(srcFile.String(), srcFile.Rel())
-			if baseDir != "" && !android.InList(baseDir, baseDirs) {
+			baseDir = filepath.Clean(baseDir)
+			baseDirSeen := android.InList(baseDir, baseDirs) || android.InList(baseDir, excludeDirsStrings)
+
+			// For go/bp2build mixed builds, if we have already included a path
+			// to a directory then don't include the path to the same directory
+			// under the Bazel output tree.
+			// This code comes into effect when filegroups are used in mixed builds.
+			bazelPathPrefix := android.PathForBazelOut(ctx, "").String()
+			bazelBaseDir, err := filepath.Rel(bazelPathPrefix, baseDir)
+			bazelBaseDirSeen := err == nil &&
+				android.InList(bazelBaseDir, baseDirs) ||
+				android.InList(bazelBaseDir, excludeDirsStrings)
+
+			if baseDir != "" && !baseDirSeen && !bazelBaseDirSeen {
 				baseDirs = append(baseDirs, baseDir)
 			}
 		}
@@ -135,8 +150,6 @@ func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 	outSrcFiles := make(android.Paths, 0, len(srcFiles))
 	var protoSrcs android.Paths
 	var aidlSrcs android.Paths
-
-	aidlIncludeFlags := genAidlIncludeFlags(srcFiles)
 
 	for _, srcFile := range srcFiles {
 		switch srcFile.Ext() {
@@ -168,7 +181,7 @@ func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 				individualFlags[aidlSrc.String()] = flags
 			}
 		}
-		srcJarFiles := genAidl(ctx, aidlSrcs, flags.aidlFlags+aidlIncludeFlags, individualFlags, flags.aidlDeps)
+		srcJarFiles := genAidl(ctx, aidlSrcs, flags.aidlFlags, individualFlags, flags.aidlDeps)
 		outSrcFiles = append(outSrcFiles, srcJarFiles...)
 	}
 

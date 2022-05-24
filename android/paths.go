@@ -1944,20 +1944,30 @@ func (p PhonyPath) ReplaceExtension(ctx PathContext, ext string) OutputPath {
 var _ Path = PhonyPath{}
 var _ WritablePath = PhonyPath{}
 
-type testPath struct {
+type TestPath struct {
 	basePath
 }
 
-func (p testPath) RelativeToTop() Path {
+func (p TestPath) RelativeToTop() Path {
 	ensureTestOnly()
 	return p
 }
 
-func (p testPath) String() string {
+func (p TestPath) String() string {
 	return p.path
 }
 
-var _ Path = testPath{}
+func NewTestPath(path string) TestPath {
+	return NewRelativeTestPath("", path)
+}
+
+func NewRelativeTestPath(root, relativePath string) TestPath {
+	return TestPath{
+		basePath{root, ""}.withRel(relativePath),
+	}
+}
+
+var _ Path = TestPath{}
 
 // PathForTesting returns a Path constructed from joining the elements of paths with '/'.  It should only be used from
 // within tests.
@@ -1966,7 +1976,7 @@ func PathForTesting(paths ...string) Path {
 	if err != nil {
 		panic(err)
 	}
-	return testPath{basePath{path: p, rel: p}}
+	return TestPath{basePath{path: p, rel: p}}
 }
 
 // PathsForTesting returns a Path constructed from each element in strs. It should only be used from within tests.
