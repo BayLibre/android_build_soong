@@ -1712,3 +1712,37 @@ func TestImportMixedBuild(t *testing.T) {
 	android.AssertDeepEquals(t, "Implementation/Resources JARs are produced", expectedOutputFiles, android.NormalizePathsForTesting(javaInfo.ImplementationAndResourcesJars))
 	android.AssertDeepEquals(t, "Implementation JARs are produced", expectedOutputFiles, android.NormalizePathsForTesting(javaInfo.ImplementationJars))
 }
+
+func TestGenAidlIncludeFlagsForMixedBuilds(t *testing.T) {
+	bazelOutputBaseDir := filepath.Join("out", "bazel")
+	result := android.GroupFixturePreparers(
+		PrepareForIntegrationTestWithJava,
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.BazelContext = android.MockBazelContext{
+				OutputBaseDir: bazelOutputBaseDir,
+			}
+		}),
+	).RunTest(t)
+
+	ctx := &android.TestPathContext{TestResult: result}
+
+	srcDirectory := filepath.Join("frameworks", "base")
+	srcDirectoryExclude := filepath.Join("frameworks", "base", "core", "java")
+	bazelSrcDirectory := android.PathForBazelOut(ctx, srcDirectory)
+	bazelSrcDirectoryExclude := android.PathForBazelOut(ctx, srcDirectoryExclude)
+	srcs := android.Paths{
+		android.NewRelativeTestPath(bazelSrcDirectory.String(), "bazelAidl.aidl"),
+		android.NewRelativeTestPath(bazelSrcDirectory.String(), "bazelAidl2.aidl"),
+		android.NewRelativeTestPath(bazelSrcDirectoryExclude.String(), "bazelAidlExclude.aidl"),
+		android.NewRelativeTestPath(bazelSrcDirectoryExclude.String(), "bazelAidl2Exclude.aidl"),
+	}
+	excludeDirs := android.Paths{
+		android.NewTestPath(filepath.Join(srcDirectoryExclude)),
+	}
+
+	expectedFlags := " -Iout/bazel/execroot/__main__/frameworks/base"
+	flags := genAidlIncludeFlags(ctx, srcs, excludeDirs)
+	if flags != expectedFlags {
+		t.Errorf("expected flags to be %q; was %q", expectedFlags, flags)
+	}
+}
