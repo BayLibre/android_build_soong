@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57c56014_60ad8826",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-24T20:05:50Z",
+      "side": 1,
+      "message": "how come your ide or the compiler didn\u0027t complain(warn) about unused parameter, btw?",
+      "revId": "027881cf35d047fa00a21b93dae68295968a34f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
