@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf32762a_933316cf",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-05-24T16:23:07Z",
+      "side": 1,
+      "message": "Paul would know whether this is a good place or we want to store it somewhere else. This would be different in different branches, so ideally we want to minimize merge conflicts for people touching this file.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "fee16f3223f64f1f8526968278558a0cd81a6922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
