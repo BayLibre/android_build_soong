@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e7864d9_6d525b7c",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-24T06:53:06Z",
+      "side": 1,
+      "message": "...and then the next question is: why are `blueprint:\"mutated\"` fields mixed with non-mutated ones?\n\nI was toying with the idea of creating a `clone()` method instead, but that would be error-prone in different ways.",
+      "parentUuid": "ccda6c49_3c568198",
+      "revId": "c86fb197a65b94db3bf0883ecc6d068fabfbfabe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "187385df_21d5a3a8",
