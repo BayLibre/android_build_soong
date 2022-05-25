@@ -34,6 +34,23 @@
       "parentUuid": "df3fb85b_19c1787f",
       "revId": "79c3b77ea2e8c875eb9a9e93053b5d351922561e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a419147_52ef92c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-05-25T12:17:42Z",
+      "side": 1,
+      "message": "`//build/bazel/tests/apex:com.android.tzdata_content_diff_test` is unrelated to this change and is broken even without it, so bypassing presubmit.",
+      "revId": "79c3b77ea2e8c875eb9a9e93053b5d351922561e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
