@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06944377_c9582bfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-05-25T07:01:36Z",
+      "side": 1,
+      "message": "It would be great if we could enforce that nobody could turn this warning off, but I understand why we have to allow suppressions for now.",
+      "revId": "8ecb22d40278752a8cdbd85cc9b35290ba80baa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
