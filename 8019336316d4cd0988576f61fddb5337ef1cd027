@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12956376_8dd5aeb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-05-25T01:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5574ae14_46d7f2a3",
+      "revId": "8019336316d4cd0988576f61fddb5337ef1cd027",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "296140bb_52de90e9",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b2fb95e_d9e50024",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-05-25T01:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "296140bb_52de90e9",
+      "range": {
+        "startLine": 655,
+        "startChar": 5,
+        "endLine": 655,
+        "endChar": 33
+      },
+      "revId": "8019336316d4cd0988576f61fddb5337ef1cd027",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e33a76c0_515d2c54",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-05-23T18:58:25Z",
       "side": 1,
       "message": "are proto sources only ever used in libraries or would it make sense to move this to `makeArchVariantBaseAttributes` such that it will work for both libraries and binaries?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 98
+      },
+      "revId": "8019336316d4cd0988576f61fddb5337ef1cd027",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c7c9b6e_feda1f63",
+        "filename": "python/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-05-25T01:23:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e33a76c0_515d2c54",
       "range": {
         "startLine": 104,
         "startChar": 0,
