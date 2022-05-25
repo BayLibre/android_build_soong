@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90c7de2_d64456ec",
+        "filename": "java/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2022-05-25T15:14:15Z",
+      "side": 1,
+      "message": "Maybe worth a brief additional note since that bug isn\u0027t public? Something like:\n\n// Disable this optimization as it can impact weak reference semantics. See b/233432839.",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 16
+      },
+      "revId": "53d9eafbbc5af58ee523994173a3806a3143c43a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
