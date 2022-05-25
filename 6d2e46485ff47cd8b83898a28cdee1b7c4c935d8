@@ -39,6 +39,30 @@
       },
       "revId": "6d2e46485ff47cd8b83898a28cdee1b7c4c935d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8537a23c_da0dc939",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1941531
+      },
+      "writtenOn": "2022-05-25T17:50:32Z",
+      "side": 1,
+      "message": "In the prior review I had set the default to current for MaxSdkVersion mainly because I copied the behavior for MinSdkVersion. I believe Colin pointed out that it makes more sense for MaxSdkVersion to default to infinite instead of current. The default is only used if no max_sdkvVersion is declared in Android.bp. Is there a sdk int value that represents infinity or should I set that value a lot higher?",
+      "parentUuid": "17ac6756_916aac11",
+      "range": {
+        "startLine": 687,
+        "startChar": 31,
+        "endLine": 687,
+        "endChar": 40
+      },
+      "revId": "6d2e46485ff47cd8b83898a28cdee1b7c4c935d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
