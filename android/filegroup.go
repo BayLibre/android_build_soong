@@ -118,9 +118,24 @@ func FileGroupFactory() Module {
 
 func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
 	fg.srcs = PathsForModuleSrcExcludes(ctx, fg.properties.Srcs, fg.properties.Exclude_srcs)
+	ins := append(Paths{}, fg.srcs...)
 	if fg.properties.Path != nil {
 		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
 	}
+
+	// suffix with filegroup to prevent duplicate action errors because the name of the module may
+	// have been reused in an android.mk file at some point
+	phonyPath := ctx.ModuleName() + "-filegroup"
+	// prepend with namespace if it exists to prevent duplicate output files
+	if n := ctx.Namespace(); n != nil && (n.Path != ".") {
+		phonyPath = strings.ReplaceAll(n.Path, "/", "-") + "-" + phonyPath
+	}
+
+	ctx.Build(pctx, BuildParams{
+		Rule:   blueprint.Phony,
+		Inputs: ins,
+		Output: PathForPhony(ctx, phonyPath),
+	})
 }
 
 func (fg *fileGroup) Srcs() Paths {
