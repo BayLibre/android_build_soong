@@ -16,6 +16,24 @@
       "message": "About how many phony rules does this create, in the ninja file? Are there any performance implications to this change? What is the difference in ninja file size?\n\nI\u0027m not sure I have the context to understand whether there is an alternative to the primary goal without changing the underlying ninja file, so want to make sure this is effectively a no-op as far as build performance is concerned.",
       "revId": "a5d15bc20246cf47fa49d70f3cba0624718fa65d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25e18d3b_1180eb88",
+        "filename": "android/filegroup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-26T20:20:53Z",
+      "side": 1,
+      "message": "i\u0027d been using phony initially to get the dual purpose of having users able to `m \u003cfilegroup\u003e` but, well, that doesn\u0027t work, so new approach that hopefully shouldn\u0027t impact performance.",
+      "parentUuid": "5ce25c1a_435d80b4",
+      "revId": "a5d15bc20246cf47fa49d70f3cba0624718fa65d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
