@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2d0698d_630723fb",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-05-26T20:46:45Z",
+      "side": 1,
+      "message": "Nit: I would find this easier to read if this was refactored into functions rather than branching on the module type throughout the single function.\n\nBut I don\u0027t expect this to ever get more complicated than it is, so also fine to leave as is.",
+      "revId": "ff982b0c062d3b1d490d3698dc533476d004961d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "621a4e3c_8829776b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-05-26T20:46:45Z",
+      "side": 1,
+      "message": "Do we need to check that this is non-`nil` here since it is a string ptr?",
+      "revId": "ff982b0c062d3b1d490d3698dc533476d004961d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
