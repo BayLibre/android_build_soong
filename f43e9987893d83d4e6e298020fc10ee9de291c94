@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e8992a_10832936",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2022-05-26T21:19:58Z",
+      "side": 1,
+      "message": "You should add a \"Bug: 232437287\" line to the commit message for each of these CLs.  You can use the `-i \u003cissue number\u003e` argument in `update_prebulits.py` to do this automatically next time.",
+      "revId": "f43e9987893d83d4e6e298020fc10ee9de291c94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
