@@ -16,6 +16,24 @@
       "message": "Do we want to call the directory just `system/core/trusty/keymint` ?  I don\u0027t *think* the `-rust` suffix is needed, and that will be more consistent with other places (where we\u0027ve *mostly* got `.../keymaster` for the existing C++ code and `.../keymint` for the new Rust code).",
       "revId": "34a3cec72525f2b2dad32ff539b492ac5be0c542",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b191bf_f90889b5",
+        "filename": "rust/config/allowed_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1678423
+      },
+      "writtenOn": "2022-05-26T23:00:50Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Fixed.",
+      "parentUuid": "36ab47e8_e32958a8",
+      "revId": "34a3cec72525f2b2dad32ff539b492ac5be0c542",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
