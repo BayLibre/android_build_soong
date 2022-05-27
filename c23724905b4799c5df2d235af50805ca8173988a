@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f636f81e_b88367de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-05-27T15:23:13Z",
+      "side": 1,
+      "message": "nit: git commits should have a blank line after the subject: https://git-scm.com/docs/git-commit#_discussion\n\nAlso, since this is an open source project, this should be pointing to a public go style link, not a google-internal one.",
+      "revId": "c23724905b4799c5df2d235af50805ca8173988a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
