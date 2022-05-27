@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bf73287_ee8bb96f",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-27T22:05:54Z",
+      "side": 1,
+      "message": "this comment seems incorrect",
+      "revId": "4696800a1041dfadd2dc4b2339c397ea3ef04242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
