@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c290d2ae_8954ae32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1678423
+      },
+      "writtenOn": "2022-05-27T05:34:10Z",
+      "side": 1,
+      "message": "Hi Matthew/Stephen, Can you please provide the code owner\u0027s vote? Thanks!",
+      "revId": "07851ffae444a9d27315bc88b8db06d3ea14f21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
