@@ -16,6 +16,24 @@
       "message": "Maybe put it inside the new method or inside the if-block below and get rid of the null check ?",
       "revId": "e67162b24a51c0439272c58cdfa211efa828d736",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b113d23_3e46de57",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-27T13:55:14Z",
+      "side": 1,
+      "message": "I have to do it before calling `rule.Build()`. I didn\u0027t want to move the call to rule.Build() after the if as it would be very confusing as the if defined its own rule variable.\n\nThis method is already about 10 times too long and doing far too much, extracting some code into a separate method seemed like the simplest change that would improve the code somewhat.",
+      "parentUuid": "7ab2fc3c_6197214e",
+      "revId": "e67162b24a51c0439272c58cdfa211efa828d736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
