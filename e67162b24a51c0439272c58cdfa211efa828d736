@@ -52,6 +52,24 @@
       "parentUuid": "5b113d23_3e46de57",
       "revId": "e67162b24a51c0439272c58cdfa211efa828d736",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03239ec_4359c527",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-27T14:01:26Z",
+      "side": 1,
+      "message": "That makes more sense. You\u0027re right that\u0027s better.",
+      "parentUuid": "72a8dfa1_1ba27bfe",
+      "revId": "e67162b24a51c0439272c58cdfa211efa828d736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
