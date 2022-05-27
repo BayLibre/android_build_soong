@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e21eb79_f523bf5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2022-05-27T15:25:07Z",
+      "side": 1,
+      "message": "Can you also confirm presubmits are not affected by this change? Iiuc CI should still use overrides and not rely on these defaults.",
+      "revId": "7ac32e7b133c6e8523ee0278fcdfacaea54783e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
