@@ -16,6 +16,109 @@
       "message": "Add cparsons@ for his thoughts on the mixed builds portions",
       "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac8d06e_9d64a36b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-27T14:31:39Z",
+      "side": 1,
+      "message": "I think this approach is fine, though I do wonder if there should be a different mechanism for passing top-level flags due to config variables. I don\u0027t have any ideas cleaner than this right now.",
+      "parentUuid": "376173c4_160b7f4e",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "793aa8f4_0748d9a7",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-27T14:31:39Z",
+      "side": 1,
+      "message": "Mind removing this TODO, since you\u0027re here? I don\u0027t think it applies any longer.",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce71a60_37cb0873",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-27T14:31:39Z",
+      "side": 1,
+      "message": "Can you make buildInstrumentationPath do the right thing for empty slices as well, so that we don\u0027t need these conditionals?",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f99d3b_b1430962",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-27T14:31:39Z",
+      "side": 1,
+      "message": "How about using `strings.Join()` here as well as in `buildInstrumentationPath`, instead?",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82c6d83e_e824bd92",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-27T14:31:39Z",
+      "side": 1,
+      "message": "checking `len(coverageFlags)` here isn\u0027t necessary, appending an empty slice is fine.",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66612ee5_8f9655e5",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-27T14:31:39Z",
+      "side": 1,
+      "message": "Is this something we need to implement at some point, or do we want a bug to track this handling?",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
