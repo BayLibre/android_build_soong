@@ -19,12 +19,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"runtime"
 	"strconv"
 	"strings"
+	"syscall"
 	"time"
 
 	"android/soong/shared"
@@ -41,6 +43,15 @@ const (
 	configFetcher         = "vendor/google/tools/soong/expconfigfetcher"
 	envConfigFetchTimeout = 10 * time.Second
 )
+
+var (
+	rbeRandPrefix int
+)
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+	rbeRandPrefix = rand.Intn(1000)
+}
 
 type Config struct{ *configImpl }
 
@@ -1165,6 +1176,17 @@ func (c *configImpl) rbeStatsOutputDir() string {
 	return c.rbeLogDir()
 }
 
+func (c *configImpl) rbeProxyLogsDir() string {
+	for _, f := range []string{"RBE_proxy_log_dir", "FLAG_output_dir"} {
+		if v, ok := c.environ.Get(f); ok {
+			return v
+		}
+	}
+	buildTmpDir := shared.TempDirForOutDir(c.SoongOutDir())
+	rbeTmpDirBase := filepath.Join(buildTmpDir, "rbe")
+	return filepath.Join(rbeTmpDirBase, fmt.Sprintf("%v", rbeRandPrefix))
+}
+
 func (c *configImpl) rbeLogPath() string {
 	for _, f := range []string{"RBE_log_path", "FLAG_log_path"} {
 		if v, ok := c.environ.Get(f); ok {
@@ -1221,6 +1243,24 @@ func (c *configImpl) rbeAuth() (string, string) {
 		}
 	}
 	return "RBE_use_application_default_credentials", "true"
+}
+
+
+func (c *configImpl) rbeSockAddr(dir string) (string, error) {
+	maxNameLen := len(syscall.RawSockaddrUnix{}.Path)
+	base := fmt.Sprintf("reproxy_%v.sock", rbeRandPrefix)
+
+	name := filepath.Join(dir, base)
+	if len(name) < maxNameLen {
+		return name, nil
+	}
+
+	name = filepath.Join("/tmp", base)
+	if len(name) < maxNameLen {
+		return name, nil
+	}
+
+	return "", fmt.Errorf("cannot generate a proxy socket address shorter than the limit of %v", maxNameLen)
 }
 
 func (c *configImpl) IsGooglerEnvironment() bool {
