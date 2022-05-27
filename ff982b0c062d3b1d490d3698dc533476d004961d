@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "981ae5f6_71b04016",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-05-27T02:12:16Z",
+      "side": 1,
+      "message": "I tried some refactoring but struggled to come up with something cleaner (less code). I\u0027ll leave it as is. If you have something in mind, please let me know. Were you looking into splitting these blocks into two separate functions?",
+      "parentUuid": "b2d0698d_630723fb",
+      "revId": "ff982b0c062d3b1d490d3698dc533476d004961d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "621a4e3c_8829776b",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-26T20:46:45Z",
       "side": 1,
       "message": "Do we need to check that this is non-`nil` here since it is a string ptr?",
+      "revId": "ff982b0c062d3b1d490d3698dc533476d004961d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70d752e7_d5332bd9",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-05-27T02:12:16Z",
+      "side": 1,
+      "message": "Good call!",
+      "parentUuid": "621a4e3c_8829776b",
       "revId": "ff982b0c062d3b1d490d3698dc533476d004961d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
