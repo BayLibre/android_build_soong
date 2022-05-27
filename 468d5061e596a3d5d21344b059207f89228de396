@@ -166,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7c6ba0b_a6c3f948",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-05-27T20:26:40Z",
+      "side": 1,
+      "message": "Chatted with delmerico@ offline. A few takeaways:\n1. There is not yet any instance where we use `ctx.CreateModule` to create `gensrcs` module at runtime in the codebase.\n2. It\u0027s not clear at this point that we always need to convert these runtime-generated modules to Bazel targets. Example: delmerico@ mentioned that after working on `aidl_interface` code, it makes a lot of runtime modules that he decided to implement them in Starlark (rule implementation) instead of converting the Soong instantiations to Bazel targets.\n3. `gensrcs` will be the first one to check for the prefix and it\u0027s not a super elegant solution. We need a more concrete discussion on how to do this consistently across the codebase.\n\nWith that being that, I prefer to keep this as is. It shouldn\u0027t break the build. Any future module that instantiate a gensrcs module at runtime just won\u0027t get converted by bp2build because its dep isn\u0027t converted.\n\nLiz: if you also agree, I can create a bug for us to discuss further.",
+      "parentUuid": "241b79d3_557619ef",
+      "range": {
+        "startLine": 891,
+        "startChar": 2,
+        "endLine": 891,
+        "endChar": 36
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c25ee314_56a5ec98",
