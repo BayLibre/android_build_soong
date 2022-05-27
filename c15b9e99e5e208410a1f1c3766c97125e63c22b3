@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98eb2343_385f6cb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-27T15:29:20Z",
+      "side": 1,
+      "message": "Went back to use special bootclasspath_fragment_test module type as testonly (or similar) did not work well.",
+      "revId": "c15b9e99e5e208410a1f1c3766c97125e63c22b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
