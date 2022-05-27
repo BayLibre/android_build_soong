@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "354ac512_72a6746d",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-05-27T18:43:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d11486_6d88fd4d",
+      "range": {
+        "startLine": 798,
+        "startChar": 1,
+        "endLine": 798,
+        "endChar": 2
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1c9ce98_2c4dde89",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-27T12:45:45Z",
       "side": 1,
       "message": "For properties and attributes in Soong, using a pointer over a scalar allows us to distinguish between the unset value and an intentionally empty value. In this case, even if Output_extension is unset, we\u0027ll output `output_extension \u003d \"\"`",
+      "range": {
+        "startLine": 822,
+        "startChar": 18,
+        "endLine": 822,
+        "endChar": 24
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f8048b4_c954f557",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-05-27T18:43:47Z",
+      "side": 1,
+      "message": "[Here](https://android-review.git.corp.google.com/c/platform/external/boringssl/+/1970879/13/Android.bp#641) is one (only) example where `output_extension` is unset. In that scenario, the output file will be \"src/rust/src/lib.\" I confirmed this in the ninja action locally.\n\nSo while the extension being empty is rare, it\u0027s actually intact with how Soong works.\n\nMoving forward, I think we should let Soong errors if `output_extension` is empty. WDYT? If you agree, we can create a bug to address this separately.",
+      "parentUuid": "c1c9ce98_2c4dde89",
       "range": {
         "startLine": 822,
         "startChar": 18,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "333e0ea3_2e2e442d",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-05-27T18:43:47Z",
+      "side": 1,
+      "message": "Does this also mean that our [implementation](https://cs.android.com/android/platform/superproject/+/master:build/soong/genrule/genrule.go;l\u003d886?q\u003dgenrule.go) for `genrule` is not complete?\n\nIf I\u0027m following the code and comment correctly,\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;l\u003d83\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/genrule/genrule.go;l\u003d65?q\u003dgenrule.go, `ModuleType()` will return `gensrcs` which is what get passed into `RegisterModuleType`.\n\nAm I misunderstanding something here?",
+      "parentUuid": "88efc6b9_e74ceedf",
+      "range": {
+        "startLine": 891,
+        "startChar": 2,
+        "endLine": 891,
+        "endChar": 36
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c25ee314_56a5ec98",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-27T12:45:45Z",
       "side": 1,
       "message": "optional: you could use `strings.ReplaceAll` instead.",
+      "range": {
+        "startLine": 892,
+        "startChar": 17,
+        "endLine": 892,
+        "endChar": 24
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c15aee_d048a3ab",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-05-27T18:43:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c25ee314_56a5ec98",
       "range": {
         "startLine": 892,
         "startChar": 17,

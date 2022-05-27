@@ -69,6 +69,24 @@
       "parentUuid": "621a4e3c_8829776b",
       "revId": "ff982b0c062d3b1d490d3698dc533476d004961d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bcc294a_bd8d3dbc",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-05-27T18:43:47Z",
+      "side": 1,
+      "message": "Nice timing! It was an oversight because we didn\u0027t have any `gensrcs` module with `output_extension` unset. But [https://android-review.git.corp.google.com/c/platform/external/boringssl/+/1970879/13/Android.bp#641] was recently merged and caused presubmit to fail.",
+      "parentUuid": "70d752e7_d5332bd9",
+      "revId": "ff982b0c062d3b1d490d3698dc533476d004961d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
