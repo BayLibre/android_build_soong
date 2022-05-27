@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8731f0_f02d4872",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-27T19:12:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure, can\u0027t remember.\n\nIn any case, nowhere does it stop reporting an error where it did before, so it\u0027s not regressing.",
+      "parentUuid": "e407e038_29765be7",
+      "range": {
+        "startLine": 229,
+        "startChar": 39,
+        "endLine": 229,
+        "endChar": 62
+      },
+      "revId": "afa7c4811ae3f52c6e82dc3f4bc021287601e57b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23339c26_3d0be363",
