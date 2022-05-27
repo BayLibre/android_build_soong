@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "241b79d3_557619ef",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-05-27T19:05:14Z",
+      "side": 1,
+      "message": "She\u0027s referring to this bit of code that I added a while ago to attach labels to modules generated at Soong runtime: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/hooks.go;l\u003d113;drc\u003d85468a34f119e699f604718701d2ff8721d3105c\n\nUsed here, for example: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/hooks.go;l\u003d135;drc\u003df31c90050cf47cc8a46aefb21beff628ef90ad9b.\n\nSo since we\u0027re doing `ctx.ModuleType() \u003d\u003d \"gensrcs` it would not match a module with type `gensrcs_loadHookModule` which might exist. Could do `strings.HasPrefix(ctx.ModuleType(), \"gensrcs\")` or do something similar to cc module where the type is determined via reflection: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d3567;drc\u003d5bec8d41ea85cd409c4e914d3f0959a88b64277e.",
+      "parentUuid": "333e0ea3_2e2e442d",
+      "range": {
+        "startLine": 891,
+        "startChar": 2,
+        "endLine": 891,
+        "endChar": 36
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c25ee314_56a5ec98",
