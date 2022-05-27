@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab2fc3c_6197214e",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-27T13:34:20Z",
+      "side": 1,
+      "message": "Maybe put it inside the new method or inside the if-block below and get rid of the null check ?",
+      "revId": "e67162b24a51c0439272c58cdfa211efa828d736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
