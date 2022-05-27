@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d11486_6d88fd4d",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-27T12:45:45Z",
+      "side": 1,
+      "message": "Can you add unit tests under soong/bp2build?",
+      "range": {
+        "startLine": 798,
+        "startChar": 1,
+        "endLine": 798,
+        "endChar": 2
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c9ce98_2c4dde89",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-27T12:45:45Z",
+      "side": 1,
+      "message": "For properties and attributes in Soong, using a pointer over a scalar allows us to distinguish between the unset value and an intentionally empty value. In this case, even if Output_extension is unset, we\u0027ll output `output_extension \u003d \"\"`",
+      "range": {
+        "startLine": 822,
+        "startChar": 18,
+        "endLine": 822,
+        "endChar": 24
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88efc6b9_e74ceedf",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-27T12:45:45Z",
+      "side": 1,
+      "message": "Due to `ctx.CreateModule` (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/hooks.go;l\u003d134;drc\u003df31c90050cf47cc8a46aefb21beff628ef90ad9b), ModuleType() can be suffixed, it can be preferable to either determine type based on something specific to the factory or instead check for a prefix",
+      "range": {
+        "startLine": 891,
+        "startChar": 2,
+        "endLine": 891,
+        "endChar": 36
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c25ee314_56a5ec98",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-27T12:45:45Z",
+      "side": 1,
+      "message": "optional: you could use `strings.ReplaceAll` instead.",
+      "range": {
+        "startLine": 892,
+        "startChar": 17,
+        "endLine": 892,
+        "endChar": 24
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
