@@ -34,6 +34,24 @@
       "parentUuid": "7ab2fc3c_6197214e",
       "revId": "e67162b24a51c0439272c58cdfa211efa828d736",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a8dfa1_1ba27bfe",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-27T13:58:55Z",
+      "side": 1,
+      "message": "I meant to say \"the if-block above\", not \"the if-block below\", either way, not hugely bothered.",
+      "parentUuid": "5b113d23_3e46de57",
+      "revId": "e67162b24a51c0439272c58cdfa211efa828d736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
