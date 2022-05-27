@@ -1,5 +1,46 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ccffba7_2582bfdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-27T12:31:13Z",
+      "side": 1,
+      "message": "late to this, but 🎉 excited to see this!",
+      "revId": "f874e4615307a6040ab6d7645f2daca3030b891d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105f8d7f_4307fe53",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-27T12:31:13Z",
+      "side": 1,
+      "message": "should this be in FinalDeps as it is the only phase where we\u0027re guaranteed no more variations have been created? (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/mutator.go;l\u003d29;drc\u003d85468a34f119e699f604718701d2ff8721d3105c)",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "f874e4615307a6040ab6d7645f2daca3030b891d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
