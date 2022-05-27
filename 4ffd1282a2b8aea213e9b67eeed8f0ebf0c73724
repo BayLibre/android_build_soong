@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51647929_ccfa6e4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-05-27T19:21:38Z",
+      "side": 1,
+      "message": "Apparently `fuzz_test.go` doesn\u0027t work... (I thought it might\u0027ve just been failing because I had a dirty tree).\n\nShould I just leave this off?",
+      "revId": "4ffd1282a2b8aea213e9b67eeed8f0ebf0c73724",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
