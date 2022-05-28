@@ -819,7 +819,7 @@ type genSrcsProperties struct {
 
 type bazelGensrcsAttributes struct {
 	Srcs             bazel.LabelListAttribute
-	Output_extension string
+	Output_extension *string
 	Tools            bazel.LabelListAttribute
 	Cmd              string
 }
@@ -919,12 +919,10 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		// The Output_extension prop is not in an immediately accessible field
 		// in the Module struct, so use GetProperties and cast it
 		// to the known struct prop.
-		var outputExtension string
+		var outputExtension *string
 		for _, propIntf := range m.GetProperties() {
 			if props, ok := propIntf.(*genSrcsProperties); ok {
-				if props.Output_extension != nil {
-					outputExtension = *props.Output_extension
-				}
+				outputExtension = props.Output_extension
 				break
 			}
 		}
