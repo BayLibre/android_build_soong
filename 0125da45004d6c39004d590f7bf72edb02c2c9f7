@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "354bf97b_f8b704e5",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-05-28T05:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "793aa8f4_0748d9a7",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ce71a60_37cb0873",
@@ -66,6 +84,24 @@
       "writtenOn": "2022-05-27T14:31:39Z",
       "side": 1,
       "message": "Can you make buildInstrumentationPath do the right thing for empty slices as well, so that we don\u0027t need these conditionals?",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "717f7f27_0964d6ed",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-05-28T05:03:09Z",
+      "side": 1,
+      "message": "it can handle empty slices already, the condition check here is to guard this line: coverageFlags \u003d append(coverageFlags, fmt.Sprintf(`--instrumentation_filter\u003d%s`, so that if no native coverage (exclude) paths are provided it should not add the instrumentation_filter flag.",
+      "parentUuid": "0ce71a60_37cb0873",
       "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -89,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9cb5c8c_bfd7d66b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-05-28T05:03:09Z",
+      "side": 1,
+      "message": "I did think about using strings.join but I am not sure strings.join() will work better in either places, maybe I am not that familiar with golang. Here if I use join and assign the result to another variable, next line I will need to decide if I should use the new variable or one of includePaths and excludePaths, could you provide a quick code snippet here?\n\nin buildInstrumentationPath I need do this for all the paths:\nprefix + path + \",\", how do I use join in this case? I need add the prefix to each path before joining with \",\" right?",
+      "parentUuid": "c1f99d3b_b1430962",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82c6d83e_e824bd92",
         "filename": "android/bazel_handler.go",
         "patchSetId": 2
@@ -100,6 +154,24 @@
       "writtenOn": "2022-05-27T14:31:39Z",
       "side": 1,
       "message": "checking `len(coverageFlags)` here isn\u0027t necessary, appending an empty slice is fine.",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe48629_58596be3",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-05-28T05:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82c6d83e_e824bd92",
       "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -117,6 +189,24 @@
       "writtenOn": "2022-05-27T14:31:39Z",
       "side": 1,
       "message": "Is this something we need to implement at some point, or do we want a bug to track this handling?",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4367cd7d_4f742387",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-05-28T05:03:09Z",
+      "side": 1,
+      "message": "We don\u0027t need to, this is to generate the baseline coverage in bazel, mixed build doesn\u0027t need it, TradeFed/soong has similar mechanism to do it.",
+      "parentUuid": "66612ee5_8f9655e5",
       "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
