@@ -87,6 +87,30 @@
       },
       "revId": "dff4e0fe4ca0556c0c040f4020f7fc9af9128427",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271b7d65_8de82241",
+        "filename": "java/config/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2022-05-30T07:54:44Z",
+      "side": 1,
+      "message": "Sorry for the confusion:\nhttps://r.android.com/2049323 is the original CL that introduced this issue in AOSP, which was reverted.\nSince this optimization is still in R8 (and will continue to be so) we need to disable it for framework to roll a new version.\nIn general, R8 must have keep rules for anything that is reflectively used or which relies on GC behavior. The problem here being that R8 has a new optimization that allows it to remove a field that is never used outside of the constructor (the field is final and is only written and read in the constructor) - unfortunately this is the only reference to an object that is flowing to a WeakReference, which is then dead and removed by the GC. The fact that R8 can remove a field that keeps an object which in a different location has a weak reference is not new, but this specific pattern is used in a range of places in framework. Until we have a solid understanding of how to solve this in the framework we will disable this optimization in R8 and unblock the roll of R8 (which we normally do weekly, but have been blocked on this and other issues for more than a month).\nThere are other issues blocked on releasing a new version of R8 in framework.",
+      "parentUuid": "db8166cc_efe0396b",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 64
+      },
+      "revId": "dff4e0fe4ca0556c0c040f4020f7fc9af9128427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
