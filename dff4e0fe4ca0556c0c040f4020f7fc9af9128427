@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1779f346_8b357933",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2022-05-30T06:41:20Z",
+      "side": 1,
+      "message": "Lukács: Can you review this, I think Colin is OOO due to public holiday in the US today",
+      "revId": "dff4e0fe4ca0556c0c040f4020f7fc9af9128427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
