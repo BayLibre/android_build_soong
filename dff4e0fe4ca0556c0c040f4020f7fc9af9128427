@@ -63,6 +63,30 @@
       },
       "revId": "dff4e0fe4ca0556c0c040f4020f7fc9af9128427",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db8166cc_efe0396b",
+        "filename": "java/config/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-30T07:31:01Z",
+      "side": 1,
+      "message": "I\u0027m confused. If it\u0027s reverted, why does one need to disable it here?",
+      "parentUuid": "0026851e_3985a5f9",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 64
+      },
+      "revId": "dff4e0fe4ca0556c0c040f4020f7fc9af9128427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
