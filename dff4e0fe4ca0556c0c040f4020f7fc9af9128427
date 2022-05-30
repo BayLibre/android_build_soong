@@ -39,6 +39,30 @@
       },
       "revId": "dff4e0fe4ca0556c0c040f4020f7fc9af9128427",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0026851e_3985a5f9",
+        "filename": "java/config/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2022-05-30T07:25:07Z",
+      "side": 1,
+      "message": "This is a temporary fix for b/227455445, until we can flesh out all usages of weak references and add annotations on those fields with the annotation introduced in:\nhttps://android-review.googlesource.com/c/platform/frameworks/libs/modules-utils/+/2094725\nThis will disable a very small optimization in R8 that has never been utilized in AOSP by any app (since it was only live for a short time before we reverted it)",
+      "parentUuid": "11f2d8c0_aabc3b82",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 64
+      },
+      "revId": "dff4e0fe4ca0556c0c040f4020f7fc9af9128427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
