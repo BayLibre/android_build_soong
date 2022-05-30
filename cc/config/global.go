@@ -209,7 +209,6 @@ var (
 
 		// http://b/72331526 Disable -Wtautological-* until the instances detected by these
 		// new warnings are fixed.
-		"-Wno-tautological-constant-compare",
 		"-Wno-tautological-type-limit-compare",
 		// http://b/145210666
 		"-Wno-reorder-init-list",
@@ -271,6 +270,8 @@ var (
 
 		// http://b/175068488
 		"-Wno-string-concatenation",
+
+		"-Wno-tautological-constant-compare",
 	}
 
 	IllegalFlags = []string{
