@@ -16,6 +16,29 @@
       "message": "Lukács: Can you review this, I think Colin is OOO due to public holiday in the US today",
       "revId": "dff4e0fe4ca0556c0c040f4020f7fc9af9128427",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f2d8c0_aabc3b82",
+        "filename": "java/config/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-30T07:09:30Z",
+      "side": 1,
+      "message": "It looks like this is a fix for a regression introduced by ag/17411634 but it would affect every module using R8, not only SystemUI. Is that OK?",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 64
+      },
+      "revId": "dff4e0fe4ca0556c0c040f4020f7fc9af9128427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
