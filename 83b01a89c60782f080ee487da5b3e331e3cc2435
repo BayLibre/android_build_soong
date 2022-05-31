@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b26f1a_d91df8f2",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-05-31T13:55:53Z",
+      "side": 1,
+      "message": "I see the logic in this if condition is carried over from before this change, but I wonder if we should we also set `neither` to `true` in the case that `mod.commonProperties.HostOrDeviceSupported \u003d\u003d NeitherHostNorDeviceSupported`?\n\nI wrote condition as `mod.commonProperties.HostOrDeviceSupported !\u003d NeitherHostNorDeviceSupported \u0026\u0026 !moduleSupportsDevice` to test for disabling the Android target, but I don\u0027t remember why I didn\u0027t just disable the target in when `mod.commonProperties.HostOrDeviceSupported \u003d\u003d NeitherHostNorDeviceSupported` as well.",
+      "revId": "83b01a89c60782f080ee487da5b3e331e3cc2435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e7290b_e0a0decf",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-05-31T13:55:53Z",
+      "side": 1,
+      "message": "On line 1248, we allow a product variable to override the enabled property too. Do we want the `neither` variable to be the most general switch of the enabled property since it is related to architecture? If so, perhaps we should move this `if` statement after the last mutation of `enabledProperty.Value`.",
+      "revId": "83b01a89c60782f080ee487da5b3e331e3cc2435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
