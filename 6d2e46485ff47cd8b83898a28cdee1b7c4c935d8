@@ -87,6 +87,30 @@
       },
       "revId": "6d2e46485ff47cd8b83898a28cdee1b7c4c935d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55d8aac_6ca06acf",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1941531
+      },
+      "writtenOn": "2022-05-31T16:45:12Z",
+      "side": 1,
+      "message": "No you won\u0027t see it any manifests unless there is permission or uses-permission thats with maxSdkVersion\u003d\"current\". However, I just realized that the current behavior is to default max_sdk_version to a empty string. It would probably be better to keep the current behavior instead of defaulting it to \"10001\".",
+      "parentUuid": "48419140_9263dbf5",
+      "range": {
+        "startLine": 687,
+        "startChar": 31,
+        "endLine": 687,
+        "endChar": 40
+      },
+      "revId": "6d2e46485ff47cd8b83898a28cdee1b7c4c935d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
