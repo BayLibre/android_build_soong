@@ -232,6 +232,7 @@ var (
 		"build/bazel/rules_cc":/* recursive = */ true,
 		"build/bazel/scripts":/* recursive = */ true,
 		"build/bazel/tests":/* recursive = */ true,
+		"build/bazel/tools":/* recursive = */ true,
 		"build/bazel/platforms":/* recursive = */ true,
 		"build/bazel/product_variables":/* recursive = */ true,
 		"build/bazel/vendor/google":/* recursive = */ true,
