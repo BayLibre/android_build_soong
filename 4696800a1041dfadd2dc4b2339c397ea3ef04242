@@ -87,6 +87,24 @@
       "parentUuid": "91e19c95_bcb9a976",
       "revId": "4696800a1041dfadd2dc4b2339c397ea3ef04242",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb9efb4_5b92f687",
+        "filename": "go.mod",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-31T19:57:22Z",
+      "side": 1,
+      "message": "Yes, I understand this is intellij only -- but I guess I wonder if this could break any existing intellij users (I don\u0027t know how intellij\u0027s go plugin\u0027s auto-update works, or whatnot)\n\nStill, good point that this go version is now required due to generics use. \n\nCould you at least add \"Also, intelliJ project go version updated to 1.18\" in the CL description?",
+      "parentUuid": "12604fd4_5ae48f2f",
+      "revId": "4696800a1041dfadd2dc4b2339c397ea3ef04242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
