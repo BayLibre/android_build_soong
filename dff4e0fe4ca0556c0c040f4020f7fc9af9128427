@@ -111,6 +111,30 @@
       },
       "revId": "dff4e0fe4ca0556c0c040f4020f7fc9af9128427",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f85cd7_1aa38729",
+        "filename": "java/config/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-31T06:55:58Z",
+      "side": 1,
+      "message": "sgtm, thanks for the explanation",
+      "parentUuid": "271b7d65_8de82241",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 64
+      },
+      "revId": "dff4e0fe4ca0556c0c040f4020f7fc9af9128427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
