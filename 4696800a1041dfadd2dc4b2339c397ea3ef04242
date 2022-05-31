@@ -16,6 +16,41 @@
       "message": "this comment seems incorrect",
       "revId": "4696800a1041dfadd2dc4b2339c397ea3ef04242",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d83fff4_2a26590a",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-31T14:29:41Z",
+      "side": 1,
+      "message": "It is indeed incorrect. Please to fix? :)",
+      "parentUuid": "8bf73287_ee8bb96f",
+      "revId": "4696800a1041dfadd2dc4b2339c397ea3ef04242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91e19c95_bcb9a976",
+        "filename": "go.mod",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-31T14:29:41Z",
+      "side": 1,
+      "message": "Was this intentionally included in this CL?\n\nWhile it seems harmless, we may want to submit this as a separate CL for tracking and just in case this breaks anyone?",
+      "revId": "4696800a1041dfadd2dc4b2339c397ea3ef04242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
