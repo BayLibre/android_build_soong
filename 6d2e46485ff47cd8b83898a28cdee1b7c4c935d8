@@ -111,6 +111,30 @@
       },
       "revId": "6d2e46485ff47cd8b83898a28cdee1b7c4c935d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af463b2b_505cc441",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2022-05-31T17:25:46Z",
+      "side": 1,
+      "message": "I completely agree here. Empty string feels appropriate.",
+      "parentUuid": "e55d8aac_6ca06acf",
+      "range": {
+        "startLine": 687,
+        "startChar": 31,
+        "endLine": 687,
+        "endChar": 40
+      },
+      "revId": "6d2e46485ff47cd8b83898a28cdee1b7c4c935d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
