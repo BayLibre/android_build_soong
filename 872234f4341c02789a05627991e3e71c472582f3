@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46394eda_a0955a43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2022-05-31T16:07:47Z",
+      "side": 1,
+      "message": "LGTM once we work through the maxSdkVersion default behavior.",
+      "revId": "872234f4341c02789a05627991e3e71c472582f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

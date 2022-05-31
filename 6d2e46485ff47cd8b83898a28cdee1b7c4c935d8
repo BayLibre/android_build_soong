@@ -63,6 +63,30 @@
       },
       "revId": "6d2e46485ff47cd8b83898a28cdee1b7c4c935d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48419140_9263dbf5",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2022-05-31T16:07:47Z",
+      "side": 1,
+      "message": "\"only used if no max_sdkvVersion is declared in Android.bp\", would that be all builds that don\u0027t declare it? i.e.: are we going to start seeing maxSdkVersion\u003d\"10001\" in all manifests going forward where we don\u0027t declare it otherwise in Android.bp? Is there a way to leave it out if not defined instead?",
+      "parentUuid": "8537a23c_da0dc939",
+      "range": {
+        "startLine": 687,
+        "startChar": 31,
+        "endLine": 687,
+        "endChar": 40
+      },
+      "revId": "6d2e46485ff47cd8b83898a28cdee1b7c4c935d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
