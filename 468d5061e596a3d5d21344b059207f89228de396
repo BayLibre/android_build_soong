@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f162bacf_5b91e2f5",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-01T20:27:01Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I changed the type of `Output_extension` such that the BUILD file will match with the Android.bp file.\n\naosp/2113804: `gensrcs` rule is fixed to default `out_extension` to `\"\"`.",
+      "parentUuid": "03e56662_750f74ec",
+      "range": {
+        "startLine": 822,
+        "startChar": 18,
+        "endLine": 822,
+        "endChar": 24
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88efc6b9_e74ceedf",
