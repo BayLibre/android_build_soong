@@ -130,7 +130,7 @@ func genAidlIncludeFlags(srcFiles android.Paths) string {
 }
 
 func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
-	flags javaBuilderFlags) android.Paths {
+	flags javaBuilderFlags) (android.Paths, android.Paths) {
 
 	outSrcFiles := make(android.Paths, 0, len(srcFiles))
 	var protoSrcs android.Paths
@@ -172,7 +172,7 @@ func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 		outSrcFiles = append(outSrcFiles, srcJarFiles...)
 	}
 
-	return outSrcFiles
+	return outSrcFiles, aidlSrcs
 }
 
 func LogtagsSingleton() android.Singleton {

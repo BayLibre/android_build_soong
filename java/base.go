@@ -1021,7 +1021,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	}
 
 	nonGeneratedSrcJars := srcFiles.FilterByExt(".srcjar")
-	srcFiles = j.genSources(ctx, srcFiles, flags)
+	srcFiles, aidlSrcFiles := j.genSources(ctx, srcFiles, flags)
 
 	// Collect javac flags only after computing the full set of srcFiles to
 	// ensure that the --patch-module lookup paths are complete.
@@ -1493,7 +1493,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		}
 
 		j.linter.name = ctx.ModuleName()
-		j.linter.srcs = append(srcFiles, nonGeneratedSrcJars...)
+		j.linter.srcs = append(srcFiles, append(aidlSrcFiles, nonGeneratedSrcJars...)...)
 		j.linter.srcJars, _ = android.FilterPathList(srcJars, nonGeneratedSrcJars)
 		j.linter.classpath = append(append(android.Paths(nil), flags.bootClasspath...), flags.classpath...)
 		j.linter.classes = j.implementationJarFile
