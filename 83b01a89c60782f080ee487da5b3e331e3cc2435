@@ -69,6 +69,24 @@
       "parentUuid": "24e7290b_e0a0decf",
       "revId": "83b01a89c60782f080ee487da5b3e331e3cc2435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d8aafc3_1f5da496",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-01T14:44:13Z",
+      "side": 1,
+      "message": "Yeah this function has gotten pretty complicated. I remember thinking the precedence of the various enable/disable properties was hard to communicate clearly in code when I was working on this function for one of my starter bugs.\n\nCould maybe stand a refactor the next time we need to add functionality.",
+      "parentUuid": "fc1b726e_f6b48b55",
+      "revId": "83b01a89c60782f080ee487da5b3e331e3cc2435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
