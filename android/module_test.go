@@ -18,6 +18,8 @@ import (
 	"path/filepath"
 	"runtime"
 	"testing"
+
+	"github.com/google/blueprint/proptools"
 )
 
 func TestSrcIsModule(t *testing.T) {
@@ -224,6 +226,10 @@ func depsModuleFactory() Module {
 
 var prepareForModuleTests = FixtureRegisterWithContext(func(ctx RegistrationContext) {
 	ctx.RegisterModuleType("deps", depsModuleFactory)
+	ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
+		ctx.BottomUp("variable", VariableMutator).Parallel()
+	})
+
 })
 
 func TestErrorDependsOnDisabledModule(t *testing.T) {
@@ -241,6 +247,104 @@ func TestErrorDependsOnDisabledModule(t *testing.T) {
 	prepareForModuleTests.
 		ExtendWithErrorHandler(FixtureExpectsAtLeastOneErrorMatchingPattern(`module "foo": depends on disabled module "bar"`)).
 		RunTestWithBp(t, bp)
+}
+
+func TestEnabledOverride(t *testing.T) {
+	if runtime.GOOS != "linux" {
+		t.Skip("requires linux")
+	}
+
+	bp := `
+		deps {
+			name: "foo_device_default_disabled",
+			host_supported: true,
+			target: {
+				android: {
+					enabled: false,
+				}
+			},
+			product_variables: { unbundled_build: { enabled: true } },
+		}
+
+		deps {
+			name: "foo_host_default_disabled",
+			host_supported: true,
+			target: {
+				host: {
+					enabled: false,
+				}
+			},
+			product_variables: { unbundled_build: { enabled: true } },
+		}
+	`
+	testCases := []struct {
+		desc           string
+		unbundledBuild bool
+		moduleName     string
+		androidEnabled bool
+		hostEnabled    bool
+	}{
+		{
+			desc:           "product_var overrides device",
+			unbundledBuild: true,
+			moduleName:     "foo_device_default_disabled",
+			androidEnabled: true,
+			hostEnabled:    true,
+		},
+		{
+			desc:           "product_var no override device",
+			unbundledBuild: false,
+			moduleName:     "foo_device_default_disabled",
+			androidEnabled: false,
+			hostEnabled:    true,
+		},
+		{
+			desc:           "product_var override host",
+			unbundledBuild: true,
+			moduleName:     "foo_host_default_disabled",
+			androidEnabled: true,
+			hostEnabled:    true,
+		},
+		{
+			desc:           "product_var no override host",
+			unbundledBuild: false,
+			moduleName:     "foo_host_default_disabled",
+			androidEnabled: true,
+			hostEnabled:    false,
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.desc, func(t *testing.T) {
+
+			result := GroupFixturePreparers(
+				prepareForModuleTests,
+				PrepareForTestWithArchMutator,
+				FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+					variables.Unbundled_build = proptools.BoolPtr(tc.unbundledBuild)
+				}),
+			).
+				RunTestWithBp(t, bp)
+
+			module := func(name string, host bool) TestingModule {
+				variant := "android_common"
+				if host {
+					variant = result.Config.BuildOSCommonTarget.String()
+				}
+				return result.ModuleForTests(name, variant)
+			}
+
+			hostModule := module(tc.moduleName, true).module
+			deviceModule := module(tc.moduleName, false).module
+
+			if tc.androidEnabled != deviceModule.Enabled() {
+				t.Errorf("expected android enabled: %#v, got %#v", tc.androidEnabled, deviceModule.Enabled())
+			}
+			if tc.hostEnabled != hostModule.Enabled() {
+				t.Errorf("expected host enabled: %#v, got %#v", tc.hostEnabled, hostModule.Enabled())
+			}
+		})
+	}
 }
 
 func TestValidateCorrectBuildParams(t *testing.T) {

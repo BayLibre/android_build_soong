@@ -15,6 +15,7 @@
 package android
 
 import (
+	"runtime"
 	"testing"
 )
 
@@ -432,4 +433,107 @@ func testConfigWithVendorVars(buildDir, bp string, fs map[string][]byte, vendorV
 	config.TestProductVariables.VendorVars = vendorVars
 
 	return config
+}
+
+func TestEnabledOverridesInSoongConfigVars(t *testing.T) {
+	if runtime.GOOS != "linux" {
+		t.Skip("requires linux")
+	}
+
+	bp := `
+		soong_config_module_type {
+			name: "acme_test",
+			module_type: "test",
+			config_namespace: "acme",
+			bool_variables: ["feature1", "feature2"],
+			properties: ["enabled"],
+		}
+
+		acme_test {
+			name: "scv_override",
+			enabled: false,
+			soong_config_variables: {
+				feature1: {
+					enabled: true,
+				},
+			},
+		}
+
+		acme_test {
+			name: "scv_no_override",
+			enabled: false,
+			soong_config_variables: {
+				feature2: {
+					enabled: true,
+				},
+			},
+		}
+
+		acme_test {
+			name: "scv_override_with_android",
+			soong_config_variables: {
+				feature1: {
+					enabled: true,
+				},
+			},
+			target: {
+				android: { enabled: false },
+			}
+		}
+    `
+
+	fixtureForVendorVars := func(vars map[string]map[string]string) FixturePreparer {
+		return FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+			variables.VendorVars = vars
+		})
+	}
+
+	result := GroupFixturePreparers(
+		fixtureForVendorVars(map[string]map[string]string{"acme": {"feature1": "1"}}),
+		PrepareForTestWithArchMutator,
+		FixtureRegisterWithContext(func(ctx RegistrationContext) {
+			ctx.RegisterModuleType("soong_config_module_type_import", SoongConfigModuleTypeImportFactory)
+			ctx.RegisterModuleType("soong_config_module_type", SoongConfigModuleTypeFactory)
+			ctx.RegisterModuleType("soong_config_string_variable", SoongConfigStringVariableDummyFactory)
+			ctx.RegisterModuleType("soong_config_bool_variable", SoongConfigBoolVariableDummyFactory)
+			ctx.RegisterModuleType("test_defaults", soongConfigTestDefaultsModuleFactory)
+			ctx.RegisterModuleType("test", depsModuleFactory)
+		}),
+		FixtureWithRootAndroidBp(bp),
+	).RunTest(t)
+
+	module := func(name string, host bool) TestingModule {
+		variant := "android_common"
+		if host {
+			variant = result.Config.BuildOSCommonTarget.String()
+		}
+		return result.ModuleForTests(name, variant)
+	}
+
+	m := module("scv_override", false).Module()
+	hostM := module("scv_override", true).Module()
+	if expected, got := true, m.Enabled(); expected != got {
+		t.Errorf("android: expected enabled: %v, got %v", expected, got)
+	}
+	if expected, got := true, hostM.Enabled(); expected != got {
+		t.Errorf("host: expected enabled: %v, got %v", expected, got)
+	}
+
+	m = module("scv_no_override", false).Module()
+	hostM = module("scv_no_override", true).Module()
+	if expected, got := false, m.Enabled(); expected != got {
+		t.Errorf("android: expected enabled: %v, got %v", expected, got)
+	}
+	if expected, got := false, hostM.Enabled(); expected != got {
+		t.Errorf("host: expected enabled: %v, got %v", expected, got)
+	}
+
+	m = module("scv_override_with_android", false).Module()
+	hostM = module("scv_override_with_android", true).Module()
+	if expected, got := false, m.Enabled(); expected != got {
+		t.Errorf("android: expected enabled: %v, got %v", expected, got)
+	}
+	if expected, got := true, hostM.Enabled(); expected != got {
+		t.Errorf("host: expected enabled: %v, got %v", expected, got)
+	}
 }
