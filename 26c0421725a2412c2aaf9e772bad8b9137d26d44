@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ed7886_79e420a7",
+        "filename": "bp2build/gensrcs_conversion_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-01T14:37:39Z",
+      "side": 1,
+      "message": "we need the license header in this file",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "26c0421725a2412c2aaf9e772bad8b9137d26d44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803d7bbe_ded4cfc1",
+        "filename": "bp2build/gensrcs_conversion_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-01T14:37:39Z",
+      "side": 1,
+      "message": "Can you split this into multiple tests and name the test based on what is being tested?\n\nhttps://testing.googleblog.com/2018/06/testing-on-toilet-keep-tests-focused.html",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "26c0421725a2412c2aaf9e772bad8b9137d26d44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

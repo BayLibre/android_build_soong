@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03e56662_750f74ec",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-01T14:37:39Z",
+      "side": 1,
+      "message": "Sorry that this wasn\u0027t clear, I wasn\u0027t meaning that we should change Soong or Bazel\u0027s handling of an empty output_extension, but that we may want to change the type of Output_extension such that the BUILD file will match the Android.bp file.\n\nOur bp2build conversion framework will handle `Output_extension string` differently than `Output_extension *string`.\n\nFor `Output_extension string`, if in bp2build conversion we do not set `Output_extension`, bp2build will output `output_extension \u003d \"\"`.\n\nFor `Output_extension *string`, if in bp2build conversion, we do not set `Output_extension`, bp2build will not output an attribute for `output_extension`.\n\nIn general, for properties and attributes storing the type as a pointer to a scalar type rather than a scalar type lets us distinguish between being set to a scalar type\u0027s default value vs the value not being set at all.\n\ne.g. in the case you specified, we currently would output:\n\n```\ngensrcs(\n    name \u003d \"libbssl_sys_src\",\n    cmd \u003d \"sed \u0027s@^.{INCLUDES}@pub use bssl_sys_raw::*;@\u0027 $(SRC) \u003e $(OUT)\",\n    output_extension \u003d \"\",\n    srcs \u003d [\"src/rust/src/lib.rs\"],\n)\n```\n\nwhich is more verbose than the current Android.bp file, we should similarly handling a missing output_extension in Bazel to Soong rather than specifying it in the BUILD file.",
+      "parentUuid": "8f8048b4_c954f557",
+      "range": {
+        "startLine": 822,
+        "startChar": 18,
+        "endLine": 822,
+        "endChar": 24
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88efc6b9_e74ceedf",
         "filename": "genrule/genrule.go",
         "patchSetId": 13
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "Chatted with delmerico@ offline. A few takeaways:\n1. There is not yet any instance where we use `ctx.CreateModule` to create `gensrcs` module at runtime in the codebase.\n2. It\u0027s not clear at this point that we always need to convert these runtime-generated modules to Bazel targets. Example: delmerico@ mentioned that after working on `aidl_interface` code, it makes a lot of runtime modules that he decided to implement them in Starlark (rule implementation) instead of converting the Soong instantiations to Bazel targets.\n3. `gensrcs` will be the first one to check for the prefix and it\u0027s not a super elegant solution. We need a more concrete discussion on how to do this consistently across the codebase.\n\nWith that being that, I prefer to keep this as is. It shouldn\u0027t break the build. Any future module that instantiate a gensrcs module at runtime just won\u0027t get converted by bp2build because its dep isn\u0027t converted.\n\nLiz: if you also agree, I can create a bug for us to discuss further.",
       "parentUuid": "241b79d3_557619ef",
+      "range": {
+        "startLine": 891,
+        "startChar": 2,
+        "endLine": 891,
+        "endChar": 36
+      },
+      "revId": "468d5061e596a3d5d21344b059207f89228de396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3bcc49e_54c3af66",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-01T14:37:39Z",
+      "side": 1,
+      "message": "\u003e Chatted with delmerico@ offline. A few takeaways:\n\u003e 1. There is not yet any instance where we use `ctx.CreateModule` to create `gensrcs` module at runtime in the codebase.\n\u003e 2. It\u0027s not clear at this point that we always need to convert these runtime-generated modules to Bazel targets. Example: delmerico@ mentioned that after working on `aidl_interface` code, it makes a lot of runtime modules that he decided to implement them in Starlark (rule implementation) instead of converting the Soong instantiations to Bazel targets.\n\u003e 3. `gensrcs` will be the first one to check for the prefix and it\u0027s not a super elegant solution. We need a more concrete discussion on how to do this consistently across the codebase.\n\ncc is already basing this on the underlying type rather than the string\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d3567;drc\u003d5bec8d41ea85cd409c4e914d3f0959a88b64277e. This allowed us to make progress without directly addressing each plugin initially.\n\n\u003e \n\u003e With that being that, I prefer to keep this as is. It shouldn\u0027t break the build. Any future module that instantiate a gensrcs module at runtime just won\u0027t get converted by bp2build because its dep isn\u0027t converted.\n\u003e \n\u003e Liz: if you also agree, I can create a bug for us to discuss further.\n\nGiven that this is unused at this time, let\u0027s leave as is and can determine if we need to change things in the future.",
+      "parentUuid": "b7c6ba0b_a6c3f948",
       "range": {
         "startLine": 891,
         "startChar": 2,
