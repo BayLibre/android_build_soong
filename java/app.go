@@ -281,6 +281,7 @@ func (a *AndroidApp) OverridablePropertiesDepsMutator(ctx android.BottomUpMutato
 }
 
 func (a *AndroidTestHelperApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	a.checkPlatformAPIAndSdkVersion(ctx)
 	a.generateAndroidBuildActions(ctx)
 }
 
@@ -1014,6 +1015,7 @@ func (a *AndroidTestHelperApp) includedInTestSuite(searchPrefix string) bool {
 }
 
 func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	a.checkPlatformAPIAndSdkVersion(ctx)
 	var configs []tradefed.Config
 	if a.appTestProperties.Instrumentation_target_package != nil {
 		a.additionalAaptFlags = append(a.additionalAaptFlags,
