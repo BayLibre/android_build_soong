@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c765f88_5f94f62e",
+        "filename": "java/base.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-01T21:52:35Z",
+      "side": 1,
+      "message": "As a reader without much context, it\u0027s not clear to me by reading why we need both functions here. The second `if` condition in the first function seems relatively innocuous.\n\nCould we make the distinction clear or would it be simpler to wrap the first function with a flag rather than repeating the logic in the second function?",
+      "revId": "bb7e85387a417c8cf661df849b2db9591d47aa19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
