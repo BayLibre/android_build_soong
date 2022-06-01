@@ -158,6 +158,24 @@ func TestPlatformAPIs(t *testing.T) {
 			platform_apis: true,
 		}
 	`)
+
+	testJavaError(t, "This module has conflicting settings. sdk_version is not empty, which means this module cannot use platform APIs. However platform_apis is set to true.", `
+		android_test {
+			name: "bar",
+			srcs: ["b.java"],
+			sdk_version: "system_current",
+			platform_apis: true,
+		}
+	`)
+
+	testJavaError(t, "This module has conflicting settings. sdk_version is not empty, which means this module cannot use platform APIs. However platform_apis is set to true.", `
+		android_test_helper_app {
+			name: "bar",
+			srcs: ["b.java"],
+			sdk_version: "system_current",
+			platform_apis: true,
+		}
+	`)
 }
 
 func TestAndroidAppLinkType(t *testing.T) {

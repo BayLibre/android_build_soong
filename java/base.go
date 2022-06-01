@@ -541,6 +541,16 @@ func (j *Module) checkPlatformAPI(ctx android.ModuleContext) {
 	}
 }
 
+func (j *Module) checkPlatformAPIAndSdkVersion(ctx android.ModuleContext) {
+	if sc, ok := ctx.Module().(android.SdkContext); ok {
+		usePlatformAPI := proptools.Bool(j.deviceProperties.Platform_apis)
+		sdkVersionSpecified := sc.SdkVersion(ctx).Specified()
+		if usePlatformAPI && sdkVersionSpecified {
+			ctx.ModuleErrorf("This module has conflicting settings. sdk_version is not empty, which means this module cannot use platform APIs. However platform_apis is set to true.")
+		}
+	}
+}
+
 func (j *Module) addHostProperties() {
 	j.AddProperties(
 		&j.properties,
