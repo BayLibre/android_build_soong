@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "59222a06584e0035d728d7b1ff4aa33768a75926",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3957d3eb_b0265eca",
+        "filename": "android/androidmk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-01T23:35:58Z",
+      "side": 1,
+      "message": "You could add `distContributions.licenseMetadataPath \u003d amod.licenseMetadataPath` here and then you wouldn\u0027t need to pass metadata to `GetDistForGoals` and avoid most of the other changes in this patch.",
+      "revId": "59222a06584e0035d728d7b1ff4aa33768a75926",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
