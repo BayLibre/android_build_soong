@@ -864,7 +864,20 @@ type hostTestProperties struct {
 	Data_native_bins []string `android:"arch_variant"`
 
 	// list of device binary modules that should be installed alongside the test
-	Data_device_bins []string `android:"arch_variant"`
+	// This property only adds the first variant of the dependency
+	Data_device_bins_first []string `android:"arch_variant"`
+
+	// list of device binary modules that should be installed alongside the test
+	// This property adds 64bit AND 32bit variants of the dependency
+	Data_device_bins_both []string `android:"arch_variant"`
+
+	// list of device binary modules that should be installed alongside the test
+	// This property only adds 64bit variants of the dependency
+	Data_device_bins_64 []string `android:"arch_variant"`
+
+	// list of device binary modules that should be installed alongside the test
+	// This property only adds 32bit variants of the dependency
+	Data_device_bins_32 []string `android:"arch_variant"`
 }
 
 type testHelperLibraryProperties struct {
@@ -931,16 +944,59 @@ func (j *JavaTestImport) InstallInTestcases() bool {
 	return true
 }
 
+func (j *TestHost) addDataDeviceBinsDeps(ctx android.BottomUpMutatorContext) {
+	if len(j.testHostProperties.Data_device_bins_first) > 0 {
+		deviceVariations := ctx.Config().AndroidFirstDeviceTarget.Variations()
+		ctx.AddFarVariationDependencies(deviceVariations, dataDeviceBinsTag, j.testHostProperties.Data_device_bins_first...)
+	}
+
+	var maybeAndroid32Target *android.Target
+	var maybeAndroid64Target *android.Target
+	android32TargetList := android.FirstTarget(ctx.Config().Targets[android.Android], "lib32")
+	android64TargetList := android.FirstTarget(ctx.Config().Targets[android.Android], "lib64")
+	if len(android32TargetList) > 0 {
+		maybeAndroid32Target = &android32TargetList[0]
+	}
+	if len(android64TargetList) > 0 {
+		maybeAndroid64Target = &android64TargetList[0]
+	}
+
+	if len(j.testHostProperties.Data_device_bins_both) > 0 {
+		if maybeAndroid32Target == nil || maybeAndroid64Target == nil {
+			if maybeAndroid32Target == nil {
+				ctx.PropertyErrorf("data_device_bins_both", "cannot find 32bit device target. Targets: %q", ctx.Config().Targets)
+			}
+			if maybeAndroid64Target == nil {
+				ctx.PropertyErrorf("data_device_bins_both", "cannot find 64bit device target. Targets: %q", ctx.Config().Targets)
+			}
+			return
+		}
+		ctx.AddFarVariationDependencies(maybeAndroid32Target.Variations(), dataDeviceBinsTag, j.testHostProperties.Data_device_bins_both...)
+		ctx.AddFarVariationDependencies(maybeAndroid64Target.Variations(), dataDeviceBinsTag, j.testHostProperties.Data_device_bins_both...)
+	}
+	if len(j.testHostProperties.Data_device_bins_32) > 0 {
+		if maybeAndroid32Target == nil {
+			ctx.PropertyErrorf("data_device_bins_both", "cannot find 32bit device target. Targets: %q", ctx.Config().Targets)
+			return
+		}
+		deviceVariations := maybeAndroid32Target.Variations()
+		ctx.AddFarVariationDependencies(deviceVariations, dataDeviceBinsTag, j.testHostProperties.Data_device_bins_32...)
+	}
+	if len(j.testHostProperties.Data_device_bins_64) > 0 {
+		if maybeAndroid64Target == nil {
+			ctx.PropertyErrorf("data_device_bins_both", "cannot find 64bit device target. Targets: %q", ctx.Config().Targets)
+			return
+		}
+		deviceVariations := maybeAndroid64Target.Variations()
+		ctx.AddFarVariationDependencies(deviceVariations, dataDeviceBinsTag, j.testHostProperties.Data_device_bins_64...)
+	}
+}
+
 func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if len(j.testHostProperties.Data_native_bins) > 0 {
 		for _, target := range ctx.MultiTargets() {
 			ctx.AddVariationDependencies(target.Variations(), dataNativeBinsTag, j.testHostProperties.Data_native_bins...)
 		}
-	}
-
-	if len(j.testHostProperties.Data_device_bins) > 0 {
-		deviceVariations := ctx.Config().AndroidFirstDeviceTarget.Variations()
-		ctx.AddFarVariationDependencies(deviceVariations, dataDeviceBinsTag, j.testHostProperties.Data_device_bins...)
 	}
 
 	if len(j.testProperties.Jni_libs) > 0 {
@@ -950,6 +1006,8 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 		}
 	}
 
+	j.addDataDeviceBinsDeps(ctx)
+
 	j.deps(ctx)
 }
 
@@ -957,17 +1015,46 @@ func (j *TestHost) AddExtraResource(p android.Path) {
 	j.extraResources = append(j.extraResources, p)
 }
 
+func (j *TestHost) dataDeviceBins() []string {
+	ret := make([]string, 0,
+		len(j.testHostProperties.Data_device_bins_first)+
+			len(j.testHostProperties.Data_device_bins_both)+
+			len(j.testHostProperties.Data_device_bins_32)+
+			len(j.testHostProperties.Data_device_bins_64),
+	)
+
+	for _, bin := range j.testHostProperties.Data_device_bins_first {
+		ret = append(ret, bin)
+	}
+	for _, bin := range j.testHostProperties.Data_device_bins_both {
+		ret = append(ret, bin)
+	}
+	for _, bin := range j.testHostProperties.Data_device_bins_32 {
+		ret = append(ret, bin)
+	}
+	for _, bin := range j.testHostProperties.Data_device_bins_64 {
+		ret = append(ret, bin)
+	}
+
+	return ret
+}
+
 func (j *TestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var configs []tradefed.Config
-	if len(j.testHostProperties.Data_device_bins) > 0 {
+	dataDeviceBins := j.dataDeviceBins()
+	if len(dataDeviceBins) > 0 {
 		// add Tradefed configuration to push device bins to device for testing
 		remoteDir := filepath.Join("/data/local/tests/unrestricted/", j.Name())
 		options := []tradefed.Option{{Name: "cleanup", Value: "true"}}
-		for _, bin := range j.testHostProperties.Data_device_bins {
+		for _, bin := range dataDeviceBins {
 			fullPath := filepath.Join(remoteDir, bin)
 			options = append(options, tradefed.Option{Name: "push-file", Key: bin, Value: fullPath})
 		}
-		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.PushFilePreparer", options})
+		configs = append(configs, tradefed.Object{
+			Type:    "target_preparer",
+			Class:   "com.android.tradefed.targetprep.PushFilePreparer",
+			Options: options,
+		})
 	}
 
 	j.Test.generateAndroidBuildActionsWithConfig(ctx, configs)
