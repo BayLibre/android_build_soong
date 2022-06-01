@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d3410f_791308db",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-01T13:05:17Z",
+      "side": 1,
+      "message": "Confusingly android.NeitherHostNorDeviceSupported isn\u0027t equivalent to being unsupported, it is the default value of `HostOrDeviceSupported` if using `InitAndroidModule` rather than `InitAndroidArchModule` (e.g. `filegroup`, `genrule` vs `cc_library` or `java_library`). Changed this to check if the module is arch-variant so hopefully the logic is more clear.",
+      "parentUuid": "c0b26f1a_d91df8f2",
+      "revId": "83b01a89c60782f080ee487da5b3e331e3cc2435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24e7290b_e0a0decf",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-31T13:55:53Z",
       "side": 1,
       "message": "On line 1248, we allow a product variable to override the enabled property too. Do we want the `neither` variable to be the most general switch of the enabled property since it is related to architecture? If so, perhaps we should move this `if` statement after the last mutation of `enabledProperty.Value`.",
+      "revId": "83b01a89c60782f080ee487da5b3e331e3cc2435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc1b726e_f6b48b55",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-01T13:05:17Z",
+      "side": 1,
+      "message": "Good point, changed this to ensure product variables cannot override being disabled for both host and device.\n\nIt looks like there\u0027s some some additional work related to Soong config variables/product variables, but this felt like the change was getting too big as is",
+      "parentUuid": "24e7290b_e0a0decf",
       "revId": "83b01a89c60782f080ee487da5b3e331e3cc2435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
