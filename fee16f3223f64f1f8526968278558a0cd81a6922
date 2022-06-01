@@ -22,6 +22,30 @@
       },
       "revId": "fee16f3223f64f1f8526968278558a0cd81a6922",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb826889_4aa46b05",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-06-01T14:18:00Z",
+      "side": 1,
+      "message": "Moved it to a separate constants file while we figure out a better long-term solution.",
+      "parentUuid": "bf32762a_933316cf",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "fee16f3223f64f1f8526968278558a0cd81a6922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
