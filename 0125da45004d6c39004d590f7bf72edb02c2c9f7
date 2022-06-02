@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbd74e63_01de9d37",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-02T20:57:51Z",
+      "side": 1,
+      "message": "I don\u0027t have strong feelings about whether to do so, but some snippets:\n\nAs is, `strings.Join` may not be super useful here, but if both includePaths and excludePaths returned a slice rather than a string, you could do something like\n\n```\nincludePaths :\u003d buildInstrumentationPaths(...) // returns a slice\nexcludePaths :\u003d buildInstrumentationPaths(...) // returns a slice\n\ncoverageFlags \u003d append(coverageFlags fmt.Sprintf(\"--instrumentation_filter\u003d%s\", strings.Join(append(includePaths,excludePaths...), \",\"))\n```\n\n\nTo change buildInstrumentationPath, for instance:\n\n```\nvar ret []string{}\nfor _, path :\u003d range paths {\n   ret \u003d append(ret, prefix + path)\n}\n\nreturn strings.Join(ret, \",\")\n```\n\nAnother alternative would be to consider extending [`JoinWithPrefix`](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/util.go;l\u003d34;drc\u003d9eb853bcf2ae7a124fc9b94979825bc6d7bf6930) to take take a separator.",
+      "parentUuid": "c9cb5c8c_bfd7d66b",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82c6d83e_e824bd92",
         "filename": "android/bazel_handler.go",
         "patchSetId": 2

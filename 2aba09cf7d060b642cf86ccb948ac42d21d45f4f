@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec498ef_68c95750",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-02T20:57:51Z",
+      "side": 1,
+      "message": "this error is a bit confusing, perhaps state we expect not to have these flags?",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 46
+      },
+      "revId": "2aba09cf7d060b642cf86ccb948ac42d21d45f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
