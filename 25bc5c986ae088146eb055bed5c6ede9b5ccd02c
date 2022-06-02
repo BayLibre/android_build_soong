@@ -16,6 +16,24 @@
       "message": "You\u0027ll need to fix tests.",
       "revId": "25bc5c986ae088146eb055bed5c6ede9b5ccd02c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "187a98c3_109f368e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-06-02T14:50:19Z",
+      "side": 1,
+      "message": "Also, can you elaborate on an example of the new hash format (how many characters is this, does it do 0 padding, etc?), How does this impact the ninja file size?",
+      "parentUuid": "ca841bd5_b1360aa8",
+      "revId": "25bc5c986ae088146eb055bed5c6ede9b5ccd02c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
