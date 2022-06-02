@@ -33,6 +33,24 @@
       "message": "Looking for a module to actually test this on.",
       "revId": "1a731d6a67f34d3ddbb9f14a7ecea69e55a814bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a30418c5_9d447d7a",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2137,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-02T21:15:58Z",
+      "side": 1,
+      "message": "Tested with //frameworks/base/services/tests/servicestests/aidl:servicestests-aidl",
+      "parentUuid": "cf464b72_1dc703c0",
+      "revId": "1a731d6a67f34d3ddbb9f14a7ecea69e55a814bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
