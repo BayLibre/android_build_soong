@@ -295,6 +295,7 @@ var (
 
 		//system/extras/ext4_utils
 		"libext4_utils",
+		"mke2fs_conf",
 
 		//system/extras/libfec
 		"libfec",
@@ -325,12 +326,12 @@ var (
 		"gen-kotlin-build-file.py",                  // TODO(b/198619163) module has same name as source
 		"libgtest_ndk_c++", "libgtest_main_ndk_c++", // TODO(b/201816222): Requires sdk_version support.
 		"linkerconfig", "mdnsd", // TODO(b/202876379): has arch-variant static_executable
-		"linker",                // TODO(b/228316882): cc_binary uses link_crt
-		"libdebuggerd",          // TODO(b/228314770): support product variable-specific header_libs
-		"versioner",             // TODO(b/228313961):  depends on prebuilt shared library libclang-cpp_host as a shared library, which does not supply expected providers for a shared library
-		"f2fs.fibmap",           // ld.lld: error: undefined symbol: _IO
-		"f2fscrypt",             // TODO(b/234340806):  error: incompatible integer to pointer conversion initializing 'FILE *' (aka 'struct _IO_FILE *') with an expression of type 'int', and  error: incomplete definition of type 'struct mntent'
-		"apexer", "apexer_test", // Requires aapt2
+		"linker",       // TODO(b/228316882): cc_binary uses link_crt
+		"libdebuggerd", // TODO(b/228314770): support product variable-specific header_libs
+		"versioner",    // TODO(b/228313961):  depends on prebuilt shared library libclang-cpp_host as a shared library, which does not supply expected providers for a shared library
+		"f2fs.fibmap",  // ld.lld: error: undefined symbol: _IO
+		"f2fscrypt",    // TODO(b/234340806):  error: incompatible integer to pointer conversion initializing 'FILE *' (aka 'struct _IO_FILE *') with an expression of type 'int', and  error: incomplete definition of type 'struct mntent'
+		"apexer_test",  // Requires aapt2
 		"apexer_test_host_tools",
 		"host_apex_verifier",
 
