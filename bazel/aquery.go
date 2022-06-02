@@ -167,7 +167,7 @@ func newAqueryHandler(aqueryResult actionGraphContainer) (*aqueryArtifactHandler
 
 	// Map middleman artifact ContentHash to input artifact depset ID.
 	// Middleman artifacts are treated as "substitute" artifacts for mixed builds. For example,
-	// if we find a middleman action which has outputs [foo, bar], and output [baz_middleman], then,
+	// if we find a middleman action which has inputs [foo, bar], and output [baz_middleman], then,
 	// for each other action which has input [baz_middleman], we add [foo, bar] to the inputs for
 	// that action instead.
 	middlemanIdToDepsetIds := map[artifactId][]depsetId{}
@@ -219,7 +219,9 @@ func (a *aqueryArtifactHandler) populateDepsetMaps(depset depSetOfFiles, middlem
 		if depsetsToUse, isMiddleman := middlemanIdToDepsetIds[artifactId]; isMiddleman {
 			// Swap middleman artifacts with their corresponding depsets and drop the middleman artifacts.
 			transitiveDepsetIds = append(transitiveDepsetIds, depsetsToUse...)
-		} else if strings.HasSuffix(path, py3wrapperFileName) || manifestFilePattern.MatchString(path) {
+		} else if strings.HasSuffix(path, py3wrapperFileName) ||
+			manifestFilePattern.MatchString(path) ||
+			strings.HasPrefix(path, "../bazel_tools") {
 			// Drop these artifacts.
 			// See go/python-binary-host-mixed-build for more details.
 			// 1) For py3wrapper.sh, there is no action for creating py3wrapper.sh in the aquery output of
@@ -231,8 +233,9 @@ func (a *aqueryArtifactHandler) populateDepsetMaps(depset depSetOfFiles, middlem
 			// since there is no build statement to create them, they should be removed from input paths.
 			// TODO(b/197135294): Clean up this custom runfiles handling logic when
 			// SourceSymlinkManifest and SymlinkTree actions are supported.
+			// 3) ../bazel_tools: they have MODIFY timestamp 10years in the future and would cause the
+			// containing depset to always be considered newer than their outputs.
 		} else {
-			// TODO(b/216194240): Filter out bazel tools.
 			directArtifactPaths = append(directArtifactPaths, path)
 		}
 	}
@@ -248,6 +251,13 @@ func (a *aqueryArtifactHandler) populateDepsetMaps(depset depSetOfFiles, middlem
 			return AqueryDepset{}, err
 		}
 		childDepsetHashes = append(childDepsetHashes, childAqueryDepset.ContentHash)
+	}
+	if len(directArtifactPaths) == 0 && len(childDepsetHashes) == 0 {
+		// We could omit this depset altogether but that requires cleanup on
+		// transitive dependents.
+		// As a simpler alternative, we can use Android.bp as an implicit output
+		// because it will reliably mark this "empty" depset as not being new.
+		directArtifactPaths = append(directArtifactPaths, "Android.bp")
 	}
 	aqueryDepset := AqueryDepset{
 		ContentHash:            depsetContentHash(directArtifactPaths, childDepsetHashes),
@@ -348,7 +358,7 @@ func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, []AqueryDe
 		if prevEntry, hasKey := depsetsByHash[aqueryDepset.ContentHash]; hasKey {
 			// Two depsets collide on hash. Ensure that their contents are identical.
 			if !reflect.DeepEqual(aqueryDepset, prevEntry) {
-				return nil, nil, fmt.Errorf("Two different depsets have the same hash: %v, %v", prevEntry, aqueryDepset)
+				return nil, nil, fmt.Errorf("two different depsets have the same hash: %v, %v", prevEntry, aqueryDepset)
 			}
 		} else {
 			depsetsByHash[aqueryDepset.ContentHash] = aqueryDepset
@@ -445,7 +455,7 @@ func (a *aqueryArtifactHandler) pythonZipperActionBuildStatement(actionEntry act
 	}
 	command := strings.Join(proptools.ShellEscapeListIncludingSpaces(actionEntry.Arguments), " ")
 	inputPaths, command = removePy3wrapperScript(inputPaths, command)
-	command = addCommandForPyBinaryRunfilesDir(command, inputPaths[0], outputPaths[0])
+	command = addCommandForPyBinaryRunfilesDir(command, outputPaths[0])
 	// Add the python zip file as input of the corresponding python binary stub script in Ninja build statements.
 	// In Ninja build statements, the outputs of dependents of a python binary have python binary stub script as input,
 	// which is not sufficient without the python zip file from which runfiles directory is created for py_binary.
@@ -601,7 +611,7 @@ func escapeCommandlineArgument(str string) string {
 // TODO(b/205879240) remove this after py3wrapper.sh could be created in the mixed build mode.
 func removePy3wrapperScript(inputPaths []string, command string) (newInputPaths []string, newCommand string) {
 	// Remove from inputs
-	filteredInputPaths := []string{}
+	var filteredInputPaths []string
 	for _, path := range inputPaths {
 		if !strings.HasSuffix(path, py3wrapperFileName) {
 			filteredInputPaths = append(filteredInputPaths, path)
@@ -622,10 +632,10 @@ func removePy3wrapperScript(inputPaths []string, command string) (newInputPaths 
 // so MANIFEST file could not be created, which also blocks the creation of runfiles directory.
 // See go/python-binary-host-mixed-build for more details.
 // TODO(b/197135294) create runfiles directory from MANIFEST file once it can be created from SourceSymlinkManifest action.
-func addCommandForPyBinaryRunfilesDir(oldCommand string, zipperCommandPath, zipFilePath string) string {
+func addCommandForPyBinaryRunfilesDir(oldCommand string, zipFilePath string) string {
 	// Unzip the zip file, zipFilePath looks like <python_binary>.zip
 	runfilesDirName := zipFilePath[0:len(zipFilePath)-4] + ".runfiles"
-	command := fmt.Sprintf("%s x %s -d %s", zipperCommandPath, zipFilePath, runfilesDirName)
+	command := fmt.Sprintf("%s x %s -d %s", "../bazel_tools/tools/zip/zipper/zipper", zipFilePath, runfilesDirName)
 	// Create a symbolic link in <python_binary>.runfiles/, which is the expected structure
 	// when running the python binary stub script.
 	command += fmt.Sprintf(" && ln -sf runfiles/__main__ %s", runfilesDirName)
