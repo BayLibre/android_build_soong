@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c656887b_83e11c79",
+        "filename": "compliance/copy_license_metadata/copy_license_metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-02T17:30:12Z",
+      "side": 1,
+      "message": "Why leave this out?  Isn\u0027t the built location still the same?",
+      "revId": "5a1fcab110d576d6341bbfd5d4309429c57395da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
