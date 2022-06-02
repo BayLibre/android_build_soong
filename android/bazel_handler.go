@@ -21,6 +21,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -835,6 +836,7 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		ctx.AddNinjaFileDeps(file)
 	}
 
+	bazelOutDir := path.Join(ctx.Config().BazelContext.OutputBase(), "execroot", "__main__", `bazel-out`)
 	for _, depset := range ctx.Config().BazelContext.AqueryDepsets() {
 		var outputs []Path
 		for _, depsetDepHash := range depset.TransitiveDepSetHashes {
@@ -842,7 +844,18 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 			outputs = append(outputs, PathForPhony(ctx, otherDepsetName))
 		}
 		for _, artifactPath := range depset.DirectArtifacts {
-			outputs = append(outputs, PathForBazelOut(ctx, artifactPath))
+			// bazel_tools have a MODIFY timestamp 10years in the future
+			// hence suppressing them from depsets
+			if !strings.HasPrefix(artifactPath, "../bazel_tools") {
+				outputs = append(outputs, PathForBazelOut(ctx, artifactPath))
+			}
+		}
+		if len(outputs) == 0 {
+			// We could omit this depset altogether but that requires cleanup on
+			// transitive dependents.
+			// As a simpler alternative, we can use Android.bp as an implicit output
+			// because it will reliably mark this "empty" depset as not being new.
+			outputs = append(outputs, PathForPhony(ctx, "Android.bp"))
 		}
 		thisDepsetName := bazelDepsetName(depset.ContentHash)
 		ctx.Build(pctx, BuildParams{
@@ -861,7 +874,7 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		cmd := rule.Command()
 
 		// cd into Bazel's execution root, which is the action cwd.
-		cmd.Text(fmt.Sprintf("cd %s/execroot/__main__ &&", ctx.Config().BazelContext.OutputBase()))
+		cmd.Text("cd " + bazelOutDir)
 
 		// Remove old outputs, as some actions might not rerun if the outputs are detected.
 		if len(buildStatement.OutputPaths) > 0 {
@@ -884,7 +897,11 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 			cmd.ImplicitOutput(PathForBazelOut(ctx, outputPath))
 		}
 		for _, inputPath := range buildStatement.InputPaths {
-			cmd.Implicit(PathForBazelOut(ctx, inputPath))
+			// bazel_tools have a MODIFY timestamp 10years in the future
+			// hence suppressing them from dependencies
+			if !strings.HasPrefix(inputPath, "../bazel_tools") {
+				cmd.Implicit(PathForBazelOut(ctx, inputPath))
+			}
 		}
 		for _, inputDepsetHash := range buildStatement.InputDepsetHashes {
 			otherDepsetName := bazelDepsetName(inputDepsetHash)
@@ -892,6 +909,11 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		}
 
 		if depfile := buildStatement.Depfile; depfile != nil {
+			// depfile entries relative to bazel-out need to be property "anchored"
+			// Note prebuilt-included sed doesn't support lookbehind
+			replacement := fmt.Sprintf(`&& sed -i'' -e "s/\(^\|\\s\|\"\)bazel-out/\\1%s/g" "%s"`,
+				strings.ReplaceAll(bazelOutDir, "/", `\\/`), *depfile)
+			cmd.Text(replacement)
 			cmd.ImplicitDepFile(PathForBazelOut(ctx, *depfile))
 		}
 
