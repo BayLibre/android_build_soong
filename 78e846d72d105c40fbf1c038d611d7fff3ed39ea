@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3da4326_8af5f7d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-06-02T02:17:36Z",
+      "side": 1,
+      "message": "The IsContainer field needs to match the original. Might as well grab the PackageName etc. while we are there.",
+      "parentUuid": "ac92e936_92b7b60a",
+      "revId": "78e846d72d105c40fbf1c038d611d7fff3ed39ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f5bcdb4_510a225c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-02T00:20:31Z",
       "side": 1,
       "message": "It\u0027s going to be really easy to forget a new field here, I\u0027d suggest `metadata :\u003d src_metadata` and then overwrite the fields you need.",
+      "revId": "78e846d72d105c40fbf1c038d611d7fff3ed39ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6893c43_249e7856",
+        "filename": "compliance/copy_license_metadata/copy_license_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-06-02T02:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f5bcdb4_510a225c",
       "revId": "78e846d72d105c40fbf1c038d611d7fff3ed39ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
