@@ -2724,6 +2724,7 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 		apexName := ctx.ModuleName()
 		fromName := ctx.OtherModuleName(from)
 		toName := ctx.OtherModuleName(to)
+		toDir := ctx.OtherModuleDir(to)
 
 		// If `to` is not actually in the same APEX as `from` then it does not need
 		// apex_available and neither do any of its dependencies.
@@ -2735,9 +2736,10 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 			return false
 		}
 
-		if to.AvailableFor(apexName) || baselineApexAvailable(apexName, toName) {
+		if to.AvailableFor(apexName) || baselineApexAvailable(apexName, toName, toDir) {
 			return true
 		}
+
 		ctx.ModuleErrorf("%q requires %q that doesn't list the APEX under 'apex_available'."+
 			"\n\nDependency path:%s\n\n"+
 			"Consider adding %q to 'apex_available' property of %q",
@@ -2795,7 +2797,7 @@ var (
 	inverseApexAvailBaseline = invertApexBaseline(apexAvailBaseline)
 )
 
-func baselineApexAvailable(apex, moduleName string) bool {
+func baselineApexAvailable(apex, moduleName, moduleDir string) bool {
 	key := apex
 	moduleName = normalizeModuleName(moduleName)
 
@@ -2805,6 +2807,11 @@ func baselineApexAvailable(apex, moduleName string) bool {
 
 	key = android.AvailableToAnyApex
 	if val, ok := apexAvailBaseline[key]; ok && android.InList(moduleName, val) {
+		return true
+	}
+	// Exception: all rust crates under external/rust/crates are by default available to
+	// any APEX; because they are portable. b/174862583
+	if strings.HasPrefix(moduleDir, "external/rust/crates") {
 		return true
 	}
 
