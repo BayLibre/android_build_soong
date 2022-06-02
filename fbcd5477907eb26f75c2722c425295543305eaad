@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c71c60_3e74a36d",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-02T17:55:03Z",
+      "side": 1,
+      "message": "cmd.Text() itself takes care of spaces so no need for extra space",
+      "revId": "fbcd5477907eb26f75c2722c425295543305eaad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

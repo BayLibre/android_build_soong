@@ -34,6 +34,24 @@
       "parentUuid": "ca841bd5_b1360aa8",
       "revId": "25bc5c986ae088146eb055bed5c6ede9b5ccd02c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b99ea0f_8ea22cef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-02T17:55:03Z",
+      "side": 1,
+      "message": "Using base64 (without padding, i.e. with trailing \u0027\u003d\u0027 or \u0027\u003d\u003d\u0027), so has width is 256/6 \u003d 43 characters.\n\nThe width is always exactly 43 characters because every byte is treated as data:\n        var bytes \u003d []byte{0, 0, 0} // 24 bits\n\tfmt.Println(b.RawURLEncoding.EncodeToString(bytes)) // \"AAAA\" 24/6 \u003d 4 chars\n\nUsing URL version to avoid \u0027/\u0027 and \u0027+\u0027; choose \u0027-\u0027 and \u0027_\u0027 instead.\n\nfile size reduction 1.6MB (negligible given that the file size was 6.7GB)",
+      "parentUuid": "187a98c3_109f368e",
+      "revId": "25bc5c986ae088146eb055bed5c6ede9b5ccd02c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

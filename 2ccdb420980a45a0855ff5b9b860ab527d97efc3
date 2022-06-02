@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df0e8e2_bd4dc902",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-02T17:55:03Z",
+      "side": 1,
+      "message": "hashes in hex were\n  03ff... and b7c5..\nwhich correspond to the following in base64 respectively\n  A_-...  and 3xf...\nHence the reversal in order.",
+      "revId": "2ccdb420980a45a0855ff5b9b860ab527d97efc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
