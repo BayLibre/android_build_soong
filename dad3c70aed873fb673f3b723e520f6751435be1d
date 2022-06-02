@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574a88c8_b482ce26",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-02T14:36:25Z",
+      "side": 1,
+      "message": "@cparsons I know I was the one who suggested this pattern but for a byte slice this is useless.\n\tvar x []byte \u003d []byte{0, 0x4A, 0x4B, 0x4C}\n\tfmt.Printf(\". %%s %s\\n\", x)   // JKL\n\tfmt.Printf(\". %%x %x\\n\", x)   // 2 digits for each byte\n\tfmt.Printf(\"%%07x %07x\\n\", x) // ditto, ignores width, 7 \u003c 8\n\tfmt.Printf(\"%%09x %09x\\n\", x) // right pads a 0",
+      "revId": "dad3c70aed873fb673f3b723e520f6751435be1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
