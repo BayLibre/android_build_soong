@@ -245,7 +245,6 @@ func TestAqueryMultiArchGenrule(t *testing.T) {
 	expectedFlattenedInputs := []string{
 		"../sourceroot/bionic/libc/SYSCALLS.TXT",
 		"../sourceroot/bionic/libc/tools/gensyscalls.py",
-		"../bazel_tools/tools/genrule/genrule-setup.sh",
 	}
 	// In this example, each depset should have the same expected inputs.
 	for _, actualDepset := range actualDepsets {
@@ -1331,7 +1330,7 @@ func TestPythonZipperActionSuccess(t *testing.T) {
 			Command: "../bazel_tools/tools/zip/zipper/zipper cC python_binary.zip __main__.py=bazel-out/k8-fastbuild/bin/python_binary.temp " +
 				"__init__.py= runfiles/__main__/__init__.py= runfiles/__main__/python_binary.py=python_binary.py  && " +
 				"../bazel_tools/tools/zip/zipper/zipper x python_binary.zip -d python_binary.runfiles && ln -sf runfiles/__main__ python_binary.runfiles",
-			InputPaths:  []string{"../bazel_tools/tools/zip/zipper/zipper", "python_binary.py"},
+			InputPaths:  []string{"python_binary.py"},
 			OutputPaths: []string{"python_binary.zip"},
 			Mnemonic:    "PythonZipper",
 		},
@@ -1463,7 +1462,7 @@ func TestPythonZipperActionNoOutput(t *testing.T) {
   }]
 }`
 	_, _, err := AqueryBuildStatements([]byte(inputString))
-	assertError(t, err, `Expect 1+ input and 1 output to python zipper action, got: input ["../bazel_tools/tools/zip/zipper/zipper" "python_binary.py"], output []`)
+	assertError(t, err, `Expect 1+ input and 1 output to python zipper action, got: input ["python_binary.py"], output []`)
 }
 
 func assertError(t *testing.T, err error, expected string) {
