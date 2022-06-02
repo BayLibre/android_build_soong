@@ -58,8 +58,8 @@ func TestInvokeBazelWritesBazelFiles(t *testing.T) {
 
 func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
 	type testCase struct {
-		input   string
-		command string
+		input    string
+		commands []string
 	}
 
 	var testCases = []testCase{
@@ -93,7 +93,7 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
     "label": "two"
   }]
 }`,
-			"cd 'er' && rm -f one && touch foo",
+			[]string{"cd 'er' && rm -f 'one' && touch foo"},
 		}, {`
 {
   "artifacts": [{
@@ -124,28 +124,78 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
     "label": "parent"
   }]
 }`,
-			`cd 'er' && rm -f parent/one && bogus command && sed -i'' -E 's@(^|\s|")bazel-out/@\1bo/@g' 'parent/one.d'`,
+			[]string{`cd 'er' && rm -f 'parent/one' && bogus command && sed -i'' -E 's@(^|\s|")bazel-out/@\1bo/@g' 'parent/one.d'`},
+		}, {`
+{
+  "artifacts": [{
+    "id": 1,
+    "pathFragmentId": 10
+  }, {
+    "id": 2,
+    "pathFragmentId": 20
+  }, {
+    "id": 3,
+    "pathFragmentId": 30
+  }],
+  "depSetOfFiles": [{
+    "id": 1111,
+    "directArtifactIds": [3]
+  }],
+  "actions": [{
+    "targetId": 100,
+    "actionKey": "x",
+    "inputDepSetIds": [1111],
+    "mnemonic": "x",
+    "arguments": ["bogus", "command"],
+    "outputIds": [2],
+    "primaryOutputId": 1
+  }],
+  "pathFragments": [{
+    "id": 10,
+    "label": "input"
+  }, {
+    "id": 20,
+    "label": "output"
+  }, {
+    "id": 30,
+    "label": "dep",
+    "parentId": 40
+  }, {
+    "id": 40,
+    "label": "bazel_tools",
+    "parentId": 50
+  }, {
+    "id": 50,
+    "label": ".."
+  }]
+}`,
+			[]string{
+				`cd 'er' && rm -f 'BAZEL_TOOLS_DEPENDENCY_SENTINEL' && touch 'BAZEL_TOOLS_DEPENDENCY_SENTINEL'`,
+				`cd 'er' && rm -f 'output' && bogus command`,
+			},
 		},
 	}
 
-	for _, testCase := range testCases {
+	for i, testCase := range testCases {
 		bazelContext, _ := testBazelContext(t, map[bazelCommand]string{
 			bazelCommand{command: "aquery", expression: "deps(@soong_injection//mixed_builds:buildroot)"}: testCase.input})
 
 		err := bazelContext.InvokeBazel(testConfig)
 		if err != nil {
-			t.Fatalf("Did not expect error invoking Bazel, but got %s", err)
+			t.Fatalf("testCase #%d: did not expect error invoking Bazel, but got %s", i+1, err)
 		}
 
 		got := bazelContext.BuildStatementsToRegister()
-		if want := 1; len(got) != want {
-			t.Errorf("expected %d registered build statements, but got %#v", want, got)
+		if want := len(testCase.commands); len(got) != want {
+			t.Errorf("expected %d registered build statements, but got %d", want, len(got))
 		}
 
-		cmd := RuleBuilderCommand{}
-		createCommand(&cmd, got[0], "er", "bo", PathContextForTesting(TestConfig("out", nil, "", nil)))
-		if actual := cmd.buf.String(); testCase.command != actual {
-			t.Errorf("expected: [%s], actual: [%s]", testCase.command, actual)
+		for j, expectedCommand := range testCase.commands {
+			cmd := RuleBuilderCommand{}
+			createCommand(&cmd, got[j], "er", "bo", PathContextForTesting(TestConfig("out", nil, "", nil)))
+			if actual := cmd.buf.String(); expectedCommand != actual {
+				t.Errorf("expected: [%s], actual: [%s]", expectedCommand, actual)
+			}
 		}
 	}
 }
