@@ -16,6 +16,7 @@ package bazel
 
 import (
 	"crypto/sha256"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"path/filepath"
@@ -390,8 +391,8 @@ func depsetContentHash(directPaths []string, transitiveDepsetHashes []string) st
 	h := sha256.New()
 	// Use newline as delimiter, as paths cannot contain newline.
 	h.Write([]byte(strings.Join(directPaths, "\n")))
-	h.Write([]byte(strings.Join(transitiveDepsetHashes, "\n")))
-	fullHash := fmt.Sprintf("%016x", h.Sum(nil))
+	h.Write([]byte(strings.Join(transitiveDepsetHashes, "")))
+	fullHash := base64.RawURLEncoding.EncodeToString(h.Sum(nil))
 	return fullHash
 }
 
