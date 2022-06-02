@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d0a0397_b72fef46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-06-02T22:26:57Z",
+      "side": 1,
+      "message": "oh, looks like we need qualcomm-review... i\u0027m assuming hangl knows who to talk to to get that? (i hope so, anyway, because i don\u0027t :-) )",
+      "revId": "34448f2430a2ebd70b2ac55715f851c71f64f99a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
