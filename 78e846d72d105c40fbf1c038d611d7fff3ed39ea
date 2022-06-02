@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac92e936_92b7b60a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-02T00:20:31Z",
+      "side": 1,
+      "message": "Why copy the metadata vs. creating a new new metadata file that just references the old one as a dependency?  Then you don\u0027t have to worry about the contents of arbitrary fields in the proto.",
+      "revId": "78e846d72d105c40fbf1c038d611d7fff3ed39ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f5bcdb4_510a225c",
+        "filename": "compliance/copy_license_metadata/copy_license_metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-02T00:20:31Z",
+      "side": 1,
+      "message": "It\u0027s going to be really easy to forget a new field here, I\u0027d suggest `metadata :\u003d src_metadata` and then overwrite the fields you need.",
+      "revId": "78e846d72d105c40fbf1c038d611d7fff3ed39ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
