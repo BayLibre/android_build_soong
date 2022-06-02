@@ -16,6 +16,24 @@
       "message": "Matching exact errors like this makes it hard to make other changes.  Can you look for a substring instead, like `unrecognized property \"licenses\"`?",
       "revId": "8e7fdc54401c478eee0a5e9335f383e0460a80e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64592e63_8357ffc7",
+        "filename": "android/gen_notice_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-06-02T01:11:36Z",
+      "side": 1,
+      "message": "Done\n\nP.S. Don\u0027t forget I will need an OSL +2 for the false positive before I can merge.",
+      "parentUuid": "9e557bd2_235d017e",
+      "revId": "8e7fdc54401c478eee0a5e9335f383e0460a80e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
