@@ -1188,7 +1188,15 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 	for axis, configToProps := range archVariantProps {
 		for config, _props := range configToProps {
 			if archProps, ok := _props.(*commonProperties); ok {
-				required.SetSelectValue(axis, config, depsToLabelList(archProps.Required).Value)
+				// TODO(b/234748998) Remove this requiredFilter workaround when aapt2 converts successfully
+				requiredFiltered := make([]string, 0, len(archProps.Required))
+				for _, req := range archProps.Required {
+					if name == "apexer" && (req == "aapt2" || req == "apexer") {
+						continue
+					}
+					requiredFiltered = append(requiredFiltered, req)
+				}
+				required.SetSelectValue(axis, config, depsToLabelList(requiredFiltered).Value)
 				if archProps.Enabled != nil {
 					enabledProperty.SetSelectValue(axis, config, archProps.Enabled)
 				}
