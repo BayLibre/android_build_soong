@@ -28,6 +28,7 @@ import (
 
 	"android/soong/bazel/cquery"
 	"android/soong/shared"
+
 	"github.com/google/blueprint"
 
 	"android/soong/bazel"
@@ -131,12 +132,13 @@ type bazelRunner interface {
 }
 
 type bazelPaths struct {
-	homeDir      string
-	bazelPath    string
-	outputBase   string
-	workspaceDir string
-	soongOutDir  string
-	metricsDir   string
+	homeDir       string
+	bazelPath     string
+	outputBase    string
+	workspaceDir  string
+	soongOutDir   string
+	metricsDir    string
+	bazelJavaHome string
 }
 
 // A context object which tracks queued requests that need to be made to Bazel,
@@ -304,31 +306,27 @@ func bazelPathsFromConfig(c *config) (*bazelPaths, error) {
 		soongOutDir: c.soongOutDir,
 	}
 	missingEnvVars := []string{}
-	if len(c.Getenv("BAZEL_HOME")) > 1 {
-		p.homeDir = c.Getenv("BAZEL_HOME")
-	} else {
-		missingEnvVars = append(missingEnvVars, "BAZEL_HOME")
+
+	pathMapping := []struct {
+		path   *string
+		envVar string
+	}{
+		{path: &p.homeDir, envVar: "BAZEL_HOME"},
+		{path: &p.bazelPath, envVar: "BAZEL_PATH"},
+		{path: &p.outputBase, envVar: "BAZEL_OUTPUT_BASE"},
+		{path: &p.workspaceDir, envVar: "BAZEL_WORKSPACE"},
+		{path: &p.metricsDir, envVar: "BAZEL_METRICS_DIR"},
+		{path: &p.bazelJavaHome, envVar: "BAZEL_JAVA_HOME"},
 	}
-	if len(c.Getenv("BAZEL_PATH")) > 1 {
-		p.bazelPath = c.Getenv("BAZEL_PATH")
-	} else {
-		missingEnvVars = append(missingEnvVars, "BAZEL_PATH")
+
+	for _, mapping := range pathMapping {
+		if len(c.Getenv(mapping.envVar)) > 1 {
+			*mapping.path = c.Getenv(mapping.envVar)
+		} else {
+			missingEnvVars = append(missingEnvVars, mapping.envVar)
+		}
 	}
-	if len(c.Getenv("BAZEL_OUTPUT_BASE")) > 1 {
-		p.outputBase = c.Getenv("BAZEL_OUTPUT_BASE")
-	} else {
-		missingEnvVars = append(missingEnvVars, "BAZEL_OUTPUT_BASE")
-	}
-	if len(c.Getenv("BAZEL_WORKSPACE")) > 1 {
-		p.workspaceDir = c.Getenv("BAZEL_WORKSPACE")
-	} else {
-		missingEnvVars = append(missingEnvVars, "BAZEL_WORKSPACE")
-	}
-	if len(c.Getenv("BAZEL_METRICS_DIR")) > 1 {
-		p.metricsDir = c.Getenv("BAZEL_METRICS_DIR")
-	} else {
-		missingEnvVars = append(missingEnvVars, "BAZEL_METRICS_DIR")
-	}
+
 	if len(missingEnvVars) > 0 {
 		return nil, errors.New(fmt.Sprintf("missing required env vars to use bazel: %s", missingEnvVars))
 	} else {
@@ -383,12 +381,7 @@ type builtinBazelRunner struct{}
 func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand,
 	extraFlags ...string) (string, string, error) {
 	cmdFlags := []string{
-		// --noautodetect_server_javabase has the practical consequence of preventing Bazel from
-		// attempting to download rules_java, which is incompatible with
-		// --experimental_repository_disable_download set further below.
-		// rules_java is also not needed until mixed builds start building java targets.
-		// TODO(b/197958133): Once rules_java is pulled into AOSP, remove this flag.
-		"--noautodetect_server_javabase",
+		"--server_javabase=" + absolutePath(paths.bazelJavaHome),
 		"--output_base=" + absolutePath(paths.outputBase),
 		command.command,
 	}
@@ -415,9 +408,13 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 	cmdFlags = append(cmdFlags, "--experimental_repository_disable_download")
 	cmdFlags = append(cmdFlags, extraFlags...)
 
-	bazelCmd := exec.Command(paths.bazelPath, cmdFlags...)
+	bazelCmd := exec.Command(
+		paths.bazelPath,
+		cmdFlags...,
+	)
 	bazelCmd.Dir = absolutePath(paths.syntheticWorkspaceDir())
 	bazelCmd.Env = append(os.Environ(),
+		"JAVA_HOME="+absolutePath(paths.bazelJavaHome),
 		"HOME="+paths.homeDir,
 		pwdPrefix(),
 		"BUILD_DIR="+absolutePath(paths.soongOutDir),
@@ -426,7 +423,8 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 		"OUT_DIR="+absolutePath(paths.outDir()),
 		// Disables local host detection of gcc; toolchain information is defined
 		// explicitly in BUILD files.
-		"BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1")
+		"BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1",
+	)
 	stderr := &bytes.Buffer{}
 	bazelCmd.Stderr = stderr
 

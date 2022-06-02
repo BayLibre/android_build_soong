@@ -394,6 +394,11 @@ func runSoong(ctx Context, config Config) {
 	soongBuildEnv.Set("BAZEL_OUTPUT_BASE", filepath.Join(config.BazelOutDir(), "output"))
 	soongBuildEnv.Set("BAZEL_WORKSPACE", absPath(ctx, "."))
 	soongBuildEnv.Set("BAZEL_METRICS_DIR", config.BazelMetricsDir())
+	if s, ok := config.Environment().Get("ANDROID_JAVA11_HOME"); ok {
+		soongBuildEnv.Set("BAZEL_JAVA_HOME", s)
+	} else {
+		ctx.Fatalf("ANDROID11_JAVA_HOME needs to be set for bazel's JRE with USE_BAZEL_ANALYSIS")
+	}
 	soongBuildEnv.Set("LOG_DIR", config.LogsDir())
 
 	// For Soong bootstrapping tests
@@ -544,7 +549,7 @@ func loadSoongBuildMetrics(ctx Context, config Config) *soong_metrics_proto.Soon
 	buf, err := os.ReadFile(soongBuildMetricsFile)
 	if errors.Is(err, fs.ErrNotExist) {
 		// Soong may not have run during this invocation
-          ctx.Verbosef("Failed to read metrics file, %s: %s", soongBuildMetricsFile, err)
+		ctx.Verbosef("Failed to read metrics file, %s: %s", soongBuildMetricsFile, err)
 		return nil
 	} else if err != nil {
 		ctx.Fatalf("Failed to load %s: %s", soongBuildMetricsFile, err)
