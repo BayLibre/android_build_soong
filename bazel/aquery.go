@@ -231,8 +231,11 @@ func (a *aqueryArtifactHandler) populateDepsetMaps(depset depSetOfFiles, middlem
 			// since there is no build statement to create them, they should be removed from input paths.
 			// TODO(b/197135294): Clean up this custom runfiles handling logic when
 			// SourceSymlinkManifest and SymlinkTree actions are supported.
+
+			// Note: bazel-tools dependencies are not pruned here because getInputPaths() is used for some actions
+			// and it relies on these dependencies being present. Dependencies on bazel-tools are instead removed
+			// when writing the ninja files in bazelSingleton#GenerateBuildActions()
 		} else {
-			// TODO(b/216194240): Filter out bazel tools.
 			directArtifactPaths = append(directArtifactPaths, path)
 		}
 	}
