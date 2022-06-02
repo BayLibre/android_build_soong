@@ -33,6 +33,24 @@
       "message": "You could add `distContributions.licenseMetadataPath \u003d amod.licenseMetadataPath` here and then you wouldn\u0027t need to pass metadata to `GetDistForGoals` and avoid most of the other changes in this patch.",
       "revId": "59222a06584e0035d728d7b1ff4aa33768a75926",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae0930b_04068418",
+        "filename": "android/androidmk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-06-02T04:08:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3957d3eb_b0265eca",
+      "revId": "59222a06584e0035d728d7b1ff4aa33768a75926",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
