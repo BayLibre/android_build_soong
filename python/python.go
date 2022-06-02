@@ -654,7 +654,8 @@ func (p *Module) createSrcsZip(ctx android.ModuleContext, pkgPath string) androi
 		// in order to keep stable order of soong_zip params, we sort the keys here.
 		roots := android.SortedStringKeys(relativeRootMap)
 
-		parArgs := []string{}
+		// Use -symlinks=false so that the symlinks in the bazel output directory are followed
+		parArgs := []string{"-symlinks=false"}
 		if pkgPath != "" {
 			// use package path as path prefix
 			parArgs = append(parArgs, `-P `+pkgPath)
