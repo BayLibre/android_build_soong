@@ -21,6 +21,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -853,6 +854,8 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		ctx.AddNinjaFileDeps(file)
 	}
 
+	executionRoot := path.Join(ctx.Config().BazelContext.OutputBase(), "execroot", "__main__")
+	bazelOutDir := path.Join(executionRoot, `bazel-out`)
 	for _, depset := range ctx.Config().BazelContext.AqueryDepsets() {
 		var outputs []Path
 		for _, depsetDepHash := range depset.TransitiveDepSetHashes {
@@ -878,8 +881,8 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		rule := NewRuleBuilder(pctx, ctx)
 		cmd := rule.Command()
 
-		// cd into Bazel's execution root, which is the action cwd.
-		cmd.Text(fmt.Sprintf("cd %s/execroot/__main__ &&", ctx.Config().BazelContext.OutputBase()))
+		// executionRoot is the action cwd.
+		cmd.Text(fmt.Sprintf("cd '%s' &&", executionRoot))
 
 		// Remove old outputs, as some actions might not rerun if the outputs are detected.
 		if len(buildStatement.OutputPaths) > 0 {
@@ -910,18 +913,22 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		}
 
 		if depfile := buildStatement.Depfile; depfile != nil {
+			// The paths in depfile are relative to `executionRoot`.
+			// Hence, they need to be corrected by replacing "bazel-out"
+			// with the full `bazelOutDir`.
+			// Otherwise, implicit outputs and implicit inputs under "bazel-out/"
+			// would be deemed missing.
+			// (Note: The regexp uses a capture group because the version of sed
+			//  does not support a look-behind pattern.)
+			replacement := fmt.Sprintf(`&& sed -i'' -E 's@(^|\s|")bazel-out/@\1%s/@g' '%s'`,
+				bazelOutDir, *depfile)
+			cmd.Text(replacement)
 			cmd.ImplicitDepFile(PathForBazelOut(ctx, *depfile))
 		}
 
 		for _, symlinkPath := range buildStatement.SymlinkPaths {
 			cmd.ImplicitSymlinkOutput(PathForBazelOut(ctx, symlinkPath))
 		}
-
-		// This is required to silence warnings pertaining to unexpected timestamps. Particularly,
-		// some Bazel builtins (such as files in the bazel_tools directory) have far-future
-		// timestamps. Without restat, Ninja would emit warnings that the input files of a
-		// build statement have later timestamps than the outputs.
-		rule.Restat()
 
 		desc := fmt.Sprintf("%s: %s", buildStatement.Mnemonic, buildStatement.OutputPaths)
 		rule.Build(fmt.Sprintf("bazel %d", index), desc)
@@ -938,12 +945,12 @@ func getConfigString(key cqueryKey) string {
 		// Use host platform, which is currently hardcoded to be x86_64.
 		arch = "x86_64"
 	}
-	os := key.configKey.osType.Name
-	if len(os) == 0 || os == "common_os" || os == "linux_glibc" {
+	osName := key.configKey.osType.Name
+	if len(osName) == 0 || osName == "common_os" || osName == "linux_glibc" {
 		// Use host OS, which is currently hardcoded to be linux.
-		os = "linux"
+		osName = "linux"
 	}
-	return arch + "|" + os
+	return arch + "|" + osName
 }
 
 func GetConfigKey(ctx BaseModuleContext) configKey {

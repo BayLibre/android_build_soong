@@ -224,7 +224,7 @@ func TestAqueryMultiArchGenrule(t *testing.T) {
   }]
 }`
 	actualbuildStatements, actualDepsets, _ := AqueryBuildStatements([]byte(inputString))
-	expectedBuildStatements := []BuildStatement{}
+	var expectedBuildStatements []BuildStatement
 	for _, arch := range []string{"arm", "arm64", "x86", "x86_64"} {
 		expectedBuildStatements = append(expectedBuildStatements,
 			BuildStatement{
@@ -235,7 +235,7 @@ func TestAqueryMultiArchGenrule(t *testing.T) {
 					fmt.Sprintf("bazel-out/sourceroot/k8-fastbuild/bin/bionic/libc/syscalls-%s.S", arch),
 				},
 				Env: []KeyValuePair{
-					KeyValuePair{Key: "PATH", Value: "/bin:/usr/bin:/usr/local/bin"},
+					{Key: "PATH", Value: "/bin:/usr/bin:/usr/local/bin"},
 				},
 				Mnemonic: "Genrule",
 			})
@@ -245,7 +245,6 @@ func TestAqueryMultiArchGenrule(t *testing.T) {
 	expectedFlattenedInputs := []string{
 		"../sourceroot/bionic/libc/SYSCALLS.TXT",
 		"../sourceroot/bionic/libc/tools/gensyscalls.py",
-		"../bazel_tools/tools/genrule/genrule-setup.sh",
 	}
 	// In this example, each depset should have the same expected inputs.
 	for _, actualDepset := range actualDepsets {
@@ -747,7 +746,7 @@ func TestTransitiveInputDepsets(t *testing.T) {
 	actualbuildStatements, actualDepsets, _ := AqueryBuildStatements([]byte(inputString))
 
 	expectedBuildStatements := []BuildStatement{
-		BuildStatement{
+		{
 			Command:     "/bin/bash -c 'touch bazel-out/sourceroot/k8-fastbuild/bin/testpkg/test_out'",
 			OutputPaths: []string{"bazel-out/sourceroot/k8-fastbuild/bin/testpkg/test_out"},
 			Mnemonic:    "Action",
@@ -758,7 +757,7 @@ func TestTransitiveInputDepsets(t *testing.T) {
 	// Inputs for the action are test_{i} from 1 to 20, and test_root. These inputs
 	// are given via a deep depset, but the depset is flattened when returned as a
 	// BuildStatement slice.
-	expectedFlattenedInputs := []string{}
+	var expectedFlattenedInputs []string
 	for i := 1; i < 20; i++ {
 		expectedFlattenedInputs = append(expectedFlattenedInputs, fmt.Sprintf("bazel-out/sourceroot/k8-fastbuild/bin/testpkg/test_%d", i))
 	}
@@ -876,7 +875,7 @@ func flattenDepsets(depsetHashesToFlatten []string, allDepsets []AqueryDepset) [
 	for _, depset := range allDepsets {
 		depsetsByHash[depset.ContentHash] = depset
 	}
-	result := []string{}
+	var result []string
 	for _, depsetId := range depsetHashesToFlatten {
 		result = append(result, flattenDepset(depsetId, depsetsByHash)...)
 	}
@@ -886,7 +885,7 @@ func flattenDepsets(depsetHashesToFlatten []string, allDepsets []AqueryDepset) [
 // Returns the contents of a given depset in post order.
 func flattenDepset(depsetHashToFlatten string, allDepsets map[string]AqueryDepset) []string {
 	depset := allDepsets[depsetHashToFlatten]
-	result := []string{}
+	var result []string
 	for _, depsetId := range depset.TransitiveDepSetHashes {
 		result = append(result, flattenDepset(depsetId, allDepsets)...)
 	}
@@ -958,7 +957,7 @@ func TestSimpleSymlink(t *testing.T) {
 	}
 
 	expectedBuildStatements := []BuildStatement{
-		BuildStatement{
+		{
 			Command: "mkdir -p one/symlink_subdir && " +
 				"rm -f one/symlink_subdir/symlink && " +
 				"ln -sf $PWD/one/file_subdir/file one/symlink_subdir/symlink",
@@ -1022,7 +1021,7 @@ func TestSymlinkQuotesPaths(t *testing.T) {
 	}
 
 	expectedBuildStatements := []BuildStatement{
-		BuildStatement{
+		{
 			Command: "mkdir -p 'one/symlink subdir' && " +
 				"rm -f 'one/symlink subdir/symlink' && " +
 				"ln -sf $PWD/'one/file subdir/file' 'one/symlink subdir/symlink'",
@@ -1154,7 +1153,7 @@ func TestTemplateExpandActionSubstitutions(t *testing.T) {
 	}
 
 	expectedBuildStatements := []BuildStatement{
-		BuildStatement{
+		{
 			Command: "/bin/bash -c 'echo \"Test template substitutions: abcd, python3\" | sed \"s/\\\\\\\\n/\\\\n/g\" > template_file && " +
 				"chmod a+x template_file'",
 			OutputPaths: []string{"template_file"},
@@ -1320,18 +1319,18 @@ func TestPythonZipperActionSuccess(t *testing.T) {
 	}
 
 	expectedBuildStatements := []BuildStatement{
-		BuildStatement{
+		{
 			Command: "/bin/bash -c 'echo \"Test template substitutions: abcd, python3\" | sed \"s/\\\\\\\\n/\\\\n/g\" > python_binary && " +
 				"chmod a+x python_binary'",
 			InputPaths:  []string{"python_binary.zip"},
 			OutputPaths: []string{"python_binary"},
 			Mnemonic:    "TemplateExpand",
 		},
-		BuildStatement{
+		{
 			Command: "../bazel_tools/tools/zip/zipper/zipper cC python_binary.zip __main__.py=bazel-out/k8-fastbuild/bin/python_binary.temp " +
 				"__init__.py= runfiles/__main__/__init__.py= runfiles/__main__/python_binary.py=python_binary.py  && " +
 				"../bazel_tools/tools/zip/zipper/zipper x python_binary.zip -d python_binary.runfiles && ln -sf runfiles/__main__ python_binary.runfiles",
-			InputPaths:  []string{"../bazel_tools/tools/zip/zipper/zipper", "python_binary.py"},
+			InputPaths:  []string{"python_binary.py"},
 			OutputPaths: []string{"python_binary.zip"},
 			Mnemonic:    "PythonZipper",
 		},
@@ -1463,7 +1462,7 @@ func TestPythonZipperActionNoOutput(t *testing.T) {
   }]
 }`
 	_, _, err := AqueryBuildStatements([]byte(inputString))
-	assertError(t, err, `Expect 1+ input and 1 output to python zipper action, got: input ["../bazel_tools/tools/zip/zipper/zipper" "python_binary.py"], output []`)
+	assertError(t, err, `Expect 1+ input and 1 output to python zipper action, got: input ["python_binary.py"], output []`)
 }
 
 func assertError(t *testing.T, err error, expected string) {
