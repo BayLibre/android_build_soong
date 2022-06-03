@@ -2187,6 +2187,7 @@ cc_prebuilt_library_shared {
     export_include_dirs: ["include/myinclude"],
     arch: {
         arm64: {
+            srcs: ["arm64/lib/mynativelib.so"],
             export_system_include_dirs: ["arm64/include/arm64/include"],
         },
         arm: {
@@ -2195,8 +2196,12 @@ cc_prebuilt_library_shared {
     },
 }
 `),
+		// TODO(lberki): it looks like changing this code is the right thing to do
+		// because if the SDK depends on a library it should presumably not be
+		// silently removed just because it supports HWASAN
 		checkAllCopyRules(`
 myinclude/Test.h -> include/myinclude/Test.h
+.intermediates/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
 arm64/include/Arm64Test.h -> arm64/include/arm64/include/Arm64Test.h
 .intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so
 `),
