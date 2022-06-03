@@ -153,10 +153,10 @@ func (t SanitizerType) name() string {
 
 func (t SanitizerType) registerMutators(ctx android.RegisterMutatorsContext) {
 	switch t {
-	case Asan:
-		asanSplit := createSplitMutator("asan", asanSplit, asanMutation, asanTransition)
+	case Asan, tsan, Fuzzer:
+		asanSplit := createSplitMutator(t, &sanitizerSplitMutator{t})
 		asanSplit.register(ctx)
-	case Hwasan, Fuzzer, scs, tsan, cfi:
+	case Hwasan, scs, cfi:
 		ctx.TopDown(t.variationName()+"_deps", sanitizerDepsMutator(t))
 		ctx.BottomUp(t.variationName(), sanitizerMutator(t))
 	case Memtag_heap, intOverflow:
@@ -962,33 +962,35 @@ type splitFunc func(ctx android.BaseModuleContext, m android.Module) []string
 // variation to install then.
 type mutationFunc func(mctx android.BottomUpMutatorContext, m android.Module, variation string, variations []string)
 
+type SplitMutator interface {
+	mutate(mctx android.BottomUpMutatorContext, m android.Module, variation string, variations []string)
+	split(ctx android.BaseModuleContext, m android.Module) []string
+	transition(source blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string
+}
+
 // TODO: This functionality is probably too generic for this file.
-type splitMutator struct {
-	name       string
-	split      splitFunc
-	mutation   mutationFunc
-	transition blueprint.Transition
+type splitMutatorImpl struct {
+	name    string
+	mutator SplitMutator
 
 	// sync.Map doesn't work (easily) because we can't update the value atomically
-	// TODO: once splitMutator functionality is pulled into Blueprint, replace
+	// TODO: once splitMutatorImpl functionality is pulled into Blueprint, replace
 	// this with members of blueprint.moduleInfo
 	splits    map[blueprint.Module][]string
 	splitLock sync.Mutex
 }
 
-func createSplitMutator(name string, split splitFunc, mutation mutationFunc, transition blueprint.Transition) splitMutator {
-	result := splitMutator{
-		name:       name,
-		split:      split,
-		mutation:   mutation,
-		transition: transition,
+func createSplitMutator(t SanitizerType, mutator SplitMutator) splitMutatorImpl {
+	result := splitMutatorImpl{
+		name:    t.variationName(),
+		mutator: mutator,
 	}
 
 	result.splits = make(map[blueprint.Module][]string)
 	return result
 }
 
-func (s *splitMutator) addSplits(m blueprint.Module, variations ...string) {
+func (s *splitMutatorImpl) addSplits(m blueprint.Module, variations ...string) {
 	s.splitLock.Lock()
 	defer s.splitLock.Unlock()
 	for _, variation := range variations {
@@ -998,13 +1000,13 @@ func (s *splitMutator) addSplits(m blueprint.Module, variations ...string) {
 	}
 }
 
-func (s *splitMutator) getSplits(m blueprint.Module) []string {
+func (s *splitMutatorImpl) getSplits(m blueprint.Module) []string {
 	s.splitLock.Lock()
 	defer s.splitLock.Unlock()
 	return s.splits[m]
 }
 
-func (s *splitMutator) register(ctx android.RegisterMutatorsContext) {
+func (s *splitMutatorImpl) register(ctx android.RegisterMutatorsContext) {
 	ctx.TopDown(s.name+"_deps", func(ctx android.TopDownMutatorContext) {
 		s.topDownMutator(ctx)
 	})
@@ -1014,46 +1016,50 @@ func (s *splitMutator) register(ctx android.RegisterMutatorsContext) {
 	})
 }
 
-func (s *splitMutator) topDownMutator(ctx android.TopDownMutatorContext) {
-	s.addSplits(ctx.Module(), s.split(ctx, ctx.Module())...)
+func (s *splitMutatorImpl) topDownMutator(ctx android.TopDownMutatorContext) {
+	s.addSplits(ctx.Module(), s.mutator.split(ctx, ctx.Module())...)
 	for _, srcVariation := range s.getSplits(ctx.Module()) {
 		ctx.VisitDirectDeps(func(dep android.Module) {
-			desiredVariations := s.transition(ctx.Module(), srcVariation, dep, ctx.OtherModuleDependencyTag(dep))
+			desiredVariations := s.mutator.transition(ctx.Module(), srcVariation, dep, ctx.OtherModuleDependencyTag(dep))
 			s.addSplits(dep, desiredVariations)
 		})
 	}
 }
 
-func (s *splitMutator) bottomUpMutator(ctx android.BottomUpMutatorContext) {
+func (s *splitMutatorImpl) bottomUpMutator(ctx android.BottomUpMutatorContext) {
 	variations := s.getSplits(ctx.Module())
 	if variations == nil || (len(variations) == 1 && variations[0] == "") {
 		// Module is not split, just apply the transition
-		s.mutation(ctx, ctx.Module(), "", []string{""})
-		ctx.ApplyTransition(s.transition)
+		s.mutator.mutate(ctx, ctx.Module(), "", []string{""})
+		ctx.ApplyTransition(s.mutator.transition)
 		return
 	}
 
-	splits := ctx.CreateVariationsWithTransition(s.transition, variations...)
+	splits := ctx.CreateVariationsWithTransition(s.mutator.transition, variations...)
 	for i := 0; i < len(variations); i++ {
-		s.mutation(ctx, splits[i], variations[i], variations)
+		s.mutator.mutate(ctx, splits[i], variations[i], variations)
 	}
 }
 
-func asanSplit(ctx android.BaseModuleContext, m android.Module) []string {
+type sanitizerSplitMutator struct {
+	sanitizer SanitizerType
+}
+
+func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext, m android.Module) []string {
 	if c, ok := m.(PlatformSanitizeable); ok {
 		if c.Binary() {
-			if c.IsSanitizerEnabled(Asan) {
+			if c.IsSanitizerEnabled(s.sanitizer) {
 				// If a sanitizer is enabled for a binary, we do not build the version
 				// without the sanitizer
-				return []string{Asan.variationName()}
+				return []string{s.sanitizer.variationName()}
 			} else {
 				return nil
 			}
 		} else {
-			if c.IsSanitizerEnabled(Asan) {
+			if c.IsSanitizerEnabled(s.sanitizer) {
 				// If a sanitizer is enabled for a library, we built both its sanitized
 				// and non-sanitized variations
-				return []string{"", Asan.variationName()}
+				return []string{"", s.sanitizer.variationName()}
 			} else {
 				return []string{""}
 			}
@@ -1072,13 +1078,13 @@ func asanSplit(ctx android.BaseModuleContext, m android.Module) []string {
 		// the APEX module is also enabled for the same sanitizer type. We only
 		// built one version of the APEX module.
 		ctx.VisitDirectDeps(func(dep android.Module) {
-			if c, ok := dep.(*Module); ok && c.sanitize.isSanitizerEnabled(Asan) {
+			if c, ok := dep.(*Module); ok && c.sanitize.isSanitizerEnabled(s.sanitizer) {
 				enabled = true
 			}
 		})
 
 		if enabled {
-			return []string{Asan.variationName()}
+			return []string{s.sanitizer.variationName()}
 		} else {
 			return nil
 		}
@@ -1087,32 +1093,34 @@ func asanSplit(ctx android.BaseModuleContext, m android.Module) []string {
 	return nil
 }
 
-func asanMutation(mctx android.BottomUpMutatorContext, m android.Module, variationName string, variations []string) {
-	isAsanVariation := variationName == Asan.variationName()
+func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, m android.Module, variationName string, variations []string) {
+	enabled := variationName == s.sanitizer.variationName()
 
 	if c, ok := m.(PlatformSanitizeable); ok {
 		if len(variations) > 1 {
-			sanitizerEnabled := c.IsSanitizerEnabled(Asan)
+			sanitizerEnabled := c.IsSanitizerEnabled(s.sanitizer)
 			// If we built both sanitized and non-sanitize variations of a native
 			// binary or library, we only install the version that is indicated in
 			// the Blueprint file.
-			if sanitizerEnabled != isAsanVariation {
+			if sanitizerEnabled != enabled {
 				c.SetPreventInstall()
 				c.SetHideFromMake()
 			}
 		}
 
-		if isAsanVariation {
-			c.SetSanitizer(Asan, true)
+		if enabled {
+			c.SetSanitizer(s.sanitizer, true)
 
 			// CFI is incompatible with ASAN so disable it in ASAN variations
-			cfiSupported := m.(PlatformSanitizeable).SanitizerSupported(cfi)
-			if mctx.Device() && cfiSupported {
-				c.SetSanitizer(cfi, false)
+			if s.sanitizer == Asan {
+				cfiSupported := m.(PlatformSanitizeable).SanitizerSupported(cfi)
+				if mctx.Device() && cfiSupported {
+					c.SetSanitizer(cfi, false)
+				}
 			}
-		} else if c.IsSanitizerEnabled(Asan) {
+		} else if c.IsSanitizerEnabled(s.sanitizer) {
 			// Disable the sanitizer for the non-sanitized variation
-			c.SetSanitizer(Asan, false)
+			c.SetSanitizer(s.sanitizer, false)
 		}
 
 		if c.StaticallyLinked() && c.ExportedToMake() {
@@ -1120,13 +1128,13 @@ func asanMutation(mctx android.BottomUpMutatorContext, m android.Module, variati
 			// handles those sanitizers
 		}
 	} else if sanitizeable, ok := m.(Sanitizeable); ok {
-		if isAsanVariation {
-			sanitizeable.AddSanitizerDependencies(mctx, Asan.name())
+		if enabled {
+			sanitizeable.AddSanitizerDependencies(mctx, s.sanitizer.name())
 		}
 	}
 }
 
-func asanTransition(m blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
+func (s *sanitizerSplitMutator) transition(m blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
 	if c, ok := m.(PlatformSanitizeable); ok {
 		d, ok := dep.(PlatformSanitizeable)
 		if !ok {
@@ -1139,27 +1147,31 @@ func asanTransition(m blueprint.Module, sourceVariation string, dep blueprint.Mo
 			return ""
 		}
 
-		if !d.SanitizePropDefined() || d.SanitizeNever() || d.IsSanitizerExplicitlyDisabled(Asan) {
+		if !d.SanitizePropDefined() || d.SanitizeNever() || d.IsSanitizerExplicitlyDisabled(s.sanitizer) {
 			// If a module opts out of a sanitizer, use its non-sanitized variation
 			return ""
 		}
 
-		if !d.SanitizerSupported(Asan) {
+		if !d.SanitizerSupported(s.sanitizer) {
 			// If a module does not support the sanitizer, use its non-sanitized
 			// variation
 			return ""
 		}
 
-		if d.StaticallyLinked() {
-			// If the dependency is statically linked into this module, use whatever
-			// variation the module is built in
+		if s.sanitizer == Asan {
+			if d.StaticallyLinked() {
+				// If the dependency is statically linked into this module, use whatever
+				// variation the module is built in
+				return sourceVariation
+			}
+		} else {
 			return sourceVariation
 		}
 
 		// Otherwise enable the sanitizer for the dependency if it requests it
 		// itself
-		if d.IsSanitizerEnabled(Asan) {
-			return Asan.variationName()
+		if d.IsSanitizerEnabled(s.sanitizer) {
+			return s.sanitizer.variationName()
 		} else {
 			return ""
 		}
@@ -1171,7 +1183,7 @@ func asanTransition(m blueprint.Module, sourceVariation string, dep blueprint.Mo
 	} else if _, ok := m.(Sanitizeable); ok {
 		// Use the sanitized variations for direct dependencies of the sanitized
 		// variation of the APEX bundles.
-		if c, ok := dep.(*Module); ok && c.sanitize.isSanitizerEnabled(Asan) {
+		if c, ok := dep.(*Module); ok && c.sanitize.isSanitizerEnabled(s.sanitizer) {
 			return sourceVariation
 		} else {
 			return ""
