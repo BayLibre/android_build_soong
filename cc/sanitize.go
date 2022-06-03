@@ -154,7 +154,7 @@ func (t SanitizerType) name() string {
 func (t SanitizerType) registerMutators(ctx android.RegisterMutatorsContext) {
 	switch t {
 	case Asan:
-		asanSplit := createSplitMutator("asan", asanSplit, asanMutation, asanTransition)
+		asanSplit := createSplitMutator("asan", &sanitizerSplitMutator{})
 		asanSplit.register(ctx)
 	case Hwasan, Fuzzer, scs, tsan, cfi:
 		ctx.TopDown(t.variationName()+"_deps", sanitizerDepsMutator(t))
@@ -962,33 +962,35 @@ type splitFunc func(ctx android.BaseModuleContext, m android.Module) []string
 // variation to install then.
 type mutationFunc func(mctx android.BottomUpMutatorContext, m android.Module, variation string, variations []string)
 
+type SplitMutator interface {
+	mutate(mctx android.BottomUpMutatorContext, m android.Module, variation string, variations []string)
+	split(ctx android.BaseModuleContext, m android.Module) []string
+	transition(source blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string
+}
+
 // TODO: This functionality is probably too generic for this file.
-type splitMutator struct {
-	name       string
-	split      splitFunc
-	mutation   mutationFunc
-	transition blueprint.Transition
+type splitMutatorImpl struct {
+	name    string
+	mutator SplitMutator
 
 	// sync.Map doesn't work (easily) because we can't update the value atomically
-	// TODO: once splitMutator functionality is pulled into Blueprint, replace
+	// TODO: once splitMutatorImpl functionality is pulled into Blueprint, replace
 	// this with members of blueprint.moduleInfo
 	splits    map[blueprint.Module][]string
 	splitLock sync.Mutex
 }
 
-func createSplitMutator(name string, split splitFunc, mutation mutationFunc, transition blueprint.Transition) splitMutator {
-	result := splitMutator{
-		name:       name,
-		split:      split,
-		mutation:   mutation,
-		transition: transition,
+func createSplitMutator(name string, mutator SplitMutator) splitMutatorImpl {
+	result := splitMutatorImpl{
+		name:    name,
+		mutator: mutator,
 	}
 
 	result.splits = make(map[blueprint.Module][]string)
 	return result
 }
 
-func (s *splitMutator) addSplits(m blueprint.Module, variations ...string) {
+func (s *splitMutatorImpl) addSplits(m blueprint.Module, variations ...string) {
 	s.splitLock.Lock()
 	defer s.splitLock.Unlock()
 	for _, variation := range variations {
@@ -998,13 +1000,13 @@ func (s *splitMutator) addSplits(m blueprint.Module, variations ...string) {
 	}
 }
 
-func (s *splitMutator) getSplits(m blueprint.Module) []string {
+func (s *splitMutatorImpl) getSplits(m blueprint.Module) []string {
 	s.splitLock.Lock()
 	defer s.splitLock.Unlock()
 	return s.splits[m]
 }
 
-func (s *splitMutator) register(ctx android.RegisterMutatorsContext) {
+func (s *splitMutatorImpl) register(ctx android.RegisterMutatorsContext) {
 	ctx.TopDown(s.name+"_deps", func(ctx android.TopDownMutatorContext) {
 		s.topDownMutator(ctx)
 	})
@@ -1014,32 +1016,32 @@ func (s *splitMutator) register(ctx android.RegisterMutatorsContext) {
 	})
 }
 
-func (s *splitMutator) topDownMutator(ctx android.TopDownMutatorContext) {
-	s.addSplits(ctx.Module(), s.split(ctx, ctx.Module())...)
+func (s *splitMutatorImpl) topDownMutator(ctx android.TopDownMutatorContext) {
+	s.addSplits(ctx.Module(), s.mutator.split(ctx, ctx.Module())...)
 	for _, srcVariation := range s.getSplits(ctx.Module()) {
 		ctx.VisitDirectDeps(func(dep android.Module) {
-			desiredVariations := s.transition(ctx.Module(), srcVariation, dep, ctx.OtherModuleDependencyTag(dep))
+			desiredVariations := s.mutator.transition(ctx.Module(), srcVariation, dep, ctx.OtherModuleDependencyTag(dep))
 			s.addSplits(dep, desiredVariations)
 		})
 	}
 }
 
-func (s *splitMutator) bottomUpMutator(ctx android.BottomUpMutatorContext) {
+func (s *splitMutatorImpl) bottomUpMutator(ctx android.BottomUpMutatorContext) {
 	variations := s.getSplits(ctx.Module())
 	if variations == nil || (len(variations) == 1 && variations[0] == "") {
 		// Module is not split, just apply the transition
-		s.mutation(ctx, ctx.Module(), "", []string{""})
-		ctx.ApplyTransition(s.transition)
+		s.mutator.mutate(ctx, ctx.Module(), "", []string{""})
+		ctx.ApplyTransition(s.mutator.transition)
 		return
 	}
 
-	splits := ctx.CreateVariationsWithTransition(s.transition, variations...)
+	splits := ctx.CreateVariationsWithTransition(s.mutator.transition, variations...)
 	for i := 0; i < len(variations); i++ {
-		s.mutation(ctx, splits[i], variations[i], variations)
+		s.mutator.mutate(ctx, splits[i], variations[i], variations)
 	}
 }
 
-func asanSplit(ctx android.BaseModuleContext, m android.Module) []string {
+func (*sanitizerSplitMutator) split(ctx android.BaseModuleContext, m android.Module) []string {
 	if c, ok := m.(PlatformSanitizeable); ok {
 		if c.Binary() {
 			if c.IsSanitizerEnabled(Asan) {
@@ -1087,7 +1089,9 @@ func asanSplit(ctx android.BaseModuleContext, m android.Module) []string {
 	return nil
 }
 
-func asanMutation(mctx android.BottomUpMutatorContext, m android.Module, variationName string, variations []string) {
+type sanitizerSplitMutator struct{}
+
+func (*sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, m android.Module, variationName string, variations []string) {
 	isAsanVariation := variationName == Asan.variationName()
 
 	if c, ok := m.(PlatformSanitizeable); ok {
@@ -1126,7 +1130,7 @@ func asanMutation(mctx android.BottomUpMutatorContext, m android.Module, variati
 	}
 }
 
-func asanTransition(m blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
+func (*sanitizerSplitMutator) transition(m blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
 	if c, ok := m.(PlatformSanitizeable); ok {
 		d, ok := dep.(PlatformSanitizeable)
 		if !ok {
