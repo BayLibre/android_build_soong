@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70819ad7_de1788f0",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-06-03T19:20:03Z",
+      "side": 1,
+      "message": "Also maybe this should just be on BazelContext",
+      "parentUuid": "505b6fe3_1d0b2b59",
+      "revId": "841942556a65767ab2bea85d29d6c11d52e0cf48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0902e287_02882789",
         "filename": "android/bazel_paths.go",
         "patchSetId": 8
