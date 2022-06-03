@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47e207d2_cb1a6156",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2546,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-06-03T21:40:38Z",
+      "side": 1,
+      "message": "It looks I missed this property. convertWithBp2build() on line 3509 might be a better place for this change, so both apex and override_apex can be covered, but I don\u0027t find a real apex using package_name in the codebase of internal master.",
+      "range": {
+        "startLine": 2546,
+        "startChar": 27,
+        "endLine": 2546,
+        "endChar": 39
+      },
+      "revId": "6ee779d8d73aaea78b5bccb28774501bd452141a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f0b7d41_f3620e7b",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-06-03T21:40:38Z",
+      "side": 1,
+      "message": "Also test package_name property here.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 4
+      },
+      "revId": "6ee779d8d73aaea78b5bccb28774501bd452141a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
