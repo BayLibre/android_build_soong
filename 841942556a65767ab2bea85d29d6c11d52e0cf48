@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bcd08df_448ec30d",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-06-04T00:28:05Z",
+      "side": 1,
+      "message": "I made an alternative implementation at aosp/2116276. Take a look, it\u0027s basically the same as this + my comments, and separated from the aidl stuff. Either cl is fine with me.",
+      "revId": "841942556a65767ab2bea85d29d6c11d52e0cf48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "505b6fe3_1d0b2b59",
         "filename": "android/bazel_paths.go",
         "patchSetId": 8
