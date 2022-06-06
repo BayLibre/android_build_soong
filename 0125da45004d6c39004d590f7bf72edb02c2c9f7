@@ -124,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "314fbd87_bcb61025",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-06-06T19:34:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e187f69_2e580c6d",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1f99d3b_b1430962",
@@ -191,6 +209,24 @@
       "side": 1,
       "message": "+1, I prefer these alternatives as Liz has outlined.",
       "parentUuid": "cbd74e63_01de9d37",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6abe5f_84eb7ff5",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-06-06T19:34:07Z",
+      "side": 1,
+      "message": "I made some changes to reuse JoinWithPrefix, I can\u0027t simply do strings.Join(append(includePaths,excludePaths...), \",\")) though, otherwise for example, \"-bar1\" will become \",-bar1\" since includePaths and excludePaths can be empty",
+      "parentUuid": "74e8b591_9fcdcfc0",
       "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
