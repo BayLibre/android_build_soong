@@ -57,6 +57,24 @@
       "parentUuid": "9675e676_9c940ec5",
       "revId": "b9c332d860f7076656c1da52f8ebd8afec5e506b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b5ec83_2673befd",
+        "filename": "apex/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-06-06T13:32:46Z",
+      "side": 1,
+      "message": "+why it\u0027s in a separate file (to reduce merge conflicts).",
+      "parentUuid": "8d69b3a4_64af96eb",
+      "revId": "b9c332d860f7076656c1da52f8ebd8afec5e506b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
