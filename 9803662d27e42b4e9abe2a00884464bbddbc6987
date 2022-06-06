@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "694fb684_a70bb4d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-06T22:26:36Z",
+      "side": 1,
+      "message": "go test seemed a bit difficult due to GenerateBuildActions() call requiring some mock SingletonContext, which was tedious - this ain\u0027t Java I guess (so nothing terse like Mokito)",
+      "parentUuid": "ed2417dc_8a50a170",
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8003cb91_3921b21d",
