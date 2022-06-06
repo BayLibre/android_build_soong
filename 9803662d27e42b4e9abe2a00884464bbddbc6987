@@ -131,6 +131,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8504ee80_6c7c6c6f",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-06T21:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79b17d3a_993ec42c",
+      "range": {
+        "startLine": 884,
+        "startChar": 2,
+        "endLine": 884,
+        "endChar": 3
+      },
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5586ec1e_f7060724",
@@ -177,6 +201,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e66de835_4b3dead9",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-06T21:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5586ec1e_f7060724",
+      "range": {
+        "startLine": 885,
+        "startChar": 3,
+        "endLine": 888,
+        "endChar": 107
+      },
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "907ab2a1_74d2eaf7",
@@ -190,6 +238,30 @@
       "writtenOn": "2022-05-13T15:02:20Z",
       "side": 1,
       "message": "Can we add a test case for this?",
+      "range": {
+        "startLine": 890,
+        "startChar": 3,
+        "endLine": 890,
+        "endChar": 96
+      },
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83585f0f_65a0f251",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-06T21:30:56Z",
+      "side": 1,
+      "message": "I tried adding a test case that would exercise `GenerateBuildActions(s SingletonContext)` but that seemed to be rather difficult - i.e. I couldn\u0027t easily mock the `SingletonContext`\n\nHence adding a script that I was relying on for manually testing null incremental builds.",
+      "parentUuid": "907ab2a1_74d2eaf7",
       "range": {
         "startLine": 890,
         "startChar": 3,
