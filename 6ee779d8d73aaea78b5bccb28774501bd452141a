@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a23c16_5d9ffa26",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2546,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-06T10:10:54Z",
+      "side": 1,
+      "message": "Yeah we should cover apex as well. Done.",
+      "parentUuid": "47e207d2_cb1a6156",
+      "range": {
+        "startLine": 2546,
+        "startChar": 27,
+        "endLine": 2546,
+        "endChar": 39
+      },
+      "revId": "6ee779d8d73aaea78b5bccb28774501bd452141a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f0b7d41_f3620e7b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-03T21:40:38Z",
       "side": 1,
       "message": "Also test package_name property here.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 4
+      },
+      "revId": "6ee779d8d73aaea78b5bccb28774501bd452141a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2efc7685_d93a3adb",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-06T10:10:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f0b7d41_f3620e7b",
       "range": {
         "startLine": 113,
         "startChar": 0,
