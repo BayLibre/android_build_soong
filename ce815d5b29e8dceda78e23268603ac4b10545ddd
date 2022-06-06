@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e640dd52_b37c720c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-06-06T17:53:19Z",
+      "side": 1,
+      "message": "Yes, I actually noticed this issue and will need to fix it for apexer to build with bazel. Currently bazel is putting filegroup files under their full path in the python runfiles directory instead of at the root of the runfiles.",
+      "parentUuid": "b4e4b66a_172cc9f4",
+      "revId": "ce815d5b29e8dceda78e23268603ac4b10545ddd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1b477a8_6a9cdc1d",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e14130_def5a4e2",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-06-06T17:53:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1b477a8_6a9cdc1d",
+      "range": {
+        "startLine": 461,
+        "startChar": 1,
+        "endLine": 468,
+        "endChar": 0
+      },
+      "revId": "ce815d5b29e8dceda78e23268603ac4b10545ddd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d30b909_704f6ba5",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-06-06T16:22:41Z",
       "side": 1,
       "message": "this needs the licensing header and to be added to the Android.bp",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "ce815d5b29e8dceda78e23268603ac4b10545ddd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30b4850c_292ef35e",
+        "filename": "android/bazel_paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-06-06T17:53:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d30b909_704f6ba5",
       "range": {
         "startLine": 1,
         "startChar": 0,
