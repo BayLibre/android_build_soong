@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e4b66a_172cc9f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-06T16:22:41Z",
+      "side": 1,
+      "message": "This is likely only going to function as a stopgap as Bazel will treat \"data\" and most paths outside of a package as absolute, not relative. When we look at migrating filegroup \u0026 the path property to Bazel, we should also consider the impacts on mixed builds. It may be that rather than making Bazel more Soong-like in mixed builds we need to introduce modes of Soong that are more Bazel-like",
+      "revId": "ce815d5b29e8dceda78e23268603ac4b10545ddd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b477a8_6a9cdc1d",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-06T16:22:41Z",
+      "side": 1,
+      "message": "can you add test coverage for the cases where we modify relativeRootPath here and below?",
+      "range": {
+        "startLine": 461,
+        "startChar": 1,
+        "endLine": 468,
+        "endChar": 0
+      },
+      "revId": "ce815d5b29e8dceda78e23268603ac4b10545ddd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d30b909_704f6ba5",
+        "filename": "android/bazel_paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-06T16:22:41Z",
+      "side": 1,
+      "message": "this needs the licensing header and to be added to the Android.bp",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "ce815d5b29e8dceda78e23268603ac4b10545ddd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
