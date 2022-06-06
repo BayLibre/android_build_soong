@@ -982,7 +982,8 @@ func (c *Module) Shared() bool {
 			return library.shared()
 		}
 	}
-	panic(fmt.Errorf("Shared() called on non-library module: %q", c.BaseModuleName()))
+
+	return false
 }
 
 func (c *Module) SelectedStl() string {
