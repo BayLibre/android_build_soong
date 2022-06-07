@@ -61,6 +61,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "538565fb_8d9cca59",
+        "filename": "java/aar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-07T17:14:08Z",
+      "side": 1,
+      "message": "manifest_fixer gets run on both the individual `android_library` manifests and the final `android_app` manifest.  manifest_merger only runs on the final `android_app` module in Soong, although it also runs on the `android_library` modules that get used by Make.",
+      "parentUuid": "31533ad2_3dafa4cd",
+      "revId": "510d49226e6161ede21ade15a029c9a7a7a9cab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a885755_5d513684",
         "filename": "java/java.go",
         "patchSetId": 5
