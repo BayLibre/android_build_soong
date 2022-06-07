@@ -33,6 +33,24 @@
       "message": "out/soong/.temp gets wiped on every build, which may be too aggressive.  For Soong\u0027s large log files like `out/verbose.log.gz` we use [fileRotation](https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/logger/logger.go;l\u003d80;drc\u003d1aeb049a5463c8c87beb8aa034c3899a2f39a893) to rename them from `out/verbose.log.1.gz` through `out/verbose.log.5.gz` before deleting them, you could do the same for the directory that contains the RBE logs.",
       "revId": "7ac32e7b133c6e8523ee0278fcdfacaea54783e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c5c8b6_c2821b31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-06-07T20:29:41Z",
+      "side": 1,
+      "message": "Thanks for the pointer to fileRotation! The current experience is that we already clear logs for every build, so its still ok to get the RBE logs cleared for every build (we haven\u0027t seen a need for preserving past build logs, but good to know that we can use fileRotation!).\n\nThe major change with this CL is that we move away from `*.txt` files for detailed logging to `*.rpl` files for detailed logging. The `*.rpl` files are what all the other customers of reclient (including android CI) use and it is ~50-80% smaller in size due to NOT having a redundant list of input files / command arguments.",
+      "parentUuid": "c64ba049_2dcf3dad",
+      "revId": "7ac32e7b133c6e8523ee0278fcdfacaea54783e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
