@@ -3342,6 +3342,69 @@ func TestErrorsIfAModuleDependsOnDisabled(t *testing.T) {
 	`)
 }
 
+func TestAFLFuzzTarget(t *testing.T) {
+	ctx := testCc(t, `
+		cc_afl_fuzz {
+			name: "test_afl_fuzz_target",
+			srcs: ["foo.c"],
+			host_supported: true,
+			static_libs: [
+				"afl_fuzz_static_lib",
+			],
+			shared_libs: [
+				"afl_fuzz_shared_lib",
+			],
+		}
+		cc_fuzz {
+			name: "test_fuzz_target",
+			srcs: ["foo.c"],
+			static_libs: [
+				"afl_fuzz_static_lib",
+			],
+			shared_libs: [
+				"afl_fuzz_shared_lib",
+			],
+		}
+		cc_library {
+			name: "afl_fuzz_static_lib",
+			host_supported: true,
+			srcs: ["static_file.c"],
+		}
+		cc_library {
+			name: "afl_fuzz_shared_lib",
+			host_supported: true,
+			srcs: ["shared_file.c"],
+			static_libs: [
+				"second_static_lib",
+			],
+		}
+		cc_library_static {
+			name: "afl-compiler-rt",
+			host_supported: true,
+			srcs: [
+				"afl-compiler-rt.o.c",
+			],
+		}
+		cc_library {
+			name: "second_static_lib",
+			host_supported: true,
+			srcs: ["second_file.c"],
+		}
+		filegroup {
+			name: "aflpp_driver",
+			srcs: [
+				"aflpp_driver.c",
+			],
+		}`)
+
+	variant := "android_arm64_armv8-a_fuzzer_afl"
+	ctx.ModuleForTests("test_afl_fuzz_target", variant).Rule("cc")
+
+	libStaticVariant := "android_arm64_armv8-a_static_fuzzer_afl"
+	ctx.ModuleForTests("afl_fuzz_static_lib", libStaticVariant).Rule("cc")
+	ctx.ModuleForTests("second_static_lib", libStaticVariant).Rule("cc")
+}
+
 // Simple smoke test for the cc_fuzz target that ensures the rule compiles
 // correctly.
 func TestFuzzTarget(t *testing.T) {
