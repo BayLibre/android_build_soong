@@ -299,6 +299,24 @@
       "parentUuid": "66612ee5_8f9655e5",
       "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "256223f1_48ad19a5",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-06-07T17:34:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4367cd7d_4f742387",
+      "revId": "0125da45004d6c39004d590f7bf72edb02c2c9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
