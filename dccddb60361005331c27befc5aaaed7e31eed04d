@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e32b1aa_ab10d678",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-06-07T09:47:48Z",
+      "side": 1,
+      "message": "I am planning some changes the may need the flags. I would like to keep them for now.",
+      "parentUuid": "90dc8cc5_fddf14f2",
+      "range": {
+        "startLine": 299,
+        "startChar": 160,
+        "endLine": 299,
+        "endChar": 188
+      },
+      "revId": "dccddb60361005331c27befc5aaaed7e31eed04d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf7ab280_f57572a9",
