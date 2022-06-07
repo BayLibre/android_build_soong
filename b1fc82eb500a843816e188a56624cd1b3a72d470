@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ebc3b15_a2791158",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-07T18:17:48Z",
+      "side": 1,
+      "message": "Should this be `staticFoo`?",
+      "revId": "b1fc82eb500a843816e188a56624cd1b3a72d470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aefcc6a5_29f69905",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-07T18:17:48Z",
+      "side": 1,
+      "message": "Same as above comment? Should this be `foo.a`?",
+      "revId": "b1fc82eb500a843816e188a56624cd1b3a72d470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
