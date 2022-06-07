@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e52761e_54f0aa34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-06-07T16:43:32Z",
+      "side": 1,
+      "message": "Fair enough, we don\u0027t have a good go test to verify this change. (Even my changes to add `cd execroot \u0026\u0026 rm -f oldoutput \u0026\u0026` were untested in go tests....)\n\nWe probably should, though...",
+      "parentUuid": "694fb684_a70bb4d2",
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8003cb91_3921b21d",

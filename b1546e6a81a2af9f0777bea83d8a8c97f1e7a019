@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95c7135_3dee8684",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-06-07T16:43:32Z",
+      "side": 1,
+      "message": "Please elaborate on why this is a problem. Also, to avoid copying this explanation since we prune bazel_tools paths in two places, perhaps refactor to a single helper function? (This is subject to other comments questioning where we should actually do this pruning)",
+      "range": {
+        "startLine": 849,
+        "startChar": 1,
+        "endLine": 849,
+        "endChar": 2
+      },
+      "revId": "b1546e6a81a2af9f0777bea83d8a8c97f1e7a019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c9214a_b328a7ee",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-06-07T16:43:32Z",
+      "side": 1,
+      "message": "It feels a a little hacky and unintuitive to use Android.bp as the dummy file for which empty depsets point to. Could we have a file completely otherwise unrelated to the build for this purpose?",
+      "range": {
+        "startLine": 859,
+        "startChar": 0,
+        "endLine": 859,
+        "endChar": 1
+      },
+      "revId": "b1546e6a81a2af9f0777bea83d8a8c97f1e7a019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

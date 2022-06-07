@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef38882_8d824ef2",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-06-07T16:43:32Z",
+      "side": 1,
+      "message": "Can we drop these inputs instead before buildStatement construction? That is, buildStatement.InputPaths should already be pruned of bazel_tools outputs. We do this with `py3wrapperFileName`, why does this need to be different?\n\nIt seems weird that a buildStatement\u0027s depsets should have bazel_tools removed, but not InputPaths.",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfdf8bb2_7083b8da",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-06-07T16:43:32Z",
+      "side": 1,
+      "message": "What actions rely on bazel_tools being present? I remember we spoke offline about this -- that some bazel handling logic checks for the presence of certain artifacts under bazel_tools. Can you point me to them?\n\nI ask because I\u0027m worried that our artifact filtering is being done in too many places -- the code is getting a bit more unintuitive and spaghetti-like. I\u0027d like to investigate whether there is any refactoring we can do to get ahead of this.",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ef6af48_113e24bf",
+        "filename": "scripts/verify_null_builds.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-06-07T16:43:32Z",
+      "side": 1,
+      "message": "set -eu ?",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0106b5_4029d775",
+        "filename": "scripts/verify_null_builds.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-06-07T16:43:32Z",
+      "side": 1,
+      "message": "Can we document what outputs are expected by this script? It looks like this script leaves information under `report_root`",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16814bac_a0ab85de",
+        "filename": "scripts/verify_null_builds.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-06-07T16:43:32Z",
+      "side": 1,
+      "message": "nit: technically \"module_name\" I think, if we\u0027re using soong vocabulary :\\",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
