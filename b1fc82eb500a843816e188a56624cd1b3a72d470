@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "857e1f27_863be0b2",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-06-07T20:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ebc3b15_a2791158",
+      "revId": "b1fc82eb500a843816e188a56624cd1b3a72d470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aefcc6a5_29f69905",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-07T18:17:48Z",
       "side": 1,
       "message": "Same as above comment? Should this be `foo.a`?",
+      "revId": "b1fc82eb500a843816e188a56624cd1b3a72d470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a496517_c783fd87",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-06-07T20:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aefcc6a5_29f69905",
       "revId": "b1fc82eb500a843816e188a56624cd1b3a72d470",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
