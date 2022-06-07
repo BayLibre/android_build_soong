@@ -149,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d292555_0735f076",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-07T18:35:28Z",
+      "side": 1,
+      "message": "There aren\u0027t any other use cases for propagating max_sdk_version to the Android.bp file, so I\u0027d suggest just adding the new replace_max_sdk_version_placeholder property (basically s/max_sdk_version/replace_max_sdk_version_placeholder/ in this CL).",
+      "parentUuid": "a8e57456_9e850da7",
+      "range": {
+        "startLine": 1332,
+        "startChar": 1,
+        "endLine": 1332,
+        "endChar": 16
+      },
+      "revId": "510d49226e6161ede21ade15a029c9a7a7a9cab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8be56fdd_d930df20",
         "filename": "java/rro.go",
         "patchSetId": 5
