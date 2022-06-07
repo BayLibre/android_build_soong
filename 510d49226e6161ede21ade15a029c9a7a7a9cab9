@@ -125,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8e57456_9e850da7",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1941531
+      },
+      "writtenOn": "2022-06-07T18:33:18Z",
+      "side": 1,
+      "message": "I agree that Replace_max_sdk_verison_placeholder would be more accurate. However does this mean I should rely on propagating max_sdk_version from Android.bp to manifest_fixer and instead introduce a new replace_max_sdk_version_placeholder field to Android.bp to be propagated instead?",
+      "parentUuid": "2c99324f_53db2d32",
+      "range": {
+        "startLine": 1332,
+        "startChar": 1,
+        "endLine": 1332,
+        "endChar": 16
+      },
+      "revId": "510d49226e6161ede21ade15a029c9a7a7a9cab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8be56fdd_d930df20",
         "filename": "java/rro.go",
         "patchSetId": 5
