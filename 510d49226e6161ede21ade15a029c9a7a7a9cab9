@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31533ad2_3dafa4cd",
+        "filename": "java/aar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2022-06-07T17:05:09Z",
+      "side": 1,
+      "message": "manifest_fixer should be run on the final merged manifest, including elements added by merged AARs.",
+      "parentUuid": "439e8310_15c59846",
+      "revId": "510d49226e6161ede21ade15a029c9a7a7a9cab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a885755_5d513684",
         "filename": "java/java.go",
         "patchSetId": 5
