@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdec26d1_c04b708a",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-08T09:12:32Z",
+      "side": 1,
+      "message": "move `if name \u003d\u003d \"apexer\"` to the outer loop, so the req loop doesn\u0027t run for every module.",
+      "range": {
+        "startLine": 1239,
+        "startChar": 4,
+        "endLine": 1240,
+        "endChar": 24
+      },
+      "revId": "dc8aa956536bebf74bc20b0f086cde8e4b92024e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
