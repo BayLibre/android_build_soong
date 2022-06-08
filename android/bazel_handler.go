@@ -815,6 +815,10 @@ func (context *bazelContext) InvokeBazel() error {
 		return err
 	}
 
+	if _, err := buildActions([]byte(aqueryOutput)); err != nil {
+		return err
+	}
+
 	context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements([]byte(aqueryOutput))
 	if err != nil {
 		return err
