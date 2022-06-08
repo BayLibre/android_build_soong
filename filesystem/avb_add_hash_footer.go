@@ -40,8 +40,8 @@ type avbAddHashFooterProperties struct {
 	// Source file of this image. Can reference a genrule type module with the ":module" syntax.
 	Src *string `android:"path,arch_variant"`
 
-	// Set the name of the output. Defaults to <module_name>.img.
-	Stem *string
+	// Set the name of the output file. Defaults to <module_name>.img.
+	Filename *string
 
 	// Name of the image partition. Defaults to the name of this module.
 	Partition_name *string
@@ -68,7 +68,7 @@ func avbAddHashFooterFactory() android.Module {
 }
 
 func (a *avbAddHashFooter) installFileName() string {
-	return proptools.StringDefault(a.properties.Stem, a.BaseModuleName()+".img")
+	return proptools.StringDefault(a.properties.Filename, a.BaseModuleName()+".img")
 }
 
 func (a *avbAddHashFooter) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -130,9 +130,12 @@ func (a *avbAddHashFooter) AndroidMkEntries() []android.AndroidMkEntries {
 	}}
 }
 
-var _ android.SourceFileProducer = (*avbAddHashFooter)(nil)
+var _ Filesystem = (*avbAddHashFooter)(nil)
 
-// Implements android.SourceFileProducer
-func (a *avbAddHashFooter) Srcs() android.Paths {
-	return append(android.Paths{}, a.output)
+func (a *avbAddHashFooter) OutputPath() android.Path {
+	return a.output
+}
+
+func (a *avbAddHashFooter) SignedOutputPath() android.Path {
+	return a.OutputPath() // always signed
 }

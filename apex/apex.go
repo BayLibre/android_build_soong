@@ -840,6 +840,27 @@ func (a *apexBundle) OverridablePropertiesDepsMutator(ctx android.BottomUpMutato
 	}
 }
 
+type ApexBundle interface {
+	android.Module
+
+	// The built APEX file. This is the main product.
+	// Could be .apex or .capex
+	OutputPath() android.Path
+
+	// The built uncompressed .apex file.
+	OutputApexPath() android.Path
+}
+
+var _ ApexBundle = (*apexBundle)(nil)
+
+func (a *apexBundle) OutputPath() android.Path {
+	return a.outputFile
+}
+
+func (a *apexBundle) OutputApexPath() android.Path {
+	return a.outputApexFile
+}
+
 type ApexBundleInfo struct {
 	Contents *android.ApexContents
 }
