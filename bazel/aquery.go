@@ -295,7 +295,7 @@ func (a *aqueryArtifactHandler) artifactPathsFromDepsetHash(depsetHash string) (
 		a.depsetHashToArtifactPathsCache[depsetHash] = result
 		return result, nil
 	} else {
-		return nil, fmt.Errorf("undefined input depset hash %d", depsetHash)
+		return nil, fmt.Errorf("undefined input depset hash %s", depsetHash)
 	}
 }
 
