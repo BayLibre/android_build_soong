@@ -79,6 +79,17 @@ func (once *OncePer) Get(key OnceKey) interface{} {
 	return once.maybeWaitFor(key, v)
 }
 
+// Peek returns the value previously computed with Once for a given key.  If Once has not
+// been called for the given key Peek will return nil.
+func (once *OncePer) Peek(key OnceKey) interface{} {
+	v, ok := once.values.Load(key)
+	if !ok {
+		return nil
+	}
+
+	return once.maybeWaitFor(key, v)
+}
+
 // OnceStringSlice is the same as Once, but returns the value cast to a []string
 func (once *OncePer) OnceStringSlice(key OnceKey, value func() []string) []string {
 	return once.Once(key, func() interface{} { return value() }).([]string)

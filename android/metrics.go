@@ -33,7 +33,7 @@ type SoongMetrics struct {
 }
 
 func ReadSoongMetrics(config Config) SoongMetrics {
-	return config.Get(soongMetricsOnceKey).(SoongMetrics)
+	return config.Peek(soongMetricsOnceKey).(SoongMetrics)
 }
 
 func init() {
