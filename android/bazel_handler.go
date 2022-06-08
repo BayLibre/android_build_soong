@@ -778,7 +778,7 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 		}
 	}
 
-	extraFlags := append([]string{"--output=jsonproto"}, coverageFlags...)
+	extraFlags := append([]string{"--output=jsonproto", "--include_file_write_contents"}, coverageFlags...)
 
 	aqueryOutput, _, err = context.issueBazelCommand(
 		context.paths,
