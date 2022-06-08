@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731f9806_061aa7f3",
+        "filename": "apex/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-06-08T15:10:45Z",
+      "side": 1,
+      "message": "I\u0027d expand on this a bit:\n1. We would like devs not to do this in dev branches. They can do that locally for development if needed, of course.\n2. Release branches are setup in a way where the version code will be injected into manifest.json by the tooling. So, on release branches we do expect to see version fields set.",
+      "range": {
+        "startLine": 21,
+        "startChar": 67,
+        "endLine": 22,
+        "endChar": 79
+      },
+      "revId": "69a4d56040d69bc986c943c9496089f47d31c614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a67900d5_b8ee6eab",
+        "filename": "apex/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-06-08T15:10:45Z",
+      "side": 1,
+      "message": "Let\u0027s also expand with instructions on how to change these values.\n\n- AOSP and mainline prod branches should be 3x0090000 where \"3x\" corresponds to SDK level.\n- master is expected to be 990090000 all the time.\n- dessert dev branches are expected to be \n\nudc-dev 3x0090000\nAOSP/udc-mainline-prod 3x9990000\nmaster continues to be 990090000",
+      "range": {
+        "startLine": 23,
+        "startChar": 64,
+        "endLine": 25,
+        "endChar": 58
+      },
+      "revId": "69a4d56040d69bc986c943c9496089f47d31c614",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
