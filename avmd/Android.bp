@@ -1,0 +1,23 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+bootstrap_go_package {
+    name: "soong-avmd",
+    pkgPath: "android/soong/avmd",
+    deps: [
+        "blueprint",
+        "soong",
+        "soong-android",
+        "soong-apex",
+        "soong-filesystem",
+        "soong-java",
+    ],
+    srcs: [
+        "avmd.go",
+    ],
+    //    testSrcs: [
+    //        "avmd_test.go",
+    //    ],
+    pluginFor: ["soong_build"],
+}
