@@ -1552,6 +1552,38 @@ func TestPythonZipperActionNoOutput(t *testing.T) {
 	assertError(t, err, `Expect 1+ input and 1 output to python zipper action, got: input ["python_binary.py"], output []`)
 }
 
+func TestFileWrite(t *testing.T) {
+	const inputString = `
+{
+  "artifacts": [
+    { "id": 1, "pathFragmentId": 1 }],
+  "actions": [{
+    "targetId": 1,
+    "actionKey": "x",
+    "mnemonic": "FileWrite",
+    "configurationId": 1,
+    "outputIds": [1],
+    "primaryOutputId": 1,
+    "executionPlatform": "//build/bazel/platforms:linux_x86_64",
+    "fileContents": "file data\n"
+  }],
+  "pathFragments": [
+    { "id": 1, "label": "foo.manifest" }]
+}
+`
+	actual, _, err := AqueryBuildStatements([]byte(inputString))
+	if err != nil {
+		t.Errorf("Unexpected error %q", err)
+	}
+	assertBuildStatements(t, []BuildStatement{
+		{
+			Command:     "/bin/bash -c 'echo -n \"file data\\n\" | sed \"s/\\\\\\\\n/\\\\n/g\" > foo.manifest && chmod a+x foo.manifest'",
+			OutputPaths: []string{"foo.manifest"},
+			Mnemonic:    "FileWrite",
+		},
+	}, actual)
+}
+
 func assertError(t *testing.T, err error, expected string) {
 	t.Helper()
 	if err == nil {
