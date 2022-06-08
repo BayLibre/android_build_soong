@@ -767,7 +767,8 @@ func (context *bazelContext) InvokeBazel() error {
 		bazelCommand{"aquery", fmt.Sprintf("deps(%s)", buildrootLabel)},
 		// Use jsonproto instead of proto; actual proto parsing would require a dependency on Bazel's
 		// proto sources, which would add a number of unnecessary dependencies.
-		"--output=jsonproto")
+		// Use --include_file_write_contents as we need the contents of the file written by the cts.action.write.
+		"--output=jsonproto", "--include_file_write_contents")
 
 	if err != nil {
 		return err
