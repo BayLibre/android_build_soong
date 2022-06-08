@@ -51,6 +51,24 @@
       "parentUuid": "c64ba049_2dcf3dad",
       "revId": "7ac32e7b133c6e8523ee0278fcdfacaea54783e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5e2535_0891a0d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-06-08T14:45:51Z",
+      "side": 1,
+      "message": "Done (found a few bugs around the log dir deletion and have since fixed them!)",
+      "parentUuid": "4e21eb79_f523bf5e",
+      "revId": "7ac32e7b133c6e8523ee0278fcdfacaea54783e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
