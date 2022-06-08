@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56f24950_606c0069",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-08T17:30:36Z",
+      "side": 1,
+      "message": "+1, this may also simplify the testing you need to do as we have unit testing for aquery.go that does not require as extensive mocking.",
+      "parentUuid": "aef38882_8d824ef2",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfdf8bb2_7083b8da",
         "filename": "bazel/aquery.go",
         "patchSetId": 9
@@ -48,6 +66,29 @@
       "writtenOn": "2022-06-07T16:43:32Z",
       "side": 1,
       "message": "set -eu ?",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712ca6bf_a27fa859",
+        "filename": "scripts/verify_null_builds.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-08T17:30:36Z",
+      "side": 1,
+      "message": "this needs licensing headers.\n\nIt may also make sense to be under build/soong/tests and added to build/soong/tests/run_integration_tests.sh in order to run as part of integration testing.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
       "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

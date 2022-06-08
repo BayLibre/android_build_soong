@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "925a1357_cacabbfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-08T17:30:36Z",
+      "side": 1,
+      "message": "One option is to rather than using the `SingletonContext`, create a context with only the pieces necessary for this GenerateBuildActions, which should reduce what is necessary to mock quite a bit.\n\ngo/go-style/decisions#interfaces has some advice about designing and testing interfaces that may be useful to consider as we move forward",
+      "parentUuid": "9e52761e_54f0aa34",
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8003cb91_3921b21d",
