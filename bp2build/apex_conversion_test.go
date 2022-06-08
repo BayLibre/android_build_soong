@@ -40,6 +40,7 @@ func registerApexModuleTypes(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("apex_key", apex.ApexKeyFactory)
 	ctx.RegisterModuleType("android_app_certificate", java.AndroidAppCertificateFactory)
 	ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
+	ctx.RegisterModuleType("prebuilt_etc", etc.PrebuiltEtcFactory)
 }
 
 func runOverrideApexTestCase(t *testing.T, tc bp2buildTestCase) {
@@ -91,12 +92,12 @@ cc_library {
 	bazel_module: { bp2build_available: false },
 }
 
-cc_library {
+prebuilt_etc {
 	name: "pretend_prebuilt_1",
 	bazel_module: { bp2build_available: false },
 }
 
-cc_library {
+prebuilt_etc {
 	name: "pretend_prebuilt_2",
 	bazel_module: { bp2build_available: false },
 }
@@ -551,12 +552,12 @@ cc_library {
 	bazel_module: { bp2build_available: false },
 }
 
-cc_library {
+prebuilt_etc {
 	name: "pretend_prebuilt_1",
 	bazel_module: { bp2build_available: false },
 }
 
-cc_library {
+prebuilt_etc {
 	name: "pretend_prebuilt_2",
 	bazel_module: { bp2build_available: false },
 }
