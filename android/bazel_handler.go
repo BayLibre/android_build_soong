@@ -917,15 +917,19 @@ func getCqueryId(key cqueryKey) string {
 func getConfigString(key cqueryKey) string {
 	arch := key.configKey.arch
 	if len(arch) == 0 || arch == "common" {
-		// Use host platform, which is currently hardcoded to be x86_64.
-		arch = "x86_64"
+		if key.configKey.osType.Class == Device {
+			arch = "target"
+		} else {
+			// Use host platform, which is currently hardcoded to be x86_64.
+			arch = "x86_64"
+		}
 	}
-	os := key.configKey.osType.Name
-	if len(os) == 0 || os == "common_os" || os == "linux_glibc" {
+	osName := key.configKey.osType.Name
+	if len(osName) == 0 || osName == "common_os" || osName == "linux_glibc" {
 		// Use host OS, which is currently hardcoded to be linux.
-		os = "linux"
+		osName = "linux"
 	}
-	return arch + "|" + os
+	return arch + "|" + osName
 }
 
 func GetConfigKey(ctx BaseModuleContext) configKey {
