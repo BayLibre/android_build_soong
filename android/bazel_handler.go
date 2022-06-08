@@ -949,8 +949,12 @@ func getCqueryId(key cqueryKey) string {
 func getConfigString(key cqueryKey) string {
 	arch := key.configKey.arch
 	if len(arch) == 0 || arch == "common" {
-		// Use host platform, which is currently hardcoded to be x86_64.
-		arch = "x86_64"
+		if key.configKey.osType.Class == Device {
+			arch = "target"
+		} else {
+			// Use host platform, which is currently hardcoded to be x86_64.
+			arch = "x86_64"
+		}
 	}
 	osName := key.configKey.osType.Name
 	if len(osName) == 0 || osName == "common_os" || osName == "linux_glibc" {
