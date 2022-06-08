@@ -50,7 +50,6 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 		ctx.BottomUp("test_per_src", TestPerSrcMutator).Parallel()
 		ctx.BottomUp("version", versionMutator).Parallel()
 		ctx.BottomUp("begin", BeginMutator).Parallel()
-		ctx.BottomUp("sysprop_cc", SyspropMutator).Parallel()
 	})
 
 	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
@@ -2286,18 +2285,8 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		), stubImplementation, c.BaseModuleName())
 	}
 
-	// sysprop_library has to support both C++ and Java. So sysprop_library internally creates one
-	// C++ implementation library and one Java implementation library. When a module links against
-	// sysprop_library, the C++ implementation library has to be linked. syspropImplLibraries is a
-	// map from sysprop_library to implementation library; it will be used in whole_static_libs,
-	// static_libs, and shared_libs.
-	syspropImplLibraries := syspropImplLibraries(actx.Config())
-
 	for _, lib := range deps.WholeStaticLibs {
 		depTag := libraryDependencyTag{Kind: staticLibraryDependency, wholeStatic: true, reexportFlags: true}
-		if impl, ok := syspropImplLibraries[lib]; ok {
-			lib = impl
-		}
 
 		lib = RewriteSnapshotLib(lib, GetSnapshot(c, &snapshotInfo, actx).StaticLibs)
 
@@ -2313,10 +2302,6 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		}
 		if inList(lib, deps.ExcludeLibsForApex) {
 			depTag.excludeInApex = true
-		}
-
-		if impl, ok := syspropImplLibraries[lib]; ok {
-			lib = impl
 		}
 
 		lib = RewriteSnapshotLib(lib, GetSnapshot(c, &snapshotInfo, actx).StaticLibs)
@@ -2346,10 +2331,6 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		}
 		if inList(lib, deps.ExcludeLibsForApex) {
 			depTag.excludeInApex = true
-		}
-
-		if impl, ok := syspropImplLibraries[lib]; ok {
-			lib = impl
 		}
 
 		name, version := StubsLibNameAndVersion(lib)
