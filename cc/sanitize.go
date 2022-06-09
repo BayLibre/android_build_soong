@@ -1168,6 +1168,11 @@ func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, m an
 				}
 			}
 
+			// locate the asan libraries under /data/asan
+			if !c.StaticallyLinked() && !c.Header() && mctx.Device() && s.sanitizer == Asan && enabled {
+				c.SetInSanitizerDir()
+			}
+
 			if c.StaticallyLinked() && c.ExportedToMake() {
 				if s.sanitizer == Hwasan {
 					hwasanStaticLibs(mctx.Config()).add(c, c.Module().Name())
