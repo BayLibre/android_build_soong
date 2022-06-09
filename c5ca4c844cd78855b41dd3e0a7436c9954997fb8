@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf551271_3335c5ba",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-09T18:33:37Z",
+      "side": 1,
+      "message": "Line too long",
+      "revId": "c5ca4c844cd78855b41dd3e0a7436c9954997fb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb42563_b7e478d2",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-09T18:33:37Z",
+      "side": 1,
+      "message": "If I understand correctly, this is trying to enumerate every path used by a dependency\u0027s install location.  I think that\u0027s going to be too hard to maintain, nobody is going to know to update this list until you get bugs saying the wrong prefixes are present in the final notices.  Device modules already track their on-device path through `android.InstallPathToOnDevicePath`, I think you need to propagate that to the license metadata.",
+      "revId": "c5ca4c844cd78855b41dd3e0a7436c9954997fb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3defd02b_fdb20db0",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-09T18:33:37Z",
+      "side": 1,
+      "message": "Line too long",
+      "revId": "c5ca4c844cd78855b41dd3e0a7436c9954997fb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4664e8d0_ed6c2d83",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-09T18:33:37Z",
+      "side": 1,
+      "message": "Line too long",
+      "revId": "c5ca4c844cd78855b41dd3e0a7436c9954997fb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
