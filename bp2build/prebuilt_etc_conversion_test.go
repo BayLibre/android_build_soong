@@ -128,6 +128,32 @@ prebuilt_etc {
 				"dir": `"etc/tz"`,
 			})}})
 }
+func TestPrebuiltEtcProductVariables(t *testing.T) {
+	runPrebuiltEtcTestCase(t, bp2buildTestCase{
+		description: "prebuilt etc - product variables",
+		filesystem:  map[string]string{},
+		blueprint: `
+prebuilt_etc {
+    name: "apex_tz_version",
+    src: "version/tz_version",
+    filename: "tz_version",
+    product_variables: {
+      native_coverage: {
+        src: "src1",
+      },
+    },
+}
+`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("prebuilt_file", "apex_tz_version", attrNameToString{
+				"filename": `"tz_version"`,
+				"src": `select({
+        "//build/bazel/product_variables:native_coverage": "src1",
+        "//conditions:default": "version/tz_version",
+    })`,
+				"dir": `"etc"`,
+			})}})
+}
 
 func runPrebuiltUsrShareTestCase(t *testing.T, tc bp2buildTestCase) {
 	t.Helper()
