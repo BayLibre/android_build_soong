@@ -153,12 +153,12 @@ func (t SanitizerType) name() string {
 
 func (t SanitizerType) registerMutators(ctx android.RegisterMutatorsContext) {
 	switch t {
-	case Hwasan, Asan, tsan, Fuzzer, scs:
+	case cfi, Hwasan, Asan, tsan, Fuzzer, scs:
 		split := createSplitMutator(t, &sanitizerSplitMutator{t})
 		split.register(ctx)
-	case cfi:
-		ctx.TopDown(t.variationName()+"_deps", sanitizerDepsMutator(t))
-		ctx.BottomUp(t.variationName(), sanitizerMutator(t))
+	//case cfi:
+	//	ctx.TopDown(t.variationName()+"_deps", sanitizerDepsMutator(t))
+	//	ctx.BottomUp(t.variationName(), sanitizerMutator(t))
 	case Memtag_heap, intOverflow:
 		// do nothing
 	default:
@@ -909,7 +909,7 @@ func (m *Module) SanitizableDepTagChecker() SantizableDependencyTagChecker {
 // Determines if the current module is a static library going to be captured
 // as vendor snapshot. Such modules must create both cfi and non-cfi variants,
 // except for ones which explicitly disable cfi.
-func needsCfiForVendorSnapshot(mctx android.TopDownMutatorContext) bool {
+func needsCfiForVendorSnapshot(mctx android.BaseModuleContext) bool {
 	if snapshot.IsVendorProprietaryModule(mctx) {
 		return false
 	}
@@ -1080,7 +1080,10 @@ type sanitizerSplitMutator struct {
 }
 
 func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext, m android.Module) []string {
-	if c, ok := m.(PlatformSanitizeable); ok {
+	if c, ok := m.(PlatformSanitizeable); ok && c.SanitizePropDefined() {
+		if s.sanitizer == cfi && needsCfiForVendorSnapshot(ctx) {
+			return []string{"", s.sanitizer.variationName()}
+		}
 		if c.Binary() {
 			if c.IsSanitizerEnabled(s.sanitizer) {
 				// If a sanitizer is enabled for a binary, we do not build the version
@@ -1126,13 +1129,24 @@ func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext, m android.M
 		}
 	}
 
+	if c, ok := m.(*Module); ok {
+		//TODO: When Rust modules have vendor support, enable this path for PlatformSanitizeable
+
+		// Check if it's a snapshot module supporting sanitizer
+		if ss, ok := c.linker.(snapshotSanitizer); ok && ss.isSanitizerEnabled(s.sanitizer) {
+			return []string{"", s.sanitizer.variationName()}
+		} else {
+			return nil
+		}
+	}
+
 	return nil
 }
 
 func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, m android.Module, variationName string, variations []string) {
 	enabled := variationName == s.sanitizer.variationName()
 
-	if c, ok := m.(PlatformSanitizeable); ok {
+	if c, ok := m.(PlatformSanitizeable); ok && c.SanitizePropDefined() {
 		if len(variations) > 1 {
 			if s.sanitizer != cfi && s.sanitizer != scs && s.sanitizer != Hwasan {
 				sanitizerEnabled := c.IsSanitizerEnabled(s.sanitizer)
@@ -1157,6 +1171,8 @@ func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, m an
 			if c.StaticallyLinked() && c.ExportedToMake() {
 				if s.sanitizer == Hwasan {
 					hwasanStaticLibs(mctx.Config()).add(c, c.Module().Name())
+				} else if s.sanitizer == cfi {
+					cfiStaticLibs(mctx.Config()).add(c, c.Module().Name())
 				}
 			}
 		} else if c.IsSanitizerEnabled(s.sanitizer) {
@@ -1167,11 +1183,29 @@ func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, m an
 		if enabled {
 			sanitizeable.AddSanitizerDependencies(mctx, s.sanitizer.name())
 		}
+	} else if c, ok := mctx.Module().(*Module); ok {
+		if ss, ok := c.linker.(snapshotSanitizer); ok && ss.isSanitizerEnabled(s.sanitizer) {
+			c.linker.(snapshotSanitizer).setSanitizerVariation(s.sanitizer, enabled)
+
+			// Export the static lib name to make
+			if c.static() && c.ExportedToMake() {
+				if s.sanitizer == cfi {
+					// use BaseModuleName which is the name for Make.
+					cfiStaticLibs(mctx.Config()).add(c, c.BaseModuleName())
+				}
+			}
+		}
 	}
 }
 
 func (s *sanitizerSplitMutator) transition(ctx android.BaseModuleContext, m blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
 	if d, ok := dep.(PlatformSanitizeable); ok {
+		if dm, ok := dep.(*Module); ok {
+			if ss, ok := dm.linker.(snapshotSanitizer); ok && ss.isSanitizerEnabled(s.sanitizer) {
+				return sourceVariation
+			}
+		}
+
 		if !d.SanitizePropDefined() || d.SanitizeNever() || d.IsSanitizerExplicitlyDisabled(s.sanitizer) {
 			// If a module opts out of a sanitizer, use its non-sanitized variation
 			return ""
@@ -1265,6 +1299,7 @@ func sanitizerDepsMutator(t SanitizerType) func(android.TopDownMutatorContext) {
 	return func(mctx android.TopDownMutatorContext) {
 		if c, ok := mctx.Module().(PlatformSanitizeable); ok {
 			enabled := c.IsSanitizerEnabled(t)
+
 			if t == cfi && needsCfiForVendorSnapshot(mctx) {
 				// We shouldn't change the result of isSanitizerEnabled(cfi) to correctly
 				// determine defaultVariation in sanitizerMutator below.
@@ -1281,6 +1316,7 @@ func sanitizerDepsMutator(t SanitizerType) func(android.TopDownMutatorContext) {
 					if d, ok := child.(PlatformSanitizeable); ok && d.SanitizePropDefined() &&
 						!d.SanitizeNever() &&
 						!d.IsSanitizerExplicitlyDisabled(t) {
+
 						if t == cfi || t == Hwasan || t == scs || t == Asan {
 							if d.StaticallyLinked() && d.SanitizerSupported(t) {
 								// Rust does not support some of these sanitizers, so we need to check if it's
@@ -1679,7 +1715,6 @@ var _ PlatformSanitizeable = (*Module)(nil)
 func sanitizerMutator(t SanitizerType) func(android.BottomUpMutatorContext) {
 	return func(mctx android.BottomUpMutatorContext) {
 		if c, ok := mctx.Module().(PlatformSanitizeable); ok && c.SanitizePropDefined() {
-
 			// Make sure we're not setting CFI to any value if it's not supported.
 			cfiSupported := mctx.Module().(PlatformSanitizeable).SanitizerSupported(cfi)
 
