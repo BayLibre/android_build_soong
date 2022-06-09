@@ -691,6 +691,21 @@ func (module *PrebuiltEtc) ConvertWithBp2build(ctx android.TopDownMutatorContext
 				src.SetSelectValue(axis, config, label)
 			}
 		}
+
+		for propName, productConfigProps := range android.ProductVariableProperties(ctx) {
+			for configProp, propVal := range productConfigProps {
+				props, ok := propVal.(*string)
+
+				if !ok {
+					print(propName, "\n")
+					continue
+				}
+				if propName == "Src" {
+					label := android.BazelLabelForModuleSrcSingle(ctx, *props)
+					src.SetSelectValue(configProp.ConfigurationAxis(), configProp.SelectKey(), label)
+				}
+			}
+		}
 	}
 
 	var filename string
