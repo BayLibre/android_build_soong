@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b2dd3b_d4b63d86",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-09T19:04:42Z",
+      "side": 1,
+      "message": "Yup, yours seems much more simple. I rebased this CL off of yours, and now it is just the changes necessary to fix AIDL things.",
+      "parentUuid": "8bcd08df_448ec30d",
+      "revId": "841942556a65767ab2bea85d29d6c11d52e0cf48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "505b6fe3_1d0b2b59",
@@ -53,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a6c2a4_fdc2006b",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-09T19:04:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70819ad7_de1788f0",
+      "revId": "841942556a65767ab2bea85d29d6c11d52e0cf48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0902e287_02882789",
@@ -66,6 +102,24 @@
       "writtenOn": "2022-06-03T18:03:19Z",
       "side": 1,
       "message": "- This doesn\u0027t take into account path components, as in, given foo/bar/baz and foo/car/baz, it will return ar/baz, even when the folder \"ar\" might not exist.\n- I\u0027m finding it difficult to understand why we need this an not a filepath.Rel() or something. If this function is really necessary, could we at least add some examples in comments of how paths are transformed with it and why?",
+      "revId": "841942556a65767ab2bea85d29d6c11d52e0cf48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf78793b_42423737",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-09T19:04:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0902e287_02882789",
       "revId": "841942556a65767ab2bea85d29d6c11d52e0cf48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -87,6 +141,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c3d88e1_24b81c9d",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-09T19:04:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "abf177d6_525d4955",
+      "revId": "841942556a65767ab2bea85d29d6c11d52e0cf48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f6b494e_1662036f",
@@ -104,6 +176,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20d9f68_53fcc238",
+        "filename": "android/filegroup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-09T19:04:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f6b494e_1662036f",
+      "revId": "841942556a65767ab2bea85d29d6c11d52e0cf48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68422fc0_e1b5e6c9",
@@ -117,6 +207,24 @@
       "writtenOn": "2022-06-03T18:03:19Z",
       "side": 1,
       "message": "I was under the impression you\u0027d call `PathForBazelOutRelative(ctx, ctx.ModuleDir(), p)`, instead of being responsible for trimming it yourself. What do you think?",
+      "revId": "841942556a65767ab2bea85d29d6c11d52e0cf48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "052342fb_dc82d104",
+        "filename": "android/filegroup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-09T19:04:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "68422fc0_e1b5e6c9",
       "revId": "841942556a65767ab2bea85d29d6c11d52e0cf48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
