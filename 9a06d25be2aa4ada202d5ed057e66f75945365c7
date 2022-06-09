@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db1f1785_74b27b28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-06-09T20:31:04Z",
+      "side": 1,
+      "message": "I\u0027m also adding PathForBazelOutRelative() to genrule\u0027s mixed build handler in aosp/2115757.",
+      "revId": "9a06d25be2aa4ada202d5ed057e66f75945365c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
