@@ -22,6 +22,30 @@
       },
       "revId": "b2fc4700de464ad6d135db7d2f64d0e4e66f8471",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "661b7e22_80fbce42",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-09T12:14:24Z",
+      "side": 1,
+      "message": "`nil` maintains the functionality of boolPtr:\n\n```\nfunc boolPtr(v bool) *bool {\n\tif v {\n\t\treturn \u0026v\n\t} else {\n\t\treturn nil\n\t}\n}\n```\n\nhappy to review a change to make these `proptools.BoolPtr(false)`, but that is a change from the previous functionality of `boolPtr(false)`\n\ngo playground with `boolPtr` implementation: https://go.dev/play/p/vIRZU7YlwEc",
+      "parentUuid": "ca4d55bf_3ce0563c",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 18
+      },
+      "revId": "b2fc4700de464ad6d135db7d2f64d0e4e66f8471",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
