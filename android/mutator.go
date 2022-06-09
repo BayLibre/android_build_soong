@@ -26,7 +26,8 @@ import (
 //   run Pre-deps mutators
 //   run depsMutator
 //   run PostDeps mutators
-//   run FinalDeps mutators (CreateVariations disallowed in this phase)
+//   run FinalDeps mutators (CreateVariations disallowed past this phase)
+//   run FrozenDeps mutators (Add*Dependencies and other functions that modify the module graph are disallowed)
 //   continue on to GenerateAndroidBuildActions
 
 // RegisterMutatorsForBazelConversion is a alternate registration pipeline for bp2build. Exported for testing.
@@ -56,11 +57,11 @@ func RegisterMutatorsForBazelConversion(ctx *Context, preArchMutators []Register
 // collateGloballyRegisteredMutators constructs the list of mutators that have been registered
 // with the InitRegistrationContext and will be used at runtime.
 func collateGloballyRegisteredMutators() sortableComponents {
-	return collateRegisteredMutators(preArch, preDeps, postDeps, finalDeps)
+	return collateRegisteredMutators(preArch, preDeps, postDeps, finalDeps, frozenDeps)
 }
 
 // collateRegisteredMutators constructs a single list of mutators from the separate lists.
-func collateRegisteredMutators(preArch, preDeps, postDeps, finalDeps []RegisterMutatorFunc) sortableComponents {
+func collateRegisteredMutators(preArch, preDeps, postDeps, finalDeps, frozenDeps []RegisterMutatorFunc) sortableComponents {
 	mctx := &registerMutatorsContext{}
 
 	register := func(funcs []RegisterMutatorFunc) {
@@ -77,16 +78,22 @@ func collateRegisteredMutators(preArch, preDeps, postDeps, finalDeps []RegisterM
 
 	register(postDeps)
 
-	mctx.finalPhase = true
+	// Disallow CreateVariations from here on
+	mctx.tooLateForCreateVariations = true
+
 	register(finalDeps)
+
+	// TODO: Dissalow __ create deps from here on
+
+	register(frozenDeps)
 
 	return mctx.mutators
 }
 
 type registerMutatorsContext struct {
-	mutators            sortableComponents
-	finalPhase          bool
-	bazelConversionMode bool
+	mutators                   sortableComponents
+	tooLateForCreateVariations bool
+	bazelConversionMode        bool
 }
 
 type RegisterMutatorsContext interface {
@@ -192,6 +199,10 @@ var postDeps = []RegisterMutatorFunc{
 
 var finalDeps = []RegisterMutatorFunc{}
 
+var frozenDeps = []RegisterMutatorFunc{
+	registerFilterModulesMutator,
+}
+
 func PreArchMutators(f RegisterMutatorFunc) {
 	preArch = append(preArch, f)
 }
@@ -206,6 +217,10 @@ func PostDepsMutators(f RegisterMutatorFunc) {
 
 func FinalDepsMutators(f RegisterMutatorFunc) {
 	finalDeps = append(finalDeps, f)
+}
+
+func FrozenDepsMutators(f RegisterMutatorFunc) {
+	frozenDeps = append(frozenDeps, f)
 }
 
 var bp2buildPreArchMutators = []RegisterMutatorFunc{}
@@ -386,28 +401,28 @@ type BottomUpMutatorContext interface {
 type bottomUpMutatorContext struct {
 	bp blueprint.BottomUpMutatorContext
 	baseModuleContext
-	finalPhase bool
+	tooLateForCreateVariations bool
 }
 
 func bottomUpMutatorContextFactory(ctx blueprint.BottomUpMutatorContext, a Module,
-	finalPhase, bazelConversionMode bool) BottomUpMutatorContext {
+	tooLateForCreateVariations, bazelConversionMode bool) BottomUpMutatorContext {
 
 	moduleContext := a.base().baseModuleContextFactory(ctx)
 	moduleContext.bazelConversionMode = bazelConversionMode
 
 	return &bottomUpMutatorContext{
-		bp:                ctx,
-		baseModuleContext: a.base().baseModuleContextFactory(ctx),
-		finalPhase:        finalPhase,
+		bp:                         ctx,
+		baseModuleContext:          a.base().baseModuleContextFactory(ctx),
+		tooLateForCreateVariations: tooLateForCreateVariations,
 	}
 }
 
 func (x *registerMutatorsContext) BottomUp(name string, m BottomUpMutator) MutatorHandle {
-	finalPhase := x.finalPhase
+	tooLateForCreateVariations := x.tooLateForCreateVariations
 	bazelConversionMode := x.bazelConversionMode
 	f := func(ctx blueprint.BottomUpMutatorContext) {
 		if a, ok := ctx.Module().(Module); ok {
-			m(bottomUpMutatorContextFactory(ctx, a, finalPhase, bazelConversionMode))
+			m(bottomUpMutatorContextFactory(ctx, a, tooLateForCreateVariations, bazelConversionMode))
 		}
 	}
 	mutator := &mutator{name: x.mutatorName(name), bottomUpMutator: f}
@@ -578,8 +593,8 @@ func (b *bottomUpMutatorContext) AddReverseDependency(module blueprint.Module, t
 }
 
 func (b *bottomUpMutatorContext) CreateVariations(variations ...string) []Module {
-	if b.finalPhase {
-		panic("CreateVariations not allowed in FinalDepsMutators")
+	if b.tooLateForCreateVariations {
+		panic("CreateLocalVariations not allowed in FinalDepsMutators or FrozenDepsMutators")
 	}
 
 	modules := b.bp.CreateVariations(variations...)
@@ -596,8 +611,8 @@ func (b *bottomUpMutatorContext) CreateVariations(variations ...string) []Module
 }
 
 func (b *bottomUpMutatorContext) CreateLocalVariations(variations ...string) []Module {
-	if b.finalPhase {
-		panic("CreateLocalVariations not allowed in FinalDepsMutators")
+	if b.tooLateForCreateVariations {
+		panic("CreateLocalVariations not allowed in FinalDepsMutators or FrozenDepsMutators")
 	}
 
 	modules := b.bp.CreateLocalVariations(variations...)

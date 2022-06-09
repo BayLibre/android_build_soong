@@ -242,7 +242,7 @@ func TestFinalDepsPhase(t *testing.T) {
 	AssertDeepEquals(t, "final", finalWant, finalGot)
 }
 
-func TestNoCreateVariationsInFinalDeps(t *testing.T) {
+func testNoCreateVariations(t *testing.T, mutatorFunc func(ctx RegistrationContext, f RegisterMutatorFunc)) {
 	checkErr := func() {
 		if err := recover(); err == nil || !strings.Contains(fmt.Sprintf("%s", err), "not allowed in FinalDepsMutators") {
 			panic("Expected FinalDepsMutators consistency check to fail")
@@ -251,7 +251,8 @@ func TestNoCreateVariationsInFinalDeps(t *testing.T) {
 
 	GroupFixturePreparers(
 		FixtureRegisterWithContext(func(ctx RegistrationContext) {
-			ctx.FinalDepsMutators(func(ctx RegisterMutatorsContext) {
+
+			mutatorFunc(ctx, func(ctx RegisterMutatorsContext) {
 				ctx.BottomUp("vars", func(ctx BottomUpMutatorContext) {
 					defer checkErr()
 					ctx.CreateVariations("a", "b")
@@ -266,4 +267,16 @@ func TestNoCreateVariationsInFinalDeps(t *testing.T) {
 		}),
 		FixtureWithRootAndroidBp(`test {name: "foo"}`),
 	).RunTest(t)
+}
+
+func TestNoCreateVariationsInFinalDeps(t *testing.T) {
+	testNoCreateVariations(t, func(ctx RegistrationContext, f RegisterMutatorFunc) {
+		ctx.FinalDepsMutators(f)
+	})
+}
+
+func TestNoCreateVariationsInFrozenDeps(t *testing.T) {
+	testNoCreateVariations(t, func(ctx RegistrationContext, f RegisterMutatorFunc) {
+		ctx.FrozenDepsMutators(f)
+	})
 }

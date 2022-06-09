@@ -180,7 +180,7 @@ func NewTestArchContext(config Config) *TestContext {
 
 type TestContext struct {
 	*Context
-	preArch, preDeps, postDeps, finalDeps []RegisterMutatorFunc
+	preArch, preDeps, postDeps, finalDeps, frozenDeps []RegisterMutatorFunc
 	bp2buildPreArch, bp2buildMutators     []RegisterMutatorFunc
 	NameResolver                          *NameResolver
 
@@ -211,6 +211,10 @@ func (ctx *TestContext) PostDepsMutators(f RegisterMutatorFunc) {
 
 func (ctx *TestContext) FinalDepsMutators(f RegisterMutatorFunc) {
 	ctx.finalDeps = append(ctx.finalDeps, f)
+}
+
+func (ctx *TestContext) FrozenDepsMutators(f RegisterMutatorFunc) {
+	ctx.frozenDeps = append(ctx.frozenDeps, f)
 }
 
 func (ctx *TestContext) RegisterBp2BuildConfig(config bp2BuildConversionAllowlist) {
@@ -440,7 +444,7 @@ func (ctx *TestContext) Register() {
 	globalOrder.preSingletonOrder.enforceOrdering(ctx.preSingletons)
 	ctx.preSingletons.registerAll(ctx.Context)
 
-	mutators := collateRegisteredMutators(ctx.preArch, ctx.preDeps, ctx.postDeps, ctx.finalDeps)
+	mutators := collateRegisteredMutators(ctx.preArch, ctx.preDeps, ctx.postDeps, ctx.finalDeps, ctx.frozenDeps)
 	// Ensure that the mutators used in the test are in the same order as they are used at runtime.
 	globalOrder.mutatorOrder.enforceOrdering(mutators)
 	mutators.registerAll(ctx.Context)

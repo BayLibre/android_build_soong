@@ -704,6 +704,7 @@ func newTestModule() Module {
 
 type blueprintTestModule struct {
 	blueprint.SimpleName
+	blueprint.Necessary
 	properties struct {
 		Deps []string
 	}

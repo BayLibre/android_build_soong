@@ -1376,6 +1376,8 @@ func productVariableConfigEnableLabels(ctx *topDownMutatorContext) []bazel.Label
 //         // ...
 //     }
 type ModuleBase struct {
+    blueprint.Necessary
+
 	// Putting the curiously recurring thing pointing to the thing that contains
 	// the thing pattern to good use.
 	// TODO: remove this

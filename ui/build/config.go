@@ -82,6 +82,9 @@ type configImpl struct {
 	skipNinja       bool
 	skipSoongTests  bool
 
+	// Modules to be filtered *in*. Everything not reachable from these will not have actions generated
+	moduleFilter map[string]bool
+
 	// From the product config
 	katiArgs        []string
 	ninjaArgs       []string
@@ -742,6 +745,12 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.skipSoongTests = true
 		} else if arg == "--mk-metrics" {
 			c.reportMkMetrics = true
+		} else if arg == "--filter-modules" {
+			if (i+1 >= len(args)) || (len(args[i+1]) > 0 && (args[i+1][0] == '-')) {
+				ctx.Fatalln("--filter-modules expects module name")
+			}
+			i++
+			c.moduleFilter[args[i]] = true
 		} else if len(arg) > 0 && arg[0] == '-' {
 			parseArgNum := func(def int) int {
 				if len(arg) > 2 {
@@ -1448,3 +1457,12 @@ func GetMetricsUploader(topDir string, env *Environment) string {
 
 	return ""
 }
+
+// Return if this module name should be filtered in. If the module filter list is
+// empty, then this will return true for all modules. If filters have been supplied
+// then this function will check if the module is in the list. Note that is not currently
+// possible to filter in a specific variant of a module.
+func (c *configImpl) FilterModule(moduleName string) bool {
+    return len(c.moduleFilter) == 0 || c.moduleFilter[moduleName]
+}
+

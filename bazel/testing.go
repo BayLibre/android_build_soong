@@ -40,6 +40,13 @@ func (mi TestModuleInfo) equals(other TestModuleInfo) bool {
 	return mi.ModuleName == other.ModuleName && mi.Typ == other.Typ && mi.Dir == other.Dir
 }
 
+func (mi TestModuleInfo) SetNecessary(_ bool) {
+}
+
+func (mi TestModuleInfo) IsNecessary() bool {
+    return false
+}
+
 // ensure testModuleInfo implements blueprint.Module
 var _ blueprint.Module = TestModuleInfo{}
 
