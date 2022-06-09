@@ -234,10 +234,11 @@ var (
 )
 
 // ProductVariableConfigurationAxis returns an axis for the given product variable
-func ProductVariableConfigurationAxis(variable string) ConfigurationAxis {
+func ProductVariableConfigurationAxis(variable string, subAxis ConfigurationAxis) ConfigurationAxis {
 	return ConfigurationAxis{
 		configurationType: productVariables,
 		subType:           variable,
+		subAxisType:       subAxis.configurationType,
 	}
 }
 
@@ -248,6 +249,8 @@ type ConfigurationAxis struct {
 	// some configuration types (e.g. productVariables) have multiple independent axes, subType helps
 	// distinguish between them without needing to list all 17 product variables.
 	subType string
+	// used to keep track of which product variables are arch variant
+	subAxisType configurationType
 }
 
 func (ca *ConfigurationAxis) less(other ConfigurationAxis) bool {
