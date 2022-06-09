@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf27d41_eaaeb4e9",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-06-09T21:37:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf551271_3335c5ba",
+      "revId": "c5ca4c844cd78855b41dd3e0a7436c9954997fb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfb42563_b7e478d2",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-09T18:33:37Z",
       "side": 1,
       "message": "If I understand correctly, this is trying to enumerate every path used by a dependency\u0027s install location.  I think that\u0027s going to be too hard to maintain, nobody is going to know to update this list until you get bugs saying the wrong prefixes are present in the final notices.  Device modules already track their on-device path through `android.InstallPathToOnDevicePath`, I think you need to propagate that to the license metadata.",
+      "revId": "c5ca4c844cd78855b41dd3e0a7436c9954997fb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81a1b4c_18442e1b",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-06-09T21:37:30Z",
+      "side": 1,
+      "message": "Not everything is in Soong so that\u0027s not always available.\nNot everything goes to a device.\n\nIn most cases, we could get away with stripping $(PRODUCT_OUT)/ and $(HOST_OUT)/, but those don\u0027t seem to be available in Soong. The principal exceptions are device images where the correct thing is to strip the entire path of the .img file.\n\nI had to make it an array because apexes install files to both $(PRODUCT_OUT)/apex/ and to $(PRODUCT_OUT)/system/ using different methods to get the paths.\n\nIf the path to $(PRODUCT_OUT) were easily available, I would use that and leave the /apex/ and /system/ prefixes in the notice file.",
+      "parentUuid": "bfb42563_b7e478d2",
       "revId": "c5ca4c844cd78855b41dd3e0a7436c9954997fb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17c15f0c_aadfe2bf",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-06-09T21:37:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3defd02b_fdb20db0",
+      "revId": "c5ca4c844cd78855b41dd3e0a7436c9954997fb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4664e8d0_ed6c2d83",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-06-09T18:33:37Z",
       "side": 1,
       "message": "Line too long",
+      "revId": "c5ca4c844cd78855b41dd3e0a7436c9954997fb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06e9c564_0e7185d7",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-06-09T21:37:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4664e8d0_ed6c2d83",
       "revId": "c5ca4c844cd78855b41dd3e0a7436c9954997fb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
