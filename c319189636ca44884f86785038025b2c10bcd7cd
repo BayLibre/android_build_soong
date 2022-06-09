@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ce119b_a7a22ad7",
+        "filename": "android/license_metadata.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-09T01:04:52Z",
+      "side": 1,
+      "message": "FYI you can use:\n```\n`-p \"`+proptools.NinjaAndShellEscape(*p)+`\"`\n```",
+      "revId": "c319189636ca44884f86785038025b2c10bcd7cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
