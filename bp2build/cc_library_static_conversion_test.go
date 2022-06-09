@@ -1215,6 +1215,35 @@ cc_library_static {
 	})
 }
 
+func testProductVariableArchSrcs(t *testing.T) {
+	runCcLibraryStaticTestCase(t, Bp2buildTestCase{
+		Description: "",
+		Filesystem:  map[string]string{},
+		Blueprint: soongCcLibraryStaticPreamble + `
+cc_library_static {
+		name: "foo"
+    arch: {
+        arm: {
+            src: "fooSrc",
+            product_variables: {
+                native_coverage: {
+                    src: "nativeCovSrc",
+                },
+            },
+        },
+   },
+}`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_library_static", "bar", AttrNameToString{
+				"srcs": `select({
+				“//build/bazel/product_variables:native_coverage-arm”:  "seccomp_policy/code_coverage.arm64.policy",
+				"//build/bazel/platforms/arch:arm”: "empty_policy/code_coverage.arm64.policy",
+			})`,
+			}),
+		},
+	})
+}
+
 func TestCcLibraryStaticProductVariableStringReplacement(t *testing.T) {
 	runCcLibraryStaticTestCase(t, Bp2buildTestCase{
 		Description: "cc_library_static product variable string replacement",
