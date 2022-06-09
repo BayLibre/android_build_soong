@@ -937,35 +937,10 @@ func needsCfiForVendorSnapshot(mctx android.BaseModuleContext) bool {
 		!c.IsSanitizerExplicitlyDisabled(cfi)
 }
 
-// This function is called on every module (in unspecified order) to ask them
-// which variations they should be built in. It's possible that they will be
-// built with additional variations if a transition requests that.
-//
-// This is conceived as a way for conceptually "top-level" modules to determine
-// their own variations.
-// TODO: ctx is kinda ugly here because it allows asking for a lot of things
-// the split function has no business of knowing
-type splitFunc func(ctx android.BaseModuleContext, m android.Module) []string
-
-// TODO: mctx is way too much rope. Fixes:
-// - At least for ASAN, it can be replaced by having another function that is
-//   provided by the dependency which can also modify the desired variation.
-//   That would also be conceptually close to the Bazel concept of "incoming
-//    configuration transitions".
-// - Sanitizeable.AddSanitizerDependencies() only needs BaseMutatorContext,
-//   which is much more palatable.
-// - apexBundle seems to require looking at direct dependencies. It appears that
-//   that is fixable because we don't create more than one variation of it.
-//
-// TODO: it would be nicer if we didn't have the variations slice here, but
-// it requires additional thinking to see whether we can figure out which
-// variation to install then.
-type mutationFunc func(mctx android.BottomUpMutatorContext, m android.Module, variation string, variations []string)
-
 type SplitMutator interface {
-	mutate(mctx android.BottomUpMutatorContext, m android.Module, variation string, variations []string)
-	split(ctx android.BaseModuleContext, m android.Module) []string
-	transition(ctx android.BaseModuleContext, source blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string
+	mutate(mctx android.BottomUpMutatorContext, variation string, variations []string)
+	split(ctx android.BaseModuleContext) []string
+	transition(ctx android.BaseModuleContext, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string
 }
 
 // TODO: This functionality is probably too generic for this file.
@@ -1025,13 +1000,13 @@ func (s *splitMutatorImpl) register(ctx android.RegisterMutatorsContext) {
 }
 
 func (s *splitMutatorImpl) topDownMutator(ctx android.TopDownMutatorContext) {
-	s.addSplits(ctx.Module(), s.mutator.split(ctx, ctx.Module())...)
+	s.addSplits(ctx.Module(), s.mutator.split(ctx)...)
 	splits := s.getSplits(ctx.Module())
 	// TODO: maybe modules that did not get split also have an opinion about the
 	// variant they want?
 	for _, srcVariation := range splits {
 		ctx.VisitDirectDeps(func(dep android.Module) {
-			desiredVariations := s.mutator.transition(ctx, ctx.Module(), srcVariation, dep, ctx.OtherModuleDependencyTag(dep))
+			desiredVariations := s.mutator.transition(ctx, srcVariation, dep, ctx.OtherModuleDependencyTag(dep))
 			s.addSplits(dep, desiredVariations)
 		})
 	}
@@ -1039,7 +1014,7 @@ func (s *splitMutatorImpl) topDownMutator(ctx android.TopDownMutatorContext) {
 
 func (s *splitMutatorImpl) blueprintTransition(ctx android.BaseMutatorContext) blueprint.Transition {
 	return func(source blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
-		return s.mutator.transition(ctx, source, sourceVariation, dep, depTag)
+		return s.mutator.transition(ctx, sourceVariation, dep, depTag)
 	}
 }
 
@@ -1072,15 +1047,15 @@ func (s *splitMutatorImpl) mutateMutator(ctx android.BottomUpMutatorContext) {
 		currentVariation = s.variation[ctx.Module()]
 	}
 
-	s.mutator.mutate(ctx, ctx.Module(), currentVariation, variations)
+	s.mutator.mutate(ctx, currentVariation, variations)
 }
 
 type sanitizerSplitMutator struct {
 	sanitizer SanitizerType
 }
 
-func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext, m android.Module) []string {
-	if c, ok := m.(PlatformSanitizeable); ok && c.SanitizePropDefined() {
+func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext) []string {
+	if c, ok := ctx.Module().(PlatformSanitizeable); ok && c.SanitizePropDefined() {
 		if s.sanitizer == cfi && needsCfiForVendorSnapshot(ctx) {
 			return []string{"", s.sanitizer.variationName()}
 		}
@@ -1105,13 +1080,13 @@ func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext, m android.M
 		}
 	}
 
-	if _, ok := m.(JniSanitizeable); ok {
+	if _, ok := ctx.Module().(JniSanitizeable); ok {
 		// TODO: this should call into JniSanitizable.IsSanitizerEnabledForJni but
 		// that is short-circuited for now
 		return nil
 	}
 
-	if sanitizeable, ok := m.(Sanitizeable); ok {
+	if sanitizeable, ok := ctx.Module().(Sanitizeable); ok {
 		enabled := sanitizeable.IsSanitizerEnabled(ctx, s.sanitizer.name())
 		// If an APEX module includes a lib which is enabled for a sanitizer T, then
 		// the APEX module is also enabled for the same sanitizer type. We only
@@ -1129,7 +1104,7 @@ func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext, m android.M
 		}
 	}
 
-	if c, ok := m.(*Module); ok {
+	if c, ok := ctx.Module().(*Module); ok {
 		//TODO: When Rust modules have vendor support, enable this path for PlatformSanitizeable
 
 		// Check if it's a snapshot module supporting sanitizer
@@ -1143,13 +1118,14 @@ func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext, m android.M
 	return nil
 }
 
-func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, m android.Module, variationName string, variations []string) {
+func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, variationName string, variations []string) {
 	enabled := variationName == s.sanitizer.variationName()
 
-	if c, ok := m.(PlatformSanitizeable); ok && c.SanitizePropDefined() {
+	if c, ok := mctx.Module().(PlatformSanitizeable); ok && c.SanitizePropDefined() {
+		sanitizerEnabled := c.IsSanitizerEnabled(s.sanitizer)
+
 		if len(variations) > 1 {
 			if s.sanitizer != cfi && s.sanitizer != scs && s.sanitizer != Hwasan {
-				sanitizerEnabled := c.IsSanitizerEnabled(s.sanitizer)
 				if sanitizerEnabled != enabled {
 					c.SetPreventInstall()
 					c.SetHideFromMake()
@@ -1162,10 +1138,15 @@ func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, m an
 
 			// CFI is incompatible with ASAN so disable it in ASAN variations
 			if s.sanitizer.incompatibleWithCfi() {
-				cfiSupported := m.(PlatformSanitizeable).SanitizerSupported(cfi)
+				cfiSupported := mctx.Module().(PlatformSanitizeable).SanitizerSupported(cfi)
 				if mctx.Device() && cfiSupported {
 					c.SetSanitizer(cfi, false)
 				}
+			}
+
+			// locate the asan libraries under /data/asan
+			if !c.Binary() && !c.StaticallyLinked() && !c.Header() && mctx.Device() && s.sanitizer == Asan && sanitizerEnabled {
+				c.SetInSanitizerDir()
 			}
 
 			if c.StaticallyLinked() && c.ExportedToMake() {
@@ -1179,7 +1160,7 @@ func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, m an
 			// Disable the sanitizer for the non-sanitized variation
 			c.SetSanitizer(s.sanitizer, false)
 		}
-	} else if sanitizeable, ok := m.(Sanitizeable); ok {
+	} else if sanitizeable, ok := mctx.Module().(Sanitizeable); ok {
 		if enabled {
 			sanitizeable.AddSanitizerDependencies(mctx, s.sanitizer.name())
 		}
@@ -1198,7 +1179,7 @@ func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, m an
 	}
 }
 
-func (s *sanitizerSplitMutator) transition(ctx android.BaseModuleContext, m blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
+func (s *sanitizerSplitMutator) transition(ctx android.BaseModuleContext, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
 	if d, ok := dep.(PlatformSanitizeable); ok {
 		if dm, ok := dep.(*Module); ok {
 			if ss, ok := dm.linker.(snapshotSanitizer); ok && ss.isSanitizerEnabled(s.sanitizer) {
@@ -1240,7 +1221,7 @@ func (s *sanitizerSplitMutator) transition(ctx android.BaseModuleContext, m blue
 		}
 	}
 
-	if c, ok := m.(PlatformSanitizeable); ok {
+	if c, ok := ctx.Module().(PlatformSanitizeable); ok {
 		d, ok := dep.(PlatformSanitizeable)
 		if !ok {
 			return ""
@@ -1276,11 +1257,11 @@ func (s *sanitizerSplitMutator) transition(ctx android.BaseModuleContext, m blue
 			return ""
 		}
 
-	} else if _, ok := m.(JniSanitizeable); ok {
+	} else if _, ok := ctx.Module().(JniSanitizeable); ok {
 		// TODO: this should call into JniSanitizable.IsSanitizerEnabledForJni but
 		// that is short-circuited for now
 		return ""
-	} else if _, ok := m.(Sanitizeable); ok {
+	} else if _, ok := ctx.Module().(Sanitizeable); ok {
 		// Use the sanitized variations for direct dependencies of the sanitized
 		// variation of the APEX bundles.
 		if c, ok := dep.(*Module); ok && c.sanitize.isSanitizerEnabled(s.sanitizer) {
@@ -1291,68 +1272,6 @@ func (s *sanitizerSplitMutator) transition(ctx android.BaseModuleContext, m blue
 	} else {
 		// Otherwise, do not rock the boat.
 		return sourceVariation
-	}
-}
-
-// Propagate sanitizer requirements down from binaries
-func sanitizerDepsMutator(t SanitizerType) func(android.TopDownMutatorContext) {
-	return func(mctx android.TopDownMutatorContext) {
-		if c, ok := mctx.Module().(PlatformSanitizeable); ok {
-			enabled := c.IsSanitizerEnabled(t)
-
-			if t == cfi && needsCfiForVendorSnapshot(mctx) {
-				// We shouldn't change the result of isSanitizerEnabled(cfi) to correctly
-				// determine defaultVariation in sanitizerMutator below.
-				// Instead, just mark SanitizeDep to forcefully create cfi variant.
-				enabled = true
-				c.SetSanitizeDep(t)
-			}
-			if enabled {
-				isSanitizableDependencyTag := c.SanitizableDepTagChecker()
-				mctx.WalkDeps(func(child, parent android.Module) bool {
-					if !isSanitizableDependencyTag(mctx.OtherModuleDependencyTag(child)) {
-						return false
-					}
-					if d, ok := child.(PlatformSanitizeable); ok && d.SanitizePropDefined() &&
-						!d.SanitizeNever() &&
-						!d.IsSanitizerExplicitlyDisabled(t) {
-
-						if t == cfi || t == Hwasan || t == scs || t == Asan {
-							if d.StaticallyLinked() && d.SanitizerSupported(t) {
-								// Rust does not support some of these sanitizers, so we need to check if it's
-								// supported before setting this true.
-								d.SetSanitizeDep(t)
-							}
-						} else {
-							d.SetSanitizeDep(t)
-						}
-					}
-					return true
-				})
-			}
-		} else if jniSanitizeable, ok := mctx.Module().(JniSanitizeable); ok {
-			// If it's a Java module with native dependencies through jni,
-			// set the sanitizer for them
-			if jniSanitizeable.IsSanitizerEnabledForJni(mctx, t.name()) {
-				mctx.VisitDirectDeps(func(child android.Module) {
-					if c, ok := child.(PlatformSanitizeable); ok &&
-						mctx.OtherModuleDependencyTag(child) == JniFuzzLibTag &&
-						c.SanitizePropDefined() &&
-						!c.SanitizeNever() &&
-						!c.IsSanitizerExplicitlyDisabled(t) {
-						c.SetSanitizeDep(t)
-					}
-				})
-			}
-		} else if sanitizeable, ok := mctx.Module().(Sanitizeable); ok {
-			// If an APEX module includes a lib which is enabled for a sanitizer T, then
-			// the APEX module is also enabled for the same sanitizer type.
-			mctx.VisitDirectDeps(func(child android.Module) {
-				if c, ok := child.(*Module); ok && c.sanitize.isSanitizerEnabled(t) {
-					sanitizeable.EnableSanitizer(t.name())
-				}
-			})
-		}
 	}
 }
 
@@ -1710,114 +1629,6 @@ func (c *Module) SetSanitizeDep(t SanitizerType) {
 }
 
 var _ PlatformSanitizeable = (*Module)(nil)
-
-// Create sanitized variants for modules that need them
-func sanitizerMutator(t SanitizerType) func(android.BottomUpMutatorContext) {
-	return func(mctx android.BottomUpMutatorContext) {
-		if c, ok := mctx.Module().(PlatformSanitizeable); ok && c.SanitizePropDefined() {
-			// Make sure we're not setting CFI to any value if it's not supported.
-			cfiSupported := mctx.Module().(PlatformSanitizeable).SanitizerSupported(cfi)
-
-			if c.Binary() && c.IsSanitizerEnabled(t) {
-				modules := mctx.CreateVariations(t.variationName())
-				modules[0].(PlatformSanitizeable).SetSanitizer(t, true)
-			} else if c.IsSanitizerEnabled(t) || c.SanitizeDep(t) {
-				isSanitizerEnabled := c.IsSanitizerEnabled(t)
-				if c.StaticallyLinked() || c.Header() || t == Fuzzer {
-					// Static and header libs are split into non-sanitized and sanitized variants.
-					// Shared libs are not split. However, for asan and fuzzer, we split even for shared
-					// libs because a library sanitized for asan/fuzzer can't be linked from a library
-					// that isn't sanitized for asan/fuzzer.
-					//
-					// Note for defaultVariation: since we don't split for shared libs but for static/header
-					// libs, it is possible for the sanitized variant of a static/header lib to depend
-					// on non-sanitized variant of a shared lib. Such unfulfilled variation causes an
-					// error when the module is split. defaultVariation is the name of the variation that
-					// will be used when such a dangling dependency occurs during the split of the current
-					// module. By setting it to the name of the sanitized variation, the dangling dependency
-					// is redirected to the sanitized variant of the dependent module.
-					defaultVariation := t.variationName()
-					// Not all PlatformSanitizeable modules support the CFI sanitizer
-					mctx.SetDefaultDependencyVariation(&defaultVariation)
-
-					modules := mctx.CreateVariations("", t.variationName())
-					modules[0].(PlatformSanitizeable).SetSanitizer(t, false)
-					modules[1].(PlatformSanitizeable).SetSanitizer(t, true)
-
-					if mctx.Device() && t.incompatibleWithCfi() && cfiSupported {
-						// TODO: Make sure that cfi mutator runs "after" any of the sanitizers that
-						// are incompatible with cfi
-						modules[1].(PlatformSanitizeable).SetSanitizer(cfi, false)
-					}
-
-					// For cfi/scs/hwasan, we can export both sanitized and un-sanitized variants
-					// to Make, because the sanitized version has a different suffix in name.
-					// For other types of sanitizers, suppress the variation that is disabled.
-					if t != cfi && t != scs && t != Hwasan {
-						if isSanitizerEnabled {
-							modules[0].(PlatformSanitizeable).SetPreventInstall()
-							modules[0].(PlatformSanitizeable).SetHideFromMake()
-						} else {
-							modules[1].(PlatformSanitizeable).SetPreventInstall()
-							modules[1].(PlatformSanitizeable).SetHideFromMake()
-						}
-					}
-
-					// Export the static lib name to make
-					if c.StaticallyLinked() && c.ExportedToMake() {
-						if t == cfi {
-							cfiStaticLibs(mctx.Config()).add(c, c.Module().Name())
-						} else if t == Hwasan {
-							hwasanStaticLibs(mctx.Config()).add(c, c.Module().Name())
-						}
-					}
-				} else {
-					// Shared libs are not split. Only the sanitized variant is created.
-					modules := mctx.CreateVariations(t.variationName())
-					modules[0].(PlatformSanitizeable).SetSanitizer(t, true)
-
-					// locate the asan libraries under /data/asan
-					if mctx.Device() && t == Asan && isSanitizerEnabled {
-						modules[0].(PlatformSanitizeable).SetInSanitizerDir()
-					}
-
-					if mctx.Device() && t.incompatibleWithCfi() && cfiSupported {
-						// TODO: Make sure that cfi mutator runs "after" any of the sanitizers that
-						// are incompatible with cfi
-						modules[0].(PlatformSanitizeable).SetSanitizer(cfi, false)
-					}
-				}
-			}
-		} else if sanitizeable, ok := mctx.Module().(Sanitizeable); ok && sanitizeable.IsSanitizerEnabled(mctx, t.name()) {
-			// APEX fuzz modules fall here
-			sanitizeable.AddSanitizerDependencies(mctx, t.name())
-			mctx.CreateVariations(t.variationName())
-		} else if _, ok := mctx.Module().(JniSanitizeable); ok {
-			// Java fuzz modules fall here
-			mctx.CreateVariations(t.variationName())
-		} else if c, ok := mctx.Module().(*Module); ok {
-			//TODO: When Rust modules have vendor support, enable this path for PlatformSanitizeable
-
-			// Check if it's a snapshot module supporting sanitizer
-			if s, ok := c.linker.(snapshotSanitizer); ok && s.isSanitizerEnabled(t) {
-				// Set default variation as above.
-				defaultVariation := t.variationName()
-				mctx.SetDefaultDependencyVariation(&defaultVariation)
-				modules := mctx.CreateVariations("", t.variationName())
-				modules[0].(*Module).linker.(snapshotSanitizer).setSanitizerVariation(t, false)
-				modules[1].(*Module).linker.(snapshotSanitizer).setSanitizerVariation(t, true)
-
-				// Export the static lib name to make
-				if c.static() && c.ExportedToMake() {
-					if t == cfi {
-						// use BaseModuleName which is the name for Make.
-						cfiStaticLibs(mctx.Config()).add(c, c.BaseModuleName())
-					}
-				}
-			}
-		}
-	}
-}
 
 type sanitizerStaticLibsMap struct {
 	// libsMap contains one list of modules per each image and each arch.
