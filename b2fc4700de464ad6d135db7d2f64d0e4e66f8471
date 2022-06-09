@@ -46,6 +46,30 @@
       },
       "revId": "b2fc4700de464ad6d135db7d2f64d0e4e66f8471",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ced875_ed491103",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-06-09T12:51:37Z",
+      "side": 1,
+      "message": "Huh! Sorry for noise. The boolPtr(false) calls were definitely wrong.",
+      "parentUuid": "661b7e22_80fbce42",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 18
+      },
+      "revId": "b2fc4700de464ad6d135db7d2f64d0e4e66f8471",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
