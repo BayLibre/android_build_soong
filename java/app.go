@@ -101,6 +101,9 @@ type appProperties struct {
 	PreventInstall    bool `blueprint:"mutated"`
 	IsCoverageVariant bool `blueprint:"mutated"`
 
+	// If set, the targetSdkVersion for the target is set to the latest version.
+	EnforceTargetSdkVersion *bool
+
 	// Whether this app is considered mainline updatable or not. When set to true, this will enforce
 	// additional rules to make sure an app can safely be updated. Default is false.
 	// Prefer using other specific properties if build behaviour must be changed; avoid using this
@@ -418,10 +421,15 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 	a.aapt.splitNames = a.appProperties.Package_splits
 	a.aapt.LoggingParent = String(a.overridableAppProperties.Logging_parent)
 	a.aapt.buildActions(ctx, android.SdkContext(a), a.classLoaderContexts,
-		a.usesLibraryProperties.Exclude_uses_libs, aaptLinkFlags...)
+		a.usesLibraryProperties.Exclude_uses_libs, a.shouldEnforceCurrentTargetSDKVersion(ctx, a.appProperties), aaptLinkFlags...)
 
 	// apps manifests are handled by aapt, don't let Module see them
 	a.properties.Manifest = nil
+}
+
+func (a *AndroidApp) shouldEnforceCurrentTargetSDKVersion(_ android.ModuleContext, properties appProperties) bool {
+	return (properties.EnforceTargetSdkVersion != nil && *properties.EnforceTargetSdkVersion) ||
+		(properties.Updatable != nil && *properties.Updatable)
 }
 
 func (a *AndroidApp) proguardBuildActions(ctx android.ModuleContext) {
