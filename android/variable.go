@@ -440,9 +440,13 @@ type productVariables struct {
 
 	ShippingApiLevel *string `json:",omitempty"`
 
+<<<<<<< HEAD   (392688 Snap for 11685116 from c9b8fefdbd3292735fe8d6dea4e9927517c91)
 	BuildBrokenClangAsFlags            bool     `json:",omitempty"`
 	BuildBrokenClangCFlags             bool     `json:",omitempty"`
 	BuildBrokenClangProperty           bool     `json:",omitempty"`
+||||||| BASE
+=======
+>>>>>>> CHANGE (140d58 Deprecate depfile in gensrcs)
 	BuildBrokenDepfile                 *bool    `json:",omitempty"`
 	BuildBrokenEnforceSyspropOwner     bool     `json:",omitempty"`
 	BuildBrokenTrebleSyspropNeverallow bool     `json:",omitempty"`
