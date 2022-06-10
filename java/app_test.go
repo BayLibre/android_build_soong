@@ -1218,7 +1218,7 @@ func TestJNIABI(t *testing.T) {
 	for _, test := range testCases {
 		t.Run(test.name, func(t *testing.T) {
 			app := ctx.ModuleForTests(test.name, "android_common")
-			jniLibZip := app.Output("jnilibs.zip")
+			jniLibZip := app.Output(jniJarOutputPathString)
 			var abis []string
 			args := strings.Fields(jniLibZip.Args["jarArgs"])
 			for i := 0; i < len(args); i++ {
@@ -1351,7 +1351,7 @@ func TestJNIPackaging(t *testing.T) {
 	for _, test := range testCases {
 		t.Run(test.name, func(t *testing.T) {
 			app := ctx.ModuleForTests(test.name, "android_common")
-			jniLibZip := app.MaybeOutput("jnilibs.zip")
+			jniLibZip := app.MaybeOutput(jniJarOutputPathString)
 			if g, w := (jniLibZip.Rule != nil), test.packaged; g != w {
 				t.Errorf("expected jni packaged %v, got %v", w, g)
 			}
@@ -1442,7 +1442,7 @@ func TestJNISDK(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			app := ctx.ModuleForTests(test.name, "android_common")
 
-			jniLibZip := app.MaybeOutput("jnilibs.zip")
+			jniLibZip := app.MaybeOutput(jniJarOutputPathString)
 			if len(jniLibZip.Implicits) != 1 {
 				t.Fatalf("expected exactly one jni library, got %q", jniLibZip.Implicits.Strings())
 			}
@@ -2425,7 +2425,7 @@ func TestStl(t *testing.T) {
 	for _, test := range testCases {
 		t.Run(test.name, func(t *testing.T) {
 			app := ctx.ModuleForTests(test.name, "android_common")
-			jniLibZip := app.Output("jnilibs.zip")
+			jniLibZip := app.Output(jniJarOutputPathString)
 			var jnis []string
 			args := strings.Fields(jniLibZip.Args["jarArgs"])
 			for i := 0; i < len(args); i++ {
