@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d40ee2_65058c79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-06-10T15:41:10Z",
+      "side": 1,
+      "message": "Hey Colin,\n\nWDYT? I managed to get all presubmits pass (at least before I cleaned up the code, I may have introduce a bug or two while doing the finishing touches) and I think the split / outgoingTransition / incomingTransition / mutate quartet makes for a really nice mutator API.\n\nThe presubmits pass, but it\u0027s very possible that I managed to disable sanitization for APEX bundles, but the presubmits apparently don\u0027t care?\n\nThe implementation of split mutators itself is quite ugly and wasteful; I\u0027m planning to lift it to Blueprint so that ApplyTransition / CreateVariationsWithTransition don\u0027t become a public API.",
+      "revId": "276e8d2d22bdb28f75b3eb58d06de0166998fedc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
