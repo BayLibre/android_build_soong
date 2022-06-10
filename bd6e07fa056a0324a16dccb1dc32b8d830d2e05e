@@ -16,6 +16,24 @@
       "message": "I don\u0027t know what this is. Adding someone else.",
       "revId": "bd6e07fa056a0324a16dccb1dc32b8d830d2e05e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "399310bf_40090dbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1943701
+      },
+      "writtenOn": "2022-06-10T15:04:38Z",
+      "side": 1,
+      "message": "Hey Anton, thanks! I\u0027m basically trying to remove the `rustfmt.toml` symlink from https://android.googlesource.com/platform/packages/modules/Bluetooth/+/refs/heads/master/tools/pdl/ — and I believe I can do this by exporting the `rustfmt.toml` file found here.\n\nIvan should know what I\u0027m trying to do, but he is not an owner for this directory.",
+      "parentUuid": "8c82eeb0_271467aa",
+      "revId": "bd6e07fa056a0324a16dccb1dc32b8d830d2e05e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
