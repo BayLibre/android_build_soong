@@ -940,7 +940,8 @@ func needsCfiForVendorSnapshot(mctx android.BaseModuleContext) bool {
 type SplitMutator interface {
 	mutate(mctx android.BottomUpMutatorContext, variation string, variations []string)
 	split(ctx android.BaseModuleContext) []string
-	transition(ctx android.BaseModuleContext, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string
+	outgoingTransition(ctx android.BaseModuleContext, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string
+	incomingTransition(ctx android.BaseModuleContext, sourceVariation string, dep blueprint.Module) string
 }
 
 // TODO: This functionality is probably too generic for this file.
@@ -1006,15 +1007,18 @@ func (s *splitMutatorImpl) topDownMutator(ctx android.TopDownMutatorContext) {
 	// variant they want?
 	for _, srcVariation := range splits {
 		ctx.VisitDirectDeps(func(dep android.Module) {
-			desiredVariations := s.mutator.transition(ctx, srcVariation, dep, ctx.OtherModuleDependencyTag(dep))
-			s.addSplits(dep, desiredVariations)
+			outgoingVariation := s.mutator.outgoingTransition(ctx, srcVariation, dep, ctx.OtherModuleDependencyTag(dep))
+			finalVariation := s.mutator.incomingTransition(ctx, outgoingVariation, dep)
+			s.addSplits(dep, finalVariation)
 		})
 	}
 }
 
 func (s *splitMutatorImpl) blueprintTransition(ctx android.BaseMutatorContext) blueprint.Transition {
 	return func(source blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
-		return s.mutator.transition(ctx, sourceVariation, dep, depTag)
+		outgoingVariation := s.mutator.outgoingTransition(ctx, sourceVariation, dep, depTag)
+		finalVariation := s.mutator.incomingTransition(ctx, outgoingVariation, dep)
+		return finalVariation
 	}
 }
 
@@ -1180,7 +1184,7 @@ func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, vari
 	}
 }
 
-func (s *sanitizerSplitMutator) transition(ctx android.BaseModuleContext, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
+func (s *sanitizerSplitMutator) incomingTransition(ctx android.BaseModuleContext, sourceVariation string, dep blueprint.Module) string {
 	if d, ok := dep.(PlatformSanitizeable); ok {
 		if dm, ok := dep.(*Module); ok {
 			if ss, ok := dm.linker.(snapshotSanitizer); ok && ss.isSanitizerEnabled(s.sanitizer) {
@@ -1222,6 +1226,10 @@ func (s *sanitizerSplitMutator) transition(ctx android.BaseModuleContext, source
 		}
 	}
 
+	return sourceVariation
+}
+
+func (s *sanitizerSplitMutator) outgoingTransition(ctx android.BaseModuleContext, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
 	if c, ok := ctx.Module().(PlatformSanitizeable); ok {
 		d, ok := dep.(PlatformSanitizeable)
 		if !ok {
