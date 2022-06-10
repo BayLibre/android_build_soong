@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1c582e_7c67bd88",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-10T18:07:31Z",
+      "side": 1,
+      "message": "`$(PRODUCT_OUT)` is not guaranateed to be accurate either.  This is probably fine for now, but I think long term you\u0027ll need `android.InstallPathToOnDevicePath` for device modules.  We can add something similar for host modules if necessary.",
+      "parentUuid": "f81a1b4c_18442e1b",
+      "revId": "c5ca4c844cd78855b41dd3e0a7436c9954997fb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3defd02b_fdb20db0",
