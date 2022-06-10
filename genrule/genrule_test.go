@@ -626,6 +626,72 @@ func TestGenSrcs(t *testing.T) {
 	}
 }
 
+func TestGensrcsBuildBrokenDepfile(t *testing.T) {
+	tests := []struct {
+		name               string
+		prop               string
+		BuildBrokenDepfile *bool
+		err                string
+	}{
+		{
+			name: `error when BuildBrokenDepfile is set to false`,
+			prop: `
+				depfile: true,
+				cmd: "cat $(in) > $(out) && cat $(depfile)",
+			`,
+			BuildBrokenDepfile: proptools.BoolPtr(false),
+			err:                "depfile: Deprecated to ensure the module type is convertible to Bazel",
+		},
+		{
+			name: `error when BuildBrokenDepfile is not set`,
+			prop: `
+				depfile: true,
+				cmd: "cat $(in) > $(out) && cat $(depfile)",
+			`,
+			err: "depfile: Deprecated to ensure the module type is convertible to Bazel.",
+		},
+		{
+			name: `no error when BuildBrokenDepfile is explicitly set to true`,
+			prop: `
+				depfile: true,
+				cmd: "cat $(in) > $(out) && cat $(depfile)",
+			`,
+			BuildBrokenDepfile: proptools.BoolPtr(true),
+		},
+		{
+			name: `no error if depfile is not set`,
+			prop: `
+				cmd: "cat $(in) > $(out)",
+			`,
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			bp := "gensrcs {\n"
+			bp += "name: \"foo\",\n"
+			bp += "srcs: [\"data.txt\"],\n"
+			bp += test.prop
+			bp += "}\n"
+
+			var expectedErrors []string
+			if test.err != "" {
+				expectedErrors = append(expectedErrors, test.err)
+			}
+			android.GroupFixturePreparers(
+				prepareForGenRuleTest,
+				android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+					if test.BuildBrokenDepfile != nil {
+						variables.BuildBrokenDepfile = test.BuildBrokenDepfile
+					}
+				}),
+			).
+				ExtendWithErrorHandler(android.FixtureExpectsAllErrorsToMatchAPattern(expectedErrors)).
+				RunTestWithBp(t, bp)
+		})
+
+	}
+}
+
 func TestGenruleDefaults(t *testing.T) {
 	bp := `
 				genrule_defaults {
