@@ -297,6 +297,9 @@ type BottomUpMutatorContext interface {
 	// automatically be updated to point to the first variant.
 	CreateVariations(...string) []Module
 
+	// TODO: This should probably not be accessible for code outside of Blueprint
+	CreateVariationsWithTransition(transition blueprint.Transition, variationNames ...string) []Module
+
 	// CreateLocationVariations splits a module into multiple variants, one for each name in the variantNames
 	// parameter.  It returns a list of new modules in the same order as the variantNames
 	// list.
@@ -305,6 +308,9 @@ type BottomUpMutatorContext interface {
 	// to the split module via deps or DynamicDependerModule must exactly match a variant
 	// that contains all the non-local variations.
 	CreateLocalVariations(...string) []Module
+
+	// TODO: This should probably not be accessible for code outside of Blueprint
+	ApplyTransition(transition blueprint.Transition)
 
 	// SetDependencyVariation sets all dangling dependencies on the current module to point to the variation
 	// with given name. This function ignores the default variation set by SetDefaultDependencyVariation.
@@ -595,6 +601,24 @@ func (b *bottomUpMutatorContext) CreateVariations(variations ...string) []Module
 	return aModules
 }
 
+func (b *bottomUpMutatorContext) CreateVariationsWithTransition(transition blueprint.Transition, variations ...string) []Module {
+	if b.finalPhase {
+		panic("CreateVariations not allowed in FinalDepsMutators")
+	}
+
+	modules := b.bp.CreateVariationsWithTransition(transition, variations...)
+
+	aModules := make([]Module, len(modules))
+	for i := range variations {
+		aModules[i] = modules[i].(Module)
+		base := aModules[i].base()
+		base.commonProperties.DebugMutators = append(base.commonProperties.DebugMutators, b.MutatorName())
+		base.commonProperties.DebugVariations = append(base.commonProperties.DebugVariations, variations[i])
+	}
+
+	return aModules
+}
+
 func (b *bottomUpMutatorContext) CreateLocalVariations(variations ...string) []Module {
 	if b.finalPhase {
 		panic("CreateLocalVariations not allowed in FinalDepsMutators")
@@ -611,6 +635,10 @@ func (b *bottomUpMutatorContext) CreateLocalVariations(variations ...string) []M
 	}
 
 	return aModules
+}
+
+func (b *bottomUpMutatorContext) ApplyTransition(transition blueprint.Transition) {
+	b.bp.ApplyTransition(transition)
 }
 
 func (b *bottomUpMutatorContext) SetDependencyVariation(variation string) {
