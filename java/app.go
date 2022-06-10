@@ -101,6 +101,11 @@ type appProperties struct {
 	PreventInstall    bool `blueprint:"mutated"`
 	IsCoverageVariant bool `blueprint:"mutated"`
 
+	// If set, the targetSdkVersion for the target is set to the latest default API level.
+	// This would be by default false, unless updatable: true in which case this defaults to true.
+	// It is an error if updatable: true and this is false.
+	Enforce_default_target_sdk_version *bool `blueprint:"mutated"`
+
 	// Whether this app is considered mainline updatable or not. When set to true, this will enforce
 	// additional rules to make sure an app can safely be updated. Default is false.
 	// Prefer using other specific properties if build behaviour must be changed; avoid using this
@@ -296,6 +301,14 @@ func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {
 		} else {
 			ctx.PropertyErrorf("min_sdk_version", "%s", err.Error())
 		}
+
+		if !BoolDefault(a.appProperties.Enforce_default_target_sdk_version, true) {
+			ctx.PropertyErrorf("enforce_default_target_sdk_version", "Updatable apps must enforce default target sdk version")
+		}
+		// TODO(b/227460469) after all the modules removes the target sdk version, throw an error if the target sdk version is explicitly set.
+		if a.deviceProperties.Target_sdk_version == nil {
+			a.SetEnforceDefaultTargetSdkVersion(true)
+		}
 	}
 
 	a.checkPlatformAPI(ctx)
@@ -427,7 +440,7 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 		a.aapt.defaultManifestVersion = android.DefaultUpdatableModuleVersion
 	}
 	a.aapt.buildActions(ctx, android.SdkContext(a), a.classLoaderContexts,
-		a.usesLibraryProperties.Exclude_uses_libs, aaptLinkFlags...)
+		a.usesLibraryProperties.Exclude_uses_libs, a.enforceDefaultTargetSdkVersion(), aaptLinkFlags...)
 
 	// apps manifests are handled by aapt, don't let Module see them
 	a.properties.Manifest = nil
@@ -863,6 +876,14 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 	})
 
 	a.ApexBundleDepsInfo.BuildDepsInfoLists(ctx, a.MinSdkVersion(ctx).String(), depsInfo)
+}
+
+func (a *AndroidApp) enforceDefaultTargetSdkVersion() bool {
+	return Bool(a.appProperties.Enforce_default_target_sdk_version)
+}
+
+func (a *AndroidApp) SetEnforceDefaultTargetSdkVersion(val bool) {
+	a.appProperties.Enforce_default_target_sdk_version = &val
 }
 
 func (a *AndroidApp) Updatable() bool {
