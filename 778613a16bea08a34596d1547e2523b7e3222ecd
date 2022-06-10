@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3738b01_f58deb82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-06-10T14:26:35Z",
+      "side": 1,
+      "message": "I keep getting added to code reviews that I don\u0027t really mind doing, but feel would be better done by the core team (to spread knowledge etc). Any objections?",
+      "revId": "778613a16bea08a34596d1547e2523b7e3222ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
