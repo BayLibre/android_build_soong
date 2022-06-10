@@ -28,7 +28,7 @@ import (
 var manifestFixerRule = pctx.AndroidStaticRule("manifestFixer",
 	blueprint.RuleParams{
 		Command: `${config.ManifestFixerCmd} ` +
-			`$args $in $out`,
+				`$args $in $out`,
 		CommandDeps: []string{"${config.ManifestFixerCmd}"},
 	},
 	"args")
@@ -55,21 +55,26 @@ func targetSdkVersionForManifestFixer(ctx android.ModuleContext, sdkContext andr
 	return targetSdkVersion
 }
 
+func getCurrentSDKVersion(ctx android.ModuleContext) string {
+	return ctx.Config().LatestPreviewApiLevel().String()
+}
+
 type ManifestFixerParams struct {
-	SdkContext            android.SdkContext
-	ClassLoaderContexts   dexpreopt.ClassLoaderContextMap
-	IsLibrary             bool
-	UseEmbeddedNativeLibs bool
-	UsesNonSdkApis        bool
-	UseEmbeddedDex        bool
-	HasNoCode             bool
-	TestOnly              bool
-	LoggingParent         string
+	SdkContext                     android.SdkContext
+	ClassLoaderContexts            dexpreopt.ClassLoaderContextMap
+	IsLibrary                      bool
+	UseEmbeddedNativeLibs          bool
+	UsesNonSdkApis                 bool
+	UseEmbeddedDex                 bool
+	HasNoCode                      bool
+	TestOnly                       bool
+	LoggingParent                  string
+	EnforceCurrentTargetSdkVersion bool
 }
 
 // Uses manifest_fixer.py to inject minSdkVersion, etc. into an AndroidManifest.xml
 func ManifestFixer(ctx android.ModuleContext, manifest android.Path,
-	params ManifestFixerParams) android.Path {
+		params ManifestFixerParams) android.Path {
 	var args []string
 
 	if params.IsLibrary {
@@ -124,6 +129,9 @@ func ManifestFixer(ctx android.ModuleContext, manifest android.Path,
 
 	if params.SdkContext != nil {
 		targetSdkVersion := targetSdkVersionForManifestFixer(ctx, params.SdkContext)
+		if params.EnforceCurrentTargetSdkVersion {
+			targetSdkVersion = getCurrentSDKVersion(ctx)
+		}
 		args = append(args, "--targetSdkVersion ", targetSdkVersion)
 
 		if UseApiFingerprint(ctx) && ctx.ModuleName() != "framework-res" {
@@ -164,7 +172,7 @@ func ManifestFixer(ctx android.ModuleContext, manifest android.Path,
 }
 
 func manifestMerger(ctx android.ModuleContext, manifest android.Path, staticLibManifests android.Paths,
-	isLibrary bool) android.Path {
+		isLibrary bool) android.Path {
 
 	var args string
 	if !isLibrary {
