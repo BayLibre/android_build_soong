@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1484ed3_95201ad7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-06-10T05:45:42Z",
+      "side": 1,
+      "message": "Gerrit retained a \"DO NOT SUBMIT\" message as the title of this review, so I missed it earlier. Looks great. Thanks for cleaning this up so that we can steer people to better options.",
+      "revId": "2d481842b1be6f5bd14331258e10b7cee6d9e2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
