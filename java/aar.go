@@ -619,6 +619,8 @@ type AARImportProperties struct {
 	Libs []string
 	// If set to true, run Jetifier against .aar file. Defaults to false.
 	Jetifier *bool
+	//TODO doc
+	Import_native_libs *bool
 }
 
 type AARImport struct {
@@ -745,6 +747,9 @@ func (a *AARImport) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	ctx.AddVariationDependencies(nil, libTag, a.properties.Libs...)
 	ctx.AddVariationDependencies(nil, staticLibTag, a.properties.Static_libs...)
+	for _, t := range ctx.MultiTargets() {
+		ctx.AddFarVariationDependencies(t.Variations(), jniLibTag, a.ModuleBase.Name()+"_jni_extraction")
+	}
 }
 
 // Unzip an AAR into its constituent files and directories.  Any files in Outputs that don't exist in the AAR will be
@@ -891,6 +896,75 @@ func (g *AARImport) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
 
 var _ android.PrebuiltInterface = (*Import)(nil)
 
+type aarJniExtractionProperties struct {
+	Aar string `android:"path"`
+}
+
+type aarJniExtraction struct {
+	android.ModuleBase
+	properties aarJniExtractionProperties
+
+	jniLibs    []jniLib
+	jniPackage android.Path
+}
+
+var extractJNI = pctx.AndroidStaticRule("extractJNI",
+	blueprint.RuleParams{
+		Command: `rm -f $out && touch $out && ` +
+			`unzip -qoDD -d $outDir $in "jni/${archString}/*" && ` +
+			`[ -e $outDir/**/* ] || exit 0 && ` + // exit without failure if there are no JNI libs
+			`${config.SoongZipCmd} -o $out -P 'lib/${archString}' ` +
+			`-C $outDir/jni/${archString} ` +
+			`$$(find $outDir/jni -type f | xargs -n1 printf "-f %s ")`,
+		CommandDeps: []string{"${config.SoongZipCmd}"},
+	},
+	"outDir", "archString")
+
+func (a *aarJniExtraction) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	t := ctx.Target()
+	arch := t.Arch.Abi[0]
+	path := android.PathForModuleOut(ctx, arch+"_jni.zip")
+	a.jniLibs = append(a.jniLibs, jniLib{
+		name:   a.Name() + "_" + arch,
+		path:   path,
+		target: t,
+	})
+
+	a.jniPackage = path
+
+	outDir := android.PathForModuleOut(ctx, "aar")
+	aarPath := android.PathForModuleSrc(ctx, a.properties.Aar)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        extractJNI,
+		Input:       aarPath,
+		Outputs:     android.WritablePaths{path},
+		Description: "extract JNI from AAR",
+		Args: map[string]string{
+			"outDir":     outDir.String(),
+			"archString": arch,
+		},
+	})
+}
+
+func AarJniExtractionFactory() android.Module {
+	module := &aarJniExtraction{}
+	module.AddProperties(&module.properties)
+	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibBoth)
+	return module
+}
+
+func aarJniLoadHook(ctx android.LoadHookContext, m *AARImport) {
+	ctx.CreateModule(
+		AarJniExtractionFactory,
+		&struct{ Name *string }{
+			Name: proptools.StringPtr(m.ModuleBase.Name() + "_jni_extraction"),
+		},
+		&aarJniExtractionProperties{
+			Aar: m.properties.Aars[0],
+		},
+	)
+}
+
 // android_library_import imports an `.aar` file into the build graph as if it was built with android_library.
 //
 // This module is not suitable for installing on a device, but can be used as a `static_libs` dependency of
@@ -900,8 +974,10 @@ func AARImportFactory() android.Module {
 
 	module.AddProperties(&module.properties)
 
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) { aarJniLoadHook(ctx, module) })
+
 	android.InitPrebuiltModule(module, &module.properties.Aars)
 	android.InitApexModule(module)
-	InitJavaModule(module, android.DeviceSupported)
+	InitJavaModuleMultiTargets(module, android.DeviceSupported)
 	return module
 }

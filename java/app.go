@@ -472,14 +472,14 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 	return a.dexJarFile.PathOrNil()
 }
 
-func (a *AndroidApp) jniBuildActions(jniLibs []jniLib, ctx android.ModuleContext) android.WritablePath {
+func (a *AndroidApp) jniBuildActions(jniLibs []jniLib, prebuiltJniPackages android.Paths, ctx android.ModuleContext) android.WritablePath {
 	var jniJarFile android.WritablePath
-	if len(jniLibs) > 0 {
+	if len(jniLibs) > 0 || len(prebuiltJniPackages) > 0 {
 		a.jniLibs = jniLibs
 		if a.shouldEmbedJnis(ctx) {
 			jniJarFile = android.PathForModuleOut(ctx, "jnilibs.zip")
 			a.installPathForJNISymbols = a.installPath(ctx)
-			TransformJniLibsToJar(ctx, jniJarFile, jniLibs, a.useEmbeddedNativeLibs(ctx))
+			TransformJniLibsToJar(ctx, jniJarFile, jniLibs, prebuiltJniPackages, a.useEmbeddedNativeLibs(ctx))
 			for _, jni := range jniLibs {
 				if jni.coverageFile.Valid() {
 					// Only collect coverage for the first target arch if this is a multilib target.
@@ -623,8 +623,8 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 
 	dexJarFile := a.dexBuildActions(ctx)
 
-	jniLibs, certificateDeps := collectAppDeps(ctx, a, a.shouldEmbedJnis(ctx), !Bool(a.appProperties.Jni_uses_platform_apis))
-	jniJarFile := a.jniBuildActions(jniLibs, ctx)
+	jniLibs, prebuiltJniPackages, certificateDeps := collectAppDeps(ctx, a, a.shouldEmbedJnis(ctx), !Bool(a.appProperties.Jni_uses_platform_apis))
+	jniJarFile := a.jniBuildActions(jniLibs, prebuiltJniPackages, ctx)
 
 	if ctx.Failed() {
 		return
@@ -724,11 +724,17 @@ type appDepsInterface interface {
 
 func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
 	shouldCollectRecursiveNativeDeps bool,
-	checkNativeSdkVersion bool) ([]jniLib, []Certificate) {
+	checkNativeSdkVersion bool) ([]jniLib, android.Paths, []Certificate) {
 
 	var jniLibs []jniLib
+	var prebuiltJniPackages android.Paths
 	var certificates []Certificate
 	seenModulePaths := make(map[string]bool)
+
+	multiTargetStrings := map[string]bool{}
+	for _, t := range ctx.MultiTargets() {
+		multiTargetStrings[t.String()] = true
+	}
 
 	if checkNativeSdkVersion {
 		checkNativeSdkVersion = app.SdkVersion(ctx).Specified() &&
@@ -768,11 +774,21 @@ func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
 				} else {
 					ctx.ModuleErrorf("dependency %q missing output file", otherName)
 				}
+			} else if dep, ok := module.(*aarJniExtraction); ok {
+				if _, ok := multiTargetStrings[dep.Target().String()]; ok {
+					prebuiltJniPackages = append(prebuiltJniPackages, dep.jniPackage)
+				}
 			} else {
 				ctx.ModuleErrorf("jni_libs dependency %q must be a cc library", otherName)
 			}
 
 			return shouldCollectRecursiveNativeDeps
+		}
+
+		if IsStaticLibDepTag(tag) {
+			if _, ok := module.(*AARImport); ok {
+				return shouldCollectRecursiveNativeDeps
+			}
 		}
 
 		if tag == certificateTag {
@@ -786,7 +802,7 @@ func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
 		return false
 	})
 
-	return jniLibs, certificates
+	return jniLibs, prebuiltJniPackages, certificates
 }
 
 func (a *AndroidApp) WalkPayloadDeps(ctx android.ModuleContext, do android.PayloadDepsCallback) {

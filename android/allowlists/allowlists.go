@@ -360,6 +360,8 @@ var (
 		"car-ui-androidx-core-common-nodeps",
 		"car-ui-androidx-lifecycle-common-nodeps",
 		"car-ui-androidx-constraintlayout-solver-nodeps",
+
+		"imagepipeline",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
