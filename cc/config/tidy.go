@@ -106,8 +106,6 @@ func init() {
 			"-readability-qualified-auto",
 			// http://b/155034563
 			"-bugprone-signed-char-misuse",
-			// http://b/155034972
-			"-bugprone-branch-clone",
 			// http://b/193716442
 			"-bugprone-implicit-widening-of-multiplication-result",
 			// Too many existing functions trigger this rule, and fixing it requires large code
