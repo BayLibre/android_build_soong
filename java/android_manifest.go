@@ -43,8 +43,7 @@ var manifestMergerRule = pctx.AndroidStaticRule("manifestMerger",
 // targetSdkVersion for manifest_fixer
 // When TARGET_BUILD_APPS is not empty, this method returns 10000 for modules targeting an unreleased SDK
 // This enables release builds (that run with TARGET_BUILD_APPS=[val...]) to target APIs that have not yet been finalized as part of an SDK
-func targetSdkVersionForManifestFixer(ctx android.ModuleContext, sdkContext android.SdkContext) string {
-	targetSdkVersionSpec := sdkContext.TargetSdkVersion(ctx)
+func targetSdkVersionForManifestFixer(ctx android.ModuleContext, targetSdkVersionSpec android.SdkSpec) string {
 	if ctx.Config().UnbundledBuildApps() && targetSdkVersionSpec.ApiLevel.IsPreview() {
 		return strconv.Itoa(android.FutureApiLevel.FinalOrFutureInt())
 	}
@@ -55,16 +54,22 @@ func targetSdkVersionForManifestFixer(ctx android.ModuleContext, sdkContext andr
 	return targetSdkVersion
 }
 
+func getDefaultTargetSDKVersion(ctx android.ModuleContext, targetSdkVersionSpec android.SdkSpec) string {
+	targetSdkVersionSpec.ApiLevel = ctx.Config().DefaultAppTargetSdk(ctx)
+	return targetSdkVersionForManifestFixer(ctx, targetSdkVersionSpec)
+}
+
 type ManifestFixerParams struct {
-	SdkContext            android.SdkContext
-	ClassLoaderContexts   dexpreopt.ClassLoaderContextMap
-	IsLibrary             bool
-	UseEmbeddedNativeLibs bool
-	UsesNonSdkApis        bool
-	UseEmbeddedDex        bool
-	HasNoCode             bool
-	TestOnly              bool
-	LoggingParent         string
+	SdkContext                     android.SdkContext
+	ClassLoaderContexts            dexpreopt.ClassLoaderContextMap
+	IsLibrary                      bool
+	UseEmbeddedNativeLibs          bool
+	UsesNonSdkApis                 bool
+	UseEmbeddedDex                 bool
+	HasNoCode                      bool
+	TestOnly                       bool
+	LoggingParent                  string
+	EnforceDefaultTargetSdkVersion bool
 }
 
 // Uses manifest_fixer.py to inject minSdkVersion, etc. into an AndroidManifest.xml
@@ -123,7 +128,13 @@ func ManifestFixer(ctx android.ModuleContext, manifest android.Path,
 	var argsMapper = make(map[string]string)
 
 	if params.SdkContext != nil {
-		targetSdkVersion := targetSdkVersionForManifestFixer(ctx, params.SdkContext)
+		targetSdkVersionSpec := params.SdkContext.TargetSdkVersion(ctx)
+		targetSdkVersion := targetSdkVersionForManifestFixer(ctx, targetSdkVersionSpec)
+		defaultTargetSdkVersion := getDefaultTargetSDKVersion(ctx, targetSdkVersionSpec)
+		if params.EnforceDefaultTargetSdkVersion {
+			// TODO fix the target_sdk_version of existing modules, after that raise the error if targetSDKVersion is set incorrectly
+			targetSdkVersion = defaultTargetSdkVersion
+		}
 		args = append(args, "--targetSdkVersion ", targetSdkVersion)
 
 		if UseApiFingerprint(ctx) && ctx.ModuleName() != "framework-res" {
