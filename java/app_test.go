@@ -3054,6 +3054,170 @@ func TestTargetSdkVersionManifestFixer(t *testing.T) {
 	}
 }
 
+func TestDefaultAppTargetSdkVersionForUpdatableModules(t *testing.T) {
+	platform_sdk_codename := "Tiramisu"
+	platform_sdk_version := 31
+	testCases := []struct {
+		name                     string
+		platform_sdk_final       bool
+		targetSdkVersionInBp     string
+		targetSdkVersionExpected string
+		updatable                bool
+	}{
+		{
+			name:                     "Non-Updatable Module: Android.bp has older targetSdkVersion",
+			targetSdkVersionInBp:     "29",
+			targetSdkVersionExpected: "29",
+			updatable:                false,
+		},
+		{
+			name:                     "Updatable Module: Android.bp has older targetSdkVersion",
+			targetSdkVersionInBp:     "30",
+			targetSdkVersionExpected: "Tiramisu",
+			updatable:                true,
+		},
+		{
+			name:                     "Updatable Module: Android.bp has latest targetSdkVersion",
+			targetSdkVersionInBp:     "Tiramisu",
+			targetSdkVersionExpected: "Tiramisu",
+			updatable:                true,
+		},
+		{
+			name:                     "[SDK finalised] Non-Updatable Module: Android.bp has older targetSdkVersion",
+			platform_sdk_final:       true,
+			targetSdkVersionInBp:     "30",
+			targetSdkVersionExpected: "30",
+			updatable:                false,
+		},
+		{
+			name:                     "[SDK finalised]Updatable Module: Android.bp has older targetSdkVersion",
+			platform_sdk_final:       true,
+			targetSdkVersionInBp:     "30",
+			targetSdkVersionExpected: "31",
+			updatable:                true,
+		},
+		{
+			name:                     "[SDK finalised] Updatable Module: Android.bp has latest targetSdkVersion",
+			platform_sdk_final:       true,
+			targetSdkVersionInBp:     "Tiramisu",
+			targetSdkVersionExpected: "31",
+			updatable:                true,
+		},
+	}
+	for _, testCase := range testCases {
+		bp := fmt.Sprintf(`
+			android_app {
+				name: "foo",
+				sdk_version: "current",
+        min_sdk_version: "29",
+				target_sdk_version: "%v",
+				updatable: %t
+			}
+			`, testCase.targetSdkVersionInBp, testCase.updatable)
+
+		fixture := android.GroupFixturePreparers(
+			PrepareForTestWithJavaDefaultModules,
+			android.PrepareForTestWithAllowMissingDependencies,
+			android.PrepareForTestWithAndroidMk,
+			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+				// explicitly set following platform variables to make the test deterministic
+				variables.Platform_sdk_final = &testCase.platform_sdk_final
+				variables.Platform_sdk_version = &platform_sdk_version
+				variables.Platform_sdk_codename = &platform_sdk_codename
+				variables.Platform_version_active_codenames = []string{platform_sdk_codename}
+			}),
+		)
+
+		result := fixture.RunTestWithBp(t, bp)
+		foo := result.ModuleForTests("foo", "android_common")
+
+		manifestFixerArgs := foo.Output("manifest_fixer/AndroidManifest.xml").Args["args"]
+		android.AssertStringDoesContain(t, testCase.name, manifestFixerArgs, "--targetSdkVersion  "+testCase.targetSdkVersionExpected)
+	}
+}
+
+func TestEnforceDefaultAppTargetSdkVersionFlag(t *testing.T) {
+	platform_sdk_codename := "Tiramisu"
+	platform_sdk_version := 31
+	testCases := []struct {
+		name                           string
+		enforceDefaultTargetSdkVersion bool
+		expectedError                  string
+		platform_sdk_final             bool
+		targetSdkVersionInBp           string
+		targetSdkVersionExpected       string
+		updatable                      bool
+	}{
+		{
+			name:                           "Not enforcing Target SDK Version: Android.bp has older targetSdkVersion",
+			enforceDefaultTargetSdkVersion: false,
+			targetSdkVersionInBp:           "29",
+			targetSdkVersionExpected:       "29",
+			updatable:                      false,
+		},
+		{
+			name:                           "Enforce Target SDK Version: Android.bp has older targetSdkVersion",
+			enforceDefaultTargetSdkVersion: true,
+			targetSdkVersionInBp:           "30",
+			targetSdkVersionExpected:       platform_sdk_codename,
+			updatable:                      false,
+		},
+		{
+			name:                           "[SDK finalised] Enforce Target SDK Version: Android.bp has older targetSdkVersion",
+			enforceDefaultTargetSdkVersion: true,
+			platform_sdk_final:             true,
+			targetSdkVersionInBp:           "30",
+			targetSdkVersionExpected:       "31",
+			updatable:                      false,
+		},
+		{
+			name:                           "Not enforcing Target SDK Version for Updatable app",
+			enforceDefaultTargetSdkVersion: false,
+			expectedError:                  "Updatable apps must enforce default target sdk version",
+			targetSdkVersionInBp:           "29",
+			targetSdkVersionExpected:       "29",
+			updatable:                      true,
+		},
+	}
+	for _, testCase := range testCases {
+		errExpected := testCase.expectedError != ""
+		bp := fmt.Sprintf(`
+			android_app {
+				name: "foo",
+				enforce_default_target_sdk_version: %t,
+				sdk_version: "current",
+        min_sdk_version: "29",
+				target_sdk_version: "%v",
+				updatable: %t
+			}
+			`, testCase.enforceDefaultTargetSdkVersion, testCase.targetSdkVersionInBp, testCase.updatable)
+
+		fixture := android.GroupFixturePreparers(
+			PrepareForTestWithJavaDefaultModules,
+			android.PrepareForTestWithAllowMissingDependencies,
+			android.PrepareForTestWithAndroidMk,
+			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+				// explicitly set following platform variables to make the test deterministic
+				variables.Platform_sdk_final = &testCase.platform_sdk_final
+				variables.Platform_sdk_version = &platform_sdk_version
+				variables.Platform_sdk_codename = &platform_sdk_codename
+			}),
+		)
+
+		errorHandler := android.FixtureExpectsNoErrors
+		if errExpected {
+			errorHandler = android.FixtureExpectsAtLeastOneErrorMatchingPattern(testCase.expectedError)
+		}
+		result := fixture.ExtendWithErrorHandler(errorHandler).RunTestWithBp(t, bp)
+
+		if !errExpected {
+			foo := result.ModuleForTests("foo", "android_common")
+			manifestFixerArgs := foo.Output("manifest_fixer/AndroidManifest.xml").Args["args"]
+			android.AssertStringDoesContain(t, testCase.name, manifestFixerArgs, "--targetSdkVersion  "+testCase.targetSdkVersionExpected)
+		}
+	}
+}
+
 func TestAppMissingCertificateAllowMissingDependencies(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		PrepareForTestWithJavaDefaultModules,
