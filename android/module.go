@@ -2759,8 +2759,10 @@ func (m *moduleContext) Build(pctx PackageContext, params BuildParams) {
 	}
 
 	if missingDeps := m.GetMissingDependencies(); len(missingDeps) > 0 {
-		pctx, params = m.ninjaError(params, fmt.Errorf("module %s missing dependencies: %s\n",
-			m.ModuleName(), strings.Join(missingDeps, ", ")))
+		if !m.Config().AllowMissingDependencies() || params.Output == nil || !strings.HasSuffix(params.Output.String(), "meta_lic") {
+			pctx, params = m.ninjaError(params, fmt.Errorf("module %s missing dependencies: %s\n",
+				m.ModuleName(), strings.Join(missingDeps, ", ")))
+		}
 	}
 
 	if m.config.captureBuild {
