@@ -16,6 +16,23 @@
       "message": "Thanks for finding a reasonable workaround.",
       "revId": "cdcb680dbdd5eca4974eab623a782a0bc3c074e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6432760d_f902901a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1955076
+      },
+      "writtenOn": "2022-06-11T06:54:37Z",
+      "side": 1,
+      "message": "12",
+      "revId": "cdcb680dbdd5eca4974eab623a782a0bc3c074e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
