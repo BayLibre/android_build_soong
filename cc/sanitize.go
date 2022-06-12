@@ -960,7 +960,7 @@ type SplitMutator interface {
 	// Called after a module was split into multiple variations on each variation.
 	// It should not split the module any further but adding new dependencies is
 	// fine.
-	mutate(mctx android.BottomUpMutatorContext, variation string, variations []string)
+	mutate(mctx android.BottomUpMutatorContext, variation string)
 }
 
 // TODO: This functionality is probably too generic for this file.
@@ -1062,17 +1062,15 @@ func (s *splitMutatorImpl) bottomUpMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (s *splitMutatorImpl) mutateMutator(ctx android.BottomUpMutatorContext) {
-	var variations []string
 	var currentVariation string
 
 	{
 		s.splitLock.Lock()
 		defer s.splitLock.Unlock()
-		variations = s.splits[ctx.Module()]
 		currentVariation = s.variation[ctx.Module()]
 	}
 
-	s.mutator.mutate(ctx, currentVariation, variations)
+	s.mutator.mutate(ctx, currentVariation)
 }
 
 type sanitizerSplitMutator struct {
@@ -1145,18 +1143,30 @@ func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext) []string {
 	return nil
 }
 
-func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, variationName string, variations []string) {
+func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, variationName string) {
 	sanitizerVariation := variationName == s.sanitizer.variationName()
 
 	if c, ok := mctx.Module().(PlatformSanitizeable); ok && c.SanitizePropDefined() {
 		sanitizerEnabled := c.IsSanitizerEnabled(s.sanitizer)
 
-		if len(variations) > 1 {
+		oneMakeVariation := false
+		if c.StaticallyLinked() || c.Header() {
 			if s.sanitizer != cfi && s.sanitizer != scs && s.sanitizer != Hwasan {
-				if sanitizerEnabled != sanitizerVariation {
-					c.SetPreventInstall()
-					c.SetHideFromMake()
-				}
+				oneMakeVariation = true
+			}
+		} else if !c.Binary() {
+			// Shared library. These are the sanitizers that do propagate through shared
+			// library dependencies and therefore can cause multiple variations of a
+			// shared library to be built.
+			if s.sanitizer != cfi && s.sanitizer != Hwasan && s.sanitizer != scs && s.sanitizer != Asan {
+				oneMakeVariation = true
+			}
+		}
+
+		if oneMakeVariation {
+			if sanitizerEnabled != sanitizerVariation {
+				c.SetPreventInstall()
+				c.SetHideFromMake()
 			}
 		}
 
