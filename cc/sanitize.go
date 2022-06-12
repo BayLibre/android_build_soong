@@ -154,7 +154,9 @@ func (t SanitizerType) name() string {
 func (t SanitizerType) registerMutators(ctx android.RegisterMutatorsContext) {
 	switch t {
 	case cfi, Hwasan, Asan, tsan, Fuzzer, scs:
-		split := createSplitMutator(t, &sanitizerSplitMutator{t})
+		sanitizer := &sanitizerSplitMutator{t}
+		split := createSplitMutator(t, sanitizer)
+		ctx.TopDown(t.variationName()+"_markapexes", sanitizer.markSanitizableApexesMutator)
 		split.register(ctx)
 	//case cfi:
 	//	ctx.TopDown(t.variationName()+"_deps", sanitizerDepsMutator(t))
@@ -1020,8 +1022,10 @@ func (s *splitMutatorImpl) register(ctx android.RegisterMutatorsContext) {
 func (s *splitMutatorImpl) topDownMutator(ctx android.TopDownMutatorContext) {
 	s.addSplits(ctx.Module(), s.mutator.split(ctx)...)
 	splits := s.getSplits(ctx.Module())
-	// TODO: maybe modules that did not get split also have an opinion about the
-	// variant they want?
+	if splits == nil {
+		splits = []string{""}
+	}
+
 	for _, srcVariation := range splits {
 		ctx.VisitDirectDeps(func(dep android.Module) {
 			outgoingVariation := s.mutator.outgoingTransition(ctx.Module(), srcVariation, ctx.OtherModuleDependencyTag(dep))
@@ -1075,6 +1079,21 @@ type sanitizerSplitMutator struct {
 	sanitizer SanitizerType
 }
 
+func (s *sanitizerSplitMutator) markSanitizableApexesMutator(ctx android.TopDownMutatorContext) {
+	if sanitizeable, ok := ctx.Module().(Sanitizeable); ok {
+		enabled := sanitizeable.IsSanitizerEnabled(ctx.Config(), s.sanitizer.name())
+		ctx.VisitDirectDeps(func(dep android.Module) {
+			if c, ok := dep.(*Module); ok && c.sanitize.isSanitizerEnabled(s.sanitizer) {
+				enabled = true
+			}
+		})
+
+		if enabled {
+			sanitizeable.EnableSanitizer(s.sanitizer.name())
+		}
+	}
+}
+
 func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext) []string {
 	if c, ok := ctx.Module().(PlatformSanitizeable); ok && c.SanitizePropDefined() {
 		if s.sanitizer == cfi && needsCfiForVendorSnapshot(ctx) {
@@ -1104,20 +1123,11 @@ func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext) []string {
 	}
 
 	if sanitizeable, ok := ctx.Module().(Sanitizeable); ok {
-		// If an APEX module includes a lib which is enabled for a sanitizer T, then
-		// the APEX module is also enabled for the same sanitizer type. We only
-		// built one version of the APEX module.
 		enabled := sanitizeable.IsSanitizerEnabled(ctx.Config(), s.sanitizer.name())
-		ctx.VisitDirectDeps(func(dep android.Module) {
-			if c, ok := dep.(*Module); ok && c.sanitize.isSanitizerEnabled(s.sanitizer) {
-				enabled = true
-			}
-		})
-
 		if enabled {
 			return []string{s.sanitizer.variationName()}
 		} else {
-			return nil
+			return []string{""}
 		}
 	}
 
@@ -1128,7 +1138,7 @@ func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext) []string {
 		if ss, ok := c.linker.(snapshotSanitizer); ok && ss.isSanitizerEnabled(s.sanitizer) {
 			return []string{"", s.sanitizer.variationName()}
 		} else {
-			return nil
+			return []string{""}
 		}
 	}
 
