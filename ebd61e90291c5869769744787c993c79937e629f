@@ -22,6 +22,30 @@
       },
       "revId": "ebd61e90291c5869769744787c993c79937e629f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f0da363_7784678b",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1139038
+      },
+      "writtenOn": "2022-06-13T04:28:16Z",
+      "side": 1,
+      "message": "Commented on line 143 b/185115783, the bootloader signing problem on x86, meant we need a way to select wither the bootloader signed by this rule, or the unsigned bootloader. APEXs don\u0027t allow per-arch prebuilts and it didn\u0027t look easy to change that, so I\u0027ve hacked it in here until the bug is resolved.",
+      "parentUuid": "26487805_91d30cfc",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 1
+      },
+      "revId": "ebd61e90291c5869769744787c993c79937e629f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
