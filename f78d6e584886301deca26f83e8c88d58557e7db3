@@ -16,6 +16,24 @@
       "message": "Friendly ping to get our build green again. Thank you !",
       "revId": "f78d6e584886301deca26f83e8c88d58557e7db3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28fdb027_5dce1ca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-13T19:07:02Z",
+      "side": 1,
+      "message": "This change isn\u0027t submittable as-is, I\u0027m discussing reverting the breaking change instead.",
+      "parentUuid": "003222f2_1f456fe2",
+      "revId": "f78d6e584886301deca26f83e8c88d58557e7db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
