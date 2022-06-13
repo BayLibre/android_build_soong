@@ -2195,6 +2195,9 @@ cc_prebuilt_library_shared {
     },
 }
 `),
+		// TODO(lberki): it looks like changing this code is the right thing to do
+		// because if the SDK depends on a library it should presumably not be
+		// silently removed just because it supports HWASAN
 		checkAllCopyRules(`
 myinclude/Test.h -> include/myinclude/Test.h
 arm64/include/Arm64Test.h -> arm64/include/arm64/include/Arm64Test.h
