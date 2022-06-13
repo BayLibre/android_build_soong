@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f365e3_ae3b286c",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-06-13T18:38:11Z",
+      "side": 1,
+      "message": "don\u0027t - Feel free to just fix this in the follow-up change, since this CL is already PV+2.",
+      "range": {
+        "startLine": 23,
+        "startChar": 40,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "794b81d9d18ce138efdcf7b016acc822d9d85da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
