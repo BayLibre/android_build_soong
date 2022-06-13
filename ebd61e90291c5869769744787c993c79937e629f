@@ -46,6 +46,30 @@
       },
       "revId": "ebd61e90291c5869769744787c993c79937e629f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5212d07d_079295e8",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1139038
+      },
+      "writtenOn": "2022-06-13T04:29:21Z",
+      "side": 1,
+      "message": "It\u0027s required for this https://android-review.googlesource.com/c/platform/packages/modules/Virtualization/+/2121892/3/microdroid/Android.bp#428",
+      "parentUuid": "3f0da363_7784678b",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 1
+      },
+      "revId": "ebd61e90291c5869769744787c993c79937e629f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
