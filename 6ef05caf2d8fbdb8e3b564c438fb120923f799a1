@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54afb453_e456f606",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-13T15:40:50Z",
+      "side": 1,
+      "message": "(We had discussed this f2f earlier)\nPruning bazel_tools out of depsets (i.e. in aquery.go) would require a bit more work due to how py3wrapper works. Namely, `pythonZipperActionBuildStatement()` relies on reading the zipper tool from inputPaths.\n\nAlthough, it is always \"../bazel_tools/tools/zip/zipper/zipper\" so maybe it\u0027s ok to actually use this directly instead of relying on inputPaths[0] being it. Will add @weili as a reviewer.",
+      "parentUuid": "aef38882_8d824ef2",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfdf8bb2_7083b8da",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-06-07T16:43:32Z",
       "side": 1,
       "message": "What actions rely on bazel_tools being present? I remember we spoke offline about this -- that some bazel handling logic checks for the presence of certain artifacts under bazel_tools. Can you point me to them?\n\nI ask because I\u0027m worried that our artifact filtering is being done in too many places -- the code is getting a bit more unintuitive and spaghetti-like. I\u0027d like to investigate whether there is any refactoring we can do to get ahead of this.",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c870ab0_d151f339",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-13T15:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfdf8bb2_7083b8da",
       "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -95,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fd0e60f_907df115",
+        "filename": "scripts/verify_null_builds.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-13T15:40:50Z",
+      "side": 1,
+      "message": "license headers added",
+      "parentUuid": "712ca6bf_a27fa859",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e0106b5_4029d775",
         "filename": "scripts/verify_null_builds.sh",
         "patchSetId": 9
@@ -106,6 +166,24 @@
       "writtenOn": "2022-06-07T16:43:32Z",
       "side": 1,
       "message": "Can we document what outputs are expected by this script? It looks like this script leaves information under `report_root`",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a1334a_a316dfac",
+        "filename": "scripts/verify_null_builds.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-13T15:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e0106b5_4029d775",
       "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -123,6 +201,24 @@
       "writtenOn": "2022-06-07T16:43:32Z",
       "side": 1,
       "message": "nit: technically \"module_name\" I think, if we\u0027re using soong vocabulary :\\",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926d40fc_33b6bf90",
+        "filename": "scripts/verify_null_builds.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-13T15:40:50Z",
+      "side": 1,
+      "message": "Well these examples however are \"make targets\" but yes in general what m takes are make target, soong module names and some special pseudo targets.\nLMK if you have a better name or I could just use something less descriptive like `\u003cm_arg\u003e`and say argument for `m`",
+      "parentUuid": "16814bac_a0ab85de",
       "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

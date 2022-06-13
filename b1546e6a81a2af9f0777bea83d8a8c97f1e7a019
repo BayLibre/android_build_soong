@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c23bc5_32b89888",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-13T15:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f95c7135_3dee8684",
+      "range": {
+        "startLine": 849,
+        "startChar": 1,
+        "endLine": 849,
+        "endChar": 2
+      },
+      "revId": "b1546e6a81a2af9f0777bea83d8a8c97f1e7a019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0c9214a_b328a7ee",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-07T16:43:32Z",
       "side": 1,
       "message": "It feels a a little hacky and unintuitive to use Android.bp as the dummy file for which empty depsets point to. Could we have a file completely otherwise unrelated to the build for this purpose?",
+      "range": {
+        "startLine": 859,
+        "startChar": 0,
+        "endLine": 859,
+        "endChar": 1
+      },
+      "revId": "b1546e6a81a2af9f0777bea83d8a8c97f1e7a019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e741e9_fa392a38",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-13T15:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0c9214a_b328a7ee",
       "range": {
         "startLine": 859,
         "startChar": 0,
