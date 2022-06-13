@@ -93,6 +93,7 @@ type RegisterMutatorsContext interface {
 	TopDown(name string, m TopDownMutator) MutatorHandle
 	BottomUp(name string, m BottomUpMutator) MutatorHandle
 	BottomUpBlueprint(name string, m blueprint.BottomUpMutator) MutatorHandle
+	Transition(name string, m TransitionMutator)
 }
 
 type RegisterMutatorFunc func(RegisterMutatorsContext)
@@ -297,9 +298,6 @@ type BottomUpMutatorContext interface {
 	// automatically be updated to point to the first variant.
 	CreateVariations(...string) []Module
 
-	// TODO: This should probably not be accessible for code outside of Blueprint
-	CreateVariationsWithTransition(transition blueprint.Transition, variationNames ...string) []Module
-
 	// CreateLocationVariations splits a module into multiple variants, one for each name in the variantNames
 	// parameter.  It returns a list of new modules in the same order as the variantNames
 	// list.
@@ -308,9 +306,6 @@ type BottomUpMutatorContext interface {
 	// to the split module via deps or DynamicDependerModule must exactly match a variant
 	// that contains all the non-local variations.
 	CreateLocalVariations(...string) []Module
-
-	// TODO: This should probably not be accessible for code outside of Blueprint
-	ApplyTransition(transition blueprint.Transition)
 
 	// SetDependencyVariation sets all dangling dependencies on the current module to point to the variation
 	// with given name. This function ignores the default variation set by SetDefaultDependencyVariation.
@@ -427,6 +422,63 @@ func (x *registerMutatorsContext) BottomUpBlueprint(name string, m blueprint.Bot
 	return mutator
 }
 
+type TransitionMutator interface {
+	Split(ctx BaseModuleContext) []string
+	OutgoingTransition(m Module, sourceVariation string, depTag blueprint.DependencyTag) string
+	IncomingTransition(config Config, incomingVariation string, dep Module) string
+	Mutate(mctx BottomUpMutatorContext, variation string)
+}
+
+type androidTransitionMutator struct {
+	finalPhase          bool
+	bazelConversionMode bool
+	mutator             TransitionMutator
+}
+
+func (a *androidTransitionMutator) Split(ctx blueprint.BaseModuleContext) []string {
+	if m, ok := ctx.Module().(Module); ok {
+		moduleContext := m.base().baseModuleContextFactory(ctx)
+		moduleContext.bazelConversionMode = a.bazelConversionMode
+		return a.mutator.Split(&moduleContext)
+	} else {
+		return []string{""}
+	}
+}
+
+func (a *androidTransitionMutator) OutgoingTransition(m blueprint.Module, sourceVariation string, depTag blueprint.DependencyTag) string {
+	if am, ok := m.(Module); ok {
+		return a.mutator.OutgoingTransition(am, sourceVariation, depTag)
+	} else {
+		return ""
+	}
+}
+
+func (a *androidTransitionMutator) IncomingTransition(config interface{}, incomingVariation string, dep blueprint.Module) string {
+	if ad, ok := dep.(Module); ok {
+		return a.mutator.IncomingTransition(config.(Config), incomingVariation, ad)
+	} else {
+		return ""
+	}
+}
+
+func (a *androidTransitionMutator) Mutate(mctx blueprint.BottomUpMutatorContext, variation string) {
+	if am, ok := mctx.Module().(Module); ok {
+		a.mutator.Mutate(bottomUpMutatorContextFactory(mctx, am, a.finalPhase, a.bazelConversionMode), variation)
+	}
+}
+
+func (x *registerMutatorsContext) Transition(name string, m TransitionMutator) {
+	atm := &androidTransitionMutator{
+		finalPhase:          x.finalPhase,
+		bazelConversionMode: x.bazelConversionMode,
+		mutator:             m,
+	}
+	mutator := &mutator{
+		name:              name,
+		transitionMutator: atm}
+	x.mutators = append(x.mutators, mutator)
+}
+
 func (x *registerMutatorsContext) mutatorName(name string) string {
 	if x.bazelConversionMode {
 		return name + "_bp2build"
@@ -462,6 +514,8 @@ func (mutator *mutator) register(ctx *Context) {
 		handle = blueprintCtx.RegisterBottomUpMutator(mutator.name, mutator.bottomUpMutator)
 	} else if mutator.topDownMutator != nil {
 		handle = blueprintCtx.RegisterTopDownMutator(mutator.name, mutator.topDownMutator)
+	} else if mutator.transitionMutator != nil {
+		blueprintCtx.RegisterTransitionMutator(mutator.name, mutator.transitionMutator)
 	}
 	if mutator.parallel {
 		handle.Parallel()
@@ -601,24 +655,6 @@ func (b *bottomUpMutatorContext) CreateVariations(variations ...string) []Module
 	return aModules
 }
 
-func (b *bottomUpMutatorContext) CreateVariationsWithTransition(transition blueprint.Transition, variations ...string) []Module {
-	if b.finalPhase {
-		panic("CreateVariations not allowed in FinalDepsMutators")
-	}
-
-	modules := b.bp.CreateVariationsWithTransition(transition, variations...)
-
-	aModules := make([]Module, len(modules))
-	for i := range variations {
-		aModules[i] = modules[i].(Module)
-		base := aModules[i].base()
-		base.commonProperties.DebugMutators = append(base.commonProperties.DebugMutators, b.MutatorName())
-		base.commonProperties.DebugVariations = append(base.commonProperties.DebugVariations, variations[i])
-	}
-
-	return aModules
-}
-
 func (b *bottomUpMutatorContext) CreateLocalVariations(variations ...string) []Module {
 	if b.finalPhase {
 		panic("CreateLocalVariations not allowed in FinalDepsMutators")
@@ -635,10 +671,6 @@ func (b *bottomUpMutatorContext) CreateLocalVariations(variations ...string) []M
 	}
 
 	return aModules
-}
-
-func (b *bottomUpMutatorContext) ApplyTransition(transition blueprint.Transition) {
-	b.bp.ApplyTransition(transition)
 }
 
 func (b *bottomUpMutatorContext) SetDependencyVariation(variation string) {

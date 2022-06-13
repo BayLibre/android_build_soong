@@ -155,9 +155,8 @@ func (t SanitizerType) registerMutators(ctx android.RegisterMutatorsContext) {
 	switch t {
 	case cfi, Hwasan, Asan, tsan, Fuzzer, scs:
 		sanitizer := &sanitizerSplitMutator{t}
-		split := createSplitMutator(t, sanitizer)
 		ctx.TopDown(t.variationName()+"_markapexes", sanitizer.markSanitizableApexesMutator)
-		split.register(ctx)
+		ctx.Transition(t.variationName(), sanitizer)
 	//case cfi:
 	//	ctx.TopDown(t.variationName()+"_deps", sanitizerDepsMutator(t))
 	//	ctx.BottomUp(t.variationName(), sanitizerMutator(t))
@@ -939,140 +938,6 @@ func needsCfiForVendorSnapshot(mctx android.BaseModuleContext) bool {
 		!c.IsSanitizerExplicitlyDisabled(cfi)
 }
 
-type SplitMutator interface {
-	// Returns the set of variations that should be created for a module no matter
-	// who depends on it. Used when Make depends on a particular variation or when
-	// the module knows its variations just based on information given to it in
-	// the Blueprint file.
-	split(ctx android.BaseModuleContext) []string
-
-	// Called on a module to determine which variation it wants from its direct
-	// dependencies. It should only look at the module where the dependency edge
-	// originates from and not its dependencies (ideally, we'd not even pass in
-	// a BaseModuleContext)
-	outgoingTransition(m android.Module, sourceVariation string, depTag blueprint.DependencyTag) string
-
-	// Called on a module to determine which variation it should be in based on
-	// the variation modules that depend on it want. This makes it possible for
-	// a module to override what other modules that depend on it want.
-	incomingTransition(config android.Config, incomingVariation string, dep blueprint.Module) string
-
-	// Called after a module was split into multiple variations on each variation.
-	// It should not split the module any further but adding new dependencies is
-	// fine.
-	mutate(mctx android.BottomUpMutatorContext, variation string)
-}
-
-// TODO: This functionality is probably too generic for this file.
-type splitMutatorImpl struct {
-	name    string
-	mutator SplitMutator
-
-	// sync.Map doesn't work (easily) because we can't update the value atomically
-	// TODO: once splitMutatorImpl functionality is pulled into Blueprint, replace
-	// this with members of blueprint.moduleInfo
-	// This is getting more and more inefficient, recently passing from "very" to
-	// "hilariously" so.
-	splits    map[blueprint.Module][]string
-	variation map[blueprint.Module]string
-	splitLock sync.Mutex
-}
-
-func createSplitMutator(t SanitizerType, mutator SplitMutator) splitMutatorImpl {
-	result := splitMutatorImpl{
-		name:    t.variationName(),
-		mutator: mutator,
-	}
-
-	result.splits = make(map[blueprint.Module][]string)
-	result.variation = make(map[blueprint.Module]string)
-	return result
-}
-
-func (s *splitMutatorImpl) addSplits(m blueprint.Module, variations ...string) {
-	s.splitLock.Lock()
-	defer s.splitLock.Unlock()
-	for _, variation := range variations {
-		if !android.InList(variation, s.splits[m]) {
-			s.splits[m] = append(s.splits[m], variation)
-		}
-	}
-}
-
-func (s *splitMutatorImpl) getSplits(m blueprint.Module) []string {
-	s.splitLock.Lock()
-	defer s.splitLock.Unlock()
-	return s.splits[m]
-}
-
-func (s *splitMutatorImpl) register(ctx android.RegisterMutatorsContext) {
-	ctx.TopDown(s.name+"_deps", func(ctx android.TopDownMutatorContext) {
-		s.topDownMutator(ctx)
-	})
-
-	ctx.BottomUp(s.name, func(ctx android.BottomUpMutatorContext) {
-		s.bottomUpMutator(ctx)
-	})
-
-	ctx.BottomUp(s.name+"_mutate", func(ctx android.BottomUpMutatorContext) {
-		s.mutateMutator(ctx)
-	})
-}
-
-func (s *splitMutatorImpl) topDownMutator(ctx android.TopDownMutatorContext) {
-	s.addSplits(ctx.Module(), s.mutator.split(ctx)...)
-	splits := s.getSplits(ctx.Module())
-	if splits == nil {
-		splits = []string{""}
-	}
-
-	for _, srcVariation := range splits {
-		ctx.VisitDirectDeps(func(dep android.Module) {
-			outgoingVariation := s.mutator.outgoingTransition(ctx.Module(), srcVariation, ctx.OtherModuleDependencyTag(dep))
-			finalVariation := s.mutator.incomingTransition(ctx.Config(), outgoingVariation, dep)
-			s.addSplits(dep, finalVariation)
-		})
-	}
-}
-
-func (s *splitMutatorImpl) blueprintTransition(ctx android.BaseMutatorContext) blueprint.Transition {
-	return func(source blueprint.Module, sourceVariation string, dep blueprint.Module, depTag blueprint.DependencyTag) string {
-		outgoingVariation := s.mutator.outgoingTransition(ctx.Module(), sourceVariation, depTag)
-		finalVariation := s.mutator.incomingTransition(ctx.Config(), outgoingVariation, dep)
-		return finalVariation
-	}
-}
-
-func (s *splitMutatorImpl) bottomUpMutator(ctx android.BottomUpMutatorContext) {
-	variations := s.getSplits(ctx.Module())
-	if variations == nil || (len(variations) == 1 && variations[0] == "") {
-		// Module is not split, just apply the transition
-		ctx.ApplyTransition(s.blueprintTransition(ctx))
-		return
-	}
-
-	splits := ctx.CreateVariationsWithTransition(s.blueprintTransition(ctx), variations...)
-
-	s.splitLock.Lock()
-	defer s.splitLock.Unlock()
-	for i, split := range splits {
-		s.splits[split] = variations
-		s.variation[split] = variations[i]
-	}
-}
-
-func (s *splitMutatorImpl) mutateMutator(ctx android.BottomUpMutatorContext) {
-	var currentVariation string
-
-	{
-		s.splitLock.Lock()
-		defer s.splitLock.Unlock()
-		currentVariation = s.variation[ctx.Module()]
-	}
-
-	s.mutator.mutate(ctx, currentVariation)
-}
-
 type sanitizerSplitMutator struct {
 	sanitizer SanitizerType
 }
@@ -1092,7 +957,7 @@ func (s *sanitizerSplitMutator) markSanitizableApexesMutator(ctx android.TopDown
 	}
 }
 
-func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext) []string {
+func (s *sanitizerSplitMutator) Split(ctx android.BaseModuleContext) []string {
 	if c, ok := ctx.Module().(PlatformSanitizeable); ok && c.SanitizePropDefined() {
 		if s.sanitizer == cfi && needsCfiForVendorSnapshot(ctx) {
 			return []string{"", s.sanitizer.variationName()}
@@ -1117,7 +982,7 @@ func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext) []string {
 	if _, ok := ctx.Module().(JniSanitizeable); ok {
 		// TODO: this should call into JniSanitizable.IsSanitizerEnabledForJni but
 		// that is short-circuited for now
-		return nil
+		return []string{""}
 	}
 
 	if sanitizeable, ok := ctx.Module().(Sanitizeable); ok {
@@ -1140,10 +1005,10 @@ func (s *sanitizerSplitMutator) split(ctx android.BaseModuleContext) []string {
 		}
 	}
 
-	return nil
+	return []string{""}
 }
 
-func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, variationName string) {
+func (s *sanitizerSplitMutator) Mutate(mctx android.BottomUpMutatorContext, variationName string) {
 	sanitizerVariation := variationName == s.sanitizer.variationName()
 
 	if c, ok := mctx.Module().(PlatformSanitizeable); ok && c.SanitizePropDefined() {
@@ -1216,7 +1081,7 @@ func (s *sanitizerSplitMutator) mutate(mctx android.BottomUpMutatorContext, vari
 	}
 }
 
-func (s *sanitizerSplitMutator) incomingTransition(config android.Config, incomingVariation string, dep blueprint.Module) string {
+func (s *sanitizerSplitMutator) IncomingTransition(config android.Config, incomingVariation string, dep android.Module) string {
 	if d, ok := dep.(PlatformSanitizeable); ok {
 		if dm, ok := dep.(*Module); ok {
 			if ss, ok := dm.linker.(snapshotSanitizer); ok && ss.isSanitizerEnabled(s.sanitizer) {
@@ -1269,7 +1134,7 @@ func (s *sanitizerSplitMutator) incomingTransition(config android.Config, incomi
 	return ""
 }
 
-func (s *sanitizerSplitMutator) outgoingTransition(m android.Module, sourceVariation string, depTag blueprint.DependencyTag) string {
+func (s *sanitizerSplitMutator) OutgoingTransition(m android.Module, sourceVariation string, depTag blueprint.DependencyTag) string {
 	if c, ok := m.(PlatformSanitizeable); ok {
 		if !c.SanitizableDepTagChecker()(depTag) {
 			// If the dependency is through a non-sanitizable tag, use the
