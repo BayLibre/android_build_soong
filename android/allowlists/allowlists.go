@@ -39,6 +39,7 @@ var (
 	Bp2buildDefaultConfig = Bp2BuildConfig{
 		"prebuilts/runtime/mainline/platform/sdk":            Bp2BuildDefaultTrueRecursively,
 		"art/libartpalette":                                  Bp2BuildDefaultTrueRecursively,
+		"art/libartbase":                                     Bp2BuildDefaultTrueRecursively,
 		"art/libdexfile":                                     Bp2BuildDefaultTrueRecursively,
 		"art/libnativebridge":                                Bp2BuildDefaultTrueRecursively,
 		"art/runtime":                                        Bp2BuildDefaultTrueRecursively,
@@ -108,6 +109,7 @@ var (
 		"external/eigen":                                     Bp2BuildDefaultTrueRecursively,
 		"external/erofs-utils":                               Bp2BuildDefaultTrueRecursively,
 		"external/error_prone":                               Bp2BuildDefaultTrueRecursively,
+		"external/expat":                                     Bp2BuildDefaultTrueRecursively,
 		"external/f2fs-tools":                                Bp2BuildDefaultTrue,
 		"external/flac":                                      Bp2BuildDefaultTrueRecursively,
 		"external/fmtlib":                                    Bp2BuildDefaultTrueRecursively,
@@ -146,7 +148,7 @@ var (
 		"external/zlib":                                      Bp2BuildDefaultTrueRecursively,
 		"external/zopfli":                                    Bp2BuildDefaultTrueRecursively,
 		"external/zstd":                                      Bp2BuildDefaultTrueRecursively,
-		"frameworks/av/media/codecs/g711/decoder":            Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/codecs":                         Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/services/minijail":                    Bp2BuildDefaultTrueRecursively,
 		"frameworks/base/media/tests/MediaDump":              Bp2BuildDefaultTrue,
 		"frameworks/base/startop/apps/test":                  Bp2BuildDefaultTrue,
@@ -279,39 +281,49 @@ var (
 		"flatbuffer_headers",
 		"gemmlowp_headers",
 		"gl_headers",
+		"libandroid_runtime_lazy",
 		"libandroid_runtime_vm_headers",
 		"libaudioclient_aidl_conversion_util",
 		"libaudioutils_fixedfft",
+		"libbinder_headers",
 		"libbinder_headers_platform_shared",
 		"libbluetooth-types-header",
+		"libbufferhub_headers",
+		"libcodec2",
 		"libcodec2_headers",
 		"libcodec2_internal",
 		"libdmabufheap",
+		"libdvr_headers",
 		"libgsm",
 		"libgui_bufferqueue_sources",
+		"libhardware",
 		"libhardware_headers",
+		"libincfs_headers",
 		"libnativeloader-headers",
 		"libnativewindow_headers",
 		"libneuralnetworks_headers",
 		"libopus",
+		"libpdx_headers",
 		"libprocpartition",
+		"libruy_static",
 		"libserviceutils",
-		"libstagefright_amrnb_common",
-		"libstagefright_amrwbdec",
 		"libstagefright_enc_common",
 		"libstagefright_foundation_headers",
 		"libstagefright_headers",
-		"libstagefright_m4vh263dec",
-		"libstagefright_m4vh263enc",
-		"libstagefright_mp3dec_headers",
+		"libsurfaceflinger_headers",
 		"libsync",
 		"libtextclassifier_hash_headers",
 		"libtextclassifier_hash_static",
+		"libtflite_kernel_utils",
+		"libtinyxml2",
 		"libui-types",
+		"libui_headers",
 		"libvorbisidec",
 		"media_ndk_headers",
+		"media_plugin_headers",
 		"mediaswcodec.policy",
 		"mediaswcodec.xml",
+		"philox_random",
 		"philox_random_headers",
 		"server_configurable_flags",
 		"tensorflow_headers",
@@ -360,10 +372,12 @@ var (
 		"gen-kotlin-build-file.py",                  // TODO(b/198619163) module has same name as source
 		"libgtest_ndk_c++", "libgtest_main_ndk_c++", // TODO(b/201816222): Requires sdk_version support.
 		"linkerconfig", "mdnsd", // TODO(b/202876379): has arch-variant static_executable
-		"linker",       // TODO(b/228316882): cc_binary uses link_crt
-		"libdebuggerd", // TODO(b/228314770): support product variable-specific header_libs
-		"versioner",    // TODO(b/228313961):  depends on prebuilt shared library libclang-cpp_host as a shared library, which does not supply expected providers for a shared library
-		"apexer_test",  // Requires aapt2
+		"linker",            // TODO(b/228316882): cc_binary uses link_crt
+		"libdebuggerd",      // TODO(b/228314770): support product variable-specific header_libs
+		"versioner",         // TODO(b/228313961):  depends on prebuilt shared library libclang-cpp_host as a shared library, which does not supply expected providers for a shared library
+		"libspeexresampler", // TODO(b/231995978): Filter out unknown cflags
+		"libjpeg", "libvpx", // TODO(b/233948256): Convert .asm files
+		"apexer_test", // Requires aapt2
 		"apexer_test_host_tools",
 		"host_apex_verifier",
 
@@ -381,6 +395,9 @@ var (
 		"prebuilt_car-ui-androidx-core-common",         // TODO(b/224773339), genrule dependency creates an .aar, not a .jar
 		"prebuilt_platform-robolectric-4.4-prebuilt",   // aosp/1999250, needs .aar support in Jars
 		"prebuilt_platform-robolectric-4.5.1-prebuilt", // aosp/1999250, needs .aar support in Jars
+
+		// proto support
+		"libstats_proto_host", // TODO(b/236055697): handle protos from other packages
 
 		// path property for filegroups
 		"conscrypt",                        // TODO(b/210751803), we don't handle path property for filegroups
@@ -450,9 +467,11 @@ var (
 		"stats-log-api-gen",                         // depends on unconverted modules: libstats_proto_host
 		"statslog.cpp", "statslog.h", "statslog.rs", // depends on unconverted modules: stats-log-api-gen
 		"statslog_art.cpp", "statslog_art.h", "statslog_header.rs", // depends on unconverted modules: stats-log-api-gen
-		"timezone-host",       // depends on unconverted modules: art.module.api.annotations
-		"truth-host-prebuilt", // depends on unconverted modules: truth-prebuilt
-		"truth-prebuilt",      // depends on unconverted modules: asm-7.0, guava
+		"timezone-host",         // depends on unconverted modules: art.module.api.annotations
+		"truth-host-prebuilt",   // depends on unconverted modules: truth-prebuilt
+		"truth-prebuilt",        // depends on unconverted modules: asm-7.0, guava
+		"libartbase-art-gtest",  // depends on unconverted modules: libgtest_isolated, libart, libart-compiler, libdexfile, libprofile
+		"libartbased-art-gtest", // depends on unconverted modules: libgtest_isolated, libartd, libartd-compiler, libdexfiled, libprofiled
 
 		// b/215723302; awaiting tz{data,_version} to then rename targets conflicting with srcs
 		"tzdata",
