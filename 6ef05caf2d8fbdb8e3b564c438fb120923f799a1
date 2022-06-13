@@ -153,6 +153,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95cf5f47_74359cae",
+        "filename": "scripts/verify_null_builds.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-13T15:43:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fd0e60f_907df115",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "612ef01f_5f2f3cde",
+        "filename": "scripts/verify_null_builds.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-13T15:43:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ef6af48_113e24bf",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e0106b5_4029d775",
@@ -219,6 +261,24 @@
       "side": 1,
       "message": "Well these examples however are \"make targets\" but yes in general what m takes are make target, soong module names and some special pseudo targets.\nLMK if you have a better name or I could just use something less descriptive like `\u003cm_arg\u003e`and say argument for `m`",
       "parentUuid": "16814bac_a0ab85de",
+      "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4136cffa_dd1bba80",
+        "filename": "scripts/verify_null_builds.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-13T15:43:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "926d40fc_33b6bf90",
       "revId": "6ef05caf2d8fbdb8e3b564c438fb120923f799a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

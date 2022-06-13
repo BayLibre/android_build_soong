@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00441e22_f9ac4a81",
+        "filename": "tests/verify_null_builds.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-13T15:43:03Z",
+      "side": 1,
+      "message": "I am changing this script so that it can be added to integration test (will submit a separate CL)",
+      "revId": "d932a3133432816aa1a951e6a5e48ddcdc0cae63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
