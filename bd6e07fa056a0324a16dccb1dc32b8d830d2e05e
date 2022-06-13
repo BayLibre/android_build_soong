@@ -34,6 +34,23 @@
       "parentUuid": "8c82eeb0_271467aa",
       "revId": "bd6e07fa056a0324a16dccb1dc32b8d830d2e05e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66514048_0f669e73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1943701
+      },
+      "writtenOn": "2022-06-13T12:24:21Z",
+      "side": 1,
+      "message": "Please see https://r.android.com/2123492 for the better approach.",
+      "revId": "bd6e07fa056a0324a16dccb1dc32b8d830d2e05e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
