@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "003222f2_1f456fe2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2022-06-13T19:00:17Z",
+      "side": 1,
+      "message": "Friendly ping to get our build green again. Thank you !",
+      "revId": "f78d6e584886301deca26f83e8c88d58557e7db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
