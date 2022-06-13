@@ -70,7 +70,7 @@ func protoDeps(ctx DepsContext, deps Deps, p *android.ProtoProperties, static bo
 
 	if String(p.Proto.Plugin) == "" {
 		switch proptools.StringDefault(p.Proto.Type, protoTypeDefault) {
-		case "full":
+		case "full", "stream":
 			if ctx.useSdk() {
 				lib = "libprotobuf-cpp-full-ndk"
 				static = true
@@ -139,6 +139,9 @@ func protoFlags(ctx ModuleContext, flags Flags, p *android.ProtoProperties) Flag
 			// Disable nanopb timestamps to support remote caching.
 			flags.proto.OutParams = append(flags.proto.OutParams, "-T")
 			plugin = "protoc-gen-nanopb"
+		case "stream":
+			flags.proto.OutTypeFlag = "--cppstream_out"
+			plugin = "protoc-gen-cppstream"
 		case "full":
 			flags.proto.OutTypeFlag = "--cpp_out"
 		case "lite":
