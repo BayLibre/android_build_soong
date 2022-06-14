@@ -9,3 +9,4 @@ TOP="$(readlink -f "$(dirname "$0")"/../../..)"
 "$TOP/build/soong/tests/bp2build_bazel_test.sh"
 "$TOP/build/soong/tests/soong_test.sh"
 "$TOP/build/bazel/ci/rbc_regression_test.sh" aosp_arm64-userdebug
+"$TOP/build/soong/tests/apex_comparison_tests.sh"
