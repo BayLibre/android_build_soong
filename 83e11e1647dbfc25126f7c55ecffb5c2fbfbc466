@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90331758_764d4917",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-06-14T12:42:21Z",
+      "side": 1,
+      "message": "nit: mind naming variables in all caps? It\u0027s a nice visual distinguisher, which is very handy in a language that\u0027s as \"free-form\" as bash.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "83e11e1647dbfc25126f7c55ecffb5c2fbfbc466",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf0e31b_9c78e8d4",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-06-14T12:42:21Z",
+      "side": 1,
+      "message": "nit: `diff -u` would produce an output that\u0027s a bit visually nicer but I don\u0027t think it\u0027s obvious that it\u0027s objectively better",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 39
+      },
+      "revId": "83e11e1647dbfc25126f7c55ecffb5c2fbfbc466",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd179783_5d50aec0",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-06-14T12:42:21Z",
+      "side": 1,
+      "message": "nit: why not do the path computation in `compare_deapexer_list` instead so that these lines can simply be e.g. `compare_deapexer_list com.android.adbd.apex` ?",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 123
+      },
+      "revId": "83e11e1647dbfc25126f7c55ecffb5c2fbfbc466",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
