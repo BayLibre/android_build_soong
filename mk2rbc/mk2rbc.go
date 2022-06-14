@@ -830,21 +830,10 @@ func (ctx *parseContext) handleSubConfig(
 				pathPattern = append(pathPattern, chunk)
 			}
 		}
-		if pathPattern[0] == "" && len(ctx.includeTops) > 0 {
-			// If pattern starts from the top. restrict it to the directories where
-			// we know inherit-product uses dynamically calculated path.
-			for _, p := range ctx.includeTops {
-				pathPattern[0] = p
-				matchingPaths = append(matchingPaths, ctx.findMatchingPaths(pathPattern)...)
-			}
-		} else {
-			matchingPaths = ctx.findMatchingPaths(pathPattern)
-		}
+		matchingPaths = ctx.findMatchingPaths(pathPattern)
 		needsWarning = pathPattern[0] == "" && len(ctx.includeTops) == 0
 	} else if len(ctx.includeTops) > 0 {
-		for _, p := range ctx.includeTops {
-			matchingPaths = append(matchingPaths, ctx.findMatchingPaths([]string{p, ""})...)
-		}
+		matchingPaths = append(matchingPaths, ctx.findMatchingPaths([]string{"", ""})...)
 	} else {
 		return []starlarkNode{ctx.newBadNode(v, "inherit-product/include argument is too complex")}
 	}
@@ -879,10 +868,23 @@ func (ctx *parseContext) findMatchingPaths(pattern []string) []string {
 	s_regexp += "$"
 	rex := regexp.MustCompile(s_regexp)
 
+	includeTop_regexp := ""
+	if len(ctx.includeTops) > 0 {
+		for i, top := range ctx.includeTops {
+			if i > 0 {
+				includeTop_regexp += "|"
+			}
+			includeTop_regexp += "^" + regexp.QuoteMeta(top)
+		}
+	} else {
+		includeTop_regexp = ".*"
+	}
+	includeTop_rex := regexp.MustCompile(includeTop_regexp)
+
 	// Now match
 	var res []string
 	for _, p := range files {
-		if rex.MatchString(p) {
+		if rex.MatchString(p) && includeTop_rex.MatchString(p) {
 			res = append(res, p)
 		}
 	}
