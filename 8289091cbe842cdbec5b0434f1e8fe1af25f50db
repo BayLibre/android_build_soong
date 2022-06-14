@@ -86,6 +86,24 @@
       "message": "what\u0027s the state of this one?",
       "revId": "8289091cbe842cdbec5b0434f1e8fe1af25f50db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f48b0b_0e47d092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-06-14T13:21:29Z",
+      "side": 1,
+      "message": "Ready for review.",
+      "parentUuid": "5a48b89b_1d7d6a11",
+      "revId": "8289091cbe842cdbec5b0434f1e8fe1af25f50db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
