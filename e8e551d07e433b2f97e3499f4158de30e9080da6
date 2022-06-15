@@ -33,6 +33,47 @@
       "message": "nit (for my knowledge):\nIs this is because we support `string_list` but not `string` in https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/properties.go ?\n\nOtherwise `string` https://docs.bazel.build/versions/main/skylark/lib/attr.html#string\nprobably would be preferrable, right?",
       "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0bc03e3_ff7f70e5",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-15T19:41:59Z",
+      "side": 1,
+      "message": "+1 I was also going to ask the same thing.",
+      "parentUuid": "a6e61957_f3da9c49",
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aebd734_9254a32d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-15T19:41:59Z",
+      "side": 1,
+      "message": "With how `suffixes` is declared, isn\u0027t its length always `1`?",
+      "range": {
+        "startLine": 662,
+        "startChar": 4,
+        "endLine": 662,
+        "endChar": 21
+      },
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
