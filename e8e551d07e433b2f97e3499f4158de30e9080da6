@@ -16,6 +16,23 @@
       "message": "Forgot to also Start Review this one as well",
       "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6e61957_f3da9c49",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-15T19:19:12Z",
+      "side": 1,
+      "message": "nit (for my knowledge):\nIs this is because we support `string_list` but not `string` in https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/properties.go ?\n\nOtherwise `string` https://docs.bazel.build/versions/main/skylark/lib/attr.html#string\nprobably would be preferrable, right?",
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
