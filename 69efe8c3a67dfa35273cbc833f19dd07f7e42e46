@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf00847a_c57c8bdb",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-15T17:41:01Z",
+      "side": 1,
+      "message": "Nil paths are not ideal, the tend to propagate pretty far before crashing unrelated code with a nil pointer panic, can DexPath be converted to an OptionalPath instead?",
+      "range": {
+        "startLine": 364,
+        "startChar": 4,
+        "endLine": 364,
+        "endChar": 15
+      },
+      "revId": "69efe8c3a67dfa35273cbc833f19dd07f7e42e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd6c4301_b4e966d4",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-15T17:41:01Z",
+      "side": 1,
+      "message": "Can you define a basic config and a full config somewhere?",
+      "range": {
+        "startLine": 232,
+        "startChar": 63,
+        "endLine": 232,
+        "endChar": 92
+      },
+      "revId": "69efe8c3a67dfa35273cbc833f19dd07f7e42e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
