@@ -74,6 +74,48 @@
       },
       "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97357789_7d37a0c3",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-06-15T20:11:18Z",
+      "side": 1,
+      "message": "Yes, because of the `string_list` support. I should probably separately go and add support for `string`, to use e.g. here... But can file it as a minor Bug for the time being, unless there\u0027s an objection.",
+      "parentUuid": "e0bc03e3_ff7f70e5",
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30352a6b_786cc96f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-06-15T20:11:18Z",
+      "side": 1,
+      "message": "Yes. This is to enforce that expected invariant.",
+      "parentUuid": "4aebd734_9254a32d",
+      "range": {
+        "startLine": 662,
+        "startChar": 4,
+        "endLine": 662,
+        "endChar": 21
+      },
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
