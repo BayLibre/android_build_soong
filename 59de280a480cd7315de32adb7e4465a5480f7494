@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5802608_48f2306a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-15T21:19:33Z",
+      "side": 1,
+      "message": "Comparing the aosp_cf_x86_64_phone-userdebug before and after this change, this seems to have removed a weak __emutls_get_address symbol from many shared libraries.",
+      "revId": "59de280a480cd7315de32adb7e4465a5480f7494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
