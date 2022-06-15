@@ -588,13 +588,6 @@ func toDisableUnsignedShiftBaseChange(flags []string) bool {
 }
 
 func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
-	minimalRuntimeLib := config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(ctx.toolchain()) + ".a"
-
-	if sanitize.Properties.MinimalRuntimeDep {
-		flags.Local.LdFlags = append(flags.Local.LdFlags,
-			"-Wl,--exclude-libs,"+minimalRuntimeLib)
-	}
-
 	if !sanitize.Properties.SanitizerEnabled && !sanitize.Properties.UbsanRuntimeDep {
 		return flags
 	}
@@ -722,11 +715,6 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=vptr,function")
 		}
 
-		if enableMinimalRuntime(sanitize) {
-			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(minimalRuntimeFlags, " "))
-			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--exclude-libs,"+minimalRuntimeLib)
-		}
-
 		if Bool(sanitize.Properties.Sanitize.Fuzzer) {
 			// When fuzzing, we wish to crash with diagnostics on any bug.
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize-trap=all", "-fno-sanitize-recover=all")
@@ -735,6 +723,11 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		} else {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fsanitize-trap=all", "-ftrap-function=abort")
 		}
+
+		if enableMinimalRuntime(sanitize) {
+			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(minimalRuntimeFlags, " "))
+		}
+
 		// http://b/119329758, Android core does not boot up with this sanitizer yet.
 		if toDisableImplicitIntegerChange(flags.Local.CFlags) {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=implicit-integer-sign-change")
@@ -1197,6 +1190,11 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			} else {
 				runtimeLibrary = config.ScudoRuntimeLibrary(toolchain)
 			}
+		} else if enableMinimalRuntime(c.sanitize) || c.sanitize.Properties.MinimalRuntimeDep {
+			runtimeLibrary = config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(toolchain)
+			if c.staticBinary() {
+				runtimeLibrary += ".static"
+			}
 		} else if len(diagSanitizers) > 0 || c.sanitize.Properties.UbsanRuntimeDep ||
 			Bool(c.sanitize.Properties.Sanitize.Fuzzer) ||
 			Bool(c.sanitize.Properties.Sanitize.Undefined) ||
@@ -1230,14 +1228,11 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			mctx.AddFarVariationDependencies(variations, depTag, deps...)
 
 		}
-		if enableMinimalRuntime(c.sanitize) || c.sanitize.Properties.MinimalRuntimeDep {
-			addStaticDeps(config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(toolchain))
-		}
 		if c.sanitize.Properties.BuiltinsDep {
 			addStaticDeps(config.BuiltinsRuntimeLibrary(toolchain))
 		}
 
-		if runtimeLibrary != "" && (toolchain.Bionic() || toolchain.Musl() || c.sanitize.Properties.UbsanRuntimeDep) {
+		if runtimeLibrary != "" && (toolchain.Bionic() || toolchain.Musl() || c.sanitize.Properties.UbsanRuntimeDep || c.sanitize.Properties.MinimalRuntimeDep) {
 			// UBSan is supported on non-bionic linux host builds as well
 
 			// Adding dependency to the runtime library. We are using *FarVariation*
