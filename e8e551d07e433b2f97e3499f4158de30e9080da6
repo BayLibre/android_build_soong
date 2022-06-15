@@ -116,6 +116,30 @@
       },
       "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2130da20_9032a12e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-15T20:17:15Z",
+      "side": 1,
+      "message": "If that\u0027s the case, then if block (and/or the error at line 633) is redundant because it will never happen. Or am I misunderstanding something here?",
+      "parentUuid": "30352a6b_786cc96f",
+      "range": {
+        "startLine": 662,
+        "startChar": 4,
+        "endLine": 662,
+        "endChar": 21
+      },
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
