@@ -16,6 +16,46 @@
       "message": "Sheesh, that was a lot of work, but it looks like the new infrastructure is more foolproof, more flexible and the code is more comprehensible than at HEAD. I\u0027m not entirely sure, though, that it does what it should.\n\nColin, Liz: I\u0027d like this to be done by the end of the month (I\u0027ll be OOO for a long while after that) and I\u0027ll need to budget time for a long code review and a few submit-rollback cycles because I\u0027m not very confident that we have enough test coverage for all this.\n\nMind taking a look?",
       "revId": "842a23fb2307f18ee461c57c6d4ac408575e6584",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26be363e_22a34f88",
+        "filename": "android/mutator.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-15T18:33:00Z",
+      "side": 1,
+      "message": "It\u0027s useful to copy the godoc here from the blueprint version, as that\u0027s what will show up in go-aware IDEs when coding against this interface.",
+      "revId": "842a23fb2307f18ee461c57c6d4ac408575e6584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1133a558_a43c149d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-15T18:33:00Z",
+      "side": 1,
+      "message": "Where does this come from?  Would it be possible to break this and the IsSanitizerEnabled ctx -\u003e Config change into a pre-refactor CL?",
+      "range": {
+        "startLine": 894,
+        "startChar": 43,
+        "endLine": 894,
+        "endChar": 68
+      },
+      "revId": "842a23fb2307f18ee461c57c6d4ac408575e6584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
