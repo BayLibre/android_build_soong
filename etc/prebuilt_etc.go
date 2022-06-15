@@ -693,9 +693,14 @@ func (module *PrebuiltEtc) ConvertWithBp2build(ctx android.TopDownMutatorContext
 		}
 	}
 
+	//print("fielname from src ", *module.properties.Filename_from_src, "\n")
 	var filename string
-	if module.properties.Filename != nil {
+	if module.properties.Filename != nil && *module.properties.Filename != "" {
 		filename = *module.properties.Filename
+	} else if module.properties.Filename_from_src != nil && *module.properties.Filename_from_src {
+		filename = *module.properties.Src
+	} else {
+		filename = ctx.ModuleName()
 	}
 
 	var dir = module.installDirBase

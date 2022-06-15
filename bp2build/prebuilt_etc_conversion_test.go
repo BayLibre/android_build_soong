@@ -181,3 +181,57 @@ prebuilt_etc {
 				"dir":         `"etc"`,
 			})}})
 }
+
+func TestFilenameAsProperty(t *testing.T) {
+	runPrebuiltEtcTestCase(t, bp2buildTestCase{
+		description: "prebuilt_etc - filename is specified as a property ",
+		filesystem:  map[string]string{},
+		blueprint: `
+prebuilt_etc {
+    name: "foo",
+    src: "fooSrc",
+    filename: "fooFileName",
+}
+`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("prebuilt_file", "foo", attrNameToString{
+				"filename": `"fooFileName"`,
+				"src":      `"fooSrc"`,
+				"dir":      `"etc"`,
+			})}})
+}
+
+func TestFileNameFromSrc(t *testing.T) {
+	runPrebuiltEtcTestCase(t, bp2buildTestCase{
+		description: "prebuilt_etc - filename is specified as a property ",
+		filesystem:  map[string]string{},
+		blueprint: `
+prebuilt_etc {
+    name: "foo",
+    filename_from_src: true,
+    src: "fooSrc",
+}
+`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("prebuilt_file", "foo", attrNameToString{
+				"filename": `"fooSrc"`,
+				"src":      `"fooSrc"`,
+				"dir":      `"etc"`,
+			})}})
+}
+
+func TestFilenameFromModuleName(t *testing.T) {
+	runPrebuiltEtcTestCase(t, bp2buildTestCase{
+		description: "prebuilt_etc - filename is specified as a property ",
+		filesystem:  map[string]string{},
+		blueprint: `
+prebuilt_etc {
+    name: "foo",
+}
+`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("prebuilt_file", "foo", attrNameToString{
+				"filename": `"foo"`,
+				"dir":      `"etc"`,
+			})}})
+}
