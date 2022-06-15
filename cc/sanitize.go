@@ -588,13 +588,6 @@ func toDisableUnsignedShiftBaseChange(flags []string) bool {
 }
 
 func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
-	minimalRuntimeLib := config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(ctx.toolchain()) + ".a"
-
-	if sanitize.Properties.MinimalRuntimeDep {
-		flags.Local.LdFlags = append(flags.Local.LdFlags,
-			"-Wl,--exclude-libs,"+minimalRuntimeLib)
-	}
-
 	if !sanitize.Properties.SanitizerEnabled && !sanitize.Properties.UbsanRuntimeDep {
 		return flags
 	}
@@ -722,11 +715,6 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=vptr,function")
 		}
 
-		if enableMinimalRuntime(sanitize) {
-			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(minimalRuntimeFlags, " "))
-			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--exclude-libs,"+minimalRuntimeLib)
-		}
-
 		if Bool(sanitize.Properties.Sanitize.Fuzzer) {
 			// When fuzzing, we wish to crash with diagnostics on any bug.
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize-trap=all", "-fno-sanitize-recover=all")
@@ -735,6 +723,11 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		} else {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fsanitize-trap=all", "-ftrap-function=abort")
 		}
+
+		if enableMinimalRuntime(sanitize) {
+			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(minimalRuntimeFlags, " "))
+		}
+
 		// http://b/119329758, Android core does not boot up with this sanitizer yet.
 		if toDisableImplicitIntegerChange(flags.Local.CFlags) {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=implicit-integer-sign-change")
@@ -1180,6 +1173,7 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 		runtimeLibrary := ""
 		var extraStaticDeps []string
 		toolchain := c.toolchain(mctx)
+		needMinimalRuntime := enableMinimalRuntime(c.sanitize) || c.sanitize.Properties.MinimalRuntimeDep
 		if Bool(c.sanitize.Properties.Sanitize.Address) {
 			runtimeLibrary = config.AddressSanitizerRuntimeLibrary(toolchain)
 		} else if Bool(c.sanitize.Properties.Sanitize.Hwaddress) {
@@ -1197,14 +1191,28 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			} else {
 				runtimeLibrary = config.ScudoRuntimeLibrary(toolchain)
 			}
-		} else if len(diagSanitizers) > 0 || c.sanitize.Properties.UbsanRuntimeDep ||
+		} else if !needMinimalRuntime && (len(diagSanitizers) > 0 ||
+			c.sanitize.Properties.UbsanRuntimeDep ||
 			Bool(c.sanitize.Properties.Sanitize.Fuzzer) ||
 			Bool(c.sanitize.Properties.Sanitize.Undefined) ||
-			Bool(c.sanitize.Properties.Sanitize.All_undefined) {
+			Bool(c.sanitize.Properties.Sanitize.All_undefined)) {
 			runtimeLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary(toolchain)
 			if c.staticBinary() {
 				runtimeLibrary += ".static"
 			}
+		}
+
+		var allRuntimeLibraries []string
+		if runtimeLibrary != "" {
+			allRuntimeLibraries = append(allRuntimeLibraries, runtimeLibrary)
+		}
+
+		if needMinimalRuntime {
+			minimalRuntimeLibrary := config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(toolchain)
+			if c.staticBinary() {
+				minimalRuntimeLibrary += ".static"
+			}
+			allRuntimeLibraries = append(allRuntimeLibraries, minimalRuntimeLibrary)
 		}
 
 		addStaticDeps := func(deps ...string) {
@@ -1230,59 +1238,58 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			mctx.AddFarVariationDependencies(variations, depTag, deps...)
 
 		}
-		if enableMinimalRuntime(c.sanitize) || c.sanitize.Properties.MinimalRuntimeDep {
-			addStaticDeps(config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(toolchain))
-		}
 		if c.sanitize.Properties.BuiltinsDep {
 			addStaticDeps(config.BuiltinsRuntimeLibrary(toolchain))
 		}
 
-		if runtimeLibrary != "" && (toolchain.Bionic() || toolchain.Musl() || c.sanitize.Properties.UbsanRuntimeDep) {
-			// UBSan is supported on non-bionic linux host builds as well
+		if toolchain.Bionic() || toolchain.Musl() || c.sanitize.Properties.UbsanRuntimeDep || c.sanitize.Properties.MinimalRuntimeDep {
+			for _, runtimeLibrary := range allRuntimeLibraries {
+				// UBSan is supported on non-bionic linux host builds as well
 
-			// Adding dependency to the runtime library. We are using *FarVariation*
-			// because the runtime libraries themselves are not mutated by sanitizer
-			// mutators and thus don't have sanitizer variants whereas this module
-			// has been already mutated.
-			//
-			// Note that by adding dependency with {static|shared}DepTag, the lib is
-			// added to libFlags and LOCAL_SHARED_LIBRARIES by cc.Module
-			if c.staticBinary() {
-				addStaticDeps(runtimeLibrary)
-				addStaticDeps(extraStaticDeps...)
-			} else if !c.static() && !c.Header() {
-				// If we're using snapshots, redirect to snapshot whenever possible
-				snapshot := mctx.Provider(SnapshotInfoProvider).(SnapshotInfo)
-				if lib, ok := snapshot.SharedLibs[runtimeLibrary]; ok {
-					runtimeLibrary = lib
-				}
+				// Adding dependency to the runtime library. We are using *FarVariation*
+				// because the runtime libraries themselves are not mutated by sanitizer
+				// mutators and thus don't have sanitizer variants whereas this module
+				// has been already mutated.
+				//
+				// Note that by adding dependency with {static|shared}DepTag, the lib is
+				// added to libFlags and LOCAL_SHARED_LIBRARIES by cc.Module
+				if c.staticBinary() {
+					addStaticDeps(runtimeLibrary)
+					addStaticDeps(extraStaticDeps...)
+				} else if !c.static() && !c.Header() {
+					// If we're using snapshots, redirect to snapshot whenever possible
+					snapshot := mctx.Provider(SnapshotInfoProvider).(SnapshotInfo)
+					if lib, ok := snapshot.SharedLibs[runtimeLibrary]; ok {
+						runtimeLibrary = lib
+					}
 
-				// Skip apex dependency check for sharedLibraryDependency
-				// when sanitizer diags are enabled. Skipping the check will allow
-				// building with diag libraries without having to list the
-				// dependency in Apex's allowed_deps file.
-				diagEnabled := len(diagSanitizers) > 0
-				// dynamic executable and shared libs get shared runtime libs
-				depTag := libraryDependencyTag{
-					Kind:  sharedLibraryDependency,
-					Order: earlyLibraryDependency,
+					// Skip apex dependency check for sharedLibraryDependency
+					// when sanitizer diags are enabled. Skipping the check will allow
+					// building with diag libraries without having to list the
+					// dependency in Apex's allowed_deps file.
+					diagEnabled := len(diagSanitizers) > 0
+					// dynamic executable and shared libs get shared runtime libs
+					depTag := libraryDependencyTag{
+						Kind:  sharedLibraryDependency,
+						Order: earlyLibraryDependency,
 
-					skipApexAllowedDependenciesCheck: diagEnabled,
+						skipApexAllowedDependenciesCheck: diagEnabled,
+					}
+					variations := append(mctx.Target().Variations(),
+						blueprint.Variation{Mutator: "link", Variation: "shared"})
+					if c.Device() {
+						variations = append(variations, c.ImageVariation())
+					}
+					if c.UseSdk() {
+						variations = append(variations,
+							blueprint.Variation{Mutator: "sdk", Variation: "sdk"})
+					}
+					AddSharedLibDependenciesWithVersions(mctx, c, variations, depTag, runtimeLibrary, "", true)
 				}
-				variations := append(mctx.Target().Variations(),
-					blueprint.Variation{Mutator: "link", Variation: "shared"})
-				if c.Device() {
-					variations = append(variations, c.ImageVariation())
-				}
-				if c.UseSdk() {
-					variations = append(variations,
-						blueprint.Variation{Mutator: "sdk", Variation: "sdk"})
-				}
-				AddSharedLibDependenciesWithVersions(mctx, c, variations, depTag, runtimeLibrary, "", true)
+				// static lib does not have dependency to the runtime library. The
+				// dependency will be added to the executables or shared libs using
+				// the static lib.
 			}
-			// static lib does not have dependency to the runtime library. The
-			// dependency will be added to the executables or shared libs using
-			// the static lib.
 		}
 	}
 }

@@ -124,7 +124,7 @@ func commonDefaultModules() string {
 			defaults: ["toolchain_libs_defaults"],
 		}
 
-		cc_prebuilt_library_static {
+		cc_prebuilt_library_shared {
 			name: "libclang_rt.ubsan_minimal",
 			defaults: ["toolchain_libs_defaults"],
 		}
