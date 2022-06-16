@@ -278,6 +278,30 @@
       },
       "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30856633_ab43c1de",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-06-16T15:23:02Z",
+      "side": 1,
+      "message": "I missed the first line of this change. The array is literally created the line before the check, and it\u0027s always length 1. I don\u0027t see why we\u0027re doing this check.",
+      "parentUuid": "e8374ac0_4d519f62",
+      "range": {
+        "startLine": 662,
+        "startChar": 4,
+        "endLine": 662,
+        "endChar": 21
+      },
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
