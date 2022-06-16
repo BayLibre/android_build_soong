@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0add2545_2251675b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-16T15:51:50Z",
+      "side": 1,
+      "message": "Can you add unit tests?",
+      "revId": "3ed5a13f26db939ac7e5aa754de840297ca283df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea85cb83_17456225",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-16T15:51:50Z",
+      "side": 1,
+      "message": "Suffix is string, not a string slice, why are we converting it to a slice for the conversion?",
+      "range": {
+        "startLine": 177,
+        "startChar": 9,
+        "endLine": 177,
+        "endChar": 17
+      },
+      "revId": "3ed5a13f26db939ac7e5aa754de840297ca283df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9922797_e30ef868",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-16T15:51:50Z",
+      "side": 1,
+      "message": "Suffix is an [arch-variant property](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/binary.go;l\u003d36;drc\u003db002f87d2e245396a6553b1d3eea3b0b8f584661), a `*string` won\u0027t be able to create the appropriate selects.\n\nIt looks like we don\u0027t have a `StringAttribute` in https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/properties.go;drc\u003d62ac8a07078d6a68bf2f97bf43fca58e9772fe92, but we should add one to support selects for this property",
+      "range": {
+        "startLine": 961,
+        "startChar": 12,
+        "endLine": 961,
+        "endChar": 19
+      },
+      "revId": "3ed5a13f26db939ac7e5aa754de840297ca283df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a594c2d_02f192be",
+        "filename": "cc/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-16T15:51:50Z",
+      "side": 1,
+      "message": "This is changing Soong\u0027s properties, to add bp2build support, we shouldn\u0027t need to change Soong\u0027s properties.\n\nSuffix is already a Soong property we should be accessing\n* binary [suffix](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/binary.go;l\u003d36;drc\u003db002f87d2e245396a6553b1d3eea3b0b8f584661)\n* library [suffix](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/library.go;l\u003d79;drc\u003d5d069fb87645aa36502a9449f05476b901d88356)",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 40
+      },
+      "revId": "3ed5a13f26db939ac7e5aa754de840297ca283df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e508b39_94837ecd",
+        "filename": "cc/linker.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-16T15:51:50Z",
+      "side": 1,
+      "message": "Similarly, this is changing Soong\u0027s properties, we only need to add bp2build support.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 39
+      },
+      "revId": "3ed5a13f26db939ac7e5aa754de840297ca283df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
