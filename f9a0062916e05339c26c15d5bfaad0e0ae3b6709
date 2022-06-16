@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f505e194_a07a1a2c",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-06-16T17:29:51Z",
+      "side": 0,
+      "message": "So I should go double-check whether these are valid before removing them from the Disabled list?",
+      "parentUuid": "576dcc85_93a6a254",
+      "range": {
+        "startLine": 474,
+        "startChar": 2,
+        "endLine": 477,
+        "endChar": 58
+      },
+      "revId": "f9a0062916e05339c26c15d5bfaad0e0ae3b6709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "840f6173_6ca5a8f1",
         "filename": "android/allowlists/allowlists.go",
         "patchSetId": 8
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-16T15:51:50Z",
       "side": 0,
       "message": "your starlark change and this bp2build change impacts binary as well? Why do we still have a TODO to handle it?",
+      "range": {
+        "startLine": 479,
+        "startChar": 23,
+        "endLine": 479,
+        "endChar": 50
+      },
+      "revId": "f9a0062916e05339c26c15d5bfaad0e0ae3b6709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d981febd_6d6480f6",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-06-16T17:29:51Z",
+      "side": 0,
+      "message": "Yes, I\u0027m covering binary as well. The leftover TODO is an oversight, though not all cc_binary work with Suffix; hence me keeping that section.",
+      "parentUuid": "840f6173_6ca5a8f1",
       "range": {
         "startLine": 479,
         "startChar": 23,
