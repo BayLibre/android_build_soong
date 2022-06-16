@@ -206,6 +206,30 @@
       },
       "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c35677_749f5288",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-16T14:18:24Z",
+      "side": 1,
+      "message": "What other code change will it possibly be?\n\nIf we want to catch bug produced by a code change, I believe tests are the right place for that. If implemented properly, the tests will fail when code change violates it.\n\nI think failure error in the module build is for when the user misuses the property. In this case, it won\u0027t ever happen.",
+      "parentUuid": "dace6417_dd9dfd38",
+      "range": {
+        "startLine": 662,
+        "startChar": 4,
+        "endLine": 662,
+        "endChar": 21
+      },
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
