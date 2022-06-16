@@ -230,6 +230,30 @@
       },
       "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7171fe6c_52019f4a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-16T14:29:58Z",
+      "side": 1,
+      "message": "@Usta\n\n* If it\u0027s either 0 or 1, then`if len \u003e 1` is still unnecessary.\n* And I believe it won\u0027t ever be length of 0 with how it\u0027s being initialized currently.\n\n```\ntype Props struct {\n  Suffix string\n}\n\nfunc main() {\n\tt :\u003d Props{}\n\tstr :\u003d []string{(\u0026t).Suffix}\n\tfmt.Println(len(str)) // 1 because Suffix is defaulted to \"\"\n}\n```",
+      "parentUuid": "04c35677_749f5288",
+      "range": {
+        "startLine": 662,
+        "startChar": 4,
+        "endLine": 662,
+        "endChar": 21
+      },
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
