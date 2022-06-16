@@ -254,6 +254,30 @@
       },
       "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8374ac0_4d519f62",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-06-16T15:00:43Z",
+      "side": 1,
+      "message": "I am personally a fan of keeping this check in here just in case. Even if we have tests to confirm the expected behavior, we still want the build to let us know. This also follows an existing pattern that we use in other code.",
+      "parentUuid": "7171fe6c_52019f4a",
+      "range": {
+        "startLine": 662,
+        "startChar": 4,
+        "endLine": 662,
+        "endChar": 21
+      },
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
