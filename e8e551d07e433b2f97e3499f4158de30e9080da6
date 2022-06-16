@@ -302,6 +302,30 @@
       },
       "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dfafffa_0aee84da",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-06-16T17:47:23Z",
+      "side": 1,
+      "message": "In case the array creation moves away from this use. But as it\u0027s all together, I\u0027m hearing we overall don\u0027t want this check for now.",
+      "parentUuid": "30856633_ab43c1de",
+      "range": {
+        "startLine": 662,
+        "startChar": 4,
+        "endLine": 662,
+        "endChar": 21
+      },
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
