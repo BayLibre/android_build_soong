@@ -164,6 +164,48 @@
       },
       "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "299ade31_b611f29e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-16T14:14:42Z",
+      "side": 1,
+      "message": "I am a bit surprised that we never needed/considered supporting string but maybe there was a reason for that design choice?\nBut yep that might be a separate discussion.",
+      "parentUuid": "97357789_7d37a0c3",
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a50dd2_054722c1",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-16T14:14:42Z",
+      "side": 1,
+      "message": "@Vinh \"isn\u0027t its length always 1?\" - well 1 or 0 nope?",
+      "parentUuid": "dace6417_dd9dfd38",
+      "range": {
+        "startLine": 662,
+        "startChar": 4,
+        "endLine": 662,
+        "endChar": 21
+      },
+      "revId": "e8e551d07e433b2f97e3499f4158de30e9080da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
