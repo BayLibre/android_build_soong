@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4de7105_09722a37",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-06-16T15:24:05Z",
+      "side": 1,
+      "message": "I thought we were going to use a different artifact than Android.bp?",
+      "revId": "d932a3133432816aa1a951e6a5e48ddcdc0cae63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00441e22_f9ac4a81",
         "filename": "tests/verify_null_builds.sh",
         "patchSetId": 11
@@ -14,6 +31,23 @@
       "writtenOn": "2022-06-13T15:43:03Z",
       "side": 1,
       "message": "I am changing this script so that it can be added to integration test (will submit a separate CL)",
+      "revId": "d932a3133432816aa1a951e6a5e48ddcdc0cae63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccec072c_ca810c0c",
+        "filename": "tests/verify_null_builds.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-06-16T15:24:05Z",
+      "side": 1,
+      "message": "Nit: year",
       "revId": "d932a3133432816aa1a951e6a5e48ddcdc0cae63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
