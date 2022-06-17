@@ -891,7 +891,7 @@ func (sanitize *sanitize) isSanitizerEnabled(t SanitizerType) bool {
 func IsSanitizableDependencyTag(tag blueprint.DependencyTag) bool {
 	switch t := tag.(type) {
 	case dependencyTag:
-		return t == reuseObjTag || t == objDepTag
+		return t == reuseObjTag || t == objDepTag || t == staticVariantTag
 	case libraryDependencyTag:
 		return true
 	default:
