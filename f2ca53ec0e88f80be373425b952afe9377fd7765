@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dbd27fd_8bb0cbd3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-17T15:51:06Z",
+      "side": 1,
+      "message": "Can you comment here on why this is correct?  It\u0027s not clear to me that the static variant should always have the same sanitizers, and currently the only use for staticVarantTag is for ordering static_libs dependencies based on their transitive dependencies.",
+      "revId": "f2ca53ec0e88f80be373425b952afe9377fd7765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
