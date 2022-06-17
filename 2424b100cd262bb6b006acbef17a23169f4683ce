@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd38a0d5_8a579706",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-17T15:58:29Z",
+      "side": 1,
+      "message": "LGTM after aosp/2127446 and aosp/2127447 merge and this is rebased.",
+      "revId": "2424b100cd262bb6b006acbef17a23169f4683ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
