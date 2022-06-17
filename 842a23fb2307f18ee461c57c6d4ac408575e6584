@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4baebaf_5ec77b67",
+        "filename": "android/mutator.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-06-17T08:05:07Z",
+      "side": 1,
+      "message": "Done. I don\u0027t much like copy-pasting documentation like this (it\u0027ll go out of sync eventually), but this is a symptom of the wider \"interfaces are duplicated between android. and blueprint.\" problem, which leads far so let\u0027s not open that can of worms now.",
+      "parentUuid": "26be363e_22a34f88",
+      "revId": "842a23fb2307f18ee461c57c6d4ac408575e6584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1133a558_a43c149d",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-15T18:33:00Z",
       "side": 1,
       "message": "Where does this come from?  Would it be possible to break this and the IsSanitizerEnabled ctx -\u003e Config change into a pre-refactor CL?",
+      "range": {
+        "startLine": 894,
+        "startChar": 43,
+        "endLine": 894,
+        "endChar": 68
+      },
+      "revId": "842a23fb2307f18ee461c57c6d4ac408575e6584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31568db_e3a4d3dd",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-06-17T08:05:07Z",
+      "side": 1,
+      "message": "Enjoy aosp/2127446 and aosp/2127447 !\n\nTBH I don\u0027t remember why I had to change this but it seemed to make sense. I *think* that I had to do this before I got the logic equivalent with the one at HEAD and without this, an extra variant of some modules was created and there was a Ninja action conflict.",
+      "parentUuid": "1133a558_a43c149d",
       "range": {
         "startLine": 894,
         "startChar": 43,
