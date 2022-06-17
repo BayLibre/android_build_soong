@@ -128,12 +128,8 @@ cc_library_headers {
         "//build/bazel/platforms/arch:x86_64": ["arch_x86_64_exported_include_dir"],
         "//conditions:default": [],
     })`,
-				"implementation_deps": `[
-        ":lib-1",
-        ":lib-2",
-    ]`,
-        "sdk_version": `"current"`,
-        "min_sdk_version": `"29"`,
+				"sdk_version":     `"current"`,
+				"min_sdk_version": `"29"`,
 			}),
 		},
 	})
@@ -183,16 +179,7 @@ cc_library_headers {
     include_build_directory: false,
 }`,
 		expectedBazelTargets: []string{
-			makeBazelTarget("cc_library_headers", "foo_headers", attrNameToString{
-				"implementation_deps": `[":base-lib"] + select({
-        "//build/bazel/platforms/os:android": [":android-lib"],
-        "//build/bazel/platforms/os:darwin": [":darwin-lib"],
-        "//build/bazel/platforms/os:linux": [":linux-lib"],
-        "//build/bazel/platforms/os:linux_bionic": [":linux_bionic-lib"],
-        "//build/bazel/platforms/os:windows": [":windows-lib"],
-        "//conditions:default": [],
-    })`,
-			}),
+			makeBazelTarget("cc_library_headers", "foo_headers", attrNameToString{}),
 		},
 	})
 }
@@ -226,10 +213,6 @@ cc_library_headers {
 			makeBazelTarget("cc_library_headers", "foo_headers", attrNameToString{
 				"deps": `select({
         "//build/bazel/platforms/os:android": [":exported-lib"],
-        "//conditions:default": [],
-    })`,
-				"implementation_deps": `select({
-        "//build/bazel/platforms/os:android": [":android-lib"],
         "//conditions:default": [],
     })`,
 			}),
