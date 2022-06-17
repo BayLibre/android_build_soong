@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3515894e_f7bbbaa9",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-17T13:45:36Z",
+      "side": 0,
+      "message": "nit: these changes make it really difficult to distinguish between cleanups and the functionality you\u0027re changing.\n\nhttps://google.github.io/eng-practices/review/developer/small-cls.html\n\nCLs should generally do just one thing and refactorings should be separate.",
+      "range": {
+        "startLine": 750,
+        "startChar": 2,
+        "endLine": 750,
+        "endChar": 16
+      },
+      "revId": "83a02e43909428fa6a5f13036418dce395c9cecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

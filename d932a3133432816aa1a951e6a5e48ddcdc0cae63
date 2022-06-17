@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f86cee7_b58d649d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-17T13:45:36Z",
+      "side": 1,
+      "message": "These seem like unrelated issues? Should they be separate CLs?\n\nhttps://google.github.io/eng-practices/review/developer/small-cls.html",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "d932a3133432816aa1a951e6a5e48ddcdc0cae63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b1aab44_69afaf1a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-17T13:45:36Z",
+      "side": 1,
+      "message": "while we\u0027re at it, can we single quote this?",
+      "range": {
+        "startLine": 867,
+        "startChar": 27,
+        "endLine": 867,
+        "endChar": 29
+      },
+      "revId": "d932a3133432816aa1a951e6a5e48ddcdc0cae63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4dab56_a731030e",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-17T13:45:36Z",
+      "side": 1,
+      "message": "can you clarify that the issue is the contents of the depfile? It took carefully reading the sed command to understand that the _contents_ of the depfile had the incorrect execution root, not the path of depfile itself.\n\ne.g.\n\n```\ndepfile contents assume `executionRoot` as the CWD, thus the paths within...\n```",
+      "range": {
+        "startLine": 898,
+        "startChar": 6,
+        "endLine": 898,
+        "endChar": 13
+      },
+      "revId": "d932a3133432816aa1a951e6a5e48ddcdc0cae63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943907d4_fadaa16b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-17T13:45:36Z",
+      "side": 1,
+      "message": "`sed -i -e \u0027s@(^|\\s|\")bazel-out/@\\1%s/@g\u0027 \u0027%s\u0027`\n\nshould be safer as it prevents bash from interpreting the paths and easier to read with fewer `\\` chars\n\n`s@@@` (as opposed to `s///`) will also allow us to remove the path separator replacement for bazelOutDir\n\nthe `/` after `bazel-out` will also protect us from replacing non-directories that start with `bazel-out`, e.g. `bazel-output.txt`",
+      "range": {
+        "startLine": 902,
+        "startChar": 3,
+        "endLine": 903,
+        "endChar": 26
+      },
+      "revId": "d932a3133432816aa1a951e6a5e48ddcdc0cae63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4de7105_09722a37",
         "filename": "bazel/aquery.go",
         "patchSetId": 11
