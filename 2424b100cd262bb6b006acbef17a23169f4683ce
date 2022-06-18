@@ -16,6 +16,24 @@
       "message": "LGTM after aosp/2127446 and aosp/2127447 merge and this is rebased.",
       "revId": "2424b100cd262bb6b006acbef17a23169f4683ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26fc85ac_e0539a5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-06-18T04:23:04Z",
+      "side": 1,
+      "message": "aosp/2127447 reverted, aosp/2127446 merged.",
+      "parentUuid": "fd38a0d5_8a579706",
+      "revId": "2424b100cd262bb6b006acbef17a23169f4683ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
