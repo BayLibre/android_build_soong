@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70ccebb_e1a5f218",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-06-18T04:24:12Z",
+      "side": 1,
+      "message": "Abandoning as discussed on aosp/2127449 .",
+      "revId": "9077758bfe9873e04ae1c7b0cb97bdfe7fc3f700",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
