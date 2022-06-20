@@ -128,10 +128,10 @@ var r8, r8RE = pctx.MultiCommandRemoteStaticRules("r8",
 			`mkdir -p $$(dirname ${outUsage}) && ` +
 			`mkdir -p $$(dirname $tmpJar) && ` +
 			`${config.Zip2ZipCmd} -i $in -o $tmpJar -x '**/*.dex' && ` +
-			`$r8Template${config.R8Cmd} ${config.R8Flags} -injars $tmpJar --output $outDir ` +
+			`$r8Template${config.R8Cmd} ${config.R8Flags} $tmpJar --output $outDir ` +
 			`--no-data-resources ` +
-			`-printmapping ${outDict} ` +
-			`-printusage ${outUsage} ` +
+			`--pg-map-output ${outDict} ` +
+			`--printusage ${outUsage} ` +
 			`--deps-file ${out}.d ` +
 			`$r8Flags && ` +
 			`touch "${outDict}" "${outUsage}" && ` +
@@ -219,6 +219,9 @@ func d8Flags(flags javaBuilderFlags) (d8Flags []string, d8Deps android.Paths) {
 func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Flags []string, r8Deps android.Paths) {
 	opt := d.dexProperties.Optimize
 
+	// These should be removed same as for D8 (b/69377755).
+	flags = android.RemoveListFromList(flags, []string{"--multi-dex"})
+
 	// When an app contains references to APIs that are not in the SDK specified by
 	// its LOCAL_SDK_VERSION for example added by support library or by runtime
 	// classes added by desugaring, we artifically raise the "SDK version" "linked" by
@@ -232,9 +235,9 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 		proguardRaiseDeps = append(proguardRaiseDeps, dep.HeaderJars...)
 	})
 
-	r8Flags = append(r8Flags, proguardRaiseDeps.FormJavaClassPath("-libraryjars"))
-	r8Flags = append(r8Flags, flags.bootClasspath.FormJavaClassPath("-libraryjars"))
-	r8Flags = append(r8Flags, flags.dexClasspath.FormJavaClassPath("-libraryjars"))
+	r8Flags = append(r8Flags, proguardRaiseDeps.FormRepeatedClassPath("--lib ")...)
+	r8Flags = append(r8Flags, flags.bootClasspath.FormRepeatedClassPath("--lib ")...)
+	r8Flags = append(r8Flags, flags.dexClasspath.FormRepeatedClassPath("--lib ")...)
 
 	r8Deps = append(r8Deps, proguardRaiseDeps...)
 	r8Deps = append(r8Deps, flags.bootClasspath...)
@@ -249,7 +252,7 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 
 	flagFiles = append(flagFiles, android.PathsForModuleSrc(ctx, opt.Proguard_flags_files)...)
 
-	r8Flags = append(r8Flags, android.JoinWithPrefix(flagFiles.Strings(), "-include "))
+	r8Flags = append(r8Flags, android.JoinWithPrefix(flagFiles.Strings(), "--pg-conf "))
 	r8Deps = append(r8Deps, flagFiles...)
 
 	// TODO(b/70942988): This is included from build/make/core/proguard.flags
@@ -259,7 +262,7 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 	r8Flags = append(r8Flags, opt.Proguard_flags...)
 
 	if BoolDefault(opt.Proguard_compatibility, true) {
-		r8Flags = append(r8Flags, "--force-proguard-compatibility")
+		r8Flags = append(r8Flags, "--pg-compat")
 	} else {
 		// TODO(b/213833843): Allow configuration of the prefix via a build variable.
 		var sourceFilePrefix = "go/retraceme "
@@ -273,16 +276,16 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 
 	// TODO(ccross): Don't shrink app instrumentation tests by default.
 	if !Bool(opt.Shrink) {
-		r8Flags = append(r8Flags, "-dontshrink")
+		r8Flags = append(r8Flags, "--no-tree-shaking")
 	}
 
 	if !Bool(opt.Optimize) {
-		r8Flags = append(r8Flags, "-dontoptimize")
+		r8Flags = append(r8Flags, "--no-optimization")
 	}
 
 	// TODO(ccross): error if obufscation + app instrumentation test.
 	if !Bool(opt.Obfuscate) {
-		r8Flags = append(r8Flags, "-dontobfuscate")
+		r8Flags = append(r8Flags, "--no-minification")
 	}
 	// TODO(ccross): if this is an instrumentation test of an obfuscated app, use the
 	// dictionary of the app and move the app from libraryjars to injars.
@@ -293,7 +296,7 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 	}
 
 	// TODO(b/180878971): missing classes should be added to the relevant builds.
-	r8Flags = append(r8Flags, "-ignorewarnings")
+	r8Flags = append(r8Flags, "--ignorewarnings")
 
 	return r8Flags, r8Deps
 }
