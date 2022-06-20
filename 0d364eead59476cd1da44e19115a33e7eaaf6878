@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fd0e5fb_ae9fec1e",
+        "filename": "android/license_metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1037521
+      },
+      "writtenOn": "2022-06-20T10:52:14Z",
+      "side": 1,
+      "message": "This is not the right fix.\n\nInstead of adding double quotes here, the right fix would be to use proptools.NinjaAndShellEscapeIncludingSpaces rather than proptools.NinjaAndShellEscape.\n\nThis fix is like to work in practice if the package names don\u0027t contain special characters (like $, {, *, \u0027, etc.) other than spaces.  But it will fail if the package names do contain such special characters.  Because in that case, proptools.NinjaAndShellEscape will return a string quoted with single quotes, and with any embedded single quotes escaped as \u0027\\\u0027\u0027; and then that single-quoted string then will be enclosed inside double quotes, causing the single quotes to be wrongly interpreted as regular characters.\n\nFor example, if the package name was the six-character string\n\n  Alpha*\n\nthen proptools.NinjaAndShellEscape would return the eight-character string \n\n  \u0027Alpha*\u0027\n  \nand then this line of code would append the 13-character string\n\n  -p \"\u0027Alpha*\u0027\"\n\nto the command line here, which would lead to the program which processes the -p option getting the parsed option value of the 8-character string as the 8-character string\n\n  \u0027Alpha*\u0027\n\nrather than the six-character string\n\n  Alpha*",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 48
+      },
+      "revId": "0d364eead59476cd1da44e19115a33e7eaaf6878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
