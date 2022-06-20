@@ -128,9 +128,9 @@ var r8, r8RE = pctx.MultiCommandRemoteStaticRules("r8",
 			`mkdir -p $$(dirname ${outUsage}) && ` +
 			`mkdir -p $$(dirname $tmpJar) && ` +
 			`${config.Zip2ZipCmd} -i $in -o $tmpJar -x '**/*.dex' && ` +
-			`$r8Template${config.R8Cmd} ${config.R8Flags} -injars $tmpJar --output $outDir ` +
+			`$r8Template${config.R8Cmd} ${config.R8Flags} $tmpJar --output $outDir ` +
 			`--no-data-resources ` +
-			`-printmapping ${outDict} ` +
+			`--pg-map-output ${outDict} ` +
 			`-printusage ${outUsage} ` +
 			`--deps-file ${out}.d ` +
 			`$r8Flags && ` +
@@ -232,9 +232,9 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 		proguardRaiseDeps = append(proguardRaiseDeps, dep.HeaderJars...)
 	})
 
-	r8Flags = append(r8Flags, proguardRaiseDeps.FormJavaClassPath("-libraryjars"))
-	r8Flags = append(r8Flags, flags.bootClasspath.FormJavaClassPath("-libraryjars"))
-	r8Flags = append(r8Flags, flags.dexClasspath.FormJavaClassPath("-libraryjars"))
+	r8Flags = append(r8Flags, proguardRaiseDeps.FormRepeatedClassPath("--lib ")...)
+	r8Flags = append(r8Flags, flags.bootClasspath.FormRepeatedClassPath("--lib ")...)
+	r8Flags = append(r8Flags, flags.dexClasspath.FormRepeatedClassPath("--lib ")...)
 
 	r8Deps = append(r8Deps, proguardRaiseDeps...)
 	r8Deps = append(r8Deps, flags.bootClasspath...)
@@ -249,7 +249,7 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 
 	flagFiles = append(flagFiles, android.PathsForModuleSrc(ctx, opt.Proguard_flags_files)...)
 
-	r8Flags = append(r8Flags, android.JoinWithPrefix(flagFiles.Strings(), "-include "))
+	r8Flags = append(r8Flags, android.JoinWithPrefix(flagFiles.Strings(), "--pg-conf "))
 	r8Deps = append(r8Deps, flagFiles...)
 
 	// TODO(b/70942988): This is included from build/make/core/proguard.flags
@@ -259,7 +259,7 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 	r8Flags = append(r8Flags, opt.Proguard_flags...)
 
 	if BoolDefault(opt.Proguard_compatibility, true) {
-		r8Flags = append(r8Flags, "--force-proguard-compatibility")
+		r8Flags = append(r8Flags, "--pg-compat")
 	} else {
 		// TODO(b/213833843): Allow configuration of the prefix via a build variable.
 		var sourceFilePrefix = "go/retraceme "
