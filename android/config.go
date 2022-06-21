@@ -907,11 +907,36 @@ func (c *config) ApexKeyDir(ctx ModuleContext) SourcePath {
 	return PathForSource(ctx, filepath.Dir(defaultCert))
 }
 
-// AllowMissingDependencies configures Blueprint/Soong to not fail when modules
+// Allow_missing_dependencies configures Blueprint/Soong to not fail when modules
 // are configured to depend on non-existent modules. Note that this does not
 // affect missing input dependencies at the Ninja level.
+// Similarly Allowed_missing_modules configures Blueprint not to fail for the missing
+// dependencies, but Soong only allows the missing modules listed in this variable.
 func (c *config) AllowMissingDependencies() bool {
 	return Bool(c.productVariables.Allow_missing_dependencies)
+}
+
+func (c *config) HaveAllowedMissingDeps() bool {
+	return Bool(c.productVariables.Allow_missing_dependencies) || len(c.productVariables.Allowed_missing_modules) > 0
+}
+
+func (c *config) KnownMissingDep(dep string) bool {
+	if Bool(c.productVariables.Allow_missing_dependencies) {
+		return true
+	}
+	return InList(dep, c.productVariables.Allowed_missing_modules)
+}
+
+func (c *config) KnownMissingDeps(deps []string) bool {
+	if Bool(c.productVariables.Allow_missing_dependencies) {
+		return true
+	}
+	for _, dep := range deps {
+		if !c.KnownMissingDep(dep) {
+			return false
+		}
+	}
+	return true
 }
 
 // Returns true if a full platform source tree cannot be assumed.

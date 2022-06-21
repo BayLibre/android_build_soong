@@ -1786,7 +1786,7 @@ func PrebuiltJars(ctx android.BaseModuleContext, baseName string, s android.SdkS
 	jar := filepath.Join(dir, baseName+".jar")
 	jarPath := android.ExistentPathForSource(ctx, jar)
 	if !jarPath.Valid() {
-		if ctx.Config().AllowMissingDependencies() {
+		if ctx.Config().KnownMissingDep(jar) {
 			return android.Paths{android.PathForSource(ctx, jar)}
 		} else {
 			ctx.PropertyErrorf("sdk_library", "invalid sdk version %q, %q does not exist", s.Raw, jar)
@@ -1886,7 +1886,7 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 			path := path.Join(mctx.ModuleDir(), apiDir, scope.apiFilePrefix+api)
 			p := android.ExistentPathForSource(mctx, path)
 			if !p.Valid() {
-				if mctx.Config().AllowMissingDependencies() {
+				if mctx.Config().KnownMissingDep(path) {
 					mctx.AddMissingDependencies([]string{path})
 				} else {
 					mctx.ModuleErrorf("Current api file %#v doesn't exist", path)

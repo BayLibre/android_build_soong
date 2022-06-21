@@ -1259,8 +1259,9 @@ func retrieveClassesJarsFromModule(module android.Module) android.Paths {
 // deferReportingMissingBootDexJar returns true if a missing boot dex jar should not be reported by
 // Soong but should instead only be reported in ninja if the file is actually built.
 func deferReportingMissingBootDexJar(ctx android.ModuleContext, module android.Module) bool {
-	// Any missing dependency should be allowed.
-	if ctx.Config().AllowMissingDependencies() {
+	// Any missing dependency should be allowed by ALLOW_MISSING_DEPENDENCIES, or the module is in
+	// the list of ALLOWED_MISSING_MODULES
+	if ctx.Config().KnownMissingDep(module.Name()) {
 		return true
 	}
 

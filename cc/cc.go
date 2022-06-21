@@ -2788,7 +2788,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			switch {
 			case libDepTag.header():
 				if !ctx.OtherModuleHasProvider(dep, HeaderLibraryInfoProvider) {
-					if !ctx.Config().AllowMissingDependencies() {
+					if !ctx.Config().KnownMissingDep(depName) {
 						ctx.ModuleErrorf("module %q is not a header library", depName)
 					} else {
 						ctx.AddMissingDependencies([]string{depName})
@@ -2797,7 +2797,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				}
 			case libDepTag.shared():
 				if !ctx.OtherModuleHasProvider(dep, SharedLibraryInfoProvider) {
-					if !ctx.Config().AllowMissingDependencies() {
+					if !ctx.Config().KnownMissingDep(depName) {
 						ctx.ModuleErrorf("module %q is not a shared library", depName)
 					} else {
 						ctx.AddMissingDependencies([]string{depName})
@@ -2834,7 +2834,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				}
 			case libDepTag.static():
 				if !ctx.OtherModuleHasProvider(dep, StaticLibraryInfoProvider) {
-					if !ctx.Config().AllowMissingDependencies() {
+					if !ctx.Config().KnownMissingDep(depName) {
 						ctx.ModuleErrorf("module %q is not a static library", depName)
 					} else {
 						ctx.AddMissingDependencies([]string{depName})
@@ -2914,7 +2914,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 			if ptr != nil {
 				if !linkFile.Valid() {
-					if !ctx.Config().AllowMissingDependencies() {
+					if !ctx.Config().KnownMissingDep(depName) {
 						ctx.ModuleErrorf("module %q missing output file", depName)
 					} else {
 						ctx.AddMissingDependencies([]string{depName})
