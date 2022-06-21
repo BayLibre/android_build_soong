@@ -22,6 +22,30 @@
       },
       "revId": "0d364eead59476cd1da44e19115a33e7eaaf6878",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da7cd52d_e7516e25",
+        "filename": "android/license_metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-06-21T18:15:37Z",
+      "side": 1,
+      "message": "http://aosp/2133016",
+      "parentUuid": "8fd0e5fb_ae9fec1e",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 48
+      },
+      "revId": "0d364eead59476cd1da44e19115a33e7eaaf6878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
