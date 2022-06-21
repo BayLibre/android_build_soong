@@ -33,6 +33,24 @@
       "message": "nit: I\u0027ve seen other tests use multiline strings here and `fmt.Sprintf` to include the testcase data. Avoids having to remember the `\\n` at the end of every line, and you don\u0027t have to escape the `\"` quotation marks.",
       "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71f9658f_c6ddd4d6",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-21T14:54:11Z",
+      "side": 1,
+      "message": "I thought about that too but didn\u0027t know how to handle the scenario when the properties are empty. For example,\n\n```\nbpTemplate :\u003d `gensrcs {\n name: \"foo\",\n srcs: [\"data.txt\"],\n depfile: %s,\n cmd: %s,\n}\n```\n\nhow would we test the case when `depfile` is unset?",
+      "parentUuid": "bce6f80d_7f4b5398",
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
