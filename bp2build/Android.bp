@@ -17,6 +17,7 @@ bootstrap_go_package {
         "symlink_forest.go",
     ],
     deps: [
+        "hidl-soong-rules",
         "soong-android",
         "soong-android-allowlists",
         "soong-android-soongconfig",
@@ -52,6 +53,7 @@ bootstrap_go_package {
         "filegroup_conversion_test.go",
         "genrule_conversion_test.go",
         "gensrcs_conversion_test.go",
+        "hidl_interface_conversion_test.go",
         "java_binary_host_conversion_test.go",
         "java_import_conversion_test.go",
         "java_library_conversion_test.go",
