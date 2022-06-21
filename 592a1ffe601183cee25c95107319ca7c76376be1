@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce7f169_d8e5982c",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-21T15:26:48Z",
+      "side": 1,
+      "message": "Given [the other comment](https://android-review.googlesource.com/c/platform/build/soong/+/2120835/comments/bce6f80d_7f4b5398) is resolved, I assume this comment is obsolete. Let me know if I should still address this.",
+      "parentUuid": "381e869d_59ed4614",
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bce6f80d_7f4b5398",
