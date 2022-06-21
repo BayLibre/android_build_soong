@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0a77d73_e9519d6d",
+        "filename": "android/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1697,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-21T15:39:01Z",
+      "side": 1,
+      "message": "This also requires a change to set this value: https://cs.android.com/android/platform/superproject/+/master:build/make/core/soong_config.mk;l\u003d276-279;drc\u003db34c387441b9c3a54cdde8e1d9e6e3d68ef6b6b0\n\ne.g. https://android-review.googlesource.com/c/platform/build/+/1966254",
+      "range": {
+        "startLine": 1697,
+        "startChar": 39,
+        "endLine": 1697,
+        "endChar": 57
+      },
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee57225_679814c4",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-21T15:39:01Z",
+      "side": 1,
+      "message": "Let\u0027s add something about specifying dependencies directly as well, as that is the preferred path over BUILD_BROKEN_DEPFILE",
+      "range": {
+        "startLine": 600,
+        "startChar": 4,
+        "endLine": 600,
+        "endChar": 100
+      },
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "381e869d_59ed4614",
         "filename": "genrule/genrule_test.go",
         "patchSetId": 5
@@ -85,6 +131,24 @@
       "side": 1,
       "message": "Gotcha I see what you mean. Yeah it seems like it would be less clear to have if statements and/or modifying the string depending on whether to add the property or not, etc. Resolving.",
       "parentUuid": "71f9658f_c6ddd4d6",
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7264ee_93ebe46f",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-21T15:39:01Z",
+      "side": 1,
+      "message": "given that prop is non-empty, could we still use fmmt.Sprintf here?",
+      "parentUuid": "a16a992f_a2d8d0dd",
       "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
