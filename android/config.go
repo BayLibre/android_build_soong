@@ -910,6 +910,36 @@ func (c *config) AllowMissingDependencies() bool {
 	return Bool(c.productVariables.Allow_missing_dependencies)
 }
 
+// Instead of defining ALLOW_MISSING_DEPENDENCIES, ALLOWED_MISSING_MODULES can
+// be used to list the allowed list of missind dependencies.
+func (c *config) HaveAllowedMissingDeps() bool {
+	return len(c.productVariables.Allowed_missing_modules) > 0
+}
+
+// This function returns true for all modules if ALLOW_MISSING_DEPENDENCIES is
+// set to true
+func (c *config) KnownMissingDep(dep string) bool {
+	if c.AllowMissingDependencies() {
+		return true
+	}
+	return InList(dep, c.productVariables.Allowed_missing_modules)
+}
+
+func (c *config) KnownMissingDeps(deps []string) bool {
+	if c.AllowMissingDependencies() {
+		return true
+	}
+	if !c.HaveAllowedMissingDeps() {
+		return false
+	}
+	for _, dep := range deps {
+		if !c.KnownMissingDep(dep) {
+			return false
+		}
+	}
+	return true
+}
+
 // Returns true if a full platform source tree cannot be assumed.
 func (c *config) UnbundledBuild() bool {
 	return Bool(c.productVariables.Unbundled_build)

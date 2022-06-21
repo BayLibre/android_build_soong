@@ -253,6 +253,7 @@ type productVariables struct {
 	AppsDefaultVersionName *string `json:",omitempty"`
 
 	Allow_missing_dependencies   *bool    `json:",omitempty"`
+	Allowed_missing_modules      []string `json:",omitempty"`
 	Unbundled_build              *bool    `json:",omitempty"`
 	Unbundled_build_apps         []string `json:",omitempty"`
 	Unbundled_build_image        *bool    `json:",omitempty"`

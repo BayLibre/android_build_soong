@@ -440,7 +440,7 @@ func PathsForModuleSrcExcludes(ctx ModuleMissingDepsPathContext, paths, excludes
 
 func PathsRelativeToModuleSourceDir(input SourceInput) Paths {
 	ret, missingDeps := PathsAndMissingDepsRelativeToModuleSourceDir(input)
-	if input.Context.Config().AllowMissingDependencies() {
+	if input.Context.Config().KnownMissingDeps(missingDeps) {
 		input.Context.AddMissingDependencies(missingDeps)
 	} else {
 		for _, m := range missingDeps {
@@ -1364,7 +1364,7 @@ func PathForModuleSrc(ctx ModuleMissingDepsPathContext, pathComponents ...string
 	paths, err := expandOneSrcPath(sourcePathInput{context: ctx, path: p, includeDirs: true})
 	if err != nil {
 		if depErr, ok := err.(missingDependencyError); ok {
-			if ctx.Config().AllowMissingDependencies() {
+			if ctx.Config().KnownMissingDeps(depErr.missingDeps) {
 				ctx.AddMissingDependencies(depErr.missingDeps)
 			} else {
 				ctx.ModuleErrorf(`%s, is the property annotated with android:"path"?`, depErr.Error())

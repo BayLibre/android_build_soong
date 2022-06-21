@@ -117,6 +117,11 @@ func newContext(configuration android.Config) *android.Context {
 	ctx.Register()
 	ctx.SetNameInterface(newNameResolver(configuration))
 	ctx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())
+	// If ALLOWED_MISSING_MODULES is defined SetAllowMissingDependencies to blueprint.
+	// The missing dependencies must be checked in soong.
+	if configuration.HaveAllowedMissingDeps() {
+		ctx.SetAllowMissingDependencies(true)
+	}
 	return ctx
 }
 
