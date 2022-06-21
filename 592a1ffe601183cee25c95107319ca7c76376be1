@@ -217,6 +217,24 @@
       "parentUuid": "2d7264ee_93ebe46f",
       "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe69787_01b974d1",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-21T20:40:48Z",
+      "side": 1,
+      "message": "There was a typo in above comment.\n\nEDITED: If the prop is never empty, then yes we can use  fmt.Sprintf . But it\u0027s possible to leave  depfile  empty, correct?",
+      "parentUuid": "ba494ff3_8e646af1",
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
