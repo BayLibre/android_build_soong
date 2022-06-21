@@ -116,7 +116,9 @@ func newContext(configuration android.Config) *android.Context {
 	ctx := android.NewContext(configuration)
 	ctx.Register()
 	ctx.SetNameInterface(newNameResolver(configuration))
-	ctx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())
+	// If ALLOWED_MISSING_MODULES is depfined SetAllowMissingDependencies to blueprint.
+	// The missing dependencies must be checked in soong.
+	ctx.SetAllowMissingDependencies(configuration.HaveAllowedMissingDeps())
 	return ctx
 }
 
@@ -494,7 +496,7 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 
 		// Propagate "allow misssing dependencies" bit. This is normally set in
 		// newContext(), but we create bp2buildCtx without calling that method.
-		bp2buildCtx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())
+		bp2buildCtx.SetAllowMissingDependencies(configuration.HaveAllowedMissingDeps())
 		bp2buildCtx.SetNameInterface(newNameResolver(configuration))
 		bp2buildCtx.RegisterForBazelConversion()
 

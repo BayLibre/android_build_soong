@@ -167,6 +167,18 @@ var PrepareForTestWithAllowMissingDependencies = GroupFixturePreparers(
 	}),
 )
 
+// Prepares a test that defines a list of known missing modules.
+func PrepareForTestWithAllowedMissingModules(missingModules ...string) FixturePreparer {
+	return GroupFixturePreparers(
+		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+			variables.Allowed_missing_modules = missingModules
+		}),
+		FixtureModifyContext(func(ctx *TestContext) {
+			ctx.SetAllowMissingDependencies(true)
+		}),
+	)
+}
+
 // Prepares a test that disallows non-existent paths.
 var PrepareForTestDisallowNonExistentPaths = FixtureModifyConfig(func(config Config) {
 	config.TestAllowNonExistentPaths = false

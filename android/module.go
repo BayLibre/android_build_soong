@@ -2267,10 +2267,16 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	// files of this module at the end for use by modules that depend on this one.
 	m.installFilesDepSet = newInstallPathsDepSet(nil, dependencyInstallFiles)
 
-	// Temporarily continue to call blueprintCtx.GetMissingDependencies() to maintain the previous behavior of never
+	// Call blueprintCtx.GetMissingDependencies() to maintain the previous behavior of never
 	// reporting missing dependency errors in Blueprint when AllowMissingDependencies == true.
-	// TODO: This will be removed once defaults modules handle missing dependency errors
-	blueprintCtx.GetMissingDependencies()
+	// If AllowMissingDependencies == false, but the missing dependencies are not listed in
+	// Allow_missing_dependencies, report an error.
+	missingDeps := blueprintCtx.GetMissingDependencies()
+	for _, missingDep := range missingDeps {
+		if !ctx.Config().KnownMissingDep(missingDep) {
+			ctx.ModuleErrorf("depends on undefined module %q", missingDep)
+		}
+	}
 
 	// For the final GenerateAndroidBuildActions pass, require that all visited dependencies Soong modules and
 	// are enabled. Unless the module is a CommonOS variant which may have dependencies on disabled variants
@@ -2378,7 +2384,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		m.packagingSpecs = append(m.packagingSpecs, ctx.packagingSpecs...)
 		m.katiInstalls = append(m.katiInstalls, ctx.katiInstalls...)
 		m.katiSymlinks = append(m.katiSymlinks, ctx.katiSymlinks...)
-	} else if ctx.Config().AllowMissingDependencies() {
+	} else if ctx.Config().HaveAllowedMissingDeps() {
 		// If the module is not enabled it will not create any build rules, nothing will call
 		// ctx.GetMissingDependencies(), and blueprint will consider the missing dependencies to be unhandled
 		// and report them as an error even when AllowMissingDependencies = true.  Call
@@ -2827,7 +2833,7 @@ func (b *baseModuleContext) validateAndroidModule(module blueprint.Module, tag b
 
 	if !aModule.Enabled() {
 		if t, ok := tag.(AllowDisabledModuleDependency); !ok || !t.AllowDisabledModuleDependency(aModule) {
-			if b.Config().AllowMissingDependencies() {
+			if b.Config().KnownMissingDep(b.OtherModuleName(aModule)) {
 				b.AddMissingDependencies([]string{b.OtherModuleName(aModule)})
 			} else {
 				b.ModuleErrorf("depends on disabled module %q", b.OtherModuleName(aModule))

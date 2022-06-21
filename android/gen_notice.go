@@ -114,14 +114,14 @@ func (m *genNoticeModule) DepsMutator(ctx BottomUpMutatorContext) {
 	if proptools.Bool(m.properties.Html) && proptools.Bool(m.properties.Xml) {
 		ctx.ModuleErrorf("can be html or xml but not both")
 	}
-	if !ctx.Config().AllowMissingDependencies() {
-		var missing []string
-		// Verify the modules for which to generate notices exist.
-		for _, otherMod := range m.properties.For {
-			if !ctx.OtherModuleExists(otherMod) {
-				missing = append(missing, otherMod)
-			}
+	var missing []string
+	// Verify the modules for which to generate notices exist.
+	for _, otherMod := range m.properties.For {
+		if !ctx.OtherModuleExists(otherMod) {
+			missing = append(missing, otherMod)
 		}
+	}
+	if !ctx.Config().KnownMissingDeps(missing) {
 		if len(missing) == 1 {
 			ctx.PropertyErrorf("for", "no %q module exists", missing[0])
 		} else if len(missing) > 1 {
@@ -156,7 +156,7 @@ func (m *genNoticeModule) getSuffix() string {
 }
 
 func (m *genNoticeModule) GenerateAndroidBuildActions(ctx ModuleContext) {
-	if ctx.Config().AllowMissingDependencies() {
+	if ctx.Config().HaveAllowedMissingDeps() {
 		// Verify the modules for which to generate notices exist.
 		for _, otherMod := range m.properties.For {
 			if !ctx.OtherModuleExists(otherMod) {

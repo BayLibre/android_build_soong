@@ -1450,7 +1450,7 @@ func TestPathsForModuleSrc_AllowMissingDependencies(t *testing.T) {
 	`
 
 	result := GroupFixturePreparers(
-		PrepareForTestWithAllowMissingDependencies,
+		PrepareForTestWithAllowedMissingModules("a", "b", "c", "d", "e"),
 		FixtureRegisterWithContext(func(ctx RegistrationContext) {
 			ctx.RegisterModuleType("test", pathForModuleSrcTestModuleFactory)
 		}),

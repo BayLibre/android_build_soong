@@ -123,7 +123,7 @@ func TestDefaultsAllowMissingDependencies(t *testing.T) {
 
 	result := GroupFixturePreparers(
 		prepareForDefaultsTest,
-		PrepareForTestWithAllowMissingDependencies,
+		PrepareForTestWithAllowedMissingModules("missing"),
 		FixtureWithRootAndroidBp(bp),
 	).RunTest(t)
 

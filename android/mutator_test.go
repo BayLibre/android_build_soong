@@ -81,6 +81,31 @@ func TestMutatorAddMissingDependencies(t *testing.T) {
 	AssertDeepEquals(t, "foo missing deps", []string{"added_missing_dep", "regular_missing_dep"}, foo.missingDeps)
 }
 
+func TestMutatorAddMissingDependenciesWithModuleList(t *testing.T) {
+	bp := `
+		test {
+			name: "foo",
+			deps_missing_deps: ["regular_missing_dep"],
+			mutator_missing_deps: ["added_missing_dep"],
+		}
+	`
+
+	result := GroupFixturePreparers(
+		PrepareForTestWithAllowedMissingModules("regular_missing_dep"),
+		FixtureRegisterWithContext(func(ctx RegistrationContext) {
+			ctx.RegisterModuleType("test", mutatorTestModuleFactory)
+			ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
+				ctx.TopDown("add_missing_dependencies", addMissingDependenciesMutator)
+			})
+		}),
+		FixtureWithRootAndroidBp(bp),
+	).RunTest(t)
+
+	foo := result.ModuleForTests("foo", "").Module().(*mutatorTestModule)
+
+	AssertDeepEquals(t, "foo missing deps", []string{"added_missing_dep", "regular_missing_dep"}, foo.missingDeps)
+}
+
 func TestModuleString(t *testing.T) {
 	bp := `
 		test {

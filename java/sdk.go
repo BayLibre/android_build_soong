@@ -118,21 +118,28 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext android.SdkContext)
 		aidlPath := android.ExistentPathForSource(ctx, aidl)
 		lambdaStubsPath := android.PathForSource(ctx, config.SdkLambdaStubsPath)
 
-		if (!jarPath.Valid() || !aidlPath.Valid()) && ctx.Config().AllowMissingDependencies() {
+		invalid := false
+		if !jarPath.Valid() {
+			if !ctx.Config().KnownMissingDep(jar) {
+				ctx.PropertyErrorf("sdk_version", "invalid sdk version %q, %q does not exist", sdkVersion.Raw, jar)
+				return sdkDep{}
+			}
+			invalid = true
+		}
+
+		if !aidlPath.Valid() {
+			if !ctx.Config().KnownMissingDep(aidl) {
+				ctx.PropertyErrorf("sdk_version", "invalid sdk version %q, %q does not exist", sdkVersion.Raw, aidl)
+				return sdkDep{}
+			}
+			invalid = true
+		}
+
+		if invalid {
 			return sdkDep{
 				invalidVersion: true,
 				bootclasspath:  []string{fmt.Sprintf("sdk_%s_%s_android", sdkVersion.Kind, sdkVersion.ApiLevel.String())},
 			}
-		}
-
-		if !jarPath.Valid() {
-			ctx.PropertyErrorf("sdk_version", "invalid sdk version %q, %q does not exist", sdkVersion.Raw, jar)
-			return sdkDep{}
-		}
-
-		if !aidlPath.Valid() {
-			ctx.PropertyErrorf("sdk_version", "invalid sdk version %q, %q does not exist", sdkVersion.Raw, aidl)
-			return sdkDep{}
 		}
 
 		var systemModules string
@@ -323,7 +330,7 @@ func createFrameworkAidl(stubsModules []string, path android.WritablePath, ctx a
 
 	for i := range stubsJars {
 		if stubsJars[i] == nil {
-			if ctx.Config().AllowMissingDependencies() {
+			if ctx.Config().KnownMissingDep(stubsModules[i]) {
 				missingDeps = append(missingDeps, stubsModules[i])
 			} else {
 				ctx.Errorf("failed to find dex jar path for module %q", stubsModules[i])

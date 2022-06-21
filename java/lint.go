@@ -527,7 +527,7 @@ func (l *lintSingleton) copyLintDependencies(ctx android.SingletonContext) {
 
 	apiVersionsDb := findModuleOrErr(ctx, "api_versions_public")
 	if apiVersionsDb == nil {
-		if !ctx.Config().AllowMissingDependencies() {
+		if !ctx.Config().KnownMissingDep("api_versions_public") {
 			ctx.Errorf("lint: missing module api_versions_public")
 		}
 		return
@@ -535,7 +535,7 @@ func (l *lintSingleton) copyLintDependencies(ctx android.SingletonContext) {
 
 	sdkAnnotations := findModuleOrErr(ctx, "sdk-annotations.zip")
 	if sdkAnnotations == nil {
-		if !ctx.Config().AllowMissingDependencies() {
+		if !ctx.Config().KnownMissingDep("sdk-annotations.zip") {
 			ctx.Errorf("lint: missing module sdk-annotations.zip")
 		}
 		return
@@ -543,7 +543,7 @@ func (l *lintSingleton) copyLintDependencies(ctx android.SingletonContext) {
 
 	filteredDb := findModuleOrErr(ctx, "api-versions-xml-public-filtered")
 	if filteredDb == nil {
-		if !ctx.Config().AllowMissingDependencies() {
+		if !ctx.Config().KnownMissingDep("api-versions-xml-public-filtered") {
 			ctx.Errorf("lint: missing api-versions-xml-public-filtered")
 		}
 		return

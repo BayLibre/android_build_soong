@@ -3057,7 +3057,7 @@ func TestTargetSdkVersionManifestFixer(t *testing.T) {
 func TestAppMissingCertificateAllowMissingDependencies(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		PrepareForTestWithJavaDefaultModules,
-		android.PrepareForTestWithAllowMissingDependencies,
+		android.PrepareForTestWithAllowedMissingModules("missing_certificate"),
 		android.PrepareForTestWithAndroidMk,
 	).RunTestWithBp(t, `
 		android_app {

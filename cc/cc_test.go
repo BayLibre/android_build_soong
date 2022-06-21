@@ -3501,7 +3501,7 @@ func TestEmptyWholeStaticLibsAllowMissingDependencies(t *testing.T) {
 
 	result := android.GroupFixturePreparers(
 		prepareForCcTest,
-		android.PrepareForTestWithAllowMissingDependencies,
+		android.PrepareForTestWithAllowedMissingModules("libmissing"),
 	).RunTestWithBp(t, bp)
 
 	libbar := result.ModuleForTests("libbar", "android_arm64_armv8-a_static").Output("libbar.a")
@@ -3511,6 +3511,13 @@ func TestEmptyWholeStaticLibsAllowMissingDependencies(t *testing.T) {
 
 	libfoo := result.ModuleForTests("libfoo", "android_arm64_armv8-a_static").Output("libfoo.a")
 	android.AssertStringListContains(t, "libfoo.a dependencies", libfoo.Inputs.Strings(), libbar.Output.String())
+
+	// Error because "libmissing" is not in the allowed missing modules
+	android.GroupFixturePreparers(
+		prepareForCcTest,
+		android.PrepareForTestWithAllowedMissingModules("libmssing2"),
+	).ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+		"depends on undefined module \"libmissing\"")).RunTestWithBp(t, bp)
 }
 
 func TestInstallSharedLibs(t *testing.T) {

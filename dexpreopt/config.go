@@ -308,7 +308,7 @@ func getGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 
 	// Avoid non-deterministic errors by reporting cached path errors on all callers.
 	for _, err := range config.pathErrors {
-		if ctx.Config().AllowMissingDependencies() {
+		if ctx.Config().HaveAllowedMissingDeps() {
 			// When AllowMissingDependencies it set, report errors through AddMissingDependencies.
 			// If AddMissingDependencies doesn't exist on the current context (for example when
 			// called with a SingletonContext), just swallow the errors since there is no way to
