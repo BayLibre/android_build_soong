@@ -51,6 +51,24 @@
       "parentUuid": "bce6f80d_7f4b5398",
       "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a16a992f_a2d8d0dd",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-21T15:09:06Z",
+      "side": 1,
+      "message": "Gotcha I see what you mean. Yeah it seems like it would be less clear to have if statements and/or modifying the string depending on whether to add the property or not, etc. Resolving.",
+      "parentUuid": "71f9658f_c6ddd4d6",
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
