@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381e869d_59ed4614",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-21T14:30:39Z",
+      "side": 1,
+      "message": "nit: Could consider making `depfile` and `cmd` separate fields in the testcase struct rather than just a string that contains two pieces of information.",
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce6f80d_7f4b5398",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-21T14:30:39Z",
+      "side": 1,
+      "message": "nit: I\u0027ve seen other tests use multiline strings here and `fmt.Sprintf` to include the testcase data. Avoids having to remember the `\\n` at the end of every line, and you don\u0027t have to escape the `\"` quotation marks.",
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
