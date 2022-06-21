@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f9a404_1d0eaeea",
+        "filename": "android/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1697,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-21T17:59:35Z",
+      "side": 1,
+      "message": "Done on aosp/2132365.That was might oversight not to upload this change.",
+      "parentUuid": "e0a77d73_e9519d6d",
+      "range": {
+        "startLine": 1697,
+        "startChar": 39,
+        "endLine": 1697,
+        "endChar": 57
+      },
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ee57225_679814c4",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-21T15:39:01Z",
       "side": 1,
       "message": "Let\u0027s add something about specifying dependencies directly as well, as that is the preferred path over BUILD_BROKEN_DEPFILE",
+      "range": {
+        "startLine": 600,
+        "startChar": 4,
+        "endLine": 600,
+        "endChar": 100
+      },
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03d6a82_2a88b8cb",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-21T17:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee57225_679814c4",
       "range": {
         "startLine": 600,
         "startChar": 4,
@@ -149,6 +197,24 @@
       "side": 1,
       "message": "given that prop is non-empty, could we still use fmmt.Sprintf here?",
       "parentUuid": "a16a992f_a2d8d0dd",
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba494ff3_8e646af1",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-21T17:59:35Z",
+      "side": 1,
+      "message": "if the prop is never non-empty, then yes we can use `fmt.Sprintf`. But it\u0027s possible to leave `depfile` empty, correct?",
+      "parentUuid": "2d7264ee_93ebe46f",
       "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
