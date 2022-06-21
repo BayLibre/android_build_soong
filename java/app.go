@@ -637,7 +637,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	if len(certificates) > 0 {
 		a.certificate = certificates[0]
 	} else {
-		if !ctx.Config().AllowMissingDependencies() && len(ctx.GetMissingDependencies()) > 0 {
+		if !ctx.Config().HaveAllowedMissingDeps() && len(ctx.GetMissingDependencies()) > 0 {
 			panic("Should only get here if AllowMissingDependencies set and there are missing dependencies")
 		}
 		// Set a certificate to avoid panics later when accessing it.
@@ -1310,7 +1310,7 @@ func (u *usesLibrary) classLoaderContextForUsesLibDeps(ctx android.ModuleContext
 			clcMap.AddContext(ctx, tag.sdkVersion, libName, tag.optional,
 				lib.DexJarBuildPath().PathOrNil(), lib.DexJarInstallPath(),
 				lib.ClassLoaderContexts())
-		} else if ctx.Config().AllowMissingDependencies() {
+		} else if ctx.Config().KnownMissingDep(dep) {
 			ctx.AddMissingDependencies([]string{dep})
 		} else {
 			ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must be a java library", dep)

@@ -332,7 +332,7 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 					// A HostToolProvider provides the path to a tool, which will be copied
 					// into the sandbox.
 					if !t.(android.Module).Enabled() {
-						if ctx.Config().AllowMissingDependencies() {
+						if ctx.Config().KnownMissingDep(tool) {
 							ctx.AddMissingDependencies([]string{tool})
 						} else {
 							ctx.ModuleErrorf("depends on disabled module %q", tool)
@@ -375,9 +375,9 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 		// "cmd: unknown location label ..." errors later.  Add a placeholder file to the local label.
 		// The command that uses this placeholder file will never be executed because the rule will be
 		// replaced with an android.Error rule reporting the missing dependencies.
-		if ctx.Config().AllowMissingDependencies() {
+		if ctx.Config().HaveAllowedMissingDeps() {
 			for _, tool := range g.properties.Tools {
-				if !seenTools[tool] {
+				if !seenTools[tool] && ctx.Config().KnownMissingDep(tool) {
 					addLocationLabel(tool, errorLocation{"***missing tool " + tool + "***"})
 				}
 			}
@@ -401,7 +401,7 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 			Context: ctx, Paths: []string{in}, ExcludePaths: g.properties.Exclude_srcs, IncludeDirs: includeDirInPaths,
 		})
 		if len(missingDeps) > 0 {
-			if !ctx.Config().AllowMissingDependencies() {
+			if !ctx.Config().KnownMissingDeps(missingDeps) {
 				panic(fmt.Errorf("should never get here, the missing dependencies %q should have been reported in DepsMutator",
 					missingDeps))
 			}
