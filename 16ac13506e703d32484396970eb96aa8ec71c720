@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b2eeaa_916a9258",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-22T15:05:31Z",
+      "side": 1,
+      "message": "os shadows the os package that is imported - renaming simply to suppress warnings in the IDE",
+      "revId": "16ac13506e703d32484396970eb96aa8ec71c720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
