@@ -375,6 +375,12 @@ var (
 		"car-ui-androidx-core-common-nodeps",
 		"car-ui-androidx-lifecycle-common-nodeps",
 		"car-ui-androidx-constraintlayout-solver-nodeps",
+
+		"ipmemorystore-aidl-interfaces_interface",
+		"networkstack-aidl-interfaces_interface",
+		"networkstack-aidl-latest",
+		"networkstack-aidl-test",
+		"framework-core-aidl-sources",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
