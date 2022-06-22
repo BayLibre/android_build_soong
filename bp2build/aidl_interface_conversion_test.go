@@ -1,0 +1,232 @@
+package bp2build
+
+import (
+	"android/soong/aidl"
+	"android/soong/android"
+	"testing"
+)
+
+func runAidlInterfaceTestCase(t *testing.T, tc bp2buildTestCase) {
+	t.Helper()
+	runBp2BuildTestCase(
+		t,
+		func(ctx android.RegistrationContext) {
+			ctx.RegisterModuleType("aidl_interface", aidl.AidlInterfaceFactory)
+			ctx.RegisterModuleType("aidl_interface_headers", aidl.AidlInterfaceHeadersFactory)
+		},
+		tc,
+	)
+}
+
+func TestAidlInterfaceWithNoProperties(t *testing.T) {
+	runAidlInterfaceTestCase(t, bp2buildTestCase{
+		description: `aidl_interface no properties set`,
+		blueprint: `
+aidl_interface {
+    name: "aidl-interface1",
+}
+`,
+		expectedBazelTargets: []string{
+			makeBazelTargetNoRestrictions("aidl_interface", "aidl-interface1", attrNameToString{
+				"backends": `[
+        "cpp",
+        "java",
+        "ndk",
+    ]`,
+				"java_deps": `["//prebuilts/sdk:current_module_lib_framework_connectivity"]`,
+			}),
+		},
+	})
+}
+
+func TestAidlInterfaceWithFlags(t *testing.T) {
+	runAidlInterfaceTestCase(t, bp2buildTestCase{
+		description: `aidl_interface flags property set`,
+		blueprint: `
+aidl_interface {
+    name: "aidl-interface1",
+	flags: ["--flag1"],
+}
+`,
+		expectedBazelTargets: []string{
+			makeBazelTargetNoRestrictions("aidl_interface", "aidl-interface1", attrNameToString{
+				"backends": `[
+        "cpp",
+        "java",
+        "ndk",
+    ]`,
+				"flags":     `["--flag1"]`,
+				"java_deps": `["//prebuilts/sdk:current_module_lib_framework_connectivity"]`,
+			}),
+		},
+	})
+}
+
+func TestAidlInterfaceWithDisabledBackends(t *testing.T) {
+	runAidlInterfaceTestCase(t, bp2buildTestCase{
+		description: `aidl_interface with some backends disabled`,
+		blueprint: `
+aidl_interface {
+    name: "aidl-interface1",
+    backend: {
+        ndk: {
+            enabled: false,
+        },
+        cpp: {
+            enabled: false,
+        },
+    },
+}
+`,
+		expectedBazelTargets: []string{
+			makeBazelTargetNoRestrictions("aidl_interface", "aidl-interface1", attrNameToString{
+				"backends":  `["java"]`,
+				"java_deps": `["//prebuilts/sdk:current_module_lib_framework_connectivity"]`,
+			}),
+		},
+	})
+}
+
+func TestAidlInterfaceWithLatestImport(t *testing.T) {
+	runAidlInterfaceTestCase(t, bp2buildTestCase{
+		description: `aidl_interface with single "latest" aidl_interface import`,
+		blueprint: `
+aidl_interface {
+    name: "aidl-interface-import",
+    versions: [
+        "1",
+        "2",
+	],
+}
+aidl_interface {
+    name: "aidl-interface1",
+    imports: [
+        "aidl-interface-import",
+    ],
+    versions: [
+        "1",
+        "2",
+        "3",
+    ],
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTargetNoRestrictions("aidl_interface", "aidl-interface-import", attrNameToString{
+				"backends": `[
+        "cpp",
+        "java",
+        "ndk",
+    ]`,
+				"java_deps": `["//prebuilts/sdk:current_module_lib_framework_connectivity"]`,
+				"versions": `[
+        "1",
+        "2",
+    ]`,
+			}),
+			makeBazelTargetNoRestrictions("aidl_interface", "aidl-interface1", attrNameToString{
+				"backends": `[
+        "cpp",
+        "java",
+        "ndk",
+    ]`,
+				"deps":      `[":aidl-interface-import-latest"]`,
+				"java_deps": `["//prebuilts/sdk:current_module_lib_framework_connectivity"]`,
+				"versions": `[
+        "1",
+        "2",
+        "3",
+    ]`,
+			}),
+		},
+	})
+}
+
+func TestAidlInterfaceWithVersionedImport(t *testing.T) {
+	runAidlInterfaceTestCase(t, bp2buildTestCase{
+		description: `aidl_interface with single versioned aidl_interface import`,
+		blueprint: `
+aidl_interface {
+    name: "aidl-interface-import",
+    versions: [
+        "1",
+        "2",
+	],
+}
+aidl_interface {
+    name: "aidl-interface1",
+    imports: [
+        "aidl-interface-import-V2",
+    ],
+    versions: [
+        "1",
+        "2",
+        "3",
+    ],
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTargetNoRestrictions("aidl_interface", "aidl-interface-import", attrNameToString{
+				"backends": `[
+        "cpp",
+        "java",
+        "ndk",
+    ]`,
+				"java_deps": `["//prebuilts/sdk:current_module_lib_framework_connectivity"]`,
+				"versions": `[
+        "1",
+        "2",
+    ]`,
+			}),
+			makeBazelTargetNoRestrictions("aidl_interface", "aidl-interface1", attrNameToString{
+				"backends": `[
+        "cpp",
+        "java",
+        "ndk",
+    ]`,
+				"deps":      `[":aidl-interface-import-V2"]`,
+				"java_deps": `["//prebuilts/sdk:current_module_lib_framework_connectivity"]`,
+				"versions": `[
+        "1",
+        "2",
+        "3",
+    ]`,
+			}),
+		},
+	})
+}
+
+func TestAidlInterfaceWithHeadersImport(t *testing.T) {
+	runAidlInterfaceTestCase(t, bp2buildTestCase{
+		description: `aidl_interface with single "latest" aidl_interface import`,
+		blueprint: `
+aidl_interface_headers {
+    name: "aidl-interface-headers",
+}
+aidl_interface {
+    name: "aidl-interface1",
+    imports: [
+        "aidl-interface-headers",
+    ],
+    versions: [
+        "1",
+        "2",
+        "3",
+    ],
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTargetNoRestrictions("aidl_library", "aidl-interface-headers", attrNameToString{}),
+			makeBazelTargetNoRestrictions("aidl_interface", "aidl-interface1", attrNameToString{
+				"backends": `[
+        "cpp",
+        "java",
+        "ndk",
+    ]`,
+				"includes":  `[":aidl-interface-headers"]`,
+				"java_deps": `["//prebuilts/sdk:current_module_lib_framework_connectivity"]`,
+				"versions": `[
+        "1",
+        "2",
+        "3",
+    ]`,
+			}),
+		},
+	})
+}
