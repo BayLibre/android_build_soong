@@ -90,6 +90,10 @@ func (ll *LabelList) Equals(other LabelList) bool {
 	return true
 }
 
+func (ll *LabelList) IsEmpty() bool {
+	return len(ll.Includes) == 0 && len(ll.Excludes) == 0
+}
+
 func (ll *LabelList) IsNil() bool {
 	return ll.Includes == nil && ll.Excludes == nil
 }
