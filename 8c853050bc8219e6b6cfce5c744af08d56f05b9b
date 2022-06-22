@@ -67,6 +67,29 @@
       "message": "Put a comment here that will show up as the user-facing documentation for this module type at go/Android.bp.",
       "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab722b09_45ebe935",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-22T23:09:13Z",
+      "side": 1,
+      "message": "Where is this module defined?",
+      "range": {
+        "startLine": 145,
+        "startChar": 45,
+        "endLine": 145,
+        "endChar": 60
+      },
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
