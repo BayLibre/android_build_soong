@@ -19,7 +19,7 @@ func TestRequestResultsAfterInvokeBazel(t *testing.T) {
 		bazelCommand{command: "cquery", expression: "deps(@soong_injection//mixed_builds:buildroot, 2)"}: `//foo:bar|arm64_armv8-a|android>>out/foo/bar.txt`,
 	})
 	bazelContext.QueueBazelRequest(label, cquery.GetOutputFiles, cfg)
-	err := bazelContext.InvokeBazel(testConfig)
+	err := bazelContext.invokeBazel(testConfig)
 	if err != nil {
 		t.Fatalf("Did not expect error invoking Bazel, but got %s", err)
 	}
@@ -33,7 +33,7 @@ func TestRequestResultsAfterInvokeBazel(t *testing.T) {
 
 func TestInvokeBazelWritesBazelFiles(t *testing.T) {
 	bazelContext, baseDir := testBazelContext(t, map[bazelCommand]string{})
-	err := bazelContext.InvokeBazel(testConfig)
+	err := bazelContext.invokeBazel(testConfig)
 	if err != nil {
 		t.Fatalf("Did not expect error invoking Bazel, but got %s", err)
 	}
@@ -89,12 +89,12 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
   }]
 }`,
 	})
-	err := bazelContext.InvokeBazel(testConfig)
+	err := bazelContext.invokeBazel(testConfig)
 	if err != nil {
 		t.Fatalf("Did not expect error invoking Bazel, but got %s", err)
 	}
 
-	got := bazelContext.BuildStatementsToRegister()
+	got := bazelContext.buildStatementsToRegister()
 	if want := 1; len(got) != want {
 		t.Errorf("Expected %d registered build statements, got %#v", want, got)
 	}
@@ -130,7 +130,7 @@ func TestCoverageFlagsAfterInvokeBazel(t *testing.T) {
 func verifyExtraFlags(t *testing.T, config Config, expected string) string {
 	bazelContext, _ := testBazelContext(t, map[bazelCommand]string{})
 
-	err := bazelContext.InvokeBazel(config)
+	err := bazelContext.invokeBazel(config)
 	if err != nil {
 		t.Fatalf("Did not expect error invoking Bazel, but got %s", err)
 	}

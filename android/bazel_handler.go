@@ -111,7 +111,7 @@ type BazelContext interface {
 
 	// Issues commands to Bazel to receive results for all cquery requests
 	// queued in the BazelContext.
-	InvokeBazel(config Config) error
+	invokeBazel(config Config) error
 
 	// Returns true if bazel is enabled for the given configuration.
 	BazelEnabled() bool
@@ -120,10 +120,10 @@ type BazelContext interface {
 	OutputBase() string
 
 	// Returns build statements which should get registered to reflect Bazel's outputs.
-	BuildStatementsToRegister() []bazel.BuildStatement
+	buildStatementsToRegister() []bazel.BuildStatement
 
 	// Returns the depsets defined in Bazel's aquery response.
-	AqueryDepsets() []bazel.AqueryDepset
+	aqueryDepsets() []bazel.AqueryDepset
 }
 
 type bazelRunner interface {
@@ -191,7 +191,7 @@ func (m MockBazelContext) GetPythonBinary(label string, cfgKey configKey) (strin
 	return result, nil
 }
 
-func (m MockBazelContext) InvokeBazel(config Config) error {
+func (m MockBazelContext) invokeBazel(config Config) error {
 	panic("unimplemented")
 }
 
@@ -201,11 +201,11 @@ func (m MockBazelContext) BazelEnabled() bool {
 
 func (m MockBazelContext) OutputBase() string { return m.OutputBaseDir }
 
-func (m MockBazelContext) BuildStatementsToRegister() []bazel.BuildStatement {
+func (m MockBazelContext) buildStatementsToRegister() []bazel.BuildStatement {
 	return []bazel.BuildStatement{}
 }
 
-func (m MockBazelContext) AqueryDepsets() []bazel.AqueryDepset {
+func (m MockBazelContext) aqueryDepsets() []bazel.AqueryDepset {
 	return []bazel.AqueryDepset{}
 }
 
@@ -261,7 +261,7 @@ func (n noopBazelContext) GetPythonBinary(label string, cfgKey configKey) (strin
 	panic("unimplemented")
 }
 
-func (n noopBazelContext) InvokeBazel(config Config) error {
+func (n noopBazelContext) invokeBazel(config Config) error {
 	panic("unimplemented")
 }
 
@@ -273,11 +273,11 @@ func (n noopBazelContext) BazelEnabled() bool {
 	return false
 }
 
-func (m noopBazelContext) BuildStatementsToRegister() []bazel.BuildStatement {
+func (m noopBazelContext) buildStatementsToRegister() []bazel.BuildStatement {
 	return []bazel.BuildStatement{}
 }
 
-func (m noopBazelContext) AqueryDepsets() []bazel.AqueryDepset {
+func (m noopBazelContext) aqueryDepsets() []bazel.AqueryDepset {
 	return []bazel.AqueryDepset{}
 }
 
@@ -678,7 +678,7 @@ func (p *bazelPaths) outDir() string {
 
 // Issues commands to Bazel to receive results for all cquery requests
 // queued in the BazelContext.
-func (context *bazelContext) InvokeBazel(config Config) error {
+func (context *bazelContext) invokeBazel(config Config) error {
 	context.results = make(map[cqueryKey]string)
 
 	var cqueryOutput string
@@ -813,11 +813,11 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 	return nil
 }
 
-func (context *bazelContext) BuildStatementsToRegister() []bazel.BuildStatement {
+func (context *bazelContext) buildStatementsToRegister() []bazel.BuildStatement {
 	return context.buildStatements
 }
 
-func (context *bazelContext) AqueryDepsets() []bazel.AqueryDepset {
+func (context *bazelContext) aqueryDepsets() []bazel.AqueryDepset {
 	return context.depsets
 }
 
@@ -853,7 +853,7 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		ctx.AddNinjaFileDeps(file)
 	}
 
-	for _, depset := range ctx.Config().BazelContext.AqueryDepsets() {
+	for _, depset := range ctx.Config().BazelContext.aqueryDepsets() {
 		var outputs []Path
 		for _, depsetDepHash := range depset.TransitiveDepSetHashes {
 			otherDepsetName := bazelDepsetName(depsetDepHash)
@@ -871,7 +871,7 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 	}
 
 	// Register bazel-owned build statements (obtained from the aquery invocation).
-	for index, buildStatement := range ctx.Config().BazelContext.BuildStatementsToRegister() {
+	for index, buildStatement := range ctx.Config().BazelContext.buildStatementsToRegister() {
 		if len(buildStatement.Command) < 1 {
 			panic(fmt.Sprintf("unhandled build statement: %v", buildStatement))
 		}

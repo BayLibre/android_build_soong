@@ -303,7 +303,7 @@ func (a *aqueryArtifactHandler) artifactPathsFromDepsetHash(depsetHash string) (
 // AqueryBuildStatements returns a slice of BuildStatements and a slice of AqueryDepset
 // which should be registered (and output to a ninja file) to correspond with Bazel's
 // action graph, as described by the given action graph json proto.
-// BuildStatements are one-to-one with actions in the given action graph, and AqueryDepsets
+// BuildStatements are one-to-one with actions in the given action graph, and aqueryDepsets
 // are one-to-one with Bazel's depSetOfFiles objects.
 func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, []AqueryDepset, error) {
 	var aqueryResult actionGraphContainer
