@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7230f6a_16107e4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-06-22T13:29:58Z",
+      "side": 1,
+      "message": "I only exported the types that I needed to use for testing the `aidl_interface` bp2build, so if a package needs something that I didn\u0027t export, there are going to be more of these giant CLs. I could export a more expansive subset of the package instead. Please LMKWYT.",
+      "revId": "85f1c975fca127b5f25062a41fbe5fbf4c22f060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
