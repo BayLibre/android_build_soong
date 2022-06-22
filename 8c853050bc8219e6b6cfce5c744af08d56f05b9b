@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b76b2252_189423d0",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3634,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-22T23:08:27Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be listed here, it doesn\u0027t contain any properties that would be set by the user an a cc_defaults module.",
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f48b89_e6d770d4",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3404,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-22T23:08:27Z",
+      "side": 1,
+      "message": "This doesn\u0027t test anything except that a single variant exists.  It should at least be testing that the afl and non-afl variants exist, and that they correctly pass or do not pass the afl flags.",
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ee6345d_219b5df1",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-22T23:08:27Z",
+      "side": 1,
+      "message": "This seems like a candidate for Lukács\u0027 new bazel-style configuration transitions.",
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eed481f_5df19c92",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-22T23:08:27Z",
+      "side": 1,
+      "message": "Put a comment here that will show up as the user-facing documentation for this module type at go/Android.bp.",
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
