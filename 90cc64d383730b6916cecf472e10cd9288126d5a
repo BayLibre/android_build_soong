@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daaa71cd_94969ff3",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-23T17:44:26Z",
+      "side": 1,
+      "message": "very much a white box test but I think this is better than no test",
+      "revId": "90cc64d383730b6916cecf472e10cd9288126d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
