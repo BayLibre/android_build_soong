@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c89c8ce_c6971cca",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1487,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-23T21:18:41Z",
+      "side": 1,
+      "message": "verbosity courtesy of Go I think",
+      "revId": "cf4a946d42d5bd19fb8a33979ba3d768cff385d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9663ebc8_a2f15ea4",
@@ -14,6 +31,24 @@
       "writtenOn": "2022-06-23T20:43:55Z",
       "side": 1,
       "message": "I\u0027m a bit confused here. You\u0027re copying from the input to a temporary array, sorting the input array, and returning the temporary one?",
+      "revId": "cf4a946d42d5bd19fb8a33979ba3d768cff385d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd0cb655_7742b9ea",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1535,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-23T21:18:41Z",
+      "side": 1,
+      "message": "oops thanks for catching the error!",
+      "parentUuid": "9663ebc8_a2f15ea4",
       "revId": "cf4a946d42d5bd19fb8a33979ba3d768cff385d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
