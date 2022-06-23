@@ -50,6 +50,23 @@
       "message": "Ping.",
       "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ffca07_24b3bd0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-06-23T19:36:42Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t get to this, and I\u0027ll be OOO for a while. Nominate Artur 😊",
+      "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
