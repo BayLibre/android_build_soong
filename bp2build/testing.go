@@ -176,6 +176,7 @@ type customProps struct {
 	Int_prop         int `blueprint:"mutated"`
 	Int64_ptr_prop   *int64
 	String_prop      string
+	String_lit_prop  *string `android:"arch_variant"`
 	String_ptr_prop  *string
 	String_list_prop []string
 
@@ -305,23 +306,29 @@ type OtherEmbeddedAttr struct {
 type customBazelModuleAttributes struct {
 	EmbeddedAttr
 	*OtherEmbeddedAttr
+	String_lit_prop  bazel.StringAttribute
 	String_ptr_prop  *string
 	String_list_prop []string
 	Arch_paths       bazel.LabelListAttribute
 }
 
 func (m *customModule) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
-	paths := bazel.LabelListAttribute{}
-
 	if p := m.props.One_to_many_prop; p != nil && *p {
 		customBp2buildOneToMany(ctx, m)
 		return
 	}
 
+	paths := bazel.LabelListAttribute{}
+	strAttr := bazel.StringAttribute{}
 	for axis, configToProps := range m.GetArchVariantProperties(ctx, &customProps{}) {
 		for config, props := range configToProps {
-			if archProps, ok := props.(*customProps); ok && archProps.Arch_paths != nil {
-				paths.SetSelectValue(axis, config, android.BazelLabelForModuleSrcExcludes(ctx, archProps.Arch_paths, archProps.Arch_paths_exclude))
+			if custProps, ok := props.(*customProps); ok {
+				if custProps.Arch_paths != nil {
+					paths.SetSelectValue(axis, config, android.BazelLabelForModuleSrcExcludes(ctx, custProps.Arch_paths, custProps.Arch_paths_exclude))
+				}
+				if custProps.String_lit_prop != nil {
+					strAttr.SetSelectValue(axis, config, custProps.String_lit_prop)
+				}
 			}
 		}
 	}
@@ -329,10 +336,12 @@ func (m *customModule) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	paths.ResolveExcludes()
 
 	attrs := &customBazelModuleAttributes{
+		String_lit_prop:  strAttr,
 		String_ptr_prop:  m.props.String_ptr_prop,
 		String_list_prop: m.props.String_list_prop,
 		Arch_paths:       paths,
 	}
+
 	attrs.Embedded_attr = m.props.Embedded_prop
 	if m.props.OtherEmbeddedProps != nil {
 		attrs.OtherEmbeddedAttr = &OtherEmbeddedAttr{Other_embedded_attr: m.props.OtherEmbeddedProps.Other_embedded_prop}
