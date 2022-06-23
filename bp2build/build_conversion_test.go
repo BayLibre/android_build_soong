@@ -42,7 +42,6 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     soong_module_deps = [
     ],
     bool_prop = False,
-    string_prop = "",
 )`,
 		},
 		{
@@ -60,7 +59,6 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     soong_module_deps = [
     ],
     bool_prop = True,
-    string_prop = "",
 )`,
 		},
 		{
@@ -79,7 +77,6 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     ],
     bool_prop = False,
     owner = "a_string_with\"quotes\"_and_\\backslashes\\\\",
-    string_prop = "",
 )`,
 		},
 		{
@@ -98,7 +95,6 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     ],
     bool_prop = False,
     required = ["bar"],
-    string_prop = "",
 )`,
 		},
 		{
@@ -116,7 +112,6 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     soong_module_deps = [
     ],
     bool_prop = False,
-    string_prop = "",
     target_required = [
         "qux",
         "bazqux",
@@ -153,7 +148,6 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
         "tag": ".bar",
         "targets": ["goal_bar"],
     }],
-    string_prop = "",
 )`,
 		},
 		{
@@ -186,7 +180,6 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     }],
     owner = "custom_owner",
     required = ["bar"],
-    string_prop = "",
     target_required = [
         "qux",
         "bazqux",
@@ -231,6 +224,32 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
 func TestGenerateBazelTargetModules(t *testing.T) {
 	testCases := []Bp2buildTestCase{
 		{
+			Description: "string prop (empty)",
+			Blueprint: `custom {
+	name: "foo",
+    string_prop: "",
+    bazel_module: { bp2build_available: true },
+}`,
+			ExpectedBazelTargets: []string{
+				makeBazelTarget("custom", "foo", AttrNameToString{
+					"string_prop": `""`,
+				}),
+			},
+		},
+		{
+			Description: `string prop ("PROP")`,
+			Blueprint: `custom {
+	name: "foo",
+    string_prop: "PROP",
+    bazel_module: { bp2build_available: true },
+}`,
+			ExpectedBazelTargets: []string{
+				makeBazelTarget("custom", "foo", AttrNameToString{
+					"string_prop": `"PROP"`,
+				}),
+			},
+		},
+		{
 			Description: "string ptr props",
 			Blueprint: `custom {
 	name: "foo",
@@ -244,7 +263,7 @@ func TestGenerateBazelTargetModules(t *testing.T) {
 			},
 		},
 		{
-			Description: "string props",
+			Description: "string list props",
 			Blueprint: `custom {
   name: "foo",
     string_list_prop: ["a", "b"],
