@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19639aec_e03e85ee",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-23T20:43:32Z",
+      "side": 1,
+      "message": "This won\u0027t enforce that the value in the Android.bp file matches one of the constants, do you want to add validation for it?",
+      "range": {
+        "startLine": 97,
+        "startChar": 17,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "2e6c6f3b48a98957c6d2f19550c4dfae14a16581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
