@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9663ebc8_a2f15ea4",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1535,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-06-23T20:43:55Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused here. You\u0027re copying from the input to a temporary array, sorting the input array, and returning the temporary one?",
+      "revId": "cf4a946d42d5bd19fb8a33979ba3d768cff385d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
