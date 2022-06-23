@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d337a29_23d478a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-06-23T07:05:31Z",
+      "side": 1,
+      "message": "Is there a design doc for this? My review wouldn\u0027t be very useful given that I don\u0027t know what AFL fuzzers are.\n\nAt the very least send an e-mail to soong-discuss@ describing what you want to do and how.",
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a332ff_fd3686dc",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-06-23T07:05:31Z",
+      "side": 1,
+      "message": "How about using the newfangled TransitionMutator here? I expect it to be somewhat simpler and way nicer.",
+      "range": {
+        "startLine": 64,
+        "startChar": 27,
+        "endLine": 64,
+        "endChar": 42
+      },
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b76b2252_189423d0",
