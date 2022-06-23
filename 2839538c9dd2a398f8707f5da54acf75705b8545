@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5f34f5_bf5e9f7e",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-23T19:17:20Z",
+      "side": 1,
+      "message": "rule.Restat() was there due to bazel_tools, which now aren\u0027t dependencies.",
+      "revId": "2839538c9dd2a398f8707f5da54acf75705b8545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
