@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e851903c_bbf9a493",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-24T01:08:05Z",
+      "side": 1,
+      "message": "Can you switch it around and only print these messages if BP2BUILD_VERBOSE is set? Many of these logs are quite noisy and non-actionable for local development, so I think they can be turned off by default.\n\nhttps://cs.android.com/search?q\u003dBP2BUILD_VERBOSE\n\nAlso adding Liz and Chris for review as this concerns infra and rules development.",
+      "revId": "6ad8e831837a8e5fefe302efd9d91b0b256fae96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef6df7c_c9d253d2",
+        "filename": "bp2build/conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-24T01:08:05Z",
+      "side": 1,
+      "message": "Why this change?",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 65
+      },
+      "revId": "6ad8e831837a8e5fefe302efd9d91b0b256fae96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
