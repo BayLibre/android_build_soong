@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "069487e9_f788ac79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-06-24T16:54:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e851903c_bbf9a493",
+      "revId": "6ad8e831837a8e5fefe302efd9d91b0b256fae96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cef6df7c_c9d253d2",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-24T01:08:05Z",
       "side": 1,
       "message": "Why this change?",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 65
+      },
+      "revId": "6ad8e831837a8e5fefe302efd9d91b0b256fae96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cb1e77_1d180d97",
+        "filename": "bp2build/conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-06-24T16:54:50Z",
+      "side": 1,
+      "message": "CreateBazelFiles now has config as the first argument.",
+      "parentUuid": "cef6df7c_c9d253d2",
       "range": {
         "startLine": 30,
         "startChar": 27,
