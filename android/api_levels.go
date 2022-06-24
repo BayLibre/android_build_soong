@@ -194,7 +194,7 @@ var LastWithoutModuleLibCoreSystemModules = uncheckedFinalApiLevel(31)
 //
 // * "30" -> "30"
 // * "R" -> "30"
-// * "S" -> "S"
+// * "S" -> "31"
 func ReplaceFinalizedCodenames(config Config, raw string) string {
 	num, ok := getFinalCodenamesMap(config)[raw]
 	if !ok {
