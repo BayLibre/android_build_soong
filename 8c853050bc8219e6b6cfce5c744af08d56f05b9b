@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab3eb44_84f84d74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-06-24T21:53:39Z",
+      "side": 1,
+      "message": "https://docs.google.com/document/d/1iCdkJki9ZsaeJkBxpsFO9A1JBI3w0cjn__-pr0TfvaQ/edit?resourcekey\u003d0-t6iMMGTkdLCI1mumGclJGg#",
+      "parentUuid": "4d337a29_23d478a6",
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5a332ff_fd3686dc",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-23T07:05:31Z",
       "side": 1,
       "message": "How about using the newfangled TransitionMutator here? I expect it to be somewhat simpler and way nicer.",
+      "range": {
+        "startLine": 64,
+        "startChar": 27,
+        "endLine": 64,
+        "endChar": 42
+      },
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccc2a29c_2ae07c48",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-06-24T21:53:39Z",
+      "side": 1,
+      "message": "I will link a design doc here by end of day today. Also I messaged you about TransitionMutator, I will look into using that.",
+      "parentUuid": "c5a332ff_fd3686dc",
       "range": {
         "startLine": 64,
         "startChar": 27,
