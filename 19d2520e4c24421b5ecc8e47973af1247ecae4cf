@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d634a98f_827805cd",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-24T20:54:12Z",
+      "side": 1,
+      "message": "`nativeApiLevelOrPanic` below also [handle the case](https://source.corp.google.com/aosp-master/build/soong/android/api_levels.go;l\u003d233;rcl\u003dadcaf7437c74de6ae1e865693ea6ca4918a540d8) when version is `current`. However, because `FutureApiLevel`.value is a non-digit string,`apiLevel.String()` will resolve to `current` instead of `10000`.\n\nSo it\u0027s probably best to leave it as is.",
+      "revId": "19d2520e4c24421b5ecc8e47973af1247ecae4cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
