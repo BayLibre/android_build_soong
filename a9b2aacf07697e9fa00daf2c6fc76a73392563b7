@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c846d2f_dc1ef291",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-24T21:35:09Z",
+      "side": 1,
+      "message": "i suspect bp2build is failing because these are not defined yet",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 81
+      },
+      "revId": "a9b2aacf07697e9fa00daf2c6fc76a73392563b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ab34964_c6b96cab",
+        "filename": "cc/config/arm_linux_host.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-24T21:35:09Z",
+      "side": 1,
+      "message": "thanks for calling this out, we\u0027ll need to be thoughtful for the migration if there is no thumb for linux_musl arm",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 25
+      },
+      "revId": "a9b2aacf07697e9fa00daf2c6fc76a73392563b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
