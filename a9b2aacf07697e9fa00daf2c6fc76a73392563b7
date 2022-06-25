@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f58e95e4_f3a35091",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-25T01:53:02Z",
+      "side": 1,
+      "message": "Thanks, fixed in aosp/2135536.",
+      "parentUuid": "4c846d2f_dc1ef291",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 81
+      },
+      "revId": "a9b2aacf07697e9fa00daf2c6fc76a73392563b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1ab34964_c6b96cab",
         "filename": "cc/config/arm_linux_host.go",
         "patchSetId": 3
