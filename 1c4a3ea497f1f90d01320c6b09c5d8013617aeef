@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c87ebb6_1dbd8a11",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-25T03:07:19Z",
+      "side": 1,
+      "message": "instead of two for loops, sort, zip and compare pair by pair",
+      "revId": "1c4a3ea497f1f90d01320c6b09c5d8013617aeef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c50d9b8_a746fc53",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1533,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-25T03:07:19Z",
+      "side": 1,
+      "message": "instead of a map, use a sorted list, which would have the advantage of not dropping repeated elements if any.",
+      "revId": "1c4a3ea497f1f90d01320c6b09c5d8013617aeef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
