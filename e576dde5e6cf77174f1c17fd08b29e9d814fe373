@@ -67,6 +67,23 @@
       "message": "Sorry, I didn\u0027t get to this, and I\u0027ll be OOO for a while. Nominate Artur 😊",
       "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79162bb_5d6e7652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-06-27T17:04:18Z",
+      "side": 1,
+      "message": "Artur, could you take a look?",
+      "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
