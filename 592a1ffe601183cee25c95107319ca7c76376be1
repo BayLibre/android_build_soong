@@ -253,6 +253,24 @@
       "parentUuid": "4fe69787_01b974d1",
       "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b14f000b_7c8e571a",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-27T15:44:54Z",
+      "side": 1,
+      "message": "oh sorry, I misunderstood and thought \"that prop\" is referred to the depfile property. Yes, that makes sense. I went ahead and move the bp string to `fmt.Sprintf`.\n\nI decided to not separate depfile cmd and not to set depfile explicitly false because I wanted to test the behavior when `depfile` is unset. Also, there isn\u0027t any case when `depfile` is set to false in practice.",
+      "parentUuid": "887dbc05_08846379",
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
