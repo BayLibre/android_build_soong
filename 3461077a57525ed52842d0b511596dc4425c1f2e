@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ded5e9e_3b6e076b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-27T16:03:36Z",
+      "side": 1,
+      "message": "`to use BUILD_BROKEN_DEPFILE..`\nor `to set BUILD... to true ..` \n(the sentence seems to use BUILD_BROKEN_DEPFILE as a verb otherwise)",
+      "revId": "3461077a57525ed52842d0b511596dc4425c1f2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
