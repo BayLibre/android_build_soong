@@ -235,6 +235,24 @@
       "parentUuid": "ba494ff3_8e646af1",
       "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "887dbc05_08846379",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-27T15:03:41Z",
+      "side": 1,
+      "message": "prop is always specified in your struct and would allow using fmt.Sprintf, e.g.\n\nGiven the test structure you have currently, you could do something like\n\n```\nbp \u003d fmt.Sprintf(`\ngensrcs {\n   name: \"foo\",\n   srcs: [\"data.txt\"],\n   %s\n}`, test.prop)\n```\n\nIf you wanted to have depfile and cmd as separate fields, you could set depfile explicitly to false.",
+      "parentUuid": "4fe69787_01b974d1",
+      "revId": "592a1ffe601183cee25c95107319ca7c76376be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
