@@ -16,6 +16,7 @@ package xml
 
 import (
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/etc"
 
 	"github.com/google/blueprint"
@@ -67,6 +68,8 @@ type prebuiltEtcXmlProperties struct {
 }
 
 type prebuiltEtcXml struct {
+	android.BazelModuleBase
+
 	etc.PrebuiltEtc
 
 	properties prebuiltEtcXmlProperties
@@ -129,5 +132,68 @@ func PrebuiltEtcXmlFactory() android.Module {
 	etc.InitPrebuiltEtcModule(&module.PrebuiltEtc, "etc")
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
+	android.InitBazelModule(module)
 	return module
+}
+
+// for bp2build
+
+type bazelPrebuiltEtcXmlAttributes struct {
+	Src               bazel.LabelAttribute
+	Filename          bazel.LabelAttribute
+	Dir               string
+	Installable       bazel.BoolAttribute
+	Filename_from_src bazel.BoolAttribute
+	Schema            *string
+}
+
+func (p *prebuiltEtcXml) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	var src bazel.LabelAttribute
+	if p.PrebuiltEtc.Properties.Src != nil {
+		src.SetValue(android.BazelLabelForModuleSrcSingle(ctx, *p.PrebuiltEtc.Properties.Src))
+	}
+
+	var filename string
+	var filenameFromSrc bool
+
+	if p.PrebuiltEtc.Properties.Filename != nil && *p.PrebuiltEtc.Properties.Filename != "" {
+		filename = *p.PrebuiltEtc.Properties.Filename
+	}
+
+	if p.PrebuiltEtc.Properties.Filename_from_src != nil && *p.PrebuiltEtc.Properties.Filename_from_src {
+		filenameFromSrc = true
+	}
+
+	var dir = p.PrebuiltEtc.InstallDirBase
+	if !(dir == "etc") {
+		return
+	}
+
+	if subDir := p.PrebuiltEtc.SubdirProperties.Sub_dir; subDir != nil {
+		dir = dir + "/" + *subDir
+	}
+
+	var schema *string
+	if p.properties.Schema != nil {
+		schema = p.properties.Schema
+	}
+
+	attrs := &bazelPrebuiltEtcXmlAttributes{
+		Src:    src,
+		Dir:    dir,
+		Schema: schema,
+	}
+
+	if filename != "" {
+		attrs.Filename = bazel.LabelAttribute{Value: &bazel.Label{Label: filename}}
+	} else if filenameFromSrc {
+		attrs.Filename_from_src = bazel.BoolAttribute{Value: &filenameFromSrc}
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "prebuilt_etc_xml",
+		Bzl_load_location: "//build/bazel/rules/prebuilt_xml.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: p.Name()}, attrs)
 }
