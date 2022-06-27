@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f384c7_65e8accb",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-27T17:46:19Z",
+      "side": 0,
+      "message": "bazel_tools are removed from the depsets now",
+      "revId": "1c4a3ea497f1f90d01320c6b09c5d8013617aeef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

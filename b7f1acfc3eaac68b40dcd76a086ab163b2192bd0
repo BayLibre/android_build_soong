@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63488557_c0a41d31",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-27T17:46:19Z",
+      "side": 1,
+      "message": "the main reason I am doing this check here is to not have to touch numerous aquery_tests.go Tests that\u0027d otherwise see a different output.",
+      "revId": "b7f1acfc3eaac68b40dcd76a086ab163b2192bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "586df3f0_a03a96cf",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-27T17:46:19Z",
+      "side": 1,
+      "message": "@weili lmk how appropriate this hardcoding is.",
+      "revId": "b7f1acfc3eaac68b40dcd76a086ab163b2192bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
