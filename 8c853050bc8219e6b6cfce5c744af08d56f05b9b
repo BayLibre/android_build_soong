@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47b2898a_367e3701",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-06-27T08:22:58Z",
+      "side": 1,
+      "message": "Thanks! I added some comments so that I may get to know the landscape a bit better I haven\u0027t seen your message, maybe it was a chat history issue?",
+      "parentUuid": "ccc2a29c_2ae07c48",
+      "range": {
+        "startLine": 64,
+        "startChar": 27,
+        "endLine": 64,
+        "endChar": 42
+      },
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b76b2252_189423d0",
         "filename": "cc/cc.go",
         "patchSetId": 1
