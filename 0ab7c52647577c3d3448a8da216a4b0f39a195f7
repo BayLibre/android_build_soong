@@ -16,6 +16,167 @@
       "message": "I still need to add apex tests, but I would like to run the rest of the changes by you.",
       "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fecd49aa_5bbe65a3",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-27T15:05:21Z",
+      "side": 1,
+      "message": "b/235526333 is fixed with cl/456492858, so this shouldn\u0027t be needed anymore - can you verify if that CL fixes the issue with aquery and crt toolchain deps?",
+      "range": {
+        "startLine": 796,
+        "startChar": 1,
+        "endLine": 809,
+        "endChar": 2
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e4315e_7e9fbef2",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1807,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-27T15:05:21Z",
+      "side": 1,
+      "message": "Why is this needed for mixed builds? Isn\u0027t getting the outputs from Bazel providers sufficient? Also see my other comment about getting requireNativeLibs and provideNativeLibs from Bazel cquery and not Soong.",
+      "range": {
+        "startLine": 1807,
+        "startChar": 1,
+        "endLine": 1807,
+        "endChar": 34
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4adcf6b3_014d7dbd",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1811,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-27T15:05:21Z",
+      "side": 1,
+      "message": "Can you add a new handler for GetApexInfo instead? GetOutputFiles will probably not be sufficient for all the other metadata required for the apexBundle type.\n\nSimilar to GetCcInfo, but for https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl;l\u003d429-434;drc\u003d4f6351d8ab47b98faa4af20d0bb0985274cfd55a",
+      "range": {
+        "startLine": 1811,
+        "startChar": 26,
+        "endLine": 1811,
+        "endChar": 40
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af91e1e1_c5317f41",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1830,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-27T15:05:21Z",
+      "side": 1,
+      "message": "Let\u0027s fall back to Soong for all other types than imageApex, given that we cannot build them yet (i.e. filter them out in IsMixedBuildSupported)",
+      "range": {
+        "startLine": 1830,
+        "startChar": 15,
+        "endLine": 1830,
+        "endChar": 24
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b85df7_b2f578c6",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-27T15:05:21Z",
+      "side": 1,
+      "message": "yes: b/190817312",
+      "range": {
+        "startLine": 1831,
+        "startChar": 67,
+        "endLine": 1831,
+        "endChar": 98
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b21b83f_2fd9a1b4",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-27T15:05:21Z",
+      "side": 1,
+      "message": "We shouldn\u0027t be using any outputs from Soong with PathForModuleOut, since that\u0027ll be mixing Bazel/Soong analysis. Can you keep them stubbed out?",
+      "range": {
+        "startLine": 1831,
+        "startChar": 2,
+        "endLine": 1836,
+        "endChar": 116
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed15029_ad21d38d",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 2311,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-27T15:05:21Z",
+      "side": 1,
+      "message": "In mixed builds mode, we shouldn\u0027t be using any information from Soong\u0027s analysis. These should be retrieved from Bazel apex target\u0027s ApexInfo: https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl;l\u003d30-31;drc\u003d4f6351d8ab47b98faa4af20d0bb0985274cfd55a\n\nIf Bazel\u0027s ApexInfo doesn\u0027t have the information, then we\u0027ll need to add it there, and not use the analysis information here.",
+      "range": {
+        "startLine": 2310,
+        "startChar": 1,
+        "endLine": 2311,
+        "endChar": 40
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
