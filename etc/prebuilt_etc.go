@@ -139,13 +139,13 @@ type PrebuiltEtc struct {
 	snapshot.VendorSnapshotModuleInterface
 	snapshot.RecoverySnapshotModuleInterface
 
-	properties       prebuiltEtcProperties
-	subdirProperties prebuiltSubdirProperties
+	Properties       prebuiltEtcProperties
+	SubdirProperties prebuiltSubdirProperties
 
 	sourceFilePath android.Path
 	outputFilePath android.OutputPath
 	// The base install location, e.g. "etc" for prebuilt_etc, "usr/share" for prebuilt_usr_share.
-	installDirBase string
+	InstallDirBase string
 	// The base install location when soc_specific property is set to true, e.g. "firmware" for
 	// prebuilt_firmware.
 	socInstallDirBase      string
@@ -216,19 +216,19 @@ func (p *PrebuiltEtc) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
 }
 
 func (p *PrebuiltEtc) RamdiskVariantNeeded(ctx android.BaseModuleContext) bool {
-	return proptools.Bool(p.properties.Ramdisk_available) || p.ModuleBase.InstallInRamdisk()
+	return proptools.Bool(p.Properties.Ramdisk_available) || p.ModuleBase.InstallInRamdisk()
 }
 
 func (p *PrebuiltEtc) VendorRamdiskVariantNeeded(ctx android.BaseModuleContext) bool {
-	return proptools.Bool(p.properties.Vendor_ramdisk_available) || p.ModuleBase.InstallInVendorRamdisk()
+	return proptools.Bool(p.Properties.Vendor_ramdisk_available) || p.ModuleBase.InstallInVendorRamdisk()
 }
 
 func (p *PrebuiltEtc) DebugRamdiskVariantNeeded(ctx android.BaseModuleContext) bool {
-	return proptools.Bool(p.properties.Debug_ramdisk_available) || p.ModuleBase.InstallInDebugRamdisk()
+	return proptools.Bool(p.Properties.Debug_ramdisk_available) || p.ModuleBase.InstallInDebugRamdisk()
 }
 
 func (p *PrebuiltEtc) RecoveryVariantNeeded(ctx android.BaseModuleContext) bool {
-	return proptools.Bool(p.properties.Recovery_available) || p.ModuleBase.InstallInRecovery()
+	return proptools.Bool(p.Properties.Recovery_available) || p.ModuleBase.InstallInRecovery()
 }
 
 func (p *PrebuiltEtc) ExtraImageVariations(ctx android.BaseModuleContext) []string {
@@ -239,7 +239,7 @@ func (p *PrebuiltEtc) SetImageVariation(ctx android.BaseModuleContext, variation
 }
 
 func (p *PrebuiltEtc) SourceFilePath(ctx android.ModuleContext) android.Path {
-	return android.PathForModuleSrc(ctx, proptools.String(p.properties.Src))
+	return android.PathForModuleSrc(ctx, proptools.String(p.Properties.Src))
 }
 
 func (p *PrebuiltEtc) InstallDirPath() android.InstallPath {
@@ -268,18 +268,18 @@ func (p *PrebuiltEtc) OutputFiles(tag string) (android.Paths, error) {
 }
 
 func (p *PrebuiltEtc) SubDir() string {
-	if subDir := proptools.String(p.subdirProperties.Sub_dir); subDir != "" {
+	if subDir := proptools.String(p.SubdirProperties.Sub_dir); subDir != "" {
 		return subDir
 	}
-	return proptools.String(p.subdirProperties.Relative_install_path)
+	return proptools.String(p.SubdirProperties.Relative_install_path)
 }
 
 func (p *PrebuiltEtc) BaseDir() string {
-	return p.installDirBase
+	return p.InstallDirBase
 }
 
 func (p *PrebuiltEtc) Installable() bool {
-	return p.properties.Installable == nil || proptools.Bool(p.properties.Installable)
+	return p.Properties.Installable == nil || proptools.Bool(p.Properties.Installable)
 }
 
 func (p *PrebuiltEtc) InVendor() bool {
@@ -295,18 +295,18 @@ func (p *PrebuiltEtc) ExcludeFromRecoverySnapshot() bool {
 }
 
 func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	if p.properties.Src == nil {
+	if p.Properties.Src == nil {
 		ctx.PropertyErrorf("src", "missing prebuilt source file")
 		return
 	}
-	p.sourceFilePath = android.PathForModuleSrc(ctx, proptools.String(p.properties.Src))
+	p.sourceFilePath = android.PathForModuleSrc(ctx, proptools.String(p.Properties.Src))
 
 	// Determine the output file basename.
 	// If Filename is set, use the name specified by the property.
 	// If Filename_from_src is set, use the source file name.
 	// Otherwise use the module name.
-	filename := proptools.String(p.properties.Filename)
-	filenameFromSrc := proptools.Bool(p.properties.Filename_from_src)
+	filename := proptools.String(p.Properties.Filename)
+	filenameFromSrc := proptools.Bool(p.Properties.Filename_from_src)
 	if filename != "" {
 		if filenameFromSrc {
 			ctx.PropertyErrorf("filename_from_src", "filename is set. filename_from_src can't be true")
@@ -325,13 +325,13 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	// Check that `sub_dir` and `relative_install_path` are not set at the same time.
-	if p.subdirProperties.Sub_dir != nil && p.subdirProperties.Relative_install_path != nil {
+	if p.SubdirProperties.Sub_dir != nil && p.SubdirProperties.Relative_install_path != nil {
 		ctx.PropertyErrorf("sub_dir", "relative_install_path is set. Cannot set sub_dir")
 	}
 
 	// If soc install dir was specified and SOC specific is set, set the installDirPath to the
 	// specified socInstallDirBase.
-	installBaseDir := p.installDirBase
+	installBaseDir := p.InstallDirBase
 	if p.SocSpecific() && p.socInstallDirBase != "" {
 		installBaseDir = p.socInstallDirBase
 	}
@@ -351,7 +351,7 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	// Call InstallFile even when uninstallable to make the module included in the package
 	installPath := ctx.InstallFile(p.installDirPath, p.outputFilePath.Base(), p.outputFilePath)
-	for _, sl := range p.properties.Symlinks {
+	for _, sl := range p.Properties.Symlinks {
 		ctx.InstallSymlink(p.installDirPath, sl, installPath)
 	}
 }
@@ -379,8 +379,8 @@ func (p *PrebuiltEtc) AndroidMkEntries() []android.AndroidMkEntries {
 				entries.SetString("LOCAL_MODULE_TAGS", "optional")
 				entries.SetString("LOCAL_MODULE_PATH", p.installDirPath.String())
 				entries.SetString("LOCAL_INSTALLED_MODULE_STEM", p.outputFilePath.Base())
-				if len(p.properties.Symlinks) > 0 {
-					entries.AddStrings("LOCAL_MODULE_SYMLINKS", p.properties.Symlinks...)
+				if len(p.Properties.Symlinks) > 0 {
+					entries.AddStrings("LOCAL_MODULE_SYMLINKS", p.Properties.Symlinks...)
 				}
 				entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", !p.Installable())
 				if p.additionalDependencies != nil {
@@ -392,14 +392,14 @@ func (p *PrebuiltEtc) AndroidMkEntries() []android.AndroidMkEntries {
 }
 
 func InitPrebuiltEtcModule(p *PrebuiltEtc, dirBase string) {
-	p.installDirBase = dirBase
-	p.AddProperties(&p.properties)
-	p.AddProperties(&p.subdirProperties)
+	p.InstallDirBase = dirBase
+	p.AddProperties(&p.Properties)
+	p.AddProperties(&p.SubdirProperties)
 }
 
 func InitPrebuiltRootModule(p *PrebuiltEtc) {
-	p.installDirBase = "."
-	p.AddProperties(&p.properties)
+	p.InstallDirBase = "."
+	p.AddProperties(&p.Properties)
 }
 
 // prebuilt_etc is for a prebuilt artifact that is installed in
@@ -629,12 +629,12 @@ func generatePrebuiltSnapshot(s snapshot.SnapshotSingleton, ctx android.Singleto
 		prop := snapshot.SnapshotJsonFlags{}
 		propOut := snapshotLibOut + ".json"
 		prop.ModuleName = m.BaseModuleName()
-		if m.subdirProperties.Relative_install_path != nil {
-			prop.RelativeInstallPath = *m.subdirProperties.Relative_install_path
+		if m.SubdirProperties.Relative_install_path != nil {
+			prop.RelativeInstallPath = *m.SubdirProperties.Relative_install_path
 		}
 
-		if m.properties.Filename != nil {
-			prop.Filename = *m.properties.Filename
+		if m.Properties.Filename != nil {
+			prop.Filename = *m.Properties.Filename
 		}
 
 		j, err := json.Marshal(prop)
@@ -709,17 +709,17 @@ func (module *PrebuiltEtc) ConvertWithBp2build(ctx android.TopDownMutatorContext
 		filename = ctx.ModuleName()
 	}
 
-	var dir = module.installDirBase
+	var dir = module.InstallDirBase
 	// prebuilt_file supports only `etc` or `usr/share`
 	if !(dir == "etc" || dir == "usr/share") {
 		return
 	}
-	if subDir := module.subdirProperties.Sub_dir; subDir != nil {
+	if subDir := module.SubdirProperties.Sub_dir; subDir != nil {
 		dir = dir + "/" + *subDir
 	}
 
 	var installable bazel.BoolAttribute
-	if install := module.properties.Installable; install != nil {
+	if install := module.Properties.Installable; install != nil {
 		installable.Value = install
 	}
 

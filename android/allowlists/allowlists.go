@@ -398,6 +398,10 @@ var (
 		"libavb",
 		"avb_headers",
 
+		//external/libxml2
+		"xmllint",
+		"libxml2",
+
 		//external/fec
 		"libfec_rs",
 
