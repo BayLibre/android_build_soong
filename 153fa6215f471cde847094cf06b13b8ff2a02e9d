@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9281425_a028ad3a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-27T14:37:15Z",
+      "side": 1,
+      "message": "What sets this \"target\" string? \n\nIs it this label name? (If it is, please add a comment) https://cs.android.com/android/platform/superproject/+/master:build/bazel/platforms/BUILD.bazel;l\u003d27;drc\u003d40c5dc795e40cd95553a6eec59a126843238521c",
+      "revId": "153fa6215f471cde847094cf06b13b8ff2a02e9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
