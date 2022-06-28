@@ -103,6 +103,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93850ec0_d2eeacec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-06-28T18:59:59Z",
+      "side": 1,
+      "message": "Thanks for the review. I will update the change tomorrow to address your comments unless after reading my comments you think it is unnecessary.",
+      "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b17dcdb_6c888898",
@@ -128,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4a8e302_a86f9e48",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-06-28T18:59:59Z",
+      "side": 1,
+      "message": "The default for PrebuiltsRequired would need to be true so this would require changes to every existing existing instance of this to add \"PrebuiltsRequired: true\". Having this as \"PrebuiltsNotRequired\" means its default can be false so less changes are required.\n\nThe rest of the code is insulated from having to deal with things like !PrebuiltsNotRequired as the method for accessing is \"ArePrebuiltsRequired\".\n\nI could switch it to PrebuiltsRequired *bool and then treat nil as true. That would be inconsistent with other fields in this structure and require use of proptools.BoolPtr(false) but it is doable.",
+      "parentUuid": "4b17dcdb_6c888898",
+      "range": {
+        "startLine": 795,
+        "startChar": 10,
+        "endLine": 795,
+        "endChar": 13
+      },
+      "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1998ebd9_69cee8b5",
         "filename": "java/dex.go",
         "patchSetId": 3
@@ -139,6 +180,30 @@
       "writtenOn": "2022-06-28T14:23:27Z",
       "side": 1,
       "message": "do we really need this? Smells like a tech debt.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 56
+      },
+      "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0baec2a4_1507f1e4",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-06-28T18:59:59Z",
+      "side": 1,
+      "message": "We do because nastily the code that processes the \"Compile_dex\" property changes that property if it is set to nil, rather than just copy the value elsewhere. But only for the variant for the APEX, the default variant does not have it added.\n\nThe sdk snapshot code uses the value of this property when determining whether to add compile_dex in the generated snapshot.\n\nIf the library is added directly, or indirectly via bcpf it uses the default variant and so would not set compile_dex: true (unless specified in the source module).\n\nIf the library is added indirectly via the apex module then it uses the APEX variant and so will always set compile_dex: true.\n\nThat causes unnecessary changes to the sdk snapshot.\n\nIt probably would be better to refactor the code so it does not require changing the value of the Compile_dex property that is supplied in the bp file. I will need to be careful and make sure that any code that access this property after it is updated used the correct value.",
+      "parentUuid": "1998ebd9_69cee8b5",
       "range": {
         "startLine": 33,
         "startChar": 0,
