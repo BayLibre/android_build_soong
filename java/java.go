@@ -510,6 +510,14 @@ func (v javaVersion) String() string {
 	}
 }
 
+func (v javaVersion) StringForKotlinc() string {
+	result := v.String()
+	if result == "1.9" {
+		return "9"
+	}
+	return result
+}
+
 // Returns true if javac targeting this version uses system modules instead of a bootclasspath.
 func (v javaVersion) usesJavaModules() bool {
 	return v >= 9
