@@ -259,6 +259,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a9886e_11d0fbea",
+        "filename": "tests/verify_null_builds.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-06-28T17:03:04Z",
+      "side": 1,
+      "message": "removed and codified in build/bazel/ci/incremental_mixed_build.sh instead\nit will be added to aosp_master_throttled.gcl",
+      "parentUuid": "83c1e0bc_bf385b8e",
+      "revId": "d932a3133432816aa1a951e6a5e48ddcdc0cae63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccec072c_ca810c0c",
