@@ -120,6 +120,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb2ecef_93eac2e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-06-28T20:19:19Z",
+      "side": 1,
+      "message": "I\u0027d say the naming comment is mostly a nitpick.\n\nBut the compile_dex_was_set_for_apex honestly looks like it\u0027s adding more technical debt and confusion to the problem. But then again I don\u0027t know how to fix the underlying issue, or how much effort that\u0027s going to be..",
+      "parentUuid": "93850ec0_d2eeacec",
+      "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b17dcdb_6c888898",
@@ -169,6 +187,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63bef347_5ec94fa0",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-06-28T20:19:19Z",
+      "side": 1,
+      "message": "Maybe rename it to skip/omit/pass/bypass-prebuilts (non-ideal names either I guess).\n\nTransitiveMember?",
+      "parentUuid": "c4a8e302_a86f9e48",
+      "range": {
+        "startLine": 795,
+        "startChar": 10,
+        "endLine": 795,
+        "endChar": 13
+      },
+      "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1998ebd9_69cee8b5",
         "filename": "java/dex.go",
         "patchSetId": 3
@@ -204,6 +246,30 @@
       "side": 1,
       "message": "We do because nastily the code that processes the \"Compile_dex\" property changes that property if it is set to nil, rather than just copy the value elsewhere. But only for the variant for the APEX, the default variant does not have it added.\n\nThe sdk snapshot code uses the value of this property when determining whether to add compile_dex in the generated snapshot.\n\nIf the library is added directly, or indirectly via bcpf it uses the default variant and so would not set compile_dex: true (unless specified in the source module).\n\nIf the library is added indirectly via the apex module then it uses the APEX variant and so will always set compile_dex: true.\n\nThat causes unnecessary changes to the sdk snapshot.\n\nIt probably would be better to refactor the code so it does not require changing the value of the Compile_dex property that is supplied in the bp file. I will need to be careful and make sure that any code that access this property after it is updated used the correct value.",
       "parentUuid": "1998ebd9_69cee8b5",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 56
+      },
+      "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feead9bb_931dbeeb",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-06-28T20:19:19Z",
+      "side": 1,
+      "message": "The fact that there is such a long explanation is really a code smell.\n\nWhat are the cases where we need \"compile_dex: false\"? It sounds like the only default Soong use case is to not compile dexes for host usage, otherwise always compile. \n\nI don\u0027t quite understand what you mean by \"added directly or indirectly\" above. Can we for these use cases just set to compile_dex: true by default as well?",
+      "parentUuid": "0baec2a4_1507f1e4",
       "range": {
         "startLine": 33,
         "startChar": 0,
