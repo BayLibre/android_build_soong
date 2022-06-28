@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c8666a7_42698465",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-28T21:47:33Z",
+      "side": 1,
+      "message": "Can you add godoc on all of these?",
+      "revId": "68c815e46937d5336739de13bd8fafa5a6129c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "978c375e_6870e437",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-28T21:47:33Z",
+      "side": 1,
+      "message": "Maybe exec.LookPath to find it in any directory in $PATH and not just /usr/bin?",
+      "revId": "68c815e46937d5336739de13bd8fafa5a6129c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d84fe9_638e93b0",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-28T21:47:33Z",
+      "side": 1,
+      "message": "Should this be a separate error?  No amount of running gcert is going to make stubby exist.",
+      "range": {
+        "startLine": 132,
+        "startChar": 46,
+        "endLine": 132,
+        "endChar": 58
+      },
+      "revId": "68c815e46937d5336739de13bd8fafa5a6129c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
