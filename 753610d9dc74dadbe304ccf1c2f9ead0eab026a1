@@ -43,6 +43,48 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4c5030f0_202611d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-06-28T16:07:33Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "cdd4d110_fa383ccc",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afc6af0b_f3c2d641",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-06-28T16:07:33Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "402ac846_46d923bf",
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e7fceae0_edc23344",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5dbae3e_c7f4b5b4",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-06-28T16:07:33Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "20b3d7e1_4b36068c",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e63a5194_0eca2fae",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-06-20T13:29:12Z",
       "side": 1,
       "message": "you shouldn\u0027t be returning LatestPreviewApiLevel all the time.\n\nBefore SDK finalization this would be right. However, once SDK finalization is complete, we want a public SDK int here. For example, few months ago this would return \"Tiramisu\", but now in internal branches it should return \"33\".\n\nUse DefaultAppTargetSdk instead, perhaps rename the methods accordingly as well. We want DefaultAppTargetSdk I believe.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 53
+      },
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719b2930_542f8c5c",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-06-28T16:07:33Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "e63a5194_0eca2fae",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -127,6 +217,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c8483ba_de0bc535",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-06-28T16:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81008736_24480b0b",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 15
+      },
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6012b8c_50375ea9",
@@ -140,6 +254,24 @@
       "writtenOn": "2022-06-20T13:29:12Z",
       "side": 1,
       "message": "instead of just overriding, we should either:\n\n1. Throw an error if people set _any_ targetSdkVersion at all\n2. Throw an error if people set _anything but current_\n\nElse we default to the latest value",
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89c743ea_18a812b4",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-06-28T16:07:33Z",
+      "side": 1,
+      "message": "As discussed offline, this will be done in subsequent CL. Added a TODO here.",
+      "parentUuid": "e6012b8c_50375ea9",
       "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -161,6 +293,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e549f4e_4d4bd963",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-06-28T16:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ddd45ad_60c993cc",
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c68eb8ee_f2dc1c64",
@@ -178,6 +328,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "540f7bbd_31240e56",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-06-28T16:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c68eb8ee_f2dc1c64",
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99d79664_0eff7804",
@@ -191,6 +359,30 @@
       "writtenOn": "2022-06-20T13:29:12Z",
       "side": 1,
       "message": "We should also have a check similar to cs/android-internal/build/soong/apex/apex.go?l\u003d2672 that says if Updatable() then EnforceDefaultTargetSdkVErsion is true.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 16
+      },
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e465bb97_ae18d647",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-06-28T16:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99d79664_0eff7804",
       "range": {
         "startLine": 111,
         "startChar": 0,
@@ -224,6 +416,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9920ef3_e065d887",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-06-28T16:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1521b7d5_c304a59b",
+      "range": {
+        "startLine": 431,
+        "startChar": 9,
+        "endLine": 431,
+        "endChar": 89
+      },
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b71257c1_0d953dee",
@@ -237,6 +453,30 @@
       "writtenOn": "2022-06-20T13:29:12Z",
       "side": 1,
       "message": "just a.Updatable()",
+      "range": {
+        "startLine": 432,
+        "startChar": 3,
+        "endLine": 432,
+        "endChar": 55
+      },
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f40cb8d_e70770ec",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-06-28T16:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b71257c1_0d953dee",
       "range": {
         "startLine": 432,
         "startChar": 3,
