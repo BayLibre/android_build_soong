@@ -3378,13 +3378,26 @@ func TestAFLFuzzTarget(t *testing.T) {
 				"second_static_lib",
 			],
 		}
-		cc_library_static {
-			name: "afl-compiler-rt",
-			host_supported: true,
-			srcs: [
-				"afl-compiler-rt.o.c",
-			],
+    cc_library_headers {
+			name: "libafl_headers",
+  		vendor_available: true,
+  		host_supported: true,
+  		export_include_dirs: [
+    		"include",
+    		"instrumentation",
+  		],
 		}
+		cc_object {
+  		name: "afl-compiler-rt",
+  		vendor_available: true,
+  		host_supported: true,
+  		cflags: [
+    		"-fPIC",
+  		],
+  		srcs: [
+    		"instrumentation/afl-compiler-rt.o.c",
+  		],
+  	}
 		cc_library {
 			name: "second_static_lib",
 			host_supported: true,
@@ -3397,12 +3410,43 @@ func TestAFLFuzzTarget(t *testing.T) {
 			],
 		}`)
 
-	variant := "android_arm64_armv8-a_fuzzer_afl"
-	ctx.ModuleForTests("test_afl_fuzz_target", variant).Rule("cc")
+	checkPcGuardFlag := func(
+		modName string, variantName string, shouldHave bool) {
+		cc := ctx.ModuleForTests(modName, variantName).Rule("cc")
 
-	libStaticVariant := "android_arm64_armv8-a_static_fuzzer_afl"
-	ctx.ModuleForTests("afl_fuzz_static_lib", libStaticVariant).Rule("cc")
-	ctx.ModuleForTests("second_static_lib", libStaticVariant).Rule("cc")
+		cFlags, ok := cc.Args["cFlags"]
+		if !ok {
+			t.Errorf("Could not find cFlags for module %s and variant %s",
+				modName, variantName)
+		}
+
+		if strings.Contains(
+			cFlags, "-fsanitize-coverage=trace-pc-guard") != shouldHave {
+			t.Errorf("Flag was found: %t. Expected to find flag:  %t. "+
+				"Test failed for module %s and variant %s",
+				!shouldHave, shouldHave, modName, variantName)
+		}
+	}
+
+	moduleName := "test_afl_fuzz_target"
+	variantName := "android_arm64_armv8-a_fuzzer_afl"
+	checkPcGuardFlag(moduleName, variantName, true)
+
+	moduleName = "afl_fuzz_static_lib"
+	variantName = "android_arm64_armv8-a_static"
+	checkPcGuardFlag(moduleName, variantName, false)
+	checkPcGuardFlag(moduleName, variantName+"_fuzzer", false)
+	checkPcGuardFlag(moduleName, variantName+"_fuzzer_afl", true)
+
+	moduleName = "second_static_lib"
+	checkPcGuardFlag(moduleName, variantName, false)
+	checkPcGuardFlag(moduleName, variantName+"_fuzzer", false)
+	checkPcGuardFlag(moduleName, variantName+"_fuzzer_afl", true)
+
+	ctx.ModuleForTests("afl_fuzz_shared_lib",
+		"android_arm64_armv8-a_shared").Rule("cc")
+	ctx.ModuleForTests("afl_fuzz_shared_lib",
+		"android_arm64_armv8-a_shared_fuzzer_afl").Rule("cc")
 }
 
 // Simple smoke test for the cc_fuzz target that ensures the rule compiles
@@ -4104,7 +4148,7 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 	conly := []string{"-fPIC", "${config.CommonGlobalConlyflags}"}
 	cppOnly := []string{"-fPIC", "${config.CommonGlobalCppflags}", "${config.DeviceGlobalCppflags}", "${config.ArmCppflags}"}
 
-	cflags := []string{"-Wall", "-Werror", "-std=candcpp"}
+	cflags := []string{"-Werror", "-std=candcpp"}
 	cstd := []string{"-std=gnu11", "-std=conly"}
 	cppstd := []string{"-std=gnu++17", "-std=cpp", "-fno-rtti"}
 
@@ -4139,7 +4183,7 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 		{
 			name:     "assemble",
 			src:      "foo.s",
-			expected: combineSlices(baseExpectedFlags, []string{"-D__ASSEMBLY__"}, expectedIncludes, lastIncludes),
+			expected: combineSlices(baseExpectedFlags, []string{"-D__ASSEMBLY__", "-fdebug-default-version=4"}, expectedIncludes, lastIncludes),
 		},
 	}
 

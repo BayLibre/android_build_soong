@@ -1966,7 +1966,7 @@ func TestOverrideAndroidApp(t *testing.T) {
 
 		// Check if the overrides field values are correctly aggregated.
 		mod := variant.Module().(*AndroidApp)
-		android.AssertDeepEquals(t, "overrides property", expected.overrides, mod.appProperties.Overrides)
+		android.AssertDeepEquals(t, "overrides property", expected.overrides, mod.overridableAppProperties.Overrides)
 
 		// Test Overridable property: Logging_parent
 		logging_parent := mod.aapt.LoggingParent
@@ -1981,6 +1981,99 @@ func TestOverrideAndroidApp(t *testing.T) {
 			expectedPackage = ""
 		}
 		checkAapt2LinkFlag(t, aapt2Flags, "rename-resources-package", expectedPackage)
+	}
+}
+
+func TestOverrideAndroidAppOverrides(t *testing.T) {
+	ctx, _ := testJava(
+		t, `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			overrides: ["qux"]
+		}
+
+		android_app {
+			name: "bar",
+			srcs: ["b.java"],
+			sdk_version: "current",
+			overrides: ["foo"]
+		}
+
+		override_android_app {
+			name: "foo_override",
+			base: "foo",
+			overrides: ["bar"]
+		}
+		`)
+
+	expectedVariants := []struct {
+		name        string
+		moduleName  string
+		variantName string
+		overrides   []string
+	}{
+		{
+			name:        "foo",
+			moduleName:  "foo",
+			variantName: "android_common",
+			overrides:   []string{"qux"},
+		},
+		{
+			name:        "bar",
+			moduleName:  "bar",
+			variantName: "android_common",
+			overrides:   []string{"foo"},
+		},
+		{
+			name:        "foo",
+			moduleName:  "foo_override",
+			variantName: "android_common_foo_override",
+			overrides:   []string{"bar", "foo"},
+		},
+	}
+	for _, expected := range expectedVariants {
+		variant := ctx.ModuleForTests(expected.name, expected.variantName)
+
+		// Check if the overrides field values are correctly aggregated.
+		mod := variant.Module().(*AndroidApp)
+		android.AssertDeepEquals(t, "overrides property", expected.overrides, mod.overridableAppProperties.Overrides)
+	}
+}
+
+func TestOverrideAndroidAppWithPrebuilt(t *testing.T) {
+	result := PrepareForTestWithJavaDefaultModules.RunTestWithBp(
+		t, `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "current",
+		}
+
+		override_android_app {
+			name: "bar",
+			base: "foo",
+		}
+
+		android_app_import {
+			name: "bar",
+			prefer: true,
+			apk: "bar.apk",
+			presigned: true,
+		}
+		`)
+
+	// An app that has an override that also has a prebuilt should not be hidden.
+	foo := result.ModuleForTests("foo", "android_common")
+	if foo.Module().IsHideFromMake() {
+		t.Errorf("expected foo to have HideFromMake false")
+	}
+
+	// An override that also has a prebuilt should be hidden.
+	barOverride := result.ModuleForTests("foo", "android_common_bar")
+	if !barOverride.Module().IsHideFromMake() {
+		t.Errorf("expected bar override variant of foo to have HideFromMake true")
 	}
 }
 
@@ -2164,9 +2257,9 @@ func TestOverrideAndroidTest(t *testing.T) {
 
 		// Check if the overrides field values are correctly aggregated.
 		mod := variant.Module().(*AndroidTest)
-		if !reflect.DeepEqual(expected.overrides, mod.appProperties.Overrides) {
+		if !reflect.DeepEqual(expected.overrides, mod.overridableAppProperties.Overrides) {
 			t.Errorf("Incorrect overrides property value, expected: %q, got: %q",
-				expected.overrides, mod.appProperties.Overrides)
+				expected.overrides, mod.overridableAppProperties.Overrides)
 		}
 
 		// Check if javac classpath has the correct jar file path. This checks instrumentation_for overrides.

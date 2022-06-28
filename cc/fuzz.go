@@ -94,7 +94,7 @@ func fuzzMutator(mctx android.BottomUpMutatorContext) {
 			m := mctx.CreateVariations("afl")
 			m[0].(*Module).fuzzer.Properties.AFLEnabled = true
 			m[0].(*Module).fuzzer.Properties.AFLAddFlags = true
-		} else if !c.Shared() {
+		} else {
 			m := mctx.CreateVariations("", "afl")
 			m[0].(*Module).fuzzer.Properties.AFLEnabled = false
 			m[0].(*Module).fuzzer.Properties.AFLAddFlags = false
@@ -142,7 +142,7 @@ func (fuzz *fuzzBinary) linkerInit(ctx BaseModuleContext) {
 
 func (fuzzBin *fuzzBinary) linkerDeps(ctx DepsContext, deps Deps) Deps {
 	if fuzzBin.fuzzType == fuzz.AFL {
-		deps.StaticLibs = append(deps.StaticLibs, "afl-compiler-rt")
+		deps.HeaderLibs = append(deps.HeaderLibs, "libafl_headers")
 		deps = fuzzBin.binaryDecorator.linkerDeps(ctx, deps)
 		return deps
 
@@ -360,7 +360,8 @@ func NewFuzzer(hod android.HostOrDeviceSupported, fuzzType fuzz.FuzzType) *Modul
 	})
 
 	if fuzzType == fuzz.AFL {
-		fuzzBin.baseCompiler.Properties.Srcs = append(fuzzBin.baseCompiler.Properties.Srcs, ":aflpp_driver")
+		// Add cc_objects to Srcs
+		fuzzBin.baseCompiler.Properties.Srcs = append(fuzzBin.baseCompiler.Properties.Srcs, ":aflpp_driver", ":afl-compiler-rt")
 		module.fuzzer.Properties.AFLEnabled = true
 		module.compiler.appendCflags([]string{
 			"-Wno-unused-result",
