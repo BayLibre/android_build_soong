@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f8b668_8fb2dd59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2022-06-28T22:53:29Z",
+      "side": 1,
+      "message": "+2, but we need to remove the google dependency and abstract this through an explicit call to reclient",
+      "revId": "68c815e46937d5336739de13bd8fafa5a6129c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c8666a7_42698465",
