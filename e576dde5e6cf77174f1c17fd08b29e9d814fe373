@@ -101,6 +101,52 @@
       "message": "Hey, sorry, it\u0027s been open tab for me for the last few weeks. I was busy with fire fighting. Will take a look today.",
       "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b17dcdb_6c888898",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-06-28T14:23:27Z",
+      "side": 1,
+      "message": "nit: change this to PRebuiltsRequired? Having a not in the name and then having to parse that may easily cause confusion.",
+      "range": {
+        "startLine": 795,
+        "startChar": 10,
+        "endLine": 795,
+        "endChar": 13
+      },
+      "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1998ebd9_69cee8b5",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-06-28T14:23:27Z",
+      "side": 1,
+      "message": "do we really need this? Smells like a tech debt.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 56
+      },
+      "revId": "e576dde5e6cf77174f1c17fd08b29e9d814fe373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
