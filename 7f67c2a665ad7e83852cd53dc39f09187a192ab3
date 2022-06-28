@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be07d587_30046272",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1139038
+      },
+      "writtenOn": "2022-06-28T09:30:38Z",
+      "side": 1,
+      "message": "Verified that this let\u0027s me build my APK that I previously couldn\u0027t.",
+      "revId": "7f67c2a665ad7e83852cd53dc39f09187a192ab3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
