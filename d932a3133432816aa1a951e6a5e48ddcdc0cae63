@@ -243,6 +243,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83c1e0bc_bf385b8e",
+        "filename": "tests/verify_null_builds.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-28T14:28:56Z",
+      "side": 1,
+      "message": "Does this script work as an integration test currently or will it require further changes for that?",
+      "parentUuid": "00441e22_f9ac4a81",
+      "revId": "d932a3133432816aa1a951e6a5e48ddcdc0cae63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ccec072c_ca810c0c",
         "filename": "tests/verify_null_builds.sh",
         "patchSetId": 11

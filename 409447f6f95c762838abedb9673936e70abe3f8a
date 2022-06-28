@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a9bc74c_e3fae9b9",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-28T14:28:56Z",
+      "side": 1,
+      "message": "nit: why is this change necessary?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 3
+      },
+      "revId": "409447f6f95c762838abedb9673936e70abe3f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb2e0cb_bd8abe9a",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-28T14:28:56Z",
+      "side": 1,
+      "message": "can this be part of the aqueryArtifactHandler rather than a global variable?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 43
+      },
+      "revId": "409447f6f95c762838abedb9673936e70abe3f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c245360_59a39f08",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-28T14:28:56Z",
+      "side": 1,
+      "message": "this seems to be testing the implementation details (https://testing.googleblog.com/2013/08/testing-on-toilet-test-behavior-not.html)",
+      "range": {
+        "startLine": 819,
+        "startChar": 0,
+        "endLine": 822,
+        "endChar": 43
+      },
+      "revId": "409447f6f95c762838abedb9673936e70abe3f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
