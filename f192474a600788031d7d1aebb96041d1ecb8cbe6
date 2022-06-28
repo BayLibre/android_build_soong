@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d80a751c_7cba4132",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-06-28T17:38:35Z",
+      "side": 1,
+      "message": "After I submitted the CL, yudiliu@ pointed a typo in the commit description. The first Test tag should say \"Test: m gwp_asan_crash_handler \u0026\u0026 make sure -target is aarch64-linux-android31 instead of aarch64-linux-androidS\". I got the `-target` value backward.",
+      "revId": "f192474a600788031d7d1aebb96041d1ecb8cbe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
