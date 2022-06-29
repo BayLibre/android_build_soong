@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4bb8921_0f57fce7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-06-29T12:45:56Z",
+      "side": 1,
+      "message": "This fixes the issue with Compile_dex so the follow up change no longer has to hack around it.",
+      "revId": "e7b1f5b0a55bba8e6f0e959464300d873da51eb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
