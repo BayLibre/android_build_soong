@@ -22,6 +22,30 @@
       },
       "revId": "1435886a407a016177a98328dc68802364ab0765",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c53783bb_4e0bf6d5",
+        "filename": "bp2build/cc_library_headers_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-06-29T15:25:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0539531b_884fe7c4",
+      "range": {
+        "startLine": 337,
+        "startChar": 31,
+        "endLine": 337,
+        "endChar": 41
+      },
+      "revId": "1435886a407a016177a98328dc68802364ab0765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
