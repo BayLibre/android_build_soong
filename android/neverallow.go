@@ -15,7 +15,9 @@
 package android
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"path/filepath"
 	"reflect"
 	"regexp"
@@ -58,6 +60,7 @@ func init() {
 	AddNeverAllowRules(createMakefileGoalRules()...)
 	AddNeverAllowRules(createInitFirstStageRules()...)
 	AddNeverAllowRules(createProhibitFrameworkAccessRules()...)
+	AddNeverAllowRules(createModuleNameCollisionRules()...)
 }
 
 // Add a NeverAllow rule to the set of rules to apply.
@@ -238,6 +241,17 @@ func createProhibitFrameworkAccessRules() []Rule {
 	}
 }
 
+func createModuleNameCollisionRules() []Rule {
+	allowlistedCollisions := readAllowlistedCollisions("name-source-collision.txt", "genrule-out-collisions.txt", "name-file-collisions.txt")
+
+	return []Rule{
+		NeverAllow().
+			WithMatcher("name", fileCollisionMatcherInstance).
+			NotIn(allowlistedCollisions[:]...).
+			Because("Bazel-convertible modules cannot have their module names collide with filenames."),
+	}
+}
+
 func neverallowMutator(ctx BottomUpMutatorContext) {
 	m, ok := ctx.Module().(Module)
 	if !ok {
@@ -273,6 +287,33 @@ func neverallowMutator(ctx BottomUpMutatorContext) {
 
 		ctx.ModuleErrorf("violates " + n.String())
 	}
+}
+
+func readAllowlistedCollisions(files ...string) map[string]struct{} {
+	// Map string to directory ?
+	var moduleToDir = make(map[string]string)
+	var collisions = make(map[string]struct{})
+	for _, file := range files {
+		f, err := os.Open(file)
+
+		if err != nil {
+			//do something
+		}
+
+		defer f.Close()
+
+		scanner := bufio.NewScanner(f)
+		for scanner.Scan() {
+			var line = scanner.Text()
+			collisions[line] = struct{}{}
+			lastDirectoryIndex := strings.LastIndex(line, "/")
+			moduleName := line[lastDirectoryIndex+1:]
+			directoryName := line[0:lastDirectoryIndex]
+			moduleToDir[moduleName] = directoryName
+		}
+	}
+
+	return collisions
 }
 
 type ValueMatcher interface {
@@ -353,6 +394,20 @@ func (m *isSetMatcher) String() string {
 
 var isSetMatcherInstance = &isSetMatcher{}
 
+type fileCollisionMatcher struct{}
+
+func (m *fileCollisionMatcher) Test(value string) bool {
+	// If the file exists, it's a match.
+	_, err := os.Stat(value)
+	return err == nil
+}
+
+func (m *fileCollisionMatcher) String() string {
+	return ".file_collision"
+}
+
+var fileCollisionMatcherInstance = &fileCollisionMatcher{}
+
 type ruleProperty struct {
 	fields  []string // e.x.: Vndk.Enabled
 	matcher ValueMatcher
@@ -401,8 +456,9 @@ type rule struct {
 	// User string for why this is a thing.
 	reason string
 
-	paths       []string
-	unlessPaths []string
+	paths                 []string
+	unlessPaths           map[string]struct{}
+	allowListedCollisions map[string]struct{}
 
 	directDeps map[string]bool
 
@@ -419,7 +475,7 @@ type rule struct {
 
 // Create a new NeverAllow rule.
 func NeverAllow() Rule {
-	return &rule{directDeps: make(map[string]bool)}
+	return &rule{directDeps: make(map[string]bool), unlessPaths: make(map[string]struct{}), allowListedCollisions: make(map[string]struct{})}
 }
 
 // In adds path(s) where this rule applies.
@@ -430,7 +486,9 @@ func (r *rule) In(path ...string) Rule {
 
 // NotIn adds path(s) to that this rule does not apply to.
 func (r *rule) NotIn(path ...string) Rule {
-	r.unlessPaths = append(r.unlessPaths, cleanPaths(path)...)
+	for _, filepath := range path {
+		r.unlessPaths[filepath] = struct{}{}
+	}
 	return r
 }
 
@@ -538,7 +596,7 @@ func (r *rule) String() string {
 
 func (r *rule) appliesToPath(dir string) bool {
 	includePath := len(r.paths) == 0 || HasAnyPrefix(dir, r.paths)
-	excludePath := HasAnyPrefix(dir, r.unlessPaths)
+	excludePath := MapHasAnyPrefix(dir, r.unlessPaths)
 	return includePath && !excludePath
 }
 
