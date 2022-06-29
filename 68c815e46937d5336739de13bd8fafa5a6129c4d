@@ -133,6 +133,30 @@
       },
       "revId": "68c815e46937d5336739de13bd8fafa5a6129c4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de6b46e_b6848abd",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-06-29T16:39:56Z",
+      "side": 1,
+      "message": "Yeah I misread that, but should there still be different error for missing stubby on glapstations so that it can give more useful information than the `Failed to initialize LOAS credentials token refresher: exec: \\\"stubby\\\": executable file not found in $PATH\\n\"` error?",
+      "parentUuid": "ca922baf_05a759c6",
+      "range": {
+        "startLine": 132,
+        "startChar": 46,
+        "endLine": 132,
+        "endChar": 58
+      },
+      "revId": "68c815e46937d5336739de13bd8fafa5a6129c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
