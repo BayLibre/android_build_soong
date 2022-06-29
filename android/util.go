@@ -146,6 +146,16 @@ func HasAnyPrefix(s string, prefixList []string) bool {
 	return false
 }
 
+// Returns true if the given string s is prefixed with any string in the given prefix map.
+func MapHasAnyPrefix(s string, prefixList map[string]struct{}) bool {
+	for prefix, _ := range prefixList {
+		if strings.HasPrefix(s, prefix) {
+			return true
+		}
+	}
+	return false
+}
+
 // Returns true if any string in the given list has the given substring.
 func SubstringInList(list []string, substr string) bool {
 	for _, s := range list {
