@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49bb2df6_a5a8a593",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1941531
+      },
+      "writtenOn": "2022-06-29T00:20:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "189d9110_61c0bd31",
+      "range": {
+        "startLine": 32,
+        "startChar": 31,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "510d49226e6161ede21ade15a029c9a7a7a9cab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "439e8310_15c59846",
@@ -77,6 +101,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bcdb3b0_9f2686ab",
+        "filename": "java/aar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1941531
+      },
+      "writtenOn": "2022-06-29T00:20:50Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "538565fb_8d9cca59",
+      "revId": "510d49226e6161ede21ade15a029c9a7a7a9cab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a885755_5d513684",
@@ -90,6 +132,30 @@
       "writtenOn": "2022-06-02T00:38:48Z",
       "side": 1,
       "message": "This isn\u0027t right",
+      "range": {
+        "startLine": 1330,
+        "startChar": 4,
+        "endLine": 1331,
+        "endChar": 14
+      },
+      "revId": "510d49226e6161ede21ade15a029c9a7a7a9cab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "012dea1d_bdc4c489",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1941531
+      },
+      "writtenOn": "2022-06-29T00:20:50Z",
+      "side": 1,
+      "message": "Removed in favor of Replace_max_sdk_verison_placeholder",
+      "parentUuid": "8a885755_5d513684",
       "range": {
         "startLine": 1330,
         "startChar": 4,
@@ -171,6 +237,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1449598_2c5f2460",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1941531
+      },
+      "writtenOn": "2022-06-29T00:20:50Z",
+      "side": 1,
+      "message": "Switched to using replace_max_sdk_version_placeholder instead of max_sdk_version.",
+      "parentUuid": "3d292555_0735f076",
+      "range": {
+        "startLine": 1332,
+        "startChar": 1,
+        "endLine": 1332,
+        "endChar": 16
+      },
+      "revId": "510d49226e6161ede21ade15a029c9a7a7a9cab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8be56fdd_d930df20",
@@ -184,6 +274,30 @@
       "writtenOn": "2022-06-02T00:38:48Z",
       "side": 1,
       "message": "This isn\u0027t right.  Is it useful for RRO modules?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 43
+      },
+      "revId": "510d49226e6161ede21ade15a029c9a7a7a9cab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcede293_2ff798c6",
+        "filename": "java/rro.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1941531
+      },
+      "writtenOn": "2022-06-29T00:20:50Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "8be56fdd_d930df20",
       "range": {
         "startLine": 70,
         "startChar": 1,

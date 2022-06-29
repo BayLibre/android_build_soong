@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47932c56_443a61d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1941531
+      },
+      "writtenOn": "2022-06-29T00:20:50Z",
+      "side": 1,
+      "message": "Replaced the use of max_sdk_version in favor of replace_max_sdk_version_placeholder. I am not sure if the new property will be set correctly from Android.bp. Appreciate it if you can take a look and see if I am missing something. Thanks.",
+      "revId": "5a082f9a3310a425115061578ed8955ff342ef56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
