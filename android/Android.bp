@@ -133,3 +133,8 @@ bootstrap_go_package {
         "visibility_test.go",
     ],
 }
+
+filegroup {
+    name: "name-file-collisions.txt",
+    srcs: ["name-file-collisions.txt"],
+}
