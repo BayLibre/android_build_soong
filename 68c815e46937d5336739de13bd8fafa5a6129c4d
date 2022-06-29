@@ -157,6 +157,30 @@
       },
       "revId": "68c815e46937d5336739de13bd8fafa5a6129c4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09df8100_2754d1a0",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-06-29T16:51:04Z",
+      "side": 1,
+      "message": "The current recommendation is that people actually use `application-default` creds on glapstations.\nEven if they somehow manage to get stubby on glapstations, those machines can\u0027t actually talk to the corpsso service for us to exchange their LOAS certificate for an auth token. So I think its not an actionable error to say that \"stubby\" is not found on glapstations?",
+      "parentUuid": "1de6b46e_b6848abd",
+      "range": {
+        "startLine": 132,
+        "startChar": 46,
+        "endLine": 132,
+        "endChar": 58
+      },
+      "revId": "68c815e46937d5336739de13bd8fafa5a6129c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
