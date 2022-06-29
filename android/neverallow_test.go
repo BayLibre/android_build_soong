@@ -85,7 +85,7 @@ var neverallowTests = []struct {
 	in dirs: ["other/"]
 	module types: ["cc_library"]
 	dep(s): ["not_allowed_in_direct_deps"]
-	EXCEPT in dirs: ["top/"]
+	EXCEPT in dirs: map["top/":{}]
 	EXCEPT module types: ["cc_binary"]`),
 		},
 	},
