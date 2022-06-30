@@ -394,10 +394,15 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 	if !android.PrefixInList(preoptFlags, "--compiler-filter=") {
 		var compilerFilter string
 		if systemServerJars.ContainsJar(module.Name) {
-			// Jars of system server, use the product option if it is set, speed otherwise.
+			// Jars of system server.
 			if global.SystemServerCompilerFilter != "" {
+				// Use the product option if it is set.
 				compilerFilter = global.SystemServerCompilerFilter
+			} else if module.Name == "services" {
+				// Use "speed-profile" for "services" to reduce memory footprint.
+				compilerFilter = "speed-profile"
 			} else {
+				// Use "speed" for the rest of the jars, as the APEX ones are not profiled.
 				compilerFilter = "speed"
 			}
 		} else if contains(global.SpeedApps, module.Name) || contains(global.SystemServerApps, module.Name) {
