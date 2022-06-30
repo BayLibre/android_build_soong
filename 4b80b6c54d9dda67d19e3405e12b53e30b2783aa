@@ -39,6 +39,30 @@
       },
       "revId": "4b80b6c54d9dda67d19e3405e12b53e30b2783aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "525d6708_9a0c9e66",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-06-30T14:42:16Z",
+      "side": 1,
+      "message": "It would be good. Do you know how to test if a module has a profile in Soong?",
+      "parentUuid": "ba3bab6b_c25eb9bf",
+      "range": {
+        "startLine": 398,
+        "startChar": 3,
+        "endLine": 407,
+        "endChar": 4
+      },
+      "revId": "4b80b6c54d9dda67d19e3405e12b53e30b2783aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
