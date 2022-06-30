@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d0257f_2611b386",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-06-30T17:49:41Z",
+      "side": 1,
+      "message": "Why export this?",
+      "revId": "e775a67ed8d1e95d20a66a03ab2f3a833fa64b1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
