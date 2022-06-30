@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c1558c2_37ec8b82",
+        "filename": "bp2build/linker_config_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-06-30T19:11:18Z",
+      "side": 1,
+      "message": "remove this?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 5
+      },
+      "revId": "e775a67ed8d1e95d20a66a03ab2f3a833fa64b1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70d0257f_2611b386",
         "filename": "linkerconfig/linkerconfig.go",
         "patchSetId": 5
@@ -14,6 +37,24 @@
       "writtenOn": "2022-06-30T17:49:41Z",
       "side": 1,
       "message": "Why export this?",
+      "revId": "e775a67ed8d1e95d20a66a03ab2f3a833fa64b1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab9ff356_49905079",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-06-30T19:11:18Z",
+      "side": 1,
+      "message": "I think it\u0027s needed for the test to be able to see it",
+      "parentUuid": "70d0257f_2611b386",
       "revId": "e775a67ed8d1e95d20a66a03ab2f3a833fa64b1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
