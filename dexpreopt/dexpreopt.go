@@ -398,7 +398,9 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 			if global.SystemServerCompilerFilter != "" {
 				compilerFilter = global.SystemServerCompilerFilter
 			} else {
-				compilerFilter = "speed"
+				// This disables compilation for APEX system server jars, as they are not profiled.
+				// TODO(b/237399630): update profile to cover APEX system server jars.
+				compilerFilter = "speed-profile"
 			}
 		} else if contains(global.SpeedApps, module.Name) || contains(global.SystemServerApps, module.Name) {
 			// Apps loaded into system server, and apps the product default to being compiled with the
