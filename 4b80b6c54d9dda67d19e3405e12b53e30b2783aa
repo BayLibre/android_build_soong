@@ -63,6 +63,30 @@
       },
       "revId": "4b80b6c54d9dda67d19e3405e12b53e30b2783aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8996e69f_db59d127",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-06-30T14:43:28Z",
+      "side": 1,
+      "message": "No :) But the profile is explicitly set in a property in the bp file IIRC, so it should be possible to check that property.",
+      "parentUuid": "525d6708_9a0c9e66",
+      "range": {
+        "startLine": 398,
+        "startChar": 3,
+        "endLine": 407,
+        "endChar": 4
+      },
+      "revId": "4b80b6c54d9dda67d19e3405e12b53e30b2783aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
