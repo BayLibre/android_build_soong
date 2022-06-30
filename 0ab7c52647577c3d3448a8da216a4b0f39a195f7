@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e530d1_0b134177",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-06-30T02:07:53Z",
+      "side": 1,
+      "message": "Done (after go/aog/2137317)",
+      "parentUuid": "fecd49aa_5bbe65a3",
+      "range": {
+        "startLine": 796,
+        "startChar": 1,
+        "endLine": 809,
+        "endChar": 2
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09e4315e_7e9fbef2",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-27T15:05:21Z",
       "side": 1,
       "message": "Why is this needed for mixed builds? Isn\u0027t getting the outputs from Bazel providers sufficient? Also see my other comment about getting requireNativeLibs and provideNativeLibs from Bazel cquery and not Soong.",
+      "range": {
+        "startLine": 1807,
+        "startChar": 1,
+        "endLine": 1807,
+        "endChar": 34
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e972ea76_4c086ad6",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1807,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-06-30T02:07:53Z",
+      "side": 1,
+      "message": "This code sets various fields in the apexBundle. I have restructured it somewhat .",
+      "parentUuid": "09e4315e_7e9fbef2",
       "range": {
         "startLine": 1807,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47db6288_93f3930c",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1811,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-06-30T02:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4adcf6b3_014d7dbd",
+      "range": {
+        "startLine": 1811,
+        "startChar": 26,
+        "endLine": 1811,
+        "endChar": 40
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af91e1e1_c5317f41",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-06-27T15:05:21Z",
       "side": 1,
       "message": "Let\u0027s fall back to Soong for all other types than imageApex, given that we cannot build them yet (i.e. filter them out in IsMixedBuildSupported)",
+      "range": {
+        "startLine": 1830,
+        "startChar": 15,
+        "endLine": 1830,
+        "endChar": 24
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0b7e3e_7b0a218e",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1830,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-06-30T02:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af91e1e1_c5317f41",
       "range": {
         "startLine": 1830,
         "startChar": 15,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "410d973f_26facdab",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-06-30T02:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35b85df7_b2f578c6",
+      "range": {
+        "startLine": 1831,
+        "startChar": 67,
+        "endLine": 1831,
+        "endChar": 98
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b21b83f_2fd9a1b4",
@@ -156,6 +276,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6775878a_fae483be",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-06-30T02:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b21b83f_2fd9a1b4",
+      "range": {
+        "startLine": 1831,
+        "startChar": 2,
+        "endLine": 1836,
+        "endChar": 116
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eed15029_ad21d38d",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-06-27T15:05:21Z",
       "side": 1,
       "message": "In mixed builds mode, we shouldn\u0027t be using any information from Soong\u0027s analysis. These should be retrieved from Bazel apex target\u0027s ApexInfo: https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl;l\u003d30-31;drc\u003d4f6351d8ab47b98faa4af20d0bb0985274cfd55a\n\nIf Bazel\u0027s ApexInfo doesn\u0027t have the information, then we\u0027ll need to add it there, and not use the analysis information here.",
+      "range": {
+        "startLine": 2310,
+        "startChar": 1,
+        "endLine": 2311,
+        "endChar": 40
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f466143b_cd4ed2e2",
+        "filename": "apex/apex.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 2311,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-06-30T02:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eed15029_ad21d38d",
       "range": {
         "startLine": 2310,
         "startChar": 1,
