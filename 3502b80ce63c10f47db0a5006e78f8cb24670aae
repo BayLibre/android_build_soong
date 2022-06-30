@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15168cc4_c52feb99",
+        "filename": "android/paths.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-30T13:43:52Z",
+      "side": 1,
+      "message": "nit: path with",
+      "range": {
+        "startLine": 340,
+        "startChar": 49,
+        "endLine": 340,
+        "endChar": 57
+      },
+      "revId": "3502b80ce63c10f47db0a5006e78f8cb24670aae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "941e4895_09334ffd",
+        "filename": "android/paths.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-30T13:43:52Z",
+      "side": 1,
+      "message": "any reason that `Path()` doesn\u0027t work here? https://cs.android.com/android/platform/superproject/+/master:build/soong/android/paths.go;l\u003d287;drc\u003da9b2aacf07697e9fa00daf2c6fc76a73392563b7",
+      "range": {
+        "startLine": 342,
+        "startChar": 22,
+        "endLine": 342,
+        "endChar": 28
+      },
+      "revId": "3502b80ce63c10f47db0a5006e78f8cb24670aae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34489e43_30cb2be3",
+        "filename": "java/base.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-30T13:43:52Z",
+      "side": 1,
+      "message": "why did this need to move? can you add a comment about why we don\u0027t do this in aidlflags?",
+      "range": {
+        "startLine": 1024,
+        "startChar": 1,
+        "endLine": 1025,
+        "endChar": 104
+      },
+      "revId": "3502b80ce63c10f47db0a5006e78f8cb24670aae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4393096_85646c6d",
+        "filename": "java/gen.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-30T13:43:52Z",
+      "side": 1,
+      "message": "can you add a comment about this?",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 52
+      },
+      "revId": "3502b80ce63c10f47db0a5006e78f8cb24670aae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
