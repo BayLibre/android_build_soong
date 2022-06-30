@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3398abb0_5174292b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "Thanks. That CL is missing its darwin counterpart (update.sh should have created changes in both linux and darwin repos).",
+      "parentUuid": "e0e530d1_0b134177",
+      "range": {
+        "startLine": 796,
+        "startChar": 1,
+        "endLine": 809,
+        "endChar": 2
+      },
+      "revId": "0ab7c52647577c3d3448a8da216a4b0f39a195f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09e4315e_7e9fbef2",
         "filename": "apex/apex.go",
         "patchSetId": 14

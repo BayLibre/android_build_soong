@@ -16,6 +16,276 @@
       "message": "lot ",
       "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bf7ea8_5eb3695b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "Thanks. This is a large CL, so reviewing would be easier if the formatting and other unrelated refactoring are broken out into separate CLs.\n\nI\u0027m also mostly concerned about the areas where apexBundle information is filled in from Soong\u0027s dependency walks, instead of getting them from bazel query and providers. Let me know if you need more clarification around that.",
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ee94e0_789b1281",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "nit: \"unimplemented\" to be consistent with all other Get calls.",
+      "range": {
+        "startLine": 293,
+        "startChar": 8,
+        "endLine": 293,
+        "endChar": 20
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60209eb9_8a603ba1",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "Remove since it\u0027s unused/stale?",
+      "range": {
+        "startLine": 433,
+        "startChar": 2,
+        "endLine": 434,
+        "endChar": 62
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7733f502_06f24f06",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "These are unrelated changes to the apex handler, can you break these out?",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 22
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d39615_a704ddf5",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "These large diff formatting changes to all of the test files should be done in another CL, let\u0027s not piggyback on this one.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6409e7e6_f6fc6b6f",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1808,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "Sharing checks with Soong\u0027s `GenerateAndroidBuildActions` is not correct. Some of these call `a.WalkPayloadDeps` on the Soong module graph, which is distinct from the Bazel graph. Others validate Android.bp properties, but they should be done by the Bazel apex rule implementation on the BUILD attributes instead.\n\nWhen Bazel takes over this `apexBundle` in mixed builds, all of the information needed to fulfil `apexBundle` should come from the Bazel query responses, which has information about the Bazel transitive dependencies of this APEX\u0027s payload. `ProcessBazelQueryResponse` should be practically mapping query responses to `apexBundle` fields directly. If Bazel doesn\u0027t export the information, then we\u0027ll need to implement them in the Starlark rule and return them in `ApexInfo` (or another provider).\n\nConcretely speaking:\n\n- `checkApexAvailability`: this calls WalkPayloadDeps, and should be handled on the Bazel side, and not called in ProcessBazelQueryResponse. b/218841706\n- `checkUpdatable`: the property checks (https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex.go;l\u003d2672-2684;drc\u003da477a7a86a3198ab873a57bb95411b5a3574ba91) should be done in the bazel apex rule. `checkJavaStableSdkVersion` and `checkClasspathFragments` walk the Soong deps, so they shouldn\u0027t be here.\n- `checkMinSdkVersion`, `checkStaticLinkingToStubLibraries`, `checkStaticExecutables`: similar to `checkApexAvailability`.\n- tests property check: similar to `checkUpdatable` property checks and should be done in Bazel Starlark.",
+      "range": {
+        "startLine": 1806,
+        "startChar": 1,
+        "endLine": 1808,
+        "endChar": 2
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d4b3a3_a3909bb4",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "See the comment about checks - we shouldn\u0027t be walking blueprint deps in the bazel handler.",
+      "range": {
+        "startLine": 1810,
+        "startChar": 1,
+        "endLine": 1812,
+        "endChar": 25
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c433d3_2884b474",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "filesInfo should be populated from query responses on the apex target, otherwise it\u0027s inaccurate to use filesInfo from Soong analysis with a Bazel-built APEX. If the information doesn\u0027t exist, then we\u0027ll need to add it in a Starlark provider.",
+      "range": {
+        "startLine": 1814,
+        "startChar": 15,
+        "endLine": 1814,
+        "endChar": 29
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ce05a16_d2cd0220",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1841,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "These are not correct. We need to handle these fields similar to a.outputFile and a.outputApexFile, where the outputs are from bazelCtx.GetApexInfo. Can these be unset? If not, can you stub them with empty txt files created with WriteFile[1]?\n\n[1] https://cs.android.com/android/platform/superproject/+/master:build/soong/android/defs.go;l\u003d105-113;drc\u003d50ed1f9ccb42ce2faaf652fe1819dbd57f35b44d",
+      "range": {
+        "startLine": 1837,
+        "startChar": 2,
+        "endLine": 1841,
+        "endChar": 105
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c1180e_dbb4932b",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "This reads the target\u0027s DefaultInfo[1] provider, not ApexInfo[2]. \n\nThe ApexInfo provider returns the .apex files in signed_output and unsigned_output fields, and other APEX metadata like the requires/provides native libs.\n\nPlease switch this to read ApexInfo instead.\n\nSee also the StarlarkFunctionBody() for GetCcInfo[3], which reads CcInfo for cc-specific fields. \n\n[1] https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl;l\u003d428;drc\u003d4f6351d8ab47b98faa4af20d0bb0985274cfd55a\n[2] https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl;l\u003d429-434;drc\u003d4f6351d8ab47b98faa4af20d0bb0985274cfd55a\n[3] https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/cquery/request_type.go;l\u003d106;drc\u003dcf553a657545e78de4a9b4689ad1dbd2058446a0",
+      "range": {
+        "startLine": 237,
+        "startChar": 43,
+        "endLine": 237,
+        "endChar": 65
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1852fbbc_1c37f376",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "ApexInfo",
+      "range": {
+        "startLine": 240,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 19
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc5363d_39cb3cd1",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-06-30T10:29:56Z",
+      "side": 1,
+      "message": "The fields of this struct should match the Starlark ApexInfo provider: https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl;l\u003d27-35;drc\u003d4f6351d8ab47b98faa4af20d0bb0985274cfd55a",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 0
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
