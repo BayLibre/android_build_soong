@@ -16,6 +16,23 @@
       "message": "I fixed the Compile_dex issue in a preceding change. Renamed PrebuiltsNotRequired and switch it to *bool instead as I suggested.",
       "revId": "6c46738430f6df5437b6bb5b4da9d9de23339b56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b8b9c7_a24d835b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-06-30T13:26:47Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "6c46738430f6df5437b6bb5b4da9d9de23339b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
