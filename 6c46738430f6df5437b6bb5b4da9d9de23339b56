@@ -33,6 +33,52 @@
       "message": "Thank you!",
       "revId": "6c46738430f6df5437b6bb5b4da9d9de23339b56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df05ce33_14abbf89",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-30T19:10:24Z",
+      "side": 1,
+      "message": "why are these the only two types of dependencies handled as transitive deps to sdk modules -- as a user it\u0027s not obvious what portions of an apex will become part of an sdk and what would not.",
+      "range": {
+        "startLine": 640,
+        "startChar": 0,
+        "endLine": 641,
+        "endChar": 166
+      },
+      "revId": "6c46738430f6df5437b6bb5b4da9d9de23339b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae9a2d48_16525a9a",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-06-30T19:10:24Z",
+      "side": 1,
+      "message": "are there any issues if the same bootclasspath is added directly and via an apex?",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 1
+      },
+      "revId": "6c46738430f6df5437b6bb5b4da9d9de23339b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
