@@ -16,6 +16,29 @@
       "message": "Jiakai: please add your CL for odrefresh to this topic.",
       "revId": "4b80b6c54d9dda67d19e3405e12b53e30b2783aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba3bab6b_c25eb9bf",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-06-30T14:35:05Z",
+      "side": 1,
+      "message": "Instead of hardcoding the compiler filter here, I think it will be better to change global.SystemServerCompilerFilter to \"speed-profile\", and have the following logic here:\n\nif global.SystemServerCompilerFilter \u003d\u003d \"speed-profile\" {\n  if (the module has profile) {\n    compilerFilter \u003d \"speed-profile\"\n  } else {\n    compilerFilter \u003d \"speed\"\n  }\n} else if global.SystemServerCompilerFilter !\u003d \"\" {\n  compilerFilter \u003d global.SystemServerCompilerFilter\n}\n\nThere are a few benefits of doing this:\n1. It keeps the compiler filter configurable.\n2. Currently, only \"services\" has profile, so we get the desired behavior without explicitly special-casing \"services\".\n3. If we want to use speed-profile for APEX jars, we can just add profile to them, and we don\u0027t have to change the logic here.\n4. It makes Soong align with the behavior of odrefresh (https://cs.android.com/android/platform/superproject/+/master:art/odrefresh/odrefresh.cc;l\u003d1610-1614;drc\u003d099f0e7d092e6a390a046d67f3dac32189e92dd3). No changes need to be made to odrefresh.",
+      "range": {
+        "startLine": 398,
+        "startChar": 3,
+        "endLine": 407,
+        "endChar": 4
+      },
+      "revId": "4b80b6c54d9dda67d19e3405e12b53e30b2783aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
