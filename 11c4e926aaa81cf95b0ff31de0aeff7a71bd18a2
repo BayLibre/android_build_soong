@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f850c8de_338ede73",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-01T13:07:14Z",
+      "side": 1,
+      "message": "Does this one need a comment?",
+      "range": {
+        "startLine": 486,
+        "startChar": 3,
+        "endLine": 486,
+        "endChar": 19
+      },
+      "revId": "11c4e926aaa81cf95b0ff31de0aeff7a71bd18a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
