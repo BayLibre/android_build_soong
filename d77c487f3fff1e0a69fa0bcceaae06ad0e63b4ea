@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca09b606_8090e19b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1943701
+      },
+      "writtenOn": "2022-07-01T14:14:34Z",
+      "side": 1,
+      "message": "Hey folks, I would like to revive this change.\n\nWhile https://r.android.com/2123492 worked around the need for a config file by formatting both the actual and expected Rust code, I now have a use case where it\u0027s less nice to (re)format the expected output.\n\nI would therefore like to be able consistently format the generated output by depending on the rustfmt.toml file exported here. This happens in https://r.android.com/2098984.",
+      "revId": "d77c487f3fff1e0a69fa0bcceaae06ad0e63b4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
