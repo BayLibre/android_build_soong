@@ -46,6 +46,30 @@
       },
       "revId": "ee4b633627fb291f6e39088307e38628d24a2070",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00374e61_3c83c926",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-07-01T07:20:40Z",
+      "side": 1,
+      "message": "I think this is enough for now. If we really want a sophisticated comments there\u0027ll be other tools we can use to strip comments from json",
+      "parentUuid": "92399883_916d9800",
+      "range": {
+        "startLine": 86,
+        "startChar": 21,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "ee4b633627fb291f6e39088307e38628d24a2070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
