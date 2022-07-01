@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d13b279_1d83552c",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-07-01T18:05:00Z",
+      "side": 1,
+      "message": "the actual lists from the files don\u0027t have full relative paths, how\u0027d this work?",
+      "revId": "69baa60cf697a3af1da3da1f368c11dd20f9df35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5468bd0_5587b982",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-07-01T18:05:00Z",
+      "side": 1,
+      "message": "nit: maybe submit this as a separate CL",
+      "revId": "69baa60cf697a3af1da3da1f368c11dd20f9df35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ffe1c47_887b4b3a",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-07-01T18:05:00Z",
+      "side": 1,
+      "message": "I don\u0027t see any advantage of using a map instead of a list here - unless I am missing some other usage of unlessPaths.",
+      "revId": "69baa60cf697a3af1da3da1f368c11dd20f9df35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb661eb_248b32eb",
+        "filename": "android/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-07-01T18:05:00Z",
+      "side": 1,
+      "message": "nit: .. in the given prefix ~map~ *set*",
+      "revId": "69baa60cf697a3af1da3da1f368c11dd20f9df35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
