@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1710ec5_9e4e0982",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-07-01T17:46:13Z",
+      "side": 1,
+      "message": "Good question. They are the only two types handled at the moment as they were the source of most of the issues that arose due to inconsistencies between sdk and apex. They also affected the vast majority of the mainline modules.\n\nOther modules that may need to be automatically exported are compat config, java lib, shared lib, jni lib. They will be added as needed. However, most mainline modules don\u0027t yet export them so the benefits are smaller and at the moment is outweighed by the cost of adding them.",
+      "parentUuid": "df05ce33_14abbf89",
+      "range": {
+        "startLine": 640,
+        "startChar": 0,
+        "endLine": 641,
+        "endChar": 166
+      },
+      "revId": "6c46738430f6df5437b6bb5b4da9d9de23339b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae9a2d48_16525a9a",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-30T19:10:24Z",
       "side": 1,
       "message": "are there any issues if the same bootclasspath is added directly and via an apex?",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 1
+      },
+      "revId": "6c46738430f6df5437b6bb5b4da9d9de23339b56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37c9b23a_0aa0eb66",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-07-01T17:46:13Z",
+      "side": 1,
+      "message": "Initially I was going to reply \"No\" as I was thinking about duplicates and the mechanism that adds transitive dependencies to an sdk is well tested.\n\nIt is used for adding the contents of bootclasspath_fragments themselves and the previous test in this func checks to make sure that adding a library directly and transitively via bootclasspath_fragment only adds the library to the sdk once.\n\nIt is also used to transitively add the contents of a java_system_modules module to the sdk. So, the TestSnapshotWithJavaSystemModules verifies that the myjavalib module is only added once even though it is specified directly and indirectly via a java_system_modules module. That test also checks that adding myjavalib.stubs (a component of a module, i.e. a stubs library created by a java_sdk_library), does not add the component module separately.\n\nHowever, I decided to just verify and add a test here and it turns out that yes it causes problems because of a long-standing issue around the handling of APEX variants - see http://b/187910671 for more details.\n\nIn that case the build fails with a panic because the code gets given an APEX specific variant and the default/platform variant and panics because it is expecting only one variant. The error is not helpful so I have updated the change to specifically handle this situation and pick the APEX variant.",
+      "parentUuid": "ae9a2d48_16525a9a",
       "range": {
         "startLine": 460,
         "startChar": 0,
