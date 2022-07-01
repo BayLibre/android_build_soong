@@ -15,13 +15,9 @@
 package cc
 
 import (
-	_ "fmt"
-	_ "sort"
-
 	"testing"
 
 	"android/soong/android"
-	"android/soong/multitree"
 )
 
 func TestCcApiStubLibraryOutputFiles(t *testing.T) {
@@ -72,37 +68,4 @@ func TestCcLibraryUsesCcApiStubLibrary(t *testing.T) {
 
 	`
 	prepareForCcTest.RunTestWithBp(t, bp)
-}
-
-func TestApiSurfaceOutputs(t *testing.T) {
-	bp := `
-		api_surface {
-			name: "mysdk",
-			contributions: [
-				"foo",
-			],
-		}
-
-		cc_api_contribution {
-			name: "foo",
-			symbol_file: "foo.map.txt",
-			first_version: "29",
-		}
-	`
-	result := android.GroupFixturePreparers(
-		prepareForCcTest,
-		multitree.PrepareForTestWithApiSurface,
-	).RunTestWithBp(t, bp)
-	mysdk := result.ModuleForTests("mysdk", "")
-
-	actual_surface_inputs := mysdk.Rule("phony").BuildParams.Inputs.Strings()
-	expected_file_suffixes := []string{"mysdk/foo/foo.map.txt"}
-	for _, expected_file_suffix := range expected_file_suffixes {
-		android.AssertBoolEquals(t, expected_file_suffix+" file not found in input", true, android.SuffixInList(actual_surface_inputs, expected_file_suffix))
-	}
-
-	// check args/inputs to rule
-	/*api_surface_gen_rule_args := result.ModuleForTests("mysdk", "").Rule("genApiSurfaceBuildFiles").Args
-	android.AssertStringEquals(t, "name", "foo.mysdk", api_surface_gen_rule_args["name"])
-	android.AssertStringEquals(t, "symbol_file", "foo.map.txt", api_surface_gen_rule_args["symbol_file"])*/
 }
