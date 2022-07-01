@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a94abb0_ffefdd44",
+        "filename": "bp2build/aidl_interface_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-01T19:22:33Z",
+      "side": 1,
+      "message": "Yeah I just combined the one with headers and flags since they can be tested simultaneously to make a test like this.",
+      "parentUuid": "45212e9a_47087b06",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "e06f77baa782b88b515cbdac2507aa4cd993a026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ccfa8b9_31805d4e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-30T19:16:40Z",
       "side": 1,
       "message": "not super important but would this show up if java was disabled?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 81
+      },
+      "revId": "e06f77baa782b88b515cbdac2507aa4cd993a026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e89492d7_851607a4",
+        "filename": "bp2build/aidl_interface_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-01T19:22:33Z",
+      "side": 1,
+      "message": "Actually, just removed this property entirely, so... no",
+      "parentUuid": "8ccfa8b9_31805d4e",
       "range": {
         "startLine": 84,
         "startChar": 0,
