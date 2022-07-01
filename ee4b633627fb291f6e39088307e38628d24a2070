@@ -70,6 +70,30 @@
       },
       "revId": "ee4b633627fb291f6e39088307e38628d24a2070",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab0018b7_f8dac233",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-01T10:27:28Z",
+      "side": 1,
+      "message": "hmm, yeah, i feel that `sed \u0027\\#^\\s*//#d\u0027` might be even more confusing",
+      "parentUuid": "00374e61_3c83c926",
+      "range": {
+        "startLine": 86,
+        "startChar": 21,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "ee4b633627fb291f6e39088307e38628d24a2070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
