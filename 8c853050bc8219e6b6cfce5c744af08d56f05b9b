@@ -107,6 +107,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a64e2b6_750a0ab4",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-07-02T01:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47b2898a_367e3701",
+      "range": {
+        "startLine": 64,
+        "startChar": 27,
+        "endLine": 64,
+        "endChar": 42
+      },
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b76b2252_189423d0",
@@ -137,6 +161,24 @@
       "writtenOn": "2022-06-22T23:08:27Z",
       "side": 1,
       "message": "This doesn\u0027t test anything except that a single variant exists.  It should at least be testing that the afl and non-afl variants exist, and that they correctly pass or do not pass the afl flags.",
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80eda70_0f3a170d",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3404,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-07-02T01:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66f48b89_e6d770d4",
       "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -212,6 +254,30 @@
       "side": 1,
       "message": "This will be in the AFL++ repo. It is in the process of being checked in to AOSP. It\u0027s past all the approvals and the empty repo has been created in AOSP. I\u0027m now merging the needed manifest updates and the AFL++ upstream to the empty repo in AOSP:\n\nhttps://android-review.googlesource.com/c/platform/external/AFLplusplus/+/2133182\n\n\nAfter that I need to make one check in to AFL++ repo for afl_driverpp (I think it was called) into their Android.bp. Then will merge that from upstream to AOSP.\n\nThis hasnt been done yet but I have talked to an AFL++ owner. I didn\u0027t want to check in to AFL++ github repo until I get feedback here so I only have to do one check in there.",
       "parentUuid": "ab722b09_45ebe935",
+      "range": {
+        "startLine": 145,
+        "startChar": 45,
+        "endLine": 145,
+        "endChar": 60
+      },
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f24cddc_4bda39a4",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-07-02T01:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84e69517_9f0b69aa",
       "range": {
         "startLine": 145,
         "startChar": 45,
