@@ -197,6 +197,7 @@ var (
 		"system/core/libutils":                               Bp2BuildDefaultTrueRecursively,
 		"system/core/libvndksupport":                         Bp2BuildDefaultTrueRecursively,
 		"system/core/property_service/libpropertyinfoparser": Bp2BuildDefaultTrueRecursively,
+		"system/extras/toolchain-extras":                     Bp2BuildDefaultTrue,
 		"system/libartpalette":                               Bp2BuildDefaultTrueRecursively,
 		"system/libbase":                                     Bp2BuildDefaultTrueRecursively,
 		"system/libfmq":                                      Bp2BuildDefaultTrue,
