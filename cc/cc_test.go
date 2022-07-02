@@ -4104,7 +4104,7 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 	conly := []string{"-fPIC", "${config.CommonGlobalConlyflags}"}
 	cppOnly := []string{"-fPIC", "${config.CommonGlobalCppflags}", "${config.DeviceGlobalCppflags}", "${config.ArmCppflags}"}
 
-	cflags := []string{"-Wall", "-Werror", "-std=candcpp"}
+	cflags := []string{"-Werror", "-std=candcpp"}
 	cstd := []string{"-std=gnu11", "-std=conly"}
 	cppstd := []string{"-std=gnu++17", "-std=cpp", "-fno-rtti"}
 
@@ -4139,7 +4139,7 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 		{
 			name:     "assemble",
 			src:      "foo.s",
-			expected: combineSlices(baseExpectedFlags, []string{"-D__ASSEMBLY__"}, expectedIncludes, lastIncludes),
+			expected: combineSlices(baseExpectedFlags, []string{"-D__ASSEMBLY__", "-fdebug-default-version=4"}, expectedIncludes, lastIncludes),
 		},
 	}
 

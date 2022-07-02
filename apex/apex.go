@@ -608,30 +608,34 @@ type dependencyTag struct {
 	sourceOnly bool
 }
 
-func (d dependencyTag) ReplaceSourceWithPrebuilt() bool {
+func (d *dependencyTag) String() string {
+	return fmt.Sprintf("apex.dependencyTag{%q}", d.name)
+}
+
+func (d *dependencyTag) ReplaceSourceWithPrebuilt() bool {
 	return !d.sourceOnly
 }
 
 var _ android.ReplaceSourceWithPrebuilt = &dependencyTag{}
 
 var (
-	androidAppTag   = dependencyTag{name: "androidApp", payload: true}
-	bpfTag          = dependencyTag{name: "bpf", payload: true}
-	certificateTag  = dependencyTag{name: "certificate"}
-	executableTag   = dependencyTag{name: "executable", payload: true}
-	fsTag           = dependencyTag{name: "filesystem", payload: true}
-	bcpfTag         = dependencyTag{name: "bootclasspathFragment", payload: true, sourceOnly: true}
-	sscpfTag        = dependencyTag{name: "systemserverclasspathFragment", payload: true, sourceOnly: true}
-	compatConfigTag = dependencyTag{name: "compatConfig", payload: true, sourceOnly: true}
-	javaLibTag      = dependencyTag{name: "javaLib", payload: true}
-	jniLibTag       = dependencyTag{name: "jniLib", payload: true}
-	keyTag          = dependencyTag{name: "key"}
-	prebuiltTag     = dependencyTag{name: "prebuilt", payload: true}
-	rroTag          = dependencyTag{name: "rro", payload: true}
-	sharedLibTag    = dependencyTag{name: "sharedLib", payload: true}
-	testForTag      = dependencyTag{name: "test for"}
-	testTag         = dependencyTag{name: "test", payload: true}
-	shBinaryTag     = dependencyTag{name: "shBinary", payload: true}
+	androidAppTag   = &dependencyTag{name: "androidApp", payload: true}
+	bpfTag          = &dependencyTag{name: "bpf", payload: true}
+	certificateTag  = &dependencyTag{name: "certificate"}
+	executableTag   = &dependencyTag{name: "executable", payload: true}
+	fsTag           = &dependencyTag{name: "filesystem", payload: true}
+	bcpfTag         = &dependencyTag{name: "bootclasspathFragment", payload: true, sourceOnly: true}
+	sscpfTag        = &dependencyTag{name: "systemserverclasspathFragment", payload: true, sourceOnly: true}
+	compatConfigTag = &dependencyTag{name: "compatConfig", payload: true, sourceOnly: true}
+	javaLibTag      = &dependencyTag{name: "javaLib", payload: true}
+	jniLibTag       = &dependencyTag{name: "jniLib", payload: true}
+	keyTag          = &dependencyTag{name: "key"}
+	prebuiltTag     = &dependencyTag{name: "prebuilt", payload: true}
+	rroTag          = &dependencyTag{name: "rro", payload: true}
+	sharedLibTag    = &dependencyTag{name: "sharedLib", payload: true}
+	testForTag      = &dependencyTag{name: "test for"}
+	testTag         = &dependencyTag{name: "test", payload: true}
+	shBinaryTag     = &dependencyTag{name: "shBinary", payload: true}
 )
 
 // TODO(jiyong): shorten this function signature
@@ -1464,7 +1468,7 @@ func (a *apexBundle) EnableSanitizer(sanitizerName string) {
 	}
 }
 
-func (a *apexBundle) IsSanitizerEnabled(ctx android.BaseModuleContext, sanitizerName string) bool {
+func (a *apexBundle) IsSanitizerEnabled(config android.Config, sanitizerName string) bool {
 	if android.InList(sanitizerName, a.properties.SanitizerNames) {
 		return true
 	}
@@ -1472,11 +1476,11 @@ func (a *apexBundle) IsSanitizerEnabled(ctx android.BaseModuleContext, sanitizer
 	// Then follow the global setting
 	globalSanitizerNames := []string{}
 	if a.Host() {
-		globalSanitizerNames = ctx.Config().SanitizeHost()
+		globalSanitizerNames = config.SanitizeHost()
 	} else {
-		arches := ctx.Config().SanitizeDeviceArch()
+		arches := config.SanitizeDeviceArch()
 		if len(arches) == 0 || android.InList(a.Arch().ArchType.Name, arches) {
-			globalSanitizerNames = ctx.Config().SanitizeDevice()
+			globalSanitizerNames = config.SanitizeDevice()
 		}
 	}
 	return android.InList(sanitizerName, globalSanitizerNames)
@@ -1752,7 +1756,7 @@ func (a *apexBundle) WalkPayloadDeps(ctx android.ModuleContext, do android.Paylo
 		if _, ok := depTag.(android.ExcludeFromApexContentsTag); ok {
 			return false
 		}
-		if dt, ok := depTag.(dependencyTag); ok && !dt.payload {
+		if dt, ok := depTag.(*dependencyTag); ok && !dt.payload {
 			return false
 		}
 
@@ -2493,6 +2497,19 @@ func (o *OverrideApex) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		if !ok {
 			continue
 		}
+
+		// Manifest is either empty or a file in the directory of base APEX and is not overridable.
+		// After it is converted in convertWithBp2build(baseApex, ctx),
+		// the attrs.Manifest.Value.Label is the file path relative to the directory
+		// of base apex. So the following code converts it to a label that looks like
+		// <package of base apex>:<path of manifest file> if base apex and override
+		// apex are not in the same package.
+		baseApexPackage := ctx.OtherModuleDir(a)
+		overrideApexPackage := ctx.ModuleDir()
+		if baseApexPackage != overrideApexPackage {
+			attrs.Manifest.Value.Label = "//" + baseApexPackage + ":" + attrs.Manifest.Value.Label
+		}
+
 		// Key
 		if overridableProperties.Key != nil {
 			attrs.Key = bazel.LabelAttribute{}
@@ -2506,12 +2523,35 @@ func (o *OverrideApex) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		}
 
 		// Prebuilts
-		prebuiltsLabelList := android.BazelLabelForModuleDeps(ctx, overridableProperties.Prebuilts)
-		attrs.Prebuilts = bazel.MakeLabelListAttribute(prebuiltsLabelList)
+		if overridableProperties.Prebuilts != nil {
+			prebuiltsLabelList := android.BazelLabelForModuleDeps(ctx, overridableProperties.Prebuilts)
+			attrs.Prebuilts = bazel.MakeLabelListAttribute(prebuiltsLabelList)
+		}
 
 		// Compressible
 		if overridableProperties.Compressible != nil {
 			attrs.Compressible = bazel.BoolAttribute{Value: overridableProperties.Compressible}
+		}
+
+		// Package name
+		//
+		// e.g. com.android.adbd's package name is com.android.adbd, but
+		// com.google.android.adbd overrides the package name to com.google.android.adbd
+		//
+		// TODO: this can be overridden from the product configuration, see
+		// getOverrideManifestPackageName and
+		// PRODUCT_MANIFEST_PACKAGE_NAME_OVERRIDES.
+		//
+		// Instead of generating the BUILD files differently based on the product config
+		// at the point of conversion, this should be handled by the BUILD file loading
+		// from the soong_injection's product_vars, so product config is decoupled from bp2build.
+		if overridableProperties.Package_name != "" {
+			attrs.Package_name = &overridableProperties.Package_name
+		}
+
+		// Logging parent
+		if overridableProperties.Logging_parent != "" {
+			attrs.Logging_parent = &overridableProperties.Logging_parent
 		}
 	}
 
@@ -2756,7 +2796,7 @@ func (a *apexBundle) checkStaticExecutables(ctx android.ModuleContext) {
 // A small list of exceptions where static executables are allowed in APEXes.
 func isStaticExecutableAllowed(apex string, exec string) bool {
 	m := map[string][]string{
-		"com.android.runtime": []string{
+		"com.android.runtime": {
 			"linker",
 			"linkerconfig",
 		},
@@ -3221,33 +3261,6 @@ func makeApexAvailableBaseline() map[string][]string {
 	//
 	// Module separator
 	//
-	m["com.android.permission"] = []string{
-		"car-ui-lib",
-		"iconloader",
-		"kotlin-annotations",
-		"kotlin-stdlib",
-		"kotlin-stdlib-jdk7",
-		"kotlin-stdlib-jdk8",
-		"kotlinx-coroutines-android",
-		"kotlinx-coroutines-android-nodeps",
-		"kotlinx-coroutines-core",
-		"kotlinx-coroutines-core-nodeps",
-		"permissioncontroller-statsd",
-		"GooglePermissionController",
-		"PermissionController",
-		"SettingsLibActionBarShadow",
-		"SettingsLibAppPreference",
-		"SettingsLibBarChartPreference",
-		"SettingsLibLayoutPreference",
-		"SettingsLibProgressBar",
-		"SettingsLibSearchWidget",
-		"SettingsLibSettingsTheme",
-		"SettingsLibRestrictedLockUtils",
-		"SettingsLibHelpUtils",
-	}
-	//
-	// Module separator
-	//
 	m["com.android.runtime"] = []string{
 		"bionic_libc_platform_headers",
 		"libarm-optimized-routines-math",
@@ -3420,11 +3433,11 @@ func createBcpPermittedPackagesRules(bcpPermittedPackages map[string][]string) [
 // Adding code to the bootclasspath in new packages will cause issues on module update.
 func qBcpPackages() map[string][]string {
 	return map[string][]string{
-		"conscrypt": []string{
+		"conscrypt": {
 			"android.net.ssl",
 			"com.android.org.conscrypt",
 		},
-		"updatable-media": []string{
+		"updatable-media": {
 			"android.media",
 		},
 	}
@@ -3434,32 +3447,32 @@ func qBcpPackages() map[string][]string {
 // Adding code to the bootclasspath in new packages will cause issues on module update.
 func rBcpPackages() map[string][]string {
 	return map[string][]string{
-		"framework-mediaprovider": []string{
+		"framework-mediaprovider": {
 			"android.provider",
 		},
-		"framework-permission": []string{
+		"framework-permission": {
 			"android.permission",
 			"android.app.role",
 			"com.android.permission",
 			"com.android.role",
 		},
-		"framework-sdkextensions": []string{
+		"framework-sdkextensions": {
 			"android.os.ext",
 		},
-		"framework-statsd": []string{
+		"framework-statsd": {
 			"android.app",
 			"android.os",
 			"android.util",
 			"com.android.internal.statsd",
 			"com.android.server.stats",
 		},
-		"framework-wifi": []string{
+		"framework-wifi": {
 			"com.android.server.wifi",
 			"com.android.wifi.x",
 			"android.hardware.wifi",
 			"android.net.wifi",
 		},
-		"framework-tethering": []string{
+		"framework-tethering": {
 			"android.net",
 		},
 	}
@@ -3481,6 +3494,8 @@ type bazelApexBundleAttributes struct {
 	Native_shared_libs_32 bazel.LabelListAttribute
 	Native_shared_libs_64 bazel.LabelListAttribute
 	Compressible          bazel.BoolAttribute
+	Package_name          *string
+	Logging_parent        *string
 }
 
 type convertedNativeSharedLibs struct {
@@ -3501,9 +3516,7 @@ func (a *apexBundle) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 
 func convertWithBp2build(a *apexBundle, ctx android.TopDownMutatorContext) (bazelApexBundleAttributes, bazel.BazelTargetModuleProperties) {
 	var manifestLabelAttribute bazel.LabelAttribute
-	if a.properties.Manifest != nil {
-		manifestLabelAttribute.SetValue(android.BazelLabelForModuleSrcSingle(ctx, *a.properties.Manifest))
-	}
+	manifestLabelAttribute.SetValue(android.BazelLabelForModuleSrcSingle(ctx, proptools.StringDefault(a.properties.Manifest, "apex_manifest.json")))
 
 	var androidManifestLabelAttribute bazel.LabelAttribute
 	if a.properties.AndroidManifest != nil {
@@ -3577,6 +3590,16 @@ func convertWithBp2build(a *apexBundle, ctx android.TopDownMutatorContext) (baze
 		compressibleAttribute.Value = a.overridableProperties.Compressible
 	}
 
+	var packageName *string
+	if a.overridableProperties.Package_name != "" {
+		packageName = &a.overridableProperties.Package_name
+	}
+
+	var loggingParent *string
+	if a.overridableProperties.Logging_parent != "" {
+		loggingParent = &a.overridableProperties.Logging_parent
+	}
+
 	attrs := bazelApexBundleAttributes{
 		Manifest:              manifestLabelAttribute,
 		Android_manifest:      androidManifestLabelAttribute,
@@ -3591,6 +3614,8 @@ func convertWithBp2build(a *apexBundle, ctx android.TopDownMutatorContext) (baze
 		Binaries:              binariesLabelListAttribute,
 		Prebuilts:             prebuiltsLabelListAttribute,
 		Compressible:          compressibleAttribute,
+		Package_name:          packageName,
+		Logging_parent:        loggingParent,
 	}
 
 	props := bazel.BazelTargetModuleProperties{

@@ -295,8 +295,12 @@ func addToModuleList(ctx ModuleContext, key android.OnceKey, module string) {
 	getNamedMapForConfig(ctx.Config(), key).Store(module, true)
 }
 
+func useGnuExtensions(gnuExtensions *bool) bool {
+	return proptools.BoolDefault(gnuExtensions, true)
+}
+
 func maybeReplaceGnuToC(gnuExtensions *bool, cStd string, cppStd string) (string, string) {
-	if gnuExtensions != nil && *gnuExtensions == false {
+	if !useGnuExtensions(gnuExtensions) {
 		cStd = gnuToCReplacer.Replace(cStd)
 		cppStd = gnuToCReplacer.Replace(cppStd)
 	}
@@ -491,6 +495,10 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 
 	flags.Global.AsFlags = append(flags.Global.AsFlags, "-D__ASSEMBLY__")
 
+	// TODO(b/235105792): override global -fdebug-default-version=5, it is causing $TMPDIR to
+	// end up in the dwarf data for crtend_so.S.
+	flags.Global.AsFlags = append(flags.Global.AsFlags, "-fdebug-default-version=4")
+
 	flags.Global.CppFlags = append(flags.Global.CppFlags, tc.Cppflags())
 
 	flags.Global.YasmFlags = append(flags.Global.YasmFlags, tc.YasmFlags())
@@ -589,10 +597,9 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 			addToModuleList(ctx, modulesUsingWnoErrorKey, module)
 		} else if !inList("-Werror", flags.Local.CFlags) && !inList("-Werror", flags.Local.CppFlags) {
 			if warningsAreAllowed(ctx.ModuleDir()) {
-				addToModuleList(ctx, modulesAddedWallKey, module)
-				flags.Local.CFlags = append([]string{"-Wall"}, flags.Local.CFlags...)
+				addToModuleList(ctx, modulesWarningsAllowedKey, module)
 			} else {
-				flags.Local.CFlags = append([]string{"-Wall", "-Werror"}, flags.Local.CFlags...)
+				flags.Local.CFlags = append([]string{"-Werror"}, flags.Local.CFlags...)
 			}
 		}
 	}
