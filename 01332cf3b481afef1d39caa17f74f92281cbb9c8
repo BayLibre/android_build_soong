@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a82d96_9ae254f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-07-04T20:40:54Z",
+      "side": 1,
+      "message": "I\u0027m definitely not sure about the implications of moving libFlags to the RSP file and I\u0027m sure I\u0027m overlooking certain things that will break because of this, but I wanted to send it for review and understand why this wouldn\u0027t work 😊 \n\nFrom my limited experimentation, it seems like this shouldn\u0027t make any functional difference to the library being produced.\n\n",
+      "revId": "01332cf3b481afef1d39caa17f74f92281cbb9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
