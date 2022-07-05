@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f82e257_48fd6839",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-05T06:23:05Z",
+      "side": 1,
+      "message": "Can you add a comment on why these actions don\u0027t have .Command, which is why they\u0027re special cased with Soong-side actions? (for example: they are not CommandActions, and therefore don\u0027t have args, but instead use Java APIs directly to write files)",
+      "range": {
+        "startLine": 897,
+        "startChar": 2,
+        "endLine": 910,
+        "endChar": 5
+      },
+      "revId": "0c1db8dca5c02d89fff8bb13ebbde4c3f685bfef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a758d6_4714dc24",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-05T06:23:05Z",
+      "side": 1,
+      "message": "nit: refactor into\n\n```\n    return isFileWriteMnemonic(a.Mnemonic)\n}\n\nfunc IsFileWriteMnemonic(m string) bool { ... }\n```\n\nand reuse `IsFileWriteMnemonic` with bazel_handler.go#897.",
+      "range": {
+        "startLine": 693,
+        "startChar": 1,
+        "endLine": 693,
+        "endChar": 74
+      },
+      "revId": "0c1db8dca5c02d89fff8bb13ebbde4c3f685bfef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
