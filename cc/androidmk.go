@@ -229,6 +229,7 @@ func (library *libraryDecorator) androidMkWriteExportedFlags(entries *android.An
 func (library *libraryDecorator) androidMkEntriesWriteAdditionalDependenciesForSourceAbiDiff(entries *android.AndroidMkEntries) {
 	if library.sAbiDiff.Valid() && !library.static() {
 		entries.AddStrings("LOCAL_ADDITIONAL_DEPENDENCIES", library.sAbiDiff.String())
+		entries.AddStrings("LOCAL_ADDITIONAL_DEPENDENCIES", library.prevSAbiDiff.String())
 	}
 }
 
@@ -236,6 +237,7 @@ func (library *libraryDecorator) androidMkEntriesWriteAdditionalDependenciesForS
 func (library *libraryDecorator) androidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Writer) {
 	if library.sAbiDiff.Valid() && !library.static() {
 		fmt.Fprintln(w, "LOCAL_ADDITIONAL_DEPENDENCIES +=", library.sAbiDiff.String())
+		fmt.Fprintln(w, "LOCAL_ADDITIONAL_DEPENDENCIES +=", library.prevSAbiDiff.String())
 	}
 }
 
