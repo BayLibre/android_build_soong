@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b81d06a4_d8507c36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-05T17:29:06Z",
+      "side": 1,
+      "message": "latest",
+      "range": {
+        "startLine": 9,
+        "startChar": 165,
+        "endLine": 9,
+        "endChar": 174
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3ff682_24d090dd",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-05T17:29:06Z",
+      "side": 1,
+      "message": "nit: Sdk not SDK",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84e5bea_c460fe95",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-05T17:29:06Z",
+      "side": 1,
+      "message": "nit: you only use this in the if scope below, move it there or even inline?",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 82
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806a7586_5b273242",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-05T17:29:06Z",
+      "side": 1,
+      "message": "Add bug nubmer here TODO(b/123), see go/todo-style",
+      "range": {
+        "startLine": 135,
+        "startChar": 6,
+        "endLine": 135,
+        "endChar": 10
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440d6240_e048083e",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-05T17:29:06Z",
+      "side": 1,
+      "message": "ctx.Config().DefaultAppTargetSdk(ctx) may give you a codename as a result. You still want to apply targetSdkVErsionForManifestFixer to it to maybe change it to 10000 instead.",
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1818c149_f1599d32",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-05T17:29:06Z",
+      "side": 1,
+      "message": "must be",
+      "range": {
+        "startLine": 105,
+        "startChar": 83,
+        "endLine": 105,
+        "endChar": 88
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7606fe87_523315a8",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-05T17:29:06Z",
+      "side": 1,
+      "message": "inline this into the EnforceDefaultTargetSdkVersion check below? proptools.Bool(a.appProperties.Enforce_default_target_sdk_version, false)",
+      "range": {
+        "startLine": 298,
+        "startChar": 4,
+        "endLine": 298,
+        "endChar": 62
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93bb0772_da5457e8",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-05T17:29:06Z",
+      "side": 1,
+      "message": "redundant? Error above would mean the build will break",
+      "range": {
+        "startLine": 301,
+        "startChar": 2,
+        "endLine": 301,
+        "endChar": 43
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9762138_87992ffb",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-05T17:29:06Z",
+      "side": 1,
+      "message": "redundant? if updatable the check above will guarantee that EnforceDefaultTargetSdkVersion would return true?",
+      "range": {
+        "startLine": 437,
+        "startChar": 43,
+        "endLine": 437,
+        "endChar": 59
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f0b73e_13f7b40d",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 3112,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-05T17:29:06Z",
+      "side": 1,
+      "message": "whitespace is wrong? Use tabs not spaces?",
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
