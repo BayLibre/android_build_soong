@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9177919b_e6457a9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-05T10:05:30Z",
+      "side": 1,
+      "message": "Not confident for the commit msg layout and test method.",
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
