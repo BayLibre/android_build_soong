@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "708438dc_0ce18139",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-07-06T13:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b81d06a4_d8507c36",
+      "range": {
+        "startLine": 9,
+        "startChar": 165,
+        "endLine": 9,
+        "endChar": 174
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd3ff682_24d090dd",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-05T17:29:06Z",
       "side": 1,
       "message": "nit: Sdk not SDK",
+      "range": {
+        "startLine": 57,
+        "startChar": 21,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32f9796_fe898647",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-07-06T13:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd3ff682_24d090dd",
       "range": {
         "startLine": 57,
         "startChar": 21,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cec26ac_cc95a3a2",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-07-06T13:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a84e5bea_c460fe95",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 82
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "806a7586_5b273242",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-05T17:29:06Z",
       "side": 1,
       "message": "Add bug nubmer here TODO(b/123), see go/todo-style",
+      "range": {
+        "startLine": 135,
+        "startChar": 6,
+        "endLine": 135,
+        "endChar": 10
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3744f658_d50c7737",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-07-06T13:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "806a7586_5b273242",
       "range": {
         "startLine": 135,
         "startChar": 6,
@@ -110,6 +206,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b140530_7a32013e",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-07-06T13:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "440d6240_e048083e",
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1818c149_f1599d32",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-07-05T17:29:06Z",
       "side": 1,
       "message": "must be",
+      "range": {
+        "startLine": 105,
+        "startChar": 83,
+        "endLine": 105,
+        "endChar": 88
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382f4408_d0868ff4",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-07-06T13:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1818c149_f1599d32",
       "range": {
         "startLine": 105,
         "startChar": 83,
@@ -156,6 +294,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6181451_c9c4f841",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-07-06T13:08:21Z",
+      "side": 1,
+      "message": "EnforceDefaultTargetSdkVersion should be by default true here.\nUpdated accordingly.",
+      "parentUuid": "7606fe87_523315a8",
+      "range": {
+        "startLine": 298,
+        "startChar": 4,
+        "endLine": 298,
+        "endChar": 62
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93bb0772_da5457e8",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-07-05T17:29:06Z",
       "side": 1,
       "message": "redundant? Error above would mean the build will break",
+      "range": {
+        "startLine": 301,
+        "startChar": 2,
+        "endLine": 301,
+        "endChar": 43
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbbfe8d_dba748f8",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-07-06T13:08:21Z",
+      "side": 1,
+      "message": "We want to set it true by default if the module is updatable, so keeping it as this flag is used later for checking.",
+      "parentUuid": "93bb0772_da5457e8",
       "range": {
         "startLine": 301,
         "startChar": 2,
@@ -202,6 +388,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe73f53_17f3f6fe",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-07-06T13:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9762138_87992ffb",
+      "range": {
+        "startLine": 437,
+        "startChar": 43,
+        "endLine": 437,
+        "endChar": 59
+      },
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04f0b73e_13f7b40d",
@@ -215,6 +425,24 @@
       "writtenOn": "2022-07-05T17:29:06Z",
       "side": 1,
       "message": "whitespace is wrong? Use tabs not spaces?",
+      "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06bcd47e_2c8021fe",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 3112,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-07-06T13:08:21Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "04f0b73e_13f7b40d",
       "revId": "93f4210c29ff09f570be07a758c7230825833dcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
