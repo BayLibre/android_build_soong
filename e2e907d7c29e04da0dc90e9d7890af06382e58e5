@@ -107,6 +107,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b166bf63_358f3ff4",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-06T16:49:18Z",
+      "side": 1,
+      "message": "these are repeating boiler plates. Could you define a helper method on libraryDecorator to get all abi diffs? \n\n```\nfunc (library *libraryDecorator) getAbiDiffsForAndroidMkDeps() []string {\n  if library.static() {\n    return nil\n  }\n  var abiDiffs []string\n  if library.sAbiDiff.Valid() {\n    abiDiff \u003d append(abiDiff, library.sAbiDiff.String())\n  }\n  if library.prevSAbiDiff.Valid() {\n    abiDiff \u003d append(abiDiff, library.prevSAbiDiff.String())\n  }\n  return abiDiffs\n}\n```",
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "282b73a5_d96efc66",
         "filename": "cc/builder.go",
         "patchSetId": 1
