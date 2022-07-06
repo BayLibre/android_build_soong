@@ -29,7 +29,8 @@ func RegisterRequiredBuildComponentsForTest(ctx android.RegistrationContext) {
 	RegisterBinaryBuildComponents(ctx)
 	RegisterLibraryBuildComponents(ctx)
 	RegisterLibraryHeadersBuildComponents(ctx)
-	RegisterLibraryStubBuildComponents(ctx)
+	RegisterStubLibraryBuildComponents(ctx)
+	android.RegisterApiSurfaceComponents(ctx)
 
 	ctx.RegisterModuleType("cc_benchmark", BenchmarkFactory)
 	ctx.RegisterModuleType("cc_object", ObjectFactory)

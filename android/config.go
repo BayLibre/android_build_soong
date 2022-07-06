@@ -597,6 +597,17 @@ func (c *config) SetAllowMissingDependencies() {
 	c.productVariables.Allow_missing_dependencies = proptools.BoolPtr(true)
 }
 
+func (c *config) MultiTree() bool {
+	return c.IsEnvTrue("MULTI_TREE")
+}
+
+// Flag that is used to determine if an error should be raised if
+// A Stub library is missing in the imported API surface files
+func (c *config) MultiTreeAllowMissingDependencies() bool {
+	// Return true for now
+	return true
+}
+
 // BlueprintToolLocation returns the directory containing build system tools
 // from Blueprint, like soong_zip and merge_zips.
 func (c *config) HostToolDir() string {
