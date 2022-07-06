@@ -9546,6 +9546,46 @@ func TestUpdatableApexEnforcesAppUpdatability(t *testing.T) {
 	}
 }
 
+func TestApexBuildsAgainstApiSurfaceStubLibraries(t *testing.T) {
+	bp := `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["libfoo"],
+			min_sdk_version: "29",
+		}
+		apex_key {
+			name: "myapex.key",
+		}
+		cc_library {
+			name: "libfoo",
+			shared_libs: ["libc"],
+			apex_available: ["myapex"],
+			min_sdk_version: "29",
+		}
+		cc_api_stub_library {
+			name: "libc",
+			symbol_file: "libc.map.txt",
+			api_surface: "system",
+			version: "current",
+		}
+		`
+	moduleIsSharedLibraryDep := func(parent android.TestingModule, childName string) bool {
+		argsToLinkRule := parent.Rule("ld").Args["libFlags"]
+		return strings.Contains(argsToLinkRule, "/"+childName+"/")
+	}
+	result := testApex(t, bp, android.FixtureModifyEnv(func(env map[string]string) {
+		env["MULTI_TREE"] = "true"
+	}))
+	libfooApexVariant := result.ModuleForTests("libfoo", "android_arm64_armv8-a_shared_apex29")
+	android.AssertBoolEquals(t, "apex variant should link against API surface stub libraries", true, moduleIsSharedLibraryDep(libfooApexVariant, "libc.system.current"))
+	// libfoo core variant should be buildable in the same inner tree since
+	// certain mcombo files might build system and apexes in the same inner tree
+	// libfoo core variant should link against source libc
+	libfooCoreVariant := result.ModuleForTests("libfoo", "android_arm64_armv8-a_shared")
+	android.AssertBoolEquals(t, "core variant should link against source libc", true, moduleIsSharedLibraryDep(libfooCoreVariant, "libc"))
+}
+
 func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
