@@ -107,6 +107,7 @@ var (
 			`--canned_fs_config ${canned_fs_config} ` +
 			`--include_build_info ` +
 			`--payload_type image ` +
+			`--apex_version ${apex_version} ` +
 			`--key ${key} ${opt_flags} ${image_dir} ${out} `,
 		CommandDeps: []string{"${apexer}", "${avbtool}", "${e2fsdroid}", "${merge_zips}",
 			"${mke2fs}", "${resize2fs}", "${sefcontext_compile}", "${make_f2fs}", "${sload_f2fs}", "${make_erofs}",
@@ -122,6 +123,7 @@ var (
 			`APEXER_TOOL_PATH=${tool_path} ` +
 			`${apexer} --force --manifest ${manifest} ` +
 			`--payload_type zip ` +
+			`--apex_version ${apex_version} ` +
 			`${image_dir} ${out} `,
 		CommandDeps:    []string{"${apexer}", "${merge_zips}", "${soong_zip}", "${zipalign}", "${aapt2}"},
 		Rspfile:        "${out}.copy_commands",
@@ -655,8 +657,6 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			optFlags = append(optFlags, "--manifest_json "+a.manifestJsonOut.String())
 		}
 
-		optFlags = append(optFlags, "--apex_version "+defaultManifestVersion)
-
 		optFlags = append(optFlags, "--payload_fs_type "+a.payloadFsType.string())
 
 		ctx.Build(pctx, android.BuildParams{
@@ -672,6 +672,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 				"file_contexts":    fileContexts.String(),
 				"canned_fs_config": cannedFsConfig.String(),
 				"key":              a.privateKeyFile.String(),
+				"apex_version":     defaultManifestVersion,
 				"opt_flags":        strings.Join(optFlags, " "),
 			},
 		})
@@ -768,6 +769,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 				"image_dir":     imageDir.String(),
 				"copy_commands": strings.Join(copyCommands, " && "),
 				"manifest":      a.manifestPbOut.String(),
+				"apex_version":  defaultManifestVersion,
 			},
 		})
 	}
