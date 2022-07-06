@@ -2233,7 +2233,6 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 		}
 
 	} else if library, ok := mctx.Module().(LinkableInterface); ok && library.CcLibraryInterface() {
-
 		// Non-cc.Modules may need an empty variant for their mutators.
 		variations := []string{}
 		if library.NonCcVariants() {

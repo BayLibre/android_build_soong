@@ -1200,6 +1200,29 @@ func (c *Module) Init() android.Module {
 	return c
 }
 
+var _ android.ApiSurfaceStubReplacable = (*Module)(nil)
+
+// TODO: VendorPublicLibrary?
+// Function that looks at the local properties of a CC module to determine if it should be replaced by an API surface stub
+// Returns the module name of the stub library that should replace this module variant
+func (c *Module) StubLibraryName() string {
+	// This is an NDK library
+	if c.AlwaysSdk() {
+		stem := strings.TrimSuffix(c.Name(), ndkLibrarySuffix)
+		return stubModuleName(stem, android.PublicApi.String(), c.StubsVersion())
+	}
+	if lib, ok := c.linker.(versionedInterface); ok {
+		// This is an LLNDK library
+		if c.InVendor() || c.InProduct() {
+			return stubModuleName(c.Name(), android.VendorApi.String(), c.VndkVersion())
+		} else { // This is the stub variant presented to APEX'es
+			return stubModuleName(c.Name(), android.SystemApi.String(), lib.stubsVersion())
+		}
+	}
+	// Default: This should not be replaced with a stub library
+	return ""
+}
+
 func (c *Module) UseVndk() bool {
 	return c.Properties.VndkVersion != ""
 }
@@ -1854,6 +1877,27 @@ func (c *Module) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	c.maybeInstall(mctx, apexInfo)
 }
 
+// Returns true if this CC module variant can be replaced with an imported API surface stub library
+// To determine this, this function checks if any of the immediate dependencies are tagged ApiSurfaceDepTag
+// This special tag is populated in a preceding PostDepsMutator
+func (c *Module) replacedWithApiSurfaceStubs(actx android.ModuleContext) bool {
+	if !actx.Config().MultiTree() {
+		// we don't want to break single-tree
+		return false
+	}
+	apiSurfaceStubs := actx.GetDirectDepsWithTag(android.ApiSurfaceDepTag)
+	if len(apiSurfaceStubs) == 0 {
+		// this library should not be replaced with an API surface stub
+		return false
+	}
+	if len(apiSurfaceStubs) > 1 {
+		actx.ModuleErrorf("Module variant has multiple API surface stubs: %v", apiSurfaceStubs)
+	}
+	sharedLibraryInfo := actx.OtherModuleProvider(apiSurfaceStubs[0], SharedLibraryInfoProvider).(SharedLibraryInfo)
+	actx.SetProvider(SharedLibraryInfoProvider, sharedLibraryInfo)
+	return true
+}
+
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	// Handle the case of a test module split by `test_per_src` mutator.
 	//
@@ -1862,6 +1906,12 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	// module and return early, as this module does not produce an output file per se.
 	if c.IsTestPerSrcAllTestsVariation() {
 		c.outputFile = android.OptionalPath{}
+		return
+	}
+
+	// This module variant has been replaced with an imported stub
+	// Do not generate any further build actions
+	if c.replacedWithApiSurfaceStubs(actx) {
 		return
 	}
 
@@ -2221,13 +2271,18 @@ func RewriteSnapshotLib(lib string, snapshotMap map[string]string) string {
 // of names:
 //
 // 1. Name of an NDK library that refers to a prebuilt module.
-//    For each of these, it adds the name of the prebuilt module (which will be in
-//    prebuilts/ndk) to the list of nonvariant libs.
+//
+//	For each of these, it adds the name of the prebuilt module (which will be in
+//	prebuilts/ndk) to the list of nonvariant libs.
+//
 // 2. Name of an NDK library that refers to an ndk_library module.
-//    For each of these, it adds the name of the ndk_library module to the list of
-//    variant libs.
+//
+//	For each of these, it adds the name of the ndk_library module to the list of
+//	variant libs.
+//
 // 3. Anything else (so anything that isn't an NDK library).
-//    It adds these to the nonvariantLibs list.
+//
+//	It adds these to the nonvariantLibs list.
 //
 // The caller can then know to add the variantLibs dependencies differently from the
 // nonvariantLibs
@@ -2702,7 +2757,6 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
-
 		if depTag == android.DarwinUniversalVariantTag {
 			depPaths.DarwinSecondArchOutput = dep.(*Module).OutputFile()
 			return
@@ -3638,9 +3692,7 @@ func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	}
 }
 
-//
 // Defaults
-//
 type Defaults struct {
 	android.ModuleBase
 	android.DefaultsModuleBase
