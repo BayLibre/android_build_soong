@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "612344c4_ac01f146",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-06T08:04:00Z",
+      "side": 1,
+      "message": "Does this commit include stage 2?",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6c6537_fdcd001f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-06T08:04:00Z",
+      "side": 1,
+      "message": "Please describe what this commit changes.\nFor example,\n\n- LLNDK ABI dumps are moved from vndk/ to platform/.\n- Non-VNDK dump directories before SDK finalization are renamed from the codename to \"current\".",
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d94dfe_c0d2dbc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-06T08:04:00Z",
+      "side": 1,
+      "message": "Please keep exactly one Change-Id.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9177919b_e6457a9c",
@@ -14,6 +77,98 @@
       "writtenOn": "2022-07-05T10:05:30Z",
       "side": 1,
       "message": "Not confident for the commit msg layout and test method.",
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "282b73a5_d96efc66",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-06T08:04:00Z",
+      "side": 1,
+      "message": "This can be removed.",
+      "range": {
+        "startLine": 924,
+        "startChar": 40,
+        "endLine": 924,
+        "endChar": 45
+      },
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de16aecd_55c16d0e",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-06T08:04:00Z",
+      "side": 1,
+      "message": "Source Abi Diff against previous SDK version.",
+      "range": {
+        "startLine": 616,
+        "startChar": 4,
+        "endLine": 616,
+        "endChar": 36
+      },
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16385ca9_535536c4",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-06T08:04:00Z",
+      "side": 1,
+      "message": "This variable is not for VNDK ABI diff. I suggest \"prevVersion\".",
+      "range": {
+        "startLine": 1613,
+        "startChar": 6,
+        "endLine": 1613,
+        "endChar": 21
+      },
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b35133_ad8f5f95",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1653,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-06T08:04:00Z",
+      "side": 1,
+      "message": "Please add \".\" here.",
+      "range": {
+        "startLine": 1653,
+        "startChar": 33,
+        "endLine": 1653,
+        "endChar": 34
+      },
       "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
