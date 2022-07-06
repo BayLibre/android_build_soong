@@ -597,6 +597,10 @@ func (c *config) SetAllowMissingDependencies() {
 	c.productVariables.Allow_missing_dependencies = proptools.BoolPtr(true)
 }
 
+func (c *config) MultiTree() bool {
+	return c.IsEnvTrue("MULTI_TREE")
+}
+
 // BlueprintToolLocation returns the directory containing build system tools
 // from Blueprint, like soong_zip and merge_zips.
 func (c *config) HostToolDir() string {

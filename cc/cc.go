@@ -1200,6 +1200,34 @@ func (c *Module) Init() android.Module {
 	return c
 }
 
+var _ android.ApiSurfaceStubReplacable = (*Module)(nil)
+
+// TODO: Add desc
+// TODO: VendorPublicLibrary
+// TODO: codename to int
+func (c *Module) ReplaceWith() string {
+	// ndk
+	// TODO: fix name
+	if c.AlwaysSdk() {
+		stem := strings.TrimSuffix(c.Name(), ndkLibrarySuffix)
+		return stubModuleName(stem, android.PublicApi.String(), c.StubsVersion())
+	}
+	// llndk
+	// TODO: desc
+	if c.InVendor() || c.InProduct() {
+		return stubModuleName(c.Name(), android.VendorApi.String(), c.VndkVersion())
+	}
+	if lib, ok := c.linker.(versionedInterface); ok {
+		// apex
+		// stubs for apex do not have image variation
+		if c.ImageVariation().Variation == android.CoreVariation {
+			return stubModuleName(c.Name(), android.SystemApi.String(), lib.stubsVersion())
+		}
+	}
+	// Default: This should not be replaced with a stub library
+	return ""
+}
+
 func (c *Module) UseVndk() bool {
 	return c.Properties.VndkVersion != ""
 }
@@ -1854,6 +1882,26 @@ func (c *Module) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	c.maybeInstall(mctx, apexInfo)
 }
 
+// TODO: cleanup and make more readable
+// TODO: Add desc
+func (c *Module) replacedWithApiSurfaceStubs(actx android.ModuleContext) bool {
+	if !actx.Config().MultiTree() {
+		// we dont want to break single-tree
+		return false
+	}
+	apiSurfaceStubs := actx.GetDirectDepsWithTag(android.ApiSurfaceDepTag)
+	if len(apiSurfaceStubs) == 0 {
+		// this library should not be replaced with an API surface stub
+		return false
+	}
+	if len(apiSurfaceStubs) > 1 {
+		actx.ModuleErrorf("Module variant has multiple API surface stubs: %v", apiSurfaceStubs)
+	}
+	sharedLibraryInfo := actx.OtherModuleProvider(apiSurfaceStubs[0], SharedLibraryInfoProvider).(SharedLibraryInfo)
+	actx.SetProvider(SharedLibraryInfoProvider, sharedLibraryInfo)
+	return true
+}
+
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	// Handle the case of a test module split by `test_per_src` mutator.
 	//
@@ -1862,6 +1910,10 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	// module and return early, as this module does not produce an output file per se.
 	if c.IsTestPerSrcAllTestsVariation() {
 		c.outputFile = android.OptionalPath{}
+		return
+	}
+
+	if c.replacedWithApiSurfaceStubs(actx) {
 		return
 	}
 
@@ -2221,13 +2273,18 @@ func RewriteSnapshotLib(lib string, snapshotMap map[string]string) string {
 // of names:
 //
 // 1. Name of an NDK library that refers to a prebuilt module.
-//    For each of these, it adds the name of the prebuilt module (which will be in
-//    prebuilts/ndk) to the list of nonvariant libs.
+//
+//	For each of these, it adds the name of the prebuilt module (which will be in
+//	prebuilts/ndk) to the list of nonvariant libs.
+//
 // 2. Name of an NDK library that refers to an ndk_library module.
-//    For each of these, it adds the name of the ndk_library module to the list of
-//    variant libs.
+//
+//	For each of these, it adds the name of the ndk_library module to the list of
+//	variant libs.
+//
 // 3. Anything else (so anything that isn't an NDK library).
-//    It adds these to the nonvariantLibs list.
+//
+//	It adds these to the nonvariantLibs list.
 //
 // The caller can then know to add the variantLibs dependencies differently from the
 // nonvariantLibs
@@ -2702,7 +2759,6 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
-
 		if depTag == android.DarwinUniversalVariantTag {
 			depPaths.DarwinSecondArchOutput = dep.(*Module).OutputFile()
 			return
@@ -3638,9 +3694,7 @@ func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	}
 }
 
-//
 // Defaults
-//
 type Defaults struct {
 	android.ModuleBase
 	android.DefaultsModuleBase

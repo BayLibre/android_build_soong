@@ -9546,6 +9546,41 @@ func TestUpdatableApexEnforcesAppUpdatability(t *testing.T) {
 	}
 }
 
+func TestApexBuildsAgainstApiSurfaceStubLibraries(t *testing.T) {
+	bp := `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["apexlib"],
+			min_sdk_version: "29",
+		}
+		apex_key {
+			name: "myapex.key",
+		}
+		cc_library {
+			name: "apexlib",
+			shared_libs: ["libc"],
+			apex_available: ["myapex"],
+			min_sdk_version: "29",
+		}
+		cc_api_stub_library {
+			name: "libc",
+			symbol_file: "libc.map.txt",
+			api_surface: "system",
+			version: "current",
+		}
+		`
+	moduleIsSharedLibraryDep := func(parent android.TestingModule, childName string) bool {
+		argsToLinkRule := parent.Rule("ld").Args["libFlags"]
+		return strings.Contains(argsToLinkRule, childName)
+	}
+	result := testApex(t, bp, android.FixtureModifyEnv(func(env map[string]string) {
+		env["MULTI_TREE"] = "true"
+	}))
+	apexlib := result.ModuleForTests("apexlib", "android_arm64_armv8-a_shared_apex29")
+	android.AssertBoolEquals(t, "apex libraries should link against API surface stub libraries", true, moduleIsSharedLibraryDep(apexlib, "libc.system.current"))
+}
+
 func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
