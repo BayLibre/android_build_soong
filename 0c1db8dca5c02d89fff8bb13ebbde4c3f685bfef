@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd7ec0a3_294b0cb5",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-06T17:59:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f82e257_48fd6839",
+      "range": {
+        "startLine": 897,
+        "startChar": 2,
+        "endLine": 910,
+        "endChar": 5
+      },
+      "revId": "0c1db8dca5c02d89fff8bb13ebbde4c3f685bfef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3a758d6_4714dc24",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-05T06:23:05Z",
       "side": 1,
       "message": "nit: refactor into\n\n```\n    return isFileWriteMnemonic(a.Mnemonic)\n}\n\nfunc IsFileWriteMnemonic(m string) bool { ... }\n```\n\nand reuse `IsFileWriteMnemonic` with bazel_handler.go#897.",
+      "range": {
+        "startLine": 693,
+        "startChar": 1,
+        "endLine": 693,
+        "endChar": 74
+      },
+      "revId": "0c1db8dca5c02d89fff8bb13ebbde4c3f685bfef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "884bb23f_966ddbf7",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-06T17:59:37Z",
+      "side": 1,
+      "message": "The type `action` is not exported (and rightfully so). This will go away once aquery processing is overhauled  as explained in bazel_handler.go:890.",
+      "parentUuid": "b3a758d6_4714dc24",
       "range": {
         "startLine": 693,
         "startChar": 1,
