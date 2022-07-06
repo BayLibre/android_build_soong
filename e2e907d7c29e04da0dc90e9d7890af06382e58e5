@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f595c8a_b81fe45e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-06T16:49:02Z",
+      "side": 1,
+      "message": "Yes, I think so. I think the diff dumps in stage 1 are same as in stage 2. Am i correct?",
+      "parentUuid": "612344c4_ac01f146",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e6c6537_fdcd001f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -140,6 +164,30 @@
       "writtenOn": "2022-07-06T08:04:00Z",
       "side": 1,
       "message": "This variable is not for VNDK ABI diff. I suggest \"prevVersion\".",
+      "range": {
+        "startLine": 1613,
+        "startChar": 6,
+        "endLine": 1613,
+        "endChar": 21
+      },
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cdcc7ad_f8425c9f",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-06T16:49:02Z",
+      "side": 1,
+      "message": "Should I change all other variable name that includes \"vndk\" but also used for ndk and llndk?",
+      "parentUuid": "16385ca9_535536c4",
       "range": {
         "startLine": 1613,
         "startChar": 6,
