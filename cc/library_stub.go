@@ -15,15 +15,18 @@
 package cc
 
 import (
+	"strings"
+
+	"github.com/google/blueprint/proptools"
+
 	"android/soong/android"
 )
 
 func init() {
-	RegisterLibraryStubBuildComponents(android.InitRegistrationContext)
+	RegisterStubLibraryBuildComponents(android.InitRegistrationContext)
 }
 
-func RegisterLibraryStubBuildComponents(ctx android.RegistrationContext) {
-	// cc_api_stub_library shares a lot of ndk_library, and this will be refactored later
+func RegisterStubLibraryBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_api_stub_library", CcApiStubLibraryFactory)
 }
 
@@ -32,49 +35,97 @@ func CcApiStubLibraryFactory() android.Module {
 	apiStubDecorator := &apiStubDecorator{
 		libraryDecorator: decorator,
 	}
-	apiStubDecorator.BuildOnlyShared()
-
 	module.compiler = apiStubDecorator
 	module.linker = apiStubDecorator
-	module.installer = nil
 	module.library = apiStubDecorator
-	module.Properties.HideFromMake = true // TODO: remove
+	module.installer = nil
+
+	apiStubDecorator.BuildOnlyShared()
 
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibBoth)
-	module.AddProperties(&module.Properties,
-		&apiStubDecorator.properties,
-		&apiStubDecorator.MutatedProperties,
-		&apiStubDecorator.apiStubLibraryProperties)
+	module.AddProperties(&apiStubDecorator.properties, &decorator.MutatedProperties)
 	return module
-}
-
-type apiStubLiraryProperties struct {
-	Imported_includes []string `android:"path"`
 }
 
 type apiStubDecorator struct {
 	*libraryDecorator
-	properties               libraryProperties
-	apiStubLibraryProperties apiStubLiraryProperties
+	properties apiStubProperties
 }
 
-func (compiler *apiStubDecorator) stubsVersions(ctx android.BaseMutatorContext) []string {
-	firstVersion := String(compiler.properties.First_version)
-	return ndkLibraryVersions(ctx, android.ApiLevelOrPanic(ctx, firstVersion))
+type apiStubProperties struct {
+	// Relative path to the symbol file
+	Symbol_file *string `android:"path"`
+
+	// Version of the stub library
+	// This will be used to restrict access to symbols introduced in versions >= N + 1
+	Version *string
+
+	// The API surface that this contribution belongs to
+	Api_surface *string
+
+	// The unique module name of this stub library
+	// Store this a propety so that it does not need to be computed in every function call
+	StubName *string `blueprint:"mutated"`
 }
+
+// Additional args passed to ndkstubgen depending on the API surface
+var (
+	ndkStubGenFlags = map[string]string{
+		android.PublicApi.String(): "",
+		android.VendorApi.String(): "--llndk",
+		android.SystemApi.String(): "--apex",
+	}
+)
 
 func (decorator *apiStubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
-	if decorator.stubsVersion() == "" {
-		decorator.setStubsVersion("current")
-	} // TODO: fix
+	if decorator.properties.Symbol_file == nil {
+		ctx.PropertyErrorf("symbol_file", "symbol_file is a required field")
+	}
+	if decorator.properties.Version == nil {
+		ctx.PropertyErrorf("version", "version is a required field")
+	}
+	if decorator.properties.Api_surface == nil {
+		ctx.PropertyErrorf("api_surface", "api_surface is a required field")
+	}
 	symbolFile := String(decorator.properties.Symbol_file)
-	nativeAbiResult := parseNativeAbiDefinition(ctx, symbolFile,
-		android.ApiLevelOrPanic(ctx, decorator.stubsVersion()),
-		"")
+	version := android.ApiLevelOrPanic(ctx, decorator.Version())
+	apiSurfaceName := decorator.ApiSurfaceName()
+	if _, ok := ndkStubGenFlags[apiSurfaceName]; !ok {
+		ctx.PropertyErrorf("api_surface", "%v is not a recognized API Surface for generating stubs. Add this API Surface to `cc.ndkStubgenFlags` map", apiSurfaceName)
+	}
+	stubGenFlags := ndkStubGenFlags[apiSurfaceName]
+	nativeAbiResult := parseNativeAbiDefinition(ctx, symbolFile, version, stubGenFlags)
 	return compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
 }
 
-func (decorator *apiStubDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps, objects Objects) android.Path {
-	decorator.reexportDirs(android.PathsForModuleSrc(ctx, decorator.apiStubLibraryProperties.Imported_includes)...)
-	return decorator.libraryDecorator.link(ctx, flags, deps, objects)
+// TODO: add desc
+func (decorator *apiStubDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
+	return deps
+}
+
+var _ android.ApiSurfaceStubLibrary = (*apiStubDecorator)(nil)
+
+func (stubLibrary *apiStubDecorator) Name(stem string) string {
+	if stubLibrary.properties.StubName != nil {
+		return *stubLibrary.properties.StubName
+	}
+	stubName := stubModuleName(stem, stubLibrary.ApiSurfaceName(), stubLibrary.Version())
+	stubLibrary.properties.StubName = &stubName
+	return stubName
+}
+
+// Helper function that generates a fully qualified name for an imported stub library
+// This is necessary since the same stem library can be present in many API surfaces
+// e.g. libc --> libc.vendor.33
+func stubModuleName(stem string, apiSurfaceName string, version string) string {
+	components := []string{stem, apiSurfaceName, version}
+	return strings.Join(components[:], ".")
+}
+
+func (stubLibrary *apiStubDecorator) Version() string {
+	return proptools.String(stubLibrary.properties.Version)
+}
+
+func (stubLibrary *apiStubDecorator) ApiSurfaceName() string {
+	return proptools.String(stubLibrary.properties.Api_surface)
 }
