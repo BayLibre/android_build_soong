@@ -200,6 +200,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b271d3f7_1101d61e",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-07-06T17:56:04Z",
+      "side": 1,
+      "message": "I talked to Lukács and this is not going to make it in for this check in.\n\nBut I am also going to be revisiting AFL++ after my next project (so say around Sept.) to support more features and add a lot more to these mutators, which would also be a good time to try to switch these to using TransitionMutators",
+      "parentUuid": "7ee6345d_219b5df1",
+      "revId": "8c853050bc8219e6b6cfce5c744af08d56f05b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9eed481f_5df19c92",
