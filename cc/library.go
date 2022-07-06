@@ -1396,7 +1396,7 @@ func (library *libraryDecorator) linkStatic(ctx ModuleContext,
 }
 
 func ndkSharedLibDeps(ctx ModuleContext) android.Paths {
-	if ctx.Module().(*Module).IsSdkVariant() {
+	if cc, ok := ctx.Module().(*Module); ok && cc.IsSdkVariant() {
 		// The NDK sysroot timestamp file depends on all the NDK
 		// sysroot header and shared library files.
 		return android.Paths{getNdkBaseTimestampFile(ctx)}
@@ -2223,7 +2223,6 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 		}
 
 	} else if library, ok := mctx.Module().(LinkableInterface); ok && library.CcLibraryInterface() {
-
 		// Non-cc.Modules may need an empty variant for their mutators.
 		variations := []string{}
 		if library.NonCcVariants() {

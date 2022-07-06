@@ -551,6 +551,9 @@ type Module interface {
 	// TransitivePackagingSpecs returns the PackagingSpecs for this module and any transitive
 	// dependencies with dependency tags for which IsInstallDepNeeded() returns true.
 	TransitivePackagingSpecs() []PackagingSpec
+
+	// The API domain that contains this module variant
+	ApiDomain() ApiDomain
 }
 
 // Qualified id for a module
@@ -1113,7 +1116,7 @@ func InitAndroidModule(m Module) {
 // property structs for architecture-specific versions of generic properties tagged with
 // `android:"arch_variant"`.
 //
-//  InitAndroidModule should not be called if InitAndroidArchModule was called.
+//	InitAndroidModule should not be called if InitAndroidArchModule was called.
 func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib Multilib) {
 	InitAndroidModule(m)
 
@@ -1361,30 +1364,30 @@ func productVariableConfigEnableLabels(ctx *topDownMutatorContext) []bazel.Label
 //
 // For example:
 //
-//     import (
-//         "android/soong/android"
-//     )
+//	import (
+//	    "android/soong/android"
+//	)
 //
-//     type myModule struct {
-//         android.ModuleBase
-//         properties struct {
-//             MyProperty string
-//         }
-//     }
+//	type myModule struct {
+//	    android.ModuleBase
+//	    properties struct {
+//	        MyProperty string
+//	    }
+//	}
 //
-//     func NewMyModule() android.Module {
-//         m := &myModule{}
-//         m.AddProperties(&m.properties)
-//         android.InitAndroidModule(m)
-//         return m
-//     }
+//	func NewMyModule() android.Module {
+//	    m := &myModule{}
+//	    m.AddProperties(&m.properties)
+//	    android.InitAndroidModule(m)
+//	    return m
+//	}
 //
-//     func (m *myModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-//         // Get the CPU architecture for the current build variant.
-//         variantArch := ctx.Arch()
+//	func (m *myModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+//	    // Get the CPU architecture for the current build variant.
+//	    variantArch := ctx.Arch()
 //
-//         // ...
-//     }
+//	    // ...
+//	}
 type ModuleBase struct {
 	// Putting the curiously recurring thing pointing to the thing that contains
 	// the thing pattern to good use.
@@ -2067,6 +2070,16 @@ func (m *ModuleBase) ImageVariation() blueprint.Variation {
 		Mutator:   "image",
 		Variation: m.base().commonProperties.ImageVariation,
 	}
+}
+
+// TODO: This should be set by the different mutators
+// TODO: Handle apexes (possibly by making apexMutator a preDeps mutator?)
+func (m *ModuleBase) ApiDomain() ApiDomain {
+	// TODO: Handle unversioned host tools (like ndkstubgen), technically they do not belong to system API domain
+	if m.ImageVariation().Variation == CoreVariation {
+		return SystemApiDomain
+	}
+	return VendorApiDomain
 }
 
 func (m *ModuleBase) getVariationByMutatorName(mutator string) string {

@@ -873,6 +873,16 @@ type Module struct {
 	apexSdkVersion android.ApiLevel
 
 	hideApexVariantFromMake bool
+
+	sourceApiDomain android.ApiDomain
+}
+
+func (c *Module) SourceApiDomain() android.ApiDomain {
+	return c.sourceApiDomain
+}
+
+func (c *Module) SetSourceApiDomain(apiDomain android.ApiDomain) {
+	c.sourceApiDomain = apiDomain
 }
 
 func (c *Module) AddJSONData(d *map[string]interface{}) {
@@ -2691,13 +2701,13 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
-
 		if depTag == android.DarwinUniversalVariantTag {
 			depPaths.DarwinSecondArchOutput = dep.(*Module).OutputFile()
 			return
 		}
 
 		ccDep, ok := dep.(LinkableInterface)
+
 		if !ok {
 
 			// handling for a few module types that aren't cc Module but that are also supported
@@ -2733,6 +2743,9 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				depPaths.CrtBegin = append(depPaths.CrtBegin, android.OutputFileForModule(ctx, dep, ""))
 			case CrtEndDepTag:
 				depPaths.CrtEnd = append(depPaths.CrtEnd, android.OutputFileForModule(ctx, dep, ""))
+			case SharedDepTag():
+				sharedLibraryInfo := ctx.OtherModuleProvider(dep, SharedLibraryInfoProvider).(SharedLibraryInfo)
+				depPaths.SharedLibs = append(depPaths.SharedLibs, sharedLibraryInfo.SharedLibrary)
 			}
 			return
 		}
