@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d688af5a_dec6e91c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-07T04:43:51Z",
+      "side": 1,
+      "message": "\u003e You don\u0027t have to implement the logic for all stages in one commit.\n\nI second this. you can read go/small-cls for why and how to create small CLs",
+      "parentUuid": "efe670ea_e5d4d6cb",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e6c6537_fdcd001f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
