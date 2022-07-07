@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27e80c4d_5e085757",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-07T03:36:54Z",
+      "side": 1,
+      "message": "In stage 2, PLATFORM_SDK_VERSION is upgraded but not finalized. There is no ABI dump for PLATFORM_SDK_VERSION. The ABI tools should compare the source dumps with PLATFORM_SDK_VERSION - 1.\nYou don\u0027t have to implement the logic for all stages in one commit.",
+      "parentUuid": "7f595c8a_b81fe45e",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e6c6537_fdcd001f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -228,6 +252,30 @@
       "side": 1,
       "message": "Should I change all other variable name that includes \"vndk\" but also used for ndk and llndk?",
       "parentUuid": "16385ca9_535536c4",
+      "range": {
+        "startLine": 1613,
+        "startChar": 6,
+        "endLine": 1613,
+        "endChar": 21
+      },
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "273befe2_0bf3fbbf",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-07T03:36:54Z",
+      "side": 1,
+      "message": "Yes. Please also rename vndkVersion.",
+      "parentUuid": "8cdcc7ad_f8425c9f",
       "range": {
         "startLine": 1613,
         "startChar": 6,
