@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a33f3eee_1b7b7c38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-07T05:14:00Z",
+      "side": 1,
+      "message": "Thanks, then I will use three separate Cls.",
+      "parentUuid": "d688af5a_dec6e91c",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "e2e907d7c29e04da0dc90e9d7890af06382e58e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e6c6537_fdcd001f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
