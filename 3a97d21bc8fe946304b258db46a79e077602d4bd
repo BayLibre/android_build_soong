@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "541962a5_8697bc55",
+        "filename": "android/genrule-out-collisions.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-07-07T20:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5537054e_53d22563",
+      "revId": "3a97d21bc8fe946304b258db46a79e077602d4bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "580e7e9f_37caa0d2",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-06T23:17:46Z",
       "side": 1,
       "message": "see https://pkg.go.dev/path/filepath#Dir",
+      "revId": "3a97d21bc8fe946304b258db46a79e077602d4bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9aafd3b_5f1f4d6e",
+        "filename": "android/neverallow.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-07-07T20:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "580e7e9f_37caa0d2",
       "revId": "3a97d21bc8fe946304b258db46a79e077602d4bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

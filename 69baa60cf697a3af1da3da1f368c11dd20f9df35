@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9c332fa_279db076",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-07-07T20:05:10Z",
+      "side": 1,
+      "message": "the missing file does, actually. I just can\u0027t upload it yet because of a leakr equivalent.",
+      "parentUuid": "6d13b279_1d83552c",
+      "revId": "69baa60cf697a3af1da3da1f368c11dd20f9df35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5468bd0_5587b982",
         "filename": "android/neverallow.go",
         "patchSetId": 2
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c7e1aca_5e90abf4",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-07-07T20:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ffe1c47_887b4b3a",
+      "revId": "69baa60cf697a3af1da3da1f368c11dd20f9df35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afb661eb_248b32eb",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-07-01T18:05:00Z",
       "side": 1,
       "message": "nit: .. in the given prefix ~map~ *set*",
+      "revId": "69baa60cf697a3af1da3da1f368c11dd20f9df35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed50b2d4_97c748a3",
+        "filename": "android/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-07-07T20:05:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "afb661eb_248b32eb",
       "revId": "69baa60cf697a3af1da3da1f368c11dd20f9df35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
