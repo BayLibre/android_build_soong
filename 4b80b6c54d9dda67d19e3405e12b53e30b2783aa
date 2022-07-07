@@ -159,6 +159,30 @@
       },
       "revId": "4b80b6c54d9dda67d19e3405e12b53e30b2783aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f3a93d_7b3d202a",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-07-07T13:11:53Z",
+      "side": 1,
+      "message": "I realized that your implementation is more correct than what I suggested. With your implementation:\n\n1. `PRODUCT_SYSTEM_SERVER_COMPILER_FILTER :\u003d speed-profile` means `speed-profile` for services.jar and `verify` for others.\n2. `PRODUCT_SYSTEM_SERVER_COMPILER_FILTER` being empty means `speed-profile` for services.jar and `speed` for others.\n\nI think that\u0027s the desired behavior because #1 is the current behavior on Go devices and we should keep it.\n\nI should change odrefresh to align with this. I\u0027ll create a CL on the same topic.",
+      "parentUuid": "6ec1ba24_b6decf65",
+      "range": {
+        "startLine": 398,
+        "startChar": 3,
+        "endLine": 407,
+        "endChar": 4
+      },
+      "revId": "4b80b6c54d9dda67d19e3405e12b53e30b2783aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
