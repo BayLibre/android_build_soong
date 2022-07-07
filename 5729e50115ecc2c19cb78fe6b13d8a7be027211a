@@ -110,6 +110,30 @@
       },
       "revId": "5729e50115ecc2c19cb78fe6b13d8a7be027211a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93a05d67_3e9db717",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-07T14:09:19Z",
+      "side": 1,
+      "message": "SO, does it make more sense just move it from vndk/upsideDownCake/ to platform/upsideDownCake/ in this CL and add this line to move it from platform/upsideDownCake/ to platform/32/ in next CL?",
+      "parentUuid": "ab020ba1_497da80f",
+      "range": {
+        "startLine": 1616,
+        "startChar": 30,
+        "endLine": 1616,
+        "endChar": 48
+      },
+      "revId": "5729e50115ecc2c19cb78fe6b13d8a7be027211a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
