@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5565b76f_3f43d544",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-07T10:23:36Z",
+      "side": 1,
+      "message": "I think following sequence of CL makes more sence:\n1. Moving LLNDK to platform \n2. Modification of create_reference_dumps.py to create LLNDK dumps to platform\n3. 3-stage\n4. Modification of create_reference_dumps.py to create dumps for non-VNDK in right folder corresponding to 3-stage mechanism.\n\nAnd this is the first one.",
+      "revId": "5729e50115ecc2c19cb78fe6b13d8a7be027211a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
