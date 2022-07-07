@@ -111,6 +111,30 @@
       },
       "revId": "4b80b6c54d9dda67d19e3405e12b53e30b2783aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ee35085_b80304ca",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-07-07T10:12:11Z",
+      "side": 1,
+      "message": "\u003e Do you know how to test if a module has a profile in Soong?\n\nI took a look at the code a few lines below, isn\u0027t the test as simple as `if profile !\u003d nil`?",
+      "parentUuid": "fc90c3d0_7a19685c",
+      "range": {
+        "startLine": 398,
+        "startChar": 3,
+        "endLine": 407,
+        "endChar": 4
+      },
+      "revId": "4b80b6c54d9dda67d19e3405e12b53e30b2783aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
