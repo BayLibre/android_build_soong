@@ -86,6 +86,30 @@
       },
       "revId": "5729e50115ecc2c19cb78fe6b13d8a7be027211a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab020ba1_497da80f",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-07T14:02:59Z",
+      "side": 1,
+      "message": "Since the LLNDK libraries were categorized to part of vndk, their dumps were put into vndk/upsideDownCake/. In the CL, I want to let the dumps of LLNDK library go to platform/32/.",
+      "parentUuid": "49fd5ead_175c7561",
+      "range": {
+        "startLine": 1616,
+        "startChar": 30,
+        "endLine": 1616,
+        "endChar": 48
+      },
+      "revId": "5729e50115ecc2c19cb78fe6b13d8a7be027211a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
