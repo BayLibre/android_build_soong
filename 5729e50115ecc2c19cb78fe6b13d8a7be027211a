@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "505b0a1f_c7bb65a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-07T10:59:52Z",
+      "side": 1,
+      "message": "The command is incomplete.",
+      "range": {
+        "startLine": 12,
+        "startChar": 55,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "5729e50115ecc2c19cb78fe6b13d8a7be027211a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5565b76f_3f43d544",
@@ -14,6 +37,29 @@
       "writtenOn": "2022-07-07T10:23:36Z",
       "side": 1,
       "message": "I think following sequence of CL makes more sence:\n1. Moving LLNDK to platform \n2. Modification of create_reference_dumps.py to create LLNDK dumps to platform\n3. 3-stage\n4. Modification of create_reference_dumps.py to create dumps for non-VNDK in right folder corresponding to 3-stage mechanism.\n\nAnd this is the first one.",
+      "revId": "5729e50115ecc2c19cb78fe6b13d8a7be027211a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac294ea_8a53f1f2",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-07T10:59:52Z",
+      "side": 1,
+      "message": "The SDK version in this branch is 32. Modifying this line enables the ABI check.",
+      "range": {
+        "startLine": 1616,
+        "startChar": 30,
+        "endLine": 1616,
+        "endChar": 48
+      },
       "revId": "5729e50115ecc2c19cb78fe6b13d8a7be027211a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
