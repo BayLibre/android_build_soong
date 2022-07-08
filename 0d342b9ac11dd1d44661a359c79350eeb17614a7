@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77aec177_990e3971",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-08T05:30:23Z",
+      "side": 1,
+      "message": "Please describe more about the background.\nCopying from aosp/2148793 is okay.",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "0d342b9ac11dd1d44661a359c79350eeb17614a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
