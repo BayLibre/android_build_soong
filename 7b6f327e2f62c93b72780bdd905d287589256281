@@ -34,6 +34,24 @@
       "parentUuid": "d85a7566_587c5f74",
       "revId": "7b6f327e2f62c93b72780bdd905d287589256281",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea1cc82e_22239199",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-08T20:19:01Z",
+      "side": 1,
+      "message": "Not sure exactly what I meant by the above message. Maybe that there are specifically no `android_*` modules that depend directly on a `java_import` with `.aar`s inside? Let me try to clarify.\n\nThere is that `java_library` that I linked above ([permalink here](http://cs/android/vendor/google_clockwork/libs/robolectric/Android.bp;l\u003d54;rcl\u003d758207de26fba16046c99fc6c10831e7a4d508bc)), and a separate [`android_robolectric_test` module](http://cs/android/vendor/unbundled_google/packages/WallpaperPickerGoogle/robolectric_tests/Android.bp;l\u003d17;rcl\u003da363df4b8b00a02b61db71459fb0067c9502c441) that use a `java_import` which contains a `.aar` file in the `jars` property.\n\nLike I said above, there are only two instances of this module, but they *are* still used in AOSP (at the above linked locations). Last time I looked, the name/version of the module had changed, so I didn\u0027t find any references to it.\n\nBut, both of the modules that depend on this have many other dependencies that we can\u0027t build with bp2build yet. So not sure how to proceed on testing.",
+      "parentUuid": "d9b04acd_57620c27",
+      "revId": "7b6f327e2f62c93b72780bdd905d287589256281",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
