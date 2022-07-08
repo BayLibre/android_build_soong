@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "737a142e_d33a4839",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1943701
+      },
+      "writtenOn": "2022-07-08T11:56:19Z",
+      "side": 1,
+      "message": "Hi Yu, I\u0027m adding you since you a code owner for the Android.bp file.",
+      "revId": "4e86b5e07acd44b04f47e2dcbf3918859d66ccb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
