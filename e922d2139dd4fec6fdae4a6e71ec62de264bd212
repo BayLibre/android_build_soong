@@ -22,6 +22,30 @@
       },
       "revId": "e922d2139dd4fec6fdae4a6e71ec62de264bd212",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94495169_1bb0f6ed",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-08T17:08:14Z",
+      "side": 1,
+      "message": "We do, it\u0027s captured in the ([^0-9]*) and later put back with \\1.\n\nI couldn\u0027t find any other way to match those: \n\"version\": 0\n\"version\": 0,\nbut not:\n\"version\": 01",
+      "parentUuid": "cf950d77_4c37e8e5",
+      "range": {
+        "startLine": 97,
+        "startChar": 50,
+        "endLine": 97,
+        "endChar": 52
+      },
+      "revId": "e922d2139dd4fec6fdae4a6e71ec62de264bd212",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
