@@ -16,6 +16,23 @@
       "message": "This CL is ready for the review.\nPTAL.",
       "revId": "c868da05032e50c2c2ec839da41a7f056c754dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e92749c_015d65d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-07-08T10:57:30Z",
+      "side": 1,
+      "message": "This is not a conflicting feature with go/soong-analyze-only, but extending the ALLOW_MISSING_DEPENDENCIES feature for the safer use of the flag.",
+      "revId": "c868da05032e50c2c2ec839da41a7f056c754dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
