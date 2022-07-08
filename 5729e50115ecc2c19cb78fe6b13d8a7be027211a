@@ -134,6 +134,30 @@
       },
       "revId": "5729e50115ecc2c19cb78fe6b13d8a7be027211a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4f184f_ff896660",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-08T02:23:07Z",
+      "side": 1,
+      "message": "\u003e does it make more sense just move it from vndk/upsideDownCake/ to platform/upsideDownCake/ in this CL\n\nYes. This line enables ABI check between the source dumps and API 32. It will not pass without -allow-extensions.",
+      "parentUuid": "93a05d67_3e9db717",
+      "range": {
+        "startLine": 1616,
+        "startChar": 30,
+        "endLine": 1616,
+        "endChar": 48
+      },
+      "revId": "5729e50115ecc2c19cb78fe6b13d8a7be027211a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
