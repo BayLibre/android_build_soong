@@ -16,6 +16,23 @@
       "message": "addressed comments",
       "revId": "1d91240e0f0323dbc405e3d1e1d0a6c1532e8260",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abd13010_6679e269",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-07-11T20:24:21Z",
+      "side": 1,
+      "message": "Ping here. I have addressed the comments that were left previously",
+      "revId": "1d91240e0f0323dbc405e3d1e1d0a6c1532e8260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
