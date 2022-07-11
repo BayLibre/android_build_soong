@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f3243ee_496bd085",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-07-11T16:38:20Z",
+      "side": 1,
+      "message": "Lists in Go are a bit complex. See https://go.dev/play/p/sGGo8gyJWPf\n\nI don\u0027t think your code would modify the global list in line 804, unless someone at some point patches the code and adds an assignment to `profiles`. But I\u0027d do `profiles \u003d append(profiles, global.BootImageProfiles...)`.\n\nNote that even assignment doesn\u0027t necessarily modify the global list, only if the underlying slice contains enough space for `append` to work in-place. Otherwise `append` would create a new underlying slice and copy the global list.",
+      "range": {
+        "startLine": 794,
+        "startChar": 2,
+        "endLine": 794,
+        "endChar": 37
+      },
+      "revId": "5be0be2b31e4a38617ab145e87ff581b1e751898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
