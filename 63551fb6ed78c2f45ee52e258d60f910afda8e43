@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea138311_d24d830b",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-11T13:28:53Z",
+      "side": 0,
+      "message": "are we missing --replace-if-equal with default_version and 0 somewhere here?",
+      "range": {
+        "startLine": 97,
+        "startChar": 67,
+        "endLine": 97,
+        "endChar": 85
+      },
+      "revId": "63551fb6ed78c2f45ee52e258d60f910afda8e43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
