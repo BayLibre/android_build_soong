@@ -257,6 +257,30 @@
       },
       "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd9ea287_0e403a07",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-11T08:52:15Z",
+      "side": 1,
+      "message": "The preupload go fmt removed the spaces.",
+      "parentUuid": "90e67a1a_22b7104a",
+      "range": {
+        "startLine": 1674,
+        "startChar": 33,
+        "endLine": 1674,
+        "endChar": 38
+      },
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
