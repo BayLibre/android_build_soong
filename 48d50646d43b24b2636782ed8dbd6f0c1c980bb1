@@ -51,6 +51,116 @@
       "message": "The link above is borken, new one:[abidiff](https://android-build.googleplex.com/builds/pending/P37245323/aosp_x86_64-userdebug/latest/abidiffs/libz.so.33.abidiff)",
       "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feca7af7_54bc7b97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-11T07:08:29Z",
+      "side": 1,
+      "message": "You can add \"-advice-only\" to the cross-version diff command for now.",
+      "parentUuid": "deaf58a9_4cc1ed00",
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e51b4a_01fcbbb3",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-11T07:08:29Z",
+      "side": 1,
+      "message": "Most Android developers do not know what the stages are.\nPlease define a function that returns version and prevVersion.",
+      "range": {
+        "startLine": 1610,
+        "startChar": 33,
+        "endLine": 1610,
+        "endChar": 50
+      },
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1567cfa_e4338f76",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1647,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-11T07:08:29Z",
+      "side": 1,
+      "message": "PlatformSdkVersion().FinalInt()\n\nand add a comment about that platform SDK version can be upgraded before finalization.",
+      "range": {
+        "startLine": 1647,
+        "startChar": 44,
+        "endLine": 1647,
+        "endChar": 67
+      },
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702c3f8b_a8d1112a",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-11T07:08:29Z",
+      "side": 1,
+      "message": "PlatformSdkVersion().FinalInt()",
+      "range": {
+        "startLine": 1650,
+        "startChar": 44,
+        "endLine": 1650,
+        "endChar": 71
+      },
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38fd4f20_4ac57819",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-11T07:08:29Z",
+      "side": 1,
+      "message": "Add spaces before and after the plus signs.",
+      "range": {
+        "startLine": 1674,
+        "startChar": 33,
+        "endLine": 1674,
+        "endChar": 38
+      },
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
