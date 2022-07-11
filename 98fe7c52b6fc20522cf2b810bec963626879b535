@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26768039_cbcf7041",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-11T21:07:38Z",
+      "side": 1,
+      "message": "Not really sure how to add automated testing for this because the output depends so heavily on the contents of an actual ZIP.\n\nI\u0027ll look into testing the output of the provider and mocking some files.",
+      "revId": "98fe7c52b6fc20522cf2b810bec963626879b535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
