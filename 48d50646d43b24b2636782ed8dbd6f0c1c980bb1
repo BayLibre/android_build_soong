@@ -16,6 +16,41 @@
       "message": "The prebuilt error seems to be the imperceptible due to the zlib update: [abidiff](https://storage.googleapis.com/android-build/builds/git_master-linux-oriole-userdebug/P37245305/d1d8b7a35cb015c17ef4f805be06fb01a37cafc0b8d5cb00990bdae5309a2e04/0/abidiffs/libz.so.33.abidiff?GoogleAccessId\u003dgcs-sign@android-builds-project.google.com.iam.gserviceaccount.com\u0026Expires\u003d1657517472\u0026Signature\u003daUYIVu3kqIG%2BtDeI5ad0ahosllwNzfiKvywk9qg%2BmMX0ONhzFuVHyRE0QgfNWwYQ9RSthUyF48LyWCA5ropnLVViEgP5sOoaFUhlXi7KBWhG4oIcIx8YrHWNwjMmOdjRyPI/qhJAkSNfGHdddDHkK%2B9dvnZsIvLZyb4OqcXsuFU8z1enkMO/BXLzkPRDv3lrv/IHJibHn19LU2131nJNnVhEeZFHn9vl7NJsIc4L9FwJMWuBGz08bs7pOywzwJ3YlaWZOjHV0Euqkva8DE8RULHZm6GpJ6imPFW/8i8xMlRlXycx9Qbmn%2BV/St89Zjg6GH56nMBZ0JlnLIjnye6bSQ%3D%3D)",
       "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c04d10_9673164f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-11T06:00:19Z",
+      "side": 1,
+      "message": "[abidiff](https://android-build.googleplex.com/builds/pending/P37245323/aosp_x86_64-userdebug/latest/abidiffs/libz.so.33.abidiff)",
+      "parentUuid": "fff895e1_8e55cc3a",
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deaf58a9_4cc1ed00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-11T06:00:19Z",
+      "side": 1,
+      "message": "The link above is borken, new one:[abidiff](https://android-build.googleplex.com/builds/pending/P37245323/aosp_x86_64-userdebug/latest/abidiffs/libz.so.33.abidiff)",
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
