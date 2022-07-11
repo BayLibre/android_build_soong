@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7646f2d5_738a2d89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-07-11T06:42:19Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "e2a96cc9_1f186ee1",
+      "revId": "c868da05032e50c2c2ec839da41a7f056c754dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81f1f79b_d7dd7f1c",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-07-08T13:27:53Z",
       "side": 1,
       "message": "don\u0027t we need to check it as well as the code above?",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 162,
+        "endChar": 37
+      },
+      "revId": "c868da05032e50c2c2ec839da41a7f056c754dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c457cd69_64142a7f",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-07-11T06:42:19Z",
+      "side": 1,
+      "message": "They are already checked in the DepsMutator (the code above).\nIf \u0027GenerateAndroidBuildActions\u0027 is called, all missing deps are known. We don\u0027t need to check the known deps again.",
+      "parentUuid": "81f1f79b_d7dd7f1c",
       "range": {
         "startLine": 162,
         "startChar": 29,
