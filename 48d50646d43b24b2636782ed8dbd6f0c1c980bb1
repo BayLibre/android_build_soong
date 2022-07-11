@@ -94,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e32eea_18eaef55",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-11T08:32:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78e51b4a_01fcbbb3",
+      "range": {
+        "startLine": 1610,
+        "startChar": 33,
+        "endLine": 1610,
+        "endChar": 50
+      },
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1567cfa_e4338f76",
@@ -107,6 +131,30 @@
       "writtenOn": "2022-07-11T07:08:29Z",
       "side": 1,
       "message": "PlatformSdkVersion().FinalInt()\n\nand add a comment about that platform SDK version can be upgraded before finalization.",
+      "range": {
+        "startLine": 1647,
+        "startChar": 44,
+        "endLine": 1647,
+        "endChar": 67
+      },
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "585a7aef_c998f7e8",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1647,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-11T08:32:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1567cfa_e4338f76",
       "range": {
         "startLine": 1647,
         "startChar": 44,
@@ -140,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28bb083_cd7355c3",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-11T08:32:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "702c3f8b_a8d1112a",
+      "range": {
+        "startLine": 1650,
+        "startChar": 44,
+        "endLine": 1650,
+        "endChar": 71
+      },
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38fd4f20_4ac57819",
@@ -153,6 +225,30 @@
       "writtenOn": "2022-07-11T07:08:29Z",
       "side": 1,
       "message": "Add spaces before and after the plus signs.",
+      "range": {
+        "startLine": 1674,
+        "startChar": 33,
+        "endLine": 1674,
+        "endChar": 38
+      },
+      "revId": "48d50646d43b24b2636782ed8dbd6f0c1c980bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e67a1a_22b7104a",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-11T08:32:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38fd4f20_4ac57819",
       "range": {
         "startLine": 1674,
         "startChar": 33,
