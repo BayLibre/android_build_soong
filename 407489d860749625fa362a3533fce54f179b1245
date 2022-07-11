@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "133af55b_60928263",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-11T13:42:46Z",
+      "side": 1,
+      "message": "nit: maybe swap the order of these two? replace-if-equal version oldValue newValue?",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 36
+      },
+      "revId": "407489d860749625fa362a3533fce54f179b1245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
