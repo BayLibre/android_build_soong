@@ -69,6 +69,7 @@ javax\.xml\.transform\.sax
 javax\.xml\.transform\.stream
 javax\.xml\.validation
 javax\.xml\.xpath
+<<<<<<< HEAD   (b45fbf Create a new product variable to gate blueprint files)
 jdk\.internal
 jdk\.internal\.math
 jdk\.internal\.misc
@@ -76,6 +77,9 @@ jdk\.internal\.ref
 jdk\.internal\.reflect
 jdk\.internal\.util
 jdk\.internal\.vm\.annotation
+=======
+jdk\.internal(\..*)?
+>>>>>>> CHANGE (67804c Patch package_allowed_list.txt.)
 jdk\.net
 org\.w3c\.dom
 org\.w3c\.dom\.ls
