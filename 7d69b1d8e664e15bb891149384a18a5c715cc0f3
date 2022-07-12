@@ -34,6 +34,24 @@
       "parentUuid": "2b720d7e_90fb2dca",
       "revId": "7d69b1d8e664e15bb891149384a18a5c715cc0f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8856cc4b_f75e7977",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-12T14:09:10Z",
+      "side": 1,
+      "message": "Paul may know if there is any magic for soong tests, but in general you need to tell the system to run your tests.",
+      "parentUuid": "754b52bd_0e03b48c",
+      "revId": "7d69b1d8e664e15bb891149384a18a5c715cc0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
