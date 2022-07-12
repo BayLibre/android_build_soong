@@ -69,6 +69,24 @@
       "message": "You need to add \"soong-remoteexec\" to this list",
       "revId": "2176561a4f28b22701cc71681245953c4f72f229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b4ee7c_3cafe08e",
+        "filename": "ui/build/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-07-12T22:00:12Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "6588bcfe_081388b6",
+      "revId": "2176561a4f28b22701cc71681245953c4f72f229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
