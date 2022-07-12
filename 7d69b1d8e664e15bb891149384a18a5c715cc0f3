@@ -16,6 +16,24 @@
       "message": "Should we add this to TEST_MAPPING on presubmit whenever jsonmodify is touched?",
       "revId": "7d69b1d8e664e15bb891149384a18a5c715cc0f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "754b52bd_0e03b48c",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-12T14:05:17Z",
+      "side": 1,
+      "message": "Not sure how it works, since it depends on jsonmodify and they are in the same repo, doesn\u0027t it run during build each time jsonmodify is changed?\n\nThere doesn\u0027t seem to be much in TEST_MAPPING of build/soong now",
+      "parentUuid": "2b720d7e_90fb2dca",
+      "revId": "7d69b1d8e664e15bb891149384a18a5c715cc0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
