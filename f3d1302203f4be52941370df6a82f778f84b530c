@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "664afefe_3b87f1d2",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-12T01:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92ee94e0_789b1281",
+      "range": {
+        "startLine": 293,
+        "startChar": 8,
+        "endLine": 293,
+        "endChar": 20
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60209eb9_8a603ba1",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-30T10:29:56Z",
       "side": 1,
       "message": "Remove since it\u0027s unused/stale?",
+      "range": {
+        "startLine": 433,
+        "startChar": 2,
+        "endLine": 434,
+        "endChar": 62
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "071847d9_7af6202c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-12T01:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60209eb9_8a603ba1",
       "range": {
         "startLine": 433,
         "startChar": 2,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e35d3bfa_5d523d82",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-12T01:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7733f502_06f24f06",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 22
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22d39615_a704ddf5",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-06-30T10:29:56Z",
       "side": 1,
       "message": "These large diff formatting changes to all of the test files should be done in another CL, let\u0027s not piggyback on this one.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6545d2b8_fb974d57",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-12T01:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22d39615_a704ddf5",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -150,6 +246,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb321876_d6c3c473",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1808,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-12T01:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6409e7e6_f6fc6b6f",
+      "range": {
+        "startLine": 1806,
+        "startChar": 1,
+        "endLine": 1808,
+        "endChar": 2
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52d4b3a3_a3909bb4",
@@ -173,6 +293,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b8c7148_74f48938",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-12T01:03:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "52d4b3a3_a3909bb4",
+      "range": {
+        "startLine": 1810,
+        "startChar": 1,
+        "endLine": 1812,
+        "endChar": 25
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80c433d3_2884b474",
@@ -186,6 +330,30 @@
       "writtenOn": "2022-06-30T10:29:56Z",
       "side": 1,
       "message": "filesInfo should be populated from query responses on the apex target, otherwise it\u0027s inaccurate to use filesInfo from Soong analysis with a Bazel-built APEX. If the information doesn\u0027t exist, then we\u0027ll need to add it in a Starlark provider.",
+      "range": {
+        "startLine": 1814,
+        "startChar": 15,
+        "endLine": 1814,
+        "endChar": 29
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecbaaf57_66d6e80a",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-12T01:03:02Z",
+      "side": 1,
+      "message": "I am not sure what filesinfo affects.",
+      "parentUuid": "80c433d3_2884b474",
       "range": {
         "startLine": 1814,
         "startChar": 15,
@@ -242,6 +410,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf51f25_78619610",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-12T01:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c1180e_dbb4932b",
+      "range": {
+        "startLine": 237,
+        "startChar": 43,
+        "endLine": 237,
+        "endChar": 65
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1852fbbc_1c37f376",
@@ -267,6 +459,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7e6ab06_6e4a0d0a",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-12T01:03:02Z",
+      "side": 1,
+      "message": "This name has been already used in android/apex.go",
+      "parentUuid": "1852fbbc_1c37f376",
+      "range": {
+        "startLine": 240,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 19
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cc5363d_39cb3cd1",
         "filename": "bazel/cquery/request_type.go",
         "patchSetId": 18
@@ -278,6 +494,30 @@
       "writtenOn": "2022-06-30T10:29:56Z",
       "side": 1,
       "message": "The fields of this struct should match the Starlark ApexInfo provider: https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl;l\u003d27-35;drc\u003d4f6351d8ab47b98faa4af20d0bb0985274cfd55a",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 0
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ad7eff_0af8f6eb",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-12T01:03:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cc5363d_39cb3cd1",
       "range": {
         "startLine": 240,
         "startChar": 0,
