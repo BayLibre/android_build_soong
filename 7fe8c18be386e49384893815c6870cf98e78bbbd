@@ -33,6 +33,24 @@
       "message": "From http://go/a-unit-tests\n\nImportant: Unit tests are directly onboarded in your presubmit; no additional configuration is needed.\n\npython_test_host: (if they don\u0027t interact with device)\n\nDoes not require any TEST_MAPPING file.\nDoes not require any test_suites entry.\n\nThe best way to check is to break a test, upload it and then run presubmit.",
       "revId": "7fe8c18be386e49384893815c6870cf98e78bbbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e5a79b1_c20aa478",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-12T15:39:39Z",
+      "side": 1,
+      "message": "Sounds good, thanks!",
+      "parentUuid": "5b8a0460_7806043a",
+      "revId": "7fe8c18be386e49384893815c6870cf98e78bbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
