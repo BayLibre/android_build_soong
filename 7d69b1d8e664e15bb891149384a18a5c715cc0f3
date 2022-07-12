@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b720d7e_90fb2dca",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-12T13:16:07Z",
+      "side": 1,
+      "message": "Should we add this to TEST_MAPPING on presubmit whenever jsonmodify is touched?",
+      "revId": "7d69b1d8e664e15bb891149384a18a5c715cc0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
