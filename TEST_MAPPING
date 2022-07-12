@@ -3,5 +3,12 @@
     {
       "path": "packages/modules/SdkExtensions"
     }
-  ]
+  ],
+  "presubmit": [
+    {
+      "name": "jsonmodify_test",
+      "file_patterns": ["scripts/jsonmodify.py"],
+      "host": true
+    }
+   ]
 }
