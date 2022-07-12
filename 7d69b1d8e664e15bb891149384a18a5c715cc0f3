@@ -52,6 +52,24 @@
       "parentUuid": "754b52bd_0e03b48c",
       "revId": "7d69b1d8e664e15bb891149384a18a5c715cc0f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23d827a6_e5949214",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-12T14:49:32Z",
+      "side": 1,
+      "message": "Added in aosp/2151257",
+      "parentUuid": "8856cc4b_f75e7977",
+      "revId": "7d69b1d8e664e15bb891149384a18a5c715cc0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
