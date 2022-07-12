@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "faeb0773_fdb5a05d",
+        "filename": "android/name-file-collisions.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-07-12T22:09:13Z",
+      "side": 1,
+      "message": "Yes and yes. Will report more tomorrow.",
+      "parentUuid": "e9cd67fa_07562882",
+      "revId": "b0553ce91123836b935139de1eadf86ba61e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c689e4d2_b08af7a7",
         "filename": "android/neverallow.go",
         "patchSetId": 10
