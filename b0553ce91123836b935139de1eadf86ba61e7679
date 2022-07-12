@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4639826e_43115570",
+        "filename": "android/neverallow.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-07-12T19:18:04Z",
+      "side": 1,
+      "message": "moduleName can be the same for multiple modules; so maybe use `map[string][]string`",
+      "revId": "b0553ce91123836b935139de1eadf86ba61e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
