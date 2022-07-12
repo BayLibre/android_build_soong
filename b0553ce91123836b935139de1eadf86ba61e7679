@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e38c295a_8e7500f9",
+        "filename": "android/name-file-collisions.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-07-12T21:44:24Z",
+      "side": 1,
+      "message": "This (hopefully) contains all instances of name-source and then other instances of modules where an identically-named file exists.\n\nImportant facet: it contains the directory structure\n\nSome leakr equivalent prevents me from uploading this, alas. I might be able to do a diet version with some offending entries removed to demonstrate.",
+      "parentUuid": "ae1dbd53_c2b462a8",
+      "revId": "b0553ce91123836b935139de1eadf86ba61e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c689e4d2_b08af7a7",
         "filename": "android/neverallow.go",
         "patchSetId": 10
