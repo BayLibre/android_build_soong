@@ -22,6 +22,30 @@
       },
       "revId": "d887e242604d99cc87047ca524a3dc73d7f439a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c67764_eb7586e8",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-12T13:13:47Z",
+      "side": 1,
+      "message": "Great!\nI\u0027ll create a cl to remove it",
+      "parentUuid": "c0baa2a0_1d856f5e",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 0
+      },
+      "revId": "d887e242604d99cc87047ca524a3dc73d7f439a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
