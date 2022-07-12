@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5403a807_fdf04437",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-07-12T15:45:59Z",
+      "side": 1,
+      "message": "Hmmm... why does this build for me locally but not in presubmit?",
+      "revId": "2176561a4f28b22701cc71681245953c4f72f229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
