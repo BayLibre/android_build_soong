@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae1dbd53_c2b462a8",
+        "filename": "android/name-file-collisions.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-07-12T19:48:09Z",
+      "side": 1,
+      "message": "what is the purpose of this file? (what\u0027s the semantic difference between this and name-source-collision ? )",
+      "revId": "b0553ce91123836b935139de1eadf86ba61e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c689e4d2_b08af7a7",
+        "filename": "android/neverallow.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-07-12T19:48:09Z",
+      "side": 1,
+      "message": "Offline you mentioned that you didn\u0027t see these print statements anywhere in your attempts to debug?\n\nTry attaching a debugger (using Delve ? )",
+      "revId": "b0553ce91123836b935139de1eadf86ba61e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4639826e_43115570",
         "filename": "android/neverallow.go",
         "patchSetId": 10
