@@ -34,6 +34,24 @@
       "parentUuid": "5403a807_fdf04437",
       "revId": "2176561a4f28b22701cc71681245953c4f72f229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "022b3952_8cf20364",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-07-12T17:41:14Z",
+      "side": 1,
+      "message": "`m blueprint_tools` fails for me locally, but I don\u0027t follow the rest... what do I need to do?",
+      "parentUuid": "ceec2877_8e4b5a76",
+      "revId": "2176561a4f28b22701cc71681245953c4f72f229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
