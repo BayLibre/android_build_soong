@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0baa2a0_1d856f5e",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-12T13:12:08Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be necessary now with https://android-review.googlesource.com/c/platform/build/soong/+/2147610",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 0
+      },
+      "revId": "d887e242604d99cc87047ca524a3dc73d7f439a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
