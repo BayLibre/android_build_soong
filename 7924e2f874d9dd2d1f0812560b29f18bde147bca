@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6490dec9_0c6ae805",
+        "filename": "java/gen.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-12T21:07:56Z",
+      "side": 1,
+      "message": "is this we\u0027ve already included from Soong or already included from Bazel?",
+      "range": {
+        "startLine": 130,
+        "startChar": 9,
+        "endLine": 130,
+        "endChar": 20
+      },
+      "revId": "7924e2f874d9dd2d1f0812560b29f18bde147bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce43c0e_c031d45f",
+        "filename": "java/base.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-12T21:07:56Z",
+      "side": 1,
+      "message": "\u003e I found it confusing that we added flags for AIDL in the [`collectBuilderFlags`](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;l\u003d913;drc\u003de7b1f5b0a55bba8e6f0e959464300d873da51eb9) function and then also added additional flags in the [`genSources`](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/gen.go;l\u003d139;drc\u003dde8417c7076949606bd3767e6112d1e2390d9678) function, so I wanted to combine these functions into one.\n\u003e \n\u003e Combining them required that I pass `aidlSrcs` which was easiest to get by moving this here. I figured that since we do the same things with `protoFlags` a few lines above, that it would fit in well.\n\u003e \n\nack\n\n\u003e WDYM by don\u0027t do _this_ in aidlflags?\n\ngreat question, lol.",
+      "parentUuid": "975792eb_5a5c7777",
+      "range": {
+        "startLine": 1024,
+        "startChar": 1,
+        "endLine": 1025,
+        "endChar": 104
+      },
+      "revId": "3502b80ce63c10f47db0a5006e78f8cb24670aae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4393096_85646c6d",
