@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a57abfee_a287a6c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-12T05:08:17Z",
+      "side": 1,
+      "message": "Some of the presubmit failures are caused by a RBE issue. We need\nhttps://android-review.googlesource.com/c/platform/build/soong/+/2150953\n",
+      "revId": "96b8729d00f77954bee22d8172cf85ef86a87beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
