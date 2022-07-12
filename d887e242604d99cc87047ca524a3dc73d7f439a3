@@ -46,6 +46,30 @@
       },
       "revId": "d887e242604d99cc87047ca524a3dc73d7f439a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94cda6a3_e046bf99",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-12T14:09:35Z",
+      "side": 1,
+      "message": "Removed in aosp/2151256",
+      "parentUuid": "36c67764_eb7586e8",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 0
+      },
+      "revId": "d887e242604d99cc87047ca524a3dc73d7f439a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
