@@ -20,6 +20,7 @@ import (
 	"path/filepath"
 	"runtime"
 
+	"android/soong/remoteexec"
 	"android/soong/ui/metrics"
 )
 
@@ -53,11 +54,12 @@ func rbeCommand(ctx Context, config Config, rbeCmd string) string {
 
 func getRBEVars(ctx Context, config Config) map[string]string {
 	vars := map[string]string{
-		"RBE_log_dir":    config.rbeProxyLogsDir(),
-		"RBE_re_proxy":   config.rbeReproxy(),
-		"RBE_exec_root":  config.rbeExecRoot(),
-		"RBE_output_dir": config.rbeProxyLogsDir(),
+		"RBE_log_dir":       config.rbeProxyLogsDir(),
+		"RBE_re_proxy":      config.rbeReproxy(),
+		"RBE_exec_root":     config.rbeExecRoot(),
+		"RBE_output_dir":    config.rbeProxyLogsDir(),
 		"RBE_proxy_log_dir": config.rbeProxyLogsDir(),
+		"RBE_platform":      "container-image=" + remoteexec.DefaultImage,
 	}
 	if config.StartRBE() {
 		name, err := config.rbeSockAddr(absPath(ctx, config.TempDir()))
