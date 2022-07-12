@@ -16,6 +16,24 @@
       "message": "Hmmm... why does this build for me locally but not in presubmit?",
       "revId": "2176561a4f28b22701cc71681245953c4f72f229",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceec2877_8e4b5a76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-07-12T17:34:16Z",
+      "side": 1,
+      "message": "It\u0027ll probably fail for you locally with `m blueprint_tools`, which is part of a build server build, but you may not have been doing a build that triggered it locally. The Android.bp isn\u0027t used for bootstrapping soong_ui, but there is a definition in there for tests/etc to use, so you\u0027ll need to add the new dependency.",
+      "parentUuid": "5403a807_fdf04437",
+      "revId": "2176561a4f28b22701cc71681245953c4f72f229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
