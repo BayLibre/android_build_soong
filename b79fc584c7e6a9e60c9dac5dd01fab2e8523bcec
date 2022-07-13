@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740b7f3e_929d2800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-07-13T17:14:43Z",
+      "side": 1,
+      "message": "LGTM, but could you also handle this in the clang wrapper?",
+      "revId": "b79fc584c7e6a9e60c9dac5dd01fab2e8523bcec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
