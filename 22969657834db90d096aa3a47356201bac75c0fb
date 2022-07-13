@@ -16,6 +16,24 @@
       "message": "Now that I see the test for filegroup, I think there\u0027s a use case that requires some more thinking on this line.\n\nSay we have these Soong modules\n\n```\nfilegroup {\n    name: \"a_aidl_filegroup\",\n    srcs: [\"a/**/*.aidl\"],\n    path: \"a\",   \n}\nfilegroup {\n    name: \"b_aidl_filegroup\",\n    srcs: [\"b/**/*.aidl\"],\n    path: \"b\",   \n}\njava_library {\n    name: \"foo\",\n    srcs: [\":a_aidl_filegroup\", \":b_aidl_filegroup\"] \n}\n```\n\nIn Bazel, they will be converted to\n\n```\nfilegroup(\n    name \u003d \"a_aidl_filegroup\",\n    srcs \u003d [\"a/**/*.aidl\"],\n}\nfilegroup(\n    name \u003d \"b_aidl_filegroup\",\n    srcs \u003d [\"b/**/*.aidl\"],\n)\n\naidl_library(\n    name \u003d \"foo_aidl_library\",\n    srcs \u003d [\":a_aidl_filegroup\", \":b_aidl_filegroup\"]\n)\njava_aidl_library(\n    name \u003d \"foo_java_aidl_library\",\n    deps \u003d [\":foo_aidl_library\"]\n)\n\njava_library(\n    name \u003d \"foo\",\n    deps \u003d \":foo_java_aidl_library\"]\n)\n```\n\nI believe this won\u0027t work because the basepath is different in each filegroup of aidl files. The `strip_import_prefix` attribute proposed in the design doc isn\u0027t feasible because we have two prefixes to strip.\n\n\nInstead, I think we should create an `aidl_library` target for each filegroup.\n\n```\nfilegroup(\n    name \u003d \"a_aidl_filegroup\",\n    srcs \u003d [\"a/**/*.aidl\"],\n}\nfilegroup(\n    name \u003d \"b_aidl_filegroup\",\n    srcs \u003d [\"b/**/*.aidl\"],\n)\n\naidl_library(\n    name \u003d \"foo_a_aidl_library\",\n    srcs \u003d [\":a_aidl_filegroup\"],\n    (later) strip_import_prefix \u003d \"a\"\n)\naidl_library(\n    name \u003d \"foo_b_aidl_library\",\n    srcs \u003d \":b_aidl_filegroup\"]\n    (later) strip_import_prefix \u003d \"b\"\n)\njava_aidl_library(\n    name \u003d \"foo_java_aidl_library\",\n    deps \u003d [\":foo_a_aidl_library\", \":foo_b_aidl_library\"]\n)\n\njava_library(\n    name \u003d \"foo\",\n    deps \u003d \":foo_java_aidl_library\"]\n)\n```\n\nWith this approach, we will have a solution to handle the `path` prop in filegroup.",
       "revId": "22969657834db90d096aa3a47356201bac75c0fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "599b115b_70eaa430",
+        "filename": "java/java.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 2291,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-07-13T01:55:40Z",
+      "side": 1,
+      "message": "WDYT?",
+      "parentUuid": "1339bcf1_2e2659c1",
+      "revId": "22969657834db90d096aa3a47356201bac75c0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
