@@ -280,6 +280,11 @@ var (
 		"-Wno-string-concatenation",
 	}
 
+	clangNextExtraNoOverrideGlobalCflags = []string{
+		"-Wno-unqualified-std-cast-call",
+		"-Wno-deprecated-non-prototype",
+	}
+
 	IllegalFlags = []string{
 		"-w",
 	}
@@ -363,6 +368,10 @@ func init() {
 		}
 		return strings.Join(flags, " ")
 	})
+
+	if ctx.Config().IsEnvTrue("LLVM_NEXT") {
+		append(noOverrideGlobalCflags, clangNextExtraNoOverrideGlobalCflags)
+	}
 
 	// Export the static default DeviceGlobalCflags to Bazel.
 	// TODO(187086342): handle cflags that are set in VariableFuncs.
