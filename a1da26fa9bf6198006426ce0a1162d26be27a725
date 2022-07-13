@@ -16,6 +16,24 @@
       "message": "I reverted my previous check in:\nhttps://android-review.googlesource.com/c/platform/build/+/2151854\n\nbecause it was causing a build break with this script:\npackages/modules/common/build/mainline_modules_sdks.sh\n\nto see the bug, see here: \nhttps://b.corp.google.com/issues/238772544\n\n\nI have updated my code to fix this build break, and am putting out this check in again. The break came from the check in to build/soong, and the problem was including the cc_binaries: \"afl-fuzz\" and \"afl-showmap\" in the packaging of all the AFL fuzzers. These binaries will no longer be packaged with the \"all AFL fuzzers\" zip.\n\nTo see the change, you can look at the original check in here:\nhttps://android-review.googlesource.com/c/platform/build/soong/+/2151853\n\nand look at the file cc/fuzz.go, and search for \"afl-fuzz\" or \"afl-showmap\". The code that is different is:\n- I delete the \"neededAFLTools\" var on line 37\n- I deleted the if statement to add afl-fuzz/afl-showmap to the zip on line 449\n- I deleted the code adding afl-fuzz/afl-showmap to the Makefile build target on line 507-510",
       "revId": "a1da26fa9bf6198006426ce0a1162d26be27a725",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a94d8eb_34b28a72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-07-13T23:40:54Z",
+      "side": 1,
+      "message": "It\u0027s useful to revert the revert to create an identical change to the original, then reupload over the new change-id with your fixes.  That way diffing PS1 and PS2 shows the new changes.",
+      "parentUuid": "3e9f67d1_a14d8933",
+      "revId": "a1da26fa9bf6198006426ce0a1162d26be27a725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
