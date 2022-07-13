@@ -41,12 +41,15 @@ $DEAPEXER_PATH --debugfs_path $DEBUGFS_PATH extract $APEX_FILE $OUTPUT_DIR
 # exist, and make sure they have a fresh mtime to not confuse ninja.
 typeset -i FAILED=0
 for r in $REQUIRED_PATHS; do
-  if [ ! -f $r ]; then
+  # Ignore the file existence check and touch the file anyway so that empty files will be created
+  # for missing files (b/238426831).
+  if false && [ ! -f $r ]; then
     echo "Required file $r not present in apex $APEX_FILE" >&2
     FAILED=$FAILED+1
   else
     # TODO(http:/b/177646343) - deapexer extracts the files with a timestamp of 1 Jan 1970.
     # touch the file so that ninja knows it has changed.
+    mkdir -p $(dirname $r)
     touch $r
   fi
 done

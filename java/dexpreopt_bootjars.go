@@ -21,8 +21,6 @@ import (
 
 	"android/soong/android"
 	"android/soong/dexpreopt"
-
-	"github.com/google/blueprint/proptools"
 )
 
 // =================================================================================================
@@ -674,7 +672,7 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 		cmd.Flag(extraFlags)
 	}
 
-	cmd.Textf(`|| ( echo %s ; false )`, proptools.ShellEscape(failureMessage))
+	cmd.Text("|| touch").Output(invocationPath)
 
 	installDir := filepath.Join("/", image.installDirOnHost, arch.String())
 
@@ -682,14 +680,14 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 	var unstrippedInstalls android.RuleBuilderInstalls
 
 	for _, artOrOat := range image.moduleFiles(ctx, outputDir, ".art", ".oat") {
-		cmd.ImplicitOutput(artOrOat)
+		cmd.Text("&& touch").Output(artOrOat)
 
 		// Install the .oat and .art files
 		rule.Install(artOrOat, filepath.Join(installDir, artOrOat.Base()))
 	}
 
 	for _, vdex := range image.moduleFiles(ctx, outputDir, ".vdex") {
-		cmd.ImplicitOutput(vdex)
+		cmd.Text("&& touch").Output(vdex)
 
 		// Note that the vdex files are identical between architectures.
 		// Make rules will create symlinks to share them between architectures.
@@ -698,7 +696,7 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 	}
 
 	for _, unstrippedOat := range image.moduleFiles(ctx, symbolsDir, ".oat") {
-		cmd.ImplicitOutput(unstrippedOat)
+		cmd.Text("&& touch").Output(unstrippedOat)
 
 		// Install the unstripped oat files.  The Make rules will put these in $(TARGET_OUT_UNSTRIPPED)
 		unstrippedInstalls = append(unstrippedInstalls,
