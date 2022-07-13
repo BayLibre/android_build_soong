@@ -22,6 +22,30 @@
       },
       "revId": "7924e2f874d9dd2d1f0812560b29f18bde147bca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e573a2_65cc7132",
+        "filename": "java/gen.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-13T21:03:18Z",
+      "side": 1,
+      "message": "As of right now, this function gets called with directories that have already been added from Soong passed into the `exlcudeDirs` parameter, so the Soong directory (i.e. the directory that is not part of the symlink forest) would be used and the Bazel out (symlink forest) dir would be skipped.\n\nUpdated the comment to make this a little more clear and added some context on why we don\u0027t want both.",
+      "parentUuid": "6490dec9_0c6ae805",
+      "range": {
+        "startLine": 130,
+        "startChar": 9,
+        "endLine": 130,
+        "endChar": 20
+      },
+      "revId": "7924e2f874d9dd2d1f0812560b29f18bde147bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
