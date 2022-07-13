@@ -16,6 +16,23 @@
       "message": "We are trying to enable ABI check for main branches (b/237970161). We need this change to unblock the presubmit failure of aosp/2145762.",
       "revId": "121dd26bbbdf8fa3214def1ca78be5634acd7cc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85151ec3_31e9acc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-07-13T14:31:00Z",
+      "side": 1,
+      "message": "Can we instead turn off ABI dumper just for the specific presubmit / postsubmit target? Or are all targets being impacted by this?",
+      "revId": "121dd26bbbdf8fa3214def1ca78be5634acd7cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
