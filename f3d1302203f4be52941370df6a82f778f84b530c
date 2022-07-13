@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "645d81e9_3cc3ecd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-13T02:52:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "47bf7ea8_5eb3695b",
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92ee94e0_789b1281",
@@ -471,6 +489,30 @@
       "side": 1,
       "message": "This name has been already used in android/apex.go",
       "parentUuid": "1852fbbc_1c37f376",
+      "range": {
+        "startLine": 240,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 19
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb37fab_4752d793",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-13T02:52:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f7e6ab06_6e4a0d0a",
       "range": {
         "startLine": 240,
         "startChar": 5,
