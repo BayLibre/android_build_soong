@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "924ed03f_3ecf1f0b",
+        "filename": "bp2build/prebuilt_etc_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-07-13T17:35:30Z",
+      "side": 1,
+      "message": "Are these necessary for the test to verify the relevant behavior and pass? I generally try to keep test configurations as lightweight as possible to avoid introducing any unnecessary complications.",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 23
+      },
+      "revId": "02f6c6d72d065ea138918389ec8da1c3032be2af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95b56a9e_551b5cdc",
         "filename": "etc/prebuilt_etc.go",
         "patchSetId": 1
