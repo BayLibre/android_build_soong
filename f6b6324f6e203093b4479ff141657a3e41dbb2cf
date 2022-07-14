@@ -45,6 +45,54 @@
       },
       "revId": "f6b6324f6e203093b4479ff141657a3e41dbb2cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9032696_d1e1ee5c",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2022-07-14T20:46:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "450dab39_f83e9177",
+      "range": {
+        "startLine": 658,
+        "startChar": 1,
+        "endLine": 658,
+        "endChar": 22
+      },
+      "revId": "f6b6324f6e203093b4479ff141657a3e41dbb2cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c35677_4fd57b2c",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2022-07-14T20:46:04Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m pretty bad at naming. I\u0027ve changed this name at least three times.\n\nI do think that name is better, but I added OnDevice since there is also the host part that this does not change.",
+      "parentUuid": "e759c786_d3c2afc8",
+      "range": {
+        "startLine": 658,
+        "startChar": 40,
+        "endLine": 658,
+        "endChar": 66
+      },
+      "revId": "f6b6324f6e203093b4479ff141657a3e41dbb2cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
