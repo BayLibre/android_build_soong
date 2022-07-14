@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e759c786_d3c2afc8",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-07-14T20:20:51Z",
+      "side": 1,
+      "message": "Maybe \"IgnorePrefer32\"?  \"ForceMultilibFirstOnDevice\" sounds like it applies to everything, but for example libraries are still multilib \"both\", not multilib \"first\".",
+      "range": {
+        "startLine": 658,
+        "startChar": 40,
+        "endLine": 658,
+        "endChar": 66
+      },
+      "revId": "f6b6324f6e203093b4479ff141657a3e41dbb2cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "450dab39_f83e9177",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-07-14T20:20:51Z",
+      "side": 1,
+      "message": "Go style uses lowercase camel case for local variables",
+      "range": {
+        "startLine": 658,
+        "startChar": 1,
+        "endLine": 658,
+        "endChar": 22
+      },
+      "revId": "f6b6324f6e203093b4479ff141657a3e41dbb2cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
