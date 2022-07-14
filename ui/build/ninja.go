@@ -152,6 +152,8 @@ func runNinjaForBuild(ctx Context, config Config) {
 			"RBE_remote_accept_cache",
 			"RBE_remote_update_cache",
 			"RBE_server_address",
+			"RBE_ART_JAVAC",
+			"RBE_ART_D8",
 			// TODO: remove old FLAG_ variables.
 			"FLAG_compare",
 			"FLAG_exec_root",
