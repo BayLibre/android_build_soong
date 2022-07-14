@@ -16,6 +16,24 @@
       "message": "LGTM, but could you also handle this in the clang wrapper?",
       "revId": "b79fc584c7e6a9e60c9dac5dd01fab2e8523bcec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8610db82_7d3f61f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2022-07-14T05:17:03Z",
+      "side": 1,
+      "message": "If we handle this in the compiler wrapper, then we will need to:\n1. check in compiler update with workaround\n2. change cflags in build/soong\n3. refresh compiler without the workaround\n\nThis is a lot more work and more expensive for the build system.",
+      "parentUuid": "740b7f3e_929d2800",
+      "revId": "b79fc584c7e6a9e60c9dac5dd01fab2e8523bcec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
