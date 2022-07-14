@@ -22,6 +22,53 @@
       },
       "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cab0b838_4151c74d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:14:36Z",
+      "side": 1,
+      "message": "+1 missing some context here. The linked bug doesn\u0027t say much.",
+      "parentUuid": "46f1cbd5_52fd0aad",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e35a7d0_82ed607f",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1476,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:14:36Z",
+      "side": 1,
+      "message": "cleanup nit: can you also move this into cc/library.go (where the only callers are) as an unexported function? I don\u0027t see any reason why this needs to be in paths.go.",
+      "range": {
+        "startLine": 1476,
+        "startChar": 5,
+        "endLine": 1476,
+        "endChar": 26
+      },
+      "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
