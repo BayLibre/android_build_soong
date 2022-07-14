@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e96ac31_d0dd1e8c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "is this needed?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16c92943_6ce78593",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "When would this be an empty string? (Fail if it\u0027s empty?)",
+      "range": {
+        "startLine": 442,
+        "startChar": 12,
+        "endLine": 442,
+        "endChar": 22
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3649726_a68f9d81",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "nit: json_for_file(key, file)\n\nlabel already has a different meaning in Bazel.",
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaf21565_11e95f90",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "nit: json_for_files(label, files)",
+      "range": {
+        "startLine": 698,
+        "startChar": 4,
+        "endLine": 698,
+        "endChar": 12
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84815d05_69a5218c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "nit: json_for_labels(name, labels)",
+      "range": {
+        "startLine": 701,
+        "startChar": 4,
+        "endLine": 701,
+        "endChar": 13
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b77ee093_fb6c59d0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "this can be str(x)",
+      "range": {
+        "startLine": 702,
+        "startChar": 49,
+        "endLine": 702,
+        "endChar": 73
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20949f81_d567a66c",
+        "filename": "apex/apex.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 1847,
+        "startChar": 1,
+        "endLine": 1850,
+        "endChar": 2
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b085fe_0fe83490",
+        "filename": "apex/apex.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 1864,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 1864,
+        "startChar": 20,
+        "endLine": 1864,
+        "endChar": 38
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6288c75_30b22cbc",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "nit: fix indent",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 1
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2bb732c_573ac661",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "ProvidedLibs",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 13
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d565308a_fdc3a947",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "RequiredLibs",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 13
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df8a5f56_a2cb8eaa",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "Nice idea to use json coding. Much simpler than CcInfo\u0027s ParseResult, let\u0027s clean that up later too.",
+      "range": {
+        "startLine": 262,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 25
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

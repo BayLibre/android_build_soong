@@ -384,6 +384,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66f0b136_741426c2",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "filesInfo is used a couple of ways\n\n1) Soong apex/builder.go to generate Ninja actions to build the apex contents. (we don\u0027t need this, because bazel\u0027s doing it)\n2) Soong apex/builder.go to generate Ninja action to build the UsedBy/BackedBy files: https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/builder.go;l\u003d707-736;drc\u003d0a3892031effe9734348991ac3bcc896a0519482 (we\u0027ll need to implement this in Bazel)\n2) propagating information to make: https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/androidmk.go;l\u003d113;drc\u003d5180438478bf50d43401f0f7ce646f0519f74a42\n\nWe\u0027ll need to make sure 2) and 3) are supported, but not necessarily in this CL.",
+      "parentUuid": "ecbaaf57_66d6e80a",
+      "range": {
+        "startLine": 1814,
+        "startChar": 15,
+        "endLine": 1814,
+        "endChar": 29
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ce05a16_d2cd0220",
         "filename": "apex/apex.go",
         "patchSetId": 18
@@ -395,6 +419,30 @@
       "writtenOn": "2022-06-30T10:29:56Z",
       "side": 1,
       "message": "These are not correct. We need to handle these fields similar to a.outputFile and a.outputApexFile, where the outputs are from bazelCtx.GetApexInfo. Can these be unset? If not, can you stub them with empty txt files created with WriteFile[1]?\n\n[1] https://cs.android.com/android/platform/superproject/+/master:build/soong/android/defs.go;l\u003d105-113;drc\u003d50ed1f9ccb42ce2faaf652fe1819dbd57f35b44d",
+      "range": {
+        "startLine": 1837,
+        "startChar": 2,
+        "endLine": 1841,
+        "endChar": 105
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c90f9f0b_27a1a03d",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1841,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T19:54:06Z",
+      "side": 1,
+      "message": "To clarify, the paths returned here don\u0027t actually exist, because we haven\u0027t implemented the actions to create them in Bazel yet. \n\nIf these cannot be unset, can you make it clear as a comment that these should be filled in with information from GetApexInfo in a follow up change?",
+      "parentUuid": "4ce05a16_d2cd0220",
       "range": {
         "startLine": 1837,
         "startChar": 2,
