@@ -455,6 +455,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1172840_6746ec4d",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1841,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-14T21:44:20Z",
+      "side": 1,
+      "message": "I created bugs for each of the files, can you add them as TODOs?\n\na.htmlGzNotice b/190817312\na.bundleModuleFile b/239081457\na.nativeApisUsedByModuleFile b/239081455\na.nativeApisBackedByModuleFile b/239081456\na.javaApisUsedByModuleFile b/239084755",
+      "parentUuid": "c90f9f0b_27a1a03d",
+      "range": {
+        "startLine": 1837,
+        "startChar": 2,
+        "endLine": 1841,
+        "endChar": 105
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81c1180e_dbb4932b",
         "filename": "bazel/cquery/request_type.go",
         "patchSetId": 18
