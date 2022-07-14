@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f1cbd5_52fd0aad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-14T18:47:30Z",
+      "side": 1,
+      "message": "Is there a corresponding change to move existing llndk reference dumps to abi-dumps/platform or should this change in path only impact future sdk versions?",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
