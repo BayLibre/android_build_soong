@@ -33,6 +33,24 @@
       "message": "Can we instead turn off ABI dumper just for the specific presubmit / postsubmit target? Or are all targets being impacted by this?",
       "revId": "121dd26bbbdf8fa3214def1ca78be5634acd7cc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b4ed45_46c9e585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-14T02:43:00Z",
+      "side": 1,
+      "message": "aosp/2145762 turns on the dumper unless the target owner explicitly turns it off.\nThis and aosp/2145762 will impact many presubmit \u0026 postsubmit targets.\n\nSince the ABI dumper in this branch is experimental, we can turn it off by default until the RBE issue is fixed.",
+      "parentUuid": "85151ec3_31e9acc9",
+      "revId": "121dd26bbbdf8fa3214def1ca78be5634acd7cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
