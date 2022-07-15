@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ac12f5b_8bf4d595",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-15T07:10:52Z",
+      "side": 1,
+      "message": "The linked bug has a parent [bug](https://b.corp.google.com/issues/237970161) with a [document](https://goto.google.com/cross-version-abi-check) that explains more.\nI tend to not move existing llndk reference dumps so the cross-version abi check performs in future sdk verison. I will leave some instructions to move their dumps in the design docs when this cross-version abi check is well done in case some llndk library developers want to enable the abi check now.",
+      "parentUuid": "cab0b838_4151c74d",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e35a7d0_82ed607f",
         "filename": "android/paths.go",
         "patchSetId": 4
@@ -61,6 +85,30 @@
       "writtenOn": "2022-07-14T19:14:36Z",
       "side": 1,
       "message": "cleanup nit: can you also move this into cc/library.go (where the only callers are) as an unexported function? I don\u0027t see any reason why this needs to be in paths.go.",
+      "range": {
+        "startLine": 1476,
+        "startChar": 5,
+        "endLine": 1476,
+        "endChar": 26
+      },
+      "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847fa7a0_153e67f3",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1476,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-15T07:10:52Z",
+      "side": 1,
+      "message": "I found this is not the only function in paths.go that has the problem, I think the original developer just put functions related to path in paths.go. So I think if we still want to prevent these unnecessary exports, I will open another bug and solve it in following CL.",
+      "parentUuid": "3e35a7d0_82ed607f",
       "range": {
         "startLine": 1476,
         "startChar": 5,
