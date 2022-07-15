@@ -22,6 +22,30 @@
       },
       "revId": "5cb9249098264a046e2777e9e39e941dbe653a60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06002a6_edc79b4d",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-07-15T08:23:28Z",
+      "side": 1,
+      "message": "Oh.... I suppose that makes sense.\n\nThe short answer is that those should be temporary, so probably not worth the hassle?  If this CL is sub-optimal we can revert it in couple of days.\n\nThe long answer is that I added couple of RBE invocations in ART.  Those should be rare and only used in ART-specific builds.  However, there is a risk that I am wrong, and the RBE invocations prove either more common, or more expensive than I expect, which has potential to overload RBE, and thus take it down for all of Android.\n\nSo until the new RBE invocations prove themselves the RBE team asked for client-side environment kill-switch to control the new requests (since the server-side does not have capability to deny any overloading requests).  \n\nWe can remove the environment variables again in couple of days if nothing goes wrong.",
+      "parentUuid": "cc81b9b4_47efa22f",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 30
+      },
+      "revId": "5cb9249098264a046e2777e9e39e941dbe653a60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
