@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05dad595_ea1c3482",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-15T14:30:53Z",
+      "side": 1,
+      "message": "Not sure why this can\u0027t be just an ordinary function, but I see it follows the pattern from `exportImplementationClassesJar` above, so ok.",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 34
+      },
+      "revId": "695129427015850799d5256e2809ba6eb2fb6e90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "007f60dd_4181df71",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-15T14:30:53Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this changed, but it doesn\u0027t look like a regression exactly.",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 5
+      },
+      "revId": "695129427015850799d5256e2809ba6eb2fb6e90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
