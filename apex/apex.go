@@ -3131,7 +3131,6 @@ func makeApexAvailableBaseline() map[string][]string {
 		"libwebm",
 		"media_ndk_headers",
 		"media_plugin_headers",
-		"updatable-media",
 	}
 	//
 	// Module separator
