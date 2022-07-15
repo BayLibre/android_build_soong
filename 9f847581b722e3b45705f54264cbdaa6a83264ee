@@ -16,6 +16,24 @@
       "message": "Is it worth adding a test for the behaviors and interactions of these properties?",
       "revId": "9f847581b722e3b45705f54264cbdaa6a83264ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b7f05d_1b4d7b0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-07-15T21:23:56Z",
+      "side": 1,
+      "message": "No. I am deleting the notice property at my first opportunity. I thought about abandoning this change, but since it is ready to merge...",
+      "parentUuid": "c6a21809_a8c2ab4b",
+      "revId": "9f847581b722e3b45705f54264cbdaa6a83264ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
