@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7367ef4_518100b6",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-07-15T15:38:21Z",
+      "side": 1,
+      "message": "I believe this should be inside the outer for loop, otherwise once you skip one flag you\u0027ll keep skipping all the remaining ones... Might be worth ensuring the unit test captures this as well",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 18
+      },
+      "revId": "8dd133a689b75aadf8730d95ddfb2d097bdb6efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a2a80b_6c0eb8ba",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-07-15T15:38:21Z",
+      "side": 1,
+      "message": "Can you add comments as to why this is needed? The CL description doesn\u0027t make it clear why splitting on spaces could become an issue due due to the rest of the change? Also would be nice to have the unit tests exercise both branches of this conditional",
+      "range": {
+        "startLine": 354,
+        "startChar": 5,
+        "endLine": 354,
+        "endChar": 24
+      },
+      "revId": "8dd133a689b75aadf8730d95ddfb2d097bdb6efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
