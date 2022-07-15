@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a21809_a8c2ab4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-07-15T20:10:10Z",
+      "side": 1,
+      "message": "Is it worth adding a test for the behaviors and interactions of these properties?",
+      "revId": "9f847581b722e3b45705f54264cbdaa6a83264ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
