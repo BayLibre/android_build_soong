@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a2c80c7_7d2618f3",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e96ac31_d0dd1e8c",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16c92943_6ce78593",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-14T19:54:06Z",
       "side": 1,
       "message": "When would this be an empty string? (Fail if it\u0027s empty?)",
+      "range": {
+        "startLine": 442,
+        "startChar": 12,
+        "endLine": 442,
+        "endChar": 22
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d72308_af0b213b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16c92943_6ce78593",
       "range": {
         "startLine": 442,
         "startChar": 12,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbf1eb6_c821412c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3649726_a68f9d81",
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaf21565_11e95f90",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-07-14T19:54:06Z",
       "side": 1,
       "message": "nit: json_for_files(label, files)",
+      "range": {
+        "startLine": 698,
+        "startChar": 4,
+        "endLine": 698,
+        "endChar": 12
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9c15e6_e55912e0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaf21565_11e95f90",
       "range": {
         "startLine": 698,
         "startChar": 4,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14349d19_f7e1cc3c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84815d05_69a5218c",
+      "range": {
+        "startLine": 701,
+        "startChar": 4,
+        "endLine": 701,
+        "endChar": 13
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b77ee093_fb6c59d0",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-07-14T19:54:06Z",
       "side": 1,
       "message": "this can be str(x)",
+      "range": {
+        "startLine": 702,
+        "startChar": 49,
+        "endLine": 702,
+        "endChar": 73
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7ecc99_53968745",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b77ee093_fb6c59d0",
       "range": {
         "startLine": 702,
         "startChar": 49,
@@ -156,6 +294,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4b0812_a9d9687a",
+        "filename": "apex/apex.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20949f81_d567a66c",
+      "range": {
+        "startLine": 1847,
+        "startChar": 1,
+        "endLine": 1850,
+        "endChar": 2
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1b085fe_0fe83490",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-07-14T19:54:06Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 1864,
+        "startChar": 20,
+        "endLine": 1864,
+        "endChar": 38
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "250f28f4_d59f3ab5",
+        "filename": "apex/apex.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 1864,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1b085fe_0fe83490",
       "range": {
         "startLine": 1864,
         "startChar": 20,
@@ -202,6 +388,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "613284a2_2c8ce8cc",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6288c75_30b22cbc",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 1
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2bb732c_573ac661",
@@ -225,6 +435,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4886c37_bb3f3e90",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2bb732c_573ac661",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 13
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d565308a_fdc3a947",
@@ -238,6 +472,30 @@
       "writtenOn": "2022-07-14T19:54:06Z",
       "side": 1,
       "message": "RequiredLibs",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 13
+      },
+      "revId": "b3fc9bf46569ca9caef3510e005b9a455288d641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dbd0415_7ffda000",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d565308a_fdc3a947",
       "range": {
         "startLine": 252,
         "startChar": 1,

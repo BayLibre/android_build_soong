@@ -406,6 +406,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6262122c_d3602317",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Added a TODO.",
+      "parentUuid": "66f0b136_741426c2",
+      "range": {
+        "startLine": 1814,
+        "startChar": 15,
+        "endLine": 1814,
+        "endChar": 29
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ce05a16_d2cd0220",
@@ -467,6 +491,30 @@
       "side": 1,
       "message": "I created bugs for each of the files, can you add them as TODOs?\n\na.htmlGzNotice b/190817312\na.bundleModuleFile b/239081457\na.nativeApisUsedByModuleFile b/239081455\na.nativeApisBackedByModuleFile b/239081456\na.javaApisUsedByModuleFile b/239084755",
       "parentUuid": "c90f9f0b_27a1a03d",
+      "range": {
+        "startLine": 1837,
+        "startChar": 2,
+        "endLine": 1841,
+        "endChar": 105
+      },
+      "revId": "f3d1302203f4be52941370df6a82f778f84b530c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8946e04_d48a2459",
+        "filename": "apex/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1841,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-15T17:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1172840_6746ec4d",
       "range": {
         "startLine": 1837,
         "startChar": 2,
