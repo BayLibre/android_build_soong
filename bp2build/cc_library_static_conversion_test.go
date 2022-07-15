@@ -836,6 +836,10 @@ cc_library_static {
             "not-for-lib32.c",
             "for-lib64.c",
         ],
+        "//build/bazel/platforms/arch:riscv64": [
+            "not-for-lib32.c",
+            "for-lib64.c",
+        ],
         "//build/bazel/platforms/arch:x86": [
             "not-for-lib64.c",
             "for-lib32.c",
@@ -907,6 +911,14 @@ cc_library_static {
             "not-for-x86.c",
             "not-for-x86_64.c",
             "for-arm64.c",
+            "for-lib64.c",
+        ],
+        "//build/bazel/platforms/arch:riscv64": [
+            "not-for-arm.c",
+            "not-for-arm64.c",
+            "not-for-lib32.c",
+            "not-for-x86.c",
+            "not-for-x86_64.c",
             "for-lib64.c",
         ],
         "//build/bazel/platforms/arch:x86": [
