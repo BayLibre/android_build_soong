@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe37ea1_b672d46c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-18T20:37:57Z",
+      "side": 1,
+      "message": "It\u0027s IntelliJ\u0027s doing. Reverting.",
+      "parentUuid": "b5ad11be_c73e68bc",
+      "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5800922_a3a4e4e8",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-18T15:22:52Z",
       "side": 1,
       "message": "Would it make sense to lump these calls into commonBuildActions, too? (everything prior to `a.outputApexFile \u003d`)",
+      "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d946d343_f237b9e1",
+        "filename": "apex/apex.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-18T20:37:57Z",
+      "side": 1,
+      "message": "I hesitate to do that, the sequence of calls might change.",
+      "parentUuid": "b5800922_a3a4e4e8",
       "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "552436e7_9563ec1c",
+        "filename": "apex/apex.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1879,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-18T20:37:57Z",
+      "side": 1,
+      "message": "Split it into two.",
+      "parentUuid": "d3030a72_262d3413",
+      "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d782b37_45aac04e",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a40277c8_e39d394a",
+        "filename": "apex/apex.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1902,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-18T20:37:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d782b37_45aac04e",
+      "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e472d42_1fca12cf",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-07-18T15:22:52Z",
       "side": 1,
       "message": "Nit: I know this is not your code, but this function can be shortened if we set \n```\na.suffix \u003d \"\"\na.primaryApexType \u003d true\n```\n\nat the beginning (as the default), and override these only in cases where we need to",
+      "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66852d31_c120b1c5",
+        "filename": "apex/apex.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1941,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-18T20:37:57Z",
+      "side": 1,
+      "message": "It won\u0027t work for a.primaryApexType as it not not set on all paths. I\u0027d rather leave this alone.",
+      "parentUuid": "6e472d42_1fca12cf",
       "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
