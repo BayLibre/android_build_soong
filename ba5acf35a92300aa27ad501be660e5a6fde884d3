@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5ad11be_c73e68bc",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-07-18T17:03:40Z",
+      "side": 1,
+      "message": "nit: I thought the core libs were atop and then android ones were (partly in this CL still are) in the next stanza.",
+      "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b5800922_a3a4e4e8",
         "filename": "apex/apex.go",
         "patchSetId": 31
