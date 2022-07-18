@@ -98,6 +98,30 @@
       },
       "revId": "232c7601633d547e0885ac8c85ce308d78853951",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0af7f6_fd76ecaa",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-07-18T20:39:32Z",
+      "side": 1,
+      "message": "Maybe we should consider creating a new file that could be written out by a source tool with just this information that could be merged in? soong_ui just isn\u0027t in a good place to capture this information.\n\n* On the repo side, we could always make it write something out.\n* On the builder side, there\u0027s already a request for me to expose the build server branch name (via a config file, as the environment is getting unwieldy)\n* On the superproject side (including future use cases), we could add a static file to the superproject itself. Not foolproof, but may be good enough for branch-based ID as long as we update our tooling to do that during branch creation.",
+      "parentUuid": "95e3b8cf_d25c4d64",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "232c7601633d547e0885ac8c85ce308d78853951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
