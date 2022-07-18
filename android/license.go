@@ -15,6 +15,8 @@
 package android
 
 import (
+	"path/filepath"
+
 	"github.com/google/blueprint"
 )
 
@@ -63,7 +65,15 @@ func (m *licenseModule) DepsMutator(ctx BottomUpMutatorContext) {
 func (m *licenseModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	// license modules have no licenses, but license_kinds must refer to license_kind modules
 	mergeStringProps(&m.base().commonProperties.Effective_licenses, ctx.ModuleName())
-	namePathProps(&m.base().commonProperties.Effective_license_text, m.properties.Package_name, PathsForModuleSrc(ctx, m.properties.License_text)...)
+	if ctx.ModuleType() == "license" {
+		namePathProps(&m.base().commonProperties.Effective_license_text, m.properties.Package_name, PathsForModuleSrc(ctx, m.properties.License_text)...)
+	} else { // internally generated -- workaround for deprecated notice property
+		paths := make([]string, 0, len(m.properties.License_text))
+		for _, p := range m.properties.License_text {
+			paths = append(paths, filepath.Clean(filepath.Join(ctx.ModuleDir(), p)))
+		}
+		namePathProps(&m.base().commonProperties.Effective_license_text, m.properties.Package_name, PathsForSource(ctx, paths)...)
+	}
 	for _, module := range ctx.GetDirectDepsWithTag(licenseKindTag) {
 		if lk, ok := module.(*licenseKindModule); ok {
 			mergeStringProps(&m.base().commonProperties.Effective_license_conditions, lk.properties.Conditions...)

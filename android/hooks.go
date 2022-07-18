@@ -111,8 +111,13 @@ func createModule(ctx createModuleContext, factory ModuleFactory, ext string, pr
 		typeName = fmt.Sprintf("%s_%s", path.Base(filePath), factoryFunc.Name())
 	}
 	typeName = typeName + "_" + ext
-
-	module := ctx.createModule(ModuleFactoryAdaptor(factory), typeName, append(inherited, props...)...).(Module)
+	var module Module
+	// workaround for deprecated notice property
+	if typeName == "license_kind_"+ext || typeName == "license_"+ext {
+		module = ctx.createModule(ModuleFactoryAdaptor(factory), typeName, props...).(Module)
+	} else {
+		module = ctx.createModule(ModuleFactoryAdaptor(factory), typeName, append(inherited, props...)...).(Module)
+	}
 
 	if ctx.Module().base().variableProperties != nil && module.base().variableProperties != nil {
 		src := ctx.Module().base().variableProperties

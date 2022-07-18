@@ -16,9 +16,11 @@ package android
 
 import (
 	"reflect"
+	"strings"
 	"sync"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 // Adds cross-cutting licenses dependency to propagate license metadata through the build system.
@@ -102,6 +104,26 @@ func moduleToPackageDefaultLicensesMap(config Config) *sync.Map {
 	}).(*sync.Map)
 }
 
+// workaround for deprecated notice property
+var internalLicenseKindsMap = NewOnceKey("internalLicenseKindsMap")
+
+// The set of already-created internal license kind names.
+func licenseKindNameToInternalLicenseKindsMap(config Config) *sync.Map {
+	return config.Once(internalLicenseKindsMap, func() interface{} {
+		return &sync.Map{}
+	}).(*sync.Map)
+}
+
+// workaround for deprecated notice property
+var internalLicensesMap = NewOnceKey("internalLicensesMap")
+
+// The set of already-created internal license names.
+func licenseNameToInternalLicensesMap(config Config) *sync.Map {
+	return config.Once(internalLicensesMap, func() interface{} {
+		return &sync.Map{}
+	}).(*sync.Map)
+}
+
 // Registers the function that maps each package to its default_applicable_licenses.
 //
 // This goes before defaults expansion so the defaults can pick up the package default.
@@ -113,6 +135,8 @@ func RegisterLicensesPackageMapper(ctx RegisterMutatorsContext) {
 //
 // This goes after defaults expansion so that it can pick up default licenses and before visibility enforcement.
 func RegisterLicensesPropertyGatherer(ctx RegisterMutatorsContext) {
+	// workaround for deprecated notice property
+	ctx.TopDown("licensesPropertyCreatorForDeprecatedNotice", licensesPropertyCreatorForDeprecatedNotice).Parallel()
 	ctx.BottomUp("licensesPropertyGatherer", licensesPropertyGatherer).Parallel()
 }
 
@@ -143,6 +167,66 @@ func makeLicensesContainer(propVals []string) licensesContainer {
 	return licensesContainer{licenses}
 }
 
+// workaround for deprecated notice property
+type hasDeprecatedNoticeProperty interface {
+	NoticeFile() string
+}
+
+// Creates license modules to workaround deprecated notice property.
+func licensesPropertyCreatorForDeprecatedNotice(ctx TopDownMutatorContext) {
+	// special handling for deprecated notice property on prebuilt_firmware
+	if reflect.TypeOf(ctx.Module()).String() != "*etc.PrebuiltEtc" {
+		return
+	}
+	// workaround for deprecated notice property
+	metc, ok := ctx.Module().(hasDeprecatedNoticeProperty)
+	if !ok {
+		return
+	}
+	noticeFile := metc.NoticeFile()
+	if noticeFile == "" {
+		return
+	}
+	// workaround for deprecated notice property -- allowlist linux-firmware
+	if !strings.Contains(ctx.ModuleDir(), "/linux-firmware/") {
+		ctx.ModuleErrorf("notice property deprecated and not allowed in %q", ctx.ModuleDir())
+		return
+	}
+	licenseName := strings.ReplaceAll(ctx.ModuleDir()+"_"+noticeFile+"_internal_license", "/", "_")
+	licenseKindName := licenseName + "_kind"
+	internalLicenseKinds := licenseKindNameToInternalLicenseKindsMap(ctx.Config())
+	if _, ok = internalLicenseKinds.Load(licenseKindName); !ok {
+		lkProps := struct {
+			Name       *string
+			Conditions []string
+			Visibility []string
+		}{}
+		lkProps.Name = proptools.StringPtr(licenseKindName)
+		lkProps.Conditions = []string{"notice", "proprietary"}
+		lkProps.Visibility = []string{"//visibility:private"}
+		ctx.CreateModule(LicenseKindFactory, &lkProps)
+		internalLicenseKinds.Store(licenseKindName, struct{}{})
+	}
+	internalLicenses := licenseNameToInternalLicensesMap(ctx.Config())
+	if _, ok = internalLicenses.Load(licenseName); ok {
+		return
+	}
+	internalLicenses.Store(licenseName, struct{}{})
+	lProps := struct {
+		Name          *string
+		Package_name  *string
+		License_kinds []string
+		License_text  []string
+		Visibility    []string
+	}{}
+	lProps.Name = proptools.StringPtr(licenseName)
+	lProps.Package_name = proptools.StringPtr("Linux Firmware")
+	lProps.License_kinds = []string{licenseKindName}
+	lProps.License_text = []string{noticeFile}
+	lProps.Visibility = []string{"//visibility:public"}
+	ctx.CreateModule(LicenseFactory, &lProps)
+}
+
 // Gathers the applicable licenses into dependency references after defaults expansion.
 func licensesPropertyGatherer(ctx BottomUpMutatorContext) {
 	m, ok := ctx.Module().(Module)
@@ -156,6 +240,25 @@ func licensesPropertyGatherer(ctx BottomUpMutatorContext) {
 
 	licenses := getLicenses(ctx, m)
 	ctx.AddVariationDependencies(nil, licensesTag, licenses...)
+
+	// workaround for deprecated notice property -- allowlist /linux-firmware/
+	if !strings.Contains(ctx.ModuleDir(), "/linux-firmware/") {
+		return
+	}
+	// special handling for deprecated notice property on prebuilt_firmware
+	if reflect.TypeOf(m).String() != "*etc.PrebuiltEtc" {
+		return
+	}
+	metc, ok := m.(hasDeprecatedNoticeProperty)
+	if !ok {
+		return
+	}
+	noticeFile := metc.NoticeFile()
+	if noticeFile == "" {
+		return
+	}
+	licenseName := strings.ReplaceAll(ctx.ModuleDir()+"_"+noticeFile+"_internal_license", "/", "_")
+	ctx.AddVariationDependencies(nil, licensesTag, licenseName)
 }
 
 // Verifies the license and license_kind dependencies are each the correct kind of module.

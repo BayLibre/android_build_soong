@@ -107,6 +107,12 @@ type prebuiltEtcProperties struct {
 	Symlinks []string `android:"arch_variant"`
 }
 
+// workaround for deprecated notice property in use for prebuilt_firmware by linux-firmware
+type prebuiltFirmwareProperties struct {
+	// Deprecated property still in use by partner linux-firmware
+	Notice *string `android:"path"`
+}
+
 type prebuiltSubdirProperties struct {
 	// Optional subdirectory under which this file is installed into, cannot be specified with
 	// relative_install_path, prefer relative_install_path.
@@ -141,6 +147,9 @@ type PrebuiltEtc struct {
 
 	properties       prebuiltEtcProperties
 	subdirProperties prebuiltSubdirProperties
+
+	// workaround for deprecated notice property
+	firmwareProperties prebuiltFirmwareProperties
 
 	sourceFilePath android.Path
 	outputFilePath android.OutputPath
@@ -292,6 +301,18 @@ func (p *PrebuiltEtc) ExcludeFromVendorSnapshot() bool {
 
 func (p *PrebuiltEtc) ExcludeFromRecoverySnapshot() bool {
 	return false
+}
+
+// NoticeFile returns the path to the prebuilt_firmware notice file or an empty string.
+// workaround for deprecated notice property
+func (p *PrebuiltEtc) NoticeFile() string {
+	if !strings.HasPrefix(p.installDirBase, "etc/firmware") {
+		return ""
+	}
+	if p.firmwareProperties.Notice == nil {
+		return ""
+	}
+	return *p.firmwareProperties.Notice
 }
 
 func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -507,6 +528,7 @@ func PrebuiltFirmwareFactory() android.Module {
 	module := &PrebuiltEtc{}
 	module.socInstallDirBase = "firmware"
 	InitPrebuiltEtcModule(module, "etc/firmware")
+	module.AddProperties(&module.firmwareProperties) // workaround for deprecated notice property
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	android.InitDefaultableModule(module)
