@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01334c03_dd039588",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-07-18T19:53:26Z",
+      "side": 1,
+      "message": "jrn@ - is reading the .repo/manifests/default.xml file the correct way to capture metrics about the current Android branch that the user is working on?",
+      "revId": "232c7601633d547e0885ac8c85ce308d78853951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
