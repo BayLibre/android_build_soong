@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01ae613e_06626dd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-07-18T20:26:57Z",
+      "side": 1,
+      "message": "Beyond the issues we\u0027re discussing in the other comment, this doesn\u0027t tell you which branch the user checked out -- only information about the remotes/defaults, which doesn\u0027t necessarily match (example: https://android.googlesource.com/platform/manifest/+/build-tools/default.xml )",
+      "parentUuid": "01334c03_dd039588",
+      "revId": "232c7601633d547e0885ac8c85ce308d78853951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67188a76_08438cf3",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2022-07-18T20:06:20Z",
       "side": 1,
       "message": "Maybe good enough, but I don\u0027t think this is always accurate, .repo/manifest.xml tells you which file in .repo/manifests/ is in use.\n\nMaybe it would be better to get this directly from the repo tool somehow?",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "232c7601633d547e0885ac8c85ce308d78853951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e3b8cf_d25c4d64",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-07-18T20:26:57Z",
+      "side": 1,
+      "message": "This just won\u0027t work in many cases (build server, some partners, native git superproject, etc), and is likely not supportable as we move away from repo (as it would require executing tool-specific helpers).\n\nExecuting the `repo` tool could be dangerous -- do you know which one to use?",
+      "parentUuid": "9011b1b0_951ef5eb",
       "range": {
         "startLine": 68,
         "startChar": 40,
