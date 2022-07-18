@@ -16,6 +16,46 @@
       "message": "jrn@ - is reading the .repo/manifests/default.xml file the correct way to capture metrics about the current Android branch that the user is working on?",
       "revId": "232c7601633d547e0885ac8c85ce308d78853951",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67188a76_08438cf3",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-07-18T20:06:20Z",
+      "side": 1,
+      "message": "A waitgroup is a little overkill here, a channel would be sufficient, although maybe the waitgroup has a little bit clearer interface",
+      "revId": "232c7601633d547e0885ac8c85ce308d78853951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9011b1b0_951ef5eb",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-07-18T20:06:20Z",
+      "side": 1,
+      "message": "Maybe good enough, but I don\u0027t think this is always accurate, .repo/manifest.xml tells you which file in .repo/manifests/ is in use.\n\nMaybe it would be better to get this directly from the repo tool somehow?",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "232c7601633d547e0885ac8c85ce308d78853951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
