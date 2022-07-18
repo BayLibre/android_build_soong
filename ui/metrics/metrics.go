@@ -32,6 +32,8 @@ package metrics
 // of what an event is and how the metrics system is a stack based system.
 
 import (
+	"encoding/xml"
+	"io/ioutil"
 	"os"
 	"runtime"
 	"strings"
@@ -62,6 +64,8 @@ const (
 
 	// Overall build from building the graph to building the target.
 	Total = "total"
+
+	defaultManifestPath = ".repo/manifests/default.xml"
 )
 
 // Metrics is a struct that stores collected metrics during the course of a
@@ -257,4 +261,75 @@ func (c *CriticalUserJourneysMetrics) Add(name string, metrics *Metrics) {
 // Dump saves the collected CUJs metrics to the raw protobuf file.
 func (c *CriticalUserJourneysMetrics) Dump(filename string) (err error) {
 	return shared.Save(&c.cujs, filename)
+}
+
+// Remote contains information about a single git-remote in the given manifest file.
+type Remote struct {
+	Name           string `xml:"name,attr"`
+	Fetch          string `xml:"fetch,attr"`
+	Review         string `xml:"review,attr"`
+	RemoteRevision string `xml:"revision,attr"`
+}
+
+// DefaultRevision contains info about the default branch and sync parallelism
+// of the given manifest file.
+type DefaultRevision struct {
+	Name             string   `xml:"revision,attr"`
+	Remote           string   `xml:"remote,attr"`
+	SyncParallelism  string   `xml:"sync-j,attr"`
+}
+
+// ManifestServer refers to the remote server that the manifest file
+// points to.
+type ManifestServer struct {
+	URL             string   `xml:"url,attr"`
+}
+
+// SourceManifest refers to the outer XML structure enclosing the manifest.
+type SourceManifest struct {
+	Remotes         []Remote `xml:"remote"`
+	DefaultRev DefaultRevision `xml:"default"`
+	RemoteServer ManifestServer `xml:"manifest-server"`
+}
+
+// PopulateSourceInfo parses default manifest file to gather
+// information related to the current source.
+func (m *Metrics) PopulateSourceInfo() error {
+	f, err := os.Open(defaultManifestPath)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	c, _ := ioutil.ReadAll(f)
+
+	var sm SourceManifest
+	if err := xml.Unmarshal(c, &sm); err != nil {
+		return err
+	}
+
+	remotes := []*soong_metrics_proto.SourceInfo_Remote{}
+	for _, remote := range sm.Remotes {
+		name := strings.Clone(remote.Name)
+		fetch := strings.Clone(remote.Fetch)
+		review := strings.Clone(remote.Review)
+		rev := strings.Clone(remote.RemoteRevision)
+		r := &soong_metrics_proto.SourceInfo_Remote{
+			Name: &name,
+			Fetch: &fetch,
+			Review: &review,
+			RemoteRevision: &rev,
+		}
+		remotes = append(remotes, r)
+	}
+	si := &soong_metrics_proto.SourceInfo{
+		Remote: remotes,
+		DefaultRevision: &soong_metrics_proto.SourceInfo_Revision{
+			Name: &sm.DefaultRev.Name,
+			Remote: &sm.DefaultRev.Remote,
+			SyncParallelism: &sm.DefaultRev.SyncParallelism,
+		},
+		ManifestUrl: &sm.RemoteServer.URL,
+	}
+	m.metrics.SourceInfo = si
+	return nil
 }

@@ -23,6 +23,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"sync"
 	"syscall"
 	"time"
 
@@ -219,7 +220,20 @@ func main() {
 			soongMetricsFile,         // high level metrics related to this build system.
 			config.BazelMetricsDir(), // directory that contains a set of bazel metrics.
 		}
-		defer build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, files...)
+
+		// Gather info about the current source version.
+		var smWG sync.WaitGroup
+		smWG.Add(1)
+		go func() {
+			defer smWG.Done()
+			if err := met.PopulateSourceInfo(); err != nil {
+				buildCtx.Verbosef("Unable to detect source info: %v", err)
+			}
+		}()
+		defer func() {
+			smWG.Wait()
+			build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, files...)
+		}()
 		defer met.Dump(soongMetricsFile)
 		defer build.CheckProdCreds(buildCtx, config)
 	}

@@ -109,8 +109,11 @@ message MetricsBase {
   // The metrics for calling Bazel.
   repeated PerfInfo bazel_runs = 27;
 
-  // The metrics of the experiment config fetcher
+  // The metrics of the experiment config fetcher.
   optional ExpConfigFetcher exp_config_fetcher = 28;
+
+  // Metrics about the remote and default revision used for this particular build.
+  optional SourceInfo source_info = 29;
 }
 
 message BuildConfig {
@@ -264,6 +267,36 @@ message ExpConfigFetcher {
 
   // Time, in microseconds, taken by the expconfigfetcher
   optional uint64 micros = 3;
+}
+
+// SourceInfo captures information about the current remote and branch
+// for which the build metrics are being created. Primarily applicable to
+// developer builds.
+message SourceInfo {
+  // Revision contains info about the branch name and
+  // the remote to which it belongs.
+  message Revision {
+    optional string name = 1;
+    optional string remote = 2;
+    optional string sync_parallelism = 3;
+  }
+
+  // Remote describes a git remote defined in the source manfiest files.
+  message Remote {
+    optional string name = 1;
+    optional string fetch = 2;
+    optional string review = 3;
+    optional string remote_revision = 4;
+  }
+
+  // List of remotes defined in the user's source.
+  repeated Remote remote = 1;
+
+  // The default revision for the given source.
+  optional Revision default_revision = 2;
+
+  // The remote-server that served this manifest file.
+  optional string manifest_url = 3;
 }
 
 message MixedBuildsInfo{
