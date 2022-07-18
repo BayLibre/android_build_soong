@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5800922_a3a4e4e8",
+        "filename": "apex/apex.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-07-18T15:22:52Z",
+      "side": 1,
+      "message": "Would it make sense to lump these calls into commonBuildActions, too? (everything prior to `a.outputApexFile \u003d`)",
+      "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3030a72_262d3413",
+        "filename": "apex/apex.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1879,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-07-18T15:22:52Z",
+      "side": 1,
+      "message": "This function is inconsistent with the other `set`* functions, now. Other `set*` functions set fields of `a` as a side effect, whereas this returns the value and has no side effects.\n\nIn general, returned values are preferable to side effect functions. If we\u0027re going to mix-and-match, lets ensure the function names look different enough (not using `set` for returned value functions)",
+      "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d782b37_45aac04e",
+        "filename": "apex/apex.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1902,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-07-18T15:22:52Z",
+      "side": 1,
+      "message": "nit: this function may be cleaner if it is instead `systemLibLink(ctx android.ModuleContext) bool`, and returns the value (exiting early for false cases) . Then callers can instead just call `a.linkToSystemLib \u003d a.systemLibLink(ctx)`.\n\nSame for other types of side effect functions here.\n\nThis is just a suggestion, I\u0027ll leave it up to you.",
+      "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e472d42_1fca12cf",
+        "filename": "apex/apex.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1941,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-07-18T15:22:52Z",
+      "side": 1,
+      "message": "Nit: I know this is not your code, but this function can be shortened if we set \n```\na.suffix \u003d \"\"\na.primaryApexType \u003d true\n```\n\nat the beginning (as the default), and override these only in cases where we need to",
+      "revId": "ba5acf35a92300aa27ad501be660e5a6fde884d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
