@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e40910b_ed71da96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2022-07-19T11:52:35Z",
+      "side": 1,
+      "message": "This is ready to turn on after a couple of fixes already merged.",
+      "revId": "f08a664127dbae5b12c92763dfc70ee7900ea779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
