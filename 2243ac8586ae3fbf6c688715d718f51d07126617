@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e41788c_e4b33376",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-07-19T04:43:08Z",
+      "side": 1,
+      "message": "Huh, I see that Dan is not an owner of ndk_api_coverage_parser. Colin, could you approve?",
+      "revId": "2243ac8586ae3fbf6c688715d718f51d07126617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac06f394_e1a12be7",
         "filename": "cc/symbolfile/__init__.py",
         "patchSetId": 2
