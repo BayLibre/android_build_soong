@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ed6a1f8_62325cf3",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-07-19T13:45:19Z",
+      "side": 1,
+      "message": "Yeah I preferred waitgroup because the interface is clearer in this case. I am open to changing this though - but will leave it as it is for now (I guess we can come to this once we figure out the proper approach to determining source info 😊)",
+      "parentUuid": "67188a76_08438cf3",
+      "revId": "232c7601633d547e0885ac8c85ce308d78853951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9011b1b0_951ef5eb",
         "filename": "ui/metrics/metrics.go",
         "patchSetId": 1
@@ -114,6 +132,30 @@
       "side": 1,
       "message": "Maybe we should consider creating a new file that could be written out by a source tool with just this information that could be merged in? soong_ui just isn\u0027t in a good place to capture this information.\n\n* On the repo side, we could always make it write something out.\n* On the builder side, there\u0027s already a request for me to expose the build server branch name (via a config file, as the environment is getting unwieldy)\n* On the superproject side (including future use cases), we could add a static file to the superproject itself. Not foolproof, but may be good enough for branch-based ID as long as we update our tooling to do that during branch creation.",
       "parentUuid": "95e3b8cf_d25c4d64",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "232c7601633d547e0885ac8c85ce308d78853951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d93bf5b_02b5ee77",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-07-19T13:45:19Z",
+      "side": 1,
+      "message": "Just to clarify - I\u0027m ok with this CL _not_ working for CI builds. CI builds already have the right branch name information (I suppose it comes from the build scheduler). So my focus is to only get this information for developer builds.\n\n\n\u003e Maybe good enough, but I don\u0027t think this is always accurate, .repo/manifest.xml tells you which file in .repo/manifests/ is in use.\nAh right, yep. Getting this from the repo tool would be fantastic tbh.\n\n\u003e Maybe we should consider creating a new file that could be written out by a source tool with just this information that could be merged in?\n+1 to this as well! I just want to rule out the possibility that `repo` tool already doesn\u0027t write out this info somewhere. @jrn - any thoughts here?\n\n\u003e On the superproject side (including future use cases), we could add a static file to the superproject itself.\nSorry for the basic question - using `repo` tool is the default for Android developers currently - correct?\nAlso, can we just run git commands to get the branch / remote info for superproject?",
+      "parentUuid": "4c0af7f6_fd76ecaa",
       "range": {
         "startLine": 68,
         "startChar": 40,
