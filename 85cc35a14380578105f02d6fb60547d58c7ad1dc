@@ -16,6 +16,23 @@
       "message": "Colin I\u0027ve lost your +1 after rebasing (while Dan\u0027s +2 is still alive). Could you do that again?",
       "revId": "85cc35a14380578105f02d6fb60547d58c7ad1dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7a3d0d_5f4382f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-07-19T05:02:25Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "85cc35a14380578105f02d6fb60547d58c7ad1dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
