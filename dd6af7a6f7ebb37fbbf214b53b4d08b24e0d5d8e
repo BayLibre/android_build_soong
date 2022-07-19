@@ -70,6 +70,30 @@
       },
       "revId": "dd6af7a6f7ebb37fbbf214b53b4d08b24e0d5d8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2c00d3_d7ec29cf",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-07-19T16:41:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4d9c7b2_db300caf",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "dd6af7a6f7ebb37fbbf214b53b4d08b24e0d5d8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
