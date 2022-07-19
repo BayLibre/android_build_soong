@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a1d10f_0b62fe3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-07-19T23:55:43Z",
+      "side": 1,
+      "message": "Hi Colin,\n\nPTAL\n\nI created an allow-list for the partner linux-firmware projects that use the notice property and worked around the notice property by internally converting it to a license and license_kind.\n\nI looked at the relevant license texts. They are all notice or permissive with a prohibition against linking to GPL so I generated internal license_kind modules with notice and proprietary conditions.\n\nI put a comment in the code to identify all of the workaround code so we can grep for it if the partner code gets upgraded to replace the notice references with license modules.\n",
+      "revId": "94b90b4d4b10271518f03e1965e6df7e1733d7f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
