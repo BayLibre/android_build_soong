@@ -16,6 +16,40 @@
       "message": "Dan, could you review this?",
       "revId": "2243ac8586ae3fbf6c688715d718f51d07126617",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac06f394_e1a12be7",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-07-19T02:45:26Z",
+      "side": 1,
+      "message": "Am assuming that the behavior here didn\u0027t actually change and all the diffs that gerrit is showing are just because the code moved. lmk if there\u0027s anything specific I should be looking at.",
+      "revId": "2243ac8586ae3fbf6c688715d718f51d07126617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a72f5df_dcd26592",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-07-19T02:45:26Z",
+      "side": 1,
+      "message": "`__` has special behavior in python, that I\u0027m guessing you aren\u0027t using intentionally. https://docs.python.org/3/tutorial/classes.html#private-variables. If it was intentional to prevent subclasses from overriding this, ignore me 😊",
+      "revId": "2243ac8586ae3fbf6c688715d718f51d07126617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
