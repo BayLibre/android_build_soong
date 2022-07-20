@@ -212,11 +212,18 @@ func createUncompressDexRules() []Rule {
 }
 
 func createMakefileGoalRules() []Rule {
+	allowlist := []string{
+		// wpa_supplicant and hostapd
+		"external/wpa_supplicant_8",
+		// libwifi_hal
+		"frameworks/opt/net/wifi/libwifi_hal",
+	}
 	return []Rule{
 		NeverAllow().
 			ModuleType("makefile_goal").
 			WithoutMatcher("product_out_path", Regexp("^boot[0-9a-zA-Z.-]*[.]img$")).
-			Because("Only boot images may be imported as a makefile goal."),
+			NotIn(allowlist...).
+			Because("Only boot images may be imported as a makefile goal if not in allowed projects"),
 	}
 }
 
