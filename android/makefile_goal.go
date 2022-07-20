@@ -27,7 +27,8 @@ func init() {
 }
 
 type makefileGoalProperties struct {
-	// Sources.
+	// Whether this is installable. Default: true.
+	Installable *bool `android:"arch_variant"`
 
 	// Makefile goal output file path, relative to PRODUCT_OUT.
 	Product_out_path *string
@@ -53,6 +54,10 @@ func (p *makefileGoal) inputPath() *string {
 	return nil
 }
 
+func (p *makefileGoal) installable() bool {
+	return proptools.BoolDefault(p.properties.Installable, true)
+}
+
 // OutputFileProducer
 func (p *makefileGoal) OutputFiles(tag string) (Paths, error) {
 	if tag != "" {
@@ -72,6 +77,12 @@ func (p *makefileGoal) GenerateAndroidBuildActions(ctx ModuleContext) {
 	filename := filepath.Base(proptools.String(p.inputPath()))
 	p.outputFilePath = PathForModuleOut(ctx, filename).OutputPath
 
+	if !p.installable() {
+		// We can't hide this from make since this module is to import the make-built output,
+		// which is done in Android.mk below.
+		p.SkipInstall()
+	}
+
 	ctx.InstallFile(PathForModuleInstall(ctx, "etc"), ctx.ModuleName(), p.outputFilePath)
 }
 
@@ -85,6 +96,10 @@ func (p *makefileGoal) AndroidMkEntries() []AndroidMkEntries {
 				fmt.Fprintf(w, "$(eval $(call copy-one-file,%s,%s))\n", proptools.String(p.inputPath()), p.outputFilePath)
 			},
 		},
+		ExtraEntries: []AndroidMkExtraEntriesFunc{
+			func(ctx AndroidMkExtraEntriesContext, entries *AndroidMkEntries) {
+				entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", !p.installable())
+		}},
 	}}
 }
 
