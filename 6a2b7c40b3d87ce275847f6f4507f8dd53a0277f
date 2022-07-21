@@ -33,6 +33,24 @@
       "message": "This change appears to have broken git_master-art-host/linux-bionic-zipapex when it went into build http://ab/8846645 (that target passed in the previous build).",
       "revId": "6a2b7c40b3d87ce275847f6f4507f8dd53a0277f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d05ff755_df08605f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-21T22:01:38Z",
+      "side": 1,
+      "message": "Is there a tracking bug? If not, can you file a bug and assign it to Sasha please?\n\nIt would also be great to understand why we didn\u0027t catch this issue on presubmit.",
+      "parentUuid": "197885b7_40e39d85",
+      "revId": "6a2b7c40b3d87ce275847f6f4507f8dd53a0277f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
