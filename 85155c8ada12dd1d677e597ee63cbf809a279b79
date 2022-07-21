@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d35dedb0_8066d18e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-21T15:51:43Z",
+      "side": 1,
+      "message": "No, thanks for the context. I\u0027ll resolve this thread for now, and follow-up with Liz when she\u0027s back from OOO.",
+      "parentUuid": "86dae684_088f2bc1",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e35a7d0_82ed607f",
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "I found this is not the only function in paths.go that has the problem, I think the original developer just put functions related to path in paths.go. So I think if we still want to prevent these unnecessary exports, I will open another bug and solve it in following CL.",
       "parentUuid": "3e35a7d0_82ed607f",
+      "range": {
+        "startLine": 1476,
+        "startChar": 5,
+        "endLine": 1476,
+        "endChar": 26
+      },
+      "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fab02a1_95e327d5",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1476,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-21T15:51:43Z",
+      "side": 1,
+      "message": "Yes, please do so in a follow up.",
+      "parentUuid": "847fa7a0_153e67f3",
       "range": {
         "startLine": 1476,
         "startChar": 5,
