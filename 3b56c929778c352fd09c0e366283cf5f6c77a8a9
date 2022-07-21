@@ -16,6 +16,24 @@
       "message": "what target did the previous CL break?",
       "revId": "3b56c929778c352fd09c0e366283cf5f6c77a8a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f1fab94_8a8e37c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-07-21T18:44:56Z",
+      "side": 1,
+      "message": "renderscript_mac and sdk_mac.",
+      "parentUuid": "4db8f286_6a349ae1",
+      "revId": "3b56c929778c352fd09c0e366283cf5f6c77a8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
