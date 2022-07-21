@@ -79,25 +79,36 @@ func imageMutator(ctx BottomUpMutatorContext) {
 		m.ImageMutatorBegin(ctx)
 
 		var variations []string
+        var apiDomains []string
 
 		if m.CoreVariantNeeded(ctx) {
 			variations = append(variations, CoreVariation)
+			apiDomains = append(apiDomains, "system")
 		}
 		if m.RamdiskVariantNeeded(ctx) {
 			variations = append(variations, RamdiskVariation)
+			apiDomains = append(apiDomains, "vendor")
 		}
 		if m.VendorRamdiskVariantNeeded(ctx) {
 			variations = append(variations, VendorRamdiskVariation)
+			apiDomains = append(apiDomains, "vendor")
 		}
 		if m.DebugRamdiskVariantNeeded(ctx) {
 			variations = append(variations, DebugRamdiskVariation)
+			apiDomains = append(apiDomains, "vendor")
 		}
 		if m.RecoveryVariantNeeded(ctx) {
 			variations = append(variations, RecoveryVariation)
+			apiDomains = append(apiDomains, "recovery")
 		}
 
 		extraVariations := m.ExtraImageVariations(ctx)
 		variations = append(variations, extraVariations...)
+
+        for i := 0; i < len(extraVariations); i++ {
+            apiDomains = append(apiDomains, "vendor") // ???
+
+        }
 
 		if len(variations) == 0 {
 			return

@@ -239,7 +239,7 @@ type ImageMutatableModule interface {
 	ExtraVariants() []string
 
 	// AppendExtraVariant returns an extra variant to the list of extra variants this module requires.
-	AppendExtraVariant(extraVariant string)
+	AppendExtraVariant(extraVariant string, apiDomain string)
 
 	// SetRamdiskVariantNeeded sets whether the Ramdisk Variant is needed.
 	SetRamdiskVariantNeeded(b bool)
@@ -341,12 +341,13 @@ func (m *Module) RecoveryAvailable() bool {
 	return Bool(m.Properties.Recovery_available)
 }
 
-func (m *Module) ExtraVariants() []string {
-	return m.Properties.ExtraVersionedImageVariations
+func (m *Module) ExtraVariants() ([]string, []string) {
+	return m.Properties.ExtraVersionedImageVariations, m.Properties.ExtraVersionedImageApiDomains
 }
 
-func (m *Module) AppendExtraVariant(extraVariant string) {
+func (m *Module) AppendExtraVariant(extraVariant string, apiDomain string) {
 	m.Properties.ExtraVersionedImageVariations = append(m.Properties.ExtraVersionedImageVariations, extraVariant)
+	m.Properties.ExtraVersionedImageApiDomains = append(m.Properties.ExtraVersionedImageApiDomains, apiDomain)
 }
 
 func (m *Module) SetRamdiskVariantNeeded(b bool) {
@@ -588,11 +589,11 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 	}
 
 	for _, variant := range android.FirstUniqueStrings(vendorVariants) {
-		m.AppendExtraVariant(VendorVariationPrefix + variant)
+		m.AppendExtraVariant(VendorVariationPrefix + variant, "vendor")
 	}
 
 	for _, variant := range android.FirstUniqueStrings(productVariants) {
-		m.AppendExtraVariant(ProductVariationPrefix + variant)
+		m.AppendExtraVariant(ProductVariationPrefix + variant, "product")
 	}
 
 	m.SetRamdiskVariantNeeded(ramdiskVariantNeeded)
@@ -629,8 +630,8 @@ func (c *Module) RecoveryVariantNeeded(ctx android.BaseModuleContext) bool {
 	return c.Properties.RecoveryVariantNeeded
 }
 
-func (c *Module) ExtraImageVariations(ctx android.BaseModuleContext) []string {
-	return c.Properties.ExtraVersionedImageVariations
+func (c *Module) ExtraImageVariations(ctx android.BaseModuleContext) ([]string, []string) {
+	return c.Properties.ExtraVersionedImageVariations, c.Properties.ExtraVersionedImageApiDomains
 }
 
 func squashVendorSrcs(m *Module) {

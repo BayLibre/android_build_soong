@@ -551,6 +551,8 @@ type Module interface {
 	// TransitivePackagingSpecs returns the PackagingSpecs for this module and any transitive
 	// dependencies with dependency tags for which IsInstallDepNeeded() returns true.
 	TransitivePackagingSpecs() []PackagingSpec
+
+    ApiDomain() string
 }
 
 // Qualified id for a module
@@ -1456,6 +1458,9 @@ type ModuleBase struct {
 
 	// The path to the generated license metadata file for the module.
 	licenseMetadataFile WritablePath
+
+    // The API domain that this module (or module variant) is in
+    apiDomain string
 }
 
 // A struct containing all relevant information about a Bazel target converted via bp2build.
@@ -3654,6 +3659,10 @@ func (m *moduleContext) HostRequiredModuleNames() []string {
 
 func (m *moduleContext) TargetRequiredModuleNames() []string {
 	return m.module.TargetRequiredModuleNames()
+}
+
+func (m *ModuleBase) ApiDomain() string {
+    return m.apiDomain
 }
 
 func init() {
