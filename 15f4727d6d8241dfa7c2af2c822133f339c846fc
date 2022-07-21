@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b52936_ed766ad2",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-07-21T14:19:52Z",
+      "side": 1,
+      "message": "You can remove this when you delete the property",
+      "revId": "15f4727d6d8241dfa7c2af2c822133f339c846fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
