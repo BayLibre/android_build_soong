@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86dae684_088f2bc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-07-21T05:01:23Z",
+      "side": 1,
+      "message": "Hi Jingwen,\nDo you have any other comments?",
+      "parentUuid": "356a2c95_67d71f9e",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e35a7d0_82ed607f",
         "filename": "android/paths.go",
         "patchSetId": 4
