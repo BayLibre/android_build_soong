@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4db8f286_6a349ae1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096830
+      },
+      "writtenOn": "2022-07-21T18:43:15Z",
+      "side": 1,
+      "message": "what target did the previous CL break?",
+      "revId": "3b56c929778c352fd09c0e366283cf5f6c77a8a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
