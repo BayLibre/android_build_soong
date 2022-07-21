@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "197885b7_40e39d85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-21T15:57:59Z",
+      "side": 1,
+      "message": "This CL may be the cause of a build breakage for target art-linux-bionic-zipapex on branch git_master-art-host, starting at ab/8846645: https://android-build.googleplex.com/builds/submitted/8846645/art-linux-bionic-zipapex/latest/view/logs/build.log Can you PTAL?",
+      "revId": "6a2b7c40b3d87ce275847f6f4507f8dd53a0277f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
