@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6b522c_e3e54af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-22T14:40:20Z",
+      "side": 1,
+      "message": "\u003e Oops, need to revert this internally not here.\n\nEven if it breaks in internal builds only, isn\u0027t the usual procedure to revert the origin CL? Won\u0027t the revert automerge the same way?",
+      "revId": "c3d78c88813d6996f8b6f41760b5a371ae8afc26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
