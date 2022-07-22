@@ -51,6 +51,24 @@
       "parentUuid": "197885b7_40e39d85",
       "revId": "6a2b7c40b3d87ce275847f6f4507f8dd53a0277f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc605166_55c6d07d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 33
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-22T13:37:03Z",
+      "side": 1,
+      "message": "Ok, I filed b/239925080 for the build failure.\n\nPaul is looking into the presubmit aspect in b/239923822.",
+      "parentUuid": "d05ff755_df08605f",
+      "revId": "6a2b7c40b3d87ce275847f6f4507f8dd53a0277f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
