@@ -213,6 +213,30 @@
       },
       "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e47d0c65_06513e88",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1476,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-22T10:43:14Z",
+      "side": 1,
+      "message": "Sure, thank you for the advice!",
+      "parentUuid": "3fab02a1_95e327d5",
+      "range": {
+        "startLine": 1476,
+        "startChar": 5,
+        "endLine": 1476,
+        "endChar": 26
+      },
+      "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
