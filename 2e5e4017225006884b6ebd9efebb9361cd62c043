@@ -16,6 +16,23 @@
       "message": "Colin, would you mind taking a look at my logic here, especially with creating the Context and with Peek? Thanks.",
       "revId": "2e5e4017225006884b6ebd9efebb9361cd62c043",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "672c6734_cb83ebc0",
+        "filename": "android/metrics.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-07-22T19:32:28Z",
+      "side": 1,
+      "message": "nit:\ncombine the method invocation and the `if` such that you can reduce the scope of `soongMetrics` variable:\n```\nif soongMetrics, ok :\u003d readSoongMetrics(config); ok {\n    metrics.Modules \u003d ...\n}\n```",
+      "revId": "2e5e4017225006884b6ebd9efebb9361cd62c043",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
