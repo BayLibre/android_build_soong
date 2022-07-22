@@ -16,6 +16,24 @@
       "message": "\u003e Oops, need to revert this internally not here.\n\nEven if it breaks in internal builds only, isn\u0027t the usual procedure to revert the origin CL? Won\u0027t the revert automerge the same way?",
       "revId": "c3d78c88813d6996f8b6f41760b5a371ae8afc26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5091078_7c05b8e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-07-22T15:24:43Z",
+      "side": 1,
+      "message": "That is the procedure for branches monitored by android-build-monitor but git_master-art-host is not one of those so you can do whatever you want.\n\nI wasn\u0027t reverting it to fix the build issue; I\u0027ll leave that up to you and/or the owner of the change to work on. I was reverting it to create a change that I could add to a topic with my change to prove that my change wasn\u0027t the culprit. You can\u0027t mix changes across Gerrits so I abandoned this. As it turned out I didn\u0027t need to do that so I didn\u0027t create a revert downstream either.",
+      "parentUuid": "0a6b522c_e3e54af2",
+      "revId": "c3d78c88813d6996f8b6f41760b5a371ae8afc26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
