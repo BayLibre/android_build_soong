@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e0370f_94c1647d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-07-22T14:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7367ef4_518100b6",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 18
+      },
+      "revId": "8dd133a689b75aadf8730d95ddfb2d097bdb6efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11a2a80b_6c0eb8ba",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-15T15:38:21Z",
       "side": 1,
       "message": "Can you add comments as to why this is needed? The CL description doesn\u0027t make it clear why splitting on spaces could become an issue due due to the rest of the change? Also would be nice to have the unit tests exercise both branches of this conditional",
+      "range": {
+        "startLine": 354,
+        "startChar": 5,
+        "endLine": 354,
+        "endChar": 24
+      },
+      "revId": "8dd133a689b75aadf8730d95ddfb2d097bdb6efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc8bf6b6_1c9b96f5",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-07-22T14:33:23Z",
+      "side": 1,
+      "message": "There was already an existing unit test for the noCoptsTokenization branch of the conditional her https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/cc_library_conversion_test.go;bpv\u003d1;bpt\u003d1;l\u003d1029?q\u003dcc_library_conversion\u0026gsn\u003dTestCcLibrarySpacesInCopts\u0026gs\u003dkythe%3A%2F%2Fandroid.googlesource.com%2Fplatform%2Fsuperproject%3Flang%3Dgo%3Fpath%3Dbuild%2Fsoong%2Fbp2build%23func%2520TestCcLibrarySpacesInCopts",
+      "parentUuid": "11a2a80b_6c0eb8ba",
       "range": {
         "startLine": 354,
         "startChar": 5,
