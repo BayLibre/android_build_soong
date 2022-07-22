@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2bbdc75_919d0b9b",
+        "filename": "bp2build/prebuilt_etc_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-07-22T17:08:23Z",
+      "side": 1,
+      "message": "got rid of sub_dir and installable but I think that filename property is necessary for prebuilt_etc.",
+      "parentUuid": "924ed03f_3ecf1f0b",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 23
+      },
+      "revId": "02f6c6d72d065ea138918389ec8da1c3032be2af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95b56a9e_551b5cdc",
         "filename": "etc/prebuilt_etc.go",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-13T17:17:42Z",
       "side": 1,
       "message": "Maybe we should check for `propName \u003d\u003d \"Src\"` first since this won\u0027t indicate an error condition, and then we can check that `propVal` has type `*string` which we can check and report an error if that\u0027s not the case. Might help prevent an unintentional regression if the type of `src` was to change in the future.\n\nAside: from a reader\u0027s perspective, I wasn\u0027t sure why we are checking that the `propVal` had type `*string` until I got later into the code block, but by switching the `if` statements around, I think that the context can be built a little more clearly which helps me scan the code and quickly understand what it is doing.\n\nE.g.\n\n```\nif propName \u003d\u003d \"Src\" {\n\tprops, ok :\u003d propVal.(*string)\n\tif !ok {\n\t\tctx.PropertyErrorf(\"src\", \"expected property to have type string, but was: %v\", propVal.(type))  // can\u0027t remember if Go lets you print the type like this, but some error messsage along these lines\n\t\tcontinue\n\t}\n\tlabel :\u003d android.BazelLabelForModuleSrcSingle(ctx, *props)\n\tsrc.SetSelectValue(configProp.ConfigurationAxis(), configProp.SelectKey(), label)\n}\t\t\t\n```",
+      "revId": "02f6c6d72d065ea138918389ec8da1c3032be2af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b79bf3de_6b6f2144",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-07-22T17:08:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95b56a9e_551b5cdc",
       "revId": "02f6c6d72d065ea138918389ec8da1c3032be2af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
