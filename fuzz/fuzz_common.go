@@ -48,7 +48,6 @@ type FuzzPackager struct {
 	Packages                android.Paths
 	FuzzTargets             map[string]bool
 	SharedLibInstallStrings []string
-	FuzzType                FuzzType
 }
 
 type FileToZip struct {
@@ -82,6 +81,21 @@ const (
 	// Other.
 	Other = "Other"
 )
+
+func IsValidForTargetFramework(targetFramework string, supportedFrameworks []string) bool {
+	if supportedFrameworks == nil || len(supportedFrameworks) == 0 {
+		// If no framework is specified then all frameworks are supported
+		return true
+	}
+
+	for _, framework := range supportedFrameworks {
+		if strings.Trim(strings.ToLower(framework), " ") == strings.ToLower(targetFramework) {
+			return true
+		}
+	}
+
+	return false
+}
 
 func IsValidConfig(fuzzModule FuzzPackagedModule, moduleName string) bool {
 	var config = fuzzModule.FuzzProperties.Fuzz_config
@@ -156,6 +170,11 @@ type FuzzProperties struct {
 	// Optional dictionary to be installed to the fuzz target's output directory.
 	Dictionary *string `android:"path"`
 	// Config for running the target on fuzzing infrastructure.
+	// Define the fuzzing frameworks this fuzz target can be built for. If
+	// empty then the fuzz target will be available to be  built for all fuzz
+	// frameworks available
+	Fuzzing_frameworks []string `android:"string"`
+
 	Fuzz_config *FuzzConfig
 }
 
@@ -286,9 +305,7 @@ func (s *FuzzPackager) CreateFuzzPackage(ctx android.SingletonContext, archDirs 
 		if fuzzType == Java {
 			zipFileName = "fuzz-java-" + hostOrTarget + "-" + arch + ".zip"
 		}
-		if fuzzType == AFL {
-			zipFileName = "fuzz-afl-" + hostOrTarget + "-" + arch + ".zip"
-		}
+
 		outputFile := android.PathForOutput(ctx, zipFileName)
 
 		s.Packages = append(s.Packages, outputFile)

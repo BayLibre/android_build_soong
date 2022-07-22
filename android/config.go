@@ -957,6 +957,10 @@ func (c *config) DevicePrimaryArchType() ArchType {
 	return Common
 }
 
+func (c *config) FuzzFramework() string {
+	return c.productVariables.FuzzFramework
+}
+
 func (c *config) SanitizeHost() []string {
 	return append([]string(nil), c.productVariables.SanitizeHost...)
 }
