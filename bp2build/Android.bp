@@ -52,6 +52,7 @@ bootstrap_go_package {
         "filegroup_conversion_test.go",
         "genrule_conversion_test.go",
         "gensrcs_conversion_test.go",
+        "hidl_interface_conversion_test.go",
         "java_binary_host_conversion_test.go",
         "java_import_conversion_test.go",
         "java_library_conversion_test.go",
