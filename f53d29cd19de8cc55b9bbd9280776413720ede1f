@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1c74c94_63e344c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-25T16:57:59Z",
+      "side": 1,
+      "message": "Ack, I can do this once this CL lands in aosp",
+      "parentUuid": "5f64a5b2_5fc8acf3",
+      "revId": "f53d29cd19de8cc55b9bbd9280776413720ede1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97d112b3_45255739",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-25T11:07:16Z",
       "side": 1,
       "message": "maybe OR this in a previous if condition, since the actions are the same.",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 74
+      },
+      "revId": "f53d29cd19de8cc55b9bbd9280776413720ede1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1439076b_d80a305f",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-25T16:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97d112b3_45255739",
       "range": {
         "startLine": 53,
         "startChar": 4,
