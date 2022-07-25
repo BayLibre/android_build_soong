@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5718484_b93120ce",
+        "filename": "java/java.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-25T16:34:46Z",
+      "side": 1,
+      "message": "can you add a TODO that these should come from bazel once we\u0027ve migrated these?",
+      "range": {
+        "startLine": 1615,
+        "startChar": 0,
+        "endLine": 1616,
+        "endChar": 39
+      },
+      "revId": "b3a7c88b94d8c30c4e82646059612b1dbb2a2355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff365dd_8a60024f",
+        "filename": "java/java.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 2528,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-25T16:34:46Z",
+      "side": 1,
+      "message": "should we file a separate bug for this?",
+      "range": {
+        "startLine": 2528,
+        "startChar": 0,
+        "endLine": 2528,
+        "endChar": 57
+      },
+      "revId": "b3a7c88b94d8c30c4e82646059612b1dbb2a2355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
