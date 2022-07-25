@@ -954,6 +954,15 @@ func (a *AndroidTest) InstallInTestcases() bool {
 	return true
 }
 
+func (a *AndroidTest) includedInTestSuite(testSuitePrefix string) bool {
+	for _, testSuite := range a.testProperties.Test_suites {
+		if strings.HasPrefix(testSuite, testSuitePrefix) {
+			return true
+		}
+	}
+	return false
+}
+
 func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var configs []tradefed.Config
 	if a.appTestProperties.Instrumentation_target_package != nil {
