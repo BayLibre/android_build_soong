@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c190e6_94132b90",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-25T04:51:54Z",
+      "side": 1,
+      "message": "+eakammer, this CL will add another if-else that will need to be ported to Bazel\u0027s `target_sdk_version` calculation.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "f53d29cd19de8cc55b9bbd9280776413720ede1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
