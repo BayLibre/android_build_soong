@@ -93,6 +93,30 @@
       },
       "revId": "8dd133a689b75aadf8730d95ddfb2d097bdb6efc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e45cbb2f_ce6b6b58",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-07-25T18:18:22Z",
+      "side": 1,
+      "message": "Thanks for the comment I think that clarifies it, for the unit test I meant would it be worth adding an explicit space in your own unit test to confirm where you expect splitting on spaces to happen and where you don\u0027t?",
+      "parentUuid": "cc8bf6b6_1c9b96f5",
+      "range": {
+        "startLine": 354,
+        "startChar": 5,
+        "endLine": 354,
+        "endChar": 24
+      },
+      "revId": "8dd133a689b75aadf8730d95ddfb2d097bdb6efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

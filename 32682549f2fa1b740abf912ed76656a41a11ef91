@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cedf04a0_b704d77e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-07-25T18:18:22Z",
+      "side": 1,
+      "message": "nit:duplicate",
+      "range": {
+        "startLine": 358,
+        "startChar": 9,
+        "endLine": 358,
+        "endChar": 22
+      },
+      "revId": "32682549f2fa1b740abf912ed76656a41a11ef91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
