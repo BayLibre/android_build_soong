@@ -16,6 +16,7 @@ package android
 
 import (
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 type ApiSurface int
@@ -45,6 +46,9 @@ type ApiSurfaceStubLibrary interface {
 	Name(stem string) string
 	ApiSurfaceName() string
 	Version() string
+
+	// TODO: fix this
+	LibraryFactory() ModuleFactory
 }
 
 func init() {
@@ -52,7 +56,42 @@ func init() {
 }
 
 func RegisterApiSurfaceComponents(ctx RegistrationContext) {
+	ctx.PreArchMutators(RegisterPreArchMutators)
 	ctx.PostDepsMutators(RegisterPostDepsMutators)
+}
+
+// Mutator order is important - handle with care
+// TODO: Add more desc
+func RegisterPreArchMutators(ctx RegisterMutatorsContext) {
+	ctx.TopDown("synthetic_source_library", SyntheticSourceLibraryMutator).Parallel()
+}
+
+// TODO: Add more desc
+// This ensures that the stem module exists
+// Cannot do ctx.Rename since the stem module can have different API surface variants
+func SyntheticSourceLibraryMutator(ctx TopDownMutatorContext) {
+	module := ctx.Module()
+	if stub, ok := module.(ApiSurfaceStubLibrary); ok {
+		stem := stub.Stem()
+		if stem == "" {
+			ctx.PropertyErrorf("stem", "stem is a required field")
+		}
+		if !ctx.OtherModuleExists(stem) {
+			// TODO: Fix this, using globals is bad
+			// This creates a single libfoo for (surface,version) libfoo API surface variants
+			newKey := NewCustomOnceKey(stem)
+			ctx.Config().Once(newKey, func() interface{} {
+				props := struct {
+					Name             *string
+					Vendor_available *bool
+				}{
+					Name:             &stem,
+					Vendor_available: proptools.BoolPtr(true), // TODO: fix
+				}
+				return ctx.CreateModule(stub.LibraryFactory(), &props)
+			})
+		}
+	}
 }
 
 // Register a PostDeps mutator that creates a dependency edge from the source module variant to the appropriate stub module

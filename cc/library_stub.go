@@ -48,6 +48,10 @@ func CcApiStubLibraryFactory() android.Module {
 	return module
 }
 
+func (stubLibrary *ApiStubLibrary) LibraryFactory() android.ModuleFactory {
+	return LibrarySharedFactory
+}
+
 type apiStubDecorator struct {
 	*libraryDecorator
 	properties apiStubProperties

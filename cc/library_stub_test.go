@@ -173,6 +173,30 @@ func TestCcApiStubLibraryApiSurfaceFlag(t *testing.T) {
 
 // TODO: Test stem is required or defaults to name
 // TODO: extra args for #llndk #apex
+
+func TestStemModuleCreation(t *testing.T) {
+	bp := `
+		cc_api_stub_library {
+			name: "foo_in_bar_api_surface",
+			stem: "foo",
+			api_domain: "system",
+			symbol_file: "foo.map.txt",
+			version: "29",
+		}
+
+		cc_api_stub_library {
+			name: "foo_in_baz_api_surface",
+			stem: "foo",
+			api_domain: "system",
+			symbol_file: "foo.map.txt",
+			version: "29",
+		}
+	`
+	// Assert that the stem exists
+	result := prepareForCcMultiTreeTest.RunTestWithBp(t, bp)
+	_ = result.ModuleForTests("foo", "android_arm64_armv8-a_shared")
+}
+
 // TODO: Test apex symbols are not visible
 func TestCcLibraryUsesCcApiStubLibrary(t *testing.T) {
 	bp := `
@@ -181,11 +205,6 @@ func TestCcLibraryUsesCcApiStubLibrary(t *testing.T) {
 			symbol_file: "foo.map.txt",
 			api_surface: "vendor",
 			version: "29",
-		}
-		//base library
-		cc_library {
-			name: "foo",
-			vendor_available: true,
 		}
 		cc_library {
 			name: "systemlib",
@@ -228,11 +247,6 @@ func TestCcLibraryUsesVersionedCcApiStubLibrary(t *testing.T) {
 			api_surface: "vendor",
 			version: "29",
 		}
-		//base library
-		cc_library {
-			name: "foo",
-			vendor_available: true,
-		}
 		cc_library {
 			name: "vendorlib",
 			shared_libs: [
@@ -266,12 +280,6 @@ func TestSdkCcLibraryUsesNdkCcApiStubLibrary(t *testing.T) {
 			api_surface: "vendor",
 			version: "29",
 		}
-		//base library
-		cc_library {
-			name: "foo",
-			vendor_available: true,
-		}
-		//base ndk library
 		ndk_library {
 			name: "foo",
 			first_version: "minimum",
