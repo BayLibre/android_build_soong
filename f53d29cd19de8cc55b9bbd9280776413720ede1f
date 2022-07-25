@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f64a5b2_5fc8acf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-25T11:07:16Z",
+      "side": 1,
+      "message": "Can we cherry-pick this into tm-mainline-prod + remove targetSdkVersion:10000 from places that added them after this is merged?",
+      "revId": "f53d29cd19de8cc55b9bbd9280776413720ede1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97d112b3_45255739",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-25T11:07:16Z",
+      "side": 1,
+      "message": "maybe OR this in a previous if condition, since the actions are the same.",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 74
+      },
+      "revId": "f53d29cd19de8cc55b9bbd9280776413720ede1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f0c190e6_94132b90",
