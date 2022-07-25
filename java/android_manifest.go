@@ -48,11 +48,25 @@ func targetSdkVersionForManifestFixer(ctx android.ModuleContext, sdkContext andr
 	if ctx.Config().UnbundledBuildApps() && targetSdkVersionSpec.ApiLevel.IsPreview() {
 		return strconv.Itoa(android.FutureApiLevel.FinalOrFutureInt())
 	}
+	// MTS tests are another exception
+	// MTS tests built on unstable branches should be testable on stable branches
+	if isMtsTest(ctx.Module()) && targetSdkVersionSpec.ApiLevel.IsPreview() {
+		return strconv.Itoa(android.FutureApiLevel.FinalOrFutureInt())
+	}
 	targetSdkVersion, err := targetSdkVersionSpec.EffectiveVersionString(ctx)
 	if err != nil {
 		ctx.ModuleErrorf("invalid targetSdkVersion: %s", err)
 	}
 	return targetSdkVersion
+}
+
+// Helper function that casts android.Module to AndroidTest if possible
+// If this type conversion is possible, it queries whether the test is included in an MTS suite
+func isMtsTest(module android.Module) bool {
+	if test, ok := module.(*AndroidTest); ok {
+		return test.includedInTestSuite("mts")
+	}
+	return false
 }
 
 type ManifestFixerParams struct {
