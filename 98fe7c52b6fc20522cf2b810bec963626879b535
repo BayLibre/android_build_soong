@@ -16,6 +16,98 @@
       "message": "Not really sure how to add automated testing for this because the output depends so heavily on the contents of an actual ZIP.\n\nI\u0027ll look into testing the output of the provider and mocking some files.",
       "revId": "98fe7c52b6fc20522cf2b810bec963626879b535",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8585607b_6cd65107",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-25T16:47:37Z",
+      "side": 1,
+      "message": "is there a reason we can\u0027t do the extraction in GenerateAndroidBuildActions based on ctx.MultiTargets rather than introducing the extra modules/dependencies?",
+      "range": {
+        "startLine": 764,
+        "startChar": 2,
+        "endLine": 764,
+        "endChar": 40
+      },
+      "revId": "98fe7c52b6fc20522cf2b810bec963626879b535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a622251d_40f72025",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-25T16:47:37Z",
+      "side": 1,
+      "message": "optional: extract this into a constant",
+      "range": {
+        "startLine": 765,
+        "startChar": 82,
+        "endLine": 765,
+        "endChar": 99
+      },
+      "revId": "98fe7c52b6fc20522cf2b810bec963626879b535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f491687_2779846c",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-25T16:47:37Z",
+      "side": 1,
+      "message": "should we rm outDir as well?",
+      "range": {
+        "startLine": 971,
+        "startChar": 0,
+        "endLine": 971,
+        "endChar": 47
+      },
+      "revId": "98fe7c52b6fc20522cf2b810bec963626879b535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fffc9b20_b83bf1f9",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-25T16:47:37Z",
+      "side": 1,
+      "message": "if we keep this structure, does this need to be exported to other packages?",
+      "range": {
+        "startLine": 989,
+        "startChar": 5,
+        "endLine": 989,
+        "endChar": 28
+      },
+      "revId": "98fe7c52b6fc20522cf2b810bec963626879b535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
