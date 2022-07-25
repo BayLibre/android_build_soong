@@ -45,7 +45,11 @@ var manifestMergerRule = pctx.AndroidStaticRule("manifestMerger",
 // This enables release builds (that run with TARGET_BUILD_APPS=[val...]) to target APIs that have not yet been finalized as part of an SDK
 func targetSdkVersionForManifestFixer(ctx android.ModuleContext, sdkContext android.SdkContext) string {
 	targetSdkVersionSpec := sdkContext.TargetSdkVersion(ctx)
-	if ctx.Config().UnbundledBuildApps() && targetSdkVersionSpec.ApiLevel.IsPreview() {
+	// Return 10000 for modules targeting "current" if either
+	// 1. The module is built in unbundled mode (TARGET_BUILD_APPS not empty)
+	// 2. The module is an MTS test, which should be testable on stable branches
+	// TODO(b/240294501): Determine the rules for handling test apexes
+	if targetSdkVersionSpec.ApiLevel.IsPreview() && (ctx.Config().UnbundledBuildApps() || isMtsTest(ctx.Module())) {
 		return strconv.Itoa(android.FutureApiLevel.FinalOrFutureInt())
 	}
 	targetSdkVersion, err := targetSdkVersionSpec.EffectiveVersionString(ctx)
@@ -53,6 +57,15 @@ func targetSdkVersionForManifestFixer(ctx android.ModuleContext, sdkContext andr
 		ctx.ModuleErrorf("invalid targetSdkVersion: %s", err)
 	}
 	return targetSdkVersion
+}
+
+// Helper function that casts android.Module to AndroidTest if possible
+// If this type conversion is possible, it queries whether the test is included in an MTS suite
+func isMtsTest(module android.Module) bool {
+	if test, ok := module.(*AndroidTest); ok {
+		return test.includedInTestSuite("mts")
+	}
+	return false
 }
 
 type ManifestFixerParams struct {
