@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91dee344_6dfcd0ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-26T15:03:05Z",
+      "side": 1,
+      "message": "This line is also in [`java/java.go`](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/java.go;l\u003d1851;drc\u003db262f883a986237684ee4725e3ad14f83c395b91).",
+      "revId": "af8bb7008aee02d162a0d6343b610450ac53dffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
