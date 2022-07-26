@@ -299,7 +299,7 @@ func NewRustBindgen(hod android.HostOrDeviceSupported) (*Module, *bindgenDecorat
 		ClangProperties:    cc.RustBindgenClangProperties{},
 	}
 
-	module := NewSourceProviderModule(hod, bindgen, false)
+	module := NewSourceProviderModule(hod, bindgen, false, true)
 
 	return module, bindgen
 }
