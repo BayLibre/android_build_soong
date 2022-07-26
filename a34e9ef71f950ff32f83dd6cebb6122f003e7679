@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4581b1_5a83fa12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-26T20:41:16Z",
+      "side": 1,
+      "message": "Kiyoung, I left comments on some implementation details. Aside, I also started implementing the dep replacement logic as part of b/236192696 in aosp/2151711, but never got around to finishing it till recently\n\nMy understanding of the differences are\n1. This CL does the dep renaming at the DepsMutator phase\n2. The other CL does a dep \"forwarding/redirection\" at the GenerateAndroidBuildActions phase\n\nInitially, I was leaning towards Option 1 as well, but realized that it might not work for apexes, since apex variants are created in the _post_ deps phase",
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe98b206_61ae7464",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2194,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-26T20:41:16Z",
+      "side": 1,
+      "message": "I had a couple of questions about this module\n1. Does this module have any variants?\n2. Is there a single `api_imports` module in the tree? Or will there be distinct `api_imports` modules for each API surface?",
+      "range": {
+        "startLine": 2194,
+        "startChar": 49,
+        "endLine": 2194,
+        "endChar": 60
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9721de7c_0c2bc85f",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2198,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-26T20:41:16Z",
+      "side": 1,
+      "message": "Will this run into a possible \"race\" condition?\n\n`ApiImportsProvider` is populated in the DepsMutator of `api_imports`, and queried in the DepsMutator of `mylib`. But we only create a dependency between `mylib` and `api_imports` _during_ the DepsMutator of `mylib` and not before. IOW, I am not sure if OtherModuleProvider returns a provider deterministically (it will be nil sometimes)",
+      "range": {
+        "startLine": 2196,
+        "startChar": 4,
+        "endLine": 2198,
+        "endChar": 59
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50954fa8_024db78a",
@@ -74,6 +137,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71ae3f01_1eb6b8d8",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-26T20:41:16Z",
+      "side": 1,
+      "message": "Don\u0027t deps on NDK libraries need to be replaced with imported stub libraries as well?",
+      "range": {
+        "startLine": 2267,
+        "startChar": 0,
+        "endLine": 2268,
+        "endChar": 59
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fdd3982_7ba59ae4",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2380,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-26T20:41:16Z",
+      "side": 1,
+      "message": "IIUC, `GetReplaceModuleName` for a library like `libc` will return `libc.apiimport`?\n\nI think we should do this only for shared lib dependencies. And make Static dependencies on an imported stub library raise an exception?\n\n(Similar comment applies to other static deps below as well)",
+      "range": {
+        "startLine": 2380,
+        "startChar": 8,
+        "endLine": 2380,
+        "endChar": 28
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3484dae_a6935353",
         "filename": "cc/library_stub.go",
         "patchSetId": 2
@@ -136,6 +245,29 @@
         "startChar": 0,
         "endLine": 50,
         "endChar": 1
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0853ece_dd7334d7",
+        "filename": "multitree/api_imports.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-26T20:41:16Z",
+      "side": 1,
+      "message": "nit: replace with `apiImportNameSuffix`",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 43
       },
       "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
