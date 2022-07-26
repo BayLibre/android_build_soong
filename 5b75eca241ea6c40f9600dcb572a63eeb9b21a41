@@ -22,6 +22,30 @@
       },
       "revId": "5b75eca241ea6c40f9600dcb572a63eeb9b21a41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecff772c_4143bb70",
+        "filename": "java/aar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-26T17:57:30Z",
+      "side": 1,
+      "message": "In the Bazel rules, these JNI libs are only ever passed from an aar_import to android_library or android_binary, and in Android, android_libraries [cannot be installed on device](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/aar.go;l\u003d900;drc\u003daf8bb7008aee02d162a0d6343b610450ac53dffd). \n\nI think it\u0027s best to replicate this behavior rather than piping this information into the various other java_modules which could depend on an android_library_import.\n\nAdded a comment saying this.",
+      "parentUuid": "7abe4667_5e65338a",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 18
+      },
+      "revId": "5b75eca241ea6c40f9600dcb572a63eeb9b21a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
