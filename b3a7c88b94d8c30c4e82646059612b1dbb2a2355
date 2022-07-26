@@ -24,6 +24,52 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8780bed1_4038b8fb",
+        "filename": "java/java.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 2097,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-07-26T17:38:12Z",
+      "side": 1,
+      "message": "nit: is this intentionally part of this CL?",
+      "range": {
+        "startLine": 2075,
+        "startChar": 0,
+        "endLine": 2097,
+        "endChar": 4
+      },
+      "revId": "b3a7c88b94d8c30c4e82646059612b1dbb2a2355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05687d85_c2978c1a",
+        "filename": "java/java.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 2521,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-07-26T17:38:12Z",
+      "side": 1,
+      "message": "I know this is not necessarily imposed by a style guide here but I really like the practice of having a comment with the name of the function input for this type of non-named input",
+      "range": {
+        "startLine": 2521,
+        "startChar": 2,
+        "endLine": 2521,
+        "endChar": 31
+      },
+      "revId": "b3a7c88b94d8c30c4e82646059612b1dbb2a2355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ff365dd_8a60024f",
