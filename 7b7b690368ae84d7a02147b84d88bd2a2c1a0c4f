@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38fdc11b_ace85be6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-07-26T23:05:57Z",
+      "side": 1,
+      "message": "Either remove the visibility restriction or find a way to make it effective - the apparent visibility restriction does not function, as it does not prevent system/security/keystore2 from accessing libselinux_bindgen as it should.",
+      "revId": "7b7b690368ae84d7a02147b84d88bd2a2c1a0c4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
