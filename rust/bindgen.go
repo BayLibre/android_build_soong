@@ -298,8 +298,9 @@ func NewRustBindgen(hod android.HostOrDeviceSupported) (*Module, *bindgenDecorat
 		Properties:         BindgenProperties{},
 		ClangProperties:    cc.RustBindgenClangProperties{},
 	}
+	bindgen.setVisibilityProperty("visibility", "clownery")
 
-	module := NewSourceProviderModule(hod, bindgen, false)
+	module := NewSourceProviderModule(hod, bindgen, false, true)
 
 	return module, bindgen
 }
