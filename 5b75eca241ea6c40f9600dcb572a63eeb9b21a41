@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7abe4667_5e65338a",
+        "filename": "java/aar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-07-26T17:53:21Z",
+      "side": 1,
+      "message": "We\u0027re covering the most common dependency paths from android_app -\u003e android_library_import by propagating the provider on android_library, but there are other ways for an android_app to depend on an aar (e.g. via java_import). Let\u0027s document this here",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 18
+      },
+      "revId": "5b75eca241ea6c40f9600dcb572a63eeb9b21a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
