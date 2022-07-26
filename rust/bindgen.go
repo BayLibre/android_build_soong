@@ -96,6 +96,8 @@ type BindgenProperties struct {
 	//
 	// "my_bindgen [flags] wrapper_header.h -o [output_path] -- [clang flags]"
 	Custom_bindgen string
+	// TODO docs
+	Visibility []string
 }
 
 type bindgenDecorator struct {
@@ -295,11 +297,12 @@ func RustBindgenHostFactory() android.Module {
 func NewRustBindgen(hod android.HostOrDeviceSupported) (*Module, *bindgenDecorator) {
 	bindgen := &bindgenDecorator{
 		BaseSourceProvider: NewSourceProvider(),
-		Properties:         BindgenProperties{},
+		Properties:         BindgenProperties{Visibility: []string{"//visibility:private"}},
 		ClangProperties:    cc.RustBindgenClangProperties{},
 	}
 
-	module := NewSourceProviderModule(hod, bindgen, false)
+	module := NewSourceProviderModule(hod, bindgen, false, true)
+	android.AddVisibilityProperty(module, "visibility", &bindgen.Properties.Visibility)
 
 	return module, bindgen
 }
