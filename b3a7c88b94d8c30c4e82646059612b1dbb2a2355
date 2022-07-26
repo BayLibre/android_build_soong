@@ -94,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f45b3f_fa99e45a",
+        "filename": "java/java.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 2521,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-26T20:50:09Z",
+      "side": 1,
+      "message": "Internal go best practices recommend considering an options struct when your args get long. Since we\u0027re just calling it, changing it is probably out of scope, but something we should consider when we\u0027re adding another arg to a long list",
+      "parentUuid": "05687d85_c2978c1a",
+      "range": {
+        "startLine": 2521,
+        "startChar": 2,
+        "endLine": 2521,
+        "endChar": 31
+      },
+      "revId": "b3a7c88b94d8c30c4e82646059612b1dbb2a2355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ff365dd_8a60024f",
