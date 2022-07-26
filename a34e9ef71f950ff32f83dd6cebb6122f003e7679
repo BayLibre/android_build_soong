@@ -22,6 +22,30 @@
       },
       "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9de48c_0d06e09a",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2231,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-07-26T04:42:01Z",
+      "side": 1,
+      "message": "It is to use the same function for imported APIs, which is not the snapshot. (Check updateDepsWithApiImports function.)",
+      "parentUuid": "50954fa8_024db78a",
+      "range": {
+        "startLine": 2231,
+        "startChar": 5,
+        "endLine": 2231,
+        "endChar": 25
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
