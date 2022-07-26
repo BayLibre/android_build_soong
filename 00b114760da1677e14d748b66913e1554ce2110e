@@ -39,6 +39,30 @@
       },
       "revId": "00b114760da1677e14d748b66913e1554ce2110e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7875616c_b54ccd5a",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-26T18:11:52Z",
+      "side": 1,
+      "message": "Filed b/240294501 to determine how to handle test apexes\n\nI think if test apexes are built in unbundled mode (TARGET_BUILD_APPS not empty), we would not have to add any additional logic in Soong to special-case test apexes\n\nHowever, that is an \"if\" right now and I am not sure if that will be the case. +satayev for any additional details about the correct way to handle test apexes (either here or in the linked bug)",
+      "parentUuid": "168f64c9_90ceaae2",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "00b114760da1677e14d748b66913e1554ce2110e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
