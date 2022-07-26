@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "010b9200_a262d655",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-26T17:05:01Z",
+      "side": 1,
+      "message": "Yes apparently we can do it there. I wasn\u0027t able to get it working when I first tried that route, but it appears to be working now. There have been a lot of changes in the meantime. Thanks for mentioning this.",
+      "parentUuid": "8585607b_6cd65107",
+      "range": {
+        "startLine": 764,
+        "startChar": 2,
+        "endLine": 764,
+        "endChar": 40
+      },
+      "revId": "98fe7c52b6fc20522cf2b810bec963626879b535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a622251d_40f72025",
         "filename": "java/aar.go",
         "patchSetId": 2
@@ -87,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fbafe72_bd8bf39d",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-26T17:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f491687_2779846c",
+      "range": {
+        "startLine": 971,
+        "startChar": 0,
+        "endLine": 971,
+        "endChar": 47
+      },
+      "revId": "98fe7c52b6fc20522cf2b810bec963626879b535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fffc9b20_b83bf1f9",
@@ -100,6 +148,30 @@
       "writtenOn": "2022-07-25T16:47:37Z",
       "side": 1,
       "message": "if we keep this structure, does this need to be exported to other packages?",
+      "range": {
+        "startLine": 989,
+        "startChar": 5,
+        "endLine": 989,
+        "endChar": 28
+      },
+      "revId": "98fe7c52b6fc20522cf2b810bec963626879b535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7cd7350_d55b90e5",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-26T17:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fffc9b20_b83bf1f9",
       "range": {
         "startLine": 989,
         "startChar": 5,
