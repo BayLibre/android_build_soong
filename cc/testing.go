@@ -20,6 +20,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/genrule"
+	"android/soong/multitree"
 	"android/soong/snapshot"
 )
 
@@ -615,6 +616,7 @@ var PrepareForTestWithCcIncludeVndk = android.GroupFixturePreparers(
 		snapshot.RecoverySnapshotImageSingleton.Init(ctx)
 		RegisterVendorSnapshotModules(ctx)
 		RegisterRecoverySnapshotModules(ctx)
+		multitree.RegisterApiImportsModule(ctx)
 		ctx.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
 	}),
 )
@@ -655,6 +657,8 @@ func CreateTestContext(config android.Config) *android.TestContext {
 	ctx.RegisterModuleType("cc_test_library", TestLibraryFactory)
 	ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
 	ctx.RegisterModuleType("vndk_prebuilt_shared", VndkPrebuiltSharedFactory)
+
+	multitree.RegisterApiImportsModule(ctx)
 
 	snapshot.VendorSnapshotImageSingleton.Init(ctx)
 	snapshot.RecoverySnapshotImageSingleton.Init(ctx)
