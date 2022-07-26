@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b7e5ef_026aa6ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-26T17:18:03Z",
+      "side": 1,
+      "message": "To discuss offline, should MTS tests only build in an \"unbundled\" configuration?",
+      "revId": "00b114760da1677e14d748b66913e1554ce2110e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "168f64c9_90ceaae2",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-26T17:18:03Z",
+      "side": 1,
+      "message": "it looks like test apexes also use the manifest fixer -- while I don\u0027t believe we have any at this time that are part of the mts suite, it makes sense to handle them in the same manner, can you either file a bug + a todo here so we keep track of it or handle it in this CL?",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "00b114760da1677e14d748b66913e1554ce2110e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
