@@ -16,6 +16,24 @@
       "message": "You can remove this when you delete the property",
       "revId": "15f4727d6d8241dfa7c2af2c822133f339c846fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e19ba2_0ccf7c26",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-07-26T21:57:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64b52936_ed766ad2",
+      "revId": "15f4727d6d8241dfa7c2af2c822133f339c846fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
