@@ -46,6 +46,99 @@
       },
       "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba21c78_a4822d63",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2231,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-07-26T04:47:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9f9de48c_0d06e09a",
+      "range": {
+        "startLine": 2231,
+        "startChar": 5,
+        "endLine": 2231,
+        "endChar": 25
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3484dae_a6935353",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-07-26T04:47:52Z",
+      "side": 1,
+      "message": "add a comment about the cc_api_library module?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03b2ea27_57a0087c",
+        "filename": "multitree/api_imports.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-07-26T04:47:52Z",
+      "side": 1,
+      "message": "add a comment how to use these?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef5c2e0e_c378f85f",
+        "filename": "multitree/api_imports.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-07-26T04:47:52Z",
+      "side": 1,
+      "message": "add a comment about the api_imports module?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
