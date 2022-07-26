@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b22c9c36_a88a12dc",
+        "filename": "java/java.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-26T20:03:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5718484_b93120ce",
+      "range": {
+        "startLine": 1615,
+        "startChar": 0,
+        "endLine": 1616,
+        "endChar": 39
+      },
+      "revId": "b3a7c88b94d8c30c4e82646059612b1dbb2a2355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8780bed1_4038b8fb",
         "filename": "java/java.go",
         "patchSetId": 25
@@ -83,6 +107,30 @@
       "writtenOn": "2022-07-25T16:34:46Z",
       "side": 1,
       "message": "should we file a separate bug for this?",
+      "range": {
+        "startLine": 2528,
+        "startChar": 0,
+        "endLine": 2528,
+        "endChar": 57
+      },
+      "revId": "b3a7c88b94d8c30c4e82646059612b1dbb2a2355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "594769a6_d3d277cc",
+        "filename": "java/java.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 2528,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-07-26T20:03:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff365dd_8a60024f",
       "range": {
         "startLine": 2528,
         "startChar": 0,
