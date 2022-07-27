@@ -425,6 +425,25 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	ctx.CreateBazelTargetModuleWithRestrictions(sharedProps,
 		android.CommonAttributes{Name: m.Name()},
 		sharedTargetAttrs, sharedAttrs.Enabled)
+
+	if compilerAttrs.stubsSymbolFile != nil && len(compilerAttrs.stubsVersions.Value) > 0 {
+		stubSuitesProps := bazel.BazelTargetModuleProperties{
+			Rule_class:        "cc_stub_suite",
+			Bzl_load_location: "//build/bazel/rules/cc:cc_library_shared.bzl",
+		}
+		soname := m.Name() + ".so"
+		stubSuitesAttrs := &bazelCcStubSuiteAttributes{
+			Symbol_file:     compilerAttrs.stubsSymbolFile,
+			Versions:        compilerAttrs.stubsVersions,
+			Export_includes: exportedIncludes.Includes,
+			Soname:          &soname,
+			Source_library:  *bazel.MakeLabelAttribute(":" + m.Name()),
+			Deps:            baseAttributes.deps,
+		}
+		ctx.CreateBazelTargetModule(stubSuitesProps,
+			android.CommonAttributes{Name: m.Name() + "_stub_libs"},
+			stubSuitesAttrs)
+	}
 }
 
 // cc_library creates both static and/or shared libraries for a device and/or
@@ -2645,4 +2664,13 @@ type bazelCcLibrarySharedAttributes struct {
 	Stubs_symbol_file *string
 	Stubs_versions    bazel.StringListAttribute
 	Inject_bssl_hash  bazel.BoolAttribute
+}
+
+type bazelCcStubSuiteAttributes struct {
+	Symbol_file     *string
+	Versions        bazel.StringListAttribute
+	Export_includes bazel.StringListAttribute
+	Source_library  bazel.LabelAttribute
+	Soname          *string
+	Deps            bazel.LabelListAttribute
 }
