@@ -59,6 +59,7 @@ type ManifestFixerParams struct {
 	SdkContext            android.SdkContext
 	ClassLoaderContexts   dexpreopt.ClassLoaderContextMap
 	IsLibrary             bool
+	IsUpdatable           bool
 	UseEmbeddedNativeLibs bool
 	UsesNonSdkApis        bool
 	UseEmbeddedDex        bool
@@ -152,6 +153,9 @@ func ManifestFixer(ctx android.ModuleContext, manifest android.Path,
 		args = append(args, "--minSdkVersion ", minSdkVersion)
 		args = append(args, "--replaceMaxSdkVersionPlaceholder ", strconv.Itoa(replaceMaxSdkVersionPlaceholder.FinalOrFutureInt()))
 		args = append(args, "--raise-min-sdk-version")
+	}
+	if params.IsUpdatable {
+		args = append(args, "--override-placeholder-version", DefaultUpdatableModuleVersion)
 	}
 
 	fixedManifest := android.PathForModuleOut(ctx, "manifest_fixer", "AndroidManifest.xml")
