@@ -417,6 +417,7 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 
 	a.aapt.splitNames = a.appProperties.Package_splits
 	a.aapt.LoggingParent = String(a.overridableAppProperties.Logging_parent)
+	a.aapt.isUpdatable = a.Updatable()
 	a.aapt.buildActions(ctx, android.SdkContext(a), a.classLoaderContexts,
 		a.usesLibraryProperties.Exclude_uses_libs, aaptLinkFlags...)
 
