@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "628786ab_cdf223ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-27T06:24:54Z",
+      "side": 1,
+      "message": "As yi-yo\u0027s suggestion, previous [CL](https://android-review.googlesource.com/c/platform/build/soong/+/2145762) would be divided into several CLs to make code review process smooth. This CL focus on the diff of source dump and previous version reference dump.\nThe definition of stages could be found at [document](go/cross-version-abi-check#bookmark\u003did.vpflkul2z968)",
+      "revId": "8afdcf89ec849b770ca60348bba890fda815914a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
