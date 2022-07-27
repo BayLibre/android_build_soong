@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aab561bb_00616db0",
+        "filename": "android/updatable_modules.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-07-27T15:54:57Z",
+      "side": 0,
+      "message": "What is the process for updating this file? Is it documented or scripted somewhere? If so then you will need to find and update that too.",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "b7873a8b0fa950bcab2e90e2e8ce3d4664e91eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
