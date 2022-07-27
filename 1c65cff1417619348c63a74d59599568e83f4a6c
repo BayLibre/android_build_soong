@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t look like something that really belongs in java. It seems to be apex related but is just needed by the java package on which the apex package depends. If so then the best place for it will be in the android package, alongside the android/apex.go file.",
       "revId": "1c65cff1417619348c63a74d59599568e83f4a6c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef3da8a3_622887f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-27T15:18:05Z",
+      "side": 1,
+      "message": "Makes sense, moved it to android package.",
+      "parentUuid": "3baa55bc_3e293a6c",
+      "revId": "1c65cff1417619348c63a74d59599568e83f4a6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
