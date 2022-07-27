@@ -1301,13 +1301,27 @@ func makeCcLibraryTargets(name string, attrs AttrNameToString) []string {
 		"additional_linker_inputs": true,
 		"linkopts":                 true,
 		"strip":                    true,
-		"stubs_symbol_file":        true,
-		"stubs_versions":           true,
 		"inject_bssl_hash":         true,
+		"has_stubs":                true,
+	}
+	STUB_SUITE_ATTRS := map[string]string{
+		"stubs_symbol_file": "symbol_file",
+		"stubs_versions":    "versions",
+		"soname":            "soname",
+		"source_library":    "source_library",
+	}
+	STUB_SUITE_ONLY_ATTRS := map[string]bool{
+		"soname":            true,
+		"source_library":    true,
+		"stubs_symbol_file": true,
+		"stubs_versions":    true,
 	}
 	sharedAttrs := AttrNameToString{}
 	staticAttrs := AttrNameToString{}
 	for key, val := range attrs {
+		if _, stubSuiteOnly := STUB_SUITE_ONLY_ATTRS[key]; stubSuiteOnly {
+			continue
+		}
 		if _, staticOnly := STATIC_ONLY_ATTRS[key]; !staticOnly {
 			sharedAttrs[key] = val
 		}
@@ -1317,6 +1331,17 @@ func makeCcLibraryTargets(name string, attrs AttrNameToString) []string {
 	}
 	sharedTarget := makeBazelTarget("cc_library_shared", name, sharedAttrs)
 	staticTarget := makeBazelTarget("cc_library_static", name+"_bp2build_cc_library_static", staticAttrs)
+
+	if _, hasStubs := attrs["stubs_symbol_file"]; hasStubs {
+		stubSuiteAttrs := AttrNameToString{}
+		for key, _ := range attrs {
+			if _, stubSuiteAttr := STUB_SUITE_ATTRS[key]; stubSuiteAttr {
+				stubSuiteAttrs[STUB_SUITE_ATTRS[key]] = attrs[key]
+			}
+		}
+		stubSuiteTarget := makeBazelTarget("cc_stub_suite", name+"_stub_libs", stubSuiteAttrs)
+		return []string{staticTarget, sharedTarget, stubSuiteTarget}
+	}
 
 	return []string{staticTarget, sharedTarget}
 }
@@ -2441,6 +2466,9 @@ cc_library {
 		},
 		Blueprint: soongCcLibraryPreamble,
 		ExpectedBazelTargets: makeCcLibraryTargets("a", AttrNameToString{
+			"soname":            `"a.so"`,
+			"source_library":    `":a"`,
+			"has_stubs":         `True`,
 			"stubs_symbol_file": `"a.map.txt"`,
 			"stubs_versions": `[
         "28",
