@@ -169,6 +169,9 @@ func bp2buildParseStaticOrSharedProps(ctx android.BazelConversionPathContext, mo
 
 		sharedDeps := maybePartitionExportedAndImplementationsDeps(ctx, true, props.Shared_libs, props.Export_shared_lib_headers, bazelLabelForSharedDeps)
 		attrs.Dynamic_deps.SetSelectValue(axis, config, sharedDeps.export)
+		//if module.Name() == "libadbd"  && !isStatic {
+		//	fmt.Println("**************", "axis:[", axis, "],config:[", config, "],props:[", props, "],sharedDeps:[", sharedDeps.implementation, "]")
+		//}
 		attrs.Implementation_dynamic_deps.SetSelectValue(axis, config, sharedDeps.implementation)
 
 		attrs.Whole_archive_deps.SetSelectValue(axis, config, bazelLabelForWholeDeps(ctx, props.Whole_static_libs))
@@ -611,7 +614,9 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 
 	compilerAttrs := compilerAttributes{}
 	linkerAttrs := linkerAttributes{}
-
+	if module.Name() == "libadbd" {
+		fmt.Println("******* 0", linkerAttrs)
+	}
 	for axis, configs := range axisToConfigs {
 		for config, _ := range configs {
 			var allHdrs []string
@@ -629,6 +634,7 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 				exportHdrs = baseLinkerProps.Export_generated_headers
 
 				(&linkerAttrs).bp2buildForAxisAndConfig(ctx, module.Binary(), axis, config, baseLinkerProps)
+
 			}
 			headers := maybePartitionExportedAndImplementationsDeps(ctx, !module.Binary(), allHdrs, exportHdrs, android.BazelLabelForModuleDeps)
 			implementationHdrs.SetSelectValue(axis, config, headers.implementation)
@@ -777,6 +783,33 @@ func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversion
 	sharedDeps := maybePartitionExportedAndImplementationsDepsExcludes(ctx, !isBinary, sharedLibs, props.Exclude_shared_libs, props.Export_shared_lib_headers, bazelLabelForSharedDepsExcludes)
 	la.dynamicDeps.SetSelectValue(axis, config, sharedDeps.export)
 	la.implementationDynamicDeps.SetSelectValue(axis, config, sharedDeps.implementation)
+	if axis == bazel.NoConfigAxis || axis == bazel.OsConfigurationAxis {
+		depsWithStubs := []bazel.Label{}
+		for _, l := range sharedDeps.implementation.Includes {
+			dep, _ := ctx.ModuleFromName(l.OriginalModuleName)
+			if m, ok := dep.(*Module); ok && m.HasStubsVariants() {
+				depsWithStubs = append(depsWithStubs, l)
+			}
+		}
+		if len(depsWithStubs) > 0 && (axis == bazel.NoConfigAxis || config == bazel.OsAndroid) {
+			implDynamicDeps := bazel.SubtractBazelLabelList(sharedDeps.implementation, bazel.MakeLabelList(depsWithStubs))
+			la.implementationDynamicDeps.SetSelectValue(axis, config, implDynamicDeps)
+
+			stubLibLabels := []bazel.Label{}
+			for _, l := range depsWithStubs {
+				l.Label = l.Label + "_stub_libs_current"
+				stubLibLabels = append(stubLibLabels, l)
+			}
+			if axis == bazel.NoConfigAxis {
+				la.implementationDynamicDeps.SetSelectValue(bazel.InApexAxis, bazel.InApex, bazel.MakeLabelList(stubLibLabels))
+				la.implementationDynamicDeps.SetSelectValue(bazel.InApexAxis, bazel.ConditionsDefaultConfigKey, bazel.MakeLabelList(depsWithStubs))
+			} else if config == bazel.OsAndroid {
+				la.implementationDynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndInApex, bazel.MakeLabelList(stubLibLabels))
+				la.implementationDynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndNonApex, bazel.MakeLabelList(depsWithStubs))
+				la.implementationDynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.ConditionsDefaultConfigKey, bazel.MakeLabelList(make([]bazel.Label, 0)))
+			}
+		}
+	}
 
 	if !BoolDefault(props.Pack_relocations, packRelocationsDefault) {
 		axisFeatures = append(axisFeatures, "disable_pack_relocations")
