@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b40c3b3_493e6a5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-27T04:33:48Z",
+      "side": 1,
+      "message": "Yes, in http://cs/aosp-master/build/make/core/version_util.mk;l\u003d160;rcl\u003d764036b7bca5fe3ad1769186a9ad942870d0387b, PLATFORM_VNDK_VERSION would be set to PLATFORM_SDK_VERSION or PLATFORM_VERSION_CODENAME like 33 or UpsideDownCake based on whether \"PLATFORM_VERSION_CODENAME\" \u003d\u003d \"REL\".\nIt makes sense to use PLATFORM_SDK_VERSION since we no longer use PLATFORM_VERSION_CODENAME as dump folder.",
+      "parentUuid": "78ca546b_0735f7eb",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "bd4defb8affe30c15394b2d3041fbc8ed9d7ff03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2a4da6e1_807aa8f4",
