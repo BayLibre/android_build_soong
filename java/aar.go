@@ -105,6 +105,7 @@ type aapt struct {
 	noticeFile              android.OptionalPath
 	assetPackage            android.OptionalPath
 	isLibrary               bool
+	isUpdatable             bool
 	useEmbeddedNativeLibs   bool
 	useEmbeddedDex          bool
 	usesNonSdkApis          bool
@@ -284,6 +285,7 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext android.SdkCon
 		SdkContext:            sdkContext,
 		ClassLoaderContexts:   classLoaderContexts,
 		IsLibrary:             a.isLibrary,
+		IsUpdatable:           a.isUpdatable,
 		UseEmbeddedNativeLibs: a.useEmbeddedNativeLibs,
 		UsesNonSdkApis:        a.usesNonSdkApis,
 		UseEmbeddedDex:        a.useEmbeddedDex,
