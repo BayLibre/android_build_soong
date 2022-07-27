@@ -74,6 +74,7 @@ bootstrap_go_package {
         "systemserver_classpath_fragment.go",
         "testing.go",
         "tradefed.go",
+        "updatable_modules.go",
     ],
     testSrcs: [
         "androidmk_test.go",
