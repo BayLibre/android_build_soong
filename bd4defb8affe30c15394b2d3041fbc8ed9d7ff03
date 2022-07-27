@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9f892b90_81a8f1a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-27T04:50:51Z",
+      "side": 1,
+      "message": "Ack\nthanks for the explanation",
+      "parentUuid": "3b40c3b3_493e6a5d",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "bd4defb8affe30c15394b2d3041fbc8ed9d7ff03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2a4da6e1_807aa8f4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -109,6 +133,23 @@
       "writtenOn": "2022-07-27T03:19:02Z",
       "side": 1,
       "message": "As yi-yo\u0027s suggestion, previous [CL](2145762) would be divided into several CLs to make code review process smooth. This CL focus on the diff of source dump and current version reference dump.",
+      "revId": "bd4defb8affe30c15394b2d3041fbc8ed9d7ff03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "716afe1c_711f7811",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-27T04:50:51Z",
+      "side": 1,
+      "message": "thank you. the intention 9f the patch is much clearer ",
       "revId": "bd4defb8affe30c15394b2d3041fbc8ed9d7ff03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
