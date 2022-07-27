@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448a0dfb_711ed3f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-27T16:01:01Z",
+      "side": 1,
+      "message": "mention _why_ you are moving this to android package?",
+      "revId": "d76fe52e776665c218e6cfcafb40b02f3d01e68b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b57a755_968f7767",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-27T16:01:01Z",
+      "side": 1,
+      "message": "you will definitely need to submit internally first unfortunately.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "d76fe52e776665c218e6cfcafb40b02f3d01e68b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
