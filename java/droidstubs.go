@@ -17,6 +17,7 @@ package java
 import (
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/google/blueprint/proptools"
@@ -42,9 +43,7 @@ func RegisterStubsBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_stubs_sources", PrebuiltStubsSourcesFactory)
 }
 
-//
 // Droidstubs
-//
 type Droidstubs struct {
 	Javadoc
 	android.SdkBase
@@ -406,9 +405,28 @@ func (d *Droidstubs) apiLevelsGenerationFlags(ctx android.ModuleContext, cmd *an
 	filename := proptools.StringDefault(d.properties.Api_levels_jar_filename, "android.jar")
 
 	var dirs []string
+	var extensions_dir string
+	var extensions_filter string
 	ctx.VisitDirectDepsWithTag(metalavaAPILevelsAnnotationsDirTag, func(m android.Module) {
 		if t, ok := m.(*ExportedDroiddocDir); ok {
+			extRegex := regexp.MustCompile(t.dir.String() + `/extensions/[0-9]+/public/.*\.jar`)
+
+			// Grab the first extensions_dir and extensions_filter we find while
+			// scanning ExportedDroiddocDir.deps; ideally this should be read from
+			// prebuiltApis.properties.Extensions_*
 			for _, dep := range t.deps {
+				if extRegex.MatchString(dep.String()) {
+					if extensions_dir == "" {
+						extensions_dir = t.dir.String() + "/extensions"
+					}
+					cmd.Implicit(dep)
+				}
+				if t.dir.String()+`/extensions/filter.txt` == dep.String() {
+					if extensions_filter == "" {
+						extensions_filter = dep.String()
+					}
+					cmd.Implicit(dep)
+				}
 				if dep.Base() == filename {
 					cmd.Implicit(dep)
 				}
@@ -452,6 +470,17 @@ func (d *Droidstubs) apiLevelsGenerationFlags(ctx android.ModuleContext, cmd *an
 		for _, dir := range dirs {
 			cmd.FlagWithArg("--android-jar-pattern ", fmt.Sprintf("%s/%%/%s/%s", dir, sdkDir, filename))
 		}
+	}
+
+	if extensions_dir != "" && extensions_filter == "" {
+		ctx.ModuleErrorf("found SDK extension dir but no SDK extension filter file")
+	}
+	if extensions_dir == "" && extensions_filter != "" {
+		ctx.ModuleErrorf("found SDK extension filter file but no SDK extension dir")
+	}
+	if extensions_dir != "" && extensions_filter != "" {
+		cmd.FlagWithArg("--sdk-extensions-root ", extensions_dir)
+		cmd.FlagWithArg("--sdk-extensions-filter ", extensions_filter)
 	}
 }
 
