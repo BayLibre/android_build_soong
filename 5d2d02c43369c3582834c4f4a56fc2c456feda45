@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4423a322_c6de5f95",
+        "filename": "java/aar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-27T16:07:05Z",
+      "side": 1,
+      "message": "Ideally, I\u0027d prefer if we don\u0027t pass around updatable property. Long-term I\u0027d argue we should remove it.\n\nWhat manifest fixer cares about is whether or not to pass a placeholder version, not whether or not the manifest is in an updatable app. So, maybe pass a placeholder_version pointer for example?",
+      "revId": "5d2d02c43369c3582834c4f4a56fc2c456feda45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd61581_db320748",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-27T16:07:05Z",
+      "side": 1,
+      "message": "placeholder",
+      "range": {
+        "startLine": 369,
+        "startChar": 13,
+        "endLine": 369,
+        "endChar": 20
+      },
+      "revId": "5d2d02c43369c3582834c4f4a56fc2c456feda45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "694ae48f_689b3fca",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-27T16:07:05Z",
+      "side": 1,
+      "message": "nit: move this into __init__ as self.namifest_template?",
+      "range": {
+        "startLine": 659,
+        "startChar": 2,
+        "endLine": 659,
+        "endChar": 15
+      },
+      "revId": "5d2d02c43369c3582834c4f4a56fc2c456feda45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20383330_c2065270",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-27T16:07:05Z",
+      "side": 1,
+      "message": "why are these named max_sdk_version? It\u0027s not about max_sdk_version :-)",
+      "range": {
+        "startLine": 665,
+        "startChar": 25,
+        "endLine": 665,
+        "endChar": 40
+      },
+      "revId": "5d2d02c43369c3582834c4f4a56fc2c456feda45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
