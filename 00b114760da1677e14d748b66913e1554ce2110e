@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51cafeef_c4b534df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-27T19:42:35Z",
+      "side": 1,
+      "message": "I think building MTS tests in unbundled configuration is not feasible currently b/220675744#comment15\n\n+kunniu to correct me if I am wrong here",
+      "parentUuid": "ce109da5_6d659268",
+      "revId": "00b114760da1677e14d748b66913e1554ce2110e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "168f64c9_90ceaae2",
@@ -97,6 +115,30 @@
       "side": 1,
       "message": "We are talking about apex_test modules here, right? Some of them are built with TARGET_BUILD_APPS set when built via the bash script. However, for regular mts.zip builds there is nothing being set most likely.\n\nIs this actually a problem at the moment though? Spandan do you know? I remember multiple issues with non-installable apk-in-apexes, but I can\u0027t recall test apexes not being installable. (I should know this, but I am blanking out)",
       "parentUuid": "7875616c_b54ccd5a",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "00b114760da1677e14d748b66913e1554ce2110e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b251c6a0_dd9e0690",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-07-27T19:42:35Z",
+      "side": 1,
+      "message": "I am not completely sure either, but I think test apexes are not an issue atm. I would like to propose that we defer this for now and track it in b/240294501\n\nThis did lead me to search old bugreports (b/220675744#comment12), and now I am wondering if `android_test_helper_app` fall within the scope of MTS as well and need similar handling. I have updated the implementation to update the target_sdk_version for `android_test` _and_ `android_test_helper_app`, but lmk if restricting it to `android_test` module type should be sufficient",
+      "parentUuid": "36438fd3_630de096",
       "range": {
         "startLine": 64,
         "startChar": 25,
