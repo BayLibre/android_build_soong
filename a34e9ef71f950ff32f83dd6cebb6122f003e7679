@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b2ce56c_06a92974",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2194,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-07-27T07:41:58Z",
+      "side": 1,
+      "message": "api_imports module is to describe all available modules imported from API surfaces, because it is not suggested to list up all modules from the type.\n\n1. Not for now. Need to discuss further how this can describe set of API surfaces (or orchestrator can just generate one).\n2. Yes, we expect only one api_imports module exists from the inner-tree build.",
+      "parentUuid": "fe98b206_61ae7464",
+      "range": {
+        "startLine": 2194,
+        "startChar": 49,
+        "endLine": 2194,
+        "endChar": 60
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9721de7c_0c2bc85f",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-26T20:41:16Z",
       "side": 1,
       "message": "Will this run into a possible \"race\" condition?\n\n`ApiImportsProvider` is populated in the DepsMutator of `api_imports`, and queried in the DepsMutator of `mylib`. But we only create a dependency between `mylib` and `api_imports` _during_ the DepsMutator of `mylib` and not before. IOW, I am not sure if OtherModuleProvider returns a provider deterministically (it will be nil sometimes)",
+      "range": {
+        "startLine": 2196,
+        "startChar": 4,
+        "endLine": 2198,
+        "endChar": 59
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32300bc1_1a831b6f",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2198,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-07-27T07:41:58Z",
+      "side": 1,
+      "message": "This part I just copied logic from the vendor_snapshot. Not sure if there would be any race condition.",
+      "parentUuid": "9721de7c_0c2bc85f",
       "range": {
         "startLine": 2196,
         "startChar": 4,
@@ -160,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3498965_bedf8d22",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-07-27T07:41:58Z",
+      "side": 1,
+      "message": "Do you mean changes in line 2351?",
+      "parentUuid": "71ae3f01_1eb6b8d8",
+      "range": {
+        "startLine": 2267,
+        "startChar": 0,
+        "endLine": 2268,
+        "endChar": 59
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fdd3982_7ba59ae4",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -171,6 +243,30 @@
       "writtenOn": "2022-07-26T20:41:16Z",
       "side": 1,
       "message": "IIUC, `GetReplaceModuleName` for a library like `libc` will return `libc.apiimport`?\n\nI think we should do this only for shared lib dependencies. And make Static dependencies on an imported stub library raise an exception?\n\n(Similar comment applies to other static deps below as well)",
+      "range": {
+        "startLine": 2380,
+        "startChar": 8,
+        "endLine": 2380,
+        "endChar": 28
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "752770de_bf72f997",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2380,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-07-27T07:41:58Z",
+      "side": 1,
+      "message": "This part is for vendor snapshot, not api import 😊",
+      "parentUuid": "0fdd3982_7ba59ae4",
       "range": {
         "startLine": 2380,
         "startChar": 8,
@@ -263,6 +359,30 @@
       "writtenOn": "2022-07-26T20:41:16Z",
       "side": 1,
       "message": "nit: replace with `apiImportNameSuffix`",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 43
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c9e0ec_9f96963b",
+        "filename": "multitree/api_imports.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-07-27T07:41:58Z",
+      "side": 1,
+      "message": "Thx. Will update from next revision.",
+      "parentUuid": "d0853ece_dd7334d7",
       "range": {
         "startLine": 66,
         "startChar": 34,
