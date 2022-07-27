@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e70b0e2f_2c64593a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-27T04:18:14Z",
+      "side": 1,
+      "message": "I did test it on tm-dev which is after SDK finalization.",
+      "parentUuid": "c75964a5_f3ee9e08",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "bd4defb8affe30c15394b2d3041fbc8ed9d7ff03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2a4da6e1_807aa8f4",
