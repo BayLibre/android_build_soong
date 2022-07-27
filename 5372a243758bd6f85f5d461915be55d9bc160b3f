@@ -16,6 +16,23 @@
       "message": "Hi Joe and Christopher,\nCan you help to review this change?",
       "revId": "5372a243758bd6f85f5d461915be55d9bc160b3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b1d450e_a2116446",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2022-07-27T18:13:55Z",
+      "side": 1,
+      "message": "Can you make this error message include the file name that it\u0027s complaining about, so the user can see it more specifically. This is especially important if the code is generic or comes from a defaults module or something where it isn\u0027t immediately obvious that there\u0027s a string with an underscore in it.",
+      "revId": "5372a243758bd6f85f5d461915be55d9bc160b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
