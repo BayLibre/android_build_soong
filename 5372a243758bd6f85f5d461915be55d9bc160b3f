@@ -33,6 +33,24 @@
       "message": "Can you make this error message include the file name that it\u0027s complaining about, so the user can see it more specifically. This is especially important if the code is generic or comes from a defaults module or something where it isn\u0027t immediately obvious that there\u0027s a string with an underscore in it.",
       "revId": "5372a243758bd6f85f5d461915be55d9bc160b3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b48d3b8_8ec1344b",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-07-27T18:22:07Z",
+      "side": 1,
+      "message": "Yes, file and line are included in error message.\n\nExample of error log:\nhttps://android-build.googleplex.com/builds/pending/P37558590/aosp_arm64-userdebug/latest/view/logs/build_error.log\n\nExample of error source:\nhttps://cs.android.com/android/_/android/platform/frameworks/native/+/8f60fa314f940d54eae96788b7da9fb334d113d7:services/gpuservice/bpfprogs/Android.bp;drc\u003d3306e497c5b6c85164713032de0c789d5a118f89;bpv\u003d0;bpt\u003d0",
+      "parentUuid": "6b1d450e_a2116446",
+      "revId": "5372a243758bd6f85f5d461915be55d9bc160b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
