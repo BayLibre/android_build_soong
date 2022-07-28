@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ff3d37_b0239932",
+        "filename": "cc/binary_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-07-28T18:26:03Z",
+      "side": 1,
+      "message": "testCcWithConfig is deprecated. Is it possible to use testCc in this case?",
+      "revId": "8541bbfd9d19b2963b3aa09138c886a4605a74f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c00ec69_a93aa1f7",
+        "filename": "cc/binary_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-07-28T18:26:03Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "8541bbfd9d19b2963b3aa09138c886a4605a74f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0954064c_fd170671",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-07-28T18:26:03Z",
+      "side": 1,
+      "message": "Is there a difference between `FIXME` and `TODO`? Not a big deal, but just curious why the deviation from convention here if they\u0027re the same. Also, can you file a bug and attach the `b/*` link here?",
+      "revId": "8541bbfd9d19b2963b3aa09138c886a4605a74f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
