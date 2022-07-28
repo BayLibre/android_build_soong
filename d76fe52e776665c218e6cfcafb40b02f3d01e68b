@@ -39,6 +39,30 @@
       },
       "revId": "d76fe52e776665c218e6cfcafb40b02f3d01e68b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68640ab2_4213ed8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-28T09:02:27Z",
+      "side": 1,
+      "message": "yep, wanted to add the merged-in tag from the start to avoid losing all the approvals if i\u0027ll add it later.",
+      "parentUuid": "6b57a755_968f7767",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "d76fe52e776665c218e6cfcafb40b02f3d01e68b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
