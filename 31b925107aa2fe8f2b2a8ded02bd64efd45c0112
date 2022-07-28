@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95edbbd_8324742f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-28T09:42:15Z",
+      "side": 1,
+      "message": "TreeHugger presubmit doesn\u0027t run the git_master-art-host/art-linux-bionic-zipapex CI target (see b/240347986). Can you verify this change using go/abtd?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "31b925107aa2fe8f2b2a8ded02bd64efd45c0112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecebfba4_0e7b2b33",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-28T09:42:15Z",
+      "side": 1,
+      "message": "Delete.",
+      "range": {
+        "startLine": 1861,
+        "startChar": 2,
+        "endLine": 1861,
+        "endChar": 41
+      },
+      "revId": "31b925107aa2fe8f2b2a8ded02bd64efd45c0112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de4130e6_f99d8371",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1891,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-28T09:42:15Z",
+      "side": 1,
+      "message": "This is difficult to read with the nested and negated operations. Please break it up into individual conditions.",
+      "range": {
+        "startLine": 1887,
+        "startChar": 1,
+        "endLine": 1891,
+        "endChar": 38
+      },
+      "revId": "31b925107aa2fe8f2b2a8ded02bd64efd45c0112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7684dae_56344aca",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-28T09:42:15Z",
+      "side": 1,
+      "message": "Please deduplicate this with the body of setCompression. There\u0027s only one usage of compressedEnabled later - can that be replaced with a.isCompressed, and call a.setCompression earlier?",
+      "range": {
+        "startLine": 553,
+        "startChar": 1,
+        "endLine": 553,
+        "endChar": 175
+      },
+      "revId": "31b925107aa2fe8f2b2a8ded02bd64efd45c0112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cdd53a5_67114d37",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-07-28T09:42:15Z",
+      "side": 1,
+      "message": "merge into the previous a.isCompressed block?",
+      "range": {
+        "startLine": 841,
+        "startChar": 1,
+        "endLine": 844,
+        "endChar": 0
+      },
+      "revId": "31b925107aa2fe8f2b2a8ded02bd64efd45c0112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
