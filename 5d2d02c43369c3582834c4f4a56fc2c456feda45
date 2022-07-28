@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea8ada3b_d913f856",
+        "filename": "java/aar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-28T11:14:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4423a322_c6de5f95",
+      "revId": "5d2d02c43369c3582834c4f4a56fc2c456feda45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbd61581_db320748",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-27T16:07:05Z",
       "side": 1,
       "message": "placeholder",
+      "range": {
+        "startLine": 369,
+        "startChar": 13,
+        "endLine": 369,
+        "endChar": 20
+      },
+      "revId": "5d2d02c43369c3582834c4f4a56fc2c456feda45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a421ed_76357c3c",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-28T11:14:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbd61581_db320748",
       "range": {
         "startLine": 369,
         "startChar": 13,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff75ef8c_e0217dcd",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-28T11:14:58Z",
+      "side": 1,
+      "message": "i\u0027d agree, but in this case i would prefer to keep the test consistent with all the other tests in this file",
+      "parentUuid": "694ae48f_689b3fca",
+      "range": {
+        "startLine": 659,
+        "startChar": 2,
+        "endLine": 659,
+        "endChar": 15
+      },
+      "revId": "5d2d02c43369c3582834c4f4a56fc2c456feda45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20383330_c2065270",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-07-27T16:07:05Z",
       "side": 1,
       "message": "why are these named max_sdk_version? It\u0027s not about max_sdk_version :-)",
+      "range": {
+        "startLine": 665,
+        "startChar": 25,
+        "endLine": 665,
+        "endChar": 40
+      },
+      "revId": "5d2d02c43369c3582834c4f4a56fc2c456feda45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a2cfc30_268a844c",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-28T11:14:58Z",
+      "side": 1,
+      "message": "oops, an leftover from copy-pasting, fixed.",
+      "parentUuid": "20383330_c2065270",
       "range": {
         "startLine": 665,
         "startChar": 25,
