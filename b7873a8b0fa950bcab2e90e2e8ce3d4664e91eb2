@@ -22,6 +22,30 @@
       },
       "revId": "b7873a8b0fa950bcab2e90e2e8ce3d4664e91eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc22fa2e_74bd3dbb",
+        "filename": "android/updatable_modules.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-28T11:12:43Z",
+      "side": 0,
+      "message": "AFAIK updating this value will follow the same manual process as updating individual module versions before, don\u0027t think it\u0027s documented anywhere now.",
+      "parentUuid": "aab561bb_00616db0",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "b7873a8b0fa950bcab2e90e2e8ce3d4664e91eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
