@@ -46,6 +46,30 @@
       },
       "revId": "b7873a8b0fa950bcab2e90e2e8ce3d4664e91eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6205b3b_703dc7d6",
+        "filename": "android/updatable_modules.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-28T14:05:31Z",
+      "side": 0,
+      "message": "It\u0027s manual. The comment on the field mentions expected values. So, we\u0027ll have to update udc-mainline-prod fork at some point. There are no automation beyond that.",
+      "parentUuid": "bc22fa2e_74bd3dbb",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "b7873a8b0fa950bcab2e90e2e8ce3d4664e91eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
