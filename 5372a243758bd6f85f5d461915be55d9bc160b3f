@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "738ea208_42d7179c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-07-28T06:59:16Z",
+      "side": 1,
+      "message": "Bypass presubmit because\n1. the error has nothing to do with this change.\nhttps://android-build.googleplex.com/builds/pending/P38057499/build_test/latest/view/logs/build_error.log\n   \u003e FAILED: \n\u003e build/make/core/artifact_path_requirements.mk:30: warning:  device/google/cuttlefish/vsoc_arm_only/phone/aosp_cf.mk produces files inside build/make/target/product/generic_system.mks artifact path requirement. \n\u003e Offending entries:\n\u003e system/etc/permissions/platform_privapp_allowlist_com.android.cellbroadcastservice.xml\n\u003e In file included from build/make/core/main.mk:1355:\n\u003e build/make/core/artifact_path_requirements.mk:30: error: Build failed.\n\u003e 05:18:27 ckati failed with: exit status 1\n   \n2. the same patchset has passed presubmit on Jul 23.",
+      "revId": "5372a243758bd6f85f5d461915be55d9bc160b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b1d450e_a2116446",
