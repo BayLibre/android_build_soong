@@ -1465,6 +1465,43 @@ func determineBuildOS(config *config) {
 
 }
 
+func determineBuildTargets(config *config) (map[OsType][]Target, error) {
+	// Sets up the map of target OSes to the finer grained compilation targets
+	// that are configured from the product variables.
+	targets, err := decodeTargetProductVariables(config)
+	if err != nil {
+		return nil, err
+	}
+
+	// Make the CommonOS OsType available for all products.
+	targets[CommonOS] = []Target{commonTargetMap[CommonOS.Name]}
+
+	var archConfig []archConfig
+	if config.NdkAbis() {
+		archConfig = getNdkAbisConfig()
+	} else if config.AmlAbis() {
+		archConfig = getAmlAbisConfig()
+	}
+
+	if archConfig != nil {
+		androidTargets, err := decodeAndroidArchSettings(archConfig)
+		if err != nil {
+			return nil, err
+		}
+		targets[Android] = androidTargets
+	}
+
+	multilib := make(map[string]bool)
+	for _, target := range targets[Android] {
+		if seen := multilib[target.Arch.ArchType.Multilib]; seen {
+			config.multilibConflicts[target.Arch.ArchType] = true
+		}
+		multilib[target.Arch.ArchType.Multilib] = true
+	}
+
+	return targets, nil
+}
+
 // Convert the arch product variables into a list of targets for each OsType.
 func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 	variables := config.productVariables

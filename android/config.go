@@ -392,38 +392,9 @@ func NewConfig(moduleListFile string, runGoTests bool, outDir, soongOutDir strin
 	}
 
 	determineBuildOS(config)
-
-	// Sets up the map of target OSes to the finer grained compilation targets
-	// that are configured from the product variables.
-	targets, err := decodeTargetProductVariables(config)
+	targets, err := determineBuildTargets(config)
 	if err != nil {
 		return Config{}, err
-	}
-
-	// Make the CommonOS OsType available for all products.
-	targets[CommonOS] = []Target{commonTargetMap[CommonOS.Name]}
-
-	var archConfig []archConfig
-	if config.NdkAbis() {
-		archConfig = getNdkAbisConfig()
-	} else if config.AmlAbis() {
-		archConfig = getAmlAbisConfig()
-	}
-
-	if archConfig != nil {
-		androidTargets, err := decodeAndroidArchSettings(archConfig)
-		if err != nil {
-			return Config{}, err
-		}
-		targets[Android] = androidTargets
-	}
-
-	multilib := make(map[string]bool)
-	for _, target := range targets[Android] {
-		if seen := multilib[target.Arch.ArchType.Multilib]; seen {
-			config.multilibConflicts[target.Arch.ArchType] = true
-		}
-		multilib[target.Arch.ArchType.Multilib] = true
 	}
 
 	// Map of OS to compilation targets.
