@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "126584ff_f7983a4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-29T00:04:01Z",
+      "side": 1,
+      "message": "Done (https://android-build.googleplex.com/builds/abtd/run/L14300000955675153)",
+      "parentUuid": "a95edbbd_8324742f",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "31b925107aa2fe8f2b2a8ded02bd64efd45c0112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecebfba4_0e7b2b33",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-28T09:42:15Z",
       "side": 1,
       "message": "Delete.",
+      "range": {
+        "startLine": 1861,
+        "startChar": 2,
+        "endLine": 1861,
+        "endChar": 41
+      },
+      "revId": "31b925107aa2fe8f2b2a8ded02bd64efd45c0112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d385c8_e53d9bc5",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-29T00:04:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecebfba4_0e7b2b33",
       "range": {
         "startLine": 1861,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35d54159_ebee2f24",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1891,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-29T00:04:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de4130e6_f99d8371",
+      "range": {
+        "startLine": 1887,
+        "startChar": 1,
+        "endLine": 1891,
+        "endChar": 38
+      },
+      "revId": "31b925107aa2fe8f2b2a8ded02bd64efd45c0112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7684dae_56344aca",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2adcacfe_d4a8e1fc",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-29T00:04:01Z",
+      "side": 1,
+      "message": "I have simplified it, but I hesitate to use setCompressed, as it is not strictly equivalent to what is being tested checked here (isCompressed is set also when  a.testOnlyShouldForceCompression(0 is true).",
+      "parentUuid": "f7684dae_56344aca",
+      "range": {
+        "startLine": 553,
+        "startChar": 1,
+        "endLine": 553,
+        "endChar": 175
+      },
+      "revId": "31b925107aa2fe8f2b2a8ded02bd64efd45c0112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cdd53a5_67114d37",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-07-28T09:42:15Z",
       "side": 1,
       "message": "merge into the previous a.isCompressed block?",
+      "range": {
+        "startLine": 841,
+        "startChar": 1,
+        "endLine": 844,
+        "endChar": 0
+      },
+      "revId": "31b925107aa2fe8f2b2a8ded02bd64efd45c0112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "419711fd_ccdd0855",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-07-29T00:04:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cdd53a5_67114d37",
       "range": {
         "startLine": 841,
         "startChar": 1,
