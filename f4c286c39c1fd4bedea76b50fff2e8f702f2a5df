@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05f4bcb5_d2168a7b",
+        "filename": "bp2build/hidl_interface_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-07-29T20:27:23Z",
+      "side": 1,
+      "message": "hild_package_root is not converted, the info is combined with hidl_interface during the conversion of latter and covered in the test as well.",
+      "parentUuid": "bb9843b6_58548f96",
+      "revId": "f4c286c39c1fd4bedea76b50fff2e8f702f2a5df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05c953d8_8961dba6",
         "filename": "bp2build/hidl_interface_conversion_test.go",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-14T16:38:02Z",
       "side": 1,
       "message": "Could you fix the indentation here so that it\u0027s near the same level as the module type name?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "f4c286c39c1fd4bedea76b50fff2e8f702f2a5df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7171571c_f3333a42",
+        "filename": "bp2build/hidl_interface_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-07-29T20:27:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05c953d8_8961dba6",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -54,6 +96,30 @@
       "writtenOn": "2022-07-14T16:38:02Z",
       "side": 1,
       "message": "This doesn\u0027t seem to be used.",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 32
+      },
+      "revId": "f4c286c39c1fd4bedea76b50fff2e8f702f2a5df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44cba8aa_3e4acaf4",
+        "filename": "bp2build/hidl_interface_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-07-29T20:27:23Z",
+      "side": 1,
+      "message": "it is used by hidl_interface.go as a default dep, the test won\u0027t run without this cc_defaults module",
+      "parentUuid": "ca15941f_5758b0e5",
       "range": {
         "startLine": 47,
         "startChar": 12,
