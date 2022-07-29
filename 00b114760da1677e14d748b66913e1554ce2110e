@@ -147,6 +147,30 @@
       },
       "revId": "00b114760da1677e14d748b66913e1554ce2110e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e5232c_0199dd83",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-07-29T13:21:02Z",
+      "side": 1,
+      "message": "Yeah, android_test_helper_app are relevant here as well.",
+      "parentUuid": "b251c6a0_dd9e0690",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "00b114760da1677e14d748b66913e1554ce2110e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
