@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b58d4e0_95da4d1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-07-29T20:37:47Z",
+      "side": 1,
+      "message": "I might reword this to \"Allow bindgen to only preoduce `rlib`s\", because it is more clear to me, but it\u0027s fine if you don\u0027t want to adjust the commit message.",
+      "revId": "d10839ed27910e9a03ee893041c90b620d40ae94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
