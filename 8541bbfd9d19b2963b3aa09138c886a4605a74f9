@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b833303a_17c6f85e",
+        "filename": "cc/binary_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-07-29T19:13:17Z",
+      "side": 1,
+      "message": "`testCc` itself is *also* deprecated. The whole `testCc` infra is still used, though, within the context of adding sibling tests for e.g. bp2build, following what the other tests have been doing. For example: `cc/prebuilt_test.go` in aosp/1845157",
+      "parentUuid": "c1ff3d37_b0239932",
+      "revId": "8541bbfd9d19b2963b3aa09138c886a4605a74f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c00ec69_a93aa1f7",
         "filename": "cc/binary_test.go",
         "patchSetId": 12
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-28T18:26:03Z",
       "side": 1,
       "message": "Same as above",
+      "revId": "8541bbfd9d19b2963b3aa09138c886a4605a74f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e2866bc_a020d38f",
+        "filename": "cc/binary_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-07-29T19:13:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0c00ec69_a93aa1f7",
       "revId": "8541bbfd9d19b2963b3aa09138c886a4605a74f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-07-28T18:26:03Z",
       "side": 1,
       "message": "Is there a difference between `FIXME` and `TODO`? Not a big deal, but just curious why the deviation from convention here if they\u0027re the same. Also, can you file a bug and attach the `b/*` link here?",
+      "revId": "8541bbfd9d19b2963b3aa09138c886a4605a74f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2db493ca_6e470b37",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-07-29T19:13:17Z",
+      "side": 1,
+      "message": "It seems like a historical oversight, but I didn\u0027t want to leave it unnoticed. I can instead put together a small CL to remove it outright.",
+      "parentUuid": "0954064c_fd170671",
       "revId": "8541bbfd9d19b2963b3aa09138c886a4605a74f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

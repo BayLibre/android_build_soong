@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea564f8b_6d24d40f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-07-29T19:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0add2545_2251675b",
+      "revId": "3ed5a13f26db939ac7e5aa754de840297ca283df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea85cb83_17456225",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-16T15:51:50Z",
       "side": 1,
       "message": "Suffix is string, not a string slice, why are we converting it to a slice for the conversion?",
+      "range": {
+        "startLine": 177,
+        "startChar": 9,
+        "endLine": 177,
+        "endChar": 17
+      },
+      "revId": "3ed5a13f26db939ac7e5aa754de840297ca283df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58d83077_6593d24b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-07-29T19:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea85cb83_17456225",
       "range": {
         "startLine": 177,
         "startChar": 9,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26ccee3c_41f8c74f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-07-29T19:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9922797_e30ef868",
+      "range": {
+        "startLine": 961,
+        "startChar": 12,
+        "endLine": 961,
+        "endChar": 19
+      },
+      "revId": "3ed5a13f26db939ac7e5aa754de840297ca283df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a594c2d_02f192be",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5107ea3d_0fef1647",
+        "filename": "cc/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-07-29T19:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a594c2d_02f192be",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 40
+      },
+      "revId": "3ed5a13f26db939ac7e5aa754de840297ca283df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e508b39_94837ecd",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-06-16T15:51:50Z",
       "side": 1,
       "message": "Similarly, this is changing Soong\u0027s properties, we only need to add bp2build support.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 39
+      },
+      "revId": "3ed5a13f26db939ac7e5aa754de840297ca283df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "161a4a8e_4fd677c2",
+        "filename": "cc/linker.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-07-29T19:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e508b39_94837ecd",
       "range": {
         "startLine": 238,
         "startChar": 0,
