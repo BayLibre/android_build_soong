@@ -134,6 +134,30 @@
       },
       "revId": "8afdcf89ec849b770ca60348bba890fda815914a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded374db_16a127bd",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-07-29T16:09:52Z",
+      "side": 1,
+      "message": "Sure, I think it is better and it benefits to next feature I want to implement.",
+      "parentUuid": "9fb138a3_6e034c7e",
+      "range": {
+        "startLine": 1688,
+        "startChar": 62,
+        "endLine": 1688,
+        "endChar": 72
+      },
+      "revId": "8afdcf89ec849b770ca60348bba890fda815914a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
