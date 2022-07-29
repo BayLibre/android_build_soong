@@ -144,8 +144,6 @@ func buildLicenseMetadata(ctx ModuleContext, licenseMetadataFile WritablePath) {
 	if len(outputFiles) > 0 {
 		args = append(args,
 			JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(outputFiles.Strings()), "-t "))
-	} else {
-		args = append(args, fmt.Sprintf("-t //%s:%s", ctx.ModuleDir(), ctx.ModuleName()))
 	}
 
 	// Installed files
