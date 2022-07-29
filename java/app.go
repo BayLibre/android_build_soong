@@ -1022,6 +1022,17 @@ func (a *AndroidTest) OverridablePropertiesDepsMutator(ctx android.BottomUpMutat
 	}
 }
 
+func (a *AndroidTest) IsApiDomainRoot() bool {
+	return true;
+}
+
+func (a *AndroidTest) RootApiDomain() string {
+	if a.appTestProperties.Instrumentation_target_package != nil {
+		return "apk:" + *a.appTestProperties.Instrumentation_target_package
+	}
+	return "apk:" + a.Name()
+}
+
 // android_test compiles test sources and Android resources into an Android application package `.apk` file and
 // creates an `AndroidTest.xml` file to allow running the test with `atest` or a `TEST_MAPPING` file.
 func AndroidTestFactory() android.Module {
@@ -1484,3 +1495,13 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: a.Name()}, attrs)
 
 }
+
+func (a *AndroidApp) IsApiDomainRoot() bool {
+	return true;
+}
+
+func (a *AndroidApp) RootApiDomain() string {
+	return "apk:" + a.Name()
+}
+
+

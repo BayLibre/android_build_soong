@@ -432,6 +432,15 @@ func (j *AndroidAppImport) ShouldSupportSdkVersion(ctx android.BaseModuleContext
 	return nil
 }
 
+func (a *AndroidAppImport) IsApiDomainRoot() bool {
+	return true;
+}
+
+func (a *AndroidAppImport) RootApiDomain() string {
+	return "apk:" + a.Name()
+}
+
+
 func createVariantGroupType(variants []string, variantGroupName string) reflect.Type {
 	props := reflect.TypeOf((*AndroidAppImportProperties)(nil))
 
@@ -537,3 +546,5 @@ func AndroidTestImportFactory() android.Module {
 
 	return module
 }
+
+

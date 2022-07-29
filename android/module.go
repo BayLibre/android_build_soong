@@ -551,6 +551,8 @@ type Module interface {
 	// TransitivePackagingSpecs returns the PackagingSpecs for this module and any transitive
 	// dependencies with dependency tags for which IsInstallDepNeeded() returns true.
 	TransitivePackagingSpecs() []PackagingSpec
+
+	SetApiDomain(apiDomain string)
 }
 
 // Qualified id for a module
@@ -924,6 +926,9 @@ type commonProperties struct {
 
 	// MissingBp2buildDep stores the module names of direct dependency that were not found
 	MissingBp2buildDeps []string `blueprint:"mutated"`
+
+	// ApiDomain stores the API domain that this module will be installed in.
+	ApiDomain *string `blueprint:"mutated"`
 }
 
 // CommonAttributes represents the common Bazel attributes from which properties
@@ -1188,8 +1193,8 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 
 	// if the target is enabled and supports arch variance, determine the defaults based on the module
 	// type's host or device property and host_supported/device_supported properties
-	if mod.commonProperties.ArchSpecific {
-		moduleSupportsDevice := mod.DeviceSupported()
+		if mod.commonProperties.ArchSpecific {
+			moduleSupportsDevice := mod.DeviceSupported()
 		moduleSupportsHost := mod.HostSupported()
 		if moduleSupportsHost && !moduleSupportsDevice {
 			// for host only, we specify as unsupported on android rather than listing all host osSupport
@@ -1456,6 +1461,9 @@ type ModuleBase struct {
 
 	// The path to the generated license metadata file for the module.
 	licenseMetadataFile WritablePath
+
+	// The API domain that this module (or module variant) is in
+	apiDomain string
 }
 
 // A struct containing all relevant information about a Bazel target converted via bp2build.
@@ -1528,6 +1536,14 @@ func (m *ModuleBase) GetUnconvertedBp2buildDeps() []string {
 // GetMissingBp2buildDeps eturns the list of module names that were not found in Android.bp files.
 func (m *ModuleBase) GetMissingBp2buildDeps() []string {
 	return FirstUniqueStrings(m.commonProperties.MissingBp2buildDeps)
+}
+
+func (m *ModuleBase) SetApiDomain(apiDomain string) {
+	m.base().commonProperties.ApiDomain = proptools.StringPtr(apiDomain)
+}
+
+func (m *ModuleBase) ApiDomain() string {
+	return proptools.StringDefault(m.commonProperties.ApiDomain, "")
 }
 
 func (m *ModuleBase) AddJSONData(d *map[string]interface{}) {
@@ -2249,6 +2265,57 @@ func (m *ModuleBase) baseModuleContextFactory(ctx blueprint.BaseModuleContext) b
 		targetPrimary:      m.commonProperties.CompilePrimary,
 		multiTargets:       m.commonProperties.CompileMultiTargets,
 	}
+}
+
+// Common implementation of InstalledInApiDomain based on various flags. For a module type to
+// take advantage of this logic it must also implement the IsInstallableInApiDomain method
+// and return true there for an individual module to be checked against API domains / surfaces.
+func (m *ModuleBase) InstalledInApiDomain() string {
+	// If it's been set explicitly, use that
+	if m.commonProperties.ApiDomain != nil {
+		return *m.commonProperties.ApiDomain
+	}
+	// If not, infer it from the other properties
+	if proptools.BoolDefault(m.commonProperties.Proprietary, false) {
+		return "partition:vendor(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.Vendor, false) {
+		return "partition:vendor(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.Soc_specific, false) {
+		return "partition:vendor(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.Device_specific, false) {
+		return "partition:vendor(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.Product_specific, false) {
+		return "partition:product(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.System_ext_specific, false) {
+		return "partition:system(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.Recovery, false) {
+		return "partition:recovery(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.Ramdisk, false) {
+		return "partition:vendor(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.Debug_ramdisk, false) {
+		return "partition:vendor(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.Proprietary, false) {
+		return "partition:vendor(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.Proprietary, false) {
+		return "partition:vendor(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.Proprietary, false) {
+		return "partition:vendor(ModuleBase)"
+	}
+	if proptools.BoolDefault(m.commonProperties.Proprietary, false) {
+		return "partition:vendor(ModuleBase)"
+	}
+	return "partition:system(ModuleBase-fallthrough)"
 }
 
 func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) {

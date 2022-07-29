@@ -61,6 +61,7 @@ bootstrap_go_package {
         "makevars.go",
         "metrics.go",
         "module.go",
+        "api_domain.go",
         "mutator.go",
         "namespace.go",
         "neverallow.go",
@@ -90,6 +91,7 @@ bootstrap_go_package {
         "testing.go",
         "util.go",
         "variable.go",
+        "variant_helper.go",
         "visibility.go",
     ],
     testSrcs: [

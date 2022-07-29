@@ -75,38 +75,43 @@ func imageMutator(ctx BottomUpMutatorContext) {
 		return
 	}
 
-	if m, ok := ctx.Module().(ImageInterface); ok {
-		m.ImageMutatorBegin(ctx)
+	if original, ok := ctx.Module().(ImageInterface); ok {
+		original.ImageMutatorBegin(ctx)
 
-		var variations []string
-
-		if m.CoreVariantNeeded(ctx) {
-			variations = append(variations, CoreVariation)
-		}
-		if m.RamdiskVariantNeeded(ctx) {
-			variations = append(variations, RamdiskVariation)
-		}
-		if m.VendorRamdiskVariantNeeded(ctx) {
-			variations = append(variations, VendorRamdiskVariation)
-		}
-		if m.DebugRamdiskVariantNeeded(ctx) {
-			variations = append(variations, DebugRamdiskVariation)
-		}
-		if m.RecoveryVariantNeeded(ctx) {
-			variations = append(variations, RecoveryVariation)
+		helper := VariantCreationHelper{}
+		callback := func(variation string, apiDomain string) func(variant Module) {
+			return func(variant Module) {
+				variant.base().setImageVariation(variation)
+				original.SetImageVariation(ctx, variation, variant)
+				variant.SetApiDomain(apiDomain)
+			}
 		}
 
-		extraVariations := m.ExtraImageVariations(ctx)
-		variations = append(variations, extraVariations...)
+		// Common Variations
+		if original.CoreVariantNeeded(ctx) {
+			helper.Add(CoreVariation, callback(CoreVariation, "partition:system"))
+		}
+		if original.RamdiskVariantNeeded(ctx) {
+			helper.Add(RamdiskVariation, callback(RamdiskVariation, "partition:vendor"))
+		}
+		if original.VendorRamdiskVariantNeeded(ctx) {
+			helper.Add(VendorRamdiskVariation, callback(VendorRamdiskVariation, "partition:vendor"))
+		}
+		if original.DebugRamdiskVariantNeeded(ctx) {
+			helper.Add(DebugRamdiskVariation, callback(DebugRamdiskVariation, "partition:vendor"))
+		}
+		if original.RecoveryVariantNeeded(ctx) {
+			helper.Add(RecoveryVariation, callback(RecoveryVariation, "partition:recovery"))
+		}
+		// TODO: IsProductSpecific?
 
-		if len(variations) == 0 {
-			return
+		// Extra variations
+		for _, variation := range original.ExtraImageVariations(ctx) {
+			helper.Add(variation, callback(variation, "partition:vendor"))
 		}
 
-		mod := ctx.CreateVariations(variations...)
-		for i, v := range variations {
-			mod[i].base().setImageVariation(v)
-			m.SetImageVariation(ctx, v, mod[i])
-		}
+		helper.Create(ctx)
 	}
 }
+
+

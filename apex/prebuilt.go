@@ -448,6 +448,16 @@ func (p *prebuiltCommon) apexInfoMutator(mctx android.TopDownMutatorContext) {
 	}
 }
 
+// From ApiDomainRootModule interface
+func (p *prebuiltCommon) IsApiDomainRoot() bool {
+	return true
+}
+
+// From ApiDomainRootModule interface
+func (p *prebuiltCommon) RootApiDomain() string {
+	return "apex:" + proptools.StringDefault(p.prebuiltCommonProperties.Apex_name, p.ModuleBase.BaseModuleName())
+}
+
 // prebuiltApexSelectorModule is a private module type that is only created by the prebuilt_apex
 // module. It selects the apex to use and makes it available for use by prebuilt_apex and the
 // deapexer.

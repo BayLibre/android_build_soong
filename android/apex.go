@@ -555,12 +555,12 @@ func mergeApexVariations(ctx PathContext, apexInfos []ApexInfo) (merged []ApexIn
 
 // CreateApexVariations mutates a given module into multiple apex variants each of which is for an
 // apexBundle (and/or the platform) where the module is part of.
-func CreateApexVariations(mctx BottomUpMutatorContext, module ApexModule) []Module {
+func CreateApexVariations(mctx BottomUpMutatorContext, module ApexModule) {
 	base := module.apexModuleBase()
 
 	// Shortcut
 	if len(base.apexInfos) == 0 {
-		return nil
+		return
 	}
 
 	// Do some validity checks.
@@ -592,29 +592,40 @@ func CreateApexVariations(mctx BottomUpMutatorContext, module ApexModule) []Modu
 	defaultVariation := ""
 	mctx.SetDefaultDependencyVariation(&defaultVariation)
 
-	variations := []string{defaultVariation}
-	for _, a := range apexInfos {
-		variations = append(variations, a.ApexVariationName)
-	}
-	modules := mctx.CreateVariations(variations...)
-	for i, mod := range modules {
-		platformVariation := i == 0
-		if platformVariation && !mctx.Host() && !mod.(ApexModule).AvailableFor(AvailableToPlatform) {
+	// Create the variants
+	helper := VariantCreationHelper{}
+
+	// The platform variant
+	helper.Add(defaultVariation, func (variant Module) {
+		if !mctx.Host() && !variant.(ApexModule).AvailableFor(AvailableToPlatform) {
 			// Do not install the module for platform, but still allow it to output
 			// uninstallable AndroidMk entries in certain cases when they have side
 			// effects.  TODO(jiyong): move this routine to somewhere else
-			mod.MakeUninstallable()
+			variant.MakeUninstallable()
 		}
-		if !platformVariation {
-			mctx.SetVariationProvider(mod, ApexInfoProvider, apexInfos[i-1])
-		}
-	}
+	})
 
+	// The apex variants
+	for _, ai := range apexInfos {
+		apexInfo := ai
+		helper.Add(apexInfo.ApexVariationName, func(variant Module) {
+			mctx.SetVariationProvider(variant, ApexInfoProvider, apexInfo)
+			// The API domain for the contents of an apex strictly speaking is the apex itself.
+			// However, because we merge the variants for modules in an apex that are all the same,
+			// at this point we don't actually know which apex this is going to go into on a
+			// per-apex basis.  We'll use a sentinel name here, which we'll recognize later in
+			// the enforcement, which will require that the calls here and below in the dependency
+			// graph only use APEX-sanctioned APIS and not do private calls into the apex itself.
+			apiDomain := "apex:" + strings.Join(apexInfo.InApexModules, ",")
+			variant.SetApiDomain(apiDomain)
+		})
+	}
+	helper.Create(mctx)
+
+	// Create the alias variants
 	for _, alias := range aliases {
 		mctx.CreateAliasVariation(alias[0], alias[1])
 	}
-
-	return modules
 }
 
 // UpdateUniqueApexVariationsForDeps sets UniqueApexVariationsForDeps if any dependencies that are

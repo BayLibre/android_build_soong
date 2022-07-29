@@ -2084,3 +2084,8 @@ func (j *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		}
 	}
 }
+
+func (m *Module) IsInstallableInApiDomain() bool {
+	return Bool(m.properties.Installable)
+}
+

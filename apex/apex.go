@@ -2584,6 +2584,18 @@ func (o *OverrideApex) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: o.Name()}, &attrs)
 }
 
+// from ApiDomainRootModule interface
+func (a *OverrideApex) IsApiDomainRoot() bool {
+	return true
+}
+
+// from ApiDomainRootModule interface
+func (a *OverrideApex) RootApiDomain() string {
+	// TODO: Should this be the one that's being overridden or the ultimate package name?
+	// Implementing the check mutator should give the answer to that.
+	return "apex:" + a.Name()
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Vality check routines
 //
@@ -3527,6 +3539,16 @@ type bazelApexBundleAttributes struct {
 type convertedNativeSharedLibs struct {
 	Native_shared_libs_32 bazel.LabelListAttribute
 	Native_shared_libs_64 bazel.LabelListAttribute
+}
+
+// from ApiDomainRootModule interface
+func (a *apexBundle) IsApiDomainRoot() bool {
+	return true
+}
+
+// from ApiDomainRootModule interface
+func (a *apexBundle) RootApiDomain() string {
+	return "apex:" + a.Name()
 }
 
 // ConvertWithBp2build performs bp2build conversion of an apex
