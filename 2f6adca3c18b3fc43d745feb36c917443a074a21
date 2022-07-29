@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d24dfb83_bed52a53",
+        "filename": "java/aar.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-29T19:56:43Z",
+      "side": 1,
+      "message": "given that this is the default behavior in bazel, can you file a bug for us to evaluate the impact of either swapping the default here or the migration to bazel?",
+      "range": {
+        "startLine": 634,
+        "startChar": 1,
+        "endLine": 636,
+        "endChar": 18
+      },
+      "revId": "2f6adca3c18b3fc43d745feb36c917443a074a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb15fa8c_d356ad54",
+        "filename": "java/aar_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-29T19:56:43Z",
+      "side": 1,
+      "message": "can you add the license header here?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "2f6adca3c18b3fc43d745feb36c917443a074a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a93b662_49bd4128",
+        "filename": "java/aar_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-29T19:56:43Z",
+      "side": 1,
+      "message": "should we instead make sure that there is not a zip in this case?",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "2f6adca3c18b3fc43d745feb36c917443a074a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c0a6cbb_f9b653d3",
+        "filename": "java/aar_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-07-29T19:56:43Z",
+      "side": 1,
+      "message": "can we also check the provider is set as expected?",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "2f6adca3c18b3fc43d745feb36c917443a074a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
