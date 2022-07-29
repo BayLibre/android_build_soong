@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9816c4a3_be59a672",
+        "filename": "apex/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-07-29T08:59:03Z",
+      "side": 1,
+      "message": "I\u0027m in the process of moving the default version from apex to android package in aosp/2167105. This is done to support overriding the versions in apks: aosp/2167106\n\nCould you please rebase this change on top of aosp/2167105 so i don\u0027t break it when i submit it?",
+      "revId": "98c405b19eeda1ff87035e1bdc75ae8810d0b38e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
