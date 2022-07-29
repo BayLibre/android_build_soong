@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/apex"
 	cc_config "android/soong/cc/config"
 	java_config "android/soong/java/config"
 
@@ -27,6 +28,9 @@ func CreateSoongInjectionFiles(cfg android.Config, metrics CodegenMetrics) []Baz
 
 	files = append(files, newFile("java_toolchain", GeneratedBuildFileName, "")) // Creates a //java_toolchain package.
 	files = append(files, newFile("java_toolchain", "constants.bzl", java_config.BazelJavaToolchainVars(cfg)))
+
+	files = append(files, newFile("apex_toolchain", GeneratedBuildFileName, "")) // Creates a //apex_toolchain package.
+	files = append(files, newFile("apex_toolchain", "constants.bzl", apex.ExportedStarlarkConstants()))
 
 	files = append(files, newFile("metrics", "converted_modules.txt", strings.Join(metrics.convertedModules, "\n")))
 
