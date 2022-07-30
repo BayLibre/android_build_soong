@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7957b7_a24e3f34",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-30T06:17:53Z",
+      "side": 1,
+      "message": "with this change, when comparing prev dump, this var becomes something like \"libfoo.33\", which affects the build rule output here\n\nhttps://source.corp.google.com/android/build/soong/cc/builder.go;rcl\u003d70f80153c516f1cc27df52fd59c9e86e77d86691;l\u003d285\n\nwe need to update the build rule too!",
+      "range": {
+        "startLine": 927,
+        "startChar": 1,
+        "endLine": 927,
+        "endChar": 8
+      },
+      "revId": "4572c79b5493c3d41dfccb1a8a2119602b56069e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c40c3ca_f5c3eb86",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-30T06:17:53Z",
+      "side": 1,
+      "message": "move to L1639",
+      "revId": "4572c79b5493c3d41dfccb1a8a2119602b56069e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c72b00_60a9dd6c",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-30T06:17:53Z",
+      "side": 1,
+      "message": "been",
+      "range": {
+        "startLine": 1628,
+        "startChar": 5,
+        "endLine": 1628,
+        "endChar": 7
+      },
+      "revId": "4572c79b5493c3d41dfccb1a8a2119602b56069e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc5e126_879137f7",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-07-30T06:17:53Z",
+      "side": 1,
+      "message": "existence of the PLATFORM_SDK_VERION dump directory.",
+      "range": {
+        "startLine": 1629,
+        "startChar": 56,
+        "endLine": 1629,
+        "endChar": 96
+      },
+      "revId": "4572c79b5493c3d41dfccb1a8a2119602b56069e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
