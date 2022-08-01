@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5516250b_e1cb6977",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-08-01T15:26:48Z",
+      "side": 1,
+      "message": "nit: `module.properties` is cluttering this block a lot. An earlier `props :\u003d module.properties` would likely aid readability.",
+      "revId": "f22d9a99c2e04832fa70e306de1b08e6de25b183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
