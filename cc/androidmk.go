@@ -405,6 +405,7 @@ func (test *testBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 			entries.SetBool("LOCAL_IS_UNIT_TEST", true)
 		}
 
+		entries.SetBoolIfTrue("LOCAL_IS_LOCAL_ONLY", Bool(test.Properties.Test_options.Local_only))
 		entries.SetBoolIfTrue("LOCAL_COMPATIBILITY_PER_TESTCASE_DIRECTORY", Bool(test.Properties.Per_testcase_directory))
 		if len(test.Properties.Data_bins) > 0 {
 			entries.AddStrings("LOCAL_TEST_DATA_BINS", test.Properties.Data_bins...)

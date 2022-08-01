@@ -107,6 +107,9 @@ type shBinaryProperties struct {
 type TestOptions struct {
 	// If the test is a hostside(no device required) unittest that shall be run during presubmit check.
 	Unit_test *bool
+
+	// If the test can only run locally (disable Bazel remote mode).
+	Local_only *bool
 }
 
 type TestProperties struct {
@@ -467,6 +470,7 @@ func (s *ShTest) AndroidMkEntries() []android.AndroidMkEntries {
 				if Bool(s.testProperties.Test_options.Unit_test) {
 					entries.SetBool("LOCAL_IS_UNIT_TEST", true)
 				}
+				entries.SetBoolIfTrue("LOCAL_IS_LOCAL_ONLY", Bool(s.testProperties.Test_options.Local_only))
 				entries.SetBoolIfTrue("LOCAL_COMPATIBILITY_PER_TESTCASE_DIRECTORY", Bool(s.testProperties.Per_testcase_directory))
 			},
 		},

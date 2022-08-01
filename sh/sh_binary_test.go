@@ -174,6 +174,26 @@ func TestShTestHost(t *testing.T) {
 	android.AssertBoolEquals(t, "LOCAL_IS_UNIT_TEST", true, actualData)
 }
 
+func TestShTestHost_localOnly(t *testing.T) {
+	ctx, _ := testShBinary(t, `
+		sh_test_host {
+			name: "foo",
+			src: "test.sh",
+			filename: "test.sh",
+			test_options: {
+				local_only: true,
+			},
+		}
+	`)
+
+	buildOS := ctx.Config().BuildOS.String()
+	mod := ctx.ModuleForTests("foo", buildOS+"_x86_64").Module().(*ShTest)
+	entries := android.AndroidMkEntriesForTest(t, ctx, mod)[0]
+
+	actualData, _ := strconv.ParseBool(entries.EntryMap["LOCAL_IS_LOCAL_ONLY"][0])
+	android.AssertBoolEquals(t, "LOCAL_IS_LOCAL_ONLY", true, actualData)
+}
+
 func TestShTestHost_dataDeviceModules(t *testing.T) {
 	ctx, config := testShBinary(t, `
 		sh_test_host {

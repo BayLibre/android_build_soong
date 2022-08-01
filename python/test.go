@@ -36,6 +36,9 @@ func registerPythonTestComponents(ctx android.RegistrationContext) {
 type TestOptions struct {
 	// If the test is a hostside(no device required) unittest that shall be run during presubmit check.
 	Unit_test *bool
+
+	// If the test can only run locally (disable Bazel remote mode).
+	Local_only *bool
 }
 
 type TestProperties struct {
