@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8228acc2_6451431c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-08-01T02:11:50Z",
+      "side": 1,
+      "message": "We are defining API surfaces with stable interfaces, such as SDK, NDK and LLNDK. Those are already provided as stub libraries. I don\u0027t think we need apex variants for those stub libraries.\nAlso, soong can generate apex variants for non-stub files in post deps mutator after the dep renaming in option 1.\nAm I missing something?",
+      "parentUuid": "bc4581b1_5a83fa12",
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe98b206_61ae7464",
