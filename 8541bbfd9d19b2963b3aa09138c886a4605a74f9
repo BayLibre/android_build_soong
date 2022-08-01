@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b26e0148_2eaeab6c",
+        "filename": "cc/binary_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-08-01T19:03:17Z",
+      "side": 1,
+      "message": "Discussed offline. Not worrying about it because all of Soong is deprecated",
+      "parentUuid": "b833303a_17c6f85e",
+      "revId": "8541bbfd9d19b2963b3aa09138c886a4605a74f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c00ec69_a93aa1f7",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "It seems like a historical oversight, but I didn\u0027t want to leave it unnoticed. I can instead put together a small CL to remove it outright.",
       "parentUuid": "0954064c_fd170671",
+      "revId": "8541bbfd9d19b2963b3aa09138c886a4605a74f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89ebb95_0916c975",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-08-01T19:03:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2db493ca_6e470b37",
       "revId": "8541bbfd9d19b2963b3aa09138c886a4605a74f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
