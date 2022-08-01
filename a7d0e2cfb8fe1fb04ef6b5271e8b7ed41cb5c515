@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded9ad8e_c309c1e8",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-01T04:33:12Z",
+      "side": 1,
+      "message": "we don\u0027t need to pass in this flag if we are already passing in \"vendorSuffix\".\n\n\"previousVersionDiff\" would just be `vendorSuffix !\u003d \"\"`",
+      "range": {
+        "startLine": 924,
+        "startChar": 42,
+        "endLine": 924,
+        "endChar": 66
+      },
+      "revId": "a7d0e2cfb8fe1fb04ef6b5271e8b7ed41cb5c515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9713dbd_02bfb6d5",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-01T04:33:12Z",
+      "side": 1,
+      "message": "this append \".\" should happen in the sourceAbiDiff() body, as this is its implementation detail.",
+      "range": {
+        "startLine": 1685,
+        "startChar": 35,
+        "endLine": 1685,
+        "endChar": 39
+      },
+      "revId": "a7d0e2cfb8fe1fb04ef6b5271e8b7ed41cb5c515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

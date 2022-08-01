@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ae24aae_2fc8e344",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-01T04:33:12Z",
+      "side": 1,
+      "message": "but the problem is that we shouldn\u0027t be suggesting people to update the reference ABI dump in this case?\n\nI think we need entirely different error message in the build rules fro this case",
+      "parentUuid": "f521e38d_8c8dd9e9",
+      "range": {
+        "startLine": 927,
+        "startChar": 1,
+        "endLine": 927,
+        "endChar": 8
+      },
+      "revId": "4572c79b5493c3d41dfccb1a8a2119602b56069e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c40c3ca_f5c3eb86",
         "filename": "cc/library.go",
         "patchSetId": 5
