@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff5477a_5a5d2909",
+        "filename": "bp2build/hidl_interface_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-01T15:16:19Z",
+      "side": 1,
+      "message": "Ack. Not quite sure what I was thinking about here.",
+      "parentUuid": "05f4bcb5_d2168a7b",
+      "revId": "f4c286c39c1fd4bedea76b50fff2e8f702f2a5df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05c953d8_8961dba6",
