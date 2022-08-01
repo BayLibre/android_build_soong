@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c26e9aa_6d5875b8",
+        "filename": "bp2build/aar_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-08-01T21:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e3886a5_db93d1d3",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 85
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e837a621_62c71076",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-01T17:14:23Z",
       "side": 1,
       "message": "nit: does this need to be exported?",
+      "range": {
+        "startLine": 934,
+        "startChar": 15,
+        "endLine": 934,
+        "endChar": 43
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bba2246_e4f8c175",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-08-01T21:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e837a621_62c71076",
       "range": {
         "startLine": 934,
         "startChar": 15,
@@ -87,6 +135,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3e0ef16_54261d4d",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-08-01T21:02:50Z",
+      "side": 1,
+      "message": "Discussed offline, we\u0027re not sure if there\u0027s a good way to emit warnings in Soong, we don\u0027t expect this to lead to build failures due to the very structured way android_library_import modules are used in aosp",
+      "parentUuid": "9a6e6626_088aa0f6",
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03d3f6be_f51e9ffd",
@@ -100,6 +166,30 @@
       "writtenOn": "2022-08-01T17:14:23Z",
       "side": 1,
       "message": "nit: could we reuse depName here?",
+      "range": {
+        "startLine": 958,
+        "startChar": 54,
+        "endLine": 958,
+        "endChar": 78
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea05b9d4_89a23617",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-08-01T21:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03d3f6be_f51e9ffd",
       "range": {
         "startLine": 958,
         "startChar": 54,
@@ -206,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bd781ca_7ac4197e",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-08-01T21:02:50Z",
+      "side": 1,
+      "message": "I believe this shows up when converting some of the androidx import but not for the imports initially converted by this CL... Trying to weigh the pros and cons, I like using the starlark version here since it is \"the right thing to do\", on the other hand there\u0027s a risk we\u0027ll have to flip back and forth if it turns out this is not working later... I\u0027m tempted to leave as is for now",
+      "parentUuid": "4f0cc3c6_d6ef5be5",
+      "range": {
+        "startLine": 969,
+        "startChar": 3,
+        "endLine": 969,
+        "endChar": 56
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa164659_92536470",
         "filename": "java/aar.go",
         "patchSetId": 8
@@ -217,6 +331,30 @@
       "writtenOn": "2022-08-01T17:14:23Z",
       "side": 1,
       "message": "can you add a test for this case?",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 989,
+        "endChar": 2
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b729c387_6649e418",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-08-01T21:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa164659_92536470",
       "range": {
         "startLine": 987,
         "startChar": 0,
@@ -244,6 +382,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b889ea0_28954627",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2324,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-08-01T21:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf2387c4_313d204a",
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69eb3fb2_b373f06d",
@@ -257,6 +413,24 @@
       "writtenOn": "2022-08-01T14:06:21Z",
       "side": 1,
       "message": "Same as above about copying Libs.",
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed24b9c_c7c2594d",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2329,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-08-01T21:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69eb3fb2_b373f06d",
       "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

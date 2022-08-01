@@ -22,6 +22,30 @@
       },
       "revId": "28ee99f3c3ff9e0c1fc1b6cc581b0bc2d774ed11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30c559b_31270765",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-08-01T21:02:50Z",
+      "side": 0,
+      "message": "I think we mistakenly thought that android_binary had similar restrictions as java_library/android_library about not allowing deps without sources, but it\u0027s actually more like java_binary and doesn\u0027t enforce this",
+      "parentUuid": "c9028a36_fb61052e",
+      "range": {
+        "startLine": 1440,
+        "startChar": 0,
+        "endLine": 1446,
+        "endChar": 2
+      },
+      "revId": "28ee99f3c3ff9e0c1fc1b6cc581b0bc2d774ed11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
