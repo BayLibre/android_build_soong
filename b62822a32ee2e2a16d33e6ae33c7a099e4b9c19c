@@ -22,6 +22,30 @@
       },
       "revId": "b62822a32ee2e2a16d33e6ae33c7a099e4b9c19c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83969a31_5add4fb2",
+        "filename": "android/updatable_modules.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-08-01T15:30:37Z",
+      "side": 1,
+      "message": "Done, will update internal master as well",
+      "parentUuid": "5f57bb20_41ff1e76",
+      "range": {
+        "startLine": 17,
+        "startChar": 22,
+        "endLine": 17,
+        "endChar": 47
+      },
+      "revId": "b62822a32ee2e2a16d33e6ae33c7a099e4b9c19c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
