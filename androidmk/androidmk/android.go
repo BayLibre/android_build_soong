@@ -195,6 +195,8 @@ func init() {
 			// TODO: does this property matter in the license module?
 			"LOCAL_LICENSE_CONDITIONS": "android_license_conditions",
 			"LOCAL_GENERATED_SOURCES":  "generated_sources",
+
+			"LOCAL_TEST_TAGS": "test_options.tags",
 		})
 
 	addStandardProperties(bpparser.BoolType,
