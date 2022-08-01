@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54cd5ad5_b78eb818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T13:12:33Z",
+      "side": 1,
+      "message": "in general, lgtm just needs unit tests",
+      "revId": "784c346792f582439ae5fe81109435267e957197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2389f03b_3d74d692",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T13:12:33Z",
+      "side": 1,
+      "message": "can you add a comment bout why we only look at export_include_dirs here?",
+      "range": {
+        "startLine": 548,
+        "startChar": 2,
+        "endLine": 548,
+        "endChar": 59
+      },
+      "revId": "784c346792f582439ae5fe81109435267e957197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7503aa_35820c1e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T13:12:33Z",
+      "side": 1,
+      "message": "can you add a unit test for this?",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 62
+      },
+      "revId": "784c346792f582439ae5fe81109435267e957197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
