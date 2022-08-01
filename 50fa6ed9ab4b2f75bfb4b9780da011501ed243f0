@@ -157,6 +157,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cca426b6_3b13f56b",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T19:21:09Z",
+      "side": 1,
+      "message": "ah, you\u0027re right, I was thinking of cases where we do `return append([]\u003ctype\u003e{}, variable...)`  to ensure the underlying variable can\u0027t be modified.",
+      "parentUuid": "98540990_3db86bad",
+      "range": {
+        "startLine": 963,
+        "startChar": 79,
+        "endLine": 963,
+        "endChar": 103
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f0cc3c6_d6ef5be5",
