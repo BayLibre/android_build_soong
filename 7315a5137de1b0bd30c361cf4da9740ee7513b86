@@ -33,6 +33,40 @@
       "message": "I am working to remove the cc_afl_fuzz target to fix the build breaks. I have a CL out here:\n\nhttps://googleplex-android-review.git.corp.google.com/c/platform/external/dtc/+/19484254",
       "revId": "7315a5137de1b0bd30c361cf4da9740ee7513b86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07e64935_5cd9149c",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-01T21:25:56Z",
+      "side": 1,
+      "message": "Just hiding this from make means there are still rules generated to build this against the invalid framework, which could cause problems.  Can this be disabled instead by calling Disable() on it before the rules are generated?",
+      "revId": "7315a5137de1b0bd30c361cf4da9740ee7513b86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec281eb_ca879ecf",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-01T21:25:56Z",
+      "side": 1,
+      "message": "Simply comparing against user-entered strings makes it easy for typos to creep in.  For example, if someone put in `fuzzing_frameworks: [\"afl++\"],` there would be no error, but their fuzzer would never be enabled.  Its often more user-friendly to use individual properties, for example something like:\n```\nfuzzing_frameowrks: {\n    afl: false,\n}\n```\n\nThat would also let you default all of the frameworks to true, and then disable the ones you don\u0027t want.  That will help later if you add a third framework, with your list of strings you would have to add the new framework to every module that set the `fuzzing_frameworks` property.",
+      "revId": "7315a5137de1b0bd30c361cf4da9740ee7513b86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
