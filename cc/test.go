@@ -55,6 +55,9 @@ type TestOptions struct {
 	// If the test is a hostside(no device required) unittest that shall be run during presubmit check.
 	Unit_test *bool
 
+	// If the test can only run locally (disable Bazel remote mode).
+	Local_only *bool
+
 	// Add ShippingApiLevelModuleController to auto generated test config. If the device properties
 	// for the shipping api level is less than the min_shipping_api_level, skip this module.
 	Min_shipping_api_level *int64

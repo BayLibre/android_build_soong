@@ -230,7 +230,8 @@ func init() {
 			"LOCAL_PRIVATE_PLATFORM_APIS": "platform_apis",
 			"LOCAL_JETIFIER_ENABLED":      "jetifier",
 
-			"LOCAL_IS_UNIT_TEST": "unit_test",
+			"LOCAL_IS_UNIT_TEST":  "unit_test",
+			"LOCAL_IS_LOCAL_ONLY": "local_only",
 
 			"LOCAL_ENFORCE_USES_LIBRARIES": "enforce_uses_libs",
 
