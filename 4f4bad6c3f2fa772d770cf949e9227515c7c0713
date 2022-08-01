@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2899f1a2_8007eb28",
+        "filename": "bazel/properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-01T15:00:57Z",
+      "side": 1,
+      "message": "Is it safe to make this change? I thought Arch and ProdVars are still unrelated axes?\n\nMaybe we should distinguish between [archVariant and non-archVariant product vars](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/config.go;l\u003d282-283) when we do this check?\n\nI don\u0027t think I have the best context on this, but thought I\u0027d ask.",
+      "revId": "4f4bad6c3f2fa772d770cf949e9227515c7c0713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
