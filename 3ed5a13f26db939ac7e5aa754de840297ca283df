@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1510ccac_b04a22c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T19:12:43Z",
+      "side": 1,
+      "message": "The tests you\u0027ve added are for mixed builds, but the functionality you\u0027ve added is for bp2build, can you add bp2build tests and remove the mixed build unit tests?",
+      "parentUuid": "0add2545_2251675b",
+      "revId": "3ed5a13f26db939ac7e5aa754de840297ca283df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea85cb83_17456225",
         "filename": "cc/bp2build.go",
         "patchSetId": 8
