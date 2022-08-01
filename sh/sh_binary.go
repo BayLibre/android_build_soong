@@ -107,6 +107,10 @@ type shBinaryProperties struct {
 type TestOptions struct {
 	// If the test is a hostside(no device required) unittest that shall be run during presubmit check.
 	Unit_test *bool
+
+	// A list of tags applied to the test rule, equivalent to the `tags` attribute in Bazel build rule.
+	// See https://bazel.build/reference/be/common-definitions#common-attributes
+	Tags []string
 }
 
 type TestProperties struct {
@@ -466,6 +470,9 @@ func (s *ShTest) AndroidMkEntries() []android.AndroidMkEntries {
 				}
 				if Bool(s.testProperties.Test_options.Unit_test) {
 					entries.SetBool("LOCAL_IS_UNIT_TEST", true)
+				}
+				if len(s.testProperties.Test_options.Tags) > 0 {
+					entries.AddStrings("LOCAL_TEST_TAGS", s.testProperties.Test_options.Tags...)
 				}
 				entries.SetBoolIfTrue("LOCAL_COMPATIBILITY_PER_TESTCASE_DIRECTORY", Bool(s.testProperties.Per_testcase_directory))
 			},

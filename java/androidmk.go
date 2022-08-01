@@ -170,6 +170,9 @@ func (j *Test) AndroidMkEntries() []android.AndroidMkEntries {
 		if Bool(j.testProperties.Test_options.Unit_test) {
 			entries.SetBool("LOCAL_IS_UNIT_TEST", true)
 		}
+		if len(j.testProperties.Test_options.Tags) > 0 {
+			entries.AddStrings("LOCAL_TEST_TAGS", j.testProperties.Test_options.Tags...)
+		}
 	})
 
 	return entriesList
