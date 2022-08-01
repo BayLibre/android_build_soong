@@ -183,3 +183,20 @@ func (fg *fileGroup) ProcessBazelQueryResponse(ctx ModuleContext) {
 
 	fg.srcs = bazelOuts
 }
+
+func GetFilegroupProperties(m Module) *fileGroupProperties {
+	for _, propIntf := range m.GetProperties() {
+		if props, ok := propIntf.(*fileGroupProperties); ok {
+			return props
+		}
+	}
+	return nil
+}
+
+func GetFilegroupPathProperty(m Module) *string {
+	props := GetFilegroupProperties(m)
+	if props != nil {
+		return props.Path
+	}
+	return nil
+}

@@ -16,6 +16,7 @@ package cc
 import (
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"android/soong/android"
@@ -34,16 +35,18 @@ const (
 	llSrcPartition    = "ll"
 	cppSrcPartition   = "cpp"
 	protoSrcPartition = "proto"
+	aidlSrcPartition  = "aidl"
 )
 
 // staticOrSharedAttributes are the Bazel-ified versions of StaticOrSharedProperties --
 // properties which apply to either the shared or static version of a cc_library module.
 type staticOrSharedAttributes struct {
-	Srcs    bazel.LabelListAttribute
-	Srcs_c  bazel.LabelListAttribute
-	Srcs_as bazel.LabelListAttribute
-	Hdrs    bazel.LabelListAttribute
-	Copts   bazel.StringListAttribute
+	Srcs      bazel.LabelListAttribute
+	Srcs_c    bazel.LabelListAttribute
+	Srcs_as   bazel.LabelListAttribute
+	Srcs_aidl bazel.LabelListAttribute
+	Hdrs      bazel.LabelListAttribute
+	Copts     bazel.StringListAttribute
 
 	Deps                              bazel.LabelListAttribute
 	Implementation_deps               bazel.LabelListAttribute
@@ -72,6 +75,11 @@ func groupSrcsByExtension(ctx android.BazelConversionPathContext, srcs bazel.Lab
 			if !exists || !android.IsFilegroup(ctx, m) {
 				return labelStr, false
 			}
+			// Handle aidl files differently from c based files
+			// If the filegroup module has name that contains aidl, partition it into other language sources
+			if regexp.MustCompile("(?i)(^|[^a-z])aidl([^a-z]|$)").MatchString(label.OriginalModuleName) {
+				return labelStr, false
+			}
 			return labelStr + suffix, true
 		}
 	}
@@ -81,6 +89,7 @@ func groupSrcsByExtension(ctx android.BazelConversionPathContext, srcs bazel.Lab
 		protoSrcPartition: android.ProtoSrcLabelPartition,
 		cSrcPartition:     bazel.LabelPartition{Extensions: []string{".c"}, LabelMapper: addSuffixForFilegroup("_c_srcs")},
 		asSrcPartition:    bazel.LabelPartition{Extensions: []string{".s", ".S"}, LabelMapper: addSuffixForFilegroup("_as_srcs")},
+		aidlSrcPartition:  android.AidlSrcLabelPartition,
 		// TODO(http://b/231968910): If there is ever a filegroup target that
 		// 		contains .l or .ll files we will need to find a way to add a
 		// 		LabelMapper for these that identifies these filegroups and
@@ -280,6 +289,7 @@ type baseAttributes struct {
 	linkerAttributes
 
 	protoDependency *bazel.LabelAttribute
+	aidlDependency  *bazel.LabelAttribute
 }
 
 // Convenience struct to hold all attributes parsed from compiler properties.
@@ -316,6 +326,7 @@ type compilerAttributes struct {
 	includes BazelIncludes
 
 	protoSrcs bazel.LabelListAttribute
+	aidlSrcs  bazel.LabelListAttribute
 
 	stubsSymbolFile *string
 	stubsVersions   bazel.StringListAttribute
@@ -434,6 +445,7 @@ func (ca *compilerAttributes) finalize(ctx android.BazelConversionPathContext, i
 	partitionedSrcs := groupSrcsByExtension(ctx, ca.srcs)
 
 	ca.protoSrcs = partitionedSrcs[protoSrcPartition]
+	ca.aidlSrcs = partitionedSrcs[aidlSrcPartition]
 
 	for p, lla := range partitionedSrcs {
 		// if there are no sources, there is no need for headers
@@ -613,12 +625,12 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 	(&linkerAttrs).finalize(ctx)
 
 	protoDep := bp2buildProto(ctx, module, compilerAttrs.protoSrcs)
+	aidlDep := bp2buildCcAidlLibrary(ctx, module, compilerAttrs.aidlSrcs)
 
-	// bp2buildProto will only set wholeStaticLib or implementationWholeStaticLib, but we don't know
-	// which. This will add the newly generated proto library to the appropriate attribute and nothing
-	// to the other
 	(&linkerAttrs).wholeArchiveDeps.Add(protoDep.wholeStaticLib)
 	(&linkerAttrs).implementationWholeArchiveDeps.Add(protoDep.implementationWholeStaticLib)
+	// TODO: check aidl.export_aidl_headers prop
+	(&linkerAttrs).wholeArchiveDeps.Add(aidlDep)
 
 	convertedLSrcs := bp2BuildLex(ctx, module.Name(), compilerAttrs)
 	(&compilerAttrs).srcs.Add(&convertedLSrcs.srcName)
@@ -628,7 +640,96 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 		compilerAttrs,
 		linkerAttrs,
 		protoDep.protoDep,
+		aidlDep,
 	}
+}
+
+func bp2buildAidlLibraries(
+	ctx android.Bp2buildMutatorContext,
+	m *Module,
+	aidlSrcs bazel.LabelListAttribute,
+) bazel.LabelList {
+	var aidlLibraries bazel.LabelList
+	var aidlFiles bazel.LabelList
+
+	// Create aidl_library for each filegroup
+	for _, aidlSrc := range aidlSrcs.Value.Includes {
+		if curModule, ok := ctx.ModuleFromName(aidlSrc.OriginalModuleName); ok {
+			if aModule, ok := curModule.(android.Module); ok {
+				if ctx.OtherModuleType(aModule) == "filegroup" {
+					aidlLibraryLabel := aModule.Name() + "_aidl_library"
+					path := android.GetFilegroupPathProperty(aModule)
+					ctx.CreateBazelTargetModule(
+						bazel.BazelTargetModuleProperties{
+							Rule_class:        "aidl_library",
+							Bzl_load_location: "//build/bazel/rules/aidl:library.bzl",
+						},
+						android.CommonAttributes{Name: aidlLibraryLabel},
+						&aidlLibraryAttributes{
+							Srcs:        bazel.MakeLabelListAttribute(bazel.LabelList{Includes: []bazel.Label{aidlSrc}}),
+							Include_dir: path,
+						},
+					)
+					aidlLibraries.Add(&bazel.Label{Label: ":" + aidlLibraryLabel})
+				}
+			}
+		} else {
+			aidlFiles.Add(&aidlSrc)
+		}
+	}
+
+	// create aidl_library for remaining aidl files that are not in a filegroup
+	if len(aidlFiles.Includes) > 0 {
+		aidlLibraryLabel := m.Name() + "_aidl_library"
+		ctx.CreateBazelTargetModule(
+			bazel.BazelTargetModuleProperties{
+				Rule_class:        "aidl_library",
+				Bzl_load_location: "//build/bazel/rules/aidl:library.bzl",
+			},
+			android.CommonAttributes{Name: aidlLibraryLabel},
+			&aidlLibraryAttributes{
+				Srcs: bazel.MakeLabelListAttribute(aidlFiles),
+			},
+		)
+		aidlLibraries.Add(&bazel.Label{
+			Label: ":" + aidlLibraryLabel,
+		})
+	}
+
+	return aidlLibraries
+}
+
+func bp2buildCcAidlLibrary(
+	ctx android.Bp2buildMutatorContext,
+	m *Module,
+	aidlSrcs bazel.LabelListAttribute,
+) *bazel.LabelAttribute {
+	if aidlSrcs.IsEmpty() {
+		return nil
+	}
+
+	suffix := "_cc_aidl_library"
+	ccAidlLibrarylabel := m.Name() + suffix
+
+	aidlLibraries := bp2buildAidlLibraries(ctx, m, aidlSrcs)
+
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "cc_aidl_library",
+			Bzl_load_location: "//build/bazel/rules/cc:aidl_library.bzl",
+		},
+		android.CommonAttributes{Name: ccAidlLibrarylabel},
+		&ccAidlLibraryAttributes{
+			Deps: bazel.MakeLabelListAttribute(aidlLibraries),
+		},
+	)
+
+	label := &bazel.LabelAttribute{
+		Value: &bazel.Label{
+			Label: ":" + ccAidlLibrarylabel,
+		},
+	}
+	return label
 }
 
 func bp2BuildParseSdkAttributes(module *Module) sdkAttributes {

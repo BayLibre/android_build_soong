@@ -2514,3 +2514,54 @@ func TestCcLibraryConvertLex(t *testing.T) {
 			})...),
 	})
 }
+
+func TestCcLibraryWithAidlSrcs(t *testing.T) {
+	runCcLibraryTestCase(t, bp2buildTestCase{
+		description:                "cc_library with aidl srcs",
+		moduleTypeUnderTest:        "cc_library",
+		moduleTypeUnderTestFactory: cc.LibraryFactory,
+		blueprint: `
+filegroup {
+    name: "A_aidl",
+    srcs: ["aidl/A.aidl"],
+	path: "aidl",
+}
+cc_library {
+	name: "foo",
+	srcs: [
+		"B.aidl",
+		":A_aidl",
+		"aidl/C.aidl",
+	],
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTargetNoRestrictions("filegroup", "A_aidl", attrNameToString{
+				"srcs": `["aidl/A.aidl"]`,
+			}),
+			makeBazelTarget("aidl_library", "A_aidl_aidl_library", attrNameToString{
+				"srcs":        `[":A_aidl"]`,
+				"include_dir": `"aidl"`,
+			}),
+			makeBazelTarget("aidl_library", "foo_aidl_library", attrNameToString{
+				"srcs": `[
+        "B.aidl",
+        "aidl/C.aidl",
+    ]`,
+			}),
+			makeBazelTarget("cc_aidl_library", "foo_cc_aidl_library", attrNameToString{
+				"deps": `[
+        ":A_aidl_aidl_library",
+        ":foo_aidl_library",
+    ]`,
+			}),
+			makeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", attrNameToString{
+				"whole_archive_deps": `[":foo_cc_aidl_library"]`,
+				"local_includes":     `["."]`,
+			}),
+			makeBazelTarget("cc_library_shared", "foo", attrNameToString{
+				"whole_archive_deps": `[":foo_cc_aidl_library"]`,
+				"local_includes":     `["."]`,
+			}),
+		},
+	})
+}
