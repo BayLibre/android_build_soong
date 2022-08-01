@@ -135,6 +135,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98540990_3db86bad",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-01T19:01:01Z",
+      "side": 1,
+      "message": "Could you share more details about this? I\u0027ve also been using the `zs \u003d append(xs, ys...)` pattern as a non-destructive (and sometimes efficient) concat.\n\nI just did some more reading, but I\u0027m not sure if I understand why this isn\u0027t a good pattern yet.\n\nI see from [the docs](https://go.dev/blog/slices-intro) that the underlying array (e.g. `xs`) is used as storage for the appended elements (`ys`) [assuming they fit in the allocation], but that storage is not accessible unless you are viewing it from the slice `zs`, right?\n\nI don\u0027t know what happens if another append happens (e.g. `ws \u003d append(xs, ts...)`). I suppose it can\u0027t overwrite the storage used for `ys` since they are still accessible through `zs`. Maybe it just reallocates at that point so that there isn\u0027t discontinuous memory.",
+      "parentUuid": "68e46a4d_2414e3b7",
+      "range": {
+        "startLine": 963,
+        "startChar": 79,
+        "endLine": 963,
+        "endChar": 103
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f0cc3c6_d6ef5be5",
         "filename": "java/aar.go",
         "patchSetId": 8
