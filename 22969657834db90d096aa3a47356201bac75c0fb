@@ -34,6 +34,24 @@
       "parentUuid": "1339bcf1_2e2659c1",
       "revId": "22969657834db90d096aa3a47356201bac75c0fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba5cd28_807cd83b",
+        "filename": "java/java.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 2291,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-01T20:12:12Z",
+      "side": 1,
+      "message": "For cc, I solved it this by creating an aidl_library target for each filegroup and passing the `path` value to `include_dir` attribute of the said `aidl_library` target.\n\nWIP aosp/2171074: I created public functions from `android.filegroup.go` to return the prop value so that \u003cjava|cc\u003e_library can use the same pattern in bp2build to handle prop path.\n\nLet me know if you have any objection with this approach.",
+      "parentUuid": "599b115b_70eaa430",
+      "revId": "22969657834db90d096aa3a47356201bac75c0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
