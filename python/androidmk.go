@@ -70,6 +70,10 @@ func (p *testDecorator) AndroidMk(base *Module, entries *android.AndroidMkEntrie
 			entries.AddStrings("LOCAL_TEST_DATA", android.AndroidMkDataPaths(p.data)...)
 
 			entries.SetBoolIfTrue("LOCAL_IS_UNIT_TEST", Bool(p.testProperties.Test_options.Unit_test))
+
+			if len(p.testProperties.Test_options.Tags) > 0 {
+				entries.AddStrings("LOCAL_TEST_TAGS", p.testProperties.Test_options.Tags...)
+			}
 		})
 	base.subAndroidMk(entries, p.binaryDecorator.pythonInstaller)
 }
