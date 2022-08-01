@@ -36,6 +36,10 @@ func registerPythonTestComponents(ctx android.RegistrationContext) {
 type TestOptions struct {
 	// If the test is a hostside(no device required) unittest that shall be run during presubmit check.
 	Unit_test *bool
+
+	// A list of tags applied to the test rule, equivalent to the `tags` attribute in Bazel build rule.
+	// See https://bazel.build/reference/be/common-definitions#common-attributes
+	Tags []string
 }
 
 type TestProperties struct {
