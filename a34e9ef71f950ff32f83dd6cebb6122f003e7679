@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a99b0a4_bf586119",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-01T17:01:22Z",
+      "side": 1,
+      "message": "\u003e Those are already provided as stub libraries. I don\u0027t think we need apex variants for those stub libraries.\nBy this do you mean, apex libraries should always link against _source_ of platform libraries (e.g source of libc)?\n\nIn the following example, my understanding was that `libfoo{image:,apex:\u003cminsdkversion\u003e}` should link against libc stubs (with symbols tagged #apex in libc.map.txt plus the unannotated symbols)\n```\napex {\n  name: \"apexfoo\", \n  native_shared_libs: [\"libfoo\"] \n}\ncc_library {\n  name: \"libfoo\", \n  shared_libs: [\"libc\"], \n  vendor_available: true, \n  apex_availalbe: [\"apexfoo\"] \n}\ncc_library { \n  name: \"libc\",\n  vendor_available: true,\n}\n```\n\nIn Option 1, the module variant dependency chain is\n```\nlibfoo{image:vendor.\u003cver\u003e} --\u003e libc{image:vendor.\u003cver\u003e} #llndk\nlibfoo{image:,apex:\u003cminsdkversion\u003e} --\u003e libc{image:} # source\n#expected?\nlibfoo{image:,apex:\u003cminsdkversion\u003e} --\u003e libc{image:,version:\u003cstub.ver\u003e} # stubs for apex\n```",
+      "parentUuid": "8228acc2_6451431c",
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe98b206_61ae7464",
         "filename": "cc/cc.go",
         "patchSetId": 2
