@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6e6626_088aa0f6",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-01T14:06:21Z",
+      "side": 1,
+      "message": "Should we add a warning here that some static_libs will not be included as exports?\n\nReading below, I see that we still include the skipped libs under the `deps` attribute, so it should be clear to the user that there is a change in behavior from Soong to Bazel. \n\nWDYT?",
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf2387c4_313d204a",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2324,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-01T14:06:21Z",
+      "side": 1,
+      "message": "LastUniqueStrings seems to be a destructive function. Can we pass a copy of `m.properties.Libs` here instead?\n\nSeems like we could find ourselves with a hard to find bug if we use m.properties.Libs after this.",
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69eb3fb2_b373f06d",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2329,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-01T14:06:21Z",
+      "side": 1,
+      "message": "Same as above about copying Libs.",
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
