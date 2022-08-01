@@ -803,7 +803,10 @@ func (d *Droidstubs) generateCheckCurrentCheckedInApiIsUpToDateBuildRules(ctx an
 
 	rule.Command().
 		Text("cp").Flag("-f").
-		Input(d.apiFile).Flag(apiFile.String())
+		Input(d.apiFile).Flag(apiFile.String()).
+		// Depend on the checkapi timestamp so that the api text file in the source tree doesn't
+		// get overwritten by this updateapi rule while the checkapi rule is running.
+		OrderOnly(d.checkCurrentApiTimestamp)
 
 	rule.Command().
 		Text("cp").Flag("-f").
