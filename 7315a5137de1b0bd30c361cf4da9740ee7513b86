@@ -16,6 +16,23 @@
       "message": "This is to change the way AFL fuzzers are built.\n\nCurrent check in we are building AFL fuzzers with cc_afl_fuzz. We are changing this to remove cc_afl_fuzz, and we will build AFL fuzzers using cc_fuzz and using command line arg FUZZ_FRAMEWORK\u003dAFL. \nexample of new way to build libFuzzers/AFL fuzzers:\ncc_fuzz{name: \"test\"}\n\nlibFuzzer:\nmma test -j88\n\nAFL:\nFUZZ_FRAMEWORK\u003dAFL mma test -j88\n\n\nSome fuzzers will not be able to be built for all frameworks, for these fuzzers there is a \"fuzzing_frameworks\" field to optionally specify what fuzz frameworks the fuzz target can be built for. If this is not set, then it will be assumed that all frameworks are supported for that fuzz target.\n\nWe quickly reverted the docs to build AFL fuzzers using cc_afl_fuzz, but one person has already checked in cc_afl_fuzz target. I have talked to them and sent out a CL to update their Android.bp file (this fuzz target is in Android Internal only)\n\nThis change will help keep the Android.bp file clean, since you wont have to have a cc_fuzz target and a cc_afl_fuzz target to build both libfuzzer and AFL.",
       "revId": "7315a5137de1b0bd30c361cf4da9740ee7513b86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b235ecf7_a67fbc10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-08-01T18:55:13Z",
+      "side": 1,
+      "message": "I am working to remove the cc_afl_fuzz target to fix the build breaks. I have a CL out here:\n\nhttps://googleplex-android-review.git.corp.google.com/c/platform/external/dtc/+/19484254",
+      "revId": "7315a5137de1b0bd30c361cf4da9740ee7513b86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
