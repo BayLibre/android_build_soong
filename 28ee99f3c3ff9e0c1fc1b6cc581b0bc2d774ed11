@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9028a36_fb61052e",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T17:14:23Z",
+      "side": 0,
+      "message": "it looks like we dropped this check? do we no longer need it? if we do, can we add a unit test for it?",
+      "range": {
+        "startLine": 1440,
+        "startChar": 0,
+        "endLine": 1446,
+        "endChar": 2
+      },
+      "revId": "28ee99f3c3ff9e0c1fc1b6cc581b0bc2d774ed11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

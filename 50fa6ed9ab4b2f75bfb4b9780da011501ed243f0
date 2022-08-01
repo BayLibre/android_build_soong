@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e3886a5_db93d1d3",
+        "filename": "bp2build/aar_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T17:14:23Z",
+      "side": 1,
+      "message": "can you add a comment about it being expected that this won\u0027t be exported?",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 85
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e837a621_62c71076",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T17:14:23Z",
+      "side": 1,
+      "message": "nit: does this need to be exported?",
+      "range": {
+        "startLine": 934,
+        "startChar": 15,
+        "endLine": 934,
+        "endChar": 43
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dedad49c_3fdf1199",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T17:14:23Z",
+      "side": 1,
+      "message": "nit: commonly in golang, this would be `ok`",
+      "range": {
+        "startLine": 955,
+        "startChar": 10,
+        "endLine": 955,
+        "endChar": 17
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a6e6626_088aa0f6",
         "filename": "java/aar.go",
         "patchSetId": 8
@@ -14,6 +83,98 @@
       "writtenOn": "2022-08-01T14:06:21Z",
       "side": 1,
       "message": "Should we add a warning here that some static_libs will not be included as exports?\n\nReading below, I see that we still include the skipped libs under the `deps` attribute, so it should be clear to the user that there is a change in behavior from Soong to Bazel. \n\nWDYT?",
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d3f6be_f51e9ffd",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T17:14:23Z",
+      "side": 1,
+      "message": "nit: could we reuse depName here?",
+      "range": {
+        "startLine": 958,
+        "startChar": 54,
+        "endLine": 958,
+        "endChar": 78
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e46a4d_2414e3b7",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T17:14:23Z",
+      "side": 1,
+      "message": "this is appending libs to static_libs, which may be non-obvious if someone were refactoring the code -- it\u0027d be safer to do:\n\n```\nappend(append([]string{}, a.properties.Static_libs...), a.properties.Libs...)\n```",
+      "range": {
+        "startLine": 963,
+        "startChar": 79,
+        "endLine": 963,
+        "endChar": 103
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f0cc3c6_d6ef5be5",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T17:14:23Z",
+      "side": 1,
+      "message": "i know we discussed some issues with the rules_android aar_import that we don\u0027t have with the native implementation -- are those irrelevant currently, or would it be better to use the native implementation until those have been resolved and leave a TODO here?",
+      "range": {
+        "startLine": 969,
+        "startChar": 3,
+        "endLine": 969,
+        "endChar": 56
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa164659_92536470",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-01T17:14:23Z",
+      "side": 1,
+      "message": "can you add a test for this case?",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 989,
+        "endChar": 2
+      },
       "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
