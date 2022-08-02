@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52051bcc_552b7a62",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-08-02T10:29:16Z",
+      "side": 1,
+      "message": "we don\u0027t really need this property for now, until we actually decide to enforce something, do we?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "b432886b6a4363044b202b9fa5af64aa06ecc84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
