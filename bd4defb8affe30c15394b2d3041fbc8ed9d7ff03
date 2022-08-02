@@ -169,6 +169,29 @@
       "message": "Hi Colin and Jingwen. I\u0027m implementing the [Cross-Version ABI Check](http://go/cross-version-abi-check). The previous [CL](https://android-review.googlesource.com/c/platform/build/soong/+/2145762) is divided into several CLs to make code review process smooth. This CL focus on the diff of source dump and current version reference dump.",
       "revId": "bd4defb8affe30c15394b2d3041fbc8ed9d7ff03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f898cb9_9e010710",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-02T12:15:45Z",
+      "side": 1,
+      "message": "Can you add some comments on what\u0027s happening here?",
+      "range": {
+        "startLine": 1624,
+        "startChar": 3,
+        "endLine": 1628,
+        "endChar": 4
+      },
+      "revId": "bd4defb8affe30c15394b2d3041fbc8ed9d7ff03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
