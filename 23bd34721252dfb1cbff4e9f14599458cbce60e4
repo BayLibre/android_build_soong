@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45ed72b0_cc2f14ae",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-08-02T16:38:44Z",
+      "side": 1,
+      "message": "can we not name this isUpdatable? Same arguments as before. Maybe even pass an int value here if that makes naming simpler?",
+      "revId": "23bd34721252dfb1cbff4e9f14599458cbce60e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
