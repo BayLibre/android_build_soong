@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "852e281e_d7802067",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-02T00:48:28Z",
+      "side": 1,
+      "message": "I had to add this to get libvpx on linux_x86_64 to compile. Is there something better I should use? I tried using ca.includes.Includes instead, but that doesn\u0027t have the same set of include dirs, and I didn\u0027t see anything else useful in compilerAttributes.",
+      "parentUuid": "2389f03b_3d74d692",
+      "range": {
+        "startLine": 548,
+        "startChar": 2,
+        "endLine": 548,
+        "endChar": 59
+      },
+      "revId": "784c346792f582439ae5fe81109435267e957197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef7503aa_35820c1e",
         "filename": "cc/bp2build.go",
         "patchSetId": 1
