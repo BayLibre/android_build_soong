@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b793e700_dbef08cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-02T03:43:43Z",
+      "side": 1,
+      "message": "Liz, gentle ping on this CL :) ",
+      "revId": "d68e2b95bfe98922ca3a559e789f152de2e40602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
