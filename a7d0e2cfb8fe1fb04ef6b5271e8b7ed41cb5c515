@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "819ecea2_c913d689",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-08-02T02:12:55Z",
+      "side": 1,
+      "message": "I prefer two arguments because people don\u0027t associate an empty versionSuffix with the current version.",
+      "parentUuid": "ded9ad8e_c309c1e8",
+      "range": {
+        "startLine": 924,
+        "startChar": 42,
+        "endLine": 924,
+        "endChar": 66
+      },
+      "revId": "a7d0e2cfb8fe1fb04ef6b5271e8b7ed41cb5c515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9713dbd_02bfb6d5",
         "filename": "cc/library.go",
         "patchSetId": 6
