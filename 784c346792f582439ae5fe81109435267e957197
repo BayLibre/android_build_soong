@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd90c17e_1d32fdd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-02T17:37:41Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "54cd5ad5_b78eb818",
+      "revId": "784c346792f582439ae5fe81109435267e957197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2389f03b_3d74d692",
@@ -78,6 +96,30 @@
       "writtenOn": "2022-08-01T13:12:33Z",
       "side": 1,
       "message": "can you add a unit test for this?",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 62
+      },
+      "revId": "784c346792f582439ae5fe81109435267e957197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d114f238_54089cfe",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-02T17:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef7503aa_35820c1e",
       "range": {
         "startLine": 568,
         "startChar": 0,
