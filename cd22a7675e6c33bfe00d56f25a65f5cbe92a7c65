@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f054e959_90dbdb87",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2280,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2022-08-02T02:38:06Z",
+      "side": 1,
+      "message": "TODO: Remove this (it\u0027s just here for debugging and visual inspection of where these Api Domain names are coming from in the code).",
+      "range": {
+        "startLine": 2280,
+        "startChar": 26,
+        "endLine": 2280,
+        "endChar": 38
+      },
+      "revId": "cd22a7675e6c33bfe00d56f25a65f5cbe92a7c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
