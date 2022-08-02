@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "767057a6_7aa56dea",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-02T23:42:23Z",
+      "side": 1,
+      "message": "I think this is unintentional?",
+      "revId": "fd20466eba89991d7f9c9c573a086a7f0a2c82fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
