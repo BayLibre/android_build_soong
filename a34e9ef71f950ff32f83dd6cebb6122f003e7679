@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1c32d3d_63252566",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-08-02T07:12:46Z",
+      "side": 1,
+      "message": "This deps mutation is implemented in cc.DepsMutator, I think. (I left a comment for it)\nApex Mutator is to collect the libs to package an APEX.",
+      "parentUuid": "3a99b0a4_bf586119",
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe98b206_61ae7464",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -308,6 +326,29 @@
         "startChar": 8,
         "endLine": 2380,
         "endChar": 28
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9185d5da_c92fa445",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2439,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-08-02T07:12:46Z",
+      "side": 1,
+      "message": "I think this must be the one to add the stub dependencies for libraries with stubs. APEX available libraries that are provided by the API surfaces need to be replaced here.\n\nThis is not the post deps of APEX but in the deps mutation.",
+      "range": {
+        "startLine": 2433,
+        "startChar": 2,
+        "endLine": 2439,
+        "endChar": 88
       },
       "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
