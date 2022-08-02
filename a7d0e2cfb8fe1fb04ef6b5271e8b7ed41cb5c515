@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7ec4376_4b9f26ec",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-08-02T04:55:19Z",
+      "side": 1,
+      "message": "In stage 3, version\u003d\"current\" and reference dump directory\u003d\"34\" look confusing, so I still prefer the boolean flag.",
+      "parentUuid": "500e124f_95f428b4",
+      "range": {
+        "startLine": 924,
+        "startChar": 42,
+        "endLine": 924,
+        "endChar": 66
+      },
+      "revId": "a7d0e2cfb8fe1fb04ef6b5271e8b7ed41cb5c515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9713dbd_02bfb6d5",
         "filename": "cc/library.go",
         "patchSetId": 6
