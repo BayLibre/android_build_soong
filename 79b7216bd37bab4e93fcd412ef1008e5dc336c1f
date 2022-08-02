@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e181de64_8a8ba22a",
+        "filename": "android/proto.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-02T20:33:26Z",
+      "side": 1,
+      "message": "Should this be somewhere else other than `proto.go`?\n\nAre this and `isFileGroupWithPattern` be in `build/soong/android/filegroup.go` instead?",
+      "revId": "79b7216bd37bab4e93fcd412ef1008e5dc336c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
