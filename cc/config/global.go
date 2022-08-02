@@ -230,11 +230,11 @@ var (
 		"-Wno-sizeof-array-div",             // http://b/148815709
 		"-Wno-tautological-overlap-compare", // http://b/148815696
 		// New warnings to be fixed after clang-r383902.
-		"-Wno-deprecated-copy",                      // http://b/153746672
-		"-Wno-range-loop-construct",                 // http://b/153747076
-		"-Wno-zero-as-null-pointer-constant",        // http://b/68236239
-		"-Wno-deprecated-anon-enum-enum-conversion", // http://b/153746485
-		"-Wno-pessimizing-move",                     // http://b/154270751
+		"-Wno-error=deprecated-copy",                      // http://b/153746672
+		"-Wno-range-loop-construct",                       // http://b/153747076
+		"-Wno-zero-as-null-pointer-constant",              // http://b/68236239
+		"-Wno-error=deprecated-anon-enum-enum-conversion", // http://b/153746485
+		"-Wno-pessimizing-move",                           // http://b/154270751
 		// New warnings to be fixed after clang-r399163
 		"-Wno-non-c-typedef-for-linkage", // http://b/161304145
 		// New warnings to be fixed after clang-r428724
@@ -244,6 +244,11 @@ var (
 		"-Wno-error=unused-but-set-parameter", // http://b/197240255
 		// New warnings to be fixed after clang-r458507
 		"-Wno-error=unqualified-std-cast-call", // http://b/239662094
+
+		// Disable new clang compiler warnings.
+		"-Wno-error=array-parameter",     // http://b/241941550
+		"-Wno-error=deprecated-builtins", // httop://b/241601211
+		"-Wno-error=deprecated",          // in external/googletest/googletest
 	}
 
 	noOverrideExternalGlobalCflags = []string{
@@ -287,7 +292,7 @@ var (
 		"-Wno-string-concatenation",
 
 		// http://b/239661264
-		"-Wno-deprecated-non-prototype",
+		"-Wno-error=deprecated-non-prototype",
 	}
 
 	llvmNextExtraCommonGlobalCflags = []string{}
@@ -303,8 +308,8 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r458507"
-	ClangDefaultShortVersion = "15.0.1"
+	ClangDefaultVersion      = "clang-r468909"
+	ClangDefaultShortVersion = "15.0.2"
 
 	// Directories with warnings from Android.bp files.
 	WarningAllowedProjects = []string{
