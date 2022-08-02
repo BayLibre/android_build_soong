@@ -16,6 +16,24 @@
       "message": "Nit - the description should mention the change in error handling since that\u0027s not purely cosmetic",
       "revId": "0aa778ad658edb584a846730ef171510ca9a7278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "236d9281_1a4f78aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-02T20:30:40Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "a1f88e69_8d4e0976",
+      "revId": "0aa778ad658edb584a846730ef171510ca9a7278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
