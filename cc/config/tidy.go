@@ -37,6 +37,8 @@ var (
 		// http://b/216364337 - TODO: Follow-up after compiler update to
 		// disable or fix individual instances.
 		"-cert-err33-c",
+		// http://b/241125373
+		"-bugprone-unchecked-optional-access",
 	}
 
 	// Some clang-tidy checks are included in some tidy_checks_as_errors lists,
@@ -47,6 +49,9 @@ var (
 		"-bugprone-signed-char-misuse",
 		// http://b/155034972
 		"-bugprone-branch-clone",
+		// http://b/241819232
+		"-misc-const-correctness",
+		"-bugprone-assignment-in-if-condition",
 	}
 )
 
