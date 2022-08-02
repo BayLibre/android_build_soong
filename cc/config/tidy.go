@@ -47,6 +47,10 @@ var (
 		"-bugprone-signed-char-misuse",
 		// http://b/155034972
 		"-bugprone-branch-clone",
+		// http://b/?
+		"-misc-const-correctness",
+		"-bugprone-assignment-in-if-condition",
+		"-bugprone-unchecked-optional-access",
 	}
 )
 
