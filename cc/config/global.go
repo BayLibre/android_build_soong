@@ -113,6 +113,10 @@ var (
 
 		// Turn off FMA which got enabled by default in clang-r445002 (http://b/218805949)
 		"-ffp-contract=off",
+
+		// Disable new clang compiler warnings.
+		"-Wno-array-parameter",
+		"-Wno-deprecated-builtins",
 	}
 
 	commonGlobalConlyflags = []string{}
@@ -300,8 +304,8 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r458507"
-	ClangDefaultShortVersion = "15.0.1"
+	ClangDefaultVersion      = "clang-r468909"
+	ClangDefaultShortVersion = "15.0.2"
 
 	// Directories with warnings from Android.bp files.
 	WarningAllowedProjects = []string{
