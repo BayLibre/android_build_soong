@@ -295,6 +295,11 @@ var (
 		"-Wno-error=array-parameter",     // http://b/241941550
 		"-Wno-error=deprecated-builtins", // http://b/241601211
 		"-Wno-error=deprecated",          // in external/googletest/googletest
+		// New warnings to be fixed/suppressed after clang-r470762
+		"-Wno-error=enum-constexpr-conversion", // http://b/243964282
+		// More warnings to be fixed/suppressed after clang-r470762
+		"-Wno-error=bitfield-constant-conversion",        // http://b/243965903
+		"-Wno-error=incompatible-function-pointer-types", // http://b/243974559
 	}
 
 	IllegalFlags = []string{
