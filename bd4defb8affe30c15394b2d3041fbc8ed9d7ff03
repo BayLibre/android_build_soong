@@ -192,6 +192,30 @@
       },
       "revId": "bd4defb8affe30c15394b2d3041fbc8ed9d7ff03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "843cdbd1_029a91c0",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-02T17:36:09Z",
+      "side": 1,
+      "message": "Sure, after sdk finalizatoin, the ABI of the latest API level must be consistent with the source code, so the chosen reference dump is the PLATFORM_SDK_VERSION.",
+      "parentUuid": "8f898cb9_9e010710",
+      "range": {
+        "startLine": 1624,
+        "startChar": 3,
+        "endLine": 1628,
+        "endChar": 4
+      },
+      "revId": "bd4defb8affe30c15394b2d3041fbc8ed9d7ff03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
