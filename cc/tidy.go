@@ -199,6 +199,9 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 			strings.Join(esc(ctx, "tidy_checks_as_errors", tidy.Properties.Tidy_checks_as_errors), ",") +
 			config.TidyGlobalNoErrorChecks()
 		flags.TidyFlags = append(flags.TidyFlags, tidyChecksAsErrors)
+	} else if strings.HasPrefix(ctx.ModuleDir(), "vendor/google/external/eskia") {
+		// Overwrites "WarningsAsErrors: '*'" in eskia's .clang-tidy
+		flags.TidyFlags = append(flags.TidyFlags, "-warnings-as-errors=-*")
 	}
 	return flags
 }
