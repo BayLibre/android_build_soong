@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f23e669d_fba711b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-08-02T07:03:49Z",
+      "side": 1,
+      "message": "Do you think the APEXes and APKs can be merged into the \"partition\" api domains?\nFor example,\n* APEXes in vendor partition could be in vendor and apex domains.\n* Apps in vendor partition are also both in apk and vendor domains.",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "cd22a7675e6c33bfe00d56f25a65f5cbe92a7c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3ce6bdcf_92ba3e16",
@@ -14,6 +37,69 @@
       "writtenOn": "2022-08-02T02:42:44Z",
       "side": 1,
       "message": "Hey, I\u0027m far enough into the change to tag modules with which API domain they\u0027re in that I thought I\u0027d share it with you.  I don\u0027t think this is ready a formal line-by-line review, but I wanted to send it as an FYI about how I\u0027m thinking this should work.  Maybe take a brief look if you have time.\n\nSpecifically one that I\u0027m not really happy with is the object model here, so expect that to get cleaned up in the next revision. I\u0027m not sure that the code sharing is in the right place, or even if there should be an actual ApiDomain property or should it just be something computed.  We\u0027ll see.  Thoughts on this topic?\n\nThere aren\u0027t any tests yet, I\u0027m just been looking at the file that gets printed in api_domains.go and making sure it looks plausible.  I want to do a little bit more prototyping on how to track API surfaces, and then I\u0027ll go back and make this really work.",
+      "revId": "cd22a7675e6c33bfe00d56f25a65f5cbe92a7c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c159f83_94a3f9f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-08-02T07:03:49Z",
+      "side": 1,
+      "message": "Are the API domains defined based on the install path?",
+      "revId": "cd22a7675e6c33bfe00d56f25a65f5cbe92a7c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72fae885_e92d83e4",
+        "filename": "android/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-08-02T07:03:49Z",
+      "side": 1,
+      "message": "I think, these also need to be in each api domain but not sharing the vendor api domain.",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 3
+      },
+      "revId": "cd22a7675e6c33bfe00d56f25a65f5cbe92a7c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff56522a_5854e4bd",
+        "filename": "android/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-08-02T07:03:49Z",
+      "side": 1,
+      "message": "Image variants for product and vendor partitions are cc specific.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 3
+      },
       "revId": "cd22a7675e6c33bfe00d56f25a65f5cbe92a7c65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
