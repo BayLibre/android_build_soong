@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "420a2c3a_4f5d9da2",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-02T17:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2331d6b_cd48f5fa",
+      "range": {
+        "startLine": 924,
+        "startChar": 42,
+        "endLine": 924,
+        "endChar": 66
+      },
+      "revId": "a7d0e2cfb8fe1fb04ef6b5271e8b7ed41cb5c515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9713dbd_02bfb6d5",
@@ -133,6 +157,30 @@
       "writtenOn": "2022-08-01T04:33:12Z",
       "side": 1,
       "message": "this append \".\" should happen in the sourceAbiDiff() body, as this is its implementation detail.",
+      "range": {
+        "startLine": 1685,
+        "startChar": 35,
+        "endLine": 1685,
+        "endChar": 39
+      },
+      "revId": "a7d0e2cfb8fe1fb04ef6b5271e8b7ed41cb5c515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21166a21_b75c77dd",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-02T17:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9713dbd_02bfb6d5",
       "range": {
         "startLine": 1685,
         "startChar": 35,
