@@ -414,6 +414,14 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 	pathWhenActivated := android.PathForModuleInPartitionInstall(ctx, "apex", apexName)
 	for _, fi := range a.filesInfo {
 		destPath := imageDir.Join(ctx, fi.path()).String()
+
+		// for DCLA, all native shared libs will be placed under
+		// /lib(64)?/foo.so/<sha256 foo.so>/foo.so
+		if fi.class == nativeSharedLib && a.common_dynamic_lib_apex() {
+			destPath += "/`echo -n " + fi.builtFile.String() + " | sha256sum | sed 's#[^0-9a-f]##g'`/"
+			destPath += fi.stem()
+		}
+
 		// Prepare the destination path
 		destPathDir := filepath.Dir(destPath)
 		if fi.class == appSet {
@@ -1027,6 +1035,7 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext) android.Outp
 	var executablePaths []string // this also includes dirs
 	var appSetDirs []string
 	appSetFiles := make(map[string]android.Path)
+
 	for _, f := range a.filesInfo {
 		pathInApex := f.path()
 		if f.installDir == "bin" || strings.HasPrefix(f.installDir, "bin/") {
@@ -1040,6 +1049,14 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext) android.Outp
 		} else if f.class == appSet {
 			appSetDirs = append(appSetDirs, f.installDir)
 			appSetFiles[f.installDir] = f.builtFile
+		} else if f.class == nativeSharedLib && a.common_dynamic_lib_apex() {
+			// for DCLA, all native shared libs will be placed under
+			// /lib(64)?/foo.so/<sha256 foo.so>/foo.so
+			executablePaths = append(executablePaths, pathInApex)
+			pathInApex += "/`echo -n " + f.builtFile.String() + " | sha256sum | sed 's#[^0-9a-f]##g'`"
+			executablePaths = append(executablePaths, pathInApex)
+			pathInApex += "/" + f.stem()
+			readOnlyPaths = append(readOnlyPaths, pathInApex)
 		} else {
 			readOnlyPaths = append(readOnlyPaths, pathInApex)
 		}
@@ -1063,10 +1080,10 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext) android.Outp
 	cmd.Text("(")
 	cmd.Text("echo '/ 1000 1000 0755';")
 	for _, p := range readOnlyPaths {
-		cmd.Textf("echo '/%s 1000 1000 0644';", p)
+		cmd.Textf("echo \"/%s 1000 1000 0644\";", p)
 	}
 	for _, p := range executablePaths {
-		cmd.Textf("echo '/%s 0 2000 0755';", p)
+		cmd.Textf("echo \"/%s 0 2000 0755\";", p)
 	}
 	for _, dir := range appSetDirs {
 		cmd.Textf("echo '/%s 0 2000 0755';", dir)
