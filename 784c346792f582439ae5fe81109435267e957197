@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18b6f17c_1deed4b6",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-03T13:26:14Z",
+      "side": 1,
+      "message": "No, this is reasonable, just hoping a comment about yasm needing access to all local includes and not needing to distinguish between export/not for it.",
+      "parentUuid": "852e281e_d7802067",
+      "range": {
+        "startLine": 548,
+        "startChar": 2,
+        "endLine": 548,
+        "endChar": 59
+      },
+      "revId": "784c346792f582439ae5fe81109435267e957197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef7503aa_35820c1e",
         "filename": "cc/bp2build.go",
         "patchSetId": 1
