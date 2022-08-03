@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1222c2b_f61f4b29",
+        "filename": "android/license.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-03T20:45:36Z",
+      "side": 1,
+      "message": "Panic / report an error if license_text !\u003d 1",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd81a13f_9d5981c8",
+        "filename": "android/license.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-03T20:45:36Z",
+      "side": 1,
+      "message": "Why are you adding the BazelConversionStatus here when in the previous cl you didn\u0027t update any other module types to add BazelConversionStatus?\n\nI\u0027m also confused because I thought the point of adding BazelConversionStatus was so that it\u0027s fields don\u0027t show up as properties in an Android.bp file.",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "082db151_d5ed0085",
+        "filename": "bp2build/license_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-03T20:45:36Z",
+      "side": 1,
+      "message": "Consider making this just a slice of bp2buildTestCase to be more consistent with other tests.",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591803a7_0126bf99",
+        "filename": "bp2build/license_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-03T20:45:36Z",
+      "side": 1,
+      "message": "I don\u0027t see any `visibility: [\"__subpackage__\"],` in the source tree. Could we change this to `visibility: [\":__subpackages__\"],` to be more true to life?",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
