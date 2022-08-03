@@ -39,6 +39,7 @@ func init() {
 	pctx.Import("android/soong/cc/config")
 	pctx.Import("android/soong/java")
 	pctx.HostBinToolVariable("apexer", "apexer")
+	pctx.HostBinToolVariable("run_apexer", "run_apexer")
 	// ART minimal builds (using the master-art manifest) do not have the "frameworks/base"
 	// projects, and hence cannot build 'aapt2'. Use the SDK prebuilt instead.
 	hostBinToolVariableWithPrebuilt := func(name, prebuiltDir, tool string) {
@@ -103,19 +104,27 @@ var (
 		Command: `rm -rf ${image_dir} && mkdir -p ${image_dir} && ` +
 			`(. ${out}.copy_commands) && ` +
 			`APEXER_TOOL_PATH=${tool_path} ` +
-			`${apexer} --force --manifest ${manifest} ` +
+			`${run_apexer} --tool_path ${tool_path} ` +
+			`--apexer ${apexer} ` +
+			`--is_dynamic_common_lib_apex ${is_DCLA} ` +
+			`--manifest ${manifest} ` +
 			`--file_contexts ${file_contexts} ` +
 			`--canned_fs_config ${canned_fs_config} ` +
-			`--include_build_info ` +
 			`--payload_type image ` +
-			`--key ${key} ${opt_flags} ${image_dir} ${out} `,
-		CommandDeps: []string{"${apexer}", "${avbtool}", "${e2fsdroid}", "${merge_zips}",
-			"${mke2fs}", "${resize2fs}", "${sefcontext_compile}", "${make_f2fs}", "${sload_f2fs}", "${make_erofs}",
-			"${soong_zip}", "${zipalign}", "${aapt2}", "prebuilts/sdk/current/public/android.jar"},
+			`--key ${key} ` +
+			`--image_dir ${image_dir} ` +
+			`--output ${out} ` +
+			`--key ${key} ` +
+			`-- ${opt_flags} `,
+		CommandDeps: []string{"${run_apexer}", "${apexer}", "${avbtool}", "${e2fsdroid}",
+			"${merge_zips}", "${mke2fs}", "${resize2fs}", "${sefcontext_compile}", "${make_f2fs}",
+			"${sload_f2fs}", "${make_erofs}", "${soong_zip}", "${zipalign}", "${aapt2}",
+			"prebuilts/sdk/current/public/android.jar"},
 		Rspfile:        "${out}.copy_commands",
 		RspfileContent: "${copy_commands}",
 		Description:    "APEX ${image_dir} => ${out}",
-	}, "tool_path", "image_dir", "copy_commands", "file_contexts", "canned_fs_config", "key", "opt_flags", "manifest", "payload_fs_type")
+	}, "tool_path", "image_dir", "copy_commands", "file_contexts", "canned_fs_config", "key",
+		"opt_flags", "manifest", "is_DCLA")
 
 	zipApexRule = pctx.StaticRule("zipApexRule", blueprint.RuleParams{
 		Command: `rm -rf ${image_dir} && mkdir -p ${image_dir} && ` +
@@ -414,6 +423,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 	pathWhenActivated := android.PathForModuleInPartitionInstall(ctx, "apex", apexName)
 	for _, fi := range a.filesInfo {
 		destPath := imageDir.Join(ctx, fi.path()).String()
+
 		// Prepare the destination path
 		destPathDir := filepath.Dir(destPath)
 		if fi.class == appSet {
@@ -676,6 +686,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 				"canned_fs_config": cannedFsConfig.String(),
 				"key":              a.privateKeyFile.String(),
 				"opt_flags":        strings.Join(optFlags, " "),
+				"is_DCLA":          strconv.FormatBool(a.dynamic_common_lib_apex()),
 			},
 		})
 
@@ -1027,6 +1038,7 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext) android.Outp
 	var executablePaths []string // this also includes dirs
 	var appSetDirs []string
 	appSetFiles := make(map[string]android.Path)
+
 	for _, f := range a.filesInfo {
 		pathInApex := f.path()
 		if f.installDir == "bin" || strings.HasPrefix(f.installDir, "bin/") {
@@ -1063,10 +1075,10 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext) android.Outp
 	cmd.Text("(")
 	cmd.Text("echo '/ 1000 1000 0755';")
 	for _, p := range readOnlyPaths {
-		cmd.Textf("echo '/%s 1000 1000 0644';", p)
+		cmd.Textf("echo \"/%s 1000 1000 0644\";", p)
 	}
 	for _, p := range executablePaths {
-		cmd.Textf("echo '/%s 0 2000 0755';", p)
+		cmd.Textf("echo \"/%s 0 2000 0755\";", p)
 	}
 	for _, dir := range appSetDirs {
 		cmd.Textf("echo '/%s 0 2000 0755';", dir)
