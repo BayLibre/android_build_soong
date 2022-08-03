@@ -16,6 +16,24 @@
       "message": "can we not name this isUpdatable? Same arguments as before. Maybe even pass an int value here if that makes naming simpler?",
       "revId": "23bd34721252dfb1cbff4e9f14599458cbce60e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6694eeb5_0d00fed4",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2022-08-03T11:06:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45ed72b0_cc2f14ae",
+      "revId": "23bd34721252dfb1cbff4e9f14599458cbce60e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
