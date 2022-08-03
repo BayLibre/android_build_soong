@@ -17,8 +17,10 @@ package android
 import (
 	"encoding"
 	"fmt"
+	"math"
 	"reflect"
 	"runtime"
+	"sort"
 	"strings"
 
 	"android/soong/bazel"
@@ -2034,6 +2036,21 @@ type ArchVariantProperties map[string]interface{}
 // configs/properties for that axis.
 type ConfigurationAxisToArchVariantProperties map[bazel.ConfigurationAxis]ArchVariantProperties
 
+func powerSetWithoutEmptySet[T any](items []T) [][]T {
+	resultSize := int(math.Pow(2, float64(len(items))))
+	powerSet := make([][]T, 0, resultSize-1)
+	for i := 1; i < resultSize; i++ {
+		combination := make([]T, 0)
+		for j := 0; j < len(items); j++ {
+			if (i>>j)%2 == 1 {
+				combination = append(combination, items[j])
+			}
+		}
+		powerSet = append(powerSet, combination)
+	}
+	return powerSet
+}
+
 // GetArchVariantProperties returns a ConfigurationAxisToArchVariantProperties where the
 // arch-variant properties correspond to the values of the properties of the 'propertySet' struct
 // that are specific to that axis/configuration. Each axis is independent, containing
@@ -2084,13 +2101,22 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 	// For each arch type (x86, arm64, etc.)
 	for _, arch := range ArchTypeList() {
 		// Arch properties are sometimes sharded (see createArchPropTypeDesc() ).
-		// Iterate over ever shard and extract a struct with the same type as the
+		// Iterate over every shard and extract a struct with the same type as the
 		// input one that contains the data specific to that arch.
 		propertyStructs := make([]reflect.Value, 0)
+		archFeaturePropertyStructs := make(map[string][]reflect.Value, 0)
 		for _, archProperty := range archProperties {
 			archTypeStruct, ok := getArchTypeStruct(ctx, archProperty, arch)
 			if ok {
 				propertyStructs = append(propertyStructs, archTypeStruct)
+
+				// For each feature this arch supports (arm: neon, x86: ssse3, sse4, ...)
+				for _, feature := range archFeatures[arch] {
+					prefix := "arch." + arch.Name + "." + feature
+					if featureProperties, ok := getChildPropertyStruct(ctx, archTypeStruct, feature, prefix); ok {
+						archFeaturePropertyStructs[feature] = append(archFeaturePropertyStructs[feature], featureProperties)
+					}
+				}
 			}
 			multilibStruct, ok := getMultilibStruct(ctx, archProperty, arch)
 			if ok {
@@ -2098,10 +2124,31 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 			}
 		}
 
-		// Create a new instance of the requested property set
-		value := reflect.New(reflect.ValueOf(propertySet).Elem().Type()).Interface()
+		archToProp[arch.Name] = mergeStructs(ctx, propertyStructs, propertySet)
 
-		archToProp[arch.Name] = mergeStructs(ctx, propertyStructs, value)
+		// In soong, if multiple features match the current configuration, they're
+		// all used. In bazel, we have to have unambiguous select() statements, so
+		// we can't have two features that are both active in the same select().
+		// One alternative is to split out each feature into a separate select(),
+		// but then it's difficult to support exclude_srcs, which may need to
+		// exclude things from the regular arch select() statement if a certain
+		// feature is active. Instead, keep the features in the same select
+		// statement as the arches, but emit the power set of all possible
+		// combinations of features, so that bazel can match the most precise one.
+		allFeatures := make([]string, 0, len(archFeaturePropertyStructs))
+		for feature := range archFeaturePropertyStructs {
+			allFeatures = append(allFeatures, feature)
+		}
+		for _, features := range powerSetWithoutEmptySet(allFeatures) {
+			sort.Strings(features)
+			propsForCurrentFeatureSet := make([]reflect.Value, 0)
+			propsForCurrentFeatureSet = append(propsForCurrentFeatureSet, propertyStructs...)
+			for _, feature := range features {
+				propsForCurrentFeatureSet = append(propsForCurrentFeatureSet, archFeaturePropertyStructs[feature]...)
+			}
+			archToProp[arch.Name+"-"+strings.Join(features, "-")] =
+				mergeStructs(ctx, propsForCurrentFeatureSet, propertySet)
+		}
 	}
 	axisToProps[bazel.ArchConfigurationAxis] = archToProp
 
