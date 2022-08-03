@@ -16,6 +16,86 @@
       "message": "Made the suggested updates",
       "revId": "dd874600a0f3b57539801886e7e2b667b8acce0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a21aaf_8dc078d8",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-03T21:56:17Z",
+      "side": 1,
+      "message": "These aren\u0027t necessary unless you\u0027re planning to write these to a JSON file.",
+      "range": {
+        "startLine": 156,
+        "startChar": 17,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "dd874600a0f3b57539801886e7e2b667b8acce0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c873f2a_57606ca0",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-03T21:56:17Z",
+      "side": 1,
+      "message": "Pass the ctx here so you can use ctx.ModuleErrorf() instead of panic, a user-provided input like FUZZ_FRAMEWORK shouldn\u0027t be causing panics.",
+      "revId": "dd874600a0f3b57539801886e7e2b667b8acce0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2185674_530eb9c9",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-03T21:56:17Z",
+      "side": 1,
+      "message": "This should probably go first so that it will fail on an invalid FUZZ_FRAMEWORK even if no modules set moduleFrameworks.",
+      "revId": "dd874600a0f3b57539801886e7e2b667b8acce0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c9736a_0d8bef6d",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-03T21:56:17Z",
+      "side": 1,
+      "message": "This already exists as proptool.Bool",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 2
+      },
+      "revId": "dd874600a0f3b57539801886e7e2b667b8acce0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
