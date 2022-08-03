@@ -534,3 +534,43 @@ java_library {
 		ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
 	})
 }
+
+func TestConvertArmNeonVariant(t *testing.T) {
+	t.Helper()
+	RunBp2BuildTestCase(t, func(ctx android.RegistrationContext) {}, Bp2buildTestCase{
+		Description:                "Android Library - simple example",
+		ModuleTypeUnderTest:        "android_library",
+		ModuleTypeUnderTestFactory: java.AndroidLibraryFactory,
+		Filesystem: map[string]string{
+			"lib.java":                     "",
+			"arm_neon.java":                "",
+			"manifest/AndroidManifest.xml": "",
+		},
+		Blueprint: simpleModuleDoNotConvertBp2build("android_library", "static_lib_dep") + `
+android_library {
+        name: "TestLib",
+        srcs: ["lib.java"],
+        arch: {
+			arm: {
+				neon: {
+					srcs: ["arm_neon.java"],
+				},
+			},
+		},
+        manifest: "manifest/AndroidManifest.xml",
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget(
+				"android_library",
+				"TestLib",
+				AttrNameToString{
+					"srcs": `["lib.java"] + select({
+        "//build/bazel/platforms/arch/variants:arm-neon": ["arm_neon.java"],
+        "//conditions:default": [],
+    })`,
+					"manifest":       `"manifest/AndroidManifest.xml"`,
+					"resource_files": `[]`,
+				}),
+		}})
+}
