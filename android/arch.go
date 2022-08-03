@@ -2106,16 +2106,26 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 	}
 
 	archToProp := ArchVariantProperties{}
+	archFeatureToProp := ArchVariantProperties{}
 	// For each arch type (x86, arm64, etc.)
 	for _, arch := range ArchTypeList() {
 		// Arch properties are sometimes sharded (see createArchPropTypeDesc() ).
 		// Iterate over ever shard and extract a struct with the same type as the
 		// input one that contains the data specific to that arch.
 		propertyStructs := make([]reflect.Value, 0)
+		archFeaturePropertyStructs := make(map[string][]reflect.Value, 0)
 		for _, archProperty := range archProperties {
 			archTypeStruct, ok := getArchTypeStruct(ctx, archProperty, arch)
 			if ok {
 				propertyStructs = append(propertyStructs, archTypeStruct)
+
+				// For each feature this arch supports (arm: neon, x86: ssse3, sse4, ...)
+				for _, feature := range archFeatures[arch] {
+					prefix := "arch." + arch.Name + "." + feature
+					if featureProperties, ok := getChildPropertyStruct(ctx, archTypeStruct, feature, prefix); ok {
+						archFeaturePropertyStructs[feature] = append(archFeaturePropertyStructs[feature], featureProperties)
+					}
+				}
 			}
 			multilibStruct, ok := getMultilibStruct(ctx, archProperty, arch)
 			if ok {
@@ -2123,12 +2133,13 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 			}
 		}
 
-		// Create a new instance of the requested property set
-		value := reflect.New(reflect.ValueOf(propertySet).Elem().Type()).Interface()
-
-		archToProp[arch.Name] = mergeStructs(ctx, propertyStructs, value)
+		archToProp[arch.Name] = mergeStructs(ctx, propertyStructs, propertySet)
+		for feature, propertyStructs := range archFeaturePropertyStructs {
+			archFeatureToProp[fmt.Sprintf("%s_%s", arch.Name, feature)] = mergeStructs(ctx, propertyStructs, propertySet)
+		}
 	}
 	axisToProps[bazel.ArchConfigurationAxis] = archToProp
+	axisToProps[bazel.ArchFeatureConfigurationAxis] = archFeatureToProp
 
 	osToProp := ArchVariantProperties{}
 	archOsToProp := ArchVariantProperties{}

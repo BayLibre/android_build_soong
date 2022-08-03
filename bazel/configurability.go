@@ -26,6 +26,28 @@ const (
 	archX86    = "x86"
 	archX86_64 = "x86_64"
 
+	archFeatureArmNeon      = "arm_neon"
+	archFeatureArm64Dotprod = "arm64_dotprod"
+	archFeatureX86Ssse3     = "x86_ssse3"
+	archFeatureX86Sse4      = "x86_sse4"
+	archFeatureX86Sse4_1    = "x86_sse4_1"
+	archFeatureX86Sse4_2    = "x86_sse4_2"
+	archFeatureX86Aes_ni    = "x86_aes_ni"
+	archFeatureX86Avx       = "x86_avx"
+	archFeatureX86Avx2      = "x86_avx2"
+	archFeatureX86Avx512    = "x86_avx512"
+	archFeatureX86Popcnt    = "x86_popcnt"
+	archFeatureX86Movbe     = "x86_movbe"
+	archFeatureX86_64Ssse3  = "x86_64_ssse3"
+	archFeatureX86_64Sse4   = "x86_64_sse4"
+	archFeatureX86_64Sse4_1 = "x86_64_sse4_1"
+	archFeatureX86_64Sse4_2 = "x86_64_sse4_2"
+	archFeatureX86_64Aes_ni = "x86_64_aes_ni"
+	archFeatureX86_64Avx    = "x86_64_avx"
+	archFeatureX86_64Avx2   = "x86_64_avx2"
+	archFeatureX86_64Avx512 = "x86_64_avx512"
+	archFeatureX86_64Popcnt = "x86_64_popcnt"
+
 	// OsType names in arch.go
 	osAndroid     = "android"
 	osDarwin      = "darwin"
@@ -80,6 +102,31 @@ var (
 		archX86:                    "//build/bazel/platforms/arch:x86",
 		archX86_64:                 "//build/bazel/platforms/arch:x86_64",
 		ConditionsDefaultConfigKey: ConditionsDefaultSelectKey, // The default condition of as arch select map.
+	}
+
+	platformArchFeatureMap = map[string]string{
+		archFeatureArmNeon:         "//build/bazel/platforms/arch/variants:neon-arm",
+		archFeatureArm64Dotprod:    "//build/bazel/platforms/arch/variants:dotprod-arm64",
+		archFeatureX86Ssse3:        "//build/bazel/platforms/arch/variants:ssse3-x86",
+		archFeatureX86Sse4:         "//build/bazel/platforms/arch/variants:sse4-x86",
+		archFeatureX86Sse4_1:       "//build/bazel/platforms/arch/variants:sse4_1-x86",
+		archFeatureX86Sse4_2:       "//build/bazel/platforms/arch/variants:sse4_2-x86",
+		archFeatureX86Aes_ni:       "//build/bazel/platforms/arch/variants:aes_ni-x86",
+		archFeatureX86Avx:          "//build/bazel/platforms/arch/variants:avx-x86",
+		archFeatureX86Avx2:         "//build/bazel/platforms/arch/variants:avx2-x86",
+		archFeatureX86Avx512:       "//build/bazel/platforms/arch/variants:avx512-x86",
+		archFeatureX86Popcnt:       "//build/bazel/platforms/arch/variants:popcnt-x86",
+		archFeatureX86Movbe:        "//build/bazel/platforms/arch/variants:movbe-x86",
+		archFeatureX86_64Ssse3:     "//build/bazel/platforms/arch/variants:ssse3-x86_64",
+		archFeatureX86_64Sse4:      "//build/bazel/platforms/arch/variants:sse4-x86_64",
+		archFeatureX86_64Sse4_1:    "//build/bazel/platforms/arch/variants:sse4_1-x86_64",
+		archFeatureX86_64Sse4_2:    "//build/bazel/platforms/arch/variants:sse4_2-x86_64",
+		archFeatureX86_64Aes_ni:    "//build/bazel/platforms/arch/variants:aes_ni-x86_64",
+		archFeatureX86_64Avx:       "//build/bazel/platforms/arch/variants:avx-x86_64",
+		archFeatureX86_64Avx2:      "//build/bazel/platforms/arch/variants:avx2-x86_64",
+		archFeatureX86_64Avx512:    "//build/bazel/platforms/arch/variants:avx512-x86_64",
+		archFeatureX86_64Popcnt:    "//build/bazel/platforms/arch/variants:popcnt-x86_64",
+		ConditionsDefaultConfigKey: ConditionsDefaultSelectKey, // The default condition of an os select map.
 	}
 
 	// A map of target operating systems to the Bazel label of the
@@ -139,6 +186,7 @@ const (
 	os
 	osArch
 	productVariables
+	archFeature
 )
 
 func osArchString(os string, arch string) string {
@@ -173,6 +221,10 @@ func (ct configurationType) validateConfig(config string) {
 		if _, ok := platformOsArchMap[config]; !ok {
 			panic(fmt.Errorf("Unknown os+arch: %s", config))
 		}
+	case archFeature:
+		if _, ok := platformArchFeatureMap[config]; !ok {
+			panic(fmt.Errorf("Unknown arch+feature: %s", config))
+		}
 	case productVariables:
 		// do nothing
 	default:
@@ -198,6 +250,8 @@ func (ca ConfigurationAxis) SelectKey(config string) string {
 			return ConditionsDefaultSelectKey
 		}
 		return fmt.Sprintf("%s:%s", productVariableBazelPackage, config)
+	case archFeature:
+		return platformArchFeatureMap[config]
 	default:
 		panic(fmt.Errorf("Unrecognized ConfigurationType %d", ca.configurationType))
 	}
@@ -212,6 +266,8 @@ var (
 	OsConfigurationAxis = ConfigurationAxis{configurationType: os}
 	// An axis for arch+os-specific configurations
 	OsArchConfigurationAxis = ConfigurationAxis{configurationType: osArch}
+	// An axis for arch+feature-specific configurations
+	ArchFeatureConfigurationAxis = ConfigurationAxis{configurationType: archFeature}
 )
 
 // ProductVariableConfigurationAxis returns an axis for the given product variable
