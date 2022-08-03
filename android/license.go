@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"github.com/google/blueprint"
 )
 
@@ -48,12 +49,46 @@ type licenseProperties struct {
 	Visibility []string
 }
 
+var _ Bazelable = &licenseModule{}
+
 type licenseModule struct {
 	ModuleBase
 	DefaultableModuleBase
 	SdkBase
+	BazelModuleBase
 
 	properties licenseProperties
+}
+
+type bazelLicenseAttributes struct {
+	License_kinds    []string
+	Copyright_notice *string
+	License_text     bazel.LabelAttribute
+	Package_name     *string
+	Visibility       bazel.LabelListAttribute
+}
+
+func (m *licenseModule) ConvertWithBp2build(ctx TopDownMutatorContext) {
+	attrs := &bazelLicenseAttributes{
+		License_kinds:    m.properties.License_kinds,
+		Copyright_notice: m.properties.Copyright_notice,
+		Package_name:     m.properties.Package_name,
+		Visibility:       bazel.MakeLabelListAttribute(BazelLabelForModuleSrc(ctx, m.properties.Visibility)),
+	}
+	// TODO(asmundak): Soong supports multiple license texts while Bazel does not.
+	if len(m.properties.License_text) == 1 {
+		attrs.License_text.SetValue(BazelLabelForModuleSrcSingle(ctx, m.properties.License_text[0]))
+	}
+
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "license",
+			Bzl_load_location: "//tools/build_defs/license",
+		},
+		CommonAttributes{
+			Name: m.Name(),
+		},
+		attrs)
 }
 
 func (m *licenseModule) DepsMutator(ctx BottomUpMutatorContext) {
@@ -78,7 +113,7 @@ func LicenseFactory() Module {
 	module := &licenseModule{}
 
 	base := module.base()
-	module.AddProperties(&base.nameProperties, &module.properties)
+	module.AddProperties(&base.nameProperties, &module.properties, &base.commonProperties.BazelConversionStatus)
 
 	// The visibility property needs to be checked and parsed by the visibility module.
 	setPrimaryVisibilityProperty(module, "visibility", &module.properties.Visibility)
@@ -86,6 +121,7 @@ func LicenseFactory() Module {
 	InitSdkAwareModule(module)
 	initAndroidModuleBase(module)
 	InitDefaultableModule(module)
+	InitBazelModule(module)
 
 	return module
 }
