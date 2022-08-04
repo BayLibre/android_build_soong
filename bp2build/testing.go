@@ -440,3 +440,14 @@ func MakeBazelTargetNoRestrictions(typ, name string, attrs AttrNameToString) str
 func makeBazelTarget(typ, name string, attrs AttrNameToString) string {
 	return makeBazelTargetHostOrDevice(typ, name, attrs, android.DeviceSupported)
 }
+
+type ExpectedBazelRule struct {
+	Rule  string
+	Name  string
+	Attrs AttrNameToString
+	Hod   android.HostOrDeviceSupported
+}
+
+func (ebr ExpectedBazelRule) String() string {
+	return makeBazelTargetHostOrDevice(ebr.Rule, ebr.Name, ebr.Attrs, ebr.Hod)
+}
