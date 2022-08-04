@@ -1095,7 +1095,7 @@ func InitAndroidModule(m Module) {
 // property structs for architecture-specific versions of generic properties tagged with
 // `android:"arch_variant"`.
 //
-//  InitAndroidModule should not be called if InitAndroidArchModule was called.
+//	InitAndroidModule should not be called if InitAndroidArchModule was called.
 func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib Multilib) {
 	InitAndroidModule(m)
 
@@ -1148,7 +1148,9 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 	mod := ctx.Module().base()
 	// Assert passed-in attributes include Name
 	if len(attrs.Name) == 0 {
-		ctx.ModuleErrorf("CommonAttributes in fillCommonBp2BuildModuleAttrs expects a `.Name`!")
+		if ctx.ModuleType() != "package" {
+			ctx.ModuleErrorf("CommonAttributes in fillCommonBp2BuildModuleAttrs expects a `.Name`!")
+		}
 	}
 
 	depsToLabelList := func(deps []string) bazel.LabelListAttribute {
@@ -1336,30 +1338,30 @@ func productVariableConfigEnableLabels(ctx *topDownMutatorContext) []bazel.Label
 //
 // For example:
 //
-//     import (
-//         "android/soong/android"
-//     )
+//	import (
+//	    "android/soong/android"
+//	)
 //
-//     type myModule struct {
-//         android.ModuleBase
-//         properties struct {
-//             MyProperty string
-//         }
-//     }
+//	type myModule struct {
+//	    android.ModuleBase
+//	    properties struct {
+//	        MyProperty string
+//	    }
+//	}
 //
-//     func NewMyModule() android.Module {
-//         m := &myModule{}
-//         m.AddProperties(&m.properties)
-//         android.InitAndroidModule(m)
-//         return m
-//     }
+//	func NewMyModule() android.Module {
+//	    m := &myModule{}
+//	    m.AddProperties(&m.properties)
+//	    android.InitAndroidModule(m)
+//	    return m
+//	}
 //
-//     func (m *myModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-//         // Get the CPU architecture for the current build variant.
-//         variantArch := ctx.Arch()
+//	func (m *myModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+//	    // Get the CPU architecture for the current build variant.
+//	    variantArch := ctx.Arch()
 //
-//         // ...
-//     }
+//	    // ...
+//	}
 type ModuleBase struct {
 	// Putting the curiously recurring thing pointing to the thing that contains
 	// the thing pattern to good use.
