@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
@@ -37,10 +38,30 @@ type packageProperties struct {
 	Default_applicable_licenses []string
 }
 
+type bazelPackageAttributes struct {
+	Default_visibility          []string
+	Default_applicable_licenses bazel.LabelListAttribute
+}
+
 type packageModule struct {
 	ModuleBase
+	BazelModuleBase
 
 	properties packageProperties
+}
+
+var _ Bazelable = &packageModule{}
+
+func (p *packageModule) ConvertWithBp2build(ctx TopDownMutatorContext) {
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class: "package",
+		},
+		CommonAttributes{},
+		&bazelPackageAttributes{
+			Default_applicable_licenses: bazel.MakeLabelListAttribute(BazelLabelForModuleSrc(ctx, p.properties.Default_applicable_licenses)),
+			Default_visibility:          p.properties.Default_visibility,
+		})
 }
 
 func (p *packageModule) GenerateAndroidBuildActions(ModuleContext) {
@@ -59,7 +80,7 @@ func (p *packageModule) qualifiedModuleId(ctx BaseModuleContext) qualifiedModule
 func PackageFactory() Module {
 	module := &packageModule{}
 
-	module.AddProperties(&module.properties)
+	module.AddProperties(&module.properties, &module.commonProperties.BazelConversionStatus)
 
 	// The name is the relative path from build root to the directory containing this
 	// module. Set that name at the earliest possible moment that information is available
@@ -75,6 +96,8 @@ func PackageFactory() Module {
 	// The default_applicable_licenses property needs to be checked and parsed by the licenses module during
 	// its checking and parsing phases so make it the primary licenses property.
 	setPrimaryLicensesProperty(module, "default_applicable_licenses", &module.properties.Default_applicable_licenses)
+
+	InitBazelModule(module)
 
 	return module
 }
