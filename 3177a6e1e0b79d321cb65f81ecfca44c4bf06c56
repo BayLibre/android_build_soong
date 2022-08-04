@@ -16,6 +16,24 @@
       "message": "(I was commenting while this CL gets merged.)\n\nAre we doing this as a one-off for `bp2build` tests for `hidl` to get around git branch conflict Yu ran into? Or are we now deciding that tests should be closer to the modules instead of `build/soong/bp2build` as a standard?\n\nI asked because based on go/bp2build#unit-test, it seems to be decided that all bp2build tests should be in `build/soong/bp2build` at one point.\n\n",
       "revId": "3177a6e1e0b79d321cb65f81ecfca44c4bf06c56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b64fc52_8f610f74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-04T19:33:50Z",
+      "side": 1,
+      "message": "i put this on the agenda of our next team meeting",
+      "parentUuid": "10155cda_df56d52e",
+      "revId": "3177a6e1e0b79d321cb65f81ecfca44c4bf06c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
