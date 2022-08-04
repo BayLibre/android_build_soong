@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10364f64_41a38515",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2022-08-04T15:10:58Z",
+      "side": 1,
+      "message": "added a new field called \"common_dynamic_lib_apex\" to apex soong module and use that to determine the lib placement",
+      "parentUuid": "3c18c35d_623d4f8a",
+      "range": {
+        "startLine": 421,
+        "startChar": 4,
+        "endLine": 422,
+        "endChar": 66
+      },
+      "revId": "fb975e6fa07731b7bbdfca1d636100b866e45872",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b609490f_6187c34e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-04T01:24:06Z",
       "side": 1,
       "message": "Can we move this logic to apexer?",
+      "range": {
+        "startLine": 423,
+        "startChar": 17,
+        "endLine": 423,
+        "endChar": 91
+      },
+      "revId": "fb975e6fa07731b7bbdfca1d636100b866e45872",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6966994a_8df059cb",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2022-08-04T15:10:58Z",
+      "side": 1,
+      "message": "I understand current implementation may not look pretty. But moving it into apexer might be uglier for following reasons:\n\n(1) We need to ask apexer to modify the canned_fs_config passed into it. So, we will have a wrongly generated canned_fs_config for apexer to fix. Rather we should just generate it right in soong.\n\n(2) Philosophically speaking, apexer\u0027s job is zipping up correctly layered artifacts and signing. Layering or placing artifacts should in theory be done by builder.go.",
+      "parentUuid": "b609490f_6187c34e",
       "range": {
         "startLine": 423,
         "startChar": 17,
