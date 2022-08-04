@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ab2bc88_51f93e26",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-08-04T00:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46a21aaf_8dc078d8",
+      "range": {
+        "startLine": 156,
+        "startChar": 17,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "dd874600a0f3b57539801886e7e2b667b8acce0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c873f2a_57606ca0",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-08-03T21:56:17Z",
       "side": 1,
       "message": "Pass the ctx here so you can use ctx.ModuleErrorf() instead of panic, a user-provided input like FUZZ_FRAMEWORK shouldn\u0027t be causing panics.",
+      "revId": "dd874600a0f3b57539801886e7e2b667b8acce0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6c53661_dafb27f4",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-08-04T00:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c873f2a_57606ca0",
       "revId": "dd874600a0f3b57539801886e7e2b667b8acce0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -75,6 +117,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5498c47d_26391a3f",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-08-04T00:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2185674_530eb9c9",
+      "revId": "dd874600a0f3b57539801886e7e2b667b8acce0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85c9736a_0d8bef6d",
@@ -88,6 +148,30 @@
       "writtenOn": "2022-08-03T21:56:17Z",
       "side": 1,
       "message": "This already exists as proptool.Bool",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 2
+      },
+      "revId": "dd874600a0f3b57539801886e7e2b667b8acce0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b473522_aabb49d6",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-08-04T00:27:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85c9736a_0d8bef6d",
       "range": {
         "startLine": 214,
         "startChar": 1,
