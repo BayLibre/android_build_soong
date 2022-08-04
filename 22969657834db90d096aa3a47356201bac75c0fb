@@ -52,6 +52,24 @@
       "parentUuid": "599b115b_70eaa430",
       "revId": "22969657834db90d096aa3a47356201bac75c0fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c0daa50_9ea6cd02",
+        "filename": "java/java.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 2291,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-04T17:10:25Z",
+      "side": 1,
+      "message": "I think this is probably something that we should support. It might be easier to do this in a subsequent CL since your change will also rely on the `aidl_library` change in this topic.",
+      "parentUuid": "0ba5cd28_807cd83b",
+      "revId": "22969657834db90d096aa3a47356201bac75c0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
