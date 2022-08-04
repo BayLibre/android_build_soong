@@ -1032,7 +1032,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
     ],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedErr: fmt.Errorf(`"foobar" depends on unconverted modules: foo`),
+			expectedErr: fmt.Errorf(`filegroup .:foobar depends on unconverted modules: foo`),
 			filesystem: map[string]string{
 				"other/Android.bp": `filegroup {
     name: "foo",
