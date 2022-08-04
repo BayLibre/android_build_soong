@@ -441,19 +441,20 @@ func generateBazelTarget(ctx bpToBuildContext, m bp2buildModule) BazelTarget {
 	// Return the Bazel target with rule class and attributes, ready to be
 	// code-generated.
 	attributes := propsToAttributes(props.Attrs)
+	var content string
 	targetName := m.TargetName()
+	if targetName != "" {
+		content = fmt.Sprintf(ruleTargetTemplate, ruleClass, targetName, attributes)
+	} else {
+		content = fmt.Sprintf(unnamedRuleTargetTemplate, ruleClass, attributes)
+	}
 	return BazelTarget{
 		name:            targetName,
 		packageName:     m.TargetPackage(),
 		ruleClass:       ruleClass,
 		bzlLoadLocation: bzlLoadLocation,
-		content: fmt.Sprintf(
-			bazelTarget,
-			ruleClass,
-			targetName,
-			attributes,
-		),
-		handcrafted: false,
+		content:         content,
+		handcrafted:     false,
 	}
 }
 
@@ -487,7 +488,7 @@ func generateSoongModuleTarget(ctx bpToBuildContext, m blueprint.Module) BazelTa
 	return BazelTarget{
 		name: targetName,
 		content: fmt.Sprintf(
-			soongModuleTarget,
+			soongModuleTargetTemplate,
 			targetName,
 			ctx.ModuleName(m),
 			canonicalizeModuleType(ctx.ModuleType(m)),
