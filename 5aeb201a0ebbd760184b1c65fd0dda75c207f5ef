@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323348f4_9aa10632",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-04T20:40:22Z",
+      "side": 1,
+      "message": "Should this be GetFramework instead of accessing the environment variable directly?  Would it make sense to reuse the result from GetFramework inside IsValidFrameworkForModule?",
+      "range": {
+        "startLine": 339,
+        "startChar": 5,
+        "endLine": 339,
+        "endChar": 51
+      },
+      "revId": "5aeb201a0ebbd760184b1c65fd0dda75c207f5ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
