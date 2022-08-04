@@ -110,18 +110,22 @@ func createBuildFiles(cfg android.Config, buildToTargets map[string]BazelTargets
 				// Leave that responsibility to the checked-in BUILD file
 				// instead.
 				content += `# This file contains generated targets and handcrafted targets that are manually managed in the source tree.`
+			}
+			content += "\n"
+			content += targets.LoadStatements()
+			content += "\n\n"
+			if pr := targets.packageRule(); pr != nil {
+				content += pr.content
 			} else {
 				// For fully-generated BUILD files, hardcode the default visibility.
 				content += "package(default_visibility = [\"//visibility:public\"])"
 			}
-			content += "\n"
-			content += targets.LoadStatements()
 		} else if mode == QueryView {
 			content = soongModuleLoad
 		}
 		if content != "" {
 			// If there are load statements, add a couple of newlines.
-			content += "\n\n"
+			content += "\n"
 		}
 		content += targets.String()
 		files = append(files, newFile(dir, GeneratedBuildFileName, content))
