@@ -76,6 +76,15 @@ func (targets BazelTargets) hasHandcraftedTargets() bool {
 	return false
 }
 
+func (targets BazelTargets) packageRule() *BazelTarget {
+	for _, target := range targets {
+		if target.ruleClass == "package" {
+			return &target
+		}
+	}
+	return nil
+}
+
 // sort a list of BazelTargets in-place, by name, and by generated/handcrafted types.
 func (targets BazelTargets) sort() {
 	sort.Slice(targets, func(i, j int) bool {
@@ -105,8 +114,9 @@ func (targets BazelTargets) String() string {
 			res += "# Section: Handcrafted targets. \n"
 			res += "# -----------------------------\n\n"
 		}
-
-		res += target.content
+		if target.ruleClass != "package" {
+			res += target.content
+		}
 		if i != len(targets)-1 {
 			res += "\n\n"
 		}
