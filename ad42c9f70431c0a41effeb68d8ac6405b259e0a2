@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "761ca92d_2287a0d7",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-04T17:13:44Z",
+      "side": 1,
+      "message": "I think this will create the aidl_library adjacent to the cc_aidl_library rather than adjacent to the filegroup.\n\nSince the filegroup could be outside of the package, I think we would want to place the aidl_library in the same package as the filegroup so that the path argument is relative to the package.\n\nAlso, this may create duplicate aidl_libraries if more than one cc_library depends on the same filegroup.\n\nWe might have to do this in a separate mutator pass, perhaps just one for filegroups in particular so that the conversion only happens once.",
+      "revId": "ad42c9f70431c0a41effeb68d8ac6405b259e0a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
