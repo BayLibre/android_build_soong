@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19b32266_88220af5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-04T08:17:14Z",
+      "side": 1,
+      "message": "Before going further with implementation, could you please comment on how this will lead to the NOTICE.html.gz file in the APEX, and how it might integrate with github.com/bazelbuild/rules_license, given that the base Bazel license support is almost non-existent? I think some form of a design doc is necessary, even if it\u0027s scoped to producing NOTICE files for Mainline.\n\nIt would be useful to check-in with aiuto@ on the state of Bazel license rules (https://github.com/bazelbuild/bazel/issues/7444#issuecomment-945906281)\n\nSome reference docs (also on my reading list):\n\n* [License compliance checking with Bazel - PRD](https://docs.google.com/document/d/1-kpfOLNT9nztfD3mtrGL9EX_3DZrGe-PipVyTG4YCGo/edit#heading\u003dh.xiulgbl08end)\n* [Adding OSS license declarations to Bazel](https://docs.google.com/document/d/1XszGbpMYNHk_FGRxKJ9IXW10KxMPdQpF5wWbZFpA4C8/edit)\n* [Design proposal: License Checking with Bazel](https://docs.google.com/document/d/1uwBuhAoBNrw8tmFs-NxlssI6VRolidGYdYqagLqHWt8/edit#)\n",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc5512f_dc1a49bf",
+        "filename": "android/license.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-04T08:17:14Z",
+      "side": 1,
+      "message": "Like \"name\", visibility is a common bazel/soong attribute and should be handled as part of CommonAttributes, not a specialized one for bazelLicenseAttributes.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1222c2b_f61f4b29",
         "filename": "android/license.go",
         "patchSetId": 5
@@ -14,6 +54,52 @@
       "writtenOn": "2022-08-03T20:45:36Z",
       "side": 1,
       "message": "Panic / report an error if license_text !\u003d 1",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "634e76fa_5aa1c569",
+        "filename": "android/license.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-04T08:17:14Z",
+      "side": 1,
+      "message": "This rule doesn\u0027t exist in Bazel natively. There\u0027s \"licenses\" (https://docs.bazel.build/versions/0.24.0/be/functions.html#licenses), but I believe it\u0027s being redeveloped totally (see doc: https://docs.google.com/document/d/1uwBuhAoBNrw8tmFs-NxlssI6VRolidGYdYqagLqHWt8/edit#heading\u003dh.cgrjvasquhse)",
+      "range": {
+        "startLine": 85,
+        "startChar": 23,
+        "endLine": 85,
+        "endChar": 30
+      },
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180f7ad0_ad1d9904",
+        "filename": "android/license.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-04T08:17:14Z",
+      "side": 1,
+      "message": "This doesn\u0027t exist in AOSP. What are you loading from?",
+      "range": {
+        "startLine": 86,
+        "startChar": 23,
+        "endLine": 86,
+        "endChar": 49
+      },
       "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -65,6 +151,46 @@
       "writtenOn": "2022-08-03T20:45:36Z",
       "side": 1,
       "message": "I don\u0027t see any `visibility: [\"__subpackage__\"],` in the source tree. Could we change this to `visibility: [\":__subpackages__\"],` to be more true to life?",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3320bb_508b6677",
+        "filename": "bp2build/license_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-04T08:17:14Z",
+      "side": 1,
+      "message": "\"__subpackage__\" is not a valid Bazel visibility spec: https://bazel.build/concepts/visibility#visibility-specifications",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 45
+      },
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42b6570_db33f1b4",
+        "filename": "bp2build/license_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-04T08:17:14Z",
+      "side": 1,
+      "message": "TestLicenseBp2Build",
       "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
