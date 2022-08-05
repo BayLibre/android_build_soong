@@ -16,6 +16,24 @@
       "message": "If starlark quoting is close enough to Go quoting you could use `strconv.Quote`",
       "revId": "082c5f31cc6d8bf1e28a552970d45b3f609fe82b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6eb569_e614308a",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-05T19:00:37Z",
+      "side": 1,
+      "message": "Unfortunately that would make the Starlark code uglier because it would change all newlines to `\\n`. Hopefully this is good enough, but if we hit more issues I\u0027ll change to `strconv.Quote`.",
+      "parentUuid": "641102a7_9e6a052f",
+      "revId": "082c5f31cc6d8bf1e28a552970d45b3f609fe82b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
