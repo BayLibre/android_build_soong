@@ -117,6 +117,30 @@
       },
       "revId": "fb975e6fa07731b7bbdfca1d636100b866e45872",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b7cf4a_7ba58503",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-05T18:20:23Z",
+      "side": 1,
+      "message": "+Liz for bazel apex rules impact.",
+      "parentUuid": "14772e44_fc601d67",
+      "range": {
+        "startLine": 423,
+        "startChar": 17,
+        "endLine": 423,
+        "endChar": 91
+      },
+      "revId": "fb975e6fa07731b7bbdfca1d636100b866e45872",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
