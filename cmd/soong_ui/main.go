@@ -66,11 +66,9 @@ var commands = []command{
 	{
 		flag:        "--make-mode",
 		description: "build the modules by the target name (i.e. soong_docs)",
-		config: func(ctx build.Context, args ...string) build.Config {
-			return build.NewConfig(ctx, args...)
-		},
-		stdio: stdio,
-		run:   runMake,
+		config:      build.NewConfig,
+		stdio:       stdio,
+		run:         runMake,
 	}, {
 		flag:         "--dumpvar-mode",
 		description:  "print the value of the legacy make variable VAR to stdout",
