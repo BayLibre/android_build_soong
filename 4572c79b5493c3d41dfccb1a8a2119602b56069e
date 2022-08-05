@@ -216,6 +216,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1d532c4_ddce86b3",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-05T05:26:54Z",
+      "side": 1,
+      "message": "Next time you can just reuse the same bug for closely-related features. No need to file individual bugs for every trivial task. bugs \u0026 cls are not one-to-one mapping, it can and usually is a many-to-many map. (A bug can require many changes to fix \u0026 a change can fix multiple bugs)",
+      "parentUuid": "7db57f75_4068e064",
+      "range": {
+        "startLine": 927,
+        "startChar": 1,
+        "endLine": 927,
+        "endChar": 8
+      },
+      "revId": "4572c79b5493c3d41dfccb1a8a2119602b56069e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c40c3ca_f5c3eb86",
