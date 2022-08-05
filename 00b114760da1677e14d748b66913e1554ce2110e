@@ -171,6 +171,30 @@
       },
       "revId": "00b114760da1677e14d748b66913e1554ce2110e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df50454b_a5cfb49a",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-05T22:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90e5232c_0199dd83",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "00b114760da1677e14d748b66913e1554ce2110e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
