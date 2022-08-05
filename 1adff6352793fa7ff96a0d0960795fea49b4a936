@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2c9151_f6b0daf2",
+        "filename": "cc/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1620,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-05T05:19:14Z",
+      "side": 1,
+      "message": "this receiver is unused... make this a regular function?",
+      "range": {
+        "startLine": 1620,
+        "startChar": 5,
+        "endLine": 1620,
+        "endChar": 32
+      },
+      "revId": "1adff6352793fa7ff96a0d0960795fea49b4a936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
