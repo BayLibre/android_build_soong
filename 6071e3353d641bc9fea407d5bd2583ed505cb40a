@@ -68,6 +68,30 @@
       },
       "revId": "6071e3353d641bc9fea407d5bd2583ed505cb40a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f28795_d0b72448",
+        "filename": "rust/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-05T18:09:34Z",
+      "side": 1,
+      "message": "You can put the properties into a struct defined in the android package, embed it in the various test modules, and call methods in the android package in all the places that are currently accessing it directly..",
+      "parentUuid": "2747394a_16071724",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 4
+      },
+      "revId": "6071e3353d641bc9fea407d5bd2583ed505cb40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
