@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdaa5e90_9bc3dcc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-08-05T03:24:50Z",
+      "side": 1,
+      "message": "When Merge Conflict happens, click REBASE on the top right corner or sync your local source.",
+      "revId": "fcacc23c354bc8fd968302a1b9307ddb596131cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
