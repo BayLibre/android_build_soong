@@ -16,6 +16,24 @@
       "message": "When Merge Conflict happens, click REBASE on the top right corner or sync your local source.",
       "revId": "fcacc23c354bc8fd968302a1b9307ddb596131cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41d1bbb6_eb4adc37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-05T03:35:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdaa5e90_9bc3dcc7",
+      "revId": "fcacc23c354bc8fd968302a1b9307ddb596131cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
