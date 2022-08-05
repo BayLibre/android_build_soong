@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b04d6d_8b544843",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-08-05T17:45:28Z",
+      "side": 1,
+      "message": "You might want to leave Bazel out of the description. Consider something like:\n\n```\nAdd a new `tags` attribute to customize test execution\n\nThe `tags` attribute provides additional metadata to customize test execution by downstream test runners. The tags have no special meaning to Soong.\n```\n\nShould we have a \u0027key\u0027 for the test runner this option is destined for?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "6071e3353d641bc9fea407d5bd2583ed505cb40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e061e26c_f26f8076",
+        "filename": "androidmk/androidmk/android.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-08-05T17:45:28Z",
+      "side": 1,
+      "message": "A nit really but would it be clearer to name this TEST_OPTIONS_TAGS since we might be adding other test options? This also helps the reader easily relate the concept to what they see in Soong.",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 19
+      },
+      "revId": "6071e3353d641bc9fea407d5bd2583ed505cb40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2747394a_16071724",
+        "filename": "rust/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-08-05T17:45:28Z",
+      "side": 1,
+      "message": "Is there some way/technique/idiom for us to share this code (and struct field/doc) across all the different test types?\n\n@ccross Any recommendations?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 4
+      },
+      "revId": "6071e3353d641bc9fea407d5bd2583ed505cb40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
