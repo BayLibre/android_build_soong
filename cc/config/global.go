@@ -87,9 +87,6 @@ var (
 		// Warnings from clang-7.0
 		"-Wno-sign-compare",
 
-		// Warnings from clang-8.0
-		"-Wno-defaulted-function-deleted",
-
 		// Disable -Winconsistent-missing-override until we can clean up the existing
 		// codebase for it.
 		"-Wno-inconsistent-missing-override",
@@ -286,8 +283,7 @@ var (
 		"-Wno-deprecated-non-prototype",
 	}
 
-	llvmNextExtraCommonGlobalCflags = []string{
-	}
+	llvmNextExtraCommonGlobalCflags = []string{}
 
 	IllegalFlags = []string{
 		"-w",
