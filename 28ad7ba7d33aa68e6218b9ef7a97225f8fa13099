@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec50045b_8a8f3a3a",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2022-08-07T10:01:42Z",
+      "side": 1,
+      "message": "Can we change this to -Wno-error\u003ddeprecated?\n\nIn general, using -Wno-error\u003dfoo instead of -Wno-foo seems like a better way to support code that builds with -Werror - it doesn\u0027t completely hide the warning.",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 19
+      },
+      "revId": "28ad7ba7d33aa68e6218b9ef7a97225f8fa13099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
