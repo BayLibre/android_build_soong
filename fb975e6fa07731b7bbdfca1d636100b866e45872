@@ -141,6 +141,30 @@
       },
       "revId": "fb975e6fa07731b7bbdfca1d636100b866e45872",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2fe2c16_26917cdb",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-08T14:05:13Z",
+      "side": 1,
+      "message": "The current implementation cannot be easily converted to Bazel, because Starlark rules cannot do I/O, and therefore cannot obtain and set the sha256 hash fragment in the output path of these libs while statically constructing the staging directory [1] and the canned_fs_config [2]. \n\n+1 to Jiyong that doing these in apexer (or a different host tool/script) would make transition to Starlark simpler. One way is to make this a two step process: first construct the apex as usual, then if it\u0027s an apex depending on DCLA, then apply a second host tool on the apex and the canned_fs_config to move things around and modify entries.\n\n[1]: https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl;l\u003d40;drc\u003d8fac2a129104edd0163ce4fb280833df3c30e1bf\n[2]: https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl;l\u003d178;drc\u003d8fac2a129104edd0163ce4fb280833df3c30e1bf",
+      "parentUuid": "57b7cf4a_7ba58503",
+      "range": {
+        "startLine": 423,
+        "startChar": 17,
+        "endLine": 423,
+        "endChar": 91
+      },
+      "revId": "fb975e6fa07731b7bbdfca1d636100b866e45872",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
