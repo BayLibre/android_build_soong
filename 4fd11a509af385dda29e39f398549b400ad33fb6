@@ -16,6 +16,24 @@
       "message": "is `m nothing` sufficient for testing this? ",
       "revId": "4fd11a509af385dda29e39f398549b400ad33fb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a01b87bd_437d098d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-08T16:50:15Z",
+      "side": 1,
+      "message": "well `m` calls `_trigger_build` which calls `soong_ui.bash`\nalso if one say puts a space containing directory above the source tree root, soong_ui.bash immediately fails without this CL (well it continues to fail event with this CL due to other reasons)",
+      "parentUuid": "9df4a147_7949f2f3",
+      "revId": "4fd11a509af385dda29e39f398549b400ad33fb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
