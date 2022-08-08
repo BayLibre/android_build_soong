@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc022b4_c5aaf7a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-08T17:10:54Z",
+      "side": 1,
+      "message": "I might need some additional context on this CL. What does this fix? Is there a followup to generate something for `package` ? \n\n(Do we have a tracking bug?)",
+      "revId": "0e0c1ff009a926a29e33dc15ab1709c7e4a317a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
