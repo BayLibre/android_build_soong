@@ -46,6 +46,30 @@
       },
       "revId": "480a36e61e3b6dc5ae225d8e7740e981034cca02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2a81fa_ab1415f6",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-08T17:19:29Z",
+      "side": 1,
+      "message": "That documentation should probably be made clearer. Files aside, most of the time when you talk about a target you\u0027re referring to an instance of a rule.\n\nIt would be very confusing to pass an ExpectedBazelRule into makeBazel*Target*HostOrDevice over some small technicality in the documentation.",
+      "parentUuid": "b808dbce_b27142b2",
+      "range": {
+        "startLine": 444,
+        "startChar": 5,
+        "endLine": 444,
+        "endChar": 22
+      },
+      "revId": "480a36e61e3b6dc5ae225d8e7740e981034cca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
