@@ -140,6 +140,30 @@
       },
       "revId": "6071e3353d641bc9fea407d5bd2583ed505cb40a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b5d003_b00f8a4e",
+        "filename": "rust/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-08T10:24:16Z",
+      "side": 1,
+      "message": "See android.ProtoProperties:\n\nDefined in the android package here: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/proto.go;l\u003d113;drc\u003ddc7efaec81b564f1b0fbabca25ca694755986db6\n\nEmbedded in java and cc properties here, as android.ProtoProperties:\n\njava: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/proto.go;l\u003d113;drc\u003ddc7efaec81b564f1b0fbabca25ca694755986db6\ncc: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/compiler.go;l\u003d223;drc\u003ddc7efaec81b564f1b0fbabca25ca694755986db6\n\nand used in the java package by calling an exported android.ProtoDeps method: https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;l\u003d750;drc\u003ddc7efaec81b564f1b0fbabca25ca694755986db6",
+      "parentUuid": "70a89c6e_0ab64cab",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 4
+      },
+      "revId": "6071e3353d641bc9fea407d5bd2583ed505cb40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
