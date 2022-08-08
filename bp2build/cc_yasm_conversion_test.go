@@ -22,7 +22,7 @@ import (
 
 func runYasmTestCase(t *testing.T, tc bp2buildTestCase) {
 	t.Helper()
-	runBp2BuildTestCase(t, registerYasmModuleTypes, tc)
+	RunBp2BuildTestCase(t, registerYasmModuleTypes, tc)
 }
 
 func registerYasmModuleTypes(ctx android.RegistrationContext) {
@@ -34,20 +34,20 @@ func registerYasmModuleTypes(ctx android.RegistrationContext) {
 }
 
 func TestYasmSimple(t *testing.T) {
-	runYasmTestCase(t, bp2buildTestCase{
-		description:                "Simple yasm test",
-		moduleTypeUnderTest:        "cc_library",
-		moduleTypeUnderTestFactory: cc.LibraryFactory,
-		filesystem: map[string]string{
+	runYasmTestCase(t, Bp2buildTestCase{
+		Description:                "Simple yasm test",
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Filesystem: map[string]string{
 			"main.cpp":   "",
 			"myfile.asm": "",
 		},
-		blueprint: `
+		Blueprint: `
 cc_library {
   name: "foo",
   srcs: ["main.cpp", "myfile.asm"],
 }`,
-		expectedBazelTargets: append([]string{
+		ExpectedBazelTargets: append([]string{
 			makeBazelTarget("yasm", "foo_yasm", map[string]string{
 				"include_dirs": `["."]`,
 				"srcs":         `["myfile.asm"]`,
@@ -64,23 +64,23 @@ cc_library {
 
 func TestYasmWithIncludeDirs(t *testing.T) {
 	runYasmTestCase(t, bp2buildTestCase{
-		description:                "Simple yasm test",
-		moduleTypeUnderTest:        "cc_library",
-		moduleTypeUnderTestFactory: cc.LibraryFactory,
-		filesystem: map[string]string{
+		Description:                "Simple yasm test",
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Filesystem: map[string]string{
 			"main.cpp":                    "",
 			"myfile.asm":                  "",
 			"include1/foo/myinclude.inc":  "",
 			"include2/foo/myinclude2.inc": "",
 		},
-		blueprint: `
+		Blueprint: `
 cc_library {
   name: "foo",
   local_include_dirs: ["include1/foo"],
   export_include_dirs: ["include2/foo"],
   srcs: ["main.cpp", "myfile.asm"],
 }`,
-		expectedBazelTargets: append([]string{
+		ExpectedBazelTargets: append([]string{
 			makeBazelTarget("yasm", "foo_yasm", map[string]string{
 				"include_dirs": `[
         "include1/foo",
@@ -105,14 +105,14 @@ cc_library {
 
 func TestYasmConditionalBasedOnArch(t *testing.T) {
 	runYasmTestCase(t, bp2buildTestCase{
-		description:                "Simple yasm test",
-		moduleTypeUnderTest:        "cc_library",
-		moduleTypeUnderTestFactory: cc.LibraryFactory,
-		filesystem: map[string]string{
+		Description:                "Simple yasm test",
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Filesystem: map[string]string{
 			"main.cpp":   "",
 			"myfile.asm": "",
 		},
-		blueprint: `
+		Blueprint: `
 cc_library {
   name: "foo",
   srcs: ["main.cpp"],
@@ -122,7 +122,7 @@ cc_library {
     },
   },
 }`,
-		expectedBazelTargets: append([]string{
+		ExpectedBazelTargets: append([]string{
 			makeBazelTarget("yasm", "foo_yasm", map[string]string{
 				"include_dirs": `["."]`,
 				"srcs": `select({
@@ -142,15 +142,15 @@ cc_library {
 
 func TestYasmPartiallyConditional(t *testing.T) {
 	runYasmTestCase(t, bp2buildTestCase{
-		description:                "Simple yasm test",
-		moduleTypeUnderTest:        "cc_library",
-		moduleTypeUnderTestFactory: cc.LibraryFactory,
-		filesystem: map[string]string{
+		Description:                "Simple yasm test",
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Filesystem: map[string]string{
 			"main.cpp":         "",
 			"myfile.asm":       "",
 			"mysecondfile.asm": "",
 		},
-		blueprint: `
+		Blueprint: `
 cc_library {
   name: "foo",
   srcs: ["main.cpp", "myfile.asm"],
@@ -160,7 +160,7 @@ cc_library {
     },
   },
 }`,
-		expectedBazelTargets: append([]string{
+		ExpectedBazelTargets: append([]string{
 			makeBazelTarget("yasm", "foo_yasm", map[string]string{
 				"include_dirs": `["."]`,
 				"srcs": `["myfile.asm"] + select({
