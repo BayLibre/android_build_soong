@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62a1b92_5e116cd1",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-08T11:46:33Z",
+      "side": 1,
+      "message": "For clarity, this should be ExpectedBazelTarget. Also, can you group this with the child CL that actually uses it?",
+      "range": {
+        "startLine": 444,
+        "startChar": 5,
+        "endLine": 444,
+        "endChar": 22
+      },
+      "revId": "480a36e61e3b6dc5ae225d8e7740e981034cca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
