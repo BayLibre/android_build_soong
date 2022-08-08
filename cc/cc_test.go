@@ -20,6 +20,7 @@ import (
 	"path/filepath"
 	"reflect"
 	"regexp"
+	"runtime"
 	"strings"
 	"testing"
 
@@ -3435,27 +3436,39 @@ func TestAFLFuzzTarget(t *testing.T) {
 	}
 
 	moduleName := "test_afl_fuzz_target"
-	hostVariant := "linux_glibc_x86_64"
-	armVariant := "android_arm64_armv8-a"
-	checkPcGuardFlag(moduleName, armVariant+"_fuzzer", true)
-	checkPcGuardFlag(moduleName, hostVariant+"_fuzzer", true)
+	variant := "android_arm64_armv8-a"
+	checkPcGuardFlag(moduleName, variant+"_fuzzer", true)
 
 	moduleName = "afl_fuzz_static_lib"
-	checkPcGuardFlag(moduleName, armVariant+"_static", false)
-	checkPcGuardFlag(moduleName, armVariant+"_static_fuzzer", true)
-	checkPcGuardFlag(moduleName, hostVariant+"_static", false)
-	checkPcGuardFlag(moduleName, hostVariant+"_static_fuzzer", true)
+	checkPcGuardFlag(moduleName, variant+"_static", false)
+	checkPcGuardFlag(moduleName, variant+"_static_fuzzer", true)
 
 	moduleName = "second_static_lib"
-	checkPcGuardFlag(moduleName, armVariant+"_static", false)
-	checkPcGuardFlag(moduleName, armVariant+"_static_fuzzer", true)
-	checkPcGuardFlag(moduleName, hostVariant+"_static", false)
-	checkPcGuardFlag(moduleName, hostVariant+"_static_fuzzer", true)
+	checkPcGuardFlag(moduleName, variant+"_static", false)
+	checkPcGuardFlag(moduleName, variant+"_static_fuzzer", true)
 
 	ctx.ModuleForTests("afl_fuzz_shared_lib",
 		"android_arm64_armv8-a_shared").Rule("cc")
 	ctx.ModuleForTests("afl_fuzz_shared_lib",
 		"android_arm64_armv8-a_shared_fuzzer").Rule("cc")
+
+	if runtime.GOOS != "linux" {
+		t.Skip("requires linux")
+	}
+
+	variant = "linux_glibc_x86_64"
+
+	moduleName = "test_afl_fuzz_target"
+	checkPcGuardFlag(moduleName, variant+"_fuzzer", true)
+
+	moduleName = "afl_fuzz_static_lib"
+	checkPcGuardFlag(moduleName, variant+"_static", false)
+	checkPcGuardFlag(moduleName, variant+"_static_fuzzer", true)
+
+	moduleName = "second_static_lib"
+	checkPcGuardFlag(moduleName, variant+"_static", false)
+	checkPcGuardFlag(moduleName, variant+"_static_fuzzer", true)
+
 }
 
 // Simple smoke test for the cc_fuzz target that ensures the rule compiles
