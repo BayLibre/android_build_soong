@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a16d2b0_de532877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-08-08T23:32:32Z",
+      "side": 1,
+      "message": "Done. We will add more such -Wno-error sooner or later.",
+      "parentUuid": "0ac5e99e_5634a060",
+      "revId": "6934b0ee64e844261120144b47fb72c64b62278f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8618f60_a2096b84",
