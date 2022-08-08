@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f64b962_9bdbe4bb",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3456,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-08T18:15:16Z",
+      "side": 1,
+      "message": "Skip should go at the top, I\u0027m not sure what the semantics are of a failing test that is then skipped.\n\nMaybe split this into two tests, a host test and a device test, and skip the host test on mac?  Or just move the host assertions inside `if runtime.GOOS \u003d\u003d \"linux\"`.",
+      "revId": "a0e84f4ec33af5cf8cf9681620b7718bba4c630b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
