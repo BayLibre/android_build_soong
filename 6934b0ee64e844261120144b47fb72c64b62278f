@@ -16,6 +16,40 @@
       "message": "Due to b/237436053, I have manually started aosp_arm64-userdebug_tidy build for this CL to check if all C/C++ files can compile.\n",
       "revId": "6934b0ee64e844261120144b47fb72c64b62278f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac5e99e_5634a060",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-08-08T23:17:52Z",
+      "side": 1,
+      "message": "@chh, can you +1 when you are confident that this CL will be fine with your upgrade work?",
+      "revId": "6934b0ee64e844261120144b47fb72c64b62278f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8618f60_a2096b84",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-08-08T23:17:52Z",
+      "side": 1,
+      "message": "Can you cite http://b/241601211 here? We\u0027ll probably clean this up and then turn the warnings back on at some point, but it would be good to have some tracking information for that.",
+      "revId": "6934b0ee64e844261120144b47fb72c64b62278f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
