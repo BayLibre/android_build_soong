@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4cb243_e6c09b64",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 9604,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-08T18:20:03Z",
+      "side": 1,
+      "message": "I think the core variant of libc here should be (`libc`, `android_arm64_armv8-ahared`). This is the source `libc` that _can_ be present in the importing inner tree if the importing inner tree is building both system and apexes. This comes from the requirement that any combination of (system|apex|vendor) _can_ be buildable in a single inner tree, and configured by the .mcombo file\n\nIf we make `libfoo`\u0027s core variant link against `libc.apiimport`\u0027s core variant, it will mean that it is linking core variant of _stubs_. `libfoo`\u0027s core variant should be linking against core variant of _source_ instead",
+      "range": {
+        "startLine": 9603,
+        "startChar": 1,
+        "endLine": 9604,
+        "endChar": 124
+      },
+      "revId": "a6e21f59cea8b9e2f8350ff478029eb7b91e15c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
