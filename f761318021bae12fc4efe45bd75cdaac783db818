@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9a88fd7_9b9cd001",
+        "filename": "java/java_test.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1744,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-08T18:33:04Z",
+      "side": 1,
+      "message": "[here](https://android.googlesource.com/platform/build/soong/+/refs/changes/45/2105245/22/java/java_test.go#1744), we pass includeDirs to the 3rd argument. But in this test, we pass in excludeDirs.\n\nWas there an oversight?",
+      "revId": "f761318021bae12fc4efe45bd75cdaac783db818",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
