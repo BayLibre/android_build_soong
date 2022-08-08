@@ -268,7 +268,7 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, sboxOutputDir android
 		apiCheckEnabled(ctx, d.properties.Check_api.Last_released, "last_released") ||
 		String(d.properties.Api_filename) != "" {
 		filename := proptools.StringDefault(d.properties.Api_filename, ctx.ModuleName()+"_api.txt")
-		d.apiFile = sboxOutputDir.Join(ctx, filename)
+		d.apiFile = sboxOutputDir.Join(ctx, "unchecked", filename)
 		cmd.FlagWithOutput("--api ", d.apiFile)
 		d.apiFilePath = d.apiFile
 	} else if sourceApiFile := proptools.String(d.properties.Check_api.Current.Api_file); sourceApiFile != "" {
@@ -280,7 +280,7 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, sboxOutputDir android
 		apiCheckEnabled(ctx, d.properties.Check_api.Last_released, "last_released") ||
 		String(d.properties.Removed_api_filename) != "" {
 		filename := proptools.StringDefault(d.properties.Removed_api_filename, ctx.ModuleName()+"_removed.txt")
-		d.removedApiFile = sboxOutputDir.Join(ctx, filename)
+		d.removedApiFile = sboxOutputDir.Join(ctx, "unchecked", filename)
 		cmd.FlagWithOutput("--removed-api ", d.removedApiFile)
 		d.removedApiFilePath = d.removedApiFile
 	} else if sourceRemovedApiFile := proptools.String(d.properties.Check_api.Current.Removed_api_file); sourceRemovedApiFile != "" {
@@ -522,7 +522,10 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// that are not outputs of the sbox otherwise they will be deleted by the sbox tool. That could
 	// lead to build problems if Ninja has already determined that the deleted file is up-to-date
 	// because it will not regenerate it after it is deleted.
-	sboxOutputDir := android.PathForModuleOut(ctx, "metalava").OutputPath
+	//
+	// This uses the "sbox-out" subdirectory of "metalava" to ensure that outputs from other metalava
+	// related rules do not accidentally end up being deleted by sbox.
+	sboxOutputDir := android.PathForModuleOut(ctx, "metalava", "sbox-out").OutputPath
 	rule.Sbox(sboxOutputDir,
 		android.PathForModuleOut(ctx, "metalava.sbox.textproto")).
 		SandboxInputs()
@@ -702,10 +705,6 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	if apiCheckEnabled(ctx, d.properties.Check_api.Current, "current") {
 		d.generateCheckCurrentCheckedInApiIsUpToDateBuildRules(ctx)
-
-		// Make sure that whenever the API stubs are generated that the current checked in API files are
-		// checked to make sure that they are up-to-date.
-		cmd.Validation(d.checkCurrentApiTimestamp)
 	}
 
 	rule.Build("metalava", "metalava merged")
@@ -751,15 +750,29 @@ func (d *Droidstubs) generateCheckCurrentCheckedInApiIsUpToDateBuildRules(ctx an
 		ctx.PropertyErrorf("out", "out property may not be combined with check_api")
 	}
 
-	apiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Api_file))
-	removedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Removed_api_file))
-	baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Current.Baseline_file)
+	// The update-api and checkapi targets both need to use the unchecked API files generated directly
+	// by metalava but all other rules need to use the checked API files. So, copy the unchecked paths
+	// that are stored in the apiFile and removedApiFile fields and replace them with the checked API
+	// paths. Also, replace the apiFilePath and removedApiFilePath
+	uncheckedGenApiFile := d.apiFile
+	uncheckedGenRemovedApiFile := d.removedApiFile
 
-	if baselineFile.Valid() {
+	d.apiFile = android.PathForModuleOut(ctx, "metalava", uncheckedGenApiFile.Base())
+	d.apiFilePath = d.apiFile
+	d.removedApiFile = android.PathForModuleOut(ctx, "metalava", uncheckedGenRemovedApiFile.Base())
+	d.removedApiFilePath = d.removedApiFile
+
+	// Get the source API and baseline files against which the generated API files will be compared.
+	sourceApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Api_file))
+	sourceRemovedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Removed_api_file))
+	sourceBaselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Current.Baseline_file)
+
+	if sourceBaselineFile.Valid() {
 		ctx.PropertyErrorf("baseline_file", "current API check can't have a baseline file. (module %s)", ctx.ModuleName())
 	}
 
 	d.checkCurrentApiTimestamp = android.PathForModuleOut(ctx, "metalava", "check_current_api.timestamp")
+	d.updateCurrentApiTimestamp = android.PathForModuleOut(ctx, "metalava", "update_current_api.timestamp")
 
 	rule := android.NewRuleBuilder(pctx, ctx)
 
@@ -771,11 +784,11 @@ func (d *Droidstubs) generateCheckCurrentCheckedInApiIsUpToDateBuildRules(ctx an
 	rule.Command().Text("( true")
 	rule.Command().
 		Text(diff).
-		Input(apiFile).Input(d.apiFile)
+		Input(sourceApiFile).Input(uncheckedGenApiFile)
 
 	rule.Command().
 		Text(diff).
-		Input(removedApiFile).Input(d.removedApiFile)
+		Input(sourceRemovedApiFile).Input(uncheckedGenRemovedApiFile)
 
 	msg := fmt.Sprintf(`\n******************************\n`+
 		`You have tried to change the API from what has been previously approved.\n\n`+
@@ -797,20 +810,35 @@ func (d *Droidstubs) generateCheckCurrentCheckedInApiIsUpToDateBuildRules(ctx an
 
 	rule.Build("metalavaCurrentApiCheck", "check current API")
 
-	d.updateCurrentApiTimestamp = android.PathForModuleOut(ctx, "metalava", "update_current_api.timestamp")
+	// Copy the unchecked API files to the checked files adding a validation dependency on the rule
+	// that performs the check so that any rules that depend on the checked API files will cause the
+	// check to be performed.
+	rule = android.NewRuleBuilder(pctx, ctx)
+	rule.Command().Text("true").
+		Validation(d.checkCurrentApiTimestamp)
+	rule.Command().
+		Text("cp").Flag("-f").
+		Input(uncheckedGenApiFile).Output(d.apiFile)
+	rule.Command().
+		Text("cp").Flag("-f").
+		Input(uncheckedGenRemovedApiFile).Output(d.removedApiFile)
+	rule.Build("metalavaCopyCheckedAPI", "copy checked API")
 
-	// update API rule
+	// Create a rule that will replace the source API files with the unchecked generated API files.
+	// This is used to update the API after it has changed so it uses the unchecked API files as
+	// depending on the checked API files will cause the check rule to be run which will fail as the
+	// API has changed.
 	rule = android.NewRuleBuilder(pctx, ctx)
 
 	rule.Command().Text("( true")
 
 	rule.Command().
 		Text("cp").Flag("-f").
-		Input(d.apiFile).Flag(apiFile.String())
+		Input(uncheckedGenApiFile).Flag(sourceApiFile.String())
 
 	rule.Command().
 		Text("cp").Flag("-f").
-		Input(d.removedApiFile).Flag(removedApiFile.String())
+		Input(uncheckedGenRemovedApiFile).Flag(sourceRemovedApiFile.String())
 
 	msg = "failed to update public API"
 
