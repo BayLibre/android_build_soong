@@ -34,8 +34,11 @@ SOONG_OUTPUT_DIR="$OUTPUT_DIR/soong"
 BAZEL_OUTPUT_DIR="$OUTPUT_DIR/bazel"
 
 function cleanup {
-  # call bazel clean because some bazel outputs don't have w bits.
-  call_bazel clean
+  # call bazel clean if it has been defined because some bazel outputs don't have w bits.
+  if type 'call_bazel' 2>/dev/null
+  then
+    call_bazel clean
+  fi
   rm -rf "${OUTPUT_DIR}"
 }
 trap cleanup EXIT
