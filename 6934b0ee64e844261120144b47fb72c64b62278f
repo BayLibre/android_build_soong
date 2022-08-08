@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9123793c_80fd0b48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-08-08T00:18:52Z",
+      "side": 1,
+      "message": "Due to b/237436053, I have manually started aosp_arm64-userdebug_tidy build for this CL to check if all C/C++ files can compile.\n",
+      "revId": "6934b0ee64e844261120144b47fb72c64b62278f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
