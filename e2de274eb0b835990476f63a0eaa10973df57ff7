@@ -16,6 +16,24 @@
       "message": "I think the OrderOnly dependency will cause the update-api rule to run if the timestamp file doesn\u0027t exist, which would be a problem as it would cause the first checkapi build to write to the source tree even if updateapi isn\u0027t specified.\n\nI think it\u0027s sufficient to make sure that updateapi doesn\u0027t depend on checkapi, and assume they won\u0027t be manually triggered in parallel.  I think that\u0027s the state we were in before your validations change.",
       "revId": "e2de274eb0b835990476f63a0eaa10973df57ff7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ecc996c_16b63da5",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-08T16:46:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "128e6bc0_72ae2b1e",
+      "revId": "e2de274eb0b835990476f63a0eaa10973df57ff7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
