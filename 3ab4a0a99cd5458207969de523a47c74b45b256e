@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eac9d47_631bbe38",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-08T17:18:38Z",
+      "side": 1,
+      "message": "I\u0027m a little unclear on what situation this is fixing. This is to make it clearer that when you specify flags after the build action, the flags are dropped?",
+      "revId": "3ab4a0a99cd5458207969de523a47c74b45b256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
