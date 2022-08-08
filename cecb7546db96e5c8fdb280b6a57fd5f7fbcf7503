@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b92da36d_444e3cb8",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 3438,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-08T15:08:05Z",
+      "side": 1,
+      "message": "This broke mac builds, where the host variant is different.   I\u0027d suggest reverting and relanding with:\n\n```\nif runtime.GOOS !\u003d \"linux\" {\n\tt.Skip(\"requires linux\")\n}\n```",
+      "revId": "cecb7546db96e5c8fdb280b6a57fd5f7fbcf7503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
