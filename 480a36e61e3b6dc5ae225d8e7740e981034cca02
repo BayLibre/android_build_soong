@@ -22,6 +22,30 @@
       },
       "revId": "480a36e61e3b6dc5ae225d8e7740e981034cca02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b808dbce_b27142b2",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-08T17:11:58Z",
+      "side": 1,
+      "message": "From Bazel\u0027s documentation:\n\"A package is a container of targets, which are defined in the package\u0027s BUILD file. Most targets are one of two principal kinds, files and rules.\"\nExpectedBazelRule defines a rule. Actually, I would like to use this term in other places in the code where it is more precise than a more generic \u0027target\u0027.\nThe CLs that use this struct implement notice and package rules, and are not ready yet. If your concern is that this CL adds something unused, I can either delay committing this CL, or use this struct to streamline some already existing tests.",
+      "parentUuid": "f62a1b92_5e116cd1",
+      "range": {
+        "startLine": 444,
+        "startChar": 5,
+        "endLine": 444,
+        "endChar": 22
+      },
+      "revId": "480a36e61e3b6dc5ae225d8e7740e981034cca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
