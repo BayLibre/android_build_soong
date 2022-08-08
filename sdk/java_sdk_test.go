@@ -933,7 +933,7 @@ java_sdk_library_import {
 		`),
 		checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
-.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source-stubs.srcjar -> sdk_library/public/myjavalib.srcjar
+.intermediates/myjavalib.stubs.source/android_common/metalava/sbox-out/myjavalib.stubs.source-stubs.srcjar -> sdk_library/public/myjavalib.srcjar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 		`),
@@ -983,7 +983,7 @@ java_sdk_library_import {
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_annotations.zip -> sdk_library/public/myjavalib_annotations.zip
+.intermediates/myjavalib.stubs.source/android_common/metalava/sbox-out/myjavalib.stubs.source_annotations.zip -> sdk_library/public/myjavalib_annotations.zip
 		`),
 		checkMergeZips(".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip"),
 	)
