@@ -399,12 +399,8 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		for config, props := range configToProps {
 			if props, ok := props.(*LibraryProperties); ok {
 				if props.Inject_bssl_hash != nil {
-					// This is an edge case applies only to libcrypto
-					if m.Name() == "libcrypto" {
-						sharedTargetAttrs.Inject_bssl_hash.SetSelectValue(axis, config, props.Inject_bssl_hash)
-					} else {
-						ctx.PropertyErrorf("inject_bssl_hash", "only applies to libcrypto")
-					}
+					// This is only intented for libcrypto and libcrypto_for_testing
+					sharedTargetAttrs.Inject_bssl_hash.SetSelectValue(axis, config, props.Inject_bssl_hash)
 				}
 			}
 		}
