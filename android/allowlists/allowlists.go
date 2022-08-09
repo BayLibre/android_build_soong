@@ -247,6 +247,7 @@ var (
 		"build/bazel":/* recursive = */ false,
 		"build/bazel/ci/dist":/* recursive = */ false,
 		"build/bazel/examples/android_app":/* recursive = */ true,
+		"build/bazel/examples/cc":/* recursive = */ true,
 		"build/bazel/examples/java":/* recursive = */ true,
 		"build/bazel/examples/partitions":/* recursive = */ true,
 		"build/bazel/bazel_skylib":/* recursive = */ true,
@@ -306,6 +307,9 @@ var (
 		"libandroid_runtime_vm_headers",
 		"libaudioclient_aidl_conversion_util",
 		"libaudioutils_fixedfft",
+		"libbinder",
+		"libbinder_device_interface_sources",
+		"libbinder_aidl",
 		"libbinder_headers",
 		"libbinder_headers_platform_shared",
 		"libbluetooth-types-header",
@@ -329,6 +333,7 @@ var (
 		"libruy_static",
 		"libserviceutils",
 		"libstagefright_enc_common",
+		"libstagefright_foundation",
 		"libstagefright_foundation_headers",
 		"libstagefright_headers",
 		"libsurfaceflinger_headers",
@@ -391,6 +396,13 @@ var (
 		//system/libhidl
 		// needed by cc_hidl_library
 		"libhidlbase",
+
+		//frameworks/native
+		"framework_native_aidl_binder",
+		"framework_native_aidl_gui",
+
+		//frameworks/native/libs/input
+		"inputconstants_aidl",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
