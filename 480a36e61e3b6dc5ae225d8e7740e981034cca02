@@ -94,6 +94,30 @@
       },
       "revId": "480a36e61e3b6dc5ae225d8e7740e981034cca02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba6e992_1e6e1e04",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-09T03:04:55Z",
+      "side": 1,
+      "message": "No, this is a target, not a rule. If you want to be precise, call this a RuleTarget. https://bazel.build/reference/glossary#target\n\nThe Rule is defined by \"rule \u003d ..\" in a bzl file, not a BUILD file: https://bazel.build/reference/glossary#rule\n\nA Target can be instantiated from a file, rule, or package group.\n\nSG to use this in conjunction with updated callsites, whether with existing tests or future CLs, but not standalone.",
+      "parentUuid": "0fc4be82_8453af80",
+      "range": {
+        "startLine": 444,
+        "startChar": 5,
+        "endLine": 444,
+        "endChar": 22
+      },
+      "revId": "480a36e61e3b6dc5ae225d8e7740e981034cca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
