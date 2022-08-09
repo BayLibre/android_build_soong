@@ -56,3 +56,61 @@ filegroup {
 		ExpectedErr: fmt.Errorf("filegroup 'foo' cannot contain a file with the same name"),
 	})
 }
+
+func TestFilegroupWithOnlyAidlSrcsWithPath(t *testing.T) {
+	runFilegroupTestCase(t, Bp2buildTestCase{
+		Description: "filegroup with only aidl srcs",
+		Filesystem:  map[string]string{},
+		Blueprint: `
+filegroup {
+    name: "foo",
+    srcs: ["aidl/foo.aidl"],
+	path: "aidl",
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTargetNoRestrictions("aidl_library", "foo", AttrNameToString{
+				"srcs":                `["aidl/foo.aidl"]`,
+				"strip_import_prefix": `"aidl"`,
+			}),
+		}})
+}
+
+func TestFilegroupWithOnlyAidlSrcsWithoutPath(t *testing.T) {
+	runFilegroupTestCase(t, Bp2buildTestCase{
+		Description: "filegroup with only aidl srcs",
+		Filesystem:  map[string]string{},
+		Blueprint: `
+filegroup {
+    name: "foo",
+    srcs: ["aidl/foo.aidl"],
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTargetNoRestrictions("aidl_library", "foo", AttrNameToString{
+				"srcs": `["aidl/foo.aidl"]`,
+			}),
+		}})
+}
+
+func TestFilegroupWithAidlAndNonAidlSrcs(t *testing.T) {
+	runFilegroupTestCase(t, Bp2buildTestCase{
+		Description: "filegroup with aidl and non-aidl srcs",
+		Filesystem:  map[string]string{},
+		Blueprint: `
+filegroup {
+    name: "foo",
+    srcs: [
+		"aidl/foo.aidl",
+		"buf.proto",
+	],
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTargetNoRestrictions("filegroup", "foo", AttrNameToString{
+				"srcs": `[
+        "aidl/foo.aidl",
+        "buf.proto",
+    ]`}),
+		}})
+}

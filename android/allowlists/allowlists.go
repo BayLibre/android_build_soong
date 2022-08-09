@@ -287,6 +287,8 @@ var (
 		"com.android.neuralnetworks.certificate",
 		"com.android.neuralnetworks.key",
 		"flatbuffer_headers",
+		"framework_native_aidl_binder",
+		"framework_native_aidl_gui",
 		"gemmlowp_headers",
 		"gl_headers",
 		"libandroid_runtime_lazy",
