@@ -34,6 +34,24 @@
       "parentUuid": "accd98f4_0d1898f0",
       "revId": "c9a49dff90203f82a3654cc2656fc5042fae814c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d6003b_4b0dcb50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-09T14:21:57Z",
+      "side": 1,
+      "message": "agespino@ mentioned it to me since my name was on the change that exported the bp2build test functions.\n\nI think she was just running `go test ./bp2build` to check other tests locally and these were failing.\n\nI figured it must not have been in the Android.bp file since my change still passed presubmits even after you\u0027d merged the cc_yasm tests.",
+      "parentUuid": "f41729e7_dc3e35f1",
+      "revId": "c9a49dff90203f82a3654cc2656fc5042fae814c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
