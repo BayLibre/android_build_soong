@@ -270,6 +270,15 @@ type bazelCcLibraryAttributes struct {
 	Features bazel.StringListAttribute
 }
 
+type aidlLibraryAttributes struct {
+	Srcs        bazel.LabelListAttribute
+	Include_dir *string
+}
+
+type ccAidlLibraryAttributes struct {
+	Deps bazel.LabelListAttribute
+}
+
 type stripAttributes struct {
 	Keep_symbols                 bazel.BoolAttribute
 	Keep_symbols_and_debug_frame bazel.BoolAttribute
@@ -2455,6 +2464,39 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 	}
 
 	return outputFile
+}
+
+// Return the name of the generated cc_aidl_library target
+func createCcAidlLibraryBazelTargetModule(
+	ctx android.TopDownMutatorContext,
+	name string,
+	aidlSrcs bazel.LabelListAttribute) string {
+
+	aidlLibraryName := name + "_aidl_library"
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "aidl_library",
+			Bzl_load_location: "//build/bazel/rules/aidl:library.bzl",
+		},
+		android.CommonAttributes{Name: aidlLibraryName},
+		&aidlLibraryAttributes{
+			Srcs: aidlSrcs,
+		},
+	)
+	ccAidlLibraryName := name + "_cc_aidl_library"
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "cc_aidl_library",
+			Bzl_load_location: "//build/bazel/rules/cc:aidl_library.bzl",
+		},
+		android.CommonAttributes{Name: ccAidlLibraryName},
+		&ccAidlLibraryAttributes{
+			Deps: bazel.MakeLabelListAttribute(bazel.MakeLabelList([]bazel.Label{
+				{Label: ":" + aidlLibraryName},
+			})),
+		},
+	)
+	return ccAidlLibraryName
 }
 
 func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Module, isStatic bool) {
