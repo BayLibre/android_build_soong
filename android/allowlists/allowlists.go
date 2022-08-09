@@ -382,6 +382,13 @@ var (
 		"car-ui-androidx-core-common-nodeps",
 		"car-ui-androidx-lifecycle-common-nodeps",
 		"car-ui-androidx-constraintlayout-solver-nodeps",
+
+		//frameworks/native
+		"framework_native_aidl_binder",
+		"framework_native_aidl_gui",
+
+		//frameworks/native/libs/input
+		"inputconstants_aidl",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
