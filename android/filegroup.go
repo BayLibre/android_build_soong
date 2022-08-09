@@ -41,6 +41,11 @@ type bazelFilegroupAttributes struct {
 	Srcs bazel.LabelListAttribute
 }
 
+type bazelAidlLibraryAttributes struct {
+	Srcs                bazel.LabelListAttribute
+	Strip_import_prefix *string
+}
+
 // ConvertWithBp2build performs bp2build conversion of filegroup
 func (fg *fileGroup) ConvertWithBp2build(ctx TopDownMutatorContext) {
 	srcs := bazel.MakeLabelListAttribute(
@@ -66,16 +71,33 @@ func (fg *fileGroup) ConvertWithBp2build(ctx TopDownMutatorContext) {
 		}
 	}
 
-	attrs := &bazelFilegroupAttributes{
-		Srcs: srcs,
-	}
+	// Convert module that has only AIDL files to aidl_library
+	// If the module has a mixed bag of AIDL and non-AIDL files, split the filegroup manually
+	// and then convert
+	if hasOnlyAidlFiles(srcs) {
+		attrs := &bazelAidlLibraryAttributes{
+			Srcs:                srcs,
+			Strip_import_prefix: fg.properties.Path,
+		}
 
-	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "filegroup",
-		Bzl_load_location: "//build/bazel/rules:filegroup.bzl",
-	}
+		props := bazel.BazelTargetModuleProperties{
+			Rule_class:        "aidl_library",
+			Bzl_load_location: "//build/bazel/rules/aidl:library.bzl",
+		}
 
-	ctx.CreateBazelTargetModule(props, CommonAttributes{Name: fg.Name()}, attrs)
+		ctx.CreateBazelTargetModule(props, CommonAttributes{Name: fg.Name()}, attrs)
+	} else {
+		attrs := &bazelFilegroupAttributes{
+			Srcs: srcs,
+		}
+
+		props := bazel.BazelTargetModuleProperties{
+			Rule_class:        "filegroup",
+			Bzl_load_location: "//build/bazel/rules:filegroup.bzl",
+		}
+
+		ctx.CreateBazelTargetModule(props, CommonAttributes{Name: fg.Name()}, attrs)
+	}
 }
 
 type fileGroupProperties struct {
@@ -182,4 +204,13 @@ func (fg *fileGroup) ProcessBazelQueryResponse(ctx ModuleContext) {
 	}
 
 	fg.srcs = bazelOuts
+}
+
+func hasOnlyAidlFiles(srcs bazel.LabelListAttribute) bool {
+	for _, src := range srcs.Value.Includes {
+		if !strings.HasSuffix(src.Label, ".aidl") {
+			return false
+		}
+	}
+	return true
 }
