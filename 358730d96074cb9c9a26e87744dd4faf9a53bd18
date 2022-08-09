@@ -189,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65eecd2_1307b28f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-08-09T21:54:15Z",
+      "side": 1,
+      "message": "As Liz pointed out in another CL in this topic, APEXs will link to the latest version of stub libraries, so I just removed the TODO for this.",
+      "parentUuid": "cc1b7657_94b6820c",
+      "range": {
+        "startLine": 800,
+        "startChar": 36,
+        "endLine": 800,
+        "endChar": 43
+      },
+      "revId": "358730d96074cb9c9a26e87744dd4faf9a53bd18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86c0c203_e86d5a52",
