@@ -301,6 +301,9 @@ var (
 		"libandroid_runtime_vm_headers",
 		"libaudioclient_aidl_conversion_util",
 		"libaudioutils_fixedfft",
+		"libbinder",
+		"libbinder_device_interface_sources",
+		"libbinder_aidl",
 		"libbinder_headers",
 		"libbinder_headers_platform_shared",
 		"libbluetooth-types-header",
@@ -382,6 +385,13 @@ var (
 		"car-ui-androidx-core-common-nodeps",
 		"car-ui-androidx-lifecycle-common-nodeps",
 		"car-ui-androidx-constraintlayout-solver-nodeps",
+
+		//frameworks/native
+		"framework_native_aidl_binder",
+		"framework_native_aidl_gui",
+
+		//frameworks/native/libs/input
+		"inputconstants_aidl",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
