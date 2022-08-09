@@ -70,6 +70,30 @@
       },
       "revId": "480a36e61e3b6dc5ae225d8e7740e981034cca02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc4be82_8453af80",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-09T01:44:58Z",
+      "side": 1,
+      "message": "We already have a fairly bad example of imprecise and confusing terminology in Soong where \u0027module\u0027 means five different things. IMHO it\u0027s not too late to avoid creating the same problem for the conversion. So when I talk about a rule, I would like to name it a rule. I would like to rename all those makeBazelTarget... to makeBazelRule...",
+      "parentUuid": "be2a81fa_ab1415f6",
+      "range": {
+        "startLine": 444,
+        "startChar": 5,
+        "endLine": 444,
+        "endChar": 22
+      },
+      "revId": "480a36e61e3b6dc5ae225d8e7740e981034cca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
