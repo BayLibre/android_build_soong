@@ -203,6 +203,15 @@ func Build(ctx Context, config Config) {
 
 	if inList("clean", config.Arguments()) || inList("clobber", config.Arguments()) {
 		clean(ctx, config)
+		if len(config.Arguments()) > 1 {
+			ignored := make([]string, 0, len(config.Arguments())-1)
+			for _, a := range config.Arguments() {
+				if a != "clean" {
+					ignored = append(ignored, a)
+				}
+			}
+			ctx.Printf("ignoring arguments %q", ignored)
+		}
 		return
 	}
 
