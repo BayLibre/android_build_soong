@@ -281,6 +281,30 @@
       },
       "revId": "358730d96074cb9c9a26e87744dd4faf9a53bd18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54963221_d0f2bb4e",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-08-09T21:26:23Z",
+      "side": 1,
+      "message": "As Liz pointed out that APEXs will link to the latest version of stub libraries, these two attributes are not needed any more, but a flag of \"Has_stubs\" has to be added to indicate that a shared library has stubs or not, which is used in apex/cc.bzl and help calculate provideNativeLibs in apex manifest file.",
+      "parentUuid": "a82ad918_9cb4f8e9",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 49
+      },
+      "revId": "358730d96074cb9c9a26e87744dd4faf9a53bd18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
