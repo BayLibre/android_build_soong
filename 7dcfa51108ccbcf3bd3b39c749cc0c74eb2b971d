@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c7e8fb6_0017b2bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-09T00:37:42Z",
+      "side": 1,
+      "message": "I think Sam already did this in aosp/2177842",
+      "revId": "7dcfa51108ccbcf3bd3b39c749cc0c74eb2b971d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
