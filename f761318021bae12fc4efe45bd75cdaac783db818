@@ -16,6 +16,24 @@
       "message": "[here](https://android.googlesource.com/platform/build/soong/+/refs/changes/45/2105245/22/java/java_test.go#1744), we pass includeDirs to the 3rd argument. But in this test, we pass in excludeDirs.\n\nWas there an oversight?",
       "revId": "f761318021bae12fc4efe45bd75cdaac783db818",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2834ffad_acff6d0b",
+        "filename": "java/java_test.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1744,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-09T14:37:31Z",
+      "side": 1,
+      "message": "(Discussed offline; link was supposed to be to [base.go](https://android-review.googlesource.com/c/platform/build/soong/+/2105245/22/java/base.go#841))\n\nIn [base.go](https://android-review.googlesource.com/c/platform/build/soong/+/2105245/22/java/base.go#841), I want to skip adding a flag for directories that I\u0027ve already seen (includeDirs), so I pass them to genAidlIncludeFlags as directories to \"exclude\" because I\u0027ve already accounted for them. So this test is testing the same behavior.",
+      "parentUuid": "a9a88fd7_9b9cd001",
+      "revId": "f761318021bae12fc4efe45bd75cdaac783db818",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
