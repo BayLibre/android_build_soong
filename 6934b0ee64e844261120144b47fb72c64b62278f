@@ -86,6 +86,24 @@
       "parentUuid": "b8618f60_a2096b84",
       "revId": "6934b0ee64e844261120144b47fb72c64b62278f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce3459fe_3bd58b5b",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-08-09T00:47:55Z",
+      "side": 1,
+      "message": "You\u0027re correct, and I thought that he also saw a declarations problem too, but I am no longer sure.",
+      "parentUuid": "d8e674a1_846f19ed",
+      "revId": "6934b0ee64e844261120144b47fb72c64b62278f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
