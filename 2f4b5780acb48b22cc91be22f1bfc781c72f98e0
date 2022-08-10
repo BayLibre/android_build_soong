@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a77f71c_a4d549f6",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-10T09:54:55Z",
+      "side": 1,
+      "message": "Why not just move this above cleanup()\u0027s definition?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "2f4b5780acb48b22cc91be22f1bfc781c72f98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
