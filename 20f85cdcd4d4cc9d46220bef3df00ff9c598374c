@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88cf1c1a_308b1b82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-08-10T15:46:14Z",
+      "side": 1,
+      "message": "yikong: i thought we\u0027d agreed that we _weren\u0027t_ going to have any of these gnu extension warnings? we turned most of them off globally already, and this one doesn\u0027t seem any more justifiable than the others? or am i missing some subtle reason why we should care about this specific one? (remember we default to gnu11 and gnu++17 --- you have to opt _out_ of gnu extensions on Android generally, and anyone who cares to do that can always opt _in_ to these warnings.)",
+      "revId": "20f85cdcd4d4cc9d46220bef3df00ff9c598374c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
