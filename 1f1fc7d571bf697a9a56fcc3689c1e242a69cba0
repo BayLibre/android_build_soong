@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "626a3427_2d38581e",
+        "filename": "bp2build/androidbp_to_build_templates.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-10T10:12:09Z",
+      "side": 1,
+      "message": "This is a template of a target, which is an instantiation of a rule. Please revert (or name it soongModuleTargetTemplate).\n\nSame for ruleTemplate/bazelTarget and unnamedRuleTarget.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "1f1fc7d571bf697a9a56fcc3689c1e242a69cba0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

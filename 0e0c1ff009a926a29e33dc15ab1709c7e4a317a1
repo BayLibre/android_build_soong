@@ -34,6 +34,24 @@
       "parentUuid": "7bc022b4_c5aaf7a7",
       "revId": "0e0c1ff009a926a29e33dc15ab1709c7e4a317a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c96b47df_f596de75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-10T10:12:09Z",
+      "side": 1,
+      "message": "For better context, could you group this with the package bp2build CL?",
+      "parentUuid": "38668e40_998d84a0",
+      "revId": "0e0c1ff009a926a29e33dc15ab1709c7e4a317a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
