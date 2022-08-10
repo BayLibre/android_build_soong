@@ -506,7 +506,7 @@ func (j *Javadoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.docZip = android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"docs.zip")
 
 	outDir := android.PathForModuleOut(ctx, "out")
-	srcJarDir := android.PathForModuleOut(ctx, "srcjars")
+	srcJarDir := android.PathForModuleOut(ctx, "srcjars").OutputPath
 
 	j.stubsSrcJar = nil
 
@@ -771,7 +771,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	doclava := ctx.Config().HostJavaToolPath(ctx, "doclava.jar")
 
 	outDir := android.PathForModuleOut(ctx, "out")
-	srcJarDir := android.PathForModuleOut(ctx, "srcjars")
+	srcJarDir := android.PathForModuleOut(ctx, "srcjars").OutputPath
 
 	rule := android.NewRuleBuilder(pctx, ctx)
 
@@ -874,7 +874,7 @@ func DocDefaultsFactory() android.Module {
 }
 
 func zipSyncCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
-	srcJarDir android.ModuleOutPath, srcJars android.Paths) android.OutputPath {
+	srcJarDir android.OutputPath, srcJars android.Paths) android.OutputPath {
 
 	cmd := rule.Command()
 	cmd.Text("rm -rf").Text(cmd.PathForOutput(srcJarDir))
@@ -894,6 +894,6 @@ func zipSyncCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 	return srcJarList
 }
 
-func zipSyncCleanupCmd(rule *android.RuleBuilder, srcJarDir android.ModuleOutPath) {
+func zipSyncCleanupCmd(rule *android.RuleBuilder, srcJarDir android.OutputPath) {
 	rule.Command().Text("rm -rf").Text(srcJarDir.String())
 }

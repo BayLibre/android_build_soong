@@ -217,7 +217,7 @@ func (l *linter) writeLintProjectXML(ctx android.ModuleContext, rule *android.Ru
 	cacheDir := android.PathForModuleOut(ctx, "lint", "cache")
 	homeDir := android.PathForModuleOut(ctx, "lint", "home")
 
-	srcJarDir := android.PathForModuleOut(ctx, "lint", "srcjars")
+	srcJarDir := android.PathForModuleOut(ctx, "lint", "srcjars").OutputPath
 	srcJarList := zipSyncCmd(ctx, rule, srcJarDir, l.srcJars)
 
 	cmd := rule.Command().
