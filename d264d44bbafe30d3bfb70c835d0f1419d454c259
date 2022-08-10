@@ -34,6 +34,24 @@
       "parentUuid": "a8a8dcb6_7b9e857d",
       "revId": "d264d44bbafe30d3bfb70c835d0f1419d454c259",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e775f3_2eb7acda",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-08-10T21:53:09Z",
+      "side": 1,
+      "message": "Ah, that\u0027s right. Yi fixed future builds, but the current binaries weren\u0027t adjusted so they use the lib64 runpath.\n\n```\nDynamic section at offset 0x3846f0 contains 31 entries:\n  Tag                Type           Name/Value\n  0x000000000000001d (RUNPATH)      Library runpath: [$ORIGIN/../lib64]\n```",
+      "parentUuid": "8d521a4e_afc4c268",
+      "revId": "d264d44bbafe30d3bfb70c835d0f1419d454c259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
