@@ -16,6 +16,24 @@
       "message": "You can actually drop lib64 entirely. It\u0027s just a symlink to lib now.",
       "revId": "d264d44bbafe30d3bfb70c835d0f1419d454c259",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d521a4e_afc4c268",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-08-10T21:42:53Z",
+      "side": 1,
+      "message": "I tried that but then the current compiler failed. Only lib/libc++.so.1 was copied to the sandbox temp directory; the lib64 symlink was not copied.",
+      "parentUuid": "a8a8dcb6_7b9e857d",
+      "revId": "d264d44bbafe30d3bfb70c835d0f1419d454c259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
