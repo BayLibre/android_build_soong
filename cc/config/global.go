@@ -101,9 +101,6 @@ var (
 		// Many old files still have GNU designator syntax.
 		"-Wno-gnu-designator",
 
-		// Warnings from clang-12
-		"-Wno-gnu-folding-constant",
-
 		// Calls to the APIs that are newer than the min sdk version of the caller should be
 		// guarded with __builtin_available.
 		"-Wunguarded-availability",
