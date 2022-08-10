@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1af5db_a5fd7355",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-10T13:44:04Z",
+      "side": 1,
+      "message": "I think we can make Sbox() easier/safer to use by switching all users over to this style and then making Sbox() create its own sub-directory (e.g. \"sbox-out\") within the output directory that it is supplied. That will make it harder for someone to accidentally create an output file for another rule that is within an sbox rule\u0027s output directory. I\u0027ll create a separate bug to track that though.",
+      "revId": "3497efc0eda1c708d2395171edd12d00cff72078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
