@@ -318,6 +318,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cff51b1_deb77690",
+        "filename": "java/aar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-08-10T13:30:25Z",
+      "side": 1,
+      "message": "I\u0027ve done some experiments and I\u0027m not seeing the issue with the starlark rules when building CaptivePortalLogin locally so I\u0027m going to leave the starlark rules in",
+      "parentUuid": "1bd781ca_7ac4197e",
+      "range": {
+        "startLine": 969,
+        "startChar": 3,
+        "endLine": 969,
+        "endChar": 56
+      },
+      "revId": "50fa6ed9ab4b2f75bfb4b9780da011501ed243f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa164659_92536470",
