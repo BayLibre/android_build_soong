@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a155abf9_732e81b8",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-10T18:33:09Z",
+      "side": 1,
+      "message": "These should be in a separate makeStubCcLibraryTarget function, instead of being grouped together with the source libs.",
+      "range": {
+        "startLine": 1307,
+        "startChar": 1,
+        "endLine": 1317,
+        "endChar": 28
+      },
+      "revId": "a57209f84d8a467927a5b93646337c9881315c0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ca7bb9_9155050a",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-10T18:33:09Z",
+      "side": 1,
+      "message": "Create a new bzl file for the stub macro and targets to make the separation from the source rule clear?",
+      "range": {
+        "startLine": 433,
+        "startChar": 22,
+        "endLine": 434,
+        "endChar": 69
+      },
+      "revId": "a57209f84d8a467927a5b93646337c9881315c0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
