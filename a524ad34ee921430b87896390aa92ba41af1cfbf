@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97d8dc62_c83baa74",
+        "filename": "androidmk/androidmk/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-10T21:48:33Z",
+      "side": 1,
+      "message": "Do we really want warnings to result in an error code? I would think that the definition of a warning would be \"log to stdout / stderr, but return success\". Otherwise what\u0027s the difference between an error and warning?",
+      "revId": "a524ad34ee921430b87896390aa92ba41af1cfbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "357816c3_9e6e3455",
+        "filename": "androidmk/cmd/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-10T21:48:33Z",
+      "side": 1,
+      "message": "I think 2 is a reserved code, at least for unix\nhttps://tldp.org/LDP/abs/html/exitcodes.html",
+      "revId": "a524ad34ee921430b87896390aa92ba41af1cfbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
