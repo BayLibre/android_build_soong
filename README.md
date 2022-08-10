@@ -13,7 +13,7 @@ on source.android.com to read how Soong is configured for testing.
 By design, Android.bp files are very simple.  There are no conditionals or
 control flow statements - any complexity is handled in build logic written in
 Go.  The syntax and semantics of Android.bp files are intentionally similar
-to [Bazel BUILD files](https://www.bazel.io/versions/master/docs/be/overview.html)
+to [Bazel BUILD files](https://docs.bazel.build/versions/main/build-ref.html#BUILD_files)
 when possible.
 
 ### Modules
