@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba38b44_517ba10c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-10T01:08:38Z",
+      "side": 1,
+      "message": "Adding notice support consists of license+package modules conversion, and of implementing Bazel actions for them. I started with modules conversion.",
+      "parentUuid": "19b32266_88220af5",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcc5512f_dc1a49bf",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-04T08:17:14Z",
       "side": 1,
       "message": "Like \"name\", visibility is a common bazel/soong attribute and should be handled as part of CommonAttributes, not a specialized one for bazelLicenseAttributes.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f4bd52_0cc35931",
+        "filename": "android/license.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-10T01:08:38Z",
+      "side": 1,
+      "message": "Only the properties registered by the AddProperties invocation (line 116) are known to the parser. License module does not register commonProperties.",
+      "parentUuid": "dcc5512f_dc1a49bf",
       "range": {
         "startLine": 68,
         "startChar": 1,
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4288c82_fcb2a2e2",
+        "filename": "android/license.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-10T01:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1222c2b_f61f4b29",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "634e76fa_5aa1c569",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-08-04T08:17:14Z",
       "side": 1,
       "message": "This rule doesn\u0027t exist in Bazel natively. There\u0027s \"licenses\" (https://docs.bazel.build/versions/0.24.0/be/functions.html#licenses), but I believe it\u0027s being redeveloped totally (see doc: https://docs.google.com/document/d/1uwBuhAoBNrw8tmFs-NxlssI6VRolidGYdYqagLqHWt8/edit#heading\u003dh.cgrjvasquhse)",
+      "range": {
+        "startLine": 85,
+        "startChar": 23,
+        "endLine": 85,
+        "endChar": 30
+      },
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3712a553_c695bcde",
+        "filename": "android/license.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-10T01:08:38Z",
+      "side": 1,
+      "message": "I\u0027ve stubbed the rules, please see aog/2180598.",
+      "parentUuid": "634e76fa_5aa1c569",
       "range": {
         "startLine": 85,
         "startChar": 23,
@@ -104,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2941a5c_2d6d1414",
+        "filename": "android/license.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-10T01:08:38Z",
+      "side": 1,
+      "message": "I\u0027ve stubbed the rules, please see aog/2180598",
+      "parentUuid": "180f7ad0_ad1d9904",
+      "range": {
+        "startLine": 86,
+        "startChar": 23,
+        "endLine": 86,
+        "endChar": 49
+      },
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd81a13f_9d5981c8",
@@ -117,6 +225,24 @@
       "writtenOn": "2022-08-03T20:45:36Z",
       "side": 1,
       "message": "Why are you adding the BazelConversionStatus here when in the previous cl you didn\u0027t update any other module types to add BazelConversionStatus?\n\nI\u0027m also confused because I thought the point of adding BazelConversionStatus was so that it\u0027s fields don\u0027t show up as properties in an Android.bp file.",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d2a2ee3_257ae899",
+        "filename": "android/license.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-10T01:08:38Z",
+      "side": 1,
+      "message": "The module types converted so far were all registering commonProperties indirectly via the call to InitAndroidModule (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;drc\u003da09540641198a4256082d30a98c859fe35d1b8de;l\u003d1084). `license` is one of the module types that does not do that. These are the consequences of module.AddProperties serving dual purpose: it defines the allowed attributes, and it tells which attributes are to be copied when a module is cloned. Overall it would be better if bp2build conversion stuff were not tucked into commonProperties.",
+      "parentUuid": "fd81a13f_9d5981c8",
       "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -138,6 +264,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6ba137f_4ae9c580",
+        "filename": "bp2build/license_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-10T01:08:38Z",
+      "side": 1,
+      "message": "Will do that once I change bp2buildTestCase to have as expected results []expectedBazelRule instead of expectedBazelTargets",
+      "parentUuid": "082db151_d5ed0085",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "591803a7_0126bf99",
@@ -151,6 +295,24 @@
       "writtenOn": "2022-08-03T20:45:36Z",
       "side": 1,
       "message": "I don\u0027t see any `visibility: [\"__subpackage__\"],` in the source tree. Could we change this to `visibility: [\":__subpackages__\"],` to be more true to life?",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac953d5d_27f4cafa",
+        "filename": "bp2build/license_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-10T01:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591803a7_0126bf99",
       "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -178,6 +340,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9edcc55f_6c37ac80",
+        "filename": "bp2build/license_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-10T01:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa3320bb_508b6677",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 45
+      },
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f42b6570_db33f1b4",
@@ -191,6 +377,24 @@
       "writtenOn": "2022-08-04T08:17:14Z",
       "side": 1,
       "message": "TestLicenseBp2Build",
+      "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ed43fa0_0721f613",
+        "filename": "bp2build/license_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-10T01:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f42b6570_db33f1b4",
       "revId": "9ea62e05d9a684a1036c40137009987a3850bcde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
