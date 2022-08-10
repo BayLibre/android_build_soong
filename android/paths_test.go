@@ -1469,7 +1469,7 @@ func TestPathsForModuleSrc_AllowMissingDependencies(t *testing.T) {
 	AssertArrayString(t, "bar srcs", []string{}, bar.srcs)
 }
 
-func TestPathRelativeToTop(t *testing.T) {
+func newTestDevicePathContext() *testModuleInstallPathContext {
 	testConfig := pathTestConfig("/tmp/build/top")
 	deviceTarget := Target{Os: Android, Arch: Arch{ArchType: Arm64}}
 
@@ -1480,6 +1480,11 @@ func TestPathRelativeToTop(t *testing.T) {
 		},
 	}
 	ctx.baseModuleContext.config = testConfig
+	return ctx
+}
+
+func TestPathRelativeToTop(t *testing.T) {
+	ctx := newTestDevicePathContext()
 
 	t.Run("install for soong", func(t *testing.T) {
 		p := PathForModuleInstall(ctx, "install/path")
@@ -1511,6 +1516,31 @@ func TestPathRelativeToTop(t *testing.T) {
 			"source/path",
 		}
 		AssertPathsRelativeToTopEquals(t, "mixture", expected, paths)
+	})
+}
+
+func TestJoinWritable(t *testing.T) {
+	ctx := newTestDevicePathContext()
+
+	t.Run("OutputPath", func(t *testing.T) {
+		path := PathForOutput(ctx, "output")
+		joined := path.JoinWritable(ctx, "joined")
+		expected := path.RelativeToTop().String() + "/joined"
+		AssertPathRelativeToTopEquals(t, "joined", expected, joined)
+	})
+
+	t.Run("InstallPath", func(t *testing.T) {
+		path := PathForModuleInstall(ctx, "output")
+		joined := path.JoinWritable(ctx, "joined")
+		expected := path.RelativeToTop().String() + "/joined"
+		AssertPathRelativeToTopEquals(t, "joined", expected, joined)
+	})
+
+	t.Run("PhonyPath", func(t *testing.T) {
+		path := PathForPhony(ctx, "output")
+		AssertPanicMessageContains(t, "join unsupported", "Phony paths cannot be joined", func() {
+			path.JoinWritable(ctx, "joined")
+		})
 	})
 }
 

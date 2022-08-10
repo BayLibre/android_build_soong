@@ -216,6 +216,15 @@ type WritablePath interface {
 	// but it allows a struct to distinguish between whether or not it implements the WritablePath interface
 	writablePath()
 
+	// JoinWritable creates a new WritablePath with paths... joined with the current path. The
+	// provided paths... may not use '..' to escape from the current path.
+	//
+	// The returned WritablePath is of an equivalent type to this path, e.g. an OutputPath will
+	// produce another OutputPath, while a ModuleOutPath will also produce an OutputPath as there is
+	// no functional difference between ModuleOutPath and OutputPath. This method will panic if called
+	// on a PhonyPath as they cannot contain /.
+	JoinWritable(ctx PathContext, paths ...string) WritablePath
+
 	ReplaceExtension(ctx PathContext, ext string) OutputPath
 }
 
@@ -1303,6 +1312,10 @@ func PathsForOutput(ctx PathContext, paths []string) WritablePaths {
 
 func (p OutputPath) writablePath() {}
 
+func (p OutputPath) JoinWritable(ctx PathContext, paths ...string) WritablePath {
+	return p.Join(ctx, paths...)
+}
+
 func (p OutputPath) String() string {
 	return p.fullPath
 }
@@ -1650,6 +1663,10 @@ var _ WritablePath = InstallPath{}
 
 func (p InstallPath) writablePath() {}
 
+func (p InstallPath) JoinWritable(ctx PathContext, paths ...string) WritablePath {
+	return p.Join(ctx, paths...)
+}
+
 func (p InstallPath) String() string {
 	if p.makePath {
 		// Make path starts with out/ instead of out/soong.
@@ -1930,6 +1947,10 @@ type PhonyPath struct {
 }
 
 func (p PhonyPath) writablePath() {}
+
+func (p PhonyPath) JoinWritable(_ PathContext, _ ...string) WritablePath {
+	panic("Phony paths cannot be joined")
+}
 
 func (p PhonyPath) getSoongOutDir() string {
 	// A phone path cannot contain any / so cannot be relative to the build directory.
