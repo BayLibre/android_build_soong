@@ -27,7 +27,7 @@ import (
 )
 
 var (
-	defaultBindgenFlags = []string{""}
+	defaultBindgenFlags = []string{"--size_t-is-usize"}
 
 	// bindgen should specify its own Clang revision so updating Clang isn't potentially blocked on bindgen failures.
 	bindgenClangVersion = "clang-r450784d"
