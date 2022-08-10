@@ -22,6 +22,8 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"strings"
+	"time"
 
 	"android/soong/ui/metrics"
 	soong_metrics_proto "android/soong/ui/metrics/metrics_proto"
@@ -443,6 +445,12 @@ func runSoong(ctx Context, config Config) {
 			"-j", strconv.Itoa(config.Parallel()),
 			"--frontend_file", fifo,
 			"-f", filepath.Join(config.SoongOutDir(), ninjaFile),
+		}
+
+		if extra, ok := config.Environment().Get("SOONG_UI_NINJA_ARGS"); ok {
+			ctx.Printf(`CAUTION: arguments in $SOONG_UI_NINJA_ARGS=%q, e.g. "-n", can make soong_build FAIL or INCORRECT`, extra)
+			time.Sleep(5 * time.Second)
+			ninjaArgs = append(ninjaArgs, strings.Fields(extra)...)
 		}
 
 		ninjaArgs = append(ninjaArgs, targets...)
