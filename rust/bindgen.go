@@ -28,6 +28,8 @@ import (
 
 var (
 	defaultBindgenFlags = []string{""}
+	// Bindgen only allows some flags to be specified once. If you want to add such a flag to default bindgen flags, add it below instead.
+	defaultBindgenOnlyOnceFlags = []string{"--size_t-is-usize"}
 
 	// bindgen should specify its own Clang revision so updating Clang isn't potentially blocked on bindgen failures.
 	bindgenClangVersion = "clang-r450784d"
@@ -220,6 +222,19 @@ func (b *bindgenDecorator) GenerateSource(ctx ModuleContext, deps PathDeps) andr
 
 	bindgenFlags := defaultBindgenFlags
 	bindgenFlags = append(bindgenFlags, esc(b.Properties.Bindgen_flags)...)
+	for _, flag := range defaultBindgenOnlyOnceFlags {
+		// Unfortunately, Go still doesn't have slice membership in the stdlib
+		contained := false
+		for _, candidate_flag := range bindgenFlags {
+			if candidate_flag == flag {
+				contained = true
+				break
+			}
+		}
+		if !contained {
+			bindgenFlags = append([]string{flag}, bindgenFlags...)
+		}
+	}
 
 	wrapperFile := android.OptionalPathForModuleSrc(ctx, b.Properties.Wrapper_src)
 	if !wrapperFile.Valid() {
