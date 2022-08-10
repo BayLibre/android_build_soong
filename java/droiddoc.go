@@ -884,13 +884,13 @@ func DocDefaultsFactory() android.Module {
 }
 
 func zipSyncCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
-	srcJarDir android.ModuleOutPath, srcJars android.Paths) android.OutputPath {
+	srcJarDir android.WritablePath, srcJars android.Paths) android.WritablePath {
 
 	cmd := rule.Command()
 	cmd.Text("rm -rf").Text(cmd.PathForOutput(srcJarDir))
 	cmd = rule.Command()
 	cmd.Text("mkdir -p").Text(cmd.PathForOutput(srcJarDir))
-	srcJarList := srcJarDir.Join(ctx, "list")
+	srcJarList := srcJarDir.JoinWritable(ctx, "list")
 
 	rule.Temporary(srcJarList)
 
@@ -904,6 +904,6 @@ func zipSyncCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 	return srcJarList
 }
 
-func zipSyncCleanupCmd(rule *android.RuleBuilder, srcJarDir android.ModuleOutPath) {
+func zipSyncCleanupCmd(rule *android.RuleBuilder, srcJarDir android.WritablePath) {
 	rule.Command().Text("rm -rf").Text(srcJarDir.String())
 }

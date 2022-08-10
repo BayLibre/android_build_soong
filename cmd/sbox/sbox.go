@@ -677,6 +677,8 @@ func clearOutputDirectory(copies []*sbox_proto.Copy, outputDir string, write wri
 			err := os.Remove(fullExistingFile)
 			if err != nil {
 				return fmt.Errorf("failed to remove obsolete output file %s: %w", fullExistingFile, err)
+			} else {
+				fmt.Printf("PAUL: Removing obsolete output file %s\n", existingFile)
 			}
 		}
 	}

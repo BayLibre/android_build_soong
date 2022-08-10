@@ -149,6 +149,17 @@ func (r *RuleBuilder) Sbox(outputDir WritablePath, manifestPath WritablePath) *R
 	return r
 }
 
+// SboxOutputPath creates a WritablePath relative to the Sbox's output directory as supplied to the
+// RuleBuilder.Sbox(...) method. It will panic if called on a RuleBuilder on which the Sbox(...)
+// method has not been called.
+func (r *RuleBuilder) SboxOutputPath(ctx PathContext, paths ...string) WritablePath {
+	if r.outDir == nil {
+		panic("Only works on RuleBuilder on which Sbox(...) has been called")
+	}
+
+	return r.outDir.JoinWritable(ctx, paths...)
+}
+
 // SandboxTools enables tool sandboxing for the rule by copying any referenced tools into the
 // sandbox.
 func (r *RuleBuilder) SandboxTools() *RuleBuilder {
@@ -822,6 +833,12 @@ func (c *RuleBuilderCommand) PathForOutput(path WritablePath) string {
 		return filepath.Join(sboxOutDir, rel)
 	}
 	return path.String()
+}
+
+// SboxOutputPath delegates to the RuleBuilder.SboxOutputPath method of the RuleBuilder that created
+// this command.
+func (c *RuleBuilderCommand) SboxOutputPath(ctx PathContext, paths ...string) WritablePath {
+	return c.rule.SboxOutputPath(ctx, paths...)
 }
 
 func sboxPathForToolRel(ctx BuilderContext, path Path) string {
