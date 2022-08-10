@@ -137,6 +137,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c24bd6d_e2a57818",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2194,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-10T04:12:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0b2ce56c_06a92974",
+      "range": {
+        "startLine": 2194,
+        "startChar": 49,
+        "endLine": 2194,
+        "endChar": 60
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9721de7c_0c2bc85f",
@@ -174,6 +198,30 @@
       "side": 1,
       "message": "This part I just copied logic from the vendor_snapshot. Not sure if there would be any race condition.",
       "parentUuid": "9721de7c_0c2bc85f",
+      "range": {
+        "startLine": 2196,
+        "startChar": 4,
+        "endLine": 2198,
+        "endChar": 59
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8f2cd5_1198658f",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2198,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-10T04:12:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32300bc1_1a831b6f",
       "range": {
         "startLine": 2196,
         "startChar": 4,
@@ -302,6 +350,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e4d20a_565a108b",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-10T04:12:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3498965_bedf8d22",
+      "range": {
+        "startLine": 2267,
+        "startChar": 0,
+        "endLine": 2268,
+        "endChar": 59
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fdd3982_7ba59ae4",
@@ -349,6 +421,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "582b1fea_da84fb37",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2380,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-10T04:12:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "752770de_bf72f997",
+      "range": {
+        "startLine": 2380,
+        "startChar": 8,
+        "endLine": 2380,
+        "endChar": 28
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9185d5da_c92fa445",
@@ -362,6 +458,30 @@
       "writtenOn": "2022-08-02T07:12:46Z",
       "side": 1,
       "message": "I think this must be the one to add the stub dependencies for libraries with stubs. APEX available libraries that are provided by the API surfaces need to be replaced here.\n\nThis is not the post deps of APEX but in the deps mutation.",
+      "range": {
+        "startLine": 2433,
+        "startChar": 2,
+        "endLine": 2439,
+        "endChar": 88
+      },
+      "revId": "a34e9ef71f950ff32f83dd6cebb6122f003e7679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "761df23d_a09931e0",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2439,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-10T04:12:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9185d5da_c92fa445",
       "range": {
         "startLine": 2433,
         "startChar": 2,
