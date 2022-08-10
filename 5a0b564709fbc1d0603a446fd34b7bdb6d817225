@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71eefa32_c93a504d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-10T20:30:26Z",
+      "side": 1,
+      "message": "I\u0027m a little worried by the number of workarounds that have to be checked in with this.  Is this going to cause problems for developers if they introduce new code that triggers similar issues?  How will they know that they need the workaround?  Will this cause issues in vendor codebases?",
+      "revId": "5a0b564709fbc1d0603a446fd34b7bdb6d817225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
