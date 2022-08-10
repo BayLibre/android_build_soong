@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89a19a6b_f1df0afa",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2285,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-10T02:17:01Z",
+      "side": 1,
+      "message": "No ApiImport only has sharedlibs property. I don\u0027t think we need to separate shared libs list for each detailed list.",
+      "parentUuid": "b8312df9_0740620f",
+      "range": {
+        "startLine": 2285,
+        "startChar": 66,
+        "endLine": 2285,
+        "endChar": 76
+      },
+      "revId": "487689eaee9edf5163ed31e3a66f8e35f1dfcfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98c580e4_c7c4fd25",
         "filename": "cc/cc.go",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-10T02:15:07Z",
       "side": 1,
       "message": "RuntimeLibs?",
+      "range": {
+        "startLine": 2289,
+        "startChar": 63,
+        "endLine": 2289,
+        "endChar": 73
+      },
+      "revId": "487689eaee9edf5163ed31e3a66f8e35f1dfcfb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeba3b2b_74dc9b17",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2289,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-10T02:17:01Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "98c580e4_c7c4fd25",
       "range": {
         "startLine": 2289,
         "startChar": 63,
