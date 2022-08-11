@@ -261,6 +261,30 @@
       },
       "revId": "fb975e6fa07731b7bbdfca1d636100b866e45872",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf5a85f_169c3167",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2022-08-11T00:56:58Z",
+      "side": 1,
+      "message": "Changed implementation, now move the sha256 logic into a python binary that wraps around apexer. Soong now will call this run_apexer binary rather than directly calling into apexer binary. At this run_apexer binary, we check if it is DCLA, if so, the native shared libs are moved around, and the canned_fs_config are updated.",
+      "parentUuid": "fd4c37fd_68c87461",
+      "range": {
+        "startLine": 423,
+        "startChar": 17,
+        "endLine": 423,
+        "endChar": 91
+      },
+      "revId": "fb975e6fa07731b7bbdfca1d636100b866e45872",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

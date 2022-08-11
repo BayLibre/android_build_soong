@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c67dc3c5_4df939c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2022-08-11T00:56:58Z",
+      "side": 1,
+      "message": "Will add tests once we agree upon implementation details",
+      "parentUuid": "a660bd00_55e3461d",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "dd7625fc09059c9420a2af11ad18644b0909f439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d07dcb1c_d69c8129",
         "filename": "apex/apex.go",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "writtenOn": "2022-08-08T14:05:13Z",
       "side": 1,
       "message": "Isn\u0027t this referred as DCLA everywhere?",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 24
+      },
+      "revId": "dd7625fc09059c9420a2af11ad18644b0909f439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c306df06_df286290",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2022-08-11T00:56:58Z",
+      "side": 1,
+      "message": "changed the name to dynamic_common_lib_apex",
+      "parentUuid": "1b44a6df_ac9aa356",
       "range": {
         "startLine": 196,
         "startChar": 1,
