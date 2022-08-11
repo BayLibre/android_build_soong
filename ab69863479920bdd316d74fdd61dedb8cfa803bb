@@ -34,6 +34,24 @@
       "parentUuid": "ca4f1c9e_60e9f93f",
       "revId": "ab69863479920bdd316d74fdd61dedb8cfa803bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50758cda_cd37eea6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-11T17:53:35Z",
+      "side": 1,
+      "message": "There may be cases where we need to preserve symlinks, can we fix prebuilts/clang/host/linux-x86/soong/clangprebuilts.go to point to the real location of clang_crt.crtbegin.o instead of the symlink?",
+      "parentUuid": "3b243a61_91cbf648",
+      "revId": "ab69863479920bdd316d74fdd61dedb8cfa803bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
