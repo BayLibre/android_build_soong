@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff6fa3a2_297487c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-11T14:48:54Z",
+      "side": 1,
+      "message": "as mentioned in the bug, can we add a nudge of what may be the issue (likely [here](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d2767;drc\u003d3a4088dfd127cd9c0c11ea88d24969e43bc25955)) if someone depends on the sysprop_library name instead of the cc library name? and a test case for it?",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "e65277348908a030a9f11b6ffc846c07100fc5aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
