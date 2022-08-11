@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b7bf43_e4f24e72",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2022-08-11T15:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07dcb1c_d69c8129",
+      "range": {
+        "startLine": 195,
+        "startChar": 4,
+        "endLine": 195,
+        "endChar": 45
+      },
+      "revId": "dd7625fc09059c9420a2af11ad18644b0909f439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b44a6df_ac9aa356",
