@@ -16,6 +16,24 @@
       "message": "I\u0027m a little worried by the number of workarounds that have to be checked in with this.  Is this going to cause problems for developers if they introduce new code that triggers similar issues?  How will they know that they need the workaround?  Will this cause issues in vendor codebases?",
       "revId": "5a0b564709fbc1d0603a446fd34b7bdb6d817225",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988b3011_220f0b07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-08-11T09:14:09Z",
+      "side": 1,
+      "message": "Some vendors already build with their own LLVM (and/or different flags that automatically include ThinLTO), but I do understand that concern. At least for some of the cases that I\u0027ve looked at with Yi, there are actually source errors (mismatched declarations/definitions caused the problem in https://android-review.googlesource.com/c/platform/external/libese/+/1878048 for instance).\n\nI suspect that there are other lurking bugs like that which aren\u0027t necessarily compiler/linker problems, but ticking time bombs from incorrect assumptions. The art patch links different target architectures (which is something we in Android need to be careful about, tbh). The Linux selftests are for a baremetal target that should probably be using `-ffreestanding` (as the Makefile specifies, but the Android.bp does not). I\u0027m not sure what\u0027s wrong with the hidl case, but I suspect that if we looked at it long enough, we would figure out where it was being misbuilt.",
+      "parentUuid": "71eefa32_c93a504d",
+      "revId": "5a0b564709fbc1d0603a446fd34b7bdb6d817225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
