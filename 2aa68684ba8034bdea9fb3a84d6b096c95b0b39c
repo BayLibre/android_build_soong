@@ -16,6 +16,24 @@
       "message": "Please also check the \u0027errorprone\u0027 target which was failing on `git_stage-aosp-master\u0027.",
       "revId": "2aa68684ba8034bdea9fb3a84d6b096c95b0b39c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "881938d8_1529fe5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-11T17:27:58Z",
+      "side": 1,
+      "message": "Yes that\u0027s what I meant in the reason for revert. The run is here: https://android-build.googleplex.com/builds/abtd/run/L52700000955880569",
+      "parentUuid": "d6be0b6a_a3d93579",
+      "revId": "2aa68684ba8034bdea9fb3a84d6b096c95b0b39c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
