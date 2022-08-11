@@ -16,6 +16,52 @@
       "message": "Missing a dedicated Unit Test beyond the Suffix work",
       "revId": "f6348c3a70319517de3bde42ec5efc1f1559d241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf3f3eb_6360adee",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-11T12:21:40Z",
+      "side": 1,
+      "message": "nit: string",
+      "range": {
+        "startLine": 1067,
+        "startChar": 22,
+        "endLine": 1067,
+        "endChar": 29
+      },
+      "revId": "f6348c3a70319517de3bde42ec5efc1f1559d241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba842841_365fabb3",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-11T12:21:40Z",
+      "side": 1,
+      "message": "nit: string",
+      "range": {
+        "startLine": 1071,
+        "startChar": 10,
+        "endLine": 1071,
+        "endChar": 14
+      },
+      "revId": "f6348c3a70319517de3bde42ec5efc1f1559d241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

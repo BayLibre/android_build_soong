@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535c563b_fd38f84f",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-11T12:21:40Z",
+      "side": 0,
+      "message": "we\u0027re losing test coverage of this behavior with this change -- can you add a different property for your testing purposes?",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 21
+      },
+      "revId": "8c9a3f25964965cf2b03ab0eeb0d3deb03fff873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

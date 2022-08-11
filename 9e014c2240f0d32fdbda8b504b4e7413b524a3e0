@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "147aa8db_bbc74da9",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-11T12:21:40Z",
+      "side": 1,
+      "message": "Given that the purpose of `StringAttribute` is to support arch-variant attributes, can you also add tests that use the fact that it\u0027s arch-variant?\n\nCan you also add a test case where string prop is unset?",
+      "range": {
+        "startLine": 251,
+        "startChar": 2,
+        "endLine": 251,
+        "endChar": 4
+      },
+      "revId": "9e014c2240f0d32fdbda8b504b4e7413b524a3e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
