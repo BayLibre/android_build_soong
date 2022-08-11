@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca4f1c9e_60e9f93f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-08-11T07:58:10Z",
+      "side": 1,
+      "message": "If we\u0027re missing the target of a symlink, that just means we didn\u0027t copy over all of the actual dependencies, so something else is wrong with the build. Where are you seeing this particular case?",
+      "revId": "ab69863479920bdd316d74fdd61dedb8cfa803bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
