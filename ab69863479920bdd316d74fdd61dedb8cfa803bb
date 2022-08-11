@@ -16,6 +16,24 @@
       "message": "If we\u0027re missing the target of a symlink, that just means we didn\u0027t copy over all of the actual dependencies, so something else is wrong with the build. Where are you seeing this particular case?",
       "revId": "ab69863479920bdd316d74fdd61dedb8cfa803bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b243a61_91cbf648",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-08-11T17:19:39Z",
+      "side": 1,
+      "message": "Details in b/241815504. One of the build steps has\nrm -f ... \u0026\u0026\ncp -d  prebuilts/clang/host/linux-x86/clang-r468909/lib64/clang/15.0.2/lib/linux/clang_rt.crtbegin-x86_64.o out/soong/.intermediates/prebuilts/clang/host/linux-x86/clang_rt.crtbegin/linux_musl_x86_64/clang_rt.crtbegin.o \u0026\u0026 chmod +x out/soong/.intermediates/prebuilts/clang/host/linux-x86/clang_rt.crtbegin/linux_musl_x86_64/clang_rt.crtbegin.o\n\nThat failed because clang_rt.crtbegin-x86_64.o is a symlink now.",
+      "parentUuid": "ca4f1c9e_60e9f93f",
+      "revId": "ab69863479920bdd316d74fdd61dedb8cfa803bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
