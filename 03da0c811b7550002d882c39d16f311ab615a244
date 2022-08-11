@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79790600_bcac002d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-08-11T18:25:20Z",
+      "side": 1,
+      "message": "Hi Liz, Yu,\n\nPlease review this changelist.",
+      "revId": "03da0c811b7550002d882c39d16f311ab615a244",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
