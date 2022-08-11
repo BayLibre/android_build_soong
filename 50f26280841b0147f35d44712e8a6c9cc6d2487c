@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9ed798_9637b5b9",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-08-11T02:53:55Z",
+      "side": 1,
+      "message": "But they\u0027ve been used in the past for the main ninja execution, while this could either halt or skip soong execution before it ever gets to the main ninja execution. That would be fine for the `-d` use cases, as you still do a build, but not for the `-t` tools, which skip the build.\n\nWe probably should use a new environment variable for this use case",
+      "revId": "50f26280841b0147f35d44712e8a6c9cc6d2487c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
