@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b0629d_700fcf0f",
+        "filename": "bp2build/aidl_interface_conversion_test.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-08-11T20:36:14Z",
+      "side": 1,
+      "message": "nit: spacing looks different here? Throughout the \"Blueprint\" sections there\u0027s a mix of tabs and spaces",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "8712a5b4691b909eb809340cf0da86d545aca51f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
