@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa1579d_bd71c279",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-08-11T08:01:05Z",
+      "side": 1,
+      "message": "Why are we changing from `-Wno` to `-Wno-error` at all? I\u0027m not sure Android has the bandwidth/desire to work on fixing some of these, so this will just come out as build log spam.\n\nIf we actually do want to adjust things, I think that we should split this change so that changes for the next toolchain remain separate, however.",
+      "revId": "d7e6759e5fd6ecd4243c33cd91e4dda6a464327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
