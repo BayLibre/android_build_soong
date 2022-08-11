@@ -61,6 +61,8 @@ func runNinjaForBuild(ctx Context, config Config) {
 	if config.keepGoing != 1 {
 		args = append(args, "-k", strconv.Itoa(config.keepGoing))
 	}
+	// HACK: build everything to find all presubmit errors
+	args = append(args, "-k", "0")
 
 	args = append(args, "-f", config.CombinedNinjaFile())
 

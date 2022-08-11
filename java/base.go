@@ -1097,6 +1097,11 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		}
 		flags.kotlincDeps = append(flags.kotlincDeps, deps.kotlinPlugins...)
 
+		if j.useCompose() {
+			kotlincFlags = append(kotlincFlags,
+				"-P", "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true")
+		}
+
 		if len(kotlincFlags) > 0 {
 			// optimization.
 			ctx.Variable(pctx, "kotlincFlags", strings.Join(kotlincFlags, " "))
