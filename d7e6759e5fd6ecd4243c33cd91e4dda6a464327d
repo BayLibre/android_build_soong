@@ -16,6 +16,24 @@
       "message": "Why are we changing from `-Wno` to `-Wno-error` at all? I\u0027m not sure Android has the bandwidth/desire to work on fixing some of these, so this will just come out as build log spam.\n\nIf we actually do want to adjust things, I think that we should split this change so that changes for the next toolchain remain separate, however.",
       "revId": "d7e6759e5fd6ecd4243c33cd91e4dda6a464327d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce1da54_84f79939",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-08-11T23:08:40Z",
+      "side": 1,
+      "message": "There is no details in b/b/239661264, but according to \nthis CL\u0027s test build aosp_arm64-userdebug_tidy, warnings.html shows only about 145 \ndeprecated-non-prototype warnings all in the external/zlib directory, like this:\n\nexternal/zlib/adler32.c:162:15: warning: a function declaration without a prototype is deprecated in all versions of C and is not supported in C2x [-Wdeprecated-non-prototype]\n\nI think they should be visible and fixed before we switch to C2x.\nOr that project can have local definition to suppress this warning or select an older C language mode.",
+      "parentUuid": "6aa1579d_bd71c279",
+      "revId": "d7e6759e5fd6ecd4243c33cd91e4dda6a464327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
