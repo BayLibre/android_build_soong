@@ -52,6 +52,24 @@
       "parentUuid": "3b243a61_91cbf648",
       "revId": "ab69863479920bdd316d74fdd61dedb8cfa803bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afac6a22_1632bb09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-08-11T19:17:53Z",
+      "side": 1,
+      "message": "The prebuilt clang/llvm libraries have changed locations\nand might be changed again. So symlinks are used.\nCopying without preserving symlink in the out directory\nseems to be a safer way to be backward compatible.\nIt would be better to have a solution now that can work \nwith and without syminks.\n\nTo copy and preserve symlinks, the destination files \nwill need to be copied before we can execute: \n  cp -d ... \u0026\u0026 chmod ... \nIs there any existing .go or ninja build rule that can\nrecursively follow and copy symlink destinations?\nIs there a way to find which callers of CpExecutable\nneed to preserve symlinks?\n\nIf that can be identified, maybe we can\nadd another version of CpExecutable\nthat do not preserve symlink\nand use it to fix b/241815504.",
+      "parentUuid": "50758cda_cd37eea6",
+      "revId": "ab69863479920bdd316d74fdd61dedb8cfa803bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
