@@ -3622,21 +3622,22 @@ func rBcpPackages() map[string][]string {
 // For Bazel / bp2build
 
 type bazelApexBundleAttributes struct {
-	Manifest              bazel.LabelAttribute
-	Android_manifest      bazel.LabelAttribute
-	File_contexts         bazel.LabelAttribute
-	Key                   bazel.LabelAttribute
-	Certificate           bazel.LabelAttribute
-	Min_sdk_version       *string
-	Updatable             bazel.BoolAttribute
-	Installable           bazel.BoolAttribute
-	Binaries              bazel.LabelListAttribute
-	Prebuilts             bazel.LabelListAttribute
-	Native_shared_libs_32 bazel.LabelListAttribute
-	Native_shared_libs_64 bazel.LabelListAttribute
-	Compressible          bazel.BoolAttribute
-	Package_name          *string
-	Logging_parent        *string
+	Manifest                bazel.LabelAttribute
+	Android_manifest        bazel.LabelAttribute
+	File_contexts           bazel.LabelAttribute
+	Key                     bazel.LabelAttribute
+	Certificate             bazel.LabelAttribute
+	Min_sdk_version         *string
+	Updatable               bazel.BoolAttribute
+	Installable             bazel.BoolAttribute
+	Binaries                bazel.LabelListAttribute
+	Prebuilts               bazel.LabelListAttribute
+	Native_shared_libs_32   bazel.LabelListAttribute
+	Native_shared_libs_64   bazel.LabelListAttribute
+	Compressible            bazel.BoolAttribute
+	Package_name            *string
+	Logging_parent          *string
+	Dynamic_common_lib_apex bazel.BoolAttribute
 }
 
 type convertedNativeSharedLibs struct {
@@ -3731,6 +3732,11 @@ func convertWithBp2build(a *apexBundle, ctx android.TopDownMutatorContext) (baze
 		compressibleAttribute.Value = a.overridableProperties.Compressible
 	}
 
+	var dynamicCommonLibApexAttribute bazel.BoolAttribute
+	if a.properties.Dynamic_common_lib_apex != nil {
+		dynamicCommonLibApexAttribute.Value = a.properties.Dynamic_common_lib_apex
+	}
+
 	var packageName *string
 	if a.overridableProperties.Package_name != "" {
 		packageName = &a.overridableProperties.Package_name
@@ -3742,21 +3748,22 @@ func convertWithBp2build(a *apexBundle, ctx android.TopDownMutatorContext) (baze
 	}
 
 	attrs := bazelApexBundleAttributes{
-		Manifest:              manifestLabelAttribute,
-		Android_manifest:      androidManifestLabelAttribute,
-		File_contexts:         fileContextsLabelAttribute,
-		Min_sdk_version:       minSdkVersion,
-		Key:                   keyLabelAttribute,
-		Certificate:           certificateLabelAttribute,
-		Updatable:             updatableAttribute,
-		Installable:           installableAttribute,
-		Native_shared_libs_32: nativeSharedLibs.Native_shared_libs_32,
-		Native_shared_libs_64: nativeSharedLibs.Native_shared_libs_64,
-		Binaries:              binariesLabelListAttribute,
-		Prebuilts:             prebuiltsLabelListAttribute,
-		Compressible:          compressibleAttribute,
-		Package_name:          packageName,
-		Logging_parent:        loggingParent,
+		Manifest:                manifestLabelAttribute,
+		Android_manifest:        androidManifestLabelAttribute,
+		File_contexts:           fileContextsLabelAttribute,
+		Min_sdk_version:         minSdkVersion,
+		Key:                     keyLabelAttribute,
+		Certificate:             certificateLabelAttribute,
+		Updatable:               updatableAttribute,
+		Installable:             installableAttribute,
+		Dynamic_common_lib_apex: dynamicCommonLibApexAttribute,
+		Native_shared_libs_32:   nativeSharedLibs.Native_shared_libs_32,
+		Native_shared_libs_64:   nativeSharedLibs.Native_shared_libs_64,
+		Binaries:                binariesLabelListAttribute,
+		Prebuilts:               prebuiltsLabelListAttribute,
+		Compressible:            compressibleAttribute,
+		Package_name:            packageName,
+		Logging_parent:          loggingParent,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
