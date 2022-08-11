@@ -34,6 +34,24 @@
       "parentUuid": "9eac9d47_631bbe38",
       "revId": "3ab4a0a99cd5458207969de523a47c74b45b256e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec72bcb_e9de9318",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-11T01:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d90f27d_fea60105",
+      "revId": "3ab4a0a99cd5458207969de523a47c74b45b256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
