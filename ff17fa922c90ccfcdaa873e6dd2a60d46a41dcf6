@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "115b1988_5ee2b947",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-12T22:11:01Z",
+      "side": 1,
+      "message": "we should also handle `runtime_libs` for `cc_library_shared`/`cc_library_static` conversion.",
+      "range": {
+        "startLine": 2462,
+        "startChar": 5,
+        "endLine": 2462,
+        "endChar": 34
+      },
+      "revId": "ff17fa922c90ccfcdaa873e6dd2a60d46a41dcf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
