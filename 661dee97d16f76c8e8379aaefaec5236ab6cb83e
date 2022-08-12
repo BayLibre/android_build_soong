@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7871af25_0ec78b67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-08-12T18:11:18Z",
+      "side": 1,
+      "message": "Added \u0026 fixed `string_lit_prop`s, leaving `string_prop` to its original use.",
+      "revId": "661dee97d16f76c8e8379aaefaec5236ab6cb83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
