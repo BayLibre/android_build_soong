@@ -16,6 +16,24 @@
       "message": "\"logUnusedArgs\" is a bit more descriptive",
       "revId": "39ac25d3025eb8bd3c3ed259c6a8eb2b34aff3d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f81167f_96eff294",
+        "filename": "ui/build/build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-12T14:13:13Z",
+      "side": 1,
+      "message": "`logArgsOtherThan()` ok?\nlogUnusedArgs(x) makes me think of x as the unused arg.",
+      "parentUuid": "90334691_765a9b8b",
+      "revId": "39ac25d3025eb8bd3c3ed259c6a8eb2b34aff3d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
