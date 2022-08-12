@@ -46,6 +46,30 @@
       },
       "revId": "9e014c2240f0d32fdbda8b504b4e7413b524a3e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6c19786_aebac111",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-12T16:54:27Z",
+      "side": 1,
+      "message": "i was meaning not specified at all, but I see that cases below cover that.",
+      "parentUuid": "379d3f43_d7463c01",
+      "range": {
+        "startLine": 251,
+        "startChar": 2,
+        "endLine": 251,
+        "endChar": 4
+      },
+      "revId": "9e014c2240f0d32fdbda8b504b4e7413b524a3e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
