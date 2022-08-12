@@ -16,6 +16,41 @@
       "message": "modulo the question of using the data attribute directly, instead of a new attribute",
       "revId": "5c238b107b68a1480757a3bd96cdacf49b3e82b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c485a7_ed5d3091",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-12T00:38:07Z",
+      "side": 1,
+      "message": "Also add bp2build unit tests?",
+      "revId": "5c238b107b68a1480757a3bd96cdacf49b3e82b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb4ab0d3_655627f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-12T00:38:07Z",
+      "side": 1,
+      "message": "resolving",
+      "parentUuid": "6a521ccb_6de86054",
+      "revId": "5c238b107b68a1480757a3bd96cdacf49b3e82b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
