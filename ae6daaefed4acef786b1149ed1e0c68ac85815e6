@@ -39,6 +39,30 @@
       },
       "revId": "ae6daaefed4acef786b1149ed1e0c68ac85815e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7813369f_f1f36c39",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-08-12T21:28:13Z",
+      "side": 1,
+      "message": "updated the comment to clarify `include_dirs` are relative to the root of the source tree.",
+      "parentUuid": "c50edda1_d9804d02",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 22
+      },
+      "revId": "ae6daaefed4acef786b1149ed1e0c68ac85815e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
