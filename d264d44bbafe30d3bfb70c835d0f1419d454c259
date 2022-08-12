@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "285f22e4_a4bcd6cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-08-12T23:09:35Z",
+      "side": 1,
+      "message": "friendly ping owner\u0027s vote.\n",
+      "revId": "d264d44bbafe30d3bfb70c835d0f1419d454c259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8a8dcb6_7b9e857d",
