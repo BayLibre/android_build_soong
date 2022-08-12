@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90334691_765a9b8b",
+        "filename": "ui/build/build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-12T14:06:24Z",
+      "side": 1,
+      "message": "\"logUnusedArgs\" is a bit more descriptive",
+      "revId": "39ac25d3025eb8bd3c3ed259c6a8eb2b34aff3d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
