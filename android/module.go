@@ -936,6 +936,21 @@ type distProperties struct {
 	Dists []Dist `android:"arch_variant"`
 }
 
+// CommonTestOptions represents the common `test_options` properties in
+// Android.bp.
+type CommonTestOptions struct {
+	// If the test is a hostside (no device required) unittest that shall be run
+	// during presubmit check.
+	Unit_test *bool
+}
+
+// ProcessCommonTestOptions processes configurations of base `test_options` and
+// sets corresponding values to AndroidMkEntries.
+func ProcessCommonTestOptions(
+	entries *AndroidMkEntries, testOptions CommonTestOptions) {
+	entries.SetBoolIfTrue("LOCAL_IS_UNIT_TEST", Bool(testOptions.Unit_test))
+}
+
 // The key to use in TaggedDistFiles when a Dist structure does not specify a
 // tag property. This intentionally does not use "" as the default because that
 // would mean that an empty tag would have a different meaning when used in a dist
@@ -1095,7 +1110,7 @@ func InitAndroidModule(m Module) {
 // property structs for architecture-specific versions of generic properties tagged with
 // `android:"arch_variant"`.
 //
-//  InitAndroidModule should not be called if InitAndroidArchModule was called.
+// InitAndroidModule should not be called if InitAndroidArchModule was called.
 func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib Multilib) {
 	InitAndroidModule(m)
 
@@ -1336,30 +1351,30 @@ func productVariableConfigEnableLabels(ctx *topDownMutatorContext) []bazel.Label
 //
 // For example:
 //
-//     import (
-//         "android/soong/android"
-//     )
+//	import (
+//	    "android/soong/android"
+//	)
 //
-//     type myModule struct {
-//         android.ModuleBase
-//         properties struct {
-//             MyProperty string
-//         }
-//     }
+//	type myModule struct {
+//	    android.ModuleBase
+//	    properties struct {
+//	        MyProperty string
+//	    }
+//	}
 //
-//     func NewMyModule() android.Module {
-//         m := &myModule{}
-//         m.AddProperties(&m.properties)
-//         android.InitAndroidModule(m)
-//         return m
-//     }
+//	func NewMyModule() android.Module {
+//	    m := &myModule{}
+//	    m.AddProperties(&m.properties)
+//	    android.InitAndroidModule(m)
+//	    return m
+//	}
 //
-//     func (m *myModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-//         // Get the CPU architecture for the current build variant.
-//         variantArch := ctx.Arch()
+//	func (m *myModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+//	    // Get the CPU architecture for the current build variant.
+//	    variantArch := ctx.Arch()
 //
-//         // ...
-//     }
+//	    // ...
+//	}
 type ModuleBase struct {
 	// Putting the curiously recurring thing pointing to the thing that contains
 	// the thing pattern to good use.
