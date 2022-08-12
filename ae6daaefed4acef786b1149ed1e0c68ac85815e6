@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "139e8890_c90dc012",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-12T12:53:31Z",
+      "side": 1,
+      "message": "modulo the include_dirs comment, looks good!",
+      "revId": "ae6daaefed4acef786b1149ed1e0c68ac85815e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c50edda1_d9804d02",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-12T12:53:31Z",
+      "side": 1,
+      "message": "cc rules use `include_dirs` for absolute paths and `local_include_dirs` for relative to the module paths (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/compiler.go;l\u003d76-85;drc\u003ddd3ea9260955304cda9ccb3dd0f5d13541af29b2) -- can we clarify whether these paths are relative to the blueprint file or absolute in the comment?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 22
+      },
+      "revId": "ae6daaefed4acef786b1149ed1e0c68ac85815e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
