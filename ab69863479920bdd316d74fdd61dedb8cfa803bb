@@ -70,6 +70,24 @@
       "parentUuid": "50758cda_cd37eea6",
       "revId": "ab69863479920bdd316d74fdd61dedb8cfa803bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652ce596_545dffdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-08-12T04:47:35Z",
+      "side": 1,
+      "message": "I built aosp_arm64-userdebug with and without this CL.\nI found 449 symbolic links under the out/target directory\nand they were the same before and after this CL.\nDoes that mean the symbolic links in out/target are\nnot created by this CpExecutable build rule?",
+      "parentUuid": "afac6a22_1632bb09",
+      "revId": "ab69863479920bdd316d74fdd61dedb8cfa803bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
