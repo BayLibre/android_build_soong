@@ -34,6 +34,24 @@
       "parentUuid": "90334691_765a9b8b",
       "revId": "39ac25d3025eb8bd3c3ed259c6a8eb2b34aff3d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce5353f_902fd126",
+        "filename": "ui/build/build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-12T18:45:17Z",
+      "side": 1,
+      "message": "I see what you mean, that could indeed be confusing. What you have here currently is fine, since I can\u0027t think of a better name. (log vs. print doesn\u0027t matter)",
+      "parentUuid": "9f81167f_96eff294",
+      "revId": "39ac25d3025eb8bd3c3ed259c6a8eb2b34aff3d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
