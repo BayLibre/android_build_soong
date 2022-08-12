@@ -39,6 +39,30 @@
       },
       "revId": "f874e4615307a6040ab6d7645f2daca3030b891d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c8983a9_8b469294",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-12T16:22:26Z",
+      "side": 1,
+      "message": "Thanks for taking care of this in https://android-review.googlesource.com/c/platform/build/soong/+/2172271  :)",
+      "parentUuid": "105f8d7f_4307fe53",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "f874e4615307a6040ab6d7645f2daca3030b891d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
