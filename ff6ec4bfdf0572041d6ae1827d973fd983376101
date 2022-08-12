@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b46d849a_28f9c200",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-12T01:57:02Z",
+      "side": 1,
+      "message": "nit: might as well combine the two?\n```\nif err \u003d ioutil.WriteFile(...); err !\u003d nil {\n  return err\n}\n```",
+      "revId": "ff6ec4bfdf0572041d6ae1827d973fd983376101",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83aa08e1_3c15ae0c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-12T01:57:02Z",
+      "side": 1,
+      "message": "nit: An error while writing the file maybe indicative of disk problem etc but this file is just a convenience, why don\u0027t we just log the error and continue?",
+      "revId": "ff6ec4bfdf0572041d6ae1827d973fd983376101",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
