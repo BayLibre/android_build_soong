@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "894f930d_876b1bbe",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-12T14:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b46d849a_28f9c200",
+      "revId": "ff6ec4bfdf0572041d6ae1827d973fd983376101",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83aa08e1_3c15ae0c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-12T01:57:02Z",
       "side": 1,
       "message": "nit: An error while writing the file maybe indicative of disk problem etc but this file is just a convenience, why don\u0027t we just log the error and continue?",
+      "revId": "ff6ec4bfdf0572041d6ae1827d973fd983376101",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "008e2996_38edbbbb",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-12T14:17:00Z",
+      "side": 1,
+      "message": "If we had a reason that we might expect that file I/O fails and want to continue, i would agree. As is, though, I would prefer that we treat this as a failure.\n\nConsider that we could find ourselves in a situation where there is a bug that causes cquery.out generation to fail. Our CI might regularly warn that cquery.out was not generated, but nobody notices.",
+      "parentUuid": "83aa08e1_3c15ae0c",
       "revId": "ff6ec4bfdf0572041d6ae1827d973fd983376101",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
