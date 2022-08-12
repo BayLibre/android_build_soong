@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b32912_575dea60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-08-12T16:43:41Z",
+      "side": 1,
+      "message": "Out of curiosity, what\u0027s `freshmod`?",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "51cdf303116736f52ee722df0a3d705a779191bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35bfa301_0a62585d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-08-12T16:43:41Z",
+      "side": 1,
+      "message": "Thanks for doing this! Looking good 😊",
+      "revId": "51cdf303116736f52ee722df0a3d705a779191bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540f6277_fb80e3a8",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-08-12T16:43:41Z",
+      "side": 1,
+      "message": "`SetCommonTestOptionEntries`? You even be able to make the `testOptions` a receiver and shorten the name to something like `SetAndroidMkEntries`.\n\nI\u0027ll defer to Colin on Go style.",
+      "range": {
+        "startLine": 949,
+        "startChar": 5,
+        "endLine": 949,
+        "endChar": 29
+      },
+      "revId": "51cdf303116736f52ee722df0a3d705a779191bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3d70aa_cdcffdb1",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-08-12T16:43:41Z",
+      "side": 1,
+      "message": "nit: I\u0027d make this this the first param.",
+      "range": {
+        "startLine": 950,
+        "startChar": 28,
+        "endLine": 950,
+        "endChar": 39
+      },
+      "revId": "51cdf303116736f52ee722df0a3d705a779191bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
