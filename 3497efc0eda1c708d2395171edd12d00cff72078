@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c57a16_72ff74eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-12T18:26:14Z",
+      "side": 1,
+      "message": "Truncated",
+      "range": {
+        "startLine": 11,
+        "startChar": 46,
+        "endLine": 11,
+        "endChar": 66
+      },
+      "revId": "3497efc0eda1c708d2395171edd12d00cff72078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cb1af5db_a5fd7355",
@@ -31,6 +54,63 @@
       "writtenOn": "2022-08-12T17:28:42Z",
       "side": 1,
       "message": "Ping.",
+      "revId": "3497efc0eda1c708d2395171edd12d00cff72078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ccf01a_46c5cf80",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-12T18:26:14Z",
+      "side": 1,
+      "message": "RuleBuilder already has PathForOutput, having SboxOutputPath is going to be confusing.  I think instead the metalava code should keep around a path to the sbox output directory and use Join on it to create whatever paths it needs.",
+      "revId": "3497efc0eda1c708d2395171edd12d00cff72078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13881f64_c147a5a2",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-12T18:26:14Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "3497efc0eda1c708d2395171edd12d00cff72078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042146c4_6b882f15",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-12T18:26:14Z",
+      "side": 1,
+      "message": "Can this be an `OutputPath` instead of `WritablePath`?  `OutputPath` already has `Join`, and a `ModuleOutPath` can be converted to an `OutputPath` with `foo.OutputPath`",
+      "range": {
+        "startLine": 887,
+        "startChar": 19,
+        "endLine": 887,
+        "endChar": 31
+      },
       "revId": "3497efc0eda1c708d2395171edd12d00cff72078",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
