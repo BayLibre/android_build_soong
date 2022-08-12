@@ -46,6 +46,30 @@
       },
       "revId": "df4413a01f2737a5156bc68a63f515525bea4a54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96382a70_d6ef2c34",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-12T16:57:25Z",
+      "side": 0,
+      "message": "sorry, i was just meaning whatever module(s) are causing the error, we could instead denylist those from mixed builds, not that this was the module we need to denylist. but we can do that in a roll forward",
+      "parentUuid": "30510c32_9e1eb461",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 16
+      },
+      "revId": "df4413a01f2737a5156bc68a63f515525bea4a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
