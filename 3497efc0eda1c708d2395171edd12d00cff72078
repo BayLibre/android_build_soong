@@ -95,6 +95,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcb4a577_1943cbf8",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-12T22:35:24Z",
+      "side": 1,
+      "message": "You could store the directory in the Droidstubs struct where it would be available to all of those calls.\n\nI agree that using a subdirectory would be safer, but I worry that having sbox create a subdirectory is going to export that implementation detail into all the tests.  You didn\u0027t want to move the checked metalava output files because they were referenced in tests, but this would require moving every output of every sbox rule.\n\nA better name would always help, but there are so many directories and different ways to refer to the same directory from inside and outside the sandbox that it\u0027s never going to be completely obvious from the name what is going on.",
+      "parentUuid": "5dc51649_7a71bdd5",
+      "revId": "3497efc0eda1c708d2395171edd12d00cff72078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13881f64_c147a5a2",
         "filename": "cmd/sbox/sbox.go",
         "patchSetId": 1
