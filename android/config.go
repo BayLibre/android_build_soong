@@ -743,8 +743,7 @@ func (c *config) DeviceName() string {
 // DeviceProduct returns the current product target. There could be multiple of
 // these per device type.
 //
-// NOTE: Do not base conditional logic on this value. It may break product
-//       inheritance.
+// NOTE: Do not base conditional logic on this value. It may break product inheritance.
 func (c *config) DeviceProduct() string {
 	return *c.productVariables.DeviceProduct
 }
@@ -1755,7 +1754,6 @@ func (c *config) IgnorePrefer32OnDevice() bool {
 //   - "com.android.art:core-oj"
 //   - "platform:framework"
 //   - "system_ext:foo"
-//
 type ConfiguredJarList struct {
 	// A list of apex components, which can be an apex name,
 	// or special names like "platform" or "system_ext".
