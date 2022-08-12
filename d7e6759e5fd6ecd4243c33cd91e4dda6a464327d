@@ -34,6 +34,24 @@
       "parentUuid": "6aa1579d_bd71c279",
       "revId": "d7e6759e5fd6ecd4243c33cd91e4dda6a464327d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45d5c8b_66583da1",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-08-12T02:48:21Z",
+      "side": 1,
+      "message": "Added another CL c/2184336 to suppress the deprecated-non-prototype warning in zlib. That should suppress most if not all such warnings in a default build.",
+      "parentUuid": "7ce1da54_84f79939",
+      "revId": "d7e6759e5fd6ecd4243c33cd91e4dda6a464327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
