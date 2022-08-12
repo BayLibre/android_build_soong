@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec0258f_bbdb5275",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-12T20:40:34Z",
+      "side": 1,
+      "message": "Can we have a test for when suffix is unset?",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f05e223c_9fed30d0",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-12T20:40:34Z",
+      "side": 1,
+      "message": "Can we have a test for when suffix is unset?",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb8259e_8c536cee",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-12T20:40:34Z",
+      "side": 1,
+      "message": "(This comment is conflicted with the below comment in `cc/bp2build.go`.\n\nShouldn\u0027t the test look like either\n\n```\nmakeBazelTarget(\"cc_library_shared\", \"foo_shared\", AttrNameToString{\n  \"srcs_c\": `[\"foo.c\"]`,\n  \"suffix\": `\"-suf\"`\n})\n```\nif we\u0027re using suffix attribute.\n\nor\n\n```\nmakeBazelTarget(\"cc_library_shared\", \"foo_shared-suf\", AttrNameToString{\n  \"srcs_c\": `[\"foo.c\"]`,\n})\n```\nif we\u0027re not using suffix attribute. If we\u0027re not using suffix attribute, we do need to define it in `staticOrSharedAttributes` and also also the bazel macro.\n\nhttps://android-review.googlesource.com/c/platform/build/bazel/+/1999871/8/rules/cc/cc_library_shared.bzl#36",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b66a0ea8_425f1425",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-12T20:40:34Z",
+      "side": 1,
+      "message": "Looking at the tests, we technically don\u0027t use this attribute at the Bazel macros (for example, cc_library_shared). So I don\u0027t think this is needed, correct?",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
