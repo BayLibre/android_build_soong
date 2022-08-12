@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "424fce09_ce8fd1bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-08-12T21:54:35Z",
+      "side": 1,
+      "message": "I don\u0027t want to slide back on `-Wno` to `-Wno-error`. We should leave those alone for now. New warnings/issues can come in as `-Wno-error` if we think they are valuable and not overwhelming.",
+      "revId": "a264ef3ceb834d4a76151f52a4506492b03d2239",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18af3b7d_5060dbd0",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-08-12T21:54:35Z",
+      "side": 1,
+      "message": "I disagree that we want to add these errors back to the build right now. While we may want to fix these errors, let\u0027s leave that for when someone has the support to actually carry out the full-scale cleanup. As-is, this CL will produce extra logspam that doesn\u0027t benefit any of us.",
+      "revId": "a264ef3ceb834d4a76151f52a4506492b03d2239",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
