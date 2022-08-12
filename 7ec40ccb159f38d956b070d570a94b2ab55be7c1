@@ -51,6 +51,24 @@
       "parentUuid": "36302829_f15e56f5",
       "revId": "7ec40ccb159f38d956b070d570a94b2ab55be7c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74a73727_597a487f",
+        "filename": "android/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-12T18:34:32Z",
+      "side": 1,
+      "message": "o brainf**t - somehow I saw these as removals!",
+      "parentUuid": "d3279646_cfde64e5",
+      "revId": "7ec40ccb159f38d956b070d570a94b2ab55be7c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
