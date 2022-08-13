@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34b15ca_ea2cca19",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-13T05:05:22Z",
+      "side": 0,
+      "message": "I agree with removing this from the banner, but it\u0027s still useful information for debugging that I don\u0027t think we expose anywhere else for build server builds.  I think the easiest way to make it available is to copy out/soong/soong.variables to the dist directory, probably in the same place we dist build.ninja.gz: https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/build.go;l\u003d331;drc\u003d675564daa8ed492a76247fa7086d58de2fcd6e52",
+      "revId": "5480f9414ad10bb763788d616b4bb90ff6bf3fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
