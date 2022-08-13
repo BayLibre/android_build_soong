@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e8dc5c3_c6049c4e",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-08-13T13:35:49Z",
+      "side": 0,
+      "message": "HOST_OS_EXTRA has been very useful, especially for external/partner reports to understand more about the system they\u0027re running on",
+      "revId": "5480f9414ad10bb763788d616b4bb90ff6bf3fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d34b15ca_ea2cca19",
         "filename": "ui/build/dumpvars.go",
         "patchSetId": 1
