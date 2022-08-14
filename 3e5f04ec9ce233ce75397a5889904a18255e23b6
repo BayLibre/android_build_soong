@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ece36b_b6538119",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-08-14T08:03:26Z",
+      "side": 1,
+      "message": "A boolean flag that looks like \"--flag_name true|false\" is very unusual. The existence of \"--is_dynamic_common_lib_apex\" would mean DCLA, and the absence of the flag would mean non-DCLA.",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 43
+      },
+      "revId": "3e5f04ec9ce233ce75397a5889904a18255e23b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7037d22e_f17ffbcb",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-08-14T08:03:26Z",
+      "side": 1,
+      "message": "This looks very confusing. As a user, we shouldn\u0027t care args that are accepted and handled by run_apexer, and passed down to apexer.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 10
+      },
+      "revId": "3e5f04ec9ce233ce75397a5889904a18255e23b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ac2e18_641c3e1e",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-08-14T08:03:26Z",
+      "side": 1,
+      "message": "nit: unrelated change",
+      "revId": "3e5f04ec9ce233ce75397a5889904a18255e23b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e9919f_518f9c79",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-08-14T08:03:26Z",
+      "side": 1,
+      "message": "You may instead add \"--is_dynamic_common_lib_apex\" to opt_flags when a.dynamic_common_lib_apex is true.",
+      "range": {
+        "startLine": 691,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 72
+      },
+      "revId": "3e5f04ec9ce233ce75397a5889904a18255e23b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab45044_ac97e0af",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-08-14T08:03:26Z",
+      "side": 1,
+      "message": "nit: unrelated change",
+      "revId": "3e5f04ec9ce233ce75397a5889904a18255e23b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6da8716c_766955ed",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-08-14T08:03:26Z",
+      "side": 1,
+      "message": "Are these change needed?",
+      "range": {
+        "startLine": 1080,
+        "startChar": 0,
+        "endLine": 1083,
+        "endChar": 43
+      },
+      "revId": "3e5f04ec9ce233ce75397a5889904a18255e23b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
