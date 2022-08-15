@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a109aac_525bc7df",
+        "filename": "bp2build/aidl_interface_conversion_test.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-08-15T18:40:34Z",
+      "side": 1,
+      "message": "I think it would make sense, if possible, to add a test for the filegroup case to the conversion tests?",
+      "revId": "8712a5b4691b909eb809340cf0da86d545aca51f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c6b0629d_700fcf0f",
