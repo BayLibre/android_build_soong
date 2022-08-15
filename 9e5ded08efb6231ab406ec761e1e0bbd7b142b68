@@ -16,6 +16,24 @@
       "message": "Can\u0027t you use WriteFileRule for this? http://cs/android-internal/build/soong/android/defs.go;l\u003d168;rcl\u003d1f3663ebfc99f57f59e78b7ce37823cd27f7b7cb",
       "revId": "9e5ded08efb6231ab406ec761e1e0bbd7b142b68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ed6e25_3612fd8d",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-15T23:05:13Z",
+      "side": 1,
+      "message": "Rsp files provide escaping, although I realized I\u0027m not using the right flag for soong_zip to expect an escaped file.",
+      "parentUuid": "766b618f_9d59c641",
+      "revId": "9e5ded08efb6231ab406ec761e1e0bbd7b142b68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
