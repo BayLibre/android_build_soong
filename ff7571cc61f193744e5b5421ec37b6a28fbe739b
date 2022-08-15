@@ -16,6 +16,24 @@
       "message": "Should we file a bug?",
       "revId": "ff7571cc61f193744e5b5421ec37b6a28fbe739b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "186ac0ad_c2eed50e",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-08-15T17:54:35Z",
+      "side": 1,
+      "message": "we could, when we eventually come to converting the snapshot logic we will revisit this.",
+      "parentUuid": "4e1526e1_db517651",
+      "revId": "ff7571cc61f193744e5b5421ec37b6a28fbe739b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
