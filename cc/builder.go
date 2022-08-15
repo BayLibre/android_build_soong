@@ -85,7 +85,7 @@ var (
 		blueprint.RuleParams{
 			// Without -no-pie, clang 7.0 adds -pie to link Android files,
 			// but -r and -pie cannot be used together.
-			Command:     "$reTemplate$ldCmd -fuse-ld=lld -nostdlib -no-pie -Wl,-r ${in} -o ${out} ${ldFlags}",
+			Command:     "$reTemplate$ldCmd -fuse-ld=lld -nostdlib -no-pie -Wl,-r ${in} -o ${out} ${ldFlags} ${libFlags}",
 			CommandDeps: []string{"$ldCmd"},
 		}, &remoteexec.REParams{
 			Labels:          map[string]string{"type": "link", "tool": "clang"},
@@ -94,7 +94,7 @@ var (
 			OutputFiles:     []string{"${out}", "$implicitOutputs"},
 			ToolchainInputs: []string{"$ldCmd"},
 			Platform:        map[string]string{remoteexec.PoolKey: "${config.RECXXLinksPool}"},
-		}, []string{"ldCmd", "ldFlags"}, []string{"implicitInputs", "inCommaList", "implicitOutputs"})
+		}, []string{"ldCmd", "ldFlags", "libFlags"}, []string{"implicitInputs", "inCommaList", "implicitOutputs"})
 
 	// Rule to invoke `ar` with given cmd and flags, but no static library depenencies.
 	ar = pctx.AndroidStaticRule("ar",
@@ -987,14 +987,37 @@ func TransformSharedObjectToToc(ctx android.ModuleContext, inputFile android.Pat
 
 // Generate a rule for compiling multiple .o files to a .o using ld partial linking
 func transformObjsToObj(ctx android.ModuleContext, objFiles android.Paths,
+	staticLibs, wholeStaticLibs android.Paths,
 	flags builderFlags, outputFile android.WritablePath, deps android.Paths) {
 
 	ldCmd := "${config.ClangBin}/clang++"
 
+	var libFlagsList []string
+
+	if len(flags.libFlags) > 0 {
+		libFlagsList = append(libFlagsList, flags.libFlags)
+	}
+
+	if len(wholeStaticLibs) > 0 {
+		if ctx.Host() && ctx.Darwin() {
+			libFlagsList = append(libFlagsList, android.JoinWithPrefix(wholeStaticLibs.Strings(), "-force_load "))
+		} else {
+			libFlagsList = append(libFlagsList, "-Wl,--whole-archive ")
+			libFlagsList = append(libFlagsList, wholeStaticLibs.Strings()...)
+			libFlagsList = append(libFlagsList, "-Wl,--no-whole-archive ")
+		}
+	}
+
+	libFlagsList = append(libFlagsList, staticLibs.Strings()...)
+
+	deps = append(deps, staticLibs...)
+	deps = append(deps, wholeStaticLibs...)
+
 	rule := partialLd
 	args := map[string]string{
-		"ldCmd":   ldCmd,
-		"ldFlags": flags.globalLdFlags + " " + flags.localLdFlags,
+		"ldCmd":    ldCmd,
+		"ldFlags":  flags.globalLdFlags + " " + flags.localLdFlags,
+		"libFlags": strings.Join(libFlagsList, " "),
 	}
 	if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CXX_LINKS") {
 		rule = partialLdRE
