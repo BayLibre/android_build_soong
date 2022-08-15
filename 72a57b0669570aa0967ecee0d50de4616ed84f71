@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469f5731_2ac42bdc",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-15T20:37:03Z",
+      "side": 1,
+      "message": "To build the end-to-end tests in aosp/2155318/27/examples/cc.\n\nTODO: Scope this into a separate CL.",
+      "revId": "72a57b0669570aa0967ecee0d50de4616ed84f71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3744bcab_2a3e92f4",
+        "filename": "android/filegroup.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-15T20:37:03Z",
+      "side": 1,
+      "message": "Manually checked in from aosp/2062870 because aosp/2062870 needs to be fixed to account for the new approach in bp2build to convert filegroup to aidl_library.",
+      "revId": "72a57b0669570aa0967ecee0d50de4616ed84f71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec66ae0_18bfa028",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-15T20:37:03Z",
+      "side": 1,
+      "message": "I meant to split the CL into two: one for aidl_library and one for cc_aidl_libraray. But since this is using Bp2buildAidlLibrary interface directly, I                                                                                                                                         decided to have it all in one CL.",
+      "revId": "72a57b0669570aa0967ecee0d50de4616ed84f71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
