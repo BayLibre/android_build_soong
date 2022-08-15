@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86c8b665_02f403c3",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-08-15T21:42:44Z",
+      "side": 0,
+      "message": "Nope, that\u0027s my main concern (the BUILD_TYPEs have been effectively obsolete forever). Colin\u0027s comment about preserving PRODUCT_SOONG_CONFIGs somewhere is also a good idea, but I definitely agree it\u0027s gotten spammy in the main banner.\n\nAs for other variables that may not be as useful anymore:\n\nHOST_ARCH/HOST_2ND_ARCH/HOST_CROSS_ARCH/HOST_CROSS_2ND_ARCH may not be useful, not sure. My impression is that they should be pretty static these days based on HOST_OS.\n\nI think AUX_OS_VARIANT_LIST is obsolete (though that means it shouldn\u0027t be printed)",
+      "parentUuid": "a8a2ff6e_bf790913",
+      "revId": "5480f9414ad10bb763788d616b4bb90ff6bf3fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d34b15ca_ea2cca19",
         "filename": "ui/build/dumpvars.go",
         "patchSetId": 1
@@ -49,6 +67,24 @@
       "writtenOn": "2022-08-13T05:05:22Z",
       "side": 0,
       "message": "I agree with removing this from the banner, but it\u0027s still useful information for debugging that I don\u0027t think we expose anywhere else for build server builds.  I think the easiest way to make it available is to copy out/soong/soong.variables to the dist directory, probably in the same place we dist build.ninja.gz: https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/build.go;l\u003d331;drc\u003d675564daa8ed492a76247fa7086d58de2fcd6e52",
+      "revId": "5480f9414ad10bb763788d616b4bb90ff6bf3fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae0d51d2_0ad9c861",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-08-15T21:42:44Z",
+      "side": 0,
+      "message": "Even just moving it to allVars below would preserve it in soong.log (which is available on the build servers, and via go/soong-bug reports)",
+      "parentUuid": "d34b15ca_ea2cca19",
       "revId": "5480f9414ad10bb763788d616b4bb90ff6bf3fc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
