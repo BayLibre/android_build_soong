@@ -41,6 +41,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87a3731d_22c68509",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-15T13:02:29Z",
+      "side": 1,
+      "message": "Nice cleanup! Just a nit on the method name.",
+      "revId": "51cdf303116736f52ee722df0a3d705a779191bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "540f6277_fb80e3a8",
@@ -54,6 +71,30 @@
       "writtenOn": "2022-08-12T16:43:41Z",
       "side": 1,
       "message": "`SetCommonTestOptionEntries`? You even be able to make the `testOptions` a receiver and shorten the name to something like `SetAndroidMkEntries`.\n\nI\u0027ll defer to Colin on Go style.",
+      "range": {
+        "startLine": 949,
+        "startChar": 5,
+        "endLine": 949,
+        "endChar": 29
+      },
+      "revId": "51cdf303116736f52ee722df0a3d705a779191bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ab89990_fcd282d5",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-15T13:02:29Z",
+      "side": 1,
+      "message": "+1 to SetAndroidMkEntries",
+      "parentUuid": "540f6277_fb80e3a8",
       "range": {
         "startLine": 949,
         "startChar": 5,
