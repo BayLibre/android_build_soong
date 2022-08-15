@@ -105,6 +105,24 @@
       "parentUuid": "d34b15ca_ea2cca19",
       "revId": "5480f9414ad10bb763788d616b4bb90ff6bf3fc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f0f3af_5e664a7d",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-15T22:45:45Z",
+      "side": 0,
+      "message": "I will move the obsolete variables to allVar for logging purpose, but will work on copying soong.variables to dist directory as well!",
+      "parentUuid": "ae0d51d2_0ad9c861",
+      "revId": "5480f9414ad10bb763788d616b4bb90ff6bf3fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
