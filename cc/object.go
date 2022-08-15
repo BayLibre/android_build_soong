@@ -95,6 +95,8 @@ type ObjectLinkerProperties struct {
 	// if set, the path to a linker script to pass to ld -r when combining multiple object files.
 	Linker_script *string `android:"path,arch_variant"`
 
+	Ldflags []string `android:"path,arch_variant"`
+
 	// Indicates that this module is a CRT object. CRT objects will be split
 	// into a variant per-API level between min_sdk_version and current.
 	Crt *bool
@@ -239,6 +241,7 @@ func (object *objectLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 
 func (object *objectLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	flags.Global.LdFlags = append(flags.Global.LdFlags, ctx.toolchain().ToolchainLdflags())
+	flags.Local.LdFlags = append(flags.Local.LdFlags, object.Properties.Ldflags...)
 
 	if lds := android.OptionalPathForModuleSrc(ctx, object.Properties.Linker_script); lds.Valid() {
 		flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,-T,"+lds.String())
@@ -255,7 +258,9 @@ func (object *objectLinker) link(ctx ModuleContext,
 	var outputFile android.Path
 	builderFlags := flagsToBuilderFlags(flags)
 
-	if len(objs.objFiles) == 1 && String(object.Properties.Linker_script) == "" {
+	if len(objs.objFiles) == 1 && String(object.Properties.Linker_script) == "" &&
+		len(object.Properties.Static_libs) == 0 {
+
 		outputFile = objs.objFiles[0]
 
 		if String(object.Properties.Prefix_symbols) != "" {
@@ -275,7 +280,7 @@ func (object *objectLinker) link(ctx ModuleContext,
 			output = input
 		}
 
-		transformObjsToObj(ctx, objs.objFiles, builderFlags, output, flags.LdFlagsDeps)
+		transformObjsToObj(ctx, objs.objFiles, deps.StaticLibs, deps.WholeStaticLibs, builderFlags, output, flags.LdFlagsDeps)
 	}
 
 	ctx.CheckbuildFile(outputFile)
