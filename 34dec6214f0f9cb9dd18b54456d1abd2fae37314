@@ -86,6 +86,24 @@
       "parentUuid": "208a8a1b_b125be22",
       "revId": "34dec6214f0f9cb9dd18b54456d1abd2fae37314",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b152753e_592b21f8",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2022-08-15T17:56:32Z",
+      "side": 1,
+      "message": "Ack.  Makes sense, thanks.",
+      "parentUuid": "91f0946b_fbc6d487",
+      "revId": "34dec6214f0f9cb9dd18b54456d1abd2fae37314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
