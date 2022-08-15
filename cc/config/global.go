@@ -198,7 +198,6 @@ var (
 
 	noOverrideGlobalCflags = []string{
 		"-Werror=bool-operation",
-		"-Werror=implicit-int-float-conversion",
 		"-Werror=int-in-bool-context",
 		"-Werror=int-to-pointer-cast",
 		"-Werror=pointer-to-int-cast",
@@ -225,7 +224,7 @@ var (
 		// http://b/145210666
 		"-Wno-reorder-init-list",
 		// http://b/145211066
-		"-Wno-implicit-int-float-conversion",
+		// "-Wno-implicit-int-float-conversion",
 		// New warnings to be fixed after clang-r377782.
 		"-Wno-sizeof-array-div",             // http://b/148815709
 		"-Wno-tautological-overlap-compare", // http://b/148815696
