@@ -22,6 +22,30 @@
       },
       "revId": "e65277348908a030a9f11b6ffc846c07100fc5aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd2b731_1976bc15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-08-15T20:11:56Z",
+      "side": 1,
+      "message": "Done. Also see aosp/2185179",
+      "parentUuid": "ff6fa3a2_297487c4",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "e65277348908a030a9f11b6ffc846c07100fc5aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
