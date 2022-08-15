@@ -16,6 +16,24 @@
       "message": "isn\u0027t this the default?",
       "revId": "15088e45a9acfa6d01e0748d667c697caf9928cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ce759d_bda46a1a",
+        "filename": "ui/metrics/bp2build_progress_metrics_proto/BUILD.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-15T16:43:16Z",
+      "side": 1,
+      "message": "The default is a special string [\"DO NOT STRIP\"](https://github.com/bazelbuild/bazel/blob/master/src/main/starlark/builtins_bzl/common/proto/proto_library.bzl#L287), this specifies to remove the package path from the generated proto paths.",
+      "parentUuid": "42737102_0c1118dd",
+      "revId": "15088e45a9acfa6d01e0748d667c697caf9928cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
