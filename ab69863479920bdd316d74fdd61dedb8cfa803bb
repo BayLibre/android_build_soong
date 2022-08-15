@@ -88,6 +88,24 @@
       "parentUuid": "afac6a22_1632bb09",
       "revId": "ab69863479920bdd316d74fdd61dedb8cfa803bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d37b445_00b9cd13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-15T17:52:34Z",
+      "side": 1,
+      "message": "Thanks for verifying, this SGTM then.",
+      "parentUuid": "652ce596_545dffdf",
+      "revId": "ab69863479920bdd316d74fdd61dedb8cfa803bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
