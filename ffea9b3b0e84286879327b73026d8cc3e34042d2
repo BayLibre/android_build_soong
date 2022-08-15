@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e9432b_b73297cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-15T09:38:37Z",
+      "side": 1,
+      "message": "cc\u0027ing Wei for similar change to the APEX rule in https://android-review.googlesource.com/c/platform/build/bazel/+/2177042/6/rules/cc/cc_stub_library.bzl",
+      "revId": "ffea9b3b0e84286879327b73026d8cc3e34042d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
