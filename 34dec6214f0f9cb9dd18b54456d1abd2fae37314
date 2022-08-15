@@ -16,6 +16,40 @@
       "message": "Thanks Colin, that\u0027s helpful! Would it be possible to expose some flag/(env variable) to copy back those files to the tree?",
       "revId": "34dec6214f0f9cb9dd18b54456d1abd2fae37314",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9a3eec_b4eb6ffa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2022-08-15T16:08:36Z",
+      "side": 1,
+      "message": "Thanks Colin!  See one nit...same idea as brufino@",
+      "revId": "34dec6214f0f9cb9dd18b54456d1abd2fae37314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208a8a1b_b125be22",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2022-08-15T16:08:36Z",
+      "side": 1,
+      "message": "Nit: could we add another environment variable similar to `ANDROID_LINT_CHECK` (maybe `ANDROID_LINT_FIX\u003dtrue` or `ANDROID_LINT_APPLY_SUGGESTIONS\u003dtrue` to enable this, and have it disabled by default?\n\nSince it will make changes to the user\u0027s working tree, that would keep things consistent with the way other tools work.  e.g. java/kotlin formatters that run in git hooks and then prompt the user to run manually to apply suggestions.",
+      "revId": "34dec6214f0f9cb9dd18b54456d1abd2fae37314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
