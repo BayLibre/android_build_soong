@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8a2ff6e_bf790913",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-15T20:46:39Z",
+      "side": 0,
+      "message": "Hello Dan, thank you for taking a look. Apart from HOST_OS_EXTRA, do you believe there are any other variables that should not be removed from the banner?",
+      "parentUuid": "8e8dc5c3_c6049c4e",
+      "revId": "5480f9414ad10bb763788d616b4bb90ff6bf3fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d34b15ca_ea2cca19",
         "filename": "ui/build/dumpvars.go",
         "patchSetId": 1
