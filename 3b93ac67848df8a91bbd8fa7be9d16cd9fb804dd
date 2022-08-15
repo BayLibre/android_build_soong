@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8187dbc_c90c9c74",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2022-08-15T06:03:55Z",
+      "side": 1,
+      "message": "This causes build breakages as the llvm-project is not updated to a new version yet.",
+      "range": {
+        "startLine": 293,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 32
+      },
+      "revId": "3b93ac67848df8a91bbd8fa7be9d16cd9fb804dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
