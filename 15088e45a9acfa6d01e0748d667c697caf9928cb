@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42737102_0c1118dd",
+        "filename": "ui/metrics/bp2build_progress_metrics_proto/BUILD.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-08-15T15:53:34Z",
+      "side": 1,
+      "message": "isn\u0027t this the default?",
+      "revId": "15088e45a9acfa6d01e0748d667c697caf9928cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
