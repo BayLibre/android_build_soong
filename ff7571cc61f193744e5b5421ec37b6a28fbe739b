@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb1af5f5_5bf3aac9",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-08-15T19:38:47Z",
+      "side": 1,
+      "message": "no longer needed",
+      "parentUuid": "186ac0ad_c2eed50e",
+      "revId": "ff7571cc61f193744e5b5421ec37b6a28fbe739b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeec9f9f_3cdc65b6",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-08-15T19:14:11Z",
       "side": 1,
       "message": "it\u0027s safer to use `android.PathforBazelOut` here such that we handle out directories other than \"out\" or to add a separate function to android/bazel_paths.go that will return this.",
+      "range": {
+        "startLine": 777,
+        "startChar": 28,
+        "endLine": 777,
+        "endChar": 75
+      },
+      "revId": "ff7571cc61f193744e5b5421ec37b6a28fbe739b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e47033f_5919ac9f",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-08-15T19:38:47Z",
+      "side": 1,
+      "message": "this is what I was looking for. done",
+      "parentUuid": "aeec9f9f_3cdc65b6",
       "range": {
         "startLine": 777,
         "startChar": 28,
