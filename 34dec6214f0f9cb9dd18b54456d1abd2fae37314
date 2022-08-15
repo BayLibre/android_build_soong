@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "851df094_18c76e21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133744
+      },
+      "writtenOn": "2022-08-15T09:24:46Z",
+      "side": 1,
+      "message": "Thanks Colin, that\u0027s helpful! Would it be possible to expose some flag/(env variable) to copy back those files to the tree?",
+      "revId": "34dec6214f0f9cb9dd18b54456d1abd2fae37314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
