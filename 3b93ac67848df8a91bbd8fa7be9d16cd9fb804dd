@@ -22,6 +22,30 @@
       },
       "revId": "3b93ac67848df8a91bbd8fa7be9d16cd9fb804dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5109a979_3ee9a349",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-08-15T19:56:18Z",
+      "side": 1,
+      "message": "This list has to be empty.  These changes have to be in the same topic as the upstream merge to toolchain/llvm-project.",
+      "parentUuid": "e8187dbc_c90c9c74",
+      "range": {
+        "startLine": 293,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 32
+      },
+      "revId": "3b93ac67848df8a91bbd8fa7be9d16cd9fb804dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
