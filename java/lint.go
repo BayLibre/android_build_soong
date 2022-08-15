@@ -329,7 +329,11 @@ func (l *linter) lint(ctx android.ModuleContext) {
 	if l.minSdkVersion != l.compileSdkVersion {
 		l.extraMainlineLintErrors = append(l.extraMainlineLintErrors, updatabilityChecks...)
 		_, filtered := android.FilterList(l.properties.Lint.Warning_checks, updatabilityChecks)
-		if len(filtered) != 0 {
+
+		// Workaround for lint-check triggering NewApi warnings in libcore when source files
+		// reference the API they are adding (b/208656169).
+		allowLibcoreWarnings := ctx.ModuleDir() == "libcore"
+		if len(filtered) != 0 && !allowLibcoreWarnings {
 			ctx.PropertyErrorf("lint.warning_checks",
 				"Can't treat %v checks as warnings if min_sdk_version is different from sdk_version.", filtered)
 		}
