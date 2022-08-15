@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3005a14e_ae3e9542",
+        "filename": "android/filegroup.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-15T21:40:25Z",
+      "side": 1,
+      "message": "Since we\u0027re converting directly to aidl_library directly from filegroup by checking the sources\u0027 extension directly, we probably don\u0027t need this anymore.",
+      "revId": "0a7aa1be797fffeca19593563359217f0886f200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
