@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74fe7dfd_186fb6b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-16T15:42:05Z",
+      "side": 1,
+      "message": "While testing this change I realized that it doesn\u0027t fix the issue properly. e.g. the following still fails:\n\nm update-api\nrm out/soong/.intermediates/libcore/art.module.public.api.stubs.source/android_common/metalava/update_current_api.timestamp\nrm out/soong/.intermediates/libcore/art.module.public.api.stubs.source/android_common/metalava/check_current_api.timestamp\nm update-api\n\nSometimes it fails in the first \"m update-api\" (depending on the state of the out/ directory). It almost always fails on the second.\n\nThe reason it fails is while the change prevents the update rule from depending on the check rule for each individual java_sdk_library, it does not prevent check rules from being run at the same time as update rules.\n\nThe \"m update-api\" depends on the update rules for each `droidstubs`. The `frameworks-base-api-current.txt` rule (created by the `frameworks-base-api` `combined_apis` module) depends on the checked version of lots of `droidstubs` generated txt files which causes their check rules to run.\n\nSo, you have some update rules and some check rules running side by side which leads to the problems.\n\nI can\u0027t see any way to make this work apart from fixing b/200803952.\n\nSo, I am going to revert the change that caused this problem and try and fix b/234113632 in a different way.",
+      "revId": "1e3ebacaf113ede5d1a887758b536e8cb2d08c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
