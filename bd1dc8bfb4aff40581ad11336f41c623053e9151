@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a0cb74_92f3acbb",
+        "filename": "android/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-16T17:56:57Z",
+      "side": 1,
+      "message": "delmerico@\n\nThis is manually checked in from aosp/2062870. I couldn\u0027t rebase onto aosp/2062870 because aosp/2062870 doesn\u0027t reflect the new approach of converting filegroup to aidl_libary directly (aosp/2186599) yet.\n\nDepending on which CL get submitted first, we can get address this then.",
+      "revId": "bd1dc8bfb4aff40581ad11336f41c623053e9151",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
