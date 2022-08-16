@@ -647,10 +647,11 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 	}
 
 	// Write to footer.
-	fmt.Fprintln(&a.footer, "include "+a.Include)
+	footer := &a.footer
+	fmt.Fprintln(footer, "include "+a.Include)
 	blueprintDir := ctx.ModuleDir(mod)
 	for _, footerFunc := range a.ExtraFooters {
-		footerFunc(&a.footer, name, prefix, blueprintDir)
+		footerFunc(footer, name, prefix, blueprintDir)
 	}
 }
 
@@ -759,17 +760,35 @@ func translateAndroidMkModule(ctx SingletonContext, w io.Writer, mod blueprint.M
 	}()
 
 	// Additional cases here require review for correct license propagation to make.
+	var err error
 	switch x := mod.(type) {
 	case AndroidMkDataProvider:
-		return translateAndroidModule(ctx, w, mod, x)
+		err = translateAndroidModule(ctx, w, mod, x)
 	case bootstrap.GoBinaryTool:
-		return translateGoBinaryModule(ctx, w, mod, x)
+		err = translateGoBinaryModule(ctx, w, mod, x)
 	case AndroidMkEntriesProvider:
-		return translateAndroidMkEntriesModule(ctx, w, mod, x)
+		err = translateAndroidMkEntriesModule(ctx, w, mod, x)
 	default:
 		// Not exported to make so no make variables to set.
-		return nil
 	}
+
+	if err != nil {
+		return err
+	}
+
+	// If the module provides DefaultInfo then add the files to the phony target.
+	if ctx.ModuleHasProvider(mod, DefaultInfoProvider) {
+		defaultInfo := ctx.ModuleProvider(mod, DefaultInfoProvider).(DefaultInfo)
+		defaultFiles := defaultInfo.Files
+		if len(defaultFiles) > 0 {
+			// Use the base name.
+			name := mod.(Module).base().BaseModuleName()
+			fmt.Fprintln(w, ".PHONY:", name)
+			fmt.Fprintln(w, name+":", strings.Join(defaultFiles.Strings(), " "))
+		}
+	}
+
+	return nil
 }
 
 // A simple, special Android.mk entry output func to make it possible to build blueprint tools using
