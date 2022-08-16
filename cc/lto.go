@@ -136,9 +136,10 @@ func (lto *lto) LTO(ctx BaseModuleContext) bool {
 }
 
 func (lto *lto) DefaultThinLTO(ctx BaseModuleContext) bool {
+	lp32 := ctx.Arch().ArchType == android.X86 || ctx.Arch().ArchType == android.Arm
 	host := ctx.Host()
 	vndk := ctx.isVndk() // b/169217596
-	return GlobalThinLTO(ctx) && !lto.Never() && !host && !vndk
+	return GlobalThinLTO(ctx) && !lto.Never() && !lp32 && !host && !vndk
 }
 
 func (lto *lto) FullLTO() bool {
