@@ -70,6 +70,30 @@
       },
       "revId": "bb53cdb16680f12a9fc183477682e9dfec097a17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb04b98f_66a272c6",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-16T17:38:34Z",
+      "side": 1,
+      "message": "I apologize for that, and thank you so much for the help!",
+      "parentUuid": "5770f342_12119622",
+      "range": {
+        "startLine": 16,
+        "startChar": 23,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "bb53cdb16680f12a9fc183477682e9dfec097a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
