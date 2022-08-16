@@ -19,8 +19,10 @@ import (
 	"path/filepath"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/bazel"
 )
 
 var (
@@ -79,6 +81,7 @@ type headerProperties struct {
 
 type headerModule struct {
 	android.ModuleBase
+	android.BazelModuleBase
 
 	properties headerProperties
 
@@ -144,6 +147,47 @@ func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 }
 
+var (
+	apiContributionSuffix = ".contribution"
+)
+
+// Name of the cc_api(headers|contribution) bp2build target of ndk modules
+// A suffix is necessary to prevent a name collision with the base ndk_(library|header) target in the same bp2build bazel package
+func ApiContributionTargetName(moduleName string) string {
+	return moduleName + apiContributionSuffix
+}
+
+// TODO: Create bug to populate system and arch metadata of headers
+type bazelCcApiHeadersAttributes struct {
+	Hdrs        bazel.LabelListAttribute
+	Include_dir *string
+}
+
+func createCcApiHeadersTarget(ctx android.TopDownMutatorContext, includes []string, excludes []string, include_dir *string) {
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "cc_api_headers",
+		Bzl_load_location: "//build/bazel/rules/apis:cc_api_contribution.bzl",
+	}
+	// TODO: Add a comment why we are evaluating the glob pattern here
+	attrs := &bazelCcApiHeadersAttributes{
+		Hdrs: bazel.MakeLabelListAttribute(
+			android.BazelLabelForModuleSrcExcludes(
+				ctx,
+				includes,
+				excludes,
+			),
+		),
+		Include_dir: include_dir,
+	}
+	apiContributionName := ApiContributionTargetName(ctx.ModuleName())
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: apiContributionName}, attrs)
+}
+
+func (h *headerModule) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	// TODO: Add comment that only the cc_api_headers portion has been converted
+	createCcApiHeadersTarget(ctx, h.properties.Srcs, h.properties.Exclude_srcs, h.properties.From)
+}
+
 // ndk_headers installs the sets of ndk headers defined in the srcs property
 // to the sysroot base + "usr/include" + to directory + directory component.
 // ndk_headers requires the license file to be specified. Example:
@@ -158,6 +202,7 @@ func ndkHeadersFactory() android.Module {
 	module := &headerModule{}
 	module.AddProperties(&module.properties)
 	android.InitAndroidModule(module)
+	android.InitBazelModule(module)
 	return module
 }
 
@@ -190,6 +235,7 @@ type versionedHeaderProperties struct {
 // Note that this is really only built to handle bionic/libc/include.
 type versionedHeaderModule struct {
 	android.ModuleBase
+	android.BazelModuleBase
 
 	properties versionedHeaderProperties
 
@@ -220,6 +266,15 @@ func (m *versionedHeaderModule) GenerateAndroidBuildActions(ctx android.ModuleCo
 	}
 
 	processHeadersWithVersioner(ctx, fromSrcPath, toOutputPath, srcFiles, installPaths)
+}
+
+func (h *versionedHeaderModule) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	// TODO: comment about only cc_api_headers
+	includePattern := filepath.Join(
+		proptools.String(h.properties.From),
+		"**",
+		"*.h") // TODO: Add comment
+	createCcApiHeadersTarget(ctx, []string{includePattern}, []string{}, h.properties.From)
 }
 
 func processHeadersWithVersioner(ctx android.ModuleContext, srcDir, outDir android.Path,
@@ -271,16 +326,19 @@ func versionedNdkHeadersFactory() android.Module {
 	module.AddProperties(&module.properties)
 
 	android.InitAndroidModule(module)
+	android.InitBazelModule(module)
 
 	return module
 }
 
-//	preprocessed_ndk_header {
-//	    name: "foo",
-//	    preprocessor: "foo.sh",
-//	    srcs: [...],
-//	    to: "android",
-//	}
+// preprocessed_ndk_header {
+//
+//	name: "foo",
+//	preprocessor: "foo.sh",
+//	srcs: [...],
+//	to: "android",
+//
+// }
 //
 // Will invoke the preprocessor as:
 //
