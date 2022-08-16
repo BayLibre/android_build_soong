@@ -17,6 +17,7 @@ package android
 import (
 	"fmt"
 	"io"
+	"os"
 	"reflect"
 	"runtime"
 	"strings"
@@ -31,6 +32,9 @@ type customModule struct {
 	properties struct {
 		Default_dist_files *string
 		Dist_output_file   *bool
+
+		// Default_files are added to a phony target for the module.
+		Default_files []string `android:"path"`
 	}
 
 	data       AndroidMkData
@@ -92,12 +96,21 @@ func (m *customModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 		// fields.
 		m.distFiles = m.GenerateTaggedDistFiles(ctx)
 	}
+
+	defaultFiles := PathsForModuleSrc(ctx, m.properties.Default_files)
+	if len(defaultFiles) > 0 {
+		ctx.SetProvider(DefaultInfoProvider, DefaultInfo{Files: defaultFiles})
+	}
 }
 
 func (m *customModule) AndroidMk() AndroidMkData {
 	return AndroidMkData{
+		OutputFile: m.outputFile,
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data AndroidMkData) {
 			m.data = data
+			// Providing a custom function prevents the data from being written to the file by default so
+			// write it explicitly.
+			WriteAndroidMkData(w, data)
 		},
 	}
 }
@@ -789,4 +802,44 @@ func TestGetDistContributions(t *testing.T) {
 			},
 		},
 	})
+}
+
+func readAndroidMkContents(ctx *TestContext) string {
+	path := PathForOutput(PathContextForTesting(ctx.Config()), "Android.mk")
+	contents, err := os.ReadFile(path.String())
+	if err != nil {
+		panic(err)
+	}
+	return string(contents)
+}
+
+func TestNoDefaultFiles(t *testing.T) {
+	ctx, _ := buildContextAndCustomModuleFoo(t, `custom {
+	name: "foo",
+  dist_output_file: true,
+}`)
+
+	contents := readAndroidMkContents(ctx)
+	expected := `include $(BUILD_PREBUILT)
+
+STATS.SOONG_MODULE_TYPE :=`
+	AssertStringDoesContain(t, "footer", contents, expected)
+}
+
+func TestDefaultFiles(t *testing.T) {
+	ctx, _ := buildContextAndCustomModuleFoo(t, `custom {
+	name: "foo",
+	default_files: [
+		"default_file1.txt",
+		"default_file2.txt",
+	],
+}`)
+
+	contents := readAndroidMkContents(ctx)
+	expected := `include $(BUILD_PREBUILT)
+.PHONY: foo
+foo: default_file1.txt default_file2.txt
+
+STATS.SOONG_MODULE_TYPE :=`
+	AssertStringDoesContain(t, "footer", contents, expected)
 }
