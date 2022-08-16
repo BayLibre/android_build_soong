@@ -39,6 +39,30 @@
       },
       "revId": "7d3708f64aa1436037ddbcde97bb6c591d7dbe41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96f77f10_5f54c4b4",
+        "filename": "ui/build/build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-16T02:10:34Z",
+      "side": 1,
+      "message": "Agreed. Will work on the update and submit the change.",
+      "parentUuid": "d90a6626_9b9d66ef",
+      "range": {
+        "startLine": 317,
+        "startChar": 1,
+        "endLine": 317,
+        "endChar": 13
+      },
+      "revId": "7d3708f64aa1436037ddbcde97bb6c591d7dbe41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
