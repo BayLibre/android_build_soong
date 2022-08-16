@@ -314,6 +314,7 @@ func Build(ctx Context, config Config) {
 	createCombinedBuildNinjaFile(ctx, config)
 
 	distGzipFile(ctx, config, config.CombinedNinjaFile())
+	distGzipFile(ctx, config, config.SoongVarsFile())
 
 	if what&RunBuildTests != 0 {
 		testForDanglingRules(ctx, config)
