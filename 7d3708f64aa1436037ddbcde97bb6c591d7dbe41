@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37eec627_8d4c3be0",
+        "filename": "ui/build/build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-16T01:27:44Z",
+      "side": 1,
+      "message": "I\u0027d suggest putting it in here, it\u0027s only relevant if Soong is being run.",
+      "revId": "7d3708f64aa1436037ddbcde97bb6c591d7dbe41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d90a6626_9b9d66ef",
         "filename": "ui/build/build.go",
         "patchSetId": 3
