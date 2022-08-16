@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e5c72b_e7eecd7c",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-16T21:23:28Z",
+      "side": 0,
+      "message": "This is probably a copy-paste error from GenerateAndroidBuildActions because it\u0027s a no-op in this function.",
+      "revId": "63e738ffe0cb7328d75e288ee0356da5e521c455",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
