@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8abceb8_59049ebb",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-08-16T17:40:33Z",
+      "side": 1,
+      "message": "nit: I would call this \"isLibcore[Module]\"\n\nReading the condition in the next lien makes more sense that way.",
+      "range": {
+        "startLine": 335,
+        "startChar": 2,
+        "endLine": 335,
+        "endChar": 22
+      },
+      "revId": "5f9c5436c26d2b01243f10adbb9460af3c4a3bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
