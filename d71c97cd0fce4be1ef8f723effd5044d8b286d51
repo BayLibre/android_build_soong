@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37c3fad5_9b87e5c7",
+        "filename": "android/license.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-16T14:10:07Z",
+      "side": 1,
+      "message": "Idea: have bp2build generate a genrule to concatenate the multiple files together, and use that as file input to Bazel\u0027s license_text?",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "d71c97cd0fce4be1ef8f723effd5044d8b286d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5058e6f_d0f90ff4",
+        "filename": "bp2build/license_conversion_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-16T14:10:07Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d71c97cd0fce4be1ef8f723effd5044d8b286d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
