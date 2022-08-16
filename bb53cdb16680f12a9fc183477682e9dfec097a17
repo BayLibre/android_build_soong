@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b84187_85190f58",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-16T01:28:01Z",
+      "side": 1,
+      "message": "In this context, https://bazel.build/concepts/build-files is a more suitable page than the BE, which doesn\u0027t explain what a BUILD file conceptually is.",
+      "range": {
+        "startLine": 16,
+        "startChar": 23,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "bb53cdb16680f12a9fc183477682e9dfec097a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
