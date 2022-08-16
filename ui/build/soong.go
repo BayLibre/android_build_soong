@@ -496,6 +496,7 @@ func runSoong(ctx Context, config Config) {
 	}
 
 	distGzipFile(ctx, config, config.SoongNinjaFile(), "soong")
+	distFile(ctx, config, config.SoongVarsFile(), "soong")
 
 	if !config.SkipKati() {
 		distGzipFile(ctx, config, config.SoongAndroidMk(), "soong")
