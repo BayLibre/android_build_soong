@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90a6626_9b9d66ef",
+        "filename": "ui/build/build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-16T01:26:33Z",
+      "side": 1,
+      "message": "I don\u0027t think gzip is necessary here, this file is tiny and it would be convenient to be able to view it in a browser without unzipping.  Use distFile instead.",
+      "range": {
+        "startLine": 317,
+        "startChar": 1,
+        "endLine": 317,
+        "endChar": 13
+      },
+      "revId": "7d3708f64aa1436037ddbcde97bb6c591d7dbe41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
