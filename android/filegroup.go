@@ -15,6 +15,7 @@
 package android
 
 import (
+	"path/filepath"
 	"strings"
 
 	"android/soong/bazel"
@@ -164,11 +165,6 @@ func (fg *fileGroup) IsMixedBuildSupported(ctx BaseModuleContext) bool {
 }
 
 func (fg *fileGroup) ProcessBazelQueryResponse(ctx ModuleContext) {
-	fg.srcs = PathsForModuleSrcExcludes(ctx, fg.properties.Srcs, fg.properties.Exclude_srcs)
-	if fg.properties.Path != nil {
-		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
-	}
-
 	bazelCtx := ctx.Config().BazelContext
 	filePaths, err := bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), configKey{Common.String(), CommonOS})
 	if err != nil {
@@ -178,8 +174,11 @@ func (fg *fileGroup) ProcessBazelQueryResponse(ctx ModuleContext) {
 
 	bazelOuts := make(Paths, 0, len(filePaths))
 	for _, p := range filePaths {
-		bazelOuts = append(bazelOuts, PathForBazelOutRelative(ctx, ctx.ModuleDir(), p))
+		relativeRoot := ctx.ModuleDir()
+		if fg.properties.Path != nil {
+			relativeRoot = filepath.Join(relativeRoot, *fg.properties.Path)
+		}
+		bazelOuts = append(bazelOuts, PathForBazelOutRelative(ctx, relativeRoot, p))
 	}
-
 	fg.srcs = bazelOuts
 }
