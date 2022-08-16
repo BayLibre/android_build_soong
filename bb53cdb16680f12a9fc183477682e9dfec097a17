@@ -46,6 +46,30 @@
       },
       "revId": "bb53cdb16680f12a9fc183477682e9dfec097a17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5770f342_12119622",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-16T08:04:04Z",
+      "side": 1,
+      "message": "Thanks! Please also leave the comment unresolved until after uploading the new patchset.",
+      "parentUuid": "104bca0c_c4219bba",
+      "range": {
+        "startLine": 16,
+        "startChar": 23,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "bb53cdb16680f12a9fc183477682e9dfec097a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
