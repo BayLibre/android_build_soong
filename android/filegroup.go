@@ -15,6 +15,7 @@
 package android
 
 import (
+	"path/filepath"
 	"strings"
 
 	"android/soong/bazel"
@@ -39,6 +40,11 @@ func IsFilegroup(ctx bazel.OtherModuleContext, m blueprint.Module) bool {
 // https://docs.bazel.build/versions/master/be/general.html#filegroup
 type bazelFilegroupAttributes struct {
 	Srcs bazel.LabelListAttribute
+}
+
+type bazelAidlLibraryAttributes struct {
+	Srcs                bazel.LabelListAttribute
+	Strip_import_prefix *string
 }
 
 // ConvertWithBp2build performs bp2build conversion of filegroup
@@ -66,16 +72,33 @@ func (fg *fileGroup) ConvertWithBp2build(ctx TopDownMutatorContext) {
 		}
 	}
 
-	attrs := &bazelFilegroupAttributes{
-		Srcs: srcs,
-	}
+	// Convert module that has only AIDL files to aidl_library
+	// If the module has a mixed bag of AIDL and non-AIDL files, split the filegroup manually
+	// and then convert
+	if fg.ShouldConvertToAidlLibrary(ctx) {
+		attrs := &bazelAidlLibraryAttributes{
+			Srcs:                srcs,
+			Strip_import_prefix: fg.properties.Path,
+		}
 
-	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "filegroup",
-		Bzl_load_location: "//build/bazel/rules:filegroup.bzl",
-	}
+		props := bazel.BazelTargetModuleProperties{
+			Rule_class:        "aidl_library",
+			Bzl_load_location: "//build/bazel/rules/aidl:library.bzl",
+		}
 
-	ctx.CreateBazelTargetModule(props, CommonAttributes{Name: fg.Name()}, attrs)
+		ctx.CreateBazelTargetModule(props, CommonAttributes{Name: fg.Name()}, attrs)
+	} else {
+		attrs := &bazelFilegroupAttributes{
+			Srcs: srcs,
+		}
+
+		props := bazel.BazelTargetModuleProperties{
+			Rule_class:        "filegroup",
+			Bzl_load_location: "//build/bazel/rules:filegroup.bzl",
+		}
+
+		ctx.CreateBazelTargetModule(props, CommonAttributes{Name: fg.Name()}, attrs)
+	}
 }
 
 type fileGroupProperties struct {
@@ -98,12 +121,14 @@ type fileGroupProperties struct {
 type fileGroup struct {
 	ModuleBase
 	BazelModuleBase
+	Bp2buildAidlLibrary
 	properties fileGroupProperties
 	srcs       Paths
 }
 
 var _ MixedBuildBuildable = (*fileGroup)(nil)
 var _ SourceFileProducer = (*fileGroup)(nil)
+var _ Bp2buildAidlLibrary = (*fileGroup)(nil)
 
 // filegroup contains a list of files that are referenced by other modules
 // properties (such as "srcs") using the syntax ":<name>". filegroup are
@@ -178,8 +203,33 @@ func (fg *fileGroup) ProcessBazelQueryResponse(ctx ModuleContext) {
 
 	bazelOuts := make(Paths, 0, len(filePaths))
 	for _, p := range filePaths {
-		bazelOuts = append(bazelOuts, PathForBazelOutRelative(ctx, ctx.ModuleDir(), p))
+		if fg.properties.Path != nil {
+			bazelOuts = append(bazelOuts, PathForBazelOutRelative(ctx, filepath.Join(ctx.ModuleDir(), *fg.properties.Path), p))
+		} else {
+			bazelOuts = append(bazelOuts, PathForBazelOutRelative(ctx, ctx.ModuleDir(), p))
+		}
+
 	}
 
 	fg.srcs = bazelOuts
+}
+
+func (fg *fileGroup) ShouldConvertToAidlLibrary(ctx BazelConversionPathContext) bool {
+	if len(fg.properties.Srcs) == 0 || !fg.ShouldConvertWithBp2build(ctx) {
+		return false
+	}
+	for _, src := range fg.properties.Srcs {
+		if !strings.HasSuffix(src, ".aidl") {
+			return false
+		}
+	}
+	return true
+}
+
+func (fg *fileGroup) GetAidlLibraryLabel(ctx BazelConversionPathContext) string {
+	if ctx.OtherModuleDir(fg.module) == ctx.ModuleDir() {
+		return ":" + fg.Name()
+	} else {
+		return fg.GetBazelLabel(ctx, fg)
+	}
 }
