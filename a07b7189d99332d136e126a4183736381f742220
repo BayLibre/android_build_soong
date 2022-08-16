@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "467089e6_cdf135dd",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-16T21:11:25Z",
+      "side": 1,
+      "message": "`ctx.Arch().Archtype.Multilib \u003d\u003d \"lib32\"`",
+      "range": {
+        "startLine": 139,
+        "startChar": 9,
+        "endLine": 139,
+        "endChar": 81
+      },
+      "revId": "a07b7189d99332d136e126a4183736381f742220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
