@@ -569,6 +569,9 @@ type scopePaths struct {
 	// The specification of API elements removed since the last release.
 	removedApiFilePath android.OptionalPath
 
+	// The path to the file that is updated when the API has been verified as being up-to-date.
+	upToDateApiTimestamp android.OptionalPath
+
 	// The stubs source jar.
 	stubsSrcJar android.OptionalPath
 
@@ -618,6 +621,7 @@ func (paths *scopePaths) extractApiInfoFromApiStubsProvider(provider ApiStubsPro
 	paths.annotationsZip = android.OptionalPathForPath(provider.AnnotationsZip())
 	paths.currentApiFilePath = android.OptionalPathForPath(provider.ApiFilePath())
 	paths.removedApiFilePath = android.OptionalPathForPath(provider.RemovedApiFilePath())
+	paths.upToDateApiTimestamp = android.OptionalPathForPath(provider.CurrentApiUpToDateTimestampFile())
 }
 
 func (paths *scopePaths) extractApiInfoFromDep(ctx android.ModuleContext, dep android.Module) error {
@@ -1370,6 +1374,20 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		}
 	}
 	ctx.SetProvider(android.AdditionalSdkInfoProvider, android.AdditionalSdkInfo{additionalSdkInfo})
+
+	// Calculate the set of default files to build when building m <module-name>
+	var defaultFiles android.Paths
+	for _, scope := range module.getGeneratedApiScopes(ctx) {
+		scopePaths := module.scopePaths[scope]
+		timestamp := scopePaths.upToDateApiTimestamp
+		if timestamp.Valid() {
+			defaultFiles = append(defaultFiles, timestamp.Path())
+		}
+	}
+	if len(defaultFiles) > 0 {
+		defaultInfo := android.DefaultInfo{Files: defaultFiles}
+		ctx.SetProvider(android.DefaultInfoProvider, defaultInfo)
+	}
 }
 
 func (module *SdkLibrary) AndroidMkEntries() []android.AndroidMkEntries {
@@ -2129,11 +2147,12 @@ var _ SdkLibraryDependency = (*SdkLibraryImport)(nil)
 
 // The type of a structure that contains a field of type sdkLibraryScopeProperties
 // for each apiscope in allApiScopes, e.g. something like:
-// struct {
-//   Public sdkLibraryScopeProperties
-//   System sdkLibraryScopeProperties
-//   ...
-// }
+//
+//	struct {
+//	  Public sdkLibraryScopeProperties
+//	  System sdkLibraryScopeProperties
+//	  ...
+//	}
 var allScopeStructType = createAllScopePropertiesStructType()
 
 // Dynamically create a structure type for each apiscope in allApiScopes.
@@ -2556,9 +2575,7 @@ func (module *SdkLibraryImport) RequiredFilesFromPrebuiltApex(ctx android.BaseMo
 	return requiredFilesFromPrebuiltApexForImport(name)
 }
 
-//
 // java_sdk_library_xml
-//
 type sdkLibraryXml struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
