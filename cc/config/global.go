@@ -242,11 +242,10 @@ var (
 		// New warnings to be fixed after clang-r433403
 		"-Wno-error=unused-but-set-variable",  // http://b/197240255
 		"-Wno-error=unused-but-set-parameter", // http://b/197240255
-		// New warnings to be fixed after clang-r458507
-		"-Wno-error=unqualified-std-cast-call", // http://b/239662094
 	}
 
 	noOverrideExternalGlobalCflags = []string{
+		"-Wno-error=unqualified-std-cast-call", // http://b/239662094
 		// http://b/197240255
 		"-Wno-unused-but-set-variable",
 		"-Wno-unused-but-set-parameter",
