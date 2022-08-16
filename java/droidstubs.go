@@ -164,6 +164,7 @@ type ApiStubsProvider interface {
 	AnnotationsZip() android.Path
 	ApiFilePath
 	RemovedApiFilePath() android.Path
+	CurrentApiUpToDateTimestampFile() android.Path
 
 	ApiStubsSrcProvider
 }
@@ -226,6 +227,10 @@ func (d *Droidstubs) ApiFilePath() android.Path {
 
 func (d *Droidstubs) RemovedApiFilePath() android.Path {
 	return d.removedApiFilePath
+}
+
+func (d *Droidstubs) CurrentApiUpToDateTimestampFile() android.Path {
+	return d.checkCurrentApiTimestamp
 }
 
 func (d *Droidstubs) StubsSrcJar() android.Path {
