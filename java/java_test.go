@@ -1287,6 +1287,27 @@ func TestAidlExportIncludeDirsFromImports(t *testing.T) {
 	}
 }
 
+func TestAidlIncludeDirFromFileGroupPathProp(t *testing.T) {
+	ctx, _ := testJava(t, `
+		filegroup {
+			name: "foo_aidl",
+			srcs: ["aidl/foo/IFoo.aidl"],
+			path: "aidl/foo",
+		}
+		java_library {
+			name: "foo",
+			srcs: [":foo_aidl"],
+			aidl: { flags: ["-Werror"], },	
+		}
+	`)
+
+	aidlCommand := ctx.ModuleForTests("foo", "android_common").Rule("aidl").RuleParams.Command
+	expectedAidlFlag := "-Iaidl/foo"
+	if !strings.Contains(aidlCommand, expectedAidlFlag) {
+		t.Errorf("aidl command %q does not contain %q", aidlCommand, expectedAidlFlag)
+	}
+}
+
 func TestAidlFlagsArePassedToTheAidlCompiler(t *testing.T) {
 	ctx, _ := testJava(t, `
 		java_library {
