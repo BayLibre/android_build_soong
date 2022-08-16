@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015e6dfe_7c006e0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-16T14:19:42Z",
+      "side": 1,
+      "message": "default_applicable_licenses",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 9,
+        "endChar": 79
+      },
+      "revId": "3b93688103b10537b5bb6a381a269fffc476327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75574c68_a13ec9eb",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-16T14:19:42Z",
+      "side": 1,
+      "message": "Why not just convert every license module in the allowlisted directory?",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 30
+      },
+      "revId": "3b93688103b10537b5bb6a381a269fffc476327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466c721a_deaa2f26",
+        "filename": "bp2build/package_conversion_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-16T14:19:42Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3b93688103b10537b5bb6a381a269fffc476327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "498b0a9d_ccc47e30",
+        "filename": "bp2build/package_conversion_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-16T14:19:42Z",
+      "side": 1,
+      "message": "nit: fix indents",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "3b93688103b10537b5bb6a381a269fffc476327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43000d35_29d698f9",
+        "filename": "bp2build/package_conversion_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-16T14:19:42Z",
+      "side": 1,
+      "message": "Remove or add a TODO?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "3b93688103b10537b5bb6a381a269fffc476327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
