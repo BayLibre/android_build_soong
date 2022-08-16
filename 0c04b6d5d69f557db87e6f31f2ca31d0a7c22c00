@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c8e0e21_9a26ad57",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-16T21:21:48Z",
+      "side": 1,
+      "message": "This is similar to GenerateAndroidBuildActions https://android.googlesource.com/platform/build/soong/+/refs/changes/37/2186437/2/android/filegroup.go#140.",
+      "revId": "0c04b6d5d69f557db87e6f31f2ca31d0a7c22c00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
