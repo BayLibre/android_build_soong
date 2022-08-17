@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cddcef4_3c059766",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2022-08-17T06:10:53Z",
+      "side": 1,
+      "message": "Please add a \"Bug\" link in the commit message.",
+      "revId": "170fb7f1543cdd301da58e586deb638df3189c82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
