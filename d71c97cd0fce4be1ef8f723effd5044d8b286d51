@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7f689d8_9cc2e63c",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-17T10:36:52Z",
+      "side": 1,
+      "message": "Also add \"license\" here?",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 36
+      },
+      "revId": "d71c97cd0fce4be1ef8f723effd5044d8b286d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37c3fad5_9b87e5c7",
         "filename": "android/license.go",
         "patchSetId": 15
