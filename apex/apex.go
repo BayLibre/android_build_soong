@@ -1820,6 +1820,7 @@ type androidApp interface {
 	Certificate() java.Certificate
 	BaseModuleName() string
 	LintDepSets() java.LintDepSets
+	PrivAppAllowlist() android.OptionalPath
 }
 
 var _ androidApp = (*java.AndroidApp)(nil)
@@ -1840,7 +1841,7 @@ func sanitizedBuildIdForPath(ctx android.BaseModuleContext) string {
 	return buildId
 }
 
-func apexFileForAndroidApp(ctx android.BaseModuleContext, aapp androidApp) apexFile {
+func apexFilesForAndroidApp(ctx android.BaseModuleContext, aapp androidApp) []apexFile {
 	appDir := "app"
 	if aapp.Privileged() {
 		appDir = "priv-app"
@@ -1862,7 +1863,14 @@ func apexFileForAndroidApp(ctx android.BaseModuleContext, aapp androidApp) apexF
 	}); ok {
 		af.overriddenPackageName = app.OverriddenManifestPackageName()
 	}
-	return af
+	apexFiles := []apexFile{af}
+
+	if allowlist := aapp.PrivAppAllowlist(); allowlist.Valid() {
+		privAppAllowlist := newApexFile(ctx, allowlist.Path(), aapp.BaseModuleName()+"privapp", dirInApex, etc, aapp)
+		apexFiles = append(apexFiles, privAppAllowlist)
+	}
+
+	return apexFiles
 }
 
 func apexFileForRuntimeResourceOverlay(ctx android.BaseModuleContext, rro java.RuntimeResourceOverlayModule) apexFile {
@@ -2310,12 +2318,12 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 		case androidAppTag:
 			switch ap := child.(type) {
 			case *java.AndroidApp:
-				vctx.filesInfo = append(vctx.filesInfo, apexFileForAndroidApp(ctx, ap))
+				vctx.filesInfo = append(vctx.filesInfo, apexFilesForAndroidApp(ctx, ap)...)
 				return true // track transitive dependencies
 			case *java.AndroidAppImport:
-				vctx.filesInfo = append(vctx.filesInfo, apexFileForAndroidApp(ctx, ap))
+				vctx.filesInfo = append(vctx.filesInfo, apexFilesForAndroidApp(ctx, ap)...)
 			case *java.AndroidTestHelperApp:
-				vctx.filesInfo = append(vctx.filesInfo, apexFileForAndroidApp(ctx, ap))
+				vctx.filesInfo = append(vctx.filesInfo, apexFilesForAndroidApp(ctx, ap)...)
 			case *java.AndroidAppSet:
 				appDir := "app"
 				if ap.Privileged() {
