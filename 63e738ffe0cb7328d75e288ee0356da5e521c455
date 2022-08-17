@@ -34,6 +34,29 @@
       "parentUuid": "50e5c72b_e7eecd7c",
       "revId": "63e738ffe0cb7328d75e288ee0356da5e521c455",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95558f3_6838fc47",
+        "filename": "android/filegroup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-08-17T23:04:16Z",
+      "side": 0,
+      "message": "do we know why this srcs get set multiple times in the old code? if we remove this part and it returns at line 176, srcs value will be different, it might not be an issue, just some behavior changes I observed.",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 8
+      },
+      "revId": "63e738ffe0cb7328d75e288ee0356da5e521c455",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
