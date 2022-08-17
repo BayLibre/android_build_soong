@@ -154,6 +154,7 @@ var (
 		"external/zstd":                          Bp2BuildDefaultTrueRecursively,
 
 		"frameworks/av/media/codecs":                         Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/liberror":                       Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/services/minijail":                    Bp2BuildDefaultTrueRecursively,
 		"frameworks/base/media/tests/MediaDump":              Bp2BuildDefaultTrue,
 		"frameworks/base/startop/apps/test":                  Bp2BuildDefaultTrue,
@@ -185,7 +186,7 @@ var (
 		"packages/modules/adb/tls":                         Bp2BuildDefaultTrueRecursively,
 		"packages/providers/MediaProvider/tools/dialogs":   Bp2BuildDefaultTrue,
 		"packages/screensavers/Basic":                      Bp2BuildDefaultTrue,
-		"packages/services/Car/tests/SampleRearViewCamera": Bp2BuildDefaultTrue,
+		"packages/services/Car/tests/SampleRearViewCamera": Bp2BuildDefaultFalse, // TODO(b/242834321)
 
 		"prebuilts/clang/host/linux-x86":           Bp2BuildDefaultTrueRecursively,
 		"prebuilts/runtime/mainline/platform/sdk":  Bp2BuildDefaultTrueRecursively,
