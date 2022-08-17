@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a46336c2_9a9f5c71",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-08-17T18:13:23Z",
+      "side": 1,
+      "message": "I\u0027m confused, as I\u0027m introducing the suffix functionality. The other tests have it unset and thus implicitly test that condition, right? Otherwise, I\u0027d end up writing `{rule_name} { name: \"foo\", }`",
+      "parentUuid": "eec0258f_bbdb5275",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f05e223c_9fed30d0",
         "filename": "bp2build/cc_library_shared_conversion_test.go",
         "patchSetId": 20
@@ -65,6 +83,24 @@
       "writtenOn": "2022-08-12T20:40:34Z",
       "side": 1,
       "message": "Looking at the tests, we technically don\u0027t use this attribute at the Bazel macros (for example, cc_library_shared). So I don\u0027t think this is needed, correct?",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "665ce295_26b4fb6a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-08-17T18:13:23Z",
+      "side": 1,
+      "message": "We need it as that is how `cc_library_shared` gets its `Suffix`, as passed along through Soong\u0027s `LibraryPeroperties.Suffix`. The Unit Test you noted before was simply incorrect.",
+      "parentUuid": "b66a0ea8_425f1425",
       "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
