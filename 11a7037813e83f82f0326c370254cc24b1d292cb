@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "996d516b_8d7d8b43",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-17T22:35:19Z",
+      "side": 1,
+      "message": "It would be better to add these to `LOCAL_ADDITIONAL_CHECKED_MODULE`, which would make them run for mma too.",
+      "revId": "11a7037813e83f82f0326c370254cc24b1d292cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
