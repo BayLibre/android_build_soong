@@ -22,6 +22,30 @@
       },
       "revId": "484f83db00009b7d8ad76e3fc0f2d0d82d2bfa45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9766e7a6_1b6f084d",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-17T08:37:08Z",
+      "side": 1,
+      "message": "$(LOCAL_MODULE) can have some different name because of suffix (such as .sdk) here.",
+      "parentUuid": "4c9d8092_12e321a7",
+      "range": {
+        "startLine": 639,
+        "startChar": 47,
+        "endLine": 639,
+        "endChar": 69
+      },
+      "revId": "484f83db00009b7d8ad76e3fc0f2d0d82d2bfa45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
