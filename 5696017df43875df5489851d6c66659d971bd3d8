@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "256a6c02_174ce447",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-17T18:32:32Z",
+      "side": 1,
+      "message": "Why are we sleeping for 5 seconds?",
+      "revId": "5696017df43875df5489851d6c66659d971bd3d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
