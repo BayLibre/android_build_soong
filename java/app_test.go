@@ -3225,3 +3225,13 @@ func TestTargetSdkVersionMtsTests(t *testing.T) {
 		android.AssertStringDoesContain(t, testCase.desc, manifestFixerArgs, "--targetSdkVersion  "+testCase.targetSdkVersionExpected)
 	}
 }
+
+func TestPrivappAllowlist(t *testing.T) {
+	testJavaError(t, "privileged must be set in order to use privapp_allowlist", `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			privapp_allowlist: "perms.xml",
+		}
+	`)
+}

@@ -33,7 +33,16 @@ import (
 
 func init() {
 	RegisterAppBuildComponents(android.InitRegistrationContext)
+	pctx.SourcePathVariable("modifyAllowlistCmd", "build/soong/scripts/modify_permissions_allowlist.py")
 }
+
+var (
+	modifyAllowlist = pctx.AndroidStaticRule("modifyAllowlist",
+		blueprint.RuleParams{
+			Command:     "$modifyAllowlistCmd $in $packageName $out",
+			CommandDeps: []string{"$modifyAllowlistCmd"},
+		}, "packageName")
+)
 
 func RegisterAppBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("android_app", AndroidAppFactory)
@@ -59,6 +68,9 @@ type appProperties struct {
 	// where the system will grant it additional privileges not available to
 	// normal apps.
 	Privileged *bool
+
+	// Specifies the file that contains the allowlist for this app.
+	Privapp_allowlist *string
 
 	// list of resource labels to generate individual resource packages
 	Package_splits []string
@@ -215,6 +227,10 @@ func (c Certificate) AndroidMkString() string {
 
 func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 	a.Module.deps(ctx)
+
+	if a.appProperties.Privapp_allowlist != nil && !Bool(a.appProperties.Privileged) {
+		ctx.PropertyErrorf("privapp_allowlist", "privileged must be set in order to use privapp_allowlist")
+	}
 
 	if String(a.appProperties.Stl) == "c++_shared" && !a.SdkVersion(ctx).Specified() {
 		ctx.PropertyErrorf("stl", "sdk_version must be set in order to use c++_shared")
@@ -565,6 +581,26 @@ func (a *AndroidApp) InstallApkName() string {
 	return a.installApkName
 }
 
+func (a *AndroidApp) createPrivappAllowlist(ctx android.ModuleContext) *android.InstallPath {
+	if a.appProperties.Privapp_allowlist == nil {
+		return nil
+	}
+	packageName := *a.overridableAppProperties.Package_name
+	fileName := packageName + ".xml"
+	outPath := android.PathForModuleOut(ctx, fileName).OutputPath
+	installPath := android.PathForModuleInstall(ctx, "etc/permissions")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   modifyAllowlist,
+		Input:  android.PathForModuleSrc(ctx, *a.appProperties.Privapp_allowlist),
+		Output: outPath,
+		Args: map[string]string{
+			"packageName": packageName,
+		},
+	})
+	installFile := ctx.InstallFile(installPath, fileName, outPath)
+	return &installFile
+}
+
 func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	var apkDeps android.Paths
 
@@ -721,6 +757,10 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 		for _, extra := range a.extraOutputFiles {
 			installed := ctx.InstallFile(a.installDir, extra.Base(), extra)
 			extraInstalledPaths = append(extraInstalledPaths, installed)
+		}
+
+		if allowlist := a.createPrivappAllowlist(ctx); allowlist != nil {
+			extraInstalledPaths = append(extraInstalledPaths, *allowlist)
 		}
 		ctx.InstallFile(a.installDir, a.outputFile.Base(), a.outputFile, extraInstalledPaths...)
 	}
