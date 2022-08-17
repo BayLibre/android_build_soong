@@ -5811,6 +5811,8 @@ func TestApexWithApps(t *testing.T) {
 			sdk_version: "current",
 			system_modules: "none",
 			privileged: true,
+			privapp_allowlist: "perms.xml",
+			package_name: "com.android.AppFooPriv",
 			stl: "none",
 			apex_available: [ "myapex" ],
 		}
@@ -5840,6 +5842,7 @@ func TestApexWithApps(t *testing.T) {
 
 	ensureContains(t, copyCmds, "image.apex/app/AppFoo@TEST.BUILD_ID/AppFoo.apk")
 	ensureContains(t, copyCmds, "image.apex/priv-app/AppFooPriv@TEST.BUILD_ID/AppFooPriv.apk")
+	ensureContains(t, copyCmds, "image.apex/priv-app/AppFooPriv@TEST.BUILD_ID/com.android.AppFooPriv.xml")
 
 	appZipRule := ctx.ModuleForTests("AppFoo", "android_common_apex10000").Description("zip jni libs")
 	// JNI libraries are uncompressed
