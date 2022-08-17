@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f08b03f0_fe102c03",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2561,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-17T17:36:08Z",
+      "side": 1,
+      "message": "Maybe could add a test for a filegroup with some aidl and some non-aidl srcs?",
+      "revId": "960fade61ae0b899bd96bedaa92d6cb379b5946c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3ea5678_9a077104",
         "filename": "cc/bp2build.go",
         "patchSetId": 4
