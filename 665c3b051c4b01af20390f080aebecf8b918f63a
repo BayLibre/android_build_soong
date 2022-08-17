@@ -33,6 +33,42 @@
       "message": "Paul, do you want someone on Joe\u0027s team to review this as well?",
       "revId": "665c3b051c4b01af20390f080aebecf8b918f63a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c99409_7d601d16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-17T21:53:47Z",
+      "side": 1,
+      "message": "The bootclasspath_fragment collates all the hidden API files from the fragment and its contents so you may not need to care about where they come from if you are generating a single set of rules for the whole fragment/apex.",
+      "parentUuid": "57d83314_c3ef0228",
+      "revId": "665c3b051c4b01af20390f080aebecf8b918f63a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4714438a_56b27844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-17T21:53:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure that they will care but I\u0027ve sent an email to them with a link in case they do. I don\u0027t want to just spam individuals with reviews.",
+      "parentUuid": "73f2155d_9d1ac57f",
+      "revId": "665c3b051c4b01af20390f080aebecf8b918f63a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
