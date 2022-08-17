@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5235c14b_e56907ad",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-17T09:54:21Z",
+      "side": 1,
+      "message": "IIUC, we could be comparing current (current) vs. previous (33) ABI, so using prevVersion + 1 wouldn\u0027t work? How about let the caller pass in the current version string?",
+      "revId": "dad550e2176f37ffcd2868dcf82d14867872a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
