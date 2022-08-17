@@ -16,6 +16,24 @@
       "message": "I think this one can be dropped",
       "revId": "63932a36a87bde7561ee8d38a7ef64590101c8ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d0165bf_4cfdc7a8",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-17T20:40:17Z",
+      "side": 1,
+      "message": "Okay, I will move it to allVars as well and create a new patchset.",
+      "parentUuid": "a4ef3ad7_38fb5561",
+      "revId": "63932a36a87bde7561ee8d38a7ef64590101c8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
