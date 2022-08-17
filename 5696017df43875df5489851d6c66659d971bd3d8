@@ -16,6 +16,24 @@
       "message": "Why are we sleeping for 5 seconds?",
       "revId": "5696017df43875df5489851d6c66659d971bd3d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f11ab5a6_b1fdea60",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-17T18:41:01Z",
+      "side": 1,
+      "message": "to let the user read the message - lmk either to remove this or add a comment",
+      "parentUuid": "256a6c02_174ce447",
+      "revId": "5696017df43875df5489851d6c66659d971bd3d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
