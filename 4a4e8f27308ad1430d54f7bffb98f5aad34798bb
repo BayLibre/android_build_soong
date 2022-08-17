@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fd73a7b_a3e2f17c",
+        "filename": "android/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-17T14:50:51Z",
+      "side": 1,
+      "message": "nit: could move this outside the loop since its value doesn\u0027t change",
+      "revId": "4a4e8f27308ad1430d54f7bffb98f5aad34798bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257738a1_008f75f8",
+        "filename": "android/filegroup_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-17T14:50:51Z",
+      "side": 1,
+      "message": "remove?",
+      "revId": "4a4e8f27308ad1430d54f7bffb98f5aad34798bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "589a0384_0952d3ad",
+        "filename": "android/filegroup_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-17T14:50:51Z",
+      "side": 1,
+      "message": "can you add an error message to this assert? and same below.",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 20
+      },
+      "revId": "4a4e8f27308ad1430d54f7bffb98f5aad34798bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
