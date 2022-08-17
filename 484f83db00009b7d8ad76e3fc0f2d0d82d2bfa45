@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9d8092_12e321a7",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-08-17T08:33:56Z",
+      "side": 1,
+      "message": "why don\u0027t we use `file` here?",
+      "range": {
+        "startLine": 639,
+        "startChar": 47,
+        "endLine": 639,
+        "endChar": 69
+      },
+      "revId": "484f83db00009b7d8ad76e3fc0f2d0d82d2bfa45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
