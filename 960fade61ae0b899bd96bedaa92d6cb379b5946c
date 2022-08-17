@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3ea5678_9a077104",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-17T17:34:15Z",
+      "side": 1,
+      "message": "nit: Since we are just appending to this array, you could just write\n```\nexcludeSrcs :\u003d props.Exclude_srcs\n```\nand skip the  copy  function below. The  append  won\u0027t affect the original array.",
+      "revId": "960fade61ae0b899bd96bedaa92d6cb379b5946c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65febaae_0c0238c4",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-17T17:34:15Z",
+      "side": 1,
+      "message": "no longer needed?",
+      "revId": "960fade61ae0b899bd96bedaa92d6cb379b5946c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf964b7f_ed7d30aa",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2521,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-17T17:34:15Z",
+      "side": 1,
+      "message": "Does this function get used? I don\u0027t see it in this CL, and I\u0027m not sure how this differs from the function in bp2build.go.",
+      "revId": "960fade61ae0b899bd96bedaa92d6cb379b5946c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
