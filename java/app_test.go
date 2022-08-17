@@ -3505,3 +3505,53 @@ func TestTargetSdkVersionMtsTests(t *testing.T) {
 		android.AssertStringDoesContain(t, testCase.desc, manifestFixerArgs, "--targetSdkVersion  "+testCase.targetSdkVersionExpected)
 	}
 }
+
+func TestPrivappAllowlist(t *testing.T) {
+	testJavaError(t, "privileged must be set in order to use privapp_allowlist", `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			privapp_allowlist: "perms.xml",
+		}
+	`)
+
+	result := PrepareForTestWithJavaDefaultModules.RunTestWithBp(
+		t,
+		`
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			privapp_allowlist: "perms.xml",
+			privileged: true,
+			package_name: "com.android.foo",
+			sdk_version: "current",
+		}
+		override_android_app {
+			name: "bar",
+			base: "foo",
+			privapp_allowlist: "google_perms.xml",
+			package_name: "com.google.android.foo",
+		}
+		`,
+	)
+	app := result.ModuleForTests("foo", "android_common")
+	overrideApp := result.ModuleForTests("foo", "android_common_bar")
+
+	// verify that privapp allowlist is created
+	app.Output("out/soong/.intermediates/foo/android_common/com.android.foo.xml")
+	overrideApp.Output("out/soong/.intermediates/foo/android_common_bar/com.google.android.foo.xml")
+	expectedAllowlist := "perms.xml"
+	actualAllowlist := app.Rule("modifyAllowlist").Input.String()
+	if expectedAllowlist != actualAllowlist {
+		t.Errorf("expected allowlist to be %q; got %q", expectedAllowlist, actualAllowlist)
+	}
+	overrideExpectedAllowlist := "google_perms.xml"
+	overrideActualAllowlist := overrideApp.Rule("modifyAllowlist").Input.String()
+	if overrideExpectedAllowlist != overrideActualAllowlist {
+		t.Errorf("expected override allowlist to be %q; got %q", overrideExpectedAllowlist, overrideActualAllowlist)
+	}
+
+	// verify that permissions are copied to device
+	app.Output("out/soong/target/product/test_device/system/etc/permissions/com.android.foo.xml")
+	overrideApp.Output("out/soong/target/product/test_device/system/etc/permissions/com.google.android.foo.xml")
+}
