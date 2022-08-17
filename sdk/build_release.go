@@ -16,6 +16,7 @@ package sdk
 
 import (
 	"fmt"
+	"math"
 	"reflect"
 	"strings"
 )
@@ -69,11 +70,15 @@ func (s *buildReleaseSet) contains(release *buildRelease) bool {
 // String returns a string representation of the set, sorted from earliest to latest release.
 func (s *buildReleaseSet) String() string {
 	list := []string{}
-	for _, release := range buildReleases {
+	addRelease := func(release *buildRelease) {
 		if _, ok := s.contents[release]; ok {
 			list = append(list, release.name)
 		}
 	}
+	for _, release := range buildReleases {
+		addRelease(release)
+	}
+	addRelease(buildReleaseCurrent)
 	return fmt.Sprintf("[%s]", strings.Join(list, ","))
 }
 
@@ -90,15 +95,23 @@ var (
 	// Add the build releases from oldest to newest.
 	buildReleaseS = initBuildRelease("S")
 	buildReleaseT = initBuildRelease("Tiramisu")
+
+	// This is always later than any other build release.
+	buildReleaseCurrent = initBuildRelease("current")
 )
 
 // initBuildRelease creates a new build release with the specified name.
 func initBuildRelease(name string) *buildRelease {
-	ordinal := len(nameToBuildRelease)
+	ordinal := len(buildReleases)
+	if name == "current" {
+		ordinal = math.MaxInt
+	}
 	release := &buildRelease{name: name, ordinal: ordinal}
 	nameToBuildRelease[name] = release
-	buildReleases = append(buildReleases, release)
 	allBuildReleaseSet.addItem(release)
+	if name != "current" {
+		buildReleases = append(buildReleases, release)
+	}
 	return release
 }
 
@@ -136,6 +149,8 @@ func parseBuildReleaseSet(specification string) (*buildReleaseSet, error) {
 		}
 		end := latestBuildRelease()
 		set.addRange(start, end)
+		// Add the current release as that is the latest.
+		set.addItem(buildReleaseCurrent)
 	} else if strings.Contains(specification, "-") {
 		limits := strings.SplitN(specification, "-", 2)
 		start, err := nameToRelease(limits[0])
