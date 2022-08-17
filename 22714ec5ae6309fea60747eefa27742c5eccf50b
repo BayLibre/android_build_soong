@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "233d28d6_bb4185cd",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-17T22:33:55Z",
+      "side": 1,
+      "message": "I don\u0027t have any particular objection to DefaultInfo, especially since it matches Bazel, but you could also just add the files in AndroidMkEntries below:\n\n```\nentries.AddStrings(\"LOCAL_ADDITIONAL_CHECKED_MODULE\", defaultFiles...)\n```",
+      "revId": "22714ec5ae6309fea60747eefa27742c5eccf50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2638d76_e8630c4b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-17T22:33:55Z",
+      "side": 1,
+      "message": "aosp/2186600 will fix these formatting issues.  It doesn\u0027t seem to have any downstream conflicts, but it is going to be difficult to submit before something introduces merge conflicts.  I might have to break it up into smaller pieces.",
+      "revId": "22714ec5ae6309fea60747eefa27742c5eccf50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
