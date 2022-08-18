@@ -2163,6 +2163,50 @@ func TestCcLibraryProtoExportHeaders(t *testing.T) {
 	})
 }
 
+func TestCcLibraryProtoIncludeDirs(t *testing.T) {
+	runCcLibraryTestCase(t, Bp2buildTestCase{
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Blueprint: soongCcProtoPreamble + `cc_library {
+	name: "foo",
+	srcs: ["foo.proto"],
+	proto: {
+		include_dirs: ["external/protobuf/src"],
+	},
+	include_build_directory: false,
+}`,
+		ExpectedBazelTargets: []string{
+			makeBazelTarget("proto_library", "foo_proto", AttrNameToString{
+				"srcs": `["foo.proto"]`,
+				"deps": `["//external/protobuf:libprotobuf-proto"]`,
+			}), makeBazelTarget("cc_lite_proto_library", "foo_cc_proto_lite", AttrNameToString{
+				"deps": `[":foo_proto"]`,
+			}), makeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
+				"deps":                              `[":libprotobuf-cpp-lite"]`,
+				"implementation_whole_archive_deps": `[":foo_cc_proto_lite"]`,
+			}), makeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"dynamic_deps": `[":libprotobuf-cpp-lite"]`,
+			}),
+		},
+	})
+}
+
+func TestCcLibraryProtoIncludeDirsUnknown(t *testing.T) {
+	runCcLibraryTestCase(t, Bp2buildTestCase{
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Blueprint: soongCcProtoPreamble + `cc_library {
+	name: "foo",
+	srcs: ["foo.proto"],
+	proto: {
+		include_dirs: ["external/protobuf/abc"],
+	},
+	include_build_directory: false,
+}`,
+		ExpectedErr: fmt.Errorf("module \"foo\": Could not find the proto_lib target for include dir: external/protobuf/abc"),
+	})
+}
+
 func TestCcLibraryProtoFilegroups(t *testing.T) {
 	runCcLibraryTestCase(t, Bp2buildTestCase{
 		ModuleTypeUnderTest:        "cc_library",

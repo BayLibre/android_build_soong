@@ -15,12 +15,12 @@
 package bp2build
 
 import (
+	"fmt"
+	"testing"
+
 	"android/soong/android"
 	"android/soong/cc"
 	"android/soong/genrule"
-	"fmt"
-
-	"testing"
 )
 
 const (
