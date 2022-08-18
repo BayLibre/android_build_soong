@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "692c85e1_154914c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-18T07:37:13Z",
+      "side": 1,
+      "message": "I updated a comment in the bug. Thx.",
+      "parentUuid": "0acacf4d_f2fedb28",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "835c589a77117219bc7494c88d3a5d738284971c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd622e2a_27904d8c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-18T02:01:07Z",
       "side": 1,
       "message": "IIUC, this should prevent a name collision between the source and stub version of a library. Do we also need to make a change in build/make so that rdep Make modules link against stubs with subName `.apiimport`?",
+      "range": {
+        "startLine": 631,
+        "startChar": 1,
+        "endLine": 631,
+        "endChar": 50
+      },
+      "revId": "835c589a77117219bc7494c88d3a5d738284971c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2cf247_5f6f8725",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-18T07:37:13Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure for now, probably because internal cc modules are all defined in soong. I expect we can revisit this once we find any certain case.",
+      "parentUuid": "dd622e2a_27904d8c",
       "range": {
         "startLine": 631,
         "startChar": 1,
