@@ -69,6 +69,47 @@
       "parentUuid": "73f2155d_9d1ac57f",
       "revId": "665c3b051c4b01af20390f080aebecf8b918f63a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1596d2b5_f968af76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-08-18T12:16:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4714438a_56b27844",
+      "revId": "665c3b051c4b01af20390f080aebecf8b918f63a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208e0800_7d38c959",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-08-18T12:16:58Z",
+      "side": 1,
+      "message": "DeviceProperties aren\u0027t specific to java_sdk_library, right? Which goes slightly against the commit description? Do we want this on java_library, android_app, etc?\n\nYes, you are not saying \"only\" java_sdk_library, but that\u0027s how I interpreted it and was slightly surprised.",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 28
+      },
+      "revId": "665c3b051c4b01af20390f080aebecf8b918f63a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
