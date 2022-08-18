@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7a4dc9_72417ff9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-18T10:21:00Z",
+      "side": 1,
+      "message": "If you don\u0027t mind I will look into what is needed to add them to `LOCAL_ADDITIONAL_CHECKED_MODULE` when possible in a follow up change.",
+      "revId": "df5c85c758e8d13fdb91094a752e0fe071f8ddb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

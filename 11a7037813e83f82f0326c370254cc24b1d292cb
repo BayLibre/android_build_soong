@@ -16,6 +16,24 @@
       "message": "It would be better to add these to `LOCAL_ADDITIONAL_CHECKED_MODULE`, which would make them run for mma too.",
       "revId": "11a7037813e83f82f0326c370254cc24b1d292cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92faf6b9_f25caa7a",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-18T10:21:00Z",
+      "side": 1,
+      "message": "The difficulty with adding it to that is it requires a module to be defined in .mk and not all modules do that. e.g. if you run `m art.module.public.api` without this change it will fail because it does not define a module in .mk (no AndroidMkEntries returned) because make has no equivalent to a java_sdk_library. Other java_sdk_library modules do define an mk module by virtue of the embedded java_library but `art.module.public.api` does not build that because it is api_only.\n\nI purposely made this change here so it would work whether or not a module defined a .mk module to try and ensure consistent behaviour across all modules.",
+      "parentUuid": "996d516b_8d7d8b43",
+      "revId": "11a7037813e83f82f0326c370254cc24b1d292cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
