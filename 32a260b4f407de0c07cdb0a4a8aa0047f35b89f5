@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2adf57be_18738396",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-18T17:50:39Z",
+      "side": 1,
+      "message": "LGTM, just a nit about the name of \"run_apexer\" - name it something more specific to dcla preprocessing?",
+      "revId": "32a260b4f407de0c07cdb0a4a8aa0047f35b89f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ca666a_13da563c",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-18T17:50:39Z",
+      "side": 1,
+      "message": "\"the\"? will there be more than one dcla?",
+      "range": {
+        "startLine": 195,
+        "startChar": 20,
+        "endLine": 195,
+        "endChar": 21
+      },
+      "revId": "32a260b4f407de0c07cdb0a4a8aa0047f35b89f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
