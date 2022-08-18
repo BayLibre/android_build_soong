@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ec9972_26433eb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-18T11:47:36Z",
+      "side": 1,
+      "message": "I\u0027ll hold off submitting this to avoid conflicts with https://r.android.com/2186600.",
+      "revId": "f67336834b727f99c9f7419ce0df0c1bdc8bfa06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
