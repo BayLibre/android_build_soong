@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5462131c_08254b52",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-18T10:21:19Z",
+      "side": 1,
+      "message": "I originally did something like that but it did not work and then I realized that it was because the AndroidMkEntries of SdkLibrary is only called when the java_sdk_library is not part of an APEX. When it is part of an APEX that method is not called (because CreateApexVariations hides the platform variant from make and java libraries hide their apex variant from make as well). Instead the apex is responsible for creating the .mk module for the java library. So, I would have had to find a way to tunnel the default files through the APEX.\n\nThat seemed like a bad idea and it was at that point that I thought about trying to generalize it in a similar way to how Bazel does it. Which is how I ended up here.",
+      "parentUuid": "233d28d6_bb4185cd",
+      "revId": "22714ec5ae6309fea60747eefa27742c5eccf50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e2638d76_e8630c4b",
