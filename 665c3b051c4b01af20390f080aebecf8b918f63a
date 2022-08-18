@@ -134,6 +134,30 @@
       },
       "revId": "665c3b051c4b01af20390f080aebecf8b918f63a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c78b737_73094158",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-08-18T13:55:08Z",
+      "side": 1,
+      "message": "I guess my main concern here whether this is a potential source of tech debt? Would people start using it on java_library more widely? Ideally, only java_sdk_library should be involved with hiddenapis, but I guess we aren\u0027t there.",
+      "parentUuid": "d0ba3df2_dca514ea",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 28
+      },
+      "revId": "665c3b051c4b01af20390f080aebecf8b918f63a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
