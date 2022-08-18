@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "736021b7_dc016d3d",
+        "filename": "android/paths.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 1953,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-18T15:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "633f875c_a8fc85fc",
+      "range": {
+        "startLine": 1953,
+        "startChar": 5,
+        "endLine": 1953,
+        "endChar": 13
+      },
+      "revId": "4de10b5af9ceaf09977a240adec3fa389984966f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db4554e3_007c2a6e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-18T14:30:45Z",
       "side": 1,
       "message": "would `PathForTesting` work here?",
+      "range": {
+        "startLine": 1966,
+        "startChar": 0,
+        "endLine": 1968,
+        "endChar": 1
+      },
+      "revId": "4de10b5af9ceaf09977a240adec3fa389984966f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98be6712_7a9f81cd",
+        "filename": "android/paths.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 1968,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-18T15:28:13Z",
+      "side": 1,
+      "message": "Yep, somehow didn\u0027t see that when I was writing this.",
+      "parentUuid": "db4554e3_007c2a6e",
       "range": {
         "startLine": 1966,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c41ccabb_c24fae3e",
+        "filename": "android/paths.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 1970,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-18T15:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "883e2a96_9d8eb754",
+      "range": {
+        "startLine": 1970,
+        "startChar": 5,
+        "endLine": 1970,
+        "endChar": 24
+      },
+      "revId": "4de10b5af9ceaf09977a240adec3fa389984966f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a7692be_3852b701",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-18T14:30:45Z",
       "side": 1,
       "message": "optional, perhaps as a future cleanup, could we create all include flags in `genAidlIncludeFlags` rather than creating some here and in others in `genAidlIncludeFlags`, requiring clarification that `genAidlIncludeFlags` only adds flags for includes not in `includeDirs` ?",
+      "range": {
+        "startLine": 839,
+        "startChar": 1,
+        "endLine": 839,
+        "endChar": 75
+      },
+      "revId": "4de10b5af9ceaf09977a240adec3fa389984966f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fa880d5_da3da0f1",
+        "filename": "java/base.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-18T15:28:13Z",
+      "side": 1,
+      "message": "Filed a bug for this at b/243007265",
+      "parentUuid": "2a7692be_3852b701",
       "range": {
         "startLine": 839,
         "startChar": 1,
