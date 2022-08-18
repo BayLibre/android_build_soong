@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf0fd4a1_32025fc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2022-08-18T18:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2adf57be_18738396",
+      "revId": "32a260b4f407de0c07cdb0a4a8aa0047f35b89f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7ca666a_13da563c",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-18T17:50:39Z",
       "side": 1,
       "message": "\"the\"? will there be more than one dcla?",
+      "range": {
+        "startLine": 195,
+        "startChar": 20,
+        "endLine": 195,
+        "endChar": 21
+      },
+      "revId": "32a260b4f407de0c07cdb0a4a8aa0047f35b89f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f21c1d6f_5685fd20",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2022-08-18T18:40:51Z",
+      "side": 1,
+      "message": "yes, there are two DCLA. One for big android and one for android go.",
+      "parentUuid": "e7ca666a_13da563c",
       "range": {
         "startLine": 195,
         "startChar": 20,
