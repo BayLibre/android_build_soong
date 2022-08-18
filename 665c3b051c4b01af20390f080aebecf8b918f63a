@@ -110,6 +110,30 @@
       },
       "revId": "665c3b051c4b01af20390f080aebecf8b918f63a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0ba3df2_dca514ea",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-18T13:23:55Z",
+      "side": 1,
+      "message": "Well spotted.\n\nWe don\u0027t need it now and I haven\u0027t tested it on java_library but it might be useful. e.g. We currently have hidden_api properties in the special \"coverage\" block in bootclasspath_fragment. That is used in art/build/boot to add extra packages provided by \"jacocoagent\" when building a coverage build. We could instead move that list of packages to the \"jacocoagent\" library definition itself.",
+      "parentUuid": "208e0800_7d38c959",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 28
+      },
+      "revId": "665c3b051c4b01af20390f080aebecf8b918f63a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
