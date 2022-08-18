@@ -34,6 +34,24 @@
       "parentUuid": "996d516b_8d7d8b43",
       "revId": "11a7037813e83f82f0326c370254cc24b1d292cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d23491_43c456cb",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-18T13:39:49Z",
+      "side": 1,
+      "message": "Also, adding `LOCAL_ADDITIONAL_CHECKED_MODULE` hits the issue I mentioned in https://r.android.com/2185622 which is that I would need some special handling in APEX as it generates the .mk modules for its contents.",
+      "parentUuid": "92faf6b9_f25caa7a",
+      "revId": "11a7037813e83f82f0326c370254cc24b1d292cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
