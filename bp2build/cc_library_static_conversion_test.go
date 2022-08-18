@@ -15,12 +15,12 @@
 package bp2build
 
 import (
+	"fmt"
+	"testing"
+
 	"android/soong/android"
 	"android/soong/cc"
 	"android/soong/genrule"
-	"fmt"
-
-	"testing"
 )
 
 const (
@@ -1442,12 +1442,14 @@ func TestCcLibraryStaticProto(t *testing.T) {
 	srcs: ["foo.proto"],
 	proto: {
 		export_proto_headers: true,
+		include_dirs: ["external/protobuf/src"],
 	},
 	include_build_directory: false,
 }`,
 		ExpectedBazelTargets: []string{
 			makeBazelTarget("proto_library", "foo_proto", AttrNameToString{
 				"srcs": `["foo.proto"]`,
+				"deps": `["//external/protobuf:libprotobuf-proto"]`,
 			}), makeBazelTarget("cc_lite_proto_library", "foo_cc_proto_lite", AttrNameToString{
 				"deps": `[":foo_proto"]`,
 			}), makeBazelTarget("cc_library_static", "foo", AttrNameToString{

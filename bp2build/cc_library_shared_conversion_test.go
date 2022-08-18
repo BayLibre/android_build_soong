@@ -436,12 +436,14 @@ func TestCcLibrarySharedProto(t *testing.T) {
 	srcs: ["foo.proto"],
 	proto: {
 		export_proto_headers: true,
+		include_dirs: ["external/protobuf/src"],
 	},
 	include_build_directory: false,
 }`,
 		ExpectedBazelTargets: []string{
 			makeBazelTarget("proto_library", "foo_proto", AttrNameToString{
 				"srcs": `["foo.proto"]`,
+				"deps": `["//external/protobuf:libprotobuf-proto"]`,
 			}), makeBazelTarget("cc_lite_proto_library", "foo_cc_proto_lite", AttrNameToString{
 				"deps": `[":foo_proto"]`,
 			}), makeBazelTarget("cc_library_shared", "foo", AttrNameToString{
