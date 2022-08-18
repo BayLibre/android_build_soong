@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f61c55_9fd72dc6",
+        "filename": "java/java_test.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1739,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-18T15:30:43Z",
+      "side": 1,
+      "message": "looks like a missed rename",
+      "range": {
+        "startLine": 1739,
+        "startChar": 1,
+        "endLine": 1739,
+        "endChar": 12
+      },
+      "revId": "0c5ee4a81a04474c766f946767c7db90a4a9b3a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
