@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad45fa4e_2939b61d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-08-18T22:53:14Z",
+      "side": 1,
+      "message": "This need not be reverted.  The revert in aosp/2189735 should suffice.",
+      "revId": "95347db2411b4dc7cc6a7d6ce99b18a39db4e05e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
