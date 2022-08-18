@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96fef0b0_3068ff63",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-08-18T15:48:51Z",
+      "side": 1,
+      "message": "Since we now have DCLAApexRule and apexRule, I think this is okay. My concern was that this is confusing for ordinary apexes.",
+      "parentUuid": "45c8b6f8_9a9c378c",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 10
+      },
+      "revId": "3e5f04ec9ce233ce75397a5889904a18255e23b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81ac2e18_641c3e1e",
