@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4634f3aa_68c073db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-19T17:41:11Z",
+      "side": 1,
+      "message": "Sigh; it\u0027s a mess. They both mean the same thing. We/I used latest in Mainline SDK builds because current was/is already used there for the version but now that we no longer support versioned snapshots they are now basically the same thing.",
+      "parentUuid": "67ec6f61_8ba773eb",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "33accf8680497ee7e596ca11d5b0d943fe26dfc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccb1ba6d_dcaf78ee",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22eb97c5_3e59c2bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-19T17:41:11Z",
+      "side": 1,
+      "message": "For representing the LATEST build_release (in mainline_module_sdks.py terms). Otherwise, when we build snapshots for the \"LATEST\" we filter out libraries which set min_sdk_version: \"current\" (either directly or if min_sdk_version is not set then it uses sdk_version: \"current\"). That is a problem because the sdk snapshot code treats \"LATEST\" as being \"Tiramisu\" and \"Tiramisu\" \u003c \"current\". So, a library with min_sdk_version: \"current\" is treated as not being supported on LATEST (Tiramisu) and so is excluded.\n\nI know that setting min_sdk_version: \"current\" is not something that is done for updatable mainline modules but it is used for other libraries, e.g. \"framework-bluetooth\" (which was updatable but was downgraded to non-updatable cs/android/packages/modules/Bluetooth/framework/Android.bp?l\u003d7). It is also used by libraries used in other (non-mainline) sdk platform modules like i18n.",
+      "parentUuid": "ccb1ba6d_dcaf78ee",
+      "revId": "33accf8680497ee7e596ca11d5b0d943fe26dfc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b5af4eb_6c73c567",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-08-19T15:37:07Z",
       "side": 1,
       "message": "FutureApiLevelInt which is 10000 is the usual value for current",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 23
+      },
+      "revId": "33accf8680497ee7e596ca11d5b0d943fe26dfc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da539cf5_dcc2bcae",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-19T17:41:11Z",
+      "side": 1,
+      "message": "This does not map onto ApiLevel.number, this is just the order within the list of buildRelease objects created here. I will however update the documentation for this to make it clearer what is going on here.",
+      "parentUuid": "0b5af4eb_6c73c567",
       "range": {
         "startLine": 107,
         "startChar": 12,
