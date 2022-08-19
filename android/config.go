@@ -68,6 +68,23 @@ type Config struct {
 	*config
 }
 
+type BazelBuildMode int
+
+// Bazel-related build modes.
+const (
+	// Don't use bazel at all during module analysis.
+	NoBazel BazelBuildMode = iota
+
+	// Use bazel during analysis of many allowlisted build modules. The allowlist
+	// is considered a "developer mode" allowlist, as some modules may be
+	// allowlisted on an experimental basis.
+	BazelDevMode
+
+	// Use bazel during analysis of build modules from an allowlist carefully
+	// curated by the build team to be proven stable.
+	BazelProdMode
+)
+
 // SoongOutDir returns the build output directory for the configuration.
 func (c Config) SoongOutDir() string {
 	return c.soongOutDir
@@ -346,7 +363,7 @@ func NullConfig(outDir, soongOutDir string) Config {
 
 // NewConfig creates a new Config object. The srcDir argument specifies the path
 // to the root source directory. It also loads the config file, if found.
-func NewConfig(moduleListFile string, runGoTests bool, outDir, soongOutDir string, availableEnv map[string]string) (Config, error) {
+func NewConfig(moduleListFile string, runGoTests bool, bazelBuildMode BazelBuildMode, outDir, soongOutDir string, availableEnv map[string]string) (Config, error) {
 	// Make a config with default options.
 	config := &config{
 		ProductVariablesFileName: filepath.Join(soongOutDir, productVariablesFileName),
@@ -443,7 +460,13 @@ func NewConfig(moduleListFile string, runGoTests bool, outDir, soongOutDir strin
 		config.AndroidFirstDeviceTarget = FirstTarget(config.Targets[Android], "lib64", "lib32")[0]
 	}
 
-	config.BazelContext, err = NewBazelContext(config)
+	var bazelContext BazelContext
+	if bazelBuildMode == NoBazel {
+		bazelContext = noopBazelContext{}
+	} else {
+		bazelContext, err = NewBazelContext(config, bazelBuildMode == BazelProdMode)
+	}
+	config.BazelContext = bazelContext
 	config.bp2buildPackageConfig = getBp2BuildAllowList()
 
 	return Config{config}, err
@@ -625,9 +648,7 @@ func (c *config) DeviceName() string {
 // DeviceProduct returns the current product target. There could be multiple of
 // these per device type.
 //
-// NOTE: Do not base conditional logic on this value. It may break product
-//
-//	inheritance.
+// NOTE: Do not base conditional logic on this value. It may break product inheritance.
 func (c *config) DeviceProduct() string {
 	return *c.productVariables.DeviceProduct
 }

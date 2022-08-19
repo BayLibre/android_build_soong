@@ -577,4 +577,9 @@ var (
 		"prebuilt_android-arch-paging-common-nodeps",
 		"prebuilt_android-arch-room-common-nodeps",
 	}
+
+	ProdMixedBuildsEnabledList = []string{
+		// This list left intentionally empty for now. Add specific module names
+		// to have them built by Bazel in Prod Mixed Builds mode.
+	}
 )

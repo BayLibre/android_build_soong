@@ -145,6 +145,10 @@ type BazelContext interface {
 	// Returns true if bazel is enabled for the given configuration.
 	BazelEnabled() bool
 
+	// Returns true if bazel is enabled in "prod mode" (a limited allowlisting
+	// of modules to be bazel-enabled, which are proven stable for use).
+	ProdMode() bool
+
 	// Returns the bazel output base (the root directory for all bazel intermediate outputs).
 	OutputBase() string
 
@@ -183,6 +187,10 @@ type bazelContext struct {
 
 	// Depsets which should be used for Bazel's build statements.
 	depsets []bazel.AqueryDepset
+
+	// If true, use a restricted mixed builds allowlist which is proven correct.
+	// (False implies "experimental" mode).
+	prodMode bool
 }
 
 var _ BazelContext = &bazelContext{}
@@ -231,6 +239,10 @@ func (m MockBazelContext) InvokeBazel(_ Config) error {
 
 func (m MockBazelContext) BazelEnabled() bool {
 	return true
+}
+
+func (m MockBazelContext) ProdMode() bool {
+	return false
 }
 
 func (m MockBazelContext) OutputBase() string { return m.OutputBaseDir }
@@ -315,6 +327,10 @@ func (m noopBazelContext) OutputBase() string {
 	return ""
 }
 
+func (m noopBazelContext) ProdMode() bool {
+	return false
+}
+
 func (n noopBazelContext) BazelEnabled() bool {
 	return false
 }
@@ -327,13 +343,7 @@ func (m noopBazelContext) AqueryDepsets() []bazel.AqueryDepset {
 	return []bazel.AqueryDepset{}
 }
 
-func NewBazelContext(c *config) (BazelContext, error) {
-	// TODO(cparsons): Assess USE_BAZEL=1 instead once "mixed Soong/Bazel builds"
-	// are production ready.
-	if !c.IsEnvTrue("USE_BAZEL_ANALYSIS") {
-		return noopBazelContext{}, nil
-	}
-
+func NewBazelContext(c *config, prodMode bool) (BazelContext, error) {
 	p, err := bazelPathsFromConfig(c)
 	if err != nil {
 		return nil, err
@@ -342,6 +352,7 @@ func NewBazelContext(c *config) (BazelContext, error) {
 		bazelRunner: &builtinBazelRunner{},
 		paths:       p,
 		requests:    make(map[cqueryKey]bool),
+		prodMode:    prodMode,
 	}, nil
 }
 
@@ -384,6 +395,10 @@ func bazelPathsFromConfig(c *config) (*bazelPaths, error) {
 
 func (p *bazelPaths) BazelMetricsDir() string {
 	return p.metricsDir
+}
+
+func (context *bazelContext) ProdMode() bool {
+	return context.prodMode
 }
 
 func (context *bazelContext) BazelEnabled() bool {
