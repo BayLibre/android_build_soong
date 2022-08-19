@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac994ed_d288f079",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-19T11:39:51Z",
+      "side": 1,
+      "message": "LGTM modulo adding a unit test for the property",
+      "revId": "af41bc13da0a8b529b0e8d7fca5a6e9354a0f816",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
