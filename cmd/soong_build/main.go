@@ -84,6 +84,8 @@ func init() {
 	flag.StringVar(&bp2buildMarker, "bp2build_marker", "", "If set, run bp2build, touch the specified marker file then exit")
 	flag.StringVar(&cmdlineArgs.OutFile, "o", "build.ninja", "the Ninja file to output")
 	flag.BoolVar(&cmdlineArgs.EmptyNinjaFile, "empty-ninja-file", false, "write out a 0-byte ninja file")
+	flag.BoolVar(&cmdlineArgs.BazelMode, "bazel-mode", false, "write out a 0-byte ninja file")
+	flag.BoolVar(&cmdlineArgs.BazelModeDev, "bazel-mode-dev", false, "write out a 0-byte ninja file")
 
 	// Flags that probably shouldn't be flags of soong_build but we haven't found
 	// the time to remove them yet
@@ -121,7 +123,15 @@ func newContext(configuration android.Config) *android.Context {
 }
 
 func newConfig(availableEnv map[string]string) android.Config {
-	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, runGoTests, outDir, soongOutDir, availableEnv)
+	var bazelBuildMode android.BazelBuildMode
+	if cmdlineArgs.BazelModeDev {
+		bazelBuildMode = android.BazelDevMode
+	} else if cmdlineArgs.BazelMode {
+		bazelBuildMode = android.BazelProdMode
+	} else {
+		bazelBuildMode = android.NoBazel
+	}
+	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, runGoTests, bazelBuildMode, outDir, soongOutDir, availableEnv)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)

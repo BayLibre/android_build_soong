@@ -213,16 +213,16 @@ type bp2BuildConversionAllowlist struct {
 	// in the synthetic Bazel workspace.
 	keepExistingBuildFile map[string]bool
 
-	// Per-module allowlist to always opt modules in of both bp2build and mixed builds.
-	// These modules are usually in directories with many other modules that are not ready for
-	// conversion.
+	// Per-module allowlist to always opt modules in of both bp2build and Bazel Dev Mode mixed
+	// builds. These modules are usually in directories with many other modules that are not ready
+	// for conversion.
 	//
 	// A module can either be in this list or its directory allowlisted entirely
 	// in bp2buildDefaultConfig, but not both at the same time.
 	moduleAlwaysConvert map[string]bool
 
-	// Per-module-type allowlist to always opt modules in to both bp2build and mixed builds
-	// when they have the same type as one listed.
+	// Per-module-type allowlist to always opt modules in to both bp2build and
+	// Bazel Dev Mode mixed builds when they have the same type as one listed.
 	moduleTypeAlwaysConvert map[string]bool
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
@@ -235,6 +235,11 @@ type bp2BuildConversionAllowlist struct {
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
 	// still be generated via bp2build.
 	mixedBuildsDisabled map[string]bool
+
+	// Per-module allowlist for Bazel Prod Mode mixed builds. In order to properly
+	// build, modules listed here (along with their transitive dependencies), must
+	// be bp2build-enabled.
+	prodMixedBuildsEnabled map[string]bool
 }
 
 // NewBp2BuildAllowlist creates a new, empty bp2BuildConversionAllowlist
@@ -242,6 +247,7 @@ type bp2BuildConversionAllowlist struct {
 func NewBp2BuildAllowlist() bp2BuildConversionAllowlist {
 	return bp2BuildConversionAllowlist{
 		allowlists.Bp2BuildConfig{},
+		map[string]bool{},
 		map[string]bool{},
 		map[string]bool{},
 		map[string]bool{},
@@ -335,6 +341,18 @@ func (a bp2BuildConversionAllowlist) SetMixedBuildsDisabledList(mixedBuildsDisab
 	return a
 }
 
+// SetMixedBuildsDisabledList copies the entries from mixedBuildsDisabled into the allowlist
+func (a bp2BuildConversionAllowlist) SetProdMixedBuildsEnabled(prodMixedBuildsEnabled []string) bp2BuildConversionAllowlist {
+	if a.prodMixedBuildsEnabled == nil {
+		a.prodMixedBuildsEnabled = map[string]bool{}
+	}
+	for _, m := range prodMixedBuildsEnabled {
+		a.prodMixedBuildsEnabled[m] = true
+	}
+
+	return a
+}
+
 var bp2BuildAllowListKey = NewOnceKey("Bp2BuildAllowlist")
 var bp2buildAllowlist OncePer
 
@@ -346,7 +364,8 @@ func getBp2BuildAllowList() bp2BuildConversionAllowlist {
 			SetModuleTypeAlwaysConvertList(allowlists.Bp2buildModuleTypeAlwaysConvertList).
 			SetModuleDoNotConvertList(allowlists.Bp2buildModuleDoNotConvertList).
 			SetCcLibraryStaticOnlyList(allowlists.Bp2buildCcLibraryStaticOnlyList).
-			SetMixedBuildsDisabledList(allowlists.MixedBuildsDisabledList)
+			SetMixedBuildsDisabledList(allowlists.MixedBuildsDisabledList).
+			SetProdMixedBuildsEnabled(allowlists.ProdMixedBuildsEnabledList)
 	}).(bp2BuildConversionAllowlist)
 }
 
@@ -412,7 +431,12 @@ func mixedBuildPossible(ctx BaseModuleContext) bool {
 		// variants of a cc_library.
 		return false
 	}
-	return !getBp2BuildAllowList().mixedBuildsDisabled[ctx.Module().Name()]
+	if ctx.Config().BazelContext.ProdMode() {
+		return getBp2BuildAllowList().prodMixedBuildsEnabled[ctx.Module().Name()]
+	} else {
+		// Use Bazel Dev Mode allowlists.
+		return !getBp2BuildAllowList().mixedBuildsDisabled[ctx.Module().Name()]
+	}
 }
 
 // ConvertedToBazel returns whether this module has been converted (with bp2build or manually) to Bazel.
