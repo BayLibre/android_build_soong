@@ -3669,6 +3669,7 @@ const (
 	sharedLibrary
 	headerLibrary
 	testBin // testBinary already declared
+	ndkLibrary
 )
 
 func (c *Module) typ() moduleType {
@@ -3705,6 +3706,8 @@ func (c *Module) typ() moduleType {
 			return staticLibrary
 		}
 		return sharedLibrary
+	} else if c.isNDKStubLibrary() {
+		return ndkLibrary
 	}
 	return unknownType
 }
@@ -3745,6 +3748,8 @@ func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		} else {
 			sharedOrStaticLibraryBp2Build(ctx, c, false)
 		}
+	case ndkLibrary:
+		ndkLibraryBp2build(ctx, c)
 	}
 }
 
