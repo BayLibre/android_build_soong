@@ -107,3 +107,35 @@ cc_object {
 	expectedOutputFiles := []string{"outputbase/execroot/__main__/bazel_out.o"}
 	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
 }
+
+func TestCcObjectPrefixSymbols(t *testing.T) {
+	ctx := PrepareForIntegrationTestWithCc.RunTestWithBp(t, `
+		cc_object {
+			name: "foo",
+			srcs: ["baz.o"],
+			prefix_symbols: "bar",
+		}`)
+
+	foo := ctx.ModuleForTests("foo", "android_arm64_armv8-a")
+	objcopy := foo.Rule("objcopy")
+	args := objcopy.Args["args"]
+	if g, w := args, "--prefix-symbols=bar"; g != w {
+		t.Errorf("wanted objcopy args %q, got %q", w, g)
+	}
+}
+
+func TestCcObjectKeepGlobalSymbols(t *testing.T) {
+	ctx := PrepareForIntegrationTestWithCc.RunTestWithBp(t, `
+		cc_object {
+			name: "foo",
+			srcs: ["baz.o"],
+			keep_global_symbols: ["bar", "baz"],
+		}`)
+
+	foo := ctx.ModuleForTests("foo", "android_arm64_armv8-a")
+	objcopy := foo.Rule("objcopy")
+	args := objcopy.Args["args"]
+	if g, w := args, "--keep-global-symbol=bar --keep-global-symbol=baz"; g != w {
+		t.Errorf("wanted objcopy args %q, got %q", w, g)
+	}
+}

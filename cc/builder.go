@@ -117,13 +117,13 @@ var (
 		},
 		"arCmd", "arObjFlags", "arObjs", "arLibFlags", "arLibs")
 
-	// Rule to run objcopy --prefix-symbols (to prefix all symbols in a file with a given string).
-	prefixSymbols = pctx.AndroidStaticRule("prefixSymbols",
+	// Rule to run objcopy.
+	objcopy = pctx.AndroidStaticRule("objcopy",
 		blueprint.RuleParams{
-			Command:     "$objcopyCmd --prefix-symbols=${prefix} ${in} ${out}",
+			Command:     "$objcopyCmd ${args} ${in} ${out}",
 			CommandDeps: []string{"$objcopyCmd"},
 		},
-		"objcopyCmd", "prefix")
+		"objcopyCmd", "args")
 
 	_ = pctx.SourcePathVariable("stripPath", "build/soong/scripts/strip.sh")
 	_ = pctx.SourcePathVariable("xzCmd", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/xz")
@@ -1041,13 +1041,30 @@ func transformBinaryPrefixSymbols(ctx android.ModuleContext, prefix string, inpu
 	objcopyCmd := "${config.ClangBin}/llvm-objcopy"
 
 	ctx.Build(pctx, android.BuildParams{
-		Rule:        prefixSymbols,
+		Rule:        objcopy,
 		Description: "prefix symbols " + outputFile.Base(),
 		Output:      outputFile,
 		Input:       inputFile,
 		Args: map[string]string{
 			"objcopyCmd": objcopyCmd,
-			"prefix":     prefix,
+			"args":       "--prefix-symbols=" + prefix,
+		},
+	})
+}
+
+// Generate a rule for running objcopy --keep-global-symbols on a binary
+func transformBinaryKeepGlobalSymbols(ctx android.ModuleContext, symbols []string, inputFile android.Path,
+	flags builderFlags, outputFile android.WritablePath) {
+
+	objcopyCmd := "${config.ClangBin}/llvm-objcopy"
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        objcopy,
+		Description: "keep global symbols " + outputFile.Base(),
+		Output:      outputFile,
+		Input:       inputFile,
+		Args: map[string]string{
+			"objcopyCmd": objcopyCmd,
+			"args":       android.JoinWithPrefix(symbols, "--keep-global-symbol="),
 		},
 	})
 }
