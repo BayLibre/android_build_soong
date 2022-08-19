@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79db9dc4_55296286",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4179,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-19T20:26:19Z",
+      "side": 1,
+      "message": "Updating to 21 means libandroid_support doesn\u0027t get used and this line has to be removed.",
+      "revId": "5ae7806a9743562278552dfb29d4b122ae3f9c2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
