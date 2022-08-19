@@ -16,6 +16,24 @@
       "message": "why not have this squashed to the parent CL?",
       "revId": "9ae019cc76e9f7866e68631a8714891da8a11d1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea1c23e6_2c5115a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-19T15:37:47Z",
+      "side": 1,
+      "message": "what do you mean? if you\u0027re referring to the other CL in this topic, they are in different projects, but will be submitted simultaneously.",
+      "parentUuid": "19e9a3ea_2831e419",
+      "revId": "9ae019cc76e9f7866e68631a8714891da8a11d1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
