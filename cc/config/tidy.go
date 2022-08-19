@@ -39,6 +39,8 @@ var (
 		"-cert-err33-c",
 		// http://b/241125373
 		"-bugprone-unchecked-optional-access",
+		// new clang-tidy abort with r469901, r469200, but not in r469079
+		"-bugprone-forwarding-reference-overload",
 	}
 
 	// Some clang-tidy checks are included in some tidy_checks_as_errors lists,
