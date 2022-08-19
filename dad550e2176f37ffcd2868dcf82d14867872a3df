@@ -16,6 +16,24 @@
       "message": "IIUC, we could be comparing current (current) vs. previous (33) ABI, so using prevVersion + 1 wouldn\u0027t work? How about let the caller pass in the current version string?",
       "revId": "dad550e2176f37ffcd2868dcf82d14867872a3df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0cbd2e3_12793377",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-19T04:56:11Z",
+      "side": 1,
+      "message": "The current version here denotes the future version of current source code. It\u0027s always prevVersion + 1.\nI think I will change the name of this variable to sourceVersion.",
+      "parentUuid": "5235c14b_e56907ad",
+      "revId": "dad550e2176f37ffcd2868dcf82d14867872a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
