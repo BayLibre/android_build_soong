@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "918bf89b_62502709",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-19T20:45:51Z",
+      "side": 1,
+      "message": "Unrelated to this patch, but global data like this should generally be attached to the context to avoid collisions between tests run in parallel.",
+      "revId": "42a49f1278b50b6cd4971f9d40505a278461154e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b0fe24_f2985572",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-19T20:45:51Z",
+      "side": 1,
+      "message": "Unrelated to this patch, but this information is already available and shouldn\u0027t be duplicated here.  api_levels.go has a list of the released API levels, and Config.PlatformVersionActiveCodenames() gives the list of unreleased codenames that are known in the current build.",
+      "revId": "42a49f1278b50b6cd4971f9d40505a278461154e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d203a6a_ca30f0aa",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-19T20:45:51Z",
+      "side": 1,
+      "message": "Other places hardcode 10000 for this",
+      "range": {
+        "startLine": 117,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "42a49f1278b50b6cd4971f9d40505a278461154e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
