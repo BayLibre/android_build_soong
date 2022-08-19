@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63705bb1_6a8f397f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-19T14:53:13Z",
+      "side": 1,
+      "message": "I almost wished the allowlist were chosen once based on cmd line args and there were no need for checking which bazel mode was on afterwards.\n\nE.g. it\u0027s unclear why ShouldConvertWithBp2build() didn\u0027t need to change in this CL.",
+      "revId": "cbfc6d95917d569d26699603c298f24601dde11f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9baa51ec_df41914d",
+        "filename": "android/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-19T14:53:13Z",
+      "side": 1,
+      "message": "nit: so this map is the only field relevant for prod mode and the rest of the maps are only relevant for dev mode?\nMaybe two separate structs may be visually more obvious?\nE.g.\n```\ntype bp2BuildConversionAllowlistProd struct {\n  prodMixexBuildEnabled map[string]string\n}\ntype bp2BuildConversionAllowlistDev struct {\n  defaultConfig allowlists.Bp2BuildConfig\n  ...\n}\ntype bp2BuildConversionAllowlist struct {\n  bp2BuildConversionAllowlistProd\n  bp2BuildConversionAllowlistDev\n}\n```",
+      "revId": "cbfc6d95917d569d26699603c298f24601dde11f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cec565c_baa8138b",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-19T14:53:13Z",
+      "side": 1,
+      "message": "nit: any particular reason a \"enum\" returning method is not preferable?",
+      "revId": "cbfc6d95917d569d26699603c298f24601dde11f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
