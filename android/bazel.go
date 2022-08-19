@@ -235,6 +235,8 @@ type bp2BuildConversionAllowlist struct {
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
 	// still be generated via bp2build.
 	mixedBuildsDisabled map[string]bool
+
+	prodMixedBuildsEnabled map[string]bool
 }
 
 // NewBp2BuildAllowlist creates a new, empty bp2BuildConversionAllowlist
@@ -242,6 +244,7 @@ type bp2BuildConversionAllowlist struct {
 func NewBp2BuildAllowlist() bp2BuildConversionAllowlist {
 	return bp2BuildConversionAllowlist{
 		allowlists.Bp2BuildConfig{},
+		map[string]bool{},
 		map[string]bool{},
 		map[string]bool{},
 		map[string]bool{},
@@ -335,6 +338,18 @@ func (a bp2BuildConversionAllowlist) SetMixedBuildsDisabledList(mixedBuildsDisab
 	return a
 }
 
+// SetMixedBuildsDisabledList copies the entries from mixedBuildsDisabled into the allowlist
+func (a bp2BuildConversionAllowlist) SetProdMixedBuildsEnabled(prodMixedBuildsEnabled []string) bp2BuildConversionAllowlist {
+	if a.prodMixedBuildsEnabled == nil {
+		a.prodMixedBuildsEnabled = map[string]bool{}
+	}
+	for _, m := range prodMixedBuildsEnabled {
+		a.prodMixedBuildsEnabled[m] = true
+	}
+
+	return a
+}
+
 var bp2BuildAllowListKey = NewOnceKey("Bp2BuildAllowlist")
 var bp2buildAllowlist OncePer
 
@@ -346,7 +361,8 @@ func getBp2BuildAllowList() bp2BuildConversionAllowlist {
 			SetModuleTypeAlwaysConvertList(allowlists.Bp2buildModuleTypeAlwaysConvertList).
 			SetModuleDoNotConvertList(allowlists.Bp2buildModuleDoNotConvertList).
 			SetCcLibraryStaticOnlyList(allowlists.Bp2buildCcLibraryStaticOnlyList).
-			SetMixedBuildsDisabledList(allowlists.MixedBuildsDisabledList)
+			SetMixedBuildsDisabledList(allowlists.MixedBuildsDisabledList).
+			SetProdMixedBuildsEnabled(allowlists.ProdMixedBuildsEnabledList)
 	}).(bp2BuildConversionAllowlist)
 }
 
@@ -411,6 +427,9 @@ func mixedBuildPossible(ctx BaseModuleContext) bool {
 		// since mixed builds would generally rely on both static and shared
 		// variants of a cc_library.
 		return false
+	}
+	if ctx.Config().BazelContext.ProdMode() {
+		return getBp2BuildAllowList().prodMixedBuildsEnabled[ctx.Module().Name()]
 	}
 	return !getBp2BuildAllowList().mixedBuildsDisabled[ctx.Module().Name()]
 }
