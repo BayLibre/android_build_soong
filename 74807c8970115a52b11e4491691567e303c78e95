@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4062540_78c1f299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-19T17:38:57Z",
+      "side": 1,
+      "message": "Removed from topic as this needs to be submitted and cherry picked into tm-mainline-prod before the packages/modules/Connectivity change can be tested as that is automerged into tm-mainline-prod which is why this is failing in tm-mainline-prod. The packages/modules/Connectivity changes are being merged there but not the build/soong changes.",
+      "revId": "74807c8970115a52b11e4491691567e303c78e95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
