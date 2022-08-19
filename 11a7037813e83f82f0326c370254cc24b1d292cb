@@ -52,6 +52,24 @@
       "parentUuid": "92faf6b9_f25caa7a",
       "revId": "11a7037813e83f82f0326c370254cc24b1d292cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979eb2d9_3cac063e",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-19T17:01:18Z",
+      "side": 1,
+      "message": "I worry that this is going to add a bunch of complexity, without really solving your underlying problem.  When embedded in Make, Soong is not responsible for the phony targets, and adding it here could cause confusion later if Soong and Make disagree on phony names.  It also doesn\u0027t help most use cases, as the phonies for module names are only used when listed on the command line, and not during checkbuild, mma, etc.  That\u0027s probably fine for this specific use case, but doesn\u0027t make sense for other future users of DefaultInfoProvider.\n\nLeaving aside DefaultInfoProvider, looking at b/234113632 is a possible fix to make the java_sdk_library jar have a validation dependency on checkapi?  I think that would work as long as updateapi doesn\u0027t depend on the java_sdk_library jar.",
+      "parentUuid": "a3d23491_43c456cb",
+      "revId": "11a7037813e83f82f0326c370254cc24b1d292cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
