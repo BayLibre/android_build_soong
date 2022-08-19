@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c292cd_39e01156",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-19T01:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "015e6dfe_7c006e0c",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 9,
+        "endChar": 79
+      },
+      "revId": "3b93688103b10537b5bb6a381a269fffc476327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75574c68_a13ec9eb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-16T14:19:42Z",
       "side": 1,
       "message": "Why not just convert every license module in the allowlisted directory?",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 30
+      },
+      "revId": "3b93688103b10537b5bb6a381a269fffc476327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3fd9ebf_a84ea21f",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-19T01:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75574c68_a13ec9eb",
       "range": {
         "startLine": 295,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85cd9c08_ee111ba6",
+        "filename": "bp2build/package_conversion_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-19T01:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "466c721a_deaa2f26",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3b93688103b10537b5bb6a381a269fffc476327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "498b0a9d_ccc47e30",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b73f33_f5ae2de1",
+        "filename": "bp2build/package_conversion_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-19T01:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "498b0a9d_ccc47e30",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "3b93688103b10537b5bb6a381a269fffc476327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43000d35_29d698f9",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-08-16T14:19:42Z",
       "side": 1,
       "message": "Remove or add a TODO?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "3b93688103b10537b5bb6a381a269fffc476327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5a3268b_0fc36308",
+        "filename": "bp2build/package_conversion_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-19T01:25:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43000d35_29d698f9",
       "range": {
         "startLine": 87,
         "startChar": 0,
