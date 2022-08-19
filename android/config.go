@@ -69,6 +69,23 @@ type Config struct {
 	*config
 }
 
+type BazelBuildMode int
+
+// Bazel-related build modes.
+const (
+	// Don't use bazel at all during module analysis.
+	NoBazel BazelBuildMode = iota
+
+	// Use bazel during analysis of many allowlisted build modules. The allowlist
+	// is considered a "developer mode" allowlist, as some modules may be
+	// allowlisted on an experimental basis.
+	BazelDevMode
+
+	// Use bazel during analysis of build modules from an allowlist carefully
+	// curated by the build team to be proven stable.
+	BazelProdMode
+)
+
 // SoongOutDir returns the build output directory for the configuration.
 func (c Config) SoongOutDir() string {
 	return c.soongOutDir
@@ -448,23 +465,9 @@ func TestArchConfig(buildDir string, env map[string]string, bp string, fs map[st
 	return testConfig
 }
 
-// ConfigForAdditionalRun is a config object which is "reset" for another
-// bootstrap run. Only per-run data is reset. Data which needs to persist across
-// multiple runs in the same program execution is carried over (such as Bazel
-// context or environment deps).
-func ConfigForAdditionalRun(c Config) (Config, error) {
-	newConfig, err := NewConfig(c.moduleListFile, c.runGoTests, c.outDir, c.soongOutDir, c.env)
-	if err != nil {
-		return Config{}, err
-	}
-	newConfig.BazelContext = c.BazelContext
-	newConfig.envDeps = c.envDeps
-	return newConfig, nil
-}
-
 // NewConfig creates a new Config object. The srcDir argument specifies the path
 // to the root source directory. It also loads the config file, if found.
-func NewConfig(moduleListFile string, runGoTests bool, outDir, soongOutDir string, availableEnv map[string]string) (Config, error) {
+func NewConfig(moduleListFile string, runGoTests bool, bazelBuildMode BazelBuildMode, outDir, soongOutDir string, availableEnv map[string]string) (Config, error) {
 	// Make a config with default options.
 	config := &config{
 		ProductVariablesFileName: filepath.Join(soongOutDir, productVariablesFileName),
@@ -561,7 +564,13 @@ func NewConfig(moduleListFile string, runGoTests bool, outDir, soongOutDir strin
 		config.AndroidFirstDeviceTarget = FirstTarget(config.Targets[Android], "lib64", "lib32")[0]
 	}
 
-	config.BazelContext, err = NewBazelContext(config)
+	var bazelContext BazelContext
+	if bazelBuildMode == NoBazel {
+		bazelContext = noopBazelContext{}
+	} else {
+		bazelContext, err = NewBazelContext(config, bazelBuildMode == BazelProdMode)
+	}
+	config.BazelContext = bazelContext
 	config.bp2buildPackageConfig = getBp2BuildAllowList()
 
 	return Config{config}, err
@@ -744,7 +753,8 @@ func (c *config) DeviceName() string {
 // these per device type.
 //
 // NOTE: Do not base conditional logic on this value. It may break product
-//       inheritance.
+//
+//	inheritance.
 func (c *config) DeviceProduct() string {
 	return *c.productVariables.DeviceProduct
 }
@@ -1746,7 +1756,6 @@ func (c *config) IgnorePrefer32OnDevice() bool {
 //   - "com.android.art:core-oj"
 //   - "platform:framework"
 //   - "system_ext:foo"
-//
 type ConfiguredJarList struct {
 	// A list of apex components, which can be an apex name,
 	// or special names like "platform" or "system_ext".
