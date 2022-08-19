@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7421224e_e7d2a8dd",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-19T13:24:32Z",
+      "side": 1,
+      "message": "Why was this added to `bp2buildParseStaticOrSharedProperties`? `bp2buildParseStaticOrSharedProperties` is to handle values `StaticOrSharedProperties` structs, `Suffix` is in `LibraryProperties`.\n\n[here](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/bp2build.go;l\u003d649;drc\u003dd6f5967a634d1aadbd6c548b7f1584761f6e38c4) we\u0027re already handling `LibraryProperties` in conversion -- the CL where that was added https://android-review.googlesource.com/c/platform/build/soong/+/1940900 may be a good one to look at for an example.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 5
+      },
+      "revId": "55578081394a41b8aee7c663f6c7bedc36ac97fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
