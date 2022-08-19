@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67ec6f61_8ba773eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-08-19T15:37:40Z",
+      "side": 1,
+      "message": "nit: current? Latest in Mainline SDK builds means latest available, not current, right?",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "33accf8680497ee7e596ca11d5b0d943fe26dfc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ccb1ba6d_dcaf78ee",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
