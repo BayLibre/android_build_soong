@@ -88,6 +88,24 @@
       "parentUuid": "979eb2d9_3cac063e",
       "revId": "11a7037813e83f82f0326c370254cc24b1d292cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82a523d_6bf10409",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-19T20:23:51Z",
+      "side": 1,
+      "message": "I have no idea if or how the roboleaf team plans to implement checkbuild.  Right now every module does have a phony target for checkbuild, but that is a separate implementation detail from the phony used for the module name.",
+      "parentUuid": "1a674bbd_1743d4d5",
+      "revId": "11a7037813e83f82f0326c370254cc24b1d292cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
