@@ -96,7 +96,6 @@ const (
 
 	// Use bazel during analysis of build modules from an allowlist carefully
 	// curated by the build team to be proven stable.
-	// TODO(cparsons): Implement this mode.
 	BazelProdMode
 )
 
@@ -678,9 +677,7 @@ func (c *config) DeviceName() string {
 // DeviceProduct returns the current product target. There could be multiple of
 // these per device type.
 //
-// NOTE: Do not base conditional logic on this value. It may break product
-//
-//	inheritance.
+// NOTE: Do not base conditional logic on this value. It may break product inheritance.
 func (c *config) DeviceProduct() string {
 	return *c.productVariables.DeviceProduct
 }

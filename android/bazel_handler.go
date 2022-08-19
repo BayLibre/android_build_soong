@@ -343,10 +343,6 @@ func (m noopBazelContext) AqueryDepsets() []bazel.AqueryDepset {
 }
 
 func NewBazelContext(c *config) (BazelContext, error) {
-	if !c.IsMixedBuildsEnabled() {
-		return noopBazelContext{}, nil
-	}
-
 	p, err := bazelPathsFromConfig(c)
 	if err != nil {
 		return nil, err
