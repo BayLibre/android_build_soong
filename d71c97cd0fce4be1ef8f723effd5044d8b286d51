@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd3e2949_febf6968",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-19T16:42:05Z",
+      "side": 1,
+      "message": "I did that in go/aog/2175949",
+      "parentUuid": "b7f689d8_9cc2e63c",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 36
+      },
+      "revId": "d71c97cd0fce4be1ef8f723effd5044d8b286d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37c3fad5_9b87e5c7",
@@ -71,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5360f3cd_b1d79152",
+        "filename": "android/license.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-19T16:42:05Z",
+      "side": 1,
+      "message": "Added TODO.",
+      "parentUuid": "8f450c07_9649ef5e",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "d71c97cd0fce4be1ef8f723effd5044d8b286d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5058e6f_d0f90ff4",
@@ -84,6 +132,30 @@
       "writtenOn": "2022-08-16T14:10:07Z",
       "side": 1,
       "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d71c97cd0fce4be1ef8f723effd5044d8b286d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45674b4_a470745f",
+        "filename": "bp2build/license_conversion_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-08-19T16:42:05Z",
+      "side": 1,
+      "message": "I think there is a need to update copyright years.",
+      "parentUuid": "c5058e6f_d0f90ff4",
       "range": {
         "startLine": 1,
         "startChar": 13,
