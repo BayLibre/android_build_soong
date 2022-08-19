@@ -92,6 +92,9 @@ type ObjectLinkerProperties struct {
 	// if set, add an extra objcopy --prefix-symbols= step
 	Prefix_symbols *string
 
+	// if set, add an extra objcopy --keep-global-symbols= step.
+	Keep_global_symbols []string
+
 	// if set, the path to a linker script to pass to ld -r when combining multiple object files.
 	Linker_script *string `android:"path,arch_variant"`
 
@@ -281,6 +284,13 @@ func (object *objectLinker) link(ctx ModuleContext,
 		}
 
 		transformObjsToObj(ctx, objs.objFiles, deps.StaticLibs, deps.WholeStaticLibs, builderFlags, output, flags.LdFlagsDeps)
+	}
+
+	if len(object.Properties.Keep_global_symbols) > 0 {
+		output := android.PathForModuleOut(ctx, "keep_global_symbols", ctx.ModuleName()+objectExtension)
+		input := outputFile
+		transformBinaryKeepGlobalSymbols(ctx, object.Properties.Keep_global_symbols, input, builderFlags, output)
+		outputFile = output
 	}
 
 	ctx.CheckbuildFile(outputFile)
