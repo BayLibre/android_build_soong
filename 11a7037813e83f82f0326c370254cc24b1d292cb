@@ -70,6 +70,24 @@
       "parentUuid": "a3d23491_43c456cb",
       "revId": "11a7037813e83f82f0326c370254cc24b1d292cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a674bbd_1743d4d5",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-19T17:36:01Z",
+      "side": 1,
+      "message": "The only confusion between make and Soong in terms of names is going to be whether to use the base name or the module name or the context name (including renames). By default AndroidMkEntries uses the base name. Which is what I use here. If there is a difference then it might cause confusion. It would also mean that prebuilt and source default files are both built from the same target. Using the module name (with prebuilt_ prefix) would avoid that at the cost of having developers know to use the prefix if they wanted to build the prebuilt modules.\n\nHow will checkbuild work in Bazel? Presumably all the checkbuild dependencies will be default files provided by the Bazel rule and \"bazel build //...\" is the same as specifying all targets on the command line so that would create all the default files for all the modules.\n\nIf so, then maybe checkbuild could be done as follows:\n1. Every module has a phony target that lists all the files added via \"BaseContext.CheckBuildFile(...)\". I did see some code that might create an OS specific checkbuild so they might need a phony target for each OS and then another phony target that depends on them.\n2. checkbuild depends on the phony targets instead of the checkbuild files directly.\n\nDitto with mm, mmm, etc.",
+      "parentUuid": "979eb2d9_3cac063e",
+      "revId": "11a7037813e83f82f0326c370254cc24b1d292cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
