@@ -878,6 +878,66 @@ func TestGenruleWithBazel(t *testing.T) {
 	android.AssertDeepEquals(t, "output deps", expectedOutputFiles, gen.outputDeps.Strings())
 }
 
+func TestGenruleWithGlobSrcs(t *testing.T) {
+	testcases := []struct {
+		name            string
+		bp              string
+		additionalFiles android.MockFS
+		expectedCmd     string
+	}{
+		{
+			name: "single file in directory with $ sign",
+			bp: `
+				genrule {
+					name: "gen",
+					srcs: ["inn*.txt"],
+					out: ["out.txt"],
+					cmd: "cp $(in) $(out)",
+				}
+				`,
+			additionalFiles: android.MockFS{"inn$1.txt": nil},
+			expectedCmd:     "cp 'inn$1.txt' __SBOX_SANDBOX_DIR__/out/out.txt",
+		},
+		{
+			name: "multiple file in directory with $ sign",
+			bp: `
+				genrule {
+					name: "gen",
+					srcs: ["inn*.txt"],
+					out: ["."],
+					cmd: "cp $(in) $(out)",
+				}
+				`,
+			additionalFiles: android.MockFS{"inn$1.txt": nil, "inn$2.txt": nil},
+			expectedCmd:     "cp 'inn$1.txt' 'inn$2.txt' __SBOX_SANDBOX_DIR__/out",
+		},
+		{
+			name: "file in directory with other shell unsafe character",
+			bp: `
+				genrule {
+					name: "gen",
+					srcs: ["inn*.txt"],
+					out: ["out.txt"],
+					cmd: "cp $(in) $(out)",
+				}
+				`,
+			additionalFiles: android.MockFS{"inn@1.txt": nil},
+			expectedCmd:     "cp 'inn@1.txt' __SBOX_SANDBOX_DIR__/out/out.txt",
+		},
+	}
+
+	for _, test := range testcases {
+		t.Run(test.name, func(t *testing.T) {
+			result := android.GroupFixturePreparers(
+				prepareForGenRuleTest,
+				android.FixtureMergeMockFs(test.additionalFiles),
+			).RunTestWithBp(t, test.bp)
+			gen := result.Module("gen", "").(*Module)
+			android.AssertStringEquals(t, "command", test.expectedCmd, gen.rawCommands[0])
+		})
+	}
+}
+
 type testTool struct {
 	android.ModuleBase
 	outputFile android.Path
