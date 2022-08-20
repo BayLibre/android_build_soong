@@ -878,6 +878,27 @@ func TestGenruleWithBazel(t *testing.T) {
 	android.AssertDeepEquals(t, "output deps", expectedOutputFiles, gen.outputDeps.Strings())
 }
 
+func TestGenruleWithGlobSrcs(t *testing.T) {
+	bp := `
+	genrule {
+		name: "foo",
+		srcs: ["inn*.txt"],
+		out: ["out.txt"],
+		cmd: "cp $(in) $(out)",
+	  }
+	`
+
+	result := android.GroupFixturePreparers(
+		prepareForGenRuleTest,
+		android.FixtureMergeMockFs(android.MockFS{"inn$1.txt": nil}),
+	).RunTestWithBp(t, bp)
+
+	gen := result.Module("foo", "").(*Module)
+
+	expectedCmd := "cp 'inn$1.txt' __SBOX_SANDBOX_DIR__/out/out.txt"
+	android.AssertStringEquals(t, "cmd", expectedCmd, gen.rawCommands[0])
+}
+
 type testTool struct {
 	android.ModuleBase
 	outputFile android.Path

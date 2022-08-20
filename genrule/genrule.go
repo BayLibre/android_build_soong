@@ -483,7 +483,7 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 				}
 				return paths[0], nil
 			case "in":
-				return strings.Join(cmd.PathsForInputs(srcFiles), " "), nil
+				return strings.Join(proptools.ShellEscapeList(cmd.PathsForInputs(srcFiles)), " "), nil
 			case "out":
 				var sandboxOuts []string
 				for _, out := range task.out {
@@ -976,9 +976,7 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 var Bool = proptools.Bool
 var String = proptools.String
 
-//
 // Defaults
-//
 type Defaults struct {
 	android.ModuleBase
 	android.DefaultsModuleBase
