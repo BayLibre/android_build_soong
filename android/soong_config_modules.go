@@ -4,7 +4,7 @@
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//     http://www.apache.org/licenses/LICENSE-2.0
+//   s  http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -63,95 +63,59 @@ type soongConfigModuleTypeImportProperties struct {
 //
 // For example, an Android.bp file could have:
 //
-//     soong_config_module_type_import {
-//         from: "device/acme/Android.bp",
-//         module_types: ["acme_cc_defaults"],
-//     }
+//	    soong_config_string_variable {
+//	        name: "board",
+//	        values: ["soc_a", "soc_b"],
+//	    }
 //
-//     acme_cc_defaults {
-//         name: "acme_defaults",
-//         cflags: ["-DGENERIC"],
-//         soong_config_variables: {
-//             board: {
-//                 soc_a: {
-//                     cflags: ["-DSOC_A"],
-//                 },
-//                 soc_b: {
-//                     cflags: ["-DSOC_B"],
-//                 },
-//                 conditions_default: {
-//                     cflags: ["-DSOC_DEFAULT"],
-//                 },
-//             },
-//             feature: {
-//                 cflags: ["-DFEATURE"],
-//                 conditions_default: {
-//                     cflags: ["-DFEATURE_DEFAULT"],
-//                 },
-//             },
-//             width: {
-//                 cflags: ["-DWIDTH=%s"],
-//                 conditions_default: {
-//                     cflags: ["-DWIDTH=DEFAULT"],
-//                 },
-//             },
-//         },
-//     }
+//	    acme_cc_defaults {
+//	        name: "acme_defaults",
+//	        cflags: ["-DGENERIC"],
+//	        soong_config_variables: {
+//	            board: {
+//	                soc_a: {
+//	                    cflags: ["-DSOC_A"],
+//	                },
+//	                soc_b: {
+//	                    cflags: ["-DSOC_B"],
+//	                },
+//	                conditions_default: {
+//	                    cflags: ["-DSOC_DEFAULT"],
+//	                },
+//	            },
+//	            feature: {
+//	                cflags: ["-DFEATURE"],
+//	                conditions_default: {
+//	                    cflags: ["-DFEATURE_DEFAULT"],
+//	                },
+//	            },
+//	            width: {
+//		               cflags: ["-DWIDTH=%s"],
+//	                conditions_default: {
+//	                    cflags: ["-DWIDTH=DEFAULT"],
+//	                },
+//	            },
+//	        },
+//	    }
 //
-//     cc_library {
-//         name: "libacme_foo",
-//         defaults: ["acme_defaults"],
-//         srcs: ["*.cpp"],
-//     }
-//
-// And device/acme/Android.bp could have:
-//
-//     soong_config_module_type {
-//         name: "acme_cc_defaults",
-//         module_type: "cc_defaults",
-//         config_namespace: "acme",
-//         variables: ["board"],
-//         bool_variables: ["feature"],
-//         value_variables: ["width"],
-//         properties: ["cflags", "srcs"],
-//     }
-//
-//     soong_config_string_variable {
-//         name: "board",
-//         values: ["soc_a", "soc_b", "soc_c"],
-//     }
+//	    cc_library {
+//	        name: "libacme_foo",
+//	        defaults: ["acme_defaults"],
+//	        srcs: ["*.cpp"],
+//	    }
 //
 // If an acme BoardConfig.mk file contained:
-//     $(call add_sonng_config_namespace, acme)
-//     $(call add_soong_config_var_value, acme, board, soc_a)
-//     $(call add_soong_config_var_value, acme, feature, true)
-//     $(call add_soong_config_var_value, acme, width, 200)
 //
-// Then libacme_foo would build with cflags "-DGENERIC -DSOC_A -DFEATURE -DWIDTH=200".
+//	SOONG_CONFIG_NAMESPACES += acme
+//	SOONG_CONFIG_acme += \
+//	    board \
+//	    feature \
 //
-// Alternatively, if acme BoardConfig.mk file contained:
+//	SOONG_CONFIG_acme_board := soc_a
+//	SOONG_CONFIG_acme_feature := true
+//	SOONG_CONFIG_acme_width := 200
 //
-//     SOONG_CONFIG_NAMESPACES += acme
-//     SOONG_CONFIG_acme += \
-//         board \
-//         feature \
-//
-//     SOONG_CONFIG_acme_feature := false
-//
-// Then libacme_foo would build with cflags:
-//   "-DGENERIC -DSOC_DEFAULT -DFEATURE_DEFAULT -DSIZE=DEFAULT".
-//
-// Similarly, if acme BoardConfig.mk file contained:
-//
-//     SOONG_CONFIG_NAMESPACES += acme
-//     SOONG_CONFIG_acme += \
-//         board \
-//         feature \
-//
-//     SOONG_CONFIG_acme_board := soc_c
-//
-// Then libacme_foo would build with cflags:
-//   "-DGENERIC -DSOC_DEFAULT -DFEATURE_DEFAULT -DSIZE=DEFAULT".
+// Then libacme_foo would build with cflags "-DGENERIC -DSOC_A -DFEATURE".
 
 func SoongConfigModuleTypeImportFactory() Module {
 	module := &soongConfigModuleTypeImport{}
@@ -382,7 +346,7 @@ func loadSoongConfigModuleTypeDefinition(ctx LoadHookContext, from string) map[s
 		defer r.Close()
 
 		mtDef, errs := soongconfig.Parse(r, from)
-		if ctx.Config().runningAsBp2Build {
+		if ctx.Config().BazelBuildMode == Bp2build {
 			ctx.Config().Bp2buildSoongConfigDefinitions.AddVars(*mtDef)
 		}
 
@@ -398,7 +362,7 @@ func loadSoongConfigModuleTypeDefinition(ctx LoadHookContext, from string) map[s
 		for name, moduleType := range mtDef.ModuleTypes {
 			factory := globalModuleTypes[moduleType.BaseModuleType]
 			if factory != nil {
-				factories[name] = configModuleFactory(factory, moduleType, ctx.Config().runningAsBp2Build)
+				factories[name] = configModuleFactory(factory, moduleType, ctx.Config().BazelBuildMode == Bp2build)
 			} else {
 				reportErrors(ctx, from,
 					fmt.Errorf("missing global module type factory for %q", moduleType.BaseModuleType))
