@@ -61,8 +61,6 @@ type soongConfigModuleTypeImportProperties struct {
 //                    the properties under `conditions_default` will be used. To specify that no
 //                    properties should be amended for `b`, you can set `b: {},`.
 //
-// For example, an Android.bp file could have:
-//
 //     soong_config_module_type_import {
 //         from: "device/acme/Android.bp",
 //         module_types: ["acme_cc_defaults"],
@@ -382,7 +380,7 @@ func loadSoongConfigModuleTypeDefinition(ctx LoadHookContext, from string) map[s
 		defer r.Close()
 
 		mtDef, errs := soongconfig.Parse(r, from)
-		if ctx.Config().runningAsBp2Build {
+		if ctx.Config().BazelBuildMode == Bp2build {
 			ctx.Config().Bp2buildSoongConfigDefinitions.AddVars(*mtDef)
 		}
 
@@ -398,7 +396,7 @@ func loadSoongConfigModuleTypeDefinition(ctx LoadHookContext, from string) map[s
 		for name, moduleType := range mtDef.ModuleTypes {
 			factory := globalModuleTypes[moduleType.BaseModuleType]
 			if factory != nil {
-				factories[name] = configModuleFactory(factory, moduleType, ctx.Config().runningAsBp2Build)
+				factories[name] = configModuleFactory(factory, moduleType, ctx.Config().BazelBuildMode == Bp2build)
 			} else {
 				reportErrors(ctx, from,
 					fmt.Errorf("missing global module type factory for %q", moduleType.BaseModuleType))
