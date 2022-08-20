@@ -63,143 +63,6 @@ type soongConfigModuleTypeImportProperties struct {
 //
 // For example, an Android.bp file could have:
 //
-//     soong_config_module_type_import {
-//         from: "device/acme/Android.bp",
-//         module_types: ["acme_cc_defaults"],
-//     }
-//
-//     acme_cc_defaults {
-//         name: "acme_defaults",
-//         cflags: ["-DGENERIC"],
-//         soong_config_variables: {
-//             board: {
-//                 soc_a: {
-//                     cflags: ["-DSOC_A"],
-//                 },
-//                 soc_b: {
-//                     cflags: ["-DSOC_B"],
-//                 },
-//                 conditions_default: {
-//                     cflags: ["-DSOC_DEFAULT"],
-//                 },
-//             },
-//             feature: {
-//                 cflags: ["-DFEATURE"],
-//                 conditions_default: {
-//                     cflags: ["-DFEATURE_DEFAULT"],
-//                 },
-//             },
-//             width: {
-//                 cflags: ["-DWIDTH=%s"],
-//                 conditions_default: {
-//                     cflags: ["-DWIDTH=DEFAULT"],
-//                 },
-//             },
-//         },
-//     }
-//
-//     cc_library {
-//         name: "libacme_foo",
-//         defaults: ["acme_defaults"],
-//         srcs: ["*.cpp"],
-//     }
-//
-// And device/acme/Android.bp could have:
-//
-//     soong_config_module_type {
-//         name: "acme_cc_defaults",
-//         module_type: "cc_defaults",
-//         config_namespace: "acme",
-//         variables: ["board"],
-//         bool_variables: ["feature"],
-//         value_variables: ["width"],
-//         properties: ["cflags", "srcs"],
-//     }
-//
-//     soong_config_string_variable {
-//         name: "board",
-//         values: ["soc_a", "soc_b", "soc_c"],
-//     }
-//
-// If an acme BoardConfig.mk file contained:
-//     $(call add_sonng_config_namespace, acme)
-//     $(call add_soong_config_var_value, acme, board, soc_a)
-//     $(call add_soong_config_var_value, acme, feature, true)
-//     $(call add_soong_config_var_value, acme, width, 200)
-//
-// Then libacme_foo would build with cflags "-DGENERIC -DSOC_A -DFEATURE -DWIDTH=200".
-//
-// Alternatively, if acme BoardConfig.mk file contained:
-//
-//     SOONG_CONFIG_NAMESPACES += acme
-//     SOONG_CONFIG_acme += \
-//         board \
-//         feature \
-//
-//     SOONG_CONFIG_acme_feature := false
-//
-// Then libacme_foo would build with cflags:
-//   "-DGENERIC -DSOC_DEFAULT -DFEATURE_DEFAULT -DSIZE=DEFAULT".
-//
-// Similarly, if acme BoardConfig.mk file contained:
-//
-//     SOONG_CONFIG_NAMESPACES += acme
-//     SOONG_CONFIG_acme += \
-//         board \
-//         feature \
-//
-//     SOONG_CONFIG_acme_board := soc_c
-//
-// Then libacme_foo would build with cflags:
-//   "-DGENERIC -DSOC_DEFAULT -DFEATURE_DEFAULT -DSIZE=DEFAULT".
-
-func SoongConfigModuleTypeImportFactory() Module {
-	module := &soongConfigModuleTypeImport{}
-
-	module.AddProperties(&module.properties)
-	AddLoadHook(module, func(ctx LoadHookContext) {
-		importModuleTypes(ctx, module.properties.From, module.properties.Module_types...)
-	})
-
-	initAndroidModuleBase(module)
-	return module
-}
-
-func (m *soongConfigModuleTypeImport) Name() string {
-	// The generated name is non-deterministic, but it does not
-	// matter because this module does not emit any rules.
-	return soongconfig.CanonicalizeToProperty(m.properties.From) +
-		"soong_config_module_type_import_" + fmt.Sprintf("%p", m)
-}
-
-func (*soongConfigModuleTypeImport) Nameless()                                 {}
-func (*soongConfigModuleTypeImport) GenerateAndroidBuildActions(ModuleContext) {}
-
-// Create dummy modules for soong_config_module_type and soong_config_*_variable
-
-type soongConfigModuleTypeModule struct {
-	ModuleBase
-	BazelModuleBase
-	properties soongconfig.ModuleTypeProperties
-}
-
-// soong_config_module_type defines module types with conditionals on Soong config
-// variables.  The new module type will exist for all modules after the definition
-// in an Android.bp file, and can be imported into other Android.bp files using
-// soong_config_module_type_import.
-//
-// Each soong_config_variable supports an additional value `conditions_default`. The properties
-// specified in `conditions_default` will only be used under the following conditions:
-//   bool variable: the variable is unspecified or not set to a true value
-//   value variable: the variable is unspecified
-//   string variable: the variable is unspecified or the variable is set to a string unused in the
-//                    given module. For example, string variable `test` takes values: "a" and "b",
-//                    if the module contains a property `a` and `conditions_default`, when test=b,
-//                    the properties under `conditions_default` will be used. To specify that no
-//                    properties should be amended for `b`, you can set `b: {},`.
-//
-// For example, an Android.bp file could have:
-//
 //     soong_config_module_type {
 //         name: "acme_cc_defaults",
 //         module_type: "cc_defaults",
@@ -261,6 +124,118 @@ type soongConfigModuleTypeModule struct {
 //     SOONG_CONFIG_acme_board := soc_a
 //     SOONG_CONFIG_acme_feature := true
 //     SOONG_CONFIG_acme_width := 200
+//
+// Then libacme_foo would build with cflags "-DGENERIC -DSOC_A -DFEATURE".
+
+func SoongConfigModuleTypeImportFactory() Module {
+	module := &soongConfigModuleTypeImport{}
+
+	module.AddProperties(&module.properties)
+	AddLoadHook(module, func(ctx LoadHookContext) {
+		importModuleTypes(ctx, module.properties.From, module.properties.Module_types...)
+	})
+
+	initAndroidModuleBase(module)
+	return module
+}
+
+func (m *soongConfigModuleTypeImport) Name() string {
+	// The generated name is non-deterministic, but it does not
+	// matter because this module does not emit any rules.
+	return soongconfig.CanonicalizeToProperty(m.properties.From) +
+		"soong_config_module_type_import_" + fmt.Sprintf("%p", m)
+}
+
+func (*soongConfigModuleTypeImport) Nameless()                                 {}
+func (*soongConfigModuleTypeImport) GenerateAndroidBuildActions(ModuleContext) {}
+
+// Create dummy modules for soong_config_module_type and soong_config_*_variable
+
+type soongConfigModuleTypeModule struct {
+	ModuleBase
+	BazelModuleBase
+	properties soongconfig.ModuleTypeProperties
+}
+
+// soong_config_module_type defines module types with conditionals on Soong config
+// variables.  The new module type will exist for all modules after the definition
+// in an Android.bp file, and can be imported into other Android.bp files using
+// soong_config_module_type_import.
+//
+// Each soong_config_variable supports an additional value `conditions_default`. The properties
+// specified in `conditions_default` will only be used under the following conditions:
+//
+//	bool variable: the variable is unspecified or not set to a true value
+//	value variable: the variable is unspecified
+//	string variable: the variable is unspecified or the variable is set to a string unused in the
+//	                 given module. For example, string variable `test` takes values: "a" and "b",
+//	                 if the module contains a property `a` and `conditions_default`, when test=b,
+//	                 the properties under `conditions_default` will be used. To specify that no
+//	                 properties should be amended for `b`, you can set `b: {},`.
+//
+// For example, an Android.bp file could have:
+//
+//	    soong_config_module_type {
+//	        name: "acme_cc_defaults",
+//	        module_type: "cc_defaults",
+//	        config_namespace: "acme",
+//	        variables: ["board"],
+//	        bool_variables: ["feature"],
+//	        value_variables: ["width"],
+//	        properties: ["cflags", "srcs"],
+//	    }
+//
+//	    soong_config_string_variable {
+//	        name: "board",
+//	        values: ["soc_a", "soc_b"],
+//	    }
+//
+//	    acme_cc_defaults {
+//	        name: "acme_defaults",
+//	        cflags: ["-DGENERIC"],
+//	        soong_config_variables: {
+//	            board: {
+//	                soc_a: {
+//	                    cflags: ["-DSOC_A"],
+//	                },
+//	                soc_b: {
+//	                    cflags: ["-DSOC_B"],
+//	                },
+//	                conditions_default: {
+//	                    cflags: ["-DSOC_DEFAULT"],
+//	                },
+//	            },
+//	            feature: {
+//	                cflags: ["-DFEATURE"],
+//	                conditions_default: {
+//	                    cflags: ["-DFEATURE_DEFAULT"],
+//	                },
+//	            },
+//	            width: {
+//		               cflags: ["-DWIDTH=%s"],
+//	                conditions_default: {
+//	                    cflags: ["-DWIDTH=DEFAULT"],
+//	                },
+//	            },
+//	        },
+//	    }
+//
+//	    cc_library {
+//	        name: "libacme_foo",
+//	        defaults: ["acme_defaults"],
+//	        srcs: ["*.cpp"],
+//	    }
+//
+// If an acme BoardConfig.mk file contained:
+//
+//	SOONG_CONFIG_NAMESPACES += acme
+//	SOONG_CONFIG_acme += \
+//	    board \
+//	    feature \
+//
+//	SOONG_CONFIG_acme_board := soc_a
+//	SOONG_CONFIG_acme_feature := true
+//	SOONG_CONFIG_acme_width := 200
 //
 // Then libacme_foo would build with cflags "-DGENERIC -DSOC_A -DFEATURE".
 func SoongConfigModuleTypeFactory() Module {
@@ -381,7 +356,7 @@ func loadSoongConfigModuleTypeDefinition(ctx LoadHookContext, from string) map[s
 		defer r.Close()
 
 		mtDef, errs := soongconfig.Parse(r, from)
-		if ctx.Config().runningAsBp2Build {
+		if ctx.Config().BazelBuildMode == Bp2build {
 			ctx.Config().Bp2buildSoongConfigDefinitions.AddVars(*mtDef)
 		}
 
@@ -397,7 +372,7 @@ func loadSoongConfigModuleTypeDefinition(ctx LoadHookContext, from string) map[s
 		for name, moduleType := range mtDef.ModuleTypes {
 			factory := globalModuleTypes[moduleType.BaseModuleType]
 			if factory != nil {
-				factories[name] = configModuleFactory(factory, moduleType, ctx.Config().runningAsBp2Build)
+				factories[name] = configModuleFactory(factory, moduleType, ctx.Config().BazelBuildMode == Bp2build)
 			} else {
 				reportErrors(ctx, from,
 					fmt.Errorf("missing global module type factory for %q", moduleType.BaseModuleType))
