@@ -165,7 +165,7 @@ func NewContext(config Config) *Context {
 }
 
 func (ctx *Context) SetRunningAsBp2build() {
-	ctx.config.runningAsBp2Build = true
+	ctx.config.BazelBuildMode = Bp2build
 }
 
 // RegisterForBazelConversion registers an alternate shadow pipeline of
