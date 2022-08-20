@@ -121,7 +121,7 @@ func newContext(configuration android.Config) *android.Context {
 }
 
 func newConfig(availableEnv map[string]string) android.Config {
-	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, runGoTests, outDir, soongOutDir, availableEnv)
+	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, bp2buildMarker != "", runGoTests, outDir, soongOutDir, availableEnv)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
@@ -221,22 +221,16 @@ func writeDepFile(outputFile string, eventHandler metrics.EventHandler, ninjaDep
 // or the actual Soong build for the build.ninja file. Returns the top level
 // output file of the specific activity.
 func doChosenActivity(ctx *android.Context, configuration android.Config, extraNinjaDeps []string, logDir string) string {
-	mixedModeBuild := configuration.BazelContext.BazelEnabled()
-	generateBazelWorkspace := bp2buildMarker != ""
 	generateQueryView := bazelQueryViewDir != ""
 	generateModuleGraphFile := moduleGraphFile != ""
 	generateDocFile := docFile != ""
 
-	if generateBazelWorkspace {
+	if configuration.BazelBuildMode == android.Bp2build {
 		// Run the alternate pipeline of bp2build mutators and singleton to convert
 		// Blueprint to BUILD files before everything else.
 		runBp2Build(configuration, extraNinjaDeps)
 		return bp2buildMarker
-	}
-
-	blueprintArgs := cmdlineArgs
-
-	if mixedModeBuild {
+	} else if configuration.IsMixedBuildsEnabled() {
 		runMixedModeBuild(configuration, ctx, extraNinjaDeps)
 	} else {
 		var stopBefore bootstrap.StopBefore
@@ -250,7 +244,7 @@ func doChosenActivity(ctx *android.Context, configuration android.Config, extraN
 			stopBefore = bootstrap.DoEverything
 		}
 
-		ninjaDeps := bootstrap.RunBlueprint(blueprintArgs, stopBefore, ctx.Context, configuration)
+		ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs, stopBefore, ctx.Context, configuration)
 		ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
 
 		globListFiles := writeBuildGlobsNinjaFile(ctx, configuration.SoongOutDir(), configuration)
