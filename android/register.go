@@ -165,7 +165,7 @@ func NewContext(config Config) *Context {
 }
 
 func (ctx *Context) SetRunningAsBp2build() {
-	ctx.config.runningAsBp2Build = true
+	ctx.config.BazelBuildMode = Bp2build
 }
 
 // RegisterForBazelConversion registers an alternate shadow pipeline of
@@ -259,19 +259,23 @@ type RegistrationContext interface {
 // Used to register build components from an init() method, e.g.
 //
 // init() {
-//   RegisterBuildComponents(android.InitRegistrationContext)
+//
+//	RegisterBuildComponents(android.InitRegistrationContext)
+//
 // }
 //
 // func RegisterBuildComponents(ctx android.RegistrationContext) {
-//   ctx.RegisterModuleType(...)
-//   ...
+//
+//	ctx.RegisterModuleType(...)
+//	...
+//
 // }
 //
 // Extracting the actual registration into a separate RegisterBuildComponents(ctx) function
 // allows it to be used to initialize test context, e.g.
 //
-//   ctx := android.NewTestContext(config)
-//   RegisterBuildComponents(ctx)
+//	ctx := android.NewTestContext(config)
+//	RegisterBuildComponents(ctx)
 var InitRegistrationContext RegistrationContext = &initRegistrationContext{
 	moduleTypes:       make(map[string]ModuleFactory),
 	singletonTypes:    make(map[string]SingletonFactory),
