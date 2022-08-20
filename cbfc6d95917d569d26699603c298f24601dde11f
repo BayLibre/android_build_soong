@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8155645a_78fa4c58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-20T19:24:05Z",
+      "side": 1,
+      "message": "OK, I\u0027m leaving this CL blocked on aosp/2190392, where I try to help this situation.\n\nDespite my best efforts, we can\u0027t do at the level of plugins; plugins will need to continue to add values to specific constants.\nThis is because plugins need to be able to change these allowlist constants during init(), at which point we haven\u0027t actually done flag parsing, so we don\u0027t know the allowlist mode yet.\n\nHowever, we can still take some steps in the correct direction. PTAL at aosp/2190392.\n\nI\u0027ll work on merging this with those changes afterwards.",
+      "parentUuid": "f2c4ad8c_ffb0f38e",
+      "revId": "cbfc6d95917d569d26699603c298f24601dde11f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9baa51ec_df41914d",
         "filename": "android/bazel.go",
         "patchSetId": 4
