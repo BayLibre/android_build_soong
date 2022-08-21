@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1787610_f91c0c24",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-21T12:15:52Z",
+      "side": 1,
+      "message": "Individual tests do not modify this list, the test\u0027s init() function does add extra items to the list but that should not cause any problems when running tests in parallel.",
+      "parentUuid": "918bf89b_62502709",
+      "revId": "42a49f1278b50b6cd4971f9d40505a278461154e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1b0fe24_f2985572",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a15aa8b_2fde6d8e",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-21T12:15:52Z",
+      "side": 1,
+      "message": "It is possible that this could be replaced with ApiLevel but there are a number of issues with that:\n1. This does not map directly to an ApiLevel - e.g. S covers both 31 and 32.\n2. There is no hard coded ApiLevel for the various levels needed by this.\n3. The mapping from code names to ApiLevel differs between AOSP and internal - at least for some period of time.",
+      "parentUuid": "f1b0fe24_f2985572",
+      "revId": "42a49f1278b50b6cd4971f9d40505a278461154e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d203a6a_ca30f0aa",
         "filename": "sdk/build_release.go",
         "patchSetId": 2
@@ -48,6 +84,30 @@
       "writtenOn": "2022-08-19T20:45:51Z",
       "side": 1,
       "message": "Other places hardcode 10000 for this",
+      "range": {
+        "startLine": 117,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "42a49f1278b50b6cd4971f9d40505a278461154e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d496b08_d1a4587a",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-08-21T12:15:52Z",
+      "side": 1,
+      "message": "The number isn\u0027t the ApiLevel. It is just the position in the dessertBuildReleases.",
+      "parentUuid": "7d203a6a_ca30f0aa",
       "range": {
         "startLine": 117,
         "startChar": 12,
