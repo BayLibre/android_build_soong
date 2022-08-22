@@ -52,6 +52,24 @@
       "parentUuid": "dfa03b7b_16f0ed43",
       "revId": "1f3ddaf6c2921fbd27e024cdf35b20580e4b707d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cde88ae_056bb403",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-22T23:28:59Z",
+      "side": 1,
+      "message": "Understood. Will update other cases and add corresponding test cases.",
+      "parentUuid": "d4674855_b313a62a",
+      "revId": "1f3ddaf6c2921fbd27e024cdf35b20580e4b707d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
