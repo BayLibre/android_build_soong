@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8175d7f7_6d3061db",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-22T17:50:11Z",
+      "side": 1,
+      "message": "oops sorry, I meant document this as a comment in genrule/genrule.go",
+      "parentUuid": "eb0b7fe1_1c4442ee",
+      "range": {
+        "startLine": 486,
+        "startChar": 34,
+        "endLine": 486,
+        "endChar": 49
+      },
+      "revId": "f48dd5a2ab740a4dbd71c43ed130177fd5c9deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c12fda5e_b8204da9",
         "filename": "genrule/genrule_test.go",
         "patchSetId": 1
