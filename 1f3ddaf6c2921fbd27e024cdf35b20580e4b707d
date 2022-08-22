@@ -34,6 +34,24 @@
       "parentUuid": "d6b6ea08_2d8920cb",
       "revId": "1f3ddaf6c2921fbd27e024cdf35b20580e4b707d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4674855_b313a62a",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-22T23:05:15Z",
+      "side": 1,
+      "message": "If you have `srcs: [\"**/*\"]` and it finds a file with `$` in the name you can reference the file with `$(in)`, `$(location **/*)`, or `$(locations **/*)`.  If you have `out: [\"$\"]` you can reference it with `$(out)`.",
+      "parentUuid": "dfa03b7b_16f0ed43",
+      "revId": "1f3ddaf6c2921fbd27e024cdf35b20580e4b707d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
