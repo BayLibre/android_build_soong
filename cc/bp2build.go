@@ -281,6 +281,8 @@ type baseAttributes struct {
 	compilerAttributes
 	linkerAttributes
 
+	// A combination of compilerAttributes.features and linkerAttributes.features
+	features        bazel.StringListAttribute
 	protoDependency *bazel.LabelAttribute
 }
 
@@ -322,6 +324,8 @@ type compilerAttributes struct {
 
 	stubsSymbolFile *string
 	stubsVersions   bazel.StringListAttribute
+
+	features bazel.StringListAttribute
 }
 
 type filterOutFn func(string) bool
@@ -384,6 +388,13 @@ func (ca *compilerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversi
 
 	ca.absoluteIncludes.SetSelectValue(axis, config, props.Include_dirs)
 	ca.localIncludes.SetSelectValue(axis, config, localIncludeDirs)
+
+	instructionSet := proptools.StringDefault(props.Instruction_set, "")
+	if instructionSet == "arm" {
+		ca.features.SetSelectValue(axis, config, []string{"arm_isa_arm", "-arm_isa_thumb"})
+	} else if instructionSet != "" && instructionSet != "thumb" {
+		ctx.ModuleErrorf("Unknown value for instruction_set: %s", instructionSet)
+	}
 
 	// In Soong, cflags occur on the command line before -std=<val> flag, resulting in the value being
 	// overridden. In Bazel we always allow overriding, via flags; however, this can cause
@@ -685,9 +696,13 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 	(&compilerAttrs).srcs.Add(&convertedLSrcs.srcName)
 	(&compilerAttrs).cSrcs.Add(&convertedLSrcs.cSrcName)
 
+	features := compilerAttrs.features.Clone().Append(linkerAttrs.features)
+	features.DeduplicateAxesFromBase()
+
 	return baseAttributes{
 		compilerAttrs,
 		linkerAttrs,
+		*features,
 		protoDep.protoDep,
 	}
 }
