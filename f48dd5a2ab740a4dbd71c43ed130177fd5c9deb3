@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38781596_0d839a8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-22T17:41:22Z",
+      "side": 1,
+      "message": "You are right. I will correct the message in the next patchset.",
+      "parentUuid": "11825091_aa7f9207",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "f48dd5a2ab740a4dbd71c43ed130177fd5c9deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "291effc2_804ae02d",
         "filename": "genrule/genrule.go",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb0b7fe1_1c4442ee",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-22T17:41:22Z",
+      "side": 1,
+      "message": "ShellEscape is necessary here, which is creating the command for the build action,  as it wraps the input paths with a single quote and thus prevents the $ sign being evaluated in shell. As the impact of this change is only limited to filepaths including $ sign, or potentially any filepaths containing [shell unsafe characters](https://source.corp.google.com/android/build/blueprint/proptools/escape.go;bpv\u003d1;bpt\u003d1;l\u003d67?q\u003dshellEscapeList%20p:%5Eandroid$\u0026m\u003d100\u0026det\u003dmat\u0026type\u003dcs\u0026gsn\u003dshellUnsafeChar\u0026gs\u003dkythe%3A%2F%2Fgoogleplex-android.googlesource.com%2Fcodesearch%2Fandroid%3Flang%3Dgo%3Fpath%3Dbuild%2Fblueprint%2Fproptools%23func%2520shellUnsafeChar) passed via glob, any pathfiles not containing such characters will not be affected with this change.",
+      "parentUuid": "291effc2_804ae02d",
+      "range": {
+        "startLine": 486,
+        "startChar": 34,
+        "endLine": 486,
+        "endChar": 49
+      },
+      "revId": "f48dd5a2ab740a4dbd71c43ed130177fd5c9deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c12fda5e_b8204da9",
         "filename": "genrule/genrule_test.go",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-22T17:22:03Z",
       "side": 1,
       "message": "Can you add another test case where there is an additional inn$2.txt file in the mock FS? e.g. the test case might assert that the cmd is\n```\n\u0027inn$1.txt\u0027 \u0027inn$2.txt\u0027 # single quote around each src\nand not\n\u0027inn$1.txt inn$2.txt\u0027 # single quotes around the joined srcs \n\n```",
+      "range": {
+        "startLine": 898,
+        "startChar": 0,
+        "endLine": 898,
+        "endChar": 65
+      },
+      "revId": "f48dd5a2ab740a4dbd71c43ed130177fd5c9deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe191dd5_924891b4",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-22T17:41:22Z",
+      "side": 1,
+      "message": "I will add the corresponding test case and create the patchset.",
+      "parentUuid": "c12fda5e_b8204da9",
       "range": {
         "startLine": 898,
         "startChar": 0,
