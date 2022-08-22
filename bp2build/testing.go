@@ -82,6 +82,7 @@ type Bp2buildTestCase struct {
 	ModuleTypeUnderTestFactory android.ModuleFactory
 	Blueprint                  string
 	ExpectedBazelTargets       []string
+	SkipStrictCheck            bool
 	Filesystem                 map[string]string
 	Dir                        string
 	// An error with a string contained within the string of the expected error
@@ -140,16 +141,45 @@ func RunBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.Regi
 	} else {
 		android.FailIfErrored(t, errs)
 	}
-	if actualCount, expectedCount := len(bazelTargets), len(tc.ExpectedBazelTargets); actualCount != expectedCount {
-		t.Errorf("%s: Expected %d bazel target (%s), got `%d`` (%s)",
-			tc.Description, expectedCount, tc.ExpectedBazelTargets, actualCount, bazelTargets)
+	var actual []string
+	for _, target := range bazelTargets {
+		actual = append(actual, target.content)
+	}
+	if tc.SkipStrictCheck {
+		nonStrictEqualityCheck(t, tc.Description, tc.ExpectedBazelTargets, actual)
 	} else {
-		for i, target := range bazelTargets {
-			if w, g := tc.ExpectedBazelTargets[i], target.content; w != g {
+		strictEqualityCheck(t, tc.Description, tc.ExpectedBazelTargets, actual)
+	}
+}
+
+// checks that len(expected) = len(actual) and corresponding elements are equal
+func strictEqualityCheck(t *testing.T, msg string, expected, actual []string) {
+	if actualCount, expectedCount := len(actual), len(expected); actualCount != expectedCount {
+		t.Errorf("%s: Expected %d bazel target (%s), got `%d`` (%s)",
+			msg, expectedCount, expected, actualCount, actual)
+	} else {
+		for i, g := range actual {
+			if w := expected[i]; w != g {
 				t.Errorf(
 					"%s: Expected generated Bazel target to be `%s`, got `%s`",
-					tc.Description, w, g)
+					msg, w, g)
 			}
+		}
+	}
+}
+
+// checks that expected is a subset of actual
+func nonStrictEqualityCheck(t *testing.T, msg string, expected, actual []string) {
+	for _, e := range expected {
+		found := false
+		for _, a := range actual {
+			if e == a {
+				found = true
+				break
+			}
+		}
+		if !found {
+			t.Errorf("%s: Expected generated Bazel target to be `%s`, found no match in `%v`", msg, e, actual)
 		}
 	}
 }
