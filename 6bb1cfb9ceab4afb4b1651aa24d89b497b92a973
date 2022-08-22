@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4676fb82_048c2463",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2022-08-22T06:21:58Z",
+      "side": 1,
+      "message": "This is not a high importance error for external projects. `-Wno-unqualified-std-cast-call` is enough.\n\nnit: keep the same comment style in this section.",
+      "range": {
+        "startLine": 248,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 39
+      },
+      "revId": "6bb1cfb9ceab4afb4b1651aa24d89b497b92a973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
