@@ -16,6 +16,24 @@
       "message": "If this is being escaped then all the other cases that return paths should also get escaped.",
       "revId": "1f3ddaf6c2921fbd27e024cdf35b20580e4b707d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa03b7b_16f0ed43",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-22T22:59:35Z",
+      "side": 1,
+      "message": "Acknowledged. Is this for consistency purpose? Because I cannot think of other cases than case \"in\" where filepath including $ will be passed in (via glob at src param in this case), as usage of invalid characters (including $) is restricted in bp.",
+      "parentUuid": "d6b6ea08_2d8920cb",
+      "revId": "1f3ddaf6c2921fbd27e024cdf35b20580e4b707d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
