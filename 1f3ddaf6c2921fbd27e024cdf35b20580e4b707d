@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6b6ea08_2d8920cb",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-22T22:30:13Z",
+      "side": 1,
+      "message": "If this is being escaped then all the other cases that return paths should also get escaped.",
+      "revId": "1f3ddaf6c2921fbd27e024cdf35b20580e4b707d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
