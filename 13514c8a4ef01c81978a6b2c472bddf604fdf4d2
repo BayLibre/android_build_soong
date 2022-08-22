@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c40276e_9f78b6b7",
+        "filename": "android/bazel.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-22T20:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e86399ae_0c01bd23",
+      "range": {
+        "startLine": 234,
+        "startChar": 46,
+        "endLine": 234,
+        "endChar": 49
+      },
+      "revId": "13514c8a4ef01c81978a6b2c472bddf604fdf4d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42c55bc8_e9bf5d46",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-22T12:44:06Z",
       "side": 1,
       "message": "There\u0027s a lot of negation used in this sentence. How about:\n\n\"Returns true if the specified module is in an allowlist for Mixed Builds dev or prod mode. A module should only be allowlisted if it has a Bazel definition (via bp2build or handcrafted) and satisfies MixedBuildBuildable.\"",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 69
+      },
+      "revId": "13514c8a4ef01c81978a6b2c472bddf604fdf4d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fc961d8_d7ecacac",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-22T20:24:49Z",
+      "side": 1,
+      "message": "That comment would be unfortunately inaccurate, as it implies that BazelAllowlisted should return false for such modules. It also implies that a module will be returned true if it\u0027s enabled for either mode. I\u0027m trying to keep the \"mode\" out of the desricption.\n\nI\u0027ve given rephrasing a shot. PTAL.",
+      "parentUuid": "42c55bc8_e9bf5d46",
       "range": {
         "startLine": 147,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e028fa75_ffdec15b",
+        "filename": "android/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-22T20:24:49Z",
+      "side": 1,
+      "message": "Done, though there\u0027s a little bit of strangeness to support USE_BAZEL_ANALYSIS for now.",
+      "parentUuid": "c6235f2a_d2fc6fbc",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 19
+      },
+      "revId": "13514c8a4ef01c81978a6b2c472bddf604fdf4d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "592c4198_84c12550",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "582b1f9a_eb932ff5",
+        "filename": "android/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-22T20:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "592c4198_84c12550",
+      "range": {
+        "startLine": 73,
+        "startChar": 23,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "13514c8a4ef01c81978a6b2c472bddf604fdf4d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fff8a2f6_60895f8a",
@@ -106,6 +202,24 @@
       "writtenOn": "2022-08-22T12:44:06Z",
       "side": 1,
       "message": "Can you dedupe the new enabled/disabled lists with these lists?",
+      "revId": "13514c8a4ef01c81978a6b2c472bddf604fdf4d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd282fd_20aa6132",
+        "filename": "android/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-22T20:24:49Z",
+      "side": 1,
+      "message": "The semantics of these lists are a little different. I\u0027ll try to make this obvious with comments.",
+      "parentUuid": "fff8a2f6_60895f8a",
       "revId": "13514c8a4ef01c81978a6b2c472bddf604fdf4d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
