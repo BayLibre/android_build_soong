@@ -143,6 +143,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8217265d_9761b37b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-22T18:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6be394fd_53688775",
+      "range": {
+        "startLine": 486,
+        "startChar": 34,
+        "endLine": 486,
+        "endChar": 49
+      },
+      "revId": "f48dd5a2ab740a4dbd71c43ed130177fd5c9deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c12fda5e_b8204da9",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "I will add the corresponding test case and create the patchset.",
       "parentUuid": "c12fda5e_b8204da9",
+      "range": {
+        "startLine": 898,
+        "startChar": 0,
+        "endLine": 898,
+        "endChar": 65
+      },
+      "revId": "f48dd5a2ab740a4dbd71c43ed130177fd5c9deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e1284b6_f952aecc",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-22T18:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe191dd5_924891b4",
       "range": {
         "startLine": 898,
         "startChar": 0,

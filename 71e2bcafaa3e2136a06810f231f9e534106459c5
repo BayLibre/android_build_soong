@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16491860_3d60d7be",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-22T18:31:40Z",
+      "side": 1,
+      "message": "nit: this var is probably not necessary; usage of `test.expectedCmd` in the subsequent line is equally readable",
+      "range": {
+        "startLine": 937,
+        "startChar": 0,
+        "endLine": 937,
+        "endChar": 34
+      },
+      "revId": "71e2bcafaa3e2136a06810f231f9e534106459c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
