@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11825091_aa7f9207",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-22T17:22:03Z",
+      "side": 1,
+      "message": "My understanding is that it is the shell that evaluates the $ sign",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "f48dd5a2ab740a4dbd71c43ed130177fd5c9deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "291effc2_804ae02d",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-22T17:22:03Z",
+      "side": 1,
+      "message": "nit: Leave a comment why a ShellEscape is necessary here?",
+      "range": {
+        "startLine": 486,
+        "startChar": 34,
+        "endLine": 486,
+        "endChar": 49
+      },
+      "revId": "f48dd5a2ab740a4dbd71c43ed130177fd5c9deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c12fda5e_b8204da9",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-22T17:22:03Z",
+      "side": 1,
+      "message": "Can you add another test case where there is an additional inn$2.txt file in the mock FS? e.g. the test case might assert that the cmd is\n```\n\u0027inn$1.txt\u0027 \u0027inn$2.txt\u0027 # single quote around each src\nand not\n\u0027inn$1.txt inn$2.txt\u0027 # single quotes around the joined srcs \n\n```",
+      "range": {
+        "startLine": 898,
+        "startChar": 0,
+        "endLine": 898,
+        "endChar": 65
+      },
+      "revId": "f48dd5a2ab740a4dbd71c43ed130177fd5c9deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
