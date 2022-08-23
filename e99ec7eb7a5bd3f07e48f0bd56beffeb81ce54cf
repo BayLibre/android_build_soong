@@ -39,6 +39,30 @@
       },
       "revId": "e99ec7eb7a5bd3f07e48f0bd56beffeb81ce54cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "175c7a2f_003573a3",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-23T20:28:38Z",
+      "side": 1,
+      "message": "It\u0027s also not a library, which makes the `_lib` suffix odd.",
+      "parentUuid": "e283e00e_d354727a",
+      "range": {
+        "startLine": 171,
+        "startChar": 35,
+        "endLine": 171,
+        "endChar": 39
+      },
+      "revId": "e99ec7eb7a5bd3f07e48f0bd56beffeb81ce54cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
