@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08d57150_a9342e42",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-08-23T16:37:31Z",
+      "side": 1,
+      "message": "Is there anything specific that occurs when it is unset that needs to be tested (other than the fact that everything still functions)? I\u0027m skeptical we would need to test such a case explicitly. This does raise the question, though, of how does the empty suffix case being tested here differ from the unset suffix case and why?",
+      "parentUuid": "a46336c2_9a9f5c71",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f05e223c_9fed30d0",
         "filename": "bp2build/cc_library_shared_conversion_test.go",
         "patchSetId": 20
@@ -66,6 +84,24 @@
       "writtenOn": "2022-08-12T20:40:34Z",
       "side": 1,
       "message": "(This comment is conflicted with the below comment in `cc/bp2build.go`.\n\nShouldn\u0027t the test look like either\n\n```\nmakeBazelTarget(\"cc_library_shared\", \"foo_shared\", AttrNameToString{\n  \"srcs_c\": `[\"foo.c\"]`,\n  \"suffix\": `\"-suf\"`\n})\n```\nif we\u0027re using suffix attribute.\n\nor\n\n```\nmakeBazelTarget(\"cc_library_shared\", \"foo_shared-suf\", AttrNameToString{\n  \"srcs_c\": `[\"foo.c\"]`,\n})\n```\nif we\u0027re not using suffix attribute. If we\u0027re not using suffix attribute, we do need to define it in `staticOrSharedAttributes` and also also the bazel macro.\n\nhttps://android-review.googlesource.com/c/platform/build/bazel/+/1999871/8/rules/cc/cc_library_shared.bzl#36",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1dd586_5cb445ce",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-08-23T16:37:31Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand what this comment is saying needs to be different about this test.",
+      "parentUuid": "6bb8259e_8c536cee",
       "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a731b69_e3ea9abf",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-08-23T16:37:31Z",
+      "side": 1,
+      "message": "Why this commented out section?",
+      "range": {
+        "startLine": 688,
+        "startChar": 24,
+        "endLine": 694,
+        "endChar": 9
+      },
+      "revId": "a800ba34e311f65feb7351322839024883b012d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
