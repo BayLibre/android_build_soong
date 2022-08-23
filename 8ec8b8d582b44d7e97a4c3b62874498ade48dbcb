@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fbca457_01580bc2",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2521,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-08-23T17:56:16Z",
+      "side": 1,
+      "message": "Is this being used anywhere?",
+      "range": {
+        "startLine": 2521,
+        "startChar": 5,
+        "endLine": 2521,
+        "endChar": 41
+      },
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

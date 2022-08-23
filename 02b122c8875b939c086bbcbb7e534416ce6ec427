@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d67ca1_9f62da37",
+        "filename": "android/proto.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-08-23T17:56:16Z",
+      "side": 0,
+      "message": "is this method (at the end of this file) still needed?",
+      "range": {
+        "startLine": 35,
+        "startChar": 92,
+        "endLine": 35,
+        "endChar": 108
+      },
+      "revId": "02b122c8875b939c086bbcbb7e534416ce6ec427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
