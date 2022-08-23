@@ -52,6 +52,24 @@
       "parentUuid": "f0cbd2e3_12793377",
       "revId": "dad550e2176f37ffcd2868dcf82d14867872a3df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bbb77bf_7ccd09ad",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-23T16:44:05Z",
+      "side": 1,
+      "message": "header-abi-diff selects config with -target-version. It skips loading config if it didn\u0027t find it.",
+      "parentUuid": "c0a2feb4_74030aef",
+      "revId": "dad550e2176f37ffcd2868dcf82d14867872a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
