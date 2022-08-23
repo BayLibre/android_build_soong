@@ -46,6 +46,30 @@
       },
       "revId": "1e285d54453d9bf6dc67fcd2f4a15c66b3d1d868",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efdead82_b5dd23b3",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-23T20:52:01Z",
+      "side": 1,
+      "message": "ah, sorry, wrong file -- i meant that there\u0027s no test coverage of `cc_library`, only `cc_library_shared`",
+      "parentUuid": "4b0ed72b_8a451390",
+      "range": {
+        "startLine": 593,
+        "startChar": 5,
+        "endLine": 593,
+        "endChar": 27
+      },
+      "revId": "1e285d54453d9bf6dc67fcd2f4a15c66b3d1d868",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
