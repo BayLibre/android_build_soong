@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a3f4763_bb6566ee",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-23T19:05:36Z",
+      "side": 1,
+      "message": "I have modified this testcase because otherwise additional conditional return statement has to be added in `genrule.go` just to bypass this testcase.",
+      "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
