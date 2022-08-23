@@ -168,12 +168,13 @@ python_test_host {
 }
 
 python_binary_host {
-    name: "gen-kotlin-build-file.py",
+    name: "gen-kotlin-build-file.py_bin",
     main: "gen-kotlin-build-file.py",
     srcs: [
         "gen-kotlin-build-file.py",
     ],
     libs: ["ninja_rsp"],
+    filename_from_src: true,
 }
 
 python_binary_host {
