@@ -86,6 +86,24 @@
       "parentUuid": "8cbce14f_eea031ff",
       "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f003ec03_9856dac3",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-23T22:32:17Z",
+      "side": 1,
+      "message": "You\u0027re right, you could probably do it with a `gensrcs` module which uses `output_extension` instead of `out` to produce its output file names based on the input file names.",
+      "parentUuid": "f43313f7_a8d634e0",
+      "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
