@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c34505e_4c38269d",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-23T17:15:37Z",
+      "side": 1,
+      "message": "Yes, I will fix this in a newer version of aosp/2190436",
+      "parentUuid": "2f314694_62592734",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfd26c78_9126b35e",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-23T17:08:12Z",
       "side": 1,
       "message": "So, what\u0027s the utility of a module for which only the static variant is allowlisted?",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "425b11c0_4d137a41",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-23T17:15:37Z",
+      "side": 1,
+      "message": "Different bp2build behavior, but denylisted on mixed builds.\n\nIt\u0027s useful for a few cc_library cases where the shared variants break, but the static variants can be depended on from other Bazel targets.",
+      "parentUuid": "dfd26c78_9126b35e",
       "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -69,6 +105,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "250a74b9_c900ed74",
+        "filename": "android/config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-23T17:15:37Z",
+      "side": 1,
+      "message": "Unfortunately I think this will still be an issue, because soong_ui cares about this env var:\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/config.go;l\u003d1142-1143;drc\u003dc75e1297a381daa6471845419387f7b66d288b15",
+      "parentUuid": "252ea6ec_a484570e",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3601b91c_40a6faae",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-08-23T17:08:12Z",
       "side": 1,
       "message": "~Modules~ A module should **be** added .. only if it supports ..",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9813d8c6_4f0fc9b0",
+        "filename": "android/config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-23T17:15:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3601b91c_40a6faae",
       "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -103,6 +175,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "179190c6_102d6cee",
+        "filename": "android/config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-23T17:15:37Z",
+      "side": 1,
+      "message": "Correct",
+      "parentUuid": "705eb297_5a402b9f",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc9d2cbe_92c077ab",
@@ -116,6 +206,24 @@
       "writtenOn": "2022-08-23T17:08:12Z",
       "side": 1,
       "message": "No two conditions here can be true at the same time?\ni.e. no need to do the following?\n```\nif bp2buildMarker !\u003d \"\" {\n  buildMode \u003d android.Bp2Build\n}\nif bazelQueryViewDir !\u003d \"\" {\n  if buildMode !\u003d android.AnalysisNoBuild /* the default */{\n    panic(..) //or something\n  }\n  buildMode \u003d android.GeneratQueryView\n}\n```",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca026dd_21fb6855",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-23T17:15:37Z",
+      "side": 1,
+      "message": "They can\u0027t be true at the same time, no. These are separate invocations, controlled in soong_ui:\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/soong.go;l\u003d274-314;drc\u003d8dc8b0a0657be26a896c940edf9b054bc20fdf8f",
+      "parentUuid": "dc9d2cbe_92c077ab",
       "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
