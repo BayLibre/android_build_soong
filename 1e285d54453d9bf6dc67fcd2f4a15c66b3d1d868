@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be378ed9_ed823db4",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-23T20:18:42Z",
+      "side": 1,
+      "message": "I don\u0027t see any test coverage of this case?",
+      "range": {
+        "startLine": 593,
+        "startChar": 5,
+        "endLine": 593,
+        "endChar": 27
+      },
+      "revId": "1e285d54453d9bf6dc67fcd2f4a15c66b3d1d868",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

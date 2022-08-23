@@ -70,6 +70,29 @@
       },
       "revId": "a800ba34e311f65feb7351322839024883b012d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3442c00b_e4298da2",
+        "filename": "cc/library.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-23T20:18:42Z",
+      "side": 1,
+      "message": "any reason to not re-use the value calculated in `bp2BuildParseBaseProps` since it\u0027s already calculated there?",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 5
+      },
+      "revId": "a800ba34e311f65feb7351322839024883b012d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

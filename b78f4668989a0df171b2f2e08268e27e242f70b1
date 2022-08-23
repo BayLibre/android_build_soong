@@ -252,6 +252,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d037dce_b1dd8a35",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-23T20:18:42Z",
+      "side": 1,
+      "message": "We definitely need an attribute, not to change the name as this is often used in select statements, which would change the name.\n\nWe could consider using `soname`, but that could cause more repetition or complexity in BUILD files, given that these are often accompanied by select statements. E.g. a common case results in:\n\n```\ncc_binary(\n   name \u003d \"foo\",\n   suffix \u003d select({\n       \"//build/bazel/platforms/arch:x86\": \"-32\",\n       \"//build/bazel/platforms/arch:arm\": \"-32\",\n       \"//build/bazel/platforms/arch:x86_64\": \"-64\",\n       \"//build/bazel/platforms/arch:arm64\": \"-64\",\n   })\n)\n```\n\nwhich either requires `\"foo\" + select(...)` or repetition of `foo`",
+      "parentUuid": "463c0047_811a9e37",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b66a0ea8_425f1425",
         "filename": "cc/bp2build.go",
         "patchSetId": 20
