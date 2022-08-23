@@ -22,6 +22,30 @@
       },
       "revId": "1e285d54453d9bf6dc67fcd2f4a15c66b3d1d868",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b0ed72b_8a451390",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-08-23T20:37:22Z",
+      "side": 1,
+      "message": "I\u0027m unsure of what case you mean here. Test coverage of `compilerAttributes`\u0027s new `suffix` member?",
+      "parentUuid": "be378ed9_ed823db4",
+      "range": {
+        "startLine": 593,
+        "startChar": 5,
+        "endLine": 593,
+        "endChar": 27
+      },
+      "revId": "1e285d54453d9bf6dc67fcd2f4a15c66b3d1d868",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
