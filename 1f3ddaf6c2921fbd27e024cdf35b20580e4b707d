@@ -70,6 +70,24 @@
       "parentUuid": "d4674855_b313a62a",
       "revId": "1f3ddaf6c2921fbd27e024cdf35b20580e4b707d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fabd4dba_caadd9c6",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-23T20:59:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0cde88ae_056bb403",
+      "revId": "1f3ddaf6c2921fbd27e024cdf35b20580e4b707d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

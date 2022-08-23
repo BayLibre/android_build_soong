@@ -16,6 +16,41 @@
       "message": "I have modified this testcase because otherwise additional conditional return statement has to be added in `genrule.go` just to bypass this testcase.",
       "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b663607e_58d8cbf3",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-23T20:59:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a3f4763_bb6566ee",
+      "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cbce14f_eea031ff",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-23T20:59:05Z",
+      "side": 1,
+      "message": "Can you add a test where out has a `$` character, and one that uses `$(locations)`?",
+      "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
