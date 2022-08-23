@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f0b468_d8883af2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-08-23T20:19:16Z",
+      "side": 1,
+      "message": "Nit: git commit messages are supposed to have a blank line between the subject and message/footers",
+      "revId": "e99ec7eb7a5bd3f07e48f0bd56beffeb81ce54cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e283e00e_d354727a",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-08-23T20:19:16Z",
+      "side": 1,
+      "message": "This changes the user-visible name in $PATH",
+      "range": {
+        "startLine": 171,
+        "startChar": 35,
+        "endLine": 171,
+        "endChar": 39
+      },
+      "revId": "e99ec7eb7a5bd3f07e48f0bd56beffeb81ce54cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
