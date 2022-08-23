@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "115e958c_691297a2",
+        "filename": "android/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-23T20:56:25Z",
+      "side": 1,
+      "message": "No long relevant. PTAL.",
+      "parentUuid": "9baa51ec_df41914d",
+      "revId": "cbfc6d95917d569d26699603c298f24601dde11f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cec565c_baa8138b",
@@ -84,6 +102,24 @@
       "writtenOn": "2022-08-19T14:53:13Z",
       "side": 1,
       "message": "nit: any particular reason a \"enum\" returning method is not preferable?",
+      "revId": "cbfc6d95917d569d26699603c298f24601dde11f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "848e3849_9a449409",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-23T20:56:25Z",
+      "side": 1,
+      "message": "Now just using bazelProdMode bool fields. I think this is fine to not use an enum, as it fits the current pattern of similar fields originating from flags.",
+      "parentUuid": "4cec565c_baa8138b",
       "revId": "cbfc6d95917d569d26699603c298f24601dde11f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

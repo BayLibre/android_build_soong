@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e40d203_a11029fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-23T20:56:25Z",
+      "side": 1,
+      "message": "PTAL. I\u0027ve redone most of this CL after the submission of the recent refactoring CL.",
+      "revId": "654025c6e6a400f7844abbfd6ab566d810ecd1b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
