@@ -584,5 +584,11 @@ var (
 		"prebuilt_android-support-annotations-nodeps",
 		"prebuilt_android-arch-paging-common-nodeps",
 		"prebuilt_android-arch-room-common-nodeps",
+		// exclude_dirs property not supported
+		"kotlin-reflect",
+		"kotlin-stdlib",
+		"kotlin-stdlib-jdk7",
+		"kotlin-stdlib-jdk8",
+		"kotlin-test",
 	}
 )
