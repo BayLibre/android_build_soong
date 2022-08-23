@@ -3,6 +3,86 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60a1a80f_3cecdea8",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-23T21:09:11Z",
+      "side": 1,
+      "message": "Curious why we need to exclude these filegroups from the `srcs` here?\n\nIn copying this pattern for the [Java bp2build](https://android-review.googlesource.com/c/platform/build/soong/+/2062870/28..29), I did some things differently, and I want to double check that we\u0027re doing the same thing.\n\nIf we need to remove them from srcs here, we could return the modules that were converted to aidl_library as an additional return (and propagate it to the `bp2buildAidlLibraries` function) to keep the selection logic for these modules in one place? Not necessary though, just opening discussion. See other comment for more details (especially last paragraph).",
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a367855_973df3b0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-23T21:09:11Z",
+      "side": 1,
+      "message": "I copied this function to my [Java CL](https://android-review.googlesource.com/c/platform/build/soong/+/2062870/28..29) and put it in `android/filegroup.go`. We can delete one once we\u0027re merged.",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 89
+      },
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b2d785_639adec1",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-23T21:09:11Z",
+      "side": 1,
+      "message": "Could we add a comment saying that the logic from this block of code is related to the logic in `parseSrcs`? Namely, that we know that aidlSrcs will not contain the aidl_libraries created from filegroups.\n\nFrom reading the function signature, I expected the aidlSrcs argument to contain all of the information necessary for aidl srcs, so it wasn\u0027t clear to me why we are iterating over the Soong structure of `BaseCompilerProperties.Srcs` here instead of a structure specific to bp2build like `aidlSrcs`.\n\n-----\n\nAlternatively (see comment above), maybe instead we could pass the filegroups which were converted to aidl_libraries as an argument to this function in order to make it more clear (without needing comments) that the converted filegroups are separate from aidlSrcs?\n\nThese modules could come directly from the `parseSrcs` function to keep the logic in one place. But I\u0027m not sure that it\u0027s worth plumbing that information through to here. Might be just as clear to just leave a comment to clarify here why we are searching through this list.",
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab8b99c9_109c9de8",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-23T21:09:11Z",
+      "side": 1,
+      "message": "It looks like `isConvertedToAidlLibrary` already includes the following three lines? Could we simplify this to:\n```\nif isConvertedToAidlLibrary(ctx, src) {\n  aidlLibraries.Add(\u0026bazel.Label{\n    Label: fg.GetAidlLibraryLabel(ctx),\n  })\n}\n```",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 758,
+        "endChar": 0
+      },
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fbca457_01580bc2",
         "filename": "cc/library.go",
         "patchSetId": 9
