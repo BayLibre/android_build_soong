@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36efaf58_fe97c466",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-23T19:39:22Z",
+      "side": 1,
+      "message": "Sorry if my comment was misleading. The existing tests (before this CL) should cover already cover that.\n\n\u003e How does the empty suffix case being tested here differ from the unset suffix case and why?\n\nReplying to radical@ \u0027s comment, the suffix attribute is already defaulted to `\"\"`. Ideally, `suffix: \"\"` or unset `suffix` in Android.bp should result to the same BUILD which is that `suffix` is unset and defaulted to `\"\"`.\n\nIt\u0027s up to you if you want to pass in `suffix \u003d \"\"` in BUILD though.",
+      "parentUuid": "08d57150_a9342e42",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f05e223c_9fed30d0",
         "filename": "bp2build/cc_library_shared_conversion_test.go",
         "patchSetId": 20
@@ -67,6 +85,24 @@
       "writtenOn": "2022-08-12T20:40:34Z",
       "side": 1,
       "message": "Can we have a test for when suffix is unset?",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c2c5bc_8e29349a",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-23T19:39:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f05e223c_9fed30d0",
       "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "I\u0027m not sure I understand what this comment is saying needs to be different about this test.",
       "parentUuid": "6bb8259e_8c536cee",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3992ded_1609121f",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-23T19:39:22Z",
+      "side": 1,
+      "message": "Sorry if this comment was also misleading.\n\nIn aosp/1999871, we add `suffix` attribute to `cc_library_shared` and `cc_binary`.\n\nAccording to the tests in this CL, we convert\n\n```\ncc_library_shared {\n  name: \"foo_shared\",\n  suffix: \"-suf\",\n}\n```\nto \n```\ncc_library_shared(\n  name  \u003d \"foo_shared-suf\"\n)\n```\nin bp2build/cc_library_shared_conversion_test.go\n\nand\n\n```\ncc_binary{\n  name: \"foo\",\n  suffix: \"\",\n}\n```\n\nto\n\n```\ncc_binary(\n  name \u003d \"foo\",\n  suffix \u003d \"\",\n)\n```\nin bp2build/cc_binary_conversion_test.go.\n\nIt doesn\u0027t quite make sense to me why we need the suffix attribute in Bazel and always pass empty string \"\" to it. Moreover, aosp/199987 has `suffix` defaulted to `\"\"` in the macros already.\n\nThe conflicting part is why `suffix` is handled inconsistently like this.\n1. When suffix is non-empty string, we append it to `name` attribute in Bazel.\n2. When suffix is empty string, we pass empty string to suffix attribute in Bazel.\n\nIt seems to me that we don\u0027t need to add another attribute (e.g. suffix) to convert suffix prop. Another solution is creating `soname` with the suffix value (and name if `soname` is empty) and moving resulted `soname` to BUILD instead.\n\nIn the test examples above,the resulted BUILD can be either\n\n```\ncc_library_shared(\n  name  \u003d \"foo_shared-suf\"\n)\ncc_binary(\n  name \u003d \"foo\",\n)\n```\n\nor \n\n```\ncc_library_shared(\n  name  \u003d \"foo_shared\",\n  suffix \u003d \"-suf\"\n)\ncc_binary(\n  name \u003d \"foo\",\n  suffix \u003d \"\"\n)\n```\n\nor even\n\n```\ncc_library_shared(\n  name  \u003d \"foo_shared\",\n  suffix \u003d \"-suf\"\n)\ncc_binary(\n  name \u003d \"foo\",\n  // because suffix is defaulted to \"\", don\u0027t need to set it.\n)\n```\n\nThe bottom line is we should handle/convert suffix prop consistently.\n\nThoughts?",
+      "parentUuid": "ee1dd586_5cb445ce",
       "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
