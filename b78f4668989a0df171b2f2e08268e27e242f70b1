@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "401da598_3fa5c388",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-08-23T19:54:12Z",
+      "side": 1,
+      "message": "This had come up during discussions with eakammer@; if suffix is explicitly noted, even empty (even if the default), then the output should include suffix. Thus we can distinguish the \"suffix unset\" case from \"suffix explicitly set\".",
+      "parentUuid": "36efaf58_fe97c466",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f05e223c_9fed30d0",
@@ -178,6 +196,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3331855a_af221587",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-08-23T19:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0263a211_dce3bb86",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b66a0ea8_425f1425",
@@ -209,6 +245,24 @@
       "side": 1,
       "message": "We need it as that is how `cc_library_shared` gets its `Suffix`, as passed along through Soong\u0027s `LibraryPeroperties.Suffix`. The Unit Test you noted before was simply incorrect.",
       "parentUuid": "b66a0ea8_425f1425",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59859ff9_f7713209",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-08-23T19:54:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "665ce295_26b4fb6a",
       "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
