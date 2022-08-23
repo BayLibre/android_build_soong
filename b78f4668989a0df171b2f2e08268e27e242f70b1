@@ -216,6 +216,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "862ef779_f2cfd3e6",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-23T20:03:40Z",
+      "side": 1,
+      "message": "Scratch my above comment because I was looking at the wrong patchset.\n\nBut I have a question on the suffix attribute itself. Shouldn\u0027t we err on the side of not having more attribute to the Bazel macros if possibe?\n\nInstead of adding suffix attribute, what\u0027s the drawback of having a BUILD like\n\n```\ncc_library_shared(\n  name  \u003d \"foo_shared\",\n  soname \u003d \"foo_shared-suf\", // or maybe \"\u003csoname\u003e-suf\"\n)\ncc_binary(\n  name \u003d \"foo-suf\", // if suffix: \"-suf\" in Android. \n)\n```\n?\n\nWith this approach, the soname (which makes use of the suffix) is more explicit in BUILD.\n\nThoughts?",
+      "parentUuid": "0263a211_dce3bb86",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b66a0ea8_425f1425",
         "filename": "cc/bp2build.go",
         "patchSetId": 20
@@ -262,6 +280,24 @@
       "writtenOn": "2022-08-23T19:54:12Z",
       "side": 1,
       "message": "Done",
+      "parentUuid": "665ce295_26b4fb6a",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa92cbb_611b8d41",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-23T20:03:40Z",
+      "side": 1,
+      "message": "Ack. See https://android-review.googlesource.com/c/platform/build/soong/+/1999893/comments/6bb8259e_8c536cee",
       "parentUuid": "665ce295_26b4fb6a",
       "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
