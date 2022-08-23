@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0263a211_dce3bb86",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-23T19:41:44Z",
+      "side": 1,
+      "message": "ohh one second. I was looking at the wrong patchset.",
+      "parentUuid": "e3992ded_1609121f",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b66a0ea8_425f1425",
         "filename": "cc/bp2build.go",
         "patchSetId": 20
