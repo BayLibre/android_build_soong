@@ -104,6 +104,24 @@
       "parentUuid": "f43313f7_a8d634e0",
       "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960b2b76_3deb939c",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-23T22:35:19Z",
+      "side": 1,
+      "message": "Acknowledged. Will add corresponding test case.",
+      "parentUuid": "f003ec03_9856dac3",
+      "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
