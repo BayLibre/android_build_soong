@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "011e9f0b_6d4b1a0e",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-23T18:01:43Z",
+      "side": 1,
+      "message": "nit (can be simplified to one line):\n```\nif sourceVersion, err :\u003d ...; err \u003d\u003d nil {\n  extraFlags \u003d append sourceVersion + 1 ...\n}\n```",
+      "revId": "2b44afb6a271b691ad9195b83590e55692a6a731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
