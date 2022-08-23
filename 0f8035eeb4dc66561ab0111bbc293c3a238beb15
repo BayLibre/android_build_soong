@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6eccb47_718d09b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-23T17:08:12Z",
+      "side": 1,
+      "message": "asked a few questions for my benefit.",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f314694_62592734",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-23T17:08:12Z",
+      "side": 1,
+      "message": "this is a short-lived TODO to be followed up?",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfd26c78_9126b35e",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-23T17:08:12Z",
+      "side": 1,
+      "message": "So, what\u0027s the utility of a module for which only the static variant is allowlisted?",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "252ea6ec_a484570e",
+        "filename": "android/config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-23T17:08:12Z",
+      "side": 1,
+      "message": "This is nice.\nDoes this also mean we don\u0027t have a similar issue to this current behavior:\n1. `m bp2build`\n2. `USE_BAZEL_ANALYSIS\u003d1 m bp2build` \u003d\u003e soong_ui thinks env var change warrants a rebuild",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3601b91c_40a6faae",
+        "filename": "android/config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-23T17:08:12Z",
+      "side": 1,
+      "message": "~Modules~ A module should **be** added .. only if it supports ..",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705eb297_5a402b9f",
+        "filename": "android/config.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-23T17:08:12Z",
+      "side": 1,
+      "message": "so the two sets are not mutually exclusive?",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9d2cbe_92c077ab",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-23T17:08:12Z",
+      "side": 1,
+      "message": "No two conditions here can be true at the same time?\ni.e. no need to do the following?\n```\nif bp2buildMarker !\u003d \"\" {\n  buildMode \u003d android.Bp2Build\n}\nif bazelQueryViewDir !\u003d \"\" {\n  if buildMode !\u003d android.AnalysisNoBuild /* the default */{\n    panic(..) //or something\n  }\n  buildMode \u003d android.GeneratQueryView\n}\n```",
+      "revId": "0f8035eeb4dc66561ab0111bbc293c3a238beb15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
