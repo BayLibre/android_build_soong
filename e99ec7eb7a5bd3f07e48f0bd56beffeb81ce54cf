@@ -63,6 +63,30 @@
       },
       "revId": "e99ec7eb7a5bd3f07e48f0bd56beffeb81ce54cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84ceb926_a03eca93",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-08-23T21:52:22Z",
+      "side": 1,
+      "message": "Looks like this is failing the presubmit, too.\n\nI\u0027m updating the description. Please see b/198619163\n\nIn short - this module has the same name as a file which causes problems going forward. I\u0027m open to suggestions on how to fix this.",
+      "parentUuid": "175c7a2f_003573a3",
+      "range": {
+        "startLine": 171,
+        "startChar": 35,
+        "endLine": 171,
+        "endChar": 39
+      },
+      "revId": "e99ec7eb7a5bd3f07e48f0bd56beffeb81ce54cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
