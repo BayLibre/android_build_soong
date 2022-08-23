@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c19d26_24d5734d",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-08-23T13:33:31Z",
+      "side": 1,
+      "message": "this \u003d sign is correct?",
+      "range": {
+        "startLine": 169,
+        "startChar": 82,
+        "endLine": 169,
+        "endChar": 83
+      },
+      "revId": "da3e2129a8d84194c418474025ea2aa82630ac6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
