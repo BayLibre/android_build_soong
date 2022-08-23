@@ -234,6 +234,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "463c0047_811a9e37",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-08-23T20:10:42Z",
+      "side": 1,
+      "message": "I don\u0027t disagree that having a separate \"suffix\" argument is less sensical than simply exposing `soname` outright. But we\u0027re just looking at migrating existing BPs, matching and minimizing differences while being idiomatic to Bazel. i.e., were this not migratory code, I\u0027d advocate for abstracting out to `soname` rather than just `suffix`.",
+      "parentUuid": "862ef779_f2cfd3e6",
+      "revId": "b78f4668989a0df171b2f2e08268e27e242f70b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b66a0ea8_425f1425",
         "filename": "cc/bp2build.go",
         "patchSetId": 20
