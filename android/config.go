@@ -190,7 +190,7 @@ type config struct {
 	mockBpList string
 
 	BuildMode                      SoongBuildMode
-	bp2buildPackageConfig          bp2BuildConversionAllowlist
+	Bp2buildPackageConfig          Bp2BuildConversionAllowlist
 	Bp2buildSoongConfigDefinitions soongconfig.Bp2BuildSoongConfigDefinitions
 
 	// If testAllowNonExistentPaths is true then PathForSource and PathForModuleSrc won't error
@@ -491,7 +491,7 @@ func NewConfig(moduleListFile string, buildMode SoongBuildMode, runGoTests bool,
 
 	config.BuildMode = buildMode
 	config.BazelContext, err = NewBazelContext(config)
-	config.bp2buildPackageConfig = GetBp2BuildAllowList()
+	config.Bp2buildPackageConfig = GetBp2BuildAllowList()
 
 	return Config{config}, err
 }
