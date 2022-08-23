@@ -22,6 +22,30 @@
       },
       "revId": "cc0f461cc70f3ea6ca6801635e00a1058097d2c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "615c09ba_d3f72fdf",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-23T18:03:21Z",
+      "side": 1,
+      "message": "Done, and I changed the location of this variable.",
+      "parentUuid": "f9e4411c_e72bdb7b",
+      "range": {
+        "startLine": 945,
+        "startChar": 16,
+        "endLine": 945,
+        "endChar": 17
+      },
+      "revId": "cc0f461cc70f3ea6ca6801635e00a1058097d2c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

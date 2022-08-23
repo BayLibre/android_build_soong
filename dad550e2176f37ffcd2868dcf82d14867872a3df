@@ -70,6 +70,24 @@
       "parentUuid": "c0a2feb4_74030aef",
       "revId": "dad550e2176f37ffcd2868dcf82d14867872a3df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8e075b_0d1347c2",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-23T18:03:21Z",
+      "side": 1,
+      "message": "To make it clear, if reference dump of |prevVersion + 1| is not created yet, this function would not be executed.\nIf the config of header-abi-diff for |prevVersion + 1| doesn\u0027t exist, header-abi-diff performs diff without additional config.",
+      "parentUuid": "6bbb77bf_7ccd09ad",
+      "revId": "dad550e2176f37ffcd2868dcf82d14867872a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
