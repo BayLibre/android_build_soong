@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba9e5a6_c0b784c9",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-23T14:00:12Z",
+      "side": 1,
+      "message": "optional: should we dedupe this?",
+      "range": {
+        "startLine": 1059,
+        "startChar": 1,
+        "endLine": 1059,
+        "endChar": 48
+      },
+      "revId": "31ea919724747fba2691f3ee9202f4dc1843b651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
