@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1c24ea3_37b2b83c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-23T22:18:40Z",
+      "side": 1,
+      "message": "ni",
+      "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a3f4763_bb6566ee",
@@ -49,6 +66,24 @@
       "writtenOn": "2022-08-23T20:59:05Z",
       "side": 1,
       "message": "Can you add a test where out has a `$` character, and one that uses `$(locations)`?",
+      "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f43313f7_a8d634e0",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-23T22:18:40Z",
+      "side": 1,
+      "message": "I am not sure if I understood your intention correctly for the first part -- do you mean to add a test like `out: [\"inn$1.txt\"]`? I believe this is not possible because if the path contain `$` in bp an error will be raised. If glob is included in `out` to include a path with `$`, for instance like `out: [\"inn*.txt\"]`, `$(out)` does not evaluate to `inn$1.txt` but remain as `inn*1.txt`, although I am not sure if this is an expected behavior. For the second part, I will add a test that uses `$(locations)`.",
+      "parentUuid": "8cbce14f_eea031ff",
       "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
