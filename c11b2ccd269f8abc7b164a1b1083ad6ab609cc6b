@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "756f6392_68f9217d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-23T13:54:35Z",
+      "side": 1,
+      "message": "Can you add a unit test as well?",
+      "revId": "c11b2ccd269f8abc7b164a1b1083ad6ab609cc6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "975fe227_d43ba844",
+        "filename": "cc/object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-23T13:54:35Z",
+      "side": 1,
+      "message": "should there be a check for whole static libs here as well?",
+      "range": {
+        "startLine": 262,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 41
+      },
+      "revId": "c11b2ccd269f8abc7b164a1b1083ad6ab609cc6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
