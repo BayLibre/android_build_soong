@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e4411c_e72bdb7b",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-23T16:32:04Z",
+      "side": 1,
+      "message": "your not suppose to ignore error if error could happen. In this case if prevVersion is \"\", Atoi would fail.\nEither panic() or skip the sourceAbiDiff in case of error. Don\u0027t let error slip through silently.",
+      "range": {
+        "startLine": 945,
+        "startChar": 16,
+        "endLine": 945,
+        "endChar": 17
+      },
+      "revId": "cc0f461cc70f3ea6ca6801635e00a1058097d2c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

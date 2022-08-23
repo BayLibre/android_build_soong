@@ -34,6 +34,24 @@
       "parentUuid": "5235c14b_e56907ad",
       "revId": "dad550e2176f37ffcd2868dcf82d14867872a3df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a2feb4_74030aef",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-23T16:32:04Z",
+      "side": 1,
+      "message": "what would happen if reference dump of |prevVersion + 1| is not created yet ?",
+      "parentUuid": "f0cbd2e3_12793377",
+      "revId": "dad550e2176f37ffcd2868dcf82d14867872a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
