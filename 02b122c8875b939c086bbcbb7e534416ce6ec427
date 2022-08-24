@@ -22,6 +22,30 @@
       },
       "revId": "02b122c8875b939c086bbcbb7e534416ce6ec427",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a79689_0f074447",
+        "filename": "android/proto.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T19:16:11Z",
+      "side": 0,
+      "message": "Removed.",
+      "parentUuid": "b0d67ca1_9f62da37",
+      "range": {
+        "startLine": 35,
+        "startChar": 92,
+        "endLine": 35,
+        "endChar": 108
+      },
+      "revId": "02b122c8875b939c086bbcbb7e534416ce6ec427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

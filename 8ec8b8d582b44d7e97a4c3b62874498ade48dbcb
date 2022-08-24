@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b073c3d_df6c469d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T19:16:11Z",
+      "side": 1,
+      "message": "Your instinct is totally right here. The reason I did what I did was because I overlooked that that we could do `Label.OriginalModuleName` to get the module name to eventually call `isConvertedToAidlLibrary` with it. \n\nI reverted this change back. We don\u0027t need to exclude these filegroups.\n\nPTAL: [aosp/2183478/9..10/cc/bp2build.go](https://android-review.googlesource.com/c/platform/build/soong/+/2183478/9..10/cc/bp2build.go).",
+      "parentUuid": "60a1a80f_3cecdea8",
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2a367855_973df3b0",
@@ -60,6 +78,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01c3e229_4c210622",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T19:16:11Z",
+      "side": 1,
+      "message": "Your instinct is right. We can handle the splitting directly in this function (as you said \"one place\") instead of `parseSrcs` and then again in this function.\n\nPTAL: [aosp/2183478/9..10/cc/bp2build.go](https://android-review.googlesource.com/c/platform/build/soong/+/2183478/9..10/cc/bp2build.go).\n\nIdeally, I should align my CL with your java CL (e.g. reusing the new `Partition` function for `bazel.LabelList` but I prefer to do the clean up in a separate CL after all these CLs are submitted.",
+      "parentUuid": "e1b2d785_639adec1",
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab8b99c9_109c9de8",
         "filename": "cc/bp2build.go",
         "patchSetId": 9
@@ -83,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e247e72_7f86bdc7",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T19:16:11Z",
+      "side": 1,
+      "message": "Done. PTAL: [aosp/2183478/9..10/cc/bp2build.go](https://android-review.googlesource.com/c/platform/build/soong/+/2183478/9..10/cc/bp2build.go).",
+      "parentUuid": "ab8b99c9_109c9de8",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 758,
+        "endChar": 0
+      },
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fbca457_01580bc2",
         "filename": "cc/library.go",
         "patchSetId": 9
@@ -94,6 +154,30 @@
       "writtenOn": "2022-08-23T17:56:16Z",
       "side": 1,
       "message": "Is this being used anywhere?",
+      "range": {
+        "startLine": 2521,
+        "startChar": 5,
+        "endLine": 2521,
+        "endChar": 41
+      },
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4530c329_1aa5a232",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2521,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T19:16:11Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "7fbca457_01580bc2",
       "range": {
         "startLine": 2521,
         "startChar": 5,
