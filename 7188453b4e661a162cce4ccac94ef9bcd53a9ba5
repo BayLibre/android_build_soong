@@ -16,6 +16,23 @@
       "message": "This used to be created by a ninja invocation before lberki@ rewrote it, if it\u0027s no longer used then removing it SGTM.",
       "revId": "7188453b4e661a162cce4ccac94ef9bcd53a9ba5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "470f9f01_2e5a1bc1",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-08-24T18:37:42Z",
+      "side": 1,
+      "message": "Nit: capitalize. \"Note: \"",
+      "revId": "7188453b4e661a162cce4ccac94ef9bcd53a9ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
