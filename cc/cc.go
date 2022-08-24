@@ -2300,9 +2300,14 @@ func updateDepsWithApiImports(deps Deps, apiImports multitree.ApiImportInfo) Dep
 		deps.RuntimeLibs[idx] = GetReplaceModuleName(lib, apiImports.SharedLibs)
 	}
 
-	for idx, lib := range deps.HeaderLibs {
-		deps.HeaderLibs[idx] = GetReplaceModuleName(lib, apiImports.HeaderLibs)
+	for idx, lib := range deps.SystemSharedLibs {
+		deps.SystemSharedLibs[idx] = GetReplaceModuleName(lib, apiImports.SharedLibs)
 	}
+
+	for idx, lib := range deps.ReexportSharedLibHeaders {
+		deps.ReexportSharedLibHeaders[idx] = GetReplaceModuleName(lib, apiImports.SharedLibs)
+	}
+
 	return deps
 }
 
@@ -2342,13 +2347,16 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 	for _, lib := range deps.HeaderLibs {
 		depTag := libraryDependencyTag{Kind: headerLibraryDependency}
+
 		if inList(lib, deps.ReexportHeaderLibHeaders) {
 			depTag.reexportFlags = true
 		}
 
+		// Check header lib replacement from API surface first, and then check again with VSDK
+		lib = GetReplaceModuleName(lib, apiImportInfo.HeaderLibs)
 		lib = GetReplaceModuleName(lib, GetSnapshot(c, &snapshotInfo, actx).HeaderLibs)
 
-		if c.IsStubs() {
+		if c.IsStubs() && !c.isImportedApiLibrary() {
 			actx.AddFarVariationDependencies(append(ctx.Target().Variations(), c.ImageVariation()),
 				depTag, lib)
 		} else {
@@ -3027,6 +3035,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			}
 
 			makeLibName := MakeLibName(ctx, c, ccDep, depName) + libDepTag.makeSuffix
+
 			switch {
 			case libDepTag.header():
 				c.Properties.AndroidMkHeaderLibs = append(
@@ -3252,11 +3261,6 @@ func MakeLibName(ctx android.ModuleContext, c LinkableInterface, ccDep LinkableI
 			baseName := ccDepModule.BaseModuleName()
 
 			return baseName + snapshotPrebuilt.SnapshotAndroidMkSuffix()
-		}
-
-		// Remove API import suffix if exists
-		if _, ok := ccDepModule.linker.(*apiLibraryDecorator); ok {
-			libName = strings.TrimSuffix(libName, multitree.GetApiImportSuffix())
 		}
 	}
 
@@ -3593,9 +3597,6 @@ func (c *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
 	if _, ok := c.linker.(prebuiltLinkerInterface); ok {
 		return nil
 	}
-	if _, ok := c.linker.(*apiLibraryDecorator); ok {
-		return nil
-	}
 
 	minSdkVersion := c.MinSdkVersion()
 	if minSdkVersion == "apex_inherit" {
@@ -3774,6 +3775,11 @@ func DefaultsFactory(props ...interface{}) android.Module {
 
 func (c *Module) IsSdkVariant() bool {
 	return c.Properties.IsSdkVariant
+}
+
+func (c *Module) isImportedApiLibrary() bool {
+	_, ok := c.linker.(*apiLibraryDecorator)
+	return ok
 }
 
 func kytheExtractAllFactory() android.Singleton {
