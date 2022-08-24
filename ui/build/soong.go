@@ -345,6 +345,10 @@ func bootstrapBlueprint(ctx Context, config Config) {
 	}
 
 	bootstrapDeps := bootstrap.RunBlueprint(blueprintArgs, bootstrap.DoEverything, blueprintCtx, blueprintConfig)
+
+	// note: `bootstrap.ninja.d` is solely for human consumption, e.g. might be helpful for debugging.
+	// `bootstrap.ninja` is not the result of a ninja invocation and hence `bootstrap.ninja.d` has
+	// no effect on the generation of `bootstrap.ninja`.
 	bootstrapDepFile := shared.JoinPath(config.SoongOutDir(), "bootstrap.ninja.d")
 	err := deptools.WriteDepFile(bootstrapDepFile, blueprintArgs.OutFile, bootstrapDeps)
 	if err != nil {
