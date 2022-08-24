@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0762a435_3a0a5680",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T21:03:40Z",
+      "side": 1,
+      "message": "LGTM! Thanks for adding the Partition helpers. I have a few optional (nit) comments",
+      "revId": "4228b7620315ebbacded3e58123d66f1d0a23511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f997485_c45b9100",
+        "filename": "bazel/properties.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T21:03:40Z",
+      "side": 1,
+      "message": "Nit: Probably better wording to say\n\n```\n// Partition splits a LabelList into two LabelLists based on the return value of predicate\n```",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 64
+      },
+      "revId": "4228b7620315ebbacded3e58123d66f1d0a23511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad91fef0_6d87d4c6",
+        "filename": "bazel/properties.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T21:03:40Z",
+      "side": 1,
+      "message": "Usually, callback like this is named `predicate`.",
+      "range": {
+        "startLine": 152,
+        "startChar": 31,
+        "endLine": 152,
+        "endChar": 40
+      },
+      "revId": "4228b7620315ebbacded3e58123d66f1d0a23511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40d5ec4_82a5b613",
+        "filename": "bazel/properties.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T21:03:40Z",
+      "side": 1,
+      "message": "Nit: Are `predicated` and `unpredicated` better names?",
+      "revId": "4228b7620315ebbacded3e58123d66f1d0a23511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68d642e0_8fe9d211",
+        "filename": "bazel/properties.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T21:03:40Z",
+      "side": 1,
+      "message": "Totally nit: probably better to just rename `inc` as `include`. Same for `exc`. Up to you though.",
+      "revId": "4228b7620315ebbacded3e58123d66f1d0a23511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "865ae536_ba056077",
+        "filename": "bazel/properties.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T21:03:40Z",
+      "side": 1,
+      "message": "Same comments as above.",
+      "revId": "4228b7620315ebbacded3e58123d66f1d0a23511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d83655_7c601dac",
+        "filename": "bazel/properties.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T21:03:40Z",
+      "side": 1,
+      "message": "Can we have tests for this?",
+      "range": {
+        "startLine": 869,
+        "startChar": 42,
+        "endLine": 869,
+        "endChar": 65
+      },
+      "revId": "4228b7620315ebbacded3e58123d66f1d0a23511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dfe9ab0_e611349b",
+        "filename": "bazel/properties.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T21:03:40Z",
+      "side": 1,
+      "message": "This is probably the right thing to do and I should make my CL for cc to use this function instead.\n\nThanks!",
+      "revId": "4228b7620315ebbacded3e58123d66f1d0a23511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dbbe8fa_6008b00d",
+        "filename": "java/java.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 2326,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-24T21:03:40Z",
+      "side": 1,
+      "message": "As you note [here](https://android-review.googlesource.com/c/platform/build/soong/+/2183478/comments/ab8b99c9_109c9de8), we probably don\u0027t need the next 4 lines.",
+      "revId": "4228b7620315ebbacded3e58123d66f1d0a23511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
