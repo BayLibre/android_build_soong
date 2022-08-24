@@ -122,6 +122,24 @@
       "parentUuid": "f003ec03_9856dac3",
       "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6796fa5c_8496de9c",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-24T19:04:28Z",
+      "side": 1,
+      "message": "I have added a testcase that uses `$(locations)`, but testing `gensrcs` module creates other [issue](b/243685634), which I believe requires larger modification to the codebase and is somewhat beyond the scope of this CL.",
+      "parentUuid": "960b2b76_3deb939c",
+      "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
