@@ -26,6 +26,7 @@ import (
 	"strings"
 	"text/scanner"
 
+	"android/soong/android/allowlists"
 	"android/soong/bazel"
 
 	"github.com/google/blueprint"
@@ -3625,6 +3626,14 @@ func (m *moduleContext) TargetRequiredModuleNames() []string {
 
 func init() {
 	RegisterSingletonType("buildtarget", BuildTargetSingleton)
+
+	for _, m := range allowlists.Bp2buildModuleAlwaysConvertList {
+		for _, m2 := range allowlists.Bp2buildModuleDoNotConvertList {
+			if m == m2 {
+				fmt.Println(m)
+			}
+		}
+	}
 }
 
 func BuildTargetSingleton() Singleton {
