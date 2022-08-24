@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97d9cff_2a3fc9f4",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-08-24T08:34:45Z",
+      "side": 1,
+      "message": "nit; I\u0027m not 100% sure, but we probably don\u0027t need these as the functions will be inherited from libraryDecorator?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 1
+      },
+      "revId": "39ceb8a161671a5b172b45c0c641fc9af117f420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
