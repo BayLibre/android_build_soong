@@ -16,6 +16,57 @@
       "message": "PTAL. I\u0027ve redone most of this CL after the submission of the recent refactoring CL.",
       "revId": "654025c6e6a400f7844abbfd6ab566d810ecd1b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9da33c5_ad3801f7",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-24T14:56:04Z",
+      "side": 1,
+      "message": "\"in of\"?",
+      "revId": "654025c6e6a400f7844abbfd6ab566d810ecd1b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464429e3_38c448bb",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-24T14:56:04Z",
+      "side": 1,
+      "message": "am I not seeing where `enabledModules` is actually being used here?",
+      "revId": "654025c6e6a400f7844abbfd6ab566d810ecd1b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b620a59_0601beb9",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-24T14:56:04Z",
+      "side": 1,
+      "message": "nit: while purely aesthetic, maybe switch-case reads nicer than if-else (since all conditions are based on `c.BuildMode`)",
+      "revId": "654025c6e6a400f7844abbfd6ab566d810ecd1b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
