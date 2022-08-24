@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90688512_69abc4ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-24T09:08:57Z",
+      "side": 1,
+      "message": "If not for multitree, I suspect that this would have been converted to cc_library_headers - Liz, correct me if I\u0027m wrong. I think having two rules is confusing. How does one decide when to use which?\n\nCan you describe a brief plan to converge the two (if it makes sense)? Should we move all cc_library_headers to cc_api_headers? Should cc_api_headers be just a macro that wrap cc_library_headers? ",
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
