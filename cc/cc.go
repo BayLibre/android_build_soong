@@ -3371,6 +3371,15 @@ func (c *Module) testBinary() bool {
 	return false
 }
 
+func (c *Module) testLibrary() bool {
+	if test, ok := c.linker.(interface {
+		testLibrary() bool
+	}); ok {
+		return test.testLibrary()
+	}
+	return false
+}
+
 func (c *Module) benchmarkBinary() bool {
 	if b, ok := c.linker.(interface {
 		benchmarkBinary() bool
@@ -3652,13 +3661,25 @@ const (
 	staticLibrary
 	sharedLibrary
 	headerLibrary
+	testBin // testBinary already declared
 )
 
 func (c *Module) typ() moduleType {
 	if c.Binary() {
+		if c.testBinary() {
+			// a testBinary is also a binary, but has additional implicit
+			// dependencies and other semantics.
+			return testBin
+		}
 		return binary
 	} else if c.Object() {
 		return object
+	} else if c.testLibrary() {
+		// TODO(b/) properly convert cc_test_library to its own macro. This
+		// will let them add implicit compile deps on gtest, for example.
+		//
+		// For now, treat them as regular shared libraries.
+		return sharedLibrary
 	} else if c.CcLibrary() {
 		static := false
 		shared := false
@@ -3687,7 +3708,11 @@ func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	switch c.typ() {
 	case binary:
 		if !prebuilt {
-			binaryBp2build(ctx, c, ctx.ModuleType())
+			binaryBp2build(ctx, c)
+		}
+	case testBin:
+		if !prebuilt {
+			testBinaryBp2build(ctx, c)
 		}
 	case object:
 		if !prebuilt {
