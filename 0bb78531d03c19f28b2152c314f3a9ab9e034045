@@ -22,6 +22,30 @@
       },
       "revId": "0bb78531d03c19f28b2152c314f3a9ab9e034045",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "244be94f_5ad5bc16",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2022-08-24T23:50:58Z",
+      "side": 1,
+      "message": "Ignore my comment. I hadn\u0027t seem the parent cl where arm64DeviceLldflags is defined.",
+      "parentUuid": "1668675b_3af02a60",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 31
+      },
+      "revId": "0bb78531d03c19f28b2152c314f3a9ab9e034045",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
