@@ -3371,6 +3371,15 @@ func (c *Module) testBinary() bool {
 	return false
 }
 
+func (c *Module) testLibrary() bool {
+	if test, ok := c.linker.(interface {
+		testLibrary() bool
+	}); ok {
+		return test.testLibrary()
+	}
+	return false
+}
+
 func (c *Module) benchmarkBinary() bool {
 	if b, ok := c.linker.(interface {
 		benchmarkBinary() bool
@@ -3652,13 +3661,22 @@ const (
 	staticLibrary
 	sharedLibrary
 	headerLibrary
+	testBin // testBinary already declared
 )
 
 func (c *Module) typ() moduleType {
 	if c.Binary() {
+		if c.testBinary() {
+			// a testBinary is also a binary, but has additional implicit
+			// dependencies and other semantics.
+			return testBin
+		}
 		return binary
 	} else if c.Object() {
 		return object
+	} else if c.testLibrary() {
+		// treat all test libraries as shared libraries
+		return sharedLibrary
 	} else if c.CcLibrary() {
 		static := false
 		shared := false
@@ -3669,7 +3687,7 @@ func (c *Module) typ() moduleType {
 			static = library.MutatedProperties.BuildStatic
 			shared = library.MutatedProperties.BuildShared
 		}
-		if static && shared {
+		if static && shared || c.testLibrary() {
 			return fullLibrary
 		} else if !static && !shared {
 			return headerLibrary
@@ -3687,7 +3705,11 @@ func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	switch c.typ() {
 	case binary:
 		if !prebuilt {
-			binaryBp2build(ctx, c, ctx.ModuleType())
+			binaryBp2build(ctx, c)
+		}
+	case testBin:
+		if !prebuilt {
+			testBinaryBp2build(ctx, c)
 		}
 	case object:
 		if !prebuilt {
