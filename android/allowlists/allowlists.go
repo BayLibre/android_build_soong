@@ -268,6 +268,7 @@ var (
 		"system/memory/libion":                                   Bp2BuildDefaultTrueRecursively,
 		"system/memory/libmemunreachable":                        Bp2BuildDefaultTrueRecursively,
 		"system/sepolicy/apex":                                   Bp2BuildDefaultTrueRecursively,
+		"system/testing/gtest_extras":                            Bp2BuildDefaultTrueRecursively,
 		"system/timezone/apex":                                   Bp2BuildDefaultTrueRecursively,
 		"system/timezone/output_data":                            Bp2BuildDefaultTrueRecursively,
 		"system/tools/sysprop":                                   Bp2BuildDefaultTrue,
@@ -570,6 +571,59 @@ var (
 		"libutilscallstack",
 		"libunwindstack_utils",
 		"unwind_for_offline",
+
+		// cc_test related.
+		//
+		// reflect: call of reflect.Value.NumField on interface Value
+		// affects all cc_tests that depend on art_defaults
+		"libnativebridge-tests",
+		"libnativeloader_test",
+		"art_libnativebridge_cts_tests",
+		"art_standalone_libdexfile_external_tests",
+		"art_standalone_libdexfile_support_tests",
+		"libnativebridge-lazy-tests",
+		"libnativebridge-test-case",
+		"libnativebridge2-test-case",
+		"libnativebridge3-test-case",
+		"libnativebridge6-test-case",
+		"libnativebridge6prezygotefork",
+
+		// cc_test with unconverted deps
+		"AmrnbDecoderTest",               // depends on unconverted modules: libaudioutils, libsndfile
+		"AmrnbEncoderTest",               // depends on unconverted modules: libaudioutils, libsndfile
+		"AmrwbDecoderTest",               // depends on unconverted modules: libsndfile, libaudioutils
+		"AmrwbEncoderTest",               // depends on unconverted modules: libaudioutils, libsndfile
+		"Mp3DecoderTest",                 // depends on unconverted modules: libsndfile, libaudioutils
+		"Mpeg4H263DecoderTest",           // depends on unconverted modules: libstagefright_foundation
+		"adb_test",                       // depends on unconverted modules: libadb_host, libopenscreen-discovery, libopenscreen-platform-impl, libusb, AdbWinApi
+		"adbd_test",                      // depends on unconverted modules: libusb
+		"bionic-stress-tests",            // depends on unconverted modules: libmeminfo
+		"bionic-unit-tests",              // depends on unconverted modules: libgtest_isolated, libmeminfo, libdlext_test_runpath_zip_zipaligned, libdlext_test_zip_zipaligned
+		"bionic-unit-tests-glibc",        // depends on unconverted modules: libgtest_isolated
+		"bionic-unit-tests-static",       // depends on unconverted modules: libdebuggerd_handler, libgtest_isolated
+		"debuggerd_test",                 // depends on unconverted modules: libdebuggerd
+		"fastdeploy_test",                // depends on unconverted modules: AdbWinApi, libadb_host, libandroidfw, libfastdeploy_host, libopenscreen-discovery, libopenscreen-platform-impl, libusb
+		"googletest-param-test-test_ndk", // depends on unconverted modules: libgtest_ndk_c++
+		"gtest-typed-test_test_ndk",      // depends on unconverted modules: libgtest_ndk_c++, libgtest_main_ndk_c++
+		"gtest_ndk_tests",                // depends on unconverted modules: libgtest_ndk_c++, libgtest_main_ndk_c++
+		"gtest_ndk_tests_no_main",        // depends on unconverted modules: libgtest_ndk_c++
+		"gtest_prod_test_ndk",            // depends on unconverted modules: libgtest_ndk_c++, libgtest_main_ndk_c++
+		"hwbinderThroughputTest",         // depends on unconverted modules: android.hardware.tests.libhwbinder@1.0-impl.test, android.hardware.tests.libhwbinder@1.0
+		"libBionicCtsGtestMain",          // depends on unconverted modules: libgtest_isolated
+		"libBionicLoaderTests",           // depends on unconverted modules: libmeminfo
+		"libapexutil_tests",              // depends on unconverted modules: apex-info-list-tinyxml, libapexutil
+		"libstagefright_amrnbdec_test",   // depends on unconverted modules: libsndfile, libaudioutils
+		"libstagefright_amrwbdec_test",   // depends on unconverted modules: libsndfile, libaudioutils
+		"libstagefright_mp3dec_test",     // depends on unconverted modules: libsndfile, libaudioutils
+		"memunreachable_binder_test",     // depends on unconverted modules: libbinder
+		"rappor-tests",                   // depends on unconverted modules: jsr305, guava
+		"stats-log-api-gen-test",         // depends on unconverted modules: libstats_proto_host
+		"sysprop_test",                   // depends on unconverted modules: libcom.android.sysprop.tests
+
+		// TODO(b/202876379)
+		// bp2build cannot migrate a module with arch/target-specific static_executable values
+		"KernelLibcutilsTest",
+		"libcutils_test_static",
 	}
 
 	Bp2buildCcLibraryStaticOnlyList = []string{}
