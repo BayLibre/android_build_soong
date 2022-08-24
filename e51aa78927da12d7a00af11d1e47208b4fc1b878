@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74920aab_7a38b5dd",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-24T15:10:09Z",
+      "side": 1,
+      "message": "nit: no need to bother with the assignment imo",
+      "revId": "e51aa78927da12d7a00af11d1e47208b4fc1b878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
