@@ -524,6 +524,20 @@ var (
 
 		// '//bionic/libc:libc_bp2build_cc_library_static' is duplicated in the 'deps' attribute of rule
 		"toybox-static",
+
+		// reflect: call of reflect.Value.NumField on interface Value
+		// affects all cc_tests that depend on art_defaults
+		"libnativebridge-tests",
+		"libnativeloader_test",
+		"art_libnativebridge_cts_tests",
+		"art_standalone_libdexfile_external_tests",
+		"art_standalone_libdexfile_support_tests",
+		"libnativebridge-lazy-tests",
+
+		// TODO(b/202876379)
+		// bp2build cannot migrate a module with arch/target-specific static_executable values
+		"KernelLibcutilsTest",
+		"libcutils_test_static",
 	}
 
 	Bp2buildCcLibraryStaticOnlyList = []string{}

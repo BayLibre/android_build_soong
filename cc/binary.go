@@ -16,8 +16,10 @@ package cc
 
 import (
 	"path/filepath"
+	"strings"
 
 	"android/soong/bazel/cquery"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -644,9 +646,11 @@ func binaryBp2build(ctx android.TopDownMutatorContext, m *Module, typ string) {
 		sdkAttributes: bp2BuildParseSdkAttributes(m),
 	}
 
+	// cc_binary_host -> cc_binary, cc_test -> cc_test
+	rule := strings.TrimSuffix(typ, "_host")
 	ctx.CreateBazelTargetModule(bazel.BazelTargetModuleProperties{
-		Rule_class:        "cc_binary",
-		Bzl_load_location: "//build/bazel/rules/cc:cc_binary.bzl",
+		Rule_class:        rule,
+		Bzl_load_location: "//build/bazel/rules/cc:" + rule + ".bzl",
 	},
 		android.CommonAttributes{Name: m.Name()},
 		attrs)

@@ -122,7 +122,7 @@ type TestBinaryProperties struct {
 }
 
 func init() {
-	android.RegisterModuleType("cc_test", TestFactory)
+	android.RegisterModuleType("cc_test", testFactory)
 	android.RegisterModuleType("cc_test_library", TestLibraryFactory)
 	android.RegisterModuleType("cc_benchmark", BenchmarkFactory)
 	android.RegisterModuleType("cc_test_host", TestHostFactory)
@@ -132,8 +132,8 @@ func init() {
 // cc_test generates a test config file and an executable binary file to test
 // specific functionality on a device. The executable binary gets an implicit
 // static_libs dependency on libgtests unless the gtest flag is set to false.
-func TestFactory() android.Module {
-	module := NewTest(android.HostAndDeviceSupported)
+func testFactory() android.Module {
+	module := NewTest(android.HostAndDeviceSupported, true)
 	return module.Init()
 }
 
@@ -156,7 +156,7 @@ func BenchmarkFactory() android.Module {
 
 // cc_test_host compiles a test host binary.
 func TestHostFactory() android.Module {
-	module := NewTest(android.HostSupported)
+	module := NewTest(android.HostSupported, true)
 	return module.Init()
 }
 
@@ -480,8 +480,8 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	test.binaryDecorator.baseInstaller.install(ctx, file)
 }
 
-func NewTest(hod android.HostOrDeviceSupported) *Module {
-	module, binary := newBinary(hod, false)
+func NewTest(hod android.HostOrDeviceSupported, bazelable bool) *Module {
+	module, binary := newBinary(hod, bazelable)
 	module.multilib = android.MultilibBoth
 	binary.baseInstaller = NewTestInstaller()
 

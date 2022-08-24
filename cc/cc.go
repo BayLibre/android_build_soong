@@ -3650,6 +3650,7 @@ const (
 	staticLibrary
 	sharedLibrary
 	headerLibrary
+	testBin // testBinary already declared
 )
 
 func (c *Module) typ() moduleType {
@@ -3675,6 +3676,8 @@ func (c *Module) typ() moduleType {
 			return staticLibrary
 		}
 		return sharedLibrary
+	} else if c.testBinary() {
+		return testBin
 	}
 	return unknownType
 }
@@ -3684,6 +3687,10 @@ func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	prebuilt := c.IsPrebuilt()
 	switch c.typ() {
 	case binary:
+		if !prebuilt {
+			binaryBp2build(ctx, c, ctx.ModuleType())
+		}
+	case testBin:
 		if !prebuilt {
 			binaryBp2build(ctx, c, ctx.ModuleType())
 		}
