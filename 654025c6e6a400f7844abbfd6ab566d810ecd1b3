@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4676c033_0b341e85",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-24T15:06:33Z",
+      "side": 1,
+      "message": "into!",
+      "parentUuid": "f9da33c5_ad3801f7",
+      "revId": "654025c6e6a400f7844abbfd6ab566d810ecd1b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "464429e3_38c448bb",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c09bb2_b8e68ff6",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-24T15:06:33Z",
+      "side": 1,
+      "message": "**gooood catch**, oof. I\u0027ve also now manually re-verified prod mode now with an allowlisted item results in it appearing bazel-enabled.",
+      "parentUuid": "464429e3_38c448bb",
+      "revId": "654025c6e6a400f7844abbfd6ab566d810ecd1b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b620a59_0601beb9",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-08-24T14:56:04Z",
       "side": 1,
       "message": "nit: while purely aesthetic, maybe switch-case reads nicer than if-else (since all conditions are based on `c.BuildMode`)",
+      "revId": "654025c6e6a400f7844abbfd6ab566d810ecd1b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "438e857a_a2b0a21f",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-24T15:06:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b620a59_0601beb9",
       "revId": "654025c6e6a400f7844abbfd6ab566d810ecd1b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
