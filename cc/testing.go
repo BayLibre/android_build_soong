@@ -534,7 +534,7 @@ var PrepareForTestWithCcBuildComponents = android.GroupFixturePreparers(
 	android.FixtureRegisterWithContext(RegisterRequiredBuildComponentsForTest),
 	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
 		ctx.RegisterModuleType("cc_fuzz", LibFuzzFactory)
-		ctx.RegisterModuleType("cc_test", TestFactory)
+		ctx.RegisterModuleType("cc_test", testFactory)
 		ctx.RegisterModuleType("cc_test_library", TestLibraryFactory)
 		ctx.RegisterModuleType("vndk_prebuilt_shared", VndkPrebuiltSharedFactory)
 
@@ -648,7 +648,7 @@ func CreateTestContext(config android.Config) *android.TestContext {
 	ctx := android.NewTestArchContext(config)
 	genrule.RegisterGenruleBuildComponents(ctx)
 	ctx.RegisterModuleType("cc_fuzz", LibFuzzFactory)
-	ctx.RegisterModuleType("cc_test", TestFactory)
+	ctx.RegisterModuleType("cc_test", testFactory)
 	ctx.RegisterModuleType("cc_test_library", TestLibraryFactory)
 	ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
 	ctx.RegisterModuleType("vndk_prebuilt_shared", VndkPrebuiltSharedFactory)

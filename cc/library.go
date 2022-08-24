@@ -2652,6 +2652,7 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 			hasStubs := true
 			sharedLibAttrs.Has_stubs.SetValue(&hasStubs)
 		}
+
 		attrs = sharedLibAttrs
 	}
 
