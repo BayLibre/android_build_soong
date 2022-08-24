@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -74,4 +75,19 @@ func TestGen(t *testing.T) {
 
 	})
 
+	t.Run("sysprop", func(t *testing.T) {
+		ctx := testCc(t, `
+		cc_library {
+			name: "libsysprop",
+			srcs: [
+				"path/to/foo.sysprop",
+				"path/to/bar.sysprop",
+			],
+		}`)
+
+		syspropOutputs := ctx.ModuleForTests("libsysprop", "android_arm_armv7-a-neon_shared").AllOutputs()
+		fmt.Printf("ALL OUTPUTS %v", syspropOutputs) // Notice that none of the generated cpp and header files are present here
+		syspropBuildParams := ctx.ModuleForTests("libsysprop", "android_arm_armv7-a-neon_shared").Rule("sysprop")
+		fmt.Printf("SYSPROP COMMAND %v", syspropBuildParams)
+	})
 }

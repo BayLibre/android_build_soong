@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
@@ -212,6 +213,7 @@ func genSysprop(ctx android.ModuleContext, syspropFile android.Path) (android.Pa
 
 	headers := android.WritablePaths{headerFile, publicHeaderFile}
 
+	fmt.Printf("I AM HERE")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:            sysprop,
 		Description:     "sysprop " + syspropFile.Rel(),
