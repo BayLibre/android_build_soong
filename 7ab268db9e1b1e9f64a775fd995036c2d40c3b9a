@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53be063d_ee8a96fc",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-24T18:26:30Z",
+      "side": 1,
+      "message": "This is unfortunately not equivalent in Go.  A slice is a pointer to an underlying backing array, and reslicing like this doesn\u0027t copy that backing array.  The next append will copy the backing array if there is not capacity for the new elements, but if there is capacity it will extend the slice into the existing backing array.  specificArgs is an argument to this function, and if the caller appends to specificArgs after the append to allArgs here it could clobber those extended elements in the backing array.\n\nhttps://go.dev/play/p/FE-G3iHzr-f\n\nAlso, this is identical to `allArgs :\u003d specificArgs`.\n\nThe idiomatic version of this that copies specificArgs would be `allArgs :\u003d append([]string(nil), specficArgs...)`",
+      "revId": "7ab268db9e1b1e9f64a775fd995036c2d40c3b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
