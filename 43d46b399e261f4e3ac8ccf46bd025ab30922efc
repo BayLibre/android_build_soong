@@ -140,6 +140,24 @@
       "parentUuid": "960b2b76_3deb939c",
       "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee57990_aac61b31",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-08-24T22:12:23Z",
+      "side": 1,
+      "message": "Adding modified [link](https://b.corp.google.com/issues/243685634) to the issue. Apologies for the inconvenience!",
+      "parentUuid": "6796fa5c_8496de9c",
+      "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
