@@ -30,6 +30,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
+	"github.com/google/blueprint/proptools"
 )
 
 // LibraryProperties is a collection of properties shared by cc library rules/cc.
@@ -2643,6 +2644,23 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 			hasStubs := true
 			sharedLibAttrs.Has_stubs.SetValue(&hasStubs)
 		}
+
+		testLinkerProps := module.GetArchVariantProperties(ctx, &TestLinkerProperties{})
+		for axis, configToProps := range testLinkerProps {
+			if axis == bazel.NoConfigAxis {
+				for _, props := range configToProps {
+					if p, ok := props.(*TestLinkerProperties); ok {
+						if proptools.BoolDefault(p.Gtest, true) {
+							// if gtest
+							gtestDeps := android.BazelLabelForModuleDeps(ctx, gtestStaticDeps)
+							sharedLibAttrs.Deps.Append(bazel.MakeLabelListAttribute(gtestDeps))
+							break
+						}
+					}
+				}
+			}
+		}
+
 		attrs = sharedLibAttrs
 	}
 
