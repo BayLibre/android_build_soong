@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4305c0d7_4f6d7974",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-08-24T23:02:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8962dacf_48c14c0e",
+      "range": {
+        "startLine": 782,
+        "startChar": 0,
+        "endLine": 782,
+        "endChar": 1
+      },
+      "revId": "3d0852abd34cd8238354c916e88c9b1c5afddab3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c618aef9_773ae572",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-23T22:55:39Z",
       "side": 1,
       "message": "isn\u0027t this condition already true given line 782?",
+      "range": {
+        "startLine": 790,
+        "startChar": 28,
+        "endLine": 790,
+        "endChar": 88
+      },
+      "revId": "3d0852abd34cd8238354c916e88c9b1c5afddab3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfe9307_7d856c1c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-08-24T23:02:00Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c618aef9_773ae572",
       "range": {
         "startLine": 790,
         "startChar": 28,
