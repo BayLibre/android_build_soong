@@ -158,6 +158,24 @@
       "parentUuid": "6796fa5c_8496de9c",
       "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0d695d2_7bcb6f84",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-24T22:51:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2ee57990_aac61b31",
+      "revId": "43d46b399e261f4e3ac8ccf46bd025ab30922efc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
