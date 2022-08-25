@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5531a99_4c903e7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-25T17:22:27Z",
+      "side": 1,
+      "message": "This has the effect of creating a \"vendor\" variant of this imported header module. Do the \"core\" variant and \"vendor\" variant of this API surface header library have any differences, or are we using this to control visibility?",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "7a114588baeea7e4c5e25a739c73dfb42c7e625e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c70906c_1c962ff5",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-25T17:22:27Z",
+      "side": 1,
+      "message": "(Aside: Should this be done explicitly in Android.bp rather than implicitly by the build system?)",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 71
+      },
+      "revId": "7a114588baeea7e4c5e25a739c73dfb42c7e625e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "460799e0_267fa8a6",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-25T17:22:27Z",
+      "side": 1,
+      "message": "Is this an expected use case? I thought that the a cc library and its headers belong to the same API domain, and therefore the former should use the \"source\" headers and not the one coming from an API surface",
+      "range": {
+        "startLine": 292,
+        "startChar": 30,
+        "endLine": 292,
+        "endChar": 89
+      },
+      "revId": "7a114588baeea7e4c5e25a739c73dfb42c7e625e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
