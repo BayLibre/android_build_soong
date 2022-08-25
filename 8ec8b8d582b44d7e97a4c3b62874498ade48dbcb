@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "26fd96a5_54b0a06c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-25T17:56:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7b073c3d_df6c469d",
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2a367855_973df3b0",
         "filename": "cc/bp2build.go",
         "patchSetId": 9
@@ -94,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fd1d57b_5fba3612",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-25T17:56:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01c3e229_4c210622",
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab8b99c9_109c9de8",
@@ -131,6 +167,30 @@
       "side": 1,
       "message": "Done. PTAL: [aosp/2183478/9..10/cc/bp2build.go](https://android-review.googlesource.com/c/platform/build/soong/+/2183478/9..10/cc/bp2build.go).",
       "parentUuid": "ab8b99c9_109c9de8",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 758,
+        "endChar": 0
+      },
+      "revId": "8ec8b8d582b44d7e97a4c3b62874498ade48dbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa56d661_0cc3fa6c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-25T17:56:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2e247e72_7f86bdc7",
       "range": {
         "startLine": 749,
         "startChar": 0,
