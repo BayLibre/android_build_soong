@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a5ce23_cd637559",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-08-25T20:39:45Z",
+      "side": 1,
+      "message": "so this relies on the default settings of the toolchain feature defs, it is probably safer to set the desired features explicitly if it is \"thumb\"",
+      "revId": "dc449dc7a8f7da213ef0b32c7fc85aa2c6252065",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f630b0a_f1963c6f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-08-25T20:39:45Z",
+      "side": 1,
+      "message": "nit: cover this logic in a test as well?",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 35
+      },
+      "revId": "dc449dc7a8f7da213ef0b32c7fc85aa2c6252065",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
