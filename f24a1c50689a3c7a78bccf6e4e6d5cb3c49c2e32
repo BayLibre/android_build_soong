@@ -34,6 +34,24 @@
       "parentUuid": "90688512_69abc4ed",
       "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08c0e41_3cfe9a48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-25T15:19:22Z",
+      "side": 1,
+      "message": "\u003e I think  cc_library_headers  should be the rule used by most authors.  cc_api_headers  should be used only when the headers are expected to be presented to an external API domain (similar to how we have a  cc_library_headers  _and_  cc_library_headers.llndk  _and_  ndk_headers  in Soong today)\n\nThat\u0027s how I\u0027m thinking about this as well 👍\n\n\u003e 1. If we make cc_api_headers a macro around cc_library_headers and make the latter private, one of the targets will always present an (unused) provider that is only meaningful to the build orchestrator, even when the headers are internal to the API domain. Also, cc_api_headers does not have any configuration transitions currently, but cc_library_headers should (can we do this in macros?)\n\u003e 2. Vice versa (cc_library_headers a macro around the other), we might need to do a glob expansion in bp2build so that  hdrs  are explicitly listed in the generated BUILD files. (And probably some string parsing to map the .h files to the relevant include_dir to create the cc_api_headers targets in the macro)\n\nIt would be nice to have fully specified `hdrs` for `cc_library_headers`. I don\u0027t really remember why we didn\u0027t do it and just relied on passing include paths and disabling sandboxing for CppCompile to freely access headers in the execroot. Liz, Chris, do you remember the history here?\n\nFor 1) I was thinking that `cc_api_headers` would use cc_library_headers internally with some attribute `api \u003d True`, and that attribute determines the creation of the additional provider used for the build orchestrator.\n\n```\ndef cc_api_headers(..): \n   cc_library_headers(name \u003d \"h\", hdrs \u003d select{...}, api \u003d True) # api \u003d True creates the additional provider\n```\n\nAlso (and alternatively), you should be able to use a transition in a macro.\n\n```\ndef cc_api_headers(name, ..., arch \u003d ...): \n   cc_library_headers(name \u003d name, hdrs \u003d select{...})\n   cc_api_headers(name \u003d name + \".api\", exports \u003d [\"h\"], arch \u003d arch) # apply outgoing arch transition on `exports`\n```\n\nThis would keep the concerns separate because all api headers are headers, but not all headers are api headers, i.e. cc_library_headers handle the providers for all things headers and include paths, and cc_api_headers elevates one or many cc_library_headers targets into an \"api\". \n\n\u003e Jin, is the idea of converging the two via a macro focussed to provide better readability/maintainalibilty of BUILD files for end users? Functionally, both approaches (macro/no_macro) should have similar effect\n\nYes, although I think it would be more worthwhile and useful to iterate as separate rules for now, and simplify as opportunities come up.",
+      "parentUuid": "1eeea94a_000e5086",
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
