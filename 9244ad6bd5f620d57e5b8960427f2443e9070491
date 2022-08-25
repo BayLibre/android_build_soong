@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "365c99d5_2c6a743a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-25T18:41:47Z",
+      "side": 1,
+      "message": "Should we iterate over the `aidlSrcs.ConfigurableValues` too here?",
+      "range": {
+        "startLine": 741,
+        "startChar": 45,
+        "endLine": 741,
+        "endChar": 47
+      },
+      "revId": "9244ad6bd5f620d57e5b8960427f2443e9070491",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
