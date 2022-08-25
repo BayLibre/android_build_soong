@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36361953_c3c96f36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-25T17:09:25Z",
+      "side": 1,
+      "message": "It\u0027s the last CL of soong for [Cross-Version ABI Check](go/cross-version-abi-check).",
+      "revId": "0f12a050b8c0072805699de48e777c208bbc1d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
