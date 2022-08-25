@@ -155,6 +155,7 @@ var (
 		"external/zopfli":                        Bp2BuildDefaultTrueRecursively,
 		"external/zstd":                          Bp2BuildDefaultTrueRecursively,
 
+		"frameworks/av":                                      Bp2BuildDefaultTrue,
 		"frameworks/av/media/codecs":                         Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/media/liberror":                       Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/services/minijail":                    Bp2BuildDefaultTrueRecursively,
