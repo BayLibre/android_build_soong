@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bed0e308_0bfc02fd",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-25T22:17:45Z",
+      "side": 1,
+      "message": "I wanted to do it this way in order to keep the build files clean. Otherwise, when people start writing build files themselves, they\u0027ll definitely forget to add arm_isa_thumb and then start compiling with different flags than what should be the default.",
+      "parentUuid": "61a5ce23_cd637559",
+      "revId": "dc449dc7a8f7da213ef0b32c7fc85aa2c6252065",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f630b0a_f1963c6f",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-25T20:39:45Z",
       "side": 1,
       "message": "nit: cover this logic in a test as well?",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 35
+      },
+      "revId": "dc449dc7a8f7da213ef0b32c7fc85aa2c6252065",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93883f99_5729d52c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-25T22:17:45Z",
+      "side": 1,
+      "message": "This was more of a \"just in case\" than anything strictly necessary. Right now linkerAttrs.features will never have the arm_isa features in it, so this won\u0027t actually do any deduplicating. Which also makes it not really testable without some contrived mocks.",
+      "parentUuid": "3f630b0a_f1963c6f",
       "range": {
         "startLine": 701,
         "startChar": 0,
