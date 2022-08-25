@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3694f5cb_de04f118",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-25T18:51:33Z",
+      "side": 1,
+      "message": "Just moved this code from the AIDL CL since it\u0027s not really related.",
+      "revId": "c1130dc721438d971c23f1beec4088904507523b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
