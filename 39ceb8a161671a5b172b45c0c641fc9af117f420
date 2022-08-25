@@ -22,6 +22,30 @@
       },
       "revId": "39ceb8a161671a5b172b45c0c641fc9af117f420",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dce8baa_f4210cb9",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-25T03:54:51Z",
+      "side": 1,
+      "message": "I removed some redundant functions. Thanks.",
+      "parentUuid": "b97d9cff_2a3fc9f4",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 1
+      },
+      "revId": "39ceb8a161671a5b172b45c0c641fc9af117f420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
