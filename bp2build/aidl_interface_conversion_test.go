@@ -13,6 +13,7 @@ func runAidlInterfaceTestCase(t *testing.T, tc Bp2buildTestCase) {
 		func(ctx android.RegistrationContext) {
 			ctx.RegisterModuleType("aidl_interface", aidl.AidlInterfaceFactory)
 			ctx.RegisterModuleType("aidl_interface_headers", aidl.AidlInterfaceHeadersFactory)
+			ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
 		},
 		tc,
 	)
@@ -22,6 +23,24 @@ func TestAidlInterfaceHeaders(t *testing.T) {
 	runAidlInterfaceTestCase(t, Bp2buildTestCase{
 		Description: `aidl_interface_headers`,
 		Blueprint: `
+filegroup {
+    name: "aidl-srcs",
+	srcs: [
+		"src/A.aidl",
+	],
+	bazel_module: {
+		bp2build_available: false,
+	},
+}
+
+aidl_interface_headers {
+    name: "aidl-interface-headers-filegroup",
+	include_dir: "src",
+	srcs: [
+		":aidl-srcs",
+	],
+}
+
 aidl_interface_headers {
     name: "aidl-interface-headers",
 	include_dir: "src",
@@ -34,6 +53,10 @@ aidl_interface_headers {
 			MakeBazelTargetNoRestrictions("aidl_library", "aidl-interface-headers", AttrNameToString{
 				"strip_import_prefix": `"src"`,
 				"hdrs":                `["src/A.aidl"]`,
+			}),
+			MakeBazelTargetNoRestrictions("aidl_library", "aidl-interface-headers-filegroup", AttrNameToString{
+				"strip_import_prefix": `"src"`,
+				"hdrs":                `[":aidl-srcs"]`,
 			}),
 		},
 	})
