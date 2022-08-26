@@ -16,6 +16,24 @@
       "message": "The semantics of this are a bit weird. ",
       "revId": "b7cbd72e0cd41b4bc4c4e32625f69785859cae95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56b0fe1_51dffe55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2022-08-26T23:56:15Z",
+      "side": 1,
+      "message": "accidentally truncated: regarding TARGET_SANITIZE_DIAG\u003dmemtag_heap to turn on sync mode.",
+      "parentUuid": "e34cdb46_7fd9bb56",
+      "revId": "b7cbd72e0cd41b4bc4c4e32625f69785859cae95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
