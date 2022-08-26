@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34cdb46_7fd9bb56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2022-08-26T23:55:48Z",
+      "side": 1,
+      "message": "The semantics of this are a bit weird. ",
+      "revId": "b7cbd72e0cd41b4bc4c4e32625f69785859cae95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
