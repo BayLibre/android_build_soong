@@ -237,6 +237,30 @@
       },
       "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "416e4c59_95c7a1f2",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1476,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-26T06:52:39Z",
+      "side": 1,
+      "message": "Hi, Jingwen! When I\u0027m resolving this unneeded exporting issue. I found the reason why these function are in paths.go is these function are the member function of certain type defined here or use them as their argument.\nFor example, the first argument of PathForVndkRefAbiDump is typed ModuleInstallPathContext which is defined earlier in paths.go. Other function like PathForModuleInstall, PathForHostDexInstall, PathForModuleInPartitionInstall and etc... have the same condition.\nAlthough these function may have only one caller in other file, I think it makes sense to place these function in paths.go and be exported since they are kind of helper function to a certain object type defined in paths.go.",
+      "parentUuid": "e47d0c65_06513e88",
+      "range": {
+        "startLine": 1476,
+        "startChar": 5,
+        "endLine": 1476,
+        "endChar": 26
+      },
+      "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
