@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d4cf1180_13887707",
+        "filename": "bp2build/aidl_interface_conversion_test.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-26T18:38:30Z",
+      "side": 1,
+      "message": "Done. Followed up in aosp/2199216.",
+      "parentUuid": "4a109aac_525bc7df",
+      "revId": "8712a5b4691b909eb809340cf0da86d545aca51f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c6b0629d_700fcf0f",
         "filename": "bp2build/aidl_interface_conversion_test.go",
         "patchSetId": 24
