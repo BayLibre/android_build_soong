@@ -33,6 +33,75 @@
       "message": "I would like inputs from Hsin-Yi as well",
       "revId": "0f12a050b8c0072805699de48e777c208bbc1d3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a696f85_3f47d58f",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-26T10:47:46Z",
+      "side": 1,
+      "message": "echo \u0027${errorMessage}\u0027",
+      "range": {
+        "startLine": 285,
+        "startChar": 22,
+        "endLine": 285,
+        "endChar": 43
+      },
+      "revId": "0f12a050b8c0072805699de48e777c208bbc1d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea5e9f3_e2d36b6b",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-26T10:47:46Z",
+      "side": 1,
+      "message": "If we quote this at caller, we don\u0027t need double quote here.",
+      "range": {
+        "startLine": 947,
+        "startChar": 18,
+        "endLine": 947,
+        "endChar": 19
+      },
+      "revId": "0f12a050b8c0072805699de48e777c208bbc1d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64341876_8d8c4ad8",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-26T10:47:46Z",
+      "side": 1,
+      "message": "i think we don\u0027t need to escape this dollar sign now",
+      "range": {
+        "startLine": 953,
+        "startChar": 61,
+        "endLine": 953,
+        "endChar": 63
+      },
+      "revId": "0f12a050b8c0072805699de48e777c208bbc1d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
