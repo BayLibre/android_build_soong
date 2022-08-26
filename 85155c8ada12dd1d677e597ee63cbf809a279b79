@@ -261,6 +261,30 @@
       },
       "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db0a5a96_e46d1eda",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1476,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-26T15:49:04Z",
+      "side": 1,
+      "message": "ModuleInstallPathContext is exported type, and this method only use exported methods of ModuleInstallPathContext, so I don\u0027t see how the situation you described bind this method to this file?",
+      "parentUuid": "416e4c59_95c7a1f2",
+      "range": {
+        "startLine": 1476,
+        "startChar": 5,
+        "endLine": 1476,
+        "endChar": 26
+      },
+      "revId": "85155c8ada12dd1d677e597ee63cbf809a279b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
