@@ -22,6 +22,30 @@
       },
       "revId": "2f4b5780acb48b22cc91be22f1bfc781c72f98e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9c3fb8_7baf8aac",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-26T20:24:47Z",
+      "side": 1,
+      "message": "Yeah that\u0027s easier. I didn\u0027t know if the bp2build step above did some setup that allowed bazel to run properly, but it makes sense that `bazel clean` should be able to run in any case.",
+      "parentUuid": "7a77f71c_a4d549f6",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "2f4b5780acb48b22cc91be22f1bfc781c72f98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
