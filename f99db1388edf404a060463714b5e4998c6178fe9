@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5cefef_b5a41815",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-26T21:29:36Z",
+      "side": 1,
+      "message": "can you add a comment about these different cases?",
+      "range": {
+        "startLine": 944,
+        "startChar": 1,
+        "endLine": 944,
+        "endChar": 25
+      },
+      "revId": "f99db1388edf404a060463714b5e4998c6178fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e122a51e_7ff84a99",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-26T21:29:36Z",
+      "side": 1,
+      "message": "can you add a comment or error about why we ignore non-int versions?",
+      "range": {
+        "startLine": 948,
+        "startChar": 2,
+        "endLine": 948,
+        "endChar": 67
+      },
+      "revId": "f99db1388edf404a060463714b5e4998c6178fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
