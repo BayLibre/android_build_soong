@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c8b1331_242248e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-26T20:29:20Z",
+      "side": 1,
+      "message": "Yes, that was one of the main goals of this cl. I prefer followup cls to topics though, so I\u0027ll do it after this is submitted.",
+      "parentUuid": "003901d0_2cab3045",
+      "revId": "6311d55a62f7f60d016b5b1096bf5d9f71b9e7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bd2933e_4b6e8eb9",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f95c08_4472e7ee",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-26T20:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bd2933e_4b6e8eb9",
+      "range": {
+        "startLine": 384,
+        "startChar": 4,
+        "endLine": 384,
+        "endChar": 87
+      },
+      "revId": "6311d55a62f7f60d016b5b1096bf5d9f71b9e7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fdb2c3f_c539292f",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-08-26T08:40:44Z",
       "side": 1,
       "message": "What is your rationale behind this merge logic? \n\nThis looks fragile and potentially confusing, especially given this is modifying the user-visible checked in file. Can we fail early/loudly here if there are package() statements in both files? Also why is the regex just checking for a specific package definition with visibility and not the other attributes? https://bazel.build/reference/be/functions#package\n\nI don\u0027t have a good answer on how we should handle conflict resolution here. I can imagine there are some cases where the checked in package function should take precedence, but in other cases the bp2build\u0027s package function actually necessary for the bp2build generated targets to work (like default_applicable_licenses in the future).",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "6311d55a62f7f60d016b5b1096bf5d9f71b9e7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "403fdbb8_e7f3aecc",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-26T20:29:20Z",
+      "side": 1,
+      "message": "I switched it to remove the generated package instead of the handcrafted package, and expanded the comment.\n\n\nAfter aosp/2175949, bp2build will always generate a package statement in every generated build file, regardless of if there are any allowlisted modules for that folder. This makes it so you essentially can\u0027t add any handcrafted package statements unless you delete the Android.bp file. I could remove every existing package() in all handcrafted build files, but the would 1) be more work 2) not allow anyone to intentionally add package() statements, although currently there are no nontrivial package statements: https://cs.android.com/search?q\u003df:(BUILD%7CBUILD.bazel)$%20%5E%5C%20*package%20(f:%5Eprebuilts%2F%20OR%20f:%5Ebuild%2F%20f:external%2Fbazelbuild-rules_android%20f:external%2Fbazel-skylib%20f:external%2Fguava%20f:external%2Fjsr305%20f:frameworks%2Fex%2Fcommon%20f:packages%2Fapps%2FMusic%20f:packages%2Fapps%2FQuickSearchBox%20OR%20%20f:%5Eprebuilts%2F)\u0026start\u003d1 (except maybe in prebuilts/ndk-r23/sources/third_party/googletest/test/BUILD.bazel)\n\nSo with this new functionality, if you add a handcrafted package statement, it will try to override the bp2build generated one if it\u0027s trivial. If the bp2build generated one is nontrivial, it will leave both of them in the build file and let bazel give you an error.\n\nI think this is a good balance of concerns, but let me know if there\u0027s another point I hadn\u0027t thought of.",
+      "parentUuid": "1fdb2c3f_c539292f",
       "range": {
         "startLine": 73,
         "startChar": 1,

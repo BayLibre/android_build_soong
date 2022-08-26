@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "218636bd_3d25ad44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-26T20:29:20Z",
+      "side": 1,
+      "message": "Also, after this cl, we can change bp2buildKeepExistingBuildFile to allowlist build/bazel recursively, instead of all the subdirectories individually. However, currently `examples/cc/aidl_library/BUILD` doesn\u0027t build (it needs aosp/2183478), so I didn\u0027t do that in this cl.\n",
+      "revId": "0857460d6324aa7221d420dda528c7a0d9ca7940",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
