@@ -51,6 +51,29 @@
       "parentUuid": "600a7f3a_2fe98f03",
       "revId": "e41b569cf72bd14ce2cbdfcde8bb721fd299970c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6a48d7_c3c24121",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1706,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-27T09:11:24Z",
+      "side": 1,
+      "message": "add an inline comment explaining this value is unused, like\n```\n...Diff_flags, /* don\u0027t care */ -1, ...\n```",
+      "range": {
+        "startLine": 1706,
+        "startChar": 53,
+        "endLine": 1706,
+        "endChar": 56
+      },
+      "revId": "e41b569cf72bd14ce2cbdfcde8bb721fd299970c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
