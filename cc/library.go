@@ -1623,12 +1623,12 @@ func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.
 	return nil
 }
 
-func prevDumpRefVersion(ctx ModuleContext) string {
+func prevDumpRefVersion(ctx ModuleContext) int {
 	sdkVersionInt := ctx.Config().PlatformSdkVersion().FinalInt()
 	sdkVersionStr := ctx.Config().PlatformSdkVersion().String()
 
 	if ctx.Config().PlatformSdkFinal() {
-		return strconv.Itoa(sdkVersionInt - 1)
+		return sdkVersionInt - 1
 	} else {
 		var dirName string
 
@@ -1644,9 +1644,9 @@ func prevDumpRefVersion(ctx ModuleContext) string {
 		// This situation could be identified by checking the existence of the PLATFORM_SDK_VERION dump directory.
 		refDumpDir := android.ExistentPathForSource(ctx, "prebuilts", "abi-dumps", dirName, sdkVersionStr)
 		if refDumpDir.Valid() {
-			return sdkVersionStr
+			return sdkVersionInt
 		} else {
-			return strconv.Itoa(sdkVersionInt - 1)
+			return sdkVersionInt - 1
 		}
 	}
 }
@@ -1654,7 +1654,7 @@ func prevDumpRefVersion(ctx ModuleContext) string {
 func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objects, fileName string, soFile android.Path) {
 	if library.sabi.shouldCreateSourceAbiDump() {
 		var version string
-		var prevVersion string
+		prevVersion := -1
 
 		if ctx.useVndk() {
 			// For modules linking against vndk, follow its vndk version
@@ -1686,12 +1686,14 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 
 		addLsdumpPath(classifySourceAbiDump(ctx) + ":" + library.sAbiOutputFile.String())
 
-		if prevVersion != "" {
-			prevRefAbiDumpFile := getRefAbiDumpFile(ctx, prevVersion, fileName)
+		// If prevVersion is not -1, perform previous version ABI Check since
+		// current library is either NDK or platform.
+		if prevVersion != -1 {
+			prevRefAbiDumpFile := getRefAbiDumpFile(ctx, strconv.Itoa(prevVersion), fileName)
 			if prevRefAbiDumpFile != nil {
 				library.prevSAbiDiff = sourceAbiDiff(ctx, library.sAbiOutputFile.Path(),
-					prevRefAbiDumpFile, fileName, prevVersion, exportedHeaderFlags,
-					library.Properties.Header_abi_checker.Diff_flags,
+					prevRefAbiDumpFile, fileName, exportedHeaderFlags,
+					library.Properties.Header_abi_checker.Diff_flags, prevVersion,
 					Bool(library.Properties.Header_abi_checker.Check_all_apis),
 					ctx.IsLlndk(), ctx.isNdk(ctx.Config()), ctx.IsVndkExt(), true)
 			}
@@ -1700,8 +1702,9 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 		refAbiDumpFile := getRefAbiDumpFile(ctx, version, fileName)
 		if refAbiDumpFile != nil {
 			library.sAbiDiff = sourceAbiDiff(ctx, library.sAbiOutputFile.Path(),
-				refAbiDumpFile, fileName, "", exportedHeaderFlags,
+				refAbiDumpFile, fileName, exportedHeaderFlags,
 				library.Properties.Header_abi_checker.Diff_flags,
+				/* unused if not previousVersionDiff */ -1,
 				Bool(library.Properties.Header_abi_checker.Check_all_apis),
 				ctx.IsLlndk(), ctx.isNdk(ctx.Config()), ctx.IsVndkExt(), false)
 		}
