@@ -33,6 +33,24 @@
       "message": "delete this comment",
       "revId": "e41b569cf72bd14ce2cbdfcde8bb721fd299970c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0114a366_0a812dbc",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-27T09:05:37Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "600a7f3a_2fe98f03",
+      "revId": "e41b569cf72bd14ce2cbdfcde8bb721fd299970c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
