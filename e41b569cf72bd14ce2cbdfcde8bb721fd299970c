@@ -74,6 +74,30 @@
       },
       "revId": "e41b569cf72bd14ce2cbdfcde8bb721fd299970c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e94a992c_59b8fc7d",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1706,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-27T09:20:30Z",
+      "side": 1,
+      "message": "`go fmt` doesn\u0027t like this. It format it to:\n`Diff_flags /* don\u0027t care */, -1,`\nor\n`Diff_flags, -1, /* don\u0027t care */`",
+      "parentUuid": "6c6a48d7_c3c24121",
+      "range": {
+        "startLine": 1706,
+        "startChar": 53,
+        "endLine": 1706,
+        "endChar": 56
+      },
+      "revId": "e41b569cf72bd14ce2cbdfcde8bb721fd299970c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
