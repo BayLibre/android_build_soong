@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b03c8b_b1e5d684",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-27T08:44:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7be2482f_86686001",
+      "range": {
+        "startLine": 944,
+        "startChar": 1,
+        "endLine": 944,
+        "endChar": 25
+      },
+      "revId": "f99db1388edf404a060463714b5e4998c6178fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e122a51e_7ff84a99",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "yeah if prevVersion is not empty, then it must be an integer string.\n\nideally you shall panic() or fprintf(stderr, \"prevVersion is not integer...\") on error, but since this shouldn\u0027t happen anyway, I\u0027m fine by handling this error like this in this change.\n\nMu-le, could you follow up by a fixup change that change |prevVersion| parameter type to int? Since the caller is doing Itoa and pass it into sourceAbiDump(), and sourceAbiDump() is calling Atoi to convert it back, it makes sense to not do the Itoa in the first place?",
       "parentUuid": "bdd6a245_0745c9f5",
+      "range": {
+        "startLine": 948,
+        "startChar": 2,
+        "endLine": 948,
+        "endChar": 67
+      },
+      "revId": "f99db1388edf404a060463714b5e4998c6178fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c58b7f_1990d0d7",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-27T08:44:33Z",
+      "side": 1,
+      "message": "Sure, I will do it.",
+      "parentUuid": "ab406a4c_d6b6714c",
       "range": {
         "startLine": 948,
         "startChar": 2,
