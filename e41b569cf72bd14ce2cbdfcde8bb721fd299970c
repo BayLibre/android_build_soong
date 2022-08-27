@@ -16,6 +16,23 @@
       "message": "I made this fix follows the [suggestion](https://android-review.googlesource.com/c/platform/build/soong/+/2183863/6..7/cc/builder.go#b948).",
       "revId": "e41b569cf72bd14ce2cbdfcde8bb721fd299970c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600a7f3a_2fe98f03",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-27T09:03:49Z",
+      "side": 1,
+      "message": "delete this comment",
+      "revId": "e41b569cf72bd14ce2cbdfcde8bb721fd299970c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
