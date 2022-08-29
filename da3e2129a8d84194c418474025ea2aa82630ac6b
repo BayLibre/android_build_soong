@@ -22,6 +22,30 @@
       },
       "revId": "da3e2129a8d84194c418474025ea2aa82630ac6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1047f346_d4437ecd",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2022-08-29T19:42:56Z",
+      "side": 1,
+      "message": "I believe so? IIUC `:\u003d` is only for declaring \u0026 initializing, and in this case we want `\u003d` for updating the existing `cflags` variable. I could be wrong though as my familiarity with go is quite limited",
+      "parentUuid": "81c19d26_24d5734d",
+      "range": {
+        "startLine": 169,
+        "startChar": 82,
+        "endLine": 169,
+        "endChar": 83
+      },
+      "revId": "da3e2129a8d84194c418474025ea2aa82630ac6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
