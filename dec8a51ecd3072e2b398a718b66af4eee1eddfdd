@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74cb1fb9_6572d842",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-29T19:57:26Z",
+      "side": 1,
+      "message": "I am using this throw-away assignment to explicitly clarify the ignoring of deps",
+      "revId": "dec8a51ecd3072e2b398a718b66af4eee1eddfdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
