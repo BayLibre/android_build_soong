@@ -2626,12 +2626,13 @@ cc_library {
     ]`,
 			}),
 			makeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
-				"whole_archive_deps": `[":foo_cc_aidl_library"]`,
-				"local_includes":     `["."]`,
+				"implementation_whole_archive_deps": `[":foo_cc_aidl_library"]`,
+				"local_includes":                    `["."]`,
 			}),
+			// TODO(b/239311679) Add implementation_whole_archive_deps to cc_library_shared
+			// for bp2build to be fully correct. This fallback is affecting proto as well.
 			makeBazelTarget("cc_library_shared", "foo", AttrNameToString{
-				"whole_archive_deps": `[":foo_cc_aidl_library"]`,
-				"local_includes":     `["."]`,
+				"local_includes": `["."]`,
 			}),
 		},
 	})
@@ -2660,6 +2661,41 @@ cc_library {
 		ExpectedBazelTargets: []string{
 			makeBazelTarget("cc_aidl_library", "foo_cc_aidl_library", AttrNameToString{
 				"deps": `["//path/to/A:A_aidl"]`,
+			}),
+			makeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
+				"implementation_whole_archive_deps": `[":foo_cc_aidl_library"]`,
+				"local_includes":                    `["."]`,
+			}),
+			// TODO(b/239311679) Add implementation_whole_archive_deps to cc_library_shared
+			// for bp2build to be fully correct. This fallback is affecting proto as well.
+			makeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"local_includes": `["."]`,
+			}),
+		},
+	})
+}
+
+func TestCcLibraryWithExportAidlHeaders(t *testing.T) {
+	runCcLibraryTestCase(t, Bp2buildTestCase{
+		Description:                "cc_library with export aidl headers",
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Blueprint: `
+cc_library {
+	name: "foo",
+	srcs: [
+		"Foo.aidl",
+	],
+	aidl: {
+		export_aidl_headers: true,
+	}
+}`,
+		ExpectedBazelTargets: []string{
+			makeBazelTarget("aidl_library", "foo_aidl_library", AttrNameToString{
+				"srcs": `["Foo.aidl"]`,
+			}),
+			makeBazelTarget("cc_aidl_library", "foo_cc_aidl_library", AttrNameToString{
+				"deps": `[":foo_aidl_library"]`,
 			}),
 			makeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
 				"whole_archive_deps": `[":foo_cc_aidl_library"]`,
