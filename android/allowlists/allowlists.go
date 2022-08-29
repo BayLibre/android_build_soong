@@ -367,6 +367,7 @@ var (
 		"libandroidio_srcs",
 		"libserviceutils",
 		"libstagefright_enc_common",
+		"libstagefright_foundation",
 		"libstagefright_foundation_headers",
 		"libstagefright_headers",
 		"libsurfaceflinger_headers",
