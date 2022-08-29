@@ -16,6 +16,24 @@
       "message": "Such conflicts are resolved in func (sanitize *sanitize) begin(ctx BaseModuleContext)",
       "revId": "9462961d27328f2d0dbc8cba22d6984187b02921",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3765022f_42d89ef2",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1310,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2022-08-29T21:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83bd214b_ee1c2d8d",
+      "revId": "9462961d27328f2d0dbc8cba22d6984187b02921",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
