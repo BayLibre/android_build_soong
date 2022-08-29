@@ -34,6 +34,23 @@
       "parentUuid": "e34cdb46_7fd9bb56",
       "revId": "b7cbd72e0cd41b4bc4c4e32625f69785859cae95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc78701_48c6d32c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2022-08-29T17:59:10Z",
+      "side": 1,
+      "message": "AFAICT the toolchain has now sufficiently been rolled . \n\n* https://r.android.com/2138455\n* https://r.android.com/2160498\n\nThis does not include support for memtag-stack for code using exceptions, but the new memtag-heap logic will work.",
+      "revId": "b7cbd72e0cd41b4bc4c4e32625f69785859cae95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
