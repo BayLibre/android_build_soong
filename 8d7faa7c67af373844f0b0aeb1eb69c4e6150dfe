@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b31445f_f71c99cf",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-29T22:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36ffd0bc_4ed3810d",
+      "revId": "8d7faa7c67af373844f0b0aeb1eb69c4e6150dfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e99393d_9f3fc278",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-29T21:37:51Z",
       "side": 1,
       "message": "regenerated*",
+      "revId": "8d7faa7c67af373844f0b0aeb1eb69c4e6150dfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39add67a_3445b6d4",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-29T22:23:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e99393d_9f3fc278",
       "revId": "8d7faa7c67af373844f0b0aeb1eb69c4e6150dfe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
