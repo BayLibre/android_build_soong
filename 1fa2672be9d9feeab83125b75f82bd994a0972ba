@@ -16,6 +16,24 @@
       "message": "This breaks branch \u0027tradefed\u0027. https://android-build.googleplex.com/builds/branches/tradefed/grid? ",
       "revId": "1fa2672be9d9feeab83125b75f82bd994a0972ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ad424d_d145303b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-29T22:19:27Z",
+      "side": 1,
+      "message": "delmerico@\n\nThis seems like an issue similar to what yudiliu@ ran into with hidl and ended up having the tests in `system/tools/hidl/build/hidl_interface_conversion_test.go`.\n\nSince the fix includes moving the test to a separate repo `system/tools/aidl` (a different repo), I think it makes sense to revert this CL and follow-up with a CL to add the same tests to `system/tools/aidl/build/aidl_interface_conversion_test.go` in the other repo.",
+      "parentUuid": "8611ece7_200ae8da",
+      "revId": "1fa2672be9d9feeab83125b75f82bd994a0972ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
