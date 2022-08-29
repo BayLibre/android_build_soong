@@ -306,6 +306,8 @@ var (
 		"flatbuffer_headers",
 		"gemmlowp_headers",
 		"gl_headers",
+		"libgui_bufferqueue_static",
+		"libgui_aidl",
 		"libandroid_runtime_lazy",
 		"libandroid_runtime_vm_headers",
 		"libaudioclient_aidl_conversion_util",
