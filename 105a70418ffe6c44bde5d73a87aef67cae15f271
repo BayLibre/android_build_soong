@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f69ca0_4e486512",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-29T23:05:03Z",
+      "side": 1,
+      "message": "Two of the presubmit failures need aosp/2200695 to pass. I\u0027m not sure if the third one is just flaky. ",
+      "revId": "105a70418ffe6c44bde5d73a87aef67cae15f271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
