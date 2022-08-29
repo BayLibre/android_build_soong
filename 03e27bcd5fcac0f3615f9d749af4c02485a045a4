@@ -16,6 +16,23 @@
       "message": "PTAL, looks like I need another +2",
       "revId": "03e27bcd5fcac0f3615f9d749af4c02485a045a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e6dcd8e_0ee2e94d",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-29T14:49:38Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand \"write out a 0-byte ninja file\"",
+      "revId": "03e27bcd5fcac0f3615f9d749af4c02485a045a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
