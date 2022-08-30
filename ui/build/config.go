@@ -99,8 +99,6 @@ type configImpl struct {
 
 	pathReplaced bool
 
-	// TODO(b/243077098): Remove useBazel.
-	useBazel      bool
 	bazelProdMode bool
 	bazelDevMode  bool
 
@@ -439,20 +437,8 @@ func NewConfig(ctx Context, args ...string) Config {
 		ctx.Fatalf("Unable to remove bazel profile directory %q: %v", bpd, err)
 	}
 
-	ret.useBazel = ret.environ.IsEnvTrue("USE_BAZEL")
-
-	if ret.UseBazel() {
-		if err := os.MkdirAll(bpd, 0777); err != nil {
-			ctx.Fatalf("Failed to create bazel profile directory %q: %v", bpd, err)
-		}
-	}
-
-	if ret.UseBazel() {
-		ret.riggedDistDirForBazel = filepath.Join(ret.OutDir(), "dist")
-	} else {
-		// Not rigged
-		ret.riggedDistDirForBazel = ret.distDir
-	}
+	// Not rigged
+	ret.riggedDistDirForBazel = ret.distDir
 
 	c := Config{ret}
 	storeConfigMetrics(ctx, c)
@@ -486,7 +472,6 @@ func buildConfig(config Config) *smpb.BuildConfig {
 		ForceUseGoma:    proto.Bool(config.ForceUseGoma()),
 		UseGoma:         proto.Bool(config.UseGoma()),
 		UseRbe:          proto.Bool(config.UseRBE()),
-		BazelAsNinja:    proto.Bool(config.UseBazel()),
 		BazelMixedBuild: proto.Bool(config.BazelBuildEnabled()),
 	}
 	c.Targets = append(c.Targets, config.arguments...)
@@ -877,11 +862,7 @@ func (c *configImpl) OutDir() string {
 }
 
 func (c *configImpl) DistDir() string {
-	if c.UseBazel() {
-		return c.riggedDistDirForBazel
-	} else {
-		return c.distDir
-	}
+	return c.distDir
 }
 
 func (c *configImpl) RealDistDir() string {
@@ -1127,11 +1108,6 @@ func (c *configImpl) UseRBE() bool {
 		}
 	}
 	return false
-}
-
-// TODO(b/243077098): Remove UseBazel.
-func (c *configImpl) UseBazel() bool {
-	return c.useBazel
 }
 
 func (c *configImpl) BazelBuildEnabled() bool {

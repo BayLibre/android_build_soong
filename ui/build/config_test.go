@@ -1139,7 +1139,6 @@ func TestBuildConfig(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			c := &configImpl{
 				environ:       &tc.environ,
-				useBazel:      tc.useBazel,
 				bazelDevMode:  tc.bazelDevMode,
 				bazelProdMode: tc.bazelProdMode,
 				arguments:     tc.arguments,
