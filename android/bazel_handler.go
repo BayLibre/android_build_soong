@@ -351,7 +351,7 @@ func NewBazelContext(c *config) (BazelContext, error) {
 	case BazelProdMode:
 		modulesDefaultToBazel = false
 
-		for _, enabledProdModule := range allowlists.ProdMixedBuildsEnabledList {
+		for enabledProdModule, _ := range allowlists.ProdMixedBuildsEnabledList {
 			enabledModules[enabledProdModule] = true
 		}
 	case BazelDevMode:
@@ -363,7 +363,7 @@ func NewBazelContext(c *config) (BazelContext, error) {
 		for staticOnlyModule, _ := range GetBp2BuildAllowList().ccLibraryStaticOnly {
 			disabledModules[staticOnlyModule] = true
 		}
-		for _, disabledDevModule := range allowlists.MixedBuildsDisabledList {
+		for disabledDevModule, _ := range allowlists.MixedBuildsDisabledList {
 			disabledModules[disabledDevModule] = true
 		}
 	default:

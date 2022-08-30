@@ -225,24 +225,25 @@ type bp2BuildConversionAllowlist struct {
 	//
 	// A module can either be in this list or its directory allowlisted entirely
 	// in bp2buildDefaultConfig, but not both at the same time.
-	moduleAlwaysConvert map[string]bool
+	moduleAlwaysConvert map[string]struct{}
 
 	// Per-module-type allowlist to always opt modules in to both bp2build and
 	// Bazel Dev Mode mixed builds when they have the same type as one listed.
-	moduleTypeAlwaysConvert map[string]bool
+	moduleTypeAlwaysConvert map[string]struct{}
 
 	// Per-module denylist to always opt modules out of bp2build conversion.
-	moduleDoNotConvert map[string]bool
+	moduleDoNotConvert map[string]struct{}
 
 	// Per-module denylist of cc_library modules to only generate the static
 	// variant if their shared variant isn't ready or buildable by Bazel.
-	ccLibraryStaticOnly map[string]bool
+	ccLibraryStaticOnly map[string]struct{}
 }
 
 // GenerateCcLibraryStaticOnly returns whether a cc_library module should only
 // generate a static version of itself based on the current global configuration.
 func (a bp2BuildConversionAllowlist) GenerateCcLibraryStaticOnly(moduleName string) bool {
-	return a.ccLibraryStaticOnly[moduleName]
+	_, present := a.ccLibraryStaticOnly[moduleName]
+	return present
 }
 
 // NewBp2BuildAllowlist creates a new, empty bp2BuildConversionAllowlist
@@ -251,10 +252,10 @@ func NewBp2BuildAllowlist() bp2BuildConversionAllowlist {
 	return bp2BuildConversionAllowlist{
 		allowlists.Bp2BuildConfig{},
 		map[string]bool{},
-		map[string]bool{},
-		map[string]bool{},
-		map[string]bool{},
-		map[string]bool{},
+		map[string]struct{}{},
+		map[string]struct{}{},
+		map[string]struct{}{},
+		map[string]struct{}{},
 	}
 }
 
@@ -283,48 +284,48 @@ func (a bp2BuildConversionAllowlist) SetKeepExistingBuildFile(keepExistingBuildF
 }
 
 // SetModuleAlwaysConvertList copies the entries from moduleAlwaysConvert into the allowlist
-func (a bp2BuildConversionAllowlist) SetModuleAlwaysConvertList(moduleAlwaysConvert []string) bp2BuildConversionAllowlist {
+func (a bp2BuildConversionAllowlist) SetModuleAlwaysConvertList(moduleAlwaysConvert map[string]struct{}) bp2BuildConversionAllowlist {
 	if a.moduleAlwaysConvert == nil {
-		a.moduleAlwaysConvert = map[string]bool{}
+		a.moduleAlwaysConvert = map[string]struct{}{}
 	}
-	for _, m := range moduleAlwaysConvert {
-		a.moduleAlwaysConvert[m] = true
+	for m, _ := range moduleAlwaysConvert {
+		a.moduleAlwaysConvert[m] = struct{}{}
 	}
 
 	return a
 }
 
 // SetModuleTypeAlwaysConvertList copies the entries from moduleTypeAlwaysConvert into the allowlist
-func (a bp2BuildConversionAllowlist) SetModuleTypeAlwaysConvertList(moduleTypeAlwaysConvert []string) bp2BuildConversionAllowlist {
+func (a bp2BuildConversionAllowlist) SetModuleTypeAlwaysConvertList(moduleTypeAlwaysConvert map[string]struct{}) bp2BuildConversionAllowlist {
 	if a.moduleTypeAlwaysConvert == nil {
-		a.moduleTypeAlwaysConvert = map[string]bool{}
+		a.moduleTypeAlwaysConvert = map[string]struct{}{}
 	}
-	for _, m := range moduleTypeAlwaysConvert {
-		a.moduleTypeAlwaysConvert[m] = true
+	for m, _ := range moduleTypeAlwaysConvert {
+		a.moduleTypeAlwaysConvert[m] = struct{}{}
 	}
 
 	return a
 }
 
 // SetModuleDoNotConvertList copies the entries from moduleDoNotConvert into the allowlist
-func (a bp2BuildConversionAllowlist) SetModuleDoNotConvertList(moduleDoNotConvert []string) bp2BuildConversionAllowlist {
+func (a bp2BuildConversionAllowlist) SetModuleDoNotConvertList(moduleDoNotConvert map[string]struct{}) bp2BuildConversionAllowlist {
 	if a.moduleDoNotConvert == nil {
-		a.moduleDoNotConvert = map[string]bool{}
+		a.moduleDoNotConvert = map[string]struct{}{}
 	}
-	for _, m := range moduleDoNotConvert {
-		a.moduleDoNotConvert[m] = true
+	for m, _ := range moduleDoNotConvert {
+		a.moduleDoNotConvert[m] = struct{}{}
 	}
 
 	return a
 }
 
 // SetCcLibraryStaticOnlyList copies the entries from ccLibraryStaticOnly into the allowlist
-func (a bp2BuildConversionAllowlist) SetCcLibraryStaticOnlyList(ccLibraryStaticOnly []string) bp2BuildConversionAllowlist {
+func (a bp2BuildConversionAllowlist) SetCcLibraryStaticOnlyList(ccLibraryStaticOnly map[string]struct{}) bp2BuildConversionAllowlist {
 	if a.ccLibraryStaticOnly == nil {
-		a.ccLibraryStaticOnly = map[string]bool{}
+		a.ccLibraryStaticOnly = map[string]struct{}{}
 	}
-	for _, m := range ccLibraryStaticOnly {
-		a.ccLibraryStaticOnly[m] = true
+	for m, _ := range ccLibraryStaticOnly {
+		a.ccLibraryStaticOnly[m] = struct{}{}
 	}
 
 	return a
@@ -432,15 +433,15 @@ func (b *BazelModuleBase) shouldConvertWithBp2build(ctx bazelOtherModuleContext,
 
 	moduleName := module.Name()
 	allowlist := ctx.Config().bp2buildPackageConfig
-	moduleNameAllowed := allowlist.moduleAlwaysConvert[moduleName]
-	moduleTypeAllowed := allowlist.moduleTypeAlwaysConvert[ctx.OtherModuleType(module)]
+	_, moduleNameAllowed := allowlist.moduleAlwaysConvert[moduleName]
+	_, moduleTypeAllowed := allowlist.moduleTypeAlwaysConvert[ctx.OtherModuleType(module)]
 	allowlistConvert := moduleNameAllowed || moduleTypeAllowed
 	if moduleNameAllowed && moduleTypeAllowed {
 		ctx.ModuleErrorf("A module cannot be in moduleAlwaysConvert and also be in moduleTypeAlwaysConvert")
 		return false
 	}
 
-	if allowlist.moduleDoNotConvert[moduleName] {
+	if _, exists := allowlist.moduleDoNotConvert[moduleName]; exists {
 		if moduleNameAllowed {
 			ctx.ModuleErrorf("a module cannot be in moduleDoNotConvert and also be in moduleAlwaysConvert")
 		}
