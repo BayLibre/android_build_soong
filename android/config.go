@@ -120,6 +120,10 @@ func (c Config) Subninjas() []string {
 	return []string{}
 }
 
+func (c Config) ClangTidyDirs() map[string]bool {
+	return c.clangTidyDirs
+}
+
 func (c Config) PrimaryBuilderInvocations() []bootstrap.PrimaryBuilderInvocation {
 	return []bootstrap.PrimaryBuilderInvocation{}
 }
@@ -170,6 +174,8 @@ type config struct {
 	outDir         string // The output directory (usually out/)
 	soongOutDir    string
 	moduleListFile string // the path to the file which lists blueprint files to parse.
+
+	clangTidyDirs map[string]bool // a set of dir paths, of dirs with .clang-tidy files
 
 	runGoTests bool
 
@@ -383,7 +389,7 @@ func NullConfig(outDir, soongOutDir string) Config {
 
 // NewConfig creates a new Config object. The srcDir argument specifies the path
 // to the root source directory. It also loads the config file, if found.
-func NewConfig(moduleListFile string, buildMode SoongBuildMode, runGoTests bool, outDir, soongOutDir string, availableEnv map[string]string) (Config, error) {
+func NewConfig(moduleListFile string, tidyListFile string, buildMode SoongBuildMode, runGoTests bool, outDir, soongOutDir string, availableEnv map[string]string) (Config, error) {
 	// Make a config with default options.
 	config := &config{
 		ProductVariablesFileName: filepath.Join(soongOutDir, productVariablesFileName),
@@ -413,6 +419,11 @@ func NewConfig(moduleListFile string, buildMode SoongBuildMode, runGoTests bool,
 	}
 
 	absSrcDir, err := filepath.Abs(".")
+	if err != nil {
+		return Config{}, err
+	}
+
+	err = config.readTidyDirs(tidyListFile)
 	if err != nil {
 		return Config{}, err
 	}
@@ -1708,4 +1719,26 @@ func (c *config) LogMixedBuild(ctx BaseModuleContext, useBazel bool) {
 	} else {
 		c.mixedBuildDisabledModules[moduleName] = struct{}{}
 	}
+}
+
+func (c *config) readTidyDirs(tidyListFile string) error {
+	c.clangTidyDirs = make(map[string]bool)
+	if tidyListFile == "" {
+		return nil // without the list file, assume no .clang-tidy
+	}
+	file, err := c.fs.Open(tidyListFile)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+	bytes, err := ioutil.ReadAll(file)
+	if err != nil {
+		return err
+	}
+	lines := strings.Split(string(bytes), "\n")
+	for _, line := range lines {
+		dir, _ := filepath.Split(line)
+		c.clangTidyDirs[dir] = true
+	}
+	return nil
 }

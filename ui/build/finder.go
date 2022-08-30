@@ -68,6 +68,8 @@ func NewSourceFinder(ctx Context, config Config) (f *finder.Finder) {
 		ExcludeDirs:      []string{".git", ".repo"},
 		PruneFiles:       pruneFiles,
 		IncludeFiles: []string{
+			// clang-tidy config files.
+			".clang-tidy",
 			// Kati build definitions.
 			"Android.mk",
 			// Product configuration files.
@@ -132,9 +134,16 @@ func FindSources(ctx Context, config Config, f *finder.Finder) {
 	dumpDir := config.FileListDir()
 	os.MkdirAll(dumpDir, 0777)
 
+	// Recursively look for all .clang-tidy files.
+	clangTidy := f.FindNamedAt(".", ".clang-tidy")
+	err := dumpListToFile(ctx, config, clangTidy, filepath.Join(dumpDir, ".clang-tidy.list"))
+	if err != nil {
+		ctx.Fatalf("Could not find .clang-tidy: %v", err)
+	}
+
 	// Stop searching a subdirectory recursively after finding an Android.mk.
 	androidMks := f.FindFirstNamedAt(".", "Android.mk")
-	err := dumpListToFile(ctx, config, androidMks, filepath.Join(dumpDir, "Android.mk.list"))
+	err = dumpListToFile(ctx, config, androidMks, filepath.Join(dumpDir, "Android.mk.list"))
 	if err != nil {
 		ctx.Fatalf("Could not export module list: %v", err)
 	}
