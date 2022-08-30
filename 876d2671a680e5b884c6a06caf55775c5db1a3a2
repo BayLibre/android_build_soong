@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4af02c5_ea40023c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-30T16:05:18Z",
+      "side": 1,
+      "message": "The use of `ok` when casting to prop structs is pretty much the standard we use across Soong repo. For example, [the first 3 lines](https://android.googlesource.com/platform/build/soong/+/refs/changes/81/2198881/4/cc/bp2build.go#631) in this function use 3 helper functions to get the props. And the helper functions also use the same pattern.\n\n\u003e If this type conversion separate static/shared cc_libraries as a result of b/239311679, can we leave a TODO here too?\n\nThis isn\u0027t about static vs shared. It\u0027s about whole_archive_deps vs implemenation_whole_archive_deps.\n\nNothing here needs to be modified when b/239311679 is fixed. Instead, we need to fix the tests to reflect the new implemenation_whole_archive_deps attr in cc_library_shared.",
+      "parentUuid": "1e1a399b_24dcaaf1",
+      "revId": "876d2671a680e5b884c6a06caf55775c5db1a3a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45bd74b9_fd42a4b6",
         "filename": "cc/bp2build.go",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-30T15:54:56Z",
       "side": 1,
       "message": "In the comment before it says:\n```\n// TODO(b/243023967) Add aidlDep to implementationWholeArchiveDeps if aidl.export_aidl_headers is true\n```\nbut here we are adding to `wholeArchiveDeps` if `export_aidl_headers` is true. Is this intentional?\n\nIf this is a result of b/239311679, can we leave a TODO here too?",
+      "range": {
+        "startLine": 731,
+        "startChar": 0,
+        "endLine": 733,
+        "endChar": 0
+      },
+      "revId": "876d2671a680e5b884c6a06caf55775c5db1a3a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "674d7613_7e9cb809",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-30T16:05:18Z",
+      "side": 1,
+      "message": "That was a typo. I meant to say\n```\n// TODO(b/243023967) Add aidlDep to implementationWholeArchiveDeps if aidl.export_aidl_headers is false/unset. Otherwise, add aidLDep to wholeArchiveDeps.\n```",
+      "parentUuid": "45bd74b9_fd42a4b6",
       "range": {
         "startLine": 731,
         "startChar": 0,
