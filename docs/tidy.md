@@ -27,6 +27,58 @@ The default global clang-tidy checks and flags are defined in
 [build/soong/cc/config/tidy.go](https://android.googlesource.com/platform/build/soong/+/refs/heads/master/cc/config/tidy.go).
 
 
+## Phony tidy-* targets
+
+### The tidy-*directory* targets
+
+Setting `WITH_TIDY=1` is easy to enable clang-tidy globally for any build.
+However, it adds extra compilation time.
+
+For developers focusing on just one directory, they only want to compile
+their files with clang-tidy and wish to build other Android components as
+fast as possible. Changing the `WITH_TIDY=1` variable setting is also expensive
+since the build.ninja file will be regenerated due to any such variable change.
+
+To manually select only some directories or modules to compile with clang-tidy,
+do not set the `WITH_TIDY=1` variable, but use the special `tidy-<directory>`
+phony target. For example, a person working on `system/libbase` can build
+Android quickly with
+```
+unset WITH_TIDY # Optional, not if you haven't set WITH_TIDY
+make droid tidy-system-libbase
+```
+
+For any directory `d1/d2/d3`, a phony target tidy-d1-d2-d3 is generated
+if there is any C/C++ source file under `d1/d2/d3`.
+
+Note that with `make droid tidy-system-libbase`, some C/C++ files
+that are not needed by the `droid` target will be passed to clang-tidy
+if they are under `system/libbase`. This is like a `checkbuild`
+under `system/libbase` to include all modules, but only C/C++
+files of those modules are compiled with clang-tidy.
+
+### The tidy-soong target
+
+A special `tidy-soong` target is defined to include all C/C++
+source files in *all* directories. This phony target is sometimes
+used to test if all source files compile with a new clang-tidy release.
+
+### The tidy-*_subset targets
+
+A *subset* of each tidy-* phony target is defined to reduce test time.
+Since any Android module, a C/C++ library or binary, can be built
+for many different *variants*, one C/C++ source file is usually
+compiled multiple times with different compilation flags.
+Many of such *variant* flags have little or no effect on clang-tidy
+checks. To reduce clang-tidy check time, a *subset* target like
+`tidy-soong_subset` or `tidy-system-libbase_subset` is generated
+to include only a subset, the first variant, of each module in
+the directory.
+
+Hence, for C/C++ source code quality, instead of a long
+"make checkbuild", we can use "make tidy-soong_subset".
+
+
 ## Module clang-tidy properties
 
 The global default can be overwritten by module properties in Android.bp.
@@ -171,57 +223,95 @@ under that directory. Now `odrefresh-defaults` is interested
 in seeing warnings from both `art/odrefresh/` and `system/apex/`
 and it redefines `-header-filter` in its `tidy_flags`.
 
+## Clang-tidy config files
 
-## Phony tidy-* targets
+The global defaults and Android.bp `tidy_*` properties are converted to
+clang-tidy command line flags.
+When clang-tidy is invoked with these flags,
+it also looks up a *config file*, which can contain *default* checks and options.
 
-### The tidy-*directory* targets
+If a default config file is found or a config file is specified at command line,
+the Android global default *tidy checks* list will be ignored.
+The config file could have a `Checks` list to serve as the *global default*.
+Any other checks specified in the Android.bp `tidy_checks` list will be
+appended to the *global default*.
+This is the same behavior as invoking clang-tidy manually.
+The command line flag `--checks` can specify *additional* checks to be
+appended after the `Checks` list in a config file.
 
-Setting `WITH_TIDY=1` is easy to enable clang-tidy globally for any build.
-However, it adds extra compilation time.
+Similarly the tidy config file can specify a `WarnningsAsErrors` list.
+The Android.bp `tidy_checks_as_errors` list is converted to command line
+flag `--warnings-as-errors`, and this list is appended to
+the `WarnningsAsErrors` list in the tidy config file.
 
-For developers focusing on just one directory, they only want to compile
-their files with clang-tidy and wish to build other Android components as
-fast as possible. Changing the `WITH_TIDY=1` variable setting is also expensive
-since the build.ninja file will be regenerated due to any such variable change.
+Note that Android build system will always append some global "disabled checks"
+or "allowed-checks-as-warnings" to a clang-tidy command line,
+so that we can skip buggy or very noisy tidy checks or not to stop
+a build due to some clang-tidy warnings.
 
-To manually select only some directories or modules to compile with clang-tidy,
-do not set the `WITH_TIDY=1` variable, but use the special `tidy-<directory>`
-phony target. For example, a person working on `system/libbase` can build
-Android quickly with
+The clang-tidy config files are useful in several cases:
+* To specify more clang-tidy config options that are not easy to
+  do with command line flags or Android.bp properties.
+  For example, some .clang-tidy files include a long list of `CheckOptions`
+  that will be awkward to be passed through command line flags.
+* For projects with many subdirectories and modules sharing the same clang-tidy
+  checks and options, it is easier to put all such checks and options in one
+  root directory .clang-tidy file. This will avoid changing many Android.bp
+  files to share new `tidy_*` properties.
+* For projects that are compiled on both Android and other platforms,
+  the clang-tidy config file is the only way to work on all platforms.
+* For faster edit-compile cycle, changing .clang-tidy files only recompile
+  dependent C/C++ files with clang-tidy, but changing tidy properties in
+  Android.bp files will trigger regeneration of the build.ninja file.
+
+### The default `.clang-tidy` config file
+
+When clang-tidy is invoked to compile a source file in directory `d1/d2/d3/`,
+it will look up the default config file `.clang-tidy` in directory `d1/d2/d3/`,
+`d1/d2/`, and `d1/` in that order. The first found `.clang-tidy` will be used.
+
+Current Android projects mostly do not have `.clang-tidy` file and rely on
+the default global flags plus local tidy properties in the Android.bp file.
+Some projects, especially third-party projects, have used `.clang-tidy` files
+to compile on Android and other platforms.
+
+### User defined config files and `tidy_config_file`
+
+When clang-tidy is invoked with the `--config-file=` flag, the given
+config file will be used instead of the default `.clang-tidy` file.
+Adding `--config-file=` flag manually into the `tidy_flags` list
+is error prone and disallowed.
+Instead, a `tidy_config_file` property is provided to specify
+the user tidy config file.
+
+Note that `tidy_config_file` should contain a file path relative to
+the Android *source tree root*. This path will be passed to clang-tidy
+through the `--config_file=` flag, and clang-tidy will look up that
+file from the *current* directory, which is the Android *source tree root*.
+
+The main use case of `tidy_config_file` is to provide clang-tidy configuration for
+generated files or source files whose parent directories do not have `.clang-tidy`.
+For example, `project/xyz/tidy.config.txt` can be used with a declaration like
 ```
-unset WITH_TIDY # Optional, not if you haven't set WITH_TIDY
-make droid tidy-system-libbase
+cc_defaults {
+  name: "xyz_tidy_defaults",
+  tidy_config_file: "project/xyz/tidy.config.txt",
+}
 ```
 
-For any directory `d1/d2/d3`, a phony target tidy-d1-d2-d3 is generated
-if there is any C/C++ source file under `d1/d2/d3`.
+Any module that inherits the `xyz_tidy_defaults` will use
+`project/xyz/tidy.config.txt` as the clang-tidy config file,
+for any module or source file location.
 
-Note that with `make droid tidy-system-libbase`, some C/C++ files
-that are not needed by the `droid` target will be passed to clang-tidy
-if they are under `system/libbase`. This is like a `checkbuild`
-under `system/libbase` to include all modules, but only C/C++
-files of those modules are compiled with clang-tidy.
-
-### The tidy-soong target
-
-A special `tidy-soong` target is defined to include all C/C++
-source files in *all* directories. This phony target is sometimes
-used to test if all source files compile with a new clang-tidy release.
-
-### The tidy-*_subset targets
-
-A *subset* of each tidy-* phony target is defined to reduce test time.
-Since any Android module, a C/C++ library or binary, can be built
-for many different *variants*, one C/C++ source file is usually
-compiled multiple times with different compilation flags.
-Many of such *variant* flags have little or no effect on clang-tidy
-checks. To reduce clang-tidy check time, a *subset* target like
-`tidy-soong_subset` or `tidy-system-libbase_subset` is generated
-to include only a subset, the first variant, of each module in
-the directory.
-
-Hence, for C/C++ source code quality, instead of a long
-"make checkbuild", we can use "make tidy-soong_subset".
+To further reduce the need of using `tidy_config_file` for generated files,
+if there is no `.clang-tidy` found in the source file's directory or its parent
+directories and `tidy_config_file` is not used, the Android build system will
+also look up `.clang-tidy` in the Android.bp file's directory and its parent directories.
+If such a `.clang-tidy` file is found, it will be used as if specified by the
+`tidy_config_file` property.  Hence, without changing any Android.bp file,
+it is possible to use one `project/xyz/.tidy-cinfig` file for all clang-tidy
+compilations of all source files under `project/xyz` and all modules defined
+in Android.bp files under `project/xyz`.
 
 
 ## Limit clang-tidy runtime

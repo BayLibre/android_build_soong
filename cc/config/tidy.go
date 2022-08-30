@@ -164,6 +164,14 @@ const tidyDefault = "${config.TidyDefaultGlobalChecks}"
 const tidyExternalVendor = "${config.TidyExternalVendorChecks}"
 const tidyDefaultNoAnalyzer = "${config.TidyDefaultGlobalChecks},-clang-analyzer-*"
 
+func TidyDefaultGlobalChecks() string {
+	return tidyDefault
+}
+
+func TidyDefaultExternalVendorChecks() string {
+	return tidyExternalVendor
+}
+
 // This is a map of local path prefixes to the set of default clang-tidy checks
 // to be used.  This is like android.IsThirdPartyPath, but with more patterns.
 // The last matched local_path_prefix should be the most specific to be used.
@@ -202,7 +210,16 @@ func TidyChecksForDir(dir string) string {
 	return tidyDefault
 }
 
-func NoClangTidyForDir(dir string) bool {
+func tidyDisabledDir(dir string) bool {
+	// This function can be extended to include more project directories.
+	return strings.HasPrefix(dir+"/", "toolchain/llvm-project/")
+}
+
+func NoClangTidyForDir(allowExternalVendor bool, dir string) bool {
+	if allowExternalVendor {
+		// Some directories will never run clang-tidy.
+		return tidyDisabledDir(dir)
+	}
 	// This function depends on TidyChecksForDir, which selects tidyExternalVendor
 	// checks for external/vendor projects. For those projects we disable clang-tidy
 	// by default, unless some modules enable clang-tidy with tidy:true.
@@ -237,6 +254,17 @@ func TidyFlagsForSrcFile(srcFile android.Path, flags string) string {
 		}
 	}
 	return flags
+}
+
+func TidyFlagsForSrcFileWithConfig(srcFile android.Path, flags string) string {
+	// When tidy_config_file is specified or the default .clang-tidy config file
+	// exists, remove the default Android global tidy checks so that they will
+	// not override the 'Checks' list in the config file.
+	// But the TidyGlobalNoChecks remains, to disable some checks that is buggy
+	// or never for Android.
+	return strings.ReplaceAll(
+		strings.ReplaceAll(TidyFlagsForSrcFile(srcFile, flags), tidyDefault+",", ""),
+		tidyExternalVendor+",", "")
 }
 
 var (

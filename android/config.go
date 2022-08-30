@@ -112,6 +112,14 @@ func (c Config) RunGoTests() bool {
 	return c.runGoTests
 }
 
+func (c Config) ClangTidyListFile() string {
+	return c.clangTidyListFile
+}
+
+func (c Config) Fs() pathtools.FileSystem {
+	return c.fs
+}
+
 func (c Config) DebugCompilation() bool {
 	return false // Never compile Go code in the main build for debugging
 }
@@ -167,9 +175,10 @@ type config struct {
 
 	deviceConfig *deviceConfig
 
-	outDir         string // The output directory (usually out/)
-	soongOutDir    string
-	moduleListFile string // the path to the file which lists blueprint files to parse.
+	outDir            string // The output directory (usually out/)
+	soongOutDir       string
+	moduleListFile    string // the path to the file which lists blueprint files to parse.
+	clangTidyListFile string // the path to the file with a list of .clang-tidy files
 
 	runGoTests bool
 
@@ -383,7 +392,7 @@ func NullConfig(outDir, soongOutDir string) Config {
 
 // NewConfig creates a new Config object. The srcDir argument specifies the path
 // to the root source directory. It also loads the config file, if found.
-func NewConfig(moduleListFile string, buildMode SoongBuildMode, runGoTests bool, outDir, soongOutDir string, availableEnv map[string]string) (Config, error) {
+func NewConfig(moduleListFile string, clangTidyListFile string, buildMode SoongBuildMode, runGoTests bool, outDir, soongOutDir string, availableEnv map[string]string) (Config, error) {
 	// Make a config with default options.
 	config := &config{
 		ProductVariablesFileName: filepath.Join(soongOutDir, productVariablesFileName),
@@ -396,6 +405,7 @@ func NewConfig(moduleListFile string, buildMode SoongBuildMode, runGoTests bool,
 		multilibConflicts: make(map[ArchType]bool),
 
 		moduleListFile:            moduleListFile,
+		clangTidyListFile:         clangTidyListFile,
 		fs:                        pathtools.NewOsFs(absSrcDir),
 		mixedBuildDisabledModules: make(map[string]struct{}),
 		mixedBuildEnabledModules:  make(map[string]struct{}),
