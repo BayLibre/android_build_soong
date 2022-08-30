@@ -98,6 +98,64 @@ func TestTidyFlagsWarningsAsErrors(t *testing.T) {
 	}
 }
 
+func TestTidyConfigFile(t *testing.T) {
+	bp := `
+		cc_library_shared { // has no config-file
+			name: "libfoo_1",
+			srcs: ["foo.c"],
+		}
+		cc_library_shared {
+			name: "libfoo_2",
+			srcs: ["foo.c"],
+			// config file path is relative to source root
+			tidy_config_file: "external/clang/.clang-tidy",
+		}
+		cc_library_shared {
+			name: "libfoo_3",
+			srcs: ["foo.c"],
+			// maybe we should give a warning to config-file= in tidy_flags
+			tidy_flags: ["--config-file=my_tidy_config"],
+		}
+		cc_library_shared {
+			name: "libfoo_4",
+			srcs: ["foo.c"],
+			tidy_flags: [
+			  "--config-file=my_tidy_config1",
+			  "--config-file=my_tidy_config2", // the last flag is used
+			],
+		}`
+
+	testCases := []struct {
+		libNumber  int    // 1,2,3,...
+		configFile string // "" or the specified config file
+	}{
+		{1, ""},
+		{2, "external/clang/.clang-tidy"},
+		{3, "my_tidy_config"},
+		{4, "my_tidy_config2"},
+	}
+	t.Run("caseTidyConfigFile", func(t *testing.T) {
+		testEnv := map[string]string{}
+		testEnv["USE_RBE"] = "true"
+		testEnv["RBE_CLANG_TIDY"] = "true"
+		ctx := android.GroupFixturePreparers(prepareForCcTest, android.FixtureMergeEnv(testEnv)).RunTestWithBp(t, bp)
+		variant := "android_arm64_armv8-a_shared"
+		for _, test := range testCases {
+			libName := fmt.Sprintf("libfoo_%d", test.libNumber)
+			tidyRule := ctx.ModuleForTests(libName, variant).Rule("clangTidy")
+			flags := tidyRule.Args["tidyFlags"]
+			if test.configFile != "" {
+				android.AssertStringListContains(t, "missing dependency in clangTidy rule",
+					tidyRule.Implicits.Strings(), test.configFile)
+			} else if len(tidyRule.Implicits.Strings()) > 0 {
+				t.Errorf("%s has unexpected dependency: %s.", libName, tidyRule.Implicits.Strings())
+			}
+			android.AssertStringEquals(t, libName+" implicitInputs", test.configFile, tidyRule.Args["implicitInputs"])
+			android.AssertStringEquals(t, libName+" config-file", test.configFile, FindTidyConfigFileInFlags(flags))
+		}
+	})
+}
+
 func TestTidyChecks(t *testing.T) {
 	// The "tidy_checks" property defines additional checks appended
 	// to global default. But there are some checks disabled after

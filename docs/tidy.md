@@ -171,6 +171,61 @@ under that directory. Now `odrefresh-defaults` is interested
 in seeing warnings from both `art/odrefresh/` and `system/apex/`
 and it redefines `-header-filter` in its `tidy_flags`.
 
+### `.clang-tidy`, `--config-file`, and `tidy_config_file`
+
+When clang-tidy is invoked to compile a source file in directory `d1/d2/d3/`,
+it will look up the default config file `.clang-tidy` in directory `d1/d2/d3/`,
+`d1/d2/`, and `d1/` in that order. The first found `.clang-tidy` will be used.
+
+Most Android projects do not have any `.clang-tidy` file and rely on
+the default global flags plus local tidy properties in the Android.bp file.
+Some projects have a `.clang-tidy` file in their root directories
+so that all source file in subdirectories will use the same config file.
+
+When clang-tidy is invoked with the `--config-file=` flag, the given
+config file will be used instead of any default `.clang-tidy` file.
+If multiple `--config_file=` flags are used, all except the last one are ignored.
+
+To support above clang-tidy features, Android.bp file
+has a `tidy_config_file` property to provide the *config file*.
+For example, `external/clang/.clang-tidy` can be used with a declaration
+like the following in `exteranl/clang/Android.bp`:
+```
+cc_defaults {
+  name: "clang-defaults",
+  tidy_config_file: "external/clang/.clang-tidy",
+}
+```
+All Android.bp modules under `external/clang` can inherit the
+default module "clang-defaults" to get the tidy config
+file "external/clang/.clang-tidy".
+
+However, that is redundant because `.clang-tidy` is looked up by default.
+If users want to use a different config file name instead of `.clang-tidy`,
+the `tidy_config_file` property will be the right solution.
+
+Note that `tidy_config_file` should contain a file path relative to
+the Android *source tree root*. This path will be passed to clang-tidy
+through the `--config_file=` flag, and clang-tidy will look up that
+file from the *current* directory,
+which is the Android *source tree root*.
+
+Another use case of `tidy_config_file` is to provide clang-tidy configuration for
+*generated files*. Because generated files are in the `out/...` directories,
+which do not contain the default `.clang-tidy` file, the modules for the
+generated files may use the `tidy_config_file` property to point back to
+some config file in the source directory.
+
+Most projects do not care to run clang-tidy on generated files,
+so there is little need to use `tidy_config_file` property for generated files.
+When the Android build system generates clang-tidy compilation rules,
+it by default skips generated files in the `out` directories.
+
+Although users can add `--config-file=` flag manually through the `tidy_flags` property,
+this usage is discouraged.  The stand-alone property `tidy_config_file` is easier
+to be *inherited*.  All Android.bp modules under one directory may share
+one tidy config file, but not necessarily all tidy flags.
+
 
 ## Phony tidy-* targets
 
