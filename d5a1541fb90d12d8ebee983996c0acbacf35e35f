@@ -39,6 +39,30 @@
       },
       "revId": "d5a1541fb90d12d8ebee983996c0acbacf35e35f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8bc6fd_6c0dc192",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1691,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-30T14:14:38Z",
+      "side": 1,
+      "message": "Another option would be to use `*int` rather than `int` where `nil` replaces the `-1` case.",
+      "parentUuid": "5e8c0443_d37d2b08",
+      "range": {
+        "startLine": 1691,
+        "startChar": 20,
+        "endLine": 1691,
+        "endChar": 22
+      },
+      "revId": "d5a1541fb90d12d8ebee983996c0acbacf35e35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
