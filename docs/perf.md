@@ -221,6 +221,9 @@ You'll likely need to cross-reference this data against the build graph in the
 various .ninja files. The files are (mostly) human-readable, but a (slow) web
 interface can be used by running `NINJA_ARGS="-t browse <target>" m`.
 
+There is also the SOONG_UI_NINJA_ARGS which passes ninja arguments to soong ui's
+ninja invocations, e.g. to emit $OUT_DIR/soong/build.ninja, $OUT_DIR/soong/module-graph.json, etc.
+
 #### Builds take a long time
 
 If the long part in the trace view of a build is a relatively solid block, then
@@ -234,7 +237,7 @@ together, but since our builds are heavily parallelized, it's particularly easy
 for build commands to impact unrelated build commands. This is an area we'd
 like to improve -- we expect keeping track of user/system time per-action would
 provide more reliable data, but tracking some full-system data (memory/swap
-use, disk bandwidth, etc) may also be necessary.
+use, disk bandwidth, etc.) may also be necessary.
 
 ## Known Issues
 
