@@ -106,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81cddefc_8dd7dbbd",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-30T18:36:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72aa2383_e56513ca",
+      "range": {
+        "startLine": 74,
+        "startChar": 53,
+        "endLine": 74,
+        "endChar": 147
+      },
+      "revId": "6311d55a62f7f60d016b5b1096bf5d9f71b9e7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fdb2c3f_c539292f",
@@ -167,6 +191,30 @@
       "side": 1,
       "message": "Thanks, I think that\u0027s reasonable, but this merging algorithm should be documented on go/bp2build and logged with BP2BUILD_VERBOSE.\n\nI still have concerns about the use of regexp to do this BUILD file manipulation. Try looking into using `buildozer` to manipulate the package definition directly? It should support something like `buildozer \u0027print rule\u0027 //foo/bar:%package`. \n\nhttps://github.com/bazelbuild/buildtools/blob/master/buildozer/README.md",
       "parentUuid": "403fdbb8_e7f3aecc",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "6311d55a62f7f60d016b5b1096bf5d9f71b9e7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "816d5f7e_43e87805",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-30T18:36:00Z",
+      "side": 1,
+      "message": "Added a log message.\n\nI\u0027d rather not add a dependency on `buildozer`, because that means we\u0027d have to pull it into the tree, and figure out how to build it in soong\u0027s bootstrap build. I think the regexes should be ok, I think the only way to confuse it would be to have another function called `package`, which should never happen in the bp2build generated build files. Since we only edit the bp2build build files and not the handcrafted ones, in the worst case scenario we end up removing a trivial package statement, which should become apparent when bazel complains it doesn\u0027t have visibility into that package.",
+      "parentUuid": "162543d1_1223883d",
       "range": {
         "startLine": 73,
         "startChar": 1,
