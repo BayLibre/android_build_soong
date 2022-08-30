@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e1a399b_24dcaaf1",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-30T15:54:56Z",
+      "side": 1,
+      "message": "Is this type conversion always going to pass? Can we just make it\n```\nlib :\u003d module.linker.(*libraryDecorator)\nif proptools.Bool(lib.Properties.Aidl.Export_aidl_headers) {\n\t(\u0026linkerAttrs).wholeArchiveDeps.Add(aidlDep)\n} else {\n\t(\u0026linkerAttrs).implementationWholeArchiveDeps.Add(aidlDep)\n}\n```\nso that this block doesn\u0027t silently get ignored if the implementation changes?\n\nIf this type conversion separate static/shared cc_libraries as a result of b/239311679, can we leave a TODO here too?",
+      "revId": "876d2671a680e5b884c6a06caf55775c5db1a3a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45bd74b9_fd42a4b6",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-30T15:54:56Z",
+      "side": 1,
+      "message": "In the comment before it says:\n```\n// TODO(b/243023967) Add aidlDep to implementationWholeArchiveDeps if aidl.export_aidl_headers is true\n```\nbut here we are adding to `wholeArchiveDeps` if `export_aidl_headers` is true. Is this intentional?\n\nIf this is a result of b/239311679, can we leave a TODO here too?",
+      "range": {
+        "startLine": 731,
+        "startChar": 0,
+        "endLine": 733,
+        "endChar": 0
+      },
+      "revId": "876d2671a680e5b884c6a06caf55775c5db1a3a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
