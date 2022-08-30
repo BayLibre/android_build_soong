@@ -216,8 +216,8 @@ func TestBp2BuildAllowlist(t *testing.T) {
 				BazelModuleBase: bazelableBazelModuleBase,
 			},
 			allowlist: bp2BuildConversionAllowlist{
-				moduleAlwaysConvert: map[string]bool{
-					"foo": true,
+				moduleAlwaysConvert: map[string]struct{}{
+					"foo": struct{}{},
 				},
 			},
 		},
@@ -234,11 +234,11 @@ func TestBp2BuildAllowlist(t *testing.T) {
 				BazelModuleBase: bazelableBazelModuleBase,
 			},
 			allowlist: bp2BuildConversionAllowlist{
-				moduleAlwaysConvert: map[string]bool{
-					"foo": true,
+				moduleAlwaysConvert: map[string]struct{}{
+					"foo": struct{}{},
 				},
-				moduleTypeAlwaysConvert: map[string]bool{
-					"rule1": true,
+				moduleTypeAlwaysConvert: map[string]struct{}{
+					"rule1": struct{}{},
 				},
 			},
 		},
@@ -255,11 +255,11 @@ func TestBp2BuildAllowlist(t *testing.T) {
 				BazelModuleBase: bazelableBazelModuleBase,
 			},
 			allowlist: bp2BuildConversionAllowlist{
-				moduleAlwaysConvert: map[string]bool{
-					"foo": true,
+				moduleAlwaysConvert: map[string]struct{}{
+					"foo": struct{}{},
 				},
-				moduleDoNotConvert: map[string]bool{
-					"foo": true,
+				moduleDoNotConvert: map[string]struct{}{
+					"foo": struct{}{},
 				},
 			},
 		},
@@ -276,8 +276,8 @@ func TestBp2BuildAllowlist(t *testing.T) {
 				BazelModuleBase: bazelableBazelModuleBase,
 			},
 			allowlist: bp2BuildConversionAllowlist{
-				moduleAlwaysConvert: map[string]bool{
-					"foo": true,
+				moduleAlwaysConvert: map[string]struct{}{
+					"foo": struct{}{},
 				},
 				keepExistingBuildFile: map[string]bool{
 					"existing/build/dir": true,
@@ -297,8 +297,8 @@ func TestBp2BuildAllowlist(t *testing.T) {
 				BazelModuleBase: bazelableBazelModuleBase,
 			},
 			allowlist: bp2BuildConversionAllowlist{
-				moduleAlwaysConvert: map[string]bool{
-					"foo": true,
+				moduleAlwaysConvert: map[string]struct{}{
+					"foo": struct{}{},
 				},
 				defaultConfig: allowlists.Bp2BuildConfig{
 					"existing/build/dir": allowlists.Bp2BuildDefaultTrue,
@@ -318,8 +318,8 @@ func TestBp2BuildAllowlist(t *testing.T) {
 				BazelModuleBase: bazelableBazelModuleBase,
 			},
 			allowlist: bp2BuildConversionAllowlist{
-				moduleAlwaysConvert: map[string]bool{
-					"foo": true,
+				moduleAlwaysConvert: map[string]struct{}{
+					"foo": struct{}{},
 				},
 				defaultConfig: allowlists.Bp2BuildConfig{
 					"existing/build/dir": allowlists.Bp2BuildDefaultTrueRecursively,
@@ -345,11 +345,11 @@ func TestBp2BuildAllowlist(t *testing.T) {
 				},
 			},
 			allowlist: bp2BuildConversionAllowlist{
-				moduleAlwaysConvert: map[string]bool{
-					"foo": true,
+				moduleAlwaysConvert: map[string]struct{}{
+					"foo": struct{}{},
 				},
-				moduleDoNotConvert: map[string]bool{
-					"foo": true,
+				moduleDoNotConvert: map[string]struct{}{
+					"foo": struct{}{},
 				},
 			},
 		},
@@ -400,18 +400,18 @@ func TestBp2buildAllowList(t *testing.T) {
 			t.Errorf("bp2build keep existing build file of %s: expected: %v, got: %v", k, v, allowlist.keepExistingBuildFile[k])
 		}
 	}
-	for _, k := range allowlists.Bp2buildModuleTypeAlwaysConvertList {
-		if !allowlist.moduleTypeAlwaysConvert[k] {
+	for k, _ := range allowlists.Bp2buildModuleTypeAlwaysConvertList {
+		if _, exists := allowlist.moduleTypeAlwaysConvert[k]; !exists {
 			t.Errorf("bp2build module type always convert of %s: expected: true, got: %v", k, allowlist.moduleTypeAlwaysConvert[k])
 		}
 	}
-	for _, k := range allowlists.Bp2buildModuleDoNotConvertList {
-		if !allowlist.moduleDoNotConvert[k] {
+	for k, _ := range allowlists.Bp2buildModuleDoNotConvertList {
+		if _, exists := allowlist.moduleDoNotConvert[k]; !exists {
 			t.Errorf("bp2build module do not convert of %s: expected: true, got: %v", k, allowlist.moduleDoNotConvert[k])
 		}
 	}
-	for _, k := range allowlists.Bp2buildCcLibraryStaticOnlyList {
-		if !allowlist.ccLibraryStaticOnly[k] {
+	for k, _ := range allowlists.Bp2buildCcLibraryStaticOnlyList {
+		if _, exists := allowlist.ccLibraryStaticOnly[k]; !exists {
 			t.Errorf("bp2build cc library static only of %s: expected: true, got: %v", k, allowlist.ccLibraryStaticOnly[k])
 		}
 	}
