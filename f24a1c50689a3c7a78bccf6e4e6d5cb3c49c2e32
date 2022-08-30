@@ -52,6 +52,24 @@
       "parentUuid": "1eeea94a_000e5086",
       "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f21ac8ec_e3813bd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-08-30T02:52:21Z",
+      "side": 1,
+      "message": "\u003e For 1) I was thinking that  cc_api_headers  would use cc_library_headers internally with some attribute  api \u003d True , and that attribute determines the creation of the additional provider used for the build orchestrator.\n\nThanks Jin, I have created aosp/2200877 for this conversion\n\nI still think we need a bpbuild converter for ndk_headers and ndk_library (atleast short term). The use case I am trying to solve with this is the identification and population of the contributions to the public API surface BUILD target. e.g. consider the already bp2build converted cc_library_headers `libc_headers`\n````\n# example modified for brevity\ncc_library_headers {\nname: \"libc_headers\",\nexport_system_include_dirs: [\"include\"],\nexport_header_lib_headesr: [\"libc_llndk_headers\"],\n}\n```\n\nWe can amend the existing bp2build converter for cc_library_headers to generate an api contribution target for _all_ headers including `libc_headers`. But we still dont have enough information about which cc_headers and cc_libraries actually contribute to the public API surface (i.e which cc_library_headers have a sibling ndk_headers target)",
+      "parentUuid": "e08c0e41_3cfe9a48",
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
