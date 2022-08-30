@@ -353,3 +353,40 @@ func genObjTidyPhonyTargets(ctx android.SingletonContext, module android.Module,
 		targetGroups[group] = android.PathForPhony(ctx, groupName)
 	}
 }
+
+// Find the first (parent) directory that contains a .clang-tidy file.
+func FindClangTidy(srcFile string, dirCache map[string]string, tidyDirs map[string]bool) string {
+	// tidyDirs["external/clang/"] is true because external/clang/.clang-tidy exists
+	// dirCache["external/clang/lib/Sema/"] should be set to "external/clang/"
+	// dirCache["external/clang/lib/"] should be set to "external/clang/"
+	// dirCache["bionic"] should be set to ""
+	if srcFile == "" {
+		return ""
+	}
+	dir, _ := filepath.Split(srcFile)
+	if dir == "" {
+		return ""
+	}
+	// dir could be "external/clang/lib/Sema/" or "bionic/"
+	if value, ok := dirCache[dir]; ok {
+		return value
+	}
+	if _, ok := tidyDirs[dir]; ok {
+		dirCache[dir] = dir
+		return dir
+	}
+	parent, _ := filepath.Split(dir[:len(dir)-1]) // remove the last slash before split
+	result := FindClangTidy(parent, dirCache, tidyDirs)
+	dirCache[dir] = result
+	return result
+}
+
+// Given a srcFile, if there is a parent directory with .clang-tidy,
+// return the path to .clang-tidy.
+func FindTidyConfigFile(srcFile string, dirCache map[string]string, tidyDirs map[string]bool) string {
+	clangTidyDir := FindClangTidy(srcFile, dirCache, tidyDirs)
+	if clangTidyDir != "" {
+		return clangTidyDir + ".clang-tidy"
+	}
+	return ""
+}
