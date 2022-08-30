@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa181082_4d639f3d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-30T21:32:48Z",
+      "side": 1,
+      "message": "Put a comment on Memtag_stack, it will end up as the user visible documentation at go/Android.bp.",
+      "revId": "82dfa54314e7ea04af1960ec646dd9d4344c1ec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
