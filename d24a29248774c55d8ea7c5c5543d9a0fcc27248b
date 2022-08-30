@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6640bae0_8aec147f",
+        "filename": "bp2build/aidl_interface_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-08-30T21:18:55Z",
+      "side": 0,
+      "message": "TODO: Rebase aosp/2199278 when it\u0027s merged.",
+      "revId": "d24a29248774c55d8ea7c5c5543d9a0fcc27248b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
