@@ -214,7 +214,7 @@ var (
 		&remoteexec.REParams{
 			Labels:               map[string]string{"type": "lint", "tool": "clang-tidy", "lang": "cpp"},
 			ExecStrategy:         "${config.REClangTidyExecStrategy}",
-			Inputs:               []string{"$in"},
+			Inputs:               []string{"$in", "$implicitInputs"},
 			OutputFiles:          []string{"${out}", "${out}.d"},
 			ToolchainInputs:      []string{"$ccCmd", "$tidyCmd"},
 			EnvironmentVariables: []string{"CLANG_CMD", "TIDY_FILE", "TIDY_TIMEOUT"},
@@ -225,7 +225,7 @@ var (
 			// (1) New timestamps trigger clang and clang-tidy compilations again.
 			// (2) Changing source files caused concurrent clang or clang-tidy jobs to crash.
 			Platform: map[string]string{remoteexec.PoolKey: "${config.REClangTidyPool}"},
-		}, []string{"cFlags", "ccCmd", "clangCmd", "tidyCmd", "tidyFlags", "tidyVars"}, []string{})
+		}, []string{"cFlags", "ccCmd", "clangCmd", "implicitInputs", "tidyCmd", "tidyFlags", "tidyVars"}, []string{})
 
 	_ = pctx.SourcePathVariable("yasmCmd", "prebuilts/misc/${config.HostPrebuiltTag}/yasm/yasm")
 
@@ -558,6 +558,15 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		return "$" + kind + n
 	}
 
+	// All srcFiles share one tidyDirs and one dirCache to avoid
+	// repeated search of the same parent directories.
+	tidyDirs := android.ClangTidyDirs(ctx.Config())
+	dirCache := make(map[string][]string)
+	// Set moduleTidyConfigFile to the tidy_config_file value in a module.
+	moduleTidyConfigFile := FindTidyConfigFileInFlags(flags.tidyFlags)
+	// TODO: for generated files in the out directory, look up .clang-tidy in
+	// Android.bp's parent directoriies.
+
 	for i, srcFile := range srcFiles {
 		objFile := android.ObjPathWithExt(ctx, subdir, srcFile, "o")
 
@@ -672,29 +681,56 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 			tidyCmd := "${config.ClangBin}/clang-tidy"
 
 			rule := clangTidy
-			if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CLANG_TIDY") {
+			if ctx.Config().IsEnvTrue("RBE_CLANG_TIDY") && ctx.Config().IsEnvTrue("USE_RBE") {
 				rule = clangTidyRE
 			}
 
 			sharedCFlags := shareFlags("cFlags", moduleFlags)
 			srcRelPath := srcFile.Rel()
-
 			// Add the .tidy rule
+			tidyArgs := map[string]string{
+				"cFlags":    sharedCFlags,
+				"ccCmd":     ccCmd,
+				"clangCmd":  ccDesc,
+				"tidyCmd":   tidyCmd,
+				"tidyFlags": shareFlags("tidyFlags", config.TidyFlagsForSrcFile(srcFile, flags.tidyFlags)),
+				"tidyVars":  tidyVars, // short and not shared
+			}
+			tidyDeps := cFlagsDeps
+			// There is at most one tidy_config_file defined in a module,
+			// but there can be multiple .clang-tidy files in parent directories.
+			tidyConfigFiles := []string{}
+			if moduleTidyConfigFile != "" {
+				tidyConfigFiles = []string{moduleTidyConfigFile}
+			} else {
+				tidyConfigFiles = FindTidyConfigFiles(srcFile.String(), dirCache, tidyDirs)
+				// TODO: If .clang-tidy is not found in the source file directory and
+				// parent directories, try to find it also in the Android.bp directory
+				// and parent directories. When found, this .clang-tidy file path
+				// must be treated as if defined by tidy_config_file and added as
+				// a clang-tidy command line -config-file flag, because clang-tidy
+				// at run-time only looks up .clang-tidy in the source file's directory
+				// and its parent directories.
+			}
+			if len(tidyConfigFiles) > 0 {
+				// TODO: ignore Android global default clang-tidy checks, but keep
+				// only the global disabled checks, which will be appended after
+				// the checks specified in a config file.
+				for _, file := range tidyConfigFiles {
+					tidyDeps = append(tidyDeps, android.PathForSource(ctx, file))
+				}
+				if rule == clangTidyRE {
+					tidyArgs["implicitInputs"] = strings.Join(tidyConfigFiles, ",")
+				}
+			}
 			ctx.Build(pctx, android.BuildParams{
 				Rule:        rule,
 				Description: "clang-tidy " + srcRelPath,
 				Output:      tidyFile,
 				Input:       srcFile,
-				Implicits:   cFlagsDeps,
+				Implicits:   tidyDeps,
 				OrderOnly:   pathDeps,
-				Args: map[string]string{
-					"cFlags":    sharedCFlags,
-					"ccCmd":     ccCmd,
-					"clangCmd":  ccDesc,
-					"tidyCmd":   tidyCmd,
-					"tidyFlags": shareFlags("tidyFlags", config.TidyFlagsForSrcFile(srcFile, flags.tidyFlags)),
-					"tidyVars":  tidyVars, // short and not shared
-				},
+				Args:        tidyArgs,
 			})
 		}
 

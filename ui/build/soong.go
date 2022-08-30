@@ -168,6 +168,7 @@ func primaryBuilderInvocation(
 	}
 
 	commonArgs = append(commonArgs, "-l", filepath.Join(config.FileListDir(), "Android.bp.list"))
+	commonArgs = append(commonArgs, "-clang_tidy", filepath.Join(config.FileListDir(), ".clang-tidy.list"))
 	invocationEnv := make(map[string]string)
 	if os.Getenv("SOONG_DELVE") != "" {
 		//debug mode

@@ -201,7 +201,16 @@ func TidyChecksForDir(dir string) string {
 	return tidyDefault
 }
 
-func NoClangTidyForDir(dir string) bool {
+func tidyDisabledDir(dir string) bool {
+	// This function can be extended to include more project directories.
+	return strings.HasPrefix(dir+"/", "toolchain/llvm-project/")
+}
+
+func NoClangTidyForDir(allowExternalVendor bool, dir string) bool {
+	if allowExternalVendor {
+		// Some directories will never run clang-tidy.
+		return tidyDisabledDir(dir)
+	}
 	// This function depends on TidyChecksForDir, which selects tidyExternalVendor
 	// checks for external/vendor projects. For those projects we disable clang-tidy
 	// by default, unless some modules enable clang-tidy with tidy:true.
