@@ -16,6 +16,46 @@
       "message": "This Cl is for suggestion in this [comment](https://android-review.googlesource.com/c/platform/build/soong/+/2147824/comment/3e35a7d0_82ed607f/).",
       "revId": "12b8a2b109268938181a1f2dc3574485e3c681e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5b8137d_e2cff8f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-30T18:50:29Z",
+      "side": 1,
+      "message": "LGTM other than the edit suggestion",
+      "revId": "12b8a2b109268938181a1f2dc3574485e3c681e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "286f46c9_274e14e2",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1605,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-30T18:50:29Z",
+      "side": 1,
+      "message": "un-cap this as we don\u0027t want to export this function",
+      "range": {
+        "startLine": 1605,
+        "startChar": 5,
+        "endLine": 1605,
+        "endChar": 6
+      },
+      "revId": "12b8a2b109268938181a1f2dc3574485e3c681e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
