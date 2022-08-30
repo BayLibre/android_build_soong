@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a4acd58_3bfcdbcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-08-30T22:10:16Z",
+      "side": 1,
+      "message": "OK, you bring up a good point. I thought that appending to slices directly was a bit brittle, but we can just do that and skip this CL. Abandoning.",
+      "parentUuid": "9d089c68_781602a5",
+      "revId": "fa01fc154172129c0e6c0f0e1f7688fa76a32eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed13f5be_d5a85524",
         "filename": "android/allowlists/allowlists.go",
         "patchSetId": 2
