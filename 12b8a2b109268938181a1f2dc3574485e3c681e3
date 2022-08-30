@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "271eaf8a_59b0f15a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-30T10:46:41Z",
+      "side": 1,
+      "message": "This Cl is for suggestion in this [comment](https://android-review.googlesource.com/c/platform/build/soong/+/2147824/comment/3e35a7d0_82ed607f/).",
+      "revId": "12b8a2b109268938181a1f2dc3574485e3c681e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
