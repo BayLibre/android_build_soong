@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a386af60_d48d03a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-30T13:16:34Z",
+      "side": 1,
+      "message": "LGTM modulo the use of a magic number.",
+      "revId": "d5a1541fb90d12d8ebee983996c0acbacf35e35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e8c0443_d37d2b08",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1691,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-30T13:16:34Z",
+      "side": 1,
+      "message": "Use a constant instead of a magic number.",
+      "range": {
+        "startLine": 1691,
+        "startChar": 20,
+        "endLine": 1691,
+        "endChar": 22
+      },
+      "revId": "d5a1541fb90d12d8ebee983996c0acbacf35e35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
