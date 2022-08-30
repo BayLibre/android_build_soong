@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f18a58e_a8a0795e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-30T17:39:45Z",
+      "side": 1,
+      "message": "so we still need this?",
+      "revId": "efd403b843ec4df211dd24936bfb16993e41713e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
