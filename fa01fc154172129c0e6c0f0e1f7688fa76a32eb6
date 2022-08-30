@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d089c68_781602a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-30T21:15:04Z",
+      "side": 1,
+      "message": "nit: I\u0027d say definitely editable (since a slice maybe edited in place if it has the capacity)",
+      "revId": "fa01fc154172129c0e6c0f0e1f7688fa76a32eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed13f5be_d5a85524",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-30T21:15:04Z",
+      "side": 1,
+      "message": "nit: `func asMap(strings ...string) map[string]struct{}` might reduce the boilerplate",
+      "revId": "fa01fc154172129c0e6c0f0e1f7688fa76a32eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82734885_7eca5925",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-08-30T21:15:04Z",
+      "side": 1,
+      "message": "nit: `for enabledProdModule :\u003d range ...` is more idiomatic when the value is ignored",
+      "revId": "fa01fc154172129c0e6c0f0e1f7688fa76a32eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
