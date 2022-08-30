@@ -98,6 +98,53 @@ func TestTidyFlagsWarningsAsErrors(t *testing.T) {
 	}
 }
 
+func TestTidyConfigFile(t *testing.T) {
+	bp := `
+		cc_library_shared { // has no config-file
+			name: "libfoo_1",
+			tidy: true,
+			srcs: ["foo.c"],
+		}
+		cc_library_shared {
+			name: "libfoo_2",
+			tidy: true,
+			srcs: ["foo.c"],
+			tidy_config_file: "my_tidy_config",
+		}`
+	ctx := testCc(t, bp)
+
+	testCases := []struct {
+		libNumber  int    // 1,2,3,...
+		configFile string // "" or the specified config file
+	}{
+		{1, ""},
+		{2, "my_tidy_config"},
+	}
+	flagPrefix := "-config-file="
+	t.Run("caseTidyConfigFile", func(t *testing.T) {
+		variant := "android_arm64_armv8-a_shared"
+		for _, test := range testCases {
+			libName := fmt.Sprintf("libfoo_%d", test.libNumber)
+			flags := ctx.ModuleForTests(libName, variant).Rule("clangTidy").Args["tidyFlags"]
+			splitFlags := strings.Split(flags, " ")
+			// TODO: check if test.configFile is in the build rule dependency list
+			foundConfigFile := ""
+			for _, flag := range splitFlags {
+				if strings.HasPrefix(flag, flagPrefix) {
+					foundConfigFile = flag[len(flagPrefix):]
+				}
+			}
+			if test.configFile != foundConfigFile {
+				if test.configFile != "" {
+					t.Errorf("tidyFlags for %s does not contain config_file %s, found %s.", libName, test.configFile, foundConfigFile)
+				} else {
+					t.Errorf("tidyFlags for %s should not contain config_file %s.", libName, foundConfigFile)
+				}
+			}
+		}
+	})
+}
+
 func TestTidyChecks(t *testing.T) {
 	// The "tidy_checks" property defines additional checks appended
 	// to global default. But there are some checks disabled after

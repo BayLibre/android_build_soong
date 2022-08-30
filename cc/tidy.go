@@ -33,6 +33,9 @@ type TidyProperties struct {
 	// Extra flags to pass to clang-tidy
 	Tidy_flags []string
 
+	// A config file passed to clang-tidy as --config-file
+	Tidy_config_file *string
+
 	// Extra checks to enable or disable in clang-tidy
 	Tidy_checks []string
 
@@ -91,6 +94,16 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 	// Note that locally set tidy:true is ignored if ALLOW_LOCAL_TIDY_TRUE is not set to true.
 	if ctx.Config().IsEnvTrue("WITH_TIDY") || (ctx.Config().IsEnvTrue("ALLOW_LOCAL_TIDY_TRUE") && Bool(tidy.Properties.Tidy)) {
 		flags.NeedTidyFiles = true
+	}
+
+	configFile := String(tidy.Properties.Tidy_config_file)
+	if configFile != "" {
+		// The tidy_config_file is a file path relative to source root,
+		// which is ready to be used in ninja rules.
+		// TODO: check existance of configFile.
+		// TODO: check if users have already added -config-file= into tidy_flags.
+		// NOTE: configFile should not contain spaces, or FindTidyConfigFileInFlags will fail.
+		flags.TidyFlags = append(flags.TidyFlags, "-config-file="+configFile)
 	}
 
 	// Add global WITH_TIDY_FLAGS and local tidy_flags.
@@ -356,4 +369,52 @@ func genObjTidyPhonyTargets(ctx android.SingletonContext, module android.Module,
 		ctx.Phony(groupName, files...)
 		targetGroups[group] = android.PathForPhony(ctx, groupName)
 	}
+}
+
+// Find the first (parent) directory that contains a .clang-tidy file.
+func FindClangTidy(srcFile string, dirCache map[string]string, tidyDirs map[string]bool) string {
+	// tidyDirs["external/clang/"] is true because external/clang/.clang-tidy exists
+	// dirCache["external/clang/lib/Sema/"] should be set to "external/clang/"
+	// dirCache["external/clang/lib/"] should be set to "external/clang/"
+	// dirCache["bionic"] should be set to ""
+	if srcFile == "" {
+		return ""
+	}
+	dir, _ := filepath.Split(srcFile)
+	if dir == "" {
+		return ""
+	}
+	// dir could be "external/clang/lib/Sema/" or "bionic/"
+	if value, ok := dirCache[dir]; ok {
+		return value
+	}
+	if _, ok := tidyDirs[dir]; ok {
+		dirCache[dir] = dir
+		return dir
+	}
+	parent, _ := filepath.Split(dir[:len(dir)-1]) // remove the last slash before split
+	result := FindClangTidy(parent, dirCache, tidyDirs)
+	dirCache[dir] = result
+	return result
+}
+
+// Given a srcFile, if there is a parent directory with .clang-tidy,
+// return the path to .clang-tidy.
+func FindTidyConfigFile(srcFile string, dirCache map[string]string, tidyDirs map[string]bool) string {
+	clangTidyDir := FindClangTidy(srcFile, dirCache, tidyDirs)
+	if clangTidyDir != "" {
+		return clangTidyDir + ".clang-tidy"
+	}
+	return ""
+}
+
+var configFileFlag = regexp.MustCompile(`-?-config-file=([^ ]*)`)
+
+func FindTidyConfigFileInFlags(flags string) string {
+	// Find the last --config-file=... in flags
+	matches := configFileFlag.FindAllStringSubmatch(flags, -1)
+	if len(matches) > 0 {
+		return matches[len(matches)-1][1]
+	}
+	return ""
 }
