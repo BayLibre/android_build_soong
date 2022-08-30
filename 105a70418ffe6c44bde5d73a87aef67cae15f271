@@ -16,6 +16,23 @@
       "message": "Two of the presubmit failures need aosp/2200695 to pass. I\u0027m not sure if the third one is just flaky. ",
       "revId": "105a70418ffe6c44bde5d73a87aef67cae15f271",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef189101_9e89851a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1168553
+      },
+      "writtenOn": "2022-08-30T00:42:43Z",
+      "side": 1,
+      "message": "one presubmit is still failing. \n\nCan you fix this ASAP to unblock tradefed code check in ? ",
+      "revId": "105a70418ffe6c44bde5d73a87aef67cae15f271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
