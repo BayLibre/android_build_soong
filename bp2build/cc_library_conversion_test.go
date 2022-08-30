@@ -1199,6 +1199,109 @@ cc_library {
 	)
 }
 
+func TestCcLibraryProductVariables(t *testing.T) {
+	runCcLibraryTestCase(t, Bp2buildTestCase{
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Filesystem:                 map[string]string{},
+		Blueprint: soongCcLibraryStaticPreamble + `
+cc_library {
+    name: "foo_static",
+    srcs: ["common.c"],
+		header_libs: [
+				"arm_header_lib_excludes",
+		],
+    static_libs: [
+        "arm_static_lib_excludes",
+    ],
+    shared_libs: [
+        "arm_shared_lib_excludes",
+    ],
+    whole_static_libs: [
+				"arm_whole_static_lib_excludes",
+		],
+    product_variables: {
+        malloc_not_svelte: {
+            shared_libs: ["malloc_not_svelte_shared_lib"],
+            whole_static_libs: ["malloc_not_svelte_whole_static_lib"],
+            exclude_static_libs: [
+                "malloc_not_svelte_static_lib_excludes",
+                "malloc_not_svelte_whole_static_lib_excludes",
+            ],
+						header_libs: ["malloc_not_svelte_header_lib"],
+        },
+    },
+    include_build_directory: false,
+}
+
+cc_library {
+    name: "arm_header_lib_excludes",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "arm_static_lib_excludes",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "arm_shared_lib_excludes",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "arm_whole_static_lib_excludes",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "malloc_not_svelte_shared_lib",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "malloc_not_svelte_whole_static_lib",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "malloc_not_svelte_static_lib_excludes",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "malloc_not_svelte_whole_static_lib_excludes",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "malloc_not_svelte_header_lib",
+    bazel_module: { bp2build_available: false },
+}
+`,
+		ExpectedBazelTargets: makeCcLibraryTargets("foo_static", AttrNameToString{
+			"implementation_deps": `[
+        ":arm_header_lib_excludes",
+        ":arm_static_lib_excludes_bp2build_cc_library_static",
+    ] + select({
+        "//build/bazel/product_variables:malloc_not_svelte": [":malloc_not_svelte_header_lib"],
+        "//conditions:default": [],
+    })`,
+			"implementation_dynamic_deps": `[":arm_shared_lib_excludes"] + select({
+        "//build/bazel/product_variables:malloc_not_svelte": [":malloc_not_svelte_shared_lib"],
+        "//conditions:default": [],
+    })`,
+			"srcs_c":                 `["common.c"]`,
+			"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			"whole_archive_deps": `[":arm_whole_static_lib_excludes_bp2build_cc_library_static"] + select({
+        "//build/bazel/product_variables:malloc_not_svelte": [":malloc_not_svelte_whole_static_lib_bp2build_cc_library_static"],
+        "//conditions:default": [],
+    })`,
+		}),
+	},
+	)
+}
+
 func TestCCLibraryNoCrtTrue(t *testing.T) {
 	runCcLibraryTestCase(t, Bp2buildTestCase{
 		Description:                "cc_library - nocrt: true emits attribute",
