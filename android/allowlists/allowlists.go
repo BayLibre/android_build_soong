@@ -407,7 +407,6 @@ var (
 		"libgtest_ndk_c++", "libgtest_main_ndk_c++", // TODO(b/201816222): Requires sdk_version support.
 		"linkerconfig", "mdnsd", // TODO(b/202876379): has arch-variant static_executable
 		"linker",                 // TODO(b/228316882): cc_binary uses link_crt
-		"libdebuggerd",           // TODO(b/228314770): support product variable-specific header_libs
 		"versioner",              // TODO(b/228313961):  depends on prebuilt shared library libclang-cpp_host as a shared library, which does not supply expected providers for a shared library
 		"libspeexresampler",      // TODO(b/231995978): Filter out unknown cflags
 		"libvpx",                 // TODO(b/240756936): Arm neon variant not supported

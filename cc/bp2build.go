@@ -855,9 +855,13 @@ func (la *linkerAttributes) convertProductVariables(ctx android.BazelConversionP
 		"Shared_libs":       {attribute: &la.implementationDynamicDeps, depResolutionFunc: bazelLabelForSharedDepsExcludes},
 		"Static_libs":       {"Exclude_static_libs", &la.implementationDeps, bazelLabelForStaticDepsExcludes},
 		"Whole_static_libs": {"Exclude_static_libs", &la.wholeArchiveDeps, bazelLabelForWholeDepsExcludes},
+		"Header_libs":       {attribute: &la.implementationDeps, depResolutionFunc: bazelLabelForHeaderDepsExcludes},
 	}
 
+	var implementationDepsUsed bool
+	var labelList, carryLabelList bazel.LabelList
 	for name, dep := range productVarToDepFields {
+		isStaticOrHeader := (name == "Static_libs" || name == "Header_libs")
 		props, exists := productVariableProps[name]
 		excludeProps, excludesExists := productVariableProps[dep.excludesField]
 		// if neither an include or excludes property exists, then skip it
@@ -888,12 +892,23 @@ func (la *linkerAttributes) convertProductVariables(ctx android.BazelConversionP
 				ctx.ModuleErrorf("Could not convert product variable %s property", dep.excludesField)
 			}
 
+			// Static_libs and Header_libs both use implementation deps, need to
+			// combine their label lists before SetSelectValue.
 			dep.attribute.EmitEmptyList = productConfigProp.AlwaysEmit()
-			dep.attribute.SetSelectValue(
-				productConfigProp.ConfigurationAxis(),
-				productConfigProp.SelectKey(),
-				dep.depResolutionFunc(ctx, android.FirstUniqueStrings(includes), excludes),
-			)
+			if !implementationDepsUsed && isStaticOrHeader {
+				carryLabelList = dep.depResolutionFunc(ctx, android.FirstUniqueStrings(includes), excludes)
+				implementationDepsUsed = true
+			} else {
+				labelList = dep.depResolutionFunc(ctx, android.FirstUniqueStrings(includes), excludes)
+				if implementationDepsUsed && isStaticOrHeader {
+					labelList = bazel.AppendBazelLabelLists(labelList, carryLabelList)
+				}
+				dep.attribute.SetSelectValue(
+					productConfigProp.ConfigurationAxis(),
+					productConfigProp.SelectKey(),
+					labelList,
+				)
+			}
 		}
 	}
 }
@@ -1022,6 +1037,12 @@ func bazelLabelForHeaderDeps(ctx android.BazelConversionPathContext, modules []s
 	// This is not elegant, but bp2build's shared library targets only propagate
 	// their header information as part of the normal C++ provider.
 	return bazelLabelForSharedDeps(ctx, modules)
+}
+
+func bazelLabelForHeaderDepsExcludes(ctx android.BazelConversionPathContext, modules, excludes []string) bazel.LabelList {
+	// This is only used when product_variable header_libs is processed, to follow
+	// the pattern of depResolutionFunc
+	return android.BazelLabelForModuleDepsExcludesWithFn(ctx, modules, excludes, bazelLabelForSharedModule)
 }
 
 func bazelLabelForSharedDepsExcludes(ctx android.BazelConversionPathContext, modules, excludes []string) bazel.LabelList {
