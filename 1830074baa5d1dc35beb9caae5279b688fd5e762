@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54d48aa1_6e4a977f",
+        "filename": "multitree/api_imports.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-08-31T07:05:45Z",
+      "side": 1,
+      "message": "Does this work for multiple api_imports modules?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 91
+      },
+      "revId": "1830074baa5d1dc35beb9caae5279b688fd5e762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
