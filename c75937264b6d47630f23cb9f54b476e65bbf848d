@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "131c71c7_b6829b11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-31T21:00:09Z",
+      "side": 1,
+      "message": "This seems a little too simple, so I won\u0027t be surprised if I\u0027m missing something.",
+      "revId": "c75937264b6d47630f23cb9f54b476e65bbf848d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
