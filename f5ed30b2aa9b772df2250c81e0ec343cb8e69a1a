@@ -16,6 +16,23 @@
       "message": "Thank you very much!",
       "revId": "f5ed30b2aa9b772df2250c81e0ec343cb8e69a1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "954fd5c4_15a36b13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-31T13:49:28Z",
+      "side": 1,
+      "message": "Set it to autosubmit when aosp/2200116 is ok.",
+      "revId": "f5ed30b2aa9b772df2250c81e0ec343cb8e69a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
