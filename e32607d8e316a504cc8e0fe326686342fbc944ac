@@ -34,6 +34,24 @@
       "parentUuid": "7535d390_e37e2067",
       "revId": "e32607d8e316a504cc8e0fe326686342fbc944ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87baeb09_9de512f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1014491
+      },
+      "writtenOn": "2022-08-31T14:23:33Z",
+      "side": 1,
+      "message": "Yeah sorry, I missed that this is a revert^2.",
+      "parentUuid": "236e4d3a_0ff2e38e",
+      "revId": "e32607d8e316a504cc8e0fe326686342fbc944ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
