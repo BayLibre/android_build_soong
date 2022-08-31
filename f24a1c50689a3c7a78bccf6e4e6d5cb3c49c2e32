@@ -105,6 +105,24 @@
       "message": "Please also get Liz\u0027s review.",
       "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0de49a_2f9e6cd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-31T13:01:13Z",
+      "side": 1,
+      "message": "(marking as resolved to not block)",
+      "parentUuid": "bb00d5f6_76920a1f",
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
