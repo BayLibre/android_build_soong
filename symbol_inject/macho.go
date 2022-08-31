@@ -18,6 +18,7 @@ import (
 	"debug/macho"
 	"fmt"
 	"io"
+	"os/exec"
 	"sort"
 	"strings"
 )
@@ -94,4 +95,9 @@ func dumpMachoSymbols(r io.ReaderAt) error {
 	fmt.Println("}")
 
 	return nil
+}
+
+func CodeSignMachoFile(path string) error {
+	cmd := exec.Command("/usr/bin/codesign", "--force", "-s", "-", path)
+	return cmd.Run()
 }

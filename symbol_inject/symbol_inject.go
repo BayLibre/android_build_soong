@@ -40,6 +40,8 @@ func OpenFile(r io.ReaderAt) (*File, error) {
 				// Can't parse as elf, macho, or PE, return the elf error
 				return nil, elfError
 			}
+		} else {
+			file.IsMachoFile = true
 		}
 	}
 	if err != nil {
@@ -161,9 +163,10 @@ func findSymbol(file *File, symbolName string) (uint64, uint64, error) {
 }
 
 type File struct {
-	r        io.ReaderAt
-	Symbols  []*Symbol
-	Sections []*Section
+	r           io.ReaderAt
+	Symbols     []*Symbol
+	Sections    []*Section
+	IsMachoFile bool
 }
 
 type Symbol struct {
