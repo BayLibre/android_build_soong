@@ -62,13 +62,13 @@ var (
 		"-fast-isel=false",
 	}
 
-	cfiCflags = []string{"-flto", "-fsanitize-cfi-cross-dso",
+	// TODO: Let LTO flags handled by lto.go
+	cfiCflags = []string{"-flto=thin", "-fsanitize-cfi-cross-dso",
 		"-fsanitize-ignorelist=external/compiler-rt/lib/cfi/cfi_blocklist.txt"}
 	// -flto and -fvisibility are required by clang when -fsanitize=cfi is
 	// used, but have no effect on assembly files
-	cfiAsflags = []string{"-flto", "-fvisibility=default"}
-	cfiLdflags = []string{"-flto", "-fsanitize-cfi-cross-dso", "-fsanitize=cfi",
-		"-Wl,-plugin-opt,O1"}
+	cfiAsflags        = []string{"-flto=thin", "-fvisibility=default"}
+	cfiLdflags        = []string{"-flto=thin", "-fsanitize-cfi-cross-dso", "-fsanitize=cfi"}
 	cfiExportsMapPath = "build/soong/cc/config/cfi_exports.map"
 
 	intOverflowCflags = []string{"-fsanitize-ignorelist=build/soong/cc/config/integer_overflow_blocklist.txt"}
