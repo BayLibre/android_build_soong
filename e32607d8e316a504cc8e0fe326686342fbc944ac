@@ -16,6 +16,24 @@
       "message": "Build on go/ab/tradefed is now passing so I guess this isn\u0027t needed anymore.",
       "revId": "e32607d8e316a504cc8e0fe326686342fbc944ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "236e4d3a_0ff2e38e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-08-31T13:28:32Z",
+      "side": 1,
+      "message": "I think the original Revert (aosp/2201375) was needed. This CL is reinstating the tests that were reverted into a new location.",
+      "parentUuid": "7535d390_e37e2067",
+      "revId": "e32607d8e316a504cc8e0fe326686342fbc944ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
