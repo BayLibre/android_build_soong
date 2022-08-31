@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b188b4e4_68a12e93",
+        "filename": "symbol_inject/macho.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-31T23:41:04Z",
+      "side": 1,
+      "message": "Can you store a flag in File here that says it needs resigning instead of trying macho.Open again later?",
+      "revId": "0b7f899f548cea0f1ef1af0cc50aeaec3dffe601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
