@@ -70,6 +70,41 @@
       "parentUuid": "e08c0e41_3cfe9a48",
       "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb00d5f6_76920a1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-31T13:00:48Z",
+      "side": 1,
+      "message": "SGTM and thank you for that CL. \n\nI also had an offline conversation with Joe O and he also suggested that given that these targets run at different phases of the build, it might not make sense to couple them in the short term.\n\n\u003e But we still dont have enough information about which cc_headers and cc_libraries actually contribute to the public API surface (i.e which cc_library_headers have a sibling ndk_headers target)\n\nI think it\u0027s feasible to do this in the bp2build converter, given that it has access to the entire module graph and associated metadata. I don\u0027t know if there\u0027s already existing code that do this type of conditional generation though.",
+      "parentUuid": "f21ac8ec_e3813bd1",
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90303e39_75a7e17f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-31T13:00:48Z",
+      "side": 1,
+      "message": "Please also get Liz\u0027s review.",
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
