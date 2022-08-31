@@ -428,18 +428,6 @@ func (mod *Module) IsSanitizerEnabled(t cc.SanitizerType) bool {
 }
 
 func (mod *Module) IsSanitizerExplicitlyDisabled(t cc.SanitizerType) bool {
-	if mod.Host() {
-		return true
-	}
-
-	// TODO(b/178365482): Rust/CC interop doesn't work just yet; don't sanitize rust_ffi modules until
-	// linkage issues are resolved.
-	if lib, ok := mod.compiler.(libraryInterface); ok {
-		if lib.shared() || lib.static() {
-			return true
-		}
-	}
-
 	return mod.sanitize.isSanitizerExplicitlyDisabled(t)
 }
 
