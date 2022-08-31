@@ -123,6 +123,139 @@
       "parentUuid": "bb00d5f6_76920a1f",
       "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dad7c87_5a574d8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-31T18:32:02Z",
+      "side": 1,
+      "message": "Chris can clarify if I\u0027ve forgotten something, but I believe we didn\u0027t include `hdrs` due to:\n\n1. lack of globs resulting in extremely large BUILD files -- this seems doable to contend with\n2. `include_dirs` (as opposed to `local_include_dirs`) resulted in globs from other packages --  this something we had planned on contending with post-migration by deprecating `include_dirs` to instead use `cc_header_library` targets in those cases.\n\nAgreed that the information may be available -- or may be something we could consider consolidating, similar to the consolidation Colin did for llndk a year or so ago.\n\nAgreed as well that it may be nice to consolidate on a single target for these eventually, that can be a longer term goal.",
+      "parentUuid": "0a0de49a_2f9e6cd4",
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a5c247_5caa6967",
+        "filename": "bp2build/ndk_headers_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-31T18:32:02Z",
+      "side": 1,
+      "message": "using the same function in the test as the source this doesn\u0027t give us any coverage that the naming is happening as expected, can you hardcode the expected names in the tests?",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 74
+      },
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05ecae2_32b1573c",
+        "filename": "bp2build/ndk_headers_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-31T18:32:02Z",
+      "side": 1,
+      "message": "should we include a case with subdirectory as well to ensure globs stay recursive?",
+      "range": {
+        "startLine": 151,
+        "startChar": 6,
+        "endLine": 151,
+        "endChar": 26
+      },
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1127d0cf_635b2920",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-31T18:32:02Z",
+      "side": 1,
+      "message": "nit: you could use const for this",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3967abe_4ff7c756",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-31T18:32:02Z",
+      "side": 1,
+      "message": "nit: godocs should start with the name of the function",
+      "range": {
+        "startLine": 154,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 7
+      },
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9ecef5a_50910e36",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-08-31T18:32:02Z",
+      "side": 1,
+      "message": "if we reframe the tests, this doesn\u0027t need to be exported.",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 30
+      },
+      "revId": "f24a1c50689a3c7a78bccf6e4e6d5cb3c49c2e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
