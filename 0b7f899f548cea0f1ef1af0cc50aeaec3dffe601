@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fecfd73c_e8475cf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-08-31T23:48:50Z",
+      "side": 1,
+      "message": "At least right now, it doesn\u0027t appear to be part of the xcode sdk, but always in /usr/bin/codesign (maybe because it\u0027s also used for verification?). I don\u0027t have a strong opinion either way.",
+      "parentUuid": "888c7727_c3b8711f",
+      "revId": "0b7f899f548cea0f1ef1af0cc50aeaec3dffe601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b188b4e4_68a12e93",
         "filename": "symbol_inject/macho.go",
         "patchSetId": 1
