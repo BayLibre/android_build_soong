@@ -94,4 +94,11 @@ func main() {
 		os.Remove(*output)
 		os.Exit(5)
 	}
+
+	err = symbol_inject.CodeSignMachoFile(*output)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err.Error())
+		os.Remove(*output)
+		os.Exit(6)
+	}
 }
