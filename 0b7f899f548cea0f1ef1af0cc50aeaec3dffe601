@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "888c7727_c3b8711f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-08-31T23:42:12Z",
+      "side": 1,
+      "message": "Should this be done by adding another rule in Soong after the symbol_inject rule instead?  I worry that `/usr/bin/codesign` is not always correct, and it might need the SDK detected in Soong.",
+      "revId": "0b7f899f548cea0f1ef1af0cc50aeaec3dffe601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b188b4e4_68a12e93",
         "filename": "symbol_inject/macho.go",
         "patchSetId": 1
