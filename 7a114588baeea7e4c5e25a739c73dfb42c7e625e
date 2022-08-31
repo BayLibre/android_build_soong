@@ -236,6 +236,30 @@
       },
       "revId": "7a114588baeea7e4c5e25a739c73dfb42c7e625e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39e7914_83278125",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-08-31T04:23:54Z",
+      "side": 1,
+      "message": "What I thought was, this can be an option to select which libraries / headers to import from the soong. I don\u0027t care if it is from the orchestrator, or it is just from the inner-tree build. \n\nAs you mentioned, we may need further function to import specific variant. However, I think we can revisit this, because we don\u0027t have clear solution for how we should handle variants from the imported API surface.\n\nOnce we finalize this not to use list of names to choose API to be imported, then I\u0027m happy to remove this test.",
+      "parentUuid": "0ced56f5_2ed4c64e",
+      "range": {
+        "startLine": 292,
+        "startChar": 30,
+        "endLine": 292,
+        "endChar": 89
+      },
+      "revId": "7a114588baeea7e4c5e25a739c73dfb42c7e625e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
