@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12756627_4c0a57f7",
+        "filename": "cc/cc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 3669,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-31T17:47:06Z",
+      "side": 1,
+      "message": "Nit: just make this the first if statement and make the `if c.Binary()` into an else if, like you did with the test library / cclibrary.",
+      "revId": "7a6b3cbb25a015764adb0d7cc21ad8c8012cc1fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447beea7_37ca005e",
+        "filename": "cc/test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-31T17:47:06Z",
+      "side": 1,
+      "message": "nit: just set `testBinaryAttrs.binaryAttributes` directly without a temporary variable.",
+      "range": {
+        "startLine": 660,
+        "startChar": 1,
+        "endLine": 660,
+        "endChar": 12
+      },
+      "revId": "7a6b3cbb25a015764adb0d7cc21ad8c8012cc1fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6323c68_5d428beb",
+        "filename": "cc/test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-08-31T17:47:06Z",
+      "side": 1,
+      "message": "Since these properties are not arch-dependent, is there a way to access them without GetArchVariantProperties?",
+      "revId": "7a6b3cbb25a015764adb0d7cc21ad8c8012cc1fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
