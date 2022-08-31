@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2045ae43_8393ea82",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1690,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-31T03:43:28Z",
+      "side": 1,
+      "message": "nit: (more straightforward)\n\n// If NDK or PLATFORM or library, check against previous version ABI.",
+      "range": {
+        "startLine": 1689,
+        "startChar": 4,
+        "endLine": 1690,
+        "endChar": 47
+      },
+      "revId": "c8dc2bd76c87f9d086ce2d0a9a862d0fdc40505e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb31c5b_e7ff84c4",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-08-31T03:43:28Z",
+      "side": 1,
+      "message": "since this value is don\u0027t care, just use \"0\" (zero value of int type) instead of \"-1\" here?",
+      "range": {
+        "startLine": 1707,
+        "startChar": 44,
+        "endLine": 1707,
+        "endChar": 46
+      },
+      "revId": "c8dc2bd76c87f9d086ce2d0a9a862d0fdc40505e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
