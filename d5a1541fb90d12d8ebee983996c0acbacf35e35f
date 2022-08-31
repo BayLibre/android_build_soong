@@ -63,6 +63,30 @@
       },
       "revId": "d5a1541fb90d12d8ebee983996c0acbacf35e35f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef105b92_07b603f9",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1691,
+      "author": {
+        "id": 1956136
+      },
+      "writtenOn": "2022-08-31T03:25:15Z",
+      "side": 1,
+      "message": "I use the !ctx.useVndk() instead. the variable prevVersion is set if ctx.useVndk() \u003d\u003d false.",
+      "parentUuid": "6a8bc6fd_6c0dc192",
+      "range": {
+        "startLine": 1691,
+        "startChar": 20,
+        "endLine": 1691,
+        "endChar": 22
+      },
+      "revId": "d5a1541fb90d12d8ebee983996c0acbacf35e35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
