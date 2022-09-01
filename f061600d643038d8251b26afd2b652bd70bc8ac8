@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "802a189e_3bad3e32",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-09-01T18:14:32Z",
+      "side": 1,
+      "message": "Out of curiosity, is this an actual issue? I thought these issues were just warnings.",
+      "revId": "f061600d643038d8251b26afd2b652bd70bc8ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
