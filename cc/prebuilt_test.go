@@ -273,6 +273,9 @@ func TestPrebuiltLibrarySharedStem(t *testing.T) {
 	assertString(t, shared.OutputFile().Path().Base(), "libbar.so")
 }
 
+// TODO: Test empty srcs
+// TODO: Test multiple srcs
+
 func TestPrebuiltSymlinkedHostBinary(t *testing.T) {
 	if runtime.GOOS != "linux" {
 		t.Skipf("Skipping host prebuilt testing that is only supported on linux not %s", runtime.GOOS)
