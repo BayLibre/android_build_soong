@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07a85726_2fa02c22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2022-09-01T18:16:14Z",
+      "side": 1,
+      "message": "Yeah, I have checked both M1 mac and x86 mac. Both of them have /usr/bin/codesign shipped on device instead of in SDK. So I think at least currently the path is correct. And if the path changes, the error output is very clear:\n  fork/exec /usr/bin/codesign: no such file or directory\n\nI don\u0027t have a strong opinion either. If you think changing in Soong worths the effort. I can try that.",
+      "parentUuid": "fecfd73c_e8475cf0",
+      "revId": "0b7f899f548cea0f1ef1af0cc50aeaec3dffe601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b188b4e4_68a12e93",
         "filename": "symbol_inject/macho.go",
         "patchSetId": 1
@@ -49,6 +67,24 @@
       "writtenOn": "2022-08-31T23:41:04Z",
       "side": 1,
       "message": "Can you store a flag in File here that says it needs resigning instead of trying macho.Open again later?",
+      "revId": "0b7f899f548cea0f1ef1af0cc50aeaec3dffe601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2bc462f_e7164d9d",
+        "filename": "symbol_inject/macho.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2022-09-01T18:16:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b188b4e4_68a12e93",
       "revId": "0b7f899f548cea0f1ef1af0cc50aeaec3dffe601",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
