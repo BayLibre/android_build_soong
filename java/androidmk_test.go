@@ -15,10 +15,14 @@
 package java
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 
 	"android/soong/android"
+	"android/soong/cc"
+
+	"github.com/google/blueprint/proptools"
 )
 
 func TestRequired(t *testing.T) {
@@ -250,5 +254,135 @@ func TestGetOverriddenPackages(t *testing.T) {
 		actual := entries.EntryMap["LOCAL_OVERRIDES_PACKAGES"]
 
 		android.AssertDeepEquals(t, "overrides property", expected.overrides, actual)
+	}
+}
+
+func TestJniPartition(t *testing.T) {
+	bp := `
+		cc_library {
+			name: "libjni_system",
+			system_shared_libs: [],
+			sdk_version: "current",
+			stl: "none",
+		}
+
+		cc_library {
+			name: "libjni_system_ext",
+			system_shared_libs: [],
+			sdk_version: "current",
+			stl: "none",
+			system_ext_specific: true,
+		}
+
+		cc_library {
+			name: "libjni_odm",
+			system_shared_libs: [],
+			sdk_version: "current",
+			stl: "none",
+			device_specific: true,
+		}
+
+		cc_library {
+			name: "libjni_product",
+			system_shared_libs: [],
+			sdk_version: "current",
+			stl: "none",
+			product_specific: true,
+		}
+
+		cc_library {
+			name: "libjni_vendor",
+			system_shared_libs: [],
+			sdk_version: "current",
+			stl: "none",
+			soc_specific: true,
+		}
+
+		android_app {
+			name: "test_app_system_jni_system",
+			privileged: true,
+			platform_apis: true,
+			certificate: "platform",
+			jni_libs: ["libjni_system"],
+		}
+
+		android_app {
+			name: "test_app_system_jni_system_ext",
+			privileged: true,
+			platform_apis: true,
+			certificate: "platform",
+			jni_libs: ["libjni_system_ext"],
+		}
+
+		android_app {
+			name: "test_app_system_ext_jni_system",
+			privileged: true,
+			platform_apis: true,
+			certificate: "platform",
+			jni_libs: ["libjni_system"],
+			system_ext_specific: true
+		}
+
+		android_app {
+			name: "test_app_system_ext_jni_system_ext",
+			sdk_version: "core_platform",
+			jni_libs: ["libjni_system_ext"],
+			system_ext_specific: true
+		}
+
+		android_app {
+			name: "test_app_product_jni_product",
+			sdk_version: "core_platform",
+			jni_libs: ["libjni_product"],
+			product_specific: true
+		}
+
+		android_app {
+			name: "test_app_vendor_jni_odm",
+			sdk_version: "core_platform",
+			jni_libs: ["libjni_odm"],
+			soc_specific: true
+		}
+
+		android_app {
+			name: "test_app_odm_jni_vendor",
+			sdk_version: "core_platform",
+			jni_libs: ["libjni_vendor"],
+			device_specific: true
+		}
+		`
+	target := "arm64"
+	ctx := android.GroupFixturePreparers(
+		PrepareForTestWithJavaDefaultModules,
+		cc.PrepareForTestWithCcDefaultModules,
+		android.PrepareForTestWithAndroidMk,
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.TestProductVariables.DeviceArch = proptools.StringPtr(target)
+		}),
+	).
+		RunTestWithBp(t, bp)
+	testCases := []struct {
+		name          string
+		partitionName string
+		partitionTag  string
+	}{
+		{"test_app_system_jni_system", "libjni_system", ""},
+		{"test_app_system_jni_system_ext", "libjni_system_ext", "_SYSTEM_EXT"},
+		{"test_app_system_ext_jni_system", "libjni_system", ""},
+		{"test_app_system_ext_jni_system_ext", "libjni_system_ext", "_SYSTEM_EXT"},
+		{"test_app_product_jni_product", "libjni_product", "_PRODUCT"},
+		{"test_app_vendor_jni_odm", "libjni_odm", "_ODM"},
+		{"test_app_odm_jni_vendor", "libjni_vendor", "_VENDOR"},
+	}
+
+	for _, test := range testCases {
+		t.Run(test.name, func(t *testing.T) {
+			mod := ctx.ModuleForTests(test.name, "android_common").Module()
+			entry := android.AndroidMkEntriesForTest(t, ctx.TestContext, mod)[0]
+			actual := entry.EntryMap["LOCAL_SOONG_JNI_LIBS_PARTITION_"+target][0]
+			expected := test.partitionName + ":" + test.partitionTag
+			message := fmt.Sprintf("Expected %v, received %v", expected, actual)
+			android.AssertStringEquals(t, message, expected, actual)
+		})
 	}
 }

@@ -2222,6 +2222,10 @@ func (library *libraryDecorator) makeUninstallable(mod *Module) {
 	mod.ModuleBase.MakeUninstallable()
 }
 
+func (library *libraryDecorator) getLibraryPartition() string {
+	return library.path.Partition()
+}
+
 func (library *libraryDecorator) getAPIListCoverageXMLPath() android.ModuleOutPath {
 	return library.apiListCoverageXmlPath
 }
