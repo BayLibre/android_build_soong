@@ -16,6 +16,24 @@
       "message": "Looks like the change is in `testing.go` not `bp2build.go`",
       "revId": "284b3b9605f2afc7676c69561fa87de1434011f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b299efd_e2e19f07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-09-01T16:48:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e5c1e12_36301b2b",
+      "revId": "284b3b9605f2afc7676c69561fa87de1434011f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
