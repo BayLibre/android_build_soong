@@ -405,3 +405,11 @@ func flagExporterInfoFromCcInfo(ctx android.ModuleContext, ccInfo cquery.CcInfo)
 		Deps: headers,
 	}
 }
+
+// PrebuiltBinaryInfo is a marker provider that identifies a module as a header library.
+type PrebuiltBinaryInfo struct {
+	src android.Path
+}
+
+// PrebuiltBinaryInfoProvider is a marker provider that identifies a module as a header library.
+var PrebuiltBinaryInfoProvider = blueprint.NewProvider(PrebuiltBinaryInfo{})
