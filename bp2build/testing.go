@@ -141,7 +141,7 @@ func RunBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.Regi
 		android.FailIfErrored(t, errs)
 	}
 	if actualCount, expectedCount := len(bazelTargets), len(tc.ExpectedBazelTargets); actualCount != expectedCount {
-		t.Errorf("%s: Expected %d bazel target (%s), got %d (%s)",
+		t.Errorf("%s: Expected %d bazel targets (%s), got `%d` (%s)",
 			tc.Description, expectedCount, tc.ExpectedBazelTargets, actualCount, bazelTargets)
 	} else {
 		for i, target := range bazelTargets {
@@ -413,7 +413,7 @@ func (a AttrNameToString) clone() AttrNameToString {
 	return newAttrs
 }
 
-// makeBazelTargetNoRestrictions returns bazel target build file definition that can be host or
+// makeBazelTargetHostOrDevice returns bazel target build file definition that can be host or
 // device specific, or independent of host/device.
 func makeBazelTargetHostOrDevice(typ, name string, attrs AttrNameToString, hod android.HostOrDeviceSupported) string {
 	if _, ok := attrs["target_compatible_with"]; !ok {
@@ -440,6 +440,8 @@ func makeBazelTargetHostOrDevice(typ, name string, attrs AttrNameToString, hod a
 )`, typ, strings.Join(attrStrings, "\n"))
 }
 
+type BazelTargetMaker func(typ, name string, attrs AttrNameToString) string
+
 // MakeBazelTargetNoRestrictions returns bazel target build file definition that does not add a
 // target_compatible_with.  This is useful for module types like filegroup and genrule that arch not
 // arch variant
@@ -447,7 +449,7 @@ func MakeBazelTargetNoRestrictions(typ, name string, attrs AttrNameToString) str
 	return makeBazelTargetHostOrDevice(typ, name, attrs, android.HostAndDeviceDefault)
 }
 
-// makeBazelTargetNoRestrictions returns bazel target build file definition that is device specific
+// MakeBazelTarget returns a device-specific bazel target build file definition
 // as this is the most common default in Soong.
 func MakeBazelTarget(typ, name string, attrs AttrNameToString) string {
 	return makeBazelTargetHostOrDevice(typ, name, attrs, android.DeviceSupported)
