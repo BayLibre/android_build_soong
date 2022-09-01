@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3937a78_385cd4a1",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-09-01T23:45:44Z",
+      "side": 1,
+      "message": "I updated the test case to test product variable-specific header libs only.",
+      "parentUuid": "7a4e0d7e_ec84f42a",
+      "range": {
+        "startLine": 1202,
+        "startChar": 5,
+        "endLine": 1202,
+        "endChar": 34
+      },
+      "revId": "a805efde88199e236b306a3dc33c2fe3df3f5104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "570d2cf6_b9ce820f",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87768df0_a6184404",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-09-01T23:45:44Z",
+      "side": 1,
+      "message": "noted",
+      "parentUuid": "570d2cf6_b9ce820f",
+      "range": {
+        "startLine": 1212,
+        "startChar": 5,
+        "endLine": 1212,
+        "endChar": 28
+      },
+      "revId": "a805efde88199e236b306a3dc33c2fe3df3f5104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60559b3e_86786743",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-01T18:43:07Z",
       "side": 1,
       "message": "nit: can you use spaces within the Blueprint?",
+      "range": {
+        "startLine": 1211,
+        "startChar": 0,
+        "endLine": 1231,
+        "endChar": 52
+      },
+      "revId": "a805efde88199e236b306a3dc33c2fe3df3f5104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dded222e_dc174ef4",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-09-01T23:45:44Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "60559b3e_86786743",
       "range": {
         "startLine": 1211,
         "startChar": 0,
