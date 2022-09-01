@@ -276,6 +276,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f64383_13f568d0",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-01T14:43:41Z",
+      "side": 1,
+      "message": "Not applicable now.",
+      "parentUuid": "89c743ea_18a812b4",
+      "revId": "753610d9dc74dadbe304ccf1c2f9ead0eab026a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ddd45ad_60c993cc",
