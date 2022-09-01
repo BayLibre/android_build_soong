@@ -17,6 +17,7 @@ package java
 import (
 	"fmt"
 	"io"
+	"strings"
 
 	"android/soong/android"
 )
@@ -398,6 +399,18 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				} else {
 					for _, jniLib := range app.jniLibs {
 						entries.AddStrings("LOCAL_SOONG_JNI_LIBS_"+jniLib.target.Arch.ArchType.String(), jniLib.name)
+						var partitionTag string
+
+						// Mimic the behavior of partition_tag in build/make,
+						// which defaults to an empty string when the partition is system.
+						// Otherwise, capitalize with a leading _
+						if jniLib.partition == "system" {
+							partitionTag = ""
+						} else {
+							partitionTag = "_" + strings.ToUpper(jniLib.partition)
+						}
+						entries.AddStrings("LOCAL_SOONG_JNI_LIBS_PARTITION_"+jniLib.target.Arch.ArchType.String(),
+							jniLib.name+":"+partitionTag)
 					}
 				}
 
