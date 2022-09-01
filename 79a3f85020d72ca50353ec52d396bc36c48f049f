@@ -16,6 +16,24 @@
       "message": "I think it would be slightly more readable to set this inside machoSymbolsFromFile.",
       "revId": "79a3f85020d72ca50353ec52d396bc36c48f049f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb7d9c1_c0066021",
+        "filename": "symbol_inject/symbol_inject.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2022-09-01T18:58:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4b99e66_a827ebb8",
+      "revId": "79a3f85020d72ca50353ec52d396bc36c48f049f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
