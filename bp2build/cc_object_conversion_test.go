@@ -413,6 +413,7 @@ func TestCcObjectSelectOnLinuxAndBionicArchs(t *testing.T) {
             "linux_arm64.cpp",
             "bionic_arm64.cpp",
         ],
+        "//build/bazel/platforms/os_arch:linux_bionic_x86": ["linux_x86.cpp"],
         "//build/bazel/platforms/os_arch:linux_glibc_x86": ["linux_x86.cpp"],
         "//build/bazel/platforms/os_arch:linux_musl_arm64": ["linux_arm64.cpp"],
         "//build/bazel/platforms/os_arch:linux_musl_x86": ["linux_x86.cpp"],

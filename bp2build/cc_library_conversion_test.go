@@ -1430,6 +1430,7 @@ cc_library {
         "//build/bazel/platforms/os_arch:android_x86": False,
         "//build/bazel/platforms/os_arch:darwin_arm64": False,
         "//build/bazel/platforms/os_arch:darwin_x86_64": False,
+        "//build/bazel/platforms/os_arch:linux_bionic_x86": False,
         "//build/bazel/platforms/os_arch:linux_glibc_x86": False,
         "//build/bazel/platforms/os_arch:linux_musl_x86": False,
         "//build/bazel/platforms/os_arch:windows_x86": False,

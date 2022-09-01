@@ -76,20 +76,11 @@ func init() {
 }
 
 type toolchainLinuxBionic struct {
-	toolchain64Bit
 	toolchainBionic
-}
-
-func (t *toolchainLinuxBionic) Name() string {
-	return "x86_64"
 }
 
 func (t *toolchainLinuxBionic) GccRoot() string {
 	return "${config.LinuxBionicGccRoot}"
-}
-
-func (t *toolchainLinuxBionic) GccTriple() string {
-	return "x86_64-linux-android"
 }
 
 func (t *toolchainLinuxBionic) GccVersion() string {
@@ -100,17 +91,20 @@ func (t *toolchainLinuxBionic) IncludeFlags() string {
 	return ""
 }
 
-func (t *toolchainLinuxBionic) ClangTriple() string {
-	// TODO: we don't have a triple yet b/31393676
-	return "x86_64-linux-android"
+func (t *toolchainLinuxBionic) Cppflags() string {
+	return ""
+}
+
+func (t *toolchainLinuxBionic) AvailableLibraries() []string {
+	return nil
+}
+
+func (toolchainLinuxBionic) CrtBeginSharedBinary() []string {
+	return linuxBionicCrtBeginSharedBinary
 }
 
 func (t *toolchainLinuxBionic) Cflags() string {
 	return "${config.LinuxBionicCflags}"
-}
-
-func (t *toolchainLinuxBionic) Cppflags() string {
-	return ""
 }
 
 func (t *toolchainLinuxBionic) Ldflags() string {
@@ -121,34 +115,82 @@ func (t *toolchainLinuxBionic) Lldflags() string {
 	return "${config.LinuxBionicLldflags}"
 }
 
-func (t *toolchainLinuxBionic) ToolchainCflags() string {
+type toolchainLinuxBionicX8664 struct {
+	toolchain64Bit
+	toolchainLinuxBionic
+}
+
+func (t *toolchainLinuxBionicX8664) Name() string {
+	return "x86_64"
+}
+
+func (t *toolchainLinuxBionicX8664) GccTriple() string {
+	return "x86_64-linux-android"
+}
+
+func (t *toolchainLinuxBionicX8664) ClangTriple() string {
+	// TODO: we don't have a triple yet b/31393676
+	return "x86_64-linux-android"
+}
+
+func (t *toolchainLinuxBionicX8664) ToolchainCflags() string {
 	return "-m64 -march=x86-64" +
 		// TODO: We're not really android, but we don't have a triple yet b/31393676
 		" -U__ANDROID__"
 }
 
-func (t *toolchainLinuxBionic) ToolchainLdflags() string {
+func (t *toolchainLinuxBionicX8664) ToolchainLdflags() string {
 	return "-m64"
 }
 
-func (t *toolchainLinuxBionic) AvailableLibraries() []string {
-	return nil
-}
-
-func (toolchainLinuxBionic) LibclangRuntimeLibraryArch() string {
+func (toolchainLinuxBionicX8664) LibclangRuntimeLibraryArch() string {
 	return "x86_64"
 }
 
-func (toolchainLinuxBionic) CrtBeginSharedBinary() []string {
-	return linuxBionicCrtBeginSharedBinary
+type toolchainLinuxBionicX86 struct {
+	toolchain32Bit
+	toolchainLinuxBionic
 }
 
-var toolchainLinuxBionicSingleton Toolchain = &toolchainLinuxBionic{}
+func (t *toolchainLinuxBionicX86) Name() string {
+	return "x86"
+}
 
-func linuxBionicToolchainFactory(arch android.Arch) Toolchain {
-	return toolchainLinuxBionicSingleton
+func (t *toolchainLinuxBionicX86) GccTriple() string {
+	return "i686-linux-android"
+}
+
+func (t *toolchainLinuxBionicX86) ClangTriple() string {
+	// TODO: we don't have a triple yet b/31393676
+	return "i686-linux-android"
+}
+
+func (t *toolchainLinuxBionicX86) ToolchainCflags() string {
+	return "-m32 -march=i686" +
+		// TODO: We're not really android, but we don't have a triple yet b/31393676
+		" -U__ANDROID__"
+}
+
+func (t *toolchainLinuxBionicX86) ToolchainLdflags() string {
+	return "-m32"
+}
+
+func (toolchainLinuxBionicX86) LibclangRuntimeLibraryArch() string {
+	return "i686"
+}
+
+var toolchainLinuxBionicX86Singleton Toolchain = &toolchainLinuxBionicX86{}
+var toolchainLinuxBionicX8664Singleton Toolchain = &toolchainLinuxBionicX8664{}
+
+func linuxBionicX86ToolchainFactory(arch android.Arch) Toolchain {
+	return toolchainLinuxBionicX86Singleton
+}
+
+func linuxBionicX8664ToolchainFactory(arch android.Arch) Toolchain {
+	return toolchainLinuxBionicX8664Singleton
 }
 
 func init() {
-	registerToolchainFactory(android.LinuxBionic, android.X86_64, linuxBionicToolchainFactory)
+	registerToolchainFactory(android.LinuxBionic, android.X86, linuxBionicX86ToolchainFactory)
+	registerToolchainFactory(android.LinuxBionic, android.X86_64, linuxBionicX8664ToolchainFactory)
 }

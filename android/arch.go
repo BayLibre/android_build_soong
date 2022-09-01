@@ -312,7 +312,7 @@ var (
 	Darwin = newOsType("darwin", Host, false, Arm64, X86_64)
 	// LinuxBionic is the OS for the Linux kernel plus the Bionic libc runtime, but without the
 	// rest of Android.
-	LinuxBionic = newOsType("linux_bionic", Host, false, Arm64, X86_64)
+	LinuxBionic = newOsType("linux_bionic", Host, false, Arm64, X86_64, X86)
 	// Windows the OS for Windows host machines.
 	Windows = newOsType("windows", Host, true, X86, X86_64)
 	// Android is the OS for target devices that run all of Android, including the Linux kernel

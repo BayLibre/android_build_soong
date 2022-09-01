@@ -32,6 +32,7 @@ var (
 
 func init() {
 	registerToolchainFactory(android.LinuxBionic, android.X86_64, linuxBionicX8664ToolchainFactory)
+	registerToolchainFactory(android.LinuxBionic, android.X86, linuxBionicX86ToolchainFactory)
 
 	pctx.StaticVariable("LinuxBionicToolchainRustFlags", strings.Join(LinuxBionicRustFlags, " "))
 	pctx.StaticVariable("LinuxBionicToolchainLinkFlags", strings.Join(LinuxBionicRustLinkFlags, " "))
@@ -66,8 +67,42 @@ func (t *toolchainLinuxBionicX8664) ToolchainRustFlags() string {
 	return "${config.LinuxBionicToolchainRustFlags}"
 }
 
+type toolchainLinuxBionicX86 struct {
+	toolchain32Bit
+}
+
+func (toolchainLinuxBionicX86) Supported() bool {
+	return true
+}
+
+func (toolchainLinuxBionicX86) Bionic() bool {
+	return true
+}
+
+func (t *toolchainLinuxBionicX86) Name() string {
+	return "x86"
+}
+
+func (t *toolchainLinuxBionicX86) RustTriple() string {
+	return "i686-linux-android"
+}
+
+func (t *toolchainLinuxBionicX86) ToolchainLinkFlags() string {
+	// Prepend the lld flags from cc_config so we stay in sync with cc
+	return "${cc_config.LinuxBionicLldflags} ${config.LinuxBionicToolchainLinkFlags}"
+}
+
+func (t *toolchainLinuxBionicX86) ToolchainRustFlags() string {
+	return "${config.LinuxBionicToolchainRustFlags}"
+}
+
+func linuxBionicX86ToolchainFactory(arch android.Arch) Toolchain {
+	return toolchainLinuxBionicX86Singleton
+}
+
 func linuxBionicX8664ToolchainFactory(arch android.Arch) Toolchain {
 	return toolchainLinuxBionicX8664Singleton
 }
 
+var toolchainLinuxBionicX86Singleton Toolchain = &toolchainLinuxBionicX86{}
 var toolchainLinuxBionicX8664Singleton Toolchain = &toolchainLinuxBionicX8664{}

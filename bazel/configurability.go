@@ -48,6 +48,7 @@ const (
 	osArchLinuxMuslX86      = "linux_musl_x86"
 	osArchLinuxMuslX86_64   = "linux_musl_x86_64"
 	osArchLinuxBionicArm64  = "linux_bionic_arm64"
+	osArchLinuxBionicX86    = "linux_bionic_x86"
 	osArchLinuxBionicX86_64 = "linux_bionic_x86_64"
 	osArchWindowsX86        = "windows_x86"
 	osArchWindowsX86_64     = "windows_x86_64"
@@ -111,6 +112,7 @@ var (
 		osArchLinuxMuslX86:         "//build/bazel/platforms/os_arch:linux_musl_x86",
 		osArchLinuxMuslX86_64:      "//build/bazel/platforms/os_arch:linux_musl_x86_64",
 		osArchLinuxBionicArm64:     "//build/bazel/platforms/os_arch:linux_bionic_arm64",
+		osArchLinuxBionicX86:       "//build/bazel/platforms/os_arch:linux_bionic_x86",
 		osArchLinuxBionicX86_64:    "//build/bazel/platforms/os_arch:linux_bionic_x86_64",
 		osArchWindowsX86:           "//build/bazel/platforms/os_arch:windows_x86",
 		osArchWindowsX86_64:        "//build/bazel/platforms/os_arch:windows_x86_64",
@@ -127,7 +129,7 @@ var (
 		osLinux:       {archX86, archX86_64},
 		osLinuxMusl:   {archX86, archX86_64},
 		osDarwin:      {archArm64, archX86_64},
-		osLinuxBionic: {archArm64, archX86_64},
+		osLinuxBionic: {archArm64, archX86, archX86_64},
 		// TODO(cparsons): According to arch.go, this should contain archArm, archArm64, as well.
 		osWindows: {archX86, archX86_64},
 	}
