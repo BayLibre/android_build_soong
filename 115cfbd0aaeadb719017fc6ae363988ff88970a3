@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7babd015_05ae966c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-09-01T14:06:26Z",
+      "side": 1,
+      "message": "I don\u0027t know this part of the code base really, but knowing nothing about it, it\u0027s surprising to me that we\u0027re testing for non-emptiness of a thing (la.usedSystemDynamicDepAsDynamicDep) that we then don\u0027t use anymore under the if statement. I feel like at the very least the comment above should be updated somewhat",
+      "range": {
+        "startLine": 1076,
+        "startChar": 43,
+        "endLine": 1076,
+        "endChar": 75
+      },
+      "revId": "115cfbd0aaeadb719017fc6ae363988ff88970a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
