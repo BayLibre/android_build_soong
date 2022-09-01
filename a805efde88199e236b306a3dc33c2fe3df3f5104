@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed71b8d_ad442723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-01T18:43:07Z",
+      "side": 1,
+      "message": "Overall looks good, just some nits with the testing.",
+      "revId": "a805efde88199e236b306a3dc33c2fe3df3f5104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a4e0d7e_ec84f42a",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-01T18:43:07Z",
+      "side": 1,
+      "message": "much of this is testing functionality already in `TestCcLibraryExcludeLibs` any reason not to either:\n\n1. update that test\n2. only test product variable-specific header libs here?",
+      "range": {
+        "startLine": 1202,
+        "startChar": 5,
+        "endLine": 1202,
+        "endChar": 34
+      },
+      "revId": "a805efde88199e236b306a3dc33c2fe3df3f5104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570d2cf6_b9ce820f",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-01T18:43:07Z",
+      "side": 1,
+      "message": "nit: the naming of these seem arm specific but are added for all arches -- the naming excludes here is a bit confusing as well as the module isn\u0027t excluded anywhere",
+      "range": {
+        "startLine": 1212,
+        "startChar": 5,
+        "endLine": 1212,
+        "endChar": 28
+      },
+      "revId": "a805efde88199e236b306a3dc33c2fe3df3f5104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60559b3e_86786743",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-01T18:43:07Z",
+      "side": 1,
+      "message": "nit: can you use spaces within the Blueprint?",
+      "range": {
+        "startLine": 1211,
+        "startChar": 0,
+        "endLine": 1231,
+        "endChar": 52
+      },
+      "revId": "a805efde88199e236b306a3dc33c2fe3df3f5104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
