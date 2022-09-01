@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "756606ba_038836ad",
+        "filename": "cc/cc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 3669,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-01T02:17:51Z",
+      "side": 1,
+      "message": "Done, needed to change testBinary()\u0027s receiver to a testBinary. It was testDecorator, which testLibrary also used, and so it classified testLibrary as a testBinary.",
+      "parentUuid": "12756627_4c0a57f7",
+      "revId": "7a6b3cbb25a015764adb0d7cc21ad8c8012cc1fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "447beea7_37ca005e",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a90faf2_2c90f473",
+        "filename": "cc/test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-01T02:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447beea7_37ca005e",
+      "range": {
+        "startLine": 660,
+        "startChar": 1,
+        "endLine": 660,
+        "endChar": 12
+      },
+      "revId": "7a6b3cbb25a015764adb0d7cc21ad8c8012cc1fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6323c68_5d428beb",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-08-31T17:47:06Z",
       "side": 1,
       "message": "Since these properties are not arch-dependent, is there a way to access them without GetArchVariantProperties?",
+      "revId": "7a6b3cbb25a015764adb0d7cc21ad8c8012cc1fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f41a39e_bc724616",
+        "filename": "cc/test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-01T02:17:51Z",
+      "side": 1,
+      "message": "Yep, done.",
+      "parentUuid": "b6323c68_5d428beb",
       "revId": "7a6b3cbb25a015764adb0d7cc21ad8c8012cc1fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
