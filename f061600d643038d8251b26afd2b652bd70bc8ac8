@@ -16,6 +16,24 @@
       "message": "Out of curiosity, is this an actual issue? I thought these issues were just warnings.",
       "revId": "f061600d643038d8251b26afd2b652bd70bc8ac8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "febe87fd_71fb6311",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-01T18:28:54Z",
+      "side": 1,
+      "message": "Yep, triggers a cyclic edge:\n\n```\nERROR: /usr/local/google/home/jingwen/aosp/master/out/soong/workspace/system/logging/logd/BUILD.bazel:9:14: in _prebuilt_file rule //system/logging/logd:logtagd.rc: cycle in dependency graph:\n    //system/logging/logd:bp2build_all_srcs (8cc0f740d4f468d9849c3a84936150ced64b86f16414a16b8ed1d77b63cd92cc)\n.-\u003e //system/logging/logd:logtagd.rc (8cc0f740d4f468d9849c3a84936150ced64b86f16414a16b8ed1d77b63cd92cc) [self-edge]\n`--\n```\n\nI think the warnings you\u0027re seeing is where the module name and an output file shares the same name:\n\n```\nWARNING: /usr/local/google/home/jingwen/aosp/master/out/soong/workspace/bionic/libm/BUILD.bazel:565:8: target \u0027libm.x86_64.map\u0027 is both a rule and a file; please choose another name for the rule\nWARNING: /usr/local/google/home/jingwen/aosp/master/out/soong/workspace/external/libcap/BUILD.bazel:27:8: target \u0027cap_names.h\u0027 is both a rule and a file; please choose another name for the rule\n```",
+      "parentUuid": "802a189e_3bad3e32",
+      "revId": "f061600d643038d8251b26afd2b652bd70bc8ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
