@@ -3074,12 +3074,6 @@ func TestDefaultAppTargetSdkVersionForUpdatableModules(t *testing.T) {
 			updatable:                false,
 		},
 		{
-			name:                     "Updatable Module: Android.bp has older targetSdkVersion",
-			targetSdkVersionInBp:     proptools.StringPtr("30"),
-			targetSdkVersionExpected: proptools.StringPtr("30"),
-			updatable:                true,
-		},
-		{
 			name:                     "Updatable Module: Android.bp has no targetSdkVersion",
 			targetSdkVersionExpected: proptools.StringPtr("10000"),
 			updatable:                true,
@@ -3090,20 +3084,6 @@ func TestDefaultAppTargetSdkVersionForUpdatableModules(t *testing.T) {
 			targetSdkVersionInBp:     proptools.StringPtr("30"),
 			targetSdkVersionExpected: proptools.StringPtr("30"),
 			updatable:                false,
-		},
-		{
-			name:                     "[SDK finalised] Updatable Module: Android.bp has older targetSdkVersion",
-			platform_sdk_final:       true,
-			targetSdkVersionInBp:     proptools.StringPtr("30"),
-			targetSdkVersionExpected: proptools.StringPtr("30"),
-			updatable:                true,
-		},
-		{
-			name:                     "[SDK finalised] Updatable Module: Android.bp has targetSdkVersion as platform sdk codename",
-			platform_sdk_final:       true,
-			targetSdkVersionInBp:     proptools.StringPtr(platform_sdk_codename),
-			targetSdkVersionExpected: proptools.StringPtr("33"),
-			updatable:                true,
 		},
 		{
 			name:                     "[SDK finalised] Updatable Module: Android.bp has no targetSdkVersion",
@@ -3118,11 +3098,14 @@ func TestDefaultAppTargetSdkVersionForUpdatableModules(t *testing.T) {
 				name: "foo",
 				sdk_version: "current",
 				min_sdk_version: "29",
-				target_sdk_version: "%v",
-				updatable: %t,
-				enforce_default_target_sdk_version: %t
-			}
-			`, proptools.String(testCase.targetSdkVersionInBp), testCase.updatable, testCase.updatable) // enforce default target sdk version if app is updatable
+				updatable: %t`, testCase.updatable) +
+			func() string {
+				if testCase.targetSdkVersionInBp != nil {
+					return fmt.Sprintf(`, target_sdk_version: "%v" }`, proptools.String(testCase.targetSdkVersionInBp))
+				} else {
+					return "}"
+				}
+			}()
 
 		fixture := android.GroupFixturePreparers(
 			PrepareForTestWithJavaDefaultModules,
@@ -3151,43 +3134,57 @@ func TestEnforceDefaultAppTargetSdkVersionFlag(t *testing.T) {
 	platform_sdk_version := 33
 	testCases := []struct {
 		name                           string
-		enforceDefaultTargetSdkVersion bool
+		enforceDefaultTargetSdkVersion *bool
 		expectedError                  string
 		platform_sdk_final             bool
-		targetSdkVersionInBp           string
+		targetSdkVersionInBp           *string
 		targetSdkVersionExpected       string
 		updatable                      bool
 	}{
 		{
 			name:                           "Not enforcing Target SDK Version: Android.bp has older targetSdkVersion",
-			enforceDefaultTargetSdkVersion: false,
-			targetSdkVersionInBp:           "29",
+			enforceDefaultTargetSdkVersion: proptools.BoolPtr(false),
+			targetSdkVersionInBp:           proptools.StringPtr("29"),
 			targetSdkVersionExpected:       "29",
 			updatable:                      false,
 		},
 		{
-			name:                           "[SDK finalised] Enforce Target SDK Version: Android.bp has current targetSdkVersion",
-			enforceDefaultTargetSdkVersion: true,
-			platform_sdk_final:             true,
-			targetSdkVersionInBp:           "current",
-			targetSdkVersionExpected:       "33",
-			updatable:                      true,
+			name:                     "Not enforcing Target SDK Version: sdk not yet finalised",
+			platform_sdk_final:       false,
+			targetSdkVersionExpected: "10000",
+			updatable:                true,
 		},
 		{
-			name:                           "[SDK finalised] Enforce Target SDK Version: Android.bp has current targetSdkVersion",
-			enforceDefaultTargetSdkVersion: true,
-			platform_sdk_final:             false,
-			targetSdkVersionInBp:           "current",
-			targetSdkVersionExpected:       "10000",
+			name:                     "[SDK finalised] Not enforcing Target SDK Version: updatable flag set as false",
+			platform_sdk_final:       true,
+			targetSdkVersionExpected: "33",
+			updatable:                false,
+		},
+		{
+			name:                     "[SDK finalised] Enforce Target SDK Version: updatable app",
+			platform_sdk_final:       true,
+			targetSdkVersionExpected: "33",
+			updatable:                true,
+		},
+		{
+			name:                           "[SDK finalised] Enforce Target SDK Version using enforce default target sdk version flag",
+			enforceDefaultTargetSdkVersion: proptools.BoolPtr(true),
+			platform_sdk_final:             true,
+			targetSdkVersionExpected:       "33",
 			updatable:                      false,
 		},
 		{
 			name:                           "Not enforcing Target SDK Version for Updatable app",
-			enforceDefaultTargetSdkVersion: false,
+			enforceDefaultTargetSdkVersion: proptools.BoolPtr(false),
 			expectedError:                  "Updatable apps must enforce default target sdk version",
-			targetSdkVersionInBp:           "29",
-			targetSdkVersionExpected:       "29",
+			targetSdkVersionInBp:           proptools.StringPtr("29"),
 			updatable:                      true,
+		},
+		{
+			name:                 "Explicitly declaring target SDK Version in Android.bp for Updatable app",
+			expectedError:        "Updatable apps must not set target_sdk_version.",
+			targetSdkVersionInBp: proptools.StringPtr("31"),
+			updatable:            true,
 		},
 	}
 	for _, testCase := range testCases {
@@ -3198,10 +3195,15 @@ func TestEnforceDefaultAppTargetSdkVersionFlag(t *testing.T) {
 				enforce_default_target_sdk_version: %t,
 				sdk_version: "current",
 				min_sdk_version: "29",
-				target_sdk_version: "%v",
 				updatable: %t
-			}
-			`, testCase.enforceDefaultTargetSdkVersion, testCase.targetSdkVersionInBp, testCase.updatable)
+			`, proptools.BoolDefault(testCase.enforceDefaultTargetSdkVersion, true), testCase.updatable) +
+			func() string {
+				if testCase.targetSdkVersionInBp != nil {
+					return fmt.Sprintf(`, target_sdk_version: "%v" }`, proptools.String(testCase.targetSdkVersionInBp))
+				} else {
+					return "}"
+				}
+			}()
 
 		fixture := android.GroupFixturePreparers(
 			PrepareForTestWithJavaDefaultModules,
