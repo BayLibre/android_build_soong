@@ -23,6 +23,7 @@ import (
 	"path"
 	"sync"
 
+	"android/soong/bazel"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -125,6 +126,7 @@ func syspropJavaGenFactory() android.Module {
 type syspropLibrary struct {
 	android.ModuleBase
 	android.ApexModuleBase
+	android.BazelModuleBase
 
 	properties syspropLibraryProperties
 
@@ -372,6 +374,7 @@ func syspropLibraryFactory() android.Module {
 	)
 	android.InitAndroidModule(m)
 	android.InitApexModule(m)
+	android.InitBazelModule(m)
 	android.AddLoadHook(m, func(ctx android.LoadHookContext) { syspropLibraryHook(ctx, m) })
 	return m
 }
@@ -556,4 +559,46 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 		libraries := syspropLibraries(ctx.Config())
 		*libraries = append(*libraries, "//"+ctx.ModuleDir()+":"+ctx.ModuleName())
 	}
+}
+
+// TODO(b/240463568): Additional properties will be added for API validation
+type bazelSyspropLibraryAttributes struct {
+	Srcs []string
+}
+
+type bazelCcSyspropLibraryAttributes struct {
+	Dep             string
+	Min_sdk_version *string
+}
+
+func (m *syspropLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "sysprop_library",
+			Bzl_load_location: "//build/bazel/rules/sysprop:sysprop_library.bzl",
+		},
+		android.CommonAttributes{Name: m.Name()},
+		&bazelSyspropLibraryAttributes{
+			Srcs: m.properties.Srcs,
+		})
+
+	attrs := &bazelCcSyspropLibraryAttributes{
+		Dep:             m.Name(),
+		Min_sdk_version: m.properties.Cpp.Min_sdk_version,
+	}
+
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "cc_sysprop_library_shared",
+			Bzl_load_location: "//build/bazel/rules/cc:cc_sysprop_library.bzl",
+		},
+		android.CommonAttributes{Name: m.CcImplementationModuleName()},
+		attrs)
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "cc_sysprop_library_static",
+			Bzl_load_location: "//build/bazel/rules/cc:cc_sysprop_library.bzl",
+		},
+		android.CommonAttributes{Name: m.CcImplementationModuleName() + "_bp2build_cc_library_static"},
+		attrs)
 }
