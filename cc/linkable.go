@@ -253,6 +253,9 @@ type LinkableInterface interface {
 
 	// VndkVersion returns the VNDK version string for this module.
 	VndkVersion() string
+
+	// OutputPartition returns the partition string for this module.
+	OutputPartition() string
 }
 
 var (

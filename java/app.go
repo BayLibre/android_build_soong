@@ -777,6 +777,7 @@ func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
 						target:         module.Target(),
 						coverageFile:   dep.CoverageOutputFile(),
 						unstrippedFile: dep.UnstrippedOutputFile(),
+						partition:      dep.OutputPartition(),
 					})
 				} else {
 					ctx.ModuleErrorf("dependency %q missing output file", otherName)
