@@ -22,6 +22,30 @@
       },
       "revId": "b432886b6a4363044b202b9fa5af64aa06ecc84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8643a7b_dcb009da",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-01T14:42:47Z",
+      "side": 1,
+      "message": "Since we are now enforcing updatable modules to not have targetSdkVersion in their bp files, I think we should add this property to give them flexibility in case they want to test locally.",
+      "parentUuid": "52051bcc_552b7a62",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "b432886b6a4363044b202b9fa5af64aa06ecc84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
