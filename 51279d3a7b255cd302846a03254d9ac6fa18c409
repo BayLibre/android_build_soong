@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11726bdf_9ec8548a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-09-01T02:25:22Z",
+      "side": 1,
+      "message": "Resolved conflict from cc.go",
+      "revId": "51279d3a7b255cd302846a03254d9ac6fa18c409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
