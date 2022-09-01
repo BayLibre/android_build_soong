@@ -663,3 +663,28 @@ func TestPrebuiltStubNoinstall(t *testing.T) {
 		testFunc(t, disabledSourceStublibBp+prebuiltStublibBp+installedlibBp)
 	})
 }
+
+func TestPrebuiltBinaryWithBazel(t *testing.T) {
+	const bp = `
+cc_prebuilt_binary {
+	name: "bintest",
+	srcs: ["bin"],
+	bazel_module: {label: "//bin/foo:foo" },
+}`
+	const outBaseDir = "outputbase"
+	config := TestConfig(t.TempDir(), android.Android, nil, bp, nil)
+	config.BazelContext = android.MockBazelContext{
+		OutputBaseDir:      outBaseDir,
+		LabelToOutputFiles: map[string][]string{"//bin/foo:foo": []string{"bin"}},
+	}
+	ctx := testCcWithConfig(t, config)
+	bin := ctx.ModuleForTests("bintest", "android_arm64_armv8-a").Module()
+	const pathPrefix = outBaseDir + "/execroot/__main__/"
+
+	outputFiles, err := bin.(android.OutputFileProducer).OutputFiles("")
+	if err != nil {
+		t.Errorf("Unexpected error getting cc_object outputfiles %s", err)
+	}
+	expectedOutputFiles := []string{pathPrefix + "bin"}
+	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+}
