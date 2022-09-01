@@ -165,6 +165,14 @@ func maybePartitionExportedAndImplementationsDepsExcludes(ctx android.BazelConve
 	}
 }
 
+func bp2BuildPropParseHelper(ctx android.ArchVariantContext, module *Module, propsType interface{}, parseFunc func(axis bazel.ConfigurationAxis, config string, props interface{})) {
+	for axis, configToProps := range module.GetArchVariantProperties(ctx, propsType) {
+		for config, props := range configToProps {
+			parseFunc(axis, config, props)
+		}
+	}
+}
+
 // Parses properties common to static and shared libraries. Also used for prebuilt libraries.
 func bp2buildParseStaticOrSharedProps(ctx android.BazelConversionPathContext, module *Module, lib *libraryDecorator, isStatic bool) staticOrSharedAttributes {
 	attrs := staticOrSharedAttributes{}
@@ -219,8 +227,9 @@ func bp2buildParseStaticOrSharedProps(ctx android.BazelConversionPathContext, mo
 
 // Convenience struct to hold all attributes parsed from prebuilt properties.
 type prebuiltAttributes struct {
-	Src     bazel.LabelAttribute
-	Enabled bazel.BoolAttribute
+	Src          bazel.LabelAttribute
+	Enabled      bazel.BoolAttribute
+	CheckElfFile bazel.BoolAttribute
 }
 
 // NOTE: Used outside of Soong repo project, in the clangprebuilts.go bootstrap_go_package
@@ -280,11 +289,41 @@ func Bp2BuildParsePrebuiltLibraryProps(ctx android.BazelConversionPathContext, m
 	}
 }
 
-func bp2BuildPropParseHelper(ctx android.ArchVariantContext, module *Module, propsType interface{}, parseFunc func(axis bazel.ConfigurationAxis, config string, props interface{})) {
-	for axis, configToProps := range module.GetArchVariantProperties(ctx, propsType) {
-		for config, props := range configToProps {
-			parseFunc(axis, config, props)
+func Bp2BuildParsePrebuiltBinaryProps(ctx android.BazelConversionPathContext, module *Module) prebuiltAttributes {
+	sourceFileError := func(axis bazel.ConfigurationAxis, config string) {
+		ctx.ModuleErrorf("Bp2BuildParsePrebuiltBinaryProps: Expected at most one source file for %s %s\n", axis, config)
+	}
+	var srcLabelAttribute bazel.LabelAttribute
+
+	parseSrcs := func(ctx android.BazelConversionPathContext, axis bazel.ConfigurationAxis, config string, srcs []string) {
+		if len(srcs) > 1 {
+			sourceFileError(axis, config)
+			return
+		} else if len(srcs) == 0 {
+			return
 		}
+		if srcLabelAttribute.SelectValue(axis, config) != nil {
+			sourceFileError(axis, config)
+			return
+		}
+
+		src := android.BazelLabelForModuleSrcSingle(ctx, srcs[0])
+		srcLabelAttribute.SetSelectValue(axis, config, src)
+	}
+
+	var checkElfFile bazel.BoolAttribute
+	if linker, ok := module.linker.(*prebuiltBinaryLinker); ok {
+		checkElfFile.SetValue(linker.properties.Check_elf_files)
+	}
+	bp2BuildPropParseHelper(ctx, module, &prebuiltLinkerProperties{}, func(axis bazel.ConfigurationAxis, config string, props interface{}) {
+		if props, ok := props.(*prebuiltLinkerProperties); ok {
+			parseSrcs(ctx, axis, config, props.Srcs)
+		}
+	})
+
+	return prebuiltAttributes{
+		Src:          srcLabelAttribute,
+		CheckElfFile: checkElfFile,
 	}
 }
 
