@@ -304,9 +304,9 @@ func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {
 		if !BoolDefault(a.appProperties.Enforce_default_target_sdk_version, true) {
 			ctx.PropertyErrorf("enforce_default_target_sdk_version", "Updatable apps must enforce default target sdk version")
 		}
-		// TODO(b/227460469) after all the modules removes the target sdk version, throw an error if the target sdk version is explicitly set.
-		if a.deviceProperties.Target_sdk_version == nil {
-			a.SetEnforceDefaultTargetSdkVersion(true)
+		a.SetEnforceDefaultTargetSdkVersion(true)
+		if a.deviceProperties.Target_sdk_version != nil {
+			ctx.PropertyErrorf("updatable", "Updatable apps must not set target_sdk_version.")
 		}
 	}
 
