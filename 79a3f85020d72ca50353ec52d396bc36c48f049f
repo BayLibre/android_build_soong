@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b99e66_a827ebb8",
+        "filename": "symbol_inject/symbol_inject.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-01T18:52:41Z",
+      "side": 1,
+      "message": "I think it would be slightly more readable to set this inside machoSymbolsFromFile.",
+      "revId": "79a3f85020d72ca50353ec52d396bc36c48f049f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
