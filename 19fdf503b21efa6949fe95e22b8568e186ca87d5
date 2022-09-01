@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "795aa030_a5df5c95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-01T15:20:04Z",
+      "side": 1,
+      "message": "On Mark\u0027s suggestion, I\u0027ve made `m` fail if USE_BAZEL_ANALYSIS is set. PTAL.",
+      "revId": "19fdf503b21efa6949fe95e22b8568e186ca87d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
