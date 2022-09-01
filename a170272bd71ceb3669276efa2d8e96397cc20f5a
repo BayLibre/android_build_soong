@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b020d4_9b74fe45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-09-01T15:10:29Z",
+      "side": 1,
+      "message": "LGTM, happy to stamp unless you wanted Paul to take a look too",
+      "revId": "a170272bd71ceb3669276efa2d8e96397cc20f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602ac2c0_0da9a568",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-09-01T15:10:29Z",
+      "side": 1,
+      "message": "It\u0027s a little ugly. Tempted to say we should just set this outside the loop and make metalava deal with empty dir. Not hugely fussed though..",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 6
+      },
+      "revId": "a170272bd71ceb3669276efa2d8e96397cc20f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69da8225_0ffb208d",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-09-01T15:10:29Z",
+      "side": 1,
+      "message": "`(extensions_dir \u003d\u003d \"\") !\u003d (extension_filter \u003d\u003d \"\")` ? 😄 probably less obscure your way.",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "a170272bd71ceb3669276efa2d8e96397cc20f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
