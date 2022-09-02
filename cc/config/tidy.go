@@ -199,6 +199,13 @@ func TidyChecksForDir(dir string) string {
 	return tidyDefault
 }
 
+func NoClangTidyForDir(dir string) bool {
+	// This can work like TidyChecksForDir to disable clang-tidy by default
+	// for any directory pattern. For now, only "external/" and "vendor/"
+	// need to be disabled.
+	return strings.HasPrefix(dir, "external/") || strings.HasPrefix(dir, "vendor/")
+}
+
 // Returns a globally disabled tidy checks, overriding locally selected checks.
 func TidyGlobalNoChecks() string {
 	if len(globalNoCheckList) > 0 {
