@@ -16,6 +16,24 @@
       "message": "nit: `module.properties` is cluttering this block a lot. An earlier `props :\u003d module.properties` would likely aid readability.",
       "revId": "f22d9a99c2e04832fa70e306de1b08e6de25b183",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5c401d_9f85d150",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-09-02T18:39:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5516250b_e1cb6977",
+      "revId": "f22d9a99c2e04832fa70e306de1b08e6de25b183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
