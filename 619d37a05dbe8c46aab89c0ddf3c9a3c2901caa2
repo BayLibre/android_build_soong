@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8571cdfa_1fbebe42",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-09-02T22:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e346a42c_a84d5e2b",
+      "range": {
+        "startLine": 126,
+        "startChar": 27,
+        "endLine": 126,
+        "endChar": 50
+      },
+      "revId": "619d37a05dbe8c46aab89c0ddf3c9a3c2901caa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2268653e_ad403fb8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-02T18:23:49Z",
       "side": 1,
       "message": "there\u0027s a lot of complexity with the power set and the called out aspect of srcs/exclude_srcs, can you expand the test coverage to handle some of the power set and srcs/exclude_srcs?",
+      "range": {
+        "startLine": 538,
+        "startChar": 5,
+        "endLine": 538,
+        "endChar": 30
+      },
+      "revId": "619d37a05dbe8c46aab89c0ddf3c9a3c2901caa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c56c61_197ba361",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-09-02T22:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2268653e_ad403fb8",
       "range": {
         "startLine": 538,
         "startChar": 5,
