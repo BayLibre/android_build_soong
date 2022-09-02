@@ -22,6 +22,30 @@
       },
       "revId": "115cfbd0aaeadb719017fc6ae363988ff88970a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f82614d6_4efe63b2",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-02T14:49:14Z",
+      "side": 1,
+      "message": "I originally updated this to always remove all the system libraries, but realized that\u0027s probably a waste for how rarely it\u0027s necessary and forgot to revert this back as well.\n\nFixed.",
+      "parentUuid": "7babd015_05ae966c",
+      "range": {
+        "startLine": 1076,
+        "startChar": 43,
+        "endLine": 1076,
+        "endChar": 75
+      },
+      "revId": "115cfbd0aaeadb719017fc6ae363988ff88970a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
