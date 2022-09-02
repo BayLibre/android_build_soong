@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "051d0da3_39f1d143",
+        "filename": "android/proto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-02T19:04:47Z",
+      "side": 1,
+      "message": "nit: `proto_library` instead of `proto_lib`",
+      "revId": "033ea5cc201119cccd96186052cd1463c097fe00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
