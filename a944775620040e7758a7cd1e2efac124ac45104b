@@ -22,6 +22,30 @@
       },
       "revId": "a944775620040e7758a7cd1e2efac124ac45104b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7d556e8_921a591e",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2137,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-09-02T22:50:33Z",
+      "side": 1,
+      "message": "I agree, it\u0027s not the best for generating human-readable build files. Filed b/244784605",
+      "parentUuid": "f9c971f8_0a603547",
+      "range": {
+        "startLine": 2129,
+        "startChar": 0,
+        "endLine": 2137,
+        "endChar": 76
+      },
+      "revId": "a944775620040e7758a7cd1e2efac124ac45104b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
