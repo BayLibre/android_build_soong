@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7143e100_4bbb2ddd",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-09-05T14:45:16Z",
+      "side": 1,
+      "message": "What have you tried?\n\nThe normal way to achieve that would be to add a new prop to the Droidstubs struct, like this:\n\n    Extensions_info_file *string `android:\"path\"`\n    \nYou can then set that in Android.bp like this:\n\n    droidstubs {\n        ....\n        extension_info_file: \"filter.txt\",\n    }\n\nIf the filter.txt file is a in different dir than the droidstubs module itself (like in this case), you need a filegroup in the sdkext repo:\n\n    filegroup {\n        name: \"sdk-extensions-info\",\n        srcs: [\"filter.txt\"],\n    }\n\nAnd you refer to it like this (note the colon!):\n\n    droidstubs {\n        ....\n        extension_info_file: \":sdk-extensions-info\",\n    }",
+      "parentUuid": "788a1eaa_387b05f2",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 6
+      },
+      "revId": "a170272bd71ceb3669276efa2d8e96397cc20f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "69da8225_0ffb208d",
