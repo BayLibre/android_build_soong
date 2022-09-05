@@ -676,6 +676,63 @@ class OverrideDefaultVersionTest(unittest.TestCase):
     output = self.run_test(manifest_input, '67890')
     self.assert_xml_equal(output, expected)
 
+class OverrideVerifyNoTargetSdkVersionTest(unittest.TestCase):
+  """Unit tests for verify_no_target_sdk_version function."""
+
+  def assert_xml_equal(self, output, expected):
+    self.assertEqual(ET.canonicalize(output), ET.canonicalize(expected))
+
+  def run_test(self, input_manifest):
+    doc = minidom.parseString(input_manifest)
+    manifest_fixer.verify_no_target_sdk_version(doc)
+    output = io.StringIO()
+    manifest_fixer.write_xml(output, doc)
+    return output.getvalue()
+
+  manifest_tmpl = (
+      '<?xml version="1.0" encoding="utf-8"?>\n'
+      '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n'
+      '%s'
+      '</manifest>\n')
+
+  def uses_sdk(self, min_sdk_version=None, target_sdk_version=None):
+    attrs = ''
+    if min_sdk_version:
+      attrs += ' android:minSdkVersion="%s"' % min_sdk_version
+    if target_sdk_version:
+      attrs += ' android:targetSdkVersion="%s"' % target_sdk_version
+    return '    <uses-sdk%s/>\n' % attrs
+
+  def test_target_sdk_version_not_present(self):
+    """Tests that manifest without targetSdkVersion doesn't raise error"""
+
+    manifest_input = self.manifest_tmpl % self.uses_sdk()
+    expected = self.manifest_tmpl % self.uses_sdk()
+    output = self.run_test(manifest_input)
+    self.assert_xml_equal(output, expected)
+
+  def test_target_sdk_version_present(self):
+    """Tests that manifest with targetSdkVersion raise error"""
+
+    manifest_input = self.manifest_tmpl % self.uses_sdk(target_sdk_version='33')
+    self.assertRaises(RuntimeError, self.run_test, manifest_input)
+
+  def test_min_sdk_version_present(self):
+    """Tests manifest with minSdkVersion works fine."""
+
+    uses_sdk_tag = self.uses_sdk(min_sdk_version='31')
+    manifest_input = self.manifest_tmpl % uses_sdk_tag
+    expected = self.manifest_tmpl % uses_sdk_tag
+    output = self.run_test(manifest_input)
+    self.assert_xml_equal(output, expected)
+
+  def test_target_and_min_sdk_version_present(self):
+    """Tests that manifest with minSdkVersion & targetSdkVersion raise error"""
+
+    manifest_input = self.manifest_tmpl % self.uses_sdk(min_sdk_version='31',
+                                                        target_sdk_version='33')
+    self.assertRaises(RuntimeError, self.run_test, manifest_input)
+
 
 if __name__ == '__main__':
   unittest.main(verbosity=2)
