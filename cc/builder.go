@@ -944,8 +944,6 @@ func sourceAbiDiff(ctx android.ModuleContext, inputDump android.Path, referenceD
 	// When error occurs in previous version ABI diff, Developers can't just update ABI
 	// reference but need to follow instructions to ensure ABI backward compatibility.
 	if previousVersionDiff {
-		// TODO(b/241496591): Remove -advice-only after b/239792343 and b/239790286 are reolved.
-		extraFlags = append(extraFlags, "-advice-only")
 		errorMessage = "error: Please follow development/vndk/tools/header-checker/README.md to ensure the ABI compatibility between your source code and version " + strconv.Itoa(prevVersion) + "."
 		sourceVersion := prevVersion + 1
 		extraFlags = append(extraFlags, "-target-version", strconv.Itoa(sourceVersion))
