@@ -72,9 +72,36 @@ def parse_args():
                             'already has a testOnly attribute.'))
   parser.add_argument('--override-placeholder-version', dest='new_version',
                       help='Overrides the versionCode if it\'s set to the placeholder value of 0')
+  parser.add_argument('--no-explicit-targetSdkVersion', dest='verify_no_target_sdk_version', action='store_true',
+                      help='Verifies that no targetSdkVersion is declared in  manifest file.')
   parser.add_argument('input', help='input AndroidManifest.xml file')
   parser.add_argument('output', help='output AndroidManifest.xml file')
   return parser.parse_args()
+
+
+def verify_no_target_sdk_version(doc):
+  """Ensure that manifest doesn't explicitly contain targetSdkVersion in
+  <uses-sdk> tag.
+
+  Args:
+    doc: The XML document.
+  Raises:
+    RuntimeError: invalid manifest
+  """
+  manifest = parse_manifest(doc)
+
+  # Get the uses-sdk element
+  uses_sdk = get_children_with_tag(manifest, 'uses-sdk')
+  if len(uses_sdk) > 1:
+    raise RuntimeError('found multiple uses-sdk elements')
+  elif len(uses_sdk) == 1:
+    element = uses_sdk[0]
+  else:
+    return
+
+  target_attr = element.getAttributeNodeNS(android_ns, 'targetSdkVersion')
+  if target_attr is not None:
+    raise RuntimeError('found target sdk version in manifest file')
 
 
 def raise_min_sdk_version(doc, min_sdk_version, target_sdk_version, library):
@@ -385,6 +412,9 @@ def main():
     doc = minidom.parse(args.input)
 
     ensure_manifest_android_ns(doc)
+
+    if args.verify_no_target_sdk_version:
+      verify_no_target_sdk_version(doc)
 
     if args.raise_min_sdk_version:
       raise_min_sdk_version(doc, args.min_sdk_version, args.target_sdk_version, args.library)
