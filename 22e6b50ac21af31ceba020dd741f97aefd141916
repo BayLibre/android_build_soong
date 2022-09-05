@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f2738ad_994575b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-09-05T01:07:21Z",
+      "side": 1,
+      "message": "Although I doubt if we should support Makefile dependencies, the change LGTM",
+      "revId": "22e6b50ac21af31ceba020dd741f97aefd141916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
