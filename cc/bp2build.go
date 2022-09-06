@@ -28,14 +28,15 @@ import (
 )
 
 const (
-	cSrcPartition     = "c"
-	asSrcPartition    = "as"
-	asmSrcPartition   = "asm"
-	lSrcPartition     = "l"
-	llSrcPartition    = "ll"
-	cppSrcPartition   = "cpp"
-	protoSrcPartition = "proto"
-	aidlSrcPartition  = "aidl"
+	cSrcPartition       = "c"
+	asSrcPartition      = "as"
+	asmSrcPartition     = "asm"
+	lSrcPartition       = "l"
+	llSrcPartition      = "ll"
+	cppSrcPartition     = "cpp"
+	protoSrcPartition   = "proto"
+	aidlSrcPartition    = "aidl"
+	syspropSrcPartition = "sysprop"
 )
 
 // staticOrSharedAttributes are the Bazel-ified versions of StaticOrSharedProperties --
@@ -102,7 +103,8 @@ func groupSrcsByExtension(ctx android.BazelConversionPathContext, srcs bazel.Lab
 		llSrcPartition: bazel.LabelPartition{Extensions: []string{".ll"}},
 		// C++ is the "catch-all" group, and comprises generated sources because we don't
 		// know the language of these sources until the genrule is executed.
-		cppSrcPartition: bazel.LabelPartition{Extensions: []string{".cpp", ".cc", ".cxx", ".mm"}, LabelMapper: addSuffixForFilegroup("_cpp_srcs"), Keep_remainder: true},
+		cppSrcPartition:     bazel.LabelPartition{Extensions: []string{".cpp", ".cc", ".cxx", ".mm"}, LabelMapper: addSuffixForFilegroup("_cpp_srcs"), Keep_remainder: true},
+		syspropSrcPartition: bazel.LabelPartition{Extensions: []string{".sysprop"}},
 	}
 
 	return bazel.PartitionLabelListAttribute(ctx, &srcs, labels)
@@ -318,6 +320,9 @@ type compilerAttributes struct {
 	llSrcs  bazel.LabelListAttribute
 	lexopts bazel.StringListAttribute
 
+	// Sysprop sources
+	syspropSrcs bazel.LabelListAttribute
+
 	hdrs bazel.LabelListAttribute
 
 	rtti bazel.BoolAttribute
@@ -480,6 +485,7 @@ func (ca *compilerAttributes) finalize(ctx android.BazelConversionPathContext, i
 	ca.asmSrcs = partitionedSrcs[asmSrcPartition]
 	ca.lSrcs = partitionedSrcs[lSrcPartition]
 	ca.llSrcs = partitionedSrcs[llSrcPartition]
+	ca.syspropSrcs = partitionedSrcs[syspropSrcPartition]
 
 	ca.absoluteIncludes.DeduplicateAxesFromBase()
 	ca.localIncludes.DeduplicateAxesFromBase()
@@ -736,6 +742,10 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 	convertedLSrcs := bp2BuildLex(ctx, module.Name(), compilerAttrs)
 	(&compilerAttrs).srcs.Add(&convertedLSrcs.srcName)
 	(&compilerAttrs).cSrcs.Add(&convertedLSrcs.cSrcName)
+
+	if !compilerAttrs.syspropSrcs.IsEmpty() {
+		(&linkerAttrs).wholeArchiveDeps.Add(bp2buildCcSysprop(ctx, module.Name(), module.Properties.Min_sdk_version, compilerAttrs.syspropSrcs))
+	}
 
 	features := compilerAttrs.features.Clone().Append(linkerAttrs.features)
 	features.DeduplicateAxesFromBase()
@@ -1160,10 +1170,14 @@ func bp2BuildParseExportedIncludes(ctx android.BazelConversionPathContext, modul
 	return exported
 }
 
+func BazelLabelNameForStaticModule(baseLabel string) string {
+	return baseLabel + "_bp2build_cc_library_static"
+}
+
 func bazelLabelForStaticModule(ctx android.BazelConversionPathContext, m blueprint.Module) string {
 	label := android.BazelModuleLabel(ctx, m)
 	if ccModule, ok := m.(*Module); ok && ccModule.typ() == fullLibrary && !android.GetBp2BuildAllowList().GenerateCcLibraryStaticOnly(m.Name()) {
-		label += "_bp2build_cc_library_static"
+		return BazelLabelNameForStaticModule(label)
 	}
 	return label
 }
