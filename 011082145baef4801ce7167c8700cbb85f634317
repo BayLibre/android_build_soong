@@ -34,6 +34,23 @@
       "parentUuid": "74abbb21_cb56f24f",
       "revId": "011082145baef4801ce7167c8700cbb85f634317",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bede4edf_c97e7a46",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-06T17:49:36Z",
+      "side": 1,
+      "message": "nit: Why Fatalf as opposed to Fatal or FatalLn? There doesn\u0027t seem to be any format specifiers in use.",
+      "revId": "011082145baef4801ce7167c8700cbb85f634317",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
