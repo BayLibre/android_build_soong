@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1662421_8ba70934",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-06T19:10:33Z",
+      "side": 0,
+      "message": "Thanks!",
+      "revId": "6faa161557b84905ab07c9e586258687231f7d93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

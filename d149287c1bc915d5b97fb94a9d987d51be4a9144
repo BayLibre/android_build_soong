@@ -66,6 +66,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcebc810_9ab29ef4",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-06T19:10:33Z",
+      "side": 1,
+      "message": "Should we err on the side of converting filegroup -\u003e proto_library instead of just adding proto_library if possible? It will result to less cleanup we have to do down the road.\n\nIf there\u0027s a blocker preventing us from converting filegroup -\u003e proto_library, can we add a TODO here to clean this up after b/242847534 is fixed?",
+      "revId": "d149287c1bc915d5b97fb94a9d987d51be4a9144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "433449a2_1d45fe06",
         "filename": "bp2build/cc_library_conversion_test.go",
         "patchSetId": 2
@@ -77,6 +94,30 @@
       "writtenOn": "2022-09-06T18:43:12Z",
       "side": 1,
       "message": "should this be `//path/to/A:a_fg_proto` ?",
+      "range": {
+        "startLine": 2283,
+        "startChar": 5,
+        "endLine": 2283,
+        "endChar": 16
+      },
+      "revId": "d149287c1bc915d5b97fb94a9d987d51be4a9144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9636b542_a1584f47",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2283,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-06T19:10:33Z",
+      "side": 1,
+      "message": "Because this is Blueprint, I don\u0027t think we need to specify the full path.",
+      "parentUuid": "433449a2_1d45fe06",
       "range": {
         "startLine": 2283,
         "startChar": 5,
