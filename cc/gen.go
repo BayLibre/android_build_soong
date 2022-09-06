@@ -229,6 +229,10 @@ func genSysprop(ctx android.ModuleContext, syspropFile android.Path) (android.Pa
 	return cppFile, headers.Paths()
 }
 
+func bp2buildCcSysprop(ctx android.Bp2buildMutatorContext, moduleName string, minSdkVersion *string, srcs bazel.LabelListAttribute) *bazel.LabelAttribute {
+	return bazel.MakeLabelAttribute(":" + Bp2buildSysprop(ctx, moduleName, srcs, minSdkVersion, false).StaticLibraryLabel)
+}
+
 // Used to communicate information from the genSources method back to the library code that uses
 // it.
 type generatedSourceInfo struct {
