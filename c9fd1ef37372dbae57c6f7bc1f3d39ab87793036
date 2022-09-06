@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c32acc_a54a8fbf",
+        "filename": "cc/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-06T17:31:37Z",
+      "side": 1,
+      "message": "!proptools.Bool(tidy.Properties.Tidy)",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 57
+      },
+      "revId": "c9fd1ef37372dbae57c6f7bc1f3d39ab87793036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
