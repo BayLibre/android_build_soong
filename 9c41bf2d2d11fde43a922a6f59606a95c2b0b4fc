@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5812061_d63bc17d",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-09-06T18:45:36Z",
+      "side": 1,
+      "message": "Should we instead be using `android.IsThirdPartyPath()`? Also, I\u0027m realizing that this function will accidentally count some 3p deps under `vendor/google` possibly incorrectly.",
+      "revId": "9c41bf2d2d11fde43a922a6f59606a95c2b0b4fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
