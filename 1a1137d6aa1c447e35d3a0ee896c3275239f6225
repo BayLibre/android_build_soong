@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd5deac1_ac5531dc",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-06T21:06:02Z",
+      "side": 1,
+      "message": "note I found this useful for unit tests (when I had typos in the json being fed).\nAnd I think this will also be useful when field names/types maybe edited/added/removed in the future (unlikely and rarely but possible).",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5932a7ca_68853793",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-06T21:06:02Z",
+      "side": 1,
+      "message": "this was just to align the two lines so that visual inspection is easy",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
