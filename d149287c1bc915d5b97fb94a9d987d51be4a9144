@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab059337_9b9a9fb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-06T18:43:12Z",
+      "side": 1,
+      "message": "in general, lgtm,",
+      "revId": "d149287c1bc915d5b97fb94a9d987d51be4a9144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3674ba8c_729e5273",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-06T18:43:12Z",
+      "side": 1,
+      "message": "nit: does this need to be exported?",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "d149287c1bc915d5b97fb94a9d987d51be4a9144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76672a07_0e3c57f5",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-06T18:43:12Z",
+      "side": 1,
+      "message": "nit: should this include `_proto` as well?",
+      "range": {
+        "startLine": 36,
+        "startChar": 35,
+        "endLine": 36,
+        "endChar": 54
+      },
+      "revId": "d149287c1bc915d5b97fb94a9d987d51be4a9144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "433449a2_1d45fe06",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2283,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-06T18:43:12Z",
+      "side": 1,
+      "message": "should this be `//path/to/A:a_fg_proto` ?",
+      "range": {
+        "startLine": 2283,
+        "startChar": 5,
+        "endLine": 2283,
+        "endChar": 16
+      },
+      "revId": "d149287c1bc915d5b97fb94a9d987d51be4a9144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
