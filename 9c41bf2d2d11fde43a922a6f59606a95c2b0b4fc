@@ -16,6 +16,24 @@
       "message": "Should we instead be using `android.IsThirdPartyPath()`? Also, I\u0027m realizing that this function will accidentally count some 3p deps under `vendor/google` possibly incorrectly.",
       "revId": "9c41bf2d2d11fde43a922a6f59606a95c2b0b4fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f239e4a7_ce9786e6",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-09-06T21:06:40Z",
+      "side": 1,
+      "message": "Now merged the logic of android.IsThirdPartyPath into DefaultLocalTidyChecks and reuse it for both TidyChecksForDir and TidyChecksForDir. DefaultLocalTidyChecks may have more patterns in the future.",
+      "parentUuid": "b5812061_d63bc17d",
+      "revId": "9c41bf2d2d11fde43a922a6f59606a95c2b0b4fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
