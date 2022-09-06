@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f51913_7ae50fe6",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-06T20:55:01Z",
+      "side": 1,
+      "message": "This is the only directory in AOSP that contains modules affected by this change.",
+      "revId": "ccfc1dc12670d3ddf7f50cbac80cf78be9e8edb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
