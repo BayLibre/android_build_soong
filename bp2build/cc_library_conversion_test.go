@@ -2871,3 +2871,50 @@ cc_library {
 		},
 	})
 }
+
+func TestCcLibraryWithSyspropSrcs(t *testing.T) {
+	runCcLibraryTestCase(t, Bp2buildTestCase{
+		Description:                "cc_library with sysprop sources",
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Filesystem: map[string]string{
+			"foo.sysprop": "",
+			"bar.sysprop": "",
+			"foo.cpp":     "",
+		},
+		Blueprint: `
+cc_library {
+	name: "foo",
+	srcs: [
+		"bar.sysprop",
+		"baz.sysprop",
+		"blah.cpp",
+	],
+	min_sdk_version: "5",
+}`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("sysprop_library", "foo", AttrNameToString{
+				"srcs": `[
+        "bar.sysprop",
+        "baz.sysprop",
+    ]`,
+			}),
+			MakeBazelTarget("cc_sysprop_library_static", "foo_cc_static", AttrNameToString{
+				"dep":             `":foo"`,
+				"min_sdk_version": `"5"`,
+			}),
+			MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
+				"srcs":               `["blah.cpp"]`,
+				"local_includes":     `["."]`,
+				"min_sdk_version":    `"5"`,
+				"whole_archive_deps": `[":foo_cc_static"]`,
+			}),
+			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"srcs":               `["blah.cpp"]`,
+				"local_includes":     `["."]`,
+				"min_sdk_version":    `"5"`,
+				"whole_archive_deps": `[":foo_cc_static"]`,
+			}),
+		},
+	})
+}
