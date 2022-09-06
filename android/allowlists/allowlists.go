@@ -119,7 +119,9 @@ var (
 		"external/icu":                           Bp2BuildDefaultTrueRecursively,
 		"external/icu/android_icu4j":             Bp2BuildDefaultFalse, // java rules incomplete
 		"external/icu/icu4j":                     Bp2BuildDefaultFalse, // java rules incomplete
+		"external/jacoco":                        Bp2BuildDefaultTrueRecursively,
 		"external/jarjar":                        Bp2BuildDefaultTrueRecursively,
+		"external/javaparser":                    Bp2BuildDefaultTrueRecursively,
 		"external/javapoet":                      Bp2BuildDefaultTrueRecursively,
 		"external/jemalloc_new":                  Bp2BuildDefaultTrueRecursively,
 		"external/jsoncpp":                       Bp2BuildDefaultTrueRecursively,
@@ -298,10 +300,12 @@ var (
 		// external/bazelbuild-rules_android/... is needed by mixed builds, otherwise mixed builds analysis fails
 		// e.g. ERROR: Analysis of target '@soong_injection//mixed_builds:buildroot' failed
 		"external/bazelbuild-rules_android":/* recursive = */ true,
+		"external/bazelbuild-kotlin-rules":/* recursive = */ true,
 		"external/bazel-skylib":/* recursive = */ true,
 		"external/guava":/* recursive = */ true,
 		"external/jsr305":/* recursive = */ true,
 		"external/protobuf":/* recursive = */ false,
+		"frameworks/base/tools/codegen":/* recursive = */ true,
 		"frameworks/ex/common":/* recursive = */ true,
 
 		"packages/apps/Music":/* recursive = */ true,
