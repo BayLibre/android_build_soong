@@ -669,3 +669,37 @@ func TestCcArchVariantBinarySuffix(t *testing.T) {
 		},
 	})
 }
+
+func TestCcBinaryWithSyspropSrcs(t *testing.T) {
+	runCcBinaryTestCase(t, ccBinaryBp2buildTestCase{
+		description: "cc_binary with sysprop sources",
+		blueprint: `
+{rule_name} {
+	name: "foo",
+	srcs: [
+		"bar.sysprop",
+		"baz.sysprop",
+		"blah.cpp",
+	],
+	min_sdk_version: "5",
+}`,
+		targets: []testBazelTarget{
+			{"sysprop_library", "foo", AttrNameToString{
+				"srcs": `[
+        "bar.sysprop",
+        "baz.sysprop",
+    ]`,
+			}},
+			{"cc_sysprop_library_static", "foo_cc_static", AttrNameToString{
+				"dep":             `":foo"`,
+				"min_sdk_version": `"5"`,
+			}},
+			{"cc_binary", "foo", AttrNameToString{
+				"srcs":               `["blah.cpp"]`,
+				"local_includes":     `["."]`,
+				"min_sdk_version":    `"5"`,
+				"whole_archive_deps": `[":foo_cc_static"]`,
+			}},
+		},
+	})
+}
