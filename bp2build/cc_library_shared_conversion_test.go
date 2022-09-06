@@ -714,3 +714,42 @@ cc_library_shared {
 		},
 	})
 }
+
+func TestCcLibrarySharedWithSyspropSrcs(t *testing.T) {
+	runCcLibrarySharedTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_shared with sysprop sources",
+		Filesystem: map[string]string{
+			"foo.sysprop": "",
+			"bar.sysprop": "",
+			"foo.cpp":     "",
+		},
+		Blueprint: `
+cc_library_shared {
+	name: "foo",
+	srcs: [
+		"foo.sysprop",
+		"bar.sysprop",
+		"foo.cpp",
+	],
+	min_sdk_version: "5",
+}`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("sysprop_library", "foo_sysprop_library", AttrNameToString{
+				"srcs": `[
+        "foo.sysprop",
+        "bar.sysprop",
+    ]`,
+			}),
+			MakeBazelTarget("cc_sysprop_library_static", "libfoo_bp2build_cc_library_static", AttrNameToString{
+				"dep":             `":foo_sysprop_library"`,
+				"min_sdk_version": `"5"`,
+			}),
+			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"srcs":               `["foo.cpp"]`,
+				"local_includes":     `["."]`,
+				"min_sdk_version":    `"5"`,
+				"whole_archive_deps": `[":libfoo_bp2build_cc_library_static"]`,
+			}),
+		},
+	})
+}

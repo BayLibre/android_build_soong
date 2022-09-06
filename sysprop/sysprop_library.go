@@ -207,14 +207,14 @@ func registerSyspropBuildComponents(ctx android.RegistrationContext) {
 
 func (m *syspropLibrary) Name() string {
 	return m.BaseModuleName() + "_sysprop_library"
-}
 
+}
 func (m *syspropLibrary) Owner() string {
 	return m.properties.Property_owner
 }
 
 func (m *syspropLibrary) CcImplementationModuleName() string {
-	return "lib" + m.BaseModuleName()
+	return cc.SyspropCcImplementationModuleName(m.BaseModuleName())
 }
 
 func (m *syspropLibrary) javaPublicStubName() string {
@@ -569,44 +569,10 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 	}
 }
 
-// TODO(b/240463568): Additional properties will be added for API validation
-type bazelSyspropLibraryAttributes struct {
-	Srcs bazel.LabelListAttribute
-}
-
-type bazelCcSyspropLibraryAttributes struct {
-	Dep             bazel.LabelAttribute
-	Min_sdk_version *string
-}
-
 func (m *syspropLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
-	ctx.CreateBazelTargetModule(
-		bazel.BazelTargetModuleProperties{
-			Rule_class:        "sysprop_library",
-			Bzl_load_location: "//build/bazel/rules/sysprop:sysprop_library.bzl",
-		},
-		android.CommonAttributes{Name: m.Name()},
-		&bazelSyspropLibraryAttributes{
-			Srcs: bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, m.properties.Srcs)),
-		})
-
-	attrs := &bazelCcSyspropLibraryAttributes{
-		Dep:             *bazel.MakeLabelAttribute(":" + m.Name()),
-		Min_sdk_version: m.properties.Cpp.Min_sdk_version,
-	}
-
-	ctx.CreateBazelTargetModule(
-		bazel.BazelTargetModuleProperties{
-			Rule_class:        "cc_sysprop_library_shared",
-			Bzl_load_location: "//build/bazel/rules/cc:cc_sysprop_library.bzl",
-		},
-		android.CommonAttributes{Name: m.CcImplementationModuleName()},
-		attrs)
-	ctx.CreateBazelTargetModule(
-		bazel.BazelTargetModuleProperties{
-			Rule_class:        "cc_sysprop_library_static",
-			Bzl_load_location: "//build/bazel/rules/cc:cc_sysprop_library.bzl",
-		},
-		android.CommonAttributes{Name: m.CcImplementationModuleName() + "_bp2build_cc_library_static"},
-		attrs)
+	cc.Bp2buildSysprop(ctx,
+		m.BaseModuleName(),
+		bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, m.properties.Srcs)),
+		m.properties.Cpp.Min_sdk_version,
+		true)
 }
