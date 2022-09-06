@@ -22,6 +22,30 @@
       },
       "revId": "c9fd1ef37372dbae57c6f7bc1f3d39ab87793036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "137db205_1face48f",
+        "filename": "cc/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-09-06T18:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32c32acc_a54a8fbf",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 57
+      },
+      "revId": "c9fd1ef37372dbae57c6f7bc1f3d39ab87793036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
