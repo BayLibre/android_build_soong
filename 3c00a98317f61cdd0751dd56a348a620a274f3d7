@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac021ef_cbee2419",
+        "filename": "cc/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-06T17:09:14Z",
+      "side": 1,
+      "message": "I don\u0027t think there will be any way to support this parent directory search in Bazel, you can only access files that are inside the directory that contains the BUILD file.  That\u0027s less strictly enforced for Soong, but still something we try to maintain.\n\nThis is a lot of complexity with an unclear support path in the future for literally 4 files in the tree.  I\u0027d suggest a `clang_tidy_file: \".clang_tidy\",` property on the relevant modules instead.",
+      "revId": "3c00a98317f61cdd0751dd56a348a620a274f3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
