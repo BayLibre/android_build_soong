@@ -16,6 +16,24 @@
       "message": "Although I doubt if we should support Makefile dependencies, the change LGTM",
       "revId": "22e6b50ac21af31ceba020dd741f97aefd141916",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ece823_97879736",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-09-06T05:56:13Z",
+      "side": 1,
+      "message": "I believe many partners still have many modules defined with Makefile, so I guess this is inevitable.",
+      "parentUuid": "6f2738ad_994575b8",
+      "revId": "22e6b50ac21af31ceba020dd741f97aefd141916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
