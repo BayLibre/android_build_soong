@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7d033b3_d62eb82a",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-07T20:30:25Z",
+      "side": 1,
+      "message": "given that this isn\u0027t a `cc_library`, we shouldn\u0027t use the `bp2build_cc_library_static` naming here -- it is only necessary to distinguish cases where `cc_library` creates both a `cc_library_static` and a `cc_library_shared`, instead a naming scheme similar to proto libraries would be nicer long-term for users to deal with, e.g. `foo_cc_sysprop_library`",
+      "range": {
+        "startLine": 693,
+        "startChar": 34,
+        "endLine": 693,
+        "endChar": 67
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee6d2765_ab77b89b",
         "filename": "cc/gen.go",
         "patchSetId": 5
@@ -42,6 +65,76 @@
         "startChar": 5,
         "endLine": 232,
         "endChar": 22
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d5b58c6_ad592c6c",
+        "filename": "cc/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-07T20:30:25Z",
+      "side": 1,
+      "message": "+1, one option may be to consider using a struct for the parameters as opposed to a long list of parameters, it also makes it easier to document boolean params and only set them when non-false",
+      "parentUuid": "ee6d2765_ab77b89b",
+      "range": {
+        "startLine": 232,
+        "startChar": 5,
+        "endLine": 232,
+        "endChar": 22
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cc7845e_563713b6",
+        "filename": "cc/sysprop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-07T20:30:25Z",
+      "side": 1,
+      "message": "it looks like these are never used, why are we returning them?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3a5448_a04be8da",
+        "filename": "cc/sysprop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-07T20:30:25Z",
+      "side": 1,
+      "message": "given that this is the only used return, perhaps we can only return it? \n\nor perhaps there\u0027s some alternate restructuring we can consider, given that we don\u0027t necessarily need to share all this logic given that:\n\n* the static library naming can/should be different between a `sysprop_library` and a cc module with `.sysprop` sources\n* shared library will only be used for `sysprop_library` modules",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 27
       },
       "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
