@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "20efeb0c4842c0793876653d823cb748296f266f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63339821_543ec77a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-07T17:02:47Z",
+      "side": 1,
+      "message": "(Approved \u0026 LGTM modulo build failure oversight)",
+      "revId": "20efeb0c4842c0793876653d823cb748296f266f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
