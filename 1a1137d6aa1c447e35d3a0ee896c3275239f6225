@@ -3,6 +3,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4b0e5ff_daf7ce42",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-07T17:59:51Z",
+      "side": 1,
+      "message": "maybe \"unsupported primitive of type \u0027%%s\u0027: %%s\" instead?",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce1e5085_e9cb50c2",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-07T17:59:51Z",
+      "side": 1,
+      "message": "Please either attach a bug or an owner if leaving a TODO",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b246cde_5bed469c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-07T17:59:51Z",
+      "side": 1,
+      "message": "The naming of `encode_dict_value` is a little inaccurate, when it specifically means \"encode anything other than a dict\" (and is used as such). I also don\u0027t think we get much value from separating list encoding from primitive encoding. How about you restructure this as such?:\n\n```\ndef json_encode(input):\n  def encode_shallow_value(v):\n    if type(input) \u003d\u003d \"list\":\n      ...\n    elif type(input) \u003d\u003d \"string\":\n      ...\n    else:\n      fail(...)\n\n\n  if type(input) \u003d\u003d \"dict\":\n    items \u003d []\n    for (k, v) in input.items():\n      if type(v) \u003d\u003d \"dict\":\n        fail(...)\n      else:\n        items +\u003d [encode_shallow_value(v) + ...]\n  else:\n    return encode_shallow_value(input)\n```",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd5deac1_ac5531dc",
         "filename": "bazel/cquery/request_type.go",
         "patchSetId": 2
@@ -14,6 +65,24 @@
       "writtenOn": "2022-09-06T21:06:02Z",
       "side": 1,
       "message": "note I found this useful for unit tests (when I had typos in the json being fed).\nAnd I think this will also be useful when field names/types maybe edited/added/removed in the future (unlikely and rarely but possible).",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a9bf470_12f476bd",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-07T17:59:51Z",
+      "side": 1,
+      "message": "Nice! Mind leaving a comment above it, so that when we inevitably cargo-cult this, we remember why? 😊",
+      "parentUuid": "dd5deac1_ac5531dc",
       "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
