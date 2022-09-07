@@ -789,9 +789,6 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	} else if j.shouldInstrumentStatic(ctx) {
 		ctx.AddVariationDependencies(nil, staticLibTag, "jacocoagent")
 	}
-	if j.shouldInstrument(ctx) {
-		ctx.AddVariationDependencies(nil, libTag, "jacocoagent")
-	}
 
 	if j.useCompose() {
 		ctx.AddVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(), kotlinPluginTag,

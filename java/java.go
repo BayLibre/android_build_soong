@@ -66,6 +66,7 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 	// to support the checks in dexpreoptDisabled().
 	ctx.FinalDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("dexpreopt_tool_deps", dexpreoptToolDepsMutator).Parallel()
+		ctx.BottomUp("jacoco_deps", jacocoDepsMutator).Parallel()
 	})
 
 	ctx.RegisterSingletonType("logtags", LogtagsSingleton)
