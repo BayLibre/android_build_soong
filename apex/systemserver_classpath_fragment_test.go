@@ -31,6 +31,7 @@ func TestSystemserverclasspathFragmentContents(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
+		java.PrepareForTestWithJacocoInstrumentation,
 		dexpreopt.FixtureSetApexSystemServerJars("myapex:foo"),
 	).RunTestWithBp(t, `
 		apex {
@@ -83,6 +84,7 @@ func TestSystemserverclasspathFragmentNoGeneratedProto(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
+		java.PrepareForTestWithJacocoInstrumentation,
 		dexpreopt.FixtureSetApexSystemServerJars("myapex:foo"),
 	).RunTestWithBp(t, `
 		apex {
@@ -135,6 +137,7 @@ func TestSystemServerClasspathFragmentWithContentNotInMake(t *testing.T) {
 	android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
+		java.PrepareForTestWithJacocoInstrumentation,
 		dexpreopt.FixtureSetApexSystemServerJars("myapex:foo"),
 	).
 		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
@@ -236,6 +239,7 @@ func TestSystemserverclasspathFragmentStandaloneContents(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
+		java.PrepareForTestWithJacocoInstrumentation,
 		dexpreopt.FixtureSetApexStandaloneSystemServerJars("myapex:foo"),
 	).RunTestWithBp(t, `
 		apex {

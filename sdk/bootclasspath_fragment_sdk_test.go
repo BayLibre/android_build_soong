@@ -68,6 +68,7 @@ func TestSnapshotWithBootclasspathFragment_ImageName(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForSdkTestWithJava,
 		java.PrepareForTestWithJavaDefaultModules,
+		java.PrepareForTestWithJacocoInstrumentation,
 		prepareForSdkTestWithApex,
 
 		// Some additional files needed for the art apex.

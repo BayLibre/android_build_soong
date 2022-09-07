@@ -52,6 +52,7 @@ func TestBootclasspathFragments(t *testing.T) {
 		// Configure some libraries in the art bootclasspath_fragment and platform_bootclasspath.
 		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz", "platform:foo", "platform:bar"),
 		prepareForTestWithArtApex,
+		java.PrepareForTestWithJacocoInstrumentation,
 
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo"),
@@ -292,6 +293,7 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 	commonPreparer := android.GroupFixturePreparers(
 		prepareForTestWithBootclasspathFragment,
 		prepareForTestWithArtApex,
+		java.PrepareForTestWithJacocoInstrumentation,
 
 		android.FixtureWithRootAndroidBp(`
 		apex {

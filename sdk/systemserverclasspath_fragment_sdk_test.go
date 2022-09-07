@@ -27,6 +27,7 @@ func testSnapshotWithSystemServerClasspathFragment(t *testing.T, sdk string, tar
 		prepareForSdkTestWithJava,
 		java.PrepareForTestWithJavaDefaultModules,
 		java.PrepareForTestWithJavaSdkLibraryFiles,
+		java.PrepareForTestWithJacocoInstrumentation,
 		java.FixtureWithLastReleaseApis("mysdklibrary"),
 		dexpreopt.FixtureSetApexSystemServerJars("myapex:mylib", "myapex:mysdklibrary"),
 		android.FixtureModifyEnv(func(env map[string]string) {

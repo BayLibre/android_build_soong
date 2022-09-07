@@ -211,8 +211,7 @@ var prepareForApexTest = android.GroupFixturePreparers(
 		"foo.rs":                               nil,
 		"libfoo.jar":                           nil,
 		"libbar.jar":                           nil,
-	},
-	),
+	}),
 
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 		variables.DeviceVndkVersion = proptools.StringPtr("current")
@@ -516,7 +515,9 @@ func TestBasicApex(t *testing.T) {
 			sdk_version: "none",
 			system_modules: "none",
 		}
-	`)
+	`,
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule")
 
@@ -677,7 +678,9 @@ func TestDefaults(t *testing.T) {
 			sub_dir: "netd",
 		}
 
-	`)
+	`,
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
 		"etc/myetc",
 		"javalib/myjar.jar",
@@ -1841,6 +1844,7 @@ func TestApexMinSdkVersion_SupportsCodeNames_JavaLibs(t *testing.T) {
 			variables.Platform_version_active_codenames = []string{"S"}
 			variables.Platform_sdk_codename = proptools.StringPtr("S")
 		}),
+		java.PrepareForTestWithJacocoInstrumentation,
 	)
 }
 
@@ -2188,7 +2192,9 @@ func TestApexMinSdkVersion_Okay(t *testing.T) {
 			apex_available: ["myapex"],
 			min_sdk_version: "29",
 		}
-	`)
+	`,
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 }
 
 func TestJavaStableSdkVersion(t *testing.T) {
@@ -2337,6 +2343,7 @@ func TestJavaStableSdkVersion(t *testing.T) {
 			}
 			android.GroupFixturePreparers(
 				java.PrepareForTestWithJavaDefaultModules,
+				java.PrepareForTestWithJacocoInstrumentation,
 				PrepareForTestWithApexBuildComponents,
 				prepareForTestWithMyapex,
 				android.OptionalFixturePreparer(test.preparer),
@@ -2421,7 +2428,9 @@ func TestApexMinSdkVersion_ErrorIfDepIsNewer_Java(t *testing.T) {
 			srcs: ["a.java"],
 			apex_available: [ "myapex" ],
 		}
-	`)
+	`,
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 }
 
 func TestApexMinSdkVersion_OkayEvenWhenDepIsNewer_IfItSatisfiesApexMinSdkVersion(t *testing.T) {
@@ -2467,7 +2476,9 @@ func TestApexMinSdkVersion_OkayEvenWhenDepIsNewer_IfItSatisfiesApexMinSdkVersion
 			native_shared_libs: ["mylib", "mylib2"],
 			min_sdk_version: "30",
 		}
-	`)
+	`,
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 	expectLink := func(from, from_variant, to, to_variant string) {
 		ld := ctx.ModuleForTests(from, "android_arm64_armv8-a_"+from_variant).Rule("ld")
 		libFlags := ld.Args["libFlags"]
@@ -5311,7 +5322,11 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 		}
 	`
 
-		ctx := testDexpreoptWithApexes(t, bp, "", preparer, fragment)
+		instrumentedPreparer := android.GroupFixturePreparers(
+			preparer,
+			java.PrepareForTestWithJacocoInstrumentation,
+		)
+		ctx := testDexpreoptWithApexes(t, bp, "", instrumentedPreparer, fragment)
 		checkBootDexJarPath(t, ctx, "libfoo", "out/soong/.intermediates/libfoo/android_common_apex10000/hiddenapi/libfoo.jar")
 		checkBootDexJarPath(t, ctx, "libbar", "out/soong/.intermediates/libbar/android_common_myapex/hiddenapi/libbar.jar")
 
@@ -5679,7 +5694,9 @@ func TestApexWithApps(t *testing.T) {
 			apex_available: [ "myapex" ],
 			sdk_version: "current",
 		}
-	`)
+	`,
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 
 	module := ctx.ModuleForTests("myapex", "android_common_myapex_image")
 	apexRule := module.Rule("apexRule")
@@ -5847,7 +5864,9 @@ func TestApexWithTestHelperApp(t *testing.T) {
 			apex_available: [ "myapex" ],
 		}
 
-	`)
+	`,
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 
 	module := ctx.ModuleForTests("myapex", "android_common_myapex_image")
 	apexRule := module.Rule("apexRule")
@@ -6287,7 +6306,10 @@ func TestOverrideApex(t *testing.T) {
 			compile_dex: true,
 			apex_available: ["myapex"],
 		}
-	`, withManifestPackageNameOverrides([]string{"myapex:com.android.myapex"}))
+	`,
+		withManifestPackageNameOverrides([]string{"myapex:com.android.myapex"}),
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 
 	originalVariant := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(android.OverridableModule)
 	overriddenVariant := ctx.ModuleForTests("myapex", "android_common_override_myapex_myapex_image").Module().(android.OverridableModule)
@@ -6561,7 +6583,10 @@ func TestJavaSDKLibrary(t *testing.T) {
 			name: "sdk",
 			api_dirs: ["100"],
 		}
-	`, withFiles(filesForSdkLibrary))
+	`,
+		withFiles(filesForSdkLibrary),
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 
 	// java_sdk_library installs both impl jar and permission XML
 	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
@@ -6610,7 +6635,10 @@ func TestJavaSDKLibrary_WithinApex(t *testing.T) {
 			name: "sdk",
 			api_dirs: ["100"],
 		}
-	`, withFiles(filesForSdkLibrary))
+	`,
+		withFiles(filesForSdkLibrary),
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 
 	// java_sdk_library installs both impl jar and permission XML
 	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
@@ -6621,8 +6649,11 @@ func TestJavaSDKLibrary_WithinApex(t *testing.T) {
 
 	// The bar library should depend on the implementation jar.
 	barLibrary := ctx.ModuleForTests("bar", "android_common_myapex").Rule("javac")
-	if expected, actual := `^-classpath [^:]*/turbine-combined/foo\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
-		t.Errorf("expected %q, found %#q", expected, actual)
+
+	expectedClasspath := "-classpath out/soong/.intermediates/foo/android_common_myapex/turbine-combined/foo.jar:out/soong/.intermediates/jacocoagent/jacocoagent/android_common/turbine-combined/jacocoagent.jar"
+	actualClasspath := barLibrary.Args["classpath"]
+	if expectedClasspath != actualClasspath {
+		t.Errorf("expected %q, found %#q", expectedClasspath, actualClasspath)
 	}
 }
 
@@ -6662,7 +6693,10 @@ func TestJavaSDKLibrary_CrossBoundary(t *testing.T) {
 			name: "sdk",
 			api_dirs: ["100"],
 		}
-	`, withFiles(filesForSdkLibrary))
+	`,
+		withFiles(filesForSdkLibrary),
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 
 	// java_sdk_library installs both impl jar and permission XML
 	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
@@ -6672,8 +6706,10 @@ func TestJavaSDKLibrary_CrossBoundary(t *testing.T) {
 
 	// The bar library should depend on the stubs jar.
 	barLibrary := ctx.ModuleForTests("bar", "android_common").Rule("javac")
-	if expected, actual := `^-classpath [^:]*/turbine-combined/foo\.stubs\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
-		t.Errorf("expected %q, found %#q", expected, actual)
+	expectedClasspath := "-classpath out/soong/.intermediates/foo.stubs/android_common/turbine-combined/foo.stubs.jar"
+	actualClasspath := barLibrary.Args["classpath"]
+	if expectedClasspath != actualClasspath {
+		t.Errorf("expected %q, found %#q", expectedClasspath, actualClasspath)
 	}
 }
 
@@ -6750,7 +6786,9 @@ func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
 			},
 		}
 `),
-		}), withFiles(filesForSdkLibrary),
+		}),
+		withFiles(filesForSdkLibrary),
+		java.PrepareForTestWithJacocoInstrumentation,
 	)
 
 	// java_sdk_library installs both impl jar and permission XML
@@ -6762,8 +6800,10 @@ func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
 
 	// The bar library should depend on the implementation jar.
 	barLibrary := ctx.ModuleForTests("bar", "android_common_myapex").Rule("javac")
-	if expected, actual := `^-classpath [^:]*/turbine-combined/foo\.impl\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
-		t.Errorf("expected %q, found %#q", expected, actual)
+	expectedClasspath := "-classpath out/soong/.intermediates/source/foo.impl/android_common/turbine-combined/foo.impl.jar:out/soong/.intermediates/jacocoagent/jacocoagent/android_common/turbine-combined/jacocoagent.jar"
+	actualClasspath := barLibrary.Args["classpath"]
+	if expectedClasspath != actualClasspath {
+		t.Errorf("expected %q, found %#q", expectedClasspath, actualClasspath)
 	}
 }
 
@@ -6798,6 +6838,7 @@ func TestCompatConfig(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForApexTest,
 		java.PrepareForTestWithPlatformCompatConfig,
+		java.PrepareForTestWithJacocoInstrumentation,
 	).RunTestWithBp(t, `
 		apex {
 			name: "myapex",
@@ -6863,7 +6904,9 @@ func TestRejectNonInstallableJavaLibrary(t *testing.T) {
 			compile_dex: false,
 			apex_available: ["myapex"],
 		}
-	`)
+	`,
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 }
 
 func TestCarryRequiredModuleNames(t *testing.T) {
@@ -7011,7 +7054,7 @@ func TestSymlinksFromApexToSystem(t *testing.T) {
 
 	// For unbundled build, symlink shouldn't exist regardless of whether an APEX
 	// is updatable or not
-	ctx := testApex(t, bp, withUnbundledBuild)
+	ctx := testApex(t, bp, withUnbundledBuild, java.PrepareForTestWithJacocoInstrumentation)
 	files := getFiles(t, ctx, "myapex", "android_common_myapex_image")
 	ensureRealfileExists(t, files, "javalib/myjar.jar")
 	ensureRealfileExists(t, files, "lib64/mylib.so")
@@ -7023,7 +7066,7 @@ func TestSymlinksFromApexToSystem(t *testing.T) {
 	ensureRealfileExists(t, files, "lib64/myotherlib.so")
 
 	// For bundled build, symlink to the system for the non-updatable APEXes only
-	ctx = testApex(t, bp)
+	ctx = testApex(t, bp, java.PrepareForTestWithJacocoInstrumentation)
 	files = getFiles(t, ctx, "myapex", "android_common_myapex_image")
 	ensureRealfileExists(t, files, "javalib/myjar.jar")
 	ensureRealfileExists(t, files, "lib64/mylib.so")
@@ -7201,7 +7244,10 @@ func TestAppBundle(t *testing.T) {
 			system_modules: "none",
 			apex_available: [ "myapex" ],
 		}
-		`, withManifestPackageNameOverrides([]string{"AppFoo:com.android.foo"}))
+		`,
+		withManifestPackageNameOverrides([]string{"AppFoo:com.android.foo"}),
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 
 	bundleConfigRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Output("bundle_config.json")
 	content := bundleConfigRule.Args["content"]
@@ -7699,6 +7745,7 @@ func TestUpdatable_should_not_set_generate_classpaths_proto(t *testing.T) {
 		}
 	`,
 		dexpreopt.FixtureSetApexSystemServerJars("myapex:foo"),
+		java.PrepareForTestWithJacocoInstrumentation,
 	)
 }
 
@@ -7890,6 +7937,7 @@ func testBootJarPermittedPackagesRules(t *testing.T, errmsg, bp string, bootJars
 	android.GroupFixturePreparers(
 		android.PrepareForTestWithAndroidBuildComponents,
 		java.PrepareForTestWithJavaBuildComponents,
+		java.PrepareForTestWithJacocoInstrumentation,
 		PrepareForTestWithApexBuildComponents,
 		android.PrepareForTestWithNeverallowRules(rules),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
@@ -8391,8 +8439,9 @@ func TestAllowedFiles(t *testing.T) {
 			system_modules: "none",
 			apex_available: [ "myapex" ],
 		}
-	`, withFiles(map[string][]byte{
-		"sub/Android.bp": []byte(`
+	`,
+		withFiles(map[string][]byte{
+			"sub/Android.bp": []byte(`
 			override_apex {
 				name: "override_myapex",
 				base: "myapex",
@@ -8410,7 +8459,9 @@ func TestAllowedFiles(t *testing.T) {
 				package_name: "bar",
 			}
 			`),
-	}))
+		}),
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 
 	rule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("diffApexContentRule")
 	if expected, actual := "allowed.txt", rule.Args["allowed_files_file"]; expected != actual {
@@ -8843,22 +8894,14 @@ func TestApexJavaCoverage(t *testing.T) {
 		android.FixtureWithRootAndroidBp(bp),
 		dexpreopt.FixtureSetApexBootJars("myapex:mybootclasspathlib"),
 		dexpreopt.FixtureSetApexSystemServerJars("myapex:mysystemserverclasspathlib"),
+		java.PrepareForTestWithJacocoInstrumentation,
 		android.FixtureMergeEnv(map[string]string{
 			"EMMA_INSTRUMENT": "true",
 		}),
-		// need to mock jacocoagent here to satisfy dependency added for
-		// instrumented libraries at build time
-		android.FixtureAddFile("jacocoagent/Android.bp", []byte(`
-			java_library {
-				name: "jacocoagent",
-				srcs: ["Test.java"],
-				system_modules: "none",
-				sdk_version: "none",
-			}
-		`)),
 	).RunTest(t)
 
 	// Make sure jacoco ran on both mylib and mybootclasspathlib
+	result.ModuleForTests("mylib", "android_common_apex10000").Rule("jacoco")
 	if result.ModuleForTests("mylib", "android_common_apex10000").MaybeRule("jacoco").Rule == nil {
 		t.Errorf("Failed to find jacoco rule for mylib")
 	}
@@ -8944,6 +8987,7 @@ func TestAndroidMk_DexpreoptBuiltInstalledForApex(t *testing.T) {
 		}
 	`,
 		dexpreopt.FixtureSetApexSystemServerJars("myapex:foo"),
+		java.PrepareForTestWithJacocoInstrumentation,
 	)
 
 	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
@@ -9020,7 +9064,9 @@ func TestAndroidMk_RequiredModules(t *testing.T) {
 			apex_available: ["myapex", "otherapex"],
 			installable: true,
 		}
-	`)
+	`,
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 
 	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
 	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
@@ -9116,6 +9162,7 @@ func TestSdkLibraryCanHaveHigherMinSdkVersion(t *testing.T) {
 		prepareForTestWithMyapex,
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.PrepareForTestWithJavaDefaultModules,
+		java.PrepareForTestWithJacocoInstrumentation,
 		android.PrepareForTestWithAndroidBuildComponents,
 		dexpreopt.FixtureSetApexBootJars("myapex:mybootclasspathlib"),
 		dexpreopt.FixtureSetApexSystemServerJars("myapex:mysystemserverclasspathlib"),
@@ -9376,7 +9423,9 @@ func TestApexStrictUpdtabilityLint(t *testing.T) {
 
 	for _, testCase := range testCases {
 		bp := fmt.Sprintf(bpTemplate, testCase.apexUpdatable, testCase.javaStrictUpdtabilityLint)
-		fixtures := []android.FixturePreparer{}
+		fixtures := []android.FixturePreparer{
+			java.PrepareForTestWithJacocoInstrumentation,
+		}
 		if testCase.lintFileExists {
 			fixtures = append(fixtures, fs.AddToFixture())
 		}
@@ -9438,7 +9487,12 @@ func TestUpdatabilityLintSkipLibcore(t *testing.T) {
 	for _, testCase := range testCases {
 		lintFileCreator := android.FixtureAddTextFile(testCase.moduleDirectory+"lint-baseline.xml", "")
 		bpFileCreator := android.FixtureAddTextFile(testCase.moduleDirectory+"Android.bp", bp)
-		result := testApex(t, "", lintFileCreator, bpFileCreator)
+		result := testApex(t,
+			"",
+			lintFileCreator,
+			bpFileCreator,
+			java.PrepareForTestWithJacocoInstrumentation,
+		)
 		myjavalib := result.ModuleForTests("myjavalib", "android_common_apex29")
 		sboxProto := android.RuleBuilderSboxProtoForTests(t, myjavalib.Output("lint.sbox.textproto"))
 		cmdFlags := fmt.Sprintf("--baseline %vlint-baseline.xml --disallowed_issues NewApi", testCase.moduleDirectory)
@@ -9484,7 +9538,12 @@ func TestApexStrictUpdtabilityLintBcpFragmentDeps(t *testing.T) {
 		"lint-baseline.xml": nil,
 	}
 
-	result := testApex(t, bp, dexpreopt.FixtureSetApexBootJars("myapex:myjavalib"), fs.AddToFixture())
+	result := testApex(t,
+		bp,
+		dexpreopt.FixtureSetApexBootJars("myapex:myjavalib"),
+		fs.AddToFixture(),
+		java.PrepareForTestWithJacocoInstrumentation,
+	)
 	myjavalib := result.ModuleForTests("myjavalib", "android_common_apex29")
 	sboxProto := android.RuleBuilderSboxProtoForTests(t, myjavalib.Output("lint.sbox.textproto"))
 	if !strings.Contains(*sboxProto.Commands[0].Command, "--baseline lint-baseline.xml --disallowed_issues NewApi") {
@@ -9549,7 +9608,10 @@ func TestUpdatableApexEnforcesAppUpdatability(t *testing.T) {
 		},
 	}
 	for _, testCase := range testCases {
-		result := testApex(t, fmt.Sprintf(bp, testCase.apex_is_updatable_bp, testCase.app_is_updatable_bp))
+		result := testApex(t,
+			fmt.Sprintf(bp, testCase.apex_is_updatable_bp, testCase.app_is_updatable_bp),
+			java.PrepareForTestWithJacocoInstrumentation,
+		)
 		myapp := result.ModuleForTests("myapp", "android_common").Module().(*java.AndroidApp)
 		android.AssertBoolEquals(t, testCase.name, testCase.app_is_updatable_expected, myapp.Updatable())
 	}

@@ -101,16 +101,7 @@ func TestBootclasspathFragment_Coverage(t *testing.T) {
 			"EMMA_INSTRUMENT":           "true",
 			"EMMA_INSTRUMENT_FRAMEWORK": "true",
 		}),
-		// need to mock jacocoagent here to satisfy dependency added for
-		// instrumented libraries at build time
-		android.FixtureAddFile("jacocoagent/Android.bp", []byte(`
-			java_library {
-				name: "jacocoagent",
-				srcs: ["Test.java"],
-				system_modules: "none",
-				sdk_version: "none",
-			}
-		`)),
+		PrepareForTestWithJacocoInstrumentation,
 	)
 
 	prepareWithBp := android.FixtureWithRootAndroidBp(`
