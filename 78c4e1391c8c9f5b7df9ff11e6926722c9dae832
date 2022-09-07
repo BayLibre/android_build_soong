@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "188e57cc_2352d9a8",
+        "filename": "cc/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-07T21:25:58Z",
+      "side": 1,
+      "message": "My only hesitation with this is that I haven\u0027t seen that pattern used elsewhere in this codebase. I am personally disturbed by how many absurdly long lines we have here.",
+      "parentUuid": "3d5b58c6_ad592c6c",
+      "range": {
+        "startLine": 232,
+        "startChar": 5,
+        "endLine": 232,
+        "endChar": 22
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5cc7845e_563713b6",
         "filename": "cc/sysprop.go",
         "patchSetId": 5
