@@ -22,6 +22,30 @@
       },
       "revId": "a355be226f6b6f43f0c860b7a8dc154400b8949d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3024e0b3_44ae8a1e",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-07T20:55:11Z",
+      "side": 0,
+      "message": "What makes you say that?",
+      "parentUuid": "f1fe4cc7_d4cf8d8a",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 76
+      },
+      "revId": "a355be226f6b6f43f0c860b7a8dc154400b8949d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

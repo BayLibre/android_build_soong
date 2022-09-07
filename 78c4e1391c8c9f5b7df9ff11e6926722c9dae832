@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10b73581_0feb1e9e",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-07T20:55:11Z",
+      "side": 1,
+      "message": "Technically, we are creating a cc library under the hood. In particular, though, the reason this naming is important is that, IIUC, mixed builds will be looking for targets with this naming convention when it needs a static variant of a library. Is this not the case?",
+      "parentUuid": "c7d033b3_d62eb82a",
+      "range": {
+        "startLine": 693,
+        "startChar": 34,
+        "endLine": 693,
+        "endChar": 67
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee6d2765_ab77b89b",
         "filename": "cc/gen.go",
         "patchSetId": 5
@@ -119,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa6e2ea7_c5622f1d",
+        "filename": "cc/sysprop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-07T20:55:11Z",
+      "side": 1,
+      "message": "I thought a lot about this. I want the behavior of this function to be agnostic of what the caller needs out of it; which is why it felt weird to just return the static label. I know what I\u0027ve done here is a bit weird, but the alternative felt more repugnant to me. I thought it was likely I\u0027d get pushback on this...I\u0027ll change it.\n\nHow would you feel about leaving the struct, but only, for now, populate it with `StaticLibraryLabel`? Otherwise I\u0027ll just document that something weird is happening.",
+      "parentUuid": "5cc7845e_563713b6",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e3a5448_a04be8da",
         "filename": "cc/sysprop.go",
         "patchSetId": 5
@@ -130,6 +178,30 @@
       "writtenOn": "2022-09-07T20:30:25Z",
       "side": 1,
       "message": "given that this is the only used return, perhaps we can only return it? \n\nor perhaps there\u0027s some alternate restructuring we can consider, given that we don\u0027t necessarily need to share all this logic given that:\n\n* the static library naming can/should be different between a `sysprop_library` and a cc module with `.sysprop` sources\n* shared library will only be used for `sysprop_library` modules",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 27
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df48cf11_334200f6",
+        "filename": "cc/sysprop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-07T20:55:11Z",
+      "side": 1,
+      "message": "Why would the naming be different between those two cases?",
+      "parentUuid": "7e3a5448_a04be8da",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -176,6 +248,30 @@
       "writtenOn": "2022-09-07T20:05:03Z",
       "side": 1,
       "message": "Can you add a comment with the variable name like /*makeShared\u003d*/ here and at the other invocation point?",
+      "range": {
+        "startLine": 577,
+        "startChar": 2,
+        "endLine": 577,
+        "endChar": 6
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a895311c_8e75ca15",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-07T20:55:11Z",
+      "side": 1,
+      "message": "Based on some of Liz\u0027s comments, this may get refactored. If it stays this way, I will do so.",
+      "parentUuid": "debe5e34_082a48e2",
       "range": {
         "startLine": 577,
         "startChar": 2,
