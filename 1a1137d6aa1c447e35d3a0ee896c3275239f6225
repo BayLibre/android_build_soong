@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d56201c_1bedd6c6",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-07T19:04:52Z",
+      "side": 1,
+      "message": "reworded but not saying \"primitive\" because while the function expects a primitive the unsupported value could be a composite type",
+      "parentUuid": "e4b0e5ff_daf7ce42",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce1e5085_e9cb50c2",
         "filename": "android/bazel_handler.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-07T17:59:51Z",
       "side": 1,
       "message": "Please either attach a bug or an owner if leaving a TODO",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e934ba_87f0b313",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-07T19:04:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce1e5085_e9cb50c2",
       "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-07T17:59:51Z",
       "side": 1,
       "message": "The naming of `encode_dict_value` is a little inaccurate, when it specifically means \"encode anything other than a dict\" (and is used as such). I also don\u0027t think we get much value from separating list encoding from primitive encoding. How about you restructure this as such?:\n\n```\ndef json_encode(input):\n  def encode_shallow_value(v):\n    if type(input) \u003d\u003d \"list\":\n      ...\n    elif type(input) \u003d\u003d \"string\":\n      ...\n    else:\n      fail(...)\n\n\n  if type(input) \u003d\u003d \"dict\":\n    items \u003d []\n    for (k, v) in input.items():\n      if type(v) \u003d\u003d \"dict\":\n        fail(...)\n      else:\n        items +\u003d [encode_shallow_value(v) + ...]\n  else:\n    return encode_shallow_value(input)\n```",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae603a6_8df821ba",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-07T19:04:52Z",
+      "side": 1,
+      "message": "Thanks! I agree `encode_dict_value` is a misnomer - renaming to `encode_list_or_primitive`\n\n`encode_list` needs to call `encode_primitive` - so can\u0027t combine them into `encode_shallow_value` and involve self-recursion [aside: \"shallow\" doesn\u0027t sound right for a list]\n\nrant: I thought Starlark allowed recursion - prohibiting recursion to make a language non-Turing-Complete is usually not pragmatic.\n\nfyi: this is supposed to be a drop-in placeholder for json.encode(), which we should make available through a CL in bazel.",
+      "parentUuid": "2b246cde_5bed469c",
       "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -83,6 +137,24 @@
       "side": 1,
       "message": "Nice! Mind leaving a comment above it, so that when we inevitably cargo-cult this, we remember why? 😊",
       "parentUuid": "dd5deac1_ac5531dc",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e9e66e7_bbc65ea3",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-07T19:04:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a9bf470_12f476bd",
       "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
