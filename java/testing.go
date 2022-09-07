@@ -57,6 +57,10 @@ var PrepareForTestWithJavaBuildComponents = android.GroupFixturePreparers(
 		// Required to generate Java used-by API coverage
 		"build/soong/scripts/gen_java_usedby_apex.sh": nil,
 	}.AddToFixture(),
+
+	// need to mock jacocoagent here to satisfy dependency added for
+	// instrumented libraries at build time
+	android.JacocoMockFixture(),
 )
 
 // Test fixture preparer that will define all default java modules except the

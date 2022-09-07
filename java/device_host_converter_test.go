@@ -52,6 +52,9 @@ func TestDeviceForHost(t *testing.T) {
 
 	ctx, config := testJava(t, bp)
 
+	jacocoagentModule := ctx.ModuleForTests("jacocoagent", "linux_glibc_common")
+	jacocoagentJar := jacocoagentModule.Output("javac/jacocoagent.jar")
+
 	deviceModule := ctx.ModuleForTests("device_module", "android_common")
 	deviceTurbineCombined := deviceModule.Output("turbine-combined/device_module.jar")
 	deviceJavac := deviceModule.Output("javac/device_module.jar")
@@ -70,6 +73,7 @@ func TestDeviceForHost(t *testing.T) {
 	expectedClasspath := "-classpath " + strings.Join(android.Paths{
 		deviceTurbineCombined.Output,
 		deviceImportCombined.Output,
+		jacocoagentJar.Output,
 	}.Strings(), ":")
 
 	if hostJavac.Args["classpath"] != expectedClasspath {
@@ -133,6 +137,9 @@ func TestHostForDevice(t *testing.T) {
 
 	ctx, config := testJava(t, bp)
 
+	jacocoagentModule := ctx.ModuleForTests("jacocoagent", "android_common")
+	jacocoagentJar := jacocoagentModule.Output("turbine-combined/jacocoagent.jar")
+
 	hostModule := ctx.ModuleForTests("host_module", config.BuildOSCommonTarget.String())
 	hostJavac := hostModule.Output("javac/host_module.jar")
 	hostRes := hostModule.Output("res/host_module.jar")
@@ -150,6 +157,7 @@ func TestHostForDevice(t *testing.T) {
 	expectedClasspath := "-classpath " + strings.Join(android.Paths{
 		hostJavac.Output,
 		hostImportCombined.Output,
+		jacocoagentJar.Output,
 	}.Strings(), ":")
 
 	if deviceJavac.Args["classpath"] != expectedClasspath {

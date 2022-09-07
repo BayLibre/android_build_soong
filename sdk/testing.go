@@ -93,6 +93,10 @@ var prepareForSdkTest = android.GroupFixturePreparers(
 	android.MockFS{
 		"Test.java": nil,
 	}.AddToFixture(),
+
+	// need to mock jacocoagent here to satisfy dependency added for
+	// instrumented libraries at build time
+	android.JacocoMockFixture(),
 )
 
 var PrepareForTestWithSdkBuildComponents = android.GroupFixturePreparers(

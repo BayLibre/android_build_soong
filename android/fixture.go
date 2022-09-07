@@ -899,3 +899,23 @@ func (r *TestResult) Preparer() FixturePreparer {
 func (r *TestResult) Module(name string, variant string) Module {
 	return r.ModuleForTests(name, variant).Module()
 }
+
+// JacocoTestingFixture adds files to the test sufficient to mock the jacocoagent library.
+func JacocoMockFixture() FixturePreparer {
+	return GroupFixturePreparers(
+		// SDK 9 is chosen because that is the sdk in use by jacoco at time of writing
+		FixtureAddFile("prebuilts/sdk/9/public/android.jar", nil),
+		FixtureAddFile("prebuilts/sdk/9/public/framework.aidl", nil),
+		FixtureAddFile("prebuilts/sdk/tools/core-lambda-stubs.jar", nil),
+
+		FixtureAddFile("jacocoagent/Test.java", nil),
+		FixtureAddFile("jacocoagent/Android.bp", []byte(`
+				java_library {
+					name: "jacocoagent",
+					host_supported: true,
+					srcs: ["Test.java"],
+					sdk_version: "9",
+				}
+			`)),
+	)
+}
