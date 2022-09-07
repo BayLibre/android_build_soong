@@ -33,6 +33,29 @@
       "message": "(Approved \u0026 LGTM modulo build failure oversight)",
       "revId": "20efeb0c4842c0793876653d823cb748296f266f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f10741f2_2029c830",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-07T19:31:43Z",
+      "side": 1,
+      "message": "typically we don\u0027t want to export properties outside a package as they become accessible everywhere, instead could we extract the common portions of `PrebuiltEtc.ConvertWithBp2build`  into a separate function and export that instead? That will also keep the logic in common between `prebuilt_*` module types and `prebuilt_etc_xml` where they have common properties.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 22
+      },
+      "revId": "20efeb0c4842c0793876653d823cb748296f266f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
