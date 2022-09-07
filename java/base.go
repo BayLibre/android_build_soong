@@ -621,10 +621,13 @@ func initJavaModule(module android.DefaultableModule, hod android.HostOrDeviceSu
 	android.InitDefaultableModule(module)
 }
 
-func (j *Module) shouldInstrument(ctx android.BaseModuleContext) bool {
-	return j.properties.Instrument &&
-		ctx.Config().IsEnvTrue("EMMA_INSTRUMENT") &&
+func (j *Module) environmentSupportsInstrumentation(ctx android.BaseModuleContext) bool {
+	return ctx.Config().IsEnvTrue("EMMA_INSTRUMENT") &&
 		ctx.DeviceConfig().JavaCoverageEnabledForPath(ctx.ModuleDir())
+}
+
+func (j *Module) shouldInstrument(ctx android.BaseModuleContext) bool {
+	return j.properties.Instrument && j.environmentSupportsInstrumentation(ctx)
 }
 
 func (j *Module) shouldInstrumentStatic(ctx android.BaseModuleContext) bool {
@@ -648,6 +651,10 @@ func (j *Module) shouldInstrumentInApex(ctx android.BaseModuleContext) bool {
 		}
 	}
 	return false
+}
+
+func (j *Module) setInstrument(value bool) {
+	j.properties.Instrument = value
 }
 
 func (j *Module) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
@@ -788,9 +795,6 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 		}
 	} else if j.shouldInstrumentStatic(ctx) {
 		ctx.AddVariationDependencies(nil, staticLibTag, "jacocoagent")
-	}
-	if j.shouldInstrument(ctx) {
-		ctx.AddVariationDependencies(nil, libTag, "jacocoagent")
 	}
 
 	if j.useCompose() {
@@ -1433,10 +1437,6 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	j.implementationJarFile = outputFile
 	if j.headerJarFile == nil {
 		j.headerJarFile = j.implementationJarFile
-	}
-
-	if j.shouldInstrumentInApex(ctx) {
-		j.properties.Instrument = true
 	}
 
 	// enforce syntax check to jacoco filters for any build (http://b/183622051)
