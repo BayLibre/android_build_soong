@@ -57,6 +57,25 @@ var PrepareForTestWithJavaBuildComponents = android.GroupFixturePreparers(
 		// Required to generate Java used-by API coverage
 		"build/soong/scripts/gen_java_usedby_apex.sh": nil,
 	}.AddToFixture(),
+
+	// need to mock jacocoagent here to satisfy dependency added for
+	// instrumented libraries at build time
+	android.GroupFixturePreparers(
+		// SDK 9 is chosen because that is the sdk in use by jacoco at time of writing
+		android.FixtureAddFile("prebuilts/sdk/9/public/android.jar", nil),
+		android.FixtureAddFile("prebuilts/sdk/9/public/framework.aidl", nil),
+		android.FixtureAddFile("prebuilts/sdk/tools/core-lambda-stubs.jar", nil),
+
+		android.FixtureAddFile("jacocoagent/Test.java", nil),
+		android.FixtureAddFile("jacocoagent/Android.bp", []byte(`
+				java_library {
+					name: "jacocoagent",
+					host_supported: true,
+					srcs: ["Test.java"],
+					sdk_version: "9",
+				}
+			`)),
+	),
 )
 
 // Test fixture preparer that will define all default java modules except the
