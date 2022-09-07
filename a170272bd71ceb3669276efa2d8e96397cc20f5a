@@ -91,6 +91,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0477abdd_07582f8a",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2022-09-07T08:53:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7143e100_4bbb2ddd",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 6
+      },
+      "revId": "a170272bd71ceb3669276efa2d8e96397cc20f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "69da8225_0ffb208d",
         "filename": "java/droidstubs.go",
         "patchSetId": 1
