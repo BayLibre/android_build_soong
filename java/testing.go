@@ -42,11 +42,14 @@ const defaultJavaDir = "default/java"
 // singletons in order to function in which case they should be kept together in a separate
 // preparer.
 var PrepareForTestWithJavaBuildComponents = android.GroupFixturePreparers(
+	prepareForTestWithFrameworkDeps,
 	// Make sure that mutators and module types, e.g. prebuilt mutators available.
 	android.PrepareForTestWithAndroidBuildComponents,
 	// Make java build components available to the test.
 	android.FixtureRegisterWithContext(registerRequiredBuildComponentsForTest),
 	android.FixtureRegisterWithContext(registerJavaPluginBuildComponents),
+	// Add mocks for Jacoco instrumentation
+	prepareForTestWithJacocoInstrumentation,
 	// Additional files needed in tests that disallow non-existent source files.
 	// This includes files that are needed by all, or at least most, instances of a java module type.
 	android.MockFS{
@@ -59,11 +62,9 @@ var PrepareForTestWithJavaBuildComponents = android.GroupFixturePreparers(
 	}.AddToFixture(),
 )
 
-// Test fixture preparer that will define all default java modules except the
-// fake_tool_binary for dex2oatd.
-var PrepareForTestWithJavaDefaultModulesWithoutFakeDex2oatd = android.GroupFixturePreparers(
-	// Make sure that all the module types used in the defaults are registered.
-	PrepareForTestWithJavaBuildComponents,
+var prepareForTestWithFrameworkDeps = android.GroupFixturePreparers(
+	// The java default module definitions.
+	android.FixtureAddTextFile(defaultJavaDir+"/Android.bp", gatherRequiredDepsForTest()),
 	// Additional files needed when test disallows non-existent source.
 	android.MockFS{
 		// Needed for framework-res
@@ -77,8 +78,13 @@ var PrepareForTestWithJavaDefaultModulesWithoutFakeDex2oatd = android.GroupFixtu
 		"build/make/core/proguard.flags":             nil,
 		"build/make/core/proguard_basic_keeps.flags": nil,
 	}.AddToFixture(),
-	// The java default module definitions.
-	android.FixtureAddTextFile(defaultJavaDir+"/Android.bp", gatherRequiredDepsForTest()),
+)
+
+// Test fixture preparer that will define all default java modules except the
+// fake_tool_binary for dex2oatd.
+var PrepareForTestWithJavaDefaultModulesWithoutFakeDex2oatd = android.GroupFixturePreparers(
+	// Make sure that all the module types used in the defaults are registered.
+	PrepareForTestWithJavaBuildComponents,
 	// Add dexpreopt compat libs (android.test.base, etc.) and a fake dex2oatd module.
 	dexpreopt.PrepareForTestWithDexpreoptCompatLibs,
 )
@@ -140,6 +146,20 @@ var PrepareForTestWithPrebuiltsOfCurrentApi = FixtureWithPrebuiltApis(map[string
 	// .txt files which causes the prebuilt_apis module to fail.
 	"30": {},
 })
+
+// PrepareForTestWithJacocoInstrumentation creates a mock jacocoagent library that can be
+// depended on as part of the build process for instrumented Java modules.
+var prepareForTestWithJacocoInstrumentation = android.GroupFixturePreparers(
+	android.FixtureAddFile("jacocoagent/Test.java", nil),
+	android.FixtureAddFile("jacocoagent/Android.bp", []byte(`
+		java_library {
+			name: "jacocoagent",
+			host_supported: true,
+			srcs: ["Test.java"],
+			sdk_version: "current",
+		}
+	`)),
+)
 
 // FixtureWithPrebuiltApis creates a preparer that will define prebuilt api modules for the
 // specified releases and modules.
