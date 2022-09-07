@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0201f07_4a286578",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-09-07T20:05:03Z",
+      "side": 1,
+      "message": "maybe foo.sysprop -\u003e baz.sysprop and foo.cpp -\u003e bat.cpp just so \"foo\" is unique to the rule name (here and in the library tests)",
+      "range": {
+        "startLine": 680,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 12
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6d2765_ab77b89b",
+        "filename": "cc/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-09-07T20:05:03Z",
+      "side": 1,
+      "message": "I don\u0027t know if this extra function adds much to readability vs. inlining the below code, wdyt?",
+      "range": {
+        "startLine": 232,
+        "startChar": 5,
+        "endLine": 232,
+        "endChar": 22
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f75a626_2cd47ceb",
+        "filename": "cc/sysprop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-09-07T20:05:03Z",
+      "side": 1,
+      "message": "minor but I think I\u0027d prefer this block at the end, that way when you\u0027re reading the function with the assumption that \"makeShared\" is false you don\u0027t have to skip over the block... very much a small nit.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "debe5e34_082a48e2",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-09-07T20:05:03Z",
+      "side": 1,
+      "message": "Can you add a comment with the variable name like /*makeShared\u003d*/ here and at the other invocation point?",
+      "range": {
+        "startLine": 577,
+        "startChar": 2,
+        "endLine": 577,
+        "endChar": 6
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
