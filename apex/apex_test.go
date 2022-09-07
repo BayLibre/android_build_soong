@@ -164,54 +164,55 @@ var prepareForApexTest = android.GroupFixturePreparers(
 		}
 	`),
 	prepareForTestWithMyapex,
-	android.FixtureMergeMockFs(android.MockFS{
-		"a.java":                 nil,
-		"PrebuiltAppFoo.apk":     nil,
-		"PrebuiltAppFooPriv.apk": nil,
-		"apex_manifest.json":     nil,
-		"AndroidManifest.xml":    nil,
-		"system/sepolicy/apex/myapex.updatable-file_contexts":         nil,
-		"system/sepolicy/apex/myapex2-file_contexts":                  nil,
-		"system/sepolicy/apex/otherapex-file_contexts":                nil,
-		"system/sepolicy/apex/com.android.vndk-file_contexts":         nil,
-		"system/sepolicy/apex/com.android.vndk.current-file_contexts": nil,
-		"mylib.cpp":                            nil,
-		"mytest.cpp":                           nil,
-		"mytest1.cpp":                          nil,
-		"mytest2.cpp":                          nil,
-		"mytest3.cpp":                          nil,
-		"myprebuilt":                           nil,
-		"my_include":                           nil,
-		"foo/bar/MyClass.java":                 nil,
-		"prebuilt.jar":                         nil,
-		"prebuilt.so":                          nil,
-		"vendor/foo/devkeys/test.x509.pem":     nil,
-		"vendor/foo/devkeys/test.pk8":          nil,
-		"testkey.x509.pem":                     nil,
-		"testkey.pk8":                          nil,
-		"testkey.override.x509.pem":            nil,
-		"testkey.override.pk8":                 nil,
-		"vendor/foo/devkeys/testkey.avbpubkey": nil,
-		"vendor/foo/devkeys/testkey.pem":       nil,
-		"NOTICE":                               nil,
-		"custom_notice":                        nil,
-		"custom_notice_for_static_lib":         nil,
-		"testkey2.avbpubkey":                   nil,
-		"testkey2.pem":                         nil,
-		"myapex-arm64.apex":                    nil,
-		"myapex-arm.apex":                      nil,
-		"myapex.apks":                          nil,
-		"frameworks/base/api/current.txt":      nil,
-		"framework/aidl/a.aidl":                nil,
-		"dummy.txt":                            nil,
-		"baz":                                  nil,
-		"bar/baz":                              nil,
-		"testdata/baz":                         nil,
-		"AppSet.apks":                          nil,
-		"foo.rs":                               nil,
-		"libfoo.jar":                           nil,
-		"libbar.jar":                           nil,
-	},
+	android.FixtureMergeMockFs(
+		android.MockFS{
+			"a.java":                 nil,
+			"PrebuiltAppFoo.apk":     nil,
+			"PrebuiltAppFooPriv.apk": nil,
+			"apex_manifest.json":     nil,
+			"AndroidManifest.xml":    nil,
+			"system/sepolicy/apex/myapex.updatable-file_contexts":         nil,
+			"system/sepolicy/apex/myapex2-file_contexts":                  nil,
+			"system/sepolicy/apex/otherapex-file_contexts":                nil,
+			"system/sepolicy/apex/com.android.vndk-file_contexts":         nil,
+			"system/sepolicy/apex/com.android.vndk.current-file_contexts": nil,
+			"mylib.cpp":                            nil,
+			"mytest.cpp":                           nil,
+			"mytest1.cpp":                          nil,
+			"mytest2.cpp":                          nil,
+			"mytest3.cpp":                          nil,
+			"myprebuilt":                           nil,
+			"my_include":                           nil,
+			"foo/bar/MyClass.java":                 nil,
+			"prebuilt.jar":                         nil,
+			"prebuilt.so":                          nil,
+			"vendor/foo/devkeys/test.x509.pem":     nil,
+			"vendor/foo/devkeys/test.pk8":          nil,
+			"testkey.x509.pem":                     nil,
+			"testkey.pk8":                          nil,
+			"testkey.override.x509.pem":            nil,
+			"testkey.override.pk8":                 nil,
+			"vendor/foo/devkeys/testkey.avbpubkey": nil,
+			"vendor/foo/devkeys/testkey.pem":       nil,
+			"NOTICE":                               nil,
+			"custom_notice":                        nil,
+			"custom_notice_for_static_lib":         nil,
+			"testkey2.avbpubkey":                   nil,
+			"testkey2.pem":                         nil,
+			"myapex-arm64.apex":                    nil,
+			"myapex-arm.apex":                      nil,
+			"myapex.apks":                          nil,
+			"frameworks/base/api/current.txt":      nil,
+			"framework/aidl/a.aidl":                nil,
+			"dummy.txt":                            nil,
+			"baz":                                  nil,
+			"bar/baz":                              nil,
+			"testdata/baz":                         nil,
+			"AppSet.apks":                          nil,
+			"foo.rs":                               nil,
+			"libfoo.jar":                           nil,
+			"libbar.jar":                           nil,
+		},
 	),
 
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
@@ -6621,8 +6622,10 @@ func TestJavaSDKLibrary_WithinApex(t *testing.T) {
 
 	// The bar library should depend on the implementation jar.
 	barLibrary := ctx.ModuleForTests("bar", "android_common_myapex").Rule("javac")
-	if expected, actual := `^-classpath [^:]*/turbine-combined/foo\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
-		t.Errorf("expected %q, found %#q", expected, actual)
+	expectedClasspath := "-classpath out/soong/.intermediates/foo/android_common_myapex/turbine-combined/foo.jar:out/soong/.intermediates/jacocoagent/jacocoagent/android_common/turbine-combined/jacocoagent.jar:out/soong/.intermediates/jacocoagent/jacocoagent/linux_glibc_common/javac/jacocoagent.jar"
+	actualClasspath := barLibrary.Args["classpath"]
+	if expectedClasspath != actualClasspath {
+		t.Errorf("expected %q, found %#q", expectedClasspath, actualClasspath)
 	}
 }
 
@@ -6672,8 +6675,10 @@ func TestJavaSDKLibrary_CrossBoundary(t *testing.T) {
 
 	// The bar library should depend on the stubs jar.
 	barLibrary := ctx.ModuleForTests("bar", "android_common").Rule("javac")
-	if expected, actual := `^-classpath [^:]*/turbine-combined/foo\.stubs\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
-		t.Errorf("expected %q, found %#q", expected, actual)
+	expectedClasspath := "-classpath out/soong/.intermediates/foo.stubs/android_common/turbine-combined/foo.stubs.jar:out/soong/.intermediates/jacocoagent/jacocoagent/android_common/turbine-combined/jacocoagent.jar"
+	actualClasspath := barLibrary.Args["classpath"]
+	if expectedClasspath != actualClasspath {
+		t.Errorf("expected %q, found %#q", expectedClasspath, actualClasspath)
 	}
 }
 
@@ -6762,8 +6767,10 @@ func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
 
 	// The bar library should depend on the implementation jar.
 	barLibrary := ctx.ModuleForTests("bar", "android_common_myapex").Rule("javac")
-	if expected, actual := `^-classpath [^:]*/turbine-combined/foo\.impl\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
-		t.Errorf("expected %q, found %#q", expected, actual)
+	expectedClasspath := "-classpath out/soong/.intermediates/source/foo.impl/android_common/turbine-combined/foo.impl.jar:out/soong/.intermediates/jacocoagent/jacocoagent/android_common/turbine-combined/jacocoagent.jar:out/soong/.intermediates/jacocoagent/jacocoagent/linux_glibc_common/javac/jacocoagent.jar"
+	actualClasspath := barLibrary.Args["classpath"]
+	if expectedClasspath != actualClasspath {
+		t.Errorf("expected %q, found %#q", expectedClasspath, actualClasspath)
 	}
 }
 
@@ -8846,16 +8853,6 @@ func TestApexJavaCoverage(t *testing.T) {
 		android.FixtureMergeEnv(map[string]string{
 			"EMMA_INSTRUMENT": "true",
 		}),
-		// need to mock jacocoagent here to satisfy dependency added for
-		// instrumented libraries at build time
-		android.FixtureAddFile("jacocoagent/Android.bp", []byte(`
-			java_library {
-				name: "jacocoagent",
-				srcs: ["Test.java"],
-				system_modules: "none",
-				sdk_version: "none",
-			}
-		`)),
 	).RunTest(t)
 
 	// Make sure jacoco ran on both mylib and mybootclasspathlib
