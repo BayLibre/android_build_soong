@@ -16,6 +16,24 @@
       "message": "\u0026\u0026 d.properties.Extensions_info_file !\u003d nil?\n\nperhaps not a huge deal.",
       "revId": "b978920a62d8a456afb2de6a4c2097f289660875",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c468b9b3_4fde7aec",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2022-09-07T14:14:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73f40ef2_e2e53f5a",
+      "revId": "b978920a62d8a456afb2de6a4c2097f289660875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
