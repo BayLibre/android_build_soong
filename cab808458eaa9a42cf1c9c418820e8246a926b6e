@@ -22,6 +22,30 @@
       },
       "revId": "cab808458eaa9a42cf1c9c418820e8246a926b6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72fca40b_10b1a277",
+        "filename": "android/api_domain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-07T23:25:59Z",
+      "side": 1,
+      "message": "I went back and forth on this. Ultimately I chose `.` since we suffix ndk modules with `.` instead of `_` in Soong. The generated Bazel label `libc.ndk.contribution` seems more consistent than `libc.ndk_contribution`.\n\nBut I also agree that for consistency, we should revisit this before we check-in the BUILD files into the tree",
+      "parentUuid": "2f9ca8d0_9baa2b53",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 39
+      },
+      "revId": "cab808458eaa9a42cf1c9c418820e8246a926b6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
