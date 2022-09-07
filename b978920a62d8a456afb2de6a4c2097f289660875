@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f40ef2_e2e53f5a",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-09-07T14:08:37Z",
+      "side": 1,
+      "message": "\u0026\u0026 d.properties.Extensions_info_file !\u003d nil?\n\nperhaps not a huge deal.",
+      "revId": "b978920a62d8a456afb2de6a4c2097f289660875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
