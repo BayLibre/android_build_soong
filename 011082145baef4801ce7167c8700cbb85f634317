@@ -51,6 +51,24 @@
       "message": "nit: Why Fatalf as opposed to Fatal or FatalLn? There doesn\u0027t seem to be any format specifiers in use.",
       "revId": "011082145baef4801ce7167c8700cbb85f634317",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c296587b_254e4372",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-07T18:58:19Z",
+      "side": 1,
+      "message": "true. fixed.",
+      "parentUuid": "bede4edf_c97e7a46",
+      "revId": "011082145baef4801ce7167c8700cbb85f634317",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
