@@ -6621,8 +6621,11 @@ func TestJavaSDKLibrary_WithinApex(t *testing.T) {
 
 	// The bar library should depend on the implementation jar.
 	barLibrary := ctx.ModuleForTests("bar", "android_common_myapex").Rule("javac")
-	if expected, actual := `^-classpath [^:]*/turbine-combined/foo\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
-		t.Errorf("expected %q, found %#q", expected, actual)
+
+	expectedClasspath := "-classpath out/soong/.intermediates/foo/android_common_myapex/turbine-combined/foo.jar:out/soong/.intermediates/jacocoagent/jacocoagent/android_common/turbine-combined/jacocoagent.jar"
+	actualClasspath := barLibrary.Args["classpath"]
+	if expectedClasspath != actualClasspath {
+		t.Errorf("expected %q, found %#q", expectedClasspath, actualClasspath)
 	}
 }
 
@@ -6672,8 +6675,10 @@ func TestJavaSDKLibrary_CrossBoundary(t *testing.T) {
 
 	// The bar library should depend on the stubs jar.
 	barLibrary := ctx.ModuleForTests("bar", "android_common").Rule("javac")
-	if expected, actual := `^-classpath [^:]*/turbine-combined/foo\.stubs\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
-		t.Errorf("expected %q, found %#q", expected, actual)
+	expectedClasspath := "-classpath out/soong/.intermediates/foo.stubs/android_common/turbine-combined/foo.stubs.jar"
+	actualClasspath := barLibrary.Args["classpath"]
+	if expectedClasspath != actualClasspath {
+		t.Errorf("expected %q, found %#q", expectedClasspath, actualClasspath)
 	}
 }
 
@@ -6762,8 +6767,10 @@ func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
 
 	// The bar library should depend on the implementation jar.
 	barLibrary := ctx.ModuleForTests("bar", "android_common_myapex").Rule("javac")
-	if expected, actual := `^-classpath [^:]*/turbine-combined/foo\.impl\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
-		t.Errorf("expected %q, found %#q", expected, actual)
+	expectedClasspath := "-classpath out/soong/.intermediates/source/foo.impl/android_common/turbine-combined/foo.impl.jar:out/soong/.intermediates/jacocoagent/jacocoagent/android_common/turbine-combined/jacocoagent.jar"
+	actualClasspath := barLibrary.Args["classpath"]
+	if expectedClasspath != actualClasspath {
+		t.Errorf("expected %q, found %#q", expectedClasspath, actualClasspath)
 	}
 }
 
@@ -8846,16 +8853,6 @@ func TestApexJavaCoverage(t *testing.T) {
 		android.FixtureMergeEnv(map[string]string{
 			"EMMA_INSTRUMENT": "true",
 		}),
-		// need to mock jacocoagent here to satisfy dependency added for
-		// instrumented libraries at build time
-		android.FixtureAddFile("jacocoagent/Android.bp", []byte(`
-			java_library {
-				name: "jacocoagent",
-				srcs: ["Test.java"],
-				system_modules: "none",
-				sdk_version: "none",
-			}
-		`)),
 	).RunTest(t)
 
 	// Make sure jacoco ran on both mylib and mybootclasspathlib

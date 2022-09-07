@@ -96,22 +96,10 @@ func TestBootclasspathFragmentInconsistentArtConfiguration_ApexMixture(t *testin
 }
 
 func TestBootclasspathFragment_Coverage(t *testing.T) {
-	prepareForTestWithFrameworkCoverage := android.GroupFixturePreparers(
-		android.FixtureMergeEnv(map[string]string{
-			"EMMA_INSTRUMENT":           "true",
-			"EMMA_INSTRUMENT_FRAMEWORK": "true",
-		}),
-		// need to mock jacocoagent here to satisfy dependency added for
-		// instrumented libraries at build time
-		android.FixtureAddFile("jacocoagent/Android.bp", []byte(`
-			java_library {
-				name: "jacocoagent",
-				srcs: ["Test.java"],
-				system_modules: "none",
-				sdk_version: "none",
-			}
-		`)),
-	)
+	prepareForTestWithFrameworkCoverage := android.FixtureMergeEnv(map[string]string{
+		"EMMA_INSTRUMENT":           "true",
+		"EMMA_INSTRUMENT_FRAMEWORK": "true",
+	})
 
 	prepareWithBp := android.FixtureWithRootAndroidBp(`
 		bootclasspath_fragment {
