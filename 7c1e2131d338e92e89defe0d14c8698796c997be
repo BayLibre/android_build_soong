@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333a33d5_36142b39",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-08T14:49:43Z",
+      "side": 1,
+      "message": "can you also add a comment about why?",
+      "range": {
+        "startLine": 149,
+        "startChar": 28,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "7c1e2131d338e92e89defe0d14c8698796c997be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
