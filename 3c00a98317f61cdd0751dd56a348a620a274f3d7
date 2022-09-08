@@ -34,6 +34,24 @@
       "parentUuid": "3ac021ef_cbee2419",
       "revId": "3c00a98317f61cdd0751dd56a348a620a274f3d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c9a8d51_8b125f84",
+        "filename": "cc/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-08T19:07:43Z",
+      "side": 1,
+      "message": "My concern is not with immediately converting to Bazel, just that we do not add something to Soong that is not convertable to Bazel.  As far as I understand, Bazel will not allow the rules for a module in art/compiler/ to access files in art/ without an explicit filegroup module in art/.  If that\u0027s the case then we should do it now in Soong too so we are not adding more complexity to the later conversion.",
+      "parentUuid": "a75cdccc_619ec438",
+      "revId": "3c00a98317f61cdd0751dd56a348a620a274f3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
