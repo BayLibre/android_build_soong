@@ -210,6 +210,24 @@
       "message": "this was just to align the two lines so that visual inspection is easy",
       "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880f9314_b3b78e32",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-08T15:50:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5932a7ca_68853793",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
