@@ -520,11 +520,19 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 	stderr := &bytes.Buffer{}
 	bazelCmd.Stderr = stderr
 
+	// output the command line
+	outputString := strings.Join(extraEnv, " ") + " " + fmt.Sprint(bazelCmd)
+	//solve the missing "" of the "deps" output
+	outputString = strings.ReplaceAll(outputString, "deps(@soong_injection//mixed_builds:buildroot, 2)", `"deps(@soong_injection//mixed_builds:buildroot, 2)"`)
+	//solve the missing "" of the "deps" output(future Aquery fix)
+	outputString = strings.ReplaceAll(outputString, "deps(@soong_injection//mixed_builds:buildroot) ", `"deps(@soong_injection//mixed_builds:buildroot)" `)
+	addToOutput := fmt.Sprintf("Command line output for Cquery:  %s", outputString)
+
 	if output, err := bazelCmd.Output(); err != nil {
 		return "", string(stderr.Bytes()),
 			fmt.Errorf("bazel command failed. command: [%s], env: [%s], error [%s]", bazelCmd, bazelCmd.Env, stderr)
 	} else {
-		return string(output), string(stderr.Bytes()), nil
+		return string(output) + addToOutput, string(stderr.Bytes()), nil
 	}
 }
 
