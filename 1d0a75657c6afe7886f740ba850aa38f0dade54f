@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76bd7f79_67b46ac1",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-08T20:39:58Z",
+      "side": 1,
+      "message": "Sorry, these are just notes for myself. I don\u0027t intend to keep them for Review; just WIP. In this instance I was using a FIXME to emphasize/remind that it\u0027s implemented functionality, but flawed.",
+      "parentUuid": "e806a877_0a5e0998",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42806b76_b4f17323",
         "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
         "patchSetId": 4
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "533f7102_51d3f640",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-08T20:39:58Z",
+      "side": 1,
+      "message": "UTF-8 is the string encoding Go uses, with `rune` as the element type. It\u0027s the Go equivalent of the C `char`, except that it isn\u0027t guaranteed to correspond to a particular character; just a unicode point. I do this so as to translate between True/False and true/false for Bazel v. Soong.",
+      "parentUuid": "78e8cb92_b8cafe59",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c893c63_6d024f0e",
         "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
         "patchSetId": 4
@@ -82,6 +118,24 @@
       "writtenOn": "2022-09-08T14:20:04Z",
       "side": 1,
       "message": "I\u0027d argue it\u0027s not necessary.",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef256061_232677eb",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-08T20:39:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c893c63_6d024f0e",
       "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
