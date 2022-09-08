@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2432dd33_5399c940",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 8855,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-08T21:38:57Z",
+      "side": 1,
+      "message": "You could add prepareForTestWithJacocoInstrumentation here",
+      "revId": "4b77d6333ee5bcd9e2238135e45686cfbcfbad49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63bb0c11_ee742681",
+        "filename": "java/bootclasspath_fragment_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-08T21:38:57Z",
+      "side": 1,
+      "message": "You could add `prepareForTestWithJacocoInstrumentation` here",
+      "revId": "4b77d6333ee5bcd9e2238135e45686cfbcfbad49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0487071e_2917146a",
+        "filename": "java/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-08T21:38:57Z",
+      "side": 1,
+      "message": "Most tests probably don\u0027t need this, can you add it specifically to tests that do?",
+      "revId": "4b77d6333ee5bcd9e2238135e45686cfbcfbad49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f6e46a_5aade0f7",
+        "filename": "java/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-08T21:38:57Z",
+      "side": 1,
+      "message": "This could also set `EMMA_INSTRUMENT`, and maybe a second function that wraps it and sets `EMMA_INSTRUMENT_STATIC`?",
+      "revId": "4b77d6333ee5bcd9e2238135e45686cfbcfbad49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
