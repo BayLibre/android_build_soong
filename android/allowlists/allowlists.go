@@ -441,10 +441,13 @@ var (
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
+		"aidl_interface_headers",
+		"api_domain",
 		"linker_config",
 		"java_import",
 		"java_import_host",
-		"aidl_interface_headers",
+		"ndk_headers",
+		"ndk_library",
 	}
 
 	Bp2buildModuleDoNotConvertList = []string{
