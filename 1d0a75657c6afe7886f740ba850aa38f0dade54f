@@ -155,6 +155,24 @@
       "message": "I don\u0027t think this comment is necessary.\n\nI also don\u0027t see where either of these are used.",
       "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2debe7ef_620f88fc",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-08T20:44:06Z",
+      "side": 1,
+      "message": "Meaning the function\u0027s name should be self-explanatory?\n\nThese Factories are used e.g. in testing and https://android-review.googlesource.com/c/platform/build/soong/+/2205855/6/cc/prebuilt.go#37",
+      "parentUuid": "13360c2b_59fdbba3",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
