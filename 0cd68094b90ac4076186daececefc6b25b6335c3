@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a55abf0_a00f6b64",
+        "filename": "java/jacoco.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-08T21:00:47Z",
+      "side": 1,
+      "message": "yep woops thanks",
+      "parentUuid": "4fb18000_eca74a66",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 59
+      },
+      "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a61a696e_47542b0f",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-09-08T20:08:17Z",
       "side": 1,
       "message": "There are both host and device variants of jacocoagent, and this will mix them.  You should at least provide the basic arch+os variants that match the current module.",
+      "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8658948f_ded6a010",
+        "filename": "java/jacoco.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-08T21:00:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a61a696e_47542b0f",
       "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc56f8b5_b8d44d39",
+        "filename": "java/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-08T21:00:47Z",
+      "side": 1,
+      "message": "Yeah I suppose so. I originally had it in a separate method, and then deleted it since it was only being called in this one location.",
+      "parentUuid": "88d80aac_bcb4020d",
+      "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd2f9d4f_88295567",
@@ -75,6 +135,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eb55f47_3602b88f",
+        "filename": "java/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-08T21:00:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd2f9d4f_88295567",
+      "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e4ac75e_5edbfe33",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-09-08T20:08:17Z",
       "side": 1,
       "message": "These files are usually added by `prebuiltApisFilesForModules` below.",
+      "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6de38fd_3f5a4ee4",
+        "filename": "java/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-08T21:00:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e4ac75e_5edbfe33",
       "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
