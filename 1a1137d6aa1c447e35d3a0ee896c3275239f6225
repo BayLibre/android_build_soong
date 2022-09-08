@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6880600a_89668057",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-08T13:53:32Z",
+      "side": 1,
+      "message": "sounds good",
+      "parentUuid": "7d56201c_1bedd6c6",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce1e5085_e9cb50c2",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Thanks! I agree `encode_dict_value` is a misnomer - renaming to `encode_list_or_primitive`\n\n`encode_list` needs to call `encode_primitive` - so can\u0027t combine them into `encode_shallow_value` and involve self-recursion [aside: \"shallow\" doesn\u0027t sound right for a list]\n\nrant: I thought Starlark allowed recursion - prohibiting recursion to make a language non-Turing-Complete is usually not pragmatic.\n\nfyi: this is supposed to be a drop-in placeholder for json.encode(), which we should make available through a CL in bazel.",
       "parentUuid": "2b246cde_5bed469c",
+      "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f91e33f_fd646bb7",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-08T13:53:32Z",
+      "side": 1,
+      "message": "\u003e rant: I thought Starlark allowed recursion - prohibiting recursion to make a language non-Turing-Complete is usually not pragmatic.\n\nI thought this too. That it didn\u0027t support recursion but does now. But looks like we are mistaken...\n\n\u003e so can\u0027t combine them into  encode_shallow_value  and involve self-recursion\n\ngah, i missed that; of course list isn\u0027t shallow, and therein lies the pattern you\u0027ve provided. OK, I concede 😊",
+      "parentUuid": "fae603a6_8df821ba",
       "revId": "1a1137d6aa1c447e35d3a0ee896c3275239f6225",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

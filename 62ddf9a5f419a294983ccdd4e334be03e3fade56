@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3a2cbb_c40c6ba9",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-08T13:53:32Z",
+      "side": 1,
+      "message": "super nit; format is usually `# TODO(juu):`",
+      "revId": "62ddf9a5f419a294983ccdd4e334be03e3fade56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
