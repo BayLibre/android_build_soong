@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d19932ba_c5825641",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2225,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-09-08T19:16:33Z",
+      "side": 1,
+      "message": "Understood. Will upload the patchset accordingly.",
+      "parentUuid": "a7497d18_043e84f1",
+      "range": {
+        "startLine": 2225,
+        "startChar": 33,
+        "endLine": 2225,
+        "endChar": 52
+      },
+      "revId": "e2bd6f622029e186406919aec51015cace4402d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcc4c457_c078a95a",
