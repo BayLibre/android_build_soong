@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0411257e_54364844",
+        "filename": "java/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-09-08T18:06:41Z",
+      "side": 1,
+      "message": "`partitionTag` should be one of the variables defined [here](https://source.corp.google.com/android/build/make/core/base_rules.mk?q\u003dpartition_tag%20f:build%2Fmake%20p:%5Eandroid$\u0026m\u003d100\u0026det\u003dmat\u0026type\u003dcs), otherwise it will be evaluated to an empty string in make.",
+      "parentUuid": "512b708f_bbf48d7b",
+      "range": {
+        "startLine": 410,
+        "startChar": 6,
+        "endLine": 410,
+        "endChar": 51
+      },
+      "revId": "e2bd6f622029e186406919aec51015cace4402d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "745280d7_7a4a0c04",
         "filename": "java/androidmk_test.go",
         "patchSetId": 4
