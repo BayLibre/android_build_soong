@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c30677b0_2c6b9ec2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2022-09-08T23:53:36Z",
+      "side": 1,
+      "message": "can you please provide the upstream CL (https://reviews.llvm.org/D127917) in the commit message as well?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "ef21c469769e7f39d2e3849fe63194433402236c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
