@@ -160,7 +160,9 @@ type BazelContext interface {
 }
 
 type bazelRunner interface {
-	issueBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand, extraFlags ...string) (string, string, error)
+	createBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand, extraFlags ...string) *exec.Cmd
+	issueBazelCommand(bazelCmd *exec.Cmd) (string, string, error)
+	printableCqueryCommand(bazelCmd *exec.Cmd) string
 }
 
 type bazelPaths struct {
@@ -452,14 +454,23 @@ type bazelCommand struct {
 
 type mockBazelRunner struct {
 	bazelCommandResults map[bazelCommand]string
+	tempBiMap           map[bazelCommand]*exec.Cmd
+	tempBiMapSub        map[*exec.Cmd]bazelCommand
 	commands            []bazelCommand
 	extraFlags          []string
 }
 
-func (r *mockBazelRunner) issueBazelCommand(_ *bazelPaths, _ bazel.RunName,
-	command bazelCommand, extraFlags ...string) (string, string, error) {
+func (r *mockBazelRunner) createBazelCommand(paths *bazelPaths, runName bazel.RunName,
+	command bazelCommand, extraFlags ...string) *exec.Cmd {
 	r.commands = append(r.commands, command)
 	r.extraFlags = append(r.extraFlags, strings.Join(extraFlags, " "))
+	cmd := &exec.Cmd{}
+	return cmd
+}
+
+func (r *mockBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd) (string, string, error) {
+	//Find the last command get appended in createBazelCommand()
+	command := r.commands[len(r.commands)-1]
 	if ret, ok := r.bazelCommandResults[command]; ok {
 		return ret, "", nil
 	}
@@ -472,8 +483,22 @@ type builtinBazelRunner struct{}
 // Returns (stdout, stderr, error). The first and second return values are strings
 // containing the stdout and stderr of the run command, and an error is returned if
 // the invocation returned an error code.
-func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand,
-	extraFlags ...string) (string, string, error) {
+
+func (r *builtinBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd) (string, string, error) {
+	stderr := &bytes.Buffer{}
+	bazelCmd.Stderr = stderr
+	if output, err := bazelCmd.Output(); err != nil {
+		return "", string(stderr.Bytes()),
+			fmt.Errorf("bazel command failed. command: [%s], env: [%s], error [%s]", bazelCmd, bazelCmd.Env, stderr)
+	} else {
+		return string(output), string(stderr.Bytes()), nil
+	}
+}
+
+type _base struct{}
+
+func (r *builtinBazelRunner) createBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand,
+	extraFlags ...string) *exec.Cmd {
 	cmdFlags := []string{
 		"--output_base=" + absolutePath(paths.outputBase),
 		command.command,
@@ -517,15 +542,25 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 		"BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1",
 	}
 	bazelCmd.Env = append(os.Environ(), extraEnv...)
-	stderr := &bytes.Buffer{}
-	bazelCmd.Stderr = stderr
 
-	if output, err := bazelCmd.Output(); err != nil {
-		return "", string(stderr.Bytes()),
-			fmt.Errorf("bazel command failed. command: [%s], env: [%s], error [%s]", bazelCmd, bazelCmd.Env, stderr)
-	} else {
-		return string(output), string(stderr.Bytes()), nil
-	}
+	return bazelCmd
+}
+
+func (r *mockBazelRunner) printableCqueryCommand(bazelCmd *exec.Cmd) string {
+	cqueryPrintableCommand := fmt.Sprintf("Cquery Command line:/n  %s", "outputCqueryString")
+	return cqueryPrintableCommand
+
+}
+
+func (r *builtinBazelRunner) printableCqueryCommand(bazelCmd *exec.Cmd) string {
+	// The fourth element of bazelCmd.Args is the "deps..." syntax, which lack quote sign
+	// if we print bazelCmd.Args directly
+	bazelCmd.Args[3] = `"` + bazelCmd.Args[3] + `"`
+	// output the command line
+	outputString := strings.Join(bazelCmd.Env, " ") + " " + strings.Join(bazelCmd.Args, " ")
+	cqueryPrintableCommand := fmt.Sprintf("Real Cquery Command line:\n  %s", outputString)
+	return cqueryPrintableCommand
+
 }
 
 func (context *bazelContext) mainBzlFileContents() []byte {
@@ -826,12 +861,13 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 
 	const buildrootLabel = "@soong_injection//mixed_builds:buildroot"
 	cqueryCmd := bazelCommand{"cquery", fmt.Sprintf("deps(%s, 2)", buildrootLabel)}
-	cqueryOutput, cqueryErr, err := context.issueBazelCommand(context.paths, bazel.CqueryBuildRootRunName, cqueryCmd,
+	cqueryCommandWithFlag := context.createBazelCommand(context.paths, bazel.CqueryBuildRootRunName, cqueryCmd,
 		"--output=starlark", "--starlark:file="+absolutePath(cqueryFileRelpath))
+	cqueryOutput, cqueryErr, err := context.issueBazelCommand(cqueryCommandWithFlag)
 	if err != nil {
 		return err
 	}
-	if err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"), []byte(cqueryOutput), 0666); err != nil {
+	if err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"), []byte(cqueryOutput+context.printableCqueryCommand(cqueryCommandWithFlag)), 0666); err != nil {
 		return err
 	}
 
@@ -870,8 +906,8 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 		}
 	}
 	aqueryCmd := bazelCommand{"aquery", fmt.Sprintf("deps(%s)", buildrootLabel)}
-	if aqueryOutput, _, err := context.issueBazelCommand(context.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
-		extraFlags...); err == nil {
+	if aqueryOutput, _, err := context.issueBazelCommand(context.createBazelCommand(context.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
+		extraFlags...)); err == nil {
 		context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements([]byte(aqueryOutput))
 	}
 	if err != nil {
@@ -882,7 +918,7 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 	// Bazel build. This is necessary because aquery invocations do not generate this symlink forest,
 	// but some of symlinks may be required to resolve source dependencies of the build.
 	buildCmd := bazelCommand{"build", "@soong_injection//mixed_builds:phonyroot"}
-	if _, _, err = context.issueBazelCommand(context.paths, bazel.BazelBuildPhonyRootRunName, buildCmd); err != nil {
+	if _, _, err = context.issueBazelCommand(context.createBazelCommand(context.paths, bazel.BazelBuildPhonyRootRunName, buildCmd)); err != nil {
 		return err
 	}
 
