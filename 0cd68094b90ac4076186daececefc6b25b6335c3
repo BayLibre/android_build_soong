@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb18000_eca74a66",
+        "filename": "java/jacoco.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-08T20:08:17Z",
+      "side": 1,
+      "message": "I think you need parentheses around this",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 59
+      },
+      "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a61a696e_47542b0f",
+        "filename": "java/jacoco.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-08T20:08:17Z",
+      "side": 1,
+      "message": "There are both host and device variants of jacocoagent, and this will mix them.  You should at least provide the basic arch+os variants that match the current module.",
+      "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d80aac_bcb4020d",
+        "filename": "java/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-08T20:08:17Z",
+      "side": 1,
+      "message": "Should this go in a separate method that is only used to add these to tests that need them?",
+      "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd2f9d4f_88295567",
+        "filename": "java/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-08T20:08:17Z",
+      "side": 1,
+      "message": "The test module doesn\u0027t need to exactly match what is in the tree, it may be easier to put `sdk_version: \"current\"`.  \"9\" is super obsolete.",
+      "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e4ac75e_5edbfe33",
+        "filename": "java/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-08T20:08:17Z",
+      "side": 1,
+      "message": "These files are usually added by `prebuiltApisFilesForModules` below.",
+      "revId": "0cd68094b90ac4076186daececefc6b25b6335c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
