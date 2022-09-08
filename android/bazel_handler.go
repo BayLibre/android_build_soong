@@ -160,7 +160,8 @@ type BazelContext interface {
 }
 
 type bazelRunner interface {
-	issueBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand, extraFlags ...string) (string, string, error)
+	createBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand, extraFlags ...string) *exec.Cmd
+	issueBazelCommand(bazelCmd *exec.Cmd) (string, string, error)
 }
 
 type bazelPaths struct {
@@ -456,14 +457,51 @@ type mockBazelRunner struct {
 	extraFlags          []string
 }
 
-func (r *mockBazelRunner) issueBazelCommand(_ *bazelPaths, _ bazel.RunName,
-	command bazelCommand, extraFlags ...string) (string, string, error) {
+func (r *mockBazelRunner) createBazelCommand(paths *bazelPaths, runName bazel.RunName,
+	command bazelCommand, extraFlags ...string) *exec.Cmd {
+	cmdFlags := []string{
+		"--output_base=" + absolutePath(paths.outputBase),
+		command.command,
+		command.expression,
+		// TODO(asmundak): is it needed in every build?
+		"--profile=" + shared.BazelMetricsFilename(paths, runName),
+
+		// Set default platforms to canonicalized values for mixed builds requests.
+		// If these are set in the bazelrc, they will have values that are
+		// non-canonicalized to @sourceroot labels, and thus be invalid when
+		// referenced from the buildroot.
+		//
+		// The actual platform values here may be overridden by configuration
+		// transitions from the buildroot.
+		fmt.Sprintf("--platforms=%s", "//build/bazel/platforms:android_target"),
+		fmt.Sprintf("--extra_toolchains=%s", "//prebuilts/clang/host/linux-x86:all"),
+
+		// This should be parameterized on the host OS, but let's restrict to linux
+		// to keep things simple for now.
+		fmt.Sprintf("--host_platform=%s", "//build/bazel/platforms:linux_x86_64"),
+
+		// Explicitly disable downloading rules (such as canonical C++ and Java rules) from the network.
+		"--experimental_repository_disable_download",
+
+		// Suppress noise
+		"--ui_event_filters=-INFO",
+		"--noshow_progress"}
+	cmdFlags = append(cmdFlags, extraFlags...)
+	bazelCmd := exec.Command(paths.bazelPath, cmdFlags...)
 	r.commands = append(r.commands, command)
 	r.extraFlags = append(r.extraFlags, strings.Join(extraFlags, " "))
-	if ret, ok := r.bazelCommandResults[command]; ok {
-		return ret, "", nil
+	return bazelCmd
+}
+
+func (r *mockBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd) (string, string, error) {
+	stderr := &bytes.Buffer{}
+	bazelCmd.Stderr = stderr
+	if output, err := bazelCmd.Output(); err != nil {
+		return "", string(stderr.Bytes()),
+			fmt.Errorf("bazel command failed. command: [%s], env: [%s], error [%s]", bazelCmd, bazelCmd.Env, stderr)
+	} else {
+		return string(output), string(stderr.Bytes()), nil
 	}
-	return "", "", nil
 }
 
 type builtinBazelRunner struct{}
@@ -472,8 +510,19 @@ type builtinBazelRunner struct{}
 // Returns (stdout, stderr, error). The first and second return values are strings
 // containing the stdout and stderr of the run command, and an error is returned if
 // the invocation returned an error code.
-func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand,
-	extraFlags ...string) (string, string, error) {
+func (r *builtinBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd) (string, string, error) {
+	stderr := &bytes.Buffer{}
+	bazelCmd.Stderr = stderr
+	if output, err := bazelCmd.Output(); err != nil {
+		return "", string(stderr.Bytes()),
+			fmt.Errorf("bazel command failed. command: [%s], env: [%s], error [%s]", bazelCmd, bazelCmd.Env, stderr)
+	} else {
+		return string(output), string(stderr.Bytes()), nil
+	}
+}
+
+func (r *builtinBazelRunner) createBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand,
+	extraFlags ...string) *exec.Cmd {
 	cmdFlags := []string{
 		"--output_base=" + absolutePath(paths.outputBase),
 		command.command,
@@ -517,15 +566,20 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 		"BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1",
 	}
 	bazelCmd.Env = append(os.Environ(), extraEnv...)
-	stderr := &bytes.Buffer{}
-	bazelCmd.Stderr = stderr
 
-	if output, err := bazelCmd.Output(); err != nil {
-		return "", string(stderr.Bytes()),
-			fmt.Errorf("bazel command failed. command: [%s], env: [%s], error [%s]", bazelCmd, bazelCmd.Env, stderr)
-	} else {
-		return string(output), string(stderr.Bytes()), nil
-	}
+	return bazelCmd
+}
+
+func printableCqueryCommand(bazelCmd *exec.Cmd) string {
+	// output the command line
+	outputString := strings.Join(bazelCmd.Env, " ") + " " + fmt.Sprint(bazelCmd)
+	//solve the missing "" of the "deps" output
+	outputString = strings.ReplaceAll(outputString, "deps(@soong_injection//mixed_builds:buildroot, 2)", `"deps(@soong_injection//mixed_builds:buildroot, 2)"`)
+	//solve the missing "" of the "deps" output(future Aquery fix)
+	outputString = strings.ReplaceAll(outputString, "deps(@soong_injection//mixed_builds:buildroot) ", `"deps(@soong_injection//mixed_builds:buildroot)" `)
+	cqueryPrintableCommand := fmt.Sprintf("Command line output for Cquery:  %s", outputString)
+	return cqueryPrintableCommand
+
 }
 
 func (context *bazelContext) mainBzlFileContents() []byte {
@@ -826,12 +880,13 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 
 	const buildrootLabel = "@soong_injection//mixed_builds:buildroot"
 	cqueryCmd := bazelCommand{"cquery", fmt.Sprintf("deps(%s, 2)", buildrootLabel)}
-	cqueryOutput, cqueryErr, err := context.issueBazelCommand(context.paths, bazel.CqueryBuildRootRunName, cqueryCmd,
+	cqueryCommandWithFlag := context.createBazelCommand(context.paths, bazel.CqueryBuildRootRunName, cqueryCmd,
 		"--output=starlark", "--starlark:file="+absolutePath(cqueryFileRelpath))
+	cqueryOutput, cqueryErr, err := context.issueBazelCommand(cqueryCommandWithFlag)
 	if err != nil {
 		return err
 	}
-	if err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"), []byte(cqueryOutput), 0666); err != nil {
+	if err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"), []byte(cqueryOutput+printableCqueryCommand(cqueryCommandWithFlag)), 0666); err != nil {
 		return err
 	}
 
@@ -870,8 +925,8 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 		}
 	}
 	aqueryCmd := bazelCommand{"aquery", fmt.Sprintf("deps(%s)", buildrootLabel)}
-	if aqueryOutput, _, err := context.issueBazelCommand(context.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
-		extraFlags...); err == nil {
+	if aqueryOutput, _, err := context.issueBazelCommand(context.createBazelCommand(context.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
+		extraFlags...)); err == nil {
 		context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements([]byte(aqueryOutput))
 	}
 	if err != nil {
@@ -882,7 +937,7 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 	// Bazel build. This is necessary because aquery invocations do not generate this symlink forest,
 	// but some of symlinks may be required to resolve source dependencies of the build.
 	buildCmd := bazelCommand{"build", "@soong_injection//mixed_builds:phonyroot"}
-	if _, _, err = context.issueBazelCommand(context.paths, bazel.BazelBuildPhonyRootRunName, buildCmd); err != nil {
+	if _, _, err = context.issueBazelCommand(context.createBazelCommand(context.paths, bazel.BazelBuildPhonyRootRunName, buildCmd)); err != nil {
 		return err
 	}
 
