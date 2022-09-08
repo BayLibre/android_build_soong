@@ -16,6 +16,24 @@
       "message": "I don\u0027t think there will be any way to support this parent directory search in Bazel, you can only access files that are inside the directory that contains the BUILD file.  That\u0027s less strictly enforced for Soong, but still something we try to maintain.\n\nThis is a lot of complexity with an unclear support path in the future for literally 4 files in the tree.  I\u0027d suggest a `clang_tidy_file: \".clang_tidy\",` property on the relevant modules instead.",
       "revId": "3c00a98317f61cdd0751dd56a348a620a274f3d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75cdccc_619ec438",
+        "filename": "cc/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-09-08T18:57:28Z",
+      "side": 1,
+      "message": "FindClangTidy does not need to find files in parent directories.\nIt only uses the current module directory name, e.g., \"art/compiler\", and then\nlooks up \"art/compiler/\" and \"art/\" in the tidyDirs map.\nThe map is generated only once in configuration, after Android.bp, BUILD,\nand other files are searched once in the source tree.\n\nThere are many code in the two tidy.go files and builder.go that need to be manually converted to work with Bazel, not just automatically converting .bp to BUILD. The RBE integration is also heavily embedded in builder.go.\nCould we discuss these conversions offline?\n\nAdding another clang_tidy_file property will also need more code to handle it in tidy.go and builder.go. It is not necessary now to support user-named tidy config files. When there is a user, I would suggest adding user-named tidy config file through the existing \"tidy_flags\" property first. We don\u0027t parse command line flags to find dependent files yet, but we should do that in the future anyway.",
+      "parentUuid": "3ac021ef_cbee2419",
+      "revId": "3c00a98317f61cdd0751dd56a348a620a274f3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
