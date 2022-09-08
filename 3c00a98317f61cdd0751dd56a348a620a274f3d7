@@ -52,6 +52,24 @@
       "parentUuid": "a75cdccc_619ec438",
       "revId": "3c00a98317f61cdd0751dd56a348a620a274f3d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64477764_033e9423",
+        "filename": "cc/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-09-08T19:29:44Z",
+      "side": 1,
+      "message": "Considering that there is only ~1 case of an existing `.clang-tidy` file, can we please just make it explicit in the `Android.bp`, and then suppress the search. Searching goes against the explicit model that Soong and other build systems are built on, where we don\u0027t want implicit/default behaviors to be accidentally used.",
+      "parentUuid": "7c9a8d51_8b125f84",
+      "revId": "3c00a98317f61cdd0751dd56a348a620a274f3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
