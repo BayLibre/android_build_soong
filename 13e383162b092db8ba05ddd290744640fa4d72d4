@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9551ba6d_6a788cf0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-08T18:04:05Z",
+      "side": 1,
+      "message": "This is a little brittle; if we change this string later, we\u0027ll lose this replacement logic. It makes more sense to solve the missing quote elsewhere -- Perhaps when we want to print out [bazelCommand.expression](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d450;drc\u003d678d93e0c0b435e1d321677b9c1a3cfcf14e3769), we ensure that the value is always surrounded in quotes?",
+      "revId": "13e383162b092db8ba05ddd290744640fa4d72d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf2b1fb_3fe09b76",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-08T18:04:05Z",
+      "side": 1,
+      "message": "Because you\u0027re putting this code in issueBazelCommand, you\u0027re evaluating this for all three calls to Bazel: aquery, cquery, and build. You probably mean to only be evaluating this in cquery.",
+      "revId": "13e383162b092db8ba05ddd290744640fa4d72d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466d2e9f_53671138",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-08T18:04:05Z",
+      "side": 1,
+      "message": "This is actually changing the output of issueBazelCommand, which we want to return the pure Bazel response. Thus, instead of just adding some debug info to cquery.out only, this is changing the in-memory cquery response that we process.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d813;drc\u003def615e58412530253f7dbac02d4acdafb83203c8\n\nThus we\u0027re probably getting some weird parsing behavior, and that would explain the presubmit failure.\n\nInstead, why don\u0027t you add logging specifically [here](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d818-820;drc\u003def615e58412530253f7dbac02d4acdafb83203c8), right before we write cquery.out? That way, we\u0027re ensuring that we are only appending to cquery.out, and not changing `cqueryOutput`.",
+      "revId": "13e383162b092db8ba05ddd290744640fa4d72d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
