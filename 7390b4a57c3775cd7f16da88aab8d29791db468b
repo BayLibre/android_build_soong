@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75072bab_65b46763",
+        "filename": "xml/xml_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-09-08T17:09:33Z",
+      "side": 1,
+      "message": "use spaces instead of tabs in blueprint.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "7390b4a57c3775cd7f16da88aab8d29791db468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5be15d_e303be12",
+        "filename": "xml/xml_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-09-08T17:09:33Z",
+      "side": 1,
+      "message": "use spaces instead of tabs in blueprint.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "7390b4a57c3775cd7f16da88aab8d29791db468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f049a47_f804ab0d",
+        "filename": "xml/xml_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-09-08T17:09:33Z",
+      "side": 1,
+      "message": "use spaces instead of tabs in blueprint.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "7390b4a57c3775cd7f16da88aab8d29791db468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
