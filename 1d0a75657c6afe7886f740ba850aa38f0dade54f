@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e806a877_0a5e0998",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-08T14:20:04Z",
+      "side": 1,
+      "message": "If this is nontrivial, Please mark with bug number instead of LDAP. Also, you use `TODO` below...Is `FIXME` semantically different from `TODO`?",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42806b76_b4f17323",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-08T14:20:04Z",
+      "side": 1,
+      "message": "Seems like this should be handled in the Bazel rule (marking it mandatory). Is there a reason we\u0027re handling this here instead?",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "147bd9d0_3b9c7a6b",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-08T14:20:04Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e8cb92_b8cafe59",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-08T14:20:04Z",
+      "side": 1,
+      "message": "What is this `rune` stuff?",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c893c63_6d024f0e",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-08T14:20:04Z",
+      "side": 1,
+      "message": "I\u0027d argue it\u0027s not necessary.",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13360c2b_59fdbba3",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-08T14:20:04Z",
+      "side": 1,
+      "message": "I don\u0027t think this comment is necessary.\n\nI also don\u0027t see where either of these are used.",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
