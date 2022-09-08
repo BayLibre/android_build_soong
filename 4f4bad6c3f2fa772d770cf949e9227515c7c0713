@@ -16,6 +16,24 @@
       "message": "Is it safe to make this change? I thought Arch and ProdVars are still unrelated axes?\n\nMaybe we should distinguish between [archVariant and non-archVariant product vars](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/config.go;l\u003d282-283) when we do this check?\n\nI don\u0027t think I have the best context on this, but thought I\u0027d ask.",
       "revId": "4f4bad6c3f2fa772d770cf949e9227515c7c0713",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c44580_373939ce",
+        "filename": "bazel/properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-09-08T14:53:51Z",
+      "side": 1,
+      "message": "It was not safe. It was also not enough to check if a product variable is ArchVariant. What we care about is whether it is nested underneath an arch condition. If we have something like this: \n\n    arch: {\n      arm: {\n        src: \"armSrc\",\n      },\n    },\n    product_variables: {\n      native_coverage: {\n        src: \"nativeCoverageArmSrc\",\n      },\n    },\n    \nwe still want to throw an error and not convert",
+      "parentUuid": "2899f1a2_8007eb28",
+      "revId": "4f4bad6c3f2fa772d770cf949e9227515c7c0713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
