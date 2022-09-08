@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39f450b0_7ebd2136",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3838,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-09-08T17:52:39Z",
+      "side": 1,
+      "message": "I will update the method name accordingly.",
+      "parentUuid": "26f7a805_2a72e6c5",
+      "range": {
+        "startLine": 3838,
+        "startChar": 17,
+        "endLine": 3838,
+        "endChar": 32
+      },
+      "revId": "e2bd6f622029e186406919aec51015cace4402d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d8aa884_3c7a41f5",
         "filename": "cc/library.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-08T17:11:29Z",
       "side": 1,
       "message": "nit:can we just call this method `Partition`",
+      "range": {
+        "startLine": 2225,
+        "startChar": 33,
+        "endLine": 2225,
+        "endChar": 52
+      },
+      "revId": "e2bd6f622029e186406919aec51015cace4402d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74103d89_318d7cef",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2225,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-09-08T17:52:39Z",
+      "side": 1,
+      "message": "In this file, I have seen a lot of methods where the name of the getters/setters are verbose, such as [getRefAbiDumpFile](https://source.corp.google.com/android/build/soong/cc/library.go;bpv\u003d1;bpt\u003d1;l\u003d1670?q\u003dbuild%2Fsoong%2Fcc%2Flibrary.go%20p:%5Eandroid$\u0026m\u003d100\u0026det\u003dmat\u0026type\u003dcs\u0026gsn\u003dgetRefAbiDumpFile\u0026gs\u003dkythe%3A%2F%2Fgoogleplex-android.googlesource.com%2Fcodesearch%2Fandroid%3Flang%3Dgo%3Fpath%3Dbuild%2Fsoong%2Fcc%23func%2520getRefAbiDumpFile) or [getLibName](https://source.corp.google.com/android/build/soong/cc/library.go;bpv\u003d1;bpt\u003d1;l\u003d1225?q\u003dbuild%2Fsoong%2Fcc%2Flibrary.go%20p:%5Eandroid$\u0026m\u003d100\u0026det\u003dmat\u0026type\u003dcs\u0026gsn\u003dgetLibName\u0026gs\u003dkythe%3A%2F%2Fgoogleplex-android.googlesource.com%2Fcodesearch%2Fandroid%3Flang%3Dgo%3Fpath%3Dbuild%2Fsoong%2Fcc%23method%2520libraryDecorator.getLibName), so I was trying to follow the convention. If you believe `partition` would be more direct, then I will reflect the change accordingly.",
+      "parentUuid": "1d8aa884_3c7a41f5",
       "range": {
         "startLine": 2225,
         "startChar": 33,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "512b708f_bbf48d7b",
+        "filename": "java/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-09-08T17:52:39Z",
+      "side": 1,
+      "message": "I believe this split is necessary as I have seen some cases where `jniLib.partition` is not a single word, but comprised of multiple partition name with `/`, for instance `system/product`. In this case, `partitionTag` would be converted to `_SYSTEM/PRODUCT`, instead of the desired `_PRODUCT`. I am not totally certain if the last word in such sequence is always the module partition, but all of the cases that I have considered to be possible (ie `system/system_ext`, `system/vendor`) were the case.",
+      "parentUuid": "dcc4c457_c078a95a",
+      "range": {
+        "startLine": 410,
+        "startChar": 6,
+        "endLine": 410,
+        "endChar": 51
+      },
+      "revId": "e2bd6f622029e186406919aec51015cace4402d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "745280d7_7a4a0c04",
         "filename": "java/androidmk_test.go",
         "patchSetId": 4
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-08T17:11:29Z",
       "side": 1,
       "message": "Can you add a test case for a system app that uses two jnilibs, one in system and the other in system_ext?",
+      "range": {
+        "startLine": 369,
+        "startChar": 3,
+        "endLine": 372,
+        "endChar": 77
+      },
+      "revId": "e2bd6f622029e186406919aec51015cace4402d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3334227_28c4ed32",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-09-08T17:52:39Z",
+      "side": 1,
+      "message": "I will add the test case. Do you believe it will be useful to add any other multi-jnilib dependency test cases?",
+      "parentUuid": "745280d7_7a4a0c04",
       "range": {
         "startLine": 369,
         "startChar": 3,
