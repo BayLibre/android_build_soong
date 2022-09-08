@@ -1,0 +1,32 @@
+// TODO: license
+//
+// TODO: Discuss the appropriate location to define this module
+
+api_domain {
+    name: "system",
+    cc_api_contributions: [
+        // package boundary violation"libaaudio.ndk",
+        "libamidi.ndk",
+        "libandroid.ndk",
+        "libbinder_ndk.ndk",
+        "libc.ndk",
+        "libcamera2ndk.ndk",
+        "libdl.ndk",
+        "libEGL.ndk",
+        "libGLESv1_CM.ndk",
+        "libGLESv2.ndk",
+        "libGLESv3.ndk",
+        "libicu.ndk",
+        "libjnigraphics.ndk",
+        "liblog.ndk",
+        "libm.ndk",
+        "libnativewindow.ndk",
+        "libneuralnetworks.ndk",
+        // package boundary violation "libOpenMAXAL.ndk",
+        // package boundary violation "libOpenSLES.ndk",
+        "libstdc++.ndk",
+        "libsync.ndk",
+        "libvulkan.ndk",
+        "libz.ndk",
+    ],
+}
