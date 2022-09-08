@@ -70,6 +70,24 @@
       "parentUuid": "7c9a8d51_8b125f84",
       "revId": "3c00a98317f61cdd0751dd56a348a620a274f3d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cae0372_43d2f638",
+        "filename": "cc/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-09-08T23:56:44Z",
+      "side": 1,
+      "message": "A clang/clang++/clang-tidy command can dependent on an #include file in parent or different directory. Isn\u0027t the .d file used to provide such dependent list, instead of manually added filegroup module or dependent list?\n\nWe have used clang++ to generate .d file for clang-tidy. With some modification, we can also add .clang-tidy or user-named config file into the .d file. Would you rather add those files into .d file?\nBut for reproxy, we still need to add such non-include dependent file to its \"implicitInputs\" because RBE is called before .d file is generated.\n\nIf adding into .d file and implicitInputs are still too complicated for Bazel,\nmaybe we should just provide a generic solution to add any dependent file,\nlike a filegroup module or dep_files list. That can be used for tidy config file and any other files.",
+      "parentUuid": "64477764_033e9423",
+      "revId": "3c00a98317f61cdd0751dd56a348a620a274f3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
