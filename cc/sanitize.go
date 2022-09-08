@@ -62,12 +62,12 @@ var (
 		"-fast-isel=false",
 	}
 
-	cfiCflags = []string{"-flto", "-fsanitize-cfi-cross-dso",
+	cfiCflags = []string{"-fsanitize-cfi-cross-dso",
 		"-fsanitize-ignorelist=external/compiler-rt/lib/cfi/cfi_blocklist.txt"}
 	// -flto and -fvisibility are required by clang when -fsanitize=cfi is
 	// used, but have no effect on assembly files
-	cfiAsflags = []string{"-flto", "-fvisibility=default"}
-	cfiLdflags = []string{"-flto", "-fsanitize-cfi-cross-dso", "-fsanitize=cfi",
+	cfiAsflags = []string{"-fvisibility=default"}
+	cfiLdflags = []string{"-fsanitize-cfi-cross-dso", "-fsanitize=cfi",
 		"-Wl,-plugin-opt,O1"}
 	cfiExportsMapPath = "build/soong/cc/config/cfi_exports.map"
 
@@ -572,7 +572,12 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	// TODO(b/131771163): CFI transiently depends on LTO, and thus Fuzzer is
 	// mutually incompatible.
 	if Bool(s.Fuzzer) {
+		ctx.Module().(*Module).SetLTONever()
 		s.Cfi = nil
+	}
+
+	if Bool(s.Cfi) {
+		ctx.Module().(*Module).SetLTOFull()
 	}
 }
 
@@ -660,12 +665,6 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 	if Bool(sanitize.Properties.Sanitize.Fuzzer) {
 		flags.Local.CFlags = append(flags.Local.CFlags, "-fsanitize=fuzzer-no-link")
-
-		// TODO(b/131771163): LTO and Fuzzer support is mutually incompatible.
-		_, flags.Local.LdFlags = removeFromList("-flto", flags.Local.LdFlags)
-		_, flags.Local.CFlags = removeFromList("-flto", flags.Local.CFlags)
-		flags.Local.LdFlags = append(flags.Local.LdFlags, "-fno-lto")
-		flags.Local.CFlags = append(flags.Local.CFlags, "-fno-lto")
 
 		// TODO(b/142430592): Upstream linker scripts for sanitizer runtime libraries
 		// discard the sancov_lowest_stack symbol, because it's emulated TLS (and thus

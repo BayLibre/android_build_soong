@@ -82,12 +82,6 @@ func (lto *lto) useClangLld(ctx BaseModuleContext) bool {
 }
 
 func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
-	// TODO(b/131771163): Disable LTO when using explicit fuzzing configurations.
-	// LTO breaks fuzzer builds.
-	if inList("-fsanitize=fuzzer-no-link", flags.Local.CFlags) {
-		return flags
-	}
-
 	if lto.LTO(ctx) {
 		var ltoCFlag string
 		var ltoLdFlag string
@@ -139,15 +133,13 @@ func (lto *lto) LTO(ctx BaseModuleContext) bool {
 func (lto *lto) DefaultThinLTO(ctx BaseModuleContext) bool {
 	// LP32 has many subtle issues and less test coverage.
 	lib32 := ctx.Arch().ArchType.Multilib == "lib32"
-	// CFI enables full LTO.
-	cfi := ctx.isCfi()
 	// Performance and binary size are less important for host binaries and tests.
 	host := ctx.Host()
 	test := ctx.testBinary() || ctx.testLibrary()
 	// FIXME: ThinLTO for VNDK produces different output.
 	// b/169217596
 	vndk := ctx.isVndk()
-	return GlobalThinLTO(ctx) && !lto.Never() && !lib32 && !cfi && !host && !test && !vndk
+	return GlobalThinLTO(ctx) && !lto.Never() && !lib32 && !host && !test && !vndk
 }
 
 func (lto *lto) FullLTO() bool {
@@ -164,6 +156,38 @@ func (lto *lto) Never() bool {
 
 func GlobalThinLTO(ctx android.BaseModuleContext) bool {
 	return ctx.Config().IsEnvTrue("GLOBAL_THINLTO")
+}
+
+func (lto *lto) SetLTOThin() {
+	lto.Properties.Lto.Thin = proptools.BoolPtr(true)
+	lto.Properties.Lto.Full = proptools.BoolPtr(false)
+}
+
+func (c *Module) SetLTOThin() {
+	if c.lto != nil {
+		c.lto.SetLTOThin()
+	}
+}
+
+func (lto *lto) SetLTOFull() {
+	lto.Properties.Lto.Thin = proptools.BoolPtr(false)
+	lto.Properties.Lto.Full = proptools.BoolPtr(true)
+}
+
+func (c *Module) SetLTOFull() {
+	if c.lto != nil {
+		c.lto.SetLTOFull()
+	}
+}
+
+func (lto *lto) SetLTONever() {
+	lto.Properties.Lto.Never = proptools.BoolPtr(true)
+}
+
+func (c *Module) SetLTONever() {
+	if c.lto != nil {
+		c.lto.SetLTONever()
+	}
 }
 
 // Propagate lto requirements down from binaries
