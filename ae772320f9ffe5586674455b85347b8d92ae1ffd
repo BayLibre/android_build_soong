@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9f42e5_9bc98d39",
+        "filename": "android/variable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-08T17:45:21Z",
+      "side": 1,
+      "message": "Instead of putting just the last param on a new line, either put each param on its own line or just leave the line really long. As much as I personally hate it, our style guide for golang prefers the latter :/.\n\nAlso, is there a reason for using the term `extraAxis` here where you use `outerAxis` in other places?",
+      "revId": "ae772320f9ffe5586674455b85347b8d92ae1ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
