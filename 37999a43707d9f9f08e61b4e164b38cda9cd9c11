@@ -22,6 +22,30 @@
       },
       "revId": "37999a43707d9f9f08e61b4e164b38cda9cd9c11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d17d6aa3_b0c01a48",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-08T15:55:35Z",
+      "side": 1,
+      "message": "Yea, need to manually set module_arm for now. Thanks for the catch.",
+      "parentUuid": "49bf334b_1b54d823",
+      "range": {
+        "startLine": 59,
+        "startChar": 76,
+        "endLine": 59,
+        "endChar": 84
+      },
+      "revId": "37999a43707d9f9f08e61b4e164b38cda9cd9c11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
