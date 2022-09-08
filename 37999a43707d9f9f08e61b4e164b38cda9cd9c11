@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49bf334b_1b54d823",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-08T14:48:45Z",
+      "side": 1,
+      "message": "should we also specify `TARGET_PRODUCT\u003dmodule_arm` here? or rely on apex transitions to \"do the right thing\" throughout?",
+      "range": {
+        "startLine": 59,
+        "startChar": 76,
+        "endLine": 59,
+        "endChar": 84
+      },
+      "revId": "37999a43707d9f9f08e61b4e164b38cda9cd9c11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
