@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f97560_3132577f",
+        "filename": "java/app_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-09-08T12:46:09Z",
+      "side": 1,
+      "message": "Try codenames in bp files as well? targetSdkVersion: \"Tiramisu\" / \"S\" / \"UpsideDownCake\" are supported values as well.",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
