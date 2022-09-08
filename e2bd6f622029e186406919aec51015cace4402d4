@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26f7a805_2a72e6c5",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3838,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-08T17:11:29Z",
+      "side": 1,
+      "message": "nit: can we just call this method `Partition`?",
+      "range": {
+        "startLine": 3838,
+        "startChar": 17,
+        "endLine": 3838,
+        "endChar": 32
+      },
+      "revId": "e2bd6f622029e186406919aec51015cace4402d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d8aa884_3c7a41f5",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2225,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-08T17:11:29Z",
+      "side": 1,
+      "message": "nit:can we just call this method `Partition`",
+      "range": {
+        "startLine": 2225,
+        "startChar": 33,
+        "endLine": 2225,
+        "endChar": 52
+      },
+      "revId": "e2bd6f622029e186406919aec51015cace4402d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc4c457_c078a95a",
+        "filename": "java/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-08T17:11:29Z",
+      "side": 1,
+      "message": "Is this split necessary?",
+      "range": {
+        "startLine": 410,
+        "startChar": 6,
+        "endLine": 410,
+        "endChar": 51
+      },
+      "revId": "e2bd6f622029e186406919aec51015cace4402d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "745280d7_7a4a0c04",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-08T17:11:29Z",
+      "side": 1,
+      "message": "Can you add a test case for a system app that uses two jnilibs, one in system and the other in system_ext?",
+      "range": {
+        "startLine": 369,
+        "startChar": 3,
+        "endLine": 372,
+        "endChar": 77
+      },
+      "revId": "e2bd6f622029e186406919aec51015cace4402d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
