@@ -211,10 +211,11 @@ var _ BazelContext = noopBazelContext{}
 type MockBazelContext struct {
 	OutputBaseDir string
 
-	LabelToOutputFiles  map[string][]string
-	LabelToCcInfo       map[string]cquery.CcInfo
-	LabelToPythonBinary map[string]string
-	LabelToApexInfo     map[string]cquery.ApexCqueryInfo
+	LabelToOutputFiles        map[string][]string
+	LabelToCcInfo             map[string]cquery.CcInfo
+	LabelToPrebuiltBinaryInfo map[string]cquery.PrebuiltBinaryInfo
+	LabelToPythonBinary       map[string]string
+	LabelToApexInfo           map[string]cquery.ApexCqueryInfo
 }
 
 func (m MockBazelContext) QueueBazelRequest(_ string, _ cqueryRequest, _ configKey) {
@@ -228,6 +229,11 @@ func (m MockBazelContext) GetOutputFiles(label string, _ configKey) ([]string, e
 
 func (m MockBazelContext) GetCcInfo(label string, _ configKey) (cquery.CcInfo, error) {
 	result, _ := m.LabelToCcInfo[label]
+	return result, nil
+}
+
+func (m MockBazelContext) GetPrebuiltBinaryInfo(label string, _ configKey) (cquery.PrebuiltBinaryInfo, error) {
+	result, _ := m.LabelToPrebuiltBinaryInfo[label]
 	return result, nil
 }
 
@@ -311,6 +317,10 @@ func (n noopBazelContext) GetOutputFiles(_ string, _ configKey) ([]string, error
 }
 
 func (n noopBazelContext) GetCcInfo(_ string, _ configKey) (cquery.CcInfo, error) {
+	panic("unimplemented")
+}
+
+func (n noopBazelContext) GetPrebuiltBinaryInfo(label string, _ configKey) (cquery.PrebuiltBinaryInfo, error) {
 	panic("unimplemented")
 }
 

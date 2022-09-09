@@ -204,3 +204,63 @@ func TestGetApexInfoParseResults(t *testing.T) {
 		}
 	}
 }
+
+func TestGetPrebuiltBinaryInfoParseResults(t *testing.T) {
+	testCases := []struct {
+		description string
+		input       string
+		expectation PrebuiltBinaryInfo
+		err         string
+	}{
+		{
+			description: "empty",
+			input:       "",
+			err:         "Expected 2 items, got 1:\n",
+		},
+		{
+			description: "just one item",
+			input:       "bin",
+			err:         "Expected 2 items, got 1:\nbin",
+		},
+		{
+			description: "nothing",
+			input:       "|",
+			expectation: PrebuiltBinaryInfo{
+				CheckElfFile: true,
+			},
+		},
+		{
+			description: "just source",
+			input:       "bin|",
+			expectation: PrebuiltBinaryInfo{
+				Source:       "bin",
+				CheckElfFile: true,
+			},
+		},
+		{
+			description: "with checking elf file",
+			input:       "bin|t",
+			expectation: PrebuiltBinaryInfo{
+				Source:       "bin",
+				CheckElfFile: true,
+			},
+		},
+		{
+			description: "without checking elf file",
+			input:       "bin|f",
+			expectation: PrebuiltBinaryInfo{
+				Source:       "bin",
+				CheckElfFile: false,
+			},
+		},
+	}
+	for _, tc := range testCases {
+		output, err := GetPrebuiltBinary.ParseResult(tc.input)
+		if (err == nil && len(tc.err) != 0) ||
+			(err != nil && err.Error() != tc.err) {
+			t.Errorf("%s:\nExpecting error `%s`\nBut got `%s`", tc.description, tc.err, err)
+		} else if err == nil && !reflect.DeepEqual(tc.expectation, output) {
+			t.Errorf("%s:\nExpected `%#v`\n!= actual `%#v`", tc.description, tc.expectation, output)
+		}
+	}
+}
