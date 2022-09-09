@@ -16,6 +16,58 @@
       "message": "Instead of putting just the last param on a new line, either put each param on its own line or just leave the line really long. As much as I personally hate it, our style guide for golang prefers the latter :/.\n\nAlso, is there a reason for using the term `extraAxis` here where you use `outerAxis` in other places?",
       "revId": "ae772320f9ffe5586674455b85347b8d92ae1ffd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb6869e_afe65a95",
+        "filename": "android/variable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-09T14:10:23Z",
+      "side": 1,
+      "message": "+1 for changing `extraAxis` -\u003e `outerAxis`",
+      "parentUuid": "8f9f42e5_9bc98d39",
+      "revId": "ae772320f9ffe5586674455b85347b8d92ae1ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "816a3afd_8926e6ec",
+        "filename": "bazel/properties.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-09T14:10:23Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure how to interpret this comment. Is there supposed to be more code here?\n\nCould you give it a TODO with a bug number if this will be left for a future CL?",
+      "revId": "ae772320f9ffe5586674455b85347b8d92ae1ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65767849_abe69c6f",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-09T14:10:23Z",
+      "side": 1,
+      "message": "Do we also need to check that `props !\u003d nil` as in line 691 above?",
+      "revId": "ae772320f9ffe5586674455b85347b8d92ae1ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
