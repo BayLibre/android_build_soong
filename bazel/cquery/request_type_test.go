@@ -167,3 +167,34 @@ func TestGetApexInfoParseResults(t *testing.T) {
 		}
 	}
 }
+
+func TestGetPrebuiltBinaryInfoParseResults(t *testing.T) {
+	testCases := []struct {
+		description string
+		input       string
+		expectation PrebuiltBinaryInfo
+		err         string
+	}{
+		{
+			description: "empty",
+			input:       "",
+			err:         "expected a cc_prebuilt_binary path, but was empty",
+		},
+		{
+			description: "with source",
+			input:       "bin",
+			expectation: PrebuiltBinaryInfo{
+				Source: "bin",
+			},
+		},
+	}
+	for _, tc := range testCases {
+		output, err := GetPrebuiltBinaryInfo.ParseResult(tc.input)
+		if (err == nil && len(tc.err) != 0) ||
+			(err != nil && err.Error() != tc.err) {
+			t.Errorf("%s:\nExpecting error `%s`\nBut got `%s`", tc.description, tc.err, err)
+		} else if err == nil && !reflect.DeepEqual(tc.expectation, output) {
+			t.Errorf("%s:\nExpected `%#v`\n!= actual `%#v`", tc.description, tc.expectation, output)
+		}
+	}
+}
