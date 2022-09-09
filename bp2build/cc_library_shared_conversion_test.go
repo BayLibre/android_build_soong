@@ -501,6 +501,13 @@ cc_library_shared {
 			MakeBazelTarget("cc_library_shared", "a", AttrNameToString{
 				"has_stubs": `True`,
 			}),
+			MakeBazelTarget("cc_api_library_headers", "a.systemapi.headers", AttrNameToString{}),
+			MakeBazelTarget("cc_api_contribution", "a.contribution", AttrNameToString{
+				"api":          `"a.map.txt"`,
+				"api_surfaces": `["systemapi"]`,
+				"hdrs":         `[":a.systemapi.headers"]`,
+				"library_name": `"a"`,
+			}),
 		},
 	})
 }

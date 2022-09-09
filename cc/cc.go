@@ -3712,11 +3712,15 @@ func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	case fullLibrary:
 		if !prebuilt {
 			libraryBp2Build(ctx, c)
+			apiContributionBp2Build(ctx, c)
 		} else {
 			prebuiltLibraryBp2Build(ctx, c)
 		}
 	case headerLibrary:
 		libraryHeadersBp2Build(ctx, c)
+		// Aggressively generate api targets for all header modules
+		// This is necessary since the header module does not know if it is a dep of API surface stub library
+		apiLibraryHeadersBp2Build(ctx, c)
 	case staticLibrary:
 		if prebuilt {
 			prebuiltLibraryStaticBp2Build(ctx, c, false)
@@ -3728,6 +3732,7 @@ func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 			prebuiltLibrarySharedBp2Build(ctx, c)
 		} else {
 			sharedOrStaticLibraryBp2Build(ctx, c, false)
+			apiContributionBp2Build(ctx, c)
 		}
 	case ndkLibrary:
 		ndkLibraryBp2build(ctx, c)
