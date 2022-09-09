@@ -73,6 +73,16 @@ func MakeLabelList(labels []Label) LabelList {
 	}
 }
 
+// MakeLabelListFromTargetNames creates a LabelList from unqualified target names
+func MakeLabelListFromTargetNames(targetNames []string) LabelList {
+	labels := []Label{}
+	for _, name := range targetNames {
+		label := Label{Label: ":" + name}
+		labels = append(labels, label)
+	}
+	return MakeLabelList(labels)
+}
+
 func (ll *LabelList) Equals(other LabelList) bool {
 	if len(ll.Includes) != len(other.Includes) || len(ll.Excludes) != len(other.Excludes) {
 		return false
@@ -1176,6 +1186,11 @@ type StringListAttribute struct {
 	// The configured attribute label list Values. Optional
 	// a map of independent configurability axes
 	ConfigurableValues configurableStringLists
+}
+
+// IsEmpty returns true if the attribute has no values under any configuration.
+func (sla StringListAttribute) IsEmpty() bool {
+	return len(sla.Value) == 0 && !sla.HasConfigurableValues()
 }
 
 type configurableStringLists map[ConfigurationAxis]stringListSelectValues

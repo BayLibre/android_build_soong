@@ -123,6 +123,55 @@ cc_library_headers {
 	})
 }
 
+func TestCcApiHeaders(t *testing.T) {
+	fs := map[string]string{
+		"bar/Android.bp": `cc_library_headers { name: "bar_headers", }`,
+	}
+	bp := `
+	cc_library_headers {
+		name: "foo_headers",
+		export_include_dirs: ["dir1", "dir2"],
+		export_header_lib_headers: ["bar_headers"],
+
+		arch: {
+			arm: {
+				export_include_dirs: ["dirarm"],
+			},
+			x86: {
+				export_include_dirs: ["dirx86"],
+			},
+		}
+	}
+	`
+	expectedBazelTargets := []string{
+		MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution.arm", AttrNameToString{
+			"export_includes": `["dirarm"]`,
+			"arch":            `"arm"`,
+		}),
+		MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution.x86", AttrNameToString{
+			"export_includes": `["dirx86"]`,
+			"arch":            `"x86"`,
+		}),
+		MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution", AttrNameToString{
+			"export_includes": `[
+        "dir1",
+        "dir2",
+    ]`,
+			"deps": `[
+        "//bar:bar_headers.contribution",
+        ":foo_headers.contribution.arm",
+        ":foo_headers.contribution.x86",
+    ]`,
+		}),
+	}
+	RunApiBp2BuildTestCase(t, cc.RegisterLibraryHeadersBuildComponents, Bp2buildTestCase{
+		Blueprint:            bp,
+		Description:          "Header library contributions to systemapi and vendorapi",
+		ExpectedBazelTargets: expectedBazelTargets,
+		Filesystem:           fs,
+	})
+}
+
 func TestCcLibraryHeadersOsSpecificHeader(t *testing.T) {
 	runCcLibraryHeadersTestCase(t, Bp2buildTestCase{
 		Description:                "cc_library_headers test with os-specific header_libs props",
