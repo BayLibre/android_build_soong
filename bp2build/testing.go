@@ -483,6 +483,7 @@ func makeCcStubSuiteTargets(name string, attrs AttrNameToString) string {
 		"stubs_versions":    "versions",
 		"soname":            "soname",
 		"source_library":    "source_library",
+		"export_includes":   "export_includes",
 	}
 
 	stubSuiteAttrs := AttrNameToString{}
