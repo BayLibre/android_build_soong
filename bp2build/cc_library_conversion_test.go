@@ -2660,7 +2660,17 @@ func TestCcLibraryStubs(t *testing.T) {
         "29",
         "current",
     ]`,
-	}))
+	}),
+	MakeBazelTargetNoRestrictions(
+	"cc_api_contribution",
+	"a.contribution",
+	AttrNameToString{
+		"api": `"a.map.txt"`,
+		"api_surfaces": `["systemapi]`,
+		"library_name": `"libfoo"`,
+		"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+	},
+))
 	runCcLibraryTestCase(t, Bp2buildTestCase{
 		Description:                "cc_library stubs",
 		ModuleTypeUnderTest:        "cc_library",

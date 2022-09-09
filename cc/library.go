@@ -210,6 +210,12 @@ type FlagExporterProperties struct {
 	}
 }
 
+// Empty returns true if no export directories are specified
+// Overriden values for vendor/product (via Override_export_include_dirs) are ignored
+func (f *FlagExporterProperties) Empty() bool {
+	return len(f.Export_include_dirs) == 0 && len(f.Export_system_include_dirs) == 0
+}
+
 func init() {
 	RegisterLibraryBuildComponents(android.InitRegistrationContext)
 }
@@ -463,6 +469,18 @@ func createStubsBazelTargetIfNeeded(ctx android.TopDownMutatorContext, m *Module
 			android.CommonAttributes{Name: m.Name() + "_stub_libs"},
 			stubSuitesAttrs)
 	}
+}
+
+func apiContributionBp2Build(ctx android.TopDownMutatorContext, module *Module) {
+	// do this only for non-null stubs and llndk
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:	"cc_api_contribution",
+		Bzl_load_location: "//build/bazel/rules/apis:cc_api_contribution.bzl",
+	}
+
+	// TODO: Make header library
+	ctx.CreateBazelTargetModule(props,
+	android.CommonAttributes{Name: apiContributionTargetName(module.Name()), attrs)
 }
 
 // cc_library creates both static and/or shared libraries for a device and/or
