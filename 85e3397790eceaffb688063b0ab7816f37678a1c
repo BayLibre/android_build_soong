@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2e1953_ed68a9bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-09T20:05:58Z",
+      "side": 1,
+      "message": "Thanks for doing this cleanup 🎉",
+      "revId": "85e3397790eceaffb688063b0ab7816f37678a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2a586f_d2309711",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-09T20:05:58Z",
+      "side": 1,
+      "message": "any reason not to set `structProps` directly here? would let us remove an if below to only return if `err !\u003d nil`",
+      "range": {
+        "startLine": 553,
+        "startChar": 2,
+        "endLine": 553,
+        "endChar": 4
+      },
+      "revId": "85e3397790eceaffb688063b0ab7816f37678a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec6fa757_cdd2a3db",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-09T20:05:58Z",
+      "side": 1,
+      "message": "nit: this is implied when you specify `var`",
+      "range": {
+        "startLine": 554,
+        "startChar": 35,
+        "endLine": 554,
+        "endChar": 41
+      },
+      "revId": "85e3397790eceaffb688063b0ab7816f37678a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
