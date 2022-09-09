@@ -30,6 +30,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
+	"github.com/google/blueprint/proptools"
 )
 
 // LibraryProperties is a collection of properties shared by cc library rules/cc.
@@ -463,6 +464,129 @@ func createStubsBazelTargetIfNeeded(ctx android.TopDownMutatorContext, m *Module
 		ctx.CreateBazelTargetModule(stubSuitesProps,
 			android.CommonAttributes{Name: m.Name() + "_stub_libs"},
 			stubSuitesAttrs)
+	}
+}
+
+func apiContributionBp2Build(ctx android.TopDownMutatorContext, module *Module) {
+	apiSurfaces := make([]string, 0)
+	apiHeaders := make([]string, 0)
+	// systemapi
+	if module.HasStubsVariants() {
+		apiIncludes := getSystemApiIncludes(ctx, module)
+		createApiHeaderTarget(ctx, apiIncludes)
+		apiSurfaces = append(apiSurfaces, android.SystemApi.String())
+		apiHeaders = append(apiHeaders, apiIncludes.name)
+	}
+	// vendorapi
+	if module.HasLlndkStubs() {
+		apiIncludes := getVendorApiIncludes(ctx, module)
+		createApiHeaderTarget(ctx, apiIncludes)
+		apiSurfaces = append(apiSurfaces, android.VendorApi.String())
+		apiHeaders = append(apiHeaders, apiIncludes.name)
+	}
+	// create a target only if this module contributes to an api surface
+	if len(apiSurfaces) > 0 {
+		props := bazel.BazelTargetModuleProperties{
+			Rule_class:        "cc_api_contribution",
+			Bzl_load_location: "//build/bazel/rules/apis:cc_api_contribution.bzl",
+		}
+		attrs := &bazelCcApiContributionAttributes{
+			Library_name: module.Name(),
+			Api_surfaces: bazel.MakeStringListAttribute(apiSurfaces),
+			Api:          apiLabelAttribute(ctx, module),
+			Hdrs: bazel.MakeLabelListAttribute(
+				bazel.MakeLabelListFromTargetNames(apiHeaders),
+			),
+		}
+		ctx.CreateBazelTargetModule(
+			props,
+			android.CommonAttributes{
+				Name:     android.ApiContributionTargetName(module.Name()),
+				SkipData: proptools.BoolPtr(true),
+			},
+			attrs,
+		)
+	}
+}
+
+// TODO: Add doc
+// Make different apiFiles an exception?
+func apiLabelAttribute(ctx android.TopDownMutatorContext, module *Module) bazel.LabelAttribute {
+	var apiFile *string
+	linker := module.linker.(*libraryDecorator)
+	if llndkApi := linker.Properties.Llndk.Symbol_file; llndkApi != nil {
+		apiFile = llndkApi
+	}
+	if systemApi := linker.Properties.Stubs.Symbol_file; systemApi != nil {
+		apiFile = systemApi
+	}
+	apiLabel := android.BazelLabelForModuleSrcSingle(ctx, proptools.String(apiFile)).Label
+	return *bazel.MakeLabelAttribute(apiLabel)
+}
+
+// TODO: Add desc that this is flattened
+// Or maybe just call it flattened
+type apiIncludes struct {
+	name  string // name of the Bazel target in the generated bp2build workspace
+	attrs bazelCcApiLibraryHeadersAttributes
+}
+
+func (includes *apiIncludes) IsEmpty() bool {
+	return includes.attrs.IsEmpty()
+}
+
+func (includes *apiIncludes) AddDep(name string) {
+	l := bazel.Label{Label: ":" + name}
+	ll := bazel.MakeLabelList([]bazel.Label{l})
+	lla := bazel.MakeLabelListAttribute(ll)
+	includes.attrs.Deps.Append(lla)
+}
+
+// TODO: Add api_surfaces to cc_api_headers attribute
+func getSystemApiIncludes(ctx android.TopDownMutatorContext, c *Module) apiIncludes {
+	flagProps := c.library.(*libraryDecorator).flagExporter.Properties
+	linkProps := c.library.(*libraryDecorator).baseLinker.Properties
+	hdrs := linkProps.Export_header_lib_headers
+	hdrs = append(hdrs, linkProps.Export_shared_lib_headers...)
+	attrs := bazelCcLibraryHeadersAttributes{
+		Export_includes:        bazel.MakeStringListAttribute(flagProps.Export_include_dirs),
+		Export_system_includes: bazel.MakeStringListAttribute(flagProps.Export_system_include_dirs),
+		Deps:                   bazel.MakeLabelListAttribute(apiHeaderLabels(ctx, hdrs)),
+	}
+
+	return apiIncludes{
+		name: c.Name() + ".systemapi.headers",
+		attrs: bazelCcApiLibraryHeadersAttributes{
+			bazelCcLibraryHeadersAttributes: attrs,
+		},
+	}
+}
+
+func getVendorApiIncludes(ctx android.TopDownMutatorContext, c *Module) apiIncludes {
+	baseProps := c.library.(*libraryDecorator).flagExporter.Properties
+	llndkProps := c.library.(*libraryDecorator).Properties.Llndk
+	includes := baseProps.Export_include_dirs
+	systemIncludes := baseProps.Export_system_include_dirs
+	// LLNDK can override the base includes
+	if llndkIncludes := llndkProps.Override_export_include_dirs; llndkIncludes != nil {
+		if proptools.Bool(llndkProps.Export_headers_as_system) {
+			includes = nil
+			systemIncludes = llndkIncludes
+		} else {
+			includes = llndkIncludes
+			systemIncludes = nil
+		}
+	}
+	attrs := bazelCcLibraryHeadersAttributes{
+		Export_includes:        bazel.MakeStringListAttribute(includes),
+		Export_system_includes: bazel.MakeStringListAttribute(systemIncludes),
+		Deps:                   bazel.MakeLabelListAttribute(apiHeaderLabels(ctx, llndkProps.Export_llndk_headers)),
+	}
+	return apiIncludes{
+		name: c.Name() + ".vendorapi.headers",
+		attrs: bazelCcApiLibraryHeadersAttributes{
+			bazelCcLibraryHeadersAttributes: attrs,
+		},
 	}
 }
 

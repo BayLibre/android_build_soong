@@ -119,6 +119,33 @@ cc_library_headers {
 				"sdk_version":     `"current"`,
 				"min_sdk_version": `"29"`,
 			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution.arm64", AttrNameToString{
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+				"export_includes":        `["arch_arm64_exported_include_dir"]`,
+				"arch":                   `"arm64"`,
+			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution.x86", AttrNameToString{
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+				"export_includes":        `["arch_x86_exported_include_dir"]`,
+				"arch":                   `"x86"`,
+			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution.x86_64", AttrNameToString{
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+				"export_includes":        `["arch_x86_64_exported_include_dir"]`,
+				"arch":                   `"x86_64"`,
+			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution", AttrNameToString{
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+				"export_includes": `[
+        "dir-1",
+        "dir-2",
+    ]`,
+				"deps": `[
+        ":foo_headers.contribution.arm64",
+        ":foo_headers.contribution.x86",
+        ":foo_headers.contribution.x86_64",
+    ]`,
+			}),
 		},
 	})
 }
@@ -193,6 +220,17 @@ cc_library_headers {
         "//conditions:default": [],
     })`,
 			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution.androidos", AttrNameToString{
+				"deps":                   `[":android-lib.contribution"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution", AttrNameToString{
+				"deps": `[
+        ":base-lib.contribution",
+        ":foo_headers.contribution.androidos",
+    ]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			}),
 		},
 	})
 }
@@ -228,6 +266,14 @@ cc_library_headers {
         "//build/bazel/platforms/os:android": [":exported-lib"],
         "//conditions:default": [],
     })`,
+			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution.androidos", AttrNameToString{
+				"deps":                   `[":exported-lib.contribution"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution", AttrNameToString{
+				"deps":                   `[":foo_headers.contribution.androidos"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
 			}),
 		},
 	})
@@ -288,6 +334,30 @@ func TestCcLibraryHeadersArchAndTargetExportSystemIncludes(t *testing.T) {
         "//conditions:default": [],
     })`,
 			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution.arm", AttrNameToString{
+				"arch":                   `"arm"`,
+				"export_system_includes": `["arm_include_dir"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution.x86_64", AttrNameToString{
+				"arch":                   `"x86_64"`,
+				"export_system_includes": `["x86_64_include_dir"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution.androidos", AttrNameToString{
+				"export_system_includes": `["android_include_dir"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			}),
+
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution", AttrNameToString{
+				"export_system_includes": `["shared_include_dir"]`,
+				"deps": `[
+        ":foo_headers.contribution.arm",
+        ":foo_headers.contribution.x86_64",
+        ":foo_headers.contribution.androidos",
+    ]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			}),
 		},
 	})
 }
@@ -320,6 +390,10 @@ cc_library_headers {
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_headers", "lib-1", AttrNameToString{
 				"export_includes": `["lib-1"]`,
+			}),
+			MakeBazelTarget("cc_api_library_headers", "lib-1.contribution", AttrNameToString{
+				"export_includes":        `["lib-1"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
 			}),
 		},
 	})
@@ -365,6 +439,9 @@ cc_library_headers {
 			MakeBazelTarget("cc_library_headers", "foo_headers", AttrNameToString{
 				"deps": `[":foo_export"]`,
 			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution", AttrNameToString{
+				"deps": `[":foo_export.contribution"]`,
+			}),
 		},
 	})
 }
@@ -386,6 +463,9 @@ cc_library_headers {
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_headers", "foo_headers", AttrNameToString{
 				"deps": `[":foo_export"]`,
+			}),
+			MakeBazelTarget("cc_api_library_headers", "foo_headers.contribution", AttrNameToString{
+				"deps": `[":foo_export.contribution"]`,
 			}),
 		},
 	})
