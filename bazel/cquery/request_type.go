@@ -7,10 +7,11 @@ import (
 )
 
 var (
-	GetOutputFiles  = &getOutputFilesRequestType{}
-	GetPythonBinary = &getPythonBinaryRequestType{}
-	GetCcInfo       = &getCcInfoType{}
-	GetApexInfo     = &getApexInfoType{}
+	GetOutputFiles        = &getOutputFilesRequestType{}
+	GetPythonBinary       = &getPythonBinaryRequestType{}
+	GetCcInfo             = &getCcInfoType{}
+	GetApexInfo           = &getApexInfoType{}
+	GetPrebuiltBinaryInfo = &getPrebuiltBinaryInfoType{}
 )
 
 type CcInfo struct {
@@ -275,4 +276,38 @@ func splitOrEmpty(s string, sep string) []string {
 	} else {
 		return strings.Split(s, sep)
 	}
+}
+
+// Query Bazel for prebuilt binary information
+type getPrebuiltBinaryInfoType struct{}
+
+type PrebuiltBinaryInfo struct {
+	Source       string
+	CheckElfFile bool
+}
+
+func (_ getPrebuiltBinaryInfoType) Name() string {
+	return "getPrebuiltBinaryInfo"
+}
+
+func (_ getPrebuiltBinaryInfoType) StarlarkFunctionBody() string {
+	return `
+info = providers(target)["PrebuiltBinaryInfo"]
+return info.src + "|" + ("t" if info.check_elf_file else "f")
+`
+}
+
+func (_ getPrebuiltBinaryInfoType) ParseResult(rawString string) (PrebuiltBinaryInfo, error) {
+	const expectedLen = 2
+	splitString := strings.Split(rawString, "|")
+	if len(splitString) != expectedLen {
+		return PrebuiltBinaryInfo{}, fmt.Errorf("Expected %d items, got %d:\n%s", expectedLen, len(splitString), rawString)
+	}
+	var src = splitString[0]
+	// If empty, we go with the default true
+	var check = len(splitString[1]) == 0 || strings.HasPrefix(splitString[1], "t")
+	return PrebuiltBinaryInfo{
+		Source:       src,
+		CheckElfFile: check,
+	}, nil
 }

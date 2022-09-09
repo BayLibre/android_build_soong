@@ -21,6 +21,7 @@ import (
 	"android/soong/android"
 	"android/soong/bazel"
 	"android/soong/bazel/cquery"
+	"github.com/google/blueprint"
 )
 
 func init() {
@@ -677,6 +678,7 @@ func PrebuiltBinaryFactory() android.Module {
 func NewPrebuiltBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 	module, binary := newBinary(hod, true)
 	module.compiler = nil
+	module.bazelHandler = &prebuiltBinaryBazelHandler{module, binary}
 
 	prebuilt := &prebuiltBinaryLinker{
 		binaryDecorator: binary,
@@ -714,6 +716,41 @@ func prebuiltBinaryBp2Build(ctx android.TopDownMutatorContext, module *Module) {
 
 	name := android.RemoveOptionalPrebuiltPrefix(module.Name())
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: name}, attrs)
+}
+
+var PrebuiltBinaryInfoProvider = blueprint.NewProvider(cquery.PrebuiltBinaryInfo{})
+
+type prebuiltBinaryBazelHandler struct {
+	module    *Module
+	decorator *binaryDecorator
+}
+
+var _ BazelHandler = (*prebuiltBinaryBazelHandler)(nil)
+
+func (h *prebuiltBinaryBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
+	if h.module.linker.(*prebuiltBinaryLinker).properties.MixedBuildsDisabled {
+		return
+	}
+	bazelCtx := ctx.Config().BazelContext
+	bazelCtx.QueueBazelRequest(label, cquery.GetPrebuiltBinaryInfo, android.GetConfigKey(ctx))
+}
+
+func (h *prebuiltBinaryBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+	if h.module.linker.(*prebuiltBinaryLinker).properties.MixedBuildsDisabled {
+		return
+	}
+	bazelCtx := ctx.Config().BazelContext
+	info, err := bazelCtx.GetPrebuiltBinaryInfo(label, android.GetConfigKey(ctx))
+	if err != nil {
+		ctx.ModuleErrorf(err.Error())
+		return
+	}
+
+	// TODO: do something with info
+	//deco := h.decorator
+	ctx.SetProvider(PrebuiltBinaryInfoProvider, info)
+
+	h.module.maybeUnhideFromMake()
 }
 
 type Sanitized struct {
