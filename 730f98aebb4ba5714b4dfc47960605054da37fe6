@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "803854f3_a745b192",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-09T20:58:03Z",
+      "side": 1,
+      "message": "Likely typo/thoughto/miscopy. Other than that, LGTM. Thanks for helping the deprecation process! ",
+      "revId": "730f98aebb4ba5714b4dfc47960605054da37fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99efbfc3_df18c0e9",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-09T20:58:03Z",
+      "side": 1,
+      "message": "Think you meant \"AsFlags\"",
+      "revId": "730f98aebb4ba5714b4dfc47960605054da37fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
