@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf18c069_998ea872",
+        "filename": "java/base.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-09T20:57:33Z",
+      "side": 0,
+      "message": "Moved this to JacocoDepsMutator. I think this should be okay since the values that decide `shouldInstrumentInApex` are set before the Jacoco mutator runs:\n\n- `ApexProperties.DirectlyInApex: set in [`apexDirectlyInAnyMutator`](https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex.go;l\u003d80;drc\u003dee959f49eb5ff5512cf11eaf3297ce3a85d1e130) or in [`CreateApexVariations`](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/apex.go;l\u003d592;drc\u003db6056794409a30021acfe595aeb5ac61517a75e2) both of which have already been run at this point\n- `ApexVariationName` also set in `CreateApexVariations`\n\n@ccross WDYT?",
+      "revId": "9be110d15168531cbcdce5a6bb4a03900bc91047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
