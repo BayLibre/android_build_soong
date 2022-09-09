@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e79b1d7_e3052890",
+        "filename": "android/variable.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-09-09T20:55:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcb6869e_afe65a95",
+      "revId": "ae772320f9ffe5586674455b85347b8d92ae1ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "816a3afd_8926e6ec",
@@ -53,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fdc08ed_4ea12969",
+        "filename": "bazel/properties.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-09-09T20:55:42Z",
+      "side": 1,
+      "message": "accidentally pasted that there and neglected to delete it",
+      "parentUuid": "816a3afd_8926e6ec",
+      "revId": "ae772320f9ffe5586674455b85347b8d92ae1ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65767849_abe69c6f",
@@ -66,6 +102,24 @@
       "writtenOn": "2022-09-09T14:10:23Z",
       "side": 1,
       "message": "Do we also need to check that `props !\u003d nil` as in line 691 above?",
+      "revId": "ae772320f9ffe5586674455b85347b8d92ae1ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f99d633a_abb7400a",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-09-09T20:55:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65767849_abe69c6f",
       "revId": "ae772320f9ffe5586674455b85347b8d92ae1ffd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
