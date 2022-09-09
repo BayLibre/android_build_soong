@@ -15,6 +15,8 @@
 package cc
 
 import (
+	"github.com/google/blueprint/proptools"
+
 	"android/soong/android"
 	"android/soong/bazel"
 	"android/soong/bazel/cquery"
@@ -144,4 +146,128 @@ func libraryHeadersBp2Build(ctx android.TopDownMutatorContext, module *Module) {
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: module.Name()}, attrs)
+}
+
+type bazelCcApiLibraryHeadersAttributes struct {
+	bazelCcLibraryHeadersAttributes
+
+	Arch *string
+}
+
+func (a *bazelCcApiLibraryHeadersAttributes) IsEmpty() bool {
+	return a.Export_includes.IsEmpty() &&
+		a.Export_system_includes.IsEmpty() &&
+		a.Deps.IsEmpty()
+}
+
+func apiBazelTargets(ll bazel.LabelList) bazel.LabelList {
+	labels := make([]bazel.Label, 0)
+	for _, l := range ll.Includes {
+		labels = append(labels, bazel.Label{
+			Label: apiContributionTargetName(l.Label),
+		})
+	}
+	return bazel.MakeLabelList(labels)
+}
+
+// TODO: Add documentation
+func removeStaticExports(ctx android.BazelConversionPathContext, allExports bazel.LabelList, staticModules []string) bazel.LabelList {
+	staticExports := bazelLabelForStaticDeps(ctx, staticModules)
+	return bazel.SubtractBazelLabelList(allExports, staticExports)
+}
+
+func archAgnosticApiExports(ctx android.TopDownMutatorContext, a baseAttributes, i BazelIncludes) *bazelCcApiLibraryHeadersAttributes {
+	// Base values for NoConfigAxis
+	includes := i.Includes.Value
+	systemIncludes := i.SystemIncludes.Value
+	deps := a.deps.Value
+	// os == android
+	includes = append(includes, i.Includes.SelectValue(
+		bazel.OsConfigurationAxis,
+		bazel.OsAndroid)...,
+	)
+	systemIncludes = append(systemIncludes, i.SystemIncludes.SelectValue(
+		bazel.OsConfigurationAxis,
+		bazel.OsAndroid)...,
+	)
+	deps.Append(a.deps.SelectValue(
+		bazel.OsConfigurationAxis,
+		bazel.OsAndroid),
+	)
+	nonStaticDeps := removeStaticExports(ctx, deps, ctx.Module().(*Module).linker.(*libraryDecorator).baseLinker.Properties.Export_static_lib_headers)
+	ret := &bazelCcApiLibraryHeadersAttributes{}
+	ret.Export_includes = bazel.MakeStringListAttribute(includes)
+	ret.Export_system_includes = bazel.MakeStringListAttribute(systemIncludes)
+	depAttr := bazel.MakeLabelListAttribute(apiBazelTargets(nonStaticDeps)) // append .contribution suffix to `otherlib`'s label
+	if !depAttr.IsEmpty() {
+		ret.Deps = depAttr
+	}
+	return ret
+}
+
+type bazelArchApiAttributes map[string]*bazelCcApiLibraryHeadersAttributes
+
+func archSpecificApiExports(ctx android.TopDownMutatorContext, a baseAttributes, i BazelIncludes) bazelArchApiAttributes {
+	ret := bazelArchApiAttributes{}
+	for _, arch := range allArches {
+		includes := i.Includes.SelectValue(
+			bazel.ArchConfigurationAxis,
+			arch)
+		systemIncludes := i.SystemIncludes.SelectValue(
+			bazel.ArchConfigurationAxis,
+			arch)
+		deps := a.deps.SelectValue(
+			bazel.ArchConfigurationAxis,
+			arch)
+		attrs := &bazelCcApiLibraryHeadersAttributes{}
+		attrs.Export_includes = bazel.MakeStringListAttribute(includes)
+		attrs.Export_system_includes = bazel.MakeStringListAttribute(systemIncludes)
+		depAttr := bazel.MakeLabelListAttribute(apiBazelTargets(deps)) // append .contribution suffix to `otherlib`'s label
+		if !depAttr.IsEmpty() {
+			attrs.Deps = depAttr
+		}
+		attrs.Arch = proptools.StringPtr(arch)
+		ret[arch] = attrs
+	}
+	return ret
+}
+
+var (
+	allArches = []string{"arm", "arm64", "x86", "x86_64"}
+)
+
+// TODO: Add documentation
+func apiLibraryHeadersBp2Build(ctx android.TopDownMutatorContext, module *Module) {
+	createTarget := func(ctx android.TopDownMutatorContext, name string, a *bazelCcApiLibraryHeadersAttributes) {
+		props := bazel.BazelTargetModuleProperties{
+			Rule_class:        "cc_api_library_headers",
+			Bzl_load_location: "//build/bazel/rules/apis:cc_api_contribution.bzl",
+		}
+		ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: name}, a)
+	}
+	// cc_api_library_headers have a 1:1 mapping to arch/no-arch
+	// For API export,create a top-level arch-agnostic target and list the arch-specific targets as its deps
+	// TODO: Add more doc about how this allows 1 target per arch and not 1 target per (arch,export_include_dir) (arch,export_system_include_dir) etc
+	baseProps := bp2BuildParseBaseProps(ctx, module)
+	exportedIncludes := bp2BuildParseExportedIncludes(ctx, module, &baseProps.includes)
+	commonExports := archAgnosticApiExports(ctx, baseProps, exportedIncludes)
+	archExports := archSpecificApiExports(ctx, baseProps, exportedIncludes)
+
+	// For each archExport, create a Bazel target and add it to the deps of `commonExports`
+	for _, arch := range allArches { // sorted iteration
+		dep := archExports[arch]
+		if !dep.IsEmpty() {
+			name := apiContributionTargetName(module.Name()) + "." + arch // Add an arch suffix for arch-specific target
+			label := bazel.Label{
+				Label: ":" + name,
+			}
+			createTarget(ctx, name, dep)
+			commonExports.Deps.Value.Add(&label)
+		}
+	}
+
+	//Create a target only if this module exports headers
+	if !commonExports.IsEmpty() {
+		createTarget(ctx, apiContributionTargetName(module.Name()), commonExports)
+	}
 }

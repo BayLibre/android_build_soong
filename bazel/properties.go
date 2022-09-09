@@ -1166,6 +1166,11 @@ type StringListAttribute struct {
 	ConfigurableValues configurableStringLists
 }
 
+// IsEmpty returns true if the attribute has no values under any configuration.
+func (sla StringListAttribute) IsEmpty() bool {
+	return len(sla.Value) == 0 && !sla.HasConfigurableValues()
+}
+
 type configurableStringLists map[ConfigurationAxis]stringListSelectValues
 
 func (csl configurableStringLists) Append(other configurableStringLists) {

@@ -210,6 +210,12 @@ type FlagExporterProperties struct {
 	}
 }
 
+// Empty returns true if no export directories are specified
+// Overriden values for vendor/product (via Override_export_include_dirs) are ignored
+func (f *FlagExporterProperties) Empty() bool {
+	return len(f.Export_include_dirs) == 0 && len(f.Export_system_include_dirs) == 0
+}
+
 func init() {
 	RegisterLibraryBuildComponents(android.InitRegistrationContext)
 }
