@@ -2682,6 +2682,51 @@ cc_library {
 	)
 }
 
+func TestCcApiContributions(t *testing.T) {
+	bp := `
+	cc_library {
+		name: "libfoo",
+		stubs: { symbol_file: "libfoo.map.txt", versions: ["28", "29", "current"] },
+		llndk: { symbol_file: "libfoo.map.txt", override_export_include_dirs: ["dir2"]},
+		export_include_dirs: ["dir1"],
+	}
+	`
+	expectedBazelTargets := []string{
+		MakeBazelTarget(
+			"cc_api_library_headers",
+			"libfoo.systemapi.headers",
+			AttrNameToString{
+				"export_includes": `["dir1"]`,
+			}),
+		MakeBazelTarget(
+			"cc_api_library_headers",
+			"libfoo.vendorapi.headers",
+			AttrNameToString{
+				"export_includes": `["dir2"]`,
+			}),
+		MakeBazelTarget(
+			"cc_api_contribution",
+			"libfoo.contribution",
+			AttrNameToString{
+				"api":          `"libfoo.map.txt"`,
+				"library_name": `"libfoo"`,
+				"api_surfaces": `[
+        "systemapi",
+        "vendorapi",
+    ]`,
+				"hdrs": `[
+        ":libfoo.systemapi.headers",
+        ":libfoo.vendorapi.headers",
+    ]`,
+			}),
+	}
+	RunApiBp2BuildTestCase(t, cc.RegisterLibraryBuildComponents, Bp2buildTestCase{
+		Blueprint:            bp,
+		Description:          "cc API contributions to systemapi and vendorapi",
+		ExpectedBazelTargets: expectedBazelTargets,
+	})
+}
+
 func TestCcLibraryStubsAcrossConfigsDuplicatesRemoved(t *testing.T) {
 	runCcLibraryTestCase(t, Bp2buildTestCase{
 		Description:                "stub target generation of the same lib across configs should not result in duplicates",
