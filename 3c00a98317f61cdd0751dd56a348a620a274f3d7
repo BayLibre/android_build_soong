@@ -88,6 +88,24 @@
       "parentUuid": "64477764_033e9423",
       "revId": "3c00a98317f61cdd0751dd56a348a620a274f3d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3850f0_dfadf1f3",
+        "filename": "cc/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-09T18:18:51Z",
+      "side": 1,
+      "message": "In Soong, a clang command can access parent directories using `#include \"../foo.h\"`, but I think that is fixed in bazel with its stricter sandboxing.  Only header files explicitly provided by dependencies are available in the action sandbox.  The .d file provides after-the-fact data that tells you which files you accessed, but that\u0027s not particularly useful once sandboxing is in place because you have to know what files to make available ahead of time.  Even without sandboxing it doesn\u0027t help for generated header files, as you have to have an explicit dependency on the header so that it is present for the first build.  The .d file ends up being mostly an optimization - you can add an order-only dependency on generated headers and the .d file will upgrade it to a full dependency if it is actually used, and you don\u0027t have to track all of the non-generated headers with explicit dependencies.\n\nAdding the .clang-tidy to the .d file is better than nothing, but would only help if rewrapper knew how to copy clang-tidy\u0027s behavior to find the necessary .clang-tidy files to make them available, and then it would still cause more work for the Bazel transition that won\u0027t use rewrapper and won\u0027t search in parent directories.\n\nDependencies always have some semantics, so I don\u0027t see why it wouldn\u0027t be a specific property.  If you just used a generic property to make the file available to the RBE sandbox then you\u0027d get different behavior locally vs. RBE if you forgot to list the file, as the local build could find the file without the dependency.  To work identically between local and RBE builds the property has to tell clang-tidy exactly which file to load.",
+      "parentUuid": "2cae0372_43d2f638",
+      "revId": "3c00a98317f61cdd0751dd56a348a620a274f3d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
