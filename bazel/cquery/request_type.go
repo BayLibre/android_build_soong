@@ -7,10 +7,11 @@ import (
 )
 
 var (
-	GetOutputFiles  = &getOutputFilesRequestType{}
-	GetPythonBinary = &getPythonBinaryRequestType{}
-	GetCcInfo       = &getCcInfoType{}
-	GetApexInfo     = &getApexInfoType{}
+	GetOutputFiles        = &getOutputFilesRequestType{}
+	GetPythonBinary       = &getPythonBinaryRequestType{}
+	GetCcInfo             = &getCcInfoType{}
+	GetApexInfo           = &getApexInfoType{}
+	GetPrebuiltBinaryInfo = &getPrebuiltBinaryInfoType{}
 )
 
 type CcInfo struct {
@@ -275,4 +276,28 @@ func splitOrEmpty(s string, sep string) []string {
 	} else {
 		return strings.Split(s, sep)
 	}
+}
+
+// Query Bazel for prebuilt binary information
+type getPrebuiltBinaryInfoType struct{}
+
+type PrebuiltBinaryInfo struct {
+	Source string
+}
+
+func (_ getPrebuiltBinaryInfoType) Name() string {
+	return "getPrebuiltBinaryInfo"
+}
+
+func (_ getPrebuiltBinaryInfoType) StarlarkFunctionBody() string {
+	return `return providers(target)["PrebuiltBinaryInfo"].src`
+}
+
+func (_ getPrebuiltBinaryInfoType) ParseResult(rawString string) (PrebuiltBinaryInfo, error) {
+	if len(rawString) == 0 {
+		return PrebuiltBinaryInfo{}, fmt.Errorf("expected a cc_prebuilt_binary path, but was empty")
+	}
+	return PrebuiltBinaryInfo{
+		Source: rawString,
+	}, nil
 }
