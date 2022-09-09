@@ -130,6 +130,9 @@ type BazelContext interface {
 	// Returns the results of GetOutputFiles and GetCcObjectFiles in a single query (in that order).
 	GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, error)
 
+	// Returns the info for a prebuilt binary with the given bazel target label
+	GetPrebuiltBinaryInfo(label string, cfg configKey) (cquery.PrebuiltBinaryInfo, error)
+
 	// Returns the executable binary resultant from building together the python sources
 	// TODO(b/232976601): Remove.
 	GetPythonBinary(label string, cfgKey configKey) (string, error)
@@ -211,10 +214,11 @@ var _ BazelContext = noopBazelContext{}
 type MockBazelContext struct {
 	OutputBaseDir string
 
-	LabelToOutputFiles  map[string][]string
-	LabelToCcInfo       map[string]cquery.CcInfo
-	LabelToPythonBinary map[string]string
-	LabelToApexInfo     map[string]cquery.ApexCqueryInfo
+	LabelToOutputFiles        map[string][]string
+	LabelToCcInfo             map[string]cquery.CcInfo
+	LabelToPrebuiltBinaryInfo map[string]cquery.PrebuiltBinaryInfo
+	LabelToPythonBinary       map[string]string
+	LabelToApexInfo           map[string]cquery.ApexCqueryInfo
 }
 
 func (m MockBazelContext) QueueBazelRequest(_ string, _ cqueryRequest, _ configKey) {
@@ -228,6 +232,11 @@ func (m MockBazelContext) GetOutputFiles(label string, _ configKey) ([]string, e
 
 func (m MockBazelContext) GetCcInfo(label string, _ configKey) (cquery.CcInfo, error) {
 	result, _ := m.LabelToCcInfo[label]
+	return result, nil
+}
+
+func (m MockBazelContext) GetPrebuiltBinaryInfo(label string, _ configKey) (cquery.PrebuiltBinaryInfo, error) {
+	result, _ := m.LabelToPrebuiltBinaryInfo[label]
 	return result, nil
 }
 
@@ -285,6 +294,14 @@ func (bazelCtx *bazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.
 	return cquery.CcInfo{}, fmt.Errorf("no bazel response found for %v", key)
 }
 
+func (ctx *bazelContext) GetPrebuiltBinaryInfo(label string, cfg configKey) (cquery.PrebuiltBinaryInfo, error) {
+	key := cqueryKey{label, cquery.GetPrebuiltBinaryInfo, cfg}
+	if raw, ok := ctx.results[key]; ok {
+		return cquery.GetPrebuiltBinaryInfo.ParseResult(raw)
+	}
+	return cquery.PrebuiltBinaryInfo{}, fmt.Errorf("no bazel response found for %v", key)
+}
+
 func (bazelCtx *bazelContext) GetPythonBinary(label string, cfgKey configKey) (string, error) {
 	key := cqueryKey{label, cquery.GetPythonBinary, cfgKey}
 	if rawString, ok := bazelCtx.results[key]; ok {
@@ -311,6 +328,10 @@ func (n noopBazelContext) GetOutputFiles(_ string, _ configKey) ([]string, error
 }
 
 func (n noopBazelContext) GetCcInfo(_ string, _ configKey) (cquery.CcInfo, error) {
+	panic("unimplemented")
+}
+
+func (n noopBazelContext) GetPrebuiltBinaryInfo(_ string, _ configKey) (cquery.PrebuiltBinaryInfo, error) {
 	panic("unimplemented")
 }
 
