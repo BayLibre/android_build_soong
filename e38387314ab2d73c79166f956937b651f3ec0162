@@ -16,6 +16,24 @@
       "message": "Is there a bug number or a description of the concrete problem this is fixing?  Making this an arch-specific module is a pretty big change, before this change there would only ever be one variant of this module, now there will now be many variants of this module simultaneously.",
       "revId": "e38387314ab2d73c79166f956937b651f3ec0162",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79fea348_51423ad3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-09-09T19:13:48Z",
+      "side": 1,
+      "message": "Insofar as different variants might have different dependencies, having multiple is correct.\n\nIt\u0027s necessary for http://ag/19749273\n\nI don\u0027t see a buganizer associated with it, but I expect it is an OKR for Andrew.\n\nI always intended for gen_notice to support dist properties and variants as evidenced by the annotation on the stem property. I just didn\u0027t implement it correctly the 1st time.",
+      "parentUuid": "1e583b41_d921ae3b",
+      "revId": "e38387314ab2d73c79166f956937b651f3ec0162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

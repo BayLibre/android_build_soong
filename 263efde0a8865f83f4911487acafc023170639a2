@@ -34,6 +34,24 @@
       "parentUuid": "34114624_1883f577",
       "revId": "263efde0a8865f83f4911487acafc023170639a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2b608b3_0a9f0b2c",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-09-09T19:13:48Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "79165413_b9891e6c",
+      "revId": "263efde0a8865f83f4911487acafc023170639a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
