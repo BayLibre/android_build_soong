@@ -16,6 +16,23 @@
       "message": "I think this isn\u0027t a revert of aosp/2201375 though. It\u0027s a fix forward to add the tests to a new directory after deleting them from an old directory.",
       "revId": "8dfa46a9c21c9b7404005f24249ba83b28d4957d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c6165f4_9d7f2331",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-09T21:37:55Z",
+      "side": 1,
+      "message": "Bypassing presubs since it keeps failing on flaky tests.",
+      "revId": "8dfa46a9c21c9b7404005f24249ba83b28d4957d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
