@@ -2649,9 +2649,11 @@ func TestCcLibraryStaticDisabledForSomeArch(t *testing.T) {
 
 func TestCcLibraryStubs(t *testing.T) {
 	expectedBazelTargets := makeCcLibraryTargets("a", AttrNameToString{
-		"has_stubs": `True`,
+		"has_stubs":       `True`,
+		"export_includes": `["dir1"]`,
 	})
 	expectedBazelTargets = append(expectedBazelTargets, makeCcStubSuiteTargets("a", AttrNameToString{
+		"export_includes":   `["dir1"]`,
 		"soname":            `"a.so"`,
 		"source_library":    `":a"`,
 		"stubs_symbol_file": `"a.map.txt"`,
@@ -2660,7 +2662,39 @@ func TestCcLibraryStubs(t *testing.T) {
         "29",
         "current",
     ]`,
-	}))
+	}),
+		MakeBazelTargetNoRestrictions(
+			"cc_api_library_headers",
+			"a.systemapi.headers",
+			AttrNameToString{
+				"export_includes":        `["dir1"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			}),
+		MakeBazelTargetNoRestrictions(
+			"cc_api_library_headers",
+			"a.vendorapi.headers",
+			AttrNameToString{
+				"export_includes":        `["dir2"]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			}),
+
+		MakeBazelTargetNoRestrictions(
+			"cc_api_contribution",
+			"a.contribution",
+			AttrNameToString{
+				"api":          `"a.map.txt"`,
+				"library_name": `"a"`,
+				"api_surfaces": `[
+        "systemapi",
+        "vendorapi",
+    ]`,
+				"hdrs": `[
+        ":a.systemapi.headers",
+        ":a.vendorapi.headers",
+    ]`,
+				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+			},
+		))
 	runCcLibraryTestCase(t, Bp2buildTestCase{
 		Description:                "cc_library stubs",
 		ModuleTypeUnderTest:        "cc_library",
@@ -2671,6 +2705,8 @@ func TestCcLibraryStubs(t *testing.T) {
 cc_library {
     name: "a",
     stubs: { symbol_file: "a.map.txt", versions: ["28", "29", "current"] },
+    llndk: { symbol_file: "a.map.txt", override_export_include_dirs: ["dir2"]},
+    export_include_dirs: ["dir1"],
     bazel_module: { bp2build_available: true },
     include_build_directory: false,
 }
