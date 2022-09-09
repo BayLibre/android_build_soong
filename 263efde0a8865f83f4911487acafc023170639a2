@@ -16,6 +16,24 @@
       "message": "Colin, does this need the `android:\"arch_variant\"` annotation?",
       "revId": "263efde0a8865f83f4911487acafc023170639a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79165413_b9891e6c",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-09T18:19:55Z",
+      "side": 0,
+      "message": "`android:\"arch_variant\"` here would allow using the `for` property inside `arch` or `target` clauses to select different dependencies for different variants of the gennotice module.",
+      "parentUuid": "34114624_1883f577",
+      "revId": "263efde0a8865f83f4911487acafc023170639a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
