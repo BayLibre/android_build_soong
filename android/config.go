@@ -1759,6 +1759,10 @@ func (c *deviceConfig) BuildBrokenTrebleSyspropNeverallow() bool {
 	return c.config.productVariables.BuildBrokenTrebleSyspropNeverallow
 }
 
+func (c *deviceConfig) BuildBrokenSoongPython2Modules() bool {
+	return c.config.productVariables.BuildBrokenSoongPython2Modules
+}
+
 func (c *deviceConfig) BuildDebugfsRestrictionsEnabled() bool {
 	return c.config.productVariables.BuildDebugfsRestrictionsEnabled
 }
