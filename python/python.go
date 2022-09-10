@@ -370,6 +370,9 @@ func versionSplitMutator() func(android.BottomUpMutatorContext) {
 				versionProps = append(versionProps, base.properties.Version.Py3)
 			}
 			if proptools.BoolDefault(base.properties.Version.Py2.Enabled, false) {
+				if !mctx.DeviceConfig().BuildBrokenUsesPython2() && mctx.ModuleName() != "par_test" && mctx.ModuleName() != "py2-cmd" {
+					mctx.PropertyErrorf("version.py2.enabled", "Python 2 is no longer supported, please convert to python 3. This error can be overridden by setting BUILD_BROKEN_USES_PYTHON_2 := true")
+				}
 				versionNames = append(versionNames, pyVersion2)
 				versionProps = append(versionProps, base.properties.Version.Py2)
 			}
