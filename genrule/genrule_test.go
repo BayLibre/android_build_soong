@@ -878,7 +878,7 @@ func TestGenruleWithBazel(t *testing.T) {
 	android.AssertDeepEquals(t, "output deps", expectedOutputFiles, gen.outputDeps.Strings())
 }
 
-func TestGenruleWithGlobPaths(t *testing.T) {
+func TestGenruleAndGensrcsWithGlobPaths(t *testing.T) {
 	testcases := []struct {
 		name            string
 		bp              string
@@ -949,6 +949,19 @@ func TestGenruleWithGlobPaths(t *testing.T) {
 				`,
 			additionalFiles: android.MockFS{"a/inn$1.txt": nil},
 			expectedCmd:     "cp '__SBOX_SANDBOX_DIR__/tools/src/a/inn$1.txt' __SBOX_SANDBOX_DIR__/out/out.txt",
+		},
+		{
+			name: "gensrcs glob srcs param with filepath containing $",
+			bp: `
+				gensrcs {
+					name: "gen",
+					srcs: ["**/inn*"],
+					output_extension: "h",
+    				cmd: "cat $(in) > $(out)",
+				}
+				`,
+			additionalFiles: android.MockFS{"a/inn$1.txt": nil},
+			expectedCmd:     "bash -c 'cat a/inn\\$1.txt > __SBOX_SANDBOX_DIR__/out/a/inn\\$1.h'",
 		},
 	}
 

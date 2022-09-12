@@ -23,6 +23,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
+	"github.com/google/blueprint/proptools"
 )
 
 // bazel_paths contains methods to:
@@ -447,11 +448,11 @@ var _ genPathProvider = BazelOutPath{}
 var _ objPathProvider = BazelOutPath{}
 
 func (p BazelOutPath) genPathWithExt(ctx ModuleOutPathContext, subdir, ext string) ModuleGenPath {
-	return PathForModuleGen(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
+	return PathForModuleGen(ctx, subdir, proptools.NinjaAndShellBackEscape(pathtools.ReplaceExtension(p.path, ext)))
 }
 
 func (p BazelOutPath) objPathWithExt(ctx ModuleOutPathContext, subdir, ext string) ModuleObjPath {
-	return PathForModuleObj(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
+	return PathForModuleObj(ctx, subdir, proptools.NinjaAndShellBackEscape(pathtools.ReplaceExtension(p.path, ext)))
 }
 
 // PathForBazelOutRelative returns a BazelOutPath representing the path under an output directory dedicated to

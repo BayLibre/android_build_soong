@@ -758,15 +758,15 @@ func NewGenSrcs() *Module {
 				command, err := android.Expand(rawCommand, func(name string) (string, error) {
 					switch name {
 					case "in":
-						return in.String(), nil
+						return proptools.ShellBackEscape(in.String()), nil
 					case "out":
-						return rule.Command().PathForOutput(outFile), nil
+						return proptools.ShellBackEscape(rule.Command().PathForOutput(outFile)), nil
 					case "depfile":
 						// Generate a depfile for each output file.  Store the list for
 						// later in order to combine them all into a single depfile.
 						depFile := rule.Command().PathForOutput(outFile.ReplaceExtension(ctx, "d"))
 						commandDepFiles = append(commandDepFiles, depFile)
-						return depFile, nil
+						return proptools.ShellBackEscape(depFile), nil
 					default:
 						return "$(" + name + ")", nil
 					}

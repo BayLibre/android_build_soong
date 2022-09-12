@@ -27,6 +27,7 @@ import (
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/pathtools"
+	"github.com/google/blueprint/proptools"
 )
 
 var absSrcDir string
@@ -1432,11 +1433,11 @@ func OptionalPathForModuleSrc(ctx ModuleMissingDepsPathContext, p *string) Optio
 }
 
 func (p SourcePath) genPathWithExt(ctx ModuleOutPathContext, subdir, ext string) ModuleGenPath {
-	return PathForModuleGen(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
+	return PathForModuleGen(ctx, subdir, proptools.NinjaAndShellBackEscape(pathtools.ReplaceExtension(p.path, ext)))
 }
 
 func (p SourcePath) objPathWithExt(ctx ModuleOutPathContext, subdir, ext string) ModuleObjPath {
-	return PathForModuleObj(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
+	return PathForModuleObj(ctx, subdir, proptools.NinjaAndShellBackEscape(pathtools.ReplaceExtension(p.path, ext)))
 }
 
 func (p SourcePath) resPathWithName(ctx ModuleOutPathContext, name string) ModuleResPath {
@@ -1879,7 +1880,7 @@ func validateSafePath(pathComponents ...string) (string, error) {
 // version of each path component.
 func validatePath(pathComponents ...string) (string, error) {
 	for _, path := range pathComponents {
-		if strings.Contains(path, "$") {
+		if strings.Contains(path, "$") && !proptools.IsShellSafe(path) {
 			return "", fmt.Errorf("Path contains invalid character($): %s", path)
 		}
 	}

@@ -46,7 +46,14 @@ func expand(s string, ninjaEscape bool, mapping func(string) (string, bool, erro
 	buf := make([]byte, 0, 2*len(s))
 	i := 0
 	for j := 0; j < len(s); j++ {
-		if s[j] == '$' {
+		if s[j] == '\\' {
+			if j+1 >= len(s) {
+				return "", fmt.Errorf("expected character after '\\'")
+			}
+			for j < len(s)-1 && (s[j+1] == '$' || s[j+1] == '\\') {
+				j += 1
+			}
+		} else if s[j] == '$' {
 			if j+1 >= len(s) {
 				return "", fmt.Errorf("expected character after '$'")
 			}
