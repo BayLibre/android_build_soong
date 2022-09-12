@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe6b71d_f4385a4f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-12T18:15:22Z",
+      "side": 1,
+      "message": "nit: rather than iterating over all properties, you can cast `module.linker` to `*prebuiltLibraryLinker` and access the prebuilt properties directly (e.g. https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/prebuilt.go;l\u003d433;drc\u003d1b81da79ce8732cdd5e2900022bc6aed4041ad2b or https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d3696;drc\u003d56fc1b69027e00c8f312e8eeb9335dc00231c9b5)",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 56
+      },
+      "revId": "629d4b41f7cb0b6babc71df8a8ad85eb5eac3412",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9844bd99_f0e8d327",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-12T18:15:22Z",
+      "side": 1,
+      "message": "why are we explicitly adding true when the property is unspecified rather than specifying the default in the Bazel rule: https://bazel.build/rules/lib/attr#bool?",
+      "range": {
+        "startLine": 325,
+        "startChar": 2,
+        "endLine": 326,
+        "endChar": 32
+      },
+      "revId": "629d4b41f7cb0b6babc71df8a8ad85eb5eac3412",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

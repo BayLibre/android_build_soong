@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f822ab75_1148b909",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-12T18:15:22Z",
+      "side": 1,
+      "message": "Can we use table driven testing or two separate tests instead where we hardcode these instead? we want little to no logic in tests:\n\nhttps://testing.googleblog.com/2014/07/testing-on-toilet-dont-put-logic-in.html",
+      "parentUuid": "533f7102_51d3f640",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c893c63_6d024f0e",
         "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
         "patchSetId": 4
