@@ -195,6 +195,17 @@ func (m *genNoticeModule) OutputFiles(tag string) (Paths, error) {
 	return nil, fmt.Errorf("unrecognized tag %q", tag)
 }
 
+var _ AndroidMkEntriesProvider = (*genNoticeModule)(nil)
+
+// Implements AndroidMkEntriesProvider
+func (m *genNoticeModule) AndroidMkEntries() []AndroidMkEntries {
+	return []AndroidMkEntries{AndroidMkEntries{
+		Class:        "ETC",
+		OutputFile:   OptionalPathForPath(m.output),
+		ExtraEntries: []AndroidMkExtraEntriesFunc{},
+	}}
+}
+
 // missingReferencesRule emits an ErrorRule for missing module references.
 func missingReferencesRule(ctx BuilderContext, m *genNoticeModule) {
 	if len(m.missing) < 1 {
