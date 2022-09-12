@@ -2556,6 +2556,56 @@ cc_library {
 	)
 }
 
+func TestCcLibraryStubsAcrossConfigsDuplicatesRemoved(t *testing.T) {
+	blueprint := `
+cc_library {
+	name: "barlib",
+	stubs: { symbol_file: "bar.map.txt", versions: ["28", "29", "current"] },
+}
+cc_library {
+	name: "foolib",
+	shared_libs: ["barlib"],
+	target: {
+		android: {
+			shared_libs: ["barlib"],
+		},
+	},
+	bazel_module: { bp2build_available: true },
+}`
+	expectedBazelTargets := makeCcLibraryTargets("barlib", AttrNameToString{
+		"has_stubs":      `True`,
+		"local_includes": `["."]`,
+	})
+	expectedBazelTargets = append(expectedBazelTargets, makeCcStubSuiteTargets("barlib", AttrNameToString{
+		"soname":            `"barlib.so"`,
+		"source_library":    `":barlib"`,
+		"stubs_symbol_file": `"bar.map.txt"`,
+		"stubs_versions": `[
+        "28",
+        "29",
+        "current",
+    ]`,
+	}))
+	expectedBazelTargets = append(expectedBazelTargets, makeCcLibraryTargets("foolib", AttrNameToString{
+		"implementation_dynamic_deps": `select({
+        "//build/bazel/rules/apex:android-in_apex": [":barlib_stub_libs_current"],
+        "//conditions:default": [":barlib"],
+    })`,
+		"local_includes": `["."]`,
+	})...)
+
+	runCcLibraryTestCase(t, Bp2buildTestCase{
+		Description:                "stub target generation of the same lib across configs should not result in duplicates",
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Filesystem: map[string]string{
+			"bar.map.txt": "",
+		},
+		Blueprint:            blueprint,
+		ExpectedBazelTargets: expectedBazelTargets,
+	})
+}
+
 func TestCcLibraryEscapeLdflags(t *testing.T) {
 	runCcLibraryTestCase(t, Bp2buildTestCase{
 		ModuleTypeUnderTest:        "cc_library",
