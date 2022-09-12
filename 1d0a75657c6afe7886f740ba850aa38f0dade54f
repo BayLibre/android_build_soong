@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede6cad3_39e40830",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-12T16:55:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "76bd7f79_67b46ac1",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42806b76_b4f17323",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "UTF-8 is the string encoding Go uses, with `rune` as the element type. It\u0027s the Go equivalent of the C `char`, except that it isn\u0027t guaranteed to correspond to a particular character; just a unicode point. I do this so as to translate between True/False and true/false for Bazel v. Soong.",
       "parentUuid": "78e8cb92_b8cafe59",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "721d6306_d9e6be93",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-12T16:55:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "533f7102_51d3f640",
       "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -171,6 +207,24 @@
       "side": 1,
       "message": "Meaning the function\u0027s name should be self-explanatory?\n\nThese Factories are used e.g. in testing and https://android-review.googlesource.com/c/platform/build/soong/+/2205855/6/cc/prebuilt.go#37",
       "parentUuid": "13360c2b_59fdbba3",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "922eb127_e30aeae8",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-12T16:55:22Z",
+      "side": 1,
+      "message": "Not only is the function name pretty straightfoward, these factory functions have a a well established use case. However, now that I know it\u0027s only used in tests, you may want to mention that in the comment instead.",
+      "parentUuid": "2debe7ef_620f88fc",
       "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
