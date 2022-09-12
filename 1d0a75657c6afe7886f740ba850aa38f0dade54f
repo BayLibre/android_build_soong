@@ -179,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b70b423_09e23d5b",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-12T20:40:19Z",
+      "side": 1,
+      "message": "Yes to using `true`/`True` in one case and `false`/`False`. Table driven or separate tests, up to you.\n\nAs noted in the [other comment](https://android-review.googlesource.com/c/platform/build/soong/+/2205855/comments/9844bd99_f0e8d327), we can set the default value in the Bazel rule. In some cases in bp2build we\u0027ve omitted the default value, e.g.  https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/cc_library_conversion_test.go;l\u003d1260;drc\u003dfde57eb9d1a7fb237444274895b7cc8ec56cb5df",
+      "parentUuid": "0e93742c_7492b758",
+      "revId": "1d0a75657c6afe7886f740ba850aa38f0dade54f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c893c63_6d024f0e",
         "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
         "patchSetId": 4
