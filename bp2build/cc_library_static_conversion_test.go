@@ -1417,6 +1417,12 @@ cc_library_static {
 		system_shared_libs: [],
     include_build_directory: false,
 }
+
+cc_library_static {
+    name: "used_with_stubs",
+    shared_libs: ["libc"],
+    include_build_directory: false,
+}
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "all", AttrNameToString{}),
@@ -1425,6 +1431,7 @@ cc_library_static {
 				"system_dynamic_deps":         `[]`,
 			}),
 			MakeBazelTarget("cc_library_static", "used_in_bionic_oses", AttrNameToString{}),
+			MakeBazelTarget("cc_library_static", "used_with_stubs", AttrNameToString{}),
 		},
 	})
 }
