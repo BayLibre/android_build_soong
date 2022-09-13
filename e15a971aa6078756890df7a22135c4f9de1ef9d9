@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d260b53b_1ae9fd38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-13T17:31:41Z",
+      "side": 1,
+      "message": "Is the longer term plan to stop module authors from having to set the target_sdk_version at all and just always have it default to the latest sdk version?\n\nIf so this seems like a lot of work to achieve that? Why not just have it set in one defaults and update that during sdk finalization?",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1f97560_3132577f",
