@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee80e97_f5425101",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-13T14:47:52Z",
+      "side": 1,
+      "message": "This has already been merged so I can\u0027t update the change. All I can do is explain here.\n\nBasically, we need to do this to associate hidden API flags with the library that provides the class members to which the flags apply so that when we exclude the library from an sdk snapshot we can also exclude the associated flags.\n\nWe already do that implicitly for those flags which are generated from @UnsupportedAppUsage annotations. This extends that to cover flags which are provided outside the source.\n\nLonger term, if we could migrate these flags to use @UnsupportedAppUsage we could remove this mechanism.",
+      "parentUuid": "0143eef6_608aaf80",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "3f1ae0b55acd7e727c6227c3ab3e4f34e885e478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f6b8187_3c6bc28c",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "772bb85b_3397219a",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-13T14:47:52Z",
+      "side": 1,
+      "message": "We can also use this in java_library which is why they were added there. The jacocoagent is a java_library which has some associated hidden API packages. We need to conditionally add the library and packages when building a coverage enabled bootclasspath.\n\nAt the moment we have some special code to handle that in `bootclasspath_fragment`. This change will allow the packages to be provided in the `jacocoagent` java_library and so be easily updated if necessary when `jacocoagent` is updated.\n\nThere is a lot of logic in `java_library` and more so in `java_sdk_library` which only applies to libraries which are part of the bootclasspath.\n\nIn the Bazel world I would expect this logic to be handled in special \"java_boot_library\" and \"java_sdk_boot_library\" rules which extend the existing `java_library` and `java_sdk_library` rules.\n\nDoing that in Soong would be very hard because of the fact that so much of the code depends on knowing the exact type of the module and not just on what date it provides.",
+      "parentUuid": "4f6b8187_3c6bc28c",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 28
+      },
+      "revId": "3f1ae0b55acd7e727c6227c3ab3e4f34e885e478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "154a626b_210afaf1",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-24T15:08:29Z",
       "side": 1,
       "message": "do we need to sort/dedupe at each merge or only when creating flags?",
+      "range": {
+        "startLine": 765,
+        "startChar": 0,
+        "endLine": 768,
+        "endChar": 63
+      },
+      "revId": "3f1ae0b55acd7e727c6227c3ab3e4f34e885e478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe3af51f_307981a9",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-13T14:47:52Z",
+      "side": 1,
+      "message": "We just need to normalize the data before we use it to create Ninja rules.",
+      "parentUuid": "154a626b_210afaf1",
       "range": {
         "startLine": 765,
         "startChar": 0,
