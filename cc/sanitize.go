@@ -717,6 +717,11 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		// TODO(fmayer): remove -Wno-error once https://reviews.llvm.org/D127917 is in Android toolchain.
 		flags.Local.CFlags = append(flags.Local.CFlags, "-Wno-error=frame-larger-than")
 		flags.Local.AsFlags = append(flags.Local.AsFlags, memtagStackCommonFlags...)
+		for i, s := range flags.Local.AsFlags {
+			if s == "-fsanitize=hwaddress" {
+				flags.Local.AsFlags[i] = ""
+			}
+		}
 		flags.Local.LdFlags = append(flags.Local.LdFlags, memtagStackCommonFlags...)
 	}
 
