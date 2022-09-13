@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b991d1d9_c003e5b9",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2536,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-13T18:32:34Z",
+      "side": 1,
+      "message": "nit: can you create these directly in expected bazel targets or put the cc_library above it? it\u0027s odd seeing the expectation before arrange step",
+      "range": {
+        "startLine": 2516,
+        "startChar": 1,
+        "endLine": 2536,
+        "endChar": 7
+      },
+      "revId": "e0f3da3d51ff2d5d24803807472dc7ef8c1ff613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd96cfb_ec4ccddb",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2549,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-13T18:32:34Z",
+      "side": 1,
+      "message": "nit: do we need to test the stub conversion in this test?",
+      "range": {
+        "startLine": 2549,
+        "startChar": 0,
+        "endLine": 2549,
+        "endChar": 44
+      },
+      "revId": "e0f3da3d51ff2d5d24803807472dc7ef8c1ff613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
