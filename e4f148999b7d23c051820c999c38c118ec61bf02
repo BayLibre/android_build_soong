@@ -16,6 +16,23 @@
       "message": "I will not submit this until October 3rd, to give our team plenty of time to realize the change in usage.",
       "revId": "e4f148999b7d23c051820c999c38c118ec61bf02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19843f7a_4374dfdd",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-13T21:09:07Z",
+      "side": 1,
+      "message": "I thought this was to remain and inform the user that the flag is no longer supported instead of silently ignoring it?",
+      "revId": "e4f148999b7d23c051820c999c38c118ec61bf02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
