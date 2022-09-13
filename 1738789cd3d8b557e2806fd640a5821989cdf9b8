@@ -118,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "542c31ea_ad6cc2e8",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-13T13:23:55Z",
+      "side": 1,
+      "message": "Please remove `PrebuiltBinaryHostFactory`. As stated above, the purpose of this CL and bug are to convert the existing `cc_prebuilt_binary` via bp2build.\n\nNowhere in the requirements did we discuss adding a `cc_prebuilt_binary_host` to Soong, which this is doing. When writing a bp2build converter for an existing module type, the goal is only to convert the _existing_ module type(s), not to add additional user-facing module types to Soong.",
+      "parentUuid": "b6817890_f2bb3ab9",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 1
+      },
+      "revId": "1738789cd3d8b557e2806fd640a5821989cdf9b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bd284dd3_a1b9c0b9",
