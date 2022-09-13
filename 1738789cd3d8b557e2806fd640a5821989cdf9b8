@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "714b0a3b_36a9639c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-13T00:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19ba8488_aae1fdea",
+      "range": {
+        "startLine": 292,
+        "startChar": 5,
+        "endLine": 292,
+        "endChar": 37
+      },
+      "revId": "1738789cd3d8b557e2806fd640a5821989cdf9b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6014eccc_bbb57080",
         "filename": "cc/bp2build.go",
         "patchSetId": 7
@@ -60,6 +84,30 @@
       "writtenOn": "2022-09-12T18:15:22Z",
       "side": 1,
       "message": "Why are we adding `PrebuiltBinaryHostFactory` and `PrebuiltBinaryDeviceFactory`? \n\nThese would support two new module types (one is never registered) to Soong. This CL is only to support converting `cc_prebuilt_binary` via bp2build, we have no requirement nor desire to add these additional module types to Soong.",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 1
+      },
+      "revId": "1738789cd3d8b557e2806fd640a5821989cdf9b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6817890_f2bb3ab9",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-13T00:39:01Z",
+      "side": 1,
+      "message": "`PrebuiltBinaryHostFactory` is used in `cc_prebuilt_binary_conversion_test.go`\u0027s `runCcPrebuiltBinaryTestCaseHost`. `*DeviceFactory` is cruft which I\u0027ve removed.",
+      "parentUuid": "3897ddfa_a7113dc5",
       "range": {
         "startLine": 678,
         "startChar": 0,
@@ -106,6 +154,30 @@
       "writtenOn": "2022-09-12T18:15:22Z",
       "side": 1,
       "message": "the bug mentions `cc_prebuilt_binary` and most of our cc rules are `cc_*`, why are we using`prebuilt_binary` here instead of `cc_prebuilt_binary`?",
+      "range": {
+        "startLine": 727,
+        "startChar": 22,
+        "endLine": 727,
+        "endChar": 37
+      },
+      "revId": "1738789cd3d8b557e2806fd640a5821989cdf9b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "971c1a48_86697798",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-13T00:39:01Z",
+      "side": 1,
+      "message": "(discussed via GChat) I was going off of the convention used in `prebuilt_library_{shared,static}`(.bzl). Those are actually also mistaken, and thus will be renamed in a(n unrelated) followup CL.",
+      "parentUuid": "161ef9da_21755a60",
       "range": {
         "startLine": 727,
         "startChar": 22,

@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6545ecb2_8e594d9f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-13T00:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbe6b71d_f4385a4f",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 56
+      },
+      "revId": "629d4b41f7cb0b6babc71df8a8ad85eb5eac3412",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9844bd99_f0e8d327",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-12T18:15:22Z",
       "side": 1,
       "message": "why are we explicitly adding true when the property is unspecified rather than specifying the default in the Bazel rule: https://bazel.build/rules/lib/attr#bool?",
+      "range": {
+        "startLine": 325,
+        "startChar": 2,
+        "endLine": 326,
+        "endChar": 32
+      },
+      "revId": "629d4b41f7cb0b6babc71df8a8ad85eb5eac3412",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "389e5986_9567608b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-13T00:39:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9844bd99_f0e8d327",
       "range": {
         "startLine": 325,
         "startChar": 2,
