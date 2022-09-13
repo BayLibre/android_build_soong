@@ -16,6 +16,91 @@
       "message": "LGTM",
       "revId": "98b1767c1ecc55e618212a938adaf1ba17aed77d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a8df6b_9771a4b3",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-13T17:55:46Z",
+      "side": 1,
+      "message": "Please format, if possible. I know the formatting for expected bazel targets will be weird, but I think the bp should be possible to format normally.",
+      "revId": "98b1767c1ecc55e618212a938adaf1ba17aed77d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3be3f61_75d91f7a",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-13T17:55:46Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "98b1767c1ecc55e618212a938adaf1ba17aed77d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f1922d_5b3bcfb5",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-13T17:55:46Z",
+      "side": 1,
+      "message": "And here.",
+      "revId": "98b1767c1ecc55e618212a938adaf1ba17aed77d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6a0ff5_2a2f6b1a",
+        "filename": "cc/rs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-13T17:55:46Z",
+      "side": 1,
+      "message": "I really wish we had consistent policies on documentation in Soong. In what I would consider an ideal world, essentially everything (including this) would have some kind of formal documentation at some level. In practice, documentation in structures of this form is pretty rare in our code base and I think it might look cleaner if we kept it that way except in cases where the meaning of something is non-obvious.\n\nIf you decide to keep it, just make sure you add a \"t\" to \"Rederscrip\" :P",
+      "revId": "98b1767c1ecc55e618212a938adaf1ba17aed77d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f963bb_d4d51c92",
+        "filename": "cc/rs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-13T17:55:46Z",
+      "side": 1,
+      "message": "Instead of this comment, I would consider renaming the variable so that it\u0027s clear it references the label, rather than the sources themselves. If you do keep the comment, please remove the word module, as that is a Soong concept and not a Bazel one.",
+      "revId": "98b1767c1ecc55e618212a938adaf1ba17aed77d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
