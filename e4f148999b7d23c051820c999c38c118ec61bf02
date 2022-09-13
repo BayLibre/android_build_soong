@@ -51,6 +51,24 @@
       "parentUuid": "19843f7a_4374dfdd",
       "revId": "e4f148999b7d23c051820c999c38c118ec61bf02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e66749a9_b5baec82",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-13T21:15:05Z",
+      "side": 1,
+      "message": "ah I didn\u0027t even see that comment.\nSGTM",
+      "parentUuid": "7e0bba46_5c7cf39f",
+      "revId": "e4f148999b7d23c051820c999c38c118ec61bf02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
