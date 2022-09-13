@@ -924,9 +924,13 @@ func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversion
 		// statement can be used to choose source/stub variants of them.
 		depsWithStubs := []bazel.Label{}
 		for _, l := range sharedDeps.implementation.Includes {
-			dep, _ := ctx.ModuleFromName(l.OriginalModuleName)
-			if m, ok := dep.(*Module); ok && m.HasStubsVariants() {
-				depsWithStubs = append(depsWithStubs, l)
+			// Bazel rules automatically handle system shared libraries (including stubs), skip over them
+			// here if system_shared_libs is not set
+			if !android.InList(l.OriginalModuleName, soongSystemSharedLibs) || props.System_shared_libs != nil {
+				dep, _ := ctx.ModuleFromName(l.OriginalModuleName)
+				if m, ok := dep.(*Module); ok && m.HasStubsVariants() {
+					depsWithStubs = append(depsWithStubs, l)
+				}
 			}
 		}
 		if len(depsWithStubs) > 0 {
