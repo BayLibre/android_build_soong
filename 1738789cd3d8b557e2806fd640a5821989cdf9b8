@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a03588e8_a362b5b7",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-14T15:43:59Z",
+      "side": 1,
+      "message": "I forgot to do this cleanup. Thanks!",
+      "parentUuid": "6014eccc_bbb57080",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 2
+      },
+      "revId": "1738789cd3d8b557e2806fd640a5821989cdf9b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3897ddfa_a7113dc5",
@@ -144,6 +168,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ed462a72_c81a921c",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-14T15:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "542c31ea_ad6cc2e8",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 1
+      },
+      "revId": "1738789cd3d8b557e2806fd640a5821989cdf9b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bd284dd3_a1b9c0b9",
         "filename": "cc/prebuilt.go",
         "patchSetId": 7
@@ -202,6 +250,30 @@
       "side": 1,
       "message": "(discussed via GChat) I was going off of the convention used in `prebuilt_library_{shared,static}`(.bzl). Those are actually also mistaken, and thus will be renamed in a(n unrelated) followup CL.",
       "parentUuid": "161ef9da_21755a60",
+      "range": {
+        "startLine": 727,
+        "startChar": 22,
+        "endLine": 727,
+        "endChar": 37
+      },
+      "revId": "1738789cd3d8b557e2806fd640a5821989cdf9b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8292d1_192875b1",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-14T15:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "971c1a48_86697798",
       "range": {
         "startLine": 727,
         "startChar": 22,
