@@ -52,11 +52,6 @@ def Main():
     # Add runfiles path to PYTHONPATH.
     python_path_entries = [runfiles_path]
 
-    # Add top dirs within runfiles path to PYTHONPATH.
-    top_entries = [os.path.join(runfiles_path, i) for i in os.listdir(runfiles_path)]
-    top_pkg_dirs = [i for i in top_entries if os.path.isdir(i)]
-    python_path_entries += top_pkg_dirs
-
     old_python_path = os.environ.get(PYTHON_PATH)
     separator = ':'
     new_python_path = separator.join(python_path_entries)
