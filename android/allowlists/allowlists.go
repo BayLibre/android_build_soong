@@ -288,6 +288,8 @@ var (
 		"tools/apksig": Bp2BuildDefaultTrue,
 		"tools/platform-compat/java/android/compat":  Bp2BuildDefaultTrueRecursively,
 		"tools/tradefederation/prebuilts/filegroups": Bp2BuildDefaultTrueRecursively,
+
+		"packages/modules/adb/fastdeploy": Bp2BuildDefaultTrueRecursively,
 	}
 
 	Bp2buildKeepExistingBuildFile = map[string]bool{
@@ -487,6 +489,17 @@ var (
 
 		//frameworks/native/cmds/cmd
 		"libcmd",
+
+		//frameworks/base/libs/androidfw
+		"libandroidfw",
+
+		//system/incremental_delivery/incfs
+		"libincfs-utils",
+
+		//packages/modules/adb/fastdeploy
+		// "libfastdeploy_host",
+		// "deployagent_lib",
+		// "deployagent",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
@@ -565,13 +578,12 @@ var (
 		"libtombstoned_client_rust_bridge_code", "libtombstoned_client_wrapper", // rust conversions are not supported
 
 		// unconverted deps
-		"CarHTMLViewer",                                              // depends on unconverted modules android.car-stubs, car-ui-lib
-		"adb",                                                        // depends on unconverted modules: AdbWinApi, libandroidfw, libopenscreen-discovery, libopenscreen-platform-impl, libusb, bin2c_fastdeployagent, AdbWinUsbApi
+		"CarHTMLViewer", // depends on unconverted modules android.car-stubs, car-ui-lib
+		// "adb",                                                        // depends on unconverted modules: AdbWinApi, libandroidfw, libopenscreen-discovery, libopenscreen-platform-impl, libusb, bin2c_fastdeployagent, AdbWinUsbApi
 		"android_icu4j_srcgen",                                       // depends on unconverted modules: currysrc
 		"android_icu4j_srcgen_binary",                                // depends on unconverted modules: android_icu4j_srcgen, currysrc
 		"apex_manifest_proto_java",                                   // b/210751803, depends on libprotobuf-java-full
 		"art-script",                                                 // depends on unconverted modules: dalvikvm, dex2oat
-		"bin2c_fastdeployagent",                                      // depends on unconverted modules: deployagent
 		"com.android.runtime",                                        // depends on unconverted modules: bionic-linker-config, linkerconfig
 		"currysrc",                                                   // depends on unconverted modules: currysrc_org.eclipse, guavalib, jopt-simple-4.9
 		"dex2oat-script",                                             // depends on unconverted modules: dex2oat
@@ -591,7 +603,6 @@ var (
 		"libdebuggerd_handler",                                       // depends on unconverted module libdebuggerd_handler_core
 		"libdebuggerd_handler_core", "libdebuggerd_handler_fallback", // depends on unconverted module libdebuggerd
 		"libdexfiled",                                             // depends on unconverted modules: dexfile_operator_srcs, libartbased, libartpalette
-		"libfastdeploy_host",                                      // depends on unconverted modules: libandroidfw, libusb, AdbWinApi
 		"libgmock_main_ndk",                                       // depends on unconverted modules: libgtest_ndk_c++
 		"libgmock_ndk",                                            // depends on unconverted modules: libgtest_ndk_c++
 		"libnativehelper_lazy_mts_jni", "libnativehelper_mts_jni", // depends on unconverted modules: libnativetesthelper_jni, libgmock_ndk
