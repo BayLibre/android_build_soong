@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc845e9b_0f68e6ad",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-14T18:43:50Z",
+      "side": 1,
+      "message": "Soong shouldn\u0027t be faking blueprint errors, can you make this something like \"licenses property not supported on gen_notice modules\".  Also use `ctx.PropertyErrorf` to give a useful line number in the error.",
+      "revId": "0adfa9d70c42fa8151e7b42c61dc13289ed13ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53db09aa_f40600ca",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-14T18:43:50Z",
+      "side": 1,
+      "message": "Leave this out if you don\u0027t need it.",
+      "revId": "0adfa9d70c42fa8151e7b42c61dc13289ed13ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
