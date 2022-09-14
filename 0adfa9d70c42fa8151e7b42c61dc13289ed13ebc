@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f47826c_90773321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-09-14T21:22:18Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "0adfa9d70c42fa8151e7b42c61dc13289ed13ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc845e9b_0f68e6ad",
@@ -18,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d9d647c_0eb26d4c",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-09-14T21:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc845e9b_0f68e6ad",
+      "revId": "0adfa9d70c42fa8151e7b42c61dc13289ed13ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53db09aa_f40600ca",
@@ -31,6 +66,24 @@
       "writtenOn": "2022-09-14T18:43:50Z",
       "side": 1,
       "message": "Leave this out if you don\u0027t need it.",
+      "revId": "0adfa9d70c42fa8151e7b42c61dc13289ed13ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5173f6f_69f83915",
+        "filename": "android/gen_notice.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-09-14T21:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53db09aa_f40600ca",
       "revId": "0adfa9d70c42fa8151e7b42c61dc13289ed13ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
