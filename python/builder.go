@@ -44,13 +44,13 @@ var (
 
 	hostPar = pctx.AndroidStaticRule("hostPar",
 		blueprint.RuleParams{
-			Command: `sed -e 's/%interpreter%/$interp/g' -e 's/%main%/$main/g' $template > $stub && ` +
+			Command: `sed 's/ENTRY_POINT/$main/' build/soong/python/scripts/main.py >$out.main &&` +
 				`echo "#!/usr/bin/env $interp" >${out}.prefix &&` +
-				`$mergeParCmd -p --prefix ${out}.prefix -pm $stub $out $srcsZips && ` +
-				`chmod +x $out && (rm -f $stub; rm -f ${out}.prefix)`,
+				`$mergeParCmd -p --prefix ${out}.prefix -pm $out.main $out $srcsZips && ` +
+				`chmod +x $out && (rm -f $out.main; rm -f ${out}.prefix)`,
 			CommandDeps: []string{"$mergeParCmd"},
 		},
-		"interp", "main", "template", "stub", "srcsZips")
+		"interp", "main", "srcsZips")
 
 	embeddedPar = pctx.AndroidStaticRule("embeddedPar",
 		blueprint.RuleParams{
@@ -90,13 +90,6 @@ func registerBuildActionForParFile(ctx android.ModuleContext, embeddedLauncher b
 	implicits := srcsZips
 
 	if !embeddedLauncher {
-		// the path of stub_template_host.txt from source tree.
-		template := android.PathForSource(ctx, StubTemplateHost)
-		implicits = append(implicits, template)
-
-		// intermediate output path for __main__.py
-		stub := android.PathForModuleOut(ctx, mainFileName).String()
-
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        hostPar,
 			Description: "host python archive",
@@ -104,9 +97,7 @@ func registerBuildActionForParFile(ctx android.ModuleContext, embeddedLauncher b
 			Implicits:   implicits,
 			Args: map[string]string{
 				"interp":   strings.Replace(interpreter, "/", `\/`, -1),
-				"main":     strings.Replace(main, "/", `\/`, -1),
-				"template": template.String(),
-				"stub":     stub,
+				"main":     strings.Replace(strings.TrimSuffix(main, pyExt), "/", ".", -1),
 				"srcsZips": strings.Join(srcsZips.Strings(), " "),
 			},
 		})

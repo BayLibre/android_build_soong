@@ -128,10 +128,6 @@ type IntermPathProvider interface {
 	IntermPathForModuleOut() android.OptionalPath
 }
 
-var (
-	StubTemplateHost = "build/soong/python/scripts/stub_template_host.txt"
-)
-
 func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 	module := newModule(hod, android.MultilibFirst)
 	decorator := &binaryDecorator{pythonInstaller: NewPythonInstaller("bin", "")}
