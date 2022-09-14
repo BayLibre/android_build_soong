@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08221057_d0677ae1",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-14T19:55:44Z",
+      "side": 1,
+      "message": "Acked. This isn\u0027t a big deal so I am ok with either of the approaches as well.",
+      "parentUuid": "77daefb2_2255be15",
+      "revId": "26caa054ab0d430639a9e070e6a2b29e9b454fde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3720b29a_f56d2df7",
