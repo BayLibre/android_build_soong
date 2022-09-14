@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5356308e_c3075317",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-14T18:31:16Z",
+      "side": 1,
+      "message": "Overall, LGTM! ",
+      "revId": "26caa054ab0d430639a9e070e6a2b29e9b454fde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f777b9_f9fc008c",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-14T18:31:16Z",
+      "side": 1,
+      "message": "Is there any benefit with coupling these all into the same interface?\n\nIMO, I think it reads better if we have two separate interfaces\n\n```\ntype FileGroupAsAidlLibrary interface {\n  ShouldConvertToAidlLibrary(ctx BazelConversionPathContext) bool\n  GetAidlLibraryLabel(ctx BazelConversionPathContext) string\n}\ntype FileGroupAsAidlLibrary interface {\n  ShouldConvertToProtoLibrary(ctx BazelConversionPathContext) bool  \n  GetProtoLibraryLabel(ctx BazelConversionPathContext) string\n}\n```\n\nbecause: \n\n1. I don\u0027t see any shareability with the coupling\n2. Library is an term that means more than just proto and aidl.\n\nWDYT?",
+      "revId": "26caa054ab0d430639a9e070e6a2b29e9b454fde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3720b29a_f56d2df7",
+        "filename": "android/filegroup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-14T18:31:16Z",
+      "side": 1,
+      "message": "The bug doesn\u0027t seem to be related with the written context. Do we have a different bug for this?\n\nDid you mean to include b/242847534?",
+      "range": {
+        "startLine": 134,
+        "startChar": 10,
+        "endLine": 134,
+        "endChar": 21
+      },
+      "revId": "26caa054ab0d430639a9e070e6a2b29e9b454fde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f10c870_3574fbc1",
+        "filename": "android/filegroup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-14T18:31:16Z",
+      "side": 1,
+      "message": "Nit: Should we rename the func name to `GetFileGroupAsLibrary()`?",
+      "range": {
+        "startLine": 306,
+        "startChar": 5,
+        "endLine": 306,
+        "endChar": 25
+      },
+      "revId": "26caa054ab0d430639a9e070e6a2b29e9b454fde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb10f31b_2b5d9fb0",
+        "filename": "android/proto.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-14T18:31:16Z",
+      "side": 1,
+      "message": "If we were split `FileGroupAsLibrary` into two interfaces as suggested above, this will be as\n\n```\nif fg, ok :\u003d GetFileGroupAsProtoLibrary(ctx, src); ok \u0026\u0026\n```",
+      "range": {
+        "startLine": 190,
+        "startChar": 15,
+        "endLine": 190,
+        "endChar": 35
+      },
+      "revId": "26caa054ab0d430639a9e070e6a2b29e9b454fde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
