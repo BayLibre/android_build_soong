@@ -33,6 +33,24 @@
       "message": "Try codenames in bp files as well? targetSdkVersion: \"Tiramisu\" / \"S\" / \"UpsideDownCake\" are supported values as well.",
       "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "271d39c3_07f0e517",
+        "filename": "java/app_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-14T10:48:08Z",
+      "side": 1,
+      "message": "Added a test with \"Tiramisu\" in BP. Let me know if I should I should others as well.\nSecond last test here with name: `\"[SDK finalised] Updatable Module: Android.bp has targetSdkVersion as platform sdk codename\"`",
+      "parentUuid": "d1f97560_3132577f",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
