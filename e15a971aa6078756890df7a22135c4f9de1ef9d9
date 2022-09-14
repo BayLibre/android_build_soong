@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fad52c87_5f573286",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-14T11:52:16Z",
+      "side": 1,
+      "message": "`Is the longer term plan to stop module authors from having to set the target_sdk_version at all and just always have it default to the latest sdk version?` Yes.\n\nWe want to have different target_sdk_version in aosp/master (10000) and other development branches like tm-mainline-prod to have 33, also want them to give flexibility to update it to versions while testing locally. So this change would pick the target_sdk_version from the default one already present in the soong. In my view creating another copy of default would require additional overhead for us to update it during every sdk finalisation.",
+      "parentUuid": "d260b53b_1ae9fd38",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1f97560_3132577f",
         "filename": "java/app_test.go",
         "patchSetId": 15
