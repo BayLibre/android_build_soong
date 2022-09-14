@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2200e4c9_57f6abbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2022-09-14T21:50:10Z",
+      "side": 1,
+      "message": "This is terrible. I wonder if we can revisit the boringssl hack instead. I don\u0027t remember the original problem well, but maybe the fips check can be skipped in hwasan builds, or a hwasan version of the check (which is afaik just a \"golden\" binary?) can be added.",
+      "revId": "7eb9c0537fd8c930cffb85f31cfbb76a158f79c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
