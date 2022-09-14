@@ -60,6 +60,11 @@ const (
 	RunKati      = "kati"
 	RunBazel     = "bazel"
 
+	// Update api.txt files
+	// This phase should be relatively fast since it just copies generated .txt files to the source tree
+	// The generation of the .txt files is done by ninja and is profiled in `PrimaryNinja`
+	RunUpdateApi
+
 	// Overall build from building the graph to building the target.
 	Total = "total"
 )

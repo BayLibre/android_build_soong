@@ -17,6 +17,7 @@ package java
 import (
 	"fmt"
 	"io"
+	"sync"
 
 	"android/soong/android"
 )
@@ -535,6 +536,8 @@ func (ddoc *Droiddoc) AndroidMkEntries() []android.AndroidMkEntries {
 	}}
 }
 
+var topLevelUpdateApiOnce sync.Once
+
 func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 	// If the stubsSrcJar is not generated (because generate_stubs is false) then
 	// use the api file as the output file to ensure the relevant phony targets
@@ -594,14 +597,21 @@ func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 					fmt.Fprintln(w, ".PHONY: droidcore")
 					fmt.Fprintln(w, "droidcore: checkapi")
 				}
-				if dstubs.updateCurrentApiTimestamp != nil {
-					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-update-current-api")
-					fmt.Fprintln(w, dstubs.Name()+"-update-current-api:",
-						dstubs.updateCurrentApiTimestamp.String())
+				if dstubs.updateApiScript != nil {
+					fmt.Fprintln(w, ".PHONY:", dstubs.updateApiPhonyTarget())
+					fmt.Fprintln(w, dstubs.updateApiPhonyTarget()+":",
+						dstubs.updateApiScript.String())
 
-					fmt.Fprintln(w, ".PHONY: update-api")
-					fmt.Fprintln(w, "update-api:",
-						dstubs.updateCurrentApiTimestamp.String())
+					// out/soong/updateapi/update-api is the concatentation of the individual update api scripts of the various java_sdk_libraries
+					fmt.Fprintln(w, dstubs.topLevelUpdateApiScript.String()+":",
+						dstubs.updateApiScript.String())
+
+					// Create a one-time recipe to concatenate the individual update api scripts to the top-level out/soong/updateapi/update-api script
+					topLevelUpdateApiOnce.Do(func() {
+						fmt.Fprintln(w, dstubs.topLevelUpdateApiScript, ": ; cat $(sort $^)> $@ && chmod +x $@")
+						fmt.Fprintln(w, ".PHONY: update-api")
+						fmt.Fprintln(w, "update-api:", dstubs.topLevelUpdateApiScript)
+					})
 				}
 				if dstubs.checkLastReleasedApiTimestamp != nil {
 					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-check-last-released-api")
