@@ -157,24 +157,27 @@ var (
 		"external/zopfli":                        Bp2BuildDefaultTrueRecursively,
 		"external/zstd":                          Bp2BuildDefaultTrueRecursively,
 
-		"frameworks/av":                                      Bp2BuildDefaultTrue,
-		"frameworks/av/media/codecs":                         Bp2BuildDefaultTrueRecursively,
-		"frameworks/av/media/liberror":                       Bp2BuildDefaultTrueRecursively,
-		"frameworks/av/services/minijail":                    Bp2BuildDefaultTrueRecursively,
-		"frameworks/base/media/tests/MediaDump":              Bp2BuildDefaultTrue,
-		"frameworks/base/services/tests/servicestests/aidl":  Bp2BuildDefaultTrue,
-		"frameworks/base/startop/apps/test":                  Bp2BuildDefaultTrue,
-		"frameworks/base/tests/appwidgets/AppWidgetHostTest": Bp2BuildDefaultTrueRecursively,
-		"frameworks/native/libs/adbd_auth":                   Bp2BuildDefaultTrueRecursively,
-		"frameworks/native/libs/arect":                       Bp2BuildDefaultTrueRecursively,
-		"frameworks/native/libs/math":                        Bp2BuildDefaultTrueRecursively,
-		"frameworks/native/libs/nativebase":                  Bp2BuildDefaultTrueRecursively,
-		"frameworks/native/opengl/tests/gl2_cameraeye":       Bp2BuildDefaultTrue,
-		"frameworks/native/opengl/tests/gl2_java":            Bp2BuildDefaultTrue,
-		"frameworks/native/opengl/tests/testLatency":         Bp2BuildDefaultTrue,
-		"frameworks/native/opengl/tests/testPauseResume":     Bp2BuildDefaultTrue,
-		"frameworks/native/opengl/tests/testViewport":        Bp2BuildDefaultTrue,
-		"frameworks/proto_logging/stats/stats_log_api_gen":   Bp2BuildDefaultTrueRecursively,
+		"frameworks/av":                                                   Bp2BuildDefaultTrue,
+		"frameworks/av/media/codecs":                                      Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/liberror":                                    Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/services/minijail":                                 Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/core/java":                                       Bp2BuildDefaultTrue,
+		"frameworks/base/media/tests/MediaDump":                           Bp2BuildDefaultTrue,
+		"frameworks/base/services/tests/servicestests/aidl":               Bp2BuildDefaultTrue,
+		"frameworks/base/startop/apps/test":                               Bp2BuildDefaultTrue,
+		"frameworks/base/tests/appwidgets/AppWidgetHostTest":              Bp2BuildDefaultTrueRecursively,
+		"frameworks/libs/modules-utils/java/com/android/internal/logging": Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/libs/adbd_auth":                                Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/libs/arect":                                    Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/libs/binder":                                   Bp2BuildDefaultTrue,
+		"frameworks/native/libs/math":                                     Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/libs/nativebase":                               Bp2BuildDefaultTrueRecursively,
+		"frameworks/native/opengl/tests/gl2_cameraeye":                    Bp2BuildDefaultTrue,
+		"frameworks/native/opengl/tests/gl2_java":                         Bp2BuildDefaultTrue,
+		"frameworks/native/opengl/tests/testLatency":                      Bp2BuildDefaultTrue,
+		"frameworks/native/opengl/tests/testPauseResume":                  Bp2BuildDefaultTrue,
+		"frameworks/native/opengl/tests/testViewport":                     Bp2BuildDefaultTrue,
+		"frameworks/proto_logging/stats/stats_log_api_gen":                Bp2BuildDefaultTrueRecursively,
 
 		"hardware/interfaces":                          Bp2BuildDefaultTrue,
 		"hardware/interfaces/common/aidl":              Bp2BuildDefaultTrue,
@@ -348,10 +351,6 @@ var (
 		"libandroid_runtime_lazy",
 		"libandroid_runtime_vm_headers",
 		"libaudioclient_aidl_conversion_util",
-		"libbinder",
-		"libbinder_device_interface_sources",
-		"libbinder_aidl",
-		"libbinder_headers",
 		"libbinder_headers_platform_shared",
 		"libbinderthreadstateutils",
 		"libbluetooth-types-header",
@@ -409,6 +408,7 @@ var (
 		"media_plugin_headers",
 		"mediaswcodec.policy",
 		"mediaswcodec.xml",
+		"modules-utils-preconditions-srcs",
 		"neuralnetworks_types",
 		"neuralnetworks_utils_hal_aidl",
 		"neuralnetworks_utils_hal_common",
@@ -482,9 +482,9 @@ var (
 		"libusb",
 
 		// needed by liblogd
-		"ILogcatManagerService_aidl",
-		"libincremental_aidl-cpp",
-		"incremental_aidl",
+		// "ILogcatManagerService_aidl",
+		// "libincremental_aidl-cpp",
+		// "incremental_aidl",
 
 		//frameworks/native/cmds/cmd
 		"libcmd",
@@ -605,6 +605,7 @@ var (
 		"robolectric-sqlite4java-0.282",             // depends on unconverted modules: robolectric-sqlite4java-import, robolectric-sqlite4java-native
 		"static_crasher",                            // depends on unconverted modules: libdebuggerd_handler
 		"stats-log-api-gen",                         // depends on unconverted modules: libstats_proto_host
+		"statslog-framework-java-gen",               // depends on unconverted modules: stats-log-api-gen
 		"statslog.cpp", "statslog.h", "statslog.rs", // depends on unconverted modules: stats-log-api-gen
 		"statslog_art.cpp", "statslog_art.h", "statslog_header.rs", // depends on unconverted modules: stats-log-api-gen
 		"test_fips",           // depends on unconverted modules: adb
