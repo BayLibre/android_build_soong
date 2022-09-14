@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -93,6 +94,7 @@ type BpfProperties struct {
 
 type bpf struct {
 	android.ModuleBase
+	android.BazelModuleBase
 
 	properties BpfProperties
 
@@ -260,5 +262,38 @@ func BpfFactory() android.Module {
 	module.AddProperties(&module.properties)
 
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitBazelModule(module)
 	return module
+}
+
+type bazelBpfAttributes struct {
+	Srcs         bazel.LabelListAttribute
+	Cflags       bazel.StringListAttribute
+	Include_dirs bazel.StringListAttribute
+	Btf          *bool
+}
+
+// bpf bp2build converter
+func (b *bpf) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	if ctx.ModuleType() != "bpf" {
+		return
+	}
+
+	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, b.properties.Srcs))
+	cflags := bazel.MakeStringListAttribute(b.properties.Cflags)
+	include_dirs := bazel.MakeStringListAttribute(b.properties.Include_dirs)
+	btf := b.properties.Btf
+
+	attrs := bazelBpfAttributes{
+		Srcs:         srcs,
+		Cflags:       cflags,
+		Include_dirs: include_dirs,
+		Btf:          btf,
+	}
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "bpf",
+		Bzl_load_location: "//build/bazel/rules/bpf:bpf.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: b.Name()}, &attrs)
 }
