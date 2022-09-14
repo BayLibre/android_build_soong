@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58e5df63_3dc1b49c",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-14T21:55:07Z",
+      "side": 1,
+      "message": "If this is not likeable, I have aosp/2216875 to remove it.",
+      "revId": "51cf9a600c0c822b5ce99dbf3b86b8a2db4a26d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
