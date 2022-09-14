@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ecad74a_a4a99aaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-14T00:48:32Z",
+      "side": 1,
+      "message": "Good point, I added a line saying that this needs to be converted to cc_stub_suite as well once we start building other API domains like vendor to Bazel",
+      "parentUuid": "143bcf06_5519978c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "883987da7624c4fa5f992d60f4fe3b16031dd7dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9992253_e3a0c9d6",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8981c92_5c2d7bda",
+        "filename": "android/api_domain.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-14T00:48:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9992253_e3a0c9d6",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "883987da7624c4fa5f992d60f4fe3b16031dd7dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c726eff_36805357",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-13T19:01:11Z",
       "side": 1,
       "message": "do we not need any of the other properties at this time?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "883987da7624c4fa5f992d60f4fe3b16031dd7dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c0a051_9e1ddbfa",
+        "filename": "bp2build/ndk_library_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-14T00:48:32Z",
+      "side": 1,
+      "message": "Not at the moment. `first_version` property will need to be used at some point to bootstrap the old finalized SDK snapshots compatible with Multi-tree, but there is no formal proposal for that yet",
+      "parentUuid": "2c726eff_36805357",
       "range": {
         "startLine": 52,
         "startChar": 1,
