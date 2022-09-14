@@ -18,6 +18,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"sync"
 	"text/template"
 
@@ -351,11 +352,47 @@ func Build(ctx Context, config Config) {
 		}
 
 		runNinjaForBuild(ctx, config)
+		runUpdateApiIfNecessary(ctx, config)
+
 	}
 
 	// Currently, using Bazel requires Kati and Soong to run first, so check whether to run Bazel last.
 	if what&RunBazel != 0 {
 		runBazel(ctx, config)
+	}
+}
+
+// This function relies on a naming convention for the generated update api scripts
+// The two components of the naming convention are
+// 1. The output directory of the generated scripts (out/soong/updateapi)
+//   - This is defined in build/soong/java/droidstubs.go#updateApiScript
+//
+// 2. The name of the generated script
+//   - Currently it is the same as the phony target name
+//   - This is also defined in build/soong/java/droidstubs.go#updateApiScript
+func updateApiScripts(config Config) []string {
+	isUpdateApiTarget := func(ninjaArg string) bool {
+		return ninjaArg == "update-api" ||
+			strings.HasSuffix(ninjaArg, "-update-current-api")
+	}
+	ret := make([]string, 0)
+	for _, ninjaArg := range config.NinjaArgs() {
+		if isUpdateApiTarget(ninjaArg) {
+			updateApiScript := filepath.Join(config.SoongOutDir(), "updateapi", ninjaArg)
+			ret = append(ret, updateApiScript)
+		}
+	}
+	return ret
+}
+
+// If the requested ninja target on the command line belongs to the updateapi family, run an additional script to update the API.txt files in the source tree
+func runUpdateApiIfNecessary(ctx Context, config Config) {
+	ctx.BeginTrace(metrics.RunUpdateApi, "updateapi")
+	defer ctx.EndTrace()
+
+	for _, s := range updateApiScripts(config) {
+		cmd := Command(ctx, config, "updateapi", s)
+		cmd.RunAndStreamOrFatal()
 	}
 }
 

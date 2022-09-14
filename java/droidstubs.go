@@ -20,6 +20,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -53,8 +54,16 @@ type Droidstubs struct {
 	removedApiFile          android.Path
 	nullabilityWarningsFile android.WritablePath
 
-	checkCurrentApiTimestamp      android.WritablePath
-	updateCurrentApiTimestamp     android.WritablePath
+	checkCurrentApiTimestamp android.WritablePath
+	// The update-api script corresponding to this local droidstubs module
+	// The path will be of the form out/soong/updateapi/<name>-update-current-api
+	// The script will contain cp commands to update the api file of this Droidstub module
+	updateApiScript android.WritablePath
+
+	// The top-level script corresponding to the update-api phony target
+	// This top-level script has a dependency on the updateApiScripts of the individual java_sdk_library(s)
+	topLevelUpdateApiScript android.WritablePath
+
 	checkLastReleasedApiTimestamp android.WritablePath
 	apiLintTimestamp              android.WritablePath
 	apiLintReport                 android.WritablePath
@@ -528,6 +537,41 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 	return cmd
 }
 
+var (
+	_ = pctx.SourcePathVariable("genUpdateApiScript", "build/soong/scripts/gen-update-api-script.sh")
+
+	genUpdateApiScriptRule = pctx.AndroidStaticRule("genUpdateApiScriptRule",
+		blueprint.RuleParams{
+			Command: "$genUpdateApiScript " +
+				"--current_api_gen ${current_api_gen} " +
+				"--current_api_src ${current_api_src} " +
+				"--removed_api_gen ${removed_api_gen} " +
+				"--removed_api_src ${removed_api_src} " +
+				"--out ${out}",
+			CommandDeps: []string{"$genUpdateApiScript"},
+		},
+		"current_api_gen",
+		"current_api_src",
+		"removed_api_gen",
+		"removed_api_src")
+)
+
+// Create a well-known path inside out/soong for the various generated update API scripts
+// The name of the phony target will be used as the unique identifier
+// Examples:
+// out/soong/updateapi/update-api
+// out/soong/updateapi/<foo_java_sdk_library>-update-current-api
+//
+// This naming convention will be used by a subsequent soong_ui cmd to find which scripts to run
+// WARNING: Updating this might require an update in build/soong/ui/build/build.go#updateApiScripts as well
+func updateApiScript(ctx android.ModuleContext, phonyTarget string) android.WritablePath {
+	return android.PathForOutput(ctx, "updateapi", phonyTarget)
+}
+
+func (d *Droidstubs) updateApiPhonyTarget() string {
+	return d.Name() + "-update-current-api"
+}
+
 func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	deps := d.Javadoc.collectDeps(ctx)
 
@@ -769,31 +813,28 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 		rule.Build("metalavaCurrentApiCheck", "check current API")
 
-		d.updateCurrentApiTimestamp = android.PathForModuleOut(ctx, "metalava", "update_current_api.timestamp")
+		d.updateApiScript = updateApiScript(ctx, d.updateApiPhonyTarget())
+		d.topLevelUpdateApiScript = updateApiScript(ctx, "update-api")
 
 		// update API rule
-		rule = android.NewRuleBuilder(pctx, ctx)
-
-		rule.Command().Text("( true")
-
-		rule.Command().
-			Text("cp").Flag("-f").
-			Input(d.apiFile).Flag(apiFile.String())
-
-		rule.Command().
-			Text("cp").Flag("-f").
-			Input(d.removedApiFile).Flag(removedApiFile.String())
-
-		msg = "failed to update public API"
-
-		rule.Command().
-			Text("touch").Output(d.updateCurrentApiTimestamp).
-			Text(") || (").
-			Text("echo").Flag("-e").Flag(`"` + msg + `"`).
-			Text("; exit 38").
-			Text(")")
-
-		rule.Build("metalavaCurrentApiUpdate", "update current API")
+		// output is a script that can be run from outside the build to update the .txt files in the source tree
+		ctx.Build(pctx, android.BuildParams{
+			Rule: genUpdateApiScriptRule,
+			Inputs: []android.Path{
+				d.apiFile,
+				apiFile,
+				d.removedApiFile,
+				removedApiFile,
+			},
+			Output: d.updateApiScript,
+			Args: map[string]string{
+				"current_api_gen": d.apiFile.String(),
+				"current_api_src": apiFile.String(),
+				"removed_api_gen": d.removedApiFile.String(),
+				"removed_api_src": removedApiFile.String(),
+			},
+			Description: "Generate update API script",
+		})
 	}
 
 	if String(d.properties.Check_nullability_warnings) != "" {
