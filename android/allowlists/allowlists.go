@@ -671,7 +671,6 @@ var (
 		"debuggerd_test", // depends on unconverted modules: libdebuggerd
 		"elftls_dlopen_ie_error_helper",
 		"exec_linker_helper",
-		"fastdeploy_test", // depends on unconverted modules: AdbWinApi, libadb_host, libandroidfw, libfastdeploy_host, libopenscreen-discovery, libopenscreen-platform-impl, libusb
 		"fdtrack_test",
 		"google-benchmark-test",
 		"googletest-param-test-test_ndk", // depends on unconverted modules: libgtest_ndk_c++
