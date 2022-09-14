@@ -18,6 +18,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"sync"
 	"text/template"
 
@@ -351,11 +352,39 @@ func Build(ctx Context, config Config) {
 		}
 
 		runNinjaForBuild(ctx, config)
+		runUpdateApiIfNecessary(ctx, config)
+
 	}
 
 	// Currently, using Bazel requires Kati and Soong to run first, so check whether to run Bazel last.
 	if what&RunBazel != 0 {
 		runBazel(ctx, config)
+	}
+}
+
+func updateApiScripts(config Config) []string {
+	isUpdateApiTarget := func(ninjaArg string) bool {
+		return ninjaArg == "update-api" ||
+			strings.HasSuffix(ninjaArg, "-update-current-api")
+	}
+	ret := make([]string, 0)
+	for _, ninjaArg := range config.NinjaArgs() {
+		if isUpdateApiTarget(ninjaArg) {
+			updateApiScript := filepath.Join(config.SoongOutDir(), "updateapi", ninjaArg)
+			ret = append(ret, updateApiScript)
+		}
+	}
+	return ret
+}
+
+// If the requested ninja target on the command line belongs to the updateapi family, run an additional script to update the API.txt files in the source tree
+func runUpdateApiIfNecessary(ctx Context, config Config) {
+	ctx.BeginTrace(metrics.RunUpdateApi, "updateapi")
+	defer ctx.EndTrace()
+
+	for _, s := range updateApiScripts(config) {
+		cmd := Command(ctx, config, "updateapi", s)
+		cmd.RunAndStreamOrFatal()
 	}
 }
 
