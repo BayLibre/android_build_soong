@@ -498,6 +498,7 @@ var (
 		"java_import_host",
 		"sysprop_library",
 		"aidl_interface_headers",
+		"bpf",
 	}
 
 	Bp2buildModuleDoNotConvertList = []string{
