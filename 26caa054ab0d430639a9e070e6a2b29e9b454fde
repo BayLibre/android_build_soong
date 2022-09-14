@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77daefb2_2255be15",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-09-14T19:22:38Z",
+      "side": 1,
+      "message": "there are a couple places where this can benefit, for example, in bp2build at line 85, it only needs to convert once. The ToFileGroupAsLibrary logic is very similar for aidl and proto, if splitted there will be some dups. Originally I had more code to shared between those two, for example, I had only GetLibraryLabel instead of the current GetAidlLibraryLabel and GetProtoLibraryLabel, this was changed because I realized I need to add convertedProtoLibrarySuffix for proto. I am not strong favor one over the other now though.",
+      "parentUuid": "d7f777b9_f9fc008c",
+      "revId": "26caa054ab0d430639a9e070e6a2b29e9b454fde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3720b29a_f56d2df7",
         "filename": "android/filegroup.go",
         "patchSetId": 5
