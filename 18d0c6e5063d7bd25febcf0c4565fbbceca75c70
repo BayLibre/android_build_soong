@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e34710_de03e46e",
+        "filename": "android/api_domain.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-14T00:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a104d0c_fcfab784",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "18d0c6e5063d7bd25febcf0c4565fbbceca75c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46ea88c8_9c13e44e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-13T18:55:43Z",
       "side": 1,
       "message": "can you add a comment about why we\u0027re using far variation dependencies?",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 67
+      },
+      "revId": "18d0c6e5063d7bd25febcf0c4565fbbceca75c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e5fec49_41db4fb7",
+        "filename": "android/api_domain.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-14T00:49:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46ea88c8_9c13e44e",
       "range": {
         "startLine": 52,
         "startChar": 2,
