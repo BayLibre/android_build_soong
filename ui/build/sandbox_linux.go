@@ -101,7 +101,7 @@ func (c *Cmd) sandboxSupported() bool {
 			// srcDir is /tmp/.* in integration tests, which is a child dir of /tmp
 			// nsjail throws an error if a child dir is mounted before its parent
 			"-B", "/tmp",
-			"-B", sandboxConfig.srcDir,
+			"-R", sandboxConfig.srcDir,
 			"-B", sandboxConfig.outDir,
 		}
 
