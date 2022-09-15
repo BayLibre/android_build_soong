@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1fe7ad_ed1301a9",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T14:57:31Z",
+      "side": 1,
+      "message": "Please document.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 16
+      },
+      "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbdc8da0_602d3cf8",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T14:57:31Z",
+      "side": 1,
+      "message": "Can you be specific about where this naming convention is relied upon.",
+      "range": {
+        "startLine": 562,
+        "startChar": 3,
+        "endLine": 563,
+        "endChar": 84
+      },
+      "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d23b49_184d7334",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T14:57:31Z",
+      "side": 1,
+      "message": "Please could you document this and make it clear that this relies on the naming convention in updateApiScript().",
+      "range": {
+        "startLine": 365,
+        "startChar": 5,
+        "endLine": 365,
+        "endChar": 21
+      },
+      "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a1a134_6e7acc8f",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T14:57:31Z",
+      "side": 1,
+      "message": "Given the following comment in the bug:\n    \"We cannot have m update-api \u003ctarget_that_depends_on_update_api\u003e. The latter will still see the stale api.txt file\"\n\nCould you have this fail if the ninja args includes an update-api build target with a non update-api build target?",
+      "range": {
+        "startLine": 371,
+        "startChar": 1,
+        "endLine": 376,
+        "endChar": 2
+      },
+      "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
