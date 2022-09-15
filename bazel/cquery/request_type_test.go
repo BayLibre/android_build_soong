@@ -1,9 +1,8 @@
 package cquery
 
 import (
-	"fmt"
+	"encoding/json"
 	"reflect"
-	"strings"
 	"testing"
 )
 
@@ -63,17 +62,26 @@ func TestGetPythonBinaryParseResults(t *testing.T) {
 }
 
 func TestGetCcInfoParseResults(t *testing.T) {
-	const expectedSplits = 10
-	noResult := strings.Repeat("|", expectedSplits-1)
 	testCases := []struct {
 		description          string
-		input                string
+		inputJsonCcInfo      JsonCcInfo
 		expectedOutput       CcInfo
 		expectedErrorMessage string
 	}{
 		{
 			description: "no result",
-			input:       noResult,
+			inputJsonCcInfo: JsonCcInfo{
+				OutputFiles:          []string{},
+				CcObjectFiles:        []string{},
+				CcSharedLibraryFiles: []string{},
+				CcStaticLibraryFiles: []string{},
+				Includes:             []string{},
+				SystemIncludes:       []string{},
+				Headers:              []string{},
+				RootStaticArchives:   []string{},
+				RootDynamicLibraries: []string{},
+				TocFile:              []string{},
+			},
 			expectedOutput: CcInfo{
 				OutputFiles:          []string{},
 				CcObjectFiles:        []string{},
@@ -89,9 +97,20 @@ func TestGetCcInfoParseResults(t *testing.T) {
 		},
 		{
 			description: "only output",
-			input:       "test" + noResult,
+			inputJsonCcInfo: JsonCcInfo{
+				OutputFiles:          []string{"test", "test3"},
+				CcObjectFiles:        []string{},
+				CcSharedLibraryFiles: []string{},
+				CcStaticLibraryFiles: []string{},
+				Includes:             []string{},
+				SystemIncludes:       []string{},
+				Headers:              []string{},
+				RootStaticArchives:   []string{},
+				RootDynamicLibraries: []string{},
+				TocFile:              []string{},
+			},
 			expectedOutput: CcInfo{
-				OutputFiles:          []string{"test"},
+				OutputFiles:          []string{"test", "test3"},
 				CcObjectFiles:        []string{},
 				CcSharedLibraryFiles: []string{},
 				CcStaticLibraryFiles: []string{},
@@ -105,7 +124,18 @@ func TestGetCcInfoParseResults(t *testing.T) {
 		},
 		{
 			description: "only ToC",
-			input:       noResult + "test",
+			inputJsonCcInfo: JsonCcInfo{
+				OutputFiles:          []string{},
+				CcObjectFiles:        []string{},
+				CcSharedLibraryFiles: []string{},
+				CcStaticLibraryFiles: []string{},
+				Includes:             []string{},
+				SystemIncludes:       []string{},
+				Headers:              []string{},
+				RootStaticArchives:   []string{},
+				RootDynamicLibraries: []string{},
+				TocFile:              []string{"test"},
+			},
 			expectedOutput: CcInfo{
 				OutputFiles:          []string{},
 				CcObjectFiles:        []string{},
@@ -121,16 +151,18 @@ func TestGetCcInfoParseResults(t *testing.T) {
 		},
 		{
 			description: "all items set",
-			input: "out1, out2" +
-				"|object1, object2" +
-				"|shared_lib1, shared_lib2" +
-				"|static_lib1, static_lib2" +
-				"|., dir/subdir" +
-				"|system/dir, system/other/dir" +
-				"|dir/subdir/hdr.h" +
-				"|rootstaticarchive1" +
-				"|rootdynamiclibrary1" +
-				"|lib.so.toc",
+			inputJsonCcInfo: JsonCcInfo{
+				OutputFiles:          []string{"out1", "out2"},
+				CcObjectFiles:        []string{"object1", "object2"},
+				CcSharedLibraryFiles: []string{"shared_lib1", "shared_lib2"},
+				CcStaticLibraryFiles: []string{"static_lib1", "static_lib2"},
+				Includes:             []string{".", "dir/subdir"},
+				SystemIncludes:       []string{"system/dir", "system/other/dir"},
+				Headers:              []string{"dir/subdir/hdr.h"},
+				RootStaticArchives:   []string{"rootstaticarchive1"},
+				RootDynamicLibraries: []string{"rootdynamiclibrary1"},
+				TocFile:              []string{"lib.so.toc"},
+			},
 			expectedOutput: CcInfo{
 				OutputFiles:          []string{"out1", "out2"},
 				CcObjectFiles:        []string{"object1", "object2"},
@@ -144,21 +176,10 @@ func TestGetCcInfoParseResults(t *testing.T) {
 				TocFile:              "lib.so.toc",
 			},
 		},
-		{
-			description:          "too few result splits",
-			input:                "|",
-			expectedOutput:       CcInfo{},
-			expectedErrorMessage: fmt.Sprintf("expected %d items, got %q", expectedSplits, []string{"", ""}),
-		},
-		{
-			description:          "too many result splits",
-			input:                strings.Repeat("|", expectedSplits+1), // 2 too many
-			expectedOutput:       CcInfo{},
-			expectedErrorMessage: fmt.Sprintf("expected %d items, got %q", expectedSplits, make([]string, expectedSplits+2)),
-		},
 	}
 	for _, tc := range testCases {
-		actualOutput, err := GetCcInfo.ParseResult(tc.input)
+		jsonInput, err := json.Marshal(tc.inputJsonCcInfo)
+		actualOutput, err := GetCcInfo.ParseResult(string(jsonInput))
 		if (err == nil && tc.expectedErrorMessage != "") ||
 			(err != nil && err.Error() != tc.expectedErrorMessage) {
 			t.Errorf("%q:\n%12s: %q\n%12s: %q", tc.description, "expect Error", tc.expectedErrorMessage, "but got", err)
