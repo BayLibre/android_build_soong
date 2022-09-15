@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2de60ed3_b726a5c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T15:12:34Z",
+      "side": 1,
+      "message": "Could you reformat the lines manually so that they fit into a single line (I think the window is 72 characters wide)? As it is it makes it difficult to read.\n\nAlso, could you make it clear in the commit that this is only for APKs provided by mainline modules.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 253
+      },
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f18959e_de643312",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T15:12:34Z",
+      "side": 1,
+      "message": "extra white space",
+      "range": {
+        "startLine": 9,
+        "startChar": 135,
+        "endLine": 9,
+        "endChar": 137
+      },
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d260b53b_1ae9fd38",
@@ -32,6 +78,98 @@
       "side": 1,
       "message": "`Is the longer term plan to stop module authors from having to set the target_sdk_version at all and just always have it default to the latest sdk version?` Yes.\n\nWe want to have different target_sdk_version in aosp/master (10000) and other development branches like tm-mainline-prod to have 33, also want them to give flexibility to update it to versions while testing locally. So this change would pick the target_sdk_version from the default one already present in the soong. In my view creating another copy of default would require additional overhead for us to update it during every sdk finalisation.",
       "parentUuid": "d260b53b_1ae9fd38",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "656ddb7b_0f7a83ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T15:12:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fad52c87_5f573286",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4df747e1_378f7b82",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T15:12:34Z",
+      "side": 1,
+      "message": "This does not match the behavior. I think the behavior is correct.\n\nThe behavior is actually this defaults to false, unless updatable: true in which case this defaults to true. It is an error if updatable: true and this is false.",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 113
+      },
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3df2bbb_5834d000",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T15:12:34Z",
+      "side": 1,
+      "message": "Why not just call EnforceDefaultTargetSdkVersion() directly?",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75439282_d6e58323",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T15:12:34Z",
+      "side": 1,
+      "message": "This does not appear to need to be exported.",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea570c3_e17626e7",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T15:12:34Z",
+      "side": 1,
+      "message": "Modifying properties that can also be specified in a .bp file can often make it hard to debug code. Having a separate property (tagged with `blueprint:\"mutated\"`) to record the state make make this easier to process. The value can be set using a LoadHook.",
       "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
