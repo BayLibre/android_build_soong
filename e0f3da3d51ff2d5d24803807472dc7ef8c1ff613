@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b0b1c21_ea87e194",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2536,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-15T20:38:00Z",
+      "side": 1,
+      "message": "I\u0027ll put the Blueprint before the expected targets, though I was following the example from the other stubs test, directly above this one.",
+      "parentUuid": "b991d1d9_c003e5b9",
+      "range": {
+        "startLine": 2516,
+        "startChar": 1,
+        "endLine": 2536,
+        "endChar": 7
+      },
+      "revId": "e0f3da3d51ff2d5d24803807472dc7ef8c1ff613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fd96cfb_ec4ccddb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-13T18:32:34Z",
       "side": 1,
       "message": "nit: do we need to test the stub conversion in this test?",
+      "range": {
+        "startLine": 2549,
+        "startChar": 0,
+        "endLine": 2549,
+        "endChar": 44
+      },
+      "revId": "e0f3da3d51ff2d5d24803807472dc7ef8c1ff613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e9f8725_d65687ec",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2549,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-15T20:38:00Z",
+      "side": 1,
+      "message": "It looks like somehow the test passes without this line, but we definitely need to have the actual stubs generated or else the libs are missing and the one we do want to test doesn\u0027t convert correctly. Since we can\u0027t only verify a subset of the generated targets, it means we also need to verify the stub targets, unfortunately.",
+      "parentUuid": "9fd96cfb_ec4ccddb",
       "range": {
         "startLine": 2549,
         "startChar": 0,
