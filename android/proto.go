@@ -164,6 +164,7 @@ type ProtoAttrs struct {
 	Srcs                bazel.LabelListAttribute
 	Strip_import_prefix *string
 	Deps                bazel.LabelListAttribute
+	Tags                []string
 }
 
 // For each package in the include_dirs property a proto_library target should
@@ -180,7 +181,8 @@ func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, m *ModuleBase, srcs baz
 		return info, false
 	}
 
-	var protoLibraries bazel.LabelList
+	var directProtoLibs []bazel.Label
+	var convertedProtoLibs []bazel.Label
 	var directProtoSrcs bazel.LabelList
 
 	// For filegroups that should be converted to proto_library just collect the
@@ -189,9 +191,10 @@ func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, m *ModuleBase, srcs baz
 		src := protoSrc.OriginalModuleName
 		if fg, ok := ToFileGroupAsLibrary(ctx, src); ok &&
 			fg.ShouldConvertToProtoLibrary(ctx) {
-			protoLibraries.Add(&bazel.Label{
-				Label: fg.GetProtoLibraryLabel(ctx),
-			})
+			convertedProtoLibs = append(convertedProtoLibs,
+				(bazel.Label{
+					Label: fg.GetProtoLibraryLabel(ctx),
+				}))
 		} else {
 			directProtoSrcs.Add(&protoSrc)
 		}
@@ -202,6 +205,7 @@ func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, m *ModuleBase, srcs baz
 	if len(directProtoSrcs.Includes) > 0 {
 		attrs := ProtoAttrs{
 			Srcs: bazel.MakeLabelListAttribute(directProtoSrcs),
+			Deps: bazel.MakeLabelListAttribute(bazel.MakeLabelList(convertedProtoLibs)),
 		}
 
 		for axis, configToProps := range m.GetArchVariantProperties(ctx, &ProtoProperties{}) {
@@ -238,12 +242,12 @@ func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, m *ModuleBase, srcs baz
 			CommonAttributes{Name: info.Name},
 			&attrs)
 
-		protoLibraries.Add(&bazel.Label{
+		directProtoLibs = append(directProtoLibs, bazel.Label{
 			Label: ":" + info.Name,
 		})
 	}
 
-	info.Proto_libs = protoLibraries
+	info.Proto_libs = bazel.MakeLabelList(append(convertedProtoLibs, directProtoLibs...))
 
 	return info, true
 }
