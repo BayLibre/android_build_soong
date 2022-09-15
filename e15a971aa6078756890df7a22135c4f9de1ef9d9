@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21c8f54_8f06f4c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T17:40:46Z",
+      "side": 1,
+      "message": "I didn\u0027t mean you should cut the paragraph down to a single line I meant that you should manually break the single line paragraph into multiple lines (by inserting a newline at \u003c 72 characters) so that each line of the paragraph fits within the window, e.g. do something like this:\n\n    Due to GMS target SDK requirements (https://docs.partner.android.com/gms/policies/preview/mba#min-target-sdk)\n    we need to ensure all the  mainline packages to target latest API\n    level. Currently, the team chases each module to bump their target\n    API level.\n    \nAnd do something similar to the paragraphs below.\n\nIt would also help if you could add a blank line between each paragraph.",
+      "parentUuid": "451da2ec_3805320f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 253
+      },
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d260b53b_1ae9fd38",
@@ -296,6 +320,24 @@
       "side": 1,
       "message": "I don\u0027t think I completely understood this. I\u0027m unable to find any resource explaining these tags. Added `blueprint:\"mutated\"` to `Enforce_default_target_sdk_version` if that\u0027s what you meant.",
       "parentUuid": "5ea570c3_e17626e7",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "744a8f2b_d11a3d20",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-15T17:40:46Z",
+      "side": 1,
+      "message": "The `blueprint:\"mutated\"` tag means that it cannot be specified in an Android.bp file but is modified at runtime. As it is a property it means that just like all other properties they are copied into a new variants created of the module.\n\nIf you want to be able to specify the property in an Android.bp file then you will have to remove the `blueprint:\"mutated\"` tag from it.\n\nI was suggesting that you add a separate property, say something like this:\n\n    EnforceDefaultTargetSdkVersion bool `blueprint:\"mutated\"`\n    \nAnd then set that based on the value of Updatable and Enforce_default_target_sdk_version instead of modifying Enforce_default_target_sdk_version. Similar to how the java.CommonProperties.Instrument property is handled.\n\nModifying Enforce_default_target_sdk_version loses information as you cannot determine whether it was specified in an Android.bp file.",
+      "parentUuid": "a6d8026d_211d56d1",
       "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
