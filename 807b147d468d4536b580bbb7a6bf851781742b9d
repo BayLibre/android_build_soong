@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b64b693e_75e3d116",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-15T21:11:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a1fe7ad_ed1301a9",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 16
+      },
+      "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbdc8da0_602d3cf8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-15T14:57:31Z",
       "side": 1,
       "message": "Can you be specific about where this naming convention is relied upon.",
+      "range": {
+        "startLine": 562,
+        "startChar": 3,
+        "endLine": 563,
+        "endChar": 84
+      },
+      "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb9ac00_0474c455",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-15T21:11:01Z",
+      "side": 1,
+      "message": "Good point, I have added the specific function to the doc as well",
+      "parentUuid": "fbdc8da0_602d3cf8",
       "range": {
         "startLine": 562,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8ce3de5_a8e3adb9",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-15T21:11:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31d23b49_184d7334",
+      "range": {
+        "startLine": 365,
+        "startChar": 5,
+        "endLine": 365,
+        "endChar": 21
+      },
+      "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6a1a134_6e7acc8f",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-15T14:57:31Z",
       "side": 1,
       "message": "Given the following comment in the bug:\n    \"We cannot have m update-api \u003ctarget_that_depends_on_update_api\u003e. The latter will still see the stale api.txt file\"\n\nCould you have this fail if the ninja args includes an update-api build target with a non update-api build target?",
+      "range": {
+        "startLine": 371,
+        "startChar": 1,
+        "endLine": 376,
+        "endChar": 2
+      },
+      "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecdfbeb9_8e14f10d",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-15T21:11:01Z",
+      "side": 1,
+      "message": "I thought about making this an error, but that might break some existing workflows. I queried the internal table `android_build.metrics.local.build_metrics.latest` to analyze some usage patterns of update-api. A common usage pattern I came across was (surprisingly)\n```\n$ m update-api out/target/.../module-info.json\n```\nTurning this into a hard failure will inadvertently break this workflow even when module-info.json does not have any dependencies on the update-api family\n\nWhat we really want to do is analyze the other targets passed on the command line and categorize them into\n1. Has a dependency on update-api\n2. Has no dependencies on update-api\n\nThe validation logic should throw an error for (1), but not for (2). This starts getting complex because we will need to query the ninja build graph\n\n\u003e Given the following comment in the bug:\n\u003e    \"We cannot have m update-api \u003ctarget_that_depends_on_update_api\u003e. The latter will still see the stale api.txt file\"\nOff the top of my head, the only existing value for `$target_that_depends_on_update_api` today is `checkapi`, but this has an undefined behavior today as well. This is because the dependency is not represented in ninja\u0027s build graph. The result of `m update-api checkapi` is not deterministic.\n\nIf this CL in the current form lands, users cannot create any _new_ targets that depend on `update-api` updating the source tree",
+      "parentUuid": "f6a1a134_6e7acc8f",
       "range": {
         "startLine": 371,
         "startChar": 1,
