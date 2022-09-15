@@ -187,6 +187,30 @@
       },
       "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec91f98a_4ea78a86",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-15T21:32:23Z",
+      "side": 1,
+      "message": "Note that this is not new, there would always have been a race if you combined `update-api` with building something because the rule that wrote to the source tree did not declare the source tree files as an output.",
+      "parentUuid": "ecdfbeb9_8e14f10d",
+      "range": {
+        "startLine": 371,
+        "startChar": 1,
+        "endLine": 376,
+        "endChar": 2
+      },
+      "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
