@@ -52,7 +52,7 @@ var combineApk = pctx.AndroidStaticRule("combineApk",
 	})
 
 func CreateAndSignAppPackage(ctx android.ModuleContext, outputFile android.WritablePath,
-	packageFile, jniJarFile, dexJarFile android.Path, certificates []Certificate, deps android.Paths, v4SignatureFile android.WritablePath, lineageFile android.Path, rotationMinSdkVersion string) {
+	packageFile, jniJarFile, dexJarFile android.Path, certificates []Certificate, deps android.Paths, v4SignatureFile android.WritablePath, lineageFile android.Path, rotationMinSdkVersion string, shrinkresources bool) {
 
 	unsignedApkName := strings.TrimSuffix(outputFile.Base(), ".apk") + "-unsigned.apk"
 	unsignedApk := android.PathForModuleOut(ctx, unsignedApkName)
@@ -73,8 +73,42 @@ func CreateAndSignAppPackage(ctx android.ModuleContext, outputFile android.Writa
 		Implicits: deps,
 	})
 
+	if shrinkresources {
+		protoFile := android.PathForModuleOut(ctx, unsignedApk.Base()+".proto")
+		aapt2Convert(ctx, protoFile, unsignedApk, "proto")
+		strictFile := android.PathForModuleOut(ctx, "strict.xml")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   strictModeFile,
+			Output: strictFile,
+		})
+		deps = append(deps, strictFile)
+		protoOut := android.PathForModuleOut(ctx, unsignedApk.Base()+".proto.out")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:      shrinkResources,
+			Input:     protoFile,
+			Output:    protoOut,
+			Implicits: deps,
+			Args: map[string]string{
+				"raw_resources": strictFile.String(),
+			},
+		})
+		shrunkenApk := android.PathForModuleOut(ctx, unsignedApk.Base()+".resourceshrunken.apk")
+		aapt2Convert(ctx, shrunkenApk, protoOut, "binary")
+		unsignedApk = shrunkenApk
+	}
 	SignAppPackage(ctx, outputFile, unsignedApk, certificates, v4SignatureFile, lineageFile, rotationMinSdkVersion)
 }
+
+var shrinkResources = pctx.AndroidStaticRule("shrinkResources",
+	blueprint.RuleParams{
+		Command:     `${config.ResourceShrinkerCmd} --output $out --input $in --raw_resources $raw_resources`,
+		CommandDeps: []string{"${config.ResourceShrinkerCmd}"},
+	}, "raw_resources")
+
+var strictModeFile = pctx.AndroidStaticRule("strictModeFile",
+	blueprint.RuleParams{
+		Command: `echo "<?xml version=\"1.0\" encoding=\"utf-8\"?><resources xmlns:tools=\"http://schemas.android.com/tools\" tools:shrinkMode=\"strict\" />" > $out`,
+	})
 
 func SignAppPackage(ctx android.ModuleContext, signedApk android.WritablePath, unsignedApk android.Path, certificates []Certificate, v4SignatureFile android.WritablePath, lineageFile android.Path, rotationMinSdkVersion string) {
 
@@ -84,7 +118,6 @@ func SignAppPackage(ctx android.ModuleContext, signedApk android.WritablePath, u
 		certificateArgs = append(certificateArgs, c.Pem.String(), c.Key.String())
 		deps = append(deps, c.Pem, c.Key)
 	}
-
 	outputFiles := android.WritablePaths{signedApk}
 	var flags []string
 	if v4SignatureFile != nil {
@@ -182,7 +215,7 @@ func BuildBundleModule(ctx android.ModuleContext, outputFile android.WritablePat
 	packageFile, jniJarFile, dexJarFile android.Path) {
 
 	protoResJarFile := android.PathForModuleOut(ctx, "package-res.pb.apk")
-	aapt2Convert(ctx, protoResJarFile, packageFile)
+	aapt2Convert(ctx, protoResJarFile, packageFile, "proto")
 
 	var zips android.Paths
 

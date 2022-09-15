@@ -63,6 +63,8 @@ type DexProperties struct {
 		// classes referenced by the app manifest.  Defaults to false.
 		No_aapt_flags *bool
 
+		Shrinkresources *bool
+
 		// Flags to pass to proguard.
 		Proguard_flags []string
 
