@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c3cbd9_f0b146d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-09-15T12:47:45Z",
+      "side": 1,
+      "message": "+1 for adding a unit test.\n\nI saw the manual integration test done in b/245383870#comment8. Thanks for doing this. Please briefly mention it here, with a separate `Test:` label.",
+      "parentUuid": "49188122_54cef8f6",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fb97272f_830d770d",
@@ -60,6 +84,23 @@
       "writtenOn": "2022-09-15T12:05:01Z",
       "side": 1,
       "message": "Thank you for working on this Yuxin!\n\n(CC\u0027ing Artur for advising on updatable classpath test)",
+      "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0932a6_5724f2b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-09-15T12:47:45Z",
+      "side": 1,
+      "message": "Thank you for the contribution!",
       "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
