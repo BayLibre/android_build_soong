@@ -16,6 +16,24 @@
       "message": "If this is not likeable, I have aosp/2216875 to remove it.",
       "revId": "51cf9a600c0c822b5ce99dbf3b86b8a2db4a26d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55155349_0c46ec6b",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-15T15:09:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "58e5df63_3dc1b49c",
+      "revId": "51cf9a600c0c822b5ce99dbf3b86b8a2db4a26d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
