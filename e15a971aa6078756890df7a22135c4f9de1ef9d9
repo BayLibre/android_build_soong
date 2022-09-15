@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "44db35ab_8c433079",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-15T16:54:43Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "9f18959e_de643312",
+      "range": {
+        "startLine": 9,
+        "startChar": 135,
+        "endLine": 9,
+        "endChar": 137
+      },
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "451da2ec_3805320f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-15T16:54:43Z",
+      "side": 1,
+      "message": "Formatted to make it more easier to read, not sure if squeezing to single line is feasible.",
+      "parentUuid": "2de60ed3_b726a5c2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 253
+      },
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d260b53b_1ae9fd38",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 15
@@ -123,6 +171,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06291802_43cc41be",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-15T16:54:43Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "4df747e1_378f7b82",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 113
+      },
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3df2bbb_5834d000",
@@ -136,6 +208,24 @@
       "writtenOn": "2022-09-15T15:12:34Z",
       "side": 1,
       "message": "Why not just call EnforceDefaultTargetSdkVersion() directly?",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9443a0e6_2b04ff68",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-15T16:54:43Z",
+      "side": 1,
+      "message": "There could be other conditions added later where we might want some other apk (like some test apps) to enforce default target sdk version. I guess it would be fine to add it later, removed for now.",
+      "parentUuid": "e3df2bbb_5834d000",
       "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -157,6 +247,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ecb2b1_eccf3d5c",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-15T16:54:43Z",
+      "side": 1,
+      "message": "It could be in future, but made it private for now.",
+      "parentUuid": "75439282_d6e58323",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ea570c3_e17626e7",
@@ -170,6 +278,24 @@
       "writtenOn": "2022-09-15T15:12:34Z",
       "side": 1,
       "message": "Modifying properties that can also be specified in a .bp file can often make it hard to debug code. Having a separate property (tagged with `blueprint:\"mutated\"`) to record the state make make this easier to process. The value can be set using a LoadHook.",
+      "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d8026d_211d56d1",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-15T16:54:43Z",
+      "side": 1,
+      "message": "I don\u0027t think I completely understood this. I\u0027m unable to find any resource explaining these tags. Added `blueprint:\"mutated\"` to `Enforce_default_target_sdk_version` if that\u0027s what you meant.",
+      "parentUuid": "5ea570c3_e17626e7",
       "revId": "e15a971aa6078756890df7a22135c4f9de1ef9d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
