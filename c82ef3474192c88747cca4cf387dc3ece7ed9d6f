@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e2593a_735d2f1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-09-15T12:05:01Z",
+      "side": 1,
+      "message": "Add b/155630745.",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49188122_54cef8f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-09-15T12:05:01Z",
+      "side": 1,
+      "message": "Can you add a test where the system server jar is in `/system_ext`: 1) a unit test in build/soong/dexpreopt/dexpreopt_test.go, and 2) an integration test with a real jar (possibly manual, but please check for absence of class loader context mismatch at first boot).\n\nAlso it would be good to ensure that the updatable system server classpath logic is working `atest CtsSdkExtensionsTestCases`.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb97272f_830d770d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-09-15T12:05:01Z",
+      "side": 1,
+      "message": "Thank you for working on this Yuxin!\n\n(CC\u0027ing Artur for advising on updatable classpath test)",
+      "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
