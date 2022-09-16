@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f5d73e_9991637f",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-16T19:31:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8605b06f_09c0cda5",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 10
+      },
+      "revId": "dc5ae91176e91f453c1bf85bafa77331650bc3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3693a8e_31909541",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa38fdb_81912cf6",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-16T19:31:34Z",
+      "side": 1,
+      "message": "Thanks, I didn\u0027t like having to define the interface just to sort. The `sort.Slice` seems almost perfect, but it seems awkward that the array isn\u0027t passed as an argument to the sort function.\n\nWeird Go things",
+      "parentUuid": "c3693a8e_31909541",
+      "revId": "dc5ae91176e91f453c1bf85bafa77331650bc3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "078fca78_88360d48",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-09-16T19:09:28Z",
       "side": 1,
       "message": "This would probably be simpler if you used `min` here, and then if the for loop completes return 0 if `len(m) \u003d\u003d len(other)`, 1 if `len(m) \u003e len(other)`, and -1 otherwise.",
+      "range": {
+        "startLine": 232,
+        "startChar": 17,
+        "endLine": 232,
+        "endChar": 20
+      },
+      "revId": "dc5ae91176e91f453c1bf85bafa77331650bc3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b651a4a8_17f3cf98",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-16T19:31:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "078fca78_88360d48",
       "range": {
         "startLine": 232,
         "startChar": 17,
