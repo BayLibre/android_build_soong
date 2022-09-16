@@ -235,6 +235,30 @@
       },
       "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f197280b_438b3fd6",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-16T15:09:54Z",
+      "side": 1,
+      "message": "\u003e Note that this is not new, there would always have been a race if you combined update-api with building something because the rule that wrote to the source tree did not declare the source tree files as an output.\n\nI do not think that any build targets other than `checkapi` depend on the source API txt files. They all depend on the metalava generated txt files. I did investigate whether depending on the source files would keep metalava off the critical path for the build but it did not because of the dependencies onto the metalava generated stub libraries. That may change in future if we can generate the stub libraries from the txt files rather than the source files.",
+      "parentUuid": "18860a03_cad701ba",
+      "range": {
+        "startLine": 371,
+        "startChar": 1,
+        "endLine": 376,
+        "endChar": 2
+      },
+      "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
