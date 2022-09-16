@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58686acf_87a517df",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2704,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-16T13:58:21Z",
+      "side": 1,
+      "message": "this looks like it could all be deleted now?",
+      "range": {
+        "startLine": 2684,
+        "startChar": 0,
+        "endLine": 2704,
+        "endChar": 7
+      },
+      "revId": "9f16b9e0c7da05b7770af3fa4a3d66726e3e7836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

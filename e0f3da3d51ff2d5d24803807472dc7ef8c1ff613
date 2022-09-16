@@ -141,6 +141,30 @@
       },
       "revId": "e0f3da3d51ff2d5d24803807472dc7ef8c1ff613",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ff52f9_17819b88",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2549,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-16T13:58:21Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/build_conversion.go;l\u003d157;drc\u003d6bf723485473ac53ba78aac3fd12482d4457c3cd tests default to \"warn\" about unconverted deps, not error, similar to regular bp2build migrations. In addition, this allows us to have tests focus only on the portion of the migration that is relevant to be tested, not all of the deps.\n\nWe also test the erroring mode: https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/build_conversion_test.go;l\u003d1069;drc\u003d6bf723485473ac53ba78aac3fd12482d4457c3cd but would need to do some cleanup in order to support it",
+      "parentUuid": "83760269_a399110c",
+      "range": {
+        "startLine": 2549,
+        "startChar": 0,
+        "endLine": 2549,
+        "endChar": 44
+      },
+      "revId": "e0f3da3d51ff2d5d24803807472dc7ef8c1ff613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
