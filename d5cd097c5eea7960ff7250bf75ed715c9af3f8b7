@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d637c749_0e99e55e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-16T19:54:35Z",
+      "side": 1,
+      "message": "Yeah, I did commit couple times because I encountered some problems while using repo upload. That might be the issue of more than one CL id. Thanks for the advice of CL commit format.",
+      "parentUuid": "ad8caabf_6a8fe7b7",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "287db45b_0e962a1c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-16T15:01:27Z",
       "side": 1,
       "message": "I don\u0027t think this comment appropriately describes JsonCcInfo. See https://go.dev/doc/comment  under \"Types\" for some guidance.\n\nIt looks like the existing comment maybe belongs somewhere around TocFile, if you want to include it as an explanation.",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e6af5d5_abbd7d51",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-16T19:54:35Z",
+      "side": 1,
+      "message": "Revised the comments",
+      "parentUuid": "287db45b_0e962a1c",
       "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94fdba6d_4c7e974a",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-16T19:54:35Z",
+      "side": 1,
+      "message": "I received error\"json: cannot unmarshal array into Go struct field CcInfo.TocFile of type string\n\"\nI think it is because when we use the encode() function, it will transform the toc_file to a list.",
+      "parentUuid": "73b46087_4ba5b32f",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abf7a5d2_47ae19f8",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-09-16T15:01:27Z",
       "side": 1,
       "message": "Did you accidentally leave this for debugging?\n\nAlso, if err is not nil, you probably want to return early.",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "183caf1d_afa43f51",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-16T19:54:35Z",
+      "side": 1,
+      "message": "Yes, I have update and make it return the err instead of print it.",
+      "parentUuid": "abf7a5d2_47ae19f8",
       "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +158,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8adda08c_0239e9b1",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-16T19:54:35Z",
+      "side": 1,
+      "message": "Thanks, just implemented using the way you sugguested.",
+      "parentUuid": "75a7fead_4a1e0892",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b401aa69_41a3e7d2",
@@ -103,6 +193,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "067c301a_9ee97f9e",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-16T19:54:35Z",
+      "side": 1,
+      "message": "When we use the encode() function, it will transform the toc_file to a list.",
+      "parentUuid": "b401aa69_41a3e7d2",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a011d99_ace67387",
@@ -116,6 +224,24 @@
       "writtenOn": "2022-09-16T15:01:27Z",
       "side": 1,
       "message": "Did you accidentally leave these in?",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "019ef962_1e39584f",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-16T19:54:35Z",
+      "side": 1,
+      "message": "These are the original tests created by previous coder who wants to test the scenarios such as there are fewer result splits. These scenarios will not happen if we use json parse. I commented it at the beginning considering we might still need it in the future when we will implement using the real \"json\" module in starlark. I have just updated and deleted these lines.",
+      "parentUuid": "5a011d99_ace67387",
       "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
