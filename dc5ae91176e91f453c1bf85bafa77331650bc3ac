@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8605b06f_09c0cda5",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-16T19:09:28Z",
+      "side": 1,
+      "message": "This can just be `return b`",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 10
+      },
+      "revId": "dc5ae91176e91f453c1bf85bafa77331650bc3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3693a8e_31909541",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-16T19:09:28Z",
+      "side": 1,
+      "message": "If you prefer this can be:\n```\n    sort.Slice(m, func(i, j int) bool {\n  \t// sort priorities greatest to least\n\treturn multiAbiPriorities[m[i].Alias] \u003e multiAbiPriorities[m[j].Alias]\n    })",
+      "revId": "dc5ae91176e91f453c1bf85bafa77331650bc3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078fca78_88360d48",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-16T19:09:28Z",
+      "side": 1,
+      "message": "This would probably be simpler if you used `min` here, and then if the for loop completes return 0 if `len(m) \u003d\u003d len(other)`, 1 if `len(m) \u003e len(other)`, and -1 otherwise.",
+      "range": {
+        "startLine": 232,
+        "startChar": 17,
+        "endLine": 232,
+        "endChar": 20
+      },
+      "revId": "dc5ae91176e91f453c1bf85bafa77331650bc3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
