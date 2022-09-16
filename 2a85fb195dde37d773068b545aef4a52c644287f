@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff0ad57d_144d4c2a",
+        "filename": "android/filegroup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-16T16:03:59Z",
+      "side": 1,
+      "message": "Nit: Can we add a note that building these targets manually will fail because of the issue in `filegroup` -\u003e `proto_library` conversion?",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 27
+      },
+      "revId": "2a85fb195dde37d773068b545aef4a52c644287f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
