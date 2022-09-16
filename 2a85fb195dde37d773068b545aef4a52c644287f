@@ -22,6 +22,30 @@
       },
       "revId": "2a85fb195dde37d773068b545aef4a52c644287f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7f4bf4_42cfa95d",
+        "filename": "android/filegroup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-16T16:11:01Z",
+      "side": 1,
+      "message": "Feel free to ignore. This is a nit because `tags: [\"manual\"]` might already imply that the specific targets aren\u0027t buildable.",
+      "parentUuid": "ff0ad57d_144d4c2a",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 27
+      },
+      "revId": "2a85fb195dde37d773068b545aef4a52c644287f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
