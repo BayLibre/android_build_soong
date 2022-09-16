@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8caabf_6a8fe7b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-16T15:01:27Z",
+      "side": 1,
+      "message": "You\u0027ll need to fix your CL description:\n\n- The first line of the description should be a brief summary of what the CL changes\n- You can add a few more lines to describe the CL more, if you\u0027d like. This should come before \"Bug\" and \"Test\" lines\n- You must have at least one \"Test:\" line, where each line specifically describes way in which you tested the CL. It looks like your line `Test: using Json format for getCCinfo` accidentally includes the \"Test:\" prefix, when this is close to what you\u0027d want to describe the CL. Maybe you meant the first line to be `Use Json format for getCcInfo` ?\n- You should only have one Change-Id line. The fact that you have two means you might have accidentally tried committing or uploading this CL multiple times. I think you should try to remove the first of these lines.\n",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287db45b_0e962a1c",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-16T15:01:27Z",
+      "side": 1,
+      "message": "I don\u0027t think this comment appropriately describes JsonCcInfo. See https://go.dev/doc/comment  under \"Types\" for some guidance.\n\nIt looks like the existing comment maybe belongs somewhere around TocFile, if you want to include it as an explanation.",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b46087_4ba5b32f",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-16T15:01:27Z",
+      "side": 1,
+      "message": "What was the error? I\u0027m kind of surprised \"string\" doesn\u0027t do, given that `toc_file` in the starlark code is a string, not a string list.",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf7a5d2_47ae19f8",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-16T15:01:27Z",
+      "side": 1,
+      "message": "Did you accidentally leave this for debugging?\n\nAlso, if err is not nil, you probably want to return early.",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75a7fead_4a1e0892",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-16T15:01:27Z",
+      "side": 1,
+      "message": "Can we instead create a helper function to form a json-encoded string for this test data? We could call something like `json.Marshal(JsonCcInfo{})` instead of manually formatting the string each time.",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b401aa69_41a3e7d2",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-16T15:01:27Z",
+      "side": 1,
+      "message": "TocFile is a list in this test, but in the actual implementation it\u0027s a string...",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a011d99_ace67387",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-16T15:01:27Z",
+      "side": 1,
+      "message": "Did you accidentally leave these in?",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
