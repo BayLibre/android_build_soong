@@ -211,6 +211,30 @@
       },
       "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18860a03_cad701ba",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-16T14:58:37Z",
+      "side": 1,
+      "message": "\u003e I thought about making this an error, but that might break some existing workflows.\n\nI don\u0027t think that we need to preserve every work flow. Particularly those which are non-deterministic or would produce invalid results, e.g. `m update-api checkapi`.\n\nIf in the process of excluding those we also exclude some work flows which are deterministic and consistent that would not be a major issue as long as it was easy for developers to achieve the same effect.\n\ne.g. It would be ok to disallow:\n\n    m update-api .../module-info.json\n\nAs it can easily be changed to say:\n\n    m update-api \u0026\u0026 m .../module-info.json\n\nIMO the build should prioritize correctness over convenience.\n\n\u003e The validation logic should throw an error for (1), but not for (2). This starts getting complex because we will need to query the ninja build graph\n\nWhich is why I suggested that you keep it simple and error if it was not an update-api target. That does mean that you will exclude some combinations which are valid but that can easily be worked around.",
+      "parentUuid": "ec91f98a_4ea78a86",
+      "range": {
+        "startLine": 371,
+        "startChar": 1,
+        "endLine": 376,
+        "endChar": 2
+      },
+      "revId": "807b147d468d4536b580bbb7a6bf851781742b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
