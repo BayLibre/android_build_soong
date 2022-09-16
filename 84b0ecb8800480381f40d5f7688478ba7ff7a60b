@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9631432f_93f2de85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-16T21:04:33Z",
+      "side": 1,
+      "message": "yudiliu@ I believe this fixes the issue you\u0027re running into when building //frameworks/native/libs/gui:libgui_bufferqueue_static_cc_aidl_library",
+      "revId": "84b0ecb8800480381f40d5f7688478ba7ff7a60b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
