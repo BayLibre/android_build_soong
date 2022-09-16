@@ -117,6 +117,30 @@
       },
       "revId": "e0f3da3d51ff2d5d24803807472dc7ef8c1ff613",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83760269_a399110c",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2549,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-16T13:52:36Z",
+      "side": 1,
+      "message": "Huh, it didn\u0027t break. Why doesn\u0027t it complain about missing dependencies?\n\nAnyway I changed it.",
+      "parentUuid": "9497e31b_a1949d32",
+      "range": {
+        "startLine": 2549,
+        "startChar": 0,
+        "endLine": 2549,
+        "endChar": 44
+      },
+      "revId": "e0f3da3d51ff2d5d24803807472dc7ef8c1ff613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
