@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b32bd02_63ab759d",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-16T22:37:46Z",
+      "side": 1,
+      "message": "yudiliu@ you might have a different CL already allowlisting some of these modules. If you do, I can rebase onto your CL to remove these.",
+      "revId": "4ae41b6ebb979776053fb42d032d06fef69cbc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
