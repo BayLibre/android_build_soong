@@ -93,6 +93,30 @@
       },
       "revId": "e0f3da3d51ff2d5d24803807472dc7ef8c1ff613",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9497e31b_a1949d32",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2549,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-16T13:17:57Z",
+      "side": 1,
+      "message": "by default, modules in `Blueprint` in tests are in the always convert list, so `bazel_module: { bp2build_available: true },` is redundant.\n\nI was asking if we should instead set `bazel_module: { bp2build_available: false },` in `barlib`. While it is true that we would need the stubs to be migrated in the actual migration, during testing, we often set `bazel_module: { bp2build_available: false },` for the modules that are not the focus of the test to keep the test focused on the details we care about.",
+      "parentUuid": "1e9f8725_d65687ec",
+      "range": {
+        "startLine": 2549,
+        "startChar": 0,
+        "endLine": 2549,
+        "endChar": 44
+      },
+      "revId": "e0f3da3d51ff2d5d24803807472dc7ef8c1ff613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
