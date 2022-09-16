@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "491a1f78_f2b3b3dc",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-16T13:11:28Z",
+      "side": 1,
+      "message": "Why do we still have test cases for prebuilt binary host?\n\n* `cc_prebuilt_binary` is the only module type supported in Soong\n* `cc.NewPrebuiltBinary` is only ever called with `HostOrDevice`, for plugins, we\u0027ll need to write explicit converters and tests for them\n* The `HostOrDevice` logic is more thoroughly tested elsewhere: https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/build_conversion_test.go;l\u003d550;drc\u003d1b4b2d9209ffddd3a60904e6767832a4a8475ae5",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "6b092805af42b3f44d33331f77f4b9dc5d729310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
