@@ -276,7 +276,8 @@ type aidlLibraryAttributes struct {
 }
 
 type ccAidlLibraryAttributes struct {
-	Deps bazel.LabelListAttribute
+	Deps         bazel.LabelListAttribute
+	Dynamic_deps bazel.LabelListAttribute
 }
 
 type stripAttributes struct {
