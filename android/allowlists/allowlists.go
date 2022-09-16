@@ -162,10 +162,12 @@ var (
 		"frameworks/av/media/liberror":                       Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/services/minijail":                    Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/media/module/minijail":                Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/libs/androidfw":                     Bp2BuildDefaultTrue,
 		"frameworks/base/media/tests/MediaDump":              Bp2BuildDefaultTrue,
 		"frameworks/base/services/tests/servicestests/aidl":  Bp2BuildDefaultTrue,
 		"frameworks/base/startop/apps/test":                  Bp2BuildDefaultTrue,
 		"frameworks/base/tests/appwidgets/AppWidgetHostTest": Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/tools/aapt2":                        Bp2BuildDefaultTrue,
 		"frameworks/native/libs/adbd_auth":                   Bp2BuildDefaultTrueRecursively,
 		"frameworks/native/libs/arect":                       Bp2BuildDefaultTrueRecursively,
 		"frameworks/native/libs/math":                        Bp2BuildDefaultTrueRecursively,
@@ -227,14 +229,12 @@ var (
 		"packages/modules/NeuralNetworks/driver/cache":     Bp2BuildDefaultTrueRecursively,
 		"packages/screensavers/Basic":                      Bp2BuildDefaultTrue,
 		"packages/services/Car/tests/SampleRearViewCamera": Bp2BuildDefaultFalse, // TODO(b/242834321)
-
-		"platform_testing/tests/example": Bp2BuildDefaultTrueRecursively,
-
-		"prebuilts/clang/host/linux-x86":           Bp2BuildDefaultTrueRecursively,
-		"prebuilts/runtime/mainline/platform/sdk":  Bp2BuildDefaultTrueRecursively,
-		"prebuilts/sdk/current/extras/app-toolkit": Bp2BuildDefaultTrue,
-		"prebuilts/sdk/current/support":            Bp2BuildDefaultTrue,
-		"prebuilts/tools/common/m2":                Bp2BuildDefaultTrue,
+		"platform_testing/tests/example":                   Bp2BuildDefaultTrueRecursively,
+		"prebuilts/clang/host/linux-x86":                   Bp2BuildDefaultTrueRecursively,
+		"prebuilts/runtime/mainline/platform/sdk":          Bp2BuildDefaultTrueRecursively,
+		"prebuilts/sdk/current/extras/app-toolkit":         Bp2BuildDefaultTrue,
+		"prebuilts/sdk/current/support":                    Bp2BuildDefaultTrue,
+		"prebuilts/tools/common/m2":                        Bp2BuildDefaultTrue,
 
 		"system/apex":                                            Bp2BuildDefaultFalse, // TODO(b/207466993): flaky failures
 		"system/apex/apexer":                                     Bp2BuildDefaultTrue,
@@ -256,6 +256,7 @@ var (
 		"system/core/libvndksupport":                             Bp2BuildDefaultTrueRecursively,
 		"system/core/property_service/libpropertyinfoparser":     Bp2BuildDefaultTrueRecursively,
 		"system/core/property_service/libpropertyinfoserializer": Bp2BuildDefaultTrueRecursively,
+		"system/incremental_delivery/incfs":                      Bp2BuildDefaultTrue,
 		"system/libartpalette":                                   Bp2BuildDefaultTrueRecursively,
 		"system/libbase":                                         Bp2BuildDefaultTrueRecursively,
 		"system/libfmq":                                          Bp2BuildDefaultTrue,
@@ -283,8 +284,8 @@ var (
 		"system/testing/gtest_extras":                            Bp2BuildDefaultTrueRecursively,
 		"system/timezone/apex":                                   Bp2BuildDefaultTrueRecursively,
 		"system/timezone/output_data":                            Bp2BuildDefaultTrueRecursively,
-		"system/tools/sysprop":                                   Bp2BuildDefaultTrue,
 		"system/tools/aidl/build/tests_bp2build":                 Bp2BuildDefaultTrue,
+		"system/tools/sysprop":                                   Bp2BuildDefaultTrue,
 		"system/unwinding/libunwindstack":                        Bp2BuildDefaultTrueRecursively,
 
 		"tools/apksig": Bp2BuildDefaultTrue,
@@ -330,6 +331,8 @@ var (
 	}
 
 	Bp2buildModuleAlwaysConvertList = []string{
+		"libidmap2_policies",
+		"libSurfaceFlingerProp",
 		// cc mainline modules
 		"code_coverage.policy",
 		"code_coverage.policy.other",
@@ -371,7 +374,6 @@ var (
 		"libgraphicsenv",
 		"libhardware",
 		"libhardware_headers",
-		"libincfs_headers",
 		"libnativeloader-headers",
 		"libnativewindow_headers",
 		"libneuralnetworks_headers",
@@ -553,15 +555,16 @@ var (
 		"auto_value_plugin_resources",      // TODO(b/210751803), we don't handle path property for filegroups
 
 		// go deps:
+		"aapt2-protos",                                                                               // depends on soong_zip, a go binary
 		"analyze_bcpf",                                                                               // depends on bpmodify a blueprint_go_binary.
 		"apex-protos",                                                                                // depends on soong_zip, a go binary
 		"generated_android_icu4j_src_files", "generated_android_icu4j_test_files", "icu4c_test_data", // depends on unconverted modules: soong_zip
 		"host_bionic_linker_asm",                                                  // depends on extract_linker, a go binary.
 		"host_bionic_linker_script",                                               // depends on extract_linker, a go binary.
 		"libc_musl_sysroot_bionic_arch_headers",                                   // depends on soong_zip
-		"libc_musl_sysroot_zlib_headers",                                          // depends on soong_zip and zip2zip
 		"libc_musl_sysroot_bionic_headers",                                        // 218405924, depends on soong_zip and generates duplicate srcs
 		"libc_musl_sysroot_libc++_headers", "libc_musl_sysroot_libc++abi_headers", // depends on soong_zip, zip2zip
+		"libc_musl_sysroot_zlib_headers", // depends on soong_zip and zip2zip
 		"robolectric-sqlite4java-native", // depends on soong_zip, a go binary
 		"robolectric_tzdata",             // depends on soong_zip, a go binary
 
@@ -618,6 +621,9 @@ var (
 		// '//bionic/libc:libc_bp2build_cc_library_static' is duplicated in the 'deps' attribute of rule
 		"toybox-static",
 
+		// aidl files not created
+		"overlayable_policy_aidl_interface",
+
 		// cc_test related.
 		// Failing host cc_tests
 		"memunreachable_unit_test",
@@ -641,6 +647,8 @@ var (
 		"libnativebridge3-test-case",
 		"libnativebridge6-test-case",
 		"libnativebridge6prezygotefork",
+
+		"libandroidfw_tests", "aapt2_tests", // failing due to data path issues
 
 		// cc_test with unconverted deps, or are device-only (and not verified to pass yet)
 		"AMRWBEncTest",
