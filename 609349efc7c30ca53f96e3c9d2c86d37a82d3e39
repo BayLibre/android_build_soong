@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a1046f_44b0f33c",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3049,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-16T21:29:07Z",
+      "side": 1,
+      "message": "It\u0027s actually intentional just to limit the number of Bazel targets in test asserts. The previous test already verifies it works for cc_library so this test doesn\u0027t need to.",
+      "parentUuid": "ac31dff1_d9ee6e53",
+      "revId": "609349efc7c30ca53f96e3c9d2c86d37a82d3e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0acf926c_c8b7d396",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-16T21:22:49Z",
       "side": 1,
       "message": "Forgotten cruft?",
+      "revId": "609349efc7c30ca53f96e3c9d2c86d37a82d3e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb432898_862f10ea",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-16T21:29:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0acf926c_c8b7d396",
       "revId": "609349efc7c30ca53f96e3c9d2c86d37a82d3e39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
