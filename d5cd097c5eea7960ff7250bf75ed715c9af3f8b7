@@ -213,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ebe26ef_c0e82d70",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-16T20:16:47Z",
+      "side": 1,
+      "message": "Is this a bug in `json_encode`, then? Can you fix that? It would be good if we could avoid having JsonCcInfo altogether.",
+      "parentUuid": "067c301a_9ee97f9e",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a011d99_ace67387",
         "filename": "bazel/cquery/request_type_test.go",
         "patchSetId": 1
