@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "218453f9_bc237a64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-09-16T11:22:07Z",
+      "side": 1,
+      "message": "There need to be a separate `Bug:` label for each bug number.\n\n```\nBug: 245383870\nBug: 155630745\n```\n\nAlso, please address the other unresolved comment.",
+      "parentUuid": "5f3adc14_107c9cf2",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49188122_54cef8f6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
