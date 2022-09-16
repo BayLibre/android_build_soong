@@ -214,6 +214,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a3f121_c54b905e",
+        "filename": "cc/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-16T14:44:26Z",
+      "side": 1,
+      "message": "This seems fine.\n\nWhile not widely used in our codebase, but it is a recommended best practice for go: \n* go/go-style/best-practices#funcargs\n* go/go-style/best-practices#option-structure\n\nI\u0027d rather aim for introducing best practices where we can than avoiding them because they\u0027re not used currently :)",
+      "parentUuid": "8ac2b6b2_de546395",
+      "range": {
+        "startLine": 232,
+        "startChar": 5,
+        "endLine": 232,
+        "endChar": 22
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cc7845e_563713b6",
