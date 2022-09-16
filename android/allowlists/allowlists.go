@@ -491,6 +491,20 @@ var (
 
 		//frameworks/native/cmds/cmd
 		"libcmd",
+
+		"libcodec2_hidl@1.0",
+		"libcodec2_hidl_plugin_stub",
+		"libcodec2_hidl_plugin",
+		"libstagefright_bufferqueue_helper_novndk",
+		"libstagefright_bufferqueue_helper",
+		"libgui_bufferqueue_static",
+		"libGLESv2",
+		"libEGL",
+		"libcodec2_vndk",
+		"libnativeloader_lazy",
+		"libnativeloader",
+		"libEGL_getProcAddress",
+		"libEGL_blobCache",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
