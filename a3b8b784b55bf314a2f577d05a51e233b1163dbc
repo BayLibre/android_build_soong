@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef7c6089_be5e4636",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-16T19:16:29Z",
+      "side": 1,
+      "message": "nit: can save some indentation by doing\n```\nif aidlLabelList.IsEmpty() {\n    return nil\n}\n\n...\n\n\u003crest of code\u003e\n```",
+      "revId": "a3b8b784b55bf314a2f577d05a51e233b1163dbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
