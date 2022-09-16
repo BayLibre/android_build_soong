@@ -405,6 +405,86 @@ bundletool {
 				},
 			},
 		},
+		{
+			protoText: `
+variant {
+	targeting:{
+		sdk_version_targeting:{value:{min:{value:29}}}
+		multi_abi_targeting:{value:{abi:{alias:ARMEABI_V7A}} alternatives:{abi:{alias:ARMEABI_V7A} abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:X86}} alternatives:{abi:{alias:X86} abi:{alias:X86_64}}}
+	}
+	apk_set:{
+		module_metadata {name: "base" targeting {} delivery_type: INSTALL_TIME}
+		apk_description:{targeting:{multi_abi_targeting:{value:{abi:{alias:ARMEABI_V7A}} alternatives:{abi:{alias:ARMEABI_V7A} abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:ARM64_V8A}} alternatives:{abi:{alias: X86}} alternatives:{abi:{alias:X86} abi:{alias:X86_64}}}} path:"standalones/standalone-armeabi_v7a.apex" apex_apk_metadata:{}}
+	}
+	variant_number:0
+}
+variant {
+	targeting:{
+		sdk_version_targeting:{value:{min:{value:29}}}
+		multi_abi_targeting:{value:{abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:ARMEABI_V7A}} alternatives:{abi:{alias:ARMEABI_V7A} abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:X86}} alternatives:{abi:{alias:X86} abi:{alias:X86_64}}}
+	}
+	apk_set:{
+		module_metadata {name: "base" targeting {} delivery_type: INSTALL_TIME}
+		apk_description:{targeting:{multi_abi_targeting:{value:{abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:ARMEABI_V7A}} alternatives:{abi:{alias:ARMEABI_V7A} abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:X86}} alternatives:{abi:{alias:X86} abi:{alias:X86_64}}}} path:"standalones/standalone-arm64_v8a.apex" apex_apk_metadata:{}}
+	}
+	variant_number:1
+}
+variant {
+	targeting:{
+		sdk_version_targeting:{value:{min:{value:29}}}
+		multi_abi_targeting:{value:{abi:{alias:ARMEABI_V7A} abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:ARMEABI_V7A}} alternatives:{abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:X86}} alternatives:{abi:{alias:X86} abi:{alias:X86_64}}}
+	}
+	apk_set:{
+		module_metadata {name: "base" targeting {} delivery_type: INSTALL_TIME}
+		apk_description:{targeting:{multi_abi_targeting:{value:{abi:{alias:ARMEABI_V7A} abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:ARMEABI_V7A}} alternatives:{abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:X86}} alternatives:{abi:{alias:X86} abi:{alias:X86_64}}}} path:"standalones/standalone-armeabi_v7a.arm64_v8a.apex" apex_apk_metadata:{}}
+	}
+	variant_number:2
+}
+variant {
+	targeting:{
+		sdk_version_targeting:{value:{min:{value:29}}}
+		multi_abi_targeting:{value:{abi:{alias:X86}} alternatives:{abi:{alias:ARMEABI_V7A}} alternatives:{abi:{alias:ARMEABI_V7A} abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:X86} abi:{alias:X86_64}}}
+	}
+	apk_set:{
+		module_metadata {name: "base" targeting {} delivery_type: INSTALL_TIME}
+		apk_description:{targeting:{multi_abi_targeting:{value:{abi:{alias:X86}} alternatives:{abi:{alias:ARMEABI_V7A}} alternatives:{abi:{alias:ARMEABI_V7A} abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:X86} abi:{alias:X86_64}}}} path:"standalones/standalone-x86.apex" apex_apk_metadata:{}}
+	}
+	variant_number:3
+}
+variant {
+	targeting:{
+		sdk_version_targeting:{value:{min:{value:29}}}
+		multi_abi_targeting:{value:{abi:{alias:X86} abi:{alias:X86_64}} alternatives:{abi:{alias:ARMEABI_V7A}} alternatives:{abi:{alias:ARMEABI_V7A} abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:X86}}}
+	}
+	apk_set:{
+		module_metadata {name: "base" targeting {} delivery_type: INSTALL_TIME}
+		apk_description:{targeting:{multi_abi_targeting:{value:{abi:{alias:X86} abi:{alias:X86_64}} alternatives:{abi:{alias:ARMEABI_V7A}} alternatives:{abi:{alias:ARMEABI_V7A} abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:ARM64_V8A}} alternatives:{abi:{alias:X86}}}} path:"standalones/standalone-x86.x86_64.apex" apex_apk_metadata:{}}
+	}
+	variant_number:4
+}
+`,
+			configs: []testConfigDesc{
+				{
+					name: "multi-variant multi-target",
+					targetConfig: TargetConfig{
+						sdkVersion: 33,
+						screenDpi: map[bp.ScreenDensity_DensityAlias]bool{
+							bp.ScreenDensity_DENSITY_UNSPECIFIED: true,
+						},
+						abis: map[bp.Abi_AbiAlias]int{
+							bp.Abi_ARM64_V8A:   0,
+							bp.Abi_ARMEABI_V7A: 1,
+						},
+					},
+					expected: SelectionResult{
+						"base",
+						[]string{
+							"standalones/standalone-armeabi_v7a.arm64_v8a.apex",
+						},
+					},
+				},
+			},
+		},
 	}
 	for _, testCase := range testCases {
 		var toc bp.BuildApksResult
@@ -412,10 +492,12 @@ bundletool {
 			t.Fatal(err)
 		}
 		for _, config := range testCase.configs {
-			actual := selectApks(&toc, config.targetConfig)
-			if !reflect.DeepEqual(config.expected, actual) {
-				t.Errorf("%s: expected %v, got %v", config.name, config.expected, actual)
-			}
+			t.Run(config.name, func(t *testing.T) {
+				actual := selectApks(&toc, config.targetConfig)
+				if !reflect.DeepEqual(config.expected, actual) {
+					t.Errorf("expected %v, got %v", config.expected, actual)
+				}
+			})
 		}
 	}
 }
