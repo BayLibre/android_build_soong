@@ -83,6 +83,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce3b98af_4ecffc36",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-16T19:41:57Z",
+      "side": 1,
+      "message": "Pre-generics Go can\u0027t support passing the slice to the sort function because it had to be a concretely typed slice to support indexing.  Go is being very deliberate about introducing generics into the stdlib to avoid introducing something they can\u0027t support long term, but I expect that to pick up speed in the next few releases, and then hopefully there will be better interfaces to functions like this, and a max function too.",
+      "parentUuid": "baa38fdb_81912cf6",
+      "revId": "dc5ae91176e91f453c1bf85bafa77331650bc3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "078fca78_88360d48",
