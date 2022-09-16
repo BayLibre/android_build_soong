@@ -16,6 +16,24 @@
       "message": "yudiliu@ you might have a different CL already allowlisting some of these modules. If you do, I can rebase onto your CL to remove these.",
       "revId": "4ae41b6ebb979776053fb42d032d06fef69cbc00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d16c71_1d0f4d0d",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-09-16T22:54:17Z",
+      "side": 1,
+      "message": "your fix doesn\u0027t really depend on these lines here so you can safely remove them, I will then pull your cl and do further verify before allowlisting these.",
+      "parentUuid": "4b32bd02_63ab759d",
+      "revId": "4ae41b6ebb979776053fb42d032d06fef69cbc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
