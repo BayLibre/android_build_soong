@@ -450,3 +450,23 @@ func MakeBazelTargetNoRestrictions(typ, name string, attrs AttrNameToString) str
 func MakeBazelTarget(typ, name string, attrs AttrNameToString) string {
 	return makeBazelTargetHostOrDevice(typ, name, attrs, android.DeviceSupported)
 }
+
+func makeCcStubSuiteTargets(name string, attrs AttrNameToString) string {
+	if _, hasStubs := attrs["stubs_symbol_file"]; !hasStubs {
+		return ""
+	}
+	STUB_SUITE_ATTRS := map[string]string{
+		"stubs_symbol_file": "symbol_file",
+		"stubs_versions":    "versions",
+		"soname":            "soname",
+		"source_library":    "source_library",
+	}
+
+	stubSuiteAttrs := AttrNameToString{}
+	for key, _ := range attrs {
+		if _, stubSuiteAttr := STUB_SUITE_ATTRS[key]; stubSuiteAttr {
+			stubSuiteAttrs[STUB_SUITE_ATTRS[key]] = attrs[key]
+		}
+	}
+	return MakeBazelTarget("cc_stub_suite", name+"_stub_libs", stubSuiteAttrs)
+}
