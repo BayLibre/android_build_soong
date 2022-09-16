@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b46f61_44c8b05b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-16T21:22:49Z",
+      "side": 1,
+      "message": "LGTM, though some notes. Thanks for adding this support!",
+      "revId": "609349efc7c30ca53f96e3c9d2c86d37a82d3e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac31dff1_d9ee6e53",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3049,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-16T21:22:49Z",
+      "side": 1,
+      "message": "Did you mean `cc_library` here?",
+      "revId": "609349efc7c30ca53f96e3c9d2c86d37a82d3e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0acf926c_c8b7d396",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-16T21:22:49Z",
+      "side": 1,
+      "message": "Forgotten cruft?",
+      "revId": "609349efc7c30ca53f96e3c9d2c86d37a82d3e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
