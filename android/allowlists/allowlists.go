@@ -498,6 +498,15 @@ var (
 
 		//frameworks/native/cmds/cmd
 		"libcmd",
+
+		"libgui_bufferqueue_static",
+		"libGLESv2",
+		"libEGL",
+		"libcodec2_vndk",
+		"libnativeloader_lazy",
+		"libnativeloader",
+		"libEGL_getProcAddress",
+		"libEGL_blobCache",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
