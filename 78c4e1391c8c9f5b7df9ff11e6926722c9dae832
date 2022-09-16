@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88fc1522_73d2cd77",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-16T14:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0201f07_4a286578",
+      "range": {
+        "startLine": 680,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 12
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7d033b3_d62eb82a",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Technically, we are creating a cc library under the hood. In particular, though, the reason this naming is important is that, IIUC, mixed builds will be looking for targets with this naming convention when it needs a static variant of a library. Is this not the case?",
       "parentUuid": "c7d033b3_d62eb82a",
+      "range": {
+        "startLine": 693,
+        "startChar": 34,
+        "endLine": 693,
+        "endChar": 67
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c3a76bc_db4b3dcf",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-16T14:11:41Z",
+      "side": 1,
+      "message": "Discussed offline. Changing course considerably.",
+      "parentUuid": "10b73581_0feb1e9e",
       "range": {
         "startLine": 693,
         "startChar": 34,
@@ -142,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac2b6b2_de546395",
+        "filename": "cc/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-16T14:11:41Z",
+      "side": 1,
+      "message": "See what you think of how it looks now",
+      "parentUuid": "188e57cc_2352d9a8",
+      "range": {
+        "startLine": 232,
+        "startChar": 5,
+        "endLine": 232,
+        "endChar": 22
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cc7845e_563713b6",
@@ -189,6 +261,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd28ff0d_f5f7a2f8",
+        "filename": "cc/sysprop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-16T14:11:41Z",
+      "side": 1,
+      "message": "Discussed offline...Taking a different approach.",
+      "parentUuid": "fa6e2ea7_c5622f1d",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 27
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e3a5448_a04be8da",
@@ -226,6 +322,30 @@
       "side": 1,
       "message": "Why would the naming be different between those two cases?",
       "parentUuid": "7e3a5448_a04be8da",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 27
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6690f7ba_4f66ff37",
+        "filename": "cc/sysprop.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-16T14:11:41Z",
+      "side": 1,
+      "message": "Discussed offline",
+      "parentUuid": "df48cf11_334200f6",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -296,6 +416,30 @@
       "side": 1,
       "message": "Based on some of Liz\u0027s comments, this may get refactored. If it stays this way, I will do so.",
       "parentUuid": "debe5e34_082a48e2",
+      "range": {
+        "startLine": 577,
+        "startChar": 2,
+        "endLine": 577,
+        "endChar": 6
+      },
+      "revId": "78c4e1391c8c9f5b7df9ff11e6926722c9dae832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39aaf169_233c8e35",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-16T14:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a895311c_8e75ca15",
       "range": {
         "startLine": 577,
         "startChar": 2,
