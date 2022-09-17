@@ -64,16 +64,7 @@ func (t BazelTarget) Label() string {
 // BazelTargets is a typedef for a slice of BazelTarget objects.
 type BazelTargets []BazelTarget
 
-func (targets BazelTargets) packageRule() *BazelTarget {
-	for _, target := range targets {
-		if target.ruleClass == "package" {
-			return &target
-		}
-	}
-	return nil
-}
-
-// sort a list of BazelTargets in-place, by name, and by generated/handcrafted types.
+// sort a list of BazelTargets in-place by name
 func (targets BazelTargets) sort() {
 	sort.Slice(targets, func(i, j int) bool {
 		return targets[i].name < targets[j].name
@@ -86,9 +77,7 @@ func (targets BazelTargets) sort() {
 func (targets BazelTargets) String() string {
 	var res string
 	for i, target := range targets {
-		if target.ruleClass != "package" {
-			res += target.content
-		}
+		res += target.content
 		if i != len(targets)-1 {
 			res += "\n\n"
 		}
