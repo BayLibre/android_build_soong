@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f0b2cf_17637087",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-19T23:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "675604cf_32bfac04",
+      "range": {
+        "startLine": 1629,
+        "startChar": 39,
+        "endLine": 1629,
+        "endChar": 42
+      },
+      "revId": "3e9d32ac9e3fb2d7a0194366e299f2e4a0d067cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e4bcf03_fa296288",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f23e42ae_1cb0dbb8",
+        "filename": "cc/gen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-19T23:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e4bcf03_fa296288",
+      "range": {
+        "startLine": 234,
+        "startChar": 33,
+        "endLine": 234,
+        "endChar": 34
+      },
+      "revId": "3e9d32ac9e3fb2d7a0194366e299f2e4a0d067cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49dbaca8_9c911d33",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-16T14:44:26Z",
       "side": 1,
       "message": "nit: can we include `sysprop` in the name? ,e.g. moduleName + `_cc_sysprop_library` as this would better match the naming scheme [recommended](https://bazel.build/reference/be/protocol-buffer#proto_library) for protos and similar to what we are using in the conversion for protos: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/proto.go;l\u003d188;drc\u003d2aa806b52d305b1fd0eb7007f13a331eaa034e17 (though we need to add `_library` there as well)",
+      "range": {
+        "startLine": 235,
+        "startChar": 37,
+        "endLine": 235,
+        "endChar": 47
+      },
+      "revId": "3e9d32ac9e3fb2d7a0194366e299f2e4a0d067cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f39f39f4_d8d79165",
+        "filename": "cc/gen.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-19T23:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49dbaca8_9c911d33",
       "range": {
         "startLine": 235,
         "startChar": 37,
