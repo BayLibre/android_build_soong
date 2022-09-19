@@ -16,6 +16,24 @@
       "message": "I left a comment in the bug too asking what\u0027s conflicting, but if we do want to reduce conflicts by removing these args completely, let\u0027s still leave a comment about this file being automatically generated. That way it\u0027ll be [a little] less likely people will make manual modifications that will be overwritten on the next update.\n\nIdeally it would say something about update_prebuilts.py instead of pom2mk/pom2bp, but that\u0027s less critical than just something saying automatically generated.",
       "revId": "f90c6ea2a9b1a4bbfe0fc84af93892e18d8db9fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c93aca77_5517c60e",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1044446
+      },
+      "writtenOn": "2022-09-19T19:46:38Z",
+      "side": 1,
+      "message": "IIUC the issue was less due to manual modifications and more due to differences in how the script is being invoked differently across branches, ex. with more libraries downstream. It\u0027s occasionally been an issue for the contents of this file as well, and we have plans to give libraries their own independent build files, but it\u0027s a more frequent issue when all the changes happen on a single line.",
+      "parentUuid": "b73894d2_c84bf9ae",
+      "revId": "f90c6ea2a9b1a4bbfe0fc84af93892e18d8db9fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
