@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73894d2_c84bf9ae",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-09-19T18:58:38Z",
+      "side": 1,
+      "message": "I left a comment in the bug too asking what\u0027s conflicting, but if we do want to reduce conflicts by removing these args completely, let\u0027s still leave a comment about this file being automatically generated. That way it\u0027ll be [a little] less likely people will make manual modifications that will be overwritten on the next update.\n\nIdeally it would say something about update_prebuilts.py instead of pom2mk/pom2bp, but that\u0027s less critical than just something saying automatically generated.",
+      "revId": "f90c6ea2a9b1a4bbfe0fc84af93892e18d8db9fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
