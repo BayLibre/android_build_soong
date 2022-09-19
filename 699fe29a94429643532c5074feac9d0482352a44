@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c967a67_1c757ef0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-19T21:10:36Z",
+      "side": 1,
+      "message": "This is looking great! Very nicely done. A few small things.",
+      "revId": "699fe29a94429643532c5074feac9d0482352a44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f936b71_f6525f6b",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-19T21:10:36Z",
+      "side": 1,
+      "message": "Would not recommend panic. We return `error` for a reason. How about you return this error instead of panic?",
+      "revId": "699fe29a94429643532c5074feac9d0482352a44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "151a1ad4_e1954cd9",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-19T21:10:36Z",
+      "side": 1,
+      "message": "Can you omit all field definitions which set `[]string{}` ? Thus, you can just have:\n\n```\ninputCcInfo: CcInfo{\n  TocFile: \"test\",\n}\n```\n\nDoes this work?",
+      "revId": "699fe29a94429643532c5074feac9d0482352a44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
