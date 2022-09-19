@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eefac0ec_4af894e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-19T00:41:47Z",
+      "side": 1,
+      "message": "The tests you\u0027ve run as according to your `Test` line are insufficient to verify this fixes the build. Have you run bp2build-incremental\u0027s test? This is `build/bazel/ci/bp2build.sh`",
+      "revId": "31327e9a2dde519082c23ef7fb9dacdf6b571d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
