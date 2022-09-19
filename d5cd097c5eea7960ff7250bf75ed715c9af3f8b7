@@ -229,6 +229,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5affe7_152b5520",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-19T19:43:02Z",
+      "side": 1,
+      "message": "Updated using json.decode() function to avoid creating a JsonCcinfo",
+      "parentUuid": "2ebe26ef_c0e82d70",
+      "revId": "d5cd097c5eea7960ff7250bf75ed715c9af3f8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a011d99_ace67387",

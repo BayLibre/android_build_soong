@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e00aac_5892a6b4",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-19T19:43:02Z",
+      "side": 1,
+      "message": "Updated. Thanks for the format advice.",
+      "parentUuid": "3860fd46_49cac576",
+      "revId": "e52559de345cb58c33a67fd4a472cb7c1410e976",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40223441_310b65a9",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4a43e4c_6b308de7",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-19T19:43:02Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "40223441_310b65a9",
+      "revId": "e52559de345cb58c33a67fd4a472cb7c1410e976",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27362526_7379f7ac",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-16T20:16:47Z",
       "side": 1,
       "message": "Do you need to specify empty string slices? Can you just specify `JsonCcInfo{}` here instead?",
+      "revId": "e52559de345cb58c33a67fd4a472cb7c1410e976",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed287d4b_d273e67b",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-19T19:43:02Z",
+      "side": 1,
+      "message": "Yes, you are right, updated the test cases.",
+      "parentUuid": "27362526_7379f7ac",
       "revId": "e52559de345cb58c33a67fd4a472cb7c1410e976",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
