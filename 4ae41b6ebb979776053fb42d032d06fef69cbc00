@@ -34,6 +34,24 @@
       "parentUuid": "4b32bd02_63ab759d",
       "revId": "4ae41b6ebb979776053fb42d032d06fef69cbc00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a37ae442_b753613f",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-19T14:48:06Z",
+      "side": 1,
+      "message": "I removed\n\n```\n\t\t\"libcodec2_hidl@1.0\",\n\t\t\"libcodec2_hidl_plugin_stub\",\n\t\t\"libcodec2_hidl_plugin\",\n\t\t\"libstagefright_bufferqueue_helper_novndk\",\n\t\t\"libstagefright_bufferqueue_helper\",\n```\n\nand kept\n\n```\n\n\t\t\"libgui_bufferqueue_static\",\n\t\t\"libGLESv2\",\n\t\t\"libEGL\",\n\t\t\"libcodec2_vndk\",\n\t\t\"libnativeloader_lazy\",\n\t\t\"libnativeloader\",\n\t\t\"libEGL_getProcAddress\",\n\t\t\"libEGL_blobCache\",\n```\n\nbecause they\u0027re needed to build `libgui_bufferqueue_static` which is mentioned in b/247151591. These are useful to be here for me to validate that it builds successfully.\n\nLet me know if you have any objection or prefer me to remove them all here.",
+      "parentUuid": "18d16c71_1d0f4d0d",
+      "revId": "4ae41b6ebb979776053fb42d032d06fef69cbc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
