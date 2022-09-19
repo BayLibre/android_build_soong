@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c71d204_b3b2463b",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-19T21:44:19Z",
+      "side": 1,
+      "message": "Thanks for the advice. Return the err instead.",
+      "parentUuid": "0f936b71_f6525f6b",
+      "revId": "699fe29a94429643532c5074feac9d0482352a44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "151a1ad4_e1954cd9",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-09-19T21:10:36Z",
       "side": 1,
       "message": "Can you omit all field definitions which set `[]string{}` ? Thus, you can just have:\n\n```\ninputCcInfo: CcInfo{\n  TocFile: \"test\",\n}\n```\n\nDoes this work?",
+      "revId": "699fe29a94429643532c5074feac9d0482352a44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83e3c93a_f3ebf54c",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-19T21:44:19Z",
+      "side": 1,
+      "message": "Yes, this works. I just updated. Thanks!",
+      "parentUuid": "151a1ad4_e1954cd9",
       "revId": "699fe29a94429643532c5074feac9d0482352a44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
