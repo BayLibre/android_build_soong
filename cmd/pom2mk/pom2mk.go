@@ -104,6 +104,7 @@ var excludes = make(Exclude)
 var sdkVersion string
 var useVersion string
 var staticDeps bool
+var writeCmd bool
 var jetifier bool
 
 func InList(s string, list []string) bool {
@@ -373,6 +374,9 @@ Usage: %s [--rewrite <regex>=<replace>] [-exclude <module>] [--extra-deps <modul
      -use-version can be used to only write makefiles for a specific version of those artifacts.
   -static-deps
      Whether to statically include direct dependencies.
+  -write-cmd
+     Whether to write the command line arguments used to generate the build file as a comment at
+     the top of the build file itself.
   -jetifier
      Enable jetifier in order to use androidx
   <dir>
@@ -391,6 +395,7 @@ Usage: %s [--rewrite <regex>=<replace>] [-exclude <module>] [--extra-deps <modul
 	flag.StringVar(&sdkVersion, "sdk-version", "", "What to write to LOCAL_SDK_VERSION")
 	flag.StringVar(&useVersion, "use-version", "", "Only read artifacts of a specific version")
 	flag.BoolVar(&staticDeps, "static-deps", false, "Statically include direct dependencies")
+	flag.BoolVar(&writeCmd, "write-cmd", true, "Write command line arguments as a comment")
 	flag.BoolVar(&jetifier, "jetifier", false, "Enable jetifier in order to use androidx")
 	flag.StringVar(&regen, "regen", "", "Rewrite specified file")
 	flag.Parse()
@@ -491,8 +496,11 @@ Usage: %s [--rewrite <regex>=<replace>] [-exclude <module>] [--extra-deps <modul
 		pom.FixDeps(modules)
 	}
 
-	fmt.Println("# Automatically generated with:")
-	fmt.Println("# pom2mk", strings.Join(proptools.ShellEscapeList(os.Args[1:]), " "))
+	if writeCmd {
+		fmt.Println("# Automatically generated with:")
+		fmt.Println("# pom2mk", strings.Join(proptools.ShellEscapeList(os.Args[1:]), " "))
+	}
+
 	fmt.Println("LOCAL_PATH := $(call my-dir)")
 
 	for _, pom := range poms {
