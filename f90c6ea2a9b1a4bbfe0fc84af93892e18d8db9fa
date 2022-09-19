@@ -34,6 +34,24 @@
       "parentUuid": "b73894d2_c84bf9ae",
       "revId": "f90c6ea2a9b1a4bbfe0fc84af93892e18d8db9fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9af33eb_fd46a3e2",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1044446
+      },
+      "writtenOn": "2022-09-19T19:49:34Z",
+      "side": 1,
+      "message": "Ah, and also that it\u0027ll embed absolute paths.\n\nBut yeah, agreed that we should make it clear that the file was automatically generated and should not be manually modified\n\nI\u0027ll wait for resolution on the bug before making any changes, since this has to replicate across branches.",
+      "parentUuid": "c93aca77_5517c60e",
+      "revId": "f90c6ea2a9b1a4bbfe0fc84af93892e18d8db9fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
