@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e17172_b88d2c34",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-19T17:55:46Z",
+      "side": 1,
+      "message": "looks like there\u0027s still a linking issue with this?",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 14
+      },
+      "revId": "c86f57df546e53566dad90abf727b4ebf3624c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5048d5c7_0da2f4c5",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 3137,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-19T17:55:46Z",
+      "side": 1,
+      "message": "can you add libs for these: https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/testing.go;l\u003d398;drc\u003d9d2f1743d27d5873642b75fd9795fb9b5fc0dcb3",
+      "range": {
+        "startLine": 3136,
+        "startChar": 0,
+        "endLine": 3137,
+        "endChar": 8
+      },
+      "revId": "c86f57df546e53566dad90abf727b4ebf3624c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
