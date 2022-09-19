@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ad314c_e2bc7fcc",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-19T21:50:22Z",
+      "side": 1,
+      "message": "name this ccInfo instead. That is, `var ccInfo CcInfo`.\nWithout that, you\u0027re polluting the CcInfo namespace. If someone tries to write `CcInfo{}` in ParseResult in the future, they\u0027ll get a bizarre error.",
+      "revId": "bae374d597bd62e5de451b10b871e84c99c435d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
