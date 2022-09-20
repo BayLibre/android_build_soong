@@ -22,6 +22,30 @@
       },
       "revId": "087af54772282e4380912bfc4dcd5455ea77115a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dec7ece_bf41e306",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2717,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-20T22:50:30Z",
+      "side": 1,
+      "message": "Addressing in another CL",
+      "parentUuid": "b04bb092_bfb1ced1",
+      "range": {
+        "startLine": 2717,
+        "startChar": 0,
+        "endLine": 2717,
+        "endChar": 93
+      },
+      "revId": "087af54772282e4380912bfc4dcd5455ea77115a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
