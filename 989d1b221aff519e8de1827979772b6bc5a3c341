@@ -16,6 +16,24 @@
       "message": "Nitpicking since this is a temporary property anyways, but should this go inside the proto propert?  `Proto struct { Respect_pkg_path *bool }`?",
       "revId": "989d1b221aff519e8de1827979772b6bc5a3c341",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ace24a_c0e75cf9",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-09-20T23:01:24Z",
+      "side": 1,
+      "message": "Oh I didn\u0027t realize that would get merged with the rest of the proto properties. Done.",
+      "parentUuid": "b62932fa_a795c01e",
+      "revId": "989d1b221aff519e8de1827979772b6bc5a3c341",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
