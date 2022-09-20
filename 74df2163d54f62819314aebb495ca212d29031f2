@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78fcf68e_4573413f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-20T02:03:26Z",
+      "side": 1,
+      "message": "This feature probably requires handling the update-api targets for aidl files as well (system/tools/aidl/build/aidl_api.go)\n\nWhile not _stricly_ blocking, I am going to mark this as WIP till I have a CL ready for system/tools/aidl. Submitting these two CLs atomically should hopefully reduce confusion when this change is communicated to end users",
+      "revId": "74df2163d54f62819314aebb495ca212d29031f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
