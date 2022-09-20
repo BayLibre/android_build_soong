@@ -217,6 +217,24 @@
       "parentUuid": "fb97272f_830d770d",
       "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4406a815_f8ebcc58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-09-20T15:10:07Z",
+      "side": 1,
+      "message": "Artur, could you please point out which CTS test will need to be updated?",
+      "parentUuid": "91da0ca6_8d9a0c5c",
+      "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
