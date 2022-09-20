@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04bb092_bfb1ced1",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2717,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-20T20:44:57Z",
+      "side": 1,
+      "message": "we shouldn\u0027t be creating stubs targets for static libraries, stubs are only shared libraries",
+      "range": {
+        "startLine": 2717,
+        "startChar": 0,
+        "endLine": 2717,
+        "endChar": 93
+      },
+      "revId": "087af54772282e4380912bfc4dcd5455ea77115a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
