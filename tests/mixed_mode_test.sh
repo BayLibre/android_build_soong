@@ -14,6 +14,8 @@ function test_bazel_smoke {
   setup
   create_mock_bazel
 
+  run_soong bp2build
+
   STANDALONE_BAZEL=true run_bazel info
 }
 
