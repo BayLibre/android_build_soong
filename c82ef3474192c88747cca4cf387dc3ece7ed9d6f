@@ -199,6 +199,24 @@
       "message": "Thank you for the contribution!",
       "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91da0ca6_8d9a0c5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-09-20T14:07:52Z",
+      "side": 1,
+      "message": "IIRC the CTS test will need to be updated (it doesn\u0027t expect /system_ext).",
+      "parentUuid": "fb97272f_830d770d",
+      "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
