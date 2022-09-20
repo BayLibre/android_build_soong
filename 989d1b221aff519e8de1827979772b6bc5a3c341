@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b62932fa_a795c01e",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-20T22:51:27Z",
+      "side": 1,
+      "message": "Nitpicking since this is a temporary property anyways, but should this go inside the proto propert?  `Proto struct { Respect_pkg_path *bool }`?",
+      "revId": "989d1b221aff519e8de1827979772b6bc5a3c341",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
