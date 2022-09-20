@@ -235,6 +235,24 @@
       "parentUuid": "91da0ca6_8d9a0c5c",
       "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d10d12_56fda40a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-09-20T15:38:24Z",
+      "side": 1,
+      "message": "cs/android-internal/packages/modules/SdkExtensions/javatests/com/android/os/classpath/ClasspathsTest.java, but it looks like it already understands system_ext. It would be good to verify that by adding a jar in system_ext and running the test though?",
+      "parentUuid": "4406a815_f8ebcc58",
+      "revId": "c82ef3474192c88747cca4cf387dc3ece7ed9d6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
