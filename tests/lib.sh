@@ -136,6 +136,8 @@ function run_bazel {
   # output should not be parsed as such.
   rm -rf out/ninja_build
 
+  run_soong bp2build
+
   tools/bazel "$@"
 }
 

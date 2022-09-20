@@ -144,8 +144,6 @@ EOF
 #define QQ 1
 EOF
 
-  run_soong bp2build
-
   run_bazel build --config=android --package_path=out/soong/workspace //a:qq
   local -r output_mtime1=$(stat -c "%y" bazel-bin/a/_objs/qq/qq.o)
 
