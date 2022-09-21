@@ -51,6 +51,24 @@
       "message": "I think keeping this the way it was in you previous CL (using CcInfo and marshaling)\n\nAs you said, there\u0027s no guarantee either way moving forward (unfortunately) that this string matches the actual starlark response. Might as well make test setup succinct.",
       "revId": "fc484d54028aae436c2143e9c4f06dcc261500cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7351b293_a05b7548",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-21T18:57:11Z",
+      "side": 1,
+      "message": "Revised the test cases to its previous version.",
+      "parentUuid": "968a8f25_9b08ab55",
+      "revId": "fc484d54028aae436c2143e9c4f06dcc261500cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
