@@ -33,6 +33,24 @@
       "message": "We now have 3 different ways of building an aab from an apex base. Filed b/247931356 to clean it up later.",
       "revId": "7113b19be803d54abca058b9d9384bee0625b206",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9dd2e49_a0c8b2a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-09-21T06:26:29Z",
+      "side": 1,
+      "message": "Thank you Jingwen for the filing. I wanted to do it with bazel, but this was the easier way for me. Let\u0027s clean up these with preserving the support for the single-abi apex bundle.",
+      "parentUuid": "a5eae9a8_42fe7d69",
+      "revId": "7113b19be803d54abca058b9d9384bee0625b206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
