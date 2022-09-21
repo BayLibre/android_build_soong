@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fddb9ea_edad1068",
+        "filename": "java/prebuilt_apis_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2022-09-21T13:16:18Z",
+      "side": 1,
+      "message": "Missing explicit string type",
+      "range": {
+        "startLine": 64,
+        "startChar": 47,
+        "endLine": 64,
+        "endChar": 67
+      },
+      "revId": "7212dbef03157f0bd048410c07283e4f1232b876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
