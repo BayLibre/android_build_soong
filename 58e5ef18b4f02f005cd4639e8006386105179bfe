@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34792e9c_44e5e2bf",
+        "filename": "java/app.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-21T19:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3e77760_7ccbe198",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 41
+      },
+      "revId": "58e5ef18b4f02f005cd4639e8006386105179bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97b46b11_691cae45",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-21T17:33:21Z",
       "side": 1,
       "message": "This can just return a.appProperties.EnforceDefaultTargetSdkVersion.",
+      "range": {
+        "startLine": 884,
+        "startChar": 8,
+        "endLine": 886,
+        "endChar": 1
+      },
+      "revId": "58e5ef18b4f02f005cd4639e8006386105179bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c63221_3c7cf1fe",
+        "filename": "java/app.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2022-09-21T19:12:29Z",
+      "side": 1,
+      "message": "Okay, I had to add this check\n```\n\tif Bool(a.appProperties.Enforce_default_target_sdk_version) {\n\t\ta.SetEnforceDefaultTargetSdkVersion(true)\n\t}\n```\n\nBecause updatable can be false and enforce_default_target_sdk_version can be set true in bp files. Let me know if there\u0027s a better way to handle this.",
+      "parentUuid": "97b46b11_691cae45",
       "range": {
         "startLine": 884,
         "startChar": 8,
