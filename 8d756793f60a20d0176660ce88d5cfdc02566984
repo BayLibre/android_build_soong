@@ -46,6 +46,30 @@
       },
       "revId": "8d756793f60a20d0176660ce88d5cfdc02566984",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b1dc029_231ade34",
+        "filename": "tests/lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-21T13:28:53Z",
+      "side": 1,
+      "message": "Done.\n\nI was thinking that since bp2build is required now (due to reference to soong_injection in the WORKSPACE file), it would make sense to just put it in the Bazel invocation function.\n\nBut I agree that it\u0027s better to be explicit in tests.",
+      "parentUuid": "8fdf0a31_19e4fe11",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 20
+      },
+      "revId": "8d756793f60a20d0176660ce88d5cfdc02566984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
