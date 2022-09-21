@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d8b511_ab37a7f8",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-21T13:57:45Z",
+      "side": 0,
+      "message": "I think you may want to have this as \"TocFile\" - 1) for consistency 2 the Go class has the field named `TocFile` and not `toc_file`",
+      "revId": "fcc53f992b40786b216d38844ab61945fe5c9071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
