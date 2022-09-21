@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b367b8_f10f7777",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-21T16:57:26Z",
+      "side": 1,
+      "message": "Would recommend first line of commit says:\n\nRollforward w/fix of \"Use json encoding for cquery ParseResult\"",
+      "revId": "fc484d54028aae436c2143e9c4f06dcc261500cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
