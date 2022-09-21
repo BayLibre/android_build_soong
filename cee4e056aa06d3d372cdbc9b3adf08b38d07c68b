@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5c6c4b_e82fef05",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-21T15:02:59Z",
+      "side": 1,
+      "message": "Can we explicitly name this as CcLibrarySharedLabel and CcLibraryStaticLabel to reduce the context switching?\n\nMoreover, I think it doesn\u0027t read well for `SyspropLibraryLabels` struct to have labels for cc libraries.\n\nIMO, one option to make this better is to have `Bp2buildSysprop` func to accept `syspropLibrary` object. This way, we can have\n\n```\npackage sysprop\n\nfunc (m *syspropLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) {\n  cc.Bp2buildSysprop(ctx, m)\n}\n```\n\n```\npackage cc\n\nfunc Bp2buildSysprop(ctx android.Bp2buildMutatorContext, syspropLib syspropLibrary) {\n  syspropLibraryLabel :\u003d syspropLib.BaseModuleName()\n  ccLibrarySharedLabel :\u003d syspropLib.CcImplementationModuleName()\n  ccLibraryStaticLabel :\u003d cc.BazelLabelNameForStaticModule(ccLibrarySharedLabel)\n  // use the label vars directly here\n}\n```",
+      "revId": "cee4e056aa06d3d372cdbc9b3adf08b38d07c68b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
