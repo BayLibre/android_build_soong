@@ -1,0 +1,4 @@
+alias(
+    name = "soong_zip",
+    actual = "//prebuilts/build-tools:linux-x86/bin/soong_zip",
+)
