@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b45e13c_9325905f",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-21T17:10:34Z",
+      "side": 1,
+      "message": "The select for `whole_archive_deps` fixed it.",
+      "parentUuid": "c77fe8dd_e7e10f0b",
+      "range": {
+        "startLine": 773,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 8
+      },
+      "revId": "cee4e056aa06d3d372cdbc9b3adf08b38d07c68b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c5c6c4b_e82fef05",
