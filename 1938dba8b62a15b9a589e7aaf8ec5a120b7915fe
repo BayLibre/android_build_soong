@@ -73,6 +73,30 @@
       },
       "revId": "1938dba8b62a15b9a589e7aaf8ec5a120b7915fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f03e21_fc7696a2",
+        "filename": "android/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-21T12:40:42Z",
+      "side": 1,
+      "message": "Because there are lots of module types which do not provide a min_sdk_version property (e.g. compat_config) that are already exported to S+. They need to have a min_sdk_version \u003c\u003d S but there is no way to specify that in the bp file.\n\nSo, if this defaulted to current for module types that did not support a min_sdk_version then those module types would not be included in the snapshots for anything other than the latest release.",
+      "parentUuid": "aff23fd5_709c1cff",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 74
+      },
+      "revId": "1938dba8b62a15b9a589e7aaf8ec5a120b7915fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
