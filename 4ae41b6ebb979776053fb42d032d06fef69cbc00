@@ -52,6 +52,24 @@
       "parentUuid": "18d16c71_1d0f4d0d",
       "revId": "4ae41b6ebb979776053fb42d032d06fef69cbc00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "143ba021_7d064974",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-21T21:51:04Z",
+      "side": 1,
+      "message": "Yu: I removed all of the allowlisting to hold on until you address the linking issue.",
+      "parentUuid": "a37ae442_b753613f",
+      "revId": "4ae41b6ebb979776053fb42d032d06fef69cbc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
