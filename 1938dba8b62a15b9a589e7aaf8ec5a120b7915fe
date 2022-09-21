@@ -16,6 +16,63 @@
       "message": "Ping.",
       "revId": "1938dba8b62a15b9a589e7aaf8ec5a120b7915fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eabdbf1_59380509",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-09-21T10:58:32Z",
+      "side": 1,
+      "message": "nice!",
+      "revId": "1938dba8b62a15b9a589e7aaf8ec5a120b7915fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e28e7e4_8f1b31a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-09-21T10:58:32Z",
+      "side": 1,
+      "message": "nice!",
+      "revId": "1938dba8b62a15b9a589e7aaf8ec5a120b7915fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff23fd5_709c1cff",
+        "filename": "android/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-09-21T10:58:32Z",
+      "side": 1,
+      "message": "Doesn\u0027t java_library default to \"current\", why default to 1 here?",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 74
+      },
+      "revId": "1938dba8b62a15b9a589e7aaf8ec5a120b7915fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
