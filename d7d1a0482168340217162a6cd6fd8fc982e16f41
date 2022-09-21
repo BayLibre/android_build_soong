@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84717875_f214a165",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-09-21T17:23:25Z",
+      "side": 1,
+      "message": "Why would we want to use the prebuilt version in soong? That makes it harder to test changes to the tool.\n\nAlso, why do we need this for bazel? What\u0027s wrong with using the prebuilt there? Could you elaborate in the commit message? And tag a bug?",
+      "parentUuid": "3b51da0c_28d88f5b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "d7d1a0482168340217162a6cd6fd8fc982e16f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a5d61df_b14aa8af",
         "filename": "android/allowlists/allowlists.go",
         "patchSetId": 6
