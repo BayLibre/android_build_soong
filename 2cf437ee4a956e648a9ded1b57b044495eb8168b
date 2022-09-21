@@ -98,6 +98,30 @@
       },
       "revId": "2cf437ee4a956e648a9ded1b57b044495eb8168b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8774828_dcf47fa2",
+        "filename": "scripts/build-apex-bundle.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-09-21T04:31:29Z",
+      "side": 1,
+      "message": "Ok, but then wouldn\u0027t it be better to assert that here?",
+      "parentUuid": "0e4499c2_c6c4a0cd",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "2cf437ee4a956e648a9ded1b57b044495eb8168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
