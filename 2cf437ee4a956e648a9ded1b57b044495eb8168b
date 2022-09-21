@@ -122,6 +122,30 @@
       },
       "revId": "2cf437ee4a956e648a9ded1b57b044495eb8168b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4b54f9_165fc076",
+        "filename": "scripts/build-apex-bundle.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-09-21T04:32:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8774828_dcf47fa2",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "2cf437ee4a956e648a9ded1b57b044495eb8168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
