@@ -22,6 +22,30 @@
       },
       "revId": "7212dbef03157f0bd048410c07283e4f1232b876",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baed8cd9_106de66a",
+        "filename": "java/prebuilt_apis_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-09-21T13:51:21Z",
+      "side": 1,
+      "message": "oh, I thought this syntax explicitly typed all 3 as string? I could well be wrong, feel free to correct me :)",
+      "parentUuid": "0fddb9ea_edad1068",
+      "range": {
+        "startLine": 64,
+        "startChar": 47,
+        "endLine": 64,
+        "endChar": 67
+      },
+      "revId": "7212dbef03157f0bd048410c07283e4f1232b876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
