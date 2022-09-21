@@ -46,6 +46,30 @@
       },
       "revId": "7212dbef03157f0bd048410c07283e4f1232b876",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e10da4cd_47495a36",
+        "filename": "java/prebuilt_apis_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2022-09-21T14:22:44Z",
+      "side": 1,
+      "message": "According to go.dev that is the case. My mistake!",
+      "parentUuid": "baed8cd9_106de66a",
+      "range": {
+        "startLine": 64,
+        "startChar": 47,
+        "endLine": 64,
+        "endChar": 67
+      },
+      "revId": "7212dbef03157f0bd048410c07283e4f1232b876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
