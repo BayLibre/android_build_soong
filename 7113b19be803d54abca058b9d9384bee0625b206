@@ -51,6 +51,24 @@
       "parentUuid": "a5eae9a8_42fe7d69",
       "revId": "7113b19be803d54abca058b9d9384bee0625b206",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "562ade66_07bd0ac0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-21T06:30:26Z",
+      "side": 1,
+      "message": "Yeah that is understandable. My only concern is the logic duplication which this CL will help.",
+      "parentUuid": "e9dd2e49_a0c8b2a2",
+      "revId": "7113b19be803d54abca058b9d9384bee0625b206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
