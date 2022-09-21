@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3e77760_7ccbe198",
+        "filename": "java/app.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-21T17:33:21Z",
+      "side": 1,
+      "message": "This can just be a bool as it would always be set. It needs a comment to explain when it is set.",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 41
+      },
+      "revId": "58e5ef18b4f02f005cd4639e8006386105179bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b46b11_691cae45",
+        "filename": "java/app.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-21T17:33:21Z",
+      "side": 1,
+      "message": "This can just return a.appProperties.EnforceDefaultTargetSdkVersion.",
+      "range": {
+        "startLine": 884,
+        "startChar": 8,
+        "endLine": 886,
+        "endChar": 1
+      },
+      "revId": "58e5ef18b4f02f005cd4639e8006386105179bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
