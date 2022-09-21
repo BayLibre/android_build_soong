@@ -1,0 +1,4 @@
+alias(
+    name = "zip2zip",
+    actual = "//prebuilts/build-tools:linux-x86/bin/zip2zip",
+)
