@@ -622,7 +622,7 @@ var (
 
 		// unconverted deps
 		"CarHTMLViewer",                                              // depends on unconverted modules android.car-stubs, car-ui-lib
-		"adb",                                                        // depends on unconverted modules: AdbWinApi, libandroidfw, libopenscreen-discovery, libopenscreen-platform-impl, libusb, bin2c_fastdeployagent, AdbWinUsbApi
+		"adb",                                                        // depends on unconverted modules: AdbWinApi, libopenscreen-discovery, libopenscreen-platform-impl, bin2c_fastdeployagent, AdbWinUsbApi
 		"android_icu4j_srcgen",                                       // depends on unconverted modules: currysrc
 		"android_icu4j_srcgen_binary",                                // depends on unconverted modules: android_icu4j_srcgen, currysrc
 		"apex_manifest_proto_java",                                   // b/210751803, depends on libprotobuf-java-full
@@ -647,7 +647,6 @@ var (
 		"libdebuggerd_handler",                                       // depends on unconverted module libdebuggerd_handler_core
 		"libdebuggerd_handler_core", "libdebuggerd_handler_fallback", // depends on unconverted module libdebuggerd
 		"libdexfiled",                                             // depends on unconverted modules: dexfile_operator_srcs, libartbased, libartpalette
-		"libfastdeploy_host",                                      // depends on unconverted modules: libandroidfw, libusb, AdbWinApi
 		"libgmock_main_ndk",                                       // depends on unconverted modules: libgtest_ndk_c++
 		"libgmock_ndk",                                            // depends on unconverted modules: libgtest_ndk_c++
 		"libnativehelper_lazy_mts_jni", "libnativehelper_mts_jni", // depends on unconverted modules: libnativetesthelper_jni, libgmock_ndk
@@ -727,7 +726,7 @@ var (
 		"debuggerd_test", // depends on unconverted modules: libdebuggerd
 		"elftls_dlopen_ie_error_helper",
 		"exec_linker_helper",
-		"fastdeploy_test", // depends on unconverted modules: AdbWinApi, libadb_host, libandroidfw, libfastdeploy_host, libopenscreen-discovery, libopenscreen-platform-impl, libusb
+		"fastdeploy_test", // depends on unconverted modules: AdbWinApi, libopenscreen-discovery, libopenscreen-platform-impl
 		"fdtrack_test",
 		"google-benchmark-test",
 		"googletest-param-test-test_ndk", // depends on unconverted modules: libgtest_ndk_c++
