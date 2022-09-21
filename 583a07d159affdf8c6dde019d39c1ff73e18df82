@@ -16,6 +16,24 @@
       "message": "Given that `stats-log-api-gen` is now allowed, can we also allow these?",
       "revId": "583a07d159affdf8c6dde019d39c1ff73e18df82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5285460_11f892b2",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-21T14:33:31Z",
+      "side": 1,
+      "message": "In term of blockers, we should be able to do that. Because of b/247536535, we can\u0027t do that yet.",
+      "parentUuid": "ae10bf2d_a28b07c8",
+      "revId": "583a07d159affdf8c6dde019d39c1ff73e18df82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
