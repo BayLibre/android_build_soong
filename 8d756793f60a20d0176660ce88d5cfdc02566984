@@ -22,6 +22,30 @@
       },
       "revId": "8d756793f60a20d0176660ce88d5cfdc02566984",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fdf0a31_19e4fe11",
+        "filename": "tests/lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-09-21T11:39:26Z",
+      "side": 1,
+      "message": "+1. This is a test so it makes sense to control individually when Soong / bp2build / Bazel / mixed mode build are run instead of assuming that when one needs another, one needs the other, too.\n\nA use case that comes to mind is testing correctness with a given sequence of changes to source code and Soong and Bazel invocations.",
+      "parentUuid": "ece06a98_b684e736",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 20
+      },
+      "revId": "8d756793f60a20d0176660ce88d5cfdc02566984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
