@@ -327,6 +327,7 @@ var (
 		"external/icu/icu4c/source/data/unidata/norm2": false,
 
 		"frameworks/base/tools/codegen":/* recursive = */ true,
+		"frameworks/base/tools/aapt2":/* recursive = */ false,
 		"frameworks/ex/common":/* recursive = */ true,
 
 		"packages/apps/Music":/* recursive = */ true,
