@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "99b43d9c_b099a712",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-09-21T04:02:56Z",
+      "side": 1,
+      "message": "Added more details.",
+      "parentUuid": "2857a5c3_04991139",
+      "revId": "2cf437ee4a956e648a9ded1b57b044495eb8168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ddab5a43_4124360e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-21T03:45:25Z",
       "side": 1,
       "message": "What if there are multiple {abi}.img files?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "2cf437ee4a956e648a9ded1b57b044495eb8168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e4499c2_c6c4a0cd",
+        "filename": "scripts/build-apex-bundle.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-09-21T04:02:56Z",
+      "side": 1,
+      "message": "AFIAK, Soong-built *-base.zip file has only a single {abi}.img file in apex/ directory: https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/builder.go;l\u003d170?q\u003dapex%2Fbuilder.go",
+      "parentUuid": "47103715_4e703b67",
       "range": {
         "startLine": 68,
         "startChar": 0,
