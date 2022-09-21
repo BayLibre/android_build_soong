@@ -87,6 +87,8 @@ type Bp2buildTestCase struct {
 	// An error with a string contained within the string of the expected error
 	ExpectedErr         error
 	UnconvertedDepsMode unconvertedDepsMode
+
+	KeepBuildFileForDirs []string
 }
 
 func RunBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.RegistrationContext), tc Bp2buildTestCase) {
@@ -107,6 +109,23 @@ func RunBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.Regi
 
 	registerModuleTypes(ctx)
 	ctx.RegisterModuleType(tc.ModuleTypeUnderTest, tc.ModuleTypeUnderTestFactory)
+
+	// Create a new bp2buildConfig for every test case.
+	var bp2buildConfig android.Bp2BuildConversionAllowlist
+	bp2buildConfig = android.NewBp2BuildAllowlist().SetDefaultConfig(
+		allowlists.Bp2BuildConfig{
+			android.Bp2BuildTopLevel: allowlists.Bp2BuildDefaultTrueRecursively,
+		},
+	)
+	for _, f := range tc.KeepBuildFileForDirs {
+		if tc.Dir == "" {
+			// if the tc cwd is the top level, the test env needs the ./ prefix.
+			f = "./" + f
+		}
+		bp2buildConfig.SetKeepExistingBuildFile(map[string]bool{
+			f: /*recursive=*/ false,
+		})
+	}
 	ctx.RegisterBp2BuildConfig(bp2buildConfig)
 	ctx.RegisterForBazelConversion()
 
