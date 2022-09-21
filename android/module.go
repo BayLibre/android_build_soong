@@ -1236,17 +1236,7 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 	for axis, configToProps := range archVariantProps {
 		for config, _props := range configToProps {
 			if archProps, ok := _props.(*commonProperties); ok {
-				// TODO(b/234748998) Remove this requiredFiltered workaround when aapt2 converts successfully
-				requiredFiltered := archProps.Required
-				if attrs.Name == "apexer" {
-					requiredFiltered = make([]string, 0, len(archProps.Required))
-					for _, req := range archProps.Required {
-						if req != "aapt2" && req != "apexer" {
-							requiredFiltered = append(requiredFiltered, req)
-						}
-					}
-				}
-				required.SetSelectValue(axis, config, depsToLabelList(requiredFiltered).Value)
+				required.SetSelectValue(axis, config, depsToLabelList(archProps.Required).Value)
 				if !neitherHostNorDevice {
 					if archProps.Enabled != nil {
 						if axis != bazel.OsConfigurationAxis || osSupport[config] {
