@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f622d1f6_ab1fbbb5",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-09-21T17:07:40Z",
+      "side": 1,
+      "message": "`prefix \u003d filepath.Join(prefix, components[:componentIndex+1]...)`\n\nAlso use `filepath.Join` for appending the filenames below.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 67
+      },
+      "revId": "dfd9f5a85ca8cb0cba85567773513b31d3f374d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
