@@ -1,9 +1,7 @@
 package cquery
 
 import (
-	"fmt"
 	"reflect"
-	"strings"
 	"testing"
 )
 
@@ -63,8 +61,7 @@ func TestGetPythonBinaryParseResults(t *testing.T) {
 }
 
 func TestGetCcInfoParseResults(t *testing.T) {
-	const expectedSplits = 10
-	noResult := strings.Repeat("|", expectedSplits-1)
+	noResult := `{ "OutputFiles": [], "CcObjectFiles": [], "CcSharedLibraryFiles": [], "CcStaticLibraryFiles": [], "Includes": [], "SystemIncludes": [], "Headers": [], "RootStaticArchives": [], "RootDynamicLibraries": [], "TocFile": ""} `
 	testCases := []struct {
 		description          string
 		input                string
@@ -89,9 +86,9 @@ func TestGetCcInfoParseResults(t *testing.T) {
 		},
 		{
 			description: "only output",
-			input:       "test" + noResult,
+			input:       `{ "OutputFiles": ["test","test3"], "CcObjectFiles": [], "CcSharedLibraryFiles": [], "CcStaticLibraryFiles": [], "Includes": [], "SystemIncludes": [], "Headers": [], "RootStaticArchives": [], "RootDynamicLibraries": [], "TocFile": ""} `,
 			expectedOutput: CcInfo{
-				OutputFiles:          []string{"test"},
+				OutputFiles:          []string{"test", "test3"},
 				CcObjectFiles:        []string{},
 				CcSharedLibraryFiles: []string{},
 				CcStaticLibraryFiles: []string{},
@@ -105,7 +102,7 @@ func TestGetCcInfoParseResults(t *testing.T) {
 		},
 		{
 			description: "only ToC",
-			input:       noResult + "test",
+			input:       `{ "OutputFiles": [], "CcObjectFiles": [], "CcSharedLibraryFiles": [], "CcStaticLibraryFiles": [], "Includes": [], "SystemIncludes": [], "Headers": [], "RootStaticArchives": [], "RootDynamicLibraries": [], "TocFile": "test"} `,
 			expectedOutput: CcInfo{
 				OutputFiles:          []string{},
 				CcObjectFiles:        []string{},
@@ -121,16 +118,7 @@ func TestGetCcInfoParseResults(t *testing.T) {
 		},
 		{
 			description: "all items set",
-			input: "out1, out2" +
-				"|object1, object2" +
-				"|shared_lib1, shared_lib2" +
-				"|static_lib1, static_lib2" +
-				"|., dir/subdir" +
-				"|system/dir, system/other/dir" +
-				"|dir/subdir/hdr.h" +
-				"|rootstaticarchive1" +
-				"|rootdynamiclibrary1" +
-				"|lib.so.toc",
+			input:       `{ "OutputFiles": ["out1", "out2"], "CcObjectFiles": ["object1", "object2"], "CcSharedLibraryFiles": ["shared_lib1", "shared_lib2"], "CcStaticLibraryFiles": ["static_lib1", "static_lib2"], "Includes": [".", "dir/subdir"], "SystemIncludes": ["system/dir", "system/other/dir"], "Headers": ["dir/subdir/hdr.h"], "RootStaticArchives": ["rootstaticarchive1"], "RootDynamicLibraries": ["rootdynamiclibrary1"], "TocFile": "lib.so.toc"} `,
 			expectedOutput: CcInfo{
 				OutputFiles:          []string{"out1", "out2"},
 				CcObjectFiles:        []string{"object1", "object2"},
@@ -143,18 +131,6 @@ func TestGetCcInfoParseResults(t *testing.T) {
 				RootDynamicLibraries: []string{"rootdynamiclibrary1"},
 				TocFile:              "lib.so.toc",
 			},
-		},
-		{
-			description:          "too few result splits",
-			input:                "|",
-			expectedOutput:       CcInfo{},
-			expectedErrorMessage: fmt.Sprintf("expected %d items, got %q", expectedSplits, []string{"", ""}),
-		},
-		{
-			description:          "too many result splits",
-			input:                strings.Repeat("|", expectedSplits+1), // 2 too many
-			expectedOutput:       CcInfo{},
-			expectedErrorMessage: fmt.Sprintf("expected %d items, got %q", expectedSplits, make([]string, expectedSplits+2)),
 		},
 	}
 	for _, tc := range testCases {
