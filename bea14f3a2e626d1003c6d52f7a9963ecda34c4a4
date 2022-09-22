@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a106d6e_1626ee6b",
+        "filename": "java/aapt2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-22T16:55:09Z",
+      "side": 1,
+      "message": "Use format here?",
+      "range": {
+        "startLine": 271,
+        "startChar": 27,
+        "endLine": 271,
+        "endChar": 32
+      },
+      "revId": "bea14f3a2e626d1003c6d52f7a9963ecda34c4a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0bfb86_1b6427ab",
+        "filename": "java/app_builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-22T16:55:09Z",
+      "side": 1,
+      "message": "I usually try to use subdirectories for this instead of the filename, the filename sometimes gets propagated to other modules which can confuse things when the name changes.",
+      "range": {
+        "startLine": 76,
+        "startChar": 68,
+        "endLine": 76,
+        "endChar": 84
+      },
+      "revId": "bea14f3a2e626d1003c6d52f7a9963ecda34c4a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1bc81c_ae92e73b",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-22T16:55:09Z",
+      "side": 1,
+      "message": "Shrink_resources?",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "bea14f3a2e626d1003c6d52f7a9963ecda34c4a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f665e87_76ff0ff0",
+        "filename": "java/resourceshrinker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-22T16:55:09Z",
+      "side": 1,
+      "message": "This extension looks like a proto source file, maybe .proto.apk?",
+      "range": {
+        "startLine": 30,
+        "startChar": 57,
+        "endLine": 30,
+        "endChar": 62
+      },
+      "revId": "bea14f3a2e626d1003c6d52f7a9963ecda34c4a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
