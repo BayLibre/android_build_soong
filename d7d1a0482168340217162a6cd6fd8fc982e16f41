@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3793d05c_09729a02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-22T17:00:50Z",
+      "side": 1,
+      "message": "There are two use cases of tools like soong_zip:\n\n1. Soong-written ninja actions\n2. Users specifying the tool in genrule/gensrcs\n\n\nUsing the prebuilt in #1 helps us ensure that the prebuilt gets updated if Soong itself needs to rely on new features.\n\nThe alias allows us to build Bazel targets like #2 before migrating these targets",
+      "parentUuid": "0271d51e_cf3d6fa9",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "d7d1a0482168340217162a6cd6fd8fc982e16f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a5d61df_b14aa8af",
