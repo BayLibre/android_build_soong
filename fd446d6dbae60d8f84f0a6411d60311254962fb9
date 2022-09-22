@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e97a15_feffdcf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-22T14:54:19Z",
+      "side": 1,
+      "message": "\\o/",
+      "revId": "fd446d6dbae60d8f84f0a6411d60311254962fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0b1a3e7_aec0d711",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-22T14:54:19Z",
+      "side": 1,
+      "message": "allowlist packages/modules/NeuralNetworks/apex entirely?",
+      "range": {
+        "startLine": 357,
+        "startChar": 3,
+        "endLine": 357,
+        "endChar": 30
+      },
+      "revId": "fd446d6dbae60d8f84f0a6411d60311254962fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
