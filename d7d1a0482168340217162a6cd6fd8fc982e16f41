@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0271d51e_cf3d6fa9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-09-22T16:43:07Z",
+      "side": 1,
+      "message": "I don\u0027t think we should do both the alias change and make soong use prebuilts. This alias change is to make bazel act like it\u0027s using the source version, so then making soong use the prebuilt version will make people wonder why bazel doesn\u0027t just directly use the prebuilt version as well.",
+      "parentUuid": "fd39c1e2_6dd695b1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "d7d1a0482168340217162a6cd6fd8fc982e16f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a5d61df_b14aa8af",
