@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "774eb694_50c50293",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-09-22T16:36:49Z",
+      "side": 1,
+      "message": "nit: Remove this /. (in python this would cause prefix to be ignored, I\u0027m assuming that\u0027s not the case for go though)",
+      "range": {
+        "startLine": 219,
+        "startChar": 68,
+        "endLine": 219,
+        "endChar": 69
+      },
+      "revId": "f52c2e0df8b6198d09b17a6cadb7c9e21b06b83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "101e15c9_742cc60d",
         "filename": "bp2build/build_conversion_test.go",
         "patchSetId": 6
