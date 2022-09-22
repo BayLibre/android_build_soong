@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cafc791_03c1cd9d",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-22T19:49:56Z",
+      "side": 1,
+      "message": "I meant `\"convert to \" + format`",
+      "revId": "d32226cf98cbfd0fc49fab173165d55ad7a0a617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c41755da_0c34dc0a",
+        "filename": "java/resourceshrinker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-09-22T19:49:56Z",
+      "side": 1,
+      "message": ".proto.out.apk",
+      "range": {
+        "startLine": 33,
+        "startChar": 56,
+        "endLine": 33,
+        "endChar": 65
+      },
+      "revId": "d32226cf98cbfd0fc49fab173165d55ad7a0a617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
