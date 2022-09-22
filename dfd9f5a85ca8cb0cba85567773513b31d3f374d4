@@ -22,6 +22,30 @@
       },
       "revId": "dfd9f5a85ca8cb0cba85567773513b31d3f374d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b60135c9_32eb6039",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-22T11:05:03Z",
+      "side": 1,
+      "message": "Done. This also removed the \"./\" workaround because filepath.Join normalizes \".\".",
+      "parentUuid": "f622d1f6_ab1fbbb5",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 67
+      },
+      "revId": "dfd9f5a85ca8cb0cba85567773513b31d3f374d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
