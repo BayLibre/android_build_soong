@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc9ec095_85c7c4e6",
+        "filename": "xml/xml_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-09-22T15:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75072bab_65b46763",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "7390b4a57c3775cd7f16da88aab8d29791db468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c5be15d_e303be12",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f79ad509_9fc716a2",
+        "filename": "xml/xml_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-09-22T15:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c5be15d_e303be12",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 20
+      },
+      "revId": "7390b4a57c3775cd7f16da88aab8d29791db468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f049a47_f804ab0d",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-08T17:09:33Z",
       "side": 1,
       "message": "use spaces instead of tabs in blueprint.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "7390b4a57c3775cd7f16da88aab8d29791db468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91773242_446de185",
+        "filename": "xml/xml_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-09-22T15:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f049a47_f804ab0d",
       "range": {
         "startLine": 87,
         "startChar": 0,
