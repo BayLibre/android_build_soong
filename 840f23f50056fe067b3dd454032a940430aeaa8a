@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3527be23_92b5eee2",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-22T12:05:35Z",
+      "side": 1,
+      "message": "should this be the default now? is the only exception gensrcs?",
+      "range": {
+        "startLine": 915,
+        "startChar": 13,
+        "endLine": 915,
+        "endChar": 24
+      },
+      "revId": "840f23f50056fe067b3dd454032a940430aeaa8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
