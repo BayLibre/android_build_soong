@@ -3260,6 +3260,75 @@ func TestVersioningMacro(t *testing.T) {
 	}
 }
 
+func TestStaticLibStaticLibsArgs(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library_static {
+			name: "foo",
+			srcs: ["foo.c"],
+		}
+
+		cc_library_static {
+			name: "bar",
+			srcs: ["bar.c"],
+		}
+
+		cc_library_static {
+			name: "baz",
+			srcs: ["baz.c"],
+			static_libs: ["foo"],
+			whole_static_libs: ["bar"],
+		}`)
+
+	variant := "android_arm64_armv8-a_static"
+	arRule := ctx.ModuleForTests("baz", variant).Rule("ar")
+
+	pathsToBase := func(paths android.Paths) []string {
+		var ret []string
+		for _, p := range paths {
+			ret = append(ret, p.Base())
+		}
+		return ret
+	}
+
+	if g, w := pathsToBase(arRule.Inputs), []string{"bar.o", "baz.o"}; !reflect.DeepEqual(w, g) {
+		t.Errorf("Expected input objects %q, got %q", w, g)
+	}
+
+	if len(arRule.Implicits) > 0 {
+		t.Errorf("Expected 0 additional deps, got %q", arRule.Implicits)
+	}
+}
+
+func TestSharedLibStaticLibsArgs(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library_static {
+			name: "foo",
+			srcs: ["foo.c"],
+		}
+
+		cc_library_static {
+			name: "bar",
+			srcs: ["bar.c"],
+		}
+
+		cc_library_shared {
+			name: "baz",
+			srcs: ["baz.c"],
+			static_libs: ["foo"],
+			whole_static_libs: ["bar"],
+		}`)
+
+	variant := "android_arm64_armv8-a_shared"
+	linkRule := ctx.ModuleForTests("baz", variant).Rule("ld")
+	libFlags := linkRule.Args["libFlags"]
+	if expected := "foo.a"; !strings.Contains(libFlags, expected) {
+		t.Errorf("Static lib %q was not found in %q", expected, libFlags)
+	}
+	if expected := "bar.a"; !strings.Contains(libFlags, expected) {
+		t.Errorf("Static lib %q was not found in %q", expected, libFlags)
+	}
+}
+
 func TestStaticExecutable(t *testing.T) {
 	ctx := testCc(t, `
 		cc_binary {
