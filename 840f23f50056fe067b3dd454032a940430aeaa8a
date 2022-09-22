@@ -22,6 +22,30 @@
       },
       "revId": "840f23f50056fe067b3dd454032a940430aeaa8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42c53669_ead8107f",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-22T13:02:54Z",
+      "side": 1,
+      "message": "good call. `RULEDIR` should be the default. In fact, aosp/2223377 revealed that bp2build for gensrcs should also convert genDir to RULEDIR. I\u0027ll address gensrcs in a separate CL\n\nhttps://android-review.googlesource.com/c/platform/build/soong/+/2226017/3..4 makes RULEDIR to be the default now, except for gensrcs to make the change in this CL small.",
+      "parentUuid": "3527be23_92b5eee2",
+      "range": {
+        "startLine": 915,
+        "startChar": 13,
+        "endLine": 915,
+        "endChar": 24
+      },
+      "revId": "840f23f50056fe067b3dd454032a940430aeaa8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
