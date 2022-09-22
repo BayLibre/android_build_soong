@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95a8bf91_631a6c6c",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-22T23:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "774eb694_50c50293",
+      "range": {
+        "startLine": 219,
+        "startChar": 68,
+        "endLine": 219,
+        "endChar": 69
+      },
+      "revId": "f52c2e0df8b6198d09b17a6cadb7c9e21b06b83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "101e15c9_742cc60d",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "739859e2_e1a8d17d",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-22T23:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "101e15c9_742cc60d",
+      "range": {
+        "startLine": 1514,
+        "startChar": 15,
+        "endLine": 1514,
+        "endChar": 20
+      },
+      "revId": "f52c2e0df8b6198d09b17a6cadb7c9e21b06b83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fc16263_df4048f3",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-09-22T16:52:39Z",
       "side": 1,
       "message": "Can this be recursive? I think recursive should be our default everywhere as it\u0027s easier to understand.",
+      "revId": "f52c2e0df8b6198d09b17a6cadb7c9e21b06b83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "515e05a3_ec418353",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-22T23:23:34Z",
+      "side": 1,
+      "message": "I think the tests should have explicit finer grained control over defining which files to keep (so it\u0027s easy to tell and debug, too), so it should be false here.",
+      "parentUuid": "2fc16263_df4048f3",
       "revId": "f52c2e0df8b6198d09b17a6cadb7c9e21b06b83b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
