@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7d94eab_5c352916",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-22T23:28:43Z",
+      "side": 1,
+      "message": "What Liz said. This CL benefits 2 because it\u0027s going to be a while before we have Go rules, and we don\u0027t have to add the label replacement/removal in bp2build itself (e.g. what was done for aapt2 in the apexer.required workaround).",
+      "parentUuid": "3793d05c_09729a02",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "d7d1a0482168340217162a6cd6fd8fc982e16f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a5d61df_b14aa8af",
