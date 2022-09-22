@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd39c1e2_6dd695b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-22T11:20:19Z",
+      "side": 1,
+      "message": "Cole: it\u0027s to keep potential differences small. Until we have plans to import rules_go (or write our own go rules), I agree that we should keep bazel and soong in sync.\n\nThis is an improvement over directly referencing the prebuilt because bp2build can now emit BUILD files that contain a dep to //build/soong/zip/cmd:soong_zip even though we\u0027re not converting the soong_zip module.\n\nFiled b/248222296 and elaborated in the commit.",
+      "parentUuid": "84717875_f214a165",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "d7d1a0482168340217162a6cd6fd8fc982e16f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a5d61df_b14aa8af",
@@ -71,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8541b7c7_b40ec8cf",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-22T11:20:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a5d61df_b14aa8af",
+      "range": {
+        "startLine": 327,
+        "startChar": 48,
+        "endLine": 327,
+        "endChar": 50
+      },
+      "revId": "d7d1a0482168340217162a6cd6fd8fc982e16f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16f20761_8eede992",
@@ -84,6 +132,30 @@
       "writtenOn": "2022-09-21T15:21:13Z",
       "side": 1,
       "message": "can you add the copyright header to this file? and perhaps a TODO for us no longer use a prebuilt of soong_zip in Bazel builds?",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "d7d1a0482168340217162a6cd6fd8fc982e16f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c11aa4_80dd50c0",
+        "filename": "zip/cmd/BUILD.bazel",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-22T11:20:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16f20761_8eede992",
       "range": {
         "startLine": 1,
         "startChar": 1,
