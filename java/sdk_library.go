@@ -1912,9 +1912,15 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 		return
 	}
 
+	// TODO: use a smarter switch here
+	isMainlineSdk := mctx.Config().DeviceProduct() == "mainline_sdk"
 	for _, scope := range generatedScopes {
 		// Use the stubs source name for legacy reasons.
-		module.createStubsSourcesAndApi(mctx, scope, module.stubsSourceModuleName(scope), scope.droidstubsArgs)
+		droidstubsArgs := scope.droidstubsArgs
+		if isMainlineSdk {
+			droidstubsArgs = append(droidstubsArgs, "--hide-annotation com.android.example.UnfinalizedApi")
+		}
+		module.createStubsSourcesAndApi(mctx, scope, module.stubsSourceModuleName(scope), droidstubsArgs)
 
 		module.createStubsLibrary(mctx, scope)
 	}
