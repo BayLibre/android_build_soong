@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "101e15c9_742cc60d",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-22T16:19:41Z",
+      "side": 1,
+      "message": "should we also have a case using BUILD.bazel and one with an Android.bp?",
+      "range": {
+        "startLine": 1514,
+        "startChar": 15,
+        "endLine": 1514,
+        "endChar": 20
+      },
+      "revId": "f52c2e0df8b6198d09b17a6cadb7c9e21b06b83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
