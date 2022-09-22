@@ -45,6 +45,23 @@
       },
       "revId": "f52c2e0df8b6198d09b17a6cadb7c9e21b06b83b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc16263_df4048f3",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-09-22T16:52:39Z",
+      "side": 1,
+      "message": "Can this be recursive? I think recursive should be our default everywhere as it\u0027s easier to understand.",
+      "revId": "f52c2e0df8b6198d09b17a6cadb7c9e21b06b83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
