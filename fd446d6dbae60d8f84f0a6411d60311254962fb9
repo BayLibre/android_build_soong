@@ -39,6 +39,30 @@
       },
       "revId": "fd446d6dbae60d8f84f0a6411d60311254962fb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a62fcb6_0bb10151",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-22T15:01:30Z",
+      "side": 1,
+      "message": "We probably can. To keep this CL small to just get `com.android.neuralnetworks` shipped, I can follow-up with that either in separate CL or as part of aosp/2216875.",
+      "parentUuid": "b0b1a3e7_aec0d711",
+      "range": {
+        "startLine": 357,
+        "startChar": 3,
+        "endLine": 357,
+        "endChar": 30
+      },
+      "revId": "fd446d6dbae60d8f84f0a6411d60311254962fb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
