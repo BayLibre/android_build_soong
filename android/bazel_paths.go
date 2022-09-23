@@ -244,7 +244,12 @@ func transformSubpackagePath(ctx BazelConversionPathContext, path bazel.Label) b
 	}
 
 	newLabel := ""
-	pathComponents := strings.Split(path.Label, "/")
+	inputPath := path.Label
+	if strings.HasPrefix(inputPath, "./") {
+		//drop "./" prefix for consistency
+		inputPath = strings.TrimPrefix(inputPath, "./")
+	}
+	pathComponents := strings.Split(inputPath, "/")
 	foundBlueprint := false
 	// Check the deepest subdirectory first and work upwards
 	for i := len(pathComponents) - 1; i >= 0; i-- {
