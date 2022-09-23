@@ -206,9 +206,9 @@ func BazelLabelForModuleSrcExcludes(ctx BazelConversionPathContext, paths, exclu
 //
 // A package boundary is determined by a BUILD file in the directory. This can happen in 2 cases:
 //
-// 1. An Android.bp exists, which bp2build will always convert to a sibling BUILD file.
-// 2. An Android.bp doesn't exist, but a checked-in BUILD/BUILD.bazel file exists, and that file
-//    is allowlisted by the bp2build configuration to be merged into the symlink forest workspace.
+//  1. An Android.bp exists, which bp2build will always convert to a sibling BUILD file.
+//  2. An Android.bp doesn't exist, but a checked-in BUILD/BUILD.bazel file exists, and that file
+//     is allowlisted by the bp2build configuration to be merged into the symlink forest workspace.
 func isPackageBoundary(config Config, prefix string, components []string, componentIndex int) bool {
 	prefix = filepath.Join(prefix, filepath.Join(components[:componentIndex+1]...))
 	if exists, _, _ := config.fs.Exists(filepath.Join(prefix, "Android.bp")); exists {
@@ -250,7 +250,12 @@ func transformSubpackagePath(ctx BazelConversionPathContext, path bazel.Label) b
 	}
 
 	newLabel := ""
-	pathComponents := strings.Split(path.Label, "/")
+	inputPath := path.Label
+	if strings.HasPrefix(inputPath, "./") {
+		//drop "./" prefix for consistency
+		inputPath = strings.TrimPrefix(inputPath, "./")
+	}
+	pathComponents := strings.Split(inputPath, "/")
 	foundPackageBoundary := false
 	// Check the deepest subdirectory first and work upwards
 	for i := len(pathComponents) - 1; i >= 0; i-- {
