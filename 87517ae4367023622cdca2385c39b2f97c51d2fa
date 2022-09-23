@@ -22,6 +22,30 @@
       },
       "revId": "87517ae4367023622cdca2385c39b2f97c51d2fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3016ff_d2951ab3",
+        "filename": "java/aapt2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2022-09-23T17:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23b40814_16a5eb10",
+      "range": {
+        "startLine": 271,
+        "startChar": 26,
+        "endLine": 271,
+        "endChar": 27
+      },
+      "revId": "87517ae4367023622cdca2385c39b2f97c51d2fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
