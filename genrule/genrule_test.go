@@ -790,6 +790,88 @@ func TestGenruleOutputFiles(t *testing.T) {
 		result.ModuleForTests("gen_all", "").Module().(*useSource).srcs)
 }
 
+func TestGenSrcsWithNonRootAndroidBpOutputFiles(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForGenRuleTest,
+		android.FixtureMergeMockFs(android.MockFS{
+			"external-protos-package/path/Android.bp": []byte(`
+				filegroup {
+					name: "external-protos",
+					srcs: ["baz/baz.proto", "bar.proto"],
+				}
+			`),
+			"foo-package-path/Android.bp": []byte(`
+				gensrcs {
+					name: "foo-headers",
+					cmd: "mkdir -p $(genDir) && cat $(in) >> $(genDir)/$(out)",
+					srcs: [
+						"src/proto/foo.proto",
+						":external-protos",
+					],
+					output_extension: "proto.h",
+				}
+			`),
+		}),
+	).RunTest(t)
+	gen := result.Module("foo-headers", "").(*Module)
+	android.AssertPathsRelativeToTopEquals(
+		t,
+		"files",
+		[]string{
+			"out/soong/.intermediates/foo-package-path/foo-headers/gen/gensrcs/foo-package-path/src/proto/foo.proto.h",
+			"out/soong/.intermediates/foo-package-path/foo-headers/gen/gensrcs/external-protos-package/path/baz/baz.proto.h",
+			"out/soong/.intermediates/foo-package-path/foo-headers/gen/gensrcs/external-protos-package/path/bar.proto.h",
+		},
+		gen.outputFiles,
+	)
+	android.AssertPathsRelativeToTopEquals(
+		t,
+		"include path",
+		[]string{"out/soong/.intermediates/foo-package-path/foo-headers/gen/gensrcs"},
+		gen.exportedIncludeDirs,
+	)
+}
+
+func TestGenSrcsWithSrcsFromExternalPackage(t *testing.T) {
+	bp := `
+		gensrcs {
+			name: "protoc-gen-headers",
+			cmd: "mkdir -p $(genDir) && cat $(in) >> $(genDir)/$(out)",
+			srcs: [
+				":external-protos",
+			],
+			output_extension: "proto.h",
+		}
+	`
+	result := android.GroupFixturePreparers(
+		prepareForGenRuleTest,
+		android.FixtureMergeMockFs(android.MockFS{
+			"external-protos-package/path/Android.bp": []byte(`
+				filegroup {
+					name: "external-protos",
+					srcs: ["foo/foo.proto", "bar.proto"],
+				}
+			`),
+		}),
+	).RunTestWithBp(t, bp)
+	gen := result.Module("protoc-gen-headers", "").(*Module)
+	android.AssertPathsRelativeToTopEquals(
+		t,
+		"files",
+		[]string{
+			"out/soong/.intermediates/protoc-gen-headers/gen/gensrcs/external-protos-package/path/foo/foo.proto.h",
+			"out/soong/.intermediates/protoc-gen-headers/gen/gensrcs/external-protos-package/path/bar.proto.h",
+		},
+		gen.outputFiles,
+	)
+	android.AssertPathsRelativeToTopEquals(
+		t,
+		"include path",
+		[]string{"out/soong/.intermediates/protoc-gen-headers/gen/gensrcs"},
+		gen.exportedIncludeDirs,
+	)
+}
+
 func TestPrebuiltTool(t *testing.T) {
 	testcases := []struct {
 		name             string
