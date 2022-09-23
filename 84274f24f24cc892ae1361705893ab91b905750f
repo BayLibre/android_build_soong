@@ -232,6 +232,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c2f11e5_317c8da3",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-23T20:11:49Z",
+      "side": 1,
+      "message": "If you copy-paste this, does it run successfully? Just want to double check that quoting every argument works well :)\n\nFor what it\u0027s worth, I have concerns that quoting \".tools/bazel\" might not work.",
+      "parentUuid": "afdbc9cf_5959f787",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2574105_a483412d",
         "filename": "android/bazel_handler.go",
         "patchSetId": 8

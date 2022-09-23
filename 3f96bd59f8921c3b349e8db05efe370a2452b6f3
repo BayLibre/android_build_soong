@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca3603f9_27b18f85",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-23T20:11:49Z",
+      "side": 1,
+      "message": "This probably deserves a helpful comment, as \"tokens\" is fairly nondescript.",
+      "revId": "3f96bd59f8921c3b349e8db05efe370a2452b6f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33d8f79e_922eb158",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-23T20:11:49Z",
+      "side": 1,
+      "message": "Why is this present twice?",
+      "revId": "3f96bd59f8921c3b349e8db05efe370a2452b6f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14aed0b8_5173a06c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-23T20:11:49Z",
+      "side": 1,
+      "message": "Can you continue to use backtick quotes with `\"\\\" \\\"\"` like you did elsewhere, so it\u0027s `\" \"` ?\n\nI\u0027m indifferent to this in general, but we should keep it consistent within a single line.",
+      "revId": "3f96bd59f8921c3b349e8db05efe370a2452b6f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c3bdaa_d510cb39",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-23T20:11:49Z",
+      "side": 1,
+      "message": "Avoid opening \u0027cquery.out\u0027 twice. It\u0027s more efficient to append to the same file descriptor twice instead of opening up two file descriptors.",
+      "revId": "3f96bd59f8921c3b349e8db05efe370a2452b6f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
