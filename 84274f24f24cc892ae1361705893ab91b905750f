@@ -177,6 +177,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abc078fe_4e9f8f9d",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-23T18:07:04Z",
+      "side": 1,
+      "message": "+1. I like:\n\n```\ncquery command line:\nTHIS\u003d1 IS\u003d1 REAL\u003d1 COMMAND\u003d1 bazel cquery ...\n\n//first/cquery:response|x86\u003e\u003e{...\n//second/cquery:response|arm64\u003e\u003e{...\n```",
+      "parentUuid": "4604f732_d655be74",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d7b0ff2_5c1be796",
         "filename": "android/bazel_handler.go",
         "patchSetId": 8
