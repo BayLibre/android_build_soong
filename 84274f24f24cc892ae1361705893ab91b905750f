@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b7e0e9b_ea1a1a2e",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-23T17:29:59Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "ca5bf89f_385a8a88",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6a2db19_f81f69f6",
         "filename": "android/bazel_handler.go",
         "patchSetId": 8
@@ -106,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e891a56_bf6eb998",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-23T17:29:59Z",
+      "side": 1,
+      "message": "+1\nO do \"/\" need to be quoted?",
+      "parentUuid": "ef640935_54b22a8a",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2574105_a483412d",
         "filename": "android/bazel_handler.go",
         "patchSetId": 8
@@ -117,6 +153,24 @@
       "writtenOn": "2022-09-23T16:02:47Z",
       "side": 1,
       "message": "Perhaps we should add a couple of newlines, so that it\u0027s clearly delineated from the real output?",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4604f732_d655be74",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-23T17:29:59Z",
+      "side": 1,
+      "message": "I think the command should be the first thing written to the log (cquery.out that is) - see my other comment about having the command in the log even when it fails.\nThen yep maybe a couple of newlines or a \"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\"",
+      "parentUuid": "b2574105_a483412d",
       "revId": "84274f24f24cc892ae1361705893ab91b905750f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
