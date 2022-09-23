@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66915a38_83d60073",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-09-23T03:04:33Z",
+      "side": 1,
+      "message": "Baligh, do you want me to just go ahead and submit this now? Should I wait for PV?",
+      "revId": "fc21a0e55bac3ba4c73f7bdb2f963ec38a8903c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
