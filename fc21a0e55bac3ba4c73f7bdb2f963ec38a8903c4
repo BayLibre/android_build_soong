@@ -16,6 +16,24 @@
       "message": "Baligh, do you want me to just go ahead and submit this now? Should I wait for PV?",
       "revId": "fc21a0e55bac3ba4c73f7bdb2f963ec38a8903c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e3b771_23cf7d25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2022-09-23T03:06:14Z",
+      "side": 1,
+      "message": "Thanks - mentioned that there is another revert already on its way. https://android-review.googlesource.com/c/platform/build/soong/+/2228234/",
+      "tag": "mailMessageId\u003d\u003cCACRFb3wK_fcERp4HHvNhY+eLSM7DDhHJJnQS1WdW-C-mQp1DOA@mail.gmail.com\u003e",
+      "revId": "fc21a0e55bac3ba4c73f7bdb2f963ec38a8903c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
