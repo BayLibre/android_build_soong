@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc1caa8_1b4d54ed",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-23T12:29:49Z",
+      "side": 0,
+      "message": "can you keep a test for STANDALONE_BAZEL or does it no longer work?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "62b471ae7123c1e63378d2679667276065cec157",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
