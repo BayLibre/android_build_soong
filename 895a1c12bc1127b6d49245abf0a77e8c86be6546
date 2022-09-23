@@ -1,0 +1,24 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000029518622",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/2223126?revision\u003d11",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "2036c674_6c529c4d",
+        "filename": "zip/cmd/BUILD.bazel",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-09-23T01:58:35Z",
+      "side": 1,
+      "message": "buildifier encountered internal errors",
+      "revId": "895a1c12bc1127b6d49245abf0a77e8c86be6546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
