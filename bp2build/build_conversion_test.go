@@ -958,7 +958,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
 			ModuleTypeUnderTestFactory: android.FileGroupFactory,
 			Blueprint: `filegroup {
     name: "fg_foo",
-    srcs: ["a", "b"],
+    srcs: ["./a", "b"], // note the ./ for one file
     bazel_module: { bp2build_available: true },
 }`,
 			ExpectedBazelTargets: []string{
