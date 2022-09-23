@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e63a10ea_aaf81eb6",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-09-23T21:32:15Z",
+      "side": 1,
+      "message": "nit: should we reference the bug? b/243072036",
+      "revId": "fc7731253c6eb05a64a4363aa4de142d90a9eb80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2c03f5_c395ae0c",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-09-23T21:32:15Z",
+      "side": 1,
+      "message": "why does this need a new variable? can\u0027t you just reassign it?",
+      "revId": "fc7731253c6eb05a64a4363aa4de142d90a9eb80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
