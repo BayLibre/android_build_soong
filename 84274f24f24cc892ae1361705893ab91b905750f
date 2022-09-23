@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca5bf89f_385a8a88",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-23T16:02:47Z",
+      "side": 1,
+      "message": "does printableCqueryCommand need to be a function of bazelRunner? I don\u0027t think we need a separate implementation for mockBazelRunner and the real runner, as this is making no actual process calls.",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6a2db19_f81f69f6",
         "filename": "android/bazel_handler.go",
         "patchSetId": 8
@@ -71,6 +88,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef640935_54b22a8a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-23T16:02:47Z",
+      "side": 1,
+      "message": "I think we can rather safely add quotes to *each* of the args, and not just those that contain spaces, no?\n\nWe\u0027ll need to do that for the query expression in some cases, anyway. Consider `deps(//foo)`. It will need to be surrounded by quotes.",
+      "parentUuid": "f93a22f4_a8b02ffe",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2574105_a483412d",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-23T16:02:47Z",
+      "side": 1,
+      "message": "Perhaps we should add a couple of newlines, so that it\u0027s clearly delineated from the real output?",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d7b0ff2_5c1be796",
         "filename": "android/bazel_handler.go",
         "patchSetId": 8
@@ -82,6 +134,24 @@
       "writtenOn": "2022-09-23T04:18:02Z",
       "side": 1,
       "message": "in case of error, we\u0027d probably be more interested in seeing the command in the log",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55db4588_9e6892ee",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-23T16:02:47Z",
+      "side": 1,
+      "message": "That\u0027s up to context.issueBazelCommand to return a usable error, no? Doesn\u0027t it do so?",
+      "parentUuid": "0d7b0ff2_5c1be796",
       "revId": "84274f24f24cc892ae1361705893ab91b905750f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
