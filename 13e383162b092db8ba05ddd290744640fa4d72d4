@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16bdbee3_99d0b72c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-23T03:35:50Z",
+      "side": 1,
+      "message": "Updated using printableCqueryCommand() function. Not able to edit in createBazelCommand(), because exec.Cmd.Output() will throw an error if we change the dependency syntax to `\"deps(@soong_injection//mixed_builds:buildroot, 2)\"`",
+      "parentUuid": "9551ba6d_6a788cf0",
+      "revId": "13e383162b092db8ba05ddd290744640fa4d72d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cf2b1fb_3fe09b76",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "382b4e32_a6d95e4d",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-23T03:35:50Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "5cf2b1fb_3fe09b76",
+      "revId": "13e383162b092db8ba05ddd290744640fa4d72d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "466d2e9f_53671138",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-08T18:04:05Z",
       "side": 1,
       "message": "This is actually changing the output of issueBazelCommand, which we want to return the pure Bazel response. Thus, instead of just adding some debug info to cquery.out only, this is changing the in-memory cquery response that we process.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d813;drc\u003def615e58412530253f7dbac02d4acdafb83203c8\n\nThus we\u0027re probably getting some weird parsing behavior, and that would explain the presubmit failure.\n\nInstead, why don\u0027t you add logging specifically [here](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d818-820;drc\u003def615e58412530253f7dbac02d4acdafb83203c8), right before we write cquery.out? That way, we\u0027re ensuring that we are only appending to cquery.out, and not changing `cqueryOutput`.",
+      "revId": "13e383162b092db8ba05ddd290744640fa4d72d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f04ec65_bacdc6db",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-23T03:35:50Z",
+      "side": 1,
+      "message": "Thanks. Updated using the way we discussed about.",
+      "parentUuid": "466d2e9f_53671138",
       "revId": "13e383162b092db8ba05ddd290744640fa4d72d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
