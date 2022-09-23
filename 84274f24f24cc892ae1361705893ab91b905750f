@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a2db19_f81f69f6",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-23T04:18:02Z",
+      "side": 1,
+      "message": "actually don\u0027t need a \"bimap\" just a `tokens map[*exec.Cmd]bazelCommand`",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d16f3d_6d15d9b4",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-23T04:18:02Z",
+      "side": 1,
+      "message": "```\nif r.tokens \u003d\u003d nil {\n   r.tokens \u003d make(map[*exec.Cmd]bazelCommand)\n}\nr.tokens[cmd] \u003d command\n```",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "495f01ea_a47f2f98",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-23T04:18:02Z",
+      "side": 1,
+      "message": "maybe use the `tokens` map here instead?\n```\nfunc (r *mockBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd) (string, string, error) {\n\tif ret, ok :\u003d r.tokens[bazelCmd]; ok {\n\t\treturn r.bazelCommandResults[ret], \"\", nil\n\t}\n\treturn \"\", \"\", nil\n}\n```",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f93a22f4_a8b02ffe",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-23T04:18:02Z",
+      "side": 1,
+      "message": "Use the Args property and individually escape quotes and quote if containing space.\n```\n\toutputString :\u003d strings.Join(bazelCmd.Env, \" \")\n\tfor _, arg :\u003d range bazelCmd.Args {\n\t\tescaped :\u003d strings.ReplaceAll(arg, `\"`, `\\\"`)\n\t\tif strings.Contains(arg, \" \") {\n\t\t\tescaped \u003d fmt.Sprintf(` \"%s\"`, escaped)\n\t\t}\n\t\toutputString +\u003d escaped\n\t}\n```",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d7b0ff2_5c1be796",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-23T04:18:02Z",
+      "side": 1,
+      "message": "in case of error, we\u0027d probably be more interested in seeing the command in the log",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
