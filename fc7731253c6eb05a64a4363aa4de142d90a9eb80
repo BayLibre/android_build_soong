@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0aff2909_364e7867",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-24T04:05:35Z",
+      "side": 1,
+      "message": "I put the bug in the comment and an example description. But open to including that description here.",
+      "parentUuid": "e63a10ea_aaf81eb6",
+      "revId": "fc7731253c6eb05a64a4363aa4de142d90a9eb80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f2c03f5_c395ae0c",
         "filename": "android/bazel_paths.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-23T21:32:15Z",
       "side": 1,
       "message": "why does this need a new variable? can\u0027t you just reassign it?",
+      "revId": "fc7731253c6eb05a64a4363aa4de142d90a9eb80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5befc363_bcf124a5",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-24T04:05:35Z",
+      "side": 1,
+      "message": "in general I don\u0027t reassign values coming in as arguments to the function - because I don\u0027t want to assume the call site doesn\u0027t use it for other purposes.",
+      "parentUuid": "3f2c03f5_c395ae0c",
       "revId": "fc7731253c6eb05a64a4363aa4de142d90a9eb80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
