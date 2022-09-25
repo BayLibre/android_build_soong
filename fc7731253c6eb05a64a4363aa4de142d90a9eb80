@@ -69,6 +69,24 @@
       "parentUuid": "3f2c03f5_c395ae0c",
       "revId": "fc7731253c6eb05a64a4363aa4de142d90a9eb80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58309bfb_c30cb5f1",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-25T01:30:44Z",
+      "side": 1,
+      "message": "Actually, path is passed by value, so I should simply change it.",
+      "parentUuid": "5befc363_bcf124a5",
+      "revId": "fc7731253c6eb05a64a4363aa4de142d90a9eb80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
