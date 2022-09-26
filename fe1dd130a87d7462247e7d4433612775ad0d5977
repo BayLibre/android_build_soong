@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d55e9b_c3b5801d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-26T22:23:20Z",
+      "side": 1,
+      "message": "As discussed with Liz, given that our targets of interest are on host and thus not subject to stripping and thus not needing `check_elf_file` validation. So everything dealing with `check_elf_file` has been removed, to perhaps be used in implementing `check_elf_file` validation for all prebuilt module types.",
+      "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
