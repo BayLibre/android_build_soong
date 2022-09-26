@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c9d9b8e_5811761d",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-26T14:25:54Z",
+      "side": 1,
+      "message": "+1\nalso are we confident that a quote doesn\u0027t already appear in an arg, ever?\ne.g. I was proposing first escaping quotes.",
+      "parentUuid": "14aed0b8_5173a06c",
+      "revId": "3f96bd59f8921c3b349e8db05efe370a2452b6f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64c3bdaa_d510cb39",
         "filename": "android/bazel_handler.go",
         "patchSetId": 9
