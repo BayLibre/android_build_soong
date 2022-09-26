@@ -57,6 +57,30 @@
       },
       "revId": "32a98a5d555056511ba38f0b1154ddadfa1360d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b5ccd2f_0eaee984",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-26T17:53:21Z",
+      "side": 1,
+      "message": "Does it make sense to update all the Soong repo?",
+      "parentUuid": "203e033a_86fce540",
+      "range": {
+        "startLine": 912,
+        "startChar": 16,
+        "endLine": 912,
+        "endChar": 23
+      },
+      "revId": "32a98a5d555056511ba38f0b1154ddadfa1360d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
