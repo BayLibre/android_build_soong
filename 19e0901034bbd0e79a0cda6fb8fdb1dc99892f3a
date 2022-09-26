@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c2005ee_3c76fd9c",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-26T06:37:56Z",
+      "side": 1,
+      "message": "Instead of changing an existing test, can you add a new test specific to this codepath instead?",
+      "range": {
+        "startLine": 955,
+        "startChar": 2,
+        "endLine": 972,
+        "endChar": 4
+      },
+      "revId": "19e0901034bbd0e79a0cda6fb8fdb1dc99892f3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
