@@ -151,6 +151,8 @@ type FuzzConfig struct {
 	// If there's a Java fuzzer with JNI, a different version of Jazzer would
 	// need to be added to the fuzzer package than one without JNI
 	IsJni *bool `json:"is_jni,omitempty"`
+    // Top-level path to the library being fuzzed (e.g. "external/icu")
+    Library_path string `json:"library_path,omitempty"`
 }
 
 type FuzzFrameworks struct {
