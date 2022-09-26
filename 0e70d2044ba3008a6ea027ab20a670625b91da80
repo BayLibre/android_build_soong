@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f17a284_692f324d",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-26T20:38:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae72620c_9bf100e3",
+      "range": {
+        "startLine": 1039,
+        "startChar": 32,
+        "endLine": 1039,
+        "endChar": 69
+      },
+      "revId": "0e70d2044ba3008a6ea027ab20a670625b91da80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ea2aa98_f4991768",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "removed - I must have had this from something else before",
       "parentUuid": "7ea2aa98_f4991768",
+      "range": {
+        "startLine": 1047,
+        "startChar": 22,
+        "endLine": 1047,
+        "endChar": 59
+      },
+      "revId": "0e70d2044ba3008a6ea027ab20a670625b91da80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c07c3efb_e9e0bdb2",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-26T20:38:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9c6ca23_90fd36f5",
       "range": {
         "startLine": 1047,
         "startChar": 22,
