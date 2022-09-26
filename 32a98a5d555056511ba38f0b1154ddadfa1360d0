@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "91471554_2a08d859",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-09-26T15:02:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c6e7f84_656fe89c",
+      "revId": "32a98a5d555056511ba38f0b1154ddadfa1360d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "203e033a_86fce540",
         "filename": "genrule/genrule.go",
         "patchSetId": 2
