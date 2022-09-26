@@ -286,6 +286,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "debc0ada_a7ab8ea1",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-26T18:35:58Z",
+      "side": 1,
+      "message": "+1. It is guaranteed that Args[0] is the command issued (one could argue that the path to the command could contain spaces and thus quoting it is fine, but we know we only ever expect tools/bazel as Args[0])",
+      "parentUuid": "b41860ab_231b8b95",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2574105_a483412d",
         "filename": "android/bazel_handler.go",
         "patchSetId": 8
