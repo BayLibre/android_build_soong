@@ -22,6 +22,30 @@
       },
       "revId": "86fbd7068f1b05b6ebe8ac967f9e8ced8a6695df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2efb34d_ead50e0a",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-26T15:52:14Z",
+      "side": 1,
+      "message": "I did have a separate function but then thought folks might not like passing the logger function\ni.e I had `func whatToRun(config Config, logFn func(string))`\nand then called it with `what :\u003d whatToRun(config, ctx.Verboseln)`\n\nSo, decided a code block (could have also gone with and immediately-invoked anonymous function, i.e. `what :\u003d func() int {...}()` but wasn\u0027t sure.\n\nLMK what you think.",
+      "parentUuid": "73778f1e_362b455b",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 2
+      },
+      "revId": "86fbd7068f1b05b6ebe8ac967f9e8ced8a6695df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
