@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f6337fa_d22069a1",
+        "filename": "python/tests/dont_import_folder_of_entrypoint/mypkg/main.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-26T17:33:40Z",
+      "side": 1,
+      "message": "Wont these tests pass even without the new `dont_add_entrypoint_folder_to_path` property?\n\nDid you mean to write a test for sys.path in line 4?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "663dcda0e4f44a00cdb01958c915c088a0e598c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
