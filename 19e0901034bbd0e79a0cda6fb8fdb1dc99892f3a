@@ -22,6 +22,30 @@
       },
       "revId": "19e0901034bbd0e79a0cda6fb8fdb1dc99892f3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "932952c1_8d33eacd",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-26T15:42:28Z",
+      "side": 1,
+      "message": "bazsel_paths_test.go - I did add a relevant test there.\nBut thought I might switch this one up a bit as well.\nLMK if you prefer this one reverted (or copy pasted with that change into a new test case in this list).",
+      "parentUuid": "3c2005ee_3c76fd9c",
+      "range": {
+        "startLine": 955,
+        "startChar": 2,
+        "endLine": 972,
+        "endChar": 4
+      },
+      "revId": "19e0901034bbd0e79a0cda6fb8fdb1dc99892f3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
