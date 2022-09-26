@@ -152,7 +152,7 @@ type FuzzConfig struct {
 	// need to be added to the fuzzer package than one without JNI
 	IsJni *bool `json:"is_jni,omitempty"`
 	// Top-level path to the library being fuzzed (e.g. "external/icu")
-    Library_path string `json:"library_path,omitempty"`
+	Library_path string `json:"library_path,omitempty"`
 }
 
 type FuzzFrameworks struct {
