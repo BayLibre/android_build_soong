@@ -268,6 +268,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b41860ab_231b8b95",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-26T17:09:56Z",
+      "side": 1,
+      "message": "What about quoting every *argument*, but not the command (binary/tool) itself?\n\nThat is:\n\n`\"ls\" \"somefile\"` might not work, but `ls \"somefile\" ` probably would.\n\nThus perhaps we can quote every command arg, but not the command (leaving ./tools/bazel unquoted)",
+      "parentUuid": "1ec81c7b_8cc7da25",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2574105_a483412d",
         "filename": "android/bazel_handler.go",
         "patchSetId": 8
