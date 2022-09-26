@@ -302,6 +302,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6503a719_76472ac9",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-26T21:02:02Z",
+      "side": 1,
+      "message": "Added quotes for every args. Pasted it to the command line and it works.",
+      "parentUuid": "debc0ada_a7ab8ea1",
+      "revId": "84274f24f24cc892ae1361705893ab91b905750f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2574105_a483412d",
