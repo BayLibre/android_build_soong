@@ -208,12 +208,14 @@ class Filter:
     symbol should be omitted or not
     """
 
-    def __init__(self, arch: Arch, api: int, llndk: bool = False, apex: bool = False, systemapi: bool = False):
+    def __init__(self, arch: Arch, api: int, llndk: bool = False, apex: bool = False, systemapi:
+                 bool = False, public: bool = True):
         self.arch = arch
         self.api = api
         self.llndk = llndk
         self.apex = apex
         self.systemapi = systemapi
+        self.public = public
 
     def _should_omit_tags(self, tags: Tags) -> bool:
         """Returns True if the tagged object should be omitted.
@@ -232,6 +234,7 @@ class Filter:
             if self.systemapi and tags.has_systemapi_tags:
                 return False
             return True
+
         if not symbol_in_arch(tags, self.arch):
             return True
         if not symbol_in_api(tags, self.arch, self.api):
@@ -253,8 +256,13 @@ class Filter:
 
     def should_omit_symbol(self, symbol: Symbol) -> bool:
         """Returns True if the symbol should be omitted."""
-        return self._should_omit_tags(symbol.tags)
+        if not symbol.tags.has_mode_tags and not self.public:
+            # Symbols that don't have mode tags are public. They are usually
+            # included, but have to be omitted if public symbols are explicitly
+            # filtered-out
+            return True
 
+        return self._should_omit_tags(symbol.tags)
 
 def symbol_in_arch(tags: Tags, arch: Arch) -> bool:
     """Returns true if the symbol is present for the given architecture."""

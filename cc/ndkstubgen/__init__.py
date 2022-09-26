@@ -111,6 +111,11 @@ def parse_args() -> argparse.Namespace:
         action='store_true',
         dest='systemapi',
         help='Use the SystemAPI variant.')
+    parser.add_argument(
+        '--nopublic',
+        action='store_false',
+        dest='public',
+        help='Do not include public APIs.')
 
     parser.add_argument('--api-map',
                         type=resolved_path,
@@ -147,7 +152,7 @@ def main() -> None:
         verbosity = 2
     logging.basicConfig(level=verbose_map[verbosity])
 
-    filt = symbolfile.Filter(args.arch, api, args.llndk, args.apex, args.systemapi)
+    filt = symbolfile.Filter(args.arch, api, args.llndk, args.apex, args.systemapi, args.public)
     with args.symbol_file.open() as symbol_file:
         try:
           versions = symbolfile.SymbolFileParser(symbol_file, api_map, filt).parse()

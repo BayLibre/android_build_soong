@@ -308,6 +308,20 @@ class OmitSymbolTest(unittest.TestCase):
     def assertInclude(self, f: Filter, s: Symbol) -> None:
         self.assertFalse(f.should_omit_symbol(s))
 
+    def test_omit_public(self) -> None:
+        f_public = self.filter
+        f_nopublic = copy(f_public)
+        f_nopublic.public = False
+        f_nopublic.apex = True
+
+        s_public = Symbol('foo', Tags())
+        s_nonpublic = Symbol('foo', Tags.from_strs(['apex']))
+
+        self.assertInclude(f_public, s_public)
+        self.assertOmit(f_public, s_nonpublic)
+        self.assertOmit(f_nopublic, s_public)
+        self.assertInclude(f_nopublic, s_nonpublic)
+
     def test_omit_llndk(self) -> None:
         f_none = self.filter
         f_llndk = copy(f_none)
