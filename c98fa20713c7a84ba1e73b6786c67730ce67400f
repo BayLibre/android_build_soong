@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccbdd2a5_9fc62862",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-09-26T16:43:05Z",
+      "side": 1,
+      "message": "No clue what this CL does. Mostly because I don\u0027t understand which structs or which deduping it\u0027s talking about...",
+      "revId": "c98fa20713c7a84ba1e73b6786c67730ce67400f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a784078a_963f1c84",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2175,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-09-26T16:43:05Z",
+      "side": 1,
+      "message": "Comment",
+      "revId": "c98fa20713c7a84ba1e73b6786c67730ce67400f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
