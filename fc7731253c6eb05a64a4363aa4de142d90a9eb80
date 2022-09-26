@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77bd2540_dc5c5a95",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-26T05:05:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aff2909_364e7867",
+      "revId": "fc7731253c6eb05a64a4363aa4de142d90a9eb80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f2c03f5_c395ae0c",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Actually, path is passed by value, so I should simply change it.",
       "parentUuid": "5befc363_bcf124a5",
+      "revId": "fc7731253c6eb05a64a4363aa4de142d90a9eb80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f069b87c_70b7814f",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-26T05:05:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58309bfb_c30cb5f1",
       "revId": "fc7731253c6eb05a64a4363aa4de142d90a9eb80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
