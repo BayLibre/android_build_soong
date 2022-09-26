@@ -20,6 +20,7 @@ import (
 
 func init() {
 	android.RegisterModuleType("python_defaults", defaultsFactory)
+	android.RegisterModuleType("python_binary_defaults", binaryDefaultsFactory)
 }
 
 type Defaults struct {
@@ -34,12 +35,17 @@ func defaultsFactory() android.Module {
 	return DefaultsFactory()
 }
 
+func binaryDefaultsFactory() android.Module {
+	return DefaultsFactory(&BinaryProperties{})
+}
+
 func DefaultsFactory(props ...interface{}) android.Module {
 	module := &Defaults{}
 
 	module.AddProperties(props...)
 	module.AddProperties(
 		&BaseProperties{},
+		&android.ProtoProperties{},
 	)
 
 	android.InitDefaultsModule(module)
