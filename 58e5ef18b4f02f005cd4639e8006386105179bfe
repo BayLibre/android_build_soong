@@ -93,6 +93,30 @@
       },
       "revId": "58e5ef18b4f02f005cd4639e8006386105179bfe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84356734_2f3862fd",
+        "filename": "java/app.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-27T13:25:18Z",
+      "side": 1,
+      "message": "That looks ok.",
+      "parentUuid": "22c63221_3c7cf1fe",
+      "range": {
+        "startLine": 884,
+        "startChar": 8,
+        "endLine": 886,
+        "endChar": 1
+      },
+      "revId": "58e5ef18b4f02f005cd4639e8006386105179bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
