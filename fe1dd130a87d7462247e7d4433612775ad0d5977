@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be587c6e_81e8396f",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-27T21:09:49Z",
+      "side": 1,
+      "message": "This is the common practice with `QueueBazelCall` \u0026 `ProcessBazelQueryResponse` for the other prebuilt handlers, AFAICT. `prebuiltLibraryBazelHandler` does this as well, earlier in this file.",
+      "parentUuid": "01cf37bd_0da1db06",
+      "range": {
+        "startLine": 702,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 76
+      },
+      "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89805d5c_aad06503",
         "filename": "cc/prebuilt.go",
         "patchSetId": 19
@@ -88,6 +112,24 @@
       "writtenOn": "2022-09-27T15:28:52Z",
       "side": 1,
       "message": "no longer needed?",
+      "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "093f1cff_ee9040c8",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-09-27T21:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa04775_d03e86ce",
       "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
