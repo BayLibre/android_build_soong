@@ -56,11 +56,36 @@ func (t prebuiltDependencyTag) ExcludeFromApexContents() {}
 var _ ExcludeFromVisibilityEnforcementTag = PrebuiltDepTag
 var _ ExcludeFromApexContentsTag = PrebuiltDepTag
 
-type PrebuiltProperties struct {
+// UserSuppliedPrebuiltProperties contains the prebuilt properties that can be specified in an
+// Android.bp file.
+type UserSuppliedPrebuiltProperties struct {
 	// When prefer is set to true the prebuilt will be used instead of any source module with
 	// a matching name.
 	Prefer *bool `android:"arch_variant"`
 
+<<<<<<< HEAD   (192221 Collect lint reports from apps in apexes)
+=======
+	// When specified this names a Soong config variable that controls the prefer property.
+	//
+	// If the value of the named Soong config variable is true then prefer is set to false and vice
+	// versa. If the Soong config variable is not set then it defaults to false, so prefer defaults
+	// to true.
+	//
+	// If specified then the prefer property is ignored in favor of the value of the Soong config
+	// variable.
+	Use_source_config_var *ConfigVarProperties
+}
+
+// CopyUserSuppliedPropertiesFromPrebuilt copies the user supplied prebuilt properties from the
+// prebuilt properties.
+func (u *UserSuppliedPrebuiltProperties) CopyUserSuppliedPropertiesFromPrebuilt(p *Prebuilt) {
+	*u = p.properties.UserSuppliedPrebuiltProperties
+}
+
+type PrebuiltProperties struct {
+	UserSuppliedPrebuiltProperties
+
+>>>>>>> CHANGE (bf4de0 java_sdk_library_import: Copy all prebuilt properties to chi)
 	SourceExists bool `blueprint:"mutated"`
 	UsePrebuilt  bool `blueprint:"mutated"`
 
