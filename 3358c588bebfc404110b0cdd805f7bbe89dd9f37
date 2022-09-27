@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df1d99e7_e2e47aec",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1844,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-27T03:58:07Z",
+      "side": 1,
+      "message": "Why not use MakeBazelTargetNoRestrictions?",
+      "range": {
+        "startLine": 1844,
+        "startChar": 4,
+        "endLine": 1844,
+        "endChar": 22
+      },
+      "revId": "3358c588bebfc404110b0cdd805f7bbe89dd9f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
