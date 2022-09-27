@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca17da6a_959c9ea4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-27T16:01:27Z",
+      "side": 1,
+      "message": "Ping. This has been cherru picked into t-aml-prebuilt-test so we need to get this reviewed quickly and checked in otherwise we will be testing unsubmitted code which is not a good idea.",
+      "revId": "c6969fdfa447828150e28adeb43dbee3e5cc4728",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
