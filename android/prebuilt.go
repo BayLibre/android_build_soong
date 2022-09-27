@@ -56,10 +56,22 @@ func (t prebuiltDependencyTag) ExcludeFromApexContents() {}
 var _ ExcludeFromVisibilityEnforcementTag = PrebuiltDepTag
 var _ ExcludeFromApexContentsTag = PrebuiltDepTag
 
-type PrebuiltProperties struct {
+// UserSuppliedPrebuiltProperties contains the prebuilt properties that can be specified in an
+// Android.bp file.
+type UserSuppliedPrebuiltProperties struct {
 	// When prefer is set to true the prebuilt will be used instead of any source module with
 	// a matching name.
 	Prefer *bool `android:"arch_variant"`
+}
+
+// CopyUserSuppliedPropertiesFromPrebuilt copies the user supplied prebuilt properties from the
+// prebuilt properties.
+func (u *UserSuppliedPrebuiltProperties) CopyUserSuppliedPropertiesFromPrebuilt(p *Prebuilt) {
+	*u = p.properties.UserSuppliedPrebuiltProperties
+}
+
+type PrebuiltProperties struct {
+	UserSuppliedPrebuiltProperties
 
 	SourceExists bool `blueprint:"mutated"`
 	UsePrebuilt  bool `blueprint:"mutated"`
