@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3d0af5_143248f0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-27T14:45:40Z",
+      "side": 1,
+      "message": "unrelated to this CL but I think named return values would be so much more self-documenting here, i.e. `(output, errorMessage string, error)`",
+      "revId": "0fabcce9d87c7180a3abcf9d53268df893faaeb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9fcf60d_c511aea6",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-27T14:45:40Z",
+      "side": 1,
+      "message": "nit:\nRegister `createBazelCommand()` invocations. Later, an\n`issueBazelCommand()` invocation can be mapped to the `*exec.Cmd` instance\nand then to the expected result via `bazelCommandResults`",
+      "revId": "0fabcce9d87c7180a3abcf9d53268df893faaeb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34d2240b_91013e6b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-27T14:45:40Z",
+      "side": 1,
+      "message": "the map entry presence could be entirely dropped or at best moved to `tokens`:\n```\nif command, ok :\u003d r.tokens[bazelCmd]; ok {\n  return r.bazelCommandResults[command] // \u003c- no need to check presence here\n}\nreturn \"\", \"\", nil\n```",
+      "revId": "0fabcce9d87c7180a3abcf9d53268df893faaeb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
