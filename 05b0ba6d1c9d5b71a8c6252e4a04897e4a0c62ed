@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6378106_e7c43610",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-09-27T18:43:19Z",
+      "side": 1,
+      "message": "Turns out the attribute has to be renamed, Bazel\u0027s `licenses` attribute is deprecated. PTAL.",
+      "revId": "05b0ba6d1c9d5b71a8c6252e4a04897e4a0c62ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
