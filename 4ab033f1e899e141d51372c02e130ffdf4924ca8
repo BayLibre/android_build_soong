@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db8cdadf_9dc45207",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-09-27T16:04:46Z",
+      "side": 1,
+      "message": "Rather than \"Revert revert...\", can you switch this to \"Reland ...\"?",
+      "revId": "4ab033f1e899e141d51372c02e130ffdf4924ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41bf5297_432103e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-09-27T16:04:46Z",
+      "side": 1,
+      "message": "Let\u0027s mention the bug number in here again, so that we keep good track of when/where this was switched.",
+      "revId": "4ab033f1e899e141d51372c02e130ffdf4924ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
