@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ac09c9_8bd7fd58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1451833
+      },
+      "writtenOn": "2022-09-27T07:52:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d830a047_f917359c",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "f34e7291f2939f4d82e7a2d50c11ef3d74a1e09a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0df9825_3bb38373",
@@ -79,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "826455b5_8d6b5b57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451833
+      },
+      "writtenOn": "2022-09-27T07:52:45Z",
+      "side": 1,
+      "message": "Hmmm based on my read, I think this change would only affect the prebuiltSrcs interface for ApexExtractorProperties\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/apex/prebuilt.go;l\u003d861;drc\u003d92ef431ce0a697016275becdd28ed0065889c65c;bpv\u003d0;bpt\u003d1\n\nFor android_app_set, it looks like it implements this differently:\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/java/app_set.go;l\u003d38;drc\u003d50ed1f9ccb42ce2faaf652fe1819dbd57f35b44d\nI think an interface for adding the apks to Set needs to be added. I don\u0027t see this anywhere.",
+      "parentUuid": "72b958de_38ac8194",
+      "revId": "f34e7291f2939f4d82e7a2d50c11ef3d74a1e09a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b68acbbc_ec6768ab",
         "filename": "apex/prebuilt.go",
         "patchSetId": 4
@@ -90,6 +132,30 @@
       "writtenOn": "2022-09-27T05:46:21Z",
       "side": 1,
       "message": "Shouldn\u0027t these be `android:\"path\"` as well?",
+      "range": {
+        "startLine": 847,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 14
+      },
+      "revId": "f34e7291f2939f4d82e7a2d50c11ef3d74a1e09a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f475122_d7b3ca0f",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1451833
+      },
+      "writtenOn": "2022-09-27T07:52:45Z",
+      "side": 1,
+      "message": "Yeah in some ways I only fixed the issue that I observed and I was curious/not sure if I should apply the same attribute here.",
+      "parentUuid": "b68acbbc_ec6768ab",
       "range": {
         "startLine": 847,
         "startChar": 0,
