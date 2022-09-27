@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7fd99ba_8234b6f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-09-27T16:08:26Z",
+      "side": 1,
+      "message": "Revert^2 is also fun option :-)  Especially if Revert^3 is likely.",
+      "parentUuid": "db8cdadf_9dc45207",
+      "revId": "4ab033f1e899e141d51372c02e130ffdf4924ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41bf5297_432103e6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
