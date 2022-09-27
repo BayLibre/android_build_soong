@@ -16,6 +16,24 @@
       "message": "not intended for submission until next year, but up for testing between now and then...",
       "revId": "85948c4756a684410f86394012124b7b379a4f99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2939001d_29416098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-09-27T20:27:57Z",
+      "side": 1,
+      "message": "to be clear (since this confused me, and i wrote it!) here\u0027s the longer version from the bug:\n\nC11 is probably enough excitement for U (?) but for V we should consider moving to C17. unlike C11, we haven\u0027t had anyone ask for C17 yet, but C17 (well, \"gnu17\") is the default for upstream gcc and clang already...\n\nso this is meant for 2023, after AOSP master stops merging to *U*...",
+      "parentUuid": "1920b17d_70178fb0",
+      "revId": "85948c4756a684410f86394012124b7b379a4f99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
