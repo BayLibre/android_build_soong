@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d830a047_f917359c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-09-27T05:46:21Z",
+      "side": 1,
+      "message": "It would be great if this is described in more detail, and perhaps a unit test is added.",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "f34e7291f2939f4d82e7a2d50c11ef3d74a1e09a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0df9825_3bb38373",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -32,6 +55,47 @@
       "side": 1,
       "message": "No I don\u0027t think so. This Set corresponds to:\n\"set string, the .apks file path that contains prebuilt apex files to be extracted.\"\n\nBasically it expects the \".apks\" file that the apex needs to be pulled from",
       "parentUuid": "e0df9825_3bb38373",
+      "revId": "f34e7291f2939f4d82e7a2d50c11ef3d74a1e09a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b958de_38ac8194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-09-27T05:46:21Z",
+      "side": 1,
+      "message": "Hmm, this string goes down to SingleSourcePathFromSupplier which internally calls PathForModuleSrc [2]. So that looks good. However, I don\u0027t know if AndroidAppSet correctly implements the OutputFileProducer interface. For example, here [3] OutputFile returns the primary APK, not the zip file.\n\n[1] https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/prebuilt.go;drc\u003d92ef431ce0a697016275becdd28ed0065889c65c;l\u003d819\n\n[2] https://cs.android.com/android/platform/superproject/+/master:build/soong/android/prebuilt.go;drc\u003d92ef431ce0a697016275becdd28ed0065889c65c;l\u003d167\n\n[3] https://cs.android.com/android/platform/superproject/+/master:build/soong/java/app_set.go;drc\u003d50ed1f9ccb42ce2faaf652fe1819dbd57f35b44d;l\u003d81",
+      "parentUuid": "29c9e2a9_b19ca439",
+      "revId": "f34e7291f2939f4d82e7a2d50c11ef3d74a1e09a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b68acbbc_ec6768ab",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-09-27T05:46:21Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these be `android:\"path\"` as well?",
+      "range": {
+        "startLine": 847,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 14
+      },
       "revId": "f34e7291f2939f4d82e7a2d50c11ef3d74a1e09a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
