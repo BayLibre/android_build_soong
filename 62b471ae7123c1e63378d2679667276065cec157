@@ -22,6 +22,30 @@
       },
       "revId": "62b471ae7123c1e63378d2679667276065cec157",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c282907_670907a7",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-27T20:04:03Z",
+      "side": 0,
+      "message": "It needs the `--config\u003dbp2build` now, and with `STANDALONE_BAZEL\u003dtrue`, I get:\n```\nERROR: Config value \u0027bp2build\u0027 is not defined in any .rc file\n```",
+      "parentUuid": "7bc1caa8_1b4d54ed",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "62b471ae7123c1e63378d2679667276065cec157",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
