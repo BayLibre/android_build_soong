@@ -105,6 +105,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34eb9020_3ac3ae0d",
+        "filename": "cc/rs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-09-27T00:40:58Z",
+      "side": 1,
+      "message": "I talked with Liz about this. She would like us to strive to follow the Go style guide as closely as possible. As such, you should keep this comment, as it is an exported member go/go-style/decisions#doc-comments.\n\nHowever, I just noticed that you export the property but not the struct type. Is this intentional, and does it actually allow any behavior that would be prohibited by not exporting the property?",
+      "parentUuid": "5c6a0ff5_2a2f6b1a",
+      "revId": "98b1767c1ecc55e618212a938adaf1ba17aed77d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10f963bb_d4d51c92",
         "filename": "cc/rs.go",
         "patchSetId": 3
