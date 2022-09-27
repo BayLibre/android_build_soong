@@ -16,6 +16,80 @@
       "message": "As discussed with Liz, given that our targets of interest are on host and thus not subject to stripping and thus not needing `check_elf_file` validation. So everything dealing with `check_elf_file` has been removed, to perhaps be used in implementing `check_elf_file` validation for all prebuilt module types.",
       "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9e7b834_d68de64c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-27T15:28:52Z",
+      "side": 1,
+      "message": "Looks good!",
+      "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01cf37bd_0da1db06",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-27T15:28:52Z",
+      "side": 1,
+      "message": "Can we have a specific unit test for this logic?\n\nHowever, I\u0027m not very familiar with how `prebuiltBinaryLinker` is related to this module. So lmk if I am missing something.",
+      "range": {
+        "startLine": 702,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 76
+      },
+      "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89805d5c_aad06503",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-27T15:28:52Z",
+      "side": 1,
+      "message": "Can you add some unit tests for mixed builds?",
+      "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa04775_d03e86ce",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-27T15:28:52Z",
+      "side": 1,
+      "message": "no longer needed?",
+      "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
