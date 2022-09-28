@@ -163,6 +163,9 @@ const (
 	// This mode is used for discovering and introspecting the existing Soong
 	// module graph.
 	QueryView
+
+	// Apigen - generate BUILD files for API contribution targets
+	Apigen
 )
 
 type unconvertedDepsMode int
@@ -181,6 +184,8 @@ func (mode CodegenMode) String() string {
 		return "Bp2Build"
 	case QueryView:
 		return "QueryView"
+	case Apigen:
+		return "Apigen"
 	default:
 		return fmt.Sprintf("%d", mode)
 	}
@@ -327,6 +332,10 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (convers
 				errs = append(errs, err)
 			}
 			targets = append(targets, t)
+		case Apigen:
+			if aModule, ok := m.(android.Module); ok && aModule.IsConvertedByBp2build() {
+				targets, errs = generateBazelTargets(bpCtx, aModule)
+			}
 		default:
 			errs = append(errs, fmt.Errorf("Unknown code-generation mode: %s", ctx.Mode()))
 			return
