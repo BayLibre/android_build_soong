@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4218dc42_3f85d432",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-09-28T19:15:46Z",
+      "side": 1,
+      "message": "This doesn\u0027t cause bazel to read or write anything under the users home directory, does it?",
+      "revId": "48d954f5ae551b6118b91b349dd1255f10cdd7c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
