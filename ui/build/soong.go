@@ -45,6 +45,7 @@ const (
 	bp2buildTag        = "bp2build"
 	jsonModuleGraphTag = "modulegraph"
 	queryviewTag       = "queryview"
+	apigenTag          = "apigen"
 	soongDocsTag       = "soong_docs"
 
 	// bootstrapEpoch is used to determine if an incremental build is incompatible with the current
@@ -237,6 +238,7 @@ func bootstrapGlobFileList(config Config) []string {
 		config.NamedGlobFile(bp2buildTag),
 		config.NamedGlobFile(jsonModuleGraphTag),
 		config.NamedGlobFile(queryviewTag),
+		config.NamedGlobFile(apigenTag),
 		config.NamedGlobFile(soongDocsTag),
 	}
 }
@@ -307,6 +309,19 @@ func bootstrapBlueprint(ctx Context, config Config) {
 		fmt.Sprintf("generating the Soong module graph as a Bazel workspace at %s", queryviewDir),
 	)
 
+	// The BUILD files will be generated in out/soong/.apigen (no symlinks to src files)
+	// The final workspace will be generated in out/soong/apigen
+	buildApigenDir := filepath.Join(config.SoongOutDir(), ".apigen")
+	apigenInvocation := primaryBuilderInvocation(
+		config,
+		apigenTag,
+		config.ApigenMarkerFile(),
+		[]string{
+			"--bazel_apigen_dir", buildApigenDir,
+		},
+		fmt.Sprintf("generating BUILD files for API contributions at %s", buildApigenDir),
+	)
+
 	soongDocsInvocation := primaryBuilderInvocation(
 		config,
 		soongDocsTag,
@@ -345,6 +360,7 @@ func bootstrapBlueprint(ctx Context, config Config) {
 			bp2buildInvocation,
 			jsonModuleGraphInvocation,
 			queryviewInvocation,
+			apigenInvocation,
 			soongDocsInvocation},
 	}
 
@@ -415,6 +431,10 @@ func runSoong(ctx Context, config Config) {
 			checkEnvironmentFile(soongBuildEnv, config.UsedEnvFile(queryviewTag))
 		}
 
+		if config.Apigen() {
+			checkEnvironmentFile(soongBuildEnv, config.UsedEnvFile(apigenTag))
+		}
+
 		if config.SoongDocs() {
 			checkEnvironmentFile(soongBuildEnv, config.UsedEnvFile(soongDocsTag))
 		}
@@ -476,6 +496,10 @@ func runSoong(ctx Context, config Config) {
 
 	if config.Queryview() {
 		targets = append(targets, config.QueryviewMarkerFile())
+	}
+
+	if config.Apigen() {
+		targets = append(targets, config.ApigenMarkerFile())
 	}
 
 	if config.SoongDocs() {

@@ -83,6 +83,9 @@ const (
 	// express build semantics.
 	GenerateQueryView
 
+	// Generate BUILD files for API contributions to API surfaces
+	Apigen
+
 	// Create a JSON representation of the module graph and exit.
 	GenerateModuleGraph
 
