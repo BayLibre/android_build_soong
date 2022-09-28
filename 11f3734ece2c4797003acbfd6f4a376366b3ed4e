@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0e7db29_b62539ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-09-28T19:13:42Z",
+      "side": 1,
+      "message": "The only change from before is the addition of https://android-review.googlesource.com/c/platform/build/soong/+/2236499/2/build_test.bash",
+      "revId": "11f3734ece2c4797003acbfd6f4a376366b3ed4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
