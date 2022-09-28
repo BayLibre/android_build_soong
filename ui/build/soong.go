@@ -381,7 +381,6 @@ func runSoong(ctx Context, config Config) {
 	soongBuildEnv.Set("TOP", os.Getenv("TOP"))
 	// For Bazel mixed builds.
 	soongBuildEnv.Set("BAZEL_PATH", "./tools/bazel")
-	soongBuildEnv.Set("BAZEL_HOME", filepath.Join(config.BazelOutDir(), "bazelhome"))
 	soongBuildEnv.Set("BAZEL_OUTPUT_BASE", filepath.Join(config.BazelOutDir(), "output"))
 	soongBuildEnv.Set("BAZEL_WORKSPACE", absPath(ctx, "."))
 	soongBuildEnv.Set("BAZEL_METRICS_DIR", config.BazelMetricsDir())

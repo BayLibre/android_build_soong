@@ -164,7 +164,6 @@ type bazelRunner interface {
 }
 
 type bazelPaths struct {
-	homeDir      string
 	bazelPath    string
 	outputBase   string
 	workspaceDir string
@@ -390,11 +389,6 @@ func bazelPathsFromConfig(c *config) (*bazelPaths, error) {
 		soongOutDir: c.soongOutDir,
 	}
 	var missingEnvVars []string
-	if len(c.Getenv("BAZEL_HOME")) > 1 {
-		p.homeDir = c.Getenv("BAZEL_HOME")
-	} else {
-		missingEnvVars = append(missingEnvVars, "BAZEL_HOME")
-	}
 	if len(c.Getenv("BAZEL_PATH")) > 1 {
 		p.bazelPath = c.Getenv("BAZEL_PATH")
 	} else {
@@ -506,7 +500,6 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 	bazelCmd := exec.Command(paths.bazelPath, cmdFlags...)
 	bazelCmd.Dir = absolutePath(paths.syntheticWorkspaceDir())
 	extraEnv := []string{
-		"HOME=" + paths.homeDir,
 		pwdPrefix(),
 		"BUILD_DIR=" + absolutePath(paths.soongOutDir),
 		// Make OUT_DIR absolute here so tools/bazel.sh uses the correct
