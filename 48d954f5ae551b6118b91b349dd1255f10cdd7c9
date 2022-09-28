@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t cause bazel to read or write anything under the users home directory, does it?",
       "revId": "48d954f5ae551b6118b91b349dd1255f10cdd7c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e83411a4_3c157054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-28T19:49:37Z",
+      "side": 1,
+      "message": "I didn\u0027t believe so, but thanks for asking. You\u0027ve prompted me to double check with the Bazel Team that I\u0027m not missing anything, and they have concerns that certain actions might indeed inspect HOME. Ugh.\n\nThe only thing that I was aware of is that Bazel may look into $HOME to find a bazelrc file for options parsing, as outlined by https://docs.bazel.build/versions/main/guide.html#where-are-the-bazelrc-files \n\nI\u0027ll change this CL to circumvent the bug which prompted the change, but leave HOME directory setting intact, to avoid this non-hermetic behavior.\n\nWill follow up.",
+      "parentUuid": "4218dc42_3f85d432",
+      "revId": "48d954f5ae551b6118b91b349dd1255f10cdd7c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
