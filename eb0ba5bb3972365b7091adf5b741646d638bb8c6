@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d0996b6_0d66ff10",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-09-28T11:59:59Z",
+      "side": 1,
+      "message": "do we want the other props here too to verify them in L925-L930?",
+      "range": {
+        "startLine": 898,
+        "startChar": 12,
+        "endLine": 900,
+        "endChar": 26
+      },
+      "revId": "eb0ba5bb3972365b7091adf5b741646d638bb8c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
