@@ -15,6 +15,7 @@
 package java
 
 import (
+	"path/filepath"
 	"sort"
 	"strings"
 
@@ -39,8 +40,10 @@ func init() {
 }
 
 func RegisterJavaFuzzBuildComponents(ctx android.RegistrationContext) {
-	ctx.RegisterModuleType("java_fuzz_host", FuzzFactory)
-	ctx.RegisterSingletonType("java_fuzz_packaging", javaFuzzPackagingFactory)
+	ctx.RegisterModuleType("java_fuzz", JavaFuzzFactory)
+	ctx.RegisterModuleType("java_fuzz_host", JavaFuzzHostFactory)
+	ctx.RegisterSingletonType("java_fuzz_host_packaging", javaFuzzHostPackagingFactory)
+	ctx.RegisterSingletonType("java_fuzz_device_packaging", javaFuzzDevicePackagingFactory)
 }
 
 type JavaFuzzLibrary struct {
@@ -55,11 +58,11 @@ type JavaFuzzLibrary struct {
 // sanitized for the given sanitizer or not.
 func (j *JavaFuzzLibrary) IsSanitizerEnabledForJni(ctx android.BaseModuleContext, sanitizerName string) bool {
 	// TODO: once b/231370928 is resolved, please uncomment the loop
-	// 	for _, s := range j.jniProperties.Sanitizers {
-	// 		if sanitizerName == s {
-	// 			return true
-	// 		}
-	// 	}
+	//     for _, s := range j.jniProperties.Sanitizers {
+	//         if sanitizerName == s {
+	//             return true
+	//         }
+	//     }
 	return false
 }
 
@@ -72,7 +75,6 @@ func (j *JavaFuzzLibrary) DepsMutator(mctx android.BottomUpMutatorContext) {
 		// this will be used by the ingestion pipeline to determine the version
 		// of jazzer to add to the fuzzer package
 		j.fuzzPackagedModule.FuzzProperties.Fuzz_config.IsJni = proptools.BoolPtr(true)
-
 		for _, target := range mctx.MultiTargets() {
 			sharedLibVariations := append(target.Variations(), blueprint.Variation{Mutator: "link", Variation: "shared"})
 			mctx.AddFarVariationDependencies(sharedLibVariations, cc.JniFuzzLibTag, j.jniProperties.Jni_libs...)
@@ -91,7 +93,6 @@ func (j *JavaFuzzLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	if j.fuzzPackagedModule.FuzzProperties.Dictionary != nil {
 		j.fuzzPackagedModule.Dictionary = android.PathForModuleSrc(ctx, *j.fuzzPackagedModule.FuzzProperties.Dictionary)
 	}
-
 	if j.fuzzPackagedModule.FuzzProperties.Fuzz_config != nil {
 		configPath := android.PathForModuleOut(ctx, "config").Join(ctx, "config.json")
 		android.WriteFileRule(ctx, configPath, j.fuzzPackagedModule.FuzzProperties.Fuzz_config.String())
@@ -101,7 +102,8 @@ func (j *JavaFuzzLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	ctx.VisitDirectDepsWithTag(cc.JniFuzzLibTag, func(dep android.Module) {
 		sharedLibInfo := ctx.OtherModuleProvider(dep, cc.SharedLibraryInfoProvider).(cc.SharedLibraryInfo)
 		if sharedLibInfo.SharedLibrary != nil {
-			libPath := android.PathForModuleOut(ctx, sharedLibInfo.SharedLibrary.Base())
+			relPath := filepath.Join("native_libs", sharedLibInfo.SharedLibrary.Base())
+			libPath := android.PathForModuleOut(ctx, relPath)
 			ctx.Build(pctx, android.BuildParams{
 				Rule:   android.Cp,
 				Input:  sharedLibInfo.SharedLibrary,
@@ -116,11 +118,11 @@ func (j *JavaFuzzLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	j.Library.GenerateAndroidBuildActions(ctx)
 }
 
-// java_fuzz builds and links sources into a `.jar` file for the host.
+// java_fuzz_host builds and links sources into a `.jar` file for the host.
 //
 // By default, a java_fuzz produces a `.jar` file containing `.class` files.
 // This jar is not suitable for installing on a device.
-func FuzzFactory() android.Module {
+func JavaFuzzHostFactory() android.Module {
 	module := &JavaFuzzLibrary{}
 
 	module.addHostProperties()
@@ -147,17 +149,59 @@ func FuzzFactory() android.Module {
 	return module
 }
 
-// Responsible for generating rules that package fuzz targets into
-// their architecture & target/host specific zip file.
-type javaFuzzPackager struct {
+// java_fuzz builds and links sources into a `.jar` file for the device.
+// This generates .class files in a jar which can then be instrumented before
+// fuzzing in Android Runtime (ART: Android OS on emulator or device)
+func JavaFuzzFactory() android.Module {
+	module := &JavaFuzzLibrary{}
+
+	module.addHostAndDeviceProperties()
+	module.AddProperties(&module.jniProperties)
+	module.Module.properties.Installable = proptools.BoolPtr(true)
+	module.AddProperties(&module.fuzzPackagedModule.FuzzProperties)
+
+	// java_fuzz packaging rules collide when both linux_glibc and linux_bionic
+	// are enabled, disable the linux_glibc variants.
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
+		disableLinuxGlibc := struct {
+			Target struct {
+				Linux_glibc struct {
+					Enabled *bool
+				}
+			}
+		}{}
+		disableLinuxGlibc.Target.Linux_glibc.Enabled = proptools.BoolPtr(false)
+		ctx.AppendProperties(&disableLinuxGlibc)
+	})
+
+	module.initModuleAndImport(module)
+	android.InitSdkAwareModule(module)
+	android.InitBazelModule(module)
+	InitJavaModuleMultiTargets(module, android.DeviceSupported)
+	return module
+}
+
+// Responsible for generating rules that package host fuzz targets into
+// a zip file.
+type javaFuzzHostPackager struct {
 	fuzz.FuzzPackager
 }
 
-func javaFuzzPackagingFactory() android.Singleton {
-	return &javaFuzzPackager{}
+// Responsible for generating rules that package device fuzz targets into
+// a zip file.
+type javaFuzzDevicePackager struct {
+	fuzz.FuzzPackager
 }
 
-func (s *javaFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
+func javaFuzzHostPackagingFactory() android.Singleton {
+	return &javaFuzzHostPackager{}
+}
+
+func javaFuzzDevicePackagingFactory() android.Singleton {
+	return &javaFuzzDevicePackager{}
+}
+
+func (s *javaFuzzHostPackager) GenerateBuildActions(ctx android.SingletonContext) {
 	// Map between each architecture + host/device combination.
 	archDirs := make(map[fuzz.ArchOs][]fuzz.FileToZip)
 
@@ -168,6 +212,64 @@ func (s *javaFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		// Discard non-fuzz targets.
 		javaFuzzModule, ok := module.(*JavaFuzzLibrary)
 		if !ok {
+			return
+		}
+
+		if !javaFuzzModule.Host() {
+			return
+		}
+
+		fuzzModuleValidator := fuzz.FuzzModule{
+			javaFuzzModule.ModuleBase,
+			javaFuzzModule.DefaultableModuleBase,
+			javaFuzzModule.ApexModuleBase,
+		}
+
+		if ok := fuzz.IsValid(fuzzModuleValidator); !ok {
+			return
+		}
+
+		hostOrTargetString := "host"
+		archString, archDir, archOs := getFilePaths(ctx, javaFuzzModule, hostOrTargetString)
+
+		var files []fuzz.FileToZip
+		builder := android.NewRuleBuilder(pctx, ctx)
+
+		// Package the artifacts (data, corpus, config and dictionary into a zipfile.
+		files = s.PackageArtifacts(ctx, module, javaFuzzModule.fuzzPackagedModule, archDir, builder)
+
+		// Add .jar
+		files = append(files, fuzz.FileToZip{javaFuzzModule.implementationJarFile, ""})
+
+		// Add jni .so files
+		for _, fPath := range javaFuzzModule.jniFilePaths {
+			files = append(files, fuzz.FileToZip{fPath, ""})
+		}
+
+		archDirs[archOs], ok = s.BuildZipFile(ctx, module, javaFuzzModule.fuzzPackagedModule, files, builder, archDir, archString, hostOrTargetString, archOs, archDirs)
+		if !ok {
+			return
+		}
+
+	})
+	s.CreateFuzzPackage(ctx, archDirs, fuzz.Java, pctx)
+}
+
+func (s *javaFuzzDevicePackager) GenerateBuildActions(ctx android.SingletonContext) {
+	// Map between each architecture + host/device combination.
+	archDirs := make(map[fuzz.ArchOs][]fuzz.FileToZip)
+
+	// List of individual fuzz targets.
+	s.FuzzTargets = make(map[string]bool)
+
+	ctx.VisitAllModules(func(module android.Module) {
+		// Discard non-fuzz targets.
+		javaFuzzModule, ok := module.(*JavaFuzzLibrary)
+		if !ok {
+			return
+		}
+
+		if javaFuzzModule.Host() {
 			return
 		}
 
@@ -186,13 +288,7 @@ func (s *javaFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		}
 
 		hostOrTargetString := "target"
-		if javaFuzzModule.Host() {
-			hostOrTargetString = "host"
-		}
-		archString := javaFuzzModule.Arch().ArchType.String()
-
-		archDir := android.PathForIntermediates(ctx, "fuzz", hostOrTargetString, archString)
-		archOs := fuzz.ArchOs{HostOrTarget: hostOrTargetString, Arch: archString, Dir: archDir.String()}
+		archString, archDir, archOs := getFilePaths(ctx, javaFuzzModule, hostOrTargetString)
 
 		var files []fuzz.FileToZip
 		builder := android.NewRuleBuilder(pctx, ctx)
@@ -201,7 +297,7 @@ func (s *javaFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		files = s.PackageArtifacts(ctx, module, javaFuzzModule.fuzzPackagedModule, archDir, builder)
 
 		// Add .jar
-		files = append(files, fuzz.FileToZip{javaFuzzModule.outputFile, ""})
+		files = append(files, fuzz.FileToZip{javaFuzzModule.implementationJarFile, ""})
 
 		// Add jni .so files
 		for _, fPath := range javaFuzzModule.jniFilePaths {
@@ -217,12 +313,29 @@ func (s *javaFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 	s.CreateFuzzPackage(ctx, archDirs, fuzz.Java, pctx)
 }
 
-func (s *javaFuzzPackager) MakeVars(ctx android.MakeVarsContext) {
+func getFilePaths(ctx android.SingletonContext, javaFuzzModule *JavaFuzzLibrary, hostOrTargetString string) (string, android.OutputPath, fuzz.ArchOs) {
+	archString := javaFuzzModule.Arch().ArchType.String()
+	archDir := android.PathForIntermediates(ctx, "fuzz", hostOrTargetString, archString)
+	archOs := fuzz.ArchOs{HostOrTarget: hostOrTargetString, Arch: archString, Dir: archDir.String()}
+	return archString, archDir, archOs
+}
+
+func (s *javaFuzzHostPackager) MakeVars(ctx android.MakeVarsContext) {
 	packages := s.Packages.Strings()
 	sort.Strings(packages)
 
-	ctx.Strict("SOONG_JAVA_FUZZ_PACKAGING_ARCH_MODULES", strings.Join(packages, " "))
+	ctx.Strict("SOONG_JAVA_FUZZ_HOST_PACKAGING_ARCH_MODULES", strings.Join(packages, " "))
 
 	// Preallocate the slice of fuzz targets to minimize memory allocations.
-	s.PreallocateSlice(ctx, "ALL_JAVA_FUZZ_TARGETS")
+	s.PreallocateSlice(ctx, "ALL_JAVA_FUZZ_HOST_TARGETS")
+}
+
+func (s *javaFuzzDevicePackager) MakeVars(ctx android.MakeVarsContext) {
+	packages := s.Packages.Strings()
+	sort.Strings(packages)
+
+	ctx.Strict("SOONG_JAVA_FUZZ_DEVICE_PACKAGING_ARCH_MODULES", strings.Join(packages, " "))
+
+	// Preallocate the slice of fuzz targets to minimize memory allocations.
+	s.PreallocateSlice(ctx, "ALL_JAVA_FUZZ_DEVICE_TARGETS")
 }
