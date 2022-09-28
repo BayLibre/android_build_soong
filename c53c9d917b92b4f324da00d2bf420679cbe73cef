@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceea80e8_99df45ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-28T14:53:59Z",
+      "side": 1,
+      "message": "I think this is necessary to ensure that Bazel works for downstream users who don\u0027t rely on bp2build, i.e. they\u0027re using bazel in other contexts.",
+      "revId": "c53c9d917b92b4f324da00d2bf420679cbe73cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
