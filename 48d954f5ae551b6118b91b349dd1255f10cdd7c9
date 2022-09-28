@@ -34,6 +34,24 @@
       "parentUuid": "4218dc42_3f85d432",
       "revId": "48d954f5ae551b6118b91b349dd1255f10cdd7c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d40d2df_142f68b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-28T20:51:21Z",
+      "side": 1,
+      "message": "OK. I\u0027ve changed the scope of this CL. Thanks, Dan!",
+      "parentUuid": "e83411a4_3c157054",
+      "revId": "48d954f5ae551b6118b91b349dd1255f10cdd7c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
