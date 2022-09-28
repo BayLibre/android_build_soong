@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d94267a_09293d91",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-28T21:15:33Z",
+      "side": 1,
+      "message": "nit: given cqueryKey is private to this package, maybe a `normalizeLabel()` might have been preferable",
+      "revId": "86dc2c268a0e1e1fbe0d161d349c49c9fa4b10e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
