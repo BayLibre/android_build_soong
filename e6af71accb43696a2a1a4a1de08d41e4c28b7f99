@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98287385_b425474f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-09-28T14:26:35Z",
+      "side": 1,
+      "message": "Should we also update the switch case in droiddocs? https://cs.android.com/android/platform/superproject/+/master:build/soong/java/droiddoc.go;l\u003d370;drc\u003d9f6e6238ef3c6fa975a60f7b115b6b266c71461c\nand maybe this roboelectric GetDirectDepsWithTag call? https://cs.android.com/android/platform/superproject/+/master:build/soong/java/robolectric.go;l\u003d169;drc\u003dd57e8b2c2a55359c86def86a06dfdc7f7678d3c3",
+      "revId": "e6af71accb43696a2a1a4a1de08d41e4c28b7f99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
