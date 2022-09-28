@@ -16,6 +16,24 @@
       "message": "nit: given cqueryKey is private to this package, maybe a `normalizeLabel()` might have been preferable",
       "revId": "86dc2c268a0e1e1fbe0d161d349c49c9fa4b10e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b485e7_ccfaf2ab",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-28T21:22:58Z",
+      "side": 1,
+      "message": "I disagree, a `make` function is preferable, as it encourages all users (but you\u0027re correct in that it doesn\u0027t **force** all users) of cqueryKey to call the `make` function instead of manually constructing the struct themselves.\n\nnormalizeLabel is more error-prone, as strings are \"pure\", and it\u0027s easy for a caller to forget that the label must be normalized.",
+      "parentUuid": "2d94267a_09293d91",
+      "revId": "86dc2c268a0e1e1fbe0d161d349c49c9fa4b10e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
