@@ -58,10 +58,6 @@ echo "Free disk space:"
 df -h || true
 
 echo
-echo "Running Bazel smoke test..."
-STANDALONE_BAZEL=true "${TOP}/tools/bazel" --batch --max_idle_secs=1 info
-
-echo
 echo "Running Soong test..."
 soong_build_go multiproduct_kati android/soong/cmd/multiproduct_kati
 exec "$(getoutdir)/multiproduct_kati" --skip-products "$(echo "${SKIPPED_PRODUCTS[@]-}" | tr ' ' ',')" "$@"
