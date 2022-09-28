@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dc8c56e_bd0f70cc",
+        "filename": "bp2build/bpf_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-09-28T22:15:50Z",
+      "side": 1,
+      "message": "Done, I filed b/249528391 and add the TODO in the definition of `bazelBpfAttributes` in `bpf.go`.",
+      "parentUuid": "1d7957e2_a32c26d6",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "0128242c230eacfba93d1838e20aee549c42dedd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d252377_d7ccb9eb",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c5a005_4987325d",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-09-28T22:15:50Z",
+      "side": 1,
+      "message": "the same as above.",
+      "parentUuid": "0d252377_d7ccb9eb",
+      "range": {
+        "startLine": 271,
+        "startChar": 1,
+        "endLine": 271,
+        "endChar": 7
+      },
+      "revId": "0128242c230eacfba93d1838e20aee549c42dedd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a48dbde_f5a523eb",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-09-28T13:18:15Z",
       "side": 1,
       "message": "In other cc Bazel rules, we used the name `absolute_includes` to clarify that these are absolute: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/object.go;l\u003d141;drc\u003dfb44cd2e8e4d7b99f816ce18b1f9bdad8f0274c6, can we use the same naming scheme here?",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 39
+      },
+      "revId": "0128242c230eacfba93d1838e20aee549c42dedd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4669352d_5174cf74",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-09-28T22:15:50Z",
+      "side": 1,
+      "message": "Done. I have replaced `include_dirs` with `absolute_includes`, and `cflags` with `copts`. The replacement has been reflected in bazel rule too.",
+      "parentUuid": "0a48dbde_f5a523eb",
       "range": {
         "startLine": 272,
         "startChar": 0,
