@@ -88,6 +88,22 @@ type Bp2buildTestCase struct {
 }
 
 func RunBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.RegistrationContext), tc Bp2buildTestCase) {
+	bp2buildSetup := func(ctx *android.TestContext) {
+		registerModuleTypes(ctx)
+		ctx.RegisterForBazelConversion()
+	}
+	runBp2BuildTestCaseWithSetup(t, bp2buildSetup, tc)
+}
+
+func RunApiBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.RegistrationContext), tc Bp2buildTestCase) {
+	apiBp2BuildSetup := func(ctx *android.TestContext) {
+		registerModuleTypes(ctx)
+		ctx.RegisterForApiBazelConversion()
+	}
+	runBp2BuildTestCaseWithSetup(t, apiBp2BuildSetup, tc)
+}
+
+func runBp2BuildTestCaseWithSetup(t *testing.T, setup func(ctx *android.TestContext), tc Bp2buildTestCase) {
 	t.Helper()
 	dir := "."
 	filesystem := make(map[string][]byte)
@@ -103,7 +119,7 @@ func RunBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.Regi
 	config := android.TestConfig(buildDir, nil, tc.Blueprint, filesystem)
 	ctx := android.NewTestContext(config)
 
-	registerModuleTypes(ctx)
+	setup(ctx)
 	ctx.RegisterModuleType(tc.ModuleTypeUnderTest, tc.ModuleTypeUnderTestFactory)
 
 	// A default configuration for tests to not have to specify bp2build_available on top level targets.
@@ -118,7 +134,6 @@ func RunBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.Regi
 		})
 	}
 	ctx.RegisterBp2BuildConfig(bp2buildConfig)
-	ctx.RegisterForBazelConversion()
 
 	_, parseErrs := ctx.ParseFileList(dir, toParse)
 	if errored(t, tc, parseErrs) {
