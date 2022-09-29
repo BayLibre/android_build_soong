@@ -878,8 +878,10 @@ func (sanitize *sanitize) SetSanitizer(t SanitizerType, b bool) {
 	switch t {
 	case Asan:
 		sanitize.Properties.Sanitize.Address = bPtr
+		sanitize.Properties.Sanitize.Memtag_stack = nil
 	case Hwasan:
 		sanitize.Properties.Sanitize.Hwaddress = bPtr
+		sanitize.Properties.Sanitize.Memtag_stack = nil
 	case tsan:
 		sanitize.Properties.Sanitize.Thread = bPtr
 	case intOverflow:
@@ -892,6 +894,8 @@ func (sanitize *sanitize) SetSanitizer(t SanitizerType, b bool) {
 		sanitize.Properties.Sanitize.Memtag_heap = bPtr
 	case Memtag_stack:
 		sanitize.Properties.Sanitize.Memtag_stack = bPtr
+		sanitize.Properties.Sanitize.Address = nil
+		sanitize.Properties.Sanitize.Hwaddress = nil
 	case Fuzzer:
 		sanitize.Properties.Sanitize.Fuzzer = bPtr
 	default:
