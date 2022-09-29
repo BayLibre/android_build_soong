@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da740a51_09e3e59c",
+        "filename": "bp2build/cc_prebuilt_binary_conversion_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-29T15:04:21Z",
+      "side": 1,
+      "message": "it looks like we could get this down to one helper?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 134
+      },
+      "revId": "41a97a67367bb2b5d6097fe894a14e8251b23460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1891a6_d0ae45e6",
+        "filename": "cc/linkable.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-29T15:04:21Z",
+      "side": 1,
+      "message": "Who is the consumer of this provider?\n\nIn mixed builds the goal is to identify the interfaces a module type fulfills and providers set _currently_ and to set those. (go/roboleaf-mixed-builds#modifying-the-soong-module-implementation) If we introduce a new provider we\u0027d have to also modify the module type itself to entirely transition to the provider.",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 76
+      },
+      "revId": "41a97a67367bb2b5d6097fe894a14e8251b23460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

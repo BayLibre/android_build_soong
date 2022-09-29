@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a97cf58_cc60e3a2",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-29T15:04:21Z",
+      "side": 1,
+      "message": "Even being a common practice, it\u0027s worth testing and perhaps documenting as well.",
+      "parentUuid": "87900a27_46ab6470",
+      "range": {
+        "startLine": 702,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 76
+      },
+      "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89805d5c_aad06503",
         "filename": "cc/prebuilt.go",
         "patchSetId": 19
@@ -119,6 +143,24 @@
       "writtenOn": "2022-09-27T15:28:52Z",
       "side": 1,
       "message": "Can you add some unit tests for mixed builds?",
+      "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c18508_edb6b6e2",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-29T15:04:21Z",
+      "side": 1,
+      "message": "+1 can we also split the mixed builds work into a separate CL?",
+      "parentUuid": "89805d5c_aad06503",
       "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
