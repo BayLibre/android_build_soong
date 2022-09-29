@@ -245,9 +245,9 @@ var (
 		// New warnings to be fixed after clang-r458507
 		"-Wno-error=unqualified-std-cast-call", // http://b/239662094
 		// New warnings to be fixed after clang-r468909
-		"-Wno-error=array-parameter",     // http://b/241941550
-		"-Wno-error=deprecated-builtins", // http://b/241601211
-		"-Wno-error=deprecated",          // in external/googletest/googletest
+		//"-Wno-error=array-parameter",     // http://b/241941550
+		//"-Wno-error=deprecated-builtins", // http://b/241601211
+		//"-Wno-error=deprecated",          // in external/googletest/googletest
 	}
 
 	noOverrideExternalGlobalCflags = []string{
@@ -312,8 +312,8 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r468909"
-	ClangDefaultShortVersion = "15.0.2"
+	ClangDefaultVersion      = "clang-r458507"
+	ClangDefaultShortVersion = "15.0.1"
 
 	// Directories with warnings from Android.bp files.
 	WarningAllowedProjects = []string{
