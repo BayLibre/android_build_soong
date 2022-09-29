@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d92acb51_f1084016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2022-09-29T23:54:21Z",
+      "side": 1,
+      "message": "I verified this locally, and it fixes the issue I was seeing with incorrect demands for apex availability.",
+      "revId": "581b6d82abcf222c6ead4928a91b4504550b0b7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
