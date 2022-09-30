@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5afc4e1_ceafcfdc",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-30T18:28:49Z",
+      "side": 1,
+      "message": "@cparsons@google.com\nHere\u0027s a CUJ that I think legacy build is OK with but this CL will fail (and hence my TODO about adding yet another manifest file):\n1. Use wrote a brand new Android.bp\n2. Ran bp2build (as part of a mixed build)\n3. Realized they forgot to add an AndroidManifest.xml\n4. Runs the build again - bp2build WILL NOT create a new symlink to AndroidManifest.xml file in the bazel workspace.\n\n\nAlso, I will provide a breakdown of time spent by bp2build in its two responsibilities:\n1. Create the symlink forest\n2. Run the codegen for generating BUILD files\nI have a feeling that (1) might be much smaller compared to (2) and that may mean we should consider separating them as two separate ninja targets. In fact (1) should be an order-only dependency or (2) (if I understand ninja\u0027 order only dependencies correctly).\nIf (1) triggers to ensure the synthetic workspace is always in sync with the source tree but (2) doesn\u0027t necessarily get triggered due to (1) then that is a win.",
+      "parentUuid": "09038687_1b7c7d08",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6909969b_20ab6955",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
