@@ -193,6 +193,23 @@
       },
       "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e961c4_e6cb5730",
+        "filename": "cmd/soong_build/queryview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-30T20:39:33Z",
+      "side": 1,
+      "message": "this file could be renamed to reflect the generalization",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
