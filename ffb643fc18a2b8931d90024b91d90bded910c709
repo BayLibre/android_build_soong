@@ -87,6 +87,30 @@
       },
       "revId": "ffb643fc18a2b8931d90024b91d90bded910c709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "609d9a47_020575d8",
+        "filename": "java/lint_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-09-30T17:05:12Z",
+      "side": 1,
+      "message": "Fixed in aosp/2238415",
+      "parentUuid": "f7468ddd_c4a007e7",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 51
+      },
+      "revId": "ffb643fc18a2b8931d90024b91d90bded910c709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
