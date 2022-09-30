@@ -35,6 +35,57 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f050b13_b1855265",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-30T18:42:46Z",
+      "side": 1,
+      "message": "disclaimer: I don\u0027t quite understand how just generating the BUILD files is useful when any source files they refer to aren\u0027t present (because of no symlinks).\nIOW, I guess I don\u0027t know what \"api\" refers to in api gen.",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "451d559e_b5828cbd",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-30T18:42:46Z",
+      "side": 1,
+      "message": "nit: may be the BuildMode check should precede (no strong reason but feels like that\u0027s the wider criterion)",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56274cac_8399273b",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-30T18:42:46Z",
+      "side": 1,
+      "message": "nit: This name feels a bit inconsistent with the rest.\n`ApiBp2build` ?",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2ab3517_e91b5b72",
@@ -54,6 +105,23 @@
         "endLine": 38,
         "endChar": 42
       },
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7cb100_6a047f00",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-30T18:42:46Z",
+      "side": 1,
+      "message": "nit: A lot of this seems to be similar to runBp2Build (as expected) - maybe some refactoring possible for the commonalities. (Although maybe you did try it and it didn\u0027t make much sense)",
       "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
