@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ab4d8e5_b2166aa8",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-30T17:28:33Z",
+      "side": 1,
+      "message": "This is doing a little bit more than just returning a printable command -- it\u0027s adding the header for cquery.out (with newlines, etc). Maybe just return outputString here and then add the newlines and \"cquery command line\" portion to the caller?",
+      "revId": "1274773516c3bdaaadd82b2a546895fc018b4160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "758dfec0_7ec58a6d",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-30T17:28:33Z",
+      "side": 1,
+      "message": "Is the quoting trickery we do below only to support the \"deps(%s, 2)\" arg? Can we wrap it in quotes here, and avoid this trick later?",
+      "revId": "1274773516c3bdaaadd82b2a546895fc018b4160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
