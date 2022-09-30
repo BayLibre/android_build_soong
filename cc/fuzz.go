@@ -18,6 +18,9 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"encoding/json"
+    "fmt"
+    "reflect"
 
 	"github.com/google/blueprint/proptools"
 
@@ -265,6 +268,33 @@ func (fuzzBin *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 
 	if fuzzBin.fuzzPackagedModule.FuzzProperties.Fuzz_config != nil {
 		configPath := android.PathForModuleOut(ctx, "config").Join(ctx, "config.json")
+		// Get the configData as a string (in json format)
+		configData := fuzzBin.fuzzPackagedModule.FuzzProperties.Fuzz_config.String()
+		// Check to see if target modules are listed
+		if strings.Contains(configData, "target_modules") {
+		    fmt.Printf("configData: %s \n", configData)
+		    // dictionary to unmarshal the json (and be able to access elements)
+		    var configMap map[string]interface{}
+		    // unmarshal the string into the dictionary
+		    err := json.Unmarshal([]byte(configData), &configMap)
+            if err != nil {
+                panic(err)
+            }
+
+            moduleList := configMap["target_modules"]
+            fmt.Printf("moduleList: %s \n", moduleList)
+
+            fmt.Printf("type: %s \n", reflect.TypeOf(moduleList))
+
+
+            // Iterate through each listed module to get it's directory path
+            for _, module := range moduleList.([]string) {
+                moduleAsString := string(module)
+                fmt.Printf("moduleAsString: %s \n", moduleAsString)
+            }
+        }
+
+		// fmt.Printf("data: %s \n", data)
 		android.WriteFileRule(ctx, configPath, fuzzBin.fuzzPackagedModule.FuzzProperties.Fuzz_config.String())
 		fuzzBin.fuzzPackagedModule.Config = configPath
 	}
