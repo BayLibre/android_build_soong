@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e80659cf_1023acbb",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-09-30T19:03:43Z",
+      "side": 1,
+      "message": "Yes your observation regarding ninja file creation not needing to reoccur for legacy is correct.\nAnd yes with this CL a symlink for AndroidManifest.xml will not appear in the synthetic workspace so bp2build will not trigger and the ninja target that relies on it won\u0027t succeed.\n\nMeasuremnt for the two I should be able to find out quickly (i.e. TODAY).\nBreakdown of the two reponsibilities into two ninja targets - I\u0027ll need to think a bit more (but contingent on the timing observations that justify the change as well)",
+      "parentUuid": "e4abb574_02b4d445",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6909969b_20ab6955",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
