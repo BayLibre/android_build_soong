@@ -54,6 +54,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbc31939_c158dd50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-30T21:37:11Z",
+      "side": 1,
+      "message": "Thanks!\n\n\u003e It likely makes sense to add a simple test in build/soong/bp2build/build_conversion_test.go\n\nI have a added a test for API conversion of the custom module type\n\n\u003e and perhaps in build/soong/bp2build/conversion_test.go as well.\n\nDoes this unittest verify that the necessary BUILD files are created? If so, I think the existing unittests for `codegen` and `PlantSymlinkForest` should be sufficient",
+      "parentUuid": "1396e58f_203c6e1d",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c16c18a_51779f60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-30T21:37:11Z",
+      "side": 1,
+      "message": "The BUILD files will be generated at out/soong/.apigen\nThese will then be copied to out/soong/apigen (without the dot). The source files (.h/.txt) will be symlinked into the latter using `PlantSymlinkForest`\n\n\nI agree `apigen` might be a little confusing. We are generating BUILD files for API contributions, not the APIs themselves",
+      "parentUuid": "5f050b13_b1855265",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "451d559e_b5828cbd",
         "filename": "android/bazel.go",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2022-09-30T18:42:46Z",
       "side": 1,
       "message": "nit: may be the BuildMode check should precede (no strong reason but feels like that\u0027s the wider criterion)",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7bab194_1d397562",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-30T21:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "451d559e_b5828cbd",
       "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -82,6 +136,24 @@
       "writtenOn": "2022-09-30T18:42:46Z",
       "side": 1,
       "message": "nit: This name feels a bit inconsistent with the rest.\n`ApiBp2build` ?",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efcac488_aae600a8",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-30T21:37:11Z",
+      "side": 1,
+      "message": "Are you suggesting to apply this name to just this file or to other parts of this CL as well?\n(I am open to both)",
+      "parentUuid": "56274cac_8399273b",
       "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -109,6 +181,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e098d5cc_5942732e",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-30T21:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2ab3517_e91b5b72",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 42
+      },
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac7cb100_6a047f00",
@@ -126,6 +222,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2fe67bf_f87e9995",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-30T21:37:11Z",
+      "side": 1,
+      "message": "I think some code duplication is ok for now. There are are roughly an equal number of differences and commonalities",
+      "parentUuid": "ac7cb100_6a047f00",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "638cec33_93e7ddf7",
@@ -139,6 +253,30 @@
       "writtenOn": "2022-09-30T14:02:45Z",
       "side": 1,
       "message": "should we extract these out into a const or function?",
+      "range": {
+        "startLine": 233,
+        "startChar": 12,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "384b7032_73f45b39",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-30T21:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "638cec33_93e7ddf7",
       "range": {
         "startLine": 233,
         "startChar": 12,
@@ -172,6 +310,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2581a5ef_3b8340fb",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-30T21:37:11Z",
+      "side": 1,
+      "message": "I think it is not strictly necessary at the moment since the file at the root of $ANDROID_BUILD_TOP is a symlink created by repo. In the aosp manifest the dest of the linkfile is currently `BUILD`\n\nHowever this might change in the future, so I have expanded the allowlist to include `BUILD.bazel` as well",
+      "parentUuid": "6b6fa0de_ce4927c5",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 20
+      },
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5546bd81_fe076c13",
@@ -195,6 +357,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67c0082_deea38b7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-30T21:37:11Z",
+      "side": 1,
+      "message": "That is accurate. The load statements in the rule files depend on the Bazel package heirarchy of the source `build/bazel` project. If we do not copy the BUILD files, we run into errors like\n```\nLabel \u0027//build/bazel/rules/apis:api_domain.bzl\u0027 is invalid because \u0027build/bazel/rules/apis\u0027 is not a package; perhaps you meant to put the colon here: \u0027//:build/bazel/rules/apis/api_domain.bzl\u0027?                                          \n```",
+      "parentUuid": "5546bd81_fe076c13",
+      "range": {
+        "startLine": 272,
+        "startChar": 3,
+        "endLine": 272,
+        "endChar": 44
+      },
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90e961c4_e6cb5730",
@@ -208,6 +394,24 @@
       "writtenOn": "2022-09-30T20:39:33Z",
       "side": 1,
       "message": "this file could be renamed to reflect the generalization",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70d2a67_ec8f0cae",
+        "filename": "cmd/soong_build/queryview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-30T21:37:11Z",
+      "side": 1,
+      "message": "Do you feel strongly about this? I would like to propose that we keep this file as-is. Even though this contains generic functions today, future queryview specific logic can go here, instead of `main.go`",
+      "parentUuid": "90e961c4_e6cb5730",
       "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
