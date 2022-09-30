@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09038687_1b7c7d08",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-30T18:07:50Z",
+      "side": 1,
+      "message": "\"This is a hack because it may reduce the correctness of bp2build\" is a false equivalence. This may be closer to \"doing the right thing\" here, but unearth some larger correctness issues of the build system.\n\nIf there are several places you anticipate this will disturb correctness, lets talk about them. In the case of implicit AndroidManifest.xml dependencies: this is a correctness issue already present in Soong, IIUC. If it\u0027s going to be fixed anywhere, it should be fixed there (in finder.go, presumably). This correctness issue barely even gets noticed by our users, AFAIK.\n\n`b` correctness will be no worse than legacy correctness as a result of this CL, and incremental performance should drastically improve. If we want to improve correctness of both build systems, we should do that in a followup.\n\n\u003e maybe we could figure out which folders are changing, and why, and just ignore those folder if they\u0027re special in some way?\n\nThis would be a hackier solution, if I understand you correctly: denylisting certain directories from ninjaDeps because we anticipate they\u0027re volatile. Instead, we should be depending on the exact set of things that would change the outputs of bp2build; bp2build should only retrigger on elements which affect the output of the generated symlink forest or the BUILD files generated.",
+      "parentUuid": "7e6501ec_d16b66ed",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6909969b_20ab6955",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
