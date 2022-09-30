@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fbd164d_8417fdb8",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-30T19:37:43Z",
+      "side": 1,
+      "message": "Spoke offline. Usta might follow up with why we\u0027ll want to abandon this, but since I gave a long initial response, I think it would be good for posterity to elaborate on my missed understanding.\n\nI thought that this CL would demonstrate no worse performance for bp2build than it does for legacy builds. That was mistaken. This is because I thought the AndroidManifest.xml \"implicit dependency\" case was problematic for legacy because it dictated a difference in the generated Ninja file, and that Soong would not regenerate the Ninja file in such cases anyway. This was mistaken.\n\nThanks for raising this, Cole. You\u0027ve highlighted a misunderstanding that makes us rethink the problem.",
+      "parentUuid": "e80659cf_1023acbb",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6909969b_20ab6955",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
