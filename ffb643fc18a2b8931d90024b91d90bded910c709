@@ -39,6 +39,30 @@
       },
       "revId": "ffb643fc18a2b8931d90024b91d90bded910c709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3fda84a_24ed8085",
+        "filename": "java/lint_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-09-30T16:08:58Z",
+      "side": 1,
+      "message": "You are right! It [probably] should be in the sdk_version.\n\nAre you working on this file?",
+      "parentUuid": "6466d8bd_40612f6a",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 51
+      },
+      "revId": "ffb643fc18a2b8931d90024b91d90bded910c709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
