@@ -18,6 +18,9 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"encoding/json"
+    "fmt"
+    "reflect"
 
 	"github.com/google/blueprint/proptools"
 
