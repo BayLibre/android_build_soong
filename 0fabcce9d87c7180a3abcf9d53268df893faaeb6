@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29950c0b_a8f07c37",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-30T15:50:14Z",
+      "side": 1,
+      "message": "Yeah make sense. Updated the return syntax for better self-documenting.",
+      "parentUuid": "5c3d0af5_143248f0",
+      "revId": "0fabcce9d87c7180a3abcf9d53268df893faaeb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9fcf60d_c511aea6",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4377a81e_06e701fd",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-30T15:50:14Z",
+      "side": 1,
+      "message": "Thanks. Updated the comments.",
+      "parentUuid": "e9fcf60d_c511aea6",
+      "revId": "0fabcce9d87c7180a3abcf9d53268df893faaeb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34d2240b_91013e6b",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-27T14:45:40Z",
       "side": 1,
       "message": "the map entry presence could be entirely dropped or at best moved to `tokens`:\n```\nif command, ok :\u003d r.tokens[bazelCmd]; ok {\n  return r.bazelCommandResults[command] // \u003c- no need to check presence here\n}\nreturn \"\", \"\", nil\n```",
+      "revId": "0fabcce9d87c7180a3abcf9d53268df893faaeb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ed839d4_7398ae4c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-30T15:50:14Z",
+      "side": 1,
+      "message": "Updated as suggested.",
+      "parentUuid": "34d2240b_91013e6b",
       "revId": "0fabcce9d87c7180a3abcf9d53268df893faaeb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
