@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf6c9990_860bd6f1",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-30T19:55:04Z",
+      "side": 1,
+      "message": "Good suggestions. Updated.",
+      "parentUuid": "4ab4d8e5_b2166aa8",
+      "revId": "1274773516c3bdaaadd82b2a546895fc018b4160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "758dfec0_7ec58a6d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-09-30T17:28:33Z",
       "side": 1,
       "message": "Is the quoting trickery we do below only to support the \"deps(%s, 2)\" arg? Can we wrap it in quotes here, and avoid this trick later?",
+      "revId": "1274773516c3bdaaadd82b2a546895fc018b4160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "239ee30c_b609098a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-09-30T19:55:04Z",
+      "side": 1,
+      "message": "I tried to change it to \ncqueryCmd :\u003d bazelCommand{\"cquery, fmt.Sprintf(“\\\"deps(%s, 2)\\”\", buildrootLabel)} before, but it will return the below error when building.\n \nFAILED: out/soong/build.ninja\ncd \"$(dirname \"out/host/linux-x86/bin/soong_build\")\" \u0026\u0026 BUILDER\u003d\"$PWD/$(basename \"out/host/linux-x86/bin/soong_build\")\" \u0026\u0026 cd / \u0026\u0026 env -i  \"$BUILDER\"     \n--top \"$TOP\"     --soong_out \"out/soong\"     --out \"out\"     -o out/soong/build.ninja --bazel-mode-dev --globListDir build --globFile out/soong/globs-buil\nd.ninja -t -l out/.module_paths/Android.bp.list --available_env out/soong/soong.environment.available --used_env out/soong/soong.environment.used.build An\ndroid.bp\ninternal error: bazel command failed. command: [./tools/bazel --output_base\u003d/usr/local/google/home/juu/aosp-master-with-phones/out/bazel/output cquery \"de\nps(@soong_injection//mixed_builds:buildroot, 2)\" --profile\u003d/usr/local/google/home/juu/aosp-master-with-phones/out/bazel_metrics/cquery-buildroot_bazel_pro\nfile.gz --platforms\u003d//build/bazel/platforms:android_target --extra_toolchains\u003d//prebuilts/clang/host/linux-x86:all --host_platform\u003d//build/bazel/platforms\n:linux_x86_64 --experimental_repository_disable_download --ui_event_filters\u003d-INFO --noshow_progress --output\u003dstarlark --starlark:file\u003d/usr/local/google/ho\nme/juu/aosp-master-with-phones/out/soong/soong_injection/buildroot.cquery], env: [[HOME\u003d/usr/local/google/home/juu/aosp-master-with-phones/out/bazel/bazel\nhome PWD\u003d/proc/self/cwd BUILD_DIR\u003d/usr/local/google/home/juu/aosp-master-with-phones/out/soong OUT_DIR\u003d/usr/local/google/home/juu/aosp-master-with-phones/\nout BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN\u003d1]], error [WARNING: Bazel support for the Android Platform is experimental and is undergoing development.\nWARNING: Currently, build stability is not guaranteed. Thank you.\n\nWARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:\n/etc/bazel.bazelrc\nStarting local Bazel server and connecting to it...\nERROR: Skipping \u0027deps(@soong_injection//mixed_builds:buildroot, 2)\u0027: invalid target format \u0027deps(@soong_injection//mixed_builds:buildroot, 2)\u0027: invalid pa\nckage name \u0027deps(@soong_injection//mixed_builds\u0027: package names may not contain \u0027//\u0027 path separators\nWARNING: Target pattern parsing failed.\nERROR: invalid target format \u0027deps(@soong_injection//mixed_builds:buildroot, 2)\u0027: invalid package name \u0027deps(@soong_injection//mixed_builds\u0027: package name\ns may not contain \u0027//\u0027 path separators\n]\n19:08:53 soong bootstrap failed with: exit status 1",
+      "parentUuid": "758dfec0_7ec58a6d",
       "revId": "1274773516c3bdaaadd82b2a546895fc018b4160",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
