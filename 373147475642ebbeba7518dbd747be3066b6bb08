@@ -16,6 +16,29 @@
       "message": "Hey Muhammad,\n\nLiz has been closer to this code (AFAICT) so she is probably a better reviewer (I am also swamped by other duties)\n\nDo you have a design doc or some explanation as to what you are doing here and more importantly, why? The attached bug is not exactly rich in detail.",
       "revId": "373147475642ebbeba7518dbd747be3066b6bb08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5703c0b_9c42b8cd",
+        "filename": "java/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2022-09-30T20:25:30Z",
+      "side": 1,
+      "message": "nit: missing end parenthesis",
+      "range": {
+        "startLine": 238,
+        "startChar": 78,
+        "endLine": 238,
+        "endChar": 79
+      },
+      "revId": "373147475642ebbeba7518dbd747be3066b6bb08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
