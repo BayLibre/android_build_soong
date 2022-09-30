@@ -16,6 +16,115 @@
       "message": "Usta, I am going to add you as a reviewer since you did some related work recently on incremental bp2build",
       "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1396e58f_203c6e1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-30T14:02:45Z",
+      "side": 1,
+      "message": "Overall, looks good!\n\nIt likely makes sense to add a simple test in build/soong/bp2build/build_conversion_test.go for apigenmode (maybe using the custom module type in build/soong/bp2build/testing.go), and perhaps in build/soong/bp2build/conversion_test.go as well.",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ab3517_e91b5b72",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-30T14:02:45Z",
+      "side": 1,
+      "message": "nit: godocs for exported function",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 42
+      },
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "638cec33_93e7ddf7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-30T14:02:45Z",
+      "side": 1,
+      "message": "should we extract these out into a const or function?",
+      "range": {
+        "startLine": 233,
+        "startChar": 12,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6fa0de_ce4927c5",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-30T14:02:45Z",
+      "side": 1,
+      "message": "should we also exclude `BUILD.bazel`?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 20
+      },
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5546bd81_fe076c13",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-09-30T14:02:45Z",
+      "side": 1,
+      "message": "do you need some of these build files in order to support loading your rule files?",
+      "range": {
+        "startLine": 272,
+        "startChar": 3,
+        "endLine": 272,
+        "endChar": 44
+      },
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
