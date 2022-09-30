@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e6501ec_d16b66ed",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-09-30T17:52:01Z",
+      "side": 1,
+      "message": "I mean, it is a hack. This will reduce the correctness of bp2build, and cause incremental bp2build\u0027s to sometimes fail. (In the case of adding/removing an implicitly referenced file like AndroidManifest.xml) We don\u0027t have other mechanisms that replace this.\n\nI would argue we shouldn\u0027t make this change because of that.\n\nHowever, I too have noticed how frequently bp2build reruns for apparently no reason. If those \"random\" reruns are caused by this dependency, maybe we could figure out which folders are changing, and why, and just ignore those folder if they\u0027re special in some way?",
+      "parentUuid": "d9e806a6_207697f5",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6909969b_20ab6955",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
