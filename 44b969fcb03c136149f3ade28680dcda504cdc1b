@@ -46,6 +46,30 @@
       },
       "revId": "44b969fcb03c136149f3ade28680dcda504cdc1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "115bfbf9_5820cf8d",
+        "filename": "java/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-09-30T19:34:30Z",
+      "side": 1,
+      "message": "nit: I meant the entire function, but I only highlighted this small part, if you just passed in (isHost bool) to that function.",
+      "parentUuid": "9a609879_4f1294a5",
+      "range": {
+        "startLine": 231,
+        "startChar": 2,
+        "endLine": 234,
+        "endChar": 57
+      },
+      "revId": "44b969fcb03c136149f3ade28680dcda504cdc1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
