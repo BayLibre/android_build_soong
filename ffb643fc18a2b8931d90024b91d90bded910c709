@@ -16,6 +16,29 @@
       "message": "@ccross can you review/approve this CP of a change from sc-dev?",
       "revId": "ffb643fc18a2b8931d90024b91d90bded910c709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6466d8bd_40612f6a",
+        "filename": "java/lint_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-30T15:55:48Z",
+      "side": 1,
+      "message": "This line does nothing because XXX does not appear in the bp string.",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 51
+      },
+      "revId": "ffb643fc18a2b8931d90024b91d90bded910c709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
