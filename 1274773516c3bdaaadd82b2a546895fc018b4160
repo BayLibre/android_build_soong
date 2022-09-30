@@ -69,6 +69,24 @@
       "parentUuid": "758dfec0_7ec58a6d",
       "revId": "1274773516c3bdaaadd82b2a546895fc018b4160",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "795740e7_e2890fd9",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-30T21:34:51Z",
+      "side": 1,
+      "message": "Oh, very interesting. OK, then! I\u0027m OK with your changes as-is.",
+      "parentUuid": "239ee30c_b609098a",
+      "revId": "1274773516c3bdaaadd82b2a546895fc018b4160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

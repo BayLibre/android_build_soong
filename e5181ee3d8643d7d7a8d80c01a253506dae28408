@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2807c8b_327bf691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-30T21:34:51Z",
+      "side": 1,
+      "message": "CL is getting close! Thanks for your work on this.",
+      "revId": "e5181ee3d8643d7d7a8d80c01a253506dae28408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11028118_3686630e",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-30T21:34:51Z",
+      "side": 1,
+      "message": "If an issueBazelCommand error occurs, I think it\u0027s reasonable to output the command on the command line, and thus not bother with writing cquery.out. \nWe already do this prior to your change to a certain extent (though not an easily-run \"printable\" command). \n\nI\u0027d like if we could avoid duplication of WriteFile code for error/non-error, so I think it might be natural to drop the WriteFile in the error case.",
+      "revId": "e5181ee3d8643d7d7a8d80c01a253506dae28408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
