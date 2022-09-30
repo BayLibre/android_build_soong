@@ -63,6 +63,30 @@
       },
       "revId": "ffb643fc18a2b8931d90024b91d90bded910c709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7468ddd_c4a007e7",
+        "filename": "java/lint_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-09-30T16:12:44Z",
+      "side": 1,
+      "message": "No, I was just searching for uses of \"system_server_current\" in Soong and found it. I\u0027ll leave it up to you to investigate and fix.",
+      "parentUuid": "b3fda84a_24ed8085",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 51
+      },
+      "revId": "ffb643fc18a2b8931d90024b91d90bded910c709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
