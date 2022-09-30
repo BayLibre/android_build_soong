@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f2d06e1_f1296fbf",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-09-30T20:52:56Z",
+      "side": 1,
+      "message": "\u003e In legacy, adding an AndroidManifest.xml file and retriggering the build will not result in ninja file regeneration. Instead, simply the existing ninja actions would be rerun, and thus the new AndroidManifest.xml will be recognized.\n\nSorry if I missed all of this thread, but I _think_ Soong will regenerate a ninja file if a user adds a new AndroidManifest.xml file. Source directories are listed in the deps of out/soong/build.ninja during the globbing process\n```\n$ grep out/soong/globs/build/1019 out/soong/build.ninja.d\nout/soong/globs/build/1019 \\\n\n$ find out/soong/globs/build -name \"*.d\" | xargs grep packages/apps/Calendar\\  \nout/soong/globs/build/1019.d: packages/apps/Calendar \\\n```\n\nIf you add an AndroidManifest.xml (or any file) in packages/apps/Calendar, `out/soong/build.ninja` will be rebuilt since the mtime of this directory will change. Subsequent edits to the newly created file will trigger Ninja execution, but not Ninja analysis since the mtime of the directory will not change",
+      "parentUuid": "8fbd164d_8417fdb8",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6909969b_20ab6955",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
