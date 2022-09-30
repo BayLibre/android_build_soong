@@ -699,6 +699,39 @@ func TestJavaSdkLibrary_SystemServer(t *testing.T) {
 		`)
 }
 
+func TestJavaSdkLibrary_SystemServer_CanAccessModuleLibApi(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		PrepareForTestWithJavaSdkLibraryFiles,
+		FixtureWithLastReleaseApis("foo"),
+	).RunTestWithBp(t, `
+		java_sdk_library {
+			name: "foo",
+			srcs: ["a.java"],
+			api_packages: ["foo"],
+			system: {
+				enabled: true,
+			},
+			module_lib: {
+				enabled: true,
+			},
+		}
+
+		java_library {
+			name: "bar",
+			srcs: ["a.java"],
+			libs: ["foo"],
+			sdk_version: "system_server_current",
+		}
+		`)
+
+	// The bar library should depend on the module lib stubs jar.
+	barLibrary := result.ModuleForTests("bar", "android_common").Rule("javac")
+	if expected, actual := `^-classpath .*:out/soong/[^:]*/turbine-combined/foo\.stubs\.module_lib\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
+		t.Errorf("expected %q, found %#q", expected, actual)
+	}
+}
+
 func TestJavaSdkLibrary_MissingScope(t *testing.T) {
 	prepareForJavaTest.
 		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(`requires api scope module-lib from foo but it only has \[\] available`)).
