@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4abb574_02b4d445",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-30T18:42:17Z",
+      "side": 1,
+      "message": "\u003e CUJ that I think legacy build is OK with but this CL will fail\n\nBefore I respond more fully, I\u0027d like to understand if my understanding is correct:\n\n- If a user forgets to add an AndroidManifest.xml file, both Bazel and legacy will fail, because AndroidManifest.xml is not found? Bazel will fail during analysis, legacy will fail during ninja execution)\n- In legacy, adding an AndroidManifest.xml file and retriggering the build will not result in ninja file regeneration. Instead, simply the existing ninja actions would be rerun, and thus the new AndroidManifest.xml will be recognized.\n\nIn effect, \"presence or absence of AndroidManifest.xml does not affect the generated ninja file\".\n\n\u003e Also, I will provide a breakdown of time spent by bp2build in its two responsibilities\n\nThis sounds like a reasonable approach, provided we only rerun the longer-running codegen if BUILD files need to change.\nIs this a big change?",
+      "parentUuid": "f5afc4e1_ceafcfdc",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6909969b_20ab6955",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
