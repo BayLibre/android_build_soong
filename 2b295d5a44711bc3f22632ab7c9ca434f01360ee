@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4caf0e5f_cfef255c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-30T17:42:44Z",
+      "side": 1,
+      "message": "Nit: put a space after all `//` in comment lines.",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9e806a6_207697f5",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-30T17:42:44Z",
+      "side": 1,
+      "message": "I worry that this makes this sound like a hack, where we want to assert \"actually, this is correct still, and here\u0027s why.\" I think that the comment here should focus more on describing the other mechanisms that make this unnecessary, perhaps with an example.\n\nThe way I\u0027d describe it is that PlantSymlinkForest will have the same effect regardless of contents of the directories, **except** for BUILD.bazel files contained in the directory. Thus only BUILD.bazel files belong in ninjaDeps.\n\nYou can also mention that BUILD.bazel file dependencies are captured by finder.\n\nFWIW, I do like the description for why adding each child directory would cause superfluous rebuilds (and the IDE example).",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6909969b_20ab6955",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-09-30T17:42:44Z",
+      "side": 1,
+      "message": "If you\u0027re not going to actively work on this very soon, could you instead attach a bug ID?",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
