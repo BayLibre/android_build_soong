@@ -547,11 +547,23 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 
 		excludes = append(excludes, getTemporaryExcludes()...)
 
-		symlinkForestDeps := bp2build.PlantSymlinkForest(
+		//PlantSymlinkForest() returns all the directories that were readdir()'ed.
+		//Such a directory SHOULD be added to `ninjaDeps` so that a child directory
+		//or file created/deleted under it would trigger an update of the symlink
+		//forest.
+		//However, in practice this is too chatty - e.g. if a user's IDE creates or
+		//deletes backup files, that would re-trigger bp2build.
+		//If we assume that any file used by a build is textually present (even as
+		//a glob pattern) in a BUILD or an Android.bp file, then it is already
+		//captured as a dependency via other mechanisms. There are some implicit
+		//dependencies, e.g. an AndroidManifest.xml file. The assumption here is
+		//that such files are created alongside an Android.bp and would have been
+		//symlinked.
+		//TODO(usta): add a manifest of such implicit deps to ninjaDeps
+		_ = bp2build.PlantSymlinkForest(
 			configuration, topDir, workspaceRoot, generatedRoot, ".", excludes)
 
 		ninjaDeps = append(ninjaDeps, codegenContext.AdditionalNinjaDeps()...)
-		ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
 
 		writeDepFile(bp2buildMarker, eventHandler, ninjaDeps)
 
