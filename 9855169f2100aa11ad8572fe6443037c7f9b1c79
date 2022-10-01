@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a2e7bcd_aaca6f30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-01T01:56:19Z",
+      "side": 1,
+      "message": "Thanks actually I do have a question - bp2build needs to run frequently whereas queryview is something one would manually run whenever one judges appropriate. Is ApiGen (ApiBp2Build ?) something more akin to QueryView as well?",
+      "parentUuid": "596ac6de_73efd782",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "451d559e_b5828cbd",
         "filename": "android/bazel.go",
         "patchSetId": 2
