@@ -160,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02bebb0d_b167cb30",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-01T01:51:31Z",
+      "side": 1,
+      "message": "To other parts as well.",
+      "parentUuid": "efcac488_aae600a8",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2ab3517_e91b5b72",
         "filename": "android/mutator.go",
         "patchSetId": 2
@@ -412,6 +430,24 @@
       "side": 1,
       "message": "Do you feel strongly about this? I would like to propose that we keep this file as-is. Even though this contains generic functions today, future queryview specific logic can go here, instead of `main.go`",
       "parentUuid": "90e961c4_e6cb5730",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e57e61_a741a597",
+        "filename": "cmd/soong_build/queryview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-01T01:51:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b70d2a67_ec8f0cae",
       "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
