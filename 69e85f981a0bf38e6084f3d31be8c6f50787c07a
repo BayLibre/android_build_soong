@@ -16,6 +16,24 @@
       "message": "```\nERROR: /buildbot/src/android/master/out/soong/workspace/frameworks/av/media/codec2/components/aom/BUILD.bazel:16:18: no such target \u0027//external/libaom:libaom\u0027: target \u0027libaom\u0027 not declared in package \u0027external/libaom\u0027; however, a source directory of this name exists.  (Perhaps add \u0027exports_files([\"libaom\"])\u0027 to external/libaom/BUILD, or define a filegroup?) defined by /buildbot/src/android/master/out/soong/workspace/external/libaom/BUILD.bazel and referenced by \u0027//frameworks/av/media/codec2/components/aom:libcodec2_soft_av1dec_aom_implementation_deps\u0027\n```",
       "revId": "69e85f981a0bf38e6084f3d31be8c6f50787c07a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d55a25_4ac2ddad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-03T11:49:53Z",
+      "side": 1,
+      "message": "(looks like you need to allowlist another module)",
+      "parentUuid": "686557df_07eab3d2",
+      "revId": "69e85f981a0bf38e6084f3d31be8c6f50787c07a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
