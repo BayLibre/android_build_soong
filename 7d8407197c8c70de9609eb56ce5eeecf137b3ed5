@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f6b8082_875a249b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-03T17:55:29Z",
+      "side": 1,
+      "message": "This isn\u0027t exactly what I meant :) I think if you just return the error (you can wrap it in a new fmt.Errorf if you think you can give more useful information), then it should get output to the console during a failure.",
+      "revId": "7d8407197c8c70de9609eb56ce5eeecf137b3ed5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
