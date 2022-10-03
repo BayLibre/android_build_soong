@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ab9474_a5088064",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-03T15:43:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb79cb55_8f59235b",
+      "revId": "145c91753edb6caef0bc941b516b34c362bddc2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af20499f_79d7c812",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0d927c6_5fe62dee",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-03T15:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af20499f_79d7c812",
+      "range": {
+        "startLine": 916,
+        "startChar": 0,
+        "endLine": 923,
+        "endChar": 10
+      },
+      "revId": "145c91753edb6caef0bc941b516b34c362bddc2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2f92f9a_1b357bb8",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-10-03T15:13:24Z",
       "side": 1,
       "message": "missed a bit?",
+      "revId": "145c91753edb6caef0bc941b516b34c362bddc2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55f2fdbb_f2fe723f",
+        "filename": "cc/config/riscv64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-03T15:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2f92f9a_1b357bb8",
       "revId": "145c91753edb6caef0bc941b516b34c362bddc2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
