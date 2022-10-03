@@ -30,11 +30,14 @@
 --disable_check SuspiciousImport
 --disable_check UnusedResources
 --disable_check ViewConstructor
-# Disable NewApi checks for the platform since platform is the one that implements
-# the API. This prevents noisy lint warnings like b/228956345#1
-# NewApi checks will continue to be enforced for apex deps since
-# lint.strict_updatability_linting will be true for those Soong modules
---disable_check NewApi
+
+# Downgrade NewApi checks due to preexisting occurrences.
+# If a module compiles against the private SDK, NewApi will be disabled completely.
+# NewApi checks will be promoted to errors again for apex deps since
+# lint.strict_updatability_linting will be true for those Soong modules.
+# Eventually the preexisting occurrences should be fixed, and this check made
+# an error by default. Then lint.strict_updatability_linting can be removed.
+--warning_check NewApi
 
 # Downgrade existing errors to warnings
 --warning_check AppCompatResource                  # 55 occurences in 10 modules

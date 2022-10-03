@@ -248,16 +248,15 @@ func TestJavaLintDatabaseSelectionFull(t *testing.T) {
 
 		foo := result.ModuleForTests("foo", "android_common")
 		sboxProto := android.RuleBuilderSboxProtoForTests(t, foo.Output("lint.sbox.textproto"))
-		if strings.Contains(*sboxProto.Commands[0].Command,
-			"/api_versions_public_filtered.xml") {
+		command := *sboxProto.Commands[0].Command
+		if strings.Contains(command, "/api_versions_public_filtered.xml") {
 			t.Error("used public-filtered lint api database for case", testCase)
 		}
-		if !strings.Contains(*sboxProto.Commands[0].Command,
-			"/api_versions.xml") {
+		if !strings.Contains(command, "/api_versions.xml") &&
+			!strings.Contains(command, "/system_api_versions.xml") {
 			t.Error("did not use full api database for case", testCase)
 		}
 	}
-
 }
 
 func TestJavaLintDatabaseSelectionPublicFiltered(t *testing.T) {
@@ -271,7 +270,7 @@ func TestJavaLintDatabaseSelectionPublicFiltered(t *testing.T) {
 				"a.java",
 			],
 			min_sdk_version: "29",
-			sdk_version: "module_current",
+			sdk_version: "XXX",
 			lint: {
 				strict_updatability_linting: true,
 			},
@@ -291,6 +290,74 @@ func TestJavaLintDatabaseSelectionPublicFiltered(t *testing.T) {
 		if strings.Contains(*sboxProto.Commands[0].Command,
 			"/api_versions.xml") {
 			t.Error("used full api database for case", testCase)
+		}
+	}
+}
+
+func TestJavaLintDatabaseSelectionSystem(t *testing.T) {
+	testCases := []string{
+		"system_current", "system_30",
+	}
+	bp := `
+		java_library {
+			name: "foo",
+			srcs: [
+				"a.java",
+			],
+			min_sdk_version: "29",
+			sdk_version: "XXX",
+			lint: {
+				strict_updatability_linting: true,
+			},
+		}
+`
+	for _, testCase := range testCases {
+		thisBp := strings.Replace(bp, "XXX", testCase, 1)
+		result := android.GroupFixturePreparers(PrepareForTestWithJavaDefaultModules, FixtureWithPrebuiltApis(map[string][]string{
+			"30":    {"foo"},
+			"10000": {"foo"},
+		})).
+			RunTestWithBp(t, thisBp)
+
+		foo := result.ModuleForTests("foo", "android_common")
+		sboxProto := android.RuleBuilderSboxProtoForTests(t, foo.Output("lint.sbox.textproto"))
+		if !strings.Contains(*sboxProto.Commands[0].Command,
+			"/system_api_versions.xml") {
+			t.Error("system api database not used for case", testCase)
+		}
+	}
+}
+
+func TestJavaLintDatabaseSelectionPublic(t *testing.T) {
+	testCases := []string{
+		"current", "S", "30", "10000",
+	}
+	bp := `
+		java_library {
+			name: "foo",
+			srcs: [
+				"a.java",
+			],
+			min_sdk_version: "29",
+			sdk_version: "XXX",
+			lint: {
+				strict_updatability_linting: true,
+			},
+		}
+`
+	for _, testCase := range testCases {
+		thisBp := strings.Replace(bp, "XXX", testCase, 1)
+		result := android.GroupFixturePreparers(PrepareForTestWithJavaDefaultModules, FixtureWithPrebuiltApis(map[string][]string{
+			"30":    {"foo"},
+			"10000": {"foo"},
+		})).
+			RunTestWithBp(t, thisBp)
+
+		foo := result.ModuleForTests("foo", "android_common")
+		sboxProto := android.RuleBuilderSboxProtoForTests(t, foo.Output("lint.sbox.textproto"))
+		if !strings.Contains(*sboxProto.Commands[0].Command,
+			"/api_versions.xml") {
+			t.Error("public api database not used for case", testCase)
 		}
 	}
 }

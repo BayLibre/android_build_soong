@@ -277,6 +277,14 @@ func (l *linter) writeLintProjectXML(ctx android.ModuleContext, rule *android.Ru
 	cmd.FlagForEachArg("--error_check ", l.properties.Lint.Error_checks)
 	cmd.FlagForEachArg("--fatal_check ", l.properties.Lint.Fatal_checks)
 
+	if l.compileSdkKind == android.SdkPrivate {
+		// If we're compiling against a private sdk, we can access all apis,
+		// so disable the NewApi check. NewApi doesn't complain about using methods
+		// that aren't in the api-versions.xml file, but it will complain about
+		// using them on sdk versions before they were introduced.
+		cmd.FlagWithArg("--disable_check ", "NewApi")
+	}
+
 	if l.GetStrictUpdatabilityLinting() {
 		// Verify the module does not baseline issues that endanger safe updatability.
 		if baselinePath := l.getBaselineFilepath(ctx); baselinePath.Valid() {
@@ -427,7 +435,12 @@ func (l *linter) lint(ctx android.ModuleContext) {
 	}
 
 	var annotationsZipPath, apiVersionsXMLPath android.Path
-	if ctx.Config().AlwaysUsePrebuiltSdks() {
+	if l.compileSdkKind == android.SdkSystem {
+		// We don't have checked in prebuilts of the system api xml file, so always
+		// use the source built one.
+		annotationsZipPath = copiedAnnotationsZipPath(ctx)
+		apiVersionsXMLPath = copiedAPIVersionsXmlPath(ctx, "system_api_versions.xml")
+	} else if ctx.Config().AlwaysUsePrebuiltSdks() {
 		annotationsZipPath = android.PathForSource(ctx, "prebuilts/sdk/current/public/data/annotations.zip")
 		apiVersionsXMLPath = android.PathForSource(ctx, apiVersionsPrebuilt)
 	} else {
@@ -562,6 +575,14 @@ func (l *lintSingleton) copyLintDependencies(ctx android.SingletonContext) {
 		return
 	}
 
+	systemApiVersionsDb := findModuleOrErr(ctx, "api_versions_system")
+	if systemApiVersionsDb == nil {
+		if !ctx.Config().AllowMissingDependencies() {
+			ctx.Errorf("lint: missing module api_versions_system")
+		}
+		return
+	}
+
 	sdkAnnotations := findModuleOrErr(ctx, "sdk-annotations.zip")
 	if sdkAnnotations == nil {
 		if !ctx.Config().AllowMissingDependencies() {
@@ -588,6 +609,12 @@ func (l *lintSingleton) copyLintDependencies(ctx android.SingletonContext) {
 		Rule:   android.CpIfChanged,
 		Input:  android.OutputFileForModule(ctx, apiVersionsDb, ".api_versions.xml"),
 		Output: copiedAPIVersionsXmlPath(ctx, "api_versions.xml"),
+	})
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   android.CpIfChanged,
+		Input:  android.OutputFileForModule(ctx, systemApiVersionsDb, ".api_versions.xml"),
+		Output: copiedAPIVersionsXmlPath(ctx, "system_api_versions.xml"),
 	})
 
 	ctx.Build(pctx, android.BuildParams{
