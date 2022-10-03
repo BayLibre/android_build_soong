@@ -222,6 +222,9 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 	if err != nil {
 		ctx.PropertyErrorf("min_sdk_version", "%s", err)
 	}
+	if ctx.Config().PlatformSdkVersion().FinalInt() >= 35 {
+		flags = append(flags, "-JDcom.android.tools.r8.dexContainerExperiment")
+	}
 
 	// If the specified SDK level is 10000, then configure the compiler to use the
 	// current platform SDK level and to compile the build as a platform build.
