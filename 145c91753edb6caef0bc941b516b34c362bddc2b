@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb79cb55_8f59235b",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-10-03T15:13:24Z",
+      "side": 1,
+      "message": "yeah, even though we won\u0027t have a 32-bit riscv so this is unnecessarily wordy in that sense (and also a break from our usual \"use the same name as the kernel uses\"), i like that it preserves the property that `name.contains(\"64\") \u003c\u003d\u003e 64-bit ABI`.\n\nnot that that\u0027s likely to be very meaninful in 5 years when only 64-bit ABIs still exist as the SoC market moves to 64-bit-only chips, but there\u0027s a few years between now and then where this might be useful...\n\n(a quick \"Google Fight\" between \"riscv64\" and \"rv64\" has the former the winner by an order of magnitude, even if i\u0027d rather have saved the wear and tear on my fingers with rv64 :-( )",
+      "revId": "145c91753edb6caef0bc941b516b34c362bddc2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f92f9a_1b357bb8",
+        "filename": "cc/config/riscv64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-10-03T15:13:24Z",
+      "side": 1,
+      "message": "missed a bit?",
+      "revId": "145c91753edb6caef0bc941b516b34c362bddc2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
