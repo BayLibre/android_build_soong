@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "983e447b_a9e26400",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-03T19:17:35Z",
+      "side": 1,
+      "message": "\"Error occurred\" doesn\u0027t do anything to describe the error. What does the terminal output look like if there\u0027s an error? I suspect that it may even print out \"error occured\" multiple times. \n\nWherever downstream we print the error the console -- **that\u0027s** where we the printout of \"error occurred\" should go, not here. \n\nI would recommend just returning `err` itself, unless you\u0027re very specifically trying to change error formatting. When you decide on something, can you paste here a truncated version of the console output?",
+      "revId": "ba56ea837d48d382cba3b169b4b6cf6c92094a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
