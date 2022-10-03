@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c9dc992_2ccbe3fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-03T21:26:15Z",
+      "side": 1,
+      "message": "This new mode will be primarily used by the Multi-tree build orchestrator.\n\nI do not see it providing any immediate value in single-tree development yet - since none of the targets in the b2build workspace have cross dependencies on any of the generated API targets",
+      "parentUuid": "1a2e7bcd_aaca6f30",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "451d559e_b5828cbd",
         "filename": "android/bazel.go",
         "patchSetId": 2
@@ -190,6 +208,24 @@
       "side": 1,
       "message": "To other parts as well.",
       "parentUuid": "efcac488_aae600a8",
+      "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "530a88a1_1634ad24",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-03T21:26:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02bebb0d_b167cb30",
       "revId": "9855169f2100aa11ad8572fe6443037c7f9b1c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
