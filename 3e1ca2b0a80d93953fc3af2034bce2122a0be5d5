@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89bc742_4a8efcfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-03T19:30:49Z",
+      "side": 1,
+      "message": "Can you add someone from the build team (myself or joeo) as reviewers on the design?",
+      "revId": "3e1ca2b0a80d93953fc3af2034bce2122a0be5d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fbf7ae5_fccfb83e",
+        "filename": "java/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-03T19:30:49Z",
+      "side": 1,
+      "message": "do you actually need host properties given that you\u0027ve specified `DeviceSupported`, not `HostAndDeviceSupported`?",
+      "range": {
+        "startLine": 163,
+        "startChar": 8,
+        "endLine": 163,
+        "endChar": 34
+      },
+      "revId": "3e1ca2b0a80d93953fc3af2034bce2122a0be5d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2abc7d1b_71bdbf90",
+        "filename": "java/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-03T19:30:49Z",
+      "side": 1,
+      "message": "nit: would adding an enum/bool/string for host/target that you can specify at initialization reduce how much duplication/the need to compare strings below?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 1
+      },
+      "revId": "3e1ca2b0a80d93953fc3af2034bce2122a0be5d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f15f272_e060d890",
+        "filename": "java/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-03T19:30:49Z",
+      "side": 1,
+      "message": "given that host cross isn\u0027t supported for packaging, supported would [`HostSupportedNoCross`](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;l\u003d1044;drc\u003d652335ea7c2f8f281a1b93a1e1558960b6ad1b6f) make more sense for `java_fuzz_host` modules?",
+      "range": {
+        "startLine": 232,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 30
+      },
+      "revId": "3e1ca2b0a80d93953fc3af2034bce2122a0be5d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

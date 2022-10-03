@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3840b8_ed44f15b",
+        "filename": "java/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-03T19:30:49Z",
+      "side": 1,
+      "message": "`DeviceSupported` below implies that the module cannot build for host, is this necessary?",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 3
+      },
+      "revId": "9cf5747662626247a9e3a03a6302d17546dd1b74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
