@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c79fa19d_b3aebccf",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-10-04T03:26:58Z",
+      "side": 1,
+      "message": "I believe that iterating and comparing the items in a map and a list (`entry.EntryMap[\"LOCAL_SOONG_JNI_LIBS_PARTITION_\"+target]` in line 398) may be unreliable, so maintaining two lists of order suits better in this case.",
+      "parentUuid": "81c12479_60c8d106",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 25
+      },
+      "revId": "843783c94b0723b36583619bae65047e56487396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4937d9bc_b67e941f",
         "filename": "java/androidmk_test.go",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-03T22:46:39Z",
       "side": 1,
       "message": "nit: rename to arch",
+      "range": {
+        "startLine": 398,
+        "startChar": 63,
+        "endLine": 398,
+        "endChar": 69
+      },
+      "revId": "843783c94b0723b36583619bae65047e56487396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "762b21ed_2ac63b4b",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-10-04T03:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4937d9bc_b67e941f",
       "range": {
         "startLine": 398,
         "startChar": 63,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-03T22:46:39Z",
       "side": 1,
       "message": "nit: I think expected vs actual is not necessary in the message body. `AssertStringEquals` prints out a helpful diff internally. https://cs.android.com/android/platform/superproject/+/master:build/soong/android/test_asserts.go;l\u003d57-59?q\u003dAssertStringEquals",
+      "range": {
+        "startLine": 400,
+        "startChar": 1,
+        "endLine": 400,
+        "endChar": 72
+      },
+      "revId": "843783c94b0723b36583619bae65047e56487396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f1a1a4_be75032c",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-10-04T03:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cecab57_a23ebe7c",
       "range": {
         "startLine": 400,
         "startChar": 1,
