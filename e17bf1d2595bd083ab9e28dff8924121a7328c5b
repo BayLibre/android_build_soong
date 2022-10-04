@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c773a5_5829a47f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-04T14:18:31Z",
+      "side": 1,
+      "message": "modulo the topDir q, lgtm",
+      "revId": "e17bf1d2595bd083ab9e28dff8924121a7328c5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26616ae3_75da08eb",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-04T14:18:31Z",
+      "side": 1,
+      "message": "Does this pick up the value of topDir? I\u0027d expect this to be initialized before `topDir` given that it\u0027s a flag",
+      "range": {
+        "startLine": 582,
+        "startChar": 11,
+        "endLine": 582,
+        "endChar": 35
+      },
+      "revId": "e17bf1d2595bd083ab9e28dff8924121a7328c5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
