@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5100c18_ec091c5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-04T19:09:57Z",
+      "side": 1,
+      "message": "This removes the other data race.\n\nJiakai, I\u0027ve cc\u0027d you as you added this code and I just want to make sure that my changes do not break what you intended.",
+      "revId": "59721b7e0f449b78c7e477e5b9a1a235f518a215",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
