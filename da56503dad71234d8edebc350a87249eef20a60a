@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b28ea710_db4c7793",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-04T19:11:44Z",
+      "side": 1,
+      "message": "There is a lot of code added here to provide access to the boot image config fields for testing. Follow up changes will remove that code when no longer needed.",
+      "revId": "da56503dad71234d8edebc350a87249eef20a60a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
