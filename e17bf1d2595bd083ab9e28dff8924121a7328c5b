@@ -39,6 +39,30 @@
       },
       "revId": "e17bf1d2595bd083ab9e28dff8924121a7328c5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d7a2e36_f4c5ff35",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-04T17:34:41Z",
+      "side": 1,
+      "message": "That\u0027s a good catch, thanks. I have converted this from a var to a function so that it picks up the correct value of `topDir`",
+      "parentUuid": "26616ae3_75da08eb",
+      "range": {
+        "startLine": 582,
+        "startChar": 11,
+        "endLine": 582,
+        "endChar": 35
+      },
+      "revId": "e17bf1d2595bd083ab9e28dff8924121a7328c5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
