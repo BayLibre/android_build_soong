@@ -33,6 +33,23 @@
       "message": "Gentle ping for review",
       "revId": "82069ecb4bdb171e978ed3b79ddc4bf9a36267a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7df9ff91_33ea078e",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-10-04T17:46:37Z",
+      "side": 1,
+      "message": "This is actually `--no-ndk`, isn\u0027t it? \"Public\" confused me, because I confused it with default visibility (if it\u0027s not public, why is it in the version script?)",
+      "revId": "82069ecb4bdb171e978ed3b79ddc4bf9a36267a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
