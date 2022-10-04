@@ -440,6 +440,9 @@ type sdkLibraryProperties struct {
 	// it is as if shared_library: false, was set.
 	Api_only *bool
 
+	// Whether to only output stable APIs in the stubs, e.g. APIs not marked as @UnfinalizedApi
+	Stable_stubs_only *bool
+
 	// local files that are used within user customized droiddoc options.
 	Droiddoc_option_files []string
 
@@ -804,6 +807,10 @@ func (c *commonToSdkLibraryAndImport) stubsLibraryModuleName(apiScope *apiScope)
 	})
 }
 
+func (c *commonToSdkLibraryAndImport) unstableStubsLibraryModuleName(apiScope *apiScope) string {
+	return c.stubsLibraryModuleName(apiScope) + ".unstable"
+}
+
 // Name of the droidstubs module that generates the stubs source and may also
 // generate/check the API.
 func (c *commonToSdkLibraryAndImport) stubsSourceModuleName(apiScope *apiScope) string {
@@ -811,6 +818,10 @@ func (c *commonToSdkLibraryAndImport) stubsSourceModuleName(apiScope *apiScope) 
 	return c.module.SdkMemberComponentName(baseName, func(name string) string {
 		return c.namingScheme.stubsSourceModuleName(apiScope, name)
 	})
+}
+
+func (c *commonToSdkLibraryAndImport) unstableStubsSourceModuleName(apiScope *apiScope) string {
+	return c.stubsSourceModuleName(apiScope) + ".unstable"
 }
 
 // The component names for different outputs of the java_sdk_library.
@@ -1497,7 +1508,7 @@ func (module *SdkLibrary) createImplLibrary(mctx android.DefaultableHookContext)
 }
 
 // Creates a static java library that has API stubs
-func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext, apiScope *apiScope) {
+func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext, apiScope *apiScope, isStable bool) {
 	props := struct {
 		Name           *string
 		Visibility     []string
@@ -1522,10 +1533,15 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext
 		}
 	}{}
 
-	props.Name = proptools.StringPtr(module.stubsLibraryModuleName(apiScope))
+	if isStable {
+		props.Name = proptools.StringPtr(module.stubsLibraryModuleName(apiScope))
+		// sources are generated from the droiddoc
+		props.Srcs = []string{":" + module.stubsSourceModuleName(apiScope)}
+	} else {
+		props.Name = proptools.StringPtr(module.unstableStubsLibraryModuleName(apiScope))
+		props.Srcs = []string{":" + module.unstableStubsSourceModuleName(apiScope)}
+	}
 	props.Visibility = childModuleVisibility(module.sdkLibraryProperties.Stubs_library_visibility)
-	// sources are generated from the droiddoc
-	props.Srcs = []string{":" + module.stubsSourceModuleName(apiScope)}
 	sdkVersion := module.sdkVersionForStubsLibrary(mctx, apiScope)
 	props.Sdk_version = proptools.StringPtr(sdkVersion)
 	props.System_modules = module.deviceProperties.System_modules
@@ -1551,8 +1567,8 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext
 	}
 	props.Compile_dex = compileDex
 
-	// Dist the class jar artifact for sdk builds.
-	if !Bool(module.sdkLibraryProperties.No_dist) {
+	// Dist the class jar artifact for sdk builds, using the stable variant.
+	if isStable && !Bool(module.sdkLibraryProperties.No_dist) {
 		props.Dist.Targets = []string{"sdk", "win_sdk"}
 		props.Dist.Dest = proptools.StringPtr(fmt.Sprintf("%v.jar", module.distStem()))
 		props.Dist.Dir = proptools.StringPtr(module.apiDistPath(apiScope))
@@ -1563,8 +1579,9 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext
 }
 
 // Creates a droidstubs module that creates stubs source files from the given full source
-// files and also updates and checks the API specification files.
-func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookContext, apiScope *apiScope, name string, scopeSpecificDroidstubsArgs []string) {
+// files and also optionally updates and checks the API specification files.
+func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookContext, apiScope *apiScope, name string, scopeSpecificDroidstubsArgs []string,
+	useCurrentApiTracking bool) {
 	props := struct {
 		Name                             *string
 		Visibility                       []string
@@ -1656,18 +1673,21 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 	props.Arg_files = module.sdkLibraryProperties.Droiddoc_option_files
 	props.Args = proptools.StringPtr(strings.Join(droidstubsArgs, " "))
 
-	// List of APIs identified from the provided source files are created. They are later
-	// compared against to the not-yet-released (a.k.a current) list of APIs and to the
-	// last-released (a.k.a numbered) list of API.
-	currentApiFileName := apiScope.apiFilePrefix + "current.txt"
-	removedApiFileName := apiScope.apiFilePrefix + "removed.txt"
 	apiDir := module.getApiDir()
-	currentApiFileName = path.Join(apiDir, currentApiFileName)
-	removedApiFileName = path.Join(apiDir, removedApiFileName)
+	if useCurrentApiTracking {
+		// List of APIs identified from the provided source files are created. They are later
+		// compared against to the not-yet-released (a.k.a current) list of APIs and to the
+		// last-released (a.k.a numbered) list of API.
+		currentApiFileName := apiScope.apiFilePrefix + "current.txt"
+		removedApiFileName := apiScope.apiFilePrefix + "removed.txt"
 
-	// check against the not-yet-release API
-	props.Check_api.Current.Api_file = proptools.StringPtr(currentApiFileName)
-	props.Check_api.Current.Removed_api_file = proptools.StringPtr(removedApiFileName)
+		currentApiFileName = path.Join(apiDir, currentApiFileName)
+		removedApiFileName = path.Join(apiDir, removedApiFileName)
+
+		// check against the not-yet-release API
+		props.Check_api.Current.Api_file = proptools.StringPtr(currentApiFileName)
+		props.Check_api.Current.Removed_api_file = proptools.StringPtr(removedApiFileName)
+	}
 
 	if module.compareAgainstLatestApi(apiScope) {
 		// check against the latest released API
@@ -1699,7 +1719,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 		}
 	}
 
-	if !Bool(module.sdkLibraryProperties.No_dist) {
+	if useCurrentApiTracking && !Bool(module.sdkLibraryProperties.No_dist) {
 		// Dist the api txt and removed api txt artifacts for sdk builds.
 		distDir := proptools.StringPtr(path.Join(module.apiDistPath(apiScope), "api"))
 		for _, p := range []struct {
@@ -1913,10 +1933,21 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 	}
 
 	for _, scope := range generatedScopes {
-		// Use the stubs source name for legacy reasons.
-		module.createStubsSourcesAndApi(mctx, scope, module.stubsSourceModuleName(scope), scope.droidstubsArgs)
+		stableStubsOnly := proptools.Bool(module.sdkLibraryProperties.Stable_stubs_only)
+		stableDroidstubsArgs := scope.droidstubsArgs
+		if stableStubsOnly {
+			stableDroidstubsArgs = append(stableDroidstubsArgs, "--hide-annotation android.annotation.UnfinalizedApi")
+		}
+		stubsSourceModuleName := module.stubsSourceModuleName(scope)
+		unstableStubsSourceModuleName := module.unstableStubsSourceModuleName(scope)
+		// Track current API via the base stubs module if !stableStubsOnly, otherwise with the unstable stubs module.
+		// If Stable_stubs_only is set, the API .txt still include all APIs and are updated using mymodule.stubs.system.unstable.
+		module.createStubsSourcesAndApi(mctx, scope, stubsSourceModuleName, stableDroidstubsArgs, !stableStubsOnly)
+		module.createStubsSourcesAndApi(mctx, scope, unstableStubsSourceModuleName, scope.droidstubsArgs, stableStubsOnly)
 
-		module.createStubsLibrary(mctx, scope)
+		// Add stable and unstable stubs libraries
+		module.createStubsLibrary(mctx, scope, true)
+		module.createStubsLibrary(mctx, scope, false)
 	}
 
 	if module.requiresRuntimeImplementationLibrary() {
