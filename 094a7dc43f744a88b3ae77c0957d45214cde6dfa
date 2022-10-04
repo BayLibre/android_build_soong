@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f442c7bc_6281cae2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-04T19:13:39Z",
+      "side": 1,
+      "message": "This problem was not reported by the original bug. It was found while testing but it was expected given the fact that it was being called twice.",
+      "revId": "094a7dc43f744a88b3ae77c0957d45214cde6dfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
