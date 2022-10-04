@@ -64,6 +64,152 @@ func fixtureAddPrebuiltApexForBootclasspathFragment(apex, fragment string) andro
 	)
 }
 
+// checkBootImageConfig checks the mutated fields in bootImageConfig/Variant.
+func checkBootImageConfig(t *testing.T, result *android.TestResult, expectedLicenseMetadataFile string) {
+	pathCtx := &android.TestPathContext{TestResult: result}
+	bootImageConfig := java.ArtBootImageConfig(pathCtx)
+	android.AssertDeepEquals(t, "ProfileInstalls", android.RuleBuilderInstalls(nil), bootImageConfig.ProfileInstalls())
+	android.AssertDeepEquals(t, "ProfileLicenseMetadataFile", android.OptionalPath{}, bootImageConfig.ProfileLicenseMetadataFile())
+
+	type normalizedInstall struct {
+		from string
+		to   string
+	}
+
+	normalizeInstalls := func(installs android.RuleBuilderInstalls) []normalizedInstall {
+		normalized := []normalizedInstall{}
+		for _, install := range installs {
+			normalized = append(normalized, normalizedInstall{
+				from: install.From.RelativeToTop().String(),
+				to:   install.To,
+			})
+		}
+		return normalized
+	}
+
+	assertInstallsEqual := func(t *testing.T, message string, expected []normalizedInstall, actual android.RuleBuilderInstalls) {
+		t.Helper()
+		normalizedActual := normalizeInstalls(actual)
+		android.AssertDeepEquals(t, message, expected, normalizedActual)
+	}
+
+	for i, expected := range []struct {
+		archType           android.ArchType
+		installs           []normalizedInstall
+		vdexInstalls       []normalizedInstall
+		unstrippedInstalls []normalizedInstall
+	}{
+		{
+			archType: android.Arm64,
+			installs: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot.art",
+					to:   "/apex/art_boot_images/javalib/arm64/boot.art",
+				},
+				{
+					from: "out/soong/test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot.oat",
+					to:   "/apex/art_boot_images/javalib/arm64/boot.oat",
+				},
+			},
+			vdexInstalls: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot.vdex",
+					to:   "/apex/art_boot_images/javalib/arm64/boot.vdex",
+				},
+			},
+			unstrippedInstalls: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars_unstripped/android/apex/art_boot_images/javalib/arm64/boot.oat",
+					to:   "/apex/art_boot_images/javalib/arm64/boot.oat",
+				},
+			},
+		},
+		{
+			archType: android.Arm,
+			installs: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars/android/apex/art_boot_images/javalib/arm/boot.art",
+					to:   "/apex/art_boot_images/javalib/arm/boot.art",
+				},
+				{
+					from: "out/soong/test_device/dex_artjars/android/apex/art_boot_images/javalib/arm/boot.oat",
+					to:   "/apex/art_boot_images/javalib/arm/boot.oat",
+				},
+			},
+			vdexInstalls: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars/android/apex/art_boot_images/javalib/arm/boot.vdex",
+					to:   "/apex/art_boot_images/javalib/arm/boot.vdex",
+				},
+			},
+			unstrippedInstalls: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars_unstripped/android/apex/art_boot_images/javalib/arm/boot.oat",
+					to:   "/apex/art_boot_images/javalib/arm/boot.oat",
+				},
+			},
+		},
+		{
+			archType: android.X86_64,
+			installs: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars/linux_glibc/apex/art_boot_images/javalib/x86_64/boot.art",
+					to:   "/apex/art_boot_images/javalib/x86_64/boot.art",
+				}, {
+					from: "out/soong/test_device/dex_artjars/linux_glibc/apex/art_boot_images/javalib/x86_64/boot.oat",
+					to:   "/apex/art_boot_images/javalib/x86_64/boot.oat",
+				},
+			},
+			vdexInstalls: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars/linux_glibc/apex/art_boot_images/javalib/x86_64/boot.vdex",
+					to:   "/apex/art_boot_images/javalib/x86_64/boot.vdex",
+				},
+			},
+			unstrippedInstalls: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars_unstripped/linux_glibc/apex/art_boot_images/javalib/x86_64/boot.oat",
+					to:   "/apex/art_boot_images/javalib/x86_64/boot.oat",
+				},
+			},
+		},
+		{
+			archType: android.X86,
+			installs: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars/linux_glibc/apex/art_boot_images/javalib/x86/boot.art",
+					to:   "/apex/art_boot_images/javalib/x86/boot.art",
+				},
+				{
+					from: "out/soong/test_device/dex_artjars/linux_glibc/apex/art_boot_images/javalib/x86/boot.oat",
+					to:   "/apex/art_boot_images/javalib/x86/boot.oat",
+				},
+			},
+			vdexInstalls: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars/linux_glibc/apex/art_boot_images/javalib/x86/boot.vdex",
+					to:   "/apex/art_boot_images/javalib/x86/boot.vdex",
+				},
+			},
+			unstrippedInstalls: []normalizedInstall{
+				{
+					from: "out/soong/test_device/dex_artjars_unstripped/linux_glibc/apex/art_boot_images/javalib/x86/boot.oat",
+					to:   "/apex/art_boot_images/javalib/x86/boot.oat",
+				},
+			},
+		},
+	} {
+		t.Run(expected.archType.Name, func(t *testing.T) {
+			bootImageVariant := bootImageConfig.BootImageVariants()[i]
+			android.AssertDeepEquals(t, "archType", expected.archType, bootImageVariant.ArchType())
+			assertInstallsEqual(t, "installs", expected.installs, bootImageVariant.Installs())
+			assertInstallsEqual(t, "vdexInstalls", expected.vdexInstalls, bootImageVariant.VdexInstalls())
+			assertInstallsEqual(t, "unstrippedInstalls", expected.unstrippedInstalls, bootImageVariant.UnstrippedInstalls())
+			android.AssertPathRelativeToTopEquals(t, "licenseMetadataFile", expectedLicenseMetadataFile, bootImageVariant.LicenseMetadataFile().Path())
+		})
+	}
+}
+
 func TestSnapshotWithBootclasspathFragment_ImageName(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForSdkTestWithJava,
@@ -126,6 +272,9 @@ func TestSnapshotWithBootclasspathFragment_ImageName(t *testing.T) {
 	// A preparer to update the test fixture used when processing an unpackage snapshot.
 	preparerForSnapshot := fixtureAddPrebuiltApexForBootclasspathFragment("com.android.art", "mybootclasspathfragment")
 
+	// Check that source on its own configures the bootImageConfig correctly.
+	checkBootImageConfig(t, result, "out/soong/.intermediates/mybootclasspathfragment/android_common_apex10000/meta_lic")
+
 	CheckSnapshot(t, result, "mysdk", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
@@ -170,10 +319,23 @@ java_import {
 		snapshotTestChecker(checkSnapshotWithoutSource, func(t *testing.T, result *android.TestResult) {
 			// Make sure that the boot jars package check rule includes the dex jar retrieved from the prebuilt apex.
 			checkBootJarsPackageCheckRule(t, result, "out/soong/.intermediates/prebuilts/apex/com.android.art.deapexer/android_common/deapexer/javalib/mybootlib.jar")
+			checkBootImageConfig(t, result, "out/soong/.intermediates/snapshot/mybootclasspathfragment/android_common_com.android.art/meta_lic")
 		}),
 
 		snapshotTestPreparer(checkSnapshotWithSourcePreferred, preparerForSnapshot),
+
+		// Check the behavior of the snapshot when the source is preferred.
+		snapshotTestChecker(checkSnapshotWithSourcePreferred, func(t *testing.T, result *android.TestResult) {
+			checkBootImageConfig(t, result, "out/soong/.intermediates/mybootclasspathfragment/android_common_apex10000/meta_lic")
+		}),
+
 		snapshotTestPreparer(checkSnapshotPreferredWithSource, preparerForSnapshot),
+
+		// Check the behavior of the snapshot when it is preferred.
+		snapshotTestChecker(checkSnapshotPreferredWithSource, func(t *testing.T, result *android.TestResult) {
+			// TODO - the expectedLicenseMetadataFile passed here is incorrect as it is for the source module not the prebuilt module.
+			checkBootImageConfig(t, result, "out/soong/.intermediates/mybootclasspathfragment/android_common_apex10000/meta_lic")
+		}),
 	)
 
 	// Make sure that the boot jars package check rule includes the dex jar created from the source.

@@ -443,6 +443,69 @@ func (image *bootImageVariant) imageLocations() (imageLocationsOnHost []string, 
 		append(imageLocationsOnDevice, dexpreopt.PathStringToLocation(image.imagePathOnDevice, image.target.Arch.ArchType))
 }
 
+// BootImageConfig provides access to the *bootImageConfig outside the package.
+type BootImageConfig interface {
+	ProfileInstalls() android.RuleBuilderInstalls
+	ProfileLicenseMetadataFile() android.OptionalPath
+	BootImageVariants() []BootImageVariant
+}
+
+// ProfileInstalls implements BootImageConfig
+func (image *bootImageConfig) ProfileInstalls() android.RuleBuilderInstalls {
+	return image.profileInstalls
+}
+
+// ProfileLicenseMetadataFile implements BootImageConfig
+func (image *bootImageConfig) ProfileLicenseMetadataFile() android.OptionalPath {
+	return image.profileLicenseMetadataFile
+}
+
+// BootImageVariants implements BootImageConfig
+func (image *bootImageConfig) BootImageVariants() []BootImageVariant {
+	variants := []BootImageVariant{}
+	for _, v := range image.variants {
+		variants = append(variants, v)
+	}
+	return variants
+}
+
+var _ BootImageConfig = (*bootImageConfig)(nil)
+
+type BootImageVariant interface {
+	ArchType() android.ArchType
+	Installs() android.RuleBuilderInstalls
+	VdexInstalls() android.RuleBuilderInstalls
+	UnstrippedInstalls() android.RuleBuilderInstalls
+	LicenseMetadataFile() android.OptionalPath
+}
+
+// Installs implements BootImageVariant
+func (image *bootImageVariant) ArchType() android.ArchType {
+	return image.target.Arch.ArchType
+}
+
+// Installs implements BootImageVariant
+func (image *bootImageVariant) Installs() android.RuleBuilderInstalls {
+	return image.installs
+}
+
+// VdexInstalls implements BootImageVariant
+func (image *bootImageVariant) VdexInstalls() android.RuleBuilderInstalls {
+	return image.vdexInstalls
+}
+
+// UnstrippedInstalls implements BootImageVariant
+func (image *bootImageVariant) UnstrippedInstalls() android.RuleBuilderInstalls {
+	return image.unstrippedInstalls
+}
+
+// LicenseMetadataFile implements BootImageVariant
+func (image *bootImageVariant) LicenseMetadataFile() android.OptionalPath {
+	return image.licenseMetadataFile
+}
+
+var _ BootImageVariant = (*bootImageVariant)(nil)
+
 func dexpreoptBootJarsFactory() android.SingletonModule {
 	m := &dexpreoptBootJars{}
 	android.InitAndroidModule(m)

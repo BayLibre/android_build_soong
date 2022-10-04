@@ -143,6 +143,10 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 	}).(map[string]*bootImageConfig)
 }
 
+func ArtBootImageConfig(ctx android.PathContext) BootImageConfig {
+	return artBootImageConfig(ctx)
+}
+
 func artBootImageConfig(ctx android.PathContext) *bootImageConfig {
 	return genBootImageConfigs(ctx)[artBootImageName]
 }
