@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d10f0a26_0b701a39",
+        "filename": "bazel/properties.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-04T18:52:58Z",
+      "side": 1,
+      "message": "can you add some information about when this should be used? I assume it only makes sense in api generation?",
+      "range": {
+        "startLine": 76,
+        "startChar": 76,
+        "endLine": 76,
+        "endChar": 81
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2af3a58_7e4b9b13",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 2720,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-04T18:52:58Z",
+      "side": 1,
+      "message": "how do we extract out the system or vendorapi headers from this? naming? should instead the `cc_api_library_headers`  have an `api_surface`?",
+      "range": {
+        "startLine": 2717,
+        "startChar": 0,
+        "endLine": 2720,
+        "endChar": 6
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f9b925_4e001538",
+        "filename": "bp2build/cc_library_headers_conversion_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-04T18:52:58Z",
+      "side": 1,
+      "message": "how does this test case cover systemapi and vendorapi?",
+      "range": {
+        "startLine": 169,
+        "startChar": 54,
+        "endLine": 169,
+        "endChar": 80
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba217d3_095ed9a4",
+        "filename": "cc/library.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-04T18:52:58Z",
+      "side": 1,
+      "message": "can you add a test ensuring that we pick when only one of llndk or stubs is specified?",
+      "range": {
+        "startLine": 516,
+        "startChar": 5,
+        "endLine": 516,
+        "endChar": 22
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71fa4a30_db5caa4a",
+        "filename": "cc/library.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-04T18:52:58Z",
+      "side": 1,
+      "message": "should this be an `else if` given that we\u0027re arbitrarily picking one?",
+      "range": {
+        "startLine": 521,
+        "startChar": 1,
+        "endLine": 522,
+        "endChar": 3
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb3584e6_7a0c7975",
+        "filename": "cc/library.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-04T18:52:58Z",
+      "side": 1,
+      "message": "nit: can you add godocs for all the exported functions?",
+      "range": {
+        "startLine": 537,
+        "startChar": 45,
+        "endLine": 537,
+        "endChar": 52
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a76acd_9a8fb2f2",
+        "filename": "cc/library.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-04T18:52:58Z",
+      "side": 1,
+      "message": "it looks like there\u0027s some incorrectness in this `if`\n\n`export_headers_as_system` also impacts [include exports](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/library.go;l\u003d1837;drc\u003d652335ea7c2f8f281a1b93a1e1558960b6ad1b6f)  if `override_export_include_dirs` is not set\n\nsystemIncludes cannot be overridden [`overriding include dirs`](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/library.go;l\u003d1834;drc\u003d652335ea7c2f8f281a1b93a1e1558960b6ad1b6f)\n\ncan you add unit testing of this?",
+      "range": {
+        "startLine": 586,
+        "startChar": 31,
+        "endLine": 586,
+        "endChar": 55
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa399609_29c663d7",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-04T18:52:58Z",
+      "side": 1,
+      "message": "can you add a test case of the OS-specific logic?",
+      "range": {
+        "startLine": 244,
+        "startChar": 2,
+        "endLine": 244,
+        "endChar": 88
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
