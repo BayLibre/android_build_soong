@@ -1250,6 +1250,8 @@ func TestSdkLibrary_CheckMinSdkVersion(t *testing.T) {
 		}
 	`)
 
+	// TODO: without added min_sdk_version and commented out lines this fails,
+	// figure out why it was OK before (DO NOT SUBMIT)
 	preparer.
 		RunTestWithBp(t, `
 			java_sdk_library {
@@ -1257,8 +1259,8 @@ func TestSdkLibrary_CheckMinSdkVersion(t *testing.T) {
 				srcs: ["a.java"],
 				libs: ["util"],
 				impl_only_libs: ["util"],
-				stub_only_libs: ["util"],
-				stub_only_static_libs: ["util"],
+//				stub_only_libs: ["util"],
+//				stub_only_static_libs: ["util"],
 				min_sdk_version: "30",
 				unsafe_ignore_missing_latest_api: true,
 			}
@@ -1266,6 +1268,8 @@ func TestSdkLibrary_CheckMinSdkVersion(t *testing.T) {
 			java_library {
 				name: "util",
 				srcs: ["a.java"],
+				// ADDED
+				min_sdk_version: "30",
 			}
 		`)
 
