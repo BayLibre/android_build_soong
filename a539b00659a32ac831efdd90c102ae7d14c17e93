@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf0abe9_2d983e63",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-04T17:03:58Z",
+      "side": 1,
+      "message": "renaming to avoid name collision with metrics package",
+      "revId": "a539b00659a32ac831efdd90c102ae7d14c17e93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
