@@ -33,6 +33,29 @@
       "message": "Actually, I can only verify that the change fixes the problem, but I\u0027m not very sure what the change is actually doing. Paul, could you add someone else to take another look?",
       "revId": "c87b94062990afd36b8734fed820a2816f8e7790",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ff34ae_b0ca835b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-10-04T15:31:20Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be able to access itself? Meaning if your scope is module_lib, you should be able to access module_lib?\n\nI\u0027m a little confused about what this CL is doing actually... isn\u0027t it the `sdk_version` that should control which stubs you get? Maybe that goes through this code.",
+      "range": {
+        "startLine": 215,
+        "startChar": 16,
+        "endLine": 215,
+        "endChar": 56
+      },
+      "revId": "c87b94062990afd36b8734fed820a2816f8e7790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
