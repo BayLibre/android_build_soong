@@ -180,6 +180,7 @@ func makeVarsSingletonFunc() Singleton {
 }
 
 type makeVarsSingleton struct {
+	varsForTesting     []makeVarsVariable
 	installsForTesting []byte
 }
 
@@ -320,7 +321,11 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 		ctx.Errorf(err.Error())
 	}
 
-	s.installsForTesting = installsBytes
+	// Only save state for tests when testing.
+	if ctx.Config().TestProductVariables != nil {
+		s.varsForTesting = vars
+		s.installsForTesting = installsBytes
+	}
 }
 
 func (s *makeVarsSingleton) writeVars(vars []makeVarsVariable) []byte {
