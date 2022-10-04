@@ -16,6 +16,23 @@
       "message": "Ping.",
       "revId": "c87b94062990afd36b8734fed820a2816f8e7790",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d25d66f1_d6b07433",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-10-04T14:56:05Z",
+      "side": 1,
+      "message": "Actually, I can only verify that the change fixes the problem, but I\u0027m not very sure what the change is actually doing. Paul, could you add someone else to take another look?",
+      "revId": "c87b94062990afd36b8734fed820a2816f8e7790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
