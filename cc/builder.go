@@ -214,7 +214,7 @@ var (
 		&remoteexec.REParams{
 			Labels:               map[string]string{"type": "lint", "tool": "clang-tidy", "lang": "cpp"},
 			ExecStrategy:         "${config.REClangTidyExecStrategy}",
-			Inputs:               []string{"$in"},
+			Inputs:               []string{"$in", "$implicitInputs"},
 			OutputFiles:          []string{"${out}", "${out}.d"},
 			ToolchainInputs:      []string{"$ccCmd", "$tidyCmd"},
 			EnvironmentVariables: []string{"CLANG_CMD", "TIDY_FILE", "TIDY_TIMEOUT"},
@@ -225,7 +225,7 @@ var (
 			// (1) New timestamps trigger clang and clang-tidy compilations again.
 			// (2) Changing source files caused concurrent clang or clang-tidy jobs to crash.
 			Platform: map[string]string{remoteexec.PoolKey: "${config.REClangTidyPool}"},
-		}, []string{"cFlags", "ccCmd", "clangCmd", "tidyCmd", "tidyFlags", "tidyVars"}, []string{})
+		}, []string{"cFlags", "ccCmd", "clangCmd", "implicitInputs", "tidyCmd", "tidyFlags", "tidyVars"}, []string{})
 
 	_ = pctx.SourcePathVariable("yasmCmd", "prebuilts/misc/${config.HostPrebuiltTag}/yasm/yasm")
 
@@ -552,6 +552,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		return "$" + kind + n
 	}
 
+	tidyData := NewTidyConfigData(ctx, flags.tidyFlags)
 	for i, srcFile := range srcFiles {
 		objFile := android.ObjPathWithExt(ctx, subdir, srcFile, "o")
 
@@ -667,7 +668,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 
 			rule := clangTidy
 			reducedCFlags := moduleFlags
-			if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CLANG_TIDY") {
+			if ctx.Config().IsEnvTrue("RBE_CLANG_TIDY") && ctx.Config().IsEnvTrue("USE_RBE") {
 				rule = clangTidyRE
 				// b/248371171, work around RBE input processor problem
 				// some cflags rejected by input processor, but usually
@@ -677,23 +678,38 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 
 			sharedCFlags := shareFlags("cFlags", reducedCFlags)
 			srcRelPath := srcFile.Rel()
-
 			// Add the .tidy rule
+			tidyArgs := map[string]string{
+				"cFlags":   sharedCFlags,
+				"ccCmd":    ccCmd,
+				"clangCmd": ccDesc,
+				"tidyCmd":  tidyCmd,
+				"tidyVars": tidyVars, // short and not shared
+			}
+			tidyDeps := cFlagsDeps
+			tidyConfigFiles, newFlags := FindTidyConfigFiles(tidyData, srcFile.String(), flags.tidyFlags)
+			if len(tidyConfigFiles) > 0 {
+				// Ignore Android global default clang-tidy checks, but keep
+				// only the global disabled checks, which will be appended after
+				// the checks specified in a config file.
+				tidyArgs["tidyFlags"] = shareFlags("tidyFlags", config.TidyFlagsForSrcFileWithConfig(srcFile, newFlags))
+				for _, file := range tidyConfigFiles {
+					tidyDeps = append(tidyDeps, android.PathForSource(ctx, file))
+				}
+				if rule == clangTidyRE {
+					tidyArgs["implicitInputs"] = strings.Join(tidyConfigFiles, ",")
+				}
+			} else {
+				tidyArgs["tidyFlags"] = shareFlags("tidyFlags", config.TidyFlagsForSrcFile(srcFile, newFlags))
+			}
 			ctx.Build(pctx, android.BuildParams{
 				Rule:        rule,
 				Description: "clang-tidy " + srcRelPath,
 				Output:      tidyFile,
 				Input:       srcFile,
-				Implicits:   cFlagsDeps,
+				Implicits:   tidyDeps,
 				OrderOnly:   pathDeps,
-				Args: map[string]string{
-					"cFlags":    sharedCFlags,
-					"ccCmd":     ccCmd,
-					"clangCmd":  ccDesc,
-					"tidyCmd":   tidyCmd,
-					"tidyFlags": shareFlags("tidyFlags", config.TidyFlagsForSrcFile(srcFile, flags.tidyFlags)),
-					"tidyVars":  tidyVars, // short and not shared
-				},
+				Args:        tidyArgs,
 			})
 		}
 
