@@ -518,6 +518,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		shared = ctx.getSharedFlags()
 	}
 
+	tidyData := NewTidyConfigData(ctx, flags.tidyFlags)
 	for i, srcFile := range srcFiles {
 		objFile := android.ObjPathWithExt(ctx, subdir, srcFile, "o")
 
@@ -627,7 +628,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 
 		//  Even with tidy, some src file could be skipped by noTidySrcsMap.
 		if tidy && !noTidySrcsMap[srcFile.String()] {
-			tidyFile := generateTidyRules(ctx, subdir, srcFile, ccCmd, ccDesc, tidyVars, shared, flags, moduleFlags, pathDeps, cFlagsDeps)
+			tidyFile := generateTidyRules(ctx, subdir, srcFile, tidyData, ccCmd, ccDesc, tidyVars, shared, flags, moduleFlags, pathDeps, cFlagsDeps)
 			tidyFiles = append(tidyFiles, tidyFile)
 		}
 
