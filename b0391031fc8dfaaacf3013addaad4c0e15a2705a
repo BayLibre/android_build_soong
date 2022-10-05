@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ce66d9_8ef5b58e",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-10-05T21:21:44Z",
+      "side": 1,
+      "message": "Is this in some way better than `bazelOuts :\u003d android.Paths{}`?",
+      "revId": "b0391031fc8dfaaacf3013addaad4c0e15a2705a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb9b970_ab3c9437",
+        "filename": "bpf/bpf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-10-05T21:21:44Z",
+      "side": 1,
+      "message": "Are all of these properties necessary to verify the behavior?",
+      "revId": "b0391031fc8dfaaacf3013addaad4c0e15a2705a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "235449a6_296288f1",
+        "filename": "bpf/bpf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-10-05T21:21:44Z",
+      "side": 1,
+      "message": "How did we get to `bpfTest.o`? I don\u0027t see that anywhere in the bp",
+      "revId": "b0391031fc8dfaaacf3013addaad4c0e15a2705a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
