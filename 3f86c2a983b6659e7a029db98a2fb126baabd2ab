@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa48e07_f248de01",
+        "filename": "android/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-05T22:15:24Z",
+      "side": 1,
+      "message": "Can you put a non-exported method on Config that returns if this is a test instead?  I wouldn\u0027t want this pattern copied outside the android package, and would at least like to reserve the right to assign TestProductVariables to something non-nil to prevent this.",
+      "revId": "3f86c2a983b6659e7a029db98a2fb126baabd2ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
