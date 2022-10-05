@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe3eccc_83b399bd",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-05T18:09:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4caf0e5f_cfef255c",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9e806a6_207697f5",
@@ -157,6 +175,24 @@
       "side": 1,
       "message": "\u003e In legacy, adding an AndroidManifest.xml file and retriggering the build will not result in ninja file regeneration. Instead, simply the existing ninja actions would be rerun, and thus the new AndroidManifest.xml will be recognized.\n\nSorry if I missed all of this thread, but I _think_ Soong will regenerate a ninja file if a user adds a new AndroidManifest.xml file. Source directories are listed in the deps of out/soong/build.ninja during the globbing process\n```\n$ grep out/soong/globs/build/1019 out/soong/build.ninja.d\nout/soong/globs/build/1019 \\\n\n$ find out/soong/globs/build -name \"*.d\" | xargs grep packages/apps/Calendar\\  \nout/soong/globs/build/1019.d: packages/apps/Calendar \\\n```\n\nIf you add an AndroidManifest.xml (or any file) in packages/apps/Calendar, `out/soong/build.ninja` will be rebuilt since the mtime of this directory will change. Subsequent edits to the newly created file will trigger Ninja execution, but not Ninja analysis since the mtime of the directory will not change",
       "parentUuid": "8fbd164d_8417fdb8",
+      "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afcd35f2_dde786b8",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-05T18:09:22Z",
+      "side": 1,
+      "message": "Here\u0027s a much better CUJ that this CL will break:\n1. Add a `missing.cpp` file in an Android.bp but forget to actually have that cpp file.\n2. Run `m missing --bazel-mode` (where \"missing\" is the soong module that added missing.cpp to its `srcs` attribute)\n3. (Maybe the build failed) but you realize you hadn\u0027t created missing.cpp and do so now\n4. rerun `m missing --bazel-mode` but missing.cpp will still not appear in your symlink forest\n\nGIVEN THIS Example, I am aborting this CL",
+      "parentUuid": "e80659cf_1023acbb",
       "revId": "2b295d5a44711bc3f22632ab7c9ca434f01360ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
