@@ -16,6 +16,24 @@
       "message": "Is this block formatted correctly?",
       "revId": "3e27e18ce03cb7c185b8df818838476c18dea4bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad7f646_ee928860",
+        "filename": "cc/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-10-05T18:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d9c8cf7_ce1c68c1",
+      "revId": "3e27e18ce03cb7c185b8df818838476c18dea4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
