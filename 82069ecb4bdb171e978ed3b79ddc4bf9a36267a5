@@ -50,6 +50,24 @@
       "message": "This is actually `--no-ndk`, isn\u0027t it? \"Public\" confused me, because I confused it with default visibility (if it\u0027s not public, why is it in the version script?)",
       "revId": "82069ecb4bdb171e978ed3b79ddc4bf9a36267a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5885d61_0c2e77d4",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-10-05T01:59:36Z",
+      "side": 1,
+      "message": "Yes I agree with you. Renamed to --no-ndk.",
+      "parentUuid": "7df9ff91_33ea078e",
+      "revId": "82069ecb4bdb171e978ed3b79ddc4bf9a36267a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
