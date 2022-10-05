@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2079d79b_ab93bbe7",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2022-10-05T19:34:37Z",
+      "side": 1,
+      "message": "This should look at the current target\u0027s hwaddress property, not global SanitizeDevice. It is uncommon, but possible to partially sanitize android: https://source.android.com/docs/security/test/hwasan#sanitizing-individual-targets",
+      "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
