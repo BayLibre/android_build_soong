@@ -169,6 +169,7 @@ func primaryBuilderInvocation(
 	}
 
 	commonArgs = append(commonArgs, "-l", filepath.Join(config.FileListDir(), "Android.bp.list"))
+	commonArgs = append(commonArgs, "-clang_tidy", filepath.Join(config.FileListDir(), ".clang-tidy.list"))
 	invocationEnv := make(map[string]string)
 	if os.Getenv("SOONG_DELVE") != "" {
 		//debug mode
@@ -196,8 +197,12 @@ func primaryBuilderInvocation(
 	allArgs = append(allArgs, environmentArgs(config, name)...)
 	allArgs = append(allArgs, "Android.bp")
 
+	// Need to regenerate build.ninja when Android.bp files are changed, or
+	// when the list of .clang-tidy files are changed.
+	// But, do not regenerate build.ninja for any change to a .clang-tidy file.
+	tidyListFile := filepath.Join(config.FileListDir(), ".clang-tidy.list")
 	return bootstrap.PrimaryBuilderInvocation{
-		Inputs:      []string{"Android.bp"},
+		Inputs:      []string{"Android.bp", tidyListFile},
 		Outputs:     []string{output},
 		Args:        allArgs,
 		Description: description,

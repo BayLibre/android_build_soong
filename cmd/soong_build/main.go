@@ -56,6 +56,7 @@ var (
 	bazelQueryViewDir   string
 	bazelApiBp2buildDir string
 	bp2buildMarker      string
+	clangTidyListFile   string
 
 	cmdlineArgs bootstrap.Args
 )
@@ -70,6 +71,7 @@ func init() {
 	flag.StringVar(&globListDir, "globListDir", "", "the directory containing the glob list files")
 	flag.StringVar(&outDir, "out", "", "the ninja builddir directory")
 	flag.StringVar(&cmdlineArgs.ModuleListFile, "l", "", "file that lists filepaths to parse")
+	flag.StringVar(&clangTidyListFile, "clang_tidy", "", "file that lists .clang-tidy files")
 
 	// Debug flags
 	flag.StringVar(&delveListen, "delve_listen", "", "Delve port to listen on for debugging")
@@ -150,7 +152,7 @@ func newConfig(availableEnv map[string]string) android.Config {
 		buildMode = android.AnalysisNoBazel
 	}
 
-	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, buildMode, runGoTests, outDir, soongOutDir, availableEnv)
+	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, clangTidyListFile, buildMode, runGoTests, outDir, soongOutDir, availableEnv)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
