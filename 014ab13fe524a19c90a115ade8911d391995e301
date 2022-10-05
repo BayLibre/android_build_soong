@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9bd093_ba01a470",
+        "filename": "bazel/properties.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-05T22:25:12Z",
+      "side": 1,
+      "message": "I think there are non-api uses for this as well https://cs.android.com/search?q\u003dLabel:%5C%20%5C%22:%5C%22%20f:build%2Fsoong\n\nI think this function can be useful for Soong modules that have 1:many Bazel targets (before macros). I have added this to the description",
+      "parentUuid": "d10f0a26_0b701a39",
+      "range": {
+        "startLine": 76,
+        "startChar": 76,
+        "endLine": 76,
+        "endChar": 81
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2af3a58_7e4b9b13",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-04T18:52:58Z",
       "side": 1,
       "message": "how do we extract out the system or vendorapi headers from this? naming? should instead the `cc_api_library_headers`  have an `api_surface`?",
+      "range": {
+        "startLine": 2717,
+        "startChar": 0,
+        "endLine": 2720,
+        "endChar": 6
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a6721f_efcd7cf5",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 2720,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-05T22:25:12Z",
+      "side": 1,
+      "message": "You are right, the current implementation is incomplete. I have a TODO for this in https://android-review.googlesource.com/c/platform/build/soong/+/2216221/15/cc/library.go#488\n\nOf the options you listed,\n\u003e naming\n\nI think this might work for now since this a synthetic workspace, but it introduces a naming convention which might become unwieldily over time \n\n\u003e should instead the cc_api_library_headers have an api_surface?\n\nThis is what I had in mind as well. In the provider object returned by `cc_api_contribution`, we can split the headers based on `api_surfaces` attribute of `cc_api_library_headers`\n\nFWIW, I think this affects only a small fraction of API surface libraries (libraries that contribute to both systemapi and vendorapi and use `ovverride_export_include_dirs` or `export_headers_as_system`, hacky CS query https://cs.android.com/search?q\u003d(override_export_include_dirs%7Cexport_headers_as_system)%20f:Android.bp%20content:stubs\u0026sq\u003d).\n\nIf it is ok with you, I can create a bug for this and defer this to a later date",
+      "parentUuid": "c2af3a58_7e4b9b13",
       "range": {
         "startLine": 2717,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f00729a_719f280c",
+        "filename": "bp2build/cc_library_headers_conversion_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-05T22:25:12Z",
+      "side": 1,
+      "message": "I think the contributions to publicapi are via a separate Soong module type `ndk_headers`. I am going to drop systemapi and vendorapi from the description since the corresponding Bazel rule (`cc_api_library_headers`) does not have any knowledge about systemapi and vendorapi",
+      "parentUuid": "24f9b925_4e001538",
+      "range": {
+        "startLine": 169,
+        "startChar": 54,
+        "endLine": 169,
+        "endChar": 80
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fba217d3_095ed9a4",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-04T18:52:58Z",
       "side": 1,
       "message": "can you add a test ensuring that we pick when only one of llndk or stubs is specified?",
+      "range": {
+        "startLine": 516,
+        "startChar": 5,
+        "endLine": 516,
+        "endChar": 22
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7944480f_a284071d",
+        "filename": "cc/library.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-05T22:25:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fba217d3_095ed9a4",
       "range": {
         "startLine": 516,
         "startChar": 5,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "240896c6_f49d511b",
+        "filename": "cc/library.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-05T22:25:12Z",
+      "side": 1,
+      "message": "Yeah you are right. I have cleaned this up and also added a ModuleErrorf call if this function cannot find any api file",
+      "parentUuid": "71fa4a30_db5caa4a",
+      "range": {
+        "startLine": 521,
+        "startChar": 1,
+        "endLine": 522,
+        "endChar": 3
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb3584e6_7a0c7975",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-04T18:52:58Z",
       "side": 1,
       "message": "nit: can you add godocs for all the exported functions?",
+      "range": {
+        "startLine": 537,
+        "startChar": 45,
+        "endLine": 537,
+        "endChar": 52
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b85889a0_9cf09acf",
+        "filename": "cc/library.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-05T22:25:12Z",
+      "side": 1,
+      "message": "I started doing this exercise, and then realized that some of these functions do not need to be exported at all since no other package will be needing them. \nI have made them private for now",
+      "parentUuid": "eb3584e6_7a0c7975",
       "range": {
         "startLine": 537,
         "startChar": 45,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1b434c_f41b07e3",
+        "filename": "cc/library.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-05T22:25:12Z",
+      "side": 1,
+      "message": "You are right, thanks for catching this. I have updated the logic and included unit tests for the different combinations",
+      "parentUuid": "32a76acd_9a8fb2f2",
+      "range": {
+        "startLine": 586,
+        "startChar": 31,
+        "endLine": 586,
+        "endChar": 55
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa399609_29c663d7",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-10-04T18:52:58Z",
       "side": 1,
       "message": "can you add a test case of the OS-specific logic?",
+      "range": {
+        "startLine": 244,
+        "startChar": 2,
+        "endLine": 244,
+        "endChar": 88
+      },
+      "revId": "014ab13fe524a19c90a115ade8911d391995e301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0660091d_d9ca6cfb",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-05T22:25:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa399609_29c663d7",
       "range": {
         "startLine": 244,
         "startChar": 2,
