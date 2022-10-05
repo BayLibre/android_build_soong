@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99621bb0_fb44d4ea",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-05T21:36:25Z",
+      "side": 1,
+      "message": "mostly to ensure modulePaths\u0027s scope is reduced.\nI think bootstrap.RunBlueprint() done a few lines down actually makes this whole block redundant. I will verify that and remove this section.",
+      "parentUuid": "0da63b08_b29cc462",
+      "revId": "d299921c02397c1c142aea3872d09f99bab5f1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3607cb9_ceab6d6f",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-05T20:46:33Z",
       "side": 1,
       "message": "Space after //s please",
+      "revId": "d299921c02397c1c142aea3872d09f99bab5f1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb85e0f2_3544a273",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-05T21:36:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3607cb9_ceab6d6f",
       "revId": "d299921c02397c1c142aea3872d09f99bab5f1c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
