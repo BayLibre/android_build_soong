@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da63b08_b29cc462",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-05T20:46:33Z",
+      "side": 1,
+      "message": "Why the change here?",
+      "revId": "d299921c02397c1c142aea3872d09f99bab5f1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3607cb9_ceab6d6f",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-05T20:46:33Z",
+      "side": 1,
+      "message": "Space after //s please",
+      "revId": "d299921c02397c1c142aea3872d09f99bab5f1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
