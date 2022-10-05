@@ -16,6 +16,29 @@
       "message": "Forgot to add the comment change to be last upload.",
       "revId": "2e7ec7ec16494600a7b07a10880aee27388c5e73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba56e4fd_d55542e1",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-10-05T13:22:27Z",
+      "side": 1,
+      "message": "The scopes listed here is the \"highest\" scope in the tier exposed by that  module right? makes sense if so.",
+      "range": {
+        "startLine": 763,
+        "startChar": 27,
+        "endLine": 767,
+        "endChar": 55
+      },
+      "revId": "2e7ec7ec16494600a7b07a10880aee27388c5e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
