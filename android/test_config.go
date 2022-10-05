@@ -74,21 +74,23 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 
 	determineBuildOS(config)
 
+	// Make the CommonOS OsType available for all products.
+	config.Targets = map[OsType][]Target{}
+	config.Targets[CommonOS] = []Target{commonTargetMap[CommonOS.Name]}
+
 	return Config{config}
 }
 
 func modifyTestConfigToSupportArchMutator(testConfig Config) {
 	config := testConfig.config
 
-	config.Targets = map[OsType][]Target{
-		Android: []Target{
-			{Android, Arch{ArchType: Arm64, ArchVariant: "armv8-a", Abi: []string{"arm64-v8a"}}, NativeBridgeDisabled, "", "", false},
-			{Android, Arch{ArchType: Arm, ArchVariant: "armv7-a-neon", Abi: []string{"armeabi-v7a"}}, NativeBridgeDisabled, "", "", false},
-		},
-		config.BuildOS: []Target{
-			{config.BuildOS, Arch{ArchType: X86_64}, NativeBridgeDisabled, "", "", false},
-			{config.BuildOS, Arch{ArchType: X86}, NativeBridgeDisabled, "", "", false},
-		},
+	config.Targets[Android] = []Target{
+		{Android, Arch{ArchType: Arm64, ArchVariant: "armv8-a", Abi: []string{"arm64-v8a"}}, NativeBridgeDisabled, "", "", false},
+		{Android, Arch{ArchType: Arm, ArchVariant: "armv7-a-neon", Abi: []string{"armeabi-v7a"}}, NativeBridgeDisabled, "", "", false},
+	}
+	config.Targets[config.BuildOS] = []Target{
+		{config.BuildOS, Arch{ArchType: X86_64}, NativeBridgeDisabled, "", "", false},
+		{config.BuildOS, Arch{ArchType: X86}, NativeBridgeDisabled, "", "", false},
 	}
 
 	if runtime.GOOS == "darwin" {
