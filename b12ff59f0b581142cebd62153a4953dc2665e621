@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf19100_60904369",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-10-06T20:56:04Z",
+      "side": 1,
+      "message": "I can\u0027t quite tell but I think this is an unnecessary blank line?",
+      "revId": "b12ff59f0b581142cebd62153a4953dc2665e621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
