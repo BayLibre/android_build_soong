@@ -130,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ec969b_0bf1481b",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-10-06T17:18:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a97cf58_cc60e3a2",
+      "range": {
+        "startLine": 702,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 76
+      },
+      "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89805d5c_aad06503",
@@ -161,6 +185,24 @@
       "side": 1,
       "message": "+1 can we also split the mixed builds work into a separate CL?",
       "parentUuid": "89805d5c_aad06503",
+      "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "536649bb_fdf1b094",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-10-06T17:18:54Z",
+      "side": 1,
+      "message": "Done\nSeparate CL for mixed builds work: aosp/2241413",
+      "parentUuid": "b2c18508_edb6b6e2",
       "revId": "fe1dd130a87d7462247e7d4433612775ad0d5977",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
