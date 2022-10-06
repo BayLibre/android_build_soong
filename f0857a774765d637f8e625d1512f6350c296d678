@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed99d412_a459d085",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-06T20:07:49Z",
+      "side": 1,
+      "message": "A single source -\u003e A single output file\n\nMaybe also include the label in the error message?",
+      "revId": "f0857a774765d637f8e625d1512f6350c296d678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30cfbd7c_b3f8ac58",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-06T20:07:49Z",
+      "side": 1,
+      "message": "Have you tried this mixed build implementation end-to-end at all? That is, have  you verified that running `mixed_droid` results in certain cc_prebuilt_binary targets being built by bazel as part of the overall system build?",
+      "revId": "f0857a774765d637f8e625d1512f6350c296d678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "192f6b82_a3f71a48",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-06T20:07:49Z",
+      "side": 1,
+      "message": "Is it necessary to have this constant, given that it\u0027s only used  for expectedOut? Maybe just set `expectedOut :\u003d outBaseDir + \"/execroot/__main__/bin\"` here instead",
+      "revId": "f0857a774765d637f8e625d1512f6350c296d678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90222d66_bd7bd43e",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-06T20:07:49Z",
+      "side": 1,
+      "message": "you\u0027re not formatting anything here, so you can just use `t.Error(`",
+      "revId": "f0857a774765d637f8e625d1512f6350c296d678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
