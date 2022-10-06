@@ -69,6 +69,24 @@
       "parentUuid": "559f54f4_15914141",
       "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a3756f_e63f03b9",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1328558
+      },
+      "writtenOn": "2022-10-06T04:07:54Z",
+      "side": 1,
+      "message": "So do you mean that \n0.into the system image with CLANG_COVERAGE option only.\n1.only replacing or installation of libc binary built with HWASAN and also\n2.putting specific module built with \"sanitize: {hwaddress:true}\" local option WITH CLANG_COVERAGE options on PDK build environment.\n\nis working currently?",
+      "parentUuid": "efa5544d_868b9411",
+      "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
