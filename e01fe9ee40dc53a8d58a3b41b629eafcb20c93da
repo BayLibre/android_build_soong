@@ -105,6 +105,24 @@
       "parentUuid": "73a3756f_e63f03b9",
       "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8980a280_65edf80b",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1328558
+      },
+      "writtenOn": "2022-10-06T04:59:10Z",
+      "side": 1,
+      "message": "OK, I will try suggested method.\n1. add \"sanitize: {hwaddress:true}\" to the build rule (Android.bp) for libc.so\n   -\u003e /bionic/libc/Android.bp \n       Line 107 sanitize: {\n                 + hwaddress: true,\nthen go on.\n          \nBut changing Android.bp seems inconvenient regarding build automation to build non HWASAN version, HWASAN capable build from one source code fetching.",
+      "parentUuid": "49ca4392_030edc39",
+      "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
