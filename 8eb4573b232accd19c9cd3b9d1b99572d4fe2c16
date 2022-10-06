@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d9d90c3_a19aeab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-06T12:38:32Z",
+      "side": 1,
+      "message": "I think that the mixed_libc-incremental:aosp-master-bazel failure is because there is some difference in how that runs the tests so that the source mybootclasspathfragment doesn\u0027t depend on the prebuilt_mybootclasspathfragment and so instead of the source setting the license file last and winning the prebuilt sets it last.\n\nThe follow up change fixes this issue so it will consistently have the prebuilt setting it in both Soong and Bazel and so as long as this is submitted with that change it should not be an issue.\n\nEither way I am going to run presubmit again just to check that it wasn\u0027t some weird build failure.",
+      "revId": "8eb4573b232accd19c9cd3b9d1b99572d4fe2c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
