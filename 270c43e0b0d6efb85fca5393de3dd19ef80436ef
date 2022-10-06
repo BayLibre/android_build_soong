@@ -16,6 +16,24 @@
       "message": "Can this go in modifyTestConfigToSupportArchMutator?  I wouldn\u0027t expect `config.Targets[CommonOS]` to be relevant for a module that wasn\u0027t arch mutated.",
       "revId": "270c43e0b0d6efb85fca5393de3dd19ef80436ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b4874d_aaeae68f",
+        "filename": "android/test_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-06T10:17:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99a1b71f_2e60bd43",
+      "revId": "270c43e0b0d6efb85fca5393de3dd19ef80436ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
