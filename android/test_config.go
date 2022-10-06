@@ -91,9 +91,6 @@ func modifyTestConfigToSupportArchMutator(testConfig Config) {
 		},
 	}
 
-	// Make the CommonOS OsType available for all products.
-	config.Targets[CommonOS] = []Target{commonTargetMap[CommonOS.Name]}
-
 	if runtime.GOOS == "darwin" {
 		config.Targets[config.BuildOS] = config.Targets[config.BuildOS][:1]
 	}
