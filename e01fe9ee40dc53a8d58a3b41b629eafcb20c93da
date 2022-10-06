@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0643b08f_604eb8a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1328558
+      },
+      "writtenOn": "2022-10-06T00:57:32Z",
+      "side": 1,
+      "message": "Need more explain about what\u0027s working condition in AOSP document.",
+      "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2079d79b_ab93bbe7",
@@ -14,6 +31,24 @@
       "writtenOn": "2022-10-05T19:34:37Z",
       "side": 1,
       "message": "This should look at the current target\u0027s hwaddress property, not global SanitizeDevice. It is uncommon, but possible to partially sanitize android: https://source.android.com/docs/security/test/hwasan#sanitizing-individual-targets",
+      "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "559f54f4_15914141",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1328558
+      },
+      "writtenOn": "2022-10-06T00:57:32Z",
+      "side": 1,
+      "message": "Is it possible to build the first image with just one of SANITIZE_TARGET and CLANG_COVERAGE or none of them,\nThen making the specific module work for both sanitizing and coverage partially afterwards on already built system image?\nPurpose is to use SANITIZE with CLANG COVERAGE, need both.\nit\u0027s not the case to disable SANITIZE for partial module.",
+      "parentUuid": "2079d79b_ab93bbe7",
       "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
