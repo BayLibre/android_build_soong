@@ -16,6 +16,24 @@
       "message": "Can you put a non-exported method on Config that returns if this is a test instead?  I wouldn\u0027t want this pattern copied outside the android package, and would at least like to reserve the right to assign TestProductVariables to something non-nil to prevent this.",
       "revId": "3f86c2a983b6659e7a029db98a2fb126baabd2ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c49c2a71_ead2b610",
+        "filename": "android/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-06T09:53:33Z",
+      "side": 1,
+      "message": "There\u0027s at least one other place in the build that checks this field to see whether it is running in a test and that is outside the android package. It was originally added, by you, in https://r.android.com/1506659 and has since been moved into java/base.go but is still there.\n\nI don\u0027t mind creating a follow up to hide that behind a method but it would have to be exported.",
+      "parentUuid": "2fa48e07_f248de01",
+      "revId": "3f86c2a983b6659e7a029db98a2fb126baabd2ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
