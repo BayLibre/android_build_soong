@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a8af8a3_3ba2c5e7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-06T04:41:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "99621bb0_fb44d4ea",
+      "revId": "d299921c02397c1c142aea3872d09f99bab5f1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3607cb9_ceab6d6f",

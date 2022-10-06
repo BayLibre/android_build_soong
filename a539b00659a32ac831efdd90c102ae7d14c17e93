@@ -16,6 +16,24 @@
       "message": "renaming to avoid name collision with metrics package",
       "revId": "a539b00659a32ac831efdd90c102ae7d14c17e93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f675eb9_dd8e0ae5",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-06T04:41:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0cf0abe9_2d983e63",
+      "revId": "a539b00659a32ac831efdd90c102ae7d14c17e93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
