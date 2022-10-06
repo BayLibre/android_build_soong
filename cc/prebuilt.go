@@ -15,6 +15,8 @@
 package cc
 
 import (
+	"fmt"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -33,7 +35,7 @@ func RegisterPrebuiltBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_prebuilt_library_static", PrebuiltStaticLibraryFactory)
 	ctx.RegisterModuleType("cc_prebuilt_test_library_shared", PrebuiltSharedTestLibraryFactory)
 	ctx.RegisterModuleType("cc_prebuilt_object", prebuiltObjectFactory)
-	ctx.RegisterModuleType("cc_prebuilt_binary", prebuiltBinaryFactory)
+	ctx.RegisterModuleType("cc_prebuilt_binary", PrebuiltBinaryFactory)
 }
 
 type prebuiltLinkerInterface interface {
@@ -668,15 +670,21 @@ func (p *prebuiltBinaryLinker) binary() bool {
 }
 
 // cc_prebuilt_binary installs a precompiled executable in srcs property in the
-// device's directory.
-func prebuiltBinaryFactory() android.Module {
+// device's directory, for both the host and device
+func PrebuiltBinaryFactory() android.Module {
 	module, _ := NewPrebuiltBinary(android.HostAndDeviceSupported)
 	return module.Init()
 }
 
+type prebuiltBinaryBazelHandler struct {
+	module    *Module
+	decorator *binaryDecorator
+}
+
 func NewPrebuiltBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
-	module, binary := newBinary(hod, false)
+	module, binary := newBinary(hod, true)
 	module.compiler = nil
+	module.bazelHandler = &prebuiltBinaryBazelHandler{module, binary}
 
 	prebuilt := &prebuiltBinaryLinker{
 		binaryDecorator: binary,
@@ -688,6 +696,67 @@ func NewPrebuiltBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecor
 
 	android.InitPrebuiltModule(module, &prebuilt.properties.Srcs)
 	return module, binary
+}
+
+var _ BazelHandler = (*prebuiltBinaryBazelHandler)(nil)
+
+// Through e.g. `disablePrebuilt`, we may disable mixed builds on an individual basis
+func (h *prebuiltBinaryBazelHandler) mixedBuildsDisabled() bool {
+	return h.module.linker.(*prebuiltBinaryLinker).properties.MixedBuildsDisabled
+}
+
+func (h *prebuiltBinaryBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
+	fmt.Fprintf(os.Stderr, "QueueBazelCall: %s\n", label)
+	// If mixed builds are disabled, we skip
+	if h.mixedBuildsDisabled() {
+		return
+	}
+	bazelCtx := ctx.Config().BazelContext
+	bazelCtx.QueueBazelRequest(label, cquery.GetOutputFiles, android.GetConfigKey(ctx))
+}
+
+func (h *prebuiltBinaryBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+	fmt.Fprintf(os.Stderr, "ProcessBazelQueryResponse: %s\n", label)
+	// If mixed builds are disabled, we skip
+	if h.mixedBuildsDisabled() {
+		return
+	}
+	bazelCtx := ctx.Config().BazelContext
+	outputs, err := bazelCtx.GetOutputFiles(label, android.GetConfigKey(ctx))
+	if err != nil {
+		ctx.ModuleErrorf(err.Error())
+		return
+	}
+	fmt.Fprintf(os.Stderr, "Outputs:\n%v\n", outputs)
+	if len(outputs) != 1 {
+		ctx.ModuleErrorf("Expected a single source, but got:\n%v", outputs)
+		return
+	}
+	h.module.maybeUnhideFromMake()
+}
+
+type bazelPrebuiltBinaryAttributes struct {
+	Src   bazel.LabelAttribute
+	Strip stripAttributes
+}
+
+func prebuiltBinaryBp2Build(ctx android.TopDownMutatorContext, module *Module) {
+	prebuiltAttrs := bp2BuildParsePrebuiltBinaryProps(ctx, module)
+
+	var la linkerAttributes
+	la.convertStripProps(ctx, module)
+	attrs := &bazelPrebuiltBinaryAttributes{
+		Src:   prebuiltAttrs.Src,
+		Strip: stripAttrsFromLinkerAttrs(&la),
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "cc_prebuilt_binary",
+		Bzl_load_location: "//build/bazel/rules/cc:cc_prebuilt_binary.bzl",
+	}
+
+	name := android.RemoveOptionalPrebuiltPrefix(module.Name())
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: name}, attrs)
 }
 
 type Sanitized struct {
