@@ -2731,23 +2731,16 @@ func (a *apexBundle) minSdkVersionValue(ctx android.EarlyModuleContext) string {
 	// Only override the minSdkVersion value on Apexes which already specify
 	// a min_sdk_version (it's optional for non-updatable apexes), and that its
 	// min_sdk_version value is lower than the one to override with.
-	minApiLevel := minSdkVersionFromValue(ctx, proptools.String(a.properties.Min_sdk_version))
-	if minApiLevel.IsNone() {
-		return ""
-	}
-
-	archMinApiLevel := cc.MinApiForArch(ctx, a.MultiTargets()[0].Arch.ArchType)
-	if !archMinApiLevel.IsNone() && archMinApiLevel.CompareTo(minApiLevel) > 0 {
-		minApiLevel = archMinApiLevel
-	}
-
 	overrideMinSdkValue := ctx.DeviceConfig().ApexGlobalMinSdkVersionOverride()
 	overrideApiLevel := minSdkVersionFromValue(ctx, overrideMinSdkValue)
-	if !overrideApiLevel.IsNone() && overrideApiLevel.CompareTo(minApiLevel) > 0 {
-		minApiLevel = overrideApiLevel
+	originalMinApiLevel := minSdkVersionFromValue(ctx, proptools.String(a.properties.Min_sdk_version))
+	isMinSdkSet := a.properties.Min_sdk_version != nil
+	isOverrideValueHigher := overrideApiLevel.CompareTo(originalMinApiLevel) > 0
+	if overrideMinSdkValue != "" && isMinSdkSet && isOverrideValueHigher {
+		return overrideMinSdkValue
 	}
 
-	return minApiLevel.String()
+	return proptools.String(a.properties.Min_sdk_version)
 }
 
 // Returns apex's min_sdk_version SdkSpec, honoring overrides
