@@ -87,6 +87,24 @@
       "parentUuid": "efa5544d_868b9411",
       "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ca4392_030edc39",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2022-10-06T04:30:19Z",
+      "side": 1,
+      "message": "To be clear, I suggest that\n1. add \"sanitize: {hwaddress:true}\" to the build rule (Android.bp) for libc.so\n2. define CLANG_COVERAGE\n3. build system image\nshould be supported.\n\nI hear that the configuration of only (1+3) without CLANG_COVERAGE is a little broken at the moment because of a similar bad logic in the abi dumper. But that\u0027s not a reason to break it further.",
+      "parentUuid": "73a3756f_e63f03b9",
+      "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
