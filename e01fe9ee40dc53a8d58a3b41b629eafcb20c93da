@@ -51,6 +51,24 @@
       "parentUuid": "2079d79b_ab93bbe7",
       "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa5544d_868b9411",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2022-10-06T03:17:35Z",
+      "side": 1,
+      "message": "This needs to work when, as described by the link, hwasan is not enabled by SANITIZE_TARGET, but rather as a \"sanitize: {hwaddress:true}\" attribute on the libc module; and CLANG_COVERAGE is enabled globally.",
+      "parentUuid": "559f54f4_15914141",
+      "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
