@@ -34,6 +34,24 @@
       "parentUuid": "2fa48e07_f248de01",
       "revId": "3f86c2a983b6659e7a029db98a2fb126baabd2ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ebf9f0_cd5e9ace",
+        "filename": "android/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-06T10:17:52Z",
+      "side": 1,
+      "message": "As I could not submit this I decided to add the method as a preceding change to this one and use that in here.",
+      "parentUuid": "c49c2a71_ead2b610",
+      "revId": "3f86c2a983b6659e7a029db98a2fb126baabd2ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
