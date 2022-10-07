@@ -88,6 +88,24 @@
       "parentUuid": "fc87704b_5589a14a",
       "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b98b0879_74caac65",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-07T20:07:56Z",
+      "side": 1,
+      "message": "nit: my hesitation is that the \"indirect output\" of a ninja target is being set as its own dependency.\nbut I guess it\u0027s fine to include for now - if the targets are ever split, someone will look at the depset anyways.\nif u can think of a pithy comment to add here that might help.",
+      "parentUuid": "f2e73a9a_47a091ec",
+      "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
