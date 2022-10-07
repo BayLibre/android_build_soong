@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6467037b_f27744c1",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-07T19:03:51Z",
+      "side": 1,
+      "message": "why add the generatedBuildFile as a dep?",
+      "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
