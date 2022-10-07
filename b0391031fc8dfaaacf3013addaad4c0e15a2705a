@@ -158,6 +158,24 @@
       "parentUuid": "981ffc53_289a6e2c",
       "revId": "b0391031fc8dfaaacf3013addaad4c0e15a2705a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8efa629f_05181b29",
+        "filename": "bpf/bpf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-10-07T18:49:41Z",
+      "side": 1,
+      "message": "I talked with Chris and got that there is no test verifying that string is correct. And we need to ensure that we\u0027ve tested this e2e sufficiently.",
+      "parentUuid": "1f4be523_b1ce4260",
+      "revId": "b0391031fc8dfaaacf3013addaad4c0e15a2705a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
