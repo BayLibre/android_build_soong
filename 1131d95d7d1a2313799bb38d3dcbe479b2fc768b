@@ -70,6 +70,24 @@
       "parentUuid": "e86ed5cb_296f5dcf",
       "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2e73a9a_47a091ec",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-10-07T19:56:57Z",
+      "side": 1,
+      "message": "I am hesitant to remove it because we could miss it when doing that separation later. And a always-rerunning bp2build is much easier to spot than a sometimes-not-rerunning bp2build. So I\u0027d like to keep it, but if you still feel strongly about removing it let me know and I\u0027ll do it.",
+      "parentUuid": "fc87704b_5589a14a",
+      "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
