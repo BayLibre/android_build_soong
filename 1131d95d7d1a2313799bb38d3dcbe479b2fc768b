@@ -16,6 +16,24 @@
       "message": "why add the generatedBuildFile as a dep?",
       "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "360124b9_b567d692",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-07T19:07:32Z",
+      "side": 1,
+      "message": "I might be getting confused with the variable names. Can you post an example?\ne.g. when srcBuildFile \u003d \u003ctop\u003e/external/protobuf/BUILD.bazel\n     what\u0027d be the value of generatedBuildFile?",
+      "parentUuid": "6467037b_f27744c1",
+      "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
