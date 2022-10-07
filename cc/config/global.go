@@ -245,9 +245,7 @@ var (
 		// New warnings to be fixed after clang-r458507
 		"-Wno-error=unqualified-std-cast-call", // http://b/239662094
 		// New warnings to be fixed after clang-r468909
-		"-Wno-error=array-parameter",     // http://b/241941550
-		"-Wno-error=deprecated-builtins", // http://b/241601211
-		"-Wno-error=deprecated",          // in external/googletest/googletest
+		"-Wno-error=array-parameter", // http://b/241941550
 	}
 
 	noOverrideExternalGlobalCflags = []string{
@@ -294,12 +292,7 @@ var (
 		"-Wno-deprecated-non-prototype",
 	}
 
-	llvmNextExtraCommonGlobalCflags = []string{
-		// New warnings to be fixed after clang-r468909
-		"-Wno-error=array-parameter",     // http://b/241941550
-		"-Wno-error=deprecated-builtins", // http://b/241601211
-		"-Wno-error=deprecated",          // in external/googletest/googletest
-	}
+	llvmNextExtraCommonGlobalCflags = []string{}
 
 	IllegalFlags = []string{
 		"-w",
