@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "696f5c36_c5c71a45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1659539
+      },
+      "writtenOn": "2022-10-07T11:10:25Z",
+      "side": 1,
+      "message": "Revert seem to have fixed the test: b/251688241#comment7",
+      "revId": "4d5cc709fa16f5dc78f690369e946fcf66156312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
