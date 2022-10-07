@@ -35,7 +35,7 @@ func androidMakeVarsProvider(ctx MakeVarsContext) {
 	ctx.Strict("MIN_SUPPORTED_SDK_VERSION", ctx.Config().MinSupportedSdkVersion().String())
 }
 
-// /////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
 // BaseMakeVarsContext contains the common functions for other packages to use
 // to declare make variables
@@ -173,14 +173,13 @@ type ModuleMakeVarsProvider interface {
 	MakeVars(ctx MakeVarsModuleContext)
 }
 
-// /////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
 func makeVarsSingletonFunc() Singleton {
 	return &makeVarsSingleton{}
 }
 
 type makeVarsSingleton struct {
-	varsForTesting     []makeVarsVariable
 	installsForTesting []byte
 }
 
@@ -321,11 +320,7 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 		ctx.Errorf(err.Error())
 	}
 
-	// Only save state for tests when testing.
-	if ctx.Config().RunningInsideUnitTest() {
-		s.varsForTesting = vars
-		s.installsForTesting = installsBytes
-	}
+	s.installsForTesting = installsBytes
 }
 
 func (s *makeVarsSingleton) writeVars(vars []makeVarsVariable) []byte {

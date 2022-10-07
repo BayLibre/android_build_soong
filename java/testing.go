@@ -393,7 +393,6 @@ func gatherRequiredDepsForTest() string {
 			aidl: {
 				export_include_dirs: ["framework/aidl"],
 			},
-			compile_dex: true,
 		}
 
 		android_app {
