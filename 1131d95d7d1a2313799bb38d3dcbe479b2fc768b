@@ -52,6 +52,24 @@
       "parentUuid": "6467037b_f27744c1",
       "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc87704b_5589a14a",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-07T19:18:50Z",
+      "side": 1,
+      "message": "so in my example earlier, generatedBuildFile \u003d out/soong/bp2build/external/protobuf/BUILD.bazel ?\n\nI think this would be correct from the perspective of PlantSymlinkForest() however as of today bp2build_workspace_marker ninja target from bootstrap.ninja is responsible for both 1)symlink tree creation and 2)bp -\u003e BUILD conversions\n\nIncluding `generatedBuildFile` will make `bp2build_workspace_marker` express a dependency on something it implicitly outputs. `bp2build_workspace_marker` will have a MODIFY timestamp later than the `generatedBuildFile` so you ARE right that there indeed is no circularity.\n\nBut my vote would be to include it only when the aforementioned responsibilities are separated into separate ninja tasks (something I AM proposing)",
+      "parentUuid": "e86ed5cb_296f5dcf",
+      "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
