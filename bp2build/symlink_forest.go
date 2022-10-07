@@ -285,6 +285,7 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 			// Neither is a directory. Merge them.
 			srcBuildFile := shared.JoinPath(topdir, srcChild)
 			generatedBuildFile := shared.JoinPath(topdir, buildFilesChild)
+			*acc = append(*acc, srcBuildFile, generatedBuildFile)
 			err = mergeBuildFiles(shared.JoinPath(topdir, forestChild), srcBuildFile, generatedBuildFile, cfg.IsEnvTrue("BP2BUILD_VERBOSE"))
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Error merging %s and %s: %s",
