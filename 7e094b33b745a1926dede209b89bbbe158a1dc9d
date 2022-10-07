@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b12e359_0b97be2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-10-07T23:24:04Z",
+      "side": 1,
+      "message": "Is this the cause of failures like https://ci.chromium.org/ui/p/art/builders/ci/host-x86_64-non-gen-cc/4691/overview ?",
+      "revId": "7e094b33b745a1926dede209b89bbbe158a1dc9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
