@@ -3420,12 +3420,29 @@ func convertWithBp2build(a *apexBundle, ctx android.TopDownMutatorContext) (baze
 		Native_shared_libs_32: bazel.LabelListAttribute{},
 		Native_shared_libs_64: bazel.LabelListAttribute{},
 	}
-	compileMultilib := "both"
+
+	// https://cs.android.com/android/platform/superproject/+/master:build/soong/android/arch.go;l=698;drc=f05b0d35d2fbe51be9961ce8ce8031f840295c68
+	// https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex.go;l=2549;drc=ec731a83e3e2d80a1254e32fd4ad7ef85e262669
+	// In Soong, decodeMultilib, used to get multilib, return "first" if defaultMultilib is set to "common".
+	// Since apex sets defaultMultilib to be "common", equivalent compileMultilib in bp2build for apex should be "first"
+	compileMultilib := "first"
 	if a.CompileMultilib() != nil {
 		compileMultilib = *a.CompileMultilib()
 	}
 
-	// properties.Native_shared_libs is treated as "both"
+	// properties.Native_shared_libs is treated as "first"
+	// switch compileMultilib {
+	// case "first":
+	// 	convertFirstLibs(ctx, compileMultilib, a.properties.Native_shared_libs, nativeSharedLibs)
+	// case "32":
+	// 	convert32Libs(ctx, compileMultilib, a.properties.Native_shared_libs, nativeSharedLibs)
+	// case "64":
+	// 	convert64Libs(ctx, compileMultilib, a.properties.Native_shared_libs, nativeSharedLibs)
+	// case "both":
+	// 	convertFi(ctx, compileMultilib, a.properties.Native_shared_libs, nativeSharedLibs)
+	// default:
+	// 	panic(fmt.Errorf("unsupported compileMultilib value: %v", compileMultilib))
+	// }
 	convertBothLibs(ctx, compileMultilib, a.properties.Native_shared_libs, nativeSharedLibs)
 	convertBothLibs(ctx, compileMultilib, a.properties.Multilib.Both.Native_shared_libs, nativeSharedLibs)
 	convert32Libs(ctx, compileMultilib, a.properties.Multilib.Lib32.Native_shared_libs, nativeSharedLibs)
