@@ -4098,6 +4098,64 @@ func TestApexName(t *testing.T) {
 	ensureNotContains(t, androidMk, "LOCAL_MODULE := mylib.com.android.myapex\n")
 }
 
+func TestDefaultCompileMultilibProp(t *testing.T) {
+	testCases := []struct {
+		target     android.Target
+		contain    string
+		notContain string
+	}{
+		{
+			target: android.Target{
+				Os:   android.Android,
+				Arch: android.Arch{ArchType: android.Arm64, ArchVariant: "armv8-a", Abi: []string{"arm64-v8a"}},
+			},
+			// When target has 64-bit arch and compile_multilib is unset, apex only creates 64-bit native libs
+			contain:    "image.apex/lib64/mylib.so",
+			notContain: "image.apex/lib/mylib.so",
+		},
+		{
+			target: android.Target{
+				Os:   android.Android,
+				Arch: android.Arch{ArchType: android.Arm, ArchVariant: "armv7-a-neon", Abi: []string{"armeabi-v7a"}},
+			},
+			// When target has 31-bit arch and compile_multilib is unset, apex only creates 32-bit native libs
+			contain:    "image.apex/lib/mylib.so",
+			notContain: "image.apex/lib64/mylib.so",
+		},
+	}
+	for _, testCase := range testCases {
+		ctx := testApex(t, `
+			apex {
+				name: "myapex",
+				key: "myapex.key",
+				native_shared_libs: ["mylib"],
+				updatable: false,
+			}
+			apex_key {
+				name: "myapex.key",
+				public_key: "testkey.avbpubkey",
+				private_key: "testkey.pem",
+			}
+			cc_library {
+				name: "mylib",
+				srcs: ["mylib.cpp"],
+				apex_available: [
+					"//apex_available:platform",
+					"myapex",
+			],
+			}
+		`,
+			android.FixtureModifyConfig(func(config android.Config) {
+				config.Targets[android.Android] = []android.Target{testCase.target}
+			}))
+		module := ctx.ModuleForTests("myapex", "android_common_myapex_image")
+		apexRule := module.Rule("apexRule")
+		copyCmds := apexRule.Args["copy_commands"]
+		ensureContains(t, copyCmds, testCase.contain)
+		ensureNotContains(t, copyCmds, testCase.notContain)
+	}
+}
+
 func TestNonTestApex(t *testing.T) {
 	ctx := testApex(t, `
 		apex {
