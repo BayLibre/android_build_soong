@@ -34,6 +34,24 @@
       "parentUuid": "6467037b_f27744c1",
       "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e86ed5cb_296f5dcf",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-10-07T19:07:44Z",
+      "side": 1,
+      "message": "Technically not necessary because if we ever rerun bp2build we regenerate the whole symlink tree. However I imagine in the future there could be a scenario where we rerun bp2build, which only updates generated files, and doesn\u0027t regenerate the symlink tree because that generated file was simply symlinked into the tree.",
+      "parentUuid": "6467037b_f27744c1",
+      "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
