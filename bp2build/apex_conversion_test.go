@@ -22,6 +22,7 @@ import (
 	"android/soong/java"
 	"android/soong/sh"
 
+	"fmt"
 	"testing"
 )
 
@@ -259,6 +260,44 @@ apex {
 		}})
 }
 
+func TestApexBundleCompileMultiLibUnset(t *testing.T) {
+	runApexTestCase(t, Bp2buildTestCase{
+		Description:                "apex - compile_multilib and multilib unset",
+		ModuleTypeUnderTest:        "apex",
+		ModuleTypeUnderTestFactory: apex.BundleFactory,
+		Blueprint: `
+apex {
+	name: "myapex",
+	native_shared_libs: ["mylib"],
+}
+
+cc_library {
+	name: "mylib",
+	srcs: ["mylib.cpp"],
+	apex_available: [
+		//apex_available:platform",
+		"myapex",
+  ],
+  bazel_module: { bp2build_available: false },
+}`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("apex", "myapex", AttrNameToString{
+				"native_shared_libs_32": `select({
+        "//build/bazel/platforms/arch:arm": [":mylib"],
+        "//build/bazel/platforms/arch:x86": [":mylib"],
+        "//conditions:default": [],
+    })`,
+				"native_shared_libs_64": `select({
+        "//build/bazel/platforms/arch:arm64": [":mylib"],
+        "//build/bazel/platforms/arch:x86_64": [":mylib"],
+        "//conditions:default": [],
+    })`,
+				"manifest":      `"apex_manifest.json"`,
+				"file_contexts": `":myapex-file_contexts__BP2BUILD__MISSING__DEP"`,
+			}),
+		}})
+}
+
 func TestApexBundleCompileMultilibBoth(t *testing.T) {
 	runApexTestCase(t, Bp2buildTestCase{
 		Description:                "apex - example with compile_multilib=both",
@@ -273,7 +312,7 @@ filegroup {
 }
 `,
 		},
-		Blueprint: createMultilibBlueprint("both"),
+		Blueprint: createMultilibBlueprint(`compile_multilib: "both",`),
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 				"native_shared_libs_32": `[
@@ -303,24 +342,10 @@ filegroup {
 		}})
 }
 
-func TestApexBundleCompileMultilibFirst(t *testing.T) {
-	runApexTestCase(t, Bp2buildTestCase{
-		Description:                "apex - example with compile_multilib=first",
-		ModuleTypeUnderTest:        "apex",
-		ModuleTypeUnderTestFactory: apex.BundleFactory,
-		Filesystem: map[string]string{
-			"system/sepolicy/apex/Android.bp": `
-filegroup {
-	name: "com.android.apogee-file_contexts",
-	srcs: [ "apogee-file_contexts", ],
-	bazel_module: { bp2build_available: false },
-}
-`,
-		},
-		Blueprint: createMultilibBlueprint("first"),
-		ExpectedBazelTargets: []string{
-			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
-				"native_shared_libs_32": `select({
+func TestApexBundleCompileMultilibFirstAndDefaultValue(t *testing.T) {
+	expectedBazelTargets := []string{
+		MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+			"native_shared_libs_32": `select({
         "//build/bazel/platforms/arch:arm": [
             ":native_shared_lib_for_both",
             ":native_shared_lib_for_lib32",
@@ -333,7 +358,7 @@ filegroup {
         ],
         "//conditions:default": [],
     })`,
-				"native_shared_libs_64": `select({
+			"native_shared_libs_64": `select({
         "//build/bazel/platforms/arch:arm64": [
             ":native_shared_lib_for_both",
             ":native_shared_lib_for_lib64",
@@ -346,10 +371,32 @@ filegroup {
         ],
         "//conditions:default": [],
     })`,
-				"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
-				"manifest":      `"apex_manifest.json"`,
-			}),
-		}})
+			"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
+			"manifest":      `"apex_manifest.json"`,
+		}),
+	}
+
+	// "first" is the default value of compile_multilib prop so `compile_multilib_: "first"` and unset compile_multilib
+	// should result to the same bp2build output
+	compileMultiLibPropValues := []string{`compile_multilib: "first",`, ""}
+	for _, compileMultiLibProp := range compileMultiLibPropValues {
+		runApexTestCase(t, Bp2buildTestCase{
+			Description:                "apex - example with " + compileMultiLibProp,
+			ModuleTypeUnderTest:        "apex",
+			ModuleTypeUnderTestFactory: apex.BundleFactory,
+			Filesystem: map[string]string{
+				"system/sepolicy/apex/Android.bp": `
+    filegroup {
+        name: "com.android.apogee-file_contexts",
+        srcs: [ "apogee-file_contexts", ],
+        bazel_module: { bp2build_available: false },
+    }
+    `,
+			},
+			Blueprint:            createMultilibBlueprint(compileMultiLibProp),
+			ExpectedBazelTargets: expectedBazelTargets,
+		})
+	}
 }
 
 func TestApexBundleCompileMultilib32(t *testing.T) {
@@ -366,7 +413,7 @@ filegroup {
 }
 `,
 		},
-		Blueprint: createMultilibBlueprint("32"),
+		Blueprint: createMultilibBlueprint(`compile_multilib: "32",`),
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 				"native_shared_libs_32": `[
@@ -397,7 +444,7 @@ filegroup {
 }
 `,
 		},
-		Blueprint: createMultilibBlueprint("64"),
+		Blueprint: createMultilibBlueprint(`compile_multilib: "64",`),
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 				"native_shared_libs_64": `select({
@@ -420,7 +467,7 @@ filegroup {
 }
 
 func createMultilibBlueprint(compile_multilib string) string {
-	return `
+	return fmt.Sprintf(`
 cc_library {
 	name: "native_shared_lib_for_both",
 	bazel_module: { bp2build_available: false },
@@ -443,7 +490,7 @@ cc_library {
 
 apex {
 	name: "com.android.apogee",
-	compile_multilib: "` + compile_multilib + `",
+	%s
 	multilib: {
 		both: {
 			native_shared_libs: [
@@ -466,7 +513,7 @@ apex {
 			],
 		},
 	},
-}`
+}`, compile_multilib)
 }
 
 func TestApexBundleDefaultPropertyValues(t *testing.T) {
