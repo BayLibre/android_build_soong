@@ -16,6 +16,24 @@
       "message": "I can\u0027t quite tell but I think this is an unnecessary blank line?",
       "revId": "b12ff59f0b581142cebd62153a4953dc2665e621",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "056e2c71_a7b3769a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-10-07T15:31:31Z",
+      "side": 1,
+      "message": "Ack; It\u0027s intentional; I don\u0027t want the first patterned block to be crowded by the separate concern of the function signature.\n\nNB: The lack of a line after the `bp2BuildParsePrebuiltBinaryProps` is because there is but one parsing block, thus no syntactic pattern which to sustain (or, thus, delineate to start).",
+      "parentUuid": "6cf19100_60904369",
+      "revId": "b12ff59f0b581142cebd62153a4953dc2665e621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
