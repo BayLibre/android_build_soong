@@ -106,6 +106,24 @@
       "parentUuid": "f2e73a9a_47a091ec",
       "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74c7930_f523031e",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-10-07T20:12:19Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b98b0879_74caac65",
+      "revId": "1131d95d7d1a2313799bb38d3dcbe479b2fc768b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
