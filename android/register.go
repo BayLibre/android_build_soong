@@ -164,10 +164,6 @@ func NewContext(config Config) *Context {
 	return ctx
 }
 
-func (ctx *Context) SetRunningAsBp2build() {
-	ctx.config.runningAsBp2Build = true
-}
-
 // RegisterForBazelConversion registers an alternate shadow pipeline of
 // singletons, module types and mutators to register for converting Blueprint
 // files to semantically equivalent BUILD files.
@@ -182,6 +178,16 @@ func (ctx *Context) RegisterForBazelConversion() {
 	}
 
 	RegisterMutatorsForBazelConversion(ctx, bp2buildPreArchMutators)
+}
+
+// RegisterForApiBazelConversion is similar to RegisterForBazelConversion except that
+// it only generates API targets in the generated  workspace
+func (ctx *Context) RegisterForApiBazelConversion() {
+	for _, t := range moduleTypes {
+		t.register(ctx)
+	}
+
+	RegisterMutatorsForApiBazelConversion(ctx, bp2buildPreArchMutators)
 }
 
 // Register the pipeline of singletons, module types, and mutators for
@@ -258,20 +264,20 @@ type RegistrationContext interface {
 
 // Used to register build components from an init() method, e.g.
 //
-// init() {
-//   RegisterBuildComponents(android.InitRegistrationContext)
-// }
+//	init() {
+//	  RegisterBuildComponents(android.InitRegistrationContext)
+//	}
 //
-// func RegisterBuildComponents(ctx android.RegistrationContext) {
-//   ctx.RegisterModuleType(...)
-//   ...
-// }
+//	func RegisterBuildComponents(ctx android.RegistrationContext) {
+//	  ctx.RegisterModuleType(...)
+//	  ...
+//	}
 //
 // Extracting the actual registration into a separate RegisterBuildComponents(ctx) function
 // allows it to be used to initialize test context, e.g.
 //
-//   ctx := android.NewTestContext(config)
-//   RegisterBuildComponents(ctx)
+//	ctx := android.NewTestContext(config)
+//	RegisterBuildComponents(ctx)
 var InitRegistrationContext RegistrationContext = &initRegistrationContext{
 	moduleTypes:       make(map[string]ModuleFactory),
 	singletonTypes:    make(map[string]SingletonFactory),

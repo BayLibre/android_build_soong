@@ -120,7 +120,7 @@ apex {
 	file_contexts: ":com.android.apogee-file_contexts",
 	min_sdk_version: "29",
 	key: "com.android.apogee.key",
-	certificate: "com.android.apogee.certificate",
+	certificate: ":com.android.apogee.certificate",
 	updatable: false,
 	installable: false,
 	compressible: false,
@@ -141,7 +141,7 @@ apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 				"android_manifest": `"ApogeeAndroidManifest.xml"`,
 				"binaries": `[
         ":cc_binary_1",
@@ -203,7 +203,7 @@ apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 				"file_contexts": `"//a/b:com.android.apogee-file_contexts"`,
 				"manifest":      `"apex_manifest.json"`,
 			}),
@@ -223,7 +223,7 @@ apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 				"file_contexts": `"file_contexts_file"`,
 				"manifest":      `"apex_manifest.json"`,
 			}),
@@ -252,7 +252,7 @@ apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 				"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 				"manifest":      `"apex_manifest.json"`,
 			}),
@@ -275,25 +275,25 @@ filegroup {
 		},
 		Blueprint: createMultilibBlueprint("both"),
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 				"native_shared_libs_32": `[
-        ":native_shared_lib_1",
-        ":native_shared_lib_3",
+        ":native_shared_lib_for_both",
+        ":native_shared_lib_for_lib32",
     ] + select({
-        "//build/bazel/platforms/arch:arm": [":native_shared_lib_2"],
-        "//build/bazel/platforms/arch:x86": [":native_shared_lib_2"],
+        "//build/bazel/platforms/arch:arm": [":native_shared_lib_for_first"],
+        "//build/bazel/platforms/arch:x86": [":native_shared_lib_for_first"],
         "//conditions:default": [],
     })`,
 				"native_shared_libs_64": `select({
         "//build/bazel/platforms/arch:arm64": [
-            ":native_shared_lib_1",
-            ":native_shared_lib_4",
-            ":native_shared_lib_2",
+            ":native_shared_lib_for_both",
+            ":native_shared_lib_for_lib64",
+            ":native_shared_lib_for_first",
         ],
         "//build/bazel/platforms/arch:x86_64": [
-            ":native_shared_lib_1",
-            ":native_shared_lib_4",
-            ":native_shared_lib_2",
+            ":native_shared_lib_for_both",
+            ":native_shared_lib_for_lib64",
+            ":native_shared_lib_for_first",
         ],
         "//conditions:default": [],
     })`,
@@ -319,30 +319,30 @@ filegroup {
 		},
 		Blueprint: createMultilibBlueprint("first"),
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 				"native_shared_libs_32": `select({
         "//build/bazel/platforms/arch:arm": [
-            ":native_shared_lib_1",
-            ":native_shared_lib_3",
-            ":native_shared_lib_2",
+            ":native_shared_lib_for_both",
+            ":native_shared_lib_for_lib32",
+            ":native_shared_lib_for_first",
         ],
         "//build/bazel/platforms/arch:x86": [
-            ":native_shared_lib_1",
-            ":native_shared_lib_3",
-            ":native_shared_lib_2",
+            ":native_shared_lib_for_both",
+            ":native_shared_lib_for_lib32",
+            ":native_shared_lib_for_first",
         ],
         "//conditions:default": [],
     })`,
 				"native_shared_libs_64": `select({
         "//build/bazel/platforms/arch:arm64": [
-            ":native_shared_lib_1",
-            ":native_shared_lib_4",
-            ":native_shared_lib_2",
+            ":native_shared_lib_for_both",
+            ":native_shared_lib_for_lib64",
+            ":native_shared_lib_for_first",
         ],
         "//build/bazel/platforms/arch:x86_64": [
-            ":native_shared_lib_1",
-            ":native_shared_lib_4",
-            ":native_shared_lib_2",
+            ":native_shared_lib_for_both",
+            ":native_shared_lib_for_lib64",
+            ":native_shared_lib_for_first",
         ],
         "//conditions:default": [],
     })`,
@@ -368,13 +368,13 @@ filegroup {
 		},
 		Blueprint: createMultilibBlueprint("32"),
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 				"native_shared_libs_32": `[
-        ":native_shared_lib_1",
-        ":native_shared_lib_3",
+        ":native_shared_lib_for_both",
+        ":native_shared_lib_for_lib32",
     ] + select({
-        "//build/bazel/platforms/arch:arm": [":native_shared_lib_2"],
-        "//build/bazel/platforms/arch:x86": [":native_shared_lib_2"],
+        "//build/bazel/platforms/arch:arm": [":native_shared_lib_for_first"],
+        "//build/bazel/platforms/arch:x86": [":native_shared_lib_for_first"],
         "//conditions:default": [],
     })`,
 				"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
@@ -399,17 +399,17 @@ filegroup {
 		},
 		Blueprint: createMultilibBlueprint("64"),
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 				"native_shared_libs_64": `select({
         "//build/bazel/platforms/arch:arm64": [
-            ":native_shared_lib_1",
-            ":native_shared_lib_4",
-            ":native_shared_lib_2",
+            ":native_shared_lib_for_both",
+            ":native_shared_lib_for_lib64",
+            ":native_shared_lib_for_first",
         ],
         "//build/bazel/platforms/arch:x86_64": [
-            ":native_shared_lib_1",
-            ":native_shared_lib_4",
-            ":native_shared_lib_2",
+            ":native_shared_lib_for_both",
+            ":native_shared_lib_for_lib64",
+            ":native_shared_lib_for_first",
         ],
         "//conditions:default": [],
     })`,
@@ -417,6 +417,56 @@ filegroup {
 				"manifest":      `"apex_manifest.json"`,
 			}),
 		}})
+}
+
+func createMultilibBlueprint(compile_multilib string) string {
+	return `
+cc_library {
+	name: "native_shared_lib_for_both",
+	bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+	name: "native_shared_lib_for_first",
+	bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+	name: "native_shared_lib_for_lib32",
+	bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+	name: "native_shared_lib_for_lib64",
+	bazel_module: { bp2build_available: false },
+}
+
+apex {
+	name: "com.android.apogee",
+	compile_multilib: "` + compile_multilib + `",
+	multilib: {
+		both: {
+			native_shared_libs: [
+				"native_shared_lib_for_both",
+			],
+		},
+		first: {
+			native_shared_libs: [
+				"native_shared_lib_for_first",
+			],
+		},
+		lib32: {
+			native_shared_libs: [
+				"native_shared_lib_for_lib32",
+			],
+		},
+		lib64: {
+			native_shared_libs: [
+				"native_shared_lib_for_lib64",
+			],
+		},
+	},
+}`
 }
 
 func TestApexBundleDefaultPropertyValues(t *testing.T) {
@@ -439,7 +489,7 @@ apex {
 	manifest: "apogee_manifest.json",
 }
 `,
-		ExpectedBazelTargets: []string{makeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+		ExpectedBazelTargets: []string{MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
 			"manifest":      `"apogee_manifest.json"`,
 			"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 		}),
@@ -467,61 +517,11 @@ apex {
 	bazel_module: { bp2build_available: true },
 }
 `,
-		ExpectedBazelTargets: []string{makeBazelTarget("apex", "apogee", AttrNameToString{
+		ExpectedBazelTargets: []string{MakeBazelTarget("apex", "apogee", AttrNameToString{
 			"manifest":      `"manifest.json"`,
 			"file_contexts": `"//system/sepolicy/apex:apogee-file_contexts"`,
 		}),
 		}})
-}
-
-func createMultilibBlueprint(compile_multilib string) string {
-	return `
-cc_library {
-	name: "native_shared_lib_1",
-	bazel_module: { bp2build_available: false },
-}
-
-cc_library {
-	name: "native_shared_lib_2",
-	bazel_module: { bp2build_available: false },
-}
-
-cc_library {
-	name: "native_shared_lib_3",
-	bazel_module: { bp2build_available: false },
-}
-
-cc_library {
-	name: "native_shared_lib_4",
-	bazel_module: { bp2build_available: false },
-}
-
-apex {
-	name: "com.android.apogee",
-	compile_multilib: "` + compile_multilib + `",
-	multilib: {
-		both: {
-			native_shared_libs: [
-				"native_shared_lib_1",
-			],
-		},
-		first: {
-			native_shared_libs: [
-				"native_shared_lib_2",
-			],
-		},
-		lib32: {
-			native_shared_libs: [
-				"native_shared_lib_3",
-			],
-		},
-		lib64: {
-			native_shared_libs: [
-				"native_shared_lib_4",
-			],
-		},
-	},
-}`
 }
 
 func TestBp2BuildOverrideApex(t *testing.T) {
@@ -582,7 +582,7 @@ apex {
 	file_contexts: ":com.android.apogee-file_contexts",
 	min_sdk_version: "29",
 	key: "com.android.apogee.key",
-	certificate: "com.android.apogee.certificate",
+	certificate: ":com.android.apogee.certificate",
 	updatable: false,
 	installable: false,
 	compressible: false,
@@ -618,13 +618,13 @@ override_apex {
 	name: "com.google.android.apogee",
 	base: ":com.android.apogee",
 	key: "com.google.android.apogee.key",
-	certificate: "com.google.android.apogee.certificate",
+	certificate: ":com.google.android.apogee.certificate",
 	prebuilts: [],
 	compressible: true,
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
 				"android_manifest": `"ApogeeAndroidManifest.xml"`,
 				"binaries": `[
         ":cc_binary_1",
@@ -684,7 +684,7 @@ override_apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
 				"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 				"manifest":      `"//a/b:apex_manifest.json"`,
 			}),
@@ -718,7 +718,7 @@ override_apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
 				"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 				"manifest":      `"//a/b:apogee_manifest.json"`,
 			}),
@@ -750,7 +750,7 @@ override_apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
 				"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 				"manifest":      `"apex_manifest.json"`,
 			}),
@@ -783,7 +783,7 @@ override_apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
 				"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 				"manifest":      `"apogee_manifest.json"`,
 			}),
@@ -816,7 +816,7 @@ override_apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
 				"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 				"manifest":      `"apex_manifest.json"`,
 				"package_name":  `"com.google.android.apogee"`,
@@ -855,7 +855,7 @@ override_apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
 				"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 				"manifest":      `"apex_manifest.json"`,
 				"prebuilts":     `[":prebuilt_file"]`,
@@ -900,7 +900,7 @@ override_apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
 				"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 				"manifest":      `"apex_manifest.json"`,
 				"prebuilts":     `[":prebuilt_file2"]`,
@@ -940,7 +940,7 @@ override_apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
 				"file_contexts": `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 				"manifest":      `"apex_manifest.json"`,
 				"prebuilts":     `[]`,
@@ -974,7 +974,7 @@ override_apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
 				"file_contexts":  `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 				"manifest":       `"apex_manifest.json"`,
 				"logging_parent": `"foo.bar.baz"`,
@@ -1009,10 +1009,200 @@ override_apex {
 }
 `,
 		ExpectedBazelTargets: []string{
-			makeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
 				"file_contexts":  `"//system/sepolicy/apex:com.android.apogee-file_contexts"`,
 				"manifest":       `"apex_manifest.json"`,
 				"logging_parent": `"foo.bar.baz.override"`,
+			}),
+		}})
+}
+
+func TestBp2BuildOverrideApex_CertificateNil(t *testing.T) {
+	runOverrideApexTestCase(t, Bp2buildTestCase{
+		Description:                "override_apex - don't set default certificate",
+		ModuleTypeUnderTest:        "override_apex",
+		ModuleTypeUnderTestFactory: apex.OverrideApexFactory,
+		Filesystem:                 map[string]string{},
+		Blueprint: `
+android_app_certificate {
+	name: "com.android.apogee.certificate",
+	certificate: "com.android.apogee",
+	bazel_module: { bp2build_available: false },
+}
+
+filegroup {
+	name: "com.android.apogee-file_contexts",
+	srcs: [
+		"com.android.apogee-file_contexts",
+	],
+	bazel_module: { bp2build_available: false },
+}
+
+apex {
+	name: "com.android.apogee",
+	manifest: "apogee_manifest.json",
+	file_contexts: ":com.android.apogee-file_contexts",
+	certificate: ":com.android.apogee.certificate",
+	bazel_module: { bp2build_available: false },
+}
+
+override_apex {
+	name: "com.google.android.apogee",
+	base: ":com.android.apogee",
+	// certificate is deliberately omitted, and not converted to bazel,
+	// because the overridden apex shouldn't be using the base apex's cert.
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+				"file_contexts": `":com.android.apogee-file_contexts"`,
+				"manifest":      `"apogee_manifest.json"`,
+			}),
+		}})
+}
+
+func TestApexCertificateIsModule(t *testing.T) {
+	runApexTestCase(t, Bp2buildTestCase{
+		Description:                "apex - certificate is module",
+		ModuleTypeUnderTest:        "apex",
+		ModuleTypeUnderTestFactory: apex.BundleFactory,
+		Filesystem:                 map[string]string{},
+		Blueprint: `
+android_app_certificate {
+	name: "com.android.apogee.certificate",
+	certificate: "com.android.apogee",
+	bazel_module: { bp2build_available: false },
+}
+
+apex {
+	name: "com.android.apogee",
+	manifest: "apogee_manifest.json",
+	file_contexts: ":com.android.apogee-file_contexts",
+	certificate: ":com.android.apogee.certificate",
+}
+` + simpleModuleDoNotConvertBp2build("filegroup", "com.android.apogee-file_contexts"),
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+				"certificate":   `":com.android.apogee.certificate"`,
+				"file_contexts": `":com.android.apogee-file_contexts"`,
+				"manifest":      `"apogee_manifest.json"`,
+			}),
+		}})
+}
+
+func TestApexCertificateIsSrc(t *testing.T) {
+	runApexTestCase(t, Bp2buildTestCase{
+		Description:                "apex - certificate is src",
+		ModuleTypeUnderTest:        "apex",
+		ModuleTypeUnderTestFactory: apex.BundleFactory,
+		Filesystem:                 map[string]string{},
+		Blueprint: `
+apex {
+	name: "com.android.apogee",
+	manifest: "apogee_manifest.json",
+	file_contexts: ":com.android.apogee-file_contexts",
+	certificate: "com.android.apogee.certificate",
+}
+` + simpleModuleDoNotConvertBp2build("filegroup", "com.android.apogee-file_contexts"),
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+				"certificate_name": `"com.android.apogee.certificate"`,
+				"file_contexts":    `":com.android.apogee-file_contexts"`,
+				"manifest":         `"apogee_manifest.json"`,
+			}),
+		}})
+}
+
+func TestBp2BuildOverrideApex_CertificateIsModule(t *testing.T) {
+	runOverrideApexTestCase(t, Bp2buildTestCase{
+		Description:                "override_apex - certificate is module",
+		ModuleTypeUnderTest:        "override_apex",
+		ModuleTypeUnderTestFactory: apex.OverrideApexFactory,
+		Filesystem:                 map[string]string{},
+		Blueprint: `
+android_app_certificate {
+	name: "com.android.apogee.certificate",
+	certificate: "com.android.apogee",
+	bazel_module: { bp2build_available: false },
+}
+
+filegroup {
+	name: "com.android.apogee-file_contexts",
+	srcs: [
+		"com.android.apogee-file_contexts",
+	],
+	bazel_module: { bp2build_available: false },
+}
+
+apex {
+	name: "com.android.apogee",
+	manifest: "apogee_manifest.json",
+	file_contexts: ":com.android.apogee-file_contexts",
+	certificate: ":com.android.apogee.certificate",
+	bazel_module: { bp2build_available: false },
+}
+
+android_app_certificate {
+	name: "com.google.android.apogee.certificate",
+	certificate: "com.google.android.apogee",
+	bazel_module: { bp2build_available: false },
+}
+
+override_apex {
+	name: "com.google.android.apogee",
+	base: ":com.android.apogee",
+	certificate: ":com.google.android.apogee.certificate",
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+				"file_contexts": `":com.android.apogee-file_contexts"`,
+				"certificate":   `":com.google.android.apogee.certificate"`,
+				"manifest":      `"apogee_manifest.json"`,
+			}),
+		}})
+}
+
+func TestBp2BuildOverrideApex_CertificateIsSrc(t *testing.T) {
+	runOverrideApexTestCase(t, Bp2buildTestCase{
+		Description:                "override_apex - certificate is src",
+		ModuleTypeUnderTest:        "override_apex",
+		ModuleTypeUnderTestFactory: apex.OverrideApexFactory,
+		Filesystem:                 map[string]string{},
+		Blueprint: `
+android_app_certificate {
+	name: "com.android.apogee.certificate",
+	certificate: "com.android.apogee",
+	bazel_module: { bp2build_available: false },
+}
+
+filegroup {
+	name: "com.android.apogee-file_contexts",
+	srcs: [
+		"com.android.apogee-file_contexts",
+	],
+	bazel_module: { bp2build_available: false },
+}
+
+apex {
+	name: "com.android.apogee",
+	manifest: "apogee_manifest.json",
+	file_contexts: ":com.android.apogee-file_contexts",
+	certificate: ":com.android.apogee.certificate",
+	bazel_module: { bp2build_available: false },
+}
+
+override_apex {
+	name: "com.google.android.apogee",
+	base: ":com.android.apogee",
+	certificate: "com.google.android.apogee.certificate",
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("apex", "com.google.android.apogee", AttrNameToString{
+				"file_contexts":    `":com.android.apogee-file_contexts"`,
+				"certificate_name": `"com.google.android.apogee.certificate"`,
+				"manifest":         `"apogee_manifest.json"`,
 			}),
 		}})
 }

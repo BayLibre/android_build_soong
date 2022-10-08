@@ -202,28 +202,38 @@ func BazelLabelForModuleSrcExcludes(ctx BazelConversionPathContext, paths, exclu
 	return labels
 }
 
-// Returns true if a prefix + components[:i] + /Android.bp exists
-// TODO(b/185358476) Could check for BUILD file instead of checking for Android.bp file, or ensure BUILD is always generated?
-func directoryHasBlueprint(fs pathtools.FileSystem, prefix string, components []string, componentIndex int) bool {
-	blueprintPath := prefix
-	if blueprintPath != "" {
-		blueprintPath = blueprintPath + "/"
-	}
-	blueprintPath = blueprintPath + strings.Join(components[:componentIndex+1], "/")
-	blueprintPath = blueprintPath + "/Android.bp"
-	if exists, _, _ := fs.Exists(blueprintPath); exists {
+// Returns true if a prefix + components[:i] is a package boundary.
+//
+// A package boundary is determined by a BUILD file in the directory. This can happen in 2 cases:
+//
+//  1. An Android.bp exists, which bp2build will always convert to a sibling BUILD file.
+//  2. An Android.bp doesn't exist, but a checked-in BUILD/BUILD.bazel file exists, and that file
+//     is allowlisted by the bp2build configuration to be merged into the symlink forest workspace.
+func isPackageBoundary(config Config, prefix string, components []string, componentIndex int) bool {
+	prefix = filepath.Join(prefix, filepath.Join(components[:componentIndex+1]...))
+	if exists, _, _ := config.fs.Exists(filepath.Join(prefix, "Android.bp")); exists {
 		return true
-	} else {
-		return false
+	} else if config.Bp2buildPackageConfig.ShouldKeepExistingBuildFileForDir(prefix) {
+		if exists, _, _ := config.fs.Exists(filepath.Join(prefix, "BUILD")); exists {
+			return true
+		} else if exists, _, _ := config.fs.Exists(filepath.Join(prefix, "BUILD.bazel")); exists {
+			return true
+		}
 	}
+
+	return false
 }
 
 // Transform a path (if necessary) to acknowledge package boundaries
 //
 // e.g. something like
-//   async_safe/include/async_safe/CHECK.h
+//
+//	async_safe/include/async_safe/CHECK.h
+//
 // might become
-//   //bionic/libc/async_safe:include/async_safe/CHECK.h
+//
+//	//bionic/libc/async_safe:include/async_safe/CHECK.h
+//
 // if the "async_safe" directory is actually a package and not just a directory.
 //
 // In particular, paths that extend into packages are transformed into absolute labels beginning with //.
@@ -238,17 +248,37 @@ func transformSubpackagePath(ctx BazelConversionPathContext, path bazel.Label) b
 		newPath.Label = path.Label
 		return newPath
 	}
-
-	newLabel := ""
+	if strings.HasPrefix(path.Label, "./") {
+		// Drop "./" for consistent handling of paths.
+		// Specifically, to not let "." be considered a package boundary.
+		// Say `inputPath` is `x/Android.bp` and that file has some module
+		// with `srcs=["y/a.c", "z/b.c"]`.
+		// And say the directory tree is:
+		//     x
+		//     ├── Android.bp
+		//     ├── y
+		//     │   ├── a.c
+		//     │   └── Android.bp
+		//     └── z
+		//         └── b.c
+		// Then bazel equivalent labels in srcs should be:
+		//   //x/y:a.c, x/z/b.c
+		// The above should still be the case if `x/Android.bp` had
+		//   srcs=["./y/a.c", "./z/b.c"]
+		// However, if we didn't strip "./", we'd get
+		//   //x/./y:a.c, //x/.:z/b.c
+		path.Label = strings.TrimPrefix(path.Label, "./")
+	}
 	pathComponents := strings.Split(path.Label, "/")
-	foundBlueprint := false
+	newLabel := ""
+	foundPackageBoundary := false
 	// Check the deepest subdirectory first and work upwards
 	for i := len(pathComponents) - 1; i >= 0; i-- {
 		pathComponent := pathComponents[i]
 		var sep string
-		if !foundBlueprint && directoryHasBlueprint(ctx.Config().fs, ctx.ModuleDir(), pathComponents, i) {
+		if !foundPackageBoundary && isPackageBoundary(ctx.Config(), ctx.ModuleDir(), pathComponents, i) {
 			sep = ":"
-			foundBlueprint = true
+			foundPackageBoundary = true
 		} else {
 			sep = "/"
 		}
@@ -258,7 +288,7 @@ func transformSubpackagePath(ctx BazelConversionPathContext, path bazel.Label) b
 			newLabel = pathComponent + sep + newLabel
 		}
 	}
-	if foundBlueprint {
+	if foundPackageBoundary {
 		// Ensure paths end up looking like //bionic/... instead of //./bionic/...
 		moduleDir := ctx.ModuleDir()
 		if strings.HasPrefix(moduleDir, ".") {
@@ -303,20 +333,21 @@ func RootToModuleRelativePaths(ctx BazelConversionPathContext, paths Paths) []ba
 // directory and Bazel target labels, excluding those included in the excludes argument (which
 // should already be expanded to resolve references to Soong-modules). Valid elements of paths
 // include:
-// * filepath, relative to local module directory, resolves as a filepath relative to the local
-//   source directory
-// * glob, relative to the local module directory, resolves as filepath(s), relative to the local
-//    module directory. Because Soong does not have a concept of crossing package boundaries, the
-//    glob as computed by Soong may contain paths that cross package-boundaries that would be
-//    unknowingly omitted if the glob were handled by Bazel. To allow identification and detect
-//    (within Bazel) use of paths that cross package boundaries, we expand globs within Soong rather
-//    than converting Soong glob syntax to Bazel glob syntax. **Invalid for excludes.**
-// * other modules using the ":name{.tag}" syntax. These modules must implement SourceFileProducer
-//    or OutputFileProducer. These resolve as a Bazel label for a target. If the Bazel target is in
-//    the local module directory, it will be returned relative to the current package (e.g.
-//    ":<target>"). Otherwise, it will be returned as an absolute Bazel label (e.g.
-//    "//path/to/dir:<target>"). If the reference to another module cannot be resolved,the function
-//    will panic.
+//   - filepath, relative to local module directory, resolves as a filepath relative to the local
+//     source directory
+//   - glob, relative to the local module directory, resolves as filepath(s), relative to the local
+//     module directory. Because Soong does not have a concept of crossing package boundaries, the
+//     glob as computed by Soong may contain paths that cross package-boundaries that would be
+//     unknowingly omitted if the glob were handled by Bazel. To allow identification and detect
+//     (within Bazel) use of paths that cross package boundaries, we expand globs within Soong rather
+//     than converting Soong glob syntax to Bazel glob syntax. **Invalid for excludes.**
+//   - other modules using the ":name{.tag}" syntax. These modules must implement SourceFileProducer
+//     or OutputFileProducer. These resolve as a Bazel label for a target. If the Bazel target is in
+//     the local module directory, it will be returned relative to the current package (e.g.
+//     ":<target>"). Otherwise, it will be returned as an absolute Bazel label (e.g.
+//     "//path/to/dir:<target>"). If the reference to another module cannot be resolved,the function
+//     will panic.
+//
 // Properties passed as the paths or excludes argument must have been annotated with struct tag
 // `android:"path"` so that dependencies on other modules will have already been handled by the
 // path_deps mutator.
