@@ -129,6 +129,7 @@ func TestAndroidAppImport_SigningLineage(t *testing.T) {
 			certificate: "platform",
 			additional_certificates: [":additional_certificate"],
 			lineage: "lineage.bin",
+			rotationMinSdkVersion: "32",
 		}
 
 		android_app_certificate {
@@ -148,11 +149,12 @@ func TestAndroidAppImport_SigningLineage(t *testing.T) {
 	if expected != certificatesFlag {
 		t.Errorf("Incorrect certificates flags, expected: %q, got: %q", expected, certificatesFlag)
 	}
-	// Check cert signing lineage flag.
-	signingFlag := signedApk.Args["flags"]
-	expected = "--lineage lineage.bin"
-	if expected != signingFlag {
-		t.Errorf("Incorrect signing flags, expected: %q, got: %q", expected, signingFlag)
+
+	// Check cert signing flags.
+	actualCertSigningFlags := signedApk.Args["flags"]
+	expectedCertSigningFlags := "--lineage lineage.bin --rotation-min-sdk-version 32"
+	if expectedCertSigningFlags != actualCertSigningFlags {
+		t.Errorf("Incorrect signing flags, expected: %q, got: %q", expectedCertSigningFlags, actualCertSigningFlags)
 	}
 
 	rule := variant.Rule("genProvenanceMetaData")
@@ -804,4 +806,24 @@ func TestAndroidTestImport_UncompressDex(t *testing.T) {
 			}
 		}
 	}
+}
+
+func TestAppImportMissingCertificateAllowMissingDependencies(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		PrepareForTestWithJavaDefaultModules,
+		android.PrepareForTestWithAllowMissingDependencies,
+		android.PrepareForTestWithAndroidMk,
+	).RunTestWithBp(t, `
+		android_app_import {
+			name: "foo",
+			apk: "a.apk",
+			certificate: ":missing_certificate",
+		}`)
+
+	foo := result.ModuleForTests("foo", "android_common")
+	fooApk := foo.Output("signed/foo.apk")
+	if fooApk.Rule != android.ErrorRule {
+		t.Fatalf("expected ErrorRule for foo.apk, got %s", fooApk.Rule.String())
+	}
+	android.AssertStringDoesContain(t, "expected error rule message", fooApk.Args["error"], "missing dependencies: missing_certificate\n")
 }

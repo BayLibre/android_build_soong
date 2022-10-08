@@ -3260,6 +3260,102 @@ func TestVersioningMacro(t *testing.T) {
 	}
 }
 
+func pathsToBase(paths android.Paths) []string {
+	var ret []string
+	for _, p := range paths {
+		ret = append(ret, p.Base())
+	}
+	return ret
+}
+
+func TestStaticLibArchiveArgs(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library_static {
+			name: "foo",
+			srcs: ["foo.c"],
+		}
+
+		cc_library_static {
+			name: "bar",
+			srcs: ["bar.c"],
+		}
+
+		cc_library_shared {
+			name: "qux",
+			srcs: ["qux.c"],
+		}
+
+		cc_library_static {
+			name: "baz",
+			srcs: ["baz.c"],
+			static_libs: ["foo"],
+			shared_libs: ["qux"],
+			whole_static_libs: ["bar"],
+		}`)
+
+	variant := "android_arm64_armv8-a_static"
+	arRule := ctx.ModuleForTests("baz", variant).Rule("ar")
+
+	// For static libraries, the object files of a whole static dep are included in the archive
+	// directly
+	if g, w := pathsToBase(arRule.Inputs), []string{"bar.o", "baz.o"}; !reflect.DeepEqual(w, g) {
+		t.Errorf("Expected input objects %q, got %q", w, g)
+	}
+
+	// non whole static dependencies are not linked into the archive
+	if len(arRule.Implicits) > 0 {
+		t.Errorf("Expected 0 additional deps, got %q", arRule.Implicits)
+	}
+}
+
+func TestSharedLibLinkingArgs(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library_static {
+			name: "foo",
+			srcs: ["foo.c"],
+		}
+
+		cc_library_static {
+			name: "bar",
+			srcs: ["bar.c"],
+		}
+
+		cc_library_shared {
+			name: "qux",
+			srcs: ["qux.c"],
+		}
+
+		cc_library_shared {
+			name: "baz",
+			srcs: ["baz.c"],
+			static_libs: ["foo"],
+			shared_libs: ["qux"],
+			whole_static_libs: ["bar"],
+		}`)
+
+	variant := "android_arm64_armv8-a_shared"
+	linkRule := ctx.ModuleForTests("baz", variant).Rule("ld")
+	libFlags := linkRule.Args["libFlags"]
+	// When dynamically linking, we expect static dependencies to be found on the command line
+	if expected := "foo.a"; !strings.Contains(libFlags, expected) {
+		t.Errorf("Static lib %q was not found in %q", expected, libFlags)
+	}
+	// When dynamically linking, we expect whole static dependencies to be found on the command line
+	if expected := "bar.a"; !strings.Contains(libFlags, expected) {
+		t.Errorf("Static lib %q was not found in %q", expected, libFlags)
+	}
+
+	// When dynamically linking, we expect shared dependencies to be found on the command line
+	if expected := "qux.so"; !strings.Contains(libFlags, expected) {
+		t.Errorf("Shared lib %q was not found in %q", expected, libFlags)
+	}
+
+	// We should only have the objects from the shared library srcs, not the whole static dependencies
+	if g, w := pathsToBase(linkRule.Inputs), []string{"baz.o"}; !reflect.DeepEqual(w, g) {
+		t.Errorf("Expected input objects %q, got %q", w, g)
+	}
+}
+
 func TestStaticExecutable(t *testing.T) {
 	ctx := testCc(t, `
 		cc_binary {
@@ -3542,14 +3638,6 @@ func TestDefaults(t *testing.T) {
 			name: "binary",
 			defaults: ["defaults"],
 		}`)
-
-	pathsToBase := func(paths android.Paths) []string {
-		var ret []string
-		for _, p := range paths {
-			ret = append(ret, p.Base())
-		}
-		return ret
-	}
 
 	shared := ctx.ModuleForTests("libshared", "android_arm64_armv8-a_shared").Rule("ld")
 	if g, w := pathsToBase(shared.Inputs), []string{"foo.o", "baz.o"}; !reflect.DeepEqual(w, g) {
@@ -4111,7 +4199,7 @@ func TestIncludeDirsExporting(t *testing.T) {
 			name: "libfoo",
 			srcs: [
 				"foo.c",
-				"a.sysprop",
+				"path/to/a.sysprop",
 				"b.aidl",
 				"a.proto",
 			],
@@ -4124,11 +4212,11 @@ func TestIncludeDirsExporting(t *testing.T) {
 			`),
 			expectedSystemIncludeDirs(``),
 			expectedGeneratedHeaders(`
-				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/sysprop/include/a.sysprop.h
+				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/sysprop/include/path/to/a.sysprop.h
 			`),
 			expectedOrderOnlyDeps(`
-				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/sysprop/include/a.sysprop.h
-				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/sysprop/public/include/a.sysprop.h
+				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/sysprop/include/path/to/a.sysprop.h
+				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/sysprop/public/include/path/to/a.sysprop.h
 			`),
 		)
 	})
@@ -4145,7 +4233,7 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 		"${config.ArmArmv7ANeonCflags}",
 		"${config.ArmGenericCflags}",
 		"-target",
-		"armv7a-linux-androideabi20",
+		"armv7a-linux-androideabi21",
 	}
 
 	expectedIncludes := []string{
@@ -4176,7 +4264,6 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 		"external/foo/lib32",
 		"external/foo/libandroid_arm",
 		"defaults/cc/common/ndk_libc++_shared",
-		"defaults/cc/common/ndk_libandroid_support",
 	}
 
 	conly := []string{"-fPIC", "${config.CommonGlobalConlyflags}"}
@@ -4269,20 +4356,20 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 				},
 			},
 			stl: "libc++",
-			sdk_version: "20",
+			sdk_version: "minimum",
 		}
 
 		cc_library_headers {
 			name: "libheader1",
 			export_include_dirs: ["libheader1"],
-			sdk_version: "20",
+			sdk_version: "minimum",
 			stl: "none",
 		}
 
 		cc_library_headers {
 			name: "libheader2",
 			export_include_dirs: ["libheader2"],
-			sdk_version: "20",
+			sdk_version: "minimum",
 			stl: "none",
 		}
 	`, tc.src)
@@ -4306,7 +4393,7 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 			cc_library {
 				name: "%s",
 				export_include_dirs: ["%s"],
-				sdk_version: "20",
+				sdk_version: "minimum",
 				stl: "none",
 			}
 		`, lib, lib)
@@ -4336,4 +4423,144 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 		})
 	}
 
+}
+
+func TestCcBuildBrokenClangProperty(t *testing.T) {
+	tests := []struct {
+		name                     string
+		clang                    bool
+		BuildBrokenClangProperty bool
+		err                      string
+	}{
+		{
+			name:  "error when clang is set to false",
+			clang: false,
+			err:   "is no longer supported",
+		},
+		{
+			name:  "error when clang is set to true",
+			clang: true,
+			err:   "property is deprecated, see Changes.md",
+		},
+		{
+			name:                     "no error when BuildBrokenClangProperty is explicitly set to true",
+			clang:                    true,
+			BuildBrokenClangProperty: true,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			bp := fmt.Sprintf(`
+			cc_library {
+			   name: "foo",
+			   clang: %t,
+			}`, test.clang)
+
+			if test.err == "" {
+				android.GroupFixturePreparers(
+					prepareForCcTest,
+					android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+						if test.BuildBrokenClangProperty {
+							variables.BuildBrokenClangProperty = test.BuildBrokenClangProperty
+						}
+					}),
+				).RunTestWithBp(t, bp)
+			} else {
+				prepareForCcTest.
+					ExtendWithErrorHandler(android.FixtureExpectsOneErrorPattern(test.err)).
+					RunTestWithBp(t, bp)
+			}
+		})
+	}
+}
+
+func TestCcBuildBrokenClangAsFlags(t *testing.T) {
+	tests := []struct {
+		name                    string
+		clangAsFlags            []string
+		BuildBrokenClangAsFlags bool
+		err                     string
+	}{
+		{
+			name:         "error when clang_asflags is set",
+			clangAsFlags: []string{"-a", "-b"},
+			err:          "clang_asflags: property is deprecated",
+		},
+		{
+			name:                    "no error when BuildBrokenClangAsFlags is explicitly set to true",
+			clangAsFlags:            []string{"-a", "-b"},
+			BuildBrokenClangAsFlags: true,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			bp := fmt.Sprintf(`
+			cc_library {
+			   name: "foo",
+			   clang_asflags: %s,
+			}`, `["`+strings.Join(test.clangAsFlags, `","`)+`"]`)
+
+			if test.err == "" {
+				android.GroupFixturePreparers(
+					prepareForCcTest,
+					android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+						if test.BuildBrokenClangAsFlags {
+							variables.BuildBrokenClangAsFlags = test.BuildBrokenClangAsFlags
+						}
+					}),
+				).RunTestWithBp(t, bp)
+			} else {
+				prepareForCcTest.
+					ExtendWithErrorHandler(android.FixtureExpectsOneErrorPattern(test.err)).
+					RunTestWithBp(t, bp)
+			}
+		})
+	}
+}
+
+func TestCcBuildBrokenClangCFlags(t *testing.T) {
+	tests := []struct {
+		name                   string
+		clangCFlags            []string
+		BuildBrokenClangCFlags bool
+		err                    string
+	}{
+		{
+			name:        "error when clang_cflags is set",
+			clangCFlags: []string{"-a", "-b"},
+			err:         "clang_cflags: property is deprecated",
+		},
+		{
+			name:                   "no error when BuildBrokenClangCFlags is explicitly set to true",
+			clangCFlags:            []string{"-a", "-b"},
+			BuildBrokenClangCFlags: true,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			bp := fmt.Sprintf(`
+			cc_library {
+			   name: "foo",
+			   clang_cflags: %s,
+			}`, `["`+strings.Join(test.clangCFlags, `","`)+`"]`)
+
+			if test.err == "" {
+				android.GroupFixturePreparers(
+					prepareForCcTest,
+					android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+						if test.BuildBrokenClangCFlags {
+							variables.BuildBrokenClangCFlags = test.BuildBrokenClangCFlags
+						}
+					}),
+				).RunTestWithBp(t, bp)
+			} else {
+				prepareForCcTest.
+					ExtendWithErrorHandler(android.FixtureExpectsOneErrorPattern(test.err)).
+					RunTestWithBp(t, bp)
+			}
+		})
+	}
 }

@@ -17,6 +17,7 @@ package java
 import (
 	"fmt"
 	"io"
+	"strings"
 
 	"android/soong/android"
 )
@@ -167,9 +168,8 @@ func (j *Test) AndroidMkEntries() []android.AndroidMkEntries {
 			entries.SetString("LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG", "true")
 		}
 		entries.AddStrings("LOCAL_TEST_MAINLINE_MODULES", j.testProperties.Test_mainline_modules...)
-		if Bool(j.testProperties.Test_options.Unit_test) {
-			entries.SetBool("LOCAL_IS_UNIT_TEST", true)
-		}
+
+		j.testProperties.Test_options.CommonTestOptions.SetAndroidMkEntries(entries)
 	})
 
 	return entriesList
@@ -399,6 +399,19 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				} else {
 					for _, jniLib := range app.jniLibs {
 						entries.AddStrings("LOCAL_SOONG_JNI_LIBS_"+jniLib.target.Arch.ArchType.String(), jniLib.name)
+						var partitionTag string
+
+						// Mimic the creation of partition_tag in build/make,
+						// which defaults to an empty string when the partition is system.
+						// Otherwise, capitalize with a leading _
+						if jniLib.partition == "system" {
+							partitionTag = ""
+						} else {
+							split := strings.Split(jniLib.partition, "/")
+							partitionTag = "_" + strings.ToUpper(split[len(split)-1])
+						}
+						entries.AddStrings("LOCAL_SOONG_JNI_LIBS_PARTITION_"+jniLib.target.Arch.ArchType.String(),
+							jniLib.name+":"+partitionTag)
 					}
 				}
 
@@ -419,7 +432,15 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				entries.SetOptionalPaths("LOCAL_SOONG_LINT_REPORTS", app.linter.reports)
 			},
 		},
-	}}
+		ExtraFooters: []android.AndroidMkExtraFootersFunc{
+			func(w io.Writer, name, prefix, moduleDir string) {
+				if app.javaApiUsedByOutputFile.String() != "" {
+					fmt.Fprintf(w, "$(call dist-for-goals,%s,%s:%s/$(notdir %s))\n",
+						app.installApkName, app.javaApiUsedByOutputFile.String(), "java_apis_used_by_apex", app.javaApiUsedByOutputFile.String())
+				}
+			},
+		}},
+	}
 }
 
 func (a *AndroidApp) getOverriddenPackages() []string {

@@ -23,6 +23,8 @@ import (
 	"android/soong/android"
 	"android/soong/java/config"
 	"android/soong/tradefed"
+
+	"github.com/google/blueprint/proptools"
 )
 
 func init() {
@@ -165,12 +167,19 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		instrumentedApp.implementationAndResourcesJar,
 	}
 
-	for _, dep := range ctx.GetDirectDepsWithTag(libTag) {
+	handleLibDeps := func(dep android.Module) {
 		m := ctx.OtherModuleProvider(dep, JavaInfoProvider).(JavaInfo)
 		r.libs = append(r.libs, ctx.OtherModuleName(dep))
 		if !android.InList(ctx.OtherModuleName(dep), config.FrameworkLibraries) {
 			combinedJarJars = append(combinedJarJars, m.ImplementationAndResourcesJars...)
 		}
+	}
+
+	for _, dep := range ctx.GetDirectDepsWithTag(libTag) {
+		handleLibDeps(dep)
+	}
+	for _, dep := range ctx.GetDirectDepsWithTag(sdkLibTag) {
+		handleLibDeps(dep)
 	}
 
 	r.combinedJar = android.PathForModuleOut(ctx, "robolectric_combined", r.outputFile.Base())
@@ -344,7 +353,7 @@ func RobolectricTestFactory() android.Module {
 		&module.testProperties)
 
 	module.Module.dexpreopter.isTest = true
-	module.Module.linter.test = true
+	module.Module.linter.properties.Lint.Test = proptools.BoolPtr(true)
 
 	module.testProperties.Test_suites = []string{"robolectric-tests"}
 
