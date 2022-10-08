@@ -270,6 +270,16 @@ type bazelCcLibraryAttributes struct {
 	Features bazel.StringListAttribute
 }
 
+type aidlLibraryAttributes struct {
+	Srcs        bazel.LabelListAttribute
+	Include_dir *string
+}
+
+type ccAidlLibraryAttributes struct {
+	Deps                        bazel.LabelListAttribute
+	Implementation_dynamic_deps bazel.LabelListAttribute
+}
+
 type stripAttributes struct {
 	Keep_symbols                 bazel.BoolAttribute
 	Keep_symbols_and_debug_frame bazel.BoolAttribute
@@ -282,7 +292,7 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	// For some cc_library modules, their static variants are ready to be
 	// converted, but not their shared variants. For these modules, delegate to
 	// the cc_library_static bp2build converter temporarily instead.
-	if android.GenerateCcLibraryStaticOnly(ctx.Module().Name()) {
+	if android.GetBp2BuildAllowList().GenerateCcLibraryStaticOnly(ctx.Module().Name()) {
 		sharedOrStaticLibraryBp2Build(ctx, m, true)
 		return
 	}
@@ -319,6 +329,7 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		Implementation_whole_archive_deps: linkerAttrs.implementationWholeArchiveDeps,
 		Whole_archive_deps:                *linkerAttrs.wholeArchiveDeps.Clone().Append(staticAttrs.Whole_archive_deps),
 		System_dynamic_deps:               *linkerAttrs.systemDynamicDeps.Clone().Append(staticAttrs.System_dynamic_deps),
+		Runtime_deps:                      linkerAttrs.runtimeDeps,
 		sdkAttributes:                     bp2BuildParseSdkAttributes(m),
 	}
 
@@ -329,13 +340,15 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		Copts:   *compilerAttrs.copts.Clone().Append(sharedAttrs.Copts),
 		Hdrs:    *compilerAttrs.hdrs.Clone().Append(sharedAttrs.Hdrs),
 
-		Deps:                        *linkerAttrs.deps.Clone().Append(sharedAttrs.Deps),
-		Implementation_deps:         *linkerAttrs.implementationDeps.Clone().Append(sharedAttrs.Implementation_deps),
-		Dynamic_deps:                *linkerAttrs.dynamicDeps.Clone().Append(sharedAttrs.Dynamic_deps),
-		Implementation_dynamic_deps: *linkerAttrs.implementationDynamicDeps.Clone().Append(sharedAttrs.Implementation_dynamic_deps),
-		Whole_archive_deps:          *linkerAttrs.wholeArchiveDeps.Clone().Append(sharedAttrs.Whole_archive_deps),
-		System_dynamic_deps:         *linkerAttrs.systemDynamicDeps.Clone().Append(sharedAttrs.System_dynamic_deps),
-		sdkAttributes:               bp2BuildParseSdkAttributes(m),
+		Deps:                              *linkerAttrs.deps.Clone().Append(sharedAttrs.Deps),
+		Implementation_deps:               *linkerAttrs.implementationDeps.Clone().Append(sharedAttrs.Implementation_deps),
+		Dynamic_deps:                      *linkerAttrs.dynamicDeps.Clone().Append(sharedAttrs.Dynamic_deps),
+		Implementation_dynamic_deps:       *linkerAttrs.implementationDynamicDeps.Clone().Append(sharedAttrs.Implementation_dynamic_deps),
+		Whole_archive_deps:                *linkerAttrs.wholeArchiveDeps.Clone().Append(sharedAttrs.Whole_archive_deps),
+		Implementation_whole_archive_deps: linkerAttrs.implementationWholeArchiveDeps,
+		System_dynamic_deps:               *linkerAttrs.systemDynamicDeps.Clone().Append(sharedAttrs.System_dynamic_deps),
+		Runtime_deps:                      linkerAttrs.runtimeDeps,
+		sdkAttributes:                     bp2BuildParseSdkAttributes(m),
 	}
 
 	staticTargetAttrs := &bazelCcLibraryStaticAttributes{
@@ -355,9 +368,8 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		Stl:                      compilerAttrs.stl,
 		Cpp_std:                  compilerAttrs.cppStd,
 		C_std:                    compilerAttrs.cStd,
-		Use_version_lib:          linkerAttrs.useVersionLib,
 
-		Features: linkerAttrs.features,
+		Features: baseAttributes.features,
 	}
 
 	sharedTargetAttrs := &bazelCcLibrarySharedAttributes{
@@ -389,11 +401,15 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 			All:                          linkerAttrs.stripAll,
 			None:                         linkerAttrs.stripNone,
 		},
-		Features: linkerAttrs.features,
-
-		Stubs_symbol_file: compilerAttrs.stubsSymbolFile,
-		Stubs_versions:    compilerAttrs.stubsVersions,
+		Features: baseAttributes.features,
 	}
+
+	if compilerAttrs.stubsSymbolFile != nil && len(compilerAttrs.stubsVersions.Value) > 0 {
+		hasStubs := true
+		sharedTargetAttrs.Has_stubs.SetValue(&hasStubs)
+	}
+
+	sharedTargetAttrs.Suffix = compilerAttrs.suffix
 
 	for axis, configToProps := range m.GetArchVariantProperties(ctx, &LibraryProperties{}) {
 		for config, props := range configToProps {
@@ -425,6 +441,29 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	ctx.CreateBazelTargetModuleWithRestrictions(sharedProps,
 		android.CommonAttributes{Name: m.Name()},
 		sharedTargetAttrs, sharedAttrs.Enabled)
+
+	createStubsBazelTargetIfNeeded(ctx, m, compilerAttrs, exportedIncludes, baseAttributes)
+}
+
+func createStubsBazelTargetIfNeeded(ctx android.TopDownMutatorContext, m *Module, compilerAttrs compilerAttributes, exportedIncludes BazelIncludes, baseAttributes baseAttributes) {
+	if compilerAttrs.stubsSymbolFile != nil && len(compilerAttrs.stubsVersions.Value) > 0 {
+		stubSuitesProps := bazel.BazelTargetModuleProperties{
+			Rule_class:        "cc_stub_suite",
+			Bzl_load_location: "//build/bazel/rules/cc:cc_stub_library.bzl",
+		}
+		soname := m.Name() + ".so"
+		stubSuitesAttrs := &bazelCcStubSuiteAttributes{
+			Symbol_file:     compilerAttrs.stubsSymbolFile,
+			Versions:        compilerAttrs.stubsVersions,
+			Export_includes: exportedIncludes.Includes,
+			Soname:          &soname,
+			Source_library:  *bazel.MakeLabelAttribute(":" + m.Name()),
+			Deps:            baseAttributes.deps,
+		}
+		ctx.CreateBazelTargetModule(stubSuitesProps,
+			android.CommonAttributes{Name: m.Name() + "_stub_libs"},
+			stubSuitesAttrs)
+	}
 }
 
 // cc_library creates both static and/or shared libraries for a device and/or
@@ -1048,9 +1087,13 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		if ctx.Module().(android.ApexModule).NotInPlatform() {
 			flag = "--apex"
 		} else {
-			// TODO(b/239274367) drop --apex when #apex is replaced with #systemapi
-			// in the map.txt files of platform libraries
-			flag = "--systemapi --apex"
+			flag = "--systemapi"
+		}
+		// b/184712170, unless the lib is an NDK library, exclude all public symbols from
+		// the stub so that it is mandated that all symbols are explicitly marked with
+		// either apex or systemapi.
+		if !ctx.Module().(*Module).IsNdk(ctx.Config()) {
+			flag = flag + " --no-ndk"
 		}
 		nativeAbiResult := parseNativeAbiDefinition(ctx, symbolFile,
 			android.ApiLevelOrPanic(ctx, library.MutatedProperties.StubsVersion), flag)
@@ -1600,13 +1643,48 @@ func (library *libraryDecorator) coverageOutputFilePath() android.OptionalPath {
 	return library.coverageOutputFile
 }
 
+// pathForVndkRefAbiDump returns an OptionalPath representing the path of the
+// reference abi dump for the given module. This is not guaranteed to be valid.
+func pathForVndkRefAbiDump(ctx android.ModuleInstallPathContext, version, fileName string,
+	isNdk, isVndk, isGzip bool) android.OptionalPath {
+
+	currentArchType := ctx.Arch().ArchType
+	primaryArchType := ctx.Config().DevicePrimaryArchType()
+	archName := currentArchType.String()
+	if currentArchType != primaryArchType {
+		archName += "_" + primaryArchType.String()
+	}
+
+	var dirName string
+	if isNdk {
+		dirName = "ndk"
+	} else if isVndk {
+		dirName = "vndk"
+	} else {
+		dirName = "platform" // opt-in libs
+	}
+
+	binderBitness := ctx.DeviceConfig().BinderBitness()
+
+	var ext string
+	if isGzip {
+		ext = ".lsdump.gz"
+	} else {
+		ext = ".lsdump"
+	}
+
+	return android.ExistentPathForSource(ctx, "prebuilts", "abi-dumps", dirName,
+		version, binderBitness, archName, "source-based",
+		fileName+ext)
+}
+
 func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.Path {
 	// The logic must be consistent with classifySourceAbiDump.
 	isNdk := ctx.isNdk(ctx.Config())
 	isVndk := ctx.useVndk() && ctx.isVndk()
 
-	refAbiDumpTextFile := android.PathForVndkRefAbiDump(ctx, vndkVersion, fileName, isNdk, isVndk, false)
-	refAbiDumpGzipFile := android.PathForVndkRefAbiDump(ctx, vndkVersion, fileName, isNdk, isVndk, true)
+	refAbiDumpTextFile := pathForVndkRefAbiDump(ctx, vndkVersion, fileName, isNdk, isVndk, false)
+	refAbiDumpGzipFile := pathForVndkRefAbiDump(ctx, vndkVersion, fileName, isNdk, isVndk, true)
 
 	if refAbiDumpTextFile.Valid() {
 		if refAbiDumpGzipFile.Valid() {
@@ -1623,12 +1701,12 @@ func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.
 	return nil
 }
 
-func prevDumpRefVersion(ctx ModuleContext) string {
+func prevDumpRefVersion(ctx ModuleContext) int {
 	sdkVersionInt := ctx.Config().PlatformSdkVersion().FinalInt()
 	sdkVersionStr := ctx.Config().PlatformSdkVersion().String()
 
 	if ctx.Config().PlatformSdkFinal() {
-		return strconv.Itoa(sdkVersionInt - 1)
+		return sdkVersionInt - 1
 	} else {
 		var dirName string
 
@@ -1644,9 +1722,9 @@ func prevDumpRefVersion(ctx ModuleContext) string {
 		// This situation could be identified by checking the existence of the PLATFORM_SDK_VERION dump directory.
 		refDumpDir := android.ExistentPathForSource(ctx, "prebuilts", "abi-dumps", dirName, sdkVersionStr)
 		if refDumpDir.Valid() {
-			return sdkVersionStr
+			return sdkVersionInt
 		} else {
-			return strconv.Itoa(sdkVersionInt - 1)
+			return sdkVersionInt - 1
 		}
 	}
 }
@@ -1654,7 +1732,7 @@ func prevDumpRefVersion(ctx ModuleContext) string {
 func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objects, fileName string, soFile android.Path) {
 	if library.sabi.shouldCreateSourceAbiDump() {
 		var version string
-		var prevVersion string
+		var prevVersion int
 
 		if ctx.useVndk() {
 			// For modules linking against vndk, follow its vndk version
@@ -1686,12 +1764,13 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 
 		addLsdumpPath(classifySourceAbiDump(ctx) + ":" + library.sAbiOutputFile.String())
 
-		if prevVersion != "" {
-			prevRefAbiDumpFile := getRefAbiDumpFile(ctx, prevVersion, fileName)
+		// If NDK or PLATFORM library, check against previous version ABI.
+		if !ctx.useVndk() {
+			prevRefAbiDumpFile := getRefAbiDumpFile(ctx, strconv.Itoa(prevVersion), fileName)
 			if prevRefAbiDumpFile != nil {
 				library.prevSAbiDiff = sourceAbiDiff(ctx, library.sAbiOutputFile.Path(),
-					prevRefAbiDumpFile, fileName, prevVersion, exportedHeaderFlags,
-					library.Properties.Header_abi_checker.Diff_flags,
+					prevRefAbiDumpFile, fileName, exportedHeaderFlags,
+					library.Properties.Header_abi_checker.Diff_flags, prevVersion,
 					Bool(library.Properties.Header_abi_checker.Check_all_apis),
 					ctx.IsLlndk(), ctx.isNdk(ctx.Config()), ctx.IsVndkExt(), true)
 			}
@@ -1700,8 +1779,9 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 		refAbiDumpFile := getRefAbiDumpFile(ctx, version, fileName)
 		if refAbiDumpFile != nil {
 			library.sAbiDiff = sourceAbiDiff(ctx, library.sAbiOutputFile.Path(),
-				refAbiDumpFile, fileName, "", exportedHeaderFlags,
+				refAbiDumpFile, fileName, exportedHeaderFlags,
 				library.Properties.Header_abi_checker.Diff_flags,
+				/* unused if not previousVersionDiff */ 0,
 				Bool(library.Properties.Header_abi_checker.Check_all_apis),
 				ctx.IsLlndk(), ctx.isNdk(ctx.Config()), ctx.IsVndkExt(), false)
 		}
@@ -2153,9 +2233,19 @@ func (library *libraryDecorator) makeUninstallable(mod *Module) {
 	mod.ModuleBase.MakeUninstallable()
 }
 
+func (library *libraryDecorator) getPartition() string {
+	return library.path.Partition()
+}
+
 func (library *libraryDecorator) getAPIListCoverageXMLPath() android.ModuleOutPath {
 	return library.apiListCoverageXmlPath
 }
+
+func (library *libraryDecorator) overriddenModules() []string {
+	return library.Properties.Overrides
+}
+
+var _ overridable = (*libraryDecorator)(nil)
 
 var versioningMacroNamesListKey = android.NewOnceKey("versioningMacroNamesList")
 
@@ -2552,6 +2642,7 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 		Implementation_whole_archive_deps: linkerAttrs.implementationWholeArchiveDeps,
 		System_dynamic_deps:               linkerAttrs.systemDynamicDeps,
 		sdkAttributes:                     bp2BuildParseSdkAttributes(module),
+		Runtime_deps:                      linkerAttrs.runtimeDeps,
 	}
 
 	var attrs interface{}
@@ -2560,8 +2651,7 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 		attrs = &bazelCcLibraryStaticAttributes{
 			staticOrSharedAttributes: commonAttrs,
 
-			Use_libcrt:      linkerAttrs.useLibcrt,
-			Use_version_lib: linkerAttrs.useVersionLib,
+			Use_libcrt: linkerAttrs.useLibcrt,
 
 			Rtti:    compilerAttrs.rtti,
 			Stl:     compilerAttrs.stl,
@@ -2578,12 +2668,12 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 			Conlyflags: compilerAttrs.conlyFlags,
 			Asflags:    asFlags,
 
-			Features: linkerAttrs.features,
+			Features: baseAttributes.features,
 		}
 	} else {
 		commonAttrs.Dynamic_deps.Add(baseAttributes.protoDependency)
 
-		attrs = &bazelCcLibrarySharedAttributes{
+		sharedLibAttrs := &bazelCcLibrarySharedAttributes{
 			staticOrSharedAttributes: commonAttrs,
 
 			Cppflags:   compilerAttrs.cppFlags,
@@ -2615,11 +2705,15 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 				None:                         linkerAttrs.stripNone,
 			},
 
-			Features: linkerAttrs.features,
+			Features: baseAttributes.features,
 
-			Stubs_symbol_file: compilerAttrs.stubsSymbolFile,
-			Stubs_versions:    compilerAttrs.stubsVersions,
+			Suffix: compilerAttrs.suffix,
 		}
+		if compilerAttrs.stubsSymbolFile != nil && len(compilerAttrs.stubsVersions.Value) > 0 {
+			hasStubs := true
+			sharedLibAttrs.Has_stubs.SetValue(&hasStubs)
+		}
+		attrs = sharedLibAttrs
 	}
 
 	var modType string
@@ -2627,6 +2721,7 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 		modType = "cc_library_static"
 	} else {
 		modType = "cc_library_shared"
+		createStubsBazelTargetIfNeeded(ctx, module, compilerAttrs, exportedIncludes, baseAttributes)
 	}
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        modType,
@@ -2693,7 +2788,18 @@ type bazelCcLibrarySharedAttributes struct {
 
 	Features bazel.StringListAttribute
 
-	Stubs_symbol_file *string
-	Stubs_versions    bazel.StringListAttribute
-	Inject_bssl_hash  bazel.BoolAttribute
+	Has_stubs bazel.BoolAttribute
+
+	Inject_bssl_hash bazel.BoolAttribute
+
+	Suffix bazel.StringAttribute
+}
+
+type bazelCcStubSuiteAttributes struct {
+	Symbol_file     *string
+	Versions        bazel.StringListAttribute
+	Export_includes bazel.StringListAttribute
+	Source_library  bazel.LabelAttribute
+	Soname          *string
+	Deps            bazel.LabelListAttribute
 }

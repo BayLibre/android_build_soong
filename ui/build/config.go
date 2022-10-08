@@ -71,6 +71,7 @@ type configImpl struct {
 	checkbuild      bool
 	dist            bool
 	jsonModuleGraph bool
+	apiBp2build     bool // Generate BUILD files for Soong modules that contribute APIs
 	bp2build        bool
 	queryview       bool
 	reportMkMetrics bool // Collect and report mk2bp migration progress metrics.
@@ -99,11 +100,8 @@ type configImpl struct {
 
 	pathReplaced bool
 
-	useBazel bool
-
-	// During Bazel execution, Bazel cannot write outside OUT_DIR.
-	// So if DIST_DIR is set to an external dir (outside of OUT_DIR), we need to rig it temporarily and then migrate files at the end of the build.
-	riggedDistDirForBazel string
+	bazelProdMode bool
+	bazelDevMode  bool
 
 	// Set by multiproduct_kati
 	emptyNinjaFile bool
@@ -128,18 +126,6 @@ const (
 
 	// Build a list of specified modules. If none was specified, simply build the whole source tree.
 	BUILD_MODULES
-)
-
-type bazelBuildMode int
-
-// Bazel-related build modes.
-const (
-	// Don't use bazel at all.
-	noBazel bazelBuildMode = iota
-
-	// Generate synthetic build files and incorporate these files into a build which
-	// partially uses Bazel. Build metadata may come from Android.bp or BUILD files.
-	mixedBuild
 )
 
 // checkTopDir validates that the current directory is at the root directory of the source tree.
@@ -402,13 +388,13 @@ func NewConfig(ctx Context, args ...string) Config {
 		if override, ok := ret.environ.Get("OVERRIDE_ANDROID_JAVA_HOME"); ok {
 			return override
 		}
-		if ret.environ.IsEnvTrue("EXPERIMENTAL_USE_OPENJDK17_TOOLCHAIN") {
-			return java17Home
-		}
 		if toolchain11, ok := ret.environ.Get("EXPERIMENTAL_USE_OPENJDK11_TOOLCHAIN"); ok && toolchain11 != "true" {
 			ctx.Fatalln("The environment variable EXPERIMENTAL_USE_OPENJDK11_TOOLCHAIN is no longer supported. An OpenJDK 11 toolchain is now the global default.")
 		}
-		return java11Home
+		if toolchain17, ok := ret.environ.Get("EXPERIMENTAL_USE_OPENJDK17_TOOLCHAIN"); ok && toolchain17 != "true" {
+			ctx.Fatalln("The environment variable EXPERIMENTAL_USE_OPENJDK17_TOOLCHAIN is no longer supported. An OpenJDK 17 toolchain is now the global default.")
+		}
+		return java17Home
 	}()
 	absJavaHome := absPath(ctx, javaHome)
 
@@ -448,21 +434,6 @@ func NewConfig(ctx Context, args ...string) Config {
 		ctx.Fatalf("Unable to remove bazel profile directory %q: %v", bpd, err)
 	}
 
-	ret.useBazel = ret.environ.IsEnvTrue("USE_BAZEL")
-
-	if ret.UseBazel() {
-		if err := os.MkdirAll(bpd, 0777); err != nil {
-			ctx.Fatalf("Failed to create bazel profile directory %q: %v", bpd, err)
-		}
-	}
-
-	if ret.UseBazel() {
-		ret.riggedDistDirForBazel = filepath.Join(ret.OutDir(), "dist")
-	} else {
-		// Not rigged
-		ret.riggedDistDirForBazel = ret.distDir
-	}
-
 	c := Config{ret}
 	storeConfigMetrics(ctx, c)
 	return c
@@ -495,8 +466,7 @@ func buildConfig(config Config) *smpb.BuildConfig {
 		ForceUseGoma:    proto.Bool(config.ForceUseGoma()),
 		UseGoma:         proto.Bool(config.UseGoma()),
 		UseRbe:          proto.Bool(config.UseRBE()),
-		BazelAsNinja:    proto.Bool(config.UseBazel()),
-		BazelMixedBuild: proto.Bool(config.bazelBuildMode() == mixedBuild),
+		BazelMixedBuild: proto.Bool(config.BazelBuildEnabled()),
 	}
 	c.Targets = append(c.Targets, config.arguments...)
 
@@ -747,6 +717,10 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.skipSoongTests = true
 		} else if arg == "--mk-metrics" {
 			c.reportMkMetrics = true
+		} else if arg == "--bazel-mode" {
+			c.bazelProdMode = true
+		} else if arg == "--bazel-mode-dev" {
+			c.bazelDevMode = true
 		} else if len(arg) > 0 && arg[0] == '-' {
 			parseArgNum := func(def int) int {
 				if len(arg) > 2 {
@@ -783,6 +757,8 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.jsonModuleGraph = true
 		} else if arg == "bp2build" {
 			c.bp2build = true
+		} else if arg == "api_bp2build" {
+			c.apiBp2build = true
 		} else if arg == "queryview" {
 			c.queryview = true
 		} else if arg == "soong_docs" {
@@ -860,7 +836,7 @@ func (c *configImpl) SoongBuildInvocationNeeded() bool {
 		return true
 	}
 
-	if !c.JsonModuleGraph() && !c.Bp2Build() && !c.Queryview() && !c.SoongDocs() {
+	if !c.JsonModuleGraph() && !c.Bp2Build() && !c.Queryview() && !c.SoongDocs() && !c.ApiBp2build() {
 		// Command line was empty, the default Ninja target is built
 		return true
 	}
@@ -882,11 +858,7 @@ func (c *configImpl) OutDir() string {
 }
 
 func (c *configImpl) DistDir() string {
-	if c.UseBazel() {
-		return c.riggedDistDirForBazel
-	} else {
-		return c.distDir
-	}
+	return c.distDir
 }
 
 func (c *configImpl) RealDistDir() string {
@@ -947,6 +919,10 @@ func (c *configImpl) QueryviewMarkerFile() string {
 	return shared.JoinPath(c.SoongOutDir(), "queryview.marker")
 }
 
+func (c *configImpl) ApiBp2buildMarkerFile() string {
+	return shared.JoinPath(c.SoongOutDir(), "api_bp2build.marker")
+}
+
 func (c *configImpl) ModuleGraphFile() string {
 	return shared.JoinPath(c.SoongOutDir(), "module-graph.json")
 }
@@ -986,6 +962,10 @@ func (c *configImpl) JsonModuleGraph() bool {
 
 func (c *configImpl) Bp2Build() bool {
 	return c.bp2build
+}
+
+func (c *configImpl) ApiBp2build() bool {
+	return c.apiBp2build
 }
 
 func (c *configImpl) Queryview() bool {
@@ -1134,16 +1114,8 @@ func (c *configImpl) UseRBE() bool {
 	return false
 }
 
-func (c *configImpl) UseBazel() bool {
-	return c.useBazel
-}
-
-func (c *configImpl) bazelBuildMode() bazelBuildMode {
-	if c.Environment().IsEnvTrue("USE_BAZEL_ANALYSIS") {
-		return mixedBuild
-	} else {
-		return noBazel
-	}
+func (c *configImpl) BazelBuildEnabled() bool {
+	return c.bazelProdMode || c.bazelDevMode
 }
 
 func (c *configImpl) StartRBE() bool {
@@ -1324,6 +1296,10 @@ func (c *configImpl) KatiBuildNinjaFile() string {
 
 func (c *configImpl) KatiPackageNinjaFile() string {
 	return filepath.Join(c.OutDir(), "build"+c.KatiSuffix()+katiPackageSuffix+".ninja")
+}
+
+func (c *configImpl) SoongVarsFile() string {
+	return filepath.Join(c.SoongOutDir(), "soong.variables")
 }
 
 func (c *configImpl) SoongNinjaFile() string {

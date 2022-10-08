@@ -7235,12 +7235,18 @@ func TestAppSetBundle(t *testing.T) {
 	ensureContains(t, content, `"compression":{"uncompressed_glob":["apex_payload.img","apex_manifest.*"]}`)
 	s := mod.Rule("apexRule").Args["copy_commands"]
 	copyCmds := regexp.MustCompile(" *&& *").Split(s, -1)
-	if len(copyCmds) != 3 {
-		t.Fatalf("Expected 3 commands, got %d in:\n%s", len(copyCmds), s)
+	if len(copyCmds) != 4 {
+		t.Fatalf("Expected 4 commands, got %d in:\n%s", len(copyCmds), s)
 	}
 	ensureMatches(t, copyCmds[0], "^rm -rf .*/app/AppSet@TEST.BUILD_ID$")
 	ensureMatches(t, copyCmds[1], "^mkdir -p .*/app/AppSet@TEST.BUILD_ID$")
-	ensureMatches(t, copyCmds[2], "^unzip .*-d .*/app/AppSet@TEST.BUILD_ID .*/AppSet.zip$")
+	ensureMatches(t, copyCmds[2], "^cp -f .*/app/AppSet@TEST.BUILD_ID/AppSet.apk$")
+	ensureMatches(t, copyCmds[3], "^unzip .*-d .*/app/AppSet@TEST.BUILD_ID .*/AppSet.zip$")
+
+	// Ensure that canned_fs_config has an entry for the app set zip file
+	generateFsRule := mod.Rule("generateFsConfig")
+	cmd := generateFsRule.RuleParams.Command
+	ensureContains(t, cmd, "AppSet.zip")
 }
 
 func TestAppSetBundlePrebuilt(t *testing.T) {
@@ -7269,6 +7275,28 @@ func TestAppSetBundlePrebuilt(t *testing.T) {
 	copiedApex := m.Output("out/soong/.intermediates/myapex/android_common_myapex/foo_v2.apex")
 
 	android.AssertStringEquals(t, "myapex input", extractorOutput, copiedApex.Input.String())
+}
+
+func TestApexSetApksModuleAssignment(t *testing.T) {
+	ctx := testApex(t, `
+		apex_set {
+			name: "myapex",
+			set: ":myapex_apks_file",
+		}
+
+		filegroup {
+			name: "myapex_apks_file",
+			srcs: ["myapex.apks"],
+		}
+	`)
+
+	m := ctx.ModuleForTests("myapex.apex.extractor", "android_common")
+
+	// Check that the extractor produces the correct apks file from the input module
+	extractorOutput := "out/soong/.intermediates/myapex.apex.extractor/android_common/extracted/myapex.apks"
+	extractedApex := m.Output(extractorOutput)
+
+	android.AssertArrayString(t, "extractor input", []string{"myapex.apks"}, extractedApex.Inputs.Strings())
 }
 
 func testNoUpdatableJarsInBootImage(t *testing.T, errmsg string, preparer android.FixturePreparer, fragments ...java.ApexVariantReference) {
@@ -8843,9 +8871,7 @@ func TestApexJavaCoverage(t *testing.T) {
 		android.FixtureWithRootAndroidBp(bp),
 		dexpreopt.FixtureSetApexBootJars("myapex:mybootclasspathlib"),
 		dexpreopt.FixtureSetApexSystemServerJars("myapex:mysystemserverclasspathlib"),
-		android.FixtureMergeEnv(map[string]string{
-			"EMMA_INSTRUMENT": "true",
-		}),
+		java.PrepareForTestWithJacocoInstrumentation,
 	).RunTest(t)
 
 	// Make sure jacoco ran on both mylib and mybootclasspathlib

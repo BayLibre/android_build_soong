@@ -80,6 +80,9 @@ type AndroidAppImportProperties struct {
 	// Name of the signing certificate lineage file or filegroup module.
 	Lineage *string `android:"path"`
 
+	// For overriding the --rotation-min-sdk-version property of apksig
+	RotationMinSdkVersion *string
+
 	// Sign with the default system dev certificate. Must be used judiciously. Most imported apps
 	// need to either specify a specific certificate or be presigned.
 	Default_dev_cert *bool
@@ -315,25 +318,26 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 
 	if a.isPrebuiltFrameworkRes() {
 		a.outputFile = srcApk
-		certificates = processMainCert(a.ModuleBase, String(a.properties.Certificate), certificates, ctx)
+		a.certificate, certificates = processMainCert(a.ModuleBase, String(a.properties.Certificate), certificates, ctx)
 		if len(certificates) != 1 {
 			ctx.ModuleErrorf("Unexpected number of certificates were extracted: %q", certificates)
 		}
-		a.certificate = certificates[0]
 	} else if a.preprocessed {
 		a.outputFile = srcApk
 		a.certificate = PresignedCertificate
 	} else if !Bool(a.properties.Presigned) {
 		// If the certificate property is empty at this point, default_dev_cert must be set to true.
 		// Which makes processMainCert's behavior for the empty cert string WAI.
-		certificates = processMainCert(a.ModuleBase, String(a.properties.Certificate), certificates, ctx)
-		a.certificate = certificates[0]
+		a.certificate, certificates = processMainCert(a.ModuleBase, String(a.properties.Certificate), certificates, ctx)
 		signed := android.PathForModuleOut(ctx, "signed", apkFilename)
 		var lineageFile android.Path
 		if lineage := String(a.properties.Lineage); lineage != "" {
 			lineageFile = android.PathForModuleSrc(ctx, lineage)
 		}
-		SignAppPackage(ctx, signed, jnisUncompressed, certificates, nil, lineageFile)
+
+		rotationMinSdkVersion := String(a.properties.RotationMinSdkVersion)
+
+		SignAppPackage(ctx, signed, jnisUncompressed, certificates, nil, lineageFile, rotationMinSdkVersion)
 		a.outputFile = signed
 	} else {
 		alignedApk := android.PathForModuleOut(ctx, "zip-aligned", apkFilename)
@@ -455,19 +459,19 @@ func createVariantGroupType(variants []string, variantGroupName string) reflect.
 // android_app_import imports a prebuilt apk with additional processing specified in the module.
 // DPI-specific apk source files can be specified using dpi_variants. Example:
 //
-//     android_app_import {
-//         name: "example_import",
-//         apk: "prebuilts/example.apk",
-//         dpi_variants: {
-//             mdpi: {
-//                 apk: "prebuilts/example_mdpi.apk",
-//             },
-//             xhdpi: {
-//                 apk: "prebuilts/example_xhdpi.apk",
-//             },
-//         },
-//         presigned: true,
-//     }
+//	android_app_import {
+//	    name: "example_import",
+//	    apk: "prebuilts/example.apk",
+//	    dpi_variants: {
+//	        mdpi: {
+//	            apk: "prebuilts/example_mdpi.apk",
+//	        },
+//	        xhdpi: {
+//	            apk: "prebuilts/example_xhdpi.apk",
+//	        },
+//	    },
+//	    presigned: true,
+//	}
 func AndroidAppImportFactory() android.Module {
 	module := &AndroidAppImport{}
 	module.AddProperties(&module.properties)
