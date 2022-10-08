@@ -16,6 +16,24 @@
       "message": "I wonder whether we\u0027ll need to continue targeting 11 for host tools to support shipping tools in the SDK, or whether all of those are already pinned to a specific version.",
       "revId": "93d4810a87dc2a52ddcf73995f9509d92827214e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c340bc2f_7c81f553",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2022-10-08T05:09:09Z",
+      "side": 1,
+      "message": "Good question, I\u0027ll check about that.",
+      "parentUuid": "3982a83d_463462ba",
+      "revId": "93d4810a87dc2a52ddcf73995f9509d92827214e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
