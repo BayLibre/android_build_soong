@@ -1396,9 +1396,12 @@ func (j *Binary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		} else {
 			if ctx.Windows() {
 				ctx.PropertyErrorf("wrapper", "wrapper is required for Windows")
+			} else if ctx.ModuleType() == "java_binary" {
+				ctx.PropertyErrorf("wrapper", "wrapper is required for java_binary")
 			}
 
 			j.wrapperFile = android.PathForSource(ctx, "build/soong/scripts/jar-wrapper.sh")
+
 		}
 
 		ext := ""

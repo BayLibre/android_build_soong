@@ -63,6 +63,7 @@ func TestDexpreoptEnabled(t *testing.T) {
 				java_binary {
 					name: "foo",
 					srcs: ["a.java"],
+					wrapper: "bar.sh",
 				}`,
 			enabled: true,
 		},
