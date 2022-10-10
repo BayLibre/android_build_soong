@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d65022d_32a98b3f",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3434,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-10-10T19:24:13Z",
+      "side": 1,
+      "message": "how to build native_shared_libs depends on the compile_multilib value, if it is \"both\" native_shared_libs should be built for both, for example, I have these in the bp file:\n    compile_multilib: \"both\",\n    multilib: {\n        both: {\n            native_shared_libs: [\n                \"libadb_pairing_connection\",\n                \"libadb_pairing_server\",\n                \"libadbconnection_client\",\n            ],\n        },\n    },\n    native_shared_libs: [\n        \"libadb_pairing_auth\",\n    ],\n\nand soong build gives me these:\n\nyudiliu@yudiliu:~/android/aosp/master$ ls -l out/target/product/vsoc_arm64/system/apex/com.android.adbd.capex \n-rw-r--r-- 1 yudiliu primarygroup 4177920 Oct 10 11:57 out/target/product/vsoc_arm64/system/apex/com.android.adbd.capex\nyudiliu@yudiliu:~/android/aosp/master$ deapexer list out/target/product/vsoc_arm64/system/apex/com.android.adbd.capex\n./apex_manifest.pb\n./bin/adbd\n./etc/init.rc\n./lib/libadb_pairing_auth.so\n./lib/libadb_pairing_connection.so\n./lib/libadb_pairing_server.so\n./lib/libadbconnection_client.so\n./lib/libbase.so\n./lib/libc++.so\n./lib/libcrypto.so\n./lib/libcrypto_utils.so\n./lib/libcutils.so\n./lib64/libadb_pairing_auth.so\n./lib64/libadb_pairing_connection.so\n./lib64/libadb_pairing_server.so\n./lib64/libadbconnection_client.so\n./lib64/libbase.so\n./lib64/libc++.so\n./lib64/libcrypto.so\n./lib64/libcrypto_utils.so\n./lib64/libcutils.so\nyudiliu@yudiliu:~/android/aosp/master$",
+      "range": {
+        "startLine": 3434,
+        "startChar": 1,
+        "endLine": 3434,
+        "endChar": 17
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
