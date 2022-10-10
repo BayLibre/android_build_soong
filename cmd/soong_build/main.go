@@ -168,8 +168,15 @@ func runMixedModeBuild(configuration android.Config, ctx *android.Context, extra
 	}
 	ctx.SetBeforePrepareBuildActionsHook(bazelHook)
 
+	bazelPaths, err := readBazelPaths()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error reading Bazel paths %s.\n", err)
+		//Do we exit here??
+	}
+
 	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs, bootstrap.DoEverything, ctx.Context, configuration)
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
+	ninjaDeps = append(ninjaDeps, bazelPaths...)
 
 	globListFiles := writeBuildGlobsNinjaFile(ctx, configuration.SoongOutDir(), configuration)
 	ninjaDeps = append(ninjaDeps, globListFiles...)
@@ -698,4 +705,16 @@ func writeBp2BuildMetrics(codegenMetrics *bp2build.CodegenMetrics,
 		os.Exit(1)
 	}
 	codegenMetrics.Write(metricsDir)
+}
+
+func readBazelPaths() ([]string, error) {
+	depsPath := filepath.Join(topDir, outDir, "tools", "bazel.deps")
+
+	data, err := ioutil.ReadFile(depsPath)
+	if err != nil {
+		fmt.Errorf("Error reading in bazel deps %s\n", err)
+		return nil, err
+	}
+	paths := strings.Split(strings.TrimSpace(string(data)), "\n")
+	return paths, nil
 }
