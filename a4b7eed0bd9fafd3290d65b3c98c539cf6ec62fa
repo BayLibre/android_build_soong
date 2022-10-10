@@ -22,6 +22,30 @@
       },
       "revId": "a4b7eed0bd9fafd3290d65b3c98c539cf6ec62fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b1ab32_dd4420f9",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-10T13:37:56Z",
+      "side": 1,
+      "message": "I\u0027ll follow up with a CL.",
+      "parentUuid": "62dc4c2d_b96665a1",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 58
+      },
+      "revId": "a4b7eed0bd9fafd3290d65b3c98c539cf6ec62fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
