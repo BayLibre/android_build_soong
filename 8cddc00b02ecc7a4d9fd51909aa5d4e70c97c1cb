@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd934a32_59e6f475",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-10-10T15:39:21Z",
+      "side": 1,
+      "message": "ccross: note that this is necessary but not sufficient... is this next problem the issue you\u0027re already aware of and were talking about last week?\n```\nprebuilts/clang/host/linux-x86/clang-r468909b/bin/clang++  @out/soong/.intermediates/bionic/linker/ld-android/android_riscv64_shared_apex10000/unstripped/ld-android.so.rsp  -o out/soong/.intermediates/bionic/linker/ld-android/android_riscv64_shared_apex10000/unstripped/ld-android.so -target riscv64-linux-android10000 -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--build-id\u003dmd5 -Wl,--fatal-warnings -Wl,--no-undefined-version -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libgcc_stripped.a -Wl,--exclude-libs,libunwind_llvm.a -Wl,--exclude-libs,libunwind.a -Wl,--icf\u003dsafe -fuse-ld\u003dlld -Wl,--pack-dyn-relocs\u003dandroid+relr -Wl,--no-undefined -Wl,--hash-style\u003dgnu -Wl,-z,separate-code -Wl,-z,max-page-size\u003d4096   -nostdlib -Wl,--gc-sections -shared -Wl,-soname,ld-android.so -Wl,--exclude-libs\u003dlibgcc.a -Wl,--exclude-libs\u003dlibgcc_stripped.a -Wl,--exclude-libs\u003dlibclang_rt.builtins-arm-android.a -Wl,--exclude-libs\u003dlibclang_rt.builtins-aarch64-android.a -Wl,--exclude-libs\u003dlibclang_rt.builtins-i686-android.a -Wl,--exclude-libs\u003dlibclang_rt.builtins-x86_64-android.a -Wl,--exclude-libs\u003dlibclang_rt.builtins-aarch64-android.a \nld.lld: error: prebuilts/clang/host/linux-x86/clang-r468909b/lib64/clang/15.0.3/lib/linux/libclang_rt.builtins-aarch64-android.a(addtf3.c.o) is incompatible with elf64lriscv\n```\n(it\u0027s not blocking; i have other parts of the bionic changes to clean up and merge. i was just curious to see whether i could build libdl as a trivial stand-alone piece.)",
+      "revId": "8cddc00b02ecc7a4d9fd51909aa5d4e70c97c1cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
