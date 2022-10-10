@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "277f7933_91678e5a",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-10T10:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5e8d73f_c1cebcf7",
+      "range": {
+        "startLine": 13,
+        "startChar": 13,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "2e895054f88e52a24359970b115801a35a19cbaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8caad618_9df7133a",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1233bb24_0ee329f4",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-10T10:14:42Z",
+      "side": 1,
+      "message": "Yes, the mailing list I recommend is internal, but when faced with the choice of taking care of only Googlers well and not taking care of anyone well, I\u0027d prefer the former. Not that I\u0027m very happy about it.\n\nLooking at this mailing list https://issuetracker.google.com/issues?q\u003dcomponentid:381517 , it doesn\u0027t look like either of them is very lively (the bug tracker actually contains spam...)\n\nIOW, my suggestion of soong-discuss@ is a tactical and practical suggestion to handle the issue we have now because the \"how best to support Android\u0027s builds to the wider community\" is not something that should be resolved within the context of a code review and I don\u0027t want the establishment of the internal communication channel to be blocked on that one.",
+      "parentUuid": "8caad618_9df7133a",
+      "range": {
+        "startLine": 35,
+        "startChar": 21,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "2e895054f88e52a24359970b115801a35a19cbaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95d4a89f_c27bbb8f",
         "filename": "README.md",
         "patchSetId": 1
@@ -77,6 +125,30 @@
       "writtenOn": "2022-10-10T07:59:38Z",
       "side": 1,
       "message": "Even before writing a design document, I\u0027d suggest filing a bug/issue on b/381517 (Building AOSP) on the public issue tracker, or any other bug component, and getting someone on the team to respond. Emails can get lost easily. soong-discuss is also not public.\n\nPartners should also be reaching out to their respective TAMs for assistance.\n\nLet\u0027s avoid investment into a design document if the premise doesn\u0027t sound right.",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 41,
+        "endChar": 49
+      },
+      "revId": "2e895054f88e52a24359970b115801a35a19cbaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13fd377_0f1d531c",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-10T10:14:42Z",
+      "side": 1,
+      "message": "Actually, you\u0027re right; I updated this paragraph to also suggest talking to soong-discuss.",
+      "parentUuid": "95d4a89f_c27bbb8f",
       "range": {
         "startLine": 41,
         "startChar": 26,
