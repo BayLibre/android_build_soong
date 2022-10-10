@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e089a3b_d8efaef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-10T07:10:26Z",
+      "side": 1,
+      "message": "As discussed with Liz. \n\nNote the reference to soong-discuss@google.com in this public piece of documentation.",
+      "revId": "2e895054f88e52a24359970b115801a35a19cbaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
