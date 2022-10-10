@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23a25409_258c0c9f",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-10T18:52:38Z",
+      "side": 1,
+      "message": "This doc is where we point lots of external people, I think it at least needs to make clear that this is for internal changes, whether or not you choose to also mention the external lists.  Or you could put it in g3doc and link to it from here.\n\nPublic buganizer is getting a wave of spam right now, I\u0027ve been marking them as spam to clear them out as they come in.",
+      "parentUuid": "1233bb24_0ee329f4",
+      "range": {
+        "startLine": 35,
+        "startChar": 21,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "2e895054f88e52a24359970b115801a35a19cbaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95d4a89f_c27bbb8f",
         "filename": "README.md",
         "patchSetId": 1
