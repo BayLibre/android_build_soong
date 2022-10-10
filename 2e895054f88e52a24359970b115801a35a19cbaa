@@ -16,6 +16,75 @@
       "message": "As discussed with Liz. \n\nNote the reference to soong-discuss@google.com in this public piece of documentation.",
       "revId": "2e895054f88e52a24359970b115801a35a19cbaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e8d73f_c1cebcf7",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-10T07:59:38Z",
+      "side": 1,
+      "message": "missing or extra quote?",
+      "range": {
+        "startLine": 13,
+        "startChar": 13,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "2e895054f88e52a24359970b115801a35a19cbaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8caad618_9df7133a",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-10T07:59:38Z",
+      "side": 1,
+      "message": "Isn\u0027t the public mailing list android-building@googlegroups.com? Do you actually want to use an internal mailing list here?",
+      "range": {
+        "startLine": 35,
+        "startChar": 21,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "2e895054f88e52a24359970b115801a35a19cbaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d4a89f_c27bbb8f",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-10T07:59:38Z",
+      "side": 1,
+      "message": "Even before writing a design document, I\u0027d suggest filing a bug/issue on b/381517 (Building AOSP) on the public issue tracker, or any other bug component, and getting someone on the team to respond. Emails can get lost easily. soong-discuss is also not public.\n\nPartners should also be reaching out to their respective TAMs for assistance.\n\nLet\u0027s avoid investment into a design document if the premise doesn\u0027t sound right.",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 41,
+        "endChar": 49
+      },
+      "revId": "2e895054f88e52a24359970b115801a35a19cbaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
