@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7010932_77722d50",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-10T21:25:49Z",
+      "side": 1,
+      "message": "You generally shouldn\u0027t match on the module type string, as the module type could be wrapped into another module type.  This code is specific to `java.Binary`, when is it executing for something that is not a `java_binary`?",
+      "revId": "81922cea4846a706da661a96bda1c5ea706c20fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4deda543_8fe8c3ae",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1400,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-10T21:25:49Z",
+      "side": 1,
+      "message": "I think the request here is that we should be able to autogenerate the wrapper file for the device the same way we do for the device, with a modified version of build/soong/scripts/jar-wrapper.sh that looks something like https://cs.android.com/android/platform/superproject/+/master:frameworks/base/cmds/am/am.sh",
+      "revId": "81922cea4846a706da661a96bda1c5ea706c20fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
