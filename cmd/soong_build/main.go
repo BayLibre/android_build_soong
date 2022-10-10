@@ -170,6 +170,7 @@ func runMixedModeBuild(configuration android.Config, ctx *android.Context, extra
 
 	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs, bootstrap.DoEverything, ctx.Context, configuration)
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
+	fmt.Printf("ninjaDeps %s\n", ninjaDeps)
 
 	globListFiles := writeBuildGlobsNinjaFile(ctx, configuration.SoongOutDir(), configuration)
 	ninjaDeps = append(ninjaDeps, globListFiles...)
@@ -432,6 +433,14 @@ func main() {
 		configuration.ProductVariablesFileName,
 		usedEnvFile,
 	}
+
+	bazelPaths, err := readBazelPaths()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error reading bazel dependencies. %s\n", err)
+		os.Exit(1)
+	}
+
+	extraNinjaDeps = append(extraNinjaDeps, bazelPaths...)
 
 	if configuration.Getenv("ALLOW_MISSING_DEPENDENCIES") == "true" {
 		configuration.SetAllowMissingDependencies()
@@ -698,4 +707,16 @@ func writeBp2BuildMetrics(codegenMetrics *bp2build.CodegenMetrics,
 		os.Exit(1)
 	}
 	codegenMetrics.Write(metricsDir)
+}
+
+func readBazelPaths() ([]string, error) {
+	depsPath := filepath.Join(outDir, "tools", "bazel.deps")
+
+	data, err := ioutil.ReadFile(depsPath)
+	if err != nil {
+		fmt.Errorf("Error reading in bazel deps %s\n", err)
+		return nil, err
+	}
+	paths := strings.Split(strings.TrimSpace(string(data)), "\n")
+	return paths, nil
 }
