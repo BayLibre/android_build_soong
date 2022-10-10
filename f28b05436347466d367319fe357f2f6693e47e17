@@ -22,6 +22,144 @@
       },
       "revId": "f28b05436347466d367319fe357f2f6693e47e17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13ff507_380b87fd",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4101,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-10T19:44:01Z",
+      "side": 1,
+      "message": "varying compile_multilib in this test as well would help give better coverage",
+      "range": {
+        "startLine": 4101,
+        "startChar": 5,
+        "endLine": 4101,
+        "endChar": 35
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b67ebc62_5c946d2d",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4111,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-10T19:44:01Z",
+      "side": 1,
+      "message": "The coverage here is in adequate because there is only a single android target, but apex code is calling [`ctx.MultiTargets()`](https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex.go;l\u003d732;drc\u003db0193ccac5b8399f9b5ef270d102b5a50f9446ab) to determine the configurationt to build everything in.\n\nAs mentioned above, more test cases (especially one that uses `compile_multilib: \"both\"`) would be helpful to ensure the correctness of this test.\n\nYou likely don\u0027t even need to override the `config.Targets` to test that we get the expected copy commands for lib/lib64, e.g. https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex_test.go;l\u003d2550;drc\u003db0193ccac5b8399f9b5ef270d102b5a50f9446ab\n\n`testApex` by default uses [`PrepareForTestWithArchMutator`](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/test_config.go;l\u003d84;drc\u003db0193ccac5b8399f9b5ef270d102b5a50f9446ab) which by default will have an arm64 and arm android target.",
+      "range": {
+        "startLine": 4111,
+        "startChar": 3,
+        "endLine": 4111,
+        "endChar": 5
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f25073_869a259a",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4120,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-10T19:44:01Z",
+      "side": 1,
+      "message": "when building for android.Arm, we never expect there to be a 64-bit target, so this test is a bit redundant.",
+      "range": {
+        "startLine": 4117,
+        "startChar": 3,
+        "endLine": 4120,
+        "endChar": 5
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e00547d2_26e069e4",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-10T19:44:01Z",
+      "side": 1,
+      "message": "how does this vary from the test case above with multilib unset?",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 270,
+        "endChar": 39
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a4520b_bd9adcab",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-10T19:44:01Z",
+      "side": 1,
+      "message": "a meaningful name rather than nothing when compile_multilib is empty would be helpful here\n\nbut it looks like many of these test cases are also covered elsewhere?",
+      "range": {
+        "startLine": 391,
+        "startChar": 56,
+        "endLine": 391,
+        "endChar": 75
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b0d6a0_a6734a45",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-10T19:44:01Z",
+      "side": 1,
+      "message": "can we also add an unnested `native_shared_libs` to this blueprint? that would have helped catch the issue Yu raised",
+      "range": {
+        "startLine": 501,
+        "startChar": 11,
+        "endLine": 501,
+        "endChar": 12
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
