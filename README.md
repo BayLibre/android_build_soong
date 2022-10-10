@@ -1,12 +1,47 @@
 # Soong
 
-Soong is the replacement for the old Android make-based build system.  It
-replaces Android.mk files with Android.bp files, which are JSON-like simple
-declarative descriptions of modules to build.
+Soong is one of the build systems used in Android. There are altogether three:
+* The legacy Make-based build system that is controlled by files called
+  `Android.mk`.
+* Soong, which is controlled by files called `Android.bp`.
+* The upcoming Bazel-based build system that is controlled by files called
+  `BUILD.bazel`.
+
+`Android.bp` file are JSON-like declarative descriptions of "modules" to build;
+a "module" is the basic unit of building that Soong understands, similarly to
+how "target" is the basic unit of building for Bazel (and Make, although the
+two kinds of "targets" are very different)
 
 See [Simple Build
 Configuration](https://source.android.com/compatibility/tests/development/blueprints)
 on source.android.com to read how Soong is configured for testing.
+
+### Contributing
+
+Contributions are welcome!
+
+Code reviews are handled through the usual code review system of Android,
+available [here](https://android-review.googlesource.com/dashboard/self).
+
+The maintainers of Soong are experts in build systems, but do not necessarily
+know all the details of how Android is built; for this reason, if you want to
+make significant changes to Soong, it's advisable to tell _what_ changes you
+would like to make to Soong and _why_.
+
+For simple changes (fixing typos, obvious optimizations, etc.), sending a code
+review request is enough.
+
+For non-trivial functional changes (e.g. tweaking how C++ or Java compilation
+works), write us at `soong-discuss@google.com` to tell us what you are planning
+to do.
+
+For significant new features (supporting a new language, adding a new kind of
+optimization or sanitization to an existing language, large changes to
+the implementation of a language or how Soong interacts with the rest of the
+build system of Android), a design document is necessary, but also contact
+contact `soong-discuss@google.com` before you start writing it (or the code)
+to make sure that the feature you are planning fits into the larger picture
+well.
 
 ## Android.bp file format
 
