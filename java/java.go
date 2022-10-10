@@ -211,6 +211,14 @@ var (
 			PropertyName: "java_tests",
 		},
 	}
+
+	// Rule for generating device binary default wrapper
+	DeviceBinaryWrapper = pctx.StaticRule("DeviceBinaryWrapper", blueprint.RuleParams{
+		Command: `echo -e "#!/system/bin/sh\n` +
+			`export CLASSPATH=/system/framework/$jar_name\n` +
+			`exec app_process /system/bin $main_class" > ${out}`,
+		Description: "generate device binary default wrapper",
+	}, "jar_name", "main_class")
 )
 
 // JavaInfo contains information about a java module for use by modules that depend on it.
@@ -1398,7 +1406,31 @@ func (j *Binary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				ctx.PropertyErrorf("wrapper", "wrapper is required for Windows")
 			}
 
-			j.wrapperFile = android.PathForSource(ctx, "build/soong/scripts/jar-wrapper.sh")
+			if ctx.Device() {
+				// device binary should have a main_class property if it does not
+				// have a specific wrapper, so that a default wrapper can
+				// be generated for it.
+				if j.binaryProperties.Main_class == nil {
+					ctx.PropertyErrorf("main_class", "main_class property "+
+						"is required for device binary if no default wrapper is assigned")
+				} else {
+					wrapper := android.PathForModuleOut(ctx, ctx.ModuleName()+".sh")
+					jarName := ctx.ModuleName() + ".jar"
+					ctx.Build(pctx, android.BuildParams{
+						Rule:   DeviceBinaryWrapper,
+						Output: wrapper,
+						Args: map[string]string{
+							"jar_name":   jarName,
+							"main_class": String(j.binaryProperties.Main_class),
+						},
+					})
+					j.wrapperFile = wrapper
+				}
+			}
+
+			if j.wrapperFile == nil {
+				j.wrapperFile = android.PathForSource(ctx, "build/soong/scripts/jar-wrapper.sh")
+			}
 		}
 
 		ext := ""
