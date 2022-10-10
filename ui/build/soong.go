@@ -404,6 +404,9 @@ func runSoong(ctx Context, config Config) {
 	soongBuildEnv.Set("BAZEL_WORKSPACE", absPath(ctx, "."))
 	soongBuildEnv.Set("BAZEL_METRICS_DIR", config.BazelMetricsDir())
 	soongBuildEnv.Set("LOG_DIR", config.LogsDir())
+	soongBuildEnv.Set("BAZEL_DEPS_FILE", filepath.Join(os.Getenv("TOP"), config.OutDir(), "tools", "bazel.list"))
+
+	fmt.Printf("BAZEL_DEPS_FILE in soong.go %s\n", filepath.Join(os.Getenv("TOP"), config.OutDir(), "tools", "bazel.list"))
 
 	// For Soong bootstrapping tests
 	if os.Getenv("ALLOW_MISSING_DEPENDENCIES") == "true" {
