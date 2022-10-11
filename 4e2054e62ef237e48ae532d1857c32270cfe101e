@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1adefcb_5ef2908f",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-10-11T22:50:11Z",
+      "side": 1,
+      "message": "This cl should probably be based on top of aosp/2249311",
+      "revId": "4e2054e62ef237e48ae532d1857c32270cfe101e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
