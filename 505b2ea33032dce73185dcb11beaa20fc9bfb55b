@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95275a4c_08db05e1",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-10-11T10:43:58Z",
+      "side": 1,
+      "message": "This should be system-server -\u003e module-lib -\u003e system -\u003e public\n\nThe \"extension\" concept in sdk_library.go is kind of for a different reason... the relevant attribute is actually `canAccess`. See aosp/2238635 for details",
+      "revId": "505b2ea33032dce73185dcb11beaa20fc9bfb55b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
