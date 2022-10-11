@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f99ba1_0a22e3a6",
+        "filename": "java/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-11T18:07:10Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9e51ae8c_b58e23c1",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "cc97b4808d6c3fea74abf091df7869d514733983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f2936e8_26e98bc5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-07T20:46:04Z",
       "side": 1,
       "message": "given that device support is being added due to `java_fuzz_host` being insufficient, is the intent to retain `java_fuzz_host` as well or to deprecate it in preference to device fuzzing?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 53
+      },
+      "revId": "cc97b4808d6c3fea74abf091df7869d514733983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "878d322b_dfbc892f",
+        "filename": "java/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-11T18:07:10Z",
+      "side": 1,
+      "message": "The intention is to keep both for now. Some fuzzers can be fuzzed on host, while all fuzzers can be fuzzed on device, however, host fuzzers are easier to scale up. We attempted to build both host and device fuzzers using a single module, `asan` sanitization doesn\u0027t work for device fuzzers, so we decided to keep them separate.",
+      "parentUuid": "9f2936e8_26e98bc5",
       "range": {
         "startLine": 48,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f1f2893_492fc0e3",
+        "filename": "java/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-11T18:07:10Z",
+      "side": 1,
+      "message": "We intend to fuzz on Pixel 4 onwards, or on host. So, if I understand correctly, it does not affect us.",
+      "parentUuid": "06e90440_c244daf8",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 28
+      },
+      "revId": "cc97b4808d6c3fea74abf091df7869d514733983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44dc8fcc_e0f174bc",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-07T20:46:04Z",
       "side": 1,
       "message": "Typically Java libraries don\u0027t support jni on device -- are we adding this support   because fuzzer are intended to be used for testing purposes? \n\nIf so, should they also specify test properties for dexpropter or lint as well (e.g. https://cs.android.com/android/platform/superproject/+/master:build/soong/java/java.go;l\u003d1285-1286;drc\u003dc7f3978a285ec6c8668a2cb2e40b0436ff42b383).",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 44
+      },
+      "revId": "cc97b4808d6c3fea74abf091df7869d514733983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c288b2d_cf1bb608",
+        "filename": "java/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-11T18:07:10Z",
+      "side": 1,
+      "message": "Yes, the fuzzers are intended for testing. Done.",
+      "parentUuid": "44dc8fcc_e0f174bc",
       "range": {
         "startLine": 166,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "979ef752_4fd10c90",
+        "filename": "java/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-11T18:07:10Z",
+      "side": 1,
+      "message": "We wouldn\u0027t ship a fuzzer to a an actual release, we install it in testcases directory when testing locally and in a fuzzer zip directory on the build. That build is downloaded, unzipped, and pre-processed by our ingestion pipeline for our fuzzing platform.",
+      "parentUuid": "2599fbed_3fda3c0f",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 63
+      },
+      "revId": "cc97b4808d6c3fea74abf091df7869d514733983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e3a9df2_9fa2ed82",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-07T20:46:04Z",
       "side": 1,
       "message": "is this necessary?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 35
+      },
+      "revId": "cc97b4808d6c3fea74abf091df7869d514733983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a2b08f7_c908b8fb",
+        "filename": "java/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-11T18:07:10Z",
+      "side": 1,
+      "message": "I was following the example of the library module, but i tested without it, and it worked fine. So, removed it.",
+      "parentUuid": "7e3a9df2_9fa2ed82",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2a21338_ad65a4f7",
+        "filename": "java/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-11T18:07:10Z",
+      "side": 1,
+      "message": "I have a question about this:\nIf a Java library has specified an SDK, and we want to build it as a dependency of our fuzz target, would we need the fuzz module to be aware of the Sdk?\nIf not, then I think we should remove this.",
+      "parentUuid": "77be8664_72f769c2",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 35
+      },
+      "revId": "cc97b4808d6c3fea74abf091df7869d514733983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28bb4cf1_f2ea1df9",
         "filename": "java/fuzz.go",
         "patchSetId": 6
@@ -175,6 +343,30 @@
       "writtenOn": "2022-10-07T20:46:04Z",
       "side": 1,
       "message": "`InitBazelModule` is only used for the migration to bazel and we are not supporting this in the migration yet, please remove.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "cc97b4808d6c3fea74abf091df7869d514733983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3dcab01_440bc36d",
+        "filename": "java/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-11T18:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28bb4cf1_f2ea1df9",
       "range": {
         "startLine": 171,
         "startChar": 0,
