@@ -16,6 +16,24 @@
       "message": "nit: add space after `:`",
       "revId": "d77cc4bbf51c262298f706344bff9992c7f85a8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4393a7a_f2adc4c5",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-11T19:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2890612f_439a935e",
+      "revId": "d77cc4bbf51c262298f706344bff9992c7f85a8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
