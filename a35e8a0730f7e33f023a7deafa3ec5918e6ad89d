@@ -16,6 +16,74 @@
       "message": "fyi $OUT_DIR/.module_paths/bazel.list contains bazel-related files e.g. all BUILD, BUILD.bazel and .bzl files\nWonder if bazel.list name used here might confuse the reader.",
       "revId": "a35e8a0730f7e33f023a7deafa3ec5918e6ad89d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "922ee340_e576c57a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-11T15:12:42Z",
+      "side": 1,
+      "message": "Can you do some additional manual regression testing to verify this fixes the underlying bug (b/234763151) ?",
+      "revId": "a35e8a0730f7e33f023a7deafa3ec5918e6ad89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee78dd5_3f9a0eca",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-11T15:12:42Z",
+      "side": 1,
+      "message": "Yes, I think we should `panic` if the deps file does not exist. We should only attempt to access the deps file if tools/bazel succeeded in running (otherwise soong_build should have already exited!), and tools/bazel should always generate a deps file during successful execution.\n\nI also worry that printf is masking an error and causing presubmits to superfluously pass, even if the deps file couldn\u0027t be found. A panic would ensure that that\u0027s not the case 😊",
+      "revId": "a35e8a0730f7e33f023a7deafa3ec5918e6ad89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "875eceb9_5c36a83f",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-11T15:12:42Z",
+      "side": 1,
+      "message": "This string expression will be a little confusing in terms of what error is being propagated. How about adding a colon after \"paths\" ?",
+      "revId": "a35e8a0730f7e33f023a7deafa3ec5918e6ad89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a36a302_1e0421a1",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-11T15:12:42Z",
+      "side": 1,
+      "message": "As far as this binary is concerned, this isn\u0027t guaranteed to be the bazel location. The way we refer to Bazel is other contexts is via the `BAZEL_PATH` env var. Please use that instead. (You can append the `.list` extension to it, or whatever extension we want to use for it)",
+      "revId": "a35e8a0730f7e33f023a7deafa3ec5918e6ad89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
