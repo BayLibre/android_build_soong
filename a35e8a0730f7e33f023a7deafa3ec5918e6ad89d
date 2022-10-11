@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35e3f1e7_79a1d3ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-11T15:03:27Z",
+      "side": 1,
+      "message": "fyi $OUT_DIR/.module_paths/bazel.list contains bazel-related files e.g. all BUILD, BUILD.bazel and .bzl files\nWonder if bazel.list name used here might confuse the reader.",
+      "revId": "a35e8a0730f7e33f023a7deafa3ec5918e6ad89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
