@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5256b924_d0c018fa",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-11T18:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73938b4f_7300ef7e",
+      "revId": "791cad94650be88dc25c2aa37820da958334e6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdcc7471_d6c7741d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-11T16:10:18Z",
       "side": 1,
       "message": "Can you add validation alongside other BAZEL_ env validation? \nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d397-432;drc\u003d52cd19401d4fc99ef37badb22028268b2e379bb4",
+      "revId": "791cad94650be88dc25c2aa37820da958334e6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ef4b34_1ecec118",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-11T18:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdcc7471_d6c7741d",
       "revId": "791cad94650be88dc25c2aa37820da958334e6e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e195b7a6_63522dca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-11T18:13:54Z",
+      "side": 1,
+      "message": "I downloaded an earlier version of Bazel and ran two mixed builds. The second gave the output of \"No need to regenerate ninja file\" and finished within 15 seconds\n\nI reverted and the ninja file was regenerated, back to a lengthier build time.",
+      "parentUuid": "922ee340_e576c57a",
+      "revId": "a35e8a0730f7e33f023a7deafa3ec5918e6ad89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bee78dd5_3f9a0eca",
