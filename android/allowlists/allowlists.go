@@ -315,6 +315,7 @@ var (
 		"system/timezone/apex":                                   Bp2BuildDefaultTrueRecursively,
 		"system/timezone/output_data":                            Bp2BuildDefaultTrueRecursively,
 		"system/tools/aidl/build/tests_bp2build":                 Bp2BuildDefaultTrue,
+		"system/tools/mkbootimg":                                 Bp2BuildDefaultTrueRecursively,
 		"system/tools/sysprop":                                   Bp2BuildDefaultTrue,
 		"system/unwinding/libunwindstack":                        Bp2BuildDefaultTrueRecursively,
 
@@ -474,7 +475,6 @@ var (
 		"prebuilt_stats-log-api-gen",
 
 		// fastboot
-		"bootimg_headers",
 		"fastboot",
 		"libfastboot",
 		"liblp",
