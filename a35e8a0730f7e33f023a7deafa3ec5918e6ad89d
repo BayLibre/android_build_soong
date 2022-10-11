@@ -102,6 +102,24 @@
       "parentUuid": "5a36a302_1e0421a1",
       "revId": "a35e8a0730f7e33f023a7deafa3ec5918e6ad89d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26b28c8f_bce57b59",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-11T15:34:22Z",
+      "side": 1,
+      "message": "Actually, I can\u0027t think of a better way than to hardcode $OUTDIR/tools/bazel.list in the other script.\n\nThat said, I wonder if, for consistency, we want to have soong_ui decide the path of the deps file, and propagate it to soong_build as an environment variable. That seems to be where we do a lot of the path hardcoding, so it pays to be consistent.\n\nSo perhaps we should add another variable `BAZEL_DEPS_FILE` here?:\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/soong.go;l\u003d396-406;drc\u003d5af0bd3e4838dbe5680d9adc290095b8240d49d3",
+      "parentUuid": "03425d94_afefd3b5",
+      "revId": "a35e8a0730f7e33f023a7deafa3ec5918e6ad89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
