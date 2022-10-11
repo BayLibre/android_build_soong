@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28cc0492_d8f8fb37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-10-11T18:14:14Z",
+      "side": 1,
+      "message": "Verified locally with mixed_droid",
+      "revId": "256e3b4597f9eb2902fff41892f4f40574300a09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
