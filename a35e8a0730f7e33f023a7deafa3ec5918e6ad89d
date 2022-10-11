@@ -84,6 +84,24 @@
       "message": "As far as this binary is concerned, this isn\u0027t guaranteed to be the bazel location. The way we refer to Bazel is other contexts is via the `BAZEL_PATH` env var. Please use that instead. (You can append the `.list` extension to it, or whatever extension we want to use for it)",
       "revId": "a35e8a0730f7e33f023a7deafa3ec5918e6ad89d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03425d94_afefd3b5",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-11T15:29:26Z",
+      "side": 1,
+      "message": "Never mind, scratch this. I understand that BAZEL_PATH is not under $OUT_DIR. Whoops, that\u0027s my oversight. I\u0027ll comment on the other CL in your topic to discuss where we should put this file.",
+      "parentUuid": "5a36a302_1e0421a1",
+      "revId": "a35e8a0730f7e33f023a7deafa3ec5918e6ad89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
