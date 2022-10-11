@@ -16,6 +16,23 @@
       "message": "Verified locally with mixed_droid",
       "revId": "256e3b4597f9eb2902fff41892f4f40574300a09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11f0daa1_5ce22864",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-10-11T20:40:46Z",
+      "side": 1,
+      "message": "LGTM but I\u0027ll leave it to Chris to approve as the mixed builds owner.",
+      "revId": "256e3b4597f9eb2902fff41892f4f40574300a09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
