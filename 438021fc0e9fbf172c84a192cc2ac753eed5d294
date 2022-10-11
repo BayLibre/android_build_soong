@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aceff4e_7abe1e73",
+        "filename": "bp2build/python_binary_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-10-11T21:55:08Z",
+      "side": 1,
+      "message": "Could you also add another test that `a/b.py` still works when `a` isn\u0027t a subpackage?",
+      "revId": "438021fc0e9fbf172c84a192cc2ac753eed5d294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdaedb10_b70cd648",
+        "filename": "python/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-10-11T21:55:08Z",
+      "side": 1,
+      "message": "I believe this can just be a Label instead of a LabelAttribute because there aren\u0027t any modules that configure main based on arch or something. (And we don\u0027t support that with the current code anyways)",
+      "revId": "438021fc0e9fbf172c84a192cc2ac753eed5d294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
