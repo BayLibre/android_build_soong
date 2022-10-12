@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "888230ae_0a544016",
+        "filename": "bp2build/python_binary_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-12T09:53:03Z",
+      "side": 1,
+      "message": "Isn\u0027t that `TestPythonBinaryMainIsSubDirFile`?",
+      "parentUuid": "8aceff4e_7abe1e73",
+      "revId": "438021fc0e9fbf172c84a192cc2ac753eed5d294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bdaedb10_b70cd648",
         "filename": "python/binary.go",
         "patchSetId": 2

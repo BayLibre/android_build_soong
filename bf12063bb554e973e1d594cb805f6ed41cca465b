@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04551531_376f8de8",
+        "filename": "bp2build/python_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-12T09:53:03Z",
+      "side": 1,
+      "message": "is it necessary to use python_defaults here (and export the factory), since we\u0027re not exactly testing the mechanism of defaults? Maybe put: \"required: [\"r1\", \"r1\", \"r2\"]\" in the python_binary_host directly?",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 1
+      },
+      "revId": "bf12063bb554e973e1d594cb805f6ed41cca465b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc107bc5_19a5ac91",
+        "filename": "bp2build/python_binary_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-12T09:53:03Z",
+      "side": 1,
+      "message": "these can be simplified with simpleModuleDoNotConvertBp2build: https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/testing.go;l\u003d445;drc\u003d5af0bd3e4838dbe5680d9adc290095b8240d49d3",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 0
+      },
+      "revId": "bf12063bb554e973e1d594cb805f6ed41cca465b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
