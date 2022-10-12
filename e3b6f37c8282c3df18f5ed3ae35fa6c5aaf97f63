@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13418b34_438056e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-12T18:49:51Z",
+      "side": 1,
+      "message": "Can you add more information here on why this is useful and when it will be used?",
+      "revId": "e3b6f37c8282c3df18f5ed3ae35fa6c5aaf97f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9abbc7bd_2687b4c8",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-12T18:49:51Z",
+      "side": 1,
+      "message": "We are usually very strict about disallowing -Wno-error, add a comment here on why it is reasonable to set it for this use case.",
+      "revId": "e3b6f37c8282c3df18f5ed3ae35fa6c5aaf97f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
