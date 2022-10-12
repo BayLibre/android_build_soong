@@ -19,6 +19,7 @@ const (
 	soongModuleLoad = `package(default_visibility = ["//visibility:public"])
 load("//build/bazel/queryview_rules:soong_module.bzl", "soong_module")
 
+sss
 `
 
 	// A macro call in the BUILD file representing a Soong module, with space
