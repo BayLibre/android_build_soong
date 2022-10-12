@@ -39,6 +39,30 @@
       },
       "revId": "66162e2247d09fc1f486b70e1528f87c5b602ec6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91989840_192c6689",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-12T12:22:55Z",
+      "side": 1,
+      "message": "TIL. Updated (it doesn\u0027t linkify in my IDE, but that doesn\u0027t mean anything) (\"mailto:\" seemed too much)",
+      "parentUuid": "3b8ffda7_f56cde08",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "66162e2247d09fc1f486b70e1528f87c5b602ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
