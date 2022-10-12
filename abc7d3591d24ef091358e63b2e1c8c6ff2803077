@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "abc7d3591d24ef091358e63b2e1c8c6ff2803077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b6cb22_0ce03165",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-12T14:16:08Z",
+      "side": 1,
+      "message": "Modulo the library bit-ness looks good",
+      "revId": "abc7d3591d24ef091358e63b2e1c8c6ff2803077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
