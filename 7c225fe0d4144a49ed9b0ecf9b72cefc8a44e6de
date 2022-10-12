@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9258efa3_8e3a34f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-12T08:56:11Z",
+      "side": 1,
+      "message": "Can you also run `build/bazel/ci/mixed_droid.sh` locally? It\u0027s not running on presubmits.\n\nFor faster verification: `lunch aosp_arm64 \u0026\u0026 m --bazel-dev-mode  out/soong/abi-dumps/ndk/current/arm/libdl/abi.xml` should also work, since that triggered the regression.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "7c225fe0d4144a49ed9b0ecf9b72cefc8a44e6de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29177ecf_b83b1c5c",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-12T08:56:11Z",
+      "side": 1,
+      "message": "nit: indent",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 4
+      },
+      "revId": "7c225fe0d4144a49ed9b0ecf9b72cefc8a44e6de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc20894b_6cf56292",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-12T08:56:11Z",
+      "side": 1,
+      "message": "I think this is slightly misnamed, since it\u0027s also used for shared libraries. Call it getCcUnstrippedInfo? Same for changes in bazel_handler.go.",
+      "range": {
+        "startLine": 248,
+        "startChar": 5,
+        "endLine": 248,
+        "endChar": 24
+      },
+      "revId": "7c225fe0d4144a49ed9b0ecf9b72cefc8a44e6de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
