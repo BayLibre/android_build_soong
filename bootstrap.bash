@@ -21,3 +21,4 @@ echo '  build/soong/soong_ui.bash --make-mode --soong-only' >&2
 echo '======================================================' >&2
 exit 1
 
+]

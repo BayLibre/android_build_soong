@@ -1,13 +1,4 @@
-package {
-    default_applicable_licenses: ["Android-Apache-2.0"],
-}
-
-bootstrap_go_package {
-    name: "soong-filesystem",
-    pkgPath: "android/soong/filesystem",
-    deps: [
-        "blueprint",
-        "soong",
+package
         "soong-android",
         "soong-linkerconfig",
     ],
