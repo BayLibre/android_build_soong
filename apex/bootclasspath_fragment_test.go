@@ -43,7 +43,6 @@ var prepareForTestWithArtApex = android.GroupFixturePreparers(
 		"com.android.art.pem":                                nil,
 		"system/sepolicy/apex/com.android.art-file_contexts": nil,
 	}),
-	dexpreopt.FixtureSetBootImageProfiles("art/build/boot/boot-image-profile.txt"),
 )
 
 func TestBootclasspathFragments(t *testing.T) {
@@ -426,7 +425,6 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 		).RunTest(t)
 
 		ensureExactContents(t, result.TestContext, "com.android.art", "android_common_com.android.art_image", []string{
-			"etc/boot-image.prof",
 			"etc/classpaths/bootclasspath.pb",
 			"javalib/arm/boot.art",
 			"javalib/arm/boot.oat",
@@ -484,7 +482,6 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 		).RunTest(t)
 
 		ensureExactContents(t, result.TestContext, "com.android.art", "android_common_com.android.art_image", []string{
-			"etc/boot-image.prof",
 			"etc/classpaths/bootclasspath.pb",
 			"javalib/bar.jar",
 			"javalib/foo.jar",
@@ -540,7 +537,6 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 		).RunTest(t)
 
 		ensureExactContents(t, result.TestContext, "com.android.art", "android_common_com.android.art_image", []string{
-			"etc/boot-image.prof",
 			"etc/classpaths/bootclasspath.pb",
 			"javalib/arm/boot.art",
 			"javalib/arm/boot.oat",
@@ -603,7 +599,6 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 		).RunTest(t)
 
 		ensureExactContents(t, result.TestContext, "com.android.art", "android_common_com.android.art_image", []string{
-			"etc/boot-image.prof",
 			"etc/classpaths/bootclasspath.pb",
 			"javalib/bar.jar",
 			"javalib/foo.jar",
