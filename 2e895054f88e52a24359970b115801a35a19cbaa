@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "445d4a9f_95ac533a",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-12T08:02:48Z",
+      "side": 1,
+      "message": "sgtm, see the new version",
+      "parentUuid": "23a25409_258c0c9f",
+      "range": {
+        "startLine": 35,
+        "startChar": 21,
+        "endLine": 35,
+        "endChar": 45
+      },
+      "revId": "2e895054f88e52a24359970b115801a35a19cbaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95d4a89f_c27bbb8f",
@@ -173,6 +197,30 @@
       "side": 1,
       "message": "Actually, you\u0027re right; I updated this paragraph to also suggest talking to soong-discuss.",
       "parentUuid": "95d4a89f_c27bbb8f",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 41,
+        "endChar": 49
+      },
+      "revId": "2e895054f88e52a24359970b115801a35a19cbaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3bc4e5b_7799c39f",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-12T08:02:48Z",
+      "side": 1,
+      "message": "ptal",
+      "parentUuid": "e13fd377_0f1d531c",
       "range": {
         "startLine": 41,
         "startChar": 26,
