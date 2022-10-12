@@ -123,6 +123,24 @@
       "parentUuid": "49ca4392_030edc39",
       "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2b73f7c_d984c8b3",
+        "filename": "cc/coverage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-10-12T19:15:12Z",
+      "side": 1,
+      "message": "For code coverage, we use a different approach to use an environment variable (NATIVE_COVERAGE_PATHS) to select the paths where coverage instrumentation is enabled.  Would that be feasible for hwasan as well?\n\n(Marking the comment as resolved as Evgenii\u0027s original suggestion to look at the module property is done).",
+      "parentUuid": "8980a280_65edf80b",
+      "revId": "e01fe9ee40dc53a8d58a3b41b629eafcb20c93da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

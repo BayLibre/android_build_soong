@@ -16,6 +16,23 @@
       "message": "(It\u0027s odd that Evgenii\u0027s code-review-1 was outdated/dropped when a new patch was uploaded.  Filed b/251351561 to see if it\u0027s a bug.)",
       "revId": "420f4ce40cd73a1bbff7c0a668977908cd886329",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03db1445_607632be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-10-12T19:15:12Z",
+      "side": 1,
+      "message": "Evgenii, do you have any comment on the latest patch besides the discussion about selectively-enabling hwasan?",
+      "revId": "420f4ce40cd73a1bbff7c0a668977908cd886329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
