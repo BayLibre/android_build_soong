@@ -384,6 +384,10 @@ func init() {
 			flags = append(flags, llvmNextExtraCommonGlobalCflags...)
 		}
 
+		if ctx.Config().IsEnvTrue("LLVM_PERMISSIVE_WARNING") {
+			flags = append(flags, "-Wno-error")
+		}
+
 		if ctx.Config().IsEnvTrue("ALLOW_UNKNOWN_WARNING_OPTION") {
 			flags = append(flags, "-Wno-error=unknown-warning-option")
 		}
