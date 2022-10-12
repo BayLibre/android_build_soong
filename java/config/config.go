@@ -96,6 +96,7 @@ func init() {
 		"-JXX:TieredStopAtLevel=1",
 		"-JDcom.android.tools.r8.emitRecordAnnotationsInDex",
 		"-JDcom.android.tools.r8.emitPermittedSubclassesAnnotationsInDex",
+		"-JDcom.android.tools.r8.emitNestAnnotationsInDex",
 	}, dexerJavaVmFlagsList...), " "))
 
 	pctx.VariableFunc("R8Flags", func(ctx android.PackageVarContext) string {
@@ -103,6 +104,7 @@ func init() {
 			"-JXmx4096M",
 			"-JDcom.android.tools.r8.emitRecordAnnotationsInDex",
 			"-JDcom.android.tools.r8.emitPermittedSubclassesAnnotationsInDex",
+			"-JDcom.android.tools.r8.emitNestAnnotationsInDex",
 		}, dexerJavaVmFlagsList...)
 		if r8DumpDir := ctx.Config().Getenv("R8_DUMP_DIRECTORY"); r8DumpDir != "" {
 			r8flags = append(r8flags, "-JDcom.android.tools.r8.dumpinputtodirectory="+r8DumpDir)
