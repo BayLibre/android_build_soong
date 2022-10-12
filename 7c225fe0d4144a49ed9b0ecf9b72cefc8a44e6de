@@ -94,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94472d8c_b8367828",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-12T14:19:09Z",
+      "side": 1,
+      "message": "ack, you\u0027re right.",
+      "parentUuid": "d2ecaf08_c935f7a4",
+      "range": {
+        "startLine": 248,
+        "startChar": 5,
+        "endLine": 248,
+        "endChar": 24
+      },
+      "revId": "7c225fe0d4144a49ed9b0ecf9b72cefc8a44e6de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5e1ccc6_c3acb2da",
