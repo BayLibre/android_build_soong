@@ -16,6 +16,29 @@
       "message": "Thanks, Jin! I\u0027ll wait with submitting until Liz wakes up.",
       "revId": "66162e2247d09fc1f486b70e1528f87c5b602ec6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b8ffda7_f56cde08",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-12T12:12:17Z",
+      "side": 1,
+      "message": "nit: without the ` , this should linkify in the docs.",
+      "range": {
+        "startLine": 27,
+        "startChar": 16,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "66162e2247d09fc1f486b70e1528f87c5b602ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
