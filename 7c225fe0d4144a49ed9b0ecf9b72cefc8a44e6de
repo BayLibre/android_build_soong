@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d299799_e81e32cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-10-12T22:52:41Z",
+      "side": 1,
+      "message": "Already did that, learning from the first attempt.",
+      "parentUuid": "9258efa3_8e3a34f8",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "7c225fe0d4144a49ed9b0ecf9b72cefc8a44e6de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29177ecf_b83b1c5c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-12T08:56:11Z",
       "side": 1,
       "message": "nit: indent",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 4
+      },
+      "revId": "7c225fe0d4144a49ed9b0ecf9b72cefc8a44e6de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ced119_f4672efd",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-10-12T22:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29177ecf_b83b1c5c",
       "range": {
         "startLine": 179,
         "startChar": 0,
@@ -118,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "894c9505_79893bea",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-10-12T22:52:41Z",
+      "side": 1,
+      "message": "The provider is CcUnstrippedInfo, so renamed cquery handling for it, too.",
+      "parentUuid": "94472d8c_b8367828",
+      "range": {
+        "startLine": 248,
+        "startChar": 5,
+        "endLine": 248,
+        "endChar": 24
+      },
+      "revId": "7c225fe0d4144a49ed9b0ecf9b72cefc8a44e6de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5e1ccc6_c3acb2da",
@@ -131,6 +203,30 @@
       "writtenOn": "2022-10-12T14:15:06Z",
       "side": 1,
       "message": "please add godocs throughout",
+      "range": {
+        "startLine": 278,
+        "startChar": 5,
+        "endLine": 278,
+        "endChar": 17
+      },
+      "revId": "7c225fe0d4144a49ed9b0ecf9b72cefc8a44e6de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31038eb1_11ff778b",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-10-12T22:52:41Z",
+      "side": 1,
+      "message": "Added comments for cquery handler and ParseResult",
+      "parentUuid": "a5e1ccc6_c3acb2da",
       "range": {
         "startLine": 278,
         "startChar": 5,
