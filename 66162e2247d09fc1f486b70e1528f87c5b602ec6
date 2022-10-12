@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d45378_d45de4ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-12T08:05:11Z",
+      "side": 1,
+      "message": "Thanks, Jin! I\u0027ll wait with submitting until Liz wakes up.",
+      "revId": "66162e2247d09fc1f486b70e1528f87c5b602ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
