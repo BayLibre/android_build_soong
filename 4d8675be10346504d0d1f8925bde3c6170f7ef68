@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee70088_14578ff2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-13T18:14:33Z",
+      "side": 1,
+      "message": "I think the idea of two opposite recursive flag is such that a more specific path can invert the setting. The current implementation does not do so.",
+      "revId": "4d8675be10346504d0d1f8925bde3c6170f7ef68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "075a1471_5fd148b4",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-13T18:14:33Z",
+      "side": 1,
+      "message": "I think this flag does make sense.\nHowever, I think we were thinking about a highest precedence `Bp2BuildRecursiveVeto`",
+      "revId": "4d8675be10346504d0d1f8925bde3c6170f7ef68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e36089_5ac5eb8b",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-13T18:14:33Z",
+      "side": 1,
+      "message": "shouldn\u0027t we be looking from the nearest ancestor instead?\npreviously it didn\u0027t matter because\nIf a/b -\u003e DefaultTrueRecursively and a/b/c -\u003e DefaultTrueRecursively as well, we can happily just look at a/b and be done.\nNow if a/b -\u003e DefaultTrueRecursively and a/b/c -\u003e DefaultFalseRecursively, we\u0027d probably think the latter wins because of specificity (in line with how DefaultTrue at a pacakgePath trumps over DefaultFalseRecursively at an ancestor)",
+      "revId": "4d8675be10346504d0d1f8925bde3c6170f7ef68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
