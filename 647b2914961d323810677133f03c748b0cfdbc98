@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ae4a86_a9c27493",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-13T20:17:41Z",
+      "side": 1,
+      "message": "can you add context on why we\u0027re doing this and/or a bug?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "647b2914961d323810677133f03c748b0cfdbc98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
