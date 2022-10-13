@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b51649b_df134b64",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-10-13T20:36:34Z",
+      "side": 1,
+      "message": "Is the `iota + 2` necessary? I think this means that Bp2BuildDefaultTrueRecursively \u003d 1, Bp2BuildDefaultTrue \u003d 2, Bp2BuildDefaultFalse \u003d 3, and Bp2BuildDefaultFalseRecursively \u003d 5",
+      "range": {
+        "startLine": 39,
+        "startChar": 60,
+        "endLine": 39,
+        "endChar": 70
+      },
+      "revId": "8303db2b95820e4ed2548f59f482a8da93997482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
