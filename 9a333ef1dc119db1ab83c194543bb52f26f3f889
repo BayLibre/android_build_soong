@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4db09326_3d291d36",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-13T19:43:29Z",
+      "side": 1,
+      "message": "change the comment to exclude x/y/z which is already taken care of.",
+      "revId": "9a333ef1dc119db1ab83c194543bb52f26f3f889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a39bcd8_1baa4859",
         "filename": "android/bazel.go",
         "patchSetId": 5
@@ -14,6 +31,24 @@
       "writtenOn": "2022-10-13T19:41:15Z",
       "side": 1,
       "message": "if packagePath \u003d x/y/z\nfirst loop: packagePrefix \u003d x/y\nsecond loop pacakgePrefix \u003d x\nWe never checked for x/y/z itself, did we?",
+      "revId": "9a333ef1dc119db1ab83c194543bb52f26f3f889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98500bfe_39b8ab92",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-13T19:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a39bcd8_1baa4859",
       "revId": "9a333ef1dc119db1ab83c194543bb52f26f3f889",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
