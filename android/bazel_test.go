@@ -71,6 +71,13 @@ func TestConvertAllModulesInPackage(t *testing.T) {
 			},
 			packageDir: "a",
 		},
+		{
+			prefixes: allowlists.Bp2BuildConfig{
+				"a":   allowlists.Bp2BuildDefaultFalseRecursively,
+				"a/b": allowlists.Bp2BuildDefaultTrue,
+			},
+			packageDir: "a/b",
+		},
 	}
 
 	for _, test := range testCases {
@@ -132,6 +139,13 @@ func TestModuleOptIn(t *testing.T) {
 				"a/b/c": allowlists.Bp2BuildDefaultFalse,
 			},
 			packageDir: "a",
+		},
+		{
+			prefixes: allowlists.Bp2BuildConfig{
+				"a":   allowlists.Bp2BuildDefaultFalseRecursively,
+				"a/b": allowlists.Bp2BuildDefaultTrue,
+			},
+			packageDir: "a/b/c",
 		},
 	}
 
