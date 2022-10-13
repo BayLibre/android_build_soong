@@ -259,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "146f4d1e_572a6ed7",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-10-13T20:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a4520b_bd9adcab",
+      "range": {
+        "startLine": 391,
+        "startChar": 56,
+        "endLine": 391,
+        "endChar": 75
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94b0d6a0_a6734a45",
@@ -272,6 +296,30 @@
       "writtenOn": "2022-10-10T19:44:01Z",
       "side": 1,
       "message": "can we also add an unnested `native_shared_libs` to this blueprint? that would have helped catch the issue Yu raised",
+      "range": {
+        "startLine": 501,
+        "startChar": 11,
+        "endLine": 501,
+        "endChar": 12
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ed6f41_757d2cb2",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-10-13T20:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94b0d6a0_a6734a45",
       "range": {
         "startLine": 501,
         "startChar": 11,
