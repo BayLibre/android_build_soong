@@ -50,6 +50,23 @@
       "message": "shouldn\u0027t we be looking from the nearest ancestor instead?\npreviously it didn\u0027t matter because\nIf a/b -\u003e DefaultTrueRecursively and a/b/c -\u003e DefaultTrueRecursively as well, we can happily just look at a/b and be done.\nNow if a/b -\u003e DefaultTrueRecursively and a/b/c -\u003e DefaultFalseRecursively, we\u0027d probably think the latter wins because of specificity (in line with how DefaultTrue at a pacakgePath trumps over DefaultFalseRecursively at an ancestor)",
       "revId": "4d8675be10346504d0d1f8925bde3c6170f7ef68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57868e98_2d027e9f",
+        "filename": "android/bazel_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-13T18:16:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is a sufficient enough test, given the result would be `a/b` even if the `a: DefaultFalseRecursively` key/value pair was not present. Can you devise something more comprehensive? a chain of ancestors that each have recursive settings?",
+      "revId": "4d8675be10346504d0d1f8925bde3c6170f7ef68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
