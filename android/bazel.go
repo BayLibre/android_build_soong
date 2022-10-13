@@ -489,7 +489,7 @@ func bp2buildDefaultTrueRecursively(packagePath string, config allowlists.Bp2Bui
 	// Check if the package path has an exact match in the config.
 	if config[packagePath] == allowlists.Bp2BuildDefaultTrue || config[packagePath] == allowlists.Bp2BuildDefaultTrueRecursively {
 		return true, packagePath
-	} else if config[packagePath] == allowlists.Bp2BuildDefaultFalse {
+	} else if config[packagePath] == allowlists.Bp2BuildDefaultFalse || config[packagePath] == allowlists.Bp2BuildDefaultFalseRecursively {
 		return false, packagePath
 	}
 
@@ -501,6 +501,9 @@ func bp2buildDefaultTrueRecursively(packagePath string, config allowlists.Bp2Bui
 		if config[packagePrefix] == allowlists.Bp2BuildDefaultTrueRecursively {
 			// package contains this prefix and this prefix should convert all modules
 			return true, packagePrefix
+		} else if config[packagePrefix] == allowlists.Bp2BuildDefaultFalseRecursively {
+			//package contains this prefix and this prefix should NOT convert any modules
+			return false, packagePrefix
 		}
 		// Continue to the next part of the package dir.
 		packagePrefix += "/"
