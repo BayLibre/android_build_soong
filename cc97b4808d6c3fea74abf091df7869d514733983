@@ -166,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4556cf27_8c84e976",
+        "filename": "java/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-13T16:43:43Z",
+      "side": 1,
+      "message": "Done. Thank you for the explanation.",
+      "parentUuid": "0988e0d6_08ed387d",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 28
+      },
+      "revId": "cc97b4808d6c3fea74abf091df7869d514733983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44dc8fcc_e0f174bc",
@@ -368,6 +392,30 @@
       "side": 1,
       "message": "The naming is somewhat confusing of `InitSdkAwareModule` -- It is not used to enable depending on the SDK but to allow a library to be _part_ of the SDK.",
       "parentUuid": "e2a21338_ad65a4f7",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 35
+      },
+      "revId": "cc97b4808d6c3fea74abf091df7869d514733983",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7289f239_696918ef",
+        "filename": "java/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-13T16:43:43Z",
+      "side": 1,
+      "message": "oh, got it. Thank you for explaining this. Removed it.",
+      "parentUuid": "20e8851e_20e407e2",
       "range": {
         "startLine": 170,
         "startChar": 0,
