@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f176092_1f1fe2b3",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-13T20:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4db09326_3d291d36",
+      "revId": "9a333ef1dc119db1ab83c194543bb52f26f3f889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a39bcd8_1baa4859",
@@ -66,6 +84,24 @@
       "writtenOn": "2022-10-13T19:41:15Z",
       "side": 1,
       "message": "nit: prefer `switch` when left hand side is the same",
+      "revId": "9a333ef1dc119db1ab83c194543bb52f26f3f889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "187c0866_b76d776e",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-13T20:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57ae7e60_954d174d",
       "revId": "9a333ef1dc119db1ab83c194543bb52f26f3f889",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
