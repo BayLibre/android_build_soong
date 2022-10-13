@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ca6324f_c24b74b6",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-13T19:41:15Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "a5e94bfe_62813e7e",
+      "revId": "4d8675be10346504d0d1f8925bde3c6170f7ef68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87e36089_5ac5eb8b",

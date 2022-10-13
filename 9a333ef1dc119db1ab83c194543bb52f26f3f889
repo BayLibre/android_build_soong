@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a39bcd8_1baa4859",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-13T19:41:15Z",
+      "side": 1,
+      "message": "if packagePath \u003d x/y/z\nfirst loop: packagePrefix \u003d x/y\nsecond loop pacakgePrefix \u003d x\nWe never checked for x/y/z itself, did we?",
+      "revId": "9a333ef1dc119db1ab83c194543bb52f26f3f889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ae7e60_954d174d",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-13T19:41:15Z",
+      "side": 1,
+      "message": "nit: prefer `switch` when left hand side is the same",
+      "revId": "9a333ef1dc119db1ab83c194543bb52f26f3f889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
