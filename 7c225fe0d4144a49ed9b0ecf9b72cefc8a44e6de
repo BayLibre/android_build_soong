@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8125d749_b8957531",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-13T00:32:26Z",
+      "side": 1,
+      "message": "Thanks! It would be useful to add another \"Test: mixed_droid.sh locally\" line here.",
+      "parentUuid": "0d299799_e81e32cc",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 16
+      },
+      "revId": "7c225fe0d4144a49ed9b0ecf9b72cefc8a44e6de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29177ecf_b83b1c5c",
