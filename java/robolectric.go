@@ -38,7 +38,7 @@ var robolectricDefaultLibs = []string{
 	"junitxml",
 }
 
-const robolectricCurrentLib = "Robolectric_all-target"
+const robolectricCurrentLib = "Robolectric_all-target_upstream"
 const robolectricPrebuiltLibPattern = "platform-robolectric-%s-prebuilt"
 
 var (
