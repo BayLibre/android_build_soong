@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e94bfe_62813e7e",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-13T19:00:35Z",
+      "side": 1,
+      "message": "I think we should do that in a different CL.",
+      "parentUuid": "075a1471_5fd148b4",
+      "revId": "4d8675be10346504d0d1f8925bde3c6170f7ef68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87e36089_5ac5eb8b",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d073fde_bf5b82a1",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-13T19:00:35Z",
+      "side": 1,
+      "message": "PTAL!",
+      "parentUuid": "87e36089_5ac5eb8b",
+      "revId": "4d8675be10346504d0d1f8925bde3c6170f7ef68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57868e98_2d027e9f",
         "filename": "android/bazel_test.go",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2022-10-13T18:16:55Z",
       "side": 1,
       "message": "I\u0027m not sure this is a sufficient enough test, given the result would be `a/b` even if the `a: DefaultFalseRecursively` key/value pair was not present. Can you devise something more comprehensive? a chain of ancestors that each have recursive settings?",
+      "revId": "4d8675be10346504d0d1f8925bde3c6170f7ef68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d176fa_cbf3ace7",
+        "filename": "android/bazel_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-13T19:00:35Z",
+      "side": 1,
+      "message": "PTAL",
+      "parentUuid": "57868e98_2d027e9f",
       "revId": "4d8675be10346504d0d1f8925bde3c6170f7ef68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
