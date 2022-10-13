@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a13075a7_6d08b514",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-10-13T21:49:56Z",
+      "side": 1,
+      "message": "You now have one more `\u0026` than before, because you have one both here and in parseJson. Does that still work?",
+      "revId": "2c5ffb6cdae2213448cf4f7e78e4a7b041112166",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
