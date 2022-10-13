@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2da9c014_bade7fc2",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3434,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-10-13T20:53:15Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I updated the fix to make sure unnested native_shared_libs is built for both.\n\nSee https://android-review.googlesource.com/c/platform/build/soong/+/2243697/9/bp2build/apex_conversion_test.go#288",
+      "parentUuid": "3d65022d_32a98b3f",
+      "range": {
+        "startLine": 3434,
+        "startChar": 1,
+        "endLine": 3434,
+        "endChar": 17
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e13ff507_380b87fd",
         "filename": "apex/apex_test.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-10T19:44:01Z",
       "side": 1,
       "message": "varying compile_multilib in this test as well would help give better coverage",
+      "range": {
+        "startLine": 4101,
+        "startChar": 5,
+        "endLine": 4101,
+        "endChar": 35
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba61da0d_78baacab",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4101,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-10-13T20:53:15Z",
+      "side": 1,
+      "message": "I removed the old test and added `TestCompileMultilibProp` to test for all variations of compile_multilib prop. PTAL.",
+      "parentUuid": "e13ff507_380b87fd",
       "range": {
         "startLine": 4101,
         "startChar": 5,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef089731_8f5120e7",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4111,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-10-13T20:53:15Z",
+      "side": 1,
+      "message": "I removed the old test and added `TestCompileMultilibProp` to test for all variations of compile_multilib prop. PTAL.",
+      "parentUuid": "b67ebc62_5c946d2d",
+      "range": {
+        "startLine": 4111,
+        "startChar": 3,
+        "endLine": 4111,
+        "endChar": 5
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95f25073_869a259a",
         "filename": "apex/apex_test.go",
         "patchSetId": 3
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-10T19:44:01Z",
       "side": 1,
       "message": "when building for android.Arm, we never expect there to be a 64-bit target, so this test is a bit redundant.",
+      "range": {
+        "startLine": 4117,
+        "startChar": 3,
+        "endLine": 4120,
+        "endChar": 5
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34ed2e0_cf8d041e",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4120,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-10-13T20:53:15Z",
+      "side": 1,
+      "message": "I removed the old test and added `TestCompileMultilibProp` to test for all variations of compile_multilib prop. PTAL.",
+      "parentUuid": "95f25073_869a259a",
       "range": {
         "startLine": 4117,
         "startChar": 3,
@@ -106,6 +202,30 @@
       "writtenOn": "2022-10-10T19:44:01Z",
       "side": 1,
       "message": "how does this vary from the test case above with multilib unset?",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 270,
+        "endChar": 39
+      },
+      "revId": "f28b05436347466d367319fe357f2f6693e47e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0adf2aba_4463409a",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-10-13T20:53:15Z",
+      "side": 1,
+      "message": "The test above doesn\u0027t have unnested native_shared_libs and this one does. \n\nI can just modify the existing tests to have unnested native_shared_libs for better test coverage.\n\nI\u0027ll remove this test.",
+      "parentUuid": "e00547d2_26e069e4",
       "range": {
         "startLine": 270,
         "startChar": 5,
