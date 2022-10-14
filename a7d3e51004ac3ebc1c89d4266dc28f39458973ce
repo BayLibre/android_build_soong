@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4c71aff_2a264c7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-10-14T14:40:09Z",
+      "side": 1,
+      "message": "Do we still want to merge these into the old releases in AOSP?\n\nIt was merged into partner Gerrit in\n```\nhttps://partner-android-review.googlesource.com/c/platform/build/soong/+/2295867\nhttps://partner-android-review.googlesource.com/c/platform/build/soong/+/2296187\nhttps://partner-android-review.googlesource.com/c/platform/build/soong/+/2296069\n```",
+      "revId": "a7d3e51004ac3ebc1c89d4266dc28f39458973ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
