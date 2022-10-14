@@ -501,8 +501,9 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		s.Memtag_stack = nil
 	}
 
-	// Disable sanitizers that depend on the UBSan runtime for windows/darwin builds.
-	if !ctx.Os().Linux() {
+	// Disable sanitizers that depend on the UBSan runtime
+	// TODO(b/253652966): Only disable in windows/darwin builds (!ctx.Os().Linux())
+	if true {
 		s.Cfi = nil
 		s.Diag.Cfi = nil
 		s.Misc_undefined = nil
