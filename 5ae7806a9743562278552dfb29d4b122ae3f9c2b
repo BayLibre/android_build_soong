@@ -16,6 +16,24 @@
       "message": "Updating to 21 means libandroid_support doesn\u0027t get used and this line has to be removed.",
       "revId": "5ae7806a9743562278552dfb29d4b122ae3f9c2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01996f75_bdd88a62",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4179,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-10-14T22:16:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79db9dc4_55296286",
+      "revId": "5ae7806a9743562278552dfb29d4b122ae3f9c2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
