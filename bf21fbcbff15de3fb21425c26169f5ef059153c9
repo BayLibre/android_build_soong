@@ -16,6 +16,23 @@
       "message": "I think we should mention the actual value that would go in the field. Is that private, or did it change?",
       "revId": "bf21fbcbff15de3fb21425c26169f5ef059153c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c99c26_63308765",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-14T17:08:29Z",
+      "side": 1,
+      "message": "I\u0027d avoid using the word \"current\" here, because sdk_version: \"current\" means \"current possibly unreleased public sdk\", but this defaults to private platform apis.",
+      "revId": "bf21fbcbff15de3fb21425c26169f5ef059153c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
