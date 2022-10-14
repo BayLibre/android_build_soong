@@ -16,6 +16,24 @@
       "message": "Should this be automatically replicated from google3?",
       "revId": "d65026a6f98494223d593d7d98d48c4930ef13d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "840e4daa_3a93d310",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-10-14T16:55:26Z",
+      "side": 1,
+      "message": "Ack\n\nNo, at least not yet. I discussed this with Tyler, and there are features used in google3 not used in Android. Including them here would cause needless confusion.",
+      "parentUuid": "996e3038_fdfc5320",
+      "revId": "d65026a6f98494223d593d7d98d48c4930ef13d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
