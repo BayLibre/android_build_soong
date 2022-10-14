@@ -880,7 +880,7 @@ type genRuleProperties struct {
 
 type bazelGenruleAttributes struct {
 	Srcs  bazel.LabelListAttribute
-	Outs  []string
+	Outs  bazel.StringListAttribute
 	Tools bazel.LabelListAttribute
 	Cmd   string
 }
@@ -950,19 +950,29 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		// The Out prop is not in an immediately accessible field
 		// in the Module struct, so use GetProperties and cast it
 		// to the known struct prop.
-		var outs []string
-		for _, propIntf := range m.GetProperties() {
-			if props, ok := propIntf.(*genRuleProperties); ok {
-				outs = props.Out
-				break
-			}
-		}
 		attrs := &bazelGenruleAttributes{
 			Srcs:  srcs,
-			Outs:  outs,
 			Cmd:   cmd,
 			Tools: tools,
 		}
+
+		if ctx.ModuleType() == "genrule" {
+			for _, propIntf := range m.GetProperties() {
+				if props, ok := propIntf.(*genRuleProperties); ok {
+					attrs.Outs.SetSelectValue(bazel.NoConfigAxis, "", props.Out)
+					break
+				}
+			}
+		} else {
+			for axis, configToProps := range m.GetArchVariantProperties(ctx, &genRuleProperties{}) {
+				for config, props := range configToProps {
+					if props, ok := props.(*genRuleProperties); ok {
+						attrs.Outs.SetSelectValue(axis, config, props.Out)
+					}
+				}
+			}
+		}
+
 		props := bazel.BazelTargetModuleProperties{
 			Rule_class: "genrule",
 		}
