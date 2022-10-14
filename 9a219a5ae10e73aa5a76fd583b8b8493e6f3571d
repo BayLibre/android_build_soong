@@ -16,6 +16,40 @@
       "message": "still need to fix AIDL, but let\u0027s see",
       "revId": "9a219a5ae10e73aa5a76fd583b8b8493e6f3571d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "519427f7_3d308812",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-14T23:48:47Z",
+      "side": 1,
+      "message": "it\u0027s strange that this succeeded, but this isn\u0027t merged yet:\nhttps://android-review.googlesource.com/c/platform/system/tools/aidl/+/2256422\n\nI know this breaks locally",
+      "revId": "9a219a5ae10e73aa5a76fd583b8b8493e6f3571d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9482661f_7cf9fa2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-14T23:48:47Z",
+      "side": 1,
+      "message": "it\u0027s strange that this succeeded, but this isn\u0027t merged yet:\nhttps://android-review.googlesource.com/c/platform/system/tools/aidl/+/2256422\n\nI know this breaks locally",
+      "revId": "9a219a5ae10e73aa5a76fd583b8b8493e6f3571d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
