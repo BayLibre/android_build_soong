@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04859402_73ff260c",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-14T21:45:49Z",
+      "side": 1,
+      "message": "Leave a TODO here?",
+      "revId": "5321d243090bce4ccf3dd80c49bc22e27a217095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
