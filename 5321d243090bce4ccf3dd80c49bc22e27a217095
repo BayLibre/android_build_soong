@@ -16,6 +16,24 @@
       "message": "Leave a TODO here?",
       "revId": "5321d243090bce4ccf3dd80c49bc22e27a217095",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e06ae64_1fb8db93",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2022-10-14T23:05:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04859402_73ff260c",
+      "revId": "5321d243090bce4ccf3dd80c49bc22e27a217095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
