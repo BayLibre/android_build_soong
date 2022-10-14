@@ -502,7 +502,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	}
 
 	// Disable sanitizers that depend on the UBSan runtime for windows/darwin builds.
-	if !ctx.Os().Linux() {
+	if true {
 		s.Cfi = nil
 		s.Diag.Cfi = nil
 		s.Misc_undefined = nil
