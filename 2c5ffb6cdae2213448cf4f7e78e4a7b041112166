@@ -34,6 +34,24 @@
       "parentUuid": "a13075a7_6d08b514",
       "revId": "2c5ffb6cdae2213448cf4f7e78e4a7b041112166",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c90b9798_f024037e",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-10-14T22:05:06Z",
+      "side": 1,
+      "message": "Fixed parseJson code.",
+      "parentUuid": "3c032946_8f6c818c",
+      "revId": "2c5ffb6cdae2213448cf4f7e78e4a7b041112166",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
