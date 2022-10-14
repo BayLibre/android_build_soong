@@ -2467,7 +2467,8 @@ func apexBootclasspathFragmentFiles(ctx android.ModuleContext, module blueprint.
 		filesToAdd = append(filesToAdd, *af)
 	}
 
-	if pathInApex := bootclasspathFragmentInfo.ProfileInstallPathInApex(); pathInApex != "" {
+	// TODO(b/251847652): Generate boot_image_profile once host dex2oat works for 16k page size
+	if pathInApex := bootclasspathFragmentInfo.ProfileInstallPathInApex(); false {
 		pathOnHost := bootclasspathFragmentInfo.ProfilePathOnHost()
 		tempPath := android.PathForModuleOut(ctx, "boot_image_profile", pathInApex)
 
