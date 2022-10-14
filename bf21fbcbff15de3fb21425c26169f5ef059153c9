@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e511a78b_15b3398a",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-10-14T17:07:48Z",
+      "side": 1,
+      "message": "I think we should mention the actual value that would go in the field. Is that private, or did it change?",
+      "revId": "bf21fbcbff15de3fb21425c26169f5ef059153c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
