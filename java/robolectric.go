@@ -38,7 +38,7 @@ var robolectricDefaultLibs = []string{
 	"junitxml",
 }
 
-const robolectricCurrentLib = "Robolectric_all-target_upstream"
+const robolectricCurrentLib = "Robolectric_all-target"
 const robolectricPrebuiltLibPattern = "platform-robolectric-%s-prebuilt"
 
 var (
@@ -64,6 +64,8 @@ type robolectricProperties struct {
 	// The version number of a robolectric prebuilt to use from prebuilts/misc/common/robolectric
 	// instead of the one built from source in external/robolectric-shadows.
 	Robolectric_prebuilt_version *string
+
+	Upstream bool
 }
 
 type robolectricTest struct {
@@ -107,7 +109,11 @@ func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if v := String(r.robolectricProperties.Robolectric_prebuilt_version); v != "" {
 		ctx.AddVariationDependencies(nil, libTag, fmt.Sprintf(robolectricPrebuiltLibPattern, v))
 	} else {
-		ctx.AddVariationDependencies(nil, libTag, robolectricCurrentLib)
+		if r.robolectricProperties.Upstream {
+			ctx.AddVariationDependencies(nil, libTag, robolectricCurrentLib+"_upstream")
+		} else {
+			ctx.AddVariationDependencies(nil, libTag, robolectricCurrentLib)
+		}
 	}
 
 	ctx.AddVariationDependencies(nil, libTag, robolectricDefaultLibs...)
