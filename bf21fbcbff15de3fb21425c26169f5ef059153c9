@@ -69,6 +69,24 @@
       "parentUuid": "31c99c26_63308765",
       "revId": "bf21fbcbff15de3fb21425c26169f5ef059153c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e4fb935_af256e13",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-15T04:13:26Z",
+      "side": 1,
+      "message": "Trevor, since you are OOO this week, I am going to submit this CL in its current state. We can add further documentation later if necessary.",
+      "parentUuid": "b80b968a_9d439735",
+      "revId": "bf21fbcbff15de3fb21425c26169f5ef059153c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
