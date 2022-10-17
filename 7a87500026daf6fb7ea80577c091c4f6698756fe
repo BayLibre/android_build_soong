@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bedd384_378ce3e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-10-17T19:27:31Z",
+      "side": 1,
+      "message": "Correction to make what was once `prebuilt_library*` instead to `cc_prebuilt_library*`, for conformity with the rest of our `cc/cc_prebuilt*` and general `cc_` prefix use.",
+      "revId": "7a87500026daf6fb7ea80577c091c4f6698756fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
