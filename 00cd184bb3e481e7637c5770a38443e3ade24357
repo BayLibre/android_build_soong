@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f2aa23_110e0538",
+        "filename": "java/robolectric.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-17T20:33:31Z",
+      "side": 1,
+      "message": "Add a comment here, which will be visible as the user facing documentation in go/Android.bp.  Also use `*bool` as the type, which will allow the use of defaults modules to set the value.",
+      "revId": "00cd184bb3e481e7637c5770a38443e3ade24357",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5114741a_5e28861f",
+        "filename": "java/robolectric.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-17T20:33:31Z",
+      "side": 1,
+      "message": "If you use `*bool` as the type this becomes `proptools.Bool(r.robolectricProperties.Upstream)`.",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 37
+      },
+      "revId": "00cd184bb3e481e7637c5770a38443e3ade24357",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
