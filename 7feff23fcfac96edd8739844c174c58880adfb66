@@ -16,6 +16,23 @@
       "message": "Commit message / test to-discuss",
       "revId": "7feff23fcfac96edd8739844c174c58880adfb66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd75d355_9927015a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-10-17T22:37:58Z",
+      "side": 1,
+      "message": "Beside b/205771732, do you have any pointer to where these constants will be used?",
+      "revId": "7feff23fcfac96edd8739844c174c58880adfb66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
