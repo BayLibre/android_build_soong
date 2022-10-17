@@ -1345,6 +1345,6 @@ var (
 	}
 
 	ProdMixedBuildsEnabledList = []string{
-		"com.android.adbd",
+		// "com.android.adbd",
 	}
 )

@@ -130,6 +130,10 @@ func (c Config) PrimaryBuilderInvocations() []bootstrap.PrimaryBuilderInvocation
 	return []bootstrap.PrimaryBuilderInvocation{}
 }
 
+func (c Config) PruneInvocations() []bootstrap.PruneInvocation {
+	return []bootstrap.PruneInvocation{}
+}
+
 // RunningInsideUnitTest returns true if this code is being run as part of a Soong unit test.
 func (c Config) RunningInsideUnitTest() bool {
 	return c.config.TestProductVariables != nil
