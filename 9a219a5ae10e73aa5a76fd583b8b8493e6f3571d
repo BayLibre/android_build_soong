@@ -50,6 +50,42 @@
       "message": "it\u0027s strange that this succeeded, but this isn\u0027t merged yet:\nhttps://android-review.googlesource.com/c/platform/system/tools/aidl/+/2256422\n\nI know this breaks locally",
       "revId": "9a219a5ae10e73aa5a76fd583b8b8493e6f3571d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed6fef5c_39182cf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-17T21:25:40Z",
+      "side": 1,
+      "message": "merged now.",
+      "parentUuid": "9482661f_7cf9fa2a",
+      "revId": "9a219a5ae10e73aa5a76fd583b8b8493e6f3571d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "def77674_36391d41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-17T21:25:40Z",
+      "side": 1,
+      "message": "merged now.",
+      "parentUuid": "519427f7_3d308812",
+      "revId": "9a219a5ae10e73aa5a76fd583b8b8493e6f3571d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
