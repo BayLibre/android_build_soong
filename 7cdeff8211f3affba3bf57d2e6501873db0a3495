@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "340dd814_d613c292",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-10-17T14:27:33Z",
+      "side": 1,
+      "message": "minor nit: I\u0027d prefer an explicit return here instead of C-style output arguments",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 0
+      },
+      "revId": "7cdeff8211f3affba3bf57d2e6501873db0a3495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04571762_c2d12632",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2678,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-10-17T14:27:33Z",
+      "side": 1,
+      "message": "This seems less readable than it was before, and possibly prone to breaking the logic if there are edits in the future to change `certificate` to not be a zero-ed value. (Also, before `attrs.Certificate` was set to `nil` and here it is just a zero-ed struct, does that matter?)\n\nCould we make this look more like it did before?",
+      "revId": "7cdeff8211f3affba3bf57d2e6501873db0a3495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
