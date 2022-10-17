@@ -21,7 +21,6 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"android/soong/android"
 	"android/soong/shared"
 )
 
@@ -31,14 +30,23 @@ import (
 // or a directory. If excluded is true, then that file/directory should be
 // excluded from symlinking. Otherwise, the node is not excluded, but one of its
 // descendants is (otherwise the node in question would not exist)
-type node struct {
+
+type excludeNode struct {
 	name     string
 	excluded bool // If false, this is just an intermediate node
-	children map[string]*node
+	children map[string]*excludeNode
+}
+
+type symlinkForestContext struct {
+	verbose bool
+	topdir  string       // $TOPDIR
+	exclude *excludeNode // Files to exclude
+	deps    []string     // Files/directories read while constructing the forest
+	okay    bool         // Whether the forest was successfully  constructed
 }
 
 // Ensures that the node for the given path exists in the tree and returns it.
-func ensureNodeExists(root *node, path string) *node {
+func ensureNodeExists(root *excludeNode, path string) *excludeNode {
 	if path == "" {
 		return root
 	}
@@ -56,15 +64,15 @@ func ensureNodeExists(root *node, path string) *node {
 	if child, ok := dn.children[base]; ok {
 		return child
 	} else {
-		dn.children[base] = &node{base, false, make(map[string]*node)}
+		dn.children[base] = &excludeNode{base, false, make(map[string]*excludeNode)}
 		return dn.children[base]
 	}
 }
 
 // Turns a list of paths to be excluded into a tree made of "node" objects where
 // the specified paths are marked as excluded.
-func treeFromExcludePathList(paths []string) *node {
-	result := &node{"", false, make(map[string]*node)}
+func treeFromExcludePathList(paths []string) *excludeNode {
+	result := &excludeNode{"", false, make(map[string]*excludeNode)}
 
 	for _, p := range paths {
 		ensureNodeExists(result, p).excluded = true
@@ -180,16 +188,20 @@ func isDir(path string, fi os.FileInfo) bool {
 // Recursively plants a symlink forest at forestDir. The symlink tree will
 // contain every file in buildFilesDir and srcDir excluding the files in
 // exclude. Collects every directory encountered during the traversal of srcDir
-// into acc.
-func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir string, buildFilesDir string, srcDir string, exclude *node, acc *[]string, okay *bool) {
-	if exclude != nil && exclude.excluded {
+// into context.deps .
+func plantSymlinkForestRecursive(context *symlinkForestContext, excludeTree *excludeNode, forestDir string, buildFilesDir string, srcDir string) {
+	if excludeTree != nil && excludeTree.excluded {
 		// This directory is not needed, bail out
 		return
 	}
 
-	*acc = append(*acc, srcDir)
-	srcDirMap := readdirToMap(shared.JoinPath(topdir, srcDir))
-	buildFilesMap := readdirToMap(shared.JoinPath(topdir, buildFilesDir))
+	// We don't add buildFilesDir here because the bp2build files marker files is
+	// already a dependency which covers it. If we ever wanted to turn this into
+	// a generic symlink forest creation tool, we'd need to add it, too.
+	context.deps = append(context.deps, srcDir)
+
+	srcDirMap := readdirToMap(shared.JoinPath(context.topdir, srcDir))
+	buildFilesMap := readdirToMap(shared.JoinPath(context.topdir, buildFilesDir))
 
 	renamingBuildFile := false
 	if _, ok := srcDirMap["BUILD"]; ok {
@@ -211,7 +223,7 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 		allEntries[n] = true
 	}
 
-	err := os.MkdirAll(shared.JoinPath(topdir, forestDir), 0777)
+	err := os.MkdirAll(shared.JoinPath(context.topdir, forestDir), 0777)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Cannot mkdir '%s': %s\n", forestDir, err)
 		os.Exit(1)
@@ -231,12 +243,12 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 		buildFilesChild := shared.JoinPath(buildFilesDir, f)
 
 		// Descend in the exclusion tree, if there are any excludes left
-		var excludeChild *node = nil
-		if exclude != nil {
+		var excludeChild *excludeNode = nil
+		if excludeTree != nil {
 			if f == "BUILD.bazel" && renamingBuildFile {
-				excludeChild = exclude.children["BUILD"]
+				excludeChild = excludeTree.children["BUILD"]
 			} else {
-				excludeChild = exclude.children[f]
+				excludeChild = excludeTree.children[f]
 			}
 		}
 
@@ -245,7 +257,7 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 
 		if excludeChild != nil && excludeChild.excluded {
 			if bExists {
-				symlinkIntoForest(topdir, forestChild, buildFilesChild)
+				symlinkIntoForest(context.topdir, forestChild, buildFilesChild)
 			}
 			continue
 		}
@@ -253,38 +265,38 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 		sDir := false
 		bDir := false
 		if sExists {
-			sDir = isDir(shared.JoinPath(topdir, srcChild), srcChildEntry)
+			sDir = isDir(shared.JoinPath(context.topdir, srcChild), srcChildEntry)
 		}
 
 		if bExists {
-			bDir = isDir(shared.JoinPath(topdir, buildFilesChild), buildFilesChildEntry)
+			bDir = isDir(shared.JoinPath(context.topdir, buildFilesChild), buildFilesChildEntry)
 		}
 
 		if !sExists {
 			if bDir && excludeChild != nil {
 				// Not in the source tree, but we have to exclude something from under
 				// this subtree, so descend
-				plantSymlinkForestRecursive(cfg, topdir, forestChild, buildFilesChild, srcChild, excludeChild, acc, okay)
+				plantSymlinkForestRecursive(context, excludeChild, forestChild, buildFilesChild, srcChild)
 			} else {
 				// Not in the source tree, symlink BUILD file
-				symlinkIntoForest(topdir, forestChild, buildFilesChild)
+				symlinkIntoForest(context.topdir, forestChild, buildFilesChild)
 			}
 		} else if !bExists {
 			if sDir && excludeChild != nil {
 				// Not in the build file tree, but we have to exclude something from
 				// under this subtree, so descend
-				plantSymlinkForestRecursive(cfg, topdir, forestChild, buildFilesChild, srcChild, excludeChild, acc, okay)
+				plantSymlinkForestRecursive(context, excludeChild, forestChild, buildFilesChild, srcChild)
 			} else {
 				// Not in the build file tree, symlink source tree, carry on
-				symlinkIntoForest(topdir, forestChild, srcChild)
+				symlinkIntoForest(context.topdir, forestChild, srcChild)
 			}
 		} else if sDir && bDir {
 			// Both are directories. Descend.
-			plantSymlinkForestRecursive(cfg, topdir, forestChild, buildFilesChild, srcChild, excludeChild, acc, okay)
+			plantSymlinkForestRecursive(context, excludeChild, forestChild, buildFilesChild, srcChild)
 		} else if !sDir && !bDir {
 			// Neither is a directory. Merge them.
-			srcBuildFile := shared.JoinPath(topdir, srcChild)
-			generatedBuildFile := shared.JoinPath(topdir, buildFilesChild)
+			srcBuildFile := shared.JoinPath(context.topdir, srcChild)
+			generatedBuildFile := shared.JoinPath(context.topdir, buildFilesChild)
 			// Add the src and generated build files as dependencies so that bp2build
 			// is rerun when they change. Currently, this is only really necessary
 			// for srcBuildFile, because if we regenerate the generated build files
@@ -295,19 +307,19 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 			// also implicitly outputs that file, but since bp2build_workspace_marker
 			// will always have a newer timestamp than the generatedBuildFile it
 			// shouldn't be a problem.
-			*acc = append(*acc, srcBuildFile, generatedBuildFile)
-			err = mergeBuildFiles(shared.JoinPath(topdir, forestChild), srcBuildFile, generatedBuildFile, cfg.IsEnvTrue("BP2BUILD_VERBOSE"))
+			context.deps = append(context.deps, srcBuildFile, generatedBuildFile)
+			err = mergeBuildFiles(shared.JoinPath(context.topdir, forestChild), srcBuildFile, generatedBuildFile, context.verbose)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Error merging %s and %s: %s",
 					srcBuildFile, generatedBuildFile, err)
-				*okay = false
+				context.okay = false
 			}
 		} else {
 			// Both exist and one is a file. This is an error.
 			fmt.Fprintf(os.Stderr,
 				"Conflict in workspace symlink tree creation: both '%s' and '%s' exist and exactly one is a directory\n",
 				srcChild, buildFilesChild)
-			*okay = false
+			context.okay = false
 		}
 	}
 }
@@ -316,14 +328,20 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 // "srcDir" while excluding paths listed in "exclude". Returns the set of paths
 // under srcDir on which readdir() had to be called to produce the symlink
 // forest.
-func PlantSymlinkForest(cfg android.Config, topdir string, forest string, buildFiles string, srcDir string, exclude []string) []string {
-	deps := make([]string, 0)
+func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles string, exclude []string) []string {
+	context := &symlinkForestContext{
+		verbose: verbose,
+		topdir:  topdir,
+		deps:    make([]string, 0),
+		okay:    true,
+	}
+
 	os.RemoveAll(shared.JoinPath(topdir, forest))
+
 	excludeTree := treeFromExcludePathList(exclude)
-	okay := true
-	plantSymlinkForestRecursive(cfg, topdir, forest, buildFiles, srcDir, excludeTree, &deps, &okay)
-	if !okay {
+	plantSymlinkForestRecursive(context, excludeTree, forest, buildFiles, ".")
+	if !context.okay {
 		os.Exit(1)
 	}
-	return deps
+	return context.deps
 }
