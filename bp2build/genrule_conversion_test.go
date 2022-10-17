@@ -15,12 +15,13 @@
 package bp2build
 
 import (
+	"fmt"
+	"testing"
+
 	"android/soong/android"
 	"android/soong/cc"
 	"android/soong/genrule"
 	"android/soong/java"
-	"fmt"
-	"testing"
 )
 
 func registerGenruleModuleTypes(ctx android.RegistrationContext) {
@@ -640,6 +641,44 @@ genrule {
 	for _, testCase := range testCases {
 		t.Run(testCase.Description, func(t *testing.T) {
 			runGenruleTestCase(t, testCase)
+		})
+	}
+}
+
+func TestCcGenruleArch(t *testing.T) {
+	testcases := []struct {
+		name               string
+		bp                 string
+		expectedBazelAttrs AttrNameToString
+	}{
+		{
+			name: "cc_genrule with arch",
+			bp: `
+			cc_genrule {
+                name: "foo",
+                srcs: ["input.txt"],
+                cmd: "cat $(in) > $(out)",
+                bazel_module: { bp2build_available: true },
+			}`,
+			expectedBazelAttrs: AttrNameToString{
+				"srcs": `["input.txt"]`,
+				"cmd":  `"cat $(SRC) > $(OUT)"`,
+			},
+		},
+	}
+
+	for _, test := range testcases {
+		expectedBazelTargets := []string{
+			MakeBazelTargetNoRestrictions("genrule", "foo", test.expectedBazelAttrs),
+		}
+		t.Run(test.name, func(t *testing.T) {
+			RunBp2BuildTestCase(t, func(ctx android.RegistrationContext) {},
+				Bp2buildTestCase{
+					ModuleTypeUnderTest:        "cc_genrule",
+					ModuleTypeUnderTestFactory: genrule.GenRuleFactory,
+					Blueprint:                  test.bp,
+					ExpectedBazelTargets:       expectedBazelTargets,
+				})
 		})
 	}
 }
