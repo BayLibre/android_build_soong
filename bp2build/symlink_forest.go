@@ -181,13 +181,16 @@ func isDir(path string, fi os.FileInfo) bool {
 // contain every file in buildFilesDir and srcDir excluding the files in
 // exclude. Collects every directory encountered during the traversal of srcDir
 // into acc.
-func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir string, buildFilesDir string, srcDir string, exclude *node, acc *[]string, okay *bool) {
+func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir string, buildFilesDir string, srcDir string, exclude *node, acc *accumulator) {
+	if !acc.okay {
+		return //fail fast
+	}
 	if exclude != nil && exclude.excluded {
 		// This directory is not needed, bail out
 		return
 	}
 
-	*acc = append(*acc, srcDir)
+	acc.deps = append(acc.deps, srcDir)
 	srcDirMap := readdirToMap(shared.JoinPath(topdir, srcDir))
 	buildFilesMap := readdirToMap(shared.JoinPath(topdir, buildFilesDir))
 
@@ -257,7 +260,7 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 			if bDir && excludeChild != nil {
 				// Not in the source tree, but we have to exclude something from under
 				// this subtree, so descend
-				plantSymlinkForestRecursive(cfg, topdir, forestChild, buildFilesChild, srcChild, excludeChild, acc, okay)
+				plantSymlinkForestRecursive(cfg, topdir, forestChild, buildFilesChild, srcChild, excludeChild, acc)
 			} else {
 				// Not in the source tree, symlink BUILD file
 				symlinkIntoForest(topdir, forestChild, buildFilesChild)
@@ -266,14 +269,14 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 			if sDir && excludeChild != nil {
 				// Not in the build file tree, but we have to exclude something from
 				// under this subtree, so descend
-				plantSymlinkForestRecursive(cfg, topdir, forestChild, buildFilesChild, srcChild, excludeChild, acc, okay)
+				plantSymlinkForestRecursive(cfg, topdir, forestChild, buildFilesChild, srcChild, excludeChild, acc)
 			} else {
 				// Not in the build file tree, symlink source tree, carry on
 				symlinkIntoForest(topdir, forestChild, srcChild)
 			}
 		} else if sDir && bDir {
 			// Both are directories. Descend.
-			plantSymlinkForestRecursive(cfg, topdir, forestChild, buildFilesChild, srcChild, excludeChild, acc, okay)
+			plantSymlinkForestRecursive(cfg, topdir, forestChild, buildFilesChild, srcChild, excludeChild, acc)
 		} else if !sDir && !bDir {
 			// Neither is a directory. Merge them.
 			srcBuildFile := shared.JoinPath(topdir, srcChild)
@@ -288,21 +291,26 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 			// also implicitly outputs that file, but since bp2build_workspace_marker
 			// will always have a newer timestamp than the generatedBuildFile it
 			// shouldn't be a problem.
-			*acc = append(*acc, srcBuildFile, generatedBuildFile)
+			acc.deps = append(acc.deps, srcBuildFile, generatedBuildFile)
 			err = mergeBuildFiles(shared.JoinPath(topdir, forestChild), srcBuildFile, generatedBuildFile, cfg.IsEnvTrue("BP2BUILD_VERBOSE"))
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Error merging %s and %s: %s",
 					srcBuildFile, generatedBuildFile, err)
-				*okay = false
+				acc.okay = false
 			}
 		} else {
 			// Both exist and one is a file. This is an error.
 			fmt.Fprintf(os.Stderr,
 				"Conflict in workspace symlink tree creation: both '%s' and '%s' exist and exactly one is a directory\n",
 				srcChild, buildFilesChild)
-			*okay = false
+			acc.okay = false
 		}
 	}
+}
+
+type accumulator struct {
+	deps []string
+	okay bool
 }
 
 // Creates a symlink forest by merging the directory tree at "buildFiles" and
@@ -313,9 +321,9 @@ func PlantSymlinkForest(cfg android.Config, topdir string, forest string, buildF
 	deps := make([]string, 0)
 	os.RemoveAll(shared.JoinPath(topdir, forest))
 	excludeTree := treeFromExcludePathList(exclude)
-	okay := true
-	plantSymlinkForestRecursive(cfg, topdir, forest, buildFiles, srcDir, excludeTree, &deps, &okay)
-	if !okay {
+	a := accumulator{okay: true}
+	plantSymlinkForestRecursive(cfg, topdir, forest, buildFiles, srcDir, excludeTree, &a)
+	if !a.okay {
 		os.Exit(1)
 	}
 	return deps
