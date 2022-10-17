@@ -34,6 +34,74 @@
       "parentUuid": "b4c71aff_2a264c7e",
       "revId": "a7d3e51004ac3ebc1c89d4266dc28f39458973ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f276da5d_f64c247f",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-10-17T23:47:39Z",
+      "side": 1,
+      "message": "Optional: this function is used once, and where it is used it can be just\nk :\u003d len(m)\nif k \u003e len(other) {\n  k \u003d len(other)\n}",
+      "revId": "a7d3e51004ac3ebc1c89d4266dc28f39458973ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6511a905_4f428e81",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-10-17T23:47:39Z",
+      "side": 1,
+      "message": "1. is there a reason not to use copy()?\n2. `m` is value receiver, yet is it being modified.\n\nIMHO compare() should be rather a function with two arguments instead of method.",
+      "revId": "a7d3e51004ac3ebc1c89d4266dc28f39458973ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38616bf7_3321f053",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-10-17T23:47:39Z",
+      "side": 1,
+      "message": "The way this function is used these 6 lines can re replaced with \nreturn len(m) - len(n)",
+      "revId": "a7d3e51004ac3ebc1c89d4266dc28f39458973ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d5df42_bc7f0aa7",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-10-17T23:47:39Z",
+      "side": 1,
+      "message": "This causes the same arrays being sorted over and over. Can\u0027t they be kept sorted.?",
+      "revId": "a7d3e51004ac3ebc1c89d4266dc28f39458973ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
