@@ -915,6 +915,10 @@ func (c *configImpl) Bp2BuildWorkspaceMarkerFile() string {
 	return shared.JoinPath(c.SoongOutDir(), "bp2build_workspace_marker")
 }
 
+func (c *configImpl) Bp2BuildWorkspaceAnalysisMarkerFile() string {
+	return shared.JoinPath(c.SoongOutDir(), "bp2build_workspace_analysis_marker")
+}
+
 func (c *configImpl) SoongDocsHtml() string {
 	return shared.JoinPath(c.SoongOutDir(), "docs/soong_build.html")
 }
