@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a069a12_04a292ac",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-17T21:40:55Z",
+      "side": 1,
+      "message": "Try adding `s.Diag.Misc_undefined \u003d nil` and `s.Diag.Integer_overflow \u003d nil` here and see if that avoids having to include aosp/2256337.",
+      "revId": "1f226595279c9276bbcdcfa3adf3451a34915e1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
