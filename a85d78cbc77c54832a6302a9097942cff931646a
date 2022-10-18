@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45df346e_65282569",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-18T15:52:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e627fff_3689d4c2",
+      "revId": "a85d78cbc77c54832a6302a9097942cff931646a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48924d4d_fd3cc89f",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-18T15:24:40Z",
       "side": 1,
       "message": "is this common soong terminology? not something I\u0027ve come across before.",
+      "range": {
+        "startLine": 466,
+        "startChar": 35,
+        "endLine": 466,
+        "endChar": 48
+      },
+      "revId": "a85d78cbc77c54832a6302a9097942cff931646a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a39c96_8eb6533e",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-18T15:52:09Z",
+      "side": 1,
+      "message": "It is. In Go the empty interface (interface{}) is used for any type as any type can be assigned to an empty interface. So, unless you have something in the interface that uniquely identifies the interface then it can be assigned any value which is almost certainly not what you wanted.",
+      "parentUuid": "48924d4d_fd3cc89f",
       "range": {
         "startLine": 466,
         "startChar": 35,
