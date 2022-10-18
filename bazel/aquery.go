@@ -24,6 +24,7 @@ import (
 	"sort"
 	"strings"
 
+	"common"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -167,6 +168,7 @@ func newAqueryHandler(aqueryResult actionGraphContainer) (*aqueryArtifactHandler
 			return nil, err
 		}
 		artifactIdToPath[artifact.Id] = artifactPath
+		common.Calculate()
 	}
 
 	// Map middleman artifact ContentHash to input artifact depset ID.
