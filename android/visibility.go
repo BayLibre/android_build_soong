@@ -449,16 +449,38 @@ func visibilityRuleEnforcer(ctx TopDownMutatorContext) {
 		depDir := ctx.OtherModuleDir(dep)
 		depQualified := qualifiedModuleName{depDir, depName}
 
-		// Targets are always visible to other targets in their own package.
-		if depQualified.pkg == qualified.pkg {
-			return
-		}
-
-		rule := effectiveVisibilityRules(ctx.Config(), depQualified)
-		if !rule.matches(qualified) {
+		if !DepIsVisible(ctx.Config(), qualified, depQualified) {
 			ctx.ModuleErrorf("depends on %s which is not visible to this module\nYou may need to add %q to its visibility", depQualified, "//"+ctx.ModuleDir())
 		}
 	})
+}
+
+// QualifiedModuleName encapsulates the package and module name.
+type QualifiedModuleName interface {
+	// qualifiedModuleNameMarker is a marker method that identifies implementations of this.
+	qualifiedModuleNameMarker()
+}
+
+// CreateQualifiedModuleName creates a QualifiedModuleName object encapsulating the pkg and module
+// name.
+func CreateQualifiedModuleName(pkg, name string) QualifiedModuleName {
+	return qualifiedModuleName{pkg, name}
+}
+
+// DepIsVisible will return true if the module can depend on the dep module.
+func DepIsVisible(config Config, module QualifiedModuleName, dep QualifiedModuleName) bool {
+
+	qualified := module.(qualifiedModuleName)
+
+	depQualified := dep.(qualifiedModuleName)
+
+	// Targets are always visible to other targets in their own package.
+	if depQualified.pkg == qualified.pkg {
+		return true
+	}
+
+	rule := effectiveVisibilityRules(config, depQualified)
+	return rule.matches(qualified)
 }
 
 // Default visibility is public.
