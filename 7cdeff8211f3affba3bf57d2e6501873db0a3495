@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "592f199c_aa08afcd",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-18T00:03:27Z",
+      "side": 1,
+      "message": "Done, reads better now. Thanks!",
+      "parentUuid": "340dd814_d613c292",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 0
+      },
+      "revId": "7cdeff8211f3affba3bf57d2e6501873db0a3495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04571762_c2d12632",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-10-17T14:27:33Z",
       "side": 1,
       "message": "This seems less readable than it was before, and possibly prone to breaking the logic if there are edits in the future to change `certificate` to not be a zero-ed value. (Also, before `attrs.Certificate` was set to `nil` and here it is just a zero-ed struct, does that matter?)\n\nCould we make this look more like it did before?",
+      "revId": "7cdeff8211f3affba3bf57d2e6501873db0a3495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ec9e253_63b5eb6e",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2678,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-18T00:03:27Z",
+      "side": 1,
+      "message": "Done. Yeah the zero\u0027d struct is working.",
+      "parentUuid": "04571762_c2d12632",
       "revId": "7cdeff8211f3affba3bf57d2e6501873db0a3495",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
