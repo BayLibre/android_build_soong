@@ -922,7 +922,7 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 	//
 	// Use jsonproto instead of proto; actual proto parsing would require a dependency on Bazel's
 	// proto sources, which would add a number of unnecessary dependencies.
-	extraFlags := []string{"--output=jsonproto", "--include_file_write_contents"}
+	extraFlags := []string{"--output=proto", "--include_file_write_contents"}
 	if Bool(config.productVariables.ClangCoverage) {
 		extraFlags = append(extraFlags, "--collect_code_coverage")
 		paths := make([]string, 0, 2)
@@ -937,9 +937,16 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 		}
 	}
 	aqueryCmd := bazelCommand{"aquery", fmt.Sprintf("deps(%s)", buildrootLabel)}
-	if aqueryOutput, _, err := context.issueBazelCommand(context.createBazelCommand(context.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
-		extraFlags...)); err == nil {
+	aqueryCommandWithFlag := context.createBazelCommand(context.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
+		extraFlags...)
+	if aqueryOutput, _, err := context.issueBazelCommand(aqueryCommandWithFlag); err == nil {
 		context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements([]byte(aqueryOutput))
+	}
+
+	aqueryCommandPrint := fmt.Sprintf("aquery command line:\n  %s \n\n\n", printableCqueryCommand(aqueryCommandWithFlag))
+	// Export the actual Aquery command, this would be useful for debugging.
+	if err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "aquery_command.out"), []byte(aqueryCommandPrint), 0666); err != nil {
+		return err
 	}
 	if err != nil {
 		return err

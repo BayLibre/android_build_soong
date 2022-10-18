@@ -23,7 +23,6 @@ bootstrap_go_package {
 
         "golang-protobuf-proto",
         "golang-protobuf-encoding-prototext",
-
         // Only used for tests.
         "androidmk-parser",
     ],
