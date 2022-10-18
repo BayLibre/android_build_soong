@@ -1339,6 +1339,7 @@ var (
 		"srcs_bluetooth_protos",
 		"srcs_bluetooth_leaudio_protos",
 		"style_proto",
+		"connectivity_service_proto",
 		"tethering_proto",
 		"text_classifier_proto",
 		"libstats_atom_message_protos",
