@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6731bbdb_c8be5d7b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-18T18:33:27Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be `prebuilts/bazel/common` ? I would expect this to need to match the package as defined by pkgPath in your module definition:\n\nhttps://android-review.googlesource.com/c/platform/prebuilts/bazel/common/+/2260122/3/Android.bp#21",
+      "revId": "57e724bd0d77683b4719b1f0d2e4076627525612",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
