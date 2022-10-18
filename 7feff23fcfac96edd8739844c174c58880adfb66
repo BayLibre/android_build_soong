@@ -33,6 +33,24 @@
       "message": "Beside b/205771732, do you have any pointer to where these constants will be used?",
       "revId": "7feff23fcfac96edd8739844c174c58880adfb66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c2ba1fe_b3722238",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-10-18T15:17:51Z",
+      "side": 1,
+      "message": "I\u0027ll note in this thread the CL using these constants when uploaded.",
+      "parentUuid": "fd75d355_9927015a",
+      "revId": "7feff23fcfac96edd8739844c174c58880adfb66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
