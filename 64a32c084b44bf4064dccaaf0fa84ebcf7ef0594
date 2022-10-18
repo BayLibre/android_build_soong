@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff8f1e78_5ad82aba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-18T23:26:34Z",
+      "side": 1,
+      "message": "presubmit failures are KI: b/253645813, so please bypass presubmits.",
+      "revId": "64a32c084b44bf4064dccaaf0fa84ebcf7ef0594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
