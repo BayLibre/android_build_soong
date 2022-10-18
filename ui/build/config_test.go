@@ -1008,6 +1008,7 @@ func TestBuildConfig(t *testing.T) {
 		useBazel            bool
 		bazelDevMode        bool
 		bazelProdMode       bool
+		bazelStagingMode    bool
 		expectedBuildConfig *smpb.BuildConfig
 	}{
 		{
@@ -1118,10 +1119,11 @@ func TestBuildConfig(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			c := &configImpl{
-				environ:       &tc.environ,
-				bazelDevMode:  tc.bazelDevMode,
-				bazelProdMode: tc.bazelProdMode,
-				arguments:     tc.arguments,
+				environ:          &tc.environ,
+				bazelDevMode:     tc.bazelDevMode,
+				bazelProdMode:    tc.bazelProdMode,
+				bazelStagingMode: tc.bazelStagingMode,
+				arguments:        tc.arguments,
 			}
 			config := Config{c}
 			checkBazelMode(ctx, config)
