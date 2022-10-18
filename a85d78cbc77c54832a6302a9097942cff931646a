@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e627fff_3689d4c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-10-18T15:24:40Z",
+      "side": 1,
+      "message": "Can you send this to someone on the soong team? Maybe whoever Liz is designating to understand sdk_library.go properly?",
+      "revId": "a85d78cbc77c54832a6302a9097942cff931646a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48924d4d_fd3cc89f",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-10-18T15:24:40Z",
+      "side": 1,
+      "message": "is this common soong terminology? not something I\u0027ve come across before.",
+      "range": {
+        "startLine": 466,
+        "startChar": 35,
+        "endLine": 466,
+        "endChar": 48
+      },
+      "revId": "a85d78cbc77c54832a6302a9097942cff931646a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
