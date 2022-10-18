@@ -726,6 +726,10 @@ func (b *BootclasspathFragmentModule) configuredJars(ctx android.ModuleContext) 
 		// So ignore it even if it is not in PRODUCT_APEX_BOOT_JARS.
 		// TODO(b/202896428): Add better way to handle this.
 		_, unknown = android.RemoveFromList("android.car-module", unknown)
+		if !ctx.Config().IsAvfEnabled() {
+			// This module only exists in products that support Android Virtualization Framework.
+			_, unknown = android.RemoveFromList("android.system.virtualmachine", unknown)
+		}
 		if len(unknown) > 0 {
 			ctx.ModuleErrorf("%s in contents must also be declared in PRODUCT_APEX_BOOT_JARS", unknown)
 		}

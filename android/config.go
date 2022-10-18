@@ -1725,3 +1725,9 @@ func (c *config) LogMixedBuild(ctx BaseModuleContext, useBazel bool) {
 		c.mixedBuildDisabledModules[moduleName] = struct{}{}
 	}
 }
+
+// Returns true if this product support Android Virtualization Framework (AVF)
+// TODO(ioffe): link to documentation
+func (c *config) IsAvfEnabled() bool {
+	return Bool(c.productVariables.AvfEnabled)
+}
