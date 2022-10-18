@@ -557,6 +557,9 @@ type qualifiedModuleName struct {
 	name string
 }
 
+func (q qualifiedModuleName) qualifiedModuleNameMarker() {
+}
+
 func (q qualifiedModuleName) String() string {
 	if q.name == "" {
 		return "//" + q.pkg

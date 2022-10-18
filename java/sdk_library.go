@@ -1855,6 +1855,18 @@ func (module *SdkLibrary) sdkJars(ctx android.BaseModuleContext, sdkVersion andr
 		// * No sdk_version specified on the referencing module.
 		// * The referencing module is in the same apex as this.
 		if sdkVersion.Kind == android.SdkPrivate || withinSameApexesAs(ctx, module) {
+			// Make sure that the implementation library is visible to the module that depends on this.
+			otherModuleDir := ctx.ModuleDir()
+			qualified := android.CreateQualifiedModuleName(otherModuleDir, ctx.ModuleName())
+			// The impl_library_visibility rules have been stored under the impl library name
+			// so use that when checking visibility.
+			depQualifiedImpl := android.CreateQualifiedModuleName(ctx.OtherModuleDir(module), module.implLibraryModuleName())
+			if !android.DepIsVisible(ctx, qualified, depQualifiedImpl) {
+				depQualified := android.CreateQualifiedModuleName(ctx.OtherModuleDir(module), ctx.OtherModuleName(module))
+				ctx.ModuleErrorf("depends on the implementation library of %s which is not visible to this module\n    You may need to add %q to %s's impl_library_visibility property",
+					qualified, depQualified, "//"+otherModuleDir, depQualified)
+			}
+
 			if headerJars {
 				return module.HeaderJars()
 			} else {
