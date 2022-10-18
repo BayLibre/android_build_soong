@@ -25,13 +25,14 @@ import (
 	"strings"
 
 	"github.com/google/blueprint/proptools"
+	"prebuilts/bazel/common"
 )
 
 type artifactId int
 type depsetId int
 type pathFragmentId int
 
-// artifact contains relevant portions of Bazel's aquery proto, Artifact.
+// artifact contains rel:qevant portions of Bazel's aquery proto, Artifact.
 // Represents a single artifact, whether it's a source file or a derived output file.
 type artifact struct {
 	Id             artifactId
@@ -167,6 +168,7 @@ func newAqueryHandler(aqueryResult actionGraphContainer) (*aqueryArtifactHandler
 			return nil, err
 		}
 		artifactIdToPath[artifact.Id] = artifactPath
+		common.Calculate()
 	}
 
 	// Map middleman artifact ContentHash to input artifact depset ID.
