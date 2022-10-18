@@ -15,6 +15,7 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -249,7 +250,7 @@ func runApiBp2build(configuration android.Config, extraNinjaDeps []string) strin
 	excludes = append(excludes, apiBuildFileExcludes()...)
 
 	// Create the symlink forest
-	symlinkDeps := bp2build.PlantSymlinkForest(
+	symlinkDeps, _ := bp2build.PlantSymlinkForest(
 		configuration,
 		topDir,
 		workspace,
@@ -663,8 +664,10 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 		// Such a directory SHOULD be added to `ninjaDeps` so that a child directory
 		// or file created/deleted under it would trigger an update of the symlink
 		// forest.
+		var hash []byte
 		eventHandler.Do("symlink_forest", func() {
-			symlinkForestDeps := bp2build.PlantSymlinkForest(
+			var symlinkForestDeps []string
+			symlinkForestDeps, hash = bp2build.PlantSymlinkForest(
 				configuration, topDir, workspaceRoot, generatedRoot, ".", excludes)
 			ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
 		})
@@ -673,8 +676,23 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 
 		writeDepFile(bp2buildMarker, eventHandler, ninjaDeps)
 
-		// Create an empty bp2build marker file.
-		touch(shared.JoinPath(topDir, bp2buildMarker))
+		markerFile := shared.JoinPath(topDir, bp2buildMarker)
+		_, err = os.Stat(markerFile)
+		if err != nil {
+			if os.IsNotExist(err) {
+				err = os.WriteFile(markerFile, hash, 0666)
+			}
+		} else {
+			var previousHash []byte
+			previousHash, err = os.ReadFile(markerFile)
+			if bytes.Compare(previousHash, hash) != 0 {
+				err = os.WriteFile(markerFile, hash, 0666)
+			}
+		}
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "error writing '%s': %s\n", markerFile, err)
+			os.Exit(1)
+		}
 	})
 
 	// Only report metrics when in bp2build mode. The metrics aren't relevant

@@ -15,11 +15,15 @@
 package bp2build
 
 import (
+	"crypto/sha256"
 	"fmt"
+	"hash"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
+	"strings"
 
 	"android/soong/android"
 	"android/soong/shared"
@@ -73,7 +77,7 @@ func treeFromExcludePathList(paths []string) *node {
 	return result
 }
 
-func mergeBuildFiles(output string, srcBuildFile string, generatedBuildFile string, verbose bool) error {
+func mergeBuildFiles(output string, srcBuildFile string, generatedBuildFile string, verbose bool, hasher hash.Hash) error {
 
 	srcBuildFileContent, err := os.ReadFile(srcBuildFile)
 	if err != nil {
@@ -84,7 +88,6 @@ func mergeBuildFiles(output string, srcBuildFile string, generatedBuildFile stri
 	if err != nil {
 		return err
 	}
-
 	// There can't be a package() call in both the source and generated BUILD files.
 	// bp2build will generate a package() call for licensing information, but if
 	// there's no licensing information, it will still generate a package() call
@@ -112,15 +115,18 @@ func mergeBuildFiles(output string, srcBuildFile string, generatedBuildFile stri
 	if err != nil {
 		return err
 	}
+	hasher.Write(generatedBuildFileContent)
 
 	if generatedBuildFileContent[len(generatedBuildFileContent)-1] != '\n' {
 		_, err = outFile.WriteString("\n")
+		hasher.Write([]byte("\n"))
 		if err != nil {
 			return err
 		}
 	}
 
 	_, err = outFile.Write(srcBuildFileContent)
+	hasher.Write(srcBuildFileContent)
 	return err
 }
 
@@ -149,12 +155,29 @@ func readdirToMap(dir string) map[string]os.FileInfo {
 }
 
 // Creates a symbolic link at dst pointing to src
-func symlinkIntoForest(topdir, dst, src string) {
-	err := os.Symlink(shared.JoinPath(topdir, src), shared.JoinPath(topdir, dst))
-	if err != nil {
+func symlinkIntoForest(topdir, dst, src string, hasher hash.Hash) {
+	srcPath := shared.JoinPath(topdir, src)
+	if err := os.Symlink(srcPath, shared.JoinPath(topdir, dst)); err != nil {
 		fmt.Fprintf(os.Stderr, "Cannot create symlink at '%s' pointing to '%s': %s", dst, src, err)
 		os.Exit(1)
 	}
+	if !strings.HasSuffix(src, "BUILD") && strings.HasSuffix(src, "BUILD.bazel") {
+		return
+	}
+	fi, err := os.Stat(srcPath)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Couldn't stat('%s'): %s", src, err)
+		os.Exit(1)
+	}
+	if fi.IsDir() {
+		return
+	}
+	content, err := os.ReadFile(srcPath)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Couldn't read '%s: %s", src, err)
+		os.Exit(1)
+	}
+	hasher.Write(content)
 }
 
 func isDir(path string, fi os.FileInfo) bool {
@@ -220,7 +243,15 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 		os.Exit(1)
 	}
 
+	alphabetized := make([]string, len(allEntries))
 	for f := range allEntries {
+		alphabetized = append(alphabetized, f)
+	}
+	sort.Strings(alphabetized)
+
+	// TODO(usta): use go routines to achieve higher concurrency
+	// note hash needs to be handled properly
+	for _, f := range alphabetized {
 		if f[0] == '.' {
 			continue // Ignore dotfiles
 		}
@@ -248,7 +279,7 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 
 		if excludeChild != nil && excludeChild.excluded {
 			if bExists {
-				symlinkIntoForest(topdir, forestChild, buildFilesChild)
+				symlinkIntoForest(topdir, forestChild, buildFilesChild, acc.hash)
 			}
 			continue
 		}
@@ -263,7 +294,7 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 				plantSymlinkForestRecursive(cfg, topdir, forestChild, buildFilesChild, srcChild, excludeChild, acc)
 			} else {
 				// Not in the source tree, symlink BUILD file
-				symlinkIntoForest(topdir, forestChild, buildFilesChild)
+				symlinkIntoForest(topdir, forestChild, buildFilesChild, acc.hash)
 			}
 		} else if !bExists {
 			if sDir && excludeChild != nil {
@@ -272,7 +303,7 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 				plantSymlinkForestRecursive(cfg, topdir, forestChild, buildFilesChild, srcChild, excludeChild, acc)
 			} else {
 				// Not in the build file tree, symlink source tree, carry on
-				symlinkIntoForest(topdir, forestChild, srcChild)
+				symlinkIntoForest(topdir, forestChild, srcChild, acc.hash)
 			}
 		} else if sDir && bDir {
 			// Both are directories. Descend.
@@ -292,7 +323,7 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 			// will always have a newer timestamp than the generatedBuildFile it
 			// shouldn't be a problem.
 			acc.deps = append(acc.deps, srcBuildFile, generatedBuildFile)
-			err = mergeBuildFiles(shared.JoinPath(topdir, forestChild), srcBuildFile, generatedBuildFile, cfg.IsEnvTrue("BP2BUILD_VERBOSE"))
+			err := mergeBuildFiles(shared.JoinPath(topdir, forestChild), srcBuildFile, generatedBuildFile, cfg.IsEnvTrue("BP2BUILD_VERBOSE"), acc.hash)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Error merging %s and %s: %s",
 					srcBuildFile, generatedBuildFile, err)
@@ -311,20 +342,20 @@ func plantSymlinkForestRecursive(cfg android.Config, topdir string, forestDir st
 type accumulator struct {
 	deps []string
 	okay bool
+	hash hash.Hash
 }
 
 // Creates a symlink forest by merging the directory tree at "buildFiles" and
 // "srcDir" while excluding paths listed in "exclude". Returns the set of paths
 // under srcDir on which readdir() had to be called to produce the symlink
 // forest.
-func PlantSymlinkForest(cfg android.Config, topdir string, forest string, buildFiles string, srcDir string, exclude []string) []string {
-	deps := make([]string, 0)
+func PlantSymlinkForest(cfg android.Config, topdir string, forest string, buildFiles string, srcDir string, exclude []string) (deps []string, hash []byte) {
 	os.RemoveAll(shared.JoinPath(topdir, forest))
 	excludeTree := treeFromExcludePathList(exclude)
-	a := accumulator{okay: true}
+	a := accumulator{okay: true, hash: sha256.New()}
 	plantSymlinkForestRecursive(cfg, topdir, forest, buildFiles, srcDir, excludeTree, &a)
 	if !a.okay {
 		os.Exit(1)
 	}
-	return deps
+	return a.deps, a.hash.Sum(nil)
 }
