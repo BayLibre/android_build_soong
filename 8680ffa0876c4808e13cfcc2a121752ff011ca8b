@@ -22,6 +22,30 @@
       },
       "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9d2a301_be29ac7a",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2022-10-19T10:46:49Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understood. We do that in aosp/2260582, the problem is aosp/2259705 that unconditionally adds com.android.virt-bootclasspath-fragment to platform_bootclasspath. I wasn\u0027t able to find an easy way to conditionally append to the fragments list there, hence this change",
+      "parentUuid": "f0ee7251_70bb9877",
+      "range": {
+        "startLine": 729,
+        "startChar": 2,
+        "endLine": 729,
+        "endChar": 35
+      },
+      "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
