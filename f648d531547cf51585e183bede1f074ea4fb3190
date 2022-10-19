@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed2d6a3_d5583a2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-10-19T10:46:07Z",
+      "side": 1,
+      "message": "Note: Build errors on aosp-master-bazel are unrelated. The builds were red even before this CL.",
+      "revId": "f648d531547cf51585e183bede1f074ea4fb3190",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
