@@ -117,6 +117,30 @@
       },
       "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35f89b51_f2549dfe",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2022-10-19T12:22:57Z",
+      "side": 1,
+      "message": "Probably, but I\u0027d prefer to do it in a separate change. There is already a precedent for removing the JAR from the list (the android.car-module one above), my version is just a tad more robust, since it will catch the scenario when product has AVF, but doesn\u0027t have the android.system.virtualmachine JAR in PRODUCT_APEX_BOOT_JARS",
+      "parentUuid": "89cb902e_e99d617c",
+      "range": {
+        "startLine": 729,
+        "startChar": 2,
+        "endLine": 729,
+        "endChar": 35
+      },
+      "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
