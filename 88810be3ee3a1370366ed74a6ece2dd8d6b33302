@@ -63,6 +63,30 @@
       },
       "revId": "88810be3ee3a1370366ed74a6ece2dd8d6b33302",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db9e8220_19cd34e5",
+        "filename": "scripts/microfactory.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-19T15:46:23Z",
+      "side": 1,
+      "message": "+1 for the \"better safe and sorry\" part. \n\nI don\u0027t know why microfactory has this limitation so I won\u0027t pass judgement on how silly it is; maybe there is a deep reason for it.",
+      "parentUuid": "efcc6e84_1bf57f91",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 60
+      },
+      "revId": "88810be3ee3a1370366ed74a6ece2dd8d6b33302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
