@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ee7251_70bb9877",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-10-19T10:21:06Z",
+      "side": 1,
+      "message": "Could we only add the jar to PRODUCT_APEX_BOOT_JARS in the product that adds the apex as well instead of to default_art config?",
+      "range": {
+        "startLine": 729,
+        "startChar": 2,
+        "endLine": 729,
+        "endChar": 35
+      },
+      "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
