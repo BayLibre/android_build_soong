@@ -39,6 +39,30 @@
       },
       "revId": "88810be3ee3a1370366ed74a6ece2dd8d6b33302",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efcc6e84_1bf57f91",
+        "filename": "scripts/microfactory.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-19T15:11:59Z",
+      "side": 1,
+      "message": "As-is, one can import the proto from aquery using:\n\n```\nimport {\n    analysis_v2_proto \"prebuilts/bazel/common/proto/analysis_v2\"\n}   \n```\n\nChanging this to `prebuilts/bazel/common/proto\u003d$(TOP)/prebuilts/bazel/common/proto` only ensures that it would be impossible to depend om something under `prebuilts/otherpackage` from android/soong\n\nI think the whole microfactory restriction is a bit silly and mysterious, but better safe than sorry, I suppose.\n\nI\u0027ve changed it.",
+      "parentUuid": "530d033d_22cec62b",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 60
+      },
+      "revId": "88810be3ee3a1370366ed74a6ece2dd8d6b33302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
