@@ -81,6 +81,52 @@
       },
       "revId": "a85d78cbc77c54832a6302a9097942cff931646a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7b8bfc_7ed68967",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-19T16:35:47Z",
+      "side": 1,
+      "message": "Introducing multiple paths for checking visibility introduces more chance for skew between the two.\n\nThis type of additional check is also not something we will be able to support within Bazel, and this would introduce this API to everyone, including plugins, because of that, I\u0027m disinclined to support this.",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 2
+      },
+      "revId": "a85d78cbc77c54832a6302a9097942cff931646a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25272d62_7930e150",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1858,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-19T16:35:47Z",
+      "side": 1,
+      "message": "The headerjars and implementationjars are not the .impl module but rather outputs of the SdkLibrary module itself, why should .impl module impact the visibility of these output files?",
+      "range": {
+        "startLine": 1858,
+        "startChar": 3,
+        "endLine": 1858,
+        "endChar": 94
+      },
+      "revId": "a85d78cbc77c54832a6302a9097942cff931646a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
