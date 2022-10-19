@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46f8cbc5_6f231b1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-19T18:48:53Z",
+      "side": 1,
+      "message": "LGTM.\n\n(Something to discuss offline since I don\u0027t know the answer: Do vendor builds require native_bridge support? Looks like we have a parallel set of stubs for native_bridge target https://cs.android.com/android/platform/superproject/+/master:frameworks/libs/native_bridge_support/)",
+      "revId": "80bff0c59326e14d5ec93c3c04e90974882922dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
