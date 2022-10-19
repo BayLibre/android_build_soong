@@ -16,6 +16,24 @@
       "message": "Thanks! \n\nFeel free to bypass presubmit, KI b/253645813",
       "revId": "bdb7495fe5bae33eb7690773bd8e93b0f90aa2b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07c6a3a_cf1abacf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-19T08:12:22Z",
+      "side": 1,
+      "message": "Thanks for the information!\n\nI merged this change with the bug number as reason of bypass.",
+      "parentUuid": "93ab9b57_0be705c4",
+      "revId": "bdb7495fe5bae33eb7690773bd8e93b0f90aa2b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
