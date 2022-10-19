@@ -16,6 +16,70 @@
       "message": "Is there a reason we are doing hashing so close to where we plant the symlink forest? If I\u0027m reading this correctly, it involves post-codegen file I/O. Can we instead do hashing at the level of BazelFiles in the codegen context ? \n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/bp2build.go;l\u003d45;drc\u003db0193ccac5b8399f9b5ef270d102b5a50f9446ab\n\nWe\u0027d only be hashing the generated portion of each BUILD file, but that\u0027s fine, since soong_build depends on both checked-in BUILD files and codegen BUILD files. \nWe\u0027ll just need to make sure that bp2build also depends on checked-in BUILD files, but according to you, Cole already fixed this?\n\n\nThis also has the added benefit that codegen hashing is done in the codegen portion of the code. When we separate codegen and symlinking, it\u0027ll be more natural to keep hashing in the correct binary.",
       "revId": "2b8c490a8cb6ca891fb43bafe7027a87ae77fe35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d762a9f7_536615f6",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-19T10:58:09Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "a75772e8_0c2f056c",
+      "revId": "2b8c490a8cb6ca891fb43bafe7027a87ae77fe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "330ba5c5_e0bdc087",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-19T10:58:09Z",
+      "side": 1,
+      "message": "Is there a facility here to separate the contents of individual BUILD files in the hasher?\n\nAFAICT this code here only adds the raw contents of the BUILD files, which can fail in a number of ways:\n\n1. the same BUILD file generated at a different path will have the same hash, even though it means something else for Bazel\n2. a single BUILD file containing \"foobar\" will have the same hash as two BUILD files containing \"foo\" and \"bar\", respectively",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "2b8c490a8cb6ca891fb43bafe7027a87ae77fe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e9e5abb_34e85c74",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-19T10:58:09Z",
+      "side": 1,
+      "message": "nit: it\u0027s better to write a hex-encoded file instead of raw bytes; much easier to read and compare visually that way without any practical loss of efficiency.",
+      "range": {
+        "startLine": 689,
+        "startChar": 35,
+        "endLine": 689,
+        "endChar": 39
+      },
+      "revId": "2b8c490a8cb6ca891fb43bafe7027a87ae77fe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
