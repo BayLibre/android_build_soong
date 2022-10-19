@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a65495e8_8d893373",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-10-19T01:56:20Z",
+      "side": 1,
+      "message": "2 failed presubmit builds are unrelated to this change",
+      "revId": "d21c46a5f813708358eea8ed8ec0f3adf2ef4cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
