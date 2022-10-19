@@ -104,6 +104,24 @@
       "parentUuid": "646e3b7a_87817cb4",
       "revId": "f10d7ca5fb871016d6891f8f7cf65c70e75537f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4741397c_fa639c50",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-19T14:54:53Z",
+      "side": 1,
+      "message": "nope I think he was worried about conflicts with my CL but personally I don\u0027t think that\u0027s a major conflict.",
+      "parentUuid": "c4ee39ea_40dd6ce1",
+      "revId": "f10d7ca5fb871016d6891f8f7cf65c70e75537f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
