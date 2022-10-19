@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e037bb8_59e85158",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1730,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-19T10:54:16Z",
+      "side": 1,
+      "message": "How about https://source.android.com/docs/core/virtualization",
+      "range": {
+        "startLine": 1730,
+        "startChar": 3,
+        "endLine": 1730,
+        "endChar": 37
+      },
+      "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0ee7251_70bb9877",
         "filename": "java/bootclasspath_fragment.go",
         "patchSetId": 1
