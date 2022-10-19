@@ -93,6 +93,30 @@
       },
       "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89cb902e_e99d617c",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-19T10:56:06Z",
+      "side": 1,
+      "message": "Is there a way to do this in the .bp file instead of in Soong?",
+      "parentUuid": "11409f39_161da4b3",
+      "range": {
+        "startLine": 729,
+        "startChar": 2,
+        "endLine": 729,
+        "endChar": 35
+      },
+      "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
