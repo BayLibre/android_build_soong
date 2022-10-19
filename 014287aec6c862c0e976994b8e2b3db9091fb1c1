@@ -16,6 +16,24 @@
       "message": "why not move this into the loop above and then break out of it?",
       "revId": "014287aec6c862c0e976994b8e2b3db9091fb1c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d0a1f51_ddbd0bce",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2022-10-19T23:21:32Z",
+      "side": 1,
+      "message": "Done. Also made the loops above a bit prettier.",
+      "parentUuid": "b2a76ec9_b7dac736",
+      "revId": "014287aec6c862c0e976994b8e2b3db9091fb1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
