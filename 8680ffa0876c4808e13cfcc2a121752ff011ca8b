@@ -46,6 +46,30 @@
       },
       "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11409f39_161da4b3",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-10-19T10:50:42Z",
+      "side": 1,
+      "message": "Yes, my bad, platform_bootclasspath is not PRODUCT aware...",
+      "parentUuid": "f9d2a301_be29ac7a",
+      "range": {
+        "startLine": 729,
+        "startChar": 2,
+        "endLine": 729,
+        "endChar": 35
+      },
+      "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
