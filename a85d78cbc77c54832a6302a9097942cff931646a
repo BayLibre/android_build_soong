@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95e7a223_1c8e7459",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-19T17:28:35Z",
+      "side": 1,
+      "message": "\u003e Introducing multiple paths for checking visibility introduces more chance for skew between the two.\n\nFixed. Refactored the mutator to use DepIsVisible.\n\n\u003e This type of additional check is also not something we will be able to support within Bazel\n\nIn Bazel you will not have both embedded \u003cX\u003e and separate \u003cX.impl\u003e implementation libraries so you will not need to do this. I hope that you will have a separate \u003cX.impl\u003e library so that you can support impl_library_visibility (or something like it) because that is important functionality but there will be no need to support embedded \u003cX\u003e.\n\n\u003e this would introduce this API to everyone, including plugins, because of that, I\u0027m disinclined to support this.\n\nJust because some plugin may abuse this (which is highly unlikely) is not a reason for not adding this functionality. You could use that argument to avoid adding any new exports at all.\n\nThis functionality is needed to ensure that the embedded \u003cX\u003e and \u003cX\u003e.impl libraries are handled consistently so that when we eliminate the embedded library (if not in Soong then when migrating to Bazel) that we do not have to deal with this sort of clean up.",
+      "parentUuid": "1a7b8bfc_7ed68967",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 2
+      },
+      "revId": "a85d78cbc77c54832a6302a9097942cff931646a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25272d62_7930e150",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -119,6 +143,30 @@
       "writtenOn": "2022-10-19T16:35:47Z",
       "side": 1,
       "message": "The headerjars and implementationjars are not the .impl module but rather outputs of the SdkLibrary module itself, why should .impl module impact the visibility of these output files?",
+      "range": {
+        "startLine": 1858,
+        "startChar": 3,
+        "endLine": 1858,
+        "endChar": 94
+      },
+      "revId": "a85d78cbc77c54832a6302a9097942cff931646a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c8390cb_5453acad",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1858,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-19T17:28:35Z",
+      "side": 1,
+      "message": "We restrict access to the \u003cX\u003e.impl library using visibility because we want to limit the number of places that can access the implementation library jas (even if it is just the headers jar) to only those that the developer specifies so that they can make sure that it is not being misused. By misused I mean attempting to build against the implementation API. That is dangerous for lots of reasons.\n\nThese outputs are functionally identical implementation library jars to those produced by \u003cX\u003e.impl and so need to be restricted in the same way and for the same reason.",
+      "parentUuid": "25272d62_7930e150",
       "range": {
         "startLine": 1858,
         "startChar": 3,
