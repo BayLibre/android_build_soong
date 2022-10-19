@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "221c27c5_67435c36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-19T07:38:45Z",
+      "side": 1,
+      "message": "+2 because I don\u0027t want to block you from submitting this change for a day, but please consider restricting the package path in the way I suggested.",
+      "revId": "88810be3ee3a1370366ed74a6ece2dd8d6b33302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "530d033d_22cec62b",
+        "filename": "scripts/microfactory.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-19T07:38:45Z",
+      "side": 1,
+      "message": "Do I understand correctly that you are planning to import the protos as \n\n```\nimport (\n  \"prebuilts/bazel/common/proto/build\" \n)\n```\n\nIf so, you may want to use a pkg-path that\u0027s less generic, e.g. `prebuilts/bazel/common/proto\u003d$(TOP)/prebuilts/bazel/common/proto` to avoid future surprises.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 60
+      },
+      "revId": "88810be3ee3a1370366ed74a6ece2dd8d6b33302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
