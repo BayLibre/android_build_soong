@@ -608,9 +608,34 @@ func toDisableUnsignedShiftBaseChange(flags []string) bool {
 	return false
 }
 
+func hasExceptions(cflags []string) bool {
+	for _, f := range cflags {
+		if f == "-fexceptions" {
+			return true
+		}
+	}
+	return false
+}
+
 func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	if !sanitize.Properties.SanitizerEnabled && !sanitize.Properties.UbsanRuntimeDep {
 		return flags
+	}
+
+	// Currently unwinding through tagged frames for exceptions is broken, so disable memtag stack
+	// in that case, so we don't end up tagging those.
+	// TODO(b/174878242): Remove once https://r.android.com/2251926 is included in toolchain.
+	if hasExceptions(flags.Local.CFlags) || hasExceptions(flags.Global.CFlags) {
+		sanitize.Properties.Sanitize.Memtag_stack = nil
+		idx := -1
+		for i, s := range sanitize.Properties.Sanitizers {
+			if s == "memtag-stack" {
+				idx = i
+			}
+		}
+		if idx != -1 {
+			sanitize.Properties.Sanitizers = append(sanitize.Properties.Sanitizers[:idx], sanitize.Properties.Sanitizers[idx+1:]...)
+		}
 	}
 
 	if Bool(sanitize.Properties.Sanitize.Address) {
