@@ -48,7 +48,6 @@ bootstrap_go_package {
         "builder_test.go",
         "clippy_test.go",
         "compiler_test.go",
-        "coverage_test.go",
         "fuzz_test.go",
         "image_test.go",
         "library_test.go",
