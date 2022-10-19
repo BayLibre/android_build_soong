@@ -141,6 +141,30 @@
       },
       "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d456b7b0_891ac5de",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-10-19T15:56:30Z",
+      "side": 1,
+      "message": "Sorry, I wasn\u0027t talking about this specific change which is fine but rather a general way to allow the fragments list to be customizable from make product config somehow so we can remove all these exceptions.\n\nOr to use a phrase that Artur did how can we make this PRODUCT aware.\n\nThis change is fine.",
+      "parentUuid": "35f89b51_f2549dfe",
+      "range": {
+        "startLine": 729,
+        "startChar": 2,
+        "endLine": 729,
+        "endChar": 35
+      },
+      "revId": "8680ffa0876c4808e13cfcc2a121752ff011ca8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
