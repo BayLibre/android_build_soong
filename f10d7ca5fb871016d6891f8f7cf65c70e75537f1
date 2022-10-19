@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a165465a_5f26fc41",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-19T09:06:01Z",
+      "side": 1,
+      "message": "Is `instructionsNode` better?",
+      "parentUuid": "4f72563b_e4469ef4",
+      "revId": "f10d7ca5fb871016d6891f8f7cf65c70e75537f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69a53aaa_e2cbd248",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-18T21:34:38Z",
       "side": 1,
       "message": "`exclude` would mutate between recursive calls but need not be captured in the global context object IMO\nalso you actually don\u0027t seem to be using this attribute indeed.",
+      "revId": "f10d7ca5fb871016d6891f8f7cf65c70e75537f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "610bdc41_48dd54e0",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-19T09:06:01Z",
+      "side": 1,
+      "message": "you\u0027re right, removed",
+      "parentUuid": "69a53aaa_e2cbd248",
       "revId": "f10d7ca5fb871016d6891f8f7cf65c70e75537f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-10-18T21:34:38Z",
       "side": 1,
       "message": "just an fyi: Cole had a recent CL where BUILD files that were \"merged\" as opposed to symlinked do get added as a dependency, https://android-review.googlesource.com/c/platform/build/soong/+/2239151/2/bp2build/symlink_forest.go",
+      "revId": "f10d7ca5fb871016d6891f8f7cf65c70e75537f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4ee39ea_40dd6ce1",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-19T09:06:01Z",
+      "side": 1,
+      "message": "yep, I have seen that (and it\u0027s already merged here, see line 310!) I figured I won\u0027t touch that mechanism in this change\n\nIs this the change Chris was worried about conflicting with?",
+      "parentUuid": "646e3b7a_87817cb4",
       "revId": "f10d7ca5fb871016d6891f8f7cf65c70e75537f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
