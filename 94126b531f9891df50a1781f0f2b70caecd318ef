@@ -16,6 +16,24 @@
       "message": "(modulo the additional arch test)",
       "revId": "94126b531f9891df50a1781f0f2b70caecd318ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab4388c0_31d2d594",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-10-19T19:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbd734b5_ce970dc4",
+      "revId": "94126b531f9891df50a1781f0f2b70caecd318ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
