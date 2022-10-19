@@ -33,6 +33,24 @@
       "message": "Perhaps we can have the staging allowlist be StagingMixedBuildsEnabledList + ProdMixedBuildsEnabledList ? I can\u0027t think of a case where we would want a module to be allowlisted for prod but not for staging.",
       "revId": "bc5ec0c2646dd914a3d9f27082f69ff9f29c5f0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb79bbf4_9b2ba434",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-19T15:58:11Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "8b1e94e6_a9444507",
+      "revId": "bc5ec0c2646dd914a3d9f27082f69ff9f29c5f0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
