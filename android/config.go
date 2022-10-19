@@ -1237,7 +1237,7 @@ func (c *deviceConfig) ClangCoverageEnabled() bool {
 }
 
 func (c *deviceConfig) ClangCoverageContinuousMode() bool {
-	return Bool(c.config.productVariables.ClangCoverageContinuousMode)
+	return true
 }
 
 func (c *deviceConfig) GcovCoverageEnabled() bool {
@@ -1250,18 +1250,7 @@ func (c *deviceConfig) GcovCoverageEnabled() bool {
 // not part of the NativeCoverageExcludePaths product variable). Value "*" in
 // NativeCoveragePaths represents any path.
 func (c *deviceConfig) NativeCoverageEnabledForPath(path string) bool {
-	coverage := false
-	if len(c.config.productVariables.NativeCoveragePaths) > 0 {
-		if InList("*", c.config.productVariables.NativeCoveragePaths) || HasAnyPrefix(path, c.config.productVariables.NativeCoveragePaths) {
-			coverage = true
-		}
-	}
-	if coverage && len(c.config.productVariables.NativeCoverageExcludePaths) > 0 {
-		if HasAnyPrefix(path, c.config.productVariables.NativeCoverageExcludePaths) {
-			coverage = false
-		}
-	}
-	return coverage
+	return false
 }
 
 func (c *deviceConfig) AfdoAdditionalProfileDirs() []string {
