@@ -232,12 +232,6 @@ type SnapshotBuilder interface {
 	// relative path) and add the dest to the zip.
 	CopyToSnapshot(src Path, dest string)
 
-	// EmptyFile returns the path to an empty file.
-	//
-	// This can be used by sdk member types that need to create an empty file in the snapshot, simply
-	// pass the value returned from this to the CopyToSnapshot() method.
-	EmptyFile() Path
-
 	// UnzipToSnapshot generates a rule that will unzip the supplied zip into the snapshot relative
 	// directory destDir.
 	UnzipToSnapshot(zipPath Path, destDir string)
@@ -263,6 +257,14 @@ type SnapshotBuilder interface {
 	//
 	// See sdk/update.go for more information.
 	AddPrebuiltModule(member SdkMember, moduleType string) BpModule
+
+	// AddInternalModule creates a new module in the generated Android.bp file that can only be
+	// referenced by one of the other modules in the snapshot.
+	//
+	// The created module's name is constructed by concatenating the name of this member and the
+	// nameSuffix, separated by "-". It also has the visibility property set to "//visibility:private"
+	// to prevent it from being inadvertently accessed from outside the snapshot.
+	AddInternalModule(ctx SdkMemberContext, moduleType string, nameSuffix string) BpModule
 
 	// SdkMemberReferencePropertyTag returns a property tag to use when adding a property to a
 	// BpModule that contains references to other sdk members.

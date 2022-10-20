@@ -86,11 +86,11 @@ func RegisterJavaSdkMemberTypes() {
 var (
 	// Supports adding java header libraries to module_exports and sdk.
 	javaHeaderLibsSdkMemberType = &librarySdkMemberType{
-		android.SdkMemberTypeBase{
+		SdkMemberTypeBase: android.SdkMemberTypeBase{
 			PropertyName: "java_header_libs",
 			SupportsSdk:  true,
 		},
-		func(_ android.SdkMemberContext, j *Library) android.Path {
+		jarToExportGetter: func(_ android.SdkMemberContext, j *Library) android.Path {
 			headerJars := j.HeaderJars()
 			if len(headerJars) != 1 {
 				panic(fmt.Errorf("there must be only one header jar from %q", j.Name()))
@@ -98,8 +98,8 @@ var (
 
 			return headerJars[0]
 		},
-		sdkSnapshotFilePathForJar,
-		copyEverythingToSnapshot,
+		snapshotPathGetter:    sdkSnapshotFilePathForJar,
+		onlyCopyJarToSnapshot: copyEverythingToSnapshot,
 	}
 
 	// Export implementation classes jar as part of the sdk.
@@ -113,12 +113,12 @@ var (
 
 	// Supports adding java implementation libraries to module_exports but not sdk.
 	javaLibsSdkMemberType = &librarySdkMemberType{
-		android.SdkMemberTypeBase{
+		SdkMemberTypeBase: android.SdkMemberTypeBase{
 			PropertyName: "java_libs",
 		},
-		exportImplementationClassesJar,
-		sdkSnapshotFilePathForJar,
-		copyEverythingToSnapshot,
+		jarToExportGetter:     exportImplementationClassesJar,
+		snapshotPathGetter:    sdkSnapshotFilePathForJar,
+		onlyCopyJarToSnapshot: copyEverythingToSnapshot,
 	}
 
 	snapshotRequiresImplementationJar = func(ctx android.SdkMemberContext) bool {
@@ -143,11 +143,11 @@ var (
 	// necessary. The java_boot_libs property to allow those modules to be exported as part of the
 	// sdk/module_exports without exposing any unnecessary information.
 	javaBootLibsSdkMemberType = &librarySdkMemberType{
-		android.SdkMemberTypeBase{
+		SdkMemberTypeBase: android.SdkMemberTypeBase{
 			PropertyName: "java_boot_libs",
 			SupportsSdk:  true,
 		},
-		func(ctx android.SdkMemberContext, j *Library) android.Path {
+		jarToExportGetter: func(ctx android.SdkMemberContext, j *Library) android.Path {
 			if snapshotRequiresImplementationJar(ctx) {
 				return exportImplementationClassesJar(ctx, j)
 			}
@@ -156,9 +156,9 @@ var (
 			// jar for use by dexpreopting and boot jars package check. They do not need to provide an
 			// actual implementation jar but the java_import will need a file that exists so just copy an
 			// empty file. Any attempt to use that file as a jar will cause a build error.
-			return ctx.SnapshotBuilder().EmptyFile()
+			return nil
 		},
-		func(ctx android.SdkMemberContext, osPrefix, name string) string {
+		snapshotPathGetter: func(ctx android.SdkMemberContext, osPrefix, name string) string {
 			if snapshotRequiresImplementationJar(ctx) {
 				return sdkSnapshotFilePathForJar(ctx, osPrefix, name)
 			}
@@ -168,7 +168,7 @@ var (
 			// TODO(b/175714559): Provide a proper error message in Soong not ninja.
 			return filepath.Join(osPrefix, "java_boot_libs", "snapshot", "jars", "are", "invalid", name+jarFileSuffix)
 		},
-		onlyCopyJarToSnapshot,
+		onlyCopyJarToSnapshot: onlyCopyJarToSnapshot,
 	}
 
 	// Supports adding java systemserver libraries to module_exports and sdk.
@@ -182,27 +182,27 @@ var (
 	// necessary. The java_systemserver_libs property to allow those modules to be exported as part of
 	// the sdk/module_exports without exposing any unnecessary information.
 	javaSystemserverLibsSdkMemberType = &librarySdkMemberType{
-		android.SdkMemberTypeBase{
+		SdkMemberTypeBase: android.SdkMemberTypeBase{
 			PropertyName: "java_systemserver_libs",
 			SupportsSdk:  true,
 
 			// This was only added in Tiramisu.
 			SupportedBuildReleaseSpecification: "Tiramisu+",
 		},
-		func(ctx android.SdkMemberContext, j *Library) android.Path {
+		jarToExportGetter: func(ctx android.SdkMemberContext, j *Library) android.Path {
 			// Java systemserver libs are only provided in the SDK to provide access to their dex
 			// implementation jar for use by dexpreopting. They do not need to provide an actual
 			// implementation jar but the java_import will need a file that exists so just copy an empty
 			// file. Any attempt to use that file as a jar will cause a build error.
-			return ctx.SnapshotBuilder().EmptyFile()
+			return nil
 		},
-		func(_ android.SdkMemberContext, osPrefix, name string) string {
+		snapshotPathGetter: func(_ android.SdkMemberContext, osPrefix, name string) string {
 			// Create a special name for the implementation jar to try and provide some useful information
 			// to a developer that attempts to compile against this.
 			// TODO(b/175714559): Provide a proper error message in Soong not ninja.
 			return filepath.Join(osPrefix, "java_systemserver_libs", "snapshot", "jars", "are", "invalid", name+jarFileSuffix)
 		},
-		onlyCopyJarToSnapshot,
+		onlyCopyJarToSnapshot: onlyCopyJarToSnapshot,
 	}
 
 	// Supports adding java test libraries to module_exports but not sdk.
@@ -718,7 +718,8 @@ type librarySdkMemberType struct {
 	android.SdkMemberTypeBase
 
 	// Function to retrieve the appropriate output jar (implementation or header) from
-	// the library.
+	// the library, if this returns nil then it is assumed that the snapshot must not provide access
+	// to the jar.
 	jarToExportGetter func(ctx android.SdkMemberContext, j *Library) android.Path
 
 	// Function to compute the snapshot relative path to which the named library's
@@ -755,7 +756,10 @@ func (mt *librarySdkMemberType) CreateVariantPropertiesStruct() android.SdkMembe
 type librarySdkMemberProperties struct {
 	android.SdkMemberPropertiesBase
 
-	JarToExport     android.Path `android:"arch_variant"`
+	JarToExport android.Path `android:"arch_variant"`
+
+	DisallowAccessToJar bool
+
 	AidlIncludeDirs android.Paths
 
 	// The list of permitted packages that need to be passed to the prebuilts as they are used to
@@ -766,7 +770,11 @@ type librarySdkMemberProperties struct {
 func (p *librarySdkMemberProperties) PopulateFromVariant(ctx android.SdkMemberContext, variant android.Module) {
 	j := variant.(*Library)
 
-	p.JarToExport = ctx.MemberType().(*librarySdkMemberType).jarToExportGetter(ctx, j)
+	memberType := ctx.MemberType().(*librarySdkMemberType)
+	p.JarToExport = memberType.jarToExportGetter(ctx, j)
+
+	// If no jar was provided for export then disallow access to it completely.
+	p.DisallowAccessToJar = p.JarToExport == nil
 
 	p.AidlIncludeDirs = j.AidlIncludeDirs()
 
@@ -787,6 +795,22 @@ func (p *librarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberConte
 		builder.CopyToSnapshot(exportedJar, snapshotRelativeJavaLibPath)
 
 		propertySet.AddProperty("jars", []string{snapshotRelativeJavaLibPath})
+	}
+
+	if p.DisallowAccessToJar {
+		// Copy the script to prevent access to the jar into the snapshot.
+		scriptSrc := android.PathForSource(ctx.SdkModuleContext(), "build/soong/java/invalid_implementation_jar.sh")
+		scriptDest := filepath.Join("scripts", scriptSrc.Base())
+		builder.CopyToSnapshot(scriptSrc, scriptDest)
+
+		// Generate a genrule module that will invoke the script passing in the module name.
+		genrule := builder.AddInternalModule(ctx, "genrule", "error")
+		genRuleName := genrule.Name()
+		genrule.AddProperty("out", []string{"this-file-will-never-be-created.jar"})
+		genrule.AddProperty("tool_files", []string{scriptDest})
+		genrule.AddProperty("cmd", fmt.Sprintf("$(location %s) %s", scriptDest, ctx.Name()))
+
+		propertySet.AddPropertyWithTag("jars", []string{":" + genRuleName}, builder.SdkMemberReferencePropertyTag(true))
 	}
 
 	if len(p.PermittedPackages) > 0 {
