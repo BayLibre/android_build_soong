@@ -236,11 +236,25 @@ func loadEnvConfig(ctx Context, config *configImpl) error {
 	return nil
 }
 
+func defaultBazelProdMode(cfg *configImpl) bool {
+	// Envirnoment flag to disable Bazel for users which experience
+	// broken bazel-handled builds, or significant performance regressions.
+	if cfg.environ.IsEnvTrue("BUILD_BROKEN_DISABLE_BAZEL") {
+		return false
+	}
+	// Darwin-host builds are currently untested with Bazel.
+	if runtime.GOOS == "darwin" {
+		return false
+	}
+	return true
+}
+
 func NewConfig(ctx Context, args ...string) Config {
 	ret := &configImpl{
 		environ:       OsEnvironment(),
 		sandboxConfig: &SandboxConfig{},
 	}
+	ret.bazelProdMode = defaultBazelProdMode(ret)
 
 	// Default matching ninja
 	ret.parallel = runtime.NumCPU() + 2
@@ -718,11 +732,11 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.skipSoongTests = true
 		} else if arg == "--mk-metrics" {
 			c.reportMkMetrics = true
-		} else if arg == "--bazel-mode" {
-			c.bazelProdMode = true
 		} else if arg == "--bazel-mode-dev" {
+			c.bazelProdMode = false
 			c.bazelDevMode = true
 		} else if arg == "--bazel-mode-staging" {
+			c.bazelProdMode = false
 			c.bazelStagingMode = true
 		} else if len(arg) > 0 && arg[0] == '-' {
 			parseArgNum := func(def int) int {
