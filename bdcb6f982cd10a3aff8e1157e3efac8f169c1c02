@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329f5325_1efe7db0",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-20T04:36:10Z",
+      "side": 1,
+      "message": "Use `android.InList(\"-fexceptions\", cflags)`",
+      "range": {
+        "startLine": 612,
+        "startChar": 1,
+        "endLine": 617,
+        "endChar": 13
+      },
+      "revId": "bdcb6f982cd10a3aff8e1157e3efac8f169c1c02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3bc0bb6_9bfe2dd3",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-20T04:36:10Z",
+      "side": 1,
+      "message": "`_, sanitize.Properties.Sanitizers \u003d android.RemoveFromList(\"memtag-stack\", sanitize.Properties.Sanitizers)`",
+      "range": {
+        "startLine": 630,
+        "startChar": 2,
+        "endLine": 635,
+        "endChar": 3
+      },
+      "revId": "bdcb6f982cd10a3aff8e1157e3efac8f169c1c02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
