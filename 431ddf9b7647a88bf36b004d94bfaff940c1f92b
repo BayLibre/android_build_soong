@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c13f621_7833bb73",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-10-20T01:30:51Z",
+      "side": 1,
+      "message": "From my testing, cc fuzzers already build all shared deps, why do we want to update this?",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 63
+      },
+      "revId": "431ddf9b7647a88bf36b004d94bfaff940c1f92b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
