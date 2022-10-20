@@ -16,6 +16,23 @@
       "message": "Build error shall be fixed with https://googleplex-android-review.git.corp.google.com/c/platform/vendor/xts/+/20241860",
       "revId": "2f83b31af7b4d33a45c0c6c2dc915f8ab0d1feba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6178c6b_ed48055d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-20T20:07:54Z",
+      "side": 1,
+      "message": "I don\u0027t see any reason why android_test_import modules shouldn\u0027t support `test_config` or `test_config_template` options, maybe it would be better to implement them?",
+      "revId": "2f83b31af7b4d33a45c0c6c2dc915f8ab0d1feba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
