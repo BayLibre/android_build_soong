@@ -22,6 +22,30 @@
       },
       "revId": "431ddf9b7647a88bf36b004d94bfaff940c1f92b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cb75af9_4d0b0d4c",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-10-20T01:32:21Z",
+      "side": 1,
+      "message": "oh I see, you are using the method from the cc fuzz.go.\n\nIf we want to share this method I think we should use the common fuzz.go",
+      "parentUuid": "3c13f621_7833bb73",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 63
+      },
+      "revId": "431ddf9b7647a88bf36b004d94bfaff940c1f92b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
