@@ -150,11 +150,6 @@ var (
 		"-fdebug-info-for-profiling",
 	}
 
-	commonGlobalLldflags = []string{
-		"-fuse-ld=lld",
-		"-Wl,--icf=safe",
-	}
-
 	deviceGlobalCppflags = []string{
 		"-fvisibility-inlines-hidden",
 	}
@@ -172,9 +167,13 @@ var (
 		"-Wl,--exclude-libs,libgcc_stripped.a",
 		"-Wl,--exclude-libs,libunwind_llvm.a",
 		"-Wl,--exclude-libs,libunwind.a",
+		"-Wl,--icf=safe",
 	}
 
-	deviceGlobalLldflags = append(deviceGlobalLdflags, commonGlobalLldflags...)
+	deviceGlobalLldflags = append(deviceGlobalLdflags,
+		[]string{
+			"-fuse-ld=lld",
+		}...)
 
 	hostGlobalCflags = []string{}
 
@@ -182,7 +181,7 @@ var (
 
 	hostGlobalLdflags = []string{}
 
-	hostGlobalLldflags = commonGlobalLldflags
+	hostGlobalLldflags = []string{"-fuse-ld=lld"}
 
 	commonGlobalCppflags = []string{
 		"-Wsign-promo",
