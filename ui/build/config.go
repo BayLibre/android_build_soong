@@ -239,6 +239,7 @@ func NewConfig(ctx Context, args ...string) Config {
 	ret := &configImpl{
 		environ:       OsEnvironment(),
 		sandboxConfig: &SandboxConfig{},
+		bazelProdMode: true,
 	}
 
 	// Default matching ninja
@@ -717,9 +718,8 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.skipSoongTests = true
 		} else if arg == "--mk-metrics" {
 			c.reportMkMetrics = true
-		} else if arg == "--bazel-mode" {
-			c.bazelProdMode = true
 		} else if arg == "--bazel-mode-dev" {
+			c.bazelProdMode = false
 			c.bazelDevMode = true
 		} else if len(arg) > 0 && arg[0] == '-' {
 			parseArgNum := func(def int) int {
