@@ -118,6 +118,29 @@
       },
       "revId": "431ddf9b7647a88bf36b004d94bfaff940c1f92b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2d6179_8510070a",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-20T17:40:56Z",
+      "side": 1,
+      "message": "It is generally encouraged to use providers here instead of returning a pointer to the `dep` directly. https://docs.google.com/document/d/1CrogPUm7x6yOO149Cp35tlqAB3ZdeGzApLpWBh6PXO0/edit#heading\u003dh.m6ed3b1qks0h\n\nInstead of returning `[]android.Module` from this function, is it possible to just return `[]cc.SharedLibraryInfo`",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 27
+      },
+      "revId": "431ddf9b7647a88bf36b004d94bfaff940c1f92b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
