@@ -65,6 +65,8 @@ type fakeMemberTypeProperties struct {
 	android.SdkMemberPropertiesBase
 
 	path android.Path
+
+	createEmptyLibrary bool
 }
 
 func (t *fakeMemberTypeProperties) PopulateFromVariant(ctx android.SdkMemberContext, variant android.Module) {
@@ -74,12 +76,22 @@ func (t *fakeMemberTypeProperties) PopulateFromVariant(ctx android.SdkMemberCont
 	}
 
 	t.path = headerJars[0]
+
+	t.createEmptyLibrary = ctx.RequiresTrait(specialTrait)
 }
 
 func (t *fakeMemberTypeProperties) AddToPropertySet(ctx android.SdkMemberContext, propertySet android.BpPropertySet) {
-	if t.path != nil {
+	builder := ctx.SnapshotBuilder()
+
+	if t.createEmptyLibrary {
+		module := builder.AddInternalModule(t, "java_library", "empty")
+		module.AddProperty("sdk_version", "none")
+		module.AddProperty("system_modules", "none")
+		reference := fmt.Sprintf(":%s{.jar}", module.Name())
+		propertySet.AddPropertyWithTag("jars", []string{reference}, builder.SdkMemberReferencePropertyTag(true))
+	} else if t.path != nil {
 		relative := filepath.Join("javalibs", t.path.Base())
-		ctx.SnapshotBuilder().CopyToSnapshot(t.path, relative)
+		builder.CopyToSnapshot(t.path, relative)
 		propertySet.AddProperty("jars", []string{relative})
 	}
 }
@@ -207,7 +219,14 @@ java_test_import {
     prefer: false,
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
-    jars: ["javalibs/myjavalib.jar"],
+    jars: [":mysdk_myjavalib-empty{.jar}"],
+}
+
+java_library {
+    name: "mysdk_myjavalib-empty",
+    visibility: ["//visibility:private"],
+    sdk_version: "none",
+    system_modules: "none",
 }
 
 java_import {
@@ -231,7 +250,14 @@ java_import {
     prefer: false,
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
-    jars: ["javalibs/anotherjavalib.jar"],
+    jars: [":mysdk_anotherjavalib-empty{.jar}"],
+}
+
+java_library {
+    name: "mysdk_anotherjavalib-empty",
+    visibility: ["//visibility:private"],
+    sdk_version: "none",
+    system_modules: "none",
 }
 
 java_import {

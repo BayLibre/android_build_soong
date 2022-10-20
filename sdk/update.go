@@ -831,14 +831,14 @@ type snapshotTransformation struct {
 func (t snapshotTransformation) transformModule(module *bpModule) *bpModule {
 	// If the module is an internal member then use a unique name for it.
 	name := module.Name()
-	module.setProperty("name", t.builder.snapshotSdkMemberName(name, true))
+	module.setProperty("name", t.builder.snapshotSdkModuleName(name, true))
 	return module
 }
 
 func (t snapshotTransformation) transformProperty(_ string, value interface{}, tag android.BpPropertyTag) (interface{}, android.BpPropertyTag) {
 	if tag == requiredSdkMemberReferencePropertyTag || tag == optionalSdkMemberReferencePropertyTag {
 		required := tag == requiredSdkMemberReferencePropertyTag
-		return t.builder.snapshotSdkMemberNames(value.([]string), required), tag
+		return t.builder.snapshotSdkModuleReferences(value.([]string), required), tag
 	} else {
 		return value, tag
 	}
@@ -1165,6 +1165,24 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 	return m
 }
 
+func (s *snapshotBuilder) AddInternalModule(properties android.SdkMemberProperties, moduleType string, nameSuffix string) android.BpModule {
+	name := properties.Name() + "-" + nameSuffix
+
+	if s.prebuiltModules[name] != nil {
+		panic(fmt.Sprintf("Duplicate module detected, module %s has already been added", name))
+	}
+
+	m := s.bpFile.newModule(moduleType)
+	m.AddProperty("name", name)
+	m.AddProperty("visibility", []string{"//visibility:private"})
+
+	s.prebuiltModules[name] = m
+	s.prebuiltOrder = append(s.prebuiltOrder, m)
+
+	s.allMembersByName[name] = struct{}{}
+	return m
+}
+
 func addHostDeviceSupportedProperties(deviceSupported bool, hostSupported bool, bpModule *bpModule) {
 	// If neither device or host is supported then this module does not support either so will not
 	// recognize the properties.
@@ -1192,10 +1210,13 @@ func (s *snapshotBuilder) OptionalSdkMemberReferencePropertyTag() android.BpProp
 	return optionalSdkMemberReferencePropertyTag
 }
 
-// Get a name for sdk snapshot member. If the member is private then generate a snapshot specific
-// name. As part of the processing this checks to make sure that any required members are part of
-// the snapshot.
-func (s *snapshotBuilder) snapshotSdkMemberName(name string, required bool) string {
+// snapshotSdkModuleName maps the module name to the name of that module in the sdk snapshot.
+//
+// If the module is for a member and that member is public then this just returns the name
+// unchanged. Otherwise, it generates a snapshot specific name that is unique to the snapshot.
+//
+// As part of the processing this verifies that any required members are part of the snapshot.
+func (s *snapshotBuilder) snapshotSdkModuleName(name string, required bool) string {
 	if _, ok := s.allMembersByName[name]; !ok {
 		if required {
 			s.ctx.ModuleErrorf("Required member reference %s is not a member of the sdk", name)
@@ -1210,15 +1231,49 @@ func (s *snapshotBuilder) snapshotSdkMemberName(name string, required bool) stri
 	}
 }
 
-func (s *snapshotBuilder) snapshotSdkMemberNames(members []string, required bool) []string {
-	var references []string = nil
-	for _, m := range members {
+// snapshotSdkModuleReference maps a reference to a module to a reference to that module in the sdk
+// snapshot.
+//
+// The reference can just be the name of the module, e.g. "module", or it could be reference to a
+// set of output files of the module, e.g. ":module", or ":module{tag}". Whichever format this is it
+// only affects the "module" part of the reference, the optional ":" prefix and optional "{tag}"
+// suffix are preserved if present.
+//
+// If the module is for a member and that member is public then this just returns the reference
+// unchanged. Otherwise, it generates a snapshot specific reference where the module name is unique
+// to the snapshot.
+func (s *snapshotBuilder) snapshotSdkModuleReference(reference string, required bool) string {
+	prefix := ""
+	name := strings.TrimPrefix(reference, ":")
+	if name != reference {
+		prefix = ":"
+	}
+	suffix := ""
+	if index := strings.Index(name, "{"); index >= 0 {
+		suffix = name[index:]
+		name = name[:index]
+	}
+
+	mappedName := s.snapshotSdkModuleName(name, required)
+
+	if s.isInternalMember(name) {
+		return prefix + mappedName + suffix
+	} else {
+		return reference
+	}
+}
+
+// snapshotSdkModuleReferences maps a list of references specified in a BpModule property into a
+// list of references to modules in the sdk snapshot.
+func (s *snapshotBuilder) snapshotSdkModuleReferences(references []string, required bool) []string {
+	var internalReferences []string = nil
+	for _, m := range references {
 		if _, ok := s.excludedMembersByName[m]; ok {
 			continue
 		}
-		references = append(references, s.snapshotSdkMemberName(m, required))
+		internalReferences = append(internalReferences, s.snapshotSdkModuleReference(m, required))
 	}
-	return references
+	return internalReferences
 }
 
 func (s *snapshotBuilder) isInternalMember(memberName string) bool {
@@ -2005,6 +2060,7 @@ func (s *sdk) createMemberSnapshot(ctx *memberContext, member *sdkMember, bpModu
 	variantPropertiesFactory := func() android.SdkMemberProperties {
 		properties := memberType.CreateVariantPropertiesStruct()
 		base := properties.Base()
+		base.MemberName = member.Name()
 		base.Os_count = osCount
 		return properties
 	}
