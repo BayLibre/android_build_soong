@@ -1334,6 +1334,7 @@ var (
 		"prebuilt_currysrc_org.eclipse",
 
 		// TODO(b/247782695 and/or b/242847534) Fix mixed build between unconverted gensrcs and converted filegroup
+		"connectivity_service_proto",
 		"libstats_atom_enum_protos",
 		"data_stall_event_proto",
 		"device_policy_proto",
