@@ -70,6 +70,30 @@
       },
       "revId": "431ddf9b7647a88bf36b004d94bfaff940c1f92b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b66c3865_70461162",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-20T16:55:47Z",
+      "side": 1,
+      "message": "Since this function gathers cc shared deps, it seems better to me to leave it in the cc package.",
+      "parentUuid": "346b78c4_0e876836",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 63
+      },
+      "revId": "431ddf9b7647a88bf36b004d94bfaff940c1f92b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
