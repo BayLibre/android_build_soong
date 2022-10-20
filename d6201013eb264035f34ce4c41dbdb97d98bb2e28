@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e64098_0ecbadc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-20T05:33:52Z",
+      "side": 1,
+      "message": "Bypassing presubmit as this fixes other presubmits, except for mixed_libc which is broken due to a separate issue. Filed b/254572169 to track that.",
+      "revId": "d6201013eb264035f34ce4c41dbdb97d98bb2e28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
