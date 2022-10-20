@@ -397,8 +397,12 @@ var (
 		"com.android.neuralnetworks.certificate",
 		"com.android.neuralnetworks.key",
 		"flatbuffer_headers",
+		"framework-javastream-protos",
+		"framework-cppstream-protos",
+		"framework-connectivity-protos",
 		"gemmlowp_headers",
 		"gl_headers",
+		"ipconnectivity-proto-src",
 		"libaidlcommonsupport",
 		"libandroid_runtime_lazy",
 		"libandroid_runtime_vm_headers",
@@ -474,6 +478,7 @@ var (
 		"philox_random",
 		"philox_random_headers",
 		"server_configurable_flags",
+		"service-permission-streaming-proto-sources",
 		"statslog_neuralnetworks.cpp",
 		"statslog_neuralnetworks.h",
 		"tensorflow_headers",
@@ -1334,7 +1339,6 @@ var (
 		"prebuilt_currysrc_org.eclipse",
 
 		// TODO(b/247782695 and/or b/242847534) Fix mixed build between unconverted gensrcs and converted filegroup
-		"libstats_atom_enum_protos",
 		"data_stall_event_proto",
 		"device_policy_proto",
 		"dns_resolver_proto",
@@ -1345,7 +1349,6 @@ var (
 		"style_proto",
 		"tethering_proto",
 		"text_classifier_proto",
-		"libstats_atom_message_protos",
 	}
 
 	ProdMixedBuildsEnabledList = []string{
