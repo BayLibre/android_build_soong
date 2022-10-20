@@ -12,7 +12,6 @@ source "$(dirname "$0")/lib.sh"
 
 function test_bazel_smoke {
   setup
-  create_mock_bazel
 
   run_soong bp2build
 
@@ -21,7 +20,6 @@ function test_bazel_smoke {
 
 function test_add_irrelevant_file {
   setup
-  create_mock_bazel
 
   mkdir -p soong_tests/a/b
   touch soong_tests/a/b/c.txt
