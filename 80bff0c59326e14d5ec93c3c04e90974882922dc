@@ -34,6 +34,23 @@
       "parentUuid": "46f8cbc5_6f231b1a",
       "revId": "80bff0c59326e14d5ec93c3c04e90974882922dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6adc4bf9_ca424c27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-10-20T01:42:26Z",
+      "side": 1,
+      "message": "I\u0027m worried if we\u0027ll need more conditions in addition to native bridge, but this looks fine for now.",
+      "revId": "80bff0c59326e14d5ec93c3c04e90974882922dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
