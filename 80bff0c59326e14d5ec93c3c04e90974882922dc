@@ -16,6 +16,24 @@
       "message": "LGTM.\n\n(Something to discuss offline since I don\u0027t know the answer: Do vendor builds require native_bridge support? Looks like we have a parallel set of stubs for native_bridge target https://cs.android.com/android/platform/superproject/+/master:frameworks/libs/native_bridge_support/)",
       "revId": "80bff0c59326e14d5ec93c3c04e90974882922dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecd65e8c_c5336239",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-20T00:23:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure if they are same level of stub we handle. It may be the stub to convert from ARM based call to x86 based (or vice versa?), and not sure if we would handle such conversion from API surface.\n\nAnyway, I think we better let ndk translation package to be built only from the system build in the future.",
+      "parentUuid": "46f8cbc5_6f231b1a",
+      "revId": "80bff0c59326e14d5ec93c3c04e90974882922dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
