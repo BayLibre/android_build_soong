@@ -130,6 +130,9 @@ message BuildConfig {
   // These are the targets soong passes to ninja, these targets include special
   // targets such as droid as well as the regular build targets.
   repeated string targets = 6;
+
+  // Environment variables.
+  map<string, string> environment_variables = 7;
 }
 
 message SystemResourceInfo {
