@@ -12,7 +12,6 @@ source "$(dirname "$0")/lib.sh"
 
 function test_bazel_smoke {
   setup
-  create_mock_bazel
 
   run_soong bp2build
 
