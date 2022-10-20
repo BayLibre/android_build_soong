@@ -141,6 +141,30 @@
       },
       "revId": "431ddf9b7647a88bf36b004d94bfaff940c1f92b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c75f08a_266d4a18",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-10-20T19:02:15Z",
+      "side": 1,
+      "message": "I looked into it based on your comment. If there is no `SharedLibrary` field in the `sharedLibInfo` object, we would like to mention the dependency name and type for the Java fuzzer dependency, to make it easy to debug. However, these fields are not present in the `sharedLibInfo` object, but are present in the `dep` object. So, can we please return the `dep` pointer directly, or do you strongly recommend not to do so?",
+      "parentUuid": "9d2d6179_8510070a",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 27
+      },
+      "revId": "431ddf9b7647a88bf36b004d94bfaff940c1f92b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
