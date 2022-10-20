@@ -28,6 +28,7 @@ import (
 	"android/soong/ui/logger"
 	smpb "android/soong/ui/metrics/metrics_proto"
 	"android/soong/ui/status"
+
 	"google.golang.org/protobuf/encoding/prototext"
 
 	"google.golang.org/protobuf/proto"
