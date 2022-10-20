@@ -46,6 +46,30 @@
       },
       "revId": "431ddf9b7647a88bf36b004d94bfaff940c1f92b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346b78c4_0e876836",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2022-10-20T01:40:28Z",
+      "side": 1,
+      "message": "Well... To be more clear, I meant we should maybe move this method to the common fuzz.go to be shared between java and cc and rust, instead of calling the cc/fuzz.go from java and rust.\n\nBut I guess since it\u0027s already done this way in rust, this is kind of a \"nit\".",
+      "parentUuid": "9cb75af9_4d0b0d4c",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 63
+      },
+      "revId": "431ddf9b7647a88bf36b004d94bfaff940c1f92b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
