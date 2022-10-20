@@ -16,6 +16,24 @@
       "message": "I needed this to solve an `fatal error: \u0027stdarg.h\u0027 file not found` error in bindgen rules.  The problem is caused by the `-x c` argument to bindgen above.  Bindgen passes that flag to clang-sys, which [invokes clang](https://cs.android.com/android/platform/superproject/+/master:external/rust/crates/clang-sys/src/support.rs;l\u003d223;drc\u003d259dac6a715cbb560a7521ccf281bafebb78719b) with `clang -E -x c - -v, followed by the args from bindgen.  When those args contain a second `-x c` clang fails with `clang: error: \u0027-x c\u0027 after last input file has no effect [-Werror,-Wunused-command-line-argument]`.  I don\u0027t know if there is a better solution (Make clang-sys strip `-x c` from the extra args?  Put the extra args first?), but this is enough to get presubmit to pass.",
       "revId": "3671d1d613875d1019190dc435fc36bbef7e7055",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f258fd82_36ad60f7",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-20T21:53:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73d0cae8_c46d00e2",
+      "revId": "3671d1d613875d1019190dc435fc36bbef7e7055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
