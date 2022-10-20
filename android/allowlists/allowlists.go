@@ -1308,7 +1308,5 @@ var (
 		"libstats_atom_message_protos",
 	}
 
-	ProdMixedBuildsEnabledList = []string{
-		"com.android.adbd",
-	}
+	ProdMixedBuildsEnabledList = []string{}
 )
