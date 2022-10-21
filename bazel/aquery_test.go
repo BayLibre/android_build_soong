@@ -126,6 +126,12 @@ func TestAqueryMultiArchGenrule(t *testing.T) {
     { "id": 20, "label": "syscalls-x86_64.S", "parentId": 13 },
     { "id": 21, "label": "syscalls-arm64.S", "parentId": 13 }]
 }`
+	//var aqueryResult actionGraphContainer
+	//err := json.Unmarshal([]byte(inputString), &aqueryResult)
+	//if err != nil {
+	//	fmt.Println(err)
+	//}
+	//data := proto.Marshal(aqueryResult)
 	actualbuildStatements, actualDepsets, _ := AqueryBuildStatements([]byte(inputString))
 	var expectedBuildStatements []BuildStatement
 	for _, arch := range []string{"arm", "arm64", "x86", "x86_64"} {

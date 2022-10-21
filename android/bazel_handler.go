@@ -172,6 +172,7 @@ type BazelContext interface {
 type bazelRunner interface {
 	createBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand, extraFlags ...string) *exec.Cmd
 	issueBazelCommand(bazelCmd *exec.Cmd) (output string, errorMessage string, error error)
+	issueAqueryCommand(bazelCmd *exec.Cmd) ([]byte, error)
 }
 
 type bazelPaths struct {
@@ -510,6 +511,13 @@ func (r *mockBazelRunner) createBazelCommand(paths *bazelPaths, runName bazel.Ru
 	return cmd
 }
 
+func (r *mockBazelRunner) issueAqueryCommand(bazelCmd *exec.Cmd) ([]byte, error) {
+	if command, ok := r.tokens[bazelCmd]; ok {
+		return []byte(r.bazelCommandResults[command]), nil
+	}
+	return []byte(""), nil
+}
+
 func (r *mockBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd) (string, string, error) {
 	if command, ok := r.tokens[bazelCmd]; ok {
 		return r.bazelCommandResults[command], "", nil
@@ -532,6 +540,17 @@ func (r *builtinBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd) (string, stri
 			fmt.Errorf("bazel command failed. command: [%s], env: [%s], error [%s]", bazelCmd, bazelCmd.Env, stderr)
 	} else {
 		return string(output), string(stderr.Bytes()), nil
+	}
+}
+
+func (r *builtinBazelRunner) issueAqueryCommand(bazelCmd *exec.Cmd) ([]byte, error) {
+	stderr := &bytes.Buffer{}
+	bazelCmd.Stderr = stderr
+	if output, err := bazelCmd.Output(); err != nil {
+		return stderr.Bytes(),
+			fmt.Errorf("bazel command failed. command: [%s], env: [%s], error [%s]", bazelCmd, bazelCmd.Env, stderr)
+	} else {
+		return output, nil
 	}
 }
 
@@ -922,7 +941,7 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 	//
 	// Use jsonproto instead of proto; actual proto parsing would require a dependency on Bazel's
 	// proto sources, which would add a number of unnecessary dependencies.
-	extraFlags := []string{"--output=jsonproto", "--include_file_write_contents"}
+	extraFlags := []string{"--output=proto", "--include_file_write_contents"}
 	if Bool(config.productVariables.ClangCoverage) {
 		extraFlags = append(extraFlags, "--collect_code_coverage")
 		paths := make([]string, 0, 2)
@@ -937,9 +956,9 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 		}
 	}
 	aqueryCmd := bazelCommand{"aquery", fmt.Sprintf("deps(%s)", buildrootLabel)}
-	if aqueryOutput, _, err := context.issueBazelCommand(context.createBazelCommand(context.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
+	if aqueryOutput, err := context.issueAqueryCommand(context.createBazelCommand(context.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
 		extraFlags...)); err == nil {
-		context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements([]byte(aqueryOutput))
+		context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements(aqueryOutput)
 	}
 	if err != nil {
 		return err

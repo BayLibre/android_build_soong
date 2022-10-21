@@ -21,5 +21,6 @@ bootstrap_go_package {
     ],
     deps: [
         "blueprint",
+        "bazel_analysis_v2_proto",
     ],
 }
