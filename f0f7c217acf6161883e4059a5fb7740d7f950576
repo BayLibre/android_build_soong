@@ -34,6 +34,24 @@
       "parentUuid": "1b86c886_7e5b4cb2",
       "revId": "f0f7c217acf6161883e4059a5fb7740d7f950576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8db81ccb_661a3a21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2022-10-21T04:29:05Z",
+      "side": 1,
+      "message": "Build passes.",
+      "parentUuid": "d48abd2f_c5890cbe",
+      "revId": "f0f7c217acf6161883e4059a5fb7740d7f950576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
