@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ca553e_0d7aec8e",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-10-21T18:53:39Z",
+      "side": 1,
+      "message": "Do these need to be in two places?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 36
+      },
+      "revId": "97e265c695340910ef8250e752131ce0da3ecfff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6106576_ec12ef84",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-10-21T18:53:39Z",
+      "side": 1,
+      "message": "nit:surround with commas",
+      "range": {
+        "startLine": 175,
+        "startChar": 22,
+        "endLine": 175,
+        "endChar": 30
+      },
+      "revId": "97e265c695340910ef8250e752131ce0da3ecfff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
