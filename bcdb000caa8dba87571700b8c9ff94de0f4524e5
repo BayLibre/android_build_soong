@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb90689_8f6725dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2022-10-21T03:27:04Z",
+      "side": 1,
+      "message": "Awesome, thanks for taking care of this warning!",
+      "revId": "bcdb000caa8dba87571700b8c9ff94de0f4524e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
