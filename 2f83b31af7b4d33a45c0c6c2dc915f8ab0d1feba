@@ -51,6 +51,24 @@
       "parentUuid": "d6178c6b_ed48055d",
       "revId": "2f83b31af7b4d33a45c0c6c2dc915f8ab0d1feba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e674756c_a34a2113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-21T19:07:05Z",
+      "side": 1,
+      "message": "That sounds like we need an `android_test_helper_app_import` for that use case so that an `android_test_import` can be used as a test.  I\u0027m not sure if there are any remaining uses of `android_test_import` if we add `android_test_helper_app_import` though.",
+      "parentUuid": "5a3c83d9_3bbccd9a",
+      "revId": "2f83b31af7b4d33a45c0c6c2dc915f8ab0d1feba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
