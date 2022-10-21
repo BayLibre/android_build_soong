@@ -126,6 +126,9 @@ func (fuzzBin *fuzzBinary) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		deps.HeaderLibs = append(deps.HeaderLibs, "libafl_headers")
 	} else {
 		deps.StaticLibs = append(deps.StaticLibs, config.LibFuzzerRuntimeLibrary(ctx.toolchain()))
+		if android.InList("hwaddress", ctx.Config().SanitizeDevice()) {
+			deps.StaticLibs = append(deps.StaticLibs, config.LibFuzzerRuntimeInterceptors(ctx.toolchain()))
+		}
 	}
 
 	deps = fuzzBin.binaryDecorator.linkerDeps(ctx, deps)
