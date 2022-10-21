@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ce98dfc_fdf0b903",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-21T14:34:56Z",
+      "side": 1,
+      "message": "nit: when we extend ProdMixedBuildsEnabledList via soong plugins, the staging list will likely diverge\nShould it thus be replaced with a private `stagingMixedBuildsEnabledList` along with public `func AddToStagingMixedBuildsEnabledList(module string)` and `func GetStagingMixedBuildsEnabledList() []string`",
+      "revId": "b78465de1d0f8a02c16e11dd672338bc1bd597ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
