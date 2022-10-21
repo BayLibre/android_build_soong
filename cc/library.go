@@ -2791,6 +2791,15 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 		Runtime_deps:                      linkerAttrs.runtimeDeps,
 	}
 
+	for _, f := range module.features {
+		if tidy, ok := f.(*tidyFeature); ok {
+			commonAttrs.Tidy = tidy.Properties.Tidy
+			commonAttrs.Tidy_checks = tidy.Properties.Tidy_checks
+			commonAttrs.Tidy_checks_as_errors = tidy.Properties.Tidy_checks_as_errors
+			//TODO handle Tidy_disable_srcs
+		}
+	}
+
 	var attrs interface{}
 	if isStatic {
 		commonAttrs.Deps.Add(baseAttributes.protoDependency)

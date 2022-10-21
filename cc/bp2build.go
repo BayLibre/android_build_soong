@@ -66,6 +66,15 @@ type staticOrSharedAttributes struct {
 	Native_coverage bazel.BoolAttribute
 
 	sdkAttributes
+
+	tidyAttributes
+}
+
+type tidyAttributes struct {
+	Tidy                  *bool
+	Tidy_flags            []string
+	Tidy_checks           []string
+	Tidy_checks_as_errors []string
 }
 
 // groupSrcsByExtension partitions `srcs` into groups based on file extension.
