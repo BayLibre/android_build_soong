@@ -4,6 +4,8 @@ require google.golang.org/protobuf v0.0.0
 
 require github.com/google/blueprint v0.0.0
 
+require golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
+
 replace google.golang.org/protobuf v0.0.0 => ../../external/golang-protobuf
 
 replace github.com/google/blueprint v0.0.0 => ../blueprint
@@ -15,5 +17,13 @@ replace github.com/google/go-cmp v0.5.5 => ../../external/go-cmp
 
 // Indirect dep from go-cmp
 exclude golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
+
+require prebuilts/bazel/common/proto/analysis_v2 v0.0.0
+
+replace prebuilts/bazel/common/proto/analysis_v2 => ../../prebuilts/bazel/common/proto/analysis_v2
+
+require prebuilts/bazel/common/proto/build v0.0.0 // indirect
+
+replace prebuilts/bazel/common/proto/build => ../../prebuilts/bazel/common/proto/build
 
 go 1.18
