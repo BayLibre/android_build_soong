@@ -16,6 +16,24 @@
       "message": "nit: when we extend ProdMixedBuildsEnabledList via soong plugins, the staging list will likely diverge\nShould it thus be replaced with a private `stagingMixedBuildsEnabledList` along with public `func AddToStagingMixedBuildsEnabledList(module string)` and `func GetStagingMixedBuildsEnabledList() []string`",
       "revId": "b78465de1d0f8a02c16e11dd672338bc1bd597ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a039e660_626aa3e8",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-21T14:38:51Z",
+      "side": 1,
+      "message": "I\u0027m not sure I see the point here - this doesn\u0027t exist for any of the other lists, right? \n\nThe string[] that\u0027s the first argument to append is where we\u0027d add staging-but-not-prod modules.",
+      "parentUuid": "5ce98dfc_fdf0b903",
+      "revId": "b78465de1d0f8a02c16e11dd672338bc1bd597ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
