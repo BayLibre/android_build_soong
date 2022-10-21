@@ -33,6 +33,24 @@
       "message": "I don\u0027t see any reason why android_test_import modules shouldn\u0027t support `test_config` or `test_config_template` options, maybe it would be better to implement them?",
       "revId": "2f83b31af7b4d33a45c0c6c2dc915f8ab0d1feba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3c83d9_3bbccd9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-10-21T00:02:32Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be a breaking change to the existing android_test_import modules?\n\nIf they have AndroidTest.xml in the directory, the file will suddenly be used, causing them to turn into a test.\n\nIf they don\u0027t have Androidtest.xml in the directory, the build will fail because the build system will try to use the file. (we can avoid this by not wanting the file when it doesn\u0027t exist, then the semantic of test_config becomes different from other modules. Are you okay with that?)\n\nIt looks like the intended use of android_test_import is to have a prebuilt apk as an additional apk that (another) test uses. Those prebuilt apks are NOT the entry point to the test.",
+      "parentUuid": "d6178c6b_ed48055d",
+      "revId": "2f83b31af7b4d33a45c0c6c2dc915f8ab0d1feba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
