@@ -16,6 +16,24 @@
       "message": "Due to b/237436053, when you are ready to test, please manually run aosp_arm64-userdebug_tidy build for this CL to check if all C/C++ files can compile.\nThanks.\n",
       "revId": "f0f7c217acf6161883e4059a5fb7740d7f950576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d48abd2f_c5890cbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2022-10-21T03:25:31Z",
+      "side": 1,
+      "message": "Started a run here.\nhttps://android-build.googleplex.com/builds/abtd/run/L78500000956969252",
+      "parentUuid": "1b86c886_7e5b4cb2",
+      "revId": "f0f7c217acf6161883e4059a5fb7740d7f950576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
