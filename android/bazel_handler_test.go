@@ -7,6 +7,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/bazel"
 	"android/soong/bazel/cquery"
 )
 
@@ -65,50 +66,51 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
 	var testCases = []testCase{
 		{`
 {
-  "artifacts": [
-    { "id": 1, "pathFragmentId": 1 },
-    { "id": 2, "pathFragmentId": 2 }],
-  "actions": [{
-    "targetId": 1,
-    "actionKey": "x",
-    "mnemonic": "x",
-    "arguments": ["touch", "foo"],
-    "inputDepSetIds": [1],
-    "outputIds": [1],
-    "primaryOutputId": 1
-  }],
-  "depSetOfFiles": [
-    { "id": 1, "directArtifactIds": [1, 2] }],
-  "pathFragments": [
-    { "id": 1, "label": "one" },
-    { "id": 2, "label": "two" }]
+ "artifacts": [
+   { "id": 1, "path_fragment_id": 1 },
+   { "id": 2, "path_fragment_id": 2 }],
+ "actions": [{
+   "target_Id": 1,
+   "action_Key": "x",
+   "mnemonic": "x",
+   "arguments": ["touch", "foo"],
+   "input_dep_set_ids": [1],
+   "output_Ids": [1],
+   "primary_output_id": 1
+ }],
+ "dep_set_of_files": [
+   { "id": 1, "direct_artifact_ids": [1, 2] }],
+ "path_fragments": [
+   { "id": 1, "label": "one" },
+   { "id": 2, "label": "two" }]
 }`,
 			"cd 'test/exec_root' && rm -f 'one' && touch foo",
 		}, {`
 {
-  "artifacts": [
-    { "id": 1, "pathFragmentId": 10 },
-    { "id": 2, "pathFragmentId": 20 }],
-  "actions": [{
-    "targetId": 100,
-    "actionKey": "x",
-    "mnemonic": "x",
-    "arguments": ["bogus", "command"],
-    "outputIds": [1, 2],
-    "primaryOutputId": 1
-  }],
-  "pathFragments": [
-    { "id": 10, "label": "one", "parentId": 30 },
-    { "id": 20, "label": "one.d", "parentId": 30 },
-    { "id": 30, "label": "parent" }]
+ "artifacts": [
+   { "id": 1, "path_fragment_id": 10 },
+   { "id": 2, "path_fragment_id": 20 }],
+ "actions": [{
+   "target_Id": 100,
+   "action_Key": "x",
+   "mnemonic": "x",
+   "arguments": ["bogus", "command"],
+   "output_Ids": [1, 2],
+   "primary_output_id": 1
+ }],
+ "pathFragments": [
+   { "id": 10, "label": "one", "parent_id": 30 },
+   { "id": 20, "label": "one.d", "parent_id": 30 },
+   { "id": 30, "label": "parent" }]
 }`,
 			`cd 'test/exec_root' && rm -f 'parent/one' && bogus command && sed -i'' -E 's@(^|\s|")bazel-out/@\1test/bazel_out/@g' 'parent/one.d'`,
 		},
 	}
 
 	for i, testCase := range testCases {
+		data := bazel.JsonToPb(testCase.input)
 		bazelContext, _ := testBazelContext(t, map[bazelCommand]string{
-			bazelCommand{command: "aquery", expression: "deps(@soong_injection//mixed_builds:buildroot)"}: testCase.input})
+			bazelCommand{command: "aquery", expression: "deps(@soong_injection//mixed_builds:buildroot)"}: string(data)})
 
 		err := bazelContext.InvokeBazel(testConfig)
 		if err != nil {

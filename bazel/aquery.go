@@ -25,6 +25,8 @@ import (
 	"strings"
 
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/proto"
+	analysis_v2_proto "prebuilts/bazel/common/proto/analysis_v2"
 )
 
 type artifactId int
@@ -312,10 +314,84 @@ func (a *aqueryArtifactHandler) artifactPathsFromDepsetHash(depsetHash string) (
 // BuildStatements are one-to-one with actions in the given action graph, and AqueryDepsets
 // are one-to-one with Bazel's depSetOfFiles objects.
 func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, []AqueryDepset, error) {
-	var aqueryResult actionGraphContainer
-	err := json.Unmarshal(aqueryJsonProto, &aqueryResult)
+	aqueryProto := &analysis_v2_proto.ActionGraphContainer{}
+	err := proto.Unmarshal(aqueryJsonProto, aqueryProto)
 	if err != nil {
 		return nil, nil, err
+	}
+	aqueryResult := actionGraphContainer{}
+
+	// load Artifacts from proto to aquery
+	for _, protoArtifact := range aqueryProto.Artifacts {
+		//fmt.Println(aqueryResult)
+		aqueryResult.Artifacts = append(aqueryResult.Artifacts, artifact{artifactId(protoArtifact.Id),
+			pathFragmentId(protoArtifact.PathFragmentId)})
+	}
+
+	// load Actions from proto to aquery
+	for _, protoAction := range aqueryProto.Actions {
+		var newProtoEnvironmentVariable []KeyValuePair
+		var newProtoInputDepSetIds []depsetId
+		var newProtoOutputIds []artifactId
+		var newProtoSubstitutions []KeyValuePair
+
+		for _, protoEnvironmentVariable := range protoAction.EnvironmentVariables {
+			newProtoEnvironmentVariable = append(newProtoEnvironmentVariable, KeyValuePair{
+				protoEnvironmentVariable.Key, protoEnvironmentVariable.Value,
+			})
+		}
+		for _, protoInputDepSetIds := range protoAction.InputDepSetIds {
+			newProtoInputDepSetIds = append(newProtoInputDepSetIds, depsetId(protoInputDepSetIds))
+		}
+		for _, protoOutputIds := range protoAction.OutputIds {
+			newProtoOutputIds = append(newProtoOutputIds, artifactId(protoOutputIds))
+		}
+		for _, protoSubstitutions := range protoAction.Substitutions {
+			newProtoSubstitutions = append(newProtoSubstitutions, KeyValuePair{
+				protoSubstitutions.Key, protoSubstitutions.Value,
+			})
+		}
+
+		aqueryResult.Actions = append(aqueryResult.Actions,
+			action{
+				Arguments:            protoAction.Arguments,
+				EnvironmentVariables: newProtoEnvironmentVariable,
+				InputDepSetIds:       newProtoInputDepSetIds,
+				Mnemonic:             protoAction.Mnemonic,
+				OutputIds:            newProtoOutputIds,
+				TemplateContent:      protoAction.TemplateContent,
+				Substitutions:        newProtoSubstitutions,
+				FileContents:         protoAction.FileContents})
+	}
+
+	// load DepsetOfFiles from proto to aquery
+	for _, protoDepSetOfFiles := range aqueryProto.DepSetOfFiles {
+		var newProtoDirectArtifactIds []artifactId
+		var newProtoTransitiveDepSetIds []depsetId
+
+		for _, protoDirectArtifactIds := range protoDepSetOfFiles.DirectArtifactIds {
+			newProtoDirectArtifactIds = append(newProtoDirectArtifactIds, artifactId(protoDirectArtifactIds))
+		}
+		for _, protoTransitiveDepSetIds := range protoDepSetOfFiles.TransitiveDepSetIds {
+			newProtoTransitiveDepSetIds = append(newProtoTransitiveDepSetIds, depsetId(protoTransitiveDepSetIds))
+		}
+		aqueryResult.DepSetOfFiles = append(aqueryResult.DepSetOfFiles,
+			depSetOfFiles{
+				Id:                  depsetId(protoDepSetOfFiles.Id),
+				DirectArtifactIds:   newProtoDirectArtifactIds,
+				TransitiveDepSetIds: newProtoTransitiveDepSetIds})
+
+	}
+
+	// load PathFragments from proto to aquery
+
+	for _, protoPathFragments := range aqueryProto.PathFragments {
+		aqueryResult.PathFragments = append(aqueryResult.PathFragments,
+			pathFragment{
+				Id:       pathFragmentId(protoPathFragments.Id),
+				Label:    protoPathFragments.Label,
+				ParentId: pathFragmentId(protoPathFragments.ParentId)})
+
 	}
 	aqueryHandler, err := newAqueryHandler(aqueryResult)
 	if err != nil {
@@ -653,4 +729,15 @@ func expandPathFragment(id pathFragmentId, pathFragmentsMap map[pathFragmentId]p
 		currId = currFragment.ParentId
 	}
 	return filepath.Join(labels...), nil
+}
+
+// Transform the json format to proto
+func JsonToPb(inputString string) []byte {
+	var aqueryProtoResult analysis_v2_proto.ActionGraphContainer
+	err := json.Unmarshal([]byte(inputString), &aqueryProtoResult)
+	if err != nil {
+		fmt.Println(err)
+	}
+	data, _ := proto.Marshal(&aqueryProtoResult)
+	return data
 }
