@@ -15,6 +15,8 @@
 package android
 
 import (
+	"embed"
+	"path/filepath"
 	"testing"
 )
 
@@ -79,4 +81,32 @@ func TestFixtureValidateMockFS(t *testing.T) {
 			}).Fixture(t)
 		})
 	})
+}
+
+//go:embed hello.txt
+var hello string
+
+//go:embed test_data/*.txt
+var testData embed.FS
+
+func TestEmbedData(t *testing.T) {
+	AssertStringEquals(t, "hello.txt contents", "Hello World!", hello)
+
+	dir := "test_data"
+	dirEntries, err := testData.ReadDir(dir)
+	if err != nil {
+		t.Fatalf("could not read test_data\n%s", err)
+	}
+
+	concat := ""
+	for _, e := range dirEntries {
+		path := filepath.Join(dir, e.Name())
+		contents, err := testData.ReadFile(path)
+		if err != nil {
+			t.Errorf("could not read %s\n%s", path, err)
+			continue
+		}
+		concat += string(contents)
+	}
+	AssertStringEquals(t, "test_data contents", "File1\nFile2\n", concat)
 }
