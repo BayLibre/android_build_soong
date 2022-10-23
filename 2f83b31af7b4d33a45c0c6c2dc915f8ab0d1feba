@@ -69,6 +69,24 @@
       "parentUuid": "5a3c83d9_3bbccd9a",
       "revId": "2f83b31af7b4d33a45c0c6c2dc915f8ab0d1feba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e9bd59_2549d90a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-10-23T08:28:55Z",
+      "side": 1,
+      "message": "Yes, I agree with you that the name android_test_import is somewhat misleading and I don\u0027t think there is a need for a build rule for converting a prebuilt into a test.\n\nI can take the renamining of the module type if you agree, but that should be as a follow-up change I think.",
+      "parentUuid": "e674756c_a34a2113",
+      "revId": "2f83b31af7b4d33a45c0c6c2dc915f8ab0d1feba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
