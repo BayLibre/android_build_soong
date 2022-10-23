@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef5cc62_77f17ac8",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1099348
+      },
+      "writtenOn": "2022-10-23T22:56:57Z",
+      "side": 1,
+      "message": "non-blocking comment, it would be very helpful if the rule would fail if one of these was missing (vs the current behavior)",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 62
+      },
+      "revId": "706d35fe7c6b7d89d7d57beeec5d6f988eb19674",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
