@@ -73,6 +73,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b914fda0_cdb72968",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-24T20:19:55Z",
+      "side": 1,
+      "message": "I would prefer you copy this function into both tests instead of having this function in non-test code. test-only code belongs in tests, not next to prod code.\n\nAlso, if you\u0027re going to keep this, name this something more specific to ActionGraphContainer -- since this isn\u0027t a generic jsonToPb function, but it specifically converts an ActionGraphContainer json string.",
+      "parentUuid": "b21f030b_15e36e33",
+      "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "986699cb_44d2fced",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-24T20:19:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t an error here be much more catastrophic than just printing this out? Once you move this function to tests, you should consider having the test fail right here instead of just printing things out.",
+      "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fba241e5_34f5db60",
         "filename": "bazel/aquery_test.go",
         "patchSetId": 5
@@ -102,6 +137,24 @@
       "side": 1,
       "message": "I notice you need to update a lot of these field names. What was the result if you missed updating these names? Would the test fail?\n#### Yes, the test will be failed if I missed updating the names.\nI worry that this is a bit brittle to mistakes in writing tests. Why are some fields capitalized and some not?\n#### I\u0027ve done some research and it turns out that capitalized or not does not make any difference while using json.unmarshal() function. The changes are mainly because lots of the fields in previous test cases lack \"_\" sign. I can update the fields to be exact same if it is more appropriate to do that. Please let me know.\n\nConsider a couple of alternatives:\n\nWe write test data as proto files that we create directly for the test (instead of writing them as json and converting)\n#### I was trying to use this debugging mode to copy the \"data\" so that I could directly use it in aquery_test. Unfortunately, the \"data\" is garbled.\nWe make JsonToPb fail on any unrecognized fields. Is there a way to do this with the proto library?\n#### Jsonpb function will not return err if it receive some unrecognized fields. But the test case will later fail , please see the function such as TestInvalidOutputId(). It will tell us which fields are missing. Please let me know your thoughts, thanks!",
       "parentUuid": "fba241e5_34f5db60",
+      "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e8d6890_14e89c1f",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-24T20:19:55Z",
+      "side": 1,
+      "message": "\u003e I was trying to use this debugging mode to copy the \"data\" so that I could directly use it in aquery_test. Unfortunately, the \"data\" is garbled.\n\nYes, if you try to copy the text directly that will indeed be garbled :) What I was trying to suggest was something like https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/config_test.go;l\u003d1017-1022;drc\u003db78465de1d0f8a02c16e11dd672338bc1bd597ca\nyou can construct the proto object programmatically like that.\n\nIn other words, you\u0027d construct a analysis_v2_proto.ActionGraphContainer and then turn it into a byte[], instead of using json format.\n\nThat said, I know that\u0027s a nontrivial change, and this existing mechanism is not too bad. Maybe you can file a bug to do a lower priority cleanup after this CL?\n\n\u003e  I can update the fields to be exact same if it is more appropriate to do that. Please let me know.\n\nYes, lets make capitalization consistent so that it\u0027s obvious there isn\u0027t some semantic meaning behind that :)",
+      "parentUuid": "d9836fd1_700a8031",
       "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

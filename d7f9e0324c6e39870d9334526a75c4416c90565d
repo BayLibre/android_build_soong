@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ffca19_4b83480d",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-24T20:19:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure this comment adds much value, same for the other comments which are \"load X from proto to aquery\"",
+      "revId": "d7f9e0324c6e39870d9334526a75c4416c90565d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1330f6_92244d49",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-24T20:19:55Z",
+      "side": 1,
+      "message": "remove this comment",
+      "revId": "d7f9e0324c6e39870d9334526a75c4416c90565d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50bb7ec8_d9e4320e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-24T20:19:55Z",
+      "side": 1,
+      "message": "name these with \"newProto\" prefix? How about just `environmentVariables`, `inputDepSetIds`, etc",
+      "revId": "d7f9e0324c6e39870d9334526a75c4416c90565d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74221949_0a63c3af",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-24T20:19:55Z",
+      "side": 1,
+      "message": "same for these var names",
+      "revId": "d7f9e0324c6e39870d9334526a75c4416c90565d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
