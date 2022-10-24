@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b399c5bd_82abcf3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-10-24T01:17:48Z",
+      "side": 1,
+      "message": "I think inner trees must assume there are many missing dependencies including paths.\nWe may use ALLOW_MISSING_DEPENDENCIES for this purpose until we have a clear method to handle the known missing dependenices. (go/soong-analyze-only or b/235778421)",
+      "revId": "c6c10fa34fbad353f3b6c7df5ceaef0c912542dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
