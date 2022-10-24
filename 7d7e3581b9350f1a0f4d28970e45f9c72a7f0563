@@ -16,6 +16,24 @@
       "message": "Do we really want to print if the file is unchanged? This adds a superfluous log statement to all null builds...",
       "revId": "7d7e3581b9350f1a0f4d28970e45f9c72a7f0563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b0800d_5dd6ed68",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-24T17:55:19Z",
+      "side": 1,
+      "message": "this was a change of behavior - so thought of this (as a info level log statement)\n(but I think you and @juu were trying to bring in a more proper logging framework in)\nRemoving this for now.",
+      "parentUuid": "09073f03_5066c542",
+      "revId": "7d7e3581b9350f1a0f4d28970e45f9c72a7f0563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
