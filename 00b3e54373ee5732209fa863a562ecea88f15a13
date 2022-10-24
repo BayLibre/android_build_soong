@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66de139b_13451a2c",
+        "filename": "bazel/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T19:36:04Z",
+      "side": 1,
+      "message": "Updated the deps order.",
+      "parentUuid": "5c2ea683_27fae887",
+      "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d82ccda5_94466091",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-24T18:06:33Z",
       "side": 1,
       "message": "Is this only used in testing? then we should keep it in _test.go files.",
+      "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b21f030b_15e36e33",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T19:36:04Z",
+      "side": 1,
+      "message": "I will use this function in bazel_handler_test as well so I have to left it in aquery.go or I would have to change the android.bp files.",
+      "parentUuid": "d82ccda5_94466091",
       "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9836fd1_700a8031",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T19:36:04Z",
+      "side": 1,
+      "message": "I notice you need to update a lot of these field names. What was the result if you missed updating these names? Would the test fail?\n#### Yes, the test will be failed if I missed updating the names.\nI worry that this is a bit brittle to mistakes in writing tests. Why are some fields capitalized and some not?\n#### I\u0027ve done some research and it turns out that capitalized or not does not make any difference while using json.unmarshal() function. The changes are mainly because lots of the fields in previous test cases lack \"_\" sign. I can update the fields to be exact same if it is more appropriate to do that. Please let me know.\n\nConsider a couple of alternatives:\n\nWe write test data as proto files that we create directly for the test (instead of writing them as json and converting)\n#### I was trying to use this debugging mode to copy the \"data\" so that I could directly use it in aquery_test. Unfortunately, the \"data\" is garbled.\nWe make JsonToPb fail on any unrecognized fields. Is there a way to do this with the proto library?\n#### Jsonpb function will not return err if it receive some unrecognized fields. But the test case will later fail , please see the function such as TestInvalidOutputId(). It will tell us which fields are missing. Please let me know your thoughts, thanks!",
+      "parentUuid": "fba241e5_34f5db60",
+      "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3b6f4f1_bb9077fb",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b8620e8_78f4b5fe",
+        "filename": "go.mod",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T19:36:04Z",
+      "side": 1,
+      "message": "Thanks, I have removed this dependency.",
+      "parentUuid": "a3b6f4f1_bb9077fb",
+      "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b90984b3_700e8a53",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-10-24T18:06:33Z",
       "side": 1,
       "message": "i\u0027m unfamiliar with go.sum, but it\u0027s strange that this file doesn\u0027t yet exist. what\u0027s it for?",
+      "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b4a8ece_37b32550",
+        "filename": "go.sum",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T19:36:04Z",
+      "side": 1,
+      "message": "This file lists down the checksum of direct and indirect dependency required along with the version.  The checksum present in go.sum file is used to validate the checksum of each of direct and indirect dependency to confirm that none of them has been modified. Go.sum and go.mod will be useful for debugging in intellij.",
+      "parentUuid": "b90984b3_700e8a53",
       "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
