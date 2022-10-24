@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b7910dd7_b8c67d2e",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-24T14:52:56Z",
+      "side": 1,
+      "message": "In some cases, we\u0027re within a subcommand, knowing that we failed during the Kati vs Ninja vs Soong process may be helpful; however, there are occassions that we can fail outside of subcommands that are worth capturing as well.\n\nnon_zero_exit will record info from sub-commands but error message will not",
+      "parentUuid": "a2ca553e_0d7aec8e",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 36
+      },
+      "revId": "97e265c695340910ef8250e752131ce0da3ecfff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a6106576_ec12ef84",
         "filename": "ui/metrics/metrics_proto/metrics.proto",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-21T18:53:39Z",
       "side": 1,
       "message": "nit:surround with commas",
+      "range": {
+        "startLine": 175,
+        "startChar": 22,
+        "endLine": 175,
+        "endChar": 30
+      },
+      "revId": "97e265c695340910ef8250e752131ce0da3ecfff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da756468_fa732038",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-24T14:52:56Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a6106576_ec12ef84",
       "range": {
         "startLine": 175,
         "startChar": 22,
