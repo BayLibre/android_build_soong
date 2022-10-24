@@ -525,6 +525,11 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 		}
 	}
 
+	if ctx.Host() {
+		flags.Global.LdFlags = append(flags.Global.LdFlags, "--rtlib=libgcc")
+		flags.Global.LdFlags = append(flags.Global.LdFlags, "--unwindlib=libgcc")
+	}
+
 	CheckBadLinkerFlags(ctx, "ldflags", linker.Properties.Ldflags)
 
 	flags.Local.LdFlags = append(flags.Local.LdFlags, proptools.NinjaAndShellEscapeList(linker.Properties.Ldflags)...)
