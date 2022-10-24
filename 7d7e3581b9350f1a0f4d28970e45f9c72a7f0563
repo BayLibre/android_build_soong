@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09073f03_5066c542",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-24T17:51:32Z",
+      "side": 1,
+      "message": "Do we really want to print if the file is unchanged? This adds a superfluous log statement to all null builds...",
+      "revId": "7d7e3581b9350f1a0f4d28970e45f9c72a7f0563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
