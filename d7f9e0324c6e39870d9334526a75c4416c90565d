@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bcdf7d5_1552dda1",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T21:43:06Z",
+      "side": 1,
+      "message": "Deleted the comment. Thanks!",
+      "parentUuid": "d9ffca19_4b83480d",
+      "revId": "d7f9e0324c6e39870d9334526a75c4416c90565d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba1330f6_92244d49",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-24T20:19:55Z",
       "side": 1,
       "message": "remove this comment",
+      "revId": "d7f9e0324c6e39870d9334526a75c4416c90565d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0deffddd_641338a0",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T21:43:06Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "ba1330f6_92244d49",
       "revId": "d7f9e0324c6e39870d9334526a75c4416c90565d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db18ca2_14354446",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T21:43:06Z",
+      "side": 1,
+      "message": "Thanks for the naming suggestions. Updated the names of the variables.",
+      "parentUuid": "50bb7ec8_d9e4320e",
+      "revId": "d7f9e0324c6e39870d9334526a75c4416c90565d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74221949_0a63c3af",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-10-24T20:19:55Z",
       "side": 1,
       "message": "same for these var names",
+      "revId": "d7f9e0324c6e39870d9334526a75c4416c90565d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f338e9_e3830120",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T21:43:06Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "74221949_0a63c3af",
       "revId": "d7f9e0324c6e39870d9334526a75c4416c90565d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

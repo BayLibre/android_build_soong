@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63f98f8b_c63f6da6",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T21:43:06Z",
+      "side": 1,
+      "message": "Thanks for the advice. Moved the functions to test files and renamed it to \tJsonToActionGraphContainer()",
+      "parentUuid": "b914fda0_cdb72968",
+      "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "986699cb_44d2fced",
@@ -102,6 +120,24 @@
       "writtenOn": "2022-10-24T20:19:55Z",
       "side": 1,
       "message": "Shouldn\u0027t an error here be much more catastrophic than just printing this out? Once you move this function to tests, you should consider having the test fail right here instead of just printing things out.",
+      "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f01d25_95d6c42d",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T21:43:06Z",
+      "side": 1,
+      "message": "Updated the function.",
+      "parentUuid": "986699cb_44d2fced",
       "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -155,6 +191,24 @@
       "side": 1,
       "message": "\u003e I was trying to use this debugging mode to copy the \"data\" so that I could directly use it in aquery_test. Unfortunately, the \"data\" is garbled.\n\nYes, if you try to copy the text directly that will indeed be garbled :) What I was trying to suggest was something like https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/config_test.go;l\u003d1017-1022;drc\u003db78465de1d0f8a02c16e11dd672338bc1bd597ca\nyou can construct the proto object programmatically like that.\n\nIn other words, you\u0027d construct a analysis_v2_proto.ActionGraphContainer and then turn it into a byte[], instead of using json format.\n\nThat said, I know that\u0027s a nontrivial change, and this existing mechanism is not too bad. Maybe you can file a bug to do a lower priority cleanup after this CL?\n\n\u003e  I can update the fields to be exact same if it is more appropriate to do that. Please let me know.\n\nYes, lets make capitalization consistent so that it\u0027s obvious there isn\u0027t some semantic meaning behind that :)",
       "parentUuid": "d9836fd1_700a8031",
+      "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22371837_f3913bb6",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-24T21:43:06Z",
+      "side": 1,
+      "message": "Sounds like a good plan. New bug created. b/255402634",
+      "parentUuid": "8e8d6890_14e89c1f",
       "revId": "00b3e54373ee5732209fa863a562ecea88f15a13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
