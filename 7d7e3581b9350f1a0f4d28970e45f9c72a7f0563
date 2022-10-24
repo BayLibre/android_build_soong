@@ -34,6 +34,24 @@
       "parentUuid": "09073f03_5066c542",
       "revId": "7d7e3581b9350f1a0f4d28970e45f9c72a7f0563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf0168de_1be98ee2",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-24T17:57:21Z",
+      "side": 1,
+      "message": "our thesis is that this should not be a change in tangible user-visible behavior, so we should not present a user-visible log.\n\nthere is no ongoing work re: a \u0027proper logging framework\u0027.",
+      "parentUuid": "c1b0800d_5dd6ed68",
+      "revId": "7d7e3581b9350f1a0f4d28970e45f9c72a7f0563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
