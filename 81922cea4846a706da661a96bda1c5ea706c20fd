@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbb10239_cfc39c33",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-10-24T21:16:08Z",
+      "side": 1,
+      "message": "changed to using `ctx.Device()` to check if it is for device.",
+      "parentUuid": "b7010932_77722d50",
+      "revId": "81922cea4846a706da661a96bda1c5ea706c20fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4deda543_8fe8c3ae",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-10T21:25:49Z",
       "side": 1,
       "message": "I think the request here is that we should be able to autogenerate the wrapper file for the device the same way we do for the device, with a modified version of build/soong/scripts/jar-wrapper.sh that looks something like https://cs.android.com/android/platform/superproject/+/master:frameworks/base/cmds/am/am.sh",
+      "revId": "81922cea4846a706da661a96bda1c5ea706c20fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "457d0fd6_8018ce6e",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1400,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-10-24T21:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4deda543_8fe8c3ae",
       "revId": "81922cea4846a706da661a96bda1c5ea706c20fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
