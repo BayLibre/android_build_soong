@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c129a21_c6394a9f",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-24T14:36:16Z",
+      "side": 1,
+      "message": "This seems wrong for Darwin, and musl uses compiler-rt.  Should this go in the Linux and Windows toolchain ldflaga instead?",
+      "revId": "0baea8f761d50766ff7af7f09ebc7a8273690970",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
