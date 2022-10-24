@@ -16,6 +16,24 @@
       "message": "Actually, could you make this clearer and split this up into a Soong-required list and a Bazel-required list? \n\nAnd file a bug to track making this part of the platform build requirements?",
       "revId": "b8cc1b567f358ab9d1c210cf9a0d87cd3803d7a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e75742_32e18120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-10-24T23:22:43Z",
+      "side": 1,
+      "message": "I would prefer we didn\u0027t add the complexity of separate soong and bazel lists.\n\nAre we sure blkid is used by fsck.erofs? I don\u0027t see it in [this search](https://source.corp.google.com/search?q\u003dp:%5Eandroid-internal$%20f:external%2Ferofs-utils%20blkid). I do see that it\u0027s [used by deapexer](http://cs/android-internal/system/apex/tools/deapexer.py;l\u003d211;rcl\u003d5d3cc6daf44e9a5f5bd28e9745f63a8c7dd3f141), if it\u0027s that one that\u0027s needed, maybe we could replace it with pure python code, as it seems to be simply used for checking if a file is an erofs filesystem or not.",
+      "parentUuid": "032c3267_3677ce06",
+      "revId": "b8cc1b567f358ab9d1c210cf9a0d87cd3803d7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
