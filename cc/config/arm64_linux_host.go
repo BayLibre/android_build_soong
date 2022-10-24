@@ -61,9 +61,14 @@ var (
 )
 
 func init() {
+<<<<<<< TARGET BRANCH (6d0685 Add non-zero exit + error message to soong metrics am: f2a80)
 	pctx.StaticVariable("LinuxBionicArm64Cflags", strings.Join(linuxCrossCflags, " "))
 	pctx.StaticVariable("LinuxBionicArm64Ldflags", strings.Join(linuxCrossLdflags, " "))
 	exportedVars.ExportStringListStaticVariable("Arm64LinuxBionicLldflags", arm64LinuxBionicLldflags)
+=======
+	exportedVars.ExportStringListStaticVariable("LinuxBionicArm64Cflags", linuxCrossCflags)
+	exportedVars.ExportStringListStaticVariable("LinuxBionicArm64Ldflags", linuxCrossLdflags)
+>>>>>>> SOURCE BRANCH (2238c7 Merge "Export all constants for `linux_bionic`")
 }
 
 // toolchain config for ARM64 Linux CrossHost. Almost everything is the same as the ARM64 Android
