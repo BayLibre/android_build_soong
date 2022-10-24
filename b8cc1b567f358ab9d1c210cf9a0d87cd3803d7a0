@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "032c3267_3677ce06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-24T23:14:01Z",
+      "side": 1,
+      "message": "Actually, could you make this clearer and split this up into a Soong-required list and a Bazel-required list? \n\nAnd file a bug to track making this part of the platform build requirements?",
+      "revId": "b8cc1b567f358ab9d1c210cf9a0d87cd3803d7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
