@@ -599,7 +599,10 @@ func (d *Droiddoc) doclavaDocsFlags(ctx android.ModuleContext, cmd *android.Rule
 		Flag("-J-Xmx1600m").
 		Flag("-J-XX:-OmitStackTraceInFastThrow").
 		Flag("-XDignore.symbol.file").
-		FlagWithArg("-doclet ", "com.google.doclava.Doclava").
+		Flag("--ignore-source-errors").
+		// b/240421555: use a stub doclet until Doclava works with JDK 17
+		//FlagWithArg("-doclet ", "com.google.doclava.Doclava").
+		FlagWithArg("-doclet ", "com.google.stubdoclet.StubDoclet").
 		FlagWithInputList("-docletpath ", docletPath.Paths(), ":").
 		FlagWithArg("-hdf page.build ", ctx.Config().BuildId()+"-$(cat "+buildNumberFile.String()+")").OrderOnly(buildNumberFile).
 		FlagWithArg("-hdf page.now ", `"$(date -d @$(cat `+ctx.Config().Getenv("BUILD_DATETIME_FILE")+`) "+%d %b %Y %k:%M")" `)
@@ -684,7 +687,7 @@ func javadocCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs andro
 	outDir, srcJarDir, srcJarList android.Path, sourcepaths android.Paths) *android.RuleBuilderCommand {
 
 	cmd := rule.Command().
-		BuiltTool("soong_javac_wrapper").Tool(android.PathForSource(ctx, "prebuilts/jdk/jdk11/linux-x86/bin/javadoc")).
+		BuiltTool("soong_javac_wrapper").Tool(config.JavadocCmd(ctx)).
 		Flag(config.JavacVmFlags).
 		FlagWithArg("-encoding ", "UTF-8").
 		FlagWithRspFileInputList("@", android.PathForModuleOut(ctx, "javadoc.rsp"), srcs).
@@ -770,6 +773,8 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	jsilver := ctx.Config().HostJavaToolPath(ctx, "jsilver.jar")
 	doclava := ctx.Config().HostJavaToolPath(ctx, "doclava.jar")
+	// b/240421555: use a stub doclet until Doclava works with JDK 17
+	stubdoclet := ctx.Config().HostJavaToolPath(ctx, "stubdoclet.jar")
 
 	outDir := android.PathForModuleOut(ctx, "out")
 	srcJarDir := android.PathForModuleOut(ctx, "srcjars")
@@ -797,7 +802,8 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if Bool(d.properties.Dokka_enabled) {
 		desc = "dokka"
 	} else {
-		d.doclavaDocsFlags(ctx, cmd, classpath{jsilver, doclava})
+		// b/240421555: use a stub doclet until Doclava works with JDK 17
+		d.doclavaDocsFlags(ctx, cmd, classpath{jsilver, doclava, stubdoclet})
 
 		for _, o := range d.Javadoc.properties.Out {
 			cmd.ImplicitOutput(android.PathForModuleGen(ctx, o))
@@ -815,9 +821,9 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		FlagWithArg("-C ", outDir.String()).
 		FlagWithArg("-D ", outDir.String())
 
-	rule.Restat()
+	// rule.Restat()
 
-	zipSyncCleanupCmd(rule, srcJarDir)
+	// zipSyncCleanupCmd(rule, srcJarDir)
 
 	rule.Build("javadoc", desc)
 }
