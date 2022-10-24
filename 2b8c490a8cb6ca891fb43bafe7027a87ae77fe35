@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bf51463_c3530565",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-24T18:18:13Z",
+      "side": 1,
+      "message": "see https://android-review.googlesource.com/c/platform/build/soong/+/2263423 instead",
+      "parentUuid": "b0c72e28_6d0e3a82",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "2b8c490a8cb6ca891fb43bafe7027a87ae77fe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e9e5abb_34e85c74",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
