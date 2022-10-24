@@ -61,9 +61,8 @@ var (
 )
 
 func init() {
-	pctx.StaticVariable("LinuxBionicArm64Cflags", strings.Join(linuxCrossCflags, " "))
-	pctx.StaticVariable("LinuxBionicArm64Ldflags", strings.Join(linuxCrossLdflags, " "))
-	exportedVars.ExportStringListStaticVariable("Arm64LinuxBionicLldflags", arm64LinuxBionicLldflags)
+	exportedVars.ExportStringListStaticVariable("LinuxBionicArm64Cflags", linuxCrossCflags)
+	exportedVars.ExportStringListStaticVariable("LinuxBionicArm64Ldflags", linuxCrossLdflags)
 }
 
 // toolchain config for ARM64 Linux CrossHost. Almost everything is the same as the ARM64 Android
