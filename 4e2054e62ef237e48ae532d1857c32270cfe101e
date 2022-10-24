@@ -34,6 +34,24 @@
       "parentUuid": "c1adefcb_5ef2908f",
       "revId": "4e2054e62ef237e48ae532d1857c32270cfe101e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b670f5_0fff9c87",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-10-24T19:47:45Z",
+      "side": 1,
+      "message": "Repurposed this CL for allowing host command \"blkid\".",
+      "parentUuid": "7ec4eb6b_1d67daf2",
+      "revId": "4e2054e62ef237e48ae532d1857c32270cfe101e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
