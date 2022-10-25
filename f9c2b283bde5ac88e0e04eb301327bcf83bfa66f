@@ -51,6 +51,24 @@
       "message": "In https://android-review.googlesource.com/c/platform/build/soong/+/2263423 we start not updating `bp2build_workspace_marker`\u0027s Modify timestamp. Thus having dependencies on anything it generates was causing it to always be deemed stale by ninja.",
       "revId": "f9c2b283bde5ac88e0e04eb301327bcf83bfa66f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d62671_f7b05896",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-25T13:46:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61bc682d_c9703f42",
+      "revId": "f9c2b283bde5ac88e0e04eb301327bcf83bfa66f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
