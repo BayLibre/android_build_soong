@@ -15,6 +15,10 @@
 package cc
 
 import (
+	"strings"
+
+	"github.com/google/blueprint/proptools"
+
 	"android/soong/android"
 	"android/soong/multitree"
 )
@@ -26,6 +30,7 @@ func init() {
 func RegisterLibraryStubBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_api_library", CcApiLibraryFactory)
 	ctx.RegisterModuleType("cc_api_headers", CcApiHeadersFactory)
+	ctx.RegisterModuleType("cc_api_variant", CcApiVariantFactory)
 }
 
 // 'cc_api_library' is a module type which is from the exported API surface
@@ -33,7 +38,8 @@ func RegisterLibraryStubBuildComponents(ctx android.RegistrationContext) {
 // offer a link to the module that generates shared library object from the
 // map file.
 type apiLibraryProperties struct {
-	Src *string `android:"arch_variant"`
+	Src      *string  `android:"arch_variant"`
+	Variants []string `android:"path"`
 }
 
 type apiLibraryDecorator struct {
@@ -55,10 +61,8 @@ func CcApiLibraryFactory() android.Module {
 	module.compiler = nil
 	module.linker = apiLibraryDecorator
 	module.installer = nil
+	module.library = apiLibraryDecorator
 	module.AddProperties(&module.Properties, &apiLibraryDecorator.properties)
-
-	// Mark module as stub, so APEX would not include this stub in the package.
-	module.library.setBuildStubs(true)
 
 	// Prevent default system libs (libc, libm, and libdl) from being linked
 	if apiLibraryDecorator.baseLinker.Properties.System_shared_libs == nil {
@@ -91,12 +95,38 @@ func (d *apiLibraryDecorator) exportIncludes(ctx ModuleContext) {
 }
 
 func (d *apiLibraryDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps, objects Objects) android.Path {
-	// Export headers as system include dirs if specified. Mostly for libc
-	if Bool(d.libraryDecorator.Properties.Llndk.Export_headers_as_system) {
-		d.libraryDecorator.flagExporter.Properties.Export_system_include_dirs = append(
-			d.libraryDecorator.flagExporter.Properties.Export_system_include_dirs,
-			d.libraryDecorator.flagExporter.Properties.Export_include_dirs...)
-		d.libraryDecorator.flagExporter.Properties.Export_include_dirs = nil
+	src := proptools.String(d.properties.Src)
+
+	m, _ := ctx.Module().(*Module)
+
+	// LLNDK variant
+	if m.UseVndk() && d.hasLLNDKStubs() {
+		apiVariantModule := BuildApiVariantName(m.BaseModuleName(), "llndk", "")
+
+		mod := android.GetModuleFromPathDep(ctx, apiVariantModule, "")
+		if mod != nil {
+			variantMod, ok := mod.(*CcApiVariant)
+			if ok {
+				src = ":" + apiVariantModule
+
+				// Copy LLDNK properties to cc_api_library module
+				d.libraryDecorator.flagExporter.Properties.Export_include_dirs = append(
+					d.libraryDecorator.flagExporter.Properties.Export_include_dirs,
+					variantMod.exportProperties.Export_headers...)
+
+				// Export headers as system include dirs if specified. Mostly for libc
+				if proptools.Bool(variantMod.exportProperties.Export_headers_as_system) {
+					d.libraryDecorator.flagExporter.Properties.Export_system_include_dirs = append(
+						d.libraryDecorator.flagExporter.Properties.Export_system_include_dirs,
+						d.libraryDecorator.flagExporter.Properties.Export_include_dirs...)
+					d.libraryDecorator.flagExporter.Properties.Export_include_dirs = nil
+				}
+
+				if override := variantMod.exportProperties.Override_export_include_dirs; override != nil {
+					d.flagExporter.Properties.Export_include_dirs = override
+				}
+			}
+		}
 	}
 
 	// Flags reexported from dependencies. (e.g. vndk_prebuilt_shared)
@@ -108,13 +138,11 @@ func (d *apiLibraryDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps
 	d.libraryDecorator.addExportedGeneratedHeaders(deps.ReexportedGeneratedHeaders...)
 	d.libraryDecorator.flagExporter.setProvider(ctx)
 
-	if d.properties.Src == nil {
-		ctx.PropertyErrorf("src", "src is a required property")
+	in := android.PathForModuleSrc(ctx, src)
+
+	if in == nil {
+		ctx.PropertyErrorf("src", "Unable to locate source %s", src)
 	}
-	// Skip the existence check of the stub prebuilt file.
-	// The file is not guaranteed to exist during Soong analysis.
-	// Build orchestrator will be responsible for creating a connected ninja graph.
-	in := android.MaybeExistentPathForSource(ctx, ctx.ModuleDir(), *d.properties.Src)
 
 	d.unstrippedOutputFile = in
 	libName := d.libraryDecorator.getLibName(ctx) + flags.Toolchain.ShlibSuffix()
@@ -136,6 +164,43 @@ func (d *apiLibraryDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps
 func (d *apiLibraryDecorator) availableFor(what string) bool {
 	// Stub from API surface should be available for any APEX.
 	return true
+}
+
+func (d *apiLibraryDecorator) stubsVersions(ctx android.BaseMutatorContext) []string {
+	m, ok := ctx.Module().(*Module)
+
+	if !ok {
+		return nil
+	}
+
+	if d.hasLLNDKStubs() && m.UseVndk() {
+		// LLNDK libraries only need a single stubs variant.
+		return []string{android.FutureApiLevel.String()}
+	}
+
+	// TODO(b/244244438) Create more version information for NDK and APEX variations
+	// NDK variants
+	if m.MinSdkVersion() == "" {
+		return nil
+	}
+
+	firstVersion, err := nativeApiLevelFromUser(ctx,
+		m.MinSdkVersion())
+
+	if err != nil {
+		return nil
+	}
+
+	return ndkLibraryVersions(ctx, firstVersion)
+}
+
+func (d *apiLibraryDecorator) hasLLNDKStubs() bool {
+	for _, variant := range d.properties.Variants {
+		if strings.Contains(variant, ".llndk.") {
+			return true
+		}
+	}
+	return false
 }
 
 // 'cc_api_headers' is similar with 'cc_api_library', but which replaces
@@ -160,9 +225,6 @@ func CcApiHeadersFactory() android.Module {
 	module.linker = apiHeadersDecorator
 	module.installer = nil
 
-	// Mark module as stub, so APEX would not include this stub in the package.
-	module.library.setBuildStubs(true)
-
 	// Prevent default system libs (libc, libm, and libdl) from being linked
 	if apiHeadersDecorator.baseLinker.Properties.System_shared_libs == nil {
 		apiHeadersDecorator.baseLinker.Properties.System_shared_libs = []string{}
@@ -183,4 +245,93 @@ func (d *apiHeadersDecorator) Name(basename string) string {
 func (d *apiHeadersDecorator) availableFor(what string) bool {
 	// Stub from API surface should be available for any APEX.
 	return true
+}
+
+type ccApiexportProperties struct {
+	Src     *string `android:"arch_variant"`
+	Variant *string
+	Version *string
+}
+
+type variantExporterProperties struct {
+	Export_headers []string
+
+	//LLNDK specific properties
+	Export_headers_as_system     *bool
+	Override_export_include_dirs []string
+}
+
+type CcApiVariant struct {
+	android.ModuleBase
+
+	properties       ccApiexportProperties
+	exportProperties variantExporterProperties
+
+	src android.Path
+}
+
+var _ android.Module = (*CcApiVariant)(nil)
+var _ android.SourceFileProducer = (*CcApiVariant)(nil)
+var _ android.ImageInterface = (*CcApiVariant)(nil)
+
+func CcApiVariantFactory() android.Module {
+	module := &CcApiVariant{}
+
+	module.AddProperties(&module.properties)
+	module.AddProperties(&module.exportProperties)
+
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibBoth)
+	return module
+}
+
+func (v *CcApiVariant) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// No need to build
+
+	if proptools.String(v.properties.Src) == "" {
+		ctx.PropertyErrorf("src", "src is a required property")
+	}
+
+	// Skip the existence check of the stub prebuilt file.
+	// The file is not guaranteed to exist during Soong analysis.
+	// Build orchestrator will be responsible for creating a connected ninja graph.
+	v.src = android.MaybeExistentPathForSource(ctx, ctx.ModuleDir(), proptools.String(v.properties.Src))
+}
+
+func (v *CcApiVariant) Name() string {
+	version := proptools.String(v.properties.Version)
+	return BuildApiVariantName(v.BaseModuleName(), *v.properties.Variant, version)
+}
+
+func (v *CcApiVariant) Srcs() android.Paths {
+	return android.Paths{v.src}
+}
+
+func BuildApiVariantName(baseName string, variant string, version string) string {
+	names := []string{baseName, variant}
+	if version != "" {
+		names = append(names, version)
+	}
+
+	return strings.Join(names[:], ".") + multitree.GetApiImportSuffix()
+}
+
+// Implement ImageInterface to generate image variants
+func (v *CcApiVariant) ImageMutatorBegin(ctx android.BaseModuleContext)               {}
+func (v *CcApiVariant) CoreVariantNeeded(ctx android.BaseModuleContext) bool          { return true }
+func (v *CcApiVariant) RamdiskVariantNeeded(ctx android.BaseModuleContext) bool       { return true }
+func (v *CcApiVariant) VendorRamdiskVariantNeeded(ctx android.BaseModuleContext) bool { return true }
+func (v *CcApiVariant) DebugRamdiskVariantNeeded(ctx android.BaseModuleContext) bool  { return true }
+func (v *CcApiVariant) RecoveryVariantNeeded(ctx android.BaseModuleContext) bool      { return true }
+func (v *CcApiVariant) ExtraImageVariations(ctx android.BaseModuleContext) []string {
+	var variations []string
+	platformVndkVersion := ctx.DeviceConfig().PlatformVndkVersion()
+
+	if proptools.String(v.properties.Variant) == "llndk" {
+		variations = append(variations, VendorVariationPrefix+platformVndkVersion)
+		variations = append(variations, ProductVariationPrefix+platformVndkVersion)
+	}
+
+	return variations
+}
+func (v *CcApiVariant) SetImageVariation(ctx android.BaseModuleContext, variation string, module android.Module) {
 }
