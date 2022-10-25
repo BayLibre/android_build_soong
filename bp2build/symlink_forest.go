@@ -249,6 +249,9 @@ func isDir(path string, fi os.FileInfo) bool {
 // srcDir .
 func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *instructionsNode, forestDir string, buildFilesDir string, srcDir string) {
 	defer context.wg.Done()
+	if !context.okay.Load() {
+		return //fail fast - error-logging already done when the flag was flipped
+	}
 
 	if instructions != nil && instructions.excluded {
 		// This directory is not needed, bail out
