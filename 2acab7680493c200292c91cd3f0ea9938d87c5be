@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2139fa7_1497686d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-25T13:33:53Z",
+      "side": 1,
+      "message": "CL description should contain a more imperative tense, e.g. \"don\u0027t touch empty workspace marker\"",
+      "revId": "2acab7680493c200292c91cd3f0ea9938d87c5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
