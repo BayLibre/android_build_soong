@@ -1,7 +1,6 @@
 package cquery
 
 import (
-	"encoding/json"
 	"reflect"
 	"testing"
 )
@@ -63,47 +62,44 @@ func TestGetPythonBinaryParseResults(t *testing.T) {
 
 func TestGetCcInfoParseResults(t *testing.T) {
 	testCases := []struct {
-		description    string
-		inputCcInfo    CcInfo
-		expectedOutput CcInfo
+		description          string
+		input                string
+		expectedOutput       CcInfo
+		expectedErrorMessage string
 	}{
 		{
 			description:    "no result",
-			inputCcInfo:    CcInfo{},
+			input:          "{}",
 			expectedOutput: CcInfo{},
 		},
 		{
 			description: "only output",
-			inputCcInfo: CcInfo{
-				OutputFiles: []string{"test", "test3"},
-			},
+			input:       `{"outputFiles": ["test"]}`,
 			expectedOutput: CcInfo{
 				OutputFiles: []string{"test", "test3"},
 			},
 		},
 		{
 			description: "only ToC",
-			inputCcInfo: CcInfo{
-				TocFile: "test",
-			},
+			input:       `{"tocFile": "test"}`,
 			expectedOutput: CcInfo{
 				TocFile: "test",
 			},
 		},
 		{
 			description: "all items set",
-			inputCcInfo: CcInfo{
-				OutputFiles:          []string{"out1", "out2"},
-				CcObjectFiles:        []string{"object1", "object2"},
-				CcSharedLibraryFiles: []string{"shared_lib1", "shared_lib2"},
-				CcStaticLibraryFiles: []string{"static_lib1", "static_lib2"},
-				Includes:             []string{".", "dir/subdir"},
-				SystemIncludes:       []string{"system/dir", "system/other/dir"},
-				Headers:              []string{"dir/subdir/hdr.h"},
-				RootStaticArchives:   []string{"rootstaticarchive1"},
-				RootDynamicLibraries: []string{"rootdynamiclibrary1"},
-				TocFile:              "lib.so.toc",
-			},
+			input: `{
+				"outputFiles": ["out1", "out2"],
+				"ccObjectFiles": ["object1", "object2"],
+				"ccSharedLibraryFiles": ["shared_lib1", "shared_lib2"],
+				"ccStaticLibraryFiles": ["static_lib1", "static_lib2"],
+				"includes": [".", "dir/subdir"],
+				"systemIncludes": ["system/dir", "system/other/dir"],
+				"headers": ["dir/subdir/hdr.h"],
+				"rootStaticArchives": ["rootstaticarchive1"],
+				"rootDynamicLibraries": ["rootdynamiclibrary1"],
+				"tocFile": "lib.so.toc"
+			}`,
 			expectedOutput: CcInfo{
 				OutputFiles:          []string{"out1", "out2"},
 				CcObjectFiles:        []string{"object1", "object2"},
@@ -117,10 +113,21 @@ func TestGetCcInfoParseResults(t *testing.T) {
 				TocFile:              "lib.so.toc",
 			},
 		},
+		{
+			description:          "improperly typed fields",
+			input:                `{"tocFile": []}`,
+			expectedOutput:       CcInfo{},
+			expectedErrorMessage: "json: cannot unmarshal array into Go struct field CcInfo.TocFile of type string",
+		},
+		{
+			description:          "unknown fields",
+			input:                `{"unknownField": 0}`,
+			expectedOutput:       CcInfo{},
+			expectedErrorMessage: `json: unknown field "unknownField"`,
+		},
 	}
 	for _, tc := range testCases {
-		jsonInput, _ := json.Marshal(tc.inputCcInfo)
-		actualOutput, err := GetCcInfo.ParseResult(string(jsonInput))
+		actualOutput, err := GetCcInfo.ParseResult(tc.input)
 		if err != nil {
 			t.Errorf("%q:\n test case get error: %q", tc.description, err)
 		} else if err == nil && !reflect.DeepEqual(tc.expectedOutput, actualOutput) {
