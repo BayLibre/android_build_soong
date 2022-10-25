@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449b3e3d_2cf6f9bc",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-10-25T19:20:00Z",
+      "side": 1,
+      "message": "The \u0027tidy_disabled_srcs\u0027 and \u0027tidy_timeout_srcs\u0027 are missing.\nThey are used in some .bp files.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 1
+      },
+      "revId": "3c6e7fb6f2a5ece3139976c675667c94f827875b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
