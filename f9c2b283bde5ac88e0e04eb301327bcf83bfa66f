@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0dd517b6_7e8b7cb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-25T13:32:14Z",
+      "side": 1,
+      "message": "could you add a verb to the CL description and maybe another line or two describing the change? it almost implies we are *adding* a circular dependency...",
+      "revId": "f9c2b283bde5ac88e0e04eb301327bcf83bfa66f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61bc682d_c9703f42",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 1
