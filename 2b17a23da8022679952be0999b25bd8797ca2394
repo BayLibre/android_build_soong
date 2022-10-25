@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62dca817_959bba6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365444
+      },
+      "writtenOn": "2022-10-25T09:52:40Z",
+      "side": 1,
+      "message": "Colin, some of our tooling relies on parsing strings like \"Install: $file\", but it broke in aosp 13. It would help if soong and make print the same formats",
+      "revId": "2b17a23da8022679952be0999b25bd8797ca2394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
