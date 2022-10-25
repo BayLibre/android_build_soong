@@ -75,6 +75,8 @@ type tidyAttributes struct {
 	Tidy_flags            []string
 	Tidy_checks           []string
 	Tidy_checks_as_errors []string
+	Tidy_disabled_srcs    []string
+	Tidy_timeout_srcs     []string
 }
 
 func (m *Module) convertTidyAttributes(moduleAttrs *tidyAttributes) {
@@ -85,8 +87,14 @@ func (m *Module) convertTidyAttributes(moduleAttrs *tidyAttributes) {
 			moduleAttrs.Tidy_checks = tidy.Properties.Tidy_checks
 			moduleAttrs.Tidy_checks_as_errors = tidy.Properties.Tidy_checks_as_errors
 		}
-	}
 
+	}
+	for _, props := range m.Module().GetProperties() {
+		if bcp, ok := props.(*BaseCompilerProperties); ok {
+			moduleAttrs.Tidy_disabled_srcs = bcp.Tidy_disabled_srcs
+			moduleAttrs.Tidy_timeout_srcs = bcp.Tidy_timeout_srcs
+		}
+	}
 }
 
 // groupSrcsByExtension partitions `srcs` into groups based on file extension.
