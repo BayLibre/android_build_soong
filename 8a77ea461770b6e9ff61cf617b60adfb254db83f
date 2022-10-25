@@ -16,6 +16,24 @@
       "message": "Looks good :) I\"m approving, but we won\u0027t be able to submit this until it passes presubmits (after b/254713799) is fixed. Hopefully tomorrow?",
       "revId": "8a77ea461770b6e9ff61cf617b60adfb254db83f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7277110e_78a4e949",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-25T17:41:08Z",
+      "side": 1,
+      "message": "Awesome. Thanks for the approval!",
+      "parentUuid": "e2ee53c3_e3daf185",
+      "revId": "8a77ea461770b6e9ff61cf617b60adfb254db83f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
