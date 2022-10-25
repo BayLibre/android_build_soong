@@ -16,6 +16,24 @@
       "message": "I think you need to return after `t.Error` or it will continue to try to run, but `data` will be empty, and thus subsequent errors will not make sense",
       "revId": "a1e7f38a7841158cb0f55c24385977b479c13280",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f260c0f_a8d6c005",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-10-25T15:08:03Z",
+      "side": 1,
+      "message": "Thanks, I have updated to make sure it return when it encounter error while executing JsonToaActionGraphContainer().",
+      "parentUuid": "705b804c_3e1f229d",
+      "revId": "a1e7f38a7841158cb0f55c24385977b479c13280",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
