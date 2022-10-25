@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705b804c_3e1f229d",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-25T13:19:04Z",
+      "side": 1,
+      "message": "I think you need to return after `t.Error` or it will continue to try to run, but `data` will be empty, and thus subsequent errors will not make sense",
+      "revId": "a1e7f38a7841158cb0f55c24385977b479c13280",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
