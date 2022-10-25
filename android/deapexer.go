@@ -174,7 +174,7 @@ func FindDeapexerProviderForModule(ctx ModuleContext) *DeapexerInfo {
 
 // removeCompressedApexSuffix removes the _compressed suffix from the name if present.
 func removeCompressedApexSuffix(name string) string {
-	return strings.TrimSuffix(name, "_compressed")
+	return strings.TrimSuffix(strings.ReplaceAll(name, ".go.", "."), "_compressed")
 }
 
 // equivalentDeapexerInfoProviders checks to make sure that the two DeapexerInfo structures are
