@@ -366,14 +366,14 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Error merging %s and %s: %s",
 					srcBuildFile, generatedBuildFile, err)
-				context.okay.Store(false)
+				os.Exit(1)
 			}
 		} else {
 			// Both exist and one is a file. This is an error.
 			fmt.Fprintf(os.Stderr,
 				"Conflict in workspace symlink tree creation: both '%s' and '%s' exist and exactly one is a directory\n",
 				srcChild, buildFilesChild)
-			context.okay.Store(false)
+			os.Exit(1)
 		}
 	}
 }
@@ -435,8 +435,6 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 		mkdirCount:   atomic.Uint64{},
 		symlinkCount: atomic.Uint64{},
 	}
-
-	context.okay.Store(true)
 
 	removeParallel(shared.JoinPath(topdir, forest))
 
