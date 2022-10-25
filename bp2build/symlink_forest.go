@@ -23,7 +23,6 @@ import (
 	"path/filepath"
 	"regexp"
 	"sync"
-	"sync/atomic"
 
 	"android/soong/shared"
 )
@@ -48,7 +47,6 @@ type symlinkForestContext struct {
 	// State
 	wg    sync.WaitGroup
 	depCh chan string
-	okay  atomic.Bool // Whether the forest was successfully constructed
 }
 
 // A simple thread pool to limit concurrency on system calls.
@@ -360,14 +358,14 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Error merging %s and %s: %s",
 					srcBuildFile, generatedBuildFile, err)
-				context.okay.Store(false)
+				os.Exit(1)
 			}
 		} else {
 			// Both exist and one is a file. This is an error.
 			fmt.Fprintf(os.Stderr,
 				"Conflict in workspace symlink tree creation: both '%s' and '%s' exist and exactly one is a directory\n",
 				srcChild, buildFilesChild)
-			context.okay.Store(false)
+			os.Exit(1)
 		}
 	}
 }
@@ -428,8 +426,6 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 		depCh:   make(chan string),
 	}
 
-	context.okay.Store(true)
-
 	removeParallel(shared.JoinPath(topdir, forest))
 
 	instructions := instructionsFromExcludePathList(exclude)
@@ -443,10 +439,6 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 	deps := make([]string, 0)
 	for dep := range context.depCh {
 		deps = append(deps, dep)
-	}
-
-	if !context.okay.Load() {
-		os.Exit(1)
 	}
 
 	return deps
