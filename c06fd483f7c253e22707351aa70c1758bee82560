@@ -16,6 +16,24 @@
       "message": "I think the description should say:\n`This change treats \u003cx\u003e.go and \u003cx\u003e APEX names as being the same and always selects the non go, uncompressed APEX.`",
       "revId": "c06fd483f7c253e22707351aa70c1758bee82560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d98d0d8b_6e9fdcd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944716
+      },
+      "writtenOn": "2022-10-25T23:32:31Z",
+      "side": 1,
+      "message": "Thanks! Reflected the change.",
+      "parentUuid": "883d9658_9d3b9ae8",
+      "revId": "c06fd483f7c253e22707351aa70c1758bee82560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
