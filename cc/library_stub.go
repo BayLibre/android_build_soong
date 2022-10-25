@@ -15,6 +15,10 @@
 package cc
 
 import (
+	"strings"
+
+	"github.com/google/blueprint/proptools"
+
 	"android/soong/android"
 	"android/soong/multitree"
 )
@@ -26,6 +30,7 @@ func init() {
 func RegisterLibraryStubBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_api_library", CcApiLibraryFactory)
 	ctx.RegisterModuleType("cc_api_headers", CcApiHeadersFactory)
+	ctx.RegisterModuleType("cc_api_variant", CcApiVariantFactory)
 }
 
 // 'cc_api_library' is a module type which is from the exported API surface
@@ -33,7 +38,8 @@ func RegisterLibraryStubBuildComponents(ctx android.RegistrationContext) {
 // offer a link to the module that generates shared library object from the
 // map file.
 type apiLibraryProperties struct {
-	Src *string `android:"arch_variant"`
+	Src      *string  `android:"arch_variant"`
+	Variants []string `android:"path"`
 }
 
 type apiLibraryDecorator struct {
@@ -55,10 +61,8 @@ func CcApiLibraryFactory() android.Module {
 	module.compiler = nil
 	module.linker = apiLibraryDecorator
 	module.installer = nil
+	module.library = apiLibraryDecorator
 	module.AddProperties(&module.Properties, &apiLibraryDecorator.properties)
-
-	// Mark module as stub, so APEX would not include this stub in the package.
-	module.library.setBuildStubs(true)
 
 	// Prevent default system libs (libc, libm, and libdl) from being linked
 	if apiLibraryDecorator.baseLinker.Properties.System_shared_libs == nil {
@@ -91,6 +95,20 @@ func (d *apiLibraryDecorator) exportIncludes(ctx ModuleContext) {
 }
 
 func (d *apiLibraryDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps, objects Objects) android.Path {
+	src := proptools.String(d.properties.Src)
+
+	m, _ := ctx.Module().(*Module)
+
+	// LLNDK variant
+	if m.UseVndk() && d.hasLLNDKStubs() {
+		apiVariantModule := ":" + BuildApiVariantName(m.BaseModuleName(), "llndk", "", ctx.Module().Target().Arch.ArchType.Name)
+		for _, variant := range d.properties.Variants {
+			if apiVariantModule == variant {
+				src = apiVariantModule
+			}
+		}
+	}
+
 	// Export headers as system include dirs if specified. Mostly for libc
 	if Bool(d.libraryDecorator.Properties.Llndk.Export_headers_as_system) {
 		d.libraryDecorator.flagExporter.Properties.Export_system_include_dirs = append(
@@ -108,13 +126,7 @@ func (d *apiLibraryDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps
 	d.libraryDecorator.addExportedGeneratedHeaders(deps.ReexportedGeneratedHeaders...)
 	d.libraryDecorator.flagExporter.setProvider(ctx)
 
-	if d.properties.Src == nil {
-		ctx.PropertyErrorf("src", "src is a required property")
-	}
-	// Skip the existence check of the stub prebuilt file.
-	// The file is not guaranteed to exist during Soong analysis.
-	// Build orchestrator will be responsible for creating a connected ninja graph.
-	in := android.MaybeExistentPathForSource(ctx, ctx.ModuleDir(), *d.properties.Src)
+	in := android.PathForModuleSrc(ctx, src)
 
 	d.unstrippedOutputFile = in
 	libName := d.libraryDecorator.getLibName(ctx) + flags.Toolchain.ShlibSuffix()
@@ -136,6 +148,42 @@ func (d *apiLibraryDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps
 func (d *apiLibraryDecorator) availableFor(what string) bool {
 	// Stub from API surface should be available for any APEX.
 	return true
+}
+
+func (d *apiLibraryDecorator) stubsVersions(ctx android.BaseMutatorContext) []string {
+	m, ok := ctx.Module().(*Module)
+
+	if !ok {
+		return nil
+	}
+
+	if d.hasLLNDKStubs() && m.UseVndk() {
+		// LLNDK libraries only need a single stubs variant.
+		return []string{android.FutureApiLevel.String()}
+	}
+
+	// NDK variants
+	if m.MinSdkVersion() == "" {
+		return nil
+	}
+
+	firstVersion, err := nativeApiLevelFromUser(ctx,
+		m.MinSdkVersion())
+
+	if err != nil {
+		return nil
+	}
+
+	return ndkLibraryVersions(ctx, firstVersion)
+}
+
+func (d *apiLibraryDecorator) hasLLNDKStubs() bool {
+	for _, variant := range d.properties.Variants {
+		if strings.Contains(variant, ".llndk.") {
+			return true
+		}
+	}
+	return false
 }
 
 // 'cc_api_headers' is similar with 'cc_api_library', but which replaces
@@ -160,9 +208,6 @@ func CcApiHeadersFactory() android.Module {
 	module.linker = apiHeadersDecorator
 	module.installer = nil
 
-	// Mark module as stub, so APEX would not include this stub in the package.
-	module.library.setBuildStubs(true)
-
 	// Prevent default system libs (libc, libm, and libdl) from being linked
 	if apiHeadersDecorator.baseLinker.Properties.System_shared_libs == nil {
 		apiHeadersDecorator.baseLinker.Properties.System_shared_libs = []string{}
@@ -183,4 +228,67 @@ func (d *apiHeadersDecorator) Name(basename string) string {
 func (d *apiHeadersDecorator) availableFor(what string) bool {
 	// Stub from API surface should be available for any APEX.
 	return true
+}
+
+type ccApiVariantProperties struct {
+	Src     *string
+	Variant *string
+	Arch    *string
+	Version *string
+}
+
+type CcApiVariant struct {
+	android.ModuleBase
+
+	properties ccApiVariantProperties
+
+	src android.Path
+}
+
+var _ android.Module = (*CcApiVariant)(nil)
+var _ android.SourceFileProducer = (*CcApiVariant)(nil)
+
+func (v *CcApiVariant) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// No need to build
+
+	if v.properties.Src == nil {
+		ctx.PropertyErrorf("src", "src is a required property")
+	}
+
+	// Skip the existence check of the stub prebuilt file.
+	// The file is not guaranteed to exist during Soong analysis.
+	// Build orchestrator will be responsible for creating a connected ninja graph.
+	v.src = android.MaybeExistentPathForSource(ctx, ctx.ModuleDir(), proptools.String(v.properties.Src))
+}
+
+func CcApiVariantFactory() android.Module {
+	module := &CcApiVariant{}
+
+	module.AddProperties(&module.properties)
+
+	android.InitAndroidModule(module)
+	return module
+}
+
+func (v *CcApiVariant) Name() string {
+	version := ""
+	if v.properties.Version != nil {
+		version = *v.properties.Version
+	}
+	return BuildApiVariantName(v.BaseModuleName(), *v.properties.Variant, version, *v.properties.Arch)
+}
+
+func (v *CcApiVariant) Srcs() android.Paths {
+	return android.Paths{v.src}
+}
+
+func BuildApiVariantName(baseName string, variant string, version string, arch string) string {
+	names := []string{baseName, variant}
+	if version != "" {
+		names = append(names, version)
+	}
+
+	names = append(names, arch)
+
+	return strings.Join(names[:], ".") + multitree.GetApiImportSuffix()
 }
