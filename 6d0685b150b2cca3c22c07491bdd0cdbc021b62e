@@ -22,6 +22,30 @@
       },
       "revId": "6d0685b150b2cca3c22c07491bdd0cdbc021b62e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a65d8f8e_f6f82c13",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-10-26T15:09:25Z",
+      "side": -1,
+      "message": "My bad. Thanks!",
+      "parentUuid": "5c8575cd_ed3204c0",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 98
+      },
+      "revId": "6d0685b150b2cca3c22c07491bdd0cdbc021b62e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

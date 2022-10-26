@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f11f9bd2_8ecaf0ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-10-26T15:09:25Z",
+      "side": 1,
+      "message": "Accidentally dropped an additional exposure",
+      "revId": "e90028b5e0e1d4c14d4c7aba804c6d389b567d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
