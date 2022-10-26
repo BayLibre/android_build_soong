@@ -62,11 +62,12 @@ echo "Free disk space:"
 # but still displays most of the useful info we need
 df -h || true
 
+shift $((OPTIND - 1))
 echo
 echo "Running Bazel smoke test..."
 STANDALONE_BAZEL=true "${TOP}/build/bazel/bin/bazel" --batch --max_idle_secs=1 help
 
 echo
 echo "Running Soong test..."
-soong_build_go multiproduct_kati android/soong/cmd/multiproduct_kati
+soong_build_go multiproduct_kati android/soong/cmd/multiproduct_kati $BAZEL_MODE
 exec "$(getoutdir)/multiproduct_kati" --skip-products "$(echo "${SKIPPED_PRODUCTS[@]-}" | tr ' ' ',')" "$@"
