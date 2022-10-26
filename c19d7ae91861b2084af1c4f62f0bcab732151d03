@@ -111,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a76dcbb_eb3cc5f7",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T02:12:45Z",
+      "side": 1,
+      "message": "Ack, I think its fine to go with `PathForModuleSrc`. We can update it later if necessary.",
+      "parentUuid": "e427ef15_00717634",
+      "range": {
+        "startLine": 129,
+        "startChar": 15,
+        "endLine": 129,
+        "endChar": 31
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22616b13_5b437cc4",
@@ -183,6 +207,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd197816_d18263cd",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T02:12:45Z",
+      "side": 1,
+      "message": "Can you please add a TODO with a tracking bug for this?",
+      "parentUuid": "d8d13600_7c1515d2",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 17
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d28824e_cf94c394",
         "filename": "cc/library_stub.go",
         "patchSetId": 2
@@ -212,6 +260,24 @@
       "side": 1,
       "message": "Same as above. Let\u0027s revisit this with other CL working in APEX stubs.",
       "parentUuid": "0d28824e_cf94c394",
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b479326_31643d2b",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T02:12:45Z",
+      "side": 1,
+      "message": "Can you please add a TODO with a tracking bug?",
+      "parentUuid": "ced2eae5_a41db8b5",
       "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -263,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f7596b6_295f21ed",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T02:12:45Z",
+      "side": 1,
+      "message": "Let\u0027s continue this conversation in https://docs.google.com/document/d/1TgYW61IP--rHpeTH7zMl3FFk8ax3kXPzAalOegtgLm8/edit?resourcekey\u003d0-nh5BQy4A1-l_cPToRBB-8Q\u0026disco\u003dAAAAdHVVl-w 😊\n\nBut I also think that the choice of name should not block this CL",
+      "parentUuid": "061d0f20_27b8a2a9",
+      "range": {
+        "startLine": 182,
+        "startChar": 33,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8c161a7_27e4a5de",
@@ -294,6 +384,24 @@
       "side": 1,
       "message": "Yes, headers are still in progress, but I think we can separate CL for this as this CL is getting bigger.",
       "parentUuid": "d8c161a7_27e4a5de",
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c3a709_55684a2d",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T02:12:45Z",
+      "side": 1,
+      "message": "Can you please add a TODO with a bug id?",
+      "parentUuid": "1e369abf_31889775",
       "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -335,6 +443,30 @@
       "side": 1,
       "message": "No I don\u0027t. I thought you probably prefer variant per arch, but if it is not true, I\u0027m happy to go with that 😊",
       "parentUuid": "596099c3_001afbfc",
+      "range": {
+        "startLine": 278,
+        "startChar": 80,
+        "endLine": 278,
+        "endChar": 98
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80053875_e713941c",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T02:12:45Z",
+      "side": 1,
+      "message": "I think arch is fine, since we will have an equivalent configuration transition for arch in Roboleaf. \n\nVersion, OTOH, does not map 1:1 (go/roboleaf-no-version-mutator)",
+      "parentUuid": "89311ce9_c2baa705",
       "range": {
         "startLine": 278,
         "startChar": 80,
