@@ -22,6 +22,30 @@
       },
       "revId": "20602fbe4f660b6a4b04b370288c8aadbf2766c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28eee8fd_a6dec928",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-26T20:53:49Z",
+      "side": 1,
+      "message": "If we do, then we won\u0027t have faithful empty-allowlist per-product tests (since we are creating these per-product tests for staging mode). We *could* temporarily have these tests use prod mode (until staging post-launch), but I think this is not worth it given how short-lived this regression is.",
+      "parentUuid": "27e42f34_24156adf",
+      "range": {
+        "startLine": 1343,
+        "startChar": 1,
+        "endLine": 1343,
+        "endChar": 82
+      },
+      "revId": "20602fbe4f660b6a4b04b370288c8aadbf2766c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
