@@ -16,6 +16,24 @@
       "message": "Would you horribly mind adding a function `config.IsBazelBuildDisabledOverride()` or something like that, which is just a wrapper around `config.Environment().IsEnvTrue(\"BUILD_BROKEN_DISABLE_BAZEL\")` ? That way my \"launch CL\" can just call that function, and we have the constant live in the same place?",
       "revId": "a019749a81b1022f05adc4c1bd09c854981bdbdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91dec614_60fbb024",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-10-26T19:07:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9118ff3f_62ff2622",
+      "revId": "a019749a81b1022f05adc4c1bd09c854981bdbdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
