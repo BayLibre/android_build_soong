@@ -16,6 +16,29 @@
       "message": "Currently, this change will work. Thing may break if Go and Big Android modules are different. There is a plan for long term fix?",
       "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08dacfac_7a93737d",
+        "filename": "android/deapexer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1890055
+      },
+      "writtenOn": "2022-10-26T16:36:23Z",
+      "side": 1,
+      "message": "nit: Please update the comment and change the function name to reflect its new behavior? This will also force us to change the call sites, which may be a good way to ensure that the change is compatible with all existing use cases?",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 53
+      },
+      "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
