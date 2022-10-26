@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99b1ae50_157f1fc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451833
+      },
+      "writtenOn": "2022-10-26T21:45:15Z",
+      "side": 1,
+      "message": "Zhi and Anton, I think we have agreed that the Module SDKs for Go and nonGo will be the same. With that assumption, I think this patch works for now? I do agree though that we need a long term fix and maybe re-think the way we do this check. I feel this check is being run too early as fundamentally only one apex ends up on a device, so why should the apex name from different rules be compared as an early check?",
+      "parentUuid": "690c854d_71bd1228",
+      "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08dacfac_7a93737d",
         "filename": "android/deapexer.go",
         "patchSetId": 5
