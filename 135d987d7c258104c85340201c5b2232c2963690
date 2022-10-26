@@ -16,6 +16,24 @@
       "message": "It seems you can\u0027t actually run build_test on tm-dev-plus-aosp on go/abtd, but the master runs are:\n\nhttps://android-build.googleplex.com/builds/abtd/run/L66300000956952868\nhttps://android-build.googleplex.com/builds/abtd/run/L94800000956936757\nhttps://android-build.googleplex.com/builds/abtd/run/L26500000956947489\nhttps://android-build.googleplex.com/builds/abtd/run/L96700000956946209",
       "revId": "135d987d7c258104c85340201c5b2232c2963690",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "588bf72c_a35d73ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-10-26T19:10:39Z",
+      "side": 1,
+      "message": "The trick I tried with adding a build/make cl to the topic doesn\u0027t appear to work, the internal master build_tests are not part of this presubmit run. I think it\u0027s because we\u0027ve hit the 40 target limit for running presubmits. However, I reran the tests via abtd after some more fixes, and they pass now, so we should be ok.\n\nhttps://android-build.googleplex.com/builds/abtd/run/L20600000957028772\nhttps://android-build.googleplex.com/builds/abtd/run/L02400000957035242\nhttps://android-build.googleplex.com/builds/abtd/run/L04400000957040324\nhttps://android-build.googleplex.com/builds/abtd/run/L97800000957035145",
+      "parentUuid": "ca8b9521_3a4f4bb5",
+      "revId": "135d987d7c258104c85340201c5b2232c2963690",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
