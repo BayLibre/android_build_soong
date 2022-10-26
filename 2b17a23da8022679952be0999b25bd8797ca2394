@@ -16,6 +16,24 @@
       "message": "Colin, some of our tooling relies on parsing strings like \"Install: $file\", but it broke in aosp 13. It would help if soong and make print the same formats",
       "revId": "2b17a23da8022679952be0999b25bd8797ca2394",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25e5d7f5_7132b70a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-26T20:26:14Z",
+      "side": 1,
+      "message": "This is a minor change and I\u0027m fine with taking it, but this is not an API and is probably not where you should be getting this information.  What is your tooling trying to collect, maybe there is a better place to get it?  For example, if you build `out/target/product/\u003cdevice\u003e/module-info.json` it includes the install location of every module in a more stable format, or if you\u0027ve built an image then the files in the image are listed in `out/target/product/\u003cdevice\u003e/installed-files*.txt` or `out/target/product/\u003cdevice\u003e/installed-files*.json`.",
+      "parentUuid": "62dca817_959bba6a",
+      "revId": "2b17a23da8022679952be0999b25bd8797ca2394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
