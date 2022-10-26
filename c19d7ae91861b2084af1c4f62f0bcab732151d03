@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e427ef15_00717634",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-26T01:42:54Z",
+      "side": 1,
+      "message": "I\u0027d like to eliminate src from cc_api_library, and use src only from cc_api_variant if possible, so can we defer this until I work on all type of variants and see if we can remove it?",
+      "parentUuid": "0e119d94_07a53a2e",
+      "range": {
+        "startLine": 129,
+        "startChar": 15,
+        "endLine": 129,
+        "endChar": 31
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22616b13_5b437cc4",
         "filename": "cc/library_stub.go",
         "patchSetId": 2
@@ -135,6 +159,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8d13600_7c1515d2",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-26T01:42:54Z",
+      "side": 1,
+      "message": "This CL is more focused on the LLNDK, and I just put this to make existing cc_api_library work. Let\u0027s revisit this from later CLs if possible.",
+      "parentUuid": "0b7d8b8f_0e6e46da",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 17
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d28824e_cf94c394",
         "filename": "cc/library_stub.go",
         "patchSetId": 2
@@ -146,6 +194,24 @@
       "writtenOn": "2022-10-26T01:23:28Z",
       "side": 1,
       "message": "I think we also need to create the version variants for systemapi surface (the API surface between platform and mainline modules)",
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced2eae5_a41db8b5",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-26T01:42:54Z",
+      "side": 1,
+      "message": "Same as above. Let\u0027s revisit this with other CL working in APEX stubs.",
+      "parentUuid": "0d28824e_cf94c394",
       "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -175,6 +241,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "061d0f20_27b8a2a9",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-26T01:42:54Z",
+      "side": 1,
+      "message": "I personally prefer term llndk because this will be used in same with product partition. WDYT?",
+      "parentUuid": "29731d8f_184d21a2",
+      "range": {
+        "startLine": 182,
+        "startChar": 33,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8c161a7_27e4a5de",
         "filename": "cc/library_stub.go",
         "patchSetId": 2
@@ -192,6 +282,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e369abf_31889775",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-26T01:42:54Z",
+      "side": 1,
+      "message": "Yes, headers are still in progress, but I think we can separate CL for this as this CL is getting bigger.",
+      "parentUuid": "d8c161a7_27e4a5de",
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "596099c3_001afbfc",
         "filename": "cc/library_stub.go",
         "patchSetId": 2
@@ -203,6 +311,30 @@
       "writtenOn": "2022-10-26T01:23:28Z",
       "side": 1,
       "message": "Do you have a strong preference of having arch as an input string? `src` is already annotated `arch:variant`, so you can rely on the existing mutators to pick the right arch variant\n\ne.g.\n```\ncc_api_variant {\n  name: \"libc\",\n  variant: \"llndk\",\n  arch: {\n    arm: {src: ..},\n    arm64: {src: ..},\n    x86: {src: ..},\n    x86_64: {src: ..},\n  }\n }\n```\n\nIf you have a strong preference, can you add a validation statement that asserts that its value is always restricted to a set of allowed values, and not free-form?",
+      "range": {
+        "startLine": 278,
+        "startChar": 80,
+        "endLine": 278,
+        "endChar": 98
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89311ce9_c2baa705",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-26T01:42:54Z",
+      "side": 1,
+      "message": "No I don\u0027t. I thought you probably prefer variant per arch, but if it is not true, I\u0027m happy to go with that 😊",
+      "parentUuid": "596099c3_001afbfc",
       "range": {
         "startLine": 278,
         "startChar": 80,
