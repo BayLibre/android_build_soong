@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c8575cd_ed3204c0",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-26T15:06:19Z",
+      "side": -1,
+      "message": "it looks like this is being dropped in the merge",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 98
+      },
+      "revId": "6d0685b150b2cca3c22c07491bdd0cdbc021b62e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
