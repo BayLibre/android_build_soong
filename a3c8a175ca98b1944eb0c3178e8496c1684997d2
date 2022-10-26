@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d2e2633_b735570c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T21:13:39Z",
+      "side": 1,
+      "message": "Kiyoung, this CL probably has a merge conflict with aosp/2268690. Please lmk if I should rebase this CL on top of that.",
+      "revId": "a3c8a175ca98b1944eb0c3178e8496c1684997d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
