@@ -48,6 +48,8 @@ var incremental = flag.Bool("incremental", false, "run in incremental mode (savi
 var outDir = flag.String("out", "", "path to store output directories (defaults to tmpdir under $OUT when empty)")
 var alternateResultDir = flag.Bool("dist", false, "write select results to $DIST_DIR (or <out>/dist when empty)")
 
+var bazelMode = flag.String("bazel-mode", "", "The bazel mode to invoke Soong with. Allowed values: dev, prod, staging")
+
 var onlyConfig = flag.Bool("only-config", false, "Only run product config (not Soong or Kati)")
 var onlySoong = flag.Bool("only-soong", false, "Only run product config and Soong (not Kati)")
 
@@ -470,6 +472,10 @@ func runSoongUiForProduct(mpctx *mpContext, product string) {
 		args = append(args, "--config-only")
 	} else if *onlySoong {
 		args = append(args, "--soong-only")
+	}
+
+	if *bazelMode != "" {
+		args = append(args, "--bazel-mode-"+(*bazelMode))
 	}
 
 	cmd := exec.Command(mpctx.SoongUi, args...)
