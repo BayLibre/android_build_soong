@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b44f5e_87a4af49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T01:23:28Z",
+      "side": 1,
+      "message": "Hi Kiyoung, I left a bunch of comments. Some of them are nits, but I think it would be helpful if we added unit tests",
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9a9a5e1_96f95c0f",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T01:23:28Z",
+      "side": 1,
+      "message": "Can you please write a unit test for this to assert that we have ported the correct business logic from multi-tree?\n\ne.g. \n```\ncc_binary {\n  name: \"vendor_bin\",\n  shared_libs: [\"liblog\"],\n  vendor: true,\n}\n\ncc_binary {\n  name: \"vendor_bin_compiling_against_sdk\",\n  shared_libs: [\"liblog\"],\n  sdk_version: \"current\",\n  vendor: true,\n}\n\n```\nMy understanding was that the latter should compile against the ndk variant of liblog, but IIUC, this implementation does not respect `sdk_version` and links the latter against the llndk/vendorapi variant of liblog",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca5bfd3c_457f0e41",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T01:23:28Z",
+      "side": 1,
+      "message": "I know we use have relaxed checks for the imported modules, but I think the right way to do this is to add the different `cc_api_variant` modules as deps in the depsmutator.\n\nThen in `link`, use ctx.VisitDirectDeps to pick the right one. The benefits are\n1. We get more robust module checking during Soong analysis, as opposed to string based matching\n2. The dependency graph will be accurately reflected in build analysis tools",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e119d94_07a53a2e",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T01:23:28Z",
+      "side": 1,
+      "message": "I think we need to use `MaybeExistentPathForSource` here. `src` will exist in platform/api_surfaces, but not in the e2e workflow with the build orchestrator in between",
+      "range": {
+        "startLine": 129,
+        "startChar": 15,
+        "endLine": 129,
+        "endChar": 31
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22616b13_5b437cc4",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T01:23:28Z",
+      "side": 1,
+      "message": "Can you please write a unit test that asserts that the different version variants are getting created correctly?\n\ne.g for libraries that appear in the intersection of (publicapi, systemapi, vendorapi), what module variants should be created?",
+      "range": {
+        "startLine": 153,
+        "startChar": 30,
+        "endLine": 153,
+        "endChar": 43
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7d8b8f_0e6e46da",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T01:23:28Z",
+      "side": 1,
+      "message": "I think the first version information should come from ndk_library.first_version. There are several public libraries (e.g. libc) that do not have a min_sdk_version",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 17
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d28824e_cf94c394",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T01:23:28Z",
+      "side": 1,
+      "message": "I think we also need to create the version variants for systemapi surface (the API surface between platform and mainline modules)",
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29731d8f_184d21a2",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T01:23:28Z",
+      "side": 1,
+      "message": "In build orchestrator code, we currently call this variant `vendorapi`",
+      "range": {
+        "startLine": 182,
+        "startChar": 33,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8c161a7_27e4a5de",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T01:23:28Z",
+      "side": 1,
+      "message": "I think this module also needs properties for `export_include_dirs` and `export_system_include_dirs`, since these can vary across API surfaces",
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596099c3_001afbfc",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-26T01:23:28Z",
+      "side": 1,
+      "message": "Do you have a strong preference of having arch as an input string? `src` is already annotated `arch:variant`, so you can rely on the existing mutators to pick the right arch variant\n\ne.g.\n```\ncc_api_variant {\n  name: \"libc\",\n  variant: \"llndk\",\n  arch: {\n    arm: {src: ..},\n    arm64: {src: ..},\n    x86: {src: ..},\n    x86_64: {src: ..},\n  }\n }\n```\n\nIf you have a strong preference, can you add a validation statement that asserts that its value is always restricted to a set of allowed values, and not free-form?",
+      "range": {
+        "startLine": 278,
+        "startChar": 80,
+        "endLine": 278,
+        "endChar": 98
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
