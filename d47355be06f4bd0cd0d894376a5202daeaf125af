@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "690c854d_71bd1228",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944716
+      },
+      "writtenOn": "2022-10-26T17:44:39Z",
+      "side": 1,
+      "message": "This do require Go and non-go train not to be updated separately. For example, there is a Gantry work planned in Q1 2023 to provide a single partner zip with artifacts consisting of common module sdk and Go + non-Go prebuilt modules., which means that Go and non-Go would be from the same release branch.",
+      "parentUuid": "20141a9d_f18324bb",
+      "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08dacfac_7a93737d",
         "filename": "android/deapexer.go",
         "patchSetId": 5
