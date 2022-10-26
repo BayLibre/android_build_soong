@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e42f34_24156adf",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1160213
+      },
+      "writtenOn": "2022-10-26T20:51:51Z",
+      "side": 1,
+      "message": "Should we at the same time add adbd to the staging allowlist?",
+      "range": {
+        "startLine": 1343,
+        "startChar": 1,
+        "endLine": 1343,
+        "endChar": 82
+      },
+      "revId": "20602fbe4f660b6a4b04b370288c8aadbf2766c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
