@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43876cfa_1935595b",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-26T22:42:35Z",
+      "side": 1,
+      "message": "This can be unexported, it won\u0027t be used outside the package.",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 20
+      },
+      "revId": "226239a3d02d77e4ec338548bc1f41cfa3f86b3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e53cda4_55d10abf",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-26T22:42:35Z",
+      "side": 1,
+      "message": "This might need to vary to support wrappers on non-system partitions like vendor.  You could leave it for now, or use `j.PartitionTag(ctx.DeviceConfig())` to get the value for the current module.",
+      "range": {
+        "startLine": 219,
+        "startChar": 21,
+        "endLine": 219,
+        "endChar": 28
+      },
+      "revId": "226239a3d02d77e4ec338548bc1f41cfa3f86b3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432d34b9_1d7f4000",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-26T22:42:35Z",
+      "side": 1,
+      "message": "The name on disk could have been changed by the \"stem\" property, use `j.Stem() + \".jar\"` instead.",
+      "range": {
+        "startLine": 1418,
+        "startChar": 15,
+        "endLine": 1418,
+        "endChar": 41
+      },
+      "revId": "226239a3d02d77e4ec338548bc1f41cfa3f86b3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa36805e_9c8f88e9",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-26T22:42:35Z",
+      "side": 1,
+      "message": "This should be an `else` on the `if ctx.Device()`, we never want to use jar-wrapper.sh on a device module.",
+      "revId": "226239a3d02d77e4ec338548bc1f41cfa3f86b3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
