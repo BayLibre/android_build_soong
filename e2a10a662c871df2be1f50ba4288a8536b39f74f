@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2534c297_5141afba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-26T07:28:05Z",
+      "side": 1,
+      "message": "I assume this is still relevant, isn\u0027t it?\n\nThis was originally aosp/2257227, but that one was built on top of the not-quite-nice pruning change which I\u0027ll abandon and it was easier to create a new review request.",
+      "revId": "e2a10a662c871df2be1f50ba4288a8536b39f74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
