@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04073de7_f941aea6",
+        "filename": "build_test.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-26T20:52:55Z",
+      "side": 1,
+      "message": "put the `shift $((OPTIND-1))`\nbefore echo",
+      "revId": "78909fad47dc895c9fc0c3ca4bdc78848c0145b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
