@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20141a9d_f18324bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-10-26T16:53:32Z",
+      "side": 1,
+      "message": "I don\u0027t think there is anything to verify they\u0027re identical, so it seems quite risky : if a partner were to update the Go \u0026 non-go train separately in the same, what would happen?\n\nwe also don\u0027t have go-specific SDKs",
+      "parentUuid": "9bfc5622_12f6a482",
+      "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08dacfac_7a93737d",
         "filename": "android/deapexer.go",
         "patchSetId": 5
