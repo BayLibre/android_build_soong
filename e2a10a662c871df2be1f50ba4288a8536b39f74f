@@ -16,6 +16,23 @@
       "message": "I assume this is still relevant, isn\u0027t it?\n\nThis was originally aosp/2257227, but that one was built on top of the not-quite-nice pruning change which I\u0027ll abandon and it was easier to create a new review request.",
       "revId": "e2a10a662c871df2be1f50ba4288a8536b39f74f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1bb22ff_b9c55be8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-26T14:39:12Z",
+      "side": 1,
+      "message": "Hold on. This undoes Usta\u0027s recent change not to re-run Bazel for some reason. Probably a bad merge.",
+      "revId": "e2a10a662c871df2be1f50ba4288a8536b39f74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
