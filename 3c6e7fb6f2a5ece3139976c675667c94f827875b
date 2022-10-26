@@ -22,6 +22,30 @@
       },
       "revId": "3c6e7fb6f2a5ece3139976c675667c94f827875b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4115a108_cc96cb0f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-10-26T21:14:52Z",
+      "side": 1,
+      "message": "Covered in aosp/2269371. I wasn\u0027t ready to support them just yet in this CL.",
+      "parentUuid": "449b3e3d_2cf6f9bc",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 1
+      },
+      "revId": "3c6e7fb6f2a5ece3139976c675667c94f827875b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
