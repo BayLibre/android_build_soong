@@ -464,10 +464,11 @@ func storeConfigMetrics(ctx Context, config Config) {
 
 func buildConfig(config Config) *smpb.BuildConfig {
 	c := &smpb.BuildConfig{
-		ForceUseGoma:    proto.Bool(config.ForceUseGoma()),
-		UseGoma:         proto.Bool(config.UseGoma()),
-		UseRbe:          proto.Bool(config.UseRBE()),
-		BazelMixedBuild: proto.Bool(config.BazelBuildEnabled()),
+		ForceUseGoma:                proto.Bool(config.ForceUseGoma()),
+		UseGoma:                     proto.Bool(config.UseGoma()),
+		UseRbe:                      proto.Bool(config.UseRBE()),
+		BazelMixedBuild:             proto.Bool(config.BazelBuildEnabled()),
+		ForceDisableBazelMixedBuild: proto.Bool(config.Environment().IsEnvTrue("BUILD_BROKEN_DISABLE_BAZEL")),
 	}
 	c.Targets = append(c.Targets, config.arguments...)
 
