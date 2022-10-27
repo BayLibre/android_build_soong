@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dd4ba36_1ab0e3af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-27T08:15:17Z",
+      "side": 1,
+      "message": "PTAL! The root cause was that Usta special-cased the marker file of bp2build, which I didn\u0027t do with the new symlink tree marker file. I changed them to use order-only inputs, which is more \"Ninjaic\", I think.",
+      "revId": "af0247aacd77299bd65d45a47fa71aa6e6721759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
