@@ -22,6 +22,30 @@
       },
       "revId": "d073b8c62af32d386164592abc575021561de840",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf332f1_e077f7f8",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2022-10-27T18:14:22Z",
+      "side": 1,
+      "message": "No, this is related to how we run and package fuzz targets in Haiku, where we need to link with fuzz-instrumented and HWASAN-instrumented libraries, not the system-provided ones.\n\nFor generic HWASAN libraries or binaries this isn\u0027t needed.",
+      "parentUuid": "97f9e6d5_069cdae2",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 65
+      },
+      "revId": "d073b8c62af32d386164592abc575021561de840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
