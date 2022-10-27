@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38284101_a3f64543",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-27T17:32:27Z",
+      "side": 1,
+      "message": "Kiyoung, I left some more comments. I think once we are close to submitting this CL, we will also need to modify the orchestrator code to generate Android.bp files with the updated syntax of `cc_api_library`.",
+      "revId": "d120c47291b31c8a40a2b50444900f008b1155d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd4c2bc_33bd2b12",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-27T17:32:27Z",
+      "side": 1,
+      "message": "I think `Llndk` struct was originally designed to be user provided and not blueprint mutated. \n\nSomething like `d.rexexportDirs(variantMod.properties.Export_include_dirs)` (as an example) might be more appropriate here",
+      "range": {
+        "startLine": 113,
+        "startChar": 17,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "d120c47291b31c8a40a2b50444900f008b1155d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "186ba492_ae718944",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-27T17:32:27Z",
+      "side": 1,
+      "message": "nit: using providers here is the recommended approach https://docs.google.com/document/d/1CrogPUm7x6yOO149Cp35tlqAB3ZdeGzApLpWBh6PXO0/edit#heading\u003dh.m6ed3b1qks0h",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 52
+      },
+      "revId": "d120c47291b31c8a40a2b50444900f008b1155d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0296a03d_5152b1d5",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-27T17:32:27Z",
+      "side": 1,
+      "message": "Do you need this specific struct? I think using something like `FlagExporterProperties` might be more generic and can be reused once we start generating the variants for publicapi, systemapi",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 29
+      },
+      "revId": "d120c47291b31c8a40a2b50444900f008b1155d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

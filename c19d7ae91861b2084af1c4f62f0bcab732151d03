@@ -105,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad4ec4d_ce996cbe",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-27T17:32:27Z",
+      "side": 1,
+      "message": "I think using `GetModuleFromPathDep` makes sense now since `cc_api_variant` only provides a src prebuilt stub.so file\n\nOnce `cc_api_variant` needs to provide additional info (like export_include_dirs, export_system_include_dirs), we might need to update it. But it is ok to do that in a followup CL.",
+      "parentUuid": "100d406c_9ad74e58",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e119d94_07a53a2e",
