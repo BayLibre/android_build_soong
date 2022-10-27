@@ -16,6 +16,24 @@
       "message": "so `--bazel-mode dev` or `--bazel-mode\u003ddev` gets passed as `--bazel-mode-dev`\n\nI find it a bit confusing, maybe despite more lines of code (e.g. to ensure mutual exclusivity), we should use the same flags (--bazel-mode-dev, --bazel-mode, --bazel-mode-staging)\n\nOr better yet, we should use `--bazel-mode dev|staging|prod` everywhere (allows us to add more of similar modes down the line as well)",
       "revId": "586e8978c6ced9a0ec693b20f4d4f0c49c319819",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bdbdb6b_5c954300",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-10-27T21:13:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f71951d_bfafc0ef",
+      "revId": "586e8978c6ced9a0ec693b20f4d4f0c49c319819",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
