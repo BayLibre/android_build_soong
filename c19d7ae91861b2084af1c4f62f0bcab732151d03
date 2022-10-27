@@ -83,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "100d406c_9ad74e58",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-27T08:20:29Z",
+      "side": 1,
+      "message": "What do you think about current change which uses GetModuleFromPathDep?",
+      "parentUuid": "ca5bfd3c_457f0e41",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e119d94_07a53a2e",
         "filename": "cc/library_stub.go",
         "patchSetId": 2
@@ -576,6 +600,30 @@
       "side": 1,
       "message": "I think arch is fine, since we will have an equivalent configuration transition for arch in Roboleaf. \n\nVersion, OTOH, does not map 1:1 (go/roboleaf-no-version-mutator)",
       "parentUuid": "89311ce9_c2baa705",
+      "range": {
+        "startLine": 278,
+        "startChar": 80,
+        "endLine": 278,
+        "endChar": 98
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "869bcfeb_0c1e2ce3",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-27T08:20:29Z",
+      "side": 1,
+      "message": "I updated to use arch variant in soong.",
+      "parentUuid": "80053875_e713941c",
       "range": {
         "startLine": 278,
         "startChar": 80,
