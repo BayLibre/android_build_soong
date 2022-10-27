@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffae3ef7_d3295fae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-10-27T06:22:28Z",
+      "side": 1,
+      "message": "This is fine. We\u0027ll want to test on git_master devices anyway.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "20602fbe4f660b6a4b04b370288c8aadbf2766c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27e42f34_24156adf",
