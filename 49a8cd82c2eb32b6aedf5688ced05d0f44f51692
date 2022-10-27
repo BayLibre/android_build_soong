@@ -16,6 +16,23 @@
       "message": "need to wait until https://android-review.googlesource.com/c/toolchain/llvm_android/+/2274327 is in.",
       "revId": "49a8cd82c2eb32b6aedf5688ced05d0f44f51692",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3d9d2a_e47d6c6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-27T22:57:13Z",
+      "side": 1,
+      "message": "I think modifying the commit message is sufficient to bypass the presubmit cache",
+      "revId": "49a8cd82c2eb32b6aedf5688ced05d0f44f51692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
