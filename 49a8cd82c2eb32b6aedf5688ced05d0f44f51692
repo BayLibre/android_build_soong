@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62a7462_1a679c05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2022-10-27T17:25:08Z",
+      "side": 1,
+      "message": "need to wait until https://android-review.googlesource.com/c/toolchain/llvm_android/+/2274327 is in.",
+      "revId": "49a8cd82c2eb32b6aedf5688ced05d0f44f51692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
