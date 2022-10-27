@@ -22,6 +22,30 @@
       },
       "revId": "b8df3332ef9b53ed41a08595b71fe875c65799ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8fa9969_12a89feb",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-10-27T10:11:35Z",
+      "side": 1,
+      "message": "Done\ngo/how-to-resolve-abi-difference",
+      "parentUuid": "a733d09c_64d11f30",
+      "range": {
+        "startLine": 950,
+        "startChar": 39,
+        "endLine": 950,
+        "endChar": 141
+      },
+      "revId": "b8df3332ef9b53ed41a08595b71fe875c65799ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
