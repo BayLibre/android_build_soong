@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a2a3c82_2a8f5afe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1890055
+      },
+      "writtenOn": "2022-10-27T12:53:00Z",
+      "side": 1,
+      "message": "Most (Go, Big-Android) module pairs are built from the exact same code base and have the same version, and can reasonably be expected to have identical APIs (since we don\u0027t support different build flags for Go and Big-Android).\nHowever this is not the case for adservices, because the version of adservices for Big Android contains some functionality, was built from recent code, and has a higher version than the Go version, which is just the same empty stub we included in T-FRC. Therefore it\u0027s unlikely that the Go and Big-Android versions of adservices for November can both be compatible with a single module SDK.",
+      "parentUuid": "99b1ae50_157f1fc4",
+      "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08dacfac_7a93737d",
         "filename": "android/deapexer.go",
         "patchSetId": 5
