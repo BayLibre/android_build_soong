@@ -117,6 +117,29 @@
       },
       "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb6bae1_e269d6ed",
+        "filename": "android/deapexer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-10-27T10:55:04Z",
+      "side": 1,
+      "message": "NB I\u0027m just looking at this CL in isolation and don\u0027t have the full picture, but this seems a bit risky to me. The purpose with this is to find a prebuilt APEX to use to dexpreoopt the boot classpath that goes into the system image. If several APEXes are considered equivalent here, it\u0027ll pick one of them at random.\n\nThat works with the assumption that their dex jars are identical, so the dexpreopted files will work regardless which of them actually get installed in the system image.\n\nSo if you can guarantee that Go and non-Go modules always have identical dex jars then this is fine. Otherwise it\u0027s a risk that it more or less randomly will produce invalid OAT files that will just be garbage in the system image.\n\nAnother option may be to disable dexpreopting, save some space in the system image and let the device compile the boot classpath on first boot instead. That\u0027d also save space after the first Mainline update is taken, at which point the dexpreopted files in the system image will be stale anyway.",
+      "range": {
+        "startLine": 177,
+        "startChar": 27,
+        "endLine": 177,
+        "endChar": 64
+      },
+      "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
