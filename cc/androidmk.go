@@ -232,11 +232,10 @@ func (library *libraryDecorator) getAbiDiffsForAndroidMkDeps() []string {
 		return nil
 	}
 	var abiDiffs []string
-	if library.sAbiDiff.Valid() {
-		abiDiffs = append(abiDiffs, library.sAbiDiff.String())
-	}
-	if library.prevSAbiDiff.Valid() {
-		abiDiffs = append(abiDiffs, library.prevSAbiDiff.String())
+	for _, abiDiff := range library.sAbiDiff {
+		if abiDiff.Valid() {
+			abiDiffs = append(abiDiffs, abiDiff.String())
+		}
 	}
 	return abiDiffs
 }

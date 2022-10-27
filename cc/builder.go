@@ -925,18 +925,19 @@ func unzipRefDump(ctx android.ModuleContext, zippedRefDump android.Path, baseNam
 
 // sourceAbiDiff registers a build statement to compare linked sAbi dump files (.lsdump).
 func sourceAbiDiff(ctx android.ModuleContext, inputDump, referenceDump android.Path,
-	baseName string, diffFlags []string, prevVersion int,
-	checkAllApis, isLlndkOrNdk, isVndkExt, previousVersionDiff bool) android.OptionalPath {
+	baseName, nameExt string, diffFlags []string,
+	checkAllApis, isLlndkOrNdk, allowExtensions bool,
+	sourceVersion, errorMessage string) android.OptionalPath {
 
 	var outputFile android.ModuleOutPath
-	if previousVersionDiff {
-		outputFile = android.PathForModuleOut(ctx, baseName+"."+strconv.Itoa(prevVersion)+".abidiff")
+	if nameExt != "" {
+		outputFile = android.PathForModuleOut(ctx, baseName+"."+nameExt+".abidiff")
 	} else {
 		outputFile = android.PathForModuleOut(ctx, baseName+".abidiff")
 	}
 	libName := strings.TrimSuffix(baseName, filepath.Ext(baseName))
 
-	var extraFlags []string
+	extraFlags := []string{"-target-version", sourceVersion}
 	if checkAllApis {
 		extraFlags = append(extraFlags, "-check-all-apis")
 	} else {
@@ -944,24 +945,12 @@ func sourceAbiDiff(ctx android.ModuleContext, inputDump, referenceDump android.P
 			"-allow-unreferenced-changes",
 			"-allow-unreferenced-elf-symbol-changes")
 	}
-
-	var errorMessage string
-	if previousVersionDiff {
-		errorMessage = "error: Please follow https://android.googlesource.com/platform/development/+/master/vndk/tools/header-checker/README.md#configure-cross_version-abi-check to resolve the ABI difference between your source code and version " + strconv.Itoa(prevVersion) + "."
-		sourceVersion := prevVersion + 1
-		extraFlags = append(extraFlags, "-target-version", strconv.Itoa(sourceVersion))
-	} else {
-		errorMessage = "error: Please update ABI references with: $$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py -l " + libName
-		extraFlags = append(extraFlags, "-target-version", "current")
-	}
-
 	if isLlndkOrNdk {
 		extraFlags = append(extraFlags, "-consider-opaque-types-different")
 	}
-	if isVndkExt || previousVersionDiff {
+	if allowExtensions {
 		extraFlags = append(extraFlags, "-allow-extensions")
 	}
-	// TODO(b/232891473): Simplify the above logic with diffFlags.
 	extraFlags = append(extraFlags, diffFlags...)
 
 	ctx.Build(pctx, android.BuildParams{
@@ -979,6 +968,29 @@ func sourceAbiDiff(ctx android.ModuleContext, inputDump, referenceDump android.P
 		},
 	})
 	return android.OptionalPathForPath(outputFile)
+}
+
+func crossVersionAbiDiff(ctx android.ModuleContext, inputDump, referenceDump android.Path,
+	baseName string, diffFlags []string, checkAllApis, isLlndkOrNdk bool,
+	sourceVersion, prevVersion string) android.OptionalPath {
+
+	errorMessage := "error: Please follow https://android.googlesource.com/platform/development/+/master/vndk/tools/header-checker/README.md#configure-cross_version-abi-check to resolve the ABI difference between your source code and version " + prevVersion + "."
+
+	return sourceAbiDiff(ctx, inputDump, referenceDump, baseName, prevVersion,
+		diffFlags, checkAllApis, isLlndkOrNdk, true/* allowExtensions */,
+		sourceVersion, errorMessage)
+}
+
+func sameVersionAbiDiff(ctx android.ModuleContext, inputDump, referenceDump android.Path,
+	baseName string, diffFlags []string, checkAllApis, isLlndkOrNdk,
+	isVndkExt bool) android.OptionalPath {
+
+	libName := strings.TrimSuffix(baseName, filepath.Ext(baseName))
+	errorMessage := "error: Please update ABI references with: $$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py -l " + libName
+
+	return sourceAbiDiff(ctx, inputDump, referenceDump, baseName, ""/* nameExt */,
+		diffFlags, checkAllApis, isLlndkOrNdk, isVndkExt,
+		"current", errorMessage)
 }
 
 // Generate a rule for extracting a table of contents from a shared library (.so)
