@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f882412_394c3164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-27T19:43:28Z",
+      "side": 1,
+      "message": "Please don\u0027t submit until https://b.corp.google.com/issues/254713799#comment25 is resolved, but the CL LGTM.",
+      "revId": "118fd2b443a79a6686dd4bd3492d7cc055c03ac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
