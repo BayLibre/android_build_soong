@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0acc2e_2eb5d794",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-27T15:49:21Z",
+      "side": 1,
+      "message": "doh! I didn\u0027t see this CL prior to commenting on the similar CL of yours to parallelize the removal",
+      "revId": "647e7abfa24737f91c7bf6bfe3a62a37bb440c82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
