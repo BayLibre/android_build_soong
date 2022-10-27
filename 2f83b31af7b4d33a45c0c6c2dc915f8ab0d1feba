@@ -87,6 +87,24 @@
       "parentUuid": "e674756c_a34a2113",
       "revId": "2f83b31af7b4d33a45c0c6c2dc915f8ab0d1feba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8423d533_8dbbe9e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-10-27T22:51:11Z",
+      "side": 1,
+      "message": "I\u0027d suggest leaving this module as-is, adding a new `android_test_helper_app_import` and then moving the existing uses over to the new module type, and then deciding whether we should add `test_config` support to `android_test_import` or remove `android_test_import`, but you can also do it as a rename if you prefer.",
+      "parentUuid": "e0e9bd59_2549d90a",
+      "revId": "2f83b31af7b4d33a45c0c6c2dc915f8ab0d1feba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
