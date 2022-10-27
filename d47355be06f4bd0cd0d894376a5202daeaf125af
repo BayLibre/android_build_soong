@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c020850_570b6241",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-10-27T13:20:02Z",
+      "side": 1,
+      "message": "Just to be clear, dexpreopting is an implementation dependency, so the dex jars in the two APEXes have to be built from the same sources with the same options, same proguarding, same toolchain, etc. Identical APIs isn\u0027t enough.",
+      "parentUuid": "4a2a3c82_2a8f5afe",
+      "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08dacfac_7a93737d",
         "filename": "android/deapexer.go",
         "patchSetId": 5
