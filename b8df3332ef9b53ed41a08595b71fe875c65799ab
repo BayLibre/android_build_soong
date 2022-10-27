@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a733d09c_64d11f30",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-10-27T09:53:03Z",
+      "side": 1,
+      "message": "can we use a git tiles link here\n\nhttps://android.googlesource.com/platform/development/+/master/vndk/tools/header-checker/README.md#how-to-resolve-abi-difference\n\nand also create a go-link for this?",
+      "range": {
+        "startLine": 950,
+        "startChar": 39,
+        "endLine": 950,
+        "endChar": 141
+      },
+      "revId": "b8df3332ef9b53ed41a08595b71fe875c65799ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
