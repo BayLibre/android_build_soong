@@ -108,6 +108,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6885a31a_be7a3d89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451833
+      },
+      "writtenOn": "2022-10-27T18:52:24Z",
+      "side": 1,
+      "message": "Adding a DNS based on an offline discussion today morning. The preferred approach is now to solve this via Soong config variables",
+      "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08dacfac_7a93737d",
