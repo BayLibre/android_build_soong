@@ -140,6 +140,30 @@
       },
       "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "662777c7_7158e749",
+        "filename": "android/deapexer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-10-27T11:05:21Z",
+      "side": 1,
+      "message": "+1 to \"seems risky\".\n\nThis is a known issue that we raised over 6 months ago. What we were told was that noone wants to put Go prebuilts \u0026 big android prebuilts in the same tree, or that we weren\u0027t going to allow it (I forget which). \n\nI don\u0027t think it\u0027s a legit to wait for the shit to hit the fan and then push through a risky solution. If we\u0027re going to do something like this, we\u0027d need guard rails that fails the build if any of the apexes in this set of \"eligible apexes\" have different dexes.",
+      "parentUuid": "8fb6bae1_e269d6ed",
+      "range": {
+        "startLine": 177,
+        "startChar": 27,
+        "endLine": 177,
+        "endChar": 64
+      },
+      "revId": "d47355be06f4bd0cd0d894376a5202daeaf125af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
