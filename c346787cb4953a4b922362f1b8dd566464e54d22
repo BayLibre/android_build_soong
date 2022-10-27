@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da76befe_9b91d3c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-10-27T10:17:37Z",
+      "side": 1,
+      "message": "Looks good, just one small nit, thanks Alix!",
+      "revId": "c346787cb4953a4b922362f1b8dd566464e54d22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8320d6_4dbef05b",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2569,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-10-27T10:17:37Z",
+      "side": 1,
+      "message": "mostly by convention it\u0027s more common to prefix local targets with \":\"",
+      "range": {
+        "startLine": 2569,
+        "startChar": 117,
+        "endLine": 2569,
+        "endChar": 142
+      },
+      "revId": "c346787cb4953a4b922362f1b8dd566464e54d22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
