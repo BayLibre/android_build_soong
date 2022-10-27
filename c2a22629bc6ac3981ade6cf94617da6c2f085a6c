@@ -16,6 +16,23 @@
       "message": "I was also wondering whether we should remove only obsolete paths (i.e. removed from the source tree or needing to be converted to a symlink instead) while building the tree.\nAlso with or without the above, we could make plating of the symlink tree parallel as well.",
       "revId": "c2a22629bc6ac3981ade6cf94617da6c2f085a6c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e0feab_fa5657b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-27T21:22:28Z",
+      "side": 1,
+      "message": "CI failures look legitimate",
+      "revId": "c2a22629bc6ac3981ade6cf94617da6c2f085a6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
