@@ -33,6 +33,24 @@
       "message": "CI failures look legitimate",
       "revId": "c2a22629bc6ac3981ade6cf94617da6c2f085a6c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "014d59cf_35651a1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-28T07:17:14Z",
+      "side": 1,
+      "message": "My bad. Updated (I forgot to check for the non-existence of the output tree)",
+      "parentUuid": "a2e0feab_fa5657b1",
+      "revId": "c2a22629bc6ac3981ade6cf94617da6c2f085a6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
