@@ -789,3 +789,44 @@ func TestCcBinaryWithSyspropSrcsSomeConfigs(t *testing.T) {
 		},
 	})
 }
+
+func TestCcBinaryWithIntegerOverflowProperty(t *testing.T) {
+	runCcBinaryTestCase(t, ccBinaryBp2buildTestCase{
+		description: "cc_binary with with integer overflow property specified",
+		blueprint: `
+{rule_name} {
+	name: "foo",
+	sanitize: {
+		integer_overflow: true,
+	},
+}`,
+		targets: []testBazelTarget{
+			{"cc_binary", "foo", AttrNameToString{
+				"local_includes": `["."]`,
+				"features":       `["ubsan_integer_overflow"]`,
+			}},
+		},
+	})
+}
+
+func TestCcBinaryWithMiscUndefinedFeatures(t *testing.T) {
+	runCcBinaryTestCase(t, ccBinaryBp2buildTestCase{
+		description: "cc_binary with with miscellaneous properties specified",
+		blueprint: `
+{rule_name} {
+	name: "foo",
+	sanitize: {
+		misc_undefined: ["undefined", "nullability"],
+	},
+}`,
+		targets: []testBazelTarget{
+			{"cc_binary", "foo", AttrNameToString{
+				"local_includes": `["."]`,
+				"features": `[
+        "ubsan_undefined",
+        "ubsan_nullability",
+    ]`,
+			}},
+		},
+	})
+}
