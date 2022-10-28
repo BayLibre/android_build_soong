@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08fb5e4_d3c23c47",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-28T03:06:26Z",
+      "side": 1,
+      "message": "I could have also relied on Stat() but I thought it was better to remove the file.\nIf we want to preserve files we should index them instead as we do with log files.",
+      "revId": "f02ec6698e39c8899b4dc8b0a09dc7fc9b468997",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
