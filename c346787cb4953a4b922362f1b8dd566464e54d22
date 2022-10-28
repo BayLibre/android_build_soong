@@ -39,6 +39,30 @@
       },
       "revId": "c346787cb4953a4b922362f1b8dd566464e54d22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "004b0def_64670dfd",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2569,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-10-28T20:28:28Z",
+      "side": 1,
+      "message": "comment was meant to be on exports line. Done",
+      "parentUuid": "0d8320d6_4dbef05b",
+      "range": {
+        "startLine": 2569,
+        "startChar": 117,
+        "endLine": 2569,
+        "endChar": 142
+      },
+      "revId": "c346787cb4953a4b922362f1b8dd566464e54d22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
