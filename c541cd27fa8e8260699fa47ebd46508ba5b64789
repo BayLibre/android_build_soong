@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca8cb4b_a454fda8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-28T20:07:17Z",
+      "side": 1,
+      "message": "\u003e \"bp2build takes way more time than the symlink forest creation\"\nI don\u0027t see this in our metrics collection. In fact symlink forest creation takes 15s while bp2build takes 2s.",
+      "revId": "c541cd27fa8e8260699fa47ebd46508ba5b64789",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7183f0ad_2e25224d",
