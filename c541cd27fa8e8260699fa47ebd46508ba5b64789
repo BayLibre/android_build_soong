@@ -16,6 +16,24 @@
       "message": "chris and i were talking about using order-only dep but I wasn\u0027t sure that there was an API available to specify order-only deps!\nThanks!",
       "revId": "c541cd27fa8e8260699fa47ebd46508ba5b64789",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "642275bb_342b9b8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-28T07:04:52Z",
+      "side": 1,
+      "message": "Even if there wasn\u0027t support in Soong for order-only inputs, I would have made that happen :) IOW, \"we either find a road or build one!\" :)",
+      "parentUuid": "7183f0ad_2e25224d",
+      "revId": "c541cd27fa8e8260699fa47ebd46508ba5b64789",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
