@@ -845,3 +845,46 @@ cc_library_shared {
 		},
 	})
 }
+
+func TestCcLibrarySharedWithIntegerOverflowProperty(t *testing.T) {
+	runCcLibrarySharedTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_shared has correct features when integer_overflow property is provided",
+		Blueprint: `
+cc_library_shared {
+		name: "foo",
+		sanitize: {
+				integer_overflow: true,
+		},
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"features":       `["ubsan_integer_overflow"]`,
+				"local_includes": `["."]`,
+			}),
+		},
+	})
+}
+
+func TestCcLibrarySharedWithMiscUndefinedProperty(t *testing.T) {
+	runCcLibrarySharedTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_shared has correct features when misc_undefined property is provided",
+		Blueprint: `
+cc_library_shared {
+		name: "foo",
+		sanitize: {
+				misc_undefined: ["undefined", "nullability"],
+		},
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"features": `[
+        "ubsan_undefined",
+        "ubsan_nullability",
+    ]`,
+				"local_includes": `["."]`,
+			}),
+		},
+	})
+}

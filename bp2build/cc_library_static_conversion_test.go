@@ -1723,3 +1723,46 @@ cc_library_static {
 		},
 	})
 }
+
+func TestCcLibraryStaticWithIntegerOverflowProperty(t *testing.T) {
+	runCcLibraryStaticTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_static has correct features when integer_overflow property is provided",
+		Blueprint: `
+cc_library_static {
+		name: "foo",
+		sanitize: {
+				integer_overflow: true,
+		},
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"features":       `["ubsan_integer_overflow"]`,
+				"local_includes": `["."]`,
+			}),
+		},
+	})
+}
+
+func TestCcLibraryStaticWithMiscUndefinedProperty(t *testing.T) {
+	runCcLibraryStaticTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_static has correct features when misc_undefined property is provided",
+		Blueprint: `
+cc_library_static {
+		name: "foo",
+		sanitize: {
+				misc_undefined: ["undefined", "nullability"],
+		},
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"features": `[
+        "ubsan_undefined",
+        "ubsan_nullability",
+    ]`,
+				"local_includes": `["."]`,
+			}),
+		},
+	})
+}
