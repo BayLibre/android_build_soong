@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15946e28_003235cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-28T18:23:13Z",
+      "side": 1,
+      "message": "Please don\u0027t roll back just to fix go.mod. This would be better with a fixforward.",
+      "revId": "6f4679467de586c4fcd46de93413ef01e657dfb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
