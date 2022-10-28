@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b33259_9b5f658f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2022-10-28T08:21:08Z",
+      "side": 1,
+      "message": "The relevant change has already been reverted hence the merge conflict.",
+      "revId": "33171ffb260d8fe0abeb45b4af21d3f2e2412fb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
