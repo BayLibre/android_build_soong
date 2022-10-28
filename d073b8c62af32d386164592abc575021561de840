@@ -46,6 +46,30 @@
       },
       "revId": "d073b8c62af32d386164592abc575021561de840",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e31ac8_3091fd14",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-10-28T15:40:16Z",
+      "side": 1,
+      "message": "Can you add a comment about this? it\u0027s still unclear why other `cc_fuzz` targets need `LibFuzzerRuntimeInterceptors` when Hwaddress is enabled for all device modules, but not in the following case:\n\n```\ncc_fuzz{\n    name: \"foo\",\n    ...\n    sanitize: { hwaddress: true } },\n}\n```",
+      "parentUuid": "5cf332f1_e077f7f8",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 65
+      },
+      "revId": "d073b8c62af32d386164592abc575021561de840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
