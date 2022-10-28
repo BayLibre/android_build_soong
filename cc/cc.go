@@ -24,6 +24,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/bazel"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -1859,7 +1860,18 @@ func (c *Module) QueueBazelCall(ctx android.BaseModuleContext) {
 }
 
 func (c *Module) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
-	return c.bazelHandler != nil
+	ubsanEnabled := false
+	bp2BuildPropParseHelper(ctx, c, &SanitizeProperties{}, func(axis bazel.ConfigurationAxis, config string, props interface{}) {
+		if sanitizerProps, ok := props.(*SanitizeProperties); ok {
+			if sanitizerProps.Sanitize.Integer_overflow != nil && *sanitizerProps.Sanitize.Integer_overflow {
+				ubsanEnabled = true
+			}
+			if sanitizerProps.Sanitize.Misc_undefined != nil {
+				ubsanEnabled = true
+			}
+		}
+	})
+	return c.bazelHandler != nil && !ubsanEnabled
 }
 
 func (c *Module) ProcessBazelQueryResponse(ctx android.ModuleContext) {
