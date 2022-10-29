@@ -213,6 +213,36 @@ func FixtureCustomPreparer(mutator func(fixture Fixture)) FixturePreparer {
 	})
 }
 
+// FixtureTestRunner determines the type of test to run.
+//
+// If no custom FixtureTestRunner is provided (using the FixtureSetTestRunner) then the default test
+// runner will run a standard Soong test that corresponds to what happens when Soong is run on the
+// command line.
+type FixtureTestRunner interface {
+	// FinalPreparer is a function that is run immediately before parsing the blueprint files. It is
+	// intended to perform the initialization needed PostParseProcessor.
+	FinalPreparer(f Fixture)
+
+	// PostParseProcessor is called after parsing the blueprint files and can do further work on the
+	// result of parsing the files. It must collate any information useful for testing, e.g. errs,
+	// ninja deps and custom data in the supplied result.
+	PostParseProcessor(result *TestResult)
+}
+
+// FixtureSetTestRunner sets the FixtureTestRunner in the fixture.
+//
+// It is an error if more than one of these is applied to a single fixture. If none of these are
+// applied then the fixture will use the defaultTestRunner which will run the test as if it was
+// being run in `m <target>`.
+func FixtureSetTestRunner(testRunner FixtureTestRunner) FixturePreparer {
+	return newSimpleFixturePreparer(func(fixture *fixture) {
+		if fixture.testRunner != nil {
+			panic("fixture test runner has already been set")
+		}
+		fixture.testRunner = testRunner
+	})
+}
+
 // Modify the config
 func FixtureModifyConfig(mutator func(config Config)) FixturePreparer {
 	return newSimpleFixturePreparer(func(f *fixture) {
@@ -640,6 +670,23 @@ type TestResult struct {
 	// The ninja deps is a list of the ninja files dependencies that were added by the modules and
 	// singletons via the *.AddNinjaFileDeps() methods.
 	NinjaDeps []string
+
+	// Data provides a way for a custom FixtureTestRunner.PostParseProcessor function to return
+	// additional information to the test.
+	//
+	// It is recommended that provides of a FixtureTestRunner also create a wrapper around the
+	// TestResult object to provide access to the data. e.g. something like this:
+	//
+	//   type customTestResult struct {
+	//       *android.TestResult
+	//   }
+	//   func (c customTestResult) GetCustomData() []string {return c.Data[customKey].([]string)}
+	//
+	//   result := preparer....FixtureSetTestRunner(customRunner)...RunTest()
+	//   customResult := customTestResult{result}
+	//   checkResults(customResult.GetCustomData())
+	//
+	Data map[string]any
 }
 
 type TestPathContext struct {
@@ -731,6 +778,9 @@ type fixture struct {
 	// The preparers used to create this fixture.
 	preparers []*simpleFixturePreparer
 
+	// The test runner used in this fixture, defaults to defaultTestRunner if not set.
+	testRunner FixtureTestRunner
+
 	// The gotest state of the go test within which this was created.
 	t *testing.T
 
@@ -800,29 +850,57 @@ func (f *fixture) RunTest() *TestResult {
 	// Set the NameResolver in the TestContext.
 	ctx.NameResolver = resolver
 
-	ctx.Register()
-	var ninjaDeps []string
-	extraNinjaDeps, errs := ctx.ParseBlueprintsFiles("ignored")
-	if len(errs) == 0 {
-		ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
-		extraNinjaDeps, errs = ctx.PrepareBuildActions(f.config)
-		if len(errs) == 0 {
-			ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
-		}
+	// If test runner has not been set then use the default runner.
+	if f.testRunner == nil {
+		f.testRunner = defaultTestRunner
 	}
 
+	// Do any last minute preparation before parsing the blueprint files.
+	f.testRunner.FinalPreparer(f)
+
+	// Create the result to collate result information.
 	result := &TestResult{
 		testContext: testContext{ctx},
 		fixture:     f,
 		Config:      f.config,
-		Errs:        errs,
-		NinjaDeps:   ninjaDeps,
+		Data:        map[string]any{},
+	}
+
+	// Parse the blueprint files adding the information to the result.
+	extraNinjaDeps, errs := ctx.ParseBlueprintsFiles("ignored")
+	result.NinjaDeps = append(result.NinjaDeps, extraNinjaDeps...)
+	result.Errs = append(result.Errs, errs...)
+
+	if len(result.Errs) == 0 {
+		// If parsing the blueprint files was successful then perform any additional processing.
+		f.testRunner.PostParseProcessor(result)
 	}
 
 	f.errorHandler.CheckErrors(f.t, result)
 
 	return result
 }
+
+// standardTestRunner is the implementation of the default test runner
+type standardTestRunner struct{}
+
+func (s *standardTestRunner) FinalPreparer(f Fixture) {
+	// Register the hard coded mutators and singletons used by the standard Soong build as well as
+	// any additional instances that have been registered with this fixture.
+	f.Context().Register()
+}
+
+func (s *standardTestRunner) PostParseProcessor(result *TestResult) {
+	ctx := result.TestContext
+	cfg := result.Config
+	// Prepare the build actions, i.e. run all the mutators, singletons and then invoke the
+	// GenerateAndroidBuildActions methods on all the modules.
+	extraNinjaDeps, errs := ctx.PrepareBuildActions(cfg)
+	result.NinjaDeps = append(result.NinjaDeps, extraNinjaDeps...)
+	result.CollateErrs(errs)
+}
+
+var defaultTestRunner FixtureTestRunner = &standardTestRunner{}
 
 func (f *fixture) outputDebugState() {
 	fmt.Printf("Begin Fixture State for %s\n", f.t.Name())
@@ -908,4 +986,11 @@ func (r *TestResult) Preparer() FixturePreparer {
 // Module returns the module with the specific name and of the specified variant.
 func (r *TestResult) Module(name string, variant string) Module {
 	return r.ModuleForTests(name, variant).Module()
+}
+
+// CollateErrs adds additional errors to the result and returns true if there is more than one
+// error in the result.
+func (r *TestResult) CollateErrs(errs []error) bool {
+	r.Errs = append(r.Errs, errs...)
+	return len(r.Errs) > 0
 }
