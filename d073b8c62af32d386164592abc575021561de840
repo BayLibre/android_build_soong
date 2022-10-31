@@ -70,6 +70,30 @@
       },
       "revId": "d073b8c62af32d386164592abc575021561de840",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a9107d_aa4a718d",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2022-10-31T17:20:02Z",
+      "side": 1,
+      "message": "I\u0027ve added a comment.\n\nI\u0027m not sure about this other case you\u0027ve presented (a cc_fuzz rule with santization enabled in the Android.bp). Do you have a suggestion of how/where to handle this case?\n\nFrom what I understand, running a HWASAN-ified binary on a non-HWASAN phone image will segfault, so I don\u0027t think this case is likely to happen.",
+      "parentUuid": "a5e31ac8_3091fd14",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 65
+      },
+      "revId": "d073b8c62af32d386164592abc575021561de840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
