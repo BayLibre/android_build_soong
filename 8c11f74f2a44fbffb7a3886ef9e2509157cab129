@@ -70,6 +70,30 @@
       },
       "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb5db8ac_6325ea3e",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-31T16:22:43Z",
+      "side": 1,
+      "message": "I\u0027m confused. we apparently already have multiple files in the metrics directory (soong_build_metrics.pb and bp2build_metrics.pb) and that apparently works, even though it\u0027s very possible that we generate both of them in the same invocation. Then why is it problematic to add a third file (symlink_forest_metrics.pb) to them?\n\n(I\u0027m insisting because this code seems to willingly log data that\u0027s not known not to  describe reality, which feels wrong)",
+      "parentUuid": "7b08d809_96b2d570",
+      "range": {
+        "startLine": 659,
+        "startChar": 16,
+        "endLine": 659,
+        "endChar": 34
+      },
+      "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
