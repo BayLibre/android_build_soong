@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f72cbc5_43a14c42",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-31T17:47:39Z",
+      "side": 1,
+      "message": "nit: WDYT about replacing this bool with a string array instead? e.g instead of\n```\ncc_api_variant {\n  export_include_dirs \u003d [\"include\"],\n  export_headers_as_system: true,\n}\n```\n\nwe have,\n```\ncc_api_variant {\n  export_include_dirs \u003d [],\n  export_system_include_dirs \u003d [\"include\"]\n}\n```\n\nllndk struct in Soong\u0027s cc_library currently implements it as a boolean, but the other variants of cc_library implements `exports` as the latter option. The roboleaf bazel rules uses the latter as well https://cs.android.com/android/_/android/platform/build/bazel/+/8aaef82c3933981e3989e84b6f2289f4bb5f9c36:rules/cc/cc_library_shared.bzl;l\u003d59;bpv\u003d1;bpt\u003d0;drc\u003d229cceb2a2a9d118684c53c13661f9a90afce30d",
+      "range": {
+        "startLine": 118,
+        "startChar": 50,
+        "endLine": 118,
+        "endChar": 74
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b9d378_1d82a8a5",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-31T17:47:39Z",
+      "side": 1,
+      "message": "I left a comment in the unit test whether we need an override at all",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 93
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69dee86e_3712a592",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-31T17:47:39Z",
+      "side": 1,
+      "message": "What does this property do?",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 257,
+        "endChar": 15
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47ec2b23_27f0a34d",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-31T17:47:39Z",
+      "side": 1,
+      "message": "nit: I think these properties will be used for ndk (publicapi) and apexes (systemapi) as well in the future.",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 28
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85666d6e_b7c84318",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-31T17:47:39Z",
+      "side": 1,
+      "message": "Are ramdisk/vendor_ramdisk etc. variants buildable with stubs? What\u0027s the use case for core variant?\n\nAssuming it is, it it possible to make cc_api_variant available to them without duplicating module variants? By using `AddFarVariationDependencies`? IIUC, there should not be any differences between the following\n```\nlibfoo.apiimport{image:}\nlibfoo.apiimport{image:ramdisk}\nlibfoo.apiimport{image:vendor_ramdisk}\n...\n```",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 101
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b011d7_fed45e83",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-31T17:47:39Z",
+      "side": 1,
+      "message": "nit: binfoo",
+      "range": {
+        "startLine": 286,
+        "startChar": 10,
+        "endLine": 286,
+        "endChar": 16
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6bfbf34_f7f255d6",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-31T17:47:39Z",
+      "side": 1,
+      "message": "I think `src`, `export_include_dirs` should be properties of the child `cc_api_variant`,  and not the parent `cc_api_library`?\n\nEspecially `src`, since it has a 1:1 mapping with (api_surface, version), which is what cc_api_variant represents. \n\nRegarding `export_include_dirs`, I think the complicated override llndk logic we have today is to accommodate providing different metadata to different variants from the same Android.bp module. Since `cc_api_variant` is already disjoint, I think we do not need to reimplement this logic here as-is.",
+      "range": {
+        "startLine": 294,
+        "startChar": 3,
+        "endLine": 295,
+        "endChar": 43
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7e3dd65_ad9a1935",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-31T17:47:39Z",
+      "side": 1,
+      "message": "Depending on the result of a previous comment, this may not be needed.",
+      "range": {
+        "startLine": 333,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 132
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d043f73e_72cab235",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-31T17:47:39Z",
+      "side": 1,
+      "message": "If we delete `src` and `export_include_dirs` from the parent cc_api_library, this might not be necessary.",
+      "range": {
+        "startLine": 359,
+        "startChar": 3,
+        "endLine": 359,
+        "endChar": 31
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01146049_250e326f",
+        "filename": "cc/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-10-31T17:47:39Z",
+      "side": 1,
+      "message": "nit: Is this for linking against ndk variant?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 20
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
