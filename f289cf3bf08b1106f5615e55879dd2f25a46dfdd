@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bea3ff8_e2145ea0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-31T09:15:58Z",
+      "side": 1,
+      "message": "@Liz: I looked at finder.go and I don\u0027t think it\u0027s a good model: firstly, because removal imposes the additional constraint that a directory can only be removed after everything under it is removed and secondly, because I would rather prefer to write Go code as much as practicable in Go than to revert to Java patterns.\n\nOf course, this has the undesirable side effect of unwieldy crash dumps, but the alternative is to start writing code in continuation-passing style (\"spawn work for children; wait for children to be done; remove the directory\", each in separate lambdas) which is the exact pain goroutines relieve.",
+      "revId": "f289cf3bf08b1106f5615e55879dd2f25a46dfdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
