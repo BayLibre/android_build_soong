@@ -46,6 +46,30 @@
       },
       "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b08d809_96b2d570",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-31T15:53:44Z",
+      "side": 1,
+      "message": "I think the concurrent writing is not an issue because we don\u0027t collect metrics for bp2build in the same files as for \"main\" soong_build (bp2build_metrics.pb v soong_build_metrics.pb)\nso I think now it\u0027s just the matter of following the same practice and having two separate .pb files as bp2build invocation itself has split into two (the fact that those two phase don\u0027t run concurrently is not very useful because of the staleness issue, i.e. bp2build-codegen maybe skipped and symlink-forest won\u0027t be able to tell)\n\nhttps://b.corp.google.com/issues/256617990",
+      "parentUuid": "14f5fa00_533221dd",
+      "range": {
+        "startLine": 659,
+        "startChar": 16,
+        "endLine": 659,
+        "endChar": 34
+      },
+      "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
