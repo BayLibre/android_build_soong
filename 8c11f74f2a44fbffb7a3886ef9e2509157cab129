@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef98bc38_52faa107",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-31T09:34:11Z",
+      "side": 1,
+      "message": "I\u0027m not too familiar with the metrics collection pipeline, but given that we don\u0027t know which soong_build invocation will run in any given build, I think gradually putting together the \"full\" metrics proto this way isn\u0027t a recipe for happiness.\n\nAFAIU it\u0027s even possible for soong_build invocations (e.g. queryview, JSON graph, build.ninja generation) to run in parallel, which makes the \"one file\" solution even more dicey.\n\nSo yes, a separate file for each soong_build invocation sounds much more reasonable. If one wants a single proto for all soong_build invocations, one can always merge them in soong_ui or the uploader.",
+      "range": {
+        "startLine": 659,
+        "startChar": 16,
+        "endLine": 659,
+        "endChar": 34
+      },
+      "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
