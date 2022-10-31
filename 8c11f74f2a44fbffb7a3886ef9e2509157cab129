@@ -142,6 +142,30 @@
       },
       "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8f6b24_1cd4e952",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-31T19:25:27Z",
+      "side": 1,
+      "message": "I\u0027ll defer to Chris here; I think Usta\u0027s argument that this functionality is already broken is reasonable, but I don\u0027t want to override Chris.",
+      "parentUuid": "84fb4a57_16674f82",
+      "range": {
+        "startLine": 659,
+        "startChar": 16,
+        "endLine": 659,
+        "endChar": 34
+      },
+      "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
