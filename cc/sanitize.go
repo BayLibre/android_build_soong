@@ -171,6 +171,17 @@ func (t SanitizerType) registerMutators(ctx android.RegisterMutatorsContext) {
 	}
 }
 
+func (t SanitizerType) shouldPropagateShared() bool {
+	switch t {
+	case Fuzzer:
+		// Typically, shared libs are not split. However, for fuzzer, we split even for shared libs
+		// because a library sanitized for fuzzer can't be linked from a library that isn't sanitized
+		// for fuzzer.
+		return true
+	default:
+		return false
+	}
+}
 func (*Module) SanitizerSupported(t SanitizerType) bool {
 	switch t {
 	case Asan:
@@ -1218,7 +1229,8 @@ func (s *sanitizerSplitMutator) IncomingTransition(ctx android.IncomingTransitio
 				return s.sanitizer.variationName()
 			}
 
-			if s.sanitizer == cfi || s.sanitizer == Hwasan || s.sanitizer == scs || s.sanitizer == Asan {
+			// Some sanitizers propagate from dependencies
+			if !s.sanitizer.shouldPropagateShared() {
 				return ""
 			}
 		}
