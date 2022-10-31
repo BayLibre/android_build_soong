@@ -24,6 +24,7 @@ import (
 )
 
 func TestAfdoDeps(t *testing.T) {
+	t.Parallel()
 	bp := `
 	cc_library_shared {
 		name: "libTest",
@@ -77,6 +78,7 @@ func TestAfdoDeps(t *testing.T) {
 }
 
 func TestAfdoEnabledOnStaticDep(t *testing.T) {
+	t.Parallel()
 	bp := `
 	cc_library {
 		name: "libTest",
