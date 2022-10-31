@@ -94,6 +94,30 @@
       },
       "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df6ce2d_2851a26e",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-10-31T17:54:47Z",
+      "side": 1,
+      "message": "+1, it seems best to have symlink metrics in its own file.",
+      "parentUuid": "fb5db8ac_6325ea3e",
+      "range": {
+        "startLine": 659,
+        "startChar": 16,
+        "endLine": 659,
+        "endChar": 34
+      },
+      "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
