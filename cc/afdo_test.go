@@ -15,15 +15,17 @@
 package cc
 
 import (
+	"strings"
 	"testing"
 
 	"android/soong/android"
+
 	"github.com/google/blueprint"
 )
 
 func TestAfdoDeps(t *testing.T) {
 	bp := `
-	cc_library {
+	cc_library_shared {
 		name: "libTest",
 		srcs: ["foo.c"],
 		static_libs: ["libFoo"],
@@ -46,7 +48,7 @@ func TestAfdoDeps(t *testing.T) {
 		prepareForAfdoTest,
 	).RunTestWithBp(t, bp)
 
-	libTest := result.ModuleForTests("libTest", "android_arm64_armv8-a_shared").Module()
+	libTest := result.ModuleForTests("libTest", "android_arm64_armv8-a_shared")
 	libFoo := result.ModuleForTests("libFoo", "android_arm64_armv8-a_static_afdo-libTest").Module()
 	libBar := result.ModuleForTests("libBar", "android_arm64_armv8-a_static_afdo-libTest").Module()
 
@@ -60,11 +62,77 @@ func TestAfdoDeps(t *testing.T) {
 		return found
 	}
 
-	if !hasDep(libTest, libFoo) {
+	if !hasDep(libTest.Module(), libFoo) {
 		t.Errorf("libTest missing dependency on afdo variant of libFoo")
 	}
 
 	if !hasDep(libFoo, libBar) {
 		t.Errorf("libTest missing dependency on afdo variant of libBar")
+	}
+
+	cFlags := libTest.Rule("cc").Args["cFlags"]
+	if w := "-fprofile-sample-accurate"; !strings.Contains(cFlags, w) {
+		t.Errorf("Expected 'libTest' to enable afdo, but did not find %q in cflags %q", w, cFlags)
+	}
+}
+
+func TestAfdoEnabledOnStaticDep(t *testing.T) {
+	bp := `
+	cc_library {
+		name: "libTest",
+		srcs: ["foo.c"],
+		static_libs: ["libFoo"],
+	}
+
+	cc_library_static {
+		name: "libFoo",
+		srcs: ["foo.c"],
+		static_libs: ["libBar"],
+		afdo: true, // TODO(b/256670524): remove support for enabling afdo from static only libraries, this can only propagate from shared libraries/binaries
+	}
+
+	cc_library {
+		name: "libBar",
+	}
+	`
+	prepareForAfdoTest := android.FixtureAddTextFile("toolchain/pgo-profiles/sampling/libFoo.afdo", "TEST")
+
+	result := android.GroupFixturePreparers(
+		prepareForCcTest,
+		prepareForAfdoTest,
+	).RunTestWithBp(t, bp)
+
+	libTest := result.ModuleForTests("libTest", "android_arm64_armv8-a_shared").Module()
+	libFoo := result.ModuleForTests("libFoo", "android_arm64_armv8-a_static")
+	libBar := result.ModuleForTests("libBar", "android_arm64_armv8-a_static").Module()
+
+	hasDep := func(m android.Module, wantDep android.Module) bool {
+		var found bool
+		result.VisitDirectDeps(m, func(dep blueprint.Module) {
+			if dep == wantDep {
+				found = true
+			}
+		})
+		return found
+	}
+
+	if !hasDep(libTest, libFoo.Module()) {
+		t.Errorf("libTest missing dependency on afdo variant of libFoo")
+	}
+
+	if !hasDep(libFoo.Module(), libBar) {
+		t.Errorf("libFoo missing dependency on afdo variant of libBar")
+	}
+
+	fooVariants := result.ModuleVariantsForTests("foo")
+	for _, v := range fooVariants {
+		if strings.Contains(v, "afdo-") {
+			t.Errorf("Expected no afdo variant of 'foo', got %q", v)
+		}
+	}
+
+	cFlags := libFoo.Rule("cc").Args["cFlags"]
+	if w := "-fprofile-sample-accurate"; strings.Contains(cFlags, w) {
+		t.Errorf("Expected 'foo' to not enable afdo, but found %q in cflags %q", w, cFlags)
 	}
 }
