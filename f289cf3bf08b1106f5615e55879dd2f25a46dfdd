@@ -16,6 +16,57 @@
       "message": "@Liz: I looked at finder.go and I don\u0027t think it\u0027s a good model: firstly, because removal imposes the additional constraint that a directory can only be removed after everything under it is removed and secondly, because I would rather prefer to write Go code as much as practicable in Go than to revert to Java patterns.\n\nOf course, this has the undesirable side effect of unwieldy crash dumps, but the alternative is to start writing code in continuation-passing style (\"spawn work for children; wait for children to be done; remove the directory\", each in separate lambdas) which is the exact pain goroutines relieve.",
       "revId": "f289cf3bf08b1106f5615e55879dd2f25a46dfdd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d5a231_a539d0e8",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-31T15:12:40Z",
+      "side": 1,
+      "message": "\"the had limit\"?",
+      "revId": "f289cf3bf08b1106f5615e55879dd2f25a46dfdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ececde0_f586bb94",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-31T15:12:40Z",
+      "side": 1,
+      "message": "nit: wondering if `chan struct{}` is more idiomatic (not important but struct{} takes no memory as well)",
+      "revId": "f289cf3bf08b1106f5615e55879dd2f25a46dfdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf39425e_bc31c216",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-31T15:12:40Z",
+      "side": 1,
+      "message": "nit: prefer explicit channel direction",
+      "revId": "f289cf3bf08b1106f5615e55879dd2f25a46dfdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
