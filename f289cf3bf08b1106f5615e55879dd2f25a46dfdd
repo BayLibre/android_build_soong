@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75f4fa9f_0ba13f54",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-31T16:00:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d5a231_a539d0e8",
+      "revId": "f289cf3bf08b1106f5615e55879dd2f25a46dfdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ececde0_f586bb94",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83e189e_76f59da0",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-31T16:00:17Z",
+      "side": 1,
+      "message": "I thought \"bool\" is a bit more legible, but I don\u0027t have a strong opinion, done",
+      "parentUuid": "6ececde0_f586bb94",
+      "revId": "f289cf3bf08b1106f5615e55879dd2f25a46dfdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf39425e_bc31c216",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-10-31T15:12:40Z",
       "side": 1,
       "message": "nit: prefer explicit channel direction",
+      "revId": "f289cf3bf08b1106f5615e55879dd2f25a46dfdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c8f4b0_93573082",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-10-31T16:00:17Z",
+      "side": 1,
+      "message": "TIL, I didn\u0027t realize that\u0027s a thing",
+      "parentUuid": "bf39425e_bc31c216",
       "revId": "f289cf3bf08b1106f5615e55879dd2f25a46dfdd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
