@@ -2639,7 +2639,7 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	if m.properties.Libs != nil {
 
 		// TODO 244210934 ALIX Check if this else statement breaks presubmits get rid of it if it doesn't
-		if strings.HasPrefix(ctx.ModuleType(), "java_binary") {
+		if strings.HasPrefix(ctx.ModuleType(), "java_binary") || strings.HasPrefix(ctx.ModuleType(), "java_library") {
 			for _, d := range m.properties.Libs {
 				neverlinkLabel := android.BazelLabelForModuleDepSingle(ctx, d)
 				neverlinkLabel.Label = neverlinkLabel.Label + "-neverlink"
@@ -2724,6 +2724,12 @@ func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 
 	name := m.Name()
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: name}, attrs)
+	neverlinkProp := true
+	neverLinkAttrs := &javaLibraryAttributes{
+		Exports:   bazel.MakeSingleLabelListAttribute(bazel.Label{Label: ":" + name}),
+		Neverlink: bazel.BoolAttribute{Value: &neverlinkProp},
+	}
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: name + "-neverlink"}, neverLinkAttrs)
 }
 
 type javaBinaryHostAttributes struct {
