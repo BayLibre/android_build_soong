@@ -929,6 +929,7 @@ var (
 		"preinit_syscall_test_helper",
 		"psnr",
 		"quat_test",
+		"rappor",       // depends on unconverted modules: js305
 		"rappor-tests", // depends on unconverted modules: jsr305, guava
 		"scudo_unit_tests",
 		"stats-log-api-gen-test", // depends on unconverted modules: libstats_proto_host
