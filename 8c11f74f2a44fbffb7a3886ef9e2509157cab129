@@ -118,6 +118,30 @@
       },
       "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84fb4a57_16674f82",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-31T18:00:13Z",
+      "side": 1,
+      "message": "What I was emphasizing was to do the split metrics file in a separate CL.\nAs for willingly logging stale data - my assertion was that this is already the case (e.g. when incremental builds don\u0027t run bp2build, they simply grab stale data - which I submitted a separate CL to fix, https://android-review.googlesource.com/c/platform/build/soong/+/2275607 )",
+      "parentUuid": "fb5db8ac_6325ea3e",
+      "range": {
+        "startLine": 659,
+        "startChar": 16,
+        "endLine": 659,
+        "endChar": 34
+      },
+      "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
