@@ -22,6 +22,30 @@
       },
       "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f5fa00_533221dd",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-10-31T15:18:04Z",
+      "side": 1,
+      "message": "yep but I didn\u0027t want to implement multi-file and stitch at soong-ui in this CL.",
+      "parentUuid": "ef98bc38_52faa107",
+      "range": {
+        "startLine": 659,
+        "startChar": 16,
+        "endLine": 659,
+        "endChar": 34
+      },
+      "revId": "8c11f74f2a44fbffb7a3886ef9e2509157cab129",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
