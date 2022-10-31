@@ -64,6 +64,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "081690f8_7df1ac09",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-31T07:10:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbd4c2bc_33bd2b12",
+      "range": {
+        "startLine": 113,
+        "startChar": 17,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "d120c47291b31c8a40a2b50444900f008b1155d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0296a03d_5152b1d5",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-10-27T17:32:27Z",
       "side": 1,
       "message": "Do you need this specific struct? I think using something like `FlagExporterProperties` might be more generic and can be reused once we start generating the variants for publicapi, systemapi",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 29
+      },
+      "revId": "d120c47291b31c8a40a2b50444900f008b1155d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eb32b31_80fbb56f",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-10-31T07:10:52Z",
+      "side": 1,
+      "message": "Updated to use new property definition.",
+      "parentUuid": "0296a03d_5152b1d5",
       "range": {
         "startLine": 249,
         "startChar": 1,
