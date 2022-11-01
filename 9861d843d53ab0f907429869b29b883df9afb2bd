@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90651825_6424dc12",
+        "filename": "ui/build/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-01T13:54:17Z",
+      "side": 1,
+      "message": "We certainly should. Good catch, I forgot about this, even though I asked for it.",
+      "parentUuid": "0e10dc51_34203cf5",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 57
+      },
+      "revId": "9861d843d53ab0f907429869b29b883df9afb2bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c99eb52_9c442cea",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-01T04:55:38Z",
       "side": 1,
       "message": "nit: why isn\u0027t this an enum? What is the expected behavior when more than 1 of these flags are set?",
+      "range": {
+        "startLine": 792,
+        "startChar": 5,
+        "endLine": 792,
+        "endChar": 68
+      },
+      "revId": "9861d843d53ab0f907429869b29b883df9afb2bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43141b8e_d6ffceec",
+        "filename": "ui/build/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-01T13:54:17Z",
+      "side": 1,
+      "message": "I\u0027ve started an offline thread about enum (you are not the first person to ask, though I think we have good reasons to not bother with an enum here)\n\nAs for \"more than 1 of these flags are set\", we error out: https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/build.go;l\u003d126-127;drc\u003db78465de1d0f8a02c16e11dd672338bc1bd597ca",
+      "parentUuid": "5c99eb52_9c442cea",
       "range": {
         "startLine": 792,
         "startChar": 5,
