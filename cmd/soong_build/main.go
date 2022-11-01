@@ -130,8 +130,15 @@ func newContext(configuration android.Config) *android.Context {
 }
 
 func newConfig(availableEnv map[string]string) android.Config {
+	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, runGoTests, outDir, soongOutDir, availableEnv)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%s", err)
+		os.Exit(1)
+	}
+
 	var buildMode android.SoongBuildMode
 
+	bazelModeEnv := configuration.Getenv("BAZEL_MODE")
 	if symlinkForestMarker != "" {
 		buildMode = android.SymlinkForest
 	} else if bp2buildMarker != "" {
@@ -144,21 +151,17 @@ func newConfig(availableEnv map[string]string) android.Config {
 		buildMode = android.GenerateModuleGraph
 	} else if docFile != "" {
 		buildMode = android.GenerateDocFile
-	} else if cmdlineArgs.BazelModeDev {
+	} else if cmdlineArgs.BazelModeDev || bazelModeEnv == "dev" {
 		buildMode = android.BazelDevMode
-	} else if cmdlineArgs.BazelMode {
+	} else if cmdlineArgs.BazelMode || bazelModeEnv == "prod" {
 		buildMode = android.BazelProdMode
-	} else if cmdlineArgs.BazelModeStaging {
+	} else if cmdlineArgs.BazelModeStaging || bazelModeEnv == "staging" {
 		buildMode = android.BazelStagingMode
 	} else {
 		buildMode = android.AnalysisNoBazel
 	}
 
-	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, buildMode, runGoTests, outDir, soongOutDir, availableEnv)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "%s", err)
-		os.Exit(1)
-	}
+	configuration.BuildMode = buildMode
 	return configuration
 }
 
