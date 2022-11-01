@@ -94,6 +94,30 @@
       },
       "revId": "d073b8c62af32d386164592abc575021561de840",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8571915f_fed2530a",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2022-11-01T23:00:00Z",
+      "side": 1,
+      "message": "Since there doesn\u0027t seem to be an easy solution to cover this corner case, and there don\u0027t seem to be any instances of this checked in, would it be okay if I added a TODO and we merged this as-is?",
+      "parentUuid": "38a9107d_aa4a718d",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 65
+      },
+      "revId": "d073b8c62af32d386164592abc575021561de840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
