@@ -16,6 +16,24 @@
       "message": "LGTM. Can you please update the Android.bp file generation in orchestrator\u0027s build/orchestrator/core/cc/api_assembly.py? Otherwise, it might be a breaking change for folks who are using the build orchestrator.",
       "revId": "5cba5ad5b174fcf055c3ebedba94ff721ec531c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "115d41cd_52ee34ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T08:29:46Z",
+      "side": 1,
+      "message": "Not sure if I\u0027m capable of right now. I don\u0027t have build orchestrator environment, so it may take some time to update it.",
+      "parentUuid": "12e6b666_38daed78",
+      "revId": "5cba5ad5b174fcf055c3ebedba94ff721ec531c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
