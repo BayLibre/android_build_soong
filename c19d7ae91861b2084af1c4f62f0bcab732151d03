@@ -82,6 +82,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0519c0d7_e71077d2",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-01T01:47:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "45a0e6cd_1bc4ebf0",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca5bfd3c_457f0e41",
@@ -622,6 +646,24 @@
       "side": 1,
       "message": "Header changes are in now.",
       "parentUuid": "32c3a709_55684a2d",
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19e2c09f_ef3a8859",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-01T01:47:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51c251cb_5b010cb7",
       "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
