@@ -129,8 +129,32 @@ func newContext(configuration android.Config) *android.Context {
 	return ctx
 }
 
+// checkOnlyOneBazelModeArg ensures that not more than 1 --bazel-mode flag is set.
+func checkOnlyOneBazelModeArg(dev bool, staging bool, prod bool) {
+	// No XOR operator in golang, just use simple math.
+	count := 0
+	if dev {
+		count += 1
+	}
+	if staging {
+		count += 1
+	}
+	if prod {
+		count += 1
+	}
+	if count > 1 {
+		fmt.Fprintf(os.Stderr, "Ensure at most 1 of --bazel-mode, --bazel-mode-staging, or --bazel-mode-dev is set.")
+		os.Exit(1)
+	}
+}
+
 func newConfig(availableEnv map[string]string) android.Config {
 	var buildMode android.SoongBuildMode
+
+	checkOnlyOneBazelModeArg(
+		cmdlineArgs.BazelModeDev,
+		cmdlineArgs.BazelModeStaging,
+		cmdlineArgs.BazelMode)
 
 	if symlinkForestMarker != "" {
 		buildMode = android.SymlinkForest
