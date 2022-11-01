@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb663e46_19ca554d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T08:16:37Z",
+      "side": 1,
+      "message": "I updated to add dependency directly, rather than using PathDeps, because current approach requires cc_api_variant to create variants for all matching cc_api_library variants.",
+      "revId": "ad1a5e43904c2bb1aa871f565503e19c277b3ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
