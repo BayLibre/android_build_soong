@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c99eb52_9c442cea",
+        "filename": "ui/build/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-01T04:55:38Z",
+      "side": 1,
+      "message": "nit: why isn\u0027t this an enum? What is the expected behavior when more than 1 of these flags are set?",
+      "range": {
+        "startLine": 792,
+        "startChar": 5,
+        "endLine": 792,
+        "endChar": 68
+      },
+      "revId": "9861d843d53ab0f907429869b29b883df9afb2bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
