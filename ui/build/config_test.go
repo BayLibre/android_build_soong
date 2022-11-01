@@ -91,6 +91,7 @@ func TestConfigParseArgsJK(t *testing.T) {
 			})
 
 			c := &configImpl{
+				env:       Environment(),
 				parallel:  -1,
 				keepGoing: -1,
 			}
