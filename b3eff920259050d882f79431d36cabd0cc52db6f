@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89258a1f_c37641eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-01T19:27:24Z",
+      "side": 1,
+      "message": "Lukács, recently (about a week ago before my holiday) I was trying to understand how the bp2build stuff works as I was getting some weird behavior (turns out it was a bug that has since been fixed). In the process I noticed that the Android test fixture framework does not support testing bp2build and apiBp2build modes. Which means you suffer all the pain that I originally created the test fixture to solve.\n\nSo, as it was a reasonably easy fix I created this change to add support for bp2build/apiBp2build tests in the fixture mechanism.",
+      "revId": "b3eff920259050d882f79431d36cabd0cc52db6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
