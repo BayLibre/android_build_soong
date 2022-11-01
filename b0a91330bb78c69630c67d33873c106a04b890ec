@@ -16,6 +16,23 @@
       "message": "build_test isn\u0027t set up for the -plus-aosp branches, but here are the abtd runs of it on internal master again:\n\nhttps://android-build.googleplex.com/builds/abtd/run/L20900000957141210\nhttps://android-build.googleplex.com/builds/abtd/run/L62300000957142607\nhttps://android-build.googleplex.com/builds/abtd/run/L16400000957139291\nhttps://android-build.googleplex.com/builds/abtd/run/L77300000957138269",
       "revId": "b0a91330bb78c69630c67d33873c106a04b890ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "788aa7f1_aee6b190",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-01T22:41:38Z",
+      "side": 1,
+      "message": "I\u0027ll submit this tomorrow morning so I can be available to watch for issues.",
+      "revId": "b0a91330bb78c69630c67d33873c106a04b890ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
