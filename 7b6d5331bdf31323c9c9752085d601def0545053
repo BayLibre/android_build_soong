@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d38463ef_1970059e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-01T19:46:05Z",
+      "side": 1,
+      "message": "oops sorry! My IDE is failing me to find initializations of a struct!",
+      "revId": "7b6d5331bdf31323c9c9752085d601def0545053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
