@@ -356,6 +356,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfbe8d4c_4febd9f8",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T04:27:05Z",
+      "side": 1,
+      "message": "I was not sure for NDK (non-LLNDK) variants and APEX stubs, but we can revisit this later with those variants. Updated as commented.",
+      "parentUuid": "d2be2380_aafac50d",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 101
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1b011d7_fed45e83",
