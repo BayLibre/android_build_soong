@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5748909c_850ce81a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-11-01T14:06:49Z",
+      "side": 1,
+      "message": "I came across this by accident, misusing an ndk-library, and was slightly surprised to crash Soong.",
+      "revId": "73d3245e30798ab08dde57b0dc2d58e11aaeb26e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
