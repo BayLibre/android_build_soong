@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b1f0e77_ac8f9f0f",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T01:02:27Z",
+      "side": 1,
+      "message": "This property is dedicated to libc, and I don\u0027t want to leave any chance to accidentally add some include dirs not as system include dirs while export_headers_as_system is required.",
+      "parentUuid": "8f72cbc5_43a14c42",
+      "range": {
+        "startLine": 118,
+        "startChar": 50,
+        "endLine": 118,
+        "endChar": 74
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51b9d378_1d82a8a5",
         "filename": "cc/library_stub.go",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-31T17:47:39Z",
       "side": 1,
       "message": "I left a comment in the unit test whether we need an override at all",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 93
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eee422fd_c7fa958b",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51b9d378_1d82a8a5",
       "range": {
         "startLine": 125,
         "startChar": 3,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c2eeb96_35042703",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T01:02:27Z",
+      "side": 1,
+      "message": "Export header libs and directories. I added a comment on it.",
+      "parentUuid": "69dee86e_3712a592",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 257,
+        "endChar": 15
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47ec2b23_27f0a34d",
         "filename": "cc/library_stub.go",
         "patchSetId": 5
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-31T17:47:39Z",
       "side": 1,
       "message": "nit: I think these properties will be used for ndk (publicapi) and apexes (systemapi) as well in the future.",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 28
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abc0d4d_b9234c70",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T01:02:27Z",
+      "side": 1,
+      "message": "Export_headers_as_system is dedicated to LLNDK libc AFAIK.",
+      "parentUuid": "47ec2b23_27f0a34d",
       "range": {
         "startLine": 259,
         "startChar": 1,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "941295f0_daffe533",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T01:02:27Z",
+      "side": 1,
+      "message": "I disabled all ramdisk / recovery image variants.",
+      "parentUuid": "85666d6e_b7c84318",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 101
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1b011d7_fed45e83",
         "filename": "cc/library_stub_test.go",
         "patchSetId": 5
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-31T17:47:39Z",
       "side": 1,
       "message": "nit: binfoo",
+      "range": {
+        "startLine": 286,
+        "startChar": 10,
+        "endLine": 286,
+        "endChar": 16
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaaef91f_f9bac846",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1b011d7_fed45e83",
       "range": {
         "startLine": 286,
         "startChar": 10,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c4da8f5_91a8e7f6",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6bfbf34_f7f255d6",
+      "range": {
+        "startLine": 294,
+        "startChar": 3,
+        "endLine": 295,
+        "endChar": 43
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7e3dd65_ad9a1935",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-10-31T17:47:39Z",
       "side": 1,
       "message": "Depending on the result of a previous comment, this may not be needed.",
+      "range": {
+        "startLine": 333,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 132
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29e0b85_6f40b1ad",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7e3dd65_ad9a1935",
       "range": {
         "startLine": 333,
         "startChar": 1,
@@ -208,6 +400,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a19a47_ac608d8f",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d043f73e_72cab235",
+      "range": {
+        "startLine": 359,
+        "startChar": 3,
+        "endLine": 359,
+        "endChar": 31
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01146049_250e326f",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-10-31T17:47:39Z",
       "side": 1,
       "message": "nit: Is this for linking against ndk variant?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 20
+      },
+      "revId": "9e64066622d342bcf560e5d3ea5da954afebf37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "899aa13e_07a8e4aa",
+        "filename": "cc/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T01:02:27Z",
+      "side": 1,
+      "message": "Nope. To match with existing llndk variant of cc_api_library, which has sdk variation tag as empty.",
+      "parentUuid": "01146049_250e326f",
       "range": {
         "startLine": 81,
         "startChar": 0,

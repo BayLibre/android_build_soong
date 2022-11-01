@@ -610,6 +610,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51c251cb_5b010cb7",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-01T01:02:27Z",
+      "side": 1,
+      "message": "Header changes are in now.",
+      "parentUuid": "32c3a709_55684a2d",
+      "revId": "c19d7ae91861b2084af1c4f62f0bcab732151d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e39e1974_52f5ab8a",
         "filename": "cc/library_stub.go",
         "patchSetId": 2
