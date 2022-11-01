@@ -16,6 +16,24 @@
       "message": "for changes like this, is it okay to assume you\u0027re on top of these and i shouldn\u0027t track them in my \"stuff to revisit for rv64\" doc? (i\u0027ll share that doc with you either way.)",
       "revId": "abacbe8436b257d839e8843c9db6ef3cbf349af6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb9cdf2_0ada34f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-01T20:20:58Z",
+      "side": 1,
+      "message": "I don\u0027t have a long term solution for this in mind, there aren\u0027t going to be prebuilts for the long tail any time soon.  This will need to stay until we basically have a fully working platform.",
+      "parentUuid": "256e20b3_4865c96a",
+      "revId": "abacbe8436b257d839e8843c9db6ef3cbf349af6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
