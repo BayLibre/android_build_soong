@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f93feea_5a312858",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-02T18:46:51Z",
+      "side": 1,
+      "message": "this looks like it should be a label list attribute instead? soong has this as an arch_variant path (`android:\"path,arch_variant\"`)",
+      "range": {
+        "startLine": 78,
+        "startChar": 23,
+        "endLine": 78,
+        "endChar": 31
+      },
+      "revId": "73a9432012926adc86fb01694e2ebf45113cd5d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
