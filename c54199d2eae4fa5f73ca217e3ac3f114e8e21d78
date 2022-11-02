@@ -39,6 +39,30 @@
       },
       "revId": "c54199d2eae4fa5f73ca217e3ac3f114e8e21d78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edd3299_449724be",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2022-11-02T20:49:15Z",
+      "side": 1,
+      "message": "We always need $ORIGIN/lib, for when they\u0027re packaged and running in infrastructure.\n\nFor the others, we need to use either ../lib (non-vendor) or ../../lib (vendor). I\u0027ve updated it to use an if-else.\n\nI don\u0027t know of any other artifacts built with \u0027fuzzer\u0027 other than cc_fuzz.",
+      "parentUuid": "773d9298_11cc25e4",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "c54199d2eae4fa5f73ca217e3ac3f114e8e21d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
