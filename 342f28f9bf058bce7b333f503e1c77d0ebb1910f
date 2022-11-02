@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "283a06dc_9427ccad",
+        "filename": "android/bazel_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-02T22:16:43Z",
+      "side": 1,
+      "message": "I\u0027m quite miffed that this comment is here and I still got puzzled by why a/b2/c2/d passed for a few minutes.",
+      "revId": "342f28f9bf058bce7b333f503e1c77d0ebb1910f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
