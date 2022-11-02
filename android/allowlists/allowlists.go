@@ -341,6 +341,7 @@ var (
 		".":/*recursive = */ false,
 
 		"build/bazel":/* recursive = */ true,
+		"build/make/core":/* recursive = */ false,
 		"build/bazel_common_rules":/* recursive = */ true,
 		// build/make/tools/signapk BUILD file is generated, so build/make/tools is not recursive.
 		"build/make/tools":/* recursive = */ false,
@@ -376,6 +377,8 @@ var (
 		"prebuilts/sdk":/* recursive = */ false,
 		"prebuilts/sdk/tools":/* recursive = */ false,
 		"prebuilts/r8":/* recursive = */ false,
+
+		"tools/asuite/atest/":/* recursive = */ true,
 	}
 
 	Bp2buildModuleAlwaysConvertList = []string{
