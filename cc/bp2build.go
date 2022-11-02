@@ -76,7 +76,7 @@ type tidyAttributes struct {
 	Tidy_checks           []string
 	Tidy_checks_as_errors []string
 	Tidy_disabled_srcs    []string
-	// TODO(b/255754964) support Tidy_timeout_srcs
+	Tidy_timeout_srcs     []string
 }
 
 func (m *Module) convertTidyAttributes(moduleAttrs *tidyAttributes) {
@@ -92,7 +92,7 @@ func (m *Module) convertTidyAttributes(moduleAttrs *tidyAttributes) {
 	for _, props := range m.Module().GetProperties() {
 		if bcp, ok := props.(*BaseCompilerProperties); ok {
 			moduleAttrs.Tidy_disabled_srcs = bcp.Tidy_disabled_srcs
-			// TODO(b/255754964) support Tidy_timeout_srcs
+			moduleAttrs.Tidy_timeout_srcs = bcp.Tidy_timeout_srcs
 		}
 	}
 }
