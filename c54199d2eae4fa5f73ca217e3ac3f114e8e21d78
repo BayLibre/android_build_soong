@@ -16,6 +16,29 @@
       "message": "Adding lberki@ since dwillemsen@ may have changed teams.",
       "revId": "c54199d2eae4fa5f73ca217e3ac3f114e8e21d78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "773d9298_11cc25e4",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-02T13:30:37Z",
+      "side": 1,
+      "message": "When installed on vendor do they also need the above rpaths or should this be an else?\n\nWhen fuzzer is specified as a sanitizer, we also have: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/sanitize.go;l\u003d701;drc\u003d26e62c8d74f4dacf3db32577bae368b21ee0f3fa\n\nShould fuzzBinary and other cc artifacts that are building with fuzzer have the same rpaths? If so, can we extract out the logic for determining rpaths to share between the two?",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "c54199d2eae4fa5f73ca217e3ac3f114e8e21d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
