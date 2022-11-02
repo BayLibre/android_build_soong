@@ -16,6 +16,24 @@
       "message": "I ❤️ this",
       "revId": "ef2ae9645979338a4e38488d1bb2533b47da56ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414a1d63_9573c5f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2022-11-02T08:02:15Z",
+      "side": 1,
+      "message": "The goal of this variable is to allow OEMs to add their own AFDO profiles. Ideally, even Pixel should be using this variable to add its own overlay of AFDO profiles, instead of hardcoding \"vendor/google_data/pgo_profile/sampling/\" in AOSP.",
+      "parentUuid": "f05017dd_51e42526",
+      "revId": "ef2ae9645979338a4e38488d1bb2533b47da56ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
