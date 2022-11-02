@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1517ff0a_52e25e92",
+        "filename": "symbol_inject/macho.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-11-02T20:31:43Z",
+      "side": 1,
+      "message": "Can we verify that the original value was 0x2 as a check in case our calculations above end up wrong?",
+      "revId": "d5b156dd226802517b046ccf96f3e54a961a9b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
