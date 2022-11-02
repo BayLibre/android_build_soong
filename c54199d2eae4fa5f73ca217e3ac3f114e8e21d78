@@ -63,6 +63,30 @@
       },
       "revId": "c54199d2eae4fa5f73ca217e3ac3f114e8e21d78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a2a94a7_505f613d",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-02T21:00:32Z",
+      "side": 1,
+      "message": "What about cases where `SANITIZE_TARGET\u003dfuzzer` is specified?\n\nIt looks like a number of CI targets have this setup.\n\nShould we disable the ability to specify `fuzzer` via that mechanism? Or should all/most changes for fuzzBinary also be applied in cc/sanitize.go when `fuzzer` is enabled there?\n\nHappy to followup on this discussion via email.",
+      "parentUuid": "2edd3299_449724be",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "c54199d2eae4fa5f73ca217e3ac3f114e8e21d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
