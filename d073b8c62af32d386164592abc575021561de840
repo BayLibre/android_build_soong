@@ -118,6 +118,30 @@
       },
       "revId": "d073b8c62af32d386164592abc575021561de840",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2828620f_429463e9",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-02T13:43:34Z",
+      "side": 1,
+      "message": "Sorry for the delay. As for handling specifying in files, filing a bug to handle later sounds fine.\n\nHowever, there\u0027s more complication in determining whether hwasan is actually specified (e.g. if `sanitize.never: true`, it takes precedence over the global enablement, as well as hwasan being arch/OS specific. You likely are best off calling [`IsSanitizerEnabled(Hwasan)`](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/sanitize.go;l\u003d1520;drc\u003db45a2ea782074944f79fc388df20b06e01f265f7) rather than trying to handle all of the edge cases in this function.",
+      "parentUuid": "8571915f_fed2530a",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 65
+      },
+      "revId": "d073b8c62af32d386164592abc575021561de840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
