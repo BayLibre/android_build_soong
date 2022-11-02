@@ -33,6 +33,23 @@
       "message": "https://android-review.googlesource.com/c/kernel/manifest/+/2281951 should fix-forward.",
       "revId": "63069aa8de213eb4fc87596835e50910ff79ff3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5dc65e_897aa626",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-02T18:11:13Z",
+      "side": 1,
+      "message": "Confirmed the fixforward has fixed the build. Please abandon this revert.",
+      "revId": "63069aa8de213eb4fc87596835e50910ff79ff3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
