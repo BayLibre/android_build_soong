@@ -34,6 +34,24 @@
       "parentUuid": "f05017dd_51e42526",
       "revId": "ef2ae9645979338a4e38488d1bb2533b47da56ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2852a26f_d48dd51e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-11-03T20:32:06Z",
+      "side": 1,
+      "message": "By hardcoding \"vendor/google_data/pgo_profile/sampling/\", do you mean creating the directory \"vendor/google_data/pgo_profile/sampling/\" in AOSP?\n\nIIUC, \"vendor/google_data/pgo_profile/sampling/\" would already exist if we were to have our profiles in AOSP.",
+      "parentUuid": "414a1d63_9573c5f7",
+      "revId": "ef2ae9645979338a4e38488d1bb2533b47da56ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
