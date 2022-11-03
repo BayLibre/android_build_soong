@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f634553b_2368c6e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-03T06:21:35Z",
+      "side": 1,
+      "message": "Also add //tools/asuite/... to the target lists that is under test for bp2build presubmits to make sure the targets keep building: https://cs.android.com/android/platform/superproject/+/master:build/bazel/ci/target_lists.sh;l\u003d22;drc\u003dd38404d4b36b0070e6127ba519d74ffcccae0ddc",
+      "revId": "1acf6ed68709e10aa4cc39c3edc55538be577d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
