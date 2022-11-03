@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef2dda71_fff063c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-03T04:50:40Z",
+      "side": 1,
+      "message": "I happen to need this for aosp/2280971, I\u0027m going to separate it from your topic and submit it.",
+      "revId": "e58f527dfc0adc3c31bed163a0b8bc0effa5e29e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
