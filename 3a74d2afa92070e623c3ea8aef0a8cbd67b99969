@@ -16,6 +16,23 @@
       "message": "Optional: Since this is already doing unzipping, maybe we could update it to just accept an apex and unpack that as well?",
       "revId": "3a74d2afa92070e623c3ea8aef0a8cbd67b99969",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68337578_89e70b0f",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-03T20:16:27Z",
+      "side": 1,
+      "message": "Wei noticed that tmpUnzippedDir is unused. It seems that it used to unzip into a subdirectory of the imagedir, which caused lookForExecFile to find the unzipped stuff by searching the imagedir, but now it own\u0027t find them.",
+      "revId": "3a74d2afa92070e623c3ea8aef0a8cbd67b99969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
