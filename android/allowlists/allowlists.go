@@ -1343,5 +1343,5 @@ var (
 
 	// Staging builds should be entirely prod, plus some near-ready ones. Add the
 	// new ones to the first argument as needed.
-	StagingMixedBuildsEnabledList = append([]string{}, ProdMixedBuildsEnabledList...)
+	StagingMixedBuildsEnabledList = append([]string{"com.android.tzdata"}, ProdMixedBuildsEnabledList...)
 )
