@@ -884,6 +884,10 @@ func (c *configImpl) SoongOutDir() string {
 	return filepath.Join(c.OutDir(), "soong")
 }
 
+func (c *configImpl) ApiSurfacesOutDir() string {
+	return filepath.Join(c.OutDir(), "api_surfaces")
+}
+
 func (c *configImpl) PrebuiltOS() string {
 	switch runtime.GOOS {
 	case "linux":
