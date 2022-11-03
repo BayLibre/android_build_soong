@@ -526,10 +526,6 @@ func TestBasicApex(t *testing.T) {
 	var builder strings.Builder
 	data.Custom(&builder, ab.BaseModuleName(), "TARGET_", "", data)
 
-	androidMk := builder.String()
-	ensureContains(t, androidMk, "LOCAL_MODULE := mylib.myapex\n")
-	ensureNotContains(t, androidMk, "LOCAL_MODULE := mylib.com.android.myapex\n")
-
 	optFlags := apexRule.Args["opt_flags"]
 	ensureContains(t, optFlags, "--pubkey vendor/foo/devkeys/testkey.avbpubkey")
 	// Ensure that the NOTICE output is being packaged as an asset.
@@ -2990,7 +2986,7 @@ func TestAndroidMk_VendorApexRequired(t *testing.T) {
 		}
 	`)
 
-	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
+	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_flattened").Module().(*apexBundle)
 	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	name := apexBundle.BaseModuleName()
 	prefix := "TARGET_"
@@ -4118,16 +4114,6 @@ func TestApexName(t *testing.T) {
 	ensureContains(t, apexManifestRule.Args["opt"], "-v name com.android.myapex")
 	apexRule := module.Rule("apexRule")
 	ensureContains(t, apexRule.Args["opt_flags"], "--do_not_check_keyname")
-
-	apexBundle := module.Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
-	name := apexBundle.BaseModuleName()
-	prefix := "TARGET_"
-	var builder strings.Builder
-	data.Custom(&builder, name, prefix, "", data)
-	androidMk := builder.String()
-	ensureContains(t, androidMk, "LOCAL_MODULE := mylib.myapex\n")
-	ensureNotContains(t, androidMk, "LOCAL_MODULE := mylib.com.android.myapex\n")
 }
 
 func TestCompileMultilibProp(t *testing.T) {
@@ -5609,12 +5595,6 @@ func TestApexWithTests(t *testing.T) {
 	var builder strings.Builder
 	data.Custom(&builder, name, prefix, "", data)
 	androidMk := builder.String()
-	ensureContains(t, androidMk, "LOCAL_MODULE := mytest.myapex\n")
-	ensureContains(t, androidMk, "LOCAL_MODULE := mytest1.myapex\n")
-	ensureContains(t, androidMk, "LOCAL_MODULE := mytest2.myapex\n")
-	ensureContains(t, androidMk, "LOCAL_MODULE := mytest3.myapex\n")
-	ensureContains(t, androidMk, "LOCAL_MODULE := apex_manifest.pb.myapex\n")
-	ensureContains(t, androidMk, "LOCAL_MODULE := apex_pubkey.myapex\n")
 	ensureContains(t, androidMk, "LOCAL_MODULE := myapex\n")
 
 	flatBundle := ctx.ModuleForTests("myapex", "android_common_myapex_flattened").Module().(*apexBundle)
@@ -5623,32 +5603,6 @@ func TestApexWithTests(t *testing.T) {
 	flatAndroidMk := builder.String()
 	ensureContainsOnce(t, flatAndroidMk, "LOCAL_TEST_DATA := :baz :bar/baz\n")
 	ensureContainsOnce(t, flatAndroidMk, "LOCAL_TEST_DATA := :testdata/baz\n")
-}
-
-func TestInstallExtraFlattenedApexes(t *testing.T) {
-	ctx := testApex(t, `
-		apex {
-			name: "myapex",
-			key: "myapex.key",
-			updatable: false,
-		}
-		apex_key {
-			name: "myapex.key",
-			public_key: "testkey.avbpubkey",
-			private_key: "testkey.pem",
-		}
-	`,
-		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.InstallExtraFlattenedApexes = proptools.BoolPtr(true)
-		}),
-	)
-	ab := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	ensureListContains(t, ab.requiredDeps, "myapex.flattened")
-	mk := android.AndroidMkDataForTest(t, ctx, ab)
-	var builder strings.Builder
-	mk.Custom(&builder, ab.Name(), "TARGET_", "", mk)
-	androidMk := builder.String()
-	ensureContains(t, androidMk, "LOCAL_REQUIRED_MODULES += myapex.flattened")
 }
 
 func TestErrorsIfDepsAreNotEnabled(t *testing.T) {
@@ -6441,12 +6395,6 @@ func TestOverrideApex(t *testing.T) {
 	var builder strings.Builder
 	data.Custom(&builder, name, "TARGET_", "", data)
 	androidMk := builder.String()
-	ensureContains(t, androidMk, "LOCAL_MODULE := override_app.override_myapex")
-	ensureContains(t, androidMk, "LOCAL_MODULE := overrideBpf.o.override_myapex")
-	ensureContains(t, androidMk, "LOCAL_MODULE := apex_manifest.pb.override_myapex")
-	ensureContains(t, androidMk, "LOCAL_MODULE := override_bcplib.override_myapex")
-	ensureContains(t, androidMk, "LOCAL_MODULE := override_systemserverlib.override_myapex")
-	ensureContains(t, androidMk, "LOCAL_MODULE := override_java_library.override_myapex")
 	ensureContains(t, androidMk, "LOCAL_MODULE_STEM := override_myapex.apex")
 	ensureContains(t, androidMk, "LOCAL_OVERRIDES_MODULES := unknownapex myapex")
 	ensureNotContains(t, androidMk, "LOCAL_MODULE := app.myapex")
@@ -6995,7 +6943,7 @@ func TestCarryRequiredModuleNames(t *testing.T) {
 		}
 	`)
 
-	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
+	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_flattened").Module().(*apexBundle)
 	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	name := apexBundle.BaseModuleName()
 	prefix := "TARGET_"
@@ -7176,17 +7124,17 @@ func TestSymlinksFromApexToSystemRequiredModuleNames(t *testing.T) {
 		}
 	`)
 
-	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
+	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_flattened").Module().(*apexBundle)
 	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	var builder strings.Builder
 	data.Custom(&builder, apexBundle.BaseModuleName(), "TARGET_", "", data)
 	androidMk := builder.String()
 	// `myotherlib` is added to `myapex` as symlink
-	ensureContains(t, androidMk, "LOCAL_MODULE := mylib.myapex\n")
+	ensureContains(t, androidMk, "LOCAL_MODULE := mylib.myapex.flattened\n")
 	ensureNotContains(t, androidMk, "LOCAL_MODULE := prebuilt_myotherlib.myapex\n")
 	ensureNotContains(t, androidMk, "LOCAL_MODULE := myotherlib.myapex\n")
 	// `myapex` should have `myotherlib` in its required line, not `prebuilt_myotherlib`
-	ensureContains(t, androidMk, "LOCAL_REQUIRED_MODULES += mylib.myapex:64 myotherlib:64 apex_manifest.pb.myapex apex_pubkey.myapex\n")
+	ensureContains(t, androidMk, "LOCAL_REQUIRED_MODULES += mylib.myapex.flattened:64 myotherlib:64 apex_manifest.pb.myapex.flattened apex_pubkey.myapex.flattened\n")
 }
 
 func TestApexWithJniLibs(t *testing.T) {
@@ -8667,7 +8615,7 @@ func TestPreferredPrebuiltSharedLibDep(t *testing.T) {
 		}
 	`)
 
-	ab := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
+	ab := ctx.ModuleForTests("myapex", "android_common_myapex_flattened").Module().(*apexBundle)
 	data := android.AndroidMkDataForTest(t, ctx, ab)
 	var builder strings.Builder
 	data.Custom(&builder, ab.BaseModuleName(), "TARGET_", "", data)
@@ -9064,7 +9012,7 @@ func TestAndroidMk_DexpreoptBuiltInstalledForApex(t *testing.T) {
 		dexpreopt.FixtureSetApexSystemServerJars("myapex:foo"),
 	)
 
-	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
+	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_flattened").Module().(*apexBundle)
 	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	var builder strings.Builder
 	data.Custom(&builder, apexBundle.BaseModuleName(), "TARGET_", "", data)
@@ -9140,7 +9088,7 @@ func TestAndroidMk_RequiredModules(t *testing.T) {
 		}
 	`)
 
-	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
+	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_flattened").Module().(*apexBundle)
 	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	var builder strings.Builder
 	data.Custom(&builder, apexBundle.BaseModuleName(), "TARGET_", "", data)
@@ -9162,14 +9110,6 @@ func TestAndroidMk_RequiredDeps(t *testing.T) {
 			private_key: "testkey.pem",
 		}
 	`)
-
-	bundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	bundle.requiredDeps = append(bundle.requiredDeps, "foo")
-	data := android.AndroidMkDataForTest(t, ctx, bundle)
-	var builder strings.Builder
-	data.Custom(&builder, bundle.BaseModuleName(), "TARGET_", "", data)
-	androidMk := builder.String()
-	ensureContains(t, androidMk, "LOCAL_REQUIRED_MODULES += foo")
 
 	flattenedBundle := ctx.ModuleForTests("myapex", "android_common_myapex_flattened").Module().(*apexBundle)
 	flattenedBundle.requiredDeps = append(flattenedBundle.requiredDeps, "foo")
