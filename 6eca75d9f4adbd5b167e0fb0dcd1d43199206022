@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b0c1596_5a89771d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-04T18:23:33Z",
+      "side": 1,
+      "message": "Jingwen, I noticed this issue while examining the code trying to understand how the bp2build mode works. Was there a specific reason you did it this way? Everything seems to work ok with my changes.",
+      "revId": "6eca75d9f4adbd5b167e0fb0dcd1d43199206022",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
