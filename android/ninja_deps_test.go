@@ -18,38 +18,32 @@ import (
 	"testing"
 )
 
-func init() {
-	// This variable uses ExistentPathForSource on a PackageVarContext, which is a PathContext
-	// that is not a PathGlobContext.  That requires the deps to be stored in the Config.
-	pctx.VariableFunc("test_ninja_deps_variable", func(ctx PackageVarContext) string {
-		// Using ExistentPathForSource to look for a file that does not exist in a directory that
-		// does exist (test_ninja_deps) from a PackageVarContext adds a dependency from build.ninja
-		// to the directory.
-		if ExistentPathForSource(ctx, "test_ninja_deps/does_not_exist").Valid() {
-			return "true"
-		} else {
-			return "false"
-		}
-	})
-}
-
 func testNinjaDepsSingletonFactory() Singleton {
 	return testNinjaDepsSingleton{}
 }
 
 type testNinjaDepsSingleton struct{}
 
+// pathContextNoGlobWrapper turns a PathContext that also implements PathGlobContext into one that
+// will not type assert to PathGlobContext.
+type pathContextNoGlobWrapper struct {
+	ctx PathContext
+}
+
+func (p pathContextNoGlobWrapper) Config() Config {
+	return p.ctx.Config()
+}
+
+func (p pathContextNoGlobWrapper) AddNinjaFileDeps(deps ...string) {
+	p.ctx.AddNinjaFileDeps(deps...)
+}
+
 func (testNinjaDepsSingleton) GenerateBuildActions(ctx SingletonContext) {
-	// Reference the test_ninja_deps_variable in a build statement so Blueprint is forced to
-	// evaluate it.
-	ctx.Build(pctx, BuildParams{
-		Rule:   Cp,
-		Input:  PathForTesting("foo"),
-		Output: PathForOutput(ctx, "test_ninja_deps_out"),
-		Args: map[string]string{
-			"cpFlags": "${test_ninja_deps_variable}",
-		},
-	})
+	// Call ExistentPathForSource on a file that doesn't exist in a directory that does exist
+	// using a PathContext that does not type assert to PathGlobContext to trigger existsWithDependencies
+	// in ExistentPathForSource to call AddNinjaFileDeps.
+	pathCtx := pathContextNoGlobWrapper{ctx}
+	_ = ExistentPathForSource(pathCtx, "test_ninja_deps/missing")
 }
 
 func TestNinjaDeps(t *testing.T) {

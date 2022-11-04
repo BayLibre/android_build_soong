@@ -120,7 +120,6 @@ bootstrap_go_package {
         "mutator_test.go",
         "namespace_test.go",
         "neverallow_test.go",
-        "ninja_deps_test.go",
         "onceper_test.go",
         "package_test.go",
         "packaging_test.go",
