@@ -22,6 +22,54 @@
       },
       "revId": "521ae79d4b0e06dd836850062d1c65cb2a3e1cf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b88350c3_7b80f972",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-04T15:06:55Z",
+      "side": 1,
+      "message": "Mostly, but there\u0027s a worse case.  ExistentPathForSource can be called on a path that doesn\u0027t exist, in which case the non-glob version adds a dependency on the deepest directory of the path that does exist so that it can detect if the path is created.  In the case in b/257079828, https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/config/global.go;l\u003d420;drc\u003dbbebe7f5a40c456cdaec02590afa90ef490fea02 is checking for all the directories in https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/config/global.go;l\u003d408-418;drc\u003dbbebe7f5a40c456cdaec02590afa90ef490fea02.  In the best case those directories all exist and it adds dependencies on all of those directories to detect if they are removed, which is already bad as making any change in that directory will cause a regen.  In the worst case those directories don\u0027t exist, and if a top level directory (hardware/ in this bug) doesn\u0027t exist then it will add a dependency on \".\".  That means even writing a temporary file to the top level directory will result in a regen.",
+      "parentUuid": "cc4cd657_d8ac2c7d",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 84
+      },
+      "revId": "521ae79d4b0e06dd836850062d1c65cb2a3e1cf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa9dcf6d_d07b2ee4",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-04T15:06:55Z",
+      "side": 1,
+      "message": "Mostly, but there\u0027s a slightly worse case.  ExistentPathForSource can be called on a path that doesn\u0027t exist, in which case",
+      "parentUuid": "cc4cd657_d8ac2c7d",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 84
+      },
+      "revId": "521ae79d4b0e06dd836850062d1c65cb2a3e1cf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
