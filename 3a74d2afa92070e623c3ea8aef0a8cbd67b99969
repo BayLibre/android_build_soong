@@ -33,6 +33,42 @@
       "message": "Wei noticed that tmpUnzippedDir is unused. It seems that it used to unzip into a subdirectory of the imagedir, which caused lookForExecFile to find the unzipped stuff by searching the imagedir, but now it own\u0027t find them.",
       "revId": "3a74d2afa92070e623c3ea8aef0a8cbd67b99969",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a4d60b_2fa27117",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-04T04:01:52Z",
+      "side": 1,
+      "message": "Ah good catch, will fix.",
+      "parentUuid": "68337578_89e70b0f",
+      "revId": "3a74d2afa92070e623c3ea8aef0a8cbd67b99969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08355f43_c2039c26",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-04T04:01:52Z",
+      "side": 1,
+      "message": "That\u0027ll require not just unzipping, but bringing in deapexer. I\u0027ll like to avoid too much of a change of logic to this file in this CL (as you/Wei have found in the other comment :( )",
+      "parentUuid": "46db1040_e1abe0fa",
+      "revId": "3a74d2afa92070e623c3ea8aef0a8cbd67b99969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
