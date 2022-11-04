@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4cd657_d8ac2c7d",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-04T08:58:00Z",
+      "side": 1,
+      "message": "Woah, this is subtle.\n\nLet me see if I understand this correctly: when checking the existence of a path, Soong uses the glob machinery to regenerate build.ninja iff the file got added/deleted, but in some contexts, the glob machinery was not available, so in that case, we simply added a dependency on that file, thereby causing a regeneration of build.ninja if the file only changed. To fix this, you plumbed the glob machinery a little further.\n\nDid I get this right? If so, I have some further questions:\n\n1. Would it make sense to delete the non-glob code path in existsWithDependencies() to avoid such breakages in the future?\n\n2. What files used in what context caused this to happen in the associated bug? (it\u0027s not apparent from the bug itself)\n\n3. Mind adding a test case for this under build/soong/tests/bootstrap_test.sh ?",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 84
+      },
+      "revId": "521ae79d4b0e06dd836850062d1c65cb2a3e1cf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
