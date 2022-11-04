@@ -159,10 +159,12 @@ func uncheckedFinalApiLevel(num int) ApiLevel {
 	}
 }
 
+var NoneApiLevelInt = -1
+
 var NoneApiLevel = ApiLevel{
 	value: "(no version)",
 	// Not 0 because we don't want this to compare equal with the first preview.
-	number:    -1,
+	number:    NoneApiLevelInt,
 	isPreview: true,
 }
 
