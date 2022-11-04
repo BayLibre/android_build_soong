@@ -829,6 +829,14 @@ func (j *Module) individualAidlFlags(ctx android.ModuleContext, aidlFile android
 	return flags
 }
 
+func aidlMinSdkVersion(ctx android.ModuleContext, sdkModule android.SdkContext) string {
+	apiLevel := sdkModule.MinSdkVersion(ctx).ApiLevel
+	if apiLevel == android.NoneApiLevel {
+		// The module does not built against any SDK
+		return strconv.Itoa(android.NoneApiLevelInt)
+	}
+	return apiLevel.String()
+}
 func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.OptionalPath,
 	aidlIncludeDirs android.Paths, aidlSrcs android.Paths) (string, android.Paths) {
 
@@ -882,8 +890,7 @@ func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Opt
 		j.ignoredAidlPermissionList = android.PathsForModuleSrcExcludes(ctx, exceptions, nil)
 	}
 
-	aidlMinSdkVersion := j.MinSdkVersion(ctx).ApiLevel.String()
-	flags = append(flags, "--min_sdk_version="+aidlMinSdkVersion)
+	flags = append(flags, "--min_sdk_version="+aidlMinSdkVersion(ctx, j))
 
 	return strings.Join(flags, " "), deps
 }
