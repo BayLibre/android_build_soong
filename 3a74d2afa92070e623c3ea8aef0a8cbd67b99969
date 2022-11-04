@@ -69,6 +69,24 @@
       "parentUuid": "46db1040_e1abe0fa",
       "revId": "3a74d2afa92070e623c3ea8aef0a8cbd67b99969",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44244851_5794d479",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-04T04:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6a4d60b_2fa27117",
+      "revId": "3a74d2afa92070e623c3ea8aef0a8cbd67b99969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
