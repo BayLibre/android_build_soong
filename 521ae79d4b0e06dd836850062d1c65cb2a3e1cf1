@@ -70,6 +70,30 @@
       },
       "revId": "521ae79d4b0e06dd836850062d1c65cb2a3e1cf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbcd8eb2_e1f899ed",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-04T15:57:19Z",
+      "side": 1,
+      "message": "Ack, this is yet another argument for adding that test case and removing the non-glob code path, I guess?",
+      "parentUuid": "b88350c3_7b80f972",
+      "range": {
+        "startLine": 87,
+        "startChar": 49,
+        "endLine": 87,
+        "endChar": 84
+      },
+      "revId": "521ae79d4b0e06dd836850062d1c65cb2a3e1cf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
