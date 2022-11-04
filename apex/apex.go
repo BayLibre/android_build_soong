@@ -1864,11 +1864,11 @@ func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	apexType := a.properties.ApexType
 	switch apexType {
 	case imageApex:
+		a.bundleModuleFile = android.PathForBazelOut(ctx, outputs.BundleFile)
+
 		// TODO(asmundak): Bazel does not create these files yet.
 		// b/190817312
 		a.htmlGzNotice = android.PathForBazelOut(ctx, "NOTICE.html.gz")
-		// b/239081457
-		a.bundleModuleFile = android.PathForBazelOut(ctx, a.Name()+apexType.suffix()+"-base.zip")
 		// b/239081455
 		a.nativeApisUsedByModuleFile = android.ModuleOutPath(android.PathForBazelOut(ctx, a.Name()+"_using.txt"))
 		// b/239081456
