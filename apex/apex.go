@@ -1854,10 +1854,13 @@ func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	a.outputFile = a.outputApexFile
 	a.setCompression(ctx)
 
+	// These are used by the apex_keys_text singleton; would probably be a clearer interface if these
+	// were set in a provider rather than the module itself
 	a.publicKeyFile = android.PathForBazelOut(ctx, outputs.BundleKeyInfo[0])
 	a.privateKeyFile = android.PathForBazelOut(ctx, outputs.BundleKeyInfo[1])
 	a.containerCertificateFile = android.PathForBazelOut(ctx, outputs.ContainerKeyInfo[0])
 	a.containerPrivateKeyFile = android.PathForBazelOut(ctx, outputs.ContainerKeyInfo[1])
+
 	apexType := a.properties.ApexType
 	switch apexType {
 	case imageApex:
