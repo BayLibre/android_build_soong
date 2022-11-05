@@ -161,6 +161,8 @@ func (metrics *CodegenMetrics) TotalModuleCount() uint64 {
 
 // Dump serializes the metrics to the given filename
 func (metrics *CodegenMetrics) dump(filename string) (err error) {
+	fmt.Printf("METRICS: writing %s\n", filename)
+
 	ser := metrics.Serialize()
 	return shared.Save(ser, filename)
 }
