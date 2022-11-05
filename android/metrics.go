@@ -15,11 +15,12 @@
 package android
 
 import (
-	"io/ioutil"
+	"os"
 	"runtime"
 	"sort"
 
 	"github.com/google/blueprint/metrics"
+	"google.golang.org/protobuf/encoding/prototext"
 	"google.golang.org/protobuf/proto"
 
 	soong_metrics_proto "android/soong/ui/metrics/metrics_proto"
@@ -114,7 +115,17 @@ func WriteMetrics(config Config, eventHandler metrics.EventHandler, metricsFile 
 	if err != nil {
 		return err
 	}
-	err = ioutil.WriteFile(absolutePath(metricsFile), buf, 0666)
+	err = os.WriteFile(absolutePath(metricsFile), buf, 0666)
+	if err != nil {
+		return err
+	}
+
+	buf, err = prototext.MarshalOptions{Multiline: true, Indent: "  "}.Marshal(metrics)
+	if err != nil {
+		return err
+	}
+	textMetricsFile := metricsFile + ".txt"
+	err = os.WriteFile(absolutePath(textMetricsFile), buf, 0666)
 	if err != nil {
 		return err
 	}
