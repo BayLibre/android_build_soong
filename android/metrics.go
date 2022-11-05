@@ -64,7 +64,7 @@ func (soongMetricsSingleton) GenerateBuildActions(ctx SingletonContext) {
 	})
 }
 
-func collectMetrics(config Config, eventHandler metrics.EventHandler) *soong_metrics_proto.SoongBuildMetrics {
+func collectMetrics(config Config, eventHandler *metrics.EventHandler) *soong_metrics_proto.SoongBuildMetrics {
 	metrics := &soong_metrics_proto.SoongBuildMetrics{}
 
 	soongMetrics, ok := readSoongMetrics(config)
