@@ -15,9 +15,9 @@
 package shared
 
 import (
-	"io/ioutil"
 	"os"
 
+	"google.golang.org/protobuf/encoding/prototext"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -29,11 +29,27 @@ func Save(pb proto.Message, filepath string) (err error) {
 		return err
 	}
 	tempFilepath := filepath + ".tmp"
-	if err := ioutil.WriteFile(tempFilepath, []byte(data), 0644 /* rw-r--r-- */); err != nil {
+	if err := os.WriteFile(tempFilepath, data, 0644 /* rw-r--r-- */); err != nil {
 		return err
 	}
 
 	if err := os.Rename(tempFilepath, filepath); err != nil {
+		return err
+	}
+
+	// Write out a human readable text version.
+	data, err = prototext.MarshalOptions{Multiline: true, Indent: "  "}.Marshal(pb)
+	if err != nil {
+		return err
+	}
+	textMetricsFile := filepath + ".txt"
+	tempFilepath = textMetricsFile + ".tmp"
+
+	if err := os.WriteFile(tempFilepath, data, 0644 /* rw-r--r-- */); err != nil {
+		return err
+	}
+
+	if err := os.Rename(tempFilepath, textMetricsFile); err != nil {
 		return err
 	}
 
