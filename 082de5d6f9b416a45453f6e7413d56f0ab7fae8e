@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb5bb59_dc7302bc",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-05T04:56:35Z",
+      "side": 1,
+      "message": "note while unlikely it IS possible to have a module that\u0027s enabled in Staging but not in DevMode.\nWould we want to add a check to prevent that? (e.g. a `disabledDevModule` is not in `allowlists.StaginMixedBuildsEnabledList` or `allowlists.ProdMixedBuildsEnabledList`)\n\n(I assume by the time `NewBazeContext` is invoked any modifications to the lists are guaranteed to have been performed, e.g. because they are done in init() functions)",
+      "revId": "082de5d6f9b416a45453f6e7413d56f0ab7fae8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
