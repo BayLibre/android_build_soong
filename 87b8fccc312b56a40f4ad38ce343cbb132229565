@@ -34,6 +34,24 @@
       "parentUuid": "23bbcd91_d6097f04",
       "revId": "87b8fccc312b56a40f4ad38ce343cbb132229565",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c2b6be1_a7b82c1d",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-07T17:38:39Z",
+      "side": 1,
+      "message": "IIRC, the reason why I omitted `ctx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())` in `runApiBp2build` is because this variable should be a no-op in this mode. \n\nWe run a hand-picked pipeline of mutators in runApiBp2build to generate Bazel BUILD files, and the corresponding DepsMutators are not in that allowlist.",
+      "parentUuid": "ffa61472_6a0524e1",
+      "revId": "87b8fccc312b56a40f4ad38ce343cbb132229565",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
