@@ -106,6 +106,24 @@
       "parentUuid": "45808d32_80811290",
       "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0824fef_d3d6f884",
+        "filename": "android/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-07T16:30:14Z",
+      "side": 1,
+      "message": "\u003e Why? Is there something that gathers up the whole contents of this directory?\n\nWe store the entire logs directory.\n\n\u003e Run \"chris-s-magic-proto-metrics-reader out/soong_build_metrics.pb\" to see a text version of this file.\n\nOr, phrased differently, \"here is how to convert a proto file to text in general\". The Go documentation (for the library we are importing) is pretty extensive, and I don\u0027t think this deserves repeating in a comment. https://pkg.go.dev/google.golang.org/protobuf/proto",
+      "parentUuid": "82c3cf35_f558ad96",
+      "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
