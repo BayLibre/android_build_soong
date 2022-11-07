@@ -70,6 +70,24 @@
       "parentUuid": "4fa8a28c_6ce08638",
       "revId": "082de5d6f9b416a45453f6e7413d56f0ab7fae8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b473056_36845e60",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-07T17:55:21Z",
+      "side": 1,
+      "message": "I don\u0027t think that check is worth it. We should be very careful about what we add to the staging allowlist, so I don\u0027t anticipate cases where someone will commit untested modules to the staging allowlist (and not realize it in presubmits!) At this point we basically need a tracking bug for each staging item.\n\nSince the dev mode allowlist logic isn\u0027t as straightforward as \"allowlist by name\", I think this validation will add more technical complexity than its worth.",
+      "parentUuid": "762e0515_6f0c0912",
+      "revId": "082de5d6f9b416a45453f6e7413d56f0ab7fae8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
