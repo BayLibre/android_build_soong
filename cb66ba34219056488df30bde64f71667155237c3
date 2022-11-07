@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39d0f90_e677899a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-11-07T22:19:34Z",
+      "side": 1,
+      "message": "LGTM, though minor nits and formatting",
+      "revId": "cb66ba34219056488df30bde64f71667155237c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89424ba7_e4e661d1",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-11-07T22:19:34Z",
+      "side": 1,
+      "message": "nit: might read more clearly with `info \u003d p[\"OutputGroupInfo\"]` prior, to factor out the duplicate use below",
+      "revId": "cb66ba34219056488df30bde64f71667155237c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6fccd04_afb3de40",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-11-07T22:19:34Z",
+      "side": 1,
+      "message": "Consistent spacing, please (thus tab)",
+      "revId": "cb66ba34219056488df30bde64f71667155237c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad0cf927_66ebfa2a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-11-07T22:19:34Z",
+      "side": 1,
+      "message": "Given that `ccInfo` isn\u0027t used below and `err` certainly is meant to be local, I think this would be more idiomatic as:\n```\nif ccInfo, err :\u003d .....; err \u003d\u003d nil {\n```\n`bazelCtx` also only has one use and could be folded into the `GetCcInfo` invocation, but I get that it\u0027d make the line awkwardly long and noisy, nvm that the `bazelCtx` may get further use in this method in the future.",
+      "revId": "cb66ba34219056488df30bde64f71667155237c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
