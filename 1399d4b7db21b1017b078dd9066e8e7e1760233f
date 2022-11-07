@@ -34,6 +34,24 @@
       "parentUuid": "83bdf7ce_f9ec7cc9",
       "revId": "1399d4b7db21b1017b078dd9066e8e7e1760233f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c76261_e146df51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-07T16:02:31Z",
+      "side": 1,
+      "message": "This fixes the `soong_build_metrics.pb` being overwritten but does not affect the `bp2build_metrics.pb` as while that is overwritten it does not lose data because it reads the previous file and adds some more information to it. I noticed the comment that Usta had left about how the original `bp2build_metrics.pb` that the second action read in might be stale and that he was going to fix that so I left that alone.\n\nI did not see anything that anyone had noticed that the `soong_build_metrics.pb` was being overwritten so fixed that.",
+      "parentUuid": "6c3fff96_cb313293",
+      "revId": "1399d4b7db21b1017b078dd9066e8e7e1760233f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
