@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4af083f_fccb1012",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-07T17:45:06Z",
+      "side": 1,
+      "message": "starting this event earlier means the timing information associated with it encompasses more than it used to, e.g. it will now include the time take by bootstrap.RunBlueprint()\n\nI am not making an argument that this is more or less correct but rather that this value now will be different than what used to be previously collected.",
+      "revId": "cb03d24c119fadd78fed92aa64b36fa7f895d78e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
