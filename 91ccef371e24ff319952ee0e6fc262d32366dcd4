@@ -34,6 +34,24 @@
       "parentUuid": "17aa6d9b_5ef4a10e",
       "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf744df_9fe9ae0b",
+        "filename": "android/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-07T15:53:34Z",
+      "side": 1,
+      "message": "+1 to either providing a tool seperately for parsing and viewing metrics file",
+      "parentUuid": "e66108b8_26e4244a",
+      "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
