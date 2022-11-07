@@ -16,6 +16,24 @@
       "message": "nit: it\u0027s confusing that you use a different sentence structure compared to the previous cl when the only real difference in them is in the file extension.",
       "revId": "92f1c0d06f717be163a385b79a01af26a51bf336",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5bf4e79_75440bbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-07T23:18:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2935a3b9_4327a19d",
+      "revId": "92f1c0d06f717be163a385b79a01af26a51bf336",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
