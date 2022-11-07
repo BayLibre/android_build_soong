@@ -34,6 +34,24 @@
       "parentUuid": "ef4cb49c_f9aca6f1",
       "revId": "b468f87c8feb249c966dc26ec83222df6da8c1aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eb5c141_e6d25e89",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-07T16:20:58Z",
+      "side": 1,
+      "message": "Indeed, good find.\n\nPaul, could your \"Test:\" validation after all these changes compare the metrics files (before and after) for bp2build, build, etc, to ensure that there are no meaningful changes to the event structure?",
+      "parentUuid": "724833c1_10ea9fd1",
+      "revId": "b468f87c8feb249c966dc26ec83222df6da8c1aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
