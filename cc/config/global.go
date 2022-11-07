@@ -243,6 +243,15 @@ var (
 		"-Wno-error=array-parameter",     // http://b/241941550
 		"-Wno-error=deprecated-builtins", // http://b/241601211
 		"-Wno-error=deprecated",          // in external/googletest/googletest
+		// hack to report only one kind of warnings:
+		"-Wno-everything",
+		"-Wno-error",
+		"-Wdeprecated-anon-enum-enum-conversion",
+		"-Wdeprecated-builtins",
+		"-Wdeprecated-copy",
+		"-Wdeprecated-declarations",
+		"-Wdeprecated-non-prototype",
+		"-Wdeprecated",
 	}
 
 	noOverrideExternalGlobalCflags = []string{

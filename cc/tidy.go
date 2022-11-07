@@ -184,6 +184,9 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 		tidyChecks += ",-cert-dcl16-c"
 	}
 
+	// Hack to enable only one tidy check and all clang diagnostic warnings.
+	tidyChecks = "-checks=-*,android-cloexec-dup,clang-diagnostic-*"
+
 	flags.TidyFlags = append(flags.TidyFlags, tidyChecks)
 
 	// Embedding -warnings-as-errors in tidy_flags is error-prone.
