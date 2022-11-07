@@ -69,6 +69,9 @@ var (
 		"build/soong/scripts":                Bp2BuildDefaultTrueRecursively,
 
 		"cts/common/device-side/nativetesthelper/jni": Bp2BuildDefaultTrueRecursively,
+
+		"dalvik/tools/dexdeps": Bp2BuildDefaultTrueRecursively,
+
 		"development/apps/DevelopmentSettings":        Bp2BuildDefaultTrue,
 		"development/apps/Fallback":                   Bp2BuildDefaultTrue,
 		"development/apps/WidgetPreview":              Bp2BuildDefaultTrue,
