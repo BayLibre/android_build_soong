@@ -1911,7 +1911,7 @@ func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 		// TODO(b/239081456): Generate the backing.txt file from Bazel.
 		a.nativeApisBackedByModuleFile = android.ModuleOutPath(android.PathForBazelOut(ctx, a.Name()+"_backing.txt"))
 		// TODO(b/239084755): Generate the java api using.xml file from Bazel.
-		a.javaApisUsedByModuleFile = android.ModuleOutPath(android.PathForBazelOut(ctx, a.Name()+"_using.xml"))
+		a.javaApisUsedByModuleFile = android.ModuleOutPath(android.PathForBazelOut(ctx, outputs.JavaSymbolsUsedByApex))
 		installSuffix := imageApexSuffix
 		if a.isCompressed {
 			installSuffix = imageCapexSuffix
