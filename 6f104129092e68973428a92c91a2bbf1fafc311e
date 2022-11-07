@@ -69,6 +69,24 @@
       "parentUuid": "8659043d_6da96f13",
       "revId": "6f104129092e68973428a92c91a2bbf1fafc311e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8dfbfe_5b4e568b",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-07T15:39:43Z",
+      "side": 1,
+      "message": "+1 to moving writeMetrics() out\nHowever, moving soong_build to the top of this method, now makes it encompass time take by\n`bootstrap.RunBlueprint()`, `writeBuildGlobsNinjaFile()` etc.",
+      "parentUuid": "be65c15c_5bc2803c",
+      "revId": "6f104129092e68973428a92c91a2bbf1fafc311e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
