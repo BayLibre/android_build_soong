@@ -52,6 +52,24 @@
       "parentUuid": "e66108b8_26e4244a",
       "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0af1b8_c6604f30",
+        "filename": "android/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-07T16:09:31Z",
+      "side": 1,
+      "message": "In that case please make sure to document how that tool can be used. Both in the code that generates it and in the output directory where it is generated.\n\nIn the meantime would it be worth it to keep this and remove it when the tool is available?",
+      "parentUuid": "6cf744df_9fe9ae0b",
+      "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
