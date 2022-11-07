@@ -52,6 +52,24 @@
       "parentUuid": "30d37ccd_53afb7af",
       "revId": "082de5d6f9b416a45453f6e7413d56f0ab7fae8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762e0515_6f0c0912",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-07T17:48:12Z",
+      "side": 1,
+      "message": "nope\nI am saying user expectation might be\nthat prod mode ⊆ staging mode ⊆ dev mode\nbut while we seem to ensure prod mode ⊆ staging mode\nwe don\u0027t seem to ensure staging mode ⊆ dev mode\n(and I think it is easy to add that check)",
+      "parentUuid": "4fa8a28c_6ce08638",
+      "revId": "082de5d6f9b416a45453f6e7413d56f0ab7fae8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
