@@ -52,6 +52,24 @@
       "parentUuid": "724833c1_10ea9fd1",
       "revId": "b468f87c8feb249c966dc26ec83222df6da8c1aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cc026c8_a49b2cde",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-07T16:28:49Z",
+      "side": 1,
+      "message": "I did. I just missed this. That is why change r.android.com/c/2287714 was at the top of the stack of changes because I didn\u0027t want to make changes without understanding what the impact would be.\n\nAs the metrics contains timestamps and durations there are always differences so it was a little noisy which is why I missed it.\n\nThat reminded me, I did notice that in the `out/bp2build_metrics.pb.txt` file there were lots of entries like this:\n\n```\nconvertedModules: \"\"\nconvertedModules: \"\"\nconvertedModules: \"\"\nconvertedModules: \"\"\nconvertedModules: \"\"\nconvertedModules: \"\"\n....\n```\n\nThat seemed wrong.",
+      "parentUuid": "9eb5c141_e6d25e89",
+      "revId": "b468f87c8feb249c966dc26ec83222df6da8c1aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
