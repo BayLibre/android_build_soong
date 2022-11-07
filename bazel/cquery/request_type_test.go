@@ -148,6 +148,7 @@ func TestGetApexInfoParseResults(t *testing.T) {
 				`"bundle_key_info":["foo.pem", "foo.privkey"],` +
 				`"container_key_info":["foo.x509.pem", "foo.pk8", "foo"],` +
 				`"package_name":"package.name",` +
+				`"backing_libs":"path/to/backing.txt",` +
 				`"provides_native_libs":[]}`,
 			expectedOutput: ApexInfo{
 				SignedOutput:     "my.apex",
@@ -157,6 +158,7 @@ func TestGetApexInfoParseResults(t *testing.T) {
 				BundleKeyInfo:    []string{"foo.pem", "foo.privkey"},
 				ContainerKeyInfo: []string{"foo.x509.pem", "foo.pk8", "foo"},
 				PackageName:      "package.name",
+				BackingLibs:      "path/to/backing.txt",
 			},
 		},
 	}
