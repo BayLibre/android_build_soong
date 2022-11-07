@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23bbcd91_d6097f04",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-07T14:36:26Z",
+      "side": 1,
+      "message": "I think you should omit this line -- AFAICT SetAllowMissingDependencies(true) is only used for tests, so it\u0027s not a real concern here.",
+      "revId": "87b8fccc312b56a40f4ad38ce343cbb132229565",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
