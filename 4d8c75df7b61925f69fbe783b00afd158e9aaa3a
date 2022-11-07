@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04fb7fb6_89964df8",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-07T14:05:27Z",
+      "side": 1,
+      "message": "This CL is completely a style change, yes? I\u0027m mostly fine with this, but would prefer:\n\n```\n...\nelse if configuration.BuildMode \u003d\u003d android.ApiBp2build {\n  ...\n} else if configuration.IsMixedBuildEnabled() {\n  ...\n} else {\n  ...\n}\n```\n\ninstead of the nested else blocks.",
+      "revId": "4d8c75df7b61925f69fbe783b00afd158e9aaa3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
