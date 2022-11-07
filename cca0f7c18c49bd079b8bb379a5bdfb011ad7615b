@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c315ad38_e75847b1",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-07T15:49:46Z",
+      "side": 1,
+      "message": "unclear why we are returning the filename in this CL but I assume this is pertinent to some follow-up change.",
+      "revId": "cca0f7c18c49bd079b8bb379a5bdfb011ad7615b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e75450c8_ffafaa0e",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-07T15:49:46Z",
+      "side": 1,
+      "message": "nit: prefer `runSoongOnlyBuild` as the name?",
+      "revId": "cca0f7c18c49bd079b8bb379a5bdfb011ad7615b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
