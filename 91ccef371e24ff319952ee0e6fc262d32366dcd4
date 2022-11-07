@@ -16,6 +16,24 @@
       "message": "How does this impact performance? What are the size of metrics files, and is the file size on disk significant enough to matter?\n\nWhile this is a nice *convenience* feature, it\u0027s not horribly inconvenient to use tooling to view metrics files in their proto format (once you know the correct tool). Additionally, proto format is not necessarily even \"enough\" for fully readable output -- and we also solve this with existing tooling. For example: Timestamps are in unreadable millis-since-epoch by default, but are converted by tooling.",
       "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66108b8_26e4244a",
+        "filename": "android/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-07T14:09:29Z",
+      "side": 1,
+      "message": "The pb files are about 500K in total, the .txt files are about 1000K.\n\nYou\u0027re correct that an alternative to generating the .txt files is to just use tools to convert the .pb files. The problem is that there does not seem to be any documentation (at least not in the code or the commits that added the metrics) explaining how to do that. The tools would need to be available for OEMs so can\u0027t be Google only tools.\n\nIt was a lot simpler and quicker for me to add this code to generate the .txt files than it was to try and work out how to convert the .pb files.",
+      "parentUuid": "17aa6d9b_5ef4a10e",
+      "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
