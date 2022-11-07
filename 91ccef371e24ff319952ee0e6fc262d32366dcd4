@@ -88,6 +88,24 @@
       "parentUuid": "6cf744df_9fe9ae0b",
       "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82c3cf35_f558ad96",
+        "filename": "android/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-07T16:23:54Z",
+      "side": 1,
+      "message": "\u003e and that this file will be saved for each CI build\n\nWhy? Is there something that gathers up the whole contents of this directory? I thought that the CI builds only saved stuff that was in the dist directory plus some specific files from `out`, like `out/soong/build.ninja`.\n\n\u003e That style of documentation is a bit too extreme.\n\nI wasn\u0027t asking for documentation of the individual metrics but simply how to use the tool to convert them into txt files. e.g. something like:\n\n   Run \"chris-s-magic-proto-metrics-reader out/soong_build_metrics.pb\" to see a text version of this file.\n\nIf it is only for engineering then it may be sufficient to document this in the code, or maybe even just in the \"Test:\" section of changes that affect this. That should not require any additional work as it is difficult to see how anyone can make changes to the metrics without converting it into text format to read.",
+      "parentUuid": "45808d32_80811290",
+      "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
