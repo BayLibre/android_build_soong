@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4cb49c_f9aca6f1",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-07T15:59:13Z",
+      "side": 1,
+      "message": "why move writeDepFile() here?\nthe events that writeDepFile contributes won\u0027t be written to the metrics now, nope?",
+      "revId": "b468f87c8feb249c966dc26ec83222df6da8c1aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
