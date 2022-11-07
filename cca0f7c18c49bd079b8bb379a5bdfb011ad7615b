@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9699f8bb_b66e0160",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-07T16:06:52Z",
+      "side": 1,
+      "message": "That is not new to this change. The returned file name is passed to `writeUsedEnvironmentFile`, it touches the output file to make sure that it is later than the environment file which it writes.",
+      "parentUuid": "c315ad38_e75847b1",
+      "revId": "cca0f7c18c49bd079b8bb379a5bdfb011ad7615b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e75450c8_ffafaa0e",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-07T15:49:46Z",
       "side": 1,
       "message": "nit: prefer `runSoongOnlyBuild` as the name?",
+      "revId": "cca0f7c18c49bd079b8bb379a5bdfb011ad7615b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "071a6b2c_bb45a531",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-07T16:06:52Z",
+      "side": 1,
+      "message": "Will fix once other issues have been resolved.",
+      "parentUuid": "e75450c8_ffafaa0e",
       "revId": "cca0f7c18c49bd079b8bb379a5bdfb011ad7615b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
