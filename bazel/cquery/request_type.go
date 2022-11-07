@@ -14,6 +14,15 @@ var (
 	GetCcUnstrippedInfo = &getCcUnstippedInfoType{}
 )
 
+type CqueryResult struct {
+	GetOutputFiles           *string `json:"getOutputFiles"`
+	GetValidationOutputFiles *string `json:"getValidationOutputFiles"`
+	GetPythonBinary          *string `json:"getPythonBinary"`
+	GetCcInfo                *string `json:"getCcInfo"`
+	GetApexInfo              *string `json:"getApexInfo"`
+	GetCcUnstrippedInfo      *string `json:"getCcUnstrippedInfo"`
+}
+
 type CcInfo struct {
 	OutputFiles          []string
 	CcObjectFiles        []string
@@ -186,7 +195,7 @@ return json_encode({
 // Starlark given in StarlarkFunctionBody.
 func (g getCcInfoType) ParseResult(rawString string) (CcInfo, error) {
 	var ccInfo CcInfo
-	parseJson(rawString, &ccInfo)
+	ParseJson(rawString, &ccInfo)
 	return ccInfo, nil
 }
 
@@ -236,7 +245,7 @@ type ApexCqueryInfo struct {
 // Starlark given in StarlarkFunctionBody.
 func (g getApexInfoType) ParseResult(rawString string) ApexCqueryInfo {
 	var info ApexCqueryInfo
-	parseJson(rawString, &info)
+	ParseJson(rawString, &info)
 	return info
 }
 
@@ -268,7 +277,7 @@ return json_encode({
 // Starlark given in StarlarkFunctionBody.
 func (g getCcUnstippedInfoType) ParseResult(rawString string) CcUnstrippedInfo {
 	var info CcUnstrippedInfo
-	parseJson(rawString, &info)
+	ParseJson(rawString, &info)
 	return info
 }
 
@@ -287,9 +296,9 @@ func splitOrEmpty(s string, sep string) []string {
 	}
 }
 
-// parseJson decodes json string into the fields of the receiver.
+// ParseJson decodes json string into the fields of the receiver.
 // Unknown attribute name causes panic.
-func parseJson(jsonString string, info interface{}) {
+func ParseJson(jsonString string, info interface{}) {
 	decoder := json.NewDecoder(strings.NewReader(jsonString))
 	decoder.DisallowUnknownFields() //useful to detect typos, e.g. in unit tests
 	if err := decoder.Decode(info); err != nil {

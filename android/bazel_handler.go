@@ -192,7 +192,7 @@ type bazelContext struct {
 	requests     map[cqueryKey]bool // cquery requests that have not yet been issued to Bazel
 	requestMutex sync.Mutex         // requests can be written in parallel
 
-	results map[cqueryKey]string // Results of cquery requests after Bazel invocations
+	results map[cqueryKey]cquery.CqueryResult // Results of cquery requests after Bazel invocations
 
 	// Build statements which should get registered to reflect Bazel's outputs.
 	buildStatements []bazel.BuildStatement
@@ -287,44 +287,53 @@ func (bazelCtx *bazelContext) QueueBazelRequest(label string, requestType cquery
 
 func (bazelCtx *bazelContext) GetOutputFiles(label string, cfgKey configKey) ([]string, error) {
 	key := makeCqueryKey(label, cquery.GetOutputFiles, cfgKey)
-	if rawString, ok := bazelCtx.results[key]; ok {
-		bazelOutput := strings.TrimSpace(rawString)
-
-		return cquery.GetOutputFiles.ParseResult(bazelOutput), nil
+	if result, ok := bazelCtx.results[key]; ok {
+		if rawString := result.GetOutputFiles; rawString != nil {
+			bazelOutput := strings.TrimSpace(*rawString)
+			return cquery.GetOutputFiles.ParseResult(bazelOutput), nil
+		}
 	}
 	return nil, fmt.Errorf("no bazel response found for %v", key)
 }
 
 func (bazelCtx *bazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, error) {
 	key := makeCqueryKey(label, cquery.GetCcInfo, cfgKey)
-	if rawString, ok := bazelCtx.results[key]; ok {
-		bazelOutput := strings.TrimSpace(rawString)
-		return cquery.GetCcInfo.ParseResult(bazelOutput)
+	if result, ok := bazelCtx.results[key]; ok {
+		if rawString := result.GetCcInfo; rawString != nil {
+			bazelOutput := strings.TrimSpace(*rawString)
+			return cquery.GetCcInfo.ParseResult(bazelOutput)
+		}
 	}
 	return cquery.CcInfo{}, fmt.Errorf("no bazel response found for %v", key)
 }
 
 func (bazelCtx *bazelContext) GetPythonBinary(label string, cfgKey configKey) (string, error) {
 	key := makeCqueryKey(label, cquery.GetPythonBinary, cfgKey)
-	if rawString, ok := bazelCtx.results[key]; ok {
-		bazelOutput := strings.TrimSpace(rawString)
-		return cquery.GetPythonBinary.ParseResult(bazelOutput), nil
+	if result, ok := bazelCtx.results[key]; ok {
+		if rawString := result.GetPythonBinary; rawString != nil {
+			bazelOutput := strings.TrimSpace(*rawString)
+			return cquery.GetPythonBinary.ParseResult(bazelOutput), nil
+		}
 	}
 	return "", fmt.Errorf("no bazel response found for %v", key)
 }
 
 func (bazelCtx *bazelContext) GetApexInfo(label string, cfgKey configKey) (cquery.ApexCqueryInfo, error) {
 	key := makeCqueryKey(label, cquery.GetApexInfo, cfgKey)
-	if rawString, ok := bazelCtx.results[key]; ok {
-		return cquery.GetApexInfo.ParseResult(strings.TrimSpace(rawString)), nil
+	if result, ok := bazelCtx.results[key]; ok {
+		if rawString := result.GetApexInfo; rawString != nil {
+			return cquery.GetApexInfo.ParseResult(strings.TrimSpace(*rawString)), nil
+		}
 	}
 	return cquery.ApexCqueryInfo{}, fmt.Errorf("no bazel response found for %v", key)
 }
 
 func (bazelCtx *bazelContext) GetCcUnstrippedInfo(label string, cfgKey configKey) (cquery.CcUnstrippedInfo, error) {
 	key := makeCqueryKey(label, cquery.GetCcUnstrippedInfo, cfgKey)
-	if rawString, ok := bazelCtx.results[key]; ok {
-		return cquery.GetCcUnstrippedInfo.ParseResult(strings.TrimSpace(rawString)), nil
+	if result, ok := bazelCtx.results[key]; ok {
+		if rawString := result.GetCcUnstrippedInfo; rawString != nil {
+			return cquery.GetCcUnstrippedInfo.ParseResult(strings.TrimSpace(*rawString)), nil
+		}
 	}
 	return cquery.CcUnstrippedInfo{}, fmt.Errorf("no bazel response for %s", key)
 }
@@ -681,15 +690,25 @@ config_node(name = "%s",
 
 	configNodesSection := ""
 
-	labelsByConfig := map[string][]string{}
+	labelsByConfig := map[string]map[string]bool{}
 	for val := range context.requests {
 		labelString := fmt.Sprintf("\"@%s\"", val.label)
 		configString := getConfigString(val)
-		labelsByConfig[configString] = append(labelsByConfig[configString], labelString)
+		if labelsByConfig[configString] != nil {
+			labelsByConfig[configString][labelString] = true
+		} else {
+			labelsByConfig[configString] = map[string]bool{
+				labelString: true,
+			}
+		}
 	}
 
 	allLabels := []string{}
-	for configString, labels := range labelsByConfig {
+	for configString, labelsMap := range labelsByConfig {
+		labels := make([]string, 0, len(labelsMap))
+		for l, _ := range labelsMap {
+			labels = append(labels, l)
+		}
 		configTokens := strings.Split(configString, "|")
 		if len(configTokens) != 2 {
 			panic(fmt.Errorf("Unexpected config string format: %s", configString))
@@ -741,7 +760,7 @@ def %s(target):
 `
 	mainSwitchSectionFormatString := `
   if id_string in %s:
-    return id_string + ">>" + %s(target)
+    result_dict["%s"] = %s(target)
 `
 
 	for requestType := range requestTypeToCqueryIdEntries {
@@ -754,7 +773,7 @@ def %s(target):
 			functionName,
 			indent(requestType.StarlarkFunctionBody()))
 		mainSwitchSection += fmt.Sprintf(mainSwitchSectionFormatString,
-			labelMapName, functionName)
+			labelMapName, requestType.Name(), functionName)
 	}
 
 	formatString := `
@@ -825,11 +844,9 @@ def format(target):
   if id_string.startswith("//"):
     id_string = "@" + id_string
 
-  # Main switch section
+  result_dict = {}
   %s
-  # This target was not requested via cquery, and thus must be a dependency
-  # of a requested target.
-  return id_string + ">>NONE"
+  return id_string + ">>" + json_encode(result_dict)
 `
 
 	return []byte(fmt.Sprintf(formatString, labelRegistrationMapSection, functionDefSection,
@@ -862,7 +879,7 @@ func (p *bazelPaths) outDir() string {
 // Issues commands to Bazel to receive results for all cquery requests
 // queued in the BazelContext.
 func (context *bazelContext) InvokeBazel(config Config) error {
-	context.results = make(map[cqueryKey]string)
+	context.results = make(map[cqueryKey]cquery.CqueryResult)
 
 	var err error
 
@@ -915,7 +932,9 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 	}
 	for val := range context.requests {
 		if cqueryResult, ok := cqueryResults[getCqueryId(val)]; ok {
-			context.results[val] = cqueryResult
+			result := cquery.CqueryResult{}
+			cquery.ParseJson(cqueryResult, &result)
+			context.results[val] = result
 		} else {
 			return fmt.Errorf("missing result for bazel target %s. query output: [%s], cquery err: [%s]",
 				getCqueryId(val), cqueryOutput, cqueryErr)
