@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "888d0992_8e002a2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-07T17:52:39Z",
+      "side": 1,
+      "message": "Given that a `textproto`-independent tooling is not available atm I am inclined to keep this for now and remove afterwards.",
+      "revId": "1764be313bb4160c845b5f8d0d6352a2c0077c83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
