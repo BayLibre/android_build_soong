@@ -34,6 +34,24 @@
       "parentUuid": "4cb5bb59_dc7302bc",
       "revId": "082de5d6f9b416a45453f6e7413d56f0ab7fae8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa8a28c_6ce08638",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-07T16:02:35Z",
+      "side": 1,
+      "message": "Are you suggesting to allowlist all dev mode modules as well?",
+      "parentUuid": "30d37ccd_53afb7af",
+      "revId": "082de5d6f9b416a45453f6e7413d56f0ab7fae8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
