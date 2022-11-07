@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17aa6d9b_5ef4a10e",
+        "filename": "android/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-07T13:44:30Z",
+      "side": 1,
+      "message": "How does this impact performance? What are the size of metrics files, and is the file size on disk significant enough to matter?\n\nWhile this is a nice *convenience* feature, it\u0027s not horribly inconvenient to use tooling to view metrics files in their proto format (once you know the correct tool). Additionally, proto format is not necessarily even \"enough\" for fully readable output -- and we also solve this with existing tooling. For example: Timestamps are in unreadable millis-since-epoch by default, but are converted by tooling.",
+      "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
