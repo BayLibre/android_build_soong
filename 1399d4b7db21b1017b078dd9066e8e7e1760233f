@@ -16,6 +16,24 @@
       "message": "Also note that I am changing how soong_build_metrircs.pb, bp2build_metrics.pr and soong_metrics are currently overwritten upon subsequent builds but `soong_metrics` copies over data from soong_build_metrics.pb that is \"stale\".",
       "revId": "1399d4b7db21b1017b078dd9066e8e7e1760233f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3fff96_cb313293",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-07T15:54:10Z",
+      "side": 1,
+      "message": "Does this mean you want him to hold off on any of these cleanup CLs?",
+      "parentUuid": "83bdf7ce_f9ec7cc9",
+      "revId": "1399d4b7db21b1017b078dd9066e8e7e1760233f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

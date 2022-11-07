@@ -87,6 +87,24 @@
       "parentUuid": "be65c15c_5bc2803c",
       "revId": "6f104129092e68973428a92c91a2bbf1fafc311e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44022670_ebe11e21",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-07T15:54:10Z",
+      "side": 1,
+      "message": "\u003e This function is called from within doChosenActivity so moving this event from before the call to doChosenActivity to this function doesn\u0027t expand what this event covers it narrows it.\n\nAh, indeed, there were a few too many related CLs here -- I got a bit confused :) You\u0027ve only moved the event handling inside the function.\n\nUsta, soong_build already covered RunBlueprint and writeBuildGlobsNinjaFile. :)",
+      "parentUuid": "7c8dfbfe_5b4e568b",
+      "revId": "6f104129092e68973428a92c91a2bbf1fafc311e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
