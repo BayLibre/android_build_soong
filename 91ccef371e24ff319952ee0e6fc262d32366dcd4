@@ -70,6 +70,24 @@
       "parentUuid": "6cf744df_9fe9ae0b",
       "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45808d32_80811290",
+        "filename": "android/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-07T16:15:52Z",
+      "side": 1,
+      "message": "1000k is reasonably small in a single build, but we need to consider that metrics will grow over time, and that this file will be saved for each CI build -- and the file is useless for such builds.\n\nYour point about OEMs is valid, One script I was referring to was print_analysis_metrics.py (build/bazel/scripts/print_analysis_metrics.py), but that depends on `printproto` which I don\u0027t think is generally available, nor do I think the tool gives comprehensive metrics information from the proto.\n\nWe\u0027ll want to follow up to provide better tooling to view metrics externally, but this is low priority at this time.\nI\u0027ve filed b/257971943 to track this.\n\n\u003e In that case please make sure to document how that tool can be used. Both in the code that generates it and in the output directory where it is generated.\n\nThat style of documentation is a bit too extreme. We should document this best practice, certainly, but we need not pollute materialized files nor the generating code with a how-to guide of how to parse proto files in general, and that\u0027s effectively what you\u0027re asking for, no?\n\nI\u0027m happy to take it as an action item that we should ensure the metrics documentation is up to par in general, but metrics has thus far been mostly only useful for engineers modifying the build system, and thus we haven\u0027t focused on treating it as a reliable, documented API.",
+      "parentUuid": "6cf744df_9fe9ae0b",
+      "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
