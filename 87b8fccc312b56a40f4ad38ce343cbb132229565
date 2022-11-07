@@ -16,6 +16,24 @@
       "message": "I think you should omit this line -- AFAICT SetAllowMissingDependencies(true) is only used for tests, so it\u0027s not a real concern here.",
       "revId": "87b8fccc312b56a40f4ad38ce343cbb132229565",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffa61472_6a0524e1",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-07T14:44:03Z",
+      "side": 1,
+      "message": "The SetAllowMissingDependencies() is called whenever the ALLOW_MISSING_DEPENDENCIES environment variable is set. See http://cs/android/build/soong/cmd/soong_build/main.go?l\u003d452.\n\nThe underlying `productVariables.Allow_missing_dependencies` is set in a LOT of places via the product variables passed in from make.\n\nhttp://source/search?q\u003dALLOW_MISSING_DEPENDENCIES\u0026sq\u003dpackage:%5Eandroid$\n\nSo, if runApiBp2build should never allow missing dependencies (which is how it behaved before) then this line needs to stay. If it should allow missing dependencies only when configured then I will remove it.",
+      "parentUuid": "23bbcd91_d6097f04",
+      "revId": "87b8fccc312b56a40f4ad38ce343cbb132229565",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
