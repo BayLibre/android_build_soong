@@ -16,6 +16,24 @@
       "message": "This CL is completely a style change, yes? I\u0027m mostly fine with this, but would prefer:\n\n```\n...\nelse if configuration.BuildMode \u003d\u003d android.ApiBp2build {\n  ...\n} else if configuration.IsMixedBuildEnabled() {\n  ...\n} else {\n  ...\n}\n```\n\ninstead of the nested else blocks.",
       "revId": "4d8c75df7b61925f69fbe783b00afd158e9aaa3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b7a6aa4_9dea78a6",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-07T14:15:20Z",
+      "side": 1,
+      "message": "It is not just a style change. The reason for nested code blocks is that follow up changes add common code (for handling initialization of the Context and writing metrics) within that outer block.",
+      "parentUuid": "04fb7fb6_89964df8",
+      "revId": "4d8c75df7b61925f69fbe783b00afd158e9aaa3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
