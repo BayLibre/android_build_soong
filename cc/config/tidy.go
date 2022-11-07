@@ -54,6 +54,8 @@ var (
 		"-bugprone-signed-char-misuse",
 		// http://b/241819232
 		"-misc-const-correctness",
+		// hack to allow all clang-tidy warnings:
+		"-*",
 	}
 )
 
@@ -215,8 +217,9 @@ func NoClangTidyForDir(allowExternalVendor bool, dir string) bool {
 	// or if it belongs to external|vendor and !allowExternalVendor.
 	// This function depends on TidyChecksForDir, which selects tidyExternalVendor
 	// checks for external/vendor projects.
-	return neverTidyForDir(dir) ||
-		(!allowExternalVendor && TidyChecksForDir(dir) == tidyExternalVendor)
+	// return neverTidyForDir(dir) ||
+	//	(!allowExternalVendor && TidyChecksForDir(dir) == tidyExternalVendor)
+	return false // hack to run clang-tidy for all directories
 }
 
 // Returns a globally disabled tidy checks, overriding locally selected checks.
