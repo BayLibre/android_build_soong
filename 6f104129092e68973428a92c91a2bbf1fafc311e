@@ -51,6 +51,24 @@
       "parentUuid": "b20d5bf3_016e16e2",
       "revId": "6f104129092e68973428a92c91a2bbf1fafc311e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be65c15c_5bc2803c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-07T15:17:59Z",
+      "side": 1,
+      "message": "Correction, I did fix runApiBp2build, it works as follows:\n\nrunApiBp2build\n\n* api_bp2build -\u003e soong_build_metrics.pb",
+      "parentUuid": "8659043d_6da96f13",
+      "revId": "6f104129092e68973428a92c91a2bbf1fafc311e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
