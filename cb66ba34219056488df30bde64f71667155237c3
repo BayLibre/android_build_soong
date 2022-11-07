@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e580422_c75923b6",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-11-07T22:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89424ba7_e4e661d1",
+      "revId": "cb66ba34219056488df30bde64f71667155237c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6fccd04_afb3de40",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb4d39f6_81740414",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-11-07T22:47:07Z",
+      "side": 1,
+      "message": "Interesting I very much expected the Starlark to use space-spacing lol. I changed this from tabs to spaces without really checking (need to get a better visual for this in my editor)",
+      "parentUuid": "d6fccd04_afb3de40",
+      "revId": "cb66ba34219056488df30bde64f71667155237c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad0cf927_66ebfa2a",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-11-07T22:19:34Z",
       "side": 1,
       "message": "Given that `ccInfo` isn\u0027t used below and `err` certainly is meant to be local, I think this would be more idiomatic as:\n```\nif ccInfo, err :\u003d .....; err \u003d\u003d nil {\n```\n`bazelCtx` also only has one use and could be folded into the `GetCcInfo` invocation, but I get that it\u0027d make the line awkwardly long and noisy, nvm that the `bazelCtx` may get further use in this method in the future.",
+      "revId": "cb66ba34219056488df30bde64f71667155237c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be8c6c9_6de6ab7b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-11-07T22:47:07Z",
+      "side": 1,
+      "message": "Done. I agree that the inline `bazelCtx` is a little noisy.",
+      "parentUuid": "ad0cf927_66ebfa2a",
       "revId": "cb66ba34219056488df30bde64f71667155237c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
