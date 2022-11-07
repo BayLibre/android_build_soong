@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390eeb5c_b617ef7c",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-07T09:03:04Z",
+      "side": 1,
+      "message": "File a bug?",
+      "range": {
+        "startLine": 1857,
+        "startChar": 4,
+        "endLine": 1857,
+        "endChar": 9
+      },
+      "revId": "1312d3f37702700700e85bd564e4f7fd4383a4f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
