@@ -16,6 +16,23 @@
       "message": "muoa",
       "revId": "6f104129092e68973428a92c91a2bbf1fafc311e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b20d5bf3_016e16e2",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-07T14:13:27Z",
+      "side": 1,
+      "message": "This changes semantic grouping of events. Previously, soong_build (the event) was restricted to gauging the doChosenActivity call, and now it comprises the entirety of this function. This thus requires a little bit more thought than a simple cleanup CL. We definitely want an event which covers doChosenActivity alone.\n\nPerhaps remove this function\u0027s change from the CL?",
+      "revId": "6f104129092e68973428a92c91a2bbf1fafc311e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
