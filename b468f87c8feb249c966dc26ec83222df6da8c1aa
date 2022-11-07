@@ -70,6 +70,24 @@
       "parentUuid": "9eb5c141_e6d25e89",
       "revId": "b468f87c8feb249c966dc26ec83222df6da8c1aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7851560b_39107f08",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-07T17:55:22Z",
+      "side": 1,
+      "message": "This could be the result of bp2build codegen not having to rerun.",
+      "parentUuid": "5cc026c8_a49b2cde",
+      "revId": "b468f87c8feb249c966dc26ec83222df6da8c1aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
