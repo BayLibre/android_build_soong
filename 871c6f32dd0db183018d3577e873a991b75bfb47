@@ -16,6 +16,24 @@
       "message": "Seems this is for some of the classes missing in the jacoco-report-classes-all.jar file. We found out b/257128599 when investigating some other issues, but I\u0027d assume that there might be some other \"InstrumentFrameworkModules\" that needs to be added here. @allenhair@google.com, do we have a good way to identify those missing \"Modules\" and keep them up-to-date here?",
       "revId": "871c6f32dd0db183018d3577e873a991b75bfb47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85674629_9d347753",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2022-11-07T18:40:41Z",
+      "side": 1,
+      "message": "Ideally, instrumentFrameworkModules wouldn\u0027t be hardcoded and we would automatically instrument any shared libraries (e.g. those on the bootclasspath).\n\nI\u0027m not sure the best way to go about this under Soong, but ccross@ might have some ideas if you want to follow up with him.",
+      "parentUuid": "3279a3f2_3844ee8d",
+      "revId": "871c6f32dd0db183018d3577e873a991b75bfb47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
