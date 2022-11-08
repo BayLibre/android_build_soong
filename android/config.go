@@ -1067,6 +1067,25 @@ func (c *config) ExportedNamespaces() []string {
 	return append([]string(nil), c.productVariables.NamespacesToExport...)
 }
 
+var dynamicNamespacesKey = NewOnceKey("dynamicNamespaces")
+
+func (c *config) DynamicNamespacesConfig() []DynamicNamespaceConfig {
+	return c.Once(dynamicNamespacesKey, func() interface{} {
+		dynamicNamespaces := []DynamicNamespaceConfig{}
+		disabledNamespaces := c.Getenv("SOONG_DISABLED_NAMESPACES")
+		if disabledNamespaces != "" {
+			for _, namespace := range strings.Split(disabledNamespaces, ",") {
+				dirs := strings.Split(namespace, " ")
+				dynamicNamespaces = append(dynamicNamespaces, DynamicNamespaceConfig{
+					Paths:         dirs,
+					ForceDisabled: true,
+				})
+			}
+		}
+		return dynamicNamespaces
+	}).([]DynamicNamespaceConfig)
+}
+
 func (c *config) HostStaticBinaries() bool {
 	return Bool(c.productVariables.HostStaticBinaries)
 }

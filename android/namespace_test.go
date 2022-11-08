@@ -15,8 +15,10 @@
 package android
 
 import (
+	"fmt"
 	"path/filepath"
 	"reflect"
+	"strings"
 	"testing"
 
 	"github.com/google/blueprint"
@@ -630,6 +632,94 @@ func TestNamespace_Exports(t *testing.T) {
 	AssertBoolEquals(t, "a exported", true, aModule.ExportedToMake())
 	bModule := result.Module("b", "")
 	AssertBoolEquals(t, "b not exported", false, bModule.ExportedToMake())
+}
+
+func TestNamespace_DisabledNamespaces(t *testing.T) {
+	preparers := GroupFixturePreparers(
+		prepareForTestWithNamespace,
+		dirBpToPreparer(map[string]string{
+			"dir1": `
+				test_module {
+					name: "a",
+				}
+			`,
+			"dir2": `
+				test_module {
+					name: "a",
+				}
+			`,
+			"dir3": `
+				test_module {
+					name: "b",
+					deps: ["a"],
+				}
+			`,
+			"dir4": `
+				test_module {
+					name: "b",
+					deps: ["a"],
+				}
+			`,
+		}),
+	)
+
+	t.Run("without disabled namespace", func(t *testing.T) {
+		preparers.
+			ExtendWithErrorHandler(FixtureExpectsAllErrorsToMatchAPattern([]string{
+				`\Q module "a" already defined\E`,
+				`\Q module "b" already defined\E`,
+			})).
+			RunTest(t)
+	})
+
+	runWithDisabledNamespaces := func(t *testing.T, disabledNamespaces string, expectedLabels []string) {
+		t.Helper()
+
+		name := fmt.Sprintf("with disabled namespace (%s)", disabledNamespaces)
+		t.Run(name, func(t *testing.T) {
+			t.Helper()
+			result := GroupFixturePreparers(
+				preparers,
+				FixtureModifyEnv(func(env map[string]string) {
+					env["SOONG_DISABLED_NAMESPACES"] = disabledNamespaces
+				}),
+			).RunTest(t)
+
+			// Collate information about disabled modules, i.e. modules that are in a disabled
+			// namespace.
+			ns2Modules := map[string][]string{}
+			result.VisitAllModules(func(module blueprint.Module) {
+				moduleDir := result.ModuleDir(module)
+				ns := result.NameResolver.findNamespace(moduleDir)
+				if ns == result.NameResolver.rootNamespace {
+					return
+				}
+
+				moduleName := result.ModuleName(module)
+				label := fmt.Sprintf("//%s:%s", moduleDir, moduleName)
+				ns2Modules[ns.Path] = append(ns2Modules[ns.Path], label)
+			})
+			isolatedModules := []string{}
+			for _, key := range SortedStringKeys(ns2Modules) {
+				isolatedModules = append(isolatedModules, strings.Join(ns2Modules[key], " "))
+			}
+			AssertArrayString(t, "labels", expectedLabels, isolatedModules)
+		})
+	}
+
+	// Run tests with various combinations of one `a` module and one `b` module isolated in their own
+	// namespace.
+	runWithDisabledNamespaces(t, "dir1 dir3", []string{"//dir1:a //dir3:b"})
+	runWithDisabledNamespaces(t, "dir2 dir3", []string{"//dir2:a //dir3:b"})
+	runWithDisabledNamespaces(t, "dir1 dir4", []string{"//dir1:a //dir4:b"})
+	runWithDisabledNamespaces(t, "dir2 dir4", []string{"//dir2:a //dir4:b"})
+
+	// Run tests with one `a` module (from dir1) and one `b` module (from dir3) are in their namespace
+	// and the other `b` module is in its own namespace.
+	runWithDisabledNamespaces(t, "dir1 dir3,dir4", []string{
+		"//dir1:a //dir3:b",
+		"//dir4:b",
+	})
 }
 
 // some utils to support the tests

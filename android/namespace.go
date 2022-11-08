@@ -91,12 +91,23 @@ type NameResolver struct {
 	namespaceExportFilter func(*Namespace) bool
 }
 
+type DynamicNamespaceConfig struct {
+	// The root directories belonging to the namespace.
+	Paths []string
+
+	// True if modules in this namespace should be forcibly disable.
+	ForceDisabled bool
+}
+
 // NameResolverConfig provides the subset of the Config interface needed by the
 // NewNameResolver function.
 type NameResolverConfig interface {
 	// ExportedNamespaces is the list of namespaces that Soong must export to
 	// make.
 	ExportedNamespaces() []string
+
+	// DynamicNamespaces returns information about the dynamically configured namespaces.
+	DynamicNamespacesConfig() []DynamicNamespaceConfig
 }
 
 func NewNameResolver(config NameResolverConfig) *NameResolver {
@@ -112,19 +123,42 @@ func NewNameResolver(config NameResolverConfig) *NameResolver {
 		return namespacePathsToExport[namespace.Path]
 	}
 
+	dynamicNamespacesConfig := config.DynamicNamespacesConfig()
+
 	r := &NameResolver{
 		namespacesByDir:       sync.Map{},
 		namespaceExportFilter: namespaceExportFilter,
 	}
-	r.rootNamespace = r.newNamespace(".")
-	r.rootNamespace.visibleNamespaces = []*Namespace{r.rootNamespace}
-	r.addNamespace(r.rootNamespace)
+	rootNamespace := r.newNamespace(".")
+	r.rootNamespace = rootNamespace
+	rootNamespace.visibleNamespaces = []*Namespace{rootNamespace}
+	if err := r.addNamespace(rootNamespace); err != nil {
+		panic(fmt.Errorf("Could not add root namespace: %w", err))
+	}
 
+	// Configure the dynamic namespaces.
+	for i, dynamicNamespaceConfig := range dynamicNamespacesConfig {
+		paths := dynamicNamespaceConfig.Paths
+		namespace := r.newNamespace(paths[0], paths[1:]...)
+		namespace.id = fmt.Sprintf("dynamic-%d", i)
+
+		namespace.forceDisabled = dynamicNamespaceConfig.ForceDisabled
+
+		// Resolve the imports in the namespaces. This sets up the search path that the namespace uses
+		// to find modules.
+		if err := r.FindNamespaceImports(namespace); err != nil {
+			panic(err)
+		}
+
+		if err := r.addNamespace(namespace); err != nil {
+			panic(err)
+		}
+	}
 	return r
 }
 
-func (r *NameResolver) newNamespace(path string) *Namespace {
-	namespace := NewNamespace(path)
+func (r *NameResolver) newNamespace(path string, additionalPaths ...string) *Namespace {
+	namespace := NewNamespace(path, additionalPaths...)
 
 	namespace.exportToKati = r.namespaceExportFilter(namespace)
 
@@ -145,20 +179,35 @@ func (r *NameResolver) addNewNamespaceForModule(module *NamespaceModule, path st
 	return r.addNamespace(namespace)
 }
 
-func (r *NameResolver) addNamespace(namespace *Namespace) (err error) {
-	existingNamespace, exists := r.namespaceAt(namespace.Path)
+func (r *NameResolver) checkExistingNamespace(path string) error {
+	existingNamespace, exists := r.namespaceAt(path)
 	if exists {
-		if existingNamespace.Path == namespace.Path {
-			return fmt.Errorf("namespace %v already exists", namespace.Path)
+		if existingNamespace.Path == path || InList(path, existingNamespace.additionalPaths) {
+			return fmt.Errorf("namespace %v already exists", existingNamespace)
 		} else {
 			// It would probably confuse readers if namespaces were declared anywhere but
 			// the top of the file, so we forbid declaring namespaces after anything else.
 			return fmt.Errorf("a namespace must be the first module in the file")
 		}
 	}
+	return nil
+}
+
+func (r *NameResolver) addNamespace(namespace *Namespace) (err error) {
+	if err := r.checkExistingNamespace(namespace.Path); err != nil {
+		return err
+	}
+	r.namespacesByDir.Store(namespace.Path, namespace)
+
+	for _, additionalPath := range namespace.additionalPaths {
+		if err := r.checkExistingNamespace(additionalPath); err != nil {
+			return err
+		}
+		r.namespacesByDir.Store(additionalPath, namespace)
+	}
+
 	r.sortedNamespaces.add(namespace)
 
-	r.namespacesByDir.Store(namespace.Path, namespace)
 	return nil
 }
 
@@ -220,6 +269,11 @@ func (r *NameResolver) NewModule(ctx blueprint.NamespaceContext, moduleGroup blu
 		// inform the module whether its namespace is one that we want to export to Make
 		amod.base().commonProperties.NamespaceExportedToMake = ns.exportToKati
 		amod.base().commonProperties.DebugName = module.Name()
+
+		// If required then forcibly disable the module.
+		if ns.forceDisabled {
+			amod.Disable()
+		}
 	}
 
 	return ns, nil
@@ -382,13 +436,31 @@ type Namespace struct {
 	exportToKati bool
 
 	moduleContainer blueprint.NameInterface
+
+	// The additional paths that are part of this namespace.
+	additionalPaths []string
+
+	// True if all modules added to this namespace should be forcibly disabled.
+	forceDisabled bool
 }
 
-func NewNamespace(path string) *Namespace {
-	return &Namespace{Path: path, moduleContainer: blueprint.NewSimpleNameInterface()}
+func NewNamespace(path string, additionalPaths ...string) *Namespace {
+	return &Namespace{
+		Path:            path,
+		additionalPaths: additionalPaths,
+		moduleContainer: blueprint.NewSimpleNameInterface(),
+	}
 }
 
 var _ blueprint.Namespace = (*Namespace)(nil)
+
+func (n *Namespace) String() string {
+	if len(n.additionalPaths) == 0 {
+		return fmt.Sprintf("%s", n.Path)
+	}
+
+	return fmt.Sprintf("%s+(%s)", n.Path, strings.Join(n.additionalPaths, ","))
+}
 
 type namespaceProperties struct {
 	// a list of namespaces that contain modules that will be referenced
