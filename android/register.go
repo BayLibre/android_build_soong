@@ -161,6 +161,7 @@ type Context struct {
 func NewContext(config Config) *Context {
 	ctx := &Context{blueprint.NewContext(), config}
 	ctx.SetSrcDir(absSrcDir)
+	ctx.AddConfigSettings(config.ConfigSettings()...) // TOOD: Remove the other one
 	return ctx
 }
 

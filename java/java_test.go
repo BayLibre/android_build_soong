@@ -24,6 +24,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -1805,4 +1806,70 @@ func TestDeviceBinaryWrapperGeneration(t *testing.T) {
 			name: "foo",
 			srcs: ["foo.java"],
 		}`)
+}
+
+// nested layout test?
+func TestConditionalInclusion(t *testing.T) {
+	foo_normalsdk_prebuilt_bp := `
+		blueprint_package_includes {
+			name: "a",
+			match_all: ["normalsdk"],
+		}
+		java_import {
+			name: "foo",
+		}
+	`
+	foo_specialsdk_prebuilt_bp := `
+		blueprint_package_includes {
+			name: "b",
+			match_all: ["specialsdk"],
+		}
+		java_import {
+			name: "foo",
+		}
+	`
+	fs := android.MockFS{
+		"normalsdk_dir/Android.bp":  []byte(foo_normalsdk_prebuilt_bp),
+		"specialsdk_dir/Android.bp": []byte(foo_specialsdk_prebuilt_bp),
+	}
+	testCases := []struct {
+		desc           string
+		configSettings []string
+		expectedDir    string
+		errMsg         string
+	}{
+		{
+			desc:           "normalsdk product var is set, use normalsdk prebuilts",
+			configSettings: []string{"normalsdk"},
+			expectedDir:    "normalsdk_dir",
+		},
+		{
+			desc:           "myspecialsdk product var is set, use myspecialsdk prebuilts",
+			configSettings: []string{"specialsdk"},
+			expectedDir:    "specialsdk_dir",
+		},
+		{
+			desc:           "duplicate module error if both config settings are set",
+			configSettings: []string{"normalsdk", "specialsdk"},
+			errMsg:         "\"prebuilt_foo\" already defined",
+		},
+	}
+	for _, testCase := range testCases {
+		fixture := android.GroupFixturePreparers(
+			fs.AddToFixture(),
+			android.FixtureModifyContext(func(ctx *android.TestContext) {
+				ctx.AddConfigSettings(testCase.configSettings...)
+				blueprint.RegisterPackageIncludes(ctx.Context.Context) // TODO: fix
+			}),
+			prepareForJavaTest,
+		)
+		if testCase.errMsg != "" {
+			fixture.ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(testCase.errMsg)).RunTest(t)
+		} else {
+			ctx := fixture.RunTest(t)
+			actualfoo := ctx.ModuleForTests("foo", "android_common").Module()
+			android.AssertStringEquals(t, testCase.desc, ctx.ModuleDir(actualfoo), testCase.expectedDir)
+		}
+
+	}
 }
