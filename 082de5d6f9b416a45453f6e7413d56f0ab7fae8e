@@ -88,6 +88,24 @@
       "parentUuid": "762e0515_6f0c0912",
       "revId": "082de5d6f9b416a45453f6e7413d56f0ab7fae8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86ba4446_9430c537",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-08T01:22:47Z",
+      "side": 1,
+      "message": "FWIW I feel the same way as Usta w.r.t user expectation of that subset ordering. Currently you can add a module into staging without it being in dev, which isn\u0027t intuitive.\n\n\u003e Since the dev mode allowlist logic isn\u0027t as straightforward as \"allowlist by name\", I think this validation will add more technical complexity than its worth.\n\nMake it such that something named in staging must also be allowlisted by name in dev?\n\n(This is not a blocker for this CL, but putting in a guardrail for the future)",
+      "parentUuid": "1b473056_36845e60",
+      "revId": "082de5d6f9b416a45453f6e7413d56f0ab7fae8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
