@@ -15,15 +15,14 @@
 package bp2build
 
 import (
-	"errors"
 	"fmt"
-	"io/fs"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
 	"sync"
 	"sync/atomic"
+	"time"
 
 	"android/soong/shared"
 )
@@ -216,8 +215,34 @@ func readdirToMap(dir string) map[string]os.FileInfo {
 
 // Creates a symbolic link at dst pointing to src
 func symlinkIntoForest(topdir, dst, src string) {
-	err := os.Symlink(shared.JoinPath(topdir, src), shared.JoinPath(topdir, dst))
-	if err != nil {
+	srcPath := shared.JoinPath(topdir, src)
+	dstPath := shared.JoinPath(topdir, dst)
+
+	// Check if a symlink already exists. Remove it and recreate the symlink
+	// if the old symlink is pointing to the wrong place.
+	_, err := os.Lstat(dstPath)
+	if err == nil {
+		if origSrcPath, err := os.Readlink(dstPath); err == nil {
+			if origSrcPath == srcPath {
+				// Symlink already exists and is pointing to the right place.
+				return
+			} else {
+				if err := os.Remove(dstPath); err != nil {
+					fmt.Fprintf(os.Stderr, "Cannot unlink '%s': %s\n", dstPath, err)
+					os.Exit(1)
+				}
+			}
+		} else {
+			fmt.Fprintf(os.Stderr, "Cannot resolve existing symlink at '%s': %s", dstPath, err)
+			os.Exit(1)
+		}
+	} else if !os.IsNotExist(err) {
+		fmt.Fprintf(os.Stderr, "Cannot determine if symlink exists at '%s': %s", dst, err)
+		os.Exit(1)
+	}
+
+	// Create symlink.
+	if err := os.Symlink(srcPath, dstPath); err != nil {
 		fmt.Fprintf(os.Stderr, "Cannot create symlink at '%s' pointing to '%s': %s", dst, src, err)
 		os.Exit(1)
 	}
@@ -251,7 +276,8 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 	defer context.wg.Done()
 
 	if instructions != nil && instructions.excluded {
-		// This directory is not needed, bail out
+		fmt.Fprintf(os.Stderr, "Unexpected result: a root-level exclude directory")
+		context.okay.Store(false)
 		return
 	}
 
@@ -274,6 +300,16 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 		}
 	}
 
+	instructionsChildren := map[string]*instructionsNode{}
+	if instructions != nil {
+		for k, v := range instructions.children {
+			instructionsChildren[k] = v
+		}
+		if renamingBuildFile {
+			instructionsChildren["BUILD.bazel"] = instructionsChildren["BUILD"]
+		}
+	}
+
 	allEntries := make(map[string]struct{})
 	for n := range srcDirMap {
 		allEntries[n] = struct{}{}
@@ -289,10 +325,17 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 		os.Exit(1)
 	}
 
+	// Start with a list of items that already exist in the forest, and remove
+	// each element as it is processed in allEntries. Any remaining items in
+	// forestMapForDeletion must be removed. (This handles files which were
+	// removed before the previous forest generation).
+	forestMapForDeletion := readdirToMap(shared.JoinPath(context.topdir, forestDir))
+
 	for f := range allEntries {
 		if f[0] == '.' {
 			continue // Ignore dotfiles
 		}
+		delete(forestMapForDeletion, f)
 
 		// The full paths of children in the input trees and in the output tree
 		forestChild := shared.JoinPath(forestDir, f)
@@ -303,14 +346,7 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 		buildFilesChild := shared.JoinPath(buildFilesDir, f)
 
 		// Descend in the instruction tree if it exists
-		var instructionsChild *instructionsNode = nil
-		if instructions != nil {
-			if f == "BUILD.bazel" && renamingBuildFile {
-				instructionsChild = instructions.children["BUILD"]
-			} else {
-				instructionsChild = instructions.children[f]
-			}
-		}
+		instructionsChild := instructionsChildren[f]
 
 		srcChildEntry, sExists := srcDirMap[f]
 		buildFilesChildEntry, bExists := buildFilesMap[f]
@@ -327,10 +363,11 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 
 		if !sExists {
 			if bDir && instructionsChild != nil {
-				// Not in the source tree, but we have to exclude something from under
-				// this subtree, so descend
-				context.wg.Add(1)
-				go plantSymlinkForestRecursive(context, instructionsChild, forestChild, buildFilesChild, srcChild)
+				fmt.Fprintf(os.Stderr,
+					"Unexpected result: an exclude directory not present in source files",
+					srcChild, buildFilesChild)
+				context.okay.Store(false)
+				return
 			} else {
 				// Not in the source tree, symlink BUILD file
 				symlinkIntoForest(context.topdir, forestChild, buildFilesChild)
@@ -370,51 +407,21 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 			context.okay.Store(false)
 		}
 	}
-}
 
-func removeParallelRecursive(pool *syscallPool, path string, fi os.FileInfo, wg *sync.WaitGroup) {
-	defer wg.Done()
+	for f := range forestMapForDeletion {
+		instructionsChild := instructionsChildren[f]
 
-	if fi.IsDir() {
-		children := readdirToMap(path)
-		childrenWg := &sync.WaitGroup{}
-		childrenWg.Add(len(children))
-
-		for child, childFi := range children {
-			go removeParallelRecursive(pool, shared.JoinPath(path, child), childFi, childrenWg)
+		if instructionsChild != nil && instructionsChild.excluded {
+			// This directory may be excluded because bazel writes to it under the
+			// forest root. Thus this path is intentionally left
+			continue
 		}
-
-		childrenWg.Wait()
-	}
-
-	pool.do(func() {
-		if err := os.Remove(path); err != nil {
-			fmt.Fprintf(os.Stderr, "Cannot unlink '%s': %s\n", path, err)
+		forestChild := shared.JoinPath(context.topdir, forestDir, f)
+		if err := os.Remove(forestChild); err != nil {
+			fmt.Fprintf(os.Stderr, "Cannot remove '%s' from symlink forest: %s\n", forestChild, err)
 			os.Exit(1)
 		}
-	})
-}
-
-func removeParallel(path string) {
-	fi, err := os.Lstat(path)
-	if err != nil {
-		if errors.Is(err, fs.ErrNotExist) {
-			return
-		}
-
-		fmt.Fprintf(os.Stderr, "Cannot lstat '%s': %s\n", path, err)
-		os.Exit(1)
 	}
-
-	wg := &sync.WaitGroup{}
-	wg.Add(1)
-
-	// Random guess as to the best number of syscalls to run in parallel
-	pool := createSyscallPool(100)
-	removeParallelRecursive(pool, path, fi, wg)
-	pool.shutdown()
-
-	wg.Wait()
 }
 
 // Creates a symlink forest by merging the directory tree at "buildFiles" and
@@ -422,6 +429,7 @@ func removeParallel(path string) {
 // under srcDir on which readdir() had to be called to produce the symlink
 // forest.
 func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles string, exclude []string) []string {
+	startTime := time.Now()
 	context := &symlinkForestContext{
 		verbose: verbose,
 		topdir:  topdir,
@@ -429,8 +437,6 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 	}
 
 	context.okay.Store(true)
-
-	removeParallel(shared.JoinPath(topdir, forest))
 
 	instructions := instructionsFromExcludePathList(exclude)
 	go func() {
@@ -444,6 +450,9 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 	for dep := range context.depCh {
 		deps = append(deps, dep)
 	}
+	endTime := time.Now()
+
+	fmt.Println("Symlink forest generation took", endTime.Sub(startTime).Seconds(), "seconds")
 
 	if !context.okay.Load() {
 		os.Exit(1)
