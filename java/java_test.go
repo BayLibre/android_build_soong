@@ -1781,3 +1781,71 @@ func TestGenAidlIncludeFlagsForMixedBuilds(t *testing.T) {
 		t.Errorf("expected flags to be %q; was %q", expectedFlags, flags)
 	}
 }
+
+// nested layout test?
+func TestConditionalInclusion(t *testing.T) {
+	foo_normalsdk_prebuilt_bp := `
+		java_import {
+			name: "foo", // TODO: Add some differentiating metadata for readability
+		}
+	`
+	foo_myspecialsdk_prebuilt_bp := `
+		java_import {
+			name: "foo",
+		}
+	`
+	root_bp := `
+		exclude_subdirs {
+			normalsdk: ["myspecialsdk_dir"], // mirror opposite, since this is excludes
+			myspecialsdk: ["normalsdk_dir"],
+		}
+	`
+	fs := android.MockFS {
+		"normalsdk_dir/Android.bp": []byte(foo_normalsdk_prebuilt_bp),
+		"myspecialsdk_dir/Android.bp": []byte(foo_myspecialsdk_prebuilt_bp),
+	}
+	testCases := []struct {
+		desc string
+		includeConfigs []string
+		expectedDir string
+		errMsg string
+	}{
+		{
+			desc: "normalsdk product var is set, use normalsdk prebuilts",
+			includeConfigs: []string{"normalsdk"},
+			expectedDir: "normalsdk_dir",
+		},
+		{
+			desc: "myspecialsdk product var is set, use myspecialsdk prebuilts",
+			includeConfigs: []string{"myspecialsdk"},
+			expectedDir: "myspecialsdk_dir",
+		},
+		{
+			desc: "conflicting settings raises an error",
+			includeConfigs: []string{"normalsdk", "myspecialsdk"},
+			errMsg: "Conflicting include settings",
+		},
+		{
+			desc: "duplicate module error if no config settings is set",
+			includeConfigs: []string{},
+			errMsg: "\"prebuilt_foo\" already defined",
+		},
+	}
+	for _, testCase := range testCases {
+		fixture := android.GroupFixturePreparers(
+			fs.AddToFixture(),
+			android.FixtureModifyContext(func(ctx *android.TestContext) {
+				ctx.AddConfigSettings(testCase.includeConfigs...)
+			}),
+			prepareForJavaTest,
+		)
+		if testCase.errMsg != "" {
+			fixture.ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(testCase.errMsg)).RunTestWithBp(t, root_bp)
+		} else {
+			ctx := fixture.RunTestWithBp(t, root_bp)
+			actualfoo := ctx.ModuleForTests("foo", "android_common").Module()
+			android.AssertStringEquals(t, testCase.desc, ctx.ModuleDir(actualfoo), testCase.expectedDir)
+		}
+
+	}
+}

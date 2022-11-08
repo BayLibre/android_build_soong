@@ -108,6 +108,8 @@ type configImpl struct {
 	emptyNinjaFile bool
 
 	metricsUploader string
+
+	configSettings []string
 }
 
 const srcDirFileCheck = "build/soong/root.bp"
@@ -1035,6 +1037,14 @@ func (c *configImpl) KatiArgs() []string {
 
 func (c *configImpl) Parallel() int {
 	return c.parallel
+}
+
+func (c *configImpl) GetConfigSettings() []string {
+	return c.configSettings
+}
+
+func (c *configImpl) SetConfigSettings(s []string) {
+	c.configSettings = s
 }
 
 func (c *configImpl) HighmemParallel() int {

@@ -1064,6 +1064,10 @@ func (c *config) ExportedNamespaces() []string {
 	return append([]string(nil), c.productVariables.NamespacesToExport...)
 }
 
+func (c *config) SoongConfigSettings() []string {
+	return c.productVariables.SoongConfigSettings
+}
+
 func (c *config) HostStaticBinaries() bool {
 	return Bool(c.productVariables.HostStaticBinaries)
 }

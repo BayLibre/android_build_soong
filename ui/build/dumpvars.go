@@ -260,6 +260,7 @@ func runMakeProductConfig(ctx Context, config Config) {
 		"BUILD_BROKEN_USES_BUILD_SHARED_LIBRARY",
 		"BUILD_BROKEN_USES_BUILD_STATIC_JAVA_LIBRARY",
 		"BUILD_BROKEN_USES_BUILD_STATIC_LIBRARY",
+		"PRODUCT_SOONG_CONFIG_SETTINGS",
 	}, exportEnvVars...), BannerVars...)
 
 	makeVars, err := dumpMakeVars(ctx, config, config.Arguments(), allVars, true, "")
@@ -292,4 +293,5 @@ func runMakeProductConfig(ctx Context, config Config) {
 	config.SetBuildBrokenDupRules(makeVars["BUILD_BROKEN_DUP_RULES"] == "true")
 	config.SetBuildBrokenUsesNetwork(makeVars["BUILD_BROKEN_USES_NETWORK"] == "true")
 	config.SetBuildBrokenNinjaUsesEnvVars(strings.Fields(makeVars["BUILD_BROKEN_NINJA_USES_ENV_VARS"]))
+	config.SetConfigSettings(strings.Fields(makeVars["PRODUCT_SOONG_CONFIG_SETTINGS"]))
 }
