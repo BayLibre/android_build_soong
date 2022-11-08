@@ -453,6 +453,9 @@ type productVariables struct {
 	GenerateAidlNdkPlatformBackend bool `json:",omitempty"`
 
 	IgnorePrefer32OnDevice bool `json:",omitempty"`
+
+	// TODO: Fix name
+	SoongConfigSettings []string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
