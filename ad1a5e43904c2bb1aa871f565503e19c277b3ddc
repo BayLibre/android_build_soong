@@ -63,6 +63,30 @@
       },
       "revId": "ad1a5e43904c2bb1aa871f565503e19c277b3ddc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e848d0_87ac2257",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-08T02:31:32Z",
+      "side": 1,
+      "message": "I think the benefits are\n1. Reduces Soong analysis time. This new mutator will be run for every single module type, and this adds time\n2. Increases the surface area of documentation. There is a spreadsheet in go/soong-mutators that tracks the purpose of all the existing mutators. It would be nice to not introduce a new one that essentially serves the purpose of DepsMutator\n3. (Corollary to 2) DepsMutator is the natural place for the logic that adds dependencies, rather than a random mutator\n\nimo, these benefits outweigh adding to the already substantial DepsMutator function. In fact, it will be nicer because the depsMutator logic will be colocated in one place.",
+      "parentUuid": "ada7d8a3_52252981",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "ad1a5e43904c2bb1aa871f565503e19c277b3ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
