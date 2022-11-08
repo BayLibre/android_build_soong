@@ -443,6 +443,13 @@ type productVariables struct {
 	SepolicyFreezeTestExtraPrebuiltDirs []string `json:",omitempty"`
 
 	GenerateAidlNdkPlatformBackend bool `json:",omitempty"`
+<<<<<<< HEAD   (8378fe Merge "Move embedded notice file path above aapt rule genera)
+=======
+
+	IgnorePrefer32OnDevice bool `json:",omitempty"`
+
+	IncludeTags []string `json:",omitempty"`
+>>>>>>> CHANGE (c57638 Create a new product variable to gate blueprint files)
 }
 
 func boolPtr(v bool) *bool {

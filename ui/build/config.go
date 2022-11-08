@@ -98,6 +98,13 @@ type configImpl struct {
 	emptyNinjaFile bool
 
 	metricsUploader string
+<<<<<<< HEAD   (8378fe Merge "Move embedded notice file path above aapt rule genera)
+=======
+
+	bazelForceEnabledModules string
+
+	includeTags []string
+>>>>>>> CHANGE (c57638 Create a new product variable to gate blueprint files)
 }
 
 const srcDirFileCheck = "build/soong/root.bp"
@@ -1036,6 +1043,14 @@ func (c *configImpl) KatiArgs() []string {
 
 func (c *configImpl) Parallel() int {
 	return c.parallel
+}
+
+func (c *configImpl) GetIncludeTags() []string {
+	return c.includeTags
+}
+
+func (c *configImpl) SetIncludeTags(i []string) {
+	c.includeTags = i
 }
 
 func (c *configImpl) HighmemParallel() int {
