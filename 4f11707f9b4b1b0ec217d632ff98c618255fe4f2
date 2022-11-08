@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3476784_714189f0",
+        "filename": "shared/proto.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-08T16:56:50Z",
+      "side": 1,
+      "message": "btw is the file a .json file?",
+      "revId": "4f11707f9b4b1b0ec217d632ff98c618255fe4f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
