@@ -39,6 +39,30 @@
       },
       "revId": "ad1a5e43904c2bb1aa871f565503e19c277b3ddc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada7d8a3_52252981",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-08T02:20:48Z",
+      "side": 1,
+      "message": "What would be the benefit of it? I think it would be better avoid to add more codes to existing DepsMutator if possible, as it is already big enough.",
+      "parentUuid": "f6fab8a0_f7ff5e5f",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "ad1a5e43904c2bb1aa871f565503e19c277b3ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
