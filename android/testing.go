@@ -557,10 +557,48 @@ func (ctx *TestContext) ModuleVariantForTests(name string, matchVariations map[s
 	return newTestingModule(ctx.config, modules[0])
 }
 
+func (ctx *TestContext) Namespace(dir string) *Namespace {
+	ns := ctx.NameResolver.findNamespace(dir)
+	if ns == nil {
+		panic(fmt.Errorf("cannot find namespace %q", dir))
+	}
+	return ns
+}
+
 func (ctx *TestContext) ModuleForTests(name, variant string) TestingModule {
 	var module Module
+
+	var matchFunc func(m blueprint.Module) bool
+
+	pkg, moduleName, fullyQualified := ctx.NameResolver.parseFullyQualifiedName(name)
+	var namespace *Namespace
+	if fullyQualified {
+		var found bool
+		namespace, found = ctx.NameResolver.namespaceAt(pkg)
+		if !found {
+			panic(fmt.Errorf("unknown namespace %q in %q", pkg, name))
+		}
+		matchFunc = func(m blueprint.Module) bool {
+			moduleDir := ctx.ModuleDir(m)
+			moduleNamespace := ctx.Namespace(moduleDir)
+			return ctx.ModuleName(m) == moduleName && ctx.ModuleSubDir(m) == variant && moduleNamespace == namespace
+		}
+	} else {
+		matchFunc = func(m blueprint.Module) bool {
+			return ctx.ModuleName(m) == name && ctx.ModuleSubDir(m) == variant
+		}
+	}
+
 	ctx.VisitAllModules(func(m blueprint.Module) {
-		if ctx.ModuleName(m) == name && ctx.ModuleSubDir(m) == variant {
+		if matchFunc(m) {
+			if module != nil {
+				moduleDir := ctx.ModuleDir(module)
+				mDir := ctx.ModuleDir(m)
+				panic(fmt.Errorf(`duplicate modules called %[1]q found, one in %[2]q, another in %[3]q
+    use result.ModuleForTests("//%[2]s:%[1]s", "%[4]s")
+     or result.ModuleForTests("//%[3]s:%[1]s", "%[4]s")`,
+					name, moduleDir, mDir, variant))
+			}
 			module = m.(Module)
 		}
 	})

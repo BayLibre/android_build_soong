@@ -209,6 +209,37 @@ func TestDependingOnModuleByFullyQualifiedReference(t *testing.T) {
 	}
 }
 
+func TestNamespace_ModuleForTestsIsNamespaceAware(t *testing.T) {
+	result := GroupFixturePreparers(
+		prepareForTestWithNamespace,
+		dirBpToPreparer(map[string]string{
+			"dir1": `
+				soong_namespace {
+				}
+				test_module {
+					name: "a",
+					id: "1",
+				}
+			`,
+			"dir2": `
+				soong_namespace {
+				}
+				test_module {
+					name: "a",
+					id: "2",
+				}
+			`,
+		}),
+	).RunTest(t)
+
+	// The name is ambiguous as there are multiple modules with the same name in different namespaces.
+	AssertPanicMessageContains(t, "duplicate modules", `duplicate modules called "a" found`, func() {
+		result.Module("a", "")
+	})
+	AssertStringEquals(t, "//dir1:a id", "1", result.Module("//dir1:a", "").(*testModule).properties.Id)
+	AssertStringEquals(t, "//dir2:a id", "2", result.Module("//dir2:a", "").(*testModule).properties.Id)
+}
+
 func TestSameNameInTwoNamespaces(t *testing.T) {
 	result := GroupFixturePreparers(
 		prepareForTestWithNamespace,
@@ -569,9 +600,9 @@ func TestConsistentNamespaceNames(t *testing.T) {
 		}),
 	).RunTest(t)
 
-	ns1, _ := result.NameResolver.namespaceAt("dir1")
-	ns2, _ := result.NameResolver.namespaceAt("dir2")
-	ns3, _ := result.NameResolver.namespaceAt("dir3")
+	ns1 := result.Namespace("dir1")
+	ns2 := result.Namespace("dir2")
+	ns3 := result.Namespace("dir3")
 	actualIds := []string{ns1.id, ns2.id, ns3.id}
 	expectedIds := []string{"1", "2", "3"}
 	if !reflect.DeepEqual(actualIds, expectedIds) {
