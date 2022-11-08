@@ -46,9 +46,11 @@ type symlinkForestContext struct {
 	topdir  string // $TOPDIR
 
 	// State
-	wg    sync.WaitGroup
-	depCh chan string
-	okay  atomic.Bool // Whether the forest was successfully constructed
+	wg      sync.WaitGroup
+	depCh   chan string
+	mkdirCh chan struct{}
+	lnCh    chan struct{}
+	okay    atomic.Bool // Whether the forest was successfully constructed
 }
 
 // A simple thread pool to limit concurrency on system calls.
@@ -215,12 +217,13 @@ func readdirToMap(dir string) map[string]os.FileInfo {
 }
 
 // Creates a symbolic link at dst pointing to src
-func symlinkIntoForest(topdir, dst, src string) {
+func symlinkIntoForest(topdir, dst, src string, counter chan<- struct{}) {
 	err := os.Symlink(shared.JoinPath(topdir, src), shared.JoinPath(topdir, dst))
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Cannot create symlink at '%s' pointing to '%s': %s", dst, src, err)
+		_, _ = fmt.Fprintf(os.Stderr, "Cannot create symlink at '%s' pointing to '%s': %s", dst, src, err)
 		os.Exit(1)
 	}
+	counter <- struct{}{}
 }
 
 func isDir(path string, fi os.FileInfo) bool {
@@ -288,6 +291,7 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 		fmt.Fprintf(os.Stderr, "Cannot mkdir '%s': %s\n", forestDir, err)
 		os.Exit(1)
 	}
+	context.mkdirCh <- struct{}{}
 
 	for f := range allEntries {
 		if f[0] == '.' {
@@ -317,7 +321,7 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 
 		if instructionsChild != nil && instructionsChild.excluded {
 			if bExists {
-				symlinkIntoForest(context.topdir, forestChild, buildFilesChild)
+				go symlinkIntoForest(context.topdir, forestChild, buildFilesChild, context.lnCh)
 			}
 			continue
 		}
@@ -333,7 +337,7 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 				go plantSymlinkForestRecursive(context, instructionsChild, forestChild, buildFilesChild, srcChild)
 			} else {
 				// Not in the source tree, symlink BUILD file
-				symlinkIntoForest(context.topdir, forestChild, buildFilesChild)
+				go symlinkIntoForest(context.topdir, forestChild, buildFilesChild, context.lnCh)
 			}
 		} else if !bExists {
 			if sDir && instructionsChild != nil {
@@ -343,7 +347,7 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 				go plantSymlinkForestRecursive(context, instructionsChild, forestChild, buildFilesChild, srcChild)
 			} else {
 				// Not in the build file tree, symlink source tree, carry on
-				symlinkIntoForest(context.topdir, forestChild, srcChild)
+				go symlinkIntoForest(context.topdir, forestChild, srcChild, context.lnCh)
 			}
 		} else if sDir && bDir {
 			// Both are directories. Descend.
@@ -421,11 +425,14 @@ func removeParallel(path string) {
 // "srcDir" while excluding paths listed in "exclude". Returns the set of paths
 // under srcDir on which readdir() had to be called to produce the symlink
 // forest.
-func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles string, exclude []string) []string {
+func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles string, exclude []string) (deps []string, mkdirCount, lnCount uint64) {
+	N := 16
 	context := &symlinkForestContext{
 		verbose: verbose,
 		topdir:  topdir,
-		depCh:   make(chan string),
+		depCh:   make(chan string, N),
+		mkdirCh: make(chan struct{}, N),
+		lnCh:    make(chan struct{}, N),
 	}
 
 	context.okay.Store(true)
@@ -433,21 +440,31 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 	removeParallel(shared.JoinPath(topdir, forest))
 
 	instructions := instructionsFromExcludePathList(exclude)
+	done := make(chan struct{})
 	go func() {
 		context.wg.Add(1)
 		plantSymlinkForestRecursive(context, instructions, forest, buildFiles, ".")
 		context.wg.Wait()
-		close(context.depCh)
+		done <- struct{}{}
 	}()
 
-	deps := make([]string, 0)
-	for dep := range context.depCh {
-		deps = append(deps, dep)
+FOR:
+	for {
+		select {
+		case dep := <-context.depCh:
+			deps = append(deps, dep)
+		case <-context.lnCh:
+			lnCount++
+		case <-context.mkdirCh:
+			mkdirCount++
+		case <-done:
+			break FOR
+		}
 	}
 
 	if !context.okay.Load() {
 		os.Exit(1)
 	}
 
-	return deps
+	return
 }
