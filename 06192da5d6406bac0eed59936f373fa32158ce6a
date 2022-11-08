@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ff3362_3c9da8b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-11-08T22:57:48Z",
+      "side": 1,
+      "message": "LGTM\n\nSome suggestions as to helping bring down visual noise and split concerns",
+      "revId": "06192da5d6406bac0eed59936f373fa32158ce6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60190640_cccd39a7",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-11-08T22:57:48Z",
+      "side": 1,
+      "message": "`isUnsanitizedVariant` was touched only insofar as renaming `self` from `sanitize` to `s`. While very welcome, would it not also thus make sense to do so for `isVariantOnProductionDevice`, `SetSanitizer`, `isSantizier`, etc.\n\nWhat I\u0027m getting at is that perhaps a trivial CL doing a straight renaming of `sanitize` to `s` whenever used as receiver would make sense in isolating this before then having this CL which already follows the `s` convention.",
+      "revId": "06192da5d6406bac0eed59936f373fa32158ce6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ff18f2_e7b4f583",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-11-08T22:57:48Z",
+      "side": 1,
+      "message": "(cf. comment below re: `props :\u003d \u0026....`)",
+      "revId": "06192da5d6406bac0eed59936f373fa32158ce6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c69404_eda4dfd4",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-11-08T22:57:48Z",
+      "side": 1,
+      "message": "Would it be bad to factor out all of the `sanitize.Properties.SanitizeMutated.*` with `props :\u003d \u0026sanitize.Properties.SanitizeMutated`, and then just reference it below? In truth, this pattern would add clarity throughout this file, cutting down on visual noise; but I don\u0027t know what the Google `Go` style guide would advise in this situation. None of `go/go-style/{guide,decisions,best-practices}` seem to mention this case, though of course short receiver names are encouraged.",
+      "revId": "06192da5d6406bac0eed59936f373fa32158ce6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
