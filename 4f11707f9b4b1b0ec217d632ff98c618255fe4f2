@@ -34,6 +34,24 @@
       "parentUuid": "e3476784_714189f0",
       "revId": "4f11707f9b4b1b0ec217d632ff98c618255fe4f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e001d17f_c113243e",
+        "filename": "shared/proto.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-08T20:06:51Z",
+      "side": 1,
+      "message": "yaml then (but probably by accident only)",
+      "parentUuid": "4757fd1f_f0fed27e",
+      "revId": "4f11707f9b4b1b0ec217d632ff98c618255fe4f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
