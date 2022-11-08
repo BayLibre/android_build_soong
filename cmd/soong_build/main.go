@@ -601,6 +601,7 @@ func bazelArtifacts() []string {
 		"bazel-genfiles",
 		"bazel-out",
 		"bazel-testlogs",
+		"bazel-workspace",
 		"bazel-" + filepath.Base(topDir),
 	}
 }
