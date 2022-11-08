@@ -34,6 +34,24 @@
       "parentUuid": "04fb7fb6_89964df8",
       "revId": "4d8c75df7b61925f69fbe783b00afd158e9aaa3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb5e0ce_623907c8",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-08T17:07:50Z",
+      "side": 1,
+      "message": "I could flatten the if list here and nest it in the following change but it doesn\u0027t make any difference in the end result.",
+      "parentUuid": "9b7a6aa4_9dea78a6",
+      "revId": "4d8c75df7b61925f69fbe783b00afd158e9aaa3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
