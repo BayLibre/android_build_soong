@@ -247,7 +247,7 @@ func runApiBp2build(configuration android.Config, ctx *android.Context, extraNin
 	excludes = append(excludes, configuration.OutDir())
 
 	// Create the symlink forest
-	symlinkDeps := bp2build.PlantSymlinkForest(
+	symlinkDeps, _, _ := bp2build.PlantSymlinkForest(
 		configuration.IsEnvTrue("BP2BUILD_VERBOSE"),
 		topDir,
 		workspace,
@@ -652,28 +652,32 @@ func runSymlinkForestCreation(configuration android.Config, ctx *android.Context
 		excludes = append(excludes, pathsToIgnoredBuildFiles...)
 		excludes = append(excludes, getTemporaryExcludes()...)
 
+		codegenMetrics := bp2build.ReadCodegenMetrics(metricsDir)
+		if codegenMetrics == nil {
+			m := bp2build.CreateCodegenMetrics()
+			codegenMetrics = &m
+		} else {
+			//TODO (usta) we cannot determine if we loaded a stale file, i.e. from an unrelated prior
+			//invocation of codegen. We should simply use a separate .pb file
+		}
 		// PlantSymlinkForest() returns all the directories that were readdir()'ed.
 		// Such a directory SHOULD be added to `ninjaDeps` so that a child directory
-		// or file created/deleted under it would trigger an update of the symlink forest.
+		// or file created/deleted under it would trigger an update of the symlink
+		// forest.
+		var symlinkForestDeps []string
+		var mkdirCount, lnCount uint64
 		ctx.EventHandler.Do("plant", func() {
-			symlinkForestDeps := bp2build.PlantSymlinkForest(
+			symlinkForestDeps, mkdirCount, lnCount = bp2build.PlantSymlinkForest(
 				configuration.IsEnvTrue("BP2BUILD_VERBOSE"), topDir, workspaceRoot, generatedRoot, excludes)
-			ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
 		})
+		ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
+		codegenMetrics.SetMkDirCount(mkdirCount)
+		codegenMetrics.SetSymlinkCount(lnCount)
 
 		writeDepFile(symlinkForestMarker, ctx.EventHandler, ninjaDeps)
 		touch(shared.JoinPath(topDir, symlinkForestMarker))
+		writeBp2BuildMetrics(codegenMetrics, ctx.EventHandler, metricsDir)
 	})
-	codegenMetrics := bp2build.ReadCodegenMetrics(metricsDir)
-	if codegenMetrics == nil {
-		m := bp2build.CreateCodegenMetrics()
-		codegenMetrics = &m
-	} else {
-		//TODO (usta) we cannot determine if we loaded a stale file, i.e. from an unrelated prior
-		//invocation of codegen. We should simply use a separate .pb file
-	}
-	writeBp2BuildMetrics(codegenMetrics, ctx.EventHandler, metricsDir)
-
 	return symlinkForestMarker
 }
 
