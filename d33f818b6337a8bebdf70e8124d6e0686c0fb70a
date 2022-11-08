@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07be3530_6211b75c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-08T02:39:13Z",
+      "side": 1,
+      "message": "also update `TestApexImageInMixedBuilds` in `apex_test.go`: https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex_test.go;l\u003d9749;drc\u003d0c9a276dedcf24ab0708b6c263dff15481b70d21",
+      "revId": "d33f818b6337a8bebdf70e8124d6e0686c0fb70a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
