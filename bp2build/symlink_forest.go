@@ -216,8 +216,45 @@ func readdirToMap(dir string) map[string]os.FileInfo {
 
 // Creates a symbolic link at dst pointing to src
 func symlinkIntoForest(topdir, dst, src string) {
-	err := os.Symlink(shared.JoinPath(topdir, src), shared.JoinPath(topdir, dst))
-	if err != nil {
+	srcPath := shared.JoinPath(topdir, src)
+	dstPath := shared.JoinPath(topdir, dst)
+
+	// Check if a symlink already exists. Remove it and recreate the symlink
+	// if the old symlink is pointing to the wrong place.
+	linkInfo, err := os.Lstat(dstPath)
+	if err == nil {
+		if linkInfo.Mode()&os.ModeSymlink == 0 {
+			//not a link, delete it
+			removeParallel(dstPath)
+		} else {
+			// TODO (usta):
+			// if a link exists the only reason it is not pointing at src
+			// would be because it was manually tampered with, e.g. OUT_DIR is
+			// pointing to the output from a different source tree.
+			// Should handle that by doing a removeAll() on the root of the
+			// workspace from the top once, instead of checking each ling?
+			if origSrcPath, err := os.Readlink(dstPath); err == nil {
+				if origSrcPath == srcPath {
+					// Symlink already exists and is pointing to the right place.
+					return
+				} else {
+					if err := os.Remove(dstPath); err != nil {
+						fmt.Fprintf(os.Stderr, "Cannot unlink '%s': %s\n", dstPath, err)
+						os.Exit(1)
+					}
+				}
+			} else {
+				fmt.Fprintf(os.Stderr, "Cannot resolve existing symlink at '%s': %s", dstPath, err)
+				os.Exit(1)
+			}
+		}
+	} else if !os.IsNotExist(err) {
+		fmt.Fprintf(os.Stderr, "Cannot determine if symlink exists at '%s': %s", dst, err)
+		os.Exit(1)
+	}
+
+	// Create symlink.
+	if err := os.Symlink(srcPath, dstPath); err != nil {
 		fmt.Fprintf(os.Stderr, "Cannot create symlink at '%s' pointing to '%s': %s", dst, src, err)
 		os.Exit(1)
 	}
@@ -251,7 +288,9 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 	defer context.wg.Done()
 
 	if instructions != nil && instructions.excluded {
-		// This directory is not needed, bail out
+		// Excluded paths are skipped at the level of the non-excluded parent.
+		fmt.Fprintf(os.Stderr, "may not specify a root-level exclude directory")
+		context.okay.Store(false)
 		return
 	}
 
@@ -270,6 +309,12 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 				renamingBuildFile = true
 				srcDirMap["BUILD.bazel"] = srcDirMap["BUILD"]
 				delete(srcDirMap, "BUILD")
+				if instructions != nil {
+					if _, ok := instructions.children["BUILD"]; ok {
+						instructions.children["BUILD.bazel"] = instructions.children["BUILD"]
+						delete(instructions.children, "BUILD")
+					}
+				}
 			}
 		}
 	}
@@ -278,21 +323,40 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 	for n := range srcDirMap {
 		allEntries[n] = struct{}{}
 	}
-
 	for n := range buildFilesMap {
 		allEntries[n] = struct{}{}
 	}
 
-	err := os.MkdirAll(shared.JoinPath(context.topdir, forestDir), 0777)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Cannot mkdir '%s': %s\n", forestDir, err)
-		os.Exit(1)
+	fullForestPath := shared.JoinPath(context.topdir, forestDir)
+	createForestDir := false
+	if fi, err := os.Lstat(fullForestPath); err != nil {
+		if os.IsNotExist(err) {
+			createForestDir = true
+		} else {
+			fmt.Fprintf(os.Stderr, "Could not read info for '%s': %s\n", forestDir, err)
+		}
+	} else if fi.Mode()&os.ModeSymlink != 0 || fi.Mode()&os.ModeDir == 0 {
+		removeParallel(fullForestPath)
+		createForestDir = true
 	}
+	if createForestDir {
+		if err := os.MkdirAll(fullForestPath, 0777); err != nil {
+			fmt.Fprintf(os.Stderr, "Could not mkdir '%s': %s\n", forestDir, err)
+			os.Exit(1)
+		}
+	}
+
+	// Start with a list of items that already exist in the forest, and remove
+	// each element as it is processed in allEntries. Any remaining items in
+	// forestMapForDeletion must be removed. (This handles files which were
+	// removed since the previous forest generation).
+	forestMapForDeletion := readdirToMap(shared.JoinPath(context.topdir, forestDir))
 
 	for f := range allEntries {
 		if f[0] == '.' {
 			continue // Ignore dotfiles
 		}
+		delete(forestMapForDeletion, f)
 
 		// The full paths of children in the input trees and in the output tree
 		forestChild := shared.JoinPath(forestDir, f)
@@ -303,13 +367,9 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 		buildFilesChild := shared.JoinPath(buildFilesDir, f)
 
 		// Descend in the instruction tree if it exists
-		var instructionsChild *instructionsNode = nil
+		var instructionsChild *instructionsNode
 		if instructions != nil {
-			if f == "BUILD.bazel" && renamingBuildFile {
-				instructionsChild = instructions.children["BUILD"]
-			} else {
-				instructionsChild = instructions.children[f]
-			}
+			instructionsChild = instructions.children[f]
 		}
 
 		srcChildEntry, sExists := srcDirMap[f]
@@ -356,8 +416,7 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 			// The Android.bp file that codegen used to produce `buildFilesChild` is
 			// already a dependency, we can ignore `buildFilesChild`.
 			context.depCh <- srcChild
-			err = mergeBuildFiles(shared.JoinPath(context.topdir, forestChild), srcBuildFile, generatedBuildFile, context.verbose)
-			if err != nil {
+			if err := mergeBuildFiles(shared.JoinPath(context.topdir, forestChild), srcBuildFile, generatedBuildFile, context.verbose); err != nil {
 				fmt.Fprintf(os.Stderr, "Error merging %s and %s: %s",
 					srcBuildFile, generatedBuildFile, err)
 				context.okay.Store(false)
@@ -369,6 +428,21 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 				srcChild, buildFilesChild)
 			context.okay.Store(false)
 		}
+	}
+
+	// Remove all files in the forest that exist in neither the source
+	// tree nor the build files tree. (This handles files which were removed
+	// since the previous forest generation).
+	for f := range forestMapForDeletion {
+		instructionsChild := instructions.children[f]
+
+		if instructionsChild != nil && instructionsChild.excluded {
+			// This directory may be excluded because bazel writes to it under the
+			// forest root. Thus this path is intentionally left alone.
+			continue
+		}
+		forestChild := shared.JoinPath(context.topdir, forestDir, f)
+		removeParallel(forestChild)
 	}
 }
 
@@ -429,8 +503,6 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 	}
 
 	context.okay.Store(true)
-
-	removeParallel(shared.JoinPath(topdir, forest))
 
 	instructions := instructionsFromExcludePathList(exclude)
 	go func() {
