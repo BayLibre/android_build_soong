@@ -16,6 +16,29 @@
       "message": "I updated to add dependency directly, rather than using PathDeps, because current approach requires cc_api_variant to create variants for all matching cc_api_library variants.",
       "revId": "ad1a5e43904c2bb1aa871f565503e19c277b3ddc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6fab8a0_f7ff5e5f",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-08T02:17:34Z",
+      "side": 1,
+      "message": "Can this go in DepsMutator instead of creating a new mutator?",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "ad1a5e43904c2bb1aa871f565503e19c277b3ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
