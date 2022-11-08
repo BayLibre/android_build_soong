@@ -70,6 +70,24 @@
       "parentUuid": "bdb5e0ce_623907c8",
       "revId": "4d8c75df7b61925f69fbe783b00afd158e9aaa3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e22767d_c91579f2",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-08T17:49:45Z",
+      "side": 1,
+      "message": "https://r.android.com/2287718",
+      "parentUuid": "88e7dcec_3f2d10a5",
+      "revId": "4d8c75df7b61925f69fbe783b00afd158e9aaa3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
