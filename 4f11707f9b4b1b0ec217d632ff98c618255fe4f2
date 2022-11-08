@@ -16,6 +16,24 @@
       "message": "btw is the file a .json file?",
       "revId": "4f11707f9b4b1b0ec217d632ff98c618255fe4f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4757fd1f_f0fed27e",
+        "filename": "shared/proto.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-08T17:29:24Z",
+      "side": 1,
+      "message": "No, it\u0027s a textual protobuf file. It looks like this:\n```\nmodules: 52437\nvariants: 95183\ntotal_alloc_count: 502279812\ntotal_alloc_size: 42436892720\nmax_heap_size: 13047595008\nevents: {\n  description: \"mixed_build.list_modules\"\n  name: \"soong_build\"\n  start_time: 1667829679827741981\n  real_time: 8722190\n}\n...\n```",
+      "parentUuid": "e3476784_714189f0",
+      "revId": "4f11707f9b4b1b0ec217d632ff98c618255fe4f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

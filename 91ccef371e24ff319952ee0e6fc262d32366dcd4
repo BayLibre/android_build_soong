@@ -124,6 +124,24 @@
       "parentUuid": "82c3cf35_f558ad96",
       "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3ef98a_3070e1a5",
+        "filename": "android/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-08T17:29:24Z",
+      "side": 1,
+      "message": "\u003e We store the entire logs directory.\n\nAh. I understand. On the CI the LOG_DIR directory is a sub-directory of the DIST_DIR directory which is why it is stored. However, on a standard developer build LOG_DIR is basically OUT_DIR.\n\nSo, we could just write the `.txt` files to OUT_DIR which on developer builds is the same as LOG_DIR and then it wouldn\u0027t be stored.\n\n\u003e \"here is how to convert a proto file to text in general\"\n\nIf there is an existing command line tool that you can run and pass the proto definition and the .pb file to and have it output the text that would be ok.\n\nHowever, I could not find any mention of such a tool in the page you linked to which makes me think that you are talking about having anyone who wants to see the code write some Go code to output the metrics as text, basically what I have already written. That seems like a waste of time to me. Better to do it once and reuse it, even if it is behind a flag that needs to be turned on.\n\nYou mentioned in another change that it is useful to be able to compare the text version before and after a change to metrics to make sure that nothing has broken. That is definitely very valuable and the easier we make it the more likely that developers will do it and less likely that the metrics will be broken.",
+      "parentUuid": "a0824fef_d3d6f884",
+      "revId": "91ccef371e24ff319952ee0e6fc262d32366dcd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
