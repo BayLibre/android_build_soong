@@ -157,7 +157,7 @@ func runBp2BuildTestCaseWithSetup(t *testing.T, setup func(ctx *android.TestCont
 	if tc.Dir != "" {
 		checkDir = tc.Dir
 	}
-	codegenCtx := NewCodegenContext(config, ctx.Context, Bp2Build)
+	codegenCtx := NewCodegenContext(config, ctx.Context, Bp2Build, "")
 	codegenCtx.unconvertedDepMode = tc.UnconvertedDepsMode
 	bazelTargets, errs := generateBazelTargetsForDir(codegenCtx, checkDir)
 	if tc.ExpectedErr != nil {
