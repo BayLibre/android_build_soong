@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9088ed85_b74363ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T10:19:37Z",
+      "side": 1,
+      "message": "How did you find this?\n\nI admit that I didn\u0027t quite know what I was doing here and just relied on presubmits to catch any grave mistakes I made. From first principles, not propagating the sanitizer bits unless it\u0027s explicitly necessary seems like a good idea.",
+      "revId": "010089e40ecdd7d8ea9fdd7cf4678191f4a90483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c302bf9_b0e63bc8",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T10:19:37Z",
+      "side": 1,
+      "message": "nit: `shouldPropagateToSharedLibraryDeps`? (and maybe a comment; this area is complicated enough that excessive commenting seems advisable)",
+      "range": {
+        "startLine": 174,
+        "startChar": 23,
+        "endLine": 174,
+        "endChar": 44
+      },
+      "revId": "010089e40ecdd7d8ea9fdd7cf4678191f4a90483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37e1b2e_b75cc543",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T10:19:37Z",
+      "side": 1,
+      "message": "You mean to shared dependencies? (or \"from reverse dependencies\"?)",
+      "range": {
+        "startLine": 1141,
+        "startChar": 32,
+        "endLine": 1141,
+        "endChar": 36
+      },
+      "revId": "010089e40ecdd7d8ea9fdd7cf4678191f4a90483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
