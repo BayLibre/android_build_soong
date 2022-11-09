@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d2d560f_77dd7fbe",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-09T16:05:20Z",
+      "side": 1,
+      "message": "dstPath may not be guaranteed to be a symlink, e.g. say it\u0027s a BUILD file that was the result of a merge from out/bp2build/x/BUILD.bazel and x/BUILD and then x/BUILD was removed - we\u0027d now delete the file and replace it with a link.\nCan you check it this scenario works?",
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea693691_cb899d5c",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
@@ -31,6 +48,30 @@
       "writtenOn": "2022-11-09T10:42:18Z",
       "side": 1,
       "message": "What does this code do anyway? My understanding is that line 296 gets executed when there is a BUILD file in the source tree and a BUILD.bazel file in the bp2build tree, but then\n\n1. Isn\u0027t the right thing to do to overwrite the source BUILD file with the generated BUILD.bazel file?\n2. What does line 297 accomplish? We won\u0027t be able to `read()` the `BUILD.bazel` file in the source tree even though it\u0027s in the readdir map...",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 18
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00fa3fd1_854b2904",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-09T16:05:20Z",
+      "side": 1,
+      "message": "-1\nThe source BUILD file may also be merged depending upon allowlist.ShouldKeepExistingBuildFile\nline 297 (based on my reading of the code) simply normalizes the keys so that the union set of keys in buildFilesMap and keys in srcDirMap collide",
+      "parentUuid": "ea693691_cb899d5c",
       "range": {
         "startLine": 292,
         "startChar": 1,
@@ -66,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b047f952_11a810f2",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-09T16:05:20Z",
+      "side": 1,
+      "message": "+1\nwouldn\u0027t this work?\n```\nif instructions !\u003d nil \u0026\u0026 renamingBuildFile {\n  instructions.children[\"BUILD.bazel\"] \u003d instructions.children[\"BUILD\"]\n  delete(instructions.children, \"BUILD\")\n}\n```",
+      "parentUuid": "2f219cd0_675d2646",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 21
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6210c3f6_cce1b82b",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
@@ -89,6 +154,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be33217d_a5e90429",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-09T16:05:20Z",
+      "side": 1,
+      "message": "-1\nI think this is always being called after verifying the forestDir is a directory.\nOtherwise readdirToMap() would already have failed, nope?",
+      "parentUuid": "6210c3f6_cce1b82b",
+      "range": {
+        "startLine": 322,
+        "startChar": 11,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b7943e_881a26c9",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-09T16:05:20Z",
+      "side": 1,
+      "message": "Can there be \u0027.\u0027-prefixed files/dirs in forestDir itself, of course it couldn\u0027t have been cloned over from \"allEntries\" but maybe bazel or some python script would have generate (e.g. .pytest_cache)? Would we want to delete them or keep them? (delete seems to be the choice made here - and probably rightly)",
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86e6809e_c7d0370a",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
@@ -100,6 +206,30 @@
       "writtenOn": "2022-11-09T10:42:18Z",
       "side": 1,
       "message": "nit: is \"nor\" grammatically correct here? (/me can\u0027t English)",
+      "range": {
+        "startLine": 411,
+        "startChar": 9,
+        "endLine": 411,
+        "endChar": 12
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "374a8ca7_0718ea68",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-09T16:05:20Z",
+      "side": 1,
+      "message": "+100",
+      "parentUuid": "86e6809e_c7d0370a",
       "range": {
         "startLine": 411,
         "startChar": 9,
@@ -175,6 +305,47 @@
         "endLine": 422,
         "endChar": 21
       },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec6cc9e8_f77ab4d5",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-09T16:05:20Z",
+      "side": 1,
+      "message": "but a simple goroutine invocation without pool-size limitation (or a go chan write that checks concurrent executions) can fail, nope?",
+      "parentUuid": "bb20af25_6d993471",
+      "range": {
+        "startLine": 422,
+        "startChar": 15,
+        "endLine": 422,
+        "endChar": 21
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d61e13_0867b44d",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-09T16:05:20Z",
+      "side": 1,
+      "message": "what is this?",
       "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
