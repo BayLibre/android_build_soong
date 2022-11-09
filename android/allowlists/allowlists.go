@@ -176,7 +176,7 @@ var (
 		"external/zopfli":                        Bp2BuildDefaultTrueRecursively,
 		"external/zstd":                          Bp2BuildDefaultTrueRecursively,
 
-		"frameworks/av":                                      Bp2BuildDefaultTrue,
+		"frameworks/av": Bp2BuildDefaultTrue,
 		"frameworks/av/media/codec2/components/aom":          Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/media/codecs":                         Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/media/liberror":                       Bp2BuildDefaultTrueRecursively,
@@ -1346,5 +1346,5 @@ var (
 	// Staging-mode allowlist. Modules in this list are only built
 	// by Bazel with --bazel-mode-staging. This list should contain modules
 	// which will soon be added to the prod allowlist.
-	StagingMixedBuildsEnabledList = []string{}
+	StagingMixedBuildsEnabledList = []string{"com.android.tzdata"}
 )
