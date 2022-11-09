@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "944e0ad2_74f7f298",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T10:42:18Z",
+      "side": 1,
+      "message": "As requested, meticulous code review delivered.\n\nI\u0027d also add some test cases under `build/soong/tests` because this is difficult to get right and also causes correctness issues. At the very least one test case for every issue I pointed out, especially if it\u0027s actually an issue.\n\nThe time improvement is really impressive. Do you know why it happens? Especially in the clean case, where the number of syscalls actually increases (`lstat()` + `symlink()` instead of just `symlink()`",
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea693691_cb899d5c",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T10:42:18Z",
+      "side": 1,
+      "message": "What does this code do anyway? My understanding is that line 296 gets executed when there is a BUILD file in the source tree and a BUILD.bazel file in the bp2build tree, but then\n\n1. Isn\u0027t the right thing to do to overwrite the source BUILD file with the generated BUILD.bazel file?\n2. What does line 297 accomplish? We won\u0027t be able to `read()` the `BUILD.bazel` file in the source tree even though it\u0027s in the readdir map...",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 18
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f219cd0_675d2646",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T10:42:18Z",
+      "side": 1,
+      "message": "nit: AFAIU this is the only time this particular node is processed, so you can modify it in-place",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 21
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6210c3f6_cce1b82b",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T10:42:18Z",
+      "side": 1,
+      "message": "This will break if `shared.JoinPath(context.topdir, forestDir)` exists, but is a file, not a directory",
+      "range": {
+        "startLine": 322,
+        "startChar": 11,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e6809e_c7d0370a",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T10:42:18Z",
+      "side": 1,
+      "message": "nit: is \"nor\" grammatically correct here? (/me can\u0027t English)",
+      "range": {
+        "startLine": 411,
+        "startChar": 9,
+        "endLine": 411,
+        "endChar": 12
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee9a47c_999a4f0d",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T10:42:18Z",
+      "side": 1,
+      "message": "Thanks for this comment, I was wondering 😊",
+      "range": {
+        "startLine": 417,
+        "startChar": 45,
+        "endLine": 417,
+        "endChar": 63
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb20af25_6d993471",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T10:42:18Z",
+      "side": 1,
+      "message": "opt: wanna farm this out to a separate goroutine for a little bit more efficiency?\n\n(it\u0027s opt because it\u0027s a rare occasion that a lot of deletion will be done here so the performance benefits probably do not outweigh the cost of the complexity in the code)",
+      "range": {
+        "startLine": 422,
+        "startChar": 15,
+        "endLine": 422,
+        "endChar": 21
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4d9e17d_098f2923",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T10:42:18Z",
+      "side": 1,
+      "message": "You can\u0027t call `os.Remove()` here because it\u0027s not guaranteed that it\u0027s a file or an empty directory. Use `os.RemoveAll()` (or `removeParallel()` if you fancy)",
+      "range": {
+        "startLine": 422,
+        "startChar": 15,
+        "endLine": 422,
+        "endChar": 21
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
