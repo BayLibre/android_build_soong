@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d98cfb8_6f481107",
+        "filename": "cc/afdo_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-11-09T01:13:16Z",
+      "side": 1,
+      "message": "Can we check if libFoo and libBar has the correct flags here too?",
+      "revId": "92778734a631d78c9bc341b44124755fe5c74a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d91e9c0_811cac7a",
+        "filename": "cc/afdo_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-11-09T01:13:16Z",
+      "side": 1,
+      "message": "IIUC, setting `afdo: true` doesn\u0027t stop the propagation of afdo profile from libTest to libBar. Most of this test doesn\u0027t seem to assume that. Is that true?",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "92778734a631d78c9bc341b44124755fe5c74a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664a298f_4fbbed2d",
+        "filename": "cc/afdo_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-11-09T01:13:16Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be \"android_arm64_armv8-a_static_afdo-libTest\" so that later we can test if we have an afdo variant of libBar?",
+      "range": {
+        "startLine": 107,
+        "startChar": 43,
+        "endLine": 107,
+        "endChar": 73
+      },
+      "revId": "92778734a631d78c9bc341b44124755fe5c74a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "582c6c9b_d7cc50b6",
+        "filename": "cc/afdo_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-11-09T01:13:16Z",
+      "side": 1,
+      "message": "Can we move this function outside of this test to be reused in this test and the test above?",
+      "revId": "92778734a631d78c9bc341b44124755fe5c74a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
