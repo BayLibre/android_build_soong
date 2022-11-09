@@ -16,6 +16,24 @@
       "message": "So this change is to support capturing imported headers from outer trees by apisurface, right? I don\u0027t think we need this, because `GlobHeadersForSnapshot` is for VSDK snapshots (VNDK, vendor, recovery, etc.) which don\u0027t expect to capture other API surfaces\u0027 headers.\n\nCorrect me if I\u0027m wrong",
       "revId": "925cb2a82248fc9efe9948d4edeeb42910b75628",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e88ca66c_48817277",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-11-09T01:44:11Z",
+      "side": 1,
+      "message": "(unmarking resolved)",
+      "parentUuid": "071861b7_b1d948bc",
+      "revId": "925cb2a82248fc9efe9948d4edeeb42910b75628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
