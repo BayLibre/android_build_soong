@@ -150,6 +150,7 @@ func TestGetApexInfoParseResults(t *testing.T) {
 				`"package_name":"package.name",` +
 				`"symbols_used_by_apex": "path/to/my.apex_using.txt",` +
 				`"backing_libs":"path/to/backing.txt",` +
+				`"installed_files":"path/to/installed-files.txt",` +
 				`"provides_native_libs":[]}`,
 			expectedOutput: ApexInfo{
 				SignedOutput:      "my.apex",
@@ -161,6 +162,7 @@ func TestGetApexInfoParseResults(t *testing.T) {
 				PackageName:       "package.name",
 				SymbolsUsedByApex: "path/to/my.apex_using.txt",
 				BackingLibs:       "path/to/backing.txt",
+				InstalledFiles:    "path/to/installed-files.txt",
 			},
 		},
 	}
