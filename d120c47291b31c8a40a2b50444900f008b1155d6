@@ -88,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aaec452_e35e5a60",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-09T01:19:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "186ba492_ae718944",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 52
+      },
+      "revId": "d120c47291b31c8a40a2b50444900f008b1155d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0296a03d_5152b1d5",
