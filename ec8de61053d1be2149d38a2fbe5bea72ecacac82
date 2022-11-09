@@ -16,6 +16,24 @@
       "message": "update the test case in request_type_test.go",
       "revId": "ec8de61053d1be2149d38a2fbe5bea72ecacac82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1a9d35a_786926c7",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-09T14:28:56Z",
+      "side": 1,
+      "message": "given that everything is now using json.encode on the bazel side and decoding json on the Soong side, I\u0027m not sure what value we\u0027re getting from testing each field in a unit test.\n\nWill send a separate CL if it\u0027s a priority so we can get this submitted without a new +2.",
+      "parentUuid": "c98cc843_0cb59395",
+      "revId": "ec8de61053d1be2149d38a2fbe5bea72ecacac82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
