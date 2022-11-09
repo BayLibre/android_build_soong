@@ -135,6 +135,30 @@
       },
       "revId": "925cb2a82248fc9efe9948d4edeeb42910b75628",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc820f94_60c19a61",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-09T04:06:18Z",
+      "side": 1,
+      "message": "Ok. So, this is intended.",
+      "parentUuid": "1dd54a13_ee9a4de1",
+      "range": {
+        "startLine": 959,
+        "startChar": 28,
+        "endLine": 959,
+        "endChar": 49
+      },
+      "revId": "925cb2a82248fc9efe9948d4edeeb42910b75628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
