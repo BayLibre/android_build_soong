@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ade871f_80571ac6",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-09T09:03:29Z",
+      "side": 1,
+      "message": "gofmt made me make this change.",
+      "range": {
+        "startLine": 179,
+        "startChar": 19,
+        "endLine": 179,
+        "endChar": 38
+      },
+      "revId": "87a2c31ca97f0e40d9bb3a7da50bb7463d8ff092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
