@@ -34,6 +34,47 @@
       "parentUuid": "071861b7_b1d948bc",
       "revId": "925cb2a82248fc9efe9948d4edeeb42910b75628",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49aed18d_784db961",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-09T02:01:48Z",
+      "side": 1,
+      "message": "But we still need the fix to make it work in any environment while the feature is in the source tree.",
+      "parentUuid": "e88ca66c_48817277",
+      "revId": "925cb2a82248fc9efe9948d4edeeb42910b75628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c791ed33_c1aa2dee",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-09T02:01:48Z",
+      "side": 1,
+      "message": "I think ctx.Config().SoongOutDir() will be the same with the previous one (out/soong).",
+      "range": {
+        "startLine": 959,
+        "startChar": 28,
+        "endLine": 959,
+        "endChar": 49
+      },
+      "revId": "925cb2a82248fc9efe9948d4edeeb42910b75628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
