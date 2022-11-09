@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4f47094_a38e4989",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2022-11-09T00:14:33Z",
+      "side": 1,
+      "message": "I don\u0027t have verified permissions, so using code review for -1 now.\n\nIf you build for armv9 and cortex-a510, you will get the errors below:\n\nhttps://katb.in/sulapetuwok",
+      "revId": "6634b7eafbb1e66189a871a01cd59daf8e59bd1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
