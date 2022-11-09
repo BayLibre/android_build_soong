@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98cc843_0cb59395",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-11-09T00:29:07Z",
+      "side": 1,
+      "message": "update the test case in request_type_test.go",
+      "revId": "ec8de61053d1be2149d38a2fbe5bea72ecacac82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
