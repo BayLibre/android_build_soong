@@ -178,6 +178,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d122b2df_c3e14285",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-09T16:09:44Z",
+      "side": 1,
+      "message": "AFAICT the `readdirToMap()` calls operate on the source and build file directories not on the forest directory, don\u0027t they?",
+      "parentUuid": "be33217d_a5e90429",
+      "range": {
+        "startLine": 322,
+        "startChar": 11,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4b7943e_881a26c9",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
