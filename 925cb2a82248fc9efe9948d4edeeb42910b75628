@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e72521b6_10bfdd59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-09T02:24:21Z",
+      "side": 1,
+      "message": "Sorry, I did not provide sufficient context. The purpose of this CL is not to capture API headers. This CL attempts to fix incrementality issues in a multi-tree workspace.\n\nFor this hypothetical workflow,\n```\n$ rm rf -out\n$ multitree_build vendor/vendorimage # Step 1\n$ multitree_build vendor/vendorimage # Step 2\n```\n\nStep 2 currently regenerates the ninja file in the inner tree.\n\nThis is because `GlobHeadersForSnapshot` uses `ctx.GlobWithDeps`. This adds all the headers matching those patterns to the deps of `out/soong/build.ninja` (via `out/soong/globs/build/*`) This includes the headers for the dynamically generated `cc_api_library` module. My proposal is that we extend the ignore pattern for this globbing from `out/soong` (today) to `out/`. Then we can mount the generated `cc_api_library` Android.bp files to a subdirectory under `out/`, and this will not retrigger Soong analysis in Step 2.",
+      "parentUuid": "49aed18d_784db961",
+      "revId": "925cb2a82248fc9efe9948d4edeeb42910b75628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c791ed33_c1aa2dee",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -67,6 +85,30 @@
       "writtenOn": "2022-11-09T02:01:48Z",
       "side": 1,
       "message": "I think ctx.Config().SoongOutDir() will be the same with the previous one (out/soong).",
+      "range": {
+        "startLine": 959,
+        "startChar": 28,
+        "endLine": 959,
+        "endChar": 49
+      },
+      "revId": "925cb2a82248fc9efe9948d4edeeb42910b75628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd54a13_ee9a4de1",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-09T02:24:21Z",
+      "side": 1,
+      "message": "I think so too, but this CL uses `Config().OutDir()` which evaluates to `out/`",
+      "parentUuid": "c791ed33_c1aa2dee",
       "range": {
         "startLine": 959,
         "startChar": 28,
