@@ -149,18 +149,20 @@ func TestGetApexInfoParseResults(t *testing.T) {
 				`"container_key_info":["foo.x509.pem", "foo.pk8", "foo"],` +
 				`"package_name":"package.name",` +
 				`"symbols_used_by_apex": "path/to/my.apex_using.txt",` +
+				`"java_symbols_used_by_apex": "path/to/my.apex_using.xml",` +
 				`"backing_libs":"path/to/backing.txt",` +
 				`"provides_native_libs":[]}`,
 			expectedOutput: ApexInfo{
-				SignedOutput:      "my.apex",
-				UnsignedOutput:    "my.apex.unsigned",
-				RequiresLibs:      []string{"//bionic/libc:libc", "//bionic/libdl:libdl"},
-				ProvidesLibs:      []string{},
-				BundleKeyInfo:     []string{"foo.pem", "foo.privkey"},
-				ContainerKeyInfo:  []string{"foo.x509.pem", "foo.pk8", "foo"},
-				PackageName:       "package.name",
-				SymbolsUsedByApex: "path/to/my.apex_using.txt",
-				BackingLibs:       "path/to/backing.txt",
+				SignedOutput:          "my.apex",
+				UnsignedOutput:        "my.apex.unsigned",
+				RequiresLibs:          []string{"//bionic/libc:libc", "//bionic/libdl:libdl"},
+				ProvidesLibs:          []string{},
+				BundleKeyInfo:         []string{"foo.pem", "foo.privkey"},
+				ContainerKeyInfo:      []string{"foo.x509.pem", "foo.pk8", "foo"},
+				PackageName:           "package.name",
+				SymbolsUsedByApex:     "path/to/my.apex_using.txt",
+				JavaSymbolsUsedByApex: "path/to/my.apex_using.xml",
+				BackingLibs:           "path/to/backing.txt",
 			},
 		},
 	}
