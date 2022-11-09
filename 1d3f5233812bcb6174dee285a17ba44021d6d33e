@@ -226,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6940e303_8c8867f5",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-09T19:46:46Z",
+      "side": 1,
+      "message": "FWIW, this is already (without this CL) a problem:\n```\nConflict in workspace symlink tree creation: both \u0027external/guava/BUILD\u0027 and \u0027out/soong/bp2build/external/guava/BUILD.bazel\u0027 exist and exactly one is a directory\n```\nThis is because `external/guava/Android.bp` causes bp2build to generate `external/guava/BUILD.bazel`\n\nSo a more general CUJ:\n1. `touch external/guava/yikes`\n2. `m bp2build`\n3. `rm external/guava/yikes \u0026\u0026 mkdir external/guava/yikes`\n4. `m bp2build` \u003c-- this would fail with this CL",
+      "parentUuid": "16273986_128a4855",
+      "range": {
+        "startLine": 322,
+        "startChar": 11,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4b7943e_881a26c9",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
