@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cec2bf5_ac54d630",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-10T06:21:30Z",
+      "side": 1,
+      "message": "Are you sure this is correct? This sets it to use -mcpu\u003dcortex-a8. Shouldn\u0027t it be -mcpu\u003dcortex-a9?\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/config/arm_device.go;l\u003d88-90;drc\u003db45a2ea782074944f79fc388df20b06e01f265f7",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 50
+      },
+      "revId": "183e705f144d92cc4a16e629bd49e5e76694b4fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
