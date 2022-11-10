@@ -70,6 +70,30 @@
       },
       "revId": "183e705f144d92cc4a16e629bd49e5e76694b4fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "626ec752_675fa843",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-10T21:17:41Z",
+      "side": 1,
+      "message": "This looks fine, it appears Soong has always used empty flags for cortex-a9.  Maybe -mcpu\u003dcortex-a9 is the default for -march\u003darmv7a?\n\nI\u0027m also curious where we are getting \"cortex-a9\" builds from, I wouldn\u0027t expect anything to be explicitly targeting that any more, those CPUs are from 2007.",
+      "parentUuid": "99e16a71_f317b09d",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 50
+      },
+      "revId": "183e705f144d92cc4a16e629bd49e5e76694b4fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
