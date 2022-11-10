@@ -52,6 +52,24 @@
       "parentUuid": "414a1d63_9573c5f7",
       "revId": "ef2ae9645979338a4e38488d1bb2533b47da56ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5492fdc1_59fc4962",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-11-10T19:41:16Z",
+      "side": 1,
+      "message": "Chatted with @yikong@google.com and @pirama@google.com offline. We concluded that we could remove this in favor of a less complex alternative b/258684450.",
+      "parentUuid": "2852a26f_d48dd51e",
+      "revId": "ef2ae9645979338a4e38488d1bb2533b47da56ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
