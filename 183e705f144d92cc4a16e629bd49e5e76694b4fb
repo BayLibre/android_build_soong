@@ -22,6 +22,30 @@
       },
       "revId": "183e705f144d92cc4a16e629bd49e5e76694b4fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa7346e3_f35171eb",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-11-10T06:58:22Z",
+      "side": 1,
+      "message": "It looks I pasted the wrong value. It should be ArmGenericCflags which is mentioned in the CL description, because I am not sure what should be the right value for this and the generic one doesn\u0027t looks harmful. \n\nIt sounds like mcpu\u003dcortex-a9 if it follows the same pattern of a7/a8, but I didn\u0027t find that in the code base. So basically this CL is just for fixing the breakage for now and we will still need to figure out the flags later.",
+      "parentUuid": "3cec2bf5_ac54d630",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 50
+      },
+      "revId": "183e705f144d92cc4a16e629bd49e5e76694b4fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
