@@ -46,6 +46,30 @@
       },
       "revId": "183e705f144d92cc4a16e629bd49e5e76694b4fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e16a71_f317b09d",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-10T07:08:11Z",
+      "side": 1,
+      "message": "Thanks, using the generic flags looks like a no-op change. Can you add a TODO+bug to confirm this with the right folks (Colin/Elliott)?",
+      "parentUuid": "aa7346e3_f35171eb",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 50
+      },
+      "revId": "183e705f144d92cc4a16e629bd49e5e76694b4fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
