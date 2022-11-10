@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf0791d_b4f73178",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2022-11-10T15:34:27Z",
+      "side": 1,
+      "message": "Please add Bug: \u003cbug id\u003e",
+      "revId": "2f7a947b3d06961e550f6fc91d3be45ea13ed221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
