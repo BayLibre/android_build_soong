@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e75db52b_cba7db96",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-10T21:27:50Z",
+      "side": 1,
+      "message": "This broke the mac build, $relPwd is not set.  Suggest instead:\n```\npctx.StaticVariable(\"relPwd\", cc.PwdPrefix())\n```",
+      "revId": "3e739cf4269a6d7160b9e98d89b61f7f0bdcc1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
