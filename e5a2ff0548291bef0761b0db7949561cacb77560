@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f39cef9_fe77ca30",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-10T04:51:26Z",
+      "side": 1,
+      "message": "nit: indent",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "e5a2ff0548291bef0761b0db7949561cacb77560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
