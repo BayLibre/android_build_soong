@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd89aab3_aa94d544",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-10T23:46:42Z",
+      "side": 1,
+      "message": "Remove this conditional so that relPwd is always set.  `cc.PwdPrefix` checks `runtime.GOOS` and returns `\"\"` for darwin.",
+      "revId": "aaedf81ef48ca6232551f4912c8dae74ba812196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
