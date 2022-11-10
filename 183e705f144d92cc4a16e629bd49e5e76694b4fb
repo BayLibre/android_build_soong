@@ -118,6 +118,30 @@
       },
       "revId": "183e705f144d92cc4a16e629bd49e5e76694b4fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "221dd82a_96652b47",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-10T21:53:54Z",
+      "side": 1,
+      "message": "aosp/2298370 changes poplar to cortex-a53.",
+      "parentUuid": "249e647e_e4d59fbe",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 50
+      },
+      "revId": "183e705f144d92cc4a16e629bd49e5e76694b4fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
