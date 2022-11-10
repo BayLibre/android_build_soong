@@ -94,6 +94,30 @@
       },
       "revId": "183e705f144d92cc4a16e629bd49e5e76694b4fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "249e647e_e4d59fbe",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-11-10T21:20:55Z",
+      "side": 1,
+      "message": "Thanks, Colin.\n\n\"lunch poplar-eng\" gives these:\n\nTARGET_PRODUCT\u003dpoplar\nTARGET_BUILD_VARIANT\u003deng\nTARGET_ARCH\u003darm\nTARGET_ARCH_VARIANT\u003darmv7-a-neon\nTARGET_CPU_VARIANT\u003dcortex-a9",
+      "parentUuid": "626ec752_675fa843",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 50
+      },
+      "revId": "183e705f144d92cc4a16e629bd49e5e76694b4fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
