@@ -193,6 +193,7 @@ var (
 
 	noOverrideGlobalCflags = []string{
 		"-Werror=bool-operation",
+		"-Werror=format-insufficient-args",
 		"-Werror=implicit-int-float-conversion",
 		"-Werror=int-in-bool-context",
 		"-Werror=int-to-pointer-cast",
@@ -247,6 +248,8 @@ var (
 	noOverride64GlobalCflags = []string{}
 
 	noOverrideExternalGlobalCflags = []string{
+		// http://b/191699019
+		"-Wno-format-insufficient-args",
 		// http://b/148815709
 		"-Wno-sizeof-array-div",
 		// http://b/197240255
@@ -289,9 +292,6 @@ var (
 
 		// http://b/239661264
 		"-Wno-deprecated-non-prototype",
-
-		// http://b/191699019
-		"-Wno-format-insufficient-args",
 	}
 
 	llvmNextExtraCommonGlobalCflags = []string{
