@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25d585eb_646532b4",
+        "filename": "tests/lib_pesto.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2022-11-11T00:35:28Z",
+      "side": 1,
+      "message": "This is not really needed.",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 31
+      },
+      "revId": "fe827c4525f1f3a0b82d602b897c221149c46904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
