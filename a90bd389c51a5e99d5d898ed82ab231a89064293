@@ -16,6 +16,24 @@
       "message": "why do we need to check both .useVndk() and .isVndk()?\n\nisn\u0027t checking .isVndk() alone enough?",
       "revId": "a90bd389c51a5e99d5d898ed82ab231a89064293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731e7b06_85d6f0c2",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-11-11T06:41:34Z",
+      "side": 1,
+      "message": "According to Iad038cf4cd3eccc3dfbef13fab67da044498ce77, checking both is for excluding stub libraries. However shouldCreateSourceAbiDumpForLibrary() already exclude stub libraries, so I think we can simplify \".useVndk() \u0026\u0026 .isVndk()\" to just .isVndk() now",
+      "parentUuid": "a5b2d647_3f7c944f",
+      "revId": "a90bd389c51a5e99d5d898ed82ab231a89064293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
