@@ -16,6 +16,29 @@
       "message": "(I\u0027ll follow up with tests if this solution is reasonable)",
       "revId": "2f792c5c794b34f77e2437659e22e1d028c99583",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa25d7be_430a83cc",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-11T15:43:33Z",
+      "side": 1,
+      "message": "it looks like there is special handling for [Aml_abis and Ndk_abis](https://cs.android.com/android/platform/superproject/+/master:build/make/core/soong_config.mk;l\u003d62-63;drc\u003d38e07f1baf5476ef8e5902eb4d93571e62c0d4d3) in the [config](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/config.go;l\u003d455;drc\u003db45a2ea782074944f79fc388df20b06e01f265f7) -- should we instead handle those explicitly in our product config?\n\nSent you https://android-review.git.corp.google.com/q/topic:%22bazel-aml%252Fndk%22 if we want to go that way instead.",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 65
+      },
+      "revId": "2f792c5c794b34f77e2437659e22e1d028c99583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
