@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b70c75cc_35a477e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2022-11-11T03:31:23Z",
+      "side": 1,
+      "message": "Fix is in presubmit at https://android-review.git.corp.google.com/c/platform/build/soong/+/2298250 but no objections to reverting instead if needed",
+      "revId": "0088fffc32d15c5e87c0e64bda58d2500bdad55b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
