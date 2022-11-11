@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "624e2de1_9d79991f",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-11T21:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ada96a13_f45c9e22",
+      "revId": "df4b873c151c53db1d1173fe9c61933a25ddf019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d9ebf61_fe42847c",
@@ -83,6 +101,42 @@
       "writtenOn": "2022-11-11T20:41:10Z",
       "side": 1,
       "message": "i think without second-guessing how the go compiler optimizes func local variables, it maybe reasonable to keep bazelOuputPathPattern at the package level (i.e. C++ style static function-scoped variable aren\u0027t a thing with Go).",
+      "parentUuid": "1ee599dc_40cb6f90",
+      "revId": "df4b873c151c53db1d1173fe9c61933a25ddf019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d1b157_0ac75cff",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-11T21:07:04Z",
+      "side": 1,
+      "message": "good point. I\u0027d had a an else if earlier and didn\u0027t clean things up after simplifying.",
+      "parentUuid": "508e7ec2_af218444",
+      "revId": "df4b873c151c53db1d1173fe9c61933a25ddf019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7cb0bfb_46a5e49f",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-11T21:07:04Z",
+      "side": 1,
+      "message": "We don\u0027t get the benefit of pre-compiling a regex by calculating it every time, changed it to be done in a Once\n\nSoong doesn\u0027t run on windows, simplified this somewhat to hardcode `/` characters.",
       "parentUuid": "1ee599dc_40cb6f90",
       "revId": "df4b873c151c53db1d1173fe9c61933a25ddf019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
