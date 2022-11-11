@@ -150,7 +150,7 @@ type BazelContext interface {
 
 	// Issues commands to Bazel to receive results for all cquery requests
 	// queued in the BazelContext.
-	InvokeBazel(config Config) error
+	InvokeBazel(config Config, ctx *Context) error
 
 	// Returns true if Bazel handling is enabled for the module with the given name.
 	// Note that this only implies "bazel mixed build" allowlisting. The caller
@@ -258,7 +258,7 @@ func (m MockBazelContext) GetCcUnstrippedInfo(label string, _ configKey) (cquery
 	return result, nil
 }
 
-func (m MockBazelContext) InvokeBazel(_ Config) error {
+func (m MockBazelContext) InvokeBazel(_ Config, ctx *Context) error {
 	panic("unimplemented")
 }
 
@@ -354,7 +354,7 @@ func (n noopBazelContext) GetCcUnstrippedInfo(_ string, _ configKey) (cquery.CcU
 	panic("implement me")
 }
 
-func (n noopBazelContext) InvokeBazel(_ Config) error {
+func (n noopBazelContext) InvokeBazel(_ Config, ctx *Context) error {
 	panic("unimplemented")
 }
 
@@ -862,26 +862,52 @@ func (p *bazelPaths) outDir() string {
 	return filepath.Dir(p.soongOutDir)
 }
 
+const buildrootLabel = "@soong_injection//mixed_builds:buildroot"
+
+var (
+	cqueryCmd = bazelCommand{"cquery", fmt.Sprintf("deps(%s, 2)", buildrootLabel)}
+	aqueryCmd = bazelCommand{"aquery", fmt.Sprintf("deps(%s)", buildrootLabel)}
+	buildCmd  = bazelCommand{"build", "@soong_injection//mixed_builds:phonyroot"}
+)
+
 // Issues commands to Bazel to receive results for all cquery requests
 // queued in the BazelContext.
-func (context *bazelContext) InvokeBazel(config Config) error {
+func (context *bazelContext) InvokeBazel(config Config, ctx *Context) error {
+	if metricsDir := context.paths.BazelMetricsDir(); metricsDir != "" {
+		if err := os.MkdirAll(metricsDir, 0777); err != nil {
+			return err
+		}
+	}
 	context.results = make(map[cqueryKey]string)
+	if err := context.runCquery(ctx); err != nil {
+		return err
+	}
+	if err := context.runAquery(config, ctx); err != nil {
+		return err
+	}
+	if err := context.generateBazelSymlinks(ctx); err != nil {
+		return err
+	}
 
+	// Clear requests.
+	context.requests = map[cqueryKey]bool{}
+	return nil
+}
+
+func (context *bazelContext) runCquery(ctx *Context) error {
+	if ctx != nil {
+		ctx.EventHandler.Begin("cquery")
+		defer ctx.EventHandler.End("cquery")
+	}
 	var err error
-
 	soongInjectionPath := absolutePath(context.paths.injectedFilesDir())
 	mixedBuildsPath := filepath.Join(soongInjectionPath, "mixed_builds")
-	if _, err := os.Stat(mixedBuildsPath); os.IsNotExist(err) {
+	cqueryFileRelpath := filepath.Join(context.paths.injectedFilesDir(), "buildroot.cquery")
+	if _, err = os.Stat(mixedBuildsPath); os.IsNotExist(err) {
 		err = os.MkdirAll(mixedBuildsPath, 0777)
 	}
 	if err != nil {
 		return err
-	}
-	if metricsDir := context.paths.BazelMetricsDir(); metricsDir != "" {
-		err = os.MkdirAll(metricsDir, 0777)
-		if err != nil {
-			return err
-		}
 	}
 	if err = os.WriteFile(filepath.Join(soongInjectionPath, "WORKSPACE.bazel"), []byte{}, 0666); err != nil {
 		return err
@@ -892,21 +918,21 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 	if err = os.WriteFile(filepath.Join(mixedBuildsPath, "BUILD.bazel"), context.mainBuildFileContents(), 0666); err != nil {
 		return err
 	}
-	cqueryFileRelpath := filepath.Join(context.paths.injectedFilesDir(), "buildroot.cquery")
 	if err = os.WriteFile(absolutePath(cqueryFileRelpath), context.cqueryStarlarkFileContents(), 0666); err != nil {
 		return err
 	}
 
-	const buildrootLabel = "@soong_injection//mixed_builds:buildroot"
-	cqueryCmd := bazelCommand{"cquery", fmt.Sprintf("deps(%s, 2)", buildrootLabel)}
-	cqueryCommandWithFlag := context.createBazelCommand(context.paths, bazel.CqueryBuildRootRunName, cqueryCmd,
-		"--output=starlark", "--starlark:file="+absolutePath(cqueryFileRelpath))
+	cqueryCommandWithFlag := context.createBazelCommand(context.paths,
+		bazel.CqueryBuildRootRunName,
+		cqueryCmd,
+		"--output=starlark",
+		"--starlark:file="+absolutePath(cqueryFileRelpath))
 	cqueryOutput, cqueryErr, err := context.issueBazelCommand(cqueryCommandWithFlag)
 	if err != nil {
 		return err
 	}
 	cqueryCommandPrint := fmt.Sprintf("cquery command line:\n  %s \n\n\n", printableCqueryCommand(cqueryCommandWithFlag))
-	if err = os.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"), []byte(cqueryCommandPrint+cqueryOutput), 0666); err != nil {
+	if err := os.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"), []byte(cqueryCommandPrint+cqueryOutput), 0666); err != nil {
 		return err
 	}
 	cqueryResults := map[string]string{}
@@ -924,7 +950,14 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 				getCqueryId(val), cqueryOutput, cqueryErr)
 		}
 	}
+	return nil
+}
 
+func (context *bazelContext) runAquery(config Config, ctx *Context) error {
+	if ctx != nil {
+		ctx.EventHandler.Begin("aquery")
+		defer ctx.EventHandler.End("aquery")
+	}
 	// Issue an aquery command to retrieve action information about the bazel build tree.
 	//
 	// Use jsonproto instead of proto; actual proto parsing would require a dependency on Bazel's
@@ -943,27 +976,24 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 			extraFlags = append(extraFlags, "--instrumentation_filter="+strings.Join(paths, ","))
 		}
 	}
-	aqueryCmd := bazelCommand{"aquery", fmt.Sprintf("deps(%s)", buildrootLabel)}
-	aqueryOutput, _, err := context.issueBazelCommand(context.createBazelCommand(context.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
-		extraFlags...))
+	output, _, err := context.issueBazelCommand(
+		context.createBazelCommand(context.paths, bazel.AqueryBuildRootRunName, aqueryCmd, extraFlags...))
 	if err == nil {
-		context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements([]byte(aqueryOutput))
+		context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements([]byte(output))
 	}
-	if err != nil {
-		return err
-	}
+	return err
+}
 
+func (context *bazelContext) generateBazelSymlinks(ctx *Context) error {
+	if ctx != nil {
+		ctx.EventHandler.Begin("symlinks")
+		defer ctx.EventHandler.End("symlinks")
+	}
 	// Issue a build command of the phony root to generate symlink forests for dependencies of the
 	// Bazel build. This is necessary because aquery invocations do not generate this symlink forest,
 	// but some of symlinks may be required to resolve source dependencies of the build.
-	buildCmd := bazelCommand{"build", "@soong_injection//mixed_builds:phonyroot"}
-	if _, _, err = context.issueBazelCommand(context.createBazelCommand(context.paths, bazel.BazelBuildPhonyRootRunName, buildCmd)); err != nil {
-		return err
-	}
-
-	// Clear requests.
-	context.requests = map[cqueryKey]bool{}
-	return nil
+	_, _, err := context.issueBazelCommand(context.createBazelCommand(context.paths, bazel.BazelBuildPhonyRootRunName, buildCmd))
+	return err
 }
 
 func (context *bazelContext) BuildStatementsToRegister() []bazel.BuildStatement {
