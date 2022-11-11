@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6094a06_3b7b30b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-11-11T07:48:53Z",
+      "side": 1,
+      "message": "When I rearranged the code for go/aosp/2299299, several tests started failing. It turned out because testBazelContext was setting bazelCommandResults incorrectly, but the tests used to succeed because the error was ignored (it was left in a shadow `err` variable). The rest is just lint cleanup",
+      "revId": "e29965716432a44be5bcacc131cd2552ee54fa63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "748c46ed_b7eb997d",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-11-11T05:53:10Z",
       "side": 1,
       "message": "nit: merge into `if err \u003d\u003d nil { .. } else { return err }`?",
+      "range": {
+        "startLine": 951,
+        "startChar": 1,
+        "endLine": 954,
+        "endChar": 2
+      },
+      "revId": "e29965716432a44be5bcacc131cd2552ee54fa63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ff542b_1035c11a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-11-11T07:48:53Z",
+      "side": 1,
+      "message": "It will just two more lines without changing anything semantically.",
+      "parentUuid": "748c46ed_b7eb997d",
       "range": {
         "startLine": 951,
         "startChar": 1,
