@@ -34,6 +34,24 @@
       "parentUuid": "a5b2d647_3f7c944f",
       "revId": "a90bd389c51a5e99d5d898ed82ab231a89064293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade8949a_449e0e5a",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-11-11T07:50:57Z",
+      "side": 1,
+      "message": "I recalled that libselinux was both VNDK and PLATFORM. There were two dumps in vndk/ and platform/. We wanted to diff both of them.\n\nIf I remember correctly,\nthe vndk variant\u0027s useVndk \u003d\u003d true and isVndk \u003d\u003d true\nthe platform variant\u0027s useVndk \u003d\u003d false and isVndk \u003d\u003d true\n, so we cannot remove useVndk.",
+      "parentUuid": "731e7b06_85d6f0c2",
+      "revId": "a90bd389c51a5e99d5d898ed82ab231a89064293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
