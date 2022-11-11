@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d9ebf61_fe42847c",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-11T20:05:44Z",
+      "side": 1,
+      "message": "I\u0027m having trouble following all the conditional logic here, but I think there\u0027s some repetition. Could this be simplified to:\n\n```\nbazelRoot :\u003d filepath.Join(config.bazelOutputBase(), \"execroot\")\nif strings.HasPrefix(path, bazelRoot) {\n\tbazelOutputPathPattern :\u003d regexp.MustCompile(\"^\" + filepath.Join(bazelRoot, \"__main__\", \"bazel-out\", \"[^\"+string(os.PathSeparator)+\"]+\", \"bin\"))\n\tif !bazelOutputPathPattern.MatchString(path) {\n\t\treturn true\n\t}\n}\n```\n?",
+      "revId": "df4b873c151c53db1d1173fe9c61933a25ddf019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
