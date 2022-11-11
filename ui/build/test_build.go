@@ -17,7 +17,9 @@ package build
 import (
 	"bufio"
 	"fmt"
+	"os"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"sort"
 	"strings"
@@ -25,6 +27,25 @@ import (
 	"android/soong/ui/metrics"
 	"android/soong/ui/status"
 )
+
+var (
+	// bazel output paths are in __main__/bazel-out/<config-specific-path>/bin
+	bazelOutputPathPattern = regexp.MustCompile(filepath.Join("__main__", "bazel-out", "[^"+string(os.PathSeparator)+"]+", "bin"))
+)
+
+func ignoreBazelPath(config Config, path string) bool {
+	bazelRoot := filepath.Join(config.bazelOutputBase(), "execroot")
+	bazelOutRoot := filepath.Join(bazelRoot, "__main__", "bazel-out")
+	if strings.HasPrefix(path, bazelRoot) {
+		// if the file is a bazel path that is _not_ a bazel output or one of a few special files,
+		// we rely on Bazel to ensure the paths to exist. If it _is_ a Bazel output path, we expect that
+		// it should be built by Ninja.
+		if !strings.HasPrefix(path, bazelOutRoot) || !bazelOutputPathPattern.MatchString(path) {
+			return true
+		}
+	}
+	return false
+}
 
 // Checks for files in the out directory that have a rule that depends on them but no rule to
 // create them. This catches a common set of build failures where a rule to generate a file is
@@ -89,6 +110,7 @@ func testForDanglingRules(ctx Context, config Config) {
 			continue
 		}
 		if strings.HasPrefix(line, modulePathsDir) ||
+			ignoreBazelPath(config, line) ||
 			line == variablesFilePath ||
 			line == dexpreoptConfigFilePath ||
 			line == buildDatetimeFilePath ||
