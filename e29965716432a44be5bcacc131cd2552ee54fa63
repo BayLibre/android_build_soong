@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a889f8cd_c44de3eb",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-11T19:01:13Z",
+      "side": 1,
+      "message": "Why not the standard way of putting the `if err !\u003d nil { return err }` first and then removing the second `\u003d\u003d nil` if statement?",
+      "parentUuid": "f1ff542b_1035c11a",
+      "range": {
+        "startLine": 951,
+        "startChar": 1,
+        "endLine": 954,
+        "endChar": 2
+      },
+      "revId": "e29965716432a44be5bcacc131cd2552ee54fa63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a6ae988_a1506302",
         "filename": "android/bazel_handler_test.go",
         "patchSetId": 1
