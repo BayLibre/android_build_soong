@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52abad29_7bdeeb9b",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2288,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-11T20:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "775a49b6_81f7d1a4",
+      "range": {
+        "startLine": 2288,
+        "startChar": 5,
+        "endLine": 2288,
+        "endChar": 18
+      },
+      "revId": "674ee290971b4de7869ba650205108ca4ab035ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4e22391_ff55daf6",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-11-11T18:34:58Z",
       "side": 1,
       "message": "Is there a reason we make private versions of all these variables first, instead of just putting the %s\u0027s on the public versions?",
+      "revId": "674ee290971b4de7869ba650205108ca4ab035ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b345b7_c99087a3",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2308,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-11T20:30:25Z",
+      "side": 1,
+      "message": "This is a common pattern in our bzl files with constants, I think primarily encourage being explicit about what\u0027s exported, but may be a good conversation to start in the team.\n\nIt would likely be more useful if we had a struct at the bottom rather than the explicit variables to reduce how many individual variables users load.",
+      "parentUuid": "a4e22391_ff55daf6",
       "revId": "674ee290971b4de7869ba650205108ca4ab035ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
