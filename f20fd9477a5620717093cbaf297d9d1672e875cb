@@ -16,6 +16,46 @@
       "message": "+1 only because this affects the metrics pipeline and Chris has the context to review this fully.",
       "revId": "f20fd9477a5620717093cbaf297d9d1672e875cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "516980f6_246e971e",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-11T19:14:19Z",
+      "side": 1,
+      "message": "Please include in this comment that `ctx` is optional and only used for metrics",
+      "revId": "f20fd9477a5620717093cbaf297d9d1672e875cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b703db_04d63a48",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-11T19:14:19Z",
+      "side": 1,
+      "message": "These could be moved into InvokeBazel to be consistent with runCquery/runAquery/generateBazelSymlinks",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 37
+      },
+      "revId": "f20fd9477a5620717093cbaf297d9d1672e875cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
