@@ -63,6 +63,18 @@ func RegisterMixedBuildsMutator(ctx RegistrationContext) {
 
 func mixedBuildsPrepareMutator(ctx BottomUpMutatorContext) {
 	if m := ctx.Module(); m.Enabled() {
+		if ctx.DeviceConfig().DeviceArch() == "" && m.base().Device() {
+			// b/258747870: A Device module can only be mixed-built when the
+			// chosen TARGET_PRODUCT specifies a target device (TARGET_ARCH in
+			// Make -> DeviceArch in Soong). DeviceArch is used by
+			// product_variable_config to generate
+			// //build/bazel/platforms:android_target's alias. If it's not set,
+			// then the android_target platform should not be used in mixed mode
+			// _at all_.
+			//
+			// An example product that _does not_ set TARGET_ARCH is "ndk".
+			return
+		}
 		if mixedBuildMod, ok := m.(MixedBuildBuildable); ok {
 			if mixedBuildMod.IsMixedBuildSupported(ctx) && MixedBuildsEnabled(ctx) {
 				mixedBuildMod.QueueBazelCall(ctx)
