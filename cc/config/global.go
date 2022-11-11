@@ -192,6 +192,7 @@ var (
 	}
 
 	noOverrideGlobalCflags = []string{
+		"-Werror=format-insufficient-args",
 		"-Werror=bool-operation",
 		"-Werror=implicit-int-float-conversion",
 		"-Werror=int-in-bool-context",
