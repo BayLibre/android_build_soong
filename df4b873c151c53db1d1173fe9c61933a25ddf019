@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ada96a13_f45c9e22",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-11T20:36:37Z",
+      "side": 1,
+      "message": "why filepath.Join() instead of directly specifying the regexp?\ne.g. if this were on windows, we\u0027d get \u0027\\` as the pathSeparator which would be unescaped and fail to compile anyways.",
+      "revId": "df4b873c151c53db1d1173fe9c61933a25ddf019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d9ebf61_fe42847c",
         "filename": "ui/build/test_build.go",
         "patchSetId": 2
