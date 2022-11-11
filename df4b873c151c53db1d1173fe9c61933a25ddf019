@@ -51,6 +51,41 @@
       "parentUuid": "5d9ebf61_fe42847c",
       "revId": "df4b873c151c53db1d1173fe9c61933a25ddf019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "508e7ec2_af218444",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-11T20:41:10Z",
+      "side": 1,
+      "message": "nit: stylistically whenever I can `return booleanExpression` I avoid, if(booleanExpression) { return true }\n\nso line 43 could simply be a return?",
+      "revId": "df4b873c151c53db1d1173fe9c61933a25ddf019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f26c39_ae30574c",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-11T20:41:10Z",
+      "side": 1,
+      "message": "i think without second-guessing how the go compiler optimizes func local variables, it maybe reasonable to keep bazelOuputPathPattern at the package level (i.e. C++ style static function-scoped variable aren\u0027t a thing with Go).",
+      "parentUuid": "1ee599dc_40cb6f90",
+      "revId": "df4b873c151c53db1d1173fe9c61933a25ddf019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
