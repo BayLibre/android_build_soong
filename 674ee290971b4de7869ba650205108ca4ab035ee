@@ -16,6 +16,46 @@
       "message": "running mixed builds locally to verify as well",
       "revId": "674ee290971b4de7869ba650205108ca4ab035ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "775a49b6_81f7d1a4",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2288,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-11T18:34:58Z",
+      "side": 1,
+      "message": "Nit: rename this to printArchConfigList, because \"Arch\" is a different soong type.",
+      "range": {
+        "startLine": 2288,
+        "startChar": 5,
+        "endLine": 2288,
+        "endChar": 18
+      },
+      "revId": "674ee290971b4de7869ba650205108ca4ab035ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e22391_ff55daf6",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2308,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-11T18:34:58Z",
+      "side": 1,
+      "message": "Is there a reason we make private versions of all these variables first, instead of just putting the %s\u0027s on the public versions?",
+      "revId": "674ee290971b4de7869ba650205108ca4ab035ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
