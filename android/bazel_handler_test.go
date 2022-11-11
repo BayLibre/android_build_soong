@@ -193,7 +193,7 @@ func testBazelContext(t *testing.T, bazelCommandResults map[bazelCommand]string)
 	}
 	aqueryCommand := bazelCommand{command: "aquery", expression: "deps(@soong_injection//mixed_builds:buildroot)"}
 	if _, exists := bazelCommandResults[aqueryCommand]; !exists {
-		bazelCommandResults[aqueryCommand] = "{}\n"
+		bazelCommandResults[aqueryCommand] = ""
 	}
 	runner := &mockBazelRunner{bazelCommandResults: bazelCommandResults}
 	return &bazelContext{
