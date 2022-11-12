@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d6ced4_dca5ffaa",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-12T02:33:19Z",
+      "side": 1,
+      "message": "nit: this is basically a \"lazy val\" and not necessarily any better than the regex itself residing here IMO (i.e. Go doesn\u0027t have function local static vars)",
+      "revId": "204362201e0d14f0b6f2275eab7e2ee1fa96a5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43250f21_768af63b",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-12T02:33:19Z",
+      "side": 1,
+      "message": "config.bazelOutputBase() could have \".\" or \"+\" in it (e.g. via config.BazelOutDir())\ni.e. use regexp.QuoteMeta() for it?",
+      "revId": "204362201e0d14f0b6f2275eab7e2ee1fa96a5fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
