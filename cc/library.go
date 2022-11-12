@@ -405,13 +405,15 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 
 		Additional_linker_inputs: linkerAttrs.additionalLinkerInputs,
 
-		Strip:    stripAttrsFromLinkerAttrs(&linkerAttrs),
-		Features: baseAttributes.features,
+		Strip:                             stripAttrsFromLinkerAttrs(&linkerAttrs),
+		Features:                          baseAttributes.features,
+		bazelCcHeaderAbiCheckerAttributes: bp2buildParseAbiCheckerProps(ctx, m),
 	}
 
 	if compilerAttrs.stubsSymbolFile != nil && len(compilerAttrs.stubsVersions.Value) > 0 {
 		hasStubs := true
 		sharedTargetAttrs.Has_stubs.SetValue(&hasStubs)
+		sharedTargetAttrs.Stub_symbol_file = compilerAttrs.stubsSymbolFile
 	}
 
 	sharedTargetAttrs.Suffix = compilerAttrs.suffix
@@ -1728,7 +1730,6 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 
 	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
 	objs.coverageFiles = append(objs.coverageFiles, deps.WholeStaticLibObjs.coverageFiles...)
-
 	objs.sAbiDumpFiles = append(objs.sAbiDumpFiles, deps.StaticLibObjs.sAbiDumpFiles...)
 	objs.sAbiDumpFiles = append(objs.sAbiDumpFiles, deps.WholeStaticLibObjs.sAbiDumpFiles...)
 
@@ -2747,6 +2748,29 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 	return outputFile
 }
 
+func bp2buildParseAbiCheckerProps(ctx android.TopDownMutatorContext, module *Module) bazelCcHeaderAbiCheckerAttributes {
+	lib, ok := module.linker.(*libraryDecorator)
+	if !ok {
+		return bazelCcHeaderAbiCheckerAttributes{}
+	}
+
+	abiChecker := lib.Properties.Header_abi_checker
+
+	abiCheckerAttrs := bazelCcHeaderAbiCheckerAttributes{
+		Abi_checker_enabled:                 abiChecker.Enabled,
+		Abi_checker_exclude_symbol_versions: abiChecker.Exclude_symbol_versions,
+		Abi_checker_exclude_symbol_tags:     abiChecker.Exclude_symbol_tags,
+		Abi_checker_check_all_apis:          abiChecker.Check_all_apis,
+		Abi_checker_diff_flags:              abiChecker.Diff_flags,
+	}
+	if abiChecker.Symbol_file != nil {
+		symbolFile := android.BazelLabelForModuleSrcSingle(ctx, *abiChecker.Symbol_file)
+		abiCheckerAttrs.Abi_checker_symbol_file = &symbolFile
+	}
+
+	return abiCheckerAttrs
+}
+
 func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Module, isStatic bool) {
 	baseAttributes := bp2BuildParseBaseProps(ctx, module)
 	compilerAttrs := baseAttributes.compilerAttributes
@@ -2853,10 +2877,13 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 			Features: baseAttributes.features,
 
 			Suffix: compilerAttrs.suffix,
+
+			bazelCcHeaderAbiCheckerAttributes: bp2buildParseAbiCheckerProps(ctx, module),
 		}
 		if compilerAttrs.stubsSymbolFile != nil && len(compilerAttrs.stubsVersions.Value) > 0 {
 			hasStubs := true
 			sharedLibAttrs.Has_stubs.SetValue(&hasStubs)
+			sharedLibAttrs.Stub_symbol_file = compilerAttrs.stubsSymbolFile
 		}
 		attrs = sharedLibAttrs
 	}
@@ -2933,11 +2960,14 @@ type bazelCcLibrarySharedAttributes struct {
 
 	Features bazel.StringListAttribute
 
-	Has_stubs bazel.BoolAttribute
+	Has_stubs        bazel.BoolAttribute
+	Stub_symbol_file *string
 
 	Inject_bssl_hash bazel.BoolAttribute
 
 	Suffix bazel.StringAttribute
+
+	bazelCcHeaderAbiCheckerAttributes
 }
 
 type bazelCcStubSuiteAttributes struct {
@@ -2947,4 +2977,13 @@ type bazelCcStubSuiteAttributes struct {
 	Source_library  bazel.LabelAttribute
 	Soname          *string
 	Deps            bazel.LabelListAttribute
+}
+
+type bazelCcHeaderAbiCheckerAttributes struct {
+	Abi_checker_enabled                 *bool
+	Abi_checker_symbol_file             *bazel.Label
+	Abi_checker_exclude_symbol_versions []string
+	Abi_checker_exclude_symbol_tags     []string
+	Abi_checker_check_all_apis          *bool
+	Abi_checker_diff_flags              []string
 }
