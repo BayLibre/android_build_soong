@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this is the correct direction for the llndk libraries.\nIt does not make the llndk libs marked as llndk.\n\nDoes the llndk api library returns true for `m.IsLlndk()`? Otherwise, VNDK to api imported LLNDK may report link type check error. Please add a unit test for the dependency check from a VNDK library to an imported LLNDK library.\n\nInstead of making the api imported llndk modules to vendor available, they need to be marked as llndk libraries by setting `m.VendorProperties.IsLLNDK \u003d true` from the VndkMutator.",
       "revId": "9022e1c37e3c95ec1a9f8add74a7ccc431259539",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da031278_43873784",
+        "filename": "cc/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-14T05:07:43Z",
+      "side": 1,
+      "message": "I think those are different options.\n\nIIUC, IsLLNDK means that the variant is target of LLNDK. This will be set as true with vendor variant of cc_api_library, based on the code https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/vndk.go;l\u003d394 .\n\nHasVendorVariant is for image mutator to check if the module should generate vendor variant. Without this phase, there will be no vendor variant from the cc_api_library module.",
+      "parentUuid": "5e8199bc_c9080127",
+      "revId": "9022e1c37e3c95ec1a9f8add74a7ccc431259539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
