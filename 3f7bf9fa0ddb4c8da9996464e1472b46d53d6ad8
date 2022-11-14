@@ -22,6 +22,30 @@
       },
       "revId": "3f7bf9fa0ddb4c8da9996464e1472b46d53d6ad8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26c40aa0_20f88796",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-14T14:08:34Z",
+      "side": 1,
+      "message": "I\u0027ll try and address your issues in a follow up.",
+      "parentUuid": "e46fcc49_5a7026ec",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "3f7bf9fa0ddb4c8da9996464e1472b46d53d6ad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
