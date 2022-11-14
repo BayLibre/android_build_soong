@@ -2609,7 +2609,7 @@ func createVersionVariations(mctx android.BottomUpMutatorContext, versions []str
 	m := mctx.Module().(*Module)
 	isLLNDK := m.IsLlndk()
 	isVendorPublicLibrary := m.IsVendorPublicLibrary()
-	isImportedApiLibrary := m.isImportedApiLibrary()
+	_, isImportedApiLibrary := m.getImportedApiLibrary()
 
 	modules := mctx.CreateLocalVariations(variants...)
 	for i, m := range modules {

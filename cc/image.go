@@ -101,6 +101,9 @@ func (c *Module) deviceSpecificModuleContext() bool {
 
 // Returns true when this module is configured to have core and vendor variants.
 func (c *Module) HasVendorVariant() bool {
+	if apiLibrary, ok := c.getImportedApiLibrary(); ok {
+		return apiLibrary.hasLLNDKStubs()
+	}
 	return Bool(c.VendorProperties.Vendor_available) || Bool(c.VendorProperties.Odm_available)
 }
 
@@ -112,6 +115,9 @@ func (c *Module) VendorVariantToOdm() bool {
 
 // Returns true when this module is configured to have core and product variants.
 func (c *Module) HasProductVariant() bool {
+	if apiLibrary, ok := c.getImportedApiLibrary(); ok {
+		return apiLibrary.hasLLNDKStubs()
+	}
 	return Bool(c.VendorProperties.Product_available)
 }
 

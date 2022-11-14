@@ -2385,11 +2385,12 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			lib = GetReplaceModuleName(lib, apiImportInfo.HeaderLibs)
 		}
 		lib = GetReplaceModuleName(lib, GetSnapshot(c, &snapshotInfo, actx).HeaderLibs)
+		_, isApiImportLibrary := c.getImportedApiLibrary()
 
 		if c.isNDKStubLibrary() {
 			// ndk_headers do not have any variations
 			actx.AddFarVariationDependencies([]blueprint.Variation{}, depTag, lib)
-		} else if c.IsStubs() && !c.isImportedApiLibrary() {
+		} else if c.IsStubs() && !isApiImportLibrary {
 			actx.AddFarVariationDependencies(append(ctx.Target().Variations(), c.ImageVariation()),
 				depTag, lib)
 		} else {
@@ -3865,9 +3866,9 @@ func (c *Module) IsSdkVariant() bool {
 	return c.Properties.IsSdkVariant
 }
 
-func (c *Module) isImportedApiLibrary() bool {
-	_, ok := c.linker.(*apiLibraryDecorator)
-	return ok
+func (c *Module) getImportedApiLibrary() (*apiLibraryDecorator, bool) {
+	apiLibrary, ok := c.linker.(*apiLibraryDecorator)
+	return apiLibrary, ok
 }
 
 func kytheExtractAllFactory() android.Singleton {
