@@ -52,6 +52,24 @@
       "parentUuid": "731e7b06_85d6f0c2",
       "revId": "a90bd389c51a5e99d5d898ed82ab231a89064293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "378396c3_1db8062c",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-11-14T06:00:36Z",
+      "side": 1,
+      "message": "I see. I hope we can improve the naming of `.[use|is]Vndk()` in the future, as I think the definition is all pretty weird:\n\nuseVndk() returns true for vendor and product variant libraries.\nisVndk() return true for libraries that _have a variant that is vndk_. If a library have both platform and vendor-vndk variant, both variants return true!\n\nthat said reviewing (and fixing) all the existing occurrences of `isVndk()` is large work with lots of friction, so I\u0027m okay with open coding `ctx.useVndk() \u0026\u0026 ctx.isVndk()` here like this.\n\nA low hanging fruit might be to rename `isVndk()` to `hasVndkVariant()`\nadd something another helper method `isVndkVariant()` which returns `ctx.useVndk() \u0026\u0026 ctx.hasVndkVariant()`?",
+      "parentUuid": "ade8949a_449e0e5a",
+      "revId": "a90bd389c51a5e99d5d898ed82ab231a89064293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
