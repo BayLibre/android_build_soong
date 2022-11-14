@@ -22,6 +22,30 @@
       },
       "revId": "c61783b20d70789d657dcb82050369480cc443c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ad790ff_e746f90b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-14T14:54:33Z",
+      "side": 1,
+      "message": "I don\u0027t think so. It does depend on the prebuilt APEX to access the dex implementation jar so that is one argument for having it with the prebuilt APEX. However, doing that would require one instance per APEX and apart from the dependency on the APEX they are identical.\n\nAlso, this only applies to java_import module types. java_sdk_library_import modules also depend on the prebuilt APEX but don\u0027t need to provide an implementation jar (which is really just a consequence of how java_import was implemented). Moving them alongside the APEX would also drag the API specification files along with them.\n\nSo, all in all, I think it is best if java_import and java_sdk_library_import both stay in the sdk snapshot. We can handle the dependency on the prebuilt APEX better once we have namespaces to isolate prebuilts and sources.",
+      "parentUuid": "a9c13d75_fd9b9b93",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "c61783b20d70789d657dcb82050369480cc443c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
