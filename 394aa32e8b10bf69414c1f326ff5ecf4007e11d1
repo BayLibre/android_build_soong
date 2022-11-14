@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe2ad6e_125145bd",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2022-11-14T23:38:14Z",
+      "side": 1,
+      "message": "I originally was thinking that this should take the directory name to search.  Thinking about it more, I prefer this approach for now: specific solution rather than a general tool that could lead to poor decisions later.",
+      "revId": "394aa32e8b10bf69414c1f326ff5ecf4007e11d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba422013_ef069fff",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2022-11-14T23:38:14Z",
+      "side": 1,
+      "message": "Does the pruning of $OUT_DIR consist of checking that the directory we just discovered \u003d\u003d\u003d $OUT_DIR (so that out/api_surfaces won\u0027t trip that), or does it just look for \"starts with $OUT_DIR\" (in which case we\u0027d need to change that check, too).\n\nPresumably the former.",
+      "revId": "394aa32e8b10bf69414c1f326ff5ecf4007e11d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
