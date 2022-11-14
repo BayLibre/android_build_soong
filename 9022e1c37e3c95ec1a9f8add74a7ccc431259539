@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e8199bc_c9080127",
+        "filename": "cc/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-14T02:34:27Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the correct direction for the llndk libraries.\nIt does not make the llndk libs marked as llndk.\n\nDoes the llndk api library returns true for `m.IsLlndk()`? Otherwise, VNDK to api imported LLNDK may report link type check error. Please add a unit test for the dependency check from a VNDK library to an imported LLNDK library.\n\nInstead of making the api imported llndk modules to vendor available, they need to be marked as llndk libraries by setting `m.VendorProperties.IsLLNDK \u003d true` from the VndkMutator.",
+      "revId": "9022e1c37e3c95ec1a9f8add74a7ccc431259539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
