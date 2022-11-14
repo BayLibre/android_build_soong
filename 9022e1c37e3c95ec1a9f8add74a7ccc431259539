@@ -70,6 +70,24 @@
       "parentUuid": "0ae36fdb_ec386aea",
       "revId": "9022e1c37e3c95ec1a9f8add74a7ccc431259539",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68eff6f5_b3716f46",
+        "filename": "cc/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-14T06:40:25Z",
+      "side": 1,
+      "message": "Oh, you redefined `hasLLNDKStubs()` from the library_stubs.go.\nLLNDK libraries do not use vendor_available, but treated specially from the image mutator by checking if the library has llndk stubs. (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/image.go;drc\u003dd079e0b2708ce0f4cce470db929f28dd8d2b0e80;l\u003d451) So I thought, it does not need any \u0027available\u0027 settings.\n\nBut I noticed, this is not an LLNDK library but only for the llndk stubs for vendor or product variant. In that case, we don\u0027t need to create core variants of the api surface modules. Can we just mark them `vendor: true`?\nIf it is also for the product variant, it may include both `product_specific: true,` and `vendor_available: true,`.\n\nReturning true to HasVendorVariant() will create core variant, too.",
+      "parentUuid": "0ae36fdb_ec386aea",
+      "revId": "9022e1c37e3c95ec1a9f8add74a7ccc431259539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
