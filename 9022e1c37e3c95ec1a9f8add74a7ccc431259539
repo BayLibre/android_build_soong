@@ -88,6 +88,29 @@
       "parentUuid": "0ae36fdb_ec386aea",
       "revId": "9022e1c37e3c95ec1a9f8add74a7ccc431259539",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0dcb71_b5892bb3",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-14T19:47:29Z",
+      "side": 1,
+      "message": "Do we need two variants of the same `cc_api_variant` module? What are the differences between the vendor and product variants of the same `cc_api_variant: libfoo` module? Usually, we create variants only if there are differences in the compile action or install location or ...\n\n\nIf the goal is to make them visible to vendor and product API domains, can we rewrite the DepsMutator (e.g. using AddFarVariationDependencies without the image variation) instead of creating duplicate variants?",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 186
+      },
+      "revId": "9022e1c37e3c95ec1a9f8add74a7ccc431259539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
