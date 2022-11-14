@@ -52,6 +52,24 @@
       "parentUuid": "ffa61472_6a0524e1",
       "revId": "87b8fccc312b56a40f4ad38ce343cbb132229565",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee30dda_fb564eb1",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-14T16:44:22Z",
+      "side": 1,
+      "message": "In that case forcing this to be `false` is probably the correct thing to do",
+      "parentUuid": "9c2b6be1_a7b82c1d",
+      "revId": "87b8fccc312b56a40f4ad38ce343cbb132229565",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
