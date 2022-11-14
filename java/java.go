@@ -2452,15 +2452,17 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 
 type javaLibraryAttributes struct {
 	*javaCommonAttributes
-	Deps      bazel.LabelListAttribute
-	Exports   bazel.LabelListAttribute
-	Neverlink bazel.BoolAttribute
+	Deps        bazel.LabelListAttribute
+	Exports     bazel.LabelListAttribute
+	Neverlink   bazel.BoolAttribute
+	Common_srcs bazel.LabelListAttribute
 }
 
 func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 	commonAttrs, depLabels := m.convertLibraryAttrsBp2Build(ctx)
 
 	deps := depLabels.Deps
+
 	if !commonAttrs.Srcs.IsEmpty() {
 		deps.Append(depLabels.StaticDeps) // we should only append these if there are sources to use them
 
@@ -2473,15 +2475,25 @@ func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
 	}
 
+	var props bazel.BazelTargetModuleProperties
 	attrs := &javaLibraryAttributes{
 		javaCommonAttributes: commonAttrs,
 		Deps:                 deps,
 		Exports:              depLabels.StaticDeps,
 	}
 
-	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "java_library",
-		Bzl_load_location: "//build/bazel/rules/java:library.bzl",
+	if !m.hasSrcExt(".kt") && len(m.properties.Common_srcs) == 0 {
+		props = bazel.BazelTargetModuleProperties{
+			Rule_class:        "java_library",
+			Bzl_load_location: "//build/bazel/rules/java:library.bzl",
+		}
+	} else {
+		attrs.Common_srcs = bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, m.properties.Common_srcs))
+
+		props = bazel.BazelTargetModuleProperties{
+			Rule_class:        "kt_jvm_library",
+			Bzl_load_location: "@rules_kotlin//kotlin:jvm_library.bzl",
+		}
 	}
 
 	name := m.Name()
