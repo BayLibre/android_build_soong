@@ -33,6 +33,24 @@
       "message": "Does the pruning of $OUT_DIR consist of checking that the directory we just discovered \u003d\u003d\u003d $OUT_DIR (so that out/api_surfaces won\u0027t trip that), or does it just look for \"starts with $OUT_DIR\" (in which case we\u0027d need to change that check, too).\n\nPresumably the former.",
       "revId": "394aa32e8b10bf69414c1f326ff5ecf4007e11d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e328e714_52497d74",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-14T23:47:26Z",
+      "side": 1,
+      "message": "It happens via `PruneFile: pruneFiles` (line 69). These are marker files that are used by the finder to stop recursing into that directory.\n\nWe use this functionality by creating an empty `.out-dir` file at the root of $OUT_DIR.",
+      "parentUuid": "ba422013_ef069fff",
+      "revId": "394aa32e8b10bf69414c1f326ff5ecf4007e11d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
