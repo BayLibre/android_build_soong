@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e2aa4f_c6d3b63d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-11-14T05:52:46Z",
+      "side": 1,
+      "message": "From last week\u0027s discussion, I think what\u0027s _actually_ happening is:\n\nisImplementationForLLNDKPublic() returns true for llndk implementation and stub.\nIsLlndk() return true for llndk stub.\n\nWe _can_ use isImplementationForLLNDKPublic() to identify llndk implementation lib because L1879 library.sabi.shouldCreateSourceAbiDump() excludes stub libraries already.",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "7584bda22758cb619b47489a8cb768d3c8bd7b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
