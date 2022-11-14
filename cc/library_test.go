@@ -32,7 +32,7 @@ func TestLibraryReuse(t *testing.T) {
 
 		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_shared").Rule("ld")
 		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_static").Output("libfoo.a")
-
+		print(libfooShared.Deps)
 		if len(libfooShared.Inputs) != 2 {
 			t.Fatalf("unexpected inputs to libfoo shared: %#v", libfooShared.Inputs.Strings())
 		}
