@@ -250,12 +250,19 @@ func TestExportDirFromStubLibrary(t *testing.T) {
 			export_system_include_dirs: ["source_system_include_dir"],
 			vendor_available: true,
 		}
+		cc_api_variant {
+			name: "libfoo",
+			variant: "llndk",
+			src: "libfoo.so",
+		}
 		cc_api_library {
 			name: "libfoo",
 			export_include_dirs: ["stub_include_dir"],
 			export_system_include_dirs: ["stub_system_include_dir"],
-			vendor_available: true,
 			src: "libfoo.so",
+			variants: [
+				"llndk",
+			]
 		}
 		api_imports {
 			name: "api_imports",
@@ -321,6 +328,9 @@ func TestApiLibraryWithLlndkVariant(t *testing.T) {
 	`
 
 	ctx := prepareForCcTest.RunTestWithBp(t, bp)
+
+	android.AssertStringListContains(t, "API library with LLNDK variant contains vendor variant", ctx.ModuleVariantsForTests("libbar.apiimport"), "android_vendor.29_arm64_armv8-a_shared")
+	android.AssertStringListContains(t, "API library with LLNDK variant contains product variant", ctx.ModuleVariantsForTests("libbar.apiimport"), "android_product.29_arm64_armv8-a_shared")
 
 	libfoo := ctx.ModuleForTests("binfoo", "android_vendor.29_arm64_armv8-a").Module()
 	libbarApiImport := ctx.ModuleForTests("libbar.apiimport", "android_vendor.29_arm64_armv8-a_shared").Module()
