@@ -2311,7 +2311,7 @@ type javaAidlLibraryAttributes struct {
 // and also separates dependencies into dynamic dependencies and static dependencies.
 // Each corresponding Bazel target type, can have a different method for handling
 // dynamic vs. static dependencies, and so these are returned to the calling function.
-func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) (*javaCommonAttributes, *javaDependencyLabels) {
+func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) (*javaCommonAttributes, *javaDependencyLabels, bazel.LabelListAttribute) {
 	var srcs bazel.LabelListAttribute
 	var deps bazel.LabelList
 	var staticDeps bazel.LabelList
@@ -2330,14 +2330,17 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	protoSrcPartition := "proto"
 	logtagSrcPartition := "logtag"
 	aidlSrcPartition := "aidl"
+	kotlinPartition := "kotlin"
 	srcPartitions := bazel.PartitionLabelListAttribute(ctx, &srcs, bazel.LabelPartitions{
 		javaSrcPartition:   bazel.LabelPartition{Extensions: []string{".java"}, Keep_remainder: true},
 		logtagSrcPartition: bazel.LabelPartition{Extensions: []string{".logtags", ".logtag"}},
 		protoSrcPartition:  android.ProtoSrcLabelPartition,
 		aidlSrcPartition:   android.AidlSrcLabelPartition,
+		kotlinPartition:    bazel.LabelPartition{Extensions: []string{".kt"}},
 	})
 
 	javaSrcs := srcPartitions[javaSrcPartition]
+	kotlinSrcs := srcPartitions[kotlinPartition]
 
 	if !srcPartitions[logtagSrcPartition].IsEmpty() {
 		logtagsLibName := m.Name() + "_logtags"
@@ -2447,20 +2450,25 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	depLabels.Deps = bazel.MakeLabelListAttribute(deps)
 	depLabels.StaticDeps = bazel.MakeLabelListAttribute(staticDeps)
 
-	return commonAttrs, depLabels
+	return commonAttrs, depLabels, kotlinSrcs
 }
 
 type javaLibraryAttributes struct {
 	*javaCommonAttributes
-	Deps      bazel.LabelListAttribute
-	Exports   bazel.LabelListAttribute
-	Neverlink bazel.BoolAttribute
+	Deps        bazel.LabelListAttribute
+	Exports     bazel.LabelListAttribute
+	Neverlink   bazel.BoolAttribute
+	Common_srcs bazel.LabelListAttribute
 }
 
 func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
-	commonAttrs, depLabels := m.convertLibraryAttrsBp2Build(ctx)
+	commonAttrs, depLabels, ktSrcs := m.convertLibraryAttrsBp2Build(ctx)
 
 	deps := depLabels.Deps
+	if !ktSrcs.IsEmpty() {
+		commonAttrs.Srcs.Append(ktSrcs)
+	}
+
 	if !commonAttrs.Srcs.IsEmpty() {
 		deps.Append(depLabels.StaticDeps) // we should only append these if there are sources to use them
 
@@ -2473,15 +2481,27 @@ func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
 	}
 
+	var props bazel.BazelTargetModuleProperties
 	attrs := &javaLibraryAttributes{
 		javaCommonAttributes: commonAttrs,
 		Deps:                 deps,
 		Exports:              depLabels.StaticDeps,
 	}
 
-	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "java_library",
-		Bzl_load_location: "//build/bazel/rules/java:library.bzl",
+	// fmt.Println("common srcs: ", m.properties.Common_srcs, "len: ", len(m.properties))
+
+	if ktSrcs.IsEmpty() && len(m.properties.Common_srcs) == 0 {
+		props = bazel.BazelTargetModuleProperties{
+			Rule_class:        "java_library",
+			Bzl_load_location: "//build/bazel/rules/java:library.bzl",
+		}
+	} else {
+		attrs.Common_srcs = bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, m.properties.Common_srcs))
+
+		props = bazel.BazelTargetModuleProperties{
+			Rule_class:        "kt_jvm_library",
+			Bzl_load_location: "@rules_kotlin//kotlin:jvm_library.bzl",
+		}
 	}
 
 	name := m.Name()
@@ -2498,7 +2518,7 @@ type javaBinaryHostAttributes struct {
 
 // JavaBinaryHostBp2Build is for java_binary_host bp2build.
 func javaBinaryHostBp2Build(ctx android.TopDownMutatorContext, m *Binary) {
-	commonAttrs, depLabels := m.convertLibraryAttrsBp2Build(ctx)
+	commonAttrs, depLabels, _ := m.convertLibraryAttrsBp2Build(ctx)
 
 	deps := depLabels.Deps
 	deps.Append(depLabels.StaticDeps)

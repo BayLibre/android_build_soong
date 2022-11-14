@@ -1492,7 +1492,7 @@ type bazelAndroidAppAttributes struct {
 
 // ConvertWithBp2build is used to convert android_app to Bazel.
 func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
-	commonAttrs, depLabels := a.convertLibraryAttrsBp2Build(ctx)
+	commonAttrs, depLabels, _ := a.convertLibraryAttrsBp2Build(ctx)
 
 	deps := depLabels.Deps
 	deps.Append(depLabels.StaticDeps)
