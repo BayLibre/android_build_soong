@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c13d75_fd9b9b93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-11-14T11:42:44Z",
+      "side": 1,
+      "message": "Does this module logically belong together with the Apex\u0027s Android.bp? (not saying it should be moved, since that\u0027s not auto-generated, but it seems like that would perhaps make more sense?)",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "c61783b20d70789d657dcb82050369480cc443c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
