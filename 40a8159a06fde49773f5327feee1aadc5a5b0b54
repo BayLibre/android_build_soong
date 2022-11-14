@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1995352f_18713fd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-14T22:53:11Z",
+      "side": 1,
+      "message": "note automated version of the test are in https://android-review.git.corp.google.com/c/platform/build/bazel/+/2276927",
+      "revId": "40a8159a06fde49773f5327feee1aadc5a5b0b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
