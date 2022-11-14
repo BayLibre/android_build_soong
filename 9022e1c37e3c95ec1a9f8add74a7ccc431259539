@@ -52,6 +52,24 @@
       "parentUuid": "da031278_43873784",
       "revId": "9022e1c37e3c95ec1a9f8add74a7ccc431259539",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32cf764f_1ea1a2d6",
+        "filename": "cc/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-14T06:29:23Z",
+      "side": 1,
+      "message": "It is possible, but feels like redundant information, if all imported libraries with LLNDK module should support both vendor and product variants.",
+      "parentUuid": "0ae36fdb_ec386aea",
+      "revId": "9022e1c37e3c95ec1a9f8add74a7ccc431259539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
