@@ -111,6 +111,30 @@
       },
       "revId": "9022e1c37e3c95ec1a9f8add74a7ccc431259539",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36d97509_dd49264e",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-15T00:17:35Z",
+      "side": 1,
+      "message": "They must be the same, but for the simplicity we implemented LLNDK libs to create stubs for each image variant instead of adding more complexity on deps mutator. API surface also followed the same way.",
+      "parentUuid": "8e0dcb71_b5892bb3",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 186
+      },
+      "revId": "9022e1c37e3c95ec1a9f8add74a7ccc431259539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
