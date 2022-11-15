@@ -25,6 +25,7 @@ import (
 
 	"android/soong/bazel"
 	"android/soong/bazel/cquery"
+	"android/soong/remoteexec"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -59,6 +60,8 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_device_for_host", DeviceForHostFactory)
 	ctx.RegisterModuleType("java_host_for_device", HostForDeviceFactory)
 	ctx.RegisterModuleType("dex_import", DexImportFactory)
+	ctx.RegisterModuleType("java_api_library", ApiLibraryFactory)
+	ctx.RegisterModuleType("java_api_provider", ApiProviderFactory)
 
 	// This mutator registers dependencies on dex2oat for modules that should be
 	// dexpreopted. This is done late when the final variants have been
@@ -1499,6 +1502,245 @@ func BinaryHostFactory() android.Module {
 	android.InitDefaultableModule(module)
 	android.InitBazelModule(module)
 	return module
+}
+
+type JavaApiProvider struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+
+	properties struct {
+		// relative path to the API signature text file
+		Api_file *string `android:"path"`
+	}
+}
+
+func ApiProviderFactory() android.Module {
+	module := &JavaApiProvider{}
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitDefaultableModule(module)
+	module.AddProperties(&module.properties)
+	return module
+}
+
+type JavaApiImportInfo struct {
+	ApiFile android.Path
+}
+
+var JavaApiImportProvider = blueprint.NewProvider(JavaApiImportInfo{})
+
+func (ap *JavaApiProvider) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	apiFile := android.PathForModuleSrc(ctx, String(ap.properties.Api_file))
+	ctx.SetProvider(JavaApiImportProvider, JavaApiImportInfo{
+		ApiFile: apiFile,
+	})
+}
+
+type ApiLibrary struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+
+	properties JavaApiLibraryProperties
+
+	metadataZip android.WritablePath
+	metadataDir android.WritablePath
+	stubsSrcJar android.WritablePath
+	stubsJarDir android.WritablePath
+
+	implicits    android.Paths
+	apiFilePaths android.Paths
+}
+
+type JavaApiLibraryProperties struct {
+	// name of the API surface
+	Api_surface *string
+
+	// string value of the platform version
+	Platform_version *string
+
+	// If not blank, set the java version passed to metalava as -source
+	Java_version *string
+
+	// list of API provider modules that consists this API surface
+	Api_providers []string
+
+	// List of flags to be passed to the javac compiler to generate jar file
+	Javacflags []string
+}
+
+func ApiLibraryFactory() android.Module {
+	module := &ApiLibrary{}
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitDefaultableModule(module)
+	module.AddProperties(&module.properties)
+	return module
+}
+
+func (al *ApiLibrary) MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	return al.SdkVersion(ctx)
+}
+
+func (al *ApiLibrary) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	return android.SdkSpecFrom(ctx, *al.properties.Platform_version)
+}
+
+func (al *ApiLibrary) TargetSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	return al.SdkVersion(ctx)
+}
+
+func (al *ApiLibrary) ReplaceMaxSdkVersionPlaceholder(ctx android.EarlyModuleContext) android.SdkSpec {
+	return al.SdkVersion(ctx)
+}
+
+func (al *ApiLibrary) SystemModules() string {
+	return "none"
+}
+
+func (al *ApiLibrary) ApiSurface() *string {
+	return al.properties.Api_surface
+}
+
+func (al *ApiLibrary) PlatformVersion() *string {
+	return al.properties.Platform_version
+}
+
+func (al *ApiLibrary) StubsJar() android.Path {
+	return al.stubsJarDir
+}
+
+func metalavaStubCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
+	javaVersion javaVersion, srcs android.Paths, homeDir android.WritablePath) *android.RuleBuilderCommand {
+	rule.Command().Text("rm -rf").Flag(homeDir.String())
+	rule.Command().Text("mkdir -p").Flag(homeDir.String())
+
+	cmd := rule.Command()
+	cmd.FlagWithArg("ANDROID_PREFS_ROOT=", homeDir.String())
+
+	if metalavaUseRbe(ctx) {
+		rule.Remoteable(android.RemoteRuleSupports{RBE: true})
+		execStrategy := ctx.Config().GetenvWithDefault("RBE_METALAVA_EXEC_STRATEGY", remoteexec.LocalExecStrategy)
+		labels := map[string]string{"type": "tool", "name": "metalava"}
+
+		pool := ctx.Config().GetenvWithDefault("RBE_METALAVA_POOL", "java16")
+		rule.Rewrapper(&remoteexec.REParams{
+			Labels:          labels,
+			ExecStrategy:    execStrategy,
+			ToolchainInputs: []string{config.JavaCmd(ctx).String()},
+			Platform:        map[string]string{remoteexec.PoolKey: pool},
+		})
+	}
+
+	cmd.BuiltTool("metalava").ImplicitTool(ctx.Config().HostJavaToolPath(ctx, "metalava.jar")).
+		Flag(config.JavacVmFlags).
+		Flag("-J--add-opens=java.base/java.util=ALL-UNNAMED").
+		FlagWithArg("-encoding ", "UTF-8").
+		FlagWithArg("-source ", javaVersion.String()).
+		FlagWithInputList("--source-files ", srcs, " ")
+
+	cmd.Flag("--no-banner").
+		Flag("--color").
+		Flag("--quiet").
+		Flag("--format=v2").
+		FlagWithArg("--repeat-errors-max ", "10").
+		FlagWithArg("--hide ", "UnresolvedImport").
+		FlagWithArg("--hide ", "InvalidNullabilityOverride").
+		FlagWithArg("--hide ", "ChangedDefault")
+
+	return cmd
+}
+
+func (al *ApiLibrary) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuilderCommand, stubsDir android.OptionalPath) {
+	if stubsDir.Valid() {
+		cmd.FlagWithArg("--stubs ", stubsDir.String())
+	}
+}
+
+var javaApiProviderDirTag = dependencyTag{name: "java-api-provider-dir"}
+
+func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
+	apiProviders := al.properties.Api_providers
+	if len(al.properties.Api_providers) != 0 {
+		for _, apiProviderName := range apiProviders {
+			ctx.AddDependency(ctx.Module(), javaApiProviderDirTag, apiProviderName)
+		}
+	}
+}
+
+func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	javaVersion := getJavaVersion(ctx, String(al.properties.Java_version), android.SdkContext(al))
+
+	rule := android.NewRuleBuilder(pctx, ctx)
+
+	rule.Sbox(android.PathForModuleOut(ctx, "metalava"),
+		android.PathForModuleOut(ctx, "metalava.sbox.textproto")).
+		SandboxInputs()
+
+	var stubsDir android.OptionalPath
+	al.stubsSrcJar = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"-"+"stubs.srcjar")
+	stubsDir = android.OptionalPathForPath(android.PathForModuleOut(ctx, "metalava", "stubsDir"))
+	rule.Command().Text("rm -rf").Text(stubsDir.String())
+	rule.Command().Text("mkdir -p").Text(stubsDir.String())
+
+	homeDir := android.PathForModuleOut(ctx, "metalava", "home")
+
+	apiProviders := al.properties.Api_providers
+	srcFiles := make([]android.Path, len(apiProviders))
+	for i, apiProviderName := range apiProviders {
+		apiProvider := ctx.GetDirectDepWithTag(apiProviderName, javaApiProviderDirTag)
+		if apiProvider == nil {
+			panic(fmt.Errorf("Java API provider module %s not found, called from %s", apiProviderName, al.Name()))
+		}
+		provider := ctx.OtherModuleProvider(apiProvider, JavaApiImportProvider).(JavaApiImportInfo)
+		srcFiles[i] = android.PathForModuleSrc(ctx, provider.ApiFile.String())
+	}
+
+	cmd := metalavaStubCmd(ctx, rule, javaVersion, srcFiles, homeDir)
+
+	cmd.Implicits(al.implicits)
+
+	al.stubsFlags(ctx, cmd, stubsDir)
+
+	al.stubsSrcJar = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"-"+"stubs.srcjar")
+	rule.Command().
+		BuiltTool("soong_zip").
+		Flag("-write_if_changed").
+		Flag("-jar").
+		FlagWithOutput("-o ", al.stubsSrcJar).
+		FlagWithArg("-C ", stubsDir.String()).
+		FlagWithArg("-D ", stubsDir.String())
+
+	al.metadataZip = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"-metadata.zip")
+	al.metadataDir = android.PathForModuleOut(ctx, "metalava", "metadata")
+	rule.Command().
+		BuiltTool("soong_zip").
+		Flag("-write_if_changed").
+		Flag("-d").
+		FlagWithOutput("-o ", al.metadataZip).
+		FlagWithArg("-C ", al.metadataDir.String()).
+		FlagWithArg("-D ", al.metadataDir.String())
+
+	stubsUnzipDir := android.PathForOutput(ctx, ctx.ModuleName(), "stubsUnzip")
+	rule.Command().
+		Text("unzip").
+		Flag("-DD").
+		Flag("-q").
+		FlagWithArg("-d ", stubsUnzipDir.String()).
+		Input(al.stubsSrcJar)
+
+	rule.Build("metalava", "metalava merged")
+
+	apiSurface := String(al.properties.Api_surface)
+	if apiSurface == "" {
+		apiSurface = "public"
+	}
+
+	al.stubsJarDir = android.PathForModuleOut(ctx, ctx.ModuleName(), apiSurface+"-android.jar")
+
+	var flags javaBuilderFlags
+	flags.javacFlags = strings.Join(al.properties.Javacflags, " ")
+
+	TransformJavaToHeaderClasses(ctx, al.stubsJarDir,
+		android.Paths{stubsUnzipDir},
+		android.Paths{al.stubsSrcJar}, flags)
 }
 
 //
