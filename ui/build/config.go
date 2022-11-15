@@ -29,6 +29,7 @@ import (
 	"syscall"
 	"time"
 
+	"android/soong/android"
 	"android/soong/shared"
 
 	"google.golang.org/protobuf/proto"
@@ -1139,6 +1140,17 @@ func (c *configImpl) UseRBE() bool {
 }
 
 func (c *configImpl) BazelBuildEnabled() bool {
+	if c.environ.IsEnvTrue("WITH_TIDY") {
+		return false
+	}
+	if c.environ.IsEnvTrue("ALLOW_LOCAL_TIDY_TRUE") {
+		return false
+	}
+
+	if android.InList("update-apis", c.arguments) {
+		return false
+	}
+
 	return c.bazelProdMode || c.bazelDevMode || c.bazelStagingMode
 }
 
