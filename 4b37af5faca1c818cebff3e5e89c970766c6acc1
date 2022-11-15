@@ -33,6 +33,24 @@
       "message": "I interpreted the existing `context.okay` approach has being a kind of \"--keep-going\", to collect several errors before failing. If we\u0027re going to fail fast, why not just do away with `context.okay` and use `panic` ?",
       "revId": "4b37af5faca1c818cebff3e5e89c970766c6acc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f749c6ec_34bce886",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-15T16:09:04Z",
+      "side": 1,
+      "message": "well I am not totally against that this is a more graceful handling of error and worth keeping.",
+      "parentUuid": "18ec8dc7_1d8d942b",
+      "revId": "4b37af5faca1c818cebff3e5e89c970766c6acc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
