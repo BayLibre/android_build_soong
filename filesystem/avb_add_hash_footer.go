@@ -16,16 +16,13 @@ package filesystem
 
 import (
 	"fmt"
+	"regexp"
 	"strconv"
 
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 )
-
-func init() {
-	android.RegisterModuleType("avb_add_hash_footer", avbAddHashFooterFactory)
-}
 
 type avbAddHashFooter struct {
 	android.ModuleBase
@@ -34,6 +31,17 @@ type avbAddHashFooter struct {
 
 	output     android.OutputPath
 	installDir android.InstallPath
+}
+
+type avbProp struct {
+	// Name of a property
+	Name *string
+
+	// Value of a property. Must not have a whitespace. Can't be used together with `file`.
+	Value *string
+
+	// File from which the value of the prop is read from. Can't be used together with `value`.
+	File *string `android:"path,arch_variant"`
 }
 
 type avbAddHashFooterProperties struct {
@@ -57,6 +65,9 @@ type avbAddHashFooterProperties struct {
 
 	// The salt in hex. Required for reproducible builds.
 	Salt *string
+
+	// List of properties to add to the footer
+	Props []avbProp
 }
 
 // The AVB footer adds verification information to the image.
@@ -106,12 +117,45 @@ func (a *avbAddHashFooter) GenerateAndroidBuildActions(ctx android.ModuleContext
 	}
 	cmd.FlagWithArg("--salt ", proptools.String(a.properties.Salt))
 
+	for _, prop := range a.properties.Props {
+		addAvbProp(ctx, cmd, prop)
+	}
+
 	cmd.FlagWithOutput("--image ", a.output)
 
 	builder.Build("avbAddHashFooter", fmt.Sprintf("avbAddHashFooter %s", ctx.ModuleName()))
 
 	a.installDir = android.PathForModuleInstall(ctx, "etc")
 	ctx.InstallFile(a.installDir, a.installFileName(), a.output)
+}
+
+func addAvbProp(ctx android.ModuleContext, cmd *android.RuleBuilderCommand, prop avbProp) {
+	name := proptools.String(prop.Name)
+	value := proptools.String(prop.Value)
+	file := proptools.String(prop.File)
+	if name == "" || regexp.MustCompile("\\s").MatchString(name) {
+		ctx.PropertyErrorf("name", "must be a non-empty string without whitespace")
+		return
+	}
+	if value == "" && file == "" {
+		ctx.PropertyErrorf("value", "either value or file should be set")
+		return
+	}
+	if value != "" && file != "" {
+		ctx.PropertyErrorf("value", "value and file can't be set at the same time")
+		return
+	}
+
+	if value != "" && regexp.MustCompile("\\s").MatchString(value) {
+		ctx.PropertyErrorf("value", "must be a non-empty string without whitespace")
+		return
+	}
+
+	if value != "" {
+		cmd.FlagWithArg("--prop ", fmt.Sprintf("%s:%s", name, value))
+	} else {
+		cmd.FlagWithInput(fmt.Sprintf("--prop_from_file %s:", name), android.PathForModuleSrc(ctx, file))
+	}
 }
 
 var _ android.AndroidMkEntriesProvider = (*avbAddHashFooter)(nil)
