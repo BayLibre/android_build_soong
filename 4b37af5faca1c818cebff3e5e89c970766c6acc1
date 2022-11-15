@@ -51,6 +51,24 @@
       "parentUuid": "18ec8dc7_1d8d942b",
       "revId": "4b37af5faca1c818cebff3e5e89c970766c6acc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccbb6f8a_79c7e091",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-15T16:13:45Z",
+      "side": 1,
+      "message": "I think that context.okay with fail-fast adds complexity with no added benefit (I don\u0027t think it is more graceful). We want the program to failfast and exit in the event of an error, now, which is expressly what panic is for.",
+      "parentUuid": "f749c6ec_34bce886",
+      "revId": "4b37af5faca1c818cebff3e5e89c970766c6acc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
