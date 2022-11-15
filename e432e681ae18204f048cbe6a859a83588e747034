@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a89b3d_de78728a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-11-15T15:08:55Z",
+      "side": 1,
+      "message": "Discussed offline, let\u0027s go back to something closer to patchset 1, but \n- group the kotlin sources together with the java sources in the javaCommonAttributes output, and\n- in addition to this, output just the fact that there are kotlin sources as a boolean.\n- Group the whole output of  convertLibraryAttrsBp2Build into a Bp2BuildJavaInfo struct",
+      "revId": "e432e681ae18204f048cbe6a859a83588e747034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
