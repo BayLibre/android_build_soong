@@ -375,6 +375,12 @@ func init() {
 
 		if ctx.Config().IsEnvTrue("LLVM_NEXT") {
 			flags = append(flags, llvmNextExtraCommonGlobalCflags...)
+			for i, flag := range flags {
+				if flag == "-ftrivial-auto-var-init=zero -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang" {
+					flags[i] = "-ftrivial-auto-var-init=zero"
+					break
+				}
+			}
 		}
 
 		if ctx.Config().IsEnvTrue("ALLOW_UNKNOWN_WARNING_OPTION") {
