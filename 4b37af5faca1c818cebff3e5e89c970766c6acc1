@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "746c91ec_b26202eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-15T16:51:58Z",
+      "side": 1,
+      "message": "+2, please come to a consensus on the 3 contentious issues. I will chime in if I must.",
+      "revId": "4b37af5faca1c818cebff3e5e89c970766c6acc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18ec8dc7_1d8d942b",
