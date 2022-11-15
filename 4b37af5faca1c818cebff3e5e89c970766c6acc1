@@ -87,6 +87,24 @@
       "parentUuid": "ccbb6f8a_79c7e091",
       "revId": "4b37af5faca1c818cebff3e5e89c970766c6acc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7213cd68_02d2b838",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-15T16:34:35Z",
+      "side": 1,
+      "message": "1. Multiple stack traces seems like a feature. Also, even with context.okay, we may see multiple error messages for concurrent threads (because multiple threads may have already checked context.okay here, and then failed later)\n2. Do we need this? (YAGNI?)\n3. with Helper, you can unit test with panic() just fine, no?",
+      "parentUuid": "3c2f05be_80a287ad",
+      "revId": "4b37af5faca1c818cebff3e5e89c970766c6acc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
