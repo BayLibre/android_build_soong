@@ -16,6 +16,23 @@
       "message": "LGTM other than the presubmit failures. I\u0027ll +2 if those go away.",
       "revId": "4b37af5faca1c818cebff3e5e89c970766c6acc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ec8dc7_1d8d942b",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-15T15:58:33Z",
+      "side": 1,
+      "message": "I interpreted the existing `context.okay` approach has being a kind of \"--keep-going\", to collect several errors before failing. If we\u0027re going to fail fast, why not just do away with `context.okay` and use `panic` ?",
+      "revId": "4b37af5faca1c818cebff3e5e89c970766c6acc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
