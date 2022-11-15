@@ -69,6 +69,24 @@
       "parentUuid": "f749c6ec_34bce886",
       "revId": "4b37af5faca1c818cebff3e5e89c970766c6acc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c2f05be_80a287ad",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-15T16:23:51Z",
+      "side": 1,
+      "message": "Graceful in a few ways:\n1. There won\u0027t multiple stack traces in the event of an error\n2. Instead of a worker go-routine panicking, it lets the parent context determine what it wants to do (e.g. any clean-up or logging for instance)\n3. Were one to add unit tests for this (as one should), not using panic would probably be more test-friendly.",
+      "parentUuid": "ccbb6f8a_79c7e091",
+      "revId": "4b37af5faca1c818cebff3e5e89c970766c6acc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
