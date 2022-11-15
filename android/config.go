@@ -536,7 +536,36 @@ func (c *config) mockFileSystem(bp string, fs map[string][]byte) {
 // Returns true if "Bazel builds" is enabled. In this mode, part of build
 // analysis is handled by Bazel.
 func (c *config) IsMixedBuildsEnabled() bool {
-	return c.BuildMode == BazelProdMode || c.BuildMode == BazelDevMode || c.BuildMode == BazelStagingMode
+	globalMixedBuildsSupport := c.Once(OnceKey{"globalMixedBuildsSupport"}, func() interface{} {
+		// (b/253664931) Fallback to non-mixed builds for unsupported build configurations
+		if c.IsEnvTrue("GLOBAL_THINLTO") {
+			fmt.Fprintln(os.Stderr, "unsupported env var GLOBAL_THINLTO for Bazel: falling back to non-mixed build")
+			return false
+		}
+		if c.IsEnvTrue("CLANG_COVERAGE") {
+			fmt.Fprintln(os.Stderr, "unsupported env var CLANG_COVERAGE for Bazel: falling back to non-mixed build")
+			return false
+		}
+		if len(c.productVariables.SanitizeHost) > 0 {
+			fmt.Fprintln(os.Stderr, "unsupported product var SanitizeHost for Bazel: falling back to non-mixed build")
+			return false
+		}
+		if len(c.productVariables.SanitizeDevice) > 0 {
+			fmt.Fprintln(os.Stderr, "unsupported product var SanitizeDevice for Bazel: falling back to non-mixed build")
+			return false
+		}
+		if len(c.productVariables.SanitizeDeviceDiag) > 0 {
+			fmt.Fprintln(os.Stderr, "unsupported product var SanitizeDeviceDiag for Bazel: falling back to non-mixed build")
+			return false
+		}
+		if len(c.productVariables.SanitizeDeviceArch) > 0 {
+			fmt.Fprintln(os.Stderr, "unsupported product var SanitizeDeviceArch for Bazel: falling back to non-mixed build")
+			return false
+		}
+		return true
+	}).(bool)
+	bazelModeEnabled := c.BuildMode == BazelProdMode || c.BuildMode == BazelDevMode || c.BuildMode == BazelStagingMode
+	return globalMixedBuildsSupport && bazelModeEnabled
 }
 
 func (c *config) SetAllowMissingDependencies() {
