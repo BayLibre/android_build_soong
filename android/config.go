@@ -536,6 +536,24 @@ func (c *config) mockFileSystem(bp string, fs map[string][]byte) {
 // Returns true if "Bazel builds" is enabled. In this mode, part of build
 // analysis is handled by Bazel.
 func (c *config) IsMixedBuildsEnabled() bool {
+	// (b/253664931) Fallback to non-mixed builds for unsupported build configurations
+	skipMixedBuilds := false
+	if c.IsEnvTrue("GLOBAL_THINLTO") {
+		skipMixedBuilds = true
+	}
+	if c.IsEnvTrue("CLANG_COVERAGE") {
+		skipMixedBuilds = true
+	}
+	if len(c.productVariables.SanitizeHost) > 0 ||
+		len(c.productVariables.SanitizeDevice) > 0 ||
+		len(c.productVariables.SanitizeDeviceDiag) > 0 ||
+		len(c.productVariables.SanitizeDeviceArch) > 0 {
+		skipMixedBuilds = true
+	}
+	if skipMixedBuilds {
+		fmt.Fprintln(os.Stderr, "unsupported build configuration for Bazel: falling back to non-mixed build")
+	}
+
 	return c.BuildMode == BazelProdMode || c.BuildMode == BazelDevMode || c.BuildMode == BazelStagingMode
 }
 
