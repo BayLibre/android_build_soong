@@ -31,10 +31,7 @@ message LicenseMetadata {
   // projects identifies the git project(s) containing the associated source code.
   repeated string projects = 4;
 
-  // license_kinds lists the kinds of licenses. e.g. SPDX-license-identifier-Apache-2.0 or legacy_notice.
-  repeated string license_kinds = 5;
-
-  // license_conditions lists the conditions that apply to the license kinds. e.g. notice or restricted.
+  // license_conditions lists the conditions that apply to the license kinds or texts. e.g. notice or restricted.
   repeated string license_conditions = 6;
 
   // license_texts lists the filenames of the associated license text(s).

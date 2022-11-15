@@ -67,7 +67,7 @@ func main() {
 	packageName := flags.String("p", "", "license package name")
 	moduleType := newMultiString(flags, "mt", "module type")
 	moduleName := flags.String("mn", "", "module name")
-	kinds := newMultiString(flags, "k", "license kinds")
+	newMultiString(flags, "k", "license kinds (deprecated)")
 	moduleClass := newMultiString(flags, "mc", "module class")
 	conditions := newMultiString(flags, "c", "license conditions")
 	notices := newMultiString(flags, "n", "license notice file")
@@ -89,7 +89,6 @@ func main() {
 	metadata.ModuleClasses = *moduleClass
 	metadata.IsContainer = proto.Bool(*isContainer)
 	metadata.Projects = findGitRoots(*roots)
-	metadata.LicenseKinds = *kinds
 	metadata.LicenseConditions = *conditions
 	metadata.LicenseTexts = *notices
 	metadata.Built = *built
