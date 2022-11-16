@@ -33,6 +33,24 @@
       "message": "Can we use RemoveFromList from soong/android/util.go?",
       "revId": "ab6cb1eba3a5240887abf918b641e8f8c89dc844",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1522c7b_b81fe931",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2022-11-16T18:57:46Z",
+      "side": 1,
+      "message": "Yeah, or IndexList. But now I feel changing at the place adding -ftrivial-auto-var-init\u003dzero maybe more clear.",
+      "parentUuid": "e82c4eeb_70d6e00c",
+      "revId": "ab6cb1eba3a5240887abf918b641e8f8c89dc844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
