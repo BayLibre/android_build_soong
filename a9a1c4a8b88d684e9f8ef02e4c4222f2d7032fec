@@ -16,6 +16,24 @@
       "message": "Let\u0027s put it in the banner for now.",
       "revId": "a9a1c4a8b88d684e9f8ef02e4c4222f2d7032fec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3541cf61_36df6afa",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T21:36:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b132bdb_ca6eab6e",
+      "revId": "a9a1c4a8b88d684e9f8ef02e4c4222f2d7032fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

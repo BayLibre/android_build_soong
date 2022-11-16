@@ -22,6 +22,30 @@
       },
       "revId": "2db11f3dcc7d8abffb3edb941150d9b727c883ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66522b2d_c3f23b2e",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T21:36:59Z",
+      "side": 1,
+      "message": "Adding this var to the banner for now",
+      "parentUuid": "d7518015_264fe33f",
+      "range": {
+        "startLine": 263,
+        "startChar": 3,
+        "endLine": 263,
+        "endChar": 23
+      },
+      "revId": "2db11f3dcc7d8abffb3edb941150d9b727c883ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
