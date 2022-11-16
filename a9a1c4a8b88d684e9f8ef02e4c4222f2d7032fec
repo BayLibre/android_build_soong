@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b132bdb_ca6eab6e",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2022-11-16T21:24:28Z",
+      "side": 1,
+      "message": "Let\u0027s put it in the banner for now.",
+      "revId": "a9a1c4a8b88d684e9f8ef02e4c4222f2d7032fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
