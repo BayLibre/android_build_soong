@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16f95c5_5dac0e22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-16T15:37:59Z",
+      "side": 1,
+      "message": "Ping. I need the TestRunner mechanism for other non-bp2build related tests. If you are not happy with this change then let me know and I will extract the TestRunner mechanism out into a separate change.",
+      "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
