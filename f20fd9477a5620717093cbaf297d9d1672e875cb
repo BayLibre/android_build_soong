@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "175f5817_6f95bd66",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-11-16T23:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "516980f6_246e971e",
+      "revId": "f20fd9477a5620717093cbaf297d9d1672e875cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0b703db_04d63a48",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-11-11T19:14:19Z",
       "side": 1,
       "message": "These could be moved into InvokeBazel to be consistent with runCquery/runAquery/generateBazelSymlinks",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 37
+      },
+      "revId": "f20fd9477a5620717093cbaf297d9d1672e875cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58383dd7_e776d75e",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-11-16T23:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0b703db_04d63a48",
       "range": {
         "startLine": 173,
         "startChar": 0,
