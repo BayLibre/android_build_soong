@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7518015_264fe33f",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T17:29:51Z",
+      "side": 1,
+      "message": "This adds `PRODUCT_INCLUDE_TAGS` to out/soong.log, but not to Banner vars. This is somewhat similar to `PRODUCT_SOONG_NAMESPACES` which has been removed from the banner recently (b/204196816).\n\nHowever `PRODUCT_INCLUDE_TAGS` will likely be less verbose. Should we add this to the banner too?",
+      "range": {
+        "startLine": 263,
+        "startChar": 3,
+        "endLine": 263,
+        "endChar": 23
+      },
+      "revId": "2db11f3dcc7d8abffb3edb941150d9b727c883ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
