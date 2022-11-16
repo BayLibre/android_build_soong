@@ -286,6 +286,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56565ddc_72b6b3f1",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-11-16T20:27:34Z",
+      "side": 1,
+      "message": "IIUC only props inside `properties` struct prop are showed in go/Android.bp, which is not the case for these props. For instance, [these props](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/droidstubs.go;drc\u003d051fa915137524c80128786c77149b0160836ed8;l\u003d56) are not set `blueprint:\"mutated\"` but do not appear in go/Android.bp. I can annotate `blueprint:\"mutated\"` for these props as well, but I don\u0027t think it will have any effect.",
+      "parentUuid": "d0e5b908_5532a1d2",
+      "range": {
+        "startLine": 1544,
+        "startChar": 1,
+        "endLine": 1547,
+        "endChar": 33
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d9fec24_6ae08391",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -708,6 +732,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42826a98_015e91a7",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1657,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-11-16T20:27:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10b593b3_f5fce2d9",
+      "range": {
+        "startLine": 1657,
+        "startChar": 67,
+        "endLine": 1657,
+        "endChar": 70
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "276eb739_6577b3fc",
@@ -826,6 +874,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ceb418_cb0bd99a",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1716,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-11-16T20:27:34Z",
+      "side": 1,
+      "message": "Yes, I believe this can be removed.",
+      "parentUuid": "17ed39b2_0b4d63a4",
+      "range": {
+        "startLine": 1715,
+        "startChar": 2,
+        "endLine": 1716,
+        "endChar": 12
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93f93ce4_7f5920d8",
@@ -897,6 +969,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "336b8f2f_2a606023",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1721,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-11-16T20:27:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c510939_8e0f5aff",
+      "range": {
+        "startLine": 1721,
+        "startChar": 1,
+        "endLine": 1721,
+        "endChar": 14
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8ee1f73_4b4dd7d4",
@@ -958,6 +1054,30 @@
       "side": 1,
       "message": "Can we use an empty list for `deps`?",
       "parentUuid": "856cb1a5_763f17ba",
+      "range": {
+        "startLine": 1741,
+        "startChar": 1,
+        "endLine": 1741,
+        "endChar": 29
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec94906_a4807245",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-11-16T20:27:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72c4c8b7_2f3bd953",
       "range": {
         "startLine": 1741,
         "startChar": 1,
@@ -1076,6 +1196,30 @@
       "side": 1,
       "message": "\u003e Since the naming of the final artifact *-android.jar prefixes the api surface, I believe this prop is essential to java_api_library.\n\nCant this be just the name of the soong module?\n```\njava_api_library {\n  name: \"system-stubs\",\n  // api_surface: \"system\",\n  api_providers: [\n    \"my_public_contribution\",\n    \"my_system_contribution\"\n  ],\n}\n```\n\n\u003e I believe it is somewhat self-explanatory from the prefixes of the *{-}current.txt api files\n\nThis enforces a magic naming convention. Which is fine, but imo having an explicit attribute is better than inferring something from filename.",
       "parentUuid": "24394291_6e65a764",
+      "range": {
+        "startLine": 1832,
+        "startChar": 2,
+        "endLine": 1832,
+        "endChar": 25
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f525c87_919b4ebd",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1832,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-11-16T20:27:34Z",
+      "side": 1,
+      "message": "Resolved with offline discussion: `api_surface` prop will exist for both `java_api_contribution` and `java_api_library`, and name of the artifact jar will not depend on the api surface but hardcoded as `android.jar`",
+      "parentUuid": "174f2c2d_a78fb627",
       "range": {
         "startLine": 1832,
         "startChar": 2,
