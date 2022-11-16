@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b30f4ae5_4a4f5643",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T22:27:53Z",
+      "side": 1,
+      "message": "This seems a dup of line 1642?",
+      "range": {
+        "startLine": 1664,
+        "startChar": 1,
+        "endLine": 1664,
+        "endChar": 96
+      },
+      "revId": "a982666ad0b7d41dd77a80090e074fbd85de4d6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab958d1_f62f6266",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1690,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T22:27:53Z",
+      "side": 1,
+      "message": "I am still not sure if unzipping is necessary here\n\nIs it possible to change line 1694 to\n```\nTransformJavaToClasses(ctx, al.stubsJar, 0, android.Paths{},\n\t\tandroid.Paths{al.stubsSrcJar}, flags, android.Paths{})\n```\n\nSoong\u0027s javac wrapper rule uses zipsync to unzip the srcjar files into a temp directory already and passes those files to the actual javac command https://cs.android.com/android/platform/superproject/+/master:build/soong/java/builder.go;l\u003d43;drc\u003db45a2ea782074944f79fc388df20b06e01f265f7;bpv\u003d1;bpt\u003d1?q\u003dTransformJavaToClasses",
+      "range": {
+        "startLine": 1673,
+        "startChar": 1,
+        "endLine": 1690,
+        "endChar": 0
+      },
+      "revId": "a982666ad0b7d41dd77a80090e074fbd85de4d6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
