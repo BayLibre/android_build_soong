@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b99b6c43_37434fc3",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T01:09:31Z",
+      "side": 1,
+      "message": "Ohh my bad, I did not realize that the object types are different. Resolving.",
+      "parentUuid": "fe81b72e_411dfdc4",
+      "range": {
+        "startLine": 1511,
+        "startChar": 1,
+        "endLine": 1514,
+        "endChar": 2
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f68905ac_06cc4ef7",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "`metadataZip` and `metadataDir` are only used in `GenerateAndroidBuildActions` thus can be replaced as a local variable, but there is a getter method for `stubsJarDir`(`func (al *ApiLibrary) StubsJar() android.Path`), which I believe can be used by rdeps of the api library. I am not sure if it would be ever used, but I believe it would be beneficial to have getter method for `stubsSrcJar` as well? If so, both `stubsSrcJar` and `stubsJarDir` should remain as props.",
       "parentUuid": "ac83542e_f4e7a00b",
+      "range": {
+        "startLine": 1544,
+        "startChar": 1,
+        "endLine": 1547,
+        "endChar": 33
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e5b908_5532a1d2",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T01:09:31Z",
+      "side": 1,
+      "message": "Can you annotate them as `blueprint:\"mutated\"` so that they do not show up in go/Android.bp\n\ne.g. https://cs.android.com/search?q\u003d%22blueprint:%22mutated%22%60%22\u0026sq\u003d",
+      "parentUuid": "191d5fc0_138c3f34",
       "range": {
         "startLine": 1544,
         "startChar": 1,
@@ -471,6 +519,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee5fb47e_32e861de",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1567,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T01:09:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18d1ac35_35fbd826",
+      "range": {
+        "startLine": 1567,
+        "startChar": 1,
+        "endLine": 1567,
+        "endChar": 11
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c67f4419_c37a57c1",
@@ -614,6 +686,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10b593b3_f5fce2d9",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1657,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T01:09:31Z",
+      "side": 1,
+      "message": "I think in the example you listed, the dependency edge is to an actual directory (e.g. Merge_annotations_dirs). Since java_api_provider, I think this suffix is not really applicable here",
+      "parentUuid": "a039a16b_a0a45610",
+      "range": {
+        "startLine": 1657,
+        "startChar": 67,
+        "endLine": 1657,
+        "endChar": 70
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "276eb739_6577b3fc",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -708,6 +804,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17ed39b2_0b4d63a4",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1716,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T01:09:31Z",
+      "side": 1,
+      "message": "Sorry, I was referring to why we need a metaedata.zip artifact at all",
+      "parentUuid": "6d713487_a9c42baa",
+      "range": {
+        "startLine": 1715,
+        "startChar": 2,
+        "endLine": 1716,
+        "endChar": 12
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93f93ce4_7f5920d8",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -755,6 +875,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c510939_8e0f5aff",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1721,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T01:09:31Z",
+      "side": 1,
+      "message": "Can we pass an empty []srcs list to it?",
+      "parentUuid": "1e8403a7_a2951dfb",
+      "range": {
+        "startLine": 1721,
+        "startChar": 1,
+        "endLine": 1721,
+        "endChar": 14
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8ee1f73_4b4dd7d4",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -790,6 +934,30 @@
       "side": 1,
       "message": "`TransformJavaToClasses` requires `deps` as input as well, which I am not sure if it can be collected from stub java files",
       "parentUuid": "f8ee1f73_4b4dd7d4",
+      "range": {
+        "startLine": 1741,
+        "startChar": 1,
+        "endLine": 1741,
+        "endChar": 29
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c4c8b7_2f3bd953",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T01:09:31Z",
+      "side": 1,
+      "message": "Can we use an empty list for `deps`?",
+      "parentUuid": "856cb1a5_763f17ba",
       "range": {
         "startLine": 1741,
         "startChar": 1,
@@ -884,6 +1052,30 @@
       "side": 1,
       "message": "Since the naming of the final artifact `*-android.jar` prefixes the api surface, I believe this prop is essential to `java_api_library`. If the `api_surface` prop is specified in the provider rather than the rdep, it would need complicated rule to determine which api surface\u0027s jar it is generating. For instance, a rdep of the above hypothetical example may look like this:\n```\njava_api_library {\n  name: \"my_api_surface\",\n  // api_surface: \"system\",\n  api_providers: [\n    \"my_public_contribution\",\n    \"my_system_contribution\"\n  ],\n}\n\n```\nWithout the `api_surface` param, how can the module determine that the name of the final artifact should be `system-android.jar`? (because complete system api surface is contributed by both public api domains and system api domains, and similarly for test api surface) \n\nRegarding your concern about component distinguishability, I believe it is somewhat self-explanatory from the prefixes of the `*{-}current.txt` api files. If you believe if would be more beneficial when explicit, I will add the prop to `java_api_provider`",
       "parentUuid": "94eb1516_6c5c46ad",
+      "range": {
+        "startLine": 1832,
+        "startChar": 2,
+        "endLine": 1832,
+        "endChar": 25
+      },
+      "revId": "2d0d1b3e6506c63c6fef66a262cc8a91626ab35a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "174f2c2d_a78fb627",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1832,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T01:09:31Z",
+      "side": 1,
+      "message": "\u003e Since the naming of the final artifact *-android.jar prefixes the api surface, I believe this prop is essential to java_api_library.\n\nCant this be just the name of the soong module?\n```\njava_api_library {\n  name: \"system-stubs\",\n  // api_surface: \"system\",\n  api_providers: [\n    \"my_public_contribution\",\n    \"my_system_contribution\"\n  ],\n}\n```\n\n\u003e I believe it is somewhat self-explanatory from the prefixes of the *{-}current.txt api files\n\nThis enforces a magic naming convention. Which is fine, but imo having an explicit attribute is better than inferring something from filename.",
+      "parentUuid": "24394291_6e65a764",
       "range": {
         "startLine": 1832,
         "startChar": 2,

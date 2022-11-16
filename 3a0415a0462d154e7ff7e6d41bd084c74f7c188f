@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c77e29b5_ab2f9275",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-16T01:09:31Z",
+      "side": 1,
+      "message": "nit: Rename this stubsJar since it is not a dir",
+      "range": {
+        "startLine": 1572,
+        "startChar": 11,
+        "endLine": 1572,
+        "endChar": 22
+      },
+      "revId": "3a0415a0462d154e7ff7e6d41bd084c74f7c188f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
