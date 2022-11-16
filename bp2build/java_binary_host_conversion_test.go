@@ -134,3 +134,68 @@ java_import_host{
 		},
 	})
 }
+
+func TestJavaBinaryHostKotlinSrcs(t *testing.T) {
+	runJavaBinaryHostTestCase(t, Bp2buildTestCase{
+		Description: "java_binary_host with srcs, libs.",
+		Filesystem:  testFs,
+		Blueprint: `java_binary_host {
+    name: "java-binary-host",
+    manifest: "test.mf",
+    srcs: ["a.java", "b.kt"],
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("kt_jvm_library", "java-binary-host_kt", AttrNameToString{
+				"srcs": `[
+        "a.java",
+        "b.kt",
+    ]`,
+				"target_compatible_with": `select({
+        "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    })`,
+			}),
+			MakeBazelTarget("java_binary", "java-binary-host", AttrNameToString{
+				"main_class":   `"com.android.test.MainClass"`,
+				"runtime_deps": `[":java-binary-host_kt"]`,
+				"target_compatible_with": `select({
+        "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    })`,
+			}),
+		},
+	})
+}
+
+func TestJavaBinaryHostKotlinCommonSrcs(t *testing.T) {
+	runJavaBinaryHostTestCase(t, Bp2buildTestCase{
+		Description: "java_binary_host with common_srcs",
+		Filesystem:  testFs,
+		Blueprint: `java_binary_host {
+    name: "java-binary-host",
+    manifest: "test.mf",
+    srcs: ["a.java"],
+    common_srcs: ["b.kt"],
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("kt_jvm_library", "java-binary-host_kt", AttrNameToString{
+				"srcs":        `["a.java"]`,
+				"common_srcs": `["b.kt"]`,
+				"target_compatible_with": `select({
+        "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    })`,
+			}),
+			MakeBazelTarget("java_binary", "java-binary-host", AttrNameToString{
+				"main_class":   `"com.android.test.MainClass"`,
+				"runtime_deps": `[":java-binary-host_kt"]`,
+				"target_compatible_with": `select({
+        "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    })`,
+			}),
+		},
+	})
+}
