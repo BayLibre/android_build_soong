@@ -16,6 +16,57 @@
       "message": "Ping. I need the TestRunner mechanism for other non-bp2build related tests. If you are not happy with this change then let me know and I will extract the TestRunner mechanism out into a separate change.",
       "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae5b29cc_be1bc8b3",
+        "filename": "android/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-16T20:30:27Z",
+      "side": 1,
+      "message": "needed by*",
+      "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2790366b_5b3c1680",
+        "filename": "android/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-16T20:30:27Z",
+      "side": 1,
+      "message": "provides -\u003e providers",
+      "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75a48a81_f030e9ea",
+        "filename": "android/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-16T20:30:27Z",
+      "side": 1,
+      "message": "Can\u0027t Data be defined (with appropriate type) based on the test result implementation? It seems unnecessary to have this here as a generic type.\n\nFor example, can\u0027t we have Data defined as a field of BazelTestResult?",
+      "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
