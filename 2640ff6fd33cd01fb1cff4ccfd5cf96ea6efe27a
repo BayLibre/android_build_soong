@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0572e95e_83619b4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-11-17T02:28:36Z",
+      "side": 1,
+      "message": "What do we expect from the AIDL generated code for droidstubs? I think we\u0027d better pass the right value to the AIDL compiler instead of -1.",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "2640ff6fd33cd01fb1cff4ccfd5cf96ea6efe27a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
