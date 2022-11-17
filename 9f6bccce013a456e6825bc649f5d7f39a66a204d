@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d276f15f_a0479e5f",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-11-17T23:56:19Z",
+      "side": 1,
+      "message": "nit: else if?",
+      "range": {
+        "startLine": 544,
+        "startChar": 1,
+        "endLine": 544,
+        "endChar": 3
+      },
+      "revId": "9f6bccce013a456e6825bc649f5d7f39a66a204d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
