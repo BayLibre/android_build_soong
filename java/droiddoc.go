@@ -304,6 +304,10 @@ func (j *Javadoc) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Op
 		flags = append(flags, "-I"+src.String())
 	}
 
+	// droidstubs do not compile against an SDK, and therefore do not require the min_sdk_version
+	// check to reject unsupported aidl features
+	flags = append(flags, "--min_sdk_version=current")
+
 	return strings.Join(flags, " "), deps
 }
 
