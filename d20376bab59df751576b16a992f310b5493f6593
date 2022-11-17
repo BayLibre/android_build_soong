@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "207865e9_6f830b69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-17T17:17:37Z",
+      "side": 1,
+      "message": "In this example, which is the stubs library?  libvm_payload is a rust library, not a cc library.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "d20376bab59df751576b16a992f310b5493f6593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c697dda6_4914595e",
@@ -48,6 +71,63 @@
       "writtenOn": "2022-11-16T09:44:08Z",
       "side": 1,
       "message": "Colin: ping?",
+      "revId": "d20376bab59df751576b16a992f310b5493f6593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fedd166_066ab8f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-17T17:17:37Z",
+      "side": 1,
+      "message": "@eakammer@google.com for roboleaf impact",
+      "revId": "d20376bab59df751576b16a992f310b5493f6593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60177aa2_416e8b34",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2310,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-17T17:17:37Z",
+      "side": 1,
+      "message": "IIUC, the problem that causes the build failure is that the implementation of the stubs library is not available to the platform and so not exposed to Make.  Would it make sense to check that here instead of having an explicit property?",
+      "revId": "d20376bab59df751576b16a992f310b5493f6593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b1b8fdb_02b55baf",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-17T17:17:37Z",
+      "side": 1,
+      "message": "\"required\" is an implementation detail of how we install the implementation library, and not obvious to the end user how it is relevant here.  Would something like \"implementation_installable\" make sense?   Maybe its difficult to succinctly explain \"installable to the platform\" and \"installable to a microdroid vm\".",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 23
+      },
       "revId": "d20376bab59df751576b16a992f310b5493f6593",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
