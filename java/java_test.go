@@ -1370,6 +1370,21 @@ func TestAidlFlagsWithMinSdkVersion(t *testing.T) {
 	}
 }
 
+func TestAidlFlagsMinSdkVersionDroidstubs(t *testing.T) {
+	bp := `
+	droidstubs {
+		name: "foo-stubs",
+		srcs: ["foo.aidl"],
+		sdk_version: "none",
+		system_modules: "none",
+	}
+	`
+	ctx := prepareForJavaTest.RunTestWithBp(t, bp)
+	aidlCmd := ctx.ModuleForTests("foo-stubs", "android_common").Rule("aidl").RuleParams.Command
+	expected := "--min_sdk_version=current"
+	android.AssertStringDoesContain(t, "aidl command conatins incorrect min_sdk_version for droistubs", aidlCmd, expected)
+}
+
 func TestAidlEnforcePermissions(t *testing.T) {
 	ctx, _ := testJava(t, `
 		java_library {
