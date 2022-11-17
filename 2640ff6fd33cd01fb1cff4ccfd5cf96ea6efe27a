@@ -70,6 +70,30 @@
       },
       "revId": "2640ff6fd33cd01fb1cff4ccfd5cf96ea6efe27a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ff8684_dcb63f6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-17T04:41:27Z",
+      "side": 1,
+      "message": "Thanks for the explanation, this makes sense now.\n\nSince we do not need to reject any input .aidl files for droidstubs, I have updated this to pass `current` instead",
+      "parentUuid": "be9e35b6_281fbb1b",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "2640ff6fd33cd01fb1cff4ccfd5cf96ea6efe27a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
