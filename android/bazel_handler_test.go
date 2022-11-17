@@ -157,7 +157,7 @@ func TestCoverageFlagsAfterInvokeBazel(t *testing.T) {
 
 	testConfig.productVariables.NativeCoveragePaths = []string{"*"}
 	testConfig.productVariables.NativeCoverageExcludePaths = nil
-	verifyExtraFlags(t, testConfig, `--collect_code_coverage --instrumentation_filter=+.*`)
+	verifyExtraFlags(t, testConfig, `--collect_code_coverage --instrumentation_filter=+\Q*\E`)
 
 	testConfig.productVariables.ClangCoverage = boolPtr(false)
 	actual := verifyExtraFlags(t, testConfig, ``)
