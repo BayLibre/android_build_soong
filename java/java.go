@@ -1580,8 +1580,8 @@ type JavaApiLibraryProperties struct {
 	// name of the API surface
 	Api_surface *string
 
-	// list of API provider modules that consists this API surface
-	Api_providers []string
+	// list of Java API contribution modules that consists this API surface
+	Api_contributions []string
 
 	// List of flags to be passed to the javac compiler to generate jar file
 	Javacflags []string
@@ -1649,12 +1649,12 @@ func (al *ApiLibrary) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBui
 	}
 }
 
-var javaApiProviderTag = dependencyTag{name: "java-api-provider"}
+var javaApiContributionTag = dependencyTag{name: "java-api-contribution"}
 
 func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
-	apiProviders := al.properties.Api_providers
-	for _, apiProviderName := range apiProviders {
-		ctx.AddDependency(ctx.Module(), javaApiProviderTag, apiProviderName)
+	apiContributions := al.properties.Api_contributions
+	for _, apiContributionName := range apiContributions {
+		ctx.AddDependency(ctx.Module(), javaApiContributionTag, apiContributionName)
 	}
 }
 
@@ -1673,14 +1673,14 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	homeDir := android.PathForModuleOut(ctx, "metalava", "home")
 
-	apiProviders := al.properties.Api_providers
-	srcFiles := make([]android.Path, len(apiProviders))
-	for i, apiProviderName := range apiProviders {
-		apiProvider := ctx.GetDirectDepWithTag(apiProviderName, javaApiProviderTag)
-		if apiProvider == nil {
-			panic(fmt.Errorf("Java API provider module %s not found, called from %s", apiProviderName, al.Name()))
+	apiContributions := al.properties.Api_contributions
+	srcFiles := make([]android.Path, len(apiContributions))
+	for i, apiContributionName := range apiContributions {
+		apiContribution := ctx.GetDirectDepWithTag(apiContributionName, javaApiContributionTag)
+		if apiContribution == nil {
+			panic(fmt.Errorf("Java API provider module %s not found, called from %s", apiContributionName, al.Name()))
 		}
-		provider := ctx.OtherModuleProvider(apiProvider, JavaApiImportProvider).(JavaApiImportInfo)
+		provider := ctx.OtherModuleProvider(apiContribution, JavaApiImportProvider).(JavaApiImportInfo)
 		srcFiles[i] = android.PathForModuleSrc(ctx, provider.ApiFile.String())
 	}
 
