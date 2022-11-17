@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d79cd809_792a4bfb",
+        "filename": "android/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-17T11:17:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae5b29cc_be1bc8b3",
+      "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2790366b_5b3c1680",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28aaf521_010cdb1e",
+        "filename": "android/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-17T11:17:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2790366b_5b3c1680",
+      "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75a48a81_f030e9ea",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-11-16T20:30:27Z",
       "side": 1,
       "message": "Can\u0027t Data be defined (with appropriate type) based on the test result implementation? It seems unnecessary to have this here as a generic type.\n\nFor example, can\u0027t we have Data defined as a field of BazelTestResult?",
+      "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e5ebb6_6e1ab2ca",
+        "filename": "android/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-17T11:17:39Z",
+      "side": 1,
+      "message": "Unfortunately not without a large amount of restructuring. BazelTestResult depends on BazelTargets which is defined in the bp2build package. The bp2build package depends on android package. In order for TestResult to depend on BazelTestResult there would need to be a dependency from android back to bp2build which would create a dependency cycle between packages which is not supported in go.\n\nThis was the best I could do to allow us to tunnel information from the FixtureTestRunner to the tests.\n\nIf Go had generics we might be able to do better ...",
+      "parentUuid": "75a48a81_f030e9ea",
       "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
