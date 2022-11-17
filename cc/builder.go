@@ -993,6 +993,18 @@ func sameVersionAbiDiff(ctx android.ModuleContext, inputDump, referenceDump andr
 		"current", errorMessage)
 }
 
+func optInAbiDiff(ctx android.ModuleContext, inputDump, referenceDump android.Path,
+	baseName string, diffFlags []string, checkAllApis, isLlndkOrNdk bool,
+	refDumpDir, nameExt string) android.OptionalPath {
+
+	libName := strings.TrimSuffix(baseName, filepath.Ext(baseName))
+	errorMessage := "error: Please update ABI references with: $$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py -l " + libName + " -ref-dump-dir " + refDumpDir
+
+	return sourceAbiDiff(ctx, inputDump, referenceDump, baseName, nameExt,
+		diffFlags, checkAllApis, isLlndkOrNdk, /* allowExtensions */ false,
+		"current", errorMessage)
+}
+
 // Generate a rule for extracting a table of contents from a shared library (.so)
 func TransformSharedObjectToToc(ctx android.ModuleContext, inputFile android.Path, outputFile android.WritablePath) {
 
