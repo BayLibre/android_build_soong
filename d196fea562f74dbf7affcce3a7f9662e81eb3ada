@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e9d6e4_4d1ec6ae",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-11-17T01:12:10Z",
+      "side": 1,
+      "message": "This doesn\u0027t look like the expected behavior we wanted. If env variable is set like: NATIVE_COVERAGE_PATHS\u003d\" * \", my understanding is it will include all packages and should be converted to \" +.* \", but with this code it is converted to \"+\\Q*\\E\" which will only include package with * as the name. Is there anything wrong with my understanding?",
+      "range": {
+        "startLine": 949,
+        "startChar": 4,
+        "endLine": 952,
+        "endChar": 26
+      },
+      "revId": "d196fea562f74dbf7affcce3a7f9662e81eb3ada",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
