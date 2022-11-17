@@ -129,6 +129,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "903545fb_17387f49",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-17T06:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b047f952_11a810f2",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 21
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6210c3f6_cce1b82b",
@@ -250,6 +274,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10984000_84fdfe85",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-17T06:11:21Z",
+      "side": 1,
+      "message": "^ scratch that. Since the symlink wouldn\u0027t care if the target changed type; it will still work fine.\n\nAlso unless manually manipulated, BUILD.bazel is the only \"file\" that can be in the workspace, everything else will be either a symlink or under a symlinked directory.",
+      "parentUuid": "6940e303_8c8867f5",
+      "range": {
+        "startLine": 322,
+        "startChar": 11,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4b7943e_881a26c9",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
@@ -302,6 +350,30 @@
       "side": 1,
       "message": "+100",
       "parentUuid": "86e6809e_c7d0370a",
+      "range": {
+        "startLine": 411,
+        "startChar": 9,
+        "endLine": 411,
+        "endChar": 12
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "767a03f7_de2a719e",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-17T06:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "374a8ca7_0718ea68",
       "range": {
         "startLine": 411,
         "startChar": 9,
@@ -395,6 +467,54 @@
       "side": 1,
       "message": "but a simple goroutine invocation without pool-size limitation (or a go chan write that checks concurrent executions) can fail, nope?",
       "parentUuid": "bb20af25_6d993471",
+      "range": {
+        "startLine": 422,
+        "startChar": 15,
+        "endLine": 422,
+        "endChar": 21
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48df6dfe_a758226b",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-17T06:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec6cc9e8_f77ab4d5",
+      "range": {
+        "startLine": 422,
+        "startChar": 15,
+        "endLine": 422,
+        "endChar": 21
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aec6c0d_1640f62a",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-17T06:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4d9e17d_098f2923",
       "range": {
         "startLine": 422,
         "startChar": 15,
