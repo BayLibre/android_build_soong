@@ -114,6 +114,9 @@ type LibraryProperties struct {
 
 		// Extra flags passed to header-abi-diff
 		Diff_flags []string
+
+		// Opt-in reference dump directories
+		Ref_dump_dirs []string
 	}
 
 	// Inject boringssl hash into the shared library.  This is only intended for use by external/boringssl.
@@ -1922,6 +1925,22 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 					fileName, library.Properties.Header_abi_checker.Diff_flags,
 					Bool(library.Properties.Header_abi_checker.Check_all_apis),
 					isLlndk || isNdk, ctx.IsVndkExt()))
+		}
+		// Check against the opt-in reference dumps.
+		for i, optInDumpDir := range library.Properties.Header_abi_checker.Ref_dump_dirs {
+			optInDumpDirPath := android.PathForModuleSrc(ctx, optInDumpDir)
+			// Ref_dump_dirs are not versioned.
+			// They do not contain subdir for binder bitness because 64-bit binder has been mandatory.
+			optInDumpFile := getRefAbiDumpFile(ctx, optInDumpDirPath.String(), fileName)
+			if optInDumpFile == nil {
+				continue
+			}
+			library.sAbiDiff = append(
+				library.sAbiDiff,
+				optInAbiDiff(ctx, library.sAbiOutputFile.Path(), optInDumpFile,
+					fileName, library.Properties.Header_abi_checker.Diff_flags,
+					Bool(library.Properties.Header_abi_checker.Check_all_apis),
+					isLlndk || isNdk, optInDumpDirPath.String(), "opt"+strconv.Itoa(i)))
 		}
 	}
 }
