@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a6e188d_0f934314",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-17T19:41:17Z",
+      "side": 1,
+      "message": "This seems like an imprecise way of determining whitespace unless whatever is reading this has the exact same definition of whitespace as Go\u0027s regexp package.  What is consuming this value that needs to not have whitespace?",
+      "range": {
+        "startLine": 136,
+        "startChar": 18,
+        "endLine": 136,
+        "endChar": 43
+      },
+      "revId": "a8b808f60dc4eaf15b36e28c12af56ffcb070d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
