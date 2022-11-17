@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be12067a_1f4a6ede",
+        "filename": "java/fuzz_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-17T20:46:48Z",
+      "side": 1,
+      "message": "Is this hermetic or this depend on your lunch product? Does this test pass if you lunch a non64 product?",
+      "range": {
+        "startLine": 89,
+        "startChar": 14,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "8714075b8f0ac9db06857daf0325f066c9a2ee7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
