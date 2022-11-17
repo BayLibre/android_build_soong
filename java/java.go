@@ -1580,8 +1580,8 @@ type JavaApiLibraryProperties struct {
 	// name of the API surface
 	Api_surface *string
 
-	// list of API provider modules that consists this API surface
-	Api_providers []string
+	// list of Java API contribution modules that consists this API surface
+	Api_contributions []string
 
 	// List of flags to be passed to the javac compiler to generate jar file
 	Javacflags []string
@@ -1652,7 +1652,7 @@ func (al *ApiLibrary) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBui
 var javaApiProviderTag = dependencyTag{name: "java-api-provider"}
 
 func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
-	apiProviders := al.properties.Api_providers
+	apiProviders := al.properties.Api_contributions
 	for _, apiProviderName := range apiProviders {
 		ctx.AddDependency(ctx.Module(), javaApiProviderTag, apiProviderName)
 	}
@@ -1673,7 +1673,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	homeDir := android.PathForModuleOut(ctx, "metalava", "home")
 
-	apiProviders := al.properties.Api_providers
+	apiProviders := al.properties.Api_contributions
 	srcFiles := make([]android.Path, len(apiProviders))
 	for i, apiProviderName := range apiProviders {
 		apiProvider := ctx.GetDirectDepWithTag(apiProviderName, javaApiProviderTag)
