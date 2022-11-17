@@ -46,6 +46,30 @@
       },
       "revId": "2640ff6fd33cd01fb1cff4ccfd5cf96ea6efe27a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9e35b6_281fbb1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-11-17T02:57:15Z",
+      "side": 1,
+      "message": "Looks like droidstubs can pass \"--min-sdk-version\u003dcurrent\" (or \"platform_apis\"). \n\nAIDL compiler uses min_sdk_version ...\n- to reject unsupported AIDL feature when compiling against older SDK version\n- to generate code using newer APIs or fallback to fill-in implementation.\n\nFor the first one, droidstubs doesn\u0027t need to reject any input .aidl files.\n\nFor the second one, droidstubs doesn\u0027t care how the code is implemented.",
+      "parentUuid": "893cb68a_374b76bb",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "2640ff6fd33cd01fb1cff4ccfd5cf96ea6efe27a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
