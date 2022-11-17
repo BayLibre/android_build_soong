@@ -22,6 +22,30 @@
       },
       "revId": "2640ff6fd33cd01fb1cff4ccfd5cf96ea6efe27a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "893cb68a_374b76bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-17T02:45:56Z",
+      "side": 1,
+      "message": "By the right value, are you referring to the string value of sdk_version in Android.bp file?\nFor example, for this droidstubs\n```\ndroidstubs {\n  name: \"foo\",\n  sdk_version: \"none\",\n}\n```\nInstead of -1, are you suggesting that we pass `none` instead for this module?",
+      "parentUuid": "0572e95e_83619b4f",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "2640ff6fd33cd01fb1cff4ccfd5cf96ea6efe27a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
