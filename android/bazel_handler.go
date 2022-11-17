@@ -934,21 +934,31 @@ func (context *bazelContext) InvokeBazel(config Config) error {
 	extraFlags := []string{"--output=proto", "--include_file_write_contents"}
 	if Bool(config.productVariables.ClangCoverage) {
 		extraFlags = append(extraFlags, "--collect_code_coverage")
-		paths := make([]string, 0, 2)
-		if p := config.productVariables.NativeCoveragePaths; len(p) > 0 {
-			for i, _ := range p {
-				// TODO(b/259404593) convert path wildcard to regex values
-				if p[i] == "*" {
-					p[i] = ".*"
+		var buf strings.Builder
+		buf.WriteString("--instrumentation_filter=")
+		sep := ""
+		// appends given paths to `buf`. Each path is preceded by the given prefix, and
+		// if necessary is bracketed between \Q and \E to escape regex metacharacters.
+		// Paths are separated with `,`. If at least one path has been written,
+		// `sep` will be changed to `,`.
+		appendToFilter := func(prefix string, paths []string) {
+			for _, p := range paths {
+				buf.WriteString(sep)
+				sep = ","
+				buf.WriteString(prefix)
+				if strings.ContainsAny(p, `\^|.$*+()[{`) {
+					buf.WriteString(`\Q`)
+					buf.WriteString(p)
+					buf.WriteString(`\E`)
+				} else {
+					buf.WriteString(p)
 				}
 			}
-			paths = append(paths, JoinWithPrefixAndSeparator(p, "+", ","))
 		}
-		if p := config.productVariables.NativeCoverageExcludePaths; len(p) > 0 {
-			paths = append(paths, JoinWithPrefixAndSeparator(p, "-", ","))
-		}
-		if len(paths) > 0 {
-			extraFlags = append(extraFlags, "--instrumentation_filter="+strings.Join(paths, ","))
+		appendToFilter("+", config.productVariables.NativeCoveragePaths)
+		appendToFilter("-", config.productVariables.NativeCoverageExcludePaths)
+		if sep != "" {
+			extraFlags = append(extraFlags, buf.String())
 		}
 	}
 	aqueryCmd := bazelCommand{"aquery", fmt.Sprintf("deps(%s)", buildrootLabel)}
