@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a608bb1e_388a4f91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-18T21:57:58Z",
+      "side": 1,
+      "message": "The errorprone treehugger build (which also runs android line) appears to be failing on TOT, this should be fine but it might be worth waiting for that to be fixed for you to get presubmit-verified +2 and submit.",
+      "revId": "e17645fe304994ab999196c9dc3fb3dd9c6ab36a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
