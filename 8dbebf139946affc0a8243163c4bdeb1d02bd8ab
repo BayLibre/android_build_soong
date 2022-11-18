@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576cc6e4_5d3a92fd",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-11-18T03:05:26Z",
+      "side": 1,
+      "message": "You could use `proptools.ShellEscape` on this, which will put it in single quotes and make sure avbtool.py gets it as a single argument.",
+      "range": {
+        "startLine": 149,
+        "startChar": 29,
+        "endLine": 149,
+        "endChar": 62
+      },
+      "revId": "8dbebf139946affc0a8243163c4bdeb1d02bd8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
