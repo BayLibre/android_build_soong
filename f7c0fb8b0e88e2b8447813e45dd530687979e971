@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2681188e_439bc1a3",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-18T02:20:44Z",
+      "side": 1,
+      "message": "Can this follow sdk_version of the module? This is what is done in java_library; min_sdk_version defaults to sdk_version.",
+      "range": {
+        "startLine": 309,
+        "startChar": 24,
+        "endLine": 309,
+        "endChar": 41
+      },
+      "revId": "f7c0fb8b0e88e2b8447813e45dd530687979e971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
