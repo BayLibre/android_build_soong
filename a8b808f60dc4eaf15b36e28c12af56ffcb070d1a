@@ -22,6 +22,30 @@
       },
       "revId": "a8b808f60dc4eaf15b36e28c12af56ffcb070d1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "102797b9_d9ec0ecd",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-18T03:02:15Z",
+      "side": 1,
+      "message": "It\u0027s avbtool.py who is consuming these arguments. \"--prop `n ame:value`\" gives \"avbtool: error: unrecognized arguments: ame:value\". Anyway, I\u0027ve removed the check here because the build will anyway fail though later with a less friendly error message. Since this module is used in a very small number of places, I don\u0027t think that\u0027s seriously bad.",
+      "parentUuid": "0a6e188d_0f934314",
+      "range": {
+        "startLine": 136,
+        "startChar": 18,
+        "endLine": 136,
+        "endChar": 43
+      },
+      "revId": "a8b808f60dc4eaf15b36e28c12af56ffcb070d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
