@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "820e2723_3c288d7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-11-18T12:22:40Z",
+      "side": 1,
+      "message": "See the other CL in this topic \"libvm_payload as a cc_library\" which changes that.",
+      "parentUuid": "207865e9_6f830b69",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "d20376bab59df751576b16a992f310b5493f6593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c697dda6_4914595e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -111,6 +135,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb34f193_5f6f2c26",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2310,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-11-18T12:22:40Z",
+      "side": 1,
+      "message": "I have concerns about that:\n- Do we want to assume that \"not exposed to Make\" is always equivalent to \"not available to the platform\"?\n- Doesn\u0027t it just negate the missing dependency checker? Here I\u0027m providing a way to say explicitly that the dependency is not needed, but we still want to warn if it is omitted accidentally.\n- I can be fairly confident this change doesn\u0027t affect any other targets; I am less confident for the alternative.",
+      "parentUuid": "60177aa2_416e8b34",
+      "revId": "d20376bab59df751576b16a992f310b5493f6593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b1b8fdb_02b55baf",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -122,6 +164,30 @@
       "writtenOn": "2022-11-17T17:17:37Z",
       "side": 1,
       "message": "\"required\" is an implementation detail of how we install the implementation library, and not obvious to the end user how it is relevant here.  Would something like \"implementation_installable\" make sense?   Maybe its difficult to succinctly explain \"installable to the platform\" and \"installable to a microdroid vm\".",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "d20376bab59df751576b16a992f310b5493f6593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6208d5b8_8e093445",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-11-18T12:22:40Z",
+      "side": 1,
+      "message": "Naming is hard, and yes, I don\u0027t want to get into Microdroid too much here. And maybe other weird contexts will come along later.\nWent with your suggestion.",
+      "parentUuid": "1b1b8fdb_02b55baf",
       "range": {
         "startLine": 77,
         "startChar": 15,
