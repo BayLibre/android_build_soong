@@ -171,7 +171,7 @@ func primaryBuilderInvocation(
 
 	commonArgs = append(commonArgs, "-l", filepath.Join(config.FileListDir(), "Android.bp.list"))
 	invocationEnv := make(map[string]string)
-	if os.Getenv("SOONG_DELVE") != "" {
+	if os.Getenv("SOONG_DELVE") != "" && name == soongBuildTag {
 		//debug mode
 		commonArgs = append(commonArgs, "--delve_listen", os.Getenv("SOONG_DELVE"))
 		commonArgs = append(commonArgs, "--delve_path", shared.ResolveDelveBinary())
