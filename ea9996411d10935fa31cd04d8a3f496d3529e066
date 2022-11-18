@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d27ff466_f3ac40c5",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-18T21:34:30Z",
+      "side": 1,
+      "message": "This cl made me realize that we can\u0027t have \"a\" be recursive, and \"a/b\" be non-recursive. Maybe we should support that? But this maintains the old behavior so LGTM.",
+      "revId": "ea9996411d10935fa31cd04d8a3f496d3529e066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
