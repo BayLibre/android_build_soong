@@ -22,6 +22,30 @@
       },
       "revId": "8dbebf139946affc0a8243163c4bdeb1d02bd8ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e58848_aa8bff40",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-18T03:59:14Z",
+      "side": 1,
+      "message": "Done, but avbtool still emits an error with `--prop \u0027n ame:value\u0027`",
+      "parentUuid": "576cc6e4_5d3a92fd",
+      "range": {
+        "startLine": 149,
+        "startChar": 29,
+        "endLine": 149,
+        "endChar": 62
+      },
+      "revId": "8dbebf139946affc0a8243163c4bdeb1d02bd8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
