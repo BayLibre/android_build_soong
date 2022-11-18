@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e4914d_7372e0c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-18T23:42:20Z",
+      "side": 1,
+      "message": "Looks good, but I left a couple of nits that I missed in the previous CL",
+      "revId": "2c914aa0cc8071955d2fd588f76edde8aa909eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba925627_ae8e14eb",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1681,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-18T23:42:20Z",
+      "side": 1,
+      "message": "Use `ctx.ModuleErrorf` here. This pads the error message with the location of the .bp module that caused the error.",
+      "range": {
+        "startLine": 1681,
+        "startChar": 2,
+        "endLine": 1681,
+        "endChar": 19
+      },
+      "revId": "2c914aa0cc8071955d2fd588f76edde8aa909eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a2c62c9_c05b9f9e",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-18T23:42:20Z",
+      "side": 1,
+      "message": "nit: Soong\u0027s context API has a VisitDirectDepsWithTag function that can be used here. It reduces use of an iterator (the outer for loop) and the error handling here.",
+      "range": {
+        "startLine": 1678,
+        "startChar": 1,
+        "endLine": 1685,
+        "endChar": 2
+      },
+      "revId": "2c914aa0cc8071955d2fd588f76edde8aa909eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
