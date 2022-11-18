@@ -22,6 +22,30 @@
       },
       "revId": "f7c0fb8b0e88e2b8447813e45dd530687979e971",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81892f9_0b221d16",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-18T02:41:24Z",
+      "side": 1,
+      "message": "Jiyong by this do you mean replace `current` with the value of `SdkVersion().String()`?\n\nI think most droidstubs set `sdk_version\u003dnone`. I wrote a small query and out of the 13 droidstubs modules in the tree, only `hwbinder-stubs-docs` does not set `none` as its sdk_version.\n\n\nIf this follows sdk_version, then SdkNone\u0027s string representation `(no version)` will be passed to the aidl compiler",
+      "parentUuid": "2681188e_439bc1a3",
+      "range": {
+        "startLine": 309,
+        "startChar": 24,
+        "endLine": 309,
+        "endChar": 41
+      },
+      "revId": "f7c0fb8b0e88e2b8447813e45dd530687979e971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
