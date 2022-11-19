@@ -16,6 +16,24 @@
       "message": "This cl made me realize that we can\u0027t have \"a\" be recursive, and \"a/b\" be non-recursive. Maybe we should support that? But this maintains the old behavior so LGTM.",
       "revId": "ea9996411d10935fa31cd04d8a3f496d3529e066",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f636315_62998bee",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-19T03:55:39Z",
+      "side": 1,
+      "message": "I was indeed under the impression that the most specific setting wins, as follows:\nGiven `a \u003d recursive` and  `a/b \u003d non-recursive`\nThen\n```\n  ShouldKeep(a) \u003d True\n  ShouldKeep(a/b) \u003d True\n  ShouldKeep(a/y) \u003d True\n  ShouldKeep(a/b/x) \u003d False\n  ShouldKeep(a/y/z) \u003d True\n```\nBut indeed I didn\u0027t want change the behavior (also I did add a unit test in a previous CL)",
+      "parentUuid": "d27ff466_f3ac40c5",
+      "revId": "ea9996411d10935fa31cd04d8a3f496d3529e066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
