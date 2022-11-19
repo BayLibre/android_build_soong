@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9691fd3_bc6c74b4",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1681,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-11-19T01:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba925627_ae8e14eb",
+      "range": {
+        "startLine": 1681,
+        "startChar": 2,
+        "endLine": 1681,
+        "endChar": 19
+      },
+      "revId": "2c914aa0cc8071955d2fd588f76edde8aa909eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a2c62c9_c05b9f9e",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-18T23:42:20Z",
       "side": 1,
       "message": "nit: Soong\u0027s context API has a VisitDirectDepsWithTag function that can be used here. It reduces use of an iterator (the outer for loop) and the error handling here.",
+      "range": {
+        "startLine": 1678,
+        "startChar": 1,
+        "endLine": 1685,
+        "endChar": 2
+      },
+      "revId": "2c914aa0cc8071955d2fd588f76edde8aa909eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a4d183_c354dde8",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-11-19T01:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a2c62c9_c05b9f9e",
       "range": {
         "startLine": 1678,
         "startChar": 1,
