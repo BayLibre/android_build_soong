@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398b18e5_6563d6a4",
+        "filename": "docs/perf.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-19T04:05:17Z",
+      "side": 1,
+      "message": "Could you add some clarification here about what accepts the command line arguments? I think \"Soong_build (but not soong_ui) understands the ... When running soong_ui, Soong\u0027s profiling data can be gathered...\" would be good if that statement is accurate.",
+      "revId": "ef93eebfb85df4678691ab5cb32a49309130d318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
