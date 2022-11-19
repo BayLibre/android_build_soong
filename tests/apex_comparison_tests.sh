@@ -58,7 +58,7 @@ packages/modules/common/build/build_unbundled_mainline_module.sh \
 ######################
 build/soong/soong_ui.bash --make-mode BP2BUILD_VERBOSE=1 --skip-soong-tests bp2build
 
-BAZEL_OUT="$(call_bazel info --config=bp2build output_path)"
+BAZEL_OUT="$(call_bazel info --config=bp2build --config=ci output_path)"
 
 export TARGET_PRODUCT="module_arm"
 call_bazel build --config=bp2build --config=ci --config=android \
@@ -67,11 +67,11 @@ call_bazel build --config=bp2build --config=ci --config=android \
   //build/bazel/examples/apex/minimal:build.bazel.examples.apex.minimal.apex
 
 # Build debugfs separately, as it's not a dep of apexer, but needs to be an explicit arg.
-call_bazel build --config=bp2build --config=linux_x86_64 //external/e2fsprogs/debugfs
+call_bazel build --config=bp2build --config=ci --config=linux_x86_64 //external/e2fsprogs/debugfs
 DEBUGFS_PATH="$BAZEL_OUT/linux_x86_64-fastbuild/bin/external/e2fsprogs/debugfs/debugfs"
 
 function run_deapexer() {
-  call_bazel run --config=bp2build --config=linux_x86_64 //system/apex/tools:deapexer \
+  call_bazel run --config=bp2build --config=ci --config=linux_x86_64 //system/apex/tools:deapexer \
     -- \
     --debugfs_path="$DEBUGFS_PATH" \
     $@
