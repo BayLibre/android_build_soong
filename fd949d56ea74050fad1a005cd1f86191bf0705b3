@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f045c2_1cefa0e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-11-21T23:03:53Z",
+      "side": 1,
+      "message": "You\u0027re just redescribing the patch contents. Could you please describe what you\u0027re doing at a higher level and why?\n\nFor example,\n\n```\nAllow test-related BUILD files in the workspace\n\nAllowlist BUILD files of test-related tools so that they appear in the final bp2build workspace. This is required for Bazel test rules that are dependent on these projects.\n```\n\nMy description may be inaccurate but it\u0027s what I was able to figure out from the docs I read. Ideally, I shouldn\u0027t have had to do that to review this change.\n\nSee go/commit-change#commit-message.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "fd949d56ea74050fad1a005cd1f86191bf0705b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a2a0fa5_1cf5380a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-11-21T23:03:53Z",
+      "side": 1,
+      "message": "Can\u0027t you do this in a single command? Otherwise please add a `Test:` stanza for each test command.\n\nSee go/commit-change#footers-and-machine-parsable-text.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "fd949d56ea74050fad1a005cd1f86191bf0705b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a5018c0_1df4ef7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-11-21T23:03:53Z",
+      "side": 1,
+      "message": "Remove the newline before this stanza.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "fd949d56ea74050fad1a005cd1f86191bf0705b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
