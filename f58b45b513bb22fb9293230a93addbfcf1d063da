@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a3b93e7_55118781",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-21T12:55:44Z",
+      "side": 1,
+      "message": "Could you add a specific bug # and the command(s) that you used to test this change?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "f58b45b513bb22fb9293230a93addbfcf1d063da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "000bfa22_0b9c6f15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-21T12:55:44Z",
+      "side": 1,
+      "message": "Could you add a test in sdk_library_test.go to test this? You\u0027d have to retrieve the `droidstubs` module that the `java_sdk_library` creates and verify that the stub_only_libs library is in the libs passed to it, or on the command line that it passes to metalava.\n\nIf you\u0027d rather I make the changes then let me know.",
+      "revId": "f58b45b513bb22fb9293230a93addbfcf1d063da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
