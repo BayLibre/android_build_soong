@@ -46,6 +46,30 @@
       },
       "revId": "f7c0fb8b0e88e2b8447813e45dd530687979e971",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d48228_dac86d46",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-21T04:37:23Z",
+      "side": 1,
+      "message": "`sdk_version: \"none\"` is different from not setting `sdk_version`. Those droidstubs don\u0027t set the property, in which case it defaults to `FutureApiLevel` (10000).\n\nIn addition, `String()` on `SdkSpec` or `ApiLevel` returns a human readable string representation and therefore shouldn\u0027t be used as a build command argument. One should use `FinalOrFutureInt` of `ApiLevel` and then stringfy it.",
+      "parentUuid": "f81892f9_0b221d16",
+      "range": {
+        "startLine": 309,
+        "startChar": 24,
+        "endLine": 309,
+        "endChar": 41
+      },
+      "revId": "f7c0fb8b0e88e2b8447813e45dd530687979e971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
