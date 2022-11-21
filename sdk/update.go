@@ -838,7 +838,11 @@ func (t snapshotTransformation) transformModule(module *bpModule) *bpModule {
 func (t snapshotTransformation) transformProperty(_ string, value interface{}, tag android.BpPropertyTag) (interface{}, android.BpPropertyTag) {
 	if tag == requiredSdkMemberReferencePropertyTag || tag == optionalSdkMemberReferencePropertyTag {
 		required := tag == requiredSdkMemberReferencePropertyTag
-		return t.builder.snapshotSdkModuleReferences(value.([]string), required), tag
+		if slice, ok := value.([]string); ok {
+			return t.builder.snapshotSdkModuleReferences(slice, required), tag
+		} else {
+			return t.builder.snapshotSdkModuleReference(value.(string), required), tag
+		}
 	} else {
 		return value, tag
 	}
@@ -1204,6 +1208,15 @@ func (s *snapshotBuilder) SdkMemberReferencePropertyTag(required bool) android.B
 	} else {
 		return optionalSdkMemberReferencePropertyTag
 	}
+}
+
+func (s *snapshotBuilder) IsTargetBuildBefore(buildRelease string) bool {
+	release, err := nameToRelease(buildRelease)
+	if err != nil {
+		panic(err)
+	}
+
+	return s.targetBuildRelease.EarlierThan(release)
 }
 
 func (s *snapshotBuilder) OptionalSdkMemberReferencePropertyTag() android.BpPropertyTag {

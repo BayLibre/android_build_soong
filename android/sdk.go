@@ -302,6 +302,11 @@ type SnapshotBuilder interface {
 	// e.g.
 	// bpPropertySet.AddPropertyWithTag("libs", []string{"member1", "member2"}, builder.SdkMemberReferencePropertyTag(true))
 	SdkMemberReferencePropertyTag(required bool) BpPropertyTag
+
+	// IsTargetBuildBefore returns true if the target build release for which this snapshot is
+	// being generated is before the named build release, e.g. IsTargetBuildBefore("Tiramisu") would
+	// return true if the target build release was S but not if it was Tiramisu.
+	IsTargetBuildBefore(buildRelease string) bool
 }
 
 // BpPropertyTag is a marker interface that can be associated with properties in a BpPropertySet to

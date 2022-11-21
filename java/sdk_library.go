@@ -332,8 +332,7 @@ var (
 		annotation:    "android.annotation.SystemApi(client=android.annotation.SystemApi.Client.MODULE_LIBRARIES)",
 	})
 	apiScopeSystemServer = initApiScope(&apiScope{
-		name:    "system-server",
-		extends: apiScopePublic,
+		name: "system-server",
 
 		// The system-server scope can access the module-lib scope.
 		//
@@ -357,8 +356,16 @@ var (
 		annotation:    "android.annotation.SystemApi(client=android.annotation.SystemApi.Client.SYSTEM_SERVER)",
 		extraArgs: []string{
 			"--hide-annotation", "android.annotation.Hide",
-			// com.android.* classes are okay in this interface"
+			// com.android.* classes are okay in this interface
 			"--hide", "InternalClasses",
+			// Treat unannotated API elements as if they were part of the system-server API surface
+			// instead of the public API and include them in the system-server-current.txt file. Without
+			// this it would be possible for something to be added to the public API, included in the
+			// system-server stubs but not be present in any of the API .txt files which means that it
+			// would not trigger an API review. An alternative approach would be to add another option
+			// to metalava which would cause it to fail if it detected any public API but metalava
+			// already has too many options.
+			"-showUnannotated",
 		},
 	})
 	allApiScopes = apiScopes{
@@ -1185,11 +1192,14 @@ func (module *SdkLibrary) getGeneratedApiScopes(ctx android.EarlyModuleContext) 
 	// Check to see if any scopes have been explicitly enabled. If any have then all
 	// must be.
 	anyScopesExplicitlyEnabled := false
+	systemServerEnabled := false
 	for _, scope := range allApiScopes {
 		scopeProperties := module.scopeToProperties[scope]
 		if scopeProperties.Enabled != nil {
 			anyScopesExplicitlyEnabled = true
-			break
+			if scope == apiScopeSystemServer {
+				systemServerEnabled = true
+			}
 		}
 	}
 
@@ -1207,6 +1217,12 @@ func (module *SdkLibrary) getGeneratedApiScopes(ctx android.EarlyModuleContext) 
 			defaultEnabledStatus = scope.legacyEnabledStatus(module)
 		}
 		enabled := proptools.BoolDefault(scopeProperties.Enabled, defaultEnabledStatus)
+
+		// If system_server scope is enabled then disable all other scopes.
+		if systemServerEnabled && scope != apiScopeSystemServer {
+			enabled = false
+		}
+
 		if enabled {
 			enabledScopes[scope] = struct{}{}
 			generatedScopes = append(generatedScopes, scope)
@@ -3055,6 +3071,8 @@ func (s *sdkLibrarySdkMemberProperties) PopulateFromVariant(ctx android.SdkMembe
 }
 
 func (s *sdkLibrarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberContext, propertySet android.BpPropertySet) {
+	builder := ctx.SnapshotBuilder()
+
 	if s.Naming_scheme != nil {
 		propertySet.AddProperty("naming_scheme", proptools.String(s.Naming_scheme))
 	}
@@ -3070,6 +3088,34 @@ func (s *sdkLibrarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberCo
 
 	stem := s.Stem
 
+	if _, ok := s.Scopes[apiScopeSystemServer]; ok && builder.IsTargetBuildBefore("UpsideDownCake") {
+		// Need to fake up an empty public scope. First check to make sure that there is no public scope
+		// already.
+		if public, ok := s.Scopes[apiScopePublic]; ok {
+			panic(fmt.Errorf("expected no public scope with system-server scope but found %#v", public))
+		}
+
+		emptyArchive := builder.AddInternalModule(s, "java_library", "empty-archive")
+		emptyArchiveRef := fmt.Sprintf(":%s{.jar}", emptyArchive.Name())
+		emptyArchive.AddProperty("sdk_version", "none")
+		emptyArchive.AddProperty("system_modules", "none")
+		emptyArchive.AddProperty("installable", false)
+
+		emptyTxtFile := builder.AddInternalModule(s, "genrule", "empty-api-txt")
+		emptyTxtFileRef := fmt.Sprintf(":%s", emptyTxtFile.Name())
+		emptyTxtFile.AddProperty("out", []string{"empty-api.txt"})
+		emptyTxtFile.AddProperty("cmd", "echo '// Signature format: 2.0' > $(out)")
+
+		scopeSet := propertySet.AddPropertySet(apiScopePublic.propertyName)
+		requiredTag := builder.SdkMemberReferencePropertyTag(true)
+		scopeSet.AddPropertyWithTag("jars", []string{emptyArchiveRef}, requiredTag)
+		scopeSet.AddPropertyWithTag("stub_srcs", []string{emptyArchiveRef}, requiredTag)
+		scopeSet.AddPropertyWithTag("current_api", emptyTxtFileRef, requiredTag)
+		scopeSet.AddPropertyWithTag("removed_api", emptyTxtFileRef, requiredTag)
+		scopeSet.AddPropertyWithTag("annotations", emptyArchiveRef, requiredTag)
+		scopeSet.AddProperty("sdk_version", "current")
+	}
+
 	for _, apiScope := range allApiScopes {
 		if properties, ok := s.Scopes[apiScope]; ok {
 			scopeSet := propertySet.AddPropertySet(apiScope.propertyName)
@@ -3079,7 +3125,7 @@ func (s *sdkLibrarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberCo
 			var jars []string
 			for _, p := range properties.Jars {
 				dest := filepath.Join(scopeDir, stem+"-stubs.jar")
-				ctx.SnapshotBuilder().CopyToSnapshot(p, dest)
+				builder.CopyToSnapshot(p, dest)
 				jars = append(jars, dest)
 			}
 			scopeSet.AddProperty("jars", jars)
@@ -3087,31 +3133,31 @@ func (s *sdkLibrarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberCo
 			if ctx.SdkModuleContext().Config().IsEnvTrue("SOONG_SDK_SNAPSHOT_USE_SRCJAR") {
 				// Copy the stubs source jar into the snapshot zip as is.
 				srcJarSnapshotPath := filepath.Join(scopeDir, stem+".srcjar")
-				ctx.SnapshotBuilder().CopyToSnapshot(properties.StubsSrcJar, srcJarSnapshotPath)
+				builder.CopyToSnapshot(properties.StubsSrcJar, srcJarSnapshotPath)
 				scopeSet.AddProperty("stub_srcs", []string{srcJarSnapshotPath})
 			} else {
 				// Merge the stubs source jar into the snapshot zip so that when it is unpacked
 				// the source files are also unpacked.
 				snapshotRelativeDir := filepath.Join(scopeDir, stem+"_stub_sources")
-				ctx.SnapshotBuilder().UnzipToSnapshot(properties.StubsSrcJar, snapshotRelativeDir)
+				builder.UnzipToSnapshot(properties.StubsSrcJar, snapshotRelativeDir)
 				scopeSet.AddProperty("stub_srcs", []string{snapshotRelativeDir})
 			}
 
 			if properties.CurrentApiFile != nil {
 				currentApiSnapshotPath := apiScope.snapshotRelativeCurrentApiTxtPath(stem)
-				ctx.SnapshotBuilder().CopyToSnapshot(properties.CurrentApiFile, currentApiSnapshotPath)
+				builder.CopyToSnapshot(properties.CurrentApiFile, currentApiSnapshotPath)
 				scopeSet.AddProperty("current_api", currentApiSnapshotPath)
 			}
 
 			if properties.RemovedApiFile != nil {
 				removedApiSnapshotPath := apiScope.snapshotRelativeRemovedApiTxtPath(stem)
-				ctx.SnapshotBuilder().CopyToSnapshot(properties.RemovedApiFile, removedApiSnapshotPath)
+				builder.CopyToSnapshot(properties.RemovedApiFile, removedApiSnapshotPath)
 				scopeSet.AddProperty("removed_api", removedApiSnapshotPath)
 			}
 
 			if properties.AnnotationsZip != nil {
 				annotationsSnapshotPath := filepath.Join(scopeDir, stem+"_annotations.zip")
-				ctx.SnapshotBuilder().CopyToSnapshot(properties.AnnotationsZip, annotationsSnapshotPath)
+				builder.CopyToSnapshot(properties.AnnotationsZip, annotationsSnapshotPath)
 				scopeSet.AddProperty("annotations", annotationsSnapshotPath)
 			}
 
@@ -3125,7 +3171,7 @@ func (s *sdkLibrarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberCo
 		dests := []string{}
 		for _, p := range s.Doctag_paths {
 			dest := filepath.Join("doctags", p.Rel())
-			ctx.SnapshotBuilder().CopyToSnapshot(p, dest)
+			builder.CopyToSnapshot(p, dest)
 			dests = append(dests, dest)
 		}
 		propertySet.AddProperty("doctag_files", dests)

@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/genrule"
 	"android/soong/java"
 )
 
@@ -1464,7 +1465,7 @@ java_sdk_library_import {
 }
 
 func TestSnapshotWithJavaSdkLibrary_SystemServer(t *testing.T) {
-	result := android.GroupFixturePreparers(prepareForSdkTestWithJavaSdkLibrary).RunTestWithBp(t, `
+	bp := `
 		sdk {
 			name: "mysdk",
 			java_sdk_libs: ["myjavalib"],
@@ -1475,6 +1476,7 @@ func TestSnapshotWithJavaSdkLibrary_SystemServer(t *testing.T) {
 			apex_available: ["//apex_available:anyapex"],
 			srcs: ["Test.java"],
 			sdk_version: "current",
+			min_sdk_version: "1",
 			public: {
 				enabled: true,
 			},
@@ -1482,10 +1484,58 @@ func TestSnapshotWithJavaSdkLibrary_SystemServer(t *testing.T) {
 				enabled: true,
 			},
 		}
-	`)
+	`
 
-	CheckSnapshot(t, result, "mysdk", "",
-		checkAndroidBpContents(`
+	t.Run("UpsideDownCake", func(t *testing.T) {
+		result := android.GroupFixturePreparers(
+			prepareForSdkTestWithJavaSdkLibrary,
+			genrule.PrepareForTestWithGenRuleBuildComponents,
+			android.FixtureMergeEnv(map[string]string{
+				"SOONG_SDK_SNAPSHOT_TARGET_BUILD_RELEASE": "UpsideDownCake",
+			}),
+		).RunTestWithBp(t, bp)
+
+		CheckSnapshot(t, result, "mysdk", "",
+			checkAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+java_sdk_library_import {
+    name: "myjavalib",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:anyapex"],
+    shared_library: true,
+    system_server: {
+        jars: ["sdk_library/system-server/myjavalib-stubs.jar"],
+        stub_srcs: ["sdk_library/system-server/myjavalib_stub_sources"],
+        current_api: "sdk_library/system-server/myjavalib.txt",
+        removed_api: "sdk_library/system-server/myjavalib-removed.txt",
+        sdk_version: "system_server_current",
+    },
+}
+`),
+			checkAllCopyRules(`
+.intermediates/myjavalib.stubs.system_server/android_common/javac/myjavalib.stubs.system_server.jar -> sdk_library/system-server/myjavalib-stubs.jar
+.intermediates/myjavalib.stubs.source.system_server/android_common/metalava/myjavalib.stubs.source.system_server_api.txt -> sdk_library/system-server/myjavalib.txt
+.intermediates/myjavalib.stubs.source.system_server/android_common/metalava/myjavalib.stubs.source.system_server_removed.txt -> sdk_library/system-server/myjavalib-removed.txt
+`),
+			checkMergeZips(
+				".intermediates/mysdk/common_os/tmp/sdk_library/system-server/myjavalib_stub_sources.zip",
+			),
+		)
+	})
+
+	t.Run("Tiramisu", func(t *testing.T) {
+		result := android.GroupFixturePreparers(
+			prepareForSdkTestWithJavaSdkLibrary,
+			genrule.PrepareForTestWithGenRuleBuildComponents,
+			android.FixtureMergeEnv(map[string]string{
+				"SOONG_SDK_SNAPSHOT_TARGET_BUILD_RELEASE": "Tiramisu",
+			}),
+		).RunTestWithBp(t, bp)
+
+		CheckSnapshot(t, result, "mysdk", "",
+			checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 java_sdk_library_import {
@@ -1495,10 +1545,11 @@ java_sdk_library_import {
     apex_available: ["//apex_available:anyapex"],
     shared_library: true,
     public: {
-        jars: ["sdk_library/public/myjavalib-stubs.jar"],
-        stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
-        current_api: "sdk_library/public/myjavalib.txt",
-        removed_api: "sdk_library/public/myjavalib-removed.txt",
+        jars: [":mysdk_myjavalib-empty-archive{.jar}"],
+        stub_srcs: [":mysdk_myjavalib-empty-archive{.jar}"],
+        current_api: ":mysdk_myjavalib-empty-api-txt",
+        removed_api: ":mysdk_myjavalib-empty-api-txt",
+        annotations: ":mysdk_myjavalib-empty-archive{.jar}",
         sdk_version: "current",
     },
     system_server: {
@@ -1509,20 +1560,32 @@ java_sdk_library_import {
         sdk_version: "system_server_current",
     },
 }
+
+java_library {
+    name: "mysdk_myjavalib-empty-archive",
+    visibility: ["//visibility:private"],
+    sdk_version: "none",
+    system_modules: "none",
+    installable: false,
+}
+
+genrule {
+    name: "mysdk_myjavalib-empty-api-txt",
+    visibility: ["//visibility:private"],
+    out: ["empty-api.txt"],
+    cmd: "echo '// Signature format: 2.0' > $(out)",
+}
 `),
-		checkAllCopyRules(`
-.intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
-.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
-.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
+			checkAllCopyRules(`
 .intermediates/myjavalib.stubs.system_server/android_common/javac/myjavalib.stubs.system_server.jar -> sdk_library/system-server/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.system_server/android_common/metalava/myjavalib.stubs.source.system_server_api.txt -> sdk_library/system-server/myjavalib.txt
 .intermediates/myjavalib.stubs.source.system_server/android_common/metalava/myjavalib.stubs.source.system_server_removed.txt -> sdk_library/system-server/myjavalib-removed.txt
 `),
-		checkMergeZips(
-			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/system-server/myjavalib_stub_sources.zip",
-		),
-	)
+			checkMergeZips(
+				".intermediates/mysdk/common_os/tmp/sdk_library/system-server/myjavalib_stub_sources.zip",
+			),
+		)
+	})
 }
 
 func TestSnapshotWithJavaSdkLibrary_NamingScheme(t *testing.T) {
