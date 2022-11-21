@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7629b16b_ecc5475c",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-11-21T19:17:36Z",
+      "side": 1,
+      "message": "I\u0027d rather we check this when we append to library.sAbiDiff in the first place. In fact, I think this is already what we are doing? the .sAbiDiff is either empty, or contains some Paths that _must be valid_, so we can just read the list of paths here without checking .Valid()?",
+      "range": {
+        "startLine": 236,
+        "startChar": 5,
+        "endLine": 236,
+        "endChar": 20
+      },
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5e87672_2b709ff5",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-11-21T19:17:36Z",
+      "side": 1,
+      "message": "```\nif !library.static() {\n  entries.AddPaths(\"LOCAL_ADDITIONAL_DEPENDENCIES\", library.sAbiDiff)\n}\n```",
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3991a10_c40cf446",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-11-21T19:17:36Z",
+      "side": 1,
+      "message": "```\nif !library.static() {\n  fmt.Fprintln(w, \"LOCAL_ADDITIONAL_DEPENDENCIES +\u003d\", strings.Join(library.sAbiDiff.Strings(), \" \"))\n}\n```",
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ff3b1c_1cb9844f",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-11-21T19:17:36Z",
+      "side": 1,
+      "message": "If the .Valid() check is removed, then this can be simplified to just `[]android.Path` (or `android.Paths`)",
+      "range": {
+        "startLine": 799,
+        "startChar": 20,
+        "endLine": 799,
+        "endChar": 32
+      },
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956a6ace_d6e4c614",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-11-21T19:17:36Z",
+      "side": 1,
+      "message": "wrap this and the .BinderBitness() call in getRefAbiDumpFile()?\n\nLike `getRefAbiDumpFile(ctx, dumpDir, prevVersion, filename)`, and let getRefAbiDumpFile() the dumpDir, prevVersion, binderBitness,... whatever path appending.",
+      "range": {
+        "startLine": 1903,
+        "startChar": 0,
+        "endLine": 1904,
+        "endChar": 64
+      },
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e02beb0_901edc17",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-11-21T19:17:36Z",
+      "side": 1,
+      "message": "Instead of forwarding these, how about passing in a `library*` and let `crossVersionAbiDiff()` or `sourceAbiDiff()` figure out what they need by itself?",
+      "range": {
+        "startLine": 1909,
+        "startChar": 16,
+        "endLine": 1911,
+        "endChar": 22
+      },
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
