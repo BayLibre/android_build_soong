@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4322b08_dc7b3d66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-21T08:36:26Z",
+      "side": 1,
+      "message": "Mind adding a few test cases under `build/soong/tests`?\n\nThis is delicate code dealing with incrementality which has the potential to cause quite insidious bugs, so I think a few test cases covering at least the situations mentioned during this code review are necessary.",
+      "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1497319_44e5a1da",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-21T08:36:26Z",
+      "side": 1,
+      "message": "What does this condition mean? It looks like you are saying \"is a symlink but not a directory\" but how is that possible? \n\nIsn\u0027t `fi.Mode() \u0026 os.ModeDir \u003d\u003d 0` the right condition?",
+      "range": {
+        "startLine": 320,
+        "startChar": 11,
+        "endLine": 320,
+        "endChar": 69
+      },
+      "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

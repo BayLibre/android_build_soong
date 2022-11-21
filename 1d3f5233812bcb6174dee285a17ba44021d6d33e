@@ -100,6 +100,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54066cc_b3f05118",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-21T08:36:26Z",
+      "side": 1,
+      "message": "got it, nm (maybe a comment would be useful)",
+      "parentUuid": "00fa3fd1_854b2904",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 18
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f219cd0_675d2646",
@@ -316,6 +340,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a547f58_1a3d385d",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-21T08:36:26Z",
+      "side": 1,
+      "message": "Since you fixed this, it appears that you have convinced yourself that this is a problem? Let me try to cook up a scenario where it\u0027s in fact problematic:\n\n1. `mkdir -p external/guava`\n2. `touch external/guava/{BUILD.bazel,carrot}` (assuming `external/guava/BUILD.bazel` will be discarded by bp2build)\n3. `m bp2build`\n4. Now `workspace/external/guava/carrot` is a symlink\n5. `rm external/guava/carrot`\n6. `mkdir external/guava/carrot`\n7. Put something bp2build-translated in `external/guava/carrot/Android.bp`\n8. `m bp2build`\n9. Not `workspace/external/guava/carrot` should be a directory",
+      "parentUuid": "10984000_84fdfe85",
+      "range": {
+        "startLine": 322,
+        "startChar": 11,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4b7943e_881a26c9",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
@@ -327,6 +375,24 @@
       "writtenOn": "2022-11-09T16:05:20Z",
       "side": 1,
       "message": "Can there be \u0027.\u0027-prefixed files/dirs in forestDir itself, of course it couldn\u0027t have been cloned over from \"allEntries\" but maybe bazel or some python script would have generate (e.g. .pytest_cache)? Would we want to delete them or keep them? (delete seems to be the choice made here - and probably rightly)",
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fae4ba6_a74b8c45",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-21T08:36:26Z",
+      "side": 1,
+      "message": "This would require that someone modifies forestDir, which is not what we want, is it?\n\n(what happens when someone modifies forestDir manually is an interesting question, but one that is more general that this one)",
+      "parentUuid": "f4b7943e_881a26c9",
       "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -533,6 +599,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "a4d9e17d_098f2923",
+      "range": {
+        "startLine": 422,
+        "startChar": 15,
+        "endLine": 422,
+        "endChar": 21
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97db231_bcc0e161",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-21T08:36:26Z",
+      "side": 1,
+      "message": "I am wondering whether this is the right choice here; it doesn\u0027t look like we\u0027ll be deleting huge trees here frequently, so maybe the simplicity of `RemoveAll()` is the way to go.\n\n(since I wrote `removeParallel()` I am a bit emotionally attached to it so I can\u0027t get myself to say \"just use `RemoveAll()`...)",
+      "parentUuid": "48df6dfe_a758226b",
       "range": {
         "startLine": 422,
         "startChar": 15,
