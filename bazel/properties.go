@@ -1250,6 +1250,12 @@ func (sla StringListAttribute) HasConfigurableValues() bool {
 	return false
 }
 
+// Add adds an additional value to the non-configured value of this StringListAttribute
+func (sla *StringListAttribute) Add(value string) *StringListAttribute {
+	sla.Value = append(sla.Value, value)
+	return sla
+}
+
 // Append appends all values, including os and arch specific ones, from another
 // StringListAttribute to this StringListAttribute
 func (sla *StringListAttribute) Append(other StringListAttribute) *StringListAttribute {

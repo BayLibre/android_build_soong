@@ -1187,6 +1187,10 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 		}
 	}
 
+	if ctx.ModuleType() != "package" {
+		attrs.Tags.Add("bp2build_generating_module:" + mod.Name())
+	}
+
 	depsToLabelList := func(deps []string) bazel.LabelListAttribute {
 		return bazel.MakeLabelListAttribute(BazelLabelForModuleDeps(ctx, deps))
 	}
