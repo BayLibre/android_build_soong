@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "611699d8_14e0fcff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-21T22:21:34Z",
+      "side": 1,
+      "message": "I think this is the right fix, but this test might yield a false negative (since we develop on linux machines and not darwin)\n\ngo/abtd is a good option to test cross-platform",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "89c2c9797754efaa88d19e0089631f22b5196b0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
