@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdbcfdf3_c3e78cab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-11-22T00:09:39Z",
+      "side": 1,
+      "message": "Thanks Nelson. This makes sense to me but I\u0027m not sure if it break anything else. I think you need to include someone from the TF team.\n\nI also think it helps fix another problem so I added folks that might be interested.",
+      "revId": "2de8c848aec07341a8daf9e877515dee61c2aa09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c86a25a_1f6c86ba",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-11-22T00:09:39Z",
+      "side": 1,
+      "message": "@congxiliu@google.com Would this resolve the issue of having to manually tag tests since it\u0027s now part of the rule? We could start by implicitly generating a `robolectric-tests` suite. Once we have Bazel-mode working we\u0027ll switch this to `unit-tests`.\n\nWDYT?",
+      "range": {
+        "startLine": 299,
+        "startChar": 3,
+        "endLine": 299,
+        "endChar": 71
+      },
+      "revId": "2de8c848aec07341a8daf9e877515dee61c2aa09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
