@@ -901,6 +901,15 @@ func (handler *ccLibraryBazelHandler) generateSharedBazelBuildActions(ctx androi
 	}
 	handler.module.linker.(*libraryDecorator).tocFile = tocFile
 
+	if ccInfo.PrevAbiDiffFile != "" {
+		handler.module.linker.(*libraryDecorator).prevSAbiDiff =
+			android.OptionalPathForPath(android.PathForBazelOut(ctx, ccInfo.PrevAbiDiffFile))
+	}
+	if ccInfo.AbiDiffFile != "" {
+		handler.module.linker.(*libraryDecorator).sAbiDiff =
+			android.OptionalPathForPath(android.PathForBazelOut(ctx, ccInfo.AbiDiffFile))
+	}
+
 	ctx.SetProvider(SharedLibraryInfoProvider, SharedLibraryInfo{
 		TableOfContents: tocFile,
 		SharedLibrary:   outputFilePath,
