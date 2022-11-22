@@ -16,6 +16,23 @@
       "message": "Liz, Trevor - I\u0027m looking for an owners vote here, and it looks like Colin is out for the week. Could you review?",
       "revId": "a82a6655b4e189dcc43ce9193daea62095f0a2a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "529a006e_d9ca41f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-11-22T10:44:15Z",
+      "side": 1,
+      "message": "Joe - could I get your OWNERS vote here?",
+      "revId": "a82a6655b4e189dcc43ce9193daea62095f0a2a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
