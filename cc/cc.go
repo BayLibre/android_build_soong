@@ -1856,6 +1856,15 @@ func (c *Module) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	bazelCtx := ctx.Config().BazelContext
 	if ccInfo, err := bazelCtx.GetCcInfo(bazelModuleLabel, android.GetConfigKey(ctx)); err == nil {
 		c.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
+		if lib, ok := c.linker.(*libraryDecorator); ok && lib.shared() {
+			if ccInfo.PrevAbiDiffFile != "" {
+				lib.prevSAbiDiff = android.OptionalPathForPath(android.PathForBazelOut(ctx, ccInfo.PrevAbiDiffFile))
+			}
+			if ccInfo.AbiDiffFile != "" {
+				lib.sAbiDiff = android.OptionalPathForPath(android.PathForBazelOut(ctx, ccInfo.AbiDiffFile))
+			}
+
+		}
 	}
 
 	c.bazelHandler.ProcessBazelQueryResponse(ctx, bazelModuleLabel)
