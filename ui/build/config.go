@@ -741,6 +741,12 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.bazelStagingMode = true
 		} else if arg == "--search-api-dir" {
 			c.searchApiDir = true
+		} else if strings.HasPrefix(arg, "--build-command=") {
+			fmt.Printf("build command in config.\n")
+			bArgs := strings.TrimPrefix(arg, "--build-command=")
+			// remove quotations
+			bArgs = strings.ReplaceAll(bArgs, "\"", "")
+			c.environ.Set("build-command", bArgs)
 		} else if len(arg) > 0 && arg[0] == '-' {
 			parseArgNum := func(def int) int {
 				if len(arg) > 2 {
@@ -1151,6 +1157,15 @@ func (c *configImpl) UseRBE() bool {
 
 func (c *configImpl) BazelBuildEnabled() bool {
 	return c.bazelProdMode || c.bazelDevMode || c.bazelStagingMode
+}
+
+func (c *configImpl) GetBuildCommand() (string, bool) {
+	bArg, ok := c.environ.Get("build-command")
+	if ok {
+		return bArg, true
+	} else {
+		return "", false
+	}
 }
 
 func (c *configImpl) StartRBE() bool {
