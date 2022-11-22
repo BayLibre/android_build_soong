@@ -741,6 +741,12 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.bazelStagingMode = true
 		} else if arg == "--search-api-dir" {
 			c.searchApiDir = true
+		} else if strings.HasPrefix(arg, "--build-command=") {
+			bArgs := strings.TrimPrefix(arg, "--build-command=")
+			// remove quotations
+			bArgs = strings.TrimPrefix(bArgs, "\"")
+			bArgs = strings.TrimSuffix(bArgs, "\"")
+			ctx.Metrics.SetBuildCommand([]string{bArgs})
 		} else if len(arg) > 0 && arg[0] == '-' {
 			parseArgNum := func(def int) int {
 				if len(arg) > 2 {
