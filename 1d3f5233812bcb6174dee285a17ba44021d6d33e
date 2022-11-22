@@ -434,6 +434,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8db498f0_4ea66af9",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-22T15:48:27Z",
+      "side": 1,
+      "message": "@cparsons@google.com The conversation was during our Roboleaf Infra weekly and @foox@google.com was triaging the issue I reported. My specific example at that time was someone having a shell-script named `xyz` and then later deciding to refactor it into multiple files under a directory named `xyz` instead.\n\n\n@lberki@google.com the fact that cuj_catalog.py now does metrics and some e2e tests is something I am addressing in a proposal to decouple perf tests and e2e tests (will circulate that doc later).\n\nNote: the other issue https://b.corp.google.com/issues/258873199 is somewhat similar but preexisting.",
+      "parentUuid": "6612731f_795f6c01",
+      "range": {
+        "startLine": 322,
+        "startChar": 11,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4b7943e_881a26c9",

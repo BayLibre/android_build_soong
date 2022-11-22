@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d703f25c_cdb45946",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-22T15:48:27Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "8d7fd408_393b57fc",
+      "range": {
+        "startLine": 254,
+        "startChar": 2,
+        "endLine": 254,
+        "endChar": 43
+      },
+      "revId": "9b9fe029604926d7c6346bcd5a06e47fb98e2c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4be07ee_a421a180",
