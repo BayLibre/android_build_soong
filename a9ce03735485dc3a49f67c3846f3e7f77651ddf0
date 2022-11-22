@@ -63,6 +63,30 @@
       },
       "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e75e8e15_53437019",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-22T04:35:02Z",
+      "side": 1,
+      "message": "To clarify,\nBy ln-to-file I meant symlink-to-file.\nAnd ln-to-dir meant symlink-do-dir.\nI am using a boolean OR operation.\nAnd ~fi.Mode()\u0026os.ModeSymlink !\u003d 0 ||~ fi.Mode()\u0026os.ModeDir \u003d\u003d 0 would not remove an existing symlink to a directory prior to attempting mkdir (and thus fail).",
+      "parentUuid": "f8c03b0a_faa9d070",
+      "range": {
+        "startLine": 320,
+        "startChar": 11,
+        "endLine": 320,
+        "endChar": 69
+      },
+      "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
