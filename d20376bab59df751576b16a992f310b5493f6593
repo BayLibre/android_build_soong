@@ -153,6 +153,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2be43cb_86ce86c8",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2310,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-22T13:40:42Z",
+      "side": 1,
+      "message": "I\u0027m a bit concerned that this is papering over problems that may leave things in an undesirable state.\n\nIt looks like `microdroid` has some adbd specific modules `libadbd_auth`, `libadbd_fs` -- should those also only be installed via microdroid, via this mechanism, or both?\n\nWe\u0027re also moving the problem of validating whether the library an apex depends on is installed to outside of the build system.\n\nIf we proceed with this, I\u0027d prefer to [allowlist](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/neverallow.go) the ability to set this property to just your usecase and find a solution that helps ensure we don\u0027t end up with 0 or 2 copies of a library that apexes depend on",
+      "parentUuid": "cb34f193_5f6f2c26",
+      "revId": "d20376bab59df751576b16a992f310b5493f6593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b1b8fdb_02b55baf",
         "filename": "cc/library.go",
         "patchSetId": 1
