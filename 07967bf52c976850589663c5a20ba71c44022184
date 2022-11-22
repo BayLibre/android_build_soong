@@ -128,6 +128,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf3de56_6a53936d",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1904,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-11-22T06:06:22Z",
+      "side": 1,
+      "message": "I see.",
+      "parentUuid": "b70acf4b_80785c19",
+      "range": {
+        "startLine": 1903,
+        "startChar": 0,
+        "endLine": 1904,
+        "endChar": 64
+      },
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e02beb0_901edc17",
@@ -165,6 +189,30 @@
       "side": 1,
       "message": "That seems violating the convention.\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/builder.go;l\u003d17\n\nBesides, I would not like to move isImplementationForLLNDKPublic, isNdk, isVndkExt to sourceAbiDiff because it will be hard to maintain the flags in this function, sourceAbiDiff, and classifySourceAbiDump.",
       "parentUuid": "7e02beb0_901edc17",
+      "range": {
+        "startLine": 1909,
+        "startChar": 16,
+        "endLine": 1911,
+        "endChar": 22
+      },
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97367c05_b8812677",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-11-22T06:06:22Z",
+      "side": 1,
+      "message": "This would be a lot of repeating boilerplate after aosp/2306143 is added. If we want to keep the convention, we can move the definition of crossVersionDiff() sameVersionAbiDiff() optInDiff() sourceAbiDiff() to library.go, and these functions deduce all the required diff flags, and then call transformAbiDumpToAbiDiff() in builder.go:\n\nlibrary.go:\n```\n// Move from builder.go to library.go\nfunc sourceAbiDiff(libraryDecorator, isLlndkOrNdk, ...) {\n   // generate extraFlags and errorMessage etc and call transformAbiDumpToAbiDiff()\n}\n```\n\nbuilder.go:\n```\nfunc transformAbiDumpToAbiDiff(ctx, extraFlags, refDumpPath, ...) {\n  ctx.Build(pctx, android.BuildParams{Rule: sAbiDiff,...})\n}\n```",
+      "parentUuid": "cf5cecc5_06f97431",
       "range": {
         "startLine": 1909,
         "startChar": 16,
