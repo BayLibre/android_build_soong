@@ -229,6 +229,12 @@ func (m *Metrics) SetBuildCommand(cmd []string) {
 	m.metrics.BuildCommand = proto.String(strings.Join(cmd, " "))
 }
 
+// SetBuildCommand adds the build command specified by the user to the
+// list of collected metrics.
+func (m *Metrics) SetBCommand(str string) {
+	m.metrics.BuildCommand = proto.String(str)
+}
+
 // Dump exports the collected metrics from the executed build to the file at
 // out path.
 func (m *Metrics) Dump(out string) error {
