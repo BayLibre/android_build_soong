@@ -165,6 +165,7 @@ var (
 		"external/mdnsresponder":                 Bp2BuildDefaultTrueRecursively,
 		"external/minijail":                      Bp2BuildDefaultTrueRecursively,
 		"external/objenesis":                     Bp2BuildDefaultTrueRecursively,
+		"external/ow2-asm":                       Bp2BuildDefaultTrueRecursively,
 		"external/openscreen":                    Bp2BuildDefaultTrueRecursively,
 		"external/pcre":                          Bp2BuildDefaultTrueRecursively,
 		"external/protobuf":                      Bp2BuildDefaultTrueRecursively,
