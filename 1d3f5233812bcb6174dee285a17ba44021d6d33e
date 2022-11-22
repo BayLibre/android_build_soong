@@ -364,6 +364,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e96e0674_30108d50",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-22T04:11:39Z",
+      "side": 1,
+      "message": "I have a similar CUJ in cuj_catalog.py\n\n a. create art/bogus.txt\n    art/Android.bp exists, hence out/soong/workspace/art/bogus.txt will be a symlink\n b. art/bogus.txt/Android.bp instead of art/bogus.txt\n    requires symlink to be replaced with a mkdir in the workspace\n    \nI had shared this with @cparsons@google.com and @foox@google.com and the response was this would be a very rare event. But I am having to handle this anyways because I also need to replace a symlink to dir D with a regular dir if one decided to add an `D/**/Android.bp` file there (a CUJ for this also exists in cuj_catalog.py).\nOne could also say the same if the addition was of a \"kept\" `D/**/BUILD.bazel` (and there is also a CUJ for this).",
+      "parentUuid": "3a547f58_1a3d385d",
+      "range": {
+        "startLine": 322,
+        "startChar": 11,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4b7943e_881a26c9",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
@@ -393,6 +417,24 @@
       "side": 1,
       "message": "This would require that someone modifies forestDir, which is not what we want, is it?\n\n(what happens when someone modifies forestDir manually is an interesting question, but one that is more general that this one)",
       "parentUuid": "f4b7943e_881a26c9",
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70c918aa_6199a494",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-22T04:11:39Z",
+      "side": 1,
+      "message": "ignoring manual tampering, I was wondering whether things like `.pytest_cache` could appear.\n\nI guess any such directory could then also appear in the source tree - necessitating .git-ignore.\n\nOrthogonal to .git-ignore, wiping out of `.pytest_cache` for instance means not leveraging the cache (e.g. to store test failures so that you can run `--lf`).\n\nThere could be other similar caching practices in other languages?",
+      "parentUuid": "0fae4ba6_a74b8c45",
       "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -623,6 +665,30 @@
       "side": 1,
       "message": "I am wondering whether this is the right choice here; it doesn\u0027t look like we\u0027ll be deleting huge trees here frequently, so maybe the simplicity of `RemoveAll()` is the way to go.\n\n(since I wrote `removeParallel()` I am a bit emotionally attached to it so I can\u0027t get myself to say \"just use `RemoveAll()`...)",
       "parentUuid": "48df6dfe_a758226b",
+      "range": {
+        "startLine": 422,
+        "startChar": 15,
+        "endLine": 422,
+        "endChar": 21
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261e473f_e57b8f0c",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-22T04:11:39Z",
+      "side": 1,
+      "message": "Fair enough.",
+      "parentUuid": "a97db231_bcc0e161",
       "range": {
         "startLine": 422,
         "startChar": 15,

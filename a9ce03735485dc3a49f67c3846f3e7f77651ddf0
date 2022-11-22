@@ -39,6 +39,30 @@
       },
       "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8c03b0a_faa9d070",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-22T04:11:39Z",
+      "side": 1,
+      "message": "```\n                          file   ln-to-file     dir      ln-to-dir\nA\u003dfi.Mode()\u0026ModeSymlink    0     ModeSymlink     0      ModeSymlink\nB\u003dfi.Mode()\u0026ModeDir        0        0          ModeDir    ModeDir\nA!\u003d0||B\u003d\u003d0                true     true        false       true\n\n```",
+      "parentUuid": "e1497319_44e5a1da",
+      "range": {
+        "startLine": 320,
+        "startChar": 11,
+        "endLine": 320,
+        "endChar": 69
+      },
+      "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
