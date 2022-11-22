@@ -94,6 +94,30 @@
       },
       "revId": "f7c0fb8b0e88e2b8447813e45dd530687979e971",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6f22e25_c6cbabf1",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-22T00:27:30Z",
+      "side": 1,
+      "message": "No, but I suggested this to be future-proof. If there will be a droidstub having sdk_version: \"a_number\", then we will need this.",
+      "parentUuid": "9ea87ed4_d8b3c3b1",
+      "range": {
+        "startLine": 309,
+        "startChar": 24,
+        "endLine": 309,
+        "endChar": 41
+      },
+      "revId": "f7c0fb8b0e88e2b8447813e45dd530687979e971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
