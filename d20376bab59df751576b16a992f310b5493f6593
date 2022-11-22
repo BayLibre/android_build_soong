@@ -187,6 +187,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d37ce63_09bb1032",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2310,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-11-22T15:49:16Z",
+      "side": 1,
+      "message": "\u003e If we proceed with this, I\u0027d prefer to allowlist the ability to set this property to just your usecase and find a solution that helps ensure we don\u0027t end up with 0 or 2 copies of a library that apexes depend on\n\nDone.",
+      "parentUuid": "d307b210_b0618841",
+      "revId": "d20376bab59df751576b16a992f310b5493f6593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b1b8fdb_02b55baf",
