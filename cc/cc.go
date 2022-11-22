@@ -1298,6 +1298,7 @@ func (c *Module) IsVndkPrivate() bool {
 	return false
 }
 
+// Returns true if this module has a vndk variant.
 func (c *Module) IsVndk() bool {
 	if vndkdep := c.vndkdep; vndkdep != nil {
 		return vndkdep.isVndk()
