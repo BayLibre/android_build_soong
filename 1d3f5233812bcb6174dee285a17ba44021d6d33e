@@ -412,6 +412,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6612731f_795f6c01",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-22T13:39:59Z",
+      "side": 1,
+      "message": "\u003e I had shared this...and the response was this would be a very rare event.\n\nI don\u0027t recall our conversation about this (though not saying it definitely didn\u0027t happen! My memory is bad. But I have concerns we may have had a misunderstanding). We should avoid introducing correctness issues in this performance CL. In fact, in general we should *always* avoid introducing new known correctness issues at all costs. (An exception to this guideline is *maybe* if the user directly tampers with their out output directory. But -- we should always avoid cases where a source tree change could introduce widespread incremental build issues to anyone who has synced.)",
+      "parentUuid": "8e607a83_a20675b7",
+      "range": {
+        "startLine": 322,
+        "startChar": 11,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4b7943e_881a26c9",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
