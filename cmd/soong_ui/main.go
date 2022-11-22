@@ -135,7 +135,6 @@ func main() {
 	// Create and start a new metric record.
 	met := metrics.New()
 	met.SetBuildDateTime(buildStarted)
-	met.SetBuildCommand(os.Args)
 
 	// Attach a new logger instance to the terminal output.
 	log := logger.NewWithMetrics(output, met)
@@ -173,6 +172,13 @@ func main() {
 	}}
 
 	config := c.config(buildCtx, args...)
+
+	bArg, ok := config.GetBuildCommand()
+	if ok {
+		met.SetBCommand(bArg)
+	} else {
+		met.SetBuildCommand(os.Args)
+	}
 
 	build.SetupOutDir(buildCtx, config)
 
