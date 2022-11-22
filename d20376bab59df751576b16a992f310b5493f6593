@@ -171,6 +171,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d307b210_b0618841",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2310,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-11-22T14:10:46Z",
+      "side": 1,
+      "message": "Thanks for getting back to me!\n\n\u003e It looks like microdroid has some adbd specific modules libadbd_auth, libadbd_fs -- should those also only be installed via microdroid, via this mechanism, or both?\n\nBear in mind that Microdroid is its own OS running in its own VM, with no direct access to things in Android. I think all those dependencies are fairly normal - they\u0027re used in microdroid, and installed in microdroid. At least some of them are also used in the host and installed in the host. They shouldn\u0027t be using this new mechanism.\n\nThe libvm_payload library is unique in that it is only installed inside Microdroid, but is referenced by things outside of Microdroid. (Native code baked into an APK which is made visible and executed inside the VM.)\n\n\u003e If we proceed with this, I\u0027d prefer to allowlist the ability to set this property to just your usecase and find a solution that helps ensure we don\u0027t end up with 0 or 2 copies of a library that apexes depend on\n\nSure, I should be able to do that.",
+      "parentUuid": "e2be43cb_86ce86c8",
+      "revId": "d20376bab59df751576b16a992f310b5493f6593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b1b8fdb_02b55baf",
         "filename": "cc/library.go",
         "patchSetId": 1
