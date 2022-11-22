@@ -87,6 +87,30 @@
       },
       "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae5263b3_24fc5b7e",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-22T09:20:11Z",
+      "side": 1,
+      "message": "Erm, nevermind, I misread the code, I think it works. But are you sure that `os.ModeDir` is set for symlinks to directories? I thought lstat() means \"do not dereference the symlink\", but then how can it know that it\u0027s a symlink to a directory instead of a file?",
+      "parentUuid": "e75e8e15_53437019",
+      "range": {
+        "startLine": 320,
+        "startChar": 11,
+        "endLine": 320,
+        "endChar": 69
+      },
+      "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

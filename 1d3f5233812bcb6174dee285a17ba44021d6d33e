@@ -388,6 +388,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e607a83_a20675b7",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-22T09:20:11Z",
+      "side": 1,
+      "message": "I thought that cuj_catalog.py was for performance metrics, isn\u0027t it? If so, it\u0027s kinda weird to put correctness tests there.",
+      "parentUuid": "e96e0674_30108d50",
+      "range": {
+        "startLine": 322,
+        "startChar": 11,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "1d3f5233812bcb6174dee285a17ba44021d6d33e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4b7943e_881a26c9",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 3
