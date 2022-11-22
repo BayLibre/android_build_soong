@@ -57,4 +57,5 @@ soong_build_go mk2rbc android/soong/mk2rbc/cmd
 soong_build_go rbcrun rbcrun/cmd
 
 cd ${TOP}
+echo SOONG ARGS
 exec "$(getoutdir)/soong_ui" "$@"
