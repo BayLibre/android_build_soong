@@ -39,6 +39,30 @@
       },
       "revId": "2de8c848aec07341a8daf9e877515dee61c2aa09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8beefdcc_167a4b3d",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1959907
+      },
+      "writtenOn": "2022-11-22T03:26:16Z",
+      "side": 1,
+      "message": "Based on the current build system, all android_robolectric_tests are forced to tagged as \"robolectric-tests\" suite (`TestSuites` are set in `RobolectricTestFactory()` and `TestSuites()`.) and be put in the `robolectric-tests.zip` regardless what test suites are used in Android.bp; I think for Android.mk should be the same behaviour.\n\nTBO, I am not sure if there is another method for .bp files similar to `AndroidMkEntries()` for the mk files. I will take a look tmr.",
+      "parentUuid": "4c86a25a_1f6c86ba",
+      "range": {
+        "startLine": 299,
+        "startChar": 3,
+        "endLine": 299,
+        "endChar": 71
+      },
+      "revId": "2de8c848aec07341a8daf9e877515dee61c2aa09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
