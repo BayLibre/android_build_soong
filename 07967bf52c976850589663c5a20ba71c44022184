@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d03f771_d344fd22",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-11-22T09:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7629b16b_ecc5475c",
+      "range": {
+        "startLine": 236,
+        "startChar": 5,
+        "endLine": 236,
+        "endChar": 20
+      },
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5e87672_2b709ff5",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-21T19:17:36Z",
       "side": 1,
       "message": "```\nif !library.static() {\n  entries.AddPaths(\"LOCAL_ADDITIONAL_DEPENDENCIES\", library.sAbiDiff)\n}\n```",
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f580c8b_4c1a8a95",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-11-22T09:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5e87672_2b709ff5",
       "revId": "07967bf52c976850589663c5a20ba71c44022184",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68832e4_99dff660",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-11-22T09:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3991a10_c40cf446",
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24ff3b1c_1cb9844f",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-11-21T19:17:36Z",
       "side": 1,
       "message": "If the .Valid() check is removed, then this can be simplified to just `[]android.Path` (or `android.Paths`)",
+      "range": {
+        "startLine": 799,
+        "startChar": 20,
+        "endLine": 799,
+        "endChar": 32
+      },
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b0db150_6cbcead3",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-11-22T09:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24ff3b1c_1cb9844f",
       "range": {
         "startLine": 799,
         "startChar": 20,
@@ -213,6 +297,30 @@
       "side": 1,
       "message": "This would be a lot of repeating boilerplate after aosp/2306143 is added. If we want to keep the convention, we can move the definition of crossVersionDiff() sameVersionAbiDiff() optInDiff() sourceAbiDiff() to library.go, and these functions deduce all the required diff flags, and then call transformAbiDumpToAbiDiff() in builder.go:\n\nlibrary.go:\n```\n// Move from builder.go to library.go\nfunc sourceAbiDiff(libraryDecorator, isLlndkOrNdk, ...) {\n   // generate extraFlags and errorMessage etc and call transformAbiDumpToAbiDiff()\n}\n```\n\nbuilder.go:\n```\nfunc transformAbiDumpToAbiDiff(ctx, extraFlags, refDumpPath, ...) {\n  ctx.Build(pctx, android.BuildParams{Rule: sAbiDiff,...})\n}\n```",
       "parentUuid": "cf5cecc5_06f97431",
+      "range": {
+        "startLine": 1909,
+        "startChar": 16,
+        "endLine": 1911,
+        "endChar": 22
+      },
+      "revId": "07967bf52c976850589663c5a20ba71c44022184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "505fbc55_e8e46a44",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-11-22T09:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97367c05_b8812677",
       "range": {
         "startLine": 1909,
         "startChar": 16,
