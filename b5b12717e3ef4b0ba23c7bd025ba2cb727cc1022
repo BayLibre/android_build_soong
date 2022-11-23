@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ca23ee_89e3ad14",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1301,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-23T16:12:12Z",
+      "side": 1,
+      "message": "nit: go style is to lead with the function name, e.g. \n\n`IsVndk returns true ...`\n\nOptional: Given that this CL seems to stem from confusion with `UseVndk` would it be helpful to reference the distinction here as well as the Cl description?",
+      "range": {
+        "startLine": 1301,
+        "startChar": 3,
+        "endLine": 1301,
+        "endChar": 10
+      },
+      "revId": "b5b12717e3ef4b0ba23c7bd025ba2cb727cc1022",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
