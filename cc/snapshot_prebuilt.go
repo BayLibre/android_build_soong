@@ -408,10 +408,14 @@ type snapshotLibraryDecorator struct {
 	*libraryDecorator
 	properties          SnapshotLibraryProperties
 	sanitizerProperties struct {
-		CfiEnabled bool `blueprint:"mutated"`
+		CfiEnabled    bool `blueprint:"mutated"`
+		HwasanEnabled bool `blueprint:"mutated"`
 
 		// Library flags for cfi variant.
 		Cfi SnapshotLibraryProperties `android:"arch_variant"`
+
+		// Library flags for hwasan variant.
+		Hwasan SnapshotLibraryProperties `android:"arch_variant"`
 	}
 }
 
@@ -452,6 +456,8 @@ func (p *snapshotLibraryDecorator) link(ctx ModuleContext, flags Flags, deps Pat
 
 	if p.sanitizerProperties.CfiEnabled {
 		p.properties = p.sanitizerProperties.Cfi
+	} else if p.sanitizerProperties.HwasanEnabled {
+		p.properties = p.sanitizerProperties.Hwasan
 	}
 
 	if !p.MatchesWithDevice(ctx.DeviceConfig()) {
@@ -518,6 +524,8 @@ func (p *snapshotLibraryDecorator) isSanitizerEnabled(t SanitizerType) bool {
 	switch t {
 	case cfi:
 		return p.sanitizerProperties.Cfi.Src != nil
+	case Hwasan:
+		return p.sanitizerProperties.Hwasan.Src != nil
 	default:
 		return false
 	}
@@ -530,6 +538,8 @@ func (p *snapshotLibraryDecorator) setSanitizerVariation(t SanitizerType, enable
 	switch t {
 	case cfi:
 		p.sanitizerProperties.CfiEnabled = true
+	case Hwasan:
+		p.sanitizerProperties.HwasanEnabled = true
 	default:
 		return
 	}

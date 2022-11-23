@@ -1217,9 +1217,11 @@ func (s *sanitizerSplitMutator) Mutate(mctx android.BottomUpMutatorContext, vari
 
 			// Export the static lib name to make
 			if c.static() && c.ExportedToMake() {
+				// use BaseModuleName which is the name for Make.
 				if s.sanitizer == cfi {
-					// use BaseModuleName which is the name for Make.
 					cfiStaticLibs(mctx.Config()).add(c, c.BaseModuleName())
+				} else if s.sanitizer == Hwasan {
+					hwasanStaticLibs(mctx.Config()).add(c, c.BaseModuleName())
 				}
 			}
 		}
