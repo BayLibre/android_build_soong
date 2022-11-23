@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c66487e_7881f7c9",
+        "filename": "android/license.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-23T01:44:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa1d3aa_6f7cf1e2",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "210e550f6e013d6fc16b6493e26181bdeb72e303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaa03571_45cfb52c",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2e61eb_c34169ae",
+        "filename": "android/license.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-23T01:44:36Z",
+      "side": 1,
+      "message": "At least in aosp there aren\u0027t any. If there are in internal, they\u0027ll be caught on presubmit and I\u0027ll fix them before submitting this.",
+      "parentUuid": "aaa03571_45cfb52c",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 60
+      },
+      "revId": "210e550f6e013d6fc16b6493e26181bdeb72e303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf1f2972_7fda3144",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-23T01:31:11Z",
       "side": 1,
       "message": "nit: insert another license kind in between. This will prevent a false negative if we only compare license(i) and license(i+1).",
+      "range": {
+        "startLine": 104,
+        "startChar": 45,
+        "endLine": 104,
+        "endChar": 46
+      },
+      "revId": "210e550f6e013d6fc16b6493e26181bdeb72e303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e20afd_93c385b4",
+        "filename": "android/license_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-11-23T01:44:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf1f2972_7fda3144",
       "range": {
         "startLine": 104,
         "startChar": 45,
