@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edc6481_3b4817f7",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-23T16:14:58Z",
+      "side": 1,
+      "message": "can you file a bug about potentially replacing has_stubs with `stubs_symbol_file` as they seem to imply the same information?",
+      "range": {
+        "startLine": 547,
+        "startChar": 4,
+        "endLine": 547,
+        "endChar": 39
+      },
+      "revId": "5abf19e7021b40a4d85ef78d42d1fc5d77fc2c19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
