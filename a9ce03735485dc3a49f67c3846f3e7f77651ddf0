@@ -153,6 +153,30 @@
       },
       "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ae85bb_72400017",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-23T13:03:00Z",
+      "side": 1,
+      "message": "Huh, I\u0027m confused? If the test passes, this is mostly for my education but does this mean that `Lstat()` on a symlink to a directory returns a `FileInfo` with `os.ModeDir` set?",
+      "parentUuid": "4deaa9a7_0a71ffe0",
+      "range": {
+        "startLine": 320,
+        "startChar": 11,
+        "endLine": 320,
+        "endChar": 69
+      },
+      "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
