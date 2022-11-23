@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69552b63_fb881aee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2022-11-23T21:21:12Z",
+      "side": 1,
+      "message": "thanks -- added in diff https://android-review.git.corp.google.com/c/platform/build/soong/+/2283141",
+      "revId": "92f33d91f3071f8f69237c663ad7369a3f880797",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {

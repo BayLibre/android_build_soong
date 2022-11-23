@@ -16,6 +16,24 @@
       "message": "Also add //tools/asuite/... to the target lists that is under test for bp2build presubmits to make sure the targets keep building: https://cs.android.com/android/platform/superproject/+/master:build/bazel/ci/target_lists.sh;l\u003d22;drc\u003dd38404d4b36b0070e6127ba519d74ffcccae0ddc",
       "revId": "1acf6ed68709e10aa4cc39c3edc55538be577d70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c2d205_fa378955",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2022-11-23T21:21:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f634553b_2368c6e2",
+      "revId": "1acf6ed68709e10aa4cc39c3edc55538be577d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
