@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c9b336_ff722ca2",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-11-23T10:14:21Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we test that \"hwasan.cfi\" variant isn\u0027t created, or at least disabled?",
+      "range": {
+        "startLine": 1123,
+        "startChar": 0,
+        "endLine": 1125,
+        "endChar": 85
+      },
+      "revId": "25e600d4ffad650075db87f99b1f3d934db1e985",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
