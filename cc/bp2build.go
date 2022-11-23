@@ -1035,14 +1035,11 @@ func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversion
 			}
 			inApexSelectValue := la.implementationDynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndInApex)
 			nonApexSelectValue := la.implementationDynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndNonApex)
-			defaultSelectValue := la.implementationDynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.ConditionsDefaultConfigKey)
 			if axis == bazel.NoConfigAxis {
 				(&inApexSelectValue).Append(bazel.MakeLabelList(stubLibLabels))
 				(&nonApexSelectValue).Append(bazel.MakeLabelList(depsWithStubs))
-				(&defaultSelectValue).Append(bazel.MakeLabelList(depsWithStubs))
 				la.implementationDynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndInApex, bazel.FirstUniqueBazelLabelList(inApexSelectValue))
 				la.implementationDynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndNonApex, bazel.FirstUniqueBazelLabelList(nonApexSelectValue))
-				la.implementationDynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.ConditionsDefaultConfigKey, bazel.FirstUniqueBazelLabelList(defaultSelectValue))
 			} else if config == bazel.OsAndroid {
 				(&inApexSelectValue).Append(bazel.MakeLabelList(stubLibLabels))
 				(&nonApexSelectValue).Append(bazel.MakeLabelList(depsWithStubs))
