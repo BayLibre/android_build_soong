@@ -56,14 +56,7 @@ type sdkAwareWithoutModule interface {
 	SdkMemberComponentName(baseName string, componentNameCreator func(string) string) string
 
 	sdkBase() *SdkBase
-	MakeMemberOf(sdk SdkRef)
-	IsInAnySdk() bool
 
-	// IsVersioned determines whether the module is versioned, i.e. has a name of the form
-	// <name>@<version>
-	IsVersioned() bool
-
-	ContainingSdk() SdkRef
 	MemberName() string
 }
 
@@ -94,65 +87,10 @@ func MinApiLevelForSdkSnapshot(ctx EarlyModuleContext, module Module) ApiLevel {
 	return minApiLevel
 }
 
-// SdkRef refers to a version of an SDK
-type SdkRef struct {
-	Name    string
-	Version string
-}
-
-// Unversioned determines if the SdkRef is referencing to the unversioned SDK module
-func (s SdkRef) Unversioned() bool {
-	return s.Version == ""
-}
-
-// String returns string representation of this SdkRef for debugging purpose
-func (s SdkRef) String() string {
-	if s.Name == "" {
-		return "(No Sdk)"
-	}
-	if s.Unversioned() {
-		return s.Name
-	}
-	return s.Name + string(SdkVersionSeparator) + s.Version
-}
-
-// SdkVersionSeparator is a character used to separate an sdk name and its version
-const SdkVersionSeparator = '@'
-
-// ParseSdkRef parses a `name@version` style string into a corresponding SdkRef struct
-func ParseSdkRef(ctx BaseModuleContext, str string, property string) SdkRef {
-	tokens := strings.Split(str, string(SdkVersionSeparator))
-	if len(tokens) < 1 || len(tokens) > 2 {
-		ctx.PropertyErrorf(property, "%q does not follow name@version syntax", str)
-		return SdkRef{Name: "invalid sdk name", Version: "invalid sdk version"}
-	}
-
-	name := tokens[0]
-
-	var version string
-	if len(tokens) == 2 {
-		version = tokens[1]
-	}
-
-	return SdkRef{Name: name, Version: version}
-}
-
-type SdkRefs []SdkRef
-
-// Contains tells if the given SdkRef is in this list of SdkRef's
-func (refs SdkRefs) Contains(s SdkRef) bool {
-	for _, r := range refs {
-		if r == s {
-			return true
-		}
-	}
-	return false
-}
+// SdkVersionSeparator is a string used to separate an sdk name and its version
+const SdkVersionSeparator = "@"
 
 type sdkProperties struct {
-	// The SDK that this module is a member of. nil if it is not a member of any SDK
-	ContainingSdk *SdkRef `blueprint:"mutated"`
-
 	// Name of the module that this sdk member is representing
 	Sdk_member_name *string
 }
@@ -161,7 +99,6 @@ type sdkProperties struct {
 // interface. InitSdkAwareModule should be called to initialize this struct.
 type SdkBase struct {
 	properties sdkProperties
-	module     SdkAware
 }
 
 func (s *SdkBase) sdkBase() *SdkBase {
@@ -172,35 +109,12 @@ func (s *SdkBase) SdkMemberComponentName(baseName string, componentNameCreator f
 	if s.MemberName() == "" {
 		return componentNameCreator(baseName)
 	} else {
-		index := strings.LastIndex(baseName, "@")
+		index := strings.LastIndex(baseName, SdkVersionSeparator)
 		unversionedName := baseName[:index]
 		unversionedComponentName := componentNameCreator(unversionedName)
 		versionSuffix := baseName[index:]
 		return unversionedComponentName + versionSuffix
 	}
-}
-
-// MakeMemberOf sets this module to be a member of a specific SDK
-func (s *SdkBase) MakeMemberOf(sdk SdkRef) {
-	s.properties.ContainingSdk = &sdk
-}
-
-// IsInAnySdk returns true if this module is a member of any SDK
-func (s *SdkBase) IsInAnySdk() bool {
-	return s.properties.ContainingSdk != nil
-}
-
-// IsVersioned returns true if this module is versioned.
-func (s *SdkBase) IsVersioned() bool {
-	return strings.Contains(s.module.Name(), "@")
-}
-
-// ContainingSdk returns the SDK that this module is a member of
-func (s *SdkBase) ContainingSdk() SdkRef {
-	if s.properties.ContainingSdk != nil {
-		return *s.properties.ContainingSdk
-	}
-	return SdkRef{Name: "", Version: ""}
 }
 
 // MemberName returns the name of the module that this SDK member is overriding
@@ -212,14 +126,14 @@ func (s *SdkBase) MemberName() string {
 // SdkBase.
 func InitSdkAwareModule(m SdkAware) {
 	base := m.sdkBase()
-	base.module = m
 	m.AddProperties(&base.properties)
 }
 
 // IsModuleInVersionedSdk returns true if the module is an versioned sdk.
 func IsModuleInVersionedSdk(module Module) bool {
 	if s, ok := module.(SdkAware); ok {
-		if !s.ContainingSdk().Unversioned() {
+		memberName := s.MemberName()
+		if memberName != "" {
 			return true
 		}
 	}

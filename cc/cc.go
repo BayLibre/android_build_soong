@@ -323,7 +323,7 @@ type BaseProperties struct {
 	RecoveryVariantNeeded      bool `blueprint:"mutated"`
 
 	// A list of variations for the "image" mutator of the form
-	//<image name> '.' <version char>, for example, 'vendor.S'
+	// <image name> '.' <version char>, for example, 'vendor.S'
 	ExtraVersionedImageVariations []string `blueprint:"mutated"`
 
 	// Allows this module to use non-APEX version of libraries. Useful
@@ -793,7 +793,7 @@ func IsTestPerSrcDepTag(depTag blueprint.DependencyTag) bool {
 // their own bazel handler if they support being handled by Bazel.
 type BazelHandler interface {
 	// QueueBazelCall invokes request-queueing functions on the BazelContext
-	//so that these requests are handled when Bazel's cquery is invoked.
+	// so that these requests are handled when Bazel's cquery is invoked.
 	QueueBazelCall(ctx android.BaseModuleContext, label string)
 
 	// ProcessBazelQueryResponse uses information retrieved from Bazel to set properties
@@ -3471,8 +3471,8 @@ func GetMakeLinkType(actx android.ModuleContext, c LinkableInterface) string {
 	} else if c.Target().Os == android.Android && c.SdkVersion() != "" {
 		return "native:ndk:none:none"
 		// TODO(b/114741097): use the correct ndk stl once build errors have been fixed
-		//family, link := getNdkStlFamilyAndLinkType(c)
-		//return fmt.Sprintf("native:ndk:%s:%s", family, link)
+		// family, link := getNdkStlFamilyAndLinkType(c)
+		// return fmt.Sprintf("native:ndk:%s:%s", family, link)
 	} else if actx.DeviceConfig().VndkUseCoreVariant() && !c.MustUseVendorVariant() {
 		return "native:platform_vndk"
 	} else {
@@ -3486,7 +3486,7 @@ func (c *Module) IsInstallableToApex() bool {
 	if lib := c.library; lib != nil {
 		// Stub libs and prebuilt libs in a versioned SDK are not
 		// installable to APEX even though they are shared libs.
-		return lib.shared() && !lib.buildStubs() && c.ContainingSdk().Unversioned()
+		return lib.shared() && !lib.buildStubs() && !android.IsModuleInVersionedSdk(c)
 	} else if _, ok := c.linker.(testPerSrc); ok {
 		return true
 	}
