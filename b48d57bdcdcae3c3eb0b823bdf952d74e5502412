@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97532373_7d8cce08",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-11-23T16:29:25Z",
+      "side": 1,
+      "message": "This one seems redundant with the last check (unless `len(m)\u003d\u003d0` is valid.)",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 254,
+        "endChar": 15
+      },
+      "revId": "b48d57bdcdcae3c3eb0b823bdf952d74e5502412",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
