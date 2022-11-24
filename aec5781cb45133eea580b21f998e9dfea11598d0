@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d23592b5_9662520c",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-11-24T02:02:49Z",
+      "side": 1,
+      "message": "Soong intentionally does not have warnings, use the ctx.ModuleErrorf functions instead if you want to print anything to the user (it will fail the build, so you\u0027ll also need to fix any the existing users -- but that should be happening anyway, so as not to spam the build logs of every user).",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 12
+      },
+      "revId": "aec5781cb45133eea580b21f998e9dfea11598d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
