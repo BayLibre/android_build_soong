@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8fcc87c_dcc31dd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978190
+      },
+      "writtenOn": "2022-11-25T23:08:23Z",
+      "side": 1,
+      "message": "solicito código para renisiar de fábrica mi movil",
+      "revId": "9d34f358158becf922486eef274ffbf7e3fef9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
