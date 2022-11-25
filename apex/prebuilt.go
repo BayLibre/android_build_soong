@@ -838,7 +838,8 @@ func (p *prebuiltApexExtractorModule) GenerateAndroidBuildActions(ctx android.Mo
 			Inputs:      android.Paths{apexSet},
 			Output:      p.extractedApex,
 			Args: map[string]string{
-				"abis":              strings.Join(java.SupportedAbis(ctx), ","),
+				// Filter out NativeBridge archs (b/260115309)
+				"abis":              strings.Join(java.SupportedAbis(ctx, false), ","),
 				"allow-prereleased": strconv.FormatBool(proptools.Bool(p.properties.Prerelease)),
 				"sdk-version":       ctx.Config().PlatformSdkVersion().String(),
 			},
