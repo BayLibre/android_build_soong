@@ -22,6 +22,30 @@
       },
       "revId": "2fbc355f47e3576e3389051b21e1df2a7b868577",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc63259_a5f71782",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-11-28T17:04:30Z",
+      "side": 1,
+      "message": "I was also looking for some other way but couldn\u0027t find any. Location provider is defined [here](https://cs.android.com/android/platform/superproject/+/master:frameworks/base/location/lib/Android.bp;l\u003d27;drc\u003dfe09091214c715856ecae3c3daf9836238ee3cbe). I don\u0027t see anything special in it that can differentiate it from other SDK libraries.\n\nUlya, do you know any other way?",
+      "parentUuid": "9196500a_58ef4d3b",
+      "range": {
+        "startLine": 274,
+        "startChar": 39,
+        "endLine": 274,
+        "endChar": 70
+      },
+      "revId": "2fbc355f47e3576e3389051b21e1df2a7b868577",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
