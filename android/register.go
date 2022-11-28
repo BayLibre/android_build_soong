@@ -187,6 +187,11 @@ func (ctx *Context) RegisterForApiBazelConversion() {
 		t.register(ctx)
 	}
 
+	// Required for SingletonModule types, even though we are not using them.
+	for _, t := range singletons {
+		t.register(ctx)
+	}
+
 	RegisterMutatorsForApiBazelConversion(ctx, bp2buildPreArchMutators)
 }
 
