@@ -16,6 +16,24 @@
       "message": "Can you add a test case that uses arch-specific features?",
       "revId": "6a81d8bcbaee94685035a7d29d2e8cf31b88f760",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93900d69_f431936f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-11-28T19:33:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06c2efec_3bace534",
+      "revId": "6a81d8bcbaee94685035a7d29d2e8cf31b88f760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
