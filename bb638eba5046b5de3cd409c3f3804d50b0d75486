@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d17ce0e_1c79f139",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-28T12:52:05Z",
+      "side": 1,
+      "message": "Artur, while testing some other changes to sdk snapshots in tm-mainline-prod I found that the missing `min_sdk_version` was causing problems and would cause us problems when we tested prebuilt drop later on so I fixed it now.",
+      "revId": "bb638eba5046b5de3cd409c3f3804d50b0d75486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
