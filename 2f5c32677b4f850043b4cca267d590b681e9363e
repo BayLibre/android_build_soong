@@ -26,6 +26,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1961b559_545ddde5",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-28T18:30:11Z",
+      "side": 1,
+      "message": "I think I do not understand this. As an example, in `TestApiLibraryWithNdkVariant` unit test\n\n```\ncc_api_library {\n  name: \"libbar\",\n  variants: [\n     \"ndk.29\",\n     \"ndk.30\",\n     \"ndk.current\",\n  ]\n}     \n```\nWill all of the following variants all have sdk_version \u003d 29?\n1. ndk.29\n2. ndk.30\n3. ndk.current\n\n\nAdditionaly, if this imported library has an llndk variant as well, does it mean that the llndk variant will also have an sdk_version?\n```\ncc_api_library {\n  name: \"libbar\",\n  variants: [\n     \"llndk\",\n     \"ndk.29\",\n     \"ndk.30\",\n     \"ndk.current\",\n  ]\n}     \n```",
+      "range": {
+        "startLine": 1028,
+        "startChar": 1,
+        "endLine": 1033,
+        "endChar": 2
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ff04bf_2c194d97",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2557,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-28T18:30:11Z",
+      "side": 1,
+      "message": "I think this should be one or the other. Otherwise, we will add the same ndk library _twice_, one from the inner tree and one provided by the build orchestrator/lightweight tree",
+      "range": {
+        "startLine": 2549,
+        "startChar": 0,
+        "endLine": 2557,
+        "endChar": 0
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "833becbf_8bec1c82",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -95,6 +141,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5d5119a_c815b053",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-28T18:30:11Z",
+      "side": 1,
+      "message": "Is this a string list of soong header modules or a string list of include directories?",
+      "range": {
+        "startLine": 209,
+        "startChar": 33,
+        "endLine": 209,
+        "endChar": 47
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b450eb18_8893dea7",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-28T18:30:11Z",
+      "side": 1,
+      "message": "nit: Is it possible to get this information without this string processing? (It seems a little brittle)",
+      "range": {
+        "startLine": 313,
+        "startChar": 37,
+        "endLine": 313,
+        "endChar": 48
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57337712_66a0bc1a",
         "filename": "cc/library_stub.go",
         "patchSetId": 1
@@ -141,6 +233,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab2c21fe_497d25e7",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-28T18:30:11Z",
+      "side": 1,
+      "message": "nit: Can you add another cc_binary that sets sdk_version \u003d \"30\", and verify that it gets the correct ndk variant?",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 347,
+        "endChar": 3
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d488d0c_1c06794f",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-28T18:30:11Z",
+      "side": 1,
+      "message": "nit: Can you add an LLNDK variant here? This will help verify that `binfoo` is linking against the ndk variant and not llndk variant",
+      "range": {
+        "startLine": 353,
+        "startChar": 3,
+        "endLine": 353,
+        "endChar": 11
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "437b57c3_fd70da67",
         "filename": "cc/library_stub_test.go",
         "patchSetId": 1
@@ -164,6 +302,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a5ef0dc_9462fad7",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-28T18:30:11Z",
+      "side": 1,
+      "message": "Can we please call this the name of the API surface instead, i.e. publicapi? (also the same for llndk variant)",
+      "range": {
+        "startLine": 362,
+        "startChar": 13,
+        "endLine": 362,
+        "endChar": 16
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8955d333_0a377375",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-28T18:30:11Z",
+      "side": 1,
+      "message": "nit: By convention, the package import order is\n1. standard packages\n2. blueprint packages\n3. android packages\n\n`strings` should go on top followed by `blueprint/proptools`",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28a8cdf6_7399afe2",
         "filename": "cc/sdk.go",
         "patchSetId": 1
@@ -180,6 +364,29 @@
         "startChar": 2,
         "endLine": 37,
         "endChar": 20
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20b82a75_10aae123",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-28T18:30:11Z",
+      "side": 1,
+      "message": "I think this check is circular, can an ndk library (that forms the SDK) use the SDK",
+      "range": {
+        "startLine": 67,
+        "startChar": 34,
+        "endLine": 67,
+        "endChar": 53
       },
       "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
