@@ -88,6 +88,24 @@
       "parentUuid": "b1ef7ec0_3e4d8a36",
       "revId": "45d3a04c0ce581cbd4362af883dc74febbdf61e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7f8e5c_35940652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-28T23:04:42Z",
+      "side": 1,
+      "message": "I rebased the CL to HEAD with Patchset 2 and kicked off presubmit again. It was most definitely a case of un-rebased HEAD. \n\naosp-master-bazel is just a config side branch of aosp-master anyway, so there\u0027s no need to CP anything to aosp-master-bazel.",
+      "parentUuid": "edcfe234_3ac000ba",
+      "revId": "45d3a04c0ce581cbd4362af883dc74febbdf61e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
