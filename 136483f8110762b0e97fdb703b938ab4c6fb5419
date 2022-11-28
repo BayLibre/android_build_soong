@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b7772ff_1ad17aad",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-28T05:46:56Z",
+      "side": 1,
+      "message": "Looks like `//prebuilts/runtime/...` is not in https://cs.android.com/android/platform/superproject/+/master:build/bazel/ci/target_lists.sh, could you please add it to that file so that the bp2build-incremental presubmit job covers it?\n\n\n`//tools/asuite/...` is already in the list so the next two lines are fine.",
+      "range": {
+        "startLine": 386,
+        "startChar": 2,
+        "endLine": 386,
+        "endChar": 46
+      },
+      "revId": "136483f8110762b0e97fdb703b938ab4c6fb5419",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
