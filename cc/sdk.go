@@ -17,6 +17,9 @@ package cc
 import (
 	"android/soong/android"
 	"android/soong/genrule"
+	"strings"
+
+	"github.com/google/blueprint/proptools"
 )
 
 // sdkMutator sets a creates a platform and an SDK variant for modules
@@ -31,6 +34,7 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 
 	switch m := ctx.Module().(type) {
 	case LinkableInterface:
+		cModule, isCModule := ctx.Module().(*Module)
 		if m.AlwaysSdk() {
 			if !m.UseSdk() && !m.SplitPerApiLevel() {
 				ctx.ModuleErrorf("UseSdk() must return true when AlwaysSdk is set, did the factory forget to set Sdk_version?")
@@ -58,11 +62,31 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 				modules[1].(*Module).Properties.PreventInstall = true
 			}
 			ctx.AliasVariation("")
+		} else if isCModule && cModule.isImportedApiLibrary() {
+			apiLibrary, _ := cModule.linker.(*apiLibraryDecorator)
+			if apiLibrary.hasNDKStubs() && cModule.canUseSdk() {
+				modules := ctx.CreateVariations("", "sdk")
+				modules[1].(*Module).Properties.IsSdkVariant = true
+				if ctx.Config().UnbundledBuildApps() {
+					// For an unbundled apps build, hide the platform variant from Make.
+					modules[0].(*Module).Properties.HideFromMake = true
+					modules[0].(*Module).Properties.PreventInstall = true
+				} else {
+					// For a platform build, mark the SDK variant so that it gets a ".sdk" suffix when
+					// exposed to Make.
+					modules[1].(*Module).Properties.SdkAndPlatformVariantVisibleToMake = true
+					modules[1].(*Module).Properties.PreventInstall = true
+				}
+			} else {
+				cModule.Properties.Sdk_version = nil
+				ctx.CreateVariations("")
+				ctx.AliasVariation("")
+			}
 		} else {
-			if m, ok := ctx.Module().(*Module); ok {
+			if isCModule {
 				// Clear the sdk_version property for modules that don't have an SDK variant so
 				// later code doesn't get confused by it.
-				m.Properties.Sdk_version = nil
+				cModule.Properties.Sdk_version = nil
 			}
 			ctx.CreateVariations("")
 			ctx.AliasVariation("")
@@ -79,6 +103,11 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 	case *snapshotModule:
 		ctx.CreateVariations("")
 	case *CcApiVariant:
-		ctx.CreateVariations("")
+		ccApiVariant, _ := ctx.Module().(*CcApiVariant)
+		if strings.HasPrefix(proptools.String(ccApiVariant.properties.Variant), "ndk") {
+			ctx.CreateVariations("sdk")
+		} else {
+			ctx.CreateVariations("")
+		}
 	}
 }
