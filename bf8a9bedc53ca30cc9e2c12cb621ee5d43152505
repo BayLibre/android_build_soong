@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d96eded6_5c803c19",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-28T21:12:25Z",
+      "side": 1,
+      "message": "That\u0027s the idea. Happy to change the name.",
+      "parentUuid": "0d4bc56c_1c52a3e2",
+      "revId": "bf8a9bedc53ca30cc9e2c12cb621ee5d43152505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41de2f06_ac9cd94b",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b414dfba_703da69b",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-28T21:12:25Z",
+      "side": 1,
+      "message": "I edited this and verified with printfs that it\u0027s being set. Is the approach still unclear?",
+      "parentUuid": "41de2f06_ac9cd94b",
+      "revId": "bf8a9bedc53ca30cc9e2c12cb621ee5d43152505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5926a6b0_1a28da44",
         "filename": "ui/metrics/metrics.go",
         "patchSetId": 3
@@ -48,6 +84,24 @@
       "writtenOn": "2022-11-28T20:09:57Z",
       "side": 1,
       "message": "It\u0027s unclear how this is different from SetBuildCommand (the documentation is the same, too!)",
+      "revId": "bf8a9bedc53ca30cc9e2c12cb621ee5d43152505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a472374_5e9b0e1a",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-28T21:12:25Z",
+      "side": 1,
+      "message": "Ah, I missed the comment. \n\nWhat\u0027s the preferred way to overload methods? Something like SetBCommand_Str?",
+      "parentUuid": "5926a6b0_1a28da44",
       "revId": "bf8a9bedc53ca30cc9e2c12cb621ee5d43152505",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
