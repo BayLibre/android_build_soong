@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8cfd400_5afa5d5d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-28T12:47:28Z",
+      "side": 1,
+      "message": "Is it just a workaround to return any value for this function? If so, it would be better to leave a comment for this.",
+      "range": {
+        "startLine": 1031,
+        "startChar": 10,
+        "endLine": 1031,
+        "endChar": 39
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833becbf_8bec1c82",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2621,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-28T12:47:28Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be `cc_api_variant` modules?\nOr it would be better to leave a comment to skip checking this case.",
+      "range": {
+        "startLine": 2621,
+        "startChar": 2,
+        "endLine": 2621,
+        "endChar": 8
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1232b5e_2e02c0a1",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-28T12:47:28Z",
+      "side": 1,
+      "message": "`if inList(targetVariant, apiLibrary.properties.Variants) {`",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 30
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7806a6_a601615b",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-28T12:47:28Z",
+      "side": 1,
+      "message": "This also may replaced with `inList`",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 19
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57337712_66a0bc1a",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-28T12:47:28Z",
+      "side": 1,
+      "message": "Is this for `variants: [\"ndk.current\"]`?",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 2
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dad82c5_cf6da7a2",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-28T12:47:28Z",
+      "side": 1,
+      "message": "`String`",
+      "range": {
+        "startLine": 458,
+        "startChar": 8,
+        "endLine": 458,
+        "endChar": 24
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "437b57c3_fd70da67",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-28T12:47:28Z",
+      "side": 1,
+      "message": "Can\u0027t we combine this with LLNDK api_library with `vendor_available: true`?",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 358,
+        "endChar": 3
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a8cdf6_7399afe2",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-28T12:47:28Z",
+      "side": 1,
+      "message": "ccModule, isCcModule",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d31a6e_1224c6f5",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-28T12:47:28Z",
+      "side": 1,
+      "message": "In cc, `String` is already defined as `proptools.String`. You may simply use `String`.",
+      "range": {
+        "startLine": 107,
+        "startChar": 23,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
