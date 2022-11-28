@@ -16,6 +16,24 @@
       "message": "These were added in aosp/1995730. It seems we can\u0027t just remove them, @delmerico@google.com, would we need to first cherry-pick aosp/2298317 to aosp-master-bazel?",
       "revId": "45d3a04c0ce581cbd4362af883dc74febbdf61e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a890ec_8bd3add3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-11-28T15:52:01Z",
+      "side": 1,
+      "message": "Why do you say we can\u0027t just remove them? Since these two CLs are both in AOSP master, I  would expect that this CL should just work?",
+      "parentUuid": "9ea6593c_2126ce42",
+      "revId": "45d3a04c0ce581cbd4362af883dc74febbdf61e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
