@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b4313a_33308ce1",
+        "filename": "java/app_set.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-28T01:53:44Z",
+      "side": 1,
+      "message": "Would it be better to name this as excludeNativeBridgeAbis because default value for a bool is false?",
+      "range": {
+        "startLine": 101,
+        "startChar": 46,
+        "endLine": 101,
+        "endChar": 69
+      },
+      "revId": "3d674caf567c89a5d12b43a87539f0bdd655b11b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
