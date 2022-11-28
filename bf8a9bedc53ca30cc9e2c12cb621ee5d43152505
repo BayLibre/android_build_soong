@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d4bc56c_1c52a3e2",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-28T20:09:57Z",
+      "side": 1,
+      "message": "Is the idea that `--b-args` will only contain the arguments to `b`, if and only if `b` is used?\n\nHow about we just have \"--build-command\" instead of --b-args? That way the logic to prepend `b` to the build command can exist in the `b` script instead of the metrics uploader?\n\nAlso, this future-proofs a bit in case we introduce other ways of invoking the build system. (Maybe we want to later disambiguate `m` from invoking soong_ui directly!)",
+      "revId": "bf8a9bedc53ca30cc9e2c12cb621ee5d43152505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41de2f06_ac9cd94b",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-28T20:09:57Z",
+      "side": 1,
+      "message": "This is a bit of an implementation detail that I don\u0027t think is covered by your design doc -- how exactly will this environment variable get consumed? (By what binary? The metrics uploader?)\n\nParticularly, why are we using an environment variable here instead of a flag? If we decide to go with an env var, the pattern is to make the variable ALL_CAPS",
+      "revId": "bf8a9bedc53ca30cc9e2c12cb621ee5d43152505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5926a6b0_1a28da44",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-28T20:09:57Z",
+      "side": 1,
+      "message": "It\u0027s unclear how this is different from SetBuildCommand (the documentation is the same, too!)",
+      "revId": "bf8a9bedc53ca30cc9e2c12cb621ee5d43152505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
