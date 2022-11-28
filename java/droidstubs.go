@@ -23,6 +23,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/java/config"
 	"android/soong/remoteexec"
 )
@@ -832,6 +833,61 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 		rule.Build("nullabilityWarningsCheck", "nullability warnings check")
 	}
+}
+
+var _ android.ApiProvider = (*Droidstubs)(nil)
+
+type bazelJavaApiContributionAttributes struct {
+	Api         bazel.LabelAttribute
+	Api_surface *string
+}
+
+func (d *Droidstubs) ConvertWithApiBp2build(ctx android.TopDownMutatorContext) {
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "java_api_contribution",
+		Bzl_load_location: "//build/bazel/rules/apis:java_api_contribution.bzl",
+	}
+	apiFile := d.properties.Check_api.Current.Api_file
+	// Do not generate a target if check_api is not set
+	if apiFile == nil {
+		return
+	}
+	attrs := &bazelJavaApiContributionAttributes{
+		Api: *bazel.MakeLabelAttribute(
+			android.BazelLabelForModuleSrcSingle(ctx, proptools.String(apiFile)).Label,
+		),
+		Api_surface: proptools.StringPtr(BazelApiSurfaceName(d.Name())),
+	}
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
+		Name: android.ApiContributionTargetName(ctx.ModuleName()),
+	}, attrs)
+}
+
+// A map to populate the api surface of a droidstub from a substring appearing in its name
+// This map assumes that droidstubs (either checked-in or created by java_sdk_library)
+// use a strict naming convention
+var (
+	dStubsNameToSdkKind = map[string]android.SdkKind{
+		"public":        android.SdkPublic,
+		"system_server": android.SdkSystemServer, // this should appear before system
+		"system-server": android.SdkSystemServer, // this should appear before system
+		"system":        android.SdkSystem,
+		"module_lib":    android.SdkModule,
+		"module-lib":    android.SdkModule,
+		"test":          android.SdkTest,
+	}
+)
+
+// A helper function that returns the api surface of the corresponding java_api_contribution Bazel target
+// The api_surface is populated using the naming convention of the droidstubs module.
+func BazelApiSurfaceName(name string) string {
+	for substring, sdkKind := range dStubsNameToSdkKind {
+		if strings.Contains(name, substring) {
+			return sdkKind.String() + "api"
+		}
+	}
+	// Default is publicapi
+	return android.SdkPublic.String() + "api"
 }
 
 func StubsDefaultsFactory() android.Module {
