@@ -179,6 +179,9 @@ func createJavaDeviceForHostRules() []Rule {
 
 func createCcSdkVariantRules() []Rule {
 	sdkVersionOnlyAllowedList := []string{
+		// cts tests should build/link against APIs, not source code when possible to ensure they are
+		// testing against the device libraries, not libraries packaged with the test
+		"cts",
 		// derive_sdk_prefer32 has stem: "derive_sdk" which conflicts with the derive_sdk.
 		// This sometimes works because the APEX modules that contain derive_sdk and
 		// derive_sdk_prefer32 suppress the platform installation rules, but fails when
