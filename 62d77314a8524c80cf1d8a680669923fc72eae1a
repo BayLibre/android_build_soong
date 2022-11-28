@@ -98,6 +98,30 @@
       },
       "revId": "62d77314a8524c80cf1d8a680669923fc72eae1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38dc2f8c_1fa3b4d5",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-28T18:42:00Z",
+      "side": 1,
+      "message": "I do think it is important. It is quite helpful to debug bp2build/symlink forest planting, for example.",
+      "parentUuid": "ddc9003f_7082cbfb",
+      "range": {
+        "startLine": 174,
+        "startChar": 35,
+        "endLine": 174,
+        "endChar": 60
+      },
+      "revId": "62d77314a8524c80cf1d8a680669923fc72eae1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
