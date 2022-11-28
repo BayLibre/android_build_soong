@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "991ef3e5_b93c826e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-11-28T18:03:44Z",
+      "side": 1,
+      "message": "Please see the response to the other comment.",
+      "parentUuid": "9f74a585_f10861fa",
+      "revId": "62d77314a8524c80cf1d8a680669923fc72eae1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28078e50_ce902ffb",
         "filename": "ui/build/soong.go",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2022-11-28T09:03:36Z",
       "side": 1,
       "message": "How does one debug the other `soong_build` invocations then?",
+      "range": {
+        "startLine": 174,
+        "startChar": 35,
+        "endLine": 174,
+        "endChar": 60
+      },
+      "revId": "62d77314a8524c80cf1d8a680669923fc72eae1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc9003f_7082cbfb",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-11-28T18:03:44Z",
+      "side": 1,
+      "message": "One doesn\u0027t. If people think it\u0027s important, I can introduce separate environment variables for that.",
+      "parentUuid": "28078e50_ce902ffb",
       "range": {
         "startLine": 174,
         "startChar": 35,
