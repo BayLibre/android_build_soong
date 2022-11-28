@@ -33,6 +33,29 @@
       "message": "Presumably this is also used for the other invocation types, what about them now?",
       "revId": "62d77314a8524c80cf1d8a680669923fc72eae1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28078e50_ce902ffb",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-28T09:03:36Z",
+      "side": 1,
+      "message": "How does one debug the other `soong_build` invocations then?",
+      "range": {
+        "startLine": 174,
+        "startChar": 35,
+        "endLine": 174,
+        "endChar": 60
+      },
+      "revId": "62d77314a8524c80cf1d8a680669923fc72eae1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
