@@ -70,6 +70,24 @@
       "parentUuid": "d9360d4b_30a248dc",
       "revId": "45d3a04c0ce581cbd4362af883dc74febbdf61e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edcfe234_3ac000ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2022-11-28T16:20:36Z",
+      "side": 1,
+      "message": "Yeah, it could be, presubmits were started 2 hours after aosp/2298317 was merged, so maybe automerger didn\u0027t get to aosp-master-bazel by that time. Seems fine now. I\u0027ll just merge the change.",
+      "parentUuid": "b1ef7ec0_3e4d8a36",
+      "revId": "45d3a04c0ce581cbd4362af883dc74febbdf61e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
