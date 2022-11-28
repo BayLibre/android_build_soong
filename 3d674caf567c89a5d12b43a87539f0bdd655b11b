@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d8b0d50_5122b5bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1069898
+      },
+      "writtenOn": "2022-11-28T20:43:15Z",
+      "side": 1,
+      "message": "fyi, arm64 is supported for apps only within the official NDK API. Any internal system API is not supported and will likely not work.",
+      "revId": "3d674caf567c89a5d12b43a87539f0bdd655b11b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "316648d4_ea3ac70f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1069898
+      },
+      "writtenOn": "2022-11-28T20:43:15Z",
+      "side": 1,
+      "message": "IIUC this CL disables native-bridged archs for APEX at the build time, which sounds like the right move. But I\u0027m not sure if it guarantees that future APEX updates will not switch it back to native-bridge version.",
+      "revId": "3d674caf567c89a5d12b43a87539f0bdd655b11b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83b4313a_33308ce1",
         "filename": "java/app_set.go",
         "patchSetId": 2
