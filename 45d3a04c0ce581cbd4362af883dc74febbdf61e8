@@ -34,6 +34,24 @@
       "parentUuid": "9ea6593c_2126ce42",
       "revId": "45d3a04c0ce581cbd4362af883dc74febbdf61e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9360d4b_30a248dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2022-11-28T16:08:51Z",
+      "side": 1,
+      "message": "There was a failure in https://android-build.googleplex.com/builds/pending/P44679488/mixed_libc-incremental/latest/view/logs/build_error.log that looked like something else depended on Robolectric 4.4 being in allowedlists.go. Somehow this got resolved and further presubmits passed.",
+      "parentUuid": "f1a890ec_8bd3add3",
+      "revId": "45d3a04c0ce581cbd4362af883dc74febbdf61e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
