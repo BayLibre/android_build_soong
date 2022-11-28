@@ -52,6 +52,24 @@
       "parentUuid": "f1a890ec_8bd3add3",
       "revId": "45d3a04c0ce581cbd4362af883dc74febbdf61e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ef7ec0_3e4d8a36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-11-28T16:15:14Z",
+      "side": 1,
+      "message": "Hmm interesting. I wonder if aosp/2298317 had just not merged fully at the time that the first presubmit ran. I think this should be good to submit at this point.",
+      "parentUuid": "d9360d4b_30a248dc",
+      "revId": "45d3a04c0ce581cbd4362af883dc74febbdf61e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
