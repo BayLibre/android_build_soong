@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ae4a85_1fe2f6da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-11-29T23:02:33Z",
+      "side": 1,
+      "message": "Sorry I know this is still WIP, but your other cl points me to this one and I left a comment below. Thanks",
+      "revId": "3d2b0fe34bbc30735e808bcf2106152bb3c0c462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a72cee11_be909e0c",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-11-29T23:02:33Z",
+      "side": 1,
+      "message": "Could we make these filegroups? the reason is that we are converting the android build from using soong to bazel, and bazel is more strict on what can be referenced, so random directories reference will have to be converted to referencing filegroups, if you can make them filegroups in soong it will be a lot easier for us to convert to bazel.",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "3d2b0fe34bbc30735e808bcf2106152bb3c0c462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
