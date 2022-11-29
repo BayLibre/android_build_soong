@@ -63,7 +63,6 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_api_library", ApiLibraryFactory)
 	ctx.RegisterModuleType("java_api_contribution", ApiContributionFactory)
 
-	// This mutator registers dependencies on dex2oat for modules that should be
 	// dexpreopted. This is done late when the final variants have been
 	// established, to not get the dependencies split into the wrong variants and
 	// to support the checks in dexpreoptDisabled().
@@ -224,11 +223,27 @@ var (
 	}, "jar_name", "partition", "main_class")
 )
 
+type transitiveDep struct {
+	name string
+	jar  android.Path
+}
+
+type transitiveHeaderJarMap = map[android.Path]string
+
+type transitiveHeaderJars struct {
+	libs       transitiveHeaderJarMap
+	staticLibs transitiveHeaderJarMap
+}
+
 // JavaInfo contains information about a java module for use by modules that depend on it.
 type JavaInfo struct {
 	// HeaderJars is a list of jars that can be passed as the javac classpath in order to link
 	// against this module.  If empty, ImplementationJars should be used instead.
 	HeaderJars android.Paths
+
+	DexClasspath classpath
+
+	TransitiveHeaderJars transitiveHeaderJars
 
 	// ImplementationAndResourceJars is a list of jars that contain the implementations of classes
 	// in the module as well as any resources included in the module.
@@ -1790,8 +1805,9 @@ type Import struct {
 	properties ImportProperties
 
 	// output file containing classes.dex and resources
-	dexJarFile        OptionalDexJarPath
-	dexJarInstallFile android.Path
+	dexJarFile           OptionalDexJarPath
+	dexJarInstallFile    android.Path
+	transitiveHeaderJars transitiveHeaderJars
 
 	combinedClasspathFile android.Path
 	classLoaderContexts   dexpreopt.ClassLoaderContextMap
@@ -1888,6 +1904,52 @@ func (j *Import) commonBuildActions(ctx android.ModuleContext) {
 	}
 }
 
+func collectTransitiveHeaderJars(ctx android.ModuleContext) transitiveHeaderJars {
+	type dep struct {
+		name string
+		jar  android.Path
+	}
+	transitiveHeaderJars := transitiveHeaderJars{
+		libs:       transitiveHeaderJarMap{},
+		staticLibs: transitiveHeaderJarMap{},
+	}
+	ctx.VisitDirectDeps(func(module android.Module) {
+		dep := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
+		//		if ctx.ModuleName() != android.RemoveOptionalPrebuiltPrefix(module.Name()) {
+		//			for _, jar := range dep.DexClasspath {
+		//				transitiveHeaderJars.libs[jar] = ""
+		//			}
+		//		}
+		//		return
+		// don't add deps of the prebuilt version of the same library
+		if ctx.ModuleName() != android.RemoveOptionalPrebuiltPrefix(module.Name()) {
+			for jar, name := range dep.TransitiveHeaderJars.libs {
+				transitiveHeaderJars.libs[jar] = name
+			}
+			for jar, name := range dep.TransitiveHeaderJars.staticLibs {
+				transitiveHeaderJars.staticLibs[jar] = name
+			}
+			tag := ctx.OtherModuleDependencyTag(module)
+			if tag == libTag {
+				for _, jar := range dep.HeaderJars {
+					if strings.Contains(jar.String(), "kotlin-stdlib-jdk7") {
+						fmt.Println("KOTLINDEP", ctx.ModuleName())
+					}
+					if strings.HasPrefix(module.Name(), "kotlin-stdlib") {
+						continue
+					}
+					transitiveHeaderJars.libs[jar] = module.Name()
+				}
+			} else if tag == staticLibTag {
+				for _, jar := range dep.HeaderJars {
+					transitiveHeaderJars.staticLibs[jar] = module.Name()
+				}
+			}
+		}
+	})
+	return transitiveHeaderJars
+}
+
 func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.commonBuildActions(ctx)
 
@@ -1907,9 +1969,9 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	var flags javaBuilderFlags
 
+	j.transitiveHeaderJars = collectTransitiveHeaderJars(ctx)
 	ctx.VisitDirectDeps(func(module android.Module) {
 		tag := ctx.OtherModuleDependencyTag(module)
-
 		if ctx.OtherModuleHasProvider(module, JavaInfoProvider) {
 			dep := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
 			switch tag {
@@ -1999,6 +2061,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(j.combinedClasspathFile),
+		TransitiveHeaderJars:           j.transitiveHeaderJars,
 		ImplementationAndResourcesJars: android.PathsIfNonNil(j.combinedClasspathFile),
 		ImplementationJars:             android.PathsIfNonNil(j.combinedClasspathFile),
 		AidlIncludeDirs:                j.exportAidlIncludeDirs,
@@ -2039,6 +2102,10 @@ func (j *Import) HeaderJars() android.Paths {
 		return nil
 	}
 	return android.Paths{j.combinedClasspathFile}
+}
+
+func (j *Import) TransitiveHeaderJars() transitiveHeaderJars {
+	return j.transitiveHeaderJars
 }
 
 func (j *Import) ImplementationAndResourcesJars() android.Paths {
