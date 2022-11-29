@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f4917e1a_40cab627",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-11-29T20:07:50Z",
+      "side": 1,
+      "message": "Looks like this was because tzdata was not in the mixed builds prod allowlist at the time of my CL. (Not sure why it passed presubmits most recently though.)",
+      "parentUuid": "0011864b_2b0425ca",
+      "revId": "48c9bddbf62d56004b581f3bc715b20f25a565c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "34f10506_2e71a536",
         "filename": "android/test_config.go",
         "patchSetId": 1
