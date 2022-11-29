@@ -224,11 +224,20 @@ var (
 	}, "jar_name", "partition", "main_class")
 )
 
+type transitiveHeaderJarMap = map[android.Path]bool
+
+type transitiveHeaderJars struct {
+	libs       transitiveHeaderJarMap
+	staticLibs transitiveHeaderJarMap
+}
+
 // JavaInfo contains information about a java module for use by modules that depend on it.
 type JavaInfo struct {
 	// HeaderJars is a list of jars that can be passed as the javac classpath in order to link
 	// against this module.  If empty, ImplementationJars should be used instead.
 	HeaderJars android.Paths
+
+	TransitiveHeaderJars transitiveHeaderJars
 
 	// ImplementationAndResourceJars is a list of jars that contain the implementations of classes
 	// in the module as well as any resources included in the module.
@@ -1809,8 +1818,9 @@ type Import struct {
 	properties ImportProperties
 
 	// output file containing classes.dex and resources
-	dexJarFile        OptionalDexJarPath
-	dexJarInstallFile android.Path
+	dexJarFile           OptionalDexJarPath
+	dexJarInstallFile    android.Path
+	transitiveHeaderJars transitiveHeaderJars
 
 	combinedClasspathFile android.Path
 	classLoaderContexts   dexpreopt.ClassLoaderContextMap
@@ -1907,6 +1917,43 @@ func (j *Import) commonBuildActions(ctx android.ModuleContext) {
 	}
 }
 
+func collectTransitiveHeaderJars(ctx android.ModuleContext) transitiveHeaderJars {
+	type dep struct {
+		name string
+		jar  android.Path
+	}
+	transitiveHeaderJars := transitiveHeaderJars{
+		libs:       transitiveHeaderJarMap{},
+		staticLibs: transitiveHeaderJarMap{},
+	}
+	ctx.VisitDirectDeps(func(module android.Module) {
+		// don't add deps of the prebuilt version of the same library
+		if ctx.ModuleName() == android.RemoveOptionalPrebuiltPrefix(module.Name()) {
+			return
+		}
+
+		dep := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
+		for jar, _ := range dep.TransitiveHeaderJars.libs {
+			transitiveHeaderJars.libs[jar] = true
+		}
+		for jar, _ := range dep.TransitiveHeaderJars.staticLibs {
+			transitiveHeaderJars.staticLibs[jar] = true
+		}
+
+		tag := ctx.OtherModuleDependencyTag(module)
+		if _, isUsesLibDep := tag.(usesLibraryDependencyTag); tag == libTag || isUsesLibDep {
+			for _, jar := range dep.HeaderJars {
+				transitiveHeaderJars.libs[jar] = true
+			}
+		} else if tag == staticLibTag {
+			for _, jar := range dep.HeaderJars {
+				transitiveHeaderJars.staticLibs[jar] = true
+			}
+		}
+	})
+	return transitiveHeaderJars
+}
+
 func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.commonBuildActions(ctx)
 
@@ -1926,9 +1973,9 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	var flags javaBuilderFlags
 
+	j.transitiveHeaderJars = collectTransitiveHeaderJars(ctx)
 	ctx.VisitDirectDeps(func(module android.Module) {
 		tag := ctx.OtherModuleDependencyTag(module)
-
 		if ctx.OtherModuleHasProvider(module, JavaInfoProvider) {
 			dep := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
 			switch tag {
@@ -2018,6 +2065,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(j.combinedClasspathFile),
+		TransitiveHeaderJars:           j.transitiveHeaderJars,
 		ImplementationAndResourcesJars: android.PathsIfNonNil(j.combinedClasspathFile),
 		ImplementationJars:             android.PathsIfNonNil(j.combinedClasspathFile),
 		AidlIncludeDirs:                j.exportAidlIncludeDirs,
@@ -2058,6 +2106,10 @@ func (j *Import) HeaderJars() android.Paths {
 		return nil
 	}
 	return android.Paths{j.combinedClasspathFile}
+}
+
+func (j *Import) TransitiveHeaderJars() transitiveHeaderJars {
+	return j.transitiveHeaderJars
 }
 
 func (j *Import) ImplementationAndResourcesJars() android.Paths {

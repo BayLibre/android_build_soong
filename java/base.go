@@ -408,7 +408,8 @@ type Module struct {
 
 	// jar file containing header classes including static library dependencies, suitable for
 	// inserting into the bootclasspath/classpath of another compile
-	headerJarFile android.Path
+	headerJarFile        android.Path
+	transitiveHeaderJars transitiveHeaderJars
 
 	// jar file containing implementation classes including static library dependencies but no
 	// resources
@@ -1583,6 +1584,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(j.headerJarFile),
+		TransitiveHeaderJars:           j.TransitiveHeaderJars(),
 		ImplementationAndResourcesJars: android.PathsIfNonNil(j.implementationAndResourcesJar),
 		ImplementationJars:             android.PathsIfNonNil(j.implementationJarFile),
 		ResourceJars:                   android.PathsIfNonNil(j.resourceJar),
@@ -1724,6 +1726,10 @@ func (j *Module) HeaderJars() android.Paths {
 		return nil
 	}
 	return android.Paths{j.headerJarFile}
+}
+
+func (j *Module) TransitiveHeaderJars() transitiveHeaderJars {
+	return j.transitiveHeaderJars
 }
 
 func (j *Module) ImplementationJars() android.Paths {
@@ -1947,6 +1953,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 
 	sdkLinkType, _ := j.getSdkLinkType(ctx, ctx.ModuleName())
 
+	j.transitiveHeaderJars = collectTransitiveHeaderJars(ctx)
 	ctx.VisitDirectDeps(func(module android.Module) {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)

@@ -15,6 +15,7 @@
 package java
 
 import (
+	"sort"
 	"strconv"
 	"strings"
 
@@ -22,6 +23,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/java/config"
 	"android/soong/remoteexec"
 )
 
@@ -249,12 +251,39 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 	})
 
 	r8Flags = append(r8Flags, proguardRaiseDeps.FormJavaClassPath("-libraryjars"))
-	r8Flags = append(r8Flags, flags.bootClasspath.FormJavaClassPath("-libraryjars"))
-	r8Flags = append(r8Flags, flags.dexClasspath.FormJavaClassPath("-libraryjars"))
-
 	r8Deps = append(r8Deps, proguardRaiseDeps...)
+	r8Flags = append(r8Flags, flags.bootClasspath.FormJavaClassPath("-libraryjars"))
 	r8Deps = append(r8Deps, flags.bootClasspath...)
+	r8Flags = append(r8Flags, flags.dexClasspath.FormJavaClassPath("-libraryjars"))
 	r8Deps = append(r8Deps, flags.dexClasspath...)
+	r8Flags = append(r8Flags, flags.processorPath.FormJavaClassPath("-libraryjars"))
+	r8Deps = append(r8Deps, flags.processorPath...)
+
+	errorProneClasspath := classpath(android.PathsForSource(ctx, config.ErrorProneClasspath))
+	r8Flags = append(r8Flags, errorProneClasspath.FormJavaClassPath("-libraryjars"))
+	r8Deps = append(r8Deps, errorProneClasspath...)
+
+	type hasTransitiveHeaderJars interface {
+		TransitiveHeaderJars() transitiveHeaderJars
+	}
+	if m, ok := ctx.Module().(hasTransitiveHeaderJars); ok {
+		transitiveHeaderJars := android.Paths{}
+		for jar, _ := range m.TransitiveHeaderJars().libs {
+			if _, ok := m.TransitiveHeaderJars().staticLibs[jar]; ok {
+				// don't include a lib if it is already packaged in the current JAR as a static lib
+				continue
+			}
+			transitiveHeaderJars = append(transitiveHeaderJars, jar)
+		}
+		// flag arguments must be deterministic, and since r8 is just looking for existence
+		// of library classes for optimization, ordering doesn't matter
+		sort.Slice(transitiveHeaderJars, func(i, j int) bool {
+			return transitiveHeaderJars[i].String() < transitiveHeaderJars[j].String()
+		})
+		transitiveClasspath := classpath(transitiveHeaderJars)
+		r8Flags = append(r8Flags, transitiveClasspath.FormJavaClassPath("-libraryjars"))
+		r8Deps = append(r8Deps, transitiveClasspath...)
+	}
 
 	flagFiles := android.Paths{
 		android.PathForSource(ctx, "build/make/core/proguard.flags"),
