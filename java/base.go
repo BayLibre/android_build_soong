@@ -400,6 +400,8 @@ type Module struct {
 	// Functionality common to Module and Import.
 	embeddableInModuleAndImport
 
+	providesTransitiveHeaderJars
+
 	properties       CommonProperties
 	protoProperties  android.ProtoProperties
 	deviceProperties DeviceProperties
@@ -1726,6 +1728,59 @@ func (j *Module) HeaderJars() android.Paths {
 	return android.Paths{j.headerJarFile}
 }
 
+type hasTransitiveHeaderJars interface {
+	TransitiveLibsHeaderJars() *android.DepSet
+	TransitiveStaticLibsHeaderJars() *android.DepSet
+}
+
+type providesTransitiveHeaderJars struct {
+	// set of header jars for all transitive libs deps
+	transitiveLibsHeaderJars *android.DepSet
+	// set of header jars for all transitive static libs deps
+	transitiveStaticLibsHeaderJars *android.DepSet
+}
+
+func (j *providesTransitiveHeaderJars) TransitiveLibsHeaderJars() *android.DepSet {
+	return j.transitiveLibsHeaderJars
+}
+
+func (j *providesTransitiveHeaderJars) TransitiveStaticLibsHeaderJars() *android.DepSet {
+	return j.transitiveStaticLibsHeaderJars
+}
+
+func (j *providesTransitiveHeaderJars) collectTransitiveHeaderJars(ctx android.ModuleContext) {
+	directLibs := android.Paths{}
+	directStaticLibs := android.Paths{}
+	transitiveLibs := []*android.DepSet{}
+	transitiveStaticLibs := []*android.DepSet{}
+	ctx.VisitDirectDeps(func(module android.Module) {
+		// don't add deps of the prebuilt version of the same library
+		if ctx.ModuleName() == android.RemoveOptionalPrebuiltPrefix(module.Name()) {
+			return
+		}
+
+		if dep, ok := module.(hasTransitiveHeaderJars); ok {
+			if dep.TransitiveLibsHeaderJars() != nil {
+				transitiveLibs = append(transitiveLibs, dep.TransitiveLibsHeaderJars())
+			}
+			if dep.TransitiveStaticLibsHeaderJars() != nil {
+				transitiveStaticLibs = append(transitiveStaticLibs, dep.TransitiveStaticLibsHeaderJars())
+			}
+		}
+
+		dep := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
+		tag := ctx.OtherModuleDependencyTag(module)
+		_, isUsesLibDep := tag.(usesLibraryDependencyTag)
+		if tag == libTag || tag == r8LibraryJarTag || isUsesLibDep {
+			directLibs = append(directLibs, dep.HeaderJars...)
+		} else if tag == staticLibTag {
+			directStaticLibs = append(directStaticLibs, dep.HeaderJars...)
+		}
+	})
+	j.transitiveLibsHeaderJars = android.NewDepSet(android.POSTORDER, directLibs, transitiveLibs)
+	j.transitiveStaticLibsHeaderJars = android.NewDepSet(android.POSTORDER, directStaticLibs, transitiveStaticLibs)
+}
+
 func (j *Module) ImplementationJars() android.Paths {
 	if j.implementationJarFile == nil {
 		return nil
@@ -1947,6 +2002,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 
 	sdkLinkType, _ := j.getSdkLinkType(ctx, ctx.ModuleName())
 
+	j.collectTransitiveHeaderJars(ctx)
 	ctx.VisitDirectDeps(func(module android.Module) {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)

@@ -22,6 +22,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/java/config"
 	"android/soong/remoteexec"
 )
 
@@ -249,12 +250,35 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 	})
 
 	r8Flags = append(r8Flags, proguardRaiseDeps.FormJavaClassPath("-libraryjars"))
-	r8Flags = append(r8Flags, flags.bootClasspath.FormJavaClassPath("-libraryjars"))
-	r8Flags = append(r8Flags, flags.dexClasspath.FormJavaClassPath("-libraryjars"))
-
 	r8Deps = append(r8Deps, proguardRaiseDeps...)
+	r8Flags = append(r8Flags, flags.bootClasspath.FormJavaClassPath("-libraryjars"))
 	r8Deps = append(r8Deps, flags.bootClasspath...)
+	r8Flags = append(r8Flags, flags.dexClasspath.FormJavaClassPath("-libraryjars"))
 	r8Deps = append(r8Deps, flags.dexClasspath...)
+	r8Flags = append(r8Flags, flags.processorPath.FormJavaClassPath("-libraryjars"))
+	r8Deps = append(r8Deps, flags.processorPath...)
+
+	errorProneClasspath := classpath(android.PathsForSource(ctx, config.ErrorProneClasspath))
+	r8Flags = append(r8Flags, errorProneClasspath.FormJavaClassPath("-libraryjars"))
+	r8Deps = append(r8Deps, errorProneClasspath...)
+
+	if m, ok := ctx.Module().(hasTransitiveHeaderJars); ok {
+		transitiveStaticLibsLookupMap := map[android.Path]bool{}
+		for _, jar := range m.TransitiveStaticLibsHeaderJars().ToList() {
+			transitiveStaticLibsLookupMap[jar] = true
+		}
+		transitiveHeaderJars := android.Paths{}
+		for _, jar := range m.TransitiveLibsHeaderJars().ToList() {
+			if _, ok := transitiveStaticLibsLookupMap[jar]; ok {
+				// don't include a lib if it is already packaged in the current JAR as a static lib
+				continue
+			}
+			transitiveHeaderJars = append(transitiveHeaderJars, jar)
+		}
+		transitiveClasspath := classpath(transitiveHeaderJars)
+		r8Flags = append(r8Flags, transitiveClasspath.FormJavaClassPath("-libraryjars"))
+		r8Deps = append(r8Deps, transitiveClasspath...)
+	}
 
 	flagFiles := android.Paths{
 		android.PathForSource(ctx, "build/make/core/proguard.flags"),
