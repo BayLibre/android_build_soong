@@ -63,6 +63,30 @@
       },
       "revId": "2de8c848aec07341a8daf9e877515dee61c2aa09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ab46ac_55184ca5",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2022-11-29T03:37:18Z",
+      "side": 1,
+      "message": "Currently, we focus the `test-suite` of `module-info` in out/target/product/vsoc_x86_64/module-info.json.\nAnd I also checked the robolectric-tests.zip and there is no difference between them.",
+      "parentUuid": "8beefdcc_167a4b3d",
+      "range": {
+        "startLine": 299,
+        "startChar": 3,
+        "endLine": 299,
+        "endChar": 71
+      },
+      "revId": "2de8c848aec07341a8daf9e877515dee61c2aa09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
