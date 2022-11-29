@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03bff80_eff0c27a",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1825,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-11-29T14:16:25Z",
+      "side": 1,
+      "message": "for clarity, can you comment /* isGzip */ or replace the boolean with the extension?",
+      "range": {
+        "startLine": 1825,
+        "startChar": 74,
+        "endLine": 1825,
+        "endChar": 79
+      },
+      "revId": "22996971f31598f952ca6c295701be21a10cdecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
