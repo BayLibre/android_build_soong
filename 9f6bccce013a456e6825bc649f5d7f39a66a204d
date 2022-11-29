@@ -22,6 +22,30 @@
       },
       "revId": "9f6bccce013a456e6825bc649f5d7f39a66a204d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7549eb51_78107d20",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-11-29T15:24:43Z",
+      "side": 1,
+      "message": "I prefer not using the else if since these flags aren\u0027t necessarily mutually exclusive. If the logic changed in the first branch condition, I wouldn\u0027t want it to affect the other if statements.",
+      "parentUuid": "d276f15f_a0479e5f",
+      "range": {
+        "startLine": 544,
+        "startChar": 1,
+        "endLine": 544,
+        "endChar": 3
+      },
+      "revId": "9f6bccce013a456e6825bc649f5d7f39a66a204d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
