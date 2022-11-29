@@ -94,6 +94,53 @@
       },
       "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08207480_b4ce3538",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-11-29T19:37:06Z",
+      "side": 1,
+      "message": "I see thanks. I suggested a commit message to explain that.",
+      "parentUuid": "5bfded97_1d7776ec",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc2f6dc_6b1b39ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-11-29T19:37:06Z",
+      "side": 1,
+      "message": "```\nSet the test suite for Robolectric tests\n\nMark Robolectric tests as belonging to the `robolectric-tests` suite since tools expect test modules to belong to at least one suite. Note that tests not marked with a suite implicitly get annotated with the `null-suite`.\n\nThis is also required for Atest Bazel mode which only includes files of test modules with a non-empty suite attribute in the Tradefed test directory.\n\nSee aosp/2181295 for more details.\n```\n\n@yikezh@google.com Would it be more robust to add the files of the `test` target regardless of whether it has a suite?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
