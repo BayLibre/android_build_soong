@@ -87,6 +87,30 @@
       },
       "revId": "c7d3fb72d6e17675fb90de163f07e961a78e8423",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "554b5b68_4866db46",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-29T07:53:02Z",
+      "side": 1,
+      "message": "I was about to recommend a similar approach but I see that you were faster 😊\n\nFWIW, parsing SOONG_DELVE_STEPS into a `[]string` or `map[string]bool` (poor man\u0027s set) in `primaryBuilderInvocation()` or `bootstrapBlueprint()` would let you avoid adding a place where all the possible invocations are listed.\n\nThis may be useful if we ever decide to add a symlink forest invocation?",
+      "parentUuid": "5b065a5e_48c0c704",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 9
+      },
+      "revId": "c7d3fb72d6e17675fb90de163f07e961a78e8423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
