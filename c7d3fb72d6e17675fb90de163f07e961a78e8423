@@ -63,6 +63,30 @@
       },
       "revId": "c7d3fb72d6e17675fb90de163f07e961a78e8423",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b065a5e_48c0c704",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-29T05:34:21Z",
+      "side": 1,
+      "message": "Well, I don\u0027t see a good reason for it to be a global variable. Keep it contained protects it from accidental writes from elsewhere during program execution.",
+      "parentUuid": "35c8dc99_ea477d01",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 9
+      },
+      "revId": "c7d3fb72d6e17675fb90de163f07e961a78e8423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
