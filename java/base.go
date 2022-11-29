@@ -20,6 +20,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
@@ -409,7 +410,8 @@ type Module struct {
 
 	// jar file containing header classes including static library dependencies, suitable for
 	// inserting into the bootclasspath/classpath of another compile
-	headerJarFile android.Path
+	headerJarFile        android.Path
+	transitiveHeaderJars map[android.Path]bool
 
 	// jar file containing implementation classes including static library dependencies but no
 	// resources
@@ -494,6 +496,13 @@ type Module struct {
 	maxSdkVersion android.SdkSpec
 
 	sourceExtensions []string
+}
+
+func (j *Module) TransitiveHeaderJars() Depset {
+	return Depset{
+		Direct:     j.headerJarFile,
+		Transitive: j.transitiveHeaderJars,
+	}
 }
 
 func (j *Module) CheckStableSdkVersion(ctx android.BaseModuleContext) error {
@@ -1036,8 +1045,35 @@ func (j *Module) AddJSONData(d *map[string]interface{}) {
 func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.deviceProperties.Aidl.Export_include_dirs)
 
+	j.transitiveHeaderJars = map[android.Path]bool{}
+	ctx.VisitDirectDeps(func(module android.Module) {
+		tag := ctx.OtherModuleDependencyTag(module)
+		if tag != libTag {
+			return
+		}
+		if ctx.ModuleName() == android.RemoveOptionalPrebuiltPrefix(module.Name()) {
+			fmt.Println("SKIPPING", ctx.ModuleName(), module.Name(), jar)
+			return
+		}
+		depInfo := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
+		for jar := range depInfo.TransitiveHeaderJars.Transitive {
+			fmt.Println("DEP", ctx.ModuleName(), module.Name(), jar)
+			j.transitiveHeaderJars[jar] = true
+		}
+		if depInfo.TransitiveHeaderJars.Direct != nil {
+			j.transitiveHeaderJars[depInfo.TransitiveHeaderJars.Direct] = true
+			fmt.Println("DIRECT DEP", ctx.ModuleName(), module.Name(), depInfo.TransitiveHeaderJars.Direct)
+		}
+	})
+
 	deps := j.collectDeps(ctx)
 	flags := j.collectBuilderFlags(ctx, deps)
+
+	transitiveHeaderJars := make([]android.Path, 0, len(j.TransitiveHeaderJars().Transitive))
+	for k, _ := range j.TransitiveHeaderJars().Transitive {
+		transitiveHeaderJars = append(transitiveHeaderJars, k)
+	}
+	flags.classpath = append(flags.classpath, transitiveHeaderJars...)
 
 	if flags.javaVersion.usesJavaModules() {
 		j.properties.Srcs = append(j.properties.Srcs, j.properties.Openjdk9.Srcs...)
@@ -1584,6 +1620,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(j.headerJarFile),
+		TransitiveHeaderJars:           j.TransitiveHeaderJars(),
 		ImplementationAndResourcesJars: android.PathsIfNonNil(j.implementationAndResourcesJar),
 		ImplementationJars:             android.PathsIfNonNil(j.implementationJarFile),
 		ResourceJars:                   android.PathsIfNonNil(j.resourceJar),
@@ -1598,6 +1635,30 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource
 	j.outputFile = outputFile.WithoutRel()
+}
+
+type TransitiveDepsInfo struct {
+	transitiveDeps map[android.Path]bool
+}
+
+var TransitiveDepsProvider = blueprint.NewProvider(TransitiveDepsInfo{})
+
+func transitiveDepsMutator(ctx android.BottomUpMutatorContext) {
+	//	if j, ok := ctx.Module().(*Library); ok {
+	//		j.transitiveHeaderJars = map[android.Path]bool{}
+	//		if j.headerJarFile != nil {
+	//			j.transitiveHeaderJars[j.headerJarFile] = true
+	//		}
+	//		ctx.VisitDirectDeps(func(m android.Module) {
+	//			depInfo := ctx.OtherModuleProvider(m, TransitiveDepsProvider).(TransitiveDepsInfo)
+	//			for jar := range depInfo.transitiveDeps {
+	//				j.transitiveHeaderJars[jar] = true
+	//			}
+	//		})
+	//		ctx.SetProvider(TransitiveDepsProvider, TransitiveDepsInfo{
+	//			transitiveDeps: j.transitiveHeaderJars,
+	//		})
+	//	}
 }
 
 func (j *Module) useCompose() bool {
@@ -1972,6 +2033,10 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			}
 		} else if ctx.OtherModuleHasProvider(module, JavaInfoProvider) {
 			dep := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
+			transitiveHeaderJars := append(android.Paths{}, dep.HeaderJars...)
+			//for jar, _ := range dep.TransitiveHeaderJars {
+			//	transitiveHeaderJars = append(transitiveHeaderJars, jar)
+			//}
 			if sdkLinkType != javaPlatform &&
 				ctx.OtherModuleHasProvider(module, SyspropPublicStubInfoProvider) {
 				// dep is a sysprop implementation library, but this module is not linking against
@@ -1988,7 +2053,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 					ctx.ModuleErrorf("a java_plugin (%s) cannot be used as a libs dependency", otherName)
 				}
 				deps.classpath = append(deps.classpath, dep.HeaderJars...)
-				deps.dexClasspath = append(deps.dexClasspath, dep.HeaderJars...)
+				deps.dexClasspath = append(deps.dexClasspath, transitiveHeaderJars...)
 				deps.aidlIncludeDirs = append(deps.aidlIncludeDirs, dep.AidlIncludeDirs...)
 				addPlugins(&deps, dep.ExportedPlugins, dep.ExportedPluginClasses...)
 				deps.disableTurbine = deps.disableTurbine || dep.ExportedPluginDisableTurbine
@@ -1998,9 +2063,9 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				if _, ok := module.(*Plugin); ok {
 					ctx.ModuleErrorf("a java_plugin (%s) cannot be used as a static_libs dependency", otherName)
 				}
-				deps.classpath = append(deps.classpath, dep.HeaderJars...)
+				deps.classpath = append(deps.classpath, transitiveHeaderJars...)
 				deps.staticJars = append(deps.staticJars, dep.ImplementationJars...)
-				deps.staticHeaderJars = append(deps.staticHeaderJars, dep.HeaderJars...)
+				deps.staticHeaderJars = append(deps.staticHeaderJars, transitiveHeaderJars...)
 				deps.staticResourceJars = append(deps.staticResourceJars, dep.ResourceJars...)
 				deps.aidlIncludeDirs = append(deps.aidlIncludeDirs, dep.AidlIncludeDirs...)
 				addPlugins(&deps, dep.ExportedPlugins, dep.ExportedPluginClasses...)

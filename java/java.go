@@ -63,7 +63,6 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_api_library", ApiLibraryFactory)
 	ctx.RegisterModuleType("java_api_contribution", ApiContributionFactory)
 
-	// This mutator registers dependencies on dex2oat for modules that should be
 	// dexpreopted. This is done late when the final variants have been
 	// established, to not get the dependencies split into the wrong variants and
 	// to support the checks in dexpreoptDisabled().
@@ -71,6 +70,7 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 		ctx.BottomUp("dexpreopt_tool_deps", dexpreoptToolDepsMutator).Parallel()
 		// needs access to ApexInfoProvider which is available after variant creation
 		ctx.BottomUp("jacoco_deps", jacocoDepsMutator).Parallel()
+		ctx.BottomUp("transitive_deps", transitiveDepsMutator).Parallel()
 	})
 
 	ctx.RegisterSingletonType("logtags", LogtagsSingleton)
@@ -224,11 +224,18 @@ var (
 	}, "jar_name", "partition", "main_class")
 )
 
+type Depset struct {
+	Direct     android.Path
+	Transitive map[android.Path]bool
+}
+
 // JavaInfo contains information about a java module for use by modules that depend on it.
 type JavaInfo struct {
 	// HeaderJars is a list of jars that can be passed as the javac classpath in order to link
 	// against this module.  If empty, ImplementationJars should be used instead.
 	HeaderJars android.Paths
+
+	TransitiveHeaderJars Depset
 
 	// ImplementationAndResourceJars is a list of jars that contain the implementations of classes
 	// in the module as well as any resources included in the module.
@@ -1768,8 +1775,9 @@ type Import struct {
 	properties ImportProperties
 
 	// output file containing classes.dex and resources
-	dexJarFile        OptionalDexJarPath
-	dexJarInstallFile android.Path
+	dexJarFile           OptionalDexJarPath
+	dexJarInstallFile    android.Path
+	transitiveHeaderJars map[android.Path]bool
 
 	combinedClasspathFile android.Path
 	classLoaderContexts   dexpreopt.ClassLoaderContextMap
@@ -1800,6 +1808,13 @@ func (j *Import) MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
 		return android.SdkSpecFrom(ctx, *j.properties.Min_sdk_version)
 	}
 	return j.SdkVersion(ctx)
+}
+
+func (j *Import) TransitiveHeaderJars() Depset {
+	return Depset{
+		Direct:     j.combinedClasspathFile,
+		Transitive: j.transitiveHeaderJars,
+	}
 }
 
 func (j *Import) ReplaceMaxSdkVersionPlaceholder(ctx android.EarlyModuleContext) android.SdkSpec {
@@ -1885,7 +1900,22 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	var flags javaBuilderFlags
 
+	j.transitiveHeaderJars = map[android.Path]bool{}
 	ctx.VisitDirectDeps(func(module android.Module) {
+		if ctx.ModuleName() == android.RemoveOptionalPrebuiltPrefix(module.Name()) {
+			fmt.Println("SKIPPING", ctx.ModuleName(), module.Name(), jar)
+			return
+		}
+		depInfo := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
+		for jar := range depInfo.TransitiveHeaderJars.Transitive {
+			fmt.Println("IMPORT DEP", ctx.ModuleName(), module.Name(), jar)
+			j.transitiveHeaderJars[jar] = true
+		}
+		if depInfo.TransitiveHeaderJars.Direct != nil {
+			fmt.Println("DIRECT DEP", ctx.ModuleName(), module.Name(), depInfo.TransitiveHeaderJars.Direct)
+			j.transitiveHeaderJars[depInfo.TransitiveHeaderJars.Direct] = true
+		}
+
 		tag := ctx.OtherModuleDependencyTag(module)
 
 		if ctx.OtherModuleHasProvider(module, JavaInfoProvider) {
@@ -1977,6 +2007,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(j.combinedClasspathFile),
+		TransitiveHeaderJars:           j.TransitiveHeaderJars(),
 		ImplementationAndResourcesJars: android.PathsIfNonNil(j.combinedClasspathFile),
 		ImplementationJars:             android.PathsIfNonNil(j.combinedClasspathFile),
 		AidlIncludeDirs:                j.exportAidlIncludeDirs,

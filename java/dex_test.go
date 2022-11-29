@@ -45,11 +45,29 @@ func TestR8(t *testing.T) {
 
 		java_library {
 			name: "lib",
+			libs: ["transitive_lib"],
+			static_libs: ["transitive_static_lib"],
 			srcs: ["foo.java"],
 		}
 
 		java_library {
 			name: "static_lib",
+			srcs: ["foo.java"],
+		}
+
+		java_library {
+			name: "transitive_static_lib",
+			srcs: ["foo.java"],
+		}
+
+		java_library {
+			name: "transitive_lib",
+			srcs: ["foo.java"],
+			libs: ["transitive_lib_2"],
+		}
+
+		java_library {
+			name: "transitive_lib_2",
 			srcs: ["foo.java"],
 		}
 	`)
@@ -58,24 +76,44 @@ func TestR8(t *testing.T) {
 	stableApp := result.ModuleForTests("stable_app", "android_common")
 	corePlatformApp := result.ModuleForTests("core_platform_app", "android_common")
 	lib := result.ModuleForTests("lib", "android_common")
+	transitiveLib := result.ModuleForTests("transitive_lib", "android_common")
+	transitiveLib2 := result.ModuleForTests("transitive_lib_2", "android_common")
 	staticLib := result.ModuleForTests("static_lib", "android_common")
+	transitiveStaticLib := result.ModuleForTests("transitive_static_lib", "android_common")
 
 	appJavac := app.Rule("javac")
 	appR8 := app.Rule("r8")
 	stableAppR8 := stableApp.Rule("r8")
 	corePlatformAppR8 := corePlatformApp.Rule("r8")
+	appHeader := app.Output("turbine-combined/app.jar").Output
 	libHeader := lib.Output("turbine-combined/lib.jar").Output
+	transitiveLibHeader := transitiveLib.Output("turbine-combined/transitive_lib.jar").Output
+	transitiveLib2Header := transitiveLib2.Output("turbine-combined/transitive_lib_2.jar").Output
 	staticLibHeader := staticLib.Output("turbine-combined/static_lib.jar").Output
+	transitiveStaticLibHeader := transitiveStaticLib.Output("turbine-combined/transitive_static_lib.jar").Output
 
 	android.AssertStringDoesContain(t, "expected lib header jar in app javac classpath",
 		appJavac.Args["classpath"], libHeader.String())
+	android.AssertStringDoesContain(t, "expected transitive lib header jar in app javac classpath",
+		appJavac.Args["classpath"], transitiveLibHeader.String())
+	android.AssertStringDoesContain(t, "expected transitive lib ^2 header jar in app javac classpath",
+		appJavac.Args["classpath"], transitiveLib2Header.String())
+
 	android.AssertStringDoesContain(t, "expected static_lib header jar in app javac classpath",
 		appJavac.Args["classpath"], staticLibHeader.String())
 
+	android.AssertStringDoesNotContain(t, "expected no app header jar in app r8 classpath",
+		appR8.Args["r8Flags"], appHeader.String())
+	android.AssertStringDoesContain(t, "expected transitive lib header jar in app r8 classpath",
+		appR8.Args["r8Flags"], transitiveLibHeader.String())
+	android.AssertStringDoesContain(t, "expected transitive lib ^2 header jar in app r8 classpath",
+		appR8.Args["r8Flags"], transitiveLib2Header.String())
 	android.AssertStringDoesContain(t, "expected lib header jar in app r8 classpath",
 		appR8.Args["r8Flags"], libHeader.String())
-	android.AssertStringDoesNotContain(t, "expected no  static_lib header jar in app javac classpath",
+	android.AssertStringDoesNotContain(t, "expected no static_lib header jar in app r8 classpath",
 		appR8.Args["r8Flags"], staticLibHeader.String())
+	android.AssertStringDoesNotContain(t, "expected no transitive static_lib header jar in app r8 classpath",
+		appR8.Args["r8Flags"], transitiveStaticLibHeader.String())
 	android.AssertStringDoesContain(t, "expected -ignorewarnings in app r8 flags",
 		appR8.Args["r8Flags"], "-ignorewarnings")
 	android.AssertStringDoesContain(t, "expected --android-platform-build in app r8 flags",

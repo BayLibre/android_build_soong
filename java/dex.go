@@ -15,6 +15,7 @@
 package java
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -22,6 +23,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/java/config"
 	"android/soong/remoteexec"
 )
 
@@ -251,6 +253,24 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 	r8Flags = append(r8Flags, proguardRaiseDeps.FormJavaClassPath("-libraryjars"))
 	r8Flags = append(r8Flags, flags.bootClasspath.FormJavaClassPath("-libraryjars"))
 	r8Flags = append(r8Flags, flags.dexClasspath.FormJavaClassPath("-libraryjars"))
+	errorProneClasspath := classpath(android.PathsForSource(ctx, config.ErrorProneClasspath))
+	r8Flags = append(r8Flags, errorProneClasspath.FormJavaClassPath("-libraryjars"))
+
+	type hasTransitiveHeaderJars interface {
+		TransitiveHeaderJars() Depset
+	}
+	if m, ok := ctx.Module().(hasTransitiveHeaderJars); ok {
+		transitiveHeaderJars := android.Paths{}
+		for jar, _ := range m.TransitiveHeaderJars().Transitive {
+			fmt.Println("ADDING JAR", ctx.ModuleName(), jar)
+			transitiveHeaderJars = append(transitiveHeaderJars, jar)
+		}
+		transitiveClasspath := classpath(transitiveHeaderJars)
+		r8Flags = append(r8Flags, transitiveClasspath.FormJavaClassPath("-libraryjars"))
+		fmt.Println("TRANSITIVE HEADERJARS", ctx.ModuleName(), r8Flags, transitiveHeaderJars)
+	} else {
+		fmt.Println("NO TRANSITIVE HEADER JARS FOR", ctx.ModuleName())
+	}
 
 	r8Deps = append(r8Deps, proguardRaiseDeps...)
 	r8Deps = append(r8Deps, flags.bootClasspath...)

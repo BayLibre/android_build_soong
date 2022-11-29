@@ -253,6 +253,46 @@ func TestSimple(t *testing.T) {
 	}
 }
 
+func TestTransitiveR8DepsClasspath(t *testing.T) {
+	ctx, _ := testJava(t, `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+			libs: ["bar"],
+			static_libs: ["baz"],
+		}
+
+		java_library {
+			name: "bar",
+			srcs: ["b.java"],
+		}
+
+		java_library {
+			name: "baz",
+			srcs: ["c.java"],
+		}
+	`)
+
+	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
+	combineJar := ctx.ModuleForTests("foo", "android_common").Description("for javac")
+
+	if len(javac.Inputs) != 1 || javac.Inputs[0].String() != "a.java" {
+		t.Errorf(`foo inputs %v != ["a.java"]`, javac.Inputs)
+	}
+
+	baz := ctx.ModuleForTests("baz", "android_common").Rule("javac").Output.String()
+	barTurbine := filepath.Join("out", "soong", ".intermediates", "bar", "android_common", "turbine-combined", "bar.jar")
+	bazTurbine := filepath.Join("out", "soong", ".intermediates", "baz", "android_common", "turbine-combined", "baz.jar")
+
+	android.AssertStringDoesContain(t, "foo classpath", javac.Args["classpath"], barTurbine)
+
+	android.AssertStringDoesContain(t, "foo classpath", javac.Args["classpath"], bazTurbine)
+
+	if len(combineJar.Inputs) != 2 || combineJar.Inputs[1].String() != baz {
+		t.Errorf("foo combineJar inputs %v does not contain %q", combineJar.Inputs, baz)
+	}
+}
+
 func TestExportedPlugins(t *testing.T) {
 	type Result struct {
 		library        string
