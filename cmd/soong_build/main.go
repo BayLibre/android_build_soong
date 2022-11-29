@@ -89,6 +89,7 @@ func init() {
 	flag.StringVar(&bp2buildMarker, "bp2build_marker", "", "If set, run bp2build, touch the specified marker file then exit")
 	flag.StringVar(&symlinkForestMarker, "symlink_forest_marker", "", "If set, create the bp2build symlink forest, touch the specified marker file, then exit")
 	flag.StringVar(&cmdlineArgs.OutFile, "o", "build.ninja", "the Ninja file to output")
+	flag.StringVar(&cmdlineArgs.AdHocModules, "ad-hoc-modules", "", "additional modules to build with Bazel. Comma-delimited")
 	flag.BoolVar(&cmdlineArgs.EmptyNinjaFile, "empty-ninja-file", false, "write out a 0-byte ninja file")
 	flag.BoolVar(&cmdlineArgs.BazelMode, "bazel-mode", false, "use bazel for analysis of certain modules")
 	flag.BoolVar(&cmdlineArgs.BazelModeStaging, "bazel-mode-staging", false, "use bazel for analysis of certain near-ready modules")
@@ -118,6 +119,7 @@ func newContext(configuration android.Config) *android.Context {
 
 func newConfig(availableEnv map[string]string) android.Config {
 	var buildMode android.SoongBuildMode
+	var extraBazelModules []string
 
 	if symlinkForestMarker != "" {
 		buildMode = android.SymlinkForest
@@ -137,11 +139,13 @@ func newConfig(availableEnv map[string]string) android.Config {
 		buildMode = android.BazelProdMode
 	} else if cmdlineArgs.BazelModeStaging {
 		buildMode = android.BazelStagingMode
+	} else if len(cmdlineArgs.AdHocModules) > 0 {
+		extraBazelModules = strings.Split(cmdlineArgs.AdHocModules, ",")
 	} else {
 		buildMode = android.AnalysisNoBazel
 	}
 
-	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, buildMode, runGoTests, outDir, soongOutDir, availableEnv)
+	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, buildMode, runGoTests, outDir, soongOutDir, availableEnv, extraBazelModules)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
