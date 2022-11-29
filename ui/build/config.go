@@ -109,6 +109,8 @@ type configImpl struct {
 	emptyNinjaFile bool
 
 	metricsUploader string
+
+	adhocMixedModules []string
 }
 
 const srcDirFileCheck = "build/soong/root.bp"
@@ -783,6 +785,9 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.queryview = true
 		} else if arg == "soong_docs" {
 			c.soongDocs = true
+		} else if strings.HasPrefix(arg, "--mixed-modules=") {
+			adHocMixedModules := strings.TrimPrefix(arg, "--mixed-modules=")
+			c.adhocMixedModules = strings.Split(adHocMixedModules, ",")
 		} else {
 			if arg == "checkbuild" {
 				c.checkbuild = true
@@ -1150,7 +1155,7 @@ func (c *configImpl) UseRBE() bool {
 }
 
 func (c *configImpl) BazelBuildEnabled() bool {
-	return c.bazelProdMode || c.bazelDevMode || c.bazelStagingMode
+	return c.bazelProdMode || c.bazelDevMode || c.bazelStagingMode || len(c.adhocMixedModules) > 0
 }
 
 func (c *configImpl) StartRBE() bool {
@@ -1486,6 +1491,10 @@ func (c *configImpl) EmptyNinjaFile() bool {
 
 func (c *configImpl) IsBazelMixedBuildForceDisabled() bool {
 	return c.Environment().IsEnvTrue("BUILD_BROKEN_DISABLE_BAZEL")
+}
+
+func (c *configImpl) GetAdHocMixedBuildModules() []string {
+	return c.adhocMixedModules
 }
 
 func GetMetricsUploader(topDir string, env *Environment) string {
