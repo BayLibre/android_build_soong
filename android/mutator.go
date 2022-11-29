@@ -712,6 +712,20 @@ func (t *topDownMutatorContext) createBazelTargetModule(
 	enabledProperty bazel.BoolAttribute) {
 	constraintAttributes := commonAttrs.fillCommonBp2BuildModuleAttrs(t, enabledProperty)
 	mod := t.Module()
+
+	// Transform specific attributes into tags.
+	if am, ok := mod.(ApexModule); ok {
+		// TODO(b/218841706): hidl_interface has the apex_available prop, but it's
+		// defined directly as a prop and not via ApexModule, so this doesn't
+		// pick those props up.
+		// TODO(b/260694842): This does not pick up aidl_interface.backend.ndk.apex_available.
+		apexAvailableTags := []string{}
+		for _, a := range am.apexModuleBase().ApexAvailable() {
+			apexAvailableTags = append(apexAvailableTags, "apex_available="+a)
+		}
+		commonAttrs.Tags.Value = append(commonAttrs.Tags.Value, apexAvailableTags...)
+	}
+
 	info := bp2buildInfo{
 		Dir:             t.OtherModuleDir(mod),
 		BazelProps:      bazelProps,
