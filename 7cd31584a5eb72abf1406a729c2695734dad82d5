@@ -52,6 +52,24 @@
       "parentUuid": "18203aef_0ba58651",
       "revId": "7cd31584a5eb72abf1406a729c2695734dad82d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6219a5_87113ddd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-11-29T16:23:47Z",
+      "side": 1,
+      "message": "Thanks!\nUpdated the CL description to include the tests.",
+      "parentUuid": "372edff5_1946c14d",
+      "revId": "7cd31584a5eb72abf1406a729c2695734dad82d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
