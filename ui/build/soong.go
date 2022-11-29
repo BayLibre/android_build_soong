@@ -157,6 +157,40 @@ func fileExists(path string) (bool, error) {
 	return true, nil
 }
 
+var debugSoongStep = map[string]bool{
+	soongBuildTag:        false,
+	bp2buildFilesTag:     false,
+	bp2buildWorkspaceTag: false,
+	jsonModuleGraphTag:   false,
+	queryviewTag:         false,
+	apiBp2buildTag:       false,
+	soongDocsTag:         false,
+}
+
+func init() {
+	if steps := os.Getenv("SOONG_DELVE_STEPS"); steps != "" {
+		var bad_steps []string
+		for _, step := range strings.Split(steps, ",") {
+			if _, ok := debugSoongStep[step]; ok {
+				debugSoongStep[step] = true
+			} else {
+				bad_steps = append(bad_steps, step)
+			}
+		}
+		if len(bad_steps) > 0 {
+			fmt.Fprintf(os.Stderr, "SOONG_DELVE_STEPS contains bad value(s): %v\n", bad_steps)
+			fmt.Fprintf(os.Stderr, "valid values are")
+			for k := range debugSoongStep {
+				fmt.Fprint(os.Stderr, " ", k)
+			}
+			fmt.Fprintln(os.Stderr)
+		}
+	} else {
+		for k := range debugSoongStep {
+			debugSoongStep[k] = true
+		}
+	}
+}
 func primaryBuilderInvocation(
 	config Config,
 	name string,
@@ -171,20 +205,22 @@ func primaryBuilderInvocation(
 
 	commonArgs = append(commonArgs, "-l", filepath.Join(config.FileListDir(), "Android.bp.list"))
 	invocationEnv := make(map[string]string)
-	if os.Getenv("SOONG_DELVE") != "" {
-		//debug mode
-		commonArgs = append(commonArgs, "--delve_listen", os.Getenv("SOONG_DELVE"))
-		commonArgs = append(commonArgs, "--delve_path", shared.ResolveDelveBinary())
-		// GODEBUG=asyncpreemptoff=1 disables the preemption of goroutines. This
-		// is useful because the preemption happens by sending SIGURG to the OS
-		// thread hosting the goroutine in question and each signal results in
-		// work that needs to be done by Delve; it uses ptrace to debug the Go
-		// process and the tracer process must deal with every signal (it is not
-		// possible to selectively ignore SIGURG). This makes debugging slower,
-		// sometimes by an order of magnitude depending on luck.
-		// The original reason for adding async preemption to Go is here:
-		// https://github.com/golang/proposal/blob/master/design/24543-non-cooperative-preemption.md
-		invocationEnv["GODEBUG"] = "asyncpreemptoff=1"
+	if delvePort := os.Getenv("SOONG_DELVE"); delvePort != "" {
+		if doDebug := debugSoongStep[name]; doDebug {
+			//debug mode
+			commonArgs = append(commonArgs, "--delve_listen", delvePort,
+				"--delve_path", shared.ResolveDelveBinary())
+			// GODEBUG=asyncpreemptoff=1 disables the preemption of goroutines. This
+			// is useful because the preemption happens by sending SIGURG to the OS
+			// thread hosting the goroutine in question and each signal results in
+			// work that needs to be done by Delve; it uses ptrace to debug the Go
+			// process and the tracer process must deal with every signal (it is not
+			// possible to selectively ignore SIGURG). This makes debugging slower,
+			// sometimes by an order of magnitude depending on luck.
+			// The original reason for adding async preemption to Go is here:
+			// https://github.com/golang/proposal/blob/master/design/24543-non-cooperative-preemption.md
+			invocationEnv["GODEBUG"] = "asyncpreemptoff=1"
+		}
 	}
 
 	var allArgs []string
