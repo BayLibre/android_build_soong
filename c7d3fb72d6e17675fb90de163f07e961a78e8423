@@ -39,6 +39,30 @@
       },
       "revId": "c7d3fb72d6e17675fb90de163f07e961a78e8423",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c8dc99_ea477d01",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-11-29T04:45:49Z",
+      "side": 1,
+      "message": "Certainly. Why is it better?",
+      "parentUuid": "5397d436_458d51f7",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 9
+      },
+      "revId": "c7d3fb72d6e17675fb90de163f07e961a78e8423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
