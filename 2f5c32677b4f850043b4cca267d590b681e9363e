@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b567bc2_57be4cc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-29T11:49:56Z",
+      "side": 1,
+      "message": "My bad. I previously uploaded different CL 😞. Just updated this CL now.",
+      "parentUuid": "eccff31b_8e9d395c",
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8cfd400_5afa5d5d",
