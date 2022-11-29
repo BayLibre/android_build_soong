@@ -70,6 +70,30 @@
       },
       "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bfded97_1d7776ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2022-11-29T19:10:02Z",
+      "side": 1,
+      "message": "This change set \"LOCAL_COMPATIBILITY_SUITE\" to\"robolectric-tests\" for Robolectric tests.\nBefore that, the LOCAL_COMPATIBILITY_SUITE is `empty` for all Robolectric tests even they are test modules. \nThis can be think a bug since all test modules should have `test suite` tag.\n\nThen, this information can be added to the module-info.\ne.g. `module-info.mk`\nhttps://source.corp.google.com/aosp-master/build/make/core/tasks/module-info.mk;l\u003d15?q\u003df:module-info.mk%20compatibility_suites\n\n\nAnd in the aosp/2181295,it only create symbolic link if the test `suite` is not empty.\nhttps://android-review.git.corp.google.com/c/platform/tools/asuite/+/2181295/11/atest/bazel/resources/rules/soong_prebuilt.bzl#199",
+      "parentUuid": "f8aa1186_60b0f28b",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
