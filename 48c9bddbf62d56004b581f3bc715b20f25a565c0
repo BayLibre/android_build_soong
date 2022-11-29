@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "927ee882_568e0c97",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-29T19:31:13Z",
+      "side": 1,
+      "message": "Initially I only made the change in config.go, and then `lunch aosp_riscv64-userdebug \u0026\u0026 m nothing` reproduced the error with the log I\u0027ve given.",
+      "parentUuid": "54aaa2c8_9bc7f374",
+      "revId": "48c9bddbf62d56004b581f3bc715b20f25a565c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "34f10506_2e71a536",
         "filename": "android/test_config.go",
         "patchSetId": 1
