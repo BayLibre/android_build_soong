@@ -22,6 +22,30 @@
       },
       "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c098943c_68dd50e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2022-11-29T05:46:31Z",
+      "side": 1,
+      "message": "Only the `test` modules have the attribute of `test-suite`.\nFor `non-test` modules, the test-suite is `empty`.\nThe `null-suite` tag is used to prevent a test module does not belong to any test-suite .\n\ne.g.\n```\n# For test modules that lack a suite tag, set null-suite as the default.\n# We only support adding a default suite to native tests, native benchmarks, and instrumentation tests.\n# This is because they are the only tests we currently auto-generate test configs for.\nifndef LOCAL_COMPATIBILITY_SUITE\n  ifneq ($(filter NATIVE_TESTS NATIVE_BENCHMARK, $(LOCAL_MODULE_CLASS)),)\n    LOCAL_COMPATIBILITY_SUITE :\u003d null-suite\n  endif\n  ifneq ($(filter APPS, $(LOCAL_MODULE_CLASS)),)\n    ifneq ($(filter $(my_module_tags),tests),)\n      LOCAL_COMPATIBILITY_SUITE :\u003d null-suite\n    endif\n  endif\nendif\n```",
+      "parentUuid": "c146135c_fe69aee7",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
