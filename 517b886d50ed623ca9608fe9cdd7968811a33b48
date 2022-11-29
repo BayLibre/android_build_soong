@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8766a81_a8ae8919",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3634,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-29T12:26:56Z",
+      "side": 1,
+      "message": "Perhaps we can just strip //apex_available since we already have the apex_available\u003d key in the generated tags.",
+      "range": {
+        "startLine": 3634,
+        "startChar": 41,
+        "endLine": 3634,
+        "endChar": 58
+      },
+      "revId": "517b886d50ed623ca9608fe9cdd7968811a33b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
