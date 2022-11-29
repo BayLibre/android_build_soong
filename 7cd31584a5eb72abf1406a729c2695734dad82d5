@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure `m nothing` is a sufficient test for this change. Have you done anything else to verify this works?",
       "revId": "7cd31584a5eb72abf1406a729c2695734dad82d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18203aef_0ba58651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-11-29T15:50:19Z",
+      "side": 1,
+      "message": "I also ran b build, m bazel-mode-dev, m bp2build to make sure nothing breaks.\nIn addition, I can now see the data of column \u0027bp2build_metrics\u0027 in our schema by querying \n\u0027SELECT * FROM android_build.metrics.local.build_metrics\nWHERE bp2build_metrics IS NOT NULL\u0027\nIt used to be blank.",
+      "parentUuid": "42865b88_6f9d5da6",
+      "revId": "7cd31584a5eb72abf1406a729c2695734dad82d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
