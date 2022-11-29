@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f196b7c_ec9dd857",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2022-11-29T21:33:36Z",
+      "side": 1,
+      "message": "This creates test failures like the following:\n```\nFAIL: TestPlanIncludeFileCopyRuleExists (0.01s)\n    csuite_test_test.go:329: default/java/Android.bp:151:4: \"core-module-lib-stubs-system-modules-lib\" depends on undefined module \"AndroidGlobalLintChecks\"\n    csuite_test_test.go:329: default/java/Android.bp:171:4: \"stable-core-platform-api-stubs-system-modules-lib\" depends on undefined module \"AndroidGlobalLintChecks\"\n    csuite_test_test.go:329: default/java/Android.bp:161:4: \"legacy-core-platform-api-stubs-system-modules-lib\" depends on undefined module \"AndroidGlobalLintChecks\"\n    csuite_test_test.go:329: default/java/Android.bp:141:4: \"core-public-stubs-system-modules-lib\" depends on undefined module \"AndroidGlobalLintChecks\"\n```\nPresuming we are okay with this approach, I understand I need to add a test fixture somewhere, but have no idea where that would be...",
+      "revId": "4294d985cc727428d5892956257ddf8f6f3aa03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
