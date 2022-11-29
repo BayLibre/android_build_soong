@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c146135c_fe69aee7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-11-29T05:25:05Z",
+      "side": 1,
+      "message": "There\u0027s something I don\u0027t quite get. I thought that not marking a test with a suite defaults to the `null-suite`. Isn\u0027t that true?",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
