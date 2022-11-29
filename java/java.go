@@ -63,7 +63,6 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_api_library", ApiLibraryFactory)
 	ctx.RegisterModuleType("java_api_contribution", ApiContributionFactory)
 
-	// This mutator registers dependencies on dex2oat for modules that should be
 	// dexpreopted. This is done late when the final variants have been
 	// established, to not get the dependencies split into the wrong variants and
 	// to support the checks in dexpreoptDisabled().
@@ -224,11 +223,15 @@ var (
 	}, "jar_name", "partition", "main_class")
 )
 
+type transitiveHeaderJars = map[android.Path]bool
+
 // JavaInfo contains information about a java module for use by modules that depend on it.
 type JavaInfo struct {
 	// HeaderJars is a list of jars that can be passed as the javac classpath in order to link
 	// against this module.  If empty, ImplementationJars should be used instead.
 	HeaderJars android.Paths
+
+	TransitiveHeaderJars transitiveHeaderJars
 
 	// ImplementationAndResourceJars is a list of jars that contain the implementations of classes
 	// in the module as well as any resources included in the module.
@@ -1768,8 +1771,9 @@ type Import struct {
 	properties ImportProperties
 
 	// output file containing classes.dex and resources
-	dexJarFile        OptionalDexJarPath
-	dexJarInstallFile android.Path
+	dexJarFile           OptionalDexJarPath
+	dexJarInstallFile    android.Path
+	transitiveHeaderJars transitiveHeaderJars
 
 	combinedClasspathFile android.Path
 	classLoaderContexts   dexpreopt.ClassLoaderContextMap
@@ -1885,15 +1889,18 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	var flags javaBuilderFlags
 
+	j.transitiveHeaderJars = map[android.Path]bool{}
 	ctx.VisitDirectDeps(func(module android.Module) {
 		tag := ctx.OtherModuleDependencyTag(module)
-
 		if ctx.OtherModuleHasProvider(module, JavaInfoProvider) {
 			dep := ctx.OtherModuleProvider(module, JavaInfoProvider).(JavaInfo)
 			switch tag {
 			case libTag, sdkLibTag:
 				flags.classpath = append(flags.classpath, dep.HeaderJars...)
 				flags.dexClasspath = append(flags.dexClasspath, dep.HeaderJars...)
+				for _, jar := range append(dep.HeaderJars, pathMapKeys(dep.TransitiveHeaderJars)...) {
+					j.transitiveHeaderJars[jar] = true
+				}
 			case staticLibTag:
 				flags.classpath = append(flags.classpath, dep.HeaderJars...)
 			case bootClasspathTag:
@@ -1977,6 +1984,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(j.combinedClasspathFile),
+		TransitiveHeaderJars:           j.transitiveHeaderJars,
 		ImplementationAndResourcesJars: android.PathsIfNonNil(j.combinedClasspathFile),
 		ImplementationJars:             android.PathsIfNonNil(j.combinedClasspathFile),
 		AidlIncludeDirs:                j.exportAidlIncludeDirs,
@@ -2017,6 +2025,10 @@ func (j *Import) HeaderJars() android.Paths {
 		return nil
 	}
 	return android.Paths{j.combinedClasspathFile}
+}
+
+func (j *Import) TransitiveHeaderJars() transitiveHeaderJars {
+	return j.transitiveHeaderJars
 }
 
 func (j *Import) ImplementationAndResourcesJars() android.Paths {
