@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d672c28b_cf8ab973",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-29T16:28:32Z",
+      "side": 1,
+      "message": "Hmm, I have one concern after digging a little deeper: We might call IsMixedBuildsEnabled multiple times in a single soong_build invocation.\nCan we ensure that we\u0027re not logging multiple times per invocation?",
+      "revId": "c7ed802290e433b94de133f86a27243509e4910b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
