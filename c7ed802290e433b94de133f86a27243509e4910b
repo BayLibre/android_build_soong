@@ -16,6 +16,24 @@
       "message": "Hmm, I have one concern after digging a little deeper: We might call IsMixedBuildsEnabled multiple times in a single soong_build invocation.\nCan we ensure that we\u0027re not logging multiple times per invocation?",
       "revId": "c7ed802290e433b94de133f86a27243509e4910b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97618bca_575ddb65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-11-29T16:57:20Z",
+      "side": 1,
+      "message": "Added a `Once` call. Is it safe to assume that the environment will always be the same for each of these calls? I.e. that the `Once` cache for this item won\u0027t be invalidated?",
+      "parentUuid": "d672c28b_cf8ab973",
+      "revId": "c7ed802290e433b94de133f86a27243509e4910b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
