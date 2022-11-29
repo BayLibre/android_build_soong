@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6e2ca20_d8e2be2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-11-29T19:56:51Z",
+      "side": 1,
+      "message": "I am implementing abi checking in bazel and just want to confirm, I see two main changes:\n1. prevSAbiDiff is combined with sAbiDiff\n2. Support customized directories for reference dump files\nOther than these two there are no behavior changes, just some refactoring work right?",
+      "revId": "22996971f31598f952ca6c295701be21a10cdecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e03bff80_eff0c27a",
@@ -19,6 +36,29 @@
         "startChar": 74,
         "endLine": 1825,
         "endChar": 79
+      },
+      "revId": "22996971f31598f952ca6c295701be21a10cdecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "268b9dd4_88820f0d",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-11-29T19:56:51Z",
+      "side": 1,
+      "message": "I don\u0027t see any .lsdump.gz files currently exist in prebuilts/abi-dumps, do we really need the support of gzipped reference dump files?",
+      "range": {
+        "startLine": 1826,
+        "startChar": 1,
+        "endLine": 1826,
+        "endChar": 19
       },
       "revId": "22996971f31598f952ca6c295701be21a10cdecf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
