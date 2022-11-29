@@ -46,6 +46,30 @@
       },
       "revId": "2fbc355f47e3576e3389051b21e1df2a7b868577",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3db071_a99a2d2d",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-11-29T11:35:59Z",
+      "side": 1,
+      "message": "I don\u0027t know a better way.  \n\nBuild system doesn\u0027t know all uses-library cases. As I understand, an app may create a class loader at runtime and load any library or APK there. At best we may protect system server jars from being loaded like that, e.g. by adding code to the PackageManager that would check that the loaded library is not a system server one, and allow-list all the known cases that violate this. Then we can assume that if a library is a system server jar and not on the allow-list, it will not be loaded by the apps. But it will only help to harden this check, not to simplify it.\n\nEven for the uses-library cases known to the build system, we won\u0027t be able to put together a global list: this code runs before all the modules have been processed. If we move to post-install dexpreopt, this may become possible.\n\nAs for isSDKLibrary, paulduffin@ may know better.",
+      "parentUuid": "2dc63259_a5f71782",
+      "range": {
+        "startLine": 274,
+        "startChar": 39,
+        "endLine": 274,
+        "endChar": 70
+      },
+      "revId": "2fbc355f47e3576e3389051b21e1df2a7b868577",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
