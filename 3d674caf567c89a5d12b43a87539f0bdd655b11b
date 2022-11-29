@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "88e9b26a_b50975d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-11-29T11:30:44Z",
+      "side": 1,
+      "message": "Great, thanks for confirming. Seems like the right fix then rather than trying to get the arm64 conscrypt to work.",
+      "parentUuid": "6d8b0d50_5122b5bc",
+      "revId": "3d674caf567c89a5d12b43a87539f0bdd655b11b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "316648d4_ea3ac70f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-28T20:43:15Z",
       "side": 1,
       "message": "IIUC this CL disables native-bridged archs for APEX at the build time, which sounds like the right move. But I\u0027m not sure if it guarantees that future APEX updates will not switch it back to native-bridge version.",
+      "revId": "3d674caf567c89a5d12b43a87539f0bdd655b11b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "491bc615_b983b28d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-11-29T11:30:44Z",
+      "side": 1,
+      "message": "yep, that\u0027s right. It does not affect play, it just changes what we preload when we use prebuilts. The reason it wasn\u0027t broken in previous releases (T) was because the emu built the apexes from source rather than using prebuilts.",
+      "parentUuid": "316648d4_ea3ac70f",
       "revId": "3d674caf567c89a5d12b43a87539f0bdd655b11b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2022-11-28T01:53:44Z",
       "side": 1,
       "message": "Would it be better to name this as excludeNativeBridgeAbis because default value for a bool is false?",
+      "range": {
+        "startLine": 101,
+        "startChar": 46,
+        "endLine": 101,
+        "endChar": 69
+      },
+      "revId": "3d674caf567c89a5d12b43a87539f0bdd655b11b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4621c4db_c413ec86",
+        "filename": "java/app_set.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-11-29T11:30:44Z",
+      "side": 1,
+      "message": "not sure one is clearer than the other, but updated as suggested",
+      "parentUuid": "83b4313a_33308ce1",
       "range": {
         "startLine": 101,
         "startChar": 46,
