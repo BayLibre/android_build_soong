@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1fd105b_3dbc8848",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 8441,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-29T12:34:11Z",
+      "side": 1,
+      "message": "Use android.AssertStringEquals(t, \"abis\", \"X86_64\", extractedApex.Args[\"abis\"])",
+      "range": {
+        "startLine": 8437,
+        "startChar": 1,
+        "endLine": 8441,
+        "endChar": 2
+      },
+      "revId": "8064e280cd4e93d9a8a9d80ac21ba42db875bb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba52f3c7_fdabe0ae",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-11-29T12:34:11Z",
+      "side": 1,
+      "message": "Can you extract this into a variable that is initialized between lines 834/835 and move the preceding comment you added up there too. As it is I find it a little unclear what the comment is referring to.",
+      "range": {
+        "startLine": 843,
+        "startChar": 38,
+        "endLine": 843,
+        "endChar": 67
+      },
+      "revId": "8064e280cd4e93d9a8a9d80ac21ba42db875bb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
