@@ -408,6 +408,12 @@ func gatherRequiredDepsForTest() string {
 		"stable-core-platform-api-stubs-system-modules",
 	}
 
+	bp += `
+		java_library_host {
+			name: "AndroidGlobalLintChecks",
+			srcs: ["a.java"],
+		}`
+
 	for _, extra := range systemModules {
 		bp += fmt.Sprintf(`
 			java_system_modules {
