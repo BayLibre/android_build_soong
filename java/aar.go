@@ -659,6 +659,7 @@ type AARImport struct {
 	extraAaptPackagesFile android.WritablePath
 	manifest              android.WritablePath
 	assetsPackage         android.WritablePath
+	transitiveHeaderJars  transitiveHeaderJars
 
 	exportedStaticPackages android.Paths
 
@@ -897,8 +898,10 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		a.assetsPackage = mergedAssets
 	}
 
+	a.transitiveHeaderJars = collectTransitiveHeaderJars(ctx)
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(a.classpathFile),
+		TransitiveHeaderJars:           a.transitiveHeaderJars,
 		ImplementationAndResourcesJars: android.PathsIfNonNil(a.classpathFile),
 		ImplementationJars:             android.PathsIfNonNil(a.classpathFile),
 	})
