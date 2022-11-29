@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc178358_68bc2390",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-29T22:25:04Z",
+      "side": 1,
+      "message": "I am confused what\u0027s happening here.\nIf bArg is set, does it mean, os.Args is to be ignored or bArg is itself a parsed form of os.Args?",
+      "revId": "4afa0ab0f5b2136651a4117c710ce9fd857ee525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "408b1886_5dff1621",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-29T22:25:04Z",
+      "side": 1,
+      "message": "nit: space after `//`",
+      "revId": "4afa0ab0f5b2136651a4117c710ce9fd857ee525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9de73254_cec8786d",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-29T22:25:04Z",
+      "side": 1,
+      "message": "One would use quotes for some demarcation of args when there are spaces in them.\nSo, it seems odd that they are simply being ignored.\nAlso why only double quotes?",
+      "revId": "4afa0ab0f5b2136651a4117c710ce9fd857ee525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
