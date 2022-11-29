@@ -81,6 +81,24 @@
       "parentUuid": "23b5965a_a343eac5",
       "revId": "9f6bccce013a456e6825bc649f5d7f39a66a204d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc187de7_292c8440",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-11-29T16:24:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "827e83fd_f3023dba",
+      "revId": "9f6bccce013a456e6825bc649f5d7f39a66a204d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
