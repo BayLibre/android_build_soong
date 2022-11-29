@@ -24,6 +24,7 @@ import (
 
 var prepareForSdkTestWithJava = android.GroupFixturePreparers(
 	java.PrepareForTestWithJavaBuildComponents,
+	java.PrepareForTestWithJavaDefaultModules,
 	PrepareForTestWithSdkBuildComponents,
 
 	// Ensure that all source paths are provided. This helps ensure that the snapshot generation is
@@ -39,7 +40,6 @@ var prepareForSdkTestWithJava = android.GroupFixturePreparers(
 
 var prepareForSdkTestWithJavaSdkLibrary = android.GroupFixturePreparers(
 	prepareForSdkTestWithJava,
-	java.PrepareForTestWithJavaDefaultModules,
 	java.PrepareForTestWithJavaSdkLibraryFiles,
 	java.FixtureWithLastReleaseApis("myjavalib"),
 )
