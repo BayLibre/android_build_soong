@@ -46,6 +46,23 @@
       },
       "revId": "9f6bccce013a456e6825bc649f5d7f39a66a204d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b5965a_a343eac5",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-29T16:13:03Z",
+      "side": 1,
+      "message": "How printing what the actual unsupported build configuration is? \"unsupported build configuration\" is a bit cryptic -- what\u0027s more useful to the user (or the build team people that they contact) is something like \"unsupported env var GLOBAL_THINLTO for Bazel...\"\n\nThen you can also just short-circuit in this function by returning false in any conditional that is met.",
+      "revId": "9f6bccce013a456e6825bc649f5d7f39a66a204d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
