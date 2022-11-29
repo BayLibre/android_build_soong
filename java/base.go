@@ -409,7 +409,8 @@ type Module struct {
 
 	// jar file containing header classes including static library dependencies, suitable for
 	// inserting into the bootclasspath/classpath of another compile
-	headerJarFile android.Path
+	headerJarFile        android.Path
+	transitiveHeaderJars transitiveHeaderJars
 
 	// jar file containing implementation classes including static library dependencies but no
 	// resources
@@ -1584,6 +1585,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(j.headerJarFile),
+		TransitiveHeaderJars:           j.TransitiveHeaderJars(),
 		ImplementationAndResourcesJars: android.PathsIfNonNil(j.implementationAndResourcesJar),
 		ImplementationJars:             android.PathsIfNonNil(j.implementationJarFile),
 		ResourceJars:                   android.PathsIfNonNil(j.resourceJar),
@@ -1725,6 +1727,10 @@ func (j *Module) HeaderJars() android.Paths {
 		return nil
 	}
 	return android.Paths{j.headerJarFile}
+}
+
+func (j *Module) TransitiveHeaderJars() transitiveHeaderJars {
+	return j.transitiveHeaderJars
 }
 
 func (j *Module) ImplementationJars() android.Paths {
@@ -1928,6 +1934,14 @@ func (j *Module) checkSdkLinkType(
 	}
 }
 
+func pathMapKeys[V any](m map[android.Path]V) android.Paths {
+	ret := make(android.Paths, 0, len(m))
+	for path := range m {
+		ret = append(ret, path)
+	}
+	return ret
+}
+
 func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 	var deps deps
 
@@ -1948,6 +1962,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 
 	sdkLinkType, _ := j.getSdkLinkType(ctx, ctx.ModuleName())
 
+	j.transitiveHeaderJars = map[android.Path]bool{}
 	ctx.VisitDirectDeps(func(module android.Module) {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
@@ -1979,6 +1994,9 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				// dep with the JavaInfo from the SyspropPublicStubInfoProvider.
 				syspropDep := ctx.OtherModuleProvider(module, SyspropPublicStubInfoProvider).(SyspropPublicStubInfo)
 				dep = syspropDep.JavaInfo
+			}
+			for _, jar := range append(dep.HeaderJars, pathMapKeys(dep.TransitiveHeaderJars)...) {
+				j.transitiveHeaderJars[jar] = true
 			}
 			switch tag {
 			case bootClasspathTag:
