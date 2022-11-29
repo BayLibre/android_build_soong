@@ -270,6 +270,9 @@ func bootstrapBlueprint(ctx Context, config Config) {
 	if config.bazelStagingMode {
 		mainSoongBuildExtraArgs = append(mainSoongBuildExtraArgs, "--bazel-mode-staging")
 	}
+	if len(config.bazelForceEnabledModules) > 0 {
+		mainSoongBuildExtraArgs = append(mainSoongBuildExtraArgs, "--bazel-force-enabled-modules="+config.bazelForceEnabledModules)
+	}
 
 	mainSoongBuildInvocation := primaryBuilderInvocation(
 		config,
