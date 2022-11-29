@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d5dbb3_a79ed81b",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-29T23:13:17Z",
+      "side": 1,
+      "message": "Yes - the os.Args is the bp2build call to soong_ui made here: https://cs.android.com/android/platform/superproject/+/master:build/bazel/bin/b;l\u003d63;drc\u003d1c2baf5f094c9a40fc80218b69b7dfc712e26640;bpv\u003d0\n\nThis doesn\u0027t properly capture the b command. So, we\u0027re overriding it when this flag is present.",
+      "parentUuid": "fc178358_68bc2390",
+      "revId": "4afa0ab0f5b2136651a4117c710ce9fd857ee525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "408b1886_5dff1621",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd6ccae8_dd9e2dc1",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-29T23:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "408b1886_5dff1621",
+      "revId": "4afa0ab0f5b2136651a4117c710ce9fd857ee525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9de73254_cec8786d",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-11-29T22:25:04Z",
       "side": 1,
       "message": "One would use quotes for some demarcation of args when there are spaces in them.\nSo, it seems odd that they are simply being ignored.\nAlso why only double quotes?",
+      "revId": "4afa0ab0f5b2136651a4117c710ce9fd857ee525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d65d6a_fe298029",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-29T23:13:17Z",
+      "side": 1,
+      "message": "Please see the other change in the topic (that you helped me write! 😊 )\n\nI guess we could trim the first and last characters if you think that\u0027s cleaner?",
+      "parentUuid": "9de73254_cec8786d",
       "revId": "4afa0ab0f5b2136651a4117c710ce9fd857ee525",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
