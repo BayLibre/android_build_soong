@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ec219f4_83f597c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-11-29T22:00:02Z",
+      "side": 1,
+      "message": "There\u0027s a typo. Using `test-related tools` should be enough IMO since the details are in the patchset.",
+      "range": {
+        "startLine": 7,
+        "startChar": 29,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "136483f8110762b0e97fdb703b938ab4c6fb5419",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b7772ff_1ad17aad",
         "filename": "android/allowlists/allowlists.go",
         "patchSetId": 2
