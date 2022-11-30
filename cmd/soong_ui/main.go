@@ -19,6 +19,7 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -117,6 +118,17 @@ func inList(s string, list []string) bool {
 // Command is the type of soong_ui execution. Only one type of
 // execution is specified. The args are specific to the command.
 func main() {
+	//TODO(juu): Add logic to soong_ui to delete a hardcoded list of metrics files
+	mydir, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	oldSoongBuildMetricsFile := mydir + "/out/soong_build_metrics.pb"
+	//Delete the stale soong_build_metrics file at the beginning
+	if err := os.Remove(oldSoongBuildMetricsFile); err != nil && !os.IsNotExist(err) {
+		log.Fatalf("Unable to remove existing %s: %s", oldSoongBuildMetricsFile, err)
+	}
+
 	shared.ReexecWithDelveMaybe(os.Getenv("SOONG_UI_DELVE"), shared.ResolveDelveBinary())
 
 	buildStarted := time.Now()
@@ -184,6 +196,7 @@ func main() {
 	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
 	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
 	bp2buildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"bp2build_metrics.pb")
+	soongBuildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_build_metrics.pb")
 
 	build.PrintOutDirWarning(buildCtx, config)
 
@@ -211,6 +224,7 @@ func main() {
 		files := []string{
 			buildErrorFile,           // build error strings
 			rbeMetricsFile,           // high level metrics related to remote build execution.
+			soongBuildMetricsFile,    // high level metrics related to soong build(except bp2build).
 			bp2buildMetricsFile,      // high level metrics related to bp2build.
 			soongMetricsFile,         // high level metrics related to this build system.
 			config.BazelMetricsDir(), // directory that contains a set of bazel metrics.
@@ -219,7 +233,6 @@ func main() {
 		if !config.SkipMetricsUpload() {
 			defer build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, files...)
 		}
-
 		defer met.Dump(soongMetricsFile)
 		defer build.CheckProdCreds(buildCtx, config)
 	}
