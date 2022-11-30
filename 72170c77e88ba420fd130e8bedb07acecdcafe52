@@ -16,6 +16,24 @@
       "message": "nit: maybe some comment on why os.Args are irrelevant?",
       "revId": "72170c77e88ba420fd130e8bedb07acecdcafe52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3625b393_21ea52ef",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-30T22:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13c74187_1c094fdd",
+      "revId": "72170c77e88ba420fd130e8bedb07acecdcafe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

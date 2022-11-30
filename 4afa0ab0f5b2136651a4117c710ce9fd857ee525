@@ -157,6 +157,24 @@
       "message": "nit: rename to `GetBuildCommandLine()` to emphasize that it is the entire command line as a single string",
       "revId": "4afa0ab0f5b2136651a4117c710ce9fd857ee525",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481040f9_115c7d85",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-30T22:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "500c6516_3457a6fe",
+      "revId": "4afa0ab0f5b2136651a4117c710ce9fd857ee525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
