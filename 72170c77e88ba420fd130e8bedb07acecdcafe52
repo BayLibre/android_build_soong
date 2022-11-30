@@ -34,6 +34,40 @@
       "parentUuid": "13c74187_1c094fdd",
       "revId": "72170c77e88ba420fd130e8bedb07acecdcafe52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9100687b_a3536bb0",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-30T23:30:25Z",
+      "side": 1,
+      "message": "Don\u0027t use environ to set / the `bArgs` value. We don\u0027t want to pollute the environment of other processes at all, and this isn\u0027t really an environment variable, which is what c.environ is used for.\n\nIt would be better to create a specific field \"buildCommandForMetrics\" or something of that nature.",
+      "revId": "72170c77e88ba420fd130e8bedb07acecdcafe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5508064_4a1cae56",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-30T23:30:25Z",
+      "side": 1,
+      "message": "Why not, instead, you just treat a new field c.BuildCommand, as the source of truth? It\u0027s initialized to os.Args, but if you see a \"--build-command\" arg, then it overrides that field to the value of that flag?\n\nThat way you also don\u0027t need `SetBCommand`, because you will just set to the value of c.BuildCommand in metrics, without worrying about the origin of its value.",
+      "revId": "72170c77e88ba420fd130e8bedb07acecdcafe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
