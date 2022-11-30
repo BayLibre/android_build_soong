@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee178b8_16c51715",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-30T12:17:37Z",
+      "side": 1,
+      "message": "Doing it here has the benefit of ensuring new module types are automatically included in this conversion, but yeah we can be explicit w.r.t module types, moved it to the individual ConvertWithBp2build functions.",
+      "parentUuid": "a94204e8_999b9338",
+      "revId": "517b886d50ed623ca9608fe9cdd7968811a33b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8766a81_a8ae8919",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-11-29T12:26:56Z",
       "side": 1,
       "message": "Perhaps we can just strip //apex_available since we already have the apex_available\u003d key in the generated tags.",
+      "range": {
+        "startLine": 3634,
+        "startChar": 41,
+        "endLine": 3634,
+        "endChar": 58
+      },
+      "revId": "517b886d50ed623ca9608fe9cdd7968811a33b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b3f586_648d6351",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3634,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-30T12:17:37Z",
+      "side": 1,
+      "message": "Keeping this for now.",
+      "parentUuid": "b8766a81_a8ae8919",
       "range": {
         "startLine": 3634,
         "startChar": 41,
