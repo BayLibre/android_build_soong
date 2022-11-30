@@ -538,6 +538,7 @@ func runSoong(ctx Context, config Config) {
 		targets = append(targets, config.SoongNinjaFile())
 	}
 
+	// TODO(juu): Stop embedding soong_build_metrics in soong_metrics.
 	if shouldCollectBuildSoongMetrics(config) {
 		soongBuildMetricsFile := filepath.Join(config.LogsDir(), "soong_build_metrics.pb")
 		if err := os.Remove(soongBuildMetricsFile); err != nil && !os.IsNotExist(err) {
