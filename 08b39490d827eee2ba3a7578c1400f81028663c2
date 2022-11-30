@@ -16,6 +16,24 @@
       "message": "since soongMetricsFile already embeds this data, I am not sure we want to upload this independently\nNote the reason I am hesitant to upload bp2buildMetricsFile and soongBuildMetricsFile independently is because they lack build-related metrics (which soongMetricsFile contains)",
       "revId": "08b39490d827eee2ba3a7578c1400f81028663c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef3414b_d58170fa",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-11-30T16:58:30Z",
+      "side": 1,
+      "message": "Yeah you are right.\nI think this change is related with b/259587812.\nIf we would like soong_build_metrics split from soong_metrics, it would be safer if we create a new soong_build_metrics field first and later remove soong_build_metrics from soong_metrics.\n\nI believe it is ok that soong_build_metrics lack build related metrics, we can query those metrics from soong_metrics considering they have same build_id.\n\nThanks!",
+      "parentUuid": "39392322_efef1997",
+      "revId": "08b39490d827eee2ba3a7578c1400f81028663c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
