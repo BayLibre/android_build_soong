@@ -38,6 +38,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad0bf1b7_c9c710d7",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-30T17:14:59Z",
+      "side": 1,
+      "message": "isn\u0027t mixedBuildEnabledModules explicitly only used for metrics collection?\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/config.go;l\u003d221-229;drc\u003d428c30f89a137bf9aba20ac5764d05c30527e99e\n\nHow did you test this? It looks like you ran with libcore, but did you verify that libcore was built by bazel? (i.e. libcore outputs are under bazel-out)",
+      "range": {
+        "startLine": 505,
+        "startChar": 1,
+        "endLine": 505,
+        "endChar": 2
+      },
+      "revId": "d185a3575eda749dab28559f4ee4634fe187dc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d1289a9_a018ae21",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 6
@@ -49,6 +72,24 @@
       "writtenOn": "2022-11-29T23:10:58Z",
       "side": 1,
       "message": "may `bazel-enabled-modules`",
+      "revId": "d185a3575eda749dab28559f4ee4634fe187dc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23bac811_823b4323",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-30T17:14:59Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "3d1289a9_a018ae21",
       "revId": "d185a3575eda749dab28559f4ee4634fe187dc44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
