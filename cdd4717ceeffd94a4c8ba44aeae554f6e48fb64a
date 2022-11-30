@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8970b0ba_9ea54c1a",
+        "filename": "cc/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-30T00:46:47Z",
+      "side": 1,
+      "message": "Cc",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "cdd4717ceeffd94a4c8ba44aeae554f6e48fb64a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

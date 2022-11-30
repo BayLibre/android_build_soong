@@ -176,6 +176,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e90fb9d_8f14a24b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2621,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-30T00:46:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8273d684_8642965a",
+      "range": {
+        "startLine": 2621,
+        "startChar": 2,
+        "endLine": 2621,
+        "endChar": 8
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1232b5e_2e02c0a1",
@@ -411,6 +435,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "799f70a4_2149c350",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-30T00:46:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec3f0228_d244a235",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 2
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dad82c5_cf6da7a2",
@@ -589,6 +637,30 @@
       "side": 1,
       "message": "Added a new test case.",
       "parentUuid": "437b57c3_fd70da67",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 358,
+        "endChar": 3
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "716a4fba_caae8454",
+        "filename": "cc/library_stub_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-11-30T00:46:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c2b43964_c4bd0259",
       "range": {
         "startLine": 349,
         "startChar": 2,
