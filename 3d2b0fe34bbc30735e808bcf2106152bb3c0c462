@@ -39,6 +39,30 @@
       },
       "revId": "3d2b0fe34bbc30735e808bcf2106152bb3c0c462",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab793486_5d0807dd",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-11-30T03:59:39Z",
+      "side": 1,
+      "message": "I don\u0027t have a concrete idea about how to convert the directories to filegroups. Could you share the ideas on the document that I just shared with you?\nIt would be nice to give an Android.bp for example.",
+      "parentUuid": "a72cee11_be909e0c",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "3d2b0fe34bbc30735e808bcf2106152bb3c0c462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
