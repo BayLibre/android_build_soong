@@ -111,6 +111,30 @@
       },
       "revId": "c7d3fb72d6e17675fb90de163f07e961a78e8423",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5660c710_6a9219fb",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-11-30T07:00:30Z",
+      "side": 1,
+      "message": "OK, made bootstrapBlueprint code table driven.",
+      "parentUuid": "554b5b68_4866db46",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 9
+      },
+      "revId": "c7d3fb72d6e17675fb90de163f07e961a78e8423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
