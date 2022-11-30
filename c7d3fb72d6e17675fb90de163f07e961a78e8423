@@ -135,6 +135,30 @@
       },
       "revId": "c7d3fb72d6e17675fb90de163f07e961a78e8423",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf14b385_619b260e",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-11-30T07:49:49Z",
+      "side": 1,
+      "message": "Thanks! TBH I would have done much less work (like adding `InList(\"bp2build\", debuggedSteps)` everywhere where a `primaryBuilderInvocation` is created) but the code ended up being quite a bit nicer this way.",
+      "parentUuid": "5660c710_6a9219fb",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 9
+      },
+      "revId": "c7d3fb72d6e17675fb90de163f07e961a78e8423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
