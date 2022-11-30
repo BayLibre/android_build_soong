@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "215ebe2f_ce2dd6db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2022-11-30T01:57:56Z",
+      "side": 1,
+      "message": "Broke aosp_riscv64-userdebug:\nhttps://android-build.googleplex.com/builds/submitted/9349146/aosp_riscv64-userdebug/latest/view/logs/build_error.log",
+      "revId": "7a53b71f3ba020f354b31cd75a8714291fdb5cb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
