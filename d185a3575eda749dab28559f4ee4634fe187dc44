@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08280681_c5b79b73",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-30T19:20:22Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "ad0bf1b7_c9c710d7",
+      "range": {
+        "startLine": 505,
+        "startChar": 1,
+        "endLine": 505,
+        "endChar": 2
+      },
+      "revId": "d185a3575eda749dab28559f4ee4634fe187dc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d1289a9_a018ae21",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 6
