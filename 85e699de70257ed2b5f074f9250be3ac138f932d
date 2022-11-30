@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e47567fc_7354848a",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-30T04:54:42Z",
+      "side": 1,
+      "message": "This is same logic as ndk_library ( https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/ndk_library.go;l\u003d561?q\u003dndk_library.go ), to specify Sdk_version value by default.",
+      "parentUuid": "0a733fcd_02999d7f",
+      "range": {
+        "startLine": 132,
+        "startChar": 50,
+        "endLine": 132,
+        "endChar": 70
+      },
+      "revId": "85e699de70257ed2b5f074f9250be3ac138f932d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a98033c_8dffe891",
         "filename": "cc/library_stub.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-30T04:28:15Z",
       "side": 1,
       "message": "should this match the prefix instead?",
+      "range": {
+        "startLine": 426,
+        "startChar": 37,
+        "endLine": 426,
+        "endChar": 45
+      },
+      "revId": "85e699de70257ed2b5f074f9250be3ac138f932d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4007e1d7_43c9cd6e",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-30T04:54:42Z",
+      "side": 1,
+      "message": "No Variant value of cc_api_variant is \u0027ndk\u0027. Version is specified in version property.",
+      "parentUuid": "6a98033c_8dffe891",
       "range": {
         "startLine": 426,
         "startChar": 37,
