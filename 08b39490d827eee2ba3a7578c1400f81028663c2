@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39392322_efef1997",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-30T16:36:10Z",
+      "side": 1,
+      "message": "since soongMetricsFile already embeds this data, I am not sure we want to upload this independently\nNote the reason I am hesitant to upload bp2buildMetricsFile and soongBuildMetricsFile independently is because they lack build-related metrics (which soongMetricsFile contains)",
+      "revId": "08b39490d827eee2ba3a7578c1400f81028663c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
