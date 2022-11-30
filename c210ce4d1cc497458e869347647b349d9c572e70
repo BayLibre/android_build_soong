@@ -16,6 +16,24 @@
       "message": "I might be misunderstanding something. Why can\u0027t these simply be added to `mixedBuildEnabledModules`?",
       "revId": "c210ce4d1cc497458e869347647b349d9c572e70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9131fd_8560620c",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-30T23:21:24Z",
+      "side": 1,
+      "message": "It\u0027s for metrics, only. This made me realize that it should probably also be added to those, though.\n\nIf we were to copy over the map in bazel_handler, that would be breaking the existing comment-contract of using them for metrics-collection, only.",
+      "parentUuid": "26816f93_d5745a77",
+      "revId": "c210ce4d1cc497458e869347647b349d9c572e70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
