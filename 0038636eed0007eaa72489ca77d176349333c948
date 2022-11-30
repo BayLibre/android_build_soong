@@ -33,6 +33,24 @@
       "message": "Ping.",
       "revId": "0038636eed0007eaa72489ca77d176349333c948",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580cf70e_d894c9f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-30T23:56:10Z",
+      "side": 1,
+      "message": "Apologies, I got sick with COVID, and then when I came back we had some high priority launches so I couldn\u0027t dedicate cycles to looking at this. Hoping to be more responsive in the present.",
+      "parentUuid": "2cb29a89_9e564e3f",
+      "revId": "0038636eed0007eaa72489ca77d176349333c948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

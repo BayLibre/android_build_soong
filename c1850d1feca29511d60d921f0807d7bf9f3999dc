@@ -121,6 +121,24 @@
       "parentUuid": "75a48a81_f030e9ea",
       "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67720612_85b8755c",
+        "filename": "android/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-30T23:56:10Z",
+      "side": 1,
+      "message": "I\u0027m not suggesting that TestResult should depend on BazelTestResult. I think that this Data field should not exist in this struct at all. Nothing in this package depends on the Data field (it just initializes it to an empty map, but otherwise is not referenced).\n\nWe could thus have the BazelTestResult be:\n\n```\ntype BazelTestResult struct {\n\t*android.TestResult\n\tData map[string]BazelTargets\n}\n```\n\nand we need not change the rest of the code. Is that not correct?",
+      "parentUuid": "f3e5ebb6_6e1ab2ca",
+      "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
