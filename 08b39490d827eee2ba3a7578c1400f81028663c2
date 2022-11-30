@@ -34,6 +34,24 @@
       "parentUuid": "39392322_efef1997",
       "revId": "08b39490d827eee2ba3a7578c1400f81028663c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "529915cb_48e95d0c",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-30T22:41:58Z",
+      "side": 1,
+      "message": "Once uploaded what uses it? I.e. what follow-up changes to be expected.",
+      "parentUuid": "8ef3414b_d58170fa",
+      "revId": "08b39490d827eee2ba3a7578c1400f81028663c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
