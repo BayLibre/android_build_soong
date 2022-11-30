@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f255553_e2d95f3a",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-11-30T23:50:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e60a0b16_b85cf1bd",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 54
+      },
+      "revId": "2c6abc0370383f5eabeb85cce5f8016a0c3320a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f86d98dd_ad31ca2d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-30T07:49:49Z",
       "side": 1,
       "message": "nit: `delvePort !\u003d \"\"` to avoid duplicating the name of the environment variable here?",
+      "range": {
+        "startLine": 406,
+        "startChar": 29,
+        "endLine": 406,
+        "endChar": 53
+      },
+      "revId": "2c6abc0370383f5eabeb85cce5f8016a0c3320a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47285d86_b8d9fa74",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-11-30T23:50:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f86d98dd_ad31ca2d",
       "range": {
         "startLine": 406,
         "startChar": 29,
