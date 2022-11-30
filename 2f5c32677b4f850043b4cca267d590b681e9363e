@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77a5cb05_da56a448",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2557,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-11-30T05:25:02Z",
+      "side": 1,
+      "message": "Yeah it looks like that. `variantNdkLibs` are derived from `deps.*Libs`, after filtering out `apiNdkLibs`.",
+      "parentUuid": "a778c31a_5c0b42fa",
+      "range": {
+        "startLine": 2549,
+        "startChar": 0,
+        "endLine": 2557,
+        "endChar": 0
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "833becbf_8bec1c82",
         "filename": "cc/cc.go",
         "patchSetId": 1
