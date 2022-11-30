@@ -63,6 +63,30 @@
       },
       "revId": "3d2b0fe34bbc30735e808bcf2106152bb3c0c462",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c8721b_541a4704",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-11-30T21:57:00Z",
+      "side": 1,
+      "message": "you can have something like:\nRef_dump_filess []string `android:\"path\"` here in library.go, then you have these in your bp files:\n\nfoo/Android.bp:\ncc_library {\n    header_abi_checker: {\n        Ref_dump_files: [\":vendor_abi_ref_dumps\"],\n    },\n}\n\nvendor/abi-dumps/Android.bp:\nfilegroup {\n    name: \"vendor_abi_ref_dumps\",\n    srcs: [\n        \"*.lsdump\",\n    ],\n}\n\nAlternatively, you can check in this cl as it is and I can make the change later when I convert this part to bazel.",
+      "parentUuid": "ab793486_5d0807dd",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "3d2b0fe34bbc30735e808bcf2106152bb3c0c462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
