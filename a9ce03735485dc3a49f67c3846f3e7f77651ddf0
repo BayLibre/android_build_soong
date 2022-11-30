@@ -177,6 +177,30 @@
       },
       "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db639dfe_45a725e2",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-30T05:00:38Z",
+      "side": 1,
+      "message": "Nope sorry for the confusion!\nYes you ARE right, the adequate condition is indeed\n`fi.Mode() \u0026 os.ModeDir \u003d\u003d 0`",
+      "parentUuid": "e0ae85bb_72400017",
+      "range": {
+        "startLine": 320,
+        "startChar": 11,
+        "endLine": 320,
+        "endChar": 69
+      },
+      "revId": "a9ce03735485dc3a49f67c3846f3e7f77651ddf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
