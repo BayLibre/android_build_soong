@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "530e3598_2dabf3ad",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-30T17:33:39Z",
+      "side": 1,
+      "message": "I think this comment thread is no longer relevant after Patchset 2?",
+      "parentUuid": "1961b559_545ddde5",
+      "range": {
+        "startLine": 1028,
+        "startChar": 1,
+        "endLine": 1033,
+        "endChar": 2
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4ff04bf_2c194d97",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -143,6 +167,30 @@
       "side": 1,
       "message": "Yeah it looks like that. `variantNdkLibs` are derived from `deps.*Libs`, after filtering out `apiNdkLibs`.",
       "parentUuid": "a778c31a_5c0b42fa",
+      "range": {
+        "startLine": 2549,
+        "startChar": 0,
+        "endLine": 2557,
+        "endChar": 0
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f37b95_456101f4",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2557,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-11-30T17:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a5cb05_da56a448",
       "range": {
         "startLine": 2549,
         "startChar": 0,
