@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "237f972e_1eb68bc7",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-30T23:42:01Z",
+      "side": 1,
+      "message": "Can you make the function BazelEnabledModules (and its underlying field) very clear this is from a flag override? There\u0027s a few too many sets that look like \"no, really, bazel is enabled for *this* module\". \n\nBazelModulesForceEnabledByFlag() ? \n\nI know it\u0027s verbose, but I feel like we need that, esp when glancing at this logic. It looks very much like we shouldn\u0027t even need ProdMixedBuildsEnabledList if we have a function called BazelEnabledModules!",
+      "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a96617_2dbdbdcb",
+        "filename": "android/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-30T23:42:01Z",
+      "side": 1,
+      "message": "Why are we adding them to mixedBuildEnabledModules here? Isn\u0027t this added later in LogMixedBuild, and thus this is redundant?\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/config.go;l\u003d1755-1764;drc\u003d5150d0d30953af8ba2451d73f64c362869ba7f3e",
+      "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "768800f8_9059eb53",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-11-30T23:42:01Z",
+      "side": 1,
+      "message": "Are we not just effectively splitting the value of this list, just to join it again, without any validation or processing? Maybe we should just treat this flag value as a total pass-through, and ignore the delimiter contract in soong_ui entirely.",
+      "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
