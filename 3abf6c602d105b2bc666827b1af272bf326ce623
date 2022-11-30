@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e737077a_57902d5c",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2355,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-30T07:37:33Z",
+      "side": 1,
+      "message": "Because native bridge is not working from the stub interface, we should not link this against API surface.",
+      "parentUuid": "d80289d5_3ff6fddd",
+      "range": {
+        "startLine": 2355,
+        "startChar": 32,
+        "endLine": 2355,
+        "endChar": 90
+      },
+      "revId": "3abf6c602d105b2bc666827b1af272bf326ce623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2a78808_10200e06",
         "filename": "cc/library_stub.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-30T05:25:02Z",
       "side": 1,
       "message": "`name` will be `libfoo.apiimport`, not `libfoo`. Is it intended?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 46
+      },
+      "revId": "3abf6c602d105b2bc666827b1af272bf326ce623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24b1b52d_7caff4c1",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-30T07:37:33Z",
+      "side": 1,
+      "message": "Yes, it is.",
+      "parentUuid": "d2a78808_10200e06",
       "range": {
         "startLine": 140,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc4d819b_c84d1b7f",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-30T07:37:33Z",
+      "side": 1,
+      "message": "Not in theory. But I did not add ndk variants to all cc_api_library. I added a comment to remove this once it is done.",
+      "parentUuid": "511c9b5d_62f0e714",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 3
+      },
+      "revId": "3abf6c602d105b2bc666827b1af272bf326ce623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b89b0016_6b721603",
         "filename": "cc/library_stub.go",
         "patchSetId": 4
@@ -83,6 +155,30 @@
       "writtenOn": "2022-11-30T05:25:02Z",
       "side": 1,
       "message": "use `ndkVariantRegex` for consistency?",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 41
+      },
+      "revId": "3abf6c602d105b2bc666827b1af272bf326ce623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d868bf5_a5bf23c6",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-11-30T07:37:33Z",
+      "side": 1,
+      "message": "Thanks! Done!",
+      "parentUuid": "b89b0016_6b721603",
       "range": {
         "startLine": 293,
         "startChar": 0,
