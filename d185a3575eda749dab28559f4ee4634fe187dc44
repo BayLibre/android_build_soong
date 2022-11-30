@@ -83,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9678524b_eff4f533",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-30T22:06:17Z",
+      "side": 1,
+      "message": "nice, thanks\n\nAfter m clean followed by building with libcore, the following was in my find output under out:\nout/bazel/output/execroot/__main__/libcore\n\nThere was nothing there for tzdata, oddly.",
+      "parentUuid": "08280681_c5b79b73",
+      "range": {
+        "startLine": 505,
+        "startChar": 1,
+        "endLine": 505,
+        "endChar": 2
+      },
+      "revId": "d185a3575eda749dab28559f4ee4634fe187dc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d1289a9_a018ae21",
@@ -114,6 +138,24 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "3d1289a9_a018ae21",
+      "revId": "d185a3575eda749dab28559f4ee4634fe187dc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "443a277e_4650805b",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-11-30T22:06:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23bac811_823b4323",
       "revId": "d185a3575eda749dab28559f4ee4634fe187dc44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
