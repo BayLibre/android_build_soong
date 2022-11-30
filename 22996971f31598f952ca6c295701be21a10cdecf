@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5c47395_738793a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-11-30T03:44:22Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "a6e2ca20_d8e2be2b",
+      "revId": "22996971f31598f952ca6c295701be21a10cdecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e03bff80_eff0c27a",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2f5f8f5_8da64d55",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1825,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-11-30T03:44:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e03bff80_eff0c27a",
+      "range": {
+        "startLine": 1825,
+        "startChar": 74,
+        "endLine": 1825,
+        "endChar": 79
+      },
+      "revId": "22996971f31598f952ca6c295701be21a10cdecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "268b9dd4_88820f0d",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-11-29T19:56:51Z",
       "side": 1,
       "message": "I don\u0027t see any .lsdump.gz files currently exist in prebuilts/abi-dumps, do we really need the support of gzipped reference dump files?",
+      "range": {
+        "startLine": 1826,
+        "startChar": 1,
+        "endLine": 1826,
+        "endChar": 19
+      },
+      "revId": "22996971f31598f952ca6c295701be21a10cdecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b1ebb1_352f80fe",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-11-30T03:44:22Z",
+      "side": 1,
+      "message": "No, they are deprecated. I will delete the code.",
+      "parentUuid": "268b9dd4_88820f0d",
       "range": {
         "startLine": 1826,
         "startChar": 1,
