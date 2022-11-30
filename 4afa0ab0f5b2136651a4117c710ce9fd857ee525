@@ -104,6 +104,24 @@
       "parentUuid": "9de73254_cec8786d",
       "revId": "4afa0ab0f5b2136651a4117c710ce9fd857ee525",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e3b98ac_b998d021",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-11-30T15:31:18Z",
+      "side": 1,
+      "message": "yes please (i.e. 1. assume command has no space and no double quotes 2. trim the wrapping double quotes, if present)",
+      "parentUuid": "37d65d6a_fe298029",
+      "revId": "4afa0ab0f5b2136651a4117c710ce9fd857ee525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
