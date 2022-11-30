@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f667f38_2ac73b45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2022-11-30T00:28:46Z",
+      "side": 1,
+      "message": "I found this patch is also breaking aosp-master-plus-llvm build, as in https://android-build.googleplex.com/builds/submitted/9347794/aosp_raven-userdebug/latest/view/logs/build_error.log",
+      "revId": "9c84cd94f614783e9d0a0ba17aee1e9373bf9f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
