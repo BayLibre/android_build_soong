@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e60a0b16_b85cf1bd",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-11-30T13:22:31Z",
+      "side": 1,
+      "message": "nit: move this into the pbfs/invocations append loop and use the name tag in conditionals -- avoid using index access, which is error prone should one mutate the list but not here.",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 54
+      },
+      "revId": "2c6abc0370383f5eabeb85cce5f8016a0c3320a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f86d98dd_ad31ca2d",
         "filename": "ui/build/soong.go",
         "patchSetId": 6
