@@ -16,6 +16,24 @@
       "message": "Please update the commit message :)",
       "revId": "c71cbd3f5af9a368fa232dccefb25af833d2cb4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8c7e69_d60fc7ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-01T20:23:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3e81257_8df6381b",
+      "revId": "c71cbd3f5af9a368fa232dccefb25af833d2cb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
