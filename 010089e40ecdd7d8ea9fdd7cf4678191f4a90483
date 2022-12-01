@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dffd765_760d8c5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-01T18:10:14Z",
+      "side": 1,
+      "message": "Happened across this when I was trying to trace through some other logic in sanitize.go.",
+      "parentUuid": "9088ed85_b74363ee",
+      "revId": "010089e40ecdd7d8ea9fdd7cf4678191f4a90483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c302bf9_b0e63bc8",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "687cb148_bf21710a",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-01T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c302bf9_b0e63bc8",
+      "range": {
+        "startLine": 174,
+        "startChar": 23,
+        "endLine": 174,
+        "endChar": 44
+      },
+      "revId": "010089e40ecdd7d8ea9fdd7cf4678191f4a90483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e37e1b2e_b75cc543",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-11-09T10:19:37Z",
       "side": 1,
       "message": "You mean to shared dependencies? (or \"from reverse dependencies\"?)",
+      "range": {
+        "startLine": 1141,
+        "startChar": 32,
+        "endLine": 1141,
+        "endChar": 36
+      },
+      "revId": "010089e40ecdd7d8ea9fdd7cf4678191f4a90483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f509e0d3_6751cd67",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-01T18:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e37e1b2e_b75cc543",
       "range": {
         "startLine": 1141,
         "startChar": 32,
