@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60aa7db4_c63965e8",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-01T19:09:00Z",
+      "side": 1,
+      "message": "Are CTS tests allowed to use system-api?\n\nIIRC, we use a different mutator than the `sdk` mutator for stubs of that API surface",
+      "range": {
+        "startLine": 182,
+        "startChar": 5,
+        "endLine": 182,
+        "endChar": 45
+      },
+      "revId": "0ce6f3b34550f5cb53dae9e80e94d2b92ffc104c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
