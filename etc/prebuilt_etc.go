@@ -54,6 +54,7 @@ func init() {
 func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_etc", PrebuiltEtcFactory)
 	ctx.RegisterModuleType("prebuilt_etc_host", PrebuiltEtcHostFactory)
+	ctx.RegisterModuleType("prebuilt_etc_apex", PrebuiltEtcApexFactory)
 	ctx.RegisterModuleType("prebuilt_root", PrebuiltRootFactory)
 	ctx.RegisterModuleType("prebuilt_root_host", PrebuiltRootHostFactory)
 	ctx.RegisterModuleType("prebuilt_usr_share", PrebuiltUserShareFactory)
@@ -450,6 +451,18 @@ func PrebuiltEtcHostFactory() android.Module {
 	InitPrebuiltEtcModule(module, "etc")
 	// This module is host-only
 	android.InitAndroidArchModule(module, android.HostSupported, android.MultilibCommon)
+	android.InitDefaultableModule(module)
+	android.InitBazelModule(module)
+	return module
+}
+
+// prebuilt_etc_apex is for a host prebuilt artifact that is installed in
+// <partition>/etc/<sub_dir> directory.
+func PrebuiltEtcApexFactory() android.Module {
+	module := &PrebuiltEtc{}
+	InitPrebuiltEtcModule(module, "et")
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	android.InitDefaultableModule(module)
 	android.InitBazelModule(module)
 	return module
