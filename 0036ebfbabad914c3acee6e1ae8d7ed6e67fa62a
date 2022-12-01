@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "124372d7_2c4b97ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-01T18:50:11Z",
+      "side": 1,
+      "message": "what would your preferred command be?\n`find ../../out/bazel -name libcore*`\nTurned up:\n`../../out/bazel/output/execroot/__main__/libcore`",
+      "parentUuid": "051bce6c_d9103efb",
+      "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "237f972e_1eb68bc7",
         "filename": "android/bazel_handler.go",
         "patchSetId": 11
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "flag-UX shouldn\u0027t dictate variable names :)\n\nThat said, I\u0027d actually be fine with `--bazel-force-enabled-modules` in this case. We don\u0027t expect end users to actually use this flag.",
       "parentUuid": "dad0c72b_7d55fa3c",
+      "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a995dfb_49dd5745",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-01T18:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81a25c4e_cdaf8238",
       "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -173,6 +209,24 @@
       "side": 1,
       "message": "Splitting the flag and storing it implies that the values are used somewhere in this binary -- I\u0027d prefer we simply passthrough the full string without parsing in soong_ui.\n\nSo yes, YAGNI",
       "parentUuid": "147a8bed_69e27c2e",
+      "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "098145ab_1c88e1f8",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-01T18:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4341db5a_89c5a1b2",
       "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
