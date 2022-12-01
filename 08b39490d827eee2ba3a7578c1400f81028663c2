@@ -52,6 +52,24 @@
       "parentUuid": "8ef3414b_d58170fa",
       "revId": "08b39490d827eee2ba3a7578c1400f81028663c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bce27ee_8bbdd9d4",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-12-01T20:12:41Z",
+      "side": 1,
+      "message": "https://dashboards.corp.google.com/android_build_per_phase_user_build_time_overview_dev\nThis dashboard will use the soong_build_metrics, if I see any other dashboard use it, I will also switch it to the newest field.",
+      "parentUuid": "529915cb_48e95d0c",
+      "revId": "08b39490d827eee2ba3a7578c1400f81028663c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
