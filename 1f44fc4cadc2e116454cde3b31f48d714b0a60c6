@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90553aa7_8f4fa4fa",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-01T15:51:46Z",
+      "side": 1,
+      "message": "explicitly tell the compile we are ignoring the potential error (the second value)\nto suppress warnings",
+      "parentUuid": "bbbee19c_df5f79ba",
+      "revId": "1f44fc4cadc2e116454cde3b31f48d714b0a60c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93ea2d34_286ef6a2",
         "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.proto",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-11-22T16:59:00Z",
       "side": 1,
       "message": "why are these out of order, count wise?",
+      "revId": "1f44fc4cadc2e116454cde3b31f48d714b0a60c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e8206ae_538c7e3c",
+        "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-01T15:51:46Z",
+      "side": 1,
+      "message": "count?\n\nDid you mean why 9 and 10? Because those are the next unused tags.\n\nOr did you mean why do I not append these at the end i.e. at L50? Logically all the counts are nicer together, nope?",
+      "parentUuid": "93ea2d34_286ef6a2",
       "revId": "1f44fc4cadc2e116454cde3b31f48d714b0a60c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
