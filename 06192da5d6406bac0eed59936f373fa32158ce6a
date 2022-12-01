@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87450ccb_a36b1b23",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-01T18:11:24Z",
+      "side": 1,
+      "message": "reverted changes to isUnsanitizedVariant",
+      "parentUuid": "60190640_cccd39a7",
+      "revId": "06192da5d6406bac0eed59936f373fa32158ce6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57ff18f2_e7b4f583",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a82ae2d8_d5db7d49",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-01T18:11:24Z",
+      "side": 1,
+      "message": "not sure what you\u0027re asking for here",
+      "parentUuid": "57ff18f2_e7b4f583",
+      "revId": "06192da5d6406bac0eed59936f373fa32158ce6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2c69404_eda4dfd4",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-11-08T22:57:48Z",
       "side": 1,
       "message": "Would it be bad to factor out all of the `sanitize.Properties.SanitizeMutated.*` with `props :\u003d \u0026sanitize.Properties.SanitizeMutated`, and then just reference it below? In truth, this pattern would add clarity throughout this file, cutting down on visual noise; but I don\u0027t know what the Google `Go` style guide would advise in this situation. None of `go/go-style/{guide,decisions,best-practices}` seem to mention this case, though of course short receiver names are encouraged.",
+      "revId": "06192da5d6406bac0eed59936f373fa32158ce6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "031bcb21_0d9190b9",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-01T18:11:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2c69404_eda4dfd4",
       "revId": "06192da5d6406bac0eed59936f373fa32158ce6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
