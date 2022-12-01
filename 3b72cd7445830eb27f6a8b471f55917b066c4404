@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e726265_8d83db89",
+        "filename": "android/config.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-01T19:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5e8e058_62ba92fa",
+      "range": {
+        "startLine": 234,
+        "startChar": 12,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "3b72cd7445830eb27f6a8b471f55917b066c4404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec1cdbaa_5d994e52",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bcefeb2_8bace84b",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-01T19:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec1cdbaa_5d994e52",
+      "revId": "3b72cd7445830eb27f6a8b471f55917b066c4404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67f0db7a_2f9cf8a1",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-12-01T18:58:56Z",
       "side": 1,
       "message": "This variable too",
+      "revId": "3b72cd7445830eb27f6a8b471f55917b066c4404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5743ed_25eb063a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-01T19:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67f0db7a_2f9cf8a1",
       "revId": "3b72cd7445830eb27f6a8b471f55917b066c4404",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
