@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8da9829_e860e09f",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-01T06:39:21Z",
+      "side": 1,
+      "message": "Oh I see. I guess putting it in fillCommonBp2BuildModuleAttrs would be a middle ground, but this is fine too.",
+      "parentUuid": "dee178b8_16c51715",
+      "revId": "517b886d50ed623ca9608fe9cdd7968811a33b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8766a81_a8ae8919",
