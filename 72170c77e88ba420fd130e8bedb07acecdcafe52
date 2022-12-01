@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a5069d_ca1d071a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-01T20:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9100687b_a3536bb0",
+      "revId": "72170c77e88ba420fd130e8bedb07acecdcafe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5508064_4a1cae56",
@@ -66,6 +84,24 @@
       "writtenOn": "2022-11-30T23:30:25Z",
       "side": 1,
       "message": "Why not, instead, you just treat a new field c.BuildCommand, as the source of truth? It\u0027s initialized to os.Args, but if you see a \"--build-command\" arg, then it overrides that field to the value of that flag?\n\nThat way you also don\u0027t need `SetBCommand`, because you will just set to the value of c.BuildCommand in metrics, without worrying about the origin of its value.",
+      "revId": "72170c77e88ba420fd130e8bedb07acecdcafe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a94fbf7_cc3d6966",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-01T20:06:41Z",
+      "side": 1,
+      "message": "Done - but I don\u0027t think we even need the field.",
+      "parentUuid": "e5508064_4a1cae56",
       "revId": "72170c77e88ba420fd130e8bedb07acecdcafe52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

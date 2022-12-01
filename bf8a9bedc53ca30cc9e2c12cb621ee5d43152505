@@ -158,6 +158,24 @@
       "parentUuid": "9796fc37_842234e8",
       "revId": "bf8a9bedc53ca30cc9e2c12cb621ee5d43152505",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8eb6a73_4cb15167",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-01T20:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a7aad82_b792b679",
+      "revId": "bf8a9bedc53ca30cc9e2c12cb621ee5d43152505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
