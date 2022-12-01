@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cdb8b95_da10e4b3",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-01T23:07:06Z",
+      "side": 1,
+      "message": "Can\u0027t `expected \u003d\u003d nil \u0026\u0026 actual \u003d\u003d nil`, but this would raise an error?",
+      "revId": "ec0bb10eb3f987f139ee97c1581ac6b1dcc0a617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

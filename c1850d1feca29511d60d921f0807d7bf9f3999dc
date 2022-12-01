@@ -175,6 +175,24 @@
       "parentUuid": "31a943a3_b86de94a",
       "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac7da306_f776a09c",
+        "filename": "android/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-01T23:07:06Z",
+      "side": 1,
+      "message": "This looks cleaner. Thanks!",
+      "parentUuid": "c2d4cc05_0300e7de",
+      "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
