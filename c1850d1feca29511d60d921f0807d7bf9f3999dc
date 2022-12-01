@@ -139,6 +139,24 @@
       "parentUuid": "f3e5ebb6_6e1ab2ca",
       "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a943a3_b86de94a",
+        "filename": "android/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-12-01T14:30:49Z",
+      "side": 1,
+      "message": "Unfortunately, not. It\u0027s difficult to follow in Gerrit but the `BazelTargets` are only returned by `GenerateBazelTargets` which is called in the bazel implementation of `PostParseProcessor(*TestResult)`. The targets need to be tunneled out to the test that called `result :\u003d ...RunTest()`. The `TestResult.Data` field is used for that purpose.\n\nI think that I made this more confusing than necessary with the way that I wrapped the `*TestResult` in a `BazelTestResult` in order to set the fields and then just discarded it. That was a holdover from my attempts to try a better approach before I ended up with the `Data` idea.\n\nI can\u0027t return `*BazelTestResult` instead of `*TestResult` because even though `*BazelTestResult` embeds a `*TestResult` it is not a `*TestResult`. In Java that would work but then in Java we could use generics which would be even better.\n\nNow, if instead of `*TestResult` `RunTest()` returned a `TestResult` interface then it would work, the Bazel tests would just need to downcast to `*BazelTestResult`. I could add a `RunTestWithCustomResult() CustomTestResult` to do that so instead of doing this:\n```\nresult :\u003d preparer.RunTest(t)\nbazelResult :\u003d BazelTestResult{result}\n```\n\nYou would have to do this:\n```\nbazelResult :\u003d preparer.RunTestWithCustomResult(r).(*BazelTestResult)\n```\n\nWhich is slightly better but not that big a saving. It would make it easier to access the individual fields, and to add new data to tunnel through.\n\nWould you like me to do that instead?",
+      "parentUuid": "67720612_85b8755c",
+      "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

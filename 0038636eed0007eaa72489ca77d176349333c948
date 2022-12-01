@@ -51,6 +51,24 @@
       "parentUuid": "2cb29a89_9e564e3f",
       "revId": "0038636eed0007eaa72489ca77d176349333c948",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a794d5_83443262",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-12-01T14:30:49Z",
+      "side": 1,
+      "message": "Sorry to hear that. I\u0027m glad you\u0027re recovered. It\u0027s NP, I know you\u0027re busy. I pinged because I wanted to make sure it had not been forgotten.",
+      "parentUuid": "580cf70e_d894c9f2",
+      "revId": "0038636eed0007eaa72489ca77d176349333c948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
