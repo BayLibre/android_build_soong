@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc46d56c_2a9609a6",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-12-01T01:36:12Z",
+      "side": 1,
+      "message": "This part is removed.",
+      "parentUuid": "b8cfd400_5afa5d5d",
+      "range": {
+        "startLine": 1031,
+        "startChar": 10,
+        "endLine": 1031,
+        "endChar": 39
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1961b559_545ddde5",
@@ -96,6 +120,30 @@
       "side": 1,
       "message": "I think this comment thread is no longer relevant after Patchset 2?",
       "parentUuid": "1961b559_545ddde5",
+      "range": {
+        "startLine": 1028,
+        "startChar": 1,
+        "endLine": 1033,
+        "endChar": 2
+      },
+      "revId": "2f5c32677b4f850043b4cca267d590b681e9363e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a8f2df_0a0b186c",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-12-01T01:36:12Z",
+      "side": 1,
+      "message": "Yep. Marking as resolved.",
+      "parentUuid": "530e3598_2dabf3ad",
       "range": {
         "startLine": 1028,
         "startChar": 1,
