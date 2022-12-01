@@ -157,6 +157,24 @@
       "parentUuid": "67720612_85b8755c",
       "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2d4cc05_0300e7de",
+        "filename": "android/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-12-01T15:29:29Z",
+      "side": 1,
+      "message": "I spent a little while seeing what this would look like and I think it is cleaner that what I had before so I uploaded it. Let me know what you think.",
+      "parentUuid": "31a943a3_b86de94a",
+      "revId": "c1850d1feca29511d60d921f0807d7bf9f3999dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
