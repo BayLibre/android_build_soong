@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e8e058_62ba92fa",
+        "filename": "android/config.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-01T18:58:56Z",
+      "side": 1,
+      "message": "Could you please rename this variable too?",
+      "range": {
+        "startLine": 234,
+        "startChar": 12,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "3b72cd7445830eb27f6a8b471f55917b066c4404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1cdbaa_5d994e52",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-01T18:58:56Z",
+      "side": 1,
+      "message": "This variable too",
+      "revId": "3b72cd7445830eb27f6a8b471f55917b066c4404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f0db7a_2f9cf8a1",
+        "filename": "ui/build/config.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-01T18:58:56Z",
+      "side": 1,
+      "message": "This variable too",
+      "revId": "3b72cd7445830eb27f6a8b471f55917b066c4404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
