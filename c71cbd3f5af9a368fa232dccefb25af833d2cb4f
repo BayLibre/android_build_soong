@@ -34,6 +34,24 @@
       "parentUuid": "d3e81257_8df6381b",
       "revId": "c71cbd3f5af9a368fa232dccefb25af833d2cb4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a792be6_8a462d4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-01T20:27:07Z",
+      "side": 1,
+      "message": "I assume you also tested this change by adding --build-command\u003d\"some build command\" and verifying that the output metrics contains the appropriate value, right? This is not in one of your Test lines.",
+      "parentUuid": "6c8c7e69_d60fc7ad",
+      "revId": "c71cbd3f5af9a368fa232dccefb25af833d2cb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
