@@ -48,6 +48,8 @@ type GenruleExtraProperties struct {
 //
 //	CC_NATIVE_BRIDGE  the name of the subdirectory that native bridge libraries are stored in if
 //	                  the architecture has native bridge enabled, empty if it is disabled.
+//
+//	CC_OS             the name of the OS the command is being executed for.
 func GenRuleFactory() android.Module {
 	module := genrule.NewGenRule()
 
