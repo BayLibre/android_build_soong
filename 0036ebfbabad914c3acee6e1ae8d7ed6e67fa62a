@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81a25c4e_cdaf8238",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-01T16:16:31Z",
+      "side": 1,
+      "message": "flag-UX shouldn\u0027t dictate variable names :)\n\nThat said, I\u0027d actually be fine with `--bazel-force-enabled-modules` in this case. We don\u0027t expect end users to actually use this flag.",
+      "parentUuid": "dad0c72b_7d55fa3c",
+      "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40a96617_2dbdbdcb",
         "filename": "android/config.go",
         "patchSetId": 11
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "I thought this might be an issue. If you think that splitting them before the call to soong_build is a YAGNI, I\u0027ll refactor.",
       "parentUuid": "768800f8_9059eb53",
+      "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4341db5a_89c5a1b2",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-01T16:16:31Z",
+      "side": 1,
+      "message": "Splitting the flag and storing it implies that the values are used somewhere in this binary -- I\u0027d prefer we simply passthrough the full string without parsing in soong_ui.\n\nSo yes, YAGNI",
+      "parentUuid": "147a8bed_69e27c2e",
       "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
