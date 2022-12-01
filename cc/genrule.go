@@ -68,8 +68,9 @@ func GenRuleFactory() android.Module {
 func genruleCmdModifier(ctx android.ModuleContext, cmd string) string {
 	target := ctx.Target()
 	arch := target.Arch.ArchType
-	return fmt.Sprintf("CC_ARCH=%s CC_NATIVE_BRIDGE=%s CC_MULTILIB=%s && %s",
-		arch.Name, target.NativeBridgeRelativePath, arch.Multilib, cmd)
+    osName := target.Os.Name
+	return fmt.Sprintf("CC_ARCH=%s CC_NATIVE_BRIDGE=%s CC_MULTILIB=%s CC_OS_NAME=%s && %s",
+		arch.Name, target.NativeBridgeRelativePath, arch.Multilib, osName, cmd)
 }
 
 var _ android.ImageInterface = (*GenruleExtraProperties)(nil)
