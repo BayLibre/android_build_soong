@@ -52,6 +52,23 @@
       "parentUuid": "d757d966_8f7cd673",
       "revId": "9c84cd94f614783e9d0a0ba17aee1e9373bf9f43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde754de_01508c15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-01T09:06:21Z",
+      "side": 1,
+      "message": "This is no longer necessary, see https://android-review.git.corp.google.com/c/platform/build/soong/+/2320454",
+      "revId": "9c84cd94f614783e9d0a0ba17aee1e9373bf9f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
