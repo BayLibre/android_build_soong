@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49685cc0_adcffe7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-01T23:29:55Z",
+      "side": 1,
+      "message": "Jihoon, WDYT about adding this property?",
+      "revId": "f8f28ce1f822ad14b7f770323bc9c3475836536c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
