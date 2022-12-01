@@ -52,6 +52,24 @@
       "parentUuid": "6c8c7e69_d60fc7ad",
       "revId": "c71cbd3f5af9a368fa232dccefb25af833d2cb4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a4eac42_bf6e0cd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-01T21:01:36Z",
+      "side": 1,
+      "message": "Yes - and I\u0027ve seen my \"build libcore:all\" in the metrics table.",
+      "parentUuid": "7a792be6_8a462d4c",
+      "revId": "c71cbd3f5af9a368fa232dccefb25af833d2cb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
