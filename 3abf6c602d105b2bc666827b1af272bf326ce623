@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5461cdc_fabe8876",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2355,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-12-01T02:45:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e737077a_57902d5c",
+      "range": {
+        "startLine": 2355,
+        "startChar": 32,
+        "endLine": 2355,
+        "endChar": 90
+      },
+      "revId": "3abf6c602d105b2bc666827b1af272bf326ce623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2a78808_10200e06",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Not in theory. But I did not add ndk variants to all cc_api_library. I added a comment to remove this once it is done.",
       "parentUuid": "511c9b5d_62f0e714",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 3
+      },
+      "revId": "3abf6c602d105b2bc666827b1af272bf326ce623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61b041f7_c4c7d08d",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-12-01T02:45:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cc4d819b_c84d1b7f",
       "range": {
         "startLine": 268,
         "startChar": 0,
