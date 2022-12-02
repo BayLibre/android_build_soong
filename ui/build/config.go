@@ -65,24 +65,25 @@ type configImpl struct {
 	buildDateTime string
 
 	// From the arguments
-	parallel        int
-	keepGoing       int
-	verbose         bool
-	checkbuild      bool
-	dist            bool
-	jsonModuleGraph bool
-	apiBp2build     bool // Generate BUILD files for Soong modules that contribute APIs
-	bp2build        bool
-	queryview       bool
-	reportMkMetrics bool // Collect and report mk2bp migration progress metrics.
-	soongDocs       bool
-	skipConfig      bool
-	skipKati        bool
-	skipKatiNinja   bool
-	skipSoong       bool
-	skipNinja       bool
-	skipSoongTests  bool
-	searchApiDir    bool // Scan the Android.bp files generated in out/api_surfaces
+	parallel          int
+	keepGoing         int
+	verbose           bool
+	checkbuild        bool
+	dist              bool
+	jsonModuleGraph   bool
+	apiBp2build       bool // Generate BUILD files for Soong modules that contribute APIs
+	bp2build          bool
+	queryview         bool
+	reportMkMetrics   bool // Collect and report mk2bp migration progress metrics.
+	soongDocs         bool
+	skipConfig        bool
+	skipKati          bool
+	skipKatiNinja     bool
+	skipSoong         bool
+	skipNinja         bool
+	skipSoongTests    bool
+	searchApiDir      bool // Scan the Android.bp files generated in out/api_surfaces
+	skipMetricsUpload bool
 
 	// From the product config
 	katiArgs        []string
@@ -111,6 +112,9 @@ type configImpl struct {
 	metricsUploader string
 
 	bazelForceEnabledModules string
+
+	// For metrics-upload-only - manually specify a build-started time
+	buildStartedTime int64
 }
 
 const srcDirFileCheck = "build/soong/root.bp"
@@ -733,6 +737,16 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.skipConfig = true
 		} else if arg == "--skip-soong-tests" {
 			c.skipSoongTests = true
+		} else if arg == "--skip-metrics-upload" {
+			c.skipMetricsUpload = true
+		} else if arg == "--metrics-upload-only" {
+			c.skipSoongTests = true
+			c.skipSoong = true
+			c.skipKati = true
+			c.skipKatiNinja = true
+			c.skipSoongTests = true
+			c.skipNinja = true
+			c.skipConfig = true
 		} else if arg == "--mk-metrics" {
 			c.reportMkMetrics = true
 		} else if arg == "--bazel-mode" {
@@ -751,6 +765,14 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			ctx.Metrics.SetBuildCommand([]string{buildCmd})
 		} else if strings.HasPrefix(arg, "--bazel-force-enabled-modules=") {
 			c.bazelForceEnabledModules = strings.TrimPrefix(arg, "--bazel-force-enabled-modules=")
+		} else if strings.HasPrefix(arg, "--build-started-time=") {
+			buildTimeStr := strings.TrimPrefix(arg, "--build-started-time=")
+			val, err := strconv.ParseInt(buildTimeStr, 10, 64)
+			if err == nil {
+				c.buildStartedTime = val
+			} else {
+				ctx.Fatalf("Error parsing build-time-started", err)
+			}
 		} else if len(arg) > 0 && arg[0] == '-' {
 			parseArgNum := func(def int) int {
 				if len(arg) > 2 {
@@ -1500,6 +1522,19 @@ func (c *configImpl) IsBazelMixedBuildForceDisabled() bool {
 
 func (c *configImpl) BazelModulesForceEnabledByFlag() string {
 	return c.bazelForceEnabledModules
+}
+
+func (c *configImpl) SkipMetricsUpload() bool {
+	return c.skipMetricsUpload
+}
+
+// Returns a Time object if one was passed via command-line flag.
+// Otherwise returns the passed default.
+func (c *configImpl) BuildStartedTimeOrDefault(defaultTime time.Time) time.Time {
+	if c.buildStartedTime == 0 {
+		return defaultTime
+	}
+	return time.UnixMilli(c.buildStartedTime)
 }
 
 func GetMetricsUploader(topDir string, env *Environment) string {
