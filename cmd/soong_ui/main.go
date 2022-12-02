@@ -91,6 +91,12 @@ var commands = []command{
 		config:      buildActionConfig,
 		stdio:       stdio,
 		run:         runMake,
+	}, {
+		flag:        "upload-metrics-only",
+		description: "upload metrics without building anything",
+		config:      uploadMetricsConfig,
+		stdio:       stdio,
+		run:         uploadMetrics,
 	},
 }
 
@@ -215,7 +221,13 @@ func main() {
 			soongMetricsFile,         // high level metrics related to this build system.
 			config.BazelMetricsDir(), // directory that contains a set of bazel metrics.
 		}
-		defer build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, files...)
+
+		if !config.SkipMetricsUpload() {
+			buildStarted = config.BuildStartedTimeOrDefault(buildStarted)
+
+			defer build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, files...)
+		}
+
 		defer met.Dump(soongMetricsFile)
 		defer build.CheckProdCreds(buildCtx, config)
 	}
@@ -401,6 +413,11 @@ func dumpVarConfig(ctx build.Context, args ...string) build.Config {
 	return build.NewConfig(ctx)
 }
 
+// uploadMetricsConfig does not require any additional arguments to be parsed by the NewConfig.
+func uploadMetricsConfig(ctx build.Context, args ...string) build.Config {
+	return build.NewConfig(ctx, []string{"--skip-all"}...)
+}
+
 func buildActionConfig(ctx build.Context, args ...string) build.Config {
 	flags := flag.NewFlagSet("build-mode", flag.ContinueOnError)
 	flags.SetOutput(ctx.Writer)
@@ -492,6 +509,10 @@ func buildActionConfig(ctx build.Context, args ...string) build.Config {
 	// Remove the build action flags from the args as they are not recognized by the config.
 	args = args[numBuildActionFlags:]
 	return build.NewBuildActionConfig(buildAction, *dir, ctx, args...)
+}
+
+func uploadMetrics(_ build.Context, _ build.Config, _ []string, _ string) {
+	// This is a no-op. The upload-metrics action skips all relevant build activity.
 }
 
 func runMake(ctx build.Context, config build.Config, _ []string, logsDir string) {
