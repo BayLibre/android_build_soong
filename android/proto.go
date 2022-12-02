@@ -234,9 +234,11 @@ func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, m *ModuleBase, srcs baz
 			}
 		}
 
+		tags := ApexAvailableTags(ctx.Module())
+
 		ctx.CreateBazelTargetModule(
 			bazel.BazelTargetModuleProperties{Rule_class: "proto_library"},
-			CommonAttributes{Name: info.Name},
+			CommonAttributes{Name: info.Name, Tags: tags},
 			&attrs)
 
 		protoLibraries.Add(&bazel.Label{

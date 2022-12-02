@@ -940,6 +940,14 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		}
 	}
 
+	var tags bazel.StringListAttribute
+	am, ok := ctx.Module().(android.ApexModule)
+	if !ok || !am.CanHaveApexVariants() {
+		tags.Append(bazel.MakeStringListAttribute([]string{"apex_available=//apex_available:no_can_have_apex_variants"}))
+	} else {
+		tags = android.ApexAvailableTags(m)
+	}
+
 	if ctx.ModuleType() == "gensrcs" {
 		// The Output_extension prop is not in an immediately accessible field
 		// in the Module struct, so use GetProperties and cast it
@@ -961,7 +969,7 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 			Cmd:              cmd,
 			Tools:            tools,
 		}
-		ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
+		ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name(), Tags: tags}, attrs)
 	} else {
 		// The Out prop is not in an immediately accessible field
 		// in the Module struct, so use GetProperties and cast it
@@ -982,7 +990,7 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		props := bazel.BazelTargetModuleProperties{
 			Rule_class: "genrule",
 		}
-		ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
+		ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name(), Tags: tags}, attrs)
 	}
 }
 
