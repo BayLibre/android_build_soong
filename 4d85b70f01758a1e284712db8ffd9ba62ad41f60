@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40759cda_fc4a0293",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-02T01:07:03Z",
+      "side": 1,
+      "message": "I\u0027m a little concerned that there\u0027ll be other downstream tools that start to read this (supposedly for-human-consumption) comment and do things with it. Can we make this a structured LOCAL_SOONG_MODULE_TYPE variable instead of a comment?",
+      "range": {
+        "startLine": 137,
+        "startChar": 44,
+        "endLine": 137,
+        "endChar": 67
+      },
+      "revId": "4d85b70f01758a1e284712db8ffd9ba62ad41f60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
