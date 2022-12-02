@@ -16,6 +16,24 @@
       "message": "Can\u0027t `expected \u003d\u003d nil \u0026\u0026 actual \u003d\u003d nil`, but this would raise an error?",
       "revId": "ec0bb10eb3f987f139ee97c1581ac6b1dcc0a617",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3193cf22_a3095372",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-12-02T11:14:46Z",
+      "side": 1,
+      "message": "Technically they could but it would require the code that populates the `map[string]BazelTargets` to purposely put a nil array into the map, otherwise, only one of them can be `nil`. However, it won\u0027t hurt to handle that as the result if the code did that would be very confusing.",
+      "parentUuid": "5cdb8b95_da10e4b3",
+      "revId": "ec0bb10eb3f987f139ee97c1581ac6b1dcc0a617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
