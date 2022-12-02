@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e373e6f7_ddffed88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-02T19:12:38Z",
+      "side": 1,
+      "message": "with grep you\u0027re looking into content of the files, but we\u0027d want to rather look for a binary or since you\u0027re only running nothing, maybe a ninja action in buid.ninja that\u0027d look bazel-esque",
+      "parentUuid": "124372d7_2c4b97ce",
+      "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "237f972e_1eb68bc7",
         "filename": "android/bazel_handler.go",
         "patchSetId": 11
