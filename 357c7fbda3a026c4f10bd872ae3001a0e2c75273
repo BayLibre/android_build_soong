@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d0c97e_8797777d",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-02T22:02:32Z",
+      "side": 1,
+      "message": "It\u0027s good practice to have TODO be the thing that you want to do, in an \"imperative\" phrase\n\ne.g.\n\"TODO(juu): Stop embedding soong_build_metrics in soong_metrics.\"",
+      "revId": "357c7fbda3a026c4f10bd872ae3001a0e2c75273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
