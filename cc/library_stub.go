@@ -122,8 +122,9 @@ func (d *apiLibraryDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps
 
 	var in android.Path
 
+	// src might not exist during the begining of soong analysis in Multi-tree
 	if src := proptools.String(d.properties.Src); src != "" {
-		in = android.PathForModuleSrc(ctx, src)
+		in = android.MaybeExistentPathForSource(ctx, ctx.ModuleDir(), src)
 	}
 
 	// LLNDK variant
