@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca6f91cc_b0a5d1f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-02T02:52:33Z",
+      "side": 1,
+      "message": "Ack. If we find that api file path is not sufficient in the future and we need additional metadata (e.g. the partial api surface it represents), we can remove this property and use java_api_contributions",
+      "parentUuid": "f5e0398b_dea7843f",
+      "revId": "f8f28ce1f822ad14b7f770323bc9c3475836536c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3f92923_b67bfe72",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-12-02T02:44:56Z",
       "side": 1,
       "message": "Here, is there a reason why you have not included `\"api2/current.txt\"`? This test case should pass as it checks for substring existence inside a full command, but I believe it would be more clear to include both `\"api1/current.txt\"` and `\"api2/current.txt\"`.",
+      "revId": "f8f28ce1f822ad14b7f770323bc9c3475836536c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b1d7549_cf232a3a",
+        "filename": "java/java_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1884,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-02T02:52:33Z",
+      "side": 1,
+      "message": "Oops thanks for catching, I have added all the expected files in the test case.",
+      "parentUuid": "b3f92923_b67bfe72",
       "revId": "f8f28ce1f822ad14b7f770323bc9c3475836536c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
