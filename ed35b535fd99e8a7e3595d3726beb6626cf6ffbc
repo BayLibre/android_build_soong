@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8106939_71f79d3d",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1864,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-02T20:41:15Z",
+      "side": 1,
+      "message": "this will unnecessarily iterate over properties for each arch-variant for each variant that exists, but we should only need to care about the properties current variant -- could we instead do something like: calling [`c.sanitize.isSanitizerEnabled`](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/sanitize.go;l\u003d1041;drc\u003da8ad378abc1ff135064bb557b479afc71aeeb5ab) and a new function for misc_undefined or or check `if `c.sanitize` \u0026\u0026 c.Sanitize.properties...`",
+      "range": {
+        "startLine": 1864,
+        "startChar": 1,
+        "endLine": 1864,
+        "endChar": 24
+      },
+      "revId": "ed35b535fd99e8a7e3595d3726beb6626cf6ffbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
