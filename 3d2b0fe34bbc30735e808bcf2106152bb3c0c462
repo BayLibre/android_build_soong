@@ -87,6 +87,30 @@
       },
       "revId": "3d2b0fe34bbc30735e808bcf2106152bb3c0c462",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415160ab_d38394fb",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2022-12-02T08:01:33Z",
+      "side": 1,
+      "message": "ref_dump_files require the users to add additional Android.bp, and the file pattern is actually not configurable. In comparison, ref_dump_dirs are more convenient for soong users, so I would like to check in this CL.",
+      "parentUuid": "a8c8721b_541a4704",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "3d2b0fe34bbc30735e808bcf2106152bb3c0c462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
