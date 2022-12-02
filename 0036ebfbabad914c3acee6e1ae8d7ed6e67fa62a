@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f730421_e7cdfb23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-02T21:02:22Z",
+      "side": 1,
+      "message": "is the above file satisfactory? (I presumed that `execroot/__main__` matched binary\u0027s and that this was `bazel-out`)",
+      "parentUuid": "e373e6f7_ddffed88",
+      "revId": "0036ebfbabad914c3acee6e1ae8d7ed6e67fa62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "237f972e_1eb68bc7",
         "filename": "android/bazel_handler.go",
         "patchSetId": 11
