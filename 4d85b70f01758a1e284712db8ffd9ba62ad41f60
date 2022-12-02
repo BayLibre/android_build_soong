@@ -22,6 +22,30 @@
       },
       "revId": "4d85b70f01758a1e284712db8ffd9ba62ad41f60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "886b2099_2e5debcf",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-12-02T02:04:28Z",
+      "side": 1,
+      "message": "I wanted it to be minimally invasive, and adding it as a comment serves the purpose. Adding a variable is a commitment. As the structure of this file hasn\u0027t been documented, I am not sure why a (highly hypothetical IMHO) usage of this comment downstream is a concern.",
+      "parentUuid": "40759cda_fc4a0293",
+      "range": {
+        "startLine": 137,
+        "startChar": 44,
+        "endLine": 137,
+        "endChar": 67
+      },
+      "revId": "4d85b70f01758a1e284712db8ffd9ba62ad41f60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
