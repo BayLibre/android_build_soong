@@ -16,6 +16,41 @@
       "message": "Jihoon, WDYT about adding this property?",
       "revId": "f8f28ce1f822ad14b7f770323bc9c3475836536c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e0398b_dea7843f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-12-02T02:44:56Z",
+      "side": 1,
+      "message": "Would the main benefit of adding this property be removing the need to define `java_api_contributions` module for colocated API text files? If so, I do not see any reasons not to add this property.",
+      "parentUuid": "49685cc0_adcffe7c",
+      "revId": "f8f28ce1f822ad14b7f770323bc9c3475836536c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3f92923_b67bfe72",
+        "filename": "java/java_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1884,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-12-02T02:44:56Z",
+      "side": 1,
+      "message": "Here, is there a reason why you have not included `\"api2/current.txt\"`? This test case should pass as it checks for substring existence inside a full command, but I believe it would be more clear to include both `\"api1/current.txt\"` and `\"api2/current.txt\"`.",
+      "revId": "f8f28ce1f822ad14b7f770323bc9c3475836536c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
