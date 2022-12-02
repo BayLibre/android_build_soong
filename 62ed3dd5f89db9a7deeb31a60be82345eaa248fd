@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13297a66_a9f5a8ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-02T01:39:53Z",
+      "side": 1,
+      "message": "Thanks for renaming. I think this name is more intuitive.",
+      "revId": "62ed3dd5f89db9a7deeb31a60be82345eaa248fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
