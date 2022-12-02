@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e48f139_6394c936",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-12-02T05:14:42Z",
+      "side": 1,
+      "message": "OK, found it, it was silly. PTAL.",
+      "parentUuid": "611d185f_8d497bee",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 382,
+        "endChar": 54
+      },
+      "revId": "2c6abc0370383f5eabeb85cce5f8016a0c3320a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f86d98dd_ad31ca2d",
         "filename": "ui/build/soong.go",
         "patchSetId": 6
