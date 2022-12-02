@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f13a50_aa12f1ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-02T14:28:42Z",
+      "side": 1,
+      "message": "based on our discussion to overhaul\nall metrics output files will be separated, i.e. soong_build_metrics.pb will eventually not be embedded in soong_metrics\nBut for backward compatibility, we will continue to embed it (until our dashboard queries etc have been changed)",
+      "revId": "d439f9431dad3200a56e7660078f90e311579ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
