@@ -33,6 +33,24 @@
       "message": "add a TODO comment in code where we embed soong_build_metrics.pb into soong_metrics\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/soong.go;l\u003d564-578;drc\u003d4cbe83ad5e9208b6634803c4d4c453d191d18b63",
       "revId": "d439f9431dad3200a56e7660078f90e311579ed0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34772a8c_971dba83",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-12-02T21:57:41Z",
+      "side": 1,
+      "message": "Good advice. Added the \u0027TODO\u0027 comment. Thanks!",
+      "parentUuid": "b7bad61d_25dd256d",
+      "revId": "d439f9431dad3200a56e7660078f90e311579ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
