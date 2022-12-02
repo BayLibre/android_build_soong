@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a58d46b_80e25a5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043473
+      },
+      "writtenOn": "2022-12-02T23:37:03Z",
+      "side": 1,
+      "message": "GPL with syscall exceptions are not always permissive in nature. I\u0027d hold off on this till we document what are the circumstances under which these are permissive (Similar to how the Class path exceptions were documented as being permissive)",
+      "revId": "6bc8d6bbe57de76e1480be6b29f8b7d825c489d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
