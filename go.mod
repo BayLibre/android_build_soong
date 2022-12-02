@@ -1,21 +1,19 @@
 module android/soong
 
-require (
-  google.golang.org/protobuf v0.0.0
-  github.com/google/blueprint v0.0.0
-  prebuilts/bazel/common/proto/analysis_v2 v0.0.0
-  prebuilts/bazel/common/proto/build v0.0.0 // indirect
-)
-
 replace (
-  google.golang.org/protobuf v0.0.0 => ../../external/golang-protobuf
-  github.com/google/blueprint v0.0.0 => ../blueprint
-  github.com/google/go-cmp v0.5.5 => ../../external/go-cmp
-  prebuilts/bazel/common/proto/analysis_v2 => ../../prebuilts/bazel/common/proto/analysis_v2
-  prebuilts/bazel/common/proto/build => ../../prebuilts/bazel/common/proto/build
+	github.com/google/blueprint => ../blueprint
+	github.com/google/go-cmp => ../../external/go-cmp
+	google.golang.org/protobuf => ../../external/golang-protobuf
+	prebuilts/bazel/common/proto/analysis_v2 => ../../prebuilts/bazel/common/proto/analysis_v2
+	prebuilts/bazel/common/proto/build => ../../prebuilts/bazel/common/proto/build
 )
 
-// Indirect deps from golang-protobuf
-exclude github.com/golang/protobuf v1.5.0
+go 1.19
 
-go 2.0
+require (
+	github.com/google/blueprint v0.0.0-00010101000000-000000000000
+	google.golang.org/protobuf v0.0.0-00010101000000-000000000000
+	prebuilts/bazel/common/proto/analysis_v2 v0.0.0-00010101000000-000000000000
+)
+
+require prebuilts/bazel/common/proto/build v0.0.0-00010101000000-000000000000 // indirect
