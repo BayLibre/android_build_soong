@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b765cc_ca397788",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-12-02T05:24:57Z",
+      "side": 1,
+      "message": "This broke Mac host tooling builds. I CCed you in a DroidMonitor chat, since this is also unfortunately a stacked breakage from earlier.",
+      "revId": "92c725994f61e54090a8a3db578364d67142e24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
