@@ -215,7 +215,13 @@ func main() {
 			soongMetricsFile,         // high level metrics related to this build system.
 			config.BazelMetricsDir(), // directory that contains a set of bazel metrics.
 		}
-		defer build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, files...)
+
+		if !config.SkipMetricsUpload() {
+			buildStarted = config.BuildStartedTimeOrDefault(buildStarted)
+
+			defer build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, files...)
+		}
+
 		defer met.Dump(soongMetricsFile)
 		defer build.CheckProdCreds(buildCtx, config)
 	}
@@ -446,6 +452,10 @@ func buildActionConfig(ctx build.Context, args ...string) build.Config {
 		name:        "modules-in-dirs",
 		description: "Build action: builds all of the modules in the supplied directories and their dependencies.",
 		action:      build.BUILD_MODULES_IN_DIRECTORIES,
+	}, {
+		name:        "metrics-upload-only",
+		description: "Upload Metrics: skips all build activity and calls the metrics uploader, only",
+		action:      build.UPLOAD_METRICS_ONLY,
 	}}
 	for i, flag := range buildActionFlags {
 		flags.BoolVar(&buildActionFlags[i].set, flag.name, false, flag.description)
