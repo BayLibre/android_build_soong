@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc679e5_c3a4510c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-02T23:15:48Z",
+      "side": 1,
+      "message": "hold off on reviewing, I need to fix the metrics-upload-only",
+      "revId": "dd88ca9d80efdcad5defe338c623a40fbe96a4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
