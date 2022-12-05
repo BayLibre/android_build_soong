@@ -16,6 +16,24 @@
       "message": "nit: \".. metrics related to soong build (except bp2build)\"\nbecause bp2buildMetricsFile is also the result of soonb_build run",
       "revId": "e004d1438029f859812558fbed018aa5e50b9a5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30322465_19a33ff2",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-12-05T15:20:02Z",
+      "side": 1,
+      "message": "Sounds good. Updated. Thanks!",
+      "parentUuid": "f7cdd36f_a935e0cd",
+      "revId": "e004d1438029f859812558fbed018aa5e50b9a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
