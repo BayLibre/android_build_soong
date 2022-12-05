@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89e80210_0ddf317b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-12-05T16:02:37Z",
+      "side": 1,
+      "message": "This value is set manually on a per-module-type basis by calling `InitApexModule`. I\u0027m not sure of a good way to replicate this in Bazel except to create a new Provider and new rule for things like `cc_genrule` for which this should return `true`.",
+      "range": {
+        "startLine": 945,
+        "startChar": 15,
+        "endLine": 945,
+        "endChar": 34
+      },
+      "revId": "8fe80de77069f28cdbe1440a0b18121b329ec9d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
