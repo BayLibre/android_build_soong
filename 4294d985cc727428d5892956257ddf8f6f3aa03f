@@ -50,6 +50,24 @@
       "message": "Try adding here:\n```\nl.extraLintCheckJars \u003d append(l.extraLintCheckJars, \"prebuilts/cmdline-tools/AndroidGlobalLintChecks.jar\")\n```",
       "revId": "4294d985cc727428d5892956257ddf8f6f3aa03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "882b7e1a_49c4166d",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2022-12-05T19:38:27Z",
+      "side": 1,
+      "message": "Tried this as discussed in chat:\n```\nl.extraLintCheckJars \u003d append(l.extraLintCheckJars, android.PathForSource(ctx,\n\t\t\"prebuilts/cmdline-tools/AndroidGlobalLintChecker.jar\"))\n```\n\nbut then I still get a test error (having double checked that that path does exist locally):\n```\njava_test.go:125: default/java/Android.bp:171:4: module \"stable-core-platform-api-stubs-system-modules-lib\" variant \"android_common\": source path \"prebuilts/cmdline-tools/AndroidGlobalLintChecker.jar\" does not exist\n```",
+      "parentUuid": "ec1fd0fa_1a377a6b",
+      "revId": "4294d985cc727428d5892956257ddf8f6f3aa03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
