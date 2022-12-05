@@ -16,6 +16,24 @@
       "message": "Sahana, the linked bug in the change description is marked as a duplicate of another open bug where the proposed solution is not in the build system, but `apexd` to support downgrading.\n\nAs discussed offline, we\u0027re trying to minimize envvars used in the platform build, so additional justification / context will help with the review. Could you please elaborate in the change description why this is urgent/necessary to unblock your workflow, and why not the proposed `apexd` solution?",
       "revId": "99fa82fdc5a970e4519c5546bad677fde69337a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b506e2cd_e23e7a53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530043
+      },
+      "writtenOn": "2022-12-05T08:20:45Z",
+      "side": 1,
+      "message": "Thank you! I added more details in this CL. Also, added more context about the necessity of this workaround.",
+      "parentUuid": "aa5d2296_6c799c7d",
+      "revId": "99fa82fdc5a970e4519c5546bad677fde69337a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
