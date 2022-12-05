@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eeaab15_55661014",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-12-05T20:02:53Z",
+      "side": 1,
+      "message": "I see build build failures like:\n\n```\nError: java.lang.NullPointerException: Cannot invoke \"com.android.tools.r8.dex.F.b()\" because \"\u003clocal11\u003e\" is null\nCompilation failed with an internal error.\nException in thread \"main\" java.lang.RuntimeException: com.android.tools.r8.CompilationFailedException: Compilation failed to complete\n```\n\n(both locally and here in pre-submit)",
+      "revId": "bfa76de9972893a5a4ed908c0eb34a1eb43d5e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
