@@ -22,6 +22,30 @@
       },
       "revId": "b2ee9b10b0427bda51ef8f520cd5cb000b3da158",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4d925b_40441bbd",
+        "filename": "android/register.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-05T22:33:11Z",
+      "side": 1,
+      "message": "Fair enough, this would have prevented this error during the cleanup work. I have refactored the common bits into a helper function.",
+      "parentUuid": "ddadb7e5_50f636e0",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 0
+      },
+      "revId": "b2ee9b10b0427bda51ef8f520cd5cb000b3da158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
