@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28eec3da_58851c20",
+        "filename": "cc/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-05T12:38:25Z",
+      "side": 1,
+      "message": "Could you add some tests to https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/cc_test_conversion_test.go?",
+      "range": {
+        "startLine": 700,
+        "startChar": 25,
+        "endLine": 700,
+        "endChar": 35
+      },
+      "revId": "f760a5235f8c95982b584ce400a144b44a4a3e8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
