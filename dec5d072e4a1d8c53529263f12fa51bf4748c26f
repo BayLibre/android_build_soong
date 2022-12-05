@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7eca26_a121462e",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-05T15:48:05Z",
+      "side": 1,
+      "message": "After thinking about this, I have some concerns that this might make our stale data slightly worse for user builds in isolation.\n\nConsider the following scenario:\n\n1. User does a regular build with `m`, all metrics files are generated and uploaded fine\n2. User does `m bp2build`, note that shouldCollectBuildSoongMetrics is false for this build\n\nBefore your CL, we wouldn\u0027t see stale metrics for soong_build\u0027s metrics as included in soong_metrics, because, with shouldCollectBuildSoongMetrics returning false, we don\u0027t load soong_build_metrics.pb and don\u0027t include it in soong_metrics.\n\nAfter your CL, we would see stale metrics in soong_build_metrics.pb\n\n\n\nI think we can fix this inline in your CL if we delete soong_build_metrics.pb with every build (not just ones where shouldCollectBuildSoongMetrics is true).",
+      "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
