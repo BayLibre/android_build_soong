@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "908c4012_a4ed3ae3",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-06T19:34:40Z",
+      "side": 1,
+      "message": "nit: you can you use `proptools.Bool` rather than checking nil and the bool value",
+      "range": {
+        "startLine": 1863,
+        "startChar": 4,
+        "endLine": 1863,
+        "endChar": 110
+      },
+      "revId": "a9560a5c0026fb47f8d8fc624e43e5f7b8522e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b631bdf_2417a116",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-06T19:34:40Z",
+      "side": 1,
+      "message": "can you add a TODO with the bug about enabling mixed builds for ubsan-enabled libraries?",
+      "range": {
+        "startLine": 1865,
+        "startChar": 34,
+        "endLine": 1865,
+        "endChar": 46
+      },
+      "revId": "a9560a5c0026fb47f8d8fc624e43e5f7b8522e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
