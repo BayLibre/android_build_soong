@@ -189,6 +189,30 @@
       },
       "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb8f52f0_7079e13b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1890551
+      },
+      "writtenOn": "2022-12-06T19:59:58Z",
+      "side": 1,
+      "message": "We only have soong_prebuilt targets. The test targets(tradefed_deviceless_test) don\u0027t actually contain any file.",
+      "parentUuid": "dfe0d86f_d0d6812e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
