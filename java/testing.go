@@ -356,7 +356,6 @@ func gatherRequiredDepsForTest() string {
 	var bp string
 
 	extraModules := []string{
-		"core-lambda-stubs",
 		"ext",
 		"android_stubs_current",
 		"android_system_stubs_current",

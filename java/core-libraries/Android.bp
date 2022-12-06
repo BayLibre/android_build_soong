@@ -61,9 +61,6 @@ java_library {
     static_libs: [
         "core.current.stubs",
         // This one is not on device but it's needed when javac compiles code
-        // containing lambdas.
-        "core-lambda-stubs-for-system-modules",
-        // This one is not on device but it's needed when javac compiles code
         // containing @Generated annotations produced by some code generation
         // tools.
         // See http://b/123891440.
@@ -145,9 +142,6 @@ java_library {
     visibility: ["//visibility:private"],
     static_libs: [
         "core.module_lib.stubs",
-        // This one is not on device but it's needed when javac compiles code
-        // containing lambdas.
-        "core-lambda-stubs-for-system-modules",
         // This one is not on device but it's needed when javac compiles code
         // containing @Generated annotations produced by some code generation
         // tools.
@@ -275,9 +269,6 @@ java_system_modules {
     visibility: core_platform_visibility,
     libs: [
         "legacy.core.platform.api.no.annotations.stubs",
-        // This one is not on device but it's needed when javac compiles code
-        // containing lambdas.
-        "core-lambda-stubs-for-system-modules",
         // This one is not on device but it's needed when javac compiles code
         // containing @Generated annotations produced by some code generation
         // tools.

@@ -29,13 +29,17 @@ var (
 	pctx         = android.NewPackageContext("android/soong/java/config")
 	exportedVars = android.NewExportedVariables(pctx)
 
-	LegacyCorePlatformBootclasspathLibraries = []string{"legacy.core.platform.api.stubs", "core-lambda-stubs"}
+	LegacyCorePlatformBootclasspathLibraries = []string{"legacy.core.platform.api.stubs"}
 	LegacyCorePlatformSystemModules          = "legacy-core-platform-api-stubs-system-modules"
-	StableCorePlatformBootclasspathLibraries = []string{"stable.core.platform.api.stubs", "core-lambda-stubs"}
+	StableCorePlatformBootclasspathLibraries = []string{"stable.core.platform.api.stubs"}
 	StableCorePlatformSystemModules          = "stable-core-platform-api-stubs-system-modules"
 	FrameworkLibraries                       = []string{"ext", "framework"}
-	DefaultLambdaStubsLibrary                = "core-lambda-stubs"
-	SdkLambdaStubsPath                       = "prebuilts/sdk/tools/core-lambda-stubs.jar"
+
+	// Two additional classes needed for lambda compilation were added to the publicapi surface in U.
+	// Versions older than U do not have these classes and need to compile against the prebuilt
+	// core-lambda-stubs.jar
+	// Platform releases older than U do not not contain some additional classes needed for javac
+	SdkLambdaStubsPath = "prebuilts/sdk/tools/core-lambda-stubs.jar"
 
 	DefaultMakeJacocoExcludeFilter = []string{"org.junit.*", "org.jacoco.*", "org.mockito.*"}
 	DefaultJacocoExcludeFilter     = []string{"org.junit.**", "org.jacoco.**", "org.mockito.**"}
