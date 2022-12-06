@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "316a76de_03776471",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-12-06T16:40:51Z",
+      "side": 1,
+      "message": "Looks like the [latest robolectric prebuilt](https://cs.android.com/android/platform/superproject/+/master:prebuilts/misc/common/robolectric/4.8.2/Android.bp) doesn\u0027t have an AAR file in it\u0027s list of JARs, so it won\u0027t hit the same issue as the previous versions.",
+      "revId": "682bc9d4c902f53528c9a27ce657d4585f762fa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
