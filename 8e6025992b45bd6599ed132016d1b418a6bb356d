@@ -105,6 +105,24 @@
       "parentUuid": "9f485e89_792669f9",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f3b22f6_6aa1e855",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-12-06T21:30:24Z",
+      "side": 1,
+      "message": "yes, i get a lot of\n```\nwarning: Invalid size request on a scalable vector; Cannot implicitly convert a scalable size to a fixed-width size in `TypeSize::operator ScalarTy()`\n```\nlines, but the link completes.\n\nis adding the linker flag to the build a legit \"fix\", or do we need to talk to arm about this?\n\nthis comment in particular from your link worries me:\n\n\u003e The behaviour to emit warnings is only temporary and we expect this flag\nto be removed in the future when scalable vector support is more stable.\n\nunclear whether this still isn\u0027t ready for prime time (and the real fix is a switch somewhere to disable the auto (?) vectorization that\u0027s going on here), or they just forgot to clean up the warning afterwards, but i\u0027m assuming if it was just the latter, they\u0027d have noticed the warnings themselves (especially if the default is for them to be errors!).",
+      "parentUuid": "92aa23e9_922ed07a",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
