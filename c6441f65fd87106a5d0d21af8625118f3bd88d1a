@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dcb7a17_05d20908",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-12-06T05:04:17Z",
+      "side": 1,
+      "message": "This doesn\u0027t have to be in out directory, so instead of figuring out where out directory is and using it, the temp directory can be created in CWD and removed later when the test is done, and no need to wait or copy the getoutdir from  aosp/2328802.",
+      "parentUuid": "8d03412c_a343b057",
+      "revId": "c6441f65fd87106a5d0d21af8625118f3bd88d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4e5a4f5_5883dc48",
