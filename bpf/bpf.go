@@ -307,6 +307,10 @@ type bazelBpfAttributes struct {
 	Copts             bazel.StringListAttribute
 	Absolute_includes bazel.StringListAttribute
 	Btf               *bool
+	// TODO(b/254625084): Support Darwin builds with Bazel
+	// A temporary solution for bazel building bpf. Soong passes it through
+	// bp2build so that bazel knows the host OS and takes build actions accordingly.
+	Is_darwin bool
 	// TODO(b/249528391): Add support for sub_dir
 }
 
@@ -320,12 +324,14 @@ func (b *bpf) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	copts := bazel.MakeStringListAttribute(b.properties.Cflags)
 	absolute_includes := bazel.MakeStringListAttribute(b.properties.Include_dirs)
 	btf := b.properties.Btf
+	is_darwin := runtime.GOOS == "darwin"
 
 	attrs := bazelBpfAttributes{
 		Srcs:              srcs,
 		Copts:             copts,
 		Absolute_includes: absolute_includes,
 		Btf:               btf,
+		Is_darwin:         is_darwin,
 	}
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "bpf",
