@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ce9225_d57e7628",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-12-06T21:56:01Z",
+      "side": 1,
+      "message": "I might be wrong. But in Soong_ui \"do not upload\" mode, it generate a soongMetricsFiles but in\n“only upload mode”, the soongMetricsFiles would still be generated and overrides the old one. Is it expected?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
