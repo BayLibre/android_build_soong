@@ -105,7 +105,7 @@ func TestClasspath(t *testing.T) {
 
 			name:           "current",
 			properties:     `sdk_version: "current",`,
-			bootclasspath:  []string{"android_stubs_current", "core-lambda-stubs"},
+			bootclasspath:  []string{"android_stubs_current"},
 			system:         "core-public-stubs-system-modules",
 			java9classpath: []string{"android_stubs_current"},
 			aidl:           "-pout/soong/framework.aidl",
@@ -128,7 +128,7 @@ func TestClasspath(t *testing.T) {
 
 			name:           "system_current",
 			properties:     `sdk_version: "system_current",`,
-			bootclasspath:  []string{"android_system_stubs_current", "core-lambda-stubs"},
+			bootclasspath:  []string{"android_system_stubs_current"},
 			system:         "core-public-stubs-system-modules",
 			java9classpath: []string{"android_system_stubs_current"},
 			aidl:           "-pout/soong/framework.aidl",
@@ -168,7 +168,7 @@ func TestClasspath(t *testing.T) {
 
 			name:           "test_current",
 			properties:     `sdk_version: "test_current",`,
-			bootclasspath:  []string{"android_test_stubs_current", "core-lambda-stubs"},
+			bootclasspath:  []string{"android_test_stubs_current"},
 			system:         "core-public-stubs-system-modules",
 			java9classpath: []string{"android_test_stubs_current"},
 			aidl:           "-pout/soong/framework.aidl",
@@ -200,7 +200,7 @@ func TestClasspath(t *testing.T) {
 
 			name:          "core_current",
 			properties:    `sdk_version: "core_current",`,
-			bootclasspath: []string{"core.current.stubs", "core-lambda-stubs"},
+			bootclasspath: []string{"core.current.stubs"},
 			system:        "core-public-stubs-system-modules",
 		},
 		{
@@ -292,7 +292,7 @@ func TestClasspath(t *testing.T) {
 
 			name:           "module_current",
 			properties:     `sdk_version: "module_current",`,
-			bootclasspath:  []string{"android_module_lib_stubs_current", "core-lambda-stubs"},
+			bootclasspath:  []string{"android_module_lib_stubs_current"},
 			system:         "core-module-lib-stubs-system-modules",
 			java9classpath: []string{"android_module_lib_stubs_current"},
 			aidl:           "-pout/soong/framework_non_updatable.aidl",
@@ -342,7 +342,7 @@ func TestClasspath(t *testing.T) {
 
 			name:           "system_server_current",
 			properties:     `sdk_version: "system_server_current",`,
-			bootclasspath:  []string{"android_system_server_stubs_current", "core-lambda-stubs"},
+			bootclasspath:  []string{"android_system_server_stubs_current"},
 			system:         "core-module-lib-stubs-system-modules",
 			java9classpath: []string{"android_system_server_stubs_current"},
 			aidl:           "-pout/soong/framework.aidl",

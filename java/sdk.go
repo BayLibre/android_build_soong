@@ -154,7 +154,7 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext android.SdkContext)
 		systemModulesKind := systemModuleKind(sdkVersion.Kind, android.FutureApiLevel)
 		return sdkDep{
 			useModule:          true,
-			bootclasspath:      []string{module, config.DefaultLambdaStubsLibrary},
+			bootclasspath:      []string{module},
 			systemModules:      fmt.Sprintf("core-%s-stubs-system-modules", systemModulesKind),
 			java9Classpath:     []string{module},
 			frameworkResModule: "framework-res",
@@ -204,7 +204,7 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext android.SdkContext)
 	case android.SdkCore:
 		return sdkDep{
 			useModule:        true,
-			bootclasspath:    []string{"core.current.stubs", config.DefaultLambdaStubsLibrary},
+			bootclasspath:    []string{"core.current.stubs"},
 			systemModules:    "core-public-stubs-system-modules",
 			noFrameworksLibs: true,
 		}
