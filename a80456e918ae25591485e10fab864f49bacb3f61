@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c76be28_b45cefdc",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-06T18:18:32Z",
+      "side": 1,
+      "message": "This does not handle the `CorePlatformApi` surface yet. If it is ok, can we create a tracking bug for that API surface and defer that to a future CL?",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 881,
+        "endChar": 2
+      },
+      "revId": "a80456e918ae25591485e10fab864f49bacb3f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
