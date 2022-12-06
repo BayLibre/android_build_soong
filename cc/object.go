@@ -134,6 +134,7 @@ type bazelObjectAttributes struct {
 	Srcs_as             bazel.LabelListAttribute
 	Hdrs                bazel.LabelListAttribute
 	Deps                bazel.LabelListAttribute
+	Implementation_deps bazel.LabelListAttribute
 	System_dynamic_deps bazel.LabelListAttribute
 	Copts               bazel.StringListAttribute
 	Asflags             bazel.StringListAttribute
@@ -156,6 +157,7 @@ func objectBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	baseAttributes := bp2BuildParseBaseProps(ctx, m)
 	compilerAttrs := baseAttributes.compilerAttributes
 	var deps bazel.LabelListAttribute
+	var implementationDeps bazel.LabelListAttribute
 	systemDynamicDeps := bazel.LabelListAttribute{ForceSpecifyEmptyList: true}
 
 	var linkerScript bazel.LabelAttribute
@@ -173,6 +175,9 @@ func objectBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 					systemSharedLibs = android.FirstUniqueStrings(systemSharedLibs)
 				}
 				systemDynamicDeps.SetSelectValue(axis, config, bazelLabelForSharedDeps(ctx, systemSharedLibs))
+				implementationDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, objectLinkerProps.Static_libs))
+				implementationDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, objectLinkerProps.Shared_libs))
+				implementationDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, objectLinkerProps.Header_libs))
 			}
 		}
 	}
@@ -193,6 +198,7 @@ func objectBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		Srcs:                srcs,
 		Srcs_as:             compilerAttrs.asSrcs,
 		Deps:                deps,
+		Implementation_deps: implementationDeps,
 		System_dynamic_deps: systemDynamicDeps,
 		Copts:               compilerAttrs.copts,
 		Asflags:             asFlags,
