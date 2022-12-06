@@ -51,6 +51,24 @@
       "parentUuid": "cac6b0fb_b2785940",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40577cc_b09edd10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-12-06T19:29:41Z",
+      "side": 1,
+      "message": "\u003e LLVM ERROR: Invalid size request on a scalable vector.\n\nLooks like an error in LLVM backend when sve/sve2 (implied by armv9-a) is enabled.  We should report it to upstream (Can you get a repro by adding `-Wl,--reproduce\u003drepro.tar` and file an internal bug? I can follow up upstream)\n\nDigging deeper, based on https://reviews.llvm.org/D98856#2647927, it looks like this error is disabled by default for compiler actions but doesn\u0027t work with LTO.  Does adding `-Wl,-mllvm,-treat-scalable-fixed-error-as-warning` to the linker help?",
+      "parentUuid": "782f9fb7_5587f168",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
