@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "005a24e3_06e109f2",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-06T01:19:21Z",
+      "side": 1,
+      "message": "- You should use something like `getoutdir` from aosp/2328802 to get the real out dir, which is not always `out`.\n- Use `mktemp -d -p $OUT_DIR`, prepending the outdir to the result of mktemp won\u0027t ensure that it has a unique name.",
+      "revId": "c6441f65fd87106a5d0d21af8625118f3bd88d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4e5a4f5_5883dc48",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-06T01:19:21Z",
+      "side": 1,
+      "message": "Why are you allowing changing the target on the command line? Does the test not pass locally using module_arm?",
+      "revId": "c6441f65fd87106a5d0d21af8625118f3bd88d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
