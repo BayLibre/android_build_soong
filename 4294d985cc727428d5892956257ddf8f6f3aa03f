@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f77e05b_307cca61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2022-12-06T16:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f196b7c_ec9dd857",
+      "revId": "4294d985cc727428d5892956257ddf8f6f3aa03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03b924f6_97282e2c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-05T18:41:08Z",
       "side": 1,
       "message": "This still requires the module to exist in every branch, including ones that don\u0027t have or run lint.  In those branches we are currently emitting rules to run lint, but since they only depend on paths and not modules Soong can complete without errors.  If you tried to run those rules you\u0027d get missing input errors on the lint binaries, etc.\n\nI think the easiest path forward is to depend on the path to the prebuilt instead of importing it as a module. \n\nAlternatively, we could automatically disable all the linting code if `prebuilts/cmdline-tools` doesn\u0027t exist.",
+      "revId": "4294d985cc727428d5892956257ddf8f6f3aa03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3eb261_ff17aa78",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2022-12-06T16:46:46Z",
+      "side": 1,
+      "message": "Done - per your suggestion and as discussed over chat we\u0027re depending on `\"prebuilts/cmdline-tools/AndroidFrameworkLintChecker.jar\"`, and then including that as a mock file for the tests.",
+      "parentUuid": "03b924f6_97282e2c",
       "revId": "4294d985cc727428d5892956257ddf8f6f3aa03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -66,6 +102,24 @@
       "side": 1,
       "message": "Tried this as discussed in chat:\n```\nl.extraLintCheckJars \u003d append(l.extraLintCheckJars, android.PathForSource(ctx,\n\t\t\"prebuilts/cmdline-tools/AndroidGlobalLintChecker.jar\"))\n```\n\nbut then I still get a test error (having double checked that that path does exist locally):\n```\njava_test.go:125: default/java/Android.bp:171:4: module \"stable-core-platform-api-stubs-system-modules-lib\" variant \"android_common\": source path \"prebuilts/cmdline-tools/AndroidGlobalLintChecker.jar\" does not exist\n```",
       "parentUuid": "ec1fd0fa_1a377a6b",
+      "revId": "4294d985cc727428d5892956257ddf8f6f3aa03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b47b614d_9fa79709",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2022-12-06T16:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "882b7e1a_49c4166d",
       "revId": "4294d985cc727428d5892956257ddf8f6f3aa03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
