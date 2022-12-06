@@ -22,6 +22,30 @@
       },
       "revId": "8fe80de77069f28cdbe1440a0b18121b329ec9d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af69db0b_4f0d2af9",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-12-06T17:00:40Z",
+      "side": 1,
+      "message": "Found that this isn\u0027t necessary: https://android-review.git.corp.google.com/c/platform/build/bazel/+/2311011/comment/5c667a3f_13c7f51a/",
+      "parentUuid": "89e80210_0ddf317b",
+      "range": {
+        "startLine": 945,
+        "startChar": 15,
+        "endLine": 945,
+        "endChar": 34
+      },
+      "revId": "8fe80de77069f28cdbe1440a0b18121b329ec9d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
