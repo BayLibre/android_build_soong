@@ -87,6 +87,24 @@
       "parentUuid": "a40577cc_b09edd10",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92aa23e9_922ed07a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-12-06T19:40:53Z",
+      "side": 1,
+      "message": "\u003e where exactly? globally, or do i need to rerun just the failing command with this?\n\nre-run the failing command with that flag.\n\nHowever, on second thought - I think the upstream bug is unnecessary.  These errors are silently ignored in clang, except that the ignore-mechanism doesn\u0027t work with LTO.\n\nInstead, can you try `-Wl,-mllvm,-treat-scalable-fixed-error-as-warning` with the failing command?  If that doesn\u0027t crash, we should just change soong to pass this flag to the linker command for armv9-a devices.",
+      "parentUuid": "9f485e89_792669f9",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
