@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22fdb0c_2d89729f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1670415
+      },
+      "writtenOn": "2022-12-06T13:41:12Z",
+      "side": 1,
+      "message": "Hi @delmerico@google.com, Robolectric prebuilt 4.4 and 4.5.1 in misc have been removed, and all tests use prebuilt 4.8.2, maybe this CL needs to test with 4.8.2?",
+      "revId": "4706b6f74642fae580586a4cceb623497c882e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
