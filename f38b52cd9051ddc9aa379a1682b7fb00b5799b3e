@@ -213,6 +213,30 @@
       },
       "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f2c1bd_02823b2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1890551
+      },
+      "writtenOn": "2022-12-07T00:46:51Z",
+      "side": 1,
+      "message": "This is doable in the future and archived this in b/261646518",
+      "parentUuid": "fb8f52f0_7079e13b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "f38b52cd9051ddc9aa379a1682b7fb00b5799b3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
