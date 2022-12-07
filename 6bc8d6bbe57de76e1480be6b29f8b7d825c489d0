@@ -16,6 +16,23 @@
       "message": "GPL with syscall exceptions are not always permissive in nature. I\u0027d hold off on this till we document what are the circumstances under which these are permissive (Similar to how the Class path exceptions were documented as being permissive)",
       "revId": "6bc8d6bbe57de76e1480be6b29f8b7d825c489d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79847675_c699db69",
+        "filename": "licenses/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1043473
+      },
+      "writtenOn": "2022-12-07T06:24:54Z",
+      "side": 1,
+      "message": "Does this line ensure that this specific license kind will only apply to libbpf?",
+      "revId": "6bc8d6bbe57de76e1480be6b29f8b7d825c489d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
