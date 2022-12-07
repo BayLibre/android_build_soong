@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f05cf8b_b64ceb43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-12-07T20:44:33Z",
+      "side": 1,
+      "message": "When the syscall note does not apply, the SPDX-license-identifier-GPL-2.0 or SPDX-license-identifier-GPL-2.0-only is the appropriate license kind. Not this new one.\n\nWhen the syscall note does apply, Sarajane\u0027s and Dash\u0027s emails from earlier today suggest the correct condition is permissive.\n\nNote the visibility property on the license kind. At present, that means only external/libbpf can use it. Before adding it to other projects and expanding the visibility, we can require a decision from a lawyer. Either opensource-licensng@ or pcounsel.\n\n\nIf you want, I could add a comment to the visibility property to that effect.",
+      "parentUuid": "2a58d46b_80e25a5a",
+      "revId": "6bc8d6bbe57de76e1480be6b29f8b7d825c489d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79847675_c699db69",
         "filename": "licenses/Android.bp",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-07T06:24:54Z",
       "side": 1,
       "message": "Does this line ensure that this specific license kind will only apply to libbpf?",
+      "revId": "6bc8d6bbe57de76e1480be6b29f8b7d825c489d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e450505b_e5293f6f",
+        "filename": "licenses/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-12-07T20:44:33Z",
+      "side": 1,
+      "message": "Yes. It means this license_kind can be referenced from any subdirectory under platform/external/libbpf but not from any other directories.\n\nIf someone wants to use it, the additional location will have to be added to this visibility property. I added a comment to the effect changes to visibility need legal approval.",
+      "parentUuid": "79847675_c699db69",
       "revId": "6bc8d6bbe57de76e1480be6b29f8b7d825c489d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
