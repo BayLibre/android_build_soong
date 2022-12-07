@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07c89b99_ea01f56c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-07T02:17:54Z",
+      "side": 1,
+      "message": "That\u0027s the intention. This is to run soong but _not_ upload metrics. that way after bazel runs, we can upload both sets together.",
+      "parentUuid": "5c6cc891_4c9fcf9d",
+      "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68ce9225_d57e7628",
@@ -103,6 +121,30 @@
       "side": 1,
       "message": "how\u0027s it Done? wouldn\u0027t met.Dump() still overwrite?",
       "parentUuid": "f03df8c4_831b767d",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "450c4d6e_f3218aeb",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-07T02:17:54Z",
+      "side": 1,
+      "message": "See the other thread. that\u0027s by design.",
+      "parentUuid": "3a934db7_700ec95f",
       "range": {
         "startLine": 223,
         "startChar": 0,
