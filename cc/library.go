@@ -351,6 +351,7 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		System_dynamic_deps:               *linkerAttrs.systemDynamicDeps.Clone().Append(staticAttrs.System_dynamic_deps),
 		Runtime_deps:                      linkerAttrs.runtimeDeps,
 		sdkAttributes:                     bp2BuildParseSdkAttributes(m),
+		Native_coverage:                   baseAttributes.Native_coverage,
 	}
 
 	sharedCommonAttrs := staticOrSharedAttributes{
@@ -369,6 +370,7 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		System_dynamic_deps:               *linkerAttrs.systemDynamicDeps.Clone().Append(sharedAttrs.System_dynamic_deps),
 		Runtime_deps:                      linkerAttrs.runtimeDeps,
 		sdkAttributes:                     bp2BuildParseSdkAttributes(m),
+		Native_coverage:                   baseAttributes.Native_coverage,
 	}
 
 	staticTargetAttrs := &bazelCcLibraryStaticAttributes{
@@ -1901,7 +1903,7 @@ func (library *libraryDecorator) crossVersionAbiDiff(ctx android.ModuleContext, 
 	errorMessage := "error: Please follow https://android.googlesource.com/platform/development/+/master/vndk/tools/header-checker/README.md#configure-cross_version-abi-check to resolve the ABI difference between your source code and version " + prevVersion + "."
 
 	library.sourceAbiDiff(ctx, referenceDump, baseName, prevVersion,
-		isLlndkOrNdk, /* allowExtensions */ true, sourceVersion, errorMessage)
+		isLlndkOrNdk /* allowExtensions */, true, sourceVersion, errorMessage)
 }
 
 func (library *libraryDecorator) sameVersionAbiDiff(ctx android.ModuleContext, referenceDump android.Path,
@@ -1910,7 +1912,7 @@ func (library *libraryDecorator) sameVersionAbiDiff(ctx android.ModuleContext, r
 	libName := strings.TrimSuffix(baseName, filepath.Ext(baseName))
 	errorMessage := "error: Please update ABI references with: $$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py -l " + libName
 
-	library.sourceAbiDiff(ctx, referenceDump, baseName, /* nameExt */ "",
+	library.sourceAbiDiff(ctx, referenceDump, baseName /* nameExt */, "",
 		isLlndkOrNdk, allowExtensions, "current", errorMessage)
 }
 
@@ -2867,6 +2869,7 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 		System_dynamic_deps:               linkerAttrs.systemDynamicDeps,
 		sdkAttributes:                     bp2BuildParseSdkAttributes(module),
 		Runtime_deps:                      linkerAttrs.runtimeDeps,
+		Native_coverage:                   baseAttributes.Native_coverage,
 	}
 
 	module.convertTidyAttributes(ctx, &commonAttrs.tidyAttributes)
@@ -2952,6 +2955,13 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 	}
 
 	tags := android.ApexAvailableTags(module)
+
+	// This lib needs some special handling in bazel, so add this tag to the build
+	// file.
+	if module.Name() == "libprofile-clang-extras" {
+		tags.Append(bazel.MakeStringListAttribute([]string{"NO_EXPORTING"}))
+	}
+
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: module.Name(), Tags: tags}, attrs)
 }
 

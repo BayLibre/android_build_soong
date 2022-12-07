@@ -63,7 +63,7 @@ type staticOrSharedAttributes struct {
 
 	Enabled bazel.BoolAttribute
 
-	Native_coverage bazel.BoolAttribute
+	Native_coverage *bool
 
 	sdkAttributes
 
@@ -345,6 +345,7 @@ type baseAttributes struct {
 	features        bazel.StringListAttribute
 	protoDependency *bazel.LabelAttribute
 	aidlDependency  *bazel.LabelAttribute
+	Native_coverage *bool
 }
 
 // Convenience struct to hold all attributes parsed from compiler properties.
@@ -738,10 +739,12 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 	compilerAttrs.convertStlProps(ctx, module)
 	(&linkerAttrs).convertStripProps(ctx, module)
 
+	var nativeCoverage *bool
 	if module.coverage != nil && module.coverage.Properties.Native_coverage != nil &&
 		!Bool(module.coverage.Properties.Native_coverage) {
 		// Native_coverage is arch neutral
-		(&linkerAttrs).features.Append(bazel.MakeStringListAttribute([]string{"-coverage"}))
+		//(&linkerAttrs).features.Append(bazel.MakeStringListAttribute([]string{"-coverage"}))
+		nativeCoverage = BoolPtr(false)
 	}
 
 	productVariableProps := android.ProductVariableProperties(ctx)
@@ -790,6 +793,7 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 		*features,
 		protoDep.protoDep,
 		aidlDep,
+		nativeCoverage,
 	}
 }
 
