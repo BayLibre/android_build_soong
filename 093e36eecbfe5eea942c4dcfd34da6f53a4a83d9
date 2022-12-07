@@ -307,6 +307,30 @@
       },
       "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9d56ab7_a1df9c8c",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-07T19:14:12Z",
+      "side": 1,
+      "message": "Ah - with a follow-up cl, we can pass in the unix time to be used instead. both are derived from that buildStarted field in soong_ui",
+      "parentUuid": "bb4d128a_0abed3e2",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
