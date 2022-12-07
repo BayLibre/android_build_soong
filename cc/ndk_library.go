@@ -31,7 +31,7 @@ import (
 
 func init() {
 	pctx.HostBinToolVariable("ndkStubGenerator", "ndkstubgen")
-	pctx.HostBinToolVariable("abidiff", "abidiff")
+	pctx.HostBinToolVariable("abidiff", "stgdiff")
 	pctx.HostBinToolVariable("abitidy", "abitidy")
 	pctx.HostBinToolVariable("abidw", "abidw")
 }
@@ -450,9 +450,6 @@ func (this *stubDecorator) diffAbi(ctx ModuleContext) {
 					nextAbiDump),
 				Output: nextAbiDiffPath,
 				Inputs: android.Paths{this.abiDumpPath, nextAbiDump.Path()},
-				Args: map[string]string{
-					"args": "--no-added-syms",
-				},
 			})
 		}
 		this.abiDiffPaths = append(this.abiDiffPaths, nextAbiDiffPath)
