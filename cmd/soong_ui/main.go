@@ -91,6 +91,12 @@ var commands = []command{
 		config:      buildActionConfig,
 		stdio:       stdio,
 		run:         runMake,
+	}, {
+		flag:        "upload-metrics-only",
+		description: "upload metrics without building anything",
+		config:      uploadMetricsConfig,
+		stdio:       stdio,
+		run:         uploadMetrics,
 	},
 }
 
@@ -173,6 +179,11 @@ func main() {
 	}}
 
 	config := c.config(buildCtx, args...)
+	uploadOnly := c.flag == "upload-metrics-only"
+	if uploadOnly {
+		startMetricsUpload(config, c, buildCtx, buildStarted, false)
+		return
+	}
 
 	build.SetupOutDir(buildCtx, config)
 
@@ -181,48 +192,34 @@ func main() {
 
 	// Common list of metric file definition.
 	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
-	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
 	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
-	bp2buildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"bp2build_metrics.pb")
 
 	build.PrintOutDirWarning(buildCtx, config)
 
-	os.MkdirAll(logsDir, 0777)
-	log.SetOutput(filepath.Join(logsDir, c.logsPrefix+"soong.log"))
-	trace.SetOutput(filepath.Join(logsDir, c.logsPrefix+"build.trace"))
-	stat.AddOutput(status.NewVerboseLog(log, filepath.Join(logsDir, c.logsPrefix+"verbose.log")))
-	stat.AddOutput(status.NewErrorLog(log, filepath.Join(logsDir, c.logsPrefix+"error.log")))
-	stat.AddOutput(status.NewProtoErrorLog(log, buildErrorFile))
-	stat.AddOutput(status.NewCriticalPath(log))
-	stat.AddOutput(status.NewBuildProgressLog(log, filepath.Join(logsDir, c.logsPrefix+"build_progress.pb")))
+	if !uploadOnly {
+		os.MkdirAll(logsDir, 0777)
 
-	buildCtx.Verbosef("Detected %.3v GB total RAM", float32(config.TotalRAM())/(1024*1024*1024))
-	buildCtx.Verbosef("Parallelism (local/remote/highmem): %v/%v/%v",
-		config.Parallel(), config.RemoteParallel(), config.HighmemParallel())
+		log.SetOutput(filepath.Join(logsDir, c.logsPrefix+"soong.log"))
+		trace.SetOutput(filepath.Join(logsDir, c.logsPrefix+"build.trace"))
+		stat.AddOutput(status.NewVerboseLog(log, filepath.Join(logsDir, c.logsPrefix+"verbose.log")))
+		stat.AddOutput(status.NewErrorLog(log, filepath.Join(logsDir, c.logsPrefix+"error.log")))
+		stat.AddOutput(status.NewProtoErrorLog(log, buildErrorFile))
+		stat.AddOutput(status.NewCriticalPath(log))
+		stat.AddOutput(status.NewBuildProgressLog(log, filepath.Join(logsDir, c.logsPrefix+"build_progress.pb")))
 
-	setMaxFiles(buildCtx)
+		buildCtx.Verbosef("Detected %.3v GB total RAM", float32(config.TotalRAM())/(1024*1024*1024))
+		buildCtx.Verbosef("Parallelism (local/remote/highmem): %v/%v/%v",
+			config.Parallel(), config.RemoteParallel(), config.HighmemParallel())
 
-	{
-		// The order of the function calls is important. The last defer function call
-		// is the first one that is executed to save the rbe metrics to a protobuf
-		// file. The soong metrics file is then next. Bazel profiles are written
-		// before the uploadMetrics is invoked. The written files are then uploaded
-		// if the uploading of the metrics is enabled.
-		files := []string{
-			buildErrorFile,           // build error strings
-			rbeMetricsFile,           // high level metrics related to remote build execution.
-			bp2buildMetricsFile,      // high level metrics related to bp2build.
-			soongMetricsFile,         // high level metrics related to this build system.
-			config.BazelMetricsDir(), // directory that contains a set of bazel metrics.
-		}
-
-		if !config.SkipMetricsUpload() {
-			defer build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, files...)
-		}
-
-		defer met.Dump(soongMetricsFile)
-		defer build.CheckProdCreds(buildCtx, config)
+		setMaxFiles(buildCtx)
 	}
+
+	if !config.SkipMetricsUpload() {
+		defer startMetricsUpload(config, c, buildCtx, buildStarted, true)
+	}
+
+	defer met.Dump(soongMetricsFile)
+	defer build.CheckProdCreds(buildCtx, config)
 
 	// Read the time at the starting point.
 	if start, ok := os.LookupEnv("TRACE_BEGIN_SOONG"); ok {
@@ -405,6 +402,11 @@ func dumpVarConfig(ctx build.Context, args ...string) build.Config {
 	return build.NewConfig(ctx)
 }
 
+// uploadMetricsConfig does not require any additional arguments to be parsed by the NewConfig.
+func uploadMetricsConfig(ctx build.Context, args ...string) build.Config {
+	return build.NewConfig(ctx, []string{}...)
+}
+
 func buildActionConfig(ctx build.Context, args ...string) build.Config {
 	flags := flag.NewFlagSet("build-mode", flag.ContinueOnError)
 	flags.SetOutput(ctx.Writer)
@@ -496,6 +498,10 @@ func buildActionConfig(ctx build.Context, args ...string) build.Config {
 	// Remove the build action flags from the args as they are not recognized by the config.
 	args = args[numBuildActionFlags:]
 	return build.NewBuildActionConfig(buildAction, *dir, ctx, args...)
+}
+
+func uploadMetrics(_ build.Context, _ build.Config, _ []string, _ string) {
+	// This is a no-op. The upload-metrics action skips all relevant build activity.
 }
 
 func runMake(ctx build.Context, config build.Config, _ []string, logsDir string) {
@@ -642,4 +648,36 @@ func setMaxFiles(ctx build.Context) {
 	if err != nil {
 		ctx.Println("Failed to increase file limit:", err)
 	}
+}
+
+func startMetricsUpload(config build.Config, c *command, buildCtx build.Context, buildStarted time.Time, makeLogsDir bool) {
+	if makeLogsDir {
+		build.SetupOutDir(buildCtx, config)
+	}
+	// Set up files to be outputted in the log directory.
+	logsDir := config.LogsDir()
+
+	// Common list of metric file definition.
+	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
+	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
+	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
+	bp2buildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"bp2build_metrics.pb")
+
+	build.PrintOutDirWarning(buildCtx, config)
+
+	// The order of the function calls is important. The last defer function call
+	// is the first one that is executed to save the rbe metrics to a protobuf
+	// file. The soong metrics file is then next. Bazel profiles are written
+	// before the uploadMetrics is invoked. The written files are then uploaded
+	// if the uploading of the metrics is enabled.
+	files := []string{
+		buildErrorFile,           // build error strings
+		rbeMetricsFile,           // high level metrics related to remote build execution.
+		bp2buildMetricsFile,      // high level metrics related to bp2build.
+		soongMetricsFile,         // high level metrics related to this build system.
+		config.BazelMetricsDir(), // directory that contains a set of bazel metrics.
+	}
+	buildStarted = config.BuildStartedTimeOrDefault(buildStarted)
+
+	build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, files...)
 }

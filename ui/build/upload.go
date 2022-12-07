@@ -79,6 +79,7 @@ func pruneMetricsFiles(paths []string) []string {
 // to continue working. Soong communicates to the uploader through the
 // upload_proto raw protobuf file.
 func UploadMetrics(ctx Context, config Config, simpleOutput bool, buildStarted time.Time, paths ...string) {
+	fmt.Printf("Starting upload at %d\n", time.Now().UnixMilli())
 	ctx.BeginTrace(metrics.RunSetupTool, "upload_metrics")
 	defer ctx.EndTrace()
 

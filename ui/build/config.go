@@ -114,6 +114,9 @@ type configImpl struct {
 	bazelForceEnabledModules string
 
 	includeTags []string
+
+	// For metrics-upload-only - manually specify a build-started time
+	buildStartedTime int64
 }
 
 const srcDirFileCheck = "build/soong/root.bp"
@@ -756,6 +759,14 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			ctx.Metrics.SetBuildCommand([]string{buildCmd})
 		} else if strings.HasPrefix(arg, "--bazel-force-enabled-modules=") {
 			c.bazelForceEnabledModules = strings.TrimPrefix(arg, "--bazel-force-enabled-modules=")
+		} else if strings.HasPrefix(arg, "--build-started-time=") {
+			buildTimeStr := strings.TrimPrefix(arg, "--build-started-time=")
+			val, err := strconv.ParseInt(buildTimeStr, 10, 64)
+			if err == nil {
+				c.buildStartedTime = val
+			} else {
+				ctx.Fatalf("Error parsing build-time-started", err)
+			}
 		} else if len(arg) > 0 && arg[0] == '-' {
 			parseArgNum := func(def int) int {
 				if len(arg) > 2 {
@@ -1517,6 +1528,15 @@ func (c *configImpl) BazelModulesForceEnabledByFlag() string {
 
 func (c *configImpl) SkipMetricsUpload() bool {
 	return c.skipMetricsUpload
+}
+
+// Returns a Time object if one was passed via a command-line flag.
+// Otherwise returns the passed default.
+func (c *configImpl) BuildStartedTimeOrDefault(defaultTime time.Time) time.Time {
+	if c.buildStartedTime == 0 {
+		return defaultTime
+	}
+	return time.UnixMilli(c.buildStartedTime)
 }
 
 func GetMetricsUploader(topDir string, env *Environment) string {
