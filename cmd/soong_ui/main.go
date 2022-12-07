@@ -91,7 +91,29 @@ var commands = []command{
 		config:      buildActionConfig,
 		stdio:       stdio,
 		run:         runMake,
+	}, {
+		flag:        "--upload-metrics-only",
+		description: "upload metrics without building anything",
+		config:      build.UploadOnlyConfig,
+		stdio:       stdio,
 	},
+}
+
+// Returns file locations (with directories) for log files needed for metrics
+// uploading.
+func metricsFiles(logsDir string, config build.Config, c *command) []string {
+	// Common list of metric file definition.
+	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
+	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
+	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
+	bp2buildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"bp2build_metrics.pb")
+	return []string{
+		buildErrorFile,           // build error strings
+		rbeMetricsFile,           // high level metrics related to remote build execution.
+		bp2buildMetricsFile,      // high level metrics related to bp2build.
+		soongMetricsFile,         // high level metrics related to this build system.
+		config.BazelMetricsDir(), // directory that contains a set of bazel metrics.
+	}
 }
 
 // indexList returns the index of first found s. -1 is return if s is not
@@ -142,8 +164,8 @@ func main() {
 		build.OsEnvironment().IsEnvTrue("SOONG_UI_ANSI_OUTPUT"))
 
 	// Create and start a new metric record.
+	// TODO(dacek@) can we factor out calling metrics.new() for upload-only?
 	met := metrics.New()
-	met.SetBuildDateTime(buildStarted)
 	met.SetBuildCommand(os.Args)
 
 	// Attach a new logger instance to the terminal output.
@@ -182,28 +204,33 @@ func main() {
 	}}
 
 	config := c.config(buildCtx, args...)
+	logsDir := config.LogsDir()
+	buildStarted = config.BuildStartedTimeOrDefault(buildStarted)
+	uploadOnly := c.flag == "--upload-metrics-only"
+
+	metricsFiles := metricsFiles(logsDir, config, c)
+
+	soongMetricsFile := metricsFiles[3]
+
+	if uploadOnly {
+		updateTotalRealTime(buildCtx, soongMetricsFile)
+		build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, metricsFiles...)
+		return
+	}
+
+	met.SetBuildDateTime(buildStarted)
 
 	build.SetupOutDir(buildCtx, config)
 
-	// Set up files to be outputted in the log directory.
-	logsDir := config.LogsDir()
-
-	// Common list of metric file definition.
-	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
-	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
-	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
-	bp2buildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"bp2build_metrics.pb")
-	soongBuildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_build_metrics.pb")
-
 	//Delete the stale metrics files
-	staleFileSlice := []string{buildErrorFile, rbeMetricsFile, soongMetricsFile, bp2buildMetricsFile, soongBuildMetricsFile}
-	if err := deleteStaleMetrics(staleFileSlice); err != nil {
+	if err := deleteStaleMetrics(metricsFiles); err != nil {
 		log.Fatalln(err)
 	}
 
 	build.PrintOutDirWarning(buildCtx, config)
-
 	os.MkdirAll(logsDir, 0777)
+	buildErrorFile := metricsFiles[0]
+
 	log.SetOutput(filepath.Join(logsDir, c.logsPrefix+"soong.log"))
 	trace.SetOutput(filepath.Join(logsDir, c.logsPrefix+"build.trace"))
 	stat.AddOutput(status.NewVerboseLog(log, filepath.Join(logsDir, c.logsPrefix+"verbose.log")))
@@ -218,27 +245,13 @@ func main() {
 
 	setMaxFiles(buildCtx)
 
-	{
-		// The order of the function calls is important. The last defer function call
-		// is the first one that is executed to save the rbe metrics to a protobuf
-		// file. The soong metrics file is then next. Bazel profiles are written
-		// before the uploadMetrics is invoked. The written files are then uploaded
-		// if the uploading of the metrics is enabled.
-		files := []string{
-			buildErrorFile,           // build error strings
-			rbeMetricsFile,           // high level metrics related to remote build execution.
-			soongBuildMetricsFile,    // high level metrics related to soong build(except bp2build).
-			bp2buildMetricsFile,      // high level metrics related to bp2build.
-			soongMetricsFile,         // high level metrics related to this build system.
-			config.BazelMetricsDir(), // directory that contains a set of bazel metrics.
-		}
-
+	defer func() {
+		build.CheckProdCreds(buildCtx, config)
+		met.Dump(soongMetricsFile)
 		if !config.SkipMetricsUpload() {
-			defer build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, files...)
+			build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, metricsFiles...)
 		}
-		defer met.Dump(soongMetricsFile)
-		defer build.CheckProdCreds(buildCtx, config)
-	}
+	}()
 
 	// Read the time at the starting point.
 	if start, ok := os.LookupEnv("TRACE_BEGIN_SOONG"); ok {
@@ -658,4 +671,21 @@ func setMaxFiles(ctx build.Context) {
 	if err != nil {
 		ctx.Println("Failed to increase file limit:", err)
 	}
+}
+
+func updateTotalRealTime(ctx build.Context, soongMetricsFile string) {
+	//read file into proto
+	data, err := os.ReadFile(soongMetricsFile)
+	if err != nil {
+		ctx.Fatal(err)
+	}
+
+	met := metrics.New()
+	err = met.UpdateTotalRealTime(data)
+	if err != nil {
+		ctx.Fatal(err)
+	}
+
+	met.Dump(soongMetricsFile)
+
 }
