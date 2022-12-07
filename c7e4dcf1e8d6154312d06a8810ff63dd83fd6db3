@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f6faf1_1ebd833a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-07T18:05:56Z",
+      "side": 0,
+      "message": "I would still keep this function, but with your loop simplification.",
+      "revId": "c7e4dcf1e8d6154312d06a8810ff63dd83fd6db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
