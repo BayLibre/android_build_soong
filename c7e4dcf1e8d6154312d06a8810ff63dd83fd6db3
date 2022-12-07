@@ -16,6 +16,24 @@
       "message": "I would still keep this function, but with your loop simplification.",
       "revId": "c7e4dcf1e8d6154312d06a8810ff63dd83fd6db3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3cec0aa_476fdea5",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-12-07T19:11:39Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "b1f6faf1_1ebd833a",
+      "revId": "c7e4dcf1e8d6154312d06a8810ff63dd83fd6db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
