@@ -283,6 +283,30 @@
       },
       "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb4d128a_0abed3e2",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-07T18:15:03Z",
+      "side": 1,
+      "message": "To amend my statement slightly, there are (at least) two creation timestamps to consider:\n\n1. The one present in soong_metrics. See https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/metrics/metrics_proto/metrics.proto;l\u003d22;drc\u003df2a80c6396524e9c554298feca98f0cc5416b8b2\n2. The one used in the uploader params (https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/upload.go;l\u003d116;drc\u003da055bbd25add3d35583fd3d1a623a68533f6766d)\n\nWe need to make sure these are sourced from the same location. They could both be derived from the soong_metrics output in the first invocation (which is read by the --upload-only run)",
+      "parentUuid": "e8ef994b_4071d4b0",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
