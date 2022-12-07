@@ -110,6 +110,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "602d286b_b7c39148",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-07T17:48:30Z",
+      "side": 1,
+      "message": "nit: your test line has \"--skip-upload\" but the flag is \"--skip-metrics-upload\"",
+      "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68ce9225_d57e7628",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 13
@@ -217,6 +234,30 @@
       "side": 1,
       "message": "See the other thread. that\u0027s by design.",
       "parentUuid": "3a934db7_700ec95f",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8ef994b_4071d4b0",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-07T17:48:30Z",
+      "side": 1,
+      "message": "NB: Dumping the soongMetricsFile here will include the creation/completion timestamp from *this* invocation of soong_ui. We need to consider how we\u0027re going to amend the creation/completion timestamp of soong_metrics for the upload invocation. If we want the upload-only invocation to read soong_metrics into memory and rewrite it with updated timestamps, we won\u0027t need a flag --creation-time, as we originally discussed.",
+      "parentUuid": "450c4d6e_f3218aeb",
       "range": {
         "startLine": 223,
         "startChar": 0,
