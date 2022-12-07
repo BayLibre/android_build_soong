@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6cc891_4c9fcf9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-07T00:31:25Z",
+      "side": 1,
+      "message": "`m --skip-metrics-upload libc`\nwould still 1) generate a new soong_metrics file 2) build libc",
+      "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68ce9225_d57e7628",
@@ -62,6 +79,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "82c8e0f6_06543a75",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a934db7_700ec95f",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-07T00:31:25Z",
+      "side": 1,
+      "message": "how\u0027s it Done? wouldn\u0027t met.Dump() still overwrite?",
+      "parentUuid": "f03df8c4_831b767d",
       "range": {
         "startLine": 223,
         "startChar": 0,
