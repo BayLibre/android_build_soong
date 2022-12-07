@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a35ff2c_8afb215e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-07T14:52:26Z",
+      "side": 1,
+      "message": "I thought the only scenario when we\u0027d want to not upload metrics was when `soong_ui` was invoked by `b` in which case does `soong_ui` ever receive any real \"target\" like libc in the above example?",
+      "parentUuid": "07c89b99_ea01f56c",
+      "revId": "093e36eecbfe5eea942c4dcfd34da6f53a4a83d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68ce9225_d57e7628",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 13
