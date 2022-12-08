@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b68a5a92_a2e1b0da",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-08T03:48:38Z",
+      "side": 1,
+      "message": "so \"--\" is optional for flags?",
+      "revId": "69da2fa0995c3927757670c09fe439310db82030",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
