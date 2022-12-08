@@ -34,6 +34,24 @@
       "parentUuid": "2e7eca26_a121462e",
       "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07fbf4f1_0e5e7dd9",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-08T19:16:30Z",
+      "side": 1,
+      "message": "I thought the approach we agreed upon in last week\u0027s meeting was that we would be deleting files at the *beginning* of a build, instead of at the end of one?\n\nWouldn\u0027t deleting this file here result in the file never being uploaded via the uploader? Because the file will no longer be around when we call UploadMetrics.\n\nIt\u0027s also a problem to delete this file *after* we call uploadMetrics, because:\n\n1. UploadMetrics runs in the background and may not have finished by the time we delete the metrics file\n2. CI bots don\u0027t do metrics uploading in the same way -- they upload the entire contents of their logs directory at the end of the build\n3. The end user may want to manually inspect metrics files, which will no longer be around if we delete them here.",
+      "parentUuid": "641b9cbb_8c221ead",
+      "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
