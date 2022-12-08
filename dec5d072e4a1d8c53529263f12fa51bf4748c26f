@@ -70,6 +70,24 @@
       "parentUuid": "07fbf4f1_0e5e7dd9",
       "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae4eee2a_271a03ae",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-08T23:20:08Z",
+      "side": 1,
+      "message": "\u003e Do you mind letting me know why the file will no longer be around when we call UploadMetrics? From my understanding, with the \u0027defer\u0027 function, it will be the last one to execute. Do I miss anything here?\n\nYou are right that based on the ordering of the defer calls, the deletion will happen technically entirely after UploadMetrics() is called -- apologies for glossing over this. The real issue here is that UploadMetrics() doesn\u0027t synchronously result in the metrics being uploaded. Since it starts an uploader process in the background, that uploader process will almost certainly not actually run until the file is deleted. (Or, even worse, it becomes a race condition between deletion of the file and uploading the file!)",
+      "parentUuid": "7d84b2df_a8fc26c7",
+      "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
