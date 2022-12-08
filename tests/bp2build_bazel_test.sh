@@ -21,8 +21,6 @@ function test_bp2build_null_build() {
   fi
 }
 
-test_bp2build_null_build
-
 function test_bp2build_null_build_with_globs() {
   setup
 
@@ -46,8 +44,6 @@ EOF
   fi
 }
 
-test_bp2build_null_build_with_globs
-
 function test_different_relative_outdir {
   setup
 
@@ -67,8 +63,6 @@ EOF
   # Modify OUT_DIR in a subshell so it doesn't affect the top level one.
   (export OUT_DIR=$outdir; run_soong bp2build && run_bazel build --config=bp2build //a:g)
 }
-
-test_different_relative_outdir
 
 function test_different_absolute_outdir {
   setup
@@ -90,9 +84,7 @@ EOF
   (export OUT_DIR=$outdir; run_soong bp2build && run_bazel build --config=bp2build //a:g)
 }
 
-test_different_absolute_outdir
-
-function test_bp2build_generates_all_buildfiles {
+function _bp2build_generates_all_buildfiles {
   setup
 
   mkdir -p foo/convertible_soong_module
@@ -157,10 +149,12 @@ EOF
   fi
 }
 
-_save_trap=$(trap -p EXIT)
-trap '[[ $? -ne 0 ]] && echo Are you running this locally? Try changing --sandbox_tmpfs_path to something other than /tmp/ in build/bazel/linux.bazelrc.' EXIT
-test_bp2build_generates_all_buildfiles
-eval ${_save_trap}
+function test_bp2build_generates_all_buildfiles {
+  _save_trap=$(trap -p EXIT)
+  trap '[[ $? -ne 0 ]] && echo Are you running this locally? Try changing --sandbox_tmpfs_path to something other than /tmp/ in build/bazel/linux.bazelrc.' EXIT
+  _bp2build_generates_all_buildfiles
+  eval "${_save_trap}"
+}
 
 function test_cc_correctness {
   setup
@@ -213,8 +207,6 @@ EOF
   fi
 }
 
-test_cc_correctness
-
 # Regression test for the following failure during symlink forest creation:
 #
 #   Cannot stat '/tmp/st.rr054/foo/bar/unresolved_symlink': stat /tmp/st.rr054/foo/bar/unresolved_symlink: no such file or directory
@@ -239,4 +231,13 @@ EOF
   fi
 }
 
-test_bp2build_null_build_with_unresolved_symlink_in_source
+# find all test_ functions
+# NB "declare -F" output is sorted, hence test order is deterministic
+readarray -t test_fns < <(declare -F | sed -n -e 's/^declare -f \(test_.*\)$/\1/p')
+info "Found ${#test_fns[*]} tests"
+if [[ ${#test_fns[*]} -eq 0 ]]; then
+  fail "No tests found"
+fi
+for f in ${test_fns[*]}; do
+  $f
+done
