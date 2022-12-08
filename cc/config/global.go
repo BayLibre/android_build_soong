@@ -202,8 +202,6 @@ var (
 		"-Wno-void-pointer-to-enum-cast",
 		// http://b/161386391 for -Wno-void-pointer-to-int-cast
 		"-Wno-void-pointer-to-int-cast",
-		// http://b/161386391 for -Wno-pointer-to-int-cast
-		"-Wno-pointer-to-int-cast",
 		"-Werror=fortify-source",
 
 		"-Werror=address-of-temporary",
