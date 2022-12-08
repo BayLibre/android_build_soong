@@ -888,6 +888,10 @@ type TestOptions struct {
 
 	// a list of extra test configuration files that should be installed with the module.
 	Extra_test_configs []string `android:"path,arch_variant"`
+
+	// Extra <option> tags to add to the auto generated test xml file. The "key"
+	// is optional in each of these.
+	Tradefed_options []tradefed.Option
 }
 
 type testProperties struct {
@@ -1166,8 +1170,14 @@ func (j *Test) generateAndroidBuildActionsWithConfig(ctx android.ModuleContext, 
 		j.testProperties.Test_options.Unit_test = proptools.BoolPtr(defaultUnitTest)
 	}
 
+	// ConfigsForAutogen is needed to resolve go type errors between an []Config and []Option
+	configsForAutogen := make([]tradefed.Config, 0)
+	for _, c := range j.testProperties.Test_options.Tradefed_options {
+		configsForAutogen = append(configsForAutogen, c)
+	}
+
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
-		j.testProperties.Test_suites, configs, j.testProperties.Auto_gen_config, j.testProperties.Test_options.Unit_test)
+		j.testProperties.Test_suites, configs, configsForAutogen, j.testProperties.Auto_gen_config, j.testProperties.Test_options.Unit_test)
 
 	j.data = android.PathsForModuleSrc(ctx, j.testProperties.Data)
 
@@ -1213,7 +1223,7 @@ func (j *TestHelperLibrary) GenerateAndroidBuildActions(ctx android.ModuleContex
 
 func (j *JavaTestImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.prebuiltTestProperties.Test_config, nil,
-		j.prebuiltTestProperties.Test_suites, nil, nil, nil)
+		j.prebuiltTestProperties.Test_suites, nil, nil, nil, nil)
 
 	j.Import.GenerateAndroidBuildActions(ctx)
 }
