@@ -39,6 +39,30 @@
       },
       "revId": "85b921e65ed1f1027aad66051ac20d58a3902073",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cefd7409_a40259fc",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-08T18:38:29Z",
+      "side": 1,
+      "message": "declare -F outputs are sorted.\nusing `sed` instead (which is already in use in the script elsewhere and toybox ships with it)\n`readarray` requires bash 4.0+ but it\u0027s also already in use in our codebase",
+      "parentUuid": "d793cb72_96307e93",
+      "range": {
+        "startLine": 894,
+        "startChar": 24,
+        "endLine": 894,
+        "endChar": 27
+      },
+      "revId": "85b921e65ed1f1027aad66051ac20d58a3902073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
