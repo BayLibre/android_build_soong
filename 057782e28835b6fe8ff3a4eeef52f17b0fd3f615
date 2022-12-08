@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b711b18_1d0c449b",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-12-08T17:51:38Z",
+      "side": 1,
+      "message": "@davidjames@google.com Does this conflict with you design? That is, now that options are part of the build, can we still generate several configurations?",
+      "range": {
+        "startLine": 894,
+        "startChar": 1,
+        "endLine": 894,
+        "endChar": 35
+      },
+      "revId": "057782e28835b6fe8ff3a4eeef52f17b0fd3f615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
