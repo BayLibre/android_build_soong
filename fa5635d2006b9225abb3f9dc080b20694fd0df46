@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b62fb508_5775fde7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-08T19:32:08Z",
+      "side": 1,
+      "message": "My +2 was for the initial commmit which included only teh addition of soong_build_metric.pb as an additional file to upload for local runs.\nAnd I think that should be a CL on its own.\nAnd yep we did agree on deleting files at the beginning of soong_ui run (@dacek \u0027s --skip-metrics-upload needs to not do the deletion but that\u0027s just an FYI for @dacek)",
+      "revId": "fa5635d2006b9225abb3f9dc080b20694fd0df46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
