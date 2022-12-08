@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b72626f3_29611784",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-12-08T08:08:57Z",
+      "side": 1,
+      "message": "Hey, this is cool, thanks for doing this!\n\nWhen I added this shell file, I thought about doing this but shied away from it; I thought it would be much more complicated because I didn\u0027t know about `declare -F`.",
+      "revId": "85b921e65ed1f1027aad66051ac20d58a3902073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d793cb72_96307e93",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-12-08T08:08:57Z",
+      "side": 1,
+      "message": "nit: mind doing this with grep instead so that we don\u0027t depend on awk and sorting it so that the order in which the test cases are executed is predictable?",
+      "range": {
+        "startLine": 894,
+        "startChar": 24,
+        "endLine": 894,
+        "endChar": 27
+      },
+      "revId": "85b921e65ed1f1027aad66051ac20d58a3902073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
