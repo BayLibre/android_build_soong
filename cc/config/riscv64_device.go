@@ -37,7 +37,9 @@ var (
 	riscv64Lldflags = append(riscv64Ldflags,
 		"-Wl,-z,max-page-size=4096")
 
-	riscv64Cppflags = []string{}
+	riscv64Cppflags = []string{
+		"-fno-emulated-tls",
+	}
 
 	riscv64CpuVariantCflags = map[string][]string{}
 )
