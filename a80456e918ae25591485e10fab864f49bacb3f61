@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "770267da_b0fd85aa",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-09T20:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f47c95cd_71cec97f",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 871,
+        "endChar": 20
+      },
+      "revId": "a80456e918ae25591485e10fab864f49bacb3f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67d13b93_596726a0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-09T16:31:55Z",
       "side": 1,
       "message": "given that many of these are created by java_sdk_library module types, which have scope information at creation time, did we consider adding a property to droidstubs to specify the sdk kind/api surface rather than trying to determine it based on naming?\n\nWe\u0027d likely have a small number that would need to be updated manually in Android.bp files, but that may be easier than the heuristics we\u0027ve got.\n\nWe don\u0027t need to block on this, but the heuristic feels a bit brittle.",
+      "range": {
+        "startLine": 872,
+        "startChar": 73,
+        "endLine": 872,
+        "endChar": 89
+      },
+      "revId": "a80456e918ae25591485e10fab864f49bacb3f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6176c6d8_84ec574c",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-09T20:27:14Z",
+      "side": 1,
+      "message": "I think your suggestion is the correct approach. Using naming convention is brittle and might result in errors in the future that are hard to detect.\n\nI just looked at `droidstubs` definition in go/Android.bp, and such a property exists today (`api_levels_sdk_type`). We can probably populate this property for java_sdk_library and the relelvant droidstubs module in `frameworks/base/StubLibraries.bp`\n\nI will look into creating this in a followup CL. jihoonkang@ is also working on checking in java_api_contribution soong modules into the tree for single_tree builds. When they are available, perhaps api_bp2build converters can plug into them directly and drop this naming convention use altogether.",
+      "parentUuid": "67d13b93_596726a0",
       "range": {
         "startLine": 872,
         "startChar": 73,
@@ -94,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6351fd80_bcd2edad",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-09T20:27:14Z",
+      "side": 1,
+      "message": "Thanks Liz, creating b/262014796 for this, and left a TODO in code.",
+      "parentUuid": "84192870_9ebe9500",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 881,
+        "endChar": 2
+      },
+      "revId": "a80456e918ae25591485e10fab864f49bacb3f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef992a13_5f8cc281",
@@ -107,6 +179,30 @@
       "writtenOn": "2022-12-09T16:31:55Z",
       "side": 1,
       "message": "does this need to be exported?",
+      "range": {
+        "startLine": 886,
+        "startChar": 5,
+        "endLine": 886,
+        "endChar": 24
+      },
+      "revId": "a80456e918ae25591485e10fab864f49bacb3f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c88f521c_3a120c40",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-09T20:27:14Z",
+      "side": 1,
+      "message": "Now that its unit test is in java package and not bp2build package, we no longer need to export it.",
+      "parentUuid": "ef992a13_5f8cc281",
       "range": {
         "startLine": 886,
         "startChar": 5,

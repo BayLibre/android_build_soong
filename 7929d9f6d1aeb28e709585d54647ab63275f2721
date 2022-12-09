@@ -39,6 +39,30 @@
       },
       "revId": "7929d9f6d1aeb28e709585d54647ab63275f2721",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66a138c7_9e635cd8",
+        "filename": "bp2build/droidstubs_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-09T20:27:14Z",
+      "side": 1,
+      "message": "My thought process was that this naming convention function will not be used in Soong, and only in api_bp2build.\n\nHowever, I dont feel strongly about it. I am moving it into java package so that we don\u0027t have to export a method.",
+      "parentUuid": "111f38d1_98e3788f",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 37
+      },
+      "revId": "7929d9f6d1aeb28e709585d54647ab63275f2721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
