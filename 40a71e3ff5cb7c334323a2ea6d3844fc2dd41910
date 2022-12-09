@@ -34,6 +34,24 @@
       "parentUuid": "e116efb8_a8320d74",
       "revId": "40a71e3ff5cb7c334323a2ea6d3844fc2dd41910",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab46a603_88de21d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2022-12-09T01:45:13Z",
+      "side": 1,
+      "message": "makes sense to use the gerrit interface. I wasn\u0027t aware of it. the abtd tests haven\u0027t completed yet, I\u0027ll post the results here once finished.",
+      "parentUuid": "aa987185_5f330d5f",
+      "revId": "40a71e3ff5cb7c334323a2ea6d3844fc2dd41910",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
