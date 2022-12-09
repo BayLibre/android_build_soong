@@ -161,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7007b2a4_6ba57be8",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T21:42:02Z",
+      "side": 1,
+      "message": "Refactoring this to do so becomes very ugly. We\u0027d have to instantiate `buildCtx` with nothing but `writer` (as `log` and other fields depend on `met`)and then patch them into `buildCtx.ContextImpl.Metrics` and other such fields. I think that\u0027s a fairly disgusting patch.\n\nAnother possible refactor: write a simple `IsThisUploadOnly` method that checks args for `--metrics-upload-only`. I can\u0027t fathom that this has the possibility of collision and saves us a headache.",
+      "parentUuid": "273f696f_b10d1162",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4b2e93b_cfe2ecbb",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 10
@@ -225,6 +243,24 @@
       "writtenOn": "2022-12-09T21:35:00Z",
       "side": 1,
       "message": "+1 to discontinuing that timestamp",
+      "parentUuid": "cfbcce03_9f066b42",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d354bd03_5ba9f7e2",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T21:42:02Z",
+      "side": 1,
+      "message": "good idea, will implement shortly.",
       "parentUuid": "cfbcce03_9f066b42",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"

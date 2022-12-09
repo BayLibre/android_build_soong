@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42a7f82b_76d05397",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T21:42:02Z",
+      "side": 1,
+      "message": "1. My previous draft had run set to a no-op that I\u0027d written, but Usta asked for it to be removed since it\u0027s un-needed. Would rather I set it to nil?\n\n2. I considered this too. I\u0027m curious - would you rather have a const variable somewhere that\u0027s equal to `commands[4]` to have a simpler comparison?",
+      "parentUuid": "e0e6ea15_cf3cacc1",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f07a000d_b668324e",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 11
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-09T21:00:13Z",
       "side": 1,
       "message": "I see that you\u0027re trying to avoid having two code paths where we derive soongMetricsFile and buildErrorFile, but consider that you may want to either duplicate this logic or refactor it to a common function instead of deferring the evaluation of uploadOnly. Deferring the evaluation of uploadOnly makes the code a bit more confusing a brittle, because it would be natural for the next engineer to add some logic at the beginning of `main()` that doesn\u0027t pertain to upload-only mode, because it\u0027s not clear where upload-only mode and other modes diverge.\n\n(This comment is not actionable in isolation, but as per my other comments I\u0027m calling for some refactoring, and this suggestion may help that effort)",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "273e13b0_ed26d6e9",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T21:42:02Z",
+      "side": 1,
+      "message": "you and Usta are having conflicting advice :) I originally duplicated and then refactored. I\u0027m fine with the duplication.",
+      "parentUuid": "f07a000d_b668324e",
       "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
