@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5bd6ca_37ccd373",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-12-09T19:54:34Z",
+      "side": 1,
+      "message": "The change already reviewed and submitted internally. Just cherry-picking it to AOSP.",
+      "revId": "530d3af197c76141d59797bb581eaf0b2b333b23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
