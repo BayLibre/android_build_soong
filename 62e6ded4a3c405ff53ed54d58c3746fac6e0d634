@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eabd9b57_1ee6dc77",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c14129e5_ee9939e8",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f172f4cc_4b637beb",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-09T06:29:43Z",
       "side": 1,
       "message": "func is a reference type and since we don\u0027t use `run` for this command, it may simply be omitted (to default to nil)",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c080b371_31ffcaea",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f172f4cc_4b637beb",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8943ac08_ff24e569",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "Can we clean up in a future cl?",
+      "parentUuid": "60925003_a1f9c314",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60c28b11_bfaa4993",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 10
@@ -65,6 +119,24 @@
       "writtenOn": "2022-12-09T06:29:43Z",
       "side": 1,
       "message": "`met` creation and `met.setBuildCommand()` `met.setBuildDateTime()` etc calls should be omitted for --upload-metrics-only because it simply discards those data, when it unmarshals a previouls written soong_metrics files instead and edits (\"fixes\") it.",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8108484f_ced705b5",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "The `met` instantiation is required for buildCtx which is required for config which is required for argument parsing. I moved two calls around though.",
+      "parentUuid": "60c28b11_bfaa4993",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -88,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f179cc4_d33bf9c9",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "It\u0027s required for the call to upload. It\u0027s also not a standard field in config (maybe it should be?)",
+      "parentUuid": "c4b2e93b_cfe2ecbb",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5cabca1a_19852617",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 10
@@ -99,6 +189,24 @@
       "writtenOn": "2022-12-09T06:29:43Z",
       "side": 1,
       "message": "I think this can be moved to the \"common\" path for all commands, i.e. before L192 and removed from here as well as the body of `startMetricsUpload()`",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3652eb6e_b4a1b677",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "Not quite - this required build.config:loadEnvConfig to run, which is an expensive operation due to the marshalling required. Bypassing that was critical to getting this to run quickly.\n\nThe BUILD_DATETIME file doesn\u0027t exist without loadEnvConfig, which causes SetupOutDir to fail.",
+      "parentUuid": "5cabca1a_19852617",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -120,6 +228,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72312817_50483056",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "refactored, slightly differently.",
+      "parentUuid": "8744de09_80cdd83e",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff2f3f26_559baaad",
@@ -133,6 +259,24 @@
       "writtenOn": "2022-12-09T06:29:43Z",
       "side": 1,
       "message": "nit: I think the following is a much more readable form (instead of 3 different `defer`s:\n```\ndefer func(){\n   build.CheckProdCreds(buildCtx, config)\n   met.Dump(sooongMetricsFile)\n   if !config.SkipMetricsUpload() {\n     startMetricsUpload(config, c, buildCtx, buildStarted)\n   }\n}()\n```",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04ad526d_54507838",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "nice, thanks",
+      "parentUuid": "ff2f3f26_559baaad",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -154,6 +298,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9d72a9c_194ba392",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea571b6d_ea26c3dd",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8ff03a3_1535f4e4",
@@ -167,6 +329,24 @@
       "writtenOn": "2022-12-09T06:29:43Z",
       "side": 1,
       "message": "unnecessary func - we\u0027d want to avoid a no-op func and rather encounter a nil dereference error to signal regression.",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b487a260_1549a5cd",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8ff03a3_1535f4e4",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -188,6 +368,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65458c17_d88e5944",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "I added them to the signature but I kinda hate it.",
+      "parentUuid": "c832a2a2_006989ca",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4decfb3_18a05520",
@@ -205,6 +403,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50418889_54125175",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4decfb3_18a05520",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05b32ea3_d9f8aea4",
@@ -218,6 +434,24 @@
       "writtenOn": "2022-12-09T06:29:43Z",
       "side": 1,
       "message": "nit: I see little value in constructing this slice here when it\u0027s immediately deconstructed at L682 anyways.\n(unless of course this is moved to a separate func, for use in delete-all-files-when-soong-ui-starts task)",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f083403e_d61aad2c",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "Let\u0027s do this in a clean-up cl later, IMO.",
+      "parentUuid": "05b32ea3_d9f8aea4",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -241,6 +475,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8395e021_a5d8f91d",
+        "filename": "ui/build/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "I don\u0027t follow. Where would you want to check it?\n\nThe second bullet - this could be a thing, but seems like a future CL cleanup to send it in by default from m invocations, too.",
+      "parentUuid": "bc828842_af3cdc94",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93994428_fe3196e1",
         "filename": "ui/build/config.go",
         "patchSetId": 10
@@ -252,6 +504,24 @@
       "writtenOn": "2022-12-09T06:29:43Z",
       "side": 1,
       "message": "nit: why not simply `return Config{ret}`",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e572671_cf750867",
+        "filename": "ui/build/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93994428_fe3196e1",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -273,6 +543,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28894a0d_06ad6b34",
+        "filename": "ui/build/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "I updated to unix-millis (I think that\u0027s a well understood term.)",
+      "parentUuid": "729ac145_f1092486",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b30b6e5_f3a21989",
@@ -286,6 +574,24 @@
       "writtenOn": "2022-12-09T06:29:43Z",
       "side": 1,
       "message": "nit: `UpdateTotalRealTime()` would be a better name.",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e95d4b_565bfa21",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-09T19:59:07Z",
+      "side": 1,
+      "message": "I\u0027m not married to the current name, but this reads like it\u0027s updating an in-memory proto instead of changing a file. \n\n`UpdateSoongMetricsFileTotalRealTime`? There has to be a MOMA badge for something this hackneyed....",
+      "parentUuid": "4b30b6e5_f3a21989",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
