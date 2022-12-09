@@ -16,6 +16,24 @@
       "message": "Can you use the \"run more builds\" button in the checks tab to run the aosp-master aosp_riscv64-userdebug build on this change?",
       "revId": "40a71e3ff5cb7c334323a2ea6d3844fc2dd41910",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa987185_5f330d5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-12-09T00:11:44Z",
+      "side": 1,
+      "message": "Aditya has started a build from go/abtd.  But using the \"run more builds\" from gerrit is better because the results get posted on the CL under the \"Checks\" tab.",
+      "parentUuid": "e116efb8_a8320d74",
+      "revId": "40a71e3ff5cb7c334323a2ea6d3844fc2dd41910",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
