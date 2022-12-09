@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3adbe119_4b202b7b",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-09T19:09:06Z",
+      "side": 1,
+      "message": "this appears to be unused in the rule?",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 40
+      },
+      "revId": "a700f95cfc596e759ee612039b6fe2f494155d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
