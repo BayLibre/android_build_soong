@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f452836_175d4c67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-09T23:27:19Z",
+      "side": 1,
+      "message": "_Maybe_ it\u0027s possible, but simply renaming this to `extra_options` or something isn\u0027t the right move, because the key/value pair that `tradefed.Option` represents is tradefed specific. Also the whole XML file is tradefed specific.\n\nI saw in some of your messages you were talking about passing command line options; that\u0027s not what this cl does.",
+      "parentUuid": "2b97bdd0_b96563b7",
+      "range": {
+        "startLine": 12,
+        "startChar": 25,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "057782e28835b6fe8ff3a4eeef52f17b0fd3f615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d69dd88_805c212a",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e3b09dd_e5ffb152",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-09T23:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d69dd88_805c212a",
+      "revId": "057782e28835b6fe8ff3a4eeef52f17b0fd3f615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ad99438_81804182",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-12-09T16:07:36Z",
       "side": 1,
       "message": "This FR is probably compatible with cc_test etc as well. What\u0027s the reason for limiting it to Java?\n\nhttps://source.corp.google.com/android/build/soong/cc/test.go;l\u003d26?q\u003dandroid%2Fsoong%2Ftradefed\u0026sq\u003dpackage:%5Eandroid$\n\nIt looks like we even generate test configs for rust so they should work as well with this feature.\n\nhttps://source.corp.google.com/search?q\u003dandroid%2Fsoong%2Ftradefed\u0026sq\u003dpackage:%5Eandroid$",
+      "range": {
+        "startLine": 887,
+        "startChar": 9,
+        "endLine": 887,
+        "endChar": 26
+      },
+      "revId": "057782e28835b6fe8ff3a4eeef52f17b0fd3f615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ed2279f_5332af74",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-09T23:27:19Z",
+      "side": 1,
+      "message": "You can\u0027t add a `tradefed.Option` to `android.CommonTestOptions` because the `tradefed` package depends on the `android` package, and in go you can\u0027t have circular package dependencies.\n\nAlso when moving it to a common struct you have to be sure that you implement it everywhere, or else it will become possible to set it on certain modules in Android.bp files but it will have no effect.\n\nI refactored the generation functions to be language-agnostic so it\u0027s easier to add this in the future, but I\u0027d like to skip it for this cl.\n\nI agree that it would be a good thing to do, but I don\u0027t think I\u0027m the person for it.",
+      "parentUuid": "3ad99438_81804182",
       "range": {
         "startLine": 887,
         "startChar": 9,
@@ -111,6 +177,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b26c7c26_588393a4",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-09T23:27:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "84e708f0_e0064bad",
+      "range": {
+        "startLine": 894,
+        "startChar": 1,
+        "endLine": 894,
+        "endChar": 35
+      },
+      "revId": "057782e28835b6fe8ff3a4eeef52f17b0fd3f615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef1644ab_470992ac",
@@ -124,6 +214,30 @@
       "writtenOn": "2022-12-09T15:54:14Z",
       "side": 1,
       "message": "I don\u0027t understand this comment. Can you clarify? It looks like you\u0027re converting Options into Configs? That\u0027s not really resolving errors, but doing a type conversion.",
+      "range": {
+        "startLine": 1173,
+        "startChar": 78,
+        "endLine": 1173,
+        "endChar": 81
+      },
+      "revId": "057782e28835b6fe8ff3a4eeef52f17b0fd3f615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29794339_af8fc4d1",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-09T23:27:19Z",
+      "side": 1,
+      "message": "I said that initially because `configs \u003d append(configs, optionsForAutogen...)` errored out if `optionsForAutogen` was a list of `tradefed.Option`, despite the fact that `tradefed.Option` implements `tradefed.Config`. Presumably because `tradefed.Option` is a struct and allocated directly in the array but `tradefed.Config` is a pointer.",
+      "parentUuid": "ef1644ab_470992ac",
       "range": {
         "startLine": 1173,
         "startChar": 78,
@@ -151,6 +265,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7d70775_1b2a0370",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-09T23:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06e88813_6d51dcec",
+      "revId": "057782e28835b6fe8ff3a4eeef52f17b0fd3f615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5a4ecb_8ac5c9ef",
@@ -164,6 +296,24 @@
       "writtenOn": "2022-12-09T15:54:14Z",
       "side": 1,
       "message": "You don\u0027t really need  the else here. You can just say\n```\nif len(configsForAutogenerated) \u003e 0 {\n    ctx.ModuleErrorf(\"Extra tradefed configurations were provided for an autogenerated xml file, but the autogenerated xml file was not used.\")\n}\n```\n\nWe should also probably move this validation into a function. It\u0027d be invalid as well to specify other things, like an autogen template, so we could add a TODO there for someone to take care of that and validate that folks aren\u0027t both specifying templates and skipping autogen.\n\nIn future I\u0027d like to have the ability to specify extra options even if you\u0027re using an existing config. That seems fully possible in a followup CL, which I could take care of.",
+      "revId": "057782e28835b6fe8ff3a4eeef52f17b0fd3f615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c855f764_6c983787",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-09T23:27:19Z",
+      "side": 1,
+      "message": "Done for the \"remove the else\" comment.\n\nI\u0027m not sure moving validation to a separate function would be useful, as that function would have to redo all the conditional logic in this function, like calling testConfigPath. In my latest patchset I also added validation that the template exists, and that\u0027s nested quite deep in the conditional logic.",
+      "parentUuid": "ee5a4ecb_8ac5c9ef",
       "revId": "057782e28835b6fe8ff3a4eeef52f17b0fd3f615",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
