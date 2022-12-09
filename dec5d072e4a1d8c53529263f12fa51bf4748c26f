@@ -124,6 +124,24 @@
       "parentUuid": "7c0da52e_e589149a",
       "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a9013ff_10a14cbd",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-09T16:56:17Z",
+      "side": 1,
+      "message": "Can you sure to double check (manually) the CUJ I described above?  \n\nYou can probably expedite testing this by:\n\n1. Run `m nothing`\n2. Verify that soong_build_metrics.pb looks correct\n3. Run `m bp2build`\n4. Verify that soong_build_metrics.pb is gone",
+      "parentUuid": "895860fe_574f7955",
+      "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
