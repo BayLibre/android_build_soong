@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f47c95cd_71cec97f",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-09T16:31:55Z",
+      "side": 1,
+      "message": "nit: droidstubsModuleNamingToSdkKind or moduleNameSubstringToSdkKind",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 871,
+        "endChar": 20
+      },
+      "revId": "a80456e918ae25591485e10fab864f49bacb3f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d13b93_596726a0",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-09T16:31:55Z",
+      "side": 1,
+      "message": "given that many of these are created by java_sdk_library module types, which have scope information at creation time, did we consider adding a property to droidstubs to specify the sdk kind/api surface rather than trying to determine it based on naming?\n\nWe\u0027d likely have a small number that would need to be updated manually in Android.bp files, but that may be easier than the heuristics we\u0027ve got.\n\nWe don\u0027t need to block on this, but the heuristic feels a bit brittle.",
+      "range": {
+        "startLine": 872,
+        "startChar": 73,
+        "endLine": 872,
+        "endChar": 89
+      },
+      "revId": "a80456e918ae25591485e10fab864f49bacb3f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c76be28_b45cefdc",
         "filename": "java/droidstubs.go",
         "patchSetId": 7
@@ -19,6 +65,53 @@
         "startChar": 1,
         "endLine": 881,
         "endChar": 2
+      },
+      "revId": "a80456e918ae25591485e10fab864f49bacb3f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84192870_9ebe9500",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-09T16:31:55Z",
+      "side": 1,
+      "message": "tracking bug sgtm.",
+      "parentUuid": "8c76be28_b45cefdc",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 881,
+        "endChar": 2
+      },
+      "revId": "a80456e918ae25591485e10fab864f49bacb3f61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef992a13_5f8cc281",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-09T16:31:55Z",
+      "side": 1,
+      "message": "does this need to be exported?",
+      "range": {
+        "startLine": 886,
+        "startChar": 5,
+        "endLine": 886,
+        "endChar": 24
       },
       "revId": "a80456e918ae25591485e10fab864f49bacb3f61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"

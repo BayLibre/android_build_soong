@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71847b9_9ef57344",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-09T16:31:55Z",
+      "side": 1,
+      "message": "lgtm, mostly just a question of whether we considered relying less on heuristics to determine the api surface",
+      "revId": "7929d9f6d1aeb28e709585d54647ab63275f2721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "111f38d1_98e3788f",
+        "filename": "bp2build/droidstubs_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-09T16:31:55Z",
+      "side": 1,
+      "message": "any reason we can\u0027t add this test to the java package? It doesn\u0027t rely on any of the bp2build testing infra and requires exporting a method that otherwise doesn\u0027t need exporting.",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 37
+      },
+      "revId": "7929d9f6d1aeb28e709585d54647ab63275f2721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
