@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ad99438_81804182",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1076194
+      },
+      "writtenOn": "2022-12-09T16:07:36Z",
+      "side": 1,
+      "message": "This FR is probably compatible with cc_test etc as well. What\u0027s the reason for limiting it to Java?\n\nhttps://source.corp.google.com/android/build/soong/cc/test.go;l\u003d26?q\u003dandroid%2Fsoong%2Ftradefed\u0026sq\u003dpackage:%5Eandroid$\n\nIt looks like we even generate test configs for rust so they should work as well with this feature.\n\nhttps://source.corp.google.com/search?q\u003dandroid%2Fsoong%2Ftradefed\u0026sq\u003dpackage:%5Eandroid$",
+      "range": {
+        "startLine": 887,
+        "startChar": 9,
+        "endLine": 887,
+        "endChar": 26
+      },
+      "revId": "057782e28835b6fe8ff3a4eeef52f17b0fd3f615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b711b18_1d0c449b",
         "filename": "java/java.go",
         "patchSetId": 1
