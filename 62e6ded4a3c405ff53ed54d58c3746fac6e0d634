@@ -1,0 +1,293 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c14129e5_ee9939e8",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "no need for creating a `func uploadMetricsConfig`, just set `config: build.UploadOnlyConfig` here",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f172f4cc_4b637beb",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "func is a reference type and since we don\u0027t use `run` for this command, it may simply be omitted (to default to nil)",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60925003_a1f9c314",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "nit: maybe rename `c` \u003d\u003e `command` or `chosenCommand`",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c28b11_bfaa4993",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "`met` creation and `met.setBuildCommand()` `met.setBuildDateTime()` etc calls should be omitted for --upload-metrics-only because it simply discards those data, when it unmarshals a previouls written soong_metrics files instead and edits (\"fixes\") it.",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4b2e93b_cfe2ecbb",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "if we captured buildStarted in the first run, i.e. when `--skip-metric-upload` was used, then we can simply omit the 4th argument.",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cabca1a_19852617",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "I think this can be moved to the \"common\" path for all commands, i.e. before L192 and removed from here as well as the body of `startMetricsUpload()`",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8744de09_80cdd83e",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "Drop the boolean argument, `makeLogsDir` from the `startMetricsUpload()`\n\nWe would already have invoked `build.SetupOutDir(buildCtx, config)` at L198 appropriately.",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2f3f26_559baaad",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "nit: I think the following is a much more readable form (instead of 3 different `defer`s:\n```\ndefer func(){\n   build.CheckProdCreds(buildCtx, config)\n   met.Dump(sooongMetricsFile)\n   if !config.SkipMetricsUpload() {\n     startMetricsUpload(config, c, buildCtx, buildStarted)\n   }\n}()\n```",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea571b6d_ea26c3dd",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "unnecessary func indirection",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ff03a3_1535f4e4",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "unnecessary func - we\u0027d want to avoid a no-op func and rather encounter a nil dereference error to signal regression.",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c832a2a2_006989ca",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "nit: buildErrorFile and soongMetricsFile are also defined within main(); maybe there is a way to avoid the dupiication",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4decfb3_18a05520",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "can be removed - see a preceding comment.",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b32ea3_d9f8aea4",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "nit: I see little value in constructing this slice here when it\u0027s immediately deconstructed at L682 anyways.\n(unless of course this is moved to a separate func, for use in delete-all-files-when-soong-ui-starts task)",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc828842_af3cdc94",
+        "filename": "ui/build/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "nit: instead of simply commenting that `--build-started-time` is for use with `--metrics-upload-only`, can it be checked somewhere?\n\nAlthough maybe this should instead be used only with `--skip-metrics-upload` so that soong_metrics file always has the correct value that doesn\u0027t need to be overwritten later.",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93994428_fe3196e1",
+        "filename": "ui/build/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "nit: why not simply `return Config{ret}`",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729ac145_f1092486",
+        "filename": "ui/build/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "nit: so this is \"build started time expressed in epoch millis\"? If so no harm in being verbose, especially for the option, i.e. `--build-started-time-epoch-millis` for instance",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b30b6e5_f3a21989",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:29:43Z",
+      "side": 1,
+      "message": "nit: `UpdateTotalRealTime()` would be a better name.",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
