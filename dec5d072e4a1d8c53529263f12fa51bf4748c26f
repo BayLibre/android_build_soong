@@ -178,6 +178,24 @@
       "parentUuid": "8a9013ff_10a14cbd",
       "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee49ee4_74413ca9",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-12-09T17:46:34Z",
+      "side": 1,
+      "message": "Please ignore the last comment: \"I ran m bazel-mode-dev nothing to make sure soong_build_metrics\". Thanks!",
+      "parentUuid": "f7b3167b_67f223a7",
+      "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
