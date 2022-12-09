@@ -16,6 +16,24 @@
       "message": "This path is not exactly correct in all cases (for all values of the output directory). If the user sets $OUT_DIR\u003dfoo, you should not be using `out`. Also, writing this here results in us having logic to delete soong_build_metrics.pb in two places.\n\nThe other location:\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/soong.go;l\u003d569;drc\u003dc576383336ad18aef520881ce8bd53e8ca36451f\n\nInstead of implementing deletion here, can you just update that code path?\n\nThat is, instead of:\n\n```\nif shouldCollectBuildSoongMetrics(config) {\n\t\u003cdelete soong_build_metrics.pb\u003e \n}\n```\n\nwe have just:\n\n```\n\u003cdelete soong_build_metrics.pb\u003e\n```",
       "revId": "1daaf6a4262e84653c296638b601e093c23119da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d32e1e_bbf501be",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-12-09T16:50:34Z",
+      "side": 1,
+      "message": "Thanks for the detail explanation! Updated to delete soong_build_metrics in build/soong/ui/build/soong.go",
+      "parentUuid": "f57ddb70_4831fc8e",
+      "revId": "1daaf6a4262e84653c296638b601e093c23119da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
