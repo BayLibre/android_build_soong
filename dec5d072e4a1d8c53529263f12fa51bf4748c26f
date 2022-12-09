@@ -142,6 +142,42 @@
       "parentUuid": "895860fe_574f7955",
       "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b3167b_67f223a7",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-12-09T17:27:03Z",
+      "side": 1,
+      "message": "I ran m bazel-mode-dev nothing to make sure soong_build_metrics",
+      "parentUuid": "8a9013ff_10a14cbd",
+      "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc4e3327_56ef2f2f",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-12-09T17:27:03Z",
+      "side": 1,
+      "message": "Yeah I have tested it the above way and also ran ``bazel-mode-dev`` instead of ``m nothing``, they all works properly.",
+      "parentUuid": "8a9013ff_10a14cbd",
+      "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
