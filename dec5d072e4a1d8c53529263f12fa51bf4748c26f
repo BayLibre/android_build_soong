@@ -106,6 +106,24 @@
       "parentUuid": "ae4eee2a_271a03ae",
       "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "895860fe_574f7955",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:59:11Z",
+      "side": 1,
+      "message": "fyi https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/upload.go;l\u003d97-100?q\u003dUploadMetric\n\nAnd soong_ui \"tells\" the uploader app to do the deletion:\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/upload.go;l\u003d121;drc\u003d4f5d2c1e97bbd20b61b346a31c62d996993a894d",
+      "parentUuid": "7c0da52e_e589149a",
+      "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
