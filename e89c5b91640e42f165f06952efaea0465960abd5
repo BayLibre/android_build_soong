@@ -16,6 +16,24 @@
       "message": "The errorprone failure on this CL currently proves that this works 😊\n\nWill explore either suppressing these lint checks in the generated code that isn\u0027t applicable, or making the linters themselves wise to that code.  There may also be a better way to ignore generated code - thinking about it...",
       "revId": "e89c5b91640e42f165f06952efaea0465960abd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5153a224_c0a3dc8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2022-12-09T19:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c730a4ff_b8abdff8",
+      "revId": "e89c5b91640e42f165f06952efaea0465960abd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
