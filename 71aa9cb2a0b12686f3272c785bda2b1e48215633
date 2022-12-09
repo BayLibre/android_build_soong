@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e6ea15_cf3cacc1",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-09T21:00:13Z",
+      "side": 1,
+      "message": "adopting this pattern with the logic below is a bit incomplete and doesn\u0027t quite match other usage. It feels like a bit of an adhoc solution that doesn\u0027t fit `commands`.\n\n1. We don\u0027t have `run` set to anything\n2. In our very specific case, we are checking the value of c.flag *after* we\u0027ve already determined the matching `command`.",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07a000d_b668324e",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-09T21:00:13Z",
+      "side": 1,
+      "message": "I see that you\u0027re trying to avoid having two code paths where we derive soongMetricsFile and buildErrorFile, but consider that you may want to either duplicate this logic or refactor it to a common function instead of deferring the evaluation of uploadOnly. Deferring the evaluation of uploadOnly makes the code a bit more confusing a brittle, because it would be natural for the next engineer to add some logic at the beginning of `main()` that doesn\u0027t pertain to upload-only mode, because it\u0027s not clear where upload-only mode and other modes diverge.\n\n(This comment is not actionable in isolation, but as per my other comments I\u0027m calling for some refactoring, and this suggestion may help that effort)",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
