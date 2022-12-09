@@ -561,7 +561,7 @@ func (r *builtinBazelRunner) createBazelCommand(paths *bazelPaths, runName bazel
 		//
 		// The actual platform values here may be overridden by configuration
 		// transitions from the buildroot.
-		fmt.Sprintf("--extra_toolchains=%s", "//prebuilts/clang/host/linux-x86:all"),
+		fmt.Sprintf("--extra_toolchains=%s", "//prebuilts/clang/host/linux-x86/soong:all"),
 		// This should be parameterized on the host OS, but let's restrict to linux
 		// to keep things simple for now.
 		fmt.Sprintf("--host_platform=%s", "//build/bazel/platforms:linux_x86_64"),
