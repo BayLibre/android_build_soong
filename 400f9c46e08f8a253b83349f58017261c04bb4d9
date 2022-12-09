@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5fe1113_a5dc1e1c",
+        "filename": "cc/object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-09T18:06:39Z",
+      "side": 1,
+      "message": "given these aren\u0027t for dynamic linking -- the naming scheme we\u0027ve been using elsewhere is :\n\n`implementation_deps` (`implementation_dynamic_deps`, etc) for non-exporting\n`deps` (`dynamic_deps`) for exporting",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 15
+      },
+      "revId": "400f9c46e08f8a253b83349f58017261c04bb4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
