@@ -51,6 +51,41 @@
       "message": "Why 3 variants?  The bug only mentions \"goldmont\".  Is \"silvermont\" different enough that you can\u0027t use it?",
       "revId": "f68c18f710b08be0d245277df4e5ba3aec20c119",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a403e4_022760e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1069219
+      },
+      "writtenOn": "2022-12-09T02:50:06Z",
+      "side": 1,
+      "message": "Thank you for reviewing!",
+      "revId": "f68c18f710b08be0d245277df4e5ba3aec20c119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b1dbf7_c51fa98c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1069219
+      },
+      "writtenOn": "2022-12-09T02:50:06Z",
+      "side": 1,
+      "message": "-march\u003dgoldmont is better than -march\u003dsilvermont because it allows the comipler to use more CPU instructions.\nPlease see https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html for details.\n\nAs described in b/259201836 we\u0027re planning to use goldmont for Android U or later running on ChromeOS. I\u0027ve included the other two (i.e. goldmont-plus and tremont) in this CL to cover all Atom CPU types which ChromeOS may use in future.\n\nIf you think it\u0027s better to avoid adding goldmont-plus and tremont now, I\u0027ll drop them from this CL.\nPlease let me know your preference.",
+      "parentUuid": "142560f8_460d7ba7",
+      "revId": "f68c18f710b08be0d245277df4e5ba3aec20c119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
