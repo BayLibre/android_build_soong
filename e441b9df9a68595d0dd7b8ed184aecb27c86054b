@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32347094_1b519b24",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1980252
+      },
+      "writtenOn": "2022-12-09T21:45:20Z",
+      "side": 0,
+      "message": "main",
+      "revId": "e441b9df9a68595d0dd7b8ed184aecb27c86054b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
