@@ -214,6 +214,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58c54d4c_abb55426",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T21:35:00Z",
+      "side": 1,
+      "message": "+1 to discontinuing that timestamp",
+      "parentUuid": "cfbcce03_9f066b42",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5cabca1a_19852617",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 10
@@ -541,6 +559,24 @@
       "side": 1,
       "message": "see my other discussion on buildStartedTime -- I think we should figure out whether this is something we actually want. (Lets resolve that discussion before dealing with the implementation details of this flag)\n\nStill, while we\u0027re on topic, I suggest that if we\u0027re going to use the `command` pattern in main.go, we might adopt the pattern where `run` does mode-specific flag parsing and validation. See `dumpVar` as an example: https://cs.android.com/android/platform/superproject/+/master:build/soong/cmd/soong_ui/main.go;l\u003d271;drc\u003d519be1a58abddd8f9612ac454afeb0da8d11fc7a",
       "parentUuid": "8395e021_a5d8f91d",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39a2098_c691f440",
+        "filename": "ui/build/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T21:35:00Z",
+      "side": 1,
+      "message": "yep I think it would make sense to do command-specific validation - I wouldn\u0027t mind it being deferred to a different CL",
+      "parentUuid": "aa00fb03_0d2639b3",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
