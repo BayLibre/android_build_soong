@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be26686d_9a913e7a",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-09T22:14:04Z",
+      "side": 1,
+      "message": "If \"run\" is truly a no-op, I\"m fine with leaving it as unset, but I think that we best not have it as a no-op if we\u0027re using the `command` structure. As it stands in your CL, we\u0027re only adding it as a command so that we can initialize config and context objects, but really we are otherwise ignoring the `command` structure -- this is a bit of a \"code smell\"; in general, we should avoid making \"fake values\" or half-empty values to meet an API need -- it\u0027s an indication that the API needs to be refactored or re-evaluated,",
+      "parentUuid": "42a7f82b_76d05397",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f07a000d_b668324e",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 11
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "you and Usta are having conflicting advice :) I originally duplicated and then refactored. I\u0027m fine with the duplication.",
       "parentUuid": "f07a000d_b668324e",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e52546_c6cdbde9",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-09T22:14:04Z",
+      "side": 1,
+      "message": "Apologies for missing the original thread. Something just seems off here that some file paths are passed as params, and others are derived.\n\nAnd again, I don\u0027t think this is actionable in isolation -- I think we may get this for free if we do a refactoring of upload-only mode so that it shares less of this main function.",
+      "parentUuid": "273e13b0_ed26d6e9",
       "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
