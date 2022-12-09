@@ -88,6 +88,24 @@
       "parentUuid": "7d84b2df_a8fc26c7",
       "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c0da52e_e589149a",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-09T06:53:55Z",
+      "side": 1,
+      "message": "^ I think soong_ui copies the files over to a temp location and tell the \"METRICS_UPLOADER\" app to upload from that temp location\nBut regardless, we did agree on doing deletions at START and not END of soong_ui, as it is a simpler solution for avoiding stale data.",
+      "parentUuid": "ae4eee2a_271a03ae",
+      "revId": "dec5d072e4a1d8c53529263f12fa51bf4748c26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
