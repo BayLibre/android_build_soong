@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5feefde_404c3c53",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-10T02:09:52Z",
+      "side": 1,
+      "message": "See the previous post about an early parse for `isUploadOnly`. Maybe that would let us bypass?",
+      "parentUuid": "be26686d_9a913e7a",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f07a000d_b668324e",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 11
