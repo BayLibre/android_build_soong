@@ -238,9 +238,6 @@ var (
 		"-Wno-error=unused-but-set-parameter", // http://b/197240255
 		// New warnings to be fixed after clang-r458507
 		"-Wno-error=unqualified-std-cast-call", // http://b/239662094
-		// New warnings to be fixed after clang-r468909
-		"-Wno-error=deprecated-builtins", // http://b/241601211
-		"-Wno-error=deprecated",          // in external/googletest/googletest
 		// New warnings to be fixed after clang-r475365
 		"-Wno-error=single-bit-bitfield-constant-conversion", // http://b/243965903
 		"-Wno-error=incompatible-function-pointer-types",     // http://b/257101299
@@ -259,6 +256,9 @@ var (
 		"-Wno-misleading-indentation",
 		// http://b/241941550
 		"-Wno-array-parameter",
+		// http://b/241601211
+		"-Wno-deprecated-builtins",
+		"-Wno-deprecated",
 	}
 
 	// Extra cflags for external third-party projects to disable warnings that
