@@ -23,6 +23,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/bazel"
+	"android/soong/bazel/cquery"
 	"android/soong/tradefed"
 )
 
@@ -135,7 +136,32 @@ func init() {
 // static_libs dependency on libgtests unless the gtest flag is set to false.
 func TestFactory() android.Module {
 	module := NewTest(android.HostAndDeviceSupported, true)
+	module.bazelHandler = &ccTestBazelHandler{module: module}
 	return module.Init()
+}
+
+type ccTestBazelHandler struct {
+	module *Module
+}
+
+var _ BazelHandler = (*ccTestBazelHandler)(nil)
+
+func (handler *ccTestBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
+	bazelCtx := ctx.Config().BazelContext
+	bazelCtx.QueueBazelRequest(label, cquery.GetCcUnstrippedInfo, android.GetConfigKey(ctx))
+}
+
+func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+	bazelCtx := ctx.Config().BazelContext
+	info, err := bazelCtx.GetCcUnstrippedInfo(label, android.GetConfigKey(ctx))
+	if err != nil {
+		ctx.ModuleErrorf(err.Error())
+		return
+	}
+
+	outputFilePath := android.PathForBazelOut(ctx, info.OutputFile)
+	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
+	handler.module.linker.(*testBinary).unstrippedOutputFile = android.PathForBazelOut(ctx, info.UnstrippedOutput)
 }
 
 // cc_test_library creates an archive of files (i.e. .o files) which is later
@@ -481,6 +507,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 
 func NewTest(hod android.HostOrDeviceSupported, bazelable bool) *Module {
 	module, binary := newBinary(hod, bazelable)
+	module.bazelable = bazelable
 	module.multilib = android.MultilibBoth
 	binary.baseInstaller = NewTestInstaller()
 
