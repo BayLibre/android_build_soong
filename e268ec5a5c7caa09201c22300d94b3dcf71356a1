@@ -16,6 +16,24 @@
       "message": "I think this is the wrong place to do it, because LOCAL_IS_HOST_MODULE is also set here if the base module\u0027s Os is host: http://cs/android-internal/build/soong/android/androidmk.go;l\u003d618;rcl\u003d6baf0170c0dbff5bb82160dcb780398f6bf89d92\n\nIf robolectricTest never make it to the device, then robolectricTest itself should be classified as a host module, but it\u0027s currently classified as DeviceSupported at module init: http://cs/android-internal/build/soong/java/robolectric.go;l\u003d369;rcl\u003d6baf0170c0dbff5bb82160dcb780398f6bf89d92",
       "revId": "e268ec5a5c7caa09201c22300d94b3dcf71356a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48430b33_c66c7e13",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-12-12T19:02:17Z",
+      "side": 1,
+      "message": "Robolectric tests are odd, they need to compile against device dependencies but then run on the host.  It turned out to be easiest to make it a device module and then bridge to the host as necessary.",
+      "parentUuid": "38ecea26_c9aedfbe",
+      "revId": "e268ec5a5c7caa09201c22300d94b3dcf71356a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
