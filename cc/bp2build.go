@@ -859,9 +859,16 @@ func bp2buildCcAidlLibrary(
 }
 
 func bp2BuildParseSdkAttributes(module *Module) sdkAttributes {
+	//TODO(b/262009734) remove apex_inherit from Soong
+	var minSdkVersion *string
+	if proptools.String(module.Properties.Min_sdk_version) == "apex_inherit" {
+		minSdkVersion = proptools.StringPtr("29")
+	} else {
+		minSdkVersion = module.Properties.Min_sdk_version
+	}
 	return sdkAttributes{
 		Sdk_version:     module.Properties.Sdk_version,
-		Min_sdk_version: module.Properties.Min_sdk_version,
+		Min_sdk_version: minSdkVersion,
 	}
 }
 
