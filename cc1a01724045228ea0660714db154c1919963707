@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c094ccaf_ab39d7b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-12-12T17:35:49Z",
+      "side": 1,
+      "message": "The change already reviewed and submitted internally. This CL is cherry-picking it to AOSP.",
+      "revId": "cc1a01724045228ea0660714db154c1919963707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
