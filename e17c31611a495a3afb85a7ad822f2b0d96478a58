@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6b933f_661e98ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-12-12T17:42:04Z",
+      "side": 1,
+      "message": "Dennis, your recent changes to deapexer broke the prebuilt_apex/apex_set module types. Would you mind double checking that my fix is ok. I wasn\u0027t sure if I should use blkid_static instead.",
+      "revId": "e17c31611a495a3afb85a7ad822f2b0d96478a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
