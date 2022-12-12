@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f52a9e4e_e7e93d3c",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-12T20:08:50Z",
+      "side": 1,
+      "message": "Looking at this - for `upload.go` we need `ctx` for fatal logging and `config` for the metrics uploader. The latter is fairly easy and can be done with just `parseArgs` and so could be easily avoided, the former needs a few things instantiated. \n\nI would prefer to keep a simpler approach at first re: this and the other thread about unnecessarily instantiating a metrics proto object. The total overhead is \u003c100ms and a few empty protos. Is there a strong objection here?",
+      "parentUuid": "b5feefde_404c3c53",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f07a000d_b668324e",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 11
