@@ -809,6 +809,16 @@ func (lla LabelListAttribute) HasConfigurableValues() bool {
 	return false
 }
 
+// HasOsSpecificValues returns true if the attribute contains axis specific label list values from a given axis
+func (lla LabelListAttribute) HasOsSpecificValues(axis ConfigurationAxis) bool {
+	for _, values := range lla.ConfigurableValues[axis] {
+		if !values.IsEmpty() {
+			return true
+		}
+	}
+	return false
+}
+
 // IsEmpty returns true if the attribute has no values under any configuration.
 func (lla LabelListAttribute) IsEmpty() bool {
 	if len(lla.Value.Includes) > 0 {
