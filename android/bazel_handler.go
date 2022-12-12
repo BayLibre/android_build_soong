@@ -645,10 +645,12 @@ load(":main.bzl", "config_node", "mixed_build_root", "phony_root")
 
 mixed_build_root(name = "buildroot",
     deps = [%s],
+	testonly = True,
 )
 
 phony_root(name = "phonyroot",
     deps = [":buildroot"],
+	testonly = True,
 )
 `
 	configNodeFormatString := `
@@ -656,6 +658,7 @@ config_node(name = "%s",
     arch = "%s",
     os = "%s",
     deps = [%s],
+	testonly = True,
 )
 `
 

@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 
 	"android/soong/bazel/cquery"
@@ -647,6 +648,8 @@ func binaryBp2buildAttrs(ctx android.TopDownMutatorContext, m *Module) binaryAtt
 	}
 
 	m.convertTidyAttributes(ctx, &attrs.tidyAttributes)
+
+	fmt.Println(attrs.Dynamic_deps)
 
 	return attrs
 }

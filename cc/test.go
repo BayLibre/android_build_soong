@@ -23,6 +23,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/bazel"
+	"android/soong/bazel/cquery"
 	"android/soong/tradefed"
 )
 
@@ -135,6 +136,7 @@ func init() {
 // static_libs dependency on libgtests unless the gtest flag is set to false.
 func TestFactory() android.Module {
 	module := NewTest(android.HostAndDeviceSupported, true)
+	module.bazelHandler = &ccTestBazelHandler{module: module}
 	return module.Init()
 }
 
@@ -699,4 +701,31 @@ func testBinaryBp2build(ctx android.TopDownMutatorContext, m *Module) {
 			Tags: tags,
 		},
 		&testBinaryAttrs)
+}
+
+type ccTestBazelHandler struct {
+	module *Module
+}
+
+var _ BazelHandler = (*ccTestBazelHandler)(nil)
+
+func (handler *ccTestBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
+	bazelCtx := ctx.Config().BazelContext
+	bazelCtx.QueueBazelRequest(label, cquery.GetCcUnstrippedInfo, android.GetConfigKey(ctx))
+}
+
+func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+	bazelCtx := ctx.Config().BazelContext
+	info, err := bazelCtx.GetCcUnstrippedInfo(label, android.GetConfigKey(ctx))
+	if err != nil {
+		ctx.ModuleErrorf(err.Error())
+		return
+	}
+
+	outputFilePath := android.PathForBazelOut(ctx, info.OutputFile)
+	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
+	if !handler.module.outputFile.Valid() {
+		panic(handler.module.outputFile.AsPaths())
+	}
+	// handler.module.linker.(*testDecorator).unstrippedOutputFile = android.PathForBazelOut(ctx, info.UnstrippedOutput)
 }

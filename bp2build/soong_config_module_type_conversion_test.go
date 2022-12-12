@@ -997,3 +997,68 @@ cc_binary {
     srcs = ["main.cc"],
 )`}})
 }
+
+func TestSoongConfigModuleType_Defaults_ExcludeSharedLibs(t *testing.T) {
+	bp := `
+soong_config_string_variable {
+    name: "scsv",
+    values: [
+        "use_extra_foo_lib",
+    ],
+}
+
+soong_config_module_type {
+    name: "scsv_cc_defaults",
+    module_type: "cc_defaults",
+    config_namespace: "ANDROID",
+    variables: ["scsv"],
+    properties: [
+        "shared_libs",
+    ],
+}
+
+scsv_cc_defaults {
+    name: "scsv_defaults",
+    soong_config_variables: {
+        scsv: {
+            use_extra_foo_lib: {
+                shared_libs: [
+                    "foo",
+                ],
+            },
+            conditions_default: {
+                shared_libs: [],
+            },
+        },
+    },
+}
+
+cc_binary {
+    name: "binary",
+    srcs: ["main.cc"],
+    shared_libs: ["bar"],
+    exclude_shared_libs: ["foo"],
+    defaults: ["scsv_defaults"],
+}`
+
+	otherDeps := `
+cc_library { name: "foo", bazel_module: { bp2build_available: false } }
+cc_library { name: "bar", bazel_module: { bp2build_available: false } }
+`
+
+	runSoongConfigModuleTypeTest(t, Bp2buildTestCase{
+		Description:                "soong config variables - generates selects for library_linking_strategy",
+		ModuleTypeUnderTest:        "cc_binary",
+		ModuleTypeUnderTestFactory: cc.BinaryFactory,
+		Blueprint:                  bp,
+		Filesystem: map[string]string{
+			"foo/bar/Android.bp": otherDeps,
+		},
+		ExpectedBazelTargets: []string{`cc_binary(
+    name = "binary",
+    dynamic_deps = ["bar"],
+    local_includes = ["."],
+    srcs = ["main.cc"],
+    target_compatible_with = ["//build/bazel/platforms/os:android"],
+)`}})
+}
