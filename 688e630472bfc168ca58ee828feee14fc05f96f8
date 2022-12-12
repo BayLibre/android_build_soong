@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f5c6e2_a7bc135b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-12-12T19:02:34Z",
+      "side": 1,
+      "message": "(set topic to include other CL; and trying to build to repro the current issue)",
+      "revId": "688e630472bfc168ca58ee828feee14fc05f96f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
