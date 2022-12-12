@@ -123,6 +123,23 @@
       "parentUuid": "92aa23e9_922ed07a",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f1a77f_0fe13d97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2022-12-12T21:51:39Z",
+      "side": 1,
+      "message": "Is this creating a *stable* definition of what ARMv9 means in Android? If so, I\u0027m not sure if we want to do that yet. There are a number of features that we are considering making part of ARMv9 in Android that are not ready yet.",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
