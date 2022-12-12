@@ -1,5 +1,98 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38ef2949_7932174f",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-12T22:54:25Z",
+      "side": 1,
+      "message": "Why are we disabling append here?\n\nThis method is typically used to combine multiple values, not control ordering of append/prepend for different arch/os/etc axes",
+      "range": {
+        "startLine": 1281,
+        "startChar": 1,
+        "endLine": 1283,
+        "endChar": 2
+      },
+      "revId": "1cb11800f791e6bf6adeddd9c6abf7fa51a36841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57bcba6f_d3a04f85",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-12T22:54:25Z",
+      "side": 1,
+      "message": "could we not directly return list.Prepend rather than using reflect.ValueOf and .Bool()?",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "1cb11800f791e6bf6adeddd9c6abf7fa51a36841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe9ed83_47834006",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-12T22:54:25Z",
+      "side": 1,
+      "message": "don\u0027t we also need this functionality for `LabelListAttribute` as well (e.g. `Whole_static_libs` also appear to use prepend: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/linker.go;l\u003d39;drc\u003dc3977fa99b83964f97fcbb518c3e2f940bd71785)",
+      "range": {
+        "startLine": 175,
+        "startChar": 12,
+        "endLine": 175,
+        "endChar": 30
+      },
+      "revId": "1cb11800f791e6bf6adeddd9c6abf7fa51a36841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dabc8f7_d4db9d02",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-12T22:54:25Z",
+      "side": 1,
+      "message": "Can we add testing to verify we\u0027re getting correct order for multiple axes as well?",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 19
+      },
+      "revId": "1cb11800f791e6bf6adeddd9c6abf7fa51a36841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
