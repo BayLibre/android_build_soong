@@ -158,6 +158,24 @@
       "parentUuid": "f6f1a77f_0fe13d97",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edefe4cb_c5c2cde4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2022-12-12T22:51:07Z",
+      "side": 1,
+      "message": "Okay, as long as we tie any ABI changes to the TARGET_CPU_ABI in the BoardConfig.mk rather than the TARGET_ARCH_VARIANT, this seems fine to me.",
+      "parentUuid": "fb3ab238_4050731d",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
