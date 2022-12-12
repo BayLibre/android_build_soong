@@ -2042,6 +2042,9 @@ func (c *Module) maybeUnhideFromMake() {
 	}
 }
 
+// maybeInstall is called at the end of both GenerateAndroidBuildActions and
+// ProcessBazelQueryResponse to run the install hooks for installable modules,
+// like binaries and tests.
 func (c *Module) maybeInstall(ctx ModuleContext, apexInfo android.ApexInfo) {
 	if !proptools.BoolDefault(c.Installable(), true) {
 		// If the module has been specifically configure to not be installed then

@@ -1362,5 +1362,6 @@ var (
 	StagingMixedBuildsEnabledList = []string{
 		"com.android.adbd",
 		"com.android.tzdata",
+		"adbd_test",
 	}
 )
