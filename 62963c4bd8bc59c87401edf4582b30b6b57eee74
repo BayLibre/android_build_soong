@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f3ff317_581b0dda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-12-13T09:24:49Z",
+      "side": 1,
+      "message": "(this is just a quick review, let me know if you require more attention)",
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df3c1bf_a1b0de43",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-12-13T09:24:49Z",
+      "side": 1,
+      "message": "Can you put these files in a separate repository (e.g. `@soong_injection`) instead?\n\nHaving files other than BUILD / BUILD.bazel files in the generate tree would make a number of alternatives to the current symlink forest impossible. In addition, it\u0027s surprising because it makes generated files (other than the BUILD.bazel files that will be eventually checked in) appear in the synthetic source tree.",
+      "range": {
+        "startLine": 33,
+        "startChar": 37,
+        "endLine": 33,
+        "endChar": 90
+      },
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
