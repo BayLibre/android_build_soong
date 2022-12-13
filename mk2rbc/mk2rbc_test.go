@@ -1629,6 +1629,31 @@ def init(g, handle):
   g["MY_VAR_5"] = rblf.mk2rbc_error("product.mk:6", "reference is too complex: $(MY_VAR_2) bar")
 `,
 	},
+	{
+		desc:   "Conditional functions",
+		mkname: "product.mk",
+		in: `
+X := $(or $(A))
+X := $(or $(A),$(B))
+X := $(or $(A),$(B),$(C))
+X := $(and $(A))
+X := $(and $(A),$(B))
+X := $(and $(A),$(B),$(C))
+X := $(or $(A),$(B)) Y
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  g["X"] = g.get("A", "")
+  g["X"] = g.get("A", "") or g.get("B", "")
+  g["X"] = g.get("A", "") or g.get("B", "") or g.get("C", "")
+  g["X"] = rblf.mk2rbc_error("product.mk:5", "cannot handle invoking and")
+  g["X"] = rblf.mk2rbc_error("product.mk:6", "cannot handle invoking and")
+  g["X"] = rblf.mk2rbc_error("product.mk:7", "cannot handle invoking and")
+  g["X"] = "%s Y" % g.get("A", "") or g.get("B", "")
+`,
+	},
 }
 
 var known_variables = []struct {
