@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e329c6d_cfa30f49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-12-13T00:09:03Z",
+      "side": 1,
+      "message": "Bypassing presubmit because the failures are unrelated to the CLs and marked as \"Already Broken\".",
+      "revId": "99270ea3c3139182ed5fcfc69b8fe2a8003c519f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
