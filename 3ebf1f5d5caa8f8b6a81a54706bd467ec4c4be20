@@ -16,6 +16,24 @@
       "message": "nit did you accidentally add an extra #",
       "revId": "3ebf1f5d5caa8f8b6a81a54706bd467ec4c4be20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d19503d6_6894a792",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-12-13T00:09:26Z",
+      "side": 1,
+      "message": "Will address in a separate CL",
+      "parentUuid": "fd2dc918_a9a3b8a8",
+      "revId": "3ebf1f5d5caa8f8b6a81a54706bd467ec4c4be20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
