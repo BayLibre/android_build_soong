@@ -16,6 +16,23 @@
       "message": "The change already reviewed and submitted internally. This CL is cherry-picking it to AOSP.",
       "revId": "cc1a01724045228ea0660714db154c1919963707",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5d4ab09_70465d3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-12-13T00:09:42Z",
+      "side": 1,
+      "message": "Bypassing presubmit because the failures are unrelated to the CLs and marked as \"Already Broken\".",
+      "revId": "cc1a01724045228ea0660714db154c1919963707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
