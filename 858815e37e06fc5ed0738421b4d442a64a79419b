@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5755a88b_8c8bfecf",
+        "filename": "tests/apex_cc_module_arch_variant_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-13T22:45:03Z",
+      "side": 1,
+      "message": "This seems like the kind of thing starlark analysis tests are designed to do. Could we convert this to an analysis test that performs assertions against the actions of the minimal apex?",
+      "revId": "858815e37e06fc5ed0738421b4d442a64a79419b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
