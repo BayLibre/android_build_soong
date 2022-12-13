@@ -39,7 +39,7 @@ func getStringValue(str bazel.StringAttribute) (reflect.Value, []selects) {
 
 func getStringListValues(list bazel.StringListAttribute) (reflect.Value, []selects, bool) {
 	value := reflect.ValueOf(list.Value)
-	prepend := reflect.ValueOf(list.Prepend).Bool()
+	prepend := list.Prepend
 	if !list.HasConfigurableValues() {
 		return value, []selects{}, prepend
 	}
@@ -197,6 +197,7 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 
 	var err error
 	ret := ""
+	retPrepend := ""
 	if value.Kind() != reflect.Invalid {
 		s, err := prettyPrint(value, indent, false) // never emit zero values for the base value
 		if err != nil {
@@ -205,32 +206,35 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 
 		ret += s
 	}
-	// Convenience function to prepend/append selects components to an attribute value.
-	concatenateSelects := func(selectsData selects, defaultValue *string, s string, prepend bool) (string, error) {
+	// Convenience function to append selects components to an attribute value.
+	appendSelects := func(selectsData selects, defaultValue *string, s string) (string, error) {
 		selectMap, err := prettyPrintSelectMap(selectsData, defaultValue, indent, emitZeroValues)
 		if err != nil {
 			return "", err
 		}
-		var left, right string
-		if prepend {
-			left, right = selectMap, s
-		} else {
-			left, right = s, selectMap
+		if s != "" && selectMap != "" {
+			s += " + "
 		}
-		if left != "" && right != "" {
-			left += " + "
-		}
-		left += right
-
-		return left, nil
+		s += selectMap
+		return s, nil
 	}
 
 	for _, configurableAttr := range configurableAttrs {
-		ret, err = concatenateSelects(configurableAttr, defaultSelectValue, ret, prepend)
+		if prepend {
+			retPrepend, err = appendSelects(configurableAttr, defaultSelectValue, retPrepend)
+		} else {
+			ret, err = appendSelects(configurableAttr, defaultSelectValue, ret)
+		}
 		if err != nil {
 			return "", err
 		}
 	}
+
+	if retPrepend != "" && ret != "" {
+		retPrepend += " + "
+	}
+
+	ret = retPrepend + ret
 
 	if ret == "" && shouldPrintDefault {
 		return *defaultSelectValue, nil

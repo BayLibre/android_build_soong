@@ -3774,3 +3774,151 @@ cc_library {
 	},
 	)
 }
+
+func TestCcLibraryVariantPrependPropOrder(t *testing.T) {
+	runCcLibraryTestCase(t, Bp2buildTestCase{
+		Description:                "cc_library variant prepend properties order",
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Blueprint: soongCcLibraryPreamble + `
+cc_library {
+   name: "a",
+   srcs: ["a.cpp"],
+   export_include_dirs: ["export_include_dirs"],
+   export_system_include_dirs: ["export_system_include_dirs"],
+     target: {
+       android: {
+         export_include_dirs: ["android_export_include_dirs"],
+         export_system_include_dirs: ["android_export_system_include_dirs"],
+       },
+       android_arm: {
+         export_include_dirs: ["android_arm_export_include_dirs"],
+         export_system_include_dirs: ["android_arm_export_system_include_dirs"],
+       },
+       linux: {
+         export_include_dirs: ["linux_export_include_dirs"],
+         export_system_include_dirs: ["linux_export_system_include_dirs"],
+       },
+     },
+     multilib: {
+       lib32: {
+         export_include_dirs: ["lib32_export_include_dirs"],
+         export_system_include_dirs: ["lib32_export_system_include_dirs"],
+       },
+     },
+     arch: {
+       arm: {
+         export_include_dirs: ["arm_export_include_dirs"],
+         export_system_include_dirs: ["arm_export_system_include_dirs"],
+       },
+     }
+}
+
+cc_library {
+    name: "export_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "android_export_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "android_arm_export_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "linux_export_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "lib32_export_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "arm_export_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "export_system_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "android_export_system_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "android_arm_export_system_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "linux_export_system_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "lib32_export_system_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+    name: "arm_export_system_include_dirs",
+    bazel_module: { bp2build_available: false },
+}
+`,
+		ExpectedBazelTargets: makeCcLibraryTargets("a", AttrNameToString{
+			"export_includes": `select({
+        "//build/bazel/platforms/arch:arm": [
+            "lib32_export_include_dirs",
+            "arm_export_include_dirs",
+        ],
+        "//build/bazel/platforms/arch:x86": ["lib32_export_include_dirs"],
+        "//conditions:default": [],
+    }) + select({
+        "//build/bazel/platforms/os:android": [
+            "android_export_include_dirs",
+            "linux_export_include_dirs",
+        ],
+        "//build/bazel/platforms/os:linux": ["linux_export_include_dirs"],
+        "//build/bazel/platforms/os:linux_bionic": ["linux_export_include_dirs"],
+        "//build/bazel/platforms/os:linux_musl": ["linux_export_include_dirs"],
+        "//conditions:default": [],
+    }) + select({
+        "//build/bazel/platforms/os_arch:android_arm": ["android_arm_export_include_dirs"],
+        "//conditions:default": [],
+    }) + ["export_include_dirs"]`,
+			"export_system_includes": `select({
+        "//build/bazel/platforms/arch:arm": [
+            "lib32_export_system_include_dirs",
+            "arm_export_system_include_dirs",
+        ],
+        "//build/bazel/platforms/arch:x86": ["lib32_export_system_include_dirs"],
+        "//conditions:default": [],
+    }) + select({
+        "//build/bazel/platforms/os:android": [
+            "android_export_system_include_dirs",
+            "linux_export_system_include_dirs",
+        ],
+        "//build/bazel/platforms/os:linux": ["linux_export_system_include_dirs"],
+        "//build/bazel/platforms/os:linux_bionic": ["linux_export_system_include_dirs"],
+        "//build/bazel/platforms/os:linux_musl": ["linux_export_system_include_dirs"],
+        "//conditions:default": [],
+    }) + select({
+        "//build/bazel/platforms/os_arch:android_arm": ["android_arm_export_system_include_dirs"],
+        "//conditions:default": [],
+    }) + ["export_system_include_dirs"]`,
+			"srcs":                   `["a.cpp"]`,
+			"local_includes":         `["."]`,
+			"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
+		}),
+	},
+	)
+}
