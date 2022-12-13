@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53a53eb_d8bf8545",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-12-13T21:21:08Z",
+      "side": 1,
+      "message": "This could go in the same VisitDirectDeps that handles the LibraryDependency case, which would save some overhead.",
+      "revId": "5294dedae45ab0435c50be39953a995aeaf83b0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
