@@ -31,6 +31,25 @@ const (
 	starlarkTypeVoid    starlarkType = iota
 )
 
+func (t starlarkType) String() string {
+	switch t {
+	case starlarkTypeList:
+		return "list"
+	case starlarkTypeString:
+		return "string"
+	case starlarkTypeInt:
+		return "int"
+	case starlarkTypeBool:
+		return "bool"
+	case starlarkTypeVoid:
+		return "void"
+	case starlarkTypeUnknown:
+		return "unknown"
+	default:
+		return "really_unknown"
+	}
+}
+
 type hiddenArgType int
 
 const (
