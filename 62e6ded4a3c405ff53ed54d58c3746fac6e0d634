@@ -106,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65529f64_b0f8c66d",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-13T17:00:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8943ac08_ff24e569",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60c28b11_bfaa4993",
@@ -173,6 +191,24 @@
       "side": 1,
       "message": "Refactoring this to do so becomes very ugly. We\u0027d have to instantiate `buildCtx` with nothing but `writer` (as `log` and other fields depend on `met`)and then patch them into `buildCtx.ContextImpl.Metrics` and other such fields. I think that\u0027s a fairly disgusting patch.\n\nAnother possible refactor: write a simple `IsThisUploadOnly` method that checks args for `--metrics-upload-only`. I can\u0027t fathom that this has the possibility of collision and saves us a headache.",
       "parentUuid": "273f696f_b10d1162",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e82a208_94b38560",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-13T17:00:01Z",
+      "side": 1,
+      "message": "Looking back at this, there\u0027s a few issues I see with deferring this:\n\n1. The command-line argument `--build-command\u003d` is set during the `c.config` call and is intended to overwrite `os.Args` as the value. If we delay these, it gets a little nasty to check whether it\u0027s already been set and then setting it with osArgs if nil.\n\n2. `met` seems to be necessary for logger instantiation in config and buildCtx. It might be possible to refactor this out, but I don\u0027t think that\u0027s appropriate for this CL. I agree that the overhead is a little confusing for some. Maybe let\u0027s add some //TODO clean this up for upload-metrics-only ?",
+      "parentUuid": "7007b2a4_6ba57be8",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -736,6 +772,24 @@
       "side": 1,
       "message": "I\u0027m not married to the current name, but this reads like it\u0027s updating an in-memory proto instead of changing a file. \n\n`UpdateSoongMetricsFileTotalRealTime`? There has to be a MOMA badge for something this hackneyed....",
       "parentUuid": "4b30b6e5_f3a21989",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "203d090b_604e0064",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-13T17:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12e95d4b_565bfa21",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
