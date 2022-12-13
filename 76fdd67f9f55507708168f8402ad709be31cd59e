@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e5eeabd_3141852d",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-12-13T14:12:44Z",
+      "side": 1,
+      "message": "Under which conditions is this property set?",
+      "range": {
+        "startLine": 846,
+        "startChar": 66,
+        "endLine": 846,
+        "endChar": 89
+      },
+      "revId": "76fdd67f9f55507708168f8402ad709be31cd59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
