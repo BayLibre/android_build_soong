@@ -22,6 +22,30 @@
       },
       "revId": "76fdd67f9f55507708168f8402ad709be31cd59e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a31a5d6_bff26404",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-12-13T15:04:26Z",
+      "side": 1,
+      "message": "AFAICT it has to be hard-coded in the `Android.bp` file. I could not find any usage of it though.",
+      "parentUuid": "1e5eeabd_3141852d",
+      "range": {
+        "startLine": 846,
+        "startChar": 66,
+        "endLine": 846,
+        "endChar": 89
+      },
+      "revId": "76fdd67f9f55507708168f8402ad709be31cd59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
