@@ -52,6 +52,24 @@
       "parentUuid": "a30d89b5_85c6d01c",
       "revId": "bff733505674ee135d56b4ca6c7bc52daa618b54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b84854db_1f2432c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-12-14T00:56:33Z",
+      "side": 1,
+      "message": "Yes, I explained it in the commit message. Removing the symlink of linkerconfig from system/bin is one of the desired changes of this commit.",
+      "parentUuid": "2a9a10a9_d60fafe8",
+      "revId": "bff733505674ee135d56b4ca6c7bc52daa618b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
