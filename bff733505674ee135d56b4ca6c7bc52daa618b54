@@ -88,6 +88,24 @@
       "parentUuid": "b84854db_1f2432c3",
       "revId": "bff733505674ee135d56b4ca6c7bc52daa618b54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "728abef5_61e463e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-12-14T01:05:34Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t think there\u0027s any reason to treat linkerconfig specially given that with aosp/2347947 it\u0027s now a simple executable which happens to be in the runtime apex. I\u0027m preparing a further cleanup to remove hard-coded \"linkerconfig\" in build/soong.\n\nIf any new changes miss linkerconfig by accident, it would be caught immediately because linkerconfig is so essential.",
+      "parentUuid": "a660606f_feb6ff84",
+      "revId": "bff733505674ee135d56b4ca6c7bc52daa618b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
