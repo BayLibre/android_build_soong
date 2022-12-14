@@ -20,10 +20,12 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 	"android/soong/cc/config"
+	"android/soong/remoteexec"
 )
 
 type TidyProperties struct {
@@ -349,4 +351,93 @@ func genObjTidyPhonyTargets(ctx android.SingletonContext, module android.Module,
 		ctx.Phony(groupName, files...)
 		targetGroups[group] = android.PathForPhony(ctx, groupName)
 	}
+}
+
+var (
+	// Rules for invoking clang-tidy (a clang-based linter).
+	clangTidy, clangTidyRE = pctx.RemoteStaticRules("clangTidy",
+		blueprint.RuleParams{
+			Depfile: "${out}.d",
+			Deps:    blueprint.DepsGCC,
+			Command: "CLANG_CMD=$clangCmd TIDY_FILE=$out " +
+				"$tidyVars$reTemplate${config.ClangBin}/clang-tidy.sh $in $tidyFlags -- $cFlags",
+			CommandDeps: []string{"${config.ClangBin}/clang-tidy.sh", "$ccCmd", "$tidyCmd"},
+		},
+		&remoteexec.REParams{
+			Labels:               map[string]string{"type": "lint", "tool": "clang-tidy", "lang": "cpp"},
+			ExecStrategy:         "${config.REClangTidyExecStrategy}",
+			Inputs:               []string{"$in"},
+			OutputFiles:          []string{"${out}", "${out}.d"},
+			ToolchainInputs:      []string{"$ccCmd", "$tidyCmd"},
+			EnvironmentVariables: []string{"CLANG_CMD", "TIDY_FILE", "TIDY_TIMEOUT"},
+			// Although clang-tidy has an option to "fix" source files, that feature is hardly useable
+			// under parallel compilation and RBE. So we assume no OutputFiles here.
+			// The clang-tidy fix option is best run locally in single thread.
+			// Copying source file back to local caused two problems:
+			// (1) New timestamps trigger clang and clang-tidy compilations again.
+			// (2) Changing source files caused concurrent clang or clang-tidy jobs to crash.
+			Platform: map[string]string{remoteexec.PoolKey: "${config.REClangTidyPool}"},
+		}, []string{"cFlags", "ccCmd", "clangCmd", "tidyCmd", "tidyFlags", "tidyVars"}, []string{})
+)
+
+// Given a module context and its flags, srcFiles, noTidySrcs, timeoutTidySrcs,
+// return the selected tidyFiles, noTidySrcsMap, and tidyVars for RBE calls.
+func selectTidyFilesVars(ctx ModuleContext, flags builderFlags, srcFiles, noTidySrcs, timeoutTidySrcs android.Paths) (map[string]bool, string) {
+	noTidySrcsMap := make(map[string]bool)
+	var tidyVars string
+	if flags.tidy {
+		for _, path := range noTidySrcs {
+			noTidySrcsMap[path.String()] = true
+		}
+		tidyTimeout := ctx.Config().Getenv("TIDY_TIMEOUT")
+		if len(tidyTimeout) > 0 {
+			tidyVars += "TIDY_TIMEOUT=" + tidyTimeout + " "
+			// add timeoutTidySrcs into noTidySrcsMap if TIDY_TIMEOUT is set
+			for _, path := range timeoutTidySrcs {
+				noTidySrcsMap[path.String()] = true
+			}
+		}
+	}
+	return noTidySrcsMap, tidyVars
+}
+
+// Generate ninja rules for the given srcFile in the subdir
+// and return the .tidy file path.
+func generateTidyRules(ctx ModuleContext, subdir string, srcFile android.Path,
+	ccCmd, ccDesc, tidyVars string, shared *SharedFlags, flags builderFlags,
+	moduleFlags string, pathDeps, cFlagsDeps android.Paths) android.Path {
+	tidyFile := android.ObjPathWithExt(ctx, subdir, srcFile, "tidy")
+	tidyCmd := "${config.ClangBin}/clang-tidy"
+
+	rule := clangTidy
+	reducedCFlags := moduleFlags
+	if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CLANG_TIDY") {
+		rule = clangTidyRE
+		// b/248371171, work around RBE input processor problem
+		// some cflags rejected by input processor, but usually
+		// do not affect included files or clang-tidy
+		reducedCFlags = config.TidyReduceCFlags(reducedCFlags)
+	}
+
+	sharedCFlags := shareFlags(ctx, shared, "cFlags", reducedCFlags)
+	srcRelPath := srcFile.Rel()
+
+	// Add the .tidy rule
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        rule,
+		Description: "clang-tidy " + srcRelPath,
+		Output:      tidyFile,
+		Input:       srcFile,
+		Implicits:   cFlagsDeps,
+		OrderOnly:   pathDeps,
+		Args: map[string]string{
+			"cFlags":    sharedCFlags,
+			"ccCmd":     ccCmd,
+			"clangCmd":  ccDesc,
+			"tidyCmd":   tidyCmd,
+			"tidyFlags": shareFlags(ctx, shared, "tidyFlags", config.TidyFlagsForSrcFile(srcFile, flags.tidyFlags)),
+			"tidyVars":  tidyVars, // short and not shared
+		},
+	})
+	return tidyFile
 }
