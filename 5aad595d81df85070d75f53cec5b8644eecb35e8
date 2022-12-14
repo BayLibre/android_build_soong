@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c6ab782_5dcb9a21",
+        "filename": "android/register.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-14T11:57:00Z",
+      "side": 1,
+      "message": "IMO these should remain as Config functions instead of Context functions. The callers would have access to ctx.Config() anyway.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 1
+      },
+      "revId": "5aad595d81df85070d75f53cec5b8644eecb35e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
