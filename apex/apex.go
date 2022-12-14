@@ -1906,6 +1906,9 @@ func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	a.containerCertificateFile = android.PathForBazelOut(ctx, outputs.ContainerKeyInfo[0])
 	a.containerPrivateKeyFile = android.PathForBazelOut(ctx, outputs.ContainerKeyInfo[1])
 
+	// Ensure ApexInfo.RequiresLibs are installed as part of a bundle build
+	a.requiredDeps = outputs.RequiresLibs
+
 	apexType := a.properties.ApexType
 	switch apexType {
 	case imageApex:
