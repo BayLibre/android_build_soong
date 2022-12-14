@@ -34,6 +34,24 @@
       "parentUuid": "5e8fe9a3_187d8cff",
       "revId": "100a888649805676270bd83ef450e8e2ad7352e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e889da70_c875718d",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1362,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-14T20:43:17Z",
+      "side": 1,
+      "message": "Well we\u0027re already avoiding duplication by reading them in the go format, the starlark transition would be to avoid brittle sed commands that pick out these lists. I suppose we could also just build a go binary that directly outputs these lists instead.",
+      "parentUuid": "f7aba1d4_b60f0c65",
+      "revId": "100a888649805676270bd83ef450e8e2ad7352e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
