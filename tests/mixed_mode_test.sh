@@ -63,5 +63,14 @@ EOF
   fi
 }
 
+function test_dump_bazel_allowlist() {
+  setup
+
+  if [[ -z "$(USE_RBE=false build/soong/soong_ui.bash --dump-bazel-allowlist prod | grep tzdata)" ]]; then
+    fail "tzdata not found in --dump-bazel-allowlist prod output"
+  fi
+}
+
 test_add_irrelevant_file
 test_bazel_smoke
+test_dump_bazel_allowlist

@@ -21,11 +21,13 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"syscall"
 	"time"
 
+	"android/soong/android"
 	"android/soong/shared"
 	"android/soong/ui/build"
 	"android/soong/ui/logger"
@@ -91,6 +93,14 @@ var commands = []command{
 		config:      buildActionConfig,
 		stdio:       stdio,
 		run:         runMake,
+	}, {
+		flag:         "--dump-bazel-allowlist",
+		description:  "dump the values of one of the bazel allowlists. Requires either 'prod' or 'staging' as an argument",
+		simpleOutput: true,
+		logsPrefix:   "dumpvars-",
+		config:       dumpVarConfig,
+		stdio:        customStdio,
+		run:          dumpBazelAllowlists,
 	},
 }
 
@@ -390,6 +400,32 @@ func dumpVars(ctx build.Context, config build.Config, args []string, _ string) {
 		}
 		fmt.Printf("%s%s='%s'\n", *absVarPrefix, name, strings.Join(res, " "))
 	}
+}
+
+func dumpBazelAllowlists(ctx build.Context, config build.Config, args []string, _ string) {
+	if len(args) != 1 {
+		ctx.Fatal("Expected exactly 1 argument that's either 'prod' or 'staging'")
+	}
+	mode := android.BazelProdMode
+	switch args[0] {
+	case "prod":
+		mode = android.BazelProdMode
+	case "staging":
+		mode = android.BazelStagingMode
+	default:
+		ctx.Fatal("Expected exactly 1 argument that's either 'prod' or 'staging'")
+	}
+	enabledModules, disabledModules := android.GetBazelEnabledModules(mode, nil)
+
+	enabledList := make([]string, 0)
+	for module := range enabledModules {
+		if !disabledModules[module] {
+			enabledList = append(enabledList, module)
+		}
+	}
+	sort.Strings(enabledList)
+
+	fmt.Println(strings.Join(enabledList, "\n"))
 }
 
 func stdio() terminal.StdioInterface {
