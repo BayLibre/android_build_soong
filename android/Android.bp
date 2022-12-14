@@ -35,6 +35,7 @@ bootstrap_go_package {
         "arch.go",
         "arch_list.go",
         "bazel.go",
+        "bazel_allowlist_export.go",
         "bazel_handler.go",
         "bazel_paths.go",
         "buildinfo_prop.go",

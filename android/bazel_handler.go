@@ -374,7 +374,7 @@ func (m noopBazelContext) AqueryDepsets() []bazel.AqueryDepset {
 	return []bazel.AqueryDepset{}
 }
 
-func NewBazelContext(c *config) (BazelContext, error) {
+func GetBazelEnabledModules(buildMode SoongBuildMode, forceEnabled map[string]struct{}) (map[string]bool, map[string]bool) {
 	disabledModules := map[string]bool{}
 	enabledModules := map[string]bool{}
 	addToStringSet := func(set map[string]bool, items []string) {
@@ -383,17 +383,17 @@ func NewBazelContext(c *config) (BazelContext, error) {
 		}
 	}
 
-	switch c.BuildMode {
+	switch buildMode {
 	case BazelProdMode:
 		addToStringSet(enabledModules, allowlists.ProdMixedBuildsEnabledList)
-		for enabledAdHocModule := range c.BazelModulesForceEnabledByFlag() {
+		for enabledAdHocModule := range forceEnabled {
 			enabledModules[enabledAdHocModule] = true
 		}
 	case BazelStagingMode:
 		// Staging mode includes all prod modules plus all staging modules.
 		addToStringSet(enabledModules, allowlists.ProdMixedBuildsEnabledList)
 		addToStringSet(enabledModules, allowlists.StagingMixedBuildsEnabledList)
-		for enabledAdHocModule := range c.BazelModulesForceEnabledByFlag() {
+		for enabledAdHocModule := range forceEnabled {
 			enabledModules[enabledAdHocModule] = true
 		}
 	case BazelDevMode:
@@ -405,8 +405,17 @@ func NewBazelContext(c *config) (BazelContext, error) {
 		}
 		addToStringSet(disabledModules, allowlists.MixedBuildsDisabledList)
 	default:
+		panic("Expected BazelProdMode, BazelStagingMode, or BazelDevMode")
+	}
+	return enabledModules, disabledModules
+}
+
+func NewBazelContext(c *config) (BazelContext, error) {
+	if c.BuildMode != BazelProdMode && c.BuildMode != BazelStagingMode && c.BuildMode != BazelDevMode {
 		return noopBazelContext{}, nil
 	}
+
+	enabledModules, disabledModules := GetBazelEnabledModules(c.BuildMode, c.BazelModulesForceEnabledByFlag())
 
 	paths := bazelPaths{
 		soongOutDir: c.soongOutDir,
