@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f3f7a41_8ffae689",
+        "filename": "cc/afdo_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-12-14T14:55:58Z",
+      "side": 1,
+      "message": "Variants",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 15
+      },
+      "revId": "89cf8b8b29fd34fae4ace440d25985e13644d615",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
