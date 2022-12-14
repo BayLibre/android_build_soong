@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaa6ec44_b9ecd386",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-14T02:24:30Z",
+      "side": 1,
+      "message": "be built*",
+      "revId": "5cb24f2807af5d2481ae8b4e41c74a9b01d04287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
