@@ -202,31 +202,6 @@ var (
 		},
 		"clangBin", "format")
 
-	// Rules for invoking clang-tidy (a clang-based linter).
-	clangTidy, clangTidyRE = pctx.RemoteStaticRules("clangTidy",
-		blueprint.RuleParams{
-			Depfile: "${out}.d",
-			Deps:    blueprint.DepsGCC,
-			Command: "CLANG_CMD=$clangCmd TIDY_FILE=$out " +
-				"$tidyVars$reTemplate${config.ClangBin}/clang-tidy.sh $in $tidyFlags -- $cFlags",
-			CommandDeps: []string{"${config.ClangBin}/clang-tidy.sh", "$ccCmd", "$tidyCmd"},
-		},
-		&remoteexec.REParams{
-			Labels:               map[string]string{"type": "lint", "tool": "clang-tidy", "lang": "cpp"},
-			ExecStrategy:         "${config.REClangTidyExecStrategy}",
-			Inputs:               []string{"$in"},
-			OutputFiles:          []string{"${out}", "${out}.d"},
-			ToolchainInputs:      []string{"$ccCmd", "$tidyCmd"},
-			EnvironmentVariables: []string{"CLANG_CMD", "TIDY_FILE", "TIDY_TIMEOUT"},
-			// Although clang-tidy has an option to "fix" source files, that feature is hardly useable
-			// under parallel compilation and RBE. So we assume no OutputFiles here.
-			// The clang-tidy fix option is best run locally in single thread.
-			// Copying source file back to local caused two problems:
-			// (1) New timestamps trigger clang and clang-tidy compilations again.
-			// (2) Changing source files caused concurrent clang or clang-tidy jobs to crash.
-			Platform: map[string]string{remoteexec.PoolKey: "${config.REClangTidyPool}"},
-		}, []string{"cFlags", "ccCmd", "clangCmd", "tidyCmd", "tidyFlags", "tidyVars"}, []string{})
-
 	_ = pctx.SourcePathVariable("yasmCmd", "prebuilts/misc/${config.HostPrebuiltTag}/yasm/yasm")
 
 	// Rule for invoking yasm to compile .asm assembly files.
@@ -438,28 +413,31 @@ func (a Objects) Append(b Objects) Objects {
 	}
 }
 
+// Given a ModuleContext, *SharedFlags, flag kind and the flags string,
+// return a shared flags name or the original flags.
+func shareFlags(ctx ModuleContext, shared *SharedFlags, kind string, flags string) string {
+	if shared == nil || len(flags) < 60 {
+		// Modules have long names and so do the module variables.
+		// It does not save space by replacing a short name with a long one.
+		return flags
+	}
+	mapKey := kind + flags
+	n, ok := shared.flagsMap[mapKey]
+	if !ok {
+		shared.numSharedFlags += 1
+		n = strconv.Itoa(shared.numSharedFlags)
+		shared.flagsMap[mapKey] = n
+		ctx.Variable(pctx, kind+n, flags)
+	}
+	return "$" + kind + n
+}
+
 // Generate rules for compiling multiple .c, .cpp, or .S files to individual .o files
 func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs, timeoutTidySrcs android.Paths,
 	flags builderFlags, pathDeps android.Paths, cFlagsDeps android.Paths) Objects {
 	// Source files are one-to-one with tidy, coverage, or kythe files, if enabled.
 	objFiles := make(android.Paths, len(srcFiles))
-	var tidyFiles android.Paths
-	noTidySrcsMap := make(map[string]bool)
-	var tidyVars string
-	if flags.tidy {
-		tidyFiles = make(android.Paths, 0, len(srcFiles))
-		for _, path := range noTidySrcs {
-			noTidySrcsMap[path.String()] = true
-		}
-		tidyTimeout := ctx.Config().Getenv("TIDY_TIMEOUT")
-		if len(tidyTimeout) > 0 {
-			tidyVars += "TIDY_TIMEOUT=" + tidyTimeout + " "
-			// add timeoutTidySrcs into noTidySrcsMap if TIDY_TIMEOUT is set
-			for _, path := range timeoutTidySrcs {
-				noTidySrcsMap[path.String()] = true
-			}
-		}
-	}
+	tidyFiles, noTidySrcsMap, tidyVars := selectTidyFilesVars(ctx, flags, srcFiles, noTidySrcs, timeoutTidySrcs)
 	var coverageFiles android.Paths
 	if flags.gcovCoverage {
 		coverageFiles = make(android.Paths, 0, len(srcFiles))
@@ -530,26 +508,10 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 	// Multiple source files have build rules usually share the same cFlags or tidyFlags.
 	// Define only one version in this module and share it in multiple build rules.
 	// To simplify the code, the shared variables are all named as $flags<nnn>.
-	shared := ctx.getSharedFlags()
-
+	var shared *SharedFlags = nil
 	// Share flags only when there are multiple files or tidy rules.
-	var hasMultipleRules = len(srcFiles) > 1 || flags.tidy
-
-	var shareFlags = func(kind string, flags string) string {
-		if !hasMultipleRules || len(flags) < 60 {
-			// Modules have long names and so do the module variables.
-			// It does not save space by replacing a short name with a long one.
-			return flags
-		}
-		mapKey := kind + flags
-		n, ok := shared.flagsMap[mapKey]
-		if !ok {
-			shared.numSharedFlags += 1
-			n = strconv.Itoa(shared.numSharedFlags)
-			shared.flagsMap[mapKey] = n
-			ctx.Variable(pctx, kind+n, flags)
-		}
-		return "$" + kind + n
+	if len(srcFiles) > 1 || flags.tidy {
+		shared = ctx.getSharedFlags()
 	}
 
 	for i, srcFile := range srcFiles {
@@ -568,7 +530,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 				Implicits:   cFlagsDeps,
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
-					"asFlags": shareFlags("asFlags", flags.globalYasmFlags+" "+flags.localYasmFlags),
+					"asFlags": shareFlags(ctx, shared, "asFlags", flags.globalYasmFlags+" "+flags.localYasmFlags),
 				},
 			})
 			continue
@@ -637,7 +599,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 			Implicits:       cFlagsDeps,
 			OrderOnly:       pathDeps,
 			Args: map[string]string{
-				"cFlags": shareFlags("cFlags", moduleFlags),
+				"cFlags": shareFlags(ctx, shared, "cFlags", moduleFlags),
 				"ccCmd":  ccCmd, // short and not shared
 			},
 		})
@@ -653,7 +615,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 				Implicits:   cFlagsDeps,
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
-					"cFlags": shareFlags("cFlags", moduleFlags),
+					"cFlags": shareFlags(ctx, shared, "cFlags", moduleFlags),
 				},
 			})
 			kytheFiles = append(kytheFiles, kytheFile)
@@ -661,40 +623,8 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 
 		//  Even with tidy, some src file could be skipped by noTidySrcsMap.
 		if tidy && !noTidySrcsMap[srcFile.String()] {
-			tidyFile := android.ObjPathWithExt(ctx, subdir, srcFile, "tidy")
+			tidyFile := generateTidyRules(ctx, subdir, srcFile, ccCmd, ccDesc, tidyVars, shared, flags, moduleFlags, pathDeps, cFlagsDeps)
 			tidyFiles = append(tidyFiles, tidyFile)
-			tidyCmd := "${config.ClangBin}/clang-tidy"
-
-			rule := clangTidy
-			reducedCFlags := moduleFlags
-			if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CLANG_TIDY") {
-				rule = clangTidyRE
-				// b/248371171, work around RBE input processor problem
-				// some cflags rejected by input processor, but usually
-				// do not affect included files or clang-tidy
-				reducedCFlags = config.TidyReduceCFlags(reducedCFlags)
-			}
-
-			sharedCFlags := shareFlags("cFlags", reducedCFlags)
-			srcRelPath := srcFile.Rel()
-
-			// Add the .tidy rule
-			ctx.Build(pctx, android.BuildParams{
-				Rule:        rule,
-				Description: "clang-tidy " + srcRelPath,
-				Output:      tidyFile,
-				Input:       srcFile,
-				Implicits:   cFlagsDeps,
-				OrderOnly:   pathDeps,
-				Args: map[string]string{
-					"cFlags":    sharedCFlags,
-					"ccCmd":     ccCmd,
-					"clangCmd":  ccDesc,
-					"tidyCmd":   tidyCmd,
-					"tidyFlags": shareFlags("tidyFlags", config.TidyFlagsForSrcFile(srcFile, flags.tidyFlags)),
-					"tidyVars":  tidyVars, // short and not shared
-				},
-			})
 		}
 
 		if dump {
@@ -714,8 +644,8 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 				Implicits:   cFlagsDeps,
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
-					"cFlags":     shareFlags("cFlags", moduleToolingFlags),
-					"exportDirs": shareFlags("exportDirs", flags.sAbiFlags),
+					"cFlags":     shareFlags(ctx, shared, "cFlags", moduleToolingFlags),
+					"exportDirs": shareFlags(ctx, shared, "exportDirs", flags.sAbiFlags),
 				},
 			})
 		}
