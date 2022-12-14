@@ -16,6 +16,24 @@
       "message": "be built*",
       "revId": "5cb24f2807af5d2481ae8b4e41c74a9b01d04287",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0bdc5e_3757dc6f",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-14T16:26:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa6ec44_b9ecd386",
+      "revId": "5cb24f2807af5d2481ae8b4e41c74a9b01d04287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
