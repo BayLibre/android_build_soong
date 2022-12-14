@@ -70,6 +70,24 @@
       "parentUuid": "e889da70_c875718d",
       "revId": "100a888649805676270bd83ef450e8e2ad7352e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15400dd6_a9610eb1",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1362,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-14T23:14:04Z",
+      "side": 1,
+      "message": "Rewrote this cl to add --dump-bazel-allowlist that the mainline build scripts can use.",
+      "parentUuid": "22cda182_3f5e8b24",
+      "revId": "100a888649805676270bd83ef450e8e2ad7352e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
