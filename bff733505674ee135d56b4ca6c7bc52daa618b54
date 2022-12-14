@@ -34,6 +34,24 @@
       "parentUuid": "c8b55d0b_7ccd2b1e",
       "revId": "bff733505674ee135d56b4ca6c7bc52daa618b54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9a10a9_d60fafe8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-12-14T00:31:58Z",
+      "side": 1,
+      "message": "For example, soong creates symlink to runtime APEX if it is binary installed in the bionic.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/binary.go;l\u003d510?q\u003df:build%2Fsoong%2Fcc%20isBionic",
+      "parentUuid": "a30d89b5_85c6d01c",
+      "revId": "bff733505674ee135d56b4ca6c7bc52daa618b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
