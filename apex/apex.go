@@ -1894,7 +1894,7 @@ func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 		ctx.ModuleErrorf(err.Error())
 		return
 	}
-	a.installDir = android.PathForModuleInstall(ctx, "apex")
+	a.installDir = android.PathForModuleInstall(ctx, "apeax")
 	a.outputApexFile = android.PathForBazelOut(ctx, outputs.SignedOutput)
 	a.outputFile = a.outputApexFile
 	a.setCompression(ctx)
@@ -1905,6 +1905,9 @@ func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	a.privateKeyFile = android.PathForBazelOut(ctx, outputs.BundleKeyInfo[1])
 	a.containerCertificateFile = android.PathForBazelOut(ctx, outputs.ContainerKeyInfo[0])
 	a.containerPrivateKeyFile = android.PathForBazelOut(ctx, outputs.ContainerKeyInfo[1])
+
+	// Ensure ApexInfo.RequiresLibs are installed as part of a bundle build
+	a.requiredDeps = outputs.RequiresLibs
 
 	apexType := a.properties.ApexType
 	switch apexType {
