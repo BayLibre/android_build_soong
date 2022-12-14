@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ec4bff_f5bec05b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-12-14T15:03:48Z",
+      "side": 1,
+      "message": "Generally LGTM.",
+      "revId": "6e80e11a4af24de3e650bc9ca4cbf9f4be3cfd3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a379e2_5e514cde",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-12-14T15:03:48Z",
+      "side": 1,
+      "message": "If these are Bazel specific should that be reflected in the name?",
+      "revId": "6e80e11a4af24de3e650bc9ca4cbf9f4be3cfd3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6602a59_2c7e1caa",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-12-14T15:03:48Z",
+      "side": 1,
+      "message": "It seems better to me to have this part of `CmdArgs`, or at least close to the definition as it is tightly coupled to that type? Maybe add some validation to detect when multiple modes are configured (if possible).",
+      "revId": "6e80e11a4af24de3e650bc9ca4cbf9f4be3cfd3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
