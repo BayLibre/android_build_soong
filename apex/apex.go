@@ -1906,6 +1906,13 @@ func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	a.containerCertificateFile = android.PathForBazelOut(ctx, outputs.ContainerKeyInfo[0])
 	a.containerPrivateKeyFile = android.PathForBazelOut(ctx, outputs.ContainerKeyInfo[1])
 
+	// Ensure ApexInfo.RequiresLibs are installed as part of a bundle build
+	for _, bazelLabel := range outputs.RequiresLibs {
+		// convert Bazel label back to Soong module name
+		depName := strings.Split(bazelLabel, ":")[1]
+		a.requiredDeps = append(a.requiredDeps, depName)
+	}
+
 	apexType := a.properties.ApexType
 	switch apexType {
 	case imageApex:
