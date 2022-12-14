@@ -1357,12 +1357,18 @@ var (
 	}
 
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
-	// in either prod mode or staging mode.
-	ProdMixedBuildsEnabledList = []string{"com.android.tzdata"}
+	// in either prod mode or staging mode. This list is read from
+	// vendor/google/build/build_mainline_modules_bundles.sh, so it must
+	// maintain this exact format.
+	ProdMixedBuildsEnabledList = []string{
+		"com.android.tzdata",
+	}
 
 	// Staging-mode allowlist. Modules in this list are only built
 	// by Bazel with --bazel-mode-staging. This list should contain modules
-	// which will soon be added to the prod allowlist.
+	// which will soon be added to the prod allowlist. This list is read from
+	// vendor/google/build/build_mainline_modules_bundles.sh, so it must
+	// maintain this exact format.
 	StagingMixedBuildsEnabledList = []string{
 		"com.android.adbd",
 		"com.android.tzdata",
