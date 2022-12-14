@@ -69,6 +69,24 @@
       "parentUuid": "3d56ecde_514f5c6d",
       "revId": "858815e37e06fc5ed0738421b4d442a64a79419b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5dcfba_ae3a0756",
+        "filename": "tests/apex_cc_module_arch_variant_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-14T21:01:23Z",
+      "side": 1,
+      "message": "TARGET_PRODUCT is already enforced to be aosp_arm/aosp_arm64/aosp_x86/aosp_x86_64 in bp2build.sh. Since you\u0027re only using aosp_arm64 here, that should be covered by the bp2build.sh script.\n\nIf you\u0027re worried about the hermeticity of the tests when a user runs them manually on different products, it seems like that concern could apply to any of our tests. If we really wanted to enforce that tests are only run on a certain product, we should use target_compatible_with to make them only compatible with that one product. (Currently there\u0027s no product constraint variable/value, but there will be after aosp/2316418)\n\nI don\u0027t know what goes into getting the actions of the dep of a target in starlark, but if it\u0027s possible then it sounds fine.\n\nThe shell-based tests have caused a number of issues for me when writing aosp/2316418, and continue to cause merge conflicts when more people touch them, so I\u0027d prefer using starlark analysis tests where it makes sense, and in this case it definitely seems like the perfect fit.",
+      "parentUuid": "d3a59f92_0f6eaf59",
+      "revId": "858815e37e06fc5ed0738421b4d442a64a79419b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
