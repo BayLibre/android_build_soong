@@ -438,16 +438,31 @@ func (a Objects) Append(b Objects) Objects {
 	}
 }
 
-// Generate rules for compiling multiple .c, .cpp, or .S files to individual .o files
-func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs, timeoutTidySrcs android.Paths,
-	flags builderFlags, pathDeps android.Paths, cFlagsDeps android.Paths) Objects {
-	// Source files are one-to-one with tidy, coverage, or kythe files, if enabled.
-	objFiles := make(android.Paths, len(srcFiles))
-	var tidyFiles android.Paths
+// Given a ModuleContext, *SharedFlags, flag kind and the flags string,
+// return a shared flags name or the original flags.
+func shareFlags(ctx ModuleContext, shared *SharedFlags, kind string, flags string) string {
+	if shared == nil || len(flags) < 60 {
+		// Modules have long names and so do the module variables.
+		// It does not save space by replacing a short name with a long one.
+		return flags
+	}
+	mapKey := kind + flags
+	n, ok := shared.flagsMap[mapKey]
+	if !ok {
+		shared.numSharedFlags += 1
+		n = strconv.Itoa(shared.numSharedFlags)
+		shared.flagsMap[mapKey] = n
+		ctx.Variable(pctx, kind+n, flags)
+	}
+	return "$" + kind + n
+}
+
+// Given a module context and its flags, srcFiles, noTidySrcs, timeoutTidySrcs,
+// return noTidySrcsMap and tidyVars for tidy calls.
+func selectTidyFilesVars(ctx ModuleContext, flags builderFlags, srcFiles, noTidySrcs, timeoutTidySrcs android.Paths) (map[string]bool, string) {
 	noTidySrcsMap := make(map[string]bool)
 	var tidyVars string
 	if flags.tidy {
-		tidyFiles = make(android.Paths, 0, len(srcFiles))
 		for _, path := range noTidySrcs {
 			noTidySrcsMap[path.String()] = true
 		}
@@ -460,6 +475,60 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 			}
 		}
 	}
+	return noTidySrcsMap, tidyVars
+}
+
+// Generate ninja rules for the given srcFile in the subdir
+// and return the .tidy file path.
+func generateTidyRules(ctx ModuleContext, subdir string, srcFile android.Path,
+	ccCmd, ccDesc, tidyVars string, shared *SharedFlags, flags builderFlags,
+	moduleFlags string, pathDeps, cFlagsDeps android.Paths) android.Path {
+	tidyFile := android.ObjPathWithExt(ctx, subdir, srcFile, "tidy")
+	tidyCmd := "${config.ClangBin}/clang-tidy"
+
+	rule := clangTidy
+	reducedCFlags := moduleFlags
+	if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CLANG_TIDY") {
+		rule = clangTidyRE
+		// b/248371171, work around RBE input processor problem
+		// some cflags rejected by input processor, but usually
+		// do not affect included files or clang-tidy
+		reducedCFlags = config.TidyReduceCFlags(reducedCFlags)
+	}
+
+	sharedCFlags := shareFlags(ctx, shared, "cFlags", reducedCFlags)
+	srcRelPath := srcFile.Rel()
+
+	// Add the .tidy rule
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        rule,
+		Description: "clang-tidy " + srcRelPath,
+		Output:      tidyFile,
+		Input:       srcFile,
+		Implicits:   cFlagsDeps,
+		OrderOnly:   pathDeps,
+		Args: map[string]string{
+			"cFlags":    sharedCFlags,
+			"ccCmd":     ccCmd,
+			"clangCmd":  ccDesc,
+			"tidyCmd":   tidyCmd,
+			"tidyFlags": shareFlags(ctx, shared, "tidyFlags", config.TidyFlagsForSrcFile(srcFile, flags.tidyFlags)),
+			"tidyVars":  tidyVars, // short and not shared
+		},
+	})
+	return tidyFile
+}
+
+// Generate rules for compiling multiple .c, .cpp, or .S files to individual .o files
+func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs, timeoutTidySrcs android.Paths,
+	flags builderFlags, pathDeps android.Paths, cFlagsDeps android.Paths) Objects {
+	// Source files are one-to-one with coverage or kythe files, if enabled.
+	objFiles := make(android.Paths, len(srcFiles))
+	// Not all source files are checked by clang-tidy, but each is at most checked once.
+	tidyFiles := make(android.Paths, 0, len(srcFiles))
+	// Files disabled for tidy are collected in noTidySrcsMap.
+	// Common variables to call tidy are set in tidyVars.
+	noTidySrcsMap, tidyVars := selectTidyFilesVars(ctx, flags, srcFiles, noTidySrcs, timeoutTidySrcs)
 	var coverageFiles android.Paths
 	if flags.gcovCoverage {
 		coverageFiles = make(android.Paths, 0, len(srcFiles))
@@ -530,26 +599,10 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 	// Multiple source files have build rules usually share the same cFlags or tidyFlags.
 	// Define only one version in this module and share it in multiple build rules.
 	// To simplify the code, the shared variables are all named as $flags<nnn>.
-	shared := ctx.getSharedFlags()
-
+	var shared *SharedFlags = nil
 	// Share flags only when there are multiple files or tidy rules.
-	var hasMultipleRules = len(srcFiles) > 1 || flags.tidy
-
-	var shareFlags = func(kind string, flags string) string {
-		if !hasMultipleRules || len(flags) < 60 {
-			// Modules have long names and so do the module variables.
-			// It does not save space by replacing a short name with a long one.
-			return flags
-		}
-		mapKey := kind + flags
-		n, ok := shared.flagsMap[mapKey]
-		if !ok {
-			shared.numSharedFlags += 1
-			n = strconv.Itoa(shared.numSharedFlags)
-			shared.flagsMap[mapKey] = n
-			ctx.Variable(pctx, kind+n, flags)
-		}
-		return "$" + kind + n
+	if len(srcFiles) > 1 || flags.tidy {
+		shared = ctx.getSharedFlags()
 	}
 
 	for i, srcFile := range srcFiles {
@@ -568,7 +621,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 				Implicits:   cFlagsDeps,
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
-					"asFlags": shareFlags("asFlags", flags.globalYasmFlags+" "+flags.localYasmFlags),
+					"asFlags": shareFlags(ctx, shared, "asFlags", flags.globalYasmFlags+" "+flags.localYasmFlags),
 				},
 			})
 			continue
@@ -637,7 +690,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 			Implicits:       cFlagsDeps,
 			OrderOnly:       pathDeps,
 			Args: map[string]string{
-				"cFlags": shareFlags("cFlags", moduleFlags),
+				"cFlags": shareFlags(ctx, shared, "cFlags", moduleFlags),
 				"ccCmd":  ccCmd, // short and not shared
 			},
 		})
@@ -653,7 +706,7 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 				Implicits:   cFlagsDeps,
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
-					"cFlags": shareFlags("cFlags", moduleFlags),
+					"cFlags": shareFlags(ctx, shared, "cFlags", moduleFlags),
 				},
 			})
 			kytheFiles = append(kytheFiles, kytheFile)
@@ -661,40 +714,8 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 
 		//  Even with tidy, some src file could be skipped by noTidySrcsMap.
 		if tidy && !noTidySrcsMap[srcFile.String()] {
-			tidyFile := android.ObjPathWithExt(ctx, subdir, srcFile, "tidy")
+			tidyFile := generateTidyRules(ctx, subdir, srcFile, ccCmd, ccDesc, tidyVars, shared, flags, moduleFlags, pathDeps, cFlagsDeps)
 			tidyFiles = append(tidyFiles, tidyFile)
-			tidyCmd := "${config.ClangBin}/clang-tidy"
-
-			rule := clangTidy
-			reducedCFlags := moduleFlags
-			if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CLANG_TIDY") {
-				rule = clangTidyRE
-				// b/248371171, work around RBE input processor problem
-				// some cflags rejected by input processor, but usually
-				// do not affect included files or clang-tidy
-				reducedCFlags = config.TidyReduceCFlags(reducedCFlags)
-			}
-
-			sharedCFlags := shareFlags("cFlags", reducedCFlags)
-			srcRelPath := srcFile.Rel()
-
-			// Add the .tidy rule
-			ctx.Build(pctx, android.BuildParams{
-				Rule:        rule,
-				Description: "clang-tidy " + srcRelPath,
-				Output:      tidyFile,
-				Input:       srcFile,
-				Implicits:   cFlagsDeps,
-				OrderOnly:   pathDeps,
-				Args: map[string]string{
-					"cFlags":    sharedCFlags,
-					"ccCmd":     ccCmd,
-					"clangCmd":  ccDesc,
-					"tidyCmd":   tidyCmd,
-					"tidyFlags": shareFlags("tidyFlags", config.TidyFlagsForSrcFile(srcFile, flags.tidyFlags)),
-					"tidyVars":  tidyVars, // short and not shared
-				},
-			})
 		}
 
 		if dump {
@@ -714,8 +735,8 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 				Implicits:   cFlagsDeps,
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
-					"cFlags":     shareFlags("cFlags", moduleToolingFlags),
-					"exportDirs": shareFlags("exportDirs", flags.sAbiFlags),
+					"cFlags":     shareFlags(ctx, shared, "cFlags", moduleToolingFlags),
+					"exportDirs": shareFlags(ctx, shared, "exportDirs", flags.sAbiFlags),
 				},
 			})
 		}
