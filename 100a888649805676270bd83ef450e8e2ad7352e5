@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e8fe9a3_187d8cff",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1362,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-14T19:48:16Z",
+      "side": 1,
+      "message": "Thoughts on converting allowlists.go to a bzl file, and using starlark-go to read it? And then in the shell script, build starlark-go to a binary and use that binary to read the relevant lists.",
+      "revId": "100a888649805676270bd83ef450e8e2ad7352e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
