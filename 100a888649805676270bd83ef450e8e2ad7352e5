@@ -52,6 +52,24 @@
       "parentUuid": "f7aba1d4_b60f0c65",
       "revId": "100a888649805676270bd83ef450e8e2ad7352e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22cda182_3f5e8b24",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1362,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-14T20:46:49Z",
+      "side": 1,
+      "message": "\u003e we\u0027re already avoiding duplication by reading them in the go format\n\nAre you referring to code that is already checked in, or your proposal in ag/20738637 ? I don\u0027t think we should be using either approach. Duplicating these allowlists is a less brittle approach.",
+      "parentUuid": "e889da70_c875718d",
+      "revId": "100a888649805676270bd83ef450e8e2ad7352e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
