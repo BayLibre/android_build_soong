@@ -55,13 +55,13 @@ func createBazelWorkspace(ctx *bp2build.CodegenContext, outDir string) error {
 // queryview, so they have to be in the queryview workspace.
 func CopyBazelRcFiles() ([]bp2build.BazelFile, error) {
 	result := make([]bp2build.BazelFile, 0)
-	err := filepath.WalkDir(filepath.Join(topDir, "build/bazel"), func(path string, info fs.DirEntry, err error) error {
+	err := filepath.WalkDir(filepath.Join(commonFlags.topDir, "build/bazel"), func(path string, info fs.DirEntry, err error) error {
 		if filepath.Ext(path) == ".bazelrc" {
 			contents, err := os.ReadFile(path)
 			if err != nil {
 				return err
 			}
-			path, err = filepath.Rel(topDir, path)
+			path, err = filepath.Rel(commonFlags.topDir, path)
 			if err != nil {
 				return err
 			}
