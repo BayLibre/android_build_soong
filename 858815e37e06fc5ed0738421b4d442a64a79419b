@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b08f9e22_651e3c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-14T11:51:14Z",
+      "side": 1,
+      "message": "Presubmit failure looks related:\n\n```\n/buildbot/src/android/master/build/soong/tests/apex_cc_module_arch_variant_tests.sh: line 68: 0 + 853 855: syntax error in expression (error token is \"855\")\nError: number of CppCompile actions with arch variant set: actual\u003d1708, expected\u003d0\n```",
+      "revId": "858815e37e06fc5ed0738421b4d442a64a79419b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5755a88b_8c8bfecf",
         "filename": "tests/apex_cc_module_arch_variant_tests.sh",
         "patchSetId": 2
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "Checked with Jin before adding this test, it looks in Bazel we could not have the arch infos pass through soong injection to analysis test.",
       "parentUuid": "5755a88b_8c8bfecf",
+      "revId": "858815e37e06fc5ed0738421b4d442a64a79419b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a59f92_0f6eaf59",
+        "filename": "tests/apex_cc_module_arch_variant_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-14T11:51:14Z",
+      "side": 1,
+      "message": "To paraphrase slightly, our analysis tests (currently) cannot mock out soong.variables / the current product. They just rely on whichever is the currently lunched product at test execution time. \n\nThis integration test is better because it keeps the TARGET_PRODUCT hermetic within the test.\n\nAlso, the actions being tested here are not actions of the minimal apex, but the CcCompile action of the _deps_ of the minimal apex. The aquery approach makes getting those deps in the apex configuration simple.",
+      "parentUuid": "3d56ecde_514f5c6d",
       "revId": "858815e37e06fc5ed0738421b4d442a64a79419b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
