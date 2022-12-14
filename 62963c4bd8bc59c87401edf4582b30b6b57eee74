@@ -39,6 +39,30 @@
       },
       "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ef80ff_0f0c328d",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-14T21:52:08Z",
+      "side": 1,
+      "message": "I tried that initially, but I I wasn\u0027t able to depend on anything outside of the repository from inside it. The main things I needed to depend on where all the constraint values we have defined in build/bazel/platforms, and it was going to be a huge change to pull them all in. I thought this was better.",
+      "parentUuid": "5df3c1bf_a1b0de43",
+      "range": {
+        "startLine": 33,
+        "startChar": 37,
+        "endLine": 33,
+        "endChar": 90
+      },
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
