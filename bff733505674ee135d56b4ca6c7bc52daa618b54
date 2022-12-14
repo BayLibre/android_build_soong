@@ -16,6 +16,24 @@
       "message": "I don\u0027t think isBionic function is only used for the bootstrap.",
       "revId": "bff733505674ee135d56b4ca6c7bc52daa618b54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a30d89b5_85c6d01c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-12-14T00:28:59Z",
+      "side": 1,
+      "message": "I checked the references https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d1441;bpv\u003d1;bpt\u003d1?q\u003disBionic\nDid i miss something?",
+      "parentUuid": "c8b55d0b_7ccd2b1e",
+      "revId": "bff733505674ee135d56b4ca6c7bc52daa618b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
