@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7a08a81_24c01cf9",
+        "filename": "bp2build/cc_test_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-14T13:18:01Z",
+      "side": 1,
+      "message": "nit: fix indents, here and below.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 32
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691b26ae_30b77e49",
+        "filename": "bp2build/cc_test_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-14T13:18:01Z",
+      "side": 1,
+      "message": "What\u0027s this used for?",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 30
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5967f92f_9e152a40",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-14T13:18:01Z",
+      "side": 1,
+      "message": "nit: leave this unchanged for a cleaner blame.",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 698,
+        "endChar": 62
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afeb18e0_3a80b88c",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-14T13:18:01Z",
+      "side": 1,
+      "message": "add bug number",
+      "range": {
+        "startLine": 720,
+        "startChar": 36,
+        "endLine": 720,
+        "endChar": 40
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "348a35dc_57690afe",
+        "filename": "tradefed/autogen_bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-14T13:18:01Z",
+      "side": 1,
+      "message": "Are these used in this CL? If not, remove?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed056f1_01a29c7c",
+        "filename": "tradefed/autogen_bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-14T13:18:01Z",
+      "side": 1,
+      "message": "nit: autoGenConfig",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c391af09_ce160c14",
+        "filename": "tradefed/autogen_bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-14T13:18:01Z",
+      "side": 1,
+      "message": "nit: add a comment here describing that everything below is for generating the default config attrs.",
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
