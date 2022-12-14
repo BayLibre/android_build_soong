@@ -70,6 +70,24 @@
       "parentUuid": "2a9a10a9_d60fafe8",
       "revId": "bff733505674ee135d56b4ca6c7bc52daa618b54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a660606f_feb6ff84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2022-12-14T01:00:55Z",
+      "side": 1,
+      "message": "OK for now, but I\u0027m still worried if there would be any new logic would use isBionic and miss linkerconfig in the future. WDYT about having extra function to check if any bionic module is not in the bootstrap?",
+      "parentUuid": "b84854db_1f2432c3",
+      "revId": "bff733505674ee135d56b4ca6c7bc52daa618b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
