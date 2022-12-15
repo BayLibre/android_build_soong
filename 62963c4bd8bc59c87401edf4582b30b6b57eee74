@@ -111,6 +111,75 @@
       },
       "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13647bc_77349f05",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-15T15:32:44Z",
+      "side": 1,
+      "message": "Do you think it\u0027s fast enough to generate soong.variables.bzl for _all_ products in bp2build - maybe in parallel?\n\nPresumably that\u0027s the necessary next step to transition into multiple products.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 60
+      },
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ba9690_9b457c64",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-15T15:32:44Z",
+      "side": 1,
+      "message": "Is my understanding correct that files in /generated (not subdirs) would be a function of the current TARGET_PRODUCT, and /generated/products would eventually be checked-in BUILD/bzl files in the source tree?",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 42
+      },
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42edd177_d7ccc081",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-15T15:32:44Z",
+      "side": 1,
+      "message": "Add a TODO comment that the host linux and darwin platforms should ideally be product agnostic?",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 73
+      },
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
