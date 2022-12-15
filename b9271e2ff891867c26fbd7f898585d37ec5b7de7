@@ -16,6 +16,23 @@
       "message": "Why not put it into `soong_injection`? Running `m bp2build` to get the file is still faster than the full soong run just for this file.",
       "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0373f7b0_56dc81f3",
+        "filename": "android/bazel_allowlist_export.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-15T15:59:58Z",
+      "side": 1,
+      "message": "Does requesting this file be built (with `out/soong/bazel_prod_mixed_builds_enabled_list.txt`) still result in soong_build doing a full analysis of the build graph and generating ninja files, etc?",
+      "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
