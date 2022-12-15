@@ -917,6 +917,7 @@ var (
 		"libvndksupport-tests",
 		"libyuv_unittest",
 		"linker-unit-tests",
+		"malloc-rss-benchmark", // depends on unconverted modules: libmeminfo
 		"malloc_debug_system_tests",
 		"malloc_debug_unit_tests",
 		"malloc_hooks_system_tests",
