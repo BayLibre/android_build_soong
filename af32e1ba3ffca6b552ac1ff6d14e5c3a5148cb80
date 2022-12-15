@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4c04968_882ae4e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2022-12-15T08:27:41Z",
+      "side": 1,
+      "message": "All build tests pass on master.\nhttps://android-build.googleplex.com/builds/abtd/run/L17600000957783675",
+      "revId": "af32e1ba3ffca6b552ac1ff6d14e5c3a5148cb80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
