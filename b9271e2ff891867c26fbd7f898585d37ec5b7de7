@@ -105,6 +105,24 @@
       "parentUuid": "29121fbf_9f2ad0db",
       "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d21e1486_22b47c88",
+        "filename": "android/bazel_allowlist_export.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-15T23:41:29Z",
+      "side": 1,
+      "message": "I tried to do that, but found that creating another soong mode was very complicated. I filed b/262781701 and added a TODO to address that later.\n\nI also timed it using this code:\n```\n\tstartTime :\u003d time.Now()\n\tfiles \u003d append(files, newFile(\"allowlists\", \"mixed_build_prod_allowlist.txt\", strings.Join(android.GetBazelEnabledModulesWithoutDisabled(android.BazelProdMode), \"\\n\")+\"\\n\"))\n\tfiles \u003d append(files, newFile(\"allowlists\", \"mixed_build_staging_allowlist.txt\", strings.Join(android.GetBazelEnabledModulesWithoutDisabled(android.BazelStagingMode), \"\\n\")+\"\\n\"))\n\tendTime :\u003d time.Now()\n\tfmt.Fprintf(os.Stderr, \"Time: %f\\n\", endTime.Sub(startTime).Seconds())\n```\nAnd I got `Time: 0.000005`. There will also be the time to actually write out the file, but it should still be very fast.",
+      "parentUuid": "3007f4ad_8886cedf",
+      "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73ab70d_11a72894",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-15T23:41:29Z",
+      "side": 1,
+      "message": "Went with your first suggestion.",
+      "parentUuid": "6fc4f74a_5edf6e09",
+      "revId": "f182a901d26737c048f3ee24c157ff88119ebb3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06f6b45b_02a4a214",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-15T22:24:27Z",
       "side": 1,
       "message": "Nit: If the above method changes names, I think this should be GetBazelEnabledModules.",
+      "revId": "f182a901d26737c048f3ee24c157ff88119ebb3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d2830d_1aabe3a2",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-15T23:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06f6b45b_02a4a214",
       "revId": "f182a901d26737c048f3ee24c157ff88119ebb3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
