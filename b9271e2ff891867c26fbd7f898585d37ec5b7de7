@@ -87,6 +87,24 @@
       "parentUuid": "af63f2c5_df9a423c",
       "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3007f4ad_8886cedf",
+        "filename": "android/bazel_allowlist_export.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-15T20:15:21Z",
+      "side": 1,
+      "message": "On that note, can we have soong dump a single file based on the bazel mode? So instead of dumping one file for prod, one file for staging, it dumps the prod file normally, or if --bazel-mode-staging is specified, it dumps the staging file?",
+      "parentUuid": "29121fbf_9f2ad0db",
+      "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
