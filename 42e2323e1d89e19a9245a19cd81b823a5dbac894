@@ -69,6 +69,24 @@
       "parentUuid": "9fe49bc5_2f5c66a6",
       "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c47e876_30fa8ef2",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-12-15T23:58:44Z",
+      "side": 1,
+      "message": "Where is builder.go currently calling into tidy.go?  I see references to `config.TidyReduceCFlags`, but I haven\u0027t found anything to tidy.go.",
+      "parentUuid": "f3b3b0d3_cce3c034",
+      "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
