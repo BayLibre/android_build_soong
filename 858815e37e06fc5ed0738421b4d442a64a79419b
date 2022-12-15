@@ -87,6 +87,24 @@
       "parentUuid": "d3a59f92_0f6eaf59",
       "revId": "858815e37e06fc5ed0738421b4d442a64a79419b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7acf39f4_8accf090",
+        "filename": "tests/apex_cc_module_arch_variant_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-15T13:06:44Z",
+      "side": 1,
+      "message": "\u003e If you\u0027re worried about the hermeticity of the tests when a user runs them manually on different products, it seems like that concern could apply to any of our tests.\n\nThat\u0027s right. We don\u0027t have test support beyond aosp_* and linux_x86_64, which results in something like b/261715570 with mainline products.\n\n\u003e I don\u0027t know what goes into getting the actions of the dep of a target in starlark, but if it\u0027s possible then it sounds fine.\n\naquery is probably the straightforward way to do this, but I thought about this a bit deeper and realized that we can apply an aspect on the target_under_test, and use `target.actions` to collect CcCompile flags up to the test itself.\n\nHere\u0027s an example, which I tested to work with both aosp_arm and aosp_arm64 products:\n\n```\n_MarchInfo \u003d provider(fields \u003d {\"march\": \"list of march values found in the cc deps of this apex\"})\n\ndef _apex_transition_test(ctx):\n    env \u003d analysistest.begin(ctx)\n    target_under_test \u003d analysistest.target_under_test(env)\n    march_values \u003d target_under_test[_MarchInfo].march\n\n    asserts.equals(env, ctx.attr.expected, march_values.to_list())\n\n    return analysistest.end(env)\n\ndef _cc_compile_test_aspect_impl(target, ctx):\n    transitive_march \u003d []\n    for dep in get_dep_targets(ctx, predicate \u003d lambda target: _MarchInfo in target):\n        transitive_march +\u003d [dep[_MarchInfo].march]\n    march_values \u003d []\n    if (target.label.name).startswith(\"apex_transition_lib\"):\n        for a in target.actions:\n            if a.mnemonic \u003d\u003d \"CppCompile\":\n                march_values +\u003d [arg for arg in a.argv if \"march\" in arg]\n    return [\n        _MarchInfo(\n            march \u003d depset(\n                direct \u003d march_values,\n                transitive \u003d transitive_march,\n            ),\n        ),\n    ]\n\n_cc_compile_test_aspect \u003d aspect(\n    implementation \u003d _cc_compile_test_aspect_impl,\n    attr_aspects \u003d [\"*\"],\n)\n\napex_transition_test \u003d analysistest.make(\n    _apex_transition_test,\n    attrs \u003d {\n        \"expected\": attr.string_list(),\n    },\n    extra_target_under_test_aspects \u003d [_cc_compile_test_aspect],\n)\n\ndef _test_apex_transition():\n    name \u003d \"apex_transition\"\n    test_name \u003d name + \"_test\"\n\n    cc_library_shared(\n        name \u003d name + \"_lib_cc\",\n        srcs \u003d [name + \"_lib.cc\"],\n        tags \u003d [\"manual\"],\n    )\n\n    cc_library_shared(\n        name \u003d name + \"_lib2_cc\",\n        srcs \u003d [name + \"_lib2.cc\"],\n        tags \u003d [\"manual\"],\n    )\n\n    test_apex(\n        name \u003d name,\n        native_shared_libs_32 \u003d [name + \"_lib_cc\"],\n        native_shared_libs_64 \u003d [name + \"_lib2_cc\"],\n        android_manifest \u003d \"AndroidManifest.xml\",\n    )\n\n    apex_transition_test(\n        name \u003d test_name + \"_32\",\n        target_under_test \u003d name,\n        target_compatible_with \u003d [\"//build/bazel/platforms/os:android\", \"//build/bazel/platforms/arch:arm\"],\n        expected \u003d [\"-march\u003darmv7-a\"],\n    )\n\n    apex_transition_test(\n        name \u003d test_name + \"_64\",\n        target_under_test \u003d name,\n        target_compatible_with \u003d [\"//build/bazel/platforms/os:android\", \"//build/bazel/platforms/arch:arm64\"],\n        expected \u003d [\"-march\u003darmv8-a\"],\n    )\n\n    return [test_name + \"_32\", test_name + \"_64\"]\n```",
+      "parentUuid": "cf5dcfba_ae3a0756",
+      "revId": "858815e37e06fc5ed0738421b4d442a64a79419b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
