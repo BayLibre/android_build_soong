@@ -29,7 +29,6 @@ import (
 	"android/soong/bp2build"
 	"android/soong/shared"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
-
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/deptools"
 	"github.com/google/blueprint/metrics"
@@ -62,6 +61,7 @@ var (
 	}{}
 	cmdlineArgs       bootstrap.Args
 	moduleActionsFile string
+	symlinkShard      string
 )
 
 func init() {
@@ -91,6 +91,7 @@ func init() {
 	flag.StringVar(&buildModeFlag.bazelApiBp2buildDir, "bazel_api_bp2build_dir", "", "path to the bazel api_bp2build directory relative to --top")
 	flag.StringVar(&buildModeFlag.bp2buildMarker, "bp2build_marker", "", "If set, run bp2build, touch the specified marker file then exit")
 	flag.StringVar(&buildModeFlag.symlinkForestMarker, "symlink_forest_marker", "", "If set, create the bp2build symlink forest, touch the specified marker file, then exit")
+	flag.StringVar(&symlinkShard, "symlink_shard", ".", "TODO")
 	flag.StringVar(&cmdlineArgs.OutFile, "o", "build.ninja", "the Ninja file to output")
 	flag.StringVar(&cmdlineArgs.BazelForceEnabledModules, "bazel-force-enabled-modules", "", "additional modules to build with Bazel. Comma-delimited")
 	flag.BoolVar(&cmdlineArgs.EmptyNinjaFile, "empty-ninja-file", false, "write out a 0-byte ninja file")
@@ -276,7 +277,8 @@ func runApiBp2build(configuration android.Config, ctx *android.Context, extraNin
 		commonFlags.topDir,
 		workspace,
 		buildModeFlag.bazelApiBp2buildDir,
-		excludes)
+		excludes,
+		".")
 	ninjaDeps = append(ninjaDeps, symlinkDeps...)
 
 	workspaceMarkerFile := workspace + ".marker"
@@ -656,7 +658,7 @@ func bazelArtifacts() []string {
 // symlink tree creation binary. Then the latter would not need to depend on
 // the very heavy-weight machinery of soong_build .
 func runSymlinkForestCreation(configuration android.Config, ctx *android.Context, extraNinjaDeps []string, metricsDir string) string {
-	ctx.EventHandler.Do("symlink_forest", func() {
+	ctx.EventHandler.Do("symlink_forest/"+symlinkShard, func() {
 		var ninjaDeps []string
 		ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
 
@@ -684,7 +686,7 @@ func runSymlinkForestCreation(configuration android.Config, ctx *android.Context
 		// or file created/deleted under it would trigger an update of the symlink forest.
 		ctx.EventHandler.Do("plant", func() {
 			symlinkForestDeps := bp2build.PlantSymlinkForest(
-				configuration.IsEnvTrue("BP2BUILD_VERBOSE"), commonFlags.topDir, workspaceRoot, generatedRoot, excludes)
+				configuration.IsEnvTrue("BP2BUILD_VERBOSE"), commonFlags.topDir, workspaceRoot, generatedRoot, excludes, symlinkShard)
 			ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
 		})
 
