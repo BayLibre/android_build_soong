@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a643ca_1bead9fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-15T18:37:42Z",
+      "side": 1,
+      "message": "just a thought",
+      "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4097d40_96f23fc5",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-15T18:37:42Z",
+      "side": 1,
+      "message": "these changes ARE backward incompatible",
+      "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
