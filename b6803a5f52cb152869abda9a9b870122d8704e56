@@ -16,6 +16,24 @@
       "message": "I feel like we should include something about `_bp2build_*` here.",
       "revId": "b6803a5f52cb152869abda9a9b870122d8704e56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bfb2b83_bc1a7b88",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-12-15T16:50:03Z",
+      "side": 1,
+      "message": "By `_bp2build_*`, are you referering to https://cs.android.com/android/platform/build/soong/+/master:cc/bp2build.go;l\u003d1341-1351;drc\u003d7c6c701d733af0bbf3bb9702938e392ff52d0277?",
+      "parentUuid": "0bebf4c9_18d68e19",
+      "revId": "b6803a5f52cb152869abda9a9b870122d8704e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
