@@ -87,6 +87,30 @@
       },
       "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d14be72_52d234e5",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-15T14:57:58Z",
+      "side": 1,
+      "message": "`--package_path` also seem to work with the patches above (since %workspace% is replaced by explicit --bazelrc in the bazel entrypoint), so you might be able to submit this change without being blocked on the shutdown issue.",
+      "parentUuid": "27a1f279_97304ec5",
+      "range": {
+        "startLine": 33,
+        "startChar": 37,
+        "endLine": 33,
+        "endChar": 90
+      },
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
