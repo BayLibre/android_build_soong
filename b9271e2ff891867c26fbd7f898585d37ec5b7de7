@@ -69,6 +69,24 @@
       "parentUuid": "0373f7b0_56dc81f3",
       "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29121fbf_9f2ad0db",
+        "filename": "android/bazel_allowlist_export.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-15T19:23:22Z",
+      "side": 1,
+      "message": "Can we create a separate soong_build build mode for dumping just this file, so there are no side effects to obtain this file, runtime or otherwise?",
+      "parentUuid": "af63f2c5_df9a423c",
+      "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
