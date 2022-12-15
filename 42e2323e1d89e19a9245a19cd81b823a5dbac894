@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8590a1b_e82be963",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-12-15T23:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b94e2711_ef3ecfbd",
+      "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fe49bc5_2f5c66a6",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-15T22:57:01Z",
       "side": 1,
       "message": "This is calling back into tidy.go, which suggests that moving this code is interlinking these files in ways that are hard to follow.",
+      "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b3b0d3_cce3c034",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-12-15T23:28:49Z",
+      "side": 1,
+      "message": "The goal is for builder.go to call tidy.go only twice.\nBefore this change, builder.go is calling tidy.go and config/tidy.go in more places. tidy.go shouldn\u0027t need to callback to builder.go.\n\nMaybe we can simplify the callback to shareFlags further,\nif that function is inside ModuleContext.\nThen builder.go does not need to pass \"shared\", and only pass \"ctx\".\nWould you like to do that now or in another CL?",
+      "parentUuid": "9fe49bc5_2f5c66a6",
       "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
