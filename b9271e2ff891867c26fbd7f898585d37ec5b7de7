@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e736b774_6661d9f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-15T19:05:09Z",
+      "side": 1,
+      "message": "Good idea, done.",
+      "parentUuid": "aaff7b7f_06da7132",
+      "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0373f7b0_56dc81f3",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-15T15:59:58Z",
       "side": 1,
       "message": "Does requesting this file be built (with `out/soong/bazel_prod_mixed_builds_enabled_list.txt`) still result in soong_build doing a full analysis of the build graph and generating ninja files, etc?",
+      "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af63f2c5_df9a423c",
+        "filename": "android/bazel_allowlist_export.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-15T19:05:09Z",
+      "side": 1,
+      "message": "Yes, but I changed it per Jin\u0027s suggestion.\n\nOn patchset 2 I did it in soong_ui, which didn\u0027t require running soong_build at all, but then I learned that the modifications we make to the allowlist in internal builds were only compiled into soong_build and not soong_ui.",
+      "parentUuid": "0373f7b0_56dc81f3",
       "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
