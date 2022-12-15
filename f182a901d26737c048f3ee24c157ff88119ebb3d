@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc4f74a_5edf6e09",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-15T22:24:27Z",
+      "side": 1,
+      "message": "It seems a little misleading that GetBazelEnabledModules also returns a map of the disabled modules, though I don\u0027t have a great name for it offhand. \nGetBazelEnabledAndDisabledModules? GetModulesAndBazelReadiness?",
+      "revId": "f182a901d26737c048f3ee24c157ff88119ebb3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f6b45b_02a4a214",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-15T22:24:27Z",
+      "side": 1,
+      "message": "Nit: If the above method changes names, I think this should be GetBazelEnabledModules.",
+      "revId": "f182a901d26737c048f3ee24c157ff88119ebb3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
