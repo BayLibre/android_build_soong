@@ -34,6 +34,24 @@
       "parentUuid": "0bebf4c9_18d68e19",
       "revId": "b6803a5f52cb152869abda9a9b870122d8704e56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cad4fe5f_135b1f45",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-12-15T16:51:20Z",
+      "side": 1,
+      "message": "The above link doesn\u0027t work. See https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/bp2build.go;l\u003d1341-1351;drc\u003d6441a125cf714ffbae0366fa6a76d72013d4f27a",
+      "parentUuid": "7bfb2b83_bc1a7b88",
+      "revId": "b6803a5f52cb152869abda9a9b870122d8704e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
