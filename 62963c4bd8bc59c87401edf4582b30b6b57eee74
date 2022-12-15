@@ -63,6 +63,30 @@
       },
       "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a1f279_97304ec5",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-15T14:46:08Z",
+      "side": 1,
+      "message": "I agree with writing these in soong_injection. You can refer to the \"main repository\" from an external repo context by specifying `@` in the labels. So you don\u0027t need to pull them into the external repo.\n\ne.g. from some target in `@soong_injection`, you can refer to the main repo with `@//build/bazel/platforms/arch:x86`.\n\nI checked out your change locally and made soong_injection work with these patches:\n\n* build/bazel: https://paste.googleplex.com/6044897684488192?raw\n* build/soong: https://paste.googleplex.com/5284093754343424?raw",
+      "parentUuid": "05ef80ff_0f0c328d",
+      "range": {
+        "startLine": 33,
+        "startChar": 37,
+        "endLine": 33,
+        "endChar": 90
+      },
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
