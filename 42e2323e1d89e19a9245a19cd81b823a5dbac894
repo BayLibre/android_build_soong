@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b94e2711_ef3ecfbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-12-15T22:57:01Z",
+      "side": 1,
+      "message": "Can you expand the commit message to include the reasoning for this?",
+      "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fe49bc5_2f5c66a6",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-12-15T22:57:01Z",
+      "side": 1,
+      "message": "This is calling back into tidy.go, which suggests that moving this code is interlinking these files in ways that are hard to follow.",
+      "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
