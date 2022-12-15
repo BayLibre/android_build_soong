@@ -52,6 +52,24 @@
       "parentUuid": "7bfb2b83_bc1a7b88",
       "revId": "b6803a5f52cb152869abda9a9b870122d8704e56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb9bc74_453f9bdc",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-12-15T17:00:37Z",
+      "side": 1,
+      "message": "Discussed offline. Leaving as is.",
+      "parentUuid": "cad4fe5f_135b1f45",
+      "revId": "b6803a5f52cb152869abda9a9b870122d8704e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
