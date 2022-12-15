@@ -70,6 +70,24 @@
       "parentUuid": "cad4fe5f_135b1f45",
       "revId": "b6803a5f52cb152869abda9a9b870122d8704e56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb00a59_c5dfb083",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-12-15T17:03:37Z",
+      "side": 1,
+      "message": "Chatted with @tradical@google.com offline. `_bp2build_` is specific to conversion of some modules but we don\u0027t really have any convention to abide by. \n\nIf we need a full reversion from bazel target to soong module for every targets, we need to tweak CreateBazelTargetModule to store some in-memory so we can reverse-engineer it. Since this can take a bit of effort, we can ignore this for more.",
+      "parentUuid": "cad4fe5f_135b1f45",
+      "revId": "b6803a5f52cb152869abda9a9b870122d8704e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
