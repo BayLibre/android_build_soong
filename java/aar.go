@@ -1058,8 +1058,8 @@ func (a *AndroidLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) 
 
 	ctx.CreateBazelTargetModule(
 		bazel.BazelTargetModuleProperties{
-			Rule_class:        "android_library",
-			Bzl_load_location: "@rules_android//rules:rules.bzl",
+			Rule_class:        "android_library_macro",
+			Bzl_load_location: "//build/bazel/rules/android:android_library.bzl",
 		},
 		android.CommonAttributes{Name: a.Name()},
 		&bazelAndroidLibrary{
