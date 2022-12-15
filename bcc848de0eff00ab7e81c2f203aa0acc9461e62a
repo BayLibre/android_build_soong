@@ -33,6 +33,23 @@
       "message": "these changes ARE backward incompatible",
       "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ef7691f_b45c9840",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-15T18:43:12Z",
+      "side": 1,
+      "message": "this does annoy me, i.e. there isn\u0027t a programmatic way to get the flag strings (maybe using a FlagSet allows that).",
+      "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
