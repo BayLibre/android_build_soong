@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bebf4c9_18d68e19",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-12-15T16:36:34Z",
+      "side": 1,
+      "message": "I feel like we should include something about `_bp2build_*` here.",
+      "revId": "b6803a5f52cb152869abda9a9b870122d8704e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
