@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15004e96_c538f0bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-15T09:44:39Z",
+      "side": 1,
+      "message": "For future changes, please split up such refactoring changes into smaller CLs so it\u0027s easier for reviewers to tell that the logic hasn\u0027t been unintentionally changed. \n\ne.g. `maybeQuit`, `ctx.Config()`, `doChosenActivity` should all be individual refactoring changes instead.",
+      "revId": "33358502824c5cb546478e3dfb0a2b453526b4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
