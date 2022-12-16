@@ -297,14 +297,12 @@ func (l *linter) writeLintProjectXML(ctx android.ModuleContext, rule *android.Ru
 func (l *linter) generateManifest(ctx android.ModuleContext, rule *android.RuleBuilder) android.WritablePath {
 	manifestPath := android.PathForModuleOut(ctx, "lint", "AndroidManifest.xml")
 
-	rule.Command().Text("(").
-		Text(`echo "<?xml version='1.0' encoding='utf-8'?>" &&`).
-		Text(`echo "<manifest xmlns:android='http://schemas.android.com/apk/res/android'" &&`).
-		Text(`echo "    android:versionCode='1' android:versionName='1' >" &&`).
-		Textf(`echo "  <uses-sdk android:minSdkVersion='%d' android:targetSdkVersion='%d'/>" &&`,
-			l.minSdkVersion, l.targetSdkVersion).
-		Text(`echo "</manifest>"`).
-		Text(") >").Output(manifestPath)
+	android.WriteFileRule(ctx, manifestPath, fmt.Sprintf(`<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns:android='http://schemas.android.com/apk/res/android'
+    android:versionCode='1' android:versionName='1' >
+  <uses-sdk android:minSdkVersion='%d' android:targetSdkVersion='%d'/>
+</manifest>
+`, l.minSdkVersion, l.targetSdkVersion))
 
 	return manifestPath
 }
