@@ -86,6 +86,24 @@
       "parentUuid": "a6602a59_2c7e1caa",
       "revId": "6e80e11a4af24de3e650bc9ca4cbf9f4be3cfd3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf3d6962_3fceeb75",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-16T15:39:49Z",
+      "side": 1,
+      "message": "Fyi, I was trying to add some validation here: https://android-review.git.corp.google.com/c/platform/build/soong/+/2359160/1/cmd/soong_build/main.go#163\nI can add it after this CL is submitted.",
+      "parentUuid": "38f19b0e_4b6c158c",
+      "revId": "6e80e11a4af24de3e650bc9ca4cbf9f4be3cfd3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
