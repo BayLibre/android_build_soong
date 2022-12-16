@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39d2f6b8_af44f505",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-16T20:04:11Z",
+      "side": 1,
+      "message": "nit: I have lost a lot of context but I was wondering whether the metrics upload stuff could go into a \"run\" function.",
+      "parentUuid": "f52a9e4e_e7e93d3c",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f07a000d_b668324e",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 11

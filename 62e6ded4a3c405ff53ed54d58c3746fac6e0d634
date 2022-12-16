@@ -215,6 +215,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3f506f3_78967224",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-16T20:04:11Z",
+      "side": 1,
+      "message": "I\u0027d really like comments + TODO re: \"throw-away instance created in case of `--upload-metrics-only`",
+      "parentUuid": "0e82a208_94b38560",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4b2e93b_cfe2ecbb",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 10
