@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39e04de1_9c828935",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-16T21:24:29Z",
+      "side": 1,
+      "message": "If I\u0027m reading this correctly, it\u0027s setting nil at least n-1 times rather than having a large if/else block?\nI\u0027m sitting here chewing on whether it\u0027s more readable. Perhaps... and possibly more idiomatically \"Go\" style?",
+      "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ef7691f_b45c9840",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
@@ -48,6 +65,40 @@
       "writtenOn": "2022-12-15T18:43:12Z",
       "side": 1,
       "message": "this does annoy me, i.e. there isn\u0027t a programmatic way to get the flag strings (maybe using a FlagSet allows that).",
+      "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9585d22_f922299c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-16T21:24:29Z",
+      "side": 1,
+      "message": "is this actually proper formatting? The case is the same as the parent switch?",
+      "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d585395d_3916f387",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-16T21:24:29Z",
+      "side": 1,
+      "message": "remove commented code?",
       "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
