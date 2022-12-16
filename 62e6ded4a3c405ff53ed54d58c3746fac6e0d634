@@ -231,6 +231,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b17c580d_5e97836c",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-16T20:32:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f506f3_78967224",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a513ba8d_07122d1a",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-16T20:32:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f506f3_78967224",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4b2e93b_cfe2ecbb",
@@ -685,6 +721,24 @@
       "side": 1,
       "message": "yep I think it would make sense to do command-specific validation - I wouldn\u0027t mind it being deferred to a different CL",
       "parentUuid": "aa00fb03_0d2639b3",
+      "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c2f89d0_2c0857f8",
+        "filename": "ui/build/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-16T20:32:59Z",
+      "side": 1,
+      "message": "In light of this being revamped in multiple other CLs, I think we should defer.",
+      "parentUuid": "e39a2098_c691f440",
       "revId": "62e6ded4a3c405ff53ed54d58c3746fac6e0d634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
