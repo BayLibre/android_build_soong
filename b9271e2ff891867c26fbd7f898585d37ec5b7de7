@@ -123,6 +123,24 @@
       "parentUuid": "3007f4ad_8886cedf",
       "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd784fd5_b22e7fd0",
+        "filename": "android/bazel_allowlist_export.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-16T00:54:22Z",
+      "side": 1,
+      "message": "Chris, is your worry that we might unintentionally change the other files like this:\n\n```\nTARGET_PRODUCT\u003dfoo\nm bp2build \n// do something with allowlists..\n\nTARGET_PRODUCT\u003dbar\nbazel (not b) build ... # does not regenerate soong_injection/bp2build for the new product\n```\n\nbecause it would be safe like this:\n\n```\nTARGET_PRODUCT\u003dfoo\nm bp2build \n// do something with allowlists..\n\nTARGET_PRODUCT\u003dbar\nb build ... # correctly regenerates soong_injection/bp2build for the new product\n```\n\nIf this is it, then I think the risk is low and thus YAGNI now, but worth following up in b/262781701 if issues arise later.",
+      "parentUuid": "d21e1486_22b47c88",
+      "revId": "b9271e2ff891867c26fbd7f898585d37ec5b7de7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
