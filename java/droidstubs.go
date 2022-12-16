@@ -21,6 +21,7 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"sync"
 
 	"github.com/google/blueprint/proptools"
 
@@ -41,6 +42,8 @@ func RegisterStubsBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("droidstubs_host", DroidstubsHostFactory)
 
 	ctx.RegisterModuleType("prebuilt_stubs_sources", PrebuiltStubsSourcesFactory)
+
+	android.RegisterSingletonType("update_api_script", UpdateApiScriptSingleton)
 }
 
 func StubsDefaultsFactory() android.Module {
@@ -226,7 +229,6 @@ func initDroidstubs(module *Droidstubs) {
 		&module.checkNullabilityWarningsPart,
 	}
 
-	// TODO: remove
 	module.metalavaPart.droidstubs = module
 	module.apiCheckPart.droidstubs = module
 	module.updateApiPart.droidstubs = module
@@ -940,53 +942,104 @@ func (this *apiCheckPart) GenerateMkExtraFooters(w io.Writer, name, prefix, modu
 // Update API Part
 //
 
+const copyBashScript = "#!/bin/bash\\n" +
+	"function copy() {\\n" +
+	"  if ! ( diff \"$1\" \"$2\" > /dev/null ) ; then\\n" +
+	"    cp -f \"$1\" \"$2\" || ( echo \"failed to update $2\" 1>&2 ; exit 1 )\\n" +
+	"    echo \"Updated $2\"\\n" +
+	"  fi\\n" +
+	"}\\n"
+
+var globalUpdateApiOnce sync.Once
+
 type updateApiPart struct {
-	droidstubs                *Droidstubs
-	updateCurrentApiTimestamp android.WritablePath
+	droidstubs   *Droidstubs
+	script       android.WritablePath
+	globalScript android.WritablePath
+
+	apiCheckEnabled bool
+	apiSrc          android.Path
+	apiOut          android.Path
+	removedSrc      android.Path
+	removedOut      android.Path
+
+	allScript android.Path
 }
 
 func (this *updateApiPart) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	d := this.droidstubs
 
-	if apiCheckEnabled(ctx, d.properties.Check_api.Current, "current") {
-		apiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Api_file))
-		removedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Removed_api_file))
+	this.apiCheckEnabled = apiCheckEnabled(ctx, d.properties.Check_api.Current, "current")
+	if this.apiCheckEnabled {
+		// Generate the script to update a single module's api files
 
-		this.updateCurrentApiTimestamp = android.PathForModuleOut(ctx, "metalava", "update_current_api.timestamp")
+		// Note: These all go into one directory. i.e. PathForOutput not PathForModuleOut. That means
+		// there can't be multiple variants, because they will conflict. This file name
+		// is chosen to not conflict with the all.sh script regardless of the module name.
+		// TODO: Should no-variants be enforced here?
+		this.script = android.PathForOutput(ctx, "update-api", "update-"+this.droidstubs.Name()+".sh")
+
 		rule := android.NewRuleBuilder(pctx, ctx)
 
-		rule.Command().Text("( true")
+		cmd := rule.Command()
 
-		rule.Command().
-			Text("cp").Flag("-f").
-			Input(d.metalavaPart.apiFile).Flag(apiFile.String())
+		this.apiSrc = android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Api_file))
+		this.apiOut = d.metalavaPart.apiFile
+		this.removedSrc = android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Removed_api_file))
+		this.removedOut = d.metalavaPart.removedApiFile
 
-		rule.Command().
-			Text("cp").Flag("-f").
-			Input(d.metalavaPart.removedApiFile).Flag(removedApiFile.String())
+		// Note that the filename here is not an input for this rule. This rule is
+		// just creating a script that mentions that file.
+		text := copyBashScript +
+			"copy " + this.apiOut.String() + " " + this.apiSrc.String() + "\\n" +
+			"copy " + this.removedOut.String() + " " + this.removedSrc.String() + "\\n"
 
-		msg := "failed to update public API"
+		cmd.Text("echo -e '" + text + "' > ")
+		cmd.Output(this.script)
+		cmd.Text(" && chmod u+x ")
+		cmd.Output(this.script)
 
-		rule.Command().
-			Text("touch").Output(this.updateCurrentApiTimestamp).
-			Text(") || (").
-			Text("echo").Flag("-e").Flag(`"` + msg + `"`).
-			Text("; exit 38").
-			Text(")")
+		rule.Build("updateApi", "update-api script")
 
-		rule.Build("metalavaCurrentApiUpdate", "update current API")
+		// Phony target that depends on the script and the generated api files
+		ctx.Phony("update-api-module-"+this.droidstubs.Name(), this.script, this.apiOut, this.removedOut)
+
+		// Used by globalUpdateApiOnce
+		this.allScript = android.PathForOutput(ctx, "update-api", "all.sh")
 	}
 }
 
 func (this *updateApiPart) GenerateMkExtraFooters(w io.Writer, name, prefix, moduleDir string) {
-	if this.updateCurrentApiTimestamp != nil {
+	if this.script != nil {
+		// TODO: When we make the update phony targets stop running the scripts, remove these blocks
+		updateApiSourceWriting := true
+
+		// Legacy <module>-update-current-api rule (that just warns about the old command being deprecated)
 		moduleName := this.droidstubs.Name()
+		phonyTarget := this.droidstubs.Name() + "-update-current-api"
+		fmt.Fprintln(w, ".PHONY", ":", phonyTarget)
+		fmt.Fprintln(w, phonyTarget, ":", this.script.String(), this.apiOut, this.removedOut)
+		if updateApiSourceWriting {
+			fmt.Fprintf(w, "\t%s\n", this.script.String())
+			fmt.Fprintf(w, "\t@echo -e \"\\033[1;31mSupport for 'm "+phonyTarget+"' will be removed soon. Please start to run 'update-api "+moduleName+"' instead.\\033[0m\" 1>&2\n")
+		} else {
+			fmt.Fprintf(w, "\t@echo -e \"\\033[1;31mSupport for 'm "+phonyTarget+"' has been removed. Please start to run 'update-api "+moduleName+"' instead.\\033[0m\" 1>&2 ; exit 1\n")
+		}
 
-		fmt.Fprintln(w, ".PHONY:", moduleName+"-update-current-api")
-		fmt.Fprintln(w, moduleName+"-update-current-api:", this.updateCurrentApiTimestamp.String())
+		// Legacy update-api phony target. Ideally this would be in updateApiScriptSingleton, but that
+		// singletons don't have AndroidMkEntries().
+		globalUpdateApiOnce.Do(func() {
+			// Add the global legacy update-api phony target
+			fmt.Fprintln(w, ".PHONY:", "update-api")
+			fmt.Fprintln(w, "update-api: update-api-all")
+			if updateApiSourceWriting {
+				fmt.Fprintf(w, "\t%s\n", this.allScript.String())
+				fmt.Fprintf(w, "\t@echo -e \"\\033[1;31mSupport for 'm update-api' will be removed soon. Please start to run 'update-api' instead.\\033[0m\" 1>&2\n")
+			} else {
+				fmt.Fprintf(w, "\t@echo -e \"\\033[1;31mSupport for 'm update-api' has been removed. Please run 'update-api' instead.\\033[0m\" 1>&2 ; exit 1\n")
+			}
 
-		fmt.Fprintln(w, ".PHONY: update-api")
-		fmt.Fprintln(w, "update-api:", this.updateCurrentApiTimestamp.String())
+		})
 	}
 }
 
@@ -1139,6 +1192,10 @@ func (this *checkNullabilityWarningsPart) GenerateMkExtraFooters(w io.Writer, na
 	}
 }
 
+//
+// Prebuilt Stubs
+//
+
 var _ android.PrebuiltInterface = (*PrebuiltStubsSources)(nil)
 
 func metalavaUseRbe(ctx android.ModuleContext) bool {
@@ -1248,4 +1305,44 @@ func apiCheckEnabled(ctx android.ModuleContext, apiToCheck ApiToCheck, apiVersio
 	}
 
 	return false
+}
+
+//
+// UpdateApi Singleton
+//
+
+func UpdateApiScriptSingleton() android.Singleton {
+	return &updateApiScriptSingleton{}
+}
+
+type updateApiScriptSingleton struct {
+}
+
+func (this *updateApiScriptSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+	// Generate the script to update everything
+	script := android.PathForOutput(ctx, "update-api", "all.sh")
+
+	rule := android.NewRuleBuilder(pctx, ctx)
+	rule.Command().Text("echo -e '" + copyBashScript + "' > ").Output(script)
+
+	ctx.VisitAllModules(func(module android.Module) {
+		if droidstubs, ok := module.(*Droidstubs); ok && droidstubs.updateApiPart.apiCheckEnabled {
+			// Add the copy lines to the rule
+			updateApiPart := droidstubs.updateApiPart
+
+			rule.Command().Text("echo -e 'copy " + updateApiPart.apiOut.String() + " " + updateApiPart.apiSrc.String() + "' >> ").Output(script)
+			rule.Command().Text("echo -e 'copy " + updateApiPart.removedOut.String() + " " + updateApiPart.removedSrc.String() + "' >> ").Output(script)
+
+			// Add dependency for the all phony target (up here to avoid overhead of
+			// doing VisitAllModules again).
+			ctx.Phony("update-api-all", updateApiPart.apiOut, updateApiPart.removedOut)
+		}
+	})
+
+	rule.Command().Text("chmod u+x ").Output(script)
+
+	rule.Build("updateApi", "update-api script")
+
+	// Phony target that depends on the script and the actual output sources
+	ctx.Phony("update-api-all", script)
 }
