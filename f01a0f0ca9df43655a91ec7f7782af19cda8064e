@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d064792_0b92e7ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-12-16T22:22:56Z",
+      "side": 1,
+      "message": "The reason that I reverted the previous solution where \"-coverage\" is added to feature directly in bp2build is that the extra profile lib added on bazel side can\u0027t be individually controlled, so we may run into the situation where a module having the coverage disabled through \"-coverage\" but the extra lib is still linked, in which case the extra lib can\u0027t find profile utility libs that are added by clang when coverage is enabled.",
+      "revId": "f01a0f0ca9df43655a91ec7f7782af19cda8064e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
