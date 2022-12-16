@@ -104,6 +104,24 @@
       "parentUuid": "38f19b0e_4b6c158c",
       "revId": "6e80e11a4af24de3e650bc9ca4cbf9f4be3cfd3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e234a052_256488f5",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-12-16T19:32:41Z",
+      "side": 1,
+      "message": "Looks like we are doing something very similar?",
+      "parentUuid": "bf3d6962_3fceeb75",
+      "revId": "6e80e11a4af24de3e650bc9ca4cbf9f4be3cfd3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
