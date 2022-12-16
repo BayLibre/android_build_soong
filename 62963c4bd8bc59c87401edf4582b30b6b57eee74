@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca68f5d_28cf8a55",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-16T20:25:43Z",
+      "side": 1,
+      "message": "Thanks Jin! I must\u0027ve missed something when trying this earlier. Applied the patches.",
+      "parentUuid": "8d14be72_52d234e5",
+      "range": {
+        "startLine": 33,
+        "startChar": 37,
+        "endLine": 33,
+        "endChar": 90
+      },
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e13647bc_77349f05",
@@ -126,6 +150,30 @@
       "writtenOn": "2022-12-15T15:32:44Z",
       "side": 1,
       "message": "Do you think it\u0027s fast enough to generate soong.variables.bzl for _all_ products in bp2build - maybe in parallel?\n\nPresumably that\u0027s the necessary next step to transition into multiple products.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 60
+      },
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d45b61_43a20c2d",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-16T20:25:43Z",
+      "side": 1,
+      "message": "No, it\u0027s definitely way too slow to generate soong.variables for all products. It takes like 1 second per product, and comes out to like 15 minutes for all products on internal master.\n\nWhen product config is in Starlark, we could just implicitly load the product config bzl files here, which would be a major motivator for finishing the starlark conversion. You\u0027re right that it\u0027s the next step.\n\nPre starlark product config, we could run product config for just the mainline_modules_* products because those are what we need for aab builds, and just those should be relatively fast.",
+      "parentUuid": "e13647bc_77349f05",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -159,6 +207,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7848d889_e8bbf149",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-16T20:25:43Z",
+      "side": 1,
+      "message": "Yes, that is exactly correct.",
+      "parentUuid": "15ba9690_9b457c64",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 42
+      },
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42edd177_d7ccc081",
@@ -172,6 +244,30 @@
       "writtenOn": "2022-12-15T15:32:44Z",
       "side": 1,
       "message": "Add a TODO comment that the host linux and darwin platforms should ideally be product agnostic?",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 73
+      },
+      "revId": "62963c4bd8bc59c87401edf4582b30b6b57eee74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8bde26_7496b2bf",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-12-16T20:25:43Z",
+      "side": 1,
+      "message": "Filed b/262753134 and added a TODO next to the platforms\u0027 definitions in the build/bazel cl.",
+      "parentUuid": "42edd177_d7ccc081",
       "range": {
         "startLine": 120,
         "startChar": 0,
