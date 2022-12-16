@@ -87,6 +87,24 @@
       "parentUuid": "f3b3b0d3_cce3c034",
       "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c59c9d01_829599bc",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-12-16T03:21:41Z",
+      "side": 1,
+      "message": "Yes, I mixed cc/tidy.go and cc/config/tidy.go.\nI would like to minimize builder.go\u0027s dependency on both of them.\n\nIn fact, some code in cc/config/tidy.go, such as TidyReduceCFlags,\nshould be moved into cc/tidy.go, so that cc/config/tidy.go will be\nmore like other config/*.go files. It should only define host/device/target/clang-version dependent variables and some interface functions.\ncc/tidy.go should have config-independent logic\nand have minimal dependency on cc/config/tidy.go.",
+      "parentUuid": "2c47e876_30fa8ef2",
+      "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
