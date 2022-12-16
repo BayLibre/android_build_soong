@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "768410da_38e6a4ac",
+        "filename": "bp2build/cc_test_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2022-12-16T21:46:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7a08a81_24c01cf9",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 32
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "691b26ae_30b77e49",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-14T13:18:01Z",
       "side": 1,
       "message": "What\u0027s this used for?",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 30
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c171e47f_06af55f7",
+        "filename": "bp2build/cc_test_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2022-12-16T21:46:29Z",
+      "side": 1,
+      "message": "I inherited this from the bp file;\nNot sure how widely used; but projects can explicitly declare for a test config to not be generated. (Maybe having some alternative non-tradefed way of doing tests)",
+      "parentUuid": "691b26ae_30b77e49",
       "range": {
         "startLine": 246,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf503a09_05ae35c0",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2022-12-16T21:46:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5967f92f_9e152a40",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 698,
+        "endChar": 62
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afeb18e0_3a80b88c",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-12-14T13:18:01Z",
       "side": 1,
       "message": "add bug number",
+      "range": {
+        "startLine": 720,
+        "startChar": 36,
+        "endLine": 720,
+        "endChar": 40
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a63237_517c4266",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2022-12-16T21:46:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afeb18e0_3a80b88c",
       "range": {
         "startLine": 720,
         "startChar": 36,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e0ccca8_0399ec4c",
+        "filename": "tradefed/autogen_bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2022-12-16T21:46:29Z",
+      "side": 1,
+      "message": "NativeTestConfigTemplate is.\nIn follow up CL NativeHostTestConfigTemplate will be.\n\nI kind of prefer to keep these -- since I built this in mind to be a general solution.",
+      "parentUuid": "348a35dc_57690afe",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ed056f1_01a29c7c",
         "filename": "tradefed/autogen_bazel.go",
         "patchSetId": 4
@@ -129,6 +249,30 @@
       "writtenOn": "2022-12-14T13:18:01Z",
       "side": 1,
       "message": "nit: autoGenConfig",
+      "range": {
+        "startLine": 64,
+        "startChar": 7,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d9a83de_ec575c45",
+        "filename": "tradefed/autogen_bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2022-12-16T21:46:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ed056f1_01a29c7c",
       "range": {
         "startLine": 64,
         "startChar": 7,
@@ -152,6 +296,24 @@
       "writtenOn": "2022-12-14T13:18:01Z",
       "side": 1,
       "message": "nit: add a comment here describing that everything below is for generating the default config attrs.",
+      "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86948940_44a45358",
+        "filename": "tradefed/autogen_bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2022-12-16T21:46:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c391af09_ce160c14",
       "revId": "01a15de99ceadf0ecebd27fd67384c041edaf0c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
