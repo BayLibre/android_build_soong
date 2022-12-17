@@ -33,6 +33,24 @@
       "message": "So, git_master has all the necessary internal fixes, they\u0027re just not in tm-qpr-dev. Rather than cherry-pick all of those changes to tm-qpr-dev, should I just reland this with DO NOT MERGE, and manually cherry-pick to git_master? Or do the reverse (land first in git_master, and cherry-pick to aosp w/ DO NOT MERGE + merged-in)?",
       "revId": "6f7e288fb5ea2fb01d9093fd57081a82c09a6618",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b78f036_03c0793b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-12-17T06:11:49Z",
+      "side": 1,
+      "message": "You\u0027ll need to cherry-pick these to tm-qpr-dev-plus-aosp, otherwise when tm-qpr-dev is released to aosp and tm-qpr-dev-plus-aosp becomes aosp master this change will be effectively reverted in aosp master.  go/android-cherrypicker can help with the cherrypicking.",
+      "parentUuid": "0e395fbc_c8e357a3",
+      "revId": "6f7e288fb5ea2fb01d9093fd57081a82c09a6618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
