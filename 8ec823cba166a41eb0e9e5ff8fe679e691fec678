@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7858127e_f0b6fcaf",
+        "filename": "java/java_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1963,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-12-17T03:53:01Z",
+      "side": 1,
+      "message": "This breaks tests on macs",
+      "revId": "8ec823cba166a41eb0e9e5ff8fe679e691fec678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
