@@ -110,6 +110,17 @@ func inList(s string, list []string) bool {
 	return indexList(s, list) != -1
 }
 
+func deleteStaleMetrics(metricsFilePathSlice []string) (error, string) {
+	var err error
+	for _, metricsFilePath := range metricsFilePathSlice {
+		err = os.Remove(metricsFilePath)
+		if err != nil && !os.IsNotExist(err) {
+			return err, metricsFilePath
+		}
+	}
+	return err, ""
+}
+
 // Main execution of soong_ui. The command format is as follows:
 //
 //	soong_ui <command> [<arg 1> <arg 2> ... <arg n>]
@@ -117,7 +128,6 @@ func inList(s string, list []string) bool {
 // Command is the type of soong_ui execution. Only one type of
 // execution is specified. The args are specific to the command.
 func main() {
-	//TODO(juu): Add logic to soong_ui to delete a hardcoded list of metrics files
 	shared.ReexecWithDelveMaybe(os.Getenv("SOONG_UI_DELVE"), shared.ResolveDelveBinary())
 
 	buildStarted := time.Now()
@@ -186,6 +196,12 @@ func main() {
 	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
 	bp2buildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"bp2build_metrics.pb")
 	soongBuildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_build_metrics.pb")
+
+	//Delete the stale metrics files
+	staleFileSlice := []string{buildErrorFile, rbeMetricsFile, soongMetricsFile, bp2buildMetricsFile, soongBuildMetricsFile}
+	if err, unableDeleteMetrics := deleteStaleMetrics(staleFileSlice); err != nil {
+		log.Verbosef("Failed to remove %s", unableDeleteMetrics)
+	}
 
 	build.PrintOutDirWarning(buildCtx, config)
 
