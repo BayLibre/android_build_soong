@@ -2057,13 +2057,17 @@ type visitorContext struct {
 	handleSpecialLibs bool
 }
 
-func (vctx *visitorContext) normalizeFileInfo() {
+func (vctx *visitorContext) normalizeFileInfo(mctx android.ModuleContext) {
 	encountered := make(map[string]apexFile)
 	for _, f := range vctx.filesInfo {
 		dest := filepath.Join(f.installDir, f.builtFile.Base())
 		if e, ok := encountered[dest]; !ok {
 			encountered[dest] = f
 		} else {
+			if f.builtFile.String() != encountered[dest].builtFile.String() {
+				mctx.ModuleErrorf("apex file %v is provided by two different files %v and %v",
+					dest, encountered[dest].builtFile, f.builtFile)
+			}
 			// If a module is directly included and also transitively depended on
 			// consider it as directly included.
 			e.transitiveDep = e.transitiveDep && f.transitiveDep
@@ -2444,7 +2448,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// TODO(jiyong): make this clean!!!
 	vctx := visitorContext{handleSpecialLibs: !android.Bool(a.properties.Ignore_system_library_special_case)}
 	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool { return a.depVisitor(&vctx, ctx, child, parent) })
-	vctx.normalizeFileInfo()
+	vctx.normalizeFileInfo(ctx)
 	if a.privateKeyFile == nil {
 		ctx.PropertyErrorf("key", "private_key for %q could not be found", String(a.overridableProperties.Key))
 		return
