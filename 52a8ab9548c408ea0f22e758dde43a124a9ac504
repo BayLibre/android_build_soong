@@ -46,6 +46,70 @@
       },
       "revId": "52a8ab9548c408ea0f22e758dde43a124a9ac504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712a556d_5b8bb66b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-12-19T21:44:13Z",
+      "side": 1,
+      "message": "@eakammer@google.com, WDYM by \"this\" in \"is **this** correct\"? Are you asking whether `the internal order of the \u0027select\u0027 props should not be impacted` is true?\n\n@mrziwang@google.com, when you say `the internal order of the \u0027select\u0027 props should not be impacted`, do you mean that order of varaints as written in the `bp` file should be preserved? I.e. for\n```\ncc_library {\n   name: \"a\",\n   srcs: [\"a.cpp\"],\n   export_include_dirs: [\"export_include_dirs\"],\n   export_system_include_dirs: [\"export_system_include_dirs\"],\n     target: {\n       android: {\n         export_include_dirs: [\"android_export_include_dirs\"],\n         export_system_include_dirs: [\"android_export_system_include_dirs\"],\n       },\n     },\n     arch: {\n       arm: {\n         export_include_dirs: [\"arm_export_include_dirs\"],\n         export_system_include_dirs: [\"arm_export_system_include_dirs\"],\n       },\n     }\n}\n```\nthe `os:android` contraints should come before the `arch:arm` constraints?\n\nOr do you mean something else?",
+      "parentUuid": "e344967e_d2c62265",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "52a8ab9548c408ea0f22e758dde43a124a9ac504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a8b439b_a9a74864",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3788,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-12-19T21:44:13Z",
+      "side": 1,
+      "message": "Would you mind adding a comment here indicating that `export_include_dirs` and `export_system_include_dirs` are `variant_prepend`? I wasn\u0027t sure how this worked until I looked up those two property types.",
+      "revId": "52a8ab9548c408ea0f22e758dde43a124a9ac504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f456893f_790f7f75",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3875,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-12-19T21:44:13Z",
+      "side": 1,
+      "message": "I don\u0027t think we need all of these `cc_library` targets to test right? Especially since these are all `cc_libraries`, but are being placed in `export_include_dirs` which takes a string directory name.",
+      "range": {
+        "startLine": 3817,
+        "startChar": 0,
+        "endLine": 3875,
+        "endChar": 1
+      },
+      "revId": "52a8ab9548c408ea0f22e758dde43a124a9ac504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
