@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08d3ea2b_a1cc0b1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-19T21:46:30Z",
+      "side": 1,
+      "message": "I\u0027m not asking whether this describes the implementation or whether the bp2build tests are correct, but what the *correct* ordering of the selects should be based on Soong\u0027s own logic.\n\ne.g. in your test TestCcLibraryVariantPrependPropOrder,\n\nfor android_arm, your test would result in:\n\n```\n\"lib32_export_include_dirs\",\n\"arm_export_include_dirs\",\n\"android_export_include_dirs\",\n\"android_arm_export_include_dirs\",\n\"export_include_dirs\"\n```\n\nis that the ordering Soong would produce for android_arm, or would it be fully inverted as you had before:\n\n\n```\n\"android_arm_export_include_dirs\",\n\"android_export_include_dirs\",\n\"lib32_export_include_dirs\",\n\"arm_export_include_dirs\",\n\"export_include_dirs\"\n```\n\nAs mentioned above, we should write a Soong test to determine the ordering of libraries that Soong would produce and then update the handling of prepend for attribute creation if necessary.",
+      "parentUuid": "cd92d828_e8e946ec",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "52a8ab9548c408ea0f22e758dde43a124a9ac504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a8b439b_a9a74864",
         "filename": "bp2build/cc_library_conversion_test.go",
         "patchSetId": 2
