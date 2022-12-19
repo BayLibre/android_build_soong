@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40d4a948_65112497",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-12-19T08:52:52Z",
+      "side": 1,
+      "message": "Mmm, I guess this is because we haven\u0027t implemented sanitizer variants for snapshot_object. Can we implement `snapshotSanitizer` interface (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/snapshot_prebuilt.go;l\u003d402;drc\u003d39c303116a76fe14270ad680da8a9275e7d32903) on snapshot object modules instead?",
+      "revId": "4c786f2457f2bda0cebc00b5491c0256cb1e647f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
