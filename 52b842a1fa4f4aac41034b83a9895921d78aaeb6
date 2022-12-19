@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a6fa687_5474fc0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-12-19T16:55:24Z",
+      "side": 1,
+      "message": "Just an open question. Can we tweak bp2build to error log these unconverted deps on CI so we can easily detect where the problem is? It seems feasible to do during bp2build run.",
+      "revId": "52b842a1fa4f4aac41034b83a9895921d78aaeb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
