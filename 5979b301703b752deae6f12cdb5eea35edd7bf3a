@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1888a27_1bac3b2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2022-12-19T23:11:13Z",
+      "side": 1,
+      "message": "Confirmed build issues are resolved now that downstream fixes are CP\u0027ed to tm-qpr-dev-plus-aosp (see ab/P46391460).",
+      "revId": "5979b301703b752deae6f12cdb5eea35edd7bf3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
