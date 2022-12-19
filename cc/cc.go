@@ -499,6 +499,7 @@ type ModuleContextIntf interface {
 	IsLlndk() bool
 	IsLlndkPublic() bool
 	isImplementationForLLNDKPublic() bool
+	isSnapshotPrebuilt() bool
 	IsVndkPrivate() bool
 	isVndk() bool
 	isVndkSp() bool
@@ -1602,6 +1603,10 @@ func (ctx *moduleContextImpl) IsLlndkPublic() bool {
 
 func (ctx *moduleContextImpl) isImplementationForLLNDKPublic() bool {
 	return ctx.mod.isImplementationForLLNDKPublic()
+}
+
+func (ctx *moduleContextImpl) isSnapshotPrebuilt() bool {
+	return ctx.mod.IsSnapshotPrebuilt()
 }
 
 func (ctx *moduleContextImpl) IsVndkPrivate() bool {

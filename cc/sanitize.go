@@ -630,20 +630,18 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 	// Also disable CFI for VNDK variants of components
 	if ctx.isVndk() && ctx.useVndk() {
-		if ctx.static() {
-			// Cfi variant for static vndk should be captured as vendor snapshot,
-			// so don't strictly disable Cfi.
-			s.Cfi = nil
-			s.Diag.Cfi = nil
-		} else {
-			s.Cfi = nil
-			s.Diag.Cfi = nil
-		}
+		s.Cfi = nil
+		s.Diag.Cfi = nil
 	}
 
 	// HWASan ramdisk (which is built from recovery) goes over some bootloader limit.
 	// Keep libc instrumented so that ramdisk / vendor_ramdisk / recovery can run hwasan-instrumented code if necessary.
 	if (ctx.inRamdisk() || ctx.inVendorRamdisk() || ctx.inRecovery()) && !strings.HasPrefix(ctx.ModuleDir(), "bionic/libc") {
+		s.Hwaddress = nil
+	}
+
+	// Disable hwasan for *_snapshot_object modules
+	if ctx.isSnapshotPrebuilt() && ctx.object() {
 		s.Hwaddress = nil
 	}
 
