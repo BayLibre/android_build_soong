@@ -105,6 +105,24 @@
       "parentUuid": "2c47e876_30fa8ef2",
       "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f61b46b_c5ff375b",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-12-19T19:45:57Z",
+      "side": 1,
+      "message": "I think I prefer the current layering.  tidy.go handles the module-level flag processing.  builder.go converts the flags struct to rules.  The shareFlags code makes sense there, because it is also handling the non-tidy rules.  builder.go gets config-type data from config/tidy.go, which localizes the data stored in code.\n\nYou could move TidyReduceCFlags into tidy.go, but I don\u0027t think it has much value, it\u0027s a tiny wrapper around the regex in config/tidy.go.\n\nI like your refactorings though, but they should stay in builder.go.",
+      "parentUuid": "c59c9d01_829599bc",
+      "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
