@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6452481_9590c7b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-12-19T21:18:09Z",
+      "side": 1,
+      "message": "Updated the description. Thanks!",
+      "parentUuid": "eb9c1e3a_7891991c",
+      "revId": "290088f87cc0faa0f8d059181cffcf1ace74dcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7332b385_b239bad1",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b561f9_22753d7e",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-12-19T21:18:09Z",
+      "side": 1,
+      "message": "Good suggestions. Updated.",
+      "parentUuid": "7332b385_b239bad1",
+      "revId": "290088f87cc0faa0f8d059181cffcf1ace74dcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15643e00_5aabdd67",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-12-19T18:58:21Z",
       "side": 1,
       "message": "Any idea how common this kind of failure might be? If the answer is \"very rare, and I\u0027m not sure how this could happen\", maybe should make this a crash-error so that we don\u0027t end up in a state where it\u0027s a widespread (mostly silent) issue?",
+      "revId": "290088f87cc0faa0f8d059181cffcf1ace74dcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8adc6bb3_81c14dcd",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2022-12-19T21:18:09Z",
+      "side": 1,
+      "message": "I believe it is very rare. Updated to make this a crash error. Thanks!",
+      "parentUuid": "15643e00_5aabdd67",
       "revId": "290088f87cc0faa0f8d059181cffcf1ace74dcd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
