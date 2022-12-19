@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e344967e_d2c62265",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-12-19T20:21:47Z",
+      "side": 1,
+      "message": "is this correct? I was suggesting we write a test to determine this, not necessarily change the logic, e.g. extending or a similar test to [`TestArchProperties`](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/arch_test.go;l\u003d587;drc\u003df05b0d35d2fbe51be9961ce8ce8031f840295c68) that uses `variant_prepend`",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "52a8ab9548c408ea0f22e758dde43a124a9ac504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
