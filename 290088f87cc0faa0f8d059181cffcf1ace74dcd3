@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9c1e3a_7891991c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-19T18:58:21Z",
+      "side": 1,
+      "message": "Nit: There are some typos in your CL description. Please fix!",
+      "revId": "290088f87cc0faa0f8d059181cffcf1ace74dcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7332b385_b239bad1",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-19T18:58:21Z",
+      "side": 1,
+      "message": "In the event of an error, instead of returning the name of the metrics file that could not be removed, why not just wrap the returned error with this information?",
+      "revId": "290088f87cc0faa0f8d059181cffcf1ace74dcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15643e00_5aabdd67",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-19T18:58:21Z",
+      "side": 1,
+      "message": "Any idea how common this kind of failure might be? If the answer is \"very rare, and I\u0027m not sure how this could happen\", maybe should make this a crash-error so that we don\u0027t end up in a state where it\u0027s a widespread (mostly silent) issue?",
+      "revId": "290088f87cc0faa0f8d059181cffcf1ace74dcd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
