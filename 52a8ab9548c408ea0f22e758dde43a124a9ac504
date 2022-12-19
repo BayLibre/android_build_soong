@@ -22,6 +22,30 @@
       },
       "revId": "52a8ab9548c408ea0f22e758dde43a124a9ac504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd92d828_e8e946ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-12-19T21:32:41Z",
+      "side": 1,
+      "message": "Yes, this is correct. When I modified test `TestCcLibraryHeadersArchAndTargetExportSystemIncludes` in `bp2build/cc_library_headers_conversion_test.go` and added new test `TestCcLibraryVariantPrependPropOrder` in `bp2build/cc_library_conversion_test.go`, the only difference `variant_prepend` makes is to put the selects before general. Nothing has changed on the internal orders of selects and general.\n\nThe test does not know how soong determines the internal order so the way to verify the correctness is to have a hard coded \"expect\" and compare with \"actual\" -- this has no difference from all the other tests.",
+      "parentUuid": "e344967e_d2c62265",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "52a8ab9548c408ea0f22e758dde43a124a9ac504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
