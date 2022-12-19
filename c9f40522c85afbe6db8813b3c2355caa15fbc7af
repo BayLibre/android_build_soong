@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3bce09_9aa5cd55",
+        "filename": "ui/metrics/bazel_metrics_proto/regen.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-19T22:15:45Z",
+      "side": 1,
+      "message": "2022*",
+      "revId": "c9f40522c85afbe6db8813b3c2355caa15fbc7af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
