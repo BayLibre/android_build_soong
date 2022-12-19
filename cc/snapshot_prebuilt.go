@@ -819,6 +819,10 @@ func RecoverySnapshotObjectFactory() android.Module {
 
 	prebuilt.Init(module, RecoverySnapshotImageSingleton, snapshotObjectSuffix)
 	module.AddProperties(&prebuilt.properties)
+
+	// vendor_snapshot_object module does not provide sanitizer variants
+	module.sanitize.Properties.Sanitize.Never = BoolPtr(true)
+
 	return module.Init()
 }
 
