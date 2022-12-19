@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee1d8e4_67c14c02",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-19T22:25:58Z",
+      "side": 1,
+      "message": "It\u0027s unclear what the actionable item from this TODO is",
+      "revId": "0369c8b3836aa44bb040b56b8bea326df74a5a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9756ce05_17bd64a1",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-19T22:25:58Z",
+      "side": 1,
+      "message": "I think you\u0027ve duplicated this and the line below.",
+      "revId": "0369c8b3836aa44bb040b56b8bea326df74a5a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca336989_04208588",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-19T22:25:58Z",
+      "side": 1,
+      "message": "same here.",
+      "revId": "0369c8b3836aa44bb040b56b8bea326df74a5a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc67287_3e9a1ac5",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-19T22:25:58Z",
+      "side": 1,
+      "message": "Note this comment -- how does it relate to our `date` usage? Interesting.",
+      "revId": "0369c8b3836aa44bb040b56b8bea326df74a5a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62eae9a_5cdfc5a5",
+        "filename": "ui/build/config.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-19T22:25:58Z",
+      "side": 1,
+      "message": "This should be above with the \"From the arguments\" section.",
+      "revId": "0369c8b3836aa44bb040b56b8bea326df74a5a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a87a4de_b7f59764",
+        "filename": "ui/build/config.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-19T22:25:58Z",
+      "side": 1,
+      "message": "-unix-millis",
+      "revId": "0369c8b3836aa44bb040b56b8bea326df74a5a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

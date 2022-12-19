@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2bfdd4f_33c95aa1",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-19T22:25:58Z",
+      "side": 1,
+      "message": "My comments in this thread are still relevant. Half-using this \"command\" structure is a code smell. It would be better to refactor other uses of `run` such that they share some common code (the code which you are trying to short-circuit in main). That way, you need not short-circuit main() at all, can write your own `run` function in the `--upload-metrics-only` command, and need not separately assess c.flag as a one-off.",
+      "parentUuid": "5afe8ed8_9f27d5d0",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f07a000d_b668324e",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 11
