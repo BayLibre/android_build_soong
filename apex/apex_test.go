@@ -3421,11 +3421,34 @@ type fileInApex struct {
 	isLink bool
 }
 
+func (f fileInApex) String() string {
+	return f.src + ":" + f.path
+}
+
+func (f fileInApex) match(expectation string) bool {
+	parts := strings.Split(expectation, ":")
+	if len(parts) == 1 {
+		match, _ := path.Match(parts[0], f.path)
+		return match
+	}
+	if len(parts) == 2 {
+		matchSrc, _ := path.Match(parts[0], f.src)
+		matchDst, _ := path.Match(parts[1], f.path)
+		return matchSrc && matchDst
+	}
+	panic("invalid expected file specification: " + expectation)
+}
+
 func getFiles(t *testing.T, ctx *android.TestContext, moduleName, variant string) []fileInApex {
 	t.Helper()
-	apexRule := ctx.ModuleForTests(moduleName, variant).Rule("apexRule")
+	module := ctx.ModuleForTests(moduleName, variant)
+	apexRule := module.MaybeRule("apexRule")
+	apexDir := "/image.apex/"
+	if apexRule.Rule == nil {
+		apexRule = module.Rule("zipApexRule")
+		apexDir = "/image.zipapex/"
+	}
 	copyCmds := apexRule.Args["copy_commands"]
-	imageApexDir := "/image.apex/"
 	var ret []fileInApex
 	for _, cmd := range strings.Split(copyCmds, "&&") {
 		cmd = strings.TrimSpace(cmd)
@@ -3456,11 +3479,11 @@ func getFiles(t *testing.T, ctx *android.TestContext, moduleName, variant string
 			t.Fatalf("copyCmds should contain mkdir/cp commands only: %q", cmd)
 		}
 		if dst != "" {
-			index := strings.Index(dst, imageApexDir)
+			index := strings.Index(dst, apexDir)
 			if index == -1 {
-				t.Fatal("copyCmds should copy a file to image.apex/", cmd)
+				t.Fatal("copyCmds should copy a file to "+apexDir, cmd)
 			}
-			dstFile := dst[index+len(imageApexDir):]
+			dstFile := dst[index+len(apexDir):]
 			ret = append(ret, fileInApex{path: dstFile, src: src, isLink: isLink})
 		}
 	}
@@ -3473,16 +3496,16 @@ func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName, var
 	var surplus []string
 	filesMatched := make(map[string]bool)
 	for _, file := range getFiles(t, ctx, moduleName, variant) {
-		mactchFound := false
+		matchFound := false
 		for _, expected := range files {
-			if matched, _ := path.Match(expected, file.path); matched {
+			if file.match(expected) {
+				matchFound = true
 				filesMatched[expected] = true
-				mactchFound = true
 				break
 			}
 		}
-		if !mactchFound {
-			surplus = append(surplus, file.path)
+		if !matchFound {
+			surplus = append(surplus, file.String())
 		}
 	}
 
@@ -3939,6 +3962,85 @@ func TestVndkApexWithBinder32(t *testing.T) {
 		"lib/libvndk27binder32.so",
 		"etc/*",
 	})
+}
+
+func TestHostApexAlwaysTrackTransitiveDependencies(t *testing.T) {
+	//  myapex
+	//    +---> libfoo ---> libstable ----> libbar
+	//             |           |              |
+	//             |           v              |
+	//             +-------> libc++ <---------+
+	ctx := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			host_supported: true,
+			native_shared_libs: ["libfoo"],
+			min_sdk_version: "29",
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "libfoo",
+			host_supported: true,
+			shared_libs: ["libstable"],
+			srcs: ["foo.cpp"],
+			apex_available: ["myapex"],
+			min_sdk_version: "29",
+		}
+
+		cc_library {
+			name: "libstable",
+			host_supported: true,
+			srcs: ["stable.cpp"],
+			shared_libs: ["libbar"],
+			stubs: {
+				symbol_file: "libstable.map.txt",
+				versions: ["29"],
+			},
+		}
+
+		cc_library {
+			name: "libbar",
+			host_supported: true,
+			srcs: ["bar.cpp"],
+		}
+	`)
+	// Host apex embeds transitive dependencies beyond the stable boundary.
+	{
+		apexVariant := "linux_glibc_x86_64_shared_apex29"
+		libfoo := ctx.ModuleForTests("libfoo", apexVariant).Output("libfoo.so")
+		libstable := ctx.ModuleForTests("libstable", apexVariant).Output("libstable.so")
+		libcpp := ctx.ModuleForTests("libc++", apexVariant).Output("libc++.so")
+		libbar := ctx.ModuleForTests("libbar", apexVariant).Output("libbar.so")
+		ensureExactContents(t, ctx, "myapex", "linux_glibc_common_myapex_image", []string{
+			// direct
+			libfoo.Output.String() + ":lib64/libfoo.so",
+			// stub providing dep
+			libstable.Output.String() + ":lib64/libstable.so",
+			// beyond the stable boundary
+			libbar.Output.String() + ":lib64/libbar.so",
+			// used by all (libfoo, libstable, libbar)
+			libcpp.Output.String() + ":lib64/libc++.so",
+		})
+	}
+	// Target apex embeds transitive dependencies up to the stable boundary.
+	{
+		apexVariant := "android_arm64_armv8-a_shared_apex29"
+		libfoo := ctx.ModuleForTests("libfoo", apexVariant).Output("libfoo.so")
+		libcpp := ctx.ModuleForTests("libc++", apexVariant).Output("libc++.so")
+		ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
+			// direct
+			libfoo.Output.String() + ":lib64/libfoo.so",
+			// apex variant is used by libfoo
+			libcpp.Output.String() + ":lib64/libc++.so",
+		})
+	}
 }
 
 func TestVndkApexShouldNotProvideNativeLibs(t *testing.T) {
