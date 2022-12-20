@@ -182,6 +182,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ffbc70e_84e99e19",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-20T17:47:42Z",
+      "side": 1,
+      "message": "Consider that we can change run() for other commands to be, effectively:\n\nA. Prep   (create config objects)\nB. Do work   (the previous body of \"run\")\nC. Metrics stuff   (met.dump() and upload)\n\n\nAnd upload-metrics-only to be:\n\nA. Prep    (create config objects, maybe a subset of them)\nB. Upload metrics\n\n\nI\u0027m suggesting that we refactor main() to contain less functionality for all commands. I think we can get by without one-off assessing the value of c.flag, and without introducing a new c.shouldOnlyUpload boolean.",
+      "parentUuid": "6eef501a_79945e7c",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f07a000d_b668324e",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 11
