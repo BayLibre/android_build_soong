@@ -16,6 +16,24 @@
       "message": "2022*",
       "revId": "c9f40522c85afbe6db8813b3c2355caa15fbc7af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e149781b_ea49a975",
+        "filename": "ui/metrics/bazel_metrics_proto/regen.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-20T16:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c3bce09_9aa5cd55",
+      "revId": "c9f40522c85afbe6db8813b3c2355caa15fbc7af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
