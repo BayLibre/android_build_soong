@@ -94,6 +94,30 @@
       },
       "revId": "f3182441db6c6c5ab658c2bd8a1f427ec19d086e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bc953b8_370f8170",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4010,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-12-20T16:20:13Z",
+      "side": 1,
+      "message": "Hey Jiyong, we had an agreement to skip the check for host apex, but how about keep the current check even for host and rephrase the commit message better. (and amending the test to express the intention clearly),\n\nI found I39a00019b7bfa77a865e7287c66add3566b34d87 was the change that made \"Always track transitive dependencies for host\". If we want to add transitive deps for host, then we need to create apex variants. This makes more sense now. What do you think?",
+      "parentUuid": "a40496b2_cdba02a7",
+      "range": {
+        "startLine": 4010,
+        "startChar": 2,
+        "endLine": 4010,
+        "endChar": 75
+      },
+      "revId": "f3182441db6c6c5ab658c2bd8a1f427ec19d086e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
