@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "564abefb_0522634e",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-12-20T01:08:39Z",
+      "side": 1,
+      "message": "Hey Paul, with the new check, this doesn\u0027t hold any longer:\n\n\n/usr/local/google/home/jooyung/work/aosp-master/build/soong/apex/bootclasspath_fragment_test.go:426: Android.bp:2:3: module \"com.android.art\" variant \"android_common_com.android.art_image\": apex file javalib/bar.jar is provided by two different files /tmp/TestBootclasspathFragmentInArtApexboot_image_files_from_source3008944056/001/soong/.intermediates/art/build/boot/mybootclasspathfragment/android_common_apex10000/hiddenapi-modular/encoded/bar.jar and /tmp/TestBootclasspathFragmentInArtApexboot_image_files_from_source3008944056/001/soong/.intermediates/bar/android_common_apex10000/aligned/bar.jar\n\n\nDo you think this needs to be fixed? Or, are `hiddenapi-modular/encoded/bar.jar` and `aligned/bar.jar` the same?",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 5
+      },
+      "revId": "d48b9cfdfd9eb2b92ac10d985d2370c2201c5004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
