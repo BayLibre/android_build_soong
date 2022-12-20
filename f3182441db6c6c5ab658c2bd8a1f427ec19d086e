@@ -22,6 +22,30 @@
       },
       "revId": "f3182441db6c6c5ab658c2bd8a1f427ec19d086e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa6d4c93_b4775f66",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4010,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-12-20T07:11:42Z",
+      "side": 1,
+      "message": "With target variant, myapex will have [libfoo(apex variant), libc++(apex variant)], but not libstable because libfoo is compiled/linked against libstable(stub) and libstable is not embedded in the apex. It\u0027s okay for libstable(impl) to be linked with libc++(platform).\n\nBut, with host variant, I\u0027m not sure how we should handle \"stable\" boundary. But for now, the build system follows the dependency graph but not creating apex variants for those stable libs. As a consequence, the dependency graph becomes..\n\n```\nmyapex (apex variant)\n +---- libfoo (apex variant)\n         +----- libstable (non-apex, host variant)\n         |         +---- libc++ (non-apex, host variant)\n         +----- libc++ (apex variant)\n```\n\nIt tries to embed two different variants of libc++. With the change,\n\n```\nmyapex (apex variant)\n +---- libfoo (apex variant)\n         +----- libstable (apex variant)\n         |         |\n         +---------+----- libc++ (apex variant)\n```\n\nboth libfoo/libstable depends on the apex variant and it\u0027s okay.\n\nAlternatively, we can change the rule for following deps graph to collect apex contents, so that the host variant of myapex doesn\u0027t embed libstable. I thought on host we\u0027d better embed libstable in the apex.\n\n(Ideally, I\u0027d like to deprecate host-variant of apexes.)",
+      "parentUuid": "d489d666_2a6c7729",
+      "range": {
+        "startLine": 4010,
+        "startChar": 2,
+        "endLine": 4010,
+        "endChar": 75
+      },
+      "revId": "f3182441db6c6c5ab658c2bd8a1f427ec19d086e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
