@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa79c508_59d67324",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-20T07:06:36Z",
+      "side": 1,
+      "message": "I\u0027m not entirely clear why this is needed. Shouldn\u0027t the fix here be to prevent the duplicate libs from being added, instead of manually specifying excluded modules?",
+      "revId": "6ed4a5824ce96a9513a66d64eeddc37993c503eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8719f632_b718a0d9",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-20T07:06:36Z",
+      "side": 1,
+      "message": "Let\u0027s be aggressive in reducing the property surface area. If this is just for a test apex, why does this need to be a new attribute for all APEXes and not a genrule on an existing apex? \n\nOtherwise, please ensure that only `testApex` modules can use this property. We don\u0027t want random APEXes to unintentionally rely on this property.",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 32
+      },
+      "revId": "6ed4a5824ce96a9513a66d64eeddc37993c503eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
