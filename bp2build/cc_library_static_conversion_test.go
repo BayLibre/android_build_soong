@@ -1723,3 +1723,23 @@ cc_library_static {
 		},
 	})
 }
+
+func TestCcLibraryStaticWithStub(t *testing.T) {
+	runCcLibraryStaticTestCase(t, Bp2buildTestCase{
+		Description: "stubs-providingcc_library_static with ",
+		Filesystem: map[string]string{
+			soongCcVersionLibBpPath: soongCcVersionLibBp,
+		},
+		Blueprint: soongCcProtoPreamble + `cc_library_static {
+	name: "foo",
+	use_version_lib: true,
+	whole_static_libs: ["libbuildversion"],
+	include_build_directory: false,
+}`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"whole_archive_deps": `["//build/soong/cc/libbuildversion:libbuildversion"]`,
+			}),
+		},
+	})
+}
