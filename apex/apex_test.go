@@ -4077,6 +4077,11 @@ func TestVndkApexShouldNotProvideNativeLibs(t *testing.T) {
 	apexManifestRule := ctx.ModuleForTests("com.android.vndk.current", "android_common_image").Rule("apexManifestRule")
 	provideNativeLibs := names(apexManifestRule.Args["provideNativeLibs"])
 	ensureListEmpty(t, provideNativeLibs)
+	ensureExactContents(t, ctx, "com.android.vndk.current", "android_common_image", []string{
+		"out/soong/.intermediates/libz/android_vendor.29_arm64_armv8-a_shared/libz.so:lib64/libz.so",
+		"out/soong/.intermediates/libz/android_vendor.29_arm_armv7-a-neon_shared/libz.so:lib/libz.so",
+		"*/*",
+	})
 }
 
 func TestDependenciesInApexManifest(t *testing.T) {
