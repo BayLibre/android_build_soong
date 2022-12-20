@@ -94,6 +94,30 @@
       },
       "revId": "7499210eb1ca921f08448e804945befea93abdbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0767f2_4717cc3c",
+        "filename": "tests/run_integration_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-12-20T20:10:36Z",
+      "side": 1,
+      "message": "Sam figured out the root cause and sent out aosp/2365010. Will verify and submit this CL after aosp/2365010 is submitted.",
+      "parentUuid": "4db1a08b_73eafc10",
+      "range": {
+        "startLine": 20,
+        "startChar": 94,
+        "endLine": 20,
+        "endChar": 107
+      },
+      "revId": "7499210eb1ca921f08448e804945befea93abdbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
