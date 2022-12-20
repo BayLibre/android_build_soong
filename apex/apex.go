@@ -216,6 +216,10 @@ type apexBundleProperties struct {
 	// imageApex or flattenedApex depending on Config.FlattenApex(). When payload_type is zip,
 	// this becomes zipApex.
 	ApexType apexPackaging `blueprint:"mutated"`
+
+	// The list contains the module names from which we want to exclude artifacts.
+	// This can be used to create BAD apex for testing.
+	Exclude_artifacts_from []string
 }
 
 type ApexNativeDependencies struct {
@@ -2055,11 +2059,17 @@ type visitorContext struct {
 	requireNativeLibs []string
 
 	handleSpecialLibs bool
+
+	// visitor skips artfiacts from this list of module names
+	excludeArtifactsFrom []string
 }
 
 func (vctx *visitorContext) normalizeFileInfo(mctx android.ModuleContext) {
 	encountered := make(map[string]apexFile)
 	for _, f := range vctx.filesInfo {
+		if f.module != nil && android.InList(mctx.OtherModuleName(f.module), vctx.excludeArtifactsFrom) {
+			continue
+		}
 		dest := filepath.Join(f.installDir, f.builtFile.Base())
 		if e, ok := encountered[dest]; !ok {
 			encountered[dest] = f
@@ -2447,7 +2457,10 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	// TODO(jiyong): do this using WalkPayloadDeps
 	// TODO(jiyong): make this clean!!!
-	vctx := visitorContext{handleSpecialLibs: !android.Bool(a.properties.Ignore_system_library_special_case)}
+	vctx := visitorContext{
+		handleSpecialLibs:    !android.Bool(a.properties.Ignore_system_library_special_case),
+		excludeArtifactsFrom: a.properties.Exclude_artifacts_from,
+	}
 	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool { return a.depVisitor(&vctx, ctx, child, parent) })
 	vctx.normalizeFileInfo(ctx)
 	if a.privateKeyFile == nil {
