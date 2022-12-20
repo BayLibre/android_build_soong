@@ -46,6 +46,30 @@
       },
       "revId": "f3182441db6c6c5ab658c2bd8a1f427ec19d086e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb2d2717_5425e458",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4010,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-12-20T14:47:46Z",
+      "side": 1,
+      "message": "This is already too complicated (no one would understand the details behind it). Since the host variant zipapex is not in active use, we can just skip the check for it.",
+      "parentUuid": "aa6d4c93_b4775f66",
+      "range": {
+        "startLine": 4010,
+        "startChar": 2,
+        "endLine": 4010,
+        "endChar": 75
+      },
+      "revId": "f3182441db6c6c5ab658c2bd8a1f427ec19d086e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
