@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9df6e0b1_095f4145",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2022-12-20T17:47:40Z",
+      "side": 1,
+      "message": "@delmerico@google.com Not the variants order in bp file. AFAIK it\u0027s this: Without this `variant_prepend` feature, the order you see in selects should be the same as the order in selects after this `variant_prepend` feature is added. e.g.\n\nIf in the BUILD.bazel is something like this without this feature:\n`export_includes \u003d [a, b, c] + select({d, e, f})`\nAfter this feature it should be:\n`export_includes \u003d select({d, e, f}) + [a, b, c]`",
+      "parentUuid": "08d3ea2b_a1cc0b1d",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "52a8ab9548c408ea0f22e758dde43a124a9ac504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a8b439b_a9a74864",
         "filename": "bp2build/cc_library_conversion_test.go",
         "patchSetId": 2
