@@ -146,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "704c6f34_f26ec508",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-20T01:05:03Z",
+      "side": 1,
+      "message": "I guess I\u0027m a little lost on what `run` should do here given that `main` accomplishes everything we need? \nI just refactored to skip the early return (as in, it runs main with a barebones config and uploads metrics and then runs a nil `run`) and the time was still \u003c80ms. \n\nWhat if we \n1. got rid of the early return\n2. Either wrapped the `met.dump()` in a statement ensuring that it\u0027s not run for upload only, or overrode metrics with the new total.RealTime before calling dump.\n\nThe other idea I have is to use run to fix the total.RealTime field, which might work since the upload is deferred. But we\u0027d still need to bypass some existing portion (namely, `met.dump()` shouldn\u0027t be left to chance here)",
+      "parentUuid": "d2bfdd4f_33c95aa1",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f07a000d_b668324e",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 11

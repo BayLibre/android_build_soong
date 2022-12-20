@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc66fd2_b4a9db1e",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-20T01:05:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aee1d8e4_67c14c02",
+      "revId": "0369c8b3836aa44bb040b56b8bea326df74a5a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9756ce05_17bd64a1",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-19T22:25:58Z",
       "side": 1,
       "message": "I think you\u0027ve duplicated this and the line below.",
+      "revId": "0369c8b3836aa44bb040b56b8bea326df74a5a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fca069c_12d7b1e0",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-20T01:05:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9756ce05_17bd64a1",
       "revId": "0369c8b3836aa44bb040b56b8bea326df74a5a14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
