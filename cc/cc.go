@@ -3596,7 +3596,7 @@ func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 	depTag := ctx.OtherModuleDependencyTag(dep)
 	libDepTag, isLibDepTag := depTag.(libraryDependencyTag)
 
-	if cc, ok := dep.(*Module); ok {
+	if cc, ok := dep.(*Module); ok && cc.Device() {
 		if cc.HasStubsVariants() {
 			if isLibDepTag && libDepTag.shared() {
 				// dynamic dep to a stubs lib crosses APEX boundary

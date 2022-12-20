@@ -3421,11 +3421,34 @@ type fileInApex struct {
 	isLink bool
 }
 
+func (f fileInApex) String() string {
+	return f.src + ":" + f.path
+}
+
+func (f fileInApex) match(expectation string) bool {
+	parts := strings.Split(expectation, ":")
+	if len(parts) == 1 {
+		match, _ := path.Match(parts[0], f.path)
+		return match
+	}
+	if len(parts) == 2 {
+		matchSrc, _ := path.Match(parts[0], f.src)
+		matchDst, _ := path.Match(parts[1], f.path)
+		return matchSrc && matchDst
+	}
+	panic("invalid expected file specification: " + expectation)
+}
+
 func getFiles(t *testing.T, ctx *android.TestContext, moduleName, variant string) []fileInApex {
 	t.Helper()
-	apexRule := ctx.ModuleForTests(moduleName, variant).Rule("apexRule")
+	module := ctx.ModuleForTests(moduleName, variant)
+	apexRule := module.MaybeRule("apexRule")
+	apexDir := "/image.apex/"
+	if apexRule.Rule == nil {
+		apexRule = module.Rule("zipApexRule")
+		apexDir = "/image.zipapex/"
+	}
 	copyCmds := apexRule.Args["copy_commands"]
-	imageApexDir := "/image.apex/"
 	var ret []fileInApex
 	for _, cmd := range strings.Split(copyCmds, "&&") {
 		cmd = strings.TrimSpace(cmd)
@@ -3456,11 +3479,11 @@ func getFiles(t *testing.T, ctx *android.TestContext, moduleName, variant string
 			t.Fatalf("copyCmds should contain mkdir/cp commands only: %q", cmd)
 		}
 		if dst != "" {
-			index := strings.Index(dst, imageApexDir)
+			index := strings.Index(dst, apexDir)
 			if index == -1 {
-				t.Fatal("copyCmds should copy a file to image.apex/", cmd)
+				t.Fatal("copyCmds should copy a file to "+apexDir, cmd)
 			}
-			dstFile := dst[index+len(imageApexDir):]
+			dstFile := dst[index+len(apexDir):]
 			ret = append(ret, fileInApex{path: dstFile, src: src, isLink: isLink})
 		}
 	}
@@ -3473,16 +3496,16 @@ func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName, var
 	var surplus []string
 	filesMatched := make(map[string]bool)
 	for _, file := range getFiles(t, ctx, moduleName, variant) {
-		mactchFound := false
+		matchFound := false
 		for _, expected := range files {
-			if matched, _ := path.Match(expected, file.path); matched {
+			if file.match(expected) {
+				matchFound = true
 				filesMatched[expected] = true
-				mactchFound = true
 				break
 			}
 		}
-		if !mactchFound {
-			surplus = append(surplus, file.path)
+		if !matchFound {
+			surplus = append(surplus, file.String())
 		}
 	}
 
@@ -3938,6 +3961,54 @@ func TestVndkApexWithBinder32(t *testing.T) {
 	ensureExactContents(t, ctx, "com.android.vndk.v27", "android_common_image", []string{
 		"lib/libvndk27binder32.so",
 		"etc/*",
+	})
+}
+
+func TestHostApexCollectionDepsBeyondStableBoundary(t *testing.T) {
+	ctx := testApex(t, `
+		apex_test {
+			name: "myapex",
+			key: "myapex.key",
+			payload_type: "zip",
+			host_supported: true,
+			device_supported: false,
+			updatable: false,
+			native_shared_libs: ["libfoo"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "libfoo",
+			host_supported: true,
+			shared_libs: ["libstable"],
+			srcs: ["foo.cpp"],
+		}
+
+		cc_library {
+			name: "libstable",
+			host_supported: true,
+			srcs: ["stable.cpp"],
+			stubs: {
+				symbol_file: "libstable.map.txt",
+				versions: ["29"],
+			},
+		}
+	`)
+	hostApexVariant := "linux_glibc_x86_64_shared_apex10000"
+	libstableHostApexVariant := ctx.ModuleForTests("libstable", hostApexVariant).Output("libstable.so")
+	libcppHostApexVariant := ctx.ModuleForTests("libc++", hostApexVariant).Output("libc++.so")
+	ensureExactContents(t, ctx, "myapex", "linux_glibc_common_myapex_zip", []string{
+		// direct dep
+		"lib64/libfoo.so",
+		// stable, but host apex should copy its APEX variant
+		libstableHostApexVariant.Output.String() + ":lib64/libstable.so",
+		// beyond the stable boundary, but host apex should copy its APEX variant
+		libcppHostApexVariant.Output.String() + ":lib64/libc++.so",
 	})
 }
 
