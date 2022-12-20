@@ -164,6 +164,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6eef501a_79945e7c",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-20T01:08:33Z",
+      "side": 1,
+      "message": "Adding - we\u0027d also have to bypass SetupOutDir and whatever else depends on that (the necessary steps for this take over a second to run and invalidate our plan to reuse this code with minimal performance hit. )\nIf you\u0027d rather move this into every _other_ run method... I think that\u0027s a little janky, but whatever\u0027s cleanest?",
+      "parentUuid": "704c6f34_f26ec508",
+      "revId": "71aa9cb2a0b12686f3272c785bda2b1e48215633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f07a000d_b668324e",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 11
