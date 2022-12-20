@@ -22,6 +22,30 @@
       },
       "revId": "7499210eb1ca921f08448e804945befea93abdbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13cb1a91_df10f2de",
+        "filename": "tests/run_integration_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-12-20T00:51:23Z",
+      "side": 1,
+      "message": "The target product is aosp_cf_arm64_phone, which is not availble to analysis test. Otherwise we should be able to also verify cpu variant cflags in analysis tests.",
+      "parentUuid": "615eece0_810a5cad",
+      "range": {
+        "startLine": 20,
+        "startChar": 94,
+        "endLine": 20,
+        "endChar": 107
+      },
+      "revId": "7499210eb1ca921f08448e804945befea93abdbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
