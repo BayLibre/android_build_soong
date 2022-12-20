@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e26d2c_2055debe",
+        "filename": "apex/bp2build_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-12-20T03:48:48Z",
+      "side": 1,
+      "message": "Optional:\nlines 70-100 can be made table-driven.\nLikewise, line 192-222",
+      "revId": "b20f53c72549ee3f2276f38f9294e5c90cf4bb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
