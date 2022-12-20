@@ -7029,6 +7029,42 @@ func TestNoDupeApexFiles(t *testing.T) {
 		`)
 }
 
+func TestApexExcludeArtifactsFrom(t *testing.T) {
+	ctx := testApex(t, `
+			apex {
+				name: "myapex",
+				key: "myapex.key",
+				native_shared_libs: ["libfoo"],
+				updatable: false,
+				exclude_artifacts_from: ["libbar"],
+			}
+
+			apex_key {
+				name: "myapex.key",
+				public_key: "testkey.avbpubkey",
+				private_key: "testkey.pem",
+			}
+
+			cc_library {
+				name: "libfoo",
+				srcs: ["foo.cpp"],
+				shared_libs: ["libbar"],
+				apex_available: ["myapex"],
+			}
+
+			cc_library {
+				name: "libbar",
+				srcs: ["bar.cpp"],
+				apex_available: ["myapex"],
+			}
+		`)
+	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
+		"*/libc++.so",
+		"*/libfoo.so",
+		// not libbar.so
+	})
+}
+
 func TestRejectNonInstallableJavaLibrary(t *testing.T) {
 	testApexError(t, `"myjar" is not configured to be compiled into dex`, `
 		apex {
