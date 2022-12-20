@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8a6f184_0c3d4f41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-12-20T16:14:43Z",
+      "side": 1,
+      "message": "This is for test_broken_com.android.art module, which tries to replace \u0027libart\u0027 with \u0027libart-broken\u0027.",
+      "parentUuid": "fa79c508_59d67324",
+      "revId": "6ed4a5824ce96a9513a66d64eeddc37993c503eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8719f632_b718a0d9",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2022-12-20T07:06:36Z",
       "side": 1,
       "message": "Let\u0027s be aggressive in reducing the property surface area. If this is just for a test apex, why does this need to be a new attribute for all APEXes and not a genrule on an existing apex? \n\nOtherwise, please ensure that only `testApex` modules can use this property. We don\u0027t want random APEXes to unintentionally rely on this property.",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 222,
+        "endChar": 32
+      },
+      "revId": "6ed4a5824ce96a9513a66d64eeddc37993c503eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e1b1f3_af6f2d6d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-12-20T16:14:43Z",
+      "side": 1,
+      "message": "Done. The new property is only available for `apex_test` module. (test amended)",
+      "parentUuid": "8719f632_b718a0d9",
       "range": {
         "startLine": 220,
         "startChar": 1,
