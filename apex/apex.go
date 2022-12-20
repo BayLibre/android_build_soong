@@ -980,6 +980,12 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 		if required, ok := depTag.(android.AlwaysRequireApexVariantTag); ok && required.AlwaysRequireApexVariant() {
 			return true
 		}
+
+		// Always track transitive dependencies for host.
+		if a.Host() {
+			return true
+		}
+
 		if !android.IsDepInSameApex(mctx, parent, child) {
 			return false
 		}
