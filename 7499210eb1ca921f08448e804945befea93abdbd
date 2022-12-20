@@ -46,6 +46,30 @@
       },
       "revId": "7499210eb1ca921f08448e804945befea93abdbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10fabd3_3c971a66",
+        "filename": "tests/run_integration_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-12-20T07:23:49Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused, then why is cortex-a53 commented out?",
+      "parentUuid": "13cb1a91_df10f2de",
+      "range": {
+        "startLine": 20,
+        "startChar": 94,
+        "endLine": 20,
+        "endChar": 107
+      },
+      "revId": "7499210eb1ca921f08448e804945befea93abdbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
