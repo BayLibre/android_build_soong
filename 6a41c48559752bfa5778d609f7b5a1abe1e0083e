@@ -88,6 +88,24 @@
       "parentUuid": "6b5ba3f1_2a286be7",
       "revId": "6a41c48559752bfa5778d609f7b5a1abe1e0083e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8313ec2d_37b42616",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-21T19:30:28Z",
+      "side": 1,
+      "message": "I caught that. refactored, thanks!",
+      "parentUuid": "42ae90ff_17f4a899",
+      "revId": "6a41c48559752bfa5778d609f7b5a1abe1e0083e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
