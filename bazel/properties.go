@@ -1075,14 +1075,10 @@ func (cs configurableStrings) setValueForAxis(axis ConfigurationAxis, config str
 	if cs[axis] == nil {
 		cs[axis] = make(stringSelectValues)
 	}
-	var v = ""
-	if str != nil {
-		v = *str
-	}
-	cs[axis][config] = v
+	cs[axis][config] = str
 }
 
-type stringSelectValues map[string]string
+type stringSelectValues map[string]*string
 
 // HasConfigurableValues returns true if the attribute contains axis-specific string values.
 func (sa StringAttribute) HasConfigurableValues() bool {
@@ -1092,6 +1088,11 @@ func (sa StringAttribute) HasConfigurableValues() bool {
 		}
 	}
 	return false
+}
+
+// SetValue sets the base, non-configured value for the Label
+func (sa *StringAttribute) SetValue(value string) {
+	sa.SetSelectValue(NoConfigAxis, "", &value)
 }
 
 // SetSelectValue set a value for a bazel select for the given axis, config and value.
@@ -1118,7 +1119,7 @@ func (sa *StringAttribute) SelectValue(axis ConfigurationAxis, config string) *s
 		return sa.Value
 	case arch, os, osArch, productVariables:
 		if v, ok := sa.ConfigurableValues[axis][config]; ok {
-			return &v
+			return v
 		} else {
 			return nil
 		}
@@ -1149,7 +1150,7 @@ func (sa *StringAttribute) Collapse() error {
 	_, containsProductVariables := axisTypes[productVariables]
 	if containsProductVariables {
 		if containsOs || containsArch || containsOsArch {
-			return fmt.Errorf("boolean attribute could not be collapsed as it has two or more unrelated axes")
+			return fmt.Errorf("string attribute could not be collapsed as it has two or more unrelated axes")
 		}
 	}
 	if (containsOs && containsArch) || (containsOsArch && (containsOs || containsArch)) {
@@ -1176,13 +1177,28 @@ func (sa *StringAttribute) Collapse() error {
 				}
 			}
 		}
-		// All os_arch values are now set. Clear os and arch axes.
+		/// All os_arch values are now set. Clear os and arch axes.
 		delete(sa.ConfigurableValues, ArchConfigurationAxis)
 		delete(sa.ConfigurableValues, OsConfigurationAxis)
 		// Verify post-condition; this should never fail, provided no additional
 		// axes are introduced.
 		if len(sa.ConfigurableValues) > 1 {
 			panic(fmt.Errorf("error in collapsing attribute: %#v", sa))
+		}
+	} else if containsProductVariables {
+		usedBaseValue := false
+		for a, configToProp := range sa.ConfigurableValues {
+			if a.configurationType == productVariables {
+				for c, p := range configToProp {
+					if p == nil {
+						sa.SetSelectValue(a, c, sa.Value)
+						usedBaseValue = true
+					}
+				}
+			}
+		}
+		if usedBaseValue {
+			sa.Value = nil
 		}
 	}
 	return nil
