@@ -16,6 +16,24 @@
       "message": "Can\u0027t we acquire `met` and `log` from buildCtx, and `logsDir` from config?\n\nrequiring `c` from logsPrefix is regrettable. Consider (in my order of preference, though I\u0027m not 100% sure on the cleanliness of the resultant code):\n\n1. Including logsPrefix as part of config and acquiring it there\n2. Including just logsPrefix as a parameter to this function, instead of the entire command",
       "revId": "6a41c48559752bfa5778d609f7b5a1abe1e0083e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e87c5e_cc448700",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-21T00:58:10Z",
+      "side": 1,
+      "message": "Refactored - PTAL",
+      "parentUuid": "ddc3aa88_bb9f3555",
+      "revId": "6a41c48559752bfa5778d609f7b5a1abe1e0083e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
