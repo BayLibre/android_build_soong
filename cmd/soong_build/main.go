@@ -119,35 +119,45 @@ func newContext(configuration android.Config) *android.Context {
 }
 
 func newConfig(availableEnv map[string]string) android.Config {
-	var buildMode android.SoongBuildMode
+	var buildMode *android.SoongBuildMode
 	var bazelForceEnabledModules []string
 	if len(cmdlineArgs.BazelForceEnabledModules) > 0 {
 		bazelForceEnabledModules = strings.Split(cmdlineArgs.BazelForceEnabledModules, ",")
 	}
 
-	if symlinkForestMarker != "" {
-		buildMode = android.SymlinkForest
-	} else if bp2buildMarker != "" {
-		buildMode = android.Bp2build
-	} else if bazelQueryViewDir != "" {
-		buildMode = android.GenerateQueryView
-	} else if bazelApiBp2buildDir != "" {
-		buildMode = android.ApiBp2build
-	} else if moduleGraphFile != "" {
-		buildMode = android.GenerateModuleGraph
-	} else if docFile != "" {
-		buildMode = android.GenerateDocFile
-	} else if cmdlineArgs.BazelModeDev {
-		buildMode = android.BazelDevMode
-	} else if cmdlineArgs.BazelMode {
-		buildMode = android.BazelProdMode
-	} else if cmdlineArgs.BazelModeStaging {
-		buildMode = android.BazelStagingMode
-	} else {
-		buildMode = android.AnalysisNoBazel
+	setBuildMode := func(arg string, mode android.SoongBuildMode) {
+		if arg != "" {
+			if buildMode != nil {
+				fmt.Fprintf(os.Stderr, "buildMode is already set, illegal argument: %s", arg)
+				os.Exit(1)
+			}
+			buildMode = &mode
+		}
+	}
+	setBazelMode := func(arg bool, argName string, mode android.SoongBuildMode) {
+		if arg {
+			if buildMode != nil {
+				fmt.Fprintf(os.Stderr, "buildMode is already set, illegal argument: %s", argName)
+				os.Exit(1)
+			}
+			buildMode = &mode
+		}
+	}
+	setBuildMode(symlinkForestMarker, android.SymlinkForest)
+	setBuildMode(bp2buildMarker, android.Bp2build)
+	setBuildMode(bazelQueryViewDir, android.GenerateQueryView)
+	setBuildMode(bazelApiBp2buildDir, android.ApiBp2build)
+	setBuildMode(moduleGraphFile, android.GenerateModuleGraph)
+	setBuildMode(docFile, android.GenerateDocFile)
+	setBazelMode(cmdlineArgs.BazelModeDev, "--bazel-mode-dev", android.BazelDevMode)
+	setBazelMode(cmdlineArgs.BazelMode, "--bazel-mode", android.BazelProdMode)
+	setBazelMode(cmdlineArgs.BazelModeStaging, "--bazel-mode-staging", android.BazelStagingMode)
+	if buildMode == nil {
+		m := android.AnalysisNoBazel
+		buildMode = &m
 	}
 
-	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, buildMode, runGoTests, outDir, soongOutDir, availableEnv, bazelForceEnabledModules)
+	configuration, err := android.NewConfig(cmdlineArgs.ModuleListFile, *buildMode, runGoTests, outDir, soongOutDir, availableEnv, bazelForceEnabledModules)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
