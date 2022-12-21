@@ -34,6 +34,24 @@
       "parentUuid": "ddc3aa88_bb9f3555",
       "revId": "6a41c48559752bfa5778d609f7b5a1abe1e0083e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01524e2f_6734486f",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-21T16:54:46Z",
+      "side": 1,
+      "message": "can we not acquire `log` from `buildCtx`, as I suggested? Am I missing something?\nWhat about adding logPrefix to Config? Is there a reason that won\u0027t work?",
+      "parentUuid": "35e87c5e_cc448700",
+      "revId": "6a41c48559752bfa5778d609f7b5a1abe1e0083e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
