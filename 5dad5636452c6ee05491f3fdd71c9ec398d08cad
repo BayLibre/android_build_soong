@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59277add_a179d027",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-21T16:55:02Z",
+      "side": 1,
+      "message": "+ @juu@google.com to let him know of `metricsFiles()`",
+      "revId": "5dad5636452c6ee05491f3fdd71c9ec398d08cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
