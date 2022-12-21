@@ -52,6 +52,24 @@
       "parentUuid": "35e87c5e_cc448700",
       "revId": "6a41c48559752bfa5778d609f7b5a1abe1e0083e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b5ba3f1_2a286be7",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-21T19:06:09Z",
+      "side": 1,
+      "message": "Whoops, missed `log` from `buildCtx`. Done.\n\nWhat\u0027s the benefit for adding logPrefix to config? \nIs it _that_ an unwieldy a parameter?",
+      "parentUuid": "01524e2f_6734486f",
+      "revId": "6a41c48559752bfa5778d609f7b5a1abe1e0083e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
