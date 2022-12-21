@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "676911ac_473aa8d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-12-21T01:22:17Z",
+      "side": 1,
+      "message": "I\u0027d like to make this topic smaller for easy review.\nThe check is not disabled for test apexes.",
+      "revId": "b090ceb3d50e3ef7979b555621791bcf275e5c7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
