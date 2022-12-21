@@ -18,9 +18,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path"
 	"path/filepath"
 	"regexp"
 	"sort"
+	"strings"
 	"sync"
 	"sync/atomic"
 
@@ -220,6 +222,13 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 	// a generic symlink forest creation tool, we'd need to add it, too.
 	context.depCh <- srcDir
 
+	if fi, err := os.Stat(shared.JoinPath(context.topdir, srcDir)); err != nil {
+		fmt.Fprintf(os.Stderr, "Cannot stat(%s): %s\n", srcDir, err)
+		os.Exit(1)
+	} else if !fi.IsDir() {
+		symlinkIntoForest(context.topdir, forestDir, srcDir)
+		return
+	}
 	srcDirMap := readdirToMap(shared.JoinPath(context.topdir, srcDir))
 	buildFilesMap := readdirToMap(shared.JoinPath(context.topdir, buildFilesDir))
 
@@ -386,7 +395,7 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 // "srcDir" while excluding paths listed in "exclude". Returns the set of paths
 // under srcDir on which readdir() had to be called to produce the symlink
 // forest.
-func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles string, exclude []string) (deps []string, mkdirCount, symlinkCount uint64) {
+func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles string, exclude []string, symlinkShard string) (deps []string, mkdirCount, symlinkCount uint64) {
 	context := &symlinkForestContext{
 		verbose:      verbose,
 		topdir:       topdir,
@@ -395,10 +404,30 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 		symlinkCount: atomic.Uint64{},
 	}
 
+	if symlinkShard != "." {
+		if err := os.MkdirAll(shared.JoinPath(context.topdir, forest), 0777); err != nil {
+			fmt.Fprintf(os.Stderr, "Could not mkdir '%s': %s\n", forest, err)
+			os.Exit(1)
+		}
+		forest = path.Join(forest, symlinkShard)
+		buildFiles = path.Join(buildFiles, symlinkShard)
+		var adjustedExclude []string
+		for _, e := range exclude {
+			if strings.HasPrefix(e, symlinkShard) {
+				e = strings.TrimPrefix(e, symlinkShard)
+				if strings.HasPrefix(e, "/") {
+					e = e[1:]
+				}
+				adjustedExclude = append(adjustedExclude, e)
+			}
+		}
+		exclude = adjustedExclude
+	}
+
 	instructions := instructionsFromExcludePathList(exclude)
 	go func() {
 		context.wg.Add(1)
-		plantSymlinkForestRecursive(context, instructions, forest, buildFiles, ".")
+		plantSymlinkForestRecursive(context, instructions, forest, buildFiles, symlinkShard)
 		context.wg.Wait()
 		close(context.depCh)
 	}()
