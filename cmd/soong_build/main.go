@@ -360,17 +360,18 @@ func writeDepFile(outputFile string, eventHandler *metrics.EventHandler, ninjaDe
 // or the actual Soong build for the build.ninja file. Returns the top level
 // output file of the specific activity.
 func doChosenActivity(ctx *android.Context, configuration android.Config, extraNinjaDeps []string, metricsDir string) string {
-	if configuration.BuildMode == android.SymlinkForest {
+	switch configuration.BuildMode {
+	case android.SymlinkForest:
 		return runSymlinkForestCreation(configuration, ctx, extraNinjaDeps, metricsDir)
-	} else if configuration.BuildMode == android.Bp2build {
+	case android.Bp2build:
 		// Run the alternate pipeline of bp2build mutators and singleton to convert
 		// Blueprint to BUILD files before everything else.
 		return runBp2Build(configuration, ctx, extraNinjaDeps, metricsDir)
-	} else if configuration.BuildMode == android.ApiBp2build {
+	case android.ApiBp2build:
 		outputFile := runApiBp2build(configuration, ctx, extraNinjaDeps)
 		writeMetrics(configuration, ctx.EventHandler, metricsDir)
 		return outputFile
-	} else {
+	default:
 		ctx.Register()
 
 		var outputFile string
@@ -392,11 +393,12 @@ func runSoongOnlyBuild(configuration android.Config, ctx *android.Context, extra
 	defer ctx.EventHandler.End("soong_build")
 
 	var stopBefore bootstrap.StopBefore
-	if configuration.BuildMode == android.GenerateModuleGraph {
+	switch configuration.BuildMode {
+	case android.GenerateModuleGraph:
 		stopBefore = bootstrap.StopBeforeWriteNinja
-	} else if configuration.BuildMode == android.GenerateQueryView || configuration.BuildMode == android.GenerateDocFile {
+	case android.GenerateQueryView, android.GenerateDocFile:
 		stopBefore = bootstrap.StopBeforePrepareBuildActions
-	} else {
+	default:
 		stopBefore = bootstrap.DoEverything
 	}
 
@@ -407,16 +409,17 @@ func runSoongOnlyBuild(configuration android.Config, ctx *android.Context, extra
 	ninjaDeps = append(ninjaDeps, globListFiles...)
 
 	// Convert the Soong module graph into Bazel BUILD files.
-	if configuration.BuildMode == android.GenerateQueryView {
+	switch configuration.BuildMode {
+	case android.GenerateQueryView:
 		queryviewMarkerFile := bazelQueryViewDir + ".marker"
 		runQueryView(bazelQueryViewDir, queryviewMarkerFile, configuration, ctx)
 		writeDepFile(queryviewMarkerFile, ctx.EventHandler, ninjaDeps)
 		return queryviewMarkerFile
-	} else if configuration.BuildMode == android.GenerateModuleGraph {
+	case android.GenerateModuleGraph:
 		writeJsonModuleGraphAndActions(ctx, moduleGraphFile, moduleActionsFile)
 		writeDepFile(moduleGraphFile, ctx.EventHandler, ninjaDeps)
 		return moduleGraphFile
-	} else if configuration.BuildMode == android.GenerateDocFile {
+	case android.GenerateDocFile:
 		// TODO: we could make writeDocs() return the list of documentation files
 		// written and add them to the .d file. Then soong_docs would be re-run
 		// whenever one is deleted.
@@ -426,9 +429,8 @@ func runSoongOnlyBuild(configuration android.Config, ctx *android.Context, extra
 		}
 		writeDepFile(docFile, ctx.EventHandler, ninjaDeps)
 		return docFile
-	} else {
-		// The actual output (build.ninja) was written in the RunBlueprint() call
-		// above
+	default:
+		// The actual output (build.ninja) was written in the RunBlueprint() call above
 		writeDepFile(cmdlineArgs.OutFile, ctx.EventHandler, ninjaDeps)
 		return cmdlineArgs.OutFile
 	}
