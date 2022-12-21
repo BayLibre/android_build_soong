@@ -22,6 +22,30 @@
       },
       "revId": "e6558076081fd359b73b9cbbecb79419c4c8ca1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2430389_97ea4b95",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1897307
+      },
+      "writtenOn": "2022-12-21T15:51:52Z",
+      "side": 1,
+      "message": "I changed it to have no  default, so unless explicitly set, the build rule will not add --hash_algorithm flag. Wdyt?",
+      "parentUuid": "e4eb806c_8c092ed7",
+      "range": {
+        "startLine": 336,
+        "startChar": 82,
+        "endLine": 336,
+        "endChar": 88
+      },
+      "revId": "e6558076081fd359b73b9cbbecb79419c4c8ca1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
