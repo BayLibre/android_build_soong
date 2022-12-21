@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a8845dd_0bda45c8",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-21T20:28:05Z",
+      "side": 1,
+      "message": "Any reason this can\u0027t live privately in this package instead of `build`? Just like dumpVarConfig and buildActionConfig?",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "541df1f9_b76c5111",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-21T20:28:05Z",
+      "side": 1,
+      "message": "Leave a comment here describing the significance of this function for upload-only. Something like:\n\n// Upload-only mode mostly skips to the metrics-uploading phase of soong_ui.\n// However, this invocation marks the true \"end of the build\", and thus we\n// need to update the total runtime of the build to include this upload step.",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a1d86f7_88969eea",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-21T20:28:05Z",
+      "side": 1,
+      "message": "See other comment for whether we actually need this function anymore.\n\nIf I\u0027m misunderstanding and we need to keep this function: Can we omit the `c` parameter now that we can call config.logsPrefix ?",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210b532f_70230730",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-21T20:28:05Z",
+      "side": 1,
+      "message": "Now that you\u0027re done some refactoring, is metricsFiles called in only one place? If so, we can simply inline its contents again, and no longer need to duplicate creation of the `soong_metrics`, `soong.log`, and `build.trace` paths.",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1997662f_e302a6c8",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-21T20:28:05Z",
+      "side": 1,
+      "message": "This is redundant with the constant in the command.\n\nWhy are you setting this here at all? It seems the correct place to define this would be near the line in `main()`:\n\n```\nconfig :\u003d c.config(buildCtx, args...)\n```\n\nYou can call `config.SetLogsPrefix(c.logsPrefix)` right afterwards.",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0fa650_5d086a00",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-21T20:28:05Z",
+      "side": 1,
+      "message": "omit extra newline",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b0c1ba_5a8b6bf1",
+        "filename": "ui/build/config.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-21T20:28:05Z",
+      "side": 1,
+      "message": "Should we ensure that no other flags are passed?",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
