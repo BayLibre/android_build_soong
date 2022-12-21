@@ -583,6 +583,8 @@ func (c *config) mockFileSystem(bp string, fs map[string][]byte) {
 	c.mockBpList = blueprint.MockModuleListFile
 }
 
+// TODO(juu): Add a field to our collected (and uploaded) metrics which
+// describes a reason that we fell back to non-mixed builds.
 // Returns true if "Bazel builds" is enabled. In this mode, part of build
 // analysis is handled by Bazel.
 func (c *config) IsMixedBuildsEnabled() bool {
@@ -604,7 +606,9 @@ func (c *config) IsMixedBuildsEnabled() bool {
 			return false
 		}
 		if len(c.productVariables.SanitizeDevice) > 0 {
-			fmt.Fprintln(os.Stderr, "unsupported product var SanitizeDevice for Bazel: falling back to non-mixed build")
+
+			// Delete below error message for now because it is too noisy
+			//fmt.Fprintln(os.Stderr, "unsupported product var SanitizeDevice for Bazel: falling back to non-mixed build")
 			return false
 		}
 		if len(c.productVariables.SanitizeDeviceDiag) > 0 {
