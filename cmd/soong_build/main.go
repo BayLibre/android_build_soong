@@ -75,6 +75,7 @@ func init() {
 	flag.StringVar(&cmdlineArgs.BazelApiBp2buildDir, "bazel_api_bp2build_dir", "", "path to the bazel api_bp2build directory relative to --top")
 	flag.StringVar(&cmdlineArgs.Bp2buildMarker, "bp2build_marker", "", "If set, run bp2build, touch the specified marker file then exit")
 	flag.StringVar(&cmdlineArgs.SymlinkForestMarker, "symlink_forest_marker", "", "If set, create the bp2build symlink forest, touch the specified marker file, then exit")
+	flag.StringVar(&cmdlineArgs.SymlinkShard, "symlink_shard", ".", "TODO")
 	flag.StringVar(&cmdlineArgs.OutFile, "o", "build.ninja", "the Ninja file to output")
 	flag.StringVar(&cmdlineArgs.BazelForceEnabledModules, "bazel-force-enabled-modules", "", "additional modules to build with Bazel. Comma-delimited")
 	flag.BoolVar(&cmdlineArgs.EmptyNinjaFile, "empty-ninja-file", false, "write out a 0-byte ninja file")
@@ -197,7 +198,8 @@ func runApiBp2build(ctx *android.Context, extraNinjaDeps []string) string {
 		topDir,
 		workspace,
 		cmdlineArgs.BazelApiBp2buildDir,
-		apiBuildFileExcludes(ctx))
+		apiBuildFileExcludes(ctx),
+		".")
 	ninjaDeps = append(ninjaDeps, symlinkDeps...)
 
 	workspaceMarkerFile := workspace + ".marker"
@@ -374,7 +376,7 @@ func main() {
 	// or the actual Soong build for the build.ninja file.
 	switch configuration.BuildMode {
 	case android.SymlinkForest:
-		finalOutputFile = runSymlinkForestCreation(ctx, extraNinjaDeps, metricsDir)
+		finalOutputFile = runSymlinkForestCreation(ctx, extraNinjaDeps, metricsDir, cmdlineArgs.SymlinkShard)
 	case android.Bp2build:
 		// Run the alternate pipeline of bp2build mutators and singleton to convert
 		// Blueprint to BUILD files before everything else.
@@ -462,11 +464,10 @@ func bazelArtifacts() []string {
 // Ideally, bp2build would write a file that contains instructions to the
 // symlink tree creation binary. Then the latter would not need to depend on
 // the very heavy-weight machinery of soong_build .
-func runSymlinkForestCreation(ctx *android.Context, extraNinjaDeps []string, metricsDir string) string {
+func runSymlinkForestCreation(ctx *android.Context, extraNinjaDeps []string, metricsDir string, symlinkShard string) string {
 	var ninjaDeps []string
 	var mkdirCount, symlinkCount uint64
-
-	ctx.EventHandler.Do("symlink_forest", func() {
+	ctx.EventHandler.Do("symlink_forest/"+symlinkShard, func() {
 		ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
 		verbose := ctx.Config().IsEnvTrue("BP2BUILD_VERBOSE")
 
@@ -475,12 +476,12 @@ func runSymlinkForestCreation(ctx *android.Context, extraNinjaDeps []string, met
 		// or file created/deleted under it would trigger an update of the symlink forest.
 		generatedRoot := shared.JoinPath(ctx.Config().SoongOutDir(), "bp2build")
 		workspaceRoot := shared.JoinPath(ctx.Config().SoongOutDir(), "workspace")
-		var symlinkForestDeps []string
 		ctx.EventHandler.Do("plant", func() {
+			var symlinkForestDeps []string
 			symlinkForestDeps, mkdirCount, symlinkCount = bp2build.PlantSymlinkForest(
-				verbose, topDir, workspaceRoot, generatedRoot, excludedFromSymlinkForest(ctx, verbose))
+				verbose, topDir, workspaceRoot, generatedRoot, excludedFromSymlinkForest(ctx, verbose), symlinkShard)
+			ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
 		})
-		ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
 	})
 
 	writeDepFile(cmdlineArgs.SymlinkForestMarker, ctx.EventHandler, ninjaDeps)
@@ -618,7 +619,11 @@ func runBp2Build(ctx *android.Context, extraNinjaDeps []string, metricsDir strin
 
 // Write Bp2Build metrics into $LOG_DIR
 func writeBp2BuildMetrics(codegenMetrics *bp2build.CodegenMetrics, eventHandler *metrics.EventHandler, metricsDir string) {
+	unsharded := false
+	hasSymlink := false
 	for _, event := range eventHandler.CompletedEvents() {
+		hasSymlink = hasSymlink || strings.Contains(event.Id, "symlink_forest")
+		unsharded = unsharded || strings.Contains(event.Id, "symlink_forest/tools") || strings.Contains(event.Id, "symlink_forest/external")
 		codegenMetrics.AddEvent(&bp2build_metrics_proto.Event{
 			Name:      event.Id,
 			StartTime: uint64(event.Start.UnixNano()),
@@ -629,7 +634,9 @@ func writeBp2BuildMetrics(codegenMetrics *bp2build.CodegenMetrics, eventHandler 
 		fmt.Fprintf(os.Stderr, "\nMissing required env var for generating bp2build metrics: LOG_DIR\n")
 		os.Exit(1)
 	}
-	codegenMetrics.Write(metricsDir)
+	if unsharded || !hasSymlink {
+		codegenMetrics.Write(metricsDir)
+	}
 }
 
 func readFileLines(path string) ([]string, error) {
