@@ -293,13 +293,6 @@ func bootstrapBlueprint(ctx Context, config Config) {
 			specificArgs: []string{"--bp2build_marker", config.Bp2BuildFilesMarkerFile()},
 		},
 		{
-			name:         bp2buildWorkspaceTag,
-			description:  "Creating Bazel symlink forest",
-			config:       config,
-			output:       config.Bp2BuildWorkspaceMarkerFile(),
-			specificArgs: []string{"--symlink_forest_marker", config.Bp2BuildWorkspaceMarkerFile()},
-		},
-		{
 			name:        jsonModuleGraphTag,
 			description: fmt.Sprintf("generating the Soong module graph at %s", config.ModuleGraphFile()),
 			config:      config,
@@ -330,6 +323,22 @@ func bootstrapBlueprint(ctx Context, config Config) {
 			output:       config.SoongDocsHtml(),
 			specificArgs: []string{"--soong_docs", config.SoongDocsHtml()},
 		},
+	}
+	roots, err := os.ReadDir(os.Getenv("TOP"))
+	if err != nil {
+		panic(err)
+	}
+	for _, root := range roots {
+		if keep(root, config) {
+			pbf := PrimaryBuilderFactory{
+				name:         fmt.Sprintf("%s-%s", bp2buildWorkspaceTag, root.Name()),
+				description:  fmt.Sprintf("Creating Bazel symlink forest for %s", root.Name()),
+				config:       config,
+				output:       config.Bp2BuildWorkspaceMarkerFile(root.Name()),
+				specificArgs: []string{"--symlink_forest_marker", config.Bp2BuildWorkspaceMarkerFile(root.Name()), "--symlink_shard", root.Name()},
+			}
+			pbfs = append(pbfs, pbf)
+		}
 	}
 
 	// Figure out which invocations will be run under the debugger:
@@ -368,15 +377,18 @@ func bootstrapBlueprint(ctx Context, config Config) {
 		}
 		pbi := pbf.primaryBuilderInvocation()
 		// Some invocations require adjustment:
-		switch pbf.name {
-		case soongBuildTag:
+		if pbf.name == soongBuildTag {
 			if config.BazelBuildEnabled() {
 				// Mixed builds call Bazel from soong_build and they therefore need the
 				// Bazel workspace to be available. Make that so by adding a dependency on
 				// the bp2build marker file to the action that invokes soong_build .
-				pbi.OrderOnlyInputs = append(pbi.OrderOnlyInputs, config.Bp2BuildWorkspaceMarkerFile())
+				for _, root := range roots {
+					if keep(root, config) {
+						pbi.OrderOnlyInputs = append(pbi.OrderOnlyInputs, config.Bp2BuildWorkspaceMarkerFile(root.Name()))
+					}
+				}
 			}
-		case bp2buildWorkspaceTag:
+		} else if strings.HasPrefix(pbf.name, bp2buildWorkspaceTag) {
 			pbi.Inputs = append(pbi.Inputs,
 				config.Bp2BuildFilesMarkerFile(),
 				filepath.Join(config.FileListDir(), "bazel.list"))
@@ -416,6 +428,9 @@ func bootstrapBlueprint(ctx Context, config Config) {
 	_ = bootstrap.RunBlueprint(blueprintArgs, bootstrap.DoEverything, blueprintCtx, blueprintConfig)
 }
 
+func keep(root os.DirEntry, config Config) bool {
+	return !strings.HasPrefix(root.Name(), ".") && root.Name() != config.OutDir()
+}
 func checkEnvironmentFile(currentEnv *Environment, envFile string) {
 	getenv := func(k string) string {
 		v, _ := currentEnv.Get(k)
@@ -541,7 +556,15 @@ func runSoong(ctx Context, config Config) {
 	}
 
 	if config.Bp2Build() {
-		targets = append(targets, config.Bp2BuildWorkspaceMarkerFile())
+		roots, err := os.ReadDir(os.Getenv("TOP"))
+		if err != nil {
+			panic(err)
+		}
+		for _, root := range roots {
+			if keep(root, config) {
+				targets = append(targets, config.Bp2BuildWorkspaceMarkerFile(root.Name()))
+			}
+		}
 	}
 
 	if config.Queryview() {
