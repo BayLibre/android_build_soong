@@ -333,7 +333,7 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (propFile android.
 		addStr("avb_algorithm", algorithm)
 		key := android.PathForModuleSrc(ctx, proptools.String(f.properties.Avb_private_key))
 		addPath("avb_key_path", key)
-		addStr("avb_add_hashtree_footer_args", "--do_not_generate_fec")
+		addStr("avb_add_hashtree_footer_args", "--do_not_generate_fec  --hash_algorithm sha256")
 		partitionName := proptools.StringDefault(f.properties.Partition_name, f.Name())
 		addStr("partition_name", partitionName)
 		addStr("avb_salt", f.salt())
