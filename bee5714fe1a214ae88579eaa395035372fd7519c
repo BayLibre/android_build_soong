@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66327dc8_a761bc3f",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-21T22:34:28Z",
+      "side": 1,
+      "message": "dumpVar config just winds up calling `build.NewConfig` with a blank args list. \n\nbuildActionConfig is much more involved and then eventually calls `build.NewBuildActionConfig`\n\nI don\u0027t see the point of indirecting it.",
+      "parentUuid": "4a8845dd_0bda45c8",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "541df1f9_b76c5111",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-21T20:28:05Z",
       "side": 1,
       "message": "Leave a comment here describing the significance of this function for upload-only. Something like:\n\n// Upload-only mode mostly skips to the metrics-uploading phase of soong_ui.\n// However, this invocation marks the true \"end of the build\", and thus we\n// need to update the total runtime of the build to include this upload step.",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb16ea35_79df8b62",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-21T22:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "541df1f9_b76c5111",
       "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7deb97c2_90c03537",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-21T22:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a1d86f7_88969eea",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "210b532f_70230730",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-12-21T20:28:05Z",
       "side": 1,
       "message": "Now that you\u0027re done some refactoring, is metricsFiles called in only one place? If so, we can simply inline its contents again, and no longer need to duplicate creation of the `soong_metrics`, `soong.log`, and `build.trace` paths.",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d070d97c_af431c84",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-21T22:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "210b532f_70230730",
       "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +158,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c653dae2_b8f57c6c",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-21T22:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1997662f_e302a6c8",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b0fa650_5d086a00",
@@ -103,6 +193,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12534522_45ab99e5",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-21T22:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b0fa650_5d086a00",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51b0c1ba_5a8b6bf1",
@@ -116,6 +224,24 @@
       "writtenOn": "2022-12-21T20:28:05Z",
       "side": 1,
       "message": "Should we ensure that no other flags are passed?",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dcda379_10023942",
+        "filename": "ui/build/config.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-21T22:34:28Z",
+      "side": 1,
+      "message": "Better idea - let\u0027s just axe the call to parseArgs, since upload-only should be blank. If it\u0027s worthy, we can log something whenever args isn\u0027t blank.\n\nIt still requires its own function since we\u0027re skipping much of the standard fare.\n\nWDYT?",
+      "parentUuid": "51b0c1ba_5a8b6bf1",
       "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
