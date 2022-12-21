@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4eb806c_8c092ed7",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T13:11:16Z",
+      "side": 1,
+      "message": "Why don\u0027t you add a property for this? We can still have sha256 as the default in case the property is not set. See L332 for how.",
+      "range": {
+        "startLine": 336,
+        "startChar": 82,
+        "endLine": 336,
+        "endChar": 88
+      },
+      "revId": "e6558076081fd359b73b9cbbecb79419c4c8ca1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
