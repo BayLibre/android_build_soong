@@ -76,6 +76,7 @@ type CmdArgs struct {
 	SoongOutDir string
 
 	SymlinkForestMarker string
+	SymlinkShard        string
 	Bp2buildMarker      string
 	BazelQueryViewDir   string
 	BazelApiBp2buildDir string
