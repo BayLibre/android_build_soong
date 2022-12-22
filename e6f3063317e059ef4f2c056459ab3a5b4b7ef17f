@@ -22,6 +22,30 @@
       },
       "revId": "e6f3063317e059ef4f2c056459ab3a5b4b7ef17f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ec2998_1c4d474c",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1897307
+      },
+      "writtenOn": "2022-12-22T12:36:26Z",
+      "side": 1,
+      "message": "Oops, sending a followup patch to you. Btw, default is not set by build system, but avbtool still defaults to sha1.",
+      "parentUuid": "85c45288_f6c44108",
+      "range": {
+        "startLine": 75,
+        "startChar": 55,
+        "endLine": 75,
+        "endChar": 69
+      },
+      "revId": "e6f3063317e059ef4f2c056459ab3a5b4b7ef17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
