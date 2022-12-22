@@ -52,6 +52,24 @@
       "parentUuid": "44149163_aba411e9",
       "revId": "72d4bd58bd402b5237b820bc6060002f9bbc64af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c08b90_88283ca0",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-22T21:28:21Z",
+      "side": 1,
+      "message": "Welp, the one failure occurring so far has known bugs, but I\u0027m still gunshy about submitting before everyone takes off. \n\nA multi-year CL, who\u0027d have thought?",
+      "parentUuid": "f1884b2a_87abbcd8",
+      "revId": "72d4bd58bd402b5237b820bc6060002f9bbc64af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
