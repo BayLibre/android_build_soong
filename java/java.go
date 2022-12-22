@@ -1718,6 +1718,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	al.stubsJar = android.PathForModuleOut(ctx, ctx.ModuleName(), "android.jar")
 
 	var flags javaBuilderFlags
+	flags.javaVersion = JAVA_VERSION_8
 	flags.javacFlags = strings.Join(al.properties.Javacflags, " ")
 
 	TransformJavaToClasses(ctx, al.stubsJar, 0, android.Paths{},
