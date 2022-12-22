@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306e4e3f_449e0176",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-22T20:03:36Z",
+      "side": 1,
+      "message": "The presubmit failures look legitimate.\n\nI\u0027d guess it\u0027s because you are calling this function (`log.SetOutput`) before `os.MkdirAll(logsDir, 0777)` is called.",
+      "revId": "72d4bd58bd402b5237b820bc6060002f9bbc64af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
