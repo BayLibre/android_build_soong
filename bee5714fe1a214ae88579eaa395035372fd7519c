@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e804de73_3abb5d07",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-22T19:23:56Z",
+      "side": 1,
+      "message": "fair. I\u0027ll add",
+      "parentUuid": "31b5c288_ac460af7",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "541df1f9_b76c5111",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "This doesn\u0027t look done. Why does this function still exist?",
       "parentUuid": "7deb97c2_90c03537",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1deb5497_fa960216",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-22T19:23:56Z",
+      "side": 1,
+      "message": "because I forgot to upload. 😂",
+      "parentUuid": "8bfcab49_e10be9b3",
       "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -278,6 +314,24 @@
       "side": 1,
       "message": "Better idea - let\u0027s just axe the call to parseArgs, since upload-only should be blank. If it\u0027s worthy, we can log something whenever args isn\u0027t blank.\n\nIt still requires its own function since we\u0027re skipping much of the standard fare.\n\nWDYT?",
       "parentUuid": "51b0c1ba_5a8b6bf1",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0447d47e_a4ea4f7b",
+        "filename": "ui/build/config.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-22T19:23:56Z",
+      "side": 1,
+      "message": "added to the config func",
+      "parentUuid": "3dcda379_10023942",
       "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
