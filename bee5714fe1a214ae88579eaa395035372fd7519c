@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31b5c288_ac460af7",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-22T15:37:00Z",
+      "side": 1,
+      "message": "What\u0027s your point re: the functionality of dumpVarConfig and buildActionConfig? You\u0027ve shown that there are two examples (one trivially simple and one complex) \n where the config function is defined in this file.\n\nWhy is `build.UploadOnlyConfig` special? Why can\u0027t it be defined in this file, too?\nThis isn\u0027t \"indirecting\" it -- on the contrary, you\u0027re introducing a public function to the `build` package to only be used in this file. Why are you doing that?",
+      "parentUuid": "66327dc8_a761bc3f",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "541df1f9_b76c5111",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 26
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "8a1d86f7_88969eea",
+      "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bfcab49_e10be9b3",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-12-22T15:37:00Z",
+      "side": 1,
+      "message": "This doesn\u0027t look done. Why does this function still exist?",
+      "parentUuid": "7deb97c2_90c03537",
       "revId": "bee5714fe1a214ae88579eaa395035372fd7519c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
