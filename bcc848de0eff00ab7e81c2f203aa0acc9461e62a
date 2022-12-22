@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3af9e28_18cc8ddb",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-22T19:26:31Z",
+      "side": 1,
+      "message": "It\u0027s not really \"setting\" nil multiple times.\nIt IS however checking for each of the various options and ensuring only one of them is specified.\nThe readability argument is valid and maybe I should simply add an explicit check instead:\n```\nfunc ensureOneAndOnly(input ...string) {\n  var already string\n  for _, i :\u003d range input {\n    if i !\u003d \"\" \u0026\u0026 already !\u003d \"\" {\n      panic(fmt.Errorf(\"can\u0027t set both %s and %s\", already, i))\n    }\n    already \u003d i\n  }\n}\nfunc maybe(isSet boolean, arg string) string {\n  if isSet {\n    return arg\n  } else {\n    return \"\"\n}\n```\nThen use those as:\n```\nensureOneAndOnly(\n    buildModeFlag.symlinkForestMarker,\n    buildModeFlag.bp2buildMarker, ...\n    maybe(cmdlineArgs.BazelMode, \"--bazel-mode\"),\n    maybe(cmdlineArgs.BazelModeDev, \"--bazel-mdoe-dev\"))\n// keep the if-else    \nif buildModeFlag.symlinkForestMarker !\u003d \"\" {\n  buildMode \u003d android.SymlinkForest\n} else if ...\n\n```\n\n^ that looks too verbose?\nWhat about I change my func name from `setBuildMode()` to `setBuildModeExclusively()` ?",
+      "parentUuid": "39e04de1_9c828935",
+      "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ef7691f_b45c9840",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
@@ -88,6 +106,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b65a8ad8_a8961e14",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-22T19:26:31Z",
+      "side": 1,
+      "message": "yep go-fmt does so and I think it\u0027s to maintain the same indentation level if one were to use if-else:\n```\nif a \u003d\u003d 1 {\n  do x\n} else if a \u003d\u003d 2 {\n  do y\n} else {\n  do z\n}\n\nswitch a {\ncase 1:\n  do x\ncase 2:\n  do y\ndefault:\n  do z\n}\n```",
+      "parentUuid": "b9585d22_f922299c",
+      "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d585395d_3916f387",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
@@ -99,6 +135,24 @@
       "writtenOn": "2022-12-16T21:24:29Z",
       "side": 1,
       "message": "remove commented code?",
+      "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b1ad3de_1bcf2c5f",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-12-22T19:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d585395d_3916f387",
       "revId": "bcc848de0eff00ab7e81c2f203aa0acc9461e62a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
