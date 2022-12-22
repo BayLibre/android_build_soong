@@ -16,6 +16,24 @@
       "message": "The presubmit failures look legitimate.\n\nI\u0027d guess it\u0027s because you are calling this function (`log.SetOutput`) before `os.MkdirAll(logsDir, 0777)` is called.",
       "revId": "72d4bd58bd402b5237b820bc6060002f9bbc64af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44149163_aba411e9",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-12-22T20:39:35Z",
+      "side": 1,
+      "message": "I moved it, but I don\u0027t think that\u0027s the cause. The same error (missing lock file) occurs to me on a clean git-master.\n\nFYI - moving that log.SetOutput function (along with the trace equivalent) to the `logAndSymlinkSetup` function would require exporting their structs.",
+      "parentUuid": "306e4e3f_449e0176",
+      "revId": "72d4bd58bd402b5237b820bc6060002f9bbc64af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
