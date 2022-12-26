@@ -26,6 +26,56 @@ var (
 	lsdumpPathsLock sync.Mutex
 )
 
+// Properties for ABI compatibility checker in Android.bp.
+type headerAbiCheckerProperties struct {
+	// Enable ABI checks (even if this is not an LLNDK/VNDK lib)
+	Enabled *bool
+
+	// Path to a symbol file that specifies the symbols to be included in the generated
+	// ABI dump file
+	Symbol_file *string `android:"path"`
+
+	// Symbol versions that should be ignored from the symbol file
+	Exclude_symbol_versions []string
+
+	// Symbol tags that should be ignored from the symbol file
+	Exclude_symbol_tags []string
+
+	// Run checks on all APIs (in addition to the ones referred by
+	// one of exported ELF symbols.)
+	Check_all_apis *bool
+
+	// Extra flags passed to header-abi-diff
+	Diff_flags []string
+
+	// Opt-in reference dump directories
+	Ref_dump_dirs []string
+}
+
+func (props *headerAbiCheckerProperties) merge(other headerAbiCheckerProperties) {
+	if other.Enabled != nil {
+		props.Enabled = other.Enabled
+	}
+	if other.Symbol_file != nil {
+		props.Symbol_file = other.Symbol_file
+	}
+	props.Exclude_symbol_versions = append(props.Exclude_symbol_versions, other.Exclude_symbol_versions...)
+	props.Exclude_symbol_tags = append(props.Exclude_symbol_tags, other.Exclude_symbol_tags...)
+	if other.Check_all_apis != nil {
+		props.Check_all_apis = other.Check_all_apis
+	}
+	props.Diff_flags = append(props.Diff_flags, other.Diff_flags...)
+	props.Ref_dump_dirs = append(props.Ref_dump_dirs, other.Ref_dump_dirs...)
+}
+
+func (props *headerAbiCheckerProperties) enabled() bool {
+	return Bool(props.Enabled)
+}
+
+func (props *headerAbiCheckerProperties) explicitlyDisabled() bool {
+	return !BoolDefault(props.Enabled, true)
+}
+
 type SAbiProperties struct {
 	// Whether ABI dump should be created for this module.
 	// Set by `sabiDepsMutator` if this module is a shared library that needs ABI check, or a static
@@ -67,7 +117,8 @@ func (sabi *sabi) shouldCreateSourceAbiDump() bool {
 // Returns an empty string if ABI check is disabled for this library.
 func classifySourceAbiDump(ctx android.BaseModuleContext) string {
 	m := ctx.Module().(*Module)
-	if m.library.headerAbiCheckerExplicitlyDisabled() {
+	headerAbiChecker := m.library.getHeaderAbiCheckerProperties(ctx)
+	if headerAbiChecker.explicitlyDisabled() {
 		return ""
 	}
 	// Return NDK if the library is both NDK and LLNDK.
@@ -92,7 +143,16 @@ func classifySourceAbiDump(ctx android.BaseModuleContext) string {
 			}
 		}
 	}
-	if m.library.headerAbiCheckerEnabled() || m.library.hasStubsVariants() {
+	if m.library.hasStubsVariants() && !m.InProduct() && !m.InVendor() {
+		return "PLATFORM"
+	}
+	if headerAbiChecker.enabled() {
+		if m.InProduct() {
+			return "PRODUCT"
+		}
+		if m.InVendor() {
+			return "VENDOR"
+		}
 		return "PLATFORM"
 	}
 	return ""
