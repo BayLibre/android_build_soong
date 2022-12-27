@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a503b1fd_ca926d6c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1721,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-27T18:04:15Z",
+      "side": 1,
+      "message": "Is it worth refactoring this flag between java_api_library and current java stubs? This will guarantee that there are no discrepancies between the two.",
+      "revId": "c989d1f564d88c905fdc72dda7caf3578fc11550",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
