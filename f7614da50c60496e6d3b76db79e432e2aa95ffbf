@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a0e65d9_2878d968",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1191,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-12-27T13:45:28Z",
+      "side": 1,
+      "message": "if Properties.Header_abi_checker and Properties.Target.Vendor.Header_abi_checker both exist, should we return the merged result of the two?\n\nIn other words, for properties defined in Properties.Target.Vendor.Header_abi_checker, they can override / append to Properties.Header_abi_checker. For properties not defined in Properties.Target.Vendor.Header_abi_checker, the value would fallback to Properties.Header_abi_checker.",
+      "revId": "f7614da50c60496e6d3b76db79e432e2aa95ffbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
