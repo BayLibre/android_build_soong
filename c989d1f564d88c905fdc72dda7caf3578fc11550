@@ -34,6 +34,24 @@
       "parentUuid": "a503b1fd_ca926d6c",
       "revId": "c989d1f564d88c905fdc72dda7caf3578fc11550",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0361239_e23fefa7",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1721,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-27T19:02:56Z",
+      "side": 1,
+      "message": "Yeah, it would be nice if they can set 1.8 via a common helper function. That way, if we need to upgrade it to 1.9 (or something else) in the future, we do not need to update it in _two_ places",
+      "parentUuid": "a04c0788_0dd67509",
+      "revId": "c989d1f564d88c905fdc72dda7caf3578fc11550",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
