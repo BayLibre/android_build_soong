@@ -16,6 +16,24 @@
       "message": "Is it worth refactoring this flag between java_api_library and current java stubs? This will guarantee that there are no discrepancies between the two.",
       "revId": "c989d1f564d88c905fdc72dda7caf3578fc11550",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a04c0788_0dd67509",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1721,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-12-27T18:58:26Z",
+      "side": 1,
+      "message": "AFAIK, the current java stubs [already uses java version 1.8](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/droiddoc.go;drc\u003d757b666c7f7c65e678d93994955d7792a265ba14;l\u003d601). Do you mean the two should not be set separately?",
+      "parentUuid": "a503b1fd_ca926d6c",
+      "revId": "c989d1f564d88c905fdc72dda7caf3578fc11550",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
