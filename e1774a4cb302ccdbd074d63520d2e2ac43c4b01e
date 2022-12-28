@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8df210_41c7e5c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-28T22:29:13Z",
+      "side": 1,
+      "message": "Since Liz is OOO, I am moving Jihoon to reviewer.",
+      "revId": "e1774a4cb302ccdbd074d63520d2e2ac43c4b01e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
