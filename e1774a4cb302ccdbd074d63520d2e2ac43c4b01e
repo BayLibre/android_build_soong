@@ -16,6 +16,86 @@
       "message": "Since Liz is OOO, I am moving Jihoon to reviewer.",
       "revId": "e1774a4cb302ccdbd074d63520d2e2ac43c4b01e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef56152_7dfbd082",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-12-28T23:41:41Z",
+      "side": 1,
+      "message": "Left just a couple of nits😊",
+      "revId": "e1774a4cb302ccdbd074d63520d2e2ac43c4b01e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e2fdf6_1fcb792d",
+        "filename": "bp2build/droidstubs_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-12-28T23:41:41Z",
+      "side": 1,
+      "message": "Can you provide some more context about this comment?",
+      "range": {
+        "startLine": 97,
+        "startChar": 33,
+        "endLine": 97,
+        "endChar": 44
+      },
+      "revId": "e1774a4cb302ccdbd074d63520d2e2ac43c4b01e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e20ff27b_688411a7",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-12-28T23:41:41Z",
+      "side": 1,
+      "message": "nit: Is [`\"intra-core\"`](https://cs.android.com/search?q\u003d%22intra-core%22%20f:Android.bp%20) left out because there are currently no use case of it for naming droidstub modules?",
+      "revId": "e1774a4cb302ccdbd074d63520d2e2ac43c4b01e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05a594cb_ed17dce4",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2022-12-28T23:41:41Z",
+      "side": 1,
+      "message": "nit: we can simplify this to just `key`",
+      "range": {
+        "startLine": 891,
+        "startChar": 5,
+        "endLine": 891,
+        "endChar": 11
+      },
+      "revId": "e1774a4cb302ccdbd074d63520d2e2ac43c4b01e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
