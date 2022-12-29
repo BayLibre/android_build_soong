@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "602fcab3_e222fd58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-12-29T19:10:14Z",
+      "side": 1,
+      "message": "LGTM, modulo typo",
+      "revId": "82e7558180c547041baf063fbf4f1084be7e8856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a098ad6d_ba9e0604",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1876,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-12-29T19:10:14Z",
+      "side": 1,
+      "message": "typo: s/mised/mixed/",
+      "revId": "82e7558180c547041baf063fbf4f1084be7e8856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
