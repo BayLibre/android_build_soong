@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a7b4408_42821a2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-12-29T16:45:01Z",
+      "side": 1,
+      "message": "LGTM w/ nit",
+      "revId": "0f82844b75680862f867c57b8f6d315a43c88fad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a819ac7f_92e19b52",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-12-29T16:45:01Z",
+      "side": 1,
+      "message": "nit: `prepend` no longer saves much over `list.Prepend`. May read better to simply inline.",
+      "revId": "0f82844b75680862f867c57b8f6d315a43c88fad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
