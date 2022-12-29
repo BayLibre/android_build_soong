@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7ed159_272cc6a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-12-29T16:39:44Z",
+      "side": 1,
+      "message": "I\u0027m worried that this will cause people to access files in the module dir without including them in srcs.  I\u0027d like to be able to sandbox the srcs of genrules, which would make this safer, but there are many genrules that are currently accessing files that they shouldn\u0027t.  I think if we\u0027re going to add this should be gated on opting in to a fully sandboxed genrule.  I don\u0027t remember how difficult it was to enable the srcs sandbox, maybe its enough to just add `.SandboxInputs()` to the genrule RuleBuilder?",
+      "revId": "a0b40e614ca6355c498aa25b3b0ce52f97df4c55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
