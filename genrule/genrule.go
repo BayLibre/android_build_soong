@@ -130,6 +130,7 @@ type generatorProperties struct {
 	//  $(out): a single output file.
 	//  $(depfile): a file to which dependencies will be written, if the depfile property is set to true.
 	//  $(genDir): the sandbox directory for this tool; contains $(out).
+	//  $(moduleDir): the directory that contains the definition of the module.
 	//  $$: a literal $
 	Cmd *string
 
@@ -500,6 +501,8 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 				return "__SBOX_DEPFILE__", nil
 			case "genDir":
 				return proptools.ShellEscape(cmd.PathForOutput(task.genDir)), nil
+			case "moduleDir":
+				return proptools.ShellEscape(ctx.ModuleDir()), nil
 			default:
 				if strings.HasPrefix(name, "location ") {
 					label := strings.TrimSpace(strings.TrimPrefix(name, "location "))

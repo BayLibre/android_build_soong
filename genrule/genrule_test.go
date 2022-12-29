@@ -835,6 +835,25 @@ func TestGenSrcsWithNonRootAndroidBpOutputFiles(t *testing.T) {
 	)
 }
 
+func TestModuleDirWithNonRootAndroidBp(t *testing.T) {
+	moduleDir := "external-protos/path"
+	result := android.GroupFixturePreparers(
+		prepareForGenRuleTest,
+		android.FixtureMergeMockFs(android.MockFS{
+			moduleDir + "/Android.bp": []byte(`
+				genrule {
+					name: "module",
+					out: ["out"],
+					cmd: "$(moduleDir)",
+				}
+			`),
+		}),
+	).RunTest(t)
+
+	gen := result.Module("module", "").(*Module)
+	android.AssertStringEquals(t, "moduleDir", proptools.ShellEscape(moduleDir), gen.rawCommands[0])
+}
+
 func TestGenSrcsWithSrcsFromExternalPackage(t *testing.T) {
 	bp := `
 		gensrcs {
