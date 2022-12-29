@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d54dfa0d_24a58a7c",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-12-29T09:08:03Z",
+      "side": 1,
+      "message": "nit; this may fail if ShellEscape is changed?",
+      "range": {
+        "startLine": 854,
+        "startChar": 44,
+        "endLine": 854,
+        "endChar": 73
+      },
+      "revId": "00c0fc08d8d9b7f393ac64ce6ca83e3e14a0a9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
