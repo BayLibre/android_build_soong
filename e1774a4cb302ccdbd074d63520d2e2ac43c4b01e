@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73de3a35_ee250c6f",
+        "filename": "bp2build/droidstubs_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-29T00:00:00Z",
+      "side": 1,
+      "message": "Thanks for catching, IIRC this is a stray comment. This was a TODO for me to refactor my code. Which I did, but forgot to remove the comment.\n\nI have removed this comment now.",
+      "parentUuid": "51e2fdf6_1fcb792d",
+      "range": {
+        "startLine": 97,
+        "startChar": 33,
+        "endLine": 97,
+        "endChar": 44
+      },
+      "revId": "e1774a4cb302ccdbd074d63520d2e2ac43c4b01e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e20ff27b_688411a7",
@@ -75,6 +99,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de42ca50_1472d234",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-29T00:00:00Z",
+      "side": 1,
+      "message": "Yes, there are no existing droidstubs (either checked-in or created via java_sdk_library) which use this naming convention.",
+      "parentUuid": "e20ff27b_688411a7",
+      "revId": "e1774a4cb302ccdbd074d63520d2e2ac43c4b01e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05a594cb_ed17dce4",
@@ -88,6 +130,30 @@
       "writtenOn": "2022-12-28T23:41:41Z",
       "side": 1,
       "message": "nit: we can simplify this to just `key`",
+      "range": {
+        "startLine": 891,
+        "startChar": 5,
+        "endLine": 891,
+        "endChar": 11
+      },
+      "revId": "e1774a4cb302ccdbd074d63520d2e2ac43c4b01e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51aa104b_d36b1687",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-12-29T00:00:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05a594cb_ed17dce4",
       "range": {
         "startLine": 891,
         "startChar": 5,
