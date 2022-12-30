@@ -309,14 +309,6 @@ func stripAttrsFromLinkerAttrs(la *linkerAttributes) stripAttributes {
 }
 
 func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
-	// For some cc_library modules, their static variants are ready to be
-	// converted, but not their shared variants. For these modules, delegate to
-	// the cc_library_static bp2build converter temporarily instead.
-	if android.GetBp2BuildAllowList().GenerateCcLibraryStaticOnly(ctx.Module().Name()) {
-		sharedOrStaticLibraryBp2Build(ctx, m, true)
-		return
-	}
-
 	sharedAttrs := bp2BuildParseSharedProps(ctx, m)
 	staticAttrs := bp2BuildParseStaticProps(ctx, m)
 	baseAttributes := bp2BuildParseBaseProps(ctx, m)
@@ -1903,7 +1895,7 @@ func (library *libraryDecorator) crossVersionAbiDiff(ctx android.ModuleContext, 
 	errorMessage := "error: Please follow https://android.googlesource.com/platform/development/+/master/vndk/tools/header-checker/README.md#configure-cross_version-abi-check to resolve the ABI difference between your source code and version " + prevVersion + "."
 
 	library.sourceAbiDiff(ctx, referenceDump, baseName, prevVersion,
-		isLlndkOrNdk, /* allowExtensions */ true, sourceVersion, errorMessage)
+		isLlndkOrNdk /* allowExtensions */, true, sourceVersion, errorMessage)
 }
 
 func (library *libraryDecorator) sameVersionAbiDiff(ctx android.ModuleContext, referenceDump android.Path,
@@ -1912,7 +1904,7 @@ func (library *libraryDecorator) sameVersionAbiDiff(ctx android.ModuleContext, r
 	libName := strings.TrimSuffix(baseName, filepath.Ext(baseName))
 	errorMessage := "error: Please update ABI references with: $$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py -l " + libName
 
-	library.sourceAbiDiff(ctx, referenceDump, baseName, /* nameExt */ "",
+	library.sourceAbiDiff(ctx, referenceDump, baseName /* nameExt */, "",
 		isLlndkOrNdk, allowExtensions, "current", errorMessage)
 }
 
@@ -1923,7 +1915,7 @@ func (library *libraryDecorator) optInAbiDiff(ctx android.ModuleContext, referen
 	errorMessage := "error: Please update ABI references with: $$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py -l " + libName + " -ref-dump-dir $$ANDROID_BUILD_TOP/" + refDumpDir
 
 	library.sourceAbiDiff(ctx, referenceDump, baseName, nameExt,
-		isLlndkOrNdk, /* allowExtensions */ false, "current", errorMessage)
+		isLlndkOrNdk /* allowExtensions */, false, "current", errorMessage)
 }
 
 func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objects, fileName string, soFile android.Path) {
