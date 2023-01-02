@@ -34,6 +34,24 @@
       "parentUuid": "8a7ed159_272cc6a7",
       "revId": "a0b40e614ca6355c498aa25b3b0ce52f97df4c55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94253c5c_b2b30652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-01-02T01:55:41Z",
+      "side": 1,
+      "message": "Got it. The use case for me is indicating the root path of proto files. But I think moduleDir isn\u0027t necessary (because I might have misunderstood the comment :))\n\nAnd also, as Colin mentioned, I think introducing moduleDir can hinder sandboxed genrule, so I\u0027d better abandon this CL.",
+      "parentUuid": "267a29d4_c5aceda9",
+      "revId": "a0b40e614ca6355c498aa25b3b0ce52f97df4c55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
