@@ -16,6 +16,24 @@
       "message": "this is just proptools.AppendMatchingProperties() https://source.corp.google.com/android-internal/build/blueprint/proptools/extend.go;l\u003d76",
       "revId": "14b94c30fb9fd5801af3f679e8d162bfffad9335",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7417e92_82fd7734",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2023-01-03T02:28:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cc6a83b_c90c1ea0",
+      "revId": "14b94c30fb9fd5801af3f679e8d162bfffad9335",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
