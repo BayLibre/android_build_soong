@@ -123,6 +123,24 @@
       "parentUuid": "c59c9d01_829599bc",
       "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f192bc6_989343d5",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2023-01-03T23:48:44Z",
+      "side": 1,
+      "message": "Okay, now the new patch only move tidy related code out of transformSourceToObj.",
+      "parentUuid": "2f61b46b_c5ff375b",
+      "revId": "42e2323e1d89e19a9245a19cd81b823a5dbac894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
