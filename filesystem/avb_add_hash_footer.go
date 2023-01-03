@@ -18,10 +18,17 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 )
+
+type imageDep struct {
+	blueprint.BaseDependencyTag
+}
+
+var footerImageDep = imageDep{}
 
 type avbAddHashFooter struct {
 	android.ModuleBase
@@ -67,6 +74,9 @@ type avbAddHashFooterProperties struct {
 
 	// List of properties to add to the footer
 	Props []avbProp
+
+	// Include descriptors from images
+	Include_descriptors_from_images []string `android:"path"`
 }
 
 // The AVB footer adds verification information to the image.
@@ -75,6 +85,10 @@ func avbAddHashFooterFactory() android.Module {
 	module.AddProperties(&module.properties)
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	return module
+}
+
+func (a *avbAddHashFooter) DepsMutator(ctx android.BottomUpMutatorContext) {
+	ctx.AddDependency(ctx.Module(), footerImageDep, a.properties.Include_descriptors_from_images...)
 }
 
 func (a *avbAddHashFooter) installFileName() string {
@@ -115,6 +129,16 @@ func (a *avbAddHashFooter) GenerateAndroidBuildActions(ctx android.ModuleContext
 		return
 	}
 	cmd.FlagWithArg("--salt ", proptools.String(a.properties.Salt))
+
+	for _, p := range ctx.GetDirectDepsWithTag(footerImageDep) {
+		outputFiles, err := p.(android.OutputFileProducer).OutputFiles("")
+		if err != nil {
+			ctx.PropertyErrorf("include_descriptors_from_images", "%q(type: %s) is not supported",
+				p.Name(), ctx.OtherModuleType(p))
+			return
+		}
+		cmd.FlagWithInput("--include_descriptors_from_image ", outputFiles[0])
+	}
 
 	for _, prop := range a.properties.Props {
 		addAvbProp(ctx, cmd, prop)
