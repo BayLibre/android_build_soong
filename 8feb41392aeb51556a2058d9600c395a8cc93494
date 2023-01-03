@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66effef_45e235d6",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2023-01-03T08:16:50Z",
+      "side": 1,
+      "message": "this is unsafe, as object copy in golang is shallow. Header_abi_checker contains slice fields which aren\u0027t safe to shallow copy.\n\nYou should either\n\n1. Deep copy library.Properties.Header_abi_checker before you modify it.\n2. Make sure getHeaderAbiCheckerProperties is called at most once, maybe call from AddLoadHook? https://cs.android.com/search?ss\u003dandroid%2Fplatform%2Fsuperproject\u0026q\u003dAddLoadHook",
+      "range": {
+        "startLine": 1197,
+        "startChar": 35,
+        "endLine": 1197,
+        "endChar": 41
+      },
+      "revId": "8feb41392aeb51556a2058d9600c395a8cc93494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
