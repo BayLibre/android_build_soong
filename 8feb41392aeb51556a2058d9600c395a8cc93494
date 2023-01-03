@@ -22,6 +22,30 @@
       },
       "revId": "8feb41392aeb51556a2058d9600c395a8cc93494",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89fe8f7f_801d6146",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2023-01-03T09:07:34Z",
+      "side": 1,
+      "message": "AppendProperties makes deep copies.\nhttps://cs.android.com/android/platform/superproject/+/master:build/blueprint/proptools/extend.go;l\u003d458",
+      "parentUuid": "c66effef_45e235d6",
+      "range": {
+        "startLine": 1197,
+        "startChar": 35,
+        "endLine": 1197,
+        "endChar": 41
+      },
+      "revId": "8feb41392aeb51556a2058d9600c395a8cc93494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
