@@ -52,6 +52,24 @@
       "parentUuid": "f0456274_24ad410a",
       "revId": "47b8b13955836b15bb0076ee84f2e7b0dd612d21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8601da80_eccef92c",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1076194
+      },
+      "writtenOn": "2023-01-03T20:05:05Z",
+      "side": 1,
+      "message": "I don\u0027t think the Forrest pool has any mac machines, so your run might sit there queuing forever: https://b.corp.google.com/issues/130366520\n\nNeed to find a different way to test your CL\n\nI notice that linux_glibc is hardcoded on this line so it\u0027s at least suspicious and would like to see it tested on Mac somehow (but how? ideally, can you borrow someone\u0027s Mac who already has it set up?)",
+      "parentUuid": "989e01d3_358b65bd",
+      "revId": "47b8b13955836b15bb0076ee84f2e7b0dd612d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
