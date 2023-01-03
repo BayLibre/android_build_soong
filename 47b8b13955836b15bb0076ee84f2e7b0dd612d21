@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94114315_35c89de0",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1076194
+      },
+      "writtenOn": "2023-01-03T19:32:29Z",
+      "side": 1,
+      "message": "This is the part of the original CL that failed on Mac?\n\nI\u0027ll hold off on reviewing until it\u0027s fixed",
+      "revId": "47b8b13955836b15bb0076ee84f2e7b0dd612d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
