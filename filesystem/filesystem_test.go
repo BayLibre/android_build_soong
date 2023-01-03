@@ -129,6 +129,16 @@ func TestFileSystemGathersItemsOnlyInSystemPartition(t *testing.T) {
 func TestAvbAddHashFooter(t *testing.T) {
 	result := fixture.RunTestWithBp(t, `
 		avb_add_hash_footer {
+			name: "another_footer",
+			src: "input.img",
+			partition_name: "another_footer",
+			private_key: "my_key",
+			salt: "2222",
+			do_not_append_vbmeta_image: true,
+			output_vbmeta_image: "another_footer_vbmeta.img",
+		}
+
+		avb_add_hash_footer {
 			name: "myfooter",
 			src: "input.img",
 			filename: "output.img",
@@ -145,6 +155,9 @@ func TestAvbAddHashFooter(t *testing.T) {
 					file: "value_file",
 				},
 			],
+			do_not_append_vbmeta_image: true,
+			output_vbmeta_image: "output_vbmeta.img",
+			include_descriptors_from_images: ["another_footer"],
 		}
 	`)
 	cmd := result.ModuleForTests("myfooter", "android_arm64_armv8-a").Rule("avbAddHashFooter").RuleParams.Command
@@ -158,4 +171,10 @@ func TestAvbAddHashFooter(t *testing.T) {
 		cmd, "--prop 'prop1:value1'")
 	android.AssertStringDoesContain(t, "Can't find --prop_from_file argument",
 		cmd, "--prop_from_file 'prop2:value_file'")
+	android.AssertStringDoesContain(t, "Can't find --do_not_append_vbmeta_image",
+		cmd, "--do_not_append_vbmeta_image")
+	android.AssertStringDoesContain(t, "Can't find --output_vbmeta_image",
+		cmd, "--output_vbmeta_image ")
+	android.AssertStringDoesContain(t, "Can't find --include_descriptors_from_image",
+		cmd, "--include_descriptors_from_image ")
 }

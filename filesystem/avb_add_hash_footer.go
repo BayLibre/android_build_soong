@@ -18,10 +18,17 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 )
+
+type imageDep struct {
+	blueprint.BaseDependencyTag
+}
+
+var footerImageDep = imageDep{}
 
 type avbAddHashFooter struct {
 	android.ModuleBase
@@ -67,6 +74,15 @@ type avbAddHashFooterProperties struct {
 
 	// List of properties to add to the footer
 	Props []avbProp
+
+	// Do not append vbmeta struct or footer to the image if true, by default false.
+	Do_not_append_vbmeta_image *bool
+
+	// Also write vbmeta struct to the file of the given name
+	Output_vbmeta_image *string
+
+	// Include descriptors from images
+	Include_descriptors_from_images []string `android:"path"`
 }
 
 // The AVB footer adds verification information to the image.
@@ -75,6 +91,10 @@ func avbAddHashFooterFactory() android.Module {
 	module.AddProperties(&module.properties)
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	return module
+}
+
+func (a *avbAddHashFooter) DepsMutator(ctx android.BottomUpMutatorContext) {
+	ctx.AddDependency(ctx.Module(), footerImageDep, a.properties.Include_descriptors_from_images...)
 }
 
 func (a *avbAddHashFooter) installFileName() string {
@@ -89,8 +109,20 @@ func (a *avbAddHashFooter) GenerateAndroidBuildActions(ctx android.ModuleContext
 		return
 	}
 	input := android.PathForModuleSrc(ctx, proptools.String(a.properties.Src))
-	a.output = android.PathForModuleOut(ctx, a.installFileName()).OutputPath
-	builder.Command().Text("cp").Input(input).Output(a.output)
+
+	doNotAppendVbmetaImage := proptools.Bool(a.properties.Do_not_append_vbmeta_image)
+	outputVbmetaImage := proptools.String(a.properties.Output_vbmeta_image)
+	if doNotAppendVbmetaImage {
+		if outputVbmetaImage == "" {
+			ctx.PropertyErrorf("output_vbmeta_image", "output_vbmeta_image cannot be"+
+				" null when do_not_append_vbmeta_image is enabled, otherwise"+
+				" there is no output")
+			return
+		}
+	}
+
+	installFilePath := android.PathForModuleOut(ctx, a.installFileName()).OutputPath
+	builder.Command().Text("cp").Input(input).Output(installFilePath)
 
 	cmd := builder.Command().BuiltTool("avbtool").Text("add_hash_footer")
 
@@ -104,8 +136,10 @@ func (a *avbAddHashFooter) GenerateAndroidBuildActions(ctx android.ModuleContext
 		cmd.FlagWithArg("--partition_size ", strconv.Itoa(partition_size))
 	}
 
-	key := android.PathForModuleSrc(ctx, proptools.String(a.properties.Private_key))
-	cmd.FlagWithInput("--key ", key)
+	if a.properties.Private_key != nil {
+		key := android.PathForModuleSrc(ctx, proptools.String(a.properties.Private_key))
+		cmd.FlagWithInput("--key ", key)
+	}
 
 	algorithm := proptools.StringDefault(a.properties.Algorithm, "SHA256_RSA4096")
 	cmd.FlagWithArg("--algorithm ", algorithm)
@@ -116,16 +150,39 @@ func (a *avbAddHashFooter) GenerateAndroidBuildActions(ctx android.ModuleContext
 	}
 	cmd.FlagWithArg("--salt ", proptools.String(a.properties.Salt))
 
+	if doNotAppendVbmetaImage {
+		cmd.Flag("--do_not_append_vbmeta_image")
+	}
+
+	if outputVbmetaImage != "" {
+		outputVbmetaImagePath := android.PathForModuleOut(ctx, outputVbmetaImage).OutputPath
+		cmd.FlagWithOutput("--output_vbmeta_image ", outputVbmetaImagePath)
+	}
+
+	for _, p := range ctx.GetDirectDepsWithTag(footerImageDep) {
+		f, ok := p.(Filesystem)
+		if !ok {
+			ctx.PropertyErrorf("include_descriptors_from_images", "%q(type: %s) is not supported",
+				p.Name(), ctx.OtherModuleType(p))
+			return
+		}
+		cmd.FlagWithInput("--include_descriptors_from_image ", f.OutputPath())
+	}
+
 	for _, prop := range a.properties.Props {
 		addAvbProp(ctx, cmd, prop)
 	}
 
-	cmd.FlagWithOutput("--image ", a.output)
+	cmd.FlagWithOutput("--image ", installFilePath)
 
 	builder.Build("avbAddHashFooter", fmt.Sprintf("avbAddHashFooter %s", ctx.ModuleName()))
-
-	a.installDir = android.PathForModuleInstall(ctx, "etc")
-	ctx.InstallFile(a.installDir, a.installFileName(), a.output)
+	if doNotAppendVbmetaImage {
+		a.output = android.PathForModuleOut(ctx, outputVbmetaImage).OutputPath
+	} else {
+		a.output = installFilePath
+		a.installDir = android.PathForModuleInstall(ctx, "etc")
+		ctx.InstallFile(a.installDir, a.installFileName(), a.output)
+	}
 }
 
 func addAvbProp(ctx android.ModuleContext, cmd *android.RuleBuilderCommand, prop avbProp) {
