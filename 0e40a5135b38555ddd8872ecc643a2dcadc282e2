@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure I 100% follow, if the min SDK is \u003c platform, do we really want the `--android-platform-build` flag to be included in the R8 invocation? This will turn off any API modeling or desugaring that might otherwise be necessary if the target is distributed on an older device/API?\n\nCan you point to a target that is not currently getting `--android-platform-build`, but now will (and should be), but might be distributed on older device runtimes?",
       "revId": "0e40a5135b38555ddd8872ecc643a2dcadc282e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b22ec3_4dc6d347",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-03T23:59:45Z",
+      "side": 1,
+      "message": "Hi Jared, can you help me understand what factors determine whether `android-platform-build` should be set? Is it the `min_sdk_version` property of the Soong module or the `sdk_version` the Soong module builds against?\n\nAs an example, let us consider the android_test `MtsTetheringTestLatestSdk`. Its Android.bp file looks something like (some parts skipped for brevity)\n```\nandroid_test {\n  name: \"MtsTetheringTestLatestSdk\",\n  min_sdk_version: \"31\",\n  sdk_version: \"core_platform\" # unstable, inherited via defaults\n}\n```\n\nOn ToT, `android-platform-build` is not added to the CLI for this module even though it is building against an unstable api surface (CorePlatformApi). Is this WAI? \n\n(After this CL, this flag will be set.)",
+      "parentUuid": "a3815699_944adb8b",
+      "revId": "0e40a5135b38555ddd8872ecc643a2dcadc282e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
