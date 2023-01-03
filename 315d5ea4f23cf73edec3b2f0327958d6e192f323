@@ -16,6 +16,23 @@
       "message": "LGTM. Thanks!",
       "revId": "315d5ea4f23cf73edec3b2f0327958d6e192f323",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01abf9a8_37a53fac",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-03T15:31:15Z",
+      "side": 1,
+      "message": "This function seems confusing to use in a test (it will silently refrain from making a target depending on the value of the `stubs_symbol_file` attribute, and silently ignores other certain attributes).\n\nCould we just use `MakeBazelTarget` here?",
+      "revId": "315d5ea4f23cf73edec3b2f0327958d6e192f323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
