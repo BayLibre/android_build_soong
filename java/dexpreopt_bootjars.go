@@ -958,7 +958,7 @@ func dumpOatRules(ctx android.ModuleContext, image *bootImageConfig) {
 func writeGlobalConfigForMake(ctx android.SingletonContext, path android.WritablePath) {
 	data := dexpreopt.GetGlobalConfigRawData(ctx)
 
-	android.WriteFileRule(ctx, path, string(data))
+	android.WriteFileRule(ctx, path, string(data)+"\n")
 }
 
 // Define Make variables for boot image names, paths, etc. These variables are used in makefiles

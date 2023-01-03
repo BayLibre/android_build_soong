@@ -665,7 +665,7 @@ func generatePrebuiltSnapshot(s snapshot.SnapshotSingleton, ctx android.Singleto
 			ctx.Errorf("json marshal to %q failed: %#v", propOut, err)
 			return
 		}
-		snapshotOutputs = append(snapshotOutputs, snapshot.WriteStringToFileRule(ctx, string(j), propOut))
+		snapshotOutputs = append(snapshotOutputs, snapshot.WriteStringToFileRule(ctx, string(j)+"\n", propOut))
 
 		if len(m.EffectiveLicenseFiles()) > 0 {
 			noticeName := ctx.ModuleName(m) + ".txt"

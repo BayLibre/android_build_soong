@@ -407,7 +407,7 @@ func (a *apexBundle) buildBundleConfig(ctx android.ModuleContext) android.Output
 		panic(fmt.Errorf("error while marshalling to %q: %#v", output, err))
 	}
 
-	android.WriteFileRule(ctx, output, string(j))
+	android.WriteFileRule(ctx, output, string(j)+"\n")
 
 	return output.OutputPath
 }

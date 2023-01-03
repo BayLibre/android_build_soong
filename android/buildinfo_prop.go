@@ -57,7 +57,7 @@ func (p *buildinfoPropModule) OutputFiles(tag string) (Paths, error) {
 func (p *buildinfoPropModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	p.outputFilePath = PathForModuleOut(ctx, p.Name()).OutputPath
 	if !ctx.Config().KatiEnabled() {
-		WriteFileRule(ctx, p.outputFilePath, "# no buildinfo.prop if kati is disabled")
+		WriteFileRule(ctx, p.outputFilePath, "# no buildinfo.prop if kati is disabled\n")
 		return
 	}
 

@@ -128,7 +128,7 @@ func (f *hostSnapshot) CreateMetaData(ctx android.ModuleContext, fileName string
 	jsonZipFile := android.PathForModuleOut(ctx, "host_snapshot.json").OutputPath
 	metaPaths = append(metaPaths, jsonZipFile)
 	rspFile := android.PathForModuleOut(ctx, "host_snapshot.rsp").OutputPath
-	android.WriteFileRule(ctx, jsonZipFile, string(marsh))
+	android.WriteFileRule(ctx, jsonZipFile, string(marsh)+"\n")
 
 	builder := android.NewRuleBuilder(pctx, ctx)
 

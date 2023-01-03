@@ -276,7 +276,7 @@ func (fuzzBin *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 
 	if fuzzBin.fuzzPackagedModule.FuzzProperties.Fuzz_config != nil {
 		configPath := android.PathForModuleOut(ctx, "config").Join(ctx, "config.json")
-		android.WriteFileRule(ctx, configPath, fuzzBin.fuzzPackagedModule.FuzzProperties.Fuzz_config.String())
+		android.WriteFileRule(ctx, configPath, fuzzBin.fuzzPackagedModule.FuzzProperties.Fuzz_config.String()+"\n")
 		fuzzBin.fuzzPackagedModule.Config = configPath
 	}
 

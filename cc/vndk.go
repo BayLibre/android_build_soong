@@ -529,7 +529,7 @@ func (txt *vndkLibrariesTxt) GenerateAndroidBuildActions(ctx android.ModuleConte
 
 func (txt *vndkLibrariesTxt) GenerateSingletonBuildActions(ctx android.SingletonContext) {
 	txt.moduleNames, txt.fileNames = txt.lister(ctx)
-	android.WriteFileRule(ctx, txt.outputFile, strings.Join(txt.fileNames, "\n"))
+	android.WriteFileRule(ctx, txt.outputFile, strings.Join(txt.fileNames, "\n")+"\n")
 }
 
 func (txt *vndkLibrariesTxt) AndroidMkEntries() []android.AndroidMkEntries {
@@ -720,7 +720,7 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 				ctx.Errorf("json marshal to %q failed: %#v", propOut, err)
 				return nil, false
 			}
-			ret = append(ret, snapshot.WriteStringToFileRule(ctx, string(j), propOut))
+			ret = append(ret, snapshot.WriteStringToFileRule(ctx, string(j)+"\n", propOut))
 		}
 		return ret, true
 	}
@@ -858,7 +858,7 @@ func (c *vndkSnapshotSingleton) buildVndkLibrariesTxtFiles(ctx android.Singleton
 	merged = append(merged, addPrefix(vndkprivate, "VNDK-private: ")...)
 	merged = append(merged, addPrefix(vndkproduct, "VNDK-product: ")...)
 	c.vndkLibrariesFile = android.PathForOutput(ctx, "vndk", "vndk.libraries.txt")
-	android.WriteFileRule(ctx, c.vndkLibrariesFile, strings.Join(merged, "\n"))
+	android.WriteFileRule(ctx, c.vndkLibrariesFile, strings.Join(merged, "\n")+"\n")
 }
 
 func (c *vndkSnapshotSingleton) MakeVars(ctx android.MakeVarsContext) {

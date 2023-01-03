@@ -616,7 +616,7 @@ func (r *RuleBuilder) Build(name string, desc string) {
 		if err != nil {
 			ReportPathErrorf(r.ctx, "sbox manifest failed to marshal: %q", err)
 		}
-		WriteFileRule(r.ctx, r.sboxManifestPath, string(pbText))
+		WriteFileRule(r.ctx, r.sboxManifestPath, string(pbText)+"\n")
 
 		// Generate a new string to use as the command line of the sbox rule.  This uses
 		// a RuleBuilderCommand as a convenience method of building the command line, then
@@ -1362,5 +1362,5 @@ func writeRspFileRule(ctx BuilderContext, rspFile WritablePath, paths Paths) {
 		// There should never be I/O errors writing to a bytes.Buffer.
 		panic(err)
 	}
-	WriteFileRule(ctx, rspFile, buf.String())
+	WriteFileRule(ctx, rspFile, buf.String()+"\n")
 }

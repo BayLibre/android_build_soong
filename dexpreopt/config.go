@@ -420,7 +420,7 @@ func WriteModuleConfig(ctx android.ModuleContext, config *ModuleConfig, path and
 		return
 	}
 
-	android.WriteFileRule(ctx, path, string(data))
+	android.WriteFileRule(ctx, path, string(data)+"\n")
 }
 
 // dex2oatModuleName returns the name of the module to use for the dex2oat host
@@ -654,7 +654,7 @@ func (s *globalSoongConfigSingleton) GenerateBuildActions(ctx android.SingletonC
 		return
 	}
 
-	android.WriteFileRule(ctx, android.PathForOutput(ctx, "dexpreopt_soong.config"), string(data))
+	android.WriteFileRule(ctx, android.PathForOutput(ctx, "dexpreopt_soong.config"), string(data)+"\n")
 }
 
 func (s *globalSoongConfigSingleton) MakeVars(ctx android.MakeVarsContext) {

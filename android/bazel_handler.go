@@ -1149,7 +1149,7 @@ func createCommand(cmd *RuleBuilderCommand, buildStatement bazel.BuildStatement,
 	// The actual Bazel action.
 	if len(buildStatement.Command) > 16*1024 {
 		commandFile := PathForBazelOut(ctx, buildStatement.OutputPaths[0]+".sh")
-		WriteFileRule(ctx, commandFile, buildStatement.Command)
+		WriteFileRule(ctx, commandFile, buildStatement.Command+"\n")
 
 		cmd.Text("bash").Text(buildStatement.OutputPaths[0] + ".sh").Implicit(commandFile)
 	} else {

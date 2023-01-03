@@ -197,7 +197,7 @@ func (proto *protobufDecorator) genModFileContents() string {
 			"}")
 	}
 
-	return strings.Join(lines, "\n")
+	return strings.Join(lines, "\n") + "\n"
 }
 
 func (proto *protobufDecorator) SourceProviderProps() []interface{} {

@@ -15,8 +15,9 @@
 package multitree
 
 import (
-	"android/soong/android"
 	"encoding/json"
+
+	"android/soong/android"
 )
 
 func init() {
@@ -66,7 +67,7 @@ func (s *updateMetaSingleton) GenerateBuildActions(ctx android.SingletonContext)
 		ctx.Errorf(err.Error())
 	}
 	s.generatedMetadataFile = android.PathForOutput(ctx, "multitree", "metadata.json")
-	android.WriteFileRule(ctx, s.generatedMetadataFile, string(jsonStr))
+	android.WriteFileRule(ctx, s.generatedMetadataFile, string(jsonStr)+"\n")
 }
 
 func (s *updateMetaSingleton) MakeVars(ctx android.MakeVarsContext) {

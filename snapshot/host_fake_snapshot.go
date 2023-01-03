@@ -145,7 +145,7 @@ func (c *hostFakeSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 		ctx.Errorf("host fake snapshot json marshal failure: %#v", err)
 		return
 	}
-	outputs = append(outputs, WriteStringToFileRule(ctx, string(marsh), filepath.Join(c.snapshotDir, "host_snapshot.json")))
+	outputs = append(outputs, WriteStringToFileRule(ctx, string(marsh)+"\n", filepath.Join(c.snapshotDir, "host_snapshot.json")))
 	c.zipFile = zipSnapshot(ctx, c.snapshotDir, c.snapshotDir, outputs)
 
 }

@@ -360,7 +360,7 @@ var ccSnapshotAction snapshot.GenerateSnapshotAction = func(s snapshot.SnapshotS
 			ctx.Errorf("json marshal to %q failed: %#v", propOut, err)
 			return nil
 		}
-		ret = append(ret, snapshot.WriteStringToFileRule(ctx, string(j), propOut))
+		ret = append(ret, snapshot.WriteStringToFileRule(ctx, string(j)+"\n", propOut))
 
 		return ret
 	}

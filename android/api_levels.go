@@ -295,7 +295,7 @@ func createApiLevelsJson(ctx SingletonContext, file WritablePath,
 		ctx.Errorf(err.Error())
 	}
 
-	WriteFileRule(ctx, file, string(jsonStr))
+	WriteFileRule(ctx, file, string(jsonStr)+"\n")
 }
 
 func GetApiLevelsJson(ctx PathContext) WritablePath {
