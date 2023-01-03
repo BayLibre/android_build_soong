@@ -34,6 +34,24 @@
       "parentUuid": "94114315_35c89de0",
       "revId": "47b8b13955836b15bb0076ee84f2e7b0dd612d21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "989e01d3_358b65bd",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-03T19:43:19Z",
+      "side": 1,
+      "message": "I\u0027ve also made an abtd run of the test that failed last time: https://android-build.googleplex.com/builds/abtd/run/L61400000957995053",
+      "parentUuid": "f0456274_24ad410a",
+      "revId": "47b8b13955836b15bb0076ee84f2e7b0dd612d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
