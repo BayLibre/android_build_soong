@@ -16,6 +16,24 @@
       "message": "This is the part of the original CL that failed on Mac?\n\nI\u0027ll hold off on reviewing until it\u0027s fixed",
       "revId": "47b8b13955836b15bb0076ee84f2e7b0dd612d21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0456274_24ad410a",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-03T19:34:05Z",
+      "side": 1,
+      "message": "The difference here is that now instead of `result.ModuleForTests(\"foo\", \"linux_glibc_common\")`, I\u0027m using `result.ModuleForTests(\"foo\", buildOS+\"_common\")`. I believe this should fix that issue. Other tests in this file use that pattern.",
+      "parentUuid": "94114315_35c89de0",
+      "revId": "47b8b13955836b15bb0076ee84f2e7b0dd612d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
