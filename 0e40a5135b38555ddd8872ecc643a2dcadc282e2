@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3815699_944adb8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-01-03T23:11:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure I 100% follow, if the min SDK is \u003c platform, do we really want the `--android-platform-build` flag to be included in the R8 invocation? This will turn off any API modeling or desugaring that might otherwise be necessary if the target is distributed on an older device/API?\n\nCan you point to a target that is not currently getting `--android-platform-build`, but now will (and should be), but might be distributed on older device runtimes?",
+      "revId": "0e40a5135b38555ddd8872ecc643a2dcadc282e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
