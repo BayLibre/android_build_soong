@@ -145,6 +145,8 @@ func TestAvbAddHashFooter(t *testing.T) {
 					file: "value_file",
 				},
 			],
+			do_not_append_vbmeta_image: true,
+			output_vbmeta_image: "output_vbmeta.img",
 		}
 	`)
 	cmd := result.ModuleForTests("myfooter", "android_arm64_armv8-a").Rule("avbAddHashFooter").RuleParams.Command
@@ -158,4 +160,8 @@ func TestAvbAddHashFooter(t *testing.T) {
 		cmd, "--prop 'prop1:value1'")
 	android.AssertStringDoesContain(t, "Can't find --prop_from_file argument",
 		cmd, "--prop_from_file 'prop2:value_file'")
+	android.AssertStringDoesContain(t, "Can't find --do_not_append_vbmeta_image",
+		cmd, "--do_not_append_vbmeta_image")
+	android.AssertStringDoesContain(t, "Can't find --output_vbmeta_image",
+		cmd, "--output_vbmeta_image ")
 }
