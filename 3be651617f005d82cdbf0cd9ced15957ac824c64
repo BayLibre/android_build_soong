@@ -142,6 +142,24 @@
       "parentUuid": "eb9b244d_c2918716",
       "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc3de0c_ce76339d",
+        "filename": "ui/metrics/bazel_metrics_proto/bazel_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-04T19:48:56Z",
+      "side": 1,
+      "message": "done. I still hate it.",
+      "parentUuid": "cc18eec3_19926417",
+      "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
