@@ -16,6 +16,24 @@
       "message": "Sorry to be pedantic but 3 significant digits wouldn\u0027t tell us where the decimal point would go, i.e. why would 111 not be 1.11% or 0.00111%\nBased on your example, I think it means `thousandths`.\nMaybe rounded to integer is fine (despite my previous comment) or simply a `float`?",
       "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051021c6_c52c3643",
+        "filename": "ui/metrics/bazel_metrics_proto/bazel_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-04T17:50:12Z",
+      "side": 1,
+      "message": "of course it\u0027s an int :) But we need to say what it represents. Float doesn\u0027t make sense here - it\u0027s always x.x%, no more than one digit after the decimal point\n\nTenths_of_a_percent? Thousandths_of_build?",
+      "parentUuid": "4c144a73_65d04704",
+      "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
