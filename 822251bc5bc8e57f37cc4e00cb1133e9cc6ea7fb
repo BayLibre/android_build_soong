@@ -50,6 +50,24 @@
       "message": "Could this be named `trace_make_variables.sh` or something more descriptive of what it\u0027s actually trying to accomplish?",
       "revId": "822251bc5bc8e57f37cc4e00cb1133e9cc6ea7fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc4fc994_df579806",
+        "filename": "scripts/run-ckati.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2023-01-04T19:57:38Z",
+      "side": 1,
+      "message": "Per our verbal discussion, leaving as is.",
+      "parentUuid": "46d991a0_f4b92e0f",
+      "revId": "822251bc5bc8e57f37cc4e00cb1133e9cc6ea7fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
