@@ -1003,6 +1003,8 @@ cc_library_static {
 	})
 }
 
+// generated_headers has "variant_prepend" tag. In bp2build output,
+// variant info(select) should go before general info.
 func TestCcLibraryStaticArchSrcsExcludeSrcsGeneratedFiles(t *testing.T) {
 	runCcLibraryStaticTestCase(t, Bp2buildTestCase{
 		Description: "cc_library_static arch srcs/exclude_srcs with generated files",
@@ -1012,16 +1014,16 @@ func TestCcLibraryStaticArchSrcsExcludeSrcsGeneratedFiles(t *testing.T) {
 			"not-for-x86.cpp":        "",
 			"not-for-everything.cpp": "",
 			"dep/Android.bp": simpleModuleDoNotConvertBp2build("genrule", "generated_src_other_pkg") +
-				simpleModuleDoNotConvertBp2build("genrule", "generated_hdr_other_pkg") +
-				simpleModuleDoNotConvertBp2build("genrule", "generated_src_other_pkg_x86") +
-				simpleModuleDoNotConvertBp2build("genrule", "generated_hdr_other_pkg_x86") +
-				simpleModuleDoNotConvertBp2build("genrule", "generated_hdr_other_pkg_android"),
+					simpleModuleDoNotConvertBp2build("genrule", "generated_hdr_other_pkg") +
+					simpleModuleDoNotConvertBp2build("genrule", "generated_src_other_pkg_x86") +
+					simpleModuleDoNotConvertBp2build("genrule", "generated_hdr_other_pkg_x86") +
+					simpleModuleDoNotConvertBp2build("genrule", "generated_hdr_other_pkg_android"),
 		},
 		Blueprint: soongCcLibraryStaticPreamble +
-			simpleModuleDoNotConvertBp2build("genrule", "generated_src") +
-			simpleModuleDoNotConvertBp2build("genrule", "generated_src_not_x86") +
-			simpleModuleDoNotConvertBp2build("genrule", "generated_src_android") +
-			simpleModuleDoNotConvertBp2build("genrule", "generated_hdr") + `
+				simpleModuleDoNotConvertBp2build("genrule", "generated_src") +
+				simpleModuleDoNotConvertBp2build("genrule", "generated_src_not_x86") +
+				simpleModuleDoNotConvertBp2build("genrule", "generated_src_android") +
+				simpleModuleDoNotConvertBp2build("genrule", "generated_hdr") + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.cpp", "not-for-*.cpp"],
@@ -1066,13 +1068,13 @@ cc_library_static {
         "//build/bazel/platforms/os:android": [":generated_src_android"],
         "//conditions:default": [],
     })`,
-				"hdrs": `["//dep:generated_hdr_other_pkg"] + select({
-        "//build/bazel/platforms/arch:x86": ["//dep:generated_hdr_other_pkg_x86"],
-        "//conditions:default": [],
-    }) + select({
+				"hdrs": `select({
         "//build/bazel/platforms/os:android": ["//dep:generated_hdr_other_pkg_android"],
         "//conditions:default": [],
-    })`,
+    }) + select({
+        "//build/bazel/platforms/arch:x86": ["//dep:generated_hdr_other_pkg_x86"],
+        "//conditions:default": [],
+    }) + ["//dep:generated_hdr_other_pkg"]`,
 				"local_includes":           `["."]`,
 				"export_absolute_includes": `["dep"]`,
 			}),
@@ -1356,7 +1358,7 @@ func TestStaticLibrary_SystemSharedLibsBionic(t *testing.T) {
 	runCcLibraryStaticTestCase(t, Bp2buildTestCase{
 		Description: "cc_library_static system_shared_libs set for bionic variant",
 		Blueprint: soongCcLibraryStaticPreamble +
-			simpleModuleDoNotConvertBp2build("cc_library", "libc") + `
+				simpleModuleDoNotConvertBp2build("cc_library", "libc") + `
 cc_library_static {
     name: "target_bionic",
     target: {
@@ -1383,8 +1385,8 @@ func TestStaticLibrary_SystemSharedLibsLinuxRootAndLinuxBionic(t *testing.T) {
 	runCcLibraryStaticTestCase(t, Bp2buildTestCase{
 		Description: "cc_library_static system_shared_libs set for root and linux_bionic variant",
 		Blueprint: soongCcLibraryStaticPreamble +
-			simpleModuleDoNotConvertBp2build("cc_library", "libc") +
-			simpleModuleDoNotConvertBp2build("cc_library", "libm") + `
+				simpleModuleDoNotConvertBp2build("cc_library", "libc") +
+				simpleModuleDoNotConvertBp2build("cc_library", "libm") + `
 cc_library_static {
     name: "target_linux_bionic",
     system_shared_libs: ["libc"],
@@ -1411,7 +1413,7 @@ func TestCcLibrarystatic_SystemSharedLibUsedAsDep(t *testing.T) {
 	runCcLibraryStaticTestCase(t, Bp2buildTestCase{
 		Description: "cc_library_static system_shared_lib empty for linux_bionic variant",
 		Blueprint: soongCcLibraryStaticPreamble +
-			simpleModuleDoNotConvertBp2build("cc_library", "libc") + `
+				simpleModuleDoNotConvertBp2build("cc_library", "libc") + `
 
 cc_library {
     name: "libm",
