@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d46fbcd1_c11a6dc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-04T11:49:08Z",
+      "side": 1,
+      "message": "It would be cleaner to review by breaking these up into individual CLs.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "e90ae1950e554b0cdb016d6eaf6789f8e903ff21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9cf2e45_6e48c6f0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-04T11:49:08Z",
+      "side": 1,
+      "message": "BazelAllowlisted is a more descriptive name of the action than NameFilter. Maybe \"IsModuleInAllowlist\"?",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "e90ae1950e554b0cdb016d6eaf6789f8e903ff21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b232860a_7bb8a6a0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-04T11:49:08Z",
+      "side": 1,
+      "message": "Was this a warning too, or your personal change?",
+      "range": {
+        "startLine": 208,
+        "startChar": 6,
+        "endLine": 208,
+        "endChar": 9
+      },
+      "revId": "e90ae1950e554b0cdb016d6eaf6789f8e903ff21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b86eb177_a8a88c8c",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-04T11:49:08Z",
+      "side": 0,
+      "message": "I think it\u0027s fine to remove this since we haven\u0027t had the need in a while. If we need it, we can always add it back from this CL.\n\nAdding Liz and Chris as FYI.",
+      "range": {
+        "startLine": 1319,
+        "startChar": 1,
+        "endLine": 1319,
+        "endChar": 32
+      },
+      "revId": "11390fab7328c271e353b436307febdb8e6abb55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
