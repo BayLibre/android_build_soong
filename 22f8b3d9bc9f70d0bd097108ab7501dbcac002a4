@@ -16,6 +16,24 @@
       "message": "Can you please finish up your design /notification doc before proceeding with this change, as it is it may be a significant change for users that query metrics. We should explain to users why we are doing this, and note that soong_metrics.soong_build_metrics is a deprecated data column.",
       "revId": "22f8b3d9bc9f70d0bd097108ab7501dbcac002a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9448624d_2cf154e4",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-04T18:24:42Z",
+      "side": 0,
+      "message": "+1 on the design/notification",
+      "parentUuid": "67b939c3_3e2078bf",
+      "revId": "22f8b3d9bc9f70d0bd097108ab7501dbcac002a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
