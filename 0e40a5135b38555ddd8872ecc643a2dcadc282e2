@@ -70,6 +70,24 @@
       "parentUuid": "4d5322ec_b4ad91a5",
       "revId": "0e40a5135b38555ddd8872ecc643a2dcadc282e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4538844_40edc40a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-01-04T17:03:30Z",
+      "side": 1,
+      "message": "Ah, that makes sense, for whatever reason I had thought that R8 would effectively ignore the min API flag if `--android-platform-build` was also provided. In which case, this change lgtm.",
+      "parentUuid": "5612a485_9c52aab3",
+      "revId": "0e40a5135b38555ddd8872ecc643a2dcadc282e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
