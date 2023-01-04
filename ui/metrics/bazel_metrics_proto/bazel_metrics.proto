@@ -26,6 +26,7 @@ message PhaseTiming {
   // E.g. "execution", "analysis", "launch"
   optional string phase_name = 1;
   optional int64 duration_nanos = 2;
-  // What percentage of the build time this phase took
-  optional int32 percentage_millis = 3;
+  // What percentage of the build time this phase took, using 3 significant digits
+  // E.g., 111 = 11.1%
+  optional int32 percentage_of_build_time = 3;
 }
