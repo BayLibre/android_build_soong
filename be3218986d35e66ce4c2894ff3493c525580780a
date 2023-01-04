@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fc7b1e3_b6a9ff0b",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-04T15:14:09Z",
+      "side": 1,
+      "message": "the add_hash_footer command itself is confusing already. why do we have to bring the confusion to other places like here? 😊\n\nAnyway, if you are \"so\" strong about keeping the same module type, I suggest this:\n\n```\navb_add_hash_footer {\n    name: \"initrd_avb_desc\",\n    src: \"initrd\",\n    // the output is the avb descriptors, not the original image\n    do_not_append_vbmeta_image: true,\n}\n\navb_add_hash_footer {\n    name: \"kernel\",\n    src: \"...\",\n    include_descriptors_from_images: [\"initrd_avb_desc\"]\n}\n```\n\n\nWe don\u0027t need `output_vbmeta_image` as the descriptor won\u0027t be installed directly.",
+      "parentUuid": "ef6bc7bf_889d2e64",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "be3218986d35e66ce4c2894ff3493c525580780a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a30a9c51_c4aab05b",
         "filename": "filesystem/avb_add_hash_footer.go",
         "patchSetId": 3
