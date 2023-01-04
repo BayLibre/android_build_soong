@@ -220,13 +220,19 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 	linkDeps = append(linkDeps, assetDeps...)
 
 	// SDK version flags
-	minSdkVersion, err := sdkContext.MinSdkVersion(ctx).EffectiveVersionString(ctx)
+	version, err := sdkContext.MinSdkVersion(ctx).EffectiveVersionString(ctx)
 	if err != nil {
 		ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
 	}
 
-	linkFlags = append(linkFlags, "--min-sdk-version "+minSdkVersion)
-	linkFlags = append(linkFlags, "--target-sdk-version "+minSdkVersion)
+	// Vendor modules building against "current" of Public/System Api surfaces should be overridden
+	// with CurrentApiLevelForVendorModules(). Note that this uses sdk_version and not min_sdk_version.
+	if ctx.DeviceSpecific() || ctx.SocSpecific() {
+		version, _ = sdkContext.SdkVersion(ctx).EffectiveVersionString(ctx)
+	}
+
+	linkFlags = append(linkFlags, "--min-sdk-version "+version)
+	linkFlags = append(linkFlags, "--target-sdk-version "+version)
 
 	// Version code
 	if !hasVersionCode {
