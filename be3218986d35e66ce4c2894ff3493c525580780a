@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef6bc7bf_889d2e64",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-01-04T14:52:25Z",
+      "side": 1,
+      "message": "Yes, we can. But will that be confusing for users to distinguish it with `vbmeta`?\n\nI thought the idea of this module is just to match exactly the params of `avbtool add_hash_footer`.",
+      "parentUuid": "e8ec0f47_9ecfea12",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "be3218986d35e66ce4c2894ff3493c525580780a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a30a9c51_c4aab05b",
         "filename": "filesystem/avb_add_hash_footer.go",
         "patchSetId": 3
