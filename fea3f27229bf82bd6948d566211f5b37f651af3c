@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf25f31e_9bea5641",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2023-01-04T02:37:36Z",
+      "side": 1,
+      "message": "This CL\u0027s subject describes a proposal to handle mixed mode name filtering into a single command line option. The implementation is not complete at the moment.",
+      "revId": "fea3f27229bf82bd6948d566211f5b37f651af3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
