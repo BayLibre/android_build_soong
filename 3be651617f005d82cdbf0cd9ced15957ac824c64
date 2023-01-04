@@ -52,6 +52,24 @@
       "parentUuid": "051021c6_c52c3643",
       "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c55e76a_0ac96600",
+        "filename": "ui/metrics/bazel_metrics_proto/bazel_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-04T18:37:47Z",
+      "side": 1,
+      "message": "This is going to be stored in the metrics pipeline, under CL info. We haven\u0027t used it anywhere yet because we need the proto in order to serialize :) \n\nA standard bazel profile output looks something like this: https://paste.googleplex.com/5962385708810240\n\nWhich made me realize that thousandths isn\u0027t good enough. Still, I think using a float is overkill when we know the number of digits and can format properly.",
+      "parentUuid": "26b6d48b_2bd1d2ae",
+      "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
