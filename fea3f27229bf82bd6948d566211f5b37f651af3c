@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "392ae9d9_1a3ebe62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-04T12:02:38Z",
+      "side": 1,
+      "message": "I don\u0027t really understand the motivation for this CL. What is the problem or limitation with the current implementation? Is using the different flags unclear during development, or are you prevented you from doing something? \n\nBy reading this description (since you mentioned that implementation is incomplete), I feel that it adds unnecessary complexity in the form of a new command line interface rather than simplifying the configuration system. The CL description also describes how it works, but not why it\u0027s being done.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "fea3f27229bf82bd6948d566211f5b37f651af3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cf25f31e_9bea5641",
