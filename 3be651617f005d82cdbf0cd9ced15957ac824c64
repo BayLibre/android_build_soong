@@ -124,6 +124,24 @@
       "parentUuid": "3bc8d367_5e36ca55",
       "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc18eec3_19926417",
+        "filename": "ui/metrics/bazel_metrics_proto/bazel_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-04T19:45:12Z",
+      "side": 1,
+      "message": "basis_points would be worse I guess.\nby the way you could omit \"percentage\" from the comment",
+      "parentUuid": "eb9b244d_c2918716",
+      "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
