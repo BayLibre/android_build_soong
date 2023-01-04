@@ -70,6 +70,24 @@
       "parentUuid": "989e01d3_358b65bd",
       "revId": "47b8b13955836b15bb0076ee84f2e7b0dd612d21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "709aa334_5b9d26c5",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-04T02:21:41Z",
+      "side": 1,
+      "message": "Oh sorry, I totally missed that instance. Fixed.\n\nI checked out aosp and did a `m nothing` on my mac laptop with this cl, and that passed all the soong tests.",
+      "parentUuid": "8601da80_eccef92c",
+      "revId": "47b8b13955836b15bb0076ee84f2e7b0dd612d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
