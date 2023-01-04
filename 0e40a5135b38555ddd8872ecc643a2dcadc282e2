@@ -34,6 +34,24 @@
       "parentUuid": "a3815699_944adb8b",
       "revId": "0e40a5135b38555ddd8872ecc643a2dcadc282e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d5322ec_b4ad91a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-01-04T00:23:26Z",
+      "side": 1,
+      "message": "Hmm, yeah this case is sort of in a gray area I guess.\n\n@zerny@google.com what would you expect the correct behavior to be for such a target? For tests, there are some cases where we definitely don\u0027t want desugaring (e.g., the libcore tests), but those have been explicitly updated to add the `--android-platform-build` flag (see https://cs.android.com/android/platform/superproject/+/master:cts/tests/libcore/luni/Android.bp;drc\u003df467958f5c7933ae633e75d2587b00ffdffd4f8f;l\u003d40). Otherwise, do we need/want to preserve portability at the expense of potential unknown/undefined behavior when building against an unstable API? Does R8 ignore the min-api flag if we also set \u0027--android-platform-build\u0027?",
+      "parentUuid": "94b22ec3_4dc6d347",
+      "revId": "0e40a5135b38555ddd8872ecc643a2dcadc282e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
