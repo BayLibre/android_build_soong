@@ -70,6 +70,24 @@
       "parentUuid": "26b6d48b_2bd1d2ae",
       "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693b1912_d2eb6ae8",
+        "filename": "ui/metrics/bazel_metrics_proto/bazel_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-04T18:46:25Z",
+      "side": 1,
+      "message": "I have a slight preference for going with percentage and using a float. But if you prefer `thousandths_of_build_time` that\u0027s fine as well.",
+      "parentUuid": "7c55e76a_0ac96600",
+      "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
