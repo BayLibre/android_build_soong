@@ -34,6 +34,24 @@
       "parentUuid": "67b939c3_3e2078bf",
       "revId": "22f8b3d9bc9f70d0bd097108ab7501dbcac002a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d499470_674ee4c9",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-04T20:48:16Z",
+      "side": 0,
+      "message": "Also change  https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/metrics/metrics_proto/metrics.proto;l\u003d96;drc\u003df2a80c6396524e9c554298feca98f0cc5416b8b2\nto `optional SoongBuildMetrics soong_build_metrics \u003d 22 [deprecated\u003dtrue];` and maybe an explanation of where to find the data now.",
+      "parentUuid": "9448624d_2cf154e4",
+      "revId": "22f8b3d9bc9f70d0bd097108ab7501dbcac002a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
