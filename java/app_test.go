@@ -1091,6 +1091,7 @@ func TestVendorAppSdkVersion(t *testing.T) {
 	testCases := []struct {
 		name                                  string
 		sdkVersion                            string
+		minSdkVersionString                   string
 		platformSdkInt                        int
 		platformSdkCodename                   string
 		platformSdkFinal                      bool
@@ -1124,6 +1125,16 @@ func TestVendorAppSdkVersion(t *testing.T) {
 			deviceCurrentApiLevelForVendorModules: "28",
 			expectedMinSdkVersion:                 "28",
 		},
+		{
+			name:                                  "modules that specify min_sdk_version and build against current final SDK",
+			sdkVersion:                            "current",
+			minSdkVersionString:                   `min_sdk_version: "25",`,
+			platformSdkInt:                        29,
+			platformSdkCodename:                   "REL",
+			platformSdkFinal:                      true,
+			deviceCurrentApiLevelForVendorModules: "29",
+			expectedMinSdkVersion:                 "29",
+		},
 	}
 
 	for _, moduleType := range []string{"android_app", "android_library"} {
@@ -1135,7 +1146,8 @@ func TestVendorAppSdkVersion(t *testing.T) {
 						srcs: ["a.java"],
 						sdk_version: "%s%s",
 						vendor: true,
-					}`, moduleType, sdkKind, test.sdkVersion)
+						%s
+					}`, moduleType, sdkKind, test.sdkVersion, test.minSdkVersionString)
 
 					result := android.GroupFixturePreparers(
 						prepareForJavaTest,
