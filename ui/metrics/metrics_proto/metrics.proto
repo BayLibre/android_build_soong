@@ -93,7 +93,10 @@ message MetricsBase {
   // The metrics for the whole build
   optional PerfInfo total = 21;
 
-  optional SoongBuildMetrics soong_build_metrics = 22;
+  // We no longer embed soong_build_metrics in soong_metrics, instead we upload
+  // soong_build_metrics as a standalone field in
+  // android_build.metrics.local.build_metrics and android_build.metrics.ci.build_metrics
+  optional SoongBuildMetrics soong_build_metrics = 22 [deprecated=true];
 
   optional BuildConfig build_config = 23;
 
