@@ -160,6 +160,24 @@
       "parentUuid": "cc18eec3_19926417",
       "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2999121f_e060aeb2",
+        "filename": "ui/metrics/bazel_metrics_proto/bazel_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-04T21:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bc3de0c_ce76339d",
+      "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
