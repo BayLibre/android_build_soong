@@ -106,6 +106,24 @@
       "parentUuid": "693b1912_d2eb6ae8",
       "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9b244d_c2918716",
+        "filename": "ui/metrics/bazel_metrics_proto/bazel_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-04T19:41:43Z",
+      "side": 1,
+      "message": "I kinda hate this new name.",
+      "parentUuid": "3bc8d367_5e36ca55",
+      "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
