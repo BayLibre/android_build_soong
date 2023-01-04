@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "496de89a_9a4ac9ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2023-01-04T19:56:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d46fbcd1_c11a6dc1",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "e90ae1950e554b0cdb016d6eaf6789f8e903ff21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9cf2e45_6e48c6f0",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-04T11:49:08Z",
       "side": 1,
       "message": "BazelAllowlisted is a more descriptive name of the action than NameFilter. Maybe \"IsModuleInAllowlist\"?",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "e90ae1950e554b0cdb016d6eaf6789f8e903ff21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d0b5908_12851a45",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2023-01-04T19:56:47Z",
+      "side": 1,
+      "message": "We apply several checks to a module to decide whether Bazel can handle it. This check examines module\u0027s name. Will IsModuleNameAllowed be better?",
+      "parentUuid": "f9cf2e45_6e48c6f0",
       "range": {
         "startLine": 160,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4323c34_f658c49e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2023-01-04T19:56:47Z",
+      "side": 1,
+      "message": "Yes, it causes a warning:\n (potential name conflict), `config` is a package name",
+      "parentUuid": "b232860a_7bb8a6a0",
+      "range": {
+        "startLine": 208,
+        "startChar": 6,
+        "endLine": 208,
+        "endChar": 9
+      },
+      "revId": "e90ae1950e554b0cdb016d6eaf6789f8e903ff21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b22c4d1_589a99f9",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-04T15:16:13Z",
       "side": 1,
       "message": "This comment should go with the boolean to the right of the comma.\n\nMaybe\n```\nlibrary.sourceAbiDiff(ctx, referenceDump, baseName, nameExt,\n\tisLlndkOrNdk, false  /* allowExtensions */, \"current\", errorMessage)\t\t```\nwould satisfy the linter.",
+      "range": {
+        "startLine": 1898,
+        "startChar": 15,
+        "endLine": 1898,
+        "endChar": 36
+      },
+      "revId": "e90ae1950e554b0cdb016d6eaf6789f8e903ff21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89076ca9_11e54119",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1898,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2023-01-04T19:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b22c4d1_589a99f9",
       "range": {
         "startLine": 1898,
         "startChar": 15,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19aff314_6f3d5db8",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1907,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2023-01-04T19:56:47Z",
+      "side": 1,
+      "message": "I gave up on this, the formatter cannot handle this.",
+      "parentUuid": "56340f66_9482f61b",
+      "range": {
+        "startLine": 1907,
+        "startChar": 52,
+        "endLine": 1907,
+        "endChar": 65
+      },
+      "revId": "e90ae1950e554b0cdb016d6eaf6789f8e903ff21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ac06e33_944caebd",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-01-04T15:16:13Z",
       "side": 1,
       "message": "also referring to the bool to the right of the comma",
+      "range": {
+        "startLine": 1918,
+        "startChar": 15,
+        "endLine": 1918,
+        "endChar": 36
+      },
+      "revId": "e90ae1950e554b0cdb016d6eaf6789f8e903ff21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d72502f_be0a24ff",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1918,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2023-01-04T19:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ac06e33_944caebd",
       "range": {
         "startLine": 1918,
         "startChar": 15,
