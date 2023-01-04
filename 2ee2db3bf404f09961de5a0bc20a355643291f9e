@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61d5f756_9e82f404",
+        "filename": "ui/metrics/bazel_metrics_proto/bazel_metrics.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-04T16:29:29Z",
+      "side": 1,
+      "message": "percentage_of_build_time maybe?",
+      "revId": "2ee2db3bf404f09961de5a0bc20a355643291f9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
