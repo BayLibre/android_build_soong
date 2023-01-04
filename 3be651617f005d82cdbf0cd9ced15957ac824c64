@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c144a73_65d04704",
+        "filename": "ui/metrics/bazel_metrics_proto/bazel_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-04T16:49:23Z",
+      "side": 1,
+      "message": "Sorry to be pedantic but 3 significant digits wouldn\u0027t tell us where the decimal point would go, i.e. why would 111 not be 1.11% or 0.00111%\nBased on your example, I think it means `thousandths`.\nMaybe rounded to integer is fine (despite my previous comment) or simply a `float`?",
+      "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
