@@ -88,6 +88,24 @@
       "parentUuid": "7c55e76a_0ac96600",
       "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc8d367_5e36ca55",
+        "filename": "ui/metrics/bazel_metrics_proto/bazel_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-04T18:48:35Z",
+      "side": 1,
+      "message": "were it finance, we could use `pips` :-)",
+      "parentUuid": "693b1912_d2eb6ae8",
+      "revId": "3be651617f005d82cdbf0cd9ced15957ac824c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
