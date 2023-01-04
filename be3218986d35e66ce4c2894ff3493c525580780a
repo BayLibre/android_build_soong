@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9b2f654_41808c9b",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-01-04T15:24:09Z",
+      "side": 1,
+      "message": "It\u0027s okay. I can add a new module tomorrow. I just feel that we are adding another learning block for `avbtool` if `avb_add_hash_footer` does not translate exactly `avbtool add_hash_footer`.\n\nI think the format above couldn\u0027t cover the case users want to append the vbmeta and write new vbmeta, which is supported by `avbtool`. 😊",
+      "parentUuid": "2fc7b1e3_b6a9ff0b",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "be3218986d35e66ce4c2894ff3493c525580780a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a30a9c51_c4aab05b",
         "filename": "filesystem/avb_add_hash_footer.go",
         "patchSetId": 3
