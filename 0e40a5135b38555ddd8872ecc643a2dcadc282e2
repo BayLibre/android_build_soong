@@ -52,6 +52,24 @@
       "parentUuid": "94b22ec3_4dc6d347",
       "revId": "0e40a5135b38555ddd8872ecc643a2dcadc282e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5612a485_9c52aab3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2023-01-04T08:19:05Z",
+      "side": 1,
+      "message": "This also sounds a target that should also have the flag set as it should not be using API surface outside what platform provides, no?\n\nD8 will not ignore the min-api as it will still be used to determine the majority of desugarings and format requirements (say, lambdas, nest desugaring, workarounds, unrepresentable instructions in the dex format etc.). The platform flag should only deal with the aspects that are increasing the platform API (backports and desugared-library) or otherwise making assumptions about it (API modeling).",
+      "parentUuid": "4d5322ec_b4ad91a5",
+      "revId": "0e40a5135b38555ddd8872ecc643a2dcadc282e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
