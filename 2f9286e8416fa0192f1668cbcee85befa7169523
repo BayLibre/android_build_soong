@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fab5cce_5e3a48d6",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-05T22:20:27Z",
+      "side": 1,
+      "message": "What is \"android_build.metrics.local.build_metrics\" ?\nI am guessing a db column.\nBut that is only relevant for \"local\" builds. This comment needs some refinement IMO.",
+      "revId": "2f9286e8416fa0192f1668cbcee85befa7169523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
