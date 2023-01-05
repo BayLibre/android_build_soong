@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba1d3fb_36291327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2023-01-05T19:58:11Z",
+      "side": 1,
+      "message": "LGTM. Thanks!",
+      "revId": "9ba8260ad8996679453c41da2e8ae2123885c675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03ac2ee_8fd15983",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2023-01-05T19:58:11Z",
+      "side": 1,
+      "message": "nit: imo an excess spacing line",
+      "revId": "9ba8260ad8996679453c41da2e8ae2123885c675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
