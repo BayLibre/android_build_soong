@@ -22,6 +22,30 @@
       },
       "revId": "4368d02d3f70a3483f84602ddbe44748e0a0d626",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d8d0a5_775e02c2",
+        "filename": "java/app_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-05T18:23:35Z",
+      "side": 1,
+      "message": "As a concrete example, for this vendor module\n```\nandroid_app {\n  name: \"foo\",\n  vendor: true,\n  sdk_version: \"current\",\n  min_sdk_version: \"25\",\n}\n\n# Product config\nBOARD_CURRENT_API_LEVEL_FOR_VENDOR_MODULES :\u003d 29\n```\n\nJeongik, what value should be passed to `--min-sdk-version` and `--target-sdk-version` for aapt2? \n\nOn ToT, it is 25. Should it be BOARD_CURRENT_API_LEVEL_FOR_VENDOR_MODULES instead? (29 in this example, or 28, or 27, ...)\n\n(I am refactoring min_sdk_version, and would not like to cause a regression in functionality)",
+      "parentUuid": "277a5e2a_657df2c3",
+      "range": {
+        "startLine": 1136,
+        "startChar": 3,
+        "endLine": 1136,
+        "endChar": 47
+      },
+      "revId": "4368d02d3f70a3483f84602ddbe44748e0a0d626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
