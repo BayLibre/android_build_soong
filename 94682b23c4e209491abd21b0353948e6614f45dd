@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b842b4b_542f0b03",
+        "filename": "java/aar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-01-05T06:55:44Z",
+      "side": 0,
+      "message": "out of curiosity, why do we pass minSdkVersion instead of sdkVersion here?",
+      "range": {
+        "startLine": 229,
+        "startChar": 55,
+        "endLine": 229,
+        "endChar": 68
+      },
+      "revId": "94682b23c4e209491abd21b0353948e6614f45dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

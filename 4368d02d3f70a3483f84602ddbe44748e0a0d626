@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "277a5e2a_657df2c3",
+        "filename": "java/app_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-01-05T06:55:44Z",
+      "side": 1,
+      "message": "I think min_sdk_version \u003c\u003d BOARD_CURRENT_API_LEVEL_FOR_VENDOR_MODULES \u003c\u003d current is always true. So, we don\u0027t need an additional if statement here. In the test case, min_sdk_version is supposed to be 25 even though expectedMinSdkVersion is set.",
+      "range": {
+        "startLine": 1136,
+        "startChar": 3,
+        "endLine": 1136,
+        "endChar": 47
+      },
+      "revId": "4368d02d3f70a3483f84602ddbe44748e0a0d626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
