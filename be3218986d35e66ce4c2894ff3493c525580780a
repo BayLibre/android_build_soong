@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c682247a_1d2406bb",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-01-05T15:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "352357d0_a88a308d",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "be3218986d35e66ce4c2894ff3493c525580780a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a30a9c51_c4aab05b",
@@ -133,6 +157,30 @@
       "writtenOn": "2023-01-04T13:56:05Z",
       "side": 1,
       "message": "I don\u0027t think anyone would want to set this name because the output is consumed by another avb_add_hash_footer module.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "be3218986d35e66ce4c2894ff3493c525580780a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac793513_a12c042d",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-01-05T15:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a30a9c51_c4aab05b",
       "range": {
         "startLine": 81,
         "startChar": 0,
@@ -166,6 +214,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a40822_dca7d046",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-01-05T15:09:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b3bdaea4_62af47d6",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 81
+      },
+      "revId": "be3218986d35e66ce4c2894ff3493c525580780a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1aef59d_76db3a42",
@@ -189,6 +261,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4356bce_98e98939",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-01-05T15:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1aef59d_76db3a42",
+      "range": {
+        "startLine": 163,
+        "startChar": 13,
+        "endLine": 163,
+        "endChar": 25
+      },
+      "revId": "be3218986d35e66ce4c2894ff3493c525580780a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06e9e6f3_a8e54870",
@@ -202,6 +298,30 @@
       "writtenOn": "2023-01-04T13:56:05Z",
       "side": 1,
       "message": "Instead of switching outputs, you can implement the OutputFileProducer interface [1] which can return multiple outputs depending on the tag requested. For example, for these dependencies, you call `OutputFile(\"avb_descriptor\")` here and implement the function to return outputVbmetaImage when the tag is as such.\n\n[1] https://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;drc\u003d77dc7d0839c53d76092e7b75ba3c3d4734542bbd;l\u003d3542",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 28
+      },
+      "revId": "be3218986d35e66ce4c2894ff3493c525580780a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "242ee3e0_456a7736",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-01-05T15:09:11Z",
+      "side": 1,
+      "message": "Thanks. I created a separate module for this. So now we just have one output here.",
+      "parentUuid": "06e9e6f3_a8e54870",
       "range": {
         "startLine": 179,
         "startChar": 0,

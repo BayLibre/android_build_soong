@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62514106_fee8c9d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-01-05T15:09:11Z",
+      "side": 1,
+      "message": "Hi Jiyong,\n\nCould you take another look at this change?",
+      "revId": "1bc69feefd2a0fd74225f7fd560888c3e521d585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
