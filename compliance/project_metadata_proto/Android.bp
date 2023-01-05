@@ -25,3 +25,18 @@ bootstrap_go_package {
         "golang-protobuf-runtime-protoimpl",
     ],
 }
+
+python_library_host {
+    name: "project_metadata_proto_py",
+    version: {
+        py3: {
+            enabled: true,
+        },
+    },
+    srcs: [
+        "project_metadata.proto",
+    ],
+    proto: {
+        canonical_path_from_root: false,
+    },
+}
