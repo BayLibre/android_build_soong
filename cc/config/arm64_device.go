@@ -37,9 +37,11 @@ var (
 		},
 		"armv8-2a": []string{
 			"-march=armv8.2-a",
+			"-mbranch-protection=standard",
 		},
 		"armv8-2a-dotprod": []string{
 			"-march=armv8.2-a+dotprod",
+			"-mbranch-protection=standard",
 		},
 	}
 
