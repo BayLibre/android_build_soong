@@ -187,14 +187,7 @@ func (s SdkSpec) EffectiveVersion(ctx EarlyModuleContext) (ApiLevel, error) {
 	if ctx.DeviceSpecific() || ctx.SocSpecific() {
 		s = s.ForVendorPartition(ctx)
 	}
-	if !s.ApiLevel.IsPreview() {
-		return s.ApiLevel, nil
-	}
-	ret := ctx.Config().DefaultAppTargetSdk(ctx)
-	if ret.IsPreview() {
-		return FutureApiLevel, nil
-	}
-	return ret, nil
+	return s.ApiLevel.EffectiveVersion(ctx)
 }
 
 // EffectiveVersionString converts an SdkSpec into the concrete version string that the module
@@ -208,15 +201,12 @@ func (s SdkSpec) EffectiveVersionString(ctx EarlyModuleContext) (string, error) 
 	if ctx.DeviceSpecific() || ctx.SocSpecific() {
 		s = s.ForVendorPartition(ctx)
 	}
-	if !s.ApiLevel.IsPreview() {
-		return s.ApiLevel.String(), nil
-	}
-	return ctx.Config().DefaultAppTargetSdk(ctx).String(), nil
+	return s.ApiLevel.EffectiveVersionString(ctx)
 }
 
 var (
 	SdkSpecNone         = SdkSpec{SdkNone, NoneApiLevel, "(no version)"}
-	SdkSpecPrivate      = SdkSpec{SdkPrivate, FutureApiLevel, ""}
+	SdkSpecPrivate      = SdkSpec{SdkPrivate, PrivateApiLevel, ""}
 	SdkSpecCorePlatform = SdkSpec{SdkCorePlatform, FutureApiLevel, "core_platform"}
 )
 
@@ -239,7 +229,7 @@ func SdkSpecFromWithConfig(config Config, str string) SdkSpec {
 
 		var kindString string
 		if sep == 0 {
-			return SdkSpec{SdkInvalid, NoneApiLevel, str}
+			return SdkSpec{SdkInvalid, NewInvalidApiLevel(str), str}
 		} else if sep == -1 {
 			kindString = ""
 		} else {
@@ -267,7 +257,7 @@ func SdkSpecFromWithConfig(config Config, str string) SdkSpec {
 
 		apiLevel, err := ApiLevelFromUserWithConfig(config, versionString)
 		if err != nil {
-			return SdkSpec{SdkInvalid, apiLevel, str}
+			return SdkSpec{SdkInvalid, NewInvalidApiLevel(versionString), str}
 		}
 		return SdkSpec{kind, apiLevel, str}
 	}
