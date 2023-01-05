@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab58b480_2e94cf6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2023-01-05T00:21:32Z",
+      "side": 1,
+      "message": "We have currently have four different command line options that use the same name filtering mechanism. This proposal replaces them with a single command-line option. IMHO it is simpler, and the implementation is going to be somewhat shorter, too.",
+      "parentUuid": "392ae9d9_1a3ebe62",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "fea3f27229bf82bd6948d566211f5b37f651af3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cf25f31e_9bea5641",
