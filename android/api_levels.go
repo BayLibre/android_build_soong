@@ -113,6 +113,36 @@ func (this ApiLevel) IsNone() bool {
 	return this.number == -1
 }
 
+// EffectiveVersion converts an ApiLevel into the concrete ApiLevel that the module should use. For
+// modules targeting an unreleased SDK (meaning it does not yet have a number) it returns
+// FutureApiLevel(10000).
+func (l ApiLevel) EffectiveVersion(ctx EarlyModuleContext) (ApiLevel, error) {
+	if l.EqualTo(InvalidApiLevel) {
+		return l, fmt.Errorf("invalid version in sdk_version %q", l.value)
+	}
+	if !l.IsPreview() {
+		return l, nil
+	}
+	ret := ctx.Config().DefaultAppTargetSdk(ctx)
+	if ret.IsPreview() {
+		return FutureApiLevel, nil
+	}
+	return ret, nil
+}
+
+// EffectiveVersionString converts an SdkSpec into the concrete version string that the module
+// should use. For modules targeting an unreleased SDK (meaning it does not yet have a number)
+// it returns the codename (P, Q, R, etc.)
+func (l ApiLevel) EffectiveVersionString(ctx EarlyModuleContext) (string, error) {
+	if l.EqualTo(InvalidApiLevel) {
+		return l.value, fmt.Errorf("invalid version in sdk_version %q", l.value)
+	}
+	if !l.IsPreview() {
+		return l.String(), nil
+	}
+	return ctx.Config().DefaultAppTargetSdk(ctx).String(), nil
+}
+
 // Returns -1 if the current API level is less than the argument, 0 if they
 // are equal, and 1 if it is greater than the argument.
 func (this ApiLevel) CompareTo(other ApiLevel) int {
@@ -164,6 +194,19 @@ var NoneApiLevel = ApiLevel{
 	// Not 0 because we don't want this to compare equal with the first preview.
 	number:    -1,
 	isPreview: true,
+}
+
+// Sentinel ApiLevel to validate that an apiLevel is either an int or a recognized codename.
+var InvalidApiLevel = NewInvalidApiLevel("invalid")
+
+// Returns an apiLevel object at the same level as InvalidApiLevel.
+// The object contains the raw string provied in bp file, and can be used for error handling.
+func NewInvalidApiLevel(raw string) ApiLevel {
+	return ApiLevel{
+		value:     raw,
+		number:    -2, // One less than NoneApiLevel
+		isPreview: true,
+	}
 }
 
 // The first version that introduced 64-bit ABIs.
