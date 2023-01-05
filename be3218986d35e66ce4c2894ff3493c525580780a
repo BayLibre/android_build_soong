@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "352357d0_a88a308d",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-05T02:47:33Z",
+      "side": 1,
+      "message": "Do we have such use case? Even if we have, it could be achived by having two build rules; one for appending, the other for generating vbmeta only.",
+      "parentUuid": "d9b2f654_41808c9b",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "be3218986d35e66ce4c2894ff3493c525580780a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a30a9c51_c4aab05b",
         "filename": "filesystem/avb_add_hash_footer.go",
         "patchSetId": 3
