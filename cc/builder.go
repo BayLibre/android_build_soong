@@ -19,7 +19,6 @@ package cc
 // functions.
 
 import (
-	"path/filepath"
 	"runtime"
 	"strconv"
 	"strings"
@@ -903,34 +902,6 @@ func transformDumpToLinkedDump(ctx android.ModuleContext, sAbiDumps android.Path
 		Args:        args,
 	})
 	return android.OptionalPathForPath(outputFile)
-}
-
-func transformAbiDumpToAbiDiff(ctx android.ModuleContext, inputDump, referenceDump android.Path,
-	baseName, nameExt string, extraFlags []string, errorMessage string) android.Path {
-
-	var outputFile android.ModuleOutPath
-	if nameExt != "" {
-		outputFile = android.PathForModuleOut(ctx, baseName+"."+nameExt+".abidiff")
-	} else {
-		outputFile = android.PathForModuleOut(ctx, baseName+".abidiff")
-	}
-	libName := strings.TrimSuffix(baseName, filepath.Ext(baseName))
-
-	ctx.Build(pctx, android.BuildParams{
-		Rule:        sAbiDiff,
-		Description: "header-abi-diff " + outputFile.Base(),
-		Output:      outputFile,
-		Input:       inputDump,
-		Implicit:    referenceDump,
-		Args: map[string]string{
-			"referenceDump": referenceDump.String(),
-			"libName":       libName,
-			"arch":          ctx.Arch().ArchType.Name,
-			"extraFlags":    strings.Join(extraFlags, " "),
-			"errorMessage":  errorMessage,
-		},
-	})
-	return outputFile
 }
 
 // Generate a rule for extracting a table of contents from a shared library (.so)
