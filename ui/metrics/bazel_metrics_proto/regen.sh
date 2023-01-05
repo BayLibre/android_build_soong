@@ -27,3 +27,7 @@ fi
 if ! aprotoc --go_out=paths=source_relative:. bazel_metrics.proto; then
   die "build failed. ${error_msg}"
 fi
+
+if ! aprotoc --python_out=. bazel_metrics.proto; then
+  die "build failed. ${error_msg}"
+fi
