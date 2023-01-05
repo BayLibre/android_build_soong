@@ -118,6 +118,30 @@
       },
       "revId": "7499210eb1ca921f08448e804945befea93abdbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92ed5a11_0b8ad228",
+        "filename": "tests/run_integration_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-05T08:00:35Z",
+      "side": 1,
+      "message": "Great, thanks to both of you.",
+      "parentUuid": "4c0767f2_4717cc3c",
+      "range": {
+        "startLine": 20,
+        "startChar": 94,
+        "endLine": 20,
+        "endChar": 107
+      },
+      "revId": "7499210eb1ca921f08448e804945befea93abdbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
