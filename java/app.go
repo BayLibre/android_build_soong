@@ -348,7 +348,6 @@ func (a *AndroidApp) useEmbeddedNativeLibs(ctx android.ModuleContext) bool {
 	if err != nil {
 		ctx.PropertyErrorf("min_sdk_version", "invalid value %q: %s", a.MinSdkVersion(ctx), err)
 	}
-
 	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
 	return (minSdkVersion.FinalOrFutureInt() >= 23 && Bool(a.appProperties.Use_embedded_native_libs)) ||
 		!apexInfo.IsForPlatform()
@@ -752,7 +751,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 
 type appDepsInterface interface {
 	SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec
-	MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec
+	MinSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel
 	RequiresStableAPIs(ctx android.BaseModuleContext) bool
 }
 
