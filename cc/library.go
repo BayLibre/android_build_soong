@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"path/filepath"
@@ -1802,178 +1803,173 @@ func (library *libraryDecorator) coverageOutputFilePath() android.OptionalPath {
 	return library.coverageOutputFile
 }
 
-func getRefAbiDumpFile(ctx android.ModuleInstallPathContext,
-	versionedDumpDir, fileName string) android.OptionalPath {
-
-	currentArchType := ctx.Arch().ArchType
-	primaryArchType := ctx.Config().DevicePrimaryArchType()
-	archName := currentArchType.String()
-	if currentArchType != primaryArchType {
-		archName += "_" + primaryArchType.String()
-	}
-
-	return android.ExistentPathForSource(ctx, versionedDumpDir, archName, "source-based",
-		fileName+".lsdump")
+type abiDiffContext struct {
+	ModuleContext
+	library       *libraryDecorator
+	baseName      string
+	dumpDir       string
+	binderBitness string
 }
 
-func getRefAbiDumpDir(isNdk, isVndk bool) string {
+func (l *libraryDecorator) newAbiDiffContext(ctx ModuleContext, baseName string) *abiDiffContext {
+	dctx := &abiDiffContext{ModuleContext: ctx, library: l, baseName: baseName}
 	var dirName string
-	if isNdk {
+	if dctx.isNdk(dctx.Config()) {
 		dirName = "ndk"
-	} else if isVndk {
+	} else if dctx.useVndk() && dctx.isVndk() {
 		dirName = "vndk"
 	} else {
 		dirName = "platform"
 	}
-	return filepath.Join("prebuilts", "abi-dumps", dirName)
-}
-
-func prevRefAbiDumpVersion(ctx ModuleContext, dumpDir string) int {
-	sdkVersionInt := ctx.Config().PlatformSdkVersion().FinalInt()
-	sdkVersionStr := ctx.Config().PlatformSdkVersion().String()
-
-	if ctx.Config().PlatformSdkFinal() {
-		return sdkVersionInt - 1
-	} else {
-		// The platform SDK version can be upgraded before finalization while the corresponding abi dumps hasn't
-		// been generated. Thus the Cross-Version Check chooses PLATFORM_SDK_VERION - 1 as previous version.
-		// This situation could be identified by checking the existence of the PLATFORM_SDK_VERION dump directory.
-		versionedDumpDir := android.ExistentPathForSource(ctx, dumpDir, sdkVersionStr)
-		if versionedDumpDir.Valid() {
-			return sdkVersionInt
-		} else {
-			return sdkVersionInt - 1
-		}
-	}
-}
-
-func currRefAbiDumpVersion(ctx ModuleContext, isVndk bool) string {
-	if isVndk {
-		// Each version of VNDK is independent, so follow the VNDK version which is the codename or PLATFORM_SDK_VERSION.
-		return ctx.Module().(*Module).VndkVersion()
-	} else if ctx.Config().PlatformSdkFinal() {
-		// After sdk finalization, the ABI of the latest API level must be consistent with the source code,
-		// so choose PLATFORM_SDK_VERSION as the current version.
-		return ctx.Config().PlatformSdkVersion().String()
-	} else {
-		return "current"
-	}
+	dctx.dumpDir = filepath.Join("prebuilts", "abi-dumps", dirName)
+	dctx.binderBitness = ctx.DeviceConfig().BinderBitness()
+	return dctx
 }
 
 // sourceAbiDiff registers a build statement to compare linked sAbi dump files (.lsdump).
-func (library *libraryDecorator) sourceAbiDiff(ctx android.ModuleContext, referenceDump android.Path,
-	baseName, nameExt string, isLlndkOrNdk, allowExtensions bool,
-	sourceVersion, errorMessage string) {
-
-	sourceDump := library.sAbiOutputFile.Path()
-
-	extraFlags := []string{"-target-version", sourceVersion}
-	if Bool(library.Properties.Header_abi_checker.Check_all_apis) {
-		extraFlags = append(extraFlags, "-check-all-apis")
+func (dctx abiDiffContext) sourceAbiDiff(referenceDump android.Path, outputStem string, options string, errorMessage string) {
+	sourceDump := dctx.library.sAbiOutputFile.Path()
+	extraFlags := bytes.NewBufferString(options)
+	if Bool(dctx.library.Properties.Header_abi_checker.Check_all_apis) {
+		extraFlags.WriteString(" -check-all-apis")
 	} else {
-		extraFlags = append(extraFlags,
-			"-allow-unreferenced-changes",
-			"-allow-unreferenced-elf-symbol-changes")
+		extraFlags.WriteString(" -allow-unreferenced-changes -allow-unreferenced-elf-symbol-changes")
 	}
-	if isLlndkOrNdk {
-		extraFlags = append(extraFlags, "-consider-opaque-types-different")
+	if dctx.isImplementationForLLNDKPublic() || dctx.isNdk(dctx.Config()) {
+		extraFlags.WriteString(" -consider-opaque-types-different")
 	}
-	if allowExtensions {
-		extraFlags = append(extraFlags, "-allow-extensions")
+	for _, s := range dctx.library.Properties.Header_abi_checker.Diff_flags {
+		extraFlags.WriteString(" ")
+		extraFlags.WriteString(s)
 	}
-	extraFlags = append(extraFlags, library.Properties.Header_abi_checker.Diff_flags...)
+	var outputFile android.ModuleOutPath = android.PathForModuleOut(dctx, outputStem+".abidiff")
+	libName := strings.TrimSuffix(dctx.baseName, filepath.Ext(dctx.baseName))
 
-	library.sAbiDiff = append(
-		library.sAbiDiff,
-		transformAbiDumpToAbiDiff(ctx, sourceDump, referenceDump,
-			baseName, nameExt, extraFlags, errorMessage))
+	dctx.Build(pctx, android.BuildParams{
+		Rule:        sAbiDiff,
+		Description: "header-abi-diff " + outputFile.Base(),
+		Output:      outputFile,
+		Input:       sourceDump,
+		Implicit:    referenceDump,
+		Args: map[string]string{
+			"referenceDump": referenceDump.String(),
+			"libName":       libName,
+			"arch":          dctx.Arch().ArchType.Name,
+			"extraFlags":    extraFlags.String(),
+			"errorMessage":  errorMessage,
+		},
+	})
+	dctx.library.sAbiDiff = append(dctx.library.sAbiDiff, outputFile)
+
 }
 
-func (library *libraryDecorator) crossVersionAbiDiff(ctx android.ModuleContext, referenceDump android.Path,
-	baseName string, isLlndkOrNdk bool, sourceVersion, prevVersion string) {
-
-	errorMessage := "error: Please follow https://android.googlesource.com/platform/development/+/master/vndk/tools/header-checker/README.md#configure-cross_version-abi-check to resolve the ABI difference between your source code and version " + prevVersion + "."
-
-	library.sourceAbiDiff(ctx, referenceDump, baseName, prevVersion,
-		isLlndkOrNdk, true /* allowExtensions */, sourceVersion, errorMessage)
+func (dctx abiDiffContext) getRefAbiDumpFile(versionedDumpDir string) android.OptionalPath {
+	currentArchType := dctx.Arch().ArchType
+	primaryArchType := dctx.Config().DevicePrimaryArchType()
+	archName := currentArchType.String()
+	if currentArchType != primaryArchType {
+		archName += "_" + primaryArchType.String()
+	}
+	return android.ExistentPathForSource(dctx, versionedDumpDir, archName, "source-based",
+		dctx.baseName+".lsdump")
 }
 
-func (library *libraryDecorator) sameVersionAbiDiff(ctx android.ModuleContext, referenceDump android.Path,
-	baseName string, isLlndkOrNdk, allowExtensions bool) {
-
-	libName := strings.TrimSuffix(baseName, filepath.Ext(baseName))
-	errorMessage := "error: Please update ABI references with: $$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py -l " + libName
-
-	library.sourceAbiDiff(ctx, referenceDump, baseName, "",
-		isLlndkOrNdk, allowExtensions, "current", errorMessage)
+func (dctx abiDiffContext) getVersionedDumpDir(version string) string {
+	return filepath.Join(dctx.dumpDir, version, dctx.binderBitness)
 }
 
-func (library *libraryDecorator) optInAbiDiff(ctx android.ModuleContext, referenceDump android.Path,
-	baseName, nameExt string, isLlndkOrNdk bool, refDumpDir string) {
+func (dctx abiDiffContext) prevRefAbiDumpVersion() int {
+	sdkVersionInt := dctx.Config().PlatformSdkVersion().FinalInt()
+	sdkVersionStr := dctx.Config().PlatformSdkVersion().String()
 
-	libName := strings.TrimSuffix(baseName, filepath.Ext(baseName))
-	errorMessage := "error: Please update ABI references with: $$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py -l " + libName + " -ref-dump-dir $$ANDROID_BUILD_TOP/" + refDumpDir
+	if dctx.Config().PlatformSdkFinal() {
+		return sdkVersionInt - 1
+	}
+	// The platform SDK version can be upgraded before finalization while the corresponding abi dumps hasn't
+	// been generated. Thus the Cross-Version Check chooses PLATFORM_SDK_VERION - 1 as previous version.
+	// This situation could be identified by checking the existence of the PLATFORM_SDK_VERION dump directory.
+	versionedDumpDir := android.ExistentPathForSource(dctx, dctx.dumpDir, sdkVersionStr)
+	if versionedDumpDir.Valid() {
+		return sdkVersionInt
+	}
+	return sdkVersionInt - 1
+}
 
-	library.sourceAbiDiff(ctx, referenceDump, baseName, nameExt,
-		isLlndkOrNdk, false /* allowExtensions */, "current", errorMessage)
+func (dctx abiDiffContext) currRefAbiDumpVersion() string {
+	if dctx.useVndk() && dctx.isVndk() {
+		// Each version of VNDK is independent, so follow the VNDK version which is the codename or PLATFORM_SDK_VERSION.
+		return dctx.Module().(*Module).VndkVersion()
+	}
+	if dctx.Config().PlatformSdkFinal() {
+		// After sdk finalization, the ABI of the latest API level must be consistent with the source code,
+		// so choose PLATFORM_SDK_VERSION as the current version.
+		return dctx.Config().PlatformSdkVersion().String()
+	}
+	return "current"
 }
 
 func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objects, fileName string, soFile android.Path) {
-	if library.sabi.shouldCreateSourceAbiDump() {
-		exportIncludeDirs := library.flagExporter.exportedIncludes(ctx)
-		var SourceAbiFlags []string
-		for _, dir := range exportIncludeDirs.Strings() {
-			SourceAbiFlags = append(SourceAbiFlags, "-I"+dir)
-		}
-		for _, reexportedInclude := range library.sabi.Properties.ReexportedIncludes {
-			SourceAbiFlags = append(SourceAbiFlags, "-I"+reexportedInclude)
-		}
-		exportedHeaderFlags := strings.Join(SourceAbiFlags, " ")
-		library.sAbiOutputFile = transformDumpToLinkedDump(ctx, objs.sAbiDumpFiles, soFile, fileName, exportedHeaderFlags,
-			android.OptionalPathForModuleSrc(ctx, library.symbolFileForAbiCheck(ctx)),
-			library.Properties.Header_abi_checker.Exclude_symbol_versions,
-			library.Properties.Header_abi_checker.Exclude_symbol_tags)
+	if !library.sabi.shouldCreateSourceAbiDump() {
+		return
+	}
+	exportIncludeDirs := library.flagExporter.exportedIncludes(ctx)
+	var SourceAbiFlags []string
+	for _, dir := range exportIncludeDirs.Strings() {
+		SourceAbiFlags = append(SourceAbiFlags, "-I"+dir)
+	}
+	for _, reexportedInclude := range library.sabi.Properties.ReexportedIncludes {
+		SourceAbiFlags = append(SourceAbiFlags, "-I"+reexportedInclude)
+	}
+	exportedHeaderFlags := strings.Join(SourceAbiFlags, " ")
+	library.sAbiOutputFile = transformDumpToLinkedDump(ctx, objs.sAbiDumpFiles, soFile, fileName, exportedHeaderFlags,
+		android.OptionalPathForModuleSrc(ctx, library.symbolFileForAbiCheck(ctx)),
+		library.Properties.Header_abi_checker.Exclude_symbol_versions,
+		library.Properties.Header_abi_checker.Exclude_symbol_tags)
 
-		addLsdumpPath(classifySourceAbiDump(ctx) + ":" + library.sAbiOutputFile.String())
+	addLsdumpPath(classifySourceAbiDump(ctx) + ":" + library.sAbiOutputFile.String())
 
-		// The logic must be consistent with classifySourceAbiDump.
-		isVndk := ctx.useVndk() && ctx.isVndk()
-		isNdk := ctx.isNdk(ctx.Config())
-		isLlndk := ctx.isImplementationForLLNDKPublic()
-		dumpDir := getRefAbiDumpDir(isNdk, isVndk)
-		binderBitness := ctx.DeviceConfig().BinderBitness()
-		// If NDK or PLATFORM library, check against previous version ABI.
-		if !isVndk {
-			prevVersionInt := prevRefAbiDumpVersion(ctx, dumpDir)
-			prevVersion := strconv.Itoa(prevVersionInt)
-			prevDumpDir := filepath.Join(dumpDir, prevVersion, binderBitness)
-			prevDumpFile := getRefAbiDumpFile(ctx, prevDumpDir, fileName)
-			if prevDumpFile.Valid() {
-				library.crossVersionAbiDiff(ctx, prevDumpFile.Path(),
-					fileName, isLlndk || isNdk,
-					strconv.Itoa(prevVersionInt+1), prevVersion)
-			}
+	// The logic must be consistent with classifySourceAbiDump.
+	dctx := library.newAbiDiffContext(ctx, fileName)
+	isVndk := ctx.useVndk() && ctx.isVndk()
+	libName := strings.TrimSuffix(fileName, filepath.Ext(fileName))
+	const abiCheckUrl = "https://android.googlesource.com/platform/development/+/master/vndk/tools/header-checker/README.md#configure-cross_version-abi-check:"
+	const createDumpsScript = "$$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py -l "
+	// If NDK or PLATFORM library, check against previous version ABI.
+	if !isVndk {
+		prevVersionInt := dctx.prevRefAbiDumpVersion()
+		prevVersion := strconv.Itoa(prevVersionInt)
+		prevDumpFile := dctx.getRefAbiDumpFile(dctx.getVersionedDumpDir(prevVersion))
+		if prevDumpFile.Valid() {
+			dctx.sourceAbiDiff(prevDumpFile.Path(),
+				fmt.Sprintf("%s.%s", fileName, prevVersion),
+				fmt.Sprintf("--target-version %d --allow-extensions", prevVersionInt+1),
+				"error: Please follow "+abiCheckUrl+
+					" to resolve the ABI difference between your source code and version "+prevVersion+".")
 		}
-		// Check against the current version.
-		currVersion := currRefAbiDumpVersion(ctx, isVndk)
-		currDumpDir := filepath.Join(dumpDir, currVersion, binderBitness)
-		currDumpFile := getRefAbiDumpFile(ctx, currDumpDir, fileName)
-		if currDumpFile.Valid() {
-			library.sameVersionAbiDiff(ctx, currDumpFile.Path(),
-				fileName, isLlndk || isNdk, ctx.IsVndkExt())
+	}
+	// Check against the current version.
+	currVersion := dctx.currRefAbiDumpVersion()
+	currDumpFile := dctx.getRefAbiDumpFile(dctx.getVersionedDumpDir(currVersion))
+	if currDumpFile.Valid() {
+		errorMessage := "error: Please update ABI references with: " + createDumpsScript + libName
+		options := "--target-version current"
+		if ctx.IsVndkExt() {
+			options += " --allow-extensions"
 		}
-		// Check against the opt-in reference dumps.
-		for i, optInDumpDir := range library.Properties.Header_abi_checker.Ref_dump_dirs {
-			optInDumpDirPath := android.PathForModuleSrc(ctx, optInDumpDir)
-			// Ref_dump_dirs are not versioned.
-			// They do not contain subdir for binder bitness because 64-bit binder has been mandatory.
-			optInDumpFile := getRefAbiDumpFile(ctx, optInDumpDirPath.String(), fileName)
-			if !optInDumpFile.Valid() {
-				continue
-			}
-			library.optInAbiDiff(ctx, optInDumpFile.Path(),
-				fileName, "opt"+strconv.Itoa(i), isLlndk || isNdk,
-				optInDumpDirPath.String())
+		dctx.sourceAbiDiff(currDumpFile.Path(), fileName, options, errorMessage)
+	}
+	// Check against the opt-in reference dumps.
+	for i, dumpDir := range library.Properties.Header_abi_checker.Ref_dump_dirs {
+		dumpDirPath := android.PathForModuleSrc(ctx, dumpDir)
+		// Ref_dump_dirs are not versioned.
+		// They do not contain subdir for binder bitness because 64-bit binder has been mandatory.
+		dumpFile := dctx.getRefAbiDumpFile(dumpDirPath.String())
+		if dumpFile.Valid() {
+			dctx.sourceAbiDiff(dumpFile.Path(),
+				fmt.Sprintf("%s.opt%d", fileName, i),
+				"--target-version current",
+				"error: Please update ABI references with: "+createDumpsScript+libName+
+					" -ref-dump-dir $$ANDROID_BUILD_TOP/"+dumpDirPath.String())
 		}
 	}
 }
