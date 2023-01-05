@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ffe7c1_43d09f96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-05T02:21:42Z",
+      "side": 1,
+      "message": "It is likely unrelated, but I will revert it as per the suggestion in https://buganizer.corp.google.com/issues/264446640#comment7",
+      "revId": "7eb9243fa78189000da9d5beeabaea3b8b2c0fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
