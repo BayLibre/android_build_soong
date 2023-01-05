@@ -35,6 +35,18 @@ message Metadata {
   // Name of this API/package.
   optional string name = 1;
 
+  // The package version.  In order of preference, this should contain:
+  //  - If the package comes from Git or another source control system,
+  //    a specific tag or revision in source control, such as "r123" or
+  //    "58e27d2".  This MUST NOT be a mutable ref such as a branch name.
+  //  - a released package version such as "1.0", "2.3-beta", etc.
+  //  - the date the package was retrieved, formatted as "As of YYYY-MM-DD".
+  //
+  // version is required for all packages other than those of type PIPER.
+  // For packages of type PIPER (imported from elsewhere in google3, or that
+  // are being newly developed in google3), version should be omitted.
+  optional string version = 2;
+
   // A short description (a few lines) of the package. It will be
   // included on the summary page.
   // Example: "Handles location lookups, throttling, batching, etc."
@@ -85,6 +97,11 @@ message ThirdParty {
   // go/thirdpartylicenses for instructions on selecting the appropriate type.
   optional LicenseType license_type = 4;
 
+  // An additional note explaining the licensing of this package.  This is most
+  // commonly used with commercial license, and will contain text given to you
+  // by opensource-licensing@.
+  optional string license_note = 5 [deprecated = true];
+
   // Description of local changes that have been made to the package.  This does
   // not need to (and in most cases should not) attempt to include an exhaustive
   // list of all changes, but may instead direct readers to review the local
@@ -93,6 +110,14 @@ message ThirdParty {
   // Note: Use of this field to store IDs of advisories fixed with a backported
   // patch is deprecated, use "security.mitigated_security_patch" instead.
   optional string local_modifications = 6;
+
+  // Security related metadata including risk category and any special
+  // instructions for using the package, as determined by an ISE-TPS review.  If
+  // missing, this package has not gone through security review.
+  optional Security security = 7;
+
+  // The type of directory this metadata represents.
+  optional DirectoryType type = 11 [default = PACKAGE];
 
   // The URL for any public mirror created for compliance purposes.
   // See go/thirdpartylicenses#reciprocal policy for more details.
@@ -200,6 +225,73 @@ enum LicenseType {
   UNENCUMBERED = 7;
 }
 
+// Identifies security related metadata including risk category and any special
+// instructions for using the package.
+message Security {
+  // Security risk category for a package, as determined by an ISE-TPS review.
+  enum Category {
+    CATEGORY_UNSPECIFIED = 0;
+
+    // Package should only be used in a sandboxed environment (go/sandbox).
+    // Package should have restricted visibility (go/visibility).
+    SANDBOXED_ONLY = 1;
+
+    // Package should not be used to process user content.  It is considered
+    // safe to use to process trusted data only.  Package should have restricted
+    // visibility (go/visibility).
+    TRUSTED_DATA_ONLY = 2;
+
+    // Package is considered safe to use.
+    REVIEWED_AND_SECURE = 3;
+  }
+
+  // Identifies the security risk category for the package.  This will be
+  // provided by the ISE-TPS team as the result of a security review of the
+  // package.  All packages that process user content or otherwise carry a
+  // security risk should be reviewed by ise-tps@ (go/security-review).
+  optional Category category = 1;
+
+  // An additional security note for the package.
+  optional string note = 2;
+
+  // Text tag to categorize the package. It's currently used by security to:
+  // - to disable OSV (https://osv.dev)
+  // support via the `OSV:disable` tag
+  // - to attach CPE (http://go/metadata-cpe) to
+  // their corresponding packages, for vulnerability monitoring:
+  // go/vuln-monitoring#nist-nvd
+  //
+  // Please do document your usecase here should you want to add one.
+  repeated string tag = 3;
+
+  // ID of advisories fixed with a mitigated patch, for example CVE-2018-1111.
+  // See go/thirdparty/metadata#mitigated_security_patch for details.
+  repeated string mitigated_security_patch = 5;
+
+  reserved 4;
+  // Next id: 6
+}
+
+enum DirectoryType {
+  UNDEFINED = 0;
+
+  // This directory represents a third-party package, complete with a LICENSE
+  // file, BUILD file, etc.
+  PACKAGE = 1;
+
+  // This directory is designed to organize multiple third-party
+  // PACKAGE directories.
+  // If you're using this for a new top-level third-party directory, please read
+  // go/thirdparty/where#subdirectories and file a request for an exception.
+  GROUP = 2;
+
+  // This directory contains several PACKAGE directories representing
+  // different versions of the same third-party project.
+  VERSIONS = 3;
+
+  // This directory contains no third-party packages.
+  GOOGLE_INTERNAL = 4;
+}
 
 // Represents a whole or partial calendar date, such as a birthday. The time of
 // day and time zone are either specified elsewhere or are insignificant. The
