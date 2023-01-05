@@ -46,6 +46,30 @@
       },
       "revId": "4368d02d3f70a3483f84602ddbe44748e0a0d626",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eecd4bb2_f28d5f89",
+        "filename": "java/app_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-05T18:39:04Z",
+      "side": 1,
+      "message": "Thinking more about it, it should probably be 25. The version a module builds against should not override the version of the device on which that module can be active.\n\nSo I think ToT is WAI, but I will wait for you to confirm before I abandon this CL 😊",
+      "parentUuid": "03d8d0a5_775e02c2",
+      "range": {
+        "startLine": 1136,
+        "startChar": 3,
+        "endLine": 1136,
+        "endChar": 47
+      },
+      "revId": "4368d02d3f70a3483f84602ddbe44748e0a0d626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
