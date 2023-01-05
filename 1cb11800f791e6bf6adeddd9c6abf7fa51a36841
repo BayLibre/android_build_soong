@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0646859_fd252e75",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-01-05T17:36:27Z",
+      "side": 1,
+      "message": "Removed in aosp/2370191",
+      "parentUuid": "022b7c43_d7d5b517",
+      "range": {
+        "startLine": 1281,
+        "startChar": 1,
+        "endLine": 1283,
+        "endChar": 2
+      },
+      "revId": "1cb11800f791e6bf6adeddd9c6abf7fa51a36841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57bcba6f_d3a04f85",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Noted. Will change it.",
       "parentUuid": "57bcba6f_d3a04f85",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "1cb11800f791e6bf6adeddd9c6abf7fa51a36841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9d5ca5b_da6d6550",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-01-05T17:36:27Z",
+      "side": 1,
+      "message": "done in aosp/2370191",
+      "parentUuid": "420d2bf2_305c11f9",
       "range": {
         "startLine": 42,
         "startChar": 12,
@@ -142,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "362b82bd_40fa1c49",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-01-05T17:36:27Z",
+      "side": 1,
+      "message": "done in aosp/2370191",
+      "parentUuid": "9f2a46f0_f9276fdc",
+      "range": {
+        "startLine": 175,
+        "startChar": 12,
+        "endLine": 175,
+        "endChar": 30
+      },
+      "revId": "1cb11800f791e6bf6adeddd9c6abf7fa51a36841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dabc8f7_d4db9d02",
@@ -179,6 +251,30 @@
       "side": 1,
       "message": "Noted.",
       "parentUuid": "3dabc8f7_d4db9d02",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 19
+      },
+      "revId": "1cb11800f791e6bf6adeddd9c6abf7fa51a36841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1cb276f_e22ebafc",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-01-05T17:36:27Z",
+      "side": 1,
+      "message": "done in aosp/2370191",
+      "parentUuid": "e038f7e7_53e6e6f6",
       "range": {
         "startLine": 209,
         "startChar": 1,
