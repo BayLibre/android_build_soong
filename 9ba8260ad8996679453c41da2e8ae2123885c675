@@ -33,6 +33,24 @@
       "message": "nit: imo an excess spacing line",
       "revId": "9ba8260ad8996679453c41da2e8ae2123885c675",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a6cb9c3_9ad19b5f",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-01-05T21:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e03ac2ee_8fd15983",
+      "revId": "9ba8260ad8996679453c41da2e8ae2123885c675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
