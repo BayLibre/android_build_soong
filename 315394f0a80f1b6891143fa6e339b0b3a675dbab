@@ -34,6 +34,24 @@
       "parentUuid": "f49f5128_173c9e21",
       "revId": "315394f0a80f1b6891143fa6e339b0b3a675dbab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d4f6393_774b0d4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2023-01-06T05:01:25Z",
+      "side": 1,
+      "message": "Oops. Who would imagine that $HOME can be set not to relative path.\nAbandoning this CL.",
+      "parentUuid": "2d2cc053_cee8e591",
+      "revId": "315394f0a80f1b6891143fa6e339b0b3a675dbab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
