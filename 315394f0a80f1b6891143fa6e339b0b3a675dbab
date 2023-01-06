@@ -16,6 +16,24 @@
       "message": "Are you sure it\u0027s not used anymore? It\u0027s still set to the bazelPaths#homeDir and referenced here: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d583;drc\u003d58f7784e95a4896267d4b22b27d3f6286de41ab5",
       "revId": "315394f0a80f1b6891143fa6e339b0b3a675dbab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2cc053_cee8e591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-06T01:14:38Z",
+      "side": 1,
+      "message": "https://android-review.git.corp.google.com/c/platform/build/soong/+/2236423 and b/248104019 also suggests it\u0027s significant.",
+      "parentUuid": "f49f5128_173c9e21",
+      "revId": "315394f0a80f1b6891143fa6e339b0b3a675dbab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
