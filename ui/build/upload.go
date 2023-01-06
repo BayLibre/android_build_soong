@@ -18,16 +18,21 @@ package build
 // another.
 
 import (
+	"bufio"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strconv"
+	"strings"
 	"time"
 
+	"android/soong/shared"
 	"android/soong/ui/metrics"
 
 	"google.golang.org/protobuf/proto"
 
+	bazel_metrics_proto "android/soong/ui/metrics/bazel_metrics_proto"
 	upload_proto "android/soong/ui/metrics/upload_proto"
 )
 
@@ -73,6 +78,91 @@ func pruneMetricsFiles(paths []string) []string {
 	return metricsFiles
 }
 
+func removeDecimalPoint(num string) string {
+	// The format is always 0.425s or 10.425s
+	portions := strings.Split(num, ".")
+	return portions[0] + portions[1]
+}
+
+func readTimingAndPercentage(words []string) (int64, int32) {
+	percentageString := removeDecimalPoint(words[6])
+	timingString := removeDecimalPoint(words[4])
+
+	timingMillis, _ := strconv.ParseInt(timingString, 10, 64)
+	percentagePortion, _ := strconv.ParseInt(percentageString, 10, 32)
+
+	return timingMillis * 1000000, int32(percentagePortion)
+
+}
+
+func parseLineIntoProto(line string, metrics bazel_metrics_proto.BazelMetrics) {
+	// Sample lines include:
+	// Total launch phase time                              0.011 s    2.59%
+	// Total run time                                       0.425 s  100.00%
+
+	//if it starts with total Run Time, it's not worth splitting
+	words := strings.Split(line, " ")
+	fmt.Printf("words %s\n", words)
+	timing, portion := readTimingAndPercentage(words)
+
+	if strings.HasPrefix(line, "Total run time") {
+		metrics.Total = &timing
+	} else {
+		phaseTiming := bazel_metrics_proto.PhaseTiming{}
+		phaseTiming.DurationNanos = &timing
+		phaseTiming.PortionOfBuildTime = &portion
+		phaseTiming.PhaseName = &words[1]
+		metrics.PhaseTimings = append(metrics.PhaseTimings, &phaseTiming)
+	}
+
+}
+
+func readBazelProto(filepath string) bazel_metrics_proto.BazelMetrics {
+	//serialize the proto, write it
+	metrics := bazel_metrics_proto.BazelMetrics{}
+
+	file, err := os.ReadFile(filepath)
+	if err != nil {
+		fmt.Printf("error reading metrics file %s\n", err)
+		return metrics
+	}
+	scanner := bufio.NewScanner(strings.NewReader(string(file)))
+	scanner.Split(bufio.ScanLines)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.HasPrefix(line, "Total") {
+			parseLineIntoProto(line, metrics)
+		} else {
+			fmt.Printf("line is %s\n", line)
+		}
+	}
+
+	return metrics
+}
+
+func checkBazelProtoFile(paths ...string) {
+	// find bazel path
+	fmt.Printf("checking bazel proto file\n")
+	var bazelPath string
+	for _, str := range paths {
+		if strings.HasSuffix(str, "bazel_metrics.txt") {
+			bazelPath = str
+		}
+	}
+	fmt.Printf("BazelPAth is %s\n", bazelPath)
+	if bazelPath == "" {
+		return
+	}
+
+	fmt.Printf("before reading bazel proto\n")
+	bazelProto := readBazelProto(bazelPath)
+	lastSlashInd := strings.LastIndex(bazelPath, "/")
+
+	filepath := bazelPath[0:lastSlashInd+1] + "bazel_metrics.pb"
+	shared.Save(&bazelProto, filepath)
+}
+
 // UploadMetrics uploads a set of metrics files to a server for analysis.
 // The metrics files are first copied to a temporary directory
 // and the uploader is then executed in the background to allow the user/system
@@ -83,11 +173,13 @@ func UploadMetrics(ctx Context, config Config, simpleOutput bool, buildStarted t
 	defer ctx.EndTrace()
 
 	uploader := config.MetricsUploaderApp()
+	fmt.Printf("uploader %s\n", uploader)
 	if uploader == "" {
 		// If the uploader path was not specified, no metrics shall be uploaded.
 		return
 	}
 
+	checkBazelProtoFile(paths...)
 	// Several of the files might be directories.
 	metricsFiles := pruneMetricsFiles(paths)
 	if len(metricsFiles) == 0 {
