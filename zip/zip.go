@@ -17,11 +17,15 @@ package zip
 import (
 	"bytes"
 	"compress/flate"
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"hash/crc32"
 	"io"
 	"io/ioutil"
+	"log"
 	"os"
 	"path/filepath"
 	"sort"
@@ -231,6 +235,8 @@ type ZipWriter struct {
 
 	stderr io.Writer
 	fs     pathtools.FileSystem
+
+	casManifest string
 }
 
 type zipEntry struct {
@@ -242,6 +248,9 @@ type zipEntry struct {
 	// Only used for passing into the MemoryRateLimiter to ensure we
 	// release as much memory as much as we request
 	allocatedSize int64
+
+	// SHA256 checksum of the file, used by CAS manifest.
+	sha256 string
 }
 
 type ZipArgs struct {
@@ -257,6 +266,7 @@ type ZipArgs struct {
 	WriteIfChanged           bool
 	StoreSymlinks            bool
 	IgnoreMissingFiles       bool
+	CasManifest              string
 
 	Stderr     io.Writer
 	Filesystem pathtools.FileSystem
@@ -280,6 +290,7 @@ func zipTo(args ZipArgs, w io.Writer) error {
 		ignoreMissingFiles: args.IgnoreMissingFiles,
 		stderr:             args.Stderr,
 		fs:                 args.Filesystem,
+		casManifest:        args.CasManifest,
 	}
 
 	if z.fs == nil {
@@ -443,6 +454,32 @@ func jarSort(mappings []pathMapping) {
 	})
 }
 
+type CasManifestNode struct {
+	Name         string
+	Hash         string
+	SizeBytes    uint64
+	IsExecutable bool
+	MTime        time.Time
+}
+
+func (z *ZipWriter) genCasManifestNode(entry *zipEntry) CasManifestNode {
+	return CasManifestNode{
+		Name:         entry.fh.Name,
+		Hash:         entry.sha256,
+		SizeBytes:    entry.fh.UncompressedSize64,
+		MTime:        entry.fh.ModTime(),
+		IsExecutable: entry.fh.Mode()&0111 == 0111,
+	}
+}
+
+func (z *ZipWriter) writeCasManifest(nodes []CasManifestNode) error {
+	jsonContent, err := json.MarshalIndent(nodes, "", " ")
+	if err != nil {
+		log.Fatal("Fail", err)
+	}
+	return os.WriteFile(z.casManifest, jsonContent, 0644)
+}
+
 func (z *ZipWriter) write(f io.Writer, pathMappings []pathMapping, manifest string, emulateJar, srcJar bool,
 	parallelJobs int) error {
 
@@ -498,6 +535,7 @@ func (z *ZipWriter) write(f io.Writer, pathMappings []pathMapping, manifest stri
 	}()
 
 	zipw := zip.NewWriter(f)
+	var casManifestNodes []CasManifestNode
 
 	var currentWriteOpChan chan *zipEntry
 	var currentWriter io.WriteCloser
@@ -542,6 +580,12 @@ func (z *ZipWriter) write(f io.Writer, pathMappings []pathMapping, manifest stri
 				zw, err = zipw.CreateHeaderAndroid(op.fh)
 				currentWriter = nopCloser{zw}
 			}
+
+			// Only record files to CAS manifest file
+			if z.casManifest != "" && !op.fh.Mode().IsDir() {
+				casManifestNodes = append(casManifestNodes, z.genCasManifestNode(op))
+			}
+
 			if err != nil {
 				return err
 			}
@@ -572,6 +616,12 @@ func (z *ZipWriter) write(f io.Writer, pathMappings []pathMapping, manifest stri
 			currentReader = nil
 
 		case err := <-z.errors:
+			return err
+		}
+	}
+
+	if z.casManifest != "" {
+		if err := z.writeCasManifest(casManifestNodes); err != nil {
 			return err
 		}
 	}
@@ -782,15 +832,17 @@ func (z *ZipWriter) writeFileContents(header *zip.FileHeader, r pathtools.Reader
 		// this based on actual buffer sizes in RateLimit.
 		ze.futureReaders = make(chan chan io.Reader, (fileSize/parallelBlockSize)+1)
 
-		// Calculate the CRC in the background, since reading the entire
+		// Calculate the CRC and SHA256 in the background, since reading the entire
 		// file could take a while.
 		//
 		// We could split this up into chunks as well, but it's faster
 		// than the compression. Due to the Go Zip API, we also need to
 		// know the result before we can begin writing the compressed
 		// data out to the zipfile.
+		//
+		// We calculate SHA256 only if `-casmanifest` is set.
 		wg.Add(1)
-		go z.crcFile(r, ze, compressChan, wg)
+		go z.crcAndSha256File(r, ze, compressChan, wg)
 
 		for start := int64(0); start < fileSize; start += parallelBlockSize {
 			sr := io.NewSectionReader(r, start, parallelBlockSize)
@@ -829,20 +881,47 @@ func (z *ZipWriter) writeFileContents(header *zip.FileHeader, r pathtools.Reader
 	return nil
 }
 
-func (z *ZipWriter) crcFile(r io.Reader, ze *zipEntry, resultChan chan *zipEntry, wg *sync.WaitGroup) {
+func (z *ZipWriter) crcAndSha256File(r io.ReadSeeker, ze *zipEntry, resultChan chan *zipEntry, wg *sync.WaitGroup) {
 	defer wg.Done()
 	defer z.cpuRateLimiter.Finish()
 
-	crc := crc32.NewIEEE()
-	_, err := io.Copy(crc, r)
+	var err error
+
+	ze.fh.CRC32, err = z.crcFile(r)
 	if err != nil {
 		z.errors <- err
 		return
 	}
 
-	ze.fh.CRC32 = crc.Sum32()
+	if z.casManifest != "" {
+		r.Seek(0, 0)
+		ze.sha256, err = z.sha256File(r)
+		if err != nil {
+			z.errors <- err
+			return
+		}
+	}
+
 	resultChan <- ze
 	close(resultChan)
+}
+
+func (z *ZipWriter) crcFile(r io.Reader) (uint32, error) {
+	crc := crc32.NewIEEE()
+	_, err := io.Copy(crc, r)
+	if err != nil {
+		return 0, err
+	}
+	return crc.Sum32(), err
+}
+
+func (z *ZipWriter) sha256File(r io.Reader) (string, error) {
+	h := sha256.New()
+	_, err := io.Copy(h, r)
+	if err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(h.Sum(nil)), nil
 }
 
 func (z *ZipWriter) compressPartialFile(r io.Reader, dict []byte, last bool, resultChan chan io.Reader, wg *sync.WaitGroup) {
@@ -894,15 +973,22 @@ func (z *ZipWriter) compressBlock(r io.Reader, dict []byte, last bool) (*bytes.B
 }
 
 func (z *ZipWriter) compressWholeFile(ze *zipEntry, r io.ReadSeeker, compressChan chan *zipEntry) {
+	var err error
 
-	crc := crc32.NewIEEE()
-	_, err := io.Copy(crc, r)
+	ze.fh.CRC32, err = z.crcFile(r)
 	if err != nil {
 		z.errors <- err
 		return
 	}
 
-	ze.fh.CRC32 = crc.Sum32()
+	if z.casManifest != "" {
+		r.Seek(0, 0)
+		ze.sha256, err = z.sha256File(r)
+		if err != nil {
+			z.errors <- err
+			return
+		}
+	}
 
 	_, err = r.Seek(0, 0)
 	if err != nil {
