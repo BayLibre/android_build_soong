@@ -1873,8 +1873,7 @@ func (c *Module) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
 
 	// TODO(b/261058727): Remove this (enable mixed builds for modules with UBSan)
 	ubsanEnabled := c.sanitize != nil &&
-		((c.sanitize.Properties.Sanitize.Integer_overflow != nil && *c.sanitize.Properties.Sanitize.Integer_overflow) ||
-			c.sanitize.Properties.Sanitize.Misc_undefined != nil)
+		(c.sanitize.Properties.UbsanRuntimeDep || c.sanitize.Properties.MinimalRuntimeDep)
 	return c.bazelHandler != nil && !ubsanEnabled
 }
 
