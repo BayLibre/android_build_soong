@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42d44ee_2a7c0712",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-06T20:47:06Z",
+      "side": 1,
+      "message": "can you elaborate a bit on the manual verification you did here?\nAlso, can you add a reviewer from the rules team? This ubsan stuff is a bit outside of my area of expertise.",
+      "revId": "179238985ffb41591ba0f6d6e59c3f79965c48dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
