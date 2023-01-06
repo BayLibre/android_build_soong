@@ -16,13 +16,16 @@ package zip
 
 import (
 	"bytes"
+	"encoding/json"
 	"hash/crc32"
 	"io"
 	"os"
+	"path"
 	"reflect"
 	"syscall"
 	"testing"
 
+	"android/soong/jar"
 	"android/soong/third_party/zip"
 
 	"github.com/google/blueprint/pathtools"
@@ -34,6 +37,10 @@ var (
 	fileC        = []byte("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
 	fileEmpty    = []byte("")
 	fileManifest = []byte("Manifest-Version: 1.0\nCreated-By: soong_zip\n\n")
+
+	sha256FileA = "d53eda7a637c99cc7fb566d96e9fa109bf15c478410a3f5eb4d4c4e26cd081f6"
+	sha256FileB = "430c56c5818e62bcb6d478901ef86284e97714c138f3c86aa14fd6a84b7ce5d3"
+	sha256FileC = "31c5ab6111f1d6aa13c2c4e92bb3c0f7c76b61b42d141af1e846eb7f6586a51c"
 
 	fileCustomManifest  = []byte("Custom manifest: true\n")
 	customManifestAfter = []byte("Manifest-Version: 1.0\nCreated-By: soong_zip\nCustom manifest: true\n\n")
@@ -412,6 +419,17 @@ func TestZip(t *testing.T) {
 				fh("a/a/a", fileA, zip.Deflate),
 			},
 		},
+		{
+			name: "output CAS manifest file",
+			args: fileArgsBuilder().
+				File("a/a/a").
+				File("a/a/a"),
+			compressionLevel: 9,
+
+			files: []zip.FileHeader{
+				fh("a/a/a", fileA, zip.Deflate),
+			},
+		},
 
 		// errors
 		{
@@ -624,5 +642,51 @@ func TestSrcJar(t *testing.T) {
 
 	if !reflect.DeepEqual(want, got) {
 		t.Errorf("want files %q, got %q", want, got)
+	}
+}
+
+func manifestNode(name string, hash string, size int) ShaManifestNode {
+	return ShaManifestNode{
+		Name:         name,
+		Hash:         hash,
+		SizeBytes:    uint64(size),
+		IsExecutable: false,
+		MTime:        jar.DefaultTime,
+	}
+}
+
+func TestCasManifest(t *testing.T) {
+	manifestPath := path.Join(os.TempDir(), "cas.json")
+	args := ZipArgs{}
+	args.FileArgs = NewFileArgsBuilder().
+		File("a/a/a").
+		File("a/a/b").
+		File("a/a/c").
+		File("c").
+		FileArgs()
+	args.ShaManifestFilePath = manifestPath
+	args.Filesystem = mockFs
+	args.Stderr = &bytes.Buffer{}
+	buf := &bytes.Buffer{}
+	err := zipTo(args, buf)
+
+	if err != nil {
+		t.Fatalf("got error %v", err)
+	}
+
+	want := []ShaManifestNode{
+		manifestNode("a/a/a", sha256FileA, len(fileA)),
+		manifestNode("a/a/b", sha256FileB, len(fileB)),
+		manifestNode("a/a/c", sha256FileC, len(fileC)),
+		manifestNode("c", sha256FileC, len(fileC)),
+	}
+	manifest, err := os.ReadFile(manifestPath)
+	if err != nil {
+		t.Fatalf("got error %v", err)
+	}
+	var got []ShaManifestNode
+	json.Unmarshal(manifest, &got)
+	if !reflect.DeepEqual(want, got) {
+		t.Errorf("incorrect CAS manifest file content.\nWant: %v\nGot: %v", want, got)
 	}
 }

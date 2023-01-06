@@ -163,6 +163,7 @@ func main() {
 	parallelJobs := flags.Int("parallel", runtime.NumCPU(), "number of parallel threads to use")
 	cpuProfile := flags.String("cpuprofile", "", "write cpu profile to file")
 	traceFile := flags.String("trace", "", "write trace to file")
+	shaManifest := flags.String("sha_manifest", "", "generate a manifest file with SHA hash value and metadata of each file compressed")
 
 	flags.Var(&rootPrefix{}, "P", "path prefix within the zip at which to place files")
 	flags.Var(&listFiles{}, "l", "file containing list of files to zip")
@@ -224,6 +225,7 @@ func main() {
 		WriteIfChanged:           *writeIfChanged,
 		StoreSymlinks:            *symlinks,
 		IgnoreMissingFiles:       *ignoreMissingFiles,
+		ShaManifestFilePath:      *shaManifest,
 	})
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "error:", err.Error())
