@@ -16,6 +16,29 @@
       "message": "Hi Jiyong,\n\nCould you take another look at this change?",
       "revId": "1bc69feefd2a0fd74225f7fd560888c3e521d585",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba4e909_1815664f",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-06T00:30:10Z",
+      "side": 1,
+      "message": "Since Include_descriptors_from_images is annotated as `android:\"path\"`, this block can be simpified to `outputFiles :\u003d android.PathsForModuleSrc(ctx, a.properties...)`",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 3
+      },
+      "revId": "1bc69feefd2a0fd74225f7fd560888c3e521d585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
