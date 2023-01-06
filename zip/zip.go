@@ -17,8 +17,12 @@ package zip
 import (
 	"bytes"
 	"compress/flate"
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
 	"errors"
 	"fmt"
+	"hash"
 	"hash/crc32"
 	"io"
 	"io/ioutil"
@@ -211,6 +215,67 @@ func (x ConflictingFileError) Error() string {
 	return fmt.Sprintf("destination %q has two files %q and %q", x.Dest, x.Prev, x.Src)
 }
 
+type ShaManifestNode struct {
+	Name         string
+	Hash         string
+	SizeBytes    uint64
+	IsExecutable bool
+	MTime        time.Time
+}
+
+// shaManifest handles the operations of generating SHA manifest file.
+type shaManifest interface {
+	// addEntry appends an entry to the final manifest file.
+	addEntry(ze *zipEntry)
+	// output writes all manifest elements to the file
+	output() error
+	// getHash returns a new hash.Hash computing the checksum.
+	getHasher() hash.Hash
+}
+
+type noopManifest struct{}
+
+func (m *noopManifest) addEntry(ze *zipEntry) {}
+func (m *noopManifest) output() error {
+	return nil
+}
+func (m *noopManifest) getHasher() hash.Hash {
+	return nil
+}
+
+type sha256Manifest struct {
+	filePath      string
+	manifestNodes []ShaManifestNode
+}
+
+func (m *sha256Manifest) createShaManifestNode(ze *zipEntry) ShaManifestNode {
+	return ShaManifestNode{
+		Name:         ze.fh.Name,
+		Hash:         ze.sha,
+		SizeBytes:    ze.fh.UncompressedSize64,
+		MTime:        ze.fh.ModTime(),
+		IsExecutable: ze.fh.Mode()&0111 == 0111,
+	}
+}
+
+func (m *sha256Manifest) addEntry(ze *zipEntry) {
+	if !ze.fh.Mode().IsDir() {
+		m.manifestNodes = append(m.manifestNodes, m.createShaManifestNode(ze))
+	}
+}
+
+func (m *sha256Manifest) output() error {
+	jsonContent, err := json.MarshalIndent(m.manifestNodes, "", " ")
+	if err != nil {
+		return fmt.Errorf("fail to create json content of SHA manifest: %v", err)
+	}
+	return os.WriteFile(m.filePath, jsonContent, 0644)
+}
+
+func (m *sha256Manifest) getHasher() hash.Hash {
+	return sha256.New()
+}
+
 type ZipWriter struct {
 	time         time.Time
 	createdFiles map[string]string
@@ -231,6 +296,8 @@ type ZipWriter struct {
 
 	stderr io.Writer
 	fs     pathtools.FileSystem
+
+	shaManifest shaManifest
 }
 
 type zipEntry struct {
@@ -242,6 +309,9 @@ type zipEntry struct {
 	// Only used for passing into the MemoryRateLimiter to ensure we
 	// release as much memory as much as we request
 	allocatedSize int64
+
+	// SHA SHA256 checksum of the file, used by SHA manifest.
+	sha string
 }
 
 type ZipArgs struct {
@@ -257,6 +327,7 @@ type ZipArgs struct {
 	WriteIfChanged           bool
 	StoreSymlinks            bool
 	IgnoreMissingFiles       bool
+	ShaManifestFilePath      string
 
 	Stderr     io.Writer
 	Filesystem pathtools.FileSystem
@@ -270,6 +341,15 @@ func zipTo(args ZipArgs, w io.Writer) error {
 	// Have Glob follow symlinks if they are not being stored as symlinks in the zip file.
 	followSymlinks := pathtools.ShouldFollowSymlinks(!args.StoreSymlinks)
 
+	var shaManifest shaManifest
+	if args.ShaManifestFilePath != "" {
+		shaManifest = &sha256Manifest{
+			filePath: args.ShaManifestFilePath,
+		}
+	} else {
+		shaManifest = &noopManifest{}
+	}
+
 	z := &ZipWriter{
 		time:               jar.DefaultTime,
 		createdDirs:        make(map[string]string),
@@ -280,6 +360,7 @@ func zipTo(args ZipArgs, w io.Writer) error {
 		ignoreMissingFiles: args.IgnoreMissingFiles,
 		stderr:             args.Stderr,
 		fs:                 args.Filesystem,
+		shaManifest:        shaManifest,
 	}
 
 	if z.fs == nil {
@@ -542,6 +623,9 @@ func (z *ZipWriter) write(f io.Writer, pathMappings []pathMapping, manifest stri
 				zw, err = zipw.CreateHeaderAndroid(op.fh)
 				currentWriter = nopCloser{zw}
 			}
+
+			z.shaManifest.addEntry(op)
+
 			if err != nil {
 				return err
 			}
@@ -574,6 +658,10 @@ func (z *ZipWriter) write(f io.Writer, pathMappings []pathMapping, manifest stri
 		case err := <-z.errors:
 			return err
 		}
+	}
+
+	if err := z.shaManifest.output(); err != nil {
+		return err
 	}
 
 	// One last chance to catch an error
@@ -782,15 +870,17 @@ func (z *ZipWriter) writeFileContents(header *zip.FileHeader, r pathtools.Reader
 		// this based on actual buffer sizes in RateLimit.
 		ze.futureReaders = make(chan chan io.Reader, (fileSize/parallelBlockSize)+1)
 
-		// Calculate the CRC in the background, since reading the entire
-		// file could take a while.
+		// Calculate the CRC and SHA256 in the background, since reading
+		// the entire file could take a while.
 		//
 		// We could split this up into chunks as well, but it's faster
 		// than the compression. Due to the Go Zip API, we also need to
 		// know the result before we can begin writing the compressed
 		// data out to the zipfile.
+		//
+		// We calculate SHA256 only if `-sha_manifest` is set.
 		wg.Add(1)
-		go z.crcFile(r, ze, compressChan, wg)
+		go z.checksumFileAsync(r, ze, compressChan, wg)
 
 		for start := int64(0); start < fileSize; start += parallelBlockSize {
 			sr := io.NewSectionReader(r, start, parallelBlockSize)
@@ -829,20 +919,38 @@ func (z *ZipWriter) writeFileContents(header *zip.FileHeader, r pathtools.Reader
 	return nil
 }
 
-func (z *ZipWriter) crcFile(r io.Reader, ze *zipEntry, resultChan chan *zipEntry, wg *sync.WaitGroup) {
+func (z *ZipWriter) checksumFileAsync(r io.ReadSeeker, ze *zipEntry, resultChan chan *zipEntry, wg *sync.WaitGroup) {
 	defer wg.Done()
 	defer z.cpuRateLimiter.Finish()
 
+	z.checksumFile(r, ze)
+
+	resultChan <- ze
+	close(resultChan)
+}
+
+func (z *ZipWriter) checksumFile(r io.ReadSeeker, ze *zipEntry) {
+
 	crc := crc32.NewIEEE()
-	_, err := io.Copy(crc, r)
+	writers := []io.Writer{crc}
+	shaHasher := z.shaManifest.getHasher()
+	if shaHasher != nil {
+		writers = append(writers, shaHasher)
+	}
+
+	w := io.MultiWriter(writers...)
+
+	_, err := io.Copy(w, r)
 	if err != nil {
 		z.errors <- err
 		return
 	}
 
 	ze.fh.CRC32 = crc.Sum32()
-	resultChan <- ze
-	close(resultChan)
+	if shaHasher != nil {
+		ze.sha = hex.EncodeToString(shaHasher.Sum(nil))
+	}
+
 }
 
 func (z *ZipWriter) compressPartialFile(r io.Reader, dict []byte, last bool, resultChan chan io.Reader, wg *sync.WaitGroup) {
@@ -894,15 +1002,9 @@ func (z *ZipWriter) compressBlock(r io.Reader, dict []byte, last bool) (*bytes.B
 }
 
 func (z *ZipWriter) compressWholeFile(ze *zipEntry, r io.ReadSeeker, compressChan chan *zipEntry) {
+	var err error
 
-	crc := crc32.NewIEEE()
-	_, err := io.Copy(crc, r)
-	if err != nil {
-		z.errors <- err
-		return
-	}
-
-	ze.fh.CRC32 = crc.Sum32()
+	z.checksumFile(r, ze)
 
 	_, err = r.Seek(0, 0)
 	if err != nil {
