@@ -39,6 +39,30 @@
       },
       "revId": "1bc69feefd2a0fd74225f7fd560888c3e521d585",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd87bfd_d903d53c",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-01-06T09:59:32Z",
+      "side": 1,
+      "message": "Done. Thanks a lot for the suggestions!",
+      "parentUuid": "fba4e909_1815664f",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 3
+      },
+      "revId": "1bc69feefd2a0fd74225f7fd560888c3e521d585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
