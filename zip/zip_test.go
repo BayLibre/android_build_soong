@@ -16,6 +16,8 @@ package zip
 
 import (
 	"bytes"
+	"encoding/binary"
+	"encoding/hex"
 	"hash/crc32"
 	"io"
 	"os"
@@ -34,6 +36,10 @@ var (
 	fileC        = []byte("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
 	fileEmpty    = []byte("")
 	fileManifest = []byte("Manifest-Version: 1.0\nCreated-By: soong_zip\n\n")
+
+	sha256FileA = "d53eda7a637c99cc7fb566d96e9fa109bf15c478410a3f5eb4d4c4e26cd081f6"
+	sha256FileB = "430c56c5818e62bcb6d478901ef86284e97714c138f3c86aa14fd6a84b7ce5d3"
+	sha256FileC = "31c5ab6111f1d6aa13c2c4e92bb3c0f7c76b61b42d141af1e846eb7f6586a51c"
 
 	fileCustomManifest  = []byte("Custom manifest: true\n")
 	customManifestAfter = []byte("Manifest-Version: 1.0\nCreated-By: soong_zip\nCustom manifest: true\n\n")
@@ -65,6 +71,19 @@ func fh(name string, contents []byte, method uint16) zip.FileHeader {
 		UncompressedSize64: uint64(len(contents)),
 		ExternalAttrs:      (syscall.S_IFREG | 0644) << 16,
 	}
+}
+
+func fhWithSHA256(name string, contents []byte, method uint16, sha256 string) zip.FileHeader {
+	h := fh(name, contents, method)
+	// The extra field contains 40 bytes, including 2 bytes of header ID, 2 bytes
+	// of size, 2 bytes of signature, and 32 bytes of checksum data block.
+	h.Extra = make([]byte, 40)
+	binary.LittleEndian.PutUint16(h.Extra[0:2], Sha256HeaderID)
+	binary.LittleEndian.PutUint16(h.Extra[2:4], 34)
+	binary.LittleEndian.PutUint16(h.Extra[4:6], Sha256HeaderSignature)
+	sha256Bytes, _ := hex.DecodeString(sha256)
+	copy(h.Extra[6:], sha256Bytes)
+	return h
 }
 
 func fhManifest(contents []byte) zip.FileHeader {
@@ -114,6 +133,7 @@ func TestZip(t *testing.T) {
 		manifest           string
 		storeSymlinks      bool
 		ignoreMissingFiles bool
+		sha256Checksum     bool
 
 		files []zip.FileHeader
 		err   error
@@ -412,6 +432,23 @@ func TestZip(t *testing.T) {
 				fh("a/a/a", fileA, zip.Deflate),
 			},
 		},
+		{
+			name: "generate SHA256 checksum",
+			args: fileArgsBuilder().
+				File("a/a/a").
+				File("a/a/b").
+				File("a/a/c").
+				File("c"),
+			compressionLevel: 9,
+			sha256Checksum:   true,
+
+			files: []zip.FileHeader{
+				fhWithSHA256("a/a/a", fileA, zip.Deflate, sha256FileA),
+				fhWithSHA256("a/a/b", fileB, zip.Deflate, sha256FileB),
+				fhWithSHA256("a/a/c", fileC, zip.Deflate, sha256FileC),
+				fhWithSHA256("c", fileC, zip.Deflate, sha256FileC),
+			},
+		},
 
 		// errors
 		{
@@ -465,6 +502,7 @@ func TestZip(t *testing.T) {
 			args.ManifestSourcePath = test.manifest
 			args.StoreSymlinks = test.storeSymlinks
 			args.IgnoreMissingFiles = test.ignoreMissingFiles
+			args.Sha256Checksum = test.sha256Checksum
 			args.Filesystem = mockFs
 			args.Stderr = &bytes.Buffer{}
 
@@ -554,6 +592,10 @@ func TestZip(t *testing.T) {
 				if want.Method != got.Method {
 					t.Errorf("incorrect file %s method want %v got %v", want.Name,
 						want.Method, got.Method)
+				}
+
+				if want.Comment != got.Comment {
+					t.Errorf("incorrect file %s comment want %v got %v", want.Name, want.Comment, got.Comment)
 				}
 			}
 		})
