@@ -16,6 +16,24 @@
       "message": "can you elaborate a bit on the manual verification you did here?\nAlso, can you add a reviewer from the rules team? This ubsan stuff is a bit outside of my area of expertise.",
       "revId": "179238985ffb41591ba0f6d6e59c3f79965c48dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ab1a43_01709d56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-01-06T20:51:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f42d44ee_2a7c0712",
+      "revId": "179238985ffb41591ba0f6d6e59c3f79965c48dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
