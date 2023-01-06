@@ -133,6 +133,7 @@ android_library_import {
 						"exports": `[":static_import_dep"]`,
 					},
 				),
+				MakeNeverlinkDuplicateTarget("aar_import", "TestImport"),
 			},
 		},
 	)

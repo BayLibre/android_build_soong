@@ -1027,17 +1027,30 @@ func (a *AARImport) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	name := android.RemoveOptionalPrebuiltPrefix(a.Name())
 	deps := android.BazelLabelForModuleDeps(ctx, android.LastUniqueStrings(android.CopyOf(append(a.properties.Static_libs, a.properties.Libs...))))
 	exports := android.BazelLabelForModuleDeps(ctx, android.LastUniqueStrings(exportableStaticLibs))
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "aar_import",
+		Bzl_load_location: "//build/bazel/rules/android:rules.bzl",
+	}
 
 	ctx.CreateBazelTargetModule(
-		bazel.BazelTargetModuleProperties{
-			Rule_class:        "aar_import",
-			Bzl_load_location: "//build/bazel/rules/android:rules.bzl",
-		},
+		props,
 		android.CommonAttributes{Name: name},
 		&bazelAndroidLibraryImport{
 			Aar:     aars.Includes[0],
 			Deps:    bazel.MakeLabelListAttribute(deps),
 			Exports: bazel.MakeLabelListAttribute(exports),
+		},
+	)
+
+	neverlink := true
+	ctx.CreateBazelTargetModule(
+		props,
+		android.CommonAttributes{Name: name + "-neverlink"},
+		&bazelAndroidLibrary{
+			javaLibraryAttributes: &javaLibraryAttributes{
+				Neverlink: bazel.BoolAttribute{Value: &neverlink},
+				Exports:   bazel.MakeSingleLabelListAttribute(bazel.Label{Label: ":" + name}),
+			},
 		},
 	)
 
