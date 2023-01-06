@@ -15,11 +15,11 @@
 package bp2build
 
 import (
+	"fmt"
+	"testing"
+
 	"android/soong/android"
 	"android/soong/java"
-	"fmt"
-
-	"testing"
 )
 
 func TestConvertAndroidLibrary(t *testing.T) {
@@ -133,6 +133,7 @@ android_library_import {
 						"exports": `[":static_import_dep"]`,
 					},
 				),
+				MakeNeverlinkDuplicateTarget("aar_import", "TestImport"),
 			},
 		},
 	)
