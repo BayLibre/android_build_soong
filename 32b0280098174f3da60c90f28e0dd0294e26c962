@@ -1,5 +1,52 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d98ae695_00e5ad6a",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-01-06T02:34:38Z",
+      "side": 1,
+      "message": "`_etc` here is confusing because the output will be in ./cacerts not in ./etc/cacerts.",
+      "range": {
+        "startLine": 57,
+        "startChar": 34,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "32b0280098174f3da60c90f28e0dd0294e26c962",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7dd0cf5_ecef7bad",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-01-06T02:34:38Z",
+      "side": 1,
+      "message": "Comments are wrong.",
+      "range": {
+        "startLine": 459,
+        "startChar": 3,
+        "endLine": 460,
+        "endChar": 39
+      },
+      "revId": "32b0280098174f3da60c90f28e0dd0294e26c962",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
