@@ -17,8 +17,11 @@ package zip
 import (
 	"bytes"
 	"compress/flate"
+	"crypto/sha256"
+	"encoding/hex"
 	"errors"
 	"fmt"
+	"hash"
 	"hash/crc32"
 	"io"
 	"io/ioutil"
@@ -231,6 +234,8 @@ type ZipWriter struct {
 
 	stderr io.Writer
 	fs     pathtools.FileSystem
+
+	shaChecksum bool
 }
 
 type zipEntry struct {
@@ -257,6 +262,7 @@ type ZipArgs struct {
 	WriteIfChanged           bool
 	StoreSymlinks            bool
 	IgnoreMissingFiles       bool
+	ShaChecksum              bool
 
 	Stderr     io.Writer
 	Filesystem pathtools.FileSystem
@@ -280,6 +286,7 @@ func zipTo(args ZipArgs, w io.Writer) error {
 		ignoreMissingFiles: args.IgnoreMissingFiles,
 		stderr:             args.Stderr,
 		fs:                 args.Filesystem,
+		shaChecksum:        args.ShaChecksum,
 	}
 
 	if z.fs == nil {
@@ -782,15 +789,17 @@ func (z *ZipWriter) writeFileContents(header *zip.FileHeader, r pathtools.Reader
 		// this based on actual buffer sizes in RateLimit.
 		ze.futureReaders = make(chan chan io.Reader, (fileSize/parallelBlockSize)+1)
 
-		// Calculate the CRC in the background, since reading the entire
-		// file could take a while.
+		// Calculate the CRC and SHA256 in the background, since reading
+		// the entire file could take a while.
 		//
 		// We could split this up into chunks as well, but it's faster
 		// than the compression. Due to the Go Zip API, we also need to
 		// know the result before we can begin writing the compressed
 		// data out to the zipfile.
+		//
+		// We calculate SHA256 only if `-sha` is set.
 		wg.Add(1)
-		go z.crcFile(r, ze, compressChan, wg)
+		go z.checksumFileAsync(r, ze, compressChan, wg)
 
 		for start := int64(0); start < fileSize; start += parallelBlockSize {
 			sr := io.NewSectionReader(r, start, parallelBlockSize)
@@ -829,20 +838,38 @@ func (z *ZipWriter) writeFileContents(header *zip.FileHeader, r pathtools.Reader
 	return nil
 }
 
-func (z *ZipWriter) crcFile(r io.Reader, ze *zipEntry, resultChan chan *zipEntry, wg *sync.WaitGroup) {
+func (z *ZipWriter) checksumFileAsync(r io.ReadSeeker, ze *zipEntry, resultChan chan *zipEntry, wg *sync.WaitGroup) {
 	defer wg.Done()
 	defer z.cpuRateLimiter.Finish()
 
+	z.checksumFile(r, ze)
+
+	resultChan <- ze
+	close(resultChan)
+}
+
+func (z *ZipWriter) checksumFile(r io.ReadSeeker, ze *zipEntry) {
 	crc := crc32.NewIEEE()
-	_, err := io.Copy(crc, r)
+	writers := []io.Writer{crc}
+
+	var shaHasher hash.Hash
+	if z.shaChecksum && !ze.fh.Mode().IsDir() {
+		shaHasher = sha256.New()
+		writers = append(writers, shaHasher)
+	}
+
+	w := io.MultiWriter(writers...)
+
+	_, err := io.Copy(w, r)
 	if err != nil {
 		z.errors <- err
 		return
 	}
 
 	ze.fh.CRC32 = crc.Sum32()
-	resultChan <- ze
-	close(resultChan)
+	if shaHasher != nil {
+		ze.fh.Comment += fmt.Sprintf("SHA256:\"%s\"", hex.EncodeToString(shaHasher.Sum(nil)))
+	}
 }
 
 func (z *ZipWriter) compressPartialFile(r io.Reader, dict []byte, last bool, resultChan chan io.Reader, wg *sync.WaitGroup) {
@@ -894,17 +921,9 @@ func (z *ZipWriter) compressBlock(r io.Reader, dict []byte, last bool) (*bytes.B
 }
 
 func (z *ZipWriter) compressWholeFile(ze *zipEntry, r io.ReadSeeker, compressChan chan *zipEntry) {
+	z.checksumFile(r, ze)
 
-	crc := crc32.NewIEEE()
-	_, err := io.Copy(crc, r)
-	if err != nil {
-		z.errors <- err
-		return
-	}
-
-	ze.fh.CRC32 = crc.Sum32()
-
-	_, err = r.Seek(0, 0)
+	_, err := r.Seek(0, 0)
 	if err != nil {
 		z.errors <- err
 		return

@@ -16,6 +16,7 @@ package zip
 
 import (
 	"bytes"
+	"fmt"
 	"hash/crc32"
 	"io"
 	"os"
@@ -34,6 +35,10 @@ var (
 	fileC        = []byte("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC")
 	fileEmpty    = []byte("")
 	fileManifest = []byte("Manifest-Version: 1.0\nCreated-By: soong_zip\n\n")
+
+	sha256FileA = "d53eda7a637c99cc7fb566d96e9fa109bf15c478410a3f5eb4d4c4e26cd081f6"
+	sha256FileB = "430c56c5818e62bcb6d478901ef86284e97714c138f3c86aa14fd6a84b7ce5d3"
+	sha256FileC = "31c5ab6111f1d6aa13c2c4e92bb3c0f7c76b61b42d141af1e846eb7f6586a51c"
 
 	fileCustomManifest  = []byte("Custom manifest: true\n")
 	customManifestAfter = []byte("Manifest-Version: 1.0\nCreated-By: soong_zip\nCustom manifest: true\n\n")
@@ -65,6 +70,12 @@ func fh(name string, contents []byte, method uint16) zip.FileHeader {
 		UncompressedSize64: uint64(len(contents)),
 		ExternalAttrs:      (syscall.S_IFREG | 0644) << 16,
 	}
+}
+
+func fhWithSHA(name string, contents []byte, method uint16, sha string) zip.FileHeader {
+	h := fh(name, contents, method)
+	h.Comment = fmt.Sprintf("SHA256:\"%s\"", sha)
+	return h
 }
 
 func fhManifest(contents []byte) zip.FileHeader {
@@ -114,6 +125,7 @@ func TestZip(t *testing.T) {
 		manifest           string
 		storeSymlinks      bool
 		ignoreMissingFiles bool
+		shaChecksum        bool
 
 		files []zip.FileHeader
 		err   error
@@ -412,6 +424,23 @@ func TestZip(t *testing.T) {
 				fh("a/a/a", fileA, zip.Deflate),
 			},
 		},
+		{
+			name: "generate SHA checksum",
+			args: fileArgsBuilder().
+				File("a/a/a").
+				File("a/a/b").
+				File("a/a/c").
+				File("c"),
+			compressionLevel: 9,
+			shaChecksum:      true,
+
+			files: []zip.FileHeader{
+				fhWithSHA("a/a/a", fileA, zip.Deflate, sha256FileA),
+				fhWithSHA("a/a/b", fileB, zip.Deflate, sha256FileB),
+				fhWithSHA("a/a/c", fileC, zip.Deflate, sha256FileC),
+				fhWithSHA("c", fileC, zip.Deflate, sha256FileC),
+			},
+		},
 
 		// errors
 		{
@@ -465,6 +494,7 @@ func TestZip(t *testing.T) {
 			args.ManifestSourcePath = test.manifest
 			args.StoreSymlinks = test.storeSymlinks
 			args.IgnoreMissingFiles = test.ignoreMissingFiles
+			args.ShaChecksum = test.shaChecksum
 			args.Filesystem = mockFs
 			args.Stderr = &bytes.Buffer{}
 
@@ -554,6 +584,10 @@ func TestZip(t *testing.T) {
 				if want.Method != got.Method {
 					t.Errorf("incorrect file %s method want %v got %v", want.Name,
 						want.Method, got.Method)
+				}
+
+				if want.Comment != got.Comment {
+					t.Errorf("incorrect file %s comment want %v got %v", want.Name, want.Comment, got.Comment)
 				}
 			}
 		})
