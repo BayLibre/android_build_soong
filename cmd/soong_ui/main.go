@@ -199,11 +199,13 @@ func main() {
 	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
 	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
 	bp2buildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"bp2build_metrics.pb")
+	bazelMetricsFile := filepath.Join(logsDir, c.logsPrefix+"bazel_metrics.txt")
 	metricsFiles := []string{
 		buildErrorFile,           // build error strings
 		rbeMetricsFile,           // high level metrics related to remote build execution.
 		bp2buildMetricsFile,      // high level metrics related to bp2build.
 		soongMetricsFile,         // high level metrics related to this build system.
+		bazelMetricsFile,         // high level metrics related to bazel execution
 		config.BazelMetricsDir(), // directory that contains a set of bazel metrics.
 	}
 
