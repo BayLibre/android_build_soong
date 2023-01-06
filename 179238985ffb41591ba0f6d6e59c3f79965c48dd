@@ -34,6 +34,23 @@
       "parentUuid": "f42d44ee_2a7c0712",
       "revId": "179238985ffb41591ba0f6d6e59c3f79965c48dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2839d8_5e598eb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-06T22:30:54Z",
+      "side": 1,
+      "message": "We were discussing offline whether this fixed the Bazel release, and it looks like it did not. Are we sure that this removes all cases of `zipalign` (with ubsan requirement) being built with Bazel?\n\nThe mixed_libc presubmit failure is probably legitimate (and thus worth looking into)",
+      "revId": "179238985ffb41591ba0f6d6e59c3f79965c48dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
