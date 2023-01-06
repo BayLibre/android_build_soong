@@ -18,16 +18,21 @@ package build
 // another.
 
 import (
+	"bufio"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strconv"
+	"strings"
 	"time"
 
+	"android/soong/shared"
 	"android/soong/ui/metrics"
 
 	"google.golang.org/protobuf/proto"
 
+	bazel_metrics_proto "android/soong/ui/metrics/bazel_metrics_proto"
 	upload_proto "android/soong/ui/metrics/upload_proto"
 )
 
@@ -73,6 +78,115 @@ func pruneMetricsFiles(paths []string) []string {
 	return metricsFiles
 }
 
+func parseTiming(str string) int64 {
+	secondsStr := removeDecimalPoint(str)
+	timingMillis, _ := strconv.ParseInt(secondsStr, 10, 64)
+	return timingMillis * 1000000
+}
+
+func parsePercentage(str string) int32 {
+	percentageString := removeDecimalPoint(str)
+	//remove the % sign
+	len := len(percentageString)
+	percentage := percentageString[0 : len-1]
+	percentagePortion, _ := strconv.ParseInt(percentage, 10, 32)
+	return int32(percentagePortion)
+}
+
+func removeDecimalPoint(num string) string {
+	// The format is always 0.425s or 10.425s
+	portions := strings.Split(num, ".")
+	return portions[0] + portions[1]
+}
+
+func getPhaseNameAndTimingAndPercentage(words []string) (string, int64, int32) {
+	// Total launch phase time   0.011 s    2.59%
+	// Total target pattern evaluation phase  time  0.011 s    2.59%
+	var beginning int
+	var end int
+	for ind, word := range words {
+		if word == "Total" {
+			beginning = ind + 1
+		} else if beginning > 0 && word == "phase" {
+			end = ind
+			break
+		}
+	}
+	phaseName := strings.Join(words[beginning:end], " ")
+
+	// end is now "phase" - advance by 2 for timing and 4 for percentage
+	percentageString := words[end+4]
+	timingString := words[end+2]
+	timing := parseTiming(timingString)
+	percentagePortion := parsePercentage(percentageString)
+	return phaseName, timing, percentagePortion
+}
+
+func parseLineIntoProto(line string, metrics bazel_metrics_proto.BazelMetrics) {
+	// Sample lines include:
+	// Total launch phase time                              0.011 s    2.59%
+	// Total run time                                       0.425 s  100.00%
+
+	//if it starts with total Run Time, it's not worth splitting
+	words := strings.Fields(line)
+
+	if strings.HasPrefix(line, "Total run time") {
+		timing := words[3]
+		timingNanos := parseTiming(timing)
+		metrics.Total = &timingNanos
+	} else {
+		phaseName, timing, portion := getPhaseNameAndTimingAndPercentage(words)
+		phaseTiming := bazel_metrics_proto.PhaseTiming{}
+		phaseTiming.DurationNanos = &timing
+		phaseTiming.PortionOfBuildTime = &portion
+
+		phaseTiming.PhaseName = &phaseName
+
+		metrics.PhaseTimings = append(metrics.PhaseTimings, &phaseTiming)
+	}
+
+}
+
+func readBazelProto(filepath string) bazel_metrics_proto.BazelMetrics {
+	//serialize the proto, write it
+	metrics := bazel_metrics_proto.BazelMetrics{}
+
+	file, err := os.ReadFile(filepath)
+	if err != nil {
+		fmt.Printf("error reading metrics file %s\n", err)
+		return metrics
+	}
+	scanner := bufio.NewScanner(strings.NewReader(string(file)))
+	scanner.Split(bufio.ScanLines)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.HasPrefix(line, "Total") {
+			parseLineIntoProto(line, metrics)
+		}
+	}
+
+	return metrics
+}
+
+func checkBazelProtoFile(paths ...string) {
+	// find bazel path
+	var bazelPath string
+	for _, str := range paths {
+		if strings.HasSuffix(str, "bazel_metrics.txt") {
+			bazelPath = str
+		}
+	}
+	if bazelPath == "" {
+		return
+	}
+	bazelProto := readBazelProto(bazelPath)
+	lastSlashInd := strings.LastIndex(bazelPath, "/")
+
+	filepath := bazelPath[0:lastSlashInd+1] + "bazel_metrics.pb"
+	shared.Save(&bazelProto, filepath)
+}
+
 // UploadMetrics uploads a set of metrics files to a server for analysis.
 // The metrics files are first copied to a temporary directory
 // and the uploader is then executed in the background to allow the user/system
@@ -88,6 +202,7 @@ func UploadMetrics(ctx Context, config Config, simpleOutput bool, buildStarted t
 		return
 	}
 
+	checkBazelProtoFile(paths...)
 	// Several of the files might be directories.
 	metricsFiles := pruneMetricsFiles(paths)
 	if len(metricsFiles) == 0 {
