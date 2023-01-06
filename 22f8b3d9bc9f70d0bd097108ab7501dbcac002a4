@@ -52,6 +52,24 @@
       "parentUuid": "9448624d_2cf154e4",
       "revId": "22f8b3d9bc9f70d0bd097108ab7501dbcac002a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb73bd6d_dce04338",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-01-06T00:29:54Z",
+      "side": 0,
+      "message": "Thanks for the suggestions. Updated the proto as well. Please see the go/fix-metrics-staleness for the design doc.",
+      "parentUuid": "0d499470_674ee4c9",
+      "revId": "22f8b3d9bc9f70d0bd097108ab7501dbcac002a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

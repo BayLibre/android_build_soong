@@ -16,6 +16,24 @@
       "message": "What is \"android_build.metrics.local.build_metrics\" ?\nI am guessing a db column.\nBut that is only relevant for \"local\" builds. This comment needs some refinement IMO.",
       "revId": "2f9286e8416fa0192f1668cbcee85befa7169523",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d9b608_db6e9ad5",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-01-06T00:29:54Z",
+      "side": 1,
+      "message": "\"android_build.metrics.local.build_metrics\" is a table. Updated the comments to include the CI table as well. Thanks!",
+      "parentUuid": "9fab5cce_5e3a48d6",
+      "revId": "2f9286e8416fa0192f1668cbcee85befa7169523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
