@@ -170,7 +170,6 @@ type bazelRunner interface {
 }
 
 type bazelPaths struct {
-	homeDir       string
 	bazelPath     string
 	outputBase    string
 	workspaceDir  string
@@ -432,7 +431,6 @@ func NewBazelContext(c *config) (BazelContext, error) {
 		// environment variables that have no effect on the generated ninja file.
 		track bool
 	}{
-		{"BAZEL_HOME", &paths.homeDir, true},
 		{"BAZEL_PATH", &paths.bazelPath, true},
 		{"BAZEL_OUTPUT_BASE", &paths.outputBase, true},
 		{"BAZEL_WORKSPACE", &paths.workspaceDir, true},
@@ -574,7 +572,6 @@ func (r *builtinBazelRunner) createBazelCommand(paths *bazelPaths, runName bazel
 	bazelCmd := exec.Command(paths.bazelPath, cmdFlags...)
 	bazelCmd.Dir = absolutePath(paths.syntheticWorkspaceDir())
 	extraEnv := []string{
-		"HOME=" + paths.homeDir,
 		pwdPrefix(),
 		"BUILD_DIR=" + absolutePath(paths.soongOutDir),
 		// Make OUT_DIR absolute here so build/bazel/bin/bazel uses the correct
