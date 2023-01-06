@@ -70,6 +70,30 @@
       },
       "revId": "94682b23c4e209491abd21b0353948e6614f45dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c38ce705_b569c76d",
+        "filename": "java/aar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-01-06T01:17:18Z",
+      "side": 0,
+      "message": "I thought apps implement backward compatibility in them with conditional use of the APIs and set the minSdkVersion for those devices. But I am not sure about it.\nAnyway the aapt here is building the app for this specific device with a specific api level, isn\u0027t it?",
+      "parentUuid": "eab4062b_aea1d260",
+      "range": {
+        "startLine": 229,
+        "startChar": 55,
+        "endLine": 229,
+        "endChar": 68
+      },
+      "revId": "94682b23c4e209491abd21b0353948e6614f45dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
