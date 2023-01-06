@@ -29,6 +29,30 @@ import (
 	"android/soong/ui/logger"
 )
 
+func writeBazelProfileFile(dir string) error {
+	contents := `
+
+=== PHASE SUMMARY INFORMATION ===
+
+Total launch phase time                              1.193 s   15.77%
+Total init phase time                                1.092 s   14.44%
+Total target pattern evaluation phase time           0.580 s    7.67%
+Total interleaved loading-and-analysis phase time    3.646 s   48.21%
+Total preparation phase time                         0.022 s    0.30%
+Total execution phase time                           0.993 s   13.13%
+Total finish phase time                              0.036 s    0.48%
+---------------------------------------------------------------------
+Total run time                                       7.563 s  100.00%
+
+Critical path (178 ms):
+       Time Percentage   Description
+     178 ms  100.00%   action 'BazelWorkspaceStatusAction stable-status.txt'
+
+`
+	file := filepath.Join(dir, "bazel_metrics.txt")
+	return os.WriteFile(file, []byte(contents), 0666)
+}
+
 func TestPruneMetricsFiles(t *testing.T) {
 	rootDir := t.TempDir()
 
@@ -84,12 +108,12 @@ func TestUploadMetrics(t *testing.T) {
 	}, {
 		description: "non-existent metrics files no upload",
 		uploader:    "echo",
-		files:       []string{"metrics_file_1", "metrics_file_2", "metrics_file_3"},
+		files:       []string{"metrics_file_1", "metrics_file_2", "metrics_file_3, bazel_metrics.pb"},
 	}, {
 		description: "trigger upload",
 		uploader:    "echo",
 		createFiles: true,
-		files:       []string{"metrics_file_1", "metrics_file_2"},
+		files:       []string{"metrics_file_1", "metrics_file_2, bazel_metrics.pb"},
 	}}
 
 	for _, tt := range tests {
@@ -130,6 +154,9 @@ func TestUploadMetrics(t *testing.T) {
 					}
 				}
 			}
+			if err := writeBazelProfileFile(outDir); err != nil {
+
+			}
 
 			config := Config{&configImpl{
 				environ: &Environment{
@@ -139,7 +166,7 @@ func TestUploadMetrics(t *testing.T) {
 				metricsUploader: tt.uploader,
 			}}
 
-			UploadMetrics(ctx, config, false, time.Now(), metricsFiles...)
+			UploadMetrics(ctx, config, false, time.Now(), "out/bazel_metrics.txt", "out/bazel_metrics.pb", metricsFiles...)
 		})
 	}
 }
@@ -194,7 +221,7 @@ func TestUploadMetricsErrors(t *testing.T) {
 				metricsUploader: "echo",
 			}}
 
-			UploadMetrics(ctx, config, true, time.Now(), metricsFile)
+			UploadMetrics(ctx, config, true, time.Now(), "", "", metricsFile)
 			t.Errorf("got nil, expecting %q as a failure", tt.expectedErr)
 		})
 	}
