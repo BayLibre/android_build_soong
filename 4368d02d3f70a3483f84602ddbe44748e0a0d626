@@ -70,6 +70,30 @@
       },
       "revId": "4368d02d3f70a3483f84602ddbe44748e0a0d626",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d0db05_b271be6f",
+        "filename": "java/app_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-01-06T00:09:30Z",
+      "side": 1,
+      "message": "min_sdk_version is the minimum required api level. sdk_version is the target sdk version to build against. So I think `--min-sdk-version` is 25, while `--target-sdk-version` is 29 which is `current` \u003d\u003e `BOARD_CURRENT_API_LEVEL_FOR_VENDOR_MODULES`.\nStill I don\u0027t know why these two values have the same value in ToT.",
+      "parentUuid": "eecd4bb2_f28d5f89",
+      "range": {
+        "startLine": 1136,
+        "startChar": 3,
+        "endLine": 1136,
+        "endChar": 47
+      },
+      "revId": "4368d02d3f70a3483f84602ddbe44748e0a0d626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
