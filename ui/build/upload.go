@@ -18,16 +18,21 @@ package build
 // another.
 
 import (
+	"bufio"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strconv"
+	"strings"
 	"time"
 
+	"android/soong/shared"
 	"android/soong/ui/metrics"
 
 	"google.golang.org/protobuf/proto"
 
+	bazel_metrics_proto "android/soong/ui/metrics/bazel_metrics_proto"
 	upload_proto "android/soong/ui/metrics/upload_proto"
 )
 
@@ -73,12 +78,111 @@ func pruneMetricsFiles(paths []string) []string {
 	return metricsFiles
 }
 
+func parseTiming(str string) int64 {
+	secondsStr := removeDecimalPoint(str)
+	timingMillis, _ := strconv.ParseInt(secondsStr, 10, 64)
+	return timingMillis * 1000000
+}
+
+func parsePercentage(str string) int32 {
+	percentageString := removeDecimalPoint(str)
+	//remove the % at the end of the string
+	strLen := len(percentageString)
+	percentage := percentageString[0 : strLen-1]
+	percentagePortion, _ := strconv.ParseInt(percentage, 10, 32)
+	return int32(percentagePortion)
+}
+
+func removeDecimalPoint(num string) string {
+	// The format is always 0.425s or 10.425s
+	portions := strings.Split(num, ".")
+	return portions[0] + portions[1]
+}
+
+func getPhaseNameAndTimingAndPercentage(words []string) (string, int64, int32) {
+	// Sample lines include:
+	// Total launch phase time   0.011 s    2.59%
+	// Total target pattern evaluation phase  time  0.011 s    2.59%
+	var beginning int
+	var end int
+	for ind, word := range words {
+		if word == "Total" {
+			beginning = ind + 1
+		} else if beginning > 0 && word == "phase" {
+			end = ind
+			break
+		}
+	}
+	phaseName := strings.Join(words[beginning:end], " ")
+
+	// end is now "phase" - advance by 2 for timing and 4 for percentage
+	percentageString := words[end+4]
+	timingString := words[end+2]
+	timing := parseTiming(timingString)
+	percentagePortion := parsePercentage(percentageString)
+	return phaseName, timing, percentagePortion
+}
+
+func parseTotal(line string) int64 {
+	words := strings.Fields(line)
+	timing := words[3]
+	return parseTiming(timing)
+}
+
+func parsePhaseTiming(line string) bazel_metrics_proto.PhaseTiming {
+	words := strings.Fields(line)
+
+	phaseName, timing, portion := getPhaseNameAndTimingAndPercentage(words)
+	phaseTiming := bazel_metrics_proto.PhaseTiming{}
+	phaseTiming.DurationNanos = &timing
+	phaseTiming.PortionOfBuildTime = &portion
+
+	phaseTiming.PhaseName = &phaseName
+	return phaseTiming
+}
+
+func readBazelProto(filepath string) bazel_metrics_proto.BazelMetrics {
+	//serialize the proto, write it
+	bazelMetrics := bazel_metrics_proto.BazelMetrics{}
+
+	file, err := os.ReadFile(filepath)
+	if err != nil {
+		fmt.Printf("error reading metrics file %s\n", err)
+		return bazelMetrics
+	}
+	scanner := bufio.NewScanner(strings.NewReader(string(file)))
+	scanner.Split(bufio.ScanLines)
+
+	var phaseTimings []*bazel_metrics_proto.PhaseTiming
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.HasPrefix(line, "Total run time") {
+			total := parseTotal(line)
+			bazelMetrics.Total = &total
+		} else if strings.HasPrefix(line, "Total") {
+			phaseTiming := parsePhaseTiming(line)
+			phaseTimings = append(phaseTimings, &phaseTiming)
+		}
+	}
+	bazelMetrics.PhaseTimings = phaseTimings
+
+	return bazelMetrics
+}
+
+func processBazelMetrics(bazelProfileFile string, bazelMetricsFile string) {
+	if bazelProfileFile == "" {
+		return
+	}
+	bazelProto := readBazelProto(bazelProfileFile)
+	shared.Save(&bazelProto, bazelMetricsFile)
+}
+
 // UploadMetrics uploads a set of metrics files to a server for analysis.
 // The metrics files are first copied to a temporary directory
 // and the uploader is then executed in the background to allow the user/system
 // to continue working. Soong communicates to the uploader through the
 // upload_proto raw protobuf file.
-func UploadMetrics(ctx Context, config Config, simpleOutput bool, buildStarted time.Time, paths ...string) {
+func UploadMetrics(ctx Context, config Config, simpleOutput bool, buildStarted time.Time, bazelProfileFile string, bazelMetricsFile string, paths ...string) {
 	ctx.BeginTrace(metrics.RunSetupTool, "upload_metrics")
 	defer ctx.EndTrace()
 
@@ -88,6 +192,7 @@ func UploadMetrics(ctx Context, config Config, simpleOutput bool, buildStarted t
 		return
 	}
 
+	processBazelMetrics(bazelProfileFile, bazelMetricsFile)
 	// Several of the files might be directories.
 	metricsFiles := pruneMetricsFiles(paths)
 	if len(metricsFiles) == 0 {
