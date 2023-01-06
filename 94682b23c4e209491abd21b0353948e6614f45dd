@@ -46,6 +46,30 @@
       },
       "revId": "94682b23c4e209491abd21b0353948e6614f45dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab4062b_aea1d260",
+        "filename": "java/aar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-06T00:54:31Z",
+      "side": 0,
+      "message": "I am not sure... I looked up https://developer.android.com/guide/topics/manifest/uses-sdk-element, and it says\n```\nandroid:targetSdkVersion\nAn integer designating the API Level that the application targets. If not set, the default value equals that given to minSdkVersion.\n```\n\nIf `targetSdkVersion` is missing in the manifest file, it defaults to `minSdkVersion`. So I suppose this is WAI, but I am not sure why this is the intended behavior. Maybe to ensure backwards compatibility when the app is installed on an older device?\n\n+ccross, do you know why we do not use the api level of `sdk_version` here?",
+      "parentUuid": "37b8af7b_c5dc4c90",
+      "range": {
+        "startLine": 229,
+        "startChar": 55,
+        "endLine": 229,
+        "endChar": 68
+      },
+      "revId": "94682b23c4e209491abd21b0353948e6614f45dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
