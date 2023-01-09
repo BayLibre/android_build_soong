@@ -22,6 +22,30 @@
       },
       "revId": "014ccd4ef002f11109e1116fddff42f563273ba5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b289c5aa_a668b919",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-01-09T08:27:09Z",
+      "side": 1,
+      "message": "yeah, we have many ways to pass \"multiple values\"\n- x-separated values (x can be space, comma, colon, ...)\n- or, multi-arg (`nargs\u003d\u0027+\u0027`)\n\nI found that the former is make-friendly and the colon is quite common as path-separator.",
+      "parentUuid": "0b8a5890_ba5b0c7e",
+      "range": {
+        "startLine": 109,
+        "startChar": 14,
+        "endLine": 109,
+        "endChar": 37
+      },
+      "revId": "014ccd4ef002f11109e1116fddff42f563273ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
