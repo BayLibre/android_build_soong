@@ -94,6 +94,30 @@
       },
       "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b965ef24_4944b2c2",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-09T23:48:02Z",
+      "side": 1,
+      "message": "No, I don\u0027t believe so. I believe METRICS_UPLOADER is passed in via checked-in file (in internal branches, so I can\u0027t link here).",
+      "parentUuid": "ce74ef00_266e06e2",
+      "range": {
+        "startLine": 1563,
+        "startChar": 29,
+        "endLine": 1563,
+        "endChar": 58
+      },
+      "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
