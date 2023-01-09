@@ -262,6 +262,8 @@ func UploadOnlyConfig(ctx Context, _ ...string) Config {
 		environ:       OsEnvironment(),
 		sandboxConfig: &SandboxConfig{},
 	}
+	srcDir := absPath(ctx, ".")
+	ret.metricsUploader = GetMetricsUploader(srcDir, ret.environ)
 	return Config{ret}
 }
 
@@ -1557,6 +1559,12 @@ func GetMetricsUploader(topDir string, env *Environment) string {
 		metricsUploader := filepath.Join(topDir, p)
 		if _, err := os.Stat(metricsUploader); err == nil {
 			return metricsUploader
+		}
+	} else if p, ok := env.Get("ANDROID_ENABLE_METRICS_UPLOAD"); ok {
+		// TODO(b/264905338) - find out why this is set but the other isn't
+		// Note: topDir is unnecessary here
+		if _, err := os.Stat(p); err == nil {
+			return p
 		}
 	}
 
