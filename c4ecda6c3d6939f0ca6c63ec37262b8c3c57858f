@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757b05a3_eaf4617d",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-09T20:16:39Z",
+      "side": 1,
+      "message": "Could you instead spend a bit longer trying to debug the root cause here? I hacked together a \"solution\" by changing upload-only to call build.NewConfig(ctx) instaed of build.UploadOnlyConfig(ctx), and it looks like METRICS_UPLOADER was set.\n\nSo, it\u0027s something in the config instantiation that grabs environment variables from the vendor-specific env var file.",
+      "range": {
+        "startLine": 1563,
+        "startChar": 29,
+        "endLine": 1563,
+        "endChar": 58
+      },
+      "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
