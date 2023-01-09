@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8a5890_ba5b0c7e",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-01-09T08:23:31Z",
+      "side": 1,
+      "message": "What not setting argument as append, and repeat arguments?",
+      "range": {
+        "startLine": 109,
+        "startChar": 14,
+        "endLine": 109,
+        "endChar": 37
+      },
+      "revId": "014ccd4ef002f11109e1116fddff42f563273ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
