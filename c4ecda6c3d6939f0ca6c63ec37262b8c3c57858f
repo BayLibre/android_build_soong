@@ -70,6 +70,30 @@
       },
       "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce74ef00_266e06e2",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-09T23:47:06Z",
+      "side": 1,
+      "message": "`soong_ui` passes env vars to `soong_build` with `--used_env`. And I was wondering if `soong.environment.used.xxx` files are pertinent here. (Most likely not)",
+      "parentUuid": "6496a1cc_20b51401",
+      "range": {
+        "startLine": 1563,
+        "startChar": 29,
+        "endLine": 1563,
+        "endChar": 58
+      },
+      "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
