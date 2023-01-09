@@ -16,6 +16,24 @@
       "message": "nit: what is \"soong_metrics\"? It is a filename but this schema file shouldn\u0027t mention it. I\u0027d suggest the comment to be changed to `//Deprecated because instead of embedding in a MetricsBase, we keep a SoongBuildMetrics in its own file`\n\nThe references to `android_build.metrics.local.build_metrics` and `android_build.metrics.ci.build_metrics` are not known to ASOP because they\u0027re from Google3?",
       "revId": "b6c6789a786a9fac4bc4a8cb2fb8e0810c8d80c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e55553_a9e113ff",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-01-09T16:23:45Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. The reason why I said ````song_metrics````here is because ````soong_metrics```` is the field name in database considering people might need to query the history data of ````soong_build_metrics````, they will know to query it from ````song_metrics````.\nAnd yes````android_build.metrics.local.build_metrics```` and ````android_build.metrics.local.build_metrics```` are the table name in google3.\nCould you please let me know if you still think it would be better to update the comments so that I could make the changes? Thanks!",
+      "parentUuid": "3cf4283c_19822688",
+      "revId": "b6c6789a786a9fac4bc4a8cb2fb8e0810c8d80c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
