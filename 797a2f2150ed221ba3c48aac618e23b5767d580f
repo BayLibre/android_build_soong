@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c52b42c4_a43e9e4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-01-09T20:50:09Z",
+      "side": 1,
+      "message": "kroot: any thoughts on this? (or feel free to comment on the bug instead, or redirect to whoever you think is most appropriate.)",
+      "revId": "797a2f2150ed221ba3c48aac618e23b5767d580f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
