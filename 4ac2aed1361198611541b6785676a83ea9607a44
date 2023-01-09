@@ -22,6 +22,30 @@
       },
       "revId": "4ac2aed1361198611541b6785676a83ea9607a44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b952bd_369ab608",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-01-09T18:48:45Z",
+      "side": 1,
+      "message": "toolchain is not bad. \n\nI think my biggest problem with this is that *I* don\u0027t have a good understanding about the api rules of engagement for it (go/android-api-types).\n\nI think it would behoove is to coordinate the API Council and the Native API Council to reconcile their rules, but that\u0027s not a blocker for this CL.",
+      "parentUuid": "387371db_d9f5ce34",
+      "range": {
+        "startLine": 81,
+        "startChar": 10,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "4ac2aed1361198611541b6785676a83ea9607a44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
