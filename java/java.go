@@ -62,6 +62,7 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("dex_import", DexImportFactory)
 	ctx.RegisterModuleType("java_api_library", ApiLibraryFactory)
 	ctx.RegisterModuleType("java_api_contribution", ApiContributionFactory)
+	ctx.RegisterModuleType("java_api_contribution_defaults", ApiContributionDefaultsFactory)
 
 	// This mutator registers dependencies on dex2oat for modules that should be
 	// dexpreopted. This is done late when the final variants have been
@@ -1618,6 +1619,10 @@ type JavaApiLibraryProperties struct {
 
 	// List of flags to be passed to the javac compiler to generate jar file
 	Javacflags []string
+
+	// List of Java API contribution defaults modules which correspond to each API surfaces,
+	// that constitute this API surface
+	Api_contribution_defaults []string
 }
 
 func ApiLibraryFactory() android.Module {
@@ -1683,11 +1688,17 @@ func (al *ApiLibrary) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBui
 }
 
 var javaApiContributionTag = dependencyTag{name: "java-api-contribution"}
+var javaApiContributionDefaultsTag = dependencyTag{name: "java-api-contribution-defaults"}
 
 func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	apiContributions := al.properties.Api_contributions
 	for _, apiContributionName := range apiContributions {
 		ctx.AddDependency(ctx.Module(), javaApiContributionTag, apiContributionName)
+	}
+
+	apiContributionDefaults := al.properties.Api_contribution_defaults
+	for _, apiContributionDefaultsName := range apiContributionDefaults {
+		ctx.AddDependency(ctx.Module(), javaApiContributionDefaultsTag, apiContributionDefaultsName)
 	}
 }
 
@@ -1707,6 +1718,12 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	homeDir := android.PathForModuleOut(ctx, "metalava", "home")
 
 	var srcFiles []android.Path
+	ctx.VisitDirectDepsWithTag(javaApiContributionDefaultsTag, func(dep android.Module) {
+		defaults := ctx.OtherModuleProvider(dep, JavaApiImportDefaultsProvider).(JavaApiImportDefaultsInfo)
+		for _, apiFile := range defaults.Java_api_contributions {
+			srcFiles = append(srcFiles, android.PathForSource(ctx, apiFile.String()))
+		}
+	})
 	ctx.VisitDirectDepsWithTag(javaApiContributionTag, func(dep android.Module) {
 		provider := ctx.OtherModuleProvider(dep, JavaApiImportProvider).(JavaApiImportInfo)
 		srcFiles = append(srcFiles, android.PathForSource(ctx, provider.ApiFile.String()))
@@ -1744,6 +1761,57 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		android.Paths{al.stubsSrcJar}, flags, android.Paths{})
 
 	ctx.Phony(ctx.ModuleName(), al.stubsJar)
+}
+
+type JavaApiContributionDefaults struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+
+	properties struct {
+		// name of the API surface
+		Api_surface *string
+
+		// name of the java_api_contribution modules that constitute the API surface
+		Java_api_contributions []string
+	}
+}
+
+type JavaApiImportDefaultsInfo struct {
+	Java_api_contributions android.Paths
+}
+
+var JavaApiImportDefaultsProvider = blueprint.NewProvider(JavaApiImportDefaultsInfo{})
+
+func ApiContributionDefaultsFactory() android.Module {
+	module := &JavaApiContributionDefaults{}
+	android.InitAndroidModule(module)
+	android.InitDefaultableModule(module)
+	module.AddProperties(&module.properties)
+	return module
+}
+
+func (al *JavaApiContributionDefaults) ApiSurface() *string {
+	return al.properties.Api_surface
+}
+
+func (al *JavaApiContributionDefaults) DepsMutator(ctx android.BottomUpMutatorContext) {
+	apiContributions := al.properties.Java_api_contributions
+	for _, apiContributionName := range apiContributions {
+		ctx.AddDependency(ctx.Module(), javaApiContributionTag, apiContributionName)
+	}
+}
+
+func (ap *JavaApiContributionDefaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	apiFiles := android.Paths{}
+
+	ctx.VisitDirectDepsWithTag(javaApiContributionTag, func(dep android.Module) {
+		provider := ctx.OtherModuleProvider(dep, JavaApiImportProvider).(JavaApiImportInfo)
+		apiFiles = append(apiFiles, provider.ApiFile)
+	})
+
+	ctx.SetProvider(JavaApiImportDefaultsProvider, JavaApiImportDefaultsInfo{
+		Java_api_contributions: apiFiles,
+	})
 }
 
 //
