@@ -46,6 +46,30 @@
       },
       "revId": "014ccd4ef002f11109e1116fddff42f563273ba5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8a1af41_59f11a91",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-01-09T08:29:00Z",
+      "side": 1,
+      "message": "OK for now. Let\u0027s revisit this if we have any issue on colon-separated argument.",
+      "parentUuid": "b289c5aa_a668b919",
+      "range": {
+        "startLine": 109,
+        "startChar": 14,
+        "endLine": 109,
+        "endChar": 37
+      },
+      "revId": "014ccd4ef002f11109e1116fddff42f563273ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
