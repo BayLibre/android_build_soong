@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e182d52_9c5af47a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1076194
+      },
+      "writtenOn": "2023-01-09T15:47:02Z",
+      "side": 1,
+      "message": "Looking at the failure, I don\u0027t think this CL was at fault, but feel free to revert if you confirm it",
+      "revId": "0182553f5b0f64c6422fb09718d26c94482cfc4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
