@@ -33,6 +33,24 @@
       "message": "Any reason for using `.BaseModuleName()` instead of `.Name()` here and in `installFileName`?",
       "revId": "4d09d5ce6bfaa75f6307f45c768e82d6f62d7512",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c00384_329896c8",
+        "filename": "filesystem/avb_gen_vbmeta_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-01-09T22:06:06Z",
+      "side": 1,
+      "message": "Nothing in particular. I can use Name here.",
+      "parentUuid": "64dfd03c_f851b9a0",
+      "revId": "4d09d5ce6bfaa75f6307f45c768e82d6f62d7512",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
