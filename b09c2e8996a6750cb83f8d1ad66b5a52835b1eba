@@ -33,6 +33,29 @@
       "message": "Hi Cole,\n\nCould you please review this cl?",
       "revId": "b09c2e8996a6750cb83f8d1ad66b5a52835b1eba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3277f910_a0782e44",
+        "filename": "filesystem/avb_add_hash_footer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-09T01:03:17Z",
+      "side": 1,
+      "message": "no need because the paths will be added as inputs at L125.",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "b09c2e8996a6750cb83f8d1ad66b5a52835b1eba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
