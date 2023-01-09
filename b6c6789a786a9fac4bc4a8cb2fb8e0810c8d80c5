@@ -52,6 +52,24 @@
       "parentUuid": "d6e55553_a9e113ff",
       "revId": "b6c6789a786a9fac4bc4a8cb2fb8e0810c8d80c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9649f635_e85f9bfd",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-01-09T22:51:48Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. Updated to the comments that Usta suggested.",
+      "parentUuid": "0d662bc5_8310394c",
+      "revId": "b6c6789a786a9fac4bc4a8cb2fb8e0810c8d80c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
