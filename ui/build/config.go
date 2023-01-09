@@ -204,6 +204,27 @@ func fetchEnvConfig(ctx Context, config *configImpl, envConfigName string) error
 	return nil
 }
 
+func loadMetricsUploaderEnvConfig(ctx Context, config *configImpl) error {
+	cfgFile := filepath.Join(os.Getenv("TOP"), config.OutDir(), "googler.json")
+	envVarsJSON, err := ioutil.ReadFile(cfgFile)
+	if err != nil {
+		return err
+	}
+	ctx.Verbosef("Loading config file %v\n", cfgFile)
+	var envVars map[string]map[string]string
+	if err := json.Unmarshal(envVarsJSON, &envVars); err != nil {
+		fmt.Fprintf(os.Stderr, "Env vars config file %s did not parse correctly: %s", cfgFile, err.Error())
+		return err
+	}
+	for k, v := range envVars["env"] {
+		if os.Getenv(k) != "" {
+			continue
+		}
+		config.environ.Set(k, v)
+	}
+	return nil
+}
+
 func loadEnvConfig(ctx Context, config *configImpl) error {
 	bc := os.Getenv("ANDROID_BUILD_ENVIRONMENT_CONFIG")
 	if bc == "" {
@@ -262,6 +283,11 @@ func UploadOnlyConfig(ctx Context, _ ...string) Config {
 		environ:       OsEnvironment(),
 		sandboxConfig: &SandboxConfig{},
 	}
+	srcDir := absPath(ctx, ".")
+	if err := loadMetricsUploaderEnvConfig(ctx, ret); err != nil {
+		ctx.Fatalln("Failed to parse env config files: %v", err)
+	}
+	ret.metricsUploader = GetMetricsUploader(srcDir, ret.environ)
 	return Config{ret}
 }
 
@@ -1557,6 +1583,12 @@ func GetMetricsUploader(topDir string, env *Environment) string {
 		metricsUploader := filepath.Join(topDir, p)
 		if _, err := os.Stat(metricsUploader); err == nil {
 			return metricsUploader
+		}
+	} else if p, ok := env.Get("ANDROID_ENABLE_METRICS_UPLOAD"); ok {
+		// TODO(b/264905338) - find out why this is set but the other isn't
+		// Note: topDir is unnecessary here
+		if _, err := os.Stat(p); err == nil {
+			return p
 		}
 	}
 
