@@ -34,6 +34,24 @@
       "parentUuid": "3cf4283c_19822688",
       "revId": "b6c6789a786a9fac4bc4a8cb2fb8e0810c8d80c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d662bc5_8310394c",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-09T16:47:37Z",
+      "side": 1,
+      "message": "Usta is right, that this comment is referencing table names that are not public (nor part of AOSP). Can we revise the comment here to describe that the data is not found here, but do so in a way that focuses more on the materialized metrics by Soong, and less so on where they are stored for internal Google builds? (We should not reference details which are only visible internally)",
+      "parentUuid": "d6e55553_a9e113ff",
+      "revId": "b6c6789a786a9fac4bc4a8cb2fb8e0810c8d80c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
