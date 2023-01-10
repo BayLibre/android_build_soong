@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94a85ff2_84e688d8",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-10T18:35:56Z",
+      "side": 1,
+      "message": "I don\u0027t get warnings from the initial format (at least not that I\u0027m aware of). Where do you see warnings?",
+      "parentUuid": "90553aa7_8f4fa4fa",
+      "revId": "1f44fc4cadc2e116454cde3b31f48d714b0a60c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93ea2d34_286ef6a2",
         "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.proto",
         "patchSetId": 1
