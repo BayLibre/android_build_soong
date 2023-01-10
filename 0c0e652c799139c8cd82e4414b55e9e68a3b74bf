@@ -46,6 +46,30 @@
       },
       "revId": "0c0e652c799139c8cd82e4414b55e9e68a3b74bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50461a90_e56d5766",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1788,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-10T22:09:24Z",
+      "side": 1,
+      "message": "1. You don\u0027t need to explicitly copy all the properties. The defaults mutator will do the copying for you.\n```\n\tctx.VisitDirectDepsWithTag(javaApiDefaultsTag, func(dep android.Module) {\n\t\tdefaults :\u003d ctx.OtherModuleProvider(dep, JavaApiImportDefaultsProvider).(JavaApiImportDefaultsInfo)\n\t\tfor _, apiFile :\u003d range defaults.Java_api_contributions {\n\t\t\tsrcFiles \u003d append(srcFiles, android.PathForSource(ctx, apiFile.String()))\n\t\t}\n\t})\n``\n\n2. Having two different ways of implementing defaults in Soong can be a little confusing.",
+      "parentUuid": "18f14b99_f18afd8b",
+      "range": {
+        "startLine": 1788,
+        "startChar": 9,
+        "endLine": 1788,
+        "endChar": 30
+      },
+      "revId": "0c0e652c799139c8cd82e4414b55e9e68a3b74bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
