@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f9dda6_9269fb93",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-10T20:17:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "795d4def_2db6a166",
+      "range": {
+        "startLine": 207,
+        "startChar": 52,
+        "endLine": 207,
+        "endChar": 72
+      },
+      "revId": "291c62738a733af6eef2bab001fa5e4c70e1a748",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d795dd7_e99b9059",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-01-10T19:25:23Z",
       "side": 1,
       "message": "What\u0027s the current performance now? Should we put TODOs (with tracking bug) for improving performance?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 1
+      },
+      "revId": "291c62738a733af6eef2bab001fa5e4c70e1a748",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46029dcc_48ab741e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-10T20:17:55Z",
+      "side": 1,
+      "message": "The entirety of the UploadOnlyconfig function is now \u003c2ms. For the purpose of this CL, I think this is acceptable.",
+      "parentUuid": "0d795dd7_e99b9059",
       "range": {
         "startLine": 271,
         "startChar": 0,
