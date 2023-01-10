@@ -118,6 +118,30 @@
       },
       "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7823cd26_602c7051",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-10T00:44:13Z",
+      "side": 1,
+      "message": "it\u0027s set in loadEnvConfig.\nWe intentionally bypassed this when writing upload-only as this function took over a second to execute. As is, `upload-only` executes in \u003c100ms. \n\nWith the approach of calling that method in UploadOnlyConfig, the upload-only call to b takes around 1.5s\n\nIs it a horrible workaround to use a separate ENV_VAR and save over a second?",
+      "parentUuid": "757b05a3_eaf4617d",
+      "range": {
+        "startLine": 1563,
+        "startChar": 29,
+        "endLine": 1563,
+        "endChar": 58
+      },
+      "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
