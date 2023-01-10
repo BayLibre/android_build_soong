@@ -142,6 +142,30 @@
       },
       "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e103f1cb_2a9a0965",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-10T00:45:23Z",
+      "side": 1,
+      "message": "I\u0027d be in favor of making it a separate function FWIW - something like GetMetricsUploaderForUploadOnly",
+      "parentUuid": "7823cd26_602c7051",
+      "range": {
+        "startLine": 1563,
+        "startChar": 29,
+        "endLine": 1563,
+        "endChar": 58
+      },
+      "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
