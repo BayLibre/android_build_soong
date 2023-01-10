@@ -214,6 +214,30 @@
       },
       "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffe48223_addb5013",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-10T01:06:41Z",
+      "side": 1,
+      "message": "I still don\u0027t understand enough about the other env var to see it as a viable approach yet. How is it set? Is it set in all cases, even cases where RBE is disabled?\n\nI\u0027m interested in your alternative approach, though I wonder how we know with certainty where the relevant config file is.\n\nIs there something we can do to circumvent the need for searching multiple times for config dirs for a single soong_ui invocation? Could we have the first soong_ui invocation (the bp2build one) materialize the config in a predictable location, and re-use that for upload-only?",
+      "parentUuid": "838f8652_c404e576",
+      "range": {
+        "startLine": 1563,
+        "startChar": 29,
+        "endLine": 1563,
+        "endChar": 58
+      },
+      "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
