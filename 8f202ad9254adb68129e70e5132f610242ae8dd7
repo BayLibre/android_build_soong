@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fcfade9_908be59b",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3272,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2023-01-10T13:44:26Z",
+      "side": 1,
+      "message": "Yeah I agree there\u0027s a lot of duplication and it could have been merged into one, but I\u0027ll still prefer to keep them separately as it would be easier to manage.",
+      "parentUuid": "9b93d6d5_cc027ccc",
+      "range": {
+        "startLine": 3266,
+        "startChar": 0,
+        "endLine": 3272,
+        "endChar": 0
+      },
+      "revId": "8f202ad9254adb68129e70e5132f610242ae8dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54f172b4_2eee54fa",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-10T13:00:15Z",
       "side": 1,
       "message": "What does this do? Should this be `foo`?",
+      "range": {
+        "startLine": 3314,
+        "startChar": 47,
+        "endLine": 3314,
+        "endChar": 59
+      },
+      "revId": "8f202ad9254adb68129e70e5132f610242ae8dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a8b13e_a11c55f9",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3314,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2023-01-10T13:44:26Z",
+      "side": 1,
+      "message": "It could be `foo`, I named it `sampleModule` to make it more clear that `Unbundled_build_apps` is actually list of modules.",
+      "parentUuid": "54f172b4_2eee54fa",
       "range": {
         "startLine": 3314,
         "startChar": 47,
