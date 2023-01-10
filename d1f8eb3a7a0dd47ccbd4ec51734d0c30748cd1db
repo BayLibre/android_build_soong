@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "229e8481_60b1cdce",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-10T21:38:16Z",
+      "side": 1,
+      "message": "For consistency it probably makes sense to delete all these error messages for now.",
+      "revId": "d1f8eb3a7a0dd47ccbd4ec51734d0c30748cd1db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d5c654_fff9bc4f",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-10T21:38:16Z",
+      "side": 1,
+      "message": "How about just delete the commented error message and leave a TODO to log things elsewhere. (With a tracking bug)",
+      "range": {
+        "startLine": 610,
+        "startChar": 0,
+        "endLine": 610,
+        "endChar": 1
+      },
+      "revId": "d1f8eb3a7a0dd47ccbd4ec51734d0c30748cd1db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
