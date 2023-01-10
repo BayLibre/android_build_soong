@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b93d6d5_cc027ccc",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3272,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-01-10T13:00:15Z",
+      "side": 1,
+      "message": "There is a reasonable amount of duplication between this and the previous test (which adds `updatable` to this struct). It might be worth extracting common code for reuse. I am not 100% sure it is worth it as the downside is it can make tests more difficult to read.\n\nIf you do want to refactor then feel free to do it in a follow up CL.",
+      "range": {
+        "startLine": 3266,
+        "startChar": 0,
+        "endLine": 3272,
+        "endChar": 0
+      },
+      "revId": "8f202ad9254adb68129e70e5132f610242ae8dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f172b4_2eee54fa",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3314,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-01-10T13:00:15Z",
+      "side": 1,
+      "message": "What does this do? Should this be `foo`?",
+      "range": {
+        "startLine": 3314,
+        "startChar": 47,
+        "endLine": 3314,
+        "endChar": 59
+      },
+      "revId": "8f202ad9254adb68129e70e5132f610242ae8dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
