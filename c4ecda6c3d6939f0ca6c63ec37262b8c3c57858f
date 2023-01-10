@@ -190,6 +190,30 @@
       },
       "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838f8652_c404e576",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-10T01:00:55Z",
+      "side": 1,
+      "message": "I\u0027m uploading a new patch in a second - it\u0027ll need some renames/formats but it\u0027ll demonstrate a different approach.\n\nBasically - we search specifically for the one file where METRICS_UPLOADER is set instead of all config dirs. It\u0027s running in ~270ms. \n\nOut of this and using the other ENV var - do you two have a preferred approach?",
+      "parentUuid": "c3dbd3fe_99df6d2b",
+      "range": {
+        "startLine": 1563,
+        "startChar": 29,
+        "endLine": 1563,
+        "endChar": 58
+      },
+      "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
