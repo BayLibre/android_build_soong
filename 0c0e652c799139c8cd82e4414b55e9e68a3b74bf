@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d349d2cb_67df5977",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1788,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-10T19:28:29Z",
+      "side": 1,
+      "message": "I think this should be a Defaults module, and java_api_library should be a Defaultable module. This should allow us to reuse the existing defaults mutator pipeline to inherit values.\n\ne.g. aosp/441114 adds defaults to python modules",
+      "range": {
+        "startLine": 1788,
+        "startChar": 9,
+        "endLine": 1788,
+        "endChar": 30
+      },
+      "revId": "0c0e652c799139c8cd82e4414b55e9e68a3b74bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
