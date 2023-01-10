@@ -238,6 +238,30 @@
       },
       "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b49802_9ce04136",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-10T01:14:43Z",
+      "side": 1,
+      "message": "\"out/googler.json\" is the relative dir - I can poke tomorrow into how it\u0027s originated.\n\nMaterializing all of these seems to be a little bloated, don\u0027t you think? We need only one ENV var for this and we know where it\u0027s located...",
+      "parentUuid": "ffe48223_addb5013",
+      "range": {
+        "startLine": 1563,
+        "startChar": 29,
+        "endLine": 1563,
+        "endChar": 58
+      },
+      "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
