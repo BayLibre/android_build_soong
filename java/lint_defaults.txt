@@ -35,6 +35,8 @@
 # NewApi checks will continue to be enforced for apex deps since
 # lint.strict_updatability_linting will be true for those Soong modules
 --disable_check NewApi
+# Disable ChromeOS specific checks
+--disable_check PermissionImpliesUnsupportedChromOsHardware
 
 # Downgrade existing errors to warnings
 --warning_check AppCompatResource                  # 55 occurences in 10 modules
