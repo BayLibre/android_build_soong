@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "013df1a7_5cfea6e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-10T00:27:01Z",
+      "side": 1,
+      "message": "\\o/ nice find.",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "483d1f7a6ba148e2d6df3763f39fd7a094e69e43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
