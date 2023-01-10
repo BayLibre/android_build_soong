@@ -16,6 +16,52 @@
       "message": "PTAL",
       "revId": "291c62738a733af6eef2bab001fa5e4c70e1a748",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795d4def_2db6a166",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-10T19:25:23Z",
+      "side": 1,
+      "message": "passing a boolean to a function which enables/disables a piece of the function is a bit of a code smell. Can you refactor this function and its callers to call fetchEnvConfig separately so you can avoid this toggle?",
+      "range": {
+        "startLine": 207,
+        "startChar": 52,
+        "endLine": 207,
+        "endChar": 72
+      },
+      "revId": "291c62738a733af6eef2bab001fa5e4c70e1a748",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d795dd7_e99b9059",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-10T19:25:23Z",
+      "side": 1,
+      "message": "What\u0027s the current performance now? Should we put TODOs (with tracking bug) for improving performance?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 1
+      },
+      "revId": "291c62738a733af6eef2bab001fa5e4c70e1a748",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
