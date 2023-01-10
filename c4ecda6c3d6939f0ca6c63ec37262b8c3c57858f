@@ -166,6 +166,30 @@
       },
       "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3dbd3fe_99df6d2b",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-10T00:55:49Z",
+      "side": 1,
+      "message": "Is loadEnvConfig alone responsible for an additional 1.4s of runtime? That\u0027s a strikingly long time to read a single file, and sounds like it might be low hanging fruit to improve all build times. Is it possible to carve out a quicker-running piece for upload-only?\n(I\u0027d also love to see an analysis, and a filed bug, for something that could offer a \u003e 1s savings on all builds)\n\nRegardless, your CL description and comments implied that this shortcut wasn\u0027t being made for performance reasons, but that it was a lack of understanding as to the root cause of a bug. Is that no longer the case? \n\nHow is ANDROID_ENABLE_METRICS_UPLOAD set? Is it always set? It seems to be set by rbesetup.sh, and that\u0027s unclear to me that it\u0027s guaranteed to be run.",
+      "parentUuid": "e103f1cb_2a9a0965",
+      "range": {
+        "startLine": 1563,
+        "startChar": 29,
+        "endLine": 1563,
+        "endChar": 58
+      },
+      "revId": "c4ecda6c3d6939f0ca6c63ec37262b8c3c57858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
