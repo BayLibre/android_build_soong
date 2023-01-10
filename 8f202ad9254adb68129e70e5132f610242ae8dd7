@@ -93,6 +93,30 @@
       },
       "revId": "8f202ad9254adb68129e70e5132f610242ae8dd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381b3428_38bd37b5",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3314,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-01-10T14:10:41Z",
+      "side": 1,
+      "message": "I should have been clearer. Why is this being set as part of this test?\n\nA quick look at how this variable is used lead me to [here](http://cs/android/build/soong/android/config.go;l\u003d968;rcl\u003dd9e5646db72e1ba6467d7d589da1b11b717769f9)\n```\n// Returns true if a full platform source tree cannot be assumed.\nfunc (c *config) UnbundledBuild() bool {\n\treturn Bool(c.productVariables.Unbundled_build)\n}\n\n// Returns true if building apps that aren\u0027t bundled with the platform.\n// UnbundledBuild() is always true when this is true.\nfunc (c *config) UnbundledBuildApps() bool {\n\treturn len(c.productVariables.Unbundled_build_apps) \u003e 0\n}\n```\n\nAccording to the doc on the `UnbundledBuildApps()` method if it returns true then `UnbundledBuild()` will also return true but that does not seem to be the case with your test. Which either means that your test is unrealistic or the documentation is wrong.",
+      "parentUuid": "b1a8b13e_a11c55f9",
+      "range": {
+        "startLine": 3314,
+        "startChar": 47,
+        "endLine": 3314,
+        "endChar": 59
+      },
+      "revId": "8f202ad9254adb68129e70e5132f610242ae8dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
