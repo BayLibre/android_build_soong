@@ -117,6 +117,30 @@
       },
       "revId": "8f202ad9254adb68129e70e5132f610242ae8dd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa121cea_62ce5103",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3314,
+      "author": {
+        "id": 1947766
+      },
+      "writtenOn": "2023-01-10T17:38:44Z",
+      "side": 1,
+      "message": "Thanks for clarification. \nSo to me documentation seems fine, and I intended to set this variable,\nto ensure that `UnbundledBuildApps()` returns true.\n\nThis variable is used by soong to set `10000` as target_sdk_version for the branches that don\u0027t have sdk finalised. [here](https://source.corp.google.com/aosp-master/build/soong/java/android_manifest.go;l\u003d69?q\u003dTARGET_BUILD_APPS\u0026sq\u003dp:aosp-master)\n\n```\n// Return true for modules targeting \"current\" if either\n// 1. The module is built in unbundled mode (TARGET_BUILD_APPS not empty)\n// 2. The module is run as part of MTS, and should be testable on stable branches\n// Do not return 10000 if we are enforcing default targetSdkVersion and sdk has been finalised\nfunc shouldReturnFinalOrFutureInt(ctx android.ModuleContext, targetSdkVersionSpec android.SdkSpec, enforceDefaultTargetSdkVersion bool) bool {\n\tif enforceDefaultTargetSdkVersion \u0026\u0026 ctx.Config().PlatformSdkFinal() {\n\t\treturn false\n\t}\n\treturn targetSdkVersionSpec.ApiLevel.IsPreview() \u0026\u0026 (ctx.Config().UnbundledBuildApps() || includedInMts(ctx.Module()))\n}\n```",
+      "parentUuid": "381b3428_38bd37b5",
+      "range": {
+        "startLine": 3314,
+        "startChar": 47,
+        "endLine": 3314,
+        "endChar": 59
+      },
+      "revId": "8f202ad9254adb68129e70e5132f610242ae8dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
