@@ -16,6 +16,23 @@
       "message": "kroot: any thoughts on this? (or feel free to comment on the bug instead, or redirect to whoever you think is most appropriate.)",
       "revId": "797a2f2150ed221ba3c48aac618e23b5767d580f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed03becb_bb5b13fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1261281
+      },
+      "writtenOn": "2023-01-10T00:00:33Z",
+      "side": 1,
+      "message": "Hi Elliott,\n\nWe see this change (patch set 1) is causing pinner regression\n\nMetric pinner_system_/system/bin/surfaceflinger_bytes has regressed; its value is 7376896.00 here, and increased from historical average 7139328.00 by 237568.00 (3.33%).\n\nhttps://screenshot.googleplex.com/86RvYLuCaHT9NPx\n\nhttps://crystalball-presubmit.corp.google.com/dashboard/I24000010122401360\n\nMore Info - http://go/pinner-guide\n\nPlease help fix this regression before merging this change.",
+      "revId": "797a2f2150ed221ba3c48aac618e23b5767d580f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
