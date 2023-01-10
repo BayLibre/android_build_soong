@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebacb6c2_51d950a5",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-10T23:26:04Z",
+      "side": 1,
+      "message": "did you mean to delete this condition?",
+      "revId": "d1f8eb3a7a0dd47ccbd4ec51734d0c30748cd1db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35d5c654_fff9bc4f",
         "filename": "android/config.go",
         "patchSetId": 1
