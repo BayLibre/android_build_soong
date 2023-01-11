@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b51be33_d5e1d570",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-11T15:52:56Z",
+      "side": 1,
+      "message": "Do we need this block in the other `*Attribute.Collapse` functions?",
+      "revId": "7f8ff78372bc3f88b7fc8ae8dd83dcd654cc4805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
