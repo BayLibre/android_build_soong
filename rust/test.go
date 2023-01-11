@@ -200,6 +200,15 @@ func (test *testDecorator) compilerFlags(ctx ModuleContext, flags Flags) Flags {
 	if ctx.Device() {
 		flags.RustFlags = append(flags.RustFlags, "-Z panic_abort_tests")
 	}
+
+	if ctx.Host() && !ctx.Windows() {
+		// 1. Add ../../lib[64] to rpath so that out/host/linux-x86/nativetest/<test dir>/<test> can
+		// find out/host/linux-x86/lib[64]/library.so
+		// 2. Add ../../../lib[64] to rpath so that out/host/linux-x86/testcases/<test dir>/<CPU>/<test> can
+		// also find out/host/linux-x86/lib[64]/library.so
+		flags.LinkFlags = append(flags.LinkFlags, relativeRpath(ctx, "../.."))
+		flags.LinkFlags = append(flags.LinkFlags, relativeRpath(ctx, "../../.."))
+	}
 	return flags
 }
 

@@ -307,24 +307,29 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 	flags.EmitXrefs = ctx.Config().EmitXrefRules()
 
 	if ctx.Host() && !ctx.Windows() {
-		rpathPrefix := `\$$ORIGIN/`
-		if ctx.Darwin() {
-			rpathPrefix = "@loader_path/"
-		}
-
-		var rpath string
-		if ctx.toolchain().Is64Bit() {
-			rpath = "lib64"
-		} else {
-			rpath = "lib"
-		}
-		flags.LinkFlags = append(flags.LinkFlags, "-Wl,-rpath,"+rpathPrefix+rpath)
-		flags.LinkFlags = append(flags.LinkFlags, "-Wl,-rpath,"+rpathPrefix+"../"+rpath)
+		flags.LinkFlags = append(flags.LinkFlags, relativeRpath(ctx, "."))
+		flags.LinkFlags = append(flags.LinkFlags, relativeRpath(ctx, ".."))
 	}
 
 	return flags
 }
 
+// relativeRpath turns a relative directory into an rpath argument.
+// Example: "." becomes "-Wl,-rpath,$ORIGIN/lib64", ".." becomes "-Wl,-rpath,$ORIGIN/../lib64"
+func relativeRpath(ctx ModuleContext, dir string) string {
+	rpathPrefix := `\$$ORIGIN/`
+	if ctx.Darwin() {
+		rpathPrefix = "@loader_path/"
+	}
+
+	var rpath string
+	if ctx.toolchain().Is64Bit() {
+		rpath = "lib64"
+	} else {
+		rpath = "lib"
+	}
+	return "-Wl,-rpath," + rpathPrefix + filepath.Join(dir, rpath)
+}
 func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathDeps) buildOutput {
 	panic(fmt.Errorf("baseCrater doesn't know how to crate things!"))
 }
