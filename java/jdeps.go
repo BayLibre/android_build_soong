@@ -52,6 +52,10 @@ func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCont
 			return
 		}
 
+		if !android.IsModulePreferred(module) {
+			return
+		}
+
 		ideInfoProvider, ok := module.(android.IDEInfo)
 		if !ok {
 			return
