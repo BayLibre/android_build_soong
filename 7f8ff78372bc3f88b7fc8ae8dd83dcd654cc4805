@@ -16,6 +16,24 @@
       "message": "Do we need this block in the other `*Attribute.Collapse` functions?",
       "revId": "7f8ff78372bc3f88b7fc8ae8dd83dcd654cc4805",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e88db14e_6f80bc32",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-11T15:55:48Z",
+      "side": 1,
+      "message": "Eventually yes but it was going to require also restructuring target_compatible_with so it will require a separate CL, will file a bug.",
+      "parentUuid": "7b51be33_d5e1d570",
+      "revId": "7f8ff78372bc3f88b7fc8ae8dd83dcd654cc4805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
