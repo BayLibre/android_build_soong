@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5756dad0_7e5589fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-11T22:51:14Z",
+      "side": 1,
+      "message": "I have a number of objections to the goals of this CL, before I even take a look at the implementation.\n\n1. This is a substantial UX change, particularly with respect to user overrides. We selected `BUILD_BROKEN_DISABLE_BAZEL` very specifically, and announced this to users. We should not change this lightly and without user comms.\n\n2. There are a number of usages which need to change as a result of this change. (We need to update any CI configurations and helper scripts which reference the old syntax)\n\n3. I don\u0027t think the proposed flag changes improve user experience, even if we hadn\u0027t already committed (in user comms and integrations) to the current flag structure.\n\nWhat exactly are we trying to solve here? Which situations are we trying to improve? I\u0027m especially resistant to spending time on changes to this flag structure without clear user value, as there are projects more worth our time, that don\u0027t require potential churn to the team and to our users.\n\nI would like to see a design proposal, and we should circulate it among the team. We originally circulated a design for the current flag structure, and this was generally agreed upon. (That\u0027s not to shut down the idea that there may have been a better way, but we should apply equal or more strict rigor in discussing a change to flag structure)",
+      "revId": "dd5532d3505f1f2a3134b75db5e26b456fd79e19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
