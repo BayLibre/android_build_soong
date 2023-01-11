@@ -389,6 +389,12 @@ type overridableProperties struct {
 	// conditions, e.g., target device needs to support APEX compression, are also fulfilled.
 	// Default: false.
 	Compressible *bool
+
+	// Whether to produce trimmed variant for this module
+	Trim *bool
+
+	// Native shared libraries to trim
+	Libs_to_trim []string
 }
 
 type apexBundle struct {
@@ -1529,6 +1535,16 @@ func (a *apexBundle) testOnlyShouldForceCompression() bool {
 // See the dynamic_common_lib_apex property
 func (a *apexBundle) dynamic_common_lib_apex() bool {
 	return proptools.BoolDefault(a.properties.Dynamic_common_lib_apex, false)
+}
+
+// See the trim property
+func (a *apexBundle) trim() bool {
+	return proptools.BoolDefault(a.overridableProperties.Trim, false)
+}
+
+// See the list of libs to trim
+func (a *apexBundle) libs_to_trim() []string {
+	return a.overridableProperties.Libs_to_trim
 }
 
 // These functions are interfacing with cc/sanitizer.go. The entire APEX (along with all of its
