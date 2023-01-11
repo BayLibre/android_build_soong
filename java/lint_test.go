@@ -282,3 +282,53 @@ func TestJavaLintDatabaseSelectionFull(t *testing.T) {
 		}
 	}
 }
+func TestLintErrorsWhenGlobalChecksNotFound(t *testing.T) {
+	bp := `
+		java_library {
+			name: "foo",
+			srcs: [
+				"a.java",
+			],
+			min_sdk_version: "29",
+			sdk_version: "current",
+			lint: {
+				strict_updatability_linting: true,
+			},
+		}
+	`
+
+	result := android.GroupFixturePreparers(PrepareForTestWithJavaDefaultModules).
+		RunTestWithBp(t, bp)
+
+	foo := result.ModuleForTests("foo", "android_common")
+	sboxProto := android.RuleBuilderSboxProtoForTests(t, foo.Output("lint.sbox.textproto"))
+	if !strings.Contains(*sboxProto.Commands[0].Command, "AndroidGlobalLintChecker was not found") {
+		t.Error("'AndroidGlobalLintChecker was not found' was not found in the command")
+	}
+}
+
+func TestLintDoesNotErrorWhenGlobalChecksFound(t *testing.T) {
+	bp := `
+		java_library_host {
+			name: "AndroidGlobalLintChecker",
+			srcs: ["b.java"],
+		}
+		java_library {
+			name: "foo",
+			srcs: [
+				"a.java",
+			],
+			min_sdk_version: "29",
+			sdk_version: "current",
+		}
+	`
+
+	result := android.GroupFixturePreparers(PrepareForTestWithJavaDefaultModules).
+		RunTestWithBp(t, bp)
+
+	foo := result.ModuleForTests("foo", "android_common")
+	sboxProto := android.RuleBuilderSboxProtoForTests(t, foo.Output("lint.sbox.textproto"))
+	if strings.Contains(*sboxProto.Commands[0].Command, "AndroidGlobalLintChecker was not found") {
+		t.Error("'AndroidGlobalLintChecker was not found' was found in the command")
+	}
+}

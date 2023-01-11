@@ -706,6 +706,7 @@ func (j *Module) AvailableFor(what string) bool {
 }
 
 func (j *Module) deps(ctx android.BottomUpMutatorContext) {
+	j.name = ctx.ModuleName()
 	if ctx.Device() {
 		j.linter.deps(ctx)
 
