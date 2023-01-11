@@ -239,8 +239,13 @@ func (l *linter) deps(ctx android.BottomUpMutatorContext) {
 		extraCheckModules = append(extraCheckModules, strings.Split(extraCheckModulesEnv, ",")...)
 	}
 
-	ctx.AddFarVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(),
+	buildOsCommonTargetVariations := ctx.Config().BuildOSCommonTarget.Variations()
+	ctx.AddFarVariationDependencies(buildOsCommonTargetVariations,
 		extraLintCheckTag, extraCheckModules...)
+
+	if ctx.OtherModuleFarDependencyVariantExists(buildOsCommonTargetVariations, "AndroidGlobalLintChecker") {
+		ctx.AddFarVariationDependencies(buildOsCommonTargetVariations, extraLintCheckTag, "AndroidGlobalLintChecker")
+	}
 }
 
 // lintPaths contains the paths to lint's inputs and outputs to make it easier to pass them
@@ -406,9 +411,14 @@ func (l *linter) lint(ctx android.ModuleContext) {
 		}
 	}
 
+	globalLintChecksExist := false
 	extraLintCheckModules := ctx.GetDirectDepsWithTag(extraLintCheckTag)
 	for _, extraLintCheckModule := range extraLintCheckModules {
 		if ctx.OtherModuleHasProvider(extraLintCheckModule, JavaInfoProvider) {
+			name := ctx.OtherModuleName(extraLintCheckModule)
+			if name == "AndroidGlobalLintChecker" {
+				globalLintChecksExist = true
+			}
 			dep := ctx.OtherModuleProvider(extraLintCheckModule, JavaInfoProvider).(JavaInfo)
 			l.extraLintCheckJars = append(l.extraLintCheckJars, dep.ImplementationAndResourcesJars...)
 		} else {
@@ -416,9 +426,6 @@ func (l *linter) lint(ctx android.ModuleContext) {
 				"%s is not a java module", ctx.OtherModuleName(extraLintCheckModule))
 		}
 	}
-
-	l.extraLintCheckJars = append(l.extraLintCheckJars, android.PathForSource(ctx,
-		"prebuilts/cmdline-tools/AndroidGlobalLintChecker.jar"))
 
 	rule := android.NewRuleBuilder(pctx, ctx).
 		Sbox(android.PathForModuleOut(ctx, "lint"),
@@ -464,6 +471,13 @@ func (l *linter) lint(ctx android.ModuleContext) {
 	rule.Command().Text("rm -rf").Flag(lintPaths.cacheDir.String()).Flag(lintPaths.homeDir.String())
 	rule.Command().Text("mkdir -p").Flag(lintPaths.cacheDir.String()).Flag(lintPaths.homeDir.String())
 	rule.Command().Text("rm -f").Output(html).Output(text).Output(xml)
+
+	if !globalLintChecksExist {
+		// Make this an execution time error instead of an analysis time error so that
+		// `m nothing` doesn't fail on branches without AndroidGlobalLintChecker.
+		rule.Command().Text(`echo "AndroidGlobalLintChecker was not found, could not properly run lint. Are you on a minified branch that's missing frameworks/base?" >&2`)
+		rule.Command().Text(`exit 1`)
+	}
 
 	files, ok := allLintDatabasefiles[l.compileSdkKind]
 	if !ok {
