@@ -194,8 +194,13 @@ func (l *linter) deps(ctx android.BottomUpMutatorContext) {
 		extraCheckModules = append(extraCheckModules, strings.Split(extraCheckModulesEnv, ",")...)
 	}
 
-	ctx.AddFarVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(),
+	buildOsCommonTargetVariations := ctx.Config().BuildOSCommonTarget.Variations()
+	ctx.AddFarVariationDependencies(buildOsCommonTargetVariations,
 		extraLintCheckTag, extraCheckModules...)
+
+	if ctx.OtherModuleFarDependencyVariantExists(buildOsCommonTargetVariations, "AndroidGlobalLintChecker") {
+		ctx.AddFarVariationDependencies(buildOsCommonTargetVariations, extraLintCheckTag, "AndroidGlobalLintChecker")
+	}
 }
 
 // lintPaths contains the paths to lint's inputs and outputs to make it easier to pass them
@@ -365,9 +370,6 @@ func (l *linter) lint(ctx android.ModuleContext) {
 				"%s is not a java module", ctx.OtherModuleName(extraLintCheckModule))
 		}
 	}
-
-	l.extraLintCheckJars = append(l.extraLintCheckJars, android.PathForSource(ctx,
-		"prebuilts/cmdline-tools/AndroidGlobalLintChecker.jar"))
 
 	rule := android.NewRuleBuilder(pctx, ctx).
 		Sbox(android.PathForModuleOut(ctx, "lint"),
