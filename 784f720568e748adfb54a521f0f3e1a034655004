@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca3b7d9_955e0aab",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-11T03:34:20Z",
+      "side": 1,
+      "message": "Can you add a comment?\n```\n// Prevent including both prebuilts and matching source modules when one replaces the other.\n```",
+      "revId": "784f720568e748adfb54a521f0f3e1a034655004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
