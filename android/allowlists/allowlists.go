@@ -143,7 +143,10 @@ var (
 		"external/javassist":                     Bp2BuildDefaultTrueRecursively,
 		"external/jemalloc_new":                  Bp2BuildDefaultTrueRecursively,
 		"external/jsoncpp":                       Bp2BuildDefaultTrueRecursively,
+		"external/jsr305":                        Bp2BuildDefaultTrueRecursively,
+		"external/jsr330":                        Bp2BuildDefaultTrueRecursively,
 		"external/junit":                         Bp2BuildDefaultTrueRecursively,
+		"external/kotlinc":                       Bp2BuildDefaultTrueRecursively,
 		"external/libaom":                        Bp2BuildDefaultTrueRecursively,
 		"external/libavc":                        Bp2BuildDefaultTrueRecursively,
 		"external/libcap":                        Bp2BuildDefaultTrueRecursively,
@@ -276,6 +279,7 @@ var (
 		"platform_testing/tests/example": Bp2BuildDefaultTrueRecursively,
 
 		"prebuilts/clang/host/linux-x86":           Bp2BuildDefaultTrueRecursively,
+		"prebuilts/gradle-plugin":                  Bp2BuildDefaultTrueRecursively,
 		"prebuilts/runtime/mainline/platform/sdk":  Bp2BuildDefaultTrueRecursively,
 		"prebuilts/sdk/current/extras/app-toolkit": Bp2BuildDefaultTrue,
 		"prebuilts/sdk/current/support":            Bp2BuildDefaultTrue,
@@ -345,7 +349,8 @@ var (
 		"system/tools/sysprop":                                   Bp2BuildDefaultTrue,
 		"system/unwinding/libunwindstack":                        Bp2BuildDefaultTrueRecursively,
 
-		"tools/apksig": Bp2BuildDefaultTrue,
+		"tools/apksig":   Bp2BuildDefaultTrue,
+		"tools/metalava": Bp2BuildDefaultTrue,
 		"tools/platform-compat/java/android/compat":  Bp2BuildDefaultTrueRecursively,
 		"tools/tradefederation/prebuilts/filegroups": Bp2BuildDefaultTrueRecursively,
 	}
@@ -369,7 +374,6 @@ var (
 		"external/bazelbuild-kotlin-rules":/* recursive = */ true,
 		"external/bazel-skylib":/* recursive = */ true,
 		"external/guava":/* recursive = */ true,
-		"external/jsr305":/* recursive = */ true,
 		"external/protobuf":/* recursive = */ false,
 		"external/python/absl-py":/* recursive = */ true,
 
