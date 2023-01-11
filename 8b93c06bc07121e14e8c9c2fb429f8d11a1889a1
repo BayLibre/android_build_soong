@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "426c251f_8133fe56",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-01-11T18:41:54Z",
+      "side": 1,
+      "message": "Oops, yeah. Looks like I forgot to change the name when I changed the functionality.",
+      "parentUuid": "a306836e_9849e38c",
+      "range": {
+        "startLine": 813,
+        "startChar": 30,
+        "endLine": 813,
+        "endChar": 49
+      },
+      "revId": "8b93c06bc07121e14e8c9c2fb429f8d11a1889a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "440a0a35_58ae74ee",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-20T13:51:32Z",
       "side": 1,
       "message": "I think this should also be IsNil, not IsEmpty because for system_shared_libs, nil is very different from empty",
+      "range": {
+        "startLine": 815,
+        "startChar": 13,
+        "endLine": 815,
+        "endChar": 20
+      },
+      "revId": "8b93c06bc07121e14e8c9c2fb429f8d11a1889a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e4118ec_0d9866b3",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-01-11T18:41:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "440a0a35_58ae74ee",
       "range": {
         "startLine": 815,
         "startChar": 13,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "711ce6b9_4467e47f",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-01-11T18:41:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ad5e7fe_a239a3ee",
+      "range": {
+        "startLine": 1405,
+        "startChar": 7,
+        "endLine": 1405,
+        "endChar": 9
+      },
+      "revId": "8b93c06bc07121e14e8c9c2fb429f8d11a1889a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "868c1d6f_9ae202f2",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-12-20T13:51:32Z",
       "side": 1,
       "message": "I think this be `IsNil` instead?",
+      "range": {
+        "startLine": 812,
+        "startChar": 96,
+        "endLine": 812,
+        "endChar": 103
+      },
+      "revId": "8b93c06bc07121e14e8c9c2fb429f8d11a1889a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15940a7d_e4e380f3",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-01-11T18:41:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "868c1d6f_9ae202f2",
       "range": {
         "startLine": 812,
         "startChar": 96,
