@@ -141,6 +141,30 @@
       },
       "revId": "8f202ad9254adb68129e70e5132f610242ae8dd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd568cde_602eb1f2",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3314,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-01-11T17:03:45Z",
+      "side": 1,
+      "message": "\u003e So to me documentation seems fine\n\nIn that case as `*config.UnbundledBuildApps()` returns true then you need to make sure that `*config.UnbundledBuild()` also returns true which means you need to set `variables.Unbundled_build \u003d true` as well in your test. Otherwise, your test is not realistic because it is testing a config where:\n```\n*config.UnbundledBuildApps() \u003d true\n*config.UnbundledBuild() \u003d false\n```\n\n\u003e I intended to set this variable, ....\n\nThanks for the explanation.",
+      "parentUuid": "aa121cea_62ce5103",
+      "range": {
+        "startLine": 3314,
+        "startChar": 47,
+        "endLine": 3314,
+        "endChar": 59
+      },
+      "revId": "8f202ad9254adb68129e70e5132f610242ae8dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
