@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1417286_1c718d1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2023-01-12T02:49:43Z",
+      "side": 1,
+      "message": "This does indeed fix version-related differences (I patched these 3 CLs and verified they are gone)",
+      "revId": "e7de16b2738fb64c2583c488bc300ba3cab9d056",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
