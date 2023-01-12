@@ -247,6 +247,8 @@ var (
 		"-Wno-error=enum-constexpr-conversion",               // http://b/243964282
 	}
 
+	noOverride64GlobalCflags = []string{}
+
 	noOverrideExternalGlobalCflags = []string{
 		// http://b/148815709
 		"-Wno-sizeof-array-div",
