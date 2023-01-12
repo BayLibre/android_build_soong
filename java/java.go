@@ -2568,7 +2568,7 @@ type bp2BuildJavaInfo struct {
 // to be returned to the calling function.
 func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) (*javaCommonAttributes, *bp2BuildJavaInfo) {
 	var srcs bazel.LabelListAttribute
-	var deps bazel.LabelList
+	var deps bazel.LabelListAttribute
 	var staticDeps bazel.LabelList
 
 	archVariantProps := m.GetArchVariantProperties(ctx, &CommonProperties{})
@@ -2674,20 +2674,25 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		Javacopts: bazel.MakeStringListAttribute(javacopts),
 	}
 
-	if m.properties.Libs != nil {
-
-		// TODO 244210934 ALIX Check if this else statement breaks presubmits get rid of it if it doesn't
-
-		modType := ctx.ModuleType()
-		if strings.HasPrefix(modType, "java_binary") || strings.HasPrefix(modType, "java_library") || modType == "android_app" || modType == "android_library" {
-			for _, d := range m.properties.Libs {
-				neverlinkLabel := android.BazelLabelForModuleDepSingle(ctx, d)
-				neverlinkLabel.Label = neverlinkLabel.Label + "-neverlink"
-				deps.Add(&neverlinkLabel)
+	modType := ctx.ModuleType()
+	// TODO 244210934 ALIX Check if this else statement breaks presubmits get rid of it if it doesn't
+	if strings.HasPrefix(modType, "java_binary") || strings.HasPrefix(modType, "java_library") || modType == "android_app" || modType == "android_library" {
+		for axis, configToProps := range archVariantProps {
+			for config, _props := range configToProps {
+				if archProps, ok := _props.(*CommonProperties); ok {
+					var libLabels []bazel.Label
+					for _, d := range archProps.Libs {
+						neverlinkLabel := android.BazelLabelForModuleDepSingle(ctx, d)
+						neverlinkLabel.Label = neverlinkLabel.Label + "-neverlink"
+						libLabels = append(libLabels, neverlinkLabel)
+					}
+					deps.SetSelectValue(axis, config, bazel.MakeLabelList(libLabels))
+				}
 			}
-
-		} else {
-			deps.Append(android.BazelLabelForModuleDeps(ctx, android.LastUniqueStrings(android.CopyOf(m.properties.Libs))))
+		}
+	} else {
+		if m.properties.Libs != nil {
+			deps.SetValue(android.BazelLabelForModuleDeps(ctx, android.LastUniqueStrings(android.CopyOf(m.properties.Libs))))
 		}
 	}
 
@@ -2705,7 +2710,7 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	staticDeps.Add(protoDepLabel)
 
 	depLabels := &javaDependencyLabels{}
-	depLabels.Deps = bazel.MakeLabelListAttribute(deps)
+	depLabels.Deps = deps
 	depLabels.StaticDeps = bazel.MakeLabelListAttribute(staticDeps)
 
 	bp2BuildInfo := &bp2BuildJavaInfo{
