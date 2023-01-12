@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a4f11e0_1e6aa31a",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-12T22:52:14Z",
+      "side": 1,
+      "message": "`Android64` isn\u0027t the right value to check, that is true whenever building for a 64-bit product, even if the current variant is being compiled for 32-bit.  Use `flags.Toolchain.Is64Bit()` instead.",
+      "revId": "4fc25e59ec1541ecd28480c58259ad8af715e699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
