@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7724b434_603d51b6",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-12T18:47:49Z",
+      "side": 1,
+      "message": "Is just `strings.HasPrefix(p2,p1)` sufficient? If it\u0027s not, can you leave a comment why we are adding the trailing slash.",
+      "range": {
+        "startLine": 159,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 33
+      },
+      "revId": "1c7e1d6a206d72f585a32466371cd257eea755cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
