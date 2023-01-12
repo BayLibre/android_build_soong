@@ -287,7 +287,7 @@ func checkRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 		// If the current directory is not in the vendor tree then there are some additional
 		// restrictions on the rules.
 		if !isAncestor("vendor", currentPkg) {
-			if !isAllowedFromOutsideVendor(pkg, name) {
+			if !isAllowedFromOutsideVendor(pkg, currentPkg, name) {
 				ctx.PropertyErrorf(property,
 					"%q is not allowed. Packages outside //vendor cannot make themselves visible to specific"+
 						" targets within //vendor, they can only use //vendor:__subpackages__.", v)
@@ -390,12 +390,17 @@ func parseRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 	return rules
 }
 
-func isAllowedFromOutsideVendor(pkg string, name string) bool {
+func isAllowedFromOutsideVendor(pkg string, currentPkg string, name string) bool {
 	if pkg == "vendor" {
 		if name == "__subpackages__" {
 			return true
 		}
 		return false
+	}
+
+	// Exception for arc-net-services: b/200577024
+	if currentPkg == "packages/modules/Wifi/framework" && isAncestor("vendor/google_arc/libs/arc-net-services", pkg) {
+		return true
 	}
 
 	return !isAncestor("vendor", pkg)
