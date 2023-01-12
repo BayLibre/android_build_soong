@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5880ae0d_a17a6dff",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-12T19:54:27Z",
+      "side": 1,
+      "message": "In the IDE as \"Unhandled error\".\nRemoving it for now.",
+      "parentUuid": "94a85ff2_84e688d8",
+      "revId": "1f44fc4cadc2e116454cde3b31f48d714b0a60c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93ea2d34_286ef6a2",
