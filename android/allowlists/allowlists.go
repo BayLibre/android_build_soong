@@ -673,6 +673,8 @@ var (
 		// kotlin srcs in java binary
 		"AnalyzerKt",
 		"trebuchet-core",
+
+		//"libprotobuf-java-lite",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
