@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de73a0c_1db8519e",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-12T00:50:18Z",
+      "side": 1,
+      "message": "This seems high, kati and soong won\u0027t run in parallel, so the peak size of soong should be enough.",
+      "revId": "c9ab11792b97423d6a9d3995ab3b650e35a0c839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
