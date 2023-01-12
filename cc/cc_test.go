@@ -4352,12 +4352,12 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 		{
 			name:     "c",
 			src:      "foo.c",
-			expected: combineSlices(baseExpectedFlags, conly, expectedIncludes, cflags, cstd, lastIncludes, []string{"${config.NoOverrideGlobalCflags}", "${config.NoOverrideExternalGlobalCflags}"}),
+			expected: combineSlices(baseExpectedFlags, conly, expectedIncludes, cflags, cstd, lastIncludes, []string{"${config.NoOverrideGlobalCflags}", "${config.NoOverride64GlobalCflags}", "${config.NoOverrideExternalGlobalCflags}"}),
 		},
 		{
 			name:     "cc",
 			src:      "foo.cc",
-			expected: combineSlices(baseExpectedFlags, cppOnly, expectedIncludes, cflags, cppstd, lastIncludes, []string{"${config.NoOverrideGlobalCflags}", "${config.NoOverrideExternalGlobalCflags}"}),
+			expected: combineSlices(baseExpectedFlags, cppOnly, expectedIncludes, cflags, cppstd, lastIncludes, []string{"${config.NoOverrideGlobalCflags}", "${config.NoOverride64GlobalCflags}", "${config.NoOverrideExternalGlobalCflags}"}),
 		},
 		{
 			name:     "assemble",
