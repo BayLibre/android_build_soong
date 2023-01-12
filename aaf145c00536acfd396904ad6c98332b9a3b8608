@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04fe2228_fa283205",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-12T23:09:09Z",
+      "side": 1,
+      "message": "Rebased to include https://android-review.git.corp.google.com/c/platform/system/extras/+/2380778",
+      "revId": "aaf145c00536acfd396904ad6c98332b9a3b8608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
