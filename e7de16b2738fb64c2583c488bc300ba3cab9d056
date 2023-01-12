@@ -34,6 +34,24 @@
       "parentUuid": "e1417286_1c718d1c",
       "revId": "e7de16b2738fb64c2583c488bc300ba3cab9d056",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c071737b_d8c9892b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-12T13:05:18Z",
+      "side": 1,
+      "message": "That\u0027s expected the crtbegin changes will need a different solution. This is to fix the min sdk version for the apex itself",
+      "parentUuid": "e697f26f_81ad0e5a",
+      "revId": "e7de16b2738fb64c2583c488bc300ba3cab9d056",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
