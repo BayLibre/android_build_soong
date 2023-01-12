@@ -16,6 +16,121 @@
       "message": "Friendly ping!",
       "revId": "fc6f9972ae8b6c0e78b79fa4126cdca17b784d09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17badfa2_1dd24c0f",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-12T19:10:46Z",
+      "side": 1,
+      "message": "I\u0027d avoid using the \u0027CAS\u0027 terminology since the manifest may be useful for other cases. Maybe something like `sha_manifest` or similar.",
+      "range": {
+        "startLine": 166,
+        "startChar": 30,
+        "endLine": 166,
+        "endChar": 41
+      },
+      "revId": "fc6f9972ae8b6c0e78b79fa4126cdca17b784d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c79b5f6_d3d273d8",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-12T19:10:46Z",
+      "side": 1,
+      "message": "Is the the manifest output path? If so, then consider renaming to `ShaManifestOutputFilePath` or similar.",
+      "range": {
+        "startLine": 269,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 12
+      },
+      "revId": "fc6f9972ae8b6c0e78b79fa4126cdca17b784d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b078e9be_9c700fac",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-12T19:10:46Z",
+      "side": 1,
+      "message": "nit: `create` or `new`?",
+      "range": {
+        "startLine": 465,
+        "startChar": 20,
+        "endLine": 465,
+        "endChar": 23
+      },
+      "revId": "fc6f9972ae8b6c0e78b79fa4126cdca17b784d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a4015d_41348949",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-12T19:10:46Z",
+      "side": 1,
+      "message": "From a code style perspective, it would be much clearer if you had a `CasManifest` interface type with two implementations: a working one and a null one.\n\nThis way your call site becomes:\n\n```\nz.casManifest.append(op)\n```\n\nAnd at the end you just write it out:\n\n```\nerr :\u003d z.casManifest.write()\n```\n\nThe null implementation does nothing.",
+      "range": {
+        "startLine": 585,
+        "startChar": 3,
+        "endLine": 585,
+        "endChar": 52
+      },
+      "revId": "fc6f9972ae8b6c0e78b79fa4126cdca17b784d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df71d62_5a1437e1",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-12T19:10:46Z",
+      "side": 1,
+      "message": "Could you avoid scanning the file twice by, for example, using something like a `MultiWriter `? Or maybe running both in parallel?\n\nIf the latter, you\u0027ll need to open the file twice and rely on the OS to do the caching for you. You\u0027ll also need to change the function signature to use a lambda that returns an `io.Reader`.",
+      "range": {
+        "startLine": 884,
+        "startChar": 20,
+        "endLine": 884,
+        "endChar": 36
+      },
+      "revId": "fc6f9972ae8b6c0e78b79fa4126cdca17b784d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
