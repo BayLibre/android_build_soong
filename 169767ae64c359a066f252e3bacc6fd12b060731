@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e475638_c6cc4678",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-01-12T21:13:41Z",
+      "side": 1,
+      "message": "IMO we really should not be encoding google-private vendor/ logic in AOSP.",
+      "range": {
+        "startLine": 402,
+        "startChar": 67,
+        "endLine": 402,
+        "endChar": 106
+      },
+      "revId": "169767ae64c359a066f252e3bacc6fd12b060731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
