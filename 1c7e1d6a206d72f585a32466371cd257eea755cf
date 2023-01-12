@@ -22,6 +22,30 @@
       },
       "revId": "1c7e1d6a206d72f585a32466371cd257eea755cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b1027a4_d04153d8",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-12T19:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7724b434_603d51b6",
+      "range": {
+        "startLine": 159,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 33
+      },
+      "revId": "1c7e1d6a206d72f585a32466371cd257eea755cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
