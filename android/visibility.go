@@ -155,7 +155,8 @@ func (r subpackagesRule) matches(m qualifiedModuleName) bool {
 }
 
 func isAncestor(p1 string, p2 string) bool {
-	return strings.HasPrefix(p2+"/", p1+"/")
+	// Equivalent to strings.HasPrefix(p2+"/", p1+"/"), but without the string copies
+	return strings.HasPrefix(p2, p1) && (len(p2) == len(p1) || p2[len(p1)] == '/')
 }
 
 func (r subpackagesRule) String() string {
