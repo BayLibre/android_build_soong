@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de230afd_58a19d62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-12T09:46:28Z",
+      "side": 1,
+      "message": "This probably shouldn\u0027t be included in the `measure2` topic?",
+      "revId": "f3963f8b9c1269e514d7cd745c2ed30378fa1299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
