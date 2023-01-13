@@ -173,6 +173,10 @@ const (
 )
 
 func (metrics *CodegenMetrics) AddConvertedModule(m blueprint.Module, moduleType string, dir string, conversionType ConversionType) {
+	// Remove the module whose name is empty, this happens when moduleType == "package"
+	if moduleType == "package" {
+		return
+	}
 	// Undo prebuilt_ module name prefix modifications
 	moduleName := android.RemoveOptionalPrebuiltPrefix(m.Name())
 	metrics.serialized.ConvertedModules = append(metrics.serialized.ConvertedModules, moduleName)
