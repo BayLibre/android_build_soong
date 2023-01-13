@@ -16,6 +16,24 @@
       "message": "We are now getting `NewApi` errors that look suspicious in `packages/modules/CellBroadcastService`:\n\n```\npackages/modules/CellBroadcastService/src/com/android/cellbroadcastservice/CellBroadcastHandler.java:1037: Error: Call requires API level 31 (current min is 30): android.location.LocationRequest#create [NewApi]\n                    LocationRequest request \u003d LocationRequest.create()\n                                                              ~~~~~~\npackages/modules/CellBroadcastService/src/com/android/cellbroadcastservice/CellBroadcastHandler.java:1038: Error: Call requires API level 31 (current min is 30): android.location.LocationRequest#setProvider [NewApi]\n                            .setProvider(FUSED_PROVIDER)\n                             ~~~~~~~~~~~\npackages/modules/CellBroadcastService/src/com/android/cellbroadcastservice/CellBroadcastHandler.java:1039: Error: Call requires API level 31 (current min is 30): android.location.LocationRequest#setQuality [NewApi]\n                            .setQuality(LocationRequest.ACCURACY_FINE)\n                             ~~~~~~~~~~\npackages/modules/CellBroadcastService/src/com/android/cellbroadcastservice/CellBroadcastHandler.java:1040: Error: Call requires API level 31 (current min is 30): android.location.LocationRequest#setInterval [NewApi]\n                            .setInterval(LOCATION_REQUEST_INTERVAL_MILLIS);\n                             ~~~~~~~~~~~\n```\n\nI don\u0027t see anything that has changed recently in `CellBroadcastHandler` or `LocationRequest` that would cause this, but I\u0027m not familiar with how this lint works.\n\nThe only recent change I see is `2f118ba` \"Remove usages of java_api_finder\" in that build file.\n\nAny ideas?",
       "revId": "a0f5867463420882735e3c8579759d3e2710e9fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9514193_f3560e1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-13T19:04:51Z",
+      "side": 1,
+      "message": "These seem like \"correct\" NewApi warnings that a bug fix in lint caused it to start picking up. This has happened before when a bug fix in lint made it start recognizing annotations applied in `package-info.java` files, but I don\u0027t know what the change here is.\n\nI say \"correct\" in quotes because those APIs were system apis on API level 30, then the LocationRequest class was made public in API 31. Apis that switch from system to public are currently bugged in android, and only their history as public api is considered even if the code compiles against the system api. I did some work to fix this in b/193460475, but I never finished it. I should return to work on it or I could help you finish it if you have time.\n\nAlternatively we could suppress these errors via annotation or a lint baseline file. Tag b/193460475 if you do though so I can remove the suppressions later.",
+      "parentUuid": "7f10da4d_561be93a",
+      "revId": "a0f5867463420882735e3c8579759d3e2710e9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
