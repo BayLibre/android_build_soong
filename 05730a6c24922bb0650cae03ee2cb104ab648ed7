@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a0f0a12_3daad487",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1886,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-13T19:14:19Z",
+      "side": 1,
+      "message": "we should still have select with the correct values for bionic in this case and the musl value should be musl-specific\n\nIf there are no cases in the codebase currently with only a musl/linux_musl condition for system_shared_libs, you can file a bug for us to handle that case in a separate CL.",
+      "range": {
+        "startLine": 1886,
+        "startChar": 30,
+        "endLine": 1886,
+        "endChar": 31
+      },
+      "revId": "05730a6c24922bb0650cae03ee2cb104ab648ed7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
