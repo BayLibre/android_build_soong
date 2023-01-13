@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ea4959e_9f1bccf8",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-13T13:05:34Z",
+      "side": 1,
+      "message": "Do we need users to specify this or should it be controlled within the apex code as a product variable or similar?",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 11
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f569ddcd_efe9d43c",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -39,6 +62,29 @@
       "message": "I don\u0027t think we need two properties. Non-empty libs_to_trim should be enough to trigger this.",
       "range": {
         "startLine": 393,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77b001e_6e2d400d",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-13T13:05:34Z",
+      "side": 1,
+      "message": "As discussed in the design doc, should this be a centralized list rather than allowing each user to specify?",
+      "range": {
+        "startLine": 396,
         "startChar": 0,
         "endLine": 397,
         "endChar": 22
