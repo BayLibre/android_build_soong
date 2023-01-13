@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae63691_25733b7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-13T02:05:13Z",
+      "side": 1,
+      "message": "I don\u0027t think we\u0027d want to have this magic patterns in bp files.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f569ddcd_efe9d43c",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-13T02:05:13Z",
+      "side": 1,
+      "message": "I don\u0027t think we need two properties. Non-empty libs_to_trim should be enough to trigger this.",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81fdebd_5fa75bcc",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-13T02:05:13Z",
+      "side": 1,
+      "message": "There\u0027s a huge amount of duplication here and DCLAApexRule. Can we dedup?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
