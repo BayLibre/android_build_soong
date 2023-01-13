@@ -251,6 +251,7 @@ var (
 func init() {
 	pctx.Import("android/soong/android")
 	pctx.Import("android/soong/java/config")
+	pctx.HostBinToolVariable("zip2zip", "zip2zip")
 }
 
 type javaBuilderFlags struct {
