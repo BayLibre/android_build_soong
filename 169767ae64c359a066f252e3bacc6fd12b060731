@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8d1614_51046237",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-13T19:54:04Z",
+      "side": 1,
+      "message": "Dan came up w",
+      "revId": "169767ae64c359a066f252e3bacc6fd12b060731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e475638_c6cc4678",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-01-12T21:13:41Z",
       "side": 1,
       "message": "IMO we really should not be encoding google-private vendor/ logic in AOSP.",
+      "range": {
+        "startLine": 402,
+        "startChar": 67,
+        "endLine": 402,
+        "endChar": 106
+      },
+      "revId": "169767ae64c359a066f252e3bacc6fd12b060731",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a19f06_eee337f0",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-13T19:54:04Z",
+      "side": 1,
+      "message": "Dan came up with ag/20968791 as a workaround",
+      "parentUuid": "4e475638_c6cc4678",
       "range": {
         "startLine": 402,
         "startChar": 67,
