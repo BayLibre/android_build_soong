@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a006779_112a5e7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-13T21:43:27Z",
+      "side": 1,
+      "message": "None I know of. Let\u0027s discuss this in the next weekly",
+      "parentUuid": "f90222da_3a4a3e14",
+      "revId": "2857151196750dad540f0109ca0a48bfce4ab3b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e20c975_d1aeccf2",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc620f8_9c85a977",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-13T21:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e20c975_d1aeccf2",
+      "revId": "2857151196750dad540f0109ca0a48bfce4ab3b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5eee0b4e_23ec7f67",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-01-13T15:11:41Z",
       "side": 1,
       "message": "you could also simply use `strings.Replace(num, \".\", \"\", 1)`",
+      "revId": "2857151196750dad540f0109ca0a48bfce4ab3b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef91658_2609d4f4",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-13T21:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eee0b4e_23ec7f67",
       "revId": "2857151196750dad540f0109ca0a48bfce4ab3b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
