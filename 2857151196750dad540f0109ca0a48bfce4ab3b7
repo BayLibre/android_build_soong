@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90222da_3a4a3e14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-13T15:11:41Z",
+      "side": 1,
+      "message": "nit: do we know if there are any way to get a more structured output from Bazel itself? The output format is not part of an API and could change in any future versions of bazel.",
+      "revId": "2857151196750dad540f0109ca0a48bfce4ab3b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e20c975_d1aeccf2",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-13T15:11:41Z",
+      "side": 1,
+      "message": "nit: should be called millisStr",
+      "revId": "2857151196750dad540f0109ca0a48bfce4ab3b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eee0b4e_23ec7f67",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-13T15:11:41Z",
+      "side": 1,
+      "message": "you could also simply use `strings.Replace(num, \".\", \"\", 1)`",
+      "revId": "2857151196750dad540f0109ca0a48bfce4ab3b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
