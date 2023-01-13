@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77abef49_89cc47f0",
+        "filename": "java/base.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-13T19:53:02Z",
+      "side": 1,
+      "message": "I\u0027m providing this data as an interface rather than piping thru `JavaInfo` because the `r8Flags` function doesn\u0027t have access to the module\u0027s `JavaInfo` at the time its called.",
+      "revId": "9b581a2dece79fa560d37a1d9b9ce73cc69b2e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
