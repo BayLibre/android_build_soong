@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "723b5eb8_339b0249",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-13T14:06:14Z",
+      "side": 1,
+      "message": "just to clarify, are you suggesting spliting specification for libs under /lib and /lib64 into their own array or not having this option at all (meaning we always trim both 32 and 64 bit, take them all or leave them all)?",
+      "parentUuid": "9ae63691_25733b7c",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ea4959e_9f1bccf8",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-13T13:05:34Z",
       "side": 1,
       "message": "Do we need users to specify this or should it be controlled within the apex code as a product variable or similar?",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 11
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1871d8b2_00b9b433",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-13T14:06:14Z",
+      "side": 1,
+      "message": "Users do not need to explicitly set it. Refer to aosp/2384532, this option is included in a default that will be controlled by a soong config variable which is then controlled by an environment variable that is set or unset in the module build shell script.",
+      "parentUuid": "1ea4959e_9f1bccf8",
       "range": {
         "startLine": 392,
         "startChar": 0,
@@ -95,6 +143,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ecdb041_fb82ea9e",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-13T14:06:14Z",
+      "side": 1,
+      "message": "We do need both. In current design, libs_to_trim will be specified by apex soong module. it is always there, regardless if we are building static or trimmed apexes. so checking if libs_to_trim is empty will not work, it is always not empty. The boolean \u0027trim\u0027 however gives us a way to turn trimmed build on or off. Module authors never need to set it explicitly in their apex soong module. Rather it is in a default, refer to aosp/2384532, it is set to true or false depends on a soong configure variable. This soong configure variable is them controlled by the existence of an environment variable (refer to aosp/2384472). So we can turn on or off trimmed build by setting or unsetting this environment variable.",
+      "parentUuid": "f569ddcd_efe9d43c",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db27f1c8_ae31560b",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-13T14:06:14Z",
+      "side": 1,
+      "message": "I might be able to do it both ways, have it trimmed against lib list in DCLA if libs_to_trim is not explicitly specified. Looking into implementation details at the moment.",
+      "parentUuid": "a77b001e_6e2d400d",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d81fdebd_5fa75bcc",
         "filename": "apex/builder.go",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2023-01-13T02:05:13Z",
       "side": 1,
       "message": "There\u0027s a huge amount of duplication here and DCLAApexRule. Can we dedup?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80975371_56376c77",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-13T14:06:14Z",
+      "side": 1,
+      "message": "LOL, I saw this coming. Will do 😊",
+      "parentUuid": "d81fdebd_5fa75bcc",
       "range": {
         "startLine": 151,
         "startChar": 0,
