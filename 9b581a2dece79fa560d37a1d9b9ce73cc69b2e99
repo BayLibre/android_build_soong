@@ -74,6 +74,24 @@
       "parentUuid": "77abef49_89cc47f0",
       "revId": "9b581a2dece79fa560d37a1d9b9ce73cc69b2e99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "900f8832_239d49ff",
+        "filename": "java/base.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-01-16T13:57:54Z",
+      "side": 1,
+      "message": "What is involved in providing it access to `JavaInfo`, or having the calling code take what `r8Flags` returns and passing it to where it can be stored in `JavaInfo`.\n\nAccessing information via interfaces instead of providers is definitely not recommended so it would probably be worth spending a little more time to avoid that so you can produce something along the lines of Bazel\u0027s JavaInfo - https://bazel.build/rules/lib/JavaInfo.",
+      "parentUuid": "a7ef4343_3e0fc363",
+      "revId": "9b581a2dece79fa560d37a1d9b9ce73cc69b2e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
