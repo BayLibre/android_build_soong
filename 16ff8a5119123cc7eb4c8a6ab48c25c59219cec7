@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44c9042_fc3690f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-01-16T17:20:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "fdc5d86b_9e8bfbb5",
+      "revId": "16ff8a5119123cc7eb4c8a6ab48c25c59219cec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10ca442a_c73f1b98",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb4c0c69_644884eb",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-01-16T17:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10ca442a_c73f1b98",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 60
+      },
+      "revId": "16ff8a5119123cc7eb4c8a6ab48c25c59219cec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8df6958a_7d84d974",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-01-16T16:55:26Z",
       "side": 1,
       "message": "Could just reuse outConfigFilePath from the other function here?",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 65
+      },
+      "revId": "16ff8a5119123cc7eb4c8a6ab48c25c59219cec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "380612ca_ad460fe5",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-01-16T17:20:39Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "8df6958a_7d84d974",
       "range": {
         "startLine": 201,
         "startChar": 2,
