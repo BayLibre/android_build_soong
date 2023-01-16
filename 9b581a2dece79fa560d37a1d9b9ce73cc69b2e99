@@ -92,6 +92,24 @@
       "parentUuid": "a7ef4343_3e0fc363",
       "revId": "9b581a2dece79fa560d37a1d9b9ce73cc69b2e99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc8b24f1_25216c49",
+        "filename": "java/base.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-01-16T13:58:46Z",
+      "side": 1,
+      "message": "If you need to refactor the code a bit to make that happen I recommend separating it into its own commit.",
+      "parentUuid": "900f8832_239d49ff",
+      "revId": "9b581a2dece79fa560d37a1d9b9ce73cc69b2e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
