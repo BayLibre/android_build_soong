@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d05039a_336c26f3",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-17T11:24:31Z",
+      "side": 1,
+      "message": "Thanks. Done.",
+      "parentUuid": "09335c36_c037b173",
+      "range": {
+        "startLine": 166,
+        "startChar": 30,
+        "endLine": 166,
+        "endChar": 41
+      },
+      "revId": "fc6f9972ae8b6c0e78b79fa4126cdca17b784d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c79b5f6_d3d273d8",
@@ -78,6 +102,30 @@
       "writtenOn": "2023-01-12T19:10:46Z",
       "side": 1,
       "message": "Is the the manifest output path? If so, then consider renaming to `ShaManifestOutputFilePath` or similar.",
+      "range": {
+        "startLine": 269,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 12
+      },
+      "revId": "fc6f9972ae8b6c0e78b79fa4126cdca17b784d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "060f75c0_966a20c7",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-17T11:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c79b5f6_d3d273d8",
       "range": {
         "startLine": 269,
         "startChar": 1,
@@ -111,6 +159,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a210cffa_ad9c04a3",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-17T11:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b078e9be_9c700fac",
+      "range": {
+        "startLine": 465,
+        "startChar": 20,
+        "endLine": 465,
+        "endChar": 23
+      },
+      "revId": "fc6f9972ae8b6c0e78b79fa4126cdca17b784d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9a4015d_41348949",
@@ -134,6 +206,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f2e751_0280f87d",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-17T11:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9a4015d_41348949",
+      "range": {
+        "startLine": 585,
+        "startChar": 3,
+        "endLine": 585,
+        "endChar": 52
+      },
+      "revId": "fc6f9972ae8b6c0e78b79fa4126cdca17b784d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6df71d62_5a1437e1",
@@ -147,6 +243,30 @@
       "writtenOn": "2023-01-12T19:10:46Z",
       "side": 1,
       "message": "Could you avoid scanning the file twice by, for example, using something like a `MultiWriter `? Or maybe running both in parallel?\n\nIf the latter, you\u0027ll need to open the file twice and rely on the OS to do the caching for you. You\u0027ll also need to change the function signature to use a lambda that returns an `io.Reader`.",
+      "range": {
+        "startLine": 884,
+        "startChar": 20,
+        "endLine": 884,
+        "endChar": 36
+      },
+      "revId": "fc6f9972ae8b6c0e78b79fa4126cdca17b784d09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da14f17b_76624ebf",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-17T11:24:31Z",
+      "side": 1,
+      "message": "Done. Use MultiWriter.",
+      "parentUuid": "6df71d62_5a1437e1",
       "range": {
         "startLine": 884,
         "startChar": 20,
