@@ -196,10 +196,19 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext android.SdkContext)
 			noFrameworksLibs: true,
 		}
 	case android.SdkPublic:
+		if ctx.Config().BuildFromTextStub() {
+			return toModule("android-java-api-public-stubs", sdkFrameworkAidlPath(ctx))
+		}
 		return toModule("android_stubs_current", sdkFrameworkAidlPath(ctx))
 	case android.SdkSystem:
+		if ctx.Config().BuildFromTextStub() {
+			return toModule("android-java-api-system-stubs", sdkFrameworkAidlPath(ctx))
+		}
 		return toModule("android_system_stubs_current", sdkFrameworkAidlPath(ctx))
 	case android.SdkTest:
+		if ctx.Config().BuildFromTextStub() {
+			return toModule("android-java-api-test-stubs", sdkFrameworkAidlPath(ctx))
+		}
 		return toModule("android_test_stubs_current", sdkFrameworkAidlPath(ctx))
 	case android.SdkCore:
 		return sdkDep{
@@ -209,9 +218,15 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext android.SdkContext)
 			noFrameworksLibs: true,
 		}
 	case android.SdkModule:
+		if ctx.Config().BuildFromTextStub() {
+			return toModule("android-java-api-module-lib-stubs", nonUpdatableFrameworkAidlPath(ctx))
+		}
 		// TODO(146757305): provide .apk and .aidl that have more APIs for modules
 		return toModule("android_module_lib_stubs_current", nonUpdatableFrameworkAidlPath(ctx))
 	case android.SdkSystemServer:
+		if ctx.Config().BuildFromTextStub() {
+			return toModule("android-java-api-system-server-stubs", sdkFrameworkAidlPath(ctx))
+		}
 		// TODO(146757305): provide .apk and .aidl that have more APIs for modules
 		return toModule("android_system_server_stubs_current", sdkFrameworkAidlPath(ctx))
 	default:
