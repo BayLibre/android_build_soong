@@ -1612,6 +1612,9 @@ type ApiLibrary struct {
 
 	stubsSrcJar android.WritablePath
 	stubsJar    android.WritablePath
+
+	systemModuleOutputDir  android.Path
+	systemModuleOutputDeps android.Paths
 }
 
 type JavaApiLibraryProperties struct {
@@ -1683,12 +1686,22 @@ func metalavaStubCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 		Flag("--color").
 		Flag("--quiet").
 		Flag("--format=v2").
+		Flag("--include-annotations").
+		FlagWithArg("--force-convert-to-warning-nullability-annotations ", "+*:-android.*:+android.icu.*:-dalvik.*").
 		FlagWithArg("--repeat-errors-max ", "10").
 		FlagWithArg("--hide ", "UnresolvedImport").
 		FlagWithArg("--hide ", "InvalidNullabilityOverride").
 		FlagWithArg("--hide ", "ChangedDefault")
 
 	return cmd
+}
+
+func (al *ApiLibrary) HeaderJars() android.Paths {
+	return nil
+}
+
+func (al *ApiLibrary) OutputDirAndDeps() (android.Path, android.Paths) {
+	return nil, nil
 }
 
 func (al *ApiLibrary) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuilderCommand, stubsDir android.OptionalPath) {
@@ -1772,10 +1785,15 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	TransformJavaToClasses(ctx, al.stubsJar, 0, android.Paths{},
 		android.Paths{al.stubsSrcJar}, flags, android.Paths{})
 
+	al.systemModuleOutputDir, al.systemModuleOutputDeps = TransformJarsToSystemModules(ctx, android.Paths{al.stubsJar})
+
 	ctx.Phony(ctx.ModuleName(), al.stubsJar)
 
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
-		HeaderJars: android.PathsIfNonNil(al.stubsJar),
+		HeaderJars:                     android.PathsIfNonNil(al.stubsJar),
+		ImplementationAndResourcesJars: android.PathsIfNonNil(al.stubsJar),
+		ImplementationJars:             android.PathsIfNonNil(al.stubsJar),
+		AidlIncludeDirs:                android.Paths{},
 	})
 }
 

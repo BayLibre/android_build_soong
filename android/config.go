@@ -87,6 +87,8 @@ type CmdArgs struct {
 	BazelModeDev             bool
 	BazelModeStaging         bool
 	BazelForceEnabledModules string
+
+	BuildFromTextStub bool
 }
 
 // Build modes that soong_build can run as.
@@ -251,6 +253,11 @@ type config struct {
 	// specified modules. They are passed via the command-line flag
 	// "--bazel-force-enabled-modules"
 	bazelForceEnabledModules map[string]struct{}
+
+	// If buildFromTextStub is true then the Java API stubs are
+	// built from the signature text files, not the source Java files.
+	// Passed via the command line flag "--build-from-text-stub"
+	buildFromTextStub bool
 }
 
 type deviceConfig struct {
@@ -440,6 +447,7 @@ func NewConfig(cmdArgs CmdArgs, availableEnv map[string]string) (Config, error) 
 		mixedBuildDisabledModules: make(map[string]struct{}),
 		mixedBuildEnabledModules:  make(map[string]struct{}),
 		bazelForceEnabledModules:  make(map[string]struct{}),
+		buildFromTextStub:         cmdArgs.BuildFromTextStub,
 	}
 
 	config.deviceConfig = &deviceConfig{
@@ -1828,4 +1836,8 @@ func (c *config) LogMixedBuild(ctx BaseModuleContext, useBazel bool) {
 	} else {
 		c.mixedBuildDisabledModules[moduleName] = struct{}{}
 	}
+}
+
+func (c *config) BuildFromTextStub() bool {
+	return c.buildFromTextStub
 }
