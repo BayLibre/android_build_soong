@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "636ad7fa_f0a56f2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-17T19:43:12Z",
+      "side": 1,
+      "message": "When do you plan to set this flag?  How much does it affect the performance of soong_zip when it is set for large zip files?\n\nI also wonder if this is the right place to do this.  Zip files are often modified after soong_zip, for example by merge_zips or zip2zip.  Should this be a standalone tool you can run on whatever the final form of the zip file is regardless of which tool created it?",
+      "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
