@@ -22,6 +22,30 @@
       },
       "revId": "05730a6c24922bb0650cae03ee2cb104ab648ed7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc5cbe5_445cd9f8",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1886,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-01-17T19:22:03Z",
+      "side": 1,
+      "message": "Confirmed that this change is not needed for bionic at this time. See the bug for more details",
+      "parentUuid": "0a0f0a12_3daad487",
+      "range": {
+        "startLine": 1886,
+        "startChar": 30,
+        "endLine": 1886,
+        "endChar": 31
+      },
+      "revId": "05730a6c24922bb0650cae03ee2cb104ab648ed7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
