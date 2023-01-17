@@ -16,6 +16,24 @@
       "message": "I\u0027m probably missing something, but I\u0027m a little confused as to why we need to fetch the config file if it already exists on disk? Is it to avoid staleness? (If so, isn\u0027t it a problem to do this fetch in the background, i.e. problematic to ever trust the copy on disk without a fetch?)",
       "revId": "c881833bda1cc28c8544d0e8cb088b7bed06f59b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e4f64f_00368860",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-01-17T16:19:15Z",
+      "side": 1,
+      "message": "This config file is primarily intended for enabling or disabling experiments and as such, it is ok to have a stale copy of the file on disk and use that config until the stale copy can be updated.\n\nAlso, from my experiments, we usually are able to finish fetching the config file even in a no-op build even when running it in the background (e.g., `m nothing` build that already has the ninja file generated and `out` dir populated). Fetching config file takes 1-2 seconds. \nHowever, fetching in background ensures its not on the critical path and not blocking rest of the build execution.",
+      "parentUuid": "3fc69af1_084d759f",
+      "revId": "c881833bda1cc28c8544d0e8cb088b7bed06f59b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
