@@ -41,6 +41,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "87927f8c_aed912b9",
+        "filename": "java/base.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-17T20:23:44Z",
+      "side": 1,
+      "message": "To get the transitive deps into JavaInfo you would add them here:\n```\nTransitiveLibsHeaderJars: j.providesTransitiveHeaderJars.transitiveLibsHeaderJars,\n```\n\nalthough without the interface there isn\u0027t much value to the `providesTransitiveHeaderJars` struct and its method and fields can be added directly to `java.Module`.",
+      "revId": "9b581a2dece79fa560d37a1d9b9ce73cc69b2e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "77abef49_89cc47f0",
