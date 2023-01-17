@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc69af1_084d759f",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-17T16:12:05Z",
+      "side": 1,
+      "message": "I\u0027m probably missing something, but I\u0027m a little confused as to why we need to fetch the config file if it already exists on disk? Is it to avoid staleness? (If so, isn\u0027t it a problem to do this fetch in the background, i.e. problematic to ever trust the copy on disk without a fetch?)",
+      "revId": "c881833bda1cc28c8544d0e8cb088b7bed06f59b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
