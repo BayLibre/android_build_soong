@@ -236,9 +236,15 @@ func hiddenAPIComputeMonolithicStubLibModules(config android.Config) map[*Hidden
 		testStubModules = append(testStubModules, "sdk_test_current_android")
 	} else {
 		// Use stub modules built from source
-		publicStubModules = append(publicStubModules, "android_stubs_current")
-		systemStubModules = append(systemStubModules, "android_system_stubs_current")
-		testStubModules = append(testStubModules, "android_test_stubs_current")
+		if config.BuildFromTextStub() {
+			publicStubModules = append(publicStubModules, "android-java-public-api-stubs")
+			systemStubModules = append(systemStubModules, "android-java-system-api-stubs")
+			testStubModules = append(testStubModules, "android-java-test-api-stubs")
+		} else {
+			publicStubModules = append(publicStubModules, "android_stubs_current")
+			systemStubModules = append(systemStubModules, "android_system_stubs_current")
+			testStubModules = append(testStubModules, "android_test_stubs_current")
+		}
 	}
 	// We do not have prebuilts of the core platform api yet
 	corePlatformStubModules = append(corePlatformStubModules, "legacy.core.platform.api.stubs")
