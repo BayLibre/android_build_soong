@@ -1924,15 +1924,15 @@ func (m *Module) getSdkLinkType(ctx android.BaseModuleContext, name string) (ret
 		"stub-annotations", "private-stub-annotations-jar",
 		"core-lambda-stubs", "core-generated-annotation-stubs":
 		return javaCore, true
-	case "android_stubs_current":
+	case "android_stubs_current", "android_from_text_stubs_current":
 		return javaSdk, true
-	case "android_system_stubs_current":
+	case "android_system_stubs_current", "android_from_text_system_stubs_current":
 		return javaSystem, true
-	case "android_module_lib_stubs_current":
+	case "android_module_lib_stubs_current", "android_from_text_module_lib_stubs_current":
 		return javaModule, true
-	case "android_system_server_stubs_current":
+	case "android_system_server_stubs_current", "android_from_text_system_server_stubs_current":
 		return javaSystemServer, true
-	case "android_test_stubs_current":
+	case "android_test_stubs_current", "android_from_text_test_stubs_current":
 		return javaSystem, true
 	}
 
