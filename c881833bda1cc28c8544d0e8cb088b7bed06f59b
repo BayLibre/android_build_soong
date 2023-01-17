@@ -34,6 +34,24 @@
       "parentUuid": "3fc69af1_084d759f",
       "revId": "c881833bda1cc28c8544d0e8cb088b7bed06f59b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d571232_f2ea6654",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-17T16:22:59Z",
+      "side": 1,
+      "message": "Makes sense. Thank you for the explanation!",
+      "parentUuid": "d2e4f64f_00368860",
+      "revId": "c881833bda1cc28c8544d0e8cb088b7bed06f59b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
