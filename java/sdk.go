@@ -158,6 +158,11 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext android.SdkContext)
 		}
 	}
 
+	var fromTextPrefix = ""
+	if ctx.Config().BuildFromTextStub() {
+		fromTextPrefix = "_from_text"
+	}
+
 	switch sdkVersion.Kind {
 	case android.SdkPrivate:
 		return sdkDep{
@@ -192,11 +197,11 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext android.SdkContext)
 			noFrameworksLibs: true,
 		}
 	case android.SdkPublic:
-		return toModule("android_stubs_current", sdkFrameworkAidlPath(ctx))
+		return toModule(fmt.Sprintf("android%s_stubs_current", fromTextPrefix), sdkFrameworkAidlPath(ctx))
 	case android.SdkSystem:
-		return toModule("android_system_stubs_current", sdkFrameworkAidlPath(ctx))
+		return toModule(fmt.Sprintf("android%s_system_stubs_current", fromTextPrefix), sdkFrameworkAidlPath(ctx))
 	case android.SdkTest:
-		return toModule("android_test_stubs_current", sdkFrameworkAidlPath(ctx))
+		return toModule(fmt.Sprintf("android%s_test_stubs_current", fromTextPrefix), sdkFrameworkAidlPath(ctx))
 	case android.SdkCore:
 		return sdkDep{
 			useModule:        true,
@@ -206,10 +211,10 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext android.SdkContext)
 		}
 	case android.SdkModule:
 		// TODO(146757305): provide .apk and .aidl that have more APIs for modules
-		return toModule("android_module_lib_stubs_current", nonUpdatableFrameworkAidlPath(ctx))
+		return toModule(fmt.Sprintf("android%s_module_lib_stubs_current", fromTextPrefix), nonUpdatableFrameworkAidlPath(ctx))
 	case android.SdkSystemServer:
 		// TODO(146757305): provide .apk and .aidl that have more APIs for modules
-		return toModule("android_system_server_stubs_current", sdkFrameworkAidlPath(ctx))
+		return toModule(fmt.Sprintf("android%s_system_server_stubs_current", fromTextPrefix), sdkFrameworkAidlPath(ctx))
 	default:
 		panic(fmt.Errorf("invalid sdk %q", sdkVersion.Raw))
 	}
@@ -271,10 +276,19 @@ func (sdkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 
 // Create framework.aidl by extracting anything that implements android.os.Parcelable from the SDK stubs modules.
 func createSdkFrameworkAidl(ctx android.SingletonContext) {
-	stubsModules := []string{
-		"android_stubs_current",
-		"android_test_stubs_current",
-		"android_system_stubs_current",
+	var stubsModules []string
+	if ctx.Config().BuildFromTextStub() {
+		stubsModules = []string{
+			"android_from_text_stubs_current",
+			"android_from_text_test_stubs_current",
+			"android_from_text_system_stubs_current",
+		}
+	} else {
+		stubsModules = []string{
+			"android_stubs_current",
+			"android_test_stubs_current",
+			"android_system_stubs_current",
+		}
 	}
 
 	combinedAidl := sdkFrameworkAidlPath(ctx)
@@ -289,7 +303,12 @@ func createSdkFrameworkAidl(ctx android.SingletonContext) {
 
 // Creates a version of framework.aidl for the non-updatable part of the platform.
 func createNonUpdatableFrameworkAidl(ctx android.SingletonContext) {
-	stubsModules := []string{"android_module_lib_stubs_current"}
+	var stubsModules []string
+	if ctx.Config().BuildFromTextStub() {
+		stubsModules = []string{"android_from_text_module_lib_stubs_current"}
+	} else {
+		stubsModules = []string{"android_module_lib_stubs_current"}
+	}
 
 	combinedAidl := nonUpdatableFrameworkAidlPath(ctx)
 	tempPath := tempPathForRestat(ctx, combinedAidl)
