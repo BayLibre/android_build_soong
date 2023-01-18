@@ -430,20 +430,20 @@ type prebuiltLibraryBazelHandler struct {
 
 var _ BazelHandler = (*prebuiltLibraryBazelHandler)(nil)
 
-func (h *prebuiltLibraryBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
+func (h *prebuiltLibraryBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string, _ *android.ApexConfigKey) {
 	if h.module.linker.(*prebuiltLibraryLinker).properties.MixedBuildsDisabled {
 		return
 	}
 	bazelCtx := ctx.Config().BazelContext
-	bazelCtx.QueueBazelRequest(label, cquery.GetCcInfo, android.GetConfigKey(ctx))
+	bazelCtx.QueueBazelRequest(label, cquery.GetCcInfo, android.GetConfigKey(ctx, nil))
 }
 
-func (h *prebuiltLibraryBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+func (h *prebuiltLibraryBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string, _ *android.ApexConfigKey) {
 	if h.module.linker.(*prebuiltLibraryLinker).properties.MixedBuildsDisabled {
 		return
 	}
 	bazelCtx := ctx.Config().BazelContext
-	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
+	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx, nil))
 	if err != nil {
 		ctx.ModuleErrorf(err.Error())
 		return
@@ -589,14 +589,14 @@ type prebuiltObjectBazelHandler struct {
 
 var _ BazelHandler = (*prebuiltObjectBazelHandler)(nil)
 
-func (h *prebuiltObjectBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
+func (h *prebuiltObjectBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string, _ *android.ApexConfigKey) {
 	bazelCtx := ctx.Config().BazelContext
-	bazelCtx.QueueBazelRequest(label, cquery.GetOutputFiles, android.GetConfigKey(ctx))
+	bazelCtx.QueueBazelRequest(label, cquery.GetOutputFiles, android.GetConfigKey(ctx, nil))
 }
 
-func (h *prebuiltObjectBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+func (h *prebuiltObjectBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string, _ *android.ApexConfigKey) {
 	bazelCtx := ctx.Config().BazelContext
-	outputs, err := bazelCtx.GetOutputFiles(label, android.GetConfigKey(ctx))
+	outputs, err := bazelCtx.GetOutputFiles(label, android.GetConfigKey(ctx, nil))
 	if err != nil {
 		ctx.ModuleErrorf(err.Error())
 		return
@@ -748,14 +748,14 @@ func NewPrebuiltBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecor
 
 var _ BazelHandler = (*prebuiltBinaryBazelHandler)(nil)
 
-func (h *prebuiltBinaryBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
+func (h *prebuiltBinaryBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string, _ *android.ApexConfigKey) {
 	bazelCtx := ctx.Config().BazelContext
-	bazelCtx.QueueBazelRequest(label, cquery.GetOutputFiles, android.GetConfigKey(ctx))
+	bazelCtx.QueueBazelRequest(label, cquery.GetOutputFiles, android.GetConfigKey(ctx, nil))
 }
 
-func (h *prebuiltBinaryBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+func (h *prebuiltBinaryBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string, _ *android.ApexConfigKey) {
 	bazelCtx := ctx.Config().BazelContext
-	outputs, err := bazelCtx.GetOutputFiles(label, android.GetConfigKey(ctx))
+	outputs, err := bazelCtx.GetOutputFiles(label, android.GetConfigKey(ctx, nil))
 	if err != nil {
 		ctx.ModuleErrorf(err.Error())
 		return
