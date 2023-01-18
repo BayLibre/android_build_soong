@@ -1401,6 +1401,8 @@ var (
 	ProdMixedBuildsEnabledList = []string{
 		"com.android.tzdata",
 		"test1_com.android.tzdata",
+		// temp change to test DCLA in abtd
+		"com.android.adbd",
 	}
 
 	// Staging-mode allowlist. Modules in this list are only built
@@ -1415,5 +1417,16 @@ var (
 		"adb_pairing_auth_test",
 		"adb_pairing_connection_test",
 		"adb_tls_connection_test",
+	}
+
+	DclaMixedBuildsEnabledList = []string{
+		// temporarily comment these out to test DCLA in abtd
+		// "libbase",
+		// "libc++",
+		"libcrypto",
+		"libcutils",
+		"libssl",
+		"libstagefright_flacdec",
+		"libutils",
 	}
 )
