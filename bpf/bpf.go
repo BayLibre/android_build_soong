@@ -99,6 +99,7 @@ type BpfProperties struct {
 type bpf struct {
 	android.ModuleBase
 	android.BazelModuleBase
+	android.BaseMixedBuildBuildableModule
 
 	properties BpfProperties
 

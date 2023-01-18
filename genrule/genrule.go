@@ -158,6 +158,7 @@ type Module struct {
 	android.DefaultableModuleBase
 	android.BazelModuleBase
 	android.ApexModuleBase
+	android.BaseMixedBuildBuildableModule
 
 	// For other packages to make their own genrules with extra
 	// properties

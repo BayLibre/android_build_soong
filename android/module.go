@@ -2394,7 +2394,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 
 func (m *ModuleBase) isHandledByBazel(ctx ModuleContext) (MixedBuildBuildable, bool) {
 	if mixedBuildMod, ok := m.module.(MixedBuildBuildable); ok {
-		if mixedBuildMod.IsMixedBuildSupported(ctx) && MixedBuildsEnabled(ctx) {
+		if mixedBuildMod.IsMixedBuildSupported(ctx) && MixedBuildsEnabled(ctx, mixedBuildMod.IsCcInApex(ctx)) {
 			return mixedBuildMod, true
 		}
 	}

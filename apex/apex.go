@@ -397,6 +397,7 @@ type apexBundle struct {
 	android.DefaultableModuleBase
 	android.OverridableModuleBase
 	android.BazelModuleBase
+	android.BaseMixedBuildBuildableModule
 	multitree.ExportableModuleBase
 
 	// Properties
