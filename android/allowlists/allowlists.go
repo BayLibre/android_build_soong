@@ -1389,4 +1389,14 @@ var (
 		"adb_pairing_connection_test",
 		"adb_tls_connection_test",
 	}
+
+	DclaMixedBuildsEnabledList = []string{
+		"libbase",
+		"libc++",
+		"libcrypto",
+		"libcutils",
+		"libssl",
+		"libstagefright_flacdec",
+		"libutils",
+	}
 )

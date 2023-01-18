@@ -257,12 +257,12 @@ func (bpf *bpf) QueueBazelCall(ctx android.BaseModuleContext) {
 	bazelCtx.QueueBazelRequest(
 		bpf.GetBazelLabel(ctx, bpf),
 		cquery.GetOutputFiles,
-		android.GetConfigKey(ctx))
+		android.GetConfigKey(ctx, nil))
 }
 
 func (bpf *bpf) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	bazelCtx := ctx.Config().BazelContext
-	objPaths, err := bazelCtx.GetOutputFiles(bpf.GetBazelLabel(ctx, bpf), android.GetConfigKey(ctx))
+	objPaths, err := bazelCtx.GetOutputFiles(bpf.GetBazelLabel(ctx, bpf), android.GetConfigKey(ctx, nil))
 	if err != nil {
 		ctx.ModuleErrorf(err.Error())
 		return
