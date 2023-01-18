@@ -34,6 +34,24 @@
       "parentUuid": "bda714ad_4a643562",
       "revId": "358ba4f0d8f392efd26696823d8d9e007b43d60f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62da8863_81cafea7",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-18T23:24:24Z",
+      "side": 1,
+      "message": "Example failure log: https://android-build.googleplex.com/builds/submitted/9497276/soong_integration-clean/latest/view/logs/build.log",
+      "parentUuid": "0daaf6cd_bba243d9",
+      "revId": "358ba4f0d8f392efd26696823d8d9e007b43d60f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
