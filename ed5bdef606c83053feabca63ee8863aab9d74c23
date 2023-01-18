@@ -16,6 +16,57 @@
       "message": "PTAL",
       "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c304655c_1c659928",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-18T19:39:04Z",
+      "side": 1,
+      "message": "curious as to why do we upload the .txt file as well",
+      "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e9e229_3e6290a0",
+        "filename": "ui/build/upload_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-18T19:39:04Z",
+      "side": 1,
+      "message": "nit: any assertions that would depend upon the format of this file?",
+      "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b43330_23469f2f",
+        "filename": "ui/build/upload_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-18T19:39:04Z",
+      "side": 1,
+      "message": "tt.files already includes the bazel_metrics.pb file",
+      "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
