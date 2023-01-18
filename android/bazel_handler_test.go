@@ -18,9 +18,13 @@ var testConfig = TestConfig("out", nil, "", nil)
 
 func TestRequestResultsAfterInvokeBazel(t *testing.T) {
 	label := "@//foo:bar"
-	cfg := configKey{"arm64_armv8-a", Android}
+	apexKey := ApexConfigKey{
+		WithinApex:     "within_apex",
+		ApexSdkVersion: "29",
+	}
+	cfg := configKey{"arm64_armv8-a", Android, apexKey}
 	bazelContext, _ := testBazelContext(t, map[bazelCommand]string{
-		bazelCommand{command: "cquery", expression: "deps(@soong_injection//mixed_builds:buildroot, 2)"}: `@//foo:bar|arm64_armv8-a|android>>out/foo/bar.txt`,
+		bazelCommand{command: "cquery", expression: "deps(@soong_injection//mixed_builds:buildroot, 2)"}: `@//foo:bar|arm64_armv8-a|android|within_apex|29>>out/foo/bar.txt`,
 	})
 	bazelContext.QueueBazelRequest(label, cquery.GetOutputFiles, cfg)
 	err := bazelContext.InvokeBazel(testConfig, nil)
