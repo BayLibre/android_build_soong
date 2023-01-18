@@ -636,12 +636,12 @@ type ccTestBazelHandler struct {
 
 var _ BazelHandler = (*ccTestBazelHandler)(nil)
 
-func (handler *ccTestBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
+func (handler *ccTestBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string, _ []string) {
 	bazelCtx := ctx.Config().BazelContext
 	bazelCtx.QueueBazelRequest(label, cquery.GetCcUnstrippedInfo, android.GetConfigKey(ctx))
 }
 
-func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string, _ []string) {
 	bazelCtx := ctx.Config().BazelContext
 	info, err := bazelCtx.GetCcUnstrippedInfo(label, android.GetConfigKey(ctx))
 	if err != nil {

@@ -794,11 +794,11 @@ func IsTestPerSrcDepTag(depTag blueprint.DependencyTag) bool {
 type BazelHandler interface {
 	// QueueBazelCall invokes request-queueing functions on the BazelContext
 	//so that these requests are handled when Bazel's cquery is invoked.
-	QueueBazelCall(ctx android.BaseModuleContext, label string)
+	QueueBazelCall(ctx android.BaseModuleContext, label string, apexKeys []string)
 
 	// ProcessBazelQueryResponse uses information retrieved from Bazel to set properties
 	// on the current module with given label.
-	ProcessBazelQueryResponse(ctx android.ModuleContext, label string)
+	ProcessBazelQueryResponse(ctx android.ModuleContext, label string, apexKeys []string)
 }
 
 // Module contains the properties and members used by all C/C++ module types, and implements
@@ -1853,7 +1853,7 @@ func (c *Module) getBazelModuleLabel(ctx android.BaseModuleContext) string {
 }
 
 func (c *Module) QueueBazelCall(ctx android.BaseModuleContext) {
-	c.bazelHandler.QueueBazelCall(ctx, c.getBazelModuleLabel(ctx))
+	c.bazelHandler.QueueBazelCall(ctx, c.getBazelModuleLabel(ctx), c.getApexConfigKeys(ctx))
 }
 
 var (
@@ -1878,15 +1878,29 @@ func (c *Module) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
 	return c.bazelHandler != nil && !ubsanEnabled
 }
 
+func (c *Module) getApexConfigKeys(ctx android.BaseModuleContext) []string {
+	var apexKeys []string
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	if !apexInfo.IsForPlatform() {
+		apexKeys = append(apexKeys, "in_apex")
+		if c.MinSdkVersion() == "apex_inherit" {
+			apexKeys = append(apexKeys, c.apexSdkVersion.String())
+		}
+	}
+
+	return apexKeys
+}
+
 func (c *Module) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	bazelModuleLabel := c.getBazelModuleLabel(ctx)
 
+	apexKeys := c.getApexConfigKeys(ctx)
 	bazelCtx := ctx.Config().BazelContext
-	if ccInfo, err := bazelCtx.GetCcInfo(bazelModuleLabel, android.GetConfigKey(ctx)); err == nil {
+	if ccInfo, err := bazelCtx.GetCcInfo(bazelModuleLabel, android.GetConfigKey(ctx, apexKeys)); err == nil {
 		c.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
 	}
 
-	c.bazelHandler.ProcessBazelQueryResponse(ctx, bazelModuleLabel)
+	c.bazelHandler.ProcessBazelQueryResponse(ctx, bazelModuleLabel, apexKeys)
 
 	c.Properties.SubName = GetSubnameProperty(ctx, c)
 	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
