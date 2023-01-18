@@ -638,12 +638,12 @@ var _ BazelHandler = (*ccTestBazelHandler)(nil)
 
 func (handler *ccTestBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
 	bazelCtx := ctx.Config().BazelContext
-	bazelCtx.QueueBazelRequest(label, cquery.GetCcUnstrippedInfo, android.GetConfigKey(ctx))
+	bazelCtx.QueueBazelRequest(label, cquery.GetCcUnstrippedInfo, android.GetConfigKey(ctx, nil))
 }
 
 func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
 	bazelCtx := ctx.Config().BazelContext
-	info, err := bazelCtx.GetCcUnstrippedInfo(label, android.GetConfigKey(ctx))
+	info, err := bazelCtx.GetCcUnstrippedInfo(label, android.GetConfigKey(ctx, nil))
 	if err != nil {
 		ctx.ModuleErrorf(err.Error())
 		return
