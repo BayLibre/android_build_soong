@@ -34,6 +34,24 @@
       "parentUuid": "636ad7fa_f0a56f2e",
       "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9facfadf_7098476a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-18T18:58:28Z",
+      "side": 1,
+      "message": "If you\u0027re going to implement it in `merge_zips` I would strongly suggest making it a separate tool.  `merge_zips` doesn\u0027t uncompress the data, it moves already-compressed blobs between zip files.  To compute the hash you\u0027d have to uncompress everything.  If you have to add uncompression there is unlikely to be any performance reason to combine it with `merge_zips`.  And if you\u0027re already implementing it as a separate tool for the `merge_zips` case it probably makes sense to just use that for the `soong_zip` case too.",
+      "parentUuid": "fbbdd113_5950546f",
+      "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b182ea2_21dfd9fd",
+        "filename": "zip/zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-18T18:58:28Z",
+      "side": 1,
+      "message": "I actually prefer the conditionals over the interface.  When I see the unconditional interface call I immediately think \"uh oh, the hash is being computed even when not enabled on the command line\", and have to go look at the complicated interface definitions and initialization to verify that it is only used when enabled.  A few `if z.shaManifest !\u003d nil` checks would make the intention much clearer.",
+      "parentUuid": "9f83ab99_69b1718b",
+      "range": {
+        "startLine": 937,
+        "startChar": 1,
+        "endLine": 937,
+        "endChar": 22
+      },
+      "revId": "30095fd521b8eb87d798b085728be497e83393f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c499dfd1_0536f269",
         "filename": "zip/zip.go",
         "patchSetId": 3
