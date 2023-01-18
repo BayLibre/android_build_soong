@@ -904,14 +904,14 @@ func (handler *ccLibraryBazelHandler) generateSharedBazelBuildActions(ctx androi
 	})
 }
 
-func (handler *ccLibraryBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
+func (handler *ccLibraryBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string, apexKey *android.ApexConfigKey) {
 	bazelCtx := ctx.Config().BazelContext
-	bazelCtx.QueueBazelRequest(label, cquery.GetCcInfo, android.GetConfigKey(ctx))
+	bazelCtx.QueueBazelRequest(label, cquery.GetCcInfo, android.GetConfigKey(ctx, apexKey))
 }
 
-func (handler *ccLibraryBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+func (handler *ccLibraryBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string, apexKey *android.ApexConfigKey) {
 	bazelCtx := ctx.Config().BazelContext
-	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
+	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx, apexKey))
 	if err != nil {
 		ctx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
 		return

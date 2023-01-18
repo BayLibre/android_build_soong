@@ -1922,7 +1922,7 @@ func (a *apexBundle) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
 
 func (a *apexBundle) QueueBazelCall(ctx android.BaseModuleContext) {
 	bazelCtx := ctx.Config().BazelContext
-	bazelCtx.QueueBazelRequest(a.GetBazelLabel(ctx, a), cquery.GetApexInfo, android.GetConfigKey(ctx))
+	bazelCtx.QueueBazelRequest(a.GetBazelLabel(ctx, a), cquery.GetApexInfo, android.GetConfigKey(ctx, nil))
 }
 
 // GetBazelLabel returns the bazel label of this apexBundle, or the label of the
@@ -1950,7 +1950,7 @@ func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	}
 
 	bazelCtx := ctx.Config().BazelContext
-	outputs, err := bazelCtx.GetApexInfo(a.GetBazelLabel(ctx, a), android.GetConfigKey(ctx))
+	outputs, err := bazelCtx.GetApexInfo(a.GetBazelLabel(ctx, a), android.GetConfigKey(ctx, nil))
 	if err != nil {
 		ctx.ModuleErrorf(err.Error())
 		return

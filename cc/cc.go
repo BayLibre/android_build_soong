@@ -794,11 +794,11 @@ func IsTestPerSrcDepTag(depTag blueprint.DependencyTag) bool {
 type BazelHandler interface {
 	// QueueBazelCall invokes request-queueing functions on the BazelContext
 	//so that these requests are handled when Bazel's cquery is invoked.
-	QueueBazelCall(ctx android.BaseModuleContext, label string)
+	QueueBazelCall(ctx android.BaseModuleContext, label string, apexKey *android.ApexConfigKey)
 
 	// ProcessBazelQueryResponse uses information retrieved from Bazel to set properties
 	// on the current module with given label.
-	ProcessBazelQueryResponse(ctx android.ModuleContext, label string)
+	ProcessBazelQueryResponse(ctx android.ModuleContext, label string, apexKey *android.ApexConfigKey)
 }
 
 // Module contains the properties and members used by all C/C++ module types, and implements
@@ -1855,7 +1855,7 @@ func (c *Module) getBazelModuleLabel(ctx android.BaseModuleContext) string {
 }
 
 func (c *Module) QueueBazelCall(ctx android.BaseModuleContext) {
-	c.bazelHandler.QueueBazelCall(ctx, c.getBazelModuleLabel(ctx))
+	c.bazelHandler.QueueBazelCall(ctx, c.getBazelModuleLabel(ctx), c.getApexConfigKey(ctx))
 }
 
 var (
@@ -1885,23 +1885,37 @@ func (c *Module) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
 	return c.bazelHandler != nil && !ubsanEnabled
 }
 
+func (c *Module) getApexConfigKey(ctx android.BaseModuleContext) *android.ApexConfigKey {
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	if !apexInfo.IsForPlatform() {
+		apexKey := android.ApexConfigKey{
+			InApex:         "in_apex",
+			ApexSdkVersion: c.findApexSdkVersion(ctx, apexInfo).String(),
+		}
+		return &apexKey
+	}
+
+	return nil
+}
+
 func (c *Module) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	bazelModuleLabel := c.getBazelModuleLabel(ctx)
 
+	apexKey := c.getApexConfigKey(ctx)
 	bazelCtx := ctx.Config().BazelContext
-	if ccInfo, err := bazelCtx.GetCcInfo(bazelModuleLabel, android.GetConfigKey(ctx)); err == nil {
+	if ccInfo, err := bazelCtx.GetCcInfo(bazelModuleLabel, android.GetConfigKey(ctx, apexKey)); err == nil {
 		c.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
 		c.Properties.AndroidMkSharedLibs = ccInfo.LocalSharedLibs
 		c.Properties.AndroidMkStaticLibs = ccInfo.LocalStaticLibs
 		c.Properties.AndroidMkWholeStaticLibs = ccInfo.LocalWholeStaticLibs
 	}
-	if unstrippedInfo, err := bazelCtx.GetCcUnstrippedInfo(bazelModuleLabel, android.GetConfigKey(ctx)); err == nil {
+	if unstrippedInfo, err := bazelCtx.GetCcUnstrippedInfo(bazelModuleLabel, android.GetConfigKey(ctx, apexKey)); err == nil {
 		c.Properties.AndroidMkSharedLibs = unstrippedInfo.LocalSharedLibs
 		c.Properties.AndroidMkStaticLibs = unstrippedInfo.LocalStaticLibs
 		c.Properties.AndroidMkWholeStaticLibs = unstrippedInfo.LocalWholeStaticLibs
 	}
 
-	c.bazelHandler.ProcessBazelQueryResponse(ctx, bazelModuleLabel)
+	c.bazelHandler.ProcessBazelQueryResponse(ctx, bazelModuleLabel, apexKey)
 
 	c.Properties.SubName = GetSubnameProperty(ctx, c)
 	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
@@ -2823,6 +2837,23 @@ func checkDoubleLoadableLibraries(ctx android.TopDownMutatorContext) {
 	}
 }
 
+func (c *Module) findApexSdkVersion(ctx android.BaseModuleContext, apexInfo android.ApexInfo) android.ApiLevel {
+	// For the dependency from platform to apex, use the latest stubs
+	apexSdkVersion := android.FutureApiLevel
+	if !apexInfo.IsForPlatform() {
+		apexSdkVersion = apexInfo.MinSdkVersion
+	}
+
+	if android.InList("hwaddress", ctx.Config().SanitizeDevice()) {
+		// In hwasan build, we override apexSdkVersion to the FutureApiLevel(10000)
+		// so that even Q(29/Android10) apexes could use the dynamic unwinder by linking the newer stubs(e.g libc(R+)).
+		// (b/144430859)
+		apexSdkVersion = android.FutureApiLevel
+	}
+
+	return apexSdkVersion
+}
+
 // Convert dependencies to paths.  Returns a PathDeps containing paths
 func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	var depPaths PathDeps
@@ -2838,19 +2869,8 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		depPaths.ReexportedGeneratedHeaders = append(depPaths.ReexportedGeneratedHeaders, exporter.GeneratedHeaders...)
 	}
 
-	// For the dependency from platform to apex, use the latest stubs
-	c.apexSdkVersion = android.FutureApiLevel
 	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
-	if !apexInfo.IsForPlatform() {
-		c.apexSdkVersion = apexInfo.MinSdkVersion
-	}
-
-	if android.InList("hwaddress", ctx.Config().SanitizeDevice()) {
-		// In hwasan build, we override apexSdkVersion to the FutureApiLevel(10000)
-		// so that even Q(29/Android10) apexes could use the dynamic unwinder by linking the newer stubs(e.g libc(R+)).
-		// (b/144430859)
-		c.apexSdkVersion = android.FutureApiLevel
-	}
+	c.apexSdkVersion = c.findApexSdkVersion(ctx, apexInfo)
 
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
