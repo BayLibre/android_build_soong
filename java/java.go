@@ -2967,7 +2967,7 @@ func (i *Import) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	i.commonBuildActions(ctx)
 
 	bazelCtx := ctx.Config().BazelContext
-	filePaths, err := bazelCtx.GetOutputFiles(i.getBazelModuleLabel(ctx), android.GetConfigKey(ctx))
+	filePaths, err := bazelCtx.GetOutputFiles(i.getBazelModuleLabel(ctx), android.GetConfigKey(ctx, nil))
 	if err != nil {
 		ctx.ModuleErrorf(err.Error())
 		return
@@ -3000,7 +3000,7 @@ func (i *Import) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 
 func (i *Import) QueueBazelCall(ctx android.BaseModuleContext) {
 	bazelCtx := ctx.Config().BazelContext
-	bazelCtx.QueueBazelRequest(i.getBazelModuleLabel(ctx), cquery.GetOutputFiles, android.GetConfigKey(ctx))
+	bazelCtx.QueueBazelRequest(i.getBazelModuleLabel(ctx), cquery.GetOutputFiles, android.GetConfigKey(ctx, nil))
 }
 
 func (i *Import) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
