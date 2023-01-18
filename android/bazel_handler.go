@@ -85,6 +85,7 @@ type cqueryRequest interface {
 type configKey struct {
 	arch   string
 	osType OsType
+	inApex bool
 }
 
 func (c configKey) String() string {
@@ -152,7 +153,7 @@ type BazelContext interface {
 	// Note that this only implies "bazel mixed build" allowlisting. The caller
 	// should independently verify the module is eligible for Bazel handling
 	// (for example, that it is MixedBuildBuildable).
-	IsModuleNameAllowed(moduleName string) bool
+	IsModuleNameAllowed(moduleName string, inApex bool) bool
 
 	// Returns the bazel output base (the root directory for all bazel intermediate outputs).
 	OutputBase() string
@@ -203,6 +204,8 @@ type mixedBuildBazelContext struct {
 	bazelDisabledModules map[string]bool
 	// Per-module allowlist to opt modules in to bazel handling.
 	bazelEnabledModules map[string]bool
+	// DCLA modules are enabled when used in apex.
+	bazelDclaEnabledModules map[string]bool
 	// If true, modules are bazel-enabled by default, unless present in bazelDisabledModules.
 	modulesDefaultToBazel bool
 
@@ -261,7 +264,7 @@ func (m MockBazelContext) InvokeBazel(_ Config, _ *Context) error {
 	panic("unimplemented")
 }
 
-func (m MockBazelContext) IsModuleNameAllowed(_ string) bool {
+func (m MockBazelContext) IsModuleNameAllowed(_ string, _ bool) bool {
 	return true
 }
 
@@ -361,7 +364,7 @@ func (m noopBazelContext) OutputBase() string {
 	return ""
 }
 
-func (n noopBazelContext) IsModuleNameAllowed(_ string) bool {
+func (n noopBazelContext) IsModuleNameAllowed(_ string, _ bool) bool {
 	return false
 }
 
@@ -373,14 +376,15 @@ func (m noopBazelContext) AqueryDepsets() []bazel.AqueryDepset {
 	return []bazel.AqueryDepset{}
 }
 
+func addToStringSet(set map[string]bool, items []string) {
+	for _, item := range items {
+		set[item] = true
+	}
+}
+
 func GetBazelEnabledAndDisabledModules(buildMode SoongBuildMode, forceEnabled map[string]struct{}) (map[string]bool, map[string]bool) {
 	disabledModules := map[string]bool{}
 	enabledModules := map[string]bool{}
-	addToStringSet := func(set map[string]bool, items []string) {
-		for _, item := range items {
-			set[item] = true
-		}
-	}
 
 	switch buildMode {
 	case BazelProdMode:
@@ -468,16 +472,18 @@ func NewBazelContext(c *config) (BazelContext, error) {
 	if c.HasDeviceProduct() {
 		targetProduct = c.DeviceProduct()
 	}
-
+	dclaEnabledModules := map[string]bool{}
+	addToStringSet(dclaEnabledModules, allowlists.DclaMixedBuildsEnabledList)
 	return &mixedBuildBazelContext{
-		bazelRunner:           &builtinBazelRunner{},
-		paths:                 &paths,
-		requests:              make(map[cqueryKey]bool),
-		modulesDefaultToBazel: c.BuildMode == BazelDevMode,
-		bazelEnabledModules:   enabledModules,
-		bazelDisabledModules:  disabledModules,
-		targetProduct:         targetProduct,
-		targetBuildVariant:    targetBuildVariant,
+		bazelRunner:             &builtinBazelRunner{},
+		paths:                   &paths,
+		requests:                make(map[cqueryKey]bool),
+		modulesDefaultToBazel:   c.BuildMode == BazelDevMode,
+		bazelEnabledModules:     enabledModules,
+		bazelDisabledModules:    disabledModules,
+		bazelDclaEnabledModules: dclaEnabledModules,
+		targetProduct:           targetProduct,
+		targetBuildVariant:      targetBuildVariant,
 	}, nil
 }
 
@@ -485,13 +491,17 @@ func (p *bazelPaths) BazelMetricsDir() string {
 	return p.metricsDir
 }
 
-func (context *mixedBuildBazelContext) IsModuleNameAllowed(moduleName string) bool {
+func (context *mixedBuildBazelContext) IsModuleNameAllowed(moduleName string, inApex bool) bool {
 	if context.bazelDisabledModules[moduleName] {
 		return false
 	}
 	if context.bazelEnabledModules[moduleName] {
 		return true
 	}
+	if inApex && context.bazelDclaEnabledModules[moduleName] {
+		return true
+	}
+
 	return context.modulesDefaultToBazel
 }
 
@@ -625,8 +635,12 @@ def _config_node_transition_impl(settings, attr):
         target = "{PRODUCT}-{VARIANT}"
     else:
         target = "{PRODUCT}-{VARIANT}_%s_%s" % (attr.os, attr.arch)
+    in_apex = False
+    if attr.in_apex == "in_apex":
+        in_apex = True
     return {
         "//command_line_option:platforms": "@soong_injection//product_config_platforms/products/{PRODUCT}-{VARIANT}:%s" % target,
+        "@//build/bazel/rules/apex:in_apex": in_apex,
     }
 
 _config_node_transition = transition(
@@ -634,6 +648,7 @@ _config_node_transition = transition(
     inputs = [],
     outputs = [
         "//command_line_option:platforms",
+        "@//build/bazel/rules/apex:in_apex",
     ],
 )
 
@@ -643,9 +658,10 @@ def _passthrough_rule_impl(ctx):
 config_node = rule(
     implementation = _passthrough_rule_impl,
     attrs = {
-        "arch" : attr.string(mandatory = True),
-        "os"   : attr.string(mandatory = True),
-        "deps" : attr.label_list(cfg = _config_node_transition, allow_files = True),
+        "arch"    : attr.string(mandatory = True),
+        "os"      : attr.string(mandatory = True),
+        "in_apex" : attr.string(mandatory = True),
+        "deps"    : attr.label_list(cfg = _config_node_transition, allow_files = True),
         "_allowlist_function_transition": attr.label(default = "@bazel_tools//tools/allowlists/function_transition_allowlist"),
     },
 )
@@ -704,6 +720,7 @@ phony_root(name = "phonyroot",
 config_node(name = "%s",
     arch = "%s",
     os = "%s",
+    in_apex = "%s",
     deps = [%s],
     testonly = True, # Unblocks testonly deps.
 )
@@ -721,15 +738,16 @@ config_node(name = "%s",
 	allLabels := []string{}
 	for configString, labels := range labelsByConfig {
 		configTokens := strings.Split(configString, "|")
-		if len(configTokens) != 2 {
+		if len(configTokens) != 3 {
 			panic(fmt.Errorf("Unexpected config string format: %s", configString))
 		}
 		archString := configTokens[0]
 		osString := configTokens[1]
-		targetString := fmt.Sprintf("%s_%s", osString, archString)
+		inApexString := configTokens[2]
+		targetString := fmt.Sprintf("%s_%s_%s", osString, archString, inApexString)
 		allLabels = append(allLabels, fmt.Sprintf("\":%s\"", targetString))
 		labelsString := strings.Join(labels, ",\n            ")
-		configNodesSection += fmt.Sprintf(configNodeFormatString, targetString, archString, osString, labelsString)
+		configNodesSection += fmt.Sprintf(configNodeFormatString, targetString, archString, osString, inApexString, labelsString)
 	}
 
 	return []byte(fmt.Sprintf(formatString, configNodesSection, strings.Join(allLabels, ",\n            ")))
@@ -825,10 +843,15 @@ def get_arch(target):
   # Soong treats filegroups, but it may not be the case with manually-written
   # filegroup BUILD targets.
   buildoptions = build_options(target)
+
   if buildoptions == None:
     # File targets do not have buildoptions. File targets aren't associated with
     #  any specific platform architecture in mixed builds, so use the host.
     return "x86_64|linux"
+  in_apex = buildoptions.get("//build/bazel/rules/apex:in_apex")
+  in_apex_string = "non_apex"
+  if in_apex:
+    in_apex_string = "in_apex"
   platforms = buildoptions["//command_line_option:platforms"]
   if len(platforms) != 1:
     # An individual configured target should have only one platform architecture.
@@ -841,14 +864,17 @@ def get_arch(target):
   if not platform_name.startswith("{TARGET_PRODUCT}-{TARGET_BUILD_VARIANT}"):
     fail("expected platform name of the form '{TARGET_PRODUCT}-{TARGET_BUILD_VARIANT}_android_<arch>' or '{TARGET_PRODUCT}-{TARGET_BUILD_VARIANT}_linux_<arch>', but was " + str(platforms))
   platform_name = platform_name.removeprefix("{TARGET_PRODUCT}-{TARGET_BUILD_VARIANT}").removeprefix("_")
+  arch_os = ""
   if not platform_name:
-    return "target|android"
+    arch_os = "target|android"
   elif platform_name.startswith("android_"):
-    return platform_name.removeprefix("android_") + "|android"
+    arch_os = platform_name.removeprefix("android_") + "|android"
   elif platform_name.startswith("linux_"):
-    return platform_name.removeprefix("linux_") + "|linux"
+    arch_os = platform_name.removeprefix("linux_") + "|linux"
   else:
     fail("expected platform name of the form '{TARGET_PRODUCT}-{TARGET_BUILD_VARIANT}_android_<arch>' or '{TARGET_PRODUCT}-{TARGET_BUILD_VARIANT}_linux_<arch>', but was " + str(platforms))
+
+  return arch_os + "|" + in_apex_string
 
 def format(target):
   id_string = str(target.label) + "|" + get_arch(target)
@@ -1229,14 +1255,21 @@ func getConfigString(key cqueryKey) string {
 		// Use host OS, which is currently hardcoded to be linux.
 		osName = "linux"
 	}
-	return arch + "|" + osName
+	inApexString := "non_apex"
+	if key.configKey.inApex {
+		inApexString = "in_apex"
+	}
+	return arch + "|" + osName + "|" + inApexString
 }
 
 func GetConfigKey(ctx BaseModuleContext) configKey {
+	apexInfo := ctx.Provider(ApexInfoProvider).(ApexInfo)
+	inApex := !apexInfo.IsForPlatform()
 	return configKey{
 		// use string because Arch is not a valid key in go
 		arch:   ctx.Arch().String(),
 		osType: ctx.Os(),
+		inApex: inApex,
 	}
 }
 
