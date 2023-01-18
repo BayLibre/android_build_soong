@@ -28,18 +28,59 @@ import (
 	"android/soong/bazel/cquery"
 )
 
+func init() {
+	RegisterTestRuntimeMutators()
+}
+
 func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
+func RegisterTestRuntimeMutators() {
+	registerTestMutators(android.InitRegistrationContext)
+}
+
 var prepareForCcTest = android.GroupFixturePreparers(
 	PrepareForTestWithCcIncludeVndk,
+	android.FixtureRegisterWithContext(registerTestMutators),
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 		variables.DeviceVndkVersion = StringPtr("current")
 		variables.ProductVndkVersion = StringPtr("current")
 		variables.Platform_vndk_version = StringPtr("29")
 	}),
 )
+
+var ccLibInApex = "cc_lib_in_apex"
+var apexVariationName = "apex28"
+var apexVersion = "28"
+
+func registerTestMutators(ctx android.RegistrationContext) {
+	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("apex", testApexMutator).Parallel()
+		ctx.BottomUp("mixed_builds_prep", mixedBuildsPrepareMutator).Parallel()
+	})
+}
+
+func mixedBuildsPrepareMutator(ctx android.BottomUpMutatorContext) {
+	if m := ctx.Module(); m.Enabled() {
+		if mixedBuildMod, ok := m.(android.MixedBuildBuildable); ok {
+			if mixedBuildMod.IsMixedBuildSupported(ctx) && android.MixedBuildsEnabled(ctx) {
+				mixedBuildMod.QueueBazelCall(ctx)
+			}
+		}
+	}
+}
+
+func testApexMutator(mctx android.BottomUpMutatorContext) {
+	if mctx.ModuleName() == ccLibInApex {
+		modules := mctx.CreateVariations(apexVariationName)
+		apexInfo := android.ApexInfo{
+			ApexVariationName: apexVariationName,
+			MinSdkVersion: android.ApiLevelForTest(apexVersion),
+		}
+		mctx.SetVariationProvider(modules[0], android.ApexInfoProvider, apexInfo)
+	}
+}
 
 // testCcWithConfig runs tests using the prepareForCcTest
 //
@@ -4905,4 +4946,46 @@ func TestCcBuildBrokenClangCFlags(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestDclaLibraryInApex(t *testing.T) {
+	t.Parallel()
+	bp := `
+	cc_library_shared {
+		name: "cc_lib_in_apex",
+		srcs: ["foo.cc"],
+    apex_available: ["myapex"],
+		bazel_module: { label: "//foo/bar:bar" },
+	}`
+	config := TestConfig(t.TempDir(), android.Android, nil, bp, nil)
+	label := "//foo/bar:bar"
+	cfgKey64 := "arm64_armv8-a::android::within_apex_28"
+	cfgKey32 := "arm_armv7-a-neon::android::within_apex_28"
+	config.BazelContext = android.MockBazelContext{
+		OutputBaseDir: "outputbase",
+		LabelToCcInfo: map[string]cquery.CcInfo{
+			label + "_" + cfgKey64: cquery.CcInfo{
+				RootDynamicLibraries: []string{"foo.so"},
+			},
+			label + "_" + cfgKey32: cquery.CcInfo{
+				RootDynamicLibraries: []string{"foo.so"},
+			},
+		},
+		BazelRequests: make(map[string]bool),
+	}
+	ctx := testCcWithConfig(t, config)
+
+	key := strings.Join([]string{label, "getCcInfo", cfgKey64}, "_")
+	if !config.BazelContext.(android.MockBazelContext).BazelRequests[key] {
+		t.Errorf("Bazel request was not queued: %s", key)
+	}
+
+	sharedFoo := ctx.ModuleForTests(ccLibInApex, "android_arm_armv7-a-neon_shared_" + apexVariationName).Module()
+	producer := sharedFoo.(android.OutputFileProducer)
+	outputFiles, err := producer.OutputFiles("")
+	if err != nil {
+		t.Errorf("Unexpected error getting cc_object outputfiles %s", err)
+	}
+	expectedOutputFiles := []string{"outputbase/execroot/__main__/foo.so"}
+	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
 }
