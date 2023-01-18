@@ -70,6 +70,24 @@
       "parentUuid": "9facfadf_7098476a",
       "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6047cbf5_f9fe73c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-01-18T19:02:15Z",
+      "side": 1,
+      "message": "The alternative there would be to store the hashes in a custom zip extra header, which IIRC, would be transparently copied in merge_zips (or if it isn\u0027t, that could be handled)",
+      "parentUuid": "250442fc_b04596c7",
+      "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
