@@ -173,6 +173,7 @@ type fileGroup struct {
 	ModuleBase
 	BazelModuleBase
 	FileGroupAsLibrary
+	BaseMixedBuildBuildableModule
 	properties fileGroupProperties
 	srcs       Paths
 }

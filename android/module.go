@@ -2333,8 +2333,14 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		}
 
 		if mixedBuildMod, handled := m.isHandledByBazel(ctx); handled {
+			if m.Name() == "libcutils" {
+				fmt.Println("GGGGGGG1111")
+			}
 			mixedBuildMod.ProcessBazelQueryResponse(ctx)
 		} else {
+			if m.Name() == "libcutils" {
+				fmt.Println("GGGGGGG2222: ")
+			}
 			m.module.GenerateAndroidBuildActions(ctx)
 		}
 		if ctx.Failed() {
@@ -2394,7 +2400,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 
 func (m *ModuleBase) isHandledByBazel(ctx ModuleContext) (MixedBuildBuildable, bool) {
 	if mixedBuildMod, ok := m.module.(MixedBuildBuildable); ok {
-		if mixedBuildMod.IsMixedBuildSupported(ctx) && MixedBuildsEnabled(ctx) {
+		if mixedBuildMod.IsMixedBuildSupported(ctx) && MixedBuildsEnabled(ctx, mixedBuildMod.IsCcInApex(ctx)) {
 			return mixedBuildMod, true
 		}
 	}

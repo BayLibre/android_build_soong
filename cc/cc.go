@@ -820,6 +820,8 @@ type Module struct {
 
 	android.BazelModuleBase
 
+	android.BaseMixedBuildBuildableModule
+
 	VendorProperties VendorProperties
 	Properties       BaseProperties
 
@@ -1862,6 +1864,11 @@ var (
 	}
 )
 
+func (c *Module) IsCcInApex(ctx android.BaseModuleContext) bool {
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	return !apexInfo.IsForPlatform()
+}
+
 // IsMixedBuildSupported returns true if the module should be analyzed by Bazel
 // in any of the --bazel-mode(s). This filters at the module level and takes
 // precedence over the allowlists in allowlists/allowlists.go.
@@ -1875,7 +1882,7 @@ func (c *Module) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
 	ubsanEnabled := c.sanitize != nil &&
 		((c.sanitize.Properties.Sanitize.Integer_overflow != nil && *c.sanitize.Properties.Sanitize.Integer_overflow) ||
 			c.sanitize.Properties.Sanitize.Misc_undefined != nil)
-	return c.bazelHandler != nil && !ubsanEnabled
+	return c.bazelHandler != nil && (!ubsanEnabled || true)
 }
 
 func (c *Module) ProcessBazelQueryResponse(ctx android.ModuleContext) {

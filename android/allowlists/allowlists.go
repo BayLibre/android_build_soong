@@ -410,7 +410,7 @@ var (
 		"code_coverage.policy.other",
 		"codec2_soft_exports",
 		"codecs_g711dec",
-		"com.android.media.swcodec",
+		//"com.android.media.swcodec",
 		"com.android.media.swcodec-androidManifest",
 		"com.android.media.swcodec-ld.config.txt",
 		"com.android.media.swcodec-mediaswcodec.32rc",
@@ -630,7 +630,7 @@ var (
 		"libEGL_getProcAddress",
 		"libEGL_blobCache",
 
-		"mediaswcodec",
+		//"mediaswcodec",
 		"libmedia_headers",
 		"libmedia_codecserviceregistrant",
 		"libsfplugin_ccodec_utils",
@@ -1381,5 +1381,16 @@ var (
 	StagingMixedBuildsEnabledList = []string{
 		"com.android.adbd",
 		"adbd_test",
+	}
+
+	DclaMixedBuildsEnabledList = []string{
+		"libbase",
+		"libc++",
+		"libcrypto",
+		"libcutils",
+		"libssl",
+		"libstagefright_flacdec",
+		"libutils",
+		"libc",
 	}
 )

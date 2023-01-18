@@ -58,8 +58,15 @@ func RegisterMixedBuildsMutator(ctx RegistrationContext) {
 func mixedBuildsPrepareMutator(ctx BottomUpMutatorContext) {
 	if m := ctx.Module(); m.Enabled() {
 		if mixedBuildMod, ok := m.(MixedBuildBuildable); ok {
-			if mixedBuildMod.IsMixedBuildSupported(ctx) && MixedBuildsEnabled(ctx) {
+			if mixedBuildMod.IsMixedBuildSupported(ctx) && MixedBuildsEnabled(ctx, mixedBuildMod.IsCcInApex(ctx)) {
+				if ctx.ModuleName() == "libcutils" {
+					fmt.Println("HHHHHHH1111")
+				}
 				mixedBuildMod.QueueBazelCall(ctx)
+			} else {
+				if ctx.ModuleName() == "libcutils" {
+					fmt.Println("HHHHHHH2222: ", mixedBuildMod.IsMixedBuildSupported(ctx), MixedBuildsEnabled(ctx, mixedBuildMod.IsCcInApex(ctx)))
+				}
 			}
 		}
 	}
@@ -152,7 +159,7 @@ type BazelContext interface {
 	// Note that this only implies "bazel mixed build" allowlisting. The caller
 	// should independently verify the module is eligible for Bazel handling
 	// (for example, that it is MixedBuildBuildable).
-	IsModuleNameAllowed(moduleName string) bool
+	IsModuleNameAllowed(moduleName string, cCInApex bool) bool
 
 	// Returns the bazel output base (the root directory for all bazel intermediate outputs).
 	OutputBase() string
@@ -203,6 +210,8 @@ type mixedBuildBazelContext struct {
 	bazelDisabledModules map[string]bool
 	// Per-module allowlist to opt modules in to bazel handling.
 	bazelEnabledModules map[string]bool
+	// DCLA modules are enabled when used in apex.
+	bazelDclaEnabledModules map[string]bool
 	// If true, modules are bazel-enabled by default, unless present in bazelDisabledModules.
 	modulesDefaultToBazel bool
 
@@ -261,7 +270,7 @@ func (m MockBazelContext) InvokeBazel(_ Config, _ *Context) error {
 	panic("unimplemented")
 }
 
-func (m MockBazelContext) IsModuleNameAllowed(_ string) bool {
+func (m MockBazelContext) IsModuleNameAllowed(_ string, _ bool) bool {
 	return true
 }
 
@@ -361,7 +370,7 @@ func (m noopBazelContext) OutputBase() string {
 	return ""
 }
 
-func (n noopBazelContext) IsModuleNameAllowed(_ string) bool {
+func (n noopBazelContext) IsModuleNameAllowed(_ string, _ bool) bool {
 	return false
 }
 
@@ -373,14 +382,15 @@ func (m noopBazelContext) AqueryDepsets() []bazel.AqueryDepset {
 	return []bazel.AqueryDepset{}
 }
 
+func addToStringSet(set map[string]bool, items []string) {
+	for _, item := range items {
+		set[item] = true
+	}
+}
+
 func GetBazelEnabledAndDisabledModules(buildMode SoongBuildMode, forceEnabled map[string]struct{}) (map[string]bool, map[string]bool) {
 	disabledModules := map[string]bool{}
 	enabledModules := map[string]bool{}
-	addToStringSet := func(set map[string]bool, items []string) {
-		for _, item := range items {
-			set[item] = true
-		}
-	}
 
 	switch buildMode {
 	case BazelProdMode:
@@ -468,16 +478,18 @@ func NewBazelContext(c *config) (BazelContext, error) {
 	if c.HasDeviceProduct() {
 		targetProduct = c.DeviceProduct()
 	}
-
+	dclaEnabledModules := map[string]bool{}
+	addToStringSet(dclaEnabledModules, allowlists.DclaMixedBuildsEnabledList)
 	return &mixedBuildBazelContext{
-		bazelRunner:           &builtinBazelRunner{},
-		paths:                 &paths,
-		requests:              make(map[cqueryKey]bool),
-		modulesDefaultToBazel: c.BuildMode == BazelDevMode,
-		bazelEnabledModules:   enabledModules,
-		bazelDisabledModules:  disabledModules,
-		targetProduct:         targetProduct,
-		targetBuildVariant:    targetBuildVariant,
+		bazelRunner:             &builtinBazelRunner{},
+		paths:                   &paths,
+		requests:                make(map[cqueryKey]bool),
+		modulesDefaultToBazel:   c.BuildMode == BazelDevMode,
+		bazelEnabledModules:     enabledModules,
+		bazelDisabledModules:    disabledModules,
+		bazelDclaEnabledModules: dclaEnabledModules,
+		targetProduct:           targetProduct,
+		targetBuildVariant:      targetBuildVariant,
 	}, nil
 }
 
@@ -485,13 +497,17 @@ func (p *bazelPaths) BazelMetricsDir() string {
 	return p.metricsDir
 }
 
-func (context *mixedBuildBazelContext) IsModuleNameAllowed(moduleName string) bool {
+func (context *mixedBuildBazelContext) IsModuleNameAllowed(moduleName string, cCInApex bool) bool {
 	if context.bazelDisabledModules[moduleName] {
 		return false
 	}
 	if context.bazelEnabledModules[moduleName] {
 		return true
 	}
+	if cCInApex && context.bazelDclaEnabledModules[moduleName] {
+		return true
+	}
+
 	return context.modulesDefaultToBazel
 }
 

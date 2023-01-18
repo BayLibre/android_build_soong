@@ -1797,6 +1797,7 @@ type Import struct {
 	android.DefaultableModuleBase
 	android.ApexModuleBase
 	android.BazelModuleBase
+	android.BaseMixedBuildBuildableModule
 	prebuilt android.Prebuilt
 
 	// Functionality common to Module and Import.

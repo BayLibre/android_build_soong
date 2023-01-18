@@ -158,6 +158,15 @@ type MixedBuildBuildable interface {
 	// Soong modules depending on this module should be oblivious to the fact that
 	// this module was handled by Bazel.
 	ProcessBazelQueryResponse(ctx ModuleContext)
+
+	IsCcInApex(ctx BaseModuleContext) bool
+}
+
+type BaseMixedBuildBuildableModule struct {
+}
+
+func (m *BaseMixedBuildBuildableModule) IsCcInApex(_ BaseModuleContext) bool {
+	return false
 }
 
 // BazelModule is a lightweight wrapper interface around Module for Bazel-convertible modules.
@@ -350,13 +359,13 @@ func GetBp2BuildAllowList() Bp2BuildConversionAllowlist {
 // converted or handcrafted Bazel target. As a side effect, calling this
 // method will also log whether this module is mixed build enabled for
 // metrics reporting.
-func MixedBuildsEnabled(ctx BaseModuleContext) bool {
+func MixedBuildsEnabled(ctx BaseModuleContext, ccInApex bool) bool {
 	module := ctx.Module()
 	mixedBuildEnabled := ctx.Config().IsMixedBuildsEnabled() &&
 		ctx.Os() != Windows && // Windows toolchains are not currently supported.
 		module.Enabled() &&
 		convertedToBazel(ctx, module) &&
-		ctx.Config().BazelContext.IsModuleNameAllowed(module.Name())
+		ctx.Config().BazelContext.IsModuleNameAllowed(module.Name(), ccInApex)
 	ctx.Config().LogMixedBuild(ctx, mixedBuildEnabled)
 	return mixedBuildEnabled
 }
