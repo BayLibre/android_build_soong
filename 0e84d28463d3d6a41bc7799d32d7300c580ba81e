@@ -16,6 +16,24 @@
       "message": "When do you plan to set this flag?  How much does it affect the performance of soong_zip when it is set for large zip files?\n\nI also wonder if this is the right place to do this.  Zip files are often modified after soong_zip, for example by merge_zips or zip2zip.  Should this be a standalone tool you can run on whatever the final form of the zip file is regardless of which tool created it?",
       "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbbdd113_5950546f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-18T02:43:50Z",
+      "side": 1,
+      "message": "Will only enable it to the final steps of generating some large zip files, e.g. host-unit-tests.zip, general-tests.zip, android-cts.zip etc. In my local workstation, generating manifest file costs extra 7~8 seconds when compressing `host-unit-tests`, which is a 20+GB directory. (13 seconds without the flag, and 20s with the flag)\n\nWe\u0027ll plan to support the feature in `merge_zips`. I haven\u0027t found zip2zip is used in our target cases so far.",
+      "parentUuid": "636ad7fa_f0a56f2e",
+      "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
