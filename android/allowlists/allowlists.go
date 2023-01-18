@@ -1416,4 +1416,20 @@ var (
 		"adb_pairing_connection_test",
 		"adb_tls_connection_test",
 	}
+
+	// These should be the libs that are included by the apexes in the ProdMixedBuildsEnabledList
+	ProdDclaMixedBuildsEnabledList = []string{}
+
+	// These should be the libs that are included by the apexes in the StagingMixedBuildsEnabledList
+	StagingDclaMixedBuildsEnabledList = []string{
+		"libbase",
+		"libc++",
+		"libcrypto",
+		"libcutils",
+	}
+
+	// The rest of the DCLA libs
+	// "libssl",
+	// "libstagefright_flacdec",
+	// "libutils",
 )
