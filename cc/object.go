@@ -52,12 +52,12 @@ type objectBazelHandler struct {
 
 var _ BazelHandler = (*objectBazelHandler)(nil)
 
-func (handler *objectBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
+func (handler *objectBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string, _ []string) {
 	bazelCtx := ctx.Config().BazelContext
 	bazelCtx.QueueBazelRequest(label, cquery.GetOutputFiles, android.GetConfigKey(ctx))
 }
 
-func (handler *objectBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+func (handler *objectBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string, _ []string) {
 	bazelCtx := ctx.Config().BazelContext
 	objPaths, err := bazelCtx.GetOutputFiles(label, android.GetConfigKey(ctx))
 	if err != nil {
