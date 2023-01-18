@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecc35bd5_b76b19a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-18T17:19:41Z",
+      "side": 1,
+      "message": "```\nSupport generating a SHA manifest file in soong_zip\n\nAdd a -sha_manifest argument to soong_zip that generates a manifest file which contains necessary information for each file entry such as the SHA256 hash, checksum, and size. The information can then be used by downstream systems that use content addressing.\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "30095fd521b8eb87d798b085728be497e83393f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eebe87e_a4b0cda5",
+        "filename": "zip/zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-18T17:19:41Z",
+      "side": 1,
+      "message": "`write`?",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 7
+      },
+      "revId": "30095fd521b8eb87d798b085728be497e83393f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c499dfd1_0536f269",
+        "filename": "zip/zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-18T17:19:41Z",
+      "side": 1,
+      "message": "Do you need to close this?",
+      "range": {
+        "startLine": 941,
+        "startChar": 1,
+        "endLine": 941,
+        "endChar": 2
+      },
+      "revId": "30095fd521b8eb87d798b085728be497e83393f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
