@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8694fd_28f68418",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-18T22:08:45Z",
+      "side": 1,
+      "message": "So, we have a module whose name happens to be `prebuilt_`?",
+      "revId": "2b1d1892bebdf686d3e95b28aed5a598823394ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
