@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca68847_0773cdbc",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-18T19:49:45Z",
+      "side": 1,
+      "message": "we don\u0027t - but we need to know where to read from.",
+      "parentUuid": "c304655c_1c659928",
+      "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00e9e229_3e6290a0",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f37610f4_b3a47277",
+        "filename": "ui/build/upload_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-18T19:49:45Z",
+      "side": 1,
+      "message": "I\u0027m not sure what to answer with here.",
+      "parentUuid": "00e9e229_3e6290a0",
+      "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67b43330_23469f2f",
         "filename": "ui/build/upload_test.go",
         "patchSetId": 15
@@ -65,6 +101,24 @@
       "writtenOn": "2023-01-18T19:39:04Z",
       "side": 1,
       "message": "tt.files already includes the bazel_metrics.pb file",
+      "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7612703_92b79993",
+        "filename": "ui/build/upload_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-18T19:49:45Z",
+      "side": 1,
+      "message": "We need to know where to write the proto. \"Last index of metricsFiles\" is finicky and unreliable. \n\nChris previously shotdown file-order as a reliable API in an old CL.",
+      "parentUuid": "67b43330_23469f2f",
       "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
