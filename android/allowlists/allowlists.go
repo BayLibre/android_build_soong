@@ -1382,4 +1382,14 @@ var (
 		"com.android.adbd",
 		"adbd_test",
 	}
+
+	DclaMixedBuildsEnabledList = []string{
+		//"libbase",
+		//"libc++",
+		//"libcrypto",
+		//"libcutils",
+		//"libssl",
+		//"libstagefright_flacdec",
+		//"libutils",
+	}
 )
