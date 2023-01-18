@@ -55,6 +55,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93c4aeb9_fb7cfe0e",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-18T22:07:11Z",
+      "side": 1,
+      "message": "nit: tests for these would be useful \"documentation\"",
+      "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e944e137_39e0b84f",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-18T22:07:11Z",
+      "side": 1,
+      "message": "nit: I was wondering if this could be a public method called prior to UploadMetrics() from soong_ui/main.go",
+      "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00e9e229_3e6290a0",
         "filename": "ui/build/upload_test.go",
         "patchSetId": 15
@@ -84,6 +118,24 @@
       "side": 1,
       "message": "I\u0027m not sure what to answer with here.",
       "parentUuid": "00e9e229_3e6290a0",
+      "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07e6ac84_f3630614",
+        "filename": "ui/build/upload_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-18T22:07:11Z",
+      "side": 1,
+      "message": "Would the test fail if this text were changed?",
+      "parentUuid": "f37610f4_b3a47277",
       "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
