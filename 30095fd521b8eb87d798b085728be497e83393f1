@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f83ab99_69b1718b",
+        "filename": "zip/zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-18T17:20:11Z",
+      "side": 1,
+      "message": "nit: Would have liked to eliminate this conditional but it may be overkill.",
+      "range": {
+        "startLine": 937,
+        "startChar": 1,
+        "endLine": 937,
+        "endChar": 22
+      },
+      "revId": "30095fd521b8eb87d798b085728be497e83393f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c499dfd1_0536f269",
         "filename": "zip/zip.go",
         "patchSetId": 3
