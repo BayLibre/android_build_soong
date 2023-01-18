@@ -52,6 +52,24 @@
       "parentUuid": "fbbdd113_5950546f",
       "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250442fc_b04596c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-01-18T19:00:31Z",
+      "side": 1,
+      "message": "In theory, merge_zips wouldn\u0027t need to do any hashing itself, it could just support merging the hash manifest file from the two zip files (if it\u0027s present).",
+      "parentUuid": "9facfadf_7098476a",
+      "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
