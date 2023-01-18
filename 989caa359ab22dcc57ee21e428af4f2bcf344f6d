@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33708f13_5d9c40b3",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-18T19:39:43Z",
+      "side": 1,
+      "message": "These are already in noOverrideGlobalCflags, you can either remove this or add a new llvmNextExtraCommon64GlobalCflags if you think that will be useful.",
+      "range": {
+        "startLine": 404,
+        "startChar": 44,
+        "endLine": 404,
+        "endChar": 75
+      },
+      "revId": "989caa359ab22dcc57ee21e428af4f2bcf344f6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3b217e9_dc957ae1",
+        "filename": "cc/makevars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-18T19:39:43Z",
+      "side": 1,
+      "message": "Suggest `GLOBAL_CLANG_CFLAGS_64_NO_OVERRIDE`.  You would also need to add this to the rules in build/make/core that use `GLOBAL_CLANG_CFLAGS_NO_OVERRIDE`.",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 96,
+        "endChar": 46
+      },
+      "revId": "989caa359ab22dcc57ee21e428af4f2bcf344f6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
