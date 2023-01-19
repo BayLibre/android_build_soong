@@ -88,6 +88,24 @@
       "parentUuid": "250442fc_b04596c7",
       "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415b4b06_cbd22a0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-19T15:59:02Z",
+      "side": 1,
+      "message": "Thanks the suggestion of store the hash in zip header, it looks better than creating a separate manifest file. After investigation, I prefer to store it in the `comment` field rather than `extra` filed. The comment field is in String type and it is easy to extra the SHA256 value with regex, while `extra` is a byte array and is hard to separate the SHA256 value with existing data stored in the field. What do you think?\n\nAnd I tried merge_zips, it seems the `comment` information is lost after running merge_zips, though I feel that shouldn\u0027t be hard to keep it. It would be great if you have more information about merge_zips.",
+      "parentUuid": "6047cbf5_f9fe73c3",
+      "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
