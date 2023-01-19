@@ -139,6 +139,30 @@
       },
       "revId": "30095fd521b8eb87d798b085728be497e83393f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "245c5ba4_e988fb54",
+        "filename": "zip/zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-19T17:42:07Z",
+      "side": 1,
+      "message": "I actually don\u0027t find `Close` method on MultiWriter. MultiWriter doesn\u0027t extend the `Closer` interface, and neither the CRC and SHA hasher doesn\u0027t need have `Close` method, so they don\u0027t need to close? Not sure if I understand correctly.",
+      "parentUuid": "c499dfd1_0536f269",
+      "range": {
+        "startLine": 941,
+        "startChar": 1,
+        "endLine": 941,
+        "endChar": 2
+      },
+      "revId": "30095fd521b8eb87d798b085728be497e83393f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
