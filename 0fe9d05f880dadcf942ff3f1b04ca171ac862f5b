@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4a9188d_f81ac1e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-19T08:49:35Z",
+      "side": 1,
+      "message": "(this might not be the only way) What I imagined was that the list of libs to trim is written in a file and Android.bp references the file via a property. Then soong passes the file path to apexer. This way, the format of the file is not exposed to soong.",
+      "parentUuid": "723b5eb8_339b0249",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ea4959e_9f1bccf8",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -181,6 +205,30 @@
       "parentUuid": "a77b001e_6e2d400d",
       "range": {
         "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b4ca73e_e973f947",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-19T08:49:35Z",
+      "side": 1,
+      "message": "You can pass the environment variable directly to the apex package in soong via soong_config.mk.",
+      "parentUuid": "5ecdb041_fb82ea9e",
+      "range": {
+        "startLine": 393,
         "startChar": 0,
         "endLine": 397,
         "endChar": 22
