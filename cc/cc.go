@@ -35,7 +35,12 @@ import (
 	"android/soong/snapshot"
 )
 
+var exportedVars = android.NewExportedVariables(pctx)
+
 func init() {
+	exportedVars.ExportStringListStaticVariable("HostOnlySanitizeFlags", hostOnlySanitizeFlags)
+	exportedVars.ExportStringList("DeviceOnlySanitizeFlags", deviceOnlySanitizeFlags)
+
 	RegisterCCBuildComponents(android.InitRegistrationContext)
 
 	pctx.Import("android/soong/cc/config")
@@ -3938,6 +3943,10 @@ func (c *Module) Partition() string {
 		return p.getPartition()
 	}
 	return ""
+}
+
+func BazelCcToolchainVars(config android.Config) string {
+	return android.BazelToolchainVars(config, exportedVars)
 }
 
 var Bool = proptools.Bool
