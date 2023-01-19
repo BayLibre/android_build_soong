@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44baddea_0c05eacf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-19T00:20:34Z",
+      "side": 1,
+      "message": "Jiyong, does this CL implement the semantics of the map.txt annotations correctly?",
+      "revId": "5c890d743cf01a65cb56372ed78b8a2c9f032fb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
