@@ -124,6 +124,24 @@
       "parentUuid": "415b4b06_cbd22a0e",
       "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e49166b_953d0914",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-19T17:38:21Z",
+      "side": 1,
+      "message": "Hi all I created a new change https://r.android.com/2395452 that storing the information to `comment` of file header. Please take a look. Thanks for the great idea, it is much simpler and more general for `zip` tools",
+      "parentUuid": "ee6a1378_ab50f482",
+      "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
