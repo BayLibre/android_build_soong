@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "837a9dbe_935d0e34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-19T21:28:12Z",
+      "side": 1,
+      "message": "Based on our previous conversations, I am not convinced we need this. It is not worth adding redundant files for ease-of-use when there are other alternatives. The better approach is to improve documentation and/or tooling enabling reading these metrics files in plaintext",
+      "revId": "4f11707f9b4b1b0ec217d632ff98c618255fe4f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3476784_714189f0",
