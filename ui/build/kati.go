@@ -69,7 +69,7 @@ func genKatiSuffix(ctx Context, config Config) {
 // Base function to construct and run the Kati command line with additional
 // arguments, and a custom function closure to mutate the environment Kati runs
 // in.
-func runKati(ctx Context, config Config, extraSuffix string, args []string, envFunc func(*Environment)) {
+func runKati(ctx Context, config Config, extraSuffix string, args []string, envFunc func(*Environment), debug bool) {
 	executable := config.PrebuiltBuildTool("ckati")
 	// cKati arguments.
 	args = append([]string{
@@ -145,10 +145,17 @@ func runKati(ctx Context, config Config, extraSuffix string, args []string, envF
 		args = append(args, "--default_pool=local_pool")
 	}
 
-	cmd := Command(ctx, config, "ckati", executable, args...)
+	var cmd *Cmd
+	if debug {
+		debugArgs := []string{":12345", executable}
+		debugArgs = append(debugArgs, args...)
+		cmd = Command(ctx, config, "ckati", "gdbserver", debugArgs...)
+	} else {
+		cmd = Command(ctx, config, "ckati", executable, args...)
+	}
 
 	// Set up the nsjail sandbox.
-	cmd.Sandbox = katiSandbox
+	//cmd.Sandbox = katiSandbox
 
 	// Set up stdout and stderr.
 	pipe, err := cmd.StdoutPipe()
@@ -222,7 +229,9 @@ func runKatiBuild(ctx Context, config Config) {
 		// the dist.mk file, containing dist-for-goals data.
 		"KATI_PACKAGE_MK_DIR="+config.KatiPackageMkDir())
 
-	runKati(ctx, config, katiBuildSuffix, args, func(env *Environment) {})
+	debugEnv, _ := config.Environment().Get("DEBUG_KATI_COLEFAUST")
+
+	runKati(ctx, config, katiBuildSuffix, args, func(env *Environment) {}, debugEnv == "1")
 
 	// compress and dist the main build ninja file.
 	distGzipFile(ctx, config, config.KatiBuildNinjaFile())
@@ -317,6 +326,7 @@ func runKatiPackage(ctx Context, config Config) {
 		"KATI_PACKAGE_MK_DIR=" + config.KatiPackageMkDir(),
 	}
 
+	debugEnv, _ := config.Environment().Get("DEBUG_KATI_PACKAGE_COLEFAUST")
 	// Run Kati against a restricted set of environment variables.
 	runKati(ctx, config, katiPackageSuffix, args, func(env *Environment) {
 		env.Allow([]string{
@@ -342,7 +352,7 @@ func runKatiPackage(ctx Context, config Config) {
 			env.Set("DIST", "true")
 			env.Set("DIST_DIR", config.DistDir())
 		}
-	})
+	}, debugEnv == "1")
 
 	// Compress and dist the packaging Ninja file.
 	distGzipFile(ctx, config, config.KatiPackageNinjaFile())
@@ -353,6 +363,7 @@ func runKatiCleanSpec(ctx Context, config Config) {
 	ctx.BeginTrace(metrics.RunKati, "kati cleanspec")
 	defer ctx.EndTrace()
 
+	debugEnv, _ := config.Environment().Get("DEBUG_KATI_CLEANSPEC_COLEFAUST")
 	runKati(ctx, config, katiCleanspecSuffix, []string{
 		// Fail when encountering implicit rules. e.g.
 		"--werror_implicit_rules",
@@ -362,5 +373,5 @@ func runKatiCleanSpec(ctx Context, config Config) {
 		"-f", "build/make/core/cleanbuild.mk",
 		"SOONG_MAKEVARS_MK=" + config.SoongMakeVarsMk(),
 		"TARGET_DEVICE_DIR=" + config.TargetDeviceDir(),
-	}, func(env *Environment) {})
+	}, func(env *Environment) {}, debugEnv == "1")
 }
