@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5bfe421_b60817d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-19T01:03:34Z",
+      "side": 1,
+      "message": "Is this specific to riscv? I guess not.",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "5c890d743cf01a65cb56372ed78b8a2c9f032fb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "44baddea_0c05eacf",
@@ -14,6 +37,24 @@
       "writtenOn": "2023-01-19T00:20:34Z",
       "side": 1,
       "message": "Jiyong, does this CL implement the semantics of the map.txt annotations correctly?",
+      "revId": "5c890d743cf01a65cb56372ed78b8a2c9f032fb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a933c789_23f8f807",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-19T01:03:34Z",
+      "side": 1,
+      "message": "No. The \u0027if\u0027 conditions were intentional. See the bug in the comment. (+danalbert for visibility \u0026 he wanted the behavior.)\n\n#apex symbols are implemented by a library that is included in an APEX (i.e. NotInPlatform() \u003d\u003d true). #systemapi symbols are those from outside of an APEX",
+      "parentUuid": "44baddea_0c05eacf",
       "revId": "5c890d743cf01a65cb56372ed78b8a2c9f032fb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
