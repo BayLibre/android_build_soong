@@ -142,6 +142,24 @@
       "parentUuid": "ee6a1378_ab50f482",
       "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a678991_66aebdc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-19T17:50:27Z",
+      "side": 1,
+      "message": "I personally like the idea of the zip header as it keeps everything together. I\u0027ll let @ccross@android.com and @dwillemsen@google.com make the final call.",
+      "parentUuid": "6e49166b_953d0914",
+      "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
