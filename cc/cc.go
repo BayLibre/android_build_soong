@@ -1884,6 +1884,9 @@ func (c *Module) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	bazelCtx := ctx.Config().BazelContext
 	if ccInfo, err := bazelCtx.GetCcInfo(bazelModuleLabel, android.GetConfigKey(ctx)); err == nil {
 		c.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
+		c.Properties.AndroidMkSharedLibs = ccInfo.LocalSharedLibs
+		c.Properties.AndroidMkStaticLibs = ccInfo.LocalStaticLibs
+		c.Properties.AndroidMkWholeStaticLibs = ccInfo.LocalWholeStaticLibs
 	}
 
 	c.bazelHandler.ProcessBazelQueryResponse(ctx, bazelModuleLabel)
