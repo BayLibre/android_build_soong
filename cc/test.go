@@ -641,6 +641,19 @@ func (handler *ccTestBazelHandler) QueueBazelCall(ctx android.BaseModuleContext,
 	bazelCtx.QueueBazelRequest(label, cquery.GetCcUnstrippedInfo, android.GetConfigKey(ctx))
 }
 
+func Map[T any, V any](f func(T) V, ts []T) []V {
+	vs := make([]V, len(ts))
+	for i, t := range ts {
+		vs[i] = f(t)
+	}
+	return vs
+}
+
+func stripBp2buildLabelSuffix(name string) string {
+	name = strings.TrimSuffix(name, "_bp2build_cc_library_static")
+	return name
+}
+
 func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
 	bazelCtx := ctx.Config().BazelContext
 	info, err := bazelCtx.GetCcUnstrippedInfo(label, android.GetConfigKey(ctx))
@@ -652,6 +665,10 @@ func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleC
 	outputFilePath := android.PathForBazelOut(ctx, info.OutputFile)
 	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
 	handler.module.linker.(*testBinary).unstrippedOutputFile = android.PathForBazelOut(ctx, info.UnstrippedOutput)
+
+	handler.module.Properties.AndroidMkSharedLibs = Map(stripBp2buildLabelSuffix, info.LocalSharedLibs)
+	handler.module.Properties.AndroidMkStaticLibs = Map(stripBp2buildLabelSuffix, info.LocalStaticLibs)
+	handler.module.Properties.AndroidMkWholeStaticLibs = Map(stripBp2buildLabelSuffix, info.LocalWholeStaticLibs)
 }
 
 // binaryAttributes contains Bazel attributes corresponding to a cc test
