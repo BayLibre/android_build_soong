@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e026706_3e800020",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-19T17:47:48Z",
+      "side": 1,
+      "message": "Neat!",
+      "revId": "b792c26f84add5a3e24e15e12ccfc381f0e3c65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913da64c_95996621",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-19T17:47:48Z",
+      "side": 1,
+      "message": "Would it be clearer to name this `sha256_header` or `sha256`?",
+      "range": {
+        "startLine": 166,
+        "startChar": 28,
+        "endLine": 166,
+        "endChar": 31
+      },
+      "revId": "b792c26f84add5a3e24e15e12ccfc381f0e3c65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
