@@ -1491,6 +1491,11 @@ func (b bp2buildInfo) TargetPackage() string {
 	return b.Dir
 }
 
+// TargetLabel returns the Bazel label of a bp2build converted target.
+func (b bp2buildInfo) TargetLabel() string {
+	return "//" + b.TargetPackage() + ":" + b.TargetName()
+}
+
 // BazelRuleClass returns the Bazel rule class of a bp2build converted target.
 func (b bp2buildInfo) BazelRuleClass() string {
 	return b.BazelProps.Rule_class

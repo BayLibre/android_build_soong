@@ -641,6 +641,14 @@ func (handler *ccTestBazelHandler) QueueBazelCall(ctx android.BaseModuleContext,
 	bazelCtx.QueueBazelRequest(label, cquery.GetCcUnstrippedInfo, android.GetConfigKey(ctx))
 }
 
+func Map[T any, V any](f func(T) V, ts []T) []V {
+	vs := make([]V, len(ts))
+	for i, t := range ts {
+		vs[i] = f(t)
+	}
+	return vs
+}
+
 func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
 	bazelCtx := ctx.Config().BazelContext
 	info, err := bazelCtx.GetCcUnstrippedInfo(label, android.GetConfigKey(ctx))
@@ -652,6 +660,16 @@ func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleC
 	outputFilePath := android.PathForBazelOut(ctx, info.OutputFile)
 	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
 	handler.module.linker.(*testBinary).unstrippedOutputFile = android.PathForBazelOut(ctx, info.UnstrippedOutput)
+
+	for _, lib := range info.LocalSharedLibs {
+		handler.module.Properties.AndroidMkSharedLibs = append(handler.module.Properties.AndroidMkSharedLibs, android.BazelSoongLabelMap.GetSoongNameFromBazelLabel(lib))
+	}
+	for _, lib := range info.LocalStaticLibs {
+		handler.module.Properties.AndroidMkStaticLibs = append(handler.module.Properties.AndroidMkStaticLibs, android.BazelSoongLabelMap.GetSoongNameFromBazelLabel(lib))
+	}
+	for _, lib := range info.LocalWholeStaticLibs {
+		handler.module.Properties.AndroidMkWholeStaticLibs = append(handler.module.Properties.AndroidMkWholeStaticLibs, android.BazelSoongLabelMap.GetSoongNameFromBazelLabel(lib))
+	}
 }
 
 // binaryAttributes contains Bazel attributes corresponding to a cc test
