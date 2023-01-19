@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a728d20_d1124d78",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-19T15:16:12Z",
+      "side": 1,
+      "message": "WRT making public - package-private methods with tests aren\u0027t abominable.",
+      "parentUuid": "4d1c8f22_16dec378",
+      "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e944e137_39e0b84f",
         "filename": "ui/build/upload.go",
         "patchSetId": 15
