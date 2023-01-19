@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8da9f1e_91de1f4c",
+        "filename": "zip/zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-19T00:10:55Z",
+      "side": 1,
+      "message": "TBH I made the comment based on Java/Python/C++ style but admittedly don\u0027t know if this is idiomatic Go and couldn\u0027t find any guidelines about it. A better abstraction/naming could make it clearer but not quite sure what that would be without spending too much time on it.\n\nYour call and TBH whatever gets this committed ASAP.",
+      "parentUuid": "6b182ea2_21dfd9fd",
+      "range": {
+        "startLine": 937,
+        "startChar": 1,
+        "endLine": 937,
+        "endChar": 22
+      },
+      "revId": "30095fd521b8eb87d798b085728be497e83393f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c499dfd1_0536f269",
         "filename": "zip/zip.go",
         "patchSetId": 3
