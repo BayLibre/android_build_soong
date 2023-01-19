@@ -2,6 +2,7 @@ package bp2build
 
 import (
 	"encoding/json"
+	"fmt"
 	"reflect"
 	"strings"
 
@@ -88,6 +89,9 @@ func CreateBazelFiles(
 		}
 		files = append(files, newFile(bazelRulesSubDir, "soong_module.bzl", generateSoongModuleBzl(ruleShims)))
 	}
+
+	fmt.Println(BazelSoongLabelMapFileName, string(android.BazelSoongLabelMap.Json()))
+	files = append(files, newFile("", BazelSoongLabelMapFileName, string(android.BazelSoongLabelMap.Json())))
 
 	files = append(files, createBuildFiles(buildToTargets, mode)...)
 

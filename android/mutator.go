@@ -16,6 +16,9 @@ package android
 
 import (
 	"android/soong/bazel"
+	"encoding/json"
+	"fmt"
+	"sync"
 
 	"github.com/google/blueprint"
 )
@@ -727,6 +730,49 @@ func ApexAvailableTags(mod Module) bazel.StringListAttribute {
 	return attr
 }
 
+var BazelSoongLabelMap bazelSoongLabelMap
+
+type bazelSoongLabelMap struct {
+	bazelLabelToSoongName   map[string]string
+	bazelSoongLabelMapMutex sync.Mutex
+}
+
+func (m *bazelSoongLabelMap) Json() []byte {
+	json, err := json.Marshal(m.bazelLabelToSoongName)
+	if err != nil {
+		panic(fmt.Sprintf("could not marshal bazelSoongLabelMap: %v", m.bazelLabelToSoongName))
+	}
+	return json
+}
+
+func (m *bazelSoongLabelMap) LoadJson(s []byte) {
+	err := json.Unmarshal(s, &m.bazelLabelToSoongName)
+	if err != nil {
+		panic(fmt.Sprintf("could not unmarshal bazelSoongLabelMap: %v", s))
+	}
+}
+
+func (m *bazelSoongLabelMap) mapBazelLabelToSoongName(bazelLabel, soongLabel string) {
+	m.bazelSoongLabelMapMutex.Lock()
+	defer m.bazelSoongLabelMapMutex.Unlock()
+	if m.bazelLabelToSoongName == nil {
+		m.bazelLabelToSoongName = map[string]string{}
+	}
+	//fmt.Println(soongLabel, bazelLabel)
+	m.bazelLabelToSoongName[bazelLabel] = soongLabel
+	//fmt.Println(len(m.bazelLabelToSoongName))
+}
+
+func (m *bazelSoongLabelMap) GetSoongNameFromBazelLabel(label string) string {
+	m.bazelSoongLabelMapMutex.Lock()
+	defer m.bazelSoongLabelMapMutex.Unlock()
+	if len(label) > 0 && label[0] == '@' {
+		label = label[1:]
+	}
+	fmt.Println(label, m.bazelLabelToSoongName[label], m.bazelLabelToSoongName)
+	return m.bazelLabelToSoongName[label]
+}
+
 func (t *topDownMutatorContext) createBazelTargetModule(
 	bazelProps bazel.BazelTargetModuleProperties,
 	commonAttrs CommonAttributes,
@@ -742,6 +788,7 @@ func (t *topDownMutatorContext) createBazelTargetModule(
 		Attrs:           attrs,
 	}
 	mod.base().addBp2buildInfo(info)
+	BazelSoongLabelMap.mapBazelLabelToSoongName(info.TargetLabel(), t.ModuleName())
 }
 
 // android.topDownMutatorContext either has to embed blueprint.TopDownMutatorContext, in which case every method that

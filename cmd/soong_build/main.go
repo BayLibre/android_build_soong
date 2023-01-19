@@ -115,6 +115,14 @@ func runMixedModeBuild(ctx *android.Context, extraNinjaDeps []string) string {
 	bazelHook := func() error {
 		return ctx.Config().BazelContext.InvokeBazel(ctx.Config(), ctx)
 	}
+
+	labelMapFilename := filepath.Join(android.AbsSrcDirForExistingUseCases(), ctx.Config().SoongOutDir(), "bp2build", bp2build.BazelSoongLabelMapFileName)
+	bazelSoongLabelMapBytes, err := os.ReadFile(labelMapFilename)
+	if err != nil {
+		panic("BazelSoongLabelMap file not found: " + err.Error())
+	}
+	android.BazelSoongLabelMap.LoadJson(bazelSoongLabelMapBytes)
+
 	ctx.SetBeforePrepareBuildActionsHook(bazelHook)
 	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs.Args, bootstrap.DoEverything, ctx.Context, ctx.Config())
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
