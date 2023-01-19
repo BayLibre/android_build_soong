@@ -106,6 +106,24 @@
       "parentUuid": "6047cbf5_f9fe73c3",
       "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6a1378_ab50f482",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-19T16:04:44Z",
+      "side": 1,
+      "message": "oh, `merge_zips` doesn\u0027t discard file comments. So, do you think adding SHA to `comment` is a good approach?",
+      "parentUuid": "415b4b06_cbd22a0e",
+      "revId": "0e84d28463d3d6a41bc7799d32d7300c580ba81e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
