@@ -526,3 +526,11 @@ func GetMainClassInManifest(c Config, filepath string) (string, error) {
 
 	return "", errors.New("Main-Class is not found.")
 }
+
+// StripBp2BuildLabelSuffix removes suffixes that were added to a target name
+// during bp2build to back out the original Soong module name
+// TODO(b/266197834) replace this with an explicit mapping from Bazel target label to Soong module name
+func StripBazelLabelSuffix(name string) string {
+	name = strings.TrimSuffix(name, "_bp2build_cc_library_static")
+	return name
+}

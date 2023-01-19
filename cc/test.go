@@ -652,6 +652,10 @@ func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleC
 	outputFilePath := android.PathForBazelOut(ctx, info.OutputFile)
 	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
 	handler.module.linker.(*testBinary).unstrippedOutputFile = android.PathForBazelOut(ctx, info.UnstrippedOutput)
+
+	handler.module.Properties.AndroidMkSharedLibs = android.Map(android.StripBazelLabelSuffix, info.LocalSharedLibs)
+	handler.module.Properties.AndroidMkStaticLibs = android.Map(android.StripBazelLabelSuffix, info.LocalStaticLibs)
+	handler.module.Properties.AndroidMkWholeStaticLibs = android.Map(android.StripBazelLabelSuffix, info.LocalWholeStaticLibs)
 }
 
 // binaryAttributes contains Bazel attributes corresponding to a cc test

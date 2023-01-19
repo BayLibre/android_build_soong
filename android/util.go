@@ -477,3 +477,13 @@ func CheckDuplicate(values []string) (duplicate string, found bool) {
 	}
 	return "", false
 }
+
+// Map takes a function, f, and an an array of values, ts, and
+// returns an array of f applied to each value in ts
+func Map[T any, V any](f func(T) V, ts []T) []V {
+	vs := make([]V, len(ts))
+	for i, t := range ts {
+		vs[i] = f(t)
+	}
+	return vs
+}
