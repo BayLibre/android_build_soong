@@ -16,6 +16,24 @@
       "message": "So, we have a module whose name happens to be `prebuilt_`?",
       "revId": "2b1d1892bebdf686d3e95b28aed5a598823394ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5406d2a4_ad7862e6",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-01-19T21:44:23Z",
+      "side": 1,
+      "message": "No, but we have a module whose name happens to be \"\". After digging a little bit more, I found in  https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/build_conversion.go;drc\u003db85d1a15cccbe8223fabd9d1b8beddbc68aabff2;l\u003d282\nIt will log the module as long as IsConvertedByBp2build() is true even if the module name is empty.",
+      "parentUuid": "0c8694fd_28f68418",
+      "revId": "2b1d1892bebdf686d3e95b28aed5a598823394ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
