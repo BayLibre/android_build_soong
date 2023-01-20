@@ -673,6 +673,8 @@ var (
 		// kotlin srcs in java binary
 		"AnalyzerKt",
 		"trebuchet-core",
+
+		"renderscript_toolkit",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
