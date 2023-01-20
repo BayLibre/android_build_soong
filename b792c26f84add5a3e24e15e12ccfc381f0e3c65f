@@ -56,6 +56,24 @@
       "message": "You should definitely use Extras for this and not Comment.  Comment is unstructured data that could be used for anything.  Extras has a specific format that prevents collisions between users, see section 4.5 of https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT.  https://cs.android.com/android/platform/superproject/+/master:build/soong/third_party/zip/android.go;l\u003d97;drc\u003d45e2f1405dcae0498c35b780717256dc619e4e05 has some example code that reads extras.",
       "revId": "b792c26f84add5a3e24e15e12ccfc381f0e3c65f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b32d49d_e7a566a8",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-20T17:22:13Z",
+      "side": 1,
+      "message": "Thanks for the information, it make sense to store the information in Extras. I have a question about the header ID. Do you know if there is a header ID suitable for our purpose (section 4.5.2 and 4.6.1 of  https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT), or is it better to use a custom header ID?",
+      "parentUuid": "27436ac9_3dcbd237",
+      "revId": "b792c26f84add5a3e24e15e12ccfc381f0e3c65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
