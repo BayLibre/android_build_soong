@@ -354,6 +354,30 @@
       },
       "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99cbb65c_db1a5d14",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-20T19:22:30Z",
+      "side": 1,
+      "message": "Now I looked into a bit further. I think the only way to dedup is to merger two apexer wrapper binaries: apexer_with_DCLA_preprocessing and apexer_with_trim_preprocessing into one. However, these two are doing different things, the DCLA warpper is more about placing the libs and modifying the canned_fs_config, the trimmed wrapper is more about replacing the libs with symlinks and takes one more input which is the libs to trim. \n\nCan we keep these two build rules/binaries separate so that it is clearer in the code what we are doing?",
+      "parentUuid": "80975371_56376c77",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
