@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56a1fa83_895d9bb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-20T17:41:26Z",
+      "side": 1,
+      "message": "Updated the implementation, now we give module authors two choices: (1) recommended choice is to directly specify a DCLA apex to trim against. In implementation, we added a dependency between a trimmed apex and the specified DCLA apex, use the \"native_shared_libs\" list from DCLA apex as libs_to_trim (2) explicitly specify which lib to trim. this allows more control if module authors want it.",
+      "parentUuid": "c4a9188d_f81ac1e2",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ea4959e_9f1bccf8",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -229,6 +253,54 @@
       "parentUuid": "5ecdb041_fb82ea9e",
       "range": {
         "startLine": 393,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b75df74_cb7351c5",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-20T17:41:26Z",
+      "side": 1,
+      "message": "Thanks for the tip, will update the code to try to move the soong config variable value set to soong_config.mk, seems like a more centralized location.",
+      "parentUuid": "3b4ca73e_e973f947",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe5302a_a59aa82e",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-20T17:41:26Z",
+      "side": 1,
+      "message": "Updated the implementation, now we give module authors two choices: (1) recommended choice is to directly specify a DCLA apex to trim against. In implementation, we added a dependency between a trimmed apex and the specified DCLA apex, use the \"native_shared_libs\" list from DCLA apex as libs_to_trim (2) explicitly specify which lib to trim. this allows more control if module authors want it.",
+      "parentUuid": "db27f1c8_ae31560b",
+      "range": {
+        "startLine": 396,
         "startChar": 0,
         "endLine": 397,
         "endChar": 22
