@@ -60,6 +60,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "97be8f29_9fc0ab9a",
+        "filename": "java/base.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-20T22:08:33Z",
+      "side": 1,
+      "message": "I left the struct because I need to access/populate these fields from `java.Import` and `java.AARImport` which don\u0027t extend `java.Module` (and `java.AARImport` doesn\u0027t extend `dexer` either).",
+      "parentUuid": "87927f8c_aed912b9",
+      "revId": "9b581a2dece79fa560d37a1d9b9ce73cc69b2e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "77abef49_89cc47f0",
         "filename": "java/base.go",
         "patchSetId": 15
@@ -125,6 +143,24 @@
       "side": 1,
       "message": "If you need to refactor the code a bit to make that happen I recommend separating it into its own commit.",
       "parentUuid": "900f8832_239d49ff",
+      "revId": "9b581a2dece79fa560d37a1d9b9ce73cc69b2e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3246be4d_bb7a941b",
+        "filename": "java/base.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-20T22:08:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc8b24f1_25216c49",
       "revId": "9b581a2dece79fa560d37a1d9b9ce73cc69b2e99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
