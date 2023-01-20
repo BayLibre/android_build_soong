@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ce3792_48589724",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-20T19:00:32Z",
+      "side": 1,
+      "message": "Could we combine the two `ExportedVars` objects before writing `cc/constants.bzl`. Then we also don\u0027t need two imports in the Bazel toolchain for each new file. \n\nOr, maybe it would be clearer to just make the `config.exportedVars` public and use it here instead of making a new variable / `constants.bzl` file? \n\nI\u0027m not really sure of the distinction between the `cc` and `cc/config` packages other than that config has a bunch of flags for `cc`. But I think we should have a clear designation for each if we\u0027re going to have two files corresponding to each package.\n\nWDYT?",
+      "revId": "1ce11d4d58195eb847cf0d6b8f38752434b1d7e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
