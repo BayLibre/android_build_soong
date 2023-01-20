@@ -16,6 +16,24 @@
       "message": "There\u0027s also https://cs.android.com/android/platform/superproject/+/master:build/soong/rust/bindgen.go;l\u003d182;drc\u003d645874d0cdd86d5a24c9f606e210f1c9a6e372bd and https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/cc/cc_library_static.bzl;l\u003d42-48;drc\u003df4d9aa8a51164095ac702a7e5575f04c731ef072 which should be submitted together with this CL.",
       "revId": "e6cd05280f115dd05966f8d096c733f163435f5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff0168ca_e209e75c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-01-20T05:24:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "683552ac_235eecd5",
+      "revId": "e6cd05280f115dd05966f8d096c733f163435f5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
