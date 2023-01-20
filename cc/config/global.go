@@ -360,6 +360,11 @@ func init() {
 	pctx.VariableFunc("CommonGlobalCflags", func(ctx android.PackageVarContext) string {
 		flags := commonGlobalCflags
 
+		if (ctx.Config().TargetPageSizeOverride()) {
+			flags = append(flags, "-DPAGE_SIZE=16384")
+		} else {
+			flags = append(flags, "-DPAGE_SIZE=4096")
+		}
 		// http://b/131390872
 		// Automatically initialize any uninitialized stack variables.
 		// Prefer zero-init if multiple options are set.
@@ -402,7 +407,18 @@ func init() {
 	exportedVars.ExportStringListStaticVariable("HostGlobalCflags", hostGlobalCflags)
 	exportedVars.ExportStringListStaticVariable("NoOverrideGlobalCflags", noOverrideGlobalCflags)
 	exportedVars.ExportStringListStaticVariable("NoOverrideExternalGlobalCflags", noOverrideExternalGlobalCflags)
-	exportedVars.ExportStringListStaticVariable("CommonGlobalCppflags", commonGlobalCppflags)
+	exportedVars.ExportStringList("CommonGlobalCppflags", commonGlobalCppflags)
+
+	pctx.VariableFunc("CommonGlobalCppflags", func(ctx android.PackageVarContext) string {
+		if (ctx.Config().TargetPageSizeOverride()) {
+			commonGlobalCppflags = append(commonGlobalCppflags, "-DPAGE_SIZE=16384")
+		} else {
+			commonGlobalCppflags = append(commonGlobalCppflags, "-DPAGE_SIZE=4096")
+		}
+
+		return strings.Join(commonGlobalCppflags, " ")
+	})
+
 	exportedVars.ExportStringListStaticVariable("ExternalCflags", extraExternalCflags)
 
 	exportedVars.ExportString("CStdVersion", CStdVersion)
