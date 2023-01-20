@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb85909_cd9ac4c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-20T18:18:44Z",
+      "side": 1,
+      "message": "The soong integration test error is due to a known flake b/265845583 which we are currently working on.",
+      "revId": "934c97da5e02b3f4e1030a061a3b04250344103d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
