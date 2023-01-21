@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "749ef8b1_3f7dac7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-21T09:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e026706_3e800020",
+      "revId": "b792c26f84add5a3e24e15e12ccfc381f0e3c65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "913da64c_95996621",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-01-19T17:47:48Z",
       "side": 1,
       "message": "Would it be clearer to name this `sha256_header` or `sha256`?",
+      "range": {
+        "startLine": 166,
+        "startChar": 28,
+        "endLine": 166,
+        "endChar": 31
+      },
+      "revId": "b792c26f84add5a3e24e15e12ccfc381f0e3c65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "439839bd_f86649b8",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-21T09:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "913da64c_95996621",
       "range": {
         "startLine": 166,
         "startChar": 28,
@@ -90,6 +132,24 @@
       "side": 1,
       "message": "I didn\u0027t see one that looked usable, you\u0027ll need a custom one.",
       "parentUuid": "0b32d49d_e7a566a8",
+      "revId": "b792c26f84add5a3e24e15e12ccfc381f0e3c65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b3fe20_36df59c1",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-21T09:49:48Z",
+      "side": 1,
+      "message": "Done. Thanks!",
+      "parentUuid": "f56a731c_637f5d8b",
       "revId": "b792c26f84add5a3e24e15e12ccfc381f0e3c65f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
