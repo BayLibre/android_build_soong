@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c60a13c_af154e22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-21T00:47:20Z",
+      "side": 1,
+      "message": "Can you add tests like https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/bp2build_test.go;l\u003d23;drc\u003d94098e880e4f88d183231c283ca91f0954506633?",
+      "revId": "6c4e6bc05ba5e95237722bc8f5d3c7b4b78ea971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
