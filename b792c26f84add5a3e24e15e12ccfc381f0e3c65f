@@ -74,6 +74,24 @@
       "parentUuid": "27436ac9_3dcbd237",
       "revId": "b792c26f84add5a3e24e15e12ccfc381f0e3c65f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56a731c_637f5d8b",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-21T00:07:58Z",
+      "side": 1,
+      "message": "I didn\u0027t see one that looked usable, you\u0027ll need a custom one.",
+      "parentUuid": "0b32d49d_e7a566a8",
+      "revId": "b792c26f84add5a3e24e15e12ccfc381f0e3c65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
