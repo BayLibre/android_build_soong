@@ -16,6 +16,69 @@
       "message": "Can you add tests like https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/bp2build_test.go;l\u003d23;drc\u003d94098e880e4f88d183231c283ca91f0954506633?",
       "revId": "6c4e6bc05ba5e95237722bc8f5d3c7b4b78ea971",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8743bf54_191ff24d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-23T18:31:48Z",
+      "side": 1,
+      "message": "Can you add some unit testing of this? Otherwise looks good",
+      "revId": "6c4e6bc05ba5e95237722bc8f5d3c7b4b78ea971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36956541_9049fe8a",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-23T18:31:48Z",
+      "side": 1,
+      "message": "nit: why do we need str here given that label.name is a string?\n\nif we do need to maintains this -- any reason to not handle the str(l) above given that other keys seem to do all of their handling elsewhere?",
+      "range": {
+        "startLine": 210,
+        "startChar": 23,
+        "endLine": 210,
+        "endChar": 58
+      },
+      "revId": "6c4e6bc05ba5e95237722bc8f5d3c7b4b78ea971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fb82a15_d65ba16b",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-23T18:31:48Z",
+      "side": 1,
+      "message": "mind filing a bug for us to consider if/how to support helper functions in to help with this duplication in the future?",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 56
+      },
+      "revId": "6c4e6bc05ba5e95237722bc8f5d3c7b4b78ea971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
