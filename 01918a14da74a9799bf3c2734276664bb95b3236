@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2808c73_ec7fcb19",
+        "filename": "zip/zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-23T23:53:29Z",
+      "side": 1,
+      "message": "You could make the array with a size of 0 and a capacity of `4+dataSize`, then use `binary.LittleEndian.AppendUint16` for each field, but that adds a few risks.  First is that it makes it easy to accidentally change the binary format.  Second is that the capacity is not a limit, so a modification might cause append to exceed your expected `dataSize`.  Those risks are somewhat mitigated by the tests though.\n\nYou can see how the stdlib does it at https://cs.android.com/android/platform/superproject/+/master:prebuilts/go/linux-x86/src/archive/zip/writer.go;l\u003d109-117;drc\u003d31b9b84cf8ff78b0f713c11d813c70dd456a018d, which is pretty similar to what is done here with a little extra wrapper that tracks the write position in the buffer",
+      "parentUuid": "cc8f533f_527098fe",
+      "range": {
+        "startLine": 892,
+        "startChar": 31,
+        "endLine": 892,
+        "endChar": 37
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "837c8376_0cedd7dd",
         "filename": "zip/zip_test.go",
         "patchSetId": 3
