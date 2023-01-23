@@ -529,7 +529,7 @@ type apexFile struct {
 	customStem string
 	symlinks   []string // additional symlinks
 
-	// Info for Android.mk Module name of `module` in AndroidMk. Note the generated AndroidMk
+	// Info for Android.mk PythonLibraryModule name of `module` in AndroidMk. Note the generated AndroidMk
 	// module for apexFile is named something like <AndroidMk module name>.<apex name>[<apex
 	// suffix>]
 	androidMkModuleName       string             // becomes LOCAL_MODULE
@@ -1657,7 +1657,7 @@ func apexFileForRustLibrary(ctx android.BaseModuleContext, rustm *rust.Module) a
 	return newApexFile(ctx, fileToCopy, androidMkModuleName, dirInApex, nativeSharedLib, rustm)
 }
 
-func apexFileForPyBinary(ctx android.BaseModuleContext, py *python.Module) apexFile {
+func apexFileForPyBinary(ctx android.BaseModuleContext, py *python.PythonBinaryModule) apexFile {
 	dirInApex := "bin"
 	fileToCopy := py.HostToolPath().Path()
 	return newApexFile(ctx, fileToCopy, py.BaseModuleName(), dirInApex, pyBinary, py)
@@ -1667,7 +1667,7 @@ func apexFileForGoBinary(ctx android.BaseModuleContext, depName string, gb boots
 	dirInApex := "bin"
 	fileToCopy := android.PathForGoBinary(ctx, gb)
 	// NB: Since go binaries are static we don't need the module for anything here, which is
-	// good since the go tool is a blueprint.Module not an android.Module like we would
+	// good since the go tool is a blueprint.PythonLibraryModule not an android.PythonLibraryModule like we would
 	// normally use.
 	return newApexFile(ctx, fileToCopy, depName, dirInApex, goBinary, nil)
 }
@@ -1953,7 +1953,7 @@ func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 			Fix this, as these fields are subsequently used in apex/androidmk.go and in apex/builder/go
 			To find out what Soong build puts there, run:
 			vctx := visitorContext{handleSpecialLibs: !android.Bool(a.properties.Ignore_system_library_special_case)}
-			ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool {
+			ctx.WalkDepsBlueprint(func(child, parent blueprint.PythonLibraryModule) bool {
 		      return a.depVisitor(&vctx, ctx, child, parent)
 		    })
 			vctx.normalizeFileInfo()
@@ -2147,7 +2147,7 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 			case *cc.Module:
 				vctx.filesInfo = append(vctx.filesInfo, apexFileForExecutable(ctx, ch))
 				return true // track transitive dependencies
-			case *python.Module:
+			case *python.PythonBinaryModule:
 				if ch.HostToolPath().Valid() {
 					vctx.filesInfo = append(vctx.filesInfo, apexFileForPyBinary(ctx, ch))
 				}
@@ -3125,27 +3125,27 @@ func BaselineApexAvailable(moduleName string) []string {
 // particular module to make it available for the apex regardless of its setting.
 // TODO(b/147364041): remove this
 func makeApexAvailableBaseline() map[string][]string {
-	// The "Module separator"s below are employed to minimize merge conflicts.
+	// The "PythonLibraryModule separator"s below are employed to minimize merge conflicts.
 	m := make(map[string][]string)
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.appsearch"] = []string{
 		"icing-java-proto-lite",
 		"libprotobuf-java-lite",
 	}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.btservices"] = []string{
 		// empty
 	}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.cellbroadcast"] = []string{"CellBroadcastApp", "CellBroadcastServiceModule"}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.extservices"] = []string{
 		"error_prone_annotations",
@@ -3158,7 +3158,7 @@ func makeApexAvailableBaseline() map[string][]string {
 		"TextClassifierServiceLibNoManifest",
 	}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.neuralnetworks"] = []string{
 		"android.hardware.neuralnetworks@1.0",
@@ -3175,19 +3175,19 @@ func makeApexAvailableBaseline() map[string][]string {
 		"libprocpartition",
 	}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.media"] = []string{
 		// empty
 	}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.media.swcodec"] = []string{
 		// empty
 	}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.mediaprovider"] = []string{
 		"MediaProvider",
@@ -3198,7 +3198,7 @@ func makeApexAvailableBaseline() map[string][]string {
 		"libfuse_jni",
 	}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.runtime"] = []string{
 		"bionic_libc_platform_headers",
@@ -3251,7 +3251,7 @@ func makeApexAvailableBaseline() map[string][]string {
 		"libziparchive",
 	}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.tethering"] = []string{
 		"android.hardware.tetheroffload.config-V1.0-java",
@@ -3269,7 +3269,7 @@ func makeApexAvailableBaseline() map[string][]string {
 		"TetheringApiCurrentLib",
 	}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.wifi"] = []string{
 		"PlatformProperties",
@@ -3313,13 +3313,13 @@ func makeApexAvailableBaseline() map[string][]string {
 		"wifi-service-resources",
 	}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m["com.android.os.statsd"] = []string{
 		"libstatssocket",
 	}
 	//
-	// Module separator
+	// PythonLibraryModule separator
 	//
 	m[android.AvailableToAnyApex] = []string{
 		// TODO(b/156996905) Set apex_available/min_sdk_version for androidx/extras support libraries

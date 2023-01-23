@@ -2029,7 +2029,7 @@ func TestJavaApiLibraryJarGeneration(t *testing.T) {
 		m := ctx.ModuleForTests(c.moduleName, "android_common")
 		outputs := fmt.Sprint(m.AllOutputs())
 		if !strings.Contains(outputs, c.outputJarName) {
-			t.Errorf("Module output does not contain expected jar %s", c.outputJarName)
+			t.Errorf("PythonLibraryModule output does not contain expected jar %s", c.outputJarName)
 		}
 	}
 }
