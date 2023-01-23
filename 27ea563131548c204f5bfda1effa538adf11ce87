@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec0b738_ad3c1e64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-23T21:07:45Z",
+      "side": 1,
+      "message": "Mostly optional/nits or clarifications.",
+      "revId": "27ea563131548c204f5bfda1effa538adf11ce87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05350b0_1a356f01",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1870,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-23T21:07:45Z",
+      "side": 1,
+      "message": "Can you file a bug about having this in the general allowlisting functionality instead? Having this additional handling and allowlisting for tests is error-prone for us allowlisting",
+      "range": {
+        "startLine": 1870,
+        "startChar": 22,
+        "endLine": 1870,
+        "endChar": 74
+      },
+      "revId": "27ea563131548c204f5bfda1effa538adf11ce87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

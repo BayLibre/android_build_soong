@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d8ebab6_f35da921",
+        "filename": "android/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-23T21:07:45Z",
+      "side": 1,
+      "message": "optional: given how this is being used, would it make more sense for these to be two different lists such that you can understand where the diffs came from? perhaps with the returns being `bool, []T, []T`",
+      "range": {
+        "startLine": 158,
+        "startChar": 26,
+        "endLine": 159,
+        "endChar": 25
+      },
+      "revId": "7b9c46416db6dd50d5891453cb7785d109349ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d15a8754_f8f2a400",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-23T21:07:45Z",
+      "side": 1,
+      "message": "why are we handling these both here rather than a specific handler that has expectations on getccinfo vs getccunstrippedinfo? if we maintain here, can you add a comment about why here?",
+      "range": {
+        "startLine": 1886,
+        "startChar": 0,
+        "endLine": 1896,
+        "endChar": 2
+      },
+      "revId": "7b9c46416db6dd50d5891453cb7785d109349ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e90a5d6_09b4fd17",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 3032,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-23T21:07:45Z",
+      "side": 1,
+      "message": "nit: does this and checkSharedLibs need to be a helper, this looks straightforward enough to inline given it\u0027s just a comparison + error message? the naming is somewhat confusing as well given that this is specific to AndroidMkWholeStaticLibs",
+      "range": {
+        "startLine": 3032,
+        "startChar": 5,
+        "endLine": 3032,
+        "endChar": 25
+      },
+      "revId": "7b9c46416db6dd50d5891453cb7785d109349ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a290d08_2100e470",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 3211,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-23T21:07:45Z",
+      "side": 1,
+      "message": "this seems inaccurate, since it would also have any libraries we have in excess as well?",
+      "range": {
+        "startLine": 3211,
+        "startChar": 3,
+        "endLine": 3211,
+        "endChar": 20
+      },
+      "revId": "7b9c46416db6dd50d5891453cb7785d109349ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
