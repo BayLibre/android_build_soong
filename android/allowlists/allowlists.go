@@ -343,7 +343,8 @@ var (
 		"system/tools/aidl/build/tests_bp2build":                 Bp2BuildDefaultTrue,
 		"system/tools/mkbootimg":                                 Bp2BuildDefaultTrueRecursively,
 		"system/tools/sysprop":                                   Bp2BuildDefaultTrue,
-		"system/unwinding/libunwindstack":                        Bp2BuildDefaultTrueRecursively,
+		// TODO(b/266459895): re-enable libunwindstack
+		// "system/unwinding/libunwindstack":                        Bp2BuildDefaultTrueRecursively,
 
 		"tools/apksig": Bp2BuildDefaultTrue,
 		"tools/platform-compat/java/android/compat":  Bp2BuildDefaultTrueRecursively,
@@ -1320,6 +1321,11 @@ var (
 
 		// uses glob in $(locations)
 		"libc_musl_sysroot",
+
+		// TODO(b/266459895): re-enable the following after libunwindstack is re-enabled
+		"libfdtrack",
+		"libc_malloc_debug",
+		"libEGL",
 	}
 
 	MixedBuildsDisabledList = []string{
