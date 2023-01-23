@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "818d5aed_075d04f6",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2064,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-23T20:56:31Z",
+      "side": 1,
+      "message": "WDYT about supporting java_api_library using another java_api_library as its lib? Is this currently supported?\n\nThis might be useful since Multi-tree API export will consist of .txt files (java_api_library and java_api_contribution) and not .java files (java_library)",
+      "range": {
+        "startLine": 2064,
+        "startChar": 1,
+        "endLine": 2064,
+        "endChar": 13
+      },
+      "revId": "e71121bd53226c5485aec846cbc17ae36cd6799b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
