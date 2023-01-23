@@ -35,6 +35,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3614d4_9f905bd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-23T19:31:03Z",
+      "side": 1,
+      "message": "Done. Yeah I started writing tests like that, but then wasn\u0027t sure how useful they\u0027d be given that they don\u0027t directly involve Bazel.\n\nBut I see now that it\u0027s useful to know that the mechanism to pipe Bazel information thru to the MkEntires is working properly.",
+      "parentUuid": "1c60a13c_af154e22",
+      "revId": "6c4e6bc05ba5e95237722bc8f5d3c7b4b78ea971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99da5dc_9f9a1591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-23T19:31:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8743bf54_191ff24d",
+      "revId": "6c4e6bc05ba5e95237722bc8f5d3c7b4b78ea971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36956541_9049fe8a",
@@ -58,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f93a95b0_9a5857dd",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-23T19:31:03Z",
+      "side": 1,
+      "message": "Sorry leftover from when I was passing the Label object and stripping the bp2build label suffix in Soong rather than Bazel.",
+      "parentUuid": "36956541_9049fe8a",
+      "range": {
+        "startLine": 210,
+        "startChar": 23,
+        "endLine": 210,
+        "endChar": 58
+      },
+      "revId": "6c4e6bc05ba5e95237722bc8f5d3c7b4b78ea971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fb82a15_d65ba16b",
@@ -71,6 +131,30 @@
       "writtenOn": "2023-01-23T18:31:48Z",
       "side": 1,
       "message": "mind filing a bug for us to consider if/how to support helper functions in to help with this duplication in the future?",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 56
+      },
+      "revId": "6c4e6bc05ba5e95237722bc8f5d3c7b4b78ea971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ec552f_6407e90c",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-23T19:31:03Z",
+      "side": 1,
+      "message": "Done. b/266445560",
+      "parentUuid": "5fb82a15_d65ba16b",
       "range": {
         "startLine": 319,
         "startChar": 0,

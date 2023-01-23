@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "635afad1_5f389c25",
+        "filename": "android/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-23T19:31:03Z",
+      "side": 0,
+      "message": "This was causing a nil-pointer deref since the function continued executing below.",
+      "revId": "b1c201779dd78dbc6ffe986162492c43ea1898d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
