@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db3bc23e_08599cc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-23T21:59:20Z",
+      "side": 1,
+      "message": "sha256",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bebe8ee_fa912718",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-23T21:59:20Z",
+      "side": 1,
+      "message": "`add a zip header to each file containing its SHA256 digest`",
+      "range": {
+        "startLine": 166,
+        "startChar": 48,
+        "endLine": 166,
+        "endChar": 106
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc8f533f_527098fe",
+        "filename": "zip/zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-23T21:59:20Z",
+      "side": 1,
+      "message": "A nit really but isn\u0027t there a way to write these without having to use indices that could easily get out of sync? We know that we\u0027re writing a uint16 starting at the next position.",
+      "range": {
+        "startLine": 892,
+        "startChar": 31,
+        "endLine": 892,
+        "endChar": 37
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "837c8376_0cedd7dd",
+        "filename": "zip/zip_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-23T21:59:20Z",
+      "side": 1,
+      "message": "This seems awfully similar to the above `appendSHAToExtra` function. You should ideally put a literal for the expected value instead of trying to recompute it.",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 17
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15e2c6a_eb0764bc",
+        "filename": "zip/zip_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-23T21:59:20Z",
+      "side": 1,
+      "message": "Is this still required?",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 95
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
