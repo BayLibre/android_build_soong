@@ -161,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4bff4c1f_238c75c9",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-24T16:37:08Z",
+      "side": 1,
+      "message": "nit: while I see your point; I just find \"UploadMetrics\" with two string args that are special and precede string varargs.\nfeel free to ignore this comment",
+      "parentUuid": "2b0433fc_6c0dfa25",
+      "revId": "ed5bdef606c83053feabca63ee8863aab9d74c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00e9e229_3e6290a0",
         "filename": "ui/build/upload_test.go",
         "patchSetId": 15
