@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9013c426_7edc6fdf",
+        "filename": "zip/zip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-24T19:39:40Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem better than the previous version to me.  It\u0027s even longer, and with the added complexity of trying to figure out how `binary.Write` will handle the assorted types in `data`.  I\u0027d suggest either 4 calls to `binary.Write`, or skip the `bytes.Buffer` and use the equivalent byte slice directly\n\n```\nvar buf []byte\nbuf \u003d binary.LittleEndian.AppendUint16(buf, Sha256HeaderID)\nbuf \u003d binary.LittleEndian.AppendUint16(buf, uint16(dataSize))\nbuf \u003d binary.LittleEndian.AppendUint16(buf, Sha256HeaderSignature)\nbuf \u003d append(buf, checksum...)\n```",
+      "revId": "88ff84f609f5d7747d0f750bd982adc316c861b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
