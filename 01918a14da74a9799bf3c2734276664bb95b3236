@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "876be29a_97a0a7ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-24T18:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db3bc23e_08599cc6",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bebe8ee_fa912718",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-23T21:59:20Z",
       "side": 1,
       "message": "`add a zip header to each file containing its SHA256 digest`",
+      "range": {
+        "startLine": 166,
+        "startChar": 48,
+        "endLine": 166,
+        "endChar": 106
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c365ec1e_9858ef12",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-24T18:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bebe8ee_fa912718",
       "range": {
         "startLine": 166,
         "startChar": 48,
@@ -118,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cfa7d4_fcf3bf97",
+        "filename": "zip/zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-24T18:37:54Z",
+      "side": 1,
+      "message": "Done. Thanks, bytes.Buffer looks more concise.",
+      "parentUuid": "676f1832_b72a8d85",
+      "range": {
+        "startLine": 892,
+        "startChar": 31,
+        "endLine": 892,
+        "endChar": 37
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "837c8376_0cedd7dd",
@@ -141,6 +213,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "106a0f8c_f42102a0",
+        "filename": "zip/zip_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-24T18:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "837c8376_0cedd7dd",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 17
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a15e2c6a_eb0764bc",
@@ -154,6 +250,30 @@
       "writtenOn": "2023-01-23T21:59:20Z",
       "side": 1,
       "message": "Is this still required?",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 598,
+        "endChar": 95
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bcb203b_6ee0b009",
+        "filename": "zip/zip_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-24T18:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a15e2c6a_eb0764bc",
       "range": {
         "startLine": 597,
         "startChar": 0,
