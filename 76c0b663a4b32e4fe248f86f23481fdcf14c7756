@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac871bf0_d64ab074",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-24T22:35:36Z",
+      "side": 1,
+      "message": "sure - analyzed_bazel_profile.txt ?",
+      "parentUuid": "f32af342_8c50a627",
+      "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50451ceb_9b96d15c",
         "filename": "ui/build/upload.go",
         "patchSetId": 16
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-24T16:47:24Z",
       "side": 1,
       "message": "document this function. what is the return value? (millis?)\n\nSame for other functions.",
+      "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f951cf83_dd9a5be4",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-24T22:35:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50451ceb_9b96d15c",
       "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6ee340b_0f690767",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-24T22:35:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5bb6a0e_03c2ea3f",
+      "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7ac13f4_f0bdc43f",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-01-24T16:47:24Z",
       "side": 1,
       "message": "I\u0027m confused here -- what do we do with the trailing \"s\" ?",
+      "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07bf0573_2f27c496",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-24T22:35:36Z",
+      "side": 1,
+      "message": "Whoops - there\u0027s a space. Done.",
+      "parentUuid": "f7ac13f4_f0bdc43f",
       "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +158,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ade5dd_3ba843c4",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-24T22:35:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41fb7848_2004afe5",
+      "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5d95377_3fcf62e8",
@@ -99,6 +189,24 @@
       "writtenOn": "2023-01-24T16:47:24Z",
       "side": 1,
       "message": "nit: is the extra space between \"phase\" and \"time\" intentional here? (That would be weird bazel formatting!)",
+      "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c48c3c8_a2108a12",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-24T22:35:36Z",
+      "side": 1,
+      "message": "The latest run didn\u0027t have this so I\u0027ll remove. I think strings.Fields would work regardless.",
+      "parentUuid": "d5d95377_3fcf62e8",
       "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -120,6 +228,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a506f63_35ee28bf",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-24T22:35:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ff946ef_a88ca554",
+      "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71683d88_e9240a74",
@@ -133,6 +259,24 @@
       "writtenOn": "2023-01-24T16:47:24Z",
       "side": 1,
       "message": "When would we expect this to occur? Should we make this a more extreme error than just \"print and move on?\"",
+      "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd8ed91_a139b466",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-24T22:35:36Z",
+      "side": 1,
+      "message": "os.Stat has already run by this point, so we\u0027re looking at an IO error.\n\nI\u0027m okay passing in ctx and making this a fatal error if that doesn\u0027t seem like overkill.",
+      "parentUuid": "71683d88_e9240a74",
       "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
