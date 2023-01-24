@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a537cbc6_dbda9284",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-24T14:56:58Z",
+      "side": 1,
+      "message": "dropping this libs_to_trim entirely, now the only option is to trim against DCLA.",
+      "parentUuid": "56a1fa83_895d9bb0",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ea4959e_9f1bccf8",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -349,6 +373,30 @@
       "parentUuid": "0b75df74_cb7351c5",
       "range": {
         "startLine": 393,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e38fb5_82517457",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-24T14:56:58Z",
+      "side": 1,
+      "message": "dropped (2) from design doc and implementation, we can bring it back in case if we need it in the future.",
+      "parentUuid": "ddc4ca91_cc0c6675",
+      "range": {
+        "startLine": 396,
         "startChar": 0,
         "endLine": 397,
         "endChar": 22
