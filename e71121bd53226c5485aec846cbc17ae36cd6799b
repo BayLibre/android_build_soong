@@ -22,6 +22,30 @@
       },
       "revId": "e71121bd53226c5485aec846cbc17ae36cd6799b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7048732f_0d437f6a",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2064,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-01-24T00:28:14Z",
+      "side": 1,
+      "message": "The suggested functionality was not previously supported, and I have uploaded the patchset to support `java_api_library`to use another `java_api_library` as lib.",
+      "parentUuid": "818d5aed_075d04f6",
+      "range": {
+        "startLine": 2064,
+        "startChar": 1,
+        "endLine": 2064,
+        "endChar": 13
+      },
+      "revId": "e71121bd53226c5485aec846cbc17ae36cd6799b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
