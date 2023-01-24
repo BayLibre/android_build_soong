@@ -52,6 +52,24 @@
       "parentUuid": "5406d2a4_ad7862e6",
       "revId": "2b1d1892bebdf686d3e95b28aed5a598823394ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e93df6_403699c1",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-01-24T22:36:30Z",
+      "side": 1,
+      "message": "No problem. Thanks for the suggestions. Updated to remove the empty module name before the RemoveOptionalPrebuiltPrefix() function. \nWhen module name is empty, those moduleTypes are \"package\".",
+      "parentUuid": "8056ed1c_16c20f86",
+      "revId": "2b1d1892bebdf686d3e95b28aed5a598823394ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
