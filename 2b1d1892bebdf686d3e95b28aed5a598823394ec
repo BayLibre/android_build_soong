@@ -34,6 +34,24 @@
       "parentUuid": "0c8694fd_28f68418",
       "revId": "2b1d1892bebdf686d3e95b28aed5a598823394ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8056ed1c_16c20f86",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-24T18:16:00Z",
+      "side": 1,
+      "message": "1. can we move this before L177 then (i.e. check m.Name() instead)\n2. I would still like to understand how we get an empty name. Could you see what module types you encounter for instance?\nSorry about the request for extra work.",
+      "parentUuid": "5406d2a4_ad7862e6",
+      "revId": "2b1d1892bebdf686d3e95b28aed5a598823394ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
