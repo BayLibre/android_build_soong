@@ -22,6 +22,30 @@
       },
       "revId": "75a1b99a73efada271f269cd4c2a5b5172044d8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ef4e4f9_1a93c022",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-24T18:27:59Z",
+      "side": 1,
+      "message": "The context is I\u0027m working on b/259718110 (precompile python3 sources), and ran into trouble understanding the python rules well enough to improve them. I think this makes maintenance of the python rules a lot easier for a lot of reasons:\n\nWith the decorator pattern, you can\u0027t use \"go to definition\" features of IDEs, at least not as easily. It also causes many more layers of indirection than necessary. One example where this makes a big difference is the AndroidMk function:\n  - Before: `Module.AndroidMkEntries -+-\u003e Module.subAndroidMk ---\u003e test/bindaryDecorator.AndroidMk -+-\u003e Module.subAndroidMk ---\u003e pythonInstaller.AndroidMk`\n  - After: `PythonTestModule.AndroidMkEntries -+-\u003e PythonBinaryModule.AndroidMkEntries`.\n\nI used `-+-\u003e` to indicate edges that you can go to definition across, and `---\u003e` to indicate ones that you can\u0027t.\n\nI gave the AndroidMk example there, but it also applies to the bootstrap and install functions of the decorators. You can\u0027t go to their definition, and the bootstrap/install names are misleading. They\u0027re really just regular `GenerateAndroidBuildActions` functions, and treating them as such allows soong module authors familiar with other rulesets to easily understand this one as well.\n\n\u003e But a python binary is not a special kind of python library - one is not interchangeable with the other.\n\nI can agree with this statement, and maybe I should go even further and remove the struct embedding. However I think when using a single module type with decorators, this point is even worse. With embeddings, binaries are libraries, but with decorators, binaries are libraries and libraries are binaries. Before, the singular module type for both libraries and binaries had various binary-only methods and fields in it: `AndroidMkEntries()`, `HostToolPath()`, `OutputFiles()`, `isEmbeddedLauncherEnabled()`, `installSource`. Now, these have been moved into the binary module type. This enabled an improvement to the apex code that you can see where now apexes can correctly only depend on binary modules, because the library modules no longer offer `HostToolPath()`.\n\nDo you have any pros to the decorator pattern you\u0027d like to bring up? I can\u0027t think of nearly as many as I can think of cons.",
+      "parentUuid": "03e5e253_667d8537",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "75a1b99a73efada271f269cd4c2a5b5172044d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
