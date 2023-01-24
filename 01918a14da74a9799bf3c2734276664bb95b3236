@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "676f1832_b72a8d85",
+        "filename": "zip/zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-01-24T00:54:38Z",
+      "side": 1,
+      "message": "Yeah, a wrapper that took a Writer and buffer was sort of what I was thinking. I was hoping that Go had native support for it without having to write a custom class.\n\nMaybe this?\n\n```\nbuffer :\u003d new(bytes.Buffer)\nbinary.Write(buffer, binary.LittleEndian, Sha256HeaderID)\nbinary.Write(buffer, binary.LittleEndian, uint16(dataSize))\n...\n\nze.fh.Extra \u003d append(ze.fh.Extra, buf.Bytes()...)\n```\n\nSee https://pkg.go.dev/encoding/binary#example-Write-Multi.",
+      "parentUuid": "c2808c73_ec7fcb19",
+      "range": {
+        "startLine": 892,
+        "startChar": 31,
+        "endLine": 892,
+        "endChar": 37
+      },
+      "revId": "01918a14da74a9799bf3c2734276664bb95b3236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "837c8376_0cedd7dd",
         "filename": "zip/zip_test.go",
         "patchSetId": 3
