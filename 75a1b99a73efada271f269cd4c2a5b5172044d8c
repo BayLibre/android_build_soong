@@ -46,6 +46,53 @@
       },
       "revId": "75a1b99a73efada271f269cd4c2a5b5172044d8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e80876c1_9c365d47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-24T23:40:30Z",
+      "side": 1,
+      "message": "\u003e With the decorator pattern, you can\u0027t use \"go to definition\" features of IDEs, at least not as easily. \n\nFair enough. I don\u0027t use an IDE personally, but I agree this is a valid argument.\n\n\u003e However I think when using a single module type with decorators, this point is even worse. With embeddings, binaries are libraries, but with decorators, binaries are libraries and libraries are binaries.\n\nThis is true, but I think it is not _because_ of decorator pattern. This comes from the struct embedding we do in build/soong/python today. These methods should probably exist on the binary (or the corresponding decorators), and not on the base python.Module struct.\n\n\u003e Do you have any pros to the decorator pattern you\u0027d like to bring up? I can\u0027t think of nearly as many as I can think of cons.\n\nI think the one pro is that it makes the \"inheritance\" layering cleaner, atleast in my mental model. But since it is not compatible with IDEs, I think using struct embedding is more pragmatic.",
+      "parentUuid": "4ef4e4f9_1a93c022",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "75a1b99a73efada271f269cd4c2a5b5172044d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ed3cfc_2f91679c",
+        "filename": "python/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-24T23:40:30Z",
+      "side": 1,
+      "message": "nit: these should be after the default packages and before android packages",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "75a1b99a73efada271f269cd4c2a5b5172044d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
