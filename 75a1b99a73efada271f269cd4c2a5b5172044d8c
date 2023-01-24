@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e5e253_667d8537",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-24T02:08:14Z",
+      "side": 1,
+      "message": "imo, a \"decorator\" pattern is actually a better design pattern for this. \n\nIn the new proposal, PythonBinaryModule \"inherits\" from PythonLibraryModule. But a python binary is not a special kind of python library - one is not interchangeable with the other.\n\nbuild/soong/cc uses a similar decorator pattern. FWIW, build/soong/java does not (even though I think it should too).\n\nCan you give some more context on what is driving this refactor? Does it make maintenance/bp2build etc. easier?",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "75a1b99a73efada271f269cd4c2a5b5172044d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
