@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c6c0fc8_e3e3a2ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-01-25T21:46:51Z",
+      "side": 1,
+      "message": "Hi Zijun, if this is only affecting master-plus-llvm, please feel free to fix forward instead of reverting.",
+      "revId": "9a1c2da0b8080da735402582482be7fb29c4e2b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
