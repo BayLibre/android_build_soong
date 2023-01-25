@@ -88,6 +88,24 @@
       "parentUuid": "14e93df6_403699c1",
       "revId": "2b1d1892bebdf686d3e95b28aed5a598823394ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6827657_f3a62037",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-01-25T22:11:03Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. Updated to filter out by module type package.",
+      "parentUuid": "c1eeb27e_dedea1df",
+      "revId": "2b1d1892bebdf686d3e95b28aed5a598823394ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
