@@ -474,6 +474,30 @@
       },
       "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac16174_6c48e7cc",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-25T09:30:16Z",
+      "side": 1,
+      "message": "That\u0027s the reason why I asked to move the logic into apexer. Then it would be a matter of different flags to the tool.",
+      "parentUuid": "99cbb65c_db1a5d14",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 42
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
