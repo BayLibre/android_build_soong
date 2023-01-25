@@ -22,6 +22,30 @@
       },
       "revId": "9c667416ded33b93a44c5f1894ea23cae6699a17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06465523_f6729300",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1866,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-01-25T13:20:53Z",
+      "side": 1,
+      "message": "yeah, I asked someone to file a bug for us to change how we handle this but we can do likely that after this gets submitted.",
+      "parentUuid": "1fe98153_6dfe0402",
+      "range": {
+        "startLine": 1860,
+        "startChar": 0,
+        "endLine": 1866,
+        "endChar": 2
+      },
+      "revId": "9c667416ded33b93a44c5f1894ea23cae6699a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
