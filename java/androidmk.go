@@ -115,6 +115,7 @@ func (library *Library) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.AddStrings("LOCAL_EXPORT_SDK_LIBRARIES", append(requiredUsesLibs, optionalUsesLibs...)...)
 
 					entries.SetOptionalPath("LOCAL_SOONG_PROGUARD_DICT", library.dexer.proguardDictionary)
+					entries.SetOptionalPath("LOCAL_SOONG_PROGUARD_CONFIG", library.dexer.proguardConfiguration)
 					entries.SetOptionalPath("LOCAL_SOONG_PROGUARD_USAGE_ZIP", library.dexer.proguardUsageZip)
 					entries.SetString("LOCAL_MODULE_STEM", library.Stem())
 
@@ -351,6 +352,7 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.SetPath("LOCAL_SOONG_JACOCO_REPORT_CLASSES_JAR", app.jacocoReportClassesFile)
 				}
 				entries.SetOptionalPath("LOCAL_SOONG_PROGUARD_DICT", app.dexer.proguardDictionary)
+				entries.SetOptionalPath("LOCAL_SOONG_PROGUARD_CONFIG", app.dexer.proguardConfiguration)
 				entries.SetOptionalPath("LOCAL_SOONG_PROGUARD_USAGE_ZIP", app.dexer.proguardUsageZip)
 
 				if app.Name() == "framework-res" {
