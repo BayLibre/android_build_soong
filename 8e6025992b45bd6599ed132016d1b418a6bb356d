@@ -176,6 +176,24 @@
       "parentUuid": "fb3ab238_4050731d",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b8dd36_3807e062",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2023-01-25T06:35:52Z",
+      "side": 1,
+      "message": "Hi Pirama and Elliott, are there new clang binaries to test with?  I am curious if the upstream fixes build alone or if more work will be needed.",
+      "parentUuid": "2f3b22f6_6aa1e855",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
