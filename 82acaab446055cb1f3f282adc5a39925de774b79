@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce08159_d676a42c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2023-01-25T19:02:08Z",
+      "side": 1,
+      "message": "Yes, it is very useful and I was surprised it was not set already (we are used to it from AGP). I\u0027ll be making sure the rules derived from the new keep annotations go into this output file too.",
+      "parentUuid": "9c16caed_eae33e56",
+      "revId": "82acaab446055cb1f3f282adc5a39925de774b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "274d20c9_56bf5f9e",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-01-25T18:46:52Z",
       "side": 1,
       "message": "Does anything use this in Make?  If so, you\u0027ll need to add it to clear_vars.mk.  Otherwise I\u0027d suggest not exporting it.",
+      "revId": "82acaab446055cb1f3f282adc5a39925de774b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e75075aa_505effe5",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2023-01-25T19:02:08Z",
+      "side": 1,
+      "message": "Not used so removed it again.",
+      "parentUuid": "274d20c9_56bf5f9e",
       "revId": "82acaab446055cb1f3f282adc5a39925de774b79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
