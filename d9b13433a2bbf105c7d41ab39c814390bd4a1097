@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf8a4d72_f995b7b3",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-25T23:00:06Z",
+      "side": 1,
+      "message": "I think you can remove this completely, you don\u0027t need `noOverride64GlobalCflags` in the `NoOverrideGlobalCflags` ninja variable, they are already in the `NoOverride64GlobalCflags` ninja variable.",
+      "range": {
+        "startLine": 396,
+        "startChar": 3,
+        "endLine": 398,
+        "endChar": 4
+      },
+      "revId": "d9b13433a2bbf105c7d41ab39c814390bd4a1097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
