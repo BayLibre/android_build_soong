@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec3ff88_d7cfe4eb",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-25T22:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac871bf0_d64ab074",
+      "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50451ceb_9b96d15c",
@@ -277,6 +295,24 @@
       "side": 1,
       "message": "os.Stat has already run by this point, so we\u0027re looking at an IO error.\n\nI\u0027m okay passing in ctx and making this a fatal error if that doesn\u0027t seem like overkill.",
       "parentUuid": "71683d88_e9240a74",
+      "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f89ca5_9161deb1",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-01-25T22:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cd8ed91_a139b466",
       "revId": "76c0b663a4b32e4fe248f86f23481fdcf14c7756",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
