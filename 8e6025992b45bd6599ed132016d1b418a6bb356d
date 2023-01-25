@@ -194,6 +194,24 @@
       "parentUuid": "2f3b22f6_6aa1e855",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8959f5d3_389486bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-01-25T16:25:27Z",
+      "side": 1,
+      "message": "i\u0027m guessing from https://github.com/android/ndk/issues/1834 that this stuff is still a long way from happening. personally, i\u0027ve already written it off for Android U, and have it in my \"try again next year\" bucket...",
+      "parentUuid": "e1b8dd36_3807e062",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
