@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b75b086c_74c1ab61",
+        "filename": "cc/config/global.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-01-25T21:34:34Z",
+      "side": 1,
+      "message": "Should this have been `flags\u003dappend(flags, noOverride64GlobalCflags)`?\n\n[Could https://android-build.googleplex.com/builds/submitted/9527181/Clang-PGO/latest/view/logs/build_error.log be due to this?]",
+      "range": {
+        "startLine": 397,
+        "startChar": 19,
+        "endLine": 397,
+        "endChar": 43
+      },
+      "revId": "933e38093d12452587a7bf0d2c9a87ab128757ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
