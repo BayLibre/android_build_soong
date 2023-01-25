@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2869e48a_8001829a",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 3032,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-25T07:28:21Z",
+      "side": 1,
+      "message": "+1 inline these please.",
+      "parentUuid": "3e90a5d6_09b4fd17",
+      "range": {
+        "startLine": 3032,
+        "startChar": 5,
+        "endLine": 3032,
+        "endChar": 25
+      },
+      "revId": "7b9c46416db6dd50d5891453cb7785d109349ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a290d08_2100e470",
         "filename": "cc/cc_test.go",
         "patchSetId": 6
