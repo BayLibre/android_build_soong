@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe98153_6dfe0402",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1866,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-25T07:27:25Z",
+      "side": 1,
+      "message": "Bah, I added this for adbd_test, but looking at this now, this is fragile being in its own file.",
+      "range": {
+        "startLine": 1860,
+        "startChar": 0,
+        "endLine": 1866,
+        "endChar": 2
+      },
+      "revId": "9c667416ded33b93a44c5f1894ea23cae6699a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
