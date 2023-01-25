@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000036741674",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/2403172?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "64a3f6c6_288ed3d3",
+          "description": "Buildifier Suggestion",
+          "replacements": [
+            {
+              "path": "ui/metrics/bp2build_progress_metrics_proto/BUILD.bazel",
+              "range": {
+                "startLine": 25,
+                "startChar": 0,
+                "endLine": 25,
+                "endChar": 0
+              },
+              "replacement": "    visibility \u003d [\"//build/bazel/scripts/bp2build-progress:__pkg__\"],\n"
+            },
+            {
+              "path": "ui/metrics/bp2build_progress_metrics_proto/BUILD.bazel",
+              "range": {
+                "startLine": 26,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "a57d58a0_fe0b000c",
+        "filename": "ui/metrics/bp2build_progress_metrics_proto/BUILD.bazel",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2023-01-25T21:38:05Z",
+      "side": 1,
+      "message": "File is not formatted. Run `buildifier ui/metrics/bp2build_progress_metrics_proto/BUILD.bazel` to format the file, or apply the suggested fix.",
+      "revId": "6f4fe96cd884c41b65c77fbfcd4dbab9c23115fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
