@@ -248,6 +248,24 @@
       "parentUuid": "711f92e7_50d42248",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ddccf24_4d454a75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2023-01-25T18:02:45Z",
+      "side": 1,
+      "message": "My team is going to test the march and mcpu flags on SM8475 and we will let you know if there\u0027s any significant improvements.  There are a number of new features since 8.0 and 8.2, but we\u0027ll see how much of an effect that has on the Android platform. \n\nQualcomm generally does not use what would be considered the optimal flags for their chips.  I\u0027m not sure if other vendors do or what features the next generation of Tensor will support to know how worthwhile it would be to create a new CPU target in the short term.\n\nI don\u0027t have any performance results to share on AOR yet. I used to run the bionic benchmarks on their updates, but Arm does not feel that is a valid test.  At some point, I\u0027ll probably port the glibc tests since Arm puts more stock in those. The data Arm shares is usually summarized and not specific to any particular cores, so we may benefit from having more granular results.",
+      "parentUuid": "b38dd956_7e266168",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
