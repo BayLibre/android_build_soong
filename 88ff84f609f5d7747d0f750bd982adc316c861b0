@@ -34,6 +34,24 @@
       "parentUuid": "9013c426_7edc6fdf",
       "revId": "88ff84f609f5d7747d0f750bd982adc316c861b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d7173d3_7a28d072",
+        "filename": "zip/zip.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1933450
+      },
+      "writtenOn": "2023-01-25T02:05:04Z",
+      "side": 1,
+      "message": "Done. Thank you all for great suggestions. Forgetting to assign to `buf` can be easily detected by unit tests.",
+      "parentUuid": "d03dcbf6_dc7f36d1",
+      "revId": "88ff84f609f5d7747d0f750bd982adc316c861b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
