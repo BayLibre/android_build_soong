@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41b92993_31754d62",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-25T18:58:03Z",
+      "side": 1,
+      "message": "Is this still used?",
+      "revId": "711b0528555296d41ac66147aa55d6fb088ff240",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd0ab4ce_eb725984",
         "filename": "bazel/cquery/request_type_test.go",
         "patchSetId": 1
