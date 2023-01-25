@@ -394,7 +394,7 @@ func init() {
 		if ctx.Config().IsEnvTrue("LLVM_NEXT") {
 			flags = append(noOverrideGlobalCflags, llvmNextExtraCommonGlobalCflags...)
 			if ctx.Config().Android64() {
-				flags = append(noOverride64GlobalCflags)
+				flags = append(flags, noOverride64GlobalCflags...)
 			}
 		}
 		return strings.Join(flags, " ")
