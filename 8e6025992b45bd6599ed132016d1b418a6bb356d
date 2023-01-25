@@ -230,6 +230,24 @@
       "parentUuid": "8959f5d3_389486bb",
       "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b38dd956_7e266168",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-01-25T17:46:03Z",
+      "side": 1,
+      "message": "\u003e In the meantime, should we use -march\u003darmv9-a+nosve and -mcpu\u003dcortex-a510+nodotprod or leave it as-is?\n\nin the absence of any interest from partners [at least that\u0027s come to me], i\u0027m leaning towards \"leave it as-is\". with no obvious reward, and significant obvious risk, i don\u0027t think it makes any sense at this point in the annual release cycle.\n\ni\u0027m looking at importing the arm-optimized-routines update right now. let me know if you\u0027ve already run any tests and have performance results to share. (so far i\u0027m just looking at maintaining the status quo!)",
+      "parentUuid": "711f92e7_50d42248",
+      "revId": "8e6025992b45bd6599ed132016d1b418a6bb356d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
