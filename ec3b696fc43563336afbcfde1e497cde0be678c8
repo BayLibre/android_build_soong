@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aea573d_a6678e12",
+        "filename": "python/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-26T19:01:35Z",
+      "side": 1,
+      "message": "This is not a directory, it\u0027s a zipfile. The python interpreter will treat it as a directory when searching the PYTHONPATH though, it\u0027s kindof neat.",
+      "parentUuid": "60f20602_e456f199",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eef8dd43_577cb118",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-26T03:30:18Z",
       "side": 1,
       "message": "Something which I dont fully understand is the difference between hostlauncher and plain launcher.\n\nWe dont support python on devices IIRC, so what does the other one do?",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 16
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57bbdb23_9af0b7fe",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-26T19:01:35Z",
+      "side": 1,
+      "message": "We actually do support python on devices for tests. So there could be architecture differences between these.",
+      "parentUuid": "eef8dd43_577cb118",
       "range": {
         "startLine": 234,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4adb855_934de99b",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-26T19:01:35Z",
+      "side": 1,
+      "message": "\"standard library\" is common terminology to pretty much all programming languages. So I think stdlib or standardLibrary is the correct name for this.\n\nHere\u0027s some python documentation that uses that terminology: https://docs.python.org/3/library/\nRust uses it too: https://doc.rust-lang.org/std/\nGo: https://pkg.go.dev/std\n\nJava is an outlier here in that I can\u0027t find the words \"standard library\" in their docs.",
+      "parentUuid": "87741fa9_9411f619",
+      "range": {
+        "startLine": 572,
+        "startChar": 5,
+        "endLine": 572,
+        "endChar": 11
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21f2f55d_076deea2",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-26T03:30:18Z",
       "side": 1,
       "message": "nit: Move this after the default packages",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ac07b0_47c31aaf",
+        "filename": "python/python_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-26T19:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21f2f55d_076deea2",
       "range": {
         "startLine": 18,
         "startChar": 1,
@@ -110,6 +206,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cd6639c_72246005",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-26T19:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5a5f607_d22038f1",
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9dc6efb_c851a186",
@@ -133,6 +247,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "522ffd75_cf90d1bc",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-26T19:01:35Z",
+      "side": 1,
+      "message": "The problem with that is that `NamedTemporaryFile` opens the file for read/writing. So if we moved all the code in the `with` blocks, we\u0027d at least have to flush the input file after writing it, but I also preferred not to have the file opened by both this script and `py_compile` at the same time.\n\nI like having the prefix so that if the file isn\u0027t deleted for some reason, you can see what the file was for. When it\u0027s just random characters it\u0027s hard to know if it\u0027s a file that\u0027s being used or not. But I don\u0027t feel too strong about this.",
+      "parentUuid": "b9dc6efb_c851a186",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 85
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdcedd42_ba0696b5",
@@ -146,6 +284,30 @@
       "writtenOn": "2023-01-26T03:30:18Z",
       "side": 1,
       "message": "nit: Move the if name.endswith(`.py`) check inside process_one_file and rewrite this as \n```\nfor name in inzip.namelist():\n    process_one_file(name, inzipf, outzip)\n```\n\nThe total number of if-else remains the same either way, but this code block is already at 4 levels of indentation.",
+      "range": {
+        "startLine": 38,
+        "startChar": 15,
+        "endLine": 43,
+        "endChar": 60
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f43279b_761b4f45",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-26T19:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdcedd42_ba0696b5",
       "range": {
         "startLine": 38,
         "startChar": 15,
