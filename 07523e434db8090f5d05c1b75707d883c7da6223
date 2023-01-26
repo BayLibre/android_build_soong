@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6d6417_8fe5c59b",
+        "filename": "python/python.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-26T22:05:34Z",
+      "side": 1,
+      "message": "Colin, do you might checking that I\u0027m doing this variation logic correctly? Notably, the dependency on the stdlib used to be added via `ctx.AddVariationDependencies([]blueprint.Variation{{Mutator: \"python_version\", Variation: p.properties.Actual_version}}, tag, stdlib)`, but now I\u0027m using `AddFarVariationDependencies` so that I can depend on the host version. I\u0027m not 100% sure those are equivalent.",
+      "revId": "07523e434db8090f5d05c1b75707d883c7da6223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
