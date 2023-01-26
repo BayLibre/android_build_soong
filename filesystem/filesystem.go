@@ -155,6 +155,11 @@ func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
 	}
 }
 
+// Implements android.ApexModule
+func (f *filesystem) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
+	return false
+}
+
 func (f *filesystem) installFileName() string {
 	return f.BaseModuleName() + ".img"
 }
