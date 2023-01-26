@@ -1581,7 +1581,7 @@ type JavaApiContribution struct {
 
 func ApiContributionFactory() android.Module {
 	module := &JavaApiContribution{}
-	android.InitAndroidModule(module)
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	module.AddProperties(&module.properties)
 	return module
