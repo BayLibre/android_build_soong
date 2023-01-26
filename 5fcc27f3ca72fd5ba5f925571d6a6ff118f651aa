@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b32f67f_e0c0eadf",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T18:59:23Z",
+      "side": 1,
+      "message": "imo, `foo.api.contribution` should not be visible to `bar`.\n\nIf `droidstubs` explicitly sets its visibility to private, its internal modules should also be private. FWIW, this should not be blocker since you are no longer hardcoding a fixed visibility path when you are creating the internal modules.",
+      "parentUuid": "9f550bb7_da3e0bdf",
+      "range": {
+        "startLine": 897,
+        "startChar": 1,
+        "endLine": 897,
+        "endChar": 57
+      },
+      "revId": "5fcc27f3ca72fd5ba5f925571d6a6ff118f651aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97b8afe0_1612e25b",
         "filename": "java/java.go",
         "patchSetId": 1
