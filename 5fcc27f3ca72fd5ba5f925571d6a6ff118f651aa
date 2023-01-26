@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d62618_4408acf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T16:33:46Z",
+      "side": 1,
+      "message": "Thanks for implementing this feature!",
+      "revId": "5fcc27f3ca72fd5ba5f925571d6a6ff118f651aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67034b4c_ecfeb28a",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T16:33:46Z",
+      "side": 1,
+      "message": "nit: WDYT about always creating a `java_api_contribution` module here, albeit an invalid one if these properties are not set?\n\nThe benefit is that it should allow better error handling from the perspective of the parent java_api_library.\n```\nDependency foo.api.contribution is a java_api_contribution but does not set an api_surface/api_file.\n```\n\nvs\n```\nDependency foo.api.contribution does not exist\n```\n\nEspecially since `foo.api.contribution` is an internal module and will not show up in codesearch.",
+      "range": {
+        "startLine": 880,
+        "startChar": 29,
+        "endLine": 882,
+        "endChar": 33
+      },
+      "revId": "5fcc27f3ca72fd5ba5f925571d6a6ff118f651aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f3d280_6252fd1b",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T16:33:46Z",
+      "side": 1,
+      "message": "I think this should not be hardcoded here. It should probably inherit the visibility of the parent droidstubs module. \n\nDo you think that is feasible? If not, I think we should just remove visibility _for now_",
+      "range": {
+        "startLine": 897,
+        "startChar": 1,
+        "endLine": 897,
+        "endChar": 57
+      },
+      "revId": "5fcc27f3ca72fd5ba5f925571d6a6ff118f651aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b8afe0_1612e25b",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1584,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T16:33:46Z",
+      "side": 1,
+      "message": "Should this module type be an arch module? IIUC, the contribution metadata should be agnostic to the arch of the device.",
+      "range": {
+        "startLine": 1584,
+        "startChar": 9,
+        "endLine": 1584,
+        "endChar": 30
+      },
+      "revId": "5fcc27f3ca72fd5ba5f925571d6a6ff118f651aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
