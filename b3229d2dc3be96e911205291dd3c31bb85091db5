@@ -87,6 +87,30 @@
       },
       "revId": "b3229d2dc3be96e911205291dd3c31bb85091db5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f7aa46_76857f35",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1890456
+      },
+      "writtenOn": "2023-01-26T19:46:19Z",
+      "side": 1,
+      "message": "I see. So `NoOverride64GlobalCflags` doesn\u0027t need to add `llvmNextExtraCommonGlobalCflags`. Thank you!",
+      "parentUuid": "fcc2358b_e13f87af",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 3
+      },
+      "revId": "b3229d2dc3be96e911205291dd3c31bb85091db5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
