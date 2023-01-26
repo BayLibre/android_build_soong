@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "591fc6f8_52799153",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-26T14:47:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a537cbc6_dbda9284",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ea4959e_9f1bccf8",
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "Users do not need to explicitly set it. Refer to aosp/2384532, this option is included in a default that will be controlled by a soong config variable which is then controlled by an environment variable that is set or unset in the module build shell script.",
       "parentUuid": "1ea4959e_9f1bccf8",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 11
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "491006ab_3c60418c",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-26T14:47:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1871d8b2_00b9b433",
       "range": {
         "startLine": 392,
         "startChar": 0,
@@ -397,6 +445,54 @@
       "parentUuid": "ddc4ca91_cc0c6675",
       "range": {
         "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac87ceac_3ea75bc0",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-26T14:47:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01e38fb5_82517457",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "0fe9d05f880dadcf942ff3f1b04ca171ac862f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "350d8644_ef66b714",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-01-26T14:47:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2db0ce0_36cf376d",
+      "range": {
+        "startLine": 393,
         "startChar": 0,
         "endLine": 397,
         "endChar": 22
