@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4988a7b2_9bfb8db9",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-26T18:21:54Z",
+      "side": 1,
+      "message": "nit: reword comment to //a package module has empty name",
+      "revId": "c030ee0869f9ec512ed5e56d7b243741e7cb855e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
