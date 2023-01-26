@@ -133,6 +133,30 @@
       },
       "revId": "5fcc27f3ca72fd5ba5f925571d6a6ff118f651aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9a80124_77914633",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1584,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-01-26T18:21:28Z",
+      "side": 1,
+      "message": "Agreed. Reverting to the original implementation.",
+      "parentUuid": "97b8afe0_1612e25b",
+      "range": {
+        "startLine": 1584,
+        "startChar": 9,
+        "endLine": 1584,
+        "endChar": 30
+      },
+      "revId": "5fcc27f3ca72fd5ba5f925571d6a6ff118f651aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
