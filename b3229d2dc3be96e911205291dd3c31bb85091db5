@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcccaed4_6a579ab4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-01-26T06:46:21Z",
+      "side": 1,
+      "message": "(+yikong FYI and in case you had answer to Zijun\u0027s question about bazel in an earlier comment)",
+      "revId": "b3229d2dc3be96e911205291dd3c31bb85091db5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6b19ce4_b5370c5f",
