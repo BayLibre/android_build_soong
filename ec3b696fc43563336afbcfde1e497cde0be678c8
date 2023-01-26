@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60f20602_e456f199",
+        "filename": "python/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T03:30:18Z",
+      "side": 1,
+      "message": "Should this match `PYTHONPATH`, i.e. $stdlibZip/internal/stdlib?\n\nIIUC, this is also a directory. If there are no additions to that directory and only edits to existing packages, the mtime of the directory will remain unchanged. And the command will not be rerun even though it should.",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef8dd43_577cb118",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T03:30:18Z",
+      "side": 1,
+      "message": "Something which I dont fully understand is the difference between hostlauncher and plain launcher.\n\nWe dont support python on devices IIRC, so what does the other one do?",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 16
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87741fa9_9411f619",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T03:30:18Z",
+      "side": 1,
+      "message": "nit: Does `stdLib` come from Python terminology?\n\nAt first, I confused it with C stdlib (libc, ...). WDYT about using a different name?",
+      "range": {
+        "startLine": 572,
+        "startChar": 5,
+        "endLine": 572,
+        "endChar": 11
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f2f55d_076deea2",
+        "filename": "python/python_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T03:30:18Z",
+      "side": 1,
+      "message": "nit: Move this after the default packages",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a5f607_d22038f1",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T03:30:18Z",
+      "side": 1,
+      "message": "Does this script need the license preamble?",
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9dc6efb_c851a186",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T03:30:18Z",
+      "side": 1,
+      "message": "WDYT about removing `delete\u003dFalse` and rewriting it as\n```\nwith NamedTemporaryFile(prefix\u003d\"...\") as tmp_in, NamedTemporaryFile(prefix\u003d\"...\") as tmp_out:\n```\nThat way, you dont need the explicit `remove` in the finally block\n\nI would even drop the prefix. It makes the code more concise, and it is a temporary file anyways.",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 85
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdcedd42_ba0696b5",
+        "filename": "python/scripts/precompile_python.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T03:30:18Z",
+      "side": 1,
+      "message": "nit: Move the if name.endswith(`.py`) check inside process_one_file and rewrite this as \n```\nfor name in inzip.namelist():\n    process_one_file(name, inzipf, outzip)\n```\n\nThe total number of if-else remains the same either way, but this code block is already at 4 levels of indentation.",
+      "range": {
+        "startLine": 38,
+        "startChar": 15,
+        "endLine": 43,
+        "endChar": 60
+      },
+      "revId": "ec3b696fc43563336afbcfde1e497cde0be678c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
