@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b19ce4_b5370c5f",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-26T04:15:05Z",
+      "side": 1,
+      "message": "Similarly here, `llvmNextExtraCommonGlobalCflags` is already part of `NoOverrideGlobalCflags` and doesn\u0027t need to be in `NoOverride64GlobalCflags`.  This whole block from 400 to 407 could be:\n```\nexportedVars.ExportStringListStaticVariable(\"NoOverride64GlobalCflags\", noOverride64GlobalCflags)\n```",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 3
+      },
+      "revId": "b3229d2dc3be96e911205291dd3c31bb85091db5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
