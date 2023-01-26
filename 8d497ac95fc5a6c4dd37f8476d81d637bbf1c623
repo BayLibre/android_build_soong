@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769280f9_6cd75052",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 9306,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-01-26T17:02:50Z",
+      "side": 1,
+      "message": "Now that I look at this test (not having the bionic libs in LOCAL_REQUIRED_MODULES even though there is no other apex providing them), I believe this is the right fix with respect to b/263123189.",
+      "range": {
+        "startLine": 9306,
+        "startChar": 40,
+        "endLine": 9306,
+        "endChar": 62
+      },
+      "revId": "8d497ac95fc5a6c4dd37f8476d81d637bbf1c623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
