@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf264a4f_5720787a",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-26T15:28:26Z",
+      "side": 1,
+      "message": "no need for this.",
+      "range": {
+        "startLine": 761,
+        "startChar": 0,
+        "endLine": 761,
+        "endChar": 22
+      },
+      "revId": "c3608d734ebf9643647ffca1077f086f028ab316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4909416c_f4acf344",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-26T15:28:26Z",
+      "side": 1,
+      "message": "can you also add a test where this exclude_shared_libs is at the cc_binary level?",
+      "range": {
+        "startLine": 793,
+        "startChar": 2,
+        "endLine": 793,
+        "endChar": 21
+      },
+      "revId": "c3608d734ebf9643647ffca1077f086f028ab316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3ca406_b8310f55",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-26T15:28:26Z",
+      "side": 1,
+      "message": "nit: indents",
+      "range": {
+        "startLine": 793,
+        "startChar": 0,
+        "endLine": 793,
+        "endChar": 2
+      },
+      "revId": "c3608d734ebf9643647ffca1077f086f028ab316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
