@@ -30,6 +30,13 @@ type systemImageProperties struct {
 	Linker_config_src *string
 }
 
+var _ android.DepIsInSameApex = (*systemImage)(nil)
+
+// Implements android.ApexModule
+func (s *systemImage) DepIsInSameApex(_ android.BaseModuleContext, _ android.Module) bool {
+	return false
+}
+
 // android_system_image is a specialization of android_filesystem for the 'system' partition.
 // Currently, the only difference is the inclusion of linker.config.pb file which specifies
 // the provided and the required libraries to and from APEXes.

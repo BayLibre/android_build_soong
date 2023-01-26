@@ -122,13 +122,19 @@ func initFilesystemModule(module *filesystem) {
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 }
 
-var dependencyTag = struct {
+type dependencyTag struct {
 	blueprint.BaseDependencyTag
 	android.PackagingItemAlwaysDepTag
-}{}
+}
+
+var FilesystemdDepTag = dependencyTag{}
+
+func (t dependencyTag) ExcludeFromApexContents() {}
+
+var _ android.ExcludeFromApexContentsTag = FilesystemdDepTag
 
 func (f *filesystem) DepsMutator(ctx android.BottomUpMutatorContext) {
-	f.AddDeps(ctx, dependencyTag)
+	f.AddDeps(ctx, FilesystemdDepTag)
 }
 
 type fsType int
@@ -153,6 +159,13 @@ func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
 		ctx.PropertyErrorf("type", "%q not supported", typeStr)
 		return unknown
 	}
+}
+
+var _ android.DepIsInSameApex = (*filesystem)(nil)
+
+// Implements android.ApexModule
+func (f *filesystem) DepIsInSameApex(_ android.BaseModuleContext, _ android.Module) bool {
+	return false
 }
 
 func (f *filesystem) installFileName() string {
