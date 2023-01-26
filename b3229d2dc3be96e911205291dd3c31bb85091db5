@@ -63,6 +63,30 @@
       },
       "revId": "b3229d2dc3be96e911205291dd3c31bb85091db5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc2358b_e13f87af",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-26T17:36:59Z",
+      "side": 1,
+      "message": "`exportedVars.ExportStringListStaticVariable` will both export it to Bazel and as the `config.NoOverride64GlobalCflags` ninja variable for you to reference.  The part you don\u0027t need is the `VariableFunc`, because `NoOverride64GlobalCflags` never changes.",
+      "parentUuid": "4136680f_8c9482b6",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 3
+      },
+      "revId": "b3229d2dc3be96e911205291dd3c31bb85091db5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
