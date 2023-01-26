@@ -57,6 +57,30 @@
       },
       "revId": "711b0528555296d41ac66147aa55d6fb088ff240",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6975c185_dbbd6b85",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-26T05:13:43Z",
+      "side": 1,
+      "message": "Yes - updated bp2build_test.go to verify the LOCAL_REQUIRED_MODULES mk var.",
+      "parentUuid": "fd0ab4ce_eb725984",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 44
+      },
+      "revId": "711b0528555296d41ac66147aa55d6fb088ff240",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
