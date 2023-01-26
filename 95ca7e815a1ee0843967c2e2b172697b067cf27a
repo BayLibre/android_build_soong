@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e4b5d82_028d5a4e",
+        "filename": "java/droidstubs_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T18:28:32Z",
+      "side": 1,
+      "message": "nit: I think each individual testCase is doing a similar check (albeit on a different module). Do we need a for loop here?",
+      "range": {
+        "startLine": 384,
+        "startChar": 1,
+        "endLine": 384,
+        "endChar": 10
+      },
+      "revId": "95ca7e815a1ee0843967c2e2b172697b067cf27a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5dbfff_8cbcbace",
+        "filename": "java/droidstubs_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T18:28:32Z",
+      "side": 1,
+      "message": "I think this code block is unreachable in the latest implementation?",
+      "range": {
+        "startLine": 403,
+        "startChar": 4,
+        "endLine": 410,
+        "endChar": 4
+      },
+      "revId": "95ca7e815a1ee0843967c2e2b172697b067cf27a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

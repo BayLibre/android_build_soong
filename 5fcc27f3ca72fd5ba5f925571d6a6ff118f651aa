@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b291568_d06bae19",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T18:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e64cc474_07ccd5ea",
+      "range": {
+        "startLine": 880,
+        "startChar": 29,
+        "endLine": 882,
+        "endChar": 33
+      },
+      "revId": "5fcc27f3ca72fd5ba5f925571d6a6ff118f651aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87f3d280_6252fd1b",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Would `java_api_contribution` always be visible to the rdep `java_api_library` when it inherits the parent `droidstubs` module\u0027s dependency? I do not have an answer for this question at the moment, so I will remove the visibility for now.",
       "parentUuid": "87f3d280_6252fd1b",
+      "range": {
+        "startLine": 897,
+        "startChar": 1,
+        "endLine": 897,
+        "endChar": 57
+      },
+      "revId": "5fcc27f3ca72fd5ba5f925571d6a6ff118f651aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a86458_2361b2db",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-26T18:28:32Z",
+      "side": 1,
+      "message": "\u003e Would java_api_contribution always be visible to the rdep java_api_library when it inherits the parent droidstubs module\u0027s dependency\n\nI think I do not fully understand this question. Can you give an example to illustrate this?",
+      "parentUuid": "f79b0ede_65cf6a2f",
       "range": {
         "startLine": 897,
         "startChar": 1,
