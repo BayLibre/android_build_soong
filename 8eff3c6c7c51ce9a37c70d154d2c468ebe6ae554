@@ -52,6 +52,24 @@
       "parentUuid": "356c7fe5_dbf5e19b",
       "revId": "8eff3c6c7c51ce9a37c70d154d2c468ebe6ae554",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62d37e3_86385cc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483218
+      },
+      "writtenOn": "2023-01-26T19:16:09Z",
+      "side": 1,
+      "message": "it blocks mainline module coverage on U, by end of today is ok since the coverage generated daily.",
+      "parentUuid": "87a0d597_b25a7b0c",
+      "revId": "8eff3c6c7c51ce9a37c70d154d2c468ebe6ae554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
