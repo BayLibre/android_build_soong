@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97cbada_9a0a4ec2",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-26T05:13:13Z",
+      "side": 1,
+      "message": "Yes. This are required shared libs in the apex manifest and can still contain the bionic libs. Different to the libs that this apex needs installed to the system.",
+      "parentUuid": "41b92993_31754d62",
+      "revId": "711b0528555296d41ac66147aa55d6fb088ff240",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd0ab4ce_eb725984",
