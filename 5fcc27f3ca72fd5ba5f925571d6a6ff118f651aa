@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f550bb7_da3e0bdf",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-01-26T18:45:13Z",
+      "side": 1,
+      "message": "Sure! In an situation like this:\n```\n$ cat a/b/Android.bp\n\ndroidstubs {\n    name: \"foo\",\n    srcs: [\"**/*.java\"],\n    api_surface: \"public\",\n    check_api: {\n        current: {\n            api_file: \"A/current.txt\",\n            removed_api_file: \"A/removed.txt\",\n        }\n    }\n    visibility: [\"//visibility:private\"],\n}\n\n$ cat c/d/Android.bp\n\njava_api_library {\n    name: \"bar\",\n    api_surface: \"public\",\n    api_contributions: [\n        \"foo.api.contribution\",\n    ],\n}\n```\n\nWould `\"foo.api.contribution\"` still be visible to `\"bar\"`, when it inherits the parent `\"foo\"`\u0027s visibility?",
+      "parentUuid": "53a86458_2361b2db",
+      "range": {
+        "startLine": 897,
+        "startChar": 1,
+        "endLine": 897,
+        "endChar": 57
+      },
+      "revId": "5fcc27f3ca72fd5ba5f925571d6a6ff118f651aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97b8afe0_1612e25b",
         "filename": "java/java.go",
         "patchSetId": 1
