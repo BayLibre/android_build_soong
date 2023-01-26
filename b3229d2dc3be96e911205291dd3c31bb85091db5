@@ -22,6 +22,30 @@
       },
       "revId": "b3229d2dc3be96e911205291dd3c31bb85091db5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4136680f_8c9482b6",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1890456
+      },
+      "writtenOn": "2023-01-26T06:39:58Z",
+      "side": 1,
+      "message": "So there is no need to export it to `NoOverride64GlobalCflags` to Bazel? Do I understand correctly: those flags are all exported to Bazel if `llvmNextExtraCommonGlobalCflags` is added?",
+      "parentUuid": "e6b19ce4_b5370c5f",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 3
+      },
+      "revId": "b3229d2dc3be96e911205291dd3c31bb85091db5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
