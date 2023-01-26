@@ -346,3 +346,68 @@ func TestApiSurfaceFromDroidStubsName(t *testing.T) {
 		android.AssertStringEquals(t, tc.desc, tc.expectedApiSurface, bazelApiSurfaceName(tc.name))
 	}
 }
+
+func TestDroidStubsApiContributionGeneration(t *testing.T) {
+	ctx, _ := testJavaWithFS(t, `
+		droidstubs {
+			name: "foo",
+			srcs: ["A/a.java"],
+			api_surface: "public",
+			check_api: {
+				current: {
+					api_file: "A/current.txt",
+					removed_api_file: "A/removed.txt",
+				}
+			}
+		}
+
+		droidstubs {
+			name: "bar",
+			srcs: ["B/b.java"],
+			check_api: {
+				current: {
+					api_file: "B/current.txt",
+					removed_api_file: "B/removed.txt",
+				}
+			}
+		}
+		`,
+		map[string][]byte{
+			"A/a.java":      nil,
+			"A/current.txt": nil,
+			"A/removed.txt": nil,
+			"B/b.java":      nil,
+			"B/current.txt": nil,
+			"B/removed.txt": nil,
+		},
+	)
+	testcases := []struct {
+		moduleName            string
+		createApiContribution bool
+	}{
+		{
+			moduleName:            "foo",
+			createApiContribution: true,
+		},
+		{
+			moduleName:            "bar",
+			createApiContribution: false,
+		},
+	}
+
+	for _, c := range testcases {
+		apiContributionModuleName := c.moduleName + ".api.contribution"
+		if c.createApiContribution {
+			// check for module existence
+			ctx.ModuleForTests(apiContributionModuleName, "android_common")
+		} else {
+			// check for module nonexistence
+			android.AssertPanicMessageContains(
+				t,
+				"Api contribution module should not be created",
+				fmt.Sprintf("failed to find module \"%s\"", apiContributionModuleName),
+				func() { ctx.ModuleForTests(c.moduleName+".api.contribution", "android_common") },
+			)
+		}
+	}
+}
