@@ -68,6 +68,23 @@
       },
       "revId": "c3608d734ebf9643647ffca1077f086f028ab316",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5167d480_ab7bcd7f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-26T16:00:10Z",
+      "side": 1,
+      "message": "looks like `isBinary` is no longer used",
+      "revId": "c3608d734ebf9643647ffca1077f086f028ab316",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
