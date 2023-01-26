@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f6d90d_64342ee7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-26T18:50:38Z",
+      "side": 1,
+      "message": "Did you check that reverting this cl fixes your issue locally?",
+      "revId": "8eff3c6c7c51ce9a37c70d154d2c468ebe6ae554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
