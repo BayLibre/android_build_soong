@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ebce30_809b5fd4",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1573,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-27T12:09:53Z",
+      "side": 1,
+      "message": "Please add tests to https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex_test.go to validate this behavior.",
+      "range": {
+        "startLine": 1573,
+        "startChar": 21,
+        "endLine": 1573,
+        "endChar": 33
+      },
+      "revId": "e2ed70c61abb92d355906a51b6df65c5d4e9da4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a365414e_cd623db4",
+        "filename": "apex/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-01-27T12:09:53Z",
+      "side": 1,
+      "message": "Could you also file a go/roboleaf-bug for us to take on the Bazel-side implementation of this? Feel free to assign it to me.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 16
+      },
+      "revId": "e2ed70c61abb92d355906a51b6df65c5d4e9da4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
