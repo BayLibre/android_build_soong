@@ -20,17 +20,44 @@ import (
 	"android/soong/android"
 )
 
+var (
+	apiLevelExportedVars = android.NewExportedVariables(pctx)
+	minApiForArchMap     = map[android.ArchType]android.ApiLevel{
+		android.Arm64:   android.FirstLp64Version,
+		android.X86_64:  android.FirstLp64Version,
+		android.Riscv64: android.FutureApiLevel,
+	}
+)
+
+func init() {
+	apiLevelExportedVars.ExportStringDict(
+		"MinApiForArch",
+		map[string]string{
+			android.Arm.String():     "${MinApiForArch_Arm}",
+			android.X86.String():     "${MinApiForArch_X86}",
+			android.Arm64.String():   minApiForArchMap[android.Arm64].String(),
+			android.X86_64.String():  minApiForArchMap[android.X86_64].String(),
+			android.Riscv64.String(): minApiForArchMap[android.Riscv64].String(),
+		},
+	)
+	apiLevelExportedVars.ExportVariableConfigMethod("MinApiForArch_Arm", func(config android.Config) string {
+		return config.MinSupportedSdkVersion().String()
+	})
+	apiLevelExportedVars.ExportVariableConfigMethod("MinApiForArch_X86", func(config android.Config) string {
+		return config.MinSupportedSdkVersion().String()
+	})
+}
+
 func minApiForArch(ctx android.EarlyModuleContext,
 	arch android.ArchType) android.ApiLevel {
 
 	switch arch {
 	case android.Arm, android.X86:
 		return ctx.Config().MinSupportedSdkVersion()
-	case android.Arm64, android.X86_64:
-		return android.FirstLp64Version
-	case android.Riscv64:
-		return android.FutureApiLevel
 	default:
+		if level, ok := minApiForArchMap[arch]; ok {
+			return level
+		}
 		panic(fmt.Errorf("Unknown arch %q", arch))
 	}
 }
@@ -62,4 +89,8 @@ func nativeApiLevelOrPanic(ctx android.BaseModuleContext,
 		panic(err.Error())
 	}
 	return value
+}
+
+func BazelCcApiLevelToolchainVars(config android.Config) string {
+	return android.BazelToolchainVars(config, apiLevelExportedVars)
 }

@@ -39,6 +39,7 @@ type ExportedVariables struct {
 	// environment variables of the build.
 	exportedStringVars         ExportedStringVariables
 	exportedStringListVars     ExportedStringListVariables
+	exportedStringDictVars     ExportedStringDictVariables
 	exportedStringListDictVars ExportedStringListDictVariables
 
 	exportedVariableReferenceDictVars ExportedVariableReferenceDictVariables
@@ -54,6 +55,7 @@ func NewExportedVariables(pctx PackageContext) ExportedVariables {
 	return ExportedVariables{
 		exportedStringVars:                ExportedStringVariables{},
 		exportedStringListVars:            ExportedStringListVariables{},
+		exportedStringDictVars:            ExportedStringDictVariables{},
 		exportedStringListDictVars:        ExportedStringListDictVariables{},
 		exportedVariableReferenceDictVars: ExportedVariableReferenceDictVariables{},
 		exportedConfigDependingVars:       ExportedConfigDependingVariables{},
@@ -61,11 +63,16 @@ func NewExportedVariables(pctx PackageContext) ExportedVariables {
 	}
 }
 
-func (ev ExportedVariables) asBazel(config Config,
-	stringVars ExportedStringVariables, stringListVars ExportedStringListVariables, cfgDepVars ExportedConfigDependingVariables) []bazelConstant {
+func (ev ExportedVariables) asBazel(
+	config Config,
+	stringVars ExportedStringVariables,
+	stringListVars ExportedStringListVariables,
+	cfgDepVars ExportedConfigDependingVariables,
+) []bazelConstant {
 	ret := []bazelConstant{}
 	ret = append(ret, ev.exportedStringVars.asBazel(config, stringVars, stringListVars, cfgDepVars)...)
 	ret = append(ret, ev.exportedStringListVars.asBazel(config, stringVars, stringListVars, cfgDepVars)...)
+	ret = append(ret, ev.exportedStringDictVars.asBazel(config, stringVars, stringListVars, cfgDepVars)...)
 	ret = append(ret, ev.exportedStringListDictVars.asBazel(config, stringVars, stringListVars, cfgDepVars)...)
 	// Note: ExportedVariableReferenceDictVars collections can only contain references to other variables and must be printed last
 	ret = append(ret, ev.exportedVariableReferenceDictVars.asBazel(config, stringVars, stringListVars, cfgDepVars)...)
@@ -121,6 +128,11 @@ func (ev ExportedVariables) ExportString(name string, value string) {
 // ExportStringList only exports a variable to Bazel, but does not declare it in Soong
 func (ev ExportedVariables) ExportStringList(name string, value []string) {
 	ev.exportedStringListVars.set(name, value)
+}
+
+// ExportStringListDict only exports a variable to Bazel, but does not declare it in Soong
+func (ev ExportedVariables) ExportStringDict(name string, value map[string]string) {
+	ev.exportedStringDictVars.set(name, value)
 }
 
 // ExportStringListDict only exports a variable to Bazel, but does not declare it in Soong
@@ -239,6 +251,41 @@ func (m ExportedStringListVariables) asBazel(config Config,
 		ret = append(ret, bazelConstant{
 			variableName:       k,
 			internalDefinition: starlark_fmt.PrintStringList(expandedVars, 0),
+		})
+	}
+	return ret
+}
+
+// ExportedStringDictVariables is a mapping from variable names to a
+// dictionary which maps keys to strings
+type ExportedStringDictVariables map[string]map[string]string
+
+func (m ExportedStringDictVariables) set(k string, v map[string]string) {
+	m[k] = v
+}
+
+// Since dictionaries are not supported in Ninja, we do not expand variables for dictionaries
+func (m ExportedStringDictVariables) asBazel(config Config, stringVars ExportedStringVariables,
+	stringListVars ExportedStringListVariables, cfgDepVars ExportedConfigDependingVariables) []bazelConstant {
+	ret := make([]bazelConstant, 0, len(m))
+	// For each exported variable, recursively expand elements in the variableValue
+	// to ensure that interpolated variables are expanded according to their values
+	// in the variable scope.
+	for k, variableValue := range m {
+		expandedDict := map[string]string{}
+		for varKey, v := range variableValue {
+			expandedVar, err := expandVar(config, v, stringVars, stringListVars, cfgDepVars)
+			if err != nil {
+				panic(fmt.Errorf("Error expanding config variable %s=%s: %s", k, v, err))
+			}
+			if len(expandedVar) > 1 {
+				panic(fmt.Errorf("%s expands to more than one string value: %s", variableValue, expandedVar))
+			}
+			expandedDict[varKey] = expandedVar[0]
+		}
+		ret = append(ret, bazelConstant{
+			variableName:       k,
+			internalDefinition: starlark_fmt.PrintStringDict(expandedDict, 0),
 		})
 	}
 	return ret

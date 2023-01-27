@@ -66,6 +66,16 @@ func PrintList(items []string, indentLevel int, formatString func(string) string
 
 // PrintStringListDict returns a Starlark-compatible string formatted as dictionary with
 // string keys and list of string values.
+func PrintStringDict(dict map[string]string, indentLevel int) string {
+	formattedValueDict := make(map[string]string, len(dict))
+	for k, v := range dict {
+		formattedValueDict[k] = fmt.Sprintf("%q", v)
+	}
+	return PrintDict(formattedValueDict, indentLevel)
+}
+
+// PrintStringListDict returns a Starlark-compatible string formatted as dictionary with
+// string keys and list of string values.
 func PrintStringListDict(dict map[string][]string, indentLevel int) string {
 	formattedValueDict := make(map[string]string, len(dict))
 	for k, v := range dict {

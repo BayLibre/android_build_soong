@@ -382,11 +382,11 @@ func (t libraryDependencyTag) SkipApexAllowedDependenciesCheck() bool {
 
 var _ android.SkipApexAllowedDependenciesCheck = (*libraryDependencyTag)(nil)
 
-var exportedVars = android.NewExportedVariables(pctx)
+var sanitizerExportedVars = android.NewExportedVariables(pctx)
 
 func init() {
-	exportedVars.ExportStringListStaticVariable("HostOnlySanitizeFlags", hostOnlySanitizeFlags)
-	exportedVars.ExportStringList("DeviceOnlySanitizeFlags", deviceOnlySanitizeFlags)
+	sanitizerExportedVars.ExportStringListStaticVariable("HostOnlySanitizeFlags", hostOnlySanitizeFlags)
+	sanitizerExportedVars.ExportStringList("DeviceOnlySanitizeFlags", deviceOnlySanitizeFlags)
 
 	android.RegisterMakeVarsProvider(pctx, cfiMakeVarsProvider)
 	android.RegisterMakeVarsProvider(pctx, hwasanMakeVarsProvider)
@@ -1797,5 +1797,5 @@ func hwasanMakeVarsProvider(ctx android.MakeVarsContext) {
 }
 
 func BazelCcSanitizerToolchainVars(config android.Config) string {
-	return android.BazelToolchainVars(config, exportedVars)
+	return android.BazelToolchainVars(config, sanitizerExportedVars)
 }
