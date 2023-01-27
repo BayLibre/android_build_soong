@@ -240,6 +240,11 @@ func (m *Metrics) SetBuildCommand(cmd []string) {
 	m.metrics.BuildCommand = proto.String(strings.Join(cmd, " "))
 }
 
+// Sets the Branch name of the build being executed.
+func (m *Metrics) SetBranchName(branchName string) {
+	m.metrics.BranchName = &branchName
+}
+
 // Dump exports the collected metrics from the executed build to the file at
 // out path.
 func (m *Metrics) Dump(out string) error {
