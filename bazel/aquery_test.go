@@ -227,7 +227,7 @@ func TestInvalidInputDepsetIdFromAction(t *testing.T) {
 		return
 	}
 	_, _, err = AqueryBuildStatements(data)
-	assertError(t, err, "undefined input depsetId 2")
+	assertError(t, err, "undefined (not even empty) input depsetId 2")
 }
 
 func TestInvalidInputDepsetIdFromDepset(t *testing.T) {
@@ -590,7 +590,7 @@ func TestBazelOutRemovalFromInputDepsets(t *testing.T) {
 		return
 	}
 	actualBuildStatements, actualDepsets, _ := AqueryBuildStatements(data)
-	if len(actualDepsets) != 2 {
+	if len(actualDepsets) != 1 {
 		t.Errorf("expected 1 depset but found %#v", actualDepsets)
 		return
 	}
