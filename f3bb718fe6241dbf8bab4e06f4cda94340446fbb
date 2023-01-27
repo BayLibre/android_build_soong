@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c01ac2_2d9c4d4b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-27T21:39:47Z",
+      "side": 1,
+      "message": "Doesn\u0027t this depend on depsets being ordered? That is, \"depset_i may only depend on depset_j if i \u003e j\" ? \n\n(For example, consider depset A depends on depset B, and depset B is empty. If A comes first, then B won\u0027t yet be present in emptyDepsetIds, thus we\u0027ll include B. Then, when B comes about, we\u0027ll omit it entirely. A will thus be unresolvable.)\n\nI\u0027m unclear on whether this ordering is a Bazel guarantee. (It might be the case today, but who knows in the future? unless it\u0027s a documented invariant)\n\nHowever, I believe we\u0027d immediately see a build failure if this invariant were broken -- ninja should complain immediately that it can\u0027t resolve the inputs of an action. \n\nIn the interest of getting this CL submitted quickly, I think it\u0027s fine to proceed with this implementation. However, we should either extensively document this assumed invariant (and a failure that might arise), or file a bug and fix this as a quick followup.",
+      "range": {
+        "startLine": 241,
+        "startChar": 20,
+        "endLine": 241,
+        "endChar": 34
+      },
+      "revId": "f3bb718fe6241dbf8bab4e06f4cda94340446fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
