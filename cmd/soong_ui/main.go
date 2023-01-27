@@ -191,6 +191,7 @@ func main() {
 	}}
 
 	config := c.config(buildCtx, args...)
+	met.SetBranchName(readBranchName(buildCtx))
 	config.SetLogsPrefix(c.logsPrefix)
 	logsDir := config.LogsDir()
 	buildStarted = config.BuildStartedTimeOrDefault(buildStarted)
@@ -284,6 +285,31 @@ func logAndSymlinkSetup(buildCtx build.Context, config build.Config) {
 	f := build.NewSourceFinder(buildCtx, config)
 	defer f.Shutdown()
 	build.FindSources(buildCtx, config, f)
+}
+
+func readBranchName(ctx build.Context) string {
+	topDir, err := os.Getwd()
+	if err != nil {
+		ctx.Fatalln("Error reading topDir %s\n", err)
+	}
+
+	path := filepath.Join(topDir, "build/make/core/build_id.mk")
+
+	data, err := os.ReadFile(path)
+	if err != nil {
+		ctx.Fatalln("Error reading build/make/core/build_id.mk %s\n", err)
+	}
+
+	// the branch name is the second-to-last line of the file, in the format:
+	// BUILD_ID=AOSP.MASTER
+	lines := strings.Split(string(data), "\n")
+	length := len(lines)
+	lastLine := lines[length-2]
+	ind := strings.Index(lastLine, "BUILD_ID=")
+	if ind < 0 {
+		ctx.Fatalln("Could not reach branch name from build/make/core/build_id.mk\n")
+	}
+	return lastLine[ind+9:]
 }
 
 func fixBadDanglingLink(ctx build.Context, name string) {
