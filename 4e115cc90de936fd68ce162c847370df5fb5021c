@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b15d1f7_3d48926a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-27T21:04:23Z",
+      "side": 1,
+      "message": "Followed up with these suggestions in aosp/2406216",
+      "revId": "4e115cc90de936fd68ce162c847370df5fb5021c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

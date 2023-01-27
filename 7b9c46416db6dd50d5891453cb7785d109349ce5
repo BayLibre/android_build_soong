@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4bd2d4_72c8b171",
+        "filename": "android/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-27T21:04:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d8ebab6_f35da921",
+      "range": {
+        "startLine": 158,
+        "startChar": 26,
+        "endLine": 159,
+        "endChar": 25
+      },
+      "revId": "7b9c46416db6dd50d5891453cb7785d109349ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d15a8754_f8f2a400",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-23T21:07:45Z",
       "side": 1,
       "message": "why are we handling these both here rather than a specific handler that has expectations on getccinfo vs getccunstrippedinfo? if we maintain here, can you add a comment about why here?",
+      "range": {
+        "startLine": 1886,
+        "startChar": 0,
+        "endLine": 1896,
+        "endChar": 2
+      },
+      "revId": "7b9c46416db6dd50d5891453cb7785d109349ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9223e309_1fde5ec3",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-27T21:04:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d15a8754_f8f2a400",
       "range": {
         "startLine": 1886,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c3d798_b7cf27ab",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 3032,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-27T21:04:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2869e48a_8001829a",
+      "range": {
+        "startLine": 3032,
+        "startChar": 5,
+        "endLine": 3032,
+        "endChar": 25
+      },
+      "revId": "7b9c46416db6dd50d5891453cb7785d109349ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a290d08_2100e470",
@@ -107,6 +179,30 @@
       "writtenOn": "2023-01-23T21:07:45Z",
       "side": 1,
       "message": "this seems inaccurate, since it would also have any libraries we have in excess as well?",
+      "range": {
+        "startLine": 3211,
+        "startChar": 3,
+        "endLine": 3211,
+        "endChar": 20
+      },
+      "revId": "7b9c46416db6dd50d5891453cb7785d109349ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b15169_6712ef7e",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 3211,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-27T21:04:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a290d08_2100e470",
       "range": {
         "startLine": 3211,
         "startChar": 3,
