@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c3c5a08_71cdef15",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1322766
+      },
+      "writtenOn": "2023-01-27T17:37:36Z",
+      "side": 1,
+      "message": "I think this would change the page size even for host and all targets (not just Arm).\nAlso there might be unexpected consequences from defining it globally.\nI suggest using a different define, and updating places where PAGE_SIZE is defined in the code.",
+      "range": {
+        "startLine": 414,
+        "startChar": 57,
+        "endLine": 414,
+        "endChar": 67
+      },
+      "revId": "c064407eba4f7b844ad2dbfaa642feb13d814db1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
