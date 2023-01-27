@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb020eee_50657db9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-27T23:19:43Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether we should be satisfied with this feature without further discussion, as it omits information about side branches. I\u0027ve elaborated in b/259303480, and I\u0027m happy to discuss offline.",
+      "revId": "21a834c3ead0e1254940da594d5d41bf5c86c947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
