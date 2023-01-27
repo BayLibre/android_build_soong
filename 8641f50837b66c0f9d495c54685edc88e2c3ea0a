@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37bbf34_606a5806",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-27T22:43:43Z",
+      "side": 1,
+      "message": "Consider renaming (`stdlibTarget`?), I\u0027d expect `target` to be the target of the current module.",
+      "range": {
+        "startLine": 331,
+        "startChar": 15,
+        "endLine": 331,
+        "endChar": 21
+      },
+      "revId": "8641f50837b66c0f9d495c54685edc88e2c3ea0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b3f0a07_60019447",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-27T22:43:43Z",
+      "side": 1,
+      "message": "Unrelated to this CL, but FYI this isn\u0027t true any more.  `ctx.Add*Dependencies` returns the `Module` for each dependency, and you can query it with `ctx.OtherModuleProvider`, etc.",
+      "range": {
+        "startLine": 334,
+        "startChar": 1,
+        "endLine": 337,
+        "endChar": 23
+      },
+      "revId": "8641f50837b66c0f9d495c54685edc88e2c3ea0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d3ab58e_d7d20e24",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-01-27T22:43:43Z",
+      "side": 1,
+      "message": "Looks fine, but I\u0027d suggest a comment explaining why a far dependency is used here, and godoc on the method explaining that it can be called for the device target for embedded launcher on device modules, but also for the host target for precompiling sources.",
+      "revId": "8641f50837b66c0f9d495c54685edc88e2c3ea0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
