@@ -16,6 +16,24 @@
       "message": "I don\u0027t see where `else config.BuildMode \u003d AnalysisNoBazel` is handled. Is that how the iota thing works?",
       "revId": "cae3bfa702b2bda37e75a7f520eddd0e19edafe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e42f5a0f_684faff5",
+        "filename": "android/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-27T21:11:12Z",
+      "side": 1,
+      "message": "yes. that\u0027s the first value and thus the default",
+      "parentUuid": "e5d9372a_d08e2d3c",
+      "revId": "cae3bfa702b2bda37e75a7f520eddd0e19edafe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
