@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1766ef2a_b5091a8d",
+        "filename": "python/tests/runtest.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-01-28T01:23:29Z",
+      "side": 0,
+      "message": "py-cmd_test.py is unrelated to embedded python2, and is still relevant until we get rid of py2-cmd (which may be soon?). When this is removed, we should also clean up the python2 portions of py-cmd_test.py",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 88
+      },
+      "revId": "3420d978cf2d5fe614f12256595ff67be2ee6f98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

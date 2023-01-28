@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cce6892_6933962d",
+        "filename": "python/tests/testpkg/par_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-01-28T01:23:29Z",
+      "side": 1,
+      "message": "The python3 side of this was `None`, not `\"testpkg\"`",
+      "range": {
+        "startLine": 32,
+        "startChar": 41,
+        "endLine": 32,
+        "endChar": 50
+      },
+      "revId": "0efbe5dc68d57848da27c0c4c71d624f4edcc0a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
