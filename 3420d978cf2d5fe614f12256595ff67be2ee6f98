@@ -22,6 +22,30 @@
       },
       "revId": "3420d978cf2d5fe614f12256595ff67be2ee6f98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0880c952_20adc10f",
+        "filename": "python/tests/runtest.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-01-28T01:30:57Z",
+      "side": 0,
+      "message": "Partners still heavily rely on py2-cmd, and potentially soong-built python 2 (embedded or not). My plan was to submit aosp/2279024 for the make stuff, and make a BUILD_BROKEN_USES_PYTHON2 flag for the soong stuff for U, and then fully remove python 2 in V after communicating with partners.\n\nRemoving the py2 par_test would make it easier to implement BUILD_BROKEN_USES_PYTHON2. But the py-cmd_test can easily stay until we\u0027re ready to fully remove python 2.",
+      "parentUuid": "1766ef2a_b5091a8d",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 88
+      },
+      "revId": "3420d978cf2d5fe614f12256595ff67be2ee6f98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
