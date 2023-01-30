@@ -16,6 +16,24 @@
       "message": "Note pruning can result in multiple depsets being equivalent (but that was also the case when a sentinel was used):\nexample\n depset1 has direct deps \"somedep\" and \"../bazel_tools/tool1\"\n depset2 has direct deps \"somedep\" and \"../bazel_tools/tool2\"\nboth will become equivalent depset that has \"somedep\" as the sole content\n\nThis leads to a buildstatement having the same depfile listed more than once as a dependency - but that doesn\u0027t hurt (i.e. I am not trying to mimic a sorted set everywhere)",
       "revId": "13fd5aead75bf6aaba57975464acfe4db2dfa97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a827c810_10dbde1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-30T16:55:31Z",
+      "side": 1,
+      "message": "\u003e This leads to a buildstatement having the same depfile listed more than once as a dependency\n\nWouldn\u0027t this example be a case where the file was listed more than once as a dependency regardless? This is WAI I think, because it means that Bazel had duplicate files in the depset (which is OK, and the only way to resolve this would be flattening the depset, which we want to avoid)",
+      "parentUuid": "1a8ad174_6e55d913",
+      "revId": "13fd5aead75bf6aaba57975464acfe4db2dfa97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

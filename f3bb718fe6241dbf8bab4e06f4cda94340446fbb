@@ -70,6 +70,30 @@
       },
       "revId": "f3bb718fe6241dbf8bab4e06f4cda94340446fbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab75beca_211ef3a2",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-01-30T16:55:31Z",
+      "side": 1,
+      "message": "ah, I see. I misunderstood what was going on here. Thanks for the test 😊",
+      "parentUuid": "e7cec383_313eef40",
+      "range": {
+        "startLine": 241,
+        "startChar": 20,
+        "endLine": 241,
+        "endChar": 34
+      },
+      "revId": "f3bb718fe6241dbf8bab4e06f4cda94340446fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
