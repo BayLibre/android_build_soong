@@ -16,6 +16,24 @@
       "message": "This is essentially reducing the amount of horizontal class merging. Did you try disabling horizontal class merging completely? I am not arguing we should do this, but this trivially improves further on (1) and (2) -- but what about (3) and (4)? Also, does this change increase dex code size? If so maybe add a note about this to the CL description. If not, we need to look more into this, as that would indicate that horizontal class merging regresses dex size, contrary to our expectations.",
       "revId": "a1b8b9bab92826da0c162e766bc78c2a48ba428e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a11bf0_17aa8f7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-01-30T16:48:55Z",
+      "side": 1,
+      "message": "\u003e id you try disabling horizontal class merging completely\n\nI didn\u0027t, but it\u0027s a good idea to see what the relative delta is. I\u0027ll give that a try.\n\n\u003e but what about (3) and (4)\n\nFor SystemUI, it was almost an equivalent reduction in odex as it was an increase in dex (~600KB). I\u0027d like to better understand that, but it\u0027s tricky as disabling the optimization scatters the size across many methods, and tracing them back to the merged method/class became a bit tedious (maybe there\u0027s some better tooling, I typically use bloaty for native code size analysis).\n\nFor RSS on SystemUI, it was a net 1% decrease in RSS, some of that from code size, some from privatedirty. Some of that may be noise, but I tested on ~3 different devices.\n\n\u003e does this change increase dex code size? \n\nNo, it definitely increased dex by \u003e600KB, I can note that in the CL description.",
+      "parentUuid": "ca6ecc55_47ac482a",
+      "revId": "a1b8b9bab92826da0c162e766bc78c2a48ba428e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
