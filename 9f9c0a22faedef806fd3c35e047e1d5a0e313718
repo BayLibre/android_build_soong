@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd67de3_777157c0",
+        "filename": "java/dex.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-01-30T23:36:43Z",
+      "side": 1,
+      "message": "I don\u0027t think we should be injecting the errorprone classpath like this to the R8 invocation, at least not for default compilation when we\u0027re not running errorprone.\n\nIn particular, the error_prone_core-*-with-dependencies.jar includes a lot of library code (e.g., protobuf) that we don\u0027t want conflicting with static program code. This is what causes the protobuf warnings that you had to suppress, and is likely hiding related bugs.",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 20
+      },
+      "revId": "9f9c0a22faedef806fd3c35e047e1d5a0e313718",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
