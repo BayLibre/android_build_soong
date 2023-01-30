@@ -70,8 +70,8 @@ the same line. The supported tags are:
 
 ### apex
 
-Indicates that the version or symbol is to be exposed by an APEX rather than the
-NDK. For APIs exposed by the platform *for* APEX, use `systemapi`.
+Indicates that the version or symbol is to be exposed by an APEX for an APEX.
+For APIs exposed by the platform *for* APEX, use `systemapi`.
 
 May be used in combination with `llndk` if the symbol is exposed to both APEX
 and the LL-NDK.
@@ -148,9 +148,17 @@ from access via `dlsym`, but this is not always possible.
 
 ### systemapi
 
-This is a synonym of the `apex` tag. It should be used to clarify that the API
-is an API exposed by the system for an APEX, whereas `apex` should be used for
-APIs exposed by an APEX to the platform or another APEX.
+Indicates that the version or symbol is to be exposed by the platform for an APEX.
+For APIs exposed by an apex *for* APEX, use `apex`.
+
+May be used in combination with `llndk` if the symbol is exposed to both APEX
+and the LL-NDK.
+
+Since a single library can be installed ether in platform or an apex, but not
+both, a single map.txt file should not contain _both_ # apex and # systemapi symbols.
+
+The consumers of both # apex and # systemapi are APEXes. This granularity exists
+to help the API review process (b/191371676)
 
 ### var
 
