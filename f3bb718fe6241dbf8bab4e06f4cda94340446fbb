@@ -22,6 +22,30 @@
       },
       "revId": "f3bb718fe6241dbf8bab4e06f4cda94340446fbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db4eff6_753b44e0",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-01-30T16:43:37Z",
+      "side": 1,
+      "message": "I thought that way and hence had employed the sentinel file instead of pruning originally.\nBut note that because of the recursive call to `populateDepsetMaps()` the ordering does not matter. Added a test case for that.",
+      "parentUuid": "44c01ac2_2d9c4d4b",
+      "range": {
+        "startLine": 241,
+        "startChar": 20,
+        "endLine": 241,
+        "endChar": 34
+      },
+      "revId": "f3bb718fe6241dbf8bab4e06f4cda94340446fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
