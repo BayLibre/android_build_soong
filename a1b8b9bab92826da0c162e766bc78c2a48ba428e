@@ -34,6 +34,24 @@
       "parentUuid": "ca6ecc55_47ac482a",
       "revId": "a1b8b9bab92826da0c162e766bc78c2a48ba428e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c51a2ab8_5d17ecff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-01-30T20:34:34Z",
+      "side": 1,
+      "message": "OK, some more numbers relative to the base SystemUI target:\n\n```\nSame-file Merge:      +800KB dex, -700 odex\nNo Horizontal Merge: +1100KB dex, -700 odex \n```\n\nI\u0027d hazard a guess that we don\u0027t see further reduction in odex when disabling horizontal merging (relative to same-file merging) because that enables more inlining in dex2oat, but that\u0027s just a guess.\n\nAt this point, I don\u0027t feel too strongly about which one to use. Saving 300KB is nice, but if `disableHorizontalClassMerging` is cleaner (and maybe more stable for R8?), we can do that for now. @christofferqa@google.com thoughts?",
+      "parentUuid": "77a11bf0_17aa8f7f",
+      "revId": "a1b8b9bab92826da0c162e766bc78c2a48ba428e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
