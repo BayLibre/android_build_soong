@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523f351b_a7bf410a",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-01-30T23:13:10Z",
+      "side": 1,
+      "message": "jiyong: Is that true, or are these also consumable by the OS? That was definitely part of the original plan. Was that dropped?",
+      "range": {
+        "startLine": 73,
+        "startChar": 65,
+        "endLine": 73,
+        "endChar": 76
+      },
+      "revId": "23774638df265a33dae3aad438b4f8183a80d9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
