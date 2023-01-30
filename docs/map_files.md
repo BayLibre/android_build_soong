@@ -148,9 +148,17 @@ from access via `dlsym`, but this is not always possible.
 
 ### systemapi
 
-This is a synonym of the `apex` tag. It should be used to clarify that the API
-is an API exposed by the system for an APEX, whereas `apex` should be used for
-APIs exposed by an APEX to the platform or another APEX.
+Indicates that the symbol is exposed by the platform for an apex. Whereas `apex`
+should be used for APIs exposed by an APEX to the platform or another APEX.
+
+May be used in combination with `llndk` if the symbol is exposed to both APEX
+and the LL-NDK.
+
+Since a single library can be installed ether in platform or an apex, but not
+both, a single map.txt file should not contain _both_ # apex and # systemapi symbols.
+
+The granularity between # apex and # systemapi exists to help the API review
+process (b/191371676).
 
 ### var
 
