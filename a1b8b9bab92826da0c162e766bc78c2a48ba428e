@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca6ecc55_47ac482a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2023-01-30T10:22:18Z",
+      "side": 1,
+      "message": "This is essentially reducing the amount of horizontal class merging. Did you try disabling horizontal class merging completely? I am not arguing we should do this, but this trivially improves further on (1) and (2) -- but what about (3) and (4)? Also, does this change increase dex code size? If so maybe add a note about this to the CL description. If not, we need to look more into this, as that would indicate that horizontal class merging regresses dex size, contrary to our expectations.",
+      "revId": "a1b8b9bab92826da0c162e766bc78c2a48ba428e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
