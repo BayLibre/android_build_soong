@@ -15,10 +15,9 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"reflect"
 	"sync"
-
-	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -269,7 +268,7 @@ type TopDownMutatorContext interface {
 	// factory method, just like in CreateModule, but also requires
 	// BazelTargetModuleProperties containing additional metadata for the
 	// bp2build codegenerator.
-	CreateBazelTargetModule(bazel.BazelTargetModuleProperties, CommonAttributes, interface{})
+	CreateBazelTargetModule(string, bazel.BazelTargetModuleProperties, interface{})
 }
 
 type topDownMutatorContext struct {
@@ -515,18 +514,17 @@ func registerDepsMutatorBp2Build(ctx RegisterMutatorsContext) {
 }
 
 func (t *topDownMutatorContext) CreateBazelTargetModule(
+	name string,
 	bazelProps bazel.BazelTargetModuleProperties,
-	commonAttrs CommonAttributes,
 	attrs interface{}) {
-	commonAttrs.fillCommonBp2BuildModuleAttrs(t)
-	mod := t.Module()
+
 	info := bp2buildInfo{
-		Dir:         t.OtherModuleDir(mod),
-		BazelProps:  bazelProps,
-		CommonAttrs: commonAttrs,
-		Attrs:       attrs,
+		Name:       name,
+		Dir:        t.OtherModuleDir(t.Module()),
+		BazelProps: bazelProps,
+		Attrs:      attrs,
 	}
-	mod.base().addBp2buildInfo(info)
+	t.Module().base().addBp2buildInfo(info)
 }
 
 func (t *topDownMutatorContext) AppendProperties(props ...interface{}) {

@@ -71,9 +71,9 @@ func (c ContextImpl) CompleteTrace(name, desc string, begin, end uint64) {
 		realTime := end - begin
 		c.Metrics.SetTimeMetrics(
 			soong_metrics_proto.PerfInfo{
-				Description: &desc,
-				Name:        &name,
-				StartTime:   &begin,
-				RealTime:    &realTime})
+				Desc:      &desc,
+				Name:      &name,
+				StartTime: &begin,
+				RealTime:  &realTime})
 	}
 }

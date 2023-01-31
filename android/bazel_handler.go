@@ -587,11 +587,13 @@ def %s(target):
 %s
 
 def get_arch(target):
-  buildoptions = build_options(target)
-  if buildoptions == None:
-    # File targets do not have buildoptions. File targets aren't associated with
-    #  any specific platform architecture in mixed builds.
+  # TODO(b/199363072): filegroups and file targets aren't associated with any
+  # specific platform architecture in mixed builds. This is consistent with how
+  # Soong treats filegroups, but it may not be the case with manually-written
+  # filegroup BUILD targets.
+  if target.kind in ["filegroup", ""]:
     return "common"
+  buildoptions = build_options(target)
   platforms = build_options(target)["//command_line_option:platforms"]
   if len(platforms) != 1:
     # An individual configured target should have only one platform architecture.
@@ -694,7 +696,7 @@ func (context *bazelContext) InvokeBazel() error {
 	cqueryOutput, cqueryErr, err = context.issueBazelCommand(
 		context.paths,
 		bazel.CqueryBuildRootRunName,
-		bazelCommand{"cquery", fmt.Sprintf("deps(%s, 2)", buildrootLabel)},
+		bazelCommand{"cquery", fmt.Sprintf("deps(%s)", buildrootLabel)},
 		"--output=starlark",
 		"--starlark:file="+absolutePath(cqueryFileRelpath))
 	err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"),
@@ -813,7 +815,7 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		if len(buildStatement.OutputPaths) > 0 {
 			cmd.Text("rm -f")
 			for _, outputPath := range buildStatement.OutputPaths {
-				cmd.Text(outputPath)
+				cmd.Text(PathForBazelOut(ctx, outputPath).String())
 			}
 			cmd.Text("&&")
 		}

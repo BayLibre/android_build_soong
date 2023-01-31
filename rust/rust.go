@@ -130,10 +130,9 @@ type BaseProperties struct {
 	// Minimum sdk version that the artifact should support when it runs as part of mainline modules(APEX).
 	Min_sdk_version *string
 
-	HideFromMake   bool `blueprint:"mutated"`
-	PreventInstall bool `blueprint:"mutated"`
-
-	Installable *bool
+	PreventInstall bool
+	HideFromMake   bool
+	Installable    *bool
 }
 
 type Module struct {
@@ -178,8 +177,8 @@ func (mod *Module) SetHideFromMake() {
 	mod.Properties.HideFromMake = true
 }
 
-func (mod *Module) HiddenFromMake() bool {
-	return mod.Properties.HideFromMake
+func (c *Module) HiddenFromMake() bool {
+	return c.Properties.HideFromMake
 }
 
 func (mod *Module) SanitizePropDefined() bool {
@@ -527,6 +526,10 @@ func (mod *Module) PreventInstall() bool {
 	return mod.Properties.PreventInstall
 }
 
+func (mod *Module) HideFromMake() {
+	mod.Properties.HideFromMake = true
+}
+
 func (mod *Module) MarkAsCoverageVariant(coverage bool) {
 	mod.coverage.Properties.IsCoverageVariant = coverage
 }
@@ -660,7 +663,7 @@ func (mod *Module) CoverageFiles() android.Paths {
 }
 
 func (mod *Module) installable(apexInfo android.ApexInfo) bool {
-	if !proptools.BoolDefault(mod.Installable(), mod.EverInstallable()) {
+	if !mod.EverInstallable() {
 		return false
 	}
 
@@ -895,24 +898,8 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		}
 
 		apexInfo := actx.Provider(android.ApexInfoProvider).(android.ApexInfo)
-		if !proptools.BoolDefault(mod.Installable(), mod.EverInstallable()) {
-			// If the module has been specifically configure to not be installed then
-			// hide from make as otherwise it will break when running inside make as the
-			// output path to install will not be specified. Not all uninstallable
-			// modules can be hidden from make as some are needed for resolving make
-			// side dependencies.
-			mod.HideFromMake()
-		} else if !mod.installable(apexInfo) {
-			mod.SkipInstall()
-		}
-
-		// Still call install though, the installs will be stored as PackageSpecs to allow
-		// using the outputs in a genrule.
-		if mod.OutputFile().Valid() {
+		if mod.installable(apexInfo) {
 			mod.compiler.install(ctx)
-			if ctx.Failed() {
-				return
-			}
 		}
 
 		ctx.Phony("rust", ctx.RustModule().OutputFile().Path())

@@ -15,11 +15,10 @@
 package androidmk
 
 import (
+	mkparser "android/soong/androidmk/parser"
 	"fmt"
 	"sort"
 	"strings"
-
-	mkparser "android/soong/androidmk/parser"
 
 	bpparser "github.com/google/blueprint/parser"
 )
@@ -129,8 +128,6 @@ func init() {
 			"LOCAL_STATIC_LIBRARIES":              "static_libs",
 			"LOCAL_WHOLE_STATIC_LIBRARIES":        "whole_static_libs",
 			"LOCAL_SYSTEM_SHARED_LIBRARIES":       "system_shared_libs",
-			"LOCAL_USES_LIBRARIES":                "uses_libs",
-			"LOCAL_OPTIONAL_USES_LIBRARIES":       "optional_uses_libs",
 			"LOCAL_ASFLAGS":                       "asflags",
 			"LOCAL_CLANG_ASFLAGS":                 "clang_asflags",
 			"LOCAL_COMPATIBILITY_SUPPORT_FILES":   "data",

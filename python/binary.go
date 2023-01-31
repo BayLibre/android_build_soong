@@ -37,6 +37,7 @@ func registerPythonBinaryComponents(ctx android.RegistrationContext) {
 type bazelPythonBinaryAttributes struct {
 	Main           string
 	Srcs           bazel.LabelListAttribute
+	Data           bazel.LabelListAttribute
 	Deps           bazel.LabelListAttribute
 	Python_version string
 }
@@ -62,7 +63,6 @@ func PythonBinaryBp2Build(ctx android.TopDownMutatorContext) {
 			}
 		}
 	}
-
 	// TODO(b/182306917): this doesn't fully handle all nested props versioned
 	// by the python version, which would have been handled by the version split
 	// mutator. This is sufficient for very simple python_binary_host modules
@@ -80,11 +80,15 @@ func PythonBinaryBp2Build(ctx android.TopDownMutatorContext) {
 		// do nothing, since python_version defaults to PY3.
 	}
 
-	baseAttrs := m.makeArchVariantBaseAttributes(ctx)
+	srcs := android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs)
+	data := android.BazelLabelForModuleSrc(ctx, m.properties.Data)
+	deps := android.BazelLabelForModuleDeps(ctx, m.properties.Libs)
+
 	attrs := &bazelPythonBinaryAttributes{
 		Main:           main,
-		Srcs:           baseAttrs.Srcs,
-		Deps:           baseAttrs.Deps,
+		Srcs:           bazel.MakeLabelListAttribute(srcs),
+		Data:           bazel.MakeLabelListAttribute(data),
+		Deps:           bazel.MakeLabelListAttribute(deps),
 		Python_version: python_version,
 	}
 
@@ -93,10 +97,7 @@ func PythonBinaryBp2Build(ctx android.TopDownMutatorContext) {
 		Rule_class: "py_binary",
 	}
 
-	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
-		Name: m.Name(),
-		Data: baseAttrs.Data,
-	}, attrs)
+	ctx.CreateBazelTargetModule(m.Name(), props, attrs)
 }
 
 type BinaryProperties struct {

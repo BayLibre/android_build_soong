@@ -240,5 +240,5 @@ func apexKeyBp2BuildInternal(ctx android.TopDownMutatorContext, module *apexKey)
 		Bzl_load_location: "//build/bazel/rules:apex_key.bzl",
 	}
 
-	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: module.Name()}, attrs)
+	ctx.CreateBazelTargetModule(module.Name(), props, attrs)
 }

@@ -548,7 +548,7 @@ func ShBinaryBp2Build(ctx android.TopDownMutatorContext) {
 		Rule_class: "sh_binary",
 	}
 
-	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
+	ctx.CreateBazelTargetModule(m.Name(), props, attrs)
 }
 
 var Bool = proptools.Bool

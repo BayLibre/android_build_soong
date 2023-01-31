@@ -1,12 +1,11 @@
 package bp2build
 
 import (
+	"android/soong/android"
+	"android/soong/cc/config"
 	"fmt"
 	"reflect"
 	"strings"
-
-	"android/soong/android"
-	"android/soong/cc/config"
 
 	"github.com/google/blueprint/proptools"
 )

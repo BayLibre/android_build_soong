@@ -25,9 +25,6 @@ import (
 	"android/soong/remoteexec"
 )
 
-// The values allowed for Droidstubs' Api_levels_sdk_type
-var allowedApiLevelSdkTypes = []string{"public", "system", "module-lib"}
-
 func init() {
 	RegisterStubsBuildComponents(android.InitRegistrationContext)
 }
@@ -137,7 +134,7 @@ type DroidstubsProperties struct {
 	// the dirs which Metalava extracts API levels annotations from.
 	Api_levels_annotations_dirs []string
 
-	// the sdk kind which Metalava extracts API levels annotations from. Supports 'public', 'system' and 'module-lib' for now; defaults to public.
+	// the sdk kind which Metalava extracts API levels annotations from. Supports 'public' and 'system' for now; defaults to public.
 	Api_levels_sdk_type *string
 
 	// the filename which Metalava extracts API levels annotations from. Defaults to android.jar.
@@ -407,24 +404,19 @@ func (d *Droidstubs) apiLevelsAnnotationsFlags(ctx android.ModuleContext, cmd *a
 	// When parsing a stub jar for a specific version, Metalava picks the first pattern that defines
 	// an actual file present on disk (in the order the patterns were passed). For system APIs for
 	// privileged apps that are only defined since API level 21 (Lollipop), fallback to public stubs
-	// for older releases. Similarly, module-lib falls back to system API.
-	var sdkDirs []string
-	switch proptools.StringDefault(d.properties.Api_levels_sdk_type, "public") {
-	case "module-lib":
-		sdkDirs = []string{"module-lib", "system", "public"}
-	case "system":
-		sdkDirs = []string{"system", "public"}
-	case "public":
-		sdkDirs = []string{"public"}
-	default:
-		ctx.PropertyErrorf("api_levels_sdk_type", "needs to be one of %v", allowedApiLevelSdkTypes)
-		return
-	}
-
-	for _, sdkDir := range sdkDirs {
-		for _, dir := range dirs {
-			cmd.FlagWithArg("--android-jar-pattern ", fmt.Sprintf("%s/%%/%s/%s", dir, sdkDir, filename))
+	// for older releases.
+	if sdkType := proptools.StringDefault(d.properties.Api_levels_sdk_type, "public"); sdkType != "public" {
+		if sdkType != "system" {
+			ctx.PropertyErrorf("api_levels_sdk_type", "only 'public' and 'system' are supported")
 		}
+		// If building non public stubs, add all sdkType patterns first...
+		for _, dir := range dirs {
+			cmd.FlagWithArg("--android-jar-pattern ", fmt.Sprintf("%s/%%/%s/%s", dir, sdkType, filename))
+		}
+	}
+	for _, dir := range dirs {
+		// ... and fallback to public ones, for Metalava to use if needed.
+		cmd.FlagWithArg("--android-jar-pattern ", fmt.Sprintf("%s/%%/%s/%s", dir, "public", filename))
 	}
 }
 
