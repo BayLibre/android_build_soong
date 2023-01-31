@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325934a4_5ef9a0f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-31T22:14:21Z",
+      "side": 1,
+      "message": "We should be fine to submit this.\n\nPresubmits passed on [revision 2](https://android-build.googleplex.com/builds/treetop/android-review/2411040?ref\u003dCOMMENT\u0026revision\u003d2\u0026attemptKey\u003dshowall) and the currently failing `soong_integration` test is a flake.",
+      "revId": "704d6b9a62bf2b92d8b5ceb36da20cfb8b9bff40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
