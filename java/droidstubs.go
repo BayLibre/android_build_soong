@@ -152,6 +152,10 @@ type DroidstubsProperties struct {
 	// API surface of this module. If set, the module contributes to an API surface.
 	// For the full list of available API surfaces, refer to soong/android/sdk_version.go
 	Api_surface *string
+
+	// Name of the jar file that hosts the APIs on device.
+	// A single java_library can have contributions to multiple API surfaces, but it has a single name on device.
+	Api_library_name *string
 }
 
 // Used by xsd_config
@@ -845,8 +849,9 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 var _ android.ApiProvider = (*Droidstubs)(nil)
 
 type bazelJavaApiContributionAttributes struct {
-	Api         bazel.LabelAttribute
-	Api_surface *string
+	Api          bazel.LabelAttribute
+	Api_surface  *string
+	Library_name *string
 }
 
 func (d *Droidstubs) ConvertWithApiBp2build(ctx android.TopDownMutatorContext) {
@@ -863,11 +868,27 @@ func (d *Droidstubs) ConvertWithApiBp2build(ctx android.TopDownMutatorContext) {
 		Api: *bazel.MakeLabelAttribute(
 			android.BazelLabelForModuleSrcSingle(ctx, proptools.String(apiFile)).Label,
 		),
-		Api_surface: proptools.StringPtr(bazelApiSurfaceName(d.Name())),
+		Api_surface:  proptools.StringPtr(bazelApiSurfaceName(d.Name())),
+		Library_name: d.apiLibraryName(ctx),
 	}
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
 		Name: android.ApiContributionTargetName(ctx.ModuleName()),
 	}, attrs)
+}
+
+func (d *Droidstubs) apiLibraryName(ctx android.TopDownMutatorContext) *string {
+	// If api_library_name is not nil, return it
+	if d.properties.Api_library_name != nil {
+		return d.properties.Api_library_name
+	}
+	// TODO: Remove this after this information has been added to framework's droidstubs in f/b/StubLibraries.bp
+	if ctx.ModuleDir() == "frameworks/base" {
+		return proptools.StringPtr("framework")
+	}
+	// Not all droidstubs are API libraries.
+	// Library_name is mandatory for java_api_contribution, but not necessarily for droidstubs
+	// Return an invalid name so that Bazel analysis does not fail on the generated workspace
+	return proptools.StringPtr("_LIBRARY_NAME_MISSING")
 }
 
 func (d *Droidstubs) createApiContribution(ctx android.DefaultableHookContext) {

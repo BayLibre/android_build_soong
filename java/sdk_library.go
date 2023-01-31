@@ -1600,6 +1600,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 		Installable                      *bool
 		Sdk_version                      *string
 		Api_surface                      *string
+		Api_library_name                 *string
 		System_modules                   *string
 		Libs                             []string
 		Output_javadoc_comments          *bool
@@ -1748,6 +1749,9 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 			})
 		}
 	}
+	// Name of the library on device
+	// Use BaseModuleName so that java_sdk_library_import(s) do not get a prebuilt_ prefix
+	props.Api_library_name = proptools.StringPtr(module.BaseModuleName())
 
 	mctx.CreateModule(DroidstubsFactory, &props)
 }
