@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "365054db_2d760058",
+        "filename": "java/dex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-01-31T22:33:09Z",
+      "side": 1,
+      "message": "Just for my own understanding, I would expect that:\n\nAdding aar_import_with_static_libs to `static_libs` would feed static_lib_thru_aar_import in as part of the program jars (as part of the merged program jar? so it gets optimized by R8 with the program)\n\nAdding aar_import_with_static_libs to `libs` would feed static_lib_thru_aar_import to `-libraryjars` (not optimized by R8)?\n\nDoes the test make that distinction?",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "d34b08be3bb8e30474244c0b843d0c3ee7320a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
