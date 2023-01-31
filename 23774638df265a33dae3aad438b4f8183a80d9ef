@@ -70,6 +70,30 @@
       },
       "revId": "23774638df265a33dae3aad438b4f8183a80d9ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e85c29_9991ed1f",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-31T01:16:53Z",
+      "side": 1,
+      "message": "Sorry, I attached the wrong ninja command above. I meant to attach this, which suggests that this libandroid_runtime in f/b is linking against source.\n\n```\n$ prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_cf_arm64_phone.ninja -t path libandroid_runtime art/libnativeloader/native_loader_lazy.cpp\n# prints out a path\n\n# no path exists to the map.txt file\n```",
+      "parentUuid": "d68a0074_e945f5ee",
+      "range": {
+        "startLine": 73,
+        "startChar": 65,
+        "endLine": 73,
+        "endChar": 76
+      },
+      "revId": "23774638df265a33dae3aad438b4f8183a80d9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
