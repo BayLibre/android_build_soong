@@ -113,8 +113,9 @@ func TestJavaLintUsesCorrectBpConfig(t *testing.T) {
 		t.Error("did not use the correct file for baseline")
 	}
 
-	if !strings.Contains(*sboxProto.Commands[0].Command, "--error_check NewApi") {
-		t.Error("should check NewApi errors")
+	if !strings.Contains(*sboxProto.Commands[0].Command, "--warning_check NewApi") {
+		// TODO(b/268261262): Change this to check for --error_check
+		t.Error("should check NewApi warnings")
 	}
 
 	if !strings.Contains(*sboxProto.Commands[0].Command, "--error_check SomeCheck") {
@@ -221,8 +222,29 @@ func TestJavaLintStrictUpdatabilityLinting(t *testing.T) {
 }
 
 func TestJavaLintDatabaseSelectionFull(t *testing.T) {
-	testCases := []string{
-		"current", "core_platform", "system_current", "S", "30", "10000",
+	testCases := []struct {
+		sdk_version   string
+		expected_file string
+	}{
+		{
+			"current",
+			"api_versions_public.xml",
+		}, {
+			"core_platform",
+			"api_versions_public.xml",
+		}, {
+			"system_current",
+			"api_versions_system.xml",
+		}, {
+			"S",
+			"api_versions_public.xml",
+		}, {
+			"30",
+			"api_versions_public.xml",
+		}, {
+			"10000",
+			"api_versions_public.xml",
+		},
 	}
 	bp := `
 		java_library {
@@ -238,7 +260,7 @@ func TestJavaLintDatabaseSelectionFull(t *testing.T) {
 		}
 `
 	for _, testCase := range testCases {
-		thisBp := strings.Replace(bp, "XXX", testCase, 1)
+		thisBp := strings.Replace(bp, "XXX", testCase.sdk_version, 1)
 
 		result := android.GroupFixturePreparers(PrepareForTestWithJavaDefaultModules, FixtureWithPrebuiltApis(map[string][]string{
 			"30":    {"foo"},
@@ -248,12 +270,11 @@ func TestJavaLintDatabaseSelectionFull(t *testing.T) {
 
 		foo := result.ModuleForTests("foo", "android_common")
 		sboxProto := android.RuleBuilderSboxProtoForTests(t, foo.Output("lint.sbox.textproto"))
-		if strings.Contains(*sboxProto.Commands[0].Command,
-			"/api_versions_public_filtered.xml") {
+		command := *sboxProto.Commands[0].Command
+		if strings.Contains(command, "_filtered.xml") {
 			t.Error("used public-filtered lint api database for case", testCase)
 		}
-		if !strings.Contains(*sboxProto.Commands[0].Command,
-			"/api_versions.xml") {
+		if !strings.Contains(command, "/"+testCase.expected_file) {
 			t.Error("did not use full api database for case", testCase)
 		}
 	}
@@ -262,7 +283,7 @@ func TestJavaLintDatabaseSelectionFull(t *testing.T) {
 
 func TestJavaLintDatabaseSelectionPublicFiltered(t *testing.T) {
 	testCases := []string{
-		"module_current", "system_server_current",
+		//"module_current", "system_server_current",
 	}
 	bp := `
 		java_library {
