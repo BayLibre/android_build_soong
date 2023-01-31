@@ -899,7 +899,9 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		a.assetsPackage = mergedAssets
 	}
 
-	a.collectTransitiveHeaderJars(ctx)
+	a.collectTransitiveHeaderJarsWithAllowedLibsTags(ctx, func(tag blueprint.DependencyTag) bool {
+		return tag == staticLibTag || isAllowedTransitiveHeaderJarLibsTag(tag)
+	})
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(a.classpathFile),
 		TransitiveLibsHeaderJars:       a.transitiveLibsHeaderJars,

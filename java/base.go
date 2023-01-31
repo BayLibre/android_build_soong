@@ -20,6 +20,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
@@ -1736,7 +1737,7 @@ func (j *providesTransitiveHeaderJars) TransitiveStaticLibsHeaderJars() *android
 	return j.transitiveStaticLibsHeaderJars
 }
 
-func (j *providesTransitiveHeaderJars) collectTransitiveHeaderJars(ctx android.ModuleContext) {
+func (j *providesTransitiveHeaderJars) collectTransitiveHeaderJarsWithAllowedLibsTags(ctx android.ModuleContext, allowedLibsTag func(tag blueprint.DependencyTag) bool) {
 	directLibs := android.Paths{}
 	directStaticLibs := android.Paths{}
 	transitiveLibs := []*android.DepSet{}
@@ -1756,8 +1757,7 @@ func (j *providesTransitiveHeaderJars) collectTransitiveHeaderJars(ctx android.M
 		}
 
 		tag := ctx.OtherModuleDependencyTag(module)
-		_, isUsesLibDep := tag.(usesLibraryDependencyTag)
-		if tag == libTag || tag == r8LibraryJarTag || isUsesLibDep {
+		if allowedLibsTag(tag) {
 			directLibs = append(directLibs, dep.HeaderJars...)
 		} else if tag == staticLibTag {
 			directStaticLibs = append(directStaticLibs, dep.HeaderJars...)
@@ -1765,6 +1765,15 @@ func (j *providesTransitiveHeaderJars) collectTransitiveHeaderJars(ctx android.M
 	})
 	j.transitiveLibsHeaderJars = android.NewDepSet(android.POSTORDER, directLibs, transitiveLibs)
 	j.transitiveStaticLibsHeaderJars = android.NewDepSet(android.POSTORDER, directStaticLibs, transitiveStaticLibs)
+}
+
+func isAllowedTransitiveHeaderJarLibsTag(tag blueprint.DependencyTag) bool {
+	_, isUsesLibDep := tag.(usesLibraryDependencyTag)
+	return tag == libTag || tag == r8LibraryJarTag || isUsesLibDep
+}
+
+func (j *providesTransitiveHeaderJars) collectTransitiveHeaderJars(ctx android.ModuleContext) {
+	j.collectTransitiveHeaderJarsWithAllowedLibsTags(ctx, isAllowedTransitiveHeaderJarLibsTag)
 }
 
 func (j *Module) HeaderJars() android.Paths {
