@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c155b87_0738f3ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2023-01-31T23:22:50Z",
+      "side": 1,
+      "message": "We need an OWNERS file for compliance stuff so we can reference it from compliance-related 3p libraries like external/spdx-tools and external/licenseclassifier",
+      "revId": "27b01cee26c0c86a4d5095392cc4c9b72483e801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
