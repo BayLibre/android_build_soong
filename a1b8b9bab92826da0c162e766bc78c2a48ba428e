@@ -52,6 +52,47 @@
       "parentUuid": "77a11bf0_17aa8f7f",
       "revId": "a1b8b9bab92826da0c162e766bc78c2a48ba428e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d413b9c_54ab9231",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2023-01-31T10:02:17Z",
+      "side": 1,
+      "message": "Thanks for the updates.\n\nInteresting that odex is unchanged when fully disabling horizontal class merging. I wonder if the good odex results for the same-file restriction could be due to the merge groups being very small (meaning we maybe get similar dex2oat optimizations as without horizontal class merging), whereas with full app-wide merging the merge groups often contain \u003e10 classes.\n\nI think moving forward with the same-file restriction is fine.",
+      "parentUuid": "c51a2ab8_5d17ecff",
+      "revId": "a1b8b9bab92826da0c162e766bc78c2a48ba428e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ad0e5c_001a4660",
+        "filename": "java/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2023-01-31T10:02:17Z",
+      "side": 1,
+      "message": "Should we maybe move these flags into the R8Wrapper?",
+      "range": {
+        "startLine": 102,
+        "startChar": 27,
+        "endLine": 102,
+        "endChar": 47
+      },
+      "revId": "a1b8b9bab92826da0c162e766bc78c2a48ba428e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
