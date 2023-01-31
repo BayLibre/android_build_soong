@@ -16,6 +16,24 @@
       "message": "Can you add a test case?",
       "revId": "a506048b24b644a51d56af9665a14b232a7a27b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59245712_bbe94781",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-31T22:11:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8c2928a_34899dd9",
+      "revId": "a506048b24b644a51d56af9665a14b232a7a27b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
