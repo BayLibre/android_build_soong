@@ -46,6 +46,30 @@
       },
       "revId": "23774638df265a33dae3aad438b4f8183a80d9ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d68a0074_e945f5ee",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-31T00:57:30Z",
+      "side": 1,
+      "message": "Jiyong my understanding is that these symbols come from source and not stubs and therefore the information contained in map.txt files is a no-op here\n\nAs an example, `NativeLoaderFreeErrorMessage` is a symbol in `libnativeloader.map.txt`, and is used in `frameworks/base/core/jni/android_app_NativeActivity.cpp`. But ninja reveals that we do not compile this using stubs generated from map.txt file.\n\n\n```\n# Use ninja to determine if there is a dep path between .o file map.txt file\n$ prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_cf_arm64_phone.ninja -t path out/soong/.intermediates/frameworks/base/core/jni/libandroid_runtime/android_arm64_armv8-a_cortex-a53_shared/obj/frameworks/base/core/jni/android_app_NativeActivity.o art/libnativeloader/libnativeloader.map.txt\n\nninja: error \u003c.o\u003e does not depend on \u003c.map.txt\u003e\n```\n\nIt does depend on source\n```\n$ prebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_cf_arm64_phone.ninja -t path out/soong/.intermediates/frameworks/base/core/jni/libandroid_runtime/android_arm64_armv8-a_cortex-a53_shared/obj/frameworks/base/core/jni/android_app_NativeActivity.o frameworks/base/core/jni/android_app_NativeActivity.cpp\nout/soong/.intermediates/frameworks/base/core/jni/libandroid_runtime/android_arm64_armv8-a_cortex-a53_shared/obj/frameworks/base/core/jni/android_app_NativeActivity.o\nframeworks/base/core/jni/android_app_NativeActivity.cpp\n```\n\nDo you think this enforcement mechanism will be introduced in the future? If so, I can drop this statement from this CL.",
+      "parentUuid": "77eeef8a_491c8a32",
+      "range": {
+        "startLine": 73,
+        "startChar": 65,
+        "endLine": 73,
+        "endChar": 76
+      },
+      "revId": "23774638df265a33dae3aad438b4f8183a80d9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
