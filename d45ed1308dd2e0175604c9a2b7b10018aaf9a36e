@@ -22,6 +22,30 @@
       },
       "revId": "d45ed1308dd2e0175604c9a2b7b10018aaf9a36e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "383180c8_7ee34bea",
+        "filename": "docs/map_files.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-31T22:27:36Z",
+      "side": 1,
+      "message": "The lifetimes of these two symbols are similar \"in practice\" since other mainline modules can depend on them irrespective of origin. I have added this information to the documentation (copied from b/266824291#comment6)",
+      "parentUuid": "f12242fc_69cd6595",
+      "range": {
+        "startLine": 161,
+        "startChar": 21,
+        "endLine": 161,
+        "endChar": 22
+      },
+      "revId": "d45ed1308dd2e0175604c9a2b7b10018aaf9a36e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
