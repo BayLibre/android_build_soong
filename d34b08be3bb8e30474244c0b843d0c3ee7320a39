@@ -22,6 +22,30 @@
       },
       "revId": "d34b08be3bb8e30474244c0b843d0c3ee7320a39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1795e4a_30b8ed66",
+        "filename": "java/dex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-31T22:58:22Z",
+      "side": 1,
+      "message": "Based on the naming I would expect the same thing, but FWIU, `static_libs` in `android_library_imports` are not actually static in that they don\u0027t even end up in the the `classes.dex` (at least they\u0027re not in the input JAR (e.g. Settings.jar) which causes the warning in the first place, nor even referenced in [the r8 command](https://paste.googleplex.com/5787845569544192)).\n\nMy understanding so far is that `android_library_imports` also don\u0027t run r8, so they\u0027re always included as deps for some other module (which may run r8), and for the reason above its deps will be `libs` dependencies rather than `static_libs`.\n\nTbf, I\u0027m very surprised that something called `static_libs` wouldn\u0027t be in the APK at least, so I\u0027ll look a little more to see if I find anything else.\n\nI never understood the naming of the `androidx` imports (e.g. [`androidx.mediarouter_mediarouter-nodeps`](https://cs.android.com/android/platform/superproject/+/master:prebuilts/sdk/current/androidx/Android.bp;l\u003d4094-4134;drc\u003d106df7bb07a145cf7c739c7cdae4bdfad8fb9e4b)) with `-nodeps` counterparts for everything, but it does make more sense now in light of what I found above.",
+      "parentUuid": "365054db_2d760058",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "d34b08be3bb8e30474244c0b843d0c3ee7320a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
