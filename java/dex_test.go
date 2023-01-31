@@ -105,6 +105,7 @@ func TestR8TransitiveDeps(t *testing.T) {
 			static_libs: [
 				"static_lib",
 				"repeated_dep",
+				"aar_import_with_static_libs",
 			],
 			platform_apis: true,
 		}
@@ -172,6 +173,17 @@ func TestR8TransitiveDeps(t *testing.T) {
 			aars: ["aar.aar"],
 			static_libs: ["uses_libs_dep"],
 		}
+
+		java_library {
+			name: "static_lib_thru_aar_import",
+			srcs: ["foo.java"],
+		}
+
+		android_library_import {
+			name: "aar_import_with_static_libs",
+			aars: ["aar.aar"],
+			static_libs: ["static_lib_thru_aar_import"],
+		}
 	`
 
 	testcases := []struct {
@@ -221,6 +233,7 @@ func TestR8TransitiveDeps(t *testing.T) {
 			usesLibHeader := getHeaderJar("uses_lib")
 			optionalUsesLibHeader := getHeaderJar("optional_uses_lib")
 			prebuiltLibHeader := result.ModuleForTests("prebuilt_lib", "android_common").Output("combined/lib.jar").Output
+			staticLibThruAarImport := getHeaderJar("static_lib_thru_aar_import")
 
 			for _, rule := range []android.TestingBuildParams{appR8, overrideAppR8} {
 				android.AssertStringDoesNotContain(t, "expected no app header jar in app r8 classpath",
@@ -237,6 +250,8 @@ func TestR8TransitiveDeps(t *testing.T) {
 					rule.Args["r8Flags"], usesLibHeader.String())
 				android.AssertStringDoesContain(t, "expected optional_uses_lib header jar in app r8 classpath",
 					rule.Args["r8Flags"], optionalUsesLibHeader.String())
+				android.AssertStringDoesContain(t, "expected static_lib_thru_aar_import header jar in app r8 classpath",
+					rule.Args["r8Flags"], staticLibThruAarImport.String())
 				android.AssertStringDoesNotContain(t, "expected no static_lib header jar in app r8 classpath",
 					rule.Args["r8Flags"], staticLibHeader.String())
 				android.AssertStringDoesNotContain(t, "expected no transitive static_lib header jar in app r8 classpath",
