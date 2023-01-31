@@ -899,7 +899,12 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		a.assetsPackage = mergedAssets
 	}
 
-	a.collectTransitiveHeaderJars(ctx)
+	a.collectTransitiveHeaderJarsWithAllowedLibsTags(ctx, func(tag blueprint.DependencyTag) bool {
+		// for android_library_import static_libs are not repackaged into the JAR, so at r8
+		// optimization time, these deps will be missing. Instead, treat these dependencies
+		// as libs deps so that they are properly passed to r8.
+		return tag == staticLibTag || isAllowedTransitiveHeaderJarLibsTag(tag)
+	})
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
 		HeaderJars:                     android.PathsIfNonNil(a.classpathFile),
 		TransitiveLibsHeaderJars:       a.transitiveLibsHeaderJars,
