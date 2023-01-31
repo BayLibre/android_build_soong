@@ -28,6 +28,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/dexpreopt"
 )
 
@@ -546,14 +547,14 @@ type sdkLibraryProperties struct {
 
 	// The properties specific to the module-lib api scope
 	//
-	// Unless explicitly specified by using test.enabled the module-lib api scope is
-	// disabled by default.
+	// Unless explicitly specified by using module_lib.enabled the module_lib api
+	// scope is disabled by default.
 	Module_lib ApiScopeProperties
 
 	// The properties specific to the system-server api scope
 	//
-	// Unless explicitly specified by using test.enabled the module-lib api scope is
-	// disabled by default.
+	// Unless explicitly specified by using system_server.enabled the
+	// system_server api scope is disabled by default.
 	System_server ApiScopeProperties
 
 	// Determines if the stubs are preferred over the implementation library
@@ -1162,6 +1163,8 @@ type SdkLibraryDependency interface {
 
 type SdkLibrary struct {
 	Library
+
+	android.BazelModuleBase
 
 	sdkLibraryProperties sdkLibraryProperties
 
@@ -2081,7 +2084,82 @@ func SdkLibraryFactory() android.Module {
 			module.CreateInternalModules(ctx)
 		}
 	})
+	android.InitBazelModule(module)
 	return module
+}
+
+const (
+	publicApiSurfaceFile       = "api/current.txt"
+	systemApiSurfaceFile       = "api/system-current.txt"
+	moduleLibApiSurfaceFile    = "api/module-lib-current.txt"
+	systemServerApiSurfaceFile = "api/system-server-current.txt"
+)
+
+type bazelSdkLibraryAttributes struct {
+	Public        bazel.StringAttribute
+	System        bazel.StringAttribute
+	Module_lib    bazel.StringAttribute
+	System_server bazel.StringAttribute
+}
+
+// java_sdk_library bp2build converter
+func (module *SdkLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	if ctx.ModuleType() != "java_sdk_library" {
+		return
+	}
+
+	// public defaults to true
+	var public bazel.StringAttribute
+	publicEnabled := true
+	if module.sdkLibraryProperties.Public.Enabled != nil && *module.sdkLibraryProperties.Public.Enabled == false {
+		publicEnabled = false
+	}
+	if publicEnabled {
+		public.SetValue(publicApiSurfaceFile)
+	}
+
+	// system defaults to false
+	var system bazel.StringAttribute
+	systemEnabled := false
+	if module.sdkLibraryProperties.System.Enabled != nil && *module.sdkLibraryProperties.System.Enabled == true {
+		systemEnabled = true
+	}
+	if systemEnabled {
+		system.SetValue(systemApiSurfaceFile)
+	}
+
+	// module_lib defaults to false
+	var module_lib bazel.StringAttribute
+	moduleLibEnabled := false
+	if module.sdkLibraryProperties.Module_lib.Enabled != nil && *module.sdkLibraryProperties.Module_lib.Enabled == true {
+		moduleLibEnabled = true
+	}
+	if moduleLibEnabled {
+		module_lib.SetValue(moduleLibApiSurfaceFile)
+	}
+
+	// system_server defaults to false
+	var system_server bazel.StringAttribute
+	systemServerEnabled := false
+	if module.sdkLibraryProperties.System_server.Enabled != nil && *module.sdkLibraryProperties.System_server.Enabled == true {
+		systemServerEnabled = true
+	}
+	if systemServerEnabled {
+		system_server.SetValue(systemServerApiSurfaceFile)
+	}
+
+	attrs := bazelSdkLibraryAttributes{
+		Public:        public,
+		System:        system,
+		Module_lib:    module_lib,
+		System_server: system_server,
+	}
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "java_sdk_library",
+		Bzl_load_location: "//build/bazel/rules/java:sdk_library.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: module.Name()}, &attrs)
 }
 
 //
