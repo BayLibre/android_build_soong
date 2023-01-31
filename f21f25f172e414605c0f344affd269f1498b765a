@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d85068b6_5ad8e423",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-01-31T17:38:07Z",
+      "side": 0,
+      "message": "Can we also add the `-dontwarn` removal for Kotlin/protobuf in this topic (from the global Proguard rules)?",
+      "range": {
+        "startLine": 265,
+        "startChar": 69,
+        "endLine": 265,
+        "endChar": 88
+      },
+      "revId": "f21f25f172e414605c0f344affd269f1498b765a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
