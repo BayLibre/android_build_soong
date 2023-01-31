@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f12242fc_69cd6595",
+        "filename": "docs/map_files.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-01-31T03:16:19Z",
+      "side": 1,
+      "message": "The granularity conveys origin, but it could convey the lifetime of the symbol as well. Discussing this internally in b/266824291#comment5.",
+      "range": {
+        "startLine": 161,
+        "startChar": 21,
+        "endLine": 161,
+        "endChar": 22
+      },
+      "revId": "d45ed1308dd2e0175604c9a2b7b10018aaf9a36e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
