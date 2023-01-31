@@ -22,6 +22,30 @@
       },
       "revId": "9f9c0a22faedef806fd3c35e047e1d5a0e313718",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed15363_a4fadb6c",
+        "filename": "java/dex.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-01-31T22:02:58Z",
+      "side": 1,
+      "message": "So that there\u0027s a paper trail: followed up in aosp/2411040",
+      "parentUuid": "7bd67de3_777157c0",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 20
+      },
+      "revId": "9f9c0a22faedef806fd3c35e047e1d5a0e313718",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
