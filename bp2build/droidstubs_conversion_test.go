@@ -35,6 +35,7 @@ func TestDroidstubsApiContributions(t *testing.T) {
 				api_file: "framework.current.txt",
 			},
 		},
+		api_library_name: "framework",
 	}
 
 	// Modules without check_api should not generate a Bazel API target
@@ -72,6 +73,7 @@ func TestDroidstubsApiContributions(t *testing.T) {
 			AttrNameToString{
 				"api":                    `"framework.current.txt"`,
 				"api_surface":            `"publicapi"`,
+				"library_name":           `"framework"`,
 				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
 			}),
 		MakeBazelTargetNoRestrictions(
@@ -80,6 +82,7 @@ func TestDroidstubsApiContributions(t *testing.T) {
 			AttrNameToString{
 				"api":                    `"api/current.txt"`,
 				"api_surface":            `"publicapi"`,
+				"library_name":           `"module-stubs"`,
 				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
 			}),
 		MakeBazelTargetNoRestrictions(
@@ -88,6 +91,7 @@ func TestDroidstubsApiContributions(t *testing.T) {
 			AttrNameToString{
 				"api":                    `"api/system-current.txt"`,
 				"api_surface":            `"systemapi"`,
+				"library_name":           `"module-stubs"`,
 				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
 			}),
 	}
