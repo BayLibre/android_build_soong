@@ -105,6 +105,29 @@
       "parentUuid": "50782e73_99c0f129",
       "revId": "75d65f360c18806e683aed87679ce5bcc52823d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892aa14f_8716f9bf",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-01-31T23:38:53Z",
+      "side": 1,
+      "message": "We all missed that this line here should have been at line 134. As it is the setting of `targetSdkVersion` on line 131 has no effect, which is a regression.\n\nI\u0027ll be sending out a fix later tonight/tomorrow morning.",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 62
+      },
+      "revId": "75d65f360c18806e683aed87679ce5bcc52823d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
