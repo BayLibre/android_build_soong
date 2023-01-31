@@ -22,6 +22,30 @@
       },
       "revId": "23774638df265a33dae3aad438b4f8183a80d9ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77eeef8a_491c8a32",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-31T00:33:02Z",
+      "side": 1,
+      "message": "This description is wrong. `#apex` symbols are used by both APEXes and the non-updatable part of the OS. `libnativeloader.map.txt` is a good counter example. They are part of the ART APEX and their clients are in frameworks/base/core/jni.",
+      "parentUuid": "523f351b_a7bf410a",
+      "range": {
+        "startLine": 73,
+        "startChar": 65,
+        "endLine": 73,
+        "endChar": 76
+      },
+      "revId": "23774638df265a33dae3aad438b4f8183a80d9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
