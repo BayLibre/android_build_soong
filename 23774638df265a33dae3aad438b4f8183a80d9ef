@@ -94,6 +94,30 @@
       },
       "revId": "23774638df265a33dae3aad438b4f8183a80d9ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51d6e4f_ac32ea39",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-31T02:31:46Z",
+      "side": 1,
+      "message": "If the core jni lib is linking against the non-stub variant of libnativeloader.so, then I think it\u0027s a bug in the build system. \n\nWe have a test for this though... https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex_test.go;drc\u003dfe4587161be9ec76c62555f6cd8c66be6e565186;l\u003d1147",
+      "parentUuid": "56e85c29_9991ed1f",
+      "range": {
+        "startLine": 73,
+        "startChar": 65,
+        "endLine": 73,
+        "endChar": 76
+      },
+      "revId": "23774638df265a33dae3aad438b4f8183a80d9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
