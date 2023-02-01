@@ -548,6 +548,7 @@ type builtinBazelRunner struct{}
 func (r *builtinBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd) (string, string, error) {
 	stderr := &bytes.Buffer{}
 	bazelCmd.Stderr = stderr
+	//fmt.Println("@@@@ ISSUING COMMAND", bazelCmd.Dir, bazelCmd.Env, bazelCmd)
 	if output, err := bazelCmd.Output(); err != nil {
 		return "", string(stderr.Bytes()),
 			fmt.Errorf("bazel command failed: %s\n---command---\n%s\n---env---\n%s\n---stderr---\n%s---",
@@ -712,14 +713,31 @@ config_node(name = "%s",
 	configNodesSection := ""
 
 	labelsByConfig := map[string][]string{}
+
+	// Requests need to be sorted to maintain determinism of the BUILD file.
+	sortedRequests := make([]cqueryKey, 0, len(context.requests))
 	for val := range context.requests {
+		sortedRequests = append(sortedRequests, val)
+	}
+	sort.Slice(sortedRequests, func(i, j int) bool { return sortedRequests[i].String() < sortedRequests[j].String() })
+
+	for _, val := range sortedRequests {
 		labelString := fmt.Sprintf("\"@%s\"", val.label)
 		configString := getConfigString(val)
 		labelsByConfig[configString] = append(labelsByConfig[configString], labelString)
 	}
 
 	allLabels := []string{}
-	for configString, labels := range labelsByConfig {
+
+	// Configs need to be sorted to maintain determinism of the BUILD file.
+	sortedConfigs := make([]string, 0, len(labelsByConfig))
+	for val := range labelsByConfig {
+		sortedConfigs = append(sortedConfigs, val)
+	}
+	sort.Slice(sortedConfigs, func(i, j int) bool { return sortedConfigs[i] < sortedConfigs[j] })
+
+	for _, configString := range sortedConfigs {
+		labels := labelsByConfig[configString]
 		configTokens := strings.Split(configString, "|")
 		if len(configTokens) != 2 {
 			panic(fmt.Errorf("Unexpected config string format: %s", configString))
@@ -750,7 +768,15 @@ func indent(original string) string {
 // request type.
 func (context *mixedBuildBazelContext) cqueryStarlarkFileContents() []byte {
 	requestTypeToCqueryIdEntries := map[cqueryRequest][]string{}
+	// Requests need to be sorted to maintain determinism of the BUILD file.
+	// TODO: Do in one place.
+	sortedRequests := make([]cqueryKey, 0, len(context.requests))
 	for val := range context.requests {
+		sortedRequests = append(sortedRequests, val)
+	}
+	sort.Slice(sortedRequests, func(i, j int) bool { return sortedRequests[i].String() < sortedRequests[j].String() })
+
+	for _, val := range sortedRequests {
 		cqueryId := getCqueryId(val)
 		mapEntryString := fmt.Sprintf("%q : True", cqueryId)
 		requestTypeToCqueryIdEntries[val.requestType] =
@@ -946,13 +972,13 @@ func (context *mixedBuildBazelContext) runCquery(ctx *Context) error {
 			return err
 		}
 	}
-	if err := os.WriteFile(filepath.Join(soongInjectionPath, "WORKSPACE.bazel"), []byte{}, 0666); err != nil {
+	if err := writeFileBytesIfNew(filepath.Join(soongInjectionPath, "WORKSPACE.bazel"), []byte{}, 0666); err != nil {
 		return err
 	}
-	if err := os.WriteFile(filepath.Join(mixedBuildsPath, "main.bzl"), context.mainBzlFileContents(), 0666); err != nil {
+	if err := writeFileBytesIfNew(filepath.Join(mixedBuildsPath, "main.bzl"), context.mainBzlFileContents(), 0666); err != nil {
 		return err
 	}
-	if err := os.WriteFile(filepath.Join(mixedBuildsPath, "BUILD.bazel"), context.mainBuildFileContents(), 0666); err != nil {
+	if err := writeFileBytesIfNew(filepath.Join(mixedBuildsPath, "BUILD.bazel"), context.mainBuildFileContents(), 0666); err != nil {
 		return err
 	}
 	cqueryFileRelpath := filepath.Join(context.paths.injectedFilesDir(), "buildroot.cquery")
@@ -984,6 +1010,19 @@ func (context *mixedBuildBazelContext) runCquery(ctx *Context) error {
 			return fmt.Errorf("missing result for bazel target %s. query output: [%s], cquery err: [%s]",
 				getCqueryId(val), cqueryOutput, cqueryErrorMessage)
 		}
+	}
+	return nil
+}
+
+func writeFileBytesIfNew(path string, contents []byte, perm os.FileMode) error {
+	oldContents, err := os.ReadFile(path)
+	if err != nil || !bytes.Equal(contents, oldContents) {
+		//fmt.Println("@@@ REPLACING ", path, string(contents), "oldContents was", string(oldContents), "err was", err)
+		err = os.WriteFile(path, contents, perm)
+		//if err == nil {
+		//	readContents, err := os.ReadFile(path)
+		//	//fmt.Println("NEW FILE", string(readContents), err)
+		//}
 	}
 	return nil
 }

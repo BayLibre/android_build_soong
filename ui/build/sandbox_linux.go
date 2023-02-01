@@ -96,6 +96,7 @@ func (c *Cmd) sandboxSupported() bool {
 			"-e",
 			"-u", "nobody",
 			"-g", sandboxConfig.group,
+			"-d",
 			"-R", "/",
 			// Mount tmp before srcDir
 			// srcDir is /tmp/.* in integration tests, which is a child dir of /tmp

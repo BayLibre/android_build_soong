@@ -219,7 +219,6 @@ func main() {
 	if !config.SkipMetricsUpload() {
 		defer build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, metricsFiles...)
 	}
-
 }
 
 func logAndSymlinkSetup(buildCtx build.Context, config build.Config) {
