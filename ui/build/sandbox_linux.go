@@ -29,6 +29,7 @@ type Sandbox struct {
 	DisableWhenUsingGoma bool
 
 	AllowBuildBrokenUsesNetwork bool
+	RunDaemon                   bool
 }
 
 var (
@@ -39,8 +40,14 @@ var (
 
 	dumpvarsSandbox = basicSandbox
 	katiSandbox     = basicSandbox
-	soongSandbox    = basicSandbox
-	ninjaSandbox    = Sandbox{
+	soongSandbox    = Sandbox{
+		Enabled: true,
+		// soong_build may spawn a Bazel process during analysis. Keeping this
+		// Bazel process alive in the background greatly improves the performance
+		// of incremental builds.
+		RunDaemon: true,
+	}
+	ninjaSandbox = Sandbox{
 		Enabled:              true,
 		DisableWhenUsingGoma: true,
 
@@ -103,6 +110,10 @@ func (c *Cmd) sandboxSupported() bool {
 			"-B", "/tmp",
 			c.config.sandboxConfig.SrcDirMountFlag(), sandboxConfig.srcDir,
 			"-B", sandboxConfig.outDir,
+		}
+
+		if c.Sandbox.RunDaemon {
+			sandboxArgs = append(sandboxArgs, "-d")
 		}
 
 		if _, err := os.Stat(sandboxConfig.distDir); !os.IsNotExist(err) {
