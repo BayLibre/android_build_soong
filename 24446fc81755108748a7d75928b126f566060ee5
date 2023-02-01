@@ -22,6 +22,30 @@
       },
       "revId": "24446fc81755108748a7d75928b126f566060ee5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "947e2e8c_e32292f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-01T20:13:13Z",
+      "side": 1,
+      "message": "All great questions, that I will certainly need to get rigorous data for before submitting this CL. Thanks for enumerating these. Will leave this comment open until we\u0027ve answered these other impact questions.\n\n\u003e How much memory?\n\nTBD, and Bazel has flags we can set to limit its memory usage if need be.\n\n\u003e This doesn\u0027t leave persistent daemons running on Mac builds, right?\n\nMy understanding is that sandbox_linux is specifically for linux, and sandboxing for Darwin will remain untouched.\n\n\u003e How does it interact with build_test builds?\n\nGood question. I\u0027ll follow up after some experiments.",
+      "parentUuid": "7e3577e2_4ad5c493",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "24446fc81755108748a7d75928b126f566060ee5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
