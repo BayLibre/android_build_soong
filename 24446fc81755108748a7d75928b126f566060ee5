@@ -94,6 +94,30 @@
       },
       "revId": "24446fc81755108748a7d75928b126f566060ee5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8fa23f_07929e92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-02-01T23:18:55Z",
+      "side": 1,
+      "message": "Ah, yeah. You\u0027d need to do it in `wrapSandbox` instead of `sandboxSupported`, but I\u0027m pretty sure `-d` is also going to be a problem. `-d` goes into daemon mode immediately, so I don\u0027t think we would wait for soong_build to finish. A better approach may be to disable the pid namespace, as IIRC, that\u0027s what forces all background processes to exit. It looks like that\u0027s `--disable_clone_newpid`, though I don\u0027t know if it has any other implications.",
+      "parentUuid": "ff29ef08_4c78289d",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "24446fc81755108748a7d75928b126f566060ee5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
