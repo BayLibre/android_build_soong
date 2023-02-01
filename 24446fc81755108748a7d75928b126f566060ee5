@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3577e2_4ad5c493",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-02-01T20:09:38Z",
+      "side": 1,
+      "message": "How much memory?\n\nAnd not just between builds, this will potentially add to peak memory use (if it wasn\u0027t already). We have several users complaining about excessive memory use during builds.\n\nThis doesn\u0027t leave persistent daemons running on Mac builds, right? Buildbot would still have issues with that. How does it interact with build_test builds, which will run this section 100+ times in parallel?",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "24446fc81755108748a7d75928b126f566060ee5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
