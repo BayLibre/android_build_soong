@@ -70,6 +70,30 @@
       },
       "revId": "24446fc81755108748a7d75928b126f566060ee5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff29ef08_4c78289d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-01T22:59:13Z",
+      "side": 1,
+      "message": "After doing some additional digging, it turns out that `-d` doesn\u0027t do what I thought it did (and I am not using it properly). Adding it where I have been in this CL causes nsjail to fail on startup, which disables sandboxing entirely (and emits a log statement I missed)\n\nThus, my tests have been running with sandboxing disabled.\n\nI\u0027ll follow up to see if we can devise a solution with nsjail, otherwise it might be a bit back to the drawing board (or potentially proposing we disable sandboxing entirely for soong_build)",
+      "parentUuid": "3f444286_afeace99",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "24446fc81755108748a7d75928b126f566060ee5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
