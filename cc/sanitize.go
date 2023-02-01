@@ -1140,12 +1140,6 @@ func (s *sanitizerSplitMutator) Split(ctx android.BaseModuleContext) []string {
 		}
 	}
 
-	if _, ok := ctx.Module().(JniSanitizeable); ok {
-		// TODO: this should call into JniSanitizable.IsSanitizerEnabledForJni but
-		// that is short-circuited for now
-		return []string{""}
-	}
-
 	// If an APEX has a sanitized dependency, we build the APEX in the sanitized
 	// variation. This is useful because such APEXes require extra dependencies.
 	if sanitizeable, ok := ctx.Module().(Sanitizeable); ok {
@@ -1182,10 +1176,6 @@ func (s *sanitizerSplitMutator) OutgoingTransition(ctx android.OutgoingTransitio
 		}
 
 		return sourceVariation
-	} else if _, ok := ctx.Module().(JniSanitizeable); ok {
-		// TODO: this should call into JniSanitizable.IsSanitizerEnabledForJni but
-		// that is short-circuited for now
-		return ""
 	} else {
 		// Otherwise, do not rock the boat.
 		return sourceVariation
@@ -1630,11 +1620,6 @@ type Sanitizeable interface {
 	IsSanitizerEnabled(config android.Config, sanitizerName string) bool
 	EnableSanitizer(sanitizerName string)
 	AddSanitizerDependencies(ctx android.BottomUpMutatorContext, sanitizerName string)
-}
-
-type JniSanitizeable interface {
-	android.Module
-	IsSanitizerEnabledForJni(ctx android.BaseModuleContext, sanitizerName string) bool
 }
 
 func (c *Module) MinimalRuntimeDep() bool {

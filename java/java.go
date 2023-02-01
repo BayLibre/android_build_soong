@@ -1046,6 +1046,8 @@ func (j *JavaTestImport) InstallInTestcases() bool {
 }
 
 func (j *TestHost) addDataDeviceBinsDeps(ctx android.BottomUpMutatorContext) {
+	// TODO -- what does this do? We aren't doing this for Test on device,
+	// TODO -- what are we missing if we leave this only for host?
 	if len(j.testHostProperties.Data_device_bins_first) > 0 {
 		deviceVariations := ctx.Config().AndroidFirstDeviceTarget.Variations()
 		ctx.AddFarVariationDependencies(deviceVariations, dataDeviceBinsTag, j.testHostProperties.Data_device_bins_first...)
@@ -1129,14 +1131,17 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 		}
 	}
 
+	j.addDataDeviceBinsDeps(ctx)
+	j.Test.DepsMutator(ctx)
+}
+
+func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if len(j.testProperties.Jni_libs) > 0 {
 		for _, target := range ctx.MultiTargets() {
 			sharedLibVariations := append(target.Variations(), blueprint.Variation{Mutator: "link", Variation: "shared"})
 			ctx.AddFarVariationDependencies(sharedLibVariations, jniLibTag, j.testProperties.Jni_libs...)
 		}
 	}
-
-	j.addDataDeviceBinsDeps(ctx)
 
 	j.deps(ctx)
 }
