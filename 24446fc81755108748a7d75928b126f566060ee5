@@ -46,6 +46,30 @@
       },
       "revId": "24446fc81755108748a7d75928b126f566060ee5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f444286_afeace99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-02-01T20:26:44Z",
+      "side": 1,
+      "message": "\u003e My understanding is that sandbox_linux is specifically for linux, and sandboxing for Darwin will remain untouched.\n\nYeah, sandboxing on Mac is per-process, it doesn\u0027t handle process trees, so it already has this behavior. We\u0027re not handling it that much better on the buildbots either, so the expectation is that build processes do not exceed the lifetime of their build. This change implies that we don\u0027t have other controls limiting the bazel lifetime, which worries me about what\u0027ll happen on our Mac builders. (Not that this change itself is changing Mac behavior)",
+      "parentUuid": "947e2e8c_e32292f7",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "24446fc81755108748a7d75928b126f566060ee5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
