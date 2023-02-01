@@ -133,17 +133,6 @@ func (library *Library) AndroidMkEntries() []android.AndroidMkEntries {
 	return entriesList
 }
 
-func (j *JavaFuzzLibrary) AndroidMkEntries() []android.AndroidMkEntries {
-	entriesList := j.Library.AndroidMkEntries()
-	entries := &entriesList[0]
-	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
-		entries.AddStrings("LOCAL_COMPATIBILITY_SUITE", "null-suite")
-		androidMkWriteTestData(j.jniFilePaths, entries)
-		androidMkWriteTestData(android.Paths{j.implementationJarFile}, entries)
-	})
-	return entriesList
-}
-
 // Called for modules that are a component of a test suite.
 func testSuiteComponent(entries *android.AndroidMkEntries, test_suites []string, perTestcaseDirectory bool) {
 	entries.SetString("LOCAL_MODULE_TAGS", "tests")
@@ -155,19 +144,39 @@ func testSuiteComponent(entries *android.AndroidMkEntries, test_suites []string,
 	entries.SetBoolIfTrue("LOCAL_COMPATIBILITY_PER_TESTCASE_DIRECTORY", perTestcaseDirectory)
 }
 
+func (j *JavaFuzzTest) AndroidMkEntries() []android.AndroidMkEntries {
+	entriesList := j.Test.AndroidMkEntries()
+	entries := &entriesList[0]
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+		entries.AddStrings("LOCAL_COMPATIBILITY_SUITE", "null-suite")
+		androidMkWriteTestData(android.Paths{j.implementationJarFile}, entries)
+		if j.fuzzPackagedModule.Corpus != nil {
+			androidMkWriteTestData(j.fuzzPackagedModule.Corpus, entries)
+		}
+		if j.fuzzPackagedModule.Dictionary != nil {
+			androidMkWriteTestData(android.Paths{j.fuzzPackagedModule.Dictionary}, entries)
+		}
+	})
+	return entriesList
+}
+
 func (j *Test) AndroidMkEntries() []android.AndroidMkEntries {
 	entriesList := j.Library.AndroidMkEntries()
 	entries := &entriesList[0]
 	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		testSuiteComponent(entries, j.testProperties.Test_suites, Bool(j.testProperties.Per_testcase_directory))
+
 		if j.testConfig != nil {
 			entries.SetPath("LOCAL_FULL_TEST_CONFIG", j.testConfig)
 		}
+
 		androidMkWriteExtraTestConfigs(j.extraTestConfigs, entries)
 		androidMkWriteTestData(j.data, entries)
+
 		if !BoolDefault(j.testProperties.Auto_gen_config, true) {
 			entries.SetString("LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG", "true")
 		}
+
 		entries.AddStrings("LOCAL_TEST_MAINLINE_MODULES", j.testProperties.Test_mainline_modules...)
 
 		j.testProperties.Test_options.CommonTestOptions.SetAndroidMkEntries(entries)

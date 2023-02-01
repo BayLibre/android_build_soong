@@ -224,7 +224,7 @@ func sharedLibraryInstallLocation(
 }
 
 // Get the device-only shared library symbols install directory.
-func sharedLibrarySymbolsInstallLocation(libraryPath android.Path, fuzzDir string, archString string) string {
+func SharedLibrarySymbolsInstallLocation(libraryPath android.Path, fuzzDir string, archString string) string {
 	return filepath.Join("$(PRODUCT_OUT)/symbols/data/", fuzzDir, archString, "/lib/", libraryPath.Base())
 }
 
@@ -285,7 +285,7 @@ func (fuzzBin *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 		// Also add the dependency on the shared library symbols dir.
 		if !ctx.Host() {
 			fuzzBin.installedSharedDeps = append(fuzzBin.installedSharedDeps,
-				sharedLibrarySymbolsInstallLocation(lib, installBase, ctx.Arch().ArchType.String()))
+				SharedLibrarySymbolsInstallLocation(lib, installBase, ctx.Arch().ArchType.String()))
 		}
 	}
 }
@@ -479,7 +479,7 @@ func GetSharedLibsToZip(sharedLibraries android.Paths, module LinkableInterface,
 		// we want symbolization tools (like `stack`) to be able to find the symbols
 		// in $ANDROID_PRODUCT_OUT/symbols automagically.
 		if !module.Host() {
-			symbolsInstallDestination := sharedLibrarySymbolsInstallLocation(library, fuzzDir, archString)
+			symbolsInstallDestination := SharedLibrarySymbolsInstallLocation(library, fuzzDir, archString)
 			symbolsInstallDestination = strings.ReplaceAll(symbolsInstallDestination, "$", "$$")
 			s.SharedLibInstallStrings = append(s.SharedLibInstallStrings,
 				library.String()+":"+symbolsInstallDestination)
