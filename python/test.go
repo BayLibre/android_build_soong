@@ -30,6 +30,7 @@ func init() {
 func registerPythonTestComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("python_test_host", PythonTestHostFactory)
 	ctx.RegisterModuleType("python_test", PythonTestFactory)
+	//ctx.RegisterModuleType("python_multidevice_test_host", PythonMultideviceTestHostFactory)
 }
 
 func NewTest(hod android.HostOrDeviceSupported) *PythonTestModule {
@@ -117,6 +118,27 @@ func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext
 	}
 }
 
+//=======
+//type TestOptions struct {
+//	android.CommonTestOptions
+//
+//	Multidevice_component *string
+//}
+//
+//func (test *testDecorator) bootstrapperProps() []interface{} {
+//	return append(test.binaryDecorator.bootstrapperProps(), &test.testProperties)
+//}
+//
+//func (test *testDecorator) install(ctx android.ModuleContext, file android.Path) {
+//	if test.testProperties.Test_options.Multidevice_component == nil {
+//		test.testConfig = tradefed.AutoGenPythonBinaryHostTestConfig(ctx, test.testProperties.Test_config,
+//			test.testProperties.Test_config_template, test.binaryDecorator.binaryProperties.Test_suites,
+//			test.binaryDecorator.binaryProperties.Auto_gen_config)
+//	} else {
+//		test.testConfig = genMultideviceTestTemplate(ctx, *test.testProperties.Test_options.Multidevice_component)
+//	}
+//	>>>>>>> 16067b60c (multi-device soong)
+
 func (p *PythonTestModule) AndroidMkEntries() []android.AndroidMkEntries {
 	entriesList := p.PythonBinaryModule.AndroidMkEntries()
 	if len(entriesList) != 1 {
@@ -142,3 +164,31 @@ func (p *PythonTestModule) AndroidMkEntries() []android.AndroidMkEntries {
 
 	return entriesList
 }
+
+//func PythonMultideviceTestHostFactory() android.Module {
+//	module := NewTest(android.HostSupportedNoCross)
+//
+//	return module.init()
+//}
+//
+//var genMultideviceTestConfig = pctx.StaticRule("autogenTestConfig", blueprint.RuleParams{
+//	Command:     "sed 's&{MODULE}&${name}&g;s&{COMPONENT}&'${component}'&g' $template > $out",
+//	CommandDeps: []string{"$template"},
+//}, "name", "template", "component")
+//
+//func genMultideviceTestTemplate(ctx android.ModuleContext, component string) android.Path {
+//	outputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".config")
+//
+//	ctx.Build(pctx, android.BuildParams{
+//		Rule:        genMultideviceTestConfig,
+//		Description: "multi-device test config",
+//		Output:      outputFile,
+//		Args: map[string]string{
+//			"name":      ctx.ModuleName(),
+//			"template":  "build/make/core/python_multidevice_test_config_template.xml",
+//			"component": component,
+//		},
+//	})
+//
+//	return outputFile
+//}
