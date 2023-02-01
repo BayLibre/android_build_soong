@@ -29,6 +29,7 @@ type Sandbox struct {
 	DisableWhenUsingGoma bool
 
 	AllowBuildBrokenUsesNetwork bool
+	DisableProcessRestriction   bool
 }
 
 var (
@@ -39,8 +40,14 @@ var (
 
 	dumpvarsSandbox = basicSandbox
 	katiSandbox     = basicSandbox
-	soongSandbox    = basicSandbox
-	ninjaSandbox    = Sandbox{
+	soongSandbox    = Sandbox{
+		Enabled: true,
+		// soong_build may spawn a Bazel process during analysis. Keeping this
+		// Bazel process alive in the background greatly improves the performance
+		// of incremental builds.
+		DisableProcessRestriction: true,
+	}
+	ninjaSandbox = Sandbox{
 		Enabled:              true,
 		DisableWhenUsingGoma: true,
 
@@ -126,8 +133,6 @@ func (c *Cmd) sandboxSupported() bool {
 			sandboxConfig.working = true
 			return
 		}
-
-		c.ctx.Println("Build sandboxing disabled due to nsjail error.")
 
 		for _, line := range strings.Split(strings.TrimSpace(string(data)), "\n") {
 			c.ctx.Verboseln(line)
@@ -226,6 +231,10 @@ func (c *Cmd) wrapSandbox() {
 		// The debugger is enabled and soong_build will pause until a remote delve process connects, allow
 		// network connections.
 		sandboxArgs = append(sandboxArgs, "-N")
+	}
+
+	if c.Sandbox.DisableProcessRestriction {
+		sandboxArgs = append(sandboxArgs, "--disable_clone_newpid", "--disable_proc")
 	}
 
 	// Stop nsjail from parsing arguments
