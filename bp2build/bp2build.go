@@ -29,9 +29,12 @@ import (
 func Codegen(ctx *CodegenContext) *CodegenMetrics {
 	// This directory stores BUILD files that could be eventually checked-in.
 	bp2buildDir := android.PathForOutput(ctx, "bp2build")
-	if err := android.RemoveAllOutputDir(bp2buildDir); err != nil {
-		fmt.Printf("ERROR: Encountered error while cleaning %s: %s", bp2buildDir, err.Error())
-	}
+
+	// TODO: This is a problem if there are BUILD files we *should* remove and
+	// not regenerate (such as cases where the Android.bp file was deleted.)
+	//if err := android.RemoveAllOutputDir(bp2buildDir); err != nil {
+	//	fmt.Printf("ERROR: Encountered error while cleaning %s: %s", bp2buildDir, err.Error())
+	//}
 
 	res, errs := GenerateBazelTargets(ctx, true)
 	if len(errs) > 0 {
@@ -90,5 +93,5 @@ func writeFiles(ctx android.PathContext, outputDir android.OutputPath, files []B
 func writeFile(pathToFile android.OutputPath, content string) error {
 	// These files are made editable to allow users to modify and iterate on them
 	// in the source tree.
-	return android.WriteFileToOutputDir(pathToFile, []byte(content), 0644)
+	return android.WriteFileToOutputDirIfChanged(pathToFile, []byte(content), 0644)
 }

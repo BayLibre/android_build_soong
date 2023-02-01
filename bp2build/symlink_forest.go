@@ -15,6 +15,7 @@
 package bp2build
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
 	"io/fs"
@@ -171,24 +172,29 @@ func mergeBuildFiles(output string, srcBuildFile string, generatedBuildFile stri
 		generatedBuildFileContent = packageDefaultVisibilityRegex.ReplaceAll(generatedBuildFileContent, []byte{})
 	}
 
+	newContents := generatedBuildFileContent
+	if newContents[len(newContents)-1] != '\n' {
+		newContents = append(newContents, '\n')
+	}
+	newContents = append(newContents, srcBuildFileContent...)
+	if newContents[len(newContents)-1] != '\n' {
+		newContents = append(newContents, '\n')
+	}
+
+	oldContents, err := os.ReadFile(output)
+	if err == nil && bytes.Equal(oldContents, newContents) {
+		return nil
+	}
+
 	outFile, err := os.Create(output)
 	if err != nil {
 		return err
 	}
 
-	_, err = outFile.Write(generatedBuildFileContent)
+	_, err = outFile.Write(newContents)
 	if err != nil {
 		return err
 	}
-
-	if generatedBuildFileContent[len(generatedBuildFileContent)-1] != '\n' {
-		_, err = outFile.WriteString("\n")
-		if err != nil {
-			return err
-		}
-	}
-
-	_, err = outFile.Write(srcBuildFileContent)
 	return err
 }
 

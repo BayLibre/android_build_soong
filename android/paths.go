@@ -2102,6 +2102,15 @@ func WriteFileToOutputDir(path WritablePath, data []byte, perm os.FileMode) erro
 	return ioutil.WriteFile(absPath, data, perm)
 }
 
+func WriteFileToOutputDirIfChanged(path WritablePath, data []byte, perm os.FileMode) error {
+	absPath := absolutePath(path.String())
+	err := os.MkdirAll(filepath.Dir(absPath), 0777)
+	if err != nil {
+		return err
+	}
+	return writeFileBytesIfNew(absPath, data, perm)
+}
+
 func RemoveAllOutputDir(path WritablePath) error {
 	return os.RemoveAll(absolutePath(path.String()))
 }
