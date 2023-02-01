@@ -46,6 +46,30 @@
       },
       "revId": "d34b08be3bb8e30474244c0b843d0c3ee7320a39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "493d4fab_6ea21adb",
+        "filename": "java/dex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-02-01T16:55:59Z",
+      "side": 1,
+      "message": "\u003e Tbf, I\u0027m very surprised that something called static_libs wouldn\u0027t be in the APK\n\nThat would make sense if the `android_library_imports` target that is referenced from `android_app` is via `libs`. That is, I would expect:\n\n(bar ends up in classes.dex)\napp -\u003e static_libs -\u003e android_library_imports -\u003e static_libs -\u003e bar\n\n(bar does *not* end up in classes.dex)\napp -\u003e libs -\u003e android_library_imports -\u003e static_libs -\u003e bar\n\nis that not what you\u0027re seeing?",
+      "parentUuid": "d1795e4a_30b8ed66",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "d34b08be3bb8e30474244c0b843d0c3ee7320a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
