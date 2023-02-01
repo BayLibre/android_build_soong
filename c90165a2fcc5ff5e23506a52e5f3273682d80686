@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e07c539_8dff5cf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-02-01T18:32:03Z",
+      "side": 1,
+      "message": "Is there any reason why you have differentiated the attribute name for droidstrubs module and the bazel target (`api_library_name` vs `library_name`)?",
+      "revId": "c90165a2fcc5ff5e23506a52e5f3273682d80686",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
