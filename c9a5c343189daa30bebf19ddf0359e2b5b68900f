@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a96c828_a3aff273",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9871,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-02-01T01:53:57Z",
+      "side": 1,
+      "message": "Perhaps you want do add `libbar` to `myapex` and `libbaz` to `mydcla` so see that they are not included in libs_to_trim",
+      "range": {
+        "startLine": 9871,
+        "startChar": 3,
+        "endLine": 9871,
+        "endChar": 34
+      },
+      "revId": "c9a5c343189daa30bebf19ddf0359e2b5b68900f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854618a4_c58f37ff",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9873,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-02-01T01:53:57Z",
+      "side": 1,
+      "message": "nit: wrong indentation",
+      "range": {
+        "startLine": 9873,
+        "startChar": 0,
+        "endLine": 9873,
+        "endChar": 6
+      },
+      "revId": "c9a5c343189daa30bebf19ddf0359e2b5b68900f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
