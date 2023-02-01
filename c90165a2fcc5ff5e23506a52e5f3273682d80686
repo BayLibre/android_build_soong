@@ -16,6 +16,24 @@
       "message": "Is there any reason why you have differentiated the attribute name for droidstrubs module and the bazel target (`api_library_name` vs `library_name`)?",
       "revId": "c90165a2fcc5ff5e23506a52e5f3273682d80686",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc238017_5515fe6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-01T18:38:05Z",
+      "side": 1,
+      "message": "In Soong, I wanted to keep the naming consistent with the other `api_*` properties in droidstubs.\n\nIn Bazel, I wanted to keep the naming consistent with the equivalent `cc_api_contribution` rule.",
+      "parentUuid": "9e07c539_8dff5cf5",
+      "revId": "c90165a2fcc5ff5e23506a52e5f3273682d80686",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
