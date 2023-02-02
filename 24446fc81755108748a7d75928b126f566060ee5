@@ -142,6 +142,30 @@
       },
       "revId": "24446fc81755108748a7d75928b126f566060ee5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4681e449_0ce00223",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-02T21:20:34Z",
+      "side": 1,
+      "message": "I\u0027ve revised this CL with something that works in local testing. Will leave this comment thread active (and CR -2ed) until I\u0027ve done some more impact investigation.",
+      "parentUuid": "cb420c56_ea422ee6",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "24446fc81755108748a7d75928b126f566060ee5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
