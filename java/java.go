@@ -1596,7 +1596,7 @@ var JavaApiImportProvider = blueprint.NewProvider(JavaApiImportInfo{})
 func (ap *JavaApiContribution) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var apiFile android.Path = nil
 	if apiFileString := ap.properties.Api_file; apiFileString != nil {
-		apiFile = android.PathForModuleSrc(ctx, String(apiFileString))
+		apiFile = android.MaybeExistentPathForSource(ctx, String(apiFileString))
 	}
 
 	ctx.SetProvider(JavaApiImportProvider, JavaApiImportInfo{
