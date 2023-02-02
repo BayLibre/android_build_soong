@@ -28,10 +28,7 @@ def assert_equal(what, a, b):
 archive = sys.modules["__main__"].__loader__.archive
 
 assert_equal("__name__", __name__, "testpkg.par_test")
-fileName = __file__
-if fileName.endswith('.pyc'):
-    fileName = fileName[:-1]
-assert_equal("__file__", fileName, os.path.join(archive, "testpkg/par_test.py"))
+assert_equal("__file__", __file__, os.path.join(archive, "testpkg/par_test.py"))
 
 # Python3 is returning None here for me, and I haven't found any problems caused by this.
 if sys.version_info[0] == 2:

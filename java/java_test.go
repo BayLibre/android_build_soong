@@ -30,6 +30,7 @@ import (
 	"android/soong/cc"
 	"android/soong/dexpreopt"
 	"android/soong/genrule"
+	"android/soong/python"
 )
 
 // Legacy preparer used for running tests within the java package.
@@ -48,6 +49,7 @@ var prepareForJavaTest = android.GroupFixturePreparers(
 	// Include all the default java modules.
 	PrepareForTestWithJavaDefaultModules,
 	PrepareForTestWithOverlayBuildComponents,
+	python.PrepareForTestWithPythonBuildComponents,
 	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
 		ctx.RegisterPreSingletonType("sdk_versions", sdkPreSingletonFactory)
 	}),
@@ -1438,26 +1440,24 @@ func TestAidlEnforcePermissionsException(t *testing.T) {
 }
 
 func TestDataNativeBinaries(t *testing.T) {
-	ctx := android.GroupFixturePreparers(
-		prepareForJavaTest,
-		android.PrepareForTestWithAllowMissingDependencies).RunTestWithBp(t, `
+	ctx, _ := testJava(t, `
 		java_test_host {
 			name: "foo",
 			srcs: ["a.java"],
 			data_native_bins: ["bin"]
 		}
 
-		cc_binary_host {
+		python_binary_host {
 			name: "bin",
-			srcs: ["bin.cpp"],
+			srcs: ["bin.py"],
 		}
-	`).TestContext
+	`)
 
 	buildOS := ctx.Config().BuildOS.String()
 
 	test := ctx.ModuleForTests("foo", buildOS+"_common").Module().(*TestHost)
 	entries := android.AndroidMkEntriesForTest(t, ctx, test)[0]
-	expected := []string{"out/soong/.intermediates/bin/" + buildOS + "_x86_64/bin:bin"}
+	expected := []string{"out/soong/.intermediates/bin/" + buildOS + "_x86_64_PY3/bin:bin"}
 	actual := entries.EntryMap["LOCAL_COMPATIBILITY_SUPPORT_FILES"]
 	android.AssertStringPathsRelativeToTopEquals(t, "LOCAL_COMPATIBILITY_SUPPORT_FILES", ctx.Config(), expected, actual)
 }

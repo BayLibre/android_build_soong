@@ -18,10 +18,10 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"testing"
 
 	"android/soong/android"
-	"android/soong/cc"
 )
 
 type pyModule struct {
@@ -33,10 +33,8 @@ type pyModule struct {
 }
 
 var (
-	buildNamePrefix = "soong_python_test"
-	// We allow maching almost anything before the actual variant so that the os/arch variant
-	// is matched.
-	moduleVariantErrTemplate = `%s: module %q variant "[a-zA-Z0-9_]*%s": `
+	buildNamePrefix          = "soong_python_test"
+	moduleVariantErrTemplate = "%s: module %q variant %q: "
 	pkgPathErrTemplate       = moduleVariantErrTemplate +
 		"pkg_path: %q must be a relative path contained in par file."
 	badIdentifierErrTemplate = moduleVariantErrTemplate +
@@ -325,26 +323,17 @@ func TestPythonModule(t *testing.T) {
 		if d.desc != "module with duplicate runfile path" {
 			continue
 		}
-		d.mockFiles[filepath.Join("common", bpFile)] = []byte(`
-python_library {
-  name: "py3-stdlib",
-  host_supported: true,
-}
-cc_binary {
-  name: "py3-launcher",
-  host_supported: true,
-}
-`)
+		errorPatterns := make([]string, len(d.errors))
+		for i, s := range d.errors {
+			errorPatterns[i] = regexp.QuoteMeta(s)
+		}
 
 		t.Run(d.desc, func(t *testing.T) {
 			result := android.GroupFixturePreparers(
 				android.PrepareForTestWithDefaults,
-				android.PrepareForTestWithArchMutator,
-				android.PrepareForTestWithAllowMissingDependencies,
-				cc.PrepareForTestWithCcDefaultModules,
 				PrepareForTestWithPythonBuildComponents,
 				d.mockFiles.AddToFixture(),
-			).ExtendWithErrorHandler(android.FixtureExpectsAllErrorsToMatchAPattern(d.errors)).
+			).ExtendWithErrorHandler(android.FixtureExpectsAllErrorsToMatchAPattern(errorPatterns)).
 				RunTest(t)
 
 			if len(result.Errs) > 0 {

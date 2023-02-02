@@ -359,8 +359,7 @@ func (oz *OutputZip) getUninitializedPythonPackages(inputZips []InputZip) ([]str
 		}
 		for _, file := range inputZip.Entries() {
 			pyPkg := getPackage(file.Name)
-			baseName := filepath.Base(file.Name)
-			if baseName == "__init__.py" || baseName == "__init__.pyc" {
+			if filepath.Base(file.Name) == "__init__.py" {
 				if _, found := initedPackages[pyPkg]; found {
 					panic(fmt.Errorf("found __init__.py path duplicates during pars merging: %q", file.Name))
 				}
