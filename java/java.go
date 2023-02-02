@@ -1597,6 +1597,9 @@ func (ap *JavaApiContribution) GenerateAndroidBuildActions(ctx android.ModuleCon
 	var apiFile android.Path = nil
 	if apiFileString := ap.properties.Api_file; apiFileString != nil {
 		apiFile = android.PathForModuleSrc(ctx, String(apiFileString))
+		if ctx.Config().AllowMissingDependencies() {
+			apiFile = android.MaybeExistentPathForModuleSource(ctx, String(apiFileString))
+		}
 	}
 
 	ctx.SetProvider(JavaApiImportProvider, JavaApiImportInfo{
