@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f589571_d95a3987",
+        "filename": "bp2build/android_app_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-02-02T19:22:40Z",
+      "side": 1,
+      "message": "remove extra tabs here and in next test?",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 4
+      },
+      "revId": "5db402a45b6c5bc39becea355a1a23cccc308eed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
