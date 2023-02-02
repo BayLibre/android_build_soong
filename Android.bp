@@ -74,7 +74,7 @@ cc_genrule {
     tools: ["extract_linker"],
     cmd: "$(location) -s $(out) $(in)",
     srcs: [":linker"],
-    out: ["linker.s"],
+    out: ["linker.S"],
 }
 
 cc_genrule {
