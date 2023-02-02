@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4666529f_85f5f603",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 9929,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-02-02T00:25:40Z",
+      "side": 1,
+      "message": "Why is libbar mentioned in the rule for myapex which doesn\u0027t have libbar?\n\nI see that it\u0027s not harmful, because unmatched items are just ignored, but wouldn\u0027t it be better to not have libbar anyway?",
+      "range": {
+        "startLine": 9929,
+        "startChar": 1,
+        "endLine": 9929,
+        "endChar": 82
+      },
+      "revId": "d4f5d932a1f966797a0ea671af088d88019d5417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
