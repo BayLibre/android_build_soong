@@ -22,6 +22,30 @@
       },
       "revId": "d4f5d932a1f966797a0ea671af088d88019d5417",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b323b71c_24122b0d",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 9929,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2023-02-02T14:39:46Z",
+      "side": 1,
+      "message": "I think it is just a conceptual difference. One is I\u0027m providing all these shared libs for you to use. The other is these libs you are carrying that already exists in DCLA. For now, we have this intersection logic inside the apexer wrapper rather than here.",
+      "parentUuid": "4666529f_85f5f603",
+      "range": {
+        "startLine": 9929,
+        "startChar": 1,
+        "endLine": 9929,
+        "endChar": 82
+      },
+      "revId": "d4f5d932a1f966797a0ea671af088d88019d5417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
