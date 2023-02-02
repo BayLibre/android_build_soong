@@ -730,7 +730,7 @@ var (
 		"libcutils_test_static",
 		"KernelLibcutilsTest",
 
-		"linker",                 // TODO(b/228316882): cc_binary uses link_crt
+		//"linker",                 // TODO(b/228316882): cc_binary uses link_crt
 		"versioner",              // TODO(b/228313961):  depends on prebuilt shared library libclang-cpp_host as a shared library, which does not supply expected providers for a shared library
 		"art_libartbase_headers", // TODO(b/236268577): Header libraries do not support export_shared_libs_headers
 		"apexer_test",            // Requires aapt2
@@ -764,9 +764,9 @@ var (
 		"auto_value_plugin_resources",      // TODO(b/210751803), we don't handle path property for filegroups
 
 		// go deps:
-		"analyze_bcpf",              // depends on bpmodify a blueprint_go_binary.
-		"host_bionic_linker_asm",    // depends on extract_linker, a go binary.
-		"host_bionic_linker_script", // depends on extract_linker, a go binary.
+		"analyze_bcpf", // depends on bpmodify a blueprint_go_binary.
+		//"host_bionic_linker_asm",    // depends on extract_linker, a go binary.
+		//"host_bionic_linker_script", // depends on extract_linker, a go binary.
 
 		// in cmd attribute of genrule rule //system/timezone/output_data:robolectric_tzdata: label '//system/timezone/output_data:iana/tzdata' in $(location) expression is not a declared prerequisite of this rule
 		"robolectric_tzdata",
@@ -775,32 +775,32 @@ var (
 		"libtombstoned_client_rust_bridge_code", "libtombstoned_client_wrapper", // rust conversions are not supported
 
 		// unconverted deps
-		"CarHTMLViewer",                                              // depends on unconverted modules android.car-stubs, car-ui-lib
-		"adb",                                                        // depends on unconverted modules: AdbWinApi, libandroidfw, libopenscreen-discovery, libopenscreen-platform-impl, libusb, bin2c_fastdeployagent, AdbWinUsbApi
-		"android_icu4j_srcgen",                                       // depends on unconverted modules: currysrc
-		"android_icu4j_srcgen_binary",                                // depends on unconverted modules: android_icu4j_srcgen, currysrc
-		"apex_manifest_proto_java",                                   // b/210751803, depends on libprotobuf-java-full
-		"art-script",                                                 // depends on unconverted modules: dalvikvm, dex2oat
-		"bin2c_fastdeployagent",                                      // depends on unconverted modules: deployagent
-		"com.android.runtime",                                        // depends on unconverted modules: bionic-linker-config, linkerconfig
-		"currysrc",                                                   // depends on unconverted modules: currysrc_org.eclipse, guavalib, jopt-simple-4.9
-		"dex2oat-script",                                             // depends on unconverted modules: dex2oat
-		"generated_android_icu4j_resources",                          // depends on unconverted modules: android_icu4j_srcgen_binary
-		"generated_android_icu4j_test_resources",                     // depends on unconverted modules: android_icu4j_srcgen_binary
-		"host-libprotobuf-java-nano",                                 // b/220869005, depends on libprotobuf-java-nano
-		"jacoco-stubs",                                               // b/245767077, depends on droidstubs
-		"libapexutil",                                                // depends on unconverted modules: apex-info-list-tinyxml
-		"libart",                                                     // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
-		"libart-runtime-gtest",                                       // depends on unconverted modules: libgtest_isolated, libart-compiler, libdexfile, libprofile, libartbase, libartbase-art-gtest
-		"libart_headers",                                             // depends on unconverted modules: art_libartbase_headers
-		"libartbase-art-gtest",                                       // depends on unconverted modules: libgtest_isolated, libart, libart-compiler, libdexfile, libprofile
-		"libartbased-art-gtest",                                      // depends on unconverted modules: libgtest_isolated, libartd, libartd-compiler, libdexfiled, libprofiled
-		"libartd",                                                    // depends on unconverted modules: art_operator_srcs, libcpu_features, libodrstatslog, libelffiled, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfiled, libnativebridge, libnativeloader, libsigchain, libartbased, libprofiled, cpp-define-generator-asm-support, apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api
-		"libartd-runtime-gtest",                                      // depends on unconverted modules: libgtest_isolated, libartd-compiler, libdexfiled, libprofiled, libartbased, libartbased-art-gtest
-		"libdebuggerd",                                               // depends on unconverted module: libdexfile
-		"libdebuggerd_handler",                                       // depends on unconverted module libdebuggerd_handler_core
-		"libdebuggerd_handler_core", "libdebuggerd_handler_fallback", // depends on unconverted module libdebuggerd
-		"libdexfiled",                                             // depends on unconverted modules: dexfile_operator_srcs, libartbased, libartpalette
+		"CarHTMLViewer",                          // depends on unconverted modules android.car-stubs, car-ui-lib
+		"adb",                                    // depends on unconverted modules: AdbWinApi, libandroidfw, libopenscreen-discovery, libopenscreen-platform-impl, libusb, bin2c_fastdeployagent, AdbWinUsbApi
+		"android_icu4j_srcgen",                   // depends on unconverted modules: currysrc
+		"android_icu4j_srcgen_binary",            // depends on unconverted modules: android_icu4j_srcgen, currysrc
+		"apex_manifest_proto_java",               // b/210751803, depends on libprotobuf-java-full
+		"art-script",                             // depends on unconverted modules: dalvikvm, dex2oat
+		"bin2c_fastdeployagent",                  // depends on unconverted modules: deployagent
+		"com.android.runtime",                    // depends on unconverted modules: bionic-linker-config, linkerconfig
+		"currysrc",                               // depends on unconverted modules: currysrc_org.eclipse, guavalib, jopt-simple-4.9
+		"dex2oat-script",                         // depends on unconverted modules: dex2oat
+		"generated_android_icu4j_resources",      // depends on unconverted modules: android_icu4j_srcgen_binary
+		"generated_android_icu4j_test_resources", // depends on unconverted modules: android_icu4j_srcgen_binary
+		"host-libprotobuf-java-nano",             // b/220869005, depends on libprotobuf-java-nano
+		"jacoco-stubs",                           // b/245767077, depends on droidstubs
+		"libapexutil",                            // depends on unconverted modules: apex-info-list-tinyxml
+		"libart",                                 // depends on unconverted modules: apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api, art_operator_srcs, libcpu_features, libodrstatslog, libelffile, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfile, libnativebridge, libnativeloader, libsigchain, libartbase, libprofile, cpp-define-generator-asm-support
+		"libart-runtime-gtest",                   // depends on unconverted modules: libgtest_isolated, libart-compiler, libdexfile, libprofile, libartbase, libartbase-art-gtest
+		"libart_headers",                         // depends on unconverted modules: art_libartbase_headers
+		"libartbase-art-gtest",                   // depends on unconverted modules: libgtest_isolated, libart, libart-compiler, libdexfile, libprofile
+		"libartbased-art-gtest",                  // depends on unconverted modules: libgtest_isolated, libartd, libartd-compiler, libdexfiled, libprofiled
+		"libartd",                                // depends on unconverted modules: art_operator_srcs, libcpu_features, libodrstatslog, libelffiled, art_cmdlineparser_headers, cpp-define-generator-definitions, libdexfiled, libnativebridge, libnativeloader, libsigchain, libartbased, libprofiled, cpp-define-generator-asm-support, apex-info-list-tinyxml, libtinyxml2, libnativeloader-headers, heapprofd_client_api
+		"libartd-runtime-gtest",                  // depends on unconverted modules: libgtest_isolated, libartd-compiler, libdexfiled, libprofiled, libartbased, libartbased-art-gtest
+		//"libdebuggerd",                                               // depends on unconverted module: libdexfile
+		//"libdebuggerd_handler",                                       // depends on unconverted module libdebuggerd_handler_core
+		//"libdebuggerd_handler_core", "libdebuggerd_handler_fallback", // depends on unconverted module libdebuggerd
+		//"libdexfiled",                                             // depends on unconverted modules: dexfile_operator_srcs, libartbased, libartpalette
 		"libfastdeploy_host",                                      // depends on unconverted modules: libandroidfw, libusb, AdbWinApi
 		"libgmock_main_ndk",                                       // depends on unconverted modules: libgtest_ndk_c++
 		"libgmock_ndk",                                            // depends on unconverted modules: libgtest_ndk_c++
@@ -811,7 +811,7 @@ var (
 		"libstatslog_art",           // depends on unconverted modules: statslog_art.cpp, statslog_art.h
 		"linker_reloc_bench_main",   // depends on unconverted modules: liblinker_reloc_bench_*
 		"malloc-rss-benchmark",      // depends on unconverted modules: libmeminfo
-		"pbtombstone", "crash_dump", // depends on libdebuggerd, libunwindstack
+		"pbtombstone", "crash_dump", // depends on libdebuggerd
 		"robolectric-sqlite4java-0.282", // depends on unconverted modules: robolectric-sqlite4java-import, robolectric-sqlite4java-native
 		"static_crasher",                // depends on unconverted modules: libdebuggerd_handler
 		"test_fips",                     // depends on unconverted modules: adb
