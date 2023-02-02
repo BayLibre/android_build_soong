@@ -22,6 +22,30 @@
       },
       "revId": "5db402a45b6c5bc39becea355a1a23cccc308eed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c848dd5b_c96ca46b",
+        "filename": "bp2build/android_app_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-02-02T20:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f589571_d95a3987",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 4
+      },
+      "revId": "5db402a45b6c5bc39becea355a1a23cccc308eed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
