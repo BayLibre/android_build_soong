@@ -1142,6 +1142,18 @@ func MaybeExistentPathForSource(ctx PathContext, pathComponents ...string) Sourc
 	return path
 }
 
+// MaybeExistentPathForSource joins the provided path components and returns
+// a Path representing the paths... under the module's local source directory.
+// It does not validate whether the path exists.
+func MaybeExistentPathForModuleSource(ctx ModuleMissingDepsPathContext, pathComponents ...string) Path {
+	p := strings.Join(pathComponents, string(filepath.Separator))
+	paths, err := expandOneSrcPath(sourcePathInput{context: ctx, path: p, includeDirs: true})
+	if err != nil {
+		reportPathError(ctx, err)
+	}
+	return paths[0]
+}
+
 // ExistentPathForSource returns an OptionalPath with the SourcePath, rooted from SrcDir, *not*
 // rooted from the module's local source directory, if the path exists, or an empty OptionalPath if
 // it doesn't exist. Dependencies are added so that the ninja file will be regenerated if the state
