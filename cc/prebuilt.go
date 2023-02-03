@@ -489,7 +489,16 @@ func (h *prebuiltLibraryBazelHandler) processStaticBazelQueryResponse(ctx androi
 	}
 
 	out := android.PathForBazelOut(ctx, staticLibs[0])
-	h.module.outputFile = android.OptionalPathForPath(out)
+	validatedOutputFilePath := android.PathForModuleOut(ctx, "validated", out.Base())
+	h.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.Cp,
+		Description: "run validations " + out.Base(),
+		Output:      validatedOutputFilePath,
+		Input:       out,
+		Validations: h.module.tidyFiles,
+	})
+	h.module.outputFile = android.OptionalPathForPath(validatedOutputFilePath)
 
 	depSet := android.NewDepSetBuilder(android.TOPOLOGICAL).Direct(out).Build()
 	ctx.SetProvider(StaticLibraryInfoProvider, StaticLibraryInfo{
@@ -519,7 +528,16 @@ func (h *prebuiltLibraryBazelHandler) processSharedBazelQueryResponse(ctx androi
 	}
 
 	out := android.PathForBazelOut(ctx, sharedLibs[0])
-	h.module.outputFile = android.OptionalPathForPath(out)
+	validatedOutputFilePath := android.PathForModuleOut(ctx, "validated", out.Base())
+	h.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.Cp,
+		Description: "run validations " + out.Base(),
+		Output:      validatedOutputFilePath,
+		Input:       out,
+		Validations: h.module.tidyFiles,
+	})
+	h.module.outputFile = android.OptionalPathForPath(validatedOutputFilePath)
 
 	// FIXME(b/214600441): We don't yet strip prebuilt shared libraries
 	h.library.unstrippedOutputFile = out

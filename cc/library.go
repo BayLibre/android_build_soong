@@ -846,7 +846,16 @@ func (handler *ccLibraryBazelHandler) generateStaticBazelBuildActions(ctx androi
 		return
 	}
 	outputFilePath := android.PathForBazelOut(ctx, rootStaticArchives[0])
-	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
+	validatedOutputFilePath := android.PathForModuleOut(ctx, "validated", outputFilePath.Base())
+	handler.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.Cp,
+		Description: "run validations " + outputFilePath.Base(),
+		Output:      validatedOutputFilePath,
+		Input:       outputFilePath,
+		Validations: handler.module.tidyFiles,
+	})
+	handler.module.outputFile = android.OptionalPathForPath(validatedOutputFilePath)
 
 	objPaths := ccInfo.CcObjectFiles
 	objFiles := make(android.Paths, len(objPaths))
@@ -882,7 +891,16 @@ func (handler *ccLibraryBazelHandler) generateSharedBazelBuildActions(ctx androi
 		return
 	}
 	outputFilePath := android.PathForBazelOut(ctx, rootDynamicLibraries[0])
-	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
+	validatedOutputFilePath := android.PathForModuleOut(ctx, "validated", outputFilePath.Base())
+	handler.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.Cp,
+		Description: "run validations " + outputFilePath.Base(),
+		Output:      validatedOutputFilePath,
+		Input:       outputFilePath,
+		Validations: handler.module.tidyFiles,
+	})
+	handler.module.outputFile = android.OptionalPathForPath(validatedOutputFilePath)
 
 	handler.module.linker.(*libraryDecorator).unstrippedOutputFile = android.PathForBazelOut(ctx, ccInfo.UnstrippedOutput)
 
