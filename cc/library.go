@@ -939,6 +939,7 @@ func (handler *ccLibraryBazelHandler) ProcessBazelQueryResponse(ctx android.Modu
 	}
 
 	handler.module.setAndroidMkVariablesFromCquery(ccInfo.CcAndroidMkInfo)
+	handler.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
 }
 
 func (library *libraryDecorator) setFlagExporterInfoFromCcInfo(ctx android.ModuleContext, ccInfo cquery.CcInfo) {
