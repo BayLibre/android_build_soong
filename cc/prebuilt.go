@@ -464,6 +464,7 @@ func (h *prebuiltLibraryBazelHandler) ProcessBazelQueryResponse(ctx android.Modu
 	h.module.maybeUnhideFromMake()
 
 	h.module.setAndroidMkVariablesFromCquery(ccInfo.CcAndroidMkInfo)
+	h.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
 }
 
 func (h *prebuiltLibraryBazelHandler) processStaticBazelQueryResponse(ctx android.ModuleContext, label string, ccInfo cquery.CcInfo) bool {

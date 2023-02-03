@@ -654,6 +654,7 @@ func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleC
 	handler.module.linker.(*testBinary).unstrippedOutputFile = android.PathForBazelOut(ctx, info.UnstrippedOutput)
 
 	handler.module.setAndroidMkVariablesFromCquery(info.CcAndroidMkInfo)
+	handler.module.tidyFiles = android.PathsForBazelOut(ctx, info.TidyFiles)
 }
 
 // binaryAttributes contains Bazel attributes corresponding to a cc test
