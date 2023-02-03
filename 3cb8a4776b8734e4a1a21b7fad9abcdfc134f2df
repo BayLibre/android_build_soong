@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeaa68bd_2c981da1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-03T10:50:52Z",
+      "side": 1,
+      "message": "Is there a tracking bug behind this change?",
+      "revId": "3cb8a4776b8734e4a1a21b7fad9abcdfc134f2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0aa3e8_5304fe5f",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-03T10:50:52Z",
+      "side": 1,
+      "message": "Does this need to be a user-settable property? I think the test should be able to implicitly get the package name of the signed/unsigned app it\u0027s instrumenting through the `instrumentation_for` property module dep.",
+      "range": {
+        "startLine": 991,
+        "startChar": 1,
+        "endLine": 991,
+        "endChar": 22
+      },
+      "revId": "3cb8a4776b8734e4a1a21b7fad9abcdfc134f2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
