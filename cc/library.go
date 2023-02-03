@@ -845,8 +845,17 @@ func (handler *ccLibraryBazelHandler) generateStaticBazelBuildActions(ctx androi
 		ctx.ModuleErrorf("expected exactly one root archive file for '%s', but got %s", label, rootStaticArchives)
 		return
 	}
-	outputFilePath := android.PathForBazelOut(ctx, rootStaticArchives[0])
-	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
+	bazelOutputFilePath := android.PathForBazelOut(ctx, rootStaticArchives[0])
+	validatedOutputFilePath := android.PathForModuleOut(ctx, "validated", bazelOutputFilePath.Base())
+	handler.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.Cp,
+		Description: "run validations " + bazelOutputFilePath.Base(),
+		Output:      validatedOutputFilePath,
+		Input:       bazelOutputFilePath,
+		Validations: handler.module.tidyFiles,
+	})
+	handler.module.outputFile = android.OptionalPathForPath(validatedOutputFilePath)
 
 	objPaths := ccInfo.CcObjectFiles
 	objFiles := make(android.Paths, len(objPaths))
@@ -858,14 +867,14 @@ func (handler *ccLibraryBazelHandler) generateStaticBazelBuildActions(ctx androi
 	}
 
 	ctx.SetProvider(StaticLibraryInfoProvider, StaticLibraryInfo{
-		StaticLibrary: outputFilePath,
+		StaticLibrary: validatedOutputFilePath,
 		ReuseObjects:  objects,
 		Objects:       objects,
 
 		// TODO(b/190524881): Include transitive static libraries in this provider to support
 		// static libraries with deps.
 		TransitiveStaticLibrariesForOrdering: android.NewDepSetBuilder(android.TOPOLOGICAL).
-			Direct(outputFilePath).
+			Direct(validatedOutputFilePath).
 			Build(),
 	})
 
@@ -882,7 +891,16 @@ func (handler *ccLibraryBazelHandler) generateSharedBazelBuildActions(ctx androi
 		return
 	}
 	outputFilePath := android.PathForBazelOut(ctx, rootDynamicLibraries[0])
-	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
+	validatedOutputFilePath := android.PathForModuleOut(ctx, "validated", outputFilePath.Base())
+	handler.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.Cp,
+		Description: "run validations " + outputFilePath.Base(),
+		Output:      validatedOutputFilePath,
+		Input:       outputFilePath,
+		Validations: handler.module.tidyFiles,
+	})
+	handler.module.outputFile = android.OptionalPathForPath(validatedOutputFilePath)
 
 	handler.module.linker.(*libraryDecorator).unstrippedOutputFile = android.PathForBazelOut(ctx, ccInfo.UnstrippedOutput)
 
@@ -898,7 +916,7 @@ func (handler *ccLibraryBazelHandler) generateSharedBazelBuildActions(ctx androi
 
 	ctx.SetProvider(SharedLibraryInfoProvider, SharedLibraryInfo{
 		TableOfContents: tocFile,
-		SharedLibrary:   outputFilePath,
+		SharedLibrary:   validatedOutputFilePath,
 		Target:          ctx.Target(),
 		// TODO(b/190524881): Include transitive static libraries in this provider to support
 		// static libraries with deps. The provider key for this is TransitiveStaticLibrariesForOrdering.

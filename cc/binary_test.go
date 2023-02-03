@@ -47,8 +47,8 @@ cc_binary {
 	if err != nil {
 		t.Errorf("Unexpected error getting cc_binary outputfiles %s", err)
 	}
-	expectedOutputFiles := []string{"outputbase/execroot/__main__/foo"}
-	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+	expectedOutputFiles := []string{"out/soong/.intermediates/foo/android_arm64_armv8-a/validated/foo"}
+	android.AssertPathsRelativeToTopEquals(t, "output files", expectedOutputFiles, outputFiles)
 
 	unStrippedFilePath := binMod.(*Module).UnstrippedOutputFile()
 	expectedUnStrippedFile := "outputbase/execroot/__main__/foo.unstripped"

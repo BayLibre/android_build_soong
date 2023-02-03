@@ -650,7 +650,16 @@ func (handler *ccTestBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleC
 	}
 
 	outputFilePath := android.PathForBazelOut(ctx, info.OutputFile)
-	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
+	validatedOutputFilePath := android.PathForModuleOut(ctx, "validated", outputFilePath.Base())
+	handler.module.tidyFiles = android.PathsForBazelOut(ctx, info.TidyFiles)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.Cp,
+		Description: "run validations " + outputFilePath.Base(),
+		Output:      validatedOutputFilePath,
+		Input:       outputFilePath,
+		Validations: handler.module.tidyFiles,
+	})
+	handler.module.outputFile = android.OptionalPathForPath(validatedOutputFilePath)
 	handler.module.linker.(*testBinary).unstrippedOutputFile = android.PathForBazelOut(ctx, info.UnstrippedOutput)
 
 	handler.module.setAndroidMkVariablesFromCquery(info.CcAndroidMkInfo)
