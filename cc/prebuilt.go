@@ -488,13 +488,21 @@ func (h *prebuiltLibraryBazelHandler) processStaticBazelQueryResponse(ctx androi
 		return true
 	}
 
-	out := android.PathForBazelOut(ctx, staticLibs[0])
-	h.module.outputFile = android.OptionalPathForPath(out)
+	bazelOutputPath := android.PathForBazelOut(ctx, staticLibs[0])
+	validatedOutputFilePath := android.PathForModuleOut(ctx, "validated", bazelOutputPath.Base())
+	h.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.CpNoPreserveSymlink,
+		Description: "run validations " + bazelOutputPath.Base(),
+		Output:      validatedOutputFilePath,
+		Input:       bazelOutputPath,
+		Validations: h.module.tidyFiles,
+	})
+	h.module.outputFile = android.OptionalPathForPath(validatedOutputFilePath)
 
-	depSet := android.NewDepSetBuilder(android.TOPOLOGICAL).Direct(out).Build()
+	depSet := android.NewDepSetBuilder(android.TOPOLOGICAL).Direct(validatedOutputFilePath).Build()
 	ctx.SetProvider(StaticLibraryInfoProvider, StaticLibraryInfo{
-		StaticLibrary: out,
-
+		StaticLibrary:                        validatedOutputFilePath,
 		TransitiveStaticLibrariesForOrdering: depSet,
 	})
 
@@ -518,21 +526,30 @@ func (h *prebuiltLibraryBazelHandler) processSharedBazelQueryResponse(ctx androi
 		return true
 	}
 
-	out := android.PathForBazelOut(ctx, sharedLibs[0])
-	h.module.outputFile = android.OptionalPathForPath(out)
+	bazelOutputPath := android.PathForBazelOut(ctx, sharedLibs[0])
+	validatedOutputFilePath := android.PathForModuleOut(ctx, "validated", bazelOutputPath.Base())
+	h.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.CpNoPreserveSymlink,
+		Description: "run validations " + bazelOutputPath.Base(),
+		Output:      validatedOutputFilePath,
+		Input:       bazelOutputPath,
+		Validations: h.module.tidyFiles,
+	})
+	h.module.outputFile = android.OptionalPathForPath(validatedOutputFilePath)
 
 	// FIXME(b/214600441): We don't yet strip prebuilt shared libraries
-	h.library.unstrippedOutputFile = out
+	h.library.unstrippedOutputFile = validatedOutputFilePath
 
 	var toc android.Path
 	if len(ccInfo.TocFile) > 0 {
 		toc = android.PathForBazelOut(ctx, ccInfo.TocFile)
 	} else {
-		toc = out // Just reuse `out` so ninja still gets an input but won't matter
+		toc = validatedOutputFilePath // Just reuse `out` so ninja still gets an input but won't matter
 	}
 
 	info := SharedLibraryInfo{
-		SharedLibrary:   out,
+		SharedLibrary:   validatedOutputFilePath,
 		TableOfContents: android.OptionalPathForPath(toc),
 		Target:          ctx.Target(),
 	}

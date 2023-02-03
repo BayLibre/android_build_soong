@@ -588,8 +588,17 @@ func (handler *ccBinaryBazelHandler) ProcessBazelQueryResponse(ctx android.Modul
 		return
 	}
 
-	outputFilePath := android.PathForBazelOut(ctx, info.OutputFile)
-	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
+	bazelOutputPath := android.PathForBazelOut(ctx, info.OutputFile)
+	validatedOutputFilePath := android.PathForModuleOut(ctx, "validated", bazelOutputPath.Base())
+	handler.module.tidyFiles = android.PathsForBazelOut(ctx, info.TidyFiles)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.CpNoPreserveSymlink,
+		Description: "run validations " + bazelOutputPath.Base(),
+		Output:      validatedOutputFilePath,
+		Input:       bazelOutputPath,
+		Validations: handler.module.tidyFiles,
+	})
+	handler.module.outputFile = android.OptionalPathForPath(validatedOutputFilePath)
 	handler.module.linker.(*binaryDecorator).unstrippedOutputFile = android.PathForBazelOut(ctx, info.UnstrippedOutput)
 
 	handler.module.setAndroidMkVariablesFromCquery(info.CcAndroidMkInfo)

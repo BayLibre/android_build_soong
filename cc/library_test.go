@@ -283,8 +283,8 @@ cc_library {
 		t.Errorf("Unexpected error getting cc_object outputfiles %s", err)
 	}
 
-	expectedOutputFiles := []string{"outputbase/execroot/__main__/foo.a"}
-	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+	expectedOutputFiles := []string{"out/soong/.intermediates/foo/android_arm_armv7-a-neon_static/validated/foo.a"}
+	android.AssertPathsRelativeToTopEquals(t, "output files", expectedOutputFiles, outputFiles)
 
 	flagExporter := ctx.ModuleProvider(staticFoo, FlagExporterInfoProvider).(FlagExporterInfo)
 	android.AssertPathsRelativeToTopEquals(t, "exported include dirs", []string{"outputbase/execroot/__main__/include"}, flagExporter.IncludeDirs)
@@ -297,8 +297,8 @@ cc_library {
 	if err != nil {
 		t.Errorf("Unexpected error getting cc_library outputfiles %s", err)
 	}
-	expectedOutputFiles = []string{"outputbase/execroot/__main__/foo.so"}
-	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+	expectedOutputFiles = []string{"out/soong/.intermediates/foo/android_arm_armv7-a-neon_shared/validated/foo.so"}
+	android.AssertPathsRelativeToTopEquals(t, "output files", expectedOutputFiles, outputFiles)
 
 	android.AssertStringEquals(t, "unstripped shared library", "outputbase/execroot/__main__/foo_unstripped.so", sharedFoo.(*Module).linker.unstrippedOutputFilePath().String())
 	flagExporter = ctx.ModuleProvider(sharedFoo, FlagExporterInfoProvider).(FlagExporterInfo)
@@ -373,8 +373,8 @@ cc_library_shared {
 	if err != nil {
 		t.Errorf("Unexpected error getting cc_object outputfiles %s", err)
 	}
-	expectedOutputFiles := []string{"outputbase/execroot/__main__/foo.so"}
-	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+	expectedOutputFiles := []string{"out/soong/.intermediates/foo/android_arm_armv7-a-neon_shared/validated/foo.so"}
+	android.AssertPathsRelativeToTopEquals(t, "output files", expectedOutputFiles, outputFiles)
 
 	tocFilePath := sharedFoo.(*Module).Toc()
 	if !tocFilePath.Valid() {

@@ -76,8 +76,17 @@ func (h *libraryHeaderBazelHandler) ProcessBazelQueryResponse(ctx android.Module
 		return
 	}
 
-	outputPath := android.PathForBazelOut(ctx, outputPaths[0])
-	h.module.outputFile = android.OptionalPathForPath(outputPath)
+	bazelOutputPath := android.PathForBazelOut(ctx, outputPaths[0])
+	validatedOutputFilePath := android.PathForModuleOut(ctx, "validated", bazelOutputPath.Base())
+	h.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.CpNoPreserveSymlink,
+		Description: "run validations " + bazelOutputPath.Base(),
+		Output:      validatedOutputFilePath,
+		Input:       bazelOutputPath,
+		Validations: h.module.tidyFiles,
+	})
+	h.module.outputFile = android.OptionalPathForPath(validatedOutputFilePath)
 
 	// HeaderLibraryInfo is an empty struct to indicate to dependencies that this is a header library
 	ctx.SetProvider(HeaderLibraryInfoProvider, HeaderLibraryInfo{})
