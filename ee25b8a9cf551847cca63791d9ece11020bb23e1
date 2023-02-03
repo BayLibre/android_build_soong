@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ced1f11_ea7bde8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-03T15:31:59Z",
+      "side": 1,
+      "message": "nit: ~This~ -\u003e This CL ?\nI.e. I was reading \"This\" to mean \"the writing of soong_injection files only if changed\"",
+      "revId": "ee25b8a9cf551847cca63791d9ece11020bb23e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdbe118c_13cb1a89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-03T15:31:59Z",
+      "side": 1,
+      "message": "seems like there a two changes in this CL and only one of them has a unit test.",
+      "revId": "ee25b8a9cf551847cca63791d9ece11020bb23e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2147010b_d21fb5b2",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-03T15:31:59Z",
+      "side": 1,
+      "message": "nit: why is a binary-search-and-insert preferred in QueueBazelRequest()\nwhile append-then-sort here? Also, it seems like this is re-sorting values that were already sorted, but with doing so with a different comparator. If that\u0027s true, is this redundant? If not maybe comment why.",
+      "revId": "ee25b8a9cf551847cca63791d9ece11020bb23e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3ef325b_88538eeb",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-03T15:31:59Z",
+      "side": 1,
+      "message": "nit: rename to `writeFileBytesIfChanged`",
+      "revId": "ee25b8a9cf551847cca63791d9ece11020bb23e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
