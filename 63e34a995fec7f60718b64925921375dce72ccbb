@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb38d4c5_6ea73138",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2097,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-02-03T22:53:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a82255e_9b1966ab",
+      "range": {
+        "startLine": 2091,
+        "startChar": 0,
+        "endLine": 2097,
+        "endChar": 0
+      },
+      "revId": "63e34a995fec7f60718b64925921375dce72ccbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e153c4ec_0a10ff77",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-02T21:08:36Z",
       "side": 1,
       "message": "I think we might be able to factor this into a loop, something similar to http://cs/aosp-master/build/soong/java/sdk_library.go;l\u003d1192-1210;rcl\u003de660bc1963ba09a937c4546bcaa196609f29afc7. You would need some kind of mapping from apiScope to the proper attribute in bazelSdkLibraryAttribute. The loop would naturally iterate over \"test\", which we\u0027re not handling right now, so we\u0027d have to either skip it explicitly, or handle it as well. I\u0027m leaning the latter as it doesn\u0027t cost much.",
+      "range": {
+        "startLine": 2111,
+        "startChar": 0,
+        "endLine": 2149,
+        "endChar": 2
+      },
+      "revId": "63e34a995fec7f60718b64925921375dce72ccbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083f8b17_ec6ec2f1",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2149,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-02-03T22:53:47Z",
+      "side": 1,
+      "message": "Agree. I didn\u0027t use a for loop partly because we didn\u0027t plan to convert `test`. Thanks for the review:) Done.",
+      "parentUuid": "e153c4ec_0a10ff77",
       "range": {
         "startLine": 2111,
         "startChar": 0,
