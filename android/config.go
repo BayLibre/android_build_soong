@@ -397,16 +397,27 @@ product_var_constraints = _product_var_constraints
 arch_variant_product_var_constraints = _arch_variant_product_var_constraints
 `,
 	}
-	err = os.WriteFile(filepath.Join(dir, "product_variables.bzl"), []byte(strings.Join(bzl, "\n")), 0644)
+	err = writeFileIfChanged(filepath.Join(dir, "product_variables.bzl"), strings.Join(bzl, "\n"), 0644)
 	if err != nil {
 		return fmt.Errorf("Could not write .bzl config file %s", err)
 	}
-	err = os.WriteFile(filepath.Join(dir, "BUILD"), []byte(bazel.GeneratedBazelFileWarning), 0644)
+	err = writeFileIfChanged(filepath.Join(dir, "BUILD"), bazel.GeneratedBazelFileWarning, 0644)
 	if err != nil {
 		return fmt.Errorf("Could not write BUILD config file %s", err)
 	}
 
 	return nil
+}
+
+func writeFileIfChanged(path string, contents string, perm os.FileMode) error {
+	oldContents, err := os.ReadFile(path)
+	if err == nil && contents == string(oldContents) {
+		return nil
+	}
+	if err != nil && !os.IsNotExist(err) {
+		fmt.Fprintln(os.Stderr, "warning: error reading file", path, "this may result in degraded performance")
+	}
+	return os.WriteFile(path, []byte(contents), perm)
 }
 
 // NullConfig returns a mostly empty Config for use by standalone tools like dexpreopt_gen that
