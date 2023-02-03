@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9be8eb0d_401d2fea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-03T22:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ced1f11_ea7bde8e",
+      "revId": "ee25b8a9cf551847cca63791d9ece11020bb23e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cdbe118c_13cb1a89",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-03T15:31:59Z",
       "side": 1,
       "message": "seems like there a two changes in this CL and only one of them has a unit test.",
+      "revId": "ee25b8a9cf551847cca63791d9ece11020bb23e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14d2fc59_7f294856",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-03T22:24:29Z",
+      "side": 1,
+      "message": "The other is difficult to write a unit test for in isolation and without it being very brittle -- I certainly want to test the determinism of these files as part of the determinism e2e test I still owe (we should check the determinism of generated BUILD/bzl files and also the build.ninja file). WDYT?",
+      "parentUuid": "cdbe118c_13cb1a89",
       "revId": "ee25b8a9cf551847cca63791d9ece11020bb23e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a84ba947_a3910467",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-03T22:24:29Z",
+      "side": 1,
+      "message": "This is a local-only value and context.requests is a field. The alternative would have been to have context.requests be sometimes-sorted slice (not great, and difficult to keep track of), or to clone context.requests, sort that, and pass it around in these functions (not as clean).\n\n\u003e  it seems like this is re-sorting values that were already sorted, but with doing so with a different comparato\n\nNot exactly. sortedConfigs contains configuration strings (such as `x86_64|linux` or `common|common_os`), and context.requests is a list of requests (such as {//bionic/libc:libc, GetCcInfo, `x86_64|linux`}).\n\nThat said, creating a list of configuration strings from a deterministic list of requests will actually result in a deterministic ordering (though the ordering may be confusing, and we\u0027ll need to ensure there are no duplicates). I think it\u0027s easier to just sort a map instead of maintaining a no-duplicates list. WDYT?",
+      "parentUuid": "2147010b_d21fb5b2",
+      "revId": "ee25b8a9cf551847cca63791d9ece11020bb23e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3ef325b_88538eeb",
@@ -65,6 +119,24 @@
       "writtenOn": "2023-02-03T15:31:59Z",
       "side": 1,
       "message": "nit: rename to `writeFileBytesIfChanged`",
+      "revId": "ee25b8a9cf551847cca63791d9ece11020bb23e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f29a7ae_2d539e4b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-03T22:24:29Z",
+      "side": 1,
+      "message": "Good call. Done",
+      "parentUuid": "e3ef325b_88538eeb",
       "revId": "ee25b8a9cf551847cca63791d9ece11020bb23e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
