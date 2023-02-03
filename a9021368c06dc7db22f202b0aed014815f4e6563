@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49133e65_e0d5e971",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-02-03T18:11:26Z",
+      "side": 1,
+      "message": "I thought this was only set in depsVisitor, which is only called from GenerateAndroidBuildActions, which we don\u0027t run?",
+      "revId": "a9021368c06dc7db22f202b0aed014815f4e6563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
