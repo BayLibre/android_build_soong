@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d4086c_9ad5a03c",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-03T22:49:34Z",
+      "side": 1,
+      "message": "I think one of the cons of this approach is that it defers error handling from analysis to execution. This is fine for incomplete branches like aosp-build-tools (since we dont build java_api_contributions there), but suboptimal for full branches (like aosp-master).\n\nAs a CUJ, suppose I wanted to write a new `java_sdk_library` module. I create an Android.bp file but forget to add the .txt files to the FS. Currently, Soong will warn us about it, but after this change, it happens during ninja execution.\n\nI think long term this issue goes away with Bazel, so this approach sounds reasonable for now.",
+      "range": {
+        "startLine": 1599,
+        "startChar": 2,
+        "endLine": 1599,
+        "endChar": 80
+      },
+      "revId": "95ef3eb1c8a5cc589e0eeea1bbd07fee77622edd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
