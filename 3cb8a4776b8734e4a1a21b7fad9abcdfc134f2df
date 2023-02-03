@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1854cde_dd1d3e17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-02-03T17:17:20Z",
+      "side": 1,
+      "message": "No, it\u0027s something we just ran into while trying to great Google-signed versions of some tests for mainline.\n\nHappy to file a bug, though 😊. Do you have a preferred component?",
+      "parentUuid": "aeaa68bd_2c981da1",
+      "revId": "3cb8a4776b8734e4a1a21b7fad9abcdfc134f2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df0aa3e8_5304fe5f",
         "filename": "java/app.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-03T10:50:52Z",
       "side": 1,
       "message": "Does this need to be a user-settable property? I think the test should be able to implicitly get the package name of the signed/unsigned app it\u0027s instrumenting through the `instrumentation_for` property module dep.",
+      "range": {
+        "startLine": 991,
+        "startChar": 1,
+        "endLine": 991,
+        "endChar": 22
+      },
+      "revId": "3cb8a4776b8734e4a1a21b7fad9abcdfc134f2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f6d0e06_86b71c6c",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-02-03T17:17:20Z",
+      "side": 1,
+      "message": "The mainline name doesn\u0027t have to match the `instrumentation_for` field. The mainline name is actually an apex name, and not the target application package.\n\nThe mainline apex could even have multiple APKs with different application package names.",
+      "parentUuid": "df0aa3e8_5304fe5f",
       "range": {
         "startLine": 991,
         "startChar": 1,
