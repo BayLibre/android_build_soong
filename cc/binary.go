@@ -593,6 +593,7 @@ func (handler *ccBinaryBazelHandler) ProcessBazelQueryResponse(ctx android.Modul
 	handler.module.linker.(*binaryDecorator).unstrippedOutputFile = android.PathForBazelOut(ctx, info.UnstrippedOutput)
 
 	handler.module.setAndroidMkVariablesFromCquery(info.CcAndroidMkInfo)
+	handler.module.tidyFiles = android.PathsForBazelOut(ctx, info.TidyFiles)
 }
 
 func binaryBp2buildAttrs(ctx android.TopDownMutatorContext, m *Module) binaryAttributes {

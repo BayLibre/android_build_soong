@@ -90,6 +90,7 @@ func (h *libraryHeaderBazelHandler) ProcessBazelQueryResponse(ctx android.Module
 	h.library.collectedSnapshotHeaders = android.Paths{}
 
 	h.module.setAndroidMkVariablesFromCquery(ccInfo.CcAndroidMkInfo)
+	h.module.tidyFiles = android.PathsForBazelOut(ctx, ccInfo.TidyFiles)
 }
 
 // cc_library_headers contains a set of c/c++ headers which are imported by
