@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c6b4f74_1a441ac0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-06T20:44:44Z",
+      "side": 1,
+      "message": "Does this need to be a string? On the Bazel side [it is a bool](https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/BUILD;l\u003d30;drc\u003d59b6cd7b61f9be2840d0fb0818782c3fa84d5c0d), and it appears to always be set to `\"within_apex\"` in this CL or else an empty string. Could we make it a bool here too?",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 11
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d9ecc7_e51920a9",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-06T20:44:44Z",
+      "side": 1,
+      "message": "nit: formatting here is a little weird",
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9fd2d36_e27ad87b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-06T20:44:44Z",
+      "side": 1,
+      "message": "Is this necessary for DCLA to work properly? Asking just because I didn\u0027t expect to see references to codecov in this change, so I was a little surprised.",
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9780120b_517997fd",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-06T20:44:44Z",
+      "side": 1,
+      "message": "Should we test this without the apexKey as well?",
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2fb78d_faada1f2",
+        "filename": "cc/cc.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1883,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-06T20:44:44Z",
+      "side": 1,
+      "message": "Should the second `\u0026\u0026` should be an `||`? I think as written this could be false if asan or hwsan is disabled but ubsan is enabled. It\u0027s kind of hard to read as it is. Could we change this to e.g. (below), or separate out the logical components into variables if there is grouping that makes more sense?\n\n```\nc.sanitize !\u003d nil \u0026\u0026 (\n\tBool(c.sanitize.Properties.Sanitize.Address)\n\t|| Bool(c.sanitize.Properties.Sanitize.Hwaddress)\n\t|| (c.sanitize.Properties.Sanitize.Integer_overflow !\u003d nil \u0026\u0026 *c.sanitize.Properties.Sanitize.Integer_overflow)\n\t|| c.sanitize.Properties.Sanitize.Misc_undefined !\u003d nil\n)\n```\n\nAlso, is this necessary for DCLA to work? Just asking because I\u0027ve seen this field change  a few times recently and don\u0027t know have a good understanding of the implications of adding logic here. @tradical@google.com\n\nIf it is required, maybe we should add a comment to warn against changing this so as not to break DCLA?",
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
