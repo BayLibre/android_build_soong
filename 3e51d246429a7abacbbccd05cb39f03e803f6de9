@@ -52,6 +52,24 @@
       "parentUuid": "bb4394b6_7b30b668",
       "revId": "3e51d246429a7abacbbccd05cb39f03e803f6de9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af7db42_f750b524",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-06T21:04:22Z",
+      "side": 1,
+      "message": "I\u0027ve noticed that you\u0027ve assigned b/268065279 to yourself so if you are going to fix that quickly then you should be able to avoid applying this change. It is up to you.",
+      "parentUuid": "6a0ec6f8_af78a7aa",
+      "revId": "3e51d246429a7abacbbccd05cb39f03e803f6de9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
