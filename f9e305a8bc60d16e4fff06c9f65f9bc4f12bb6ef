@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc6dc494_d7fd4998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-06T12:02:36Z",
+      "side": 1,
+      "message": "Ok, so the problem is that `java_sdk_library` creates the `droidstubs` module within its defaultable hook and the `droidstubs` module tries to create its `java_api_contribution` within its own defaultable hook but that is not called, presumably because the top down mutator that calls the defaultable hook doesn\u0027t visit the newly created `droidstubs` module.\n\nWhat is the reason for creating the `java_api_contribution` in the `droidstubs` module? Why not create it directly from the `java_sdk_library`?",
+      "revId": "f9e305a8bc60d16e4fff06c9f65f9bc4f12bb6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
