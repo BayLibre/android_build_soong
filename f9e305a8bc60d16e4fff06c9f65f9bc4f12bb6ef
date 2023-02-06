@@ -16,6 +16,24 @@
       "message": "Ok, so the problem is that `java_sdk_library` creates the `droidstubs` module within its defaultable hook and the `droidstubs` module tries to create its `java_api_contribution` within its own defaultable hook but that is not called, presumably because the top down mutator that calls the defaultable hook doesn\u0027t visit the newly created `droidstubs` module.\n\nWhat is the reason for creating the `java_api_contribution` in the `droidstubs` module? Why not create it directly from the `java_sdk_library`?",
       "revId": "f9e305a8bc60d16e4fff06c9f65f9bc4f12bb6ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a986daa_95e0358f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-02-06T17:44:33Z",
+      "side": 1,
+      "message": "Yes, the problem you have explained is exactly the reason why I came up with this change. I have thought of creating a `java_api_contribution` directly from `java_sdk_library`, but this solution has two drawbacks: The first is that there currently are API domains that contribute to the API surface with a `droidstubs`, not with `java_sdk_library`. Thus, boilerplate `java_api_contribution` modules would have to be written out in bp files for these domains if `java_api_contribution` is created from `java_sdk_library`. Another disadvantage is that any additional droidstubs modules that newly contribute to any API surface would require additional `java_api_contribution` modules definition per surface. However, such problem is resolved when it is created from `droidstubs`, whether a `droidstubs` or `java_sdk_library` is added to API surfaces.",
+      "parentUuid": "fc6dc494_d7fd4998",
+      "revId": "f9e305a8bc60d16e4fff06c9f65f9bc4f12bb6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
