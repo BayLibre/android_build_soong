@@ -94,6 +94,30 @@
       },
       "revId": "95ef3eb1c8a5cc589e0eeea1bbd07fee77622edd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd6b14b1_25d0d99c",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-02-06T18:56:22Z",
+      "side": 1,
+      "message": "I have applied your suggestion and have locally verified that it resolves the problem in `aosp-build-tools` branch. Thank you for raising and alerting the bug!",
+      "parentUuid": "15aae0d8_c15d5d3e",
+      "range": {
+        "startLine": 1599,
+        "startChar": 2,
+        "endLine": 1599,
+        "endChar": 80
+      },
+      "revId": "95ef3eb1c8a5cc589e0eeea1bbd07fee77622edd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
