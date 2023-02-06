@@ -22,6 +22,30 @@
       },
       "revId": "95ef3eb1c8a5cc589e0eeea1bbd07fee77622edd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d265fca0_43bc5feb",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-06T10:46:19Z",
+      "side": 1,
+      "message": "The usual way that this is handled is to defer the error reporting to ninja only when `Config.AllowMissingDependencies()` returns true. Otherwise, errors are reported immediately by Soong.",
+      "parentUuid": "52d4086c_9ad5a03c",
+      "range": {
+        "startLine": 1599,
+        "startChar": 2,
+        "endLine": 1599,
+        "endChar": 80
+      },
+      "revId": "95ef3eb1c8a5cc589e0eeea1bbd07fee77622edd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
