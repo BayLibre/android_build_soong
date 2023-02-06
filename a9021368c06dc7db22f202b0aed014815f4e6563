@@ -16,6 +16,24 @@
       "message": "I thought this was only set in depsVisitor, which is only called from GenerateAndroidBuildActions, which we don\u0027t run?",
       "revId": "a9021368c06dc7db22f202b0aed014815f4e6563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "409f4c81_a3138793",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-06T11:12:33Z",
+      "side": 1,
+      "message": "It should be, so this is a defensive measure (along with the cleanup of the commented WalkDepsBlueprint code).",
+      "parentUuid": "49133e65_e0d5e971",
+      "revId": "a9021368c06dc7db22f202b0aed014815f4e6563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
