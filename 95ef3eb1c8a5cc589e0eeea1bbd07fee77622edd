@@ -46,6 +46,30 @@
       },
       "revId": "95ef3eb1c8a5cc589e0eeea1bbd07fee77622edd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d87f59d_c17bb7b4",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-02-06T18:10:08Z",
+      "side": 1,
+      "message": "The background for this change is to resolve [this presubmit failure](https://android-build.googleplex.com/builds/pending/P49120104/linux/latest/view/logs/build.log), at which the target [sets `AllowMissingDependencies` to true](https://source.corp.google.com/android/prebuilts/build-tools/build-prebuilts.sh;rcl\u003d16dcaa60e343240b8439b0cfcdb12c2c702c4243;l\u003d84). I believe other solutions to this problem that can maintain the rule of error reporting immediately by Soong (by discarding the change) is to explicitly not generate `java_api_contribution` for `service-art`-generated droidstubs or modify the [`service-art` module definition](https://source.corp.google.com/aosp-master/art/libartservice/service/Android.bp;rcl\u003d4d14f77185c20cb5cb5050230c660374621b0b13;l\u003d68) to not include the defaults (as it is missing in the `aosp-build-tools`) branch, but both of the solutions do not sound ideal but more like hacks.",
+      "parentUuid": "d265fca0_43bc5feb",
+      "range": {
+        "startLine": 1599,
+        "startChar": 2,
+        "endLine": 1599,
+        "endChar": 80
+      },
+      "revId": "95ef3eb1c8a5cc589e0eeea1bbd07fee77622edd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
