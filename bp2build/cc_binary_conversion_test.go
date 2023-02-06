@@ -868,3 +868,94 @@ func TestCcBinaryWithUBSanPropertiesArchSpecific(t *testing.T) {
 		},
 	})
 }
+
+func TestCcBinaryWithThinLto(t *testing.T) {
+	runCcBinaryTestCase(t, ccBinaryBp2buildTestCase{
+		description: "cc_binary with thin lto",
+		blueprint: `
+{rule_name} {
+	name: "foo",
+	lto: {
+		thin: true,
+	},
+}`,
+		targets: []testBazelTarget{
+			{"cc_binary", "foo", AttrNameToString{
+				"local_includes": `["."]`,
+				"features":       `["android_thin_lto"]`,
+			}},
+		},
+	})
+}
+
+func TestCcBinaryWithLtoNever(t *testing.T) {
+	runCcBinaryTestCase(t, ccBinaryBp2buildTestCase{
+		description: "cc_binary with thin lto",
+		blueprint: `
+{rule_name} {
+	name: "foo",
+	lto: {
+		never: true,
+	},
+}`,
+		targets: []testBazelTarget{
+			{"cc_binary", "foo", AttrNameToString{
+				"local_includes": `["."]`,
+				"features":       `["-android_thin_lto"]`,
+			}},
+		},
+	})
+}
+
+func TestCcBinaryWithThinLtoArchSpecific(t *testing.T) {
+	runCcBinaryTestCase(t, ccBinaryBp2buildTestCase{
+		description: "cc_binary with thin lto",
+		blueprint: `
+{rule_name} {
+	name: "foo",
+	lto: {
+		never: true,
+	},
+	target: {
+		android: {
+			lto: {
+				thin: true,
+				never: false,
+			},
+		},
+	},
+}`,
+		targets: []testBazelTarget{
+			{"cc_binary", "foo", AttrNameToString{
+				"local_includes": `["."]`,
+				"features": `select({
+        "//build/bazel/platforms/os:android": ["android_thin_lto"],
+        "//conditions:default": ["-android_thin_lto"],
+    })`,
+			}},
+		},
+	})
+}
+
+func TestCcBinaryWithThinLtoAndWholeProgramVtables(t *testing.T) {
+	runCcBinaryTestCase(t, ccBinaryBp2buildTestCase{
+		description: "cc_binary with thin lto",
+		blueprint: `
+{rule_name} {
+	name: "foo",
+	lto: {
+		thin: true,
+	},
+	whole_program_vtables: true,
+}`,
+		targets: []testBazelTarget{
+			{"cc_binary", "foo", AttrNameToString{
+				"local_includes": `["."]`,
+				"features": `[
+        "android_thin_lto",
+        "android_thin_lto_whole_program_vtables",
+    ]`,
+			}},
+		},
+	})
+}

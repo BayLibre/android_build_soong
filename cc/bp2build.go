@@ -817,6 +817,7 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 	compilerAttrs.hdrs.Prepend = true
 
 	features := compilerAttrs.features.Clone().Append(linkerAttrs.features).Append(bp2buildSanitizerFeatures(ctx, module))
+	features = features.Append(bp2buildLtoFeatures(ctx, module))
 	features.DeduplicateAxesFromBase()
 
 	addMuslSystemDynamicDeps(ctx, linkerAttrs)
@@ -1456,4 +1457,29 @@ func bp2buildSanitizerFeatures(ctx android.BazelConversionPathContext, m *Module
 		}
 	})
 	return sanitizerFeatures
+}
+
+func bp2buildLtoFeatures(ctx android.BazelConversionPathContext, m *Module) bazel.StringListAttribute {
+	ltoFeatures := bazel.StringListAttribute{}
+	bp2BuildPropParseHelper(ctx, m, &LTOProperties{}, func(axis bazel.ConfigurationAxis, config string, props interface{}) {
+		var features []string
+		if ltoProps, ok := props.(*LTOProperties); ok {
+			if ltoProps.Lto.Thin != nil && *ltoProps.Lto.Thin {
+				features = append(features, "android_thin_lto")
+			}
+			if ltoProps.Lto.Never != nil && *ltoProps.Lto.Never {
+				if ltoProps.Lto.Thin != nil && *ltoProps.Lto.Thin {
+					ctx.ModuleErrorf("lto.thin and lto.never are mutually exclusive but were specified together")
+				} else {
+					features = append(features, "-android_thin_lto")
+				}
+			}
+
+			if ltoProps.Whole_program_vtables != nil && *ltoProps.Whole_program_vtables {
+				features = append(features, "android_thin_lto_whole_program_vtables")
+			}
+		}
+		ltoFeatures.SetSelectValue(axis, config, features)
+	})
+	return ltoFeatures
 }

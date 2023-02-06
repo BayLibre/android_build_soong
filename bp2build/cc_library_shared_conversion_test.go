@@ -967,3 +967,71 @@ cc_library_shared {
 		},
 	})
 }
+
+func TestCcLibrarySharedWithThinLto(t *testing.T) {
+	runCcLibrarySharedTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_shared has correct features when thin lto is enabled",
+		Blueprint: `
+cc_library_shared {
+	name: "foo",
+	lto: {
+		thin: true,
+	},
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"features":       `["android_thin_lto"]`,
+				"local_includes": `["."]`,
+			}),
+		},
+	})
+}
+
+func TestCcLibrarySharedWithLtoNever(t *testing.T) {
+	runCcLibrarySharedTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_shared has correct features when thin lto is enabled",
+		Blueprint: `
+cc_library_shared {
+	name: "foo",
+	lto: {
+		never: true,
+	},
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"features":       `["-android_thin_lto"]`,
+				"local_includes": `["."]`,
+			}),
+		},
+	})
+}
+
+func TestCcLibrarySharedWithThinLtoArchSpecific(t *testing.T) {
+	// TODO
+}
+
+func TestCcLibrarySharedWithThinLtoAndWholeProgramVtables(t *testing.T) {
+	runCcLibrarySharedTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_shared has correct features when thin lto is enabled",
+		Blueprint: `
+cc_library_shared {
+	name: "foo",
+	lto: {
+		thin: true,
+	},
+	whole_program_vtables: true,
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"features": `[
+        "android_thin_lto",
+        "android_thin_lto_whole_program_vtables",
+    ]`,
+				"local_includes": `["."]`,
+			}),
+		},
+	})
+}
