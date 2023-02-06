@@ -34,6 +34,24 @@
       "parentUuid": "fc6dc494_d7fd4998",
       "revId": "f9e305a8bc60d16e4fff06c9f65f9bc4f12bb6ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca86433_d7b56434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-06T17:51:41Z",
+      "side": 1,
+      "message": "Could you point to one of those API domains/`droidstubs`/`java_api_contribution`?",
+      "parentUuid": "2a986daa_95e0358f",
+      "revId": "f9e305a8bc60d16e4fff06c9f65f9bc4f12bb6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
