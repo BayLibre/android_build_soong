@@ -83,6 +83,7 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 	ctx.BottomUp("apex_dcla_deps", apexDCLADepsMutator).Parallel()
 	// Register after apex_info mutator so that it can use ApexVariationName
 	ctx.TopDown("apex_strict_updatability_lint", apexStrictUpdatibilityLintMutator).Parallel()
+	ctx.BottomUp("apex_apisurface", apexApiSurfaceMutator).Parallel()
 }
 
 type apexBundleProperties struct {
@@ -3744,4 +3745,38 @@ func makeSharedLibsAttributes(config string, libsLabelList bazel.LabelList,
 
 func invalidCompileMultilib(ctx android.TopDownMutatorContext, value string) {
 	ctx.PropertyErrorf("compile_multilib", "Invalid value: %s", value)
+}
+
+func getApiImports(mctx android.BottomUpMutatorContext) multitree.ApiImportInfo {
+	apiImportInfo := multitree.ApiImportInfo{}
+
+	mctx.VisitDirectDepsIf(func(mod android.Module) bool {
+		return mod.Name() == "api_imports"
+	}, func(mod android.Module) {
+		apiImportInfo = mctx.OtherModuleProvider(mod, multitree.ApiImportsProvider).(multitree.ApiImportInfo)
+	})
+
+	return apiImportInfo
+}
+
+// apexApiSurfaceMutator adds extra API imported library dependency if the library is not in the same APEX,
+// and if there is a stub API library exists.
+func apexApiSurfaceMutator(mctx android.BottomUpMutatorContext) {
+	ccModule, ok := mctx.Module().(*cc.Module)
+
+	if !ok {
+		return
+	}
+
+	if apexModule, ok := mctx.Module().(android.ApexModule); !ok || !apexModule.DirectlyInAnyApex() {
+		return
+	}
+
+	apiImportInfo := getApiImports(mctx)
+
+	mctx.VisitDirectDeps(func(module android.Module) {
+		if ccApiLibraryName, ok := apiImportInfo.SharedLibs[module.Name()]; ok && !android.AvailableToSameApexes(ccModule, module.(android.ApexModule)) {
+			cc.AddApiLibraryDependency(mctx, ccApiLibraryName)
+		}
+	})
 }
