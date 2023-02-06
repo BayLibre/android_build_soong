@@ -3745,3 +3745,15 @@ func makeSharedLibsAttributes(config string, libsLabelList bazel.LabelList,
 func invalidCompileMultilib(ctx android.TopDownMutatorContext, value string) {
 	ctx.PropertyErrorf("compile_multilib", "Invalid value: %s", value)
 }
+
+func getApiImports(mctx android.BottomUpMutatorContext) multitree.ApiImportInfo {
+	apiImportInfo := multitree.ApiImportInfo{}
+
+	mctx.VisitDirectDepsIf(func(mod android.Module) bool {
+		return mod.Name() == "api_imports"
+	}, func(mod android.Module) {
+		apiImportInfo = mctx.OtherModuleProvider(mod, multitree.ApiImportsProvider).(multitree.ApiImportInfo)
+	})
+
+	return apiImportInfo
+}
