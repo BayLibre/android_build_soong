@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1046cf48_023ef136",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-06T23:00:45Z",
+      "side": 1,
+      "message": "initially I used a bool, then I had to do the bool to string conversion in two places, the transition function and the getConfigString(), eventually we have to do the bool to string conversion, doing it earlier in the chain saves me some code.",
+      "parentUuid": "0c6b4f74_1a441ac0",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 11
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d87c3fb_1ac719b3",
         "filename": "android/bazel_handler.go",
         "patchSetId": 24
@@ -189,6 +213,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a105363d_2eef1d26",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-06T23:00:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b657d482_57afb9c7",
+      "range": {
+        "startLine": 656,
+        "startChar": 0,
+        "endLine": 656,
+        "endChar": 45
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca62c8fe_5931b5b6",
@@ -202,6 +250,30 @@
       "writtenOn": "2023-02-06T21:36:48Z",
       "side": 1,
       "message": "can you file a bug about designing how to handle this with additional variants? As we grow beyond the required arch/os, I worry that this will become incredibly difficult to understand/maintain.",
+      "range": {
+        "startLine": 790,
+        "startChar": 9,
+        "endLine": 790,
+        "endChar": 21
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b90312_b65e817b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-06T23:00:45Z",
+      "side": 1,
+      "message": "I have a short doc about this: https://docs.google.com/document/d/1iMiCm61-DEaiUfInJiLvlLZSzQ8VE-GR-_FkR10TEFo/edit as we discussed before, will open a bug",
+      "parentUuid": "ca62c8fe_5931b5b6",
       "range": {
         "startLine": 790,
         "startChar": 9,
@@ -242,6 +314,24 @@
       "writtenOn": "2023-02-06T20:44:44Z",
       "side": 1,
       "message": "Is this necessary for DCLA to work properly? Asking just because I didn\u0027t expect to see references to codecov in this change, so I was a little surprised.",
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a894d891_3379fe19",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-06T23:00:45Z",
+      "side": 1,
+      "message": "unfortunately yes, I ran into issues in presumbit for some code coverage enabled branch where the ninja file referenced some bazel output files that can\u0027t be found, I think the code coverage argument will affect the the naming of the output files in bazel, so cquery and aquery need to have the same applicable configs, otherwise the names can be out of sync, for example the below error bothered me for a while and went away after I made this change:\n\nFAILED: ninja: \u0027out/bazel/output/execroot/__main__/bazel-out/cf_x86_64_phone-userdebug_android_x86_silvermont-opt-ST-3d29faa6f04b/bin/external/libcxx/liblibc++_toc.so.toc\u0027, needed by \u0027out/soong/.intermediates/system/libbase/libbase/android_x86_silvermont_shared_cov_apex31/unstripped/libbase.so\u0027, missing and no known rule to make it\n00:34:59 ninja failed with: exit status 1",
+      "parentUuid": "a9fd2d36_e27ad87b",
       "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -369,6 +459,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "872896ac_b357589d",
+        "filename": "cc/cc.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1883,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-06T23:00:45Z",
+      "side": 1,
+      "message": "yeah, this is to disable mixed build for this cc module only if ubsan is enabled in a asan variant, I thought this was what we discussed the other day with Trevor, but maybe this check is not correct? DCLA will needs this since libbase will be disabled in an apex variant otherwise as it has ubsan enabled.",
+      "parentUuid": "76cdeee6_31a042c2",
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15cbe3e1_0e67c0bb",
         "filename": "cc/cc.go",
         "patchSetId": 24
@@ -450,6 +558,30 @@
       "writtenOn": "2023-02-06T22:22:14Z",
       "side": 1,
       "message": "To support DCLA that is true, but if we want to turn on mixed builds before every mainline module is migrated to Bazel, we may need to support these additional module types.",
+      "parentUuid": "2fd7e647_6add7812",
+      "range": {
+        "startLine": 62,
+        "startChar": 79,
+        "endLine": 62,
+        "endChar": 82
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e9e81c_e5e662e3",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-06T23:00:45Z",
+      "side": 1,
+      "message": "ok, I can add it for all",
       "parentUuid": "2fd7e647_6add7812",
       "range": {
         "startLine": 62,
