@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76582572_c4e54d61",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-06T21:32:10Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ae48d5e2_2ddab820",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 38
+      },
+      "revId": "048fcb1c834d28e5e570ee0c949e3edbe4066c9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f297a8bc_d9372be2",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-06T20:35:41Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 352,
+        "startChar": 1,
+        "endLine": 352,
+        "endChar": 38
+      },
+      "revId": "048fcb1c834d28e5e570ee0c949e3edbe4066c9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8d8d56_bb66276f",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-06T21:32:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f297a8bc_d9372be2",
       "range": {
         "startLine": 352,
         "startChar": 1,
