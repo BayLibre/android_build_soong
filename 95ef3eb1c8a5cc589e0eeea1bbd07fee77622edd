@@ -70,6 +70,30 @@
       },
       "revId": "95ef3eb1c8a5cc589e0eeea1bbd07fee77622edd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15aae0d8_c15d5d3e",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-06T18:36:44Z",
+      "side": 1,
+      "message": "As that test sets `AllowMissingDependencies\u003dTrue` then you should be able to do something like this to fix it:\n```\nif ctx.Config().AllowMissingDependencies() {\n  apiFile \u003d android.MaybeExistentPathForModuleSource(ctx, String(apiFileString))\n} else {\n  apiFile \u003d android.PathForModuleSrc(ctx, String(apiFileString))\n}\n```\n\nHowever, I think that something else is broken because the `art-service` should not be creating a `droidstubs` for the `test-current.txt` file in the first place. The defaults applied to the `art-service` only enable the `system-server` API scope (which currently enables public too) - see https://cs.android.com/android/platform/packages/modules/common/+/master:sdk/ModuleDefaults.bp;l\u003d173;drc\u003dd2af692c822a2e17fc7362fc690fce56e749fa71.\n\nThe `SdkLibrary.CreateInternalModules(mctx)` method already checks to make sure that all the API .txt files exist for all the generated scopes. But its check is also surrounded with a check for `mctx.Config().AllowMissingDependencies()` which is why that is not triggering.\n\nOk, that check was added in by https://r.android.com/1714750, it explains that this is happening because the `framework-system-server-module-defaults` defaults are not being applied. So, the `art-service` module is falling back to the default behavior of `java_sdk_library` which is to generate API files for public, system and test. That means that the `art-service` module is basically broken in the `aosp-build-tools` branch. It is not generating the system server API surface like it should be doing which could lead to all sorts of compile time and build problems.\n\nThe correct solution is to fix the `art-service` so it is not broken in those failing branches. I\u0027ll raise a bug as it affects quite a few people.\n\nIf you need to fix that build quickly then you should follow the same pattern as https://r.android.com/1714750 and do what I recommended in the first part of this comment.",
+      "parentUuid": "9d87f59d_c17bb7b4",
+      "range": {
+        "startLine": 1599,
+        "startChar": 2,
+        "endLine": 1599,
+        "endChar": 80
+      },
+      "revId": "95ef3eb1c8a5cc589e0eeea1bbd07fee77622edd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
