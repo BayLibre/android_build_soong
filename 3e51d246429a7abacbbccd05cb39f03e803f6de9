@@ -16,6 +16,24 @@
       "message": "Is there a specific reason why this is not in an else clause in the following if? It is doing unnecessary work when `AllowMissingDependency\u003dtrue` and is confusing.\n\nAlso, I think it would be worth adding some comments here to explain why this is necessary at the moment, maybe with a TODO referencing the bug I raised.",
       "revId": "3e51d246429a7abacbbccd05cb39f03e803f6de9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb4394b6_7b30b668",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-02-06T20:59:46Z",
+      "side": 1,
+      "message": "I have not created the if-else branch to minimize the change from the codebase (as line 1599 already exists in the codebase). I agree that the code readability should be prioritized, so I will change this to the if-else branch. \n\nHowever, do you believe that this change is necessary even after when [b/268065279](https://buganizer.corp.google.com/issues/268065279) is fixed?",
+      "parentUuid": "4d993fa6_412bda3b",
+      "revId": "3e51d246429a7abacbbccd05cb39f03e803f6de9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
