@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d993fa6_412bda3b",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-06T20:48:24Z",
+      "side": 1,
+      "message": "Is there a specific reason why this is not in an else clause in the following if? It is doing unnecessary work when `AllowMissingDependency\u003dtrue` and is confusing.\n\nAlso, I think it would be worth adding some comments here to explain why this is necessary at the moment, maybe with a TODO referencing the bug I raised.",
+      "revId": "3e51d246429a7abacbbccd05cb39f03e803f6de9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
