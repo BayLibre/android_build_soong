@@ -33,7 +33,7 @@ func init() {
 	pctx.HostBinToolVariable("ndkStubGenerator", "ndkstubgen")
 	pctx.HostBinToolVariable("abidiff", "stgdiff")
 	pctx.HostBinToolVariable("abitidy", "abitidy")
-	pctx.HostBinToolVariable("abidw", "abidw")
+	pctx.HostBinToolVariable("stg", "stg")
 }
 
 var (
@@ -44,12 +44,10 @@ var (
 			CommandDeps: []string{"$ndkStubGenerator"},
 		}, "arch", "apiLevel", "apiMap", "flags")
 
-	abidw = pctx.AndroidStaticRule("abidw",
+	stgDump = pctx.AndroidStaticRule("stg",
 		blueprint.RuleParams{
-			Command: "$abidw --type-id-style hash --no-corpus-path " +
-				"--no-show-locs --no-comp-dir-path -w $symbolList " +
-				"$in --out-file $out",
-			CommandDeps: []string{"$abidw"},
+			Command:     "$stg --symbols :$symbolList --elf $in --output $out",
+			CommandDeps: []string{"$stg"},
 		}, "symbolList")
 
 	abitidy = pctx.AndroidStaticRule("abitidy",
@@ -356,8 +354,8 @@ func (this *stubDecorator) dumpAbi(ctx ModuleContext, symbolList android.Path) {
 		this.apiLevel.String(), ctx.Arch().ArchType.String(),
 		this.libraryName(ctx), "abi.raw.xml")
 	ctx.Build(pctx, android.BuildParams{
-		Rule:        abidw,
-		Description: fmt.Sprintf("abidw %s", implementationLibrary),
+		Rule:        stgDump,
+		Description: fmt.Sprintf("stg %s", implementationLibrary),
 		Input:       implementationLibrary,
 		Output:      abiRawPath,
 		Implicit:    symbolList,
