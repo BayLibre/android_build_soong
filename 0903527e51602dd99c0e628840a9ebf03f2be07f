@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e65502be_f0c31322",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-06T22:15:02Z",
+      "side": 1,
+      "message": "it is a supplement to all three, as showed in IsModuleNameAllowed(), if it gets to line 525 in bazel_handler.go this new list will take effect, i.e.:\nif the module is disabled, it will return false at line 520; if it is enabled by either prod or staging it will return true at line 523; if it is in dcla list and it is apex variant it will return true at line 526, otherwise it will follow the dev mode logic",
+      "parentUuid": "a58fbd10_2288061e",
+      "range": {
+        "startLine": 1422,
+        "startChar": 1,
+        "endLine": 1422,
+        "endChar": 27
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c6b4f74_1a441ac0",
         "filename": "android/bazel_handler.go",
         "patchSetId": 24
@@ -60,6 +84,30 @@
       "writtenOn": "2023-02-06T21:36:48Z",
       "side": 1,
       "message": "Can you add some more testing of this? It reads to me like we\u0027re losing a lot of coverage for dev-mode and it\u0027d be good to:\n\na) clarify that\nb) discuss (email or doc) whether that\u0027s the right choice",
+      "range": {
+        "startLine": 518,
+        "startChar": 39,
+        "endLine": 518,
+        "endChar": 58
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96807af1_28ecfa05",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-06T22:15:02Z",
+      "side": 1,
+      "message": "it shouldn\u0027t affect dev mode in which case it should return at line 529 which should be the same as before the change.",
+      "parentUuid": "1d87c3fb_1ac719b3",
       "range": {
         "startLine": 518,
         "startChar": 39,
@@ -307,6 +355,30 @@
       "writtenOn": "2023-02-06T21:36:48Z",
       "side": 1,
       "message": "can you comment about why we omit apex config for the other cc module types? I would expect we need to do this for all cc module types as they will be incorporated into mixed builds in the future and should build in the correct apex configuration if appropriate then.",
+      "range": {
+        "startLine": 62,
+        "startChar": 79,
+        "endLine": 62,
+        "endChar": 82
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd7e647_6add7812",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-06T22:15:02Z",
+      "side": 1,
+      "message": "we need to transition apex and apex version for library only right? for all the other types if they are deps of a library, the transition on the library will propagate to them.",
+      "parentUuid": "e3a17887_f693fe64",
       "range": {
         "startLine": 62,
         "startChar": 79,
