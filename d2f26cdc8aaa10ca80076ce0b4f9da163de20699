@@ -22,6 +22,30 @@
       },
       "revId": "d2f26cdc8aaa10ca80076ce0b4f9da163de20699",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ebb4e9_ae031cdc",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-06T17:08:38Z",
+      "side": 1,
+      "message": "The empty BUILD file designates a package, and there must be a package here for Starlark to `load(@soong_injection//allowlists:env.bzl)`",
+      "parentUuid": "82dffb0d_6a939825",
+      "range": {
+        "startLine": 61,
+        "startChar": 45,
+        "endLine": 61,
+        "endChar": 73
+      },
+      "revId": "d2f26cdc8aaa10ca80076ce0b4f9da163de20699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
