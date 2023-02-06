@@ -34,6 +34,24 @@
       "parentUuid": "4d993fa6_412bda3b",
       "revId": "3e51d246429a7abacbbccd05cb39f03e803f6de9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0ec6f8_af78a7aa",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-06T21:02:31Z",
+      "side": 1,
+      "message": "This change should not be necessary after b/268065279 is fixed but that may take longer so as this is blocking the follow up change (I assume that the following change on its own will break the build which is why you made this change first) it might be worth applying it for now (with a `// TODO(b/268065279): Revert this change when b/268065279 is fixed` comment).",
+      "parentUuid": "bb4394b6_7b30b668",
+      "revId": "3e51d246429a7abacbbccd05cb39f03e803f6de9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
