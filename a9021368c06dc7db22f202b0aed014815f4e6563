@@ -34,6 +34,24 @@
       "parentUuid": "49133e65_e0d5e971",
       "revId": "a9021368c06dc7db22f202b0aed014815f4e6563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f45f875_577d76c0",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-02-06T18:43:36Z",
+      "side": 1,
+      "message": "Could you make it assert that filesInfo is nil and panic/error if not?",
+      "parentUuid": "409f4c81_a3138793",
+      "revId": "a9021368c06dc7db22f202b0aed014815f4e6563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
