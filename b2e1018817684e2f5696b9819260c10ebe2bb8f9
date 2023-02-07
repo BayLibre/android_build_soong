@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee1549b8_68344a7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-07T19:39:31Z",
+      "side": 1,
+      "message": "Chatted with Sam offline and the copy command has to be added as a short term solution to ensure the tidy files are present, there is one presubmit failure that seems to be related to the change though.",
+      "revId": "b2e1018817684e2f5696b9819260c10ebe2bb8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
