@@ -15,6 +15,7 @@
 package bp2build
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -114,6 +115,23 @@ func mergeBuildFiles(output string, srcBuildFile string, generatedBuildFile stri
 				generatedBuildFile, srcBuildFile)
 		}
 		generatedBuildFileContent = packageDefaultVisibilityRegex.ReplaceAll(generatedBuildFileContent, []byte{})
+	}
+
+	newContents := generatedBuildFileContent
+	if newContents[len(newContents)-1] != '\n' {
+		newContents = append(newContents, '\n')
+	}
+	newContents = append(newContents, srcBuildFileContent...)
+	if newContents[len(newContents)-1] != '\n' {
+		newContents = append(newContents, '\n')
+	}
+
+	oldContents, err := os.ReadFile(output)
+	if err == nil && bytes.Equal(oldContents, newContents) {
+		// Don't write to the file if the file already exists and has the same
+		// contents. This prevents updating the timestamp and having the file
+		// appear new (which would hurt incremental performance).
+		return nil
 	}
 
 	outFile, err := os.Create(output)
