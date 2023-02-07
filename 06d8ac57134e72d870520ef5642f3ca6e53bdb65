@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ce40e5_5a19e0fe",
+        "filename": "compliance/project_metadata_proto/project_metadata.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-07T05:34:26Z",
+      "side": 1,
+      "message": "This file appears to be open-sourced verbatim from google3. Are you sure we can include these internal terms, go links and paths without sanitization?",
+      "range": {
+        "startLine": 45,
+        "startChar": 67,
+        "endLine": 45,
+        "endChar": 72
+      },
+      "revId": "06d8ac57134e72d870520ef5642f3ca6e53bdb65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
