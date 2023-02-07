@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b2d045_1e69d25d",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-02-07T23:27:55Z",
+      "side": 1,
+      "message": "Can delete the comment now (but maybe do that in a follow up so you don\u0027t have to wait for treehugger again)",
+      "revId": "b06036e9c6e73381687f667efe7bcf026a400642",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
