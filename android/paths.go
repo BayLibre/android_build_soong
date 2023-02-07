@@ -15,8 +15,8 @@
 package android
 
 import (
+	"bytes"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -2099,13 +2099,24 @@ func maybeRelErr(basePath string, targetPath string) (string, bool, error) {
 
 // Writes a file to the output directory.  Attempting to write directly to the output directory
 // will fail due to the sandbox of the soong_build process.
+// Only writes the file if the file doesn't exist or if it has different contents, to prevent
+// updating the timestamp if no changes would be made. (This is better for incremental
+// performance.)
 func WriteFileToOutputDir(path WritablePath, data []byte, perm os.FileMode) error {
 	absPath := absolutePath(path.String())
 	err := os.MkdirAll(filepath.Dir(absPath), 0777)
 	if err != nil {
 		return err
 	}
-	return ioutil.WriteFile(absPath, data, perm)
+	return writeFileIfChanged(absPath, data, perm)
+}
+
+func writeFileIfChanged(path string, contents []byte, perm os.FileMode) error {
+	oldContents, err := os.ReadFile(path)
+	if err != nil || !bytes.Equal(contents, oldContents) {
+		return os.WriteFile(path, []byte(contents), perm)
+	}
+	return nil
 }
 
 func RemoveAllOutputDir(path WritablePath) error {
