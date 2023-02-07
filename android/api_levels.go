@@ -15,12 +15,10 @@
 package android
 
 import (
+	"android/soong/starlark"
 	"encoding/json"
 	"fmt"
 	"strconv"
-
-	"android/soong/bazel"
-	"android/soong/starlark_fmt"
 )
 
 func init() {
@@ -411,27 +409,11 @@ func GetApiLevelsJson(ctx PathContext) WritablePath {
 }
 
 func getApiLevelsMapReleasedVersions() map[string]int {
-	return map[string]int{
-		"G":        9,
-		"I":        14,
-		"J":        16,
-		"J-MR1":    17,
-		"J-MR2":    18,
-		"K":        19,
-		"L":        21,
-		"L-MR1":    22,
-		"M":        23,
-		"N":        24,
-		"N-MR1":    25,
-		"O":        26,
-		"O-MR1":    27,
-		"P":        28,
-		"Q":        29,
-		"R":        30,
-		"S":        31,
-		"S-V2":     32,
-		"Tiramisu": 33,
+	result, err := starlark.GetStarlarkValue[map[string]int]("api_levels_released_versions")
+	if err != nil {
+		panic(err)
 	}
+	return result
 }
 
 var finalCodenamesMapKey = NewOnceKey("FinalCodenamesMap")
@@ -481,13 +463,4 @@ func (a *apiLevelsSingleton) GenerateBuildActions(ctx SingletonContext) {
 	apiLevelsMap := GetApiLevelsMap(ctx.Config())
 	apiLevelsJson := GetApiLevelsJson(ctx)
 	createApiLevelsJson(ctx, apiLevelsJson, apiLevelsMap)
-}
-
-func StarlarkApiLevelConfigs(config Config) string {
-	return fmt.Sprintf(bazel.GeneratedBazelFileWarning+`
-_api_levels_released_versions = %s
-
-api_levels_released_versions = _api_levels_released_versions
-`, starlark_fmt.PrintStringIntDict(getApiLevelsMapReleasedVersions(), 0),
-	)
 }
