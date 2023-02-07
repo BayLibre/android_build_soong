@@ -601,6 +601,9 @@ func (c *config) IsMixedBuildsEnabled() bool {
 		if c.IsEnvTrue("GLOBAL_THINLTO") {
 			return false
 		}
+		if c.IsEnvTrue("WITH_TIDY") || c.IsEnvTrue("ALLOW_LOCAL_TIDY_TRUE") {
+			return false
+		}
 		if len(c.productVariables.SanitizeHost) > 0 {
 			return false
 		}
