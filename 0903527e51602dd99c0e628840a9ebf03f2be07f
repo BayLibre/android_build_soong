@@ -477,6 +477,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a984bc9b_c9b89f57",
+        "filename": "cc/cc.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1883,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-02-07T20:40:32Z",
+      "side": 1,
+      "message": "@delmerico@google.com @eakammer@google.com\n\nNo, I think what Yu has is correct for what he\u0027s trying to achieve. He\u0027s trying to make it be disabled in more specific cases than it currently is. That said, I\u0027m not 100% sure that this will cover all of the cases where there is an issue (though it will definitely cover some of them), and I don\u0027t fully understand why ubsan is needed for DCLA.\n\nYu, did you investigate if there are any cases unrelated to asan and hwasan where ubsan will cause an issue in mixed builds, because I never confirmed that for sure.",
+      "parentUuid": "872896ac_b357589d",
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15cbe3e1_0e67c0bb",
         "filename": "cc/cc.go",
         "patchSetId": 24
