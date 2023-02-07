@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d644e558_d6aa30f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-02-07T20:22:02Z",
+      "side": 1,
+      "message": "Done: b/268230293",
+      "parentUuid": "a75fb0fa_bd520b3e",
+      "revId": "3cb8a4776b8734e4a1a21b7fad9abcdfc134f2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df0aa3e8_5304fe5f",
@@ -115,6 +133,30 @@
       "side": 1,
       "message": "Can you reference or construct an examples on how this would reduce Android.bp copy-pasting in the bug, please?\n\n(sorry if I\u0027m blocking this - trying to simplify the user-settable surface in Android.bp as much as possible)",
       "parentUuid": "2f6d0e06_86b71c6c",
+      "range": {
+        "startLine": 991,
+        "startChar": 1,
+        "endLine": 991,
+        "endChar": 22
+      },
+      "revId": "3cb8a4776b8734e4a1a21b7fad9abcdfc134f2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33000bcf_746eec2a",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2023-02-07T20:22:02Z",
+      "side": 1,
+      "message": "ag/21185743 is a sample of the cleanup/simplification that this new parameter allows.\n\nI understand your resistance to adding more options 😊 If there\u0027s a simpler answer, I\u0027m game for it. Copy and paste of entire XML files is definitely sub-optimal, though.",
+      "parentUuid": "c2ead2d0_557a09d9",
       "range": {
         "startLine": 991,
         "startChar": 1,
