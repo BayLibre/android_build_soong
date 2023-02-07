@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d690eca9_d9e513da",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-07T16:12:00Z",
+      "side": 1,
+      "message": "nit: strictly speaking if `err !\u003d nil` we might still want to \"report\" it (i.e. not necessarily return but log it if possible), unless `os.IsNotExists(err)`",
+      "revId": "9664fefba2ca227efcf2fe723cb4cf1a98bb51c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
