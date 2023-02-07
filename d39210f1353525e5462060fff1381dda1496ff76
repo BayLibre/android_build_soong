@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5cdd3dc_2c4d4224",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-07T15:59:39Z",
+      "side": 1,
+      "message": "I just added an extra build action so that the output files of various module types depend on the tidy actions. Before, the actions were only run as part of [`tidy-*`](https://cs.android.com/android/platform/superproject/+/master:build/soong/docs/tidy.md?q\u003df:build%2Fsoong%2Fdocs%2Ftidy.md%20%22Phony%20tidy-*%20targets%22) targets.",
+      "revId": "d39210f1353525e5462060fff1381dda1496ff76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
