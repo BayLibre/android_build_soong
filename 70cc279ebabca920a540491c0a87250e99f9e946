@@ -3,6 +3,190 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a17e675a_1f6f199f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "nit: Can you leave a comment describing how this is implemented. IIUC, unlike NDK and LLNDK, the deps replacement for apex stubs happens at GenerateAndroidBuildActions stage.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3faeacb5_3f515bf0",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3760,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "nit: Can you leave a comment on what this mutator is used for?",
+      "range": {
+        "startLine": 3760,
+        "startChar": 5,
+        "endLine": 3760,
+        "endChar": 26
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f942cdfb_30d2a5ed",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3775,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "Does this mean that the parent will have dependencies to _two_ flavors of stubs? One that might already exist in the inner tree and another from apiimports?\n\nHow does the rdep pick the right one? I tried to read through the code and I saw that both of them set provider objects, but I was unable to figure out which one gets picked.",
+      "range": {
+        "startLine": 3775,
+        "startChar": 6,
+        "endLine": 3775,
+        "endChar": 29
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeb659d0_34d87040",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9809,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "Since this API surface is available to other apexes and system (platform), can you add another test case that system libraries and `myotherapex` libraries are linking against stub variants of `libbaz``",
+      "range": {
+        "startLine": 9809,
+        "startChar": 5,
+        "endLine": 9809,
+        "endChar": 49
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee1c499_934062b4",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9886,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "Not directly related to this CL, but what do the api_imports in the lightweight tree look like?\n1. Will all the apexes share a common `api_imports` module?\n2. Will system (platform) and apexes share a common `api_imports` module?",
+      "range": {
+        "startLine": 9886,
+        "startChar": 2,
+        "endLine": 9886,
+        "endChar": 13
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e3fb76_07ef0527",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9890,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "nit: This will make this test verbose, but can you please add llndk variants of these two libraries in this test case and check if vendor libraries are linking against the llndk variant and not the apex-stubs or implementation ones?",
+      "range": {
+        "startLine": 9889,
+        "startChar": 4,
+        "endLine": 9890,
+        "endChar": 13
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d610898_511646b9",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9910,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "Can you also check that the there is no dependency edge to the stub variant of libbar `android_arm64_armv8-a_shared_current` that might already exist in the inner tree?",
+      "range": {
+        "startLine": 9910,
+        "startChar": 1,
+        "endLine": 9910,
+        "endChar": 18
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4df050_da8b9893",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2393,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "What is the use case for this?",
+      "range": {
+        "startLine": 2390,
+        "startChar": 2,
+        "endLine": 2393,
+        "endChar": 3
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17a8394f_392032b1",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -18,6 +202,29 @@
         "startLine": 2533,
         "startChar": 65,
         "endLine": 2533,
+        "endChar": 93
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ee9283_09725eba",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "I think this check is not safe - this relies on the blueprint mutated property `DirectlyInAnyApex` which is populated in `apex` mutator. Since both `checkLinkType` and `apex` mutators run in PostDeps stage, I think we cannot guarantee one mutator will run before the other.",
+      "range": {
+        "startLine": 2893,
+        "startChar": 1,
+        "endLine": 2893,
         "endChar": 93
       },
       "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
@@ -65,6 +272,190 @@
         "startChar": 2,
         "endLine": 2920,
         "endChar": 3
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec484bf_c89052a4",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "nit: Rename it to apex-stubs",
+      "range": {
+        "startLine": 247,
+        "startChar": 12,
+        "endLine": 247,
+        "endChar": 15
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e2f7c5_bcec6639",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "I think this is missing the Export system headers section which exists both for NDK and LLNDK",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 4
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2ef284_b6327720",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "Why is this +\u003d ?",
+      "range": {
+        "startLine": 275,
+        "startChar": 9,
+        "endLine": 275,
+        "endChar": 10
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0b74a3_d2d4b658",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "Why is this build rule necessary?",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 37
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0205d58a_b4773d37",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "nit: can you leave a comment on why this function is necessary?",
+      "range": {
+        "startLine": 305,
+        "startChar": 30,
+        "endLine": 305,
+        "endChar": 40
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3263b77d_0e8c07e7",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "Isnt this always false for apex stubs?",
+      "range": {
+        "startLine": 321,
+        "startChar": 3,
+        "endLine": 321,
+        "endChar": 10
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4922f77e_b2afbb99",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "Why do we need this if-block? Doesnt `.canUseSdk()` check in line 69 make this redundant?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 113
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd6fa50_66ce03cf",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-07T04:00:30Z",
+      "side": 1,
+      "message": "Does this mean that we are creating sdk variations for apex stubs as well? Can you give an example of the use-case of that?",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 32
       },
       "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
