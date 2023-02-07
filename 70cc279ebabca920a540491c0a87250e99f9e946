@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17a8394f_392032b1",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2533,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-02-07T02:09:36Z",
+      "side": 1,
+      "message": "Is it possible without ALLOW_MISSING_DEPENDENCIES option?",
+      "range": {
+        "startLine": 2533,
+        "startChar": 65,
+        "endLine": 2533,
+        "endChar": 93
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5bc617_3a52ac0a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2902,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-02-07T02:09:36Z",
+      "side": 1,
+      "message": "Out of curious. What is the different between this and `dep.Name()`.",
+      "range": {
+        "startLine": 2902,
+        "startChar": 18,
+        "endLine": 2902,
+        "endChar": 38
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d433102_66d92d96",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2920,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-02-07T02:09:36Z",
+      "side": 1,
+      "message": "Can we implement the skipping check here, instead of creating the skipModuleList map?",
+      "range": {
+        "startLine": 2917,
+        "startChar": 2,
+        "endLine": 2920,
+        "endChar": 3
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
