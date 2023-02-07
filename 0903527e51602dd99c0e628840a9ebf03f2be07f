@@ -495,6 +495,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b6c2e9a_22d3ee59",
+        "filename": "cc/cc.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1883,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-02-07T20:49:53Z",
+      "side": 1,
+      "message": "I see three more cases where it is possible that the runtime discrepancy might occur:\n\n- When Fuzzer is enabled\n- When we need to use the full UBSan runtime (whenever one of diagnostics props for ubsan is enabled)\n- When the diagnostics for CFI are enabled\n\nSee the code: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/sanitize.go;l\u003d1757-1768",
+      "parentUuid": "a984bc9b_c9b89f57",
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15cbe3e1_0e67c0bb",
         "filename": "cc/cc.go",
         "patchSetId": 24
