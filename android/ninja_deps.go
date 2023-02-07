@@ -14,7 +14,12 @@
 
 package android
 
-import "sort"
+import (
+	"android/soong/starlark"
+	"fmt"
+	"os"
+	"sort"
+)
 
 func (c *config) addNinjaFileDeps(deps ...string) {
 	for _, dep := range deps {
@@ -33,11 +38,32 @@ func (c *config) ninjaFileDeps() []string {
 }
 
 func ninjaDepsSingletonFactory() Singleton {
-	return &ninjaDepsSingleton{}
+	return &ninjaDepsSingleton{
+		include_starlark_deps: true,
+	}
 }
 
-type ninjaDepsSingleton struct{}
+func ninjaDepsSingletonWithoutStarlarkdepsFactory() Singleton {
+	return &ninjaDepsSingleton{
+		include_starlark_deps: false,
+	}
+}
 
-func (ninjaDepsSingleton) GenerateBuildActions(ctx SingletonContext) {
+type ninjaDepsSingleton struct {
+	include_starlark_deps bool
+}
+
+func (n ninjaDepsSingleton) GenerateBuildActions(ctx SingletonContext) {
 	ctx.AddNinjaFileDeps(ctx.Config().ninjaFileDeps()...)
+
+	if n.include_starlark_deps {
+		deps, err := starlark.GetNinjaDeps()
+		//starlarkStartTime, starlarkEndTime, err := starlark.GetTiming()
+		if err != nil {
+			ctx.Errorf("Error running starlark code: %s", err.Error())
+		} else {
+			fmt.Fprintf(os.Stderr, "Starlark ninja deps: %v\n", deps)
+			ctx.AddNinjaFileDeps(deps...)
+		}
+	}
 }

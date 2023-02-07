@@ -32,7 +32,7 @@ func TestNinjaDeps(t *testing.T) {
 	result := GroupFixturePreparers(
 		FixtureRegisterWithContext(func(ctx RegistrationContext) {
 			ctx.RegisterSingletonType("test_ninja_deps_singleton", testNinjaDepsSingletonFactory)
-			ctx.RegisterSingletonType("ninja_deps_singleton", ninjaDepsSingletonFactory)
+			ctx.RegisterSingletonType("ninja_deps_singleton", ninjaDepsSingletonWithoutStarlarkdepsFactory)
 		}),
 	).RunTest(t)
 
