@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f0bfe3_905b213d",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2108,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-02-07T16:41:50Z",
+      "side": 1,
+      "message": "Are you sure about system and test? It looks to me like public defaults to true for sure, and module lib and system server default to false for sure, but for system and test, in the \"legacy\" case (which I understand to be when nothing is explicitly set) the logic is more involved... Maybe we could just literally call \"getGeneratedApiScopes\" and iterate on its output, which will only contain enabled scopes and that way we don\u0027t have to re-write the logic to figure out the correct defaults?\n\nAlso, for better coverage of the \"legacy\" behavior it would be nice to have a test where java_sdk_library sets none of the public/system/test/module-lib/system-server properties, and I think if you try doing this with sdk_version\u003d\"none\" vs sdk_version\u003d\"module_current\" you should see the difference in behavior for test and system",
+      "range": {
+        "startLine": 2108,
+        "startChar": 30,
+        "endLine": 2108,
+        "endChar": 59
+      },
+      "revId": "41b83c355f7503e04b70cd0c6e0f74e040f16355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
