@@ -15,6 +15,7 @@
 package main
 
 import (
+	"android/soong/starlark"
 	"io/fs"
 	"io/ioutil"
 	"os"
@@ -46,6 +47,11 @@ func createBazelWorkspace(ctx *bp2build.CodegenContext, outDir string, generateF
 			return err
 		}
 	}
+	starlarkDeps, err2 := starlark.GetNinjaDeps()
+	if err2 != nil {
+		return err2
+	}
+	ctx.AddNinjaFileDeps(starlarkDeps...)
 
 	return nil
 }
