@@ -22,6 +22,30 @@
       },
       "revId": "41b83c355f7503e04b70cd0c6e0f74e040f16355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc6609f_cbed0c57",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2108,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-08T15:01:25Z",
+      "side": 1,
+      "message": "\u003e Maybe we could just literally call \"getGeneratedApiScopes\" and iterate on its output, which will only contain enabled scopes and that way we don\u0027t have to re-write the logic to figure out the correct defaults?\n\nCalling `getGeneratedApiScopes` is definitely what should be done here. Is there a specific reason why this is not being called?",
+      "parentUuid": "d0f0bfe3_905b213d",
+      "range": {
+        "startLine": 2108,
+        "startChar": 30,
+        "endLine": 2108,
+        "endChar": 59
+      },
+      "revId": "41b83c355f7503e04b70cd0c6e0f74e040f16355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
