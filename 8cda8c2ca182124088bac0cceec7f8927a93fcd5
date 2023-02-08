@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f80b283_91cfc1ed",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-08T00:44:00Z",
+      "side": 1,
+      "message": "nit:\nif anyone finds this confusing, we could tilt towards\n```\ndefer func(){\n  met.Dump(soongMetricsFile)\n  if !config.SkipMetricsUpload() {\n    build.UploadMetrics(...)\n  }\n}()\n```",
+      "revId": "8cda8c2ca182124088bac0cceec7f8927a93fcd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
