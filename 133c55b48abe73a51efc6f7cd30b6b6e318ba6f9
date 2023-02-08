@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf7c319_70265d6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-08T17:23:24Z",
+      "side": 1,
+      "message": "Can you please add testing to this CL to verify that min_sdk_version for override_apex is being properly propagated? I remember this being a barrier for previous attempts to add this functionality",
+      "revId": "133c55b48abe73a51efc6f7cd30b6b6e318ba6f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
