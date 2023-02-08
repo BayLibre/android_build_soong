@@ -39,7 +39,7 @@ var (
 
 	dumpvarsSandbox = basicSandbox
 	katiSandbox     = basicSandbox
-	soongSandbox    = basicSandbox
+	soongSandbox    = noSandbox
 	ninjaSandbox    = Sandbox{
 		Enabled:              true,
 		DisableWhenUsingGoma: true,
