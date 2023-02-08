@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebb5028c_1d6b9fae",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-02-08T09:51:33Z",
+      "side": 1,
+      "message": "This causes the old trap not to be executed when the new trap is triggered, doesn\u0027t it?",
+      "range": {
+        "startLine": 154,
+        "startChar": 156,
+        "endLine": 154,
+        "endChar": 160
+      },
+      "revId": "c4c07b12b60929726a626df0caecbcd6a182b4b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e74e2b_12513b1f",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-02-08T09:51:33Z",
+      "side": 1,
+      "message": "Why? (this might be obvious, but I haven\u0027t looked at this change since forever)",
+      "range": {
+        "startLine": 154,
+        "startChar": 60,
+        "endLine": 154,
+        "endChar": 94
+      },
+      "revId": "c4c07b12b60929726a626df0caecbcd6a182b4b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
