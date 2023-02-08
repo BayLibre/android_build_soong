@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f18fffdb_ad1529d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-02-08T15:27:54Z",
+      "side": 1,
+      "message": "One tiny nit on the description - is this really a \"temporary\" fix? I think this is totally worthy",
+      "revId": "7796b11726286da1da6ba1f8a449a992f43467bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
