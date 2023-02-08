@@ -129,6 +129,12 @@ type DroidstubsProperties struct {
 	// if set to true, Metalava will allow framework SDK to contain API levels annotations.
 	Api_levels_annotations_enabled *bool
 
+	// if set to true, Metalava will remove references it finds to classes that aren't in this
+	// api levels file. This happens with the module-lib sdk, because the module-lib sdk only
+	// contains the non-updatable parts of it's api surface, but those non-updatable parts can
+	// reference classes from updatable apexes.
+	Api_levels_remove_references_to_missing_classes *bool
+
 	// Apply the api levels database created by this module rather than generating one in this droidstubs.
 	Api_levels_module *string
 
@@ -407,6 +413,10 @@ func (d *Droidstubs) apiLevelsGenerationFlags(ctx android.ModuleContext, cmd *an
 
 	d.apiVersionsXml = android.PathForModuleOut(ctx, "metalava", "api-versions.xml")
 	cmd.FlagWithOutput("--generate-api-levels ", d.apiVersionsXml)
+
+	if Bool(d.properties.Api_levels_remove_references_to_missing_classes) {
+		cmd.Flag("--remove-missing-class-references-in-api-levels")
+	}
 
 	filename := proptools.StringDefault(d.properties.Api_levels_jar_filename, "android.jar")
 
