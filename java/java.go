@@ -2010,7 +2010,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			if di == nil {
 				return // An error has been reported by FindDeapexerProviderForModule.
 			}
-			if dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(j.BaseModuleName())); dexOutputPath != nil {
+			dexJarFileApexRootRelative := apexRootRelativePathToJavaLib(j.BaseModuleName())
+			if dexOutputPath := di.PrebuiltExportPath(dexJarFileApexRootRelative); dexOutputPath != nil {
 				dexJarFile := makeDexJarPathFromPath(dexOutputPath)
 				j.dexJarFile = dexJarFile
 				installPath := android.PathForModuleInPartitionInstall(ctx, "apex", ai.ApexVariationName, apexRootRelativePathToJavaLib(j.BaseModuleName()))
@@ -2019,6 +2020,11 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				j.dexpreopter.installPath = j.dexpreopter.getInstallPath(ctx, installPath)
 				setUncompressDex(ctx, &j.dexpreopter, &j.dexer)
 				j.dexpreopter.uncompressedDex = *j.dexProperties.Uncompress_dex
+
+				if profilePath := di.PrebuiltExportPath(dexJarFileApexRootRelative + ".prof"); profilePath != nil {
+					j.dexpreopter.inputProfilePathOnHost = profilePath
+				}
+
 				j.dexpreopt(ctx, dexOutputPath)
 
 				// Initialize the hiddenapi structure.
@@ -2153,11 +2159,16 @@ func (j *Import) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
 // requiredFilesFromPrebuiltApexForImport returns information about the files that a java_import or
 // java_sdk_library_import with the specified base module name requires to be exported from a
 // prebuilt_apex/apex_set.
-func requiredFilesFromPrebuiltApexForImport(name string) []string {
+func (j *Import) requiredFilesFromPrebuiltApexForImport() []string {
+	dexJarFileApexRootRelative := apexRootRelativePathToJavaLib(j.BaseModuleName())
 	// Add the dex implementation jar to the set of exported files.
-	return []string{
-		apexRootRelativePathToJavaLib(name),
+	files := []string{
+		dexJarFileApexRootRelative,
 	}
+	if BoolDefault(j.dexpreopter.dexpreoptProperties.Dex_preopt.Profile_guided, false) {
+		files = append(files, dexJarFileApexRootRelative+".prof")
+	}
+	return files
 }
 
 // apexRootRelativePathToJavaLib returns the path, relative to the root of the apex's contents, for

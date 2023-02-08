@@ -27,7 +27,7 @@ type DexpreopterInterface interface {
 	dexpreoptDisabled(ctx android.BaseModuleContext) bool
 	DexpreoptBuiltInstalledForApex() []dexpreopterInstall
 	AndroidMkEntriesForApex() []android.AndroidMkEntries
-	ProfilePathOnHost() android.Path
+	OutputProfilePathOnHost() android.Path
 }
 
 type dexpreopterInstall struct {
@@ -105,8 +105,13 @@ type dexpreopter struct {
 	//   dexpreopt another partition).
 	configPath android.WritablePath
 
-	// The path to the profile on host.
-	profilePathOnHost android.Path
+	// The path to the profile on host that dexpreopter generates. This is used as the input for
+	// dex2oat.
+	outputProfilePathOnHost android.Path
+
+	// The path to the profile that dexpreopter accepts. It must be in the binary format. If this is
+	// set, it overrides the profile settings in `dexpreoptProperties`.
+	inputProfilePathOnHost android.Path
 }
 
 type DexpreoptProperties struct {
@@ -248,7 +253,9 @@ func (d *dexpreopter) getProfileListing(
 
 	global := dexpreopt.GetGlobalConfig(ctx)
 
-	if BoolDefault(d.dexpreoptProperties.Dex_preopt.Profile_guided, true) {
+	if d.inputProfilePathOnHost != nil {
+		profileClassListing = android.OptionalPathForPath(d.inputProfilePathOnHost)
+	} else if BoolDefault(d.dexpreoptProperties.Dex_preopt.Profile_guided, true) {
 		// If dex_preopt.profile_guided is not set, default it based on the existence of the
 		// dexprepot.profile option or the profile class listing.
 		if String(d.dexpreoptProperties.Dex_preopt.Profile) != "" {
@@ -393,7 +400,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 		isProfile := strings.HasSuffix(installBase, ".prof")
 
 		if isProfile {
-			d.profilePathOnHost = install.From
+			d.outputProfilePathOnHost = install.From
 		}
 
 		if isApexSystemServerJar {
@@ -435,6 +442,6 @@ func (d *dexpreopter) AndroidMkEntriesForApex() []android.AndroidMkEntries {
 	return entries
 }
 
-func (d *dexpreopter) ProfilePathOnHost() android.Path {
-	return d.profilePathOnHost
+func (d *dexpreopter) OutputProfilePathOnHost() android.Path {
+	return d.outputProfilePathOnHost
 }
