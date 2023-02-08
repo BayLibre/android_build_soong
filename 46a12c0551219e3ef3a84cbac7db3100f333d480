@@ -16,6 +16,24 @@
       "message": "Can you add a test to make sure it is not output on S.",
       "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8021f1c1_4da4649e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-08T18:40:05Z",
+      "side": 1,
+      "message": "There are tests for both S and T on sdk/systemserverclasspath_fragment_sdk_test.go line 151-252",
+      "parentUuid": "f934902e_10d21c43",
+      "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
