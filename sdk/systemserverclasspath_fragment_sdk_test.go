@@ -62,6 +62,9 @@ func testSnapshotWithSystemServerClasspathFragment(t *testing.T, sdk string, tar
 				min_sdk_version: "2",
 				compile_dex: true,
 				permitted_packages: ["mylib"],
+				dex_preopt: {
+					profile: "art-profile",
+				},
 			}
 
 			java_sdk_library {
@@ -71,6 +74,9 @@ func testSnapshotWithSystemServerClasspathFragment(t *testing.T, sdk string, tar
 				shared_library: false,
 				public: {enabled: true},
 				min_sdk_version: "2",
+				dex_preopt: {
+					profile: "art-profile",
+				},
 			}
 		`),
 	).RunTest(t)
@@ -105,6 +111,9 @@ java_sdk_library_import {
     visibility: ["//visibility:public"],
     apex_available: ["myapex"],
     shared_library: false,
+    dex_preopt: {
+        profile_guided: true,
+    },
     public: {
         jars: ["sdk_library/public/mysdklibrary-stubs.jar"],
         stub_srcs: ["sdk_library/public/mysdklibrary_stub_sources"],
@@ -122,6 +131,9 @@ java_import {
     jars: ["java_systemserver_libs/snapshot/jars/are/invalid/mylib.jar"],
     min_sdk_version: "2",
     permitted_packages: ["mylib"],
+    dex_preopt: {
+        profile_guided: true,
+    },
 }
 
 prebuilt_systemserverclasspath_fragment {

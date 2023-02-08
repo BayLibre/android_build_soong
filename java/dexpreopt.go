@@ -78,7 +78,8 @@ func (install dexpreopterInstall) ToMakeEntries() android.AndroidMkEntries {
 }
 
 type dexpreopter struct {
-	dexpreoptProperties DexpreoptProperties
+	dexpreoptProperties       DexpreoptProperties
+	importDexpreoptProperties ImportDexpreoptProperties
 
 	installPath         android.InstallPath
 	uncompressedDex     bool
@@ -126,6 +127,13 @@ type DexpreoptProperties struct {
 		// defaults to searching for a file that matches the name of this module in the default
 		// profile location set by PRODUCT_DEX_PREOPT_PROFILE_DIR, or empty if not found.
 		Profile *string `android:"path"`
+	}
+}
+
+type ImportDexpreoptProperties struct {
+	Dex_preopt struct {
+		// If true, use the profile in the prebuilt APEX to guide optimization. Defaults to false.
+		Profile_guided *bool
 	}
 }
 
@@ -232,6 +240,34 @@ func (d *dexpreopter) getInstallPath(
 	return defaultInstallPath
 }
 
+// Returns the information about the profile to be used.
+// `ctx` can be any module context, not necessarily specific to the module to be dexpreopted.
+func (d *dexpreopter) getProfileListing(
+	ctx android.ModuleContext, moduleName string, moduleDir string) (android.OptionalPath, android.OptionalPath, bool) {
+	var profileClassListing android.OptionalPath
+	var profileBootListing android.OptionalPath
+	profileIsTextListing := false
+
+	global := dexpreopt.GetGlobalConfig(ctx)
+
+	if BoolDefault(d.dexpreoptProperties.Dex_preopt.Profile_guided, true) {
+		// If dex_preopt.profile_guided is not set, default it based on the existence of the
+		// dexprepot.profile option or the profile class listing.
+		if String(d.dexpreoptProperties.Dex_preopt.Profile) != "" {
+			profileClassListing = android.OptionalPathForPath(
+				android.PathForSource(ctx, moduleDir, String(d.dexpreoptProperties.Dex_preopt.Profile)))
+			profileBootListing = android.ExistentPathForSource(ctx,
+				moduleDir, String(d.dexpreoptProperties.Dex_preopt.Profile)+"-boot")
+			profileIsTextListing = true
+		} else if global.ProfileDir != "" {
+			profileClassListing = android.ExistentPathForSource(ctx,
+				global.ProfileDir, moduleName+".prof")
+		}
+	}
+
+	return profileClassListing, profileBootListing, profileIsTextListing
+}
+
 func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.WritablePath) {
 	global := dexpreopt.GetGlobalConfig(ctx)
 
@@ -292,23 +328,8 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 	// The image locations for all Android variants are identical.
 	hostImageLocations, deviceImageLocations := bootImage.getAnyAndroidVariant().imageLocations()
 
-	var profileClassListing android.OptionalPath
-	var profileBootListing android.OptionalPath
-	profileIsTextListing := false
-	if BoolDefault(d.dexpreoptProperties.Dex_preopt.Profile_guided, true) {
-		// If dex_preopt.profile_guided is not set, default it based on the existence of the
-		// dexprepot.profile option or the profile class listing.
-		if String(d.dexpreoptProperties.Dex_preopt.Profile) != "" {
-			profileClassListing = android.OptionalPathForPath(
-				android.PathForModuleSrc(ctx, String(d.dexpreoptProperties.Dex_preopt.Profile)))
-			profileBootListing = android.ExistentPathForSource(ctx,
-				ctx.ModuleDir(), String(d.dexpreoptProperties.Dex_preopt.Profile)+"-boot")
-			profileIsTextListing = true
-		} else if global.ProfileDir != "" {
-			profileClassListing = android.ExistentPathForSource(ctx,
-				global.ProfileDir, moduleName(ctx)+".prof")
-		}
-	}
+	profileClassListing, profileBootListing, profileIsTextListing := d.getProfileListing(
+		ctx, moduleName(ctx), ctx.ModuleDir())
 
 	// Full dexpreopt config, used to create dexpreopt build rules.
 	dexpreoptConfig := &dexpreopt.ModuleConfig{
