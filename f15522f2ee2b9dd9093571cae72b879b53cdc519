@@ -45,6 +45,29 @@
       },
       "revId": "f15522f2ee2b9dd9093571cae72b879b53cdc519",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0315dd2c_e3c1df19",
+        "filename": "starlark/starlark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-08T20:50:04Z",
+      "side": 1,
+      "message": "Are these real threads? Do we need some kind of access control on the shared variable?",
+      "range": {
+        "startLine": 142,
+        "startChar": 33,
+        "endLine": 142,
+        "endChar": 44
+      },
+      "revId": "f15522f2ee2b9dd9093571cae72b879b53cdc519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
