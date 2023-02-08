@@ -1997,7 +1997,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			if di == nil {
 				return // An error has been reported by FindDeapexerProviderForModule.
 			}
-			if dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(j.BaseModuleName())); dexOutputPath != nil {
+			dexJarFileApexRootRelative := apexRootRelativePathToJavaLib(j.BaseModuleName())
+			if dexOutputPath := di.PrebuiltExportPath(dexJarFileApexRootRelative); dexOutputPath != nil {
 				dexJarFile := makeDexJarPathFromPath(dexOutputPath)
 				j.dexJarFile = dexJarFile
 				installPath := android.PathForModuleInPartitionInstall(ctx, "apex", ai.ApexVariationName, apexRootRelativePathToJavaLib(j.BaseModuleName()))
@@ -2006,6 +2007,11 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				j.dexpreopter.installPath = j.dexpreopter.getInstallPath(ctx, installPath)
 				setUncompressDex(ctx, &j.dexpreopter, &j.dexer)
 				j.dexpreopter.uncompressedDex = *j.dexProperties.Uncompress_dex
+
+				if profilePath := di.PrebuiltExportPath(dexJarFileApexRootRelative + ".prof"); profilePath != nil {
+					j.dexpreopter.inputProfilePathOnHost = profilePath
+				}
+
 				j.dexpreopt(ctx, dexOutputPath)
 
 				// Initialize the hiddenapi structure.
