@@ -801,6 +801,8 @@ type librarySdkMemberProperties struct {
 
 	// The value of the min_sdk_version property, translated into a number where possible.
 	MinSdkVersion *string `supported_build_releases:"Tiramisu+"`
+
+	DexpreoptProperties *DexpreoptProperties `supported_build_releases:"UpsideDownCake+"`
 }
 
 func (p *librarySdkMemberProperties) PopulateFromVariant(ctx android.SdkMemberContext, variant android.Module) {
@@ -817,6 +819,13 @@ func (p *librarySdkMemberProperties) PopulateFromVariant(ctx android.SdkMemberCo
 	if j.deviceProperties.Min_sdk_version != nil {
 		canonical := android.ReplaceFinalizedCodenames(ctx.SdkModuleContext().Config(), j.minSdkVersion.ApiLevel.String())
 		p.MinSdkVersion = proptools.StringPtr(canonical)
+	}
+
+	profileClassListing, _, _ := j.dexpreopter.getProfileListing(
+		ctx.SdkModuleContext(), j.Name(), ctx.SdkModuleContext().OtherModuleDir(j))
+	if profileClassListing.Valid() {
+		p.DexpreoptProperties = &DexpreoptProperties{}
+		p.DexpreoptProperties.Dex_preopt.Profile_guided = proptools.BoolPtr(true)
 	}
 }
 
@@ -842,6 +851,10 @@ func (p *librarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberConte
 
 	if len(p.PermittedPackages) > 0 {
 		propertySet.AddProperty("permitted_packages", p.PermittedPackages)
+	}
+
+	if p.DexpreoptProperties != nil {
+		propertySet.AddProperty("dex_preopt", &p.DexpreoptProperties.Dex_preopt)
 	}
 
 	// Do not copy anything else to the snapshot.
@@ -2198,6 +2211,7 @@ func ImportFactory() android.Module {
 	module.AddProperties(
 		&module.properties,
 		&module.dexer.dexProperties,
+		&module.dexpreoptProperties,
 	)
 
 	module.initModuleAndImport(module)
