@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"path/filepath"
 	"runtime"
 	"testing"
 
@@ -456,7 +457,6 @@ cc_prebuilt_library {
 	bazel_module: { label: "//foo/bar:bar" },
 	tidy: true,
 }`
-	outBaseDir := "outputbase"
 	result := android.GroupFixturePreparers(
 		prepareForPrebuiltTest,
 		android.FixtureMergeEnv(map[string]string{
@@ -464,7 +464,7 @@ cc_prebuilt_library {
 		}),
 		android.FixtureModifyConfig(func(config android.Config) {
 			config.BazelContext = android.MockBazelContext{
-				OutputBaseDir: outBaseDir,
+				OutputBaseDir: filepath.Join(config.SoongOutDir(), "outputbase"),
 				LabelToCcInfo: map[string]cquery.CcInfo{
 					"//foo/bar:bar": cquery.CcInfo{
 						CcSharedLibraryFiles: []string{"foo.so"},

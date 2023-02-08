@@ -16,6 +16,7 @@ package cc
 
 import (
 	"android/soong/bazel/cquery"
+	"path/filepath"
 	"testing"
 
 	"android/soong/android"
@@ -66,7 +67,7 @@ cc_binary {
 }`
 	config := TestConfig(t.TempDir(), android.Android, nil, bp, nil)
 	config.BazelContext = android.MockBazelContext{
-		OutputBaseDir: "outputbase",
+		OutputBaseDir: filepath.Join(config.SoongOutDir(), "outputbase"),
 		LabelToCcBinary: map[string]cquery.CcUnstrippedInfo{
 			"//foo/bar:bar": cquery.CcUnstrippedInfo{
 				OutputFile:       "foo",
@@ -92,8 +93,8 @@ cc_binary {
 	android.AssertPathsRelativeToTopEquals(t, "output files", expectedOutputFiles, outputFiles)
 
 	unStrippedFilePath := binMod.(*Module).UnstrippedOutputFile()
-	expectedUnStrippedFile := "outputbase/execroot/__main__/foo.unstripped"
-	android.AssertStringEquals(t, "Unstripped output file", expectedUnStrippedFile, unStrippedFilePath.String())
+	expectedUnStrippedFile := "out/soong/outputbase/execroot/__main__/foo.unstripped"
+	android.AssertPathRelativeToTopEquals(t, "Unstripped output file", expectedUnStrippedFile, unStrippedFilePath)
 }
 
 func TestBinaryLinkerScripts(t *testing.T) {
