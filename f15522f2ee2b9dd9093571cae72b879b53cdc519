@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "450e52e0_e32e5ea4",
+        "filename": "starlark/starlark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-08T09:58:25Z",
+      "side": 1,
+      "message": "Food for thought: would this lead us down a path where we start to implement Bazel\u0027s globals in Soong (rule, aspect, provider, etc)? \n\nShould we restrict the surface of bzl files that Soong can read to the ones implemented with the base Starlark spec and nothing else? e.g. primitive data types",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 11
+      },
+      "revId": "f15522f2ee2b9dd9093571cae72b879b53cdc519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67fc723_3ca329d7",
+        "filename": "starlark/starlark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-08T09:58:25Z",
+      "side": 1,
+      "message": "How do you plan to handle incrementality and reanalysis (i.e. ninjaDeps for bzl files read by soong_build?)",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "f15522f2ee2b9dd9093571cae72b879b53cdc519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
