@@ -45,6 +45,54 @@
       },
       "revId": "c4c07b12b60929726a626df0caecbcd6a182b4b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b0bcec_21de7f77",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-08T15:28:12Z",
+      "side": 1,
+      "message": "I don\u0027t have an answer for this but this is not part of this CL. I do notice that we don\u0027t have a `trap \u0027rm -rf $out\u0027` in most of the tests; and we probably should.",
+      "parentUuid": "ebb5028c_1d6b9fae",
+      "range": {
+        "startLine": 154,
+        "startChar": 156,
+        "endLine": 154,
+        "endChar": 160
+      },
+      "revId": "c4c07b12b60929726a626df0caecbcd6a182b4b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47960bc7_f52b638d",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 27
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-08T15:28:12Z",
+      "side": 1,
+      "message": "I don\u0027t know the WHY but yes to run this locally I did have to make that change as well.",
+      "parentUuid": "81e74e2b_12513b1f",
+      "range": {
+        "startLine": 154,
+        "startChar": 60,
+        "endLine": 154,
+        "endChar": 94
+      },
+      "revId": "c4c07b12b60929726a626df0caecbcd6a182b4b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
