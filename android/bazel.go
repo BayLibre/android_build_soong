@@ -529,12 +529,19 @@ func GetMainClassInManifest(c Config, filepath string) (string, error) {
 
 func AttachValidationActions(ctx ModuleContext, outputFilePath Path, validations Paths) ModuleOutPath {
 	validatedOutputFilePath := PathForModuleOut(ctx, "validated", outputFilePath.Base())
+	symlinkTgtPath, err := relativePathForBazelOutSymlink(validatedOutputFilePath, outputFilePath)
+	if err != nil {
+		ctx.ModuleErrorf("could not create a validated output path: %q", err)
+	}
 	ctx.Build(pctx, BuildParams{
-		Rule:        CpNoPreserveSymlink,
+		Rule:        Symlink,
 		Description: "run validations " + outputFilePath.Base(),
 		Output:      validatedOutputFilePath,
 		Input:       outputFilePath,
 		Validations: validations,
+		Args: map[string]string{
+			"fromPath": symlinkTgtPath.String(),
+		},
 	})
 	return validatedOutputFilePath
 }

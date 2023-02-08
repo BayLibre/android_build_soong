@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/bazel"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
 )
@@ -179,5 +180,25 @@ func TestTransformSubpackagePath(t *testing.T) {
 		if actual != out {
 			t.Errorf("expected:\n%v\nactual:\n%v", out, actual)
 		}
+	}
+}
+
+func TestRelativePathForBazelOutSymlink(t *testing.T) {
+	ctx := &TestBazelPathContext{}
+	packageStr := "packages/modules/mod/apex"
+	bazelOut := PathForBazelOut(ctx, filepath.Join(packageStr, "com.android.mod"))
+	soongOut := PathForOutput(ctx, packageStr, bazelOut.Base())
+	relativePathFromSoongToBazel, err := relativePathForBazelOutSymlink(soongOut, bazelOut)
+	if err != nil {
+		t.Errorf("did not expect error: %q", err)
+	}
+	soongOutDirectory, _ := filepath.Split(soongOut.String())
+	combinedPath := filepath.Join(soongOutDirectory, relativePathFromSoongToBazel.String())
+	if combinedPath != bazelOut.String() {
+		t.Errorf("expected combinedPath to be %s, but got %s; relative path was: %s",
+			bazelOut,
+			combinedPath,
+			relativePathFromSoongToBazel.String(),
+		)
 	}
 }

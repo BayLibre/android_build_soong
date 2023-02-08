@@ -591,3 +591,25 @@ func BazelStringOrLabelFromProp(
 
 	return labelAttr, strAttr
 }
+
+type bazelOutSymlinkRelPath struct {
+	basePath
+}
+
+func (t bazelOutSymlinkRelPath) RelativeToTop() Path {
+	ensureTestOnly()
+	return t
+}
+
+var _ Path = bazelOutSymlinkRelPath{}
+
+// relativePathForBazelOutSymlink returns a bazelOutSymlinkRelPath representing
+// the given path string. There is no validation for the path, since it is
+// relative to a file in the output tree rather than a relative path from $TOP.
+// It may also be an absolute path. Only use this function to construct paths
+// for symlinks pointing to Bazel-built artifacts.
+func relativePathForBazelOutSymlink(relativeBase, path Path) (bazelOutSymlinkRelPath, error) {
+	relativeBaseDir, _ := filepath.Split(relativeBase.String())
+	relativePath, err := filepath.Rel(relativeBaseDir, path.String())
+	return bazelOutSymlinkRelPath{basePath{relativePath, ""}}, err
+}
