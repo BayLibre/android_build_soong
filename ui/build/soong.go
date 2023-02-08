@@ -20,6 +20,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"time"
 
 	"android/soong/ui/metrics"
 	"android/soong/ui/status"
@@ -532,6 +533,7 @@ func runSoong(ctx Context, config Config) {
 		cmd.Environment = &ninjaEnv
 		cmd.Sandbox = soongSandbox
 		cmd.RunAndStreamOrFatal()
+		fmt.Println("soong_ui regains control", time.Now())
 	}
 
 	targets := make([]string, 0, 0)

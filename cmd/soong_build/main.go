@@ -391,6 +391,7 @@ func main() {
 		writeMetrics(configuration, ctx.EventHandler, metricsDir)
 	}
 	writeUsedEnvironmentFile(configuration, finalOutputFile)
+	fmt.Println("soong_build main end", time.Now())
 }
 
 func writeUsedEnvironmentFile(configuration android.Config, finalOutputFile string) {
