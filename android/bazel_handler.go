@@ -17,6 +17,7 @@ package android
 import (
 	"bytes"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"path"
@@ -546,6 +547,14 @@ type builtinBazelRunner struct{}
 // containing the stdout and stderr of the run command, and an error is returned if
 // the invocation returned an error code.
 func (r *builtinBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd) (string, string, error) {
+	fileName := "/tmp/" + bazelCmd.Args[2]
+	fmt.Println("Attempting to read from", fileName)
+	if output, err := ioutil.ReadFile(fileName); err == nil {
+		fmt.Println("SUccess!")
+		return string(output), "", nil
+	}
+	fmt.Println("Need to query bazel to get value for", fileName)
+
 	stderr := &bytes.Buffer{}
 	bazelCmd.Stderr = stderr
 	if output, err := bazelCmd.Output(); err != nil {
@@ -553,6 +562,8 @@ func (r *builtinBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd) (string, stri
 			fmt.Errorf("bazel command failed: %s\n---command---\n%s\n---env---\n%s\n---stderr---\n%s---",
 				err, bazelCmd, strings.Join(bazelCmd.Env, "\n"), stderr)
 	} else {
+		ioutil.WriteFile("/tmp/"+bazelCmd.Args[2], output, 0666)
+
 		return string(output), string(stderr.Bytes()), nil
 	}
 }
