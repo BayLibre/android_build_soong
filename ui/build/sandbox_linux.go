@@ -29,6 +29,8 @@ type Sandbox struct {
 	DisableWhenUsingGoma bool
 
 	AllowBuildBrokenUsesNetwork bool
+	DisableProcessRestriction   bool
+	AllowNetwork                bool
 }
 
 var (
@@ -39,8 +41,15 @@ var (
 
 	dumpvarsSandbox = basicSandbox
 	katiSandbox     = basicSandbox
-	soongSandbox    = basicSandbox
-	ninjaSandbox    = Sandbox{
+	soongSandbox    = Sandbox{
+		Enabled: true,
+
+		// These settings are required to keep Bazel server alive and accepting
+		// requests for subsequent soong_build runs.
+		DisableProcessRestriction: true,
+		AllowNetwork:              true,
+	}
+	ninjaSandbox = Sandbox{
 		Enabled:              true,
 		DisableWhenUsingGoma: true,
 
@@ -218,14 +227,23 @@ func (c *Cmd) wrapSandbox() {
 		sandboxArgs = append(sandboxArgs, "-B", sandboxConfig.distDir)
 	}
 
+	useNetwork := c.Sandbox.AllowNetwork
 	if c.Sandbox.AllowBuildBrokenUsesNetwork && c.config.BuildBrokenUsesNetwork() {
 		c.ctx.Printf("AllowBuildBrokenUsesNetwork: %v", c.Sandbox.AllowBuildBrokenUsesNetwork)
 		c.ctx.Printf("BuildBrokenUsesNetwork: %v", c.config.BuildBrokenUsesNetwork())
+		useNetwork = true
+	}
+
+	if useNetwork {
 		sandboxArgs = append(sandboxArgs, "-N")
 	} else if dlv, _ := c.config.Environment().Get("SOONG_DELVE"); dlv != "" {
 		// The debugger is enabled and soong_build will pause until a remote delve process connects, allow
 		// network connections.
 		sandboxArgs = append(sandboxArgs, "-N")
+	}
+
+	if c.Sandbox.DisableProcessRestriction {
+		sandboxArgs = append(sandboxArgs, "--disable_clone_newpid", "--disable_proc")
 	}
 
 	// Stop nsjail from parsing arguments
