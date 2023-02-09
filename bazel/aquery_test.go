@@ -148,7 +148,7 @@ func TestAqueryMultiArchGenrule(t *testing.T) {
 				OutputPaths: []string{
 					fmt.Sprintf("bazel-out/sourceroot/k8-fastbuild/bin/bionic/libc/syscalls-%s.S", arch),
 				},
-				Env: []KeyValuePair{
+				Env: []*analysis_v2_proto.KeyValuePair{
 					{Key: "PATH", Value: "/bin:/usr/bin:/usr/local/bin"},
 				},
 				Mnemonic: "Genrule",
@@ -488,9 +488,10 @@ func TestTransitiveInputDepsets(t *testing.T) {
 
 	expectedBuildStatements := []BuildStatement{
 		{
-			Command:     "/bin/bash -c 'touch bazel-out/sourceroot/k8-fastbuild/bin/testpkg/test_out'",
-			OutputPaths: []string{"bazel-out/sourceroot/k8-fastbuild/bin/testpkg/test_out"},
-			Mnemonic:    "Action",
+			Command:      "/bin/bash -c 'touch bazel-out/sourceroot/k8-fastbuild/bin/testpkg/test_out'",
+			OutputPaths:  []string{"bazel-out/sourceroot/k8-fastbuild/bin/testpkg/test_out"},
+			Mnemonic:     "Action",
+			SymlinkPaths: []string{},
 		},
 	}
 	assertBuildStatements(t, expectedBuildStatements, actualbuildStatements)
@@ -545,10 +546,11 @@ func TestSymlinkTree(t *testing.T) {
 	}
 	assertBuildStatements(t, []BuildStatement{
 		{
-			Command:     "",
-			OutputPaths: []string{"foo.runfiles/MANIFEST"},
-			Mnemonic:    "SymlinkTree",
-			InputPaths:  []string{"foo.manifest"},
+			Command:      "",
+			OutputPaths:  []string{"foo.runfiles/MANIFEST"},
+			Mnemonic:     "SymlinkTree",
+			InputPaths:   []string{"foo.manifest"},
+			SymlinkPaths: []string{},
 		},
 	}, actual)
 }
@@ -613,9 +615,10 @@ func TestBazelOutRemovalFromInputDepsets(t *testing.T) {
 	}
 
 	expectedBuildStatement := BuildStatement{
-		Command:     "bogus command",
-		OutputPaths: []string{"output"},
-		Mnemonic:    "x",
+		Command:      "bogus command",
+		OutputPaths:  []string{"output"},
+		Mnemonic:     "x",
+		SymlinkPaths: []string{},
 	}
 	buildStatementFound := false
 	for _, actualBuildStatement := range actualBuildStatements {
@@ -1014,8 +1017,9 @@ func TestTemplateExpandActionSubstitutions(t *testing.T) {
 		{
 			Command: "/bin/bash -c 'echo \"Test template substitutions: abcd, python3\" | sed \"s/\\\\\\\\n/\\\\n/g\" > template_file && " +
 				"chmod a+x template_file'",
-			OutputPaths: []string{"template_file"},
-			Mnemonic:    "TemplateExpand",
+			OutputPaths:  []string{"template_file"},
+			Mnemonic:     "TemplateExpand",
+			SymlinkPaths: []string{},
 		},
 	}
 	assertBuildStatements(t, expectedBuildStatements, actual)
@@ -1084,6 +1088,7 @@ func TestFileWrite(t *testing.T) {
 			OutputPaths:  []string{"foo.manifest"},
 			Mnemonic:     "FileWrite",
 			FileContents: "file data\n",
+			SymlinkPaths: []string{},
 		},
 	}, actual)
 }
@@ -1118,8 +1123,9 @@ func TestSourceSymlinkManifest(t *testing.T) {
 	}
 	assertBuildStatements(t, []BuildStatement{
 		{
-			OutputPaths: []string{"foo.manifest"},
-			Mnemonic:    "SourceSymlinkManifest",
+			OutputPaths:  []string{"foo.manifest"},
+			Mnemonic:     "SourceSymlinkManifest",
+			SymlinkPaths: []string{},
 		},
 	}, actual)
 }
