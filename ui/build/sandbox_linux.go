@@ -39,8 +39,11 @@ var (
 
 	dumpvarsSandbox = basicSandbox
 	katiSandbox     = basicSandbox
-	soongSandbox    = basicSandbox
-	ninjaSandbox    = Sandbox{
+	// TODO: Try to use --disable_clone_newpid --disable_proc instead of disabling
+	// sandbox altogether (this does not seem to keep Bazel server live, however,
+	// so requires additional investigation.
+	soongSandbox = noSandbox
+	ninjaSandbox = Sandbox{
 		Enabled:              true,
 		DisableWhenUsingGoma: true,
 
