@@ -34,6 +34,24 @@
       "parentUuid": "d94b1d70_36f4e25a",
       "revId": "f8968f37ebdff1c31cfa81bc9b4c1ed6511208eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "becb56e7_73e4986e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-09T21:47:19Z",
+      "side": 1,
+      "message": "The first command line is a linker, you\u0027ll need it in riscv64Ldflags too if you want it there.",
+      "parentUuid": "4cf4c20d_d13a710f",
+      "revId": "f8968f37ebdff1c31cfa81bc9b4c1ed6511208eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
