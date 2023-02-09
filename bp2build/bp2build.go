@@ -17,10 +17,12 @@ package bp2build
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"android/soong/android"
 	"android/soong/bazel"
+	"android/soong/shared"
 )
 
 // Codegen is the backend of bp2build. The code generator is responsible for
@@ -29,9 +31,6 @@ import (
 func Codegen(ctx *CodegenContext) *CodegenMetrics {
 	// This directory stores BUILD files that could be eventually checked-in.
 	bp2buildDir := android.PathForOutput(ctx, "bp2build")
-	if err := android.RemoveAllOutputDir(bp2buildDir); err != nil {
-		fmt.Printf("ERROR: Encountered error while cleaning %s: %s", bp2buildDir, err.Error())
-	}
 
 	res, errs := GenerateBazelTargets(ctx, true)
 	if len(errs) > 0 {
@@ -45,7 +44,43 @@ func Codegen(ctx *CodegenContext) *CodegenMetrics {
 	bp2buildFiles := CreateBazelFiles(ctx.Config(), nil, res.buildFileToTargets, ctx.mode)
 	writeFiles(ctx, bp2buildDir, bp2buildFiles)
 
+	// Delete files that should no longer be present.
+	bp2buildDirAbs := shared.JoinPath(ctx.topDir, bp2buildDir.String())
+
+	filesToDelete := make(map[string]struct{})
+	err := filepath.Walk(bp2buildDirAbs,
+		func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				return err
+			}
+			if strings.HasSuffix(path, "BUILD.bazel") {
+				relPath, err := filepath.Rel(ctx.topDir, path)
+				if err != nil {
+					return err
+				}
+				filesToDelete[relPath] = struct{}{}
+			}
+			return nil
+		})
+	if err != nil {
+		fmt.Printf("ERROR reading %s: %s", bp2buildDirAbs, err)
+		os.Exit(1)
+	}
+
+	for _, bazelFile := range bp2buildFiles {
+		filePath := bp2buildDir.Join(ctx, bazelFile.Dir, bazelFile.Basename)
+		delete(filesToDelete, filePath.String())
+	}
+	for f, _ := range filesToDelete {
+		absPath := shared.JoinPath(ctx.topDir, f)
+		if err := os.RemoveAll(absPath); err != nil {
+			fmt.Printf("ERROR deleting %s: %s", absPath, err)
+			os.Exit(1)
+		}
+	}
+
 	soongInjectionDir := android.PathForOutput(ctx, bazel.SoongInjectionDirName)
+	// TODO: DO we need to remove extra files in soongInjectionDir too?
 	writeFiles(ctx, soongInjectionDir, CreateSoongInjectionDirFiles(ctx, res.metrics))
 
 	return &res.metrics
