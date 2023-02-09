@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc3d19df_a49ab9ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "I added some details. PTAL.",
+      "parentUuid": "a17e675a_1f6f199f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3faeacb5_3f515bf0",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-07T04:00:30Z",
       "side": 1,
       "message": "nit: Can you leave a comment on what this mutator is used for?",
+      "range": {
+        "startLine": 3760,
+        "startChar": 5,
+        "endLine": 3760,
+        "endChar": 26
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f473ed2_67e0bfcc",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3760,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3faeacb5_3f515bf0",
       "range": {
         "startLine": 3760,
         "startChar": 5,
@@ -60,6 +108,30 @@
       "writtenOn": "2023-02-07T04:00:30Z",
       "side": 1,
       "message": "Does this mean that the parent will have dependencies to _two_ flavors of stubs? One that might already exist in the inner tree and another from apiimports?\n\nHow does the rdep pick the right one? I tried to read through the code and I saw that both of them set provider objects, but I was unable to figure out which one gets picked.",
+      "range": {
+        "startLine": 3775,
+        "startChar": 6,
+        "endLine": 3775,
+        "endChar": 29
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b38b3ff_0f526ff0",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3775,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "This will be decided from depsToPaths, as we already do to decide whether we should use original or stub. We can apply same logic to decide whether original library or api imported library should be used.",
+      "parentUuid": "f942cdfb_30d2a5ed",
       "range": {
         "startLine": 3775,
         "startChar": 6,
@@ -106,6 +178,30 @@
       "writtenOn": "2023-02-07T04:00:30Z",
       "side": 1,
       "message": "Not directly related to this CL, but what do the api_imports in the lightweight tree look like?\n1. Will all the apexes share a common `api_imports` module?\n2. Will system (platform) and apexes share a common `api_imports` module?",
+      "range": {
+        "startLine": 9886,
+        "startChar": 2,
+        "endLine": 9886,
+        "endChar": 13
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a919a0_7f7993af",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9886,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "For now, I expect to have api_imports per api domain, and build is triggers per api domain.",
+      "parentUuid": "aee1c499_934062b4",
       "range": {
         "startLine": 9886,
         "startChar": 2,
@@ -187,6 +283,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa643fb9_c0756392",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2393,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "Seems like it is no longer needed. Let me remove this.",
+      "parentUuid": "ef4df050_da8b9893",
+      "range": {
+        "startLine": 2390,
+        "startChar": 2,
+        "endLine": 2393,
+        "endChar": 3
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17a8394f_392032b1",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -198,6 +318,30 @@
       "writtenOn": "2023-02-07T02:09:36Z",
       "side": 1,
       "message": "Is it possible without ALLOW_MISSING_DEPENDENCIES option?",
+      "range": {
+        "startLine": 2533,
+        "startChar": 65,
+        "endLine": 2533,
+        "endChar": 93
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d982f602_9a26525f",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2533,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "Yes, this part replaces when original module does not exist, so this part will resolve some cases with non-ALLOW_MISSING_DEPENDENCIES build.",
+      "parentUuid": "17a8394f_392032b1",
       "range": {
         "startLine": 2533,
         "startChar": 65,
@@ -233,6 +377,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2d05704_4f0fc64b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "Thanks. Is there any way to run this postdeps mutator once previous tasks are all done?",
+      "parentUuid": "d7ee9283_09725eba",
+      "range": {
+        "startLine": 2893,
+        "startChar": 1,
+        "endLine": 2893,
+        "endChar": 93
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc5bc617_3a52ac0a",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -244,6 +412,30 @@
       "writtenOn": "2023-02-07T02:09:36Z",
       "side": 1,
       "message": "Out of curious. What is the different between this and `dep.Name()`.",
+      "range": {
+        "startLine": 2902,
+        "startChar": 18,
+        "endLine": 2902,
+        "endChar": 38
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47b5019_1065e896",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2902,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "I don\u0027t have a good answer, but this function is supposed to be called within the VisitDeps and WalkDeps to get Module name from module info kept within the context.",
+      "parentUuid": "cc5bc617_3a52ac0a",
       "range": {
         "startLine": 2902,
         "startChar": 18,
@@ -279,6 +471,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de5fbc7a_464f616b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2920,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "No we can\u0027t. If this VisitDirectDeps hits apiLibrary first rather than original module, then we cannot find out if the module should be skipped.",
+      "parentUuid": "0d433102_66d92d96",
+      "range": {
+        "startLine": 2917,
+        "startChar": 2,
+        "endLine": 2920,
+        "endChar": 3
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ec484bf_c89052a4",
         "filename": "cc/library_stub.go",
         "patchSetId": 1
@@ -290,6 +506,30 @@
       "writtenOn": "2023-02-07T04:00:30Z",
       "side": 1,
       "message": "nit: Rename it to apex-stubs",
+      "range": {
+        "startLine": 247,
+        "startChar": 12,
+        "endLine": 247,
+        "endChar": 15
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00acf4af_08137dda",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ec484bf_c89052a4",
       "range": {
         "startLine": 247,
         "startChar": 12,
@@ -325,6 +565,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67a77da9_bbde8372",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "Do we have any use case for APEX stubs also?",
+      "parentUuid": "a3e2f7c5_bcec6639",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 4
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de2ef284_b6327720",
         "filename": "cc/library_stub.go",
         "patchSetId": 1
@@ -336,6 +600,30 @@
       "writtenOn": "2023-02-07T04:00:30Z",
       "side": 1,
       "message": "Why is this +\u003d ?",
+      "range": {
+        "startLine": 275,
+        "startChar": 9,
+        "endLine": 275,
+        "endChar": 10
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7bed3e3_d490767e",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "Just adding suffix.",
+      "parentUuid": "de2ef284_b6327720",
       "range": {
         "startLine": 275,
         "startChar": 9,
@@ -371,6 +659,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "147c51d7_431fb359",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "Without this, the build fails due to the conflict of two build targets with the same name - one from the prebuilt cc binary, and the other from the api surface. I faced this issue with liblog and libc.",
+      "parentUuid": "4c0b74a3_d2d4b658",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 37
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0205d58a_b4773d37",
         "filename": "cc/library_stub.go",
         "patchSetId": 1
@@ -382,6 +694,54 @@
       "writtenOn": "2023-02-07T04:00:30Z",
       "side": 1,
       "message": "nit: can you leave a comment on why this function is necessary?",
+      "range": {
+        "startLine": 305,
+        "startChar": 30,
+        "endLine": 305,
+        "endChar": 40
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30fdbbcd_7c5948dd",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0205d58a_b4773d37",
+      "range": {
+        "startLine": 305,
+        "startChar": 30,
+        "endLine": 305,
+        "endChar": 40
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6cd3bf_bda71c00",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0205d58a_b4773d37",
       "range": {
         "startLine": 305,
         "startChar": 30,
@@ -417,6 +777,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "149072a2_6006f8d9",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "This is not just for the apex stub. I\u0027m not sure if this part will be used from llndk variant, but I left it as it is just to be sure.",
+      "parentUuid": "3263b77d_0e8c07e7",
+      "range": {
+        "startLine": 321,
+        "startChar": 3,
+        "endLine": 321,
+        "endChar": 10
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad21f65_dd202079",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "I think this part also work for SDK stubs.",
+      "parentUuid": "3263b77d_0e8c07e7",
+      "range": {
+        "startLine": 321,
+        "startChar": 3,
+        "endLine": 321,
+        "endChar": 10
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4922f77e_b2afbb99",
         "filename": "cc/sdk.go",
         "patchSetId": 1
@@ -428,6 +836,30 @@
       "writtenOn": "2023-02-07T04:00:30Z",
       "side": 1,
       "message": "Why do we need this if-block? Doesnt `.canUseSdk()` check in line 69 make this redundant?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 113
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8beb66_6c8c9d19",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "Good catch! Done.",
+      "parentUuid": "4922f77e_b2afbb99",
       "range": {
         "startLine": 64,
         "startChar": 3,
@@ -451,6 +883,30 @@
       "writtenOn": "2023-02-07T04:00:30Z",
       "side": 1,
       "message": "Does this mean that we are creating sdk variations for apex stubs as well? Can you give an example of the use-case of that?",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d15b0ba7_64098965",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-09T08:05:36Z",
+      "side": 1,
+      "message": "This is the case where the cc_api_library contains both NDK stubs and APEX stubs.",
+      "parentUuid": "8cd6fa50_66ce03cf",
       "range": {
         "startLine": 71,
         "startChar": 7,
