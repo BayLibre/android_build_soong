@@ -72,6 +72,41 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f076d4c4_c2ed878a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-02-09T23:49:28Z",
+      "side": 1,
+      "message": "(sorry, forgot to send out these comments earlier)",
+      "revId": "a1b8b9bab92826da0c162e766bc78c2a48ba428e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f00925ed_ce75532f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-02-09T23:49:28Z",
+      "side": 1,
+      "message": "Yeah I\u0027d like to get a couple end-to-end samples to isolate the odex decrease. I\u0027m thinking it might be from reducing switch statement bloat in compiled code (see more discussion in https://b.corp.google.com/issues/194133637#comment2).",
+      "parentUuid": "8d413b9c_54ab9231",
+      "revId": "a1b8b9bab92826da0c162e766bc78c2a48ba428e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56ad0e5c_001a4660",
@@ -85,6 +120,30 @@
       "writtenOn": "2023-01-31T10:02:17Z",
       "side": 1,
       "message": "Should we maybe move these flags into the R8Wrapper?",
+      "range": {
+        "startLine": 102,
+        "startChar": 27,
+        "endLine": 102,
+        "endChar": 47
+      },
+      "revId": "a1b8b9bab92826da0c162e766bc78c2a48ba428e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea6b34e8_6ec7e959",
+        "filename": "java/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-02-09T23:49:28Z",
+      "side": 1,
+      "message": "sgtm, will do in a fast follow-up though, to keep this CL clean in case we need to CP (R8wrapper is a bit dated on TM).",
+      "parentUuid": "56ad0e5c_001a4660",
       "range": {
         "startLine": 102,
         "startChar": 27,
