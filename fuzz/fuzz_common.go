@@ -69,37 +69,102 @@ type ArchOs struct {
 	Dir          string
 }
 
-type PrivilegedLevel string
+type Vector string
 
 const (
-	// Environment with the most minimal permissions.
-	Constrained PrivilegedLevel = "Constrained"
-	// Typical execution environment running unprivileged code.
-	Unprivileged = "Unprivileged"
-	// May have access to elevated permissions.
-	Privileged = "Privileged"
-	// Trusted computing base.
-	Tcb = "TCB"
-	// Bootloader chain.
-	Bootloader = "Bootloader"
-	// Tusted execution environment.
-	Tee = "Tee"
-	// Secure enclave.
-	Se = "Se"
-	// Other.
-	Other = "Other"
+	unknown_access_vector        Vector = "unknown_access_vector"
+	remote                              = "remote"
+	local_no_privileges_required        = "local_no_privileges_required"
+	local_privileges_required           = "local_privileges_required"
+	host_access                         = "host_access"
+	local_with_developer_options        = "local_with_developer_options"
+)
+
+type ServicePrivilege string
+
+const (
+	unknown_service_privilege ServicePrivilege = "unknown_service_privilege"
+	secure_element                             = "secure_element"
+	trusted_execution                          = "trusted_execution"
+	privileged                                 = "privileged"
+	unprivileged                               = "unprivileged"
+	constrained                                = "constrained"
+	nsi                                        = "nsi"
+	host_only                                  = "host_only"
+)
+
+type UserData string
+
+const (
+	unknown_user_data UserData = "unknown_user_data"
+	single_user                = "single_user"
+	multi_user                 = "multi_user"
+)
+
+type FuzzedCodeUsage string
+
+const (
+	undefined      FuzzedCodeUsage = "undefined"
+	unknown                        = "unknown"
+	shipped                        = "shipped"
+	future_version                 = "future_version"
+	experimental                   = "experimental"
+)
+
+type AutomaticallyRouteTo string
+
+const (
+	undefined_routing  AutomaticallyRouteTo = "undefined_routing"
+	android_automotive                      = "android_automotive"
+	memory_leak                             = "memory_leak"
+	ittiam                                  = "ittiam"
+	always_nsi                              = "always_nsi"
+	missing_lib                             = "missing_lib"
+	aidl                                    = "aidl"
 )
 
 func IsValidConfig(fuzzModule FuzzPackagedModule, moduleName string) bool {
 	var config = fuzzModule.FuzzProperties.Fuzz_config
 	if config != nil {
-		var level = PrivilegedLevel(config.Privilege_level)
-		if level != "" {
-			switch level {
-			case Constrained, Unprivileged, Privileged, Tcb, Bootloader, Tee, Se, Other:
+		var vector = Vector(config.Vector)
+		if vector != "" {
+			switch vector {
+			case unknown_access_vector, remote, local_no_privileges_required, local_privileges_required, host_access, local_with_developer_options:
 				return true
 			}
-			panic(fmt.Errorf("Invalid privileged level in fuzz config in %s", moduleName))
+			panic(fmt.Errorf("Invalid vector in fuzz config in %s", moduleName))
+		}
+		var service = ServicePrivilege(config.Service_privilege)
+		if service != "" {
+			switch service {
+			case unknown_service_privilege, secure_element, trusted_execution, privileged, unprivileged, constrained, nsi, host_only:
+				return true
+			}
+			panic(fmt.Errorf("Invalid service_privilege in fuzz config in %s", moduleName))
+		}
+		var data = UserData(config.User_data)
+		if data != "" {
+			switch data {
+			case unknown_user_data, single_user, multi_user:
+				return true
+			}
+			panic(fmt.Errorf("Invalid user_data in fuzz config in %s", moduleName))
+		}
+		var fuzzed_code_usage = FuzzedCodeUsage(config.Fuzzed_code_usage)
+		if fuzzed_code_usage != "" {
+			switch fuzzed_code_usage {
+			case undefined, unknown, shipped, future_version, experimental:
+				return true
+			}
+			panic(fmt.Errorf("Invalid fuzzed_code_usage in fuzz config in %s", moduleName))
+		}
+		var route = AutomaticallyRouteTo(config.Automatically_route_to)
+		if route != "" {
+			switch route {
+			case undefined_routing, android_automotive, memory_leak, ittiam, always_nsi, missing_lib, aidl:
+				return true
+			}
+			panic(fmt.Errorf("Invalid automatically_route_to in fuzz config in %s", moduleName))
 		}
 		return true
 	} else {
@@ -112,18 +177,25 @@ type FuzzConfig struct {
 	Cc []string `json:"cc,omitempty"`
 	// A brief description of what the fuzzed code does.
 	Description string `json:"description,omitempty"`
-	// Can this code be triggered remotely or only locally.
-	Remotely_accessible *bool `json:"remotely_accessible,omitempty"`
+	// Whether the code being fuzzed is remotely accessible or requires privileges
+	// to access locally.
+	Vector Vector `json:"vector,omitempty"`
+	// How privileged the service being fuzzed is.
+	Service_privilege ServicePrivilege `json:"service_privilege,omitempty"`
+	// Whether the service being fuzzed handles data from multiple users or only
+	// a single one.
+	User_data UserData `json:"user_data,omitempty"`
+	// Specifies the use state of the code being fuzzed. This state factors into
+	// how an issue is handled.
+	Fuzzed_code_usage FuzzedCodeUsage `json:"fuzzed_code_usage,omitempty"`
+	// Comment describing how we came to these settings for this fuzzer.
+	Config_comment string
+	// Which team to route this to, if it should be routed automatically.
+	Automatically_route_to AutomaticallyRouteTo `json:"automatically_route_to,omitempty"`
 	// Is the fuzzed code host only, i.e. test frameworks or support utilities.
 	Host_only *bool `json:"host_only,omitempty"`
 	// Can third party/untrusted apps supply data to fuzzed code.
 	Untrusted_data *bool `json:"untrusted_data,omitempty"`
-	// Is the code being fuzzed in a privileged, constrained or any other
-	// context from:
-	// https://source.android.com/security/overview/updates-resources#context_types.
-	Privilege_level PrivilegedLevel `json:"privilege_level,omitempty"`
-	// Can the fuzzed code isolated or can be called by multiple users/processes.
-	Isolated *bool `json:"users_isolation,omitempty"`
 	// When code was relaeased or will be released.
 	Production_date string `json:"production_date,omitempty"`
 	// Prevents critical service functionality like phone calls, bluetooth, etc.
