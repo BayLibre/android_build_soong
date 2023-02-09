@@ -1517,10 +1517,18 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 		// Determine the runtime library required
 		runtimeLibrary := ""
 		alwaysStaticRuntime := false
+		runtimeLibraryExportsSymbols := false
 		var extraStaticDeps []string
 		toolchain := c.toolchain(mctx)
 		if Bool(sanProps.Address) {
 			runtimeLibrary = config.AddressSanitizerRuntimeLibrary(toolchain)
+			if toolchain.Musl() {
+				// Use a static runtime for musl to match what clang does for glibc.
+				runtimeLibrary += ".static"
+				alwaysStaticRuntime = true
+				runtimeLibraryExportsSymbols = true
+				extraStaticDeps = append(extraStaticDeps, config.AddressSanitizerCXXRuntimeLibrary(toolchain)+".static")
+			}
 		} else if Bool(sanProps.Hwaddress) {
 			if c.staticBinary() {
 				runtimeLibrary = config.HWAddressSanitizerStaticLibrary(toolchain)
@@ -1553,17 +1561,15 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			}
 		}
 
-		addStaticDeps := func(deps ...string) {
+		addStaticDeps := func(dep string, unexportedSymbols bool) {
 			// If we're using snapshots, redirect to snapshot whenever possible
 			snapshot := mctx.Provider(SnapshotInfoProvider).(SnapshotInfo)
-			for idx, dep := range deps {
-				if lib, ok := snapshot.StaticLibs[dep]; ok {
-					deps[idx] = lib
-				}
+			if lib, ok := snapshot.StaticLibs[dep]; ok {
+				dep = lib
 			}
 
 			// static executable gets static runtime libs
-			depTag := libraryDependencyTag{Kind: staticLibraryDependency, unexportedSymbols: true}
+			depTag := libraryDependencyTag{Kind: staticLibraryDependency, unexportedSymbols: unexportedSymbols}
 			variations := append(mctx.Target().Variations(),
 				blueprint.Variation{Mutator: "link", Variation: "static"})
 			if c.Device() {
@@ -1573,14 +1579,14 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 				variations = append(variations,
 					blueprint.Variation{Mutator: "sdk", Variation: "sdk"})
 			}
-			mctx.AddFarVariationDependencies(variations, depTag, deps...)
+			mctx.AddFarVariationDependencies(variations, depTag, dep)
 
 		}
 		if enableMinimalRuntime(c.sanitize) || c.sanitize.Properties.MinimalRuntimeDep {
-			addStaticDeps(config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(toolchain))
+			addStaticDeps(config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(toolchain), true)
 		}
 		if c.sanitize.Properties.BuiltinsDep {
-			addStaticDeps(config.BuiltinsRuntimeLibrary(toolchain))
+			addStaticDeps(config.BuiltinsRuntimeLibrary(toolchain), true)
 		}
 
 		if runtimeLibrary != "" && (toolchain.Bionic() || toolchain.Musl() || c.sanitize.Properties.UbsanRuntimeDep) {
@@ -1594,8 +1600,10 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			// Note that by adding dependency with {static|shared}DepTag, the lib is
 			// added to libFlags and LOCAL_SHARED_LIBRARIES by cc.Module
 			if c.staticBinary() || alwaysStaticRuntime {
-				addStaticDeps(runtimeLibrary)
-				addStaticDeps(extraStaticDeps...)
+				addStaticDeps(runtimeLibrary, !runtimeLibraryExportsSymbols)
+				for _, dep := range extraStaticDeps {
+					addStaticDeps(dep, false)
+				}
 			} else if !c.static() && !c.Header() {
 				// If we're using snapshots, redirect to snapshot whenever possible
 				snapshot := mctx.Provider(SnapshotInfoProvider).(SnapshotInfo)
