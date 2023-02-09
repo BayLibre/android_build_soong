@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "413e984d_7e92a673",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-09T11:11:18Z",
+      "side": 1,
+      "message": "Thanks Kiyoung",
+      "parentUuid": "dc3d19df_a49ab9ab",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3faeacb5_3f515bf0",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "This will be decided from depsToPaths, as we already do to decide whether we should use original or stub. We can apply same logic to decide whether original library or api imported library should be used.",
       "parentUuid": "f942cdfb_30d2a5ed",
+      "range": {
+        "startLine": 3775,
+        "startChar": 6,
+        "endLine": 3775,
+        "endChar": 29
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d162d012_00405afd",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3775,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-09T11:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b38b3ff_0f526ff0",
       "range": {
         "startLine": 3775,
         "startChar": 6,
@@ -258,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "389639cb_66c96547",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9910,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-09T11:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d610898_511646b9",
+      "range": {
+        "startLine": 9910,
+        "startChar": 1,
+        "endLine": 9910,
+        "endChar": 18
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef4df050_da8b9893",
@@ -295,6 +367,30 @@
       "side": 1,
       "message": "Seems like it is no longer needed. Let me remove this.",
       "parentUuid": "ef4df050_da8b9893",
+      "range": {
+        "startLine": 2390,
+        "startChar": 2,
+        "endLine": 2393,
+        "endChar": 3
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "731efbe7_cd6283b4",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2393,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-09T11:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa643fb9_c0756392",
       "range": {
         "startLine": 2390,
         "startChar": 2,
@@ -389,6 +485,30 @@
       "side": 1,
       "message": "Thanks. Is there any way to run this postdeps mutator once previous tasks are all done?",
       "parentUuid": "d7ee9283_09725eba",
+      "range": {
+        "startLine": 2893,
+        "startChar": 1,
+        "endLine": 2893,
+        "endChar": 93
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f46c30e_b19b8a1b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-09T11:11:18Z",
+      "side": 1,
+      "message": "Across golang packages, none that I know of unfortunately..",
+      "parentUuid": "d2d05704_4f0fc64b",
       "range": {
         "startLine": 2893,
         "startChar": 1,
@@ -589,6 +709,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad83bb91_9d4e614b",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-09T11:11:18Z",
+      "side": 1,
+      "message": "libc contributes to this API surface as well",
+      "parentUuid": "67a77da9_bbde8372",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 4
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de2ef284_b6327720",
         "filename": "cc/library_stub.go",
         "patchSetId": 1
@@ -671,6 +815,30 @@
       "side": 1,
       "message": "Without this, the build fails due to the conflict of two build targets with the same name - one from the prebuilt cc binary, and the other from the api surface. I faced this issue with liblog and libc.",
       "parentUuid": "4c0b74a3_d2d4b658",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 37
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "412e1314_35cb0699",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-09T11:11:18Z",
+      "side": 1,
+      "message": "Can you elaborate on what the duplicate name is for liblog/libc and which prebuilt cc binary is creating the duplicate",
+      "parentUuid": "147c51d7_431fb359",
       "range": {
         "startLine": 283,
         "startChar": 1,
@@ -823,6 +991,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d5d8114_760c1519",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-09T11:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fad21f65_dd202079",
+      "range": {
+        "startLine": 321,
+        "startChar": 3,
+        "endLine": 321,
+        "endChar": 10
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4922f77e_b2afbb99",
@@ -907,6 +1099,30 @@
       "side": 1,
       "message": "This is the case where the cc_api_library contains both NDK stubs and APEX stubs.",
       "parentUuid": "8cd6fa50_66ce03cf",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d6d6eda_74a9da95",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-09T11:11:18Z",
+      "side": 1,
+      "message": "implementation nit for future discussion: Is it possible to _not_ create all these variations on the top-level `cc_api_library` and use `AddFarVariationDepdendencies` instead? I think it reduces a lot of the complexity here.",
+      "parentUuid": "d15b0ba7_64098965",
       "range": {
         "startLine": 71,
         "startChar": 7,

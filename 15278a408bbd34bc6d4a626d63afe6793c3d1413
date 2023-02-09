@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd755f8d_ef0249d0",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9914,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-09T11:11:18Z",
+      "side": 1,
+      "message": "nit: I would just remove this, both of them check `dependencyExists \u003d\u003d true`. The real check happens in the args to the ld command.",
+      "range": {
+        "startLine": 9913,
+        "startChar": 1,
+        "endLine": 9914,
+        "endChar": 143
+      },
+      "revId": "15278a408bbd34bc6d4a626d63afe6793c3d1413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e81339_cf826706",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2913,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-09T11:11:18Z",
+      "side": 1,
+      "message": "nit: Can you please leave a comment on why we skip this?",
+      "range": {
+        "startLine": 2913,
+        "startChar": 3,
+        "endLine": 2913,
+        "endChar": 22
+      },
+      "revId": "15278a408bbd34bc6d4a626d63afe6793c3d1413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
