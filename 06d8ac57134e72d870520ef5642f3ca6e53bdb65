@@ -22,6 +22,30 @@
       },
       "revId": "06d8ac57134e72d870520ef5642f3ca6e53bdb65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb4c09c7_a0fdb4e8",
+        "filename": "compliance/project_metadata_proto/project_metadata.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-02-09T02:27:07Z",
+      "side": 1,
+      "message": "Ack. Please see the other CL for a new version with all these cleaned up.",
+      "parentUuid": "a2ce40e5_5a19e0fe",
+      "range": {
+        "startLine": 45,
+        "startChar": 67,
+        "endLine": 45,
+        "endChar": 72
+      },
+      "revId": "06d8ac57134e72d870520ef5642f3ca6e53bdb65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
