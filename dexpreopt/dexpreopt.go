@@ -101,10 +101,6 @@ func GenerateDexpreoptRule(ctx android.BuilderContext, globalSoong *GlobalSoongC
 }
 
 func dexpreoptDisabled(ctx android.PathContext, global *GlobalConfig, module *ModuleConfig) bool {
-	if ctx.Config().UnbundledBuild() {
-		return true
-	}
-
 	if contains(global.DisablePreoptModules, module.Name) {
 		return true
 	}

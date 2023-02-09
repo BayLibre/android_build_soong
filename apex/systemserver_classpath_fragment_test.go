@@ -31,7 +31,7 @@ func TestSystemserverclasspathFragmentContents(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
-		dexpreopt.FixtureSetApexSystemServerJars("myapex:foo", "myapex:bar"),
+		dexpreopt.FixtureSetApexSystemServerJars("myapex:foo"),
 	).RunTestWithBp(t, `
 		apex {
 			name: "myapex",
@@ -57,23 +57,10 @@ func TestSystemserverclasspathFragmentContents(t *testing.T) {
 			],
 		}
 
-		java_library {
-			name: "bar",
-			srcs: ["c.java"],
-			installable: true,
-			dex_preopt: {
-				profile: "bar-art-profile",
-			},
-			apex_available: [
-				"myapex",
-			],
-		}
-
 		systemserverclasspath_fragment {
 			name: "mysystemserverclasspathfragment",
 			contents: [
 				"foo",
-				"bar",
 			],
 			apex_available: [
 				"myapex",
@@ -84,8 +71,6 @@ func TestSystemserverclasspathFragmentContents(t *testing.T) {
 	ensureExactContents(t, result.TestContext, "myapex", "android_common_myapex_image", []string{
 		"etc/classpaths/systemserverclasspath.pb",
 		"javalib/foo.jar",
-		"javalib/bar.jar",
-		"javalib/bar.jar.prof",
 	})
 
 	java.CheckModuleDependencies(t, result.TestContext, "myapex", "android_common_myapex_image", []string{
@@ -251,7 +236,7 @@ func TestSystemserverclasspathFragmentStandaloneContents(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
-		dexpreopt.FixtureSetApexStandaloneSystemServerJars("myapex:foo", "myapex:bar"),
+		dexpreopt.FixtureSetApexStandaloneSystemServerJars("myapex:foo"),
 	).RunTestWithBp(t, `
 		apex {
 			name: "myapex",
@@ -277,23 +262,10 @@ func TestSystemserverclasspathFragmentStandaloneContents(t *testing.T) {
 			],
 		}
 
-		java_library {
-			name: "bar",
-			srcs: ["c.java"],
-			dex_preopt: {
-				profile: "bar-art-profile",
-			},
-			installable: true,
-			apex_available: [
-				"myapex",
-			],
-		}
-
 		systemserverclasspath_fragment {
 			name: "mysystemserverclasspathfragment",
 			standalone_contents: [
 				"foo",
-				"bar",
 			],
 			apex_available: [
 				"myapex",
@@ -304,8 +276,6 @@ func TestSystemserverclasspathFragmentStandaloneContents(t *testing.T) {
 	ensureExactContents(t, result.TestContext, "myapex", "android_common_myapex_image", []string{
 		"etc/classpaths/systemserverclasspath.pb",
 		"javalib/foo.jar",
-		"javalib/bar.jar",
-		"javalib/bar.jar.prof",
 	})
 }
 
