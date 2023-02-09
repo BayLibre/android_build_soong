@@ -26,6 +26,8 @@ var (
 		// Help catch common 32/64-bit errors.
 		"-Werror=implicit-function-declaration",
 		"-fno-emulated-tls",
+		// For -fsanitize=shadow-call-stack.
+		"-ffixed-x18",
 	}
 
 	riscv64ArchVariantCflags = map[string][]string{}
