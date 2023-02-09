@@ -29,6 +29,8 @@ type Sandbox struct {
 	DisableWhenUsingGoma bool
 
 	AllowBuildBrokenUsesNetwork bool
+	// Allow processes to live outside of sandbox.
+	DisableProcessRestriction bool
 }
 
 var (
@@ -39,8 +41,11 @@ var (
 
 	dumpvarsSandbox = basicSandbox
 	katiSandbox     = basicSandbox
-	soongSandbox    = basicSandbox
-	ninjaSandbox    = Sandbox{
+	soongSandbox    = Sandbox{
+		Enabled:                   true,
+		DisableProcessRestriction: true,
+	}
+	ninjaSandbox = Sandbox{
 		Enabled:              true,
 		DisableWhenUsingGoma: true,
 
@@ -226,6 +231,10 @@ func (c *Cmd) wrapSandbox() {
 		// The debugger is enabled and soong_build will pause until a remote delve process connects, allow
 		// network connections.
 		sandboxArgs = append(sandboxArgs, "-N")
+	}
+
+	if c.Sandbox.DisableProcessRestriction {
+		sandboxArgs = append(sandboxArgs, "--disable_clone_newpid", "--disable_proc")
 	}
 
 	// Stop nsjail from parsing arguments
