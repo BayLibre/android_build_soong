@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a49062_e345bb5b",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1137703
+      },
+      "writtenOn": "2023-02-10T19:57:31Z",
+      "side": 1,
+      "message": "This is now covered by the values above.  Are there other reasons to keep this around?  (ie. is this needed by something other than Severity Assigner?)",
+      "revId": "1a3bf3d74a7586152f1a3c1e80b84117716316d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
