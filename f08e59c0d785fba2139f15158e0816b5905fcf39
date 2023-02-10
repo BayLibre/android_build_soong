@@ -94,6 +94,30 @@
       },
       "revId": "f08e59c0d785fba2139f15158e0816b5905fcf39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377cdf45_b6c29fca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-10T06:03:33Z",
+      "side": 1,
+      "message": "See b/121231426 for some context.  The old `TARGET_BUILD_APPS` was conflating multiple concepts, in this case the relevant ones are whether frameworks/base is present and whether we are building something for distribution outside the platform.\n\nThere\u0027s no reason for a build of a distributable artifact to always use prebuilts, and using the prebuilts was causing extra round trips through building and submitting new prebuilts.  `UNBUNDLED_BUILD_SDKS_FROM_SOURCE` decouples distributable builds from the prebuilts.",
+      "parentUuid": "baf215b9_fef29b6c",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "f08e59c0d785fba2139f15158e0816b5905fcf39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
