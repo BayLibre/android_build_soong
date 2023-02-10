@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4706e8f_8f8ebf1f",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-10T20:14:54Z",
+      "side": 1,
+      "message": "Actually, we are. I\u0027d manually verified this and only added this \\n in after it didn\u0027t work without one. :)\n\nI believe it\u0027s because os.Write() finishes the write with a newline? \n\nStill, your intuition is right that the behavior is weird, and it took me a while to find that it was originally required.",
+      "parentUuid": "2f0c6750_3abc70bf",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "dd87b9b63aa20a489793364963c79708a4c1e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e4f7d7d_4da979a8",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-10T18:54:23Z",
       "side": 1,
       "message": "nit: any reason we don\u0027t write `newContents`  now rather than keeping multiple writes we previously had?",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 2
+      },
+      "revId": "dd87b9b63aa20a489793364963c79708a4c1e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e53cffe1_0dc73d1f",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-10T20:14:54Z",
+      "side": 1,
+      "message": "The reason was this stupid extra newline. If we write newContents, then the file will contain `newContents + \u0027\\n\u0027`, which won\u0027t match the newContents from next time.\n\nHowever, this complexity disappears when we use pathtools.WriteFileIfChanged. :)",
+      "parentUuid": "2e4f7d7d_4da979a8",
       "range": {
         "startLine": 145,
         "startChar": 1,
