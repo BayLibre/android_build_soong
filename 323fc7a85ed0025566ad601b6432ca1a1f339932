@@ -70,6 +70,30 @@
       },
       "revId": "323fc7a85ed0025566ad601b6432ca1a1f339932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47399628_f4323677",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-10T17:20:43Z",
+      "side": 1,
+      "message": "In both versions of this CL, `targetSDK` version is always being updated when we use fingerprint.\n\nAgree that we should get answer to this, but given that this had to be cherrypicked extensively last year, let\u0027s get this submitted and start a thread or file a bug to figure out what play expects for non-declared SDKs.",
+      "parentUuid": "4a3e6b1c_6311a8ed",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 357
+      },
+      "revId": "323fc7a85ed0025566ad601b6432ca1a1f339932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
