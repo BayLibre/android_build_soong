@@ -93,6 +93,30 @@
       },
       "revId": "dd87b9b63aa20a489793364963c79708a4c1e71e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "585937b9_8531aa5c",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-10T20:16:08Z",
+      "side": 1,
+      "message": "🎉",
+      "parentUuid": "e53cffe1_0dc73d1f",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 2
+      },
+      "revId": "dd87b9b63aa20a489793364963c79708a4c1e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
