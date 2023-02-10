@@ -178,8 +178,7 @@ func runApiBp2build(ctx *android.Context, extraNinjaDeps []string) string {
 	ninjaDeps = append(ninjaDeps, codegenContext.AdditionalNinjaDeps()...)
 
 	// Create soong_injection repository
-	soongInjectionFiles, err := bp2build.CreateSoongInjectionDirFiles(codegenContext, bp2build.CreateCodegenMetrics())
-	maybeQuit(err, "")
+	soongInjectionFiles := bp2build.CreateSoongInjectionDirFiles(codegenContext, bp2build.CreateCodegenMetrics())
 	absoluteSoongInjectionDir := shared.JoinPath(topDir, ctx.Config().SoongOutDir(), bazel.SoongInjectionDirName)
 	for _, file := range soongInjectionFiles {
 		// The API targets in api_bp2build workspace do not have any dependency on api_bp2build.
