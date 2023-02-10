@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aef4f10_250b12b8",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-02-10T17:01:39Z",
+      "side": 1,
+      "message": "Nit: this comment duplicates the one on lines 42-43, maybe reference the function here?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "6e3863b598b2e8c0cfb9a669f42ff2e357a8c533",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
