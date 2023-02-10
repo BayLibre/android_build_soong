@@ -22,6 +22,7 @@ import (
 	"reflect"
 	"sort"
 	"strings"
+	"sync"
 
 	analysis_v2_proto "prebuilts/bazel/common/proto/analysis_v2"
 
@@ -130,7 +131,7 @@ type aqueryArtifactHandler struct {
 
 	// depsetIdToArtifactIdsCache is a memoization of depset flattening, because flattening
 	// may be an expensive operation.
-	depsetHashToArtifactPathsCache map[string][]string
+	depsetHashToArtifactPathsCache sync.Map
 	// Maps artifact ids to fully expanded paths.
 	artifactIdToPath map[artifactId]string
 }
@@ -189,7 +190,7 @@ func newAqueryHandler(aqueryResult *analysis_v2_proto.ActionGraphContainer) (*aq
 	aqueryHandler := aqueryArtifactHandler{
 		depsetIdToAqueryDepset:         map[depsetId]AqueryDepset{},
 		depsetHashToAqueryDepset:       map[string]AqueryDepset{},
-		depsetHashToArtifactPathsCache: map[string][]string{},
+		depsetHashToArtifactPathsCache: sync.Map{},
 		emptyDepsetIds:                 make(map[depsetId]struct{}, 0),
 		artifactIdToPath:               artifactIdToPath,
 	}
@@ -294,8 +295,8 @@ func (a *aqueryArtifactHandler) getInputPaths(depsetIds []uint32) ([]string, err
 }
 
 func (a *aqueryArtifactHandler) artifactPathsFromDepsetHash(depsetHash string) ([]string, error) {
-	if result, exists := a.depsetHashToArtifactPathsCache[depsetHash]; exists {
-		return result, nil
+	if result, exists := a.depsetHashToArtifactPathsCache.Load(depsetHash); exists {
+		return result.([]string), nil
 	}
 	if depset, exists := a.depsetHashToAqueryDepset[depsetHash]; exists {
 		result := depset.DirectArtifacts
@@ -306,7 +307,7 @@ func (a *aqueryArtifactHandler) artifactPathsFromDepsetHash(depsetHash string) (
 			}
 			result = append(result, childArtifactIds...)
 		}
-		a.depsetHashToArtifactPathsCache[depsetHash] = result
+		a.depsetHashToArtifactPathsCache.Store(depsetHash, result)
 		return result, nil
 	} else {
 		return nil, fmt.Errorf("undefined input depset hash %s", depsetHash)
@@ -318,7 +319,7 @@ func (a *aqueryArtifactHandler) artifactPathsFromDepsetHash(depsetHash string) (
 // action graph, as described by the given action graph json proto.
 // BuildStatements are one-to-one with actions in the given action graph, and AqueryDepsets
 // are one-to-one with Bazel's depSetOfFiles objects.
-func AqueryBuildStatements(aqueryJsonProto []byte, eventHandler *metrics.EventHandler) ([]BuildStatement, []AqueryDepset, error) {
+func AqueryBuildStatements(aqueryJsonProto []byte, eventHandler *metrics.EventHandler) ([]*BuildStatement, []AqueryDepset, error) {
 	aqueryProto := &analysis_v2_proto.ActionGraphContainer{}
 	err := proto.Unmarshal(aqueryJsonProto, aqueryProto)
 	if err != nil {
@@ -333,19 +334,27 @@ func AqueryBuildStatements(aqueryJsonProto []byte, eventHandler *metrics.EventHa
 		return nil, nil, err
 	}
 
-	buildStatements := make([]BuildStatement, 0, len(aqueryProto.Actions)+1)
+	buildStatements := make([]*BuildStatement, len(aqueryProto.Actions))
+	// errs := make(chan error)
 	eventHandler.Do("aquery_build_statements", func() {
-		var buildStatement *BuildStatement
-		for _, actionEntry := range aqueryProto.Actions {
-			buildStatement, err = aqueryHandler.actionToBuildStatement(actionEntry)
-			if err != nil {
-				return
-			}
-			if buildStatement == nil {
-				continue
-			}
-			buildStatements = append(buildStatements, *buildStatement)
+		wg := sync.WaitGroup{}
+		var errOnce sync.Once
+
+		for i, actionEntry := range aqueryProto.Actions {
+			wg.Add(1)
+			go func(i int, actionEntry *analysis_v2_proto.Action) {
+				buildStatement, aErr := aqueryHandler.actionToBuildStatement(actionEntry)
+				if aErr != nil {
+					errOnce.Do(func() {
+						err = aErr
+					})
+				} else if buildStatement != nil {
+					buildStatements[i] = buildStatement
+				}
+				wg.Done()
+			}(i, actionEntry)
 		}
+		wg.Wait()
 	})
 	if err != nil {
 		return nil, nil, err
@@ -377,6 +386,11 @@ func AqueryBuildStatements(aqueryJsonProto []byte, eventHandler *metrics.EventHa
 		// output). Note they are not sorted by their original IDs nor their Bazel ordering,
 		// as Bazel gives nondeterministic ordering / identifiers in aquery responses.
 		sort.Slice(buildStatements, func(i, j int) bool {
+			if buildStatements[i] == nil {
+				return false
+			} else if buildStatements[j] == nil {
+				return true
+			}
 			// For build statements, compare output lists. In Bazel, each output file
 			// may only have one action which generates it, so this will provide
 			// a deterministic ordering.
