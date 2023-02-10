@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7a454f_5c515666",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-10T19:33:28Z",
+      "side": 1,
+      "message": "nit: we have confidence that this is not loading any large files in memory?",
+      "revId": "a2b8bc8b4cd8920fb690eb697f56ebb76cfff32d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
