@@ -33,6 +33,24 @@
       "message": "This breaks tests on mac:\n```\n--- FAIL: TestLtoDisabledButEnabledForArch (2.86s)\npanic: failed to find module \"libfoo\" variant \"linux_glibc_x86_64_shared\". All variants:\nandroid_arm64_armv8-a_shared\nandroid_arm64_armv8-a_static\nandroid_arm_armv7-a-neon_shared\nandroid_arm_armv7-a-neon_static\ndarwin_x86_64_shared\ndarwin_x86_64_static [recovered]\n```",
       "revId": "07cf4ed90d552fe419ffd72acdf9e51e421ceb70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7998f5fb_553afbc1",
+        "filename": "cc/lto_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-02-10T15:27:42Z",
+      "side": 1,
+      "message": "Addressed in https://android-review.git.corp.google.com/c/platform/build/soong/+/2429133",
+      "parentUuid": "83a75470_f95ab762",
+      "revId": "07cf4ed90d552fe419ffd72acdf9e51e421ceb70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
