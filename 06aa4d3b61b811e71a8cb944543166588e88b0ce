@@ -46,6 +46,30 @@
       },
       "revId": "06aa4d3b61b811e71a8cb944543166588e88b0ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "438dfe64_ea52041b",
+        "filename": "cc/config/riscv64_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-02-10T19:46:52Z",
+      "side": 1,
+      "message": "It\u0027s piped through the build system but in the end, it gets added in  the following snippet in build/soong/cc/builder.go:\n\n```\n 489         cppflags :\u003d flags.globalCommonFlags + \" \" +\n 499                 flags.globalCFlags + \" \" +\n 500                 flags.globalCppFlags + \" \" +\n 501                 flags.localCommonFlags + \" \" +\n 502                 flags.localCFlags + \" \" +\n 503                 flags.localCppFlags + \" \" +\n 504                 flags.systemIncludeFlags\n\n```",
+      "parentUuid": "a2fc305f_cfd281ca",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "06aa4d3b61b811e71a8cb944543166588e88b0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
