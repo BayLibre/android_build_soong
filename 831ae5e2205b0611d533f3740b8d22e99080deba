@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39683857_bef1d7bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-10T20:33:26Z",
+      "side": 1,
+      "message": "PTAL. Simplified greatly by using existing library :)",
+      "revId": "831ae5e2205b0611d533f3740b8d22e99080deba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
