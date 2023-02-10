@@ -22,6 +22,30 @@
       },
       "revId": "06aa4d3b61b811e71a8cb944543166588e88b0ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2fc305f_cfd281ca",
+        "filename": "cc/config/riscv64_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-02-10T19:39:06Z",
+      "side": 1,
+      "message": "ah ok. i wasn\u0027t aware of this. where can we find the place where we add C flags to CPP?",
+      "parentUuid": "5f3ca0f6_c5e30b08",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "06aa4d3b61b811e71a8cb944543166588e88b0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
