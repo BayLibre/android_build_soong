@@ -22,6 +22,86 @@
       },
       "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "707f4932_4e60032a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-10T14:50:32Z",
+      "side": 1,
+      "message": "I think the fact that you are using the same properties structure for `java_import` and `java_sdk_library_import` as you use for `java_library` and `java_sdk_library` is a mistake. It causes complications in the testing and the code because you need `profile_guided` for prebuilts and `profile` for sources and certain combinations don\u0027t make sense and you have to test for them.\n\nIt would be easier to have a separate import specific structure for dexpreopting.",
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0898a7d_9891bd9a",
+        "filename": "apex/systemserver_classpath_fragment_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-10T14:50:32Z",
+      "side": 1,
+      "message": "Why is this not ignored because `profile_guided` is not set?",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e0f328a_f709d212",
+        "filename": "apex/systemserver_classpath_fragment_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-10T14:50:32Z",
+      "side": 1,
+      "message": "Why is this ignored but the previous is not? Why does this not cause a failure because the `profile` is missing?",
+      "range": {
+        "startLine": 78,
+        "startChar": 25,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e3132e8_f916924b",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-10T14:50:32Z",
+      "side": 1,
+      "message": "Would you mind adding a comment to this method explaining its purpose. If you could document the interface and the other methods too that would be really helpful but it is not strictly needed for this change.",
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
