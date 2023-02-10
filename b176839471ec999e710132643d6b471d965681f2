@@ -16,6 +16,24 @@
       "message": "I think this needs to be `-Wl,-plugin-opt,-emulated-tls\u003d0`. I had a typo in my suggestion in the bug.\n\nnit: seems like the convention in this file is to put these on their own lines?",
       "revId": "b176839471ec999e710132643d6b471d965681f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ebb7e4_ba6a9cf6",
+        "filename": "cc/config/riscv64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-02-10T18:26:57Z",
+      "side": 1,
+      "message": "thanks for correcting. my local build was still in progress and the error had not hit yet.",
+      "parentUuid": "843b08d1_e70da3c2",
+      "revId": "b176839471ec999e710132643d6b471d965681f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
