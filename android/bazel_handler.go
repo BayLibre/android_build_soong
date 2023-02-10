@@ -185,7 +185,7 @@ type BazelContext interface {
 	OutputBase() string
 
 	// Returns build statements which should get registered to reflect Bazel's outputs.
-	BuildStatementsToRegister() []bazel.BuildStatement
+	BuildStatementsToRegister() []*bazel.BuildStatement
 
 	// Returns the depsets defined in Bazel's aquery response.
 	AqueryDepsets() []bazel.AqueryDepset
@@ -219,7 +219,7 @@ type mixedBuildBazelContext struct {
 	results map[cqueryKey]string // Results of cquery requests after Bazel invocations
 
 	// Build statements which should get registered to reflect Bazel's outputs.
-	buildStatements []bazel.BuildStatement
+	buildStatements []*bazel.BuildStatement
 
 	// Depsets which should be used for Bazel's build statements.
 	depsets []bazel.AqueryDepset
@@ -311,8 +311,8 @@ func (m MockBazelContext) IsModuleNameAllowed(_ string) bool {
 
 func (m MockBazelContext) OutputBase() string { return m.OutputBaseDir }
 
-func (m MockBazelContext) BuildStatementsToRegister() []bazel.BuildStatement {
-	return []bazel.BuildStatement{}
+func (m MockBazelContext) BuildStatementsToRegister() []*bazel.BuildStatement {
+	return []*bazel.BuildStatement{}
 }
 
 func (m MockBazelContext) AqueryDepsets() []bazel.AqueryDepset {
@@ -431,8 +431,8 @@ func (n noopBazelContext) IsModuleNameAllowed(_ string) bool {
 	return false
 }
 
-func (m noopBazelContext) BuildStatementsToRegister() []bazel.BuildStatement {
-	return []bazel.BuildStatement{}
+func (m noopBazelContext) BuildStatementsToRegister() []*bazel.BuildStatement {
+	return []*bazel.BuildStatement{}
 }
 
 func (m noopBazelContext) AqueryDepsets() []bazel.AqueryDepset {
@@ -1125,7 +1125,7 @@ func (context *mixedBuildBazelContext) generateBazelSymlinks(config Config, ctx 
 	return err
 }
 
-func (context *mixedBuildBazelContext) BuildStatementsToRegister() []bazel.BuildStatement {
+func (context *mixedBuildBazelContext) BuildStatementsToRegister() []*bazel.BuildStatement {
 	return context.buildStatements
 }
 
@@ -1193,6 +1193,9 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 	executionRoot := path.Join(ctx.Config().BazelContext.OutputBase(), "execroot", "__main__")
 	bazelOutDir := path.Join(executionRoot, "bazel-out")
 	for index, buildStatement := range ctx.Config().BazelContext.BuildStatementsToRegister() {
+		if buildStatement == nil {
+			continue
+		}
 		if len(buildStatement.Command) > 0 {
 			rule := NewRuleBuilder(pctx, ctx)
 			createCommand(rule.Command(), buildStatement, executionRoot, bazelOutDir, ctx)
@@ -1237,7 +1240,7 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 }
 
 // Register bazel-owned build statements (obtained from the aquery invocation).
-func createCommand(cmd *RuleBuilderCommand, buildStatement bazel.BuildStatement, executionRoot string, bazelOutDir string, ctx BuilderContext) {
+func createCommand(cmd *RuleBuilderCommand, buildStatement *bazel.BuildStatement, executionRoot string, bazelOutDir string, ctx BuilderContext) {
 	// executionRoot is the action cwd.
 	cmd.Text(fmt.Sprintf("cd '%s' &&", executionRoot))
 
