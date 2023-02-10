@@ -136,7 +136,13 @@ func init() {
 
 	exportedVars.ExportStringListStaticVariable("LinuxGccTriple", []string{"x86_64-linux"})
 
-	exportedVars.ExportStringListStaticVariable("LinuxCflags", linuxCflags)
+	exportedVars.ExportStringList("LinuxCflags", linuxCflags)
+	pctx.VariableFunc("LinuxCflags", func(ctx android.PackageVarContext) string {
+		flags := AddPageSizeCFlag(ctx, linuxCflags)
+
+		return strings.Join(flags, " ")
+	})
+
 	exportedVars.ExportStringListStaticVariable("LinuxLdflags", linuxLdflags)
 	exportedVars.ExportStringListStaticVariable("LinuxLldflags", linuxLdflags)
 	exportedVars.ExportStringListStaticVariable("LinuxGlibcCflags", linuxGlibcCflags)
