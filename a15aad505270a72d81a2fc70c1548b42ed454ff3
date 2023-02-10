@@ -16,6 +16,24 @@
       "message": "This is great!  Thanks.\n\nI just added a bunch of comments describing the individual values in the proto enums (in cl/508095065), so they\u0027re easier for dev teams to understand.  Would it make sense to copy those comments into the individual values here, also?  Or is there a better place to document that?",
       "revId": "a15aad505270a72d81a2fc70c1548b42ed454ff3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ccaba71_f70d6bb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-10T19:49:32Z",
+      "side": 1,
+      "message": "Updated the enums with the same internal comments.",
+      "parentUuid": "eeef776e_ea2eb269",
+      "revId": "a15aad505270a72d81a2fc70c1548b42ed454ff3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
