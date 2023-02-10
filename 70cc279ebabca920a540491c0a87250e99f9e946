@@ -521,6 +521,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9f99d21_e02cab31",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-02-10T05:20:14Z",
+      "side": 1,
+      "message": "hmm, it looks like this block is in `depsToPaths` which is invoked by GenerateAndroidBuildActions, and IIRC, it is later phase than postdeps.\n\nis this block related to checkLinkType?",
+      "parentUuid": "2f46c30e_b19b8a1b",
+      "range": {
+        "startLine": 2893,
+        "startChar": 1,
+        "endLine": 2893,
+        "endChar": 93
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc5bc617_3a52ac0a",
         "filename": "cc/cc.go",
         "patchSetId": 1
