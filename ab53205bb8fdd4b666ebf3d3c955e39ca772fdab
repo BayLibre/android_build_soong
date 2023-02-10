@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e436bf7_5481ba0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-10T14:02:25Z",
+      "side": 1,
+      "message": "Why did you do this? Is it because enabling prebuilts for the other modules caused problems?\n\nIf so then could you just enable prebuilts for wifi and leave the others building from source.\n\nYou can do that by adding the following into the product config that you are using:\n```\n$(call soong_config_set,wifi_module,source_build,true)\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
