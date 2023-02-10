@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e5af383d_3c71b527",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T16:17:19Z",
+      "side": 1,
+      "message": "I was on tm-dev. Enabling prebuilts didn\u0027t cause problems. Dropping the Wifi APEX bundle and the module SDK did. Is this a bug? I created b/268625006.",
+      "parentUuid": "1e436bf7_5481ba0d",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "707f4932_4e60032a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -37,6 +61,24 @@
       "writtenOn": "2023-02-10T14:50:32Z",
       "side": 1,
       "message": "I think the fact that you are using the same properties structure for `java_import` and `java_sdk_library_import` as you use for `java_library` and `java_sdk_library` is a mistake. It causes complications in the testing and the code because you need `profile_guided` for prebuilts and `profile` for sources and certain combinations don\u0027t make sense and you have to test for them.\n\nIt would be easier to have a separate import specific structure for dexpreopting.",
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d476dac5_16d0cf92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T16:17:19Z",
+      "side": 1,
+      "message": "Created a separate struct in the antecedent CL.",
+      "parentUuid": "707f4932_4e60032a",
       "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2023-02-10T14:50:32Z",
       "side": 1,
       "message": "Why is this not ignored because `profile_guided` is not set?",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f834a7_fadb16ed",
+        "filename": "apex/systemserver_classpath_fragment_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T16:17:19Z",
+      "side": 1,
+      "message": "That\u0027s how it currently works. I didn\u0027t change anything. It was implemented by Colin in 2018. I just added tests for this.\n\nAccording to the comments on the `profile_guided` property:\n```\n// If true, use a checked-in profile to guide optimization.  Defaults to false unless\n// a matching profile is set or a profile is found in PRODUCT_DEX_PREOPT_PROFILE_DIR\n// that matches the name of this module, in which case it is defaulted to true.\n```\nIt seems to be an expected behavior.\n\nAlthough the behavior aligns with the comments, I think this is unintuitive. Anyway, changing this is out of the scope of this CL. Feel free to change it yourself or create a ticket and assign it to me.",
+      "parentUuid": "e0898a7d_9891bd9a",
       "range": {
         "startLine": 66,
         "startChar": 4,
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e9620c_2ebb6970",
+        "filename": "apex/systemserver_classpath_fragment_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T16:17:19Z",
+      "side": 1,
+      "message": "Same as above. That\u0027s how it currently works. I\u0027m just adding tests for this.",
+      "parentUuid": "9e0f328a_f709d212",
+      "range": {
+        "startLine": 78,
+        "startChar": 25,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e3132e8_f916924b",
@@ -100,6 +190,24 @@
       "writtenOn": "2023-02-10T14:50:32Z",
       "side": 1,
       "message": "Would you mind adding a comment to this method explaining its purpose. If you could document the interface and the other methods too that would be really helpful but it is not strictly needed for this change.",
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26d2929c_51b271d6",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T16:17:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e3132e8_f916924b",
       "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
