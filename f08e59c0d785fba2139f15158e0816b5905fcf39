@@ -70,6 +70,30 @@
       },
       "revId": "f08e59c0d785fba2139f15158e0816b5905fcf39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf215b9_fef29b6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-02-10T04:33:27Z",
+      "side": 1,
+      "message": "Oh, you suggested using prebuilt aapt2(+host tools?) for every unbundled builds.\n\nI don\u0027t fully understand the purpose of UNBUNDLED_BUILD_SDKS_FROM_SOURCE flag, IIUC, it for mostly android framework side(android.jar or something like that), not for host tools like aapt2. If so, can we use prebuilts host tools for \u0027every\u0027 unbundled build as Jiyong suggested?\n\n+@ccross@android.com for more context.",
+      "parentUuid": "2581b881_7806eed3",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "f08e59c0d785fba2139f15158e0816b5905fcf39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
