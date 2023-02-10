@@ -72,6 +72,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "841be312_e2ea2b54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-10T14:52:23Z",
+      "side": 1,
+      "message": "I\u0027ve copied this from the follow up change as while reviewing that change is what caused me to see this, it actually applies to this change:\n\n\u003e I think the fact that you are using the same properties structure for java_import and java_sdk_library_import as you use for java_library and java_sdk_library is a mistake. It causes complications in the testing and the code because you need profile_guided for prebuilts and profile for sources and certain combinations don\u0027t make sense and you have to test for them.\n\u003e \n\u003e It would be easier to have a separate import specific structure for dexpreopting.",
+      "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f205233_e8aa6def",
         "filename": "java/dexpreopt.go",
         "patchSetId": 1
