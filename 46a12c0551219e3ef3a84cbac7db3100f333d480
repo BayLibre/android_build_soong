@@ -87,6 +87,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdea7ba6_4c7a3708",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T17:23:56Z",
+      "side": 1,
+      "message": "Created a separate struct. Thanks for the suggestion.",
+      "parentUuid": "841be312_e2ea2b54",
+      "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f205233_e8aa6def",
@@ -104,6 +122,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e89f61_54d2595f",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T17:23:56Z",
+      "side": 1,
+      "message": "Created a separate struct for imports that doesn\u0027t have this property.",
+      "parentUuid": "6f205233_e8aa6def",
+      "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c0cd6ee_afa377de",
@@ -117,6 +153,30 @@
       "writtenOn": "2023-02-10T14:39:36Z",
       "side": 1,
       "message": "Instead of refactoring this so it can be called from `PopulateFromVariant`, which over complicates this and makes it work differently to what most people would expect I recommend that you just store the result of calling this from dexpreopt in `blueprint:\"mutated\"` tagged fields in the `dexpreoptProperties` struct and access that from the `PopulateFromVariant` method.\n\nIt avoids duplicate work, simplifies this code and simplifies the `PopulateFromVariant` method.",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 93
+      },
+      "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5662cf5e_b4921770",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T17:23:56Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. It\u0027s much simpler and cleaner now!",
+      "parentUuid": "0c0cd6ee_afa377de",
       "range": {
         "startLine": 242,
         "startChar": 0,
@@ -150,6 +210,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3431118_d272cbc0",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T17:23:56Z",
+      "side": 1,
+      "message": "Created a separate struct. Thanks for the suggestion.",
+      "parentUuid": "6596e87d_fa5263a4",
+      "range": {
+        "startLine": 805,
+        "startChar": 22,
+        "endLine": 805,
+        "endChar": 41
+      },
+      "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d0e8076_dd5658d4",
@@ -163,6 +247,24 @@
       "writtenOn": "2023-02-10T14:39:36Z",
       "side": 1,
       "message": "This is very dangerous as it makes it extremely easy to pass additional properties that are not supported on earlier releases through to the sdk snapshot.\n\nThe only structures that should be passed through like this are atomic structures (like apex/module pairs).",
+      "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15cd7c85_a65180a8",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T17:23:56Z",
+      "side": 1,
+      "message": "Created a separate struct.",
+      "parentUuid": "2d0e8076_dd5658d4",
       "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -184,6 +286,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc183dfe_6e8236cf",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3075,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T17:23:56Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "ab40fdbb_624849f5",
+      "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b54d696_983c61de",
@@ -197,6 +317,24 @@
       "writtenOn": "2023-02-10T14:39:36Z",
       "side": 1,
       "message": "Could you add a \"target-u\" test that tests UpsideDownCake. It can reuse the `expectedLatestSnapshot` for now but it will verify that we will output these fields for `UpsideDownCake` when we start targeting `UpsideDownCake`.",
+      "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be752212_8f435925",
+        "filename": "sdk/systemserverclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T17:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b54d696_983c61de",
       "revId": "46a12c0551219e3ef3a84cbac7db3100f333d480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

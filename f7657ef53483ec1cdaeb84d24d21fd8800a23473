@@ -16,6 +16,24 @@
       "message": "I noticed that you\u0027ve changed the code to add a new import specific properties struct but you\u0027ve not replied to my comments. Did you forget to send your comments?",
       "revId": "f7657ef53483ec1cdaeb84d24d21fd8800a23473",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a050ddc9_e15bf184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-10T17:23:56Z",
+      "side": 1,
+      "message": "No, I was holding this CL to address your comment about `blueprint:\"mutated\"`.",
+      "parentUuid": "92a06cd7_330fcc9e",
+      "revId": "f7657ef53483ec1cdaeb84d24d21fd8800a23473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
