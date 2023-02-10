@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b06da82_da59ba45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-10T16:22:40Z",
+      "side": 1,
+      "message": "Unresolving.",
+      "parentUuid": "707f4932_4e60032a",
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0898a7d_9891bd9a",
         "filename": "apex/systemserver_classpath_fragment_test.go",
         "patchSetId": 5
@@ -120,6 +138,30 @@
       "side": 1,
       "message": "That\u0027s how it currently works. I didn\u0027t change anything. It was implemented by Colin in 2018. I just added tests for this.\n\nAccording to the comments on the `profile_guided` property:\n```\n// If true, use a checked-in profile to guide optimization.  Defaults to false unless\n// a matching profile is set or a profile is found in PRODUCT_DEX_PREOPT_PROFILE_DIR\n// that matches the name of this module, in which case it is defaulted to true.\n```\nIt seems to be an expected behavior.\n\nAlthough the behavior aligns with the comments, I think this is unintuitive. Anyway, changing this is out of the scope of this CL. Feel free to change it yourself or create a ticket and assign it to me.",
       "parentUuid": "e0898a7d_9891bd9a",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "ab53205bb8fdd4b666ebf3d3c955e39ca772fdab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b94ec452_fd9dc446",
+        "filename": "apex/systemserver_classpath_fragment_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-10T16:22:40Z",
+      "side": 1,
+      "message": "Ok, I thought that you had added `profile_guided` that does seem quite complex. Never mind, it is what it is.",
+      "parentUuid": "98f834a7_fadb16ed",
       "range": {
         "startLine": 66,
         "startChar": 4,
