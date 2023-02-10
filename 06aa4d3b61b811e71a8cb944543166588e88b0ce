@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3ca0f6_c5e30b08",
+        "filename": "cc/config/riscv64_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-02-10T19:14:26Z",
+      "side": 1,
+      "message": "IIUC, this is not necessary since riscv64Cflags above, which has the flag, is also passed to C++ compiles.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "06aa4d3b61b811e71a8cb944543166588e88b0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
