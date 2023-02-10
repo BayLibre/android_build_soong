@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f0c6750_3abc70bf",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-10T18:54:23Z",
+      "side": 1,
+      "message": "it doesn\u0027t look like we typically add a \u0027\\n\u0027 after `srcBuildFileContent`, which may mean we aren\u0027t getting the impact we expect",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "dd87b9b63aa20a489793364963c79708a4c1e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e4f7d7d_4da979a8",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-10T18:54:23Z",
+      "side": 1,
+      "message": "nit: any reason we don\u0027t write `newContents`  now rather than keeping multiple writes we previously had?",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 2
+      },
+      "revId": "dd87b9b63aa20a489793364963c79708a4c1e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
