@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca277fac_1094b4a0",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-10T19:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b5fbb52_9b1c6c83",
+      "range": {
+        "startLine": 1422,
+        "startChar": 1,
+        "endLine": 1422,
+        "endChar": 27
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c6b4f74_1a441ac0",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "initially I used a bool, then I had to do the bool to string conversion in two places, the transition function and the getConfigString(), eventually we have to do the bool to string conversion, doing it earlier in the chain saves me some code.",
       "parentUuid": "0c6b4f74_1a441ac0",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 11
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c98a4b0_986f6a6b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-10T19:28:47Z",
+      "side": 1,
+      "message": "I changed it back to a bool, you can see the conversion back and force among bool in golang, string, and attr.bool in bazel, but it is probably still better to have a cleaner interface with bool type as compared to string",
+      "parentUuid": "1046cf48_023ef136",
       "range": {
         "startLine": 92,
         "startChar": 1,
@@ -180,6 +228,30 @@
       "side": 1,
       "message": "Ack, makes sense. Though explicit unit testing of this would improve the clarity and ensure the intention is resilient to changes to this function or is knowingly changed.",
       "parentUuid": "96807af1_28ecfa05",
+      "range": {
+        "startLine": 518,
+        "startChar": 39,
+        "endLine": 518,
+        "endChar": 58
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3072d047_c14edba4",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-10T19:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78fb3cda_8fd9a6f7",
       "range": {
         "startLine": 518,
         "startChar": 39,
@@ -286,6 +358,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0a8623bb_fdc841cb",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-10T19:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46b90312_b65e817b",
+      "range": {
+        "startLine": 790,
+        "startChar": 9,
+        "endLine": 790,
+        "endChar": 21
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b1d9ecc7_e51920a9",
         "filename": "android/bazel_handler.go",
         "patchSetId": 24
@@ -359,6 +455,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e09f558_e16afc83",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1320,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-10T19:28:47Z",
+      "side": 1,
+      "message": "talked with Liz offline, this is incorporated in the short doc I wrote as mentioned above, it is more for supporting additional variants in the future.",
+      "parentUuid": "5cc98dca_b27e958f",
+      "range": {
+        "startLine": 1320,
+        "startChar": 15,
+        "endLine": 1320,
+        "endChar": 18
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9780120b_517997fd",
@@ -372,6 +492,24 @@
       "writtenOn": "2023-02-06T20:44:44Z",
       "side": 1,
       "message": "Should we test this without the apexKey as well?",
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "844c950f_b2e242b8",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-10T19:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9780120b_517997fd",
       "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -399,6 +537,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1d22f89_d8c7af26",
+        "filename": "android/filegroup.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-10T19:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb74485_86214b12",
+      "range": {
+        "startLine": 235,
+        "startChar": 2,
+        "endLine": 235,
+        "endChar": 37
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fa5b80a_2df7b495",
@@ -412,6 +574,30 @@
       "writtenOn": "2023-02-06T21:36:48Z",
       "side": 1,
       "message": "would it make sense to change the function instead to get the arch/os config key instead of having to add args for ever additional thing we need to handle as a config key?",
+      "range": {
+        "startLine": 580,
+        "startChar": 71,
+        "endLine": 580,
+        "endChar": 83
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ae8e1e_1947ac2c",
+        "filename": "cc/binary.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-10T19:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa5b80a_2df7b495",
       "range": {
         "startLine": 580,
         "startChar": 71,
@@ -534,6 +720,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "291d48f8_0affdc4b",
+        "filename": "cc/cc.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1889,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-10T19:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15cbe3e1_0e67c0bb",
+      "range": {
+        "startLine": 1889,
+        "startChar": 5,
+        "endLine": 1889,
+        "endChar": 21
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3a17887_f693fe64",
@@ -619,6 +829,30 @@
       "side": 1,
       "message": "ok, I can add it for all",
       "parentUuid": "2fd7e647_6add7812",
+      "range": {
+        "startLine": 62,
+        "startChar": 79,
+        "endLine": 62,
+        "endChar": 82
+      },
+      "revId": "0903527e51602dd99c0e628840a9ebf03f2be07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "714980ce_987ddf81",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-02-10T19:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1e9e81c_e5e662e3",
       "range": {
         "startLine": 62,
         "startChar": 79,
