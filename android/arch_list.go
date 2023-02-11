@@ -26,6 +26,7 @@ var archVariants = map[ArchType][]string{
 		"armv8-a-branchprot",
 		"armv8-2a",
 		"armv8-2a-dotprod",
+		"armv8-2a-branchprot",
 	},
 	X86: {
 		"amberlake",
