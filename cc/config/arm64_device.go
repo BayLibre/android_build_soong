@@ -34,6 +34,7 @@ var (
 		"armv8-a-branchprot": []string{
 			"-march=armv8-a",
 			"-mbranch-protection=standard",
+			"-fno-stack-protector",
 		},
 		"armv8-2a": []string{
 			"-march=armv8.2-a",
