@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99380b26_03935ba0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-02-13T23:30:23Z",
+      "side": 1,
+      "message": "Isn\u0027t armv8-a-branchprot meant for targets that might not have PAC? So this CL would mean that armv8-a-branchprot will disable stack protection on \u003cARMv8.3 devices.",
+      "revId": "a09726f3f9be74e76fb063bd5435abdd2eb0b8d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
