@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d9d9c0_5cf1f845",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-02-13T23:23:50Z",
+      "side": 1,
+      "message": "no dotprod?",
+      "revId": "acd05e901b9f02400beec31595ad37e44024771c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
