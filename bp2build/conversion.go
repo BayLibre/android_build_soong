@@ -2,7 +2,10 @@ package bp2build
 
 import (
 	"encoding/json"
+	"fmt"
+	"path/filepath"
 	"reflect"
+	"strconv"
 	"strings"
 
 	"android/soong/android"
@@ -61,6 +64,48 @@ func soongInjectionFiles(cfg android.Config, metrics CodegenMetrics) []BazelFile
 	// TODO(b/262781701): Create an alternate soong_build entrypoint for writing out these files only when requested
 	files = append(files, newFile("allowlists", "mixed_build_prod_allowlist.txt", strings.Join(android.GetBazelEnabledModules(android.BazelProdMode), "\n")+"\n"))
 	files = append(files, newFile("allowlists", "mixed_build_staging_allowlist.txt", strings.Join(android.GetBazelEnabledModules(android.BazelStagingMode), "\n")+"\n"))
+
+	return files
+}
+
+func apiSurfacesInjectionFiles(config android.Config) []BazelFile {
+	var files []BazelFile
+
+	apiSurfaces := []android.SdkKind{
+		android.SdkPublic,
+		android.SdkSystem,
+		android.SdkSystemServer,
+		android.SdkModule,
+		android.SdkTest,
+	} // TODO: Add Core, IntrCore, CorePlatform
+	versions := []string{"current"}
+	for version := 1; version <= config.PlatformSdkVersion().FinalInt(); version++ {
+		versions = append(versions, strconv.Itoa(version))
+	}
+	// Create a build file per (api_surface,version) _unconditionally_
+	// e.g. this will create an entry for (system,1) even though prebuilts/sdk does not have a jar file for this.
+	// Bazel targets depending on these via sdk_version will not be buildable.
+	// TODO: Use API export to conditionaly generate the (api_surface,version) pairs.
+	for _, apiSurface := range apiSurfaces {
+		for _, version := range versions {
+			// Use the prebuilt jar file from the primary workspace
+			prebuiltJarTarget := fmt.Sprintf("@//prebuilts/sdk:%s/%s/android.jar", version, apiSurface.String())
+			if version == "current" {
+				// prebuilts/sdk/current has an Android.bp file and therefore is a separate Bazel package
+				// Long term this special-case is not necessary since we will use java_api_library for current
+				prebuiltJarTarget = fmt.Sprintf("@//prebuilts/sdk/%s:%s/android.jar", version, apiSurface.String())
+			}
+			dirName := apiSurface.String() + "api"
+			files = append(files, newFile(filepath.Join(dirName, version), GeneratedBuildFileName,
+				fmt.Sprintf(
+					`java_import(
+				name="android",
+				jars = [
+				"%s",
+				],
+			)`, prebuiltJarTarget)))
+		}
+	}
 
 	return files
 }

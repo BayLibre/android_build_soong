@@ -48,6 +48,10 @@ func Codegen(ctx *CodegenContext) *CodegenMetrics {
 	soongInjectionDir := android.PathForOutput(ctx, bazel.SoongInjectionDirName)
 	writeFiles(ctx, soongInjectionDir, CreateSoongInjectionDirFiles(ctx, res.metrics))
 
+	// create api_surfaces repository
+	apiSurfacesInjectionDir := android.PathForOutput(ctx, "api_surfaces") // TODO: Make this a constant
+	writeFiles(ctx, apiSurfacesInjectionDir, apiSurfacesInjectionFiles(ctx.Config()))
+
 	return &res.metrics
 }
 
