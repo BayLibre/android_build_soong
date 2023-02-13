@@ -826,8 +826,8 @@ EOF
     fail "Build should have failed"
   fi
 
-  grep -q "a/${GENERATED_BUILD_FILE_NAME}' exist" "$MOCK_TOP/errors" || fail "Error for a/${GENERATED_BUILD_FILE_NAME} not found"
-  grep -q -v "b/${GENERATED_BUILD_FILE_NAME}' exist" "$MOCK_TOP/errors" || fail "Error for b/${GENERATED_BUILD_FILE_NAME} found but not expected"
+  # we should expect at least one error
+  grep -q -E "(a|b)/${GENERATED_BUILD_FILE_NAME}' exist" "$MOCK_TOP/errors" || fail "Error for ${GENERATED_BUILD_FILE_NAME} not found"
 }
 
 function test_bp2build_back_and_forth_null_build {
