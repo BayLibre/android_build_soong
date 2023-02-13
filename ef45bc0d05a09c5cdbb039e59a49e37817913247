@@ -16,6 +16,24 @@
       "message": "drops nil-safely?\nOr is it that we always have ctx !\u003d nil? In which case maybe we should simply panic if ctx is nil.",
       "revId": "ef45bc0d05a09c5cdbb039e59a49e37817913247",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "725cc5d1_dbe1f9c0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-13T23:04:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "076632ac_15d94209",
+      "revId": "ef45bc0d05a09c5cdbb039e59a49e37817913247",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
