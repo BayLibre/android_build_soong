@@ -27,6 +27,10 @@ case $(uname) in
         ;;
     Darwin)
         export GOROOT="${TOP}/prebuilts/go/darwin-x86/"
+        # Our GOROOT does not provide arm64 stdlib prebuilts, which
+        # microfactory requires to build arm64 binaries. This should be
+        # re-evaluated with Go 1.20, which no longer provides stdlib prebuilts.
+        export GOARCH="amd64"
         ;;
     *) echo "unknown OS:" $(uname) >&2 && exit 1;;
 esac
