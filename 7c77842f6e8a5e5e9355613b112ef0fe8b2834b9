@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f8d8061_be56906a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-13T23:49:02Z",
+      "side": 1,
+      "message": "missing defer",
+      "revId": "7c77842f6e8a5e5e9355613b112ef0fe8b2834b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "317a3b31_78e9ada5",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-13T23:49:02Z",
+      "side": 1,
+      "message": "missing defer",
+      "revId": "7c77842f6e8a5e5e9355613b112ef0fe8b2834b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
