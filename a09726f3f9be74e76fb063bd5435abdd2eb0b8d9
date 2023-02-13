@@ -16,6 +16,24 @@
       "message": "Isn\u0027t armv8-a-branchprot meant for targets that might not have PAC? So this CL would mean that armv8-a-branchprot will disable stack protection on \u003cARMv8.3 devices.",
       "revId": "a09726f3f9be74e76fb063bd5435abdd2eb0b8d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55aa0d3_3869bf62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2023-02-13T23:52:51Z",
+      "side": 1,
+      "message": "I assumed it is for targets that have PAC. Otherwise why include the unnecessary PAC instructions in the platform binaries?\n\nI guess it makes sense if someone builds a common BSP for a line of products.",
+      "parentUuid": "99380b26_03935ba0",
+      "revId": "a09726f3f9be74e76fb063bd5435abdd2eb0b8d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
