@@ -116,7 +116,7 @@ func runMixedModeBuild(ctx *android.Context, extraNinjaDeps []string) string {
 		return ctx.Config().BazelContext.InvokeBazel(ctx.Config(), ctx)
 	}
 	ctx.SetBeforePrepareBuildActionsHook(bazelHook)
-	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs.Args, bootstrap.DoEverything, ctx.Context, ctx.Config())
+	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs.Args, bootstrap.DoEverything, ctx.Context, ctx.Config(), true)
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
 
 	bazelPaths, err := readFileLines(ctx.Config().Getenv("BAZEL_DEPS_FILE"))
@@ -164,7 +164,7 @@ func runApiBp2build(ctx *android.Context, extraNinjaDeps []string) string {
 	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs.Args,
 		bootstrap.StopBeforePrepareBuildActions,
 		ctx.Context,
-		ctx.Config())
+		ctx.Config(), false)
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
 
 	// Add the globbed dependencies
@@ -286,7 +286,7 @@ func runSoongOnlyBuild(ctx *android.Context, extraNinjaDeps []string) string {
 		stopBefore = bootstrap.DoEverything
 	}
 
-	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs.Args, stopBefore, ctx.Context, ctx.Config())
+	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs.Args, stopBefore, ctx.Context, ctx.Config(), true)
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
 
 	globListFiles := writeBuildGlobsNinjaFile(ctx)
@@ -586,7 +586,7 @@ func runBp2Build(ctx *android.Context, extraNinjaDeps []string, metricsDir strin
 		ctx.EventHandler.Do("bootstrap", func() {
 			blueprintArgs := cmdlineArgs
 			bootstrapDeps := bootstrap.RunBlueprint(blueprintArgs.Args,
-				bootstrap.StopBeforePrepareBuildActions, ctx.Context, ctx.Config())
+				bootstrap.StopBeforePrepareBuildActions, ctx.Context, ctx.Config(), false)
 			ninjaDeps = append(ninjaDeps, bootstrapDeps...)
 		})
 
