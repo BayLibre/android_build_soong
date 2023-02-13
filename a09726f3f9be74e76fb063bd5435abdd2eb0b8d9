@@ -52,6 +52,24 @@
       "parentUuid": "a55aa0d3_3869bf62",
       "revId": "a09726f3f9be74e76fb063bd5435abdd2eb0b8d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d43bc7a7_617a6e24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-02-13T23:57:19Z",
+      "side": 1,
+      "message": "\u003e I guess it makes sense if someone builds a common BSP for a line of products.\n\nYes, that\u0027s the use case I was thinking of.\n\nAlso, IIRC the NDK is built with armv8-a-branchprot. Although many NDK users will not be using the stack protector, it looks like the libc++_static.a shipped with the NDK has references to __stack_chk_fail.",
+      "parentUuid": "a55aa0d3_3869bf62",
+      "revId": "a09726f3f9be74e76fb063bd5435abdd2eb0b8d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
