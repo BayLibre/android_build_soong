@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177866a4_b884e8be",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-13T22:46:12Z",
+      "side": 0,
+      "message": "Remove this broke musl builds by removing the install dependency from python binaries to the launcher shared libraries: https://android-build.googleplex.com/builds/submitted/9600042/unit_tests_x86_64_musl/latest/view/logs/build_error.log",
+      "revId": "8e0ae8e9607375b2ae64582c10a66d7b70a6d9b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
