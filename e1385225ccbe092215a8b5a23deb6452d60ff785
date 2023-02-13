@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddbfaa34_4e32f7d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-13T22:19:27Z",
+      "side": 1,
+      "message": "Running `build/bazel/ci/mixed_libc.sh` with `WITH_TIDY\u003d1` seems to be failing locally for me with a bunch of errors that look like e.g.\n```\n[ 68% 21125/31010] //system/libsysprop/srcs:libPlatformProperties sysprop android/sysprop/BluetoothProperties.sysprop\nFAILED: out/soong/.intermediates/system/libsysprop/srcs/libPlatformProperties/android_arm64_armv8-a_static_cfi/gen/sysprop/android/sysprop/BluetoothProperties.sysprop.cpp out/soong/.intermediates/system/libsysprop/srcs/libPlatformProperties/android_arm64_armv8-a_static_cfi/gen/sysprop/include/android/sysprop/BluetoothP\nroperties.sysprop.h out/soong/.intermediates/system/libsysprop/srcs/libPlatformProperties/android_arm64_armv8-a_static_cfi/gen/sysprop/public/include/android/sysprop/BluetoothProperties.sysprop.h\nout/host/linux-x86/bin/sysprop_cpp --header-dir\u003dout/soong/.intermediates/system/libsysprop/srcs/libPlatformProperties/android_arm64_armv8-a_static_cfi/gen/sysprop/include/android/sysprop --public-header-dir\u003dout/soong/.intermediates/system/libsysprop/srcs/libPlatformProperties/android_arm64_armv8-a_static_cfi/gen/syspro\np/public/include/android/sysprop --source-dir\u003dout/soong/.intermediates/system/libsysprop/srcs/libPlatformProperties/android_arm64_armv8-a_static_cfi/gen/sysprop/android/sysprop --include-name\u003dandroid/sysprop/BluetoothProperties.sysprop.h system/libsysprop/srcs/android/sysprop/BluetoothProperties.sysprop\n```\n\nGoing to investigate a bit more before submitting",
+      "revId": "e1385225ccbe092215a8b5a23deb6452d60ff785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
