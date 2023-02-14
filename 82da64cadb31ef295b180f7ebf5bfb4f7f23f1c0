@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b440fe_6359a5db",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-14T15:43:01Z",
+      "side": 1,
+      "message": "nit: go/go-style/decisions#getters\nprefer EventHandler() as the func name; here maybe because of the field of the same name it\u0027s not possible (assuming field couldn\u0027t be renamed to eventHandler because of visibility requirement for some way we are embedding the structs)?",
+      "revId": "82da64cadb31ef295b180f7ebf5bfb4f7f23f1c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68478584_1149e49d",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-14T15:43:01Z",
+      "side": 1,
+      "message": "nit: in some places we are using simply `return` and making use of the named return values, maybe consistency at least within the same func would be nicer.",
+      "revId": "82da64cadb31ef295b180f7ebf5bfb4f7f23f1c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
