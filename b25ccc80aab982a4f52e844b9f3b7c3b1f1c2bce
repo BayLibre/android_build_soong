@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7385cfaf_946c88f5",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1898990
+      },
+      "writtenOn": "2023-02-14T20:55:17Z",
+      "side": 1,
+      "message": "Please remove for now, this is partially a logic that has to exist on the assigner level not on the fuzzer writers.",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 176,
+        "endChar": 25
+      },
+      "revId": "b25ccc80aab982a4f52e844b9f3b7c3b1f1c2bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97322b2d_225a91e3",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1898990
+      },
+      "writtenOn": "2023-02-14T20:55:17Z",
+      "side": 1,
+      "message": "If we decided to stick to the assigner exact definitions lets do it: \noptional string name \u003d 1;\noptional VectorEnum vector \u003d 2;\noptional ServicePrivilegeEnum service \u003d 3;\noptional UserDataEnum users \u003d 4;\noptional FuzzedCodeUsage fuzzed_code_usage \u003d 5;\noptional string config_comment \u003d 6;\noptional AutomaticallyRouteTo route_to \u003d 7;",
+      "range": {
+        "startLine": 257,
+        "startChar": 11,
+        "endLine": 257,
+        "endChar": 19
+      },
+      "revId": "b25ccc80aab982a4f52e844b9f3b7c3b1f1c2bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
