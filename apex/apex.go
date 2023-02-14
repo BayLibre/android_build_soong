@@ -2984,7 +2984,42 @@ func (a *apexBundle) checkUpdatable(ctx android.ModuleContext) {
 		}
 		a.checkJavaStableSdkVersion(ctx)
 		a.checkClasspathFragments(ctx)
+		a.checkJavaSdkLibraryPermittedPackages(ctx)
 	}
+}
+
+// checkJavaSdkLibraryPermittedPackages enforces that java_sdk_library deps
+// set permitted_packages if the deps are part of the APEX.
+func (a *apexBundle) checkJavaSdkLibraryPermittedPackages(ctx android.ModuleContext) {
+	seen := make(map[string]bool)
+	ctx.VisitDirectDeps(func(module android.Module) {
+		// The check is for all java_library and android_app inside modules
+		if tag := ctx.OtherModuleDependencyTag(module); tag == javaLibTag || tag == androidAppTag {
+			ctx.WalkDeps(func(child android.Module, parent android.Module) bool {
+				parentType := ctx.OtherModuleType(parent)
+				if parentType == "apex_test" || parentType == "bootclasspath_fragment_test" {
+					return false
+				}
+
+				childName := ctx.OtherModuleName(child)
+				if seen[childName] {
+					return false
+				}
+				seen[childName] = true
+
+				if dep, ok := child.(*java.SdkLibrary); ok {
+					if dep.HasPermittedPackages() || !android.IsDepInSameApex(ctx, a, dep) {
+						return false
+					} else {
+						fmt.Println(childName, "*****", ctx.ModuleName(), "*****", ctx.ModuleType())
+						ctx.PropertyErrorf("permitted_packages", "java_sdk_library %v must set permitted_packages", childName)
+						return true
+					}
+				}
+				return true
+			})
+		}
+	})
 }
 
 // checkClasspathFragments enforces that all classpath fragments in deps generate classpaths.proto config.

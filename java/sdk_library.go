@@ -1995,6 +1995,10 @@ func (module *SdkLibrary) defaultsToStubs() bool {
 	return proptools.Bool(module.sdkLibraryProperties.Default_to_stubs)
 }
 
+func (module *SdkLibrary) HasPermittedPackages() bool {
+	return len(module.properties.Permitted_packages) > 0
+}
+
 // Defines how to name the individual component modules the sdk library creates.
 type sdkLibraryComponentNamingScheme interface {
 	stubsLibraryModuleName(scope *apiScope, baseName string) string
