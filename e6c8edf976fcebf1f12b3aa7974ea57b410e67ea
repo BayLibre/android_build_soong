@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa0fe01e_e6d29c3d",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-14T09:35:54Z",
+      "side": 1,
+      "message": "Any particular reason why you added a special property in Soong and didn\u0027t just pass the `--remove-missing-class-references-in-api-levels` through the existing `args` property?",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 48
+      },
+      "revId": "e6c8edf976fcebf1f12b3aa7974ea57b410e67ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
