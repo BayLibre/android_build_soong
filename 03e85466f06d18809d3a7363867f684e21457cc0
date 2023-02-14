@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc48cdbb_67894131",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-02-14T21:15:38Z",
+      "side": 1,
+      "message": "Thanks Zi!",
+      "revId": "03e85466f06d18809d3a7363867f684e21457cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194af519_6af3e57b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2108,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-02-14T21:15:38Z",
+      "side": 1,
+      "message": "let\u0027s use path.Join(module.getApiDir(), scope.apiFilePrefix + \"current.txt\")",
+      "range": {
+        "startLine": 2108,
+        "startChar": 20,
+        "endLine": 2108,
+        "endChar": 82
+      },
+      "revId": "03e85466f06d18809d3a7363867f684e21457cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
