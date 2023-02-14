@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f85603d_fd52b6eb",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-14T16:08:36Z",
+      "side": 1,
+      "message": "Yes, agreed that EventHandler() would be preferable but EventHandler is already a field, so we cannot create a method with the same name. I\u0027ll file a low priority cleanup to make the field private and rename GetEventHandler -\u003e EventHandler",
+      "parentUuid": "f3b440fe_6359a5db",
+      "revId": "82da64cadb31ef295b180f7ebf5bfb4f7f23f1c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab9af65a_3504977b",
@@ -65,6 +83,24 @@
       "writtenOn": "2023-02-14T15:43:01Z",
       "side": 1,
       "message": "nit: in some places we are using simply `return` and making use of the named return values, maybe consistency at least within the same func would be nicer.",
+      "revId": "82da64cadb31ef295b180f7ebf5bfb4f7f23f1c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19fbd29c_e9b7a2cc",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-14T16:08:36Z",
+      "side": 1,
+      "message": "this was to make use of eventhandler.do -- refactored to do begin/end, though it may be nice to go further and refactor many of these to separate functions.",
+      "parentUuid": "68478584_1149e49d",
       "revId": "82da64cadb31ef295b180f7ebf5bfb4f7f23f1c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
