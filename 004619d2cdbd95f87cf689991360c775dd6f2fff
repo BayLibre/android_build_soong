@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda8decf_47c24897",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-14T14:55:11Z",
+      "side": 1,
+      "message": "You will also need to add unit tests for this too.",
+      "revId": "004619d2cdbd95f87cf689991360c775dd6f2fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e92250_c919f700",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2998,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-14T14:55:11Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary and in fact it is probably dangerous as there are java libraries which are not direct dependencies of the apex, e.g. they are dependencies of a `bootclasspath_fragment`.\n\nIt is safer to just call `WalkPayloadDeps` instead.\n\nThe first thing you should do in the callback you pass to `WalkPayloadDeps` is something like this:\n```\nif !android.IsDepInSameApex(ctx, a, dep) {\n    return false\n}\n```",
+      "range": {
+        "startLine": 2995,
+        "startChar": 1,
+        "endLine": 2998,
+        "endChar": 72
+      },
+      "revId": "004619d2cdbd95f87cf689991360c775dd6f2fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a1270e_0094224b",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3009,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-14T14:55:11Z",
+      "side": 1,
+      "message": "I would not bother doing this. It might save some time but at the expense of correctness. Module names are not unique so you may accidentally ignore a module that you needed to check. Each module can have multiple variants and there is nothing stopping a module from depending on multiple variants of the same module. Also, Soong supports namespaces so it is possible for modules in different namespaces to have the same name.",
+      "range": {
+        "startLine": 3004,
+        "startChar": 4,
+        "endLine": 3009,
+        "endChar": 0
+      },
+      "revId": "004619d2cdbd95f87cf689991360c775dd6f2fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc6d237_3d5f9524",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3010,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-14T14:55:11Z",
+      "side": 1,
+      "message": "This only checks for `java_sdk_library` but we also need to check for `java_library` as well as `java_import` and `java_sdk_library_import`.\n\nI would recommend that you use the `java.PermittedPackagesForUpdatableBootJars` interface instead. That will provide you with a list of permitted packages.",
+      "range": {
+        "startLine": 3010,
+        "startChar": 25,
+        "endLine": 3010,
+        "endChar": 41
+      },
+      "revId": "004619d2cdbd95f87cf689991360c775dd6f2fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a3abdd_a96203ee",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3016,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-14T14:55:11Z",
+      "side": 1,
+      "message": "I think that this should return false as well.",
+      "range": {
+        "startLine": 3016,
+        "startChar": 6,
+        "endLine": 3016,
+        "endChar": 16
+      },
+      "revId": "004619d2cdbd95f87cf689991360c775dd6f2fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66f3358_8957d017",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-14T14:55:11Z",
+      "side": 1,
+      "message": "This is unnecessary assuming that you use `java.PermittedPackagesForUpdatableBootJars`.",
+      "range": {
+        "startLine": 1998,
+        "startChar": 26,
+        "endLine": 1998,
+        "endChar": 46
+      },
+      "revId": "004619d2cdbd95f87cf689991360c775dd6f2fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
