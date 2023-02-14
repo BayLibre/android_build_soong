@@ -1990,6 +1990,12 @@ func (module *SdkLibrary) InitSdkLibraryProperties() {
 	module.deviceProperties.IsSDKLibrary = true
 }
 
+var _ PermittedPackagesForUpdatableBootJars = (*SdkLibrary)(nil)
+
+func (module *SdkLibrary) PermittedPackagesForUpdatableBootJars() []string {
+	return module.properties.Permitted_packages
+}
+
 func (module *SdkLibrary) requiresRuntimeImplementationLibrary() bool {
 	return !proptools.Bool(module.sdkLibraryProperties.Api_only)
 }
