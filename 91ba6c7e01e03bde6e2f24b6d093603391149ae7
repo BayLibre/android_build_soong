@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0885561d_95ddfc5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-02-14T21:43:04Z",
+      "side": 1,
+      "message": "We need to merge this revert to get TF validation working again.",
+      "revId": "91ba6c7e01e03bde6e2f24b6d093603391149ae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
