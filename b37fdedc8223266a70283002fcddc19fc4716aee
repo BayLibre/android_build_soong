@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23786605_51f3688c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-14T23:19:33Z",
+      "side": 1,
+      "message": "I think this will force a Soong regeneration in checkbuilds, which we currently don\u0027t do, you can switch between `m droid` and `m checkbuild` without forcing a regeneration.\n\nThe current implementation of running the soong tests adds the test runner as a [validation dependency of the go package](https://cs.android.com/android/platform/superproject/+/master:build/blueprint/bootstrap/bootstrap.go;l\u003d473;drc\u003d1b457a5e10d62e2fd10afae82f7a3e8862237760) it is testing, which requires rewriting the ninja file to turn on and off.  I\u0027d suggest also making a soong-tests phony rule that depends on the test runners, and then make checkbuild depend on soong-tests.  Then the validation dependencies can be turned on and off by `--run-soong-tests`, requiring regenerations, but checkbuilds will always run the tests, but much later in the build where they won\u0027t block soong_build.",
+      "revId": "b37fdedc8223266a70283002fcddc19fc4716aee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
