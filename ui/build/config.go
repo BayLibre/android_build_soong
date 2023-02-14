@@ -82,7 +82,7 @@ type configImpl struct {
 	skipKatiNinja     bool
 	skipSoong         bool
 	skipNinja         bool
-	skipSoongTests    bool
+	runSoongTests     bool
 	searchApiDir      bool // Scan the Android.bp files generated in out/api_surfaces
 	skipMetricsUpload bool
 	buildStartedTime  int64 // For metrics-upload-only - manually specify a build-started time
@@ -775,7 +775,9 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 		} else if arg == "--skip-config" {
 			c.skipConfig = true
 		} else if arg == "--skip-soong-tests" {
-			c.skipSoongTests = true
+			// do nothing, this is now the default behavior
+		} else if arg == "--run-soong-tests" {
+			c.runSoongTests = true
 		} else if arg == "--skip-metrics-upload" {
 			c.skipMetricsUpload = true
 		} else if arg == "--mk-metrics" {
