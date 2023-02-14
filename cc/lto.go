@@ -61,6 +61,8 @@ type LTOProperties struct {
 
 	// Use -fwhole-program-vtables cflag.
 	Whole_program_vtables *bool
+
+	Visited *bool `blueprint:"mutated"`
 }
 
 type lto struct {
@@ -202,6 +204,9 @@ func ltoDepsMutator(mctx android.TopDownMutatorContext) {
 			}
 
 			if dep, ok := dep.(*Module); ok {
+				if dep.lto != nil && dep.lto.Properties.Visited != nil && *dep.lto.Properties.Visited {
+					return false
+				}
 				if full && !dep.lto.FullLTO() {
 					dep.lto.Properties.FullDep = true
 				}
@@ -210,6 +215,9 @@ func ltoDepsMutator(mctx android.TopDownMutatorContext) {
 				}
 				if globalThinLTO && never && !dep.lto.Never() {
 					dep.lto.Properties.NoLtoDep = true
+				}
+				if dep.lto != nil {
+					dep.lto.Properties.Visited = BoolPtr(true)
 				}
 			}
 
