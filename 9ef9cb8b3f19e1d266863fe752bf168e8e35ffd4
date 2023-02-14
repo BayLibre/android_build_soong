@@ -16,6 +16,24 @@
       "message": "Can you also validate that the build still works correctly if you depend on a no-stdlib crate from a non-nostdlib crate? I\u0027m worried about this problem:\n\nlibbar is nostdlib\nlibfoo depends on libbar\nlibfoo requires stdlib\n\na fuzzer for libfoo is built\n\nfuzz_libfoo dynamically depends on libstd, which statically links in profiler_bulitins\nfuzz_libfoo dynamically depends on libbar, which now statically links in profiler_builtins",
       "revId": "9ef9cb8b3f19e1d266863fe752bf168e8e35ffd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a814aa72_2700485b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2023-02-14T18:19:54Z",
+      "side": 1,
+      "message": "Our fuzzers are built with static linkage to libstd and with prefer_rlib by default, so we shouldn\u0027t run into this scenario for them.",
+      "parentUuid": "d6837c13_74f557b2",
+      "revId": "9ef9cb8b3f19e1d266863fe752bf168e8e35ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
