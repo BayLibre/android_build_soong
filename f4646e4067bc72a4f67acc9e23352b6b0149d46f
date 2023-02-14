@@ -16,6 +16,24 @@
       "message": "This seems like quite a big change in behavior. It will make it much easier for invalid Soong changes to be made that break existing behavior. What is the justification for this? It seems like there should be a bug to track the change.",
       "revId": "f4646e4067bc72a4f67acc9e23352b6b0149d46f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da3f959_d6d35e06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-14T20:09:22Z",
+      "side": 1,
+      "message": "Just added the bug. We\u0027re working on an effort to reduce Soong runtime across many different avenues, and we were thinking that this may be low hanging fruit because Soong unit test durations have been growing, and we think this is something that could be passed off to presubmits.\n\nMy thinking is that if we run the tests as presubmits, we should be protected in terms of invalid changes (also the tests will still always be run as part of `checkbuild` builds).",
+      "parentUuid": "db7a48c9_17a693bb",
+      "revId": "f4646e4067bc72a4f67acc9e23352b6b0149d46f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
