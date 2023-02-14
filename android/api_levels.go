@@ -386,20 +386,16 @@ func (a *apiLevelsSingleton) GenerateBuildActions(ctx SingletonContext) {
 	createApiLevelsJson(ctx, apiLevelsJson, apiLevelsMap)
 }
 
-func printApiLevelsStarlarkDict(config Config) string {
-	apiLevelsMap := GetApiLevelsMap(config)
-	valDict := make(map[string]string, len(apiLevelsMap))
-	for k, v := range apiLevelsMap {
-		valDict[k] = strconv.Itoa(v)
-	}
-	return starlark_fmt.PrintDict(valDict, 0)
-}
-
 func StarlarkApiLevelConfigs(config Config) string {
 	return fmt.Sprintf(bazel.GeneratedBazelFileWarning+`
 _api_levels = %s
 
 api_levels = _api_levels
-`, printApiLevelsStarlarkDict(config),
+
+_final_codenames = %s
+
+final_codenames = _final_codenames
+`, starlark_fmt.PrintStringIntDict(GetApiLevelsMap(config), 0),
+		starlark_fmt.PrintStringIntDict(getFinalCodenamesMap(config), 0),
 	)
 }
