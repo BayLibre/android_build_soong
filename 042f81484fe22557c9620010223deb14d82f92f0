@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfe3c332_62c0fbdc",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-14T19:16:45Z",
+      "side": 1,
+      "message": "These are the only two in the DCLA currently, correct? should we limit the list to those at this time?",
+      "range": {
+        "startLine": 1428,
+        "startChar": 1,
+        "endLine": 1429,
+        "endChar": 11
+      },
+      "revId": "042f81484fe22557c9620010223deb14d82f92f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd8bac65_d709e8c7",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-14T19:16:45Z",
+      "side": 1,
+      "message": "can you add a TODO with a bug for these?",
+      "range": {
+        "startLine": 1434,
+        "startChar": 25,
+        "endLine": 1434,
+        "endChar": 29
+      },
+      "revId": "042f81484fe22557c9620010223deb14d82f92f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
