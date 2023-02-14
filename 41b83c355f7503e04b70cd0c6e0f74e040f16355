@@ -46,6 +46,30 @@
       },
       "revId": "41b83c355f7503e04b70cd0c6e0f74e040f16355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba36539_36183382",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2108,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-02-14T18:02:19Z",
+      "side": 1,
+      "message": "Done. getGeneratedApiScopes is used. A test where java_sdk_library sets none of the properties is also added. Thanks Romain and Paul for the explanation.",
+      "parentUuid": "6cc6609f_cbed0c57",
+      "range": {
+        "startLine": 2108,
+        "startChar": 30,
+        "endLine": 2108,
+        "endChar": 59
+      },
+      "revId": "41b83c355f7503e04b70cd0c6e0f74e040f16355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
