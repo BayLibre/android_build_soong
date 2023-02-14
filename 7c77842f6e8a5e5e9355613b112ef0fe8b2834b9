@@ -33,6 +33,24 @@
       "message": "missing defer",
       "revId": "7c77842f6e8a5e5e9355613b112ef0fe8b2834b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e3c7168_15071926",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-14T13:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317a3b31_78e9ada5",
+      "revId": "7c77842f6e8a5e5e9355613b112ef0fe8b2834b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
