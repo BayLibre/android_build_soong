@@ -33,6 +33,24 @@
       "message": "please make sure there\u0027s some pre-submit check that covers soong tests",
       "revId": "68159c5981790f3c801024da58ef9cc75aede2f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc302859_66ef590a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-14T16:57:13Z",
+      "side": 1,
+      "message": "going to leave this open until the CI changes are ready to go",
+      "parentUuid": "3bb91d3f_e2c23b37",
+      "revId": "68159c5981790f3c801024da58ef9cc75aede2f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
