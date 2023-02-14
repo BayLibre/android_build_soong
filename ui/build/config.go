@@ -776,6 +776,8 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.skipConfig = true
 		} else if arg == "--skip-soong-tests" {
 			c.skipSoongTests = true
+		} else if arg == "--run-soong-tests" {
+			//TODO(b/269296618) implement this flag after CI is enabled
 		} else if arg == "--skip-metrics-upload" {
 			c.skipMetricsUpload = true
 		} else if arg == "--mk-metrics" {
