@@ -15,6 +15,7 @@
 package java
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
@@ -44,6 +45,7 @@ var (
 	bootImageConfigRawKey  = android.NewOnceKey("bootImageConfigRaw")
 	artBootImageName       = "art"
 	frameworkBootImageName = "boot"
+	mainlineBootImageName  = "mainline"
 )
 
 func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig {
@@ -52,6 +54,7 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 
 		artModules := global.ArtApexJars
 		frameworkModules := global.BootJars.RemoveList(artModules)
+		mainlineBcpModules := global.ApexBootJars
 
 		// ART config for the primary boot image in the ART apex.
 		// It includes the Core Libraries.
@@ -63,6 +66,7 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 			profileInstallPathInApex: "etc/boot-image.prof",
 			modules:                  artModules,
 			preloadedClassesFile:     "art/build/boot/preloaded-classes",
+			compilerFilter:           "speed-profile",
 		}
 
 		// Framework config for the boot image extension.
@@ -76,11 +80,23 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 			installDirOnDevice:   frameworkSubdir,
 			modules:              frameworkModules,
 			preloadedClassesFile: "frameworks/base/config/preloaded-classes",
+			compilerFilter:       "speed-profile",
+		}
+
+		mainlineCfg := bootImageConfig{
+			extends:            &artCfg,
+			name:               mainlineBootImageName,
+			stem:               "boot-mainline",
+			installDirOnHost:   "apex/mainline_boot_images/javalib",
+			installDirOnDevice: frameworkSubdir,
+			modules:            mainlineBcpModules,
+			compilerFilter:     "verify",
 		}
 
 		return map[string]*bootImageConfig{
 			artBootImageName:       &artCfg,
 			frameworkBootImageName: &frameworkCfg,
+			mainlineBootImageName:  &mainlineCfg,
 		}
 	}).(map[string]*bootImageConfig)
 }
@@ -92,10 +108,7 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 		deviceDir := android.PathForOutput(ctx, ctx.Config().DeviceName())
 
 		configs := genBootImageConfigRaw(ctx)
-		artCfg := configs[artBootImageName]
-		frameworkCfg := configs[frameworkBootImageName]
 
-		// common to all configs
 		for _, c := range configs {
 			c.dir = deviceDir.Join(ctx, "dex_"+c.name+"jars")
 			c.symbolsDir = deviceDir.Join(ctx, "dex_"+c.name+"jars_unstripped")
@@ -131,12 +144,18 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 			c.zip = c.dir.Join(ctx, c.name+".zip")
 		}
 
-		// specific to the framework config
-		frameworkCfg.dexPathsDeps = append(artCfg.dexPathsDeps, frameworkCfg.dexPathsDeps...)
-		for i := range targets {
-			frameworkCfg.variants[i].primaryImages = artCfg.variants[i].imagePathOnHost
-			frameworkCfg.variants[i].primaryImagesDeps = artCfg.variants[i].imagesDeps.Paths()
-			frameworkCfg.variants[i].dexLocationsDeps = append(artCfg.variants[i].dexLocations, frameworkCfg.variants[i].dexLocationsDeps...)
+		for _, c := range configs {
+			if c.extends != nil {
+				if c.extends.extends != nil {
+					panic(fmt.Sprintf("Boot image extension too complex: %s extends %s extends %s", c.name, c.extends.name, c.extends.extends.name))
+				}
+				c.dexPathsDeps = append(c.extends.dexPathsDeps, c.dexPathsDeps...)
+				for i := range targets {
+					c.variants[i].primaryImages = c.extends.variants[i].imagePathOnHost
+					c.variants[i].primaryImagesDeps = c.extends.variants[i].imagesDeps.Paths()
+					c.variants[i].dexLocationsDeps = append(c.extends.variants[i].dexLocations, c.variants[i].dexLocationsDeps...)
+				}
+			}
 		}
 
 		return configs
@@ -149,6 +168,10 @@ func artBootImageConfig(ctx android.PathContext) *bootImageConfig {
 
 func defaultBootImageConfig(ctx android.PathContext) *bootImageConfig {
 	return genBootImageConfigs(ctx)[frameworkBootImageName]
+}
+
+func mainlineBootImageConfig(ctx android.PathContext) *bootImageConfig {
+	return genBootImageConfigs(ctx)[mainlineBootImageName]
 }
 
 // Apex boot config allows to access build/install paths of apex boot jars without going

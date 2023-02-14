@@ -560,9 +560,6 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 			// Zip the boot image files up, if available. This will generate the zip file in a
 			// predefined location.
 			buildBootImageZipInPredefinedLocation(ctx, imageConfig, bootImageFiles.byArch)
-
-			// Copy the dex jars of this fragment's content modules to their predefined locations.
-			copyBootJarsToPredefinedLocations(ctx, hiddenAPIOutput.EncodedBootDexFilesByModule, imageConfig.dexPathsByModule)
 		}
 
 		for _, variant := range bootImageFiles.variants {
@@ -583,6 +580,22 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 				})
 			}
 		}
+	}
+
+	// Copy the dex jars of this fragment's content modules to their predefined locations. This should
+	// be done even if the fragment is not the one that produces the boot image.
+	contributedImageConfig := imageConfig
+	if isForBcpApex(ctx) {
+		contributedImageConfig = mainlineBootImageConfig(ctx)
+	}
+	if contributedImageConfig != nil && shouldCopyBootFilesToPredefinedLocations(ctx, contributedImageConfig) {
+		dexPathsByModule := make(map[string]android.WritablePath)
+		for module, dexPath := range contributedImageConfig.dexPathsByModule {
+			if _, ok := hiddenAPIOutput.EncodedBootDexFilesByModule[module]; ok {
+				dexPathsByModule[module] = dexPath
+			}
+		}
+		copyBootJarsToPredefinedLocations(ctx, hiddenAPIOutput.EncodedBootDexFilesByModule, dexPathsByModule)
 	}
 
 	// A prebuilt fragment cannot contribute to an apex.
@@ -696,9 +709,48 @@ func (b *BootclasspathFragmentModule) configuredJars(ctx android.ModuleContext) 
 	return jars
 }
 
-func (b *BootclasspathFragmentModule) getImageConfig(ctx android.EarlyModuleContext) *bootImageConfig {
+// Returns true if this BCP fragment is in the given APEX.
+func inApex(ctx android.BaseModuleContext, apex string) bool {
+	if !isActiveModule(ctx.Module()) {
+		return false
+	}
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	return apexInfo.InApexVariant(apex)
+}
+
+// Returns true if this BCP fragment is for the first updatable APEX other than ART that contributes
+// to the BCP.
+func isForFirstBcpApex(ctx android.BaseModuleContext) bool {
+	global := dexpreopt.GetGlobalConfig(ctx)
+	if global.ApexBootJars.Len() == 0 {
+		return false
+	}
+	firstBcpApex := global.ApexBootJars.Apex(0)
+	return inApex(ctx, firstBcpApex)
+}
+
+// Returns true if this BCP fragment is for the any updatable APEX other than ART that contributes
+// to the BCP.
+func isForBcpApex(ctx android.BaseModuleContext) bool {
+	global := dexpreopt.GetGlobalConfig(ctx)
+	for i := 0; i < global.ApexBootJars.Len(); i++ {
+		apex := global.ApexBootJars.Apex(i)
+		if inApex(ctx, apex) {
+			return true
+		}
+	}
+	return false
+}
+
+func (b *BootclasspathFragmentModule) getImageConfig(ctx android.BaseModuleContext) *bootImageConfig {
 	// Get a map of the image configs that are supported.
 	imageConfigs := genBootImageConfigs(ctx)
+
+	// The mainline boot image is generated from multiple BCP fragments. To generate it only once, we
+	// only associate it with the BCP fragment for the first BCP APEX.
+	if isForFirstBcpApex(ctx) {
+		return mainlineBootImageConfig(ctx)
+	}
 
 	// Retrieve the config for this image.
 	imageNamePtr := b.properties.Image_name
@@ -1291,7 +1343,7 @@ func (module *PrebuiltBootclasspathFragmentModule) produceBootImageFiles(ctx and
 		}
 		return bootImageFiles
 	} else {
-		if profile == nil {
+		if profile == nil && imageConfig.isProfileGuided() {
 			ctx.ModuleErrorf("Unable to produce boot image files: neither boot image files nor profiles exists in the prebuilt apex")
 			return bootImageOutputs{}
 		}
