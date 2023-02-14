@@ -302,6 +302,9 @@ func (r *robolectricTest) AndroidMkEntries() []android.AndroidMkEntries {
 		func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
 			entries.AddStrings("LOCAL_COMPATIBILITY_SUITE", "robolectric-tests")
+			if r.testConfig != nil {
+				entries.SetString("LOCAL_FULL_TEST_CONFIG", r.testConfig.String())
+			}
 		})
 
 	entries.ExtraFooters = []android.AndroidMkExtraFootersFunc{
