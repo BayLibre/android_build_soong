@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2bc5df_25cb6691",
+        "filename": "android/mutator_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-14T00:25:14Z",
+      "side": 1,
+      "message": "Ah, I was thinking of bp2build unit tests to convert actual aidl_interface modules to bazel tags, and not just this function. Sorry for the confusion - feel free to follow up in another CL.",
+      "range": {
+        "startLine": 272,
+        "startChar": 5,
+        "endLine": 272,
+        "endChar": 35
+      },
+      "revId": "fb11c1ce81f52ab67ccccacb4ce314ae29bbeeb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
