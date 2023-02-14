@@ -163,7 +163,7 @@ type PrimaryBuilderFactory struct {
 func (pb PrimaryBuilderFactory) primaryBuilderInvocation() bootstrap.PrimaryBuilderInvocation {
 	commonArgs := make([]string, 0, 0)
 
-	if !pb.config.skipSoongTests {
+	if pb.config.RunSoongTests() {
 		commonArgs = append(commonArgs, "-t")
 	}
 
@@ -404,7 +404,7 @@ func bootstrapBlueprint(ctx Context, config Config) {
 		soongOutDir: config.SoongOutDir(),
 		toolDir:     config.HostToolDir(),
 		outDir:      config.OutDir(),
-		runGoTests:  !config.skipSoongTests,
+		runGoTests:  config.RunSoongTests(),
 		// If we want to debug soong_build, we need to compile it for debugging
 		debugCompilation:          delvePort != "",
 		subninjas:                 bootstrapGlobFileList(config),
