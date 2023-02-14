@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7a48c9_17a693bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-14T19:23:45Z",
+      "side": 1,
+      "message": "This seems like quite a big change in behavior. It will make it much easier for invalid Soong changes to be made that break existing behavior. What is the justification for this? It seems like there should be a bug to track the change.",
+      "revId": "f4646e4067bc72a4f67acc9e23352b6b0149d46f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
