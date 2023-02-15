@@ -16,6 +16,46 @@
       "message": "The presubmit errors are conflicts with ag/20224639.  If you cherry-pick that to AOSP and rebase your CL on top of it it should resolve the problems.",
       "revId": "747c60ff1bbda005ee6cb313a5ade23e539d46c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5080a251_971c3819",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-15T19:07:48Z",
+      "side": 1,
+      "message": "Idiomatic go is:\n```\nvector :\u003d Vector(config.Vector)\n```\nor\n```\nif vector :\u003d Vector(config.Vector); vector !\u003d \"\" {\n```",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "747c60ff1bbda005ee6cb313a5ade23e539d46c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1cd9eb6_ed40e334",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-15T19:07:48Z",
+      "side": 1,
+      "message": "This return means that the rest of the fields will never be checked if vector is not empty.  Is that intentional?",
+      "revId": "747c60ff1bbda005ee6cb313a5ade23e539d46c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
