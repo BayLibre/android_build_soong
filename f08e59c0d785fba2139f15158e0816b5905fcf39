@@ -118,6 +118,30 @@
       },
       "revId": "f08e59c0d785fba2139f15158e0816b5905fcf39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78166d35_9b004d78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-02-15T08:03:31Z",
+      "side": 1,
+      "message": "thanks for the explanation!\n\nI think it\u0027s okay, jiyong@, do you have remaining concerns?",
+      "parentUuid": "377cdf45_b6c29fca",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "f08e59c0d785fba2139f15158e0816b5905fcf39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
