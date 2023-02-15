@@ -242,9 +242,11 @@ var (
 	_ = pctx.SourcePathVariable("sAbiDumper", "prebuilts/clang-tools/${config.HostPrebuiltTag}/bin/header-abi-dumper")
 
 	// -w has been added since header-abi-dumper does not need to produce any sort of diagnostic information.
+	// FIXME: Remove -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang once
+	// header-abi-dumper is rebuilt with the latest LLVM toolchain.
 	sAbiDump, sAbiDumpRE = pctx.RemoteStaticRules("sAbiDump",
 		blueprint.RuleParams{
-			Command:     "rm -f $out && $reTemplate$sAbiDumper --root-dir . --root-dir $$OUT_DIR:out -o ${out} $in $exportDirs -- $cFlags -w -isystem prebuilts/clang-tools/${config.HostPrebuiltTag}/clang-headers",
+			Command:     "rm -f $out && $reTemplate$sAbiDumper --root-dir . --root-dir $$OUT_DIR:out -o ${out} $in $exportDirs -- $cFlags -w -isystem prebuilts/clang-tools/${config.HostPrebuiltTag}/clang-headers -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang",
 			CommandDeps: []string{"$sAbiDumper"},
 		}, &remoteexec.REParams{
 			Labels:       map[string]string{"type": "abi-dump", "tool": "header-abi-dumper"},
