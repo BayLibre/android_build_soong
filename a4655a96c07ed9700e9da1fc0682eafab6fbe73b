@@ -16,6 +16,24 @@
       "message": "nit: might as well use an array instead of a slice.",
       "revId": "a4655a96c07ed9700e9da1fc0682eafab6fbe73b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f209df_03971b36",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-15T18:50:06Z",
+      "side": 1,
+      "message": "array size needs to be a compile-time known constant",
+      "parentUuid": "db43a597_c4bef0b7",
+      "revId": "a4655a96c07ed9700e9da1fc0682eafab6fbe73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
