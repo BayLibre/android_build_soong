@@ -34,6 +34,24 @@
       "parentUuid": "db7a48c9_17a693bb",
       "revId": "f4646e4067bc72a4f67acc9e23352b6b0149d46f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ec9334_520bdd2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-15T16:55:30Z",
+      "side": 1,
+      "message": "It would be nice if there was a way to opt in to the tests being run automatically, e.g. with an environment variable we could set in our `.bashrc`.",
+      "parentUuid": "0da3f959_d6d35e06",
+      "revId": "f4646e4067bc72a4f67acc9e23352b6b0149d46f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
