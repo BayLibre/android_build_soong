@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f4505c8_d63cde36",
+        "filename": "android/androidmk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-15T09:31:53Z",
+      "side": 1,
+      "message": "Can you add a soong unit test for this?",
+      "range": {
+        "startLine": 550,
+        "startChar": 1,
+        "endLine": 550,
+        "endChar": 62
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc89ae25_5e29ecda",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-15T09:31:53Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef510b02_03e48974",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-15T09:31:53Z",
+      "side": 1,
+      "message": "Why not do everything in the tmp_dir so you don\u0027t need to manage state or accidentally pollute product_out with test files?\n\nApplies to both file_list_file and files_in_spdx_file.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58613b26_902d5434",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-15T09:31:53Z",
+      "side": 1,
+      "message": "Can you include a comment with examples of the string under manipulation for each of these lines? It\u0027s not clear what the format of the entries list is.",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f7a2c2_5987f1ed",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-15T09:31:53Z",
+      "side": 1,
+      "message": "why is system special here?",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda492eb_8f9964c3",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-15T09:31:53Z",
+      "side": 1,
+      "message": "nit: break into multiple lines.",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 144
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
