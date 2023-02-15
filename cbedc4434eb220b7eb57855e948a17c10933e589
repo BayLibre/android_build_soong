@@ -16,6 +16,24 @@
       "message": "nit: move it to the top (it\u0027s already been used as well)",
       "revId": "cbedc4434eb220b7eb57855e948a17c10933e589",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b737734a_dbe1582c",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-15T16:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b6d29ac_ff7e39dc",
+      "revId": "cbedc4434eb220b7eb57855e948a17c10933e589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
