@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f1d3d9_ff7b5b67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-15T22:48:24Z",
+      "side": 1,
+      "message": "Yeah, I mixed them up. I thought you were talking about the same thing. Now I have addressed the other issue.\n\nBTW, thanks for the detailed suggestions!",
+      "parentUuid": "0b5e2ce2_b55d1eab",
+      "revId": "ef15840593b2ab4201dea96b12e2a8b29da954d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dcd717f_e5ca20d4",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-02-14T11:22:38Z",
       "side": 1,
       "message": "The `ImportDexpreoptProperties` is the input to the `java_import` and `java_sdk_library_import`. Using it as the output for the sdk snapshot may seem like a good idea but it will cause problems in future. e.g. At the moment the whole structure is marked as being used from U+ but if an additional property is added to the structure in future release, e.g. V, then it will be necessary to annotate that property with something like `supported_build_releases:\"VeryNiceCake+\"` which will most likely cause problems with blueprint\u0027s handling of properties structures.\n\nI recommend that you simply add something like this here and in `sdk_library.go` instead:\n```\nDexPreoptProfileGuided *bool `supported_build_releases:\"UpsideDownCake+\"`\n```\n\nIf you want to share code between them then you can still use a structure but it would need to be different to `ImportDexpreoptProperties`.",
+      "range": {
+        "startLine": 799,
+        "startChar": 1,
+        "endLine": 799,
+        "endChar": 26
+      },
+      "revId": "ef15840593b2ab4201dea96b12e2a8b29da954d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be66086_7717d265",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-15T22:48:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dcd717f_e5ca20d4",
       "range": {
         "startLine": 799,
         "startChar": 1,
@@ -75,6 +117,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0193c41b_ea03a690",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-15T22:48:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f40ddc3_c6625ac5",
+      "revId": "ef15840593b2ab4201dea96b12e2a8b29da954d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cca929b_da48fd42",
@@ -88,6 +148,30 @@
       "writtenOn": "2023-02-14T11:22:38Z",
       "side": 1,
       "message": "This should be something like this:\n```\nif p.DexPreoptProfileGuided !\u003d nil {\n    dexPreoptSet :\u003d propertySet.AddPropertySet(\"dex_preopt\")\n    dexPreoptSet.AddProperty(\"profile_guided\", proptools.Bool(p.DexPreoptProfileGuided)\n}\n```\nYou could also move the initialization of `dexPreoptSet` outside the `if` as empty property sets are automatically discarded. That would make it easier to add other properties within `dex_preopt` in future. e.g. something like this:\n```\ndexPreoptSet :\u003d propertySet.AddPropertySet(\"dex_preopt\")\nif p.DexPreoptProfileGuided !\u003d nil {\n    dexPreoptSet.AddProperty(\"profile_guided\", proptools.Bool(p.DexPreoptProfileGuided)\n}\nif p.DexPreoptFuture !\u003d nil {\n    dexPreoptSet.AddProperty(\"future\", proptools.String(p.DexPreoptFuture)\n}\n```",
+      "range": {
+        "startLine": 848,
+        "startChar": 1,
+        "endLine": 850,
+        "endChar": 2
+      },
+      "revId": "ef15840593b2ab4201dea96b12e2a8b29da954d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f3f445_c24ebaf3",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-15T22:48:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cca929b_da48fd42",
       "range": {
         "startLine": 848,
         "startChar": 1,
@@ -115,6 +199,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8974c1d_e3d44dfe",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2998,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-15T22:48:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b197161_ea2042a3",
+      "revId": "ef15840593b2ab4201dea96b12e2a8b29da954d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "653b4a7b_f6b45bde",
@@ -132,6 +234,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b89fa9cc_f41737dd",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3054,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-15T22:48:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "653b4a7b_f6b45bde",
+      "revId": "ef15840593b2ab4201dea96b12e2a8b29da954d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea6aa9fa_3ca8da7f",
@@ -145,6 +265,24 @@
       "writtenOn": "2023-02-14T11:22:38Z",
       "side": 1,
       "message": "As above.",
+      "revId": "ef15840593b2ab4201dea96b12e2a8b29da954d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94830963_373230c9",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3073,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-15T22:48:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea6aa9fa_3ca8da7f",
       "revId": "ef15840593b2ab4201dea96b12e2a8b29da954d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
