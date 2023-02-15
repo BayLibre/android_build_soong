@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db43a597_c4bef0b7",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-15T18:36:02Z",
+      "side": 1,
+      "message": "nit: might as well use an array instead of a slice.",
+      "revId": "a4655a96c07ed9700e9da1fc0682eafab6fbe73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
