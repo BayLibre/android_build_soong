@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0a875e_e4fe3f6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-15T19:05:11Z",
+      "side": 1,
+      "message": "The presubmit errors are conflicts with ag/20224639.  If you cherry-pick that to AOSP and rebase your CL on top of it it should resolve the problems.",
+      "revId": "747c60ff1bbda005ee6cb313a5ade23e539d46c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
