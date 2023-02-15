@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b6d29ac_ff7e39dc",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-15T15:40:10Z",
+      "side": 1,
+      "message": "nit: move it to the top (it\u0027s already been used as well)",
+      "revId": "cbedc4434eb220b7eb57855e948a17c10933e589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
