@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fed7b1a_49b97cb3",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-15T23:30:43Z",
+      "side": 1,
+      "message": "You can simplify this by adding \"\" to the valid cases:\n```\nswitch vector :\u003d Vector(config.Vector); vector {\n    case \"\", unknown_access_vector, ...:\n```",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 18
+      },
+      "revId": "3f7c13cef1393b86af3bfeb8a53fdb05cbf07750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b51792_964ad3ed",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-15T23:30:43Z",
+      "side": 1,
+      "message": "What\u0027s the logic you\u0027re trying to implement here?  Maybe a godoc on IsValidConfig would help.  This currently seems to be requiring at least one of Vector, Service_privilege, Users, Fuzzed_code_usage or Automatically_route_to is non-empty.  The old version would only return false if config was nil, but not if it was empty.",
+      "revId": "3f7c13cef1393b86af3bfeb8a53fdb05cbf07750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
