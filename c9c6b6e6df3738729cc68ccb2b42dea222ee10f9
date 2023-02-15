@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c173c2b4_09affef6",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1196,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-15T15:51:01Z",
+      "side": 1,
+      "message": "Previously aquery.go would have filtered this out, but to support being able to write to the slice concurrently, nils are now part of the slice",
+      "parentUuid": "dd54d0be_fe7c42b6",
+      "revId": "c9c6b6e6df3738729cc68ccb2b42dea222ee10f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e233bf03_7862b003",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-02-15T15:47:02Z",
       "side": 1,
       "message": "nit: maybe check if err is already set and short-circuit as well?",
+      "revId": "c9c6b6e6df3738729cc68ccb2b42dea222ee10f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca5b61a_72be553e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-15T15:51:01Z",
+      "side": 1,
+      "message": "Do you mean to short-circuit by not running actionToBuildStatement if `err !\u003d nil`?",
+      "parentUuid": "e233bf03_7862b003",
       "revId": "c9c6b6e6df3738729cc68ccb2b42dea222ee10f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
