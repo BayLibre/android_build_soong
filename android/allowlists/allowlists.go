@@ -314,7 +314,7 @@ var (
 		"system/core/property_service/libpropertyinfoparser":     Bp2BuildDefaultTrueRecursively,
 		"system/core/property_service/libpropertyinfoserializer": Bp2BuildDefaultTrueRecursively,
 		"system/extras/toolchain-extras":                         Bp2BuildDefaultTrue,
-		"system/hardware/interfaces/media":                       Bp2BuildDefaultTrueRecursively,
+		"system/hardware/interfaces/media":                       Bp2BuildDefaultTrue,
 		"system/incremental_delivery/incfs":                      Bp2BuildDefaultTrue,
 		"system/libartpalette":                                   Bp2BuildDefaultTrueRecursively,
 		"system/libbase":                                         Bp2BuildDefaultTrueRecursively,
@@ -353,6 +353,8 @@ var (
 		"tools/metalava": Bp2BuildDefaultTrue,
 		"tools/platform-compat/java/android/compat":  Bp2BuildDefaultTrueRecursively,
 		"tools/tradefederation/prebuilts/filegroups": Bp2BuildDefaultTrueRecursively,
+
+		"system/hardware/interfaces/media/_virtual_imports/android.media.audio.common.types-V2/android/media/audio/common": Bp2BuildDefaultFalse,
 	}
 
 	Bp2buildKeepExistingBuildFile = map[string]bool{
@@ -1337,6 +1339,8 @@ var (
 
 		// TODO(b/266459895): depends on libunwindstack
 		"libutils_test",
+
+		"android.media.audio.common.types",
 	}
 
 	MixedBuildsDisabledList = []string{
@@ -1405,6 +1409,8 @@ var (
 		"libcodec2_hidl@1.2",
 		"libutils_test",
 		"libutilscallstack",
+
+		"android.media.audio.common.types",
 	}
 
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
