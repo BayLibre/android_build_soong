@@ -33,6 +33,24 @@
       "message": "build error seems to be some code in SdkSandbox (the APK) getting a lint warning for calling something in framework-sdksandbox.\n\nI think the framework-sdksandbox APIs are not meant to be in the module_lib api database that SdkSandbox should be getting?",
       "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded57fdf_8f35e790",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-02-16T23:21:26Z",
+      "side": 1,
+      "message": "I fixed that error with aosp/2439212.\n\nThere\u0027s one more issue in SdkSandbox, which is a legitimate problem. You can see in this cl I tried to downgrade NewApi checks to warnings to avoid needing to solve tons of new legitimate problems, but SdkSandbox explicitly promotes NewApi to an error in their Android.bp file, so I just sent out a fix for their issue at ag/21469932.",
+      "parentUuid": "94fcca76_05a992d5",
+      "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
