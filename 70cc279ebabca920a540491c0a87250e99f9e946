@@ -260,6 +260,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3702cec_5beacbbb",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9886,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-16T14:19:09Z",
+      "side": 1,
+      "message": "Creating a tracking bug for this b/269593502",
+      "parentUuid": "f8a919a0_7f7993af",
+      "range": {
+        "startLine": 9886,
+        "startChar": 2,
+        "endLine": 9886,
+        "endChar": 13
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2e3fb76_07ef0527",
@@ -557,6 +581,30 @@
       "side": 1,
       "message": "Thanks Jeongik for clarification. As Jeongik mentioned, this part of code is not related to the PostDepsMutator, so it is safe to use the function, and AFAIK depsToPaths already queries more APEX information to choose between impl and stub.",
       "parentUuid": "d9f99d21_e02cab31",
+      "range": {
+        "startLine": 2893,
+        "startChar": 1,
+        "endLine": 2893,
+        "endChar": 93
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b49010a_cc861d87",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-16T14:19:09Z",
+      "side": 1,
+      "message": "You are correct. Thanks Jeongik.",
+      "parentUuid": "e6616caf_086ee0b8",
       "range": {
         "startLine": 2893,
         "startChar": 1,

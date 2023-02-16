@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "758c529c_2c79b7ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-16T14:19:09Z",
+      "side": 1,
+      "message": "I left some nits and some followup bugs, but overall LGTM. Thanks Kiyoung.",
+      "revId": "15278a408bbd34bc6d4a626d63afe6793c3d1413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd755f8d_ef0249d0",
