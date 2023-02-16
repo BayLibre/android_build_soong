@@ -113,3 +113,10 @@ bootstrap_go_package {
     ],
     pluginFor: ["soong_build"],
 }
+
+
+genrule {
+	name: "mytest",
+	cmd: "printenv > mytest && cp mytest $(out)",
+	out: ["mytest"],
+}
