@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b21f310e_6f3b6caa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2023-02-16T16:35:44Z",
+      "side": 1,
+      "message": "Corrected accidental \"en/disable\" flip",
+      "revId": "a1253e74fe279da8eacd7a26d1e206963a7272c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

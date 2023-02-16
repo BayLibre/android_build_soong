@@ -16,6 +16,24 @@
       "message": "Isn\u0027t there a test for this case?",
       "revId": "23da27c32114f76d3b41fbf8e58825996cd981b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e982fc1d_40ee0bc6",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2023-02-16T16:35:44Z",
+      "side": 0,
+      "message": "Yes, TestCCLibraryNoLibCrtArchVariant. The comment is not longer relevant.",
+      "parentUuid": "80191794_a0898ab8",
+      "revId": "23da27c32114f76d3b41fbf8e58825996cd981b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
