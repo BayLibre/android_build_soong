@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5abd389_8f0321e0",
+        "filename": "android/api_levels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-02-16T19:56:28Z",
+      "side": 1,
+      "message": "Let\u0027s file a bug and have a TODO here to express that this soong_injection can have a different output based on product variables, and that we\u0027ll have to make sure to properly handle/correct this as part of \"inverting\" the dependency (i.e. when we move off of Soong injection and .bzl files become the source of truth).",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 0
+      },
+      "revId": "9161d9c1f62803916ae21b6aebb533702ab9c7a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
