@@ -22,6 +22,30 @@
       },
       "revId": "9161d9c1f62803916ae21b6aebb533702ab9c7a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded8df9e_f1ab6fcc",
+        "filename": "android/api_levels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-02-16T21:05:52Z",
+      "side": 1,
+      "message": "I\u0027d already started on a patch trying to refactor the soong injection stuff to avoid using the output based on product variables. I\u0027ll clean it up and upload soon. However, I think soong injection is still relying on output base product variable stuff for api_levels.json https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/conversion.go;l\u003d57-61;drc\u003d9e384e2e6b264cba676727a23c9b2421b1bb0e4a\nI can add that to the bug",
+      "parentUuid": "a5abd389_8f0321e0",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 0
+      },
+      "revId": "9161d9c1f62803916ae21b6aebb533702ab9c7a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
