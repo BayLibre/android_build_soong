@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dfb6ff6_0999a84d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-02-16T07:54:10Z",
+      "side": 1,
+      "message": "(Adding team list and some folks who\u0027re working on cleaning up warnings.  I agree that we don\u0027t need to retain bug links on warnings that we are not going to follow-up.)",
+      "revId": "d80f6eebc982d95460fe846075be7d170d11ae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
