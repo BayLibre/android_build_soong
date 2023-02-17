@@ -86,6 +86,24 @@
       "parentUuid": "580264d2_4eecfffd",
       "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c401754_ce14e223",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-02-17T11:03:52Z",
+      "side": 1,
+      "message": "Because we added the strict_updatability_checks flag or whatever it\u0027s called -- yeah -- we\u0027d have to flip it to false for affected modules.",
+      "parentUuid": "63c7c945_9627bcc6",
+      "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
