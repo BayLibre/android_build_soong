@@ -239,6 +239,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7c6b73f_cebae648",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9809,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-17T07:46:21Z",
+      "side": 1,
+      "message": "IIUC, currently this test checks that an apex library links against stubs of a platform library.\n\nAnother test case would be for checking that a platform library links against stubs of an apex library (the other direction). Roughly equivalent example https://cs.android.com/android/_/android/platform/build/soong/+/af8b9503575549d046470fde9b9e985278a17b87:apex/apex_test.go;l\u003d1932;drc\u003d871109e91d8ca892af72b061829f15f493813d63;bpv\u003d1;bpt\u003d0",
+      "parentUuid": "e598f8f9_65f33b70",
+      "range": {
+        "startLine": 9809,
+        "startChar": 5,
+        "endLine": 9809,
+        "endChar": 49
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aee1c499_934062b4",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
@@ -1031,6 +1055,30 @@
       "side": 1,
       "message": "One of the example target is \u0027out/soong/.intermediates/frameworks/base/core/tests/fuzzers/ParcelFuzzer/java_binder_parcel_fuzzer/android_common/lib64/liblog.so\u0027 which both prebuilt and cc_api_library creates with this name.",
       "parentUuid": "412e1314_35cb0699",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 37
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d20b8027_5d8d86cf",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-17T07:46:21Z",
+      "side": 1,
+      "message": "I still do not follow :(. `java_binder_parcel_fuzzer` does not contribute to any API surface, so I am not sure how/where the dups are getting created",
+      "parentUuid": "c47bd986_d89b398d",
       "range": {
         "startLine": 283,
         "startChar": 1,
