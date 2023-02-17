@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ca53018_d76c709b",
+        "filename": "android/androidmk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-02-17T00:46:11Z",
+      "side": 1,
+      "message": "Added tests in some soong module types.",
+      "parentUuid": "4f4505c8_d63cde36",
+      "range": {
+        "startLine": 550,
+        "startChar": 1,
+        "endLine": 550,
+        "endChar": 62
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc89ae25_5e29ecda",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-15T09:31:53Z",
       "side": 1,
       "message": "Is this needed?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e6e29e9_8da9fd08",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-02-17T00:46:11Z",
+      "side": 1,
+      "message": "Yes, added a debug option to control that.",
+      "parentUuid": "bc89ae25_5e29ecda",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b19a827_5924d9c8",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-02-17T00:46:11Z",
+      "side": 1,
+      "message": "The OUT_DIR is actually a temp directory, which was not reflected in this initial version. Now I have added debug option to control where the OUT_DIR is.",
+      "parentUuid": "ef510b02_03e48974",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58613b26_902d5434",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-02-15T09:31:53Z",
       "side": 1,
       "message": "Can you include a comment with examples of the string under manipulation for each of these lines? It\u0027s not clear what the format of the entries list is.",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa15ca9_440ecced",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-02-17T00:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58613b26_902d5434",
       "range": {
         "startLine": 51,
         "startChar": 6,
@@ -134,6 +230,54 @@
         "startChar": 10,
         "endLine": 61,
         "endChar": 144
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f69bdb2_268f65bf",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-02-17T00:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bda492eb_8f9964c3",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 144
+      },
+      "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ebdcb1_41e1285e",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-02-17T00:46:11Z",
+      "side": 1,
+      "message": "system partition is mount to / so adding extra partition name is not needed.",
+      "parentUuid": "a7f7a2c2_5987f1ed",
+      "range": {
+        "startLine": 61,
+        "startChar": 16,
+        "endLine": 61,
+        "endChar": 45
       },
       "revId": "851b771252eda4e288ffe3df2c0f47c929af72b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
