@@ -104,6 +104,24 @@
       "parentUuid": "63c7c945_9627bcc6",
       "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29b99c84_e70ca876",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-02-17T18:35:46Z",
+      "side": 1,
+      "message": "There are many people asking for this change to be fixed.\n\nnykkumar@ says he has a CL that will require adding 100+ `@SuppressWarnings` to the code: ag/21469932.\n\ngargmayank@ has been asking for the feature for his AAOS updatability project for the last 2 weeks.\n\nmattgilbride@ is working on lint checks for android security features, like requiring that permissions are properly enforced, and needs to update android lint, but can\u0027t because it introduces new NewApi false positives.\n\nThere were 7 other instances of people adding `@SuppressWarnings` to get around false positives in b/193460475. The longer this cl goes unfixed, the more `@SuppressWarnings` we\u0027ll have to remove later. (Or forget to remove them, and forever have faulty NewApi checks in those parts)\n\nSo I don\u0027t think we can wait for an LSC. I will start working on it afterwards though, and in the meantime, I can make the AyeAye checker treat NewApi warnings as errors that block cl submission, does that sound good?",
+      "parentUuid": "9c401754_ce14e223",
+      "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
