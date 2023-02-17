@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2085fe99_4050c934",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-17T00:00:47Z",
+      "side": 1,
+      "message": "Used the suggestion.",
+      "parentUuid": "5fed7b1a_49b97cb3",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 18
+      },
+      "revId": "3f7c13cef1393b86af3bfeb8a53fdb05cbf07750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3b51792_964ad3ed",
         "filename": "fuzz/fuzz_common.go",
         "patchSetId": 12
@@ -37,6 +61,24 @@
       "writtenOn": "2023-02-15T23:30:43Z",
       "side": 1,
       "message": "What\u0027s the logic you\u0027re trying to implement here?  Maybe a godoc on IsValidConfig would help.  This currently seems to be requiring at least one of Vector, Service_privilege, Users, Fuzzed_code_usage or Automatically_route_to is non-empty.  The old version would only return false if config was nil, but not if it was empty.",
+      "revId": "3f7c13cef1393b86af3bfeb8a53fdb05cbf07750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eee8206_89586488",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-17T00:00:47Z",
+      "side": 1,
+      "message": "I missed this case and thanks for catching this issue. The idea is that all these fields are optional but if there is a value in them it has to be from the list of enums.",
+      "parentUuid": "a3b51792_964ad3ed",
       "revId": "3f7c13cef1393b86af3bfeb8a53fdb05cbf07750",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
