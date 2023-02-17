@@ -68,6 +68,24 @@
       "message": "I don\u0027t think we can submit like this.\n\nPreviously, linting was required, but it was using a suboptimal DB. Now we\u0027re allowing linting to be disabled.\n\nWhat\u0027s the magnitude of the problem? Would it be difficult to generate all the baselines and check those in? We have owners in the module repos so we can do it as a sort of LSC",
       "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c7c945_9627bcc6",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2023-02-17T10:48:19Z",
+      "side": 1,
+      "message": "IIRC we can\u0027t baseline NewApi issues. Do I misremember?",
+      "parentUuid": "580264d2_4eecfffd",
+      "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
