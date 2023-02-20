@@ -45,6 +45,30 @@
       },
       "revId": "afaabbc406dbd23601573855077dfc5d4f84fc87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e03b56_99bd0f37",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-20T18:49:21Z",
+      "side": 1,
+      "message": "Yes, this is a hack. It\u0027s unfortunately due to a limitation that one bootclasspath_fragment is for only one APEX, while we want to generate a boot image for all APEXes.\n\nI\u0027m not familiar with `platform_bootclasspath`. Looks like it already generates a boot image? Does it support generating two boot images? If not, it may require a lot of refactoring to make it work.",
+      "parentUuid": "a1665090_7ca4af04",
+      "range": {
+        "startLine": 749,
+        "startChar": 1,
+        "endLine": 750,
+        "endChar": 67
+      },
+      "revId": "afaabbc406dbd23601573855077dfc5d4f84fc87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
