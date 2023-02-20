@@ -293,6 +293,9 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 	isSystemServerJar := global.AllSystemServerJars(ctx).ContainsJar(moduleName(ctx))
 
 	bootImage := defaultBootImageConfig(ctx)
+	if global.PreoptWithUpdatableBcp {
+		bootImage = mainlineBootImageConfig(ctx)
+	}
 	dexFiles, dexLocations := bcpForDexpreopt(ctx, global.PreoptWithUpdatableBcp)
 
 	targets := ctx.MultiTargets()
