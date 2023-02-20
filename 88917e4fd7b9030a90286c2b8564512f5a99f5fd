@@ -158,6 +158,24 @@
       "parentUuid": "f1104c5b_a1dcca79",
       "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aff9251_818418d2",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-02-20T20:20:25Z",
+      "side": 1,
+      "message": "Yes, after this cl apis that move from system to public will work properly. Because the api will still be in the system api-versions.xml file, but with an earlier `since` value. In the public api-versions.xml file, they\u0027ll have a later `since` value, but that will only apply for apps compiling against purely the public api. So this cl should solve nykkumar@\u0027s issue.\n\nThe lint warning would come up in ayeaye when someone touches a line with the issue. If you don\u0027t change that line ayeaye wouldn\u0027t complain.\n\nI\u0027m not to familiar about the details of the lint update, you\u0027d have to ask Matt.",
+      "parentUuid": "2fc4830e_98831b6b",
+      "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
