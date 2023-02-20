@@ -44,6 +44,8 @@ var (
 	bootImageConfigRawKey  = android.NewOnceKey("bootImageConfigRaw")
 	artBootImageName       = "art"
 	frameworkBootImageName = "boot"
+	mainlineBootImageName  = "mainline"
+	bootImageStem          = "boot"
 )
 
 func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig {
@@ -52,14 +54,16 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 
 		artModules := global.ArtApexJars
 		frameworkModules := global.BootJars.RemoveList(artModules)
+		mainlineBcpModules := global.ApexBootJars
+		frameworkSubdir := "system/framework"
 
 		// ART config for the primary boot image in the ART apex.
 		// It includes the Core Libraries.
 		artCfg := bootImageConfig{
 			name:                     artBootImageName,
-			stem:                     "boot",
+			stem:                     bootImageStem,
 			installDirOnHost:         "apex/art_boot_images/javalib",
-			installDirOnDevice:       "system/framework",
+			installDirOnDevice:       frameworkSubdir,
 			profileInstallPathInApex: "etc/boot-image.prof",
 			modules:                  artModules,
 			preloadedClassesFile:     "art/build/boot/preloaded-classes",
@@ -68,11 +72,10 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 
 		// Framework config for the boot image extension.
 		// It includes framework libraries and depends on the ART config.
-		frameworkSubdir := "system/framework"
 		frameworkCfg := bootImageConfig{
 			extends:              &artCfg,
 			name:                 frameworkBootImageName,
-			stem:                 "boot",
+			stem:                 bootImageStem,
 			installDirOnHost:     frameworkSubdir,
 			installDirOnDevice:   frameworkSubdir,
 			modules:              frameworkModules,
@@ -80,9 +83,20 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 			compilerFilter:       "speed-profile",
 		}
 
+		mainlineCfg := bootImageConfig{
+			extends:            &frameworkCfg,
+			name:               mainlineBootImageName,
+			stem:               bootImageStem,
+			installDirOnHost:   frameworkSubdir,
+			installDirOnDevice: frameworkSubdir,
+			modules:            mainlineBcpModules,
+			compilerFilter:     "verify",
+		}
+
 		return map[string]*bootImageConfig{
 			artBootImageName:       &artCfg,
 			frameworkBootImageName: &frameworkCfg,
+			mainlineBootImageName:  &mainlineCfg,
 		}
 	}).(map[string]*bootImageConfig)
 }
@@ -144,6 +158,8 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 // The boot images are supposed to form a tree, where the root is the primary boot image. We do not
 // expect loops (e.g., A extends B, B extends C, C extends A), and we let them crash soong with a
 // stack overflow.
+// Note that a boot image config only has a pointer to the parent, not to children. Therefore, we
+// first go up through the parent chain, and then go back down to visit every code along the path.
 // `visited` is a map where a key is a boot image name and the value indicates whether the boot
 // image config is visited. The boot image names are guaranteed to be unique because they come from
 // `genBootImageConfigRaw` above, which also returns a map and would fail in the first place if the
@@ -170,6 +186,10 @@ func artBootImageConfig(ctx android.PathContext) *bootImageConfig {
 
 func defaultBootImageConfig(ctx android.PathContext) *bootImageConfig {
 	return genBootImageConfigs(ctx)[frameworkBootImageName]
+}
+
+func mainlineBootImageConfig(ctx android.PathContext) *bootImageConfig {
+	return genBootImageConfigs(ctx)[mainlineBootImageName]
 }
 
 // Apex boot config allows to access build/install paths of apex boot jars without going
