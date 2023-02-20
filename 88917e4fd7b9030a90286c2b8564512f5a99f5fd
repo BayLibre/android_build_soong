@@ -140,6 +140,24 @@
       "parentUuid": "29b99c84_e70ca876",
       "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc4830e_98831b6b",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2023-02-20T11:07:53Z",
+      "side": 1,
+      "message": "Once we feed the system API database to lint, is it going to work well with APIs that move from system to public? Or will that require further work?\n\nnykkumar@\u0027s change should be greatly reduced once we can handle system -\u003e public API migrations. \n\n\u003e There were 7 other instances of people adding @SuppressWarnings to get around false positives in b/193460475. \n\nAll of those have one common cause. Once we can deal with API migrations, we can delete those suppress warnings. \n\n\u003eI can make the AyeAye checker treat NewApi warnings as errors that block cl submission\n\nhow would it work? Every time someone touches that project, the lint warnings would come up again, right?\n\n\u003e [lint can\u0027t be updated] because it introduces new NewApi false positives\n\nDid someone look into those? Are there any classes of errors for the false positives?",
+      "parentUuid": "f1104c5b_a1dcca79",
+      "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
