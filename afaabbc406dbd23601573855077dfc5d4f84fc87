@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89bcd39_a5df5d72",
+        "filename": "android/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-20T18:12:54Z",
+      "side": 1,
+      "message": "Nice. I hadn\u0027t noticed that the version of go used for Soong supported generics.",
+      "range": {
+        "startLine": 34,
+        "startChar": 11,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "afaabbc406dbd23601573855077dfc5d4f84fc87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1665090_7ca4af04",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-20T18:12:54Z",
+      "side": 1,
+      "message": "This seems like a hack. Why not generate it in the `platform_bootclasspath` which should already depend on all the fragments?",
+      "range": {
+        "startLine": 749,
+        "startChar": 1,
+        "endLine": 750,
+        "endChar": 67
+      },
+      "revId": "afaabbc406dbd23601573855077dfc5d4f84fc87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
