@@ -47,17 +47,11 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 
 			// Mark the SDK variant.
 			modules[1].(*Module).Properties.IsSdkVariant = true
-
-			if ctx.Config().UnbundledBuildApps() {
-				// For an unbundled apps build, hide the platform variant from Make.
-				modules[0].(*Module).Properties.HideFromMake = true
-				modules[0].(*Module).Properties.PreventInstall = true
-			} else {
-				// For a platform build, mark the SDK variant so that it gets a ".sdk" suffix when
-				// exposed to Make.
-				modules[1].(*Module).Properties.SdkAndPlatformVariantVisibleToMake = true
-				modules[1].(*Module).Properties.PreventInstall = true
-			}
+			// Sdk variant is not supposed to be installed
+			modules[1].(*Module).Properties.PreventInstall = true
+			// For a platform build, mark the SDK variant so that it gets a ".sdk" suffix when
+			// exposed to Make.
+			modules[1].(*Module).Properties.SdkAndPlatformVariantVisibleToMake = true
 			ctx.AliasVariation("")
 		} else if isCcModule && ccModule.isImportedApiLibrary() {
 			apiLibrary, _ := ccModule.linker.(*apiLibraryDecorator)
@@ -65,16 +59,8 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 				// Handle cc_api_library module with NDK stubs and variants only which can use SDK
 				modules := ctx.CreateVariations("", "sdk")
 				modules[1].(*Module).Properties.IsSdkVariant = true
-				if ctx.Config().UnbundledBuildApps() {
-					// For an unbundled apps build, hide the platform variant from Make.
-					modules[0].(*Module).Properties.HideFromMake = true
-					modules[0].(*Module).Properties.PreventInstall = true
-				} else {
-					// For a platform build, mark the SDK variant so that it gets a ".sdk" suffix when
-					// exposed to Make.
-					modules[1].(*Module).Properties.SdkAndPlatformVariantVisibleToMake = true
-					modules[1].(*Module).Properties.PreventInstall = true
-				}
+				modules[1].(*Module).Properties.PreventInstall = true
+				modules[1].(*Module).Properties.SdkAndPlatformVariantVisibleToMake = true
 			} else {
 				ccModule.Properties.Sdk_version = nil
 				ctx.CreateVariations("")
