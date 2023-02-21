@@ -176,6 +176,24 @@
       "parentUuid": "2fc4830e_98831b6b",
       "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d888727_95a01611",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-02-21T09:54:09Z",
+      "side": 1,
+      "message": "What is magnitude of the number of existing problems?\n\nI\u0027m asking because I don\u0027t think it\u0027s a good state to be in to remove the linting requirement. Unless you\u0027re actually committed to re-enabling it within a reasonable time frame. Do you have an estimate of when it\u0027ll be reenabled?",
+      "parentUuid": "3aff9251_818418d2",
+      "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
