@@ -98,6 +98,24 @@
       "parentUuid": "e1cd9eb6_ed40e334",
       "revId": "747c60ff1bbda005ee6cb313a5ade23e539d46c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9162290c_bdc4d48b",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-21T21:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4cd89a0_06f9a1e9",
+      "revId": "747c60ff1bbda005ee6cb313a5ade23e539d46c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

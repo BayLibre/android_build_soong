@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "274b7912_5253d888",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-21T21:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2085fe99_4050c934",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 18
+      },
+      "revId": "3f7c13cef1393b86af3bfeb8a53fdb05cbf07750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3b51792_964ad3ed",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "I missed this case and thanks for catching this issue. The idea is that all these fields are optional but if there is a value in them it has to be from the list of enums.",
       "parentUuid": "a3b51792_964ad3ed",
+      "revId": "3f7c13cef1393b86af3bfeb8a53fdb05cbf07750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4762d3f2_df75a8f4",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-21T21:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eee8206_89586488",
       "revId": "3f7c13cef1393b86af3bfeb8a53fdb05cbf07750",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
