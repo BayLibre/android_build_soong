@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef6985a_8d005d07",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-21T14:42:06Z",
+      "side": 1,
+      "message": "This is going to cause the platform variant to have the base name and the sdk variant to have the `.sdk` suffix, but for unbundled builds Make expects to link against the module without the `.sdk` suffix.  This will cause unbundled builds to pick up non-SDK variants, which may not be portable to arbitrary devices.",
+      "revId": "5c2b289d34c56da2f3cdd07c21164fda9fa462c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
