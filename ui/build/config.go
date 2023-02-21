@@ -116,7 +116,8 @@ type configImpl struct {
 
 	bazelForceEnabledModules string
 
-	includeTags []string
+	includeTags    []string
+	sourceRootDirs []string
 }
 
 const srcDirFileCheck = "build/soong/root.bp"
@@ -1137,6 +1138,14 @@ func (c *configImpl) KatiArgs() []string {
 
 func (c *configImpl) Parallel() int {
 	return c.parallel
+}
+
+func (c *configImpl) GetSourceRootDirs() []string {
+	return c.sourceRootDirs
+}
+
+func (c *configImpl) SetSourceRootDirs(i []string) {
+	c.sourceRootDirs = i
 }
 
 func (c *configImpl) GetIncludeTags() []string {
