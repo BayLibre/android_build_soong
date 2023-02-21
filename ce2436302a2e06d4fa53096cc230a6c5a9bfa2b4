@@ -16,6 +16,29 @@
       "message": "Looks like many of the owners are OOO. Jingwen, could you take a look?",
       "revId": "ce2436302a2e06d4fa53096cc230a6c5a9bfa2b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c946c967_7f512481",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-02-21T02:51:05Z",
+      "side": 1,
+      "message": "Should partition types be restricted/allowlisted here? Are we expecting any beyond system_ext and vendor?",
+      "range": {
+        "startLine": 479,
+        "startChar": 38,
+        "endLine": 479,
+        "endChar": 50
+      },
+      "revId": "ce2436302a2e06d4fa53096cc230a6c5a9bfa2b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
