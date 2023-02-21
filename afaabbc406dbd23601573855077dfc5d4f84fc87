@@ -93,6 +93,30 @@
       },
       "revId": "afaabbc406dbd23601573855077dfc5d4f84fc87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b265d421_fd75d332",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-21T16:09:35Z",
+      "side": 1,
+      "message": "Yes, it works. The code is much cleaner now. Thank you for the suggestion!",
+      "parentUuid": "94953561_bf7bc075",
+      "range": {
+        "startLine": 749,
+        "startChar": 1,
+        "endLine": 750,
+        "endChar": 67
+      },
+      "revId": "afaabbc406dbd23601573855077dfc5d4f84fc87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
