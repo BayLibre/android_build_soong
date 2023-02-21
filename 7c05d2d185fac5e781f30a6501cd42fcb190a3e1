@@ -16,6 +16,24 @@
       "message": "What is the purpose of adding `java.lang.constant`? It seems like it is a byte code specific API and so not applicable for Android.",
       "revId": "7c05d2d185fac5e781f30a6501cd42fcb190a3e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aed4ed1_f469f397",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-21T14:20:50Z",
+      "side": 1,
+      "message": "Answered offline.",
+      "parentUuid": "f67977b5_8f727ddf",
+      "revId": "7c05d2d185fac5e781f30a6501cd42fcb190a3e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
