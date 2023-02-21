@@ -69,6 +69,30 @@
       },
       "revId": "afaabbc406dbd23601573855077dfc5d4f84fc87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94953561_bf7bc075",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-21T14:05:18Z",
+      "side": 1,
+      "message": "Hang on. I may be able to generate a more boot image in `platform_bootclasspath`. Let me explore it.",
+      "parentUuid": "a2e03b56_99bd0f37",
+      "range": {
+        "startLine": 749,
+        "startChar": 1,
+        "endLine": 750,
+        "endChar": 67
+      },
+      "revId": "afaabbc406dbd23601573855077dfc5d4f84fc87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
