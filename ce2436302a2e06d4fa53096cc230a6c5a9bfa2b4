@@ -39,6 +39,30 @@
       },
       "revId": "ce2436302a2e06d4fa53096cc230a6c5a9bfa2b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5af155_3c5abbff",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-02-21T03:37:11Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t need to be restricted.",
+      "parentUuid": "c946c967_7f512481",
+      "range": {
+        "startLine": 479,
+        "startChar": 38,
+        "endLine": 479,
+        "endChar": 50
+      },
+      "revId": "ce2436302a2e06d4fa53096cc230a6c5a9bfa2b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
