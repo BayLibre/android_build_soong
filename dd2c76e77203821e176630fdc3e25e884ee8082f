@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "983799a2_f657a292",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-02-21T22:50:29Z",
+      "side": 1,
+      "message": "Could you add support for this in the bazel version of the rule as well? https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl\n\nAnd also in the bp2build converter, with a unit test: https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex.go;l\u003d3500;drc\u003dce2436302a2e06d4fa53096cc230a6c5a9bfa2b4",
+      "revId": "dd2c76e77203821e176630fdc3e25e884ee8082f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9f2a69fe_9c08b9eb",
