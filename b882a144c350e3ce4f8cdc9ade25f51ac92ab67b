@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc60ac26_4985ad9e",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2412,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-22T22:11:12Z",
+      "side": 1,
+      "message": "Since api library is compiled from .map.txt files and not against .h files, is this code block reachable?",
+      "range": {
+        "startLine": 2409,
+        "startChar": 2,
+        "endLine": 2412,
+        "endChar": 3
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17e2d67_0f7a60f6",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2924,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-22T22:11:12Z",
+      "side": 1,
+      "message": "Since this is `ApexLibs`, does it mean that apex cc libraries cannot use stubs of platform cc libraries?",
+      "range": {
+        "startLine": 2924,
+        "startChar": 39,
+        "endLine": 2924,
+        "endChar": 47
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6077c81d_bfdda32a",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3335,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-22T22:11:12Z",
+      "side": 1,
+      "message": "Since the apex_libraries are now available in `api_imports` as `apex_libs`, can we do the dependency rewriting for platform libraries during DepsMutator stage?",
+      "range": {
+        "startLine": 3327,
+        "startChar": 2,
+        "endLine": 3335,
+        "endChar": 3
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66be30c_35fb4724",
+        "filename": "multitree/api_imports.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-22T22:11:12Z",
+      "side": 1,
+      "message": "Is this the list of C libraries that are installed in an apex and not in /system?",
+      "range": {
+        "startLine": 45,
+        "startChar": 25,
+        "endLine": 45,
+        "endChar": 67
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d94f9934_93962a95",
+        "filename": "multitree/api_imports.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-22T22:11:12Z",
+      "side": 1,
+      "message": "nit: Assuming this are shared libraries, rename it to `ApexSharedLibs`",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

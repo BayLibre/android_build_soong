@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d27af1_4237d727",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3293,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-22T22:11:12Z",
+      "side": 0,
+      "message": "nit: This is code refactor _plus_ change of business logic for importing api library. Can this be split into tinier CLs? (I almost missed the business logic update)",
+      "range": {
+        "startLine": 3247,
+        "startChar": 2,
+        "endLine": 3293,
+        "endChar": 3
+      },
+      "revId": "c2e385cc4c7c7f2fba3a10bef4cd8a446113416f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

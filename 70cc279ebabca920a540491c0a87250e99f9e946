@@ -287,6 +287,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9f1fb4e_5261d417",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9809,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-22T22:11:12Z",
+      "side": 1,
+      "message": "For this API surface, the stub permutations are\n1. apex cc library depends on another_apex cc library\n2. apex cc library depends on platform library\n3. platform library depends on apex cc_library\n\nOne of my doubts in the `Apex_libs` based approach is whether (2) is supported. Can we test (2) by not using equal values for `Shared_libs` and `Apex_libs` in unit tests? (equal values would mean that none of the stub libraries are from platform)\n\nOn a related note, would the necessity for this new property go away once we implement granular api_imports (b/269593502)?",
+      "parentUuid": "ef834412_e974edd4",
+      "range": {
+        "startLine": 9809,
+        "startChar": 5,
+        "endLine": 9809,
+        "endChar": 49
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aee1c499_934062b4",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
@@ -1127,6 +1151,30 @@
       "side": 1,
       "message": "I think java_binder_parcel_fuzzer is just one of the module. If any module within the APEX (or references any library within the APEX) links to liblog, then this would lead to linking with two liblogs (one original - or prebuilt and the other api library stub), and because prebuilt uses exact same rule from cc_api_library, so it would be a conflict if cc_api_library do not rename it.",
       "parentUuid": "d20b8027_5d8d86cf",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 37
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b16d4f0_3b8e7011",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-22T22:11:12Z",
+      "side": 1,
+      "message": "\u003e prebuilt uses exact same rule from cc_api_library\n\nAre you referring to a ninja rule here? \n\nNot a blocker, but can you leave a TODO and a tracking bug to see if this can be cleaned up later?",
+      "parentUuid": "1bbbdc66_75c0ec8f",
       "range": {
         "startLine": 283,
         "startChar": 1,
