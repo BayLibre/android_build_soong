@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1ddff933_76e25ac6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-02-22T00:33:18Z",
+      "side": 1,
+      "message": "Sure; I\u0027ll add the bazel version w/ test in a separate CL.",
+      "parentUuid": "983799a2_f657a292",
+      "revId": "dd2c76e77203821e176630fdc3e25e884ee8082f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9f2a69fe_9c08b9eb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
