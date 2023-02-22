@@ -263,6 +263,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef834412_e974edd4",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9809,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-22T02:43:19Z",
+      "side": 1,
+      "message": "Thanks for this case, I found that previous design was not working as expected. I updated CL and also commit message. PTAL. FYI, I added a new property to the api_surface, so please let me know if it is not feasible.",
+      "parentUuid": "b7c6b73f_cebae648",
+      "range": {
+        "startLine": 9809,
+        "startChar": 5,
+        "endLine": 9809,
+        "endChar": 49
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aee1c499_934062b4",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
@@ -1079,6 +1103,30 @@
       "side": 1,
       "message": "I still do not follow :(. `java_binder_parcel_fuzzer` does not contribute to any API surface, so I am not sure how/where the dups are getting created",
       "parentUuid": "c47bd986_d89b398d",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 37
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bbbdc66_75c0ec8f",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-22T02:43:19Z",
+      "side": 1,
+      "message": "I think java_binder_parcel_fuzzer is just one of the module. If any module within the APEX (or references any library within the APEX) links to liblog, then this would lead to linking with two liblogs (one original - or prebuilt and the other api library stub), and because prebuilt uses exact same rule from cc_api_library, so it would be a conflict if cc_api_library do not rename it.",
+      "parentUuid": "d20b8027_5d8d86cf",
       "range": {
         "startLine": 283,
         "startChar": 1,
