@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c06f48_19f1b222",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-02-22T17:38:43Z",
+      "side": 1,
+      "message": "The discussion with jiyong@ was in ag/21469737 which is not AOSP.",
+      "revId": "8bb9a4a194ace6b1796287feb97e7bcc4db82c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
