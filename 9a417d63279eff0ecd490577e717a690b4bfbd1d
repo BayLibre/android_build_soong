@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6856fa2f_69e84d1b",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-22T05:31:41Z",
+      "side": 1,
+      "message": "These constants are never used, should they be used in the valid_values lists below?",
+      "revId": "9a417d63279eff0ecd490577e717a690b4bfbd1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "202ff06a_2fc32e09",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-22T05:31:41Z",
+      "side": 1,
+      "message": "use `android.InList`",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 1
+      },
+      "revId": "9a417d63279eff0ecd490577e717a690b4bfbd1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c0a37f_6ca18461",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-22T05:31:41Z",
+      "side": 1,
+      "message": "`config.Vector` is already a `Vector`, it doesn\u0027t need a cast.",
+      "range": {
+        "startLine": 209,
+        "startChar": 12,
+        "endLine": 209,
+        "endChar": 18
+      },
+      "revId": "9a417d63279eff0ecd490577e717a690b4bfbd1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f4dc996_4852c71c",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-22T05:31:41Z",
+      "side": 1,
+      "message": "Maybe this would be easier to read if you added a `valid()` method to each of the types.",
+      "revId": "9a417d63279eff0ecd490577e717a690b4bfbd1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
