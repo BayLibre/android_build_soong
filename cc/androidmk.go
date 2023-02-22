@@ -295,7 +295,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 			entries.SubName = "." + library.stubsVersion()
 		}
 		entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
-			// library.makeUninstallable() depends on this to bypass HideFromMake() for
+			// library.hideFromMake() depends on this to bypass HideFromMake() for
 			// static libraries.
 			entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
 			if library.buildStubs() {

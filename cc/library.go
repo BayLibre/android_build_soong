@@ -2424,7 +2424,7 @@ func (library *libraryDecorator) installable() *bool {
 	return nil
 }
 
-func (library *libraryDecorator) makeUninstallable(mod *Module) {
+func (library *libraryDecorator) hideFromMake(mod *Module) {
 	if library.static() && library.buildStatic() && !library.buildStubs() {
 		// If we're asked to make a static library uninstallable we don't do
 		// anything since AndroidMkEntries always sets LOCAL_UNINSTALLABLE_MODULE
@@ -2432,7 +2432,7 @@ func (library *libraryDecorator) makeUninstallable(mod *Module) {
 		// files from notice_files.mk, which other libraries might depend on.
 		return
 	}
-	mod.ModuleBase.MakeUninstallable()
+	mod.ModuleBase.HideFromMake()
 }
 
 func (library *libraryDecorator) getPartition() string {

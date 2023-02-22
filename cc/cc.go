@@ -609,7 +609,7 @@ type installer interface {
 	inSanitizerDir() bool
 	hostToolPath() android.OptionalPath
 	relativeInstallPath() string
-	makeUninstallable(mod *Module)
+	hideFromMake(mod *Module)
 	installInRoot() bool
 }
 
@@ -3410,12 +3410,12 @@ func (c *Module) InstallInRecovery() bool {
 	return c.InRecovery()
 }
 
-func (c *Module) MakeUninstallable() {
+func (c *Module) HideFromMake() {
 	if c.installer == nil {
-		c.ModuleBase.MakeUninstallable()
+		c.ModuleBase.HideFromMake()
 		return
 	}
-	c.installer.makeUninstallable(c)
+	c.installer.hideFromMake(c)
 }
 
 func (c *Module) HostToolPath() android.OptionalPath {
