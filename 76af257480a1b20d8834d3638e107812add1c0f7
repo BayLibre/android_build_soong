@@ -16,6 +16,24 @@
       "message": "Running `m nothing` isn\u0027t really a sufficient test here. Have you tested on Darwin and outside of Darwin, and verified that the timestamp is set properly?",
       "revId": "76af257480a1b20d8834d3638e107812add1c0f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e0ad2b_b9520fa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-02-22T17:20:17Z",
+      "side": 1,
+      "message": "Thanks for the heads, I missed a file :)\n\nI verified via echo that this does produce a timestamp on OSX.",
+      "parentUuid": "ec35357c_8f306ade",
+      "revId": "76af257480a1b20d8834d3638e107812add1c0f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
