@@ -1,0 +1,21 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+bootstrap_go_package {
+    name: "soong-multitree-analysis",
+    pkgPath: "android/soong/multitree_analysis",
+    deps: [
+        "blueprint",
+        "soong",
+        "soong-android",
+        "soong-apex",
+    ],
+    srcs: [
+        "metadata.go",
+    ],
+    testSrcs: [
+        "metadata_test.go",
+    ],
+    pluginFor: ["soong_build"],
+}
