@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f54ea4_f8846507",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-22T23:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6856fa2f_69e84d1b",
+      "revId": "9a417d63279eff0ecd490577e717a690b4bfbd1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "202ff06a_2fc32e09",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-22T05:31:41Z",
       "side": 1,
       "message": "use `android.InList`",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 1
+      },
+      "revId": "9a417d63279eff0ecd490577e717a690b4bfbd1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2c9c149_f1e8da2c",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-22T23:16:22Z",
+      "side": 1,
+      "message": "Since the valid values are not strings, it is less code to write a custom loop.",
+      "parentUuid": "202ff06a_2fc32e09",
       "range": {
         "startLine": 196,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b610b7_237df69d",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-22T23:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4c0a37f_6ca18461",
+      "range": {
+        "startLine": 209,
+        "startChar": 12,
+        "endLine": 209,
+        "endChar": 18
+      },
+      "revId": "9a417d63279eff0ecd490577e717a690b4bfbd1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f4dc996_4852c71c",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-02-22T05:31:41Z",
       "side": 1,
       "message": "Maybe this would be easier to read if you added a `valid()` method to each of the types.",
+      "revId": "9a417d63279eff0ecd490577e717a690b4bfbd1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe4ce83_6473c4ea",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-22T23:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f4dc996_4852c71c",
       "revId": "9a417d63279eff0ecd490577e717a690b4bfbd1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
