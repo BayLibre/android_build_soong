@@ -180,6 +180,10 @@ type apexBundleProperties struct {
 	// in a special way that include the digest of the lib file under /lib(64)?
 	Dynamic_common_lib_apex *bool
 
+	Install_constraints struct {
+		Fingerprint_prefixes []string
+	}
+
 	// Canonical name of this APEX bundle. Used to determine the path to the
 	// activated APEX on device (i.e. /apex/<apexVariationName>), and used for the
 	// apex mutator variations. For override_apex modules, this is the name of the
