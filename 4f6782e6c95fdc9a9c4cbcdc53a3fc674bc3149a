@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93cb011_6427e67a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-23T17:50:14Z",
+      "side": 1,
+      "message": "\u003e Does this mean that we can now have a hierarchy of images that are 3 deep (art, framework, mainline) instead of just 2 (art, framework)?\n\nYes.\n\n\u003e This rename should be done as a separate (or at least part of a separate) refactoring change.\n\nMoved to the refactoring change.",
+      "parentUuid": "04d86c51_66be5fc6",
+      "range": {
+        "startLine": 320,
+        "startChar": 1,
+        "endLine": 320,
+        "endChar": 11
+      },
+      "revId": "4f6782e6c95fdc9a9c4cbcdc53a3fc674bc3149a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c015a48_24f5c146",
@@ -71,6 +95,30 @@
       "writtenOn": "2023-02-23T11:54:34Z",
       "side": 1,
       "message": "This whole block is quite confusing. It accesses the default (aka framework) boot image config first which calls `genBootImageConfigs()` and then calls `genBootImageConfigs()` to get all the image configs.\n\nI think it would be clearer if it was commented and created all the images first,then got the default (maybe renamed to framework) and then set up the fields in `d`.\n\nThis appears to be a pure refactoring so should be separated out into its own change, or a separate refactoring change to make that clearer.",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 1
+      },
+      "revId": "4f6782e6c95fdc9a9c4cbcdc53a3fc674bc3149a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11efeb75_a7a4669f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-23T17:50:14Z",
+      "side": 1,
+      "message": "\u003e This whole block is quite confusing. It accesses the default (aka framework) boot image config first which calls genBootImageConfigs() and then calls genBootImageConfigs() to get all the image configs.\n\nI think it doesn\u0027t matter when the configs are generated. You can consider `genBootImageConfigs` as a getter with lazy initialization.\n\n\u003e This appears to be a pure refactoring so should be separated out into its own change, or a separate refactoring change to make that clearer.\n\nDone.",
+      "parentUuid": "4c015a48_24f5c146",
       "range": {
         "startLine": 513,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc83846_05e192c4",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-23T17:50:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5830c13e_ba1c260a",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "4f6782e6c95fdc9a9c4cbcdc53a3fc674bc3149a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c939aa1_0eee8a64",
@@ -117,6 +189,24 @@
       "writtenOn": "2023-02-23T11:54:34Z",
       "side": 1,
       "message": "If you move this before the previous change the diff looks better and makes it clearer what is being done.",
+      "revId": "4f6782e6c95fdc9a9c4cbcdc53a3fc674bc3149a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5369bbc4_72f553a7",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-23T17:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c939aa1_0eee8a64",
       "revId": "4f6782e6c95fdc9a9c4cbcdc53a3fc674bc3149a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
