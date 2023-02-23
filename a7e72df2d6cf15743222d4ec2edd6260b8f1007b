@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de4a9bb2_0008a4b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-02-23T21:17:28Z",
+      "side": 1,
+      "message": "Split this into two CLs, one is for Soong module type and the other is for SBOM integration test.",
+      "parentUuid": "6907a28b_84b9b1b2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 67
+      },
+      "revId": "a7e72df2d6cf15743222d4ec2edd6260b8f1007b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94085478_725087de",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b499db29_ee2432ff",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-02-23T21:17:28Z",
+      "side": 1,
+      "message": "See aosp/2453072",
+      "parentUuid": "94085478_725087de",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 153
+      },
+      "revId": "a7e72df2d6cf15743222d4ec2edd6260b8f1007b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56f3b883_fa6dcfa8",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-02-21T15:38:43Z",
       "side": 1,
       "message": "nit: make a list for this.",
+      "range": {
+        "startLine": 143,
+        "startChar": 14,
+        "endLine": 143,
+        "endChar": 138
+      },
+      "revId": "a7e72df2d6cf15743222d4ec2edd6260b8f1007b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2469ca46_4e57d2a8",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-02-23T21:17:28Z",
+      "side": 1,
+      "message": "See aosp/2453072",
+      "parentUuid": "56f3b883_fa6dcfa8",
       "range": {
         "startLine": 143,
         "startChar": 14,
