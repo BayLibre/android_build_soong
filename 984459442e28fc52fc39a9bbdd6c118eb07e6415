@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeed7afb_b324a1f9",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-23T20:53:29Z",
+      "side": 1,
+      "message": "Not sure if this is the semantics that we want or if I should do something more like\n```\npackageName, override :\u003d ctx.DeviceConfig().OverridePackageNameFor(a.Stem())\nif override {\n    packageName :\u003d *a.overridableAppProperties.Package_name\n}\n```\nNot super familiar with when `package_name` should be set",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 0
+      },
+      "revId": "984459442e28fc52fc39a9bbdd6c118eb07e6415",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
