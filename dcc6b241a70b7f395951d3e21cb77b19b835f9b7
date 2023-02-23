@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a556a56f_8badb710",
+        "filename": "cc/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-23T21:10:49Z",
+      "side": 0,
+      "message": "I worry that this is going to cause a platform version to be copied to $OUT/system and then taken by an unbundled build as a distributable artifact.",
+      "revId": "dcc6b241a70b7f395951d3e21cb77b19b835f9b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
