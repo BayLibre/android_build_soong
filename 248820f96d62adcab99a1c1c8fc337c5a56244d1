@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7b4329_f0227ff1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-23T21:44:31Z",
+      "side": 1,
+      "message": "What\u0027s the motivation for this change?  What problems does using MinSdkVersion cause?",
+      "revId": "248820f96d62adcab99a1c1c8fc337c5a56244d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12acdb9_ae436905",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-23T21:44:31Z",
+      "side": 1,
+      "message": "targetSdkVersion?",
+      "range": {
+        "startLine": 229,
+        "startChar": 28,
+        "endLine": 229,
+        "endChar": 41
+      },
+      "revId": "248820f96d62adcab99a1c1c8fc337c5a56244d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
