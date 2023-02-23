@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be72dbf9_6a4d601d",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-23T00:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7496417_c86d4f32",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 6
+      },
+      "revId": "b821809203887f975794cda6ac637c28e806c227",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c85f83b_11b88a3b",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-22T23:23:25Z",
       "side": 1,
       "message": "A switch in each function is probably faster and could be more readable:\n```\nswitch (vector) {\n    case \"\",\n        unknown_access_vector,\n        remote,\n        local_no_privileges_required,\n        local_privileges_required,\n        host_access,\n        local_with_developer_options:\n        return true\n    }\n    return false\n}\n```",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "b821809203887f975794cda6ac637c28e806c227",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "337b8a49_718b0d09",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-02-23T00:18:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c85f83b_11b88a3b",
       "range": {
         "startLine": 105,
         "startChar": 1,
