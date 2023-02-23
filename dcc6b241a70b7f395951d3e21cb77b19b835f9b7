@@ -16,6 +16,24 @@
       "message": "I worry that this is going to cause a platform version to be copied to $OUT/system and then taken by an unbundled build as a distributable artifact.",
       "revId": "dcc6b241a70b7f395951d3e21cb77b19b835f9b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fc7832_638b147a",
+        "filename": "cc/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-02-23T22:01:17Z",
+      "side": 0,
+      "message": "\u003e cause a platform version to be copied to $OUT/system\n\nNot by `make` because of `HideFromMake \u003d true`. But possible by soong.\n\n\u003e taken by an unbundled build as a distributable artifact.\n\nThis is exactly for this to happen for the AVF apex (com.android.virt). The AVF apex is built by soong and it needs a `microdroid`, which is a `/system` image. It should be a filesystem image with platform versions, regardless whether the build is bundled or unbundled. Previously, the microdroid in the AVF apex with unbundled build failed to package some modules since they were marked as `PreventInstall` (which skips install).\n\nIf this happens for other types of packages (APK with embedded JNI libs?) in soong build, IMO, it must be a bug in dependency graphs. It shouldn\u0027t pick up artifacts from $OUT/system, but it should follow the dependency graph and pick up SDK versions. In the case of `microdroid`, it sets to the correct dependency to platform versions.",
+      "parentUuid": "a556a56f_8badb710",
+      "revId": "dcc6b241a70b7f395951d3e21cb77b19b835f9b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
