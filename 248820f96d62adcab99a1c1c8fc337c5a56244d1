@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62de5d81_dcef7246",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-23T21:55:49Z",
+      "side": 1,
+      "message": "Justin and Jeongik pointed in aosp/2374713 if using minSdkVersion for `target-sdk-version` was intended here. \n\nIs there a reason why we do not use the target_sdk_version in Android.bp as target-sdk-version in aapt2? If there is, I can document it here.",
+      "parentUuid": "ae7b4329_f0227ff1",
+      "revId": "248820f96d62adcab99a1c1c8fc337c5a56244d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b12acdb9_ae436905",
         "filename": "java/aar.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-23T21:44:31Z",
       "side": 1,
       "message": "targetSdkVersion?",
+      "range": {
+        "startLine": 229,
+        "startChar": 28,
+        "endLine": 229,
+        "endChar": 41
+      },
+      "revId": "248820f96d62adcab99a1c1c8fc337c5a56244d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba1bcfa_b551a7c8",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-23T21:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b12acdb9_ae436905",
       "range": {
         "startLine": 229,
         "startChar": 28,
