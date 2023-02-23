@@ -344,8 +344,14 @@ func (a *apexBundle) buildFileContexts(ctx android.ModuleContext) android.Output
 		rule.Command().Text("cat").Input(fileContexts).Text(">>").Output(output)
 		// new line
 		rule.Command().Text("echo").Text(">>").Output(output)
-		// force-label /apex_manifest.pb and / as system_file so that apexd can read them
-		rule.Command().Text("echo").Flag("/apex_manifest\\\\.pb u:object_r:system_file:s0").Text(">>").Output(output)
+		// force-label /apex_manifest.pb and / so that apexd can read them
+		if a.SocSpecific() || a.DeviceSpecific() {
+			// apex_manifest.pb as vendor_configs_file for vendor apex so that vendor processes can read it.
+			rule.Command().Text("echo").Flag("/apex_manifest\\\\.pb u:object_r:vendor_configs_file:s0").Text(">>").Output(output)
+		} else {
+			// apex_manifest.pb as system_file for system (or product) apexes
+			rule.Command().Text("echo").Flag("/apex_manifest\\\\.pb u:object_r:system_file:s0").Text(">>").Output(output)
+		}
 		rule.Command().Text("echo").Flag("/ u:object_r:system_file:s0").Text(">>").Output(output)
 	case flattenedApex:
 		// For flattened apexes, install path should be prepended.
