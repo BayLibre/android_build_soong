@@ -140,6 +140,7 @@ apex {
 	],
 	package_name: "com.android.apogee.test.package",
 	logging_parent: "logging.parent",
+	fingerprint_prefixes: ["foo", "bar"],
 }
 `,
 		ExpectedBazelTargets: []string{
@@ -149,8 +150,12 @@ apex {
         ":cc_binary_1",
         ":sh_binary_2",
     ]`,
-				"certificate":     `":com.android.apogee.certificate"`,
-				"file_contexts":   `":com.android.apogee-file_contexts"`,
+				"certificate":   `":com.android.apogee.certificate"`,
+				"file_contexts": `":com.android.apogee-file_contexts"`,
+				"fingerprint_prefixes": `[
+        "foo",
+        "bar",
+    ]`,
 				"installable":     "False",
 				"key":             `":com.android.apogee.key"`,
 				"manifest":        `"apogee_manifest.json"`,

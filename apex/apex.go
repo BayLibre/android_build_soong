@@ -196,6 +196,10 @@ type apexBundleProperties struct {
 	// in a special way that include the digest of the lib file under /lib(64)?
 	Dynamic_common_lib_apex *bool
 
+	// List of build fingerprint prefixes allowlisted for installation. These will be injected
+	// into the APEX's manifest.
+	Fingerprint_prefixes []string
+
 	// Canonical name of this APEX bundle. Used to determine the path to the
 	// activated APEX on device (i.e. /apex/<apexVariationName>), and used for the
 	// apex mutator variations. For override_apex modules, this is the name of the
@@ -3489,6 +3493,7 @@ type bazelApexBundleAttributes struct {
 	Logging_parent        *string
 	Tests                 bazel.LabelListAttribute
 	Base_apex_name        *string
+	Fingerprint_prefixes  bazel.StringListAttribute
 }
 
 type convertedNativeSharedLibs struct {
@@ -3620,6 +3625,8 @@ func convertWithBp2build(a *apexBundle, ctx android.TopDownMutatorContext) (baze
 		loggingParent = &a.overridableProperties.Logging_parent
 	}
 
+	fingerprintPrefixesAttribute := bazel.MakeStringListAttribute(a.properties.Fingerprint_prefixes)
+
 	attrs := bazelApexBundleAttributes{
 		Manifest:              manifestLabelAttribute,
 		Android_manifest:      androidManifestLabelAttribute,
@@ -3638,6 +3645,7 @@ func convertWithBp2build(a *apexBundle, ctx android.TopDownMutatorContext) (baze
 		Package_name:          packageName,
 		Logging_parent:        loggingParent,
 		Tests:                 testsAttrs,
+		Fingerprint_prefixes:  fingerprintPrefixesAttribute,
 	}
 
 	props := bazel.BazelTargetModuleProperties{

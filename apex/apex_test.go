@@ -711,6 +711,67 @@ func TestApexManifest(t *testing.T) {
 	}
 }
 
+func TestApexFingerprintPrefixes(t *testing.T) {
+	ctx := testApex(t, `
+		apex_defaults {
+			name: "mydefault",
+			fingerprint_prefixes: ["foo"],
+			file_contexts: ":myapex-file_contexts",
+		}
+		apex {
+			name: "no_default",
+			key: "myapex.key",
+			updatable: false,
+			fingerprint_prefixes: ["bar"],
+			file_contexts: ":myapex-file_contexts",
+		}
+		apex {
+			name: "inherit_default",
+			defaults: ["mydefault"],
+			key: "myapex.key",
+			updatable: false,
+		}
+		apex {
+			name: "override_default",
+			key: "myapex.key",
+			defaults: ["mydefault"],
+			updatable: false,
+			fingerprint_prefixes: ["baz"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+	`)
+	testcases := []struct {
+		module string
+		prefix string
+	}{
+		{
+			module: "no_default",
+			prefix: "bar",
+		},
+		{
+			module: "inherit_default",
+			prefix: "foo",
+		},
+		{
+			module: "override_default",
+			prefix: "baz",
+		},
+	}
+	for _, tc := range testcases {
+		module := ctx.ModuleForTests(tc.module, "android_common_"+tc.module+"_image")
+		args := module.Rule("apexRule").Args
+		optFlags := args["opt_flags"]
+		if !strings.Contains(optFlags, "--fingerprint-prefix "+tc.prefix) {
+			t.Errorf("%s: Expected fingerprint-prefix=%s, got: %s", tc.module, tc.prefix, optFlags)
+		}
+	}
+
+}
 func TestApexManifestMinSdkVersion(t *testing.T) {
 	ctx := testApex(t, `
 		apex_defaults {

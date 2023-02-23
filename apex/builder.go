@@ -636,6 +636,12 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			optFlags = append(optFlags, "--test_only")
 		}
 
+		if len(a.properties.Fingerprint_prefixes) > 0 {
+			for _, prefix := range a.properties.Fingerprint_prefixes {
+				optFlags = append(optFlags, "--fingerprint-prefix "+prefix)
+			}
+		}
+
 		// Determine target/min sdk version from the context
 		// TODO(jiyong): make this as a function
 		moduleMinSdkVersion := a.minSdkVersion(ctx)
