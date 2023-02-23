@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5775732_568cace4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-23T21:46:27Z",
+      "side": 1,
+      "message": "Hi Jeongik+Justin, I have updated the CL to ensure that this refactoring is a no-op. Please let me know whether this looks reasonable.",
+      "revId": "90a131574b650ff0715b31f1a7d829428a417c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

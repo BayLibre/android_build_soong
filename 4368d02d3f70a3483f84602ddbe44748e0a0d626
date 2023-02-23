@@ -94,6 +94,30 @@
       },
       "revId": "4368d02d3f70a3483f84602ddbe44748e0a0d626",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46c50c0_976565e4",
+        "filename": "java/app_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-23T21:46:27Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I have updated the CL to make this refactor a no-op",
+      "parentUuid": "52d0db05_b271be6f",
+      "range": {
+        "startLine": 1136,
+        "startChar": 3,
+        "endLine": 1136,
+        "endChar": 47
+      },
+      "revId": "4368d02d3f70a3483f84602ddbe44748e0a0d626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
