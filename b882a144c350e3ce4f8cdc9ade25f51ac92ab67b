@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e5bc541_b6d076b2",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2412,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-23T00:45:22Z",
+      "side": 1,
+      "message": "Not in the future, but for now we need this as current apisurface sample has header libraries. I believe this can be removed once cc_api_headers definition is removed.",
+      "parentUuid": "fc60ac26_4985ad9e",
+      "range": {
+        "startLine": 2409,
+        "startChar": 2,
+        "endLine": 2412,
+        "endChar": 3
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f17e2d67_0f7a60f6",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55c4abb4_9376c511",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2924,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-23T00:45:22Z",
+      "side": 1,
+      "message": "This means that non ApexLibs library does not need to be replaced into API surface stub based on the APEX relationship.",
+      "parentUuid": "f17e2d67_0f7a60f6",
+      "range": {
+        "startLine": 2924,
+        "startChar": 39,
+        "endLine": 2924,
+        "endChar": 47
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6077c81d_bfdda32a",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -60,6 +108,30 @@
       "writtenOn": "2023-02-22T22:11:12Z",
       "side": 1,
       "message": "Since the apex_libraries are now available in `api_imports` as `apex_libs`, can we do the dependency rewriting for platform libraries during DepsMutator stage?",
+      "range": {
+        "startLine": 3327,
+        "startChar": 2,
+        "endLine": 3335,
+        "endChar": 3
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa14d48b_77bdaa06",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3335,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-23T00:45:22Z",
+      "side": 1,
+      "message": "No we can\u0027t because we cannot be sure if original definition or api surface definition should be used until post deps mutator (because APEX finds out all relationships from post deps mutator)",
+      "parentUuid": "6077c81d_bfdda32a",
       "range": {
         "startLine": 3327,
         "startChar": 2,

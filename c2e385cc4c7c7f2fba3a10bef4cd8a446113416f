@@ -22,6 +22,30 @@
       },
       "revId": "c2e385cc4c7c7f2fba3a10bef4cd8a446113416f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80a59a6_93e08768",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3293,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-23T00:45:22Z",
+      "side": 0,
+      "message": "No I just separated this part as a new function. I added a few more logic, but it was just for API surface with APEX stub, so it should be in the same CL.",
+      "parentUuid": "d3d27af1_4237d727",
+      "range": {
+        "startLine": 3247,
+        "startChar": 2,
+        "endLine": 3293,
+        "endChar": 3
+      },
+      "revId": "c2e385cc4c7c7f2fba3a10bef4cd8a446113416f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
