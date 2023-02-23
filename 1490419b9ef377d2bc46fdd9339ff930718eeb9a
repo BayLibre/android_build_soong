@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7f0bb4_bd08e684",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-02-23T19:28:11Z",
+      "side": 1,
+      "message": "Sorry, this comment was hurried and I confused some things. Branch info is already available from CI.\n\nThe previous draft of this CL relied on ANDROID_BUILD_TOP which isn\u0027t reliable if a user switches workspaces without re-running `lunch` from the new workspace. This way, $TOP is confirmed and works.\n\nI think I confused something and wrote CI based off of an earlier comment.",
+      "parentUuid": "f2047d6c_42186699",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "1490419b9ef377d2bc46fdd9339ff930718eeb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb238ee3_0c49c44e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-23T19:15:14Z",
       "side": 1,
       "message": "This is not a location anything in the build should be writing to (it\u0027s either dirtying the user\u0027s tree, or a readonly location with tools like gitc)",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "1490419b9ef377d2bc46fdd9339ff930718eeb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c996c757_2d922158",
+        "filename": "soong_ui.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-02-23T19:28:11Z",
+      "side": 1,
+      "message": "Thanks for chiming in. What would you recommend?\n\nI loathe the idea of an environment variable holding BRANCH_NAME and MANIFEST_NAME - soong args are possible, but I\u0027d prefer to minimize the amount of times git has to be called.",
+      "parentUuid": "cb238ee3_0c49c44e",
       "range": {
         "startLine": 35,
         "startChar": 14,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1e8f66d_d68e45f3",
+        "filename": "soong_ui.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-02-23T19:28:11Z",
+      "side": 1,
+      "message": "nice",
+      "parentUuid": "0256b864_59ef1309",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "1490419b9ef377d2bc46fdd9339ff930718eeb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd970948_861f9da3",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-02-23T19:15:14Z",
       "side": 1,
       "message": "This is expecting that `python3` is installed and working on the host system, which is not guaranteed. That appears to be one of the treehugger failures (mainline_modules_x86_64), since the python3 on the build servers is quite old.\n\nIf you ran this later, during soong_ui (where it could run in parallel to the build, and maybe even only when we\u0027re reporting metrics), then `python3` in `PATH` would be the prebuilt version.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "1490419b9ef377d2bc46fdd9339ff930718eeb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d5dd22_1170319a",
+        "filename": "soong_ui.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-02-23T19:28:11Z",
+      "side": 1,
+      "message": "We discussed running this during the metrics phase - it\u0027s not ideal since we\u0027d have to start doing edits to existing, serialized protos which have already been moved to a temporary directory. \n\nDo you think running from soong_ui is a better idea?",
+      "parentUuid": "dd970948_861f9da3",
       "range": {
         "startLine": 44,
         "startChar": 0,
