@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2047d6c_42186699",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-02-23T19:15:14Z",
+      "side": 1,
+      "message": "Doesn\u0027t this only work on non-CI cases? You should not be accessing git from CI.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "1490419b9ef377d2bc46fdd9339ff930718eeb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb238ee3_0c49c44e",
+        "filename": "soong_ui.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-02-23T19:15:14Z",
+      "side": 1,
+      "message": "This is not a location anything in the build should be writing to (it\u0027s either dirtying the user\u0027s tree, or a readonly location with tools like gitc)",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "1490419b9ef377d2bc46fdd9339ff930718eeb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0256b864_59ef1309",
+        "filename": "soong_ui.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-02-23T19:15:14Z",
+      "side": 1,
+      "message": "fyi, this looks like a typo: \",\" vs \".\"",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "1490419b9ef377d2bc46fdd9339ff930718eeb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd970948_861f9da3",
+        "filename": "soong_ui.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-02-23T19:15:14Z",
+      "side": 1,
+      "message": "This is expecting that `python3` is installed and working on the host system, which is not guaranteed. That appears to be one of the treehugger failures (mainline_modules_x86_64), since the python3 on the build servers is quite old.\n\nIf you ran this later, during soong_ui (where it could run in parallel to the build, and maybe even only when we\u0027re reporting metrics), then `python3` in `PATH` would be the prebuilt version.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "1490419b9ef377d2bc46fdd9339ff930718eeb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
