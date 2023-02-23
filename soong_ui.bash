@@ -31,4 +31,17 @@ soong_build_go mk2rbc android/soong/mk2rbc/cmd
 soong_build_go rbcrun rbcrun/cmd
 
 cd ${TOP}
+
+branchinfodoc=${TOP}/.branchinfo/branchinfo.json
+# Find git dir
+if [ -d "${TOP}/.git" ]; then
+  GIT_DIR=${TOP}/.git
+else 
+  GIT_DIR=${TOP}/.repo/manifests.git/
+fi
+
+if [ ! -f ${branchinfodoc} ]; then
+  $TOP/build/make/tools/write_branch_info.py  $branchinfodoc $GIT_DIR
+fi
+
 exec "$(getoutdir)/soong_ui" "$@"
