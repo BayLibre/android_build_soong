@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05d10b4a_43f6f28e",
+        "filename": "multitree/api_imports.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-23T03:58:19Z",
+      "side": 1,
+      "message": "Not necessarily. Some module in the /system can define stub which can be used by APEXes.",
+      "parentUuid": "a66be30c_35fb4724",
+      "range": {
+        "startLine": 45,
+        "startChar": 25,
+        "endLine": 45,
+        "endChar": 67
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d94f9934_93962a95",
         "filename": "multitree/api_imports.go",
         "patchSetId": 5

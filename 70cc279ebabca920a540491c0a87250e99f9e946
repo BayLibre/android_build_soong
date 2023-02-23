@@ -311,6 +311,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d02a1357_46579007",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9809,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-23T03:58:19Z",
+      "side": 1,
+      "message": "In general case (APEX for system), 2 also should be handled with apex stub interface. I think `libbar` of this test covers case where apex cc binary depends on platform library which defines apex stub.",
+      "parentUuid": "d9f1fb4e_5261d417",
+      "range": {
+        "startLine": 9809,
+        "startChar": 5,
+        "endLine": 9809,
+        "endChar": 49
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aee1c499_934062b4",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
@@ -1187,6 +1211,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7949ce92_3964172d",
+        "filename": "cc/library_stub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-23T03:58:19Z",
+      "side": 1,
+      "message": "Yes it is for the ninja rule.",
+      "parentUuid": "5b16d4f0_3b8e7011",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 37
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0205d58a_b4773d37",
         "filename": "cc/library_stub.go",
         "patchSetId": 1
@@ -1459,6 +1507,30 @@
       "side": 1,
       "message": "implementation nit for future discussion: Is it possible to _not_ create all these variations on the top-level `cc_api_library` and use `AddFarVariationDepdendencies` instead? I think it reduces a lot of the complexity here.",
       "parentUuid": "d15b0ba7_64098965",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "70cc279ebabca920a540491c0a87250e99f9e946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b546f376_677e3cc9",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-02-23T03:58:19Z",
+      "side": 1,
+      "message": "I think this topic keep comes up. Yes we can reduce a lot of complexity when we do not create all variations and add them properly. However, this is how soong adds dependency in general, so it would loss a lot of readability and debugability(?!). If we need optimization, I think we should do it over generic soong code (or at least in cc).",
+      "parentUuid": "7d6d6eda_74a9da95",
       "range": {
         "startLine": 71,
         "startChar": 7,
