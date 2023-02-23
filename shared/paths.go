@@ -45,7 +45,7 @@ func JoinPath(base string, rest ...string) string {
 	return result
 }
 
-// Given the out directory, returns the root of the temp directory (to be cleared at the start of each execution of Soong)
+// Given the out directory, returns the root of the temp directory (to be cleared at the Start of each execution of Soong)
 func TempDirForOutDir(outDir string) (tempPath string) {
 	return filepath.Join(outDir, ".temp")
 }
