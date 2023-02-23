@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cea8f0e8_1ab87546",
+        "filename": "soong_ui.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-02-23T19:43:45Z",
+      "side": 1,
+      "message": "If you want to write it into a file, put it in the out directory. Actually finding that directory is a bit annoying this early in the build, but the soong_build_go logic above does it. (It\u0027s fairly trivial inside soong_ui)",
+      "parentUuid": "c996c757_2d922158",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "1490419b9ef377d2bc46fdd9339ff930718eeb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0256b864_59ef1309",
         "filename": "soong_ui.bash",
         "patchSetId": 1
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "We discussed running this during the metrics phase - it\u0027s not ideal since we\u0027d have to start doing edits to existing, serialized protos which have already been moved to a temporary directory. \n\nDo you think running from soong_ui is a better idea?",
       "parentUuid": "dd970948_861f9da3",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "1490419b9ef377d2bc46fdd9339ff930718eeb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89fd3dac_104b8800",
+        "filename": "soong_ui.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-02-23T19:43:45Z",
+      "side": 1,
+      "message": "I haven\u0027t actually looked at what the python code is doing, but my suspicion is that moving this inside soong_ui would be better, yes. In general, keeping the pre-soong_ui logic short/fast is a good thing. Writing the logic directly in soong_ui may make more sense than calling out to python too, depends on what it\u0027s doing.\n\nDepending on where/how you integrate into soong_ui, it may be harder to call out into repo, as the same logic that adds the prebuilt python3 to the PATH also hides repo. (There\u0027s some desire to hide git as well, since nothing should be requiring it, but it\u0027s still available for now)",
+      "parentUuid": "69d5dd22_1170319a",
       "range": {
         "startLine": 44,
         "startChar": 0,
