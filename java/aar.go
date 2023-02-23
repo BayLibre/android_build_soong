@@ -219,15 +219,25 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 	linkFlags = append(linkFlags, android.JoinWithPrefix(assetDirStrings, "-A "))
 	linkDeps = append(linkDeps, assetDeps...)
 
+	// Returns the effective version for {min|target}_sdk_version
+	effectiveVersionString := func(sdkVersion android.SdkSpec, deviceApiLevel android.ApiLevel) string {
+		// If {min|target}_sdk_version is current, use sdk_version to determine the effective level
+		// This is necessary for vendor modules.
+		// The effective version does not _only_ depend on {min|target}_sdk_version(level),
+		// but also on the sdk_version (kind+level)
+		if deviceApiLevel.IsCurrent() {
+			ret, err := sdkVersion.EffectiveVersionString(ctx)
+			if err != nil {
+				ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
+			}
+			return ret
+		}
+		return deviceApiLevel.String()
+	}
 	// SDK version flags
-	minSdkVersion, err := sdkContext.MinSdkVersion(ctx).EffectiveVersionString(ctx)
-	if err != nil {
-		ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
-	}
-	targetSdkVersion, err := sdkContext.TargetSdkVersion(ctx).EffectiveVersionString(ctx)
-	if err != nil {
-		ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
-	}
+	sdkVersion := sdkContext.SdkVersion(ctx)
+	minSdkVersion := effectiveVersionString(sdkVersion, sdkContext.MinSdkVersion(ctx).ApiLevel)
+	targetSdkVersion := effectiveVersionString(sdkVersion, sdkContext.TargetSdkVersion(ctx).ApiLevel)
 
 	linkFlags = append(linkFlags, "--min-sdk-version "+minSdkVersion)
 	linkFlags = append(linkFlags, "--target-sdk-version "+targetSdkVersion)
