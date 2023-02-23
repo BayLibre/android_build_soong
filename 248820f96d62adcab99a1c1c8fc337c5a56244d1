@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be5ec6e9_20a05a20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-23T22:44:33Z",
+      "side": 1,
+      "message": "I think it has always been this way since it was copied from Make.  The build system often doesn\u0027t have accurate knowledge of targetSdkVersion, it may only be set in AndroidManifest.xml.\n\nThere is a slight change in behavior here when the `target_sdk_version` property is unset that may be unexpected, `TargetSdkVersion()` falls back to `SdkVersion()`, not `MinSdkVersion()`.  That may be fine though.",
+      "parentUuid": "62de5d81_dcef7246",
+      "revId": "248820f96d62adcab99a1c1c8fc337c5a56244d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b12acdb9_ae436905",
         "filename": "java/aar.go",
         "patchSetId": 1
