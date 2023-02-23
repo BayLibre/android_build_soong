@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b7f241_a91297f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-23T18:25:00Z",
+      "side": 1,
+      "message": "The soong changes look fine but I\u0027ll leave it to Ulya to check to make sure that they make sense for dexpreopting.",
+      "revId": "8e9ea8bb83bdab080c696d05eb1676b8dba0d35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
