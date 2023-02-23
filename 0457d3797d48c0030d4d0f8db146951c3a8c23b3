@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8136a576_fce0838f",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-23T18:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57ccb34a_c5dfe22a",
+      "range": {
+        "startLine": 296,
+        "startChar": 1,
+        "endLine": 298,
+        "endChar": 2
+      },
+      "revId": "0457d3797d48c0030d4d0f8db146951c3a8c23b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "769dc5f8_acf439b4",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4228fd1_267af675",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-23T18:42:23Z",
+      "side": 1,
+      "message": "I think the changes here are more about extending platform_bootclasspath to generate multiple boot images, so they should belong to this CL, where we start to use platform_bootclasspath to also generate a boot image for mainline boot jars.",
+      "parentUuid": "769dc5f8_acf439b4",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 140
+      },
+      "revId": "0457d3797d48c0030d4d0f8db146951c3a8c23b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94fd0198_3d0e9763",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-02-23T18:33:50Z",
       "side": 1,
       "message": "I think this is supposed to have the name of the function.",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "0457d3797d48c0030d4d0f8db146951c3a8c23b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91f9add8_282f39e5",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-23T18:42:23Z",
+      "side": 1,
+      "message": "I don\u0027t see why we need to duplicate the name but okay since it\u0027s an established style.",
+      "parentUuid": "94fd0198_3d0e9763",
       "range": {
         "startLine": 33,
         "startChar": 3,
