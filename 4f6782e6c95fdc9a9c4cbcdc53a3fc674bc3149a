@@ -16,6 +16,109 @@
       "message": "Friendly ping",
       "revId": "4f6782e6c95fdc9a9c4cbcdc53a3fc674bc3149a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d45f7dc9_a552ae86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-23T11:54:34Z",
+      "side": 1,
+      "message": "I skimmed it quickly. It is a big change that mixes refactorings like renames and restructurings to handle multiple additional images instead of just a single one, with functional changes which makes it very difficult to review.\n\nPlease could you split this into separate changes. I\u0027ve pointed out a few places where it looks like a pure refactoring but there may be others.",
+      "revId": "4f6782e6c95fdc9a9c4cbcdc53a3fc674bc3149a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04d86c51_66be5fc6",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-23T11:54:34Z",
+      "side": 1,
+      "message": "Does this mean that we can now have a hierarchy of images that are 3 deep (art, framework, mainline) instead of just 2 (art, framework)?\n\nThis rename should be done as a separate (or at least part of a separate) refactoring change.",
+      "range": {
+        "startLine": 320,
+        "startChar": 1,
+        "endLine": 320,
+        "endChar": 11
+      },
+      "revId": "4f6782e6c95fdc9a9c4cbcdc53a3fc674bc3149a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c015a48_24f5c146",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-23T11:54:34Z",
+      "side": 1,
+      "message": "This whole block is quite confusing. It accesses the default (aka framework) boot image config first which calls `genBootImageConfigs()` and then calls `genBootImageConfigs()` to get all the image configs.\n\nI think it would be clearer if it was commented and created all the images first,then got the default (maybe renamed to framework) and then set up the fields in `d`.\n\nThis appears to be a pure refactoring so should be separated out into its own change, or a separate refactoring change to make that clearer.",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 1
+      },
+      "revId": "4f6782e6c95fdc9a9c4cbcdc53a3fc674bc3149a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5830c13e_ba1c260a",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-23T11:54:34Z",
+      "side": 1,
+      "message": "This does not match the function name.",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "4f6782e6c95fdc9a9c4cbcdc53a3fc674bc3149a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c939aa1_0eee8a64",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-23T11:54:34Z",
+      "side": 1,
+      "message": "If you move this before the previous change the diff looks better and makes it clearer what is being done.",
+      "revId": "4f6782e6c95fdc9a9c4cbcdc53a3fc674bc3149a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
