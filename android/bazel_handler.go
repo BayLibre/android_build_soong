@@ -539,7 +539,7 @@ func NewBazelContext(c *config) (BazelContext, error) {
 	}
 
 	return &mixedBuildBazelContext{
-		bazelRunner:           &builtinBazelRunner{},
+		bazelRunner:           &builtinBazelRunner{c.UseBazelProxy, absolutePath(c.outDir)},
 		paths:                 &paths,
 		modulesDefaultToBazel: c.BuildMode == BazelDevMode,
 		bazelEnabledModules:   enabledModules,
@@ -607,7 +607,10 @@ func (r *mockBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd, _ *metrics.Event
 	return "", "", nil
 }
 
-type builtinBazelRunner struct{}
+type builtinBazelRunner struct {
+	useBazelProxy bool
+	outDir        string
+}
 
 // Issues the given bazel command with given build label and additional flags.
 // Returns (stdout, stderr, error). The first and second return values are strings
@@ -616,14 +619,25 @@ type builtinBazelRunner struct{}
 func (r *builtinBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd, eventHandler *metrics.EventHandler) (string, string, error) {
 	eventHandler.Begin("bazel command")
 	defer eventHandler.End("bazel command")
-	stderr := &bytes.Buffer{}
-	bazelCmd.Stderr = stderr
-	if output, err := bazelCmd.Output(); err != nil {
-		return "", string(stderr.Bytes()),
-			fmt.Errorf("bazel command failed: %s\n---command---\n%s\n---env---\n%s\n---stderr---\n%s---",
-				err, bazelCmd, strings.Join(bazelCmd.Env, "\n"), stderr)
+
+	if r.useBazelProxy {
+		proxyClient := bazel.NewBazelProxyClient(r.outDir)
+		resp, err := proxyClient.IssueCommand(bazel.BazelCmdRequest{bazelCmd.Args[1:], bazelCmd.Env})
+
+		if err != nil {
+			return "", "", err
+		}
+		return resp.Stdout, resp.Stderr, resp.Err
 	} else {
-		return string(output), string(stderr.Bytes()), nil
+		stderr := &bytes.Buffer{}
+		bazelCmd.Stderr = stderr
+		if output, err := bazelCmd.Output(); err != nil {
+			return "", string(stderr.Bytes()),
+				fmt.Errorf("bazel command failed: %s\n---command---\n%s\n---env---\n%s\n---stderr---\n%s---",
+					err, bazelCmd, strings.Join(bazelCmd.Env, "\n"), stderr)
+		} else {
+			return string(output), string(stderr.Bytes()), nil
+		}
 	}
 }
 
