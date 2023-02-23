@@ -224,9 +224,13 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 	if err != nil {
 		ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
 	}
+	targetSdkVersion, err := sdkContext.TargetSdkVersion(ctx).EffectiveVersionString(ctx)
+	if err != nil {
+		ctx.ModuleErrorf("invalid targetSdkVersion: %s", err)
+	}
 
 	linkFlags = append(linkFlags, "--min-sdk-version "+minSdkVersion)
-	linkFlags = append(linkFlags, "--target-sdk-version "+minSdkVersion)
+	linkFlags = append(linkFlags, "--target-sdk-version "+targetSdkVersion)
 
 	// Version code
 	if !hasVersionCode {
