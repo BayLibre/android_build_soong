@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b1f5c0_6c004678",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T17:11:47Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I was just arguing that the changes here are less connected to the refactoring changes in the previous CL than to this CL. I\u0027m okay with putting the changes in a separate CL. I created aosp/2456029.",
+      "parentUuid": "ee2e5cf6_e1152468",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 140
+      },
+      "revId": "0457d3797d48c0030d4d0f8db146951c3a8c23b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94fd0198_3d0e9763",

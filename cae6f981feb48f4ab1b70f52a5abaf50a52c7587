@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8067847b_4dfc745e",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T17:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b47d2db_e5d1a8d7",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 409,
+        "endChar": 36
+      },
+      "revId": "cae6f981feb48f4ab1b70f52a5abaf50a52c7587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73b61a01_c6578c49",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-02-24T14:33:43Z",
       "side": 1,
       "message": "This is not image specific so should be moved to the caller to avoid it being called multiple times.",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 419,
+        "endChar": 2
+      },
+      "revId": "cae6f981feb48f4ab1b70f52a5abaf50a52c7587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8564c176_394e7424",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T17:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73b61a01_c6578c49",
       "range": {
         "startLine": 416,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd3d7aa7_c14ec665",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T17:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "119d0c28_6aecbad3",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 0
+      },
+      "revId": "cae6f981feb48f4ab1b70f52a5abaf50a52c7587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "554ae635_dcf7e123",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-02-24T14:33:43Z",
       "side": 1,
       "message": "Rather than call this conditionally here this should be moved to the caller and it can be called unconditionally directly on the default boot image config. That might justify passing in the image to the method rather than the image name.",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 444,
+        "endChar": 2
+      },
+      "revId": "cae6f981feb48f4ab1b70f52a5abaf50a52c7587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c4398f9_fd9ffa85",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T17:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "554ae635_dcf7e123",
       "range": {
         "startLine": 442,
         "startChar": 1,
