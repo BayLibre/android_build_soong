@@ -53,6 +53,7 @@ android_app {
 				"srcs":           `["app.java"]`,
 				"manifest":       `"AndroidManifest.xml"`,
 				"resource_files": `["res/res.png"]`,
+				"sdk_version":    `"current"`,
 			}),
 		}})
 }
@@ -91,7 +92,8 @@ android_app {
     ]`,
 				"custom_package":   `"com.google"`,
 				"deps":             `[":static_lib_dep"]`,
-				"javacopts":        `["-source 1.7 -target 1.7"]`,
+				"java_version":     `"7"`,
+				"sdk_version":      `"current"`,
 				"certificate_name": `"foocert"`,
 			}),
 		}})
@@ -131,6 +133,7 @@ android_app {
     })`,
 				"manifest":       `"AndroidManifest.xml"`,
 				"resource_files": `["res/res.png"]`,
+				"sdk_version":    `"current"`,
 			}),
 		}})
 }
