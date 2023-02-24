@@ -326,20 +326,8 @@ type overridableProperties struct {
 	// List of prebuilt files that are embedded inside this APEX bundle.
 	Prebuilts []string
 
-	// List of runtime resource overlays (RROs) that are embedded inside this APEX.
-	Rros []string
-
 	// List of BPF programs inside this APEX bundle.
 	Bpfs []string
-
-	// List of bootclasspath fragments that are embedded inside this APEX bundle.
-	Bootclasspath_fragments []string
-
-	// List of systemserverclasspath fragments that are embedded inside this APEX bundle.
-	Systemserverclasspath_fragments []string
-
-	// List of java libraries that are embedded inside this APEX bundle.
-	Java_libs []string
 
 	// Names of modules to be overridden. Listed modules can only be other binaries (in Make or
 	// Soong). This does not completely prevent installation of the overridden binaries, but if
