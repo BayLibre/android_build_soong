@@ -1502,6 +1502,8 @@ type bazelAndroidAppAttributes struct {
 	Custom_package   *string
 	Certificate      bazel.LabelAttribute
 	Certificate_name bazel.StringAttribute
+	Sdk_version      bazel.StringAttribute
+	Java_version     bazel.StringAttribute
 }
 
 // ConvertWithBp2build is used to convert android_app to Bazel.
@@ -1515,12 +1517,21 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	aapt := a.convertAaptAttrsWithBp2Build(ctx)
 
 	certificate, certificateName := android.BazelStringOrLabelFromProp(ctx, a.overridableAppProperties.Certificate)
+	var javaVersion string
+	if a.properties.Java_version != nil {
+		javaVersion = normalizeJavaVersion(ctx, *a.properties.Java_version).String()
+	} else {
+		javaVersion = defaultJavaLanguageVersion(ctx, android.SdkContext(a).SdkVersion(ctx)).String()
+	}
+	sdkVersion := a.SdkVersion(ctx).String()
 
 	appAttrs := &bazelAndroidAppAttributes{
 		// TODO(b/209576404): handle package name override by product variable PRODUCT_MANIFEST_PACKAGE_NAME_OVERRIDES
 		Custom_package:   a.overridableAppProperties.Package_name,
 		Certificate:      certificate,
 		Certificate_name: certificateName,
+		Java_version:     bazel.StringAttribute{Value: &javaVersion},
+		Sdk_version:      bazel.StringAttribute{Value: &sdkVersion},
 	}
 
 	props := bazel.BazelTargetModuleProperties{

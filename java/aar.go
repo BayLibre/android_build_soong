@@ -1078,6 +1078,14 @@ func (a *AndroidLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) 
 		commonAttrs.Common_srcs = bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, a.properties.Common_srcs))
 	}
 
+	var javaVersion string
+	if a.properties.Java_version != nil {
+		javaVersion = normalizeJavaVersion(ctx, *a.properties.Java_version).String()
+	} else {
+		javaVersion = defaultJavaLanguageVersion(ctx, android.SdkContext(a).SdkVersion(ctx)).String()
+	}
+	sdkVersion := a.SdkVersion(ctx).String()
+
 	name := a.Name()
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "android_library",
@@ -1092,6 +1100,8 @@ func (a *AndroidLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) 
 				javaCommonAttributes: commonAttrs,
 				Deps:                 deps,
 				Exports:              depLabels.StaticDeps,
+				Java_version:         bazel.StringAttribute{Value: &javaVersion},
+				Sdk_version:          bazel.StringAttribute{Value: &sdkVersion},
 			},
 			a.convertAaptAttrsWithBp2Build(ctx),
 		},
