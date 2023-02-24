@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "576439fd_3928ca16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-24T01:59:09Z",
+      "side": 1,
+      "message": "I believe this is going to produce misleading results in CI.  Incremental CI builds use trident, which shares a disk image that contains sources and the out directory from a post submit build.  Treehugger then picks a base build, which should be something newer than the trident build, but generally won\u0027t be the same as the trident build.  The presubmit build syncs the sources from the base build, then cherry-picks the presubmit changes on top, and builds.  This code will see all the changes between the trident build and the base build, plus the CLs being tested.\n\nIf a CL is submitted that changes something fundamental and causes all the outputs to change (for example a clang update), then all test runs until the next trident build is minted will result in a huge spike in test load.\n\ngo/compare-target-files produces similar output by comparing the target-files.zip from the presubmit build to its base build.  It has different problems though, as there is no guarantee the base build was built.",
+      "revId": "e9e5e93e1a6faaad012d1c49fb83e710780d9e61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc9f4131_167e929c",
         "filename": "ui/build/staging_snapshot.go",
         "patchSetId": 3
