@@ -2790,9 +2790,11 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 
 type javaLibraryAttributes struct {
 	*javaCommonAttributes
-	Deps      bazel.LabelListAttribute
-	Exports   bazel.LabelListAttribute
-	Neverlink bazel.BoolAttribute
+	Deps         bazel.LabelListAttribute
+	Exports      bazel.LabelListAttribute
+	Neverlink    bazel.BoolAttribute
+	Sdk_version  bazel.StringAttribute
+	Java_version bazel.StringAttribute
 }
 
 func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
@@ -2802,21 +2804,23 @@ func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 	deps := depLabels.Deps
 	if !commonAttrs.Srcs.IsEmpty() {
 		deps.Append(depLabels.StaticDeps) // we should only append these if there are sources to use them
-
-		sdkVersion := m.SdkVersion(ctx)
-		if sdkVersion.Kind == android.SdkPublic && sdkVersion.ApiLevel == android.FutureApiLevel {
-			// TODO(b/220869005) remove forced dependency on current public android.jar
-			deps.Add(bazel.MakeLabelAttribute("//prebuilts/sdk:public_current_android_sdk_java_import"))
-		}
 	} else if !deps.IsEmpty() {
 		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
 	}
-
+	var javaVersion string
+	if m.properties.Java_version != nil {
+		javaVersion = normalizeJavaVersion(ctx, *m.properties.Java_version).String()
+	} else {
+		javaVersion = defaultJavaLanguageVersion(ctx, android.SdkContext(m).SdkVersion(ctx)).String()
+	}
+	sdkVersion := m.SdkVersion(ctx).String()
 	var props bazel.BazelTargetModuleProperties
 	attrs := &javaLibraryAttributes{
 		javaCommonAttributes: commonAttrs,
 		Deps:                 deps,
 		Exports:              depLabels.StaticDeps,
+		Java_version:         bazel.StringAttribute{Value: &javaVersion},
+		Sdk_version:          bazel.StringAttribute{Value: &sdkVersion},
 	}
 	name := m.Name()
 
