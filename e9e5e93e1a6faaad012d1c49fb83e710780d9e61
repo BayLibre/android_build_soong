@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "783bf9d3_b008e702",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-02-24T20:22:37Z",
+      "side": 1,
+      "message": "Treehugger has two modes, and currently races them most of the time, but there are attempts to reduce that:\n\nBuild/test against LKGB: In this case, treehugger and trident try to agree on a base build, so there won\u0027t be anything except your change on top. Usually they find a common build, but can fail, especially in long failing builds (we\u0027ve seen this when recovering from long outages).\n\nBuild/test against TOT: We\u0027ll take the most recent trident build, and sync to a more recent build, apply your changes, and do the build. (These get cancelled often since they\u0027ll usually be longer than LKGB)\n\nIn both cases, if your changes include a merge commit, or fail to cherry-pick, we\u0027ll do a `git merge` of your change, which may introduce more changes on top of whichever base build is chosen.\n\n---\n\nSo I\u0027d agree with Colin that the efficiency of this optimization will go down in TOT and other edge cases, but I\u0027d assert it\u0027s still likely an improvement over what we have today. And just like incremental builds can be as big as full builds, test capacity will need to keep that in mind (that surges will happen, but we can bring down the average use in good times).",
+      "parentUuid": "576439fd_3928ca16",
+      "revId": "e9e5e93e1a6faaad012d1c49fb83e710780d9e61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc9f4131_167e929c",
         "filename": "ui/build/staging_snapshot.go",
         "patchSetId": 3
