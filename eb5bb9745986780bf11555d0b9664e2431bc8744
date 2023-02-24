@@ -289,6 +289,30 @@
       },
       "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d765d161_d6dfe255",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T14:32:25Z",
+      "side": 1,
+      "message": "Note that a boot image config only has a pointer to the parent, not to children. Therefore, we have to go in the reverse direction: we are going from the leaves to the root rather than from the root to the leaves.\n\nThe constraint we have is that we must finish the visit of the parent before we visit a child.\n\nThe `visited` map makes this possible: we use a for loop on line 134 to start from every node, go to the parent, visit it, or skip it if it\u0027s already visited, then go back to visit the child.\n\nHere\u0027s an example:\n\nThe tree is:\n\n```\n  B\n  |\n  A\n / \\\nC   D\n```\n\nThe sequence of the configs is `[A B C D]`.\n\nIteration 1:\n\nStart from A -\u003e Go to B -\u003e Visit B -\u003e Visit A\n\nIteration 2:\n\nStart from B (skipped)\n\nIteration 3:\n\nStart from C -\u003e Go to A (skipped) -\u003e Visit C\n\nIteration 4:\n\nStart from D -\u003e Go to A (skipped) -\u003e Visit D\n\nThe sequence above is just an example. With this algorithm, we can handle any sequence of the configs. Actually, the sequence of the configs is non-deterministic because it come from the map returned by `genBootImageConfigRaw`.\n\nIf we don\u0027t use this way, we\u0027ll have to find the root, find the children of every node, maintain this information somewhere, and then start the visit from the root. The use of the `visited` map can be avoided, but the code will be more complicated.",
+      "parentUuid": "96bccadb_d9a4b27e",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
