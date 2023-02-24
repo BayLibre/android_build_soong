@@ -56,19 +56,24 @@ func TestJavaBinaryHost(t *testing.T) {
     java_version: "8",
 }`,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("java_binary", "java-binary-host-1", AttrNameToString{
-				"srcs":       `["a.java"]`,
-				"main_class": `"com.android.test.MainClass"`,
-				"deps":       `["//other:jni-lib-1"]`,
-				"jvm_flags":  `["-Djava.library.path=$${RUNPATH}other"]`,
-				"javacopts": `[
-        "-Xdoclint:all/protected",
-        "-source 1.8 -target 1.8",
-    ]`,
+			MakeBazelTarget("java_library", "java-binary-host-1_lib", AttrNameToString{
+				"srcs":         `["a.java"]`,
+				"deps":         `["//other:jni-lib-1"]`,
+				"java_version": `"8"`,
+				"javacopts":    `["-Xdoclint:all/protected"]`,
 				"target_compatible_with": `select({
         "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
         "//conditions:default": [],
     })`,
+			}),
+			MakeBazelTarget("java_binary", "java-binary-host-1", AttrNameToString{
+				"main_class": `"com.android.test.MainClass"`,
+				"jvm_flags":  `["-Djava.library.path=$${RUNPATH}other"]`,
+				"target_compatible_with": `select({
+        "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    })`,
+				"runtime_deps": `[":java-binary-host-1_lib"]`,
 			}),
 		},
 	})
