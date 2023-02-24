@@ -2763,10 +2763,6 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		}
 	}
 
-	if m.properties.Static_libs != nil {
-		staticDeps.Append(android.BazelLabelForModuleDeps(ctx, android.LastUniqueStrings(android.CopyOf(m.properties.Static_libs))))
-	}
-
 	protoDepLabel := bp2buildProto(ctx, &m.Module, srcPartitions[protoSrcPartition])
 	// Soong does not differentiate between a java_library and the Bazel equivalent of
 	// a java_proto_library + proto_library pair. Instead, in Soong proto sources are
@@ -2779,6 +2775,15 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	depLabels := &javaDependencyLabels{}
 	depLabels.Deps = deps
 	depLabels.StaticDeps = bazel.MakeLabelListAttribute(staticDeps)
+
+	for axis, configToProps := range archVariantProps {
+		for config, _props := range configToProps {
+			if archProps, ok := _props.(*CommonProperties); ok {
+				archStaticLibs := android.BazelLabelForModuleDeps(ctx, archProps.Static_libs)
+				depLabels.StaticDeps.SetSelectValue(axis, config, archStaticLibs)
+			}
+		}
+	}
 
 	bp2BuildInfo := &bp2BuildJavaInfo{
 		DepLabels:     depLabels,

@@ -129,6 +129,7 @@ var (
 		"external/f2fs-tools":                    Bp2BuildDefaultTrue,
 		"external/flac":                          Bp2BuildDefaultTrueRecursively,
 		"external/fmtlib":                        Bp2BuildDefaultTrueRecursively,
+		"external/guava":                         Bp2BuildDefaultTrueRecursively,
 		"external/google-benchmark":              Bp2BuildDefaultTrueRecursively,
 		"external/googletest":                    Bp2BuildDefaultTrueRecursively,
 		"external/gwp_asan":                      Bp2BuildDefaultTrueRecursively,
@@ -373,7 +374,6 @@ var (
 		"external/bazelbuild-rules_license":/* recursive = */ true,
 		"external/bazelbuild-kotlin-rules":/* recursive = */ true,
 		"external/bazel-skylib":/* recursive = */ true,
-		"external/guava":/* recursive = */ true,
 		"external/protobuf":/* recursive = */ false,
 		"external/python/absl-py":/* recursive = */ true,
 
