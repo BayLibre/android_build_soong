@@ -313,6 +313,30 @@
       },
       "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7fc019_8e98664b",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-02-24T14:37:52Z",
+      "side": 1,
+      "message": "\u003e Note that a boot image config only has a pointer to the parent, not to children. \n\nAh! That explains it. Please add this info to the comment (it looks weird to have `visited` for a tree DFS for someone who does not keep in mind that the visit is in reverse direction). No need to add the example, just the note about links to parent and reverse direction of the visit.",
+      "parentUuid": "d765d161_d6dfe255",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
