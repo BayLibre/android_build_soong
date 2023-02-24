@@ -22,6 +22,30 @@
       },
       "revId": "8fe3a415b5620ea7e0edd83a031ebaedbe570d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c161ae_52ddc3c7",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T17:29:28Z",
+      "side": 0,
+      "message": "Yes, I dropped it intentionally. I don\u0027t like things that can quietly misbehave :)",
+      "parentUuid": "701d2eba_ae46f97c",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 2
+      },
+      "revId": "8fe3a415b5620ea7e0edd83a031ebaedbe570d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
