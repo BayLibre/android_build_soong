@@ -16,6 +16,23 @@
       "message": "Would you mind taking a look at this",
       "revId": "e9e5e93e1a6faaad012d1c49fb83e710780d9e61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9f4131_167e929c",
+        "filename": "ui/build/staging_snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-02-24T00:30:06Z",
+      "side": 1,
+      "message": "readJson, takeStagingSnapshot, sha1hash, and writeJson should return errors and they should be handled here.",
+      "revId": "e9e5e93e1a6faaad012d1c49fb83e710780d9e61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
