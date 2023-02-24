@@ -209,6 +209,9 @@ func (d *DeviceHostConverter) ConvertWithBp2build(ctx android.TopDownMutatorCont
 	neverLinkAttrs := &javaLibraryAttributes{
 		Exports:   bazel.MakeSingleLabelListAttribute(bazel.Label{Label: ":" + d.Name()}),
 		Neverlink: bazel.BoolAttribute{Value: &neverlinkProp},
+		javaCommonAttributes: &javaCommonAttributes{
+			Sdk_version: Proptools.StringPtr("none"),
+		},
 	}
 	ctx.CreateBazelTargetModule(
 		javaLibraryBazelTargetModuleProperties(),
