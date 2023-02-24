@@ -16,6 +16,23 @@
       "message": "Once again thanks for splitting the change up. They are so much easier to review.",
       "revId": "3830308fb8be13df66437b9798122789c85c7e37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f3c20c7_535507dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T17:30:26Z",
+      "side": 1,
+      "message": "FYI, the build failure is because the aosp/2453067 is not yet merged into internal master by automerger.",
+      "revId": "3830308fb8be13df66437b9798122789c85c7e37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
