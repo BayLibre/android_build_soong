@@ -76,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc2914fe_25f4f00b",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T12:32:02Z",
+      "side": 1,
+      "message": "There isn\u0027t a set in go AFAIK. The boot image names are unique because they come from `genBootImageConfigRaw` above, which also returns a map and would fail in the first place if the names were not unique.",
+      "parentUuid": "ff447efc_66810da2",
+      "range": {
+        "startLine": 142,
+        "startChar": 82,
+        "endLine": 142,
+        "endChar": 97
+      },
+      "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "459bea5d_68c4d1cb",
@@ -89,6 +113,30 @@
       "writtenOn": "2023-02-24T12:14:03Z",
       "side": 1,
       "message": "This should go before the recursive call on line 147, otherwise there\u0027s nothing to stop endless recursion.\n\nCan we add a test for this and observe endless loop before the fix?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35883dbe_d4ab2c57",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T12:32:02Z",
+      "side": 1,
+      "message": "I think it is correct that this line should go here. We shouldn\u0027t support boot image configs that form an endless loop. For example, if A extends B, B extends C, C extends A, then this code is expected to encounter a stack overflow and fail.\n\nIf I move this line before line 147, then in the endless loop case above, this code will success and produce wrong results. That\u0027s not the desired behavior.",
+      "parentUuid": "459bea5d_68c4d1cb",
       "range": {
         "startLine": 149,
         "startChar": 0,
