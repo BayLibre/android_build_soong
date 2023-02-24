@@ -19,12 +19,14 @@ import (
 	"io"
 
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/dexpreopt"
 )
 
 type DeviceHostConverter struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
+	android.BazelModuleBase
 
 	properties DeviceHostConverterProperties
 
@@ -59,6 +61,7 @@ func DeviceForHostFactory() android.Module {
 	module.AddProperties(&module.properties)
 
 	InitJavaModule(module, android.HostSupported)
+	android.InitBazelModule(module)
 	return module
 }
 
@@ -76,6 +79,7 @@ func HostForDeviceFactory() android.Module {
 	module.AddProperties(&module.properties)
 
 	InitJavaModule(module, android.DeviceSupported)
+	android.InitBazelModule(module)
 	return module
 }
 
@@ -185,4 +189,22 @@ func (d *DeviceHostConverter) AndroidMk() android.AndroidMkData {
 			},
 		},
 	}
+}
+
+type bazelDeviceHostConverterAttributes struct {
+	Deps bazel.LabelListAttribute
+}
+
+func (d *DeviceHostConverter) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "java_host_for_device",
+			Bzl_load_location: "//build/bazel/rules/java:host_for_device.bzl",
+		},
+		android.CommonAttributes{Name: d.Name()},
+		&bazelDeviceHostConverterAttributes{
+			Deps: bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, d.properties.Libs)),
+		},
+	)
+
 }
