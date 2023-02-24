@@ -2607,10 +2607,12 @@ func (m *Library) convertJavaResourcesAttributes(ctx android.TopDownMutatorConte
 
 type javaCommonAttributes struct {
 	*javaResourcesAttributes
-	Srcs        bazel.LabelListAttribute
-	Plugins     bazel.LabelListAttribute
-	Javacopts   bazel.StringListAttribute
-	Common_srcs bazel.LabelListAttribute
+	Srcs         bazel.LabelListAttribute
+	Plugins      bazel.LabelListAttribute
+	Javacopts    bazel.StringListAttribute
+	Common_srcs  bazel.LabelListAttribute
+	Sdk_version  bazel.StringAttribute
+	Java_version bazel.StringAttribute
 }
 
 type javaDependencyLabels struct {
@@ -2751,7 +2753,9 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		Plugins: bazel.MakeLabelListAttribute(
 			android.BazelLabelForModuleDeps(ctx, m.properties.Plugins),
 		),
-		Javacopts: bazel.MakeStringListAttribute(javacopts),
+		Javacopts:    bazel.MakeStringListAttribute(javacopts),
+		Java_version: bazel.StringAttribute{Value: m.properties.Java_version},
+		Sdk_version:  bazel.StringAttribute{Value: m.deviceProperties.Sdk_version},
 	}
 
 	for axis, configToProps := range archVariantProps {
@@ -2807,19 +2811,9 @@ func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 	deps := depLabels.Deps
 	if !commonAttrs.Srcs.IsEmpty() {
 		deps.Append(depLabels.StaticDeps) // we should only append these if there are sources to use them
-
-		sdkVersion := m.SdkVersion(ctx)
-		if sdkVersion.Kind == android.SdkPublic && sdkVersion.ApiLevel == android.FutureApiLevel {
-			// TODO(b/220869005) remove forced dependency on current public android.jar
-			deps.Add(bazel.MakeLabelAttribute("//prebuilts/sdk:public_current_android_sdk_java_import"))
-		} else if sdkVersion.Kind == android.SdkSystem && sdkVersion.ApiLevel == android.FutureApiLevel {
-			// TODO(b/215230098) remove forced dependency on current public android.jar
-			deps.Add(bazel.MakeLabelAttribute("//prebuilts/sdk:system_current_android_sdk_java_import"))
-		}
 	} else if !deps.IsEmpty() {
 		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
 	}
-
 	var props bazel.BazelTargetModuleProperties
 	attrs := &javaLibraryAttributes{
 		javaCommonAttributes: commonAttrs,

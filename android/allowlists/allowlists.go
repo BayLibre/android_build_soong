@@ -397,7 +397,7 @@ var (
 		"prebuilts/clang-tools":/* recursive = */ true,
 		"prebuilts/gcc":/* recursive = */ true,
 		"prebuilts/build-tools":/* recursive = */ true,
-		"prebuilts/jdk/jdk11":/* recursive = */ false,
+		"prebuilts/jdk/jdk11":/* recursive = */ true,
 		"prebuilts/misc":/* recursive = */ false, // not recursive because we need bp2build converted build files in prebuilts/misc/common/asm
 		"prebuilts/sdk":/* recursive = */ false,
 		"prebuilts/sdk/tools":/* recursive = */ false,
@@ -695,6 +695,8 @@ var (
 		"non-updatable-system-current.txt",
 		"non-updatable-module-lib-current.txt",
 		"non-updatable-system-server-current.txt",
+
+		"android-common",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
@@ -824,7 +826,6 @@ var (
 		"libgmock_ndk",                                            // depends on unconverted modules: libgtest_ndk_c++
 		"libnativehelper_lazy_mts_jni", "libnativehelper_mts_jni", // depends on unconverted modules: libnativetesthelper_jni, libgmock_ndk
 		"libnativetesthelper_jni",   // depends on unconverted modules: libgtest_ndk_c++
-		"libprotobuf-java-nano",     // b/220869005, depends on non-public_current SDK
 		"libstatslog",               // depends on unconverted modules: libstatspull, statsd-aidl-ndk
 		"libstatslog_art",           // depends on unconverted modules: statslog_art.cpp, statslog_art.h
 		"linker_reloc_bench_main",   // depends on unconverted modules: liblinker_reloc_bench_*
