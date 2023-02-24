@@ -124,6 +124,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a95cb5fd_d980347d",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T13:45:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7a1bc1e_9fa530a4",
+      "range": {
+        "startLine": 142,
+        "startChar": 82,
+        "endLine": 142,
+        "endChar": 97
+      },
+      "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "459bea5d_68c4d1cb",
@@ -209,6 +233,30 @@
       "side": 1,
       "message": "And TBH, I still prefer to set `visited` before the recursive call, as we are not expecting loops anyway. We would notice the failure anyway.\n\nDo we have a test for DAG but not a tree of boot images?",
       "parentUuid": "86975477_96c71009",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d952b0_6fdad6e8",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-24T13:45:06Z",
+      "side": 1,
+      "message": "\u003e Ok, so we expect a directed acyclic graph (DAG) of boot images, and visited is to avoid recomputing the same parts multiple times, right?\n\nWe expect the boot images to form a tree, not a DAG, because every boot image can only extend one boot image. The root of the tree is the primary boot image.\n\n\u003e Please add a comment clarifying that (with a plausible A - B - C example), and saying that we do not expect loops and we let them crash soong with a stackoverflow.\n\nDone.\n\n\u003e And TBH, I still prefer to set visited before the recursive call, as we are not expecting loops anyway. We would notice the failure anyway.\n\nI prefer surfacing errors in a fatal way rather than let the code misbehave silently.\n\n\u003e Do we have a test for DAG but not a tree of boot images?\n\nWe only expect a tree. The tests are in `java/dexpreopt_config_testing.go`. For any change to the boot image config, the tests must be updated with the expected calculation results. In the next CL, you can see that I updated the tests after add a boot image config for mainline BCP jars. It\u0027s not necessary to test non-existing cases because the configs are static.",
+      "parentUuid": "78240728_27c15b54",
       "range": {
         "startLine": 149,
         "startChar": 0,
