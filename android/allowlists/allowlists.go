@@ -700,6 +700,9 @@ var (
 		//kotlin srcs in android_binary
 		"MusicKotlin",
 
+		// java_library with prebuilt sdk_version
+		"android-common",
+
 		// checked in current.txt for merged_txts
 		"non-updatable-current.txt",
 		"non-updatable-system-current.txt",
@@ -774,7 +777,8 @@ var (
 		"tjbench", // TODO(b/240563612): Stem property
 
 		// java bugs
-		"libbase_ndk", // TODO(b/186826477): fails to link libctscamera2_jni for device (required for CtsCameraTestCases)
+		"libbase_ndk",  // TODO(b/186826477): fails to link libctscamera2_jni for device (required for CtsCameraTestCases)
+		"bouncycastle", // TODO(b/274474005): Need support for custom system_modules.
 
 		// python protos
 		"libprotobuf-python", // Has a handcrafted alternative
@@ -841,7 +845,6 @@ var (
 		"libgmock_ndk",                                            // depends on unconverted modules: libgtest_ndk_c++
 		"libnativehelper_lazy_mts_jni", "libnativehelper_mts_jni", // depends on unconverted modules: libnativetesthelper_jni, libgmock_ndk
 		"libnativetesthelper_jni",   // depends on unconverted modules: libgtest_ndk_c++
-		"libprotobuf-java-nano",     // b/220869005, depends on non-public_current SDK
 		"libstatslog",               // depends on unconverted modules: libstatspull, statsd-aidl-ndk
 		"libstatslog_art",           // depends on unconverted modules: statslog_art.cpp, statslog_art.h
 		"linker_reloc_bench_main",   // depends on unconverted modules: liblinker_reloc_bench_*
