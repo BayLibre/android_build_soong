@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee2e5cf6_e1152468",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-24T14:33:43Z",
+      "side": 1,
+      "message": "\u003e I think the changes here are more about extending platform_bootclasspath to generate multiple boot images\n\nAgreed but they can be split into two parts:\n1. Changes to existing code to make it support multiple images.\n2. Adding in new code to actually add multiple images.\n\nIf the changes for both parts are small enough and local enough then it makes sense to do them in the same change.\n\nHowever, in this case I think the changes for #1 and #2 combined are big enough and widespread enough to justify extracting #1 into their own change.\n\ne.g. Passing the image into this method (either by name or by reference) could be a separate change. It would not just cover that but also cover moving the profile rule building and oat dumping out of this method.\n\nIf you don\u0027t like the idea of moving more code into `GenerateAndroidBuildActions` then you can always split this method into two:\n1. A method that is common and needs to be called for framework and mainline images - takes image or image name as a parameter.\n2. A method that is called from `GenerateAndroidBuildActions` and does the once only checks, calls the common method for the framework and mainline images and builds the profile rule and dumps oat files for framework image.\n\nThe follow up change would just require adding another call from the second method to the first method for mainline image.",
+      "parentUuid": "b4228fd1_267af675",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 140
+      },
+      "revId": "0457d3797d48c0030d4d0f8db146951c3a8c23b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94fd0198_3d0e9763",
         "filename": "sdk/bootclasspath_fragment_sdk_test.go",
         "patchSetId": 6
