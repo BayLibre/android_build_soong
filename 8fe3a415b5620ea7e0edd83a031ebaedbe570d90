@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "701d2eba_ae46f97c",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-24T17:22:10Z",
+      "side": 0,
+      "message": "This check seems to have been dropped. It may no longer be necessary but I just wanted to make sure that it was dropped intentionally.",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 2
+      },
+      "revId": "8fe3a415b5620ea7e0edd83a031ebaedbe570d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
