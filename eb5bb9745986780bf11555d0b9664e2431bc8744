@@ -193,6 +193,30 @@
       },
       "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78240728_27c15b54",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-02-24T12:54:35Z",
+      "side": 1,
+      "message": "And TBH, I still prefer to set `visited` before the recursive call, as we are not expecting loops anyway. We would notice the failure anyway.\n\nDo we have a test for DAG but not a tree of boot images?",
+      "parentUuid": "86975477_96c71009",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
