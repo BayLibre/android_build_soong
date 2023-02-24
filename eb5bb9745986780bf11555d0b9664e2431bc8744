@@ -51,6 +51,52 @@
       "parentUuid": "9afb5cbf_088596a1",
       "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff447efc_66810da2",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-02-24T12:14:03Z",
+      "side": 1,
+      "message": "If there is a set in go, it could be easier to have a set of strings and test membership in it. BTW do we ensure that boot image names are unique?",
+      "range": {
+        "startLine": 142,
+        "startChar": 82,
+        "endLine": 142,
+        "endChar": 97
+      },
+      "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "459bea5d_68c4d1cb",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-02-24T12:14:03Z",
+      "side": 1,
+      "message": "This should go before the recursive call on line 147, otherwise there\u0027s nothing to stop endless recursion.\n\nCan we add a test for this and observe endless loop before the fix?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
