@@ -117,10 +117,13 @@ func TestJavaProtoDefault(t *testing.T) {
 					"deps": `[":java-protos_proto"]`,
 				}),
 			MakeBazelTarget("java_library", "java-protos", AttrNameToString{
-				"exports":   `[":java-protos_java_proto_lite"]`,
-				"javacopts": `["-source 1.7 -target 1.7"]`,
+				"exports":      `[":java-protos_java_proto_lite"]`,
+				"java_version": `"7"`,
 			}),
-			MakeNeverlinkDuplicateTarget("java_library", "java-protos"),
+			MakeNeverlinkDuplicateTargetWithAttrs(
+				"java_library",
+				"java-protos",
+				AttrNameToString{"java_version": `"7"`}),
 		},
 	})
 }
