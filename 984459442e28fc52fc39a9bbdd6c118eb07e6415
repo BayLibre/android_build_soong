@@ -39,6 +39,24 @@
       "message": "Same here, I moved this block out of the check for `IsForPlatform`, but I\u0027m not familiar enough with this to be sure this is safe. OTOH, I couldn\u0027t get it to show up in the apex_test commands without this change.",
       "revId": "984459442e28fc52fc39a9bbdd6c118eb07e6415",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6267ac48_47f6de5c",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-02-24T14:44:29Z",
+      "side": 1,
+      "message": "Changed this to avoid making changes to the logic.",
+      "parentUuid": "2a891d33_30301448",
+      "revId": "984459442e28fc52fc39a9bbdd6c118eb07e6415",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
