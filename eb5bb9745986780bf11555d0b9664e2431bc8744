@@ -265,6 +265,30 @@
       },
       "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96bccadb_d9a4b27e",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-02-24T13:59:50Z",
+      "side": 1,
+      "message": "\u003e We expect the boot images to form a tree\n\nThen why is `visited` needed at all (as you don\u0027t need it to perform DFS on a tree)? What is the scenario when part of the tree may already be visited? If there is such a scenario, please add it to the comment.",
+      "parentUuid": "e9d952b0_6fdad6e8",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 23
+      },
+      "revId": "eb5bb9745986780bf11555d0b9664e2431bc8744",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
