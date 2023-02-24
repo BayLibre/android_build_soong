@@ -41,6 +41,12 @@ func CreateProductConfigFiles(
 
 	result := []BazelFile{
 		newFile(
+			"product_config_platforms",
+			"current_product.bzl",
+			productReplacer.Replace(`
+current_product = "{PRODUCT}-{VARIANT}"
+`)),
+		newFile(
 			currentProductFolder,
 			"soong.variables.bzl",
 			`variables = json.decode("""`+strings.ReplaceAll(string(bytes), "\\", "\\\\")+`""")`),
