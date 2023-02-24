@@ -64,14 +64,20 @@ var (
 			"$javaTemplate": &remoteexec.REParams{
 				Labels:       map[string]string{"type": "compile", "lang": "java", "compiler": "javac"},
 				ExecStrategy: "${config.REJavacExecStrategy}",
-				Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+				Platform:     map[string]string{
+					remoteexec.PoolKey: "${config.REJavaPool}",
+					remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+				},
 			},
 			"$zipTemplate": &remoteexec.REParams{
 				Labels:       map[string]string{"type": "tool", "name": "soong_zip"},
 				Inputs:       []string{"${config.SoongZipCmd}", "$outDir"},
 				OutputFiles:  []string{"$out"},
 				ExecStrategy: "${config.REJavacExecStrategy}",
-				Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+				Platform:     map[string]string{
+					remoteexec.PoolKey: "${config.REJavaPool}",
+					remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+				},
 			},
 		}, []string{"javacFlags", "bootClasspath", "classpath", "processorpath", "processor", "srcJars", "srcJarDir",
 			"outDir", "annoDir", "javaVersion"}, nil)
@@ -160,7 +166,10 @@ var (
 			RSPFiles:        []string{"${out}.rsp"},
 			OutputFiles:     []string{"$rbeOutputs"},
 			ToolchainInputs: []string{"${config.JavaCmd}"},
-			Platform:        map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.REJavaPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		},
 		[]string{"javacFlags", "turbineFlags", "outputFlags", "javaVersion", "outputs", "rbeOutputs", "srcJars"}, []string{"implicits"})
 
@@ -176,7 +185,10 @@ var (
 			Inputs:       []string{"${config.SoongZipCmd}", "${out}.rsp"},
 			RSPFiles:     []string{"${out}.rsp"},
 			OutputFiles:  []string{"$out"},
-			Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.REJavaPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		}, []string{"jarArgs"}, nil)
 
 	zip, zipRE = pctx.RemoteStaticRules("zip",
@@ -191,7 +203,10 @@ var (
 			Inputs:       []string{"${config.SoongZipCmd}", "${out}.rsp", "$implicits"},
 			RSPFiles:     []string{"${out}.rsp"},
 			OutputFiles:  []string{"$out"},
-			Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.REJavaPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		}, []string{"jarArgs"}, []string{"implicits"})
 
 	combineJar = pctx.AndroidStaticRule("combineJar",

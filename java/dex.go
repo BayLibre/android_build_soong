@@ -119,14 +119,20 @@ var d8, d8RE = pctx.MultiCommandRemoteStaticRules("d8",
 			Inputs:          []string{"${config.D8Jar}"},
 			ExecStrategy:    "${config.RED8ExecStrategy}",
 			ToolchainInputs: []string{"${config.JavaCmd}"},
-			Platform:        map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.REJavaPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		},
 		"$zipTemplate": &remoteexec.REParams{
 			Labels:       map[string]string{"type": "tool", "name": "soong_zip"},
 			Inputs:       []string{"${config.SoongZipCmd}", "$outDir"},
 			OutputFiles:  []string{"$outDir/classes.dex.jar"},
 			ExecStrategy: "${config.RED8ExecStrategy}",
-			Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.REJavaPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		},
 	}, []string{"outDir", "d8Flags", "zipFlags", "tmpJar", "mergeZipsFlags"}, nil)
 
@@ -164,21 +170,30 @@ var r8, r8RE = pctx.MultiCommandRemoteStaticRules("r8",
 			OutputFiles:     []string{"${outUsage}"},
 			ExecStrategy:    "${config.RER8ExecStrategy}",
 			ToolchainInputs: []string{"${config.JavaCmd}"},
-			Platform:        map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.REJavaPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		},
 		"$zipTemplate": &remoteexec.REParams{
 			Labels:       map[string]string{"type": "tool", "name": "soong_zip"},
 			Inputs:       []string{"${config.SoongZipCmd}", "$outDir"},
 			OutputFiles:  []string{"$outDir/classes.dex.jar"},
 			ExecStrategy: "${config.RER8ExecStrategy}",
-			Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.REJavaPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		},
 		"$zipUsageTemplate": &remoteexec.REParams{
 			Labels:       map[string]string{"type": "tool", "name": "soong_zip"},
 			Inputs:       []string{"${config.SoongZipCmd}", "${outUsage}"},
 			OutputFiles:  []string{"${outUsageZip}"},
 			ExecStrategy: "${config.RER8ExecStrategy}",
-			Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.REJavaPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		},
 	}, []string{"outDir", "outDict", "outConfig", "outUsage", "outUsageZip", "outUsageDir",
 		"r8Flags", "zipFlags", "tmpJar", "mergeZipsFlags"}, []string{"implicits"})

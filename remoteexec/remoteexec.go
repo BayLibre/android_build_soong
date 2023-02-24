@@ -15,6 +15,7 @@
 package remoteexec
 
 import (
+	"fmt"
 	"sort"
 	"strings"
 )
@@ -122,7 +123,7 @@ func (r *REParams) wrapperArgs() string {
 		platform = append(platform, k+"="+v)
 	}
 	if _, ok := r.Platform[ContainerImageKey]; !ok {
-		platform = append(platform, ContainerImageKey+"="+DefaultImage)
+		platform = append(platform, fmt.Sprintf("%v=%v", ContainerImageKey, DefaultImage))
 	}
 	if platform != nil {
 		sort.Strings(platform)

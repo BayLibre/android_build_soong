@@ -1684,7 +1684,10 @@ func metalavaStubCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 			Labels:          labels,
 			ExecStrategy:    execStrategy,
 			ToolchainInputs: []string{config.JavaCmd(ctx).String()},
-			Platform:        map[string]string{remoteexec.PoolKey: pool},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: pool,
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		})
 	}
 

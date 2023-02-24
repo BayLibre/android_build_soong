@@ -77,7 +77,10 @@ var (
 			RSPFiles:        []string{"${out}.rsp"},
 			OutputFiles:     []string{"${out}", "$implicitOutputs"},
 			ToolchainInputs: []string{"$ldCmd"},
-			Platform:        map[string]string{remoteexec.PoolKey: "${config.RECXXLinksPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.RECXXLinksPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		}, []string{"ldCmd", "crtBegin", "libFlags", "crtEnd", "ldFlags", "extraLibFlags"}, []string{"implicitInputs", "implicitOutputs"})
 
 	// Rules for .o files to combine to other .o files, using ld partial linking.
@@ -93,7 +96,10 @@ var (
 			Inputs:          []string{"$inCommaList", "$implicitInputs"},
 			OutputFiles:     []string{"${out}", "$implicitOutputs"},
 			ToolchainInputs: []string{"$ldCmd"},
-			Platform:        map[string]string{remoteexec.PoolKey: "${config.RECXXLinksPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.RECXXLinksPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		}, []string{"ldCmd", "ldFlags"}, []string{"implicitInputs", "inCommaList", "implicitOutputs"})
 
 	// Rule to invoke `ar` with given cmd and flags, but no static library depenencies.
@@ -224,7 +230,10 @@ var (
 			// Copying source file back to local caused two problems:
 			// (1) New timestamps trigger clang and clang-tidy compilations again.
 			// (2) Changing source files caused concurrent clang or clang-tidy jobs to crash.
-			Platform: map[string]string{remoteexec.PoolKey: "${config.REClangTidyPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.REClangTidyPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		}, []string{"cFlags", "ccCmd", "clangCmd", "tidyCmd", "tidyFlags", "tidyVars"}, []string{})
 
 	_ = pctx.SourcePathVariable("yasmCmd", "prebuilts/misc/${config.HostPrebuiltTag}/yasm/yasm")
@@ -250,8 +259,9 @@ var (
 			Labels:       map[string]string{"type": "abi-dump", "tool": "header-abi-dumper"},
 			ExecStrategy: "${config.REAbiDumperExecStrategy}",
 			Inputs:       []string{"$sAbiLinkerLibs"},
-			Platform: map[string]string{
+			Platform:     map[string]string{
 				remoteexec.PoolKey: "${config.RECXXPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
 			},
 		}, []string{"cFlags", "exportDirs"}, nil)
 
@@ -273,7 +283,10 @@ var (
 			RSPFiles:        []string{"${out}.rsp"},
 			OutputFiles:     []string{"$out"},
 			ToolchainInputs: []string{"$sAbiLinker"},
-			Platform:        map[string]string{remoteexec.PoolKey: "${config.RECXXPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.RECXXPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		}, []string{"symbolFilter", "arch", "exportedHeaderFlags"}, []string{"implicitInputs"})
 
 	_ = pctx.SourcePathVariable("sAbiDiffer", "prebuilts/clang-tools/${config.HostPrebuiltTag}/bin/header-abi-diff")

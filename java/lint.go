@@ -381,7 +381,10 @@ func (l *linter) lint(ctx android.ModuleContext) {
 			Labels:          map[string]string{"type": "tool", "name": "lint"},
 			ExecStrategy:    lintRBEExecStrategy(ctx),
 			ToolchainInputs: []string{config.JavaCmd(ctx).String()},
-			Platform:        map[string]string{remoteexec.PoolKey: pool},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: pool,
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		})
 	}
 

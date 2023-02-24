@@ -186,6 +186,7 @@ func init() {
 	pctx.StaticVariableWithEnvOverride("RESignApkExecStrategy", "RBE_SIGNAPK_EXEC_STRATEGY", remoteexec.LocalExecStrategy)
 	pctx.StaticVariableWithEnvOverride("REJarExecStrategy", "RBE_JAR_EXEC_STRATEGY", remoteexec.LocalExecStrategy)
 	pctx.StaticVariableWithEnvOverride("REZipExecStrategy", "RBE_ZIP_EXEC_STRATEGY", remoteexec.LocalExecStrategy)
+	pctx.StaticVariableWithEnvOverride("RBEDockerImage", "RBE_DOCKER_IMAGE", remoteexec.DefaultImage)
 
 	pctx.HostJavaToolVariable("JacocoCLIJar", "jacoco-cli.jar")
 

@@ -29,6 +29,7 @@ import (
 	"syscall"
 	"time"
 
+	"android/soong/remoteexec"
 	"android/soong/shared"
 
 	"google.golang.org/protobuf/proto"
@@ -1295,6 +1296,19 @@ func (c *configImpl) rbeReproxy() string {
 		}
 	}
 	return filepath.Join(c.rbeDir(), "reproxy")
+}
+
+func (c *configImpl) rbePlatform() string {
+	for _, f := range []string{"RBE_platform", "FLAG_platform"} {
+		if v, ok := c.environ.Get(f); ok {
+			return v
+		}
+	}
+	img := remoteexec.DefaultImage
+	if v, ok := c.environ.Get("RBE_DOCKER_IMAGE"); ok {
+		img = v
+	}
+	return fmt.Sprintf("container-image=%v", img)
 }
 
 func (c *configImpl) rbeAuth() (string, string) {

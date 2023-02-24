@@ -41,7 +41,10 @@ var (
 			Inputs:          []string{"${config.SignapkCmd}", "$in", "$$(dirname ${config.SignapkJniLibrary})", "$implicits"},
 			OutputFiles:     []string{"$outCommaList"},
 			ToolchainInputs: []string{"${config.JavaCmd}"},
-			Platform:        map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+			Platform:     map[string]string{
+				remoteexec.PoolKey: "${config.REJavaPool}",
+				remoteexec.ContainerImageKey: "${config.RBEDockerImage}",
+			},
 		}, []string{"flags", "certificates"}, []string{"implicits", "outCommaList"})
 )
 

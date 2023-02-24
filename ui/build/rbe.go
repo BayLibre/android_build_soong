@@ -21,7 +21,6 @@ import (
 	"runtime"
 	"strings"
 
-	"android/soong/remoteexec"
 	"android/soong/ui/metrics"
 )
 
@@ -60,7 +59,7 @@ func getRBEVars(ctx Context, config Config) map[string]string {
 		"RBE_exec_root":     config.rbeExecRoot(),
 		"RBE_output_dir":    config.rbeProxyLogsDir(),
 		"RBE_proxy_log_dir": config.rbeProxyLogsDir(),
-		"RBE_platform":      "container-image=" + remoteexec.DefaultImage,
+		"RBE_platform":      config.rbePlatform(),
 	}
 	if config.StartRBE() {
 		name, err := config.rbeSockAddr(absPath(ctx, config.TempDir()))
