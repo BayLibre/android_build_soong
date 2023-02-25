@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba5ce64c_ae8f0184",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-02-25T00:06:01Z",
+      "side": 1,
+      "message": "This is setting ContainerImageKey in a lot of rules manually, is that necessary?  Couldn\u0027t remoteexec.go insert the value from the environment the way it does for DefaultImage now?",
+      "revId": "0fe8fe88d872f5d9a8efcc69b767646bc7850b58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
