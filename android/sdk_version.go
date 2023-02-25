@@ -206,7 +206,7 @@ func (s SdkSpec) EffectiveVersionString(ctx EarlyModuleContext) (string, error) 
 
 var (
 	SdkSpecNone         = SdkSpec{SdkNone, NoneApiLevel, "(no version)"}
-	SdkSpecPrivate      = SdkSpec{SdkPrivate, FutureApiLevel, ""}
+	SdkSpecPrivate      = SdkSpec{SdkPrivate, PrivateApiLevel, ""}
 	SdkSpecCorePlatform = SdkSpec{SdkCorePlatform, FutureApiLevel, "core_platform"}
 )
 
