@@ -22,6 +22,30 @@
       },
       "revId": "c45bb0ee641c7a1419bb069ed8d6406240d83f4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "644c52de_18be813c",
+        "filename": "java/aar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-25T00:06:48Z",
+      "side": 1,
+      "message": "I have removed this section altogether to avoid confusion.",
+      "parentUuid": "21dff2a6_3134e07b",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 94
+      },
+      "revId": "c45bb0ee641c7a1419bb069ed8d6406240d83f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
