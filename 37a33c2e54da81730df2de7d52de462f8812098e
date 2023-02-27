@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1995b1_8725f5db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-02-27T10:18:08Z",
+      "side": 1,
+      "message": "Leaving this review to Paul who knows soong better.\n\nThanks for working on this. let\u0027s also cp to tm-mainline-prod and cleanup all the existing \"manual\" overrides we have. Maybe Andrei can pick that up.",
+      "revId": "37a33c2e54da81730df2de7d52de462f8812098e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
