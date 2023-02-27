@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee4639c_9e2cf227",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-27T19:44:30Z",
+      "side": 1,
+      "message": "nit: I am a bit torn between whether we might want separate event name for the two routes",
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7fade8f_a2434928",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-27T19:44:30Z",
+      "side": 1,
+      "message": "nit: instead of deconstructing an exec.Cmd, maybe some further refactoring might make it more readable. E.g. an exec.Cmd could only be constructed here in the `else` branch instead.",
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df241234_a5f57be9",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-27T19:44:30Z",
+      "side": 1,
+      "message": "nit: comment (or assert in code) what the first arg is (I assume its the path to bazel executable?) (the one we drop)",
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a2b68d_ecdefed2",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-27T19:44:30Z",
+      "side": 1,
+      "message": "typo: `retun sa`",
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b274ca3_d377eeb6",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-27T19:44:30Z",
+      "side": 1,
+      "message": "prefer `chan struct{}`",
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b045438_e1b0e357",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-27T19:44:30Z",
+      "side": 1,
+      "message": "nit: add description as to what is `done` channel for",
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
