@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878dc4cd_cd33725b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-02-27T01:19:16Z",
+      "side": 1,
+      "message": "This seems to be a behavioral change. Can you add a test which shows the difference?",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 53
+      },
+      "revId": "6f6c3ddcd2ce9708f16f9cfa4fee9a9ce4250228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
