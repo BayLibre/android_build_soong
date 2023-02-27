@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c381cb5e_e000bbfa",
+        "filename": "ui/build/path.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-27T21:00:33Z",
+      "side": 1,
+      "message": "nit: Also print the value provided by the user, something like\n```\n\"BUILD_BROKEN_PYTHON_IS_PYTHON2 can only be set to \u0027true\u0027 or an empty string, but got %s\"\n```",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 92
+      },
+      "revId": "6e1ac194870d2117db55646f9cbda99963f83564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
