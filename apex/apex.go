@@ -81,8 +81,6 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 	ctx.BottomUp("apex_directly_in_any", apexDirectlyInAnyMutator).Parallel()
 	ctx.BottomUp("apex_flattened", apexFlattenedMutator).Parallel()
 	ctx.BottomUp("apex_dcla_deps", apexDCLADepsMutator).Parallel()
-	// Register after apex_info mutator so that it can use ApexVariationName
-	ctx.TopDown("apex_strict_updatability_lint", apexStrictUpdatibilityLintMutator).Parallel()
 }
 
 type apexBundleProperties struct {
@@ -1085,34 +1083,6 @@ func apexInfoMutator(mctx android.TopDownMutatorContext) {
 	enforceAppUpdatability(mctx)
 }
 
-// apexStrictUpdatibilityLintMutator propagates strict_updatability_linting to transitive deps of a mainline module
-// This check is enforced for updatable modules
-func apexStrictUpdatibilityLintMutator(mctx android.TopDownMutatorContext) {
-	if !mctx.Module().Enabled() {
-		return
-	}
-	if apex, ok := mctx.Module().(*apexBundle); ok && apex.checkStrictUpdatabilityLinting() {
-		mctx.WalkDeps(func(child, parent android.Module) bool {
-			// b/208656169 Do not propagate strict updatability linting to libcore/
-			// These libs are available on the classpath during compilation
-			// These libs are transitive deps of the sdk. See java/sdk.go:decodeSdkDep
-			// Only skip libraries defined in libcore root, not subdirectories
-			if mctx.OtherModuleDir(child) == "libcore" {
-				// Do not traverse transitive deps of libcore/ libs
-				return false
-			}
-			if android.InList(child.Name(), skipLintJavalibAllowlist) {
-				return false
-			}
-			if lintable, ok := child.(java.LintDepSetsIntf); ok {
-				lintable.SetStrictUpdatabilityLinting(true)
-			}
-			// visit transitive deps
-			return true
-		})
-	}
-}
-
 // enforceAppUpdatability propagates updatable=true to apps of updatable apexes
 func enforceAppUpdatability(mctx android.TopDownMutatorContext) {
 	if !mctx.Module().Enabled() {
@@ -1127,38 +1097,6 @@ func enforceAppUpdatability(mctx android.TopDownMutatorContext) {
 			}
 		})
 	}
-}
-
-// TODO: b/215736885 Whittle the denylist
-// Transitive deps of certain mainline modules baseline NewApi errors
-// Skip these mainline modules for now
-var (
-	skipStrictUpdatabilityLintAllowlist = []string{
-		"com.android.art",
-		"com.android.art.debug",
-		"com.android.conscrypt",
-		"com.android.media",
-		// test apexes
-		"test_com.android.art",
-		"test_com.android.conscrypt",
-		"test_com.android.media",
-		"test_jitzygote_com.android.art",
-	}
-
-	// TODO: b/215736885 Remove this list
-	skipLintJavalibAllowlist = []string{
-		"conscrypt.module.platform.api.stubs",
-		"conscrypt.module.public.api.stubs",
-		"conscrypt.module.public.api.stubs.system",
-		"conscrypt.module.public.api.stubs.module_lib",
-		"framework-media.stubs",
-		"framework-media.stubs.system",
-		"framework-media.stubs.module_lib",
-	}
-)
-
-func (a *apexBundle) checkStrictUpdatabilityLinting() bool {
-	return a.Updatable() && !android.InList(a.ApexVariationName(), skipStrictUpdatabilityLintAllowlist)
 }
 
 // apexUniqueVariationsMutator checks if any dependencies use unique apex variations. If so, use
