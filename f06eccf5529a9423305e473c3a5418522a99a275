@@ -22,6 +22,30 @@
       },
       "revId": "f06eccf5529a9423305e473c3a5418522a99a275",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad7b79a_b752f93d",
+        "filename": "ui/build/path.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-02-27T20:56:53Z",
+      "side": 1,
+      "message": "I think it\u0027s better as case sensitive, but added an error about using other values than true/empty string.",
+      "parentUuid": "8ec22557_8b8b3393",
+      "range": {
+        "startLine": 112,
+        "startChar": 76,
+        "endLine": 112,
+        "endChar": 91
+      },
+      "revId": "f06eccf5529a9423305e473c3a5418522a99a275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
