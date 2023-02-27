@@ -91,11 +91,6 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 		return flags
 	}
 
-	// LTO doesn't work on riscv64 yet.
-	if ctx.Arch().ArchType == android.Riscv64 {
-		return flags
-	}
-
 	if lto.LTO(ctx) {
 		var ltoCFlag string
 		var ltoLdFlag string
