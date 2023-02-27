@@ -16,6 +16,23 @@
       "message": "We have updated Doclava to work with JDK 17, so we\u0027re removing the usage of the stub doclet and switching back to Doclava. Once we have confirmation that all is working well, we\u0027ll also remove the doclet code that is no longer needed. We\u0027ve tested in AOSP and internal.",
       "revId": "702fb3bdc9ce51b90abff5b0d13790e64aebef1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f588a3d_d39ee519",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2023-02-27T16:53:34Z",
+      "side": 1,
+      "message": "Errors are not related to the change. This change updates what doclet is used for Javadoc, while the failures are in device boot test and building for aosp_cheetah where libnativewindow.so is not specified in shared_libs.",
+      "revId": "702fb3bdc9ce51b90abff5b0d13790e64aebef1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
