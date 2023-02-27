@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ec22557_8b8b3393",
+        "filename": "ui/build/path.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-27T20:38:13Z",
+      "side": 1,
+      "message": "nit: Could/Should this be case-insensitive instead?",
+      "range": {
+        "startLine": 112,
+        "startChar": 76,
+        "endLine": 112,
+        "endChar": 91
+      },
+      "revId": "f06eccf5529a9423305e473c3a5418522a99a275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
