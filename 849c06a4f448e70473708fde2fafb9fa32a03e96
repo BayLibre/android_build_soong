@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b78293ee_52ca3a83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-02-27T09:34:03Z",
+      "side": 1,
+      "message": "I strongly disagree with this.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 48
+      },
+      "revId": "849c06a4f448e70473708fde2fafb9fa32a03e96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f56cc3_c2d56511",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-02-27T09:34:03Z",
+      "side": 1,
+      "message": "We should not remove this, as I\u0027ve explained in the other CL. The way Lint is run in the tree currently (just in the separate errorprone target), you\u0027re effectively making the Lint violations completely invisible to the app developer.\n\nCan you please schedule a meeting to discuss the resolution of this and include Joe?",
+      "revId": "849c06a4f448e70473708fde2fafb9fa32a03e96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
