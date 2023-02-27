@@ -22,6 +22,30 @@
       },
       "revId": "6f6c3ddcd2ce9708f16f9cfa4fee9a9ce4250228",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ddceee_ce369af3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-27T20:07:10Z",
+      "side": 1,
+      "message": "I agree, this is a behavioral change. Although I think in practice, no Soong modules will be affected since we do not have instances of `min_sdk_version: \"core_*` (I used a CS query to confirm)\n\nWe will also start skipping this check for `sdk_version: \"core_*` and a non-empty `min_sdk_version`, but I think that was always the original intention.\nI have added a unit test case to validate that this check is skipped for `sdk_version: \"core_*` modules",
+      "parentUuid": "878dc4cd_cd33725b",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 53
+      },
+      "revId": "6f6c3ddcd2ce9708f16f9cfa4fee9a9ce4250228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
