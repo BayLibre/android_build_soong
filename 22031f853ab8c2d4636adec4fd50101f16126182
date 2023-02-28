@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "db28af69_9ae98320",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-28T13:44:48Z",
+      "side": 1,
+      "message": "In general looks good, mostly requests for more comments",
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f937a40e_2117232c",
         "filename": "bazel/bazel_proxy.go",
         "patchSetId": 7
@@ -110,6 +127,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "455f4c98_056d2e94",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-28T13:44:48Z",
+      "side": 1,
+      "message": "nit: would a name like handleBazelRequest or similar be more clear?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 17
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6fd3ef4_1c1bd0e5",
@@ -128,6 +168,29 @@
         "startChar": 1,
         "endLine": 172,
         "endChar": 15
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b055ad2_a9f75486",
+        "filename": "tests/persistent_bazel_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-28T13:44:48Z",
+      "side": 1,
+      "message": "can you add the copyright header here as well",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
       },
       "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"

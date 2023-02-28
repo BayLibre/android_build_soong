@@ -108,6 +108,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2eca3520_2a34a02c",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-28T13:44:48Z",
+      "side": 1,
+      "message": "nit should this be a separate package since everything looks to be exported?",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33a2b68d_ecdefed2",
         "filename": "bazel/bazel_proxy.go",
         "patchSetId": 6
@@ -207,6 +230,75 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "3b274ca3_d377eeb6",
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50552c15_a24df2b3",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-28T13:44:48Z",
+      "side": 1,
+      "message": "nit: this is probably on the border in terms of size, but naked returns with named result parameters are not recommended unless the function is small and naming them here would improve clarity",
+      "range": {
+        "startLine": 94,
+        "startChar": 61,
+        "endLine": 94,
+        "endChar": 95
+      },
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982ad3e4_9a24e1fa",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-28T13:44:48Z",
+      "side": 1,
+      "message": "can you comment as to why this timeout was chosen (primarily to help make decisions if it needs adjusting in the future)",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 42
+      },
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c0a3fd7_faf234aa",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-28T13:44:48Z",
+      "side": 1,
+      "message": "Here as well, can you comment about the deadline chosen so it\u0027s easier to change if necessary in the future.",
+      "range": {
+        "startLine": 172,
+        "startChar": 3,
+        "endLine": 172,
+        "endChar": 72
+      },
       "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
