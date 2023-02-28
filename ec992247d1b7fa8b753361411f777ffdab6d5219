@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e07c8096_23f66b96",
+        "filename": "cc/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-02-28T21:34:18Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "b4a3653a_52991360",
+      "revId": "ec992247d1b7fa8b753361411f777ffdab6d5219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a942fbe4_33efb70b",
@@ -108,6 +126,23 @@
         "endLine": 1,
         "endChar": 20
       },
+      "revId": "ec992247d1b7fa8b753361411f777ffdab6d5219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09138683_0caec604",
+        "filename": "docs/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-02-28T21:34:18Z",
+      "side": 0,
+      "message": "I\u0027d missed this one. This is the documentation for the python tool here that I\u0027m an OWNER for. You probably want to leave me here unless you want to be bothered for OWNER approval for things you probably won\u0027t be touching?",
       "revId": "ec992247d1b7fa8b753361411f777ffdab6d5219",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
