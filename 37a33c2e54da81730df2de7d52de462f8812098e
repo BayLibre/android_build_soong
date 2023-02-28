@@ -16,6 +16,69 @@
       "message": "Leaving this review to Paul who knows soong better.\n\nThanks for working on this. let\u0027s also cp to tm-mainline-prod and cleanup all the existing \"manual\" overrides we have. Maybe Andrei can pick that up.",
       "revId": "37a33c2e54da81730df2de7d52de462f8812098e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a18a2d_2c1aa2fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-28T14:46:14Z",
+      "side": 1,
+      "message": "Added Jaewooung to comment on Sam\u0027s question about package name in one of the comments below.",
+      "revId": "37a33c2e54da81730df2de7d52de462f8812098e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "478da09b_a9bc06fa",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-28T14:46:14Z",
+      "side": 1,
+      "message": "Generally, Soong is moving away from direct calls onto modules to retrieve data and instead switching to using providers to pass information around. I am not sure if there is an existing provider you can use or if not how much work it is to add one but it might be worth checking.\n\nUnless Soong is no longer being actively migrated to use providers.",
+      "range": {
+        "startLine": 1795,
+        "startChar": 1,
+        "endLine": 1795,
+        "endChar": 40
+      },
+      "revId": "37a33c2e54da81730df2de7d52de462f8812098e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb6fac2e_22a3892a",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-28T14:46:14Z",
+      "side": 1,
+      "message": "I think this needs to be moved into `OverridablePropertiesDepsMutator` otherwise it will be checked before the override has been applied.",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 2
+      },
+      "revId": "37a33c2e54da81730df2de7d52de462f8812098e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
