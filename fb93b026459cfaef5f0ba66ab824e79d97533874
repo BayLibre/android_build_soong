@@ -129,6 +129,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada7a81e_94b9dba7",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "I originally thought about doing this, but creating its own package (or adding things to `shared`) is a real pain. If you\u0027re OK with it, I\u0027d like to leave this as-is and just name things well.",
+      "parentUuid": "2eca3520_2a34a02c",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a2b68d_ecdefed2",
@@ -257,6 +281,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2875faa_7c39c949",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50552c15_a24df2b3",
+      "range": {
+        "startLine": 94,
+        "startChar": 61,
+        "endLine": 94,
+        "endChar": 95
+      },
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "982ad3e4_9a24e1fa",
@@ -280,6 +328,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23485246_d105f785",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "982ad3e4_9a24e1fa",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 42
+      },
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c0a3fd7_faf234aa",
@@ -293,6 +365,30 @@
       "writtenOn": "2023-02-28T13:44:48Z",
       "side": 1,
       "message": "Here as well, can you comment about the deadline chosen so it\u0027s easier to change if necessary in the future.",
+      "range": {
+        "startLine": 172,
+        "startChar": 3,
+        "endLine": 172,
+        "endChar": 72
+      },
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54d01453_86d12c73",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c0a3fd7_faf234aa",
       "range": {
         "startLine": 172,
         "startChar": 3,

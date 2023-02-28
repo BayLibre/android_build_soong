@@ -81,6 +81,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f229fe_f30d7a63",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c1d0f5b_182c86c2",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c249f803_31ec448c",
@@ -94,6 +118,30 @@
       "writtenOn": "2023-02-28T08:17:03Z",
       "side": 1,
       "message": "nit: mention that the lifetime of the Bazel proxy server is the lifetime of soong_ui and that it has no relationship to the lifetime of the Bazel server itself (this confused me for a bit)",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 4
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d53eb46_1760aa6d",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c249f803_31ec448c",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -129,6 +177,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9b149a66_ff039380",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "The response might become quite large as our tree grows (especially wrt aquery). Our previous implementation (issuing subcommands) also did not deal with streaming, so I\u0027m tempted to defer this issue until a future CL.\n\nFrom what I understand of the libraries I\u0027m calling, we do stream the output, but we indeed don\u0027t stream the decoding.\n\nProcessing the results in a streaming fashion is a tricky problem even beyond this protocol, esp wrt. aquery, because Bazel\u0027s aquery output is `proto`. This proto is Bazel\u0027s ActionGraphContainer, and we parse the entire output as such. We\u0027d need to be a bit more clever to parse individual fields of the ActionGraphContainer.",
+      "parentUuid": "3f3c02e1_065cfa5c",
+      "range": {
+        "startLine": 110,
+        "startChar": 19,
+        "endLine": 110,
+        "endChar": 23
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "455f4c98_056d2e94",
         "filename": "bazel/bazel_proxy.go",
         "patchSetId": 7
@@ -140,6 +212,30 @@
       "writtenOn": "2023-02-28T13:44:48Z",
       "side": 1,
       "message": "nit: would a name like handleBazelRequest or similar be more clear?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 17
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be40b9b_d6d2d292",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "sure.",
+      "parentUuid": "455f4c98_056d2e94",
       "range": {
         "startLine": 139,
         "startChar": 1,
@@ -173,6 +269,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92470a33_365553c6",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "I thought it was generally best practice in go for functions that are only going to be called in the containing function. This way I need not redundantly document these functions nor their parameters. Has this affected readability?",
+      "parentUuid": "e6fd3ef4_1c1bd0e5",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 15
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b055ad2_a9f75486",
@@ -186,6 +306,30 @@
       "writtenOn": "2023-02-28T13:44:48Z",
       "side": 1,
       "message": "can you add the copyright header here as well",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f1b0d8_ba58722a",
+        "filename": "tests/persistent_bazel_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b055ad2_a9f75486",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -219,6 +363,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a4305f4_a4137a89",
+        "filename": "tests/persistent_bazel_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "Aha, I was not aware of this! Indeed, I thought this was the best I could do, with a strong caution \"please don\u0027t run this test from anywhere that you want your Bazel processes to be unaffected\". This is a much cleaner way of implementing this test. Thanks.",
+      "parentUuid": "8a2d9698_232c122e",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 52
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffd48d78_c09e279d",
@@ -232,6 +400,30 @@
       "writtenOn": "2023-02-28T08:17:03Z",
       "side": 1,
       "message": "nit: add a test case that tests what happens if the Bazel process exits with an error (syntax error in a BUILD file, that kind of thing)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16218fbe_01d3ab75",
+        "filename": "tests/persistent_bazel_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-02-28T20:34:19Z",
+      "side": 1,
+      "message": "Good idea. Thanks for pushing for this.",
+      "parentUuid": "ffd48d78_c09e279d",
       "range": {
         "startLine": 41,
         "startChar": 0,
