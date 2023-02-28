@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1315a17c_aee2bf11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-28T19:26:41Z",
+      "side": 1,
+      "message": "nit: can the file write be excluded if not a multi-tree build?\n\nalso I don\u0027t know what the orchestrator is, so will defer to Lamont for a +2",
+      "revId": "521ea288dece166495614f1afd6666b4f9058624",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef243b4_bfaaf0a4",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-28T19:26:41Z",
+      "side": 1,
+      "message": "nit: `$out/soong/soong.environment.available`\u0027s contents will be different from this one?",
+      "revId": "521ea288dece166495614f1afd6666b4f9058624",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7adb171c_59da3fcd",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-02-28T19:26:41Z",
+      "side": 1,
+      "message": "nit: reword the error message so that it\u0027s easy disntinguish from L207.",
+      "revId": "521ea288dece166495614f1afd6666b4f9058624",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
