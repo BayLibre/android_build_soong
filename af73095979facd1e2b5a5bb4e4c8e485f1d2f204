@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc8763df_b7ee065d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-02-28T08:25:45Z",
+      "side": 1,
+      "message": "neither the bug nor the doc attached there explain how this will be used. please elaborate.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "af73095979facd1e2b5a5bb4e4c8e485f1d2f204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3216e387_f2afa53a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-02-28T08:25:45Z",
+      "side": 1,
+      "message": "The change itself looks find \u0026 safe, but I don\u0027t understand the need for this as I commented below. Also, this has to be reflected to the Bazel side eventually, so, adding joeo@.",
+      "revId": "af73095979facd1e2b5a5bb4e4c8e485f1d2f204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
