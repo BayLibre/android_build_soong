@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4a3653a_52991360",
+        "filename": "cc/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-02-28T20:37:45Z",
+      "side": 0,
+      "message": "If someone is making changes to how building the NDK works, that should require my approval.",
+      "revId": "ec992247d1b7fa8b753361411f777ffdab6d5219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a942fbe4_33efb70b",
         "filename": "cc/ndkstubgen/OWNERS",
         "patchSetId": 2
