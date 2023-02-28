@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8f236f_0705aa20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-02-28T18:29:14Z",
+      "side": 1,
+      "message": "I explained this a bit more in the meeting, but the main downside I see with the baselines is that they\u0027re kind of invisible to developers, whereas SuppressWarnings is right there in the code, where you want it. The counter argument to that was that baseline warnings are actually visible in Gerrit, which I didn\u0027t know",
+      "parentUuid": "b78293ee_52ca3a83",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 48
+      },
+      "revId": "849c06a4f448e70473708fde2fafb9fa32a03e96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6f56cc3_c2d56511",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-02-27T09:34:03Z",
       "side": 1,
       "message": "We should not remove this, as I\u0027ve explained in the other CL. The way Lint is run in the tree currently (just in the separate errorprone target), you\u0027re effectively making the Lint violations completely invisible to the app developer.\n\nCan you please schedule a meeting to discuss the resolution of this and include Joe?",
+      "revId": "849c06a4f448e70473708fde2fafb9fa32a03e96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95f72ed_cfba8c38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-02-28T18:29:14Z",
+      "side": 1,
+      "message": "discussed, plan for now is to just comment out the flag\u0027s effects (with a todo to reenable) which allows making progress\n\nCole also has an alternative proposal for how we could achieve what we want without this flag.",
+      "parentUuid": "e6f56cc3_c2d56511",
       "revId": "849c06a4f448e70473708fde2fafb9fa32a03e96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
