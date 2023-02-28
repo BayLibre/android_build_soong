@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a942fbe4_33efb70b",
+        "filename": "cc/ndkstubgen/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-28T20:03:14Z",
+      "side": 0,
+      "message": "this looks to be a python binary/test, do we want to keep other owners here or consider moving it outside of build/soong at some point?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "ec992247d1b7fa8b753361411f777ffdab6d5219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9231fe82_68fb5c03",
+        "filename": "cc/symbolfile/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-28T20:03:14Z",
+      "side": 0,
+      "message": "similarly, this looks like a python host tool, do we want to leave other owners here?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "ec992247d1b7fa8b753361411f777ffdab6d5219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e8fd76_94d911c4",
+        "filename": "linkerconfig/proto/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-28T20:03:14Z",
+      "side": 0,
+      "message": "this package is just a proto, should we also consider moving this outside of Soong or leaving other owners?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "ec992247d1b7fa8b753361411f777ffdab6d5219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "646b8d01_dd54d6e6",
+        "filename": "scripts/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-02-28T20:03:14Z",
+      "side": 0,
+      "message": "This also looks like a bunch of host tools, do we want to leave other owners here?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "ec992247d1b7fa8b753361411f777ffdab6d5219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
