@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb75994_74c3def3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2023-02-28T21:34:01Z",
+      "side": 1,
+      "message": "This will break the OWNERS file in platform/external/spdx-tools",
+      "revId": "a235981fa384fdd5efb74c26c2290dd7b25be441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
