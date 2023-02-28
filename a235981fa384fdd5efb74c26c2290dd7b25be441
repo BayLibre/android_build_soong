@@ -16,6 +16,23 @@
       "message": "This will break the OWNERS file in platform/external/spdx-tools",
       "revId": "a235981fa384fdd5efb74c26c2290dd7b25be441",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51287f49_4b72697a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2023-02-28T22:55:08Z",
+      "side": 1,
+      "message": "I am going to remove the -2 for now. I protest that some random project under external/ is not the appropriate place to enumerate the compliance owners.\n\nI have proposed moving the compliance code into a separate project. I am sure there are plenty of other reasonable compromises.\n\nI expect we will work toward one of those compromises in the coming days or weeks.",
+      "revId": "a235981fa384fdd5efb74c26c2290dd7b25be441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
