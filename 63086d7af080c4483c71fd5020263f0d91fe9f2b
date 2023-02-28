@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19505a9c_a9eacd6c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-02-28T16:22:17Z",
+      "side": 1,
+      "message": "Why do we need this check?",
+      "range": {
+        "startLine": 767,
+        "startChar": 6,
+        "endLine": 767,
+        "endChar": 33
+      },
+      "revId": "63086d7af080c4483c71fd5020263f0d91fe9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
