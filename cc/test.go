@@ -294,6 +294,10 @@ func (test *testDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 
 func (test *testDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 	if test.gtest() {
+		if ctx.Device() {
+			// All device tests need to link to liblog to support death tests.
+			deps.SharedLibs = append(deps.SharedLibs, "liblog")
+		}
 		if ctx.useSdk() && ctx.Device() {
 			deps.StaticLibs = append(deps.StaticLibs, "libgtest_main_ndk_c++", "libgtest_ndk_c++")
 		} else if test.isolated(ctx) {
@@ -302,7 +306,9 @@ func (test *testDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 			// as a static library means unit tests cannot override
 			// liblog functions. Instead make it a shared library
 			// dependency.
-			deps.SharedLibs = append(deps.SharedLibs, "liblog")
+			if !ctx.Device() {
+				deps.SharedLibs = append(deps.SharedLibs, "liblog")
+			}
 		} else {
 			deps.StaticLibs = append(deps.StaticLibs, "libgtest_main", "libgtest")
 		}
