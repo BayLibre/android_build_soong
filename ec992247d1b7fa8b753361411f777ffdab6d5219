@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3038fc1_03d57e72",
+        "filename": "cc/ndkstubgen/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-02-28T20:41:53Z",
+      "side": 0,
+      "message": "This is a build tool that\u0027s fundamental to how the NDK sysroot is constructed. My approval should be required for any changes here.",
+      "parentUuid": "a942fbe4_33efb70b",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "ec992247d1b7fa8b753361411f777ffdab6d5219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9231fe82_68fb5c03",
         "filename": "cc/symbolfile/OWNERS",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2023-02-28T20:03:14Z",
       "side": 0,
       "message": "similarly, this looks like a python host tool, do we want to leave other owners here?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "ec992247d1b7fa8b753361411f777ffdab6d5219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f90dae3_625b37bd",
+        "filename": "cc/symbolfile/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-02-28T20:41:53Z",
+      "side": 0,
+      "message": "And here",
+      "parentUuid": "9231fe82_68fb5c03",
       "range": {
         "startLine": 1,
         "startChar": 0,
