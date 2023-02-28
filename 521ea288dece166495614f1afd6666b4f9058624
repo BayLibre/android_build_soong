@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffecea5d_cca8fd8a",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-28T23:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0580bbd7_e9ac558d",
+      "revId": "521ea288dece166495614f1afd6666b4f9058624",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7adb171c_59da3fcd",
@@ -66,6 +84,24 @@
       "writtenOn": "2023-02-28T19:26:41Z",
       "side": 1,
       "message": "nit: reword the error message so that it\u0027s easy disntinguish from L207.",
+      "revId": "521ea288dece166495614f1afd6666b4f9058624",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07177fa1_b1ed242a",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-28T23:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7adb171c_59da3fcd",
       "revId": "521ea288dece166495614f1afd6666b4f9058624",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
