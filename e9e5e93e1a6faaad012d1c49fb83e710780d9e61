@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1fc6935_cd3a0424",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-02-28T08:24:02Z",
+      "side": 1,
+      "message": "Ok, so it sounds like this isn\u0027t perfect, but \u003c\u003d in all cases.\n\nThe other option we could do is instead of saving the diff to dist, we could save the staged_files.json intermediate to dist, and make compare-target-files use that.  I\u0027m ambivalent.\n\nThe next thing I think we should do after this change, and some upcoming thing we\u0027re thinking about for identifying code-under-test, is to join modified_files.json with module-info.json, and see at a more granular level which tests need to run.  If we wanted to do that based on the staged_files.json, that could work too.\n\nThe other thing in my head here is that we could do a local version of the test filtering too, inside atest and/or makepush, but let\u0027s not get too ahead of ourselves. I say we proceed with this CL and iterate from there.",
+      "parentUuid": "783bf9d3_b008e702",
+      "revId": "e9e5e93e1a6faaad012d1c49fb83e710780d9e61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc9f4131_167e929c",
@@ -66,6 +84,24 @@
       "writtenOn": "2023-02-24T00:30:06Z",
       "side": 1,
       "message": "readJson, takeStagingSnapshot, sha1hash, and writeJson should return errors and they should be handled here.",
+      "revId": "e9e5e93e1a6faaad012d1c49fb83e710780d9e61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1607ea_7f87a3ef",
+        "filename": "ui/build/staging_snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-02-28T08:24:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc9f4131_167e929c",
       "revId": "e9e5e93e1a6faaad012d1c49fb83e710780d9e61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
