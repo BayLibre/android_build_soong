@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a18ca1a_62252779",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-28T23:41:22Z",
+      "side": 1,
+      "message": "I still have doubts about the exact `api_imports` modules will look like, but perhaps they will be covered in b/269593502",
+      "revId": "76b06f3973462a5c4d1702e94426aa33874a0af2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

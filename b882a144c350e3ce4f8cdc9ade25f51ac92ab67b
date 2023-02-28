@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc46a827_4b3f1a5d",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2412,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-28T23:41:22Z",
+      "side": 1,
+      "message": "What error do you get if this code block does not exist?",
+      "parentUuid": "2e5bc541_b6d076b2",
+      "range": {
+        "startLine": 2409,
+        "startChar": 2,
+        "endLine": 2412,
+        "endChar": 3
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f17e2d67_0f7a60f6",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -144,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b03d657f_0615682c",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3335,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-28T23:41:22Z",
+      "side": 1,
+      "message": "\u003e because APEX finds out all relationships from post deps mutator\n\nThe apex variants are not created before depsMutator, but the core variants are e.g. in this example\n\n```\ncc_library {\n name\u003d\"systemlib\",\n shared_libs\u003d\"apexlib\",\n)\napi_imports(\n name\u003d\"api_imports\",\n apex_libs\u003d[\"apexlib\"],\n)\n```\n\nIn the deps mutator stage for the core variant of `systemlib`, do we have sufficient information to rewrite `apexlib -\u003e apexlib.apiimport.apex`?\n\n(not blocking, I was just curious)",
+      "parentUuid": "fa14d48b_77bdaa06",
+      "range": {
+        "startLine": 3327,
+        "startChar": 2,
+        "endLine": 3335,
+        "endChar": 3
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a66be30c_35fb4724",
         "filename": "multitree/api_imports.go",
         "patchSetId": 5
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "Not necessarily. Some module in the /system can define stub which can be used by APEXes.",
       "parentUuid": "a66be30c_35fb4724",
+      "range": {
+        "startLine": 45,
+        "startChar": 25,
+        "endLine": 45,
+        "endChar": 67
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95410dd7_ffe7104c",
+        "filename": "multitree/api_imports.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-28T23:41:22Z",
+      "side": 1,
+      "message": "As a more concrete example, assuming `liblog` is a system library and `libneuralnetworks` is an apex library and both contribute to the module-lib API surface. And there is another `systemlib` that does **not** contribute to this API surface but contributes to NDK/LLNDK.\n\n```\napi_imports {\n  name: \"api_imports\",\n  shared_libs: [\"liblog\", \"libneuralnetworks\", \"systemlib\"] ?\n  apex_shared_libs: [\"liblog\", \"libneuralnetworks\"] ?\n}\n```\n\nIn your proposal, will the api_imports look like above?",
+      "parentUuid": "05d10b4a_43f6f28e",
       "range": {
         "startLine": 45,
         "startChar": 25,
