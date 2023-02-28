@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d0496e_ad8455f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-02-28T01:44:45Z",
+      "side": 1,
+      "message": "This also requires a cleanup of existing violations https://source.corp.google.com/search?q\u003dmin_sdk_version:%5C%20%5C%22(_%7Ccore%7Csystem%7Ctest%7Cmodule%7Csystem_server)\u0026ct\u003dos\u0026sq\u003dpackage:android$\n\nI will be working on them in parallel, but I would like to get a headstart on this CL.",
+      "range": {
+        "startLine": 12,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "c4e6d2b20af7fbe64ccb0ef97d52870ea4ca666a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
