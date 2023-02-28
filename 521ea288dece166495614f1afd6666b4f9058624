@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0580bbd7_e9ac558d",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-02-28T20:53:35Z",
+      "side": 1,
+      "message": "They are.  `environment.available` has the env vars that can be requested from soong config.  This one has the \"as crafted especially for the ninja run\" state of the environment.\n\nThe other (less optimal) way to generate this would have been to have a ninja rule that always ran that dumped the environment to a file.\n\n@spandandas: let\u0027s update line 32 to say something like\n`// File containing the environment state when ninja is executed.`",
+      "parentUuid": "8ef243b4_bfaaf0a4",
+      "revId": "521ea288dece166495614f1afd6666b4f9058624",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7adb171c_59da3fcd",
         "filename": "ui/build/ninja.go",
         "patchSetId": 1
