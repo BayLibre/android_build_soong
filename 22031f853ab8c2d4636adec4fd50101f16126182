@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02fbae31_e62cece4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-02-28T08:17:03Z",
+      "side": 1,
+      "message": "Delightfully simple! It may be that it\u0027s *too* simple wrt. error handling and not streaming, but we\u0027ll see.",
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f937a40e_2117232c",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-02-28T08:17:03Z",
+      "side": 1,
+      "message": "TIL about `encoding/gob`",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c1d0f5b_182c86c2",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-02-28T08:17:03Z",
+      "side": 1,
+      "message": "nit: argv? (presumably there are also targets on the command line...)",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c249f803_31ec448c",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-02-28T08:17:03Z",
+      "side": 1,
+      "message": "nit: mention that the lifetime of the Bazel proxy server is the lifetime of soong_ui and that it has no relationship to the lifetime of the Bazel server itself (this confused me for a bit)",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 4
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f3c02e1_065cfa5c",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-02-28T08:17:03Z",
+      "side": 1,
+      "message": "How big do you expect the request to be? \n\nI half-expected some sort of streaming here so that the complete aquery/cquery output doesn\u0027t need to be in RAM at the same time, but I don\u0027t know how big they are.\n\nWhat are the limits of encoding/gob ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 19,
+        "endLine": 110,
+        "endChar": 23
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6fd3ef4_1c1bd0e5",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-02-28T08:17:03Z",
+      "side": 1,
+      "message": "nit: any reason why these are lambdas and not functions with BazelProxyServer as the receiver?",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 15
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a2d9698_232c122e",
+        "filename": "tests/persistent_bazel_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-02-28T08:17:03Z",
+      "side": 1,
+      "message": "nit: how about checking for the presence of the Bazel PID file `$OUTPUT_BASE/server/server.pid.txt` either instead of or in addition to this? As it is, this test seems to be vulnerable to seeing other Bazel instances on the same computer (\"workspace\" is not a particularly uncommon name for a Bazel workspace, I assume)",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 52
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd48d78_c09e279d",
+        "filename": "tests/persistent_bazel_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-02-28T08:17:03Z",
+      "side": 1,
+      "message": "nit: add a test case that tests what happens if the Bazel process exits with an error (syntax error in a BUILD file, that kind of thing)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
