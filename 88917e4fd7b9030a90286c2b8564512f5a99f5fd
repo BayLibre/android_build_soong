@@ -55,6 +55,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84a2296e_250e58e7",
+        "filename": "android/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-02-28T14:34:36Z",
+      "side": 1,
+      "message": "Personally, I would extract these changes out into their own change and as part of that change add tests for `SortedKeys`, and also deprecate `SortedStringKeys` and replace it with a call to `SortedKeys`.",
+      "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "580264d2_4eecfffd",
         "filename": "java/lint.go",
         "patchSetId": 4
