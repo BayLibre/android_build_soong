@@ -304,7 +304,7 @@ func (defs *Bp2BuildSoongConfigDefinitions) AddVars(mtDef SoongConfigDefinition)
 // This is a copy of the one available in soong/android/util.go, but depending
 // on the android package causes a cyclic dependency. A refactoring here is to
 // extract common utils out from android/utils.go for other packages like this.
-func sortedStringKeys(m interface{}) []string {
+func SortedKeys(m interface{}) []string {
 	v := reflect.ValueOf(m)
 	if v.Kind() != reflect.Map {
 		panic(fmt.Sprintf("%#v is not a map", m))
