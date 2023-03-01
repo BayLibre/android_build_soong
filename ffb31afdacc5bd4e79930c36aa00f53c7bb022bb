@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7a304eb_b24e0198",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-01T20:47:31Z",
+      "side": 1,
+      "message": "It seems like all this logic boils down to returning `s.ApiLevel.String()`, or mapping \"current\" / private sdks to the default.\n\nI think an easier way to express it might be like this:\n```\nif s.ApiLevel.FinalOrPreviewInt() \u003d\u003d FutureApiLevelInt {\n  return ctx.Config().DefaultAppTargetSdk(ctx), nil\n}\nreturn s.ApiLevel.String()\n```",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 25
+      },
+      "revId": "ffb31afdacc5bd4e79930c36aa00f53c7bb022bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
