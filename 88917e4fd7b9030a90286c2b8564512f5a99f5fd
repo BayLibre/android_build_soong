@@ -283,6 +283,24 @@
       "parentUuid": "07e4854f_0ea7b811",
       "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d46183_bcd83f88",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-03-01T15:02:19Z",
+      "side": 1,
+      "message": "If you have a list of modules affected then you could add that to Soong and use that to select the **lax** linter, The **lax** linter could just not pass in the system APIs so it behaves as it currently does.\n\nThen you (or a group of us) could work through the list and fix the modules.",
+      "parentUuid": "a6b97ab9_a097ec5d",
+      "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
