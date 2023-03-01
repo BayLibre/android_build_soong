@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e695e20d_443e9c13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-01T00:36:36Z",
+      "side": 1,
+      "message": "I left some nits, but not blocking.",
+      "revId": "09aee73cfdb583ffb97201b9fd4d52dfbbd0c343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d9610b_e204fa7d",
+        "filename": "android/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-01T00:36:36Z",
+      "side": 1,
+      "message": "Can this implementation be replaced with a call to `SortedKeys`? This way, we still support the old function for a while but do not need to maintain _two_ implementations",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 9
+      },
+      "revId": "09aee73cfdb583ffb97201b9fd4d52dfbbd0c343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffa451d8_c8edfadb",
+        "filename": "android/util_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-01T00:36:36Z",
+      "side": 1,
+      "message": "nit: Reverse the ordering in the input to validate that the `SortedKeys` actually sorts the keys",
+      "range": {
+        "startLine": 656,
+        "startChar": 2,
+        "endLine": 657,
+        "endChar": 13
+      },
+      "revId": "09aee73cfdb583ffb97201b9fd4d52dfbbd0c343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
