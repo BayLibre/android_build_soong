@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39c4d51_2e9ead97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-03-01T18:55:32Z",
+      "side": 1,
+      "message": "I expect that the actual generated json will change between now and the completed orchestration, but this gets the list exported.\n\nA separate CL will determine what apexes (api_surfaces) are required to build the desired target (system, vendor, apex[es]) in a given inner tree, so that the outer tree ninja file can have the complete list of needs.",
+      "revId": "adb964ed84a9f670cd6e534cf12e5c0d130bc0af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
