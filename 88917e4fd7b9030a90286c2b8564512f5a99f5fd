@@ -247,6 +247,24 @@
       "parentUuid": "5d888727_95a01611",
       "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07e4854f_0ea7b811",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-03-01T13:45:33Z",
+      "side": 1,
+      "message": "yep, but at least it\u0027s a very good time to do it now compared to let\u0027s say in a month or two, because at this point udc-dev \u003d\u003d master for most projects.",
+      "parentUuid": "0a6ddf61_cea02e26",
+      "revId": "88917e4fd7b9030a90286c2b8564512f5a99f5fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
