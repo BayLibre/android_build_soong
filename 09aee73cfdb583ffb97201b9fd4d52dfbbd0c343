@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbf405f0_e8afe3e4",
+        "filename": "android/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-01T00:52:23Z",
+      "side": 1,
+      "message": "I don\u0027t know of a way to do this. Because you can\u0027t pass a `interface{}` to `SortedKeys`, and if I change it to `map[string]interface{}` it still errors out when calling `SortedStringKeys` with a map that has values of a particular type.",
+      "parentUuid": "31d9610b_e204fa7d",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 9
+      },
+      "revId": "09aee73cfdb583ffb97201b9fd4d52dfbbd0c343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ffa451d8_c8edfadb",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-01T00:36:36Z",
       "side": 1,
       "message": "nit: Reverse the ordering in the input to validate that the `SortedKeys` actually sorts the keys",
+      "range": {
+        "startLine": 656,
+        "startChar": 2,
+        "endLine": 657,
+        "endChar": 13
+      },
+      "revId": "09aee73cfdb583ffb97201b9fd4d52dfbbd0c343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5e8e37_079d4d63",
+        "filename": "android/util_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-01T00:52:23Z",
+      "side": 1,
+      "message": "Shouldn\u0027t matter because map iteration is nondeterministic, but done.",
+      "parentUuid": "ffa451d8_c8edfadb",
       "range": {
         "startLine": 656,
         "startChar": 2,
