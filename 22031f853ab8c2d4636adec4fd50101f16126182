@@ -105,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1685aa35_5461c9b0",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-03-01T08:48:21Z",
+      "side": 1,
+      "message": "(I won\u0027t insist, but it\u0027s still called `Flags` and not `Argv`?)",
+      "parentUuid": "23f229fe_f30d7a63",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c249f803_31ec448c",
@@ -201,6 +225,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b30fa5d1_004fbfc2",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-03-01T08:48:21Z",
+      "side": 1,
+      "message": "Yeah, incrementally parsing the proto is another thorny issue, but the proxy doesn\u0027t need to do that, it only needs to stream the bits themselves.\n\nThat said, as long as it\u0027s obvious when this approach will become untenable, I\u0027m fine with this as it is because let\u0027s do the simple thing first, and the complicated thing when necessary.",
+      "parentUuid": "9b149a66_ff039380",
+      "range": {
+        "startLine": 110,
+        "startChar": 19,
+        "endLine": 110,
+        "endChar": 23
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "455f4c98_056d2e94",
         "filename": "bazel/bazel_proxy.go",
         "patchSetId": 7
@@ -283,6 +331,30 @@
       "side": 1,
       "message": "I thought it was generally best practice in go for functions that are only going to be called in the containing function. This way I need not redundantly document these functions nor their parameters. Has this affected readability?",
       "parentUuid": "e6fd3ef4_1c1bd0e5",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 15
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52d1b7f5_5a0326a1",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-03-01T08:48:21Z",
+      "side": 1,
+      "message": "I personally prefer to keep lambdas small for these reasons:\n\n1. Stack traces are more readable when debugging\n2. I don\u0027t need to think about what they close over\n3. It\u0027s a bit less indentation\n\nThe style guide seems not to say anything about this, so meh.",
+      "parentUuid": "92470a33_365553c6",
       "range": {
         "startLine": 172,
         "startChar": 1,

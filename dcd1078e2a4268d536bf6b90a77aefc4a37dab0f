@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b74f6b4_d424887f",
+        "filename": "tests/persistent_bazel_test.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-03-01T08:48:21Z",
+      "side": 1,
+      "message": "nit: you can use `kill -0 $(cat server.pid.txt)` to verify the existence of that process; then the `ps` call is unnecessary.",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 49
+      },
+      "revId": "dcd1078e2a4268d536bf6b90a77aefc4a37dab0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
