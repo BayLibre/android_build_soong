@@ -155,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "320c16ad_d34f07e2",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-01T14:02:44Z",
+      "side": 1,
+      "message": "ack. [style guide](https://google.github.io/styleguide/go/best-practices.html#package-size) also recommends against complex names, which splitting this might get into.\n\nGiven the package name is `bazel`, we should likely remove some of the repetition of Bazel in other names (https://google.github.io/styleguide/go/decisions.html#package-vs-exported-symbol-name)",
+      "parentUuid": "ada7a81e_94b9dba7",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33a2b68d_ecdefed2",
         "filename": "bazel/bazel_proxy.go",
         "patchSetId": 6

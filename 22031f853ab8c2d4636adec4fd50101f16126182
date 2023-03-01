@@ -365,6 +365,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cfaee2d_9286deeb",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-01T14:02:44Z",
+      "side": 1,
+      "message": "As far as I understand it, there is no best practice to define nested functions because they are only going to be called in their containing function.\n\nIf there are concerns about others calling the functions directly, then not exporting them would be relevant. If there are concerns about others in the same package calling them, a separate package would be appropriate. I don\u0027t think the latter is particularly of concern here.\n\nGodocs are optional for non-exported functions (which I would expect these to be), so the need to document them (aside from what is useful to the team) is low to none.\n\nPulling them into separate functions (and likely more use of interfaces) would also allow for unit testing the function",
+      "parentUuid": "52d1b7f5_5a0326a1",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 15
+      },
+      "revId": "22031f853ab8c2d4636adec4fd50101f16126182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b055ad2_a9f75486",
