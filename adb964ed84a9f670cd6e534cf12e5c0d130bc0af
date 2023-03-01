@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5e6a8e2b_31f2f4f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-03-01T23:48:10Z",
+      "side": 1,
+      "message": "1. Follow-on changes will flesh this out, probably creating a map with apex name as the key, and the to-be-installed file list and other properties being in the value.\n\n2. Let\u0027s talk more about `override_apex` - I\u0027m inclined to include the overridden module as well, when the map is getting fleshed out in the follow-on changes.",
+      "parentUuid": "b1357da9_f90d1150",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "adb964ed84a9f670cd6e534cf12e5c0d130bc0af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a39c4d51_2e9ead97",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -37,6 +61,23 @@
       "writtenOn": "2023-03-01T18:55:32Z",
       "side": 1,
       "message": "I expect that the actual generated json will change between now and the completed orchestration, but this gets the list exported.\n\nA separate CL will determine what apexes (api_surfaces) are required to build the desired target (system, vendor, apex[es]) in a given inner tree, so that the outer tree ninja file can have the complete list of needs.",
+      "revId": "adb964ed84a9f670cd6e534cf12e5c0d130bc0af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3437e844_d754e229",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-03-01T23:48:10Z",
+      "side": 1,
+      "message": "I\u0027ll update the code to produce the map of elements before I submit this CL, but leave the actual values in the map to follow-on changes.",
       "revId": "adb964ed84a9f670cd6e534cf12e5c0d130bc0af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -64,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1096f59_c4f2f0c2",
+        "filename": "apex/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-03-01T23:48:10Z",
+      "side": 1,
+      "message": "Done.  Though that seems to be different than the practice in other files in this directory.",
+      "parentUuid": "151e14be_56a25550",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "adb964ed84a9f670cd6e534cf12e5c0d130bc0af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b41eaac_473ba96c",
@@ -77,6 +142,30 @@
       "writtenOn": "2023-03-01T22:45:07Z",
       "side": 1,
       "message": "nit: this seems unused",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "adb964ed84a9f670cd6e534cf12e5c0d130bc0af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "415bedc9_ee9c6ba5",
+        "filename": "apex/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-03-01T23:48:10Z",
+      "side": 1,
+      "message": "I meant to remove this before uploading.  thanks!",
+      "parentUuid": "4b41eaac_473ba96c",
       "range": {
         "startLine": 56,
         "startChar": 1,
