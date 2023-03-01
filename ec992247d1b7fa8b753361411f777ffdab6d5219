@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a423667e_b8223bc1",
+        "filename": "scripts/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-03-01T20:09:18Z",
+      "side": 0,
+      "message": "this one seems like it should have been left in? (everything else in both changes lgtm though.)",
+      "revId": "ec992247d1b7fa8b753361411f777ffdab6d5219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
