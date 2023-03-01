@@ -70,6 +70,47 @@
       "parentUuid": "c0f8d3ca_f070cc68",
       "revId": "3b09845ce09209b3495087ff3b22aba8a548fb3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6060398f_864711f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-01T15:56:33Z",
+      "side": 1,
+      "message": "Oops, I should have refreshed before responding. Yes (for me), thanks!",
+      "parentUuid": "de4aaa57_54d4aafb",
+      "revId": "3b09845ce09209b3495087ff3b22aba8a548fb3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "622b6c3b_cc734561",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-01T15:56:33Z",
+      "side": 1,
+      "message": "Mind leaving a comment here on why this doesn\u0027t just remove the whole dir?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 18
+      },
+      "revId": "3b09845ce09209b3495087ff3b22aba8a548fb3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
