@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1357da9_f90d1150",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-01T22:45:07Z",
+      "side": 1,
+      "message": "Not blocking for this CL, but I was wondering\n1. Will the json file only list the top-level apex name or all the .jars/.so and other files that go inside it? IOW, will the apex itself be packaged in an inner tree or will it be done by the top-level packager?\n\n2. Since apexes can be overridden using `override_apex`, will/should the overridden module appear in the json file as well?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "adb964ed84a9f670cd6e534cf12e5c0d130bc0af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a39c4d51_2e9ead97",
@@ -14,6 +37,52 @@
       "writtenOn": "2023-03-01T18:55:32Z",
       "side": 1,
       "message": "I expect that the actual generated json will change between now and the completed orchestration, but this gets the list exported.\n\nA separate CL will determine what apexes (api_surfaces) are required to build the desired target (system, vendor, apex[es]) in a given inner tree, so that the outer tree ninja file can have the complete list of needs.",
+      "revId": "adb964ed84a9f670cd6e534cf12e5c0d130bc0af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "151e14be_56a25550",
+        "filename": "apex/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-01T22:45:07Z",
+      "side": 1,
+      "message": "nit: non android imports go above android imports and after the standard packages",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "adb964ed84a9f670cd6e534cf12e5c0d130bc0af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b41eaac_473ba96c",
+        "filename": "apex/metadata.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-01T22:45:07Z",
+      "side": 1,
+      "message": "nit: this seems unused",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 1
+      },
       "revId": "adb964ed84a9f670cd6e534cf12e5c0d130bc0af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
