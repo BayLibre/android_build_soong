@@ -16,6 +16,24 @@
       "message": "Is this so that the persistent Bazel server doesn\u0027t shut down? Or performance because doing this is faster than regenerating everything or so that the caches of the persistent Bazel server don\u0027t get invalidated?",
       "revId": "3b09845ce09209b3495087ff3b22aba8a548fb3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d71f6c_08bfd40e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-01T15:43:58Z",
+      "side": 1,
+      "message": "The latter -- I found that performance of a live bazel server was improved by ~5s or so if we didn\u0027t regenerate these files. (When looking at Bazel logs, Bazel had several \"package creation\" events for packages where the BUILD files were regenerated)",
+      "parentUuid": "fa365e62_b1abebe0",
+      "revId": "3b09845ce09209b3495087ff3b22aba8a548fb3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
