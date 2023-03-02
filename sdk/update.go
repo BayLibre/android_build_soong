@@ -319,7 +319,7 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext, sdkVariants []*sdk) {
 	targetBuildRelease := s.targetBuildRelease(ctx)
 	targetApiLevel, err := android.ApiLevelFromUser(ctx, targetBuildRelease.name)
 	if err != nil {
-		targetApiLevel = android.FutureApiLevel
+		targetApiLevel = android.PrivateApiLevel
 	}
 
 	// Aggregate all the sdkMemberVariantDep instances from all the sdk variants.
@@ -357,6 +357,10 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext, sdkVariants []*sdk) {
 		// If the minApiLevel of the member is greater than the target API level then exclude it from
 		// this snapshot.
 		exclude := memberVariantDep.minApiLevel.GreaterThan(targetApiLevel)
+		// If targetApiLevel is current and member is compiling against private apis, include it
+		if memberVariantDep.minApiLevel.EqualTo(android.PrivateApiLevel) && targetApiLevel.EqualTo(android.FutureApiLevel) {
+			exclude = false
+		}
 
 		addMember(name, export, exclude)
 
