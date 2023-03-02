@@ -22,6 +22,30 @@
       },
       "revId": "c4e6d2b20af7fbe64ccb0ef97d52870ea4ca666a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf5304ad_2b355983",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-02T01:28:48Z",
+      "side": 1,
+      "message": "These violations have been cleaned up now",
+      "parentUuid": "18d0496e_ad8455f8",
+      "range": {
+        "startLine": 12,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "c4e6d2b20af7fbe64ccb0ef97d52870ea4ca666a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
