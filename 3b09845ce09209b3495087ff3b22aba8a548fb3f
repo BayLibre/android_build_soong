@@ -107,6 +107,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e49faf_a03db080",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-02T04:18:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6060398f_864711f8",
+      "revId": "3b09845ce09209b3495087ff3b22aba8a548fb3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b784d438_4df8a460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-02T04:18:28Z",
+      "side": 1,
+      "message": "Of course. sorry for being dense.",
+      "parentUuid": "0e1d8383_7149f07c",
+      "revId": "3b09845ce09209b3495087ff3b22aba8a548fb3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "622b6c3b_cc734561",
@@ -120,6 +156,30 @@
       "writtenOn": "2023-03-01T15:56:33Z",
       "side": 1,
       "message": "Mind leaving a comment here on why this doesn\u0027t just remove the whole dir?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 18
+      },
+      "revId": "3b09845ce09209b3495087ff3b22aba8a548fb3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f25ad054_89f326b1",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-02T04:18:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "622b6c3b_cc734561",
       "range": {
         "startLine": 83,
         "startChar": 1,
