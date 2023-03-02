@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07bf08c1_f595abf9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-02T05:03:51Z",
+      "side": 1,
+      "message": "Paul, do you think this is the correct behavior? e.g. `hostjavalib` in `TestDeviceAndHostSnapshotWithOsSpecificMembers` is compiling against private apis, and without this CL it will no longer be exported at the top of this CL stack.\n\nShould this library be in the snapshot at all?",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "1e9a3756f6475922532cc5d8c11aebbac8432c1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
