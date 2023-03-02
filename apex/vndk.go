@@ -65,6 +65,10 @@ func apexVndkMutator(mctx android.TopDownMutatorContext) {
 		}
 
 		vndkVersion := ab.vndkVersion(mctx.DeviceConfig())
+		if vndkVersion == mctx.DeviceConfig().PlatformVndkVersion() {
+			vndkVersion = "current"
+		}
+
 		apiLevel, err := android.ApiLevelFromUser(mctx, vndkVersion)
 		if err != nil {
 			mctx.PropertyErrorf("vndk_version", "%s", err.Error())
