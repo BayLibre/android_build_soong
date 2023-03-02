@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3858eeed_383dca8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-02T09:15:09Z",
+      "side": 1,
+      "message": "Filed b/271385139",
+      "parentUuid": "d32d431a_3657a972",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "af73095979facd1e2b5a5bb4e4c8e485f1d2f204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc8763df_b7ee065d",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "I think a property is fine. It integrates easier in Bazel as well, since we don\u0027t need to know, at bazel apex rule analysis time, where it\u0027s going to be installed. It only needs to read an attribute/property.\n\nMy only concern is the name of the property. \"use_file_contexts_as_is\" doesn\u0027t really mean much - how about `hardcode_manifest_entry_in_file_contexts`?",
       "parentUuid": "0729291e_1929f03f",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "af73095979facd1e2b5a5bb4e4c8e485f1d2f204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6def6303_86ae0a78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-02T09:15:09Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "935b779a_5218e467",
       "range": {
         "startLine": 12,
         "startChar": 0,
