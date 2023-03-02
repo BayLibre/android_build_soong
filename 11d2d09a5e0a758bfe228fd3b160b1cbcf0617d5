@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2ad17e_57d0bd61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-02T01:11:02Z",
+      "side": 1,
+      "message": "Another non-blocking comment: Similar to API export, can we use bp2build+Bazel to export this data even when the primary build system for that inner tree is Soong?\n\nThis will likely require more upfront development cost. But we will start deleting Android.bp files of apexes soon, so we will need to implement an equivalent functionality in Bazel anyways.",
+      "revId": "11d2d09a5e0a758bfe228fd3b160b1cbcf0617d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
