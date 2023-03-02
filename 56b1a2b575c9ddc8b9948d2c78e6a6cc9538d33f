@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a83f998f_3f987b02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-02T20:54:21Z",
+      "side": 1,
+      "message": "Nice looks good! Just left a couple of nit comments",
+      "revId": "56b1a2b575c9ddc8b9948d2c78e6a6cc9538d33f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9958109c_bf34ac6b",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-02T20:54:21Z",
+      "side": 1,
+      "message": "should this work if the `never: false` is not present? could we add a test for that too?",
+      "revId": "56b1a2b575c9ddc8b9948d2c78e6a6cc9538d33f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231ab3c1_fa437d86",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-02T20:54:21Z",
+      "side": 1,
+      "message": "nit: could move this closer to code which uses it?",
+      "revId": "56b1a2b575c9ddc8b9948d2c78e6a6cc9538d33f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "294b4564_51b019cd",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-02T20:54:21Z",
+      "side": 1,
+      "message": "nit: could use `proptools.Bool()` for `thinProp` and `neverProp`\n\nand could do `thinPropSetToFalse :\u003d !proptools.BoolDefault(ltoProps.Lto.Thin, true)`, but readability gain is questionable",
+      "range": {
+        "startLine": 1469,
+        "startChar": 0,
+        "endLine": 1472,
+        "endChar": 0
+      },
+      "revId": "56b1a2b575c9ddc8b9948d2c78e6a6cc9538d33f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe2e3d4_92c4c97e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-02T20:54:21Z",
+      "side": 1,
+      "message": "nit: same as above could use `proptools.Bool` here",
+      "revId": "56b1a2b575c9ddc8b9948d2c78e6a6cc9538d33f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
