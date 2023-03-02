@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "614a1cd6_320123f9",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-02T00:32:14Z",
+      "side": 1,
+      "message": "For discussion:\n\n1) This mimics the behavior on line 95, which seems to similarly assume that matching the PlatformVndkVersion is enough to convert to \u0027current\u0027.\n2) I\u0027m unclear whether it\u0027s desirable for the name to be re-mapped to the PlatformVndkVersion at all, but I didn\u0027t want to immediately propose a significant rename of this APEX (I\u0027m not sure what the effects of doing so would be).\n3) We might(?) be able to handle this directly in ApiLevelFromUser? \u0027ApiLevel\u0027 does not have access to the mutator context, but we could potentially have ApiLevelFromUser remap PlatformVndkVersion() \u003d\u003e \"current\", though I\u0027m unsure if that change would be obvious or correct.",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
