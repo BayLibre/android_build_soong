@@ -45,6 +45,23 @@
       },
       "revId": "6a6433aae7a4af3b98d15e554d2a68f0867a1511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a2a333f_b9766f95",
+        "filename": "android/api_levels.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-03-02T20:05:36Z",
+      "side": 1,
+      "message": "This will return 8998  if .FinalOrFutureInt() is called on it. I\u0027m assuming that\u0027s not what we want. Should some logic be added to FinalOrFutureInt to handle this and also NoneApiLevel ? \n https://cs.android.com/android/platform/superproject/+/master:build/soong/android/api_levels.go;l\u003d78-85;drc\u003d4fd7e741405494160b367033fc9164361e917b64",
+      "revId": "6a6433aae7a4af3b98d15e554d2a68f0867a1511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
