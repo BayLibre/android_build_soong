@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b7f42fd_2208f525",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-03-02T12:23:18Z",
+      "side": 1,
+      "message": "I find this paragraph a little confusing. It uses \"We need it for\" to refer to an existing capability whereas the following paragraph uses the same phrase to refer to something being added in this change.\n\nInstead I would say something like:\n\u003e These functions already exist on SdkSpec(kind+level) and are used for computing the effective version for vendor modules compiling against current or system_current which depends on the `sdkKind`.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "6a6433aae7a4af3b98d15e554d2a68f0867a1511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb0b8792_1f84dd4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-03-02T12:23:18Z",
+      "side": 1,
+      "message": "This seems like it should be in a different change. There seems to be no overlap between the two parts.\n\nAs a rule of thumb if you ever find yourself writing \"and also\" in a commit message it\u0027s probably a sign that the change should be split out.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "6a6433aae7a4af3b98d15e554d2a68f0867a1511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
