@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0729291e_1929f03f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-02T02:46:39Z",
+      "side": 1,
+      "message": "Ok. We had a chat and I understand the need.\n\nWe still haven\u0027t reached out to a consensus about whether introducing a new property is preferred to automatically changing the file context to vendor_file for vendor-installed APEXes, or not. But the decision is not critical and I actually am fine with either way.",
+      "parentUuid": "a5621cbd_b8369f27",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "af73095979facd1e2b5a5bb4e4c8e485f1d2f204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3216e387_f2afa53a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -78,6 +102,23 @@
       "writtenOn": "2023-03-02T00:50:35Z",
       "side": 1,
       "message": "+Jingwen",
+      "revId": "af73095979facd1e2b5a5bb4e4c8e485f1d2f204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fa53cd_f7aa984c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-02T02:46:39Z",
+      "side": 1,
+      "message": "Over to the build systems team.",
       "revId": "af73095979facd1e2b5a5bb4e4c8e485f1d2f204",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
