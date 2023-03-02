@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d32667b_0f762ea7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-02T08:20:17Z",
+      "side": 1,
+      "message": "Should we also make it clear that this only affects Soong-built APEXes, and if so, clarifying the expected semantics for Bazel-built APEXes in mixed mode? Otherwise we need a plan to export BUILD targets to Make.",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "25783beca46a37104c385b5c658ffdd8ad4410c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "33620b09_3baadbbc",
