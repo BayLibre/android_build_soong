@@ -22,6 +22,30 @@
       },
       "revId": "1e9a3756f6475922532cc5d8c11aebbac8432c1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337ec669_19b81dab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-03-02T12:40:20Z",
+      "side": 1,
+      "message": "I don\u0027t think it was intentional for that library to build against private APIs, it was simply the quickest way to get a working test. So, feel free to modify `TestDeviceAndHostSnapshotWithOsSpecificMembers` to add `min_sdk_version: \"current\"` or whatever you need to make it work.",
+      "parentUuid": "07bf08c1_f595abf9",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "1e9a3756f6475922532cc5d8c11aebbac8432c1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
