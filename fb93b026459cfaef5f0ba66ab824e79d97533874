@@ -177,6 +177,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a495da_b4abf607",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-02T04:27:47Z",
+      "side": 1,
+      "message": "Good point. I have removed Bazel from some of these names.",
+      "parentUuid": "320c16ad_d34f07e2",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "fb93b026459cfaef5f0ba66ab824e79d97533874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a2b68d_ecdefed2",
