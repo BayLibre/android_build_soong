@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11991d86_c189bd9c",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2412,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-03-02T05:46:27Z",
+      "side": 1,
+      "message": "libc.apiimport tries to link with libc_headers in the `bionic/libc` and fails with error.",
+      "parentUuid": "cc46a827_4b3f1a5d",
+      "range": {
+        "startLine": 2409,
+        "startChar": 2,
+        "endLine": 2412,
+        "endChar": 3
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f17e2d67_0f7a60f6",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -192,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70300069_f2dfb0d8",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3335,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-03-02T05:46:27Z",
+      "side": 1,
+      "message": "No we don\u0027t, because we cannot know if apexlib and the module referencing apexlib is in the same apex or not from depsmutator.",
+      "parentUuid": "b03d657f_0615682c",
+      "range": {
+        "startLine": 3327,
+        "startChar": 2,
+        "endLine": 3335,
+        "endChar": 3
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a66be30c_35fb4724",
         "filename": "multitree/api_imports.go",
         "patchSetId": 5
@@ -251,6 +299,30 @@
       "side": 1,
       "message": "As a more concrete example, assuming `liblog` is a system library and `libneuralnetworks` is an apex library and both contribute to the module-lib API surface. And there is another `systemlib` that does **not** contribute to this API surface but contributes to NDK/LLNDK.\n\n```\napi_imports {\n  name: \"api_imports\",\n  shared_libs: [\"liblog\", \"libneuralnetworks\", \"systemlib\"] ?\n  apex_shared_libs: [\"liblog\", \"libneuralnetworks\"] ?\n}\n```\n\nIn your proposal, will the api_imports look like above?",
       "parentUuid": "05d10b4a_43f6f28e",
+      "range": {
+        "startLine": 45,
+        "startChar": 25,
+        "endLine": 45,
+        "endChar": 67
+      },
+      "revId": "b882a144c350e3ce4f8cdc9ade25f51ac92ab67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c254a6_2f43527e",
+        "filename": "multitree/api_imports.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-03-02T05:46:27Z",
+      "side": 1,
+      "message": "Yes it is.",
+      "parentUuid": "95410dd7_ffe7104c",
       "range": {
         "startLine": 45,
         "startChar": 25,
