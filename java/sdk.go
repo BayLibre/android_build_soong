@@ -99,6 +99,15 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext android.SdkContext)
 		sdkVersion = sdkVersion.ForVendorPartition(ctx)
 	}
 
+	// Host variants do not build against an android sdk
+	if ctx.Module().Target().Os.Class == android.Host {
+		// If system_modules is not none, host variants compile against OpenJDK8 standard libraries.
+		noStandardLibs := sdkContext.SystemModules() == "none"
+		return sdkDep{
+			noStandardLibs: noStandardLibs,
+		}
+	}
+
 	if !sdkVersion.ValidateSystemSdk(ctx) {
 		return sdkDep{}
 	}
