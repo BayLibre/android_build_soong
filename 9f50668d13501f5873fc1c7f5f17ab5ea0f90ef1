@@ -43,6 +43,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f714f80_ca78bb38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-03T18:53:52Z",
+      "side": 1,
+      "message": "I\u0027ll update the commit message in the next patch after confirming what needs to be done based on the other comments. The specific test is that when building any RISC-V target, we observe that /apex contains no com.android.vndk* files, and so ld.config.txt is missing many critical packages (e.g libbase.so). After this change, we observe the /apex is present, ld.config.txt is correct, and services stop complaining about the inability to link libbase.so (and others).",
+      "parentUuid": "18fddcc2_c5b95f27",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a0ea88_f318cb7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-03T18:53:52Z",
+      "side": 1,
+      "message": "Ack, I\u0027ll file a bug on the public Github: https://github.com/google/android-riscv64/issues/65",
+      "parentUuid": "a2099ceb_e84b1eb0",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b54bbada_51201617",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -124,6 +166,24 @@
       "side": 1,
       "message": "I guess this CL is for a new architecture like RISC-V. Then I think it\u0027s better to let MinApiForArch return `ApiLevelFromUser(ctx, \"current\")` to express that the architecture supports the very latest platform only - while it is under development.",
       "parentUuid": "614a1cd6_320123f9",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1079b1bb_ac6b8e0b",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-03T18:53:52Z",
+      "side": 1,
+      "message": "So I\u0027ve tried this out locally and it works, but this seems to be the intent of FutureApiLevel (e.g. \u0027current\u0027), which is what MinApiForArch currently returns.\n\nArguably, isn\u0027t how we\u0027re modifying in `ab.vndkVersion` incorrect? It\u0027s replacing \"current\" with \"PlatformVersionName\", which changes the meaning (the former is the \u0027latest\u0027 and the latter is the \u0027latest active preview\u0027).",
+      "parentUuid": "c414b445_ee9fda79",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
