@@ -241,6 +241,10 @@ func JavadocHostFactory() android.Module {
 var _ android.OutputFileProducer = (*Javadoc)(nil)
 
 func (j *Javadoc) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	return android.SdkSpecFrom(ctx, String(j.properties.Sdk_version))
 }
 
@@ -249,14 +253,26 @@ func (j *Javadoc) SystemModules() string {
 }
 
 func (j *Javadoc) MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	return j.SdkVersion(ctx)
 }
 
 func (j *Javadoc) ReplaceMaxSdkVersionPlaceholder(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	return j.SdkVersion(ctx)
 }
 
 func (j *Javadoc) TargetSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	return j.SdkVersion(ctx)
 }
 
