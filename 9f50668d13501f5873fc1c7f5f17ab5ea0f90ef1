@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18fddcc2_c5b95f27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-03T09:39:22Z",
+      "side": 1,
+      "message": "I believe this test procedure is passing even without this change. Could you present a test procedure that fails without this, but passes with this?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2099ceb_e84b1eb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-03T09:39:22Z",
+      "side": 1,
+      "message": "Could you add the bug number (if it exists) so that I and future readers understand the context better?",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b54bbada_51201617",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -66,6 +106,24 @@
       "writtenOn": "2023-03-02T00:32:14Z",
       "side": 1,
       "message": "For discussion:\n\n1) This mimics the behavior on line 95, which seems to similarly assume that matching the PlatformVndkVersion is enough to convert to \u0027current\u0027.\n2) I\u0027m unclear whether it\u0027s desirable for the name to be re-mapped to the PlatformVndkVersion at all, but I didn\u0027t want to immediately propose a significant rename of this APEX (I\u0027m not sure what the effects of doing so would be).\n3) We might(?) be able to handle this directly in ApiLevelFromUser? \u0027ApiLevel\u0027 does not have access to the mutator context, but we could potentially have ApiLevelFromUser remap PlatformVndkVersion() \u003d\u003e \"current\", though I\u0027m unsure if that change would be obvious or correct.",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c414b445_ee9fda79",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-03T09:39:22Z",
+      "side": 1,
+      "message": "I guess this CL is for a new architecture like RISC-V. Then I think it\u0027s better to let MinApiForArch return `ApiLevelFromUser(ctx, \"current\")` to express that the architecture supports the very latest platform only - while it is under development.",
+      "parentUuid": "614a1cd6_320123f9",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
