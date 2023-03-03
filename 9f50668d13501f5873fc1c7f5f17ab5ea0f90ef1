@@ -186,6 +186,24 @@
       "parentUuid": "c414b445_ee9fda79",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "638b9880_38c9fb62",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-03T19:50:32Z",
+      "side": 1,
+      "message": "I have to walk back the above statement, it was reporting the min level correctly but it doesn\u0027t resolve the bug - the change in vndk.go is checking if:\n\napiLevel (which is \u0027UpsideDownCake\u0027) is less than \u0027minApiForArch\u0027 (which, after the proposed patch, would be ApiLevelFromUser(ctx, \u0027current\u0027), which is just \u0027current\u0027 again.\n\nThe underlying problem again would be that we\u0027re comparing a preview codename to a preview API level, which would fail the comparison and still reject the bundling of the vNDK.",
+      "parentUuid": "1079b1bb_ac6b8e0b",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
