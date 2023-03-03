@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "862493c4_efd0d4e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-03T23:22:52Z",
+      "side": 1,
+      "message": "I think these two api levels will become permanent after the migration of min_sdk_version from `SdkSpec` to `ApiLevel`. I have added documentation about these two objects in aosp/2470068",
+      "parentUuid": "1bd15652_d58c9be7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "077e69a34d6940c8b7b948ba416a2f3073628284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be9057f2_dddba920",
@@ -41,6 +65,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eafd060_5dc8c4cb",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-03T23:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be9057f2_dddba920",
+      "revId": "077e69a34d6940c8b7b948ba416a2f3073628284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b78263b_f8c837ad",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-03T23:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be9057f2_dddba920",
+      "revId": "077e69a34d6940c8b7b948ba416a2f3073628284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd9519a0_79c8fc56",
@@ -54,6 +114,54 @@
       "writtenOn": "2023-03-02T12:40:20Z",
       "side": 1,
       "message": "I don\u0027t think that this is the right solution.",
+      "range": {
+        "startLine": 360,
+        "startChar": 2,
+        "endLine": 363,
+        "endChar": 3
+      },
+      "revId": "077e69a34d6940c8b7b948ba416a2f3073628284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3dffcb2_ab03f990",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-03T23:22:52Z",
+      "side": 1,
+      "message": "Agreed, I have removed this code block.",
+      "parentUuid": "bd9519a0_79c8fc56",
+      "range": {
+        "startLine": 360,
+        "startChar": 2,
+        "endLine": 363,
+        "endChar": 3
+      },
+      "revId": "077e69a34d6940c8b7b948ba416a2f3073628284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd8963b_2d385fca",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-03T23:22:52Z",
+      "side": 1,
+      "message": "Agreed, I have removed this statement.",
+      "parentUuid": "bd9519a0_79c8fc56",
       "range": {
         "startLine": 360,
         "startChar": 2,
