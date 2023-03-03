@@ -2952,13 +2952,7 @@ func javaBinaryHostBp2Build(ctx android.TopDownMutatorContext, m *Binary) {
 		// is set, than javaResourcesAttributes needs to be set in the
 		// javaCommonAttributes of the java_binary target
 		if commonAttrs.javaResourcesAttributes != nil {
-			if commonAttrs.javaResourcesAttributes.Resource_strip_prefix != nil {
-				attrs.javaCommonAttributes = &javaCommonAttributes{
-					javaResourcesAttributes: commonAttrs.javaResourcesAttributes,
-				}
-			} else {
-				ktAttrs.javaCommonAttributes.javaResourcesAttributes = commonAttrs.javaResourcesAttributes
-			}
+			ktAttrs.javaCommonAttributes.javaResourcesAttributes = commonAttrs.javaResourcesAttributes
 		}
 
 		ctx.CreateBazelTargetModule(ktProps, android.CommonAttributes{Name: ktName}, ktAttrs)
