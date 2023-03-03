@@ -20,6 +20,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22b83cd6_0fd204ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-03T08:47:52Z",
+      "side": 1,
+      "message": "Unfortunately I need to learn more context about vndk semantics, adding Jiyong.",
+      "parentUuid": "b54bbada_51201617",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2b57fbf_06d1ffd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-03T08:47:52Z",
+      "side": 1,
+      "message": "Adding Jiyong for vndk context.\n\nIs there a tracking bug or discussion about this?",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "614a1cd6_320123f9",
         "filename": "apex/vndk.go",
         "patchSetId": 1
