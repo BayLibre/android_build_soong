@@ -45,7 +45,8 @@ const (
 )
 
 var (
-	rbeRandPrefix int
+	rbeRandPrefix             int
+	googleProdCredsExistCache bool
 )
 
 func init() {
@@ -1347,10 +1348,13 @@ func (c *configImpl) IsGooglerEnvironment() bool {
 // GoogleProdCredsExist determine whether credentials exist on the
 // Googler machine to use remote execution.
 func (c *configImpl) GoogleProdCredsExist() bool {
-	if _, err := exec.Command("/usr/bin/prodcertstatus", "--simple_output", "--nocheck_loas").Output(); err != nil {
-		return false
+	if !googleProdCredsExistCache {
+		if _, err := exec.Command("/usr/bin/prodcertstatus", "--simple_output", "--nocheck_loas").Output(); err != nil {
+			return false
+		}
+		googleProdCredsExistCache = true
 	}
-	return true
+	return googleProdCredsExistCache
 }
 
 // UseRemoteBuild indicates whether to use a remote build acceleration system
