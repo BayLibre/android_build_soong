@@ -658,6 +658,10 @@ func (j *Module) setInstrument(value bool) {
 }
 
 func (j *Module) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	return android.SdkSpecFrom(ctx, String(j.deviceProperties.Sdk_version))
 }
 
@@ -666,6 +670,10 @@ func (j *Module) SystemModules() string {
 }
 
 func (j *Module) MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	if j.deviceProperties.Min_sdk_version != nil {
 		return android.SdkSpecFrom(ctx, *j.deviceProperties.Min_sdk_version)
 	}
@@ -673,6 +681,10 @@ func (j *Module) MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
 }
 
 func (j *Module) MaxSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	maxSdkVersion := proptools.StringDefault(j.deviceProperties.Max_sdk_version, "")
 	// SdkSpecFrom returns SdkSpecPrivate for this, which may be confusing.
 	// TODO(b/208456999): ideally MaxSdkVersion should be an ApiLevel and not SdkSpec.
@@ -680,6 +692,10 @@ func (j *Module) MaxSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
 }
 
 func (j *Module) ReplaceMaxSdkVersionPlaceholder(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	replaceMaxSdkVersionPlaceholder := proptools.StringDefault(j.deviceProperties.Replace_max_sdk_version_placeholder, "")
 	return android.SdkSpecFrom(ctx, replaceMaxSdkVersionPlaceholder)
 }
@@ -689,6 +705,10 @@ func (j *Module) MinSdkVersionString() string {
 }
 
 func (j *Module) TargetSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	if j.deviceProperties.Target_sdk_version != nil {
 		return android.SdkSpecFrom(ctx, *j.deviceProperties.Target_sdk_version)
 	}
