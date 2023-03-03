@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35750a44_836a245f",
+        "filename": "ui/build/build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1390429
+      },
+      "writtenOn": "2023-03-03T20:36:28Z",
+      "side": 1,
+      "message": "When will this function be called? after build completed? or we can get the modified file right after syncing and cherry-picking?",
+      "range": {
+        "startLine": 374,
+        "startChar": 10,
+        "endLine": 374,
+        "endChar": 24
+      },
+      "revId": "7f29a6658664f6497a0e098dd24fe2553fa6a16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
