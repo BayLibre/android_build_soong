@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "883b0cd7_0d6a40ce",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-03T20:56:01Z",
+      "side": 1,
+      "message": "Ah gotcha, I misread what was happening here.",
+      "parentUuid": "87fcca35_5cbcbdff",
+      "revId": "89a09d28634cc0344b3b42495eb6f31a810b4aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0085334d_a39b9ad8",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "This is the same as `\u0026true` on the temporary; even worse than what I do here about passing it along the stack.",
       "parentUuid": "0085334d_a39b9ad8",
+      "revId": "89a09d28634cc0344b3b42495eb6f31a810b4aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5c8cc3_b1937b59",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-03T20:56:01Z",
+      "side": 1,
+      "message": "Right it\u0027s just a function that lets us write the same pattern in one line. WDYM by `even worse than what I do here`?",
+      "parentUuid": "7e0687d8_e8abb552",
       "revId": "89a09d28634cc0344b3b42495eb6f31a810b4aef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
