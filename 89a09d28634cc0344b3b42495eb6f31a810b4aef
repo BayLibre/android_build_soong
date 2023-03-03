@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "969d5542_79f9af6b",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-03T19:21:21Z",
+      "side": 1,
+      "message": "nit: could we remove this var (and deref the pointer directly on the line below) since we\u0027re just taking the reference of it again later? Or make the original `attrs` pointer just a value instead and take the reference of it where necessary?\n\n(Actually I am a little confused on the semantics here lol. Does this make a copy of the `attrs` struct, and then we\u0027re referencing the new copy on line 397? Not sure if this would act more like a \"move\" operation in practice.)",
+      "revId": "89a09d28634cc0344b3b42495eb6f31a810b4aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0085334d_a39b9ad8",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-03T19:21:21Z",
+      "side": 1,
+      "message": "nit: could use `proptools.BoolPtr(true)` here",
+      "revId": "89a09d28634cc0344b3b42495eb6f31a810b4aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
