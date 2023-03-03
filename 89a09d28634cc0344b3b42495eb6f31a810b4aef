@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87fcca35_5cbcbdff",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2023-03-03T20:13:13Z",
+      "side": 1,
+      "message": "Yes, this makes a copy. As I don\u0027t wish to mutate the original attributes, given to the prior module, I make a copy.",
+      "parentUuid": "969d5542_79f9af6b",
+      "revId": "89a09d28634cc0344b3b42495eb6f31a810b4aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0085334d_a39b9ad8",
         "filename": "cc/prebuilt.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-03T19:21:21Z",
       "side": 1,
       "message": "nit: could use `proptools.BoolPtr(true)` here",
+      "revId": "89a09d28634cc0344b3b42495eb6f31a810b4aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0687d8_e8abb552",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2023-03-03T20:13:13Z",
+      "side": 1,
+      "message": "This is the same as `\u0026true` on the temporary; even worse than what I do here about passing it along the stack.",
+      "parentUuid": "0085334d_a39b9ad8",
       "revId": "89a09d28634cc0344b3b42495eb6f31a810b4aef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
