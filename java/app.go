@@ -752,7 +752,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 
 type appDepsInterface interface {
 	SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec
-	MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec
+	MinSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel
 	RequiresStableAPIs(ctx android.BaseModuleContext) bool
 }
 
@@ -865,10 +865,10 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 		} else {
 			toMinSdkVersion := "(no version)"
 			if m, ok := to.(interface {
-				MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec
+				MinSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel
 			}); ok {
-				if v := m.MinSdkVersion(ctx); !v.ApiLevel.IsNone() {
-					toMinSdkVersion = v.ApiLevel.String()
+				if v := m.MinSdkVersion(ctx); !v.IsNone() {
+					toMinSdkVersion = v.String()
 				}
 			} else if m, ok := to.(interface{ MinSdkVersion() string }); ok {
 				// TODO(b/175678607) eliminate the use of MinSdkVersion returning
