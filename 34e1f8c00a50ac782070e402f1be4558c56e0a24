@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c9b4e4_fd5175ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2023-03-03T10:21:32Z",
+      "side": 1,
+      "message": "This corrects an error from aosp/2438064 where Java target 17 would be used from API level 33 onward. It needs to be from 34 onward.",
+      "revId": "34e1f8c00a50ac782070e402f1be4558c56e0a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
