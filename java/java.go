@@ -794,7 +794,7 @@ type librarySdkMemberProperties struct {
 	PermittedPackages []string
 
 	// The value of the min_sdk_version property, translated into a number where possible.
-	MinSdkVersion *string `supported_build_releases:"Tiramisu+"`
+	MinSdkVersion *string `android:"arch_variant" supported_build_releases:"Tiramisu+",android:"arch_variant"`
 
 	DexPreoptProfileGuided *bool `supported_build_releases:"UpsideDownCake+"`
 }
@@ -1810,15 +1810,15 @@ type ImportProperties struct {
 
 	// The version of the SDK that the source prebuilt file was built against. Defaults to the
 	// current version if not specified.
-	Sdk_version *string
+	Sdk_version *string `android:"arch_variant"`
 
 	// The minimum version of the SDK that this module supports. Defaults to sdk_version if not
 	// specified.
-	Min_sdk_version *string
+	Min_sdk_version *string `android:"arch_variant"`
 
 	// The max sdk version placeholder used to replace maxSdkVersion attributes on permission
 	// and uses-permission tags in manifest_fixer.
-	Replace_max_sdk_version_placeholder *string
+	Replace_max_sdk_version_placeholder *string `android:"arch_variant"`
 
 	Installable *bool
 
@@ -1884,6 +1884,10 @@ func (j *Import) PermittedPackagesForUpdatableBootJars() []string {
 }
 
 func (j *Import) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	return android.SdkSpecFrom(ctx, String(j.properties.Sdk_version))
 }
 
@@ -1892,6 +1896,10 @@ func (j *Import) SystemModules() string {
 }
 
 func (j *Import) MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	if j.properties.Min_sdk_version != nil {
 		return android.SdkSpecFrom(ctx, *j.properties.Min_sdk_version)
 	}
@@ -1899,6 +1907,10 @@ func (j *Import) MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
 }
 
 func (j *Import) ReplaceMaxSdkVersionPlaceholder(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	if j.properties.Replace_max_sdk_version_placeholder != nil {
 		return android.SdkSpecFrom(ctx, *j.properties.Replace_max_sdk_version_placeholder)
 	}
@@ -1906,6 +1918,10 @@ func (j *Import) ReplaceMaxSdkVersionPlaceholder(ctx android.EarlyModuleContext)
 }
 
 func (j *Import) TargetSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	// Host variants do not compile against an android sdk
+	if j.Host() {
+		return android.SdkSpecNone
+	}
 	return j.SdkVersion(ctx)
 }
 
