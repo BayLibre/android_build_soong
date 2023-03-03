@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a237b4_68a815ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-03T23:11:05Z",
+      "side": 1,
+      "message": "Thanks Paul, I have updated the commit message to make the intent clearer.",
+      "parentUuid": "4b7f42fd_2208f525",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "6a6433aae7a4af3b98d15e554d2a68f0867a1511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb0b8792_1f84dd4f",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95453e16_de0835c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-03T23:11:05Z",
+      "side": 1,
+      "message": "Agreed, I have created aosp/2470068 for this",
+      "parentUuid": "bb0b8792_1f84dd4f",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "6a6433aae7a4af3b98d15e554d2a68f0867a1511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a2a333f_b9766f95",
@@ -60,6 +108,24 @@
       "writtenOn": "2023-03-02T20:05:36Z",
       "side": 1,
       "message": "This will return 8998  if .FinalOrFutureInt() is called on it. I\u0027m assuming that\u0027s not what we want. Should some logic be added to FinalOrFutureInt to handle this and also NoneApiLevel ? \n https://cs.android.com/android/platform/superproject/+/master:build/soong/android/api_levels.go;l\u003d78-85;drc\u003d4fd7e741405494160b367033fc9164361e917b64",
+      "revId": "6a6433aae7a4af3b98d15e554d2a68f0867a1511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2391df5_afc8340b",
+        "filename": "android/api_levels.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-03T23:11:05Z",
+      "side": 1,
+      "message": "Thanks Alix, I have added some error handling for `InvalidApiLevel` in `FinalOrFutureInt` in aosp/2470068\n\nFor `NoneApiLevel`, this will actually return 10000 and I don\u0027t think we can make this an error immediately. One use case I can think of is that aidl compiler expects 10000 for `sdk_version: none` for droidstubs (aosp/2302600). There might be other use cases too, and I think we should defer it to a future cleanup effort.",
+      "parentUuid": "0a2a333f_b9766f95",
       "revId": "6a6433aae7a4af3b98d15e554d2a68f0867a1511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
