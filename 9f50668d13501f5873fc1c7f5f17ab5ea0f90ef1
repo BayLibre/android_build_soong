@@ -204,6 +204,24 @@
       "parentUuid": "1079b1bb_ac6b8e0b",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9ca217_f989a293",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-04T03:49:28Z",
+      "side": 1,
+      "message": "current, future, the version number 10000, latest platform codename (like \"UpsideDownCake\"), etc. have slightly different meanings (or same meaning!) depending on the context where they are used. It\u0027s unfortunate, but I don\u0027t think fixing that is a part of this CL.\n\nMy suggestion is basically based on the expectation that the min supported version for RISC-V will eventually be a fixed number (ex: 35). By that time, you wouldn\u0027t need this change, like other architectures. \n\nAgain, that doesn\u0027t mean that the current use of \"current\" is absolutely correct. I just don\u0027t want to add more `if` cases around it, as it will only make things more difficult to understand and fix in the future.",
+      "parentUuid": "638b9880_38c9fb62",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
