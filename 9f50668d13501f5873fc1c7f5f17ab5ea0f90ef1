@@ -240,6 +240,24 @@
       "parentUuid": "be9ca217_f989a293",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4082dbfe_9ca31e11",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-04T10:09:58Z",
+      "side": 1,
+      "message": "I really don\u0027t want to change the behavior of the `vndkVersion` function because its output is used in several other places, some of which affects the name of the file (e.g. `/system/apex/com.android.vndk.current.apex`). In other words, the change would be not internal to the build system.\n\nI don\u0027t fully follow (2) of your trials. Sharing the error message would be helpful.",
+      "parentUuid": "38a8cdcc_c8c6e924",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
