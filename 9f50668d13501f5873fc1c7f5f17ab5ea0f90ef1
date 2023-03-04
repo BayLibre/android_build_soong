@@ -258,6 +258,24 @@
       "parentUuid": "38a8cdcc_c8c6e924",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d592a8_beea14cf",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-04T19:52:56Z",
+      "side": 1,
+      "message": "\u003e I really don\u0027t want to change the behavior of the vndkVersion function because its output is used in several other places, . . .\n\n+1, definitely not advocating that we change the behavior of vndkVersion right now. Only suggesting that because it\u0027s doing this remapping, the least-invasive thing would be to undo that mapping when relevant at the call sites (like is done in this CL).\n\n\u003e I don\u0027t fully follow (2) of your trials. Sharing the error message would be helpful.\n\nAck, here\u0027s the results of each attempt:\n\n1) In api_level.go: return ApiLevelForUser(ctx, \u0027current\u0027).\nResult: Builds, but APEX is not bundled in /apex/com.android.vndk.*. Adding prints confirms check fires and intentionally disables vNDK.\n\n2) In api_level.go: return ctx.Config().PlatformSdkVersion()\nResult: Does not build, most native libraries fail with this error:\n```\nerror: external/boringssl/Android.bp:496:1: module \"libssl_baremetal\" variant \"android_riscv64_sdk_static\": links \"libc++_static\" built against newer API version \"current\"\n```\n\n3) In api_level.go: return android.ApiLevelFromUser(ctx, ctx.Config().PlatformSdkCodename())\nResult: Does not build, bionic fails with:\n```\nerror: bionic/libc/Android.bp:1981:16: module \"libc_headers\" variant \"android_riscv64_sdk\": sdk_version: Invalid sdk_version value (must be int or current): \"UpsideDownCake\"\n```",
+      "parentUuid": "4082dbfe_9ca31e11",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
