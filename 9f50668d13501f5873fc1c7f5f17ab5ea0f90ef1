@@ -222,6 +222,24 @@
       "parentUuid": "638b9880_38c9fb62",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a8cdcc_c8c6e924",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-04T06:46:06Z",
+      "side": 1,
+      "message": "Ah, I understand the intent of your suggestion, I\u0027m flagging that it wouldn\u0027t resolve this issue, even temporarily:\n\n\"apiLevel\" in vndk.go provides a range: 30, 31, 32 ... \u0027UpsideDownCake\u0027.\n\"minApiLevelForArch(riscv)\" in vndk.go \u003d\u003e ApiLevelFromUser(.. , \u0027current\u0027) \u003d\u003e current\n\nIf `vndkVersion` did not perform this name conversion, the current logic works because it correctly matches \u0027current\u0027 everywhere.\n\nWhat I\u0027ve tried so far:\n1) Switch ApiLevelFromUser to \u0027current\u0027 (doesn\u0027t work, for above reason).\n2) Switch ApiLevelFromUser to \u0027UDC\u0027 (doesn\u0027t work, static libraries are still compiled against \u0027current\u0027, so when linking it complains UDC \u003c current, so these two cannot be linked.\n\nI\u0027m potentially misunderstanding the specific suggestion - if you have time next week, I\u0027ll reach out to understand what can be done here!",
+      "parentUuid": "be9ca217_f989a293",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
