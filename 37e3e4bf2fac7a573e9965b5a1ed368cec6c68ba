@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6219591c_f73bef78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2023-03-05T22:44:21Z",
+      "side": 1,
+      "message": "Because of the toolchain bugs, the actual compilation target is limited to v8.2+dotprod, but is it meant to be eventually upgraded to full v9-a.",
+      "revId": "37e3e4bf2fac7a573e9965b5a1ed368cec6c68ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
