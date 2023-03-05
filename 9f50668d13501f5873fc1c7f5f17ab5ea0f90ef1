@@ -276,6 +276,24 @@
       "parentUuid": "4082dbfe_9ca31e11",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a81d4cb_fd5b454c",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-05T02:04:29Z",
+      "side": 1,
+      "message": "Thanks. Since I couldn\u0027t understand the errors, I tried this by changing MinApiForArch so that it returns PlatformSdkVersion for X86_64 and running the X86_64 build. (I did `m nothing --skip-soong-tests`, but it certainly has passed the checks you were blocked on). The result was a success. So I guess it\u0027s something to do with the RISC-V architecture somewhere else in the build system?\n\nreturning PlatformSdkCodename (filtered through ApiLevelFromUser) gives the same error you reported, and I think it\u0027s causing problem for the modules having `sdk_version: \"minimum\"`, where it uses the value returned from MinApiForArch. Obviously, since UDC is an unreleased version (doesn\u0027t have an int value), it\u0027s an error. I think it will be fixed when UDC gets released or this is built on a release branch.",
+      "parentUuid": "b8d592a8_beea14cf",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
