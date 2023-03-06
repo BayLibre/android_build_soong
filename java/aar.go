@@ -1094,7 +1094,9 @@ func (a *AndroidLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) 
 	}
 
 	if len(a.properties.Common_srcs) != 0 {
-		commonAttrs.Common_srcs = bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, a.properties.Common_srcs))
+		commonAttrs.kotlinAttributes = &kotlinAttributes{
+			Common_srcs: bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, a.properties.Common_srcs)),
+		}
 	}
 
 	name := a.Name()

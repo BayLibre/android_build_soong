@@ -1534,7 +1534,9 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		appAttrs.Deps = deps
 	} else {
 		ktName := a.Name() + "_kt"
-		commonAttrs.Common_srcs = bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, a.properties.Common_srcs))
+		commonAttrs.kotlinAttributes = &kotlinAttributes{
+			Common_srcs: bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, a.properties.Common_srcs)),
+		}
 		ctx.CreateBazelTargetModule(
 			bazel.BazelTargetModuleProperties{
 				Rule_class:        "android_library",
