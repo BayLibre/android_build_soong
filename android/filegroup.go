@@ -26,12 +26,17 @@ import (
 )
 
 func init() {
-	RegisterModuleType("filegroup", FileGroupFactory)
+	RegisterFilegroupBuildComponents(InitRegistrationContext)
 }
 
 var PrepareForTestWithFilegroup = FixtureRegisterWithContext(func(ctx RegistrationContext) {
-	ctx.RegisterModuleType("filegroup", FileGroupFactory)
+	RegisterFilegroupBuildComponents(ctx)
 })
+
+func RegisterFilegroupBuildComponents(ctx RegistrationContext) {
+	ctx.RegisterModuleType("filegroup", FileGroupFactory)
+	ctx.RegisterModuleType("filegroup_defaults", FileGroupDefaultsFactory)
+}
 
 var convertedProtoLibrarySuffix = "_bp2build_converted"
 
@@ -172,6 +177,7 @@ type fileGroupProperties struct {
 type fileGroup struct {
 	ModuleBase
 	BazelModuleBase
+	DefaultableModuleBase
 	FileGroupAsLibrary
 	properties fileGroupProperties
 	srcs       Paths
@@ -189,6 +195,7 @@ func FileGroupFactory() Module {
 	module.AddProperties(&module.properties)
 	InitAndroidModule(module)
 	InitBazelModule(module)
+	InitDefaultableModule(module)
 	return module
 }
 
@@ -319,4 +326,18 @@ func ToFileGroupAsLibrary(ctx BazelConversionPathContext, name string) (FileGrou
 		}
 	}
 	return nil, false
+}
+
+// Defaults
+type FileGroupDefaults struct {
+	ModuleBase
+	DefaultsModuleBase
+}
+
+func FileGroupDefaultsFactory() Module {
+	module := &FileGroupDefaults{}
+	module.AddProperties(&fileGroupProperties{})
+	InitDefaultsModule(module)
+
+	return module
 }
