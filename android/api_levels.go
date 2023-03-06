@@ -344,14 +344,17 @@ func ApiLevelFromUserWithConfig(config Config, raw string) (ApiLevel, error) {
 		}
 	}
 
-	canonical := ReplaceFinalizedCodenames(config, raw)
-	asInt, err := strconv.Atoi(canonical)
-	if err != nil {
-		return NoneApiLevel, fmt.Errorf("%q could not be parsed as an integer and is not a recognized codename", canonical)
+	canonical, ok := getApiLevelsMapReleasedVersions(config)[raw]
+	if !ok {
+		asInt, err := strconv.Atoi(raw)
+		if err != nil {
+			return NoneApiLevel, fmt.Errorf("%q could not be parsed as an integer and is not a recognized codename", raw)
+		}
+		return uncheckedFinalApiLevel(asInt), nil
 	}
 
-	apiLevel := uncheckedFinalApiLevel(asInt)
-	return apiLevel, nil
+	return uncheckedFinalApiLevel(canonical), nil
+
 }
 
 // ApiLevelForTest returns an ApiLevel constructed from the supplied raw string.
@@ -407,28 +410,32 @@ func GetApiLevelsJson(ctx PathContext) WritablePath {
 	return PathForOutput(ctx, "api_levels.json")
 }
 
-func getApiLevelsMapReleasedVersions() map[string]int {
-	return map[string]int{
-		"G":        9,
-		"I":        14,
-		"J":        16,
-		"J-MR1":    17,
-		"J-MR2":    18,
-		"K":        19,
-		"L":        21,
-		"L-MR1":    22,
-		"M":        23,
-		"N":        24,
-		"N-MR1":    25,
-		"O":        26,
-		"O-MR1":    27,
-		"P":        28,
-		"Q":        29,
-		"R":        30,
-		"S":        31,
-		"S-V2":     32,
-		"Tiramisu": 33,
-	}
+var releasedVersionsCodenamesMapKey = NewOnceKey("ReleasedVersionsCodenamesMap")
+
+func getApiLevelsMapReleasedVersions(config Config) map[string]int {
+	return config.Once(releasedVersionsCodenamesMapKey, func() interface{} {
+		return map[string]int{
+			"G":        9,
+			"I":        14,
+			"J":        16,
+			"J-MR1":    17,
+			"J-MR2":    18,
+			"K":        19,
+			"L":        21,
+			"L-MR1":    22,
+			"M":        23,
+			"N":        24,
+			"N-MR1":    25,
+			"O":        26,
+			"O-MR1":    27,
+			"P":        28,
+			"Q":        29,
+			"R":        30,
+			"S":        31,
+			"S-V2":     32,
+			"Tiramisu": 33,
+		}
+	}).(map[string]int)
 }
 
 var finalCodenamesMapKey = NewOnceKey("FinalCodenamesMap")
@@ -437,7 +444,7 @@ func getFinalCodenamesMap(config Config) map[string]int {
 	// This logic is replicated in starlark, if changing logic here update starlark code too
 	// https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/common/api.bzl;l=30;drc=231c7e8c8038fd478a79eb68aa5b9f5c64e0e061
 	return config.Once(finalCodenamesMapKey, func() interface{} {
-		apiLevelsMap := getApiLevelsMapReleasedVersions()
+		apiLevelsMap := getApiLevelsMapReleasedVersions(config)
 
 		// TODO: Differentiate "current" and "future".
 		// The code base calls it FutureApiLevel, but the spelling is "current",
@@ -465,7 +472,7 @@ func GetApiLevelsMap(config Config) map[string]int {
 	// This logic is replicated in starlark, if changing logic here update starlark code too
 	// https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/common/api.bzl;l=23;drc=231c7e8c8038fd478a79eb68aa5b9f5c64e0e061
 	return config.Once(apiLevelsMapKey, func() interface{} {
-		apiLevelsMap := getApiLevelsMapReleasedVersions()
+		apiLevelsMap := getApiLevelsMapReleasedVersions(config)
 		for i, codename := range config.PlatformVersionActiveCodenames() {
 			apiLevelsMap[codename] = previewAPILevelBase + i
 		}
@@ -485,6 +492,6 @@ func StarlarkApiLevelConfigs(config Config) string {
 _api_levels_released_versions = %s
 
 api_levels_released_versions = _api_levels_released_versions
-`, starlark_fmt.PrintStringIntDict(getApiLevelsMapReleasedVersions(), 0),
+`, starlark_fmt.PrintStringIntDict(getApiLevelsMapReleasedVersions(config), 0),
 	)
 }
