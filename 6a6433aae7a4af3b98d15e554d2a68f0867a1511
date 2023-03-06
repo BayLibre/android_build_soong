@@ -128,6 +128,24 @@
       "parentUuid": "0a2a333f_b9766f95",
       "revId": "6a6433aae7a4af3b98d15e554d2a68f0867a1511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57a84a6_8676f326",
+        "filename": "android/api_levels.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-03-06T15:40:47Z",
+      "side": 1,
+      "message": "Messed up my comment and I actually was talking about FinalOrPreviewInt(), which i did link and is the one returning 8999 for NoneApiLevel, and not FinalOrFutureInt(). Saw you added error handling for InvalidApiLevel on both functions.",
+      "parentUuid": "c2391df5_afc8340b",
+      "revId": "6a6433aae7a4af3b98d15e554d2a68f0867a1511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
