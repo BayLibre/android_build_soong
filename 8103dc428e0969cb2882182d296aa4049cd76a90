@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1902730b_062f7fb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-06T17:52:07Z",
+      "side": 1,
+      "message": "Awesome. Thanks for doing this so quickly!\n\nDid you manually verify that the bug is fixed with this CL ? (No flaky exclusion of the specific string var?)\n\nI can do this, so non-blocking, and I anticipate this CL should indeed fix things!",
+      "revId": "8103dc428e0969cb2882182d296aa4049cd76a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
