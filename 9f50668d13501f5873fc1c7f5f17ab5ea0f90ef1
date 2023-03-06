@@ -312,6 +312,24 @@
       "parentUuid": "3a81d4cb_fd5b454c",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79fb44d7_313764c0",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-06T23:21:49Z",
+      "side": 1,
+      "message": "Dug into this, and it seems like the underlying reason this doesn\u0027t work is that we previously tied the libc++ libraries to \u0027current\u0027 here: https://android-review.git.corp.google.com/q/topic:%22riscv64-libc%252B%252B%22\n\nThis was done because the NDK doesn\u0027t currently support RISC-V, so we need to point to this library for now, and so it needs an SDK version to build against. Putting \u0027current\u0027 causes a failure, as we start linking the current SDK version (33) with \u0027current\u0027 (10000).\n\nIf I manually set the values of those packages to \u002733\u0027, it mostly builds but fails at an allowed-deps-check against a few new functions. I think I\u0027m stuck here:\n\n1) I cannot remove the sdk_version, as the NDK doesn\u0027t support RISC-V yet.\n2) I cannot set the value to the expected version, as there isn\u0027t a defined one for ToT (and setting the codename does not work, as the blaze function checks that named SDK versions are released.\n\nIdeas? Right now this blocks any APEX that uses the vNDK, but ART isn\u0027t fully ready yet, so we can defer for a week or two if required.",
+      "parentUuid": "546e2921_6605af49",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
