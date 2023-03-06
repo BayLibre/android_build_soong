@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be944357_5ab63b4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390429
+      },
+      "writtenOn": "2023-03-06T18:08:51Z",
+      "side": 1,
+      "message": "My understanding for this is \n1. The hashcode could be available earlier before building? \n2. We do not need to download and compare the whole binary anymore?\n\nneed confirm and more context from Joe",
+      "parentUuid": "599d4b00_c25d3611",
+      "revId": "7f29a6658664f6497a0e098dd24fe2553fa6a16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35750a44_836a245f",
