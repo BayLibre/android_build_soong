@@ -16,6 +16,24 @@
       "message": "Awesome. Thanks for doing this so quickly!\n\nDid you manually verify that the bug is fixed with this CL ? (No flaky exclusion of the specific string var?)\n\nI can do this, so non-blocking, and I anticipate this CL should indeed fix things!",
       "revId": "8103dc428e0969cb2882182d296aa4049cd76a90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e67fc09_d1a7ee54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-06T19:59:43Z",
+      "side": 1,
+      "message": "AFAICT, yes, this fixes things. Ran a number of times touch an Android.bp file and verify the mtime of soong_config_variables.bzl didn\u0027t change, made an actual change, made sure soong_config_variables.bzl updated. But if you have alternate methods for how you were able to id this, then would appreciate you verifying as well.",
+      "parentUuid": "1902730b_062f7fb4",
+      "revId": "8103dc428e0969cb2882182d296aa4049cd76a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
