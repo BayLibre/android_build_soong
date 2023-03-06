@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c459f18_aee97cd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-03-06T22:23:46Z",
+      "side": 1,
+      "message": "Can we get the bug number in the commit message?",
+      "revId": "c2b509388a08f74dca5f3c1fb8a1782bed906f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25d2fa14_b7030c91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-03-06T22:23:46Z",
+      "side": 1,
+      "message": "Also, should we notify the ART folks who needed a test infra change (plus rollback) before too?",
+      "revId": "c2b509388a08f74dca5f3c1fb8a1782bed906f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
