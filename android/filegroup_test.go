@@ -58,3 +58,19 @@ func TestFileGroupWithPathProp(t *testing.T) {
 		AssertStringEquals(t, "src full path", expectedOutputfile, fg.srcs[0].String())
 	}
 }
+
+func TestFilegroupDefaults(t *testing.T) {
+	result := GroupFixturePreparers(PrepareForTestWithFilegroup).RunTestWithBp(t, `
+		filegroup_defaults {
+			name: "defaults",
+			visibility: ["//x"],
+		}
+		filegroup {
+			name: "foo",
+			defaults: ["defaults"],
+		}`,
+	)
+
+	fg := result.Module("foo", "").(*fileGroup)
+	AssertStringEquals(t, "visibility", "//y", fg.visibilityPropertyInfo[0].getStrings()[0])
+}
