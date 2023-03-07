@@ -121,6 +121,9 @@ message MetricsBase {
   // The error message due to a non-zero exit _only_ if it did not occur in a
   // recorded phase of the build.
   optional string error_message = 30;
+
+  // The metric of critical path in build
+  optional CriticalPathInfo critical_path_info = 31;
 }
 
 message BuildConfig {
@@ -306,4 +309,16 @@ message MixedBuildsInfo{
 
   // Modules that are not enabled for MixedBuilds
   repeated string mixed_build_disabled_modules = 2;
+}
+
+message CriticalPathInfo{
+  optional uint64 elapsed_time = 1;
+  optional uint64 critical_path_time = 2;
+  optional double perfect_parallelism_ratio = 3;
+  repeated JobInfo critical_path = 4;
+}
+
+message JobInfo{
+  optional uint64 elapsed_time = 1;
+  optional string job_description = 2;
 }
