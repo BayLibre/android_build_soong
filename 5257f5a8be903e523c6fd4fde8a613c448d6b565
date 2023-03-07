@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b48baf85_c57327fd",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-03-07T22:10:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca3a1f19_d231e641",
+      "revId": "5257f5a8be903e523c6fd4fde8a613c448d6b565",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9516cfc_1530fe67",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-07T21:25:25Z",
       "side": 1,
       "message": "add an example in the comment",
+      "revId": "5257f5a8be903e523c6fd4fde8a613c448d6b565",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9755f178_ae285990",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-03-07T22:10:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9516cfc_1530fe67",
       "revId": "5257f5a8be903e523c6fd4fde8a613c448d6b565",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
