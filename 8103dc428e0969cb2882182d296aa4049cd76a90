@@ -34,6 +34,23 @@
       "parentUuid": "1902730b_062f7fb4",
       "revId": "8103dc428e0969cb2882182d296aa4049cd76a90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72a417a_34e8396a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-07T02:13:25Z",
+      "side": 1,
+      "message": "sorry for the late review, +1 thanks for the quick fix.",
+      "revId": "8103dc428e0969cb2882182d296aa4049cd76a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
