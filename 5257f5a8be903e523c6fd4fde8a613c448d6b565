@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca3a1f19_d231e641",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-03-07T21:25:25Z",
+      "side": 1,
+      "message": "nit: manifest_url\nAlso add an example in the comment",
+      "revId": "5257f5a8be903e523c6fd4fde8a613c448d6b565",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9516cfc_1530fe67",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-03-07T21:25:25Z",
+      "side": 1,
+      "message": "add an example in the comment",
+      "revId": "5257f5a8be903e523c6fd4fde8a613c448d6b565",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
