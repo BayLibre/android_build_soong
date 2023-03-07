@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e4eacdd_6526b1b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-07T18:36:59Z",
+      "side": 1,
+      "message": "Please expand this description a lot.\n\nWhat is mobly / how is it related to tradefed?\nWhy are we adding support for it?\nWhat tests will use it?",
+      "revId": "b6a6dc9177532d5a2e89f2d27500c6c500647f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4adc2496_e87029db",
+        "filename": "python/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-07T18:36:59Z",
+      "side": 1,
+      "message": "You should explicitly document all the values that it\u0027s allowed to be set to. In this case, \"mobly\", and add a name for the default tradefed python runner.",
+      "revId": "b6a6dc9177532d5a2e89f2d27500c6c500647f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "048b86e6_dd570183",
+        "filename": "python/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-07T18:36:59Z",
+      "side": 1,
+      "message": "Make this `Tradefed_options` and have the same description/behavior as `Tradefed_options` in java.go. It should also apply to non-mobly tests.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 20
+      },
+      "revId": "b6a6dc9177532d5a2e89f2d27500c6c500647f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8548d591_ae10f720",
+        "filename": "python/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-07T18:36:59Z",
+      "side": 1,
+      "message": "use `proptools.StringDefault`",
+      "revId": "b6a6dc9177532d5a2e89f2d27500c6c500647f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9dc56b_0ca54480",
+        "filename": "python/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-07T18:36:59Z",
+      "side": 1,
+      "message": "Please add validations here that:\n\n- `runner` can only be set to `nil`, `mobly`, or whatever name you choose for the default runner\n- Test_config, test_config_template, test_suites, and auto_gen_config can\u0027t be set when using the mobly runner",
+      "revId": "b6a6dc9177532d5a2e89f2d27500c6c500647f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
