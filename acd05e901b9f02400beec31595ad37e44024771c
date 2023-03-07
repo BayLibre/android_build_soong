@@ -16,6 +16,24 @@
       "message": "no dotprod?",
       "revId": "acd05e901b9f02400beec31595ad37e44024771c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bdbd0b3_52f6e28a",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2023-03-07T19:22:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74d9d9c0_5cf1f845",
+      "revId": "acd05e901b9f02400beec31595ad37e44024771c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
