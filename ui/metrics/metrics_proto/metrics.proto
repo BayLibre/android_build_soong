@@ -121,6 +121,12 @@ message MetricsBase {
   // The error message due to a non-zero exit _only_ if it did not occur in a
   // recorded phase of the build.
   optional string error_message = 30;
+
+  // The Git Manifest for the user's branch.
+  optional string manifest = 31;
+
+  // The branch on which the build occurred.
+  optional string branch = 32;
 }
 
 message BuildConfig {
