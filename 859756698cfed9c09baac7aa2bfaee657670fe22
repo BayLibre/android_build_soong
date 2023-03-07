@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a9f586c_90f28488",
+        "filename": "java/androidmk.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-07T19:59:21Z",
+      "side": 1,
+      "message": "Shouldnt this be always true? Stubs should not be installable.",
+      "range": {
+        "startLine": 747,
+        "startChar": 5,
+        "endLine": 747,
+        "endChar": 62
+      },
+      "revId": "859756698cfed9c09baac7aa2bfaee657670fe22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa137218_99c28e60",
+        "filename": "java/androidmk.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-07T19:59:21Z",
+      "side": 1,
+      "message": "Do you know what this variable is used for? IIUC, we do not dex stubs in java_api_library currently",
+      "range": {
+        "startLine": 751,
+        "startChar": 21,
+        "endLine": 751,
+        "endChar": 40
+      },
+      "revId": "859756698cfed9c09baac7aa2bfaee657670fe22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ed0007_f44aef46",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1810,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-07T19:59:21Z",
+      "side": 1,
+      "message": "Why do we need this functionality in java_api_library? In my mental model, system modules only make sense for the core libraries (art, icu, ...) and not android classes",
+      "range": {
+        "startLine": 1810,
+        "startChar": 1,
+        "endLine": 1810,
+        "endChar": 116
+      },
+      "revId": "859756698cfed9c09baac7aa2bfaee657670fe22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d87ee1_03fe9f0e",
+        "filename": "java/sdk.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-07T19:59:21Z",
+      "side": 1,
+      "message": "This still has references to stubs built from source via `sdkDep.systemModules`. This can be in a later CL, but we also need to update to create from_text equivalents of these two `java_system_modules` https://cs.android.com/android/_/android/platform/build/soong/+/88e949945d99a3740286cf8085164ebfd896d8a2:java/core-libraries/Android.bp;l\u003d108,139;bpv\u003d1;bpt\u003d0;drc\u003d7fb3d436f484d5360e9c48766c705764d5f2d65c\n\nCan you a leave a TODO here for that?",
+      "range": {
+        "startLine": 200,
+        "startChar": 9,
+        "endLine": 200,
+        "endChar": 17
+      },
+      "revId": "859756698cfed9c09baac7aa2bfaee657670fe22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
