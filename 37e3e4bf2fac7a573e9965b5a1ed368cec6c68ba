@@ -16,6 +16,29 @@
       "message": "Because of the toolchain bugs, the actual compilation target is limited to v8.2+dotprod, but is it meant to be eventually upgraded to full v9-a.",
       "revId": "37e3e4bf2fac7a573e9965b5a1ed368cec6c68ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f15bb7ca_05bca43f",
+        "filename": "android/arch_list.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-07T14:28:34Z",
+      "side": 1,
+      "message": "should `armv9-a` have an entry here?",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 25
+      },
+      "revId": "37e3e4bf2fac7a573e9965b5a1ed368cec6c68ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
