@@ -34,6 +34,24 @@
       "parentUuid": "0fdac4ca_6463dec5",
       "revId": "3397b6a2aadf8c2eb808fa38f7d6c07d5c82f320",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b09ed7_55dbb21e",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-08T23:20:32Z",
+      "side": 1,
+      "message": "oh sorry, missed that.",
+      "parentUuid": "e3c7c265_ca2b5711",
+      "revId": "3397b6a2aadf8c2eb808fa38f7d6c07d5c82f320",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
