@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1137d27_b3ac2895",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-08T21:00:59Z",
+      "side": 1,
+      "message": "I was waiting on a review from Jaewooung for my package_name question. I reached out to him yesterday, but apparently he isn\u0027t working on android anymore",
+      "parentUuid": "6a180a4c_d2d93807",
+      "revId": "37a33c2e54da81730df2de7d52de462f8812098e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "478da09b_a9bc06fa",
