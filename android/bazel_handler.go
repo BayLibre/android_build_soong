@@ -238,7 +238,7 @@ type mixedBuildBazelContext struct {
 	requests     []cqueryKey
 	requestMutex sync.Mutex // requests can be written in parallel
 
-	results map[cqueryKey]string // Results of cquery requests after Bazel invocations
+	results sync.Map // Results of cquery requests after Bazel invocations
 
 	// Build statements which should get registered to reflect Bazel's outputs.
 	buildStatements []*bazel.BuildStatement
@@ -408,48 +408,53 @@ func (bazelCtx *mixedBuildBazelContext) QueueBazelRequest(label string, requestT
 	}
 }
 
-func (bazelCtx *mixedBuildBazelContext) GetOutputFiles(label string, cfgKey configKey) ([]string, error) {
-	key := makeCqueryKey(label, cquery.GetOutputFiles, cfgKey)
-	if rawString, ok := bazelCtx.results[key]; ok {
-		bazelOutput := strings.TrimSpace(rawString)
-
-		return cquery.GetOutputFiles.ParseResult(bazelOutput), nil
-	}
-	return nil, fmt.Errorf("no bazel response found for %v", key)
-}
-
-func (bazelCtx *mixedBuildBazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, error) {
-	key := makeCqueryKey(label, cquery.GetCcInfo, cfgKey)
-	if rawString, ok := bazelCtx.results[key]; ok {
-		bazelOutput := strings.TrimSpace(rawString)
-		return cquery.GetCcInfo.ParseResult(bazelOutput)
-	}
-	return cquery.CcInfo{}, fmt.Errorf("no bazel response found for %v", key)
-}
-
-func (bazelCtx *mixedBuildBazelContext) GetPythonBinary(label string, cfgKey configKey) (string, error) {
-	key := makeCqueryKey(label, cquery.GetPythonBinary, cfgKey)
-	if rawString, ok := bazelCtx.results[key]; ok {
-		bazelOutput := strings.TrimSpace(rawString)
-		return cquery.GetPythonBinary.ParseResult(bazelOutput), nil
+func (m *mixedBuildBazelContext) load(label string, request cqueryRequest, cfgKey configKey) (string, error) {
+	key := makeCqueryKey(label, request, cfgKey)
+	if val, ok := m.results.Load(key); ok {
+		out := val.(string)
+		return strings.TrimSpace(out), nil
 	}
 	return "", fmt.Errorf("no bazel response found for %v", key)
 }
 
-func (bazelCtx *mixedBuildBazelContext) GetApexInfo(label string, cfgKey configKey) (cquery.ApexInfo, error) {
-	key := makeCqueryKey(label, cquery.GetApexInfo, cfgKey)
-	if rawString, ok := bazelCtx.results[key]; ok {
-		return cquery.GetApexInfo.ParseResult(strings.TrimSpace(rawString))
+func (m *mixedBuildBazelContext) GetOutputFiles(label string, cfgKey configKey) ([]string, error) {
+	if bazelOutput, err := m.load(label, cquery.GetOutputFiles, cfgKey); err != nil {
+		return nil, err
+	} else {
+		return cquery.GetOutputFiles.ParseResult(bazelOutput), nil
 	}
-	return cquery.ApexInfo{}, fmt.Errorf("no bazel response found for %v", key)
 }
 
-func (bazelCtx *mixedBuildBazelContext) GetCcUnstrippedInfo(label string, cfgKey configKey) (cquery.CcUnstrippedInfo, error) {
-	key := makeCqueryKey(label, cquery.GetCcUnstrippedInfo, cfgKey)
-	if rawString, ok := bazelCtx.results[key]; ok {
-		return cquery.GetCcUnstrippedInfo.ParseResult(strings.TrimSpace(rawString))
+func (m *mixedBuildBazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, error) {
+	if bazelOutput, err := m.load(label, cquery.GetCcInfo, cfgKey); err != nil {
+		return cquery.CcInfo{}, err
+	} else {
+		return cquery.GetCcInfo.ParseResult(bazelOutput)
 	}
-	return cquery.CcUnstrippedInfo{}, fmt.Errorf("no bazel response for %s", key)
+}
+
+func (m *mixedBuildBazelContext) GetPythonBinary(label string, cfgKey configKey) (string, error) {
+	bazelOutput, err := m.load(label, cquery.GetPythonBinary, cfgKey)
+	if err != nil {
+		return "", err
+	}
+	return cquery.GetPythonBinary.ParseResult(bazelOutput), nil
+}
+
+func (m *mixedBuildBazelContext) GetApexInfo(label string, cfgKey configKey) (cquery.ApexInfo, error) {
+	bazelOutput, err := m.load(label, cquery.GetApexInfo, cfgKey)
+	if err != nil {
+		return cquery.ApexInfo{}, err
+	}
+	return cquery.GetApexInfo.ParseResult(bazelOutput)
+}
+
+func (m *mixedBuildBazelContext) GetCcUnstrippedInfo(label string, cfgKey configKey) (cquery.CcUnstrippedInfo, error) {
+	if bazelOutput, err := m.load(label, cquery.GetCcUnstrippedInfo, cfgKey); err != nil {
+		return cquery.CcUnstrippedInfo{}, err
+	} else {
+		return cquery.GetCcUnstrippedInfo.ParseResult(bazelOutput)
+	}
 }
 
 func (n noopBazelContext) QueueBazelRequest(_ string, _ cqueryRequest, _ configKey) {
@@ -1137,37 +1142,37 @@ var (
 
 // Issues commands to Bazel to receive results for all cquery requests
 // queued in the BazelContext.
-func (context *mixedBuildBazelContext) InvokeBazel(config Config, ctx invokeBazelContext) error {
+func (m *mixedBuildBazelContext) InvokeBazel(config Config, ctx invokeBazelContext) error {
 	eventHandler := ctx.GetEventHandler()
 	eventHandler.Begin("bazel")
 	defer eventHandler.End("bazel")
 
-	if metricsDir := context.paths.BazelMetricsDir(); metricsDir != "" {
+	if metricsDir := m.paths.BazelMetricsDir(); metricsDir != "" {
 		if err := os.MkdirAll(metricsDir, 0777); err != nil {
 			return err
 		}
 	}
-	context.results = make(map[cqueryKey]string)
-	if err := context.runCquery(config, ctx); err != nil {
+	m.results = sync.Map{}
+	if err := m.runCquery(config, ctx); err != nil {
 		return err
 	}
-	if err := context.runAquery(config, ctx); err != nil {
+	if err := m.runAquery(config, ctx); err != nil {
 		return err
 	}
-	if err := context.generateBazelSymlinks(config, ctx); err != nil {
+	if err := m.generateBazelSymlinks(config, ctx); err != nil {
 		return err
 	}
 
 	// Clear requests.
-	context.requests = []cqueryKey{}
+	m.requests = nil
 	return nil
 }
 
-func (context *mixedBuildBazelContext) runCquery(config Config, ctx invokeBazelContext) error {
+func (m *mixedBuildBazelContext) runCquery(config Config, ctx invokeBazelContext) error {
 	eventHandler := ctx.GetEventHandler()
 	eventHandler.Begin("cquery")
 	defer eventHandler.End("cquery")
-	soongInjectionPath := absolutePath(context.paths.injectedFilesDir())
+	soongInjectionPath := absolutePath(m.paths.injectedFilesDir())
 	mixedBuildsPath := filepath.Join(soongInjectionPath, "mixed_builds")
 	if _, err := os.Stat(mixedBuildsPath); os.IsNotExist(err) {
 		err = os.MkdirAll(mixedBuildsPath, 0777)
@@ -1178,14 +1183,14 @@ func (context *mixedBuildBazelContext) runCquery(config Config, ctx invokeBazelC
 	if err := writeFileBytesIfChanged(filepath.Join(soongInjectionPath, "WORKSPACE.bazel"), []byte{}, 0666); err != nil {
 		return err
 	}
-	if err := writeFileBytesIfChanged(filepath.Join(mixedBuildsPath, "main.bzl"), context.mainBzlFileContents(), 0666); err != nil {
+	if err := writeFileBytesIfChanged(filepath.Join(mixedBuildsPath, "main.bzl"), m.mainBzlFileContents(), 0666); err != nil {
 		return err
 	}
-	if err := writeFileBytesIfChanged(filepath.Join(mixedBuildsPath, "BUILD.bazel"), context.mainBuildFileContents(), 0666); err != nil {
+	if err := writeFileBytesIfChanged(filepath.Join(mixedBuildsPath, "BUILD.bazel"), m.mainBuildFileContents(), 0666); err != nil {
 		return err
 	}
-	cqueryFileRelpath := filepath.Join(context.paths.injectedFilesDir(), "buildroot.cquery")
-	if err := writeFileBytesIfChanged(absolutePath(cqueryFileRelpath), context.cqueryStarlarkFileContents(), 0666); err != nil {
+	cqueryFileRelpath := filepath.Join(m.paths.injectedFilesDir(), "buildroot.cquery")
+	if err := writeFileBytesIfChanged(absolutePath(cqueryFileRelpath), m.cqueryStarlarkFileContents(), 0666); err != nil {
 		return err
 	}
 
@@ -1194,8 +1199,8 @@ func (context *mixedBuildBazelContext) runCquery(config Config, ctx invokeBazelC
 		extraFlags = append(extraFlags, "--collect_code_coverage")
 	}
 
-	cqueryCommandWithFlag := context.createBazelCommand(config, context.paths, bazel.CqueryBuildRootRunName, cqueryCmd, extraFlags...)
-	cqueryOutput, cqueryErrorMessage, cqueryErr := context.issueBazelCommand(cqueryCommandWithFlag, eventHandler)
+	cqueryCommandWithFlag := m.createBazelCommand(config, m.paths, bazel.CqueryBuildRootRunName, cqueryCmd, extraFlags...)
+	cqueryOutput, cqueryErrorMessage, cqueryErr := m.issueBazelCommand(cqueryCommandWithFlag, eventHandler)
 	if cqueryErr != nil {
 		return cqueryErr
 	}
@@ -1210,15 +1215,25 @@ func (context *mixedBuildBazelContext) runCquery(config Config, ctx invokeBazelC
 			cqueryResults[splitLine[0]] = splitLine[1]
 		}
 	}
-	for _, val := range context.requests {
-		if cqueryResult, ok := cqueryResults[getCqueryId(val)]; ok {
-			context.results[val] = cqueryResult
-		} else {
-			return fmt.Errorf("missing result for bazel target %s. query output: [%s], cquery err: [%s]",
-				getCqueryId(val), cqueryOutput, cqueryErrorMessage)
-		}
+	wg := sync.WaitGroup{}
+	var errOnce sync.Once
+	var resultErr error
+	for _, val := range m.requests {
+		wg.Add(1)
+		go func(val cqueryKey) {
+			if cqueryResult, ok := cqueryResults[getCqueryId(val)]; ok {
+				m.results.Store(val, cqueryResult)
+			} else {
+				errOnce.Do(func() {
+					resultErr = fmt.Errorf("missing result for bazel target %s. query output: [%s], cquery err: [%s]",
+						getCqueryId(val), cqueryOutput, cqueryErrorMessage)
+				})
+			}
+			wg.Done()
+		}(val)
 	}
-	return nil
+	wg.Wait()
+	return resultErr
 }
 
 func writeFileBytesIfChanged(path string, contents []byte, perm os.FileMode) error {
@@ -1229,7 +1244,7 @@ func writeFileBytesIfChanged(path string, contents []byte, perm os.FileMode) err
 	return nil
 }
 
-func (context *mixedBuildBazelContext) runAquery(config Config, ctx invokeBazelContext) error {
+func (m *mixedBuildBazelContext) runAquery(config Config, ctx invokeBazelContext) error {
 	eventHandler := ctx.GetEventHandler()
 	eventHandler.Begin("aquery")
 	defer eventHandler.End("aquery")
@@ -1257,36 +1272,36 @@ func (context *mixedBuildBazelContext) runAquery(config Config, ctx invokeBazelC
 			extraFlags = append(extraFlags, "--instrumentation_filter="+strings.Join(paths, ","))
 		}
 	}
-	aqueryOutput, _, err := context.issueBazelCommand(context.createBazelCommand(config, context.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
+	aqueryOutput, _, err := m.issueBazelCommand(m.createBazelCommand(config, m.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
 		extraFlags...), eventHandler)
 	if err != nil {
 		return err
 	}
-	context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements([]byte(aqueryOutput), eventHandler)
+	m.buildStatements, m.depsets, err = bazel.AqueryBuildStatements([]byte(aqueryOutput), eventHandler)
 	return err
 }
 
-func (context *mixedBuildBazelContext) generateBazelSymlinks(config Config, ctx invokeBazelContext) error {
+func (m *mixedBuildBazelContext) generateBazelSymlinks(config Config, ctx invokeBazelContext) error {
 	eventHandler := ctx.GetEventHandler()
 	eventHandler.Begin("symlinks")
 	defer eventHandler.End("symlinks")
 	// Issue a build command of the phony root to generate symlink forests for dependencies of the
 	// Bazel build. This is necessary because aquery invocations do not generate this symlink forest,
 	// but some of symlinks may be required to resolve source dependencies of the build.
-	_, _, err := context.issueBazelCommand(context.createBazelCommand(config, context.paths, bazel.BazelBuildPhonyRootRunName, buildCmd), eventHandler)
+	_, _, err := m.issueBazelCommand(m.createBazelCommand(config, m.paths, bazel.BazelBuildPhonyRootRunName, buildCmd), eventHandler)
 	return err
 }
 
-func (context *mixedBuildBazelContext) BuildStatementsToRegister() []*bazel.BuildStatement {
-	return context.buildStatements
+func (m *mixedBuildBazelContext) BuildStatementsToRegister() []*bazel.BuildStatement {
+	return m.buildStatements
 }
 
-func (context *mixedBuildBazelContext) AqueryDepsets() []bazel.AqueryDepset {
-	return context.depsets
+func (m *mixedBuildBazelContext) AqueryDepsets() []bazel.AqueryDepset {
+	return m.depsets
 }
 
-func (context *mixedBuildBazelContext) OutputBase() string {
-	return context.paths.outputBase
+func (m *mixedBuildBazelContext) OutputBase() string {
+	return m.paths.outputBase
 }
 
 // Singleton used for registering BUILD file ninja dependencies (needed
