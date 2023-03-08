@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca0e23d_14d871cd",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3536,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-08T20:35:19Z",
+      "side": 1,
+      "message": "This is the main point of the cl. Pass `a` instead of using `ctx.Module()`.",
+      "revId": "912bc8862e125e3d84bb2aa885ffe19da835ecef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
