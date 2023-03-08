@@ -54,7 +54,6 @@ var (
 		// TODO (b/267698452): Temporary workaround until the "no unstable
 		// features" policy is enforced.
 		"-A stable-features",
-		"-Zdylib-lto",
 	}
 
 	deviceGlobalRustFlags = []string{
