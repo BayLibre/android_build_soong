@@ -22,6 +22,30 @@
       },
       "revId": "a6372de7bf4d04dfd9b596cd509f2487a59c90e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4544827a_cb292cae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-08T22:56:03Z",
+      "side": 1,
+      "message": "This is a no-op now with aosp/2478277",
+      "parentUuid": "009896d2_12ed309e",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "a6372de7bf4d04dfd9b596cd509f2487a59c90e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
