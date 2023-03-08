@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c3db140_b177b9be",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-08T20:53:26Z",
+      "side": 1,
+      "message": "I checked with Jaewooung, but apparently he doesn\u0027t work on Android anymore. Asking in the build team chat to see if there are others who might have context now.",
+      "parentUuid": "ea3d2dbf_e65720f3",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 0
+      },
+      "revId": "984459442e28fc52fc39a9bbdd6c118eb07e6415",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a891d33_30301448",
         "filename": "java/app.go",
         "patchSetId": 3
