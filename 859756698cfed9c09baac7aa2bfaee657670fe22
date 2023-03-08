@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69d2bc3_48c899c9",
+        "filename": "java/androidmk.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-08T00:25:41Z",
+      "side": 1,
+      "message": "Agreed. Thanks for pointing this out",
+      "parentUuid": "3a9f586c_90f28488",
+      "range": {
+        "startLine": 747,
+        "startChar": 5,
+        "endLine": 747,
+        "endChar": 62
+      },
+      "revId": "859756698cfed9c09baac7aa2bfaee657670fe22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa137218_99c28e60",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-07T19:59:21Z",
       "side": 1,
       "message": "Do you know what this variable is used for? IIUC, we do not dex stubs in java_api_library currently",
+      "range": {
+        "startLine": 751,
+        "startChar": 21,
+        "endLine": 751,
+        "endChar": 40
+      },
+      "revId": "859756698cfed9c09baac7aa2bfaee657670fe22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47326571_0c30a2ff",
+        "filename": "java/androidmk.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-08T00:25:41Z",
+      "side": 1,
+      "message": "If we default `\"LOCAL_UNINSTALLABLE_MODULE\" to true, I do not believe that we would ever need to set dex jar. I will remove this variable as well.",
+      "parentUuid": "fa137218_99c28e60",
       "range": {
         "startLine": 751,
         "startChar": 21,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a12571_4955dcf0",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1810,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-08T00:25:41Z",
+      "side": 1,
+      "message": "These were required for the methods `HeaderJars()` and `OutputDirAndDeps()`, but since the two can return `nil` as you have suggested, I believe this line can be removed as well.",
+      "parentUuid": "d6ed0007_f44aef46",
+      "range": {
+        "startLine": 1810,
+        "startChar": 1,
+        "endLine": 1810,
+        "endChar": 116
+      },
+      "revId": "859756698cfed9c09baac7aa2bfaee657670fe22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45d87ee1_03fe9f0e",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-03-07T19:59:21Z",
       "side": 1,
       "message": "This still has references to stubs built from source via `sdkDep.systemModules`. This can be in a later CL, but we also need to update to create from_text equivalents of these two `java_system_modules` https://cs.android.com/android/_/android/platform/build/soong/+/88e949945d99a3740286cf8085164ebfd896d8a2:java/core-libraries/Android.bp;l\u003d108,139;bpv\u003d1;bpt\u003d0;drc\u003d7fb3d436f484d5360e9c48766c705764d5f2d65c\n\nCan you a leave a TODO here for that?",
+      "range": {
+        "startLine": 200,
+        "startChar": 9,
+        "endLine": 200,
+        "endChar": 17
+      },
+      "revId": "859756698cfed9c09baac7aa2bfaee657670fe22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae75577_346d9bef",
+        "filename": "java/sdk.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-08T00:25:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45d87ee1_03fe9f0e",
       "range": {
         "startLine": 200,
         "startChar": 9,
