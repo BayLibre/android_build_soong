@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7f05eeae_3d0dd708",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-08T06:54:00Z",
+      "side": 1,
+      "message": "Added more detail to the commit message.",
+      "parentUuid": "4d32667b_0f762ea7",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "25783beca46a37104c385b5c658ffdd8ad4410c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "33620b09_3baadbbc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
