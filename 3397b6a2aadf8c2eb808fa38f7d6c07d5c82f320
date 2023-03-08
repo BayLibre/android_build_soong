@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fdac4ca_6463dec5",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-08T20:43:39Z",
+      "side": 1,
+      "message": "You should fail if both `--force` and `--append` are passed.",
+      "revId": "3397b6a2aadf8c2eb808fa38f7d6c07d5c82f320",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
