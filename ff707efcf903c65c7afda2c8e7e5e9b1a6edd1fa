@@ -22,6 +22,30 @@
       },
       "revId": "ff707efcf903c65c7afda2c8e7e5e9b1a6edd1fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53da29d9_c80ed28c",
+        "filename": "python/python.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-09T17:40:29Z",
+      "side": 1,
+      "message": "I think the `:\u003d` already implies that, and you actually can also set it as an environment variable as well, but done.",
+      "parentUuid": "c88200b8_d8f1adf9",
+      "range": {
+        "startLine": 270,
+        "startChar": 204,
+        "endLine": 270,
+        "endChar": 205
+      },
+      "revId": "ff707efcf903c65c7afda2c8e7e5e9b1a6edd1fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
