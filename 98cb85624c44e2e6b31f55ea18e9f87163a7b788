@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0257f1_9fcd4625",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-09T23:36:52Z",
+      "side": 1,
+      "message": "Could you please add a presubmit smoke test to build/soong and/or build/bazel so risk of breaking stuff like this is lower?",
+      "revId": "98cb85624c44e2e6b31f55ea18e9f87163a7b788",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
