@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f668875_fcb605a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-09T14:51:27Z",
+      "side": 1,
+      "message": "Add a Soong test for LOCAL_UNINSTALLABLE_MODULE?",
+      "revId": "d100f9dcdc31e08b58921173f1653da6575609ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
