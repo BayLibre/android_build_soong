@@ -51,6 +51,24 @@
       "parentUuid": "da86f672_95af4af8",
       "revId": "7424a50dc384efacae80e214652cd656f11cb891",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29662c74_e7afcf7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-03-09T17:36:12Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Could it be related to another CL in the orginal topic aosp/2465993?\n\nI created another revert of that CL and will confirm if the revert only (without extra changes in this CL), can still fix the powerwash performance issue.",
+      "parentUuid": "d1bd46ef_1a2f972e",
+      "revId": "7424a50dc384efacae80e214652cd656f11cb891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
