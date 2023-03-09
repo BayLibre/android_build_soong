@@ -33,6 +33,24 @@
       "message": "b/issues/272075625#comment10\n\nShould we merge this change? Without this revert, cuttlefish boot is over 1min slower on coverage build.",
       "revId": "7424a50dc384efacae80e214652cd656f11cb891",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1bd46ef_1a2f972e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-09T10:41:24Z",
+      "side": 1,
+      "message": "This CL is a reland of a new optimization. It cannot be merged for now because it\u0027s causing many issues. If the slowness you mentioned is a recent thing, then it can\u0027t be related to this CL because this new optimization never existed before.",
+      "parentUuid": "da86f672_95af4af8",
+      "revId": "7424a50dc384efacae80e214652cd656f11cb891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
