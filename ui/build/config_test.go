@@ -903,6 +903,15 @@ func TestGetConfigArgsBuildModulesInDirectory(t *testing.T) {
 			tidyOnly:     "",
 			expectedArgs: []string{},
 		}, {
+			description:  "multitree build action executed at root directory",
+			dirsInTrees:  []string{},
+			buildFiles:   []string{},
+			rootSymlink:  false,
+			args:         []string{"--multitree-build"},
+			curDir:       ".",
+			tidyOnly:     "",
+			expectedArgs: []string{"--multitree-build"},
+		}, {
 			description:  "build action executed at root directory in symlink",
 			dirsInTrees:  []string{},
 			buildFiles:   []string{},
@@ -1160,6 +1169,7 @@ func TestBuildConfig(t *testing.T) {
 				bazelProdMode:    tc.bazelProdMode,
 				bazelStagingMode: tc.bazelStagingMode,
 				arguments:        tc.arguments,
+				multitreeBuild:   tc.multitreeBuild,
 			}
 			config := Config{c}
 			checkBazelMode(ctx, config)
