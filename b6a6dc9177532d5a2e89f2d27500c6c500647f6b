@@ -106,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd1388a_5cc89eb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-09T19:42:49Z",
+      "side": 1,
+      "message": "Is there a need to auto-generate a mobly-specific test config when the current guidance (like on go/tf-mobly) is to just check in your own manual one?\n\nThe current implementation of autogenerating won\u0027t be able to handle some of the things go/tf-mobly tells you to do, like adding target preparers for each device, and adding the mobly yaml config file.",
+      "parentUuid": "72acad99_2174395b",
+      "revId": "b6a6dc9177532d5a2e89f2d27500c6c500647f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4adc2496_e87029db",
