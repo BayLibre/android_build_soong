@@ -356,6 +356,7 @@ func TestDroidStubsApiContributionGeneration(t *testing.T) {
 			check_api: {
 				current: {
 					api_file: "A/current.txt",
+					pending_api_file: "A/pending.txt",
 					removed_api_file: "A/removed.txt",
 				}
 			}
@@ -364,6 +365,7 @@ func TestDroidStubsApiContributionGeneration(t *testing.T) {
 		map[string][]byte{
 			"A/a.java":      nil,
 			"A/current.txt": nil,
+			"A/pending.txt": nil,
 			"A/removed.txt": nil,
 		},
 	)
@@ -387,6 +389,7 @@ func TestGeneratedApiContributionVisibilityTest(t *testing.T) {
 				check_api: {
 					current: {
 						api_file: "A/current.txt",
+						pending_api_file: "A/pending.txt",
 						removed_api_file: "A/removed.txt",
 					}
 				},
@@ -396,6 +399,7 @@ func TestGeneratedApiContributionVisibilityTest(t *testing.T) {
 		map[string][]byte{
 			"a/a.java":      nil,
 			"a/current.txt": nil,
+			"a/pending.txt": nil,
 			"a/removed.txt": nil,
 			"b/Android.bp":  []byte(library_bp),
 		},

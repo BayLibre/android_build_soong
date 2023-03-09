@@ -6650,15 +6650,20 @@ func TestLegacyAndroid10Support(t *testing.T) {
 
 var filesForSdkLibrary = android.MockFS{
 	"api/current.txt":        nil,
+	"api/pending.txt":        nil,
 	"api/removed.txt":        nil,
 	"api/system-current.txt": nil,
+	"api/system-pending.txt": nil,
 	"api/system-removed.txt": nil,
 	"api/test-current.txt":   nil,
+	"api/test-pending.txt":   nil,
 	"api/test-removed.txt":   nil,
 
 	"100/public/api/foo.txt":         nil,
+	"100/public/api/foo-pending.txt": nil,
 	"100/public/api/foo-removed.txt": nil,
 	"100/system/api/foo.txt":         nil,
+	"100/system/api/foo-pending.txt": nil,
 	"100/system/api/foo-removed.txt": nil,
 
 	// For java_sdk_library_import
@@ -6845,6 +6850,7 @@ func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
 `),
 			"source/a.java":          nil,
 			"source/api/current.txt": nil,
+			"source/api/pending.txt": nil,
 			"source/api/removed.txt": nil,
 			"source/Android.bp": []byte(`
 		package {

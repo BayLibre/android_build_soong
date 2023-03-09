@@ -115,14 +115,19 @@ var PrepareForIntegrationTestWithJava = android.GroupFixturePreparers(
 // Prepare a fixture with the standard files required by a java_sdk_library module.
 var PrepareForTestWithJavaSdkLibraryFiles = android.FixtureMergeMockFs(android.MockFS{
 	"api/current.txt":               nil,
+	"api/pending.txt":               nil,
 	"api/removed.txt":               nil,
 	"api/system-current.txt":        nil,
+	"api/system-pending.txt":        nil,
 	"api/system-removed.txt":        nil,
 	"api/test-current.txt":          nil,
+	"api/test-pending.txt":          nil,
 	"api/test-removed.txt":          nil,
 	"api/module-lib-current.txt":    nil,
+	"api/module-lib-pending.txt":    nil,
 	"api/module-lib-removed.txt":    nil,
 	"api/system-server-current.txt": nil,
+	"api/system-server-pending.txt": nil,
 	"api/system-server-removed.txt": nil,
 })
 
@@ -233,6 +238,7 @@ func prebuiltApisFilesForModules(apiLevels []string, modules []string) map[strin
 				// No finalized API files for "current"
 				if level != "current" {
 					fs[fmt.Sprintf("prebuilts/sdk/%s/%s/api/%s.txt", level, sdkKind, lib)] = nil
+					fs[fmt.Sprintf("prebuilts/sdk/%s/%s/api/%s-pending.txt", level, sdkKind, lib)] = nil
 					fs[fmt.Sprintf("prebuilts/sdk/%s/%s/api/%s-removed.txt", level, sdkKind, lib)] = nil
 				}
 			}
@@ -251,6 +257,7 @@ func prebuiltExtensionApiFiles(extensionLevels []string, modules []string) map[s
 		for _, sdkKind := range []android.SdkKind{android.SdkPublic, android.SdkSystem, android.SdkModule, android.SdkSystemServer} {
 			for _, lib := range modules {
 				fs[fmt.Sprintf("prebuilts/sdk/extensions/%s/%s/api/%s.txt", level, sdkKind, lib)] = nil
+				fs[fmt.Sprintf("prebuilts/sdk/extensions/%s/%s/api/%s-pending.txt", level, sdkKind, lib)] = nil
 				fs[fmt.Sprintf("prebuilts/sdk/extensions/%s/%s/api/%s-removed.txt", level, sdkKind, lib)] = nil
 			}
 		}

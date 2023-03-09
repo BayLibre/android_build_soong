@@ -128,6 +128,8 @@ func TestJavaSdkLibrary(t *testing.T) {
 
 	exportedComponentsInfo := result.ModuleProvider(foo.Module(), android.ExportedComponentsInfoProvider).(android.ExportedComponentsInfo)
 	expectedFooExportedComponents := []string{
+		"foo-pending.api.public.latest",
+		"foo-pending.api.system.latest",
 		"foo-removed.api.public.latest",
 		"foo-removed.api.system.latest",
 		"foo.api.public.latest",
@@ -535,6 +537,7 @@ func TestJavaSdkLibrary_Deps(t *testing.T) {
 
 	CheckModuleDependencies(t, result.TestContext, "sdklib", "android_common", []string{
 		`dex2oatd`,
+		`sdklib-pending.api.public.latest`,
 		`sdklib-removed.api.public.latest`,
 		`sdklib.api.public.latest`,
 		`sdklib.impl`,
@@ -552,6 +555,7 @@ func TestJavaSdkLibraryImport_AccessOutputFiles(t *testing.T) {
 				jars: ["a.jar"],
 				stub_srcs: ["a.java"],
 				current_api: "api/current.txt",
+				pending_api: "api/pending.txt",
 				removed_api: "api/removed.txt",
 				annotations: "x/annotations.zip",
 			},
@@ -562,6 +566,7 @@ func TestJavaSdkLibraryImport_AccessOutputFiles(t *testing.T) {
 			srcs: [":foo{.public.stubs.source}"],
 			java_resources: [
 				":foo{.public.api.txt}",
+				":foo{.public.pending-api.txt}",
 				":foo{.public.removed-api.txt}",
 				":foo{.public.annotations.zip}",
 			],
@@ -588,6 +593,7 @@ func TestJavaSdkLibraryImport_AccessOutputFiles_Invalid(t *testing.T) {
 					srcs: [":foo{.public.stubs.source}"],
 					java_resources: [
 						":foo{.public.api.txt}",
+						":foo{.public.pending-api.txt}",
 						":foo{.public.removed-api.txt}",
 					],
 				}
@@ -603,6 +609,20 @@ func TestJavaSdkLibraryImport_AccessOutputFiles_Invalid(t *testing.T) {
 					srcs: ["a.java"],
 					java_resources: [
 						":foo{.public.api.txt}",
+					],
+				}
+			`)
+	})
+
+	t.Run("pending-api.txt", func(t *testing.T) {
+		prepareForJavaTest.
+			ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(`pending-api.txt not available for api scope public`)).
+			RunTestWithBp(t, bp+`
+				java_library {
+					name: "bar",
+					srcs: ["a.java"],
+					java_resources: [
+						":foo{.public.pending-api.txt}",
 					],
 				}
 			`)
@@ -933,6 +953,7 @@ func TestJavaSdkLibraryImport_WithSource(t *testing.T) {
 	CheckModuleDependencies(t, result.TestContext, "sdklib", "android_common", []string{
 		`dex2oatd`,
 		`prebuilt_sdklib`,
+		`sdklib-pending.api.public.latest`,
 		`sdklib-removed.api.public.latest`,
 		`sdklib.api.public.latest`,
 		`sdklib.impl`,
@@ -975,6 +996,7 @@ func testJavaSdkLibraryImport_Preferred(t *testing.T, prefer string, preparer an
 				jars: ["a.jar"],
 				stub_srcs: ["a.java"],
 				current_api: "current.txt",
+				pending_api: "pending.txt",
 				removed_api: "removed.txt",
 				annotations: "annotations.zip",
 			},
@@ -988,6 +1010,7 @@ func testJavaSdkLibraryImport_Preferred(t *testing.T, prefer string, preparer an
 			java_resources: [
 				":sdklib.stubs.source",
 				":sdklib{.public.api.txt}",
+				":sdklib{.public.pending-api.txt}",
 				":sdklib{.public.removed-api.txt}",
 				":sdklib{.public.annotations.zip}",
 			],
@@ -1005,6 +1028,7 @@ func testJavaSdkLibraryImport_Preferred(t *testing.T, prefer string, preparer an
 
 	CheckModuleDependencies(t, result.TestContext, "sdklib", "android_common", []string{
 		`prebuilt_sdklib`,
+		`sdklib-pending.api.public.latest`,
 		`sdklib-removed.api.public.latest`,
 		`sdklib.api.public.latest`,
 		`sdklib.impl`,
@@ -1024,6 +1048,7 @@ func testJavaSdkLibraryImport_Preferred(t *testing.T, prefer string, preparer an
 	// Make sure that dependencies on child modules use the prebuilt when preferred.
 	CheckModuleDependencies(t, result.TestContext, "combined", "android_common", []string{
 		// Each use of :sdklib{...} adds a dependency onto prebuilt_sdklib.
+		`prebuilt_sdklib`,
 		`prebuilt_sdklib`,
 		`prebuilt_sdklib`,
 		`prebuilt_sdklib`,

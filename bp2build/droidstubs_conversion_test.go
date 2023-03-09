@@ -96,8 +96,10 @@ func TestDroidstubsApiContributions(t *testing.T) {
 		ExpectedBazelTargets: expectedBazelTargets,
 		Filesystem: map[string]string{
 			"api/current.txt":        "",
+			"api/pending.txt":        "",
 			"api/removed.txt":        "",
 			"api/system-current.txt": "",
+			"api/system-pending.txt": "",
 			"api/system-removed.txt": "",
 		},
 	})

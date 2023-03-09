@@ -374,6 +374,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myothersdklibrary-stubs.jar"],
         stub_srcs: ["sdk_library/public/myothersdklibrary_stub_sources"],
         current_api: "sdk_library/public/myothersdklibrary.txt",
+        pending_api: "sdk_library/public/myothersdklibrary-pending.txt",
         removed_api: "sdk_library/public/myothersdklibrary-removed.txt",
         sdk_version: "current",
     },
@@ -389,6 +390,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/mysdklibrary-stubs.jar"],
         stub_srcs: ["sdk_library/public/mysdklibrary_stub_sources"],
         current_api: "sdk_library/public/mysdklibrary.txt",
+        pending_api: "sdk_library/public/mysdklibrary-pending.txt",
         removed_api: "sdk_library/public/mysdklibrary-removed.txt",
         sdk_version: "current",
     },
@@ -405,6 +407,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/mycoreplatform-stubs.jar"],
         stub_srcs: ["sdk_library/public/mycoreplatform_stub_sources"],
         current_api: "sdk_library/public/mycoreplatform.txt",
+        pending_api: "sdk_library/public/mycoreplatform-pending.txt",
         removed_api: "sdk_library/public/mycoreplatform-removed.txt",
         sdk_version: "current",
     },
@@ -471,12 +474,15 @@ func TestSnapshotWithBootClasspathFragment_Contents(t *testing.T) {
 .intermediates/mysdk/common_os/empty -> java_boot_libs/snapshot/jars/are/invalid/mybootlib.jar
 .intermediates/myothersdklibrary.stubs/android_common/javac/myothersdklibrary.stubs.jar -> sdk_library/public/myothersdklibrary-stubs.jar
 .intermediates/myothersdklibrary.stubs.source/android_common/metalava/myothersdklibrary.stubs.source_api.txt -> sdk_library/public/myothersdklibrary.txt
+.intermediates/myothersdklibrary.stubs.source/android_common/metalava/myothersdklibrary.stubs.source_pending.txt -> sdk_library/public/myothersdklibrary-pending.txt
 .intermediates/myothersdklibrary.stubs.source/android_common/metalava/myothersdklibrary.stubs.source_removed.txt -> sdk_library/public/myothersdklibrary-removed.txt
 .intermediates/mysdklibrary.stubs/android_common/javac/mysdklibrary.stubs.jar -> sdk_library/public/mysdklibrary-stubs.jar
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
+.intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_pending.txt -> sdk_library/public/mysdklibrary-pending.txt
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
 .intermediates/mycoreplatform.stubs/android_common/javac/mycoreplatform.stubs.jar -> sdk_library/public/mycoreplatform-stubs.jar
 .intermediates/mycoreplatform.stubs.source/android_common/metalava/mycoreplatform.stubs.source_api.txt -> sdk_library/public/mycoreplatform.txt
+.intermediates/mycoreplatform.stubs.source/android_common/metalava/mycoreplatform.stubs.source_pending.txt -> sdk_library/public/mycoreplatform-pending.txt
 .intermediates/mycoreplatform.stubs.source/android_common/metalava/mycoreplatform.stubs.source_removed.txt -> sdk_library/public/mycoreplatform-removed.txt
 `)
 	})
@@ -491,12 +497,15 @@ func TestSnapshotWithBootClasspathFragment_Contents(t *testing.T) {
 .intermediates/mysdk/common_os/empty -> java_boot_libs/snapshot/jars/are/invalid/mybootlib.jar
 .intermediates/myothersdklibrary.stubs/android_common/javac/myothersdklibrary.stubs.jar -> sdk_library/public/myothersdklibrary-stubs.jar
 .intermediates/myothersdklibrary.stubs.source/android_common/metalava/myothersdklibrary.stubs.source_api.txt -> sdk_library/public/myothersdklibrary.txt
+.intermediates/myothersdklibrary.stubs.source/android_common/metalava/myothersdklibrary.stubs.source_pending.txt -> sdk_library/public/myothersdklibrary-pending.txt
 .intermediates/myothersdklibrary.stubs.source/android_common/metalava/myothersdklibrary.stubs.source_removed.txt -> sdk_library/public/myothersdklibrary-removed.txt
 .intermediates/mysdklibrary.stubs/android_common/javac/mysdklibrary.stubs.jar -> sdk_library/public/mysdklibrary-stubs.jar
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
+.intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_pending.txt -> sdk_library/public/mysdklibrary-pending.txt
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
 .intermediates/mycoreplatform.stubs/android_common/javac/mycoreplatform.stubs.jar -> sdk_library/public/mycoreplatform-stubs.jar
 .intermediates/mycoreplatform.stubs.source/android_common/metalava/mycoreplatform.stubs.source_api.txt -> sdk_library/public/mycoreplatform.txt
+.intermediates/mycoreplatform.stubs.source/android_common/metalava/mycoreplatform.stubs.source_pending.txt -> sdk_library/public/mycoreplatform-pending.txt
 .intermediates/mycoreplatform.stubs.source/android_common/metalava/mycoreplatform.stubs.source_removed.txt -> sdk_library/public/mycoreplatform-removed.txt
 `
 	t.Run("added-via-apex", func(t *testing.T) {
@@ -648,6 +657,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/mysdklibrary-stubs.jar"],
         stub_srcs: ["sdk_library/public/mysdklibrary_stub_sources"],
         current_api: "sdk_library/public/mysdklibrary.txt",
+        pending_api: "sdk_library/public/mysdklibrary-pending.txt",
         removed_api: "sdk_library/public/mysdklibrary-removed.txt",
         sdk_version: "current",
     },
@@ -903,6 +913,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/mynewlibrary-stubs.jar"],
         stub_srcs: ["sdk_library/public/mynewlibrary_stub_sources"],
         current_api: "sdk_library/public/mynewlibrary.txt",
+        pending_api: "sdk_library/public/mynewlibrary-pending.txt",
         removed_api: "sdk_library/public/mynewlibrary-removed.txt",
         sdk_version: "current",
     },
@@ -920,6 +931,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/mysdklibrary-stubs.jar"],
         stub_srcs: ["sdk_library/public/mysdklibrary_stub_sources"],
         current_api: "sdk_library/public/mysdklibrary.txt",
+        pending_api: "sdk_library/public/mysdklibrary-pending.txt",
         removed_api: "sdk_library/public/mysdklibrary-removed.txt",
         sdk_version: "current",
     },
@@ -944,9 +956,11 @@ my-unsupported-packages.txt -> hiddenapi/my-unsupported-packages.txt
 .intermediates/mysdk/common_os/empty -> java_boot_libs/snapshot/jars/are/invalid/mybootlib.jar
 .intermediates/mynewlibrary.stubs/android_common/javac/mynewlibrary.stubs.jar -> sdk_library/public/mynewlibrary-stubs.jar
 .intermediates/mynewlibrary.stubs.source/android_common/metalava/mynewlibrary.stubs.source_api.txt -> sdk_library/public/mynewlibrary.txt
+.intermediates/mynewlibrary.stubs.source/android_common/metalava/mynewlibrary.stubs.source_pending.txt -> sdk_library/public/mynewlibrary-pending.txt
 .intermediates/mynewlibrary.stubs.source/android_common/metalava/mynewlibrary.stubs.source_removed.txt -> sdk_library/public/mynewlibrary-removed.txt
 .intermediates/mysdklibrary.stubs/android_common/javac/mysdklibrary.stubs.jar -> sdk_library/public/mysdklibrary-stubs.jar
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
+.intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_pending.txt -> sdk_library/public/mysdklibrary-pending.txt
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
 `),
 		snapshotTestPreparer(checkSnapshotWithoutSource, preparerForSnapshot),
@@ -1063,6 +1077,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/mysdklibrary-stubs.jar"],
         stub_srcs: ["sdk_library/public/mysdklibrary_stub_sources"],
         current_api: "sdk_library/public/mysdklibrary.txt",
+        pending_api: "sdk_library/public/mysdklibrary-pending.txt",
         removed_api: "sdk_library/public/mysdklibrary-removed.txt",
         sdk_version: "current",
     },
@@ -1076,6 +1091,7 @@ java_sdk_library_import {
 .intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi-for-sdk-snapshot/all-flags.csv -> hiddenapi/all-flags.csv
 .intermediates/mysdklibrary.stubs/android_common/javac/mysdklibrary.stubs.jar -> sdk_library/public/mysdklibrary-stubs.jar
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
+.intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_pending.txt -> sdk_library/public/mysdklibrary-pending.txt
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
 `
 
@@ -1123,6 +1139,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/mysdklibrary-stubs.jar"],
         stub_srcs: ["sdk_library/public/mysdklibrary_stub_sources"],
         current_api: "sdk_library/public/mysdklibrary.txt",
+        pending_api: "sdk_library/public/mysdklibrary-pending.txt",
         removed_api: "sdk_library/public/mysdklibrary-removed.txt",
         sdk_version: "current",
     },
@@ -1140,6 +1157,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/mynewsdklibrary-stubs.jar"],
         stub_srcs: ["sdk_library/public/mynewsdklibrary_stub_sources"],
         current_api: "sdk_library/public/mynewsdklibrary.txt",
+        pending_api: "sdk_library/public/mynewsdklibrary-pending.txt",
         removed_api: "sdk_library/public/mynewsdklibrary-removed.txt",
         sdk_version: "current",
     },
@@ -1154,9 +1172,11 @@ java_sdk_library_import {
 .intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi/filtered-flags.csv -> hiddenapi/filtered-flags.csv
 .intermediates/mysdklibrary.stubs/android_common/javac/mysdklibrary.stubs.jar -> sdk_library/public/mysdklibrary-stubs.jar
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
+.intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_pending.txt -> sdk_library/public/mysdklibrary-pending.txt
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
 .intermediates/mynewsdklibrary.stubs/android_common/javac/mynewsdklibrary.stubs.jar -> sdk_library/public/mynewsdklibrary-stubs.jar
 .intermediates/mynewsdklibrary.stubs.source/android_common/metalava/mynewsdklibrary.stubs.source_api.txt -> sdk_library/public/mynewsdklibrary.txt
+.intermediates/mynewsdklibrary.stubs.source/android_common/metalava/mynewsdklibrary.stubs.source_pending.txt -> sdk_library/public/mynewsdklibrary-pending.txt
 .intermediates/mynewsdklibrary.stubs.source/android_common/metalava/mynewsdklibrary.stubs.source_removed.txt -> sdk_library/public/mynewsdklibrary-removed.txt
 `
 

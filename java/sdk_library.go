@@ -120,11 +120,15 @@ type apiScope struct {
 	// The tag to use to depend on the module that provides the latest version of the API .txt file.
 	latestApiModuleTag scopeDependencyTag
 
+	// The tag to use to depend on the module that provides the latest version of the API pending.txt
+	// file.
+	latestPendingApiModuleTag scopeDependencyTag
+
 	// The tag to use to depend on the module that provides the latest version of the API removed.txt
 	// file.
 	latestRemovedApiModuleTag scopeDependencyTag
 
-	// The scope specific prefix to add to the api file base of "current.txt" or "removed.txt".
+	// The scope specific prefix to add to the api file base of "current.txt", "pending.txt" or "removed.txt".
 	apiFilePrefix string
 
 	// The scope specific suffix to add to the sdk library module name to construct a scope specific
@@ -189,6 +193,11 @@ func initApiScope(scope *apiScope) *apiScope {
 		name:             name + "-latest-api",
 		apiScope:         scope,
 		depInfoExtractor: (*scopePaths).extractLatestApiPath,
+	}
+	scope.latestPendingApiModuleTag = scopeDependencyTag{
+		name:             name + "-latest-pending-api",
+		apiScope:         scope,
+		depInfoExtractor: (*scopePaths).extractLatestPendingApiPath,
 	}
 	scope.latestRemovedApiModuleTag = scopeDependencyTag{
 		name:             name + "-latest-removed-api",
@@ -255,6 +264,12 @@ func (scope *apiScope) snapshotRelativeDir() string {
 // library.
 func (scope *apiScope) snapshotRelativeCurrentApiTxtPath(name string) string {
 	return filepath.Join(scope.snapshotRelativeDir(), name+".txt")
+}
+
+// snapshotRelativePendingApiTxtPath returns the snapshot path to the pending API .txt file for the
+// named library.
+func (scope *apiScope) snapshotRelativePendingApiTxtPath(name string) string {
+	return filepath.Join(scope.snapshotRelativeDir(), name+"-pending.txt")
 }
 
 // snapshotRelativeRemovedApiTxtPath returns the snapshot path to the removed API .txt file for the
@@ -502,11 +517,13 @@ type sdkLibraryProperties struct {
 	// directory in the dist.
 	// * stubs impl jar -> <dist-stem>.jar
 	// * API specification file -> api/<dist-stem>.txt
+	// * Non-finalized API specification file -> api/<dist-stem>-pending.txt
 	// * Removed API specification file -> api/<dist-stem>-removed.txt
 	//
 	// Also used to construct the name of the filegroup (created by prebuilt_apis)
-	// that references the latest released API and remove API specification files.
+	// that references the latest released API (finalized and non-finalized) and remove API specification files.
 	// * API specification filegroup -> <dist-stem>.api.<scope>.latest
+	// * Non-finalized API specification filegroup -> <dist-stem>-pending.api.<scope>.latest
 	// * Removed API specification filegroup -> <dist-stem>-removed.api.<scope>.latest
 	// * API incompatibilities baseline filegroup -> <dist-stem>-incompatibilities.api.<scope>.latest
 	Dist_stem *string
@@ -599,6 +616,9 @@ type scopePaths struct {
 	// The API specification file, e.g. system_current.txt.
 	currentApiFilePath android.OptionalPath
 
+	// The non-finalized API specification file, e.g. system_pending.txt.
+	pendingApiFilePath android.OptionalPath
+
 	// The specification of API elements removed since the last release.
 	removedApiFilePath android.OptionalPath
 
@@ -610,6 +630,9 @@ type scopePaths struct {
 
 	// The path to the latest API file.
 	latestApiPath android.OptionalPath
+
+	// The path to the latest non-finalized API file.
+	latestPendingApiPath android.OptionalPath
 
 	// The path to the latest removed API file.
 	latestRemovedApiPath android.OptionalPath
@@ -650,6 +673,7 @@ func (paths *scopePaths) treatDepAsApiStubsSrcProvider(dep android.Module, actio
 func (paths *scopePaths) extractApiInfoFromApiStubsProvider(provider ApiStubsProvider) {
 	paths.annotationsZip = android.OptionalPathForPath(provider.AnnotationsZip())
 	paths.currentApiFilePath = android.OptionalPathForPath(provider.ApiFilePath())
+	paths.pendingApiFilePath = android.OptionalPathForPath(provider.PendingApiFilePath())
 	paths.removedApiFilePath = android.OptionalPathForPath(provider.RemovedApiFilePath())
 }
 
@@ -692,6 +716,12 @@ func extractSingleOptionalOutputPath(dep android.Module) (android.OptionalPath, 
 func (paths *scopePaths) extractLatestApiPath(ctx android.ModuleContext, dep android.Module) error {
 	outputPath, err := extractSingleOptionalOutputPath(dep)
 	paths.latestApiPath = outputPath
+	return err
+}
+
+func (paths *scopePaths) extractLatestPendingApiPath(ctx android.ModuleContext, dep android.Module) error {
+	outputPath, err := extractSingleOptionalOutputPath(dep)
+	paths.latestPendingApiPath = outputPath
 	return err
 }
 
@@ -850,6 +880,8 @@ const (
 
 	apiTxtComponentName = "api.txt"
 
+	pendingApiTxtComponentName = "pending-api.txt"
+
 	removedApiTxtComponentName = "removed-api.txt"
 
 	annotationsComponentName = "annotations.zip"
@@ -871,7 +903,7 @@ var tagSplitter = func() *regexp.Regexp {
 	scopesRegexp := choice(allScopeNames...)
 
 	// Regular expression to match one of the components.
-	componentsRegexp := choice(stubsSourceComponentName, apiTxtComponentName, removedApiTxtComponentName, annotationsComponentName)
+	componentsRegexp := choice(stubsSourceComponentName, apiTxtComponentName, pendingApiTxtComponentName, removedApiTxtComponentName, annotationsComponentName)
 
 	// Regular expression to match any combination of one scope and one component.
 	return regexp.MustCompile(fmt.Sprintf(`^\.(%s)\.(%s)$`, scopesRegexp, componentsRegexp))
@@ -900,6 +932,11 @@ func (c *commonToSdkLibraryAndImport) commonOutputFiles(tag string) (android.Pat
 			case apiTxtComponentName:
 				if paths.currentApiFilePath.Valid() {
 					return android.Paths{paths.currentApiFilePath.Path()}, nil
+				}
+
+			case pendingApiTxtComponentName:
+				if paths.pendingApiFilePath.Valid() {
+					return android.Paths{paths.pendingApiFilePath.Path()}, nil
 				}
 
 			case removedApiTxtComponentName:
@@ -1033,6 +1070,17 @@ func (c *commonToSdkLibraryAndImport) SdkApiStubDexJar(ctx android.BaseModuleCon
 }
 
 // to satisfy SdkLibraryDependency interface
+func (c *commonToSdkLibraryAndImport) SdkPendingTxtFile(ctx android.BaseModuleContext, kind android.SdkKind) android.OptionalPath {
+	apiScope := sdkKindToApiScope(kind)
+	paths := c.findScopePaths(apiScope)
+	if paths == nil {
+		return android.OptionalPath{}
+	}
+
+	return paths.pendingApiFilePath
+}
+
+// to satisfy SdkLibraryDependency interface
 func (c *commonToSdkLibraryAndImport) SdkRemovedTxtFile(ctx android.BaseModuleContext, kind android.SdkKind) android.OptionalPath {
 	apiScope := sdkKindToApiScope(kind)
 	paths := c.findScopePaths(apiScope)
@@ -1153,6 +1201,9 @@ type SdkLibraryDependency interface {
 	// SdkApiStubDexJar returns the dex jar for the stubs. It is needed by the hiddenapi processing
 	// tool which processes dex files.
 	SdkApiStubDexJar(ctx android.BaseModuleContext, kind android.SdkKind) OptionalDexJarPath
+
+	// SdkPendingTxtFile returns the optional path to the pending.txt file for the specified sdk kind.
+	SdkPendingTxtFile(ctx android.BaseModuleContext, kind android.SdkKind) android.OptionalPath
 
 	// SdkRemovedTxtFile returns the optional path to the removed.txt file for the specified sdk kind.
 	SdkRemovedTxtFile(ctx android.BaseModuleContext, kind android.SdkKind) android.OptionalPath
@@ -1277,6 +1328,10 @@ func (module *SdkLibrary) ComponentDepsMutator(ctx android.BottomUpMutatorContex
 			latestApiModuleName := module.latestApiModuleName(apiScope)
 			ctx.AddDependency(module, apiScope.latestApiModuleTag, latestApiModuleName)
 
+			// Add dependencies on the latest finalized version of the pending API .txt file.
+			latestPendingApiModuleName := module.latestPendingApiModuleName(apiScope)
+			ctx.AddDependency(module, apiScope.latestPendingApiModuleTag, latestPendingApiModuleName)
+
 			// Add dependencies on the latest finalized version of the remove API .txt file.
 			latestRemovedApiModuleName := module.latestRemovedApiModuleName(apiScope)
 			ctx.AddDependency(module, apiScope.latestRemovedApiModuleTag, latestRemovedApiModuleName)
@@ -1302,6 +1357,9 @@ func (module *SdkLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 			continue
 		}
 		if m := module.latestApiModuleName(apiScope); !ctx.OtherModuleExists(m) {
+			missingApiModules = append(missingApiModules, m)
+		}
+		if m := module.latestPendingApiModuleName(apiScope); !ctx.OtherModuleExists(m) {
 			missingApiModules = append(missingApiModules, m)
 		}
 		if m := module.latestRemovedApiModuleName(apiScope); !ctx.OtherModuleExists(m) {
@@ -1392,9 +1450,13 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		scopeInfo := map[string]interface{}{}
 		scopes[scope.name] = scopeInfo
 		scopeInfo["current_api"] = scope.snapshotRelativeCurrentApiTxtPath(baseModuleName)
+		scopeInfo["pending_api"] = scope.snapshotRelativePendingApiTxtPath(baseModuleName)
 		scopeInfo["removed_api"] = scope.snapshotRelativeRemovedApiTxtPath(baseModuleName)
 		if p := scopePaths.latestApiPath; p.Valid() {
 			scopeInfo["latest_api"] = p.Path().String()
+		}
+		if p := scopePaths.latestPendingApiPath; p.Valid() {
+			scopeInfo["latest_pending_api"] = p.Path().String()
 		}
 		if p := scopePaths.latestRemovedApiPath; p.Valid() {
 			scopeInfo["latest_removed_api"] = p.Path().String()
@@ -1456,6 +1518,14 @@ func (module *SdkLibrary) latestApiFilegroupName(apiScope *apiScope) string {
 
 func (module *SdkLibrary) latestApiModuleName(apiScope *apiScope) string {
 	return latestPrebuiltApiModuleName(module.distStem(), apiScope)
+}
+
+func (module *SdkLibrary) latestPendingApiFilegroupName(apiScope *apiScope) string {
+	return ":" + module.latestPendingApiModuleName(apiScope)
+}
+
+func (module *SdkLibrary) latestPendingApiModuleName(apiScope *apiScope) string {
+	return latestPrebuiltApiModuleName(module.distStem()+"-pending", apiScope)
 }
 
 func (module *SdkLibrary) latestRemovedApiFilegroupName(apiScope *apiScope) string {
@@ -1694,13 +1764,16 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 	// compared against to the not-yet-released (a.k.a current) list of APIs and to the
 	// last-released (a.k.a numbered) list of API.
 	currentApiFileName := apiScope.apiFilePrefix + "current.txt"
+	pendingApiFileName := apiScope.apiFilePrefix + "pending.txt"
 	removedApiFileName := apiScope.apiFilePrefix + "removed.txt"
 	apiDir := module.getApiDir()
 	currentApiFileName = path.Join(apiDir, currentApiFileName)
+	pendingApiFileName = path.Join(apiDir, pendingApiFileName)
 	removedApiFileName = path.Join(apiDir, removedApiFileName)
 
 	// check against the not-yet-release API
 	props.Check_api.Current.Api_file = proptools.StringPtr(currentApiFileName)
+	props.Check_api.Current.Pending_api_file = proptools.StringPtr(pendingApiFileName)
 	props.Check_api.Current.Removed_api_file = proptools.StringPtr(removedApiFileName)
 
 	if module.compareAgainstLatestApi(apiScope) {
@@ -1708,6 +1781,8 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 		latestApiFilegroupName := proptools.StringPtr(module.latestApiFilegroupName(apiScope))
 		props.Previous_api = latestApiFilegroupName
 		props.Check_api.Last_released.Api_file = latestApiFilegroupName
+		props.Check_api.Last_released.Pending_api_file = proptools.StringPtr(
+			module.latestPendingApiFilegroupName(apiScope))
 		props.Check_api.Last_released.Removed_api_file = proptools.StringPtr(
 			module.latestRemovedApiFilegroupName(apiScope))
 		props.Check_api.Last_released.Baseline_file = proptools.StringPtr(
@@ -1741,6 +1816,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 			pattern string
 		}{
 			{tag: ".api.txt", pattern: "%s.txt"},
+			{tag: ".pending-api.txt", pattern: "%s-pending.txt"},
 			{tag: ".removed-api.txt", pattern: "%s-removed.txt"},
 		} {
 			props.Dists = append(props.Dists, android.Dist{
@@ -1916,7 +1992,7 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 
 	apiDir := module.getApiDir()
 	for _, scope := range generatedScopes {
-		for _, api := range []string{"current.txt", "removed.txt"} {
+		for _, api := range []string{"current.txt", "pending.txt", "removed.txt"} {
 			path := path.Join(mctx.ModuleDir(), apiDir, scope.apiFilePrefix+api)
 			p := android.ExistentPathForSource(mctx, path)
 			if !p.Valid() {
@@ -2144,6 +2220,9 @@ type sdkLibraryScopeProperties struct {
 
 	// The current.txt
 	Current_api *string `android:"path"`
+
+	// The pending.txt
+	Pending_api *string `android:"path"`
 
 	// The removed.txt
 	Removed_api *string `android:"path"`
@@ -2474,6 +2553,7 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 		paths := module.getScopePathsCreateIfNeeded(apiScope)
 		paths.annotationsZip = android.OptionalPathForModuleSrc(ctx, scopeProperties.Annotations)
 		paths.currentApiFilePath = android.OptionalPathForModuleSrc(ctx, scopeProperties.Current_api)
+		paths.pendingApiFilePath = android.OptionalPathForModuleSrc(ctx, scopeProperties.Pending_api)
 		paths.removedApiFilePath = android.OptionalPathForModuleSrc(ctx, scopeProperties.Removed_api)
 	}
 
@@ -3050,6 +3130,7 @@ type scopeProperties struct {
 	Jars           android.Paths
 	StubsSrcJar    android.Path
 	CurrentApiFile android.Path
+	PendingApiFile android.Path
 	RemovedApiFile android.Path
 	AnnotationsZip android.Path `supported_build_releases:"Tiramisu+"`
 	SdkVersion     string
@@ -3076,6 +3157,9 @@ func (s *sdkLibrarySdkMemberProperties) PopulateFromVariant(ctx android.SdkMembe
 			properties.StubsSrcJar = paths.stubsSrcJar.Path()
 			if paths.currentApiFilePath.Valid() {
 				properties.CurrentApiFile = paths.currentApiFilePath.Path()
+			}
+			if paths.pendingApiFilePath.Valid() {
+				properties.PendingApiFile = paths.pendingApiFilePath.Path()
 			}
 			if paths.removedApiFilePath.Valid() {
 				properties.RemovedApiFile = paths.removedApiFilePath.Path()
@@ -3154,6 +3238,12 @@ func (s *sdkLibrarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberCo
 				currentApiSnapshotPath := apiScope.snapshotRelativeCurrentApiTxtPath(stem)
 				ctx.SnapshotBuilder().CopyToSnapshot(properties.CurrentApiFile, currentApiSnapshotPath)
 				scopeSet.AddProperty("current_api", currentApiSnapshotPath)
+			}
+
+			if properties.PendingApiFile != nil {
+				pendingApiSnapshotPath := apiScope.snapshotRelativePendingApiTxtPath(stem)
+				ctx.SnapshotBuilder().CopyToSnapshot(properties.PendingApiFile, pendingApiSnapshotPath)
+				scopeSet.AddProperty("pending_api", pendingApiSnapshotPath)
 			}
 
 			if properties.RemovedApiFile != nil {
