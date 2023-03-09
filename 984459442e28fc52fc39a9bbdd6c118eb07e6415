@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d91416_8e78c49a",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-09T18:04:40Z",
+      "side": 1,
+      "message": "I think we should be fine to use the manifest override if it exists, and otherwise error for now. It sounds like `package_name` should be provided, and we can change if necessary in the future.",
+      "parentUuid": "1c3db140_b177b9be",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 0
+      },
+      "revId": "984459442e28fc52fc39a9bbdd6c118eb07e6415",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a891d33_30301448",
