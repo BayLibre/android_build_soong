@@ -46,6 +46,30 @@
       },
       "revId": "ff707efcf903c65c7afda2c8e7e5e9b1a6edd1fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea794eed_94bf741c",
+        "filename": "python/python.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-09T17:55:46Z",
+      "side": 1,
+      "message": "I think the current check only reads from product config. To support it as an environment variable, I think we might need to add `|| mctx.Config().environ.Get(\"BUILD_BROKEN_SOONG_PYTHON2_MODULES\") \u003d\u003d \"true\"`\n\nAdding \"in product configuration\" in the error msg explicitly prevents that confusion, but I saw that you already did that, so this is not a blocker.",
+      "parentUuid": "53da29d9_c80ed28c",
+      "range": {
+        "startLine": 270,
+        "startChar": 204,
+        "endLine": 270,
+        "endChar": 205
+      },
+      "revId": "ff707efcf903c65c7afda2c8e7e5e9b1a6edd1fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
