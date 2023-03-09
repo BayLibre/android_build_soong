@@ -903,6 +903,15 @@ func TestGetConfigArgsBuildModulesInDirectory(t *testing.T) {
 			tidyOnly:     "",
 			expectedArgs: []string{},
 		}, {
+			description:  "multitree build action executed at root directory",
+			dirsInTrees:  []string{},
+			buildFiles:   []string{},
+			rootSymlink:  false,
+			args:         []string{"--multitree-build"},
+			curDir:       ".",
+			tidyOnly:     "",
+			expectedArgs: []string{"--multitree-build"},
+		}, {
 			description:  "build action executed at root directory in symlink",
 			dirsInTrees:  []string{},
 			buildFiles:   []string{},
@@ -1023,6 +1032,20 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
+				MultitreeBuild:              proto.Bool(false),
+			},
+		},
+		{
+			name:           "multitree build",
+			environ:        Environment{},
+			multitreeBuild: true,
+			expectedBuildConfig: &smpb.BuildConfig{
+				ForceUseGoma:                proto.Bool(false),
+				UseGoma:                     proto.Bool(false),
+				UseRbe:                      proto.Bool(false),
+				BazelMixedBuild:             proto.Bool(false),
+				ForceDisableBazelMixedBuild: proto.Bool(false),
+				MultitreeBuild:              proto.Bool(true),
 			},
 		},
 		{
@@ -1034,6 +1057,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
+				MultitreeBuild:              proto.Bool(false),
 			},
 		},
 		{
@@ -1045,6 +1069,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
+				MultitreeBuild:              proto.Bool(false),
 			},
 		},
 		{
@@ -1056,6 +1081,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(true),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
+				MultitreeBuild:              proto.Bool(false),
 			},
 		},
 		{
@@ -1067,6 +1093,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(true),
+				MultitreeBuild:              proto.Bool(false),
 			},
 		},
 		{
@@ -1079,6 +1106,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
+				MultitreeBuild:              proto.Bool(false),
 			},
 		},
 		{
@@ -1091,6 +1119,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(true),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
+				MultitreeBuild:              proto.Bool(false),
 			},
 		},
 		{
@@ -1103,6 +1132,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(true),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
+				MultitreeBuild:              proto.Bool(false),
 			},
 		},
 		{
@@ -1115,6 +1145,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(true),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
+				MultitreeBuild:              proto.Bool(false),
 			},
 		},
 		{
@@ -1129,6 +1160,7 @@ func TestBuildConfig(t *testing.T) {
 				BazelMixedBuild:             proto.Bool(false),
 				Targets:                     []string{"droid", "dist"},
 				ForceDisableBazelMixedBuild: proto.Bool(false),
+				MultitreeBuild:              proto.Bool(false),
 			},
 		},
 		{
@@ -1147,6 +1179,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(true),
 				BazelMixedBuild:             proto.Bool(true),
 				ForceDisableBazelMixedBuild: proto.Bool(true),
+				MultitreeBuild:              proto.Bool(false),
 			},
 		},
 	}
@@ -1160,6 +1193,7 @@ func TestBuildConfig(t *testing.T) {
 				bazelProdMode:    tc.bazelProdMode,
 				bazelStagingMode: tc.bazelStagingMode,
 				arguments:        tc.arguments,
+				multitreeBuild:   tc.multitreeBuild,
 			}
 			config := Config{c}
 			checkBazelMode(ctx, config)
