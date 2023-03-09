@@ -34,6 +34,24 @@
       "parentUuid": "820fc392_d5ec4173",
       "revId": "884fe9e17479c6697b6ae0e5b34c978f339cb4c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bab2b56_21e50871",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-09T14:16:16Z",
+      "side": 1,
+      "message": "The context is in the CL description, these are not user facing properties, we are setting them as `blueprint:\"mutated\"` to prevent them from being set by users.",
+      "parentUuid": "000221dc_5b923886",
+      "revId": "884fe9e17479c6697b6ae0e5b34c978f339cb4c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
