@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596df572_caf77018",
+        "filename": "android/api_levels.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-03-09T18:35:50Z",
+      "side": 1,
+      "message": "change this to use the this.IsInvalid() and this.IsPrivate() functions you create in aosp/2470068 . you can do  in a future cl so you don\u0027t have to change how you\u0027re splitting up the cls",
+      "revId": "42749a30dff2665054bc063f946c128f352819b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
