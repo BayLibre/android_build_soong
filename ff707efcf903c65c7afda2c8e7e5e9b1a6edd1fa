@@ -70,6 +70,30 @@
       },
       "revId": "ff707efcf903c65c7afda2c8e7e5e9b1a6edd1fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06bd12b1_6e162af0",
+        "filename": "python/python.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-09T19:58:13Z",
+      "side": 1,
+      "message": "oh, I thought it would be picked up by virtue of kati importing all environment variables as make variables, but it looks like we explicitly clear build broken variables: https://cs.android.com/android/platform/superproject/+/master:build/make/core/board_config.mk;l\u003d212;drc\u003d2b8cf0e4094f8845148a8dfe5f23c66222316f0b",
+      "parentUuid": "ea794eed_94bf741c",
+      "range": {
+        "startLine": 270,
+        "startChar": 204,
+        "endLine": 270,
+        "endChar": 205
+      },
+      "revId": "ff707efcf903c65c7afda2c8e7e5e9b1a6edd1fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
