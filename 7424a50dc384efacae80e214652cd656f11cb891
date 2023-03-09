@@ -16,6 +16,23 @@
       "message": "Please ignore this CL. I created it to run ART Benchmark.",
       "revId": "7424a50dc384efacae80e214652cd656f11cb891",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da86f672_95af4af8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-03-09T06:16:23Z",
+      "side": 1,
+      "message": "b/issues/272075625#comment10\n\nShould we merge this change? Without this revert, cuttlefish boot is over 1min slower on coverage build.",
+      "revId": "7424a50dc384efacae80e214652cd656f11cb891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
