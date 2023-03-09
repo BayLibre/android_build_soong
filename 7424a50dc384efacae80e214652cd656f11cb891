@@ -69,6 +69,24 @@
       "parentUuid": "d1bd46ef_1a2f972e",
       "revId": "7424a50dc384efacae80e214652cd656f11cb891",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b58406c_ca7074b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-09T19:02:54Z",
+      "side": 1,
+      "message": "These two CLs must be landed or reverted together. Things will go wrong if you revert one but not the other.\n\nCould you please check if the slowness you mentioned is a recent thing or has been existing for a long time?",
+      "parentUuid": "29662c74_e7afcf7e",
+      "revId": "7424a50dc384efacae80e214652cd656f11cb891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
