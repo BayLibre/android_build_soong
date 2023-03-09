@@ -51,6 +51,7 @@ type Droidstubs struct {
 
 	properties              DroidstubsProperties
 	apiFile                 android.Path
+	unstableApiFile         android.Path
 	removedApiFile          android.Path
 	nullabilityWarningsFile android.WritablePath
 
@@ -72,6 +73,9 @@ type Droidstubs struct {
 type DroidstubsProperties struct {
 	// The generated public API filename by Metalava, defaults to <module>_api.txt
 	Api_filename *string
+
+	// The generated non-finalized API filename by Metalava, defaults to <module>_unstable.txt
+	Unstable_api_filename *string
 
 	// the generated removed API filename by Metalava, defaults to <module>_removed.txt
 	Removed_api_filename *string
@@ -167,6 +171,7 @@ type ApiStubsSrcProvider interface {
 type ApiStubsProvider interface {
 	AnnotationsZip() android.Path
 	ApiFilePath
+	UnstableApiFilePath() android.Path
 	RemovedApiFilePath() android.Path
 
 	ApiStubsSrcProvider
@@ -212,6 +217,8 @@ func (d *Droidstubs) OutputFiles(tag string) (android.Paths, error) {
 	case ".api.txt", android.DefaultDistTag:
 		// This is the default dist path for dist properties that have no tag property.
 		return android.Paths{d.apiFile}, nil
+	case ".unstable-api.txt":
+		return android.Paths{d.unstableApiFile}, nil
 	case ".removed-api.txt":
 		return android.Paths{d.removedApiFile}, nil
 	case ".annotations.zip":
@@ -229,6 +236,10 @@ func (d *Droidstubs) AnnotationsZip() android.Path {
 
 func (d *Droidstubs) ApiFilePath() android.Path {
 	return d.apiFile
+}
+
+func (d *Droidstubs) UnstableApiFilePath() android.Path {
+	return d.unstableApiFile
 }
 
 func (d *Droidstubs) RemovedApiFilePath() android.Path {
@@ -285,14 +296,26 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuil
 
 	if apiCheckEnabled(ctx, d.properties.Check_api.Current, "current") ||
 		apiCheckEnabled(ctx, d.properties.Check_api.Last_released, "last_released") ||
+		String(d.properties.Unstable_api_filename) != "" ||
 		String(d.properties.Removed_api_filename) != "" {
-		filename := proptools.StringDefault(d.properties.Removed_api_filename, ctx.ModuleName()+"_removed.txt")
-		uncheckedRemovedFile := android.PathForModuleOut(ctx, "metalava", filename)
+		unstableFilename := proptools.StringDefault(d.properties.Unstable_api_filename, ctx.ModuleName()+"_unstable.txt")
+		uncheckedUnstableFile := android.PathForModuleOut(ctx, "metalava", unstableFilename)
+		cmd.FlagWithOutput("--unstable-api ", uncheckedUnstableFile)
+		d.unstableApiFile = uncheckedUnstableFile
+
+		removedFilename := proptools.StringDefault(d.properties.Removed_api_filename, ctx.ModuleName()+"_removed.txt")
+		uncheckedRemovedFile := android.PathForModuleOut(ctx, "metalava", removedFilename)
 		cmd.FlagWithOutput("--removed-api ", uncheckedRemovedFile)
 		d.removedApiFile = uncheckedRemovedFile
-	} else if sourceRemovedApiFile := proptools.String(d.properties.Check_api.Current.Removed_api_file); sourceRemovedApiFile != "" {
-		// If check api is disabled then make the source removed api file available for export.
-		d.removedApiFile = android.PathForModuleSrc(ctx, sourceRemovedApiFile)
+	} else {
+		if sourceUnstableApiFile := proptools.String(d.properties.Check_api.Current.Unstable_api_file); sourceUnstableApiFile != "" {
+			// If check api is disabled then make the source unstable api files are available for export.
+			d.unstableApiFile = android.PathForModuleSrc(ctx, sourceUnstableApiFile)
+		}
+		if sourceRemovedApiFile := proptools.String(d.properties.Check_api.Current.Removed_api_file); sourceRemovedApiFile != "" {
+			// If check api is disabled then make the source removed api files are available for export.
+			d.removedApiFile = android.PathForModuleSrc(ctx, sourceRemovedApiFile)
+		}
 	}
 
 	if Bool(d.properties.Write_sdk_values) {
@@ -665,6 +688,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 
 		apiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Api_file))
+		unstableApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Unstable_api_file))
 		removedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Removed_api_file))
 		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Last_released.Baseline_file)
 		updatedBaselineOutput := android.PathForModuleOut(ctx, "metalava", "last_released_baseline.txt")
@@ -672,6 +696,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		d.checkLastReleasedApiTimestamp = android.PathForModuleOut(ctx, "metalava", "check_last_released_api.timestamp")
 
 		cmd.FlagWithInput("--check-compatibility:api:released ", apiFile)
+		cmd.FlagWithInput("--check-compatibility:unstable:released ", unstableApiFile)
 		cmd.FlagWithInput("--check-compatibility:removed:released ", removedApiFile)
 
 		if baselineFile.Valid() {
@@ -734,6 +759,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 
 		apiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Api_file))
+		unstableApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Unstable_api_file))
 		removedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Removed_api_file))
 		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Current.Baseline_file)
 
@@ -754,6 +780,10 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		rule.Command().
 			Text(diff).
 			Input(apiFile).Input(d.apiFile)
+
+		rule.Command().
+			Text(diff).
+			Input(unstableApiFile).Input(d.unstableApiFile)
 
 		rule.Command().
 			Text(diff).
@@ -789,6 +819,10 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		rule.Command().
 			Text("cp").Flag("-f").
 			Input(d.apiFile).Flag(apiFile.String())
+
+		rule.Command().
+			Text("cp").Flag("-f").
+			Input(d.unstableApiFile).Flag(unstableApiFile.String())
 
 		rule.Command().
 			Text("cp").Flag("-f").

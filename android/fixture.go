@@ -115,6 +115,7 @@ import (
 //
 // var javaMockFS = android.MockFS{
 //    "api/current.txt":        nil,
+//    "api/unstable.txt":        nil,
 //    "api/removed.txt":        nil,
 //    ...
 // }

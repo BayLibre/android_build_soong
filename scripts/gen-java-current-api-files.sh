@@ -25,7 +25,7 @@ shift
 mkdir -p "$api_dir"
 
 scopes=("" "$@")
-apis=(current removed)
+apis=(current unstable removed)
 
 for scope in "${scopes[@]}"; do
   for api in "${apis[@]}"; do

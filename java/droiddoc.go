@@ -105,6 +105,9 @@ type ApiToCheck struct {
 	// against. The path can be local to the module or from other module (via :module syntax).
 	Api_file *string `android:"path"`
 
+	// like Api_file, but for the unstable (non-finalized) API
+	Unstable_api_file *string `android:"path"`
+
 	// path to the API txt file that the new @removed API extractd from source code is
 	// checked against. The path can be local to the module or from other module (via
 	// :module syntax).
@@ -180,12 +183,10 @@ func InitDroiddocModule(module android.DefaultableModule, hod android.HostOrDevi
 func apiCheckEnabled(ctx android.ModuleContext, apiToCheck ApiToCheck, apiVersionTag string) bool {
 	if ctx.Config().IsEnvTrue("WITHOUT_CHECK_API") {
 		return false
-	} else if String(apiToCheck.Api_file) != "" && String(apiToCheck.Removed_api_file) != "" {
+	} else if String(apiToCheck.Api_file) != "" && String(apiToCheck.Unstable_api_file) != "" && String(apiToCheck.Removed_api_file) != "" {
 		return true
-	} else if String(apiToCheck.Api_file) != "" {
-		panic("for " + apiVersionTag + " removed_api_file has to be non-empty!")
-	} else if String(apiToCheck.Removed_api_file) != "" {
-		panic("for " + apiVersionTag + " api_file has to be non-empty!")
+	} else if String(apiToCheck.Api_file) != "" || String(apiToCheck.Unstable_api_file) != "" || String(apiToCheck.Removed_api_file) != "" {
+		panic("for " + apiVersionTag + " all api files has to be non-empty!")
 	}
 
 	return false

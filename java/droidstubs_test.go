@@ -356,15 +356,17 @@ func TestDroidStubsApiContributionGeneration(t *testing.T) {
 			check_api: {
 				current: {
 					api_file: "A/current.txt",
+					unstable_api_file: "A/unstable.txt",
 					removed_api_file: "A/removed.txt",
 				}
 			}
 		}
 		`,
 		map[string][]byte{
-			"A/a.java":      nil,
-			"A/current.txt": nil,
-			"A/removed.txt": nil,
+			"A/a.java":       nil,
+			"A/current.txt":  nil,
+			"A/unstable.txt": nil,
+			"A/removed.txt":  nil,
 		},
 	)
 
@@ -387,6 +389,7 @@ func TestGeneratedApiContributionVisibilityTest(t *testing.T) {
 				check_api: {
 					current: {
 						api_file: "A/current.txt",
+						unstable_api_file: "A/unstable.txt",
 						removed_api_file: "A/removed.txt",
 					}
 				},
@@ -394,10 +397,11 @@ func TestGeneratedApiContributionVisibilityTest(t *testing.T) {
 			}
 		`,
 		map[string][]byte{
-			"a/a.java":      nil,
-			"a/current.txt": nil,
-			"a/removed.txt": nil,
-			"b/Android.bp":  []byte(library_bp),
+			"a/a.java":       nil,
+			"a/current.txt":  nil,
+			"a/unstable.txt": nil,
+			"a/removed.txt":  nil,
+			"b/Android.bp":   []byte(library_bp),
 		},
 	)
 

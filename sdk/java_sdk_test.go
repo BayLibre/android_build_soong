@@ -675,6 +675,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
     },
@@ -696,6 +697,7 @@ java_system_modules_import {
 .intermediates/system-module/android_common/turbine-combined/system-module.jar -> java/system-module.jar
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 `),
 		checkInfoContents(result.Config, `
@@ -735,7 +737,9 @@ java_system_modules_import {
         "current_api": "sdk_library/public/myjavalib.txt",
         "latest_api": "out/soong/.intermediates/prebuilts/sdk/myjavalib.api.public.latest/gen/myjavalib.api.public.latest",
         "latest_removed_api": "out/soong/.intermediates/prebuilts/sdk/myjavalib-removed.api.public.latest/gen/myjavalib-removed.api.public.latest",
-        "removed_api": "sdk_library/public/myjavalib-removed.txt"
+        "latest_unstable_api": "out/soong/.intermediates/prebuilts/sdk/myjavalib-unstable.api.public.latest/gen/myjavalib-unstable.api.public.latest",
+        "removed_api": "sdk_library/public/myjavalib-removed.txt",
+        "unstable_api": "sdk_library/public/myjavalib-unstable.txt"
       }
     }
   },
@@ -919,6 +923,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
     },
@@ -926,6 +931,7 @@ java_sdk_library_import {
         jars: ["sdk_library/system/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system/myjavalib_stub_sources"],
         current_api: "sdk_library/system/myjavalib.txt",
+        unstable_api: "sdk_library/system/myjavalib-unstable.txt",
         removed_api: "sdk_library/system/myjavalib-removed.txt",
         sdk_version: "system_current",
     },
@@ -933,6 +939,7 @@ java_sdk_library_import {
         jars: ["sdk_library/test/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/test/myjavalib_stub_sources"],
         current_api: "sdk_library/test/myjavalib.txt",
+        unstable_api: "sdk_library/test/myjavalib-unstable.txt",
         removed_api: "sdk_library/test/myjavalib-removed.txt",
         sdk_version: "test_current",
     },
@@ -941,12 +948,15 @@ java_sdk_library_import {
 		checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 .intermediates/myjavalib.stubs.system/android_common/javac/myjavalib.stubs.system.jar -> sdk_library/system/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.system/android_common/metalava/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
+.intermediates/myjavalib.stubs.source.system/android_common/metalava/myjavalib.stubs.source.system_unstable.txt -> sdk_library/system/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source.system/android_common/metalava/myjavalib.stubs.source.system_removed.txt -> sdk_library/system/myjavalib-removed.txt
 .intermediates/myjavalib.stubs.test/android_common/javac/myjavalib.stubs.test.jar -> sdk_library/test/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.test/android_common/metalava/myjavalib.stubs.source.test_api.txt -> sdk_library/test/myjavalib.txt
+.intermediates/myjavalib.stubs.source.test/android_common/metalava/myjavalib.stubs.source.test_unstable.txt -> sdk_library/test/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source.test/android_common/metalava/myjavalib.stubs.source.test_removed.txt -> sdk_library/test/myjavalib-removed.txt
 `),
 		checkMergeZips(
@@ -991,6 +1001,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
     },
@@ -999,6 +1010,7 @@ java_sdk_library_import {
 		checkAllCopyRules(`
 .intermediates/myjavalib-foo.stubs/android_common/javac/myjavalib-foo.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib-foo.stubs.source/android_common/metalava/myjavalib-foo.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib-foo.stubs.source/android_common/metalava/myjavalib-foo.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib-foo.stubs.source/android_common/metalava/myjavalib-foo.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 `),
 		checkMergeZips(
@@ -1044,6 +1056,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib.srcjar"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
     },
@@ -1053,6 +1066,7 @@ java_sdk_library_import {
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source-stubs.srcjar -> sdk_library/public/myjavalib.srcjar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 		`),
 	)
@@ -1091,6 +1105,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         annotations: "sdk_library/public/myjavalib_annotations.zip",
         sdk_version: "current",
@@ -1100,6 +1115,7 @@ java_sdk_library_import {
 		checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_annotations.zip -> sdk_library/public/myjavalib_annotations.zip
 		`),
@@ -1145,6 +1161,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
     },
@@ -1153,6 +1170,7 @@ java_sdk_library_import {
 		checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 		`),
 		checkMergeZips(".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip"),
@@ -1196,6 +1214,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
     },
@@ -1203,6 +1222,7 @@ java_sdk_library_import {
         jars: ["sdk_library/system/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system/myjavalib_stub_sources"],
         current_api: "sdk_library/system/myjavalib.txt",
+        unstable_api: "sdk_library/system/myjavalib-unstable.txt",
         removed_api: "sdk_library/system/myjavalib-removed.txt",
         sdk_version: "system_current",
     },
@@ -1262,6 +1282,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "none",
     },
@@ -1270,6 +1291,7 @@ java_sdk_library_import {
 		checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 `),
 		checkMergeZips(
@@ -1310,6 +1332,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "module_current",
     },
@@ -1318,6 +1341,7 @@ java_sdk_library_import {
 		checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 `),
 		checkMergeZips(
@@ -1361,6 +1385,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
     },
@@ -1368,6 +1393,7 @@ java_sdk_library_import {
         jars: ["sdk_library/system/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system/myjavalib_stub_sources"],
         current_api: "sdk_library/system/myjavalib.txt",
+        unstable_api: "sdk_library/system/myjavalib-unstable.txt",
         removed_api: "sdk_library/system/myjavalib-removed.txt",
         sdk_version: "system_current",
     },
@@ -1376,9 +1402,11 @@ java_sdk_library_import {
 		checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 .intermediates/myjavalib.stubs.system/android_common/javac/myjavalib.stubs.system.jar -> sdk_library/system/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.system/android_common/metalava/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
+.intermediates/myjavalib.stubs.source.system/android_common/metalava/myjavalib.stubs.source.system_unstable.txt -> sdk_library/system/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source.system/android_common/metalava/myjavalib.stubs.source.system_removed.txt -> sdk_library/system/myjavalib-removed.txt
 `),
 		checkMergeZips(
@@ -1426,6 +1454,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
     },
@@ -1433,6 +1462,7 @@ java_sdk_library_import {
         jars: ["sdk_library/system/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system/myjavalib_stub_sources"],
         current_api: "sdk_library/system/myjavalib.txt",
+        unstable_api: "sdk_library/system/myjavalib-unstable.txt",
         removed_api: "sdk_library/system/myjavalib-removed.txt",
         sdk_version: "system_current",
     },
@@ -1440,6 +1470,7 @@ java_sdk_library_import {
         jars: ["sdk_library/module-lib/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/module-lib/myjavalib_stub_sources"],
         current_api: "sdk_library/module-lib/myjavalib.txt",
+        unstable_api: "sdk_library/module-lib/myjavalib-unstable.txt",
         removed_api: "sdk_library/module-lib/myjavalib-removed.txt",
         sdk_version: "module_current",
     },
@@ -1448,12 +1479,15 @@ java_sdk_library_import {
 		checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 .intermediates/myjavalib.stubs.system/android_common/javac/myjavalib.stubs.system.jar -> sdk_library/system/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.system/android_common/metalava/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
+.intermediates/myjavalib.stubs.source.system/android_common/metalava/myjavalib.stubs.source.system_unstable.txt -> sdk_library/system/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source.system/android_common/metalava/myjavalib.stubs.source.system_removed.txt -> sdk_library/system/myjavalib-removed.txt
 .intermediates/myjavalib.stubs.module_lib/android_common/javac/myjavalib.stubs.module_lib.jar -> sdk_library/module-lib/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.module_lib/android_common/metalava/myjavalib.stubs.source.module_lib_api.txt -> sdk_library/module-lib/myjavalib.txt
+.intermediates/myjavalib.stubs.source.module_lib/android_common/metalava/myjavalib.stubs.source.module_lib_unstable.txt -> sdk_library/module-lib/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source.module_lib/android_common/metalava/myjavalib.stubs.source.module_lib_removed.txt -> sdk_library/module-lib/myjavalib-removed.txt
 `),
 		checkMergeZips(
@@ -1499,6 +1533,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
     },
@@ -1506,6 +1541,7 @@ java_sdk_library_import {
         jars: ["sdk_library/system-server/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system-server/myjavalib_stub_sources"],
         current_api: "sdk_library/system-server/myjavalib.txt",
+        unstable_api: "sdk_library/system-server/myjavalib-unstable.txt",
         removed_api: "sdk_library/system-server/myjavalib-removed.txt",
         sdk_version: "system_server_current",
     },
@@ -1514,9 +1550,11 @@ java_sdk_library_import {
 		checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 .intermediates/myjavalib.stubs.system_server/android_common/javac/myjavalib.stubs.system_server.jar -> sdk_library/system-server/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.system_server/android_common/metalava/myjavalib.stubs.source.system_server_api.txt -> sdk_library/system-server/myjavalib.txt
+.intermediates/myjavalib.stubs.source.system_server/android_common/metalava/myjavalib.stubs.source.system_server_unstable.txt -> sdk_library/system-server/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source.system_server/android_common/metalava/myjavalib.stubs.source.system_server_removed.txt -> sdk_library/system-server/myjavalib-removed.txt
 `),
 		checkMergeZips(
@@ -1560,6 +1598,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
     },
@@ -1568,6 +1607,7 @@ java_sdk_library_import {
 		checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 `),
 		checkMergeZips(
@@ -1617,6 +1657,7 @@ java_sdk_library_import {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
+        unstable_api: "sdk_library/public/myjavalib-unstable.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
     },
@@ -1625,6 +1666,7 @@ java_sdk_library_import {
 		checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_unstable.txt -> sdk_library/public/myjavalib-unstable.txt
 .intermediates/myjavalib.stubs.source/android_common/metalava/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 docs/known_doctags -> doctags/docs/known_doctags
 `),

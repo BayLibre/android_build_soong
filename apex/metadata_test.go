@@ -49,6 +49,7 @@ func TestModulesSingleton(t *testing.T) {
 				jars: ["sdk_library/public/foo-stubs.jar"],
 				stub_srcs: ["sdk_library/public/foo_stub_sources"],
 				current_api: "sdk_library/public/foo.txt",
+				unstable_api: "sdk_library/public/foo-unstable.txt",
 				removed_api: "sdk_library/public/foo-removed.txt",
 				sdk_version: "current",
 			},

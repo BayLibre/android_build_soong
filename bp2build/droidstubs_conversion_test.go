@@ -95,10 +95,12 @@ func TestDroidstubsApiContributions(t *testing.T) {
 		Blueprint:            bp,
 		ExpectedBazelTargets: expectedBazelTargets,
 		Filesystem: map[string]string{
-			"api/current.txt":        "",
-			"api/removed.txt":        "",
-			"api/system-current.txt": "",
-			"api/system-removed.txt": "",
+			"api/current.txt":         "",
+			"api/unstable.txt":        "",
+			"api/removed.txt":         "",
+			"api/system-current.txt":  "",
+			"api/system-unstable.txt": "",
+			"api/system-removed.txt":  "",
 		},
 	})
 }

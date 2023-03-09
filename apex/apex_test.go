@@ -6663,17 +6663,22 @@ func TestLegacyAndroid10Support(t *testing.T) {
 }
 
 var filesForSdkLibrary = android.MockFS{
-	"api/current.txt":        nil,
-	"api/removed.txt":        nil,
-	"api/system-current.txt": nil,
-	"api/system-removed.txt": nil,
-	"api/test-current.txt":   nil,
-	"api/test-removed.txt":   nil,
+	"api/current.txt":         nil,
+	"api/unstable.txt":        nil,
+	"api/removed.txt":         nil,
+	"api/system-current.txt":  nil,
+	"api/system-unstable.txt": nil,
+	"api/system-removed.txt":  nil,
+	"api/test-current.txt":    nil,
+	"api/test-unstable.txt":   nil,
+	"api/test-removed.txt":    nil,
 
-	"100/public/api/foo.txt":         nil,
-	"100/public/api/foo-removed.txt": nil,
-	"100/system/api/foo.txt":         nil,
-	"100/system/api/foo-removed.txt": nil,
+	"100/public/api/foo.txt":          nil,
+	"100/public/api/foo-unstable.txt": nil,
+	"100/public/api/foo-removed.txt":  nil,
+	"100/system/api/foo.txt":          nil,
+	"100/system/api/foo-unstable.txt": nil,
+	"100/system/api/foo-removed.txt":  nil,
 
 	// For java_sdk_library_import
 	"a.jar": nil,
@@ -6857,9 +6862,10 @@ func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
 			system_modules: "none",
 		}
 `),
-			"source/a.java":          nil,
-			"source/api/current.txt": nil,
-			"source/api/removed.txt": nil,
+			"source/a.java":           nil,
+			"source/api/current.txt":  nil,
+			"source/api/unstable.txt": nil,
+			"source/api/removed.txt":  nil,
 			"source/Android.bp": []byte(`
 		package {
 			default_visibility: ["//visibility:private"],
