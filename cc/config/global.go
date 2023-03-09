@@ -241,12 +241,13 @@ var (
 		// New warnings to be fixed after clang-r475365
 		"-Wno-error=single-bit-bitfield-constant-conversion", // http://b/243965903
 		"-Wno-error=incompatible-function-pointer-types",     // http://b/257101299
-		"-Wno-error=enum-constexpr-conversion",               // http://b/243964282
+		"-Werror=enum-constexpr-conversion",                  // http://b/243964282
 	}
 
 	noOverride64GlobalCflags = []string{}
 
 	noOverrideExternalGlobalCflags = []string{
+		"-Wno-enum-constexpr-conversion",
 		"-Wno-sizeof-array-div",
 		"-Wno-unused-but-set-variable",
 		"-Wno-unused-but-set-parameter",
