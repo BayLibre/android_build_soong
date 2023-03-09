@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39fab2f6_492e93c1",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-03-09T19:00:42Z",
+      "side": 1,
+      "message": "Why do you check whether the api is valid in both sdkSpec.EffectiveVersion and again in the apiLevel.EffectiveVersion ?",
+      "revId": "fd878d4d6358e6326aaa4f4e947bfb2074d1a619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
