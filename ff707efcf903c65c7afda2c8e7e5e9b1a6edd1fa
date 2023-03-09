@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88200b8_d8f1adf9",
+        "filename": "python/python.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-09T03:09:46Z",
+      "side": 1,
+      "message": "nit: Since this can only be set via product_config and not via an environment variable, maybe we should explicitly add \"by setting .. in product config\"",
+      "range": {
+        "startLine": 270,
+        "startChar": 204,
+        "endLine": 270,
+        "endChar": 205
+      },
+      "revId": "ff707efcf903c65c7afda2c8e7e5e9b1a6edd1fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
