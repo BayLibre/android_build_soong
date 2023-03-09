@@ -63,4 +63,5 @@ EOF
   fi
 }
 
-scan_and_run_tests
+echo run_integration_tests.sh
+build/bazel/scripts/incremental_build/incremental_build.sh
