@@ -135,10 +135,12 @@ func TestAqueryMultiArchGenrule(t *testing.T) {
 `
 	data, err := JsonToActionGraphContainer(inputString)
 	if err != nil {
-		t.Error(err)
-		return
+		t.Fatal(err)
 	}
-	actualbuildStatements, actualDepsets, _ := AqueryBuildStatements(data, &metrics.EventHandler{})
+	actualbuildStatements, actualDepsets, err := AqueryBuildStatements(data, &metrics.EventHandler{})
+	if err != nil {
+		t.Fatalf("Unexpected error %q", err)
+	}
 	var expectedBuildStatements []*BuildStatement
 	for _, arch := range []string{"arm", "arm64", "x86", "x86_64"} {
 		expectedBuildStatements = append(expectedBuildStatements,
@@ -482,10 +484,12 @@ func TestTransitiveInputDepsets(t *testing.T) {
 
 	data, err := JsonToActionGraphContainer(inputString)
 	if err != nil {
-		t.Error(err)
-		return
+		t.Fatal(err)
 	}
-	actualbuildStatements, actualDepsets, _ := AqueryBuildStatements(data, &metrics.EventHandler{})
+	actualbuildStatements, actualDepsets, err := AqueryBuildStatements(data, &metrics.EventHandler{})
+	if err != nil {
+		t.Fatalf("Unexpected error %q", err)
+	}
 
 	expectedBuildStatements := []*BuildStatement{
 		&BuildStatement{
@@ -595,10 +599,12 @@ func TestBazelOutRemovalFromInputDepsets(t *testing.T) {
 	*/
 	data, err := JsonToActionGraphContainer(inputString)
 	if err != nil {
-		t.Error(err)
-		return
+		t.Fatal(err)
 	}
-	actualBuildStatements, actualDepsets, _ := AqueryBuildStatements(data, &metrics.EventHandler{})
+	actualBuildStatements, actualDepsets, err := AqueryBuildStatements(data, &metrics.EventHandler{})
+	if err != nil {
+		t.Fatalf("Unexpected error %q", err)
+	}
 	if len(actualDepsets) != 1 {
 		t.Errorf("expected 1 depset but found %#v", actualDepsets)
 		return
@@ -683,10 +689,12 @@ func TestBazelOutRemovalFromTransitiveInputDepsets(t *testing.T) {
 	*/
 	data, err := JsonToActionGraphContainer(inputString)
 	if err != nil {
-		t.Error(err)
-		return
+		t.Fatal(err)
 	}
-	actualBuildStatements, actualDepsets, _ := AqueryBuildStatements(data, &metrics.EventHandler{})
+	actualBuildStatements, actualDepsets, err := AqueryBuildStatements(data, &metrics.EventHandler{})
+	if err != nil {
+		t.Fatalf("Unexpected error %q", err)
+	}
 	if len(actualDepsets) != 0 {
 		t.Errorf("expected 0 depsets but found %#v", actualDepsets)
 		return

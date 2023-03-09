@@ -133,7 +133,7 @@ type aqueryArtifactHandler struct {
 	// may be an expensive operation.
 	depsetHashToArtifactPathsCache sync.Map
 	// Maps artifact ids to fully expanded paths.
-	artifactIdToPath map[artifactId]string
+	artifactIdToPath sync.Map // map[artifactId]string
 }
 
 // The tokens should be substituted with the value specified here, instead of the
@@ -163,13 +163,27 @@ func newAqueryHandler(aqueryResult *analysis_v2_proto.ActionGraphContainer) (*aq
 		return pathFragmentId(pf.Id)
 	})
 
-	artifactIdToPath := make(map[artifactId]string, len(aqueryResult.Artifacts))
-	for _, artifact := range aqueryResult.Artifacts {
-		artifactPath, err := expandPathFragment(pathFragmentId(artifact.PathFragmentId), pathFragments)
-		if err != nil {
-			return nil, err
-		}
-		artifactIdToPath[artifactId(artifact.Id)] = artifactPath
+	wg := sync.WaitGroup{}
+	var errOnce sync.Once
+	var err error
+
+	artifactIdToPath := sync.Map{} // make(map[artifactId]string, len(aqueryResult.Artifacts))
+	for _, a := range aqueryResult.Artifacts {
+		wg.Add(1)
+		go func(artifact *analysis_v2_proto.Artifact) {
+			artifactPath, e := expandPathFragment(pathFragmentId(artifact.PathFragmentId), pathFragments)
+			if e != nil {
+				errOnce.Do(func() {
+					err = e
+				})
+			}
+			artifactIdToPath.Store(artifactId(artifact.Id), artifactPath)
+			wg.Done()
+		}(a)
+	}
+	wg.Wait()
+	if err != nil {
+		return nil, err
 	}
 
 	// Map middleman artifact ContentHash to input artifact depset ID.
@@ -178,13 +192,18 @@ func newAqueryHandler(aqueryResult *analysis_v2_proto.ActionGraphContainer) (*aq
 	// for each other action which has input [baz_middleman], we add [foo, bar] to the inputs for
 	// that action instead.
 	middlemanIdToDepsetIds := map[artifactId][]uint32{}
-	for _, actionEntry := range aqueryResult.Actions {
-		if actionEntry.Mnemonic == middlemanMnemonic {
-			for _, outputId := range actionEntry.OutputIds {
-				middlemanIdToDepsetIds[artifactId(outputId)] = actionEntry.InputDepSetIds
+	for _, a := range aqueryResult.Actions {
+		wg.Add(1)
+		func(actionEntry *analysis_v2_proto.Action) {
+			if actionEntry.Mnemonic == middlemanMnemonic {
+				for _, outputId := range actionEntry.OutputIds {
+					middlemanIdToDepsetIds[artifactId(outputId)] = actionEntry.InputDepSetIds
+				}
 			}
-		}
+			wg.Done()
+		}(a)
 	}
+	wg.Wait()
 
 	depsetIdToDepset := indexBy(aqueryResult.DepSetOfFiles, func(d *analysis_v2_proto.DepSetOfFiles) depsetId {
 		return depsetId(d.Id)
@@ -219,10 +238,11 @@ func (a *aqueryArtifactHandler) populateDepsetMaps(depset *analysis_v2_proto.Dep
 	directArtifactPaths := make([]string, 0, len(depset.DirectArtifactIds))
 	for _, id := range depset.DirectArtifactIds {
 		aId := artifactId(id)
-		path, pathExists := a.artifactIdToPath[aId]
+		rawPath, pathExists := a.artifactIdToPath.Load(aId)
 		if !pathExists {
 			return nil, fmt.Errorf("undefined input artifactId %d", aId)
 		}
+		path := rawPath.(string)
 		// Filter out any inputs which are universally dropped, and swap middleman
 		// artifacts with their corresponding depsets.
 		if depsetsToUse, isMiddleman := middlemanIdToDepsetIds[aId]; isMiddleman {
@@ -583,11 +603,12 @@ func (a *aqueryArtifactHandler) symlinkActionBuildStatement(actionEntry *analysi
 
 func (a *aqueryArtifactHandler) getOutputPaths(actionEntry *analysis_v2_proto.Action) (outputPaths []string, depfile *string, err error) {
 	for _, outputId := range actionEntry.OutputIds {
-		outputPath, exists := a.artifactIdToPath[artifactId(outputId)]
+		rawOutputPath, exists := a.artifactIdToPath.Load(artifactId(outputId))
 		if !exists {
 			err = fmt.Errorf("undefined outputId %d", outputId)
 			return
 		}
+		outputPath := rawOutputPath.(string)
 		ext := filepath.Ext(outputPath)
 		if ext == ".d" {
 			if depfile != nil {
