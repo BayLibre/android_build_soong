@@ -68,8 +68,7 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 		ctx.BottomUp("afdo", afdoMutator).Parallel()
 		ctx.BottomUp("lto", ltoMutator).Parallel()
 
-		ctx.BottomUp("check_linktype", checkLinkTypeMutator).Parallel()
-		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries).Parallel()
+		ctx.BottomUp("check_cc_deps", checkDoubleLoadableLibraries).Parallel()
 	})
 
 	ctx.FinalDepsMutators(func(ctx android.RegisterMutatorsContext) {
@@ -2830,72 +2829,96 @@ func checkLinkType(ctx android.BaseModuleContext, from LinkableInterface, to Lin
 	}
 }
 
-func checkLinkTypeMutator(ctx android.BottomUpMutatorContext) {
-	if c, ok := ctx.Module().(*Module); ok {
-		ctx.VisitDirectDeps(func(dep android.Module) {
-			depTag := ctx.OtherModuleDependencyTag(dep)
-			ccDep, ok := dep.(LinkableInterface)
-			if ok {
-				checkLinkType(ctx, c, ccDep, depTag)
-			}
-		})
-	}
+type DoubleLoadableInfo struct {
+	Library       string
+	PathToLibrary []string
 }
+
+var DoubleLoadableProvider = blueprint.NewMutatorProvider(DoubleLoadableInfo{}, "check_cc_deps")
 
 // Tests whether the dependent library is okay to be double loaded inside a single process.
 // If a library has a vendor variant and is a (transitive) dependency of an LLNDK library,
 // it is subject to be double loaded. Such lib should be explicitly marked as double_loadable: true
 // or as vndk-sp (vndk: { enabled: true, support_system_process: true}).
-func checkDoubleLoadableLibraries(ctx android.TopDownMutatorContext) {
-	check := func(child, parent android.Module) bool {
+func checkDoubleLoadableLibraries(ctx android.BottomUpMutatorContext) {
+	module, ok := ctx.Module().(*Module)
+	if !ok {
+		return
+	}
+
+	var nonDoubleLoadableInfo *DoubleLoadableInfo
+
+	check := func(child android.Module) {
+		depTag := ctx.OtherModuleDependencyTag(child)
+		ccDep, ok := child.(LinkableInterface)
+		if ok {
+			checkLinkType(ctx, module, ccDep, depTag)
+		}
+
+		if nonDoubleLoadableInfo != nil {
+			return
+		}
+
 		to, ok := child.(*Module)
 		if !ok {
-			return false
+			return
 		}
 
 		if lib, ok := to.linker.(*libraryDecorator); !ok || !lib.shared() {
-			return false
+			return
 		}
 
 		// These dependencies are not excercised at runtime. Tracking these will give us
 		// false negative, so skip.
-		depTag := ctx.OtherModuleDependencyTag(child)
 		if IsHeaderDepTag(depTag) {
-			return false
+			return
 		}
 		if depTag == staticVariantTag {
-			return false
+			return
 		}
 		if depTag == stubImplDepTag {
-			return false
+			return
 		}
 
-		// Even if target lib has no vendor variant, keep checking dependency
-		// graph in case it depends on vendor_available or product_available
-		// but not double_loadable transtively.
-		if !to.HasNonSystemVariants() {
-			return true
+		if ctx.OtherModuleHasProvider(to, DoubleLoadableProvider) {
+			p := ctx.OtherModuleProvider(to, DoubleLoadableProvider)
+			info, ok := p.(DoubleLoadableInfo)
+			if ok {
+				nonDoubleLoadableInfo = &info
+			}
 		}
-
-		// The happy path. Keep tracking dependencies until we hit a non double-loadable
-		// one.
-		if Bool(to.VendorProperties.Double_loadable) {
-			return true
-		}
-
-		if to.IsVndkSp() || to.IsLlndk() {
-			return false
-		}
-
-		ctx.ModuleErrorf("links a library %q which is not LL-NDK, "+
-			"VNDK-SP, or explicitly marked as 'double_loadable:true'. "+
-			"Dependency list: %s", ctx.OtherModuleName(to), ctx.GetPathString(false))
-		return false
 	}
-	if module, ok := ctx.Module().(*Module); ok {
-		if lib, ok := module.linker.(*libraryDecorator); ok && lib.shared() {
-			if lib.hasLLNDKStubs() {
-				ctx.WalkDeps(check)
+
+	if lib, ok := module.linker.(*libraryDecorator); ok && lib.shared() {
+		if lib.hasLLNDKStubs() {
+			ctx.VisitDirectDeps(check)
+			if nonDoubleLoadableInfo != nil {
+				ctx.ModuleErrorf("links a library %q which is not LL-NDK, "+
+					"VNDK-SP, or explicitly marked as 'double_loadable:true'. "+
+					"Dependency list: %s", nonDoubleLoadableInfo.Library, nonDoubleLoadableInfo.PathToLibrary)
+			}
+		} else {
+			if module.HasNonSystemVariants() && !proptools.Bool(module.VendorProperties.Double_loadable) {
+				if !(module.IsVndkSp() || module.IsLlndk()) {
+					ctx.SetProvider(DoubleLoadableProvider, DoubleLoadableInfo{
+						Library: ctx.ModuleName(),
+					})
+				}
+				nonDoubleLoadableInfo = &DoubleLoadableInfo{}
+				ctx.VisitDirectDeps(check)
+			} else {
+				// Even if target lib has no vendor variant, keep checking dependency
+				// graph in case it depends on vendor_available or product_available
+				// but not double_loadable transtively.
+				// The happy path. Keep tracking dependencies until we hit a non double-loadable
+				// one.
+				ctx.VisitDirectDeps(check)
+				if nonDoubleLoadableInfo != nil {
+					ctx.SetProvider(DoubleLoadableProvider, DoubleLoadableInfo{
+						Library:       nonDoubleLoadableInfo.Library,
+						PathToLibrary: append([]string{ctx.ModuleName()}, nonDoubleLoadableInfo.PathToLibrary...),
+					})
+				}
 			}
 		}
 	}
