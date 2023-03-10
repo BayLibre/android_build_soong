@@ -1286,17 +1286,17 @@ func TestDoubleLoadbleDep(t *testing.T) {
 func TestDoubleLoadableDepError(t *testing.T) {
 	t.Parallel()
 	// Check whether an error is emitted when a LLNDK depends on a non-double_loadable VNDK lib.
-	testCcError(t, "module \".*\" variant \".*\": link.* \".*\" which is not LL-NDK, VNDK-SP, .*double_loadable", `
+	testCcError(t, "library \"vndklibnondoubleloadable\".* which is not LL-NDK, VNDK-SP, .*double_loadable", `
 		cc_library {
 			name: "libllndk",
-			shared_libs: ["libnondoubleloadable"],
+			shared_libs: ["vndklibnondoubleloadable"],
 			llndk: {
 				symbol_file: "libllndk.map.txt",
 			}
 		}
 
 		cc_library {
-			name: "libnondoubleloadable",
+			name: "vndklibnondoubleloadable",
 			vendor_available: true,
 			product_available: true,
 			vndk: {
@@ -1306,24 +1306,24 @@ func TestDoubleLoadableDepError(t *testing.T) {
 	`)
 
 	// Check whether an error is emitted when a LLNDK depends on a non-double_loadable vendor_available lib.
-	testCcError(t, "module \".*\" variant \".*\": link.* \".*\" which is not LL-NDK, VNDK-SP, .*double_loadable", `
+	testCcError(t, "library \"v\".* which is not LL-NDK, VNDK-SP, .*double_loadable", `
 		cc_library {
 			name: "libllndk",
 			no_libcrt: true,
-			shared_libs: ["libnondoubleloadable"],
+			shared_libs: ["v"],
 			llndk: {
 				symbol_file: "libllndk.map.txt",
 			}
 		}
 
 		cc_library {
-			name: "libnondoubleloadable",
+			name: "v",
 			vendor_available: true,
 		}
 	`)
 
 	// Check whether an error is emitted when a LLNDK depends on a non-double_loadable indirectly.
-	testCcError(t, "module \".*\" variant \".*\": link.* \".*\" which is not LL-NDK, VNDK-SP, .*double_loadable", `
+	testCcError(t, "library \"libvendoravailable\".* which is not LL-NDK, VNDK-SP, .*double_loadable", `
 		cc_library {
 			name: "libllndk",
 			shared_libs: ["libcoreonly"],
@@ -1354,10 +1354,15 @@ func TestDoubleLoadableDepError(t *testing.T) {
 		}
 		cc_library {
 			name: "libllndk",
-			shared_libs: ["libnondoubleloadable"],
+			shared_libs: ["bar"],
 			llndk: {
 				symbol_file: "libllndk.map.txt",
 			}
+		}
+		cc_library {
+			name: "bar",
+			shared_libs: ["libnondoubleloadable"],
+			vendor_available: false,
 		}
 		cc_library {
 			name: "libnondoubleloadable",
