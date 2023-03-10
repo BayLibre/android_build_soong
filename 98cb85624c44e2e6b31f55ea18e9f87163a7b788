@@ -16,6 +16,24 @@
       "message": "Could you please add a presubmit smoke test to build/soong and/or build/bazel so risk of breaking stuff like this is lower?",
       "revId": "98cb85624c44e2e6b31f55ea18e9f87163a7b788",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6147247a_760f5b3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-10T02:38:08Z",
+      "side": 1,
+      "message": "That is a good idea. I have added an integration test in aosp/2481576",
+      "parentUuid": "1e0257f1_9fcd4625",
+      "revId": "98cb85624c44e2e6b31f55ea18e9f87163a7b788",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
