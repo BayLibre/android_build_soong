@@ -131,31 +131,32 @@ func (afdo *afdo) flags(ctx ModuleContext, flags Flags) Flags {
 }
 
 // Propagate afdo requirements down from binaries
-func afdoDepsMutator(mctx android.TopDownMutatorContext) {
-	if m, ok := mctx.Module().(*Module); ok && m.afdo.AfdoEnabled() {
-		afdoTarget := *m.afdo.Properties.AfdoTarget
-		mctx.WalkDeps(func(dep android.Module, parent android.Module) bool {
-			tag := mctx.OtherModuleDependencyTag(dep)
-			libTag, isLibTag := tag.(libraryDependencyTag)
-
-			// Do not recurse down non-static dependencies
-			if isLibTag {
-				if !libTag.static() {
-					return false
-				}
-			} else {
-				if tag != objDepTag && tag != reuseObjTag {
-					return false
-				}
-			}
-
-			if dep, ok := dep.(*Module); ok {
-				dep.afdo.Properties.AfdoDeps = append(dep.afdo.Properties.AfdoDeps, afdoTarget)
-			}
-
-			return true
-		})
+func (m *Module) propagateAfdoToDeps(mctx android.TopDownMutatorContext) {
+	if !m.afdo.AfdoEnabled() {
+		return
 	}
+	afdoTarget := *m.afdo.Properties.AfdoTarget
+	mctx.WalkDeps(func(dep android.Module, parent android.Module) bool {
+		tag := mctx.OtherModuleDependencyTag(dep)
+		libTag, isLibTag := tag.(libraryDependencyTag)
+
+		// Do not recurse down non-static dependencies
+		if isLibTag {
+			if !libTag.static() {
+				return false
+			}
+		} else {
+			if tag != objDepTag && tag != reuseObjTag {
+				return false
+			}
+		}
+
+		if dep, ok := dep.(*Module); ok {
+			dep.afdo.Properties.AfdoDeps = append(dep.afdo.Properties.AfdoDeps, afdoTarget)
+		}
+
+		return true
+	})
 }
 
 // Create afdo variants for modules that need them

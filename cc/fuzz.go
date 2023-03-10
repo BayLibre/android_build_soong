@@ -56,13 +56,12 @@ func (fuzzer *fuzzer) props() []interface{} {
 	return []interface{}{&fuzzer.Properties}
 }
 
-func fuzzMutatorDeps(mctx android.TopDownMutatorContext) {
-	currentModule, ok := mctx.Module().(*Module)
-	if !ok {
+func (m *Module) propagateFuzzFramework(mctx android.TopDownMutatorContext) {
+	if m.fuzzer == nil {
 		return
 	}
 
-	if currentModule.fuzzer == nil {
+	if m.fuzzer.Properties.FuzzFramework == "" {
 		return
 	}
 
@@ -71,13 +70,10 @@ func fuzzMutatorDeps(mctx android.TopDownMutatorContext) {
 		if !ok {
 			return false
 		}
+		// TODO we should determine if this is intended to propagate to _all_ cc deps or limited to only
+		// those of specific types (e.g. shared, static, data)
 
 		if c.sanitize == nil {
-			return false
-		}
-
-		isFuzzerPointer := c.sanitize.getSanitizerBoolPtr(Fuzzer)
-		if isFuzzerPointer == nil || !*isFuzzerPointer {
 			return false
 		}
 
@@ -85,7 +81,13 @@ func fuzzMutatorDeps(mctx android.TopDownMutatorContext) {
 			return false
 		}
 
-		c.fuzzer.Properties.FuzzFramework = currentModule.fuzzer.Properties.FuzzFramework
+		if !c.sanitize.isSanitizerEnabled(Fuzzer) {
+			return false
+		}
+
+		// TODO if there are conflicting fuzz frameworks from rdeps this may be non-deterministic
+		// we should followup to with fuzzing team to understand the requirements
+		c.fuzzer.Properties.FuzzFramework = m.fuzzer.Properties.FuzzFramework
 		return true
 	})
 }
