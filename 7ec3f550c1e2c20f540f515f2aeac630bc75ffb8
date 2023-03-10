@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d75421c_058ab09d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-03-10T21:09:03Z",
+      "side": 1,
+      "message": "Can we abandon this change as well? Thanks!",
+      "revId": "7ec3f550c1e2c20f540f515f2aeac630bc75ffb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
