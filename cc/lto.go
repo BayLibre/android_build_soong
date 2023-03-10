@@ -175,48 +175,58 @@ func GlobalThinLTO(ctx android.BaseModuleContext) bool {
 }
 
 // Propagate lto requirements down from binaries
-func ltoDepsMutator(mctx android.TopDownMutatorContext) {
+func (m *Module) propagateLtoToDeps(mctx android.TopDownMutatorContext) {
+	// if this module does not support lto, stop now
+	if m.lto == nil {
+		return
+	}
+
+	full := m.lto.FullLTO()
+	thin := m.lto.ThinLTO()
+	if full && thin {
+		mctx.PropertyErrorf("LTO", "FullLTO and ThinLTO are mutually exclusive")
+	}
+
+	// combine whether this module set a value and whether one of its rdeps did since we need to
+	// propagate that information in either case
+	full = full || m.lto.Properties.FullDep
+	thin = thin || m.lto.Properties.ThinDep
+	never := m.lto.Never() || m.lto.Properties.NoLtoDep
+
+	// if this module doesn't set any lto properties and none of its rdeps' properties were
+	// propagated to it, we don't need to propagate anything to its dependencies
+	if !full && !thin && !never {
+		return
+	}
+
 	globalThinLTO := GlobalThinLTO(mctx)
 
-	if m, ok := mctx.Module().(*Module); ok {
-		full := m.lto.FullLTO()
-		thin := m.lto.ThinLTO()
-		never := m.lto.Never()
-		if full && thin {
-			mctx.PropertyErrorf("LTO", "FullLTO and ThinLTO are mutually exclusive")
+	mctx.VisitDirectDeps(func(dep android.Module) {
+		tag := mctx.OtherModuleDependencyTag(dep)
+		libTag, isLibTag := tag.(libraryDependencyTag)
+		// Do not propagate to non-static dependencies
+		if isLibTag {
+			if !libTag.static() {
+				return
+			}
+		} else {
+			if tag != objDepTag && tag != reuseObjTag {
+				return
+			}
 		}
 
-		mctx.WalkDeps(func(dep android.Module, parent android.Module) bool {
-			tag := mctx.OtherModuleDependencyTag(dep)
-			libTag, isLibTag := tag.(libraryDependencyTag)
-
-			// Do not recurse down non-static dependencies
-			if isLibTag {
-				if !libTag.static() {
-					return false
-				}
-			} else {
-				if tag != objDepTag && tag != reuseObjTag {
-					return false
-				}
+		if dep, ok := dep.(*Module); ok {
+			if full && !dep.lto.FullLTO() {
+				dep.lto.Properties.FullDep = true
 			}
-
-			if dep, ok := dep.(*Module); ok {
-				if full && !dep.lto.FullLTO() {
-					dep.lto.Properties.FullDep = true
-				}
-				if !globalThinLTO && thin && !dep.lto.ThinLTO() {
-					dep.lto.Properties.ThinDep = true
-				}
-				if globalThinLTO && never && !dep.lto.Never() {
-					dep.lto.Properties.NoLtoDep = true
-				}
+			if !globalThinLTO && thin && !dep.lto.ThinLTO() {
+				dep.lto.Properties.ThinDep = true
 			}
-
-			// Recursively walk static dependencies
-			return true
-		})
-	}
+			if globalThinLTO && never && !dep.lto.Never() {
+				dep.lto.Properties.NoLtoDep = true
+			}
+		}
+	})
 }
 
 // Create lto variants for modules that need them

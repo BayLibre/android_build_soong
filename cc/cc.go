@@ -62,14 +62,10 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 		ctx.TopDown("sanitize_runtime_deps", sanitizerRuntimeDepsMutator).Parallel()
 		ctx.BottomUp("sanitize_runtime", sanitizerRuntimeMutator).Parallel()
 
-		ctx.TopDown("fuzz_deps", fuzzMutatorDeps)
+		ctx.TopDown("propagate_cc_to_deps", propagateToCcDepsMutator)
 
 		ctx.BottomUp("coverage", coverageMutator).Parallel()
-
-		ctx.TopDown("afdo_deps", afdoDepsMutator)
 		ctx.BottomUp("afdo", afdoMutator).Parallel()
-
-		ctx.TopDown("lto_deps", ltoDepsMutator)
 		ctx.BottomUp("lto", ltoMutator).Parallel()
 
 		ctx.BottomUp("check_linktype", checkLinkTypeMutator).Parallel()
@@ -82,6 +78,17 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 	})
 
 	ctx.RegisterSingletonType("kythe_extract_all", kytheExtractAllFactory)
+}
+
+func propagateToCcDepsMutator(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Module)
+	if !ok {
+		return
+	}
+
+	m.propagateFuzzFramework(ctx)
+	m.propagateAfdoToDeps(ctx)
+	m.propagateLtoToDeps(ctx)
 }
 
 // Deps is a struct containing module names of dependencies, separated by the kind of dependency.

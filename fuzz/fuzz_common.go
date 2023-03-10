@@ -373,7 +373,11 @@ type FuzzPackagedModule struct {
 	DataIntermediateDir   android.Path
 }
 
-func GetFramework(ctx android.LoadHookContext, lang Lang) Framework {
+type ModuleErrorContext interface {
+	ModuleErrorf(fmt string, args ...interface{})
+}
+
+func GetFramework(ctx ModuleErrorContext, lang Lang) Framework {
 	framework := ctx.Config().Getenv("FUZZ_FRAMEWORK")
 
 	if lang == Cc {

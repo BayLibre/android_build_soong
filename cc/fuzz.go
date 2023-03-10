@@ -18,6 +18,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"sync"
 
 	"github.com/google/blueprint/proptools"
 
@@ -56,13 +57,16 @@ func (fuzzer *fuzzer) props() []interface{} {
 	return []interface{}{&fuzzer.Properties}
 }
 
-func fuzzMutatorDeps(mctx android.TopDownMutatorContext) {
-	currentModule, ok := mctx.Module().(*Module)
-	if !ok {
+func (m *Module) propagateFuzzFramework(mctx android.TopDownMutatorContext) {
+	if !ctx.Module().Enabled() {
 		return
 	}
 
-	if currentModule.fuzzer == nil {
+	if m.fuzzer == nil {
+		return
+	}
+
+	if m.fuzzer.Properties.FuzzFramework == "" {
 		return
 	}
 
@@ -72,12 +76,10 @@ func fuzzMutatorDeps(mctx android.TopDownMutatorContext) {
 			return false
 		}
 
-		if c.sanitize == nil {
-			return false
-		}
+		// TODO we should determine if this is intended to propagate to _all_ cc deps or limited to only
+		// those of specific types (e.g. shared, static, data)
 
-		isFuzzerPointer := c.sanitize.getSanitizerBoolPtr(Fuzzer)
-		if isFuzzerPointer == nil || !*isFuzzerPointer {
+		if c.sanitize == nil {
 			return false
 		}
 
@@ -85,7 +87,11 @@ func fuzzMutatorDeps(mctx android.TopDownMutatorContext) {
 			return false
 		}
 
-		c.fuzzer.Properties.FuzzFramework = currentModule.fuzzer.Properties.FuzzFramework
+		if !c.sanitize.isSanitizerEnabled(Fuzzer) {
+			return false
+		}
+
+		c.fuzzer.Properties.FuzzFramework = fuzzFramework
 		return true
 	})
 }
@@ -295,6 +301,11 @@ func PackageFuzzModule(ctx android.ModuleContext, fuzzPackagedModule fuzz.FuzzPa
 	return fuzzPackagedModule
 }
 
+var (
+	frameworkOnce sync.Once
+	fuzzFramework fuzz.Framework
+)
+
 func NewFuzzer(hod android.HostOrDeviceSupported) *Module {
 	module, binary := newBinary(hod, false)
 	baseInstallerPath := "fuzz"
@@ -332,16 +343,19 @@ func NewFuzzer(hod android.HostOrDeviceSupported) *Module {
 		extraProps.Target.Linux_bionic.Enabled = BoolPtr(false)
 		ctx.AppendProperties(&extraProps)
 
-		targetFramework := fuzz.GetFramework(ctx, fuzz.Cc)
-		if !fuzz.IsValidFrameworkForModule(targetFramework, fuzz.Cc, fuzzBin.fuzzPackagedModule.FuzzProperties.Fuzzing_frameworks) {
+		frameworkOnce.Do(func() {
+			fuzzFramework = fuzz.GetFramework(ctx, fuzz.Cc)
+		})
+
+		if !fuzz.IsValidFrameworkForModule(fuzzFramework, fuzz.Cc, fuzzBin.fuzzPackagedModule.FuzzProperties.Fuzzing_frameworks) {
 			ctx.Module().Disable()
 			return
 		}
 
 		if targetFramework == fuzz.AFL {
 			fuzzBin.baseCompiler.Properties.Srcs = append(fuzzBin.baseCompiler.Properties.Srcs, ":aflpp_driver", ":afl-compiler-rt")
-			module.fuzzer.Properties.FuzzFramework = fuzz.AFL
 		}
+		module.fuzzer.Properties.FuzzFramework = fuzzFramework
 	})
 
 	return module
