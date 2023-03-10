@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eedab985_c0288a15",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-03-10T21:58:15Z",
+      "side": 1,
+      "message": "Nit - spelling.",
+      "range": {
+        "startLine": 360,
+        "startChar": 59,
+        "endLine": 360,
+        "endChar": 68
+      },
+      "revId": "64ba1ecf8d525f08094a73f6b66734e87a9b7ede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
