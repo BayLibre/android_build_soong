@@ -16,6 +16,24 @@
       "message": "Is this still needed?",
       "revId": "f79b210ddf3e516e7acf4f791e3b023556349450",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d0a113b_e9ea9758",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2023-03-11T00:49:09Z",
+      "side": 1,
+      "message": "yes. see https://android-review.git.corp.google.com/c/platform/build/soong/+/2212777/comments/3b00c0bc_1c6e149f",
+      "parentUuid": "78997130_0c89fc53",
+      "revId": "f79b210ddf3e516e7acf4f791e3b023556349450",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
