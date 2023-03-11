@@ -16,6 +16,24 @@
       "message": "Is this still needed?",
       "revId": "1e4f899c1d2863d3b5e25a5fbb421426d49243de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e0761b3_3cfab2d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2023-03-11T00:48:42Z",
+      "side": 1,
+      "message": "yes, sadly. the mcpu option we use causes some loop to get excessively unrolled, which makes the reachability analysis give up.\n\none fix would be to bump the limit of basic blocks the reachability analysis looks at for fullmte builds.",
+      "parentUuid": "3b00c0bc_1c6e149f",
+      "revId": "1e4f899c1d2863d3b5e25a5fbb421426d49243de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
