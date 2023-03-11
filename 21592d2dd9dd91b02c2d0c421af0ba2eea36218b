@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d3bcac_d894ffdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-03-11T01:31:52Z",
+      "side": 1,
+      "message": "Nice. I believe Bazel caches the credentials and uses a TTL to avoid checking on every call. This could be a future optimization to save the remaining 400ms IF not too tricky to implement.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "21592d2dd9dd91b02c2d0c421af0ba2eea36218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f474107e_ae8dadf7",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-03-11T01:31:52Z",
+      "side": 1,
+      "message": "Is the intention to keep retrying when `false`. If not you may want to use a tri-state variable or memoize the function.",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "21592d2dd9dd91b02c2d0c421af0ba2eea36218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44486625_640aac94",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-03-11T01:31:52Z",
+      "side": 1,
+      "message": "Invert the condition to return early and reduce nesting. See go/early-return.",
+      "range": {
+        "startLine": 1351,
+        "startChar": 5,
+        "endLine": 1351,
+        "endChar": 30
+      },
+      "revId": "21592d2dd9dd91b02c2d0c421af0ba2eea36218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
