@@ -1678,6 +1678,18 @@ func (c *deviceConfig) RecoverySnapshotModules() map[string]bool {
 	return c.config.productVariables.RecoverySnapshotModules
 }
 
+func (c *config) BuildWithPartialArtifact() bool {
+	return c.productVariables.BuildWithPartialArtifact
+}
+
+func (c *config) DownloadablePaths() []string {
+	return c.productVariables.DownloadablePaths
+}
+
+func (c *config) ExcludeDownloadablePaths() []string {
+	return c.productVariables.ExcludeDownloadablePaths
+}
+
 func createDirsMap(previous map[string]bool, dirs []string) (map[string]bool, error) {
 	var ret = make(map[string]bool)
 	for _, dir := range dirs {
