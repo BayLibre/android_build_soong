@@ -109,9 +109,9 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, moduleDir st
 		case "lib64":
 			aName = aName + ":64"
 		}
-		if !android.InList(aName, moduleNames) {
+		/*if !android.InList(aName, moduleNames) {
 			moduleNames = append(moduleNames, aName)
-		}
+		}*/
 
 		if linkToSystemLib {
 			// No need to copy the file since it's linked to the system file
