@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ae8e5f8_9603711d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2023-03-13T05:59:23Z",
+      "side": 1,
+      "message": "eah the call does return a expiration date so we could do a TTL.\nI\u0027ll look at that after this lands.",
+      "parentUuid": "43d3bcac_d894ffdb",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "21592d2dd9dd91b02c2d0c421af0ba2eea36218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f474107e_ae8dadf7",
         "filename": "ui/build/config.go",
         "patchSetId": 3
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d18ad97c_6521e2d4",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2023-03-13T05:59:23Z",
+      "side": 1,
+      "message": "yup - I don\u0027t want to break anywhere in the code that waits/or retries if the creds check fails.",
+      "parentUuid": "f474107e_ae8dadf7",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "21592d2dd9dd91b02c2d0c421af0ba2eea36218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44486625_640aac94",
         "filename": "ui/build/config.go",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-11T01:31:52Z",
       "side": 1,
       "message": "Invert the condition to return early and reduce nesting. See go/early-return.",
+      "range": {
+        "startLine": 1351,
+        "startChar": 5,
+        "endLine": 1351,
+        "endChar": 30
+      },
+      "revId": "21592d2dd9dd91b02c2d0c421af0ba2eea36218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5703ee_cf7c3069",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2023-03-13T05:59:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44486625_640aac94",
       "range": {
         "startLine": 1351,
         "startChar": 5,
