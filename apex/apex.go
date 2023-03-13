@@ -491,6 +491,9 @@ type apexBundle struct {
 
 	// Collect the module directory for IDE info in java/jdeps.go.
 	modulePaths []string
+
+	// Whether to skip installing symbols for this APEX or not.
+	skipSymbol bool
 }
 
 // apexFileClass represents a type of file that can be included in APEX.
@@ -2572,6 +2575,8 @@ func (a *apexBundle) shouldCheckDuplicate(ctx android.ModuleContext) bool {
 // 3) some fields in apexBundle struct are configured
 // 4) generate the build rules to create the APEX. This is mostly done in builder.go.
 func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	a.skipSymbol = ctx.Config().BuildWithPartialArtifact()
+
 	////////////////////////////////////////////////////////////////////////////////////////////
 	// 1) do some validity checks such as apex_available, min_sdk_version, etc.
 	if !a.commonBuildActions(ctx) {
