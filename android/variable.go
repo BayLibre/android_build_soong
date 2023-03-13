@@ -464,6 +464,10 @@ type productVariables struct {
 
 	IncludeTags    []string `json:",omitempty"`
 	SourceRootDirs []string `json:",omitempty"`
+
+	BuildWithPartialArtifact bool     `json:",omitempty"`
+	DownloadablePaths        []string `json:",omitempty"`
+	ExcludeDownloadablePaths []string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
