@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "760c57fe_6f7105e3",
+        "filename": "android/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-13T15:18:28Z",
+      "side": 1,
+      "message": "can you move this to `testSrcs`?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 28
+      },
+      "revId": "401458eca5148a46287b3d8b29d71b439f9f56c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
