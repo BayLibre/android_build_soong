@@ -16,6 +16,24 @@
       "message": "Unless anyone has any objections I am going to submit this change on February 15th assuming that it passes presubmit.\n\nIf you don\u0027t want this change submitted then mark it as CR-2 so I can\u0027t miss any comments.",
       "revId": "46032f00e3e9b719e0a8f246841ceba19262507b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c25951_349939b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-13T13:51:21Z",
+      "side": 1,
+      "message": "Are there still plans to submit this change?",
+      "parentUuid": "5c702f78_3e2df731",
+      "revId": "46032f00e3e9b719e0a8f246841ceba19262507b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
