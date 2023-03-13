@@ -109,7 +109,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, moduleDir st
 		case "lib64":
 			aName = aName + ":64"
 		}
-		if !android.InList(aName, moduleNames) {
+		if !a.skipRequiredDependencies && !android.InList(aName, moduleNames) {
 			moduleNames = append(moduleNames, aName)
 		}
 
