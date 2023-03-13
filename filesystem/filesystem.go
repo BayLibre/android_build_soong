@@ -485,6 +485,12 @@ func (f *filesystem) SignedOutputPath() android.Path {
 // for symbol lookup by imitating "activated" paths.
 func (f *filesystem) gatherFilteredPackagingSpecs(ctx android.ModuleContext) map[string]android.PackagingSpec {
 	specs := f.PackagingBase.GatherPackagingSpecs(ctx)
+	println("[ioffe] gatherFilteredPackagingSpec for ", ctx.ModuleName())
+	if ctx.ModuleName() == "microdroid" {
+		for k, _ := range specs {
+			println("[ioffe] ", k)
+		}
+	}
 	if f.filterPackagingSpecs != nil {
 		f.filterPackagingSpecs(specs)
 	}

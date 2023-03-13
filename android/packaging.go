@@ -223,12 +223,16 @@ func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.Dep
 // See PackageModule.GatherPackagingSpecs
 func (p *PackagingBase) GatherPackagingSpecs(ctx ModuleContext) map[string]PackagingSpec {
 	m := make(map[string]PackagingSpec)
+	println("[ioffe] GatherPackagingSpecs for ", ctx.ModuleName())
 	ctx.VisitDirectDeps(func(child Module) {
+		println("	[ioffe] GatherPackagingSpecs child ", child.String())
 		if pi, ok := ctx.OtherModuleDependencyTag(child).(PackagingItem); !ok || !pi.IsPackagingItem() {
 			return
 		}
+		println("	[ioffe] GatherPackagingSpecs child ", child.String(), " proceeding!")
 		for _, ps := range child.TransitivePackagingSpecs() {
 			if _, ok := m[ps.relPathInPackage]; !ok {
+				println("		[ioffe] GatherPackagingSpecs adding ", ps.relPathInPackage)
 				m[ps.relPathInPackage] = ps
 			}
 		}
