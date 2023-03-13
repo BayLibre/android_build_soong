@@ -827,13 +827,14 @@ func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 	if Bool(sanProps.Memtag_stack) {
 		flags.Local.CFlags = append(flags.Local.CFlags, memtagStackCommonFlags...)
+<<<<<<< PATCH SET (8a9af6 Re-enable stack frame size errors)
+		flags.Local.CFlags = append(flags.Local.CFlags, "-dom-tree-reachability-max-bbs-to-explore=128")
+=======
 		// TODO(fmayer): remove -Wno-error once https://reviews.llvm.org/D127917 is in Android toolchain.
 		flags.Local.CFlags = append(flags.Local.CFlags, "-Wno-error=frame-larger-than", "-mllvm", "-dom-tree-reachability-max-bbs-to-explore=128")
+>>>>>>> BASE      (5e1851 Increase BB to explore for reachability analysis)
 		flags.Local.AsFlags = append(flags.Local.AsFlags, memtagStackCommonFlags...)
 		flags.Local.LdFlags = append(flags.Local.LdFlags, memtagStackCommonFlags...)
-		// This works around LLD complaining about the stack frame size.
-		// TODO(fmayer): remove once https://reviews.llvm.org/D127917 is in Android toolchain.
-		flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--no-fatal-warnings")
 	}
 
 	if (Bool(sanProps.Memtag_heap) || Bool(sanProps.Memtag_stack)) && ctx.binary() {
