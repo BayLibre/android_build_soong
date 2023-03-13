@@ -736,7 +736,6 @@ java_system_modules_import {
       "public": {
         "current_api": "sdk_library/public/myjavalib.txt",
         "latest_api": "out/soong/.intermediates/prebuilts/sdk/myjavalib.api.public.latest/gen/myjavalib.api.public.latest",
-        "latest_pending_api": "out/soong/.intermediates/prebuilts/sdk/myjavalib-pending.api.public.latest/gen/myjavalib-pending.api.public.latest",
         "latest_removed_api": "out/soong/.intermediates/prebuilts/sdk/myjavalib-removed.api.public.latest/gen/myjavalib-removed.api.public.latest",
         "pending_api": "sdk_library/public/myjavalib-pending.txt",
         "removed_api": "sdk_library/public/myjavalib-removed.txt"

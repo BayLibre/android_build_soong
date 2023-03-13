@@ -120,10 +120,6 @@ type apiScope struct {
 	// The tag to use to depend on the module that provides the latest version of the API .txt file.
 	latestApiModuleTag scopeDependencyTag
 
-	// The tag to use to depend on the module that provides the latest version of the API pending.txt
-	// file.
-	latestPendingApiModuleTag scopeDependencyTag
-
 	// The tag to use to depend on the module that provides the latest version of the API removed.txt
 	// file.
 	latestRemovedApiModuleTag scopeDependencyTag
@@ -193,11 +189,6 @@ func initApiScope(scope *apiScope) *apiScope {
 		name:             name + "-latest-api",
 		apiScope:         scope,
 		depInfoExtractor: (*scopePaths).extractLatestApiPath,
-	}
-	scope.latestPendingApiModuleTag = scopeDependencyTag{
-		name:             name + "-latest-pending-api",
-		apiScope:         scope,
-		depInfoExtractor: (*scopePaths).extractLatestPendingApiPath,
 	}
 	scope.latestRemovedApiModuleTag = scopeDependencyTag{
 		name:             name + "-latest-removed-api",
@@ -631,9 +622,6 @@ type scopePaths struct {
 	// The path to the latest API file.
 	latestApiPath android.OptionalPath
 
-	// The path to the latest non-finalized API file.
-	latestPendingApiPath android.OptionalPath
-
 	// The path to the latest removed API file.
 	latestRemovedApiPath android.OptionalPath
 }
@@ -716,12 +704,6 @@ func extractSingleOptionalOutputPath(dep android.Module) (android.OptionalPath, 
 func (paths *scopePaths) extractLatestApiPath(ctx android.ModuleContext, dep android.Module) error {
 	outputPath, err := extractSingleOptionalOutputPath(dep)
 	paths.latestApiPath = outputPath
-	return err
-}
-
-func (paths *scopePaths) extractLatestPendingApiPath(ctx android.ModuleContext, dep android.Module) error {
-	outputPath, err := extractSingleOptionalOutputPath(dep)
-	paths.latestPendingApiPath = outputPath
 	return err
 }
 
@@ -1328,10 +1310,6 @@ func (module *SdkLibrary) ComponentDepsMutator(ctx android.BottomUpMutatorContex
 			latestApiModuleName := module.latestApiModuleName(apiScope)
 			ctx.AddDependency(module, apiScope.latestApiModuleTag, latestApiModuleName)
 
-			// Add dependencies on the latest finalized version of the pending API .txt file.
-			latestPendingApiModuleName := module.latestPendingApiModuleName(apiScope)
-			ctx.AddDependency(module, apiScope.latestPendingApiModuleTag, latestPendingApiModuleName)
-
 			// Add dependencies on the latest finalized version of the remove API .txt file.
 			latestRemovedApiModuleName := module.latestRemovedApiModuleName(apiScope)
 			ctx.AddDependency(module, apiScope.latestRemovedApiModuleTag, latestRemovedApiModuleName)
@@ -1357,9 +1335,6 @@ func (module *SdkLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 			continue
 		}
 		if m := module.latestApiModuleName(apiScope); !ctx.OtherModuleExists(m) {
-			missingApiModules = append(missingApiModules, m)
-		}
-		if m := module.latestPendingApiModuleName(apiScope); !ctx.OtherModuleExists(m) {
 			missingApiModules = append(missingApiModules, m)
 		}
 		if m := module.latestRemovedApiModuleName(apiScope); !ctx.OtherModuleExists(m) {
@@ -1455,9 +1430,6 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		if p := scopePaths.latestApiPath; p.Valid() {
 			scopeInfo["latest_api"] = p.Path().String()
 		}
-		if p := scopePaths.latestPendingApiPath; p.Valid() {
-			scopeInfo["latest_pending_api"] = p.Path().String()
-		}
 		if p := scopePaths.latestRemovedApiPath; p.Valid() {
 			scopeInfo["latest_removed_api"] = p.Path().String()
 		}
@@ -1518,14 +1490,6 @@ func (module *SdkLibrary) latestApiFilegroupName(apiScope *apiScope) string {
 
 func (module *SdkLibrary) latestApiModuleName(apiScope *apiScope) string {
 	return latestPrebuiltApiModuleName(module.distStem(), apiScope)
-}
-
-func (module *SdkLibrary) latestPendingApiFilegroupName(apiScope *apiScope) string {
-	return ":" + module.latestPendingApiModuleName(apiScope)
-}
-
-func (module *SdkLibrary) latestPendingApiModuleName(apiScope *apiScope) string {
-	return latestPrebuiltApiModuleName(module.distStem()+"-pending", apiScope)
 }
 
 func (module *SdkLibrary) latestRemovedApiFilegroupName(apiScope *apiScope) string {
@@ -1781,8 +1745,6 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 		latestApiFilegroupName := proptools.StringPtr(module.latestApiFilegroupName(apiScope))
 		props.Previous_api = latestApiFilegroupName
 		props.Check_api.Last_released.Api_file = latestApiFilegroupName
-		props.Check_api.Last_released.Pending_api_file = proptools.StringPtr(
-			module.latestPendingApiFilegroupName(apiScope))
 		props.Check_api.Last_released.Removed_api_file = proptools.StringPtr(
 			module.latestRemovedApiFilegroupName(apiScope))
 		props.Check_api.Last_released.Baseline_file = proptools.StringPtr(
