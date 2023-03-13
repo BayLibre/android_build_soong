@@ -688,7 +688,6 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 
 		apiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Api_file))
-		unstableApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Unstable_api_file))
 		removedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Removed_api_file))
 		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Last_released.Baseline_file)
 		updatedBaselineOutput := android.PathForModuleOut(ctx, "metalava", "last_released_baseline.txt")
@@ -696,7 +695,6 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		d.checkLastReleasedApiTimestamp = android.PathForModuleOut(ctx, "metalava", "check_last_released_api.timestamp")
 
 		cmd.FlagWithInput("--check-compatibility:api:released ", apiFile)
-		cmd.FlagWithInput("--check-compatibility:unstable:released ", unstableApiFile)
 		cmd.FlagWithInput("--check-compatibility:removed:released ", removedApiFile)
 
 		if baselineFile.Valid() {

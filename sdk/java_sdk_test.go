@@ -737,7 +737,6 @@ java_system_modules_import {
         "current_api": "sdk_library/public/myjavalib.txt",
         "latest_api": "out/soong/.intermediates/prebuilts/sdk/myjavalib.api.public.latest/gen/myjavalib.api.public.latest",
         "latest_removed_api": "out/soong/.intermediates/prebuilts/sdk/myjavalib-removed.api.public.latest/gen/myjavalib-removed.api.public.latest",
-        "latest_unstable_api": "out/soong/.intermediates/prebuilts/sdk/myjavalib-unstable.api.public.latest/gen/myjavalib-unstable.api.public.latest",
         "removed_api": "sdk_library/public/myjavalib-removed.txt",
         "unstable_api": "sdk_library/public/myjavalib-unstable.txt"
       }

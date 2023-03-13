@@ -183,10 +183,12 @@ func InitDroiddocModule(module android.DefaultableModule, hod android.HostOrDevi
 func apiCheckEnabled(ctx android.ModuleContext, apiToCheck ApiToCheck, apiVersionTag string) bool {
 	if ctx.Config().IsEnvTrue("WITHOUT_CHECK_API") {
 		return false
-	} else if String(apiToCheck.Api_file) != "" && String(apiToCheck.Unstable_api_file) != "" && String(apiToCheck.Removed_api_file) != "" {
+	} else if String(apiToCheck.Api_file) != "" && String(apiToCheck.Removed_api_file) != "" {
 		return true
-	} else if String(apiToCheck.Api_file) != "" || String(apiToCheck.Unstable_api_file) != "" || String(apiToCheck.Removed_api_file) != "" {
-		panic("for " + apiVersionTag + " all api files has to be non-empty!")
+	} else if String(apiToCheck.Api_file) != "" {
+		panic("for " + apiVersionTag + " removed_api_file has to be non-empty!")
+	} else if String(apiToCheck.Removed_api_file) != "" {
+		panic("for " + apiVersionTag + " api_file has to be non-empty!")
 	}
 
 	return false
