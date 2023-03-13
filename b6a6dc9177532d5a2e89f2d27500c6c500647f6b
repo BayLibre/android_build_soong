@@ -124,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a926c3c_e34ba355",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1900900
+      },
+      "writtenOn": "2023-03-13T05:49:31Z",
+      "side": 1,
+      "message": "There are some existing mobly tests (for wifi, bluetooth ...) in google3 that they want to move into AOSP and CTS. The auto-generated test config can make the process easier and more like the experience in google3 without touching TF specific concepts. And when the runner is changed to ATS 2.0 in the future, we only need to change the template instead of converting the xml config one by one.\n\nFor target preparers, there are some device setup methods in google3 that are used by these tests.  Will keep using these methods to make the test behave the same. For mobly yaml config, the default one is enough now.",
+      "parentUuid": "3dd1388a_5cc89eb8",
+      "revId": "b6a6dc9177532d5a2e89f2d27500c6c500647f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4adc2496_e87029db",
