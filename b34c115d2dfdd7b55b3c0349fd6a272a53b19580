@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ddf783d_4c989d40",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-13T20:11:37Z",
+      "side": 1,
+      "message": "Document these messages and their fields, please.",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa996bf_cbc55a1b",
+        "filename": "ui/status/critical_path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-13T20:11:37Z",
+      "side": 1,
+      "message": "WriteToMetrics*",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086ca862_201a9e0b",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-13T20:11:37Z",
+      "side": 1,
+      "message": "2023",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eef6a20_6de2ce42",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-13T20:11:37Z",
+      "side": 1,
+      "message": "Documentation please.",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fb82798_0d6ab3ab",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-13T20:11:37Z",
+      "side": 1,
+      "message": "This is quite verbose with little payoff. Why not just use NewCriticalPathLogger in all callsites, and force the caller to construct `NewCriticalPath()` and pass it, if applicable?",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
