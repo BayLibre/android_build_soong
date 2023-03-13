@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9ac4fb_754c70a9",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-13T23:37:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ddf783d_4c989d40",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faa996bf_cbc55a1b",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-13T20:11:37Z",
       "side": 1,
       "message": "WriteToMetrics*",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e56d16a_420e2137",
+        "filename": "ui/status/critical_path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-13T23:37:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faa996bf_cbc55a1b",
       "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2462d44f_01032f52",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-13T23:37:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "086ca862_201a9e0b",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eef6a20_6de2ce42",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62bbaf37_41b4c65c",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-13T23:37:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eef6a20_6de2ce42",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fb82798_0d6ab3ab",
@@ -82,6 +154,24 @@
       "writtenOn": "2023-03-13T20:11:37Z",
       "side": 1,
       "message": "This is quite verbose with little payoff. Why not just use NewCriticalPathLogger in all callsites, and force the caller to construct `NewCriticalPath()` and pass it, if applicable?",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5387677a_1a46e4a0",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-13T23:37:00Z",
+      "side": 1,
+      "message": "criticalPath is a pointer type, so just make NewCriticalPath accepts Logger and *CriticalPath.",
+      "parentUuid": "7fb82798_0d6ab3ab",
       "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
