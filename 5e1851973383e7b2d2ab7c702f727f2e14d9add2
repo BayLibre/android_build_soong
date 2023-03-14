@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13648c7b_990bae26",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-03-14T02:40:02Z",
+      "side": 1,
+      "message": "Should it be passed to ldflags as well so that LTO gets the new value?",
+      "revId": "5e1851973383e7b2d2ab7c702f727f2e14d9add2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
