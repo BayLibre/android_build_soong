@@ -1873,6 +1873,18 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	})
 }
 
+func (al *ApiLibrary) DexJarBuildPath() OptionalDexJarPath {
+	return OptionalDexJarPath{isSet: true, path: android.OptionalPathForPath(al.stubsJar)}
+}
+
+func (al *ApiLibrary) DexJarInstallPath() android.Path {
+	return al.stubsJar
+}
+
+func (al *ApiLibrary) ClassLoaderContexts() dexpreopt.ClassLoaderContextMap {
+	return nil
+}
+
 //
 // Java prebuilts
 //
