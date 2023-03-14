@@ -187,13 +187,41 @@ func readdirToMap(dir string) map[string]os.FileInfo {
 
 	return result
 }
+func countSlashes(filepath string) int {
+	count := 0
+	for i := 0; i < len(filepath); i++ {
+		if filepath[i] == '/' {
+			count++
+		}
+	}
+
+	return count
+}
+func getPrefix(filepath string) string {
+	slashCount := countSlashes(filepath)
+
+	ret := ""
+	for i := 0; i < slashCount; i++ {
+		ret += "../"
+	}
+	return ret
+}
 
 // Creates a symbolic link at dst pointing to src
 func symlinkIntoForest(topdir, dst, src string) uint64 {
-	srcPath := shared.JoinPath(topdir, src)
-	dstPath := shared.JoinPath(topdir, dst)
+	// b/259191764 - relative symlinks
+	basePath := filepath.Dir(dst)
+	var dstPath string
+	srcPath, err := filepath.Rel(basePath, src)
+	if err != nil {
+		fmt.Printf("Failed to find relative path %s\n", err)
+		srcPath = shared.JoinPath(topdir, src)
+		dstPath = shared.JoinPath(topdir, dst)
+	} else {
+		dstPath = dst
+	}
 
-	// Check if a symlink already exists.
+	// Check whether a symlink already exists.
 	if dstInfo, err := os.Lstat(dstPath); err != nil {
 		if !os.IsNotExist(err) {
 			fmt.Fprintf(os.Stderr, "Failed to lstat '%s': %s", dst, err)
@@ -213,6 +241,7 @@ func symlinkIntoForest(topdir, dst, src string) uint64 {
 	}
 
 	// Create symlink.
+
 	if err := os.Symlink(srcPath, dstPath); err != nil {
 		fmt.Fprintf(os.Stderr, "Cannot create symlink at '%s' pointing to '%s': %s", dst, src, err)
 		os.Exit(1)
@@ -481,6 +510,25 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 
 	instructions := instructionsFromExcludePathList(exclude)
 	go func() {
+		// b/259191764 - relative symlinks this requires changing dir to $TOP
+		wd, err := os.Getwd()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Failed to obtain current working directory %s\n", err)
+			os.Exit(1)
+		}
+		err = os.Chdir(topdir)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Failed to change working directory %s\n", err)
+			os.Exit(1)
+		}
+		defer func() {
+			err = os.Chdir(wd)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "Failed to change working directory %s\n", err)
+				os.Exit(1)
+			}
+		}()
+
 		context.wg.Add(1)
 		plantSymlinkForestRecursive(context, instructions, forest, buildFiles, ".")
 		context.wg.Wait()
