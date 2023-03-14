@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4616665_a3c3d4aa",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2795,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-03-14T14:42:16Z",
+      "side": 1,
+      "message": "Not needed in this CL but I was thinking we could probably move these in the commonAttrs definition up at l.2749. The \"len(m.properties.Common_srcs) !\u003d 0 test does not need to guard setting kotlinAttributes.Common_srcs (it just won\u0027t be set if the property is empty), and hasKotlin can just be !kotlinSrcs.IsEmpty() || len(m.properties.Common_srcs) \u003e 0",
+      "range": {
+        "startLine": 2790,
+        "startChar": 0,
+        "endLine": 2795,
+        "endChar": 136
+      },
+      "revId": "f848bf82254b25bba0166f451e0a88c6bee3d5e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
