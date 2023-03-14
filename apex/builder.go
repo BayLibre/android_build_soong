@@ -17,6 +17,7 @@ package apex
 import (
 	"encoding/json"
 	"fmt"
+	"os"
 	"path/filepath"
 	"runtime"
 	"sort"
@@ -1097,6 +1098,44 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 			a.ApexBundleDepsInfo.FlatListPath(),
 		},
 	})
+}
+
+func (a *apexBundle) buildTransitiveJacocoZip(ctx android.ModuleContext) {
+	stagingDir := android.PathForModuleOut(ctx, "transitive_jacoco_files_staging_dir")
+	ruleBuilder := android.NewRuleBuilder(pctx, ctx)
+	needsToBuildZip := false
+	for _, fi := range a.filesInfo {
+		if fi.jacocoReportClassesFile != nil {
+			if fi.class == app || fi.class == appSet {
+				// apps are not included in the apex jacoco zip, they will have their own zip
+				// file that's disted separately, and the
+				// build_unbundled_coverage_mainline_modules.sh script will merge them.
+				continue
+			}
+			stagingDirDirname := stagingDir.Join(ctx, "out", "target", "common", "obj", fi.class.nameInMake(), fi.androidMkModuleName+"."+a.Name()+"_intermediates")
+			stagingDirPath := stagingDirDirname.Join(ctx, "jacoco-report-classes.jar")
+			ruleBuilder.Command().Text("mkdir -p " + stagingDirDirname.String())
+			ruleBuilder.Command().Text("cp").Input(fi.jacocoReportClassesFile).Text(" " + stagingDirPath.String())
+			needsToBuildZip = true
+		}
+	}
+	if !needsToBuildZip {
+		return
+	}
+
+	outputZip := android.PathForModuleOut(ctx, "transitive_jacoco_files.zip")
+	ruleBuilder.Command().BuiltTool("soong_zip").
+		Flag("-L 0"). // Store files instead of compressing to match behavior of JACOCO_REPORT_CLASSES_ALL
+		Flag("-C").Text(stagingDir.String()).
+		Flag("-D").Text(stagingDir.String()).
+		Flag("-o").Output(outputZip)
+	// Because we're not tracking the staging dir as proper dependencies, we need to delete it after
+	// so that if we remove some files from it and rebuilt, the files don't stick around.
+	ruleBuilder.Command().Text("rm -rf " + stagingDir.String())
+	a.jacocoTransitiveZip = outputZip
+	fmt.Fprintf(os.Stderr, "Apex jacoco zip: %s\n", a.jacocoTransitiveZip.String())
+
+	ruleBuilder.Build("apex_transitive_jacoco_files", "Zipping apex transitive jacoco files")
 }
 
 func (a *apexBundle) buildLintReports(ctx android.ModuleContext) {
