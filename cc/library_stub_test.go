@@ -457,3 +457,87 @@ func TestApiLibraryWithMultipleVariants(t *testing.T) {
 	android.AssertBoolEquals(t, "Vendor binary should not be linked with API library from NDK variant", false, hasDirectDependency(t, ctx, binbaz, libbarApiImportv29))
 
 }
+
+// Thit test ensures that the checked-in lightweight tree can contain apis from both system and mainline modules
+// Test details:
+// Test the following for `libsystem`
+// 1. It gets source another system library
+// 2. It gets stubs of an apex library
+func TestApiEnforcementForSystemLibraries(t *testing.T) {
+	bp := `
+	cc_library {
+		name: "libsystem",
+		shared_libs: [
+			"liblog", // a system library
+			"libneuralnetworks", // an apex library
+		],
+	}
+	// liblog setup
+	cc_api_library {
+		name: "liblog",
+		src: "prebuilt.so", // TODO (b/244244438): This property should not be required
+		variants: [
+			"apex.current",
+		],
+	}
+	cc_api_variant {
+		name: "liblog",
+		variant: "apex", // TODO: Update this property to use the name of the api surface instead of just "apex"
+		version: "current",
+		src: "liblog.so",
+	}
+	cc_library {
+		name: "liblog", // source
+		srcs: [
+			"liblog.c",
+		],
+	}
+	// libneuralnetworks setup
+	cc_api_library {
+		name: "libneuralnetworks",
+		src: "prebuilt.so", // TODO (b/244244438): This property should not be required
+		variants: [
+			"apex.current",
+		],
+	}
+	cc_api_variant {
+		name: "libneuralnetworks",
+		variant: "apex", // TODO: Update this property to use the name of the api surface instead of just "apex"
+		version: "current",
+		src: "libneuralnetworks.so",
+	}
+	cc_library {
+		name: "libneuralnetworks", // source
+		srcs: [
+			"libneuralnetworks.c",
+		],
+	}
+	// api_imports setup
+	api_imports {
+		name: "api_imports",
+		shared_libs: [
+			"liblog",
+			"libneuralnetworks",
+		],
+		apex_shared_libs: [ // TODO: Rename this property to use the name of the api surface
+			"liblog", // this is not an "apex library", but should be included since it provides stubs to apexes
+			"libneuralnetworks",
+		],
+	}
+	`
+	ctx := prepareForCcTest.RunTestWithBp(t, bp)
+	libsystem := ctx.ModuleForTests("libsystem", "android_arm64_armv8-a_shared").Module()
+	// liblog source and ModuleLib API surface stubs
+	liblogSource := ctx.ModuleForTests("liblog", "android_arm64_armv8-a_shared").Module()
+	liblogModuleLibApiStubs := ctx.ModuleForTests("liblog.apiimport", "android_arm64_armv8-a_shared").Module()
+	// libneuralnetworks source and ModuleLib API surface stubs
+	libneuralnetworksSource := ctx.ModuleForTests("libneuralnetworks", "android_arm64_armv8-a_shared").Module()
+	libneuralnetworksModuleLibApiStubs := ctx.ModuleForTests("libneuralnetworks.apiimport", "android_arm64_armv8-a_shared").Module()
+
+	// assertions
+	android.AssertBoolEquals(t, "libsystem should link against source of liblog", true, hasDirectDependency(t, ctx, libsystem, liblogSource))
+	android.AssertBoolEquals(t, "libsystem should NOT link against stubs of liblog", false, hasDirectDependency(t, ctx, libsystem, liblogModuleLibApiStubs))
+
+	android.AssertBoolEquals(t, "libsystem should NOT link against source of libneuralnetworks", false, hasDirectDependency(t, ctx, libsystem, libneuralnetworksSource))
+	android.AssertBoolEquals(t, "libsystem should link against stubs of libneuralnetworks", true, hasDirectDependency(t, ctx, libsystem, libneuralnetworksModuleLibApiStubs))
+}

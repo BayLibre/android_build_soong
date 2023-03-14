@@ -2416,7 +2416,7 @@ func rewriteLibsForApiImports(c LinkableInterface, libs []string, replaceList ma
 	return nonVariantLibs, variantLibs
 }
 
-func (c *Module) shouldUseApiSurface() bool {
+func (c *Module) ShouldUseApiSurface() bool {
 	if c.Os() == android.Android && c.Target().NativeBridge != android.NativeBridgeEnabled {
 		if GetImageVariantType(c) == vendorImageVariant || GetImageVariantType(c) == productImageVariant {
 			// LLNDK Variant
@@ -2437,6 +2437,43 @@ func (c *Module) shouldUseApiSurface() bool {
 	return false
 }
 
+// Returns <lib>.apiimoprt if <lib> is in another API domain
+// This code path is only supported in multitree currently
+// <lib>.apiimport is resolved to the providedrs of the specific api variant by <lib>.apiimport (a cc_api_library)
+// TODO (spandandas): Can we do the rewrite to the specific api surface variant explicitly here?
+func RewriteDepToStubsInMultitree(ctx android.BottomUpMutatorContext, dep string, apiImportInfo multitree.ApiImportInfo) string{
+	// Skip if run outside multitree
+	if !ctx.Config().Multitree() {
+		return dep
+	}
+
+	// When building system(platform), always link against stubs of apex libraries
+	// This means that apex variants in system/ inner tree are linking against stubs of its own libs.
+	// But that is fine, since orchestrator will package apex variants from apex/ inner tree
+	if ctx.Config().BuildingPlatform() && ctx.Config().IsApexStubLibrary(dep) {
+		ret, _ := apiImportInfo.ApexSharedLibs[dep]
+		return ret
+	} else if ctx.Config().BuildingApexes() && ctx.Config().IsPlatformStubLibrary(dep) {
+		// When building apexes, always link against stubs of platform libraries
+		// This means that platform variants in system/ inner tree are linking against stubs of itself
+		// But that is fine, since orchestrator will package platform variants from system/ inner tree
+		// For the other category of api_domain boundaries (intra apex), ChooseStubOrImpl will be used.
+		ret, _ := apiImportInfo.ApexSharedLibs[dep]
+		return ret
+	} else if mod, ok := ctx.Module().(interface{ShouldUseApiSurface() bool}); ok && mod.ShouldUseApiSurface() {
+		// existing multitree implemenation for vendor/product/apps_using_ndk etc.
+		// TODO: this gives vendor API domain access to non-LLNDK stub libraries as well. Fix it.
+		// TODO: What is the difference between SharedLibs and ApexSharedLibs?
+		if apiLibraryName, ok := apiImportInfo.SharedLibs[dep]; ok {
+			return apiLibraryName
+		}
+	}
+
+	// default (dep is in the same api domain)
+	return dep
+}
+
+
 func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	if !c.Enabled() {
 		return
@@ -2456,7 +2493,8 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	apiNdkLibs := []string{}
 	apiLateNdkLibs := []string{}
 
-	if c.shouldUseApiSurface() {
+	if c.ShouldUseApiSurface() {
+		// TODO: Clean this up
 		deps.SharedLibs, apiNdkLibs = rewriteLibsForApiImports(c, deps.SharedLibs, apiImportInfo.SharedLibs, ctx.Config())
 		deps.LateSharedLibs, apiLateNdkLibs = rewriteLibsForApiImports(c, deps.LateSharedLibs, apiImportInfo.SharedLibs, ctx.Config())
 		deps.SystemSharedLibs, _ = rewriteLibsForApiImports(c, deps.SystemSharedLibs, apiImportInfo.SharedLibs, ctx.Config())
@@ -2487,7 +2525,8 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		}
 
 		// Check header lib replacement from API surface first, and then check again with VSDK
-		if c.shouldUseApiSurface() {
+		// TODO: Handle header_libs for multiitree
+		if c.ShouldUseApiSurface() {
 			lib = GetReplaceModuleName(lib, apiImportInfo.HeaderLibs)
 		}
 		lib = GetReplaceModuleName(lib, GetSnapshot(c, &snapshotInfo, actx).HeaderLibs)
@@ -2562,22 +2601,12 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		}
 
 		name, version := StubsLibNameAndVersion(lib)
-		if apiLibraryName, ok := apiImportInfo.SharedLibs[name]; ok && !ctx.OtherModuleExists(name) {
-			name = apiLibraryName
-		}
-		sharedLibNames = append(sharedLibNames, name)
-
+		sourceOrStubName := RewriteDepToStubsInMultitree(ctx, name, apiImportInfo)
 		variations := []blueprint.Variation{
 			{Mutator: "link", Variation: "shared"},
 		}
-
-		if _, ok := apiImportInfo.ApexSharedLibs[name]; !ok || ctx.OtherModuleExists(name) {
-			AddSharedLibDependenciesWithVersions(ctx, c, variations, depTag, name, version, false)
-		}
-
-		if apiLibraryName, ok := apiImportInfo.ApexSharedLibs[name]; ok {
-			AddSharedLibDependenciesWithVersions(ctx, c, variations, depTag, apiLibraryName, version, false)
-		}
+		sharedLibNames = append(sharedLibNames, sourceOrStubName)
+		AddSharedLibDependenciesWithVersions(ctx, c, variations, depTag, sourceOrStubName, version, false)
 	}
 
 	for _, lib := range deps.LateStaticLibs {

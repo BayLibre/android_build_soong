@@ -1852,3 +1852,30 @@ func (c *config) ApiSurfacesDir(s ApiSurface, version string) string {
 		s.String(),
 		version)
 }
+
+// TODO: Read from an environment variable?
+func (c *config) Multitree() bool {
+	return true
+}
+
+// An env var set by orchestrator when analysing system inner tree
+// TODO: Create toggle
+func (c *config) BuildingPlatform() bool {
+	return true
+}
+
+// TODO: Populdate this list using api_imoprts
+func (c *config) IsPlatformStubLibrary(name string) bool {
+	return name == "liblog"
+}
+
+// An env var set by orchestrator when analysing apexes inner tree
+// TODO: Create toggle
+func (c *config) BuildingApexes() bool {
+	return false
+}
+
+// TODO: Populdate this list using api_imoprts
+func (c *config) IsApexStubLibrary(name string) bool {
+	return name == "libneuralnetworks" || name == "libstatspull" || name == "libstatssocket"
+}
