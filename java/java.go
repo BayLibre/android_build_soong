@@ -1966,6 +1966,9 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.commonBuildActions(ctx)
 
 	jars := android.PathsForModuleSrc(ctx, j.properties.Jars)
+	if len(jars) < 1 {
+		ctx.PropertyErrorf("jars", "jars must evaluate to a non-empty list")
+	}
 
 	jarName := j.Stem() + ".jar"
 	outputFile := android.PathForModuleOut(ctx, "combined", jarName)
