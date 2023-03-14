@@ -85,6 +85,40 @@ func runNinjaForBuild(ctx Context, config Config) {
 		cmd.Environment.AppendFromKati(config.KatiEnvFile())
 	}
 
+	if cmd.Environment.IsEnvTrue("NINJA_PRIORITY_FROM_BUILD_LOG") {
+		ninjaLogFile := filepath.Join(config.OutDir(), ".ninja_log")
+		data, err := os.ReadFile(ninjaLogFile)
+		var outputBuilder strings.Builder
+		if err == nil {
+			lines := strings.Split(strings.TrimSpace(string(data)), "\n")
+
+			for _, line := range lines {
+				if strings.HasPrefix(line, "#") {
+					continue
+				}
+				fields := strings.Split(line, "\t")
+				path := fields[3]
+				start, err := strconv.Atoi(fields[0])
+				if err != nil {
+					continue
+				}
+				end, err := strconv.Atoi(fields[1])
+				if err != nil {
+					continue
+				}
+				outputBuilder.WriteString(path)
+				outputBuilder.WriteString("\t")
+				outputBuilder.WriteString(strconv.Itoa(end-start+1) + "\n")
+			}
+		}
+		priorityListFile := filepath.Join(config.OutDir(), ".ninja_priority_list")
+
+		err = os.WriteFile(priorityListFile, []byte(outputBuilder.String()), 0644)
+		if err == nil {
+			cmd.Args = append(cmd.Args, "-o", "usesprioritylist="+priorityListFile)
+		}
+	}
+
 	// Allow both NINJA_ARGS and NINJA_EXTRA_ARGS, since both have been
 	// used in the past to specify extra ninja arguments.
 	if extra, ok := cmd.Environment.Get("NINJA_ARGS"); ok {
