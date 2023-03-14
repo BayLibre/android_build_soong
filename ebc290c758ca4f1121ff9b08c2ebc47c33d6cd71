@@ -16,6 +16,29 @@
       "message": "(need an OWNER CR+2)",
       "revId": "ebc290c758ca4f1121ff9b08c2ebc47c33d6cd71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811b620e_8201fcb6",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-14T16:44:17Z",
+      "side": 1,
+      "message": "For the migration, we don\u0027t want to be exporting different files based on environment variables. Instead we are taking an approach similar to this topic: https://android-review.git.corp.google.com/q/topic:%22env_based_flags%22 where we access the environment variable directly in Bazel. Sorry that this variable was missed in that topic.",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 69
+      },
+      "revId": "ebc290c758ca4f1121ff9b08c2ebc47c33d6cd71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
