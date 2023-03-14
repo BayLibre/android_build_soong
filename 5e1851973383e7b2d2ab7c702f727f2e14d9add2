@@ -16,6 +16,24 @@
       "message": "Should it be passed to ldflags as well so that LTO gets the new value?",
       "revId": "5e1851973383e7b2d2ab7c702f727f2e14d9add2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3050b154_031ecbef",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2023-03-14T23:52:05Z",
+      "side": 1,
+      "message": "added to memtagStackCommonFlags, which additionally gets passed as ASFLAGS, but as as for CC is `clang`, that should\u0027t hurt.",
+      "parentUuid": "13648c7b_990bae26",
+      "revId": "5e1851973383e7b2d2ab7c702f727f2e14d9add2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
