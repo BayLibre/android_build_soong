@@ -22,6 +22,30 @@
       },
       "revId": "e4680d3dd6f8ef393909aead335b9017bc75735e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6786a9a7_b2331255",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-14T09:00:59Z",
+      "side": 1,
+      "message": "I just thought this computation might affect plx performance, but it isn\u0027t true, so remove the field, and will calculate it in plx.",
+      "parentUuid": "03dba491_856f30db",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 48
+      },
+      "revId": "e4680d3dd6f8ef393909aead335b9017bc75735e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
