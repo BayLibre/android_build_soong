@@ -21,6 +21,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"sort"
+	//"strings"
 	"sync"
 	"sync/atomic"
 
@@ -152,8 +153,11 @@ func readdirToMap(dir string) map[string]os.FileInfo {
 
 // Creates a symbolic link at dst pointing to src
 func symlinkIntoForest(topdir, dst, src string) uint64 {
-	srcPath := shared.JoinPath(topdir, src)
-	dstPath := shared.JoinPath(topdir, dst)
+	// b/259191764 - relative symlinks, this requires changing dir to top
+	os.Chdir(topdir)
+
+	srcPath := shared.JoinPath("", src)
+	dstPath := shared.JoinPath("", dst)
 
 	// Check if a symlink already exists.
 	if dstInfo, err := os.Lstat(dstPath); err != nil {
@@ -175,6 +179,7 @@ func symlinkIntoForest(topdir, dst, src string) uint64 {
 	}
 
 	// Create symlink.
+
 	if err := os.Symlink(srcPath, dstPath); err != nil {
 		fmt.Fprintf(os.Stderr, "Cannot create symlink at '%s' pointing to '%s': %s", dst, src, err)
 		os.Exit(1)
