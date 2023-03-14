@@ -16,6 +16,7 @@ package java
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -779,9 +780,13 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			Text(diff).
 			Input(apiFile).Input(d.apiFile)
 
-		rule.Command().
-			Text(diff).
-			Input(unstableApiFile).Input(d.unstableApiFile)
+		if d.properties.Check_api.Current.Unstable_api_file != nil {
+			rule.Command().
+				Text(diff).
+				Input(unstableApiFile).Input(d.unstableApiFile)
+		} else {
+			fmt.Fprintf(os.Stderr, "warning: %s: missing unstable api file: '%s'\n", d, unstableApiFile)
+		}
 
 		rule.Command().
 			Text(diff).
