@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8716ba7_708b7997",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-03-14T14:22:34Z",
+      "side": 1,
+      "message": "I don\u0027t know what edge case is talked about there, but in those cases it seems like we could just not use the privapp_allowlist feature and manually install a prebuilt xml as we do today? or we can add it as an overridable field once we know what that there really is an edge case.\n\nAndrei, can you please chime in here if you know of any usecases?",
+      "parentUuid": "ddc0fa62_718d4d03",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 41
+      },
+      "revId": "d62532d81f7633edd2503e13e1f94d6644830326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "201f7eaf_68e90de3",
         "filename": "java/app.go",
         "patchSetId": 8
