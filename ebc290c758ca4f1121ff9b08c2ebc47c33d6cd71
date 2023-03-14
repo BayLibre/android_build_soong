@@ -56,6 +56,30 @@
       },
       "revId": "ebc290c758ca4f1121ff9b08c2ebc47c33d6cd71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c8910db_690d39c3",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-03-14T19:29:14Z",
+      "side": 1,
+      "message": "This is a regression introduced by Bazel that\u0027s causing pain for LLVM developers and may prevent new LLVM versions from being fully tested. I think it would be best to first land this change, and then the Bazel team can do a followup which fixes the problem in their preferred way.",
+      "parentUuid": "811b620e_8201fcb6",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 69
+      },
+      "revId": "ebc290c758ca4f1121ff9b08c2ebc47c33d6cd71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
