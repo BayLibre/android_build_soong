@@ -388,6 +388,8 @@ var (
 	jniLibTag               = dependencyTag{name: "jnilib", runtimeLinked: true}
 	r8LibraryJarTag         = dependencyTag{name: "r8-libraryjar", runtimeLinked: true}
 	syspropPublicStubDepTag = dependencyTag{name: "sysprop public stub"}
+	javaApiContributionTag  = dependencyTag{name: "java-api-contribution"}
+	depApiSrcsTag           = dependencyTag{name: "dep-api-srcs"}
 	jniInstallTag           = installDependencyTag{name: "jni install"}
 	binaryInstallTag        = installDependencyTag{name: "binary install"}
 	usesLibReqTag           = makeUsesLibraryDependencyTag(dexpreopt.AnySdkVersion, false)
@@ -1615,8 +1617,9 @@ type ApiLibrary struct {
 
 	properties JavaApiLibraryProperties
 
-	stubsSrcJar android.WritablePath
-	stubsJar    android.WritablePath
+	stubsSrcJar               android.WritablePath
+	stubsJar                  android.WritablePath
+	stubsJarWithoutStaticLibs android.WritablePath
 }
 
 type JavaApiLibraryProperties struct {
@@ -1640,8 +1643,14 @@ type JavaApiLibraryProperties struct {
 	Libs []string
 
 	// List of java libs that this module has static dependencies to and will be
-	// passed in metalava invocation
+	// merge zipped after metalava invocation
 	Static_libs []string
+
+	// Java lib to extract the class files from.
+	// If this property is set, jar file is created not from compiling the stubs
+	// generated from metalava, but by extracting the corresponding class files
+	// in the passed java libs.
+	Dep_api_srcs *string
 }
 
 func ApiLibraryFactory() android.Module {
@@ -1716,8 +1725,6 @@ func (al *ApiLibrary) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBui
 	}
 }
 
-var javaApiContributionTag = dependencyTag{name: "java-api-contribution"}
-
 func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	apiContributions := al.properties.Api_contributions
 	for _, apiContributionName := range apiContributions {
@@ -1725,6 +1732,46 @@ func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 	ctx.AddVariationDependencies(nil, libTag, al.properties.Libs...)
 	ctx.AddVariationDependencies(nil, staticLibTag, al.properties.Static_libs...)
+	if al.properties.Dep_api_srcs != nil {
+		ctx.AddVariationDependencies(nil, depApiSrcsTag, String(al.properties.Dep_api_srcs))
+	}
+}
+
+func (al *ApiLibrary) extractApiSrcs(ctx android.ModuleContext, depApiSrcs android.Paths) {
+	generatedStubsList := android.PathForModuleOut(ctx, ctx.ModuleName(), "sources.txt")
+	classFilesList := android.PathForModuleOut(ctx, ctx.ModuleName(), "classes.txt")
+	builder := android.NewRuleBuilder(pctx, ctx)
+
+	depApiSrc := depApiSrcs[0]
+
+	// Extract a list of generated stub java files and save to a text file
+	builder.Command().
+		Text("unzip -Z1").
+		Input(al.stubsSrcJar).
+		Text("| grep \".java\"").
+		FlagWithOutput("> ", generatedStubsList)
+
+	// Create a regex list of class files to be included in the extracted jar.
+	// For A/B/C.java, class files to be included are 'A/B/C.class' and 'A/B/C$*.class'.
+	// Replace all occurrences of '.java' to '.class' with delimeter ':', write to file.
+	builder.Command().
+		Text("sed 's:.java:.class:g'").
+		FlagWithOutput("> ", classFilesList)
+
+	// Replace all occurrences of '.class' to '$*.class' with delimeter ':', append to file.
+	builder.Command().
+		Text("sed 's:.class:$*.class:g'").
+		FlagWithOutput(">> ", classFilesList)
+
+	builder.Command().
+		BuiltTool("soong_zip").
+		Flag("-jar").
+		Flag("-write_if_changed").
+		FlagWithInput("-C ", depApiSrc).
+		FlagWithInput("-l ", classFilesList).
+		FlagWithOutput("-o ", al.stubsJarWithoutStaticLibs)
+
+	builder.Build("extract_srcs", "extract api sources")
 }
 
 func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -1745,6 +1792,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var srcFiles android.Paths
 	var classPaths android.Paths
 	var staticLibs android.Paths
+	var depApiSrcs android.Paths
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		tag := ctx.OtherModuleDependencyTag(dep)
 		switch tag {
@@ -1761,6 +1809,9 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		case staticLibTag:
 			provider := ctx.OtherModuleProvider(dep, JavaInfoProvider).(JavaInfo)
 			staticLibs = append(staticLibs, provider.HeaderJars...)
+		case depApiSrcsTag:
+			provider := ctx.OtherModuleProvider(dep, JavaInfoProvider).(JavaInfo)
+			depApiSrcs = append(depApiSrcs, provider.HeaderJars...)
 		}
 	})
 
@@ -1769,6 +1820,10 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		// Use MaybeExistentPathForSource since the api file might not exist during analysis.
 		// This will be provided by the orchestrator in the combined execution.
 		srcFiles = append(srcFiles, android.MaybeExistentPathForSource(ctx, ctx.ModuleDir(), api))
+	}
+
+	if srcFiles == nil {
+		ctx.ModuleErrorf("Error: %s has an empty api file.", ctx.ModuleName())
 	}
 
 	cmd := metalavaStubCmd(ctx, rule, srcFiles, homeDir)
@@ -1785,22 +1840,26 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		FlagWithArg("-D ", stubsDir.String())
 
 	rule.Build("metalava", "metalava merged")
-	compiledStubs := android.PathForModuleOut(ctx, ctx.ModuleName(), "stubs.jar")
+	al.stubsJarWithoutStaticLibs = android.PathForModuleOut(ctx, ctx.ModuleName(), "stubs.jar")
 	al.stubsJar = android.PathForModuleOut(ctx, ctx.ModuleName(), fmt.Sprintf("%s.jar", ctx.ModuleName()))
 
-	var flags javaBuilderFlags
-	flags.javaVersion = getStubsJavaVersion()
-	flags.javacFlags = strings.Join(al.properties.Javacflags, " ")
-	flags.classpath = classpath(classPaths)
+	if depApiSrcs != nil {
+		al.extractApiSrcs(ctx, depApiSrcs)
+	} else {
+		var flags javaBuilderFlags
+		flags.javaVersion = getStubsJavaVersion()
+		flags.javacFlags = strings.Join(al.properties.Javacflags, " ")
+		flags.classpath = classpath(classPaths)
 
-	TransformJavaToClasses(ctx, compiledStubs, 0, android.Paths{},
-		android.Paths{al.stubsSrcJar}, flags, android.Paths{})
+		TransformJavaToClasses(ctx, al.stubsJarWithoutStaticLibs, 0, android.Paths{},
+			android.Paths{al.stubsSrcJar}, flags, android.Paths{})
+	}
 
 	builder := android.NewRuleBuilder(pctx, ctx)
 	builder.Command().
 		BuiltTool("merge_zips").
 		Output(al.stubsJar).
-		Inputs(android.Paths{compiledStubs}).
+		Inputs(android.Paths{al.stubsJarWithoutStaticLibs}).
 		Inputs(staticLibs)
 	builder.Build("merge_zips", "merge jar files")
 
