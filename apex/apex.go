@@ -2011,6 +2011,30 @@ func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 	if a.filesInfo != nil {
 		panic(fmt.Errorf("internal error: filesInfo must be nil for an apex handled by Bazel."))
 	}
+
+	for _, f := range outputs.PayloadFilesInfo {
+		fileInfo := newApexFile(
+			ctx,
+			android.PathForBazelOut(ctx, f["built_file"]),
+			f["mkModuleName"],
+			f["install_dir"],
+			nativeSharedLib,
+			nil)
+		fileInfo.customStem = f["custom_stem"]
+		a.filesInfo = append(a.filesInfo, fileInfo)
+	}
+	// a.filesInfo = []apexFile{
+	// 	newApexFile(ctx, android.PathForBazelOut(ctx, "file"), "whatever", "someIdr", nativeSharedLib, nil),
+	// 	newApexFile(ctx, android.PathForBazelOut(ctx, "file2"), "whatever", "someIdr", nativeSharedLib, nil),
+	// }
+
+	// vctx := visitorContext{
+	// 	handleSpecialLibs: !android.Bool(a.properties.Ignore_system_library_special_case),
+	// 	checkDuplicate:    a.shouldCheckDuplicate(ctx),
+	// }
+	// ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool { return a.depVisitor(&vctx, ctx, child, parent) })
+	// vctx.normalizeFileInfo(ctx)
+	// a.filesInfo = vctx.filesInfo
 }
 
 func (a *apexBundle) setCompression(ctx android.ModuleContext) {
