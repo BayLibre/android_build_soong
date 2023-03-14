@@ -2209,6 +2209,32 @@ func TestJavaApiLibraryStaticLibsLink(t *testing.T) {
 	}
 }
 
+func TestJavaImportEmptyJars(t *testing.T) {
+	testJavaError(t, "jars must evaluate to a non-empty list", `
+		java_import {
+			name: "foo",
+		}
+	`)
+	testJavaError(t, "jars must evaluate to a non-empty list", `
+		java_import {
+			name: "foo",
+			jars: [],
+		}
+	`)
+
+	android.GroupFixturePreparers(
+		prepareForJavaTest,
+		dexpreopt.PrepareForTestByEnablingDexpreopt,
+	).ExtendWithErrorHandler(
+		android.FixtureExpectsAtLeastOneErrorMatchingPattern("jars must evaluate to a non-empty list"),
+	).RunTestWithBp(t, `
+		java_import {
+			name: "foo",
+			jars: ["*.jar"],
+		}
+	`)
+}
+
 func TestTradefedOptions(t *testing.T) {
 	result := PrepareForTestWithJavaBuildComponents.RunTestWithBp(t, `
 java_test_host {
