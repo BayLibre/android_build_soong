@@ -62,6 +62,17 @@ func (class apexFileClass) nameInMake() string {
 	}
 }
 
+// nameInMakeWithApp converts apexFileClass into the corresponding class name in Make, including
+// the APPS class, which nameInMake converts to ETC
+func (class apexFileClass) nameInMakeWithApp() string {
+	switch class {
+	case app, appSet:
+		return "APPS"
+	default:
+		return class.nameInMake()
+	}
+}
+
 // Return the full module name for a dependency module, which appends the apex module name unless re-using a system lib.
 func (a *apexBundle) fullModuleName(apexBundleName string, fi *apexFile) string {
 	linkToSystemLib := a.linkToSystemLib && fi.transitiveDep && fi.availableToPlatform()
@@ -376,6 +387,9 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				distCoverageFiles(w, "ndk_apis_usedby_apex", a.nativeApisUsedByModuleFile.String())
 				distCoverageFiles(w, "ndk_apis_backedby_apex", a.nativeApisBackedByModuleFile.String())
 				distCoverageFiles(w, "java_apis_used_by_apex", a.javaApisUsedByModuleFile.String())
+				if a.jacocoTransitiveZip != nil {
+					fmt.Fprintf(w, "ifneq (,$(filter $(my_register_name),$(TARGET_BUILD_APPS)))\n  $(call dist-for-goals,apps_only,%s:apex_jacoco_zips/%s.zip)\nendif\n", a.jacocoTransitiveZip.String(), name+a.suffix)
+				}
 			}
 		}}
 }

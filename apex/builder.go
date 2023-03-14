@@ -17,6 +17,7 @@ package apex
 import (
 	"encoding/json"
 	"fmt"
+	"os"
 	"path/filepath"
 	"runtime"
 	"sort"
@@ -1097,6 +1098,46 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 			a.ApexBundleDepsInfo.FlatListPath(),
 		},
 	})
+}
+
+func (a *apexBundle) buildTransitiveJacocoZip(ctx android.ModuleContext) {
+	stagingDir := android.PathForModuleOut(ctx, "transitive_jacoco_files_staging_dir")
+	ruleBuilder := android.NewRuleBuilder(pctx, ctx)
+	needsToBuildZip := false
+	for _, fi := range a.filesInfo {
+		if fi.jacocoReportClassesFile != nil {
+			moduleName := fi.androidMkModuleName
+			className := fi.class.nameInMake()
+			if fi.class != app && fi.class != appSet {
+				moduleName += "-" + a.Name()
+			} else {
+				// nameInMake() makes apps have the ETC class, which we don't want
+				className = "APPS"
+			}
+			moduleName += "_intermediates"
+			stagingDirDirname := stagingDir.Join(ctx, "out", "target", "common", "obj", className, moduleName)
+			stagingDirPath := stagingDirDirname.Join(ctx, "jacoco-report-classes.jar")
+			ruleBuilder.Command().Text("mkdir -p " + stagingDirDirname.String())
+			ruleBuilder.Command().Text("cp").Input(fi.jacocoReportClassesFile).Text(" " + stagingDirPath.String())
+			needsToBuildZip = true
+		}
+	}
+	if !needsToBuildZip {
+		return
+	}
+
+	outputZip := android.PathForModuleOut(ctx, "transitive_jacoco_files.zip")
+	ruleBuilder.Command().BuiltTool("soong_zip").
+		Flag("-C").Text(stagingDir.String()).
+		Flag("-D").Text(stagingDir.String()).
+		Flag("-o").Output(outputZip)
+	// Because we're not tracking the staging dir as proper dependencies, we need to delete it after
+	// so that if we remove some files from it and rebuilt, the files don't stick around.
+	ruleBuilder.Command().Text("rm -rf " + stagingDir.String())
+	a.jacocoTransitiveZip = outputZip
+	fmt.Fprintf(os.Stderr, "Apex jacoco zip: %s\n", a.jacocoTransitiveZip.String())
+
+	ruleBuilder.Build("apex_transitive_jacoco_files", "Zipping apex transitive jacoco files")
 }
 
 func (a *apexBundle) buildLintReports(ctx android.ModuleContext) {

@@ -482,6 +482,9 @@ type apexBundle struct {
 	// Optional list of lint report zip files for apexes that contain java or app modules
 	lintReports android.Paths
 
+	// Optional path to a zip file containing all the jacoco jars of this apex's dependencies
+	jacocoTransitiveZip android.Path
+
 	isCompressed bool
 
 	// Path of API coverage generate file
@@ -2569,6 +2572,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	a.buildApexDependencyInfo(ctx)
 	a.buildLintReports(ctx)
+	a.buildTransitiveJacocoZip(ctx)
 
 	// Append meta-files to the filesInfo list so that they are reflected in Android.mk as well.
 	if a.installable() {
