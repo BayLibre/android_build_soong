@@ -2209,6 +2209,46 @@ func TestJavaApiLibraryStaticLibsLink(t *testing.T) {
 	}
 }
 
+func TestJavaApiLibraryDepApiSrcs(t *testing.T) {
+	provider_bp_a := `
+	java_api_contribution {
+		name: "foo1",
+		api_file: "foo1.txt",
+	}
+	`
+	provider_bp_b := `
+	java_api_contribution {
+		name: "foo2",
+		api_file: "foo2.txt",
+	}
+	`
+	lib_bp_a := `
+	java_api_library {
+		name: "lib1",
+		api_surface: "public",
+		api_contributions: ["foo1", "foo2"],
+	}
+	`
+
+	ctx, _ := testJavaWithFS(t, `
+		java_api_library {
+			name: "bar1",
+			api_surface: "public",
+			api_contributions: ["foo1"],
+			dep_api_srcs: "lib1",
+		}
+		`,
+		map[string][]byte{
+			"a/Android.bp": []byte(provider_bp_a),
+			"b/Android.bp": []byte(provider_bp_b),
+			"c/Android.bp": []byte(lib_bp_a),
+		})
+
+	m := ctx.ModuleForTests("bar1", "android_common")
+	mergeZipsCommand := m.Rule("extract_srcs").RuleParams.Command
+	android.AssertStringDoesContain(t, "Command expected to contain dep_api_srcs output jar", mergeZipsCommand, "lib1.jar")
+}
+
 func TestTradefedOptions(t *testing.T) {
 	result := PrepareForTestWithJavaBuildComponents.RunTestWithBp(t, `
 java_test_host {
