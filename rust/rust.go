@@ -1406,7 +1406,7 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 	apiImportInfo := cc.GetApiImports(mod, actx)
 	for idx, lib := range deps.SharedLibs {
-		deps.SharedLibs[idx] = cc.GetReplaceModuleName(lib, apiImportInfo.SharedLibs)
+		deps.SharedLibs[idx] = cc.RewriteDepToStubsInMultitree(ctx, lib, apiImportInfo)
 	}
 
 	if ctx.Os() == android.Android {

@@ -9874,7 +9874,11 @@ func TestApexBuildsAgainstApiSurfaceStubLibraries(t *testing.T) {
 			],
 		}
 		`
-	result := testApex(t, bp)
+	result := testApex(t, bp,
+		android.FixtureModifyConfig(func(c android.Config) {
+			c.SetBuildingApexes(true)
+		}),
+	)
 
 	hasDep := func(m android.Module, wantDep android.Module) bool {
 		t.Helper()
@@ -9893,7 +9897,7 @@ func TestApexBuildsAgainstApiSurfaceStubLibraries(t *testing.T) {
 	libbarApiImportCoreVariant := result.ModuleForTests("libbar.apiimport", "android_arm64_armv8-a_shared").Module()
 
 	android.AssertBoolEquals(t, "apex variant should link against API surface stub libraries", true, hasDep(binfooApexVariant, libbarApiImportCoreVariant))
-	android.AssertBoolEquals(t, "apex variant should link against original library if exists", true, hasDep(binfooApexVariant, libbarCoreVariant))
+	android.AssertBoolEquals(t, "apex variant should not link against original library if exists", false, hasDep(binfooApexVariant, libbarCoreVariant))
 
 	binFooCFlags := result.ModuleForTests("binfoo", "android_arm64_armv8-a_apex29").Rule("ld").Args["libFlags"]
 	android.AssertStringDoesContain(t, "binfoo should link against APEX variant", binFooCFlags, "libbar.apex.29.apiimport.so")
@@ -9963,7 +9967,11 @@ func TestPlatformBinaryBuildsAgainstApiSurfaceStubLibraries(t *testing.T) {
 		}
 		`
 
-	result := testApex(t, bp)
+	result := testApex(t, bp,
+		android.FixtureModifyConfig(func(c android.Config) {
+			c.SetBuildingPlatform(true)
+		}),
+	)
 
 	hasDep := func(m android.Module, wantDep android.Module) bool {
 		t.Helper()
@@ -9982,7 +9990,7 @@ func TestPlatformBinaryBuildsAgainstApiSurfaceStubLibraries(t *testing.T) {
 	libbarApiImportCoreVariant := result.ModuleForTests("libbar.apiimport", "android_arm64_armv8-a_shared").Module()
 
 	android.AssertBoolEquals(t, "apex variant should link against API surface stub libraries", true, hasDep(binfooApexVariant, libbarApiImportCoreVariant))
-	android.AssertBoolEquals(t, "apex variant should link against original library if exists", true, hasDep(binfooApexVariant, libbarCoreVariant))
+	android.AssertBoolEquals(t, "apex variant should not depend on core variant", false, hasDep(binfooApexVariant, libbarCoreVariant))
 
 	binFooCFlags := result.ModuleForTests("binfoo", "android_arm64_armv8-a").Rule("ld").Args["libFlags"]
 	android.AssertStringDoesContain(t, "binfoo should link against APEX variant", binFooCFlags, "libbar.apex.29.apiimport.so")
@@ -10055,4 +10063,145 @@ func TestTrimmedApex(t *testing.T) {
 	android.AssertStringDoesContain(t, "missing lib to trim", libs_to_trim, "libfoo")
 	android.AssertStringDoesContain(t, "missing lib to trim", libs_to_trim, "libbar")
 	android.AssertStringDoesNotContain(t, "unexpected libs in the libs to trim", libs_to_trim, "libbaz")
+}
+
+// Test the following for an apex library and api_imports
+// 1. It gets source of another library if it is in same apex
+// 2. It gets stubs of another library if the library is in a different apex
+// 2. It gets stubs of platform library
+func TestApiEnforcementForApexLibraries(t *testing.T) {
+	bp := `
+	apex_key {
+		name: "apex_key",
+	}
+	// NN Apex
+	apex {
+		name: "com.android.neuralnetworks",
+		key: "apex_key",
+		native_shared_libs: [
+			"libneuralnetworks", "libnn_private",
+		],
+		min_sdk_version: "29",
+	}
+	cc_library {
+		name: "libnn_private",
+		shared_libs: [
+			"libplatform",
+			"libneuralnetworks",
+			"libstatspull",
+		],
+		apex_available: ["com.android.neuralnetworks"],
+		min_sdk_version: "29",
+	}
+	cc_library {
+		name: "libneuralnetworks",
+		apex_available: ["com.android.neuralnetworks", "com.android.os.statsd"], // provides apis to statsd
+		min_sdk_version: "29",
+	}
+	// statsd Apex
+	apex {
+		name: "com.android.os.statsd",
+		key: "apex_key",
+		native_shared_libs: [
+			"libstatspull", "libstatsd_private",
+		],
+		min_sdk_version: "29",
+	}
+	cc_library {
+		name: "libstatsd_private",
+		shared_libs: [
+			"libplatform",
+			"libneuralnetworks",
+			"libstatspull",
+		],
+		apex_available: ["com.android.os.statsd"],
+		min_sdk_version: "29",
+	}
+	cc_library {
+		name: "libstatspull",
+		apex_available: ["com.android.os.statsd", "com.android.neuralnetworks"], // provides apis to nn
+		min_sdk_version: "29",
+	}
+
+	// source libplatform
+	cc_library {
+		name: "libplatform",
+	}
+
+	// API imports setup
+	cc_api_library {
+		name: "libplatform", // from platform
+		src: "prebuilt.so",
+		variants: [
+			"apex.current",
+		],
+	}
+	cc_api_variant {
+		name: "libplatform",
+		variant: "apex",
+		version: "current",
+		src: "libplatform.so",
+	}
+	cc_api_library {
+		name: "libneuralnetworks", // from NN apex
+		src: "prebuilt.so",
+		variants: [
+			"apex.current",
+		],
+	}
+	cc_api_variant {
+		name: "libneuralnetworks",
+		variant: "apex",
+		version: "current",
+		src: "libneuralnetworks.so",
+	}
+
+	cc_api_library {
+		name: "libstatspull", // from statsd apex
+		src: "prebuilt.so",
+		variants: [
+			"apex.current",
+		],
+	}
+	cc_api_variant {
+		name: "libstatspull",
+		variant: "apex",
+		version: "current",
+		src: "libstatspull.so",
+	}
+
+	api_imports {
+		name: "api_imports",
+		shared_libs: [
+			"liblog",
+			"libneuralnetworks",
+			"libstatspull",
+		],
+		module_lib_api_shared_libs_from_platform: [
+			"libplatform",
+		],
+		module_lib_api_shared_libs_from_apexes: [
+			"libneuralnetworks",
+			"libstatspull",
+		],
+	}
+	`
+	ctx := testApex(t, bp,
+		android.FixtureModifyConfig(func(c android.Config) {
+			c.SetBuildingApexes(true)
+		}),
+		android.FixtureAddFile("system/sepolicy/apex/com.android.neuralnetworks-file_contexts", nil),
+		android.FixtureAddFile("system/sepolicy/apex/com.android.os.statsd-file_contexts", nil),
+	)
+	// apex variant of private nn libraries
+	libNnPrivateLdFlags := ctx.ModuleForTests("libnn_private", "android_arm64_armv8-a_shared_apex29").Rule("ld").Args["libFlags"]
+
+	// assertions
+	// private nn library should link against
+	// 1. impl of libneuralnetworks
+	// 2. stubs of libstatspull from api_imports
+	// 3. stubs of liblog from api_imports
+	ensureContains(t, libNnPrivateLdFlags, "libneuralnetworks/android_arm64_armv8-a_shared_apex29/libneuralnetworks.so")
+	ensureContains(t, libNnPrivateLdFlags, "libplatform.apiimport/android_arm64_armv8-a_shared_current/libplatform.apex.current.apiimport.so")
+	ensureContains(t, libNnPrivateLdFlags, "libstatspull.apiimport/android_arm64_armv8-a_shared_current/libstatspull.apex.current.apiimport.so")
 }
