@@ -1917,20 +1917,29 @@ func isUbsanEnabled(c *Module) bool {
 	return Bool(sanitizeProps.Integer_overflow) || len(sanitizeProps.Misc_undefined) > 0
 }
 
+// Return the mixed build config key for a module's apex variants.
 func GetApexConfigKey(ctx android.BaseModuleContext) *android.ApexConfigKey {
-	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
-	if !apexInfo.IsForPlatform() {
-		if !ctx.Config().BazelContext.IsModuleDclaAllowed(ctx.Module().Name()) {
-			return nil
-		}
-		apexKey := android.ApexConfigKey{
-			WithinApex:     true,
-			ApexSdkVersion: findApexSdkVersion(ctx, apexInfo).String(),
-		}
-		return &apexKey
+	// APEX variants should target Android.
+	if ctx.Os() != android.Android {
+		return nil
 	}
 
-	return nil
+	// Ignore modules that are not part of an APEX's payload, even if it's a dep
+	// of an APEX.
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	if apexInfo.IsForPlatform() {
+		return nil
+	}
+
+	// Check allowlist.
+	if !ctx.Config().BazelContext.IsModuleDclaAllowed(ctx.Module().Name()) {
+		return nil
+	}
+	apexKey := android.ApexConfigKey{
+		WithinApex:     true,
+		ApexSdkVersion: findApexSdkVersion(ctx, apexInfo).String(),
+	}
+	return &apexKey
 }
 
 func (c *Module) ProcessBazelQueryResponse(ctx android.ModuleContext) {
