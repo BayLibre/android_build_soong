@@ -16,6 +16,7 @@ package java
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -779,9 +780,13 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			Text(diff).
 			Input(apiFile).Input(d.apiFile)
 
-		rule.Command().
-			Text(diff).
-			Input(pendingApiFile).Input(d.pendingApiFile)
+		if d.properties.Check_api.Current.Pending_api_file != nil {
+			rule.Command().
+				Text(diff).
+				Input(pendingApiFile).Input(d.pendingApiFile)
+		} else {
+			fmt.Fprintf(os.Stderr, "warning: %s: missing pending api file: '%s'\n", d, pendingApiFile)
+		}
 
 		rule.Command().
 			Text(diff).
