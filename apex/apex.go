@@ -543,6 +543,8 @@ type apexFile struct {
 
 	multilib string
 
+	isBazelPrebuilt bool
+
 	// TODO(jiyong): remove this
 	module android.Module
 }
@@ -2003,13 +2005,36 @@ func (a *apexBundle) ProcessBazelQueryResponse(ctx android.ModuleContext) {
 		panic(fmt.Errorf("internal error: unexpected apex_type for the ProcessBazelQueryResponse: %v", a.properties.ApexType))
 	}
 
-	// filesInfo is not set in mixed mode, because all information about the
-	// apex's contents should completely come from the Starlark providers.
-	//
-	// Prevent accidental writes to filesInfo in the earlier parts Soong by
-	// asserting it to be nil.
-	if a.filesInfo != nil {
-		panic(fmt.Errorf("internal error: filesInfo must be nil for an apex handled by Bazel."))
+	classes := map[string]apexFileClass{
+		"app":              app,
+		"appSet":           appSet,
+		"etc":              etc,
+		"goBinary":         goBinary,
+		"javaSharedLib":    javaSharedLib,
+		"nativeExecutable": nativeExecutable,
+		"nativeSharedLib":  nativeSharedLib,
+		"nativeTest":       nativeTest,
+		"pyBinary":         pyBinary,
+		"shBinary":         shBinary,
+	}
+
+	// filesInfo in mixed mode must retrieve all information about the apex's
+	// contents completely from the Starlark providers. It should never rely on
+	// Android.bp information, as they might not exist for fully migrated
+	// dependencies. Reset filesInfo here.
+	a.filesInfo = nil
+	for _, f := range outputs.PayloadFilesInfo {
+		fileInfo := apexFile{
+			isBazelPrebuilt: true,
+
+			builtFile:           android.PathForBazelOut(ctx, f["built_file"]),
+			androidMkModuleName: f["make_module_name"],
+			installDir:          f["install_dir"],
+			class:               classes[f["class"]],
+			customStem:          f["basename"],
+		}
+		fileInfo.multilib = f["multilib"]
+		a.filesInfo = append(a.filesInfo, fileInfo)
 	}
 }
 
