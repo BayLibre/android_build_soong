@@ -149,13 +149,35 @@ func readdirToMap(dir string) map[string]os.FileInfo {
 
 	return result
 }
+func countSlashes(filepath string) int {
+	count := 0
+	for i := 0; i < len(filepath); i++ {
+		if filepath[i] == '/' {
+			count++
+		}
+	}
+
+	return count
+}
+func getPrefix(filepath string) string {
+	slashCount := countSlashes(filepath)
+
+	ret := ""
+	for i := 0; i < slashCount; i++ {
+		ret += "../"
+	}
+	return ret
+}
 
 // Creates a symbolic link at dst pointing to src
 func symlinkIntoForest(topdir, dst, src string) uint64 {
-	srcPath := shared.JoinPath(topdir, src)
-	dstPath := shared.JoinPath(topdir, dst)
+	// b/259191764 - relative symlinks, this requires changing dir to top
 
-	// Check if a symlink already exists.
+	os.Chdir(topdir)
+	srcPath := getPrefix(dst) + src
+	dstPath := dst
+
+	// Check whether a symlink already exists.
 	if dstInfo, err := os.Lstat(dstPath); err != nil {
 		if !os.IsNotExist(err) {
 			fmt.Fprintf(os.Stderr, "Failed to lstat '%s': %s", dst, err)
@@ -175,6 +197,7 @@ func symlinkIntoForest(topdir, dst, src string) uint64 {
 	}
 
 	// Create symlink.
+
 	if err := os.Symlink(srcPath, dstPath); err != nil {
 		fmt.Fprintf(os.Stderr, "Cannot create symlink at '%s' pointing to '%s': %s", dst, src, err)
 		os.Exit(1)
