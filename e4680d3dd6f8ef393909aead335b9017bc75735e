@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03dba491_856f30db",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-14T01:05:49Z",
+      "side": 1,
+      "message": "Why do we need to have this when it can be calculated from the other fields?",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 48
+      },
+      "revId": "e4680d3dd6f8ef393909aead335b9017bc75735e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
