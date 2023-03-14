@@ -16,6 +16,7 @@ package apex
 import (
 	"android/soong/android"
 	"android/soong/bazel/cquery"
+	"fmt"
 	"strings"
 	"testing"
 )
@@ -25,6 +26,7 @@ func TestApexImageInMixedBuilds(t *testing.T) {
 apex_key{
 	name: "foo_key",
 }
+
 apex {
 	name: "foo",
 	key: "foo_key",
@@ -59,6 +61,24 @@ apex {
 						ProvidesLibs: []string{"a", "b"},
 
 						// ApexMkInfo Starlark provider
+						PayloadFilesInfo: []map[string]string{
+							{
+								"built_file":       "bazel-out/64/libcrypto.so",
+								"install_dir":      "lib64",
+								"class":            "nativeSharedLib",
+								"make_module_name": "libcrypto",
+								"basename":         "libcrypto.so",
+								"multilib":         "lib64",
+							},
+							{
+								"built_file":       "bazel-out/32/libcrypto.so",
+								"install_dir":      "lib",
+								"class":            "nativeSharedLib",
+								"make_module_name": "libcrypto",
+								"basename":         "libcrypto.so",
+								"multilib":         "lib32",
+							},
+						},
 						MakeModulesToInstall: []string{"c"}, // d deliberately omitted
 					},
 				},
@@ -68,6 +88,10 @@ apex {
 
 	m := result.ModuleForTests("foo", "android_common_foo_image").Module()
 	ab, ok := m.(*apexBundle)
+
+	for _, f := range ab.filesInfo {
+		fmt.Printf("%+v\n", f)
+	}
 	if !ok {
 		t.Fatalf("Expected module to be an apexBundle, was not")
 	}
@@ -120,7 +144,7 @@ apex {
 	if len(ab.makeModulesToInstall) != 1 && ab.makeModulesToInstall[0] != "c" {
 		t.Errorf("Expected makeModulesToInstall slice to only contain 'c', got %q", ab.makeModulesToInstall)
 	}
-	if w := "LOCAL_REQUIRED_MODULES := c"; !strings.Contains(data, w) {
+	if w := "LOCAL_REQUIRED_MODULES := libcrypto.foo:64 libcrypto.foo:32 c"; !strings.Contains(data, w) {
 		t.Errorf("Expected %q in androidmk data, but did not find it in %q", w, data)
 	}
 }
