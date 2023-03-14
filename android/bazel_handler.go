@@ -1022,7 +1022,14 @@ def json_encode(input):
     fail("unsupported value '%s' of type '%s'" % (p, type(p)))
 
   def encode_list(list):
-    return "[%s]" % ", ".join([encode_primitive(item) for item in list])
+    items = []
+    if len(list) > 0 and type(list[0]) == "dict":
+        for input in list:
+            kv_pairs = [("%s: %s" % (encode_primitive(k), encode_primitive(v))) for (k, v) in input.items()]
+            items.append("{ %s }" % ", ".join(kv_pairs))
+    else:
+        items = [encode_primitive(item) for item in list]
+    return "[%s]" % ", ".join(items)
 
   def encode_list_or_primitive(v):
     return encode_list(v) if type(v) == "list" else encode_primitive(v)
