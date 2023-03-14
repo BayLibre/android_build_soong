@@ -84,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73961a76_70b71e7c",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-14T13:45:43Z",
+      "side": 1,
+      "message": "Yeah I\u0027m not clear on what name should actually be in the xml file. I think requiring the property to be set and using that makes sense to me.\n\nI wasn\u0027t sure how common the override package name was used, so I was just matching what I saw in other parts of the code.",
+      "parentUuid": "201f7eaf_68e90de3",
+      "revId": "d62532d81f7633edd2503e13e1f94d6644830326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "901649b7_45bb92be",
         "filename": "java/app_test.go",
         "patchSetId": 8
