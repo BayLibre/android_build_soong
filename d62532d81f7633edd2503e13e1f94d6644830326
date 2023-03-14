@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddc0fa62_718d4d03",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-14T13:40:40Z",
+      "side": 1,
+      "message": "I thought we wanted to support overriding the allowlist itself based on this comment [this comment](https://b.corp.google.com/issues/242509786#comment7).",
+      "parentUuid": "7172933f_5492e2d0",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 41
+      },
+      "revId": "d62532d81f7633edd2503e13e1f94d6644830326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "201f7eaf_68e90de3",
         "filename": "java/app.go",
         "patchSetId": 8
