@@ -80,6 +80,30 @@
       },
       "revId": "ebc290c758ca4f1121ff9b08c2ebc47c33d6cd71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8694450_1310cb73",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-03-14T19:35:54Z",
+      "side": 1,
+      "message": "Sorry I missed this comment in trying to add more OWNERS to the review. I agree with Peter that unless the preferred method is easy to implement, we should land this version that works, and file a bug for fixing it the preferred way.",
+      "parentUuid": "1c8910db_690d39c3",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 69
+      },
+      "revId": "ebc290c758ca4f1121ff9b08c2ebc47c33d6cd71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
