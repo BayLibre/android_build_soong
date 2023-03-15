@@ -142,6 +142,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5860de20_f4fea5e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1900900
+      },
+      "writtenOn": "2023-03-15T13:59:27Z",
+      "side": 1,
+      "message": "Hi Joe, Cole,\n\nI know it is confusing that there are 2 runners for mobly now (go/tf-mobly and go/mobly-aosp-codelab). Maybe we can discuss about the mobly template for soong after the long-term solution is ready.\n\nCreated aosp/2489875 so we can share the mobly-tf config as a `test_config_template` for short-term. Could you help review that? Thanks a lot!",
+      "parentUuid": "3a926c3c_e34ba355",
+      "revId": "b6a6dc9177532d5a2e89f2d27500c6c500647f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4adc2496_e87029db",
