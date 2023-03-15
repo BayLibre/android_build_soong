@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c0ad95_2e69e022",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-03-15T20:20:09Z",
+      "side": 1,
+      "message": "joeo: looks like build-ndk-prebuilts.sh should have ndk-team@ as OWNERS?",
+      "revId": "a07f2385c98a290c57958dd35024cd4f85f67097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
