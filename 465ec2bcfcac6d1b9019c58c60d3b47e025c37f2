@@ -16,6 +16,24 @@
       "message": "Why do we need this CL? Can\u0027t we gather this information from `JobInfo`\u0027s `elapsed_time` ?",
       "revId": "465ec2bcfcac6d1b9019c58c60d3b47e025c37f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e83fc52_9569ea66",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-15T03:41:19Z",
+      "side": 1,
+      "message": "I\u0027d like to gather long running tasks which isn\u0027t on critical path as well. should I extract it into another message types?",
+      "parentUuid": "b21e8c7f_60914c18",
+      "revId": "465ec2bcfcac6d1b9019c58c60d3b47e025c37f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
