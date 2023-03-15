@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9bb579b_a1bfe3fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-15T07:36:15Z",
+      "side": 1,
+      "message": "This isn\u0027t complete for com.android.virt APEX because it relies on module types without coverage-awareness.\n\nLet\u0027s do it incrementally. At least, this commit fixes the linked bug: microdroid with coverage will have the same set of artifacts.",
+      "revId": "a20e1f2941353dfd5e5d3c030e52b43b01f517bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
