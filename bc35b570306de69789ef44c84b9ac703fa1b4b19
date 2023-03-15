@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72af3b54_d16cf5ad",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-15T04:20:31Z",
+      "side": 1,
+      "message": "What is the use case for setting this on the environment that soong_build runs in?",
+      "range": {
+        "startLine": 478,
+        "startChar": 1,
+        "endLine": 481,
+        "endChar": 0
+      },
+      "revId": "bc35b570306de69789ef44c84b9ac703fa1b4b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f617ef1_f91e5b1e",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-15T04:20:31Z",
+      "side": 1,
+      "message": "nit: Unless we want to log metrics for % of builds running in multitree-mode, I would just skip this for now",
+      "range": {
+        "startLine": 1035,
+        "startChar": 4,
+        "endLine": 1035,
+        "endChar": 18
+      },
+      "revId": "bc35b570306de69789ef44c84b9ac703fa1b4b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
