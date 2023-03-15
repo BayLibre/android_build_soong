@@ -330,6 +330,24 @@
       "parentUuid": "546e2921_6605af49",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ab6bc2_ac3c9327",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-15T14:07:15Z",
+      "side": 1,
+      "message": "Thanks for digging, Prashanth. And sorry for the loooong delays.\n\nI think we can\u0027t help but adding a risc-v only exception here... because the problem was triggered by other risc-v only changes you mentioned. I hope those changes are temporal.\n\nSpecifically, I think it\u0027s okay to skip L82 for risc-v given that the meaning of min apk for the architecture is very odd at the moment and comparing it against apiLevels doesn\u0027t make much sense.\n\nOr, if we seek for some generality, I suggest changing `len(targets) \u003e 0` to `len(targets) \u003e 1` so that we have at least one VNDK APEX.\n\nWith that change, I was able to see `system/apex/com.android.vndk.current.apex` with `m`.\n\nWhat do you think?",
+      "parentUuid": "79fb44d7_313764c0",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
