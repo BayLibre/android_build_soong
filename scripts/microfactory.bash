@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Set of utility functions to build and run go code with microfactory
+# Set of utility functions to build go code
 #
 # Inputs:
 #  ${TOP}: The top of the android source tree
@@ -48,19 +48,17 @@ function getoutdir
     echo "${out_dir}"
 }
 
-# Bootstrap microfactory from source if necessary and use it to build the
-# requested binary.
-#
-# Arguments:
-#  $1: name of the requested binary
-#  $2: package name
+# Install the requested go packages into $OUT_DIR/
 function soong_build_go
 {
-    BUILDDIR=$(getoutdir) \
-      SRCDIR=${TOP} \
-      BLUEPRINTDIR=${TOP}/build/blueprint \
-      EXTRA_ARGS="-pkg-path android/soong=${TOP}/build/soong -pkg-path prebuilts/bazel/common/proto=${TOP}/prebuilts/bazel/common/proto -pkg-path rbcrun=${TOP}/build/make/tools/rbcrun -pkg-path google.golang.org/protobuf=${TOP}/external/golang-protobuf -pkg-path go.starlark.net=${TOP}/external/starlark-go" \
-      build_go $@
+    local out_dir="$(getoutdir)"
+    GOWORK="${TOP}/build/soong/go.work" \
+      GOPATH="${out_dir}/go" \
+      GOCACHE="${out_dir}/.go_cache" \
+      GOBIN="${out_dir}" \
+      GOMODCACHE=off \
+      GOPROXY=off \
+      GOENV=off \
+      CGO_ENABLED=0 \
+      "${GOROOT}/bin/go" install -trimpath -buildvcs=false "$@"
 }
-
-source ${TOP}/build/blueprint/microfactory/microfactory.bash

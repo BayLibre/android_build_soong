@@ -23,8 +23,6 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/google/blueprint/microfactory"
-
 	"android/soong/ui/build/paths"
 	"android/soong/ui/metrics"
 )
@@ -144,15 +142,7 @@ func SetupPath(ctx Context, config Config) {
 	origPath, _ := config.Environment().Get("PATH")
 	// The directory containing symlinks from binaries in $PATH to the interposer.
 	myPath := filepath.Join(config.OutDir(), ".path")
-	interposer := myPath + "_interposer"
-
-	// Bootstrap the path_interposer Go binary with microfactory.
-	var cfg microfactory.Config
-	cfg.Map("android/soong", "build/soong")
-	cfg.TrimPath, _ = filepath.Abs(".")
-	if _, err := microfactory.Build(&cfg, interposer, "android/soong/cmd/path_interposer"); err != nil {
-		ctx.Fatalln("Failed to build path interposer:", err)
-	}
+	interposer := filepath.Join(config.OutDir(), "path_interposer")
 
 	// Save the original $PATH in a file.
 	if err := ioutil.WriteFile(interposer+"_origpath", []byte(origPath), 0777); err != nil {
@@ -238,7 +228,7 @@ func SetupPath(ctx Context, config Config) {
 			continue
 		}
 
-		err := os.Symlink("../.path_interposer", filepath.Join(myPath, name))
+		err := os.Symlink("../path_interposer", filepath.Join(myPath, name))
 		// Intentionally ignore existing files -- that means that we
 		// just created it, and the first one should win.
 		if err != nil && !os.IsExist(err) {
