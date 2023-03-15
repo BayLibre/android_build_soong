@@ -16,6 +16,24 @@
       "message": "Our of interest, when is this expected to be submitted?",
       "revId": "48f759a2b3406b18aaece0d46b1ee639f617b7a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb8b7de_ff0762cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2023-03-15T15:55:21Z",
+      "side": 1,
+      "message": "Still ironing out a breakage, hopefully by this week.",
+      "parentUuid": "7ae587f2_eb8bd7cb",
+      "revId": "48f759a2b3406b18aaece0d46b1ee639f617b7a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
