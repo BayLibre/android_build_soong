@@ -10,10 +10,10 @@ use (
 )
 
 replace (
-	github.com/golang/protobuf v0.0.0 => ../../external/golang-protobuf
-	github.com/google/blueprint v0.0.0 => ../blueprint
-	github.com/google/go-cmp v0.0.0 => ../../external/go-cmp
-	google.golang.org/protobuf v0.0.0 => ../../external/golang-protobuf
-	prebuilts/bazel/common/proto/analysis_v2 v0.0.0 => ../../prebuilts/bazel/common/proto/analysis_v2
-	prebuilts/bazel/common/proto/build v0.0.0 => ../../prebuilts/bazel/common/proto/build
+	github.com/golang/protobuf => ../../external/golang-protobuf
+	github.com/google/blueprint => ../blueprint
+	github.com/google/go-cmp => ../../external/go-cmp
+	google.golang.org/protobuf => ../../external/golang-protobuf
+	prebuilts/bazel/common/proto/analysis_v2 => ../../prebuilts/bazel/common/proto/analysis_v2
+	prebuilts/bazel/common/proto/build => ../../prebuilts/bazel/common/proto/build
 )

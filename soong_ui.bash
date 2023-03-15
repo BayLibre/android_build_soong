@@ -32,9 +32,9 @@ export ORIGINAL_PWD=${PWD}
 export TOP=$(gettop)
 source ${TOP}/build/soong/scripts/microfactory.bash
 
-soong_build_go soong_ui android/soong/cmd/soong_ui
-soong_build_go mk2rbc android/soong/mk2rbc/cmd
-soong_build_go rbcrun rbcrun/cmd
+soong_build_go ${TOP}/build/soong/go.work soong_ui android/soong/cmd/soong_ui
+soong_build_go ${TOP}/build/soong/go.work mk2rbc android/soong/mk2rbc/cmd
+soong_build_go ${TOP}/build/make/tools/rbcrun/go.work rbcrun rbcrun/cmd
 
 cd ${TOP}
 exec "$(getoutdir)/soong_ui" "$@"

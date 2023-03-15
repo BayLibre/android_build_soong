@@ -46,8 +46,6 @@ type Tracer interface {
 	End(thread Thread)
 	Complete(name string, thread Thread, begin, end uint64)
 
-	ImportMicrofactoryLog(filename string)
-
 	StatusTracer() status.StatusOutput
 
 	NewThread(name string) Thread

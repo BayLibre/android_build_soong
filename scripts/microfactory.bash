@@ -48,19 +48,18 @@ function getoutdir
     echo "${out_dir}"
 }
 
-# Bootstrap microfactory from source if necessary and use it to build the
-# requested binary.
+# Build the requested go package
 #
 # Arguments:
-#  $1: name of the requested binary
-#  $2: package name
+#  $1: go.work file path
+#  $2: name of the requested binary in the out dir
+#  $3: package name
 function soong_build_go
 {
-    BUILDDIR=$(getoutdir) \
-      SRCDIR=${TOP} \
-      BLUEPRINTDIR=${TOP}/build/blueprint \
-      EXTRA_ARGS="-pkg-path android/soong=${TOP}/build/soong -pkg-path prebuilts/bazel/common/proto=${TOP}/prebuilts/bazel/common/proto -pkg-path rbcrun=${TOP}/build/make/tools/rbcrun -pkg-path google.golang.org/protobuf=${TOP}/external/golang-protobuf -pkg-path go.starlark.net=${TOP}/external/starlark-go" \
-      build_go $@
+    OUT="$(getoutdir)"
+    GOWORK="$1" \
+      GOPATH="${OUT}/go" \
+      GOPROXY=off \
+      CGO_ENABLED=0 \
+      "${GOROOT}/bin/go" build -o "${OUT}/$2" -trimpath -buildvcs=false "$3"
 }
-
-source ${TOP}/build/blueprint/microfactory/microfactory.bash
