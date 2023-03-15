@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "768ef89f_bdbbff80",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-03-15T20:48:22Z",
+      "side": 1,
+      "message": "From our offline discussion: this makes it available to makefiles (where packaging rules may need it), with the (unnecessary) side effect of also having it available in Soong.  It also forces re-analysis if it were ever different, which is desirable (albeit at a higher level that absolutely necessary.)",
+      "parentUuid": "72af3b54_d16cf5ad",
+      "range": {
+        "startLine": 478,
+        "startChar": 1,
+        "endLine": 481,
+        "endChar": 0
+      },
+      "revId": "bc35b570306de69789ef44c84b9ac703fa1b4b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f617ef1_f91e5b1e",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-15T04:20:31Z",
       "side": 1,
       "message": "nit: Unless we want to log metrics for % of builds running in multitree-mode, I would just skip this for now",
+      "range": {
+        "startLine": 1035,
+        "startChar": 4,
+        "endLine": 1035,
+        "endChar": 18
+      },
+      "revId": "bc35b570306de69789ef44c84b9ac703fa1b4b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df668339_935fa2a3",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-03-15T20:48:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f617ef1_f91e5b1e",
       "range": {
         "startLine": 1035,
         "startChar": 4,
