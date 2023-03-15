@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e9a380_7c621906",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-15T02:06:26Z",
+      "side": 1,
+      "message": "can you please add top level docstrings for these messages, too?",
+      "parentUuid": "6f9ac4fb_754c70a9",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faa996bf_cbc55a1b",
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "criticalPath is a pointer type, so just make NewCriticalPath accepts Logger and *CriticalPath.",
       "parentUuid": "7fb82798_0d6ab3ab",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f14be0d_485bebaa",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-15T02:06:26Z",
+      "side": 1,
+      "message": "yes, that\u0027s fine, too.",
+      "parentUuid": "5387677a_1a46e4a0",
       "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
