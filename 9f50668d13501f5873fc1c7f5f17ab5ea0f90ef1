@@ -348,6 +348,24 @@
       "parentUuid": "79fb44d7_313764c0",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fe60efd_cb2d990e",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-15T20:35:07Z",
+      "side": 1,
+      "message": "I wish I knew enough about this to make a useful recommendation on which method is preferred! But @ccross@android.com is back so looping in - in terms of approaches, both of the changes you proposed work for me. Colin, would you be able to direct here?",
+      "parentUuid": "66ab6bc2_ac3c9327",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
