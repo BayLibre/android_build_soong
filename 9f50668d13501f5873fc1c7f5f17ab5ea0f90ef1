@@ -384,6 +384,24 @@
       "parentUuid": "7fe60efd_cb2d990e",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62007975_930eb831",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-03-15T22:10:01Z",
+      "side": 1,
+      "message": "I\u0027ve been trying to make `minApiForArch\u003d\u003dFutureApiLevel` work generically so we don\u0027t have to go through all of this again if we add another new architecture.\n\nI think the only relevant riscv64-specific change is to depend on the version of libc++ built from the platform sources instead of the NDK prebuilt.  That seems completely reasonable though, its just a dependency on a module with sdk_version: \"current\", and since every riscv64 module is built for \"current\" it should work.\n\nThe fundamental problem here is comparing `android.ApiLevelFromUser(\"UpsideDownCake\")` computed here with `android.ApiLevelFromUser(\"current\")` returned by `MinApiForArch`.  I\u0027m not sure how the semantics are different for \"UpsideDownCake\" vs. \"current\", as far as I know that distinction doesn\u0027t exist anywhere else besides VNDK.\n\nThis fix seems fine to me, although I think it would need Jiyong to suggest wording for a comment on why it is necessary.\n\nAn alternative would be a `minVndkForArch` wrapper function around `cc.MinApiForArch` that converts `FutureApiLevel` to `ApiLevelFromUser(ctx.Config().Platform_vndk_version)`, again with a comment on the distinction and why the conversion is necessary.",
+      "parentUuid": "d4ec0542_ad09bcd4",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
