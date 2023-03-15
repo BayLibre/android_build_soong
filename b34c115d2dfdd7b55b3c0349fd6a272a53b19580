@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab1d07d_5a9509ef",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-15T03:55:58Z",
+      "side": 1,
+      "message": "I missed this comment, https://android-review.git.corp.google.com/c/platform/build/soong/+/2489097",
+      "parentUuid": "d2e9a380_7c621906",
+      "revId": "b34c115d2dfdd7b55b3c0349fd6a272a53b19580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faa996bf_cbc55a1b",
