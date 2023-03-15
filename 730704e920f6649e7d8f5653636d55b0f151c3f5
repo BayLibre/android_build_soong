@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc611128_065627e0",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-15T07:59:49Z",
+      "side": 1,
+      "message": "nit: make this block as a function",
+      "revId": "730704e920f6649e7d8f5653636d55b0f151c3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b79c434_3dad0169",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-15T07:59:49Z",
+      "side": 1,
+      "message": "please present an example line",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 95,
+        "endChar": 31
+      },
+      "revId": "730704e920f6649e7d8f5653636d55b0f151c3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d4ea56_b7df662e",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-15T07:59:49Z",
+      "side": 1,
+      "message": "error case is missing",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 3
+      },
+      "revId": "730704e920f6649e7d8f5653636d55b0f151c3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1802089c_21059c30",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-15T07:59:49Z",
+      "side": 1,
+      "message": "error case is missing",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 3
+      },
+      "revId": "730704e920f6649e7d8f5653636d55b0f151c3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
