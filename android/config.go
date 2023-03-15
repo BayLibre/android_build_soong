@@ -257,6 +257,11 @@ type config struct {
 	// If true, for any requests to Bazel, communicate with a Bazel proxy using
 	// unix sockets, instead of spawning Bazel as a subprocess.
 	UseBazelProxy bool
+
+	// If true, it indicates that multitree is analyzing system inner tree
+	buildingPlatform bool
+	// If true, it indicates that multitree is analyzing apex inner tree
+	buildingApexes bool
 }
 
 type deviceConfig struct {
@@ -1851,4 +1856,27 @@ func (c *config) ApiSurfacesDir(s ApiSurface, version string) string {
 		"api_surfaces",
 		s.String(),
 		version)
+}
+
+// TODO: Rebase on aosp/2488599
+func (c *config) Multitree() bool {
+	return true
+}
+
+// An env var set by orchestrator when analysing system inner tree
+func (c *config) BuildingPlatform() bool {
+	return c.buildingPlatform
+}
+
+func (c *config) SetBuildingPlatform(b bool) {
+	c.buildingPlatform = b
+}
+
+// An env var set by orchestrator when analysing apexes inner tree
+func (c *config) BuildingApexes() bool {
+	return c.buildingApexes
+}
+
+func (c *config) SetBuildingApexes(b bool) {
+	c.buildingApexes = b
 }
