@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d39751b6_9c608d28",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-03-15T16:41:22Z",
+      "side": 1,
+      "message": "typo: androidMkForFiles",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "84e01e1143ac627ba7a2c4534c006788d3dfd941",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5892fa1b_4ac4d288",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-03-15T16:41:22Z",
+      "side": 1,
+      "message": "What effect does this have on the result?",
+      "revId": "84e01e1143ac627ba7a2c4534c006788d3dfd941",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b316d17_af86cd54",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2009,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-03-15T16:41:22Z",
+      "side": 1,
+      "message": "I\u0027m not too sure about the inner workings of go, but would it be more efficient to define this as a top-level constant, outside of the function?",
+      "revId": "84e01e1143ac627ba7a2c4534c006788d3dfd941",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
