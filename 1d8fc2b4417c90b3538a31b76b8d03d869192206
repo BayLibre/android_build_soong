@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe4dcd9_bc1fd4ef",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3008,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-03-15T22:09:04Z",
+      "side": 1,
+      "message": "depends on whether we do this for 4 module types or just `java_sdk_library`",
+      "revId": "1d8fc2b4417c90b3538a31b76b8d03d869192206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a285734_fb32fbef",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-03-15T22:09:04Z",
+      "side": 1,
+      "message": "will be replaced with PropertyErrorf",
+      "revId": "1d8fc2b4417c90b3538a31b76b8d03d869192206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d305ffb2_e27bea92",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-03-15T22:09:04Z",
+      "side": 1,
+      "message": "would be replaced by",
+      "revId": "1d8fc2b4417c90b3538a31b76b8d03d869192206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
