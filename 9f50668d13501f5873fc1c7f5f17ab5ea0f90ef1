@@ -402,6 +402,24 @@
       "parentUuid": "d4ec0542_ad09bcd4",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caac4c33_4380fd55",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-15T23:22:51Z",
+      "side": 1,
+      "message": "Thanks for the feedback Colin - I\u0027ll look to you Jiyong to make the call. The second suggestion to make a \u0027minVndkForArch\u0027 also works for me, as it also achieves the same effect of undoing the UDC/current conversion.",
+      "parentUuid": "62007975_930eb831",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
