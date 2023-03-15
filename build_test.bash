@@ -74,5 +74,5 @@ STANDALONE_BAZEL=true "${TOP}/build/bazel/bin/bazel" --batch --max_idle_secs=1 h
 
 echo
 echo "Running Soong test..."
-soong_build_go multiproduct_kati android/soong/cmd/multiproduct_kati
+soong_build_go android/soong/cmd/multiproduct_kati
 exec "$(getoutdir)/multiproduct_kati" --skip-products "$(echo "${SKIPPED_PRODUCTS[@]-}" | tr ' ' ',')" "$@"

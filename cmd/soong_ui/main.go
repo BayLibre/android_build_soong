@@ -280,10 +280,6 @@ func logAndSymlinkSetup(buildCtx build.Context, config build.Config) {
 				buildCtx.CompleteTrace(metrics.RunSetupTool, "startup", start_time, uint64(time.Now().UnixNano()))
 			}
 		}
-
-		if executable, err := os.Executable(); err == nil {
-			buildCtx.ContextImpl.Tracer.ImportMicrofactoryLog(filepath.Join(filepath.Dir(executable), "."+filepath.Base(executable)+".trace"))
-		}
 	}
 
 	// Fix up the source tree due to a repo bug where it doesn't remove

@@ -106,10 +106,6 @@ func (t *Test) Run(logsDir string) {
 				buildCtx.CompleteTrace(metrics.RunSetupTool, "startup", start_time, uint64(time.Now().UnixNano()))
 			}
 		}
-
-		if executable, err := os.Executable(); err == nil {
-			trace.ImportMicrofactoryLog(filepath.Join(filepath.Dir(executable), "."+filepath.Base(executable)+".trace"))
-		}
 	}
 
 	f := build.NewSourceFinder(buildCtx, config)

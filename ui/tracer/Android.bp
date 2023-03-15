@@ -24,7 +24,6 @@ bootstrap_go_package {
         "soong-ui-status",
     ],
     srcs: [
-        "microfactory.go",
         "status.go",
         "tracer.go",
     ],

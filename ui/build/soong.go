@@ -15,6 +15,7 @@
 package build
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -29,7 +30,6 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
-	"github.com/google/blueprint/microfactory"
 )
 
 const (
@@ -508,8 +508,10 @@ func runSoong(ctx Context, config Config) {
 		}
 	}()
 
-	runMicrofactory(ctx, config, "bpglob", "github.com/google/blueprint/bootstrap/bpglob",
-		map[string]string{"github.com/google/blueprint": "build/blueprint"})
+	// out/bpglob may change timestamps on every build, so only copy it to out/soong/ if changed
+	cpIfChanged(ctx,
+		filepath.Join(config.OutDir(), "bpglob"),
+		filepath.Join(config.SoongOutDir(), "bpglob"))
 
 	ninja := func(name, ninjaFile string, targets ...string) {
 		ctx.BeginTrace(metrics.RunSoong, name)
@@ -600,20 +602,23 @@ func runSoong(ctx Context, config Config) {
 	}
 }
 
-func runMicrofactory(ctx Context, config Config, name string, pkg string, mapping map[string]string) {
-	ctx.BeginTrace(metrics.RunSoong, name)
-	defer ctx.EndTrace()
-	cfg := microfactory.Config{TrimPath: absPath(ctx, ".")}
-	for pkgPrefix, pathPrefix := range mapping {
-		cfg.Map(pkgPrefix, pathPrefix)
+func cpIfChanged(ctx Context, from, to string) {
+	data, err := os.ReadFile(from)
+	if err != nil {
+		ctx.Fatalf("Unable to read %q: %s", from, err)
 	}
 
-	exePath := filepath.Join(config.SoongOutDir(), name)
-	dir := filepath.Dir(exePath)
-	if err := os.MkdirAll(dir, 0777); err != nil {
-		ctx.Fatalf("cannot create %s: %s", dir, err)
+	if st, err := os.Stat(to); err == nil {
+		if st.Size() == int64(len(data)) {
+			if oldData, err := os.ReadFile(to); err == nil {
+				if bytes.Equal(oldData, data) {
+					return
+				}
+			}
+		}
 	}
-	if _, err := microfactory.Build(&cfg, exePath, pkg); err != nil {
-		ctx.Fatalf("failed to build %s: %s", name, err)
+
+	if err := os.WriteFile(to, data, 0777); err != nil {
+		ctx.Fatalf("Unable to write %q: %s", to, err)
 	}
 }
