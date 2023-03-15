@@ -366,6 +366,24 @@
       "parentUuid": "66ab6bc2_ac3c9327",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ec0542_ad09bcd4",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-15T21:03:41Z",
+      "side": 1,
+      "message": "Never mind - I didn\u0027t realize Colin was still out. Personally I\u0027d prefer the RISCV \"hack\" because as you said, the situation is temporal. However, I\u0027ll defer to your expertise here!",
+      "parentUuid": "7fe60efd_cb2d990e",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
