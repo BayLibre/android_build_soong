@@ -9865,9 +9865,11 @@ func TestApexBuildsAgainstApiSurfaceStubLibraries(t *testing.T) {
 		}
 		api_imports {
 			name: "api_imports",
-			apex_shared_libs: [
-				"libbar",
+			module_lib_api_shared_libs_from_apexes: [
 				"libbaz",
+			],
+			module_lib_api_shared_libs_from_platform: [
+				"libbar",
 				"libqux",
 			],
 		}
@@ -9955,7 +9957,7 @@ func TestPlatformBinaryBuildsAgainstApiSurfaceStubLibraries(t *testing.T) {
 		}
 		api_imports {
 			name: "api_imports",
-			apex_shared_libs: [
+			module_lib_api_shared_libs_from_apexes: [
 				"libbar",
 			],
 		}

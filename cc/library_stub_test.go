@@ -437,7 +437,7 @@ func TestApiLibraryWithMultipleVariants(t *testing.T) {
 			shared_libs: [
 				"libbar",
 			],
-			apex_shared_libs: [
+			module_lib_api_shared_libs_from_platform: [
 				"libbar",
 			],
 		}

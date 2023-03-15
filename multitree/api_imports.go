@@ -40,9 +40,14 @@ type ApiImports struct {
 }
 
 type apiImportsProperties struct {
-	Shared_libs      []string // List of C shared libraries from API surfaces
-	Header_libs      []string // List of C header libraries from API surfaces
-	Apex_shared_libs []string // List of C shared libraries with APEX stubs
+	Shared_libs []string // List of C shared libraries from API surfaces
+	Header_libs []string // List of C header libraries from API surfaces
+	// List of C shared libs from platform that contribute to ModuleLib API surface
+	// e.g. liblog
+	Module_lib_api_shared_libs_from_platform []string
+	// List of C shared libs from apexes that contribute to ModuleLib API surface
+	// e.g. libneuralnetworks
+	Module_lib_api_shared_libs_from_apexes []string
 }
 
 // 'api_imports' is a module which describes modules available from API surfaces.
@@ -61,7 +66,34 @@ func (imports *ApiImports) GenerateAndroidBuildActions(ctx android.ModuleContext
 }
 
 type ApiImportInfo struct {
-	SharedLibs, HeaderLibs, ApexSharedLibs map[string]string
+	SharedLibs, HeaderLibs, ModuleLibApiFromPlatform, ModuleLibApiFromApexes map[string]string
+}
+
+// IsApexStubLibrary returns libraries conrtibuted by apexes to the ModuleLibApi surfacce
+func (a *ApiImportInfo) IsApexStubLibrary(name string) bool {
+	_, exists := a.ModuleLibApiFromApexes[name]
+	return exists
+}
+
+// IsPlatformStubLibrary returns libraries conrtibuted by non-updatable platform to the ModuleLibApi surfacce
+func (a *ApiImportInfo) IsPlatformStubLibrary(name string) bool {
+	_, exists := a.ModuleLibApiFromPlatform[name]
+	return exists
+}
+
+// IsModuleLibApiSurfaceLibrary returns true if the library contributes to ModuleLibApi surface
+// (either from an apex or from the platform)
+func (a *ApiImportInfo) IsModuleLibApiSurfaceLibrary(name string) bool {
+	return a.IsApexStubLibrary(name) || a.IsPlatformStubLibrary(name)
+}
+
+func (a *ApiImportInfo) LibNameInModuleLibApiSurface(name string) string {
+	if a.IsApexStubLibrary(name) {
+		ret, _ := a.ModuleLibApiFromApexes[name]
+		return ret
+	}
+	ret, _ := a.ModuleLibApiFromPlatform[name]
+	return ret
 }
 
 var ApiImportsProvider = blueprint.NewMutatorProvider(ApiImportInfo{}, "deps")
@@ -79,12 +111,14 @@ func (imports *ApiImports) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	sharedLibs := generateNameMapWithSuffix(imports.properties.Shared_libs)
 	headerLibs := generateNameMapWithSuffix(imports.properties.Header_libs)
-	apexSharedLibs := generateNameMapWithSuffix(imports.properties.Apex_shared_libs)
+	moduleLibApiFromPlatform := generateNameMapWithSuffix(imports.properties.Module_lib_api_shared_libs_from_platform)
+	moduleLibApiFromApexes := generateNameMapWithSuffix(imports.properties.Module_lib_api_shared_libs_from_apexes)
 
 	ctx.SetProvider(ApiImportsProvider, ApiImportInfo{
-		SharedLibs:     sharedLibs,
-		HeaderLibs:     headerLibs,
-		ApexSharedLibs: apexSharedLibs,
+		SharedLibs:               sharedLibs,
+		HeaderLibs:               headerLibs,
+		ModuleLibApiFromPlatform: moduleLibApiFromPlatform,
+		ModuleLibApiFromApexes:   moduleLibApiFromApexes,
 	})
 }
 

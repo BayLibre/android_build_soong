@@ -2571,11 +2571,12 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			{Mutator: "link", Variation: "shared"},
 		}
 
-		if _, ok := apiImportInfo.ApexSharedLibs[name]; !ok || ctx.OtherModuleExists(name) {
+		if !apiImportInfo.IsModuleLibApiSurfaceLibrary(name) || ctx.OtherModuleExists(name) {
 			AddSharedLibDependenciesWithVersions(ctx, c, variations, depTag, name, version, false)
 		}
 
-		if apiLibraryName, ok := apiImportInfo.ApexSharedLibs[name]; ok {
+		if apiImportInfo.IsModuleLibApiSurfaceLibrary(name) {
+			apiLibraryName := apiImportInfo.LibNameInModuleLibApiSurface(name)
 			AddSharedLibDependenciesWithVersions(ctx, c, variations, depTag, apiLibraryName, version, false)
 		}
 	}
@@ -2939,8 +2940,8 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		// Search for dependency which both original module and API imported library with APEX stub exists
 		ctx.VisitDirectDeps(func(dep android.Module) {
 			depName := ctx.OtherModuleName(dep)
-			if apiLibrary, ok := apiImportInfo.ApexSharedLibs[depName]; ok {
-				targetStubModuleList[apiLibrary] = depName
+			if apiImportInfo.IsModuleLibApiSurfaceLibrary(depName) {
+				targetStubModuleList[apiImportInfo.LibNameInModuleLibApiSurface(depName)] = depName
 			}
 		})
 		ctx.VisitDirectDeps(func(dep android.Module) {
