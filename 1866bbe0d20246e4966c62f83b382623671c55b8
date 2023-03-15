@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0372601e_728ef450",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2023-03-15T01:25:01Z",
+      "side": 1,
+      "message": "Re-ran build, still takes 1:20 min, like the baseline",
+      "revId": "1866bbe0d20246e4966c62f83b382623671c55b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
