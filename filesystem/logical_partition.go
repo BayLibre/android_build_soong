@@ -21,6 +21,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/cc"
 )
 
 func init() {
@@ -240,4 +241,20 @@ func (l *logicalPartition) OutputFiles(tag string) (android.Paths, error) {
 		return []android.Path{l.output}, nil
 	}
 	return nil, fmt.Errorf("unsupported module reference tag %q", tag)
+}
+
+// implements cc.Coverage
+var _ cc.Coverage = (*filesystem)(nil)
+
+func (*logicalPartition) EnableCoverageIfNeeded() {}
+
+func (*logicalPartition) IsNativeCoverageNeeded(ctx android.BaseModuleContext) bool {
+	return ctx.Device() && ctx.DeviceConfig().NativeCoverageEnabled()
+}
+
+func (*logicalPartition) MarkAsCoverageVariant(bool) {
+}
+
+func (l *logicalPartition) SetPreventInstall() {
+	l.SkipInstall()
 }

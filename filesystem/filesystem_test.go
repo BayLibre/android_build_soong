@@ -20,6 +20,8 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+
+	"github.com/google/blueprint/proptools"
 )
 
 func TestMain(m *testing.M) {
@@ -224,4 +226,42 @@ func TestFileSystemShouldInstallCoreVariantIfTargetBuildAppsIsSet(t *testing.T) 
 	android.AssertStringListContains(t, "filesystem should have libbar even for unbundled build",
 		inputs.Strings(),
 		"out/soong/.intermediates/libbar/android_arm64_armv8-a_shared/libbar.so")
+}
+
+func TestFileSystemWithCoverageVariants(t *testing.T) {
+	context := android.GroupFixturePreparers(
+		fixture,
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+			variables.GcovCoverage = proptools.BoolPtr(true)
+			variables.Native_coverage = proptools.BoolPtr(true)
+		}),
+	)
+
+	result := context.RunTestWithBp(t, `
+		android_system_image {
+			name: "myfilesystem",
+			deps: [
+				"libfoo",
+			],
+			linker_config_src: "linker.config.json",
+		}
+
+		cc_library {
+			name: "libfoo",
+			shared_libs: [
+				"libbar",
+			],
+			stl: "none",
+		}
+
+		cc_library {
+			name: "libbar",
+			stl: "none",
+		}
+	`)
+
+	inputs := result.ModuleForTests("myfilesystem", "android_common_cov").Output("deps.zip").Implicits
+	android.AssertStringListContains(t, "filesystem should have libbar even for unbundled build",
+		inputs.Strings(),
+		"out/soong/.intermediates/libbar/android_arm64_armv8-a_shared_cov/libbar.so")
 }
