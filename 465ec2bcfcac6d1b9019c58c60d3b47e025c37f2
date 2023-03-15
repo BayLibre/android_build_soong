@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b21e8c7f_60914c18",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-15T02:10:53Z",
+      "side": 1,
+      "message": "Why do we need this CL? Can\u0027t we gather this information from `JobInfo`\u0027s `elapsed_time` ?",
+      "revId": "465ec2bcfcac6d1b9019c58c60d3b47e025c37f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
