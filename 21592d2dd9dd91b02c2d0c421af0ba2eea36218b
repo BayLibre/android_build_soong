@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a8e257_62f2ca73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2023-03-15T21:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ae8e5f8_9603711d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "21592d2dd9dd91b02c2d0c421af0ba2eea36218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f474107e_ae8dadf7",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "yup - I don\u0027t want to break anywhere in the code that waits/or retries if the creds check fails.",
       "parentUuid": "f474107e_ae8dadf7",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "21592d2dd9dd91b02c2d0c421af0ba2eea36218b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5dd390a_a02634a2",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1959240
+      },
+      "writtenOn": "2023-03-15T21:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d18ad97c_6521e2d4",
       "range": {
         "startLine": 49,
         "startChar": 27,
