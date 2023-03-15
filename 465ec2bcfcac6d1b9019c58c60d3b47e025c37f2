@@ -34,6 +34,24 @@
       "parentUuid": "b21e8c7f_60914c18",
       "revId": "465ec2bcfcac6d1b9019c58c60d3b47e025c37f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210e055b_2cbd6d3c",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-03-15T03:44:46Z",
+      "side": 1,
+      "message": "Oh, I see. That explains it. Thanks. Just so it\u0027s clearer, could you update the documentation to \"Detailed job information for long running jobs (\u003e30 seconds). These may or may not also be on a critical path.\"\n\nThanks!",
+      "parentUuid": "7e83fc52_9569ea66",
+      "revId": "465ec2bcfcac6d1b9019c58c60d3b47e025c37f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
