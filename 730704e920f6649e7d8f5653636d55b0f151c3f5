@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "022bd2a8_f91a267e",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-15T08:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc611128_065627e0",
+      "revId": "730704e920f6649e7d8f5653636d55b0f151c3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b79c434_3dad0169",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-03-15T07:59:49Z",
       "side": 1,
       "message": "please present an example line",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 95,
+        "endChar": 31
+      },
+      "revId": "730704e920f6649e7d8f5653636d55b0f151c3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e0fc52_75a4d01d",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-15T08:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b79c434_3dad0169",
       "range": {
         "startLine": 95,
         "startChar": 3,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e73c7422_440c1ddb",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-15T08:24:58Z",
+      "side": 1,
+      "message": "I intentionally omit the error cases, I added comment for that.",
+      "parentUuid": "f2d4ea56_b7df662e",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 3
+      },
+      "revId": "730704e920f6649e7d8f5653636d55b0f151c3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1802089c_21059c30",
         "filename": "ui/build/ninja.go",
         "patchSetId": 2
@@ -77,6 +143,30 @@
       "writtenOn": "2023-03-15T07:59:49Z",
       "side": 1,
       "message": "error case is missing",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 3
+      },
+      "revId": "730704e920f6649e7d8f5653636d55b0f151c3f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71b3824_b4f24420",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-15T08:24:58Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "1802089c_21059c30",
       "range": {
         "startLine": 119,
         "startChar": 2,
