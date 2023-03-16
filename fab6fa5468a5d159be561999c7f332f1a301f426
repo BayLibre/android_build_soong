@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df91db76_d141be3a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-16T10:18:58Z",
+      "side": 1,
+      "message": "Can the absence of --ninja-weight-source be considered as EMPTY? Why do we need an explicit option value for the default case?",
+      "range": {
+        "startLine": 831,
+        "startChar": 3,
+        "endLine": 831,
+        "endChar": 35
+      },
+      "revId": "fab6fa5468a5d159be561999c7f332f1a301f426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40001c63_1b6e6dc4",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-16T10:18:58Z",
+      "side": 1,
+      "message": "can these checks be switch/case?",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 49
+      },
+      "revId": "fab6fa5468a5d159be561999c7f332f1a301f426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
