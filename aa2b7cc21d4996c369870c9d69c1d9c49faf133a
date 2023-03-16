@@ -16,6 +16,24 @@
       "message": "Like my comment in rbcrun, this is only one way this could be fixed. We could do `mk2rbc/cmd/mk2rbc/mk2rbc.go` to make it a little more clear, or in this case, it may make sense to move the main package into `build/soong/cmd/mk2rbc/mk2rbc.go`, as that matches a number of other main packages in soong.",
       "revId": "aa2b7cc21d4996c369870c9d69c1d9c49faf133a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f061ef8f_dd06f2df",
+        "filename": "mk2rbc/mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-16T16:45:55Z",
+      "side": 1,
+      "message": "I think this is fine.",
+      "parentUuid": "3f0c14e4_e9c9e337",
+      "revId": "aa2b7cc21d4996c369870c9d69c1d9c49faf133a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
