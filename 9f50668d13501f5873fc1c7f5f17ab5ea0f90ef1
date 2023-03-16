@@ -438,6 +438,24 @@
       "parentUuid": "caac4c33_4380fd55",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6100e1a_3b7cc12b",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-03-16T04:10:31Z",
+      "side": 1,
+      "message": "How do you know which VNDK APEX to keep?  The apexes are iterated individually by this mutator, so you have to know which is the latest.\n\nMaybe a simpler fix is to just never disable `vndkVersion \u003d\u003d mctx.DeviceConfig().PlatformVndkVersion()`.",
+      "parentUuid": "ac3e9502_e809dd1c",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
