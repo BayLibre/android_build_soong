@@ -16,6 +16,23 @@
       "message": "abtd run for the build that failed before: https://android-build.googleplex.com/builds/abtd/run/L13200000959186799",
       "revId": "502da3987a488307ffab5b5b2cedc119892e40d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a51170b_e1ad59b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-16T20:35:38Z",
+      "side": 1,
+      "message": "did/should we run a checkbuild on this to id if there are additional targets that are missing e.g. apex_available information?",
+      "revId": "502da3987a488307ffab5b5b2cedc119892e40d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
