@@ -16,6 +16,24 @@
       "message": "use load location at \n\"//build/bazel/rules/java:rules.bzl\"",
       "revId": "f396a934113d9d62c9bce34685ef0142504a2a71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e26086e_0480af93",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2959,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-03-16T20:20:38Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "118cc99a_0dea73aa",
+      "revId": "f396a934113d9d62c9bce34685ef0142504a2a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
