@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e59f4c_d4ca08a0",
+        "filename": "cc/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-16T07:09:40Z",
+      "side": 1,
+      "message": "But we anyway create the cov variant, right?",
+      "range": {
+        "startLine": 269,
+        "startChar": 5,
+        "endLine": 269,
+        "endChar": 53
+      },
+      "revId": "e606759ddfcbb4f8cba27e5cbc926e1cc8ebfe1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
