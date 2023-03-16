@@ -34,6 +34,24 @@
       "parentUuid": "4e5ee38d_5622f08f",
       "revId": "91f0a0dc04a85129458f2b137a7278adac9ac20c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b66a22_d20f27bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-03-16T21:34:21Z",
+      "side": 1,
+      "message": "Yes, I originally wrote this comment on the wrong CL and forgot to delete it here.",
+      "parentUuid": "ed61f7ff_aa6e51d6",
+      "revId": "91f0a0dc04a85129458f2b137a7278adac9ac20c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
