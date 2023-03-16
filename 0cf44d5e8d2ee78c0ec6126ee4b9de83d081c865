@@ -22,6 +22,30 @@
       },
       "revId": "0cf44d5e8d2ee78c0ec6126ee4b9de83d081c865",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c68b272_e7bf84cc",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-16T16:24:21Z",
+      "side": 1,
+      "message": "I thought it is okay to pass empty weight file for the case that .ninja_log is missing. because it is still efficient.\n\nI had added comment below, should I elaborate it more?",
+      "parentUuid": "0384dd4a_3162af95",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "0cf44d5e8d2ee78c0ec6126ee4b9de83d081c865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
