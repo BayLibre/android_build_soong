@@ -492,6 +492,24 @@
       "parentUuid": "f2a4424d_699659f2",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "373b0787_f642e92b",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-16T04:52:17Z",
+      "side": 1,
+      "message": "Regarding the `len(targets) \u003e 1` check - it does produce the expected result, but I\u0027d like to confirm it\u0027s doing a reasonable thing.\n\nWhen building riscv, I get a single target in `targets`. When building phone, I get two targets. This doesn\u0027t seem to be corresponding to a number of vNDKs and instead just the variants of the modules that are being built.\n\nThis is working because if riscv slim always only build a single target, it\u0027s always skipping this check, regardless of the version comparison. Something that isn\u0027t squaring with me is that I\u0027d expect that this would cause the inclusion of all the attempted vNDKs (including 30, 31, 32, 33). However, this does not happen and only the latest vNDK is included. Perhaps I\u0027m not grasping the change? (I\u0027m editing L79 in-place to check `len(targets) \u003e 1`.",
+      "parentUuid": "ac3e9502_e809dd1c",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
