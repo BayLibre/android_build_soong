@@ -61,6 +61,13 @@ EOF
   if [[ ! -e out/soong/workspace/soong_tests/a/irrelevant.txt ]]; then
     fail "new file was not symlinked"
   fi
+
+  # b/273910287 - test force enable modules
+  run_soong --bazel-mode-staging --bazel-force-enabled-modules=com.android.media.swcodec
+  bazel_contained=`grep "out/bazel/output/execroot/__main__/bazel-out/aosp_arm-eng-opt-ST-38a0649b8b4c/bin/frameworks/av/services/mediacodec/mediaswcodec_versioned.runfiles_manifest" out/soong/build.ninja`
+  if [[ bazel_contained == '' ]]; then
+    fail "Bazel actions not found for force-enabled module"
+  fi
 }
 
 scan_and_run_tests
