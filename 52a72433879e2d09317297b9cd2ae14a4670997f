@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c097083d_acce338c",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-03-16T19:57:48Z",
+      "side": 1,
+      "message": "Is this supposed to be inverted? That doesn\u0027t seem correct from a glance",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 29
+      },
+      "revId": "52a72433879e2d09317297b9cd2ae14a4670997f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
