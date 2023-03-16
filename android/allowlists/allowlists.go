@@ -67,6 +67,7 @@ var (
 		"build/soong/licenses":               Bp2BuildDefaultTrue,
 		"build/soong/linkerconfig":           Bp2BuildDefaultTrueRecursively,
 		"build/soong/scripts":                Bp2BuildDefaultTrueRecursively,
+		"build/soong/tests":                  Bp2BuildDefaultTrue,
 
 		"cts/common/device-side/nativetesthelper/jni": Bp2BuildDefaultTrueRecursively,
 
@@ -1462,6 +1463,8 @@ var (
 
 	// These should be the libs that are included by the apexes in the StagingMixedBuildsEnabledList
 	StagingDclaMixedBuildsEnabledList = []string{}
+
+	BazelForceEnabledMixedBuildsList = make(map[string]bool)
 
 	// TODO(b/269342245): Enable the rest of the DCLA libs
 	// "libssl",
