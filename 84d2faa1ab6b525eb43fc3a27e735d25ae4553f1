@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdac7a2e_cbde71c2",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1890456
+      },
+      "writtenOn": "2023-03-16T02:58:54Z",
+      "side": 1,
+      "message": "Fix b/243974559 first.",
+      "range": {
+        "startLine": 251,
+        "startChar": 21,
+        "endLine": 251,
+        "endChar": 29
+      },
+      "revId": "84d2faa1ab6b525eb43fc3a27e735d25ae4553f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
