@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a8b8849_ca41a564",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-16T16:36:42Z",
+      "side": 1,
+      "message": "should this be extracted into a constant here and wherever else it is used so it is resilient to any potential renaming?",
+      "range": {
+        "startLine": 37,
+        "startChar": 49,
+        "endLine": 37,
+        "endChar": 59
+      },
+      "revId": "0cf44d5e8d2ee78c0ec6126ee4b9de83d081c865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0384dd4a_3162af95",
         "filename": "ui/build/ninja.go",
         "patchSetId": 10
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "I thought it is okay to pass empty weight file for the case that .ninja_log is missing. because it is still efficient.\n\nI had added comment below, should I elaborate it more?",
       "parentUuid": "0384dd4a_3162af95",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "0cf44d5e8d2ee78c0ec6126ee4b9de83d081c865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb81a3c_ad209e5a",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-16T16:36:42Z",
+      "side": 1,
+      "message": "Agreed that when the file is non-existent, continuing makes sense, my question is should we error out or log errors if we encounter an error that is not `os.ErrNotExist`?",
+      "parentUuid": "5c68b272_e7bf84cc",
       "range": {
         "startLine": 62,
         "startChar": 1,
