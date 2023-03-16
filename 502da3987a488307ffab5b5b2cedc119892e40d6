@@ -33,6 +33,24 @@
       "message": "did/should we run a checkbuild on this to id if there are additional targets that are missing e.g. apex_available information?",
       "revId": "502da3987a488307ffab5b5b2cedc119892e40d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac8bcdb_c91680e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-16T20:42:13Z",
+      "side": 1,
+      "message": "https://android-build.googleplex.com/builds/abtd/run/L13200000959186799 built full_eng, which [includes a checkbuild](https://source.corp.google.com/piper///depot/google3/configs/wireless/android/busytown/platform/aosp/aosp-master.gcl;l\u003d455?q\u003dp:%5Epiper$%20f:%5C.gcl%20full-eng).\n\nFor internal master, [aosp_cheetah-userdebug includes a checkbuild](http://google3/configs/wireless/android/busytown/platform/git_master/git_master.gcl;l\u003d469;rcl\u003d516316974), which is why it\u0027s currently failing on presubmit, as my art change hasn\u0027t made it to master yet. I\u0027ll rerun presubmits when it gets automerged to master.",
+      "parentUuid": "7a51170b_e1ad59b4",
+      "revId": "502da3987a488307ffab5b5b2cedc119892e40d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
