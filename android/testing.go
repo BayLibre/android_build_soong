@@ -1070,6 +1070,21 @@ func FailIfErrored(t *testing.T, errs []error) {
 	}
 }
 
+func AssertErrorsSame(t *testing.T, errs []error, expectedErrs map[string]struct{}) {
+	t.Helper()
+	if len(errs) != len(expectedErrs) {
+		t.Error("Difference in expected errors: actual %s  expected %s\n", errs, expectedErrs)
+	}
+
+	for _, err := range errs {
+		if _, ok := expectedErrs[err.Error()]; !ok {
+			t.Error("Expected errs: %s", expectedErrs)
+			t.Error("Unexpected error %s\n", err.Error())
+			t.FailNow()
+		}
+	}
+}
+
 // Fail if no errors that matched the regular expression were found.
 //
 // Returns true if a matching error was found, false otherwise.
