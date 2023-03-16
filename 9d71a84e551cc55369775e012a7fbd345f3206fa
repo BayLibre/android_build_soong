@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d77c75_1916b9f5",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-03-16T22:51:01Z",
+      "side": 1,
+      "message": "is this more for building the google variant of neuralnetworks? the one in aosp builds fine without this change.",
+      "range": {
+        "startLine": 710,
+        "startChar": 18,
+        "endLine": 710,
+        "endChar": 44
+      },
+      "revId": "9d71a84e551cc55369775e012a7fbd345f3206fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
