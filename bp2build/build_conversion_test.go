@@ -1237,6 +1237,21 @@ filegroup { name: "opt-out-h", bazel_module: { bp2build_available: false } }
 `,
 			},
 		},
+		{
+			description:                "test force-enabled errors out",
+			moduleTypeUnderTest:        "filegroup",
+			moduleTypeUnderTestFactory: android.FileGroupFactory,
+			expectedCount: map[string]int{
+				"migrated": 0,
+			},
+			bp2buildConfig: allowlists.Bp2BuildConfig{
+				"migrated/but_not_really": allowlists.Bp2BuildDefaultFalse,
+				"not_migrated":            allowlists.Bp2BuildDefaultFalse,
+			},
+			fs: map[string]string{
+				"migrated/Android.bp": `filegroup { name: "a" }`,
+			},
+		},
 	}
 
 	dir := "."
@@ -1252,6 +1267,7 @@ filegroup { name: "opt-out-h", bazel_module: { bp2build_available: false } }
 			fs[f] = []byte(content)
 		}
 		config := android.TestConfig(buildDir, nil, "", fs)
+		config.ForceEnableModule("a")
 		ctx := android.NewTestContext(config)
 		ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
 		allowlist := android.NewBp2BuildAllowlist().SetDefaultConfig(testCase.bp2buildConfig)
