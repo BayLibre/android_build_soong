@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "192cfe77_ea825fb8",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2029,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-16T18:04:46Z",
+      "side": 1,
+      "message": "It would probably be better to keep this as an assertion that filesInfo is nil so that we don\u0027t cover up problems where filesInfo is being filled out.",
+      "revId": "a400f05ad2752164d66eccd1e054cc7aee1823d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
