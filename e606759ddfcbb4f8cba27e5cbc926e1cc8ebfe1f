@@ -22,6 +22,30 @@
       },
       "revId": "e606759ddfcbb4f8cba27e5cbc926e1cc8ebfe1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c405420_42c57878",
+        "filename": "cc/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-16T07:18:42Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right. In this change, there\u0027ll be `\"cov\"` variant of `filesystem` with coverage-enabled build. It\u0027s to redirect its dependencies to `\"cov\"` variants if possible. However, modules depending on `filesystem` can still depend on `\"\"` variant of `filesystem` since we set an alias of `\"\"` -\u003e `\"cov\"`.\n\nWhat I wanted to say in the comment is the `filesystem` module itself is built in the same way regardless of coverage-enabled. It\u0027s different from `cc_*` modules whose `\"cov\"` variants are built with a special flag.",
+      "parentUuid": "78e59f4c_d4ca08a0",
+      "range": {
+        "startLine": 269,
+        "startChar": 5,
+        "endLine": 269,
+        "endChar": 53
+      },
+      "revId": "e606759ddfcbb4f8cba27e5cbc926e1cc8ebfe1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
