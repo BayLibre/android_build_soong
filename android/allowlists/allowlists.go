@@ -217,6 +217,7 @@ var (
 
 		"hardware/interfaces":                          Bp2BuildDefaultTrue,
 		"hardware/interfaces/audio/aidl":               Bp2BuildDefaultTrue,
+		"hardware/interfaces/bufferpool/aidl":          Bp2BuildDefaultTrue,
 		"hardware/interfaces/common/aidl":              Bp2BuildDefaultTrue,
 		"hardware/interfaces/common/fmq/aidl":          Bp2BuildDefaultTrue,
 		"hardware/interfaces/configstore/1.0":          Bp2BuildDefaultTrue,
@@ -689,6 +690,10 @@ var (
 
 		//kotlin srcs in android_binary
 		"MusicKotlin",
+
+		// for building com.android.neuralnetworks
+		"libimapper_stablec",
+		"libimapper_providerutils",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
