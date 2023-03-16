@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aacd8be6_66c5a5f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-16T23:45:08Z",
+      "side": 1,
+      "message": "Requires cleanup of some existing violations, and I have created CLs for those ag/22128381",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "dd468910659b0e5f01b9194283a931d093e6d4cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
