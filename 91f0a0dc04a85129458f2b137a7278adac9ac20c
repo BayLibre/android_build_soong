@@ -16,6 +16,24 @@
       "message": "Should this be passed in ldflags as well? I imagine this could affect LTO.",
       "revId": "91f0a0dc04a85129458f2b137a7278adac9ac20c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed61f7ff_aa6e51d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2023-03-16T21:33:09Z",
+      "side": 1,
+      "message": "Is this a stale comment? we don\u0027t pass anything in this CL.",
+      "parentUuid": "4e5ee38d_5622f08f",
+      "revId": "91f0a0dc04a85129458f2b137a7278adac9ac20c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
