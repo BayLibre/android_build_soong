@@ -528,6 +528,24 @@
       "parentUuid": "373b0787_f642e92b",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72945246_585775b7",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-03-16T06:38:47Z",
+      "side": 1,
+      "message": "+1 on the len(targets) check, that checks out with me.\n\nThe suggested `vndkVersion !\u003d mctx.DeviceConfig().PlatformVndkVersion()` makes sense, it\u0027s effectively the check in `vndkVersion` - I\u0027ve tried this out and it works, updated the commit, CL and added a comment explaining what we\u0027re doing.",
+      "parentUuid": "52bf9ef3_316c0e07",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
