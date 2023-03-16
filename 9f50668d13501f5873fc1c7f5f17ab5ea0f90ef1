@@ -420,6 +420,24 @@
       "parentUuid": "62007975_930eb831",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3e9502_e809dd1c",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-16T02:20:35Z",
+      "side": 1,
+      "message": "I prefer the simpler approach of enforcing that we have at least one VNDK APEX. I think the comment doesn\u0027t have to be about subtle semantic difference between UpsideDownCake and current. No VNDK simply doesn\u0027t make sense.\n\n--------------------------\n\u003e we don\u0027t have to go through all of this again if we add another new architecture.\n\nWhat arch will we be adding in the future before Bazel takes over Soong?",
+      "parentUuid": "caac4c33_4380fd55",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
