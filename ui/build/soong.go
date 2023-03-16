@@ -433,9 +433,11 @@ func checkEnvironmentFile(currentEnv *Environment, envFile string) {
 		return v
 	}
 
-	if stale, _ := shared.StaleEnvFile(envFile, getenv); stale {
+	if stale, _, changed := shared.StaleEnvFile(envFile, getenv); stale {
 		os.Remove(envFile)
+		fmt.Println("changed len %d file %s\n", len(changed), envFile)
 	}
+
 }
 
 func runSoong(ctx Context, config Config) {
@@ -474,30 +476,41 @@ func runSoong(ctx Context, config Config) {
 		ctx.Fatalf("failed to write environment file %s: %s", envFile, err)
 	}
 
+	if bazelHomeChanged(soongBuildEnv, config.UsedEnvFile(soongBuildTag)) {
+		//rm -rf out
+	}
+
 	func() {
 		ctx.BeginTrace(metrics.RunSoong, "environment check")
 		defer ctx.EndTrace()
 
 		checkEnvironmentFile(soongBuildEnv, config.UsedEnvFile(soongBuildTag))
+		fmt.Println("soongbuildTag")
 
 		if config.BazelBuildEnabled() || config.Bp2Build() {
 			checkEnvironmentFile(soongBuildEnv, config.UsedEnvFile(bp2buildFilesTag))
+			fmt.Println("bp2buildFiles")
+
 		}
 
 		if config.JsonModuleGraph() {
 			checkEnvironmentFile(soongBuildEnv, config.UsedEnvFile(jsonModuleGraphTag))
+			fmt.Println("json")
 		}
 
 		if config.Queryview() {
 			checkEnvironmentFile(soongBuildEnv, config.UsedEnvFile(queryviewTag))
+			fmt.Println("queryview")
 		}
 
 		if config.ApiBp2build() {
 			checkEnvironmentFile(soongBuildEnv, config.UsedEnvFile(apiBp2buildTag))
+			fmt.Println("apibp2build")
 		}
 
 		if config.SoongDocs() {
 			checkEnvironmentFile(soongBuildEnv, config.UsedEnvFile(soongDocsTag))
+			fmt.Println("soong docs")
 		}
 	}()
 
@@ -591,6 +604,26 @@ func runSoong(ctx Context, config Config) {
 	if config.JsonModuleGraph() {
 		distGzipFile(ctx, config, config.ModuleGraphFile(), "soong")
 	}
+}
+
+func bazelHomeChanged(currentEnv *Environment, envFile string) bool {
+	fmt.Printf("bazelHomeChanged file\n", envFile)
+	getenv := func(k string) string {
+		v, _ := currentEnv.Get(k)
+		return v
+	}
+
+	_, _, changedVars := shared.StaleEnvFile(envFile, getenv)
+	fmt.Printf("changed len %d\n", len(changedVars))
+
+	for _, changed := range changedVars {
+		if changed == "BAZEL_HOME" {
+			fmt.Printf("BAZEL HOME CHANGED")
+		} else {
+			fmt.Printf("changed var %s\n", changed)
+		}
+	}
+	return false
 }
 
 func runMicrofactory(ctx Context, config Config, name string, pkg string, mapping map[string]string) {

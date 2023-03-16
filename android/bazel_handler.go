@@ -729,6 +729,20 @@ func (r *builtinBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd, eventHandler 
 
 func (r *builtinBazelRunner) createBazelCommand(config Config, paths *bazelPaths, runName bazel.RunName, command bazelCommand,
 	extraFlags ...string) *exec.Cmd {
+
+	fmt.Printf("bazelPaths %s\n", (*paths))
+
+	dir, err1 := os.Getwd()
+	if err1 != nil {
+		fmt.Printf("err getting working directory %s\n", err1)
+	}
+	fmt.Printf("current dir %s\n", dir)
+	_, err := os.Stat(absolutePath(paths.bazelPath))
+	if err != nil {
+		fmt.Printf("error stating bazelPath %s\n", err)
+	} else {
+		fmt.Printf("no error stating bazelPath %s\n", absolutePath(paths.bazelPath))
+	}
 	cmdFlags := []string{
 		"--output_base=" + absolutePath(paths.outputBase),
 		command.command,
@@ -760,6 +774,11 @@ func (r *builtinBazelRunner) createBazelCommand(config Config, paths *bazelPaths
 
 	bazelCmd := exec.Command(paths.bazelPath, cmdFlags...)
 	bazelCmd.Dir = absolutePath(paths.syntheticWorkspaceDir())
+	fmt.Printf("synthetic dir %s\n", absolutePath(paths.syntheticWorkspaceDir()))
+	_, err = os.Stat(absolutePath(paths.syntheticWorkspaceDir()))
+	if err != nil {
+		fmt.Printf("error stating workspaceDir %s\n", err)
+	}
 	extraEnv := []string{
 		"HOME=" + paths.homeDir,
 		pwdPrefix(),
@@ -1195,6 +1214,7 @@ func (context *mixedBuildBazelContext) runCquery(config Config, ctx invokeBazelC
 	}
 
 	cqueryCommandWithFlag := context.createBazelCommand(config, context.paths, bazel.CqueryBuildRootRunName, cqueryCmd, extraFlags...)
+	fmt.Println("before cquery")
 	cqueryOutput, cqueryErrorMessage, cqueryErr := context.issueBazelCommand(cqueryCommandWithFlag, eventHandler)
 	if cqueryErr != nil {
 		return cqueryErr
@@ -1203,6 +1223,7 @@ func (context *mixedBuildBazelContext) runCquery(config Config, ctx invokeBazelC
 	if err := os.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"), []byte(cqueryCommandPrint+cqueryOutput), 0666); err != nil {
 		return err
 	}
+	fmt.Println("after cquery")
 	cqueryResults := map[string]string{}
 	for _, outputLine := range strings.Split(cqueryOutput, "\n") {
 		if strings.Contains(outputLine, ">>") {
@@ -1257,11 +1278,13 @@ func (context *mixedBuildBazelContext) runAquery(config Config, ctx invokeBazelC
 			extraFlags = append(extraFlags, "--instrumentation_filter="+strings.Join(paths, ","))
 		}
 	}
+	fmt.Println("before aquery")
 	aqueryOutput, _, err := context.issueBazelCommand(context.createBazelCommand(config, context.paths, bazel.AqueryBuildRootRunName, aqueryCmd,
 		extraFlags...), eventHandler)
 	if err != nil {
 		return err
 	}
+	fmt.Println("after aquery")
 	context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements([]byte(aqueryOutput), eventHandler)
 	return err
 }
