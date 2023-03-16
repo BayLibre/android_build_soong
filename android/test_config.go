@@ -65,6 +65,7 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 		BuildMode:                 BazelProdMode,
 		mixedBuildDisabledModules: make(map[string]struct{}),
 		mixedBuildEnabledModules:  make(map[string]struct{}),
+		bazelForceEnabledModules:  make(map[string]struct{}),
 	}
 	config.deviceConfig = &deviceConfig{
 		config: config,
@@ -152,4 +153,10 @@ func CreateTestConfiguredJarList(list []string) ConfiguredJarList {
 	}
 
 	return jarList
+}
+
+func (config Config) SetForceEnabledModules(forceEnabled []string) {
+	for _, forceEnabledModule := range forceEnabled {
+		config.bazelForceEnabledModules[forceEnabledModule] = struct{}{}
+	}
 }

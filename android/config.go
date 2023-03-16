@@ -583,12 +583,11 @@ func NewConfig(cmdArgs CmdArgs, availableEnv map[string]string) (Config, error) 
 	setBazelMode(cmdArgs.BazelMode, "--bazel-mode", BazelProdMode)
 	setBazelMode(cmdArgs.BazelModeStaging, "--bazel-mode-staging", BazelStagingMode)
 
-	config.BazelContext, err = NewBazelContext(config)
-	config.Bp2buildPackageConfig = GetBp2BuildAllowList()
-
 	for _, module := range strings.Split(cmdArgs.BazelForceEnabledModules, ",") {
 		config.bazelForceEnabledModules[module] = struct{}{}
 	}
+	config.BazelContext, err = NewBazelContext(config)
+	config.Bp2buildPackageConfig = GetBp2BuildAllowList()
 
 	return Config{config}, err
 }
