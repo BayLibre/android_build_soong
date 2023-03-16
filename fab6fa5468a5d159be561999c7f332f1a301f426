@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd92259b_7b34651b",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-16T10:46:02Z",
+      "side": 1,
+      "message": "EMPTY means I don\u0027t use weight list, but I want to use critical path logic.\nNOT_USED means I don\u0027t use neither.\n\nI might need to change the name to avoid confusion. I changed it to EVENLY_DISTRIBUTED. Feel free to suggest the name if you have a good one.",
+      "parentUuid": "df91db76_d141be3a",
+      "range": {
+        "startLine": 831,
+        "startChar": 3,
+        "endLine": 831,
+        "endChar": 35
+      },
+      "revId": "fab6fa5468a5d159be561999c7f332f1a301f426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40001c63_1b6e6dc4",
@@ -37,6 +61,54 @@
       "writtenOn": "2023-03-16T10:18:58Z",
       "side": 1,
       "message": "can these checks be switch/case?",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 49
+      },
+      "revId": "fab6fa5468a5d159be561999c7f332f1a301f426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e0281e8_a90156ce",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-16T10:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40001c63_1b6e6dc4",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 49
+      },
+      "revId": "fab6fa5468a5d159be561999c7f332f1a301f426",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16711e19_9dc1e1a6",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-16T10:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40001c63_1b6e6dc4",
       "range": {
         "startLine": 128,
         "startChar": 1,
