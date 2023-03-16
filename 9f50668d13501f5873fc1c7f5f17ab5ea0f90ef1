@@ -474,6 +474,24 @@
       "parentUuid": "b6100e1a_3b7cc12b",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a731d2_bfecc34b",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-03-16T04:16:27Z",
+      "side": 1,
+      "message": "The prebuilt VNDKs don\u0027t exist for APIs below the min supported for the architecture, which leads to missing dependency errors.",
+      "parentUuid": "f2a4424d_699659f2",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
