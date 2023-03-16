@@ -63,4 +63,38 @@ EOF
   fi
 }
 
+function test_force_enabled_modules {
+  setup
+  # b/273910287 - test force enable modules
+  mkdir -p soong_tests/a/b
+  touch soong_tests/a/b/c.txt
+  cat > soong_tests/a/b/Android.bp <<'EOF'
+genrule {
+    name: "touch-file",
+    out: ["fake-out.txt"],
+    cmd: "touch $(out)",
+    bazel_module: { bp2build_available: true },
+}
+
+genrule {
+    name: "unenabled-touch-file",
+    out: ["fake-out2.txt"],
+    cmd: "touch $(out)",
+    bazel_module: { bp2build_available: true },
+}
+EOF
+  run_soong --bazel-mode-staging --bazel-force-enabled-modules=touch-file nothing
+  local bazel_contained=`grep out/bazel/output/execroot/__main__/bazel-out/aosp_arm-eng_linux_x86_64-opt/bin/build/soong/tests/fake-out out/soong/build.ninja`
+  if [[ bazel_contained == '' ]]; then
+    fail "Bazel actions not found for force-enabled module"
+  fi
+
+  local expected_failure=`run_soong --bazel-force-enabled-modules=unenabled-touch-file nothing`
+
+  if [[ expected_failure == 0 ]]; then
+    fail "Expected failure due to force-enabling an unenabled module"
+  fi
+}
+
+
 scan_and_run_tests
