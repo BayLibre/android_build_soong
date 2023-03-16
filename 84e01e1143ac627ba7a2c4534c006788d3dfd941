@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e0ed03_af042aa0",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-16T09:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d39751b6_9c608d28",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "84e01e1143ac627ba7a2c4534c006788d3dfd941",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5892fa1b_4ac4d288",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a635ab86_e9bd244e",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-16T09:21:19Z",
+      "side": 1,
+      "message": "I was going to use this for conditionals on the make side, but not necessary anymore. Removed.",
+      "parentUuid": "5892fa1b_4ac4d288",
+      "revId": "84e01e1143ac627ba7a2c4534c006788d3dfd941",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b316d17_af86cd54",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-03-15T16:41:22Z",
       "side": 1,
       "message": "I\u0027m not too sure about the inner workings of go, but would it be more efficient to define this as a top-level constant, outside of the function?",
+      "revId": "84e01e1143ac627ba7a2c4534c006788d3dfd941",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7d997c_794bcc26",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2009,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-16T09:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b316d17_af86cd54",
       "revId": "84e01e1143ac627ba7a2c4534c006788d3dfd941",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
