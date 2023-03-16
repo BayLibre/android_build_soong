@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd6bc2c_90a6161d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-03-16T11:03:01Z",
+      "side": 1,
+      "message": "Maybe, but either way, we wouldn\u0027t need need to make the latest pending txt file available to the rest of the build without a concrete usecase, so +1 to remove",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "bca95faa4bfa8d18235676e0897db816cf32e84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
