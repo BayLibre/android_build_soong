@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be27fff8_f3145903",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-16T08:10:41Z",
+      "side": 1,
+      "message": "Can you use a flag instead of an env var? (https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/config.go;l\u003d751;drc\u003d715a186b5d8903d30c25299ed0ecff0e2e9fbb9c)\n\nEnv vars can be errorprone to the shell\u0027s state. Flags are more explicit and obvious.",
+      "range": {
+        "startLine": 128,
+        "startChar": 31,
+        "endLine": 128,
+        "endChar": 60
+      },
+      "revId": "3ccaaeb0d077809818ffddc37bea1e224e8289f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
