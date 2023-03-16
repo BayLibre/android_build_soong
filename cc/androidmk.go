@@ -539,7 +539,7 @@ func (c *snapshotLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entrie
 		entries.SubName += ".hwasan"
 	}
 
-	entries.SubName += c.baseProperties.Androidmk_suffix
+	entries.SubName += c.BaseProperties.Androidmk_suffix
 
 	entries.ExtraEntries = append(entries.ExtraEntries, func(_ android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		c.libraryDecorator.androidMkWriteExportedFlags(entries)
@@ -576,12 +576,12 @@ func (c *snapshotLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entrie
 
 func (c *snapshotBinaryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	entries.Class = "EXECUTABLES"
-	entries.SubName = c.baseProperties.Androidmk_suffix
+	entries.SubName = c.BaseProperties.Androidmk_suffix
 }
 
 func (c *snapshotObjectLinker) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	entries.Class = "STATIC_LIBRARIES"
-	entries.SubName = c.baseProperties.Androidmk_suffix
+	entries.SubName = c.BaseProperties.Androidmk_suffix
 
 	entries.ExtraFooters = append(entries.ExtraFooters,
 		func(w io.Writer, name, prefix, moduleDir string) {

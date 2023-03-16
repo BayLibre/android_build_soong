@@ -240,7 +240,7 @@ func snapshotFactory(image SnapshotImage) android.Module {
 	snapshotModule.image = image
 	snapshotModule.AddProperties(
 		&snapshotModule.properties,
-		&snapshotModule.baseSnapshot.baseProperties)
+		&snapshotModule.baseSnapshot.BaseProperties)
 	android.InitAndroidArchModule(snapshotModule, android.DeviceSupported, android.MultilibBoth)
 	return snapshotModule
 }
@@ -273,7 +273,7 @@ type BaseSnapshotDecoratorProperties struct {
 //
 // will be seen as "libbase.vendor_static.30.arm64" by Soong.
 type BaseSnapshotDecorator struct {
-	baseProperties BaseSnapshotDecoratorProperties
+	BaseProperties BaseSnapshotDecoratorProperties
 	Image          SnapshotImage
 }
 
@@ -286,15 +286,15 @@ func (p *BaseSnapshotDecorator) NameSuffix() string {
 }
 
 func (p *BaseSnapshotDecorator) Version() string {
-	return p.baseProperties.Version
+	return p.BaseProperties.Version
 }
 
 func (p *BaseSnapshotDecorator) Arch() string {
-	return p.baseProperties.Target_arch
+	return p.BaseProperties.Target_arch
 }
 
 func (p *BaseSnapshotDecorator) moduleSuffix() string {
-	return p.baseProperties.ModuleSuffix
+	return p.BaseProperties.ModuleSuffix
 }
 
 func (p *BaseSnapshotDecorator) IsSnapshotPrebuilt() bool {
@@ -302,7 +302,7 @@ func (p *BaseSnapshotDecorator) IsSnapshotPrebuilt() bool {
 }
 
 func (p *BaseSnapshotDecorator) SnapshotAndroidMkSuffix() string {
-	return p.baseProperties.Androidmk_suffix
+	return p.BaseProperties.Androidmk_suffix
 }
 
 func (p *BaseSnapshotDecorator) SetSnapshotAndroidMkSuffix(ctx android.ModuleContext, variant string) {
@@ -314,7 +314,7 @@ func (p *BaseSnapshotDecorator) SetSnapshotAndroidMkSuffix(ctx android.ModuleCon
 		Variation: android.CoreVariation})
 
 	if ctx.OtherModuleFarDependencyVariantExists(variations, ctx.Module().(LinkableInterface).BaseModuleName()) {
-		p.baseProperties.Androidmk_suffix = p.Image.moduleNameSuffix()
+		p.BaseProperties.Androidmk_suffix = p.Image.moduleNameSuffix()
 		return
 	}
 
@@ -323,7 +323,7 @@ func (p *BaseSnapshotDecorator) SetSnapshotAndroidMkSuffix(ctx android.ModuleCon
 		Variation: ProductVariationPrefix + ctx.DeviceConfig().PlatformVndkVersion()})
 
 	if ctx.OtherModuleFarDependencyVariantExists(variations, ctx.Module().(LinkableInterface).BaseModuleName()) {
-		p.baseProperties.Androidmk_suffix = p.Image.moduleNameSuffix()
+		p.BaseProperties.Androidmk_suffix = p.Image.moduleNameSuffix()
 		return
 	}
 
@@ -343,20 +343,20 @@ func (p *BaseSnapshotDecorator) SetSnapshotAndroidMkSuffix(ctx android.ModuleCon
 					image.moduleNameSuffix()+variant,
 					p.Version(),
 					ctx.DeviceConfig().Arches()[0].ArchType.String())) {
-			p.baseProperties.Androidmk_suffix = p.Image.moduleNameSuffix()
+			p.BaseProperties.Androidmk_suffix = p.Image.moduleNameSuffix()
 			return
 		}
 	}
 
-	p.baseProperties.Androidmk_suffix = ""
+	p.BaseProperties.Androidmk_suffix = ""
 }
 
 // Call this with a module suffix after creating a snapshot module, such as
 // vendorSnapshotSharedSuffix, recoverySnapshotBinarySuffix, etc.
 func (p *BaseSnapshotDecorator) Init(m LinkableInterface, image SnapshotImage, moduleSuffix string) {
 	p.Image = image
-	p.baseProperties.ModuleSuffix = image.moduleNameSuffix() + moduleSuffix
-	m.AddProperties(&p.baseProperties)
+	p.BaseProperties.ModuleSuffix = image.moduleNameSuffix() + moduleSuffix
+	m.AddProperties(&p.BaseProperties)
 	android.AddLoadHook(m, func(ctx android.LoadHookContext) {
 		vendorSnapshotLoadHook(ctx, p)
 	})
@@ -522,6 +522,8 @@ func (p *snapshotLibraryDecorator) nativeCoverage() bool {
 	return false
 }
 
+var _ snapshotSanitizer = (*snapshotLibraryDecorator)(nil)
+
 func (p *snapshotLibraryDecorator) isSanitizerAvailable(t SanitizerType) bool {
 	switch t {
 	case cfi:
@@ -643,8 +645,6 @@ func RecoverySnapshotHeaderFactory() android.Module {
 	prebuilt.libraryDecorator.HeaderOnly()
 	return module.Init()
 }
-
-var _ snapshotSanitizer = (*snapshotLibraryDecorator)(nil)
 
 // Module definitions for snapshots of executable binaries.
 //
