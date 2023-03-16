@@ -322,7 +322,8 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (convers
 					metrics.IncrementRuleClassCount(t.ruleClass)
 				}
 			} else {
-				metrics.AddUnconvertedModule(moduleType)
+				ctx.Config().
+					metrics.AddUnconvertedModule(moduleType)
 				return
 			}
 		case QueryView:

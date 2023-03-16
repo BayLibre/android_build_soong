@@ -69,6 +69,7 @@ var (
 		"build/soong/licenses":               Bp2BuildDefaultTrue,
 		"build/soong/linkerconfig":           Bp2BuildDefaultTrueRecursively,
 		"build/soong/scripts":                Bp2BuildDefaultTrueRecursively,
+		"build/soong/tests":                  Bp2BuildDefaultTrue,
 
 		"cts/common/device-side/nativetesthelper/jni": Bp2BuildDefaultTrueRecursively,
 
