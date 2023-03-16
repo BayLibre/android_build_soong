@@ -234,6 +234,7 @@ var (
 		"hardware/interfaces/graphics/common/1.1":      Bp2BuildDefaultTrue,
 		"hardware/interfaces/graphics/common/1.2":      Bp2BuildDefaultTrue,
 		"hardware/interfaces/graphics/common/aidl":     Bp2BuildDefaultTrue,
+		"hardware/interfaces/graphics/mapper":          Bp2BuildDefaultTrueRecursively,
 		"hardware/interfaces/graphics/mapper/2.0":      Bp2BuildDefaultTrue,
 		"hardware/interfaces/graphics/mapper/2.1":      Bp2BuildDefaultTrue,
 		"hardware/interfaces/graphics/mapper/3.0":      Bp2BuildDefaultTrue,
