@@ -22,6 +22,30 @@
       },
       "revId": "3ccaaeb0d077809818ffddc37bea1e224e8289f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec506694_45f4ee22",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-16T09:35:42Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! I converted it to a flag, and added it into metrics as well. In addition, I added another options for the flag.",
+      "parentUuid": "be27fff8_f3145903",
+      "range": {
+        "startLine": 128,
+        "startChar": 31,
+        "endLine": 128,
+        "endChar": 60
+      },
+      "revId": "3ccaaeb0d077809818ffddc37bea1e224e8289f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
