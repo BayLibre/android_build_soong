@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118cc99a_0dea73aa",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2959,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-03-16T20:15:14Z",
+      "side": 1,
+      "message": "use load location at \n\"//build/bazel/rules/java:rules.bzl\"",
+      "revId": "f396a934113d9d62c9bce34685ef0142504a2a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
