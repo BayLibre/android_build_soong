@@ -122,14 +122,21 @@ java_import_host{
 }
 `,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("java_binary", "java-binary-host-libs", AttrNameToString{
-				"main_class": `"com.android.test.MainClass"`,
-				"srcs":       `["a.java"]`,
-				"deps":       `[":java-lib-dep-1-neverlink"]`,
+			MakeBazelTarget("java_library", "java-binary-host-libs_lib", AttrNameToString{
+				"srcs": `["a.java"]`,
+				"deps": `[":java-lib-dep-1-neverlink"]`,
 				"target_compatible_with": `select({
         "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
         "//conditions:default": [],
     })`,
+			}),
+			MakeBazelTarget("java_binary", "java-binary-host-libs", AttrNameToString{
+				"main_class": `"com.android.test.MainClass"`,
+				"target_compatible_with": `select({
+        "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    })`,
+				"runtime_deps": `[":java-binary-host-libs_lib"]`,
 			}),
 		},
 	})
@@ -146,7 +153,7 @@ func TestJavaBinaryHostKotlinSrcs(t *testing.T) {
 }
 `,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("kt_jvm_library", "java-binary-host_kt", AttrNameToString{
+			MakeBazelTarget("kt_jvm_library", "java-binary-host_lib", AttrNameToString{
 				"srcs": `[
         "a.java",
         "b.kt",
@@ -158,7 +165,7 @@ func TestJavaBinaryHostKotlinSrcs(t *testing.T) {
 			}),
 			MakeBazelTarget("java_binary", "java-binary-host", AttrNameToString{
 				"main_class":   `"com.android.test.MainClass"`,
-				"runtime_deps": `[":java-binary-host_kt"]`,
+				"runtime_deps": `[":java-binary-host_lib"]`,
 				"target_compatible_with": `select({
         "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
         "//conditions:default": [],
@@ -180,7 +187,7 @@ func TestJavaBinaryHostKotlinCommonSrcs(t *testing.T) {
 }
 `,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("kt_jvm_library", "java-binary-host_kt", AttrNameToString{
+			MakeBazelTarget("kt_jvm_library", "java-binary-host_lib", AttrNameToString{
 				"srcs":        `["a.java"]`,
 				"common_srcs": `["b.kt"]`,
 				"target_compatible_with": `select({
@@ -190,7 +197,7 @@ func TestJavaBinaryHostKotlinCommonSrcs(t *testing.T) {
 			}),
 			MakeBazelTarget("java_binary", "java-binary-host", AttrNameToString{
 				"main_class":   `"com.android.test.MainClass"`,
-				"runtime_deps": `[":java-binary-host_kt"]`,
+				"runtime_deps": `[":java-binary-host_lib"]`,
 				"target_compatible_with": `select({
         "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
         "//conditions:default": [],
@@ -216,7 +223,7 @@ func TestJavaBinaryHostKotlinWithResourceDir(t *testing.T) {
 }
 `,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("kt_jvm_library", "java-binary-host_kt", AttrNameToString{
+			MakeBazelTarget("kt_jvm_library", "java-binary-host_lib", AttrNameToString{
 				"srcs": `[
         "a.java",
         "b.kt",
@@ -233,7 +240,7 @@ func TestJavaBinaryHostKotlinWithResourceDir(t *testing.T) {
 			}),
 			MakeBazelTarget("java_binary", "java-binary-host", AttrNameToString{
 				"main_class":   `"com.android.test.MainClass"`,
-				"runtime_deps": `[":java-binary-host_kt"]`,
+				"runtime_deps": `[":java-binary-host_lib"]`,
 				"target_compatible_with": `select({
         "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
         "//conditions:default": [],
@@ -259,7 +266,7 @@ func TestJavaBinaryHostKotlinWithResources(t *testing.T) {
 }
 `,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("kt_jvm_library", "java-binary-host_kt", AttrNameToString{
+			MakeBazelTarget("kt_jvm_library", "java-binary-host_lib", AttrNameToString{
 				"srcs": `[
         "a.java",
         "b.kt",
@@ -275,7 +282,7 @@ func TestJavaBinaryHostKotlinWithResources(t *testing.T) {
 			}),
 			MakeBazelTarget("java_binary", "java-binary-host", AttrNameToString{
 				"main_class":   `"com.android.test.MainClass"`,
-				"runtime_deps": `[":java-binary-host_kt"]`,
+				"runtime_deps": `[":java-binary-host_lib"]`,
 				"target_compatible_with": `select({
         "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
         "//conditions:default": [],
@@ -297,7 +304,7 @@ func TestJavaBinaryHostKotlinCflags(t *testing.T) {
 }
 `,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("kt_jvm_library", "java-binary-host_kt", AttrNameToString{
+			MakeBazelTarget("kt_jvm_library", "java-binary-host_lib", AttrNameToString{
 				"srcs": `["a.kt"]`,
 				"kotlincflags": `[
         "-flag1",
@@ -310,7 +317,7 @@ func TestJavaBinaryHostKotlinCflags(t *testing.T) {
 			}),
 			MakeBazelTarget("java_binary", "java-binary-host", AttrNameToString{
 				"main_class":   `"com.android.test.MainClass"`,
-				"runtime_deps": `[":java-binary-host_kt"]`,
+				"runtime_deps": `[":java-binary-host_lib"]`,
 				"target_compatible_with": `select({
         "//build/bazel/platforms/os:android": ["@platforms//:incompatible"],
         "//conditions:default": [],
