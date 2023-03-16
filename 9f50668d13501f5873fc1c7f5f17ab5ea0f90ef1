@@ -456,6 +456,24 @@
       "parentUuid": "ac3e9502_e809dd1c",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a4424d_699659f2",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-16T04:14:23Z",
+      "side": 1,
+      "message": "Never disable sounds good to me as well, but I realized that this filtering was introduced by you with aosp/2404325. The CL doesn\u0027t explain why...",
+      "parentUuid": "b6100e1a_3b7cc12b",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
