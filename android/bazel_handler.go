@@ -84,8 +84,12 @@ func RegisterMixedBuildsMutator(ctx RegistrationContext) {
 func mixedBuildsPrepareMutator(ctx BottomUpMutatorContext) {
 	if m := ctx.Module(); m.Enabled() {
 		if mixedBuildMod, ok := m.(MixedBuildBuildable); ok {
-			if mixedBuildMod.IsMixedBuildSupported(ctx) && MixedBuildsEnabled(ctx) {
+			queueMixedBuild := mixedBuildMod.IsMixedBuildSupported(ctx) && MixedBuildsEnabled(ctx)
+			if queueMixedBuild {
 				mixedBuildMod.QueueBazelCall(ctx)
+			} else if allowlists.BazelForceEnabledMixedBuildsList[m.Name()] {
+				// Error
+				fmt.Fprintf(os.Stderr, "Attempted to force enable an unready module: %s\n", m.Name())
 			}
 		}
 	}
@@ -516,6 +520,7 @@ func GetBazelEnabledAndDisabledModules(buildMode SoongBuildMode, forceEnabled ma
 		addToStringSet(enabledModules, allowlists.ProdMixedBuildsEnabledList)
 		for enabledAdHocModule := range forceEnabled {
 			enabledModules[enabledAdHocModule] = true
+			allowlists.BazelForceEnabledMixedBuildsList[enabledAdHocModule] = true
 		}
 	case BazelStagingMode:
 		// Staging mode includes all prod modules plus all staging modules.
@@ -523,6 +528,7 @@ func GetBazelEnabledAndDisabledModules(buildMode SoongBuildMode, forceEnabled ma
 		addToStringSet(enabledModules, allowlists.StagingMixedBuildsEnabledList)
 		for enabledAdHocModule := range forceEnabled {
 			enabledModules[enabledAdHocModule] = true
+			allowlists.BazelForceEnabledMixedBuildsList[enabledAdHocModule] = true
 		}
 	case BazelDevMode:
 		addToStringSet(disabledModules, allowlists.MixedBuildsDisabledList)

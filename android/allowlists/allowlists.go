@@ -1461,6 +1461,8 @@ var (
 	// These should be the libs that are included by the apexes in the StagingMixedBuildsEnabledList
 	StagingDclaMixedBuildsEnabledList = []string{}
 
+	BazelForceEnabledMixedBuildsList = make(map[string]bool)
+
 	// TODO(b/269342245): Enable the rest of the DCLA libs
 	// "libssl",
 	// "libstagefright_flacdec",
