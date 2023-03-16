@@ -238,11 +238,11 @@ func (p *PackagingBase) GatherPackagingSpecs(ctx ModuleContext) map[string]Packa
 
 // CopySpecsToDir is a helper that will add commands to the rule builder to copy the PackagingSpec
 // entries into the specified directory.
-func (p *PackagingBase) CopySpecsToDir(ctx ModuleContext, builder *RuleBuilder, specs map[string]PackagingSpec, dir ModuleOutPath) (entries []string) {
+func (p *PackagingBase) CopySpecsToDir(ctx ModuleContext, builder *RuleBuilder, specs map[string]PackagingSpec, dir string) (entries []string) {
 	seenDir := make(map[string]bool)
 	for _, k := range SortedKeys(specs) {
 		ps := specs[k]
-		destPath := dir.Join(ctx, ps.relPathInPackage).String()
+		destPath := filepath.Join(dir, ps.relPathInPackage)
 		destDir := filepath.Dir(destPath)
 		entries = append(entries, ps.relPathInPackage)
 		if _, ok := seenDir[destDir]; !ok {
@@ -269,7 +269,7 @@ func (p *PackagingBase) CopyDepsToZip(ctx ModuleContext, specs map[string]Packag
 	dir := PathForModuleOut(ctx, ".zip")
 	builder.Command().Text("rm").Flag("-rf").Text(dir.String())
 	builder.Command().Text("mkdir").Flag("-p").Text(dir.String())
-	entries = p.CopySpecsToDir(ctx, builder, specs, dir)
+	entries = p.CopySpecsToDir(ctx, builder, specs, dir.String())
 
 	builder.Command().
 		BuiltTool("soong_zip").
