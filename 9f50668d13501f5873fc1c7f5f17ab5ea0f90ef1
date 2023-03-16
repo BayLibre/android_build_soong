@@ -510,6 +510,24 @@
       "parentUuid": "ac3e9502_e809dd1c",
       "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52bf9ef3_316c0e07",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-03-16T04:59:46Z",
+      "side": 1,
+      "message": "The `len(targets) \u003e 0` is just to ensure the `targets[0]` doesn\u0027t trigger a nil pointer dereference.  It is checking the list of targets supported by the current apex version, e.g. `[riscv64]` or `[arm64, arm]`.  riscv64 is 64-bit only, most x86_64 and arm64 builds also support x86 or arm, but we also have arm64-only builds without arm.\n\nI think the build won\u0027t fail if you remove all this code because we currently build with `ALLOW_MISSING_DEPENDENCIES\u003dtrue`, but I added it because that hack will need to be turned off eventually.\n\nTry adding `vndkVersion !\u003d mctx.DeviceConfig().PlatformVndkVersion()` to the list of checks on line 79.",
+      "parentUuid": "373b0787_f642e92b",
+      "revId": "9f50668d13501f5873fc1c7f5f17ab5ea0f90ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
