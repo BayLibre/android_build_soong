@@ -1128,7 +1128,8 @@ func (c *configImpl) MultitreeBuild() bool {
 }
 
 func (c *configImpl) NinjaWeightListSource() NinjaWeightListSource {
-	return c.ninjaWeightListSource
+	return EVENLY_DISTRIBUTED
+	// return c.ninjaWeightListSource
 }
 
 func (c *configImpl) SkipKati() bool {
