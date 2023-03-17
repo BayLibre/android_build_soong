@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51c30c2e_dc04d766",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-03-17T19:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a3fcc57_b26255f1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 326
+      },
+      "revId": "fc1e52a4573cd077c74caf08016eec7ff8ea0134",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c269962_bbc989dc",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-17T17:28:03Z",
       "side": 1,
       "message": "can you delete this comment?",
+      "range": {
+        "startLine": 739,
+        "startChar": 1,
+        "endLine": 743,
+        "endChar": 4
+      },
+      "revId": "fc1e52a4573cd077c74caf08016eec7ff8ea0134",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f93e4c6a_8ee257cb",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-03-17T19:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c269962_bbc989dc",
       "range": {
         "startLine": 739,
         "startChar": 1,
