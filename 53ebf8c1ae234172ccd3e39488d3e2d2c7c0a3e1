@@ -22,6 +22,30 @@
       },
       "revId": "53ebf8c1ae234172ccd3e39488d3e2d2c7c0a3e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f5c212_af5c8855",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-17T16:57:09Z",
+      "side": 1,
+      "message": "I think you are right, that should be more performant. I have updated the implementation with this suggestion.",
+      "parentUuid": "f69edaac_e0b3f0e2",
+      "range": {
+        "startLine": 1171,
+        "startChar": 24,
+        "endLine": 1171,
+        "endChar": 53
+      },
+      "revId": "53ebf8c1ae234172ccd3e39488d3e2d2c7c0a3e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
