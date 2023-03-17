@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c48504_0b2ef682",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-17T16:46:03Z",
+      "side": 1,
+      "message": "Will using apex_available to determine the api domain boundary cause issues if the dep is marked `apex_available` to an apex, but should be accessed only via apis by that apex?\n\nMy understanding of jooyung@\u0027s comment in b/264963986#comment7 is that we need to look at `native_shared_libs` and `binaries` property of the parent apex(s) to determine the api domain boundaries.",
+      "range": {
+        "startLine": 10,
+        "startChar": 42,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "edb754fea17ee3ad53a9ecad71676ae9c52f3702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
