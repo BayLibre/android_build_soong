@@ -33,6 +33,29 @@
       "message": "+colefaust for OWNERS, since joeo is ooo...",
       "revId": "a07f2385c98a290c57958dd35024cd4f85f67097",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cdb6efa_aeedf363",
+        "filename": "scripts/build-ndk-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-17T18:15:46Z",
+      "side": 1,
+      "message": "Add a TODO with bug to remove and explanation for why it\u0027s here.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "a07f2385c98a290c57958dd35024cd4f85f67097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
