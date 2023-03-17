@@ -125,13 +125,8 @@ func runNinjaForBuild(ctx Context, config Config) {
 		cmd.Environment.AppendFromKati(config.KatiEnvFile())
 	}
 
-	switch config.NinjaWeightListSource() {
-	case NINJA_LOG:
-		useNinjaBuildLog(ctx, config, cmd)
-	case EVENLY_DISTRIBUTED:
-		// pass empty weight list means ninja considers every tasks's weight as 1(default value).
-		cmd.Args = append(cmd.Args, "-o", "usesweightlist=/dev/null")
-	}
+	useNinjaBuildLog(ctx, config, cmd)
+	// cmd.Args = append(cmd.Args, "-o", "usesweightlist=/dev/null")
 
 	// Allow both NINJA_ARGS and NINJA_EXTRA_ARGS, since both have been
 	// used in the past to specify extra ninja arguments.
