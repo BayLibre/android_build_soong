@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69edaac_e0b3f0e2",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-17T14:11:11Z",
+      "side": 1,
+      "message": "optional: it might useful to extract the `@api_surfaces/module-libapi/current:` portion into a into a constant and use concatenation for the stub name (my understanding is that sprintf is often less performant than other forms of concatenation in go, and there\u0027s no need to re-sprintf the `@api_surfaces` portion for each stub label)",
+      "range": {
+        "startLine": 1171,
+        "startChar": 24,
+        "endLine": 1171,
+        "endChar": 53
+      },
+      "revId": "53ebf8c1ae234172ccd3e39488d3e2d2c7c0a3e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
