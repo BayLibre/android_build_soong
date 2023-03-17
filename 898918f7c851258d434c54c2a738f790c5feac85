@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "839b9340_6b24800f",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-17T05:12:33Z",
+      "side": 1,
+      "message": "Put this into a function and share it with line 50.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "898918f7c851258d434c54c2a738f790c5feac85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a126c07_b77b2e08",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-17T05:12:33Z",
+      "side": 1,
+      "message": "Let\u0027s not pollute $PRODUCT_OUT with tests since it can lead to hard to debug incremental errors? Use a tmp dir instead?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 32
+      },
+      "revId": "898918f7c851258d434c54c2a738f790c5feac85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
