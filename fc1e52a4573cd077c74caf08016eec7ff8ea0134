@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a3fcc57_b26255f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-17T17:28:03Z",
+      "side": 1,
+      "message": "Can you update the commit message to include the root cause:\n\nThe issue is that when specifying: `--extra_toolchains\u003d//prebuilts/clang/host/linux-x86:all`, there is no control over the sort order of toolchains, which can result in a more generic toolchain being used rather than the most specific (and correct) toolchain.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 326
+      },
+      "revId": "fc1e52a4573cd077c74caf08016eec7ff8ea0134",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c269962_bbc989dc",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-17T17:28:03Z",
+      "side": 1,
+      "message": "can you delete this comment?",
+      "range": {
+        "startLine": 739,
+        "startChar": 1,
+        "endLine": 743,
+        "endChar": 4
+      },
+      "revId": "fc1e52a4573cd077c74caf08016eec7ff8ea0134",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
