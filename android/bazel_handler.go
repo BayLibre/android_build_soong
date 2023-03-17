@@ -741,10 +741,6 @@ func (r *builtinBazelRunner) createBazelCommand(config Config, paths *bazelPaths
 		// non-canonicalized to @sourceroot labels, and thus be invalid when
 		// referenced from the buildroot.
 		//
-		// The actual platform values here may be overridden by configuration
-		// transitions from the buildroot.
-		fmt.Sprintf("--extra_toolchains=%s", "//prebuilts/clang/host/linux-x86:all"),
-
 		// We don't need to set --host_platforms because it's set in bazelrc files
 		// that the bazel shell script wrapper passes
 
