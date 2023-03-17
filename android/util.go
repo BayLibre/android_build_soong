@@ -170,6 +170,21 @@ func ListSetDifference[T comparable](l1, l2 []T) (bool, []T, []T) {
 	return listsDiffer, diff1, diff2
 }
 
+// ListSetIntersection checks if the two lists contain any common elements. If there are common
+// elements, it returns true and the list of common elements, otherwise false and a nil slice.
+func ListSetIntersection[T comparable](l1, l2 []T) (bool, []T) {
+	listsInCommon := false
+	var common []T
+	m1 := setFromList(l1)
+	for _, v := range l2 {
+		if _, ok := m1[v]; ok {
+			common = append(common, v)
+			listsInCommon = true
+		}
+	}
+	return listsInCommon, common
+}
+
 // Returns true if the given string s is prefixed with any string in the given prefix list.
 func HasAnyPrefix(s string, prefixList []string) bool {
 	for _, prefix := range prefixList {

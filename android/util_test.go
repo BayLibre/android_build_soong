@@ -746,3 +746,48 @@ func TestSortedUniqueStringValues(t *testing.T) {
 		})
 	}
 }
+
+func TestListSetIntersection(t *testing.T) {
+	testCases := []struct {
+		desc           string
+		in1, in2       []string
+		expectedCommon bool
+		expected       []string
+	}{
+		{
+			desc:           "nil",
+			expectedCommon: false,
+		},
+		{
+			desc:           "empty",
+			in1:            []string{},
+			in2:            []string{},
+			expectedCommon: false,
+		},
+		{
+			desc:           "no_intersection",
+			in1:            []string{"a"},
+			in2:            []string{"b"},
+			expectedCommon: false,
+		},
+		{
+			desc:           "no_intersection",
+			in1:            []string{"a"},
+			in2:            []string{"a"},
+			expectedCommon: true,
+			expected:       []string{"a"},
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.desc, func(t *testing.T) {
+			gCommon, got := ListSetIntersection(tc.in1, tc.in2)
+			if gCommon != tc.expectedCommon {
+				t.Errorf("Expected whether any common elemens: %#v, got: %#v", tc.expectedCommon, gCommon)
+			}
+			if g, w := got, tc.expected; !reflect.DeepEqual(g, w) {
+				t.Errorf("Expected %q, got %q", w, g)
+			}
+		})
+	}
+}
