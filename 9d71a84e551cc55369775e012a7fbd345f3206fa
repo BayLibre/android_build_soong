@@ -22,6 +22,30 @@
       },
       "revId": "9d71a84e551cc55369775e012a7fbd345f3206fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83ed8c9_9e025d85",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-17T14:07:21Z",
+      "side": 1,
+      "message": "yeah this is just for internal. same with the bufferpools for swcodec",
+      "parentUuid": "18d77c75_1916b9f5",
+      "range": {
+        "startLine": 710,
+        "startChar": 18,
+        "endLine": 710,
+        "endChar": 44
+      },
+      "revId": "9d71a84e551cc55369775e012a7fbd345f3206fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
