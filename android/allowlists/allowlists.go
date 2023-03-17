@@ -248,6 +248,7 @@ var (
 		"hardware/interfaces/health/utils":             Bp2BuildDefaultTrueRecursively,
 		"hardware/interfaces/media/1.0":                Bp2BuildDefaultTrue,
 		"hardware/interfaces/media/bufferpool/2.0":     Bp2BuildDefaultTrue,
+		"hardware/interfaces/media/bufferpool/aidl":    Bp2BuildDefaultTrueRecursively,
 		"hardware/interfaces/media/c2/1.0":             Bp2BuildDefaultTrue,
 		"hardware/interfaces/media/c2/1.1":             Bp2BuildDefaultTrue,
 		"hardware/interfaces/media/c2/1.2":             Bp2BuildDefaultTrue,
@@ -324,6 +325,7 @@ var (
 		"system/libartpalette":                                   Bp2BuildDefaultTrueRecursively,
 		"system/libbase":                                         Bp2BuildDefaultTrueRecursively,
 		"system/libfmq":                                          Bp2BuildDefaultTrue,
+		"system/libhidl":                                         Bp2BuildDefaultTrue,
 		"system/libhidl/libhidlmemory":                           Bp2BuildDefaultTrue,
 		"system/libhidl/transport":                               Bp2BuildDefaultTrue,
 		"system/libhidl/transport/allocator/1.0":                 Bp2BuildDefaultTrue,
@@ -414,6 +416,7 @@ var (
 	}
 
 	Bp2buildModuleAlwaysConvertList = []string{
+		"test_com.android.media.swcodec",
 		"libidmap2_policies",
 		"libSurfaceFlingerProp",
 		// cc mainline modules
@@ -567,10 +570,6 @@ var (
 		"car-ui-androidx-lifecycle-common-nodeps",
 		"car-ui-androidx-constraintlayout-solver-nodeps",
 
-		//system/libhidl
-		// needed by cc_hidl_library
-		"libhidlbase",
-
 		//frameworks/native
 		"framework_native_aidl_binder",
 		"framework_native_aidl_gui",
@@ -721,15 +720,6 @@ var (
 	// the "prebuilt_" prefix to the name, so that it's differentiable from
 	// the source versions within Soong's module graph.
 	Bp2buildModuleDoNotConvertList = []string{
-		// TODO(b/250876486): Created cc_aidl_library doesn't have static libs from parent cc module
-		"libgui_window_info_static",
-		"libgui",     // Depends on unconverted libgui_window_info_static
-		"libdisplay", // Depends on uncovnerted libgui
-		// Depends on unconverted libdisplay
-		"libdvr_static.google",
-		"libdvr.google",
-		"libvrsensor",
-		"dvr_api-test",
 		// Depends on unconverted libandroid, libgui
 		"dvr_buffer_queue-test",
 		"dvr_display-test",
