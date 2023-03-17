@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b2e4401_9354b9ea",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-17T17:36:05Z",
+      "side": 1,
+      "message": "Doesn\u0027t this need a corresponding change in soong_config.mk to set this value?",
+      "revId": "259583285b0e131a3643471e669cc0568b025278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ee488c_72871cf2",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-17T17:36:05Z",
+      "side": 1,
+      "message": "\"include paths\" implies something like C++ header search paths. Could you call it something like HWASanEnabledPaths?",
+      "revId": "259583285b0e131a3643471e669cc0568b025278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
