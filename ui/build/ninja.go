@@ -30,8 +30,9 @@ import (
 
 const (
 	// File containing the environment state when ninja is executed
-	ninjaEnvFileName = "ninja.environment"
-	ninjaLogFileName = ".ninja_log"
+	ninjaEnvFileName        = "ninja.environment"
+	ninjaLogFileName        = ".ninja_log"
+	ninjaWeightListFileName = ".ninja_weight_list"
 )
 
 func useNinjaBuildLog(ctx Context, config Config, cmd *Cmd) {
@@ -66,7 +67,7 @@ func useNinjaBuildLog(ctx Context, config Config, cmd *Cmd) {
 		ctx.Verbosef("There is an error during reading ninja log, so ninja will use empty weight list: %s", err)
 	}
 
-	weightListFile := filepath.Join(config.OutDir(), ".ninja_weight_list")
+	weightListFile := filepath.Join(config.OutDir(), ninjaWeightListFileName)
 
 	err = os.WriteFile(weightListFile, []byte(outputBuilder.String()), 0644)
 	if err == nil {
@@ -74,6 +75,25 @@ func useNinjaBuildLog(ctx Context, config Config, cmd *Cmd) {
 	} else {
 		ctx.Panicf("Could not write ninja weight list file %s", err)
 	}
+}
+
+func validateNinjaWeightList(weightListFilePath string) (err error) {
+	data, err := os.ReadFile(weightListFilePath)
+	if err != nil {
+		return
+	}
+	lines := strings.Split(strings.TrimSpace(string(data)), "\n")
+	for _, line := range lines {
+		fields := strings.Split(line, ",")
+		if len(fields) != 2 {
+			return fmt.Errorf("wrong format, each line should have two fields, but '%s'", line)
+		}
+		_, err = strconv.Atoi(fields[1])
+		if err != nil {
+			return
+		}
+	}
+	return
 }
 
 // Constructs and runs the Ninja command line with a restricted set of
@@ -134,6 +154,14 @@ func runNinjaForBuild(ctx Context, config Config) {
 	case EVENLY_DISTRIBUTED:
 		// pass empty weight list means ninja considers every tasks's weight as 1(default value).
 		cmd.Args = append(cmd.Args, "-o", "usesweightlist=/dev/null")
+	case EXTERNAL_FILE:
+		// The weight list is already copied.
+		ninjaWeightListPath := filepath.Join(config.OutDir(), ninjaWeightListFileName)
+		err := validateNinjaWeightList(ninjaWeightListPath)
+		if err != nil {
+			ctx.Fatal("Malformed weight list: ", err)
+		}
+		cmd.Args = append(cmd.Args, "-o", "usesweightlist="+ninjaWeightListPath)
 	}
 
 	// Allow both NINJA_ARGS and NINJA_EXTRA_ARGS, since both have been

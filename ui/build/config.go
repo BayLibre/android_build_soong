@@ -132,6 +132,8 @@ const (
 	NINJA_LOG
 	// ninja thinks every task has the same weight.
 	EVENLY_DISTRIBUTED
+	// ninja uses an external custom weight list
+	EXTERNAL_FILE
 )
 const srcDirFileCheck = "build/soong/root.bp"
 
@@ -547,6 +549,8 @@ func getNinjaWeightListSourceInMetric(s NinjaWeightListSource) *smpb.BuildConfig
 		return smpb.BuildConfig_NINJA_LOG.Enum()
 	case EVENLY_DISTRIBUTED:
 		return smpb.BuildConfig_EVENLY_DISTRIBUTED.Enum()
+	case EXTERNAL_FILE:
+		return smpb.BuildConfig_EXTERNAL_FILE.Enum()
 	default:
 		return smpb.BuildConfig_NOT_USED.Enum()
 	}
@@ -830,6 +834,13 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 				c.ninjaWeightListSource = EVENLY_DISTRIBUTED
 			} else if source == "not_used" {
 				c.ninjaWeightListSource = NOT_USED
+			} else if strings.HasPrefix(source, "file,") {
+				c.ninjaWeightListSource = EXTERNAL_FILE
+				filePath := strings.TrimPrefix(source, "file,")
+				_, err := copyFile(filePath, filepath.Join(c.OutDir(), ".ninja_weight_list"))
+				if err != nil {
+					ctx.Fatalf("Error to copy ninja weight list from %s: %s", filePath, err)
+				}
 			} else {
 				ctx.Fatalf("unknown option for ninja_weight_source: %s", source)
 			}
