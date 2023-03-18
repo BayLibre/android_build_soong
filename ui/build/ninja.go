@@ -77,6 +77,19 @@ func useNinjaBuildLog(ctx Context, config Config, cmd *Cmd) {
 	}
 }
 
+func useNinjaHintFromSoong(ctx Context, config Config, cmd *Cmd) {
+	ninjaWeightListFileFromSoong := filepath.Join(config.SoongOutDir(), ninjaWeightListFileName)
+	ninjaWeightListFile := filepath.Join(config.OutDir(), ninjaWeightListFileName)
+	_, err := copyFile(ninjaWeightListFileFromSoong, ninjaWeightListFile)
+	if err != nil {
+		// If there is no ninja log file, just pass empty ninja weight list.
+		// Because it is still efficient with critical path calculation logic even without weight.
+		ctx.Fatalf("There is an error during reading weight list from Soong: %s", err)
+	}
+
+	cmd.Args = append(cmd.Args, "-o", "usesweightlist="+ninjaWeightListFile)
+}
+
 // Constructs and runs the Ninja command line with a restricted set of
 // environment variables. It's important to restrict the environment Ninja runs
 // for hermeticity reasons, and to avoid spurious rebuilds.
@@ -139,6 +152,8 @@ func runNinjaForBuild(ctx Context, config Config) {
 		// The weight list is already copied.
 		ninjaWeightListPath := filepath.Join(config.OutDir(), ninjaWeightListFileName)
 		cmd.Args = append(cmd.Args, "-o", "usesweightlist="+ninjaWeightListPath)
+	case HINT_FROM_SOONG:
+		useNinjaHintFromSoong(ctx, config, cmd)
 	}
 
 	// Allow both NINJA_ARGS and NINJA_EXTRA_ARGS, since both have been
