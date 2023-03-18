@@ -15,6 +15,7 @@
 package build
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -30,8 +31,9 @@ import (
 
 const (
 	// File containing the environment state when ninja is executed
-	ninjaEnvFileName = "ninja.environment"
-	ninjaLogFileName = ".ninja_log"
+	ninjaEnvFileName        = "ninja.environment"
+	ninjaLogFileName        = ".ninja_log"
+	ninjaWeightListFileName = ".ninja_weight_list"
 )
 
 func useNinjaBuildLog(ctx Context, config Config, cmd *Cmd) {
@@ -66,7 +68,42 @@ func useNinjaBuildLog(ctx Context, config Config, cmd *Cmd) {
 		ctx.Verbosef("There is an error during reading ninja log, so ninja will use empty weight list: %s", err)
 	}
 
-	weightListFile := filepath.Join(config.OutDir(), ".ninja_weight_list")
+	weightListFile := filepath.Join(config.OutDir(), ninjaWeightListFileName)
+
+	err = os.WriteFile(weightListFile, []byte(outputBuilder.String()), 0644)
+	if err == nil {
+		cmd.Args = append(cmd.Args, "-o", "usesweightlist="+weightListFile)
+	} else {
+		ctx.Panicf("Could not write ninja weight list file %s", err)
+	}
+}
+
+func readJsonFile(inputFilePath string) (hint []string, err error) {
+	data, err := os.ReadFile(inputFilePath)
+	if err != nil {
+		return
+	}
+	err = json.Unmarshal(data, &hint)
+	return
+}
+
+func useNinjaHintFromSoong(ctx Context, config Config, cmd *Cmd) {
+	ninjaHintJsonFile := filepath.Join(config.SoongOutDir(), "ninja_hint.json")
+	data, err := readJsonFile(ninjaHintJsonFile)
+	var outputBuilder strings.Builder
+	if err == nil {
+		for _, path := range data {
+			outputBuilder.WriteString(path)
+			outputBuilder.WriteString(",")
+			outputBuilder.WriteString("1000\n")
+		}
+	} else {
+		// If there is no ninja log file, just pass empty ninja weight list.
+		// Because it is still efficient with critical path calculation logic even without weight.
+		ctx.Verbosef("There is an error during reading ninja log, so ninja will use empty weight list: %s", err)
+	}
+
+	weightListFile := filepath.Join(config.OutDir(), ninjaWeightListFileName)
 
 	err = os.WriteFile(weightListFile, []byte(outputBuilder.String()), 0644)
 	if err == nil {
@@ -128,14 +165,21 @@ func runNinjaForBuild(ctx Context, config Config) {
 		cmd.Environment.AppendFromKati(config.KatiEnvFile())
 	}
 
-	switch config.NinjaWeightListSource() {
-	case NINJA_LOG:
-		useNinjaBuildLog(ctx, config, cmd)
-	case EVENLY_DISTRIBUTED:
-		// pass empty weight list means ninja considers every tasks's weight as 1(default value).
-		cmd.Args = append(cmd.Args, "-o", "usesweightlist=/dev/null")
-	}
+	// switch config.NinjaWeightListSource() {
+	// case NINJA_LOG:
+	// 	useNinjaBuildLog(ctx, config, cmd)
+	// case EVENLY_DISTRIBUTED:
+	// 	// pass empty weight list means ninja considers every tasks's weight as 1(default value).
+	// 	cmd.Args = append(cmd.Args, "-o", "usesweightlist=/dev/null")
+	// case EXTERNAL_FILE:
+	// 	// The weight list is already copied.
+	// 	cmd.Args = append(cmd.Args, "-o", "usesweightlist="+filepath.Join(config.OutDir(), ninjaWeightListFileName))
+	// }
+	// filePath := "build/soong/custom_weight_list"
+	// copyFile(filePath, filepath.Join(config.OutDir(), ".ninja_weight_list"))
+	// cmd.Args = append(cmd.Args, "-o", "usesweightlist="+filepath.Join(config.OutDir(), ninjaWeightListFileName))
 
+	useNinjaHintFromSoong(ctx, config, cmd)
 	// Allow both NINJA_ARGS and NINJA_EXTRA_ARGS, since both have been
 	// used in the past to specify extra ninja arguments.
 	if extra, ok := cmd.Environment.Get("NINJA_ARGS"); ok {

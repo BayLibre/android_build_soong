@@ -1470,4 +1470,28 @@ var (
 	// "libssl",
 	// "libstagefright_flacdec",
 	// "libutils",
+
+	HugeModulesList = []string{
+		"libbt_packets",
+		"libbt_packets_nonapex",
+		"crosvm",
+		"system-api-stubs-docs-non-updatable",
+		"test-api-stubs-docs-non-updatable",
+		"module-lib-api-stubs-docs-non-updatable",
+		"libdevices",
+		"libaom",
+		"libart-disassembler",
+		"libart",
+		"libprotobuf",
+		"libsyn",
+		"api-stubs-docs-non-updatable",
+		"framework-res",
+		"SystemUI-core",
+		"services-non-updatable-stubs",
+		"art.module.public.api.stubs.source",
+		"art.module.intra.core.api.stubs.source",
+		"virtmgr",
+		"metalava",
+		"libkeystore2",
+	}
 )
