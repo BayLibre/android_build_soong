@@ -1470,4 +1470,31 @@ var (
 	// "libssl",
 	// "libstagefright_flacdec",
 	// "libutils",
+
+	// TODO(b/273282046): Make this list customizable to support various targets.
+	// The list of modules which are expected to spend lots of build time.
+	// With `--ninja_weight_source=soong`, ninja builds these modules and deps first.
+	HugeModulesList = []string{
+		"libbt_packets",
+		"libbt_packets_nonapex",
+		"crosvm",
+		"system-api-stubs-docs-non-updatable",
+		"test-api-stubs-docs-non-updatable",
+		"module-lib-api-stubs-docs-non-updatable",
+		"libdevices",
+		"libaom",
+		"libart-disassembler",
+		"libart",
+		"libprotobuf",
+		"libsyn",
+		"api-stubs-docs-non-updatable",
+		"framework-res",
+		"SystemUI-core",
+		"services-non-updatable-stubs",
+		"art.module.public.api.stubs.source",
+		"art.module.intra.core.api.stubs.source",
+		"virtmgr",
+		"metalava",
+		"libkeystore2",
+	}
 )

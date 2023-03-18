@@ -1471,6 +1471,8 @@ type ModuleBase struct {
 
 	// The path to the generated license metadata file for the module.
 	licenseMetadataFile WritablePath
+
+	outputs []string
 }
 
 // A struct containing all relevant information about a Bazel target converted via bp2build.
@@ -2382,6 +2384,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	m.buildParams = ctx.buildParams
 	m.ruleParams = ctx.ruleParams
 	m.variables = ctx.variables
+	m.outputs = ctx.outputs
 }
 
 func (m *ModuleBase) isHandledByBazel(ctx ModuleContext) (MixedBuildBuildable, bool) {
@@ -2574,6 +2577,8 @@ type moduleContext struct {
 	buildParams []BuildParams
 	ruleParams  map[blueprint.Rule]blueprint.RuleParams
 	variables   map[string]string
+
+	outputs []string
 }
 
 // katiInstall stores a request from Soong to Make to create an install rule.
@@ -2756,6 +2761,7 @@ func (m *moduleContext) Build(pctx PackageContext, params BuildParams) {
 	}
 
 	bparams := convertBuildParams(params)
+	m.outputs = append(m.outputs, bparams.Outputs...)
 	err := validateBuildParams(bparams)
 	if err != nil {
 		m.ModuleErrorf(

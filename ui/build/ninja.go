@@ -15,6 +15,7 @@
 package build
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -60,6 +61,43 @@ func useNinjaBuildLog(ctx Context, config Config, cmd *Cmd) {
 			outputBuilder.WriteString(path)
 			outputBuilder.WriteString(",")
 			outputBuilder.WriteString(strconv.Itoa(end-start+1) + "\n")
+		}
+	} else {
+		// If there is no ninja log file, just pass empty ninja weight list.
+		// Because it is still efficient with critical path calculation logic even without weight.
+		ctx.Verbosef("There is an error during reading ninja log, so ninja will use empty weight list: %s", err)
+	}
+
+	weightListFile := filepath.Join(config.OutDir(), ninjaWeightListFileName)
+
+	err = os.WriteFile(weightListFile, []byte(outputBuilder.String()), 0644)
+	if err == nil {
+		cmd.Args = append(cmd.Args, "-o", "usesweightlist="+weightListFile)
+	} else {
+		ctx.Panicf("Could not write ninja weight list file %s", err)
+	}
+}
+
+func readJsonFile(inputFilePath string) (hint []string, err error) {
+	data, err := os.ReadFile(inputFilePath)
+	if err != nil {
+		return
+	}
+	err = json.Unmarshal(data, &hint)
+	return
+}
+
+func useNinjaHintFromSoong(ctx Context, config Config, cmd *Cmd) {
+	ninjaHintJsonFile := filepath.Join(config.SoongOutDir(), "ninja_hint.json")
+	data, err := readJsonFile(ninjaHintJsonFile)
+	var outputBuilder strings.Builder
+	if err == nil {
+		for _, path := range data {
+			outputBuilder.WriteString(path)
+			outputBuilder.WriteString(",")
+			// It's a arbitrary large number, comparing to default weight 1.
+			weightForHugeModule := 1000
+			outputBuilder.WriteString(fmt.Sprintf("%d\n", weightForHugeModule))
 		}
 	} else {
 		// If there is no ninja log file, just pass empty ninja weight list.
@@ -139,6 +177,8 @@ func runNinjaForBuild(ctx Context, config Config) {
 		// The weight list is already copied.
 		ninjaWeightListPath := filepath.Join(config.OutDir(), ninjaWeightListFileName)
 		cmd.Args = append(cmd.Args, "-o", "usesweightlist="+ninjaWeightListPath)
+	case HINT_FROM_SOONG:
+		useNinjaHintFromSoong(ctx, config, cmd)
 	}
 
 	// Allow both NINJA_ARGS and NINJA_EXTRA_ARGS, since both have been
