@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae8be06a_f042ac34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-03-18T17:11:11Z",
+      "side": 1,
+      "message": "FYI: uploading with `repo upload --wip` or `git push -o wip` can set the work-in-progress bit in gerrit that prevents emails from going out for new changes, and more obviously marks this as a change that shouldn\u0027t be reviewed yet.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "4109fef36261a1dac0c4b27509b713477c14b46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
