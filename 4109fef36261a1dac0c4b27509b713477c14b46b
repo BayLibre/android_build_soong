@@ -22,6 +22,30 @@
       },
       "revId": "4109fef36261a1dac0c4b27509b713477c14b46b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6c7669_5f14b6df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-19T00:31:56Z",
+      "side": 1,
+      "message": "Oops, I didn\u0027t realize that those changes made notifications to owners. Thanks for letting me know!",
+      "parentUuid": "ae8be06a_f042ac34",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "4109fef36261a1dac0c4b27509b713477c14b46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
