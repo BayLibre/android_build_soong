@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f665dee0_40ed8767",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-20T18:41:36Z",
+      "side": 1,
+      "message": "Is there someone you\u0027re working closely with who knows the full context of the cl and is able to give a confident +2?",
+      "parentUuid": "4f0dd1bf_a6a64f2e",
+      "revId": "e606759ddfcbb4f8cba27e5cbc926e1cc8ebfe1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78e59f4c_d4ca08a0",
