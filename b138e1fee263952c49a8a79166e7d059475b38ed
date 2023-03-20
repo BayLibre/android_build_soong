@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c57fe024_05f3bd8d",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1932,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-20T09:28:24Z",
+      "side": 1,
+      "message": "consider leaving `updatable: true` to make the apex under test explicit.",
+      "range": {
+        "startLine": 1932,
+        "startChar": 2,
+        "endLine": 1932,
+        "endChar": 6
+      },
+      "revId": "b138e1fee263952c49a8a79166e7d059475b38ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
