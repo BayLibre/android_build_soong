@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ed326e4_c6cb600e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-03-20T18:28:48Z",
+      "side": 1,
+      "message": "Can you add more information on the motivation for this change?",
+      "revId": "be5667a2e905c7e501d13fdb181ae86349cb415b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
