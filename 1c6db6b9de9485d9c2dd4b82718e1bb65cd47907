@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a1dbdd_ed5e039e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-20T00:43:01Z",
+      "side": 1,
+      "message": "This actually isn\u0027t parsing. Shouldn\u0027t we at least do some sanity check in runNinjaForBuild?",
+      "range": {
+        "startLine": 840,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 5
+      },
+      "revId": "1c6db6b9de9485d9c2dd4b82718e1bb65cd47907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
