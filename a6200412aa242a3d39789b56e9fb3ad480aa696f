@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d96cc8_5b596ad5",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-20T21:29:27Z",
+      "side": 1,
+      "message": "Do we have a from-text equivalent of this at the moment?",
+      "revId": "a6200412aa242a3d39789b56e9fb3ad480aa696f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
