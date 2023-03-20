@@ -16,6 +16,24 @@
       "message": "This will be used for unbundled builds too, are there any compatibility issues with specifying this flag when targeting older platform versions?  Should this be implied by minSdkVersion or targetSdkVersion?",
       "revId": "de8d7a2f39a3f61d3a3b8214416da6ab0e511c35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d73c52_4c1fe261",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2023-03-20T17:52:00Z",
+      "side": 1,
+      "message": "This should be fine because all it does is it emits a new annotation that will just be ignored on older versions.",
+      "parentUuid": "54add0be_9988aa2f",
+      "revId": "de8d7a2f39a3f61d3a3b8214416da6ab0e511c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
