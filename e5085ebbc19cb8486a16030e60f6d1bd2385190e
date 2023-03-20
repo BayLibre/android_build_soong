@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ff04d0_21d5e26c",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1526,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-03-20T15:00:21Z",
+      "side": 1,
+      "message": "Eventually we\u0027ll want to use deviceProperties.Min_sdk_version here and not do any processing of it on the bp2build side, but this will require 2 things, first that we properly handle sdk_version (tracked in b/215230098), and second that we handle EffectiveVersionString as well as the preview version cases on the bazel side. Can you file a bug to do this cleanup, blocked on b/215230098, and add a TODO here pointing to the new bug? Can be in a follow up CL",
+      "range": {
+        "startLine": 1526,
+        "startChar": 0,
+        "endLine": 1526,
+        "endChar": 35
+      },
+      "revId": "e5085ebbc19cb8486a16030e60f6d1bd2385190e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
