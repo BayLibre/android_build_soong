@@ -22,6 +22,23 @@
       },
       "revId": "dd468910659b0e5f01b9194283a931d093e6d4cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd54416_184b8b60",
+        "filename": "java/rro.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-03-20T14:33:34Z",
+      "side": 1,
+      "message": "to be consistent with what you did elsewhere, return sdkSpecPrivate.ApiLevel",
+      "revId": "dd468910659b0e5f01b9194283a931d093e6d4cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
