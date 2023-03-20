@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6421e4a0_746a3bd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-20T09:00:16Z",
+      "side": 1,
+      "message": "+1 this also needs bp2build support.\n\n1) Convert the Soong prop to Bazel attr here: https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex.go;l\u003d3563;drc\u003dc16c36030a21d6fc21901899d13477c31cc808a7\n2) Add bp2build tests here: https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/apex_conversion_test.go\n3) Add the new apex attr definition and read the attr in the apexer action here: https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl;l\u003d386;drc\u003d0ba818022efa37fb92d041844baae41dd0b2be63\n4) Add Bazel analysis test here: https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex_test.bzl",
+      "parentUuid": "7ecf84d2_de91f556",
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8c26133_3d6960e4",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -53,6 +71,99 @@
         "startChar": 1,
         "endLine": 183,
         "endChar": 20
+      },
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fb8293d_6b7e1f32",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-20T09:00:16Z",
+      "side": 1,
+      "message": "+1 also please elaborate in this commit description so readers can understand quickly. The linked bug doesn\u0027t say much (although the blocked bug has more context).\n\nWhat modules are expected to be affected by this?",
+      "parentUuid": "f8c26133_3d6960e4",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 20
+      },
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0de76fa_1a95ac61",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-20T09:00:16Z",
+      "side": 1,
+      "message": "Does this need to be nested? What other install constraints are expected?",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 22
+      },
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd9e0ed_91d35baf",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-20T09:00:16Z",
+      "side": 1,
+      "message": "Please add Soong unit tests in apex_test.go.",
+      "range": {
+        "startLine": 635,
+        "startChar": 4,
+        "endLine": 635,
+        "endChar": 63
+      },
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f4bf49c_3034f13e",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-20T09:00:16Z",
+      "side": 1,
+      "message": "Is `-v`/`--verbose` necessary?",
+      "range": {
+        "startLine": 637,
+        "startChar": 3,
+        "endLine": 637,
+        "endChar": 36
       },
       "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
