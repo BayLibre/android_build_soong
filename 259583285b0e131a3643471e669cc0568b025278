@@ -33,6 +33,42 @@
       "message": "\"include paths\" implies something like C++ header search paths. Could you call it something like HWASanEnabledPaths?",
       "revId": "259583285b0e131a3643471e669cc0568b025278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6349054_8ea4acf9",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1868486
+      },
+      "writtenOn": "2023-03-20T08:38:34Z",
+      "side": 1,
+      "message": "As CFI, MTE all used IncludePath, so here\u0027s in line with them.",
+      "parentUuid": "b2ee488c_72871cf2",
+      "revId": "259583285b0e131a3643471e669cc0568b025278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c671a8e_727e2825",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1868486
+      },
+      "writtenOn": "2023-03-20T08:38:34Z",
+      "side": 1,
+      "message": "Yes, I uploaded another CL in parallel: https://android-review.googlesource.com/c/platform/build/+/2495518, please help review them together, thanks!",
+      "parentUuid": "3b2e4401_9354b9ea",
+      "revId": "259583285b0e131a3643471e669cc0568b025278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
