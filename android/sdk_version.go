@@ -84,6 +84,38 @@ func (k SdkKind) String() string {
 	}
 }
 
+// JavaLibraryName returns the soong module containing the Java APIs of that API surface.
+func (k SdkKind) JavaLibraryName(c Config) string {
+	name := k.defaultJavaLibraryName()
+	return javaLibraryNameFromText(c, name)
+}
+
+// TODO: Return .txt (single-tree or multi-tree equivalents) based on config
+func javaLibraryNameFromText(c Config, name string) {
+	// This returns the default for now.
+	// TODO: Implement this
+	return name
+}
+
+func (k SdkKind) defaultJavaLibraryName() string {
+	switch k {
+	case SdkPublic:
+		return "android_stubs_current"
+	case SdkSystem:
+		return "android_system_stubs_current"
+	case SdkTest:
+		return "android_test_stubs_current"
+	case SdkCore:
+		return "core.current.stubs"
+	case SdkModule:
+		return "android_module_lib_stubs_current"
+	case SdkSystemServer:
+		return "android_system_server_stubs_current"
+	default:
+		panic("APIs of API surface %v cannot be provided by a single Soong module")
+	}
+}
+
 // SdkSpec represents the kind and the version of an SDK for a module to build against
 type SdkSpec struct {
 	Kind     SdkKind
