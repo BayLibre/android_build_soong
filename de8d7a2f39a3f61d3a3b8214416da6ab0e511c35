@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54add0be_9988aa2f",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-03-20T17:49:09Z",
+      "side": 1,
+      "message": "This will be used for unbundled builds too, are there any compatibility issues with specifying this flag when targeting older platform versions?  Should this be implied by minSdkVersion or targetSdkVersion?",
+      "revId": "de8d7a2f39a3f61d3a3b8214416da6ab0e511c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
