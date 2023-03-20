@@ -16,6 +16,23 @@
       "message": "I\u0027m not sure that this is the right thing, but I want to unblock you as well.  Please make sure that Guang and Julien are on board with the rest of what you\u0027re trying to do.",
       "revId": "c3bb83a57b2b677774c0b793c39534fe9bb41f94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6088b848_948c3784",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989825
+      },
+      "writtenOn": "2023-03-20T05:57:27Z",
+      "side": 1,
+      "message": "2471946: Add python template for mobly tests. | https://android-review.googlesource.com/c/platform/build/soong/+/2471946",
+      "revId": "c3bb83a57b2b677774c0b793c39534fe9bb41f94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
