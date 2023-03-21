@@ -70,6 +70,30 @@
       },
       "revId": "1c6db6b9de9485d9c2dd4b82718e1bb65cd47907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6552523_2e372289",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-21T00:40:57Z",
+      "side": 1,
+      "message": "yeah, that sounds good. fixed.",
+      "parentUuid": "319df628_322957de",
+      "range": {
+        "startLine": 840,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 5
+      },
+      "revId": "1c6db6b9de9485d9c2dd4b82718e1bb65cd47907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
