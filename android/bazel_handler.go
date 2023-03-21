@@ -719,8 +719,8 @@ func (r *builtinBazelRunner) issueBazelCommand(bazelCmd *exec.Cmd, eventHandler 
 		bazelCmd.Stderr = stderr
 		if output, err := bazelCmd.Output(); err != nil {
 			return "", string(stderr.Bytes()),
-				fmt.Errorf("bazel command failed: %s\n---command---\n%s\n---env---\n%s\n---stderr---\n%s---",
-					err, bazelCmd, strings.Join(bazelCmd.Env, "\n"), stderr)
+				fmt.Errorf("bazel command failed: %s\n---command---\n%s\n---env---\n%s\n---stderr---\n%s---\n---stdout---\n%s---",
+					err, bazelCmd, strings.Join(bazelCmd.Env, "\n"), stderr, output)
 		} else {
 			return string(output), string(stderr.Bytes()), nil
 		}
@@ -738,6 +738,7 @@ func (r *builtinBazelRunner) createBazelCommand(config Config, paths *bazelPaths
 
 		// We don't need to set --host_platforms because it's set in bazelrc files
 		// that the bazel shell script wrapper passes
+		"--toolchain_resolution_debug='@bazel_tools//tools/cpp:toolchain_type'",
 
 		// Explicitly disable downloading rules (such as canonical C++ and Java rules) from the network.
 		"--experimental_repository_disable_download",

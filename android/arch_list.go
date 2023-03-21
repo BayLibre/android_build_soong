@@ -28,6 +28,7 @@ var archVariants = map[ArchType][]string{
 		"armv8-2a-dotprod",
 		"armv9-a",
 	},
+	Riscv64: {},
 	X86: {
 		"amberlake",
 		"atom",
@@ -98,6 +99,7 @@ var cpuVariants = map[ArchType][]string{
 		"exynos-m1",
 		"exynos-m2",
 	},
+	Riscv64: {},
 	X86:    {},
 	X86_64: {},
 }
@@ -109,6 +111,7 @@ var archFeatures = map[ArchType][]string{
 	Arm64: {
 		"dotprod",
 	},
+	Riscv64: {},
 	X86: {
 		"ssse3",
 		"sse4",
@@ -154,6 +157,7 @@ var androidArchFeatureMap = map[ArchType]map[string][]string{
 			"dotprod",
 		},
 	},
+	Riscv64: {},
 	X86: {
 		"amberlake": {
 			"ssse3",
