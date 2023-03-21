@@ -16,6 +16,24 @@
       "message": "Since you\u0027re already checking that testCase.targetSdkVersionInBp isn\u0027t nil, you can simplify this to be fmt.Sprintf(`target_sdk_version: \"%s\"`, testCase.targetSdkVersionInBp)",
       "revId": "d198538f9d067bc314e228b7ab1253b813f0d7f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c162af_ffe48570",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3170,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-21T00:35:29Z",
+      "side": 1,
+      "message": "I am assuming you mean dereferencing it first as `*testCase.targetSdkVersionInBp`? I think you are right, your suggestion looks cleaner. I have made the update.",
+      "parentUuid": "d94db236_eb314c61",
+      "revId": "d198538f9d067bc314e228b7ab1253b813f0d7f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
