@@ -16,6 +16,24 @@
       "message": "Can you add more information on the motivation for this change?",
       "revId": "be5667a2e905c7e501d13fdb181ae86349cb415b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c215151_290268c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-03-21T01:43:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed326e4_c6cb600e",
+      "revId": "be5667a2e905c7e501d13fdb181ae86349cb415b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
