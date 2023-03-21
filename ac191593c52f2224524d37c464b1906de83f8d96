@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce778cf6_90432312",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-03-21T00:40:40Z",
+      "side": 1,
+      "message": "let\u0027s fix forward: https://android-review.git.corp.google.com/c/platform/build/soong/+/2498218",
+      "revId": "ac191593c52f2224524d37c464b1906de83f8d96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
