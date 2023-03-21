@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe95298_30dcd583",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-21T15:17:20Z",
+      "side": 1,
+      "message": "can we do something that\u0027s not soon to be enabled anyway so that the test continues to be useful?",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 88
+      },
+      "revId": "4d3c17d5bbd6f202342ae9775fa748044d0ecf12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
