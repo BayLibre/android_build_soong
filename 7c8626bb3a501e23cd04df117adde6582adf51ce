@@ -16,6 +16,24 @@
       "message": "This link is not really relevant to our version of bazel, b/262192655 would be a better option.",
       "revId": "7c8626bb3a501e23cd04df117adde6582adf51ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe28b64b_a8f94cf6",
+        "filename": "scripts/build-ndk-prebuilts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-03-21T00:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c55327d_d063cb20",
+      "revId": "7c8626bb3a501e23cd04df117adde6582adf51ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
