@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f11299_383aa715",
+        "filename": "android/ninja_hint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-21T13:10:33Z",
+      "side": 1,
+      "message": "Why json? this is just a list of paths and does not have any other internal structure.",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 15
+      },
+      "revId": "d65be1265486dab15f15149b57bf83a1a5a8b2ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80b01cc6_e1d70c01",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-21T13:10:33Z",
+      "side": 1,
+      "message": "Perhaps you may want that this comes from soong and can vary depending on the path. (ex: crosvm has high weight, others have less weight, etc.)",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 30
+      },
+      "revId": "d65be1265486dab15f15149b57bf83a1a5a8b2ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
