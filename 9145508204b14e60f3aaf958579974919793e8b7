@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54db0b3e_a21c9ca9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-21T04:38:32Z",
+      "side": 1,
+      "message": "To reduce the risk of submitting a large CL stack, I would like to submit these CLs separately from the rest of the MinSdkVersion CLs",
+      "revId": "9145508204b14e60f3aaf958579974919793e8b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
