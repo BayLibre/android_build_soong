@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cecc8be_2349f8df",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-21T13:36:39Z",
+      "side": 1,
+      "message": "can you add a todo with a reference to the bug you filed to remove this?",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 33
+      },
+      "revId": "d114aaceba7e703fbb7f93ff7d479488c8ae7863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
