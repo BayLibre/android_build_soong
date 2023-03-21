@@ -16,6 +16,23 @@
       "message": "Any update on this CL? It\u0027s blocking aosp/2469561",
       "revId": "dbd12cc8b811f5f3d231ff9658ecb05924059841",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447ec85b_73566092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1750078
+      },
+      "writtenOn": "2023-03-21T11:16:11Z",
+      "side": 1,
+      "message": "@joeo@google.com @bbadour@google.com Is there any updates on this?",
+      "revId": "dbd12cc8b811f5f3d231ff9658ecb05924059841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
