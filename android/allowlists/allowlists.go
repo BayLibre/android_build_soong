@@ -1435,10 +1435,8 @@ var (
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
 	// in either prod mode or staging mode.
 	ProdMixedBuildsEnabledList = []string{
-		// M5: tzdata launch
 		"com.android.tzdata",
 		"test1_com.android.tzdata",
-		// M7: adbd launch
 		"com.android.adbd",
 		"test_com.android.adbd",
 		"adbd_test",
@@ -1446,8 +1444,6 @@ var (
 		"adb_pairing_auth_test",
 		"adb_pairing_connection_test",
 		"adb_tls_connection_test",
-		// M9: mixed builds for mainline trains launch
-		"api_fingerprint",
 	}
 
 	// Staging-mode allowlist. Modules in this list are only built
@@ -1455,18 +1451,20 @@ var (
 	// which will soon be added to the prod allowlist.
 	// It is implicit that all modules in ProdMixedBuildsEnabledList will
 	// also be built - do not add them to this list.
-	StagingMixedBuildsEnabledList = []string{}
+	StagingMixedBuildsEnabledList = []string{
+		"api_fingerprint",
+	}
 
 	// These should be the libs that are included by the apexes in the ProdMixedBuildsEnabledList
-	ProdDclaMixedBuildsEnabledList = []string{
+	ProdDclaMixedBuildsEnabledList = []string{}
+
+	// These should be the libs that are included by the apexes in the StagingMixedBuildsEnabledList
+	StagingDclaMixedBuildsEnabledList = []string{
 		"libbase",
 		"libc++",
 		"libcrypto",
 		"libcutils",
 	}
-
-	// These should be the libs that are included by the apexes in the StagingMixedBuildsEnabledList
-	StagingDclaMixedBuildsEnabledList = []string{}
 
 	// TODO(b/269342245): Enable the rest of the DCLA libs
 	// "libssl",
