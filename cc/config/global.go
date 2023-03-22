@@ -312,6 +312,8 @@ var (
 		"device/",
 		"vendor/",
 	}
+
+	VersionScriptFlagPrefix = "-Wl,--version-script,"
 )
 
 // BazelCcToolchainVars generates bzl file content containing variables for
@@ -399,6 +401,8 @@ func init() {
 	exportedVars.ExportString("CppStdVersion", CppStdVersion)
 	exportedVars.ExportString("ExperimentalCStdVersion", ExperimentalCStdVersion)
 	exportedVars.ExportString("ExperimentalCppStdVersion", ExperimentalCppStdVersion)
+
+	exportedVars.ExportString("VersionScriptFlagPrefix", VersionScriptFlagPrefix)
 
 	// Everything in these lists is a crime against abstraction and dependency tracking.
 	// Do not add anything to this list.
