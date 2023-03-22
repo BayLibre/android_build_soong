@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08ecfed_6d286d7d",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2764,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-22T09:06:08Z",
+      "side": 1,
+      "message": "Instead of doing this, can you reuse the code in build/blueprint that\u0027s used by `m json-module-graph` that produces `module-actions.json`?\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/blueprint/context.go;l\u003d2714;drc\u003df0560b8bd2cb80e2aba39afea0d4777ac5250d87\nhttps://cs.android.com/android/platform/superproject/+/master:build/blueprint/context.go;l\u003d2628-2696;drc\u003df0560b8bd2cb80e2aba39afea0d4777ac5250d87\n\nThis looks low level enough that it can go into the blueprint code, even though the lines are blurred, so there\u0027s no need to surface more things to moduleContext.",
+      "range": {
+        "startLine": 2764,
+        "startChar": 1,
+        "endLine": 2764,
+        "endChar": 50
+      },
+      "revId": "350ffff00c5c750b8db49d1c09e7c275e5a78fa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

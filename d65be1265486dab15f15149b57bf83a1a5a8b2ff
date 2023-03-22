@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17829163_1041480d",
+        "filename": "android/ninja_hint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-22T09:06:08Z",
+      "side": 1,
+      "message": "This shouldn\u0027t run unconditionally. `ctx.VisitAllModules` isn\u0027t free. Return early if --ninja_weight_source !\u003d soong.",
+      "range": {
+        "startLine": 42,
+        "startChar": 38,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "d65be1265486dab15f15149b57bf83a1a5a8b2ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21f11299_383aa715",
         "filename": "android/ninja_hint.go",
         "patchSetId": 1
