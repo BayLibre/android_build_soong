@@ -80,6 +80,24 @@
       "parentUuid": "f575143e_08069be5",
       "revId": "e50e70d152fb089358986638a494396375b57f16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9b2d54_140d3b42",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-22T20:17:47Z",
+      "side": 1,
+      "message": "Right, but I could not see the use case of the `hiddenAPI` struct\u0027s props here -- is this for future work or internally used during compilation of dex jars or hidden api checks?",
+      "parentUuid": "69a67dd8_122c4e0b",
+      "revId": "e50e70d152fb089358986638a494396375b57f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
