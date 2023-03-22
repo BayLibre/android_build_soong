@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae7269c_4485e431",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-22T11:48:37Z",
+      "side": 1,
+      "message": "This seems too magical and confusing. Is this necessary? The commit message says \"might\". This is a new Soong API which would benefit from a discussion in soong-discuss@ and roboleaf-eng@.",
+      "revId": "430c738a6316c7b2349e86e682a2e318dc02897a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
