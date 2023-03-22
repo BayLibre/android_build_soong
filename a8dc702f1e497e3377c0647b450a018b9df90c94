@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b1395a_a8b748d0",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2023-03-22T20:00:13Z",
+      "side": 1,
+      "message": "I believe this just needs to be `\"--plugin\u003dprotoc-gen-rust\u003d\"`",
+      "revId": "a8dc702f1e497e3377c0647b450a018b9df90c94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
