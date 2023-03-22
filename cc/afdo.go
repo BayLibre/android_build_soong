@@ -72,6 +72,7 @@ func (afdo *afdo) AfdoEnabled() bool {
 // Add more specialisation as needed.
 func getProfileFiles(ctx android.BaseModuleContext, moduleName string) []string {
 	var files []string
+	// The flags are prepended to allow overriding.
 	files = append(files, moduleName+"_"+ctx.Arch().ArchType.String()+".afdo")
 	files = append(files, moduleName+".afdo")
 	return files
@@ -116,9 +117,8 @@ func (afdo *afdo) flags(ctx ModuleContext, flags Flags) Flags {
 			profileFilePath := profileFile.Path()
 
 			profileUseFlag := fmt.Sprintf(afdoCFlagsFormat, profileFile)
-			flags.Local.CFlags = append(flags.Local.CFlags, profileUseFlag)
-			flags.Local.LdFlags = append(flags.Local.LdFlags, profileUseFlag)
-			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,-mllvm,-no-warn-sample-unused=true")
+			flags.Local.CFlags = append([]string{profileUseFlag}, flags.Local.CFlags...)
+			flags.Local.LdFlags = append([]string{profileUseFlag, "-Wl,-mllvm,-no-warn-sample-unused=true"}, flags.Local.LdFlags...)
 
 			// Update CFlagsDeps and LdFlagsDeps so the module is rebuilt
 			// if profileFile gets updated
