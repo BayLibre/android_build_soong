@@ -16,6 +16,24 @@
       "message": "A number of os.Exit(1) were introduced in a previous CL hence consistently doing so everywhere in symlink_forest.go",
       "revId": "071f6c29a3bb882693059c5e84bfa32d19847087",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "096a4abb_413efae7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-03-22T06:12:25Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b5333e89_d8b458c9",
+      "revId": "071f6c29a3bb882693059c5e84bfa32d19847087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
