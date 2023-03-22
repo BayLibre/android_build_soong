@@ -98,6 +98,24 @@
       "parentUuid": "69a67dd8_122c4e0b",
       "revId": "e50e70d152fb089358986638a494396375b57f16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbac80fc_98db9a34",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-22T20:21:41Z",
+      "side": 1,
+      "message": "It is used in line 1812 and 1813. Those methods are available to ApiLibrary now since it embeds the hiddenAPI struct.\n\nDitto for dexer, which is used in line 1810",
+      "parentUuid": "2f9b2d54_140d3b42",
+      "revId": "e50e70d152fb089358986638a494396375b57f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
