@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4017bc7_42d7686d",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-03-22T20:28:13Z",
+      "side": 1,
+      "message": "I thought you mentioned that this Chdir wasn\u0027t thread-safe?",
+      "revId": "2cb7ce462269207f40681840abc494fa0ed2d725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
