@@ -34,6 +34,24 @@
       "parentUuid": "4344a756_bbd690b9",
       "revId": "01addfcd49b49547d9fe8310ba10fcbd84b334df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e61ee87_8c4917bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-22T05:59:52Z",
+      "side": 1,
+      "message": "ab/tradefed is green now.",
+      "parentUuid": "1d53d429_20740dfb",
+      "revId": "01addfcd49b49547d9fe8310ba10fcbd84b334df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
