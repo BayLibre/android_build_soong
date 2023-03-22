@@ -52,6 +52,24 @@
       "parentUuid": "95ab7e1a_de5d7264",
       "revId": "b597abdeb12fb07d985f3e98171d1d470940afa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e51444d_5a16659c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-03-22T18:37:50Z",
+      "side": 1,
+      "message": "Yeah, it\u0027ll continue running other actions, but will still act as if the lint itself has failed, so it won\u0027t run anything that depended upon it. The error.log will still include all the failed actions stdout/stderr output however.\n\nThe biggest advantage for local use is that it doesn\u0027t require you to wait for a new soong analysis, but if you\u0027re building enough anyways, that may be in the noise.",
+      "parentUuid": "d7e39a8b_be66b3dd",
+      "revId": "b597abdeb12fb07d985f3e98171d1d470940afa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
