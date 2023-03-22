@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b33ac9_02b09c0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-22T16:18:21Z",
+      "side": 1,
+      "message": "Hi Alix and Romain, I would like to reland these changes. To reduce the risk of submitting a large CL stack, I would like to submit the cleanup Cls first.",
+      "revId": "dd7057c715c4371fe7fc26df5ac32e6cde276898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
