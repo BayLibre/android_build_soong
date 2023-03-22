@@ -146,6 +146,120 @@ func TestDependingOnModuleInImportedNamespace(t *testing.T) {
 	}
 }
 
+func TestDependingOnModuleInExportedNamespace(t *testing.T) {
+	result := GroupFixturePreparers(
+		prepareForTestWithNamespace,
+		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+			variables.NamespacesToExport = []string{"dir1"}
+		}),
+		dirBpToPreparer(map[string]string{
+			"dir1": `
+				soong_namespace {}
+				test_module {
+					name: "a",
+					id: "1",
+				}
+			`,
+			"dir2": `
+				soong_namespace {}
+				test_module {
+					name: "a",
+					id: "2",
+				}
+			`,
+			"dir3": `
+				test_module {
+					name: "b",
+					deps: ["//*exported*:a"],
+				}
+			`,
+		}),
+	).RunTest(t)
+
+	a1 := findModuleById(result, "1")
+	a2 := findModuleById(result, "2")
+	b := getModule(result, "b")
+	if !dependsOn(result, b, a1) {
+		t.Errorf("module b does not depend on module a in the same namespace")
+	}
+	if dependsOn(result, b, a2) {
+		t.Errorf("module b does not depend on module a in the same namespace")
+	}
+}
+
+func TestDependingOnModuleByImportingExportedNamespaces(t *testing.T) {
+	result := GroupFixturePreparers(
+		prepareForTestWithNamespace,
+		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+			variables.NamespacesToExport = []string{"dir1"}
+		}),
+		dirBpToPreparer(map[string]string{
+			"dir1": `
+				soong_namespace {}
+				test_module {
+					name: "a",
+					id: "1",
+				}
+			`,
+			"dir2": `
+				soong_namespace {}
+				test_module {
+					name: "a",
+					id: "2",
+				}
+			`,
+			"dir3": `
+				soong_namespace {
+					imports: ["*exported*"],
+				}
+				test_module {
+					name: "b",
+					deps: ["a"],
+				}
+			`,
+		}),
+	).RunTest(t)
+
+	a1 := findModuleById(result, "1")
+	a2 := findModuleById(result, "2")
+	b := getModule(result, "b")
+	if !dependsOn(result, b, a1) {
+		t.Errorf("module b does not depend on module a in the same namespace")
+	}
+	if dependsOn(result, b, a2) {
+		t.Errorf("module b does not depend on module a in the same namespace")
+	}
+}
+
+func TestNotFoundInExportedNamespaces(t *testing.T) {
+	GroupFixturePreparers(
+		prepareForTestWithNamespace,
+		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+			variables.NamespacesToExport = []string{"dir1"}
+		}),
+		dirBpToPreparer(map[string]string{
+			"dir1": `
+				soong_namespace {}
+				test_module {
+					name: "x",
+					id: "1",
+				}
+			`,
+			"dir3": `
+				soong_namespace {
+					imports: ["*exported*"],
+				}
+				test_module {
+					name: "b",
+					deps: ["a"],
+				}
+			`,
+		}),
+	).
+		ExtendWithErrorHandler(FixtureExpectsOneErrorPattern(`"b" depends on undefined module "a"`)).
+		RunTest(t)
+}
+
 func TestDependingOnModuleInNonImportedNamespace(t *testing.T) {
 	GroupFixturePreparers(
 		prepareForTestWithNamespace,

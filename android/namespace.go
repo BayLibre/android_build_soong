@@ -26,6 +26,11 @@ import (
 	"github.com/google/blueprint"
 )
 
+// Pseudo-namespace representing exported namespaces which can be
+// used in soong_namespace.imports or as part of fully-qualified name.
+// e.g. imports: ["*exported*"], deps: ["//*exported*:module"]
+const kExported = "*exported*"
+
 func init() {
 	registerNamespaceBuildComponents(InitRegistrationContext)
 }
@@ -89,6 +94,8 @@ type NameResolver struct {
 
 	// func telling whether to export a namespace to Kati
 	namespaceExportFilter func(*Namespace) bool
+
+	exportedNamespaces sortedNamespaces
 }
 
 // NameResolverConfig provides the subset of the Config interface needed by the
@@ -156,6 +163,12 @@ func (r *NameResolver) addNamespace(namespace *Namespace) (err error) {
 			return fmt.Errorf("a namespace must be the first module in the file")
 		}
 	}
+	if namespace.exportToKati {
+		if r.rootNamespace != namespace {
+			r.exportedNamespaces.add(namespace)
+		}
+	}
+
 	r.sortedNamespaces.add(namespace)
 
 	r.namespacesByDir.Store(namespace.Path, namespace)
@@ -270,12 +283,21 @@ func (r *NameResolver) ModuleFromName(name string, namespace blueprint.Namespace
 	// handle fully qualified references like "//namespace_path:module_name"
 	nsName, moduleName, isAbs := r.parseFullyQualifiedName(name)
 	if isAbs {
-		namespace, found := r.namespaceAt(nsName)
-		if !found {
-			return blueprint.ModuleGroup{}, false
+		if nsName == kExported {
+			for _, candidate := range r.exportedNamespaces.sortedItems() {
+				group, found = candidate.moduleContainer.ModuleFromName(moduleName, nil)
+				if found {
+					return group, true
+				}
+			}
+		} else {
+			namespace, found := r.namespaceAt(nsName)
+			if found {
+				container := namespace.moduleContainer
+				return container.ModuleFromName(moduleName, nil)
+			}
 		}
-		container := namespace.moduleContainer
-		return container.ModuleFromName(moduleName, nil)
+		return blueprint.ModuleGroup{}, false
 	}
 	for _, candidate := range r.getNamespacesToSearchForModule(namespace) {
 		group, found = candidate.moduleContainer.ModuleFromName(name, nil)
@@ -293,11 +315,22 @@ func (r *NameResolver) Rename(oldName string, newName string, namespace blueprin
 
 // resolve each element of namespace.importedNamespaceNames and put the result in namespace.visibleNamespaces
 func (r *NameResolver) FindNamespaceImports(namespace *Namespace) (err error) {
-	namespace.visibleNamespaces = make([]*Namespace, 0, 2+len(namespace.importedNamespaceNames))
+	// Capacity for visibleNamespaces
+	capacity := 2 + len(namespace.importedNamespaceNames)
+	if InList(kExported, namespace.importedNamespaceNames) {
+		capacity = 1 + len(namespace.importedNamespaceNames) + len(r.exportedNamespaces.sortedItems())
+	}
+
+	namespace.visibleNamespaces = make([]*Namespace, 0, capacity)
 	// search itself first
 	namespace.visibleNamespaces = append(namespace.visibleNamespaces, namespace)
 	// search its imports next
 	for _, name := range namespace.importedNamespaceNames {
+		// Expand *exported* to the actual list of exported namespaces
+		if name == kExported {
+			namespace.visibleNamespaces = append(namespace.visibleNamespaces, r.exportedNamespaces.sortedItems()...)
+			continue
+		}
 		imp, ok := r.namespaceAt(name)
 		if !ok {
 			return fmt.Errorf("namespace %v does not exist", name)
