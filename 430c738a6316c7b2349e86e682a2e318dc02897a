@@ -16,6 +16,24 @@
       "message": "This seems too magical and confusing. Is this necessary? The commit message says \"might\". This is a new Soong API which would benefit from a discussion in soong-discuss@ and roboleaf-eng@.",
       "revId": "430c738a6316c7b2349e86e682a2e318dc02897a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b90628_e7fe24ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-22T12:08:07Z",
+      "side": 1,
+      "message": "Agreed. I was hesitant but I have no better idea for the linked bug. I\u0027m curious how this can be handled with Soong or Bazel.",
+      "parentUuid": "5ae7269c_4485e431",
+      "revId": "430c738a6316c7b2349e86e682a2e318dc02897a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
