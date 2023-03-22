@@ -34,6 +34,24 @@
       "parentUuid": "39039ee2_020f0f61",
       "revId": "b597abdeb12fb07d985f3e98171d1d470940afa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e39a8b_be66b3dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-22T18:32:54Z",
+      "side": 1,
+      "message": "If I understand how ninja\u0027s `-k` works, it would also prevent us from getting the final zips of report files if there were failures.",
+      "parentUuid": "95ab7e1a_de5d7264",
+      "revId": "b597abdeb12fb07d985f3e98171d1d470940afa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
