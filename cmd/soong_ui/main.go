@@ -169,7 +169,8 @@ func main() {
 
 	// Create a new Status instance, which manages action counts and event output channels.
 	stat := &status.Status{}
-	defer stat.Finish()
+	// defer stat.Finish is called at the bottom due to timing issue.
+
 	// Hook up the terminal output and tracer to Status.
 	stat.AddOutput(output)
 	stat.AddOutput(trace.StatusTracer())
@@ -227,6 +228,8 @@ func main() {
 	defer met.Dump(soongMetricsFile)
 	// Should run before Metric.Dump
 	defer criticalPath.WriteToMetrics(met)
+	// stat should be finished before WriteToMetric.
+	defer stat.Finish()
 
 	c.run(buildCtx, config, args)
 
