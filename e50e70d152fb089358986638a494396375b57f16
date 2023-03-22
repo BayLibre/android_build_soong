@@ -62,6 +62,24 @@
       "message": "Where is this property used?",
       "revId": "e50e70d152fb089358986638a494396375b57f16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a67dd8_122c4e0b",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-22T20:13:53Z",
+      "side": 1,
+      "message": "This is a struct that ApiLibrary will embed after this change\nhttps://cs.android.com/android/_/android/platform/build/soong/+/7947b31a5577c3bb6dbcffb808dc8f71904249c5:java/hiddenapi.go;l\u003d35;bpv\u003d1;bpt\u003d0;drc\u003db74d1e1d913ffdc883121c962eb5ca661196e460",
+      "parentUuid": "f575143e_08069be5",
+      "revId": "e50e70d152fb089358986638a494396375b57f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
