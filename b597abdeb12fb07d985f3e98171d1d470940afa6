@@ -70,6 +70,24 @@
       "parentUuid": "d7e39a8b_be66b3dd",
       "revId": "b597abdeb12fb07d985f3e98171d1d470940afa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38aa86f_c99e2bb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2023-03-22T19:23:18Z",
+      "side": 1,
+      "message": "Yea - `m lint-check` takes forever in the first place.  Waiting 2-3 minutes pales in comparison to the 1 hour + to lint the entire tree 😄",
+      "parentUuid": "6e51444d_5a16659c",
+      "revId": "b597abdeb12fb07d985f3e98171d1d470940afa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
