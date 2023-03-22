@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4bf78b0_33b74207",
+        "filename": "android/ninja_hint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-22T16:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17829163_1041480d",
+      "range": {
+        "startLine": 42,
+        "startChar": 38,
+        "endLine": 42,
+        "endChar": 58
+      },
+      "revId": "d65be1265486dab15f15149b57bf83a1a5a8b2ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21f11299_383aa715",

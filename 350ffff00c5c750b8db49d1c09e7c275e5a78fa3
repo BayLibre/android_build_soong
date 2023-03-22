@@ -22,6 +22,30 @@
       },
       "revId": "350ffff00c5c750b8db49d1c09e7c275e5a78fa3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f771f460_2f8be4a0",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2764,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-22T16:50:31Z",
+      "side": 1,
+      "message": "I added GetOutputsFromModuleNames in blueprint.Context, and re-used the logic for module-actions.json. https://android-review.git.corp.google.com/c/platform/build/blueprint/+/2501987",
+      "parentUuid": "c08ecfed_6d286d7d",
+      "range": {
+        "startLine": 2764,
+        "startChar": 1,
+        "endLine": 2764,
+        "endChar": 50
+      },
+      "revId": "350ffff00c5c750b8db49d1c09e7c275e5a78fa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
