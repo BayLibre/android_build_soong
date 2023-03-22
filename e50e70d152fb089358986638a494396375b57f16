@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b23ed7_3724d65f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-22T19:57:10Z",
+      "side": 1,
+      "message": "This likely contradicts one of my review comments in an earlier CL",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "e50e70d152fb089358986638a494396375b57f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab8996d_34708c2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-22T19:57:10Z",
+      "side": 1,
+      "message": "Example for art\nhttps://paste.googleplex.com/6676020336787456",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 69
+      },
+      "revId": "e50e70d152fb089358986638a494396375b57f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
