@@ -16,6 +16,24 @@
       "message": "Is this better than `m -k` to tell ninja to keep going on errors? (it may be, if lints depend on each other, but from a quick glance, it wasn\u0027t clear if that was the case or not)",
       "revId": "b597abdeb12fb07d985f3e98171d1d470940afa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95ab7e1a_de5d7264",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2023-03-22T18:12:50Z",
+      "side": 1,
+      "message": "TIL `m -k` 😊\n\nI\u0027m not sure...if there are other errors (e.g. compilation errors), we probably want it to stop.  Those things have to be resolved first or lint wouldn\u0027t run anyway.  This flag would control only lint and not ninja entirely.\n\nBut `m -k` might be sufficient if we are hesitant to introduce this.",
+      "parentUuid": "39039ee2_020f0f61",
+      "revId": "b597abdeb12fb07d985f3e98171d1d470940afa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
