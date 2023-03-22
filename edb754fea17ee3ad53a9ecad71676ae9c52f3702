@@ -22,6 +22,30 @@
       },
       "revId": "edb754fea17ee3ad53a9ecad71676ae9c52f3702",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88a83f8b_46f6da18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-22T14:39:27Z",
+      "side": 1,
+      "message": "Unfortunately, we don\u0027t have access to those parent domains in bp2build. This is to approximate that logic via apex_available. It\u0027d be preferable if we could migrate the Soong logic away from knowledge about the apexes\u0027 contents as well so the two can be consistent. Or if we could hard-code the stubs vs implementation dependencies in .bp files.",
+      "parentUuid": "07c48504_0b2ef682",
+      "range": {
+        "startLine": 10,
+        "startChar": 42,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "edb754fea17ee3ad53a9ecad71676ae9c52f3702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
