@@ -45,6 +45,23 @@
       },
       "revId": "e50e70d152fb089358986638a494396375b57f16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f575143e_08069be5",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-22T20:11:31Z",
+      "side": 1,
+      "message": "Where is this property used?",
+      "revId": "e50e70d152fb089358986638a494396375b57f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
