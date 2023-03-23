@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a03ff9d_fbfb8297",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-03-23T21:23:35Z",
+      "side": 1,
+      "message": "Ping. The acloud side of this has been released: aosp/2500457",
+      "revId": "9436fa2ae5a73da4aaff0862829e78b8796e4c1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
