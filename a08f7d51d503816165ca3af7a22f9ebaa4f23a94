@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e39f5a_3d258816",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-23T05:46:29Z",
+      "side": 1,
+      "message": "Hey Martin, how can I test if this change doesn\u0027t break what the original change wanted to fix. This command doesn\u0027t work for me. When I ran this I got:\n```\nerror: frameworks/base/StubLibraries.bp:381:1: module \"android_stubs_private_jar\" variant \"android_common\": depends on //prebuilts/module_sdk/art/current/sdk:prebuilt_core-lambda-stubs-for-system-modules which is not visible to this module\nYou may need to add \"//frameworks/base\" to its visibility\nerror: frameworks/base/StubLibraries.bp:381:1: module \"android_stubs_private_jar\" variant \"android_common\": depends on //prebuilts/module_sdk/art/current/sdk:prebuilt_core-generated-annotation-stubs which is not visible to this module\nYou may need to add \"//frameworks/base\" to its visibility\n14:36:44 soong bootstrap failed with: exit status 1\n```",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 50
+      },
+      "revId": "a08f7d51d503816165ca3af7a22f9ebaa4f23a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
