@@ -33,7 +33,7 @@ func TestJavaSdkLibrary(t *testing.T) {
 		FixtureWithPrebuiltApis(map[string][]string{
 			"28": {"foo"},
 			"29": {"foo"},
-			"30": {"bar", "barney", "baz", "betty", "foo", "fred", "quuz", "wilma"},
+			"30": {"bar", "barney", "baz", "betty", "foo", "fred", "quuz", "wilma", "android.net.ipsec.ike"},
 		}),
 	).RunTestWithBp(t, `
 		droiddoc_exported_dir {
@@ -50,6 +50,11 @@ func TestJavaSdkLibrary(t *testing.T) {
 			srcs: ["a.java", "b.java"],
 			api_packages: ["bar"],
 			exclude_kotlinc_generated_files: true,
+		}
+		java_sdk_library {
+			name: "android.net.ipsec.ike",
+			srcs: ["a.java"],
+			shared_library: false,
 		}
 		java_library {
 			name: "baz",
@@ -121,6 +126,7 @@ func TestJavaSdkLibrary(t *testing.T) {
 	result.ModuleForTests(apiScopeSystem.stubsSourceModuleName("foo"), "android_common")
 	result.ModuleForTests(apiScopeTest.stubsSourceModuleName("foo"), "android_common")
 	result.ModuleForTests(apiScopePublic.stubsSourceModuleName("foo")+".api.contribution", "")
+	result.ModuleForTests(apiScopePublic.apiLibraryModuleName("android.net.ipsec.ike"), "android_common")
 	result.ModuleForTests("foo"+sdkXmlFileSuffix, "android_common")
 	result.ModuleForTests("foo.api.public.28", "")
 	result.ModuleForTests("foo.api.system.28", "")
