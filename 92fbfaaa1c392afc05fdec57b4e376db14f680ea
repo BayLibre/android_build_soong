@@ -16,6 +16,24 @@
       "message": "The logic is already hard to follow here with defers that require tricky ordering placed far from the resources they are connected to.  I think either the defers should all get moved next to their resources and the resources ordered correctly, or use a single defer that handles the ordering.  \n\nFor the first option, move `defer criticalPath.WriteToMetrics(met)` above the `stat` initialization and defer, and move `defer met.Dump` next to where `met` is initialized.  `build.UploadMetrics` seems like it might also have the same problem.\n\nFor the second option, use something like:\n```\ndefer func() {\n    stat.Finish()\n    criticalPath.WriteToMetrics(met)\n    met.Dump(soongMetricsFile)\n    if !config.SkipMetricsUpload() {\n        defer build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, bazelProfileFile, bazelMetricsFile, metricsFiles...)\n    }\n}\n```",
       "revId": "92fbfaaa1c392afc05fdec57b4e376db14f680ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ac6875_9c9f1489",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-23T08:35:02Z",
+      "side": 1,
+      "message": "The second option looks great :) it shows the intent well. Done.",
+      "parentUuid": "28498efc_f9f28f12",
+      "revId": "92fbfaaa1c392afc05fdec57b4e376db14f680ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
