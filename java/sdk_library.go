@@ -156,6 +156,9 @@ type apiScope struct {
 
 	// Whether the api scope can be treated as unstable, and should skip compat checks.
 	unstable bool
+
+	// Represents the SDK kind of this scope.
+	kind android.SdkKind
 }
 
 // Initialize a scope, creating and adding appropriate dependency tags
@@ -229,6 +232,10 @@ func (scope *apiScope) stubsLibraryModuleNameSuffix() string {
 	return ".stubs" + scope.moduleSuffix
 }
 
+func (scope *apiScope) apiLibraryModuleName(baseName string) string {
+	return scope.stubsLibraryModuleName(baseName) + ".from-text"
+}
+
 func (scope *apiScope) stubsLibraryModuleName(baseName string) string {
 	return baseName + scope.stubsLibraryModuleNameSuffix()
 }
@@ -289,6 +296,7 @@ var (
 			return &module.sdkLibraryProperties.Public
 		},
 		sdkVersion: "current",
+		kind:       android.SdkPublic,
 	})
 	apiScopeSystem = initApiScope(&apiScope{
 		name:                "system",
@@ -301,6 +309,7 @@ var (
 		moduleSuffix:  ".system",
 		sdkVersion:    "system_current",
 		annotation:    "android.annotation.SystemApi(client=android.annotation.SystemApi.Client.PRIVILEGED_APPS)",
+		kind:          android.SdkSystem,
 	})
 	apiScopeTest = initApiScope(&apiScope{
 		name:                "test",
@@ -314,6 +323,7 @@ var (
 		sdkVersion:    "test_current",
 		annotation:    "android.annotation.TestApi",
 		unstable:      true,
+		kind:          android.SdkTest,
 	})
 	apiScopeModuleLib = initApiScope(&apiScope{
 		name:    "module-lib",
@@ -331,6 +341,7 @@ var (
 		moduleSuffix:  ".module_lib",
 		sdkVersion:    "module_current",
 		annotation:    "android.annotation.SystemApi(client=android.annotation.SystemApi.Client.MODULE_LIBRARIES)",
+		kind:          android.SdkModule,
 	})
 	apiScopeSystemServer = initApiScope(&apiScope{
 		name:    "system-server",
@@ -361,6 +372,7 @@ var (
 			// com.android.* classes are okay in this interface"
 			"--hide", "InternalClasses",
 		},
+		kind: android.SdkSystemServer,
 	})
 	allApiScopes = apiScopes{
 		apiScopePublic,
@@ -840,6 +852,13 @@ func (c *commonToSdkLibraryAndImport) stubsLibraryModuleName(apiScope *apiScope)
 func (c *commonToSdkLibraryAndImport) stubsSourceModuleName(apiScope *apiScope) string {
 	baseName := c.module.BaseModuleName()
 	return c.namingScheme.stubsSourceModuleName(apiScope, baseName)
+}
+
+// Name of the java_api_library module that generates the from-text stubs source
+// and compiles to a jar file.
+func (c *commonToSdkLibraryAndImport) apiLibraryModuleName(apiScope *apiScope) string {
+	baseName := c.module.BaseModuleName()
+	return c.namingScheme.apiLibraryModuleName(apiScope, baseName)
 }
 
 // The component names for different outputs of the java_sdk_library.
@@ -1758,6 +1777,29 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 	mctx.CreateModule(DroidstubsFactory, &props).(*Droidstubs).CallHookIfAvailable(mctx)
 }
 
+func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, apiScope *apiScope) {
+	props := struct {
+		Name         *string
+		Visibility   []string
+		Api_surface  *string
+		Libs         []string
+		Static_libs  []string
+		Api_files    []string
+		Dep_api_srcs *string
+	}{}
+
+	props.Name = proptools.StringPtr(module.apiLibraryModuleName(apiScope))
+	props.Visibility = childModuleVisibility(module.sdkLibraryProperties.Stubs_library_visibility)
+	currentApiFileName := apiScope.apiFilePrefix + "current.txt"
+	apiDir := module.getApiDir()
+	props.Api_files = append(props.Api_files, path.Join(apiDir, currentApiFileName))
+	props.Libs = module.sdkLibraryProperties.Stub_only_libs
+	props.Static_libs = module.sdkLibraryProperties.Stub_only_static_libs
+	props.Dep_api_srcs = proptools.StringPtr(apiScope.kind.JavaLibraryName(mctx.Config()))
+
+	mctx.CreateModule(ApiLibraryFactory, &props)
+}
+
 func (module *SdkLibrary) compareAgainstLatestApi(apiScope *apiScope) bool {
 	return !(apiScope.unstable || module.sdkLibraryProperties.Unsafe_ignore_missing_latest_api)
 }
@@ -1954,6 +1996,10 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 		module.createStubsSourcesAndApi(mctx, scope, module.stubsSourceModuleName(scope), scope.droidstubsArgs)
 
 		module.createStubsLibrary(mctx, scope)
+
+		if mctx.Config().BuildFromTextStub() {
+			module.createApiLibrary(mctx, scope)
+		}
 	}
 
 	if module.requiresRuntimeImplementationLibrary() {
@@ -2006,6 +2052,8 @@ type sdkLibraryComponentNamingScheme interface {
 	stubsLibraryModuleName(scope *apiScope, baseName string) string
 
 	stubsSourceModuleName(scope *apiScope, baseName string) string
+
+	apiLibraryModuleName(scope *apiScope, baseName string) string
 }
 
 type defaultNamingScheme struct {
@@ -2017,6 +2065,10 @@ func (s *defaultNamingScheme) stubsLibraryModuleName(scope *apiScope, baseName s
 
 func (s *defaultNamingScheme) stubsSourceModuleName(scope *apiScope, baseName string) string {
 	return scope.stubsSourceModuleName(baseName)
+}
+
+func (s *defaultNamingScheme) apiLibraryModuleName(scope *apiScope, baseName string) string {
+	return scope.apiLibraryModuleName(baseName)
 }
 
 var _ sdkLibraryComponentNamingScheme = (*defaultNamingScheme)(nil)
