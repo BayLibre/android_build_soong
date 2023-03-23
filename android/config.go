@@ -278,6 +278,9 @@ type config struct {
 	// If buildFromTextStub is true then the Java API stubs are
 	// built from the signature text files, not the source Java files.
 	buildFromTextStub bool
+
+	// List of Api libraries that contribute to Api surfaces.
+	apiLibraries map[string]struct{}
 }
 
 type deviceConfig struct {
@@ -588,6 +591,33 @@ func NewConfig(cmdArgs CmdArgs, availableEnv map[string]string) (Config, error) 
 
 	for _, module := range strings.Split(cmdArgs.BazelForceEnabledModules, ",") {
 		config.bazelForceEnabledModules[module] = struct{}{}
+	}
+
+	// TODO(b/276958307): Replace the hardcoded list to a sdk_library local prop.
+	config.apiLibraries = map[string]struct{}{
+		"android.net.ipsec.ike":             {},
+		"art.module.public.api":             {},
+		"conscrypt.module.public.api":       {},
+		"framework-adservices":              {},
+		"framework-appsearch":               {},
+		"framework-bluetooth":               {},
+		"framework-connectivity":            {},
+		"framework-connectivity-t":          {},
+		"framework-graphics":                {},
+		"framework-media":                   {},
+		"framework-mediaprovider":           {},
+		"framework-ondevicepersonalization": {},
+		"framework-permission":              {},
+		"framework-permission-s":            {},
+		"framework-scheduling":              {},
+		"framework-sdkextensions":           {},
+		"framework-statsd":                  {},
+		"framework-sdksandbox":              {},
+		"framework-tethering":               {},
+		"framework-uwb":                     {},
+		"framework-virtualization":          {},
+		"framework-wifi":                    {},
+		"i18n.module.public.api":            {},
 	}
 
 	return Config{config}, err
@@ -1920,4 +1950,15 @@ func (c *config) BuildFromTextStub() bool {
 
 func (c *config) SetBuildFromTextStub(b bool) {
 	c.buildFromTextStub = b
+}
+
+func (c *config) SetApiLibraries(libs []string) {
+	c.apiLibraries = make(map[string]struct{})
+	for _, lib := range libs {
+		c.apiLibraries[lib] = struct{}{}
+	}
+}
+
+func (c *config) GetApiLibraries() map[string]struct{} {
+	return c.apiLibraries
 }
