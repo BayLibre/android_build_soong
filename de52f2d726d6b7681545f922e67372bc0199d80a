@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd618c37_eaaf1f4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-23T23:54:21Z",
+      "side": 1,
+      "message": "@spandandas@google.com I have lost CR+2 after updating the CL based on your cleanup CLs. Can you take a look?",
+      "revId": "de52f2d726d6b7681545f922e67372bc0199d80a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
