@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c289ae_097be832",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2023-03-23T14:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c459f18_aee97cd6",
+      "revId": "c2b509388a08f74dca5f3c1fb8a1782bed906f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25d2fa14_b7030c91",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-06T22:23:46Z",
       "side": 1,
       "message": "Also, should we notify the ART folks who needed a test infra change (plus rollback) before too?",
+      "revId": "c2b509388a08f74dca5f3c1fb8a1782bed906f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2dd3b8a_2d87c283",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2023-03-23T14:15:49Z",
+      "side": 1,
+      "message": "With aosp/2506015, ART no longer needs to update their test expectations.",
+      "parentUuid": "25d2fa14_b7030c91",
       "revId": "c2b509388a08f74dca5f3c1fb8a1782bed906f27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
