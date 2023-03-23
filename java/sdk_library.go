@@ -1594,6 +1594,20 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext
 	}
 
 	mctx.CreateModule(LibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
+
+	// TODO: Refactor into a separate function
+	p := struct {
+		Name              *string
+		Api_surface       *string
+		Api_contributions []string
+		Libs              []string
+	}{}
+
+	p.Name = proptools.StringPtr(module.stubsLibraryModuleName(apiScope) + ".from-text")
+	p.Api_surface = proptools.StringPtr(apiScope.name)
+	p.Libs = []string{}                                                                          // TODO
+	p.Api_contributions = []string{module.stubsSourceModuleName(apiScope) + ".api.contribution"} // TODO
+	mctx.CreateModule(ApiLibraryFactory, &p)
 }
 
 // Creates a droidstubs module that creates stubs source files from the given full source
