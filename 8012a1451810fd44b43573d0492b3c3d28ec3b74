@@ -16,6 +16,29 @@
       "message": "This is still WIP, but PTAL.",
       "revId": "8012a1451810fd44b43573d0492b3c3d28ec3b74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0541dabd_c7adb785",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-03-23T05:45:11Z",
+      "side": 1,
+      "message": "Is it to break the dependencies from apex to system modules, temporarily?",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 5
+      },
+      "revId": "8012a1451810fd44b43573d0492b3c3d28ec3b74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
