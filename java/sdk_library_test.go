@@ -35,6 +35,9 @@ func TestJavaSdkLibrary(t *testing.T) {
 			"29": {"foo"},
 			"30": {"bar", "barney", "baz", "betty", "foo", "fred", "quuz", "wilma"},
 		}),
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetApiLibraries([]string{"foo"})
+		}),
 	).RunTestWithBp(t, `
 		droiddoc_exported_dir {
 			name: "droiddoc-templates-sdk",
@@ -121,6 +124,7 @@ func TestJavaSdkLibrary(t *testing.T) {
 	result.ModuleForTests(apiScopeSystem.stubsSourceModuleName("foo"), "android_common")
 	result.ModuleForTests(apiScopeTest.stubsSourceModuleName("foo"), "android_common")
 	result.ModuleForTests(apiScopePublic.stubsSourceModuleName("foo")+".api.contribution", "")
+	result.ModuleForTests(apiScopePublic.apiLibraryModuleName("foo"), "android_common")
 	result.ModuleForTests("foo"+sdkXmlFileSuffix, "android_common")
 	result.ModuleForTests("foo.api.public.28", "")
 	result.ModuleForTests("foo.api.system.28", "")

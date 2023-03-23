@@ -278,6 +278,9 @@ type config struct {
 	// If buildFromTextStub is true then the Java API stubs are
 	// built from the signature text files, not the source Java files.
 	buildFromTextStub bool
+
+	// List of Api libraries used for testing purpose.
+	apiLibraries []string
 }
 
 type deviceConfig struct {
@@ -1920,4 +1923,12 @@ func (c *config) BuildFromTextStub() bool {
 
 func (c *config) SetBuildFromTextStub(b bool) {
 	c.buildFromTextStub = b
+}
+
+func (c *config) SetApiLibraries(libs []string) {
+	c.apiLibraries = libs
+}
+
+func (c *config) GetApiLibraries() []string {
+	return c.apiLibraries
 }
