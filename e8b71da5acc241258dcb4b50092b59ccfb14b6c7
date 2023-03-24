@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "58625142_12bbc7aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-24T17:41:49Z",
+      "side": 1,
+      "message": "What is the motivation for this change?\n\nI don\u0027t think we want to do this, it adds a lot of complexity and potential for bugs. For example, if you replace one binary with another, and the new one requires more/different shared libraries, those dependencies won\u0027t be encoded in the build system anymore.\n\nAlso, the build should not download anything from the network. If I understand this correctly you\u0027re not actually downloading stuff, but merely copying it out of another folder, but the naming is concerning.",
+      "revId": "e8b71da5acc241258dcb4b50092b59ccfb14b6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "450d4787_0bd26915",
