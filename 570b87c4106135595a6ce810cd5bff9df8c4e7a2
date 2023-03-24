@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cfef202_2e7ae501",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-24T21:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95b1e998_05ce2f72",
+      "range": {
+        "startLine": 1099,
+        "startChar": 2,
+        "endLine": 1099,
+        "endChar": 87
+      },
+      "revId": "570b87c4106135595a6ce810cd5bff9df8c4e7a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b82375a_a2e09f26",
@@ -49,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c1f94f1d_20bd96c0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-24T21:00:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b82375a_a2e09f26",
+      "range": {
+        "startLine": 1171,
+        "startChar": 22,
+        "endLine": 1171,
+        "endChar": 24
+      },
+      "revId": "570b87c4106135595a6ce810cd5bff9df8c4e7a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "47e7b82f_2b750876",
         "filename": "cc/cc_test.go",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-22T16:56:48Z",
       "side": 1,
       "message": "IIUC, this test checks stub/impl logic for platform variants of a library https://cs.android.com/android/_/android/platform/build/soong/+/448bbfb0838d11c8e24ebf62890989337ca89c53:cc/cc.go;l\u003d3369-3380;drc\u003d0c7ea9582a2784880d1b15172abecf05b5ebb426;bpv\u003d1;bpt\u003d0\n\nAnd not the stub/impl logic for apex variants of the library https://cs.android.com/android/_/android/platform/build/soong/+/448bbfb0838d11c8e24ebf62890989337ca89c53:cc/cc.go;l\u003d3383-3386;drc\u003d0c7ea9582a2784880d1b15172abecf05b5ebb426;bpv\u003d1;bpt\u003d0",
+      "range": {
+        "startLine": 3575,
+        "startChar": 5,
+        "endLine": 3575,
+        "endChar": 40
+      },
+      "revId": "570b87c4106135595a6ce810cd5bff9df8c4e7a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0db86a_dd23fae2",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3575,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-24T21:00:42Z",
+      "side": 1,
+      "message": "Correct. But as mentioned elsewhere, we can\u0027t replicate the directly in all apexes logic in bp2build. We would be better off moving platform and apex variants to both use the apex_available logic, but this should be a better approximation than the logic was previously.",
+      "parentUuid": "47e7b82f_2b750876",
       "range": {
         "startLine": 3575,
         "startChar": 5,
