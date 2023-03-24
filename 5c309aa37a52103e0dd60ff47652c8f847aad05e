@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ad3248_c2865d46",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-24T10:58:46Z",
+      "side": 0,
+      "message": "I think this is still more accurate. What we don\u0027t want is to install stubs - that hasn\u0027t changed. That the current hack equates stubs with module SDKs is secondary.",
+      "range": {
+        "startLine": 672,
+        "startChar": 17,
+        "endLine": 672,
+        "endChar": 21
+      },
+      "revId": "5c309aa37a52103e0dd60ff47652c8f847aad05e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
