@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9493737c_dca36c18",
+        "filename": "android/makevars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-03-24T01:44:38Z",
+      "side": 1,
+      "message": "Not yet, because we are now focusing on the chained build. In the future, we have two choices:\n\n1) users manually update the context whenever needed.\n2) generate_context.sh is run every time and skip download rules if context is not changed.",
+      "parentUuid": "d96d94ab_f2062f0a",
+      "range": {
+        "startLine": 499,
+        "startChar": 46,
+        "endLine": 499,
+        "endChar": 68
+      },
+      "revId": "7e6ee12b1cc7ec18474e991a2f32ebc5cedbbcc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db26ea5f_738e0ac5",
         "filename": "apex/apex.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-24T00:46:00Z",
       "side": 1,
       "message": "This is a temporary workaround, isn\u0027t it?\nWhy don\u0027t you add a TODO for it?",
+      "range": {
+        "startLine": 2578,
+        "startChar": 1,
+        "endLine": 2578,
+        "endChar": 13
+      },
+      "revId": "7e6ee12b1cc7ec18474e991a2f32ebc5cedbbcc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61e5dd8_c9318114",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2578,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-03-24T01:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db26ea5f_738e0ac5",
       "range": {
         "startLine": 2578,
         "startChar": 1,
