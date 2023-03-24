@@ -46,6 +46,30 @@
       },
       "revId": "4d3c17d5bbd6f202342ae9775fa748044d0ecf12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fac432cb_601526b7",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-24T18:54:39Z",
+      "side": 1,
+      "message": "lgtm -- feel free to mark something like this as done + resolved in the future, will reopen if there\u0027s more to discuss.",
+      "parentUuid": "4952347b_de4cf622",
+      "range": {
+        "startLine": 66,
+        "startChar": 34,
+        "endLine": 66,
+        "endChar": 88
+      },
+      "revId": "4d3c17d5bbd6f202342ae9775fa748044d0ecf12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
