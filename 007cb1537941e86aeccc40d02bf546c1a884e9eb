@@ -36,6 +36,43 @@
       "message": "File is not formatted. Run `buildifier starlark/main.bzl` to format the file, or apply the suggested fix.",
       "revId": "007cb1537941e86aeccc40d02bf546c1a884e9eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000041178434",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/2424850?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "9bac8b05_01a977eb",
+          "description": "Buildifier Suggestion",
+          "replacements": [
+            {
+              "path": "starlark/main.bzl",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "61c303b2_dff0b67c",
+        "filename": "starlark/main.bzl",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2023-03-24T00:29:22Z",
+      "side": 1,
+      "message": "File is not formatted. Run `buildifier starlark/main.bzl` to format the file, or apply the suggested fix.",
+      "revId": "007cb1537941e86aeccc40d02bf546c1a884e9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
