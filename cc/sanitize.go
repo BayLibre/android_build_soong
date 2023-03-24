@@ -785,6 +785,11 @@ func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		if Bool(sanProps.Writeonly) {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-mllvm", "-hwasan-instrument-reads=0")
 		}
+		if ctx.bootstrap() {
+			flags.DynamicLinker = "/system/bin/bootstrap/linker_hwasan64"
+		} else {
+			flags.DynamicLinker = "/system/bin/linker_hwasan64"
+		}
 	}
 
 	if Bool(sanProps.Fuzzer) {
