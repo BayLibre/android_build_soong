@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db26ea5f_738e0ac5",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2578,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-03-24T00:46:00Z",
+      "side": 1,
+      "message": "This is a temporary workaround, isn\u0027t it?\nWhy don\u0027t you add a TODO for it?",
+      "range": {
+        "startLine": 2578,
+        "startChar": 1,
+        "endLine": 2578,
+        "endChar": 13
+      },
+      "revId": "7e6ee12b1cc7ec18474e991a2f32ebc5cedbbcc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
