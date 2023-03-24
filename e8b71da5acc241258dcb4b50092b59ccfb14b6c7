@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "450d4787_0bd26915",
+        "filename": "android/makevars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-03-24T07:35:37Z",
+      "side": 1,
+      "message": "nit: is it possible to generate this regex only when BuildWithPartialArtifact is enabled?",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 89
+      },
+      "revId": "e8b71da5acc241258dcb4b50092b59ccfb14b6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed57519_955f269f",
+        "filename": "android/makevars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-03-24T07:35:37Z",
+      "side": 1,
+      "message": "nit: good for now, but in the future this should be configurable with variable to support multiple environments.",
+      "range": {
+        "startLine": 501,
+        "startChar": 23,
+        "endLine": 501,
+        "endChar": 60
+      },
+      "revId": "e8b71da5acc241258dcb4b50092b59ccfb14b6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
