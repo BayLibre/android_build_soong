@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b104ed_2ca3a98e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-03-26T23:46:57Z",
+      "side": 1,
+      "message": "This is for a limited use cases in CI build for saving the build resources.\nWe defined the BUILD_WITH_PARTIAL_ARTIAFCT switch to use this feature. It will not change any process for the normal build.\nAlso, we want to provide replaceable download script for partners to use the feature in their own CI.",
+      "parentUuid": "58625142_12bbc7aa",
+      "revId": "e8b71da5acc241258dcb4b50092b59ccfb14b6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "450d4787_0bd26915",
