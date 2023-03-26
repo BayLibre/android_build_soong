@@ -1449,6 +1449,7 @@ var (
 	// also be built - do not add them to this list.
 	StagingMixedBuildsEnabledList = []string{
 		"com.android.neuralnetworks",
+		"libneuralnetworks",
 	}
 
 	// These should be the libs that are included by the apexes in the ProdMixedBuildsEnabledList
