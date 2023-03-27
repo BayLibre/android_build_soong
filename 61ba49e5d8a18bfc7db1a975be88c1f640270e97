@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "693651c4_fdb0d261",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-03-27T20:21:21Z",
+      "side": 1,
+      "message": "Switched to ctx.ModuleErrorf, thanks for that. \n\nCan you clarify your second point? Do you mean:\n1. Change this to use a bazelcontext instead of a public list? (This seems tricky given how the method is called.)\n2. Add an E2E test with an unenabled module that expects a soong_failure\n3. Both",
+      "parentUuid": "304e6c28_7a720af0",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 14
+      },
+      "revId": "61ba49e5d8a18bfc7db1a975be88c1f640270e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4230b681_9d29fc73",
         "filename": "tests/Android.bp",
         "patchSetId": 8
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-24T18:54:39Z",
       "side": 1,
       "message": "copyright header?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "61ba49e5d8a18bfc7db1a975be88c1f640270e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2efca1d_55e843f4",
+        "filename": "tests/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-03-27T20:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4230b681_9d29fc73",
       "range": {
         "startLine": 1,
         "startChar": 0,
