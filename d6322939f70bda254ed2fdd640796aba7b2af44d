@@ -22,6 +22,30 @@
       },
       "revId": "d6322939f70bda254ed2fdd640796aba7b2af44d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2875a0c_2e6b7eff",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2023-03-27T07:02:47Z",
+      "side": 1,
+      "message": "perhaps sort only the portion without the final cat of the custom config, and leave that at the end?",
+      "parentUuid": "93faae86_66c05212",
+      "range": {
+        "startLine": 1131,
+        "startChar": 1,
+        "endLine": 1132,
+        "endChar": 32
+      },
+      "revId": "d6322939f70bda254ed2fdd640796aba7b2af44d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
