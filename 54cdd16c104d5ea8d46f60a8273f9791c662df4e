@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae5ddba_e4693aa4",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-27T23:22:18Z",
+      "side": 1,
+      "message": "And, in contrast with the below, \"libfoo impl\".",
+      "range": {
+        "startLine": 700,
+        "startChar": 53,
+        "endLine": 700,
+        "endChar": 59
+      },
+      "revId": "54cdd16c104d5ea8d46f60a8273f9791c662df4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e6607d6_48dd2db2",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-27T23:22:18Z",
+      "side": 1,
+      "message": "So, as mentioned, this error could be clarified with \"libfoo stub\", to make it more clear why it\u0027s an error.",
+      "range": {
+        "startLine": 705,
+        "startChar": 44,
+        "endLine": 705,
+        "endChar": 50
+      },
+      "revId": "54cdd16c104d5ea8d46f60a8273f9791c662df4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53715ed8_ec6151c2",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-27T23:22:18Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 709,
+        "startChar": 55,
+        "endLine": 709,
+        "endChar": 61
+      },
+      "revId": "54cdd16c104d5ea8d46f60a8273f9791c662df4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

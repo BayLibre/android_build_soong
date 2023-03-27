@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1785b99_63d0d9b4",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-27T23:22:18Z",
+      "side": 0,
+      "message": "Something like this helps explain what the TODO actually is.",
+      "range": {
+        "startLine": 213,
+        "startChar": 49,
+        "endLine": 214,
+        "endChar": 36
+      },
+      "revId": "40bfdb181ae77223e95bb512952ca59ae9edcdec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
