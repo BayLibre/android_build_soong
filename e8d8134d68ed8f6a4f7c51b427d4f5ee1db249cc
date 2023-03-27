@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69675a1a_ba09df6e",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-27T20:47:41Z",
+      "side": 1,
+      "message": "why do we need to both set `enabledModules` and `allowlists.BazelForceEnabledMixedBuildsList`, it seems unexpected",
+      "range": {
+        "startLine": 523,
+        "startChar": 3,
+        "endLine": 523,
+        "endChar": 73
+      },
+      "revId": "e8d8134d68ed8f6a4f7c51b427d4f5ee1db249cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

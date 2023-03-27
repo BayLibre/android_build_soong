@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7010f7f_27f3ef85",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-27T20:47:41Z",
+      "side": 1,
+      "message": "\u003e Switched to ctx.ModuleErrorf, thanks for that. \n\u003e \n\u003e Can you clarify your second point? Do you mean:\n\u003e 1. Change this to use a bazelcontext instead of a public list? (This seems tricky given how the method is called.)\nGiven that `MixedBuildsEnabled` is also called with `ctx`, this should be doable -- if we look at `shouldConvertWithBp2build` (which is called by `MixedBuildsEnabled`), we see [`ctx.Config().Bp2buildPackageConfig`](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel.go;l\u003d414;drc\u003de32570b11273e703580b60fc9d59b96223f376da), which gets mocked in this test: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_test.go;l\u003d227;drc\u003de32570b11273e703580b60fc9d59b96223f376da\nor set explicitly in some tests of bp2build allowlisting: https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/build_conversion_test.go;l\u003d1175;drc\u003de32570b11273e703580b60fc9d59b96223f376da\n\u003e 2. Add an E2E test with an unenabled module that expects a soong_failure\nI think it should be possible to add a unit test with an unenabled module that expects an error, perhaps simply a new test case in [`TestAllowlistingBp2buildTargetsWithConfig`](https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/build_conversion_test.go;l\u003d1169;drc\u003de32570b11273e703580b60fc9d59b96223f376da)\n\u003e 3. Both\n\nYes, both to refactor to better support unit testing and then to write a unit test for the functionality.",
+      "parentUuid": "693651c4_fdb0d261",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 14
+      },
+      "revId": "61ba49e5d8a18bfc7db1a975be88c1f640270e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4230b681_9d29fc73",
         "filename": "tests/Android.bp",
         "patchSetId": 8
