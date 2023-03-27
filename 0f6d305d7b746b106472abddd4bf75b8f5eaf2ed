@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf777b31_310f3ffa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-27T21:10:17Z",
+      "side": 1,
+      "message": "nit: extra capital letters",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "0f6d305d7b746b106472abddd4bf75b8f5eaf2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e5dbc1_8587f6c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-27T21:10:17Z",
+      "side": 1,
+      "message": "nit: missing closing paren",
+      "range": {
+        "startLine": 15,
+        "startChar": 36,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "0f6d305d7b746b106472abddd4bf75b8f5eaf2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89ada80_06dc9da1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-27T21:10:17Z",
+      "side": 1,
+      "message": "build/bazel/rules/common/api.bzl",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "0f6d305d7b746b106472abddd4bf75b8f5eaf2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6197f5be_a8e6401e",
+        "filename": "android/api_levels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-27T21:10:17Z",
+      "side": 1,
+      "message": "nit: remove empty line here since we\u0027re error checking line 347 immediately after",
+      "revId": "0f6d305d7b746b106472abddd4bf75b8f5eaf2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "082bd1b4_60788013",
+        "filename": "android/api_levels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-27T21:10:17Z",
+      "side": 1,
+      "message": "could you comment on why should this be a Once call? This will add the requirement that any function that calls it will have to have a Config accessible. Is that desired?",
+      "revId": "0f6d305d7b746b106472abddd4bf75b8f5eaf2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
