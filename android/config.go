@@ -905,8 +905,9 @@ func (c *config) DefaultAppTargetSdk(ctx EarlyModuleContext) ApiLevel {
 		return c.PlatformSdkVersion()
 	}
 	codename := c.PlatformSdkCodename()
-	if codename == "" {
-		return NoneApiLevel
+	hostOnly := c.productVariables.DeviceArch == nil
+	if codename == "" && !hostOnly {
+		panic("Platform_sdk_codename must be set")
 	}
 	if codename == "REL" {
 		panic("Platform_sdk_codename should not be REL when Platform_sdk_final is true")
