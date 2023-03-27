@@ -16,6 +16,23 @@
       "message": "Apologies for the breakage. Filed b/275280970 for the build team to follow up with more tests to assert the sort order of custom fs config entries.",
       "revId": "67e2f79eb3980a5c8b94705bb04e660e712a380f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d03b762_c933933d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2023-03-27T18:51:36Z",
+      "side": 1,
+      "message": "TH finds unrelated java build errors.",
+      "revId": "67e2f79eb3980a5c8b94705bb04e660e712a380f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
