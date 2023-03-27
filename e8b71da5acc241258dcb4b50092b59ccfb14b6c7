@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e82e86_b560309c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-03-27T01:06:21Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think we want to do this, it adds a lot of complexity and potential for bugs.\n\nThat\u0027s why all codes are guarded by a flag.\n\n\u003e For example, if you replace one binary with another, and the new one requires more/different shared libraries, those dependencies won\u0027t be encoded in the build system anymore.\n\nWe don\u0027t support such cases. Downloaded artifacts should match with the sources. For example: targets having the same build ID.\n\n\u003e Also, the build should not download anything from the network. If I understand this correctly you\u0027re not actually downloading stuff, but merely copying it out of another folder, but the naming is concerning.\n\nAs Justin said, \"download\" is a general term. In our first experiment, that will be pulling stuff from chained build, not downloading via network. PTAL https://docs.google.com/presentation/d/1feYdtGQcsoF3VsPtm8Mz6jv2fh7pcupF6eyp5Kf7hqM/edit?usp\u003dsharing\u0026resourcekey\u003d0-zagSsrZY77ESIUEV_iB3EQ",
+      "parentUuid": "93b104ed_2ca3a98e",
+      "revId": "e8b71da5acc241258dcb4b50092b59ccfb14b6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "450d4787_0bd26915",
