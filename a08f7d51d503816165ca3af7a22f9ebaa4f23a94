@@ -117,6 +117,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64a3ae88_4bc6a3b2",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-27T01:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d02e7b_462a92f7",
+      "range": {
+        "startLine": 212,
+        "startChar": 3,
+        "endLine": 212,
+        "endChar": 86
+      },
+      "revId": "a08f7d51d503816165ca3af7a22f9ebaa4f23a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1cb5c52_6b7885ed",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-27T01:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c973dccc_d7a6cc14",
+      "range": {
+        "startLine": 212,
+        "startChar": 62,
+        "endLine": 212,
+        "endChar": 85
+      },
+      "revId": "a08f7d51d503816165ca3af7a22f9ebaa4f23a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a7b2242_d169ca68",
@@ -130,6 +178,30 @@
       "writtenOn": "2023-03-24T10:58:46Z",
       "side": 1,
       "message": "It\u0027s more clear if this flag is expressed in terms of stub or not-stub. Then the error messages below can express that too, rather than just \"on libfoo\" and leave it to the reader to figure out what libfoo represents.",
+      "range": {
+        "startLine": 698,
+        "startChar": 5,
+        "endLine": 698,
+        "endChar": 18
+      },
+      "revId": "a08f7d51d503816165ca3af7a22f9ebaa4f23a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2def040d_8be5f45f",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-27T01:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a7b2242_d169ca68",
       "range": {
         "startLine": 698,
         "startChar": 5,
@@ -163,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "379742a1_8a165f51",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-27T01:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9060695_112250ff",
+      "range": {
+        "startLine": 700,
+        "startChar": 5,
+        "endLine": 700,
+        "endChar": 61
+      },
+      "revId": "a08f7d51d503816165ca3af7a22f9ebaa4f23a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9def2aa5_94f854af",
@@ -176,6 +272,30 @@
       "writtenOn": "2023-03-24T10:58:46Z",
       "side": 1,
       "message": "libfoo. Otherwise this test is pointless.",
+      "range": {
+        "startLine": 746,
+        "startChar": 10,
+        "endLine": 746,
+        "endChar": 17
+      },
+      "revId": "a08f7d51d503816165ca3af7a22f9ebaa4f23a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5b165c3_b884dc5a",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-27T01:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9def2aa5_94f854af",
       "range": {
         "startLine": 746,
         "startChar": 10,
@@ -209,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a322a7d_a78650f3",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-27T01:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d034e1a_183d1726",
+      "range": {
+        "startLine": 754,
+        "startChar": 16,
+        "endLine": 754,
+        "endChar": 17
+      },
+      "revId": "a08f7d51d503816165ca3af7a22f9ebaa4f23a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95a6c2d7_1a4d93a6",
@@ -222,6 +366,30 @@
       "writtenOn": "2023-03-24T10:58:46Z",
       "side": 1,
       "message": "Huh, it\u0027s _not_ a stub here. That\u0027s why it should get installed. Right?",
+      "range": {
+        "startLine": 766,
+        "startChar": 17,
+        "endLine": 766,
+        "endChar": 26
+      },
+      "revId": "a08f7d51d503816165ca3af7a22f9ebaa4f23a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d5b6f6_720d6900",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-27T01:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95a6c2d7_1a4d93a6",
       "range": {
         "startLine": 766,
         "startChar": 17,
