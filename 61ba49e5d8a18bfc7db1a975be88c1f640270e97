@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47821ebc_c13f5396",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-03-28T18:59:10Z",
+      "side": 1,
+      "message": "Thanks!\n\n1. Done.\n2. I think this case can be used to show that it won\u0027t be converted - not sure how the error would be expected since init() isn\u0027t called from there. I added a case to mixed_mode_test to test this, though\n\nI played around with adding the error here:\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/build_conversion.go;l\u003d325\n\nBut it seems like this doesn\u0027t work as expected - m.Name() was never populated with the error-prone module (it was seemingly always \"\"), and context.ModuleErrorf didn\u0027t fail the build. \n\nDid I miss something?",
+      "parentUuid": "f7010f7f_27f3ef85",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 14
+      },
+      "revId": "61ba49e5d8a18bfc7db1a975be88c1f640270e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4230b681_9d29fc73",
         "filename": "tests/Android.bp",
         "patchSetId": 8
