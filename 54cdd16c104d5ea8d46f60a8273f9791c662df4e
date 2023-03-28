@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f52bc5_912d3ece",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-28T09:03:08Z",
+      "side": 1,
+      "message": "Yes, it exists postsubmit too. It\u0027s probably something with the prebuilts on master-art we\u0027ll need to look into.\n\nBtw, I don\u0027t see any new patch set since my last comments. Missed an upload?",
+      "parentUuid": "b01819de_2b70e529",
+      "revId": "54cdd16c104d5ea8d46f60a8273f9791c662df4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aae5ddba_e4693aa4",
