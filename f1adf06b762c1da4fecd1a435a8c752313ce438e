@@ -192,6 +192,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "15286919_db6ca704",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T04:57:08Z",
+      "side": 1,
+      "message": "\u003e You mean class name plus package name right?\n\nYes, thanks for correcting this.\n\n\u003e Therefore I am suggesting using something like --subtract-api provided by metalava.\n\nI do not quite fully understand your point about utilizing `--subtract-api` in this occasion. As seen in [this example](https://cs.android.com/android/platform/superproject/+/master:tools/metalava/src/test/java/com/android/tools/metalava/SubtractApiTest.kt;drc\u003db26cf7090d2f82d446869abd26cf87763bab204f;l\u003d25) (`--subtract-api FILE` is passed via `subtractApi` prop here), the flag subtracts the passed api methods from the codebase. If we are subtracting the API methods that we are interested in generating the stubs, how can we generate the stubs with the flag?\n\nI am not against using existing functionalities in metalava, but I am not aware of any suitable functionality in metalava that suits this use case😅\n\nI may implement metalava to add functionality like `--passthrough-api` as you have suggested, but I am unsure if adding a new functionality in metalava to solve this problem can be delivered within timeline :(",
+      "parentUuid": "0b48a6de_30140af7",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "f1adf06b762c1da4fecd1a435a8c752313ce438e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74d5b887_f44dddcf",
