@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f7c61a6_6ba62ee3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-28T03:44:59Z",
+      "side": 1,
+      "message": "If you strongly think that this should be in the same module type (creating a new module type does have a _lot_ of code overhead), please add an error check that prevents users from setting both libs and dep_api_srcs on the same module in Android.bp",
+      "parentUuid": "63aa2e67_ef83472f",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "f1adf06b762c1da4fecd1a435a8c752313ce438e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74d5b887_f44dddcf",
