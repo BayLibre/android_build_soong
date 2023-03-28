@@ -16,6 +16,23 @@
       "message": "Marking WIP until [Compile stubs to .dex CL](https://android-review.git.corp.google.com/c/platform/build/soong/+/2503215) gets merged -- the CL also adds [`UsesLibraryDependency` interface](https://cs.android.com/android/platform/superproject/+/refs/heads/master:build/soong/java/java.go;drc\u003d1ec8d0743a0f12714692fc576e113e458225805f;l\u003d297) to `java_api_library` module.",
       "revId": "c5889b98f73a20c86ed2914b074ce494517a2cf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7de93392_5d098b38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T23:02:22Z",
+      "side": 1,
+      "message": "Adding reviewer for visibility. Will be refactored as `UsesLibraryDependency` methods have already been added in `JavaApiLibrary` with [aosp/2503215](https://android-review.git.corp.google.com/c/platform/build/soong/+/2503215).",
+      "revId": "c5889b98f73a20c86ed2914b074ce494517a2cf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
