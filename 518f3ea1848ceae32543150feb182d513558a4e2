@@ -16,6 +16,24 @@
       "message": "Sorry, I didn\u0027t see the additional CLs in the topic. I\u0027ll approve this in the name of experimentation, but one comment --- I want to make sure that we eventually settle on ONE way of supplying the weights, and it needs to be automatic, so let\u0027s back out the flag once we\u0027ve settled on how this will work.",
       "revId": "518f3ea1848ceae32543150feb182d513558a4e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f1414a6_3f2cd977",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-03-28T03:51:27Z",
+      "side": 1,
+      "message": "Got it, I filed a bug to track that: b/275458825",
+      "parentUuid": "3a34a343_93eda9f2",
+      "revId": "518f3ea1848ceae32543150feb182d513558a4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
