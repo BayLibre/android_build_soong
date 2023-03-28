@@ -1757,6 +1757,12 @@ func bp2buildSanitizerFeatures(ctx android.BazelConversionPathContext, m *Module
 			for _, sanitizer := range sanitizerProps.Sanitize.Misc_undefined {
 				features = append(features, "ubsan_"+sanitizer)
 			}
+			if sanitizerProps.Sanitize.Cfi != nil && *sanitizerProps.Sanitize.Cfi {
+				features = append(features, "android_cfi")
+				if sanitizerProps.Sanitize.Config.Cfi_assembly_support != nil && *sanitizerProps.Sanitize.Config.Cfi_assembly_support {
+					features = append(features, "android_cfi_assembly_support")
+				}
+			}
 			sanitizerFeatures.SetSelectValue(axis, config, features)
 		}
 	})
