@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4852bd4c_a15c962c",
+        "filename": "cc/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-03-28T22:55:53Z",
+      "side": 1,
+      "message": "This needs removing too",
+      "revId": "35bfdde8655f63402db16166e4c8e14bac1f51e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
