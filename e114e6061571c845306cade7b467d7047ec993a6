@@ -33,6 +33,23 @@
       "message": "lgtm but please get reviews from joeo@ as well - hopefully it\u0027s fine to wait for his return from OOO?",
       "revId": "e114e6061571c845306cade7b467d7047ec993a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cfd15c7_3efd08b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-03-28T02:32:15Z",
+      "side": 1,
+      "message": "See comment in https://android-review.git.corp.google.com/c/platform/build/soong/+/2494686",
+      "revId": "e114e6061571c845306cade7b467d7047ec993a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
