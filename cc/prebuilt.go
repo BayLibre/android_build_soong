@@ -513,7 +513,8 @@ func (h *prebuiltLibraryBazelHandler) processStaticBazelQueryResponse(ctx androi
 		StaticLibrary:                        outputPath,
 		TransitiveStaticLibrariesForOrdering: depSet,
 	})
-
+	h.library.setFlagExporterInfoFromCcInfo(ctx, ccInfo)
+	h.module.maybeUnhideFromMake()
 	return true
 }
 
