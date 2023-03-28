@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "74c4d0c4_d894067a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T04:00:51Z",
+      "side": 1,
+      "message": "Just a quick thought but WDYT about the module listed in `dep_api_srcs` providing a `.srcjar` file instead of the `.jar` file? In this way, if a prop is passed, the generated stub java files can just be replaced with the unzipped \u0026 extracted stub java files. This would remove the sed logic and the `libs` property will function as expected as well.",
+      "parentUuid": "7f7c61a6_6ba62ee3",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "f1adf06b762c1da4fecd1a435a8c752313ce438e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74d5b887_f44dddcf",
