@@ -130,6 +130,7 @@ var (
 		"-fstack-protector-strong",
 		"-Wa,--noexecstack",
 		"-D_FORTIFY_SOURCE=2",
+		"-D_FILE_OFFSET_BITS=64",
 
 		"-Wstrict-aliasing=2",
 
