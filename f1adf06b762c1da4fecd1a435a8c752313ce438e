@@ -240,6 +240,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffe5dfc_f7acffef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T05:17:11Z",
+      "side": 1,
+      "message": "So your suggestion is identical (in the POV of invoking metalava) to what I have explained in the comment right above the one you have shared, I assume?\n\nIf so, my thought is that this can be resolved without creating an additional module type but adding the `full_surface` prop as it is just passing an additional flag to metalava, with all logics staying the same. Do you believe that it still should be kept in another module type?",
+      "parentUuid": "ba482c12_663497f5",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "f1adf06b762c1da4fecd1a435a8c752313ce438e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74d5b887_f44dddcf",
