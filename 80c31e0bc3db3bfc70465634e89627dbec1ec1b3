@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3790274c_de2a24a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-28T13:53:58Z",
+      "side": 1,
+      "message": "sorry. bp2build is out of my area. The CL looks in line with other props (thus +1), but don\u0027t rely on me.",
+      "revId": "80c31e0bc3db3bfc70465634e89627dbec1ec1b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
