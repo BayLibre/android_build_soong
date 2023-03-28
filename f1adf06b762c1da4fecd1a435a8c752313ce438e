@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5438b496_32304e0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T02:18:09Z",
+      "side": 1,
+      "message": "I am not fully convinced about the benefit of creating a separate module type for this functionality. Even with `dep_api_srcs` property, the main functionality of the module, which is taking the API file(s) as input, and outputting compiled stub jar file does not change. The only difference the property introduces is how the jar file is created, which I believe can be left agnostic, rather than creating a new module type.\n\n`static_libs` (which is merge-zipped after jar file generation) and will serve the same role with and without `dep_api_srcs` defined, although `libs` property will not take any effect when `dep_api_srcs` is passed.",
+      "parentUuid": "ba6500c9_f20c86c1",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "f1adf06b762c1da4fecd1a435a8c752313ce438e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74d5b887_f44dddcf",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4772a89b_0f5594c0",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1622,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T02:18:09Z",
+      "side": 1,
+      "message": "Renaming to `stubsJarWithoutStaticLibs`.",
+      "parentUuid": "7a3c1c0a_8c6af2c7",
+      "range": {
+        "startLine": 1622,
+        "startChar": 1,
+        "endLine": 1622,
+        "endChar": 14
+      },
+      "revId": "f1adf06b762c1da4fecd1a435a8c752313ce438e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfb1b1a6_a370d2c2",
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe038fc7_1a7f2b1d",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1740,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T02:18:09Z",
+      "side": 1,
+      "message": "AFAIK, `--subtract-api` subtracts the passed api methods from the codebase, rather than extracting api methods to a file, as seen in this [test case](https://cs.android.com/android/platform/superproject/+/master:tools/metalava/src/test/java/com/android/tools/metalava/SubtractApiTest.kt;drc\u003db26cf7090d2f82d446869abd26cf87763bab204f;l\u003d25). So to utilize this, I believe that we would have to invoke metalava like below:\n```\n$ metalava --subtract-api [all api files in the api surface other than the one(s) we are interested] --source-files  [all api files in the api surface]\n```",
+      "parentUuid": "bfb1b1a6_a370d2c2",
+      "range": {
+        "startLine": 1740,
+        "startChar": 22,
+        "endLine": 1740,
+        "endChar": 36
+      },
+      "revId": "f1adf06b762c1da4fecd1a435a8c752313ce438e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "674a69dc_bc873a09",
         "filename": "java/java.go",
         "patchSetId": 5
@@ -100,6 +172,30 @@
       "writtenOn": "2023-03-24T02:43:17Z",
       "side": 1,
       "message": "I am usually hesitant to use sed, but if you want to use it, consider putting the sed pattern in a checked-in file and making the file an implicit dep of this command",
+      "range": {
+        "startLine": 1757,
+        "startChar": 1,
+        "endLine": 1764,
+        "endChar": 39
+      },
+      "revId": "f1adf06b762c1da4fecd1a435a8c752313ce438e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3352d83_414683f9",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1764,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T02:18:09Z",
+      "side": 1,
+      "message": "My apologies but can you elaborate bit more about the checked-in file? Do you mean to check in a `.sh` file that includes this command?",
+      "parentUuid": "674a69dc_bc873a09",
       "range": {
         "startLine": 1757,
         "startChar": 1,
