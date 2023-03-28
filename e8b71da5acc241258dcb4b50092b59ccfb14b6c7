@@ -54,6 +54,47 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "648ebac2_6d0e8c24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-03-28T08:08:32Z",
+      "side": 1,
+      "message": "\u003e This is for a limited use cases in CI build for saving the build resources.\n\nWe have so many better ways of doing that already, and this is explicitly discarding one of our best methods (incremental builds).\n\nDo you have performance results yet showing significant improvements over the other ways to do this? (using prebuilt images, etc)\n\n\u003e\u003e\u003e If I understand this correctly you\u0027re not actually downloading stuff, but merely copying it out of another folder, but the naming is concerning.\n\u003e\u003e Also, we want to provide replaceable download script for partners to use the feature in their own CI.\n\u003e As Justin said, \"download\" is a general term.\n\n+1 to the naming being misleading. Download is not a particularly general term: \"copy (data) from one computer system to another, typically over the internet\". And even if we allow partners to replace this script, it wouldn\u0027t be able to do any network communication.",
+      "parentUuid": "d4e82e86_b560309c",
+      "revId": "e8b71da5acc241258dcb4b50092b59ccfb14b6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84e2643_10c26166",
+        "filename": "android/makevars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-03-28T08:08:32Z",
+      "side": 1,
+      "message": "nit: panics should be reserved for internal issues that aren\u0027t triggered by user input. This is a panicing function that\u0027s being fed user input, so it should error instead.",
+      "range": {
+        "startLine": 451,
+        "startChar": 15,
+        "endLine": 451,
+        "endChar": 26
+      },
+      "revId": "e8b71da5acc241258dcb4b50092b59ccfb14b6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "450d4787_0bd26915",
