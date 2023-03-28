@@ -74,6 +74,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e1d717b_b7623c30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-03-28T14:43:01Z",
+      "side": 1,
+      "message": "\u003e We have so many better ways of doing that already, and this is explicitly discarding one of our best methods (incremental builds).\n\nThe target building the target files zip still uses incremental builds. Artifacts not pulled from the target files still can be done with incremental builds.\n\n\u003e Do you have performance results yet showing significant improvements over the other ways to do this? (using prebuilt images, etc)\n\nUsing prebuilt images is much more simpler, but that\u0027s not our final goal. For example, we may have a single target generating a superset of system_ext images of various targets. And then each target simply assembles needed artifacts. (e.g. target X builds foo.apk and bar.apk, target A pulls system_ext/app/foo/foo.apk, target B pulls system_ext/app/bar/bar.apk, etc.) There is no result yet, but we **believe** that most parts of system and system_ext (and possibly vendor for targets sharing the same chip) can be shared.",
+      "parentUuid": "648ebac2_6d0e8c24",
+      "revId": "e8b71da5acc241258dcb4b50092b59ccfb14b6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16d572a0_d9c2dac3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-03-28T14:43:01Z",
+      "side": 1,
+      "message": "Joe and Cole, WDYT? Can you help review?",
+      "revId": "e8b71da5acc241258dcb4b50092b59ccfb14b6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e84e2643_10c26166",
         "filename": "android/makevars.go",
         "patchSetId": 5
