@@ -399,11 +399,13 @@ var HeaderLibraryInfoProvider = blueprint.NewProvider(HeaderLibraryInfo{})
 // FlagExporterInfo is a provider to propagate transitive library information
 // pertaining to exported include paths and flags.
 type FlagExporterInfo struct {
-	IncludeDirs       android.Paths // Include directories to be included with -I
-	SystemIncludeDirs android.Paths // System include directories to be included with -isystem
-	Flags             []string      // Exported raw flags.
-	Deps              android.Paths
-	GeneratedHeaders  android.Paths
+	IncludeDirs             android.Paths // Include directories to be included with -I
+	SystemIncludeDirs       android.Paths // System include directories to be included with -isystem
+	ExportIncludeDirs       android.Paths // Include directories exported for inclusion in library users
+	ExportSystemIncludeDirs android.Paths // System include directories exported for inclusion in library users
+	Flags                   []string      // Exported raw flags.
+	Deps                    android.Paths
+	GeneratedHeaders        android.Paths
 }
 
 var FlagExporterInfoProvider = blueprint.NewProvider(FlagExporterInfo{})
@@ -413,12 +415,16 @@ func flagExporterInfoFromCcInfo(ctx android.ModuleContext, ccInfo cquery.CcInfo)
 
 	includes := android.PathsForBazelOut(ctx, ccInfo.Includes)
 	systemIncludes := android.PathsForBazelOut(ctx, ccInfo.SystemIncludes)
+	exportIncludes := android.PathsForBazelOut(ctx, ccInfo.ExportIncludes)
+	exportSystemIncludes := android.PathsForBazelOut(ctx, ccInfo.ExportSystemIncludes)
 	headers := android.PathsForBazelOut(ctx, ccInfo.Headers)
 
 	return FlagExporterInfo{
-		IncludeDirs:       android.FirstUniquePaths(includes),
-		SystemIncludeDirs: android.FirstUniquePaths(systemIncludes),
-		GeneratedHeaders:  headers,
+		IncludeDirs:             android.FirstUniquePaths(includes),
+		SystemIncludeDirs:       android.FirstUniquePaths(systemIncludes),
+		ExportIncludeDirs:       android.FirstUniquePaths(exportIncludes),
+		ExportSystemIncludeDirs: android.FirstUniquePaths(exportSystemIncludes),
+		GeneratedHeaders:        headers,
 		// necessary to ensure generated headers are considered implicit deps of dependent actions
 		Deps: headers,
 	}

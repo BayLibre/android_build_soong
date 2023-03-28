@@ -89,6 +89,8 @@ func TestGetCcInfoParseResults(t *testing.T) {
 				CcStaticLibraryFiles: []string{"static_lib1", "static_lib2"},
 				Includes:             []string{".", "dir/subdir"},
 				SystemIncludes:       []string{"system/dir", "system/other/dir"},
+				ExportIncludes:       []string{".", "export/dir/subdir"},
+				ExportSystemIncludes: []string{"export/system/dir", "export/system/other/dir"},
 				Headers:              []string{"dir/subdir/hdr.h"},
 				RootStaticArchives:   []string{"rootstaticarchive1"},
 				RootDynamicLibraries: []string{"rootdynamiclibrary1"},
@@ -101,6 +103,8 @@ func TestGetCcInfoParseResults(t *testing.T) {
 				CcStaticLibraryFiles: []string{"static_lib1", "static_lib2"},
 				Includes:             []string{".", "dir/subdir"},
 				SystemIncludes:       []string{"system/dir", "system/other/dir"},
+				ExportIncludes:       []string{".", "export/dir/subdir"},
+				ExportSystemIncludes: []string{"export/system/dir", "export/system/other/dir"},
 				Headers:              []string{"dir/subdir/hdr.h"},
 				RootStaticArchives:   []string{"rootstaticarchive1"},
 				RootDynamicLibraries: []string{"rootdynamiclibrary1"},
@@ -303,6 +307,59 @@ func TestGetCcUnstrippedParseResultsErrors(t *testing.T) {
 			_, err := GetCcUnstrippedInfo.ParseResult(tc.input)
 			if !strings.Contains(err.Error(), tc.expectedError) {
 				t.Errorf("expected string %q in error message, got %q", tc.expectedError, err)
+			}
+		})
+	}
+}
+
+func TestExportIncludesWithBazel(t *testing.T) {
+	t.Parallel()
+	includes := []string{"/export/incl"}
+	sysIncludes := []string{"/export/sys/incl"}
+	testCases := []struct {
+		description string
+		input       CcInfo
+		expected    CcInfo
+	}{
+		{
+			description: "Only includes",
+			input: CcInfo{
+				ExportIncludes: includes,
+			},
+			expected: CcInfo{
+				ExportIncludes: includes,
+			},
+		},
+		{
+			description: "Only system includes",
+			input: CcInfo{
+				ExportSystemIncludes: sysIncludes,
+			},
+			expected: CcInfo{
+				ExportSystemIncludes: sysIncludes,
+			},
+		},
+		{
+			description: "Both includes",
+			input: CcInfo{
+				ExportIncludes:       includes,
+				ExportSystemIncludes: sysIncludes,
+			},
+			expected: CcInfo{
+				ExportIncludes:       includes,
+				ExportSystemIncludes: sysIncludes,
+			},
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			json, _ := json.Marshal(tc.input)
+			actual, err := GetCcInfo.ParseResult(string(json))
+			if err != nil {
+				t.Errorf("error parsing result: %q", err)
+			} else if err == nil && !reflect.DeepEqual(tc.expected, actual) {
+				t.Errorf("expected %#v\n!= actual %#v", tc.expected, actual)
 			}
 		})
 	}

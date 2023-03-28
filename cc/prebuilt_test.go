@@ -598,6 +598,80 @@ cc_prebuilt_library_static {
 	android.AssertDeepEquals(t, "prebuilt library static output files did not match expected.", expectedOutputFiles, outputFiles.Strings())
 }
 
+func TestPrebuiltLibraryStaticExportIncludesWithBazel(t *testing.T) {
+	t.Parallel()
+	const bp = `
+cc_prebuilt_library_static {
+	name: "foo",
+	srcs: ["foo.a"],
+	export_include_dirs: ["export/incl"],
+	bazel_module: { label: "//foo/bar:bar" },
+}
+`
+	outBaseDir := "outputbase"
+	config := TestConfig(t.TempDir(), android.Android, nil, bp, nil)
+	config.BazelContext = android.MockBazelContext{
+		OutputBaseDir: outBaseDir,
+		LabelToCcInfo: map[string]cquery.CcInfo{
+			"//foo/bar:bar": cquery.CcInfo{
+				CcStaticLibraryFiles: []string{"foo.a"},
+				ExportIncludes:       []string{"export/incl"},
+			},
+		},
+	}
+	ctx := testCcWithConfig(t, config)
+	foo := ctx.ModuleForTests("foo", "android_arm_armv7-a-neon_static").Module()
+	pathPrefix := outBaseDir + "/execroot/__main__/"
+
+	info := ctx.ModuleProvider(foo, StaticLibraryInfoProvider).(StaticLibraryInfo)
+	android.AssertPathRelativeToTopEquals(t, "prebuilt static library",
+		pathPrefix+"foo.a", info.StaticLibrary)
+
+	outputFiles, err := foo.(android.OutputFileProducer).OutputFiles("")
+	if err != nil {
+		t.Errorf("Unexpected error getting outputfiles %s", err)
+	}
+	expectedOutputFiles := []string{pathPrefix + "foo.a"}
+	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+}
+
+func TestPrebuiltLibraryStaticExportSystemIncludesWithBazel(t *testing.T) {
+	t.Parallel()
+	const bp = `
+cc_prebuilt_library_static {
+	name: "foo",
+	srcs: ["foo.a"],
+	export_system_include_dirs: ["export/sys/incl"],
+	bazel_module: { label: "//foo/bar:bar" },
+}
+`
+	outBaseDir := "outputbase"
+	config := TestConfig(t.TempDir(), android.Android, nil, bp, nil)
+	config.BazelContext = android.MockBazelContext{
+		OutputBaseDir: outBaseDir,
+		LabelToCcInfo: map[string]cquery.CcInfo{
+			"//foo/bar:bar": cquery.CcInfo{
+				CcStaticLibraryFiles: []string{"foo.a"},
+				ExportSystemIncludes: []string{"export/sys/incl"},
+			},
+		},
+	}
+	ctx := testCcWithConfig(t, config)
+	foo := ctx.ModuleForTests("foo", "android_arm_armv7-a-neon_static").Module()
+	pathPrefix := outBaseDir + "/execroot/__main__/"
+
+	info := ctx.ModuleProvider(foo, StaticLibraryInfoProvider).(StaticLibraryInfo)
+	android.AssertPathRelativeToTopEquals(t, "prebuilt static library",
+		pathPrefix+"foo.a", info.StaticLibrary)
+
+	outputFiles, err := foo.(android.OutputFileProducer).OutputFiles("")
+	if err != nil {
+		t.Errorf("Unexpected error getting outputfiles %s", err)
+	}
+	expectedOutputFiles := []string{pathPrefix + "foo.a"}
+	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+}
+
 func TestPrebuiltLibrarySharedWithBazelWithoutToc(t *testing.T) {
 	const bp = `
 cc_prebuilt_library_shared {
@@ -627,7 +701,7 @@ cc_prebuilt_library_shared {
 
 	outputFiles, err := sharedFoo.(android.OutputFileProducer).OutputFiles("")
 	if err != nil {
-		t.Errorf("Unexpected error getting cc_object outputfiles %s", err)
+		t.Errorf("Unexpected error getting outputfiles %s", err)
 	}
 	expectedOutputFiles := []string{pathPrefix + "foo.so"}
 	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
@@ -658,6 +732,80 @@ cc_prebuilt_library_shared {
 	info := ctx.ModuleProvider(sharedFoo, SharedLibraryInfoProvider).(SharedLibraryInfo)
 	android.AssertPathRelativeToTopEquals(t, "prebuilt shared library's ToC",
 		pathPrefix+"toc", info.TableOfContents.Path())
+	android.AssertPathRelativeToTopEquals(t, "prebuilt shared library",
+		pathPrefix+"foo.so", info.SharedLibrary)
+
+	outputFiles, err := sharedFoo.(android.OutputFileProducer).OutputFiles("")
+	if err != nil {
+		t.Errorf("Unexpected error getting outputfiles %s", err)
+	}
+	expectedOutputFiles := []string{pathPrefix + "foo.so"}
+	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+}
+
+func TestPrebuiltLibrarySharedExportIncludesWithBazel(t *testing.T) {
+	t.Parallel()
+	const bp = `
+cc_prebuilt_library_shared {
+	name: "foo",
+	srcs: ["foo.so"],
+	export_include_dirs: ["export/incl"],
+	bazel_module: { label: "//foo/bar:bar" },
+}
+`
+	outBaseDir := "outputbase"
+	config := TestConfig(t.TempDir(), android.Android, nil, bp, nil)
+	config.BazelContext = android.MockBazelContext{
+		OutputBaseDir: outBaseDir,
+		LabelToCcInfo: map[string]cquery.CcInfo{
+			"//foo/bar:bar": cquery.CcInfo{
+				CcSharedLibraryFiles: []string{"foo.so"},
+				ExportIncludes:       []string{"export/incl"},
+			},
+		},
+	}
+	ctx := testCcWithConfig(t, config)
+	sharedFoo := ctx.ModuleForTests("foo", "android_arm_armv7-a-neon_shared").Module()
+	pathPrefix := outBaseDir + "/execroot/__main__/"
+
+	info := ctx.ModuleProvider(sharedFoo, SharedLibraryInfoProvider).(SharedLibraryInfo)
+	android.AssertPathRelativeToTopEquals(t, "prebuilt shared library",
+		pathPrefix+"foo.so", info.SharedLibrary)
+
+	outputFiles, err := sharedFoo.(android.OutputFileProducer).OutputFiles("")
+	if err != nil {
+		t.Errorf("Unexpected error getting cc_object outputfiles %s", err)
+	}
+	expectedOutputFiles := []string{pathPrefix + "foo.so"}
+	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+}
+
+func TestPrebuiltLibrarySharedExportSystemIncludesWithBazel(t *testing.T) {
+	t.Parallel()
+	const bp = `
+cc_prebuilt_library_shared {
+	name: "foo",
+	srcs: ["foo.so"],
+	export_system_include_dirs: ["export/sys/incl"],
+	bazel_module: { label: "//foo/bar:bar" },
+}
+`
+	outBaseDir := "outputbase"
+	config := TestConfig(t.TempDir(), android.Android, nil, bp, nil)
+	config.BazelContext = android.MockBazelContext{
+		OutputBaseDir: outBaseDir,
+		LabelToCcInfo: map[string]cquery.CcInfo{
+			"//foo/bar:bar": cquery.CcInfo{
+				CcSharedLibraryFiles: []string{"foo.so"},
+				ExportSystemIncludes: []string{"export/sys/incl"},
+			},
+		},
+	}
+	ctx := testCcWithConfig(t, config)
+	sharedFoo := ctx.ModuleForTests("foo", "android_arm_armv7-a-neon_shared").Module()
+	pathPrefix := outBaseDir + "/execroot/__main__/"
+
+	info := ctx.ModuleProvider(sharedFoo, SharedLibraryInfoProvider).(SharedLibraryInfo)
 	android.AssertPathRelativeToTopEquals(t, "prebuilt shared library",
 		pathPrefix+"foo.so", info.SharedLibrary)
 

@@ -28,6 +28,8 @@ type CcInfo struct {
 	CcStaticLibraryFiles []string
 	Includes             []string
 	SystemIncludes       []string
+	ExportIncludes       []string
+	ExportSystemIncludes []string
 	Headers              []string
 	// Archives owned by the current target (not by its dependencies). These will
 	// be a subset of OutputFiles. (or static libraries, this will be equal to OutputFiles,
@@ -123,6 +125,8 @@ if not cc_info:
 
 includes = cc_info.compilation_context.includes.to_list()
 system_includes = cc_info.compilation_context.system_includes.to_list()
+export_includes = cc_info.compilation_context.export_includes.to_list()
+export_system_includes = cc_info.compilation_context.export_system_includes.to_list()
 headers = [f.path for f in cc_info.compilation_context.headers.to_list()]
 
 ccObjectFiles = []
@@ -204,6 +208,8 @@ return json.encode({
     "CcStaticLibraryFiles": staticLibraries,
     "Includes": includes,
     "SystemIncludes": system_includes,
+	"ExportIncludes": export_includes,
+	"ExportSystemIncludes": export_system_includes,
     "Headers": headers,
     "RootStaticArchives": rootStaticArchives,
     "RootDynamicLibraries": rootSharedLibraries,
