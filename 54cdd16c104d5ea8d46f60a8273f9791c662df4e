@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b01819de_2b70e529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-03-28T03:59:27Z",
+      "side": 1,
+      "message": "Hey Martin, do you have any idea on the presubmit build error:\n\n```\n  symbol:   variable ANNOTATION_ID_FIELD_RESTRICTION_HEALTH_CONNECT\n  location: class StatsLog\nout/soong/.intermediates/art/libartservice/service/art-statslog-art-java-gen/gen/java/com/android/server/art/ArtStatsLog.java:424: error: cannot find symbol\n    public static final byte ANNOTATION_ID_FIELD_RESTRICTION_ACCESSIBILITY \u003d StatsLog.ANNOTATION_ID_FIELD_RESTRICTION_ACCESSIBILITY;\n```\n\nWould it be okay to ignore it?",
+      "revId": "54cdd16c104d5ea8d46f60a8273f9791c662df4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aae5ddba_e4693aa4",
