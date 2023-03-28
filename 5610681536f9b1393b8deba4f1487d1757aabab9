@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e95033_fc46f825",
+        "filename": "java/java.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T22:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baf5fc4d_c5f8383e",
+      "range": {
+        "startLine": 1696,
+        "startChar": 2,
+        "endLine": 1696,
+        "endChar": 13
+      },
+      "revId": "5610681536f9b1393b8deba4f1487d1757aabab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aefdf5fb_01797406",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-28T03:41:26Z",
       "side": 1,
       "message": "Since you are returning al.stubsJar as HeaderJars in the javaInfo provider, should this also return al.stubsJar?",
+      "range": {
+        "startLine": 1706,
+        "startChar": 8,
+        "endLine": 1706,
+        "endChar": 11
+      },
+      "revId": "5610681536f9b1393b8deba4f1487d1757aabab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f071e5_ea7d24a5",
+        "filename": "java/java.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 1706,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T22:51:25Z",
+      "side": 1,
+      "message": "Modified as suggested.",
+      "parentUuid": "aefdf5fb_01797406",
       "range": {
         "startLine": 1706,
         "startChar": 8,
