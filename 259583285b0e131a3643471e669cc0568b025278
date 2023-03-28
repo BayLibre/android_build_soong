@@ -87,6 +87,23 @@
       "parentUuid": "e6349054_8ea4acf9",
       "revId": "259583285b0e131a3643471e669cc0568b025278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe313e2_ad93716b",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2023-03-28T23:50:46Z",
+      "side": 1,
+      "message": "I\u0027d add a check for ctx.toolchain().Bionic() here, too - to be clear that this does not affect host targets.",
+      "revId": "259583285b0e131a3643471e669cc0568b025278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
