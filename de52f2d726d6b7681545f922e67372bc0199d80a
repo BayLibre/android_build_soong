@@ -64,6 +64,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b7afce_5fb87cd3",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T01:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "450c6941_2b43c147",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 11
+      },
+      "revId": "de52f2d726d6b7681545f922e67372bc0199d80a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "336f266c_4cefd34b",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T01:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e60b5dd_90af8c42",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 73
+      },
+      "revId": "de52f2d726d6b7681545f922e67372bc0199d80a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc20af1c_dcd422f5",
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44007101_1ad00f13",
+        "filename": "java/java.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T01:30:48Z",
+      "side": 1,
+      "message": "I have not looked into it too deeply, but omitting these props leads to check api error for some modules. Thus, I believe that keeping these lines are necessary for from-text build.",
+      "parentUuid": "fc20af1c_dcd422f5",
+      "range": {
+        "startLine": 1811,
+        "startChar": 2,
+        "endLine": 1812,
+        "endChar": 69
+      },
+      "revId": "de52f2d726d6b7681545f922e67372bc0199d80a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "480691f6_f8332b66",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-03-24T00:08:13Z",
       "side": 1,
       "message": "Do we still need this env var?",
+      "range": {
+        "startLine": 514,
+        "startChar": 19,
+        "endLine": 514,
+        "endChar": 39
+      },
+      "revId": "de52f2d726d6b7681545f922e67372bc0199d80a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d52b005_ae65a8c3",
+        "filename": "ui/build/config.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T01:30:48Z",
+      "side": 1,
+      "message": "There still is reference to this variable, as seen in this [CL](https://android-review.git.corp.google.com/c/platform/development/+/2465411). However this could also be replaced with the env var you have created in the cleanup CL, so I believe that I can update that CL accordingly. I will remove this variable.",
+      "parentUuid": "480691f6_f8332b66",
       "range": {
         "startLine": 514,
         "startChar": 19,
