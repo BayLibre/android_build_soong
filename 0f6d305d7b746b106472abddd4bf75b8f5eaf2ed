@@ -210,6 +210,24 @@
       "parentUuid": "082bd1b4_60788013",
       "revId": "0f6d305d7b746b106472abddd4bf75b8f5eaf2ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c09f496_263783d7",
+        "filename": "android/api_levels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-28T14:04:35Z",
+      "side": 1,
+      "message": "I\u0027m thinking that this function may not benefit from Once memoization since it\u0027s not doing any computation. This kind of function *could* get inlined (or converted to a static variable) by the compiler, so the Once may not actually improve performance. But it does add new requirements for the callers that we might not want.\n\nIt\u0027s not clear that `getFinalCodenamesMap` needs a Once call either since it\u0027s only doing one branch, but it\u0027s already there and there might be some nuance I don\u0027t know about.",
+      "parentUuid": "d29470ca_780235ab",
+      "revId": "0f6d305d7b746b106472abddd4bf75b8f5eaf2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
