@@ -423,7 +423,6 @@ type Deps struct {
 type PathDeps struct {
 	DyLibs        RustLibraries
 	RLibs         RustLibraries
-	SharedLibs    android.Paths
 	SharedLibDeps android.Paths
 	StaticLibs    android.Paths
 	ProcMacros    RustLibraries
@@ -1390,14 +1389,11 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		staticLibDepFiles = append(staticLibDepFiles, dep.OutputFile().Path())
 	}
 
-	var sharedLibFiles android.Paths
 	var sharedLibDepFiles android.Paths
 	for _, dep := range directSharedLibDeps {
-		sharedLibFiles = append(sharedLibFiles, dep.SharedLibrary)
+		sharedLibDepFiles = append(sharedLibDepFiles, dep.SharedLibrary)
 		if dep.TableOfContents.Valid() {
 			sharedLibDepFiles = append(sharedLibDepFiles, dep.TableOfContents.Path())
-		} else {
-			sharedLibDepFiles = append(sharedLibDepFiles, dep.SharedLibrary)
 		}
 	}
 
@@ -1413,7 +1409,6 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 	depPaths.RLibs = append(depPaths.RLibs, rlibDepFiles...)
 	depPaths.DyLibs = append(depPaths.DyLibs, dylibDepFiles...)
-	depPaths.SharedLibs = append(depPaths.SharedLibs, sharedLibDepFiles...)
 	depPaths.SharedLibDeps = append(depPaths.SharedLibDeps, sharedLibDepFiles...)
 	depPaths.StaticLibs = append(depPaths.StaticLibs, staticLibDepFiles...)
 	depPaths.ProcMacros = append(depPaths.ProcMacros, procMacroDepFiles...)
