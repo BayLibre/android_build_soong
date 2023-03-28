@@ -21,6 +21,7 @@ import (
 )
 
 func runCcPrebuiltLibraryTestCase(t *testing.T, tc Bp2buildTestCase) {
+	t.Parallel()
 	t.Helper()
 	(&tc).ModuleTypeUnderTest = "cc_prebuilt_library"
 	(&tc).ModuleTypeUnderTestFactory = cc.PrebuiltLibraryFactory
