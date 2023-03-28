@@ -1393,7 +1393,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	var sharedLibFiles android.Paths
 	var sharedLibDepFiles android.Paths
 	for _, dep := range directSharedLibDeps {
-		sharedLibFiles = append(sharedLibFiles, dep.SharedLibrary)
+		sharedLibFiles = append(sharedLibDepFiles, dep.SharedLibrary)
 		if dep.TableOfContents.Valid() {
 			sharedLibDepFiles = append(sharedLibDepFiles, dep.TableOfContents.Path())
 		} else {
@@ -1413,7 +1413,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 	depPaths.RLibs = append(depPaths.RLibs, rlibDepFiles...)
 	depPaths.DyLibs = append(depPaths.DyLibs, dylibDepFiles...)
-	depPaths.SharedLibs = append(depPaths.SharedLibs, sharedLibDepFiles...)
+	depPaths.SharedLibs = append(depPaths.SharedLibs, sharedLibFiles...)
 	depPaths.SharedLibDeps = append(depPaths.SharedLibDeps, sharedLibDepFiles...)
 	depPaths.StaticLibs = append(depPaths.StaticLibs, staticLibDepFiles...)
 	depPaths.ProcMacros = append(depPaths.ProcMacros, procMacroDepFiles...)
