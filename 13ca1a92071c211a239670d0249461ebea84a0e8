@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb857eb7_4bbc92da",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-03-28T21:04:19Z",
+      "side": 0,
+      "message": "this appears to be unused, so removing it in this CL as well",
+      "range": {
+        "startLine": 426,
+        "startChar": 1,
+        "endLine": 426,
+        "endChar": 11
+      },
+      "revId": "13ca1a92071c211a239670d0249461ebea84a0e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
