@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b645d20_6fd8c3ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-28T22:56:16Z",
+      "side": 1,
+      "message": "The failing test is broken on postsubmit.",
+      "revId": "cb368ea88adb2b7c9b196e5e5d2c57e7b8a0f421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
