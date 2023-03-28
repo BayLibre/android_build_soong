@@ -266,6 +266,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e232ee07_d89c8202",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-28T22:47:45Z",
+      "side": 1,
+      "message": "Resolved with offline discussion: `dep_api_srcs` will be a `java_api_library` module that provides both full API surface txt files and full API surface jar files. All API files provided by `dep_api_srcs` (except the ones local to the module) will be passed with `--subtract-api` args to metalava, and the full jar file will be passed as input as well. The output java stub files will be compiled with libs and merge-zipped with static libs as normal.",
+      "parentUuid": "fb06758a_bf4e12ea",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "f1adf06b762c1da4fecd1a435a8c752313ce438e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "74d5b887_f44dddcf",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
