@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f51d6a_da5b4166",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-03-29T01:07:33Z",
+      "side": 1,
+      "message": "Do we still need this revert, or can we abandon this?",
+      "revId": "a69b17847f13e64ff91c04ba7254e55896248611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
