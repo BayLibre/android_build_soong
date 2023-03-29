@@ -22,6 +22,30 @@
       },
       "revId": "e323a793e2c862a4ae5d11e30e504902345a912c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fda26a1_f38c9633",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-03-29T17:04:05Z",
+      "side": 1,
+      "message": "This is maintaining existing behavior with a better comment, I\u0027d prefer to keep it as is.  Digging into whether it can be an error can be a future CL, although not something I\u0027m planning to look into.",
+      "parentUuid": "245f7cfb_74727d48",
+      "range": {
+        "startLine": 1593,
+        "startChar": 4,
+        "endLine": 1597,
+        "endChar": 45
+      },
+      "revId": "e323a793e2c862a4ae5d11e30e504902345a912c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
