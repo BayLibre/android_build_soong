@@ -87,13 +87,13 @@ func (k SdkKind) String() string {
 // JavaLibraryName returns the soong module containing the Java APIs of that API surface.
 func (k SdkKind) JavaLibraryName(c Config) string {
 	name := k.defaultJavaLibraryName()
-	return JavaLibraryNameFromText(c, name)
+	return JavaLibraryName(c, name)
 }
 
-// JavaLibraryNameFromText returns the name of .txt equivalent of a java_library, but does
+// JavaLibraryName returns the name of .txt equivalent of a java_library, but does
 // not check if either module exists.
 // TODO: Return .txt (single-tree or multi-tree equivalents) based on config
-func JavaLibraryNameFromText(c Config, name string) string {
+func JavaLibraryName(c Config, name string) string {
 	// This returns the default for now.
 	// TODO: Implement this
 	return name
