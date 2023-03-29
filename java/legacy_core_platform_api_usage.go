@@ -93,16 +93,22 @@ func useLegacyCorePlatformApi(ctx android.EarlyModuleContext, moduleName string)
 
 func corePlatformSystemModules(ctx android.EarlyModuleContext) string {
 	if useLegacyCorePlatformApi(ctx, ctx.ModuleName()) {
-		return config.LegacyCorePlatformSystemModules
+		return android.JavaApiLibraryName(ctx.Config(), config.LegacyCorePlatformSystemModules)
 	} else {
-		return config.StableCorePlatformSystemModules
+		return android.JavaApiLibraryName(ctx.Config(), config.StableCorePlatformSystemModules)
 	}
 }
 
 func corePlatformBootclasspathLibraries(ctx android.EarlyModuleContext) []string {
 	if useLegacyCorePlatformApi(ctx, ctx.ModuleName()) {
-		return config.LegacyCorePlatformBootclasspathLibraries
+		return []string{
+			android.JavaApiLibraryName(ctx.Config(), config.LegacyCorePlatformBootclasspathLibraries[0]),
+			android.JavaApiLibraryName(ctx.Config(), config.LegacyCorePlatformBootclasspathLibraries[1]),
+		}
 	} else {
-		return config.StableCorePlatformBootclasspathLibraries
+		return []string{
+			android.JavaApiLibraryName(ctx.Config(), config.StableCorePlatformBootclasspathLibraries[0]),
+			android.JavaApiLibraryName(ctx.Config(), config.StableCorePlatformBootclasspathLibraries[1]),
+		}
 	}
 }
