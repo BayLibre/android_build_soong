@@ -331,6 +331,9 @@ func init() {
 	if runtime.GOOS == "linux" {
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
 	}
+	if runtime.GOARCH == "riscv" {
+                commonGlobalCflags = append(commonGlobalCflags, "-mllvm -riscv-disable-sextw-removal=true")
+	}
 
 	exportedVars.ExportStringListStaticVariable("CommonGlobalConlyflags", commonGlobalConlyflags)
 	exportedVars.ExportStringListStaticVariable("CommonGlobalAsflags", commonGlobalAsflags)
