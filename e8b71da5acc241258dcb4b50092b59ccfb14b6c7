@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2391bc3b_eb31d855",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-03-29T05:51:58Z",
+      "side": 1,
+      "message": "\u003e Do you have performance results yet showing significant improvements over the other ways to do this? (using prebuilt images, etc)\n\nThis change is protected by a BUILD_WITH_PARTIAL_ARTIAFCT flag for experiment. This is not a final product, but we want to monitor some build metrics with the cf targets and improve the performance in more treble ways. That are, more SSI sharing between targets, more unbundled vendor build, and extending the solution for smaller source trees for building each image in the long term.\nThis is not only for CI build, but also for partners to have efficient build environment.",
+      "parentUuid": "3e1d717b_b7623c30",
+      "revId": "e8b71da5acc241258dcb4b50092b59ccfb14b6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16d572a0_d9c2dac3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
