@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4360e752_91fe57ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2023-03-29T14:47:22Z",
+      "side": 1,
+      "message": "Done. I\u0027m not sure how to run the Bazel tests though?",
+      "parentUuid": "6421e4a0_746a3bd0",
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8c26133_3d6960e4",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -100,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8401d30f_6d133a70",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2023-03-29T14:47:22Z",
+      "side": 1,
+      "message": "Added comments. This is only really expected to be used in specific release branches.",
+      "parentUuid": "1fb8293d_6b7e1f32",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 20
+      },
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0de76fa_1a95ac61",
@@ -113,6 +155,30 @@
       "writtenOn": "2023-03-20T09:00:16Z",
       "side": 1,
       "message": "Does this need to be nested? What other install constraints are expected?",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 22
+      },
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b10257_bf538095",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2023-03-29T14:47:22Z",
+      "side": 1,
+      "message": "There are currently no other install constraints available AFAIK. Removed the nesting.",
+      "parentUuid": "e0de76fa_1a95ac61",
       "range": {
         "startLine": 184,
         "startChar": 2,
@@ -146,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77efbb58_7c9a8a4b",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2023-03-29T14:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd9e0ed_91d35baf",
+      "range": {
+        "startLine": 635,
+        "startChar": 4,
+        "endLine": 635,
+        "endChar": 63
+      },
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f4bf49c_3034f13e",
@@ -159,6 +249,30 @@
       "writtenOn": "2023-03-20T09:00:16Z",
       "side": 1,
       "message": "Is `-v`/`--verbose` necessary?",
+      "range": {
+        "startLine": 637,
+        "startChar": 3,
+        "endLine": 637,
+        "endChar": 36
+      },
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "081adef0_c5ab3cf6",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2023-03-29T14:47:22Z",
+      "side": 1,
+      "message": "Nope, sorry for the oversight. Removed.",
+      "parentUuid": "2f4bf49c_3034f13e",
       "range": {
         "startLine": 637,
         "startChar": 3,
