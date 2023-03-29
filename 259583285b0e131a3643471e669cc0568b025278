@@ -104,6 +104,24 @@
       "message": "I\u0027d add a check for ctx.toolchain().Bionic() here, too - to be clear that this does not affect host targets.",
       "revId": "259583285b0e131a3643471e669cc0568b025278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc262b4_8df486ad",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1868486
+      },
+      "writtenOn": "2023-03-29T02:58:59Z",
+      "side": 1,
+      "message": "Sure, let me add it and update the Patchset. Thanks!",
+      "parentUuid": "dbe313e2_ad93716b",
+      "revId": "259583285b0e131a3643471e669cc0568b025278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
