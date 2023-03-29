@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abcc608b_d9663149",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-03-29T18:15:42Z",
+      "side": 1,
+      "message": "This won\u0027t help, runtime.GOARCH is never \"riscv\" because Soong runs on the host.  You need to add the flags to build/soong/cc/config/riscv64_device.go.",
+      "revId": "b2695e69047bfc68ae62f67eff14aabfb31e200d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
