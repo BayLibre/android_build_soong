@@ -499,6 +499,8 @@ func (b *BootclasspathFragmentModule) DepsMutator(ctx android.BottomUpMutatorCon
 		for _, apiScope := range hiddenAPISdkLibrarySupportedScopes {
 			// Add a dependency onto a possibly scope specific stub library.
 			scopeSpecificDependency := apiScope.scopeSpecificStubModule(ctx, additionalStubModule)
+			// Use JavaLibraryName function to be redirected to stubs generated from .txt if applicable
+			scopeSpecificDependency = android.JavaLibraryName(ctx.Config(), scopeSpecificDependency)
 			tag := hiddenAPIStubsDependencyTag{apiScope: apiScope, fromAdditionalDependency: true}
 			ctx.AddVariationDependencies(nil, tag, scopeSpecificDependency)
 		}
