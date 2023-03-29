@@ -16,6 +16,24 @@
       "message": "nit: Is there a reason why you have named this function `JavaLibraryName`, instead of `JavaApiLibraryName`? IIUC this would be called to get the name of `java_api_library` during from text build, and we are not planning to replace all `java_library` with `java_api_library`?",
       "revId": "da594d3e69e12caa95eaf43d2016a6bcccf61493",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa47d04_8d2a997e",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-29T17:21:35Z",
+      "side": 1,
+      "message": "Agreed, I have renamed it to `JavaApiLibraryName`",
+      "parentUuid": "3efefe59_1c1998b4",
+      "revId": "da594d3e69e12caa95eaf43d2016a6bcccf61493",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
