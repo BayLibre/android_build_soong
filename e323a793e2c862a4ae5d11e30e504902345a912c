@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "245f7cfb_74727d48",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-29T13:29:05Z",
+      "side": 1,
+      "message": "should we make this a more explicit error instead?",
+      "range": {
+        "startLine": 1593,
+        "startChar": 4,
+        "endLine": 1597,
+        "endChar": 45
+      },
+      "revId": "e323a793e2c862a4ae5d11e30e504902345a912c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
