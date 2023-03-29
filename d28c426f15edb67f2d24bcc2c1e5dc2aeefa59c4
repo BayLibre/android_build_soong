@@ -16,6 +16,23 @@
       "message": "Failures look unrelated.",
       "revId": "d28c426f15edb67f2d24bcc2c1e5dc2aeefa59c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c49f7814_1e9c3b11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2023-03-29T15:40:25Z",
+      "side": 1,
+      "message": "This seems to have broken a test: b/275666961",
+      "revId": "d28c426f15edb67f2d24bcc2c1e5dc2aeefa59c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
