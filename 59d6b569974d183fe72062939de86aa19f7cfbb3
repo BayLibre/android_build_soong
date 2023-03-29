@@ -33,6 +33,24 @@
       "message": "can this be replaced with a `java_api_library` module with contribution from `\"art.module.toolchain.api\"`, or is this not feasible?",
       "revId": "59d6b569974d183fe72062939de86aa19f7cfbb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44d7e35_4df4bf97",
+        "filename": "java/core-libraries/TxtStubLibraries.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-29T23:04:31Z",
+      "side": 1,
+      "message": "I think we should. Even with this CL, we will have a vestigial reference to some modules in libcore/\n\nWe should clean that up to ease roboleaf migration. I can do that in a future CL",
+      "parentUuid": "ecdc2c2b_be234256",
+      "revId": "59d6b569974d183fe72062939de86aa19f7cfbb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
