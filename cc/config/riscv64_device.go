@@ -29,6 +29,9 @@ var (
 		// For -fsanitize=shadow-call-stack.
 		"-ffixed-x18",
 		"-march=rv64gc_zbb",
+		// A temporary fix for SExtWRemoval miscompilation bug.
+		"-mllvm",
+		"-riscv-disable-sextw-removal=true",
 	}
 
 	riscv64ArchVariantCflags = map[string][]string{}
