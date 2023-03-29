@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10c7b27c_1f3718dc",
+        "filename": "android/api_levels.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-03-29T15:56:16Z",
+      "side": 1,
+      "message": "optional: you can replace this with canonical \u003d asInt so we don\u0027t add an extra return statement",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 43
+      },
+      "revId": "13b1c005579b7be7e80d908618d5535caf23ae2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
