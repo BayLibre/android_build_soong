@@ -16,6 +16,24 @@
       "message": "Why is this necessary?  We prefer to keep paths as Path objects for as long as possible.",
       "revId": "b9b731e9f8a1d83f83f073f553a7b85df177d782",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccc5578e_03fb149d",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-03-30T21:00:51Z",
+      "side": 1,
+      "message": "It\u0027s because some callers want to pass a ModuleOutPath here, and others (i.e. the new caller in device/google/cuttlefish) wants to pass an InstallPath.",
+      "parentUuid": "73270187_d94cd31f",
+      "revId": "b9b731e9f8a1d83f83f073f553a7b85df177d782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
