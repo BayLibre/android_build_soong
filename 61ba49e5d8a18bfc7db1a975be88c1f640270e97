@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7bf6101_1b79e34c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-30T14:19:17Z",
+      "side": 1,
+      "message": "I would not expect `ctx.ModuleErrorf` to error out in bp2build -- in `GenerateBazelTargets` we typically return a list of errors to print, which can then be checked in test cases.\n\nGave more detail on how to unit test in the unit test you wrote.",
+      "parentUuid": "47821ebc_c13f5396",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 14
+      },
+      "revId": "61ba49e5d8a18bfc7db1a975be88c1f640270e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4230b681_9d29fc73",
         "filename": "tests/Android.bp",
         "patchSetId": 8

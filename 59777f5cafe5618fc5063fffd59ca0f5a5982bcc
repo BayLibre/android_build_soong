@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6231e3af_5b63fce7",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-30T14:19:17Z",
+      "side": 1,
+      "message": "Why do we need `Bp2BuildDefaultTrue` in a directory for something being force enabled? Can we fix that?",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 125
+      },
+      "revId": "59777f5cafe5618fc5063fffd59ca0f5a5982bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c541d097_224ef7fb",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-30T14:19:17Z",
+      "side": 1,
+      "message": "I\u0027d expect to see an what\u0027s force-enabled and an `expectedError` in this test case. Or is this issue that we\u0027re still not sure what the rootcause is for the failure?",
+      "range": {
+        "startLine": 1254,
+        "startChar": 2,
+        "endLine": 1254,
+        "endChar": 4
+      },
+      "revId": "59777f5cafe5618fc5063fffd59ca0f5a5982bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0448a7e2_981197b3",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-03-30T14:19:17Z",
+      "side": 1,
+      "message": "this is where the allowlist is currently constructed -- if we modify the `Bp2BuildAllowlist` to contain the force-allowed modules it would be straightforward to change the test cases struct and update this test to fully test the logic.",
+      "range": {
+        "startLine": 1272,
+        "startChar": 23,
+        "endLine": 1272,
+        "endChar": 43
+      },
+      "revId": "59777f5cafe5618fc5063fffd59ca0f5a5982bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
