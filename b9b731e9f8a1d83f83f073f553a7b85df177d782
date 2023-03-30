@@ -34,6 +34,24 @@
       "parentUuid": "73270187_d94cd31f",
       "revId": "b9b731e9f8a1d83f83f073f553a7b85df177d782",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e8f6954_21ca8f60",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-03-30T21:14:32Z",
+      "side": 1,
+      "message": "I see, can you change the type of `dir` to `WritablePath`, which should accept `ModuleOutPath` or `InstallPath`, and then this can be:\n```\ndestPath :\u003d filepath.Join(dir.String(), ps.relPathInPackage)\n```",
+      "parentUuid": "ccc5578e_03fb149d",
+      "revId": "b9b731e9f8a1d83f83f073f553a7b85df177d782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
