@@ -114,13 +114,9 @@ diff_excludes[system]=\
  -I /system/lib64/libkm_compat.so \
  -I /system/lib64/vndk-29 \
  -I /system/lib64/vndk-sp-29 \
- -I /system/lib/modules \
  -I /system/lib/vndk-29 \
  -I /system/lib/vndk-sp-29 \
- -I /system/product \
- -I /system/system_ext \
  -I /system/usr/icu \
- -I /system/vendor \
  -I /vendor/ \
  -I /vendor_dlkm/etc"
 
