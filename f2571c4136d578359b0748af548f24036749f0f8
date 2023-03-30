@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54afa57b_b642fa42",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-30T11:49:50Z",
+      "side": 0,
+      "message": "what happened to these diffs?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "f2571c4136d578359b0748af548f24036749f0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
