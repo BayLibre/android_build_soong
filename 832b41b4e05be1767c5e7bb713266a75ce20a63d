@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f962301c_b6c9007b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-30T11:28:09Z",
+      "side": 1,
+      "message": "The build system change looks good, but I\u0027ll leave it to the rest of the Mainline team to review if the idea of having install constraints in APEXes make sense.",
+      "revId": "832b41b4e05be1767c5e7bb713266a75ce20a63d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
