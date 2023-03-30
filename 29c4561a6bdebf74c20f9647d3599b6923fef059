@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d348b0f_c98cbc3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-30T11:32:06Z",
+      "side": 1,
+      "message": "The presubmits failures make no sense to me, given this change does not change how Soong compiles, and only changes the bp2build allowlist:\n\n```\n/mnt/disks/build-disk/src/googleplex-android/master/build/soong/ui/build/soong.go:419:15: blueprintCtx.AddSourceRootDirs undefined (type *blueprint.Context has no field or method AddSourceRootDirs)\n```\n\nI\u0027ll bypass the presubmit.",
+      "revId": "29c4561a6bdebf74c20f9647d3599b6923fef059",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
