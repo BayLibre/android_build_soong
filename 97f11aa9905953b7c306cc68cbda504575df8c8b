@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34a9a75_eb21d8c7",
+        "filename": "android/makevars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-30T21:23:03Z",
+      "side": 1,
+      "message": "Move shouldFetchPartialArtifact out into it\u0027s own separate function, and use `ctx.Config.Once()` to only compile the regexes once within it.",
+      "revId": "97f11aa9905953b7c306cc68cbda504575df8c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aaefe3a_6649009e",
+        "filename": "android/makevars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-30T21:23:03Z",
+      "side": 1,
+      "message": "Why is this step necessary? Doesn\u0027t this just copy a file from one place under `artifact` to another? Why don\u0027t we just set installfrom to be the file as it is directly after unzipping?\n\nDoes this have something to do with the capitalization of system / system_ext in the zip file? Can we generate the zip file without the capitalization if so?",
+      "range": {
+        "startLine": 513,
+        "startChar": 3,
+        "endLine": 520,
+        "endChar": 27
+      },
+      "revId": "97f11aa9905953b7c306cc68cbda504575df8c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a276584_50cae473",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-03-30T21:23:03Z",
+      "side": 1,
+      "message": "What are \"symbol modules\"?\n\nThis doesn\u0027t appear to be skipping just one type of module, it appears to be skipping all of the flattened apex files. Would skipSymbol be better named skipRequireDependencies or something?",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "97f11aa9905953b7c306cc68cbda504575df8c8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
