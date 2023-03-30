@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe9e5095_3de68100",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-30T07:24:37Z",
+      "side": 1,
+      "message": "Thanks! The `bp2build-incremental` presubmit should catch all of it, but if you just want to run the test you added, `b test //build/bazel/rules/apex:all` and `b test //build/bazel/rules/apex:all --config\u003dandroid` is sufficient.",
+      "parentUuid": "4360e752_91fe57ab",
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8c26133_3d6960e4",
         "filename": "apex/apex.go",
         "patchSetId": 1
