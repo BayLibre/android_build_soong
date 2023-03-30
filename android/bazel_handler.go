@@ -733,14 +733,11 @@ func (r *builtinBazelRunner) createBazelCommand(config Config, paths *bazelPaths
 		"--output_base=" + absolutePath(paths.outputBase),
 		command.command,
 		command.expression,
-		// TODO(asmundak): is it needed in every build?
+		// TODO(roboleaf-infra): is it needed in every build?
 		"--profile=" + shared.BazelMetricsFilename(paths, runName),
 
 		// We don't need to set --host_platforms because it's set in bazelrc files
 		// that the bazel shell script wrapper passes
-
-		// Explicitly disable downloading rules (such as canonical C++ and Java rules) from the network.
-		"--experimental_repository_disable_download",
 
 		// Suppress noise
 		"--ui_event_filters=-INFO",
