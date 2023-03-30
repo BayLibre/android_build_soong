@@ -376,6 +376,9 @@ var (
 		"tools/metalava": Bp2BuildDefaultTrue,
 		"tools/platform-compat/java/android/compat":  Bp2BuildDefaultTrueRecursively,
 		"tools/tradefederation/prebuilts/filegroups": Bp2BuildDefaultTrueRecursively,
+
+		"system/timezone/testing/data/test1": Bp2BuildDefaultTrueRecursively,
+		"system/timezone/testing/data/test3": Bp2BuildDefaultTrueRecursively,
 	}
 
 	Bp2buildKeepExistingBuildFile = map[string]bool{
@@ -1466,6 +1469,7 @@ var (
 		// M5: tzdata launch
 		"com.android.tzdata",
 		"test1_com.android.tzdata",
+		"test3_com.android.tzdata",
 		// M7: adbd launch
 		"com.android.adbd",
 		"test_com.android.adbd",
