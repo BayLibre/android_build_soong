@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92e17d35_cf53ad0d",
+        "filename": "java/legacy_core_platform_api_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-30T00:00:03Z",
+      "side": 0,
+      "message": "There are other references to these e.g. https://cs.android.com/search?q\u003dLegacyCorePlatformSystemModules\n\nDo they need to be updated as well?",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 47
+      },
+      "revId": "78aece6f5bcf6c0b52d7de6ce9e8bc7cea30af73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
