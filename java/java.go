@@ -388,6 +388,7 @@ var (
 	jniLibTag               = dependencyTag{name: "jnilib", runtimeLinked: true}
 	r8LibraryJarTag         = dependencyTag{name: "r8-libraryjar", runtimeLinked: true}
 	syspropPublicStubDepTag = dependencyTag{name: "sysprop public stub"}
+	txtStubDepTag           = dependencyTag{name: "stub generated from .txt files"}
 	jniInstallTag           = installDependencyTag{name: "jni install"}
 	binaryInstallTag        = installDependencyTag{name: "binary install"}
 	usesLibReqTag           = makeUsesLibraryDependencyTag(dexpreopt.AnySdkVersion, false)

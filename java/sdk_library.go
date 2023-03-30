@@ -1554,6 +1554,7 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext
 			Dir     *string
 			Tag     *string
 		}
+		StubLibrary bool
 	}{}
 
 	props.Name = proptools.StringPtr(module.stubsLibraryModuleName(apiScope))
@@ -1584,6 +1585,8 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext
 		compileDex = proptools.BoolPtr(true)
 	}
 	props.Compile_dex = compileDex
+
+	props.StubLibrary = true
 
 	// Dist the class jar artifact for sdk builds.
 	if !Bool(module.sdkLibraryProperties.No_dist) {
