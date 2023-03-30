@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "143f2308_f1f53a8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-03-30T11:40:17Z",
+      "side": 1,
+      "message": "```\nERROR: /buildbot/src/android/master/out/soong/workspace/build/bazel/rules/apex/BUILD:196:16: in _apex rule //build/bazel/rules/apex:fingerprint_prefixes: \nTraceback (most recent call last):\n\tFile \"/buildbot/src/android/master/out/soong/workspace/build/bazel/rules/apex/apex.bzl\", line 742, column 33, in _apex_rule_impl\n\t\tapexer_outputs \u003d _run_apexer(ctx, apex_toolchain)\n\tFile \"/buildbot/src/android/master/out/soong/workspace/build/bazel/rules/apex/apex.bzl\", line 484, column 31, in _run_apexer\n\t\tfor prefix in ctx.attr.fingerprint:\nError: No attribute \u0027fingerprint\u0027 in attr. Make sure you declared a rule attribute with this name.\n```\n\nfailure looks legit.",
+      "parentUuid": "fe9e5095_3de68100",
+      "revId": "fa3ecc8a501457b00c2b13d35e20d62a46392e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8c26133_3d6960e4",
         "filename": "apex/apex.go",
         "patchSetId": 1
