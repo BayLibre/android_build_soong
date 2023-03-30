@@ -236,6 +236,19 @@ func (p *PackagingBase) GatherPackagingSpecs(ctx ModuleContext) map[string]Packa
 	return m
 }
 
+// LinkOrCopy creates a hardlink if possible (e.g. same file system), otherwise makes a copy.
+func linkOrCopy(builder *RuleBuilder, srcPath Path, destPath string) {
+	builder.Command().
+		Text("(ln -f").
+		Input(srcPath).
+		Text(destPath).
+		Text("2>/dev/null || (rm -rf").
+		Text(destPath).
+		Text("&& cp -af").
+		Input(srcPath).
+		Text(destPath + "))")
+}
+
 // CopySpecsToDir is a helper that will add commands to the rule builder to copy the PackagingSpec
 // entries into the specified directory.
 func (p *PackagingBase) CopySpecsToDir(ctx ModuleContext, builder *RuleBuilder, specs map[string]PackagingSpec, dir ModuleOutPath) (entries []string) {
@@ -250,7 +263,7 @@ func (p *PackagingBase) CopySpecsToDir(ctx ModuleContext, builder *RuleBuilder, 
 			builder.Command().Text("mkdir").Flag("-p").Text(destDir)
 		}
 		if ps.symlinkTarget == "" {
-			builder.Command().Text("cp").Input(ps.srcPath).Text(destPath)
+			linkOrCopy(builder, ps.srcPath, destPath)
 		} else {
 			builder.Command().Text("ln").Flag("-sf").Text(ps.symlinkTarget).Text(destPath)
 		}
