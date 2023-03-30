@@ -1412,3 +1412,59 @@ func TestJavaSdkLibrary_StubOnlyLibs_PassedToDroidstubs(t *testing.T) {
 	fooStubsSources := result.ModuleForTests("foo.stubs.source", "android_common").Module().(*Droidstubs)
 	android.AssertStringListContains(t, "foo stubs should depend on bar-lib", fooStubsSources.Javadoc.properties.Libs, "bar-lib")
 }
+
+// Test that depending on <java_sdk_library>.stubs.<scope> gets redirected to stubs generated from .txt files if applicable.
+func TestInterModuleDepsBuildWithTextStubs(t *testing.T) {
+	testCases := []struct {
+		desc              string
+		expectedStub      string
+		buildFromTextStub bool
+	}{
+		{
+			desc:              "Use java_sdk_library stubs built from source files when BuildFromTextStub is false",
+			expectedStub:      "framework-foo.stubs.module_lib.jar",
+			buildFromTextStub: false,
+		},
+		{
+			desc:              "Use java_sdk_library stubs built from .txt file when BuildFromTextStub is true",
+			expectedStub:      "framework-foo.stubs.module_lib.from-text.jar",
+			buildFromTextStub: true,
+		},
+	}
+	bp := `
+		java_sdk_library {
+			name: "framework-foo",
+			srcs: ["foo.java"],
+			public: {
+				enabled: true,
+			},
+			system: {
+				enabled: true,
+			},
+			module_lib: {
+				enabled: true,
+			},
+		}
+		java_library {
+			name: "bar",
+			srcs: ["bar.java"],
+			libs: [
+				"framework-foo.stubs.module_lib",
+			],
+		}
+	`
+
+	for _, tc := range testCases {
+		fixture := android.GroupFixturePreparers(
+			prepareForJavaTest,
+			PrepareForTestWithJavaSdkLibraryFiles,
+			FixtureWithLastReleaseApis("framework-foo"),
+			android.FixtureModifyConfig(func(config android.Config) {
+				config.SetBuildFromTextStub(tc.buildFromTextStub)
+			}),
+		)
+		result := fixture.RunTestWithBp(t, bp)
+		barJavacClasspath := result.ModuleForTests("bar", "android_common").Rule("javac").Args["classpath"]
+		android.AssertStringDoesContain(t, tc.desc, barJavacClasspath, tc.expectedStub)
+	}
+}
