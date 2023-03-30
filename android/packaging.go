@@ -236,8 +236,26 @@ func (p *PackagingBase) GatherPackagingSpecs(ctx ModuleContext) map[string]Packa
 	return m
 }
 
-// CopySpecsToDir is a helper that will add commands to the rule builder to copy the PackagingSpec
-// entries into the specified directory.
+// linkOrCopy creates a hardlink if possible (e.g. same file system), otherwise makes a copy.
+func linkOrCopy(builder *RuleBuilder, srcPath Path, destPath string) {
+	builder.Command().
+		Text("(ln -f").
+		Input(srcPath).
+		Text(destPath).
+		Text("2>/dev/null || (rm -rf").
+		Text(destPath).
+		Text("&& cp -af").
+		Input(srcPath).
+		Text(destPath + "))")
+}
+
+// CopySpecsToDir is a helper that will add commands to the rule builder to copy or hardlink the
+// PackagingSpec entries into the specified directory.
+//
+// Because this rule may use hardlinks, it should not be used in cases where the target files need
+// to retain their contents if the source file is overwritten, nor should the target files be used
+// directly as inputs by Ninja. For this reason, the rule deliberately does not declare the target
+// files as outputs.
 func (p *PackagingBase) CopySpecsToDir(ctx ModuleContext, builder *RuleBuilder, specs map[string]PackagingSpec, dir WritablePath) (entries []string) {
 	seenDir := make(map[string]bool)
 	for _, k := range SortedKeys(specs) {
@@ -250,7 +268,7 @@ func (p *PackagingBase) CopySpecsToDir(ctx ModuleContext, builder *RuleBuilder, 
 			builder.Command().Text("mkdir").Flag("-p").Text(destDir)
 		}
 		if ps.symlinkTarget == "" {
-			builder.Command().Text("cp").Input(ps.srcPath).Text(destPath)
+			linkOrCopy(builder, ps.srcPath, destPath)
 		} else {
 			builder.Command().Text("ln").Flag("-sf").Text(ps.symlinkTarget).Text(destPath)
 		}
