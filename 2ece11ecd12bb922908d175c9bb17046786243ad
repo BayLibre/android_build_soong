@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78ce7819_15ff76f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-30T10:44:40Z",
+      "side": 1,
+      "message": "Some day, I wish this information is externalized so that it can be customized per product and by partners.",
+      "revId": "2ece11ecd12bb922908d175c9bb17046786243ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
