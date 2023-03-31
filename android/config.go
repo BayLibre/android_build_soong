@@ -1179,10 +1179,6 @@ func (c *config) ExportedNamespaces() []string {
 	return append([]string(nil), c.productVariables.NamespacesToExport...)
 }
 
-func (c *config) SourceRootDirs() []string {
-	return c.productVariables.SourceRootDirs
-}
-
 func (c *config) IncludeTags() []string {
 	return c.productVariables.IncludeTags
 }
