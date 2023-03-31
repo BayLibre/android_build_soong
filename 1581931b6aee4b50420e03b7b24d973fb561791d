@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "304615a0_6a0b0118",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-31T22:36:46Z",
+      "side": 1,
+      "message": "Correction: `framework-foo.stubs` is a `java_library` and not a `droidstubs`",
+      "parentUuid": "119a1381_bfd28468",
+      "range": {
+        "startLine": 814,
+        "startChar": 0,
+        "endLine": 816,
+        "endChar": 2
+      },
+      "revId": "1581931b6aee4b50420e03b7b24d973fb561791d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6e59ae2_bd2d6db0",
         "filename": "java/base.go",
         "patchSetId": 2
