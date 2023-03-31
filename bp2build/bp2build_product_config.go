@@ -69,16 +69,6 @@ package(default_visibility = [
 	"@soong_injection//product_config_platforms:__subpackages__",
 ])
 
-# TODO(b/249685973): Remove this. It was only added for a platform_mappings file,
-# which can possibly be replaced with autogenerating the platform_mappings file,
-# or removing that file entirely.
-alias(
-	name = "current_android_platform",
-	# TODO: When we start generating the platforms for more than just the
-	# currently lunched, product, turn this into a select with an arm for each product.
-	actual = "@soong_injection//{PRODUCT_FOLDER}:{PRODUCT}-{VARIANT}",
-)
-
 alias(
 	name = "product_vars",
 	actual = select({
@@ -116,14 +106,6 @@ build --host_platform @soong_injection//{PRODUCT_FOLDER}:{PRODUCT}-{VARIANT}_lin
 			"darwin.bazelrc",
 			productReplacer.Replace(`
 build --host_platform @soong_injection//{PRODUCT_FOLDER}:{PRODUCT}-{VARIANT}_darwin_x86_64
-`)),
-		newFile(
-			"product_config_platforms",
-			"platform_mappings",
-			productReplacer.Replace(`
-flags:
-  --cpu=k8
-    @soong_injection//{PRODUCT_FOLDER}:{PRODUCT}-{VARIANT}
 `)),
 	}
 
