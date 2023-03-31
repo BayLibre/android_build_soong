@@ -22,6 +22,30 @@
       },
       "revId": "88fa7fd9f0dd401358d53801c31e35943242ae1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bffa7f19_a2d2b391",
+        "filename": "tests/lib.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2023-03-31T17:15:25Z",
+      "side": 1,
+      "message": "It probably doesn\u0027t. It gets called from above where the external stuff was already added.",
+      "parentUuid": "6198e5f7_af0834aa",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "88fa7fd9f0dd401358d53801c31e35943242ae1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
