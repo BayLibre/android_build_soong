@@ -16,6 +16,23 @@
       "message": "And isn\u0027t the performance of crosvm important for both our desktop users and our infrastructure?  I\u0027m not 100% versed in how crosvm is used everywhere but it seems to get invoked a fair amount.",
       "revId": "f7f29d1bdbbb5baf52781ec1c051343b62ee1d70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8993f9b4_cd6b6cec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-03-31T18:19:12Z",
+      "side": 1,
+      "message": "Performance of cuttlefish does matter - it\u0027s how emulated Android systems get run.\n\nSetting codegen units to 1 is also not just an optimization, it\u0027s part of the reproducibility strategy.\n\nAdditionally, further divergence between host and device in general reduces the value of host tests for finding bugs.\n\nCan you try using `SOONG_RUSTC_INCREMENTAL\u003d1` (as an environment variable) and see if that speeds things up enough? It (possibly) sacrifices reproducibility for speed, but if your complaint is that you need to rebuilt crosvm after touching bionic, it may solve that issue for you.",
+      "revId": "f7f29d1bdbbb5baf52781ec1c051343b62ee1d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
