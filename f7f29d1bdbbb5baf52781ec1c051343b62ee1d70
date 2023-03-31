@@ -50,6 +50,24 @@
       "message": "Unfortunately I don\u0027t think we\u0027ll be able to accept this patch.  The main reason being that having more than one codegen unit leads to nondeterministic output from the compiler which is unacceptable for artifacts produced by the buildbots.  This would also impact the performance of several host tools that get run often.\n\nTo address your productivity concerns I have two points:\n\n1) Have you tried setting `SOONG_RUSTC_INCREMENTAL`?  That may get you some of the productivity gains you\u0027re looking for.\n\n2) I\u0027ve revived the discussion about re-purposing engineering builds to be \"quick and dirty.\"  I think that we\u0027d be able to make the changes from this CL or similar changes for that configuration.",
       "revId": "f7f29d1bdbbb5baf52781ec1c051343b62ee1d70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b1d987_5aec9a2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-03-31T18:51:22Z",
+      "side": 1,
+      "message": "It really depends on what the host does. I would expect the perf impact to be minimal because for tasks requiring VM exit to the host we would likely be I/O bound so the optimization level doesn\u0027t really matter. But that\u0027s just a hypothesis and I\u0027d rather not spend time measuring the real world impact.\n\nI tried incremental builds for crosvm (by hacking `-Cincremental` onto the command line, I wasn\u0027t aware of that soong flag). But it didn\u0027t help as much as I\u0027d like. I tried it again without my patch and it was:\n \n real    2m9.706s  for the first build.\n real    1m15.840s for the next build.\n \nAs a longer term solution I\u0027ve been talking to the Rust developers on Zulip to see if they\u0027d support a way of allowing compilation and linking to be split up for binary crates. That would allow skipping the compile step entirely when bionic is modified.",
+      "parentUuid": "8993f9b4_cd6b6cec",
+      "revId": "f7f29d1bdbbb5baf52781ec1c051343b62ee1d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
