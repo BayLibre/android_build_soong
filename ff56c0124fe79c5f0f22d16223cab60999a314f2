@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b729fe_a5b45919",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-03-31T18:19:05Z",
+      "side": 1,
+      "message": "ccross: This now only needs an OWNERS stamp.",
+      "revId": "ff56c0124fe79c5f0f22d16223cab60999a314f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
