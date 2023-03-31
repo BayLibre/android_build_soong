@@ -313,7 +313,9 @@ func NewConfig(ctx Context, args ...string) Config {
 
 	// Default matching ninja
 	ret.parallel = runtime.NumCPU() + 2
-	ret.keepGoing = 1
+
+	// DO NOT SUBMIT: hack to collect all build errors from CI.
+	ret.keepGoing = 0
 
 	ret.totalRAM = detectTotalRAM(ctx)
 	ret.parseArgs(ctx, args)
