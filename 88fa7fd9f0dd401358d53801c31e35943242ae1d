@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6198e5f7_af0834aa",
+        "filename": "tests/lib.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-03-31T17:07:32Z",
+      "side": 1,
+      "message": "This isn\u0027t copying build/make, so I don\u0027t see how it would need external/spdx-tools",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "88fa7fd9f0dd401358d53801c31e35943242ae1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
