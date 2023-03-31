@@ -325,8 +325,12 @@ func (r *NameResolver) chooseId(namespace *Namespace) {
 	namespace.id = strconv.Itoa(id)
 }
 
-func (r *NameResolver) MissingDependencyError(depender string, dependerNamespace blueprint.Namespace, depName string) (err error) {
-	text := fmt.Sprintf("%q depends on undefined module %q", depender, depName)
+func (r *NameResolver) MissingDependencyError(depender string, dependerNamespace blueprint.Namespace, depName string, guess []string) (err error) {
+	guessString := ""
+	if len(guess) > 0 {
+		guessString = fmt.Sprintf(" Did you mean %+q?", guess)
+	}
+	text := fmt.Sprintf("%q depends on undefined module %q.%s", depender, depName, guessString)
 
 	_, _, isAbs := r.parseFullyQualifiedName(depName)
 	if isAbs {
@@ -345,7 +349,7 @@ func (r *NameResolver) MissingDependencyError(depender string, dependerNamespace
 		}
 		_, skipped := namespace.moduleContainer.SkippedModuleFromName(depName, nil)
 		if skipped {
-			skippedDepErrors = append(skippedDepErrors, namespace.moduleContainer.MissingDependencyError(depender, dependerNamespace, depName))
+			skippedDepErrors = append(skippedDepErrors, namespace.moduleContainer.MissingDependencyError(depender, dependerNamespace, depName, []string{}))
 		}
 	}
 	if len(foundInNamespaces) > 0 {
