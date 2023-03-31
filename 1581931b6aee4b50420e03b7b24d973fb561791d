@@ -16,6 +16,52 @@
       "message": "I am open to other alternatives. Here are some that I considered:\n\n1. java_sdk_library creates java_api_library _instead_ of droidstubs (for stubs)\n2. update depsMutator to rewrite libs and append a `.from-text` suffix\n\nI think (1) is the correct long-term approach. But it makes debugging more difficult in the short term since the ninja graph will not contain both the \"source stubs\" and \"txt stubs\" for diff-ing \n\n(2) is more multi-tree friendly, but requires use of a global for storing list of stub libraries",
       "revId": "1581931b6aee4b50420e03b7b24d973fb561791d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e63dce1_a80ebace",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-31T21:55:08Z",
+      "side": 1,
+      "message": "I do not fully understand this part -- why is the droidstubs module adding dependency to its equivalent `java_api_library`? Also, can you provide further context about why this is not dependent on `BuildFromTextStub()`?\n\nAlso, can we use `JavaApiLibraryName()` here?",
+      "range": {
+        "startLine": 814,
+        "startChar": 0,
+        "endLine": 816,
+        "endChar": 2
+      },
+      "revId": "1581931b6aee4b50420e03b7b24d973fb561791d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6e59ae2_bd2d6db0",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2210,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-03-31T21:55:08Z",
+      "side": 1,
+      "message": "nit: generates?",
+      "range": {
+        "startLine": 2210,
+        "startChar": 45,
+        "endLine": 2210,
+        "endChar": 47
+      },
+      "revId": "1581931b6aee4b50420e03b7b24d973fb561791d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
