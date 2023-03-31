@@ -174,7 +174,7 @@ func TestDependingOnModuleInNonImportedNamespace(t *testing.T) {
 			`,
 		}),
 	).
-		ExtendWithErrorHandler(FixtureExpectsOneErrorPattern(`\Qdir3/Android.bp:4:5: "b" depends on undefined module "a"
+		ExtendWithErrorHandler(FixtureExpectsOneErrorPattern(`\Qdir3/Android.bp:4:5: "b" depends on undefined module "a". Did you mean ["soong_namespace"]?
 Module "b" is defined in namespace "dir3" which can read these 2 namespaces: ["dir3" "."]
 Module "a" can be found in these namespaces: ["dir1" "dir2"]\E`)).
 		RunTest(t)
@@ -421,7 +421,7 @@ func TestNamespacesDontInheritParentNamespaces(t *testing.T) {
 			`,
 		}),
 	).
-		ExtendWithErrorHandler(FixtureExpectsOneErrorPattern(`\Qdir1/subdir1/Android.bp:4:5: "b" depends on undefined module "a"
+		ExtendWithErrorHandler(FixtureExpectsOneErrorPattern(`\Qdir1/subdir1/Android.bp:4:5: "b" depends on undefined module "a". Did you mean ["soong_namespace"]?
 Module "b" is defined in namespace "dir1/subdir1" which can read these 2 namespaces: ["dir1/subdir1" "."]
 Module "a" can be found in these namespaces: ["dir1"]\E`)).
 		RunTest(t)
@@ -481,7 +481,7 @@ func TestNamespaceImportsNotTransitive(t *testing.T) {
 			`,
 		}),
 	).
-		ExtendWithErrorHandler(FixtureExpectsOneErrorPattern(`\Qdir3/Android.bp:5:5: "c" depends on undefined module "a"
+		ExtendWithErrorHandler(FixtureExpectsOneErrorPattern(`\Qdir3/Android.bp:5:5: "c" depends on undefined module "a". Did you mean ["b"]?
 Module "c" is defined in namespace "dir3" which can read these 3 namespaces: ["dir3" "dir2" "."]
 Module "a" can be found in these namespaces: ["dir1"]\E`)).
 		RunTest(t)
