@@ -33,6 +33,23 @@
       "message": "Performance of cuttlefish does matter - it\u0027s how emulated Android systems get run.\n\nSetting codegen units to 1 is also not just an optimization, it\u0027s part of the reproducibility strategy.\n\nAdditionally, further divergence between host and device in general reduces the value of host tests for finding bugs.\n\nCan you try using `SOONG_RUSTC_INCREMENTAL\u003d1` (as an environment variable) and see if that speeds things up enough? It (possibly) sacrifices reproducibility for speed, but if your complaint is that you need to rebuilt crosvm after touching bionic, it may solve that issue for you.",
       "revId": "f7f29d1bdbbb5baf52781ec1c051343b62ee1d70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7268a799_bc3941d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2023-03-31T18:33:21Z",
+      "side": 1,
+      "message": "Unfortunately I don\u0027t think we\u0027ll be able to accept this patch.  The main reason being that having more than one codegen unit leads to nondeterministic output from the compiler which is unacceptable for artifacts produced by the buildbots.  This would also impact the performance of several host tools that get run often.\n\nTo address your productivity concerns I have two points:\n\n1) Have you tried setting `SOONG_RUSTC_INCREMENTAL`?  That may get you some of the productivity gains you\u0027re looking for.\n\n2) I\u0027ve revived the discussion about re-purposing engineering builds to be \"quick and dirty.\"  I think that we\u0027d be able to make the changes from this CL or similar changes for that configuration.",
+      "revId": "f7f29d1bdbbb5baf52781ec1c051343b62ee1d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
