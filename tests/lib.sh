@@ -130,6 +130,8 @@ function create_mock_bazel {
   symlink_directory external/bazelbuild-rules_android
   symlink_directory external/bazelbuild-rules_license
   symlink_directory external/bazelbuild-kotlin-rules
+  symlink_directory external/spdx-tools/spdx/v2_2
+  symlink_directory external/spdx-tools/spdx/common
 
   symlink_file WORKSPACE
   symlink_file BUILD
