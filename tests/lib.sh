@@ -94,9 +94,11 @@ function create_mock_soong {
   symlink_directory external/compiler-rt
   symlink_directory external/go-cmp
   symlink_directory external/golang-protobuf
+  symlink_directory external/licenseclassifier
   symlink_directory external/starlark-go
   symlink_directory external/python
   symlink_directory external/sqlite
+  symlink_directory external/spdx-tools
 
   touch "$MOCK_TOP/Android.bp"
 }
@@ -130,6 +132,8 @@ function create_mock_bazel {
   symlink_directory external/bazelbuild-rules_android
   symlink_directory external/bazelbuild-rules_license
   symlink_directory external/bazelbuild-kotlin-rules
+  symlink_directory external/licenseclassifier
+  symlink_directory external/spdx-tools
 
   symlink_file WORKSPACE
   symlink_file BUILD
