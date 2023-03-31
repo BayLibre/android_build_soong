@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "119a1381_bfd28468",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-31T22:14:25Z",
+      "side": 1,
+      "message": "For the following bp file\n```\njava_library {\n  name: \"mylib\"\n  libs: [\"framework-foo.stubs\"],\n}\njava_sdk_library {\n  name: \"framework-foo\",\n}\n```\n\nThe Soong dependency graph at ToT is (--\u003e means depends on)\n```\nmylib  --\u003e framework-foo.stubs (droidstubs)\n```\n\n\nThe Soong dependency graph I am creating here is\n\n```\nmylib  --\u003e framework-foo.stubs (droidstubs)\n\n                        |\n                        |\n                        v\n           framework-foo.stubs.from-text (java_api_library)\n\n```\n\n`mylib` expects a JavaInfo provider from `framework-foo.stubs`. When `BuildFromTextStub` is true, the JavaInfo provider should really come from the `framework-foo.stubs.from-text`. Creating a dependency edge between droidstubs and java_api_library allows the droidstubs module to visit the latter and pass forward the JavaInfo provider object of the latter\n\n\u003e Also, can we use JavaApiLibraryName() here?\n\nI think we should we explicit here. JavaApiLibraryName(name) can return name, which is the default for now. IOW, in the default setting the module will try to create a dependency on itself.",
+      "parentUuid": "6e63dce1_a80ebace",
+      "range": {
+        "startLine": 814,
+        "startChar": 0,
+        "endLine": 816,
+        "endChar": 2
+      },
+      "revId": "1581931b6aee4b50420e03b7b24d973fb561791d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6e59ae2_bd2d6db0",
         "filename": "java/base.go",
         "patchSetId": 2
