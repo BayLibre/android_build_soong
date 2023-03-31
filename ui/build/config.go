@@ -117,8 +117,7 @@ type configImpl struct {
 
 	bazelForceEnabledModules string
 
-	includeTags    []string
-	sourceRootDirs []string
+	includeTags []string
 
 	// Data source to write ninja weight list
 	ninjaWeightListSource NinjaWeightListSource
@@ -1184,14 +1183,6 @@ func (c *configImpl) KatiArgs() []string {
 
 func (c *configImpl) Parallel() int {
 	return c.parallel
-}
-
-func (c *configImpl) GetSourceRootDirs() []string {
-	return c.sourceRootDirs
-}
-
-func (c *configImpl) SetSourceRootDirs(i []string) {
-	c.sourceRootDirs = i
 }
 
 func (c *configImpl) GetIncludeTags() []string {
