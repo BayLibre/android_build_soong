@@ -15,6 +15,7 @@
 package bp2build
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -25,6 +26,7 @@ import (
 	"sync/atomic"
 
 	"android/soong/shared"
+
 	"github.com/google/blueprint/pathtools"
 )
 
@@ -87,7 +89,23 @@ func instructionsFromExcludePathList(paths []string) *instructionsNode {
 	return result
 }
 
+var (
+	packageRegex                  = regexp.MustCompile(`(?m)^package\s*\(`)
+	packageDefaultVisibilityRegex = regexp.MustCompile(`(?m)^package\s*\(\s*default_visibility\s*=\s*\[\s*"//visibility:public",?\s*]\s*\)`)
+)
+
+var (
+	buildFileMergeMap sync.Map
+)
+
 func mergeBuildFiles(output string, srcBuildFile string, generatedBuildFile string, verbose bool) error {
+	_, loaded := buildFileMergeMap.LoadOrStore(output, true)
+	if loaded {
+		if verbose {
+			fmt.Fprintf(os.Stderr, "Already merged %q", output)
+		}
+		return nil
+	}
 
 	srcBuildFileContent, err := os.ReadFile(srcBuildFile)
 	if err != nil {
@@ -107,14 +125,20 @@ func mergeBuildFiles(output string, srcBuildFile string, generatedBuildFile stri
 	// generated one if it doesn't have any licensing information. If the bp2build
 	// one has licensing information and the handcrafted one exists, we'll leave
 	// them both in for bazel to throw an error.
-	packageRegex := regexp.MustCompile(`(?m)^package\s*\(`)
-	packageDefaultVisibilityRegex := regexp.MustCompile(`(?m)^package\s*\(\s*default_visibility\s*=\s*\[\s*"//visibility:public",?\s*]\s*\)`)
 	if packageRegex.Find(srcBuildFileContent) != nil {
 		if verbose && packageDefaultVisibilityRegex.Find(generatedBuildFileContent) != nil {
 			fmt.Fprintf(os.Stderr, "Both '%s' and '%s' have a package() target, removing the first one\n",
 				generatedBuildFile, srcBuildFile)
 		}
 		generatedBuildFileContent = packageDefaultVisibilityRegex.ReplaceAll(generatedBuildFileContent, []byte{})
+	}
+
+	// If the workspace file already contains the src file content, return without writing
+	if bytes.Contains(generatedBuildFileContent, srcBuildFileContent) {
+		if verbose {
+			fmt.Fprintf(os.Stderr, "Output %q generated file content %q already contains src file content %q", output, generatedBuildFile, srcBuildFile)
+		}
+		return nil
 	}
 
 	newContents := generatedBuildFileContent
