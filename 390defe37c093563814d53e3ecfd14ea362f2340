@@ -16,6 +16,24 @@
       "message": "I\u0027ve always been hesitant to use hardlinks in the build as it could cause some very hard to debug problems.  They work fine as long as every tool overwrites its output file, but if any tool truncates the output file and then appends to it it will affect both its output file and the copy, effectively bypassing the copy rule.  The timestamp of the ouptut file will also update when the input file is updated, which could confuse ninja.  Chromium using it (and also using ninja) makes it a little less worrying.",
       "revId": "390defe37c093563814d53e3ecfd14ea362f2340",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91ad4a48_2407de36",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-03-31T19:37:02Z",
+      "side": 1,
+      "message": "I think it should be fine in this limited case at least. The files created by this command are not used directly as inputs by Ninja.\n\nFurthermore, they are either files created in a temporary directory used to create a zip file and then deleted, or files in a directory that is only intended to be used once the build is finished (so the files would have been updated either way).",
+      "parentUuid": "1a964eb0_08ccad09",
+      "revId": "390defe37c093563814d53e3ecfd14ea362f2340",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
