@@ -22,6 +22,30 @@
       },
       "revId": "bb7c61ff61f343bc8cad6e1f597ff18fdaccc876",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc8afc75_cc7e242d",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-03-31T18:15:29Z",
+      "side": 0,
+      "message": "This is added when LTO is enabled (see TransformSrctoDylib). I don\u0027t think it has an effect when LTO is disabled. While that could mean that I could just leave this flag here, I think it would be clearer to only pass LTO-related flags if they are actually needed.",
+      "parentUuid": "86439bd4_08a08729",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "bb7c61ff61f343bc8cad6e1f597ff18fdaccc876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
