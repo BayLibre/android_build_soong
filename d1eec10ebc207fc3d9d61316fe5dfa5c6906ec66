@@ -16,6 +16,24 @@
       "message": "I think the \"did you mean\" should be either skipped when the exact name was found in a different namespace or printed as some sort of \"or did you mean ...\" after the other namespaces.",
       "revId": "d1eec10ebc207fc3d9d61316fe5dfa5c6906ec66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfdbac0d_784fafc7",
+        "filename": "android/namespace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-31T21:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e3b4172_b64cfdfe",
+      "revId": "d1eec10ebc207fc3d9d61316fe5dfa5c6906ec66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
