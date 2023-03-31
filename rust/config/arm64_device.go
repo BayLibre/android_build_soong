@@ -90,8 +90,6 @@ func Arm64ToolchainFactory(arch android.Arch) Toolchain {
 		"${config.Arm64" + archVariant + "VariantRustFlags}",
 	}
 
-	toolchainRustFlags = append(toolchainRustFlags, deviceGlobalRustFlags...)
-
 	for _, feature := range arch.ArchFeatures {
 		toolchainRustFlags = append(toolchainRustFlags, Arm64ArchFeatureRustFlags[feature]...)
 	}

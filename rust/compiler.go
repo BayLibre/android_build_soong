@@ -313,6 +313,12 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 	flags.LinkFlags = append(flags.LinkFlags, compiler.Properties.Ld_flags...)
 	flags.GlobalRustFlags = append(flags.GlobalRustFlags, config.GlobalRustFlags...)
 	flags.GlobalRustFlags = append(flags.GlobalRustFlags, ctx.toolchain().ToolchainRustFlags())
+	if ctx.Device() {
+		flags.GlobalRustFlags = append(flags.GlobalRustFlags, config.DeviceGlobalRustFlags...)
+	}
+	if ctx.Target().Os == android.Android || ctx.Target().Os == android.LinuxBionic {
+		flags.GlobalRustFlags = append(flags.GlobalRustFlags, config.BionicGlobalRustFlags...)
+	}
 	flags.GlobalLinkFlags = append(flags.GlobalLinkFlags, ctx.toolchain().ToolchainLinkFlags())
 	flags.EmitXrefs = ctx.Config().EmitXrefRules()
 

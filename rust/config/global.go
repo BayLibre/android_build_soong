@@ -42,7 +42,6 @@ var (
 
 	GlobalRustFlags = []string{
 		"-Z remap-cwd-prefix=.",
-		"-C codegen-units=1",
 		"-C debuginfo=2",
 		"-C opt-level=3",
 		"-C relocation-model=pic",
@@ -54,12 +53,15 @@ var (
 		// TODO (b/267698452): Temporary workaround until the "no unstable
 		// features" policy is enforced.
 		"-A stable-features",
-		"-Zdylib-lto",
 	}
 
-	deviceGlobalRustFlags = []string{
+	BionicGlobalRustFlags = []string{
 		"-C panic=abort",
 		"-Z link-native-libraries=no",
+	}
+
+	DeviceGlobalRustFlags = []string{
+		"-C codegen-units=1",
 		// Generate additional debug info for AutoFDO
 		"-Z debug-info-for-profiling",
 	}
