@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2b9937b_079b30d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-03-31T19:29:31Z",
+      "side": 1,
+      "message": "This comment thread with Paul has more details on why this dependency is no longer necessary https://android-review.git.corp.google.com/c/platform/libcore/+/2324119/comment/825815b0_1bc2419b/",
+      "revId": "3e90ddf9edb9562850bbfc674fc3e58e912320e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
