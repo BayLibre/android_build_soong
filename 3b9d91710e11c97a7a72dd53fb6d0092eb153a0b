@@ -16,6 +16,24 @@
       "message": "What about here?",
       "revId": "3b9d91710e11c97a7a72dd53fb6d0092eb153a0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354fa5c4_2956f2f9",
+        "filename": "tests/lib.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1954600
+      },
+      "writtenOn": "2023-03-31T16:57:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24b05efc_da6d157f",
+      "revId": "3b9d91710e11c97a7a72dd53fb6d0092eb153a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
