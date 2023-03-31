@@ -46,6 +46,30 @@
       },
       "revId": "88fa7fd9f0dd401358d53801c31e35943242ae1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30b6537_bd96ca45",
+        "filename": "tests/lib.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2023-03-31T17:18:30Z",
+      "side": 1,
+      "message": "My bad. In fact, it causes the failure noted in checks because it tries to create it twice now.",
+      "parentUuid": "bffa7f19_a2d2b391",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "88fa7fd9f0dd401358d53801c31e35943242ae1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
