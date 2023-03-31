@@ -70,6 +70,30 @@
       },
       "revId": "88fa7fd9f0dd401358d53801c31e35943242ae1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b235874f_a7186981",
+        "filename": "tests/lib.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1954600
+      },
+      "writtenOn": "2023-03-31T17:19:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f30b6537_bd96ca45",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "88fa7fd9f0dd401358d53801c31e35943242ae1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
