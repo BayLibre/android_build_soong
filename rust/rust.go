@@ -420,13 +420,14 @@ type Deps struct {
 }
 
 type PathDeps struct {
-	DyLibs        RustLibraries
-	RLibs         RustLibraries
-	SharedLibs    android.Paths
-	SharedLibDeps android.Paths
-	StaticLibs    android.Paths
-	ProcMacros    RustLibraries
-	AfdoProfiles  android.Paths
+	DyLibs          RustLibraries
+	RLibs           RustLibraries
+	SharedLibs      android.Paths
+	SharedLibDeps   android.Paths
+	StaticLibs      android.Paths
+	WholeStaticLibs android.Paths
+	ProcMacros      RustLibraries
+	AfdoProfiles    android.Paths
 
 	// depFlags and depLinkFlags are rustc and linker (clang) flags.
 	depFlags     []string
@@ -506,8 +507,9 @@ type xref interface {
 }
 
 type flagExporter struct {
-	linkDirs    []string
-	linkObjects []string
+	linkDirs      []string
+	linkObjects   []string
+	sharedLibDeps android.Paths
 }
 
 func (flagExporter *flagExporter) exportLinkDirs(dirs ...string) {
@@ -518,10 +520,15 @@ func (flagExporter *flagExporter) exportLinkObjects(flags ...string) {
 	flagExporter.linkObjects = android.FirstUniqueStrings(append(flagExporter.linkObjects, flags...))
 }
 
+func (flagExporter *flagExporter) exportSharedLibDeps(paths ...android.Path) {
+	flagExporter.sharedLibDeps = android.FirstUniquePaths(append(flagExporter.sharedLibDeps, paths...))
+}
+
 func (flagExporter *flagExporter) setProvider(ctx ModuleContext) {
 	ctx.SetProvider(FlagExporterInfoProvider, FlagExporterInfo{
-		LinkDirs:    flagExporter.linkDirs,
-		LinkObjects: flagExporter.linkObjects,
+		LinkDirs:      flagExporter.linkDirs,
+		LinkObjects:   flagExporter.linkObjects,
+		SharedLibDeps: flagExporter.sharedLibDeps,
 	})
 }
 
@@ -532,9 +539,10 @@ func NewFlagExporter() *flagExporter {
 }
 
 type FlagExporterInfo struct {
-	Flags       []string
-	LinkDirs    []string // TODO: this should be android.Paths
-	LinkObjects []string // TODO: this should be android.Paths
+	Flags         []string
+	LinkDirs      []string // TODO: this should be android.Paths
+	LinkObjects   []string // TODO: this should be android.Paths
+	SharedLibDeps android.Paths
 }
 
 var FlagExporterInfoProvider = blueprint.NewProvider(FlagExporterInfo{})
@@ -1193,6 +1201,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				depPaths.linkDirs = append(depPaths.linkDirs, exportedInfo.LinkDirs...)
 				depPaths.depFlags = append(depPaths.depFlags, exportedInfo.Flags...)
 				depPaths.linkObjects = append(depPaths.linkObjects, exportedInfo.LinkObjects...)
+				depPaths.SharedLibDeps = append(depPaths.SharedLibDeps, exportedInfo.SharedLibDeps...)
 			}
 
 			if depTag == dylibDepTag || depTag == rlibDepTag || depTag == procMacroDepTag {
@@ -1236,6 +1245,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 						depPaths.depLinkFlags = append(depPaths.depLinkFlags, []string{"-Wl,--whole-archive", linkObject.Path().String(), "-Wl,--no-whole-archive"}...)
 					} else if libName, ok := libNameFromFilePath(linkObject.Path()); ok {
 						depPaths.depFlags = append(depPaths.depFlags, "-lstatic="+libName)
+						depPaths.WholeStaticLibs = append(depPaths.WholeStaticLibs, linkObject.Path())
 					} else {
 						ctx.ModuleErrorf("'%q' cannot be listed as a whole_static_library in Rust modules unless the output is prefixed by 'lib'", depName, ctx.ModuleName())
 					}
