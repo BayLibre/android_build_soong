@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3505e54_eb7de719",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-04-01T09:41:02Z",
+      "side": 1,
+      "message": "I broke all the change detector tests apparently, but everything builds locally where I have them disabled. I\u0027ll take a look next week.",
+      "revId": "04a8aab4f289078431464982b17d7b1769cb1557",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
