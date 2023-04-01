@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b64cb99_0662c9c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-01T03:02:30Z",
+      "side": 1,
+      "message": "A non blocking comment:\nI think we can reduce the total number of build actions if we extract the compiled class files from the full .jar file instead of getting the srcjar and recompiling the relevant stub .java files (fewer metalava and javac)",
+      "revId": "10fc27982d54c6151f15d66a95c99bf342710b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a3f30b_ed2bb92f",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1744,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-01T03:02:30Z",
+      "side": 1,
+      "message": "Can you document this function describing what and why these actions are run?",
+      "range": {
+        "startLine": 1744,
+        "startChar": 22,
+        "endLine": 1744,
+        "endChar": 36
+      },
+      "revId": "10fc27982d54c6151f15d66a95c99bf342710b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "710e8e9f_e29261b6",
+        "filename": "java/java_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2253,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-01T03:02:30Z",
+      "side": 1,
+      "message": "I think this tests implementation details and not behavior (go/tott/571)\n\n(Which is fine, there are existing patterns like this in soong tests today. But wanted to point it out)",
+      "range": {
+        "startLine": 2253,
+        "startChar": 1,
+        "endLine": 2253,
+        "endChar": 162
+      },
+      "revId": "10fc27982d54c6151f15d66a95c99bf342710b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
