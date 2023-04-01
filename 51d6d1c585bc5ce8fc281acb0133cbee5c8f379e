@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7feea1ac_4acb0c54",
+        "filename": "rust/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-04-01T09:27:24Z",
+      "side": 1,
+      "message": "Was this necessary? Clippy doesn\u0027t invoke the linker.",
+      "revId": "51d6d1c585bc5ce8fc281acb0133cbee5c8f379e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
