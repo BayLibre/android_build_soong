@@ -543,6 +543,7 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	if library.rlib() || library.dylib() {
 		library.flagExporter.exportLinkDirs(deps.linkDirs...)
 		library.flagExporter.exportLinkObjects(deps.linkObjects...)
+		library.flagExporter.exportLibDeps(deps.LibDeps...)
 	}
 
 	if library.static() || library.shared() {
