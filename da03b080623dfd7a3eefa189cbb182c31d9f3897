@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "733e6bfc_cb5cc070",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-03T23:22:15Z",
+      "side": 1,
+      "message": "This was previously reverted in aosp/2510617 due to b/275666961, which spawned b/276416537 and b/276416485 that Cole and I are working on now. Given that the root causes are still not fixed, I believe this will cause the test (b/275666961) to fail again.",
+      "revId": "da03b080623dfd7a3eefa189cbb182c31d9f3897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
