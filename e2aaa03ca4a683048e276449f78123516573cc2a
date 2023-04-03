@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d8baa59_34282a34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-04-03T18:35:28Z",
+      "side": 1,
+      "message": "Do you have a brief description of what the intermediate files created are supposed to be and why they\u0027re supposed to be compatible with Rust\u0027s compilation process?\n\nIf you can explain how you expect it to work, perhaps I can help debug what\u0027s happening in the interaction with the `cxx` crate. (I might be able to figure out your intent from the code, but there aren\u0027t a ton of comments.)",
+      "revId": "e2aaa03ca4a683048e276449f78123516573cc2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
