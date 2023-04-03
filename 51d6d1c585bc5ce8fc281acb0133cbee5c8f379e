@@ -16,6 +16,24 @@
       "message": "Was this necessary? Clippy doesn\u0027t invoke the linker.",
       "revId": "51d6d1c585bc5ce8fc281acb0133cbee5c8f379e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc0c90c_dcbc0669",
+        "filename": "rust/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-03T13:36:30Z",
+      "side": 1,
+      "message": "Maybe not. I was just adding the new OrderOnly to wherever already had Implicits. `SharedLibDeps` is already in Implicits, so I don\u0027t expect that this change will actually have a real impact on the build.\n\nThis change was created because we ran into an issue using the Bazel rules in [mixed-build mode](go/roboleaf-mixed-builds) where the TOC was generated without a dependency on the shared lib, but the rust build rule expected the lib to be present if the TOC is. In Soong, TOC are generated directly from the shared lib, so this issue wasn\u0027t being hit.",
+      "parentUuid": "7feea1ac_4acb0c54",
+      "revId": "51d6d1c585bc5ce8fc281acb0133cbee5c8f379e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
