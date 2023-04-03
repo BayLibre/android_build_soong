@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5730b62d_889aab51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-03T18:20:54Z",
+      "side": 1,
+      "message": "Do you mean that you prefer the previous implementation of this CL (with sed)?",
+      "parentUuid": "0b64cb99_0662c9c0",
+      "revId": "10fc27982d54c6151f15d66a95c99bf342710b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45a3f30b_ed2bb92f",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-04-01T03:02:30Z",
       "side": 1,
       "message": "Can you document this function describing what and why these actions are run?",
+      "range": {
+        "startLine": 1744,
+        "startChar": 22,
+        "endLine": 1744,
+        "endChar": 36
+      },
+      "revId": "10fc27982d54c6151f15d66a95c99bf342710b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fab06934_a03e0c39",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1744,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-03T18:20:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45a3f30b_ed2bb92f",
       "range": {
         "startLine": 1744,
         "startChar": 22,
