@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d42213b_fa952315",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-03T18:26:18Z",
+      "side": 1,
+      "message": "I was thinking of something like this FR b/276495719, followed by b/276495719#comment6. \n\nThe difference is that instead of using (metalava+javac+sed) in ninja to determine the list of classes, that list is provided by metalava directly.",
+      "parentUuid": "5730b62d_889aab51",
+      "revId": "10fc27982d54c6151f15d66a95c99bf342710b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45a3f30b_ed2bb92f",
