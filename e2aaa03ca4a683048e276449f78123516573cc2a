@@ -16,6 +16,24 @@
       "message": "Do you have a brief description of what the intermediate files created are supposed to be and why they\u0027re supposed to be compatible with Rust\u0027s compilation process?\n\nIf you can explain how you expect it to work, perhaps I can help debug what\u0027s happening in the interaction with the `cxx` crate. (I might be able to figure out your intent from the code, but there aren\u0027t a ton of comments.)",
       "revId": "e2aaa03ca4a683048e276449f78123516573cc2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc126e7c_5df8f439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-04-03T21:24:29Z",
+      "side": 1,
+      "message": "Sure. The main intermediate file is a response file (a file with a list of command line arguments for the linker). The intent is that this response file contains all of the linker arguments needed to produce the crate from the Rust perspective. That includes references to the object files produced by the Rust compiler (which the script packages into a pair of archive files to ensure a fixed list of input files in case the build system requires that), references to dependent rlibs and dylibs, the version script if needed, and references to system libraries (only in host builds; this is turned off for device builds with `-Z link-native-libraries\u003dno`).\n\nThe other intermediate files are the input files needed for those arguments (i.e. the two archives and the version script).\n\nWhen producing the command line for the link phase, the build system needs to include a reference to the response file and add any arguments needed from the C++ perspective (i.e. any dependent C++ libraries).\n\nI figured out what was going on with the failing Bluetooth target. This issue was that the binary cannot be linked without `--gc-sections`. This argument is passed from rustc to the linker (which is why it links now), but is not included by the script in the response file. I think my script is doing the right thing: `--gc-sections` is not generally *needed* to link Rust code. But as long as we have these `--gc-sections` dependencies in our code, I think it would make sense to pass `--gc-sections` explicitly for host builds. I\u0027ll change my CL to do that.",
+      "parentUuid": "1d8baa59_34282a34",
+      "revId": "e2aaa03ca4a683048e276449f78123516573cc2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
