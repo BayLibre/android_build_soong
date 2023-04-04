@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0027ae_4c75fcfd",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-04T01:18:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b7bf6101_1b79e34c",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 14
+      },
+      "revId": "61ba49e5d8a18bfc7db1a975be88c1f640270e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4230b681_9d29fc73",

@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9606c97_b33d8587",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-04T01:18:49Z",
+      "side": 1,
+      "message": "As in, why don\u0027t we add DefaultTrue to this before running?\nI don\u0027t see any examples of soong reading in from module-info.json (I assume this is the fastest way of identifying a module\u0027s directory, as it\u0027s what pathmod does.)\n\nI think that\u0027s a bit much for this CL - how about a TODO and a fast-follow up? since this is a CI-only flag, we should have some kind of vetting before adding it so I don\u0027t think the temporary lack will harm anyone.",
+      "parentUuid": "6231e3af_5b63fce7",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 125
+      },
+      "revId": "59777f5cafe5618fc5063fffd59ca0f5a5982bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c541d097_224ef7fb",
         "filename": "bp2build/build_conversion_test.go",
         "patchSetId": 17
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-30T14:19:17Z",
       "side": 1,
       "message": "I\u0027d expect to see an what\u0027s force-enabled and an `expectedError` in this test case. Or is this issue that we\u0027re still not sure what the rootcause is for the failure?",
+      "range": {
+        "startLine": 1254,
+        "startChar": 2,
+        "endLine": 1254,
+        "endChar": 4
+      },
+      "revId": "59777f5cafe5618fc5063fffd59ca0f5a5982bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8388fc31_3bf2e25f",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-04T01:18:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c541d097_224ef7fb",
       "range": {
         "startLine": 1254,
         "startChar": 2,
@@ -60,6 +108,30 @@
       "writtenOn": "2023-03-30T14:19:17Z",
       "side": 1,
       "message": "this is where the allowlist is currently constructed -- if we modify the `Bp2BuildAllowlist` to contain the force-allowed modules it would be straightforward to change the test cases struct and update this test to fully test the logic.",
+      "range": {
+        "startLine": 1272,
+        "startChar": 23,
+        "endLine": 1272,
+        "endChar": 43
+      },
+      "revId": "59777f5cafe5618fc5063fffd59ca0f5a5982bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d76a48e_feaae784",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-04T01:18:49Z",
+      "side": 1,
+      "message": "PTAL.\nSlightly different than what you wrote above but I think we aren\u0027t too far off.",
+      "parentUuid": "0448a7e2_981197b3",
       "range": {
         "startLine": 1272,
         "startChar": 23,
