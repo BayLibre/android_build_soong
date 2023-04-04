@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7de2f6e_d52d1263",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-04T23:22:33Z",
+      "side": 1,
+      "message": "Can the implementation be updated so that the hardcoded list can be mocked for testing? \n\ne.g. (pseudocode)\n```\nfixture.ModifyConfig(config.SetApiLibraries([]string{\"foo\"})\n```\n\nThe benefit is that the unit tests can setup their own mocks for libraries that contribute to an api surface, and not rely on the hardcoded one",
+      "range": {
+        "startLine": 129,
+        "startChar": 60,
+        "endLine": 129,
+        "endChar": 82
+      },
+      "revId": "b45cfafe0f7ac88195ebc873b70a617c8fa44133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
