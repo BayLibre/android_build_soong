@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2391dcd3_80c3dd78",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-04T13:45:26Z",
+      "side": 0,
+      "message": "Do this and `fake-framework` below no longer build with this change?",
+      "range": {
+        "startLine": 691,
+        "startChar": 3,
+        "endLine": 691,
+        "endChar": 27
+      },
+      "revId": "43a2a9a5c65d537de9863ebf64eb0f4168d06238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be615fdb_6791d77d",
+        "filename": "java/java.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 2912,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-04T13:45:26Z",
+      "side": 0,
+      "message": "woo!",
+      "range": {
+        "startLine": 2910,
+        "startChar": 0,
+        "endLine": 2912,
+        "endChar": 0
+      },
+      "revId": "43a2a9a5c65d537de9863ebf64eb0f4168d06238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

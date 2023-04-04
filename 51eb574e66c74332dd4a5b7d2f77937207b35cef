@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "468c9516_d8875389",
+        "filename": "java/java.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 3074,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-04T13:45:26Z",
+      "side": 1,
+      "message": "optional: there is also `proptools.StringPtr(\"none\")` if you want to keep it inline",
+      "range": {
+        "startLine": 3074,
+        "startChar": 46,
+        "endLine": 3074,
+        "endChar": 50
+      },
+      "revId": "51eb574e66c74332dd4a5b7d2f77937207b35cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
