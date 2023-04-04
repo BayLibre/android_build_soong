@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ec3163_efb916fa",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-04T23:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c34755e1_0b275fcf",
+      "range": {
+        "startLine": 1532,
+        "startChar": 22,
+        "endLine": 1532,
+        "endChar": 40
+      },
+      "revId": "e2913c30a14becaca7746fb7449f4130be6338c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "435d0945_1df63960",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-04T22:38:30Z",
       "side": 1,
       "message": "nit: Leave a comment on why this iteration is necessary.",
+      "range": {
+        "startLine": 1835,
+        "startChar": 1,
+        "endLine": 1840,
+        "endChar": 0
+      },
+      "revId": "e2913c30a14becaca7746fb7449f4130be6338c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "390d801e_32857fdc",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1840,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-04T23:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "435d0945_1df63960",
       "range": {
         "startLine": 1835,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "704d0d58_22b6074a",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2050,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-04T23:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "813667c4_a9f0b806",
+      "range": {
+        "startLine": 2050,
+        "startChar": 5,
+        "endLine": 2050,
+        "endChar": 23
+      },
+      "revId": "e2913c30a14becaca7746fb7449f4130be6338c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56a01f7d_c835a9b3",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-04-04T22:38:30Z",
       "side": 1,
       "message": "Can the list used to determine `contributesToApiSurface` be mocked for testing?",
+      "range": {
+        "startLine": 36,
+        "startChar": 75,
+        "endLine": 36,
+        "endChar": 98
+      },
+      "revId": "e2913c30a14becaca7746fb7449f4130be6338c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a25dd58_39a0057a",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-04T23:10:49Z",
+      "side": 1,
+      "message": "The list here is used to generate some modules that these modules have dependencies on (e.g. `\u003cMODULE_NAME\u003e.api.public.latest`, `\u003cMODULE_NAME\u003e-removed.api.public.latest`). `contributesToApiSurface` is solely determined based on the name of the module.",
+      "parentUuid": "56a01f7d_c835a9b3",
       "range": {
         "startLine": 36,
         "startChar": 75,
