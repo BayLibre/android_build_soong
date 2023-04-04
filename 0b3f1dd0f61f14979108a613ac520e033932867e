@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8245a750_a6a57cd2",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1615,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-04T22:29:58Z",
+      "side": 1,
+      "message": "why not extend it? That way line each `JavaApiLibraryDepsInfo` is a `JavaInfo` and line 1824 and 1903 becomes simpler.",
+      "range": {
+        "startLine": 1615,
+        "startChar": 2,
+        "endLine": 1615,
+        "endChar": 21
+      },
+      "revId": "0b3f1dd0f61f14979108a613ac520e033932867e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8525be31_ff336724",
+        "filename": "java/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-04T22:29:58Z",
+      "side": 1,
+      "message": "Since you have changed the type of JavaApiLibraryDepsInfo, is this still needed?",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 0
+      },
+      "revId": "0b3f1dd0f61f14979108a613ac520e033932867e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
