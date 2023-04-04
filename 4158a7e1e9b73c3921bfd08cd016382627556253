@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd528dd6_4cc103ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-04T22:18:41Z",
+      "side": 1,
+      "message": "We can still submit this if you want, but I think aosp/2523218 is the real solution, so leaving this comment to block autosubmit.",
+      "revId": "4158a7e1e9b73c3921bfd08cd016382627556253",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
