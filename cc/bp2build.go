@@ -226,7 +226,7 @@ func bp2buildParseStaticOrSharedProps(ctx android.BazelConversionPathContext, mo
 	attrs := staticOrSharedAttributes{}
 
 	setAttrs := func(axis bazel.ConfigurationAxis, config string, props StaticOrSharedProperties) {
-		attrs.Copts.SetSelectValue(axis, config, parseCommandLineFlags(props.Cflags, filterOutStdFlag))
+		attrs.Copts.SetSelectValue(axis, config, parseCommandLineFlags(props.Cflags, filterOutStdFlag, filterOutHiddenVisibilityFlag))
 		attrs.Srcs.SetSelectValue(axis, config, android.BazelLabelForModuleSrc(ctx, props.Srcs))
 		attrs.System_dynamic_deps.SetSelectValue(axis, config, bazelLabelForSharedDeps(ctx, props.System_shared_libs))
 
@@ -430,6 +430,12 @@ type filterOutFn func(string) bool
 
 func filterOutStdFlag(flag string) bool {
 	return strings.HasPrefix(flag, "-std=")
+}
+
+// filterOutHiddenVisibilityFlag exists to remove `-fvisibility=hidden` from
+// `copts` because it will be added as a toolchain feature instead.
+func filterOutHiddenVisibilityFlag(flag string) bool {
+	return flag == config.VisibilityHiddenFlag
 }
 
 func filterOutClangUnknownCflags(flag string) bool {
@@ -1547,3 +1553,12 @@ func bp2buildLtoFeatures(ctx android.BazelConversionPathContext, m *Module) baze
 	}
 	return ltoStringFeatures
 }
+
+//func bp2buildHiddenVisibilityFlagToFeature(ctx android.BazelConversionPathContext, m *Module) bazel.StringListAttribute {
+//	feature := bazel.StringAttribute{}
+//	convertToFeature := func(axis bazel.ConfigurationAxis, config string, props StaticOrSharedProperties) {
+//
+//	}
+//
+//	bp2buildPropParseHelper(ctx, module, &StaticOrSharedProperties{})
+//}

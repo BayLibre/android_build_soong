@@ -315,6 +315,8 @@ var (
 	}
 
 	VersionScriptFlagPrefix = "-Wl,--version-script,"
+
+	VisibilityHiddenFlag = "-fvisibility=hidden"
 )
 
 // BazelCcToolchainVars generates bzl file content containing variables for
