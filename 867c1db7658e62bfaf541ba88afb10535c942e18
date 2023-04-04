@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1215ab62_3a44e28a",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-04T13:20:10Z",
+      "side": 1,
+      "message": "can we add system/timezone/testdata as well?",
+      "range": {
+        "startLine": 367,
+        "startChar": 27,
+        "endLine": 367,
+        "endChar": 29
+      },
+      "revId": "867c1db7658e62bfaf541ba88afb10535c942e18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
