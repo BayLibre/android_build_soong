@@ -26,7 +26,9 @@ var archVariants = map[ArchType][]string{
 		"armv8-a-branchprot",
 		"armv8-2a",
 		"armv8-2a-dotprod",
+		"armv8-2a-ext",
 		"armv9-a",
+		"armv9-a-ext",
 	},
 	X86: {
 		"amberlake",
@@ -97,6 +99,7 @@ var cpuVariants = map[ArchType][]string{
 		"kryo385",
 		"exynos-m1",
 		"exynos-m2",
+		"cortex-a510",
 	},
 	X86:    {},
 	X86_64: {},
@@ -108,6 +111,8 @@ var archFeatures = map[ArchType][]string{
 	},
 	Arm64: {
 		"dotprod",
+		"crc",
+		"crypto",
 	},
 	X86: {
 		"ssse3",
@@ -150,8 +155,18 @@ var androidArchFeatureMap = map[ArchType]map[string][]string{
 		"armv8-2a-dotprod": {
 			"dotprod",
 		},
+		"armv8-2a-ext": {
+			"dotprod",
+			"crc",
+			"crypto",
+		},
 		"armv9-a": {
 			"dotprod",
+		},
+		"armv9-a-ext": {
+			"dotprod",
+			"crc",
+			"crypto",
 		},
 	},
 	X86: {

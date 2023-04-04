@@ -41,8 +41,16 @@ var (
 		"armv8-2a-dotprod": []string{
 			"-march=armv8.2-a+dotprod",
 		},
+		"armv8-2a-ext": []string{
+			"-march=armv8.2-a+crc+crypto+dotprod",
+		},
 		"armv9-a": []string{
 			"-march=armv8.2-a+dotprod",
+			"-mbranch-protection=standard",
+			"-fno-stack-protector",
+		},
+		"armv9-a-ext": []string{
+			"-march=armv9-a+crc+crypto+dotprod+nosve",
 			"-mbranch-protection=standard",
 			"-fno-stack-protector",
 		},
@@ -73,6 +81,9 @@ var (
 			// Use the cortex-a55 since it is similar to the little
 			// core (cortex-a55) and is sensitive to ordering.
 			"-mcpu=cortex-a55",
+		},
+		"cortex-a510": []string{
+			"-mcpu=cortex-a510",
 		},
 		"kryo": []string{
 			"-mcpu=kryo",
@@ -119,10 +130,13 @@ func init() {
 	exportedVars.ExportStringListStaticVariable("Arm64Armv8ABranchProtCflags", arm64ArchVariantCflags["armv8-a-branchprot"])
 	exportedVars.ExportStringListStaticVariable("Arm64Armv82ACflags", arm64ArchVariantCflags["armv8-2a"])
 	exportedVars.ExportStringListStaticVariable("Arm64Armv82ADotprodCflags", arm64ArchVariantCflags["armv8-2a-dotprod"])
+	exportedVars.ExportStringListStaticVariable("Arm64Armv82AExtCflags", arm64ArchVariantCflags["armv8-2a-ext"])
 	exportedVars.ExportStringListStaticVariable("Arm64Armv9ACflags", arm64ArchVariantCflags["armv9-a"])
+	exportedVars.ExportStringListStaticVariable("Arm64Armv9AExtCflags", arm64ArchVariantCflags["armv9-a-ext"])
 
 	exportedVars.ExportStringListStaticVariable("Arm64CortexA53Cflags", arm64CpuVariantCflags["cortex-a53"])
 	exportedVars.ExportStringListStaticVariable("Arm64CortexA55Cflags", arm64CpuVariantCflags["cortex-a55"])
+	exportedVars.ExportStringListStaticVariable("Arm64CortexA510Cflags", arm64CpuVariantCflags["cortex-a510"])
 	exportedVars.ExportStringListStaticVariable("Arm64KryoCflags", arm64CpuVariantCflags["kryo"])
 	exportedVars.ExportStringListStaticVariable("Arm64ExynosM1Cflags", arm64CpuVariantCflags["exynos-m1"])
 	exportedVars.ExportStringListStaticVariable("Arm64ExynosM2Cflags", arm64CpuVariantCflags["exynos-m2"])
@@ -136,20 +150,23 @@ var (
 		"armv8-a-branchprot": "${config.Arm64Armv8ABranchProtCflags}",
 		"armv8-2a":           "${config.Arm64Armv82ACflags}",
 		"armv8-2a-dotprod":   "${config.Arm64Armv82ADotprodCflags}",
+		"armv8-2a-ext":       "${config.Arm64Armv82AExtCflags}",
 		"armv9-a":            "${config.Arm64Armv9ACflags}",
+		"armv9-a-ext":        "${config.Arm64Armv9AExtCflags}",
 	}
 
 	arm64CpuVariantCflagsVar = map[string]string{
-		"cortex-a53": "${config.Arm64CortexA53Cflags}",
-		"cortex-a55": "${config.Arm64CortexA55Cflags}",
-		"cortex-a72": "${config.Arm64CortexA53Cflags}",
-		"cortex-a73": "${config.Arm64CortexA53Cflags}",
-		"cortex-a75": "${config.Arm64CortexA55Cflags}",
-		"cortex-a76": "${config.Arm64CortexA55Cflags}",
-		"kryo":       "${config.Arm64KryoCflags}",
-		"kryo385":    "${config.Arm64CortexA53Cflags}",
-		"exynos-m1":  "${config.Arm64ExynosM1Cflags}",
-		"exynos-m2":  "${config.Arm64ExynosM2Cflags}",
+		"cortex-a53":  "${config.Arm64CortexA53Cflags}",
+		"cortex-a55":  "${config.Arm64CortexA55Cflags}",
+		"cortex-a510": "${config.Arm64CortexA510Cflags}",
+		"cortex-a72":  "${config.Arm64CortexA53Cflags}",
+		"cortex-a73":  "${config.Arm64CortexA53Cflags}",
+		"cortex-a75":  "${config.Arm64CortexA55Cflags}",
+		"cortex-a76":  "${config.Arm64CortexA55Cflags}",
+		"kryo":        "${config.Arm64KryoCflags}",
+		"kryo385":     "${config.Arm64CortexA53Cflags}",
+		"exynos-m1":   "${config.Arm64ExynosM1Cflags}",
+		"exynos-m2":   "${config.Arm64ExynosM2Cflags}",
 	}
 
 	arm64CpuVariantLdflags = map[string]string{
@@ -213,8 +230,10 @@ func arm64ToolchainFactory(arch android.Arch) Toolchain {
 	case "armv8-a-branchprot":
 	case "armv8-2a":
 	case "armv8-2a-dotprod":
+	case "armv8-2a-ext":
 	case "armv9-a":
-		// Nothing extra for armv8-a/armv8-2a
+	case "armv9-a-ext":
+		// Nothing extra for armv8-a/armv8-2a/armv9-a
 	default:
 		panic(fmt.Sprintf("Unknown ARM architecture version: %q", arch.ArchVariant))
 	}
