@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a811566b_27386d33",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-04T00:08:18Z",
+      "side": 1,
+      "message": "I think this is incomplete. Since java api surfaces are heirarchical, the api_files for system (e.g.) should include the api file for public _and_ system",
+      "range": {
+        "startLine": 1795,
+        "startChar": 7,
+        "endLine": 1795,
+        "endChar": 16
+      },
+      "revId": "4859a17512425251c91cca39e0aae04e6443b7a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f38d3a_c7942f44",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-04T00:08:18Z",
+      "side": 1,
+      "message": "nit: Use the dynamically generated `.api.contribution` java_api_contribution modules instead?",
+      "range": {
+        "startLine": 1793,
+        "startChar": 1,
+        "endLine": 1795,
+        "endChar": 81
+      },
+      "revId": "4859a17512425251c91cca39e0aae04e6443b7a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a742e4a_6e96f49a",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2000,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-04T00:08:18Z",
+      "side": 1,
+      "message": "nit: Always create stubs library (can be helpful for debugging)",
+      "range": {
+        "startLine": 2000,
+        "startChar": 2,
+        "endLine": 2000,
+        "endChar": 38
+      },
+      "revId": "4859a17512425251c91cca39e0aae04e6443b7a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
