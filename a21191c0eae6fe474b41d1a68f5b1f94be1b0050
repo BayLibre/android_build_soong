@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5fbc7f2_67f72ce5",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-04T23:55:21Z",
+      "side": 1,
+      "message": "nit: List of Api libraries that contribute to an Android API surface.",
+      "range": {
+        "startLine": 282,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 51
+      },
+      "revId": "a21191c0eae6fe474b41d1a68f5b1f94be1b0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4697182_2bf26dd0",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-04T23:55:21Z",
+      "side": 1,
+      "message": "Is the purpose of this function to convert a list of api libraries to a map of api libraries?\n\nIf so, can `api_libraries` be a map instead? (Set and Get can still accept a list). It prevents the need to run `module.updateApiListList` per java_sdk_library. This should be an idempotent action anyways.",
+      "range": {
+        "startLine": 1536,
+        "startChar": 26,
+        "endLine": 1536,
+        "endChar": 42
+      },
+      "revId": "a21191c0eae6fe474b41d1a68f5b1f94be1b0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
