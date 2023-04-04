@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7980a8bc_dafc06fa",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-04-04T14:38:08Z",
+      "side": 0,
+      "message": "CtsPkgInstallerConstants reads the private APIs, fake-framework has sdk_version\u003d\"core_platform\". \nSince they had been building before we could probably switch them to a less restrictive sdk_version, but since we don\u0027t really need them to build in the short term I\u0027m punting on this for now.\nI\u0027ve moved the modules to the exclude list due to unsupported API scope, to make what\u0027s happening clearer",
+      "parentUuid": "2391dcd3_80c3dd78",
+      "range": {
+        "startLine": 691,
+        "startChar": 3,
+        "endLine": 691,
+        "endChar": 27
+      },
+      "revId": "43a2a9a5c65d537de9863ebf64eb0f4168d06238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "be615fdb_6791d77d",
         "filename": "java/java.go",
         "patchSetId": 23
