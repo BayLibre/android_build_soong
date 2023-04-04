@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05bf863_73e47f49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-04T22:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ea6d381_48d263be",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "4859a17512425251c91cca39e0aae04e6443b7a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a811566b_27386d33",
@@ -70,6 +94,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5b0c49_95029bb6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-04T22:24:21Z",
+      "side": 1,
+      "message": "Thanks for catching this. I have modified the api files props.",
+      "parentUuid": "a811566b_27386d33",
+      "range": {
+        "startLine": 1795,
+        "startChar": 7,
+        "endLine": 1795,
+        "endChar": 16
+      },
+      "revId": "4859a17512425251c91cca39e0aae04e6443b7a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6237fa05_60f95a8a",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-04T22:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21f38d3a_c7942f44",
+      "range": {
+        "startLine": 1793,
+        "startChar": 1,
+        "endLine": 1795,
+        "endChar": 81
+      },
+      "revId": "4859a17512425251c91cca39e0aae04e6443b7a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a742e4a_6e96f49a",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-04-04T00:08:18Z",
       "side": 1,
       "message": "nit: Always create stubs library (can be helpful for debugging)",
+      "range": {
+        "startLine": 2000,
+        "startChar": 2,
+        "endLine": 2000,
+        "endChar": 38
+      },
+      "revId": "4859a17512425251c91cca39e0aae04e6443b7a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9d4d20_448565f5",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2000,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-04T22:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a742e4a_6e96f49a",
       "range": {
         "startLine": 2000,
         "startChar": 2,
