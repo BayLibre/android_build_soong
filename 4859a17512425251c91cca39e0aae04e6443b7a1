@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ea6d381_48d263be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-04T00:21:04Z",
+      "side": 1,
+      "message": "I believe this will not build any of the .from-text stub libraries per (java_sdk_library, api_scope) if your checkout does not have aosp/2516458. Would it be possible to run `m --build-from-text-stub \u003cstub_jar_from_txt\u003e` explicitly?",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "4859a17512425251c91cca39e0aae04e6443b7a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a811566b_27386d33",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
