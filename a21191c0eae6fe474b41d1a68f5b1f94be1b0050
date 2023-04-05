@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76e496ef_d7c480b4",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-05T17:41:32Z",
+      "side": 1,
+      "message": "Testing is one use case I can think of right now.\n\nI think it also makes the code simpler if `config.apiLibraries` is `apiLibGenAllowlist` by default, which could be mocked out if necessary for testing.",
+      "parentUuid": "ac330bff_51529017",
+      "range": {
+        "startLine": 282,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 51
+      },
+      "revId": "a21191c0eae6fe474b41d1a68f5b1f94be1b0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52924d41_9ec81a2d",
         "filename": "java/sdk_library.go",
         "patchSetId": 4
