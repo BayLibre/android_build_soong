@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ab3d8fc6_a5d741a4",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-05T16:10:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e6e9014_c4dc340f",
+      "range": {
+        "startLine": 132,
+        "startChar": 25,
+        "endLine": 132,
+        "endChar": 29
+      },
+      "revId": "e55678f4d8fed8b8dc354a329507af754a8ebc47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "77c9980b_f77545f9",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2023-04-05T12:25:00Z",
       "side": 1,
       "message": "Should we just write the content directly at this point rather than checking if it has changed, given that we just removed the output file?",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "e55678f4d8fed8b8dc354a329507af754a8ebc47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e191d05f_d027f299",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-05T16:10:54Z",
+      "side": 1,
+      "message": "We only remove the file if it\u0027s a symlink, if it\u0027s a regular file it stays. So I think checking if it\u0027s changed still has benefits if bp2build reruns and doesn\u0027t change this file, or if you touch the handcrafted file without changing it.",
+      "parentUuid": "ffdfbd39_2aa2ff49",
       "range": {
         "startLine": 151,
         "startChar": 3,
