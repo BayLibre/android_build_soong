@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac330bff_51529017",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-05T17:34:32Z",
+      "side": 1,
+      "message": "Okay, do you believe that there can be other use cases of `config.apiLibraries` other than testing, or should this be limited only for testing?",
+      "parentUuid": "d4812b4a_ec4bd14a",
+      "range": {
+        "startLine": 282,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 51
+      },
+      "revId": "a21191c0eae6fe474b41d1a68f5b1f94be1b0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52924d41_9ec81a2d",
         "filename": "java/sdk_library.go",
         "patchSetId": 4
