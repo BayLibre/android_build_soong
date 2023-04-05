@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffdfbd39_2aa2ff49",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-05T12:25:00Z",
+      "side": 1,
+      "message": "Should we just write the content directly at this point rather than checking if it has changed, given that we just removed the output file?",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 4
+      },
+      "revId": "e55678f4d8fed8b8dc354a329507af754a8ebc47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
