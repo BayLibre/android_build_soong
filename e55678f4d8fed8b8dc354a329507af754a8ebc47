@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e6e9014_c4dc340f",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-05T12:34:11Z",
+      "side": 1,
+      "message": "to?",
+      "range": {
+        "startLine": 132,
+        "startChar": 25,
+        "endLine": 132,
+        "endChar": 29
+      },
+      "revId": "e55678f4d8fed8b8dc354a329507af754a8ebc47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c9980b_f77545f9",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-05T12:34:11Z",
+      "side": 1,
+      "message": "yeeesh.",
+      "range": {
+        "startLine": 136,
+        "startChar": 28,
+        "endLine": 138,
+        "endChar": 14
+      },
+      "revId": "e55678f4d8fed8b8dc354a329507af754a8ebc47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffdfbd39_2aa2ff49",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 1
