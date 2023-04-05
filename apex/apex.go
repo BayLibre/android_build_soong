@@ -704,6 +704,7 @@ var (
 	testForTag      = &dependencyTag{name: "test for"}
 	testTag         = &dependencyTag{name: "test", payload: true}
 	shBinaryTag     = &dependencyTag{name: "shBinary", payload: true}
+	sepolicyTag     = &dependencyTag{name: "sepolicy"}
 )
 
 // TODO(jiyong): shorten this function signature
@@ -877,6 +878,10 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddFarVariationDependencies(commonVariation, javaLibTag, a.properties.Java_libs...)
 	ctx.AddFarVariationDependencies(commonVariation, fsTag, a.properties.Filesystems...)
 	ctx.AddFarVariationDependencies(commonVariation, compatConfigTag, a.properties.Compat_configs...)
+
+	if ctx.OtherModuleExists("precompiled_sepolicy") {
+		ctx.AddFarVariationDependencies(nil, sepolicyTag, "precompiled_sepolicy")
+	}
 }
 
 // DepsMutator for the overridden properties.
