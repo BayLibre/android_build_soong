@@ -927,9 +927,11 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		a.SkipInstall()
 	}
 
+	installDeps := a.compatSymlinks.Paths()
+	installDeps = append(installDeps, runApexSepolicyTests(ctx, unsignedOutputFile.OutputPath)...)
 	// Install to $OUT/soong/{target,host}/.../apex.
 	a.installedFile = ctx.InstallFile(a.installDir, a.Name()+installSuffix, a.outputFile,
-		a.compatSymlinks.Paths()...)
+		installDeps...)
 
 	// installed-files.txt is dist'ed
 	a.installedFilesFile = a.buildInstalledFilesFile(ctx, a.outputFile, imageDir)
@@ -1171,4 +1173,28 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext) android.Outp
 	builder.Build("generateFsConfig", fmt.Sprintf("Generating canned fs config for %s", a.BaseModuleName()))
 
 	return cannedFsConfig.OutputPath
+}
+
+// Runs apex_sepolicy_tests
+//
+// $ deapexer --dir -Z {apex_file} > {file_contexts}
+// $ apex_sepolicy_tests -f {file_contexts}
+func runApexSepolicyTests(ctx android.ModuleContext, apexFile android.OutputPath) android.Paths {
+	filecontext := android.PathForModuleOut(ctx, "deapexer.list.Z.tmp")
+	timestamp := android.PathForModuleOut(ctx, "sepolicy_tests.timestamp")
+
+	builder := android.NewRuleBuilder(pctx, ctx)
+	builder.Temporary(filecontext)
+	// Get the entries in the apex with security contexts
+	builder.Command().
+		BuiltTool("deapexer").
+		Flag("--debugfs_path").BuiltTool("debugfs_static").
+		Flag("list").Flag("--dir").Flag("-Z").
+		Input(apexFile).Text(">").Output(filecontext)
+	builder.Command().
+		BuiltTool("apex_sepolicy_tests").
+		Flag("-f").Input(filecontext)
+	builder.Command().Text("touch").Output(timestamp)
+	builder.Build("apex_sepolicy_tests", "Runs apex_sepolicy_tests")
+	return android.Paths{timestamp}
 }
