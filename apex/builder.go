@@ -927,9 +927,11 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		a.SkipInstall()
 	}
 
+	installDeps := a.compatSymlinks.Paths()
+	installDeps = append(installDeps, runApexSepolicyTests(ctx, unsignedOutputFile.OutputPath)...)
 	// Install to $OUT/soong/{target,host}/.../apex.
 	a.installedFile = ctx.InstallFile(a.installDir, a.Name()+installSuffix, a.outputFile,
-		a.compatSymlinks.Paths()...)
+		installDeps...)
 
 	// installed-files.txt is dist'ed
 	a.installedFilesFile = a.buildInstalledFilesFile(ctx, a.outputFile, imageDir)
@@ -1171,4 +1173,50 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext) android.Outp
 	builder.Build("generateFsConfig", fmt.Sprintf("Generating canned fs config for %s", a.BaseModuleName()))
 
 	return cannedFsConfig.OutputPath
+}
+
+// Runs apex_sepolicy_tests against precompile_sepolicy.
+//
+// $ deapexer --dir -Z {apexfile} > {filecontexts}
+// $ apex_sepolicy_tests -f {filecontexts} -p {policy}
+func runApexSepolicyTests(ctx android.ModuleContext, apexFile android.OutputPath) android.Paths {
+	var policyFile android.Path
+	ctx.VisitDirectDepsWithTag(sepolicyTag, func(dep android.Module) {
+		outputProducer, ok := dep.(android.OutputFileProducer)
+		if !ok {
+			ctx.OtherModuleErrorf(dep, "should be OutputFileProducer")
+			return
+		}
+		files, err := outputProducer.OutputFiles("")
+		if err != nil {
+			ctx.OtherModuleErrorf(dep, "OutputFiles(): %v", err)
+			return
+		}
+		if len(files) != 1 {
+			ctx.OtherModuleErrorf(dep, "len(OutputFiles()) != 1: %v", files)
+			return
+		}
+		policyFile = files[0]
+	})
+	// Do not run tests if there's no "precompilec_sepolicy"
+	if policyFile == nil {
+		return nil
+	}
+	filecontext := android.PathForModuleOut(ctx, "deapexer.list.Z.tmp")
+	timestamp := android.PathForModuleOut(ctx, "sepolicy_tests.timestamp")
+
+	builder := android.NewRuleBuilder(pctx, ctx)
+	builder.Temporary(filecontext)
+	builder.Command().
+		BuiltTool("deapexer").
+		Flag("--debugfs_path").BuiltTool("debugfs_static").
+		Flag("list").Flag("--dir").Flag("-Z").
+		Input(apexFile).Text(">").Output(filecontext)
+	builder.Command().
+		BuiltTool("apex_sepolicy_tests").
+		Flag("-f").Input(filecontext).
+		Flag("-p").Input(policyFile)
+	builder.Command().Text("touch").Output(timestamp)
+	builder.Build("apex_sepolicy_tests", "Runs apex_sepolicy_tests")
+	return android.Paths{timestamp}
 }
