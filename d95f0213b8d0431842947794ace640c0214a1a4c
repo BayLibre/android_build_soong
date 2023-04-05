@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db6e83c7_9f911125",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-05T16:20:19Z",
+      "side": 1,
+      "message": "failure:\n```\nframeworks/base/core/java/android/content/res/XmlResourceParser.java:30: error: Method android.content.res.XmlResourceParser.getAttributeNamespace has changed \u0027default\u0027 qualifier [ChangedDefault]\n```\n\nfrom a cursory look that doesn\u0027t appear to be the case. Wonder if there\u0027s a bug in the detection",
+      "revId": "d95f0213b8d0431842947794ace640c0214a1a4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
