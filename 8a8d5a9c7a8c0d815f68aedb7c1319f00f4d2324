@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a89fdbe_c0e6e935",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-04-05T18:22:30Z",
+      "side": 1,
+      "message": "Forgot to reply the comments on this CL. All the comments will be fixed in aosp/2514795.",
+      "revId": "8a8d5a9c7a8c0d815f68aedb7c1319f00f4d2324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69279b3e_0e57dcb0",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-03-30T11:49:50Z",
       "side": 1,
       "message": "nit: bad indent.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 1
+      },
+      "revId": "8a8d5a9c7a8c0d815f68aedb7c1319f00f4d2324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a77f52_d9035c68",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-04-05T18:22:30Z",
+      "side": 1,
+      "message": "Will fix in another CL.",
+      "parentUuid": "69279b3e_0e57dcb0",
       "range": {
         "startLine": 110,
         "startChar": 0,
@@ -47,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62fb968b_d7dd0c10",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-04-05T18:22:30Z",
+      "side": 1,
+      "message": "Will fix in another CL.",
+      "parentUuid": "3900ca52_8aa4e3dd",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "8a8d5a9c7a8c0d815f68aedb7c1319f00f4d2324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "257d9bc1_8e0f9171",
@@ -70,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7737a80_2311b06f",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-04-05T18:22:30Z",
+      "side": 1,
+      "message": "Will fix in another CL.",
+      "parentUuid": "257d9bc1_8e0f9171",
+      "range": {
+        "startLine": 171,
+        "startChar": 6,
+        "endLine": 171,
+        "endChar": 10
+      },
+      "revId": "8a8d5a9c7a8c0d815f68aedb7c1319f00f4d2324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02477feb_53b4726c",
@@ -83,6 +172,30 @@
       "writtenOn": "2023-03-30T11:49:50Z",
       "side": 1,
       "message": "Please add comments to make it simpler for reviewers/readers to follow.\n\nAnd break long pipes like these up into multiline with `\\`.",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 207,
+        "endChar": 140
+      },
+      "revId": "8a8d5a9c7a8c0d815f68aedb7c1319f00f4d2324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44ec4df_011e413f",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-04-05T18:22:30Z",
+      "side": 1,
+      "message": "Will fix in another CL.",
+      "parentUuid": "02477feb_53b4726c",
       "range": {
         "startLine": 207,
         "startChar": 2,

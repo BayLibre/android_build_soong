@@ -22,6 +22,30 @@
       },
       "revId": "f2571c4136d578359b0748af548f24036749f0f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a4eafe8_3ec09c89",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-04-05T18:22:30Z",
+      "side": 0,
+      "message": "They are in root partition and listed in SBOM with \"/root\", which is handled on line 194.",
+      "parentUuid": "54afa57b_b642fa42",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "f2571c4136d578359b0748af548f24036749f0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
