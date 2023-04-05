@@ -71,6 +71,9 @@ func init() {
 	pctx.HostBinToolVariable("make_erofs", "make_erofs")
 	pctx.HostBinToolVariable("apex_compression_tool", "apex_compression_tool")
 	pctx.HostBinToolVariable("dexdeps", "dexdeps")
+	pctx.HostBinToolVariable("apex_sepolicy_tests", "apex_sepolicy_tests")
+	pctx.HostBinToolVariable("deapexer", "deapexer")
+	pctx.HostBinToolVariable("debugfs_static", "debugfs_static")
 	pctx.SourcePathVariable("genNdkUsedbyApexPath", "build/soong/scripts/gen_ndk_usedby_apex.sh")
 }
 
@@ -226,7 +229,11 @@ var (
 		Description: "Generate symbol list used by Apex",
 	}, "image_dir", "readelf")
 
-	// Don't add more rules here. Consider using android.NewRuleBuilder instead.
+	apexSepolicyTestsRule = pctx.StaticRule("apexSepolicyTestsRule", blueprint.RuleParams{
+		Command:     `${apex_sepolicy_tests} -f <(${deapexer} --debugfs_path ${debugfs_static} list --dir -Z ${in}) && touch ${out}`,
+		CommandDeps: []string{"${deapexer}", "${debugfs_static}", "${apex_sepolicy_tests}"},
+		Description: "run apex_sepolicy_tests",
+	})
 )
 
 // buildManifest creates buile rules to modify the input apex_manifest.json to add information
@@ -867,6 +874,12 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		"flags":        "-a 4096 --align-file-size", //alignment
 	}
 	implicits := android.Paths{pem, key}
+
+	// Run apex_sepolicy_tests for .apex output
+	if suffix == imageApexSuffix {
+		implicits = append(implicits, runApexSepolicyTests(ctx, unsignedOutputFile.OutputPath))
+	}
+
 	if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_SIGNAPK") {
 		rule = java.SignapkRE
 		args["implicits"] = strings.Join(implicits.Strings(), ",")
@@ -1171,4 +1184,18 @@ func (a *apexBundle) buildCannedFsConfig(ctx android.ModuleContext) android.Outp
 	builder.Build("generateFsConfig", fmt.Sprintf("Generating canned fs config for %s", a.BaseModuleName()))
 
 	return cannedFsConfig.OutputPath
+}
+
+// Runs apex_sepolicy_tests
+//
+// $ deapexer --dir -Z {apex_file} > {file_contexts}
+// $ apex_sepolicy_tests -f {file_contexts}
+func runApexSepolicyTests(ctx android.ModuleContext, apexFile android.OutputPath) android.Path {
+	timestamp := android.PathForModuleOut(ctx, "sepolicy_tests.timestamp")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   apexSepolicyTestsRule,
+		Input:  apexFile,
+		Output: timestamp,
+	})
+	return timestamp
 }
