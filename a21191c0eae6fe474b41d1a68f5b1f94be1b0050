@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8267a68f_996a797a",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-05T21:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76e496ef_d7c480b4",
+      "range": {
+        "startLine": 282,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 51
+      },
+      "revId": "a21191c0eae6fe474b41d1a68f5b1f94be1b0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52924d41_9ec81a2d",
@@ -133,6 +157,24 @@
       "writtenOn": "2023-04-05T09:34:53Z",
       "side": 1,
       "message": "unfortunately this list is not correct for internal master, where this will merge to\n\ncan you create the list in the go code for combined_apis? frameworks/base/api/api.go",
+      "revId": "a21191c0eae6fe474b41d1a68f5b1f94be1b0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69282201_3e44c803",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-05T21:17:05Z",
+      "side": 1,
+      "message": "I have looked into `frameworks/base/api/api.go`, but creating a list and exporting it there does not seem to be a feasible option, because this list is accessed in the initialization stage of the module (in `SdkLibraryFactory`), thus cannot access any information outside of the module. If you have a solution in mind, would you be able to share your thoughts?\n\nAlso, this is a short term solution which would be thrown away before defaulting from-text stub generation during build. The long term solution is to create a new prop in `java_sdk_library` module that indicates whether the module contributes to api surfaces or not and utilize that prop to replace this list.\n\nRegarding resolving the discrepancy between the list in aosp and internal master, one solution(in the short term) is to set the list as the internal master\u0027s, as it is a superset of this list. However, I am not sure about the restriction regarding exposing the internal master\u0027s list to aosp. Can you give me some guidance regarding this as well?",
+      "parentUuid": "52924d41_9ec81a2d",
       "revId": "a21191c0eae6fe474b41d1a68f5b1f94be1b0050",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
