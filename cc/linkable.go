@@ -131,6 +131,7 @@ type LinkableInterface interface {
 	// FuzzSharedLibraries returns the shared library dependencies for this module.
 	// Expects that IsFuzzModule returns true.
 	FuzzSharedLibraries() android.Paths
+	FuzzSharedLibrariesModules() []android.Module
 
 	Device() bool
 	Host() bool
