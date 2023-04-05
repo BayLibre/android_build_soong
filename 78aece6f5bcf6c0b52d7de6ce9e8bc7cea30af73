@@ -22,6 +22,30 @@
       },
       "revId": "78aece6f5bcf6c0b52d7de6ce9e8bc7cea30af73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3be6ef87_7c136956",
+        "filename": "java/legacy_core_platform_api_usage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-05T21:35:46Z",
+      "side": 0,
+      "message": "Thanks for catching this. I have updated other references of this variable as well.",
+      "parentUuid": "92e17d35_cf53ad0d",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 47
+      },
+      "revId": "78aece6f5bcf6c0b52d7de6ce9e8bc7cea30af73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
