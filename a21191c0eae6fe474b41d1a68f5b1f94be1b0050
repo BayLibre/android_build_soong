@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3b4699e_4502ec93",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-05T17:20:02Z",
+      "side": 1,
+      "message": "I believe this explanation might be misleading, because we are not currently setting this field anywhere in the codebase except for testing in `sdk_library_test.go`, so this field will be empty most of the time. \n\nWDYT about \n```\n// List of Api libraries that contribute to an Android API surface.\n// Note: the field should only be used for testing purpose.\n```\n?",
+      "parentUuid": "c5fbc7f2_67f72ce5",
+      "range": {
+        "startLine": 282,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 51
+      },
+      "revId": "a21191c0eae6fe474b41d1a68f5b1f94be1b0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52924d41_9ec81a2d",
         "filename": "java/sdk_library.go",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2023-04-04T23:55:21Z",
       "side": 1,
       "message": "Is the purpose of this function to convert a list of api libraries to a map of api libraries?\n\nIf so, can `api_libraries` be a map instead? (Set and Get can still accept a list). It prevents the need to run `module.updateApiListList` per java_sdk_library. This should be an idempotent action anyways.",
+      "range": {
+        "startLine": 1536,
+        "startChar": 26,
+        "endLine": 1536,
+        "endChar": 42
+      },
+      "revId": "a21191c0eae6fe474b41d1a68f5b1f94be1b0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4b5ee52_83666eea",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-05T17:20:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4697182_2bf26dd0",
       "range": {
         "startLine": 1536,
         "startChar": 26,
