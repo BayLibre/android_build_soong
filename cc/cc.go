@@ -1093,6 +1093,13 @@ func (c *Module) FuzzSharedLibraries() android.Paths {
 	panic(fmt.Errorf("FuzzSharedLibraries called on non-fuzz module: %q", c.BaseModuleName()))
 }
 
+func (c *Module) FuzzSharedLibrariesModules() []android.Module {
+	if fuzzer, ok := c.compiler.(*fuzzBinary); ok {
+		return fuzzer.sharedLibrariesModules
+	}
+	panic(fmt.Errorf("FuzzSharedLibrariesModules called on non-fuzz module: %q", c.BaseModuleName()))
+}
+
 func (c *Module) NonCcVariants() bool {
 	return false
 }
