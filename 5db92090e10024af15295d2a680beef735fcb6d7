@@ -22,6 +22,30 @@
       },
       "revId": "5db92090e10024af15295d2a680beef735fcb6d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "658acd81_964227d2",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-05T21:54:44Z",
+      "side": 1,
+      "message": "I believe it should be nil. And you can convert nil to a string: https://go.dev/play/p/vzf-oOEEvBc\n\nIt\u0027s value also doesn\u0027t really matter because if err is not nil we\u0027ll fall into the if statement anyways.\n\nI also of course tested it with a clean build and it worked fine.",
+      "parentUuid": "2af34068_1148d5d5",
+      "range": {
+        "startLine": 251,
+        "startChar": 47,
+        "endLine": 251,
+        "endChar": 66
+      },
+      "revId": "5db92090e10024af15295d2a680beef735fcb6d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
