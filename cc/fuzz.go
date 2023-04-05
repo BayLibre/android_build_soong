@@ -101,9 +101,10 @@ func LibFuzzFactory() android.Module {
 type fuzzBinary struct {
 	*binaryDecorator
 	*baseCompiler
-	fuzzPackagedModule  fuzz.FuzzPackagedModule
-	installedSharedDeps []string
-	sharedLibraries     android.Paths
+	fuzzPackagedModule     fuzz.FuzzPackagedModule
+	installedSharedDeps    []string
+	sharedLibrariesModules []android.Module
+	sharedLibraries        android.Paths
 }
 
 func (fuzz *fuzzBinary) fuzzBinary() bool {
@@ -213,19 +214,20 @@ func IsValidSharedDependency(dependency android.Module) bool {
 }
 
 func SharedLibraryInstallLocation(
-	libraryPath android.Path, isHost bool, fuzzDir string, archString string) string {
+	moduleName string, isHost bool, fuzzDir string, archString string) string {
 	installLocation := "$(PRODUCT_OUT)/data"
 	if isHost {
 		installLocation = "$(HOST_OUT)"
 	}
 	installLocation = filepath.Join(
-		installLocation, fuzzDir, archString, "lib", libraryPath.Base())
+		installLocation, fuzzDir, archString, "lib", moduleName)
+
 	return installLocation
 }
 
 // Get the device-only shared library symbols install directory.
-func SharedLibrarySymbolsInstallLocation(libraryPath android.Path, fuzzDir string, archString string) string {
-	return filepath.Join("$(PRODUCT_OUT)/symbols/data/", fuzzDir, archString, "/lib/", libraryPath.Base())
+func SharedLibrarySymbolsInstallLocation(moduleName string, fuzzDir string, archString string) string {
+	return filepath.Join("$(PRODUCT_OUT)/symbols/data/", fuzzDir, archString, "/lib/", moduleName)
 }
 
 func (fuzzBin *fuzzBinary) install(ctx ModuleContext, file android.Path) {
@@ -240,17 +242,22 @@ func (fuzzBin *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 	fuzzBin.fuzzPackagedModule = PackageFuzzModule(ctx, fuzzBin.fuzzPackagedModule, pctx)
 
 	// Grab the list of required shared libraries.
-	fuzzBin.sharedLibraries, _ = CollectAllSharedDependencies(ctx)
+	libs, deps := CollectAllSharedDependencies(ctx)
 
-	for _, lib := range fuzzBin.sharedLibraries {
+	fuzzBin.sharedLibrariesModules = deps
+	fuzzBin.sharedLibraries = libs
+
+	for _, dep := range deps {
+		sharedLibraryInfo := ctx.OtherModuleProvider(dep, SharedLibraryInfoProvider).(SharedLibraryInfo)
+		installLocation := sharedLibraryInfo.SharedLibrary.Base()
 		fuzzBin.installedSharedDeps = append(fuzzBin.installedSharedDeps,
 			SharedLibraryInstallLocation(
-				lib, ctx.Host(), installBase, ctx.Arch().ArchType.String()))
+				installLocation, ctx.Host(), installBase, ctx.Arch().ArchType.String()))
 
 		// Also add the dependency on the shared library symbols dir.
 		if !ctx.Host() {
 			fuzzBin.installedSharedDeps = append(fuzzBin.installedSharedDeps,
-				SharedLibrarySymbolsInstallLocation(lib, installBase, ctx.Arch().ArchType.String()))
+				SharedLibrarySymbolsInstallLocation(installLocation, installBase, ctx.Arch().ArchType.String()))
 		}
 	}
 }
@@ -372,7 +379,7 @@ func (s *ccRustFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) 
 	// archive}).
 	archDirs := make(map[fuzz.ArchOs][]fuzz.FileToZip)
 
-	// List of individual fuzz targets, so that 'make fuzz' also installs the targets
+	// List of individual fuzz targets, so that 'make haiku' also installs the targets
 	// to the correct output directories as well.
 	s.FuzzTargets = make(map[string]bool)
 
@@ -419,7 +426,7 @@ func (s *ccRustFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) 
 		files = s.PackageArtifacts(ctx, module, fpm, archDir, builder)
 
 		// Package shared libraries
-		files = append(files, GetSharedLibsToZip(ccModule.FuzzSharedLibraries(), ccModule, &s.FuzzPackager, archString, sharedLibsInstallDirPrefix, &sharedLibraryInstalled)...)
+		files = append(files, GetSharedLibsToZip(ctx, ccModule.FuzzSharedLibrariesModules(), ccModule.FuzzSharedLibraries(), ccModule, &s.FuzzPackager, archString, sharedLibsInstallDirPrefix, &sharedLibraryInstalled)...)
 
 		// The executable.
 		files = append(files, fuzz.FileToZip{android.OutputFileForModule(ctx, ccModule, "unstripped"), ""})
@@ -453,19 +460,29 @@ func (s *ccRustFuzzPackager) MakeVars(ctx android.MakeVarsContext) {
 
 // GetSharedLibsToZip finds and marks all the transiently-dependent shared libraries for
 // packaging.
-func GetSharedLibsToZip(sharedLibraries android.Paths, module LinkableInterface, s *fuzz.FuzzPackager, archString string, destinationPathPrefix string, sharedLibraryInstalled *map[string]bool) []fuzz.FileToZip {
+func GetSharedLibsToZip(moduleContext android.SingletonContext, sharedLibrariesModules []android.Module, sharedLibraries android.Paths, module LinkableInterface, s *fuzz.FuzzPackager, archString string, destinationPathPrefix string, sharedLibraryInstalled *map[string]bool) []fuzz.FileToZip {
 	var files []fuzz.FileToZip
-
 	fuzzDir := "fuzz"
 
-	for _, library := range sharedLibraries {
-		files = append(files, fuzz.FileToZip{library, destinationPathPrefix})
-
+	for index, library := range sharedLibraries {
 		// For each architecture-specific shared library dependency, we need to
 		// install it to the output directory. Setup the install destination here,
 		// which will be used by $(copy-many-files) in the Make backend.
+		libModuleName := library.Base()
+
+		var sharedLibrariesModule LinkableInterface
+		sharedLibrariesModule = sharedLibrariesModules[index].(LinkableInterface)
+		sharedLibraryInfo := moduleContext.ModuleProvider(sharedLibrariesModule, SharedLibraryInfoProvider).(SharedLibraryInfo)
+		libModuleName = sharedLibraryInfo.SharedLibrary.Base()
+
+		if module != nil && module.IsPrebuilt() {
+			library = android.OutputFileForModule(moduleContext, sharedLibrariesModule, "")
+		}
 		installDestination := SharedLibraryInstallLocation(
-			library, module.Host(), fuzzDir, archString)
+			libModuleName, module.Host(), fuzzDir, archString)
+
+		files = append(files, fuzz.FileToZip{library, destinationPathPrefix})
+
 		if (*sharedLibraryInstalled)[installDestination] {
 			continue
 		}
@@ -483,7 +500,7 @@ func GetSharedLibsToZip(sharedLibraries android.Paths, module LinkableInterface,
 		// we want symbolization tools (like `stack`) to be able to find the symbols
 		// in $ANDROID_PRODUCT_OUT/symbols automagically.
 		if !module.Host() {
-			symbolsInstallDestination := SharedLibrarySymbolsInstallLocation(library, fuzzDir, archString)
+			symbolsInstallDestination := SharedLibrarySymbolsInstallLocation(libModuleName, fuzzDir, archString)
 			symbolsInstallDestination = strings.ReplaceAll(symbolsInstallDestination, "$", "$$")
 			s.SharedLibInstallStrings = append(s.SharedLibInstallStrings,
 				library.String()+":"+symbolsInstallDestination)
