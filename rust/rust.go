@@ -650,6 +650,13 @@ func (mod *Module) FuzzSharedLibraries() android.Paths {
 	panic(fmt.Errorf("FuzzSharedLibraries called on non-fuzz module: %q", mod.BaseModuleName()))
 }
 
+func (c *Module) FuzzSharedLibrariesModules() []android.Module {
+	if fuzzer, ok := c.compiler.(*fuzzDecorator); ok {
+		return fuzzer.sharedLibrariesModules
+	}
+	panic(fmt.Errorf("FuzzSharedLibrariesModules called on non-fuzz module: %q", c.BaseModuleName()))
+}
+
 func (mod *Module) UnstrippedOutputFile() android.Path {
 	if mod.compiler != nil {
 		return mod.compiler.unstrippedOutputFilePath()
