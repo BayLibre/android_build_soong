@@ -30,9 +30,10 @@ func init() {
 type fuzzDecorator struct {
 	*binaryDecorator
 
-	fuzzPackagedModule  fuzz.FuzzPackagedModule
-	sharedLibraries     android.Paths
-	installedSharedDeps []string
+	fuzzPackagedModule     fuzz.FuzzPackagedModule
+	sharedLibrariesModules []android.Module
+	sharedLibraries        android.Paths
+	installedSharedDeps    []string
 }
 
 var _ compiler = (*fuzzDecorator)(nil)
@@ -117,17 +118,22 @@ func (fuzz *fuzzDecorator) install(ctx ModuleContext) {
 	installBase := "fuzz"
 
 	// Grab the list of required shared libraries.
-	fuzz.sharedLibraries, _ = cc.CollectAllSharedDependencies(ctx)
+	libs, deps := cc.CollectAllSharedDependencies(ctx)
 
-	for _, lib := range fuzz.sharedLibraries {
+	fuzz.sharedLibrariesModules = deps
+	fuzz.sharedLibraries = libs
+
+	for _, dep := range deps {
+		lib := android.OutputFileForModule(ctx, dep, "unstripped")
+		depName := ctx.OtherModuleName(dep)
 		fuzz.installedSharedDeps = append(fuzz.installedSharedDeps,
 			cc.SharedLibraryInstallLocation(
-				lib, ctx.Host(), installBase, ctx.Arch().ArchType.String()))
+				depName, dep.(cc.LinkableInterface), lib, ctx.Host(), installBase, ctx.Arch().ArchType.String()))
 
 		// Also add the dependency on the shared library symbols dir.
 		if !ctx.Host() {
 			fuzz.installedSharedDeps = append(fuzz.installedSharedDeps,
-				cc.SharedLibrarySymbolsInstallLocation(lib, installBase, ctx.Arch().ArchType.String()))
+				cc.SharedLibrarySymbolsInstallLocation(depName, dep.(cc.LinkableInterface), lib, installBase, ctx.Arch().ArchType.String()))
 		}
 	}
 }
