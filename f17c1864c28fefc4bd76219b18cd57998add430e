@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4171f213_ea28d830",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-06T23:33:24Z",
+      "side": 1,
+      "message": "In patchset 3 it seems like you unconditionally ran `runApexSepolicyTests`, but now you have this if statement. Are you sure you want it? This seems like it would skip the test in some cases.",
+      "revId": "f17c1864c28fefc4bd76219b18cd57998add430e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
