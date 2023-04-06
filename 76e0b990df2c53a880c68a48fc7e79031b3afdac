@@ -107,6 +107,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb20e182_339c2891",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-06T19:01:47Z",
+      "side": 1,
+      "message": "The precompiled_sepolicy might be an issue actually. Yeah you can leave b/277176385 on us and I guess we won\u0027t have this check in bazel for the moment.",
+      "parentUuid": "068b238f_b89972e4",
+      "revId": "76e0b990df2c53a880c68a48fc7e79031b3afdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a8691e6_e436b2cd",
