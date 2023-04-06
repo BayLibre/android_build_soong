@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc9f958f_bd172e8e",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-06T06:59:53Z",
+      "side": 1,
+      "message": "Instead of an dep of the installed file, made this a validation dependency of the signedOutputFile so that it is run in parallel with other actions.",
+      "revId": "76e0b990df2c53a880c68a48fc7e79031b3afdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1731add2_fec2b6b4",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-06T06:59:53Z",
+      "side": 1,
+      "message": "Please also implement this for bazel in `build/bazel/rules/apex/apex.bzl`",
+      "revId": "76e0b990df2c53a880c68a48fc7e79031b3afdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a8691e6_e436b2cd",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-06T06:59:53Z",
+      "side": 1,
+      "message": "Use AndroidStaticRule instead of RuleBuilder. RuleBuilder will create a ninja rule for every ninja build statement, but with AndroidStaticRule many build statements can reuse a single rule, leading to a smaller ninja file size.",
+      "revId": "76e0b990df2c53a880c68a48fc7e79031b3afdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
