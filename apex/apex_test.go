@@ -7876,6 +7876,23 @@ func TestUpdatableDefault_should_set_min_sdk_version(t *testing.T) {
 	`)
 }
 
+func TestUpdatable_should_not_set_current_as_min_sdk_version(t *testing.T) {
+	testApexError(t, `"myapex" .*: updatable: updatable APEXes should not set current as min_sdk_version`, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			updatable: true,
+			min_sdk_version: "current",
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+	`)
+}
+
 func Test_use_vndk_as_stable_shouldnt_be_used_for_updatable_vendor_apexes(t *testing.T) {
 	testApexError(t, `"myapex" .*: use_vndk_as_stable: updatable APEXes can't use external VNDK libs`, `
 		apex {
