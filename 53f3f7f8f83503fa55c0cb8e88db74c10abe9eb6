@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b617e99b_5979f4a0",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-06T03:48:03Z",
+      "side": 1,
+      "message": "nit: This can be in a future CL, but we should make this a global",
+      "range": {
+        "startLine": 1816,
+        "startChar": 83,
+        "endLine": 1816,
+        "endChar": 95
+      },
+      "revId": "53f3f7f8f83503fa55c0cb8e88db74c10abe9eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
