@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2593b05_112b50d4",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-06T09:14:01Z",
+      "side": 1,
+      "message": "apex_sepolicy_tests depends on \"precompiled_sepolicy\" of precompiled_se_policy_binary, which is a custom soong module.  Filed b/277176385.",
+      "parentUuid": "8cfdbc96_b26c040b",
+      "revId": "76e0b990df2c53a880c68a48fc7e79031b3afdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a8691e6_e436b2cd",
         "filename": "apex/builder.go",
         "patchSetId": 3
