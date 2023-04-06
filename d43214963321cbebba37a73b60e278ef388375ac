@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051083da_e006161e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-06T03:54:42Z",
+      "side": 1,
+      "message": "I think there are some more references to this that need to be updated (especially in hiddenapi)\nhttps://cs.android.com/search?q\u003d(legacy%7Cstable)%5C.core.platform%5C.api%20f:build%2Fsoong%20-f:test\u0026sq\u003d",
+      "revId": "d43214963321cbebba37a73b60e278ef388375ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21c98cf9_bf7c7764",
+        "filename": "java/legacy_core_platform_api_usage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-06T03:54:42Z",
+      "side": 1,
+      "message": "Why just do it on one of them? Cant we use the from-text version of `core-lambda-stubs` as well?",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 54
+      },
+      "revId": "d43214963321cbebba37a73b60e278ef388375ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
