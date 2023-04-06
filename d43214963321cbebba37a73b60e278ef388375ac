@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "523fe7bf_1321a493",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-06T05:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "051083da_e006161e",
+      "revId": "d43214963321cbebba37a73b60e278ef388375ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21c98cf9_bf7c7764",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-04-06T03:54:42Z",
       "side": 1,
       "message": "Why just do it on one of them? Cant we use the from-text version of `core-lambda-stubs` as well?",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 54
+      },
+      "revId": "d43214963321cbebba37a73b60e278ef388375ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26e8ed87_8cfeca45",
+        "filename": "java/legacy_core_platform_api_usage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-06T05:24:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21c98cf9_bf7c7764",
       "range": {
         "startLine": 105,
         "startChar": 3,
