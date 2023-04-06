@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ae06d21_59ccc723",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-06T07:40:03Z",
+      "side": 1,
+      "message": "also add the `shift` here - that shift will error if partition_name isn\u0027t specified.",
+      "range": {
+        "startLine": 109,
+        "startChar": 18,
+        "endLine": 109,
+        "endChar": 22
+      },
+      "revId": "dbd9b6434e94dcefd42cdffd56b1a6da63a293fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
