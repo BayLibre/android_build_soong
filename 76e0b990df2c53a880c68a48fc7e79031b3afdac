@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31368b14_5b345825",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-06T07:54:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc9f958f_bd172e8e",
+      "revId": "76e0b990df2c53a880c68a48fc7e79031b3afdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1731add2_fec2b6b4",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cfdbc96_b26c040b",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-06T07:54:50Z",
+      "side": 1,
+      "message": "Tried this:\n```\n        \"_apex_sepolicy_tests\": attr.label(\n            cfg \u003d \"exec\",\n            executable \u003d True,\n            default \u003d \"//system/sepolicy/tests:apex_sepolicy_tests\",\n        ),\n```\n\nand got:\n```\n no such target \u0027//system/sepolicy/tests:apex_sepolicy_tests\u0027: target \u0027apex_sepolicy_tests\u0027 not declared in package \u0027system/sepolicy/tests\u0027\n```\n\n`apex_sepolicy_tests` is added in aosp/2521955. Can you help me out?\n\n(Btw, IMO this could be a separate change.)",
+      "parentUuid": "1731add2_fec2b6b4",
+      "revId": "76e0b990df2c53a880c68a48fc7e79031b3afdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a8691e6_e436b2cd",
         "filename": "apex/builder.go",
         "patchSetId": 3
@@ -48,6 +84,24 @@
       "writtenOn": "2023-04-06T06:59:53Z",
       "side": 1,
       "message": "Use AndroidStaticRule instead of RuleBuilder. RuleBuilder will create a ninja rule for every ninja build statement, but with AndroidStaticRule many build statements can reuse a single rule, leading to a smaller ninja file size.",
+      "revId": "76e0b990df2c53a880c68a48fc7e79031b3afdac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6959376e_708fbcbf",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-06T07:54:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a8691e6_e436b2cd",
       "revId": "76e0b990df2c53a880c68a48fc7e79031b3afdac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
