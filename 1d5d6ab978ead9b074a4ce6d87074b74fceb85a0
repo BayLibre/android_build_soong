@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea2f191b_ac15b505",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-06T02:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbe9bfb1_977007f7",
+      "range": {
+        "startLine": 1178,
+        "startChar": 36,
+        "endLine": 1178,
+        "endChar": 55
+      },
+      "revId": "1d5d6ab978ead9b074a4ce6d87074b74fceb85a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c12c1773_d77bea39",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3fe569e_2bbaa6fb",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-06T02:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c12c1773_d77bea39",
+      "range": {
+        "startLine": 1201,
+        "startChar": 36,
+        "endLine": 1201,
+        "endChar": 56
+      },
+      "revId": "1d5d6ab978ead9b074a4ce6d87074b74fceb85a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64a3b4b9_3807f1d1",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-06T01:47:14Z",
       "side": 1,
       "message": "is it safe to do this? If precompiled_sepolicy is somehow missing, this test won\u0027t run silently.",
+      "range": {
+        "startLine": 1202,
+        "startChar": 0,
+        "endLine": 1204,
+        "endChar": 2
+      },
+      "revId": "1d5d6ab978ead9b074a4ce6d87074b74fceb85a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a5243d_565da718",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-06T02:10:04Z",
+      "side": 1,
+      "message": "We could add precompiled_sepolicy as a required module (even in testing) and make it fail. I\u0027d like to hear other\u0027s thought?",
+      "parentUuid": "64a3b4b9_3807f1d1",
       "range": {
         "startLine": 1202,
         "startChar": 0,
