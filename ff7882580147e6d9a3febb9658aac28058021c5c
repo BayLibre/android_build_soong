@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da790a1_011b23ac",
+        "filename": "java/legacy_core_platform_api_usage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-06T16:43:01Z",
+      "side": 1,
+      "message": "It might be cleaner to create a new helper function `JavaApiLibraryNames` that takes a list as input and outputs a list",
+      "range": {
+        "startLine": 105,
+        "startChar": 11,
+        "endLine": 105,
+        "endChar": 29
+      },
+      "revId": "ff7882580147e6d9a3febb9658aac28058021c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
