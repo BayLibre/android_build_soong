@@ -3024,6 +3024,9 @@ func (a *apexBundle) checkUpdatable(ctx android.ModuleContext) {
 		if a.minSdkVersionValue(ctx) == "" {
 			ctx.PropertyErrorf("updatable", "updatable APEXes should set min_sdk_version as well")
 		}
+		if a.minSdkVersionValue(ctx) == "current" {
+			ctx.PropertyErrorf("updatable", "updatable APEXes should not set current as min_sdk_version. use a stable sdk level or a preview codename.")
+		}
 		if a.UsePlatformApis() {
 			ctx.PropertyErrorf("updatable", "updatable APEXes can't use platform APIs")
 		}
