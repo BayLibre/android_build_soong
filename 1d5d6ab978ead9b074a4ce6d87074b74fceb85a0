@@ -140,6 +140,30 @@
       },
       "revId": "1d5d6ab978ead9b074a4ce6d87074b74fceb85a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae3accb1_3346b36a",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-06T04:30:21Z",
+      "side": 1,
+      "message": "Just embedded `precompiled_sepolicy` into `apex_sepolicy_tests` for simplicity.",
+      "parentUuid": "26a5243d_565da718",
+      "range": {
+        "startLine": 1202,
+        "startChar": 0,
+        "endLine": 1204,
+        "endChar": 2
+      },
+      "revId": "1d5d6ab978ead9b074a4ce6d87074b74fceb85a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
