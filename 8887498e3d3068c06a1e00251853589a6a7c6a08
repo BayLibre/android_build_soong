@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56e06a1_33b6a306",
+        "filename": "apex/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-06T17:15:47Z",
+      "side": 1,
+      "message": "I\u0027d recommend combining these into one rule. For temporary files you can use `${out}.whatever`",
+      "revId": "8887498e3d3068c06a1e00251853589a6a7c6a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c456497_8f451750",
+        "filename": "apex/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-06T17:15:47Z",
+      "side": 1,
+      "message": "It should be a validation dependency, not an implicit dependency. Use the `Validation(s)` parameter in `BuildParams`.\n\nSee https://ninja-build.org/manual.html#validations\n\nBazel also has validation actions: https://bazel.build/extending/rules#validation_actions",
+      "revId": "8887498e3d3068c06a1e00251853589a6a7c6a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
