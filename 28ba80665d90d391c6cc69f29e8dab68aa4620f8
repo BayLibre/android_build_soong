@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "820d904f_b964774f",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-06T07:55:39Z",
+      "side": 0,
+      "message": "So, this isn\u0027t right any more, right?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 77
+      },
+      "revId": "28ba80665d90d391c6cc69f29e8dab68aa4620f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
