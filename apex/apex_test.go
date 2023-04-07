@@ -875,6 +875,13 @@ func TestBasicZipApex(t *testing.T) {
 func TestApexWithStubs(t *testing.T) {
 	ctx := testApex(t, `
 		apex {
+			name: "myapex2",
+			key: "myapex.key",
+			native_shared_libs: ["mylib"],
+			updatable: false,
+		}
+
+		apex {
 			name: "myapex",
 			key: "myapex.key",
 			native_shared_libs: ["mylib", "mylib3"],
@@ -894,7 +901,7 @@ func TestApexWithStubs(t *testing.T) {
 			shared_libs: ["mylib2", "mylib3"],
 			system_shared_libs: [],
 			stl: "none",
-			apex_available: [ "myapex" ],
+			apex_available: [ "myapex", "myapex2" ],
 		}
 
 		cc_library {
@@ -968,9 +975,10 @@ func TestApexWithStubs(t *testing.T) {
 	ensureNotContains(t, mylibLdFlags, "mylib2/android_arm64_armv8-a_shared/mylib2.so")
 
 	// Ensure that mylib is linking with the non-stub (impl) of mylib3 (because mylib3 is in the same apex)
-	ensureContains(t, mylibLdFlags, "mylib3/android_arm64_armv8-a_shared_apex10000/mylib3.so")
+	ensureNotContains(t, mylibLdFlags, "mylib3/android_arm64_armv8-a_shared_apex10000/mylib3.so")
 	// .. and not linking to the stubs variant of mylib3
 	ensureNotContains(t, mylibLdFlags, "mylib3/android_arm64_armv8-a_shared_12/mylib3.so")
+	ensureContains(t, mylibLdFlags, "mylib3/android_arm64_armv8-a_shared_current/mylib3.so")
 
 	// Comment out this test. Now it fails after the optimization of sharing "cflags" in cc/cc.go
 	// is replaced by sharing of "cFlags" in cc/builder.go.
