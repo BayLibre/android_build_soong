@@ -140,6 +140,30 @@
       },
       "revId": "59777f5cafe5618fc5063fffd59ca0f5a5982bcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "424c243c_f19f8279",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-07T17:44:23Z",
+      "side": 1,
+      "message": "Following up on this -\nThe code block I\u0027ve added in build_conversion seems a bit superfluous at the moment (maybe not after the TODO I mentioned above.) It\u0027s (AFAICT) iterating over bp2build directories looking for force-enabled modules that we\u0027re trying to determine... might not be bp2built?",
+      "parentUuid": "9d76a48e_feaae784",
+      "range": {
+        "startLine": 1272,
+        "startChar": 23,
+        "endLine": 1272,
+        "endChar": 43
+      },
+      "revId": "59777f5cafe5618fc5063fffd59ca0f5a5982bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
