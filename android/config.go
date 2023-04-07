@@ -93,6 +93,21 @@ func (c Config) PrimaryBuilderInvocations() []bootstrap.PrimaryBuilderInvocation
 	return []bootstrap.PrimaryBuilderInvocation{}
 }
 
+<<<<<<< HEAD   (a0e047 Snap for 8762204 from 8378feda12bf7153757888bf44ddadc0925c93)
+=======
+// RunningInsideUnitTest returns true if this code is being run as part of a Soong unit test.
+func (c Config) RunningInsideUnitTest() bool {
+	return c.config.TestProductVariables != nil
+}
+
+// MaxPageSizeSupported returns the max page size supported by the device. This
+// value will define the ELF segment alignment for binaries (executables and
+// shared libraries).
+func (c Config) MaxPageSizeSupported() string {
+	return String(c.config.productVariables.DeviceMaxPageSizeSupported)
+}
+
+>>>>>>> CHANGE (05d4d9 16k: Align shared libraries and executables to 4k by default)
 // A DeviceConfig object represents the configuration for a particular device
 // being built. For now there will only be one of these, but in the future there
 // may be multiple devices being built.
