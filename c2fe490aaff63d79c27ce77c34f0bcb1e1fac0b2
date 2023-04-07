@@ -16,6 +16,24 @@
       "message": "Should this be the default in LLD for the android config if we\u0027re going to start requiring this everywhere?",
       "revId": "c2fe490aaff63d79c27ce77c34f0bcb1e1fac0b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4d291bd_aa0dbee6",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-04-07T18:39:54Z",
+      "side": 1,
+      "message": "https://reviews.llvm.org/D55029 is where this changed by default in Android, so I\u0027d expect a revert of that change to happen upstream. But this does need authorization that I\u0027m not sure has been granted yet.",
+      "parentUuid": "d6fc0303_475e6fc0",
+      "revId": "c2fe490aaff63d79c27ce77c34f0bcb1e1fac0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
