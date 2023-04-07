@@ -337,9 +337,9 @@ type FuzzConfig struct {
 	// need to be added to the fuzzer package than one without JNI
 	IsJni *bool `json:"is_jni,omitempty"`
 	// List of modules for monitoring coverage drops in directories (e.g. "libicu")
-	staging *bool `json:"staging,omitempty"`
-	// Specifies if target use is internal (staging=true), or ISE (staging=false).
 	Target_modules []string `json:"target_modules,omitempty"`
+	// Specifies if target use is internal (staging=true), or ISE (staging=false).
+	Staging *bool `json:"staging,omitempty"`
 }
 
 type FuzzFrameworks struct {
@@ -470,7 +470,7 @@ func (s *FuzzPackager) PackageArtifacts(ctx android.SingletonContext, module and
 	}
 
 	return files
-}
+}stag
 
 func (s *FuzzPackager) BuildZipFile(ctx android.SingletonContext, module android.Module, fuzzModule FuzzPackagedModule, files []FileToZip, builder *android.RuleBuilder, archDir android.OutputPath, archString string, hostOrTargetString string, archOs ArchOs, archDirs map[ArchOs][]FileToZip) ([]FileToZip, bool) {
 	fuzzZip := archDir.Join(ctx, module.Name()+".zip")
