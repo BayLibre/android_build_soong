@@ -37,7 +37,10 @@ var (
 		"-Wl,-m,armelf",
 	}
 
-	armLldflags = armLdflags
+	armLldflags = []string{
+		"-Wl,--hash-style=gnu",
+		"-Wl,-m,armelf",
+	}
 
 	armFixCortexA8LdFlags = []string{"-Wl,--fix-cortex-a8"}
 
@@ -180,12 +183,22 @@ const (
 	clangTriple = "armv7a-linux-androideabi"
 )
 
+func AddMaxPageSizeForArm(ctx android.PackageVarContext) []string {
+	var maxPageSizeFlag string
+	maxPageSizeFlag = "-Wl,-z,max-page-size=" + ctx.Config().MaxPageSizeSupported()
+	return append(armLdflags, maxPageSizeFlag)
+}
+
 func init() {
 	// Just exported. Not created as a Ninja static variable.
 	exportedVars.ExportString("ArmClangTriple", clangTriple)
 
 	exportedVars.ExportStringListStaticVariable("ArmLdflags", armLdflags)
-	exportedVars.ExportStringListStaticVariable("ArmLldflags", armLldflags)
+	exportedVars.ExportStringList("ArmLldflags", armLldflags)
+	pctx.VariableFunc("ArmLldflags", func(ctx android.PackageVarContext) string {
+		flags := AddMaxPageSizeForArm(ctx)
+		return strings.Join(flags, " ")
+	})
 
 	exportedVars.ExportStringListStaticVariable("ArmFixCortexA8LdFlags", armFixCortexA8LdFlags)
 	exportedVars.ExportStringListStaticVariable("ArmNoFixCortexA8LdFlags", armNoFixCortexA8LdFlags)
