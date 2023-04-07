@@ -16,6 +16,24 @@
       "message": "In patchset 3 it seems like you unconditionally ran `runApexSepolicyTests`, but now you have this if statement. Are you sure you want it? This seems like it would skip the test in some cases.",
       "revId": "f17c1864c28fefc4bd76219b18cd57998add430e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af007a5_0aca474e",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-07T01:19:31Z",
+      "side": 1,
+      "message": "Yes, I found that unsignedOutputFile could be a zip file (at L853). \nBtw, I\u0027m curious if we still want to support \u0027zip apex\u0027.",
+      "parentUuid": "4171f213_ea28d830",
+      "revId": "f17c1864c28fefc4bd76219b18cd57998add430e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
