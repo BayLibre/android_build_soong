@@ -30,6 +30,7 @@ import (
 	"android/soong/shared"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/deptools"
 	"github.com/google/blueprint/metrics"
@@ -256,18 +257,40 @@ func apiBuildFileExcludes(ctx *android.Context) []string {
 }
 
 func writeNinjaHint(ctx *android.Context) error {
-	wantModules := make([]string, len(allowlists.HugeModulesMap))
-	i := 0
-	for k := range allowlists.HugeModulesMap {
-		wantModules[i] = k
-		i += 1
-	}
-	outputsMap := ctx.Context.GetOutputsFromModuleNames(wantModules)
-	var outputBuilder strings.Builder
-	for k, v := range allowlists.HugeModulesMap {
-		for _, output := range outputsMap[k] {
-			outputBuilder.WriteString(fmt.Sprintf("%s,%d\n", output, v))
+	predicate := func(j *blueprint.JsonModule) (prioritized bool, weight int) {
+		prioritized = false
+		weight = 0
+		for prefix, w := range allowlists.HugeModuleTypePrefixMap {
+			if strings.HasPrefix(j.Type, prefix) {
+				prioritized = true
+				weight = w
+				return
+			}
 		}
+		dep_count := len(j.Deps)
+		src_count := 0
+		for _, a := range j.Module["Actions"].([]blueprint.JSONAction) {
+			src_count += len(a.Inputs)
+		}
+		input_size := dep_count + src_count
+
+		// Currnet threshold is an arbitrary value which only consider recall rather than accuracy.
+		if input_size > allowlists.INPUT_SIZE_THRESHOLD {
+			prioritized = true
+			weight += ((input_size) / allowlists.INPUT_SIZE_THRESHOLD) * allowlists.DEFAULT_PRIORITIZED_WEIGHT
+
+			// To prevent some modules from having too large a priority value.
+			if weight > allowlists.HIGH_PRIORITIZED_WEIGHT {
+				weight = allowlists.HIGH_PRIORITIZED_WEIGHT
+			}
+		}
+		return
+	}
+
+	outputsMap := ctx.Context.GetOutputsFromPredicate(predicate)
+	var outputBuilder strings.Builder
+	for output, weight := range outputsMap {
+		outputBuilder.WriteString(fmt.Sprintf("%s,%d\n", output, weight))
 	}
 	weightListFile := filepath.Join(topDir, ctx.Config().OutDir(), ".ninja_weight_list")
 
