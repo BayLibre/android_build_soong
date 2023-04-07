@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "772d01e7_c5764df1",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-07T22:17:52Z",
+      "side": 1,
+      "message": "I don\u0027t see how to enable the directory programmatically except through the method I outlined above. Am I misinterpreting your point that being enabled should lead to that directory\u0027s bp2build being true without any other action?\nIs your idea here to inspect bazel-mode (e.g., prod/staging) and the command-line flags and attempt to enable all of those allowlisted-modules\u0027 directories for bp2build before analysis? If so, do you have a faster way than module-info.json?",
+      "parentUuid": "65301cf3_f8173582",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 125
+      },
+      "revId": "59777f5cafe5618fc5063fffd59ca0f5a5982bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c541d097_224ef7fb",
         "filename": "bp2build/build_conversion_test.go",
         "patchSetId": 17
