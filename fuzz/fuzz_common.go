@@ -337,9 +337,9 @@ type FuzzConfig struct {
 	// need to be added to the fuzzer package than one without JNI
 	IsJni *bool `json:"is_jni,omitempty"`
 	// List of modules for monitoring coverage drops in directories (e.g. "libicu")
-	staging *bool `json:"staging,omitempty"`
-	// Specifies if target use is internal (staging=true), or ISE (staging=false).
 	Target_modules []string `json:"target_modules,omitempty"`
+	// Specifies a bug assignee to replace default ISE assignment
+	Issue_assignee_override string `json:"issue_assignee_override,omitempty"`
 }
 
 type FuzzFrameworks struct {
