@@ -30,6 +30,7 @@ import (
 	"android/soong/shared"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/deptools"
 	"github.com/google/blueprint/metrics"
@@ -256,18 +257,37 @@ func apiBuildFileExcludes(ctx *android.Context) []string {
 }
 
 func writeNinjaHint(ctx *android.Context) error {
-	wantModules := make([]string, len(allowlists.HugeModulesMap))
-	i := 0
-	for k := range allowlists.HugeModulesMap {
-		wantModules[i] = k
-		i += 1
-	}
-	outputsMap := ctx.Context.GetOutputsFromModuleNames(wantModules)
-	var outputBuilder strings.Builder
-	for k, v := range allowlists.HugeModulesMap {
-		for _, output := range outputsMap[k] {
-			outputBuilder.WriteString(fmt.Sprintf("%s,%d\n", output, v))
+	predicate := func(j *blueprint.JsonModule) (prioritized bool, weight int) {
+		prioritized = false
+		weight = 0
+		for prefix, w := range allowlists.HugeModuleTypePrefixMap {
+			if strings.HasPrefix(j.Type, prefix) {
+				prioritized = true
+				weight = w
+				return
+			}
 		}
+		dep_count := len(j.Deps)
+		src_count := 0
+		for _, a := range j.Module["Actions"].([]blueprint.JSONAction) {
+			src_count += len(a.Inputs)
+		}
+		input_size := dep_count + src_count/50
+		if input_size > 50 {
+			prioritized = true
+			if (input_size)/50 > 10 {
+				weight += 10 * allowlists.DEFAULT_PRIORITIZED_WEIGHT
+			} else {
+				weight += ((input_size) / 50) * allowlists.DEFAULT_PRIORITIZED_WEIGHT
+			}
+		}
+		return
+	}
+
+	outputsMap := ctx.Context.GetOutputsFromPredicate(predicate)
+	var outputBuilder strings.Builder
+	for output, weight := range outputsMap {
+		outputBuilder.WriteString(fmt.Sprintf("%s,%d\n", output, weight))
 	}
 	weightListFile := filepath.Join(topDir, ctx.Config().OutDir(), ".ninja_weight_list")
 
