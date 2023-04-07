@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3911f50_d6608d6b",
+        "filename": "android/testing.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-07T21:00:12Z",
+      "side": 1,
+      "message": "Could use this function rather than adding a new one?",
+      "range": {
+        "startLine": 1116,
+        "startChar": 5,
+        "endLine": 1116,
+        "endChar": 35
+      },
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89294a35_014ae53a",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-07T21:00:12Z",
+      "side": 1,
+      "message": "Would we still have an error if this directory were absent? If so can we add a test case for that as well?\n\nRather than erroring in these cases, can we just...build the modules? What changes to the allowlist would we need to make for that to happen?",
+      "range": {
+        "startLine": 1250,
+        "startChar": 4,
+        "endLine": 1250,
+        "endChar": 63
+      },
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

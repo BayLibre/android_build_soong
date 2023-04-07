@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65301cf3_f8173582",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-07T21:00:12Z",
+      "side": 1,
+      "message": "Less about any erroring out, and more \"why do we need to both set force enable this module _and_ add its directory to Bp2BuildDefaultTrue?\" Why isn\u0027t force enabling a module sufficient to it being enabled in mixed builds. That is the problem I would like to resolve.",
+      "parentUuid": "d9606c97_b33d8587",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 125
+      },
+      "revId": "59777f5cafe5618fc5063fffd59ca0f5a5982bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c541d097_224ef7fb",
         "filename": "bp2build/build_conversion_test.go",
         "patchSetId": 17
