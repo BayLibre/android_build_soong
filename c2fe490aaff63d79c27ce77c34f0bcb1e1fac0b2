@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09a876f4_7c96f71d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1017430
+      },
+      "writtenOn": "2023-04-07T20:05:56Z",
+      "side": 1,
+      "message": "This should not be the default for all devices at this time; it should be an opt-in.",
+      "revId": "c2fe490aaff63d79c27ce77c34f0bcb1e1fac0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6fc0303_475e6fc0",
         "filename": "cc/config/arm64_device.go",
         "patchSetId": 2
