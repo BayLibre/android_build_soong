@@ -34,6 +34,24 @@
       "parentUuid": "4171f213_ea28d830",
       "revId": "f17c1864c28fefc4bd76219b18cd57998add430e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af88f23_dc04c28d",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-07T01:21:33Z",
+      "side": 1,
+      "message": "Jin was saying zip apexes were only used in 1 location and he wanted to remove them. Hopefully we\u0027ll be able to do that soon.",
+      "parentUuid": "8af007a5_0aca474e",
+      "revId": "f17c1864c28fefc4bd76219b18cd57998add430e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
