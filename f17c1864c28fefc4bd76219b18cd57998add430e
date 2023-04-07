@@ -52,6 +52,24 @@
       "parentUuid": "8af007a5_0aca474e",
       "revId": "f17c1864c28fefc4bd76219b18cd57998add430e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a67f895_59d4a827",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-07T01:29:36Z",
+      "side": 1,
+      "message": "+1!",
+      "parentUuid": "8af88f23_dc04c28d",
+      "revId": "f17c1864c28fefc4bd76219b18cd57998add430e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
