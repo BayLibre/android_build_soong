@@ -238,6 +238,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "632c83c5_311637ce",
+        "filename": "tests/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-10T19:44:18Z",
+      "side": 1,
+      "message": "one option might be to use the `bazel_module.bp2build_available` syntax to ensure these are/are not enabled with bp2build regardless of other logic changes.",
+      "parentUuid": "091269c0_1bb31f2b",
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02ee7141_9b46662b",
         "filename": "tests/mixed_mode_test.sh",
         "patchSetId": 22
