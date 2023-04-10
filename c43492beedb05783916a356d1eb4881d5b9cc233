@@ -163,6 +163,24 @@
       "parentUuid": "a3e447df_469cb4ec",
       "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035ccc3a_2247e962",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-10T23:28:00Z",
+      "side": 1,
+      "message": "103 adds the flag to the `Arm64Lldflags` ninja variable, which will be used by Soong compiles.  102 is exporting the `Arm64Lldflags` Bazel variable, which as written is getting the value from the `arm64Lldflags` Go variable, which is empty.",
+      "parentUuid": "04efaf93_9a3b9964",
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
