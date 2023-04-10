@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "179d2ee7_f16e153f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-10T20:44:46Z",
+      "side": 1,
+      "message": "Can you expand on what this is doing and why?",
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "afe1a747_12040814",
         "filename": "cc/fuzz.go",
         "patchSetId": 4
@@ -14,6 +31,30 @@
       "writtenOn": "2023-04-10T18:17:40Z",
       "side": 1,
       "message": "This seems potentially brittle. I know it would require an owners review from the CC folks, but could we perhaps encode this logic as a function in `cc/cc.go` instead, and call it after doing a checked typecast?\n\nThe way it\u0027s done right now will break if typenames change.\n\n\nIf this really is the only way to do it for some reason, this at a minimum needs a comment explaining why and what you\u0027re trying to test for.",
+      "range": {
+        "startLine": 218,
+        "startChar": 21,
+        "endLine": 218,
+        "endChar": 196
+      },
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c9b9548_09231052",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-10T20:44:46Z",
+      "side": 1,
+      "message": "Agreed, string names of types should never be necessary.  If you wanted to check the type you could use a type assertion: `if _, isPrebuilt :\u003d module.(*Module).linker.(*cc.prebuiltLibraryLinker)`.  But even that is brittle, as it won\u0027t match a module that wraps a `prebuiltLibraryLinker`.  For that, use `c.IsPrebuilt()`.",
+      "parentUuid": "afe1a747_12040814",
       "range": {
         "startLine": 218,
         "startChar": 21,
