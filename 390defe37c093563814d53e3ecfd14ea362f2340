@@ -70,6 +70,24 @@
       "parentUuid": "1a39efa0_a359cfe8",
       "revId": "390defe37c093563814d53e3ecfd14ea362f2340",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd60f222_8ac3da37",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-10T20:35:20Z",
+      "side": 1,
+      "message": "I\u0027m going to defer to Joe on this.",
+      "parentUuid": "d2a6aa19_d5392ab3",
+      "revId": "390defe37c093563814d53e3ecfd14ea362f2340",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
