@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f983ae93_d94a58f8",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-04-10T21:46:01Z",
+      "side": 1,
+      "message": "What about changing to 16kb by default for Pixel 2021+ (pixel_experience_2021_and_newer.mk), but leaving the global 4k default in place until we\u0027ve done a full audit of devices and form factors that may not need/want it quite yet (e.g., Wear, TV, Go, legacy Pixel like redfin/sunfish). We can always expand that default set, but it would avoid potential disruption for those other devices.",
+      "parentUuid": "4d828ad3_c94e4673",
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04f0eea6_f0d97340",
         "filename": "android/variable.go",
         "patchSetId": 3
