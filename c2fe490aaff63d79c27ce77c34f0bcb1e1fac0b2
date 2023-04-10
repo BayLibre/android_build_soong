@@ -87,6 +87,24 @@
       "parentUuid": "b4d291bd_aa0dbee6",
       "revId": "c2fe490aaff63d79c27ce77c34f0bcb1e1fac0b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a27f83dd_d3f81a05",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-04-10T17:05:54Z",
+      "side": 1,
+      "message": "yeah, that seems like the right way forward for now (but should be opt-in rather than opt-out).",
+      "parentUuid": "7f21d0fd_b0c4b025",
+      "revId": "c2fe490aaff63d79c27ce77c34f0bcb1e1fac0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
