@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d828ad3_c94e4673",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-04-10T21:10:08Z",
+      "side": 1,
+      "message": "The flag PRODUCT_MAX_PAGE_SIZE_SUPPORTED will be used in the device targets to change the binary alignment. See\n\nhttps://android-review.git.corp.google.com/c/device/google/redfin/+/2530010/1/aosp_redfin.mk",
+      "parentUuid": "fde2a288_8e7e3bf0",
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04f0eea6_f0d97340",
         "filename": "android/variable.go",
         "patchSetId": 3
