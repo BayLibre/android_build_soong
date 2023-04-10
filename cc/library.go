@@ -932,9 +932,19 @@ func (handler *ccLibraryBazelHandler) generateSharedBazelBuildActions(ctx androi
 func (handler *ccLibraryBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
 	bazelCtx := ctx.Config().BazelContext
 	bazelCtx.QueueBazelRequest(label, cquery.GetCcInfo, android.GetConfigKeyApexVariant(ctx, GetApexConfigKey(ctx)))
+	if handler.module.HasStubsVariants() {
+		for _, v := range handler.module.library.allStubsVersions() {
+			stubsLabel := label + "_stub_libs-" + v
+			bazelCtx.QueueBazelRequest(stubsLabel, cquery.GetCcInfo, android.GetConfigKeyApexVariant(ctx, GetApexConfigKey(ctx)))
+		}
+	}
 }
 
 func (handler *ccLibraryBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+	if handler.module.library.stubsVersion() != "" {
+		// if we are a stubs variant, just use the Bazel stubs target
+		label = label + "_stub_libs-" + handler.module.library.stubsVersion()
+	}
 	bazelCtx := ctx.Config().BazelContext
 	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKeyApexVariant(ctx, GetApexConfigKey(ctx)))
 	if err != nil {
@@ -963,6 +973,9 @@ func (handler *ccLibraryBazelHandler) ProcessBazelQueryResponse(ctx android.Modu
 	}
 
 	handler.module.setAndroidMkVariablesFromCquery(ccInfo.CcAndroidMkInfo)
+
+	cctx := moduleContextFromAndroidModuleContext(ctx, handler.module)
+	addStubDependencyInfos(cctx)
 }
 
 func (library *libraryDecorator) setFlagExporterInfoFromCcInfo(ctx android.ModuleContext, ccInfo cquery.CcInfo) {
@@ -1788,6 +1801,10 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 		Target:                               ctx.Target(),
 	})
 
+	return unstrippedOutputFile
+}
+
+func addStubDependencyInfos(ctx ModuleContext) {
 	stubs := ctx.GetDirectDepsWithTag(stubImplDepTag)
 	if len(stubs) > 0 {
 		var stubsInfo []SharedStubLibrary
@@ -1802,12 +1819,10 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 		}
 		ctx.SetProvider(SharedLibraryStubsProvider, SharedLibraryStubsInfo{
 			SharedStubLibraries: stubsInfo,
-
-			IsLLNDK: ctx.IsLlndk(),
+			IsLLNDK:             ctx.IsLlndk(),
 		})
 	}
 
-	return unstrippedOutputFile
 }
 
 func (library *libraryDecorator) unstrippedOutputFilePath() android.Path {
