@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe1a747_12040814",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-04-10T18:17:40Z",
+      "side": 1,
+      "message": "This seems potentially brittle. I know it would require an owners review from the CC folks, but could we perhaps encode this logic as a function in `cc/cc.go` instead, and call it after doing a checked typecast?\n\nThe way it\u0027s done right now will break if typenames change.\n\n\nIf this really is the only way to do it for some reason, this at a minimum needs a comment explaining why and what you\u0027re trying to test for.",
+      "range": {
+        "startLine": 218,
+        "startChar": 21,
+        "endLine": 218,
+        "endChar": 196
+      },
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844d813e_46b14a2e",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-04-10T18:17:40Z",
+      "side": 1,
+      "message": "Either explain the bug or link to a bug. This comment as is doesn\u0027t explain to a reader what is needed or why.",
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f414abf1_21a483bd",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-04-10T18:17:40Z",
+      "side": 1,
+      "message": "If this check doesn\u0027t match, doesn\u0027t that mean there\u0027s a bug? Should we be panicking rather than just putting this inside a conditional?\n\nIf not, is it only an option of having 0 modules sometimes?\n\nMostly, this code looks like it will silently do something unusual if we manage to have len(sharedLibrariesModules) \u003d\u003d 2 and len(sharedLibararies) \u003d\u003d 3 or something like that.\n\nNormally, wanting to do this kind of indexing would instead make me think that `sharedLibraries` should instead be a tuple of a path and a module.\n\nIf there\u0027s an intentionally supported case where the module is not available, then it can be a module pointer instead with nil used to encode a missing module.",
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0979105_f1866d54",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-04-10T18:17:40Z",
+      "side": 1,
+      "message": "The fact that this is repeated reinforces my earlier idea that this should live in cc/cc.go instead as a helper.",
+      "range": {
+        "startLine": 489,
+        "startChar": 5,
+        "endLine": 489,
+        "endChar": 231
+      },
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "441b9c15_3816d25e",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-04-10T18:17:40Z",
+      "side": 1,
+      "message": "Don\u0027t really care, but normally we don\u0027t edit unrelated parts of the file to avoid git-blame confusion.",
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
