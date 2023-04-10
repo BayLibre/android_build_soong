@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d0c2a17_3950c6d5",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-10T15:51:33Z",
+      "side": 1,
+      "message": "FWIW, since bazelForceEnabledModules only gets run in verification CI (and not real users), I would be fine with it implying `ensure_allowlist_integrity`.\n\nStill, that\u0027s neither here nor there for this CL.",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 4
+      },
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3069231_bf08d158",
+        "filename": "android/config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1923,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-10T15:51:33Z",
+      "side": 1,
+      "message": "Would AddForcedEnabledModules be more accurate?",
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3911f50_d6608d6b",
@@ -38,6 +78,30 @@
       "side": 1,
       "message": "thanks!",
       "parentUuid": "c3911f50_d6608d6b",
+      "range": {
+        "startLine": 1116,
+        "startChar": 5,
+        "endLine": 1116,
+        "endChar": 35
+      },
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41c6007_dceea1ba",
+        "filename": "android/testing.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-10T15:51:33Z",
+      "side": 1,
+      "message": "Did you resolve this? Still looks like you have the new function.",
+      "parentUuid": "85bad878_5c5de614",
       "range": {
         "startLine": 1116,
         "startChar": 5,
@@ -91,6 +155,40 @@
         "endLine": 1250,
         "endChar": 63
       },
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091269c0_1bb31f2b",
+        "filename": "tests/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-10T15:51:33Z",
+      "side": 1,
+      "message": "This e2e test mechanism is a bit brittle, though I can\u0027t think of an easier way to get a comprehensive test. Still, we can improve the robustness:\n\nWhat if some day we enable genrules universally (or allowlist everything under build/soong)? We\u0027d no longer be testing bazel-force-enabled. We should thus ensure our e2e test tests the negative case, as well (and we\u0027ll have to fix the test, if we were to make genrules universally accessible)",
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ee7141_9b46662b",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 22
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-10T15:51:33Z",
+      "side": 1,
+      "message": "Should this be its own test case? This has nothing to do with an irrelevant file.",
       "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

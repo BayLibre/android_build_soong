@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31b773c9_80e2a103",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-10T15:51:33Z",
+      "side": 1,
+      "message": "I think it should be a separate discussion if we want module allowlisting to somehow imply bp2build allowlisting. It shouldn\u0027t be in this CL.\n\nAs for the discussion, I\u0027d want --bazel-forced-enabled to behave exactly the same as if the modules were added to the prod allowlist. So, if we change one mechanism to imply bp2build, we should change the other, too. \n\nStill, I vote for deferring this decision to a separate CL / consideration.",
+      "parentUuid": "772d01e7_c5764df1",
+      "range": {
+        "startLine": 92,
+        "startChar": 22,
+        "endLine": 92,
+        "endChar": 125
+      },
+      "revId": "59777f5cafe5618fc5063fffd59ca0f5a5982bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c541d097_224ef7fb",
         "filename": "bp2build/build_conversion_test.go",
         "patchSetId": 17
