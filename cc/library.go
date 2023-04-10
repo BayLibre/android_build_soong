@@ -932,10 +932,20 @@ func (handler *ccLibraryBazelHandler) generateSharedBazelBuildActions(ctx androi
 func (handler *ccLibraryBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
 	bazelCtx := ctx.Config().BazelContext
 	bazelCtx.QueueBazelRequest(label, cquery.GetCcInfo, android.GetConfigKeyApexVariant(ctx, GetApexConfigKey(ctx)))
+	if handler.module.HasStubsVariants() {
+		stubsLabel := apiSurfaceModuleLibCurrentPackage + ctx.ModuleName()
+		for _, v := range handler.module.library.allStubsVersions() {
+			stubsLabel := label + "_stub_libs-" + v
+			bazelCtx.QueueBazelRequest(stubsLabel, cquery.GetCcInfo, android.GetConfigKeyApexVariant(ctx, GetApexConfigKey(ctx)))
+		}
+	}
 }
 
 func (handler *ccLibraryBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
 	bazelCtx := ctx.Config().BazelContext
+	if handler.module.library.stubsVersion() != "" {
+		label = label + "_stub_libs-" + handler.module.library.stubsVersion()
+	}
 	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKeyApexVariant(ctx, GetApexConfigKey(ctx)))
 	if err != nil {
 		ctx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
