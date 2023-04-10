@@ -149,6 +149,7 @@ sharedLibraries = []
 rootSharedLibraries = []
 
 shared_info_tag = "//build/bazel/rules/cc:cc_library_shared.bzl%CcSharedLibraryOutputInfo"
+stubs_tag = "//build/bazel/rules/cc:cc_stub_library.bzl%CcStubInfo"
 unstripped_tag = "//build/bazel/rules/cc:stripped_cc_common.bzl%CcUnstrippedInfo"
 unstripped = ""
 
@@ -160,6 +161,8 @@ if shared_info_tag in p:
   unstripped = path
   if unstripped_tag in p:
     unstripped = p[unstripped_tag].unstripped.path
+elif stubs_tag in p:
+  rootSharedLibraries.extend([f.path for f in target.files.to_list()])
 else:
   for linker_input in linker_inputs:
     for library in linker_input.libraries:
@@ -196,6 +199,11 @@ if androidmk_tag in p:
     local_static_libs = androidmk_info.local_static_libs
     local_whole_static_libs = androidmk_info.local_whole_static_libs
     local_shared_libs = androidmk_info.local_shared_libs
+
+stub_libs_tag = "//build/bazel/rules/cc:cc_library_shared.bzl%CcStubLibrariesInfo"
+stubs_target = None
+if stub_libs_tag in p:
+    stub_libs_info = p[stub_libs_tag]
 
 return json.encode({
     "OutputFiles": outputFiles,
