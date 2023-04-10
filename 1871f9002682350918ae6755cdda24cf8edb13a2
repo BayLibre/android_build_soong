@@ -22,6 +22,30 @@
       },
       "revId": "1871f9002682350918ae6755cdda24cf8edb13a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f779fe9_5eae9c5b",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-04-10T01:58:42Z",
+      "side": 1,
+      "message": "The json file is created to include the build artifact information for building vendor modules \"against VNDK snapshot\". The json file was written only if the \"VndkSnapshotBuildArtifacts()\" option is set.\nBut I want to use the json file as a metadata to include the license information as well by default. So the json file will be built always for the license information. It will additionally include the build artifact information if the \"VndkSnapshotBuildArtifacts()\" option is set.",
+      "parentUuid": "608839fe_d22aaa2f",
+      "range": {
+        "startLine": 728,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 76
+      },
+      "revId": "1871f9002682350918ae6755cdda24cf8edb13a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
