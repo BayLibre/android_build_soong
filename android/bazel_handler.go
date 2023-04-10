@@ -804,7 +804,7 @@ def _config_node_transition_impl(settings, attr):
     outputs = {
         "//command_line_option:platforms": "@soong_injection//product_config_platforms/products/{PRODUCT}-{VARIANT}:%s" % target,
         "@//build/bazel/rules/apex:within_apex": attr.within_apex,
-        "@//build/bazel/rules/apex:min_sdk_version": attr.apex_sdk_version,
+        "@//build/bazel/rules/apex:mixed_builds_min_sdk_version": attr.apex_sdk_version,
         "@//build/bazel/rules/apex:apex_name": apex_name,
     }
 
@@ -816,7 +816,7 @@ _config_node_transition = transition(
     outputs = [
         "//command_line_option:platforms",
         "@//build/bazel/rules/apex:within_apex",
-        "@//build/bazel/rules/apex:min_sdk_version",
+        "@//build/bazel/rules/apex:mixed_builds_min_sdk_version",
         "@//build/bazel/rules/apex:apex_name",
     ],
 )
@@ -1038,7 +1038,7 @@ def get_arch(target):
     fail("expected platform name of the form '{TARGET_PRODUCT}-{TARGET_BUILD_VARIANT}_android_<arch>' or '{TARGET_PRODUCT}-{TARGET_BUILD_VARIANT}_linux_<arch>', but was " + str(platforms))
 
   within_apex = buildoptions.get("//build/bazel/rules/apex:within_apex")
-  apex_sdk_version = buildoptions.get("//build/bazel/rules/apex:min_sdk_version")
+  apex_sdk_version = buildoptions.get("//build/bazel/rules/apex:mixed_builds_min_sdk_version")
 
   if within_apex:
     config_key += "|within_apex"
