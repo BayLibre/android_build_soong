@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde2a288_8e7e3bf0",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-10T20:51:50Z",
+      "side": 1,
+      "message": "This would be used for individual Android.bp files to modify cflags based on the page size, is that necessary?",
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f0eea6_f0d97340",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-10T20:51:50Z",
+      "side": 1,
+      "message": "4096 to match the previous default cflags.",
+      "range": {
+        "startLine": 513,
+        "startChar": 41,
+        "endLine": 513,
+        "endChar": 46
+      },
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8427a606_3fd824fa",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-10T20:51:50Z",
+      "side": 1,
+      "message": "This name doesn\u0027t match what it does.  It is not setting anything, and it is returning all the flags, not just the page size flag.",
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e447df_469cb4ec",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-10T20:51:50Z",
+      "side": 1,
+      "message": "This is exporting the empty arm64Lldflags to anything that builds with bazel, but the next line is using armLdflags plus the page size flag for anything that builds with Soong.",
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
