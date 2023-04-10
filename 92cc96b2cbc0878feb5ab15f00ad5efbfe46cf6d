@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4303838_88069101",
+        "filename": "android/namespace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-10T18:39:14Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 348,
+        "startChar": 134,
+        "endLine": 348,
+        "endChar": 144
+      },
+      "revId": "92cc96b2cbc0878feb5ab15f00ad5efbfe46cf6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
