@@ -932,9 +932,19 @@ func (handler *ccLibraryBazelHandler) generateSharedBazelBuildActions(ctx androi
 func (handler *ccLibraryBazelHandler) QueueBazelCall(ctx android.BaseModuleContext, label string) {
 	bazelCtx := ctx.Config().BazelContext
 	bazelCtx.QueueBazelRequest(label, cquery.GetCcInfo, android.GetConfigKeyApexVariant(ctx, GetApexConfigKey(ctx)))
+	if handler.module.HasStubsVariants() {
+		for _, v := range handler.module.library.allStubsVersions() {
+			stubsLabel := label + "_stub_libs-" + v
+			bazelCtx.QueueBazelRequest(stubsLabel, cquery.GetCcInfo, android.GetConfigKeyApexVariant(ctx, GetApexConfigKey(ctx)))
+		}
+	}
 }
 
 func (handler *ccLibraryBazelHandler) ProcessBazelQueryResponse(ctx android.ModuleContext, label string) {
+	if handler.module.library.stubsVersion() != "" {
+		// if we are a stubs variant, just use the Bazel stubs target
+		label = label + "_stub_libs-" + handler.module.library.stubsVersion()
+	}
 	bazelCtx := ctx.Config().BazelContext
 	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKeyApexVariant(ctx, GetApexConfigKey(ctx)))
 	if err != nil {
@@ -963,6 +973,9 @@ func (handler *ccLibraryBazelHandler) ProcessBazelQueryResponse(ctx android.Modu
 	}
 
 	handler.module.setAndroidMkVariablesFromCquery(ccInfo.CcAndroidMkInfo)
+
+	cctx := moduleContextFromAndroidModuleContext(ctx, handler.module)
+	addStubDependencyProviders(cctx)
 }
 
 func (library *libraryDecorator) setFlagExporterInfoFromCcInfo(ctx android.ModuleContext, ccInfo cquery.CcInfo) {
@@ -1788,6 +1801,12 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 		Target:                               ctx.Target(),
 	})
 
+	addStubDependencyProviders(ctx)
+
+	return unstrippedOutputFile
+}
+
+func addStubDependencyProviders(ctx ModuleContext) {
 	stubs := ctx.GetDirectDepsWithTag(stubImplDepTag)
 	if len(stubs) > 0 {
 		var stubsInfo []SharedStubLibrary
@@ -1802,12 +1821,9 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 		}
 		ctx.SetProvider(SharedLibraryStubsProvider, SharedLibraryStubsInfo{
 			SharedStubLibraries: stubsInfo,
-
-			IsLLNDK: ctx.IsLlndk(),
+			IsLLNDK:             ctx.IsLlndk(),
 		})
 	}
-
-	return unstrippedOutputFile
 }
 
 func (library *libraryDecorator) unstrippedOutputFilePath() android.Path {
@@ -2650,7 +2666,7 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 // normalizeVersions modifies `versions` in place, so that each raw version
 // string becomes its normalized canonical form.
 // Validates that the versions in `versions` are specified in least to greatest order.
-func normalizeVersions(ctx android.BaseModuleContext, versions []string) {
+func normalizeVersions(ctx android.BazelConversionPathContext, versions []string) {
 	var previous android.ApiLevel
 	for i, v := range versions {
 		ver, err := android.ApiLevelFromUser(ctx, v)
