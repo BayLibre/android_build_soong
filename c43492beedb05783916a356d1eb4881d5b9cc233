@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0474ccbe_253c7b8f",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-10T23:24:09Z",
+      "side": 1,
+      "message": "You don\u0027t need this hunk if you only need to propagate the product flag to the global ldflags.  This hunk would allow referencing the product flag directly from Android.bp files, and should only be added if it is strictly necessary.",
+      "parentUuid": "f983ae93_d94a58f8",
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04f0eea6_f0d97340",
         "filename": "android/variable.go",
         "patchSetId": 3
