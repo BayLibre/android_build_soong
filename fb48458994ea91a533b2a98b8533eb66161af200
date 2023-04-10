@@ -41,6 +41,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5211cd06_d5ef094a",
+        "filename": "android/config.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1923,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-10T19:43:47Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "c3069231_bf08d158",
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3911f50_d6608d6b",
@@ -102,6 +120,30 @@
       "side": 1,
       "message": "Did you resolve this? Still looks like you have the new function.",
       "parentUuid": "85bad878_5c5de614",
+      "range": {
+        "startLine": 1116,
+        "startChar": 5,
+        "endLine": 1116,
+        "endChar": 35
+      },
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55402dd4_3f16c620",
+        "filename": "android/testing.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-10T19:43:47Z",
+      "side": 1,
+      "message": "Forgot to upload, thanks.",
+      "parentUuid": "d41c6007_dceea1ba",
       "range": {
         "startLine": 1116,
         "startChar": 5,
@@ -178,6 +220,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56380989_74fc7d43",
+        "filename": "tests/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-10T19:43:47Z",
+      "side": 1,
+      "message": "Is there a better module-type that\u0027s less prone to brittleness? \nSomething like a hello world C++ file?\n\nThe negative test case is tested a few lines ahead in mixed_mode_test.sh FWIW",
+      "parentUuid": "091269c0_1bb31f2b",
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02ee7141_9b46662b",
         "filename": "tests/mixed_mode_test.sh",
         "patchSetId": 22
@@ -189,6 +249,24 @@
       "writtenOn": "2023-04-10T15:51:33Z",
       "side": 1,
       "message": "Should this be its own test case? This has nothing to do with an irrelevant file.",
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c447b3b_a4ebf226",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 22
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-10T19:43:47Z",
+      "side": 1,
+      "message": "thanks. This actually made me realize that the test was failing, silently. Side note - why doesn\u0027t `fail` actually emit anything? I\u0027ll file a bug.",
+      "parentUuid": "02ee7141_9b46662b",
       "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
