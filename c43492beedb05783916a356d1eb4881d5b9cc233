@@ -94,6 +94,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd68f65f_73c9bb43",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-04-10T23:20:32Z",
+      "side": 1,
+      "message": "I updated it to AddMaxPageSizeForArm64.",
+      "parentUuid": "8427a606_3fd824fa",
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3e447df_469cb4ec",
@@ -107,6 +125,24 @@
       "writtenOn": "2023-04-10T20:51:50Z",
       "side": 1,
       "message": "This is exporting the empty arm64Lldflags to anything that builds with bazel, but the next line is using armLdflags plus the page size flag for anything that builds with Soong.",
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04efaf93_9a3b9964",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-04-10T23:20:32Z",
+      "side": 1,
+      "message": "The line 103 is adding the max-page-size flag to arm64Lldflags, so it is not empty.\n\nFor testing, I removed line 102 and compiled and I got:\n\n```\nERROR: Traceback (most recent call last):\n\tFile \"/storage/hd1/Development/experiments/aosp-master-with-phones/out/soong/workspace/prebuilts/clang/host/linux-x86/BUILD.bazel\n\", line 1194, column 39, in \u003ctoplevel\u003e\n\t\t) + generated_config_constants.Arm64Lldflags,\nError: \u0027struct\u0027 value has no field or method \u0027Arm64Lldflags\u0027\nAvailable attributes: Arm64ArchVariantCflags, Arm64Armv82ACflags, Arm64Armv82ADotprodCflags, Arm64Armv8ABranchProtCflags, Arm64Armv8ACfla\ngs, Arm64Armv9ACflags, Arm64Cflags, Arm64CortexA53Cflags, Arm64CortexA55Cflags, Arm64Cppflags, Arm64CpuVariantCflags, Arm64CpuVariantLdfl\n```",
+      "parentUuid": "a3e447df_469cb4ec",
       "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
