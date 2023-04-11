@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ec0469_ace5c0be",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1511,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-11T02:48:02Z",
+      "side": 1,
+      "message": "I intentionally omit module name here to keep this model simple. Maybe, we can revisit here if there are too many false positive cases.",
+      "parentUuid": "36ac5079_821f74f4",
+      "range": {
+        "startLine": 1511,
+        "startChar": 1,
+        "endLine": 1511,
+        "endChar": 42
+      },
+      "revId": "71781572d0624307b57f73c5151aaeab7e25b641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25a7e62e_410b9157",
@@ -84,6 +108,30 @@
       "writtenOn": "2023-04-10T01:43:54Z",
       "side": 1,
       "message": "Where do these numbers (50 and 10) come from?",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 73
+      },
+      "revId": "71781572d0624307b57f73c5151aaeab7e25b641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d205fcc0_5706c296",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-11T02:48:02Z",
+      "side": 1,
+      "message": "I adjusted those numbers which makes false negative almost zero. I elaborated comments.",
+      "parentUuid": "6c444724_e50a9567",
       "range": {
         "startLine": 275,
         "startChar": 0,
