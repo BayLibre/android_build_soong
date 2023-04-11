@@ -83,6 +83,7 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 	ctx.BottomUp("apex_dcla_deps", apexDCLADepsMutator).Parallel()
 	// Register after apex_info mutator so that it can use ApexVariationName
 	ctx.TopDown("apex_strict_updatability_lint", apexStrictUpdatibilityLintMutator).Parallel()
+	ctx.TopDown("apex_unique_stub_library", apexUniqueStubLibraryMutator).Parallel()
 }
 
 type apexBundleProperties struct {
@@ -1138,6 +1139,58 @@ func apexStrictUpdatibilityLintMutator(mctx android.TopDownMutatorContext) {
 			return true
 		})
 	}
+}
+// apexUniqueStubLibraryMutator checks that a stub library is not installed in multiple apexes.
+// test apexes are ignored.
+func apexUniqueStubLibraryMutator(mctx android.TopDownMutatorContext) {
+	if !mctx.Module().Enabled() {
+		return
+	}
+	// Since this is a top-down mutator, the map below will be complete before cc_libraries are visited.
+	testApexes := []string{}
+	if apex, ok := mctx.Module().(*apexBundle); ok && apex.testApex {
+		testApexes = append(testApexes, apex.Name())
+	}
+	// Check that cc stub libraries do not have more than one apex available
+	if cc, ok := mctx.Module().(*cc.Module); ok && stubLibraryMultipleApexViolations(cc, testApexes) {
+		ctx.PropertyErrorf("apex_available",
+		"stub libraries should have a single apex_available (test apexes excluded).")
+	}
+}
+
+// Returns true if a stub library could be installed in multiple apexes
+func stubLibraryMultipleApexViolation(ctx android.ModuleContext, c *cc.Module, testApexes []string) bool {
+	// Check if this module is an allowlist
+	if _, exists := skipStubLibraryMultipleApexViolation[c.Name()]; exists {
+		return false
+	}
+	if c.IsPrebuilt() { // TODO
+		return false
+	}
+	// If not a stub library, no check necessary
+	if !c.HasStubsVariants() {
+		return false
+	}
+	// Do not enforce the check on prebuilts/module_sdk.
+	// These old snapshots _could_ have incorrect values of prebuilts/module_sdk.
+	if android.HasAnyPrefix(ctx.ModuleDir(), []string{
+		"prebuilts/module_sdk",
+		"prebuilts/runtime/mainline",
+	}) {
+		return false
+	}
+	aa := c.ApexAvailable()
+	_, aaWithoutTestApexes, _ := android.ListSetDifference(aa, testApexes)
+	// Stub libraries should not have more than one apex_available
+	if len(aaWithoutTestApexes) > 1 {
+		return true
+	}
+	// Stub libraries should not use the wildcard
+	if aaWithoutTestApexes[0] == "//apex_available:anyapex" {
+		return true
+	}
+	// Default: no violation
+	return false
 }
 
 // enforceAppUpdatability propagates updatable=true to apps of updatable apexes
