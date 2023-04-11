@@ -33,6 +33,24 @@
       "message": "Sorry, something I wanted to check was - will this also be enabled on buildbots? If so, is that ok to do on buildbots in CI?",
       "revId": "c8f6cc24f9ee537f4b1af7cbb273a405749294e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a51ef55_f94aa3d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2023-04-11T10:39:07Z",
+      "side": 1,
+      "message": "It should be. reproxy will cache that it used GCE credentials in reproxy.creds. See https://android-build.googleplex.com/builds/build-details/P53855063/targets/aosp_arm64-userdebug from presubmit for an example reproxy.INFO file.",
+      "parentUuid": "c13c5f7b_93fcd300",
+      "revId": "c8f6cc24f9ee537f4b1af7cbb273a405749294e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
