@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2668b66_474d9934",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-11T04:06:42Z",
+      "side": 1,
+      "message": "Ok, then please consider adding more comments here to show how these can be tuned; ex) what are they, how increasing or decreasing them will affect the build performance, etc.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 32
+      },
+      "revId": "d550f12a52176e5101ab5a86ea7c58205ce7f2f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
