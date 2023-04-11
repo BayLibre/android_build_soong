@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1cf9852_429847da",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-11T22:32:42Z",
+      "side": 1,
+      "message": "forceenabled should never be done on one of those branches. It would eventually be replaced with a different check that determines whether the mixedBuildDisabled reasoning is platform/technical or an actual problem that should be flagged to the user.",
+      "parentUuid": "68a30dd1_4c54f9c1",
+      "revId": "1e7494a96bc2771f2c125d797f8f3c1db4d35bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94fb0e71_c0b8683f",
         "filename": "android/config.go",
         "patchSetId": 24
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-11T18:20:24Z",
       "side": 1,
       "message": "is this for testability? (i.e. command-line handling seems to already be in place at L#587",
+      "revId": "1e7494a96bc2771f2c125d797f8f3c1db4d35bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3f00a85_bd903c48",
+        "filename": "android/config.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1923,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-11T22:32:42Z",
+      "side": 1,
+      "message": "yes - it\u0027s the simplest way to finagle this into a testConfig",
+      "parentUuid": "94fb0e71_c0b8683f",
       "revId": "1e7494a96bc2771f2c125d797f8f3c1db4d35bb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2023-04-11T18:20:24Z",
       "side": 1,
       "message": "It\u0027s very unlikely that \"\" could be in the map, so what\u0027s the rationale for checking `m.Name() !\u003d \"\"`?\nnit: maybe perform that check first if it does make sense for some reason.",
+      "revId": "1e7494a96bc2771f2c125d797f8f3c1db4d35bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9732cc8a_ced95dba",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-11T22:32:42Z",
+      "side": 1,
+      "message": "It was in the map very frequently when testing :/",
+      "parentUuid": "a52d3f38_180fba40",
       "revId": "1e7494a96bc2771f2c125d797f8f3c1db4d35bb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
