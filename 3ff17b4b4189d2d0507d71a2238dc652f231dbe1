@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85407e39_621a82e0",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 3686,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-11T16:15:21Z",
+      "side": 1,
+      "message": "I assume this will also have the same problems since I copied it from the test above",
+      "range": {
+        "startLine": 3686,
+        "startChar": 3,
+        "endLine": 3686,
+        "endChar": 7
+      },
+      "revId": "3ff17b4b4189d2d0507d71a2238dc652f231dbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
