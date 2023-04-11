@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9ff14e_61c3c38d",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-11T12:31:08Z",
+      "side": 0,
+      "message": "please delete this function from cc/util.go",
+      "range": {
+        "startLine": 413,
+        "startChar": 46,
+        "endLine": 413,
+        "endChar": 64
+      },
+      "revId": "3848896584bc6bbd92dc5953863f63bb8a31d6fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

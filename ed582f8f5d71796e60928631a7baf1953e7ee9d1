@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12823a84_6eeceeb7",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-11T12:31:08Z",
+      "side": 1,
+      "message": "Make this tuple a struct? Currently, it isn\u0027t clear which is for what.",
+      "range": {
+        "startLine": 162,
+        "startChar": 144,
+        "endLine": 162,
+        "endChar": 174
+      },
+      "revId": "ed582f8f5d71796e60928631a7baf1953e7ee9d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69b0d15_4fe7d9b5",
+        "filename": "snapshot/host_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-11T12:31:08Z",
+      "side": 1,
+      "message": "no need since android.Cp deletes the destination file?",
+      "range": {
+        "startLine": 118,
+        "startChar": 18,
+        "endLine": 118,
+        "endChar": 21
+      },
+      "revId": "ed582f8f5d71796e60928631a7baf1953e7ee9d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbf2bbdc_8768df3c",
+        "filename": "snapshot/snapshot_base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-11T12:31:08Z",
+      "side": 1,
+      "message": "why do we have to get this separately? can\u0027t we use m.Name() instead?",
+      "range": {
+        "startLine": 129,
+        "startChar": 53,
+        "endLine": 129,
+        "endChar": 64
+      },
+      "revId": "ed582f8f5d71796e60928631a7baf1953e7ee9d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
