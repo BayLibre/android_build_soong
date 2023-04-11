@@ -22,6 +22,30 @@
       },
       "revId": "d550f12a52176e5101ab5a86ea7c58205ce7f2f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c030c2_a1d50455",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-11T05:38:06Z",
+      "side": 1,
+      "message": "I elaborated comments. PTAL.",
+      "parentUuid": "f2668b66_474d9934",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 32
+      },
+      "revId": "d550f12a52176e5101ab5a86ea7c58205ce7f2f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
