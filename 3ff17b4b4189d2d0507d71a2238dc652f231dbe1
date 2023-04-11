@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "419d8bc7_a42d7cce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-11T17:33:59Z",
+      "side": 1,
+      "message": "I am not too familiar with the Bazel cquery requests, but the stub replacement logic looks good to me.",
+      "revId": "3ff17b4b4189d2d0507d71a2238dc652f231dbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85407e39_621a82e0",
