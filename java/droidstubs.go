@@ -67,6 +67,8 @@ type Droidstubs struct {
 
 	metadataZip android.WritablePath
 	metadataDir android.WritablePath
+
+	stubsSrcJar android.WritablePath
 }
 
 type DroidstubsProperties struct {
@@ -561,7 +563,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	generateStubs := BoolDefault(d.properties.Generate_stubs, true)
 	var stubsDir android.OptionalPath
 	if generateStubs {
-		d.Javadoc.stubsSrcJar = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"-"+"stubs.srcjar")
+		d.stubsSrcJar = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"-"+"stubs.srcjar")
 		stubsDir = android.OptionalPathForPath(android.PathForModuleOut(ctx, "metalava", "stubsDir"))
 		rule.Command().Text("rm -rf").Text(stubsDir.String())
 		rule.Command().Text("mkdir -p").Text(stubsDir.String())
@@ -693,7 +695,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			BuiltTool("soong_zip").
 			Flag("-write_if_changed").
 			Flag("-jar").
-			FlagWithOutput("-o ", d.Javadoc.stubsSrcJar).
+			FlagWithOutput("-o ", d.stubsSrcJar).
 			FlagWithArg("-C ", stubsDir.String()).
 			FlagWithArg("-D ", stubsDir.String())
 	}

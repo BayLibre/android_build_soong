@@ -514,15 +514,12 @@ func (a *AndroidLibrary) AndroidMkEntries() []android.AndroidMkEntries {
 func (jd *Javadoc) AndroidMkEntries() []android.AndroidMkEntries {
 	return []android.AndroidMkEntries{android.AndroidMkEntries{
 		Class:      "JAVA_LIBRARIES",
-		OutputFile: android.OptionalPathForPath(jd.stubsSrcJar),
+		OutputFile: android.OptionalPathForPath(jd.docZip),
 		Include:    "$(BUILD_SYSTEM)/soong_droiddoc_prebuilt.mk",
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 				if BoolDefault(jd.properties.Installable, true) {
 					entries.SetPath("LOCAL_DROIDDOC_DOC_ZIP", jd.docZip)
-				}
-				if jd.stubsSrcJar != nil {
-					entries.SetPath("LOCAL_DROIDDOC_STUBS_SRCJAR", jd.stubsSrcJar)
 				}
 			},
 		},
@@ -568,8 +565,8 @@ func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 		Include:    "$(BUILD_SYSTEM)/soong_droiddoc_prebuilt.mk",
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
-				if dstubs.Javadoc.stubsSrcJar != nil {
-					entries.SetPath("LOCAL_DROIDDOC_STUBS_SRCJAR", dstubs.Javadoc.stubsSrcJar)
+				if dstubs.stubsSrcJar != nil {
+					entries.SetPath("LOCAL_DROIDDOC_STUBS_SRCJAR", dstubs.stubsSrcJar)
 				}
 				if dstubs.apiVersionsXml != nil {
 					entries.SetPath("LOCAL_DROIDDOC_API_VERSIONS_XML", dstubs.apiVersionsXml)

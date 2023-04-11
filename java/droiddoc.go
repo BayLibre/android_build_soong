@@ -203,14 +203,11 @@ type Javadoc struct {
 	sourcepaths android.Paths
 	implicits   android.Paths
 
-	docZip      android.WritablePath
-	stubsSrcJar android.WritablePath
+	docZip android.WritablePath
 }
 
 func (j *Javadoc) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {
-	case "":
-		return android.Paths{j.stubsSrcJar}, nil
 	case ".docs.zip":
 		return android.Paths{j.docZip}, nil
 	default:
@@ -510,8 +507,6 @@ func (j *Javadoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	outDir := android.PathForModuleOut(ctx, "out")
 	srcJarDir := android.PathForModuleOut(ctx, "srcjars")
-
-	j.stubsSrcJar = nil
 
 	rule := android.NewRuleBuilder(pctx, ctx)
 
