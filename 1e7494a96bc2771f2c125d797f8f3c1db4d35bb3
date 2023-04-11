@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a30dd1_4c54f9c1",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-04-11T18:20:24Z",
+      "side": 1,
+      "message": "I am assuming the reason we want \"--ensure-allowlist-integrity\" is to be lenient on \"slim/side\" branches. In which case wouldn\u0027t `ctx.ModuleErrorf()` fail builds for those branches with this CL?",
+      "revId": "1e7494a96bc2771f2c125d797f8f3c1db4d35bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94fb0e71_c0b8683f",
+        "filename": "android/config.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 1923,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-04-11T18:20:24Z",
+      "side": 1,
+      "message": "is this for testability? (i.e. command-line handling seems to already be in place at L#587",
+      "revId": "1e7494a96bc2771f2c125d797f8f3c1db4d35bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52d3f38_180fba40",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-04-11T18:20:24Z",
+      "side": 1,
+      "message": "It\u0027s very unlikely that \"\" could be in the map, so what\u0027s the rationale for checking `m.Name() !\u003d \"\"`?\nnit: maybe perform that check first if it does make sense for some reason.",
+      "revId": "1e7494a96bc2771f2c125d797f8f3c1db4d35bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
