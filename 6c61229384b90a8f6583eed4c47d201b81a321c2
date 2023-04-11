@@ -16,6 +16,24 @@
       "message": "Can you just sub this out like that? Seems like that might do the wrong thing?",
       "revId": "6c61229384b90a8f6583eed4c47d201b81a321c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c33ac826_030e0f3c",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-11T15:35:24Z",
+      "side": 1,
+      "message": "I see 1 `javadoc` module in the entire tree and it\u0027s for some demo code. Seems ripe for deletion in general, maybe this really doesn\u0027t matter.",
+      "parentUuid": "9585091f_0907a04e",
+      "revId": "6c61229384b90a8f6583eed4c47d201b81a321c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
