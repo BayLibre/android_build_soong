@@ -123,6 +123,24 @@
       "parentUuid": "7f21d0fd_b0c4b025",
       "revId": "c2fe490aaff63d79c27ce77c34f0bcb1e1fac0b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f43cd23_b9ea387a",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-04-11T23:48:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a27f83dd_d3f81a05",
+      "revId": "c2fe490aaff63d79c27ce77c34f0bcb1e1fac0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
