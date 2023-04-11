@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e9e5a18_ebd4d0cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-11T14:49:50Z",
+      "side": 1,
+      "message": "Please see Patchset 2+ for the fix forward. This fix requires exporting the map of converted modules to their enclosing package, which is used to determine the :android_certificate_directory filegroups used in `product_vars` for overriding certificates.",
+      "revId": "7a9ddde1bea379ea8a52d07bfb118ca25a6f5b3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
