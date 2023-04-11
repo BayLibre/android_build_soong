@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9af593c1_92be4473",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-11T15:31:34Z",
+      "side": 0,
+      "message": "There are a few references to this variable in Make (I suspect \u0026 hope they are unused). Could you clean them up in the same topic?",
+      "range": {
+        "startLine": 525,
+        "startChar": 22,
+        "endLine": 525,
+        "endChar": 49
+      },
+      "revId": "448bbfb0838d11c8e24ebf62890989337ca89c53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

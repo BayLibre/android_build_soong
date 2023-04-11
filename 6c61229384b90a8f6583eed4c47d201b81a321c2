@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9585091f_0907a04e",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-11T15:31:34Z",
+      "side": 1,
+      "message": "Can you just sub this out like that? Seems like that might do the wrong thing?",
+      "revId": "6c61229384b90a8f6583eed4c47d201b81a321c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
