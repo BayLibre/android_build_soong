@@ -16,6 +16,24 @@
       "message": "I would prefer to see this change as part of the change that enforced the constraint as it makes it clearer that the enforcement works.",
       "revId": "cc9d9422cb8bc88434dfb7a3093cfa4a626787d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1e41ded_16535087",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-04-11T10:37:44Z",
+      "side": 1,
+      "message": "But not so much that I think you should merge this into that change. That was just a general point.",
+      "parentUuid": "7be09f29_3e52c674",
+      "revId": "cc9d9422cb8bc88434dfb7a3093cfa4a626787d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
