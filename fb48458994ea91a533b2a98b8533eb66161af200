@@ -201,6 +201,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42997549_02159f57",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-11T17:41:58Z",
+      "side": 1,
+      "message": "agreed to handle in a separate CL",
+      "parentUuid": "983af3f4_ff404042",
+      "range": {
+        "startLine": 1250,
+        "startChar": 4,
+        "endLine": 1250,
+        "endChar": 63
+      },
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "091269c0_1bb31f2b",
@@ -250,6 +274,24 @@
       "side": 1,
       "message": "one option might be to use the `bazel_module.bp2build_available` syntax to ensure these are/are not enabled with bp2build regardless of other logic changes.",
       "parentUuid": "091269c0_1bb31f2b",
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81dc2d9c_e7c5b0dd",
+        "filename": "tests/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-11T17:41:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "632c83c5_311637ce",
       "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
