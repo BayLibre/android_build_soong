@@ -159,7 +159,7 @@ type snapshotJsonFlags struct {
 	VintfFragments []string `json:",omitempty"`
 }
 
-var ccSnapshotAction snapshot.GenerateSnapshotAction = func(s snapshot.SnapshotSingleton, ctx android.SingletonContext, snapshotArchDir string) android.Paths {
+var ccSnapshotAction snapshot.GenerateSnapshotAction = func(s snapshot.SnapshotSingleton, ctx android.SingletonContext, snapshotArchDir string) (android.Paths, android.Paths) {
 	/*
 		Vendor snapshot zipped artifacts directory structure for cc modules:
 		{SNAPSHOT_ARCH}/
@@ -194,10 +194,10 @@ var ccSnapshotAction snapshot.GenerateSnapshotAction = func(s snapshot.SnapshotS
 	*/
 
 	var snapshotOutputs android.Paths
+	var snapshotNotices android.Paths
 
 	includeDir := filepath.Join(snapshotArchDir, "include")
 	configsDir := filepath.Join(snapshotArchDir, "configs")
-	noticeDir := filepath.Join(snapshotArchDir, "NOTICE_FILES")
 
 	installedNotices := make(map[string]bool)
 	installedConfigs := make(map[string]bool)
@@ -227,7 +227,7 @@ var ccSnapshotAction snapshot.GenerateSnapshotAction = func(s snapshot.SnapshotS
 		prop := snapshotJsonFlags{}
 
 		// Common properties among snapshots.
-		prop.ModuleName = ctx.ModuleName(m)
+		prop.InitBaseSnapshotProps(ctx.ModuleName(m), m)
 		if supportsVndkExt(s.Image) && m.IsVndkExt() {
 			// vndk exts are installed to /vendor/lib(64)?/vndk(-sp)?
 			if m.IsVndkSp() {
@@ -404,13 +404,10 @@ var ccSnapshotAction snapshot.GenerateSnapshotAction = func(s snapshot.SnapshotS
 			headers = append(headers, m.SnapshotHeaders()...)
 		}
 
-		if len(m.EffectiveLicenseFiles()) > 0 {
-			noticeName := ctx.ModuleName(m) + ".txt"
-			noticeOut := filepath.Join(noticeDir, noticeName)
-			// skip already copied notice file
-			if !installedNotices[noticeOut] {
-				installedNotices[noticeOut] = true
-				snapshotOutputs = append(snapshotOutputs, combineNoticesRule(ctx, m.EffectiveLicenseFiles(), noticeOut))
+		for _, notice := range m.EffectiveLicenseFiles() {
+			if _, ok := installedNotices[notice.String()]; !ok {
+				installedNotices[notice.String()] = true
+				snapshotNotices = append(snapshotNotices, notice)
 			}
 		}
 	})
@@ -420,7 +417,7 @@ var ccSnapshotAction snapshot.GenerateSnapshotAction = func(s snapshot.SnapshotS
 		snapshotOutputs = append(snapshotOutputs, copyFile(ctx, header, filepath.Join(includeDir, header.String()), s.Fake))
 	}
 
-	return snapshotOutputs
+	return snapshotOutputs, snapshotNotices
 }
 
 func init() {

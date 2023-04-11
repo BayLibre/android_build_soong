@@ -26,6 +26,10 @@ import (
 
 var pctx = android.NewPackageContext("android/soong/snapshot")
 
+func init() {
+	pctx.Import("android/soong/android")
+}
+
 type SnapshotSingleton struct {
 	// Name, e.g., "vendor", "recovery", "ramdisk".
 	name string
@@ -49,7 +53,8 @@ type SnapshotSingleton struct {
 }
 
 // Interface of function to capture snapshot from each module
-type GenerateSnapshotAction func(snapshot SnapshotSingleton, ctx android.SingletonContext, snapshotArchDir string) android.Paths
+// Returns snapshot ouputs and notice files.
+type GenerateSnapshotAction func(snapshot SnapshotSingleton, ctx android.SingletonContext, snapshotArchDir string) (android.Paths, android.Paths)
 
 var snapshotActionList []GenerateSnapshotAction
 
@@ -74,9 +79,19 @@ func (c *SnapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 		snapshotDir = filepath.Join("fake", snapshotDir)
 	}
 	snapshotArchDir := filepath.Join(snapshotDir, ctx.DeviceConfig().DeviceArch())
+	noticeDir := filepath.Join(snapshotArchDir, "NOTICE_FILES")
+	installedNotices := make(map[string]bool)
 
 	for _, f := range snapshotActionList {
-		snapshotOutputs = append(snapshotOutputs, f(*c, ctx, snapshotArchDir)...)
+		outFiles, noticeFiles := f(*c, ctx, snapshotArchDir)
+		snapshotOutputs = append(snapshotOutputs, outFiles...)
+		for _, notice := range noticeFiles {
+			if _, ok := installedNotices[notice.String()]; !ok {
+				installedNotices[notice.String()] = true
+				snapshotOutputs = append(snapshotOutputs, CopyFileRule(
+					pctx, ctx, notice, filepath.Join(noticeDir, notice.String())))
+			}
+		}
 	}
 
 	// All artifacts are ready. Sort them to normalize ninja and then zip.
