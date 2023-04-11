@@ -120,4 +120,15 @@ type SnapshotJsonFlags struct {
 	// dependencies
 	Required  []string `json:",omitempty"`
 	Overrides []string `json:",omitempty"`
+
+	// license information
+	LicenseKinds []string `json:",omitempty"`
+	LicenseTexts []string `json:",omitempty"`
+}
+
+func (prop *SnapshotJsonFlags) InitBaseSnapshotProps(name string, m android.Module) {
+	prop.ModuleName = name
+
+	prop.LicenseKinds = m.EffectiveLicenseKinds()
+	prop.LicenseTexts = m.EffectiveLicenseFiles().Strings()
 }
