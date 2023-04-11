@@ -63,6 +63,30 @@
       },
       "revId": "3ff17b4b4189d2d0507d71a2238dc652f231dbe1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc3e1e2e_c7735bfc",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 3686,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-11T18:50:49Z",
+      "side": 1,
+      "message": "Okay yeah I got 4/1000 failures with this test too",
+      "parentUuid": "4387f923_290d8512",
+      "range": {
+        "startLine": 3686,
+        "startChar": 3,
+        "endLine": 3686,
+        "endChar": 7
+      },
+      "revId": "3ff17b4b4189d2d0507d71a2238dc652f231dbe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
