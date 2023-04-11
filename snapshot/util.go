@@ -29,7 +29,7 @@ func CopyFileRule(pctx android.PackageContext, ctx android.SingletonContext, pat
 		Output:      outPath,
 		Description: "copy " + path.String() + " -> " + out,
 		Args: map[string]string{
-			"cpFlags": "-f -L",
+			"cpFlags": "-L",
 		},
 	})
 	return outPath
