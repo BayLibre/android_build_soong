@@ -389,6 +389,7 @@ var (
 		"build/make/target/product/security":/* recursive = */ false,
 		// build/make/tools/signapk BUILD file is generated, so build/make/tools is not recursive.
 		"build/make/tools":/* recursive = */ false,
+		"build/make/tools/compliance/cmd/htmlnotice":/* recursive = */ false,
 		"build/pesto":/* recursive = */ true,
 		"build/soong":/* recursive = */ true,
 
