@@ -45,6 +45,7 @@ func TestGensrcs(t *testing.T) {
 				"tools":            `["program.py"]`,
 				"output_extension": `"out"`,
 				"cmd":              `"$(location program.py) $(SRC) $(OUT)"`,
+				"tags":             `["apex_available=//apex_available:platform"]`,
 			},
 		},
 		{
@@ -59,6 +60,7 @@ func TestGensrcs(t *testing.T) {
 			expectedBazelAttrs: AttrNameToString{
 				"srcs": `["input.txt"]`,
 				"cmd":  `"cat $(SRC) > $(OUT)"`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			},
 		},
 	}

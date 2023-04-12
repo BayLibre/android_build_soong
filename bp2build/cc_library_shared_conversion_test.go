@@ -142,6 +142,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"absolute_includes": `[
         "include_dir_1",
         "include_dir_2",
@@ -202,6 +203,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"implementation_dynamic_deps": `select({
         "//build/bazel/platforms/arch:arm64": [":shared_dep"],
         "//conditions:default": [],
@@ -231,6 +233,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"implementation_dynamic_deps": `select({
         "//build/bazel/platforms/os:android": [":shared_dep"],
         "//conditions:default": [],
@@ -266,6 +269,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"implementation_dynamic_deps": `[":shared_dep"] + select({
         "//build/bazel/platforms/arch:arm64": [":shared_dep3"],
         "//conditions:default": [],
@@ -295,6 +299,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs_c": `[
         "common.c",
         "foo-a.c",
@@ -322,6 +327,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"strip": `{
         "all": True,
         "keep_symbols": False,
@@ -353,6 +359,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"additional_linker_inputs": `[
         "version_script",
         "dynamic.list",
@@ -386,6 +393,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"additional_linker_inputs": `[
         "version_script",
         "dynamic.list",
@@ -418,6 +426,7 @@ cc_library_shared {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags":     `["apex_available=//apex_available:platform"]`,
 				"features": `["-link_crt"]`,
 				"srcs":     `["impl.cpp"]`,
 			}),
@@ -441,6 +450,7 @@ cc_library_shared {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `["impl.cpp"]`,
 			}),
 		},
@@ -470,6 +480,7 @@ cc_library_shared {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"features": `select({
         "//build/bazel/platforms/arch:arm": ["-link_crt"],
         "//conditions:default": [],
@@ -492,10 +503,13 @@ func TestCcLibrarySharedProto(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("proto_library", "foo_proto", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `["foo.proto"]`,
 			}), MakeBazelTarget("cc_lite_proto_library", "foo_cc_proto_lite", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"deps": `[":foo_proto"]`,
 			}), MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":               `["apex_available=//apex_available:platform"]`,
 				"dynamic_deps":       `[":libprotobuf-cpp-lite"]`,
 				"whole_archive_deps": `[":foo_cc_proto_lite"]`,
 			}),
@@ -515,6 +529,7 @@ func TestCcLibrarySharedUseVersionLib(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":                              `["apex_available=//apex_available:platform"]`,
 				"use_version_lib":                   "True",
 				"implementation_whole_archive_deps": `["//build/soong/cc/libbuildversion:libbuildversion"]`,
 			}),
@@ -550,6 +565,7 @@ cc_library_shared {
     ]`,
 		}),
 			MakeBazelTarget("cc_library_shared", "a", AttrNameToString{
+				"tags":              `["apex_available=//apex_available:platform"]`,
 				"stubs_symbol_file": `"a.map.txt"`,
 			}),
 		},
@@ -720,6 +736,7 @@ cc_library_shared {
 }
 `,
 		ExpectedBazelTargets: []string{MakeBazelTarget("cc_library_shared", "empty", AttrNameToString{
+			"tags":                `["apex_available=//apex_available:platform"]`,
 			"system_dynamic_deps": "[]",
 		})},
 	})
@@ -761,6 +778,7 @@ func TestCcLibrarySharedConvertLex(t *testing.T) {
 				"lexopts": `["--foo_flags"]`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo_lib", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `[
         "bar.cc",
         ":foo_lib_genlex_ll",
@@ -786,6 +804,7 @@ func TestCcLibrarySharedClangUnknownFlags(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":       `["apex_available=//apex_available:platform"]`,
 				"conlyflags": `["-a"]`,
 				"copts":      `["-b"]`,
 				"cppflags":   `["-c"]`,
@@ -810,6 +829,7 @@ func TestCCLibraryFlagSpaceSplitting(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":                     `["apex_available=//apex_available:platform"]`,
 				"additional_linker_inputs": `["version_script"]`,
 				"conlyflags": `[
         "-include",
@@ -841,9 +861,11 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "bar", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"runtime_deps":   `[":foo"]`,
 				"local_includes": `["."]`,
 			}),
@@ -866,6 +888,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags":   `["apex_available=//apex_available:platform"]`,
 				"srcs_c": `["foo.c"]`,
 				"suffix": `""`,
 			}),
@@ -888,6 +911,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags":   `["apex_available=//apex_available:platform"]`,
 				"srcs_c": `["foo.c"]`,
 				"suffix": `"-suf"`,
 			}),
@@ -913,6 +937,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"tags":   `["apex_available=//apex_available:platform"]`,
 				"srcs_c": `["foo.c"]`,
 				"suffix": `select({
         "//build/bazel/platforms/arch:arm": "-32",
@@ -939,16 +964,19 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("sysprop_library", "foo_sysprop_library", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `[
         "bar.sysprop",
         "baz.sysprop",
     ]`,
 			}),
 			MakeBazelTarget("cc_sysprop_library_static", "foo_cc_sysprop_library_static", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"dep":             `":foo_sysprop_library"`,
 				"min_sdk_version": `"5"`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":               `["apex_available=//apex_available:platform"]`,
 				"srcs":               `["blah.cpp"]`,
 				"local_includes":     `["."]`,
 				"min_sdk_version":    `"5"`,
@@ -976,16 +1004,19 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("sysprop_library", "foo_sysprop_library", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `select({
         "//build/bazel/platforms/os:android": ["bar.sysprop"],
         "//conditions:default": [],
     })`,
 			}),
 			MakeBazelTarget("cc_sysprop_library_static", "foo_cc_sysprop_library_static", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"dep":             `":foo_sysprop_library"`,
 				"min_sdk_version": `"5"`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"srcs":            `["blah.cpp"]`,
 				"local_includes":  `["."]`,
 				"min_sdk_version": `"5"`,
@@ -1021,6 +1052,7 @@ func TestCcLibrarySharedHeaderAbiChecker(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":                    `["apex_available=//apex_available:platform"]`,
 				"abi_checker_enabled":     `True`,
 				"abi_checker_symbol_file": `"a.map.txt"`,
 				"abi_checker_exclude_symbol_versions": `[
@@ -1051,6 +1083,7 @@ cc_library_shared {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"features":       `["ubsan_integer_overflow"]`,
 				"local_includes": `["."]`,
 			}),
@@ -1071,6 +1104,7 @@ cc_library_shared {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"features": `[
         "ubsan_undefined",
         "ubsan_nullability",
@@ -1106,6 +1140,7 @@ cc_library_shared {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"features": `[
         "ubsan_undefined",
         "ubsan_nullability",
@@ -1133,6 +1168,7 @@ cc_library_shared {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"features":       `["android_thin_lto"]`,
 				"local_includes": `["."]`,
 			}),
@@ -1153,6 +1189,7 @@ cc_library_shared {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"features":       `["-android_thin_lto"]`,
 				"local_includes": `["."]`,
 			}),
@@ -1183,6 +1220,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features": `select({
         "//build/bazel/platforms/os_arch:android_arm": ["android_thin_lto"],
@@ -1216,6 +1254,7 @@ cc_library_shared {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features": `select({
         "//build/bazel/platforms/os:android": ["android_thin_lto"],
@@ -1240,6 +1279,7 @@ cc_library_shared {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"features": `[
         "android_thin_lto",
         "android_thin_lto_whole_program_vtables",

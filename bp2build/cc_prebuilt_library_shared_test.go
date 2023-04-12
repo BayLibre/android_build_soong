@@ -25,6 +25,7 @@ cc_prebuilt_library_shared {
 			ExpectedBazelTargets: []string{
 				MakeBazelTarget("cc_prebuilt_library_shared", "libtest", AttrNameToString{
 					"shared_library": `"libf.so"`,
+					"tags":           `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		})
@@ -56,6 +57,7 @@ cc_prebuilt_library_shared {
         "//build/bazel/platforms/arch:arm64": "libf.so",
         "//conditions:default": None,
     })`,
+					"tags": `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		})

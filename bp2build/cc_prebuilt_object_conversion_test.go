@@ -47,7 +47,8 @@ cc_prebuilt_object {
 }`,
 			ExpectedBazelTargets: []string{
 				MakeBazelTarget("cc_prebuilt_object", "objtest", AttrNameToString{
-					"src": `"obj.o"`,
+					"src":  `"obj.o"`,
+					"tags": `["apex_available=//apex_available:platform"]`,
 				})},
 		})
 }
@@ -75,6 +76,7 @@ cc_prebuilt_object {
         "//build/bazel/platforms/arch:arm64": "obja.o",
         "//conditions:default": None,
     })`,
+					"tags": `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		})

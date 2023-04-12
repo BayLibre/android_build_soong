@@ -408,9 +408,11 @@ func TestJavaLibraryAidl(t *testing.T) {
         "a.aidl",
         "b.aidl",
     ]`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 			MakeBazelTarget("java_aidl_library", "example_lib_java_aidl_library", AttrNameToString{
 				"deps": `[":example_lib_aidl_library"]`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 			MakeBazelTarget("java_library", "example_lib", AttrNameToString{
 				"deps":    `[":example_lib_java_aidl_library"]`,
@@ -441,9 +443,11 @@ java_library {
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("aidl_library", "example_lib_aidl_library", AttrNameToString{
 				"srcs": `["b.aidl"]`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 			MakeBazelTarget("java_aidl_library", "example_lib_java_aidl_library", AttrNameToString{
 				"deps": `[":example_lib_aidl_library"]`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 			MakeBazelTarget("java_library", "example_lib", AttrNameToString{
 				"deps":    `[":example_lib_java_aidl_library"]`,
@@ -497,6 +501,7 @@ java_library {
 			}),
 			MakeBazelTarget("java_aidl_library", "example_lib_java_aidl_library", AttrNameToString{
 				"deps": `[":aidl_files"]`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 			MakeBazelTarget("java_library", "example_lib", AttrNameToString{
 				"deps":    `[":example_lib_java_aidl_library"]`,
@@ -543,6 +548,7 @@ java_library {
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("java_aidl_library", "foo_java_aidl_library", AttrNameToString{
 				"deps": `["//path/to/A:A_aidl"]`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 			MakeBazelTarget("java_library", "foo", AttrNameToString{
 				"exports": `[":foo_java_aidl_library"]`,

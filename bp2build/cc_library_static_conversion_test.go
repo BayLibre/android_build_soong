@@ -207,6 +207,7 @@ cc_library_static {
     ]`,
 				"sdk_version":     `"current"`,
 				"min_sdk_version": `"29"`,
+				"tags":            `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -241,6 +242,7 @@ cc_library_static {
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
 				"absolute_includes": `["subpackage"]`,
 				"local_includes":    `["."]`,
+				"tags":              `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -263,6 +265,7 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"export_includes": `["subpackage"]`,
 			}),
 		},
@@ -287,6 +290,7 @@ cc_library_static {
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
 				"export_system_includes": `["subpackage"]`,
+				"tags":                   `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -321,6 +325,7 @@ cc_library_static {
 		Blueprint: soongCcLibraryStaticPreamble,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"absolute_includes": `[
         "subpackage/subsubpackage",
         "subpackage2",
@@ -355,6 +360,7 @@ cc_library_static {
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
 				"absolute_includes": `["subpackage"]`,
 				"local_includes":    `["subpackage2"]`,
+				"tags":              `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -385,6 +391,7 @@ cc_library_static {
         "subpackage2",
         ".",
     ]`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -410,6 +417,7 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"implementation_deps": `select({
         "//build/bazel/platforms/arch:arm64": [":static_dep"],
         "//conditions:default": [],
@@ -451,6 +459,7 @@ cc_library_static {
         "//build/bazel/platforms/os:android": [":static_dep2"],
         "//conditions:default": [],
     })`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -495,6 +504,7 @@ cc_library_static {
         "//conditions:default": [],
     })`,
 				"whole_archive_deps": `[":static_dep2"]`,
+				"tags":               `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -521,6 +531,7 @@ cc_library_static {
         "common.c",
         "foo-a.c",
     ]`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -546,6 +557,7 @@ cc_library_static {
         "//build/bazel/platforms/arch:arm": ["foo-arm.c"],
         "//conditions:default": [],
     })`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -576,6 +588,7 @@ cc_library_static {
         "//build/bazel/platforms/arch:arm": ["for-arm.c"],
         "//conditions:default": ["not-for-arm.c"],
     })`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -618,6 +631,7 @@ cc_library_static {
             "not-for-x86.c",
         ],
     })`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -685,6 +699,7 @@ cc_library_static {
             "not-for-x86_64.c",
         ],
     })`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -714,6 +729,7 @@ cc_library_static {
         "//build/bazel/platforms/arch:arm": [],
         "//conditions:default": ["foo-no-arm.cc"],
     })`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -741,6 +757,7 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `["common.cc"] + select({
         "//build/bazel/platforms/arch:arm": [],
         "//build/bazel/platforms/arch:x86": [
@@ -770,6 +787,7 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags":                `["apex_available=//apex_available:platform"]`,
 				"implementation_deps": `[":static_dep"]`,
 			}),
 		},
@@ -795,6 +813,7 @@ cc_library_static {
 } `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs_c": `["common.c"] + select({
         "//build/bazel/platforms/arch:arm": ["for-lib32.c"],
         "//build/bazel/platforms/arch:x86": ["for-lib32.c"],
@@ -827,6 +846,7 @@ cc_library_static {
 } `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs_c": `["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
             "not-for-lib64.c",
@@ -898,6 +918,7 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs_c": `["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
             "not-for-arm64.c",
@@ -983,6 +1004,7 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"export_includes": `["."]`,
 				"local_includes":  `["."]`,
 				"hdrs":            `[":export_generated_hdr"]`,
@@ -1053,6 +1075,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `[
         "common.cpp",
         ":generated_src",
@@ -1116,6 +1139,7 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs_c": `select({
         "//build/bazel/platforms/os:android": ["android_src.c"],
         "//conditions:default": [],
@@ -1155,6 +1179,7 @@ cc_library_static {
 } `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"copts": `select({
         "//build/bazel/product_variables:binder32bit": ["-Wbinder32bit"],
         "//conditions:default": [],
@@ -1215,6 +1240,7 @@ cc_library_static {
 } `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"copts": `select({
         "//build/bazel/product_variables:malloc_not_svelte": ["-Wmalloc_not_svelte"],
         "//conditions:default": [],
@@ -1254,6 +1280,7 @@ cc_library_static {
 } `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_static", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"asflags": `select({
         "//build/bazel/product_variables:platform_sdk_version": ["-DPLATFORM_SDK_VERSION=$(Platform_sdk_version)"],
         "//conditions:default": [],
@@ -1276,6 +1303,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "root_empty", AttrNameToString{
+				"tags":                `["apex_available=//apex_available:platform"]`,
 				"system_dynamic_deps": `[]`,
 			}),
 		},
@@ -1300,6 +1328,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "static_empty", AttrNameToString{
+				"tags":                `["apex_available=//apex_available:platform"]`,
 				"system_dynamic_deps": `[]`,
 			}),
 		},
@@ -1327,6 +1356,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "target_bionic_empty", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"system_dynamic_deps": `select({
         "//build/bazel/platforms/os:linux_musl": [":libc_musl"],
         "//conditions:default": [],
@@ -1361,6 +1391,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "target_linux_bionic_empty", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"system_dynamic_deps": `select({
         "//build/bazel/platforms/os:linux_musl": [":libc_musl"],
         "//conditions:default": [],
@@ -1391,6 +1422,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "target_musl_empty", AttrNameToString{
+				"tags":                `["apex_available=//apex_available:platform"]`,
 				"system_dynamic_deps": `[]`,
 			}),
 		},
@@ -1418,6 +1450,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "target_linux_musl_empty", AttrNameToString{
+				"tags":                `["apex_available=//apex_available:platform"]`,
 				"system_dynamic_deps": `[]`,
 			}),
 		},
@@ -1446,6 +1479,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "target_bionic", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"system_dynamic_deps": `select({
         "//build/bazel/platforms/os:android": [":libc"],
         "//build/bazel/platforms/os:linux_bionic": [":libc"],
@@ -1481,6 +1515,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "target_linux_bionic", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"system_dynamic_deps": `[":libc"] + select({
         "//build/bazel/platforms/os:linux_bionic": [":libm"],
         "//build/bazel/platforms/os:linux_musl": [":libc_musl"],
@@ -1589,10 +1624,13 @@ func TestCcLibraryStaticProto(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("proto_library", "foo_proto", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `["foo.proto"]`,
 			}), MakeBazelTarget("cc_lite_proto_library", "foo_cc_proto_lite", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"deps": `[":foo_proto"]`,
 			}), MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":               `["apex_available=//apex_available:platform"]`,
 				"deps":               `[":libprotobuf-cpp-lite"]`,
 				"whole_archive_deps": `[":foo_cc_proto_lite"]`,
 			}),
@@ -1613,6 +1651,7 @@ func TestCcLibraryStaticUseVersionLib(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":                              `["apex_available=//apex_available:platform"]`,
 				"implementation_whole_archive_deps": `["//build/soong/cc/libbuildversion:libbuildversion"]`,
 			}),
 		},
@@ -1632,6 +1671,7 @@ func TestCcLibraryStaticUseVersionLibHasDep(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":               `["apex_available=//apex_available:platform"]`,
 				"whole_archive_deps": `["//build/soong/cc/libbuildversion:libbuildversion"]`,
 			}),
 		},
@@ -1649,6 +1689,7 @@ func TestCcLibraryStaticStdInFlags(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":       `["apex_available=//apex_available:platform"]`,
 				"conlyflags": `["-std=conly"]`,
 				"cppflags":   `["-std=cpp"]`,
 			}),
@@ -1666,47 +1707,55 @@ func TestCcLibraryStaticStl(t *testing.T) {
 			desc: "c++_shared deduped to libc++",
 			prop: `stl: "c++_shared",`,
 			attr: AttrNameToString{
-				"stl": `"libc++"`,
+				"stl":  `"libc++"`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			},
 		},
 		{
 			desc: "libc++ to libc++",
 			prop: `stl: "libc++",`,
 			attr: AttrNameToString{
-				"stl": `"libc++"`,
+				"stl":  `"libc++"`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			},
 		},
 		{
 			desc: "c++_static to libc++_static",
 			prop: `stl: "c++_static",`,
 			attr: AttrNameToString{
-				"stl": `"libc++_static"`,
+				"stl":  `"libc++_static"`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			},
 		},
 		{
 			desc: "libc++_static to libc++_static",
 			prop: `stl: "libc++_static",`,
 			attr: AttrNameToString{
-				"stl": `"libc++_static"`,
+				"stl":  `"libc++_static"`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			},
 		},
 		{
 			desc: "system to system",
 			prop: `stl: "system",`,
 			attr: AttrNameToString{
-				"stl": `"system"`,
+				"stl":  `"system"`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			},
 		},
 		{
 			desc: "none to none",
 			prop: `stl: "none",`,
 			attr: AttrNameToString{
-				"stl": `"none"`,
+				"stl":  `"none"`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			},
 		},
 		{
 			desc: "empty to empty",
-			attr: AttrNameToString{},
+			attr: AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
+			},
 		},
 	}
 	for _, tc := range testCases {
@@ -1737,9 +1786,11 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "bar", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 			}),
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"runtime_deps":   `[":foo"]`,
 				"local_includes": `["."]`,
 			}),
@@ -1762,16 +1813,19 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("sysprop_library", "foo_sysprop_library", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `[
         "bar.sysprop",
         "baz.sysprop",
     ]`,
 			}),
 			MakeBazelTarget("cc_sysprop_library_static", "foo_cc_sysprop_library_static", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"dep":             `":foo_sysprop_library"`,
 				"min_sdk_version": `"5"`,
 			}),
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":               `["apex_available=//apex_available:platform"]`,
 				"srcs":               `["blah.cpp"]`,
 				"local_includes":     `["."]`,
 				"min_sdk_version":    `"5"`,
@@ -1799,16 +1853,19 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("sysprop_library", "foo_sysprop_library", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `select({
         "//build/bazel/platforms/os:android": ["bar.sysprop"],
         "//conditions:default": [],
     })`,
 			}),
 			MakeBazelTarget("cc_sysprop_library_static", "foo_cc_sysprop_library_static", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"dep":             `":foo_sysprop_library"`,
 				"min_sdk_version": `"5"`,
 			}),
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"srcs":            `["blah.cpp"]`,
 				"local_includes":  `["."]`,
 				"min_sdk_version": `"5"`,
@@ -1834,6 +1891,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"features":       `["ubsan_integer_overflow"]`,
 				"local_includes": `["."]`,
 			}),
@@ -1854,6 +1912,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"features": `[
         "ubsan_undefined",
         "ubsan_nullability",
@@ -1889,6 +1948,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"features": `[
         "ubsan_undefined",
         "ubsan_nullability",
@@ -1916,6 +1976,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"features":       `["android_thin_lto"]`,
 				"local_includes": `["."]`,
 			}),
@@ -1936,6 +1997,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"features":       `["-android_thin_lto"]`,
 				"local_includes": `["."]`,
 			}),
@@ -1966,6 +2028,7 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features": `select({
         "//build/bazel/platforms/os_arch:android_arm": ["android_thin_lto"],
@@ -1999,6 +2062,7 @@ cc_library_static {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features": `select({
         "//build/bazel/platforms/os:android": ["android_thin_lto"],
@@ -2023,6 +2087,7 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"features": `[
         "android_thin_lto",
         "android_thin_lto_whole_program_vtables",

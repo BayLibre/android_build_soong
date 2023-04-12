@@ -107,6 +107,7 @@ func TestGenruleCliVariableReplacement(t *testing.T) {
 			"outs":  `["foo.out"]`,
 			"srcs":  `["foo.in"]`,
 			"tools": `[":foo.tool"]`,
+			"tags":  `["apex_available=//apex_available:platform"]`,
 		}
 
 		expectedBazelTargets := []string{
@@ -175,6 +176,7 @@ func TestGenruleLocationsLabel(t *testing.T) {
 			"outs":  `["foo.out"]`,
 			"srcs":  `["foo.in"]`,
 			"tools": `[":foo.tools"]`,
+			"tags":  `["apex_available=//apex_available:platform"]`,
 		}
 		fooToolsAttrs := AttrNameToString{
 			"cmd": `"cp $(SRCS) $(OUTS)"`,
@@ -183,6 +185,7 @@ func TestGenruleLocationsLabel(t *testing.T) {
         "foo_tool2.out",
     ]`,
 			"srcs": `["foo_tool.in"]`,
+			"tags": `["apex_available=//apex_available:platform"]`,
 		}
 
 		expectedBazelTargets := []string{
@@ -244,6 +247,7 @@ func TestGenruleLocationsAbsoluteLabel(t *testing.T) {
 			"outs":  `["foo.out"]`,
 			"srcs":  `["foo.in"]`,
 			"tools": `["//other:foo.tool"]`,
+			"tags":  `["apex_available=//apex_available:platform"]`,
 		}
 
 		expectedBazelTargets := []string{
@@ -305,6 +309,7 @@ func TestGenruleSrcsLocationsAbsoluteLabel(t *testing.T) {
 			"outs":  `["foo.out"]`,
 			"srcs":  `["//other:other.tool"]`,
 			"tools": `["//other:foo.tool"]`,
+			"tags":  `["apex_available=//apex_available:platform"]`,
 		}
 
 		expectedBazelTargets := []string{
@@ -369,6 +374,7 @@ func TestGenruleLocationLabelShouldSubstituteFirstToolLabel(t *testing.T) {
         "//other:foo.tool",
         "//other:other.tool",
     ]`,
+			"tags": `["apex_available=//apex_available:platform"]`,
 		}
 
 		expectedBazelTargets := []string{
@@ -433,6 +439,7 @@ func TestGenruleLocationsLabelShouldSubstituteFirstToolLabel(t *testing.T) {
         "//other:foo.tool",
         "//other:other.tool",
     ]`,
+			"tags": `["apex_available=//apex_available:platform"]`,
 		}
 
 		expectedBazelTargets := []string{
@@ -492,6 +499,7 @@ func TestGenruleWithoutToolsOrToolFiles(t *testing.T) {
 			"cmd":  `"cp $(SRCS) $(OUTS)"`,
 			"outs": `["foo.out"]`,
 			"srcs": `["foo.in"]`,
+			"tags": `["apex_available=//apex_available:platform"]`,
 		}
 
 		expectedBazelTargets := []string{
@@ -531,6 +539,7 @@ genrule {
 					"cmd":  `"do-something $(SRCS) $(OUTS)"`,
 					"outs": `["out"]`,
 					"srcs": `["in1"]`,
+					"tags": `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		},
@@ -562,6 +571,7 @@ genrule {
         "in-from-defaults",
         "in1",
     ]`,
+					"tags": `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		},
@@ -589,6 +599,7 @@ genrule {
 					"cmd":  `"cp $(SRCS) $(OUTS)"`,
 					"outs": `["out"]`,
 					"srcs": `["in1"]`,
+					"tags": `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		},
@@ -633,6 +644,7 @@ genrule {
         "srcs-from-3",
         "in1",
     ]`,
+					"tags": `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		},
@@ -674,6 +686,7 @@ func TestCcGenruleArchAndExcludeSrcs(t *testing.T) {
         "//conditions:default": [],
     })`,
 		"cmd":                    `"cat $(SRCS) > $(OUTS)"`,
+		"tags":                   `["apex_available=//apex_available:platform"]`,
 		"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
 	}
 

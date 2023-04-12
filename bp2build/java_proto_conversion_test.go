@@ -72,6 +72,7 @@ func TestJavaProto(t *testing.T) {
 
 	protoLibrary := MakeBazelTarget("proto_library", "java-protos_proto", AttrNameToString{
 		"srcs": `["a.proto"]`,
+		"tags": `["apex_available=//apex_available:platform"]`,
 	})
 
 	for _, tc := range testCases {
@@ -109,6 +110,7 @@ func TestJavaProtoDefault(t *testing.T) {
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("proto_library", "java-protos_proto", AttrNameToString{
 				"srcs": `["a.proto"]`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 			MakeBazelTarget(
 				"java_lite_proto_library",
