@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bde646a_893577e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-12T09:37:20Z",
+      "side": 1,
+      "message": "You\u0027ll want to add someone from soong team to review this, we\u0027re no longer owners of soong.",
+      "revId": "6c61229384b90a8f6583eed4c47d201b81a321c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9585091f_0907a04e",
@@ -50,6 +67,24 @@
       "side": 1,
       "message": "I picked the one ExtraEntries, assuming what matters is the set of OutputFile + ExtraEntries. Should have cleaned up ExtraEntries (but not sure how to set the LOCAL_DROIDDOC_DOC_ZIP value though; add an ExtraFooters maybe?).\n\n\nYou\u0027re probably right that we can remove the javadoc in device/sample/frameworks/PlatformLibrary/Android.bp, and therefore the Javadoc struct too. But that means moving the inheritances and fields of Javadoc\n\n```\ntype Javadoc struct {\n        android.ModuleBase\n        android.DefaultableModuleBase\n\n        properties JavadocProperties\n\n        srcJars     android.Paths\n        srcFiles    android.Paths\n        sourcepaths android.Paths\n        implicits   android.Paths\n\n        docZip android.WritablePath\n}\n```\nto the Droiddoc struct, and moving all/parts of the implementation of the Javadoc methods to Droiddoc methods.\n\nThat\u0027s a larger work than I am ready to tackle ATM.",
       "parentUuid": "c33ac826_030e0f3c",
+      "revId": "6c61229384b90a8f6583eed4c47d201b81a321c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd5e358_a7e9c278",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-12T09:37:20Z",
+      "side": 1,
+      "message": "Yeah, support for `javadoc {}` could perhaps be completely removed, but maybe file a go/soong-bug about that instead and let the team handle it?\n\nI think this `OutputFile` substitution is actually fine, on the basis that the OutputFile only needs to point ot a valid file for the rest of the MK to be output. I suspect nothing was depending on the `LOCAL_PREBUILT_MODULE` to have been the srcjar in the past (but hard to know for sure)",
+      "parentUuid": "ee17d67a_914156a0",
       "revId": "6c61229384b90a8f6583eed4c47d201b81a321c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

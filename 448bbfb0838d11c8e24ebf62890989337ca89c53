@@ -46,6 +46,30 @@
       },
       "revId": "448bbfb0838d11c8e24ebf62890989337ca89c53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7ff22d_d5f76334",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-12T09:37:20Z",
+      "side": 0,
+      "message": "K. I would expect that part is removable as well, but would be a little bit more work to clean it all up.",
+      "parentUuid": "5575b568_3c0b7a71",
+      "range": {
+        "startLine": 525,
+        "startChar": 22,
+        "endLine": 525,
+        "endChar": 49
+      },
+      "revId": "448bbfb0838d11c8e24ebf62890989337ca89c53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
