@@ -16,6 +16,24 @@
       "message": "there\u0027s also a proptools.BoolPtr you can use here if u want to keep it inline",
       "revId": "0221b08b73eeb70777f198a985c80eab727ec5e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1e4581e_60fc151e",
+        "filename": "java/device_host_converter.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-04-12T02:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c27835_4df3e78d",
+      "revId": "0221b08b73eeb70777f198a985c80eab727ec5e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
