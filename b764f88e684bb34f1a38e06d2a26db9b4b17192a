@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1809ee6_d21b1da7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-12T19:25:44Z",
+      "side": 1,
+      "message": "Hi Jiyong, I noticed this discrepancy recently. Do you think this is the correct solution? If not, I can update the docs.\n\n(This likely breaks a bunch of bp2build tests, but I can update them if necessary)",
+      "revId": "b764f88e684bb34f1a38e06d2a26db9b4b17192a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
