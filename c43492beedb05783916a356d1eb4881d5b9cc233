@@ -223,6 +223,24 @@
       "parentUuid": "04efaf93_9a3b9964",
       "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05729922_4830bdf8",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-12T00:12:28Z",
+      "side": 1,
+      "message": "+1 to what Colin is saying. Since `Arm64Lldflags` is now dependent on the product config, we won\u0027t be able to export it as a simple string list to bazel. Bazel code will have to be updated to read the product config at analysis time and pick the correct flags.",
+      "parentUuid": "035ccc3a_2247e962",
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
