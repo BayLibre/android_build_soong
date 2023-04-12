@@ -16,6 +16,24 @@
       "message": "Don\u0027t you still need this dependency?",
       "revId": "b4949c2b4f2386e502c0139e8eb77b1645ad11f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb7e13a_dc3b5293",
+        "filename": "rust/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-04-12T22:53:56Z",
+      "side": 0,
+      "message": "This dependency is now via `linkObjects`, which includes both static and shared libraries. Unlike `SharedLibs` it also includes transitive dependencies (which is now necessary because the compile phase for rlibs does not depend on C++ libraries).\n\nI noticed that for this reason, we no longer need to track `SharedLibs` in `PathDeps`, so I removed it.",
+      "parentUuid": "3d28f4bb_3d274df4",
+      "revId": "b4949c2b4f2386e502c0139e8eb77b1645ad11f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

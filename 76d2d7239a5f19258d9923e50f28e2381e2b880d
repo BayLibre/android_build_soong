@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c2c26c_623fd9be",
+        "filename": "rust/binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-04-12T22:53:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b2a29bf_74d79f7d",
+      "revId": "76d2d7239a5f19258d9923e50f28e2381e2b880d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "735c10d1_33588a64",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf585c44_e64d7ef2",
+        "filename": "rust/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-04-12T22:53:56Z",
+      "side": 1,
+      "message": "Yes, the normal dependency on the objects comes via `LibDeps`, which includes static libraries and TOC files for the shared libraries, including transitive deps.",
+      "parentUuid": "735c10d1_33588a64",
+      "revId": "76d2d7239a5f19258d9923e50f28e2381e2b880d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5decb9c_9912547a",
@@ -65,6 +101,24 @@
       "writtenOn": "2023-04-12T18:36:29Z",
       "side": 1,
       "message": "`deps.linkObjects.Strings()` here too",
+      "revId": "76d2d7239a5f19258d9923e50f28e2381e2b880d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa62d882_dae44e59",
+        "filename": "rust/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-04-12T22:53:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5decb9c_9912547a",
       "revId": "76d2d7239a5f19258d9923e50f28e2381e2b880d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
