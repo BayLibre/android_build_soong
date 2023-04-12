@@ -123,6 +123,24 @@
       "parentUuid": "accf93f5_b1284eda",
       "revId": "40b9b6ff8b93e445a81663feba040eb711e570c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b21c504_3c3c1481",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 26
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-12T19:20:13Z",
+      "side": 1,
+      "message": "Nevermind, I\u0027m silly and forgot to use $ for the variable comparisons. You\u0027re totally right, sorry about that.",
+      "parentUuid": "cd74d12d_6be68feb",
+      "revId": "40b9b6ff8b93e445a81663feba040eb711e570c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
