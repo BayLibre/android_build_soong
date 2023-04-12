@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa8b83f_645f95fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-12T19:31:37Z",
+      "side": 1,
+      "message": "Hi Liz, WDYT about this change? Since apex_available is not enforced on test apexes, do we need these tags in bp2build generated BUILD files at all?\n\n(This CL is not on the critical path of b/277651159, so this can be deferred to a future discussion)",
+      "revId": "0543696c081ef4833517a49943c951b98f1298fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
