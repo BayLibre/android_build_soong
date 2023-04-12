@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74afd7cc_ad2f0921",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 26
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-12T12:16:41Z",
+      "side": 1,
+      "message": "This e2e test is making modifications to the source tree, which is not something that should be done on any test that may be run locally. (mixed_mode_test.sh may certainly run be locally)",
+      "revId": "40b9b6ff8b93e445a81663feba040eb711e570c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "accf93f5_b1284eda",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 26
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-12T12:16:41Z",
+      "side": 1,
+      "message": "I thought the point of *unenabled* touch-file module was that this was *not* bp2build_available?\n\nUnless I\u0027m misunderstanding this: If your test here continues to pass despite this mistake, maybe something is wrong with the test?",
+      "revId": "40b9b6ff8b93e445a81663feba040eb711e570c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
