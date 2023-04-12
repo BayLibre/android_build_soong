@@ -35,11 +35,7 @@ func Indention(level int) string {
 
 // PrintBool returns a Starlark compatible bool string.
 func PrintBool(item bool) string {
-	if item {
-		return "True"
-	} else {
-		return "False"
-	}
+	return strings.Title(fmt.Sprintf("%t", item))
 }
 
 // PrintsStringList returns a Starlark-compatible string of a list of Strings/Labels.
