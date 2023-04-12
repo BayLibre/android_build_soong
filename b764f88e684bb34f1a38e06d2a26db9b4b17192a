@@ -110,6 +110,30 @@
       },
       "revId": "b764f88e684bb34f1a38e06d2a26db9b4b17192a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54c7b493_a8775231",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-12T21:05:34Z",
+      "side": 1,
+      "message": "For an append, there is a copy, but the return slice can be modified: https://go.dev/play/p/ZE8DwX82h0q",
+      "parentUuid": "d186fc6e_dc7f13cd",
+      "range": {
+        "startLine": 370,
+        "startChar": 8,
+        "endLine": 370,
+        "endChar": 31
+      },
+      "revId": "b764f88e684bb34f1a38e06d2a26db9b4b17192a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
