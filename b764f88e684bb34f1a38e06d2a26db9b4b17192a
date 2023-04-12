@@ -16,6 +16,52 @@
       "message": "Hi Jiyong, I noticed this discrepancy recently. Do you think this is the correct solution? If not, I can update the docs.\n\n(This likely breaks a bunch of bp2build tests, but I can update them if necessary)",
       "revId": "b764f88e684bb34f1a38e06d2a26db9b4b17192a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12040feb_a7d2789c",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-12T19:47:47Z",
+      "side": 1,
+      "message": "One other thought, we currently have https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex.go;l\u003d3172;drc\u003db0bfa07919f7c0961c74b3953a004b3f9c30b247 -- would it make sense to move the base to android/apex.go rather than in apex/apex.go so that ApexAvailable() would be the source of truth and we could remove the baseline with the automated migration to Bazel?\n\nDoesn\u0027t have to be this CL but would make the implementation of [`AvailableToSameApexes`](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/apex.go;l\u003d495;drc\u003d8c9ae7ed6770b45f1337722a2e61cb22317659aa) more correct.",
+      "range": {
+        "startLine": 364,
+        "startChar": 25,
+        "endLine": 364,
+        "endChar": 38
+      },
+      "revId": "b764f88e684bb34f1a38e06d2a26db9b4b17192a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dfb7011_577bff57",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-12T19:47:47Z",
+      "side": 1,
+      "message": "should this be a copy of the list so noone can modify it accidentally?",
+      "range": {
+        "startLine": 370,
+        "startChar": 8,
+        "endLine": 370,
+        "endChar": 31
+      },
+      "revId": "b764f88e684bb34f1a38e06d2a26db9b4b17192a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
