@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d28f4bb_3d274df4",
+        "filename": "rust/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-12T18:36:29Z",
+      "side": 0,
+      "message": "Don\u0027t you still need this dependency?",
+      "revId": "b4949c2b4f2386e502c0139e8eb77b1645ad11f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

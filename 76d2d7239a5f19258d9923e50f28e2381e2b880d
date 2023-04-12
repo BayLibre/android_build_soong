@@ -16,6 +16,57 @@
       "message": "CC +ccross as FYI",
       "revId": "76d2d7239a5f19258d9923e50f28e2381e2b880d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b2a29bf_74d79f7d",
+        "filename": "rust/binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-12T18:36:29Z",
+      "side": 1,
+      "message": "You can use `flags.LinkFlags \u003d append(flags.LinkFlags, deps.linkObjects.Strings()...)`",
+      "revId": "76d2d7239a5f19258d9923e50f28e2381e2b880d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "735c10d1_33588a64",
+        "filename": "rust/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-12T18:36:29Z",
+      "side": 1,
+      "message": "Why order-only here?  The link step needs to rerun if the objects have changed, does something else add a normal dependency on the objects?",
+      "revId": "76d2d7239a5f19258d9923e50f28e2381e2b880d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5decb9c_9912547a",
+        "filename": "rust/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-12T18:36:29Z",
+      "side": 1,
+      "message": "`deps.linkObjects.Strings()` here too",
+      "revId": "76d2d7239a5f19258d9923e50f28e2381e2b880d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
