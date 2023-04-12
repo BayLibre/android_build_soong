@@ -1166,3 +1166,91 @@ func TestSanitizeMemtagHeapWithSanitizeDeviceDiag(t *testing.T) {
 	checkHasMemtagNote(t, ctx.ModuleForTests("unset_test_override_default_disable", variant), Sync)
 	checkHasMemtagNote(t, ctx.ModuleForTests("unset_test_override_default_sync", variant), Sync)
 }
+
+func TestCfi(t *testing.T) {
+	t.Parallel()
+
+	bp := `
+	cc_library_shared {
+		name: "foo",
+		static_libs: ["baz"],
+		sanitize: {
+			cfi: true,
+		},
+	}
+
+	cc_library_shared {
+		name: "bar",
+		static_libs: ["baz"],
+	}
+
+	cc_library_static {
+		name: "baz",
+		sanitize: {
+			cfi: true,
+		},
+	}
+
+	cc_library_shared {
+		name: "blah",
+		static_libs: ["qux"],
+		sanitize: {
+			cfi: true,
+		},
+	}
+
+	cc_library_shared {
+		name: "blah_2",
+		static_libs: ["qux"],
+	}
+
+	cc_library_static {
+		name: "qux",
+	}
+
+	cc_library_shared {
+		name: "a",
+		static_libs: ["b"],
+	}
+
+	cc_library_static {
+		name: "b",
+		sanitize: {
+			cfi: true,
+		},
+	}
+`
+	preparer := android.GroupFixturePreparers(
+		prepareForCcTest,
+	)
+	result := preparer.RunTestWithBp(t, bp)
+	ctx := result.TestContext
+	buildOs := "android_arm64_armv8-a"
+
+	fmt.Printf("FOO: %v\n", result.ModuleVariantsForTests("foo"))
+	fmt.Printf("BAR: %v\n", result.ModuleVariantsForTests("bar"))
+	fmt.Printf("BAZ: %v\n", result.ModuleVariantsForTests("baz"))
+	fmt.Printf("BLAH: %v\n", result.ModuleVariantsForTests("blah"))
+	fmt.Printf("BLAH_2: %v\n", result.ModuleVariantsForTests("blah_2"))
+	fmt.Printf("QUX: %v\n", result.ModuleVariantsForTests("qux"))
+	fmt.Printf("A: %v\n", result.ModuleVariantsForTests("a"))
+	fmt.Printf("B: %v\n", result.ModuleVariantsForTests("b"))
+
+	fooLib := result.ModuleForTests("foo", buildOs+"_shared_cfi")
+	barLib := result.ModuleForTests("bar", buildOs+"_shared")
+	bazLib := result.ModuleForTests("baz", buildOs+"_static")
+	bazLibCfi := result.ModuleForTests("baz", buildOs+"_static_cfi")
+	blahLib := result.ModuleForTests("blah", buildOs+"_shared_cfi")
+	blah2Lib := result.ModuleForTests("blah_2", buildOs+"_shared")
+	quxLib := result.ModuleForTests("qux", buildOs+"_static")
+	quxLibCfi := result.ModuleForTests("qux", buildOs+"_static_cfi")
+	aLib := result.ModuleForTests("a", buildOs+"_shared")
+	bLib := result.ModuleForTests("b", buildOs+"_static")
+
+	// Confirm assumptions about propagation of CFI enablement
+	expectStaticLinkDep(t, ctx, fooLib, bazLibCfi)
+	expectStaticLinkDep(t, ctx, barLib, bazLib)
+	expectStaticLinkDep(t, ctx, blahLib, quxLibCfi)
+	expectStaticLinkDep(t, ctx, blah2Lib, quxLib)
+	expectStaticLinkDep(t, ctx, aLib, bLib)
+}
