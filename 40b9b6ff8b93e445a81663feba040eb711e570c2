@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09edac9f_7ca45be0",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 26
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-12T14:55:00Z",
+      "side": 1,
+      "message": "Fair point. Retraced. We\u0027re not doing this in an e2e test anymore, but an integration test. This is good :)",
+      "parentUuid": "f56058d0_e1947f02",
+      "revId": "40b9b6ff8b93e445a81663feba040eb711e570c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "accf93f5_b1284eda",
