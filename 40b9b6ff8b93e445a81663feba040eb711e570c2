@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "611831cc_5870527f",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 26
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-04-12T14:37:27Z",
+      "side": 1,
+      "message": "I was under the impression that `setup` sets things up under some temp directory.",
+      "parentUuid": "74afd7cc_ad2f0921",
+      "revId": "40b9b6ff8b93e445a81663feba040eb711e570c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "accf93f5_b1284eda",
         "filename": "tests/mixed_mode_test.sh",
         "patchSetId": 26
