@@ -10147,3 +10147,77 @@ func TestCannedFsConfig_HasCustomConfig(t *testing.T) {
 	// Ensure that canned_fs_config has "cat my_config" at the end
 	ensureContains(t, cmd, `( echo '/ 1000 1000 0755'; echo '/apex_manifest.json 1000 1000 0644'; echo '/apex_manifest.pb 1000 1000 0644'; cat my_config ) >`)
 }
+
+func TestStubLibrariesMultipleApexViolation(t *testing.T) {
+	testCases := []struct {
+		desc          string
+		hasStubs      bool
+		apexAvailable string
+		expectedError string
+	}{
+		{
+			desc:          "non-stub library can have multiple apex_available",
+			hasStubs:      false,
+			apexAvailable: `["myapex", "otherapex"]`,
+		},
+		{
+			desc:          "stub library should not be available to anyapex",
+			hasStubs:      true,
+			apexAvailable: `["//apex_available:anyapex"]`,
+			expectedError: "Stub libraries should have a single apex_available.*anyapex",
+		},
+		{
+			desc:          "stub library should not be available to multiple apexes",
+			hasStubs:      true,
+			apexAvailable: `["myapex", "otherapex"]`,
+			expectedError: "Stub libraries should have a single apex_available.*myapex.*otherapex",
+		},
+		{
+			desc:          "stub library can be available to a core apex and a test apex",
+			hasStubs:      true,
+			apexAvailable: `["myapex", "test_myapex"]`,
+		},
+	}
+	bpTemplate := `
+		cc_library {
+			name: "libfoo",
+			%v
+			apex_available: %v,
+		}
+		apex {
+			name: "myapex",
+			key: "apex.key",
+			updatable: false,
+			native_shared_libs: ["libfoo"],
+		}
+		apex {
+			name: "otherapex",
+			key: "apex.key",
+			updatable: false,
+		}
+		apex_test {
+			name: "test_myapex",
+			key: "apex.key",
+			updatable: false,
+			native_shared_libs: ["libfoo"],
+		}
+		apex_key {
+			name: "apex.key",
+		}
+	`
+	for _, tc := range testCases {
+		stubs := ""
+		if tc.hasStubs {
+			stubs = `stubs: {symbol_file: "libfoo.map.txt"},`
+		}
+		bp := fmt.Sprintf(bpTemplate, stubs, tc.apexAvailable)
+		mockFsFixturePreparer := android.FixtureModifyMockFS(func(fs android.MockFS) {
+			fs["system/sepolicy/apex/test_myapex-file_contexts"] = nil
+		})
+		if tc.expectedError == "" {
+			testApex(t, bp, mockFsFixturePreparer)
+		} else {
+			testApexError(t, tc.expectedError, bp, mockFsFixturePreparer)
+		}
+	}
+}
