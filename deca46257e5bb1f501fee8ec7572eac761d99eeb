@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a64b01_a15e7d51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-12T03:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "179d2ee7_f16e153f",
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afe1a747_12040814",
@@ -65,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0246a6b5_2e4328d8",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-12T03:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c9b9548_09231052",
+      "range": {
+        "startLine": 218,
+        "startChar": 21,
+        "endLine": 218,
+        "endChar": 196
+      },
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "844d813e_46b14a2e",
@@ -84,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b26cfac_925b2e9a",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-12T03:28:24Z",
+      "side": 1,
+      "message": "This was a regression caused by my change, Fixed.",
+      "parentUuid": "844d813e_46b14a2e",
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f414abf1_21a483bd",
         "filename": "cc/fuzz.go",
         "patchSetId": 4
@@ -95,6 +155,24 @@
       "writtenOn": "2023-04-10T18:17:40Z",
       "side": 1,
       "message": "If this check doesn\u0027t match, doesn\u0027t that mean there\u0027s a bug? Should we be panicking rather than just putting this inside a conditional?\n\nIf not, is it only an option of having 0 modules sometimes?\n\nMostly, this code looks like it will silently do something unusual if we manage to have len(sharedLibrariesModules) \u003d\u003d 2 and len(sharedLibararies) \u003d\u003d 3 or something like that.\n\nNormally, wanting to do this kind of indexing would instead make me think that `sharedLibraries` should instead be a tuple of a path and a module.\n\nIf there\u0027s an intentionally supported case where the module is not available, then it can be a module pointer instead with nil used to encode a missing module.",
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32056a48_e1921bb0",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-12T03:28:24Z",
+      "side": 1,
+      "message": "The condition is not needed and is now removed.",
+      "parentUuid": "f414abf1_21a483bd",
       "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -122,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e047a4d9_76d27faa",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-12T03:28:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a0979105_f1866d54",
+      "range": {
+        "startLine": 489,
+        "startChar": 5,
+        "endLine": 489,
+        "endChar": 231
+      },
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "441b9c15_3816d25e",
@@ -135,6 +237,24 @@
       "writtenOn": "2023-04-10T18:17:40Z",
       "side": 1,
       "message": "Don\u0027t really care, but normally we don\u0027t edit unrelated parts of the file to avoid git-blame confusion.",
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "432255dd_f000b2a0",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-12T03:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "441b9c15_3816d25e",
       "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
