@@ -758,6 +758,30 @@ func ApexAvailableTags(mod Module) bazel.StringListAttribute {
 	return attr
 }
 
+func ApexAvailableTagsWithoutTestApexes(ctx BaseModuleContext, mod Module) bazel.StringListAttribute {
+	attr := bazel.StringListAttribute{}
+	if am, ok := mod.(ApexModule); ok {
+		apexAvailableWithoutTestApexes := removeTestApexes(ctx, am.apexModuleBase().ApexAvailable())
+		attr.Value = ConvertApexAvailableToTags(apexAvailableWithoutTestApexes)
+	}
+	return attr
+}
+
+func removeTestApexes(ctx BaseModuleContext, apex_available []string) []string {
+	ret := []string{}
+	for _, aa := range apex_available {
+		// ignore the wildcards
+		if InList(aa, AvailableToRecognziedWildcards) {
+			ret = append(ret, aa)
+		}
+		mod, _ := ctx.ModuleFromName(aa)
+		if apex, ok := mod.(ApexTestInterface); ok && !apex.IsTestApex() {
+			ret = append(ret, aa)
+		}
+	}
+	return ret
+}
+
 func ConvertApexAvailableToTags(apexAvailable []string) []string {
 	// TODO: Add desc
 	if len(apexAvailable) == 0 {
