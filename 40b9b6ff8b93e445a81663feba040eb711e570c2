@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de269c3_747d91e3",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 26
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-12T15:54:27Z",
+      "side": 1,
+      "message": "Just to tack on:\n`bazel_module: bp2build_available` is available only in [the soong_tests package](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/neverallow.go;l\u003d70-74). \n\nI also borrowed this from one of the other test cases in this file.",
+      "parentUuid": "09edac9f_7ca45be0",
+      "revId": "40b9b6ff8b93e445a81663feba040eb711e570c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "accf93f5_b1284eda",
@@ -85,6 +103,24 @@
       "writtenOn": "2023-04-12T12:16:41Z",
       "side": 1,
       "message": "I thought the point of *unenabled* touch-file module was that this was *not* bp2build_available?\n\nUnless I\u0027m misunderstanding this: If your test here continues to pass despite this mistake, maybe something is wrong with the test?",
+      "revId": "40b9b6ff8b93e445a81663feba040eb711e570c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd74d12d_6be68feb",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 26
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-12T15:54:27Z",
+      "side": 1,
+      "message": "I took this to be forcing it _not_ to be bp2build-convertible. The error seemingly still occurs (though it seems like we\u0027re broken at head so I can\u0027t verify)",
+      "parentUuid": "accf93f5_b1284eda",
       "revId": "40b9b6ff8b93e445a81663feba040eb711e570c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
