@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a551b142_dc28fc21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-12T19:27:45Z",
+      "side": 1,
+      "message": "The alternative I considered was to create a lock-guarded global (similar to ndkKnwonLibs). But I believe the use of global is discouraged.",
+      "revId": "899a98e96422983c3c3520677e623034598f7810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
