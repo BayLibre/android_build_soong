@@ -22,6 +22,30 @@
       },
       "revId": "448bbfb0838d11c8e24ebf62890989337ca89c53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5575b568_3c0b7a71",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2023-04-12T06:42:39Z",
+      "side": 0,
+      "message": "LOCAL_DROIDDOC_STUBS_SRCJAR is still used, see line 568, so I assume we should leave Make unchanged?",
+      "parentUuid": "9af593c1_92be4473",
+      "range": {
+        "startLine": 525,
+        "startChar": 22,
+        "endLine": 525,
+        "endChar": 49
+      },
+      "revId": "448bbfb0838d11c8e24ebf62890989337ca89c53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
