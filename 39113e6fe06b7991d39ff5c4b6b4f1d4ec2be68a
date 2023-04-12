@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a75f453_59234329",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-12T04:12:01Z",
+      "side": 1,
+      "message": "I think this is actually ok to read as-is, because it should always be set for the top-level targets that cquery reads.",
+      "revId": "39113e6fe06b7991d39ff5c4b6b4f1d4ec2be68a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
