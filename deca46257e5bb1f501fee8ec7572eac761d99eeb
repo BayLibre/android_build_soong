@@ -142,6 +142,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82b6c1f_2820747d",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-12T03:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b26cfac_925b2e9a",
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f414abf1_21a483bd",
@@ -173,6 +191,24 @@
       "side": 1,
       "message": "The condition is not needed and is now removed.",
       "parentUuid": "f414abf1_21a483bd",
+      "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e931202_c6d73b6c",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-12T03:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32056a48_e1921bb0",
       "revId": "deca46257e5bb1f501fee8ec7572eac761d99eeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
