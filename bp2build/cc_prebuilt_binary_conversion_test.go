@@ -47,7 +47,8 @@ cc_prebuilt_binary {
 }`,
 			ExpectedBazelTargets: []string{
 				MakeBazelTarget("cc_prebuilt_binary", "bintest", AttrNameToString{
-					"src": `"bin"`,
+					"src":  `"bin"`,
+					"tags": `["apex_available=//apex_available:platform"]`,
 				})},
 		})
 }
@@ -71,6 +72,7 @@ cc_prebuilt_binary {
 					"strip": `{
         "all": True,
     }`,
+					"tags": `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		})
@@ -99,6 +101,7 @@ cc_prebuilt_binary {
         "//build/bazel/platforms/arch:arm64": "bina",
         "//conditions:default": None,
     })`,
+					"tags": `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		})

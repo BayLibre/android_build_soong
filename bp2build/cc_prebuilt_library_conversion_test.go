@@ -38,13 +38,16 @@ cc_prebuilt_library {
 			ExpectedBazelTargets: []string{
 				MakeBazelTarget("cc_prebuilt_library_static", "libtest_bp2build_cc_library_static", AttrNameToString{
 					"static_library": `"libf.so"`,
+					"tags":           `["apex_available=//apex_available:platform"]`,
 				}),
 				MakeBazelTarget("cc_prebuilt_library_static", "libtest_bp2build_cc_library_static_alwayslink", AttrNameToString{
 					"static_library": `"libf.so"`,
 					"alwayslink":     "True",
+					"tags":           `["apex_available=//apex_available:platform"]`,
 				}),
 				MakeBazelTarget("cc_prebuilt_library_shared", "libtest", AttrNameToString{
 					"shared_library": `"libf.so"`,
+					"tags":           `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		})
@@ -75,20 +78,25 @@ cc_prebuilt_library {
         "//build/bazel/platforms/arch:arm": "libg.so",
         "//build/bazel/platforms/arch:arm64": "libf.so",
         "//conditions:default": None,
-    })`}),
+    })`,
+					"tags": `["apex_available=//apex_available:platform"]`,
+				}),
 				MakeBazelTarget("cc_prebuilt_library_static", "libtest_bp2build_cc_library_static_alwayslink", AttrNameToString{
 					"alwayslink": "True",
 					"static_library": `select({
         "//build/bazel/platforms/arch:arm": "libg.so",
         "//build/bazel/platforms/arch:arm64": "libf.so",
         "//conditions:default": None,
-    })`}),
+    })`,
+					"tags": `["apex_available=//apex_available:platform"]`,
+				}),
 				MakeBazelTarget("cc_prebuilt_library_shared", "libtest", AttrNameToString{
 					"shared_library": `select({
         "//build/bazel/platforms/arch:arm": "libg.so",
         "//build/bazel/platforms/arch:arm64": "libf.so",
         "//conditions:default": None,
     })`,
+					"tags": `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		})
@@ -118,16 +126,19 @@ cc_prebuilt_library {
 					"static_library":         `"libf.so"`,
 					"export_includes":        `["testdir/1/"]`,
 					"export_system_includes": `["testdir/2/"]`,
+					"tags":                   `["apex_available=//apex_available:platform"]`,
 				}),
 				MakeBazelTarget("cc_prebuilt_library_static", "libtest_bp2build_cc_library_static_alwayslink", AttrNameToString{
 					"static_library":         `"libf.so"`,
 					"export_includes":        `["testdir/1/"]`,
 					"export_system_includes": `["testdir/2/"]`,
 					"alwayslink":             "True",
+					"tags":                   `["apex_available=//apex_available:platform"]`,
 				}),
 				// TODO(b/229374533): When fixed, update this test
 				MakeBazelTarget("cc_prebuilt_library_shared", "libtest", AttrNameToString{
 					"shared_library": `"libf.so"`,
+					"tags":           `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		})
@@ -203,13 +214,16 @@ cc_prebuilt_library {
 			ExpectedBazelTargets: []string{
 				MakeBazelTarget("cc_prebuilt_library_static", "libtest_bp2build_cc_library_static", AttrNameToString{
 					"static_library": `"libf.so"`,
+					"tags":           `["apex_available=//apex_available:platform"]`,
 				}),
 				MakeBazelTarget("cc_prebuilt_library_static", "libtest_bp2build_cc_library_static_alwayslink", AttrNameToString{
 					"static_library": `"libf.so"`,
 					"alwayslink":     "True",
+					"tags":           `["apex_available=//apex_available:platform"]`,
 				}),
 				MakeBazelTarget("cc_prebuilt_library_shared", "libtest", AttrNameToString{
 					"shared_library": `"libg.so"`,
+					"tags":           `["apex_available=//apex_available:platform"]`,
 				}),
 			},
 		})

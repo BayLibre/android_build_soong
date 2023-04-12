@@ -156,6 +156,7 @@ func TestBasicCcBinary(t *testing.T) {
 				"min_sdk_version":    `"29"`,
 				"use_version_lib":    `True`,
 				"whole_archive_deps": `["//build/soong/cc/libbuildversion:libbuildversion"]`,
+				"tags":               `["apex_available=//apex_available:platform"]`,
 			},
 			},
 		},
@@ -176,6 +177,7 @@ func TestCcBinaryWithSharedLdflagDisableFeature(t *testing.T) {
 			{"cc_binary", "foo", AttrNameToString{
 				"features": `["-static_flag"]`,
 				"linkopts": `["-shared"]`,
+				"tags":     `["apex_available=//apex_available:platform"]`,
 			},
 			},
 		},
@@ -194,6 +196,7 @@ func TestCcBinaryWithLinkStatic(t *testing.T) {
 `,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":       `["apex_available=//apex_available:platform"]`,
 				"linkshared": `False`,
 			},
 			},
@@ -214,6 +217,7 @@ func TestCcBinaryVersionScriptAndDynamicList(t *testing.T) {
 `,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"additional_linker_inputs": `[
         "vs",
         "dynamic.list",
@@ -245,6 +249,7 @@ func TestCcBinaryLdflagsSplitBySpaceExceptSoongAdded(t *testing.T) {
 `,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"additional_linker_inputs": `[
         "version_script",
         "dynamic.list",
@@ -277,6 +282,7 @@ func TestCcBinarySplitSrcsByLang(t *testing.T) {
 ` + simpleModuleDoNotConvertBp2build("filegroup", "fg_foo"),
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `[
         "cpponly.cpp",
         ":fg_foo_cpp_srcs",
@@ -332,6 +338,7 @@ genrule {
 			simpleModuleDoNotConvertBp2build("cc_library", "implementation_shared_dep"),
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"deps": `[
         ":implementation_static_dep",
         ":static_dep",
@@ -365,16 +372,23 @@ func TestCcBinaryNocrtTests(t *testing.T) {
 		{
 			description:   "nocrt: true",
 			soongProperty: `nocrt: true,`,
-			bazelAttr:     AttrNameToString{"features": `["-link_crt"]`},
+			bazelAttr: AttrNameToString{
+				"features": `["-link_crt"]`,
+				"tags":     `["apex_available=//apex_available:platform"]`,
+			},
 		},
 		{
 			description:   "nocrt: false",
 			soongProperty: `nocrt: false,`,
-			bazelAttr:     AttrNameToString{},
+			bazelAttr: AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
+			},
 		},
 		{
 			description: "nocrt: not set",
-			bazelAttr:   AttrNameToString{},
+			bazelAttr: AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
+			},
 		},
 	}
 
@@ -432,6 +446,8 @@ func TestCcBinaryNo_libcrtTests(t *testing.T) {
 		if len(prop) > 0 {
 			prop = "\n" + prop
 		}
+		// Add the default apex_available
+		btc.bazelAttr["tags"] = `["apex_available=//apex_available:platform"]`
 		runCcBinaryTests(t, ccBinaryBp2buildTestCase{
 			description: btc.description,
 			blueprint:   fmt.Sprintf(baseBlueprint, prop),
@@ -488,6 +504,8 @@ func TestCcBinaryPropertiesToFeatures(t *testing.T) {
 		if len(prop) > 0 {
 			prop = "\n" + prop
 		}
+		// Add the default apex_available
+		btc.bazelAttr["tags"] = `["apex_available=//apex_available:platform"]`
 		runCcBinaryTests(t, ccBinaryBp2buildTestCase{
 			description: btc.description,
 			blueprint:   fmt.Sprintf(baseBlueprint, prop),
@@ -510,9 +528,12 @@ func TestCcBinarySharedProto(t *testing.T) {
 		targets: []testBazelTarget{
 			{"proto_library", "foo_proto", AttrNameToString{
 				"srcs": `["foo.proto"]`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}}, {"cc_lite_proto_library", "foo_cc_proto_lite", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"deps": `[":foo_proto"]`,
 			}}, {"cc_binary", "foo", AttrNameToString{
+				"tags":               `["apex_available=//apex_available:platform"]`,
 				"dynamic_deps":       `[":libprotobuf-cpp-lite"]`,
 				"whole_archive_deps": `[":foo_cc_proto_lite"]`,
 			}},
@@ -532,10 +553,13 @@ func TestCcBinaryStaticProto(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"proto_library", "foo_proto", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `["foo.proto"]`,
 			}}, {"cc_lite_proto_library", "foo_cc_proto_lite", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"deps": `[":foo_proto"]`,
 			}}, {"cc_binary", "foo", AttrNameToString{
+				"tags":               `["apex_available=//apex_available:platform"]`,
 				"deps":               `[":libprotobuf-cpp-lite"]`,
 				"whole_archive_deps": `[":foo_cc_proto_lite"]`,
 				"linkshared":         `False`,
@@ -577,6 +601,7 @@ func TestCcBinaryConvertLex(t *testing.T) {
     ]`,
 			}},
 			{"cc_binary", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `[
         "bar.cc",
         ":foo_genlex_ll",
@@ -607,18 +632,21 @@ cc_library {
 `,
 		targets: []testBazelTarget{
 			{"cc_library_static", "bar_bp2build_cc_library_static", AttrNameToString{
+				"tags":                   `["apex_available=//apex_available:platform"]`,
 				"local_includes":         `["."]`,
 				"srcs":                   `["b.cc"]`,
 				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
 			},
 			},
 			{"cc_library_shared", "bar", AttrNameToString{
+				"tags":                   `["apex_available=//apex_available:platform"]`,
 				"local_includes":         `["."]`,
 				"srcs":                   `["b.cc"]`,
 				"target_compatible_with": `["//build/bazel/platforms/os:android"]`,
 			},
 			},
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"srcs":           `["a.cc"]`,
 				"runtime_deps":   `[":bar"]`,
@@ -643,6 +671,7 @@ func TestCcBinaryWithInstructionSet(t *testing.T) {
 `,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"features": `select({
         "//build/bazel/platforms/arch:arm": [
             "arm_isa_arm",
@@ -666,6 +695,7 @@ func TestCcBinaryEmptySuffix(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"suffix":         `""`,
 			}},
@@ -684,6 +714,7 @@ func TestCcBinarySuffix(t *testing.T) {
 `,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"suffix":         `"-suf"`,
 			}},
@@ -705,6 +736,7 @@ func TestCcArchVariantBinarySuffix(t *testing.T) {
 `,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"suffix": `select({
         "//build/bazel/platforms/arch:arm": "-32",
@@ -731,16 +763,19 @@ func TestCcBinaryWithSyspropSrcs(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"sysprop_library", "foo_sysprop_library", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `[
         "bar.sysprop",
         "baz.sysprop",
     ]`,
 			}},
 			{"cc_sysprop_library_static", "foo_cc_sysprop_library_static", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"dep":             `":foo_sysprop_library"`,
 				"min_sdk_version": `"5"`,
 			}},
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":               `["apex_available=//apex_available:platform"]`,
 				"srcs":               `["blah.cpp"]`,
 				"local_includes":     `["."]`,
 				"min_sdk_version":    `"5"`,
@@ -768,16 +803,19 @@ func TestCcBinaryWithSyspropSrcsSomeConfigs(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"sysprop_library", "foo_sysprop_library", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"srcs": `select({
         "//build/bazel/platforms/os:android": ["bar.sysprop"],
         "//conditions:default": [],
     })`,
 			}},
 			{"cc_sysprop_library_static", "foo_cc_sysprop_library_static", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"dep":             `":foo_sysprop_library"`,
 				"min_sdk_version": `"5"`,
 			}},
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"srcs":            `["blah.cpp"]`,
 				"local_includes":  `["."]`,
 				"min_sdk_version": `"5"`,
@@ -802,6 +840,7 @@ func TestCcBinaryWithIntegerOverflowProperty(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features":       `["ubsan_integer_overflow"]`,
 			}},
@@ -821,6 +860,7 @@ func TestCcBinaryWithMiscUndefinedProperty(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features": `[
         "ubsan_undefined",
@@ -855,6 +895,7 @@ func TestCcBinaryWithUBSanPropertiesArchSpecific(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features": `[
         "ubsan_undefined",
@@ -881,6 +922,7 @@ func TestCcBinaryWithThinLto(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features":       `["android_thin_lto"]`,
 			}},
@@ -900,6 +942,7 @@ func TestCcBinaryWithLtoNever(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features":       `["-android_thin_lto"]`,
 			}},
@@ -930,6 +973,7 @@ func TestCcBinaryWithThinLtoArchSpecific(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features": `select({
         "//build/bazel/platforms/os_arch:android_arm": ["android_thin_lto"],
@@ -964,6 +1008,7 @@ func TestCcBinaryWithThinLtoDisabledDefaultEnabledVariant(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features": `select({
         "//build/bazel/platforms/os:android": ["android_thin_lto"],
@@ -987,6 +1032,7 @@ func TestCcBinaryWithThinLtoAndWholeProgramVtables(t *testing.T) {
 }`,
 		targets: []testBazelTarget{
 			{"cc_binary", "foo", AttrNameToString{
+				"tags":           `["apex_available=//apex_available:platform"]`,
 				"local_includes": `["."]`,
 				"features": `[
         "android_thin_lto",

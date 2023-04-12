@@ -78,6 +78,7 @@ func TestCcObjectSimple(t *testing.T) {
 				"sdk_version":         `"current"`,
 				"min_sdk_version":     `"29"`,
 				"crt":                 "True",
+				"tags":                `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -117,6 +118,7 @@ cc_defaults {
 				"local_includes":      `["."]`,
 				"srcs":                `["a/b/c.c"]`,
 				"system_dynamic_deps": `[]`,
+				"tags":                `["apex_available=//apex_available:platform"]`,
 			}),
 		}})
 }
@@ -148,11 +150,13 @@ cc_object {
 				"copts":               `["-fno-addrsig"]`,
 				"srcs":                `["x/y/z.c"]`,
 				"system_dynamic_deps": `[]`,
+				"tags":                `["apex_available=//apex_available:platform"]`,
 			}), MakeBazelTarget("cc_object", "foo", AttrNameToString{
 				"copts":               `["-fno-addrsig"]`,
 				"objs":                `[":bar"]`,
 				"srcs":                `["a/b/c.c"]`,
 				"system_dynamic_deps": `[]`,
+				"tags":                `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -177,6 +181,7 @@ func TestCcObjectIncludeBuildDirFalse(t *testing.T) {
 				"copts":               `["-fno-addrsig"]`,
 				"srcs":                `["a/b/c.c"]`,
 				"system_dynamic_deps": `[]`,
+				"tags":                `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -206,6 +211,7 @@ func TestCcObjectProductVariable(t *testing.T) {
 				"copts":               `["-fno-addrsig"]`,
 				"srcs_as":             `["src.S"]`,
 				"system_dynamic_deps": `[]`,
+				"tags":                `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -240,6 +246,7 @@ func TestCcObjectCflagsOneArch(t *testing.T) {
         "//conditions:default": [],
     })`,
 				"system_dynamic_deps": `[]`,
+				"tags":                `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -290,6 +297,7 @@ func TestCcObjectCflagsFourArch(t *testing.T) {
         "//conditions:default": [],
     })`,
 				"system_dynamic_deps": `[]`,
+				"tags":                `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -310,6 +318,7 @@ func TestCcObjectLinkerScript(t *testing.T) {
 				"copts":         `["-fno-addrsig"]`,
 				"linker_script": `"bunny.lds"`,
 				"srcs":          `["base.cpp"]`,
+				"tags":          `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -378,6 +387,7 @@ cc_object {
         "//conditions:default": None,
     })`,
 				"srcs": `["base.cpp"]`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -421,6 +431,7 @@ func TestCcObjectSelectOnLinuxAndBionicArchs(t *testing.T) {
         "//build/bazel/platforms/os_arch:linux_musl_x86": ["linux_x86.cpp"],
         "//conditions:default": [],
     })`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})
@@ -471,9 +482,11 @@ cc_library_headers {
 				"system_dynamic_deps": `[]`,
 				"sdk_version":         `"current"`,
 				"min_sdk_version":     `"29"`,
+				"tags":                `["apex_available=//apex_available:platform"]`,
 			}),
 			MakeBazelTarget("cc_library_headers", "libheaders", AttrNameToString{
 				"export_includes": `["include"]`,
+				"tags":            `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})

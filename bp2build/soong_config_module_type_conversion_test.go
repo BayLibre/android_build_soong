@@ -95,6 +95,7 @@ custom_cc_library_static {
         "//conditions:default": ["-DDEFAULT1"],
     }),
     local_includes = ["."],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -144,6 +145,7 @@ custom_cc_library_static {
         "//conditions:default": ["-DDEFAULT1"],
     }),
     local_includes = ["."],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -197,6 +199,7 @@ custom_cc_library_static {
         "//conditions:default": ["-DSOC_DEFAULT"],
     }),
     local_includes = ["."],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -275,6 +278,7 @@ custom_cc_library_static {
         "//conditions:default": ["-DDEFAULT2"],
     }),
     local_includes = ["."],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -345,6 +349,7 @@ cc_library_static { name: "soc_default_static_dep", bazel_module: { bp2build_ava
         "//conditions:default": ["//foo/bar:soc_default_static_dep"],
     }),
     local_includes = ["."],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -409,6 +414,7 @@ cc_library_static {
         ],
     }),
     local_includes = ["."],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -495,6 +501,7 @@ cc_library_static {
     }),
     local_includes = ["."],
     srcs_as = ["file.S"],
+    tags = ["apex_available=//apex_available:platform"],
 )`,
 			`cc_library_static(
     name = "lib2",
@@ -514,6 +521,7 @@ cc_library_static {
     }),
     local_includes = ["."],
     srcs_as = ["file.S"],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -606,6 +614,7 @@ cc_library_static {
         "//conditions:default": ["-DVENDOR_QUX_DEFAULT"],
     }),
     local_includes = ["."],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -739,6 +748,7 @@ cc_library { name: "lib_default", bazel_module: { bp2build_available: false } }
         ],
     }),
     srcs = ["library_linking_strategy.cc"],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -827,12 +837,14 @@ cc_library { name: "lib_c", bazel_module: { bp2build_available: false } }
             "//foo/bar:lib_c",
         ],
     })`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 			MakeBazelTargetNoRestrictions("cc_binary", "library_linking_strategy_sample_binary_with_excludes", AttrNameToString{
 				"dynamic_deps": `select({
         "//build/bazel/product_variables:android__library_linking_strategy__prefer_static": [],
         "//conditions:default": ["//foo/bar:lib_b"],
     })`,
+				"tags": `["apex_available=//apex_available:platform"]`,
 			}),
 		}})
 }
@@ -933,6 +945,7 @@ cc_library { name: "lib_default", bazel_module: { bp2build_available: false } }
     }),
     local_includes = ["."],
     srcs = ["library_linking_strategy.cc"],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -1014,6 +1027,7 @@ cc_library { name: "lib_b", bazel_module: { bp2build_available: false } }
     }),
     local_includes = ["."],
     srcs = ["library_linking_strategy.cc"],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -1098,6 +1112,7 @@ cc_library { name: "lib_default", bazel_module: { bp2build_available: false } }
     }),
     local_includes = ["."],
     srcs = ["main.cc"],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }
 
@@ -1152,6 +1167,7 @@ cc_binary {
     name = "alphabet_binary",
     local_includes = ["."],
     srcs = ["main.cc"],
+    tags = ["apex_available=//apex_available:platform"],
     target_compatible_with = ["//build/bazel/product_variables:alphabet_module__special_build"] + select({
         "//build/bazel/platforms/os_arch:android_x86_64": ["@platforms//:incompatible"],
         "//build/bazel/platforms/os_arch:darwin_arm64": ["@platforms//:incompatible"],
@@ -1205,6 +1221,7 @@ cc_binary {
     name = "alphabet_binary",
     local_includes = ["."],
     srcs = ["main.cc"],
+    tags = ["apex_available=//apex_available:platform"],
     target_compatible_with = ["//build/bazel/product_variables:alphabet_module__special_build"],
 )`}})
 }
@@ -1249,5 +1266,6 @@ cc_binary {
     name = "alphabet_binary",
     local_includes = ["."],
     srcs = ["main.cc"],
+    tags = ["apex_available=//apex_available:platform"],
 )`}})
 }

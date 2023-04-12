@@ -107,6 +107,7 @@ cc_library_headers {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_headers", "foo_headers", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"export_includes": `select({
         "//build/bazel/platforms/arch:arm64": ["arch_arm64_exported_include_dir"],
         "//build/bazel/platforms/arch:x86": ["arch_x86_exported_include_dir"],
@@ -249,6 +250,7 @@ cc_library_headers {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_headers", "foo_headers", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"deps": `select({
         "//build/bazel/platforms/os:android": [":android-lib"],
         "//build/bazel/platforms/os:darwin": [":darwin-lib"],
@@ -289,6 +291,7 @@ cc_library_headers {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_headers", "foo_headers", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"deps": `select({
         "//build/bazel/platforms/os:android": [":exported-lib"],
         "//conditions:default": [],
@@ -342,6 +345,7 @@ func TestCcLibraryHeadersArchAndTargetExportSystemIncludes(t *testing.T) {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_headers", "foo_headers", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"export_system_includes": `select({
         "//build/bazel/platforms/os:android": ["android_include_dir"],
         "//build/bazel/platforms/os:darwin": ["darwin_include_dir"],
@@ -384,6 +388,7 @@ cc_library_headers {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_headers", "lib-1", AttrNameToString{
+				"tags":            `["apex_available=//apex_available:platform"]`,
 				"export_includes": `["lib-1"]`,
 			}),
 		},
@@ -406,6 +411,7 @@ cc_library_headers {
 ` + simpleModuleDoNotConvertBp2build("cc_library_headers", "foo_export"),
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_headers", "foo_headers", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"deps": `[":foo_export"]`,
 			}),
 		},
@@ -428,6 +434,7 @@ cc_library_headers {
 ` + simpleModuleDoNotConvertBp2build("cc_library_headers", "foo_export"),
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_headers", "foo_headers", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"deps": `[":foo_export"]`,
 			}),
 		},
@@ -450,6 +457,7 @@ cc_library_headers {
 ` + simpleModuleDoNotConvertBp2build("cc_library_headers", "foo_export"),
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_headers", "foo_headers", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"deps": `[":foo_export"]`,
 			}),
 		},
@@ -471,6 +479,7 @@ cc_library_headers {
 ` + simpleModuleDoNotConvertBp2build("cc_library_headers", "foo_export"),
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_headers", "foo_headers", AttrNameToString{
+				"tags": `["apex_available=//apex_available:platform"]`,
 				"deps": `[":foo_export"]`,
 			}),
 		},
