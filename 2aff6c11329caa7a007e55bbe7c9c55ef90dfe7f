@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d8401a7_377cc09b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-04-12T21:25:38Z",
+      "side": 1,
+      "message": "(not to be merged until https://android-review.git.corp.google.com/c/platform/bionic/+/2526531 is in, and skavdrik\u0027s corresponding ART change is in...)",
+      "revId": "2aff6c11329caa7a007e55bbe7c9c55ef90dfe7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
