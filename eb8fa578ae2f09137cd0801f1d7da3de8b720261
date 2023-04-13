@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71efc068_b37b6def",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T21:19:35Z",
+      "side": 1,
+      "message": "I was unable to figure out why patchset 1 fails. There is likely some parsing in build/make/core/main.mk which does not work if we add a new naming convention for platform/mainline_module stubs.\n\npatchset 2 works (atleast soong analysis), but I am not sure if this is the correct solution.",
+      "revId": "eb8fa578ae2f09137cd0801f1d7da3de8b720261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
