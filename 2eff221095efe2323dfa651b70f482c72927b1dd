@@ -16,6 +16,29 @@
       "message": "LGTM; awaiting prebuild",
       "revId": "2eff221095efe2323dfa651b70f482c72927b1dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90782a21_608f0992",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-04-13T18:12:36Z",
+      "side": 1,
+      "message": "just curious: do we already know the current version of this variant or it is before the version specific variants get created? i.e., if there are 3 versions for this lib, are we going to enqueue the bazel requests 3*3 times? the end result is probably ok because it is based on the key so no dups will be added.",
+      "range": {
+        "startLine": 936,
+        "startChar": 43,
+        "endLine": 936,
+        "endChar": 59
+      },
+      "revId": "2eff221095efe2323dfa651b70f482c72927b1dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
