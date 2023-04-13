@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da5c8735_d9f09e61",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-13T16:43:41Z",
+      "side": 1,
+      "message": "The presubmit will likely fail until aosp/2534661 is checked in",
+      "revId": "f1235a87870da4951593ce8daaf1b3ca8cba8b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
