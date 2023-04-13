@@ -16,6 +16,24 @@
       "message": "Hi Liz, WDYT about this change? Since apex_available is not enforced on test apexes, do we need these tags in bp2build generated BUILD files at all?\n\n(This CL is not on the critical path of b/277651159, so this can be deferred to a future discussion)",
       "revId": "0543696c081ef4833517a49943c951b98f1298fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "959531c8_50295054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-13T14:58:23Z",
+      "side": 1,
+      "message": "Yeah, this seems reasonable to me. There\u0027s no need for it when you\u0027re not magically selecting the variant to depend on based on it.",
+      "parentUuid": "afa8b83f_645f95fa",
+      "revId": "0543696c081ef4833517a49943c951b98f1298fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

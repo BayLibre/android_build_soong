@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc031fc_771709f5",
+        "filename": "android/mutator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-13T14:58:23Z",
+      "side": 1,
+      "message": "note we might need to be able to pass a list here as well, since there are a few cases that have special handling:\n* https://cs.android.com/android/platform/superproject/+/master:system/tools/hidl/build/hidl_interface.go;l\u003d801;drc\u003d206543ac1d3b7a092f1a870234f58336164169a4\n* https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/bp2build.go;l\u003d251;drc\u003de55bf08de292eec99e16d246ed3ebf2241528ad5",
+      "range": {
+        "startLine": 755,
+        "startChar": 5,
+        "endLine": 755,
+        "endChar": 39
+      },
+      "revId": "6e30aec1456ce36b734967c4ddf31e9d08b7a2f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
