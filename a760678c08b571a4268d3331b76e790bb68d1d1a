@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c7f49e0_df7fd3b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-13T15:46:36Z",
+      "side": 1,
+      "message": "is this necessary to put in BUILD files or can we continue to default to this when not set in a BUILD file? It will make BUILD files very verbose.\n\nHow would this impact targets that have a baseline apex_available in apex/apex.go?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "a760678c08b571a4268d3331b76e790bb68d1d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ebb4a012_75747139",
