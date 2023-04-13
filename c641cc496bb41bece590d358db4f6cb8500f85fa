@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "16052e15_222d8183",
+        "filename": "bp2build/cc_prebuilt_library_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-04-13T14:48:22Z",
+      "side": 1,
+      "message": "Nit: Does this func need to have `t.Parallel()` too?",
+      "revId": "c641cc496bb41bece590d358db4f6cb8500f85fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fc90afa7_4e71e534",
@@ -60,6 +77,30 @@
       "writtenOn": "2023-04-13T14:18:31Z",
       "side": 1,
       "message": "nit: is this worth a tracking bug?",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 23
+      },
+      "revId": "c641cc496bb41bece590d358db4f6cb8500f85fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e418f2f3_5fd18124",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-04-13T14:48:22Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "f87dc5d2_a55e210a",
       "range": {
         "startLine": 379,
         "startChar": 0,
