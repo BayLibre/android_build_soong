@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ba7feb_dedfb5ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T05:20:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d23db581_62103421",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "c719629bfe5e5b59dd6ef5fd4fbbd6c3783c257b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c73a88a_ce205778",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "470270a2_601bfb74",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2010,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T05:20:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c73a88a_ce205778",
+      "range": {
+        "startLine": 2010,
+        "startChar": 94,
+        "endLine": 2010,
+        "endChar": 112
+      },
+      "revId": "c719629bfe5e5b59dd6ef5fd4fbbd6c3783c257b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e1d99c9_2238303e",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-13T01:26:54Z",
       "side": 1,
       "message": "As I mentioned in the mail thread, can we make this check as something like checking if a stub-providing library is not listed in two (or more) apex.native_shared_libs?",
+      "range": {
+        "startLine": 2049,
+        "startChar": 6,
+        "endLine": 2049,
+        "endChar": 38
+      },
+      "revId": "c719629bfe5e5b59dd6ef5fd4fbbd6c3783c257b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72da8378_263cd333",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T05:20:08Z",
+      "side": 1,
+      "message": "Hi Jooyung, do you think checking it on apex.native_shared_libs should be _instead_ of or in _addition_ to this check?\n\nIf it is the former, then I think it will be difficult to implement in Bazel. We effectively have to scan the entire tree for apex targets, look at its native_shared_libs for stub libraries, and verify that there are no duplicates for stub libraries (The test apex question still remains though).\n\nI think another advantage of implementing this as a local check is that makes the stub/impl selection logic more precise in bp2build. In Soong we dedupe apex variants, but in Bazel we can build variants for each apex_available without incurring significant performance loss. If there is a guarantee that each stub library has a single apex available, we can make the bp2build stub selection logic like such for a _specific_ apex variant of an rdep\n- if apex is in the stub library\u0027s apex_available, use impl\n- otherwise stubs",
+      "parentUuid": "7e1d99c9_2238303e",
       "range": {
         "startLine": 2049,
         "startChar": 6,
