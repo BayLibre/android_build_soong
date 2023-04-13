@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f230d1_f2e528bd",
+        "filename": "cc/sanitize_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1175,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-04-13T14:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6f93120_9ef886ca",
+      "range": {
+        "startLine": 1175,
+        "startChar": 9,
+        "endLine": 1175,
+        "endChar": 12
+      },
+      "revId": "f5bfb9767d15055d18747a1f6ac3d59a31bd283c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97162353_6c2a63e8",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-13T13:29:55Z",
       "side": 1,
       "message": "what are we testing with blah, blah2 and a that we couldn\u0027t test with foo and bar?",
+      "range": {
+        "startLine": 1194,
+        "startChar": 0,
+        "endLine": 1221,
+        "endChar": 2
+      },
+      "revId": "f5bfb9767d15055d18747a1f6ac3d59a31bd283c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d84f62d_bb2eb54b",
+        "filename": "cc/sanitize_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-04-13T14:48:23Z",
+      "side": 1,
+      "message": "It\u0027s the same scenario, except this is the case where the dependency doesn\u0027t have CFI specified. Keeping them separate allowed me to confirm that this scenario generates the same variants. Now that I know, though, I suppose these extra modules don\u0027t actually do the test any good. I can remove them.",
+      "parentUuid": "97162353_6c2a63e8",
       "range": {
         "startLine": 1194,
         "startChar": 0,
