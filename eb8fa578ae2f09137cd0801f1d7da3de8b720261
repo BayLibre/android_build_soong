@@ -33,6 +33,41 @@
       "message": "This appends the sdk version twice, please address that. Otherwise looks great, thank you!",
       "revId": "eb8fa578ae2f09137cd0801f1d7da3de8b720261",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62900d06_fc46d984",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T22:37:45Z",
+      "side": 1,
+      "message": "Thanks for catching this!",
+      "parentUuid": "932006f1_02018d09",
+      "revId": "eb8fa578ae2f09137cd0801f1d7da3de8b720261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed69e4d_ee7e2c41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T22:37:45Z",
+      "side": 1,
+      "message": "I spoke to Colin offline about this, and he mentioned that instead of appending a suffix, we can consider not exporting this variant to make at all (there are likely no rdeps)\n\nI was unable to figure out a clean way to do this immediately, so to unblock Florian I would like to submit the existing implementation.",
+      "revId": "eb8fa578ae2f09137cd0801f1d7da3de8b720261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
