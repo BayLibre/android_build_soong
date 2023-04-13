@@ -16,6 +16,24 @@
       "message": "Was using it via a genrule\u0027s `tools` property circumventing visibility before?",
       "revId": "4b4f03fd82b57712148733d21c90f58d696f929a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0112d7e_82d0915e",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-13T01:50:13Z",
+      "side": 1,
+      "message": "Yeah, it was surprising how it worked that way. IMO, it wasn\u0027t a feature, but a bug?",
+      "parentUuid": "db7a75a3_a36eda31",
+      "revId": "4b4f03fd82b57712148733d21c90f58d696f929a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
