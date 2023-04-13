@@ -140,6 +140,30 @@
       },
       "revId": "c719629bfe5e5b59dd6ef5fd4fbbd6c3783c257b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb835b6c_0267b040",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-13T05:48:31Z",
+      "side": 1,
+      "message": "\u003e  do you think checking it on apex.native_shared_libs should be instead of or in addition to this check?\n\nI think checking it on apex.native_shared_libs should be _instead_ of this check. At least in the Soong world.\n\nBtw, if it makes bp2build too complicated, I\u0027m fine with this. (as I suggested this enforcement in the first place. ;-)\n\nI\u0027d like point out that this change changes the meaning of `apex_available` a bit by making it a required property for an apex to have a stub-providing library. For now, vendor apexes don\u0027t enforce `apex_available`, but with this change, even for vendor apexes, a stub providing lib should declare apex_available as a singleton list with the target apex, right?",
+      "parentUuid": "72da8378_263cd333",
+      "range": {
+        "startLine": 2049,
+        "startChar": 6,
+        "endLine": 2049,
+        "endChar": 38
+      },
+      "revId": "c719629bfe5e5b59dd6ef5fd4fbbd6c3783c257b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
