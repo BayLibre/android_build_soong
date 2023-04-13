@@ -16,6 +16,23 @@
       "message": "(not to be merged until https://android-review.git.corp.google.com/c/platform/bionic/+/2526531 is in, and skavdrik\u0027s corresponding ART change is in...)",
       "revId": "2aff6c11329caa7a007e55bbe7c9c55ef90dfe7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06f21e7e_0e1f0935",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-13T10:17:22Z",
+      "side": 1,
+      "message": "+1 to avoid it accidentally being merged by the automerger or by some well-meaning person :)",
+      "revId": "2aff6c11329caa7a007e55bbe7c9c55ef90dfe7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
