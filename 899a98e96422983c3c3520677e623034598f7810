@@ -50,6 +50,24 @@
       "message": "AFAIK, apex_available is not checked for test apexes. Can we just remove test apexes from apex_available?",
       "revId": "899a98e96422983c3c3520677e623034598f7810",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4322b551_4ae7749f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-13T15:49:42Z",
+      "side": 1,
+      "message": "Unfortunately, apex_available is also used to determine platform stubs vs impl as well, which can have impacts by removing it at this time",
+      "parentUuid": "69a2ebcc_29400066",
+      "revId": "899a98e96422983c3c3520677e623034598f7810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
