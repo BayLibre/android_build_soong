@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc90afa7_4e71e534",
+        "filename": "bp2build/cc_prebuilt_library_shared_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-04-13T14:18:31Z",
+      "side": 1,
+      "message": "nit:2023",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c641cc496bb41bece590d358db4f6cb8500f85fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4961090c_5194b73b",
+        "filename": "bp2build/cc_prebuilt_library_static_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-04-13T14:18:31Z",
+      "side": 1,
+      "message": "nit: 2023",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c641cc496bb41bece590d358db4f6cb8500f85fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f87dc5d2_a55e210a",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-04-13T14:18:31Z",
+      "side": 1,
+      "message": "nit: is this worth a tracking bug?",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 23
+      },
+      "revId": "c641cc496bb41bece590d358db4f6cb8500f85fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
