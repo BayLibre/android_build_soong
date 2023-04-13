@@ -16,6 +16,52 @@
       "message": "Does this work with the requested Bionic py tests? The presubmit failures also look legitimate, might need to update the bp2build allowlists as well.",
       "revId": "64854774eaf862e990b650e9866d59be22a51e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d5699a_6b5d64a6",
+        "filename": "bp2build/python_test_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-13T15:23:02Z",
+      "side": 1,
+      "message": "can you add a licensing header?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "64854774eaf862e990b650e9866d59be22a51e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078cbac8_200d139f",
+        "filename": "python/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-13T15:23:02Z",
+      "side": 1,
+      "message": "nit: I know you\u0027re not introducing it, but could we just...access p.binaryProperties.Main? -- looks like we also need to handle it being arch_variant (or make the property unable to be arch_variant)\n\nFeel free to file a bug to followup",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 52
+      },
+      "revId": "64854774eaf862e990b650e9866d59be22a51e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
