@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b2b54f_b9171f63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T16:44:49Z",
+      "side": 1,
+      "message": "Ah, do you mean have a check in [ConvertApexAvailableToTags](https://cs.android.com/android/_/android/platform/build/soong/+/748fd189b5a02bfc9d7c8b5254608ff87b65c62f:android/mutator.go;l\u003d755;drc\u003dabedff0ca7d48dc5cb73b16290beeec09627fa6e;bpv\u003d1;bpt\u003d0) like \n```\nif len(apexAvailable) \u003d\u003d 1 \u0026\u0026 apexAvailable[0] \u003d\u003d \"//apex_available:platform\" {\n   return nil\n}\n```\n\nAnd update the bazel rules to create a default apex_available tag if none of the user provided tags contains an `apex_available`?",
+      "parentUuid": "8c7f49e0_df7fd3b8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "a760678c08b571a4268d3331b76e790bb68d1d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ebb4a012_75747139",
