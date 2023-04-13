@@ -1013,6 +1013,7 @@ func TestGetConfigArgsBuildModulesInDirectories(t *testing.T) {
 }
 
 func TestBuildConfig(t *testing.T) {
+	defaultNinjaWeightListSource := smpb.BuildConfig_HINT_FROM_SOONG.Enum()
 	tests := []struct {
 		name                string
 		environ             Environment
@@ -1032,7 +1033,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
-				NinjaWeightListSource:       smpb.BuildConfig_NOT_USED.Enum(),
+				NinjaWeightListSource:       defaultNinjaWeightListSource,
 			},
 		},
 		{
@@ -1044,7 +1045,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
-				NinjaWeightListSource:       smpb.BuildConfig_NOT_USED.Enum(),
+				NinjaWeightListSource:       defaultNinjaWeightListSource,
 			},
 		},
 		{
@@ -1056,7 +1057,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
-				NinjaWeightListSource:       smpb.BuildConfig_NOT_USED.Enum(),
+				NinjaWeightListSource:       defaultNinjaWeightListSource,
 			},
 		},
 		{
@@ -1068,7 +1069,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(true),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
-				NinjaWeightListSource:       smpb.BuildConfig_NOT_USED.Enum(),
+				NinjaWeightListSource:       defaultNinjaWeightListSource,
 			},
 		},
 		{
@@ -1080,7 +1081,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(true),
-				NinjaWeightListSource:       smpb.BuildConfig_NOT_USED.Enum(),
+				NinjaWeightListSource:       defaultNinjaWeightListSource,
 			},
 		},
 		{
@@ -1093,7 +1094,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(false),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
-				NinjaWeightListSource:       smpb.BuildConfig_NOT_USED.Enum(),
+				NinjaWeightListSource:       defaultNinjaWeightListSource,
 			},
 		},
 		{
@@ -1106,7 +1107,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(true),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
-				NinjaWeightListSource:       smpb.BuildConfig_NOT_USED.Enum(),
+				NinjaWeightListSource:       defaultNinjaWeightListSource,
 			},
 		},
 		{
@@ -1119,7 +1120,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(true),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
-				NinjaWeightListSource:       smpb.BuildConfig_NOT_USED.Enum(),
+				NinjaWeightListSource:       defaultNinjaWeightListSource,
 			},
 		},
 		{
@@ -1132,7 +1133,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(false),
 				BazelMixedBuild:             proto.Bool(true),
 				ForceDisableBazelMixedBuild: proto.Bool(false),
-				NinjaWeightListSource:       smpb.BuildConfig_NOT_USED.Enum(),
+				NinjaWeightListSource:       defaultNinjaWeightListSource,
 			},
 		},
 		{
@@ -1147,7 +1148,7 @@ func TestBuildConfig(t *testing.T) {
 				BazelMixedBuild:             proto.Bool(false),
 				Targets:                     []string{"droid", "dist"},
 				ForceDisableBazelMixedBuild: proto.Bool(false),
-				NinjaWeightListSource:       smpb.BuildConfig_NOT_USED.Enum(),
+				NinjaWeightListSource:       defaultNinjaWeightListSource,
 			},
 		},
 		{
@@ -1166,7 +1167,7 @@ func TestBuildConfig(t *testing.T) {
 				UseRbe:                      proto.Bool(true),
 				BazelMixedBuild:             proto.Bool(true),
 				ForceDisableBazelMixedBuild: proto.Bool(true),
-				NinjaWeightListSource:       smpb.BuildConfig_NOT_USED.Enum(),
+				NinjaWeightListSource:       defaultNinjaWeightListSource,
 			},
 		},
 	}
