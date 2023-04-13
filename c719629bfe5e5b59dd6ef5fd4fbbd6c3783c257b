@@ -164,6 +164,30 @@
       },
       "revId": "c719629bfe5e5b59dd6ef5fd4fbbd6c3783c257b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08914d39_9fbe33d9",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-13T12:03:14Z",
+      "side": 1,
+      "message": "jooyung, do you have a concern regarding enforcing this on vendor apexes?",
+      "parentUuid": "bb835b6c_0267b040",
+      "range": {
+        "startLine": 2049,
+        "startChar": 6,
+        "endLine": 2049,
+        "endChar": 38
+      },
+      "revId": "c719629bfe5e5b59dd6ef5fd4fbbd6c3783c257b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
