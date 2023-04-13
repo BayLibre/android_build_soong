@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b18c63_d3ff7b4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T20:45:35Z",
+      "side": 1,
+      "message": "This is not working for platform builds. I will be taking a look at it.",
+      "revId": "74006d9c4c6d820e45ebfd98418c3241f98dbc68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
