@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9da9d30_edf8e04f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-13T18:52:50Z",
+      "side": 1,
+      "message": "Thanks! LGTM assuming tests pass",
+      "revId": "09f78b84dc7bfb6ee2df4fc1f1d500e8b6f1a8ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
