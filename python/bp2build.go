@@ -15,7 +15,6 @@
 package python
 
 import (
-	"fmt"
 	"path/filepath"
 	"strings"
 
@@ -118,42 +117,29 @@ func (m *PythonLibraryModule) makeArchVariantBaseAttributes(ctx android.TopDownM
 	return attrs
 }
 
-func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *PythonLibraryModule) {
-	// TODO(b/182306917): this doesn't fully handle all nested props versioned
-	// by the python version, which would have been handled by the version split
-	// mutator. This is sufficient for very simple python_library modules under
-	// Bionic.
+func (m *PythonLibraryModule) bp2buildPythonVersion(ctx android.TopDownMutatorContext, binary bool) *string {
 	py3Enabled := proptools.BoolDefault(m.properties.Version.Py3.Enabled, true)
 	py2Enabled := proptools.BoolDefault(m.properties.Version.Py2.Enabled, false)
-	var python_version *string
 	if py2Enabled && !py3Enabled {
-		python_version = &pyVersion2
+		return &pyVersion2
 	} else if !py2Enabled && py3Enabled {
-		python_version = &pyVersion3
+		// Binaries default to python 3 in bazel, so setting it explicitly isn't necessary
+		if binary {
+			return nil
+		} else {
+			return &pyVersion3
+		}
 	} else if !py2Enabled && !py3Enabled {
 		ctx.ModuleErrorf("bp2build converter doesn't understand having neither py2 nor py3 enabled")
+		return nil
 	} else {
-		// do nothing, since python_version defaults to PY2ANDPY3
+		// Libraries default to python 2 and 3 in bazel, so setting it explicitly isn't necessary
+		if binary {
+			return &pyVersion2And3
+		} else {
+			return nil
+		}
 	}
-
-	baseAttrs := m.makeArchVariantBaseAttributes(ctx)
-
-	attrs := &bazelPythonLibraryAttributes{
-		Srcs:         baseAttrs.Srcs,
-		Deps:         baseAttrs.Deps,
-		Srcs_version: python_version,
-		Imports:      baseAttrs.Imports,
-	}
-
-	props := bazel.BazelTargetModuleProperties{
-		// Use the native py_library rule.
-		Rule_class: "py_library",
-	}
-
-	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
-		Name: m.Name(),
-		Data: baseAttrs.Data,
-	}, attrs)
 }
 
 type bazelPythonBinaryAttributes struct {
@@ -164,34 +150,47 @@ type bazelPythonBinaryAttributes struct {
 	Imports        bazel.StringListAttribute
 }
 
-func pythonBinaryBp2Build(ctx android.TopDownMutatorContext, m *PythonBinaryModule) {
+func (p *PythonLibraryModule) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	// TODO(b/182306917): this doesn't fully handle all nested props versioned
+	// by the python version, which would have been handled by the version split
+	// mutator. This is sufficient for very simple python_library modules under
+	// Bionic.
+	baseAttrs := p.makeArchVariantBaseAttributes(ctx)
+
+	attrs := &bazelPythonLibraryAttributes{
+		Srcs:         baseAttrs.Srcs,
+		Deps:         baseAttrs.Deps,
+		Srcs_version: p.bp2buildPythonVersion(ctx, false),
+		Imports:      baseAttrs.Imports,
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		// Use the native py_library rule.
+		Rule_class: "py_library",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
+		Name: p.Name(),
+		Data: baseAttrs.Data,
+	}, attrs)
+}
+
+func (p *PythonBinaryModule) bp2buildBinaryProperties(ctx android.TopDownMutatorContext) (*bazelPythonBinaryAttributes, bazel.LabelListAttribute) {
 	// TODO(b/182306917): this doesn't fully handle all nested props versioned
 	// by the python version, which would have been handled by the version split
 	// mutator. This is sufficient for very simple python_binary_host modules
 	// under Bionic.
-	py3Enabled := proptools.BoolDefault(m.properties.Version.Py3.Enabled, false)
-	py2Enabled := proptools.BoolDefault(m.properties.Version.Py2.Enabled, false)
-	var python_version *string
-	if py3Enabled && py2Enabled {
-		panic(fmt.Errorf(
-			"error for '%s' module: bp2build's python_binary_host converter does not support "+
-				"converting a module that is enabled for both Python 2 and 3 at the same time.", m.Name()))
-	} else if py2Enabled {
-		python_version = &pyVersion2
-	} else {
-		// do nothing, since python_version defaults to PY3.
-	}
 
-	baseAttrs := m.makeArchVariantBaseAttributes(ctx)
+	baseAttrs := p.makeArchVariantBaseAttributes(ctx)
 	attrs := &bazelPythonBinaryAttributes{
 		Main:           nil,
 		Srcs:           baseAttrs.Srcs,
 		Deps:           baseAttrs.Deps,
-		Python_version: python_version,
+		Python_version: p.bp2buildPythonVersion(ctx, true),
 		Imports:        baseAttrs.Imports,
 	}
 
-	for _, propIntf := range m.GetProperties() {
+	for _, propIntf := range p.GetProperties() {
 		if props, ok := propIntf.(*BinaryProperties); ok {
 			// main is optional.
 			if props.Main != nil {
@@ -201,6 +200,11 @@ func pythonBinaryBp2Build(ctx android.TopDownMutatorContext, m *PythonBinaryModu
 			}
 		}
 	}
+	return attrs, baseAttrs.Data
+}
+
+func (p *PythonBinaryModule) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	attrs, data := p.bp2buildBinaryProperties(ctx)
 
 	props := bazel.BazelTargetModuleProperties{
 		// Use the native py_binary rule.
@@ -208,19 +212,22 @@ func pythonBinaryBp2Build(ctx android.TopDownMutatorContext, m *PythonBinaryModu
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
-		Name: m.Name(),
-		Data: baseAttrs.Data,
+		Name: p.Name(),
+		Data: data,
 	}, attrs)
 }
 
-func (p *PythonLibraryModule) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
-	pythonLibBp2Build(ctx, p)
-}
+func (p *PythonTestModule) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	// Python tests are currently exactly the same as binaries, but with a different module type
+	attrs, data := p.bp2buildBinaryProperties(ctx)
 
-func (p *PythonBinaryModule) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
-	pythonBinaryBp2Build(ctx, p)
-}
+	props := bazel.BazelTargetModuleProperties{
+		// Use the native py_binary rule.
+		Rule_class: "py_test",
+	}
 
-func (p *PythonTestModule) ConvertWithBp2build(_ android.TopDownMutatorContext) {
-	// Tests are currently unsupported
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
+		Name: p.Name(),
+		Data: data,
+	}, attrs)
 }
