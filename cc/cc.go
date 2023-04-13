@@ -1858,6 +1858,14 @@ func GetSubnameProperty(actx android.ModuleContext, c LinkableInterface) string 
 		if c.SplitPerApiLevel() {
 			subName += "." + c.SdkVersion()
 		}
+	} else if c.IsStubs() {
+		if c.IsSdkVariant() {
+			// Public API surface (NDK)
+			subName += sdkSuffix + "." + c.StubsVersion()
+		} else {
+			// API surface between platform and mainline modules.
+			subName += "." + android.SdkModule.String() + "." + c.StubsVersion()
+		}
 	}
 
 	return subName

@@ -9018,7 +9018,7 @@ func TestPrebuiltStubLibDep(t *testing.T) {
 
 					var entry *modAndMkEntries = nil
 					for _, ent := range entries {
-						if strings.Join(ent.mkEntries.EntryMap["LOCAL_MODULE"], ",") == "stublib" {
+						if strings.Join(ent.mkEntries.EntryMap["LOCAL_MODULE"], ",") == "stublib.module-lib.current" {
 							if entry != nil {
 								t.Errorf("More than one AndroidMk entry for \"stublib\": %s and %s", entry.mod, ent.mod)
 							} else {

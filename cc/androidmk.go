@@ -294,9 +294,6 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 	if library.shared() && !library.buildStubs() {
 		ctx.subAndroidMk(entries, library.baseInstaller)
 	} else {
-		if library.buildStubs() && library.stubsVersion() != "" {
-			entries.SubName = "." + library.stubsVersion()
-		}
 		entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			// library.makeUninstallable() depends on this to bypass HideFromMake() for
 			// static libraries.
