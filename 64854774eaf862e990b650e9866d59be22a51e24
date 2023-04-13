@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edb1551_32ef90a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-13T18:49:10Z",
+      "side": 1,
+      "message": "This was requested by Dan Albert for the tests in `tools/external_updater`. It works on those tests.\n\nThis patchset should fix the presubmit failures by denylisting failing modules.",
+      "parentUuid": "c58cf95c_ada75826",
+      "revId": "64854774eaf862e990b650e9866d59be22a51e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6d5699a_6b5d64a6",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1762774e_1b19bcaf",
+        "filename": "bp2build/python_test_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-13T18:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d5699a_6b5d64a6",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "64854774eaf862e990b650e9866d59be22a51e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "078cbac8_200d139f",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-04-13T15:23:02Z",
       "side": 1,
       "message": "nit: I know you\u0027re not introducing it, but could we just...access p.binaryProperties.Main? -- looks like we also need to handle it being arch_variant (or make the property unable to be arch_variant)\n\nFeel free to file a bug to followup",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 52
+      },
+      "revId": "64854774eaf862e990b650e9866d59be22a51e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f1e15ba_b24c6ca9",
+        "filename": "python/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-13T18:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "078cbac8_200d139f",
       "range": {
         "startLine": 198,
         "startChar": 0,
