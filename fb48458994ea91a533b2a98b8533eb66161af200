@@ -347,6 +347,24 @@
       "parentUuid": "5c447b3b_a4ebf226",
       "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d238e2f2_00d4701a",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 22
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-13T21:07:29Z",
+      "side": 1,
+      "message": "Strangely enough, omitting the `local` prefix for some variables caused issues such that the test didn\u0027t complete as expected but also didn\u0027t print a failure message. \n\nIt completes now. I\u0027ll treat it as my issue.",
+      "parentUuid": "a8bb70bf_30bbeb9c",
+      "revId": "fb48458994ea91a533b2a98b8533eb66161af200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
