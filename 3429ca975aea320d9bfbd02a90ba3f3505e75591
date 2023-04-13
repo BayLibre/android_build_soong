@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4960c16_1606a178",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 28
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-13T20:21:53Z",
+      "side": 1,
+      "message": "disabled in cl/519169783",
+      "parentUuid": "d15527c9_1960fd80",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "3429ca975aea320d9bfbd02a90ba3f3505e75591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7579bc6_c1e3feb4",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-13T19:50:43Z",
       "side": 1,
       "message": "should not_migrated be in this list as well?",
+      "range": {
+        "startLine": 1247,
+        "startChar": 17,
+        "endLine": 1247,
+        "endChar": 18
+      },
+      "revId": "3429ca975aea320d9bfbd02a90ba3f3505e75591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d34bf7a_300aedb7",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-13T20:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7579bc6_c1e3feb4",
       "range": {
         "startLine": 1247,
         "startChar": 17,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad9ce1f_3d84bbc4",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-13T20:21:53Z",
+      "side": 1,
+      "message": "we need to check `err`, instantiated on line 1290, against the expected. \nChecking the diff against HEAD - this is where we used to fail if errors occurred at all.",
+      "parentUuid": "a2e6a84d_f7e4e679",
+      "range": {
+        "startLine": 1291,
+        "startChar": 3,
+        "endLine": 1291,
+        "endChar": 81
+      },
+      "revId": "3429ca975aea320d9bfbd02a90ba3f3505e75591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7976f4f2_5c6dfc3f",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-04-13T19:50:43Z",
       "side": 1,
       "message": "should this have `bp2build_available: false`?",
+      "range": {
+        "startLine": 81,
+        "startChar": 23,
+        "endLine": 81,
+        "endChar": 24
+      },
+      "revId": "3429ca975aea320d9bfbd02a90ba3f3505e75591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "632af308_da9b22a7",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 28
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-13T20:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7976f4f2_5c6dfc3f",
       "range": {
         "startLine": 81,
         "startChar": 23,
