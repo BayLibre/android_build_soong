@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c58cf95c_ada75826",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-13T04:52:23Z",
+      "side": 1,
+      "message": "Does this work with the requested Bionic py tests? The presubmit failures also look legitimate, might need to update the bp2build allowlists as well.",
+      "revId": "64854774eaf862e990b650e9866d59be22a51e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
