@@ -22,6 +22,30 @@
       },
       "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb5fe9a_6980e73a",
+        "filename": "android/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T18:54:11Z",
+      "side": 1,
+      "message": "Yes. If a user explicitly adds `apex_available: [\"foo\"]` in Android.bp, then that value will be respected.",
+      "parentUuid": "ea35615b_100355a1",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 2
+      },
+      "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
