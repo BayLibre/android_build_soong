@@ -33,6 +33,23 @@
       "message": "glad to see we were able to reuse a mutator for this rather than introducing a new one 😊",
       "revId": "899a98e96422983c3c3520677e623034598f7810",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a2ebcc_29400066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-13T01:20:59Z",
+      "side": 1,
+      "message": "AFAIK, apex_available is not checked for test apexes. Can we just remove test apexes from apex_available?",
+      "revId": "899a98e96422983c3c3520677e623034598f7810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
