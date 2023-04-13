@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7a75a3_a36eda31",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-13T01:48:32Z",
+      "side": 1,
+      "message": "Was using it via a genrule\u0027s `tools` property circumventing visibility before?",
+      "revId": "4b4f03fd82b57712148733d21c90f58d696f929a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
