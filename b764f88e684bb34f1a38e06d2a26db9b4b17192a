@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b02b021_255329c1",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T04:53:26Z",
+      "side": 1,
+      "message": "TIL, thanks Liz. I have changed this to return a copy",
+      "parentUuid": "54c7b493_a8775231",
+      "range": {
+        "startLine": 370,
+        "startChar": 8,
+        "endLine": 370,
+        "endChar": 31
+      },
+      "revId": "b764f88e684bb34f1a38e06d2a26db9b4b17192a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f3ce85e_cfc63ba1",
@@ -149,6 +173,30 @@
       "writtenOn": "2023-04-13T01:35:08Z",
       "side": 1,
       "message": "IMO, we could make this simpler with this change.",
+      "range": {
+        "startLine": 460,
+        "startChar": 1,
+        "endLine": 472,
+        "endChar": 0
+      },
+      "revId": "b764f88e684bb34f1a38e06d2a26db9b4b17192a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3d41035_c150292f",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T04:53:26Z",
+      "side": 1,
+      "message": "Thanks for pointing this out Jooyung, I can do this in a followup cl.",
+      "parentUuid": "6f3ce85e_cfc63ba1",
       "range": {
         "startLine": 460,
         "startChar": 1,
