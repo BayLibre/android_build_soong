@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebb4a012_75747139",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-13T04:55:00Z",
+      "side": 1,
+      "message": "This is a fairly large CL, but the logic is hopefully simple. It adds //apex_available:platform tag to every module type that can be included in an apex",
+      "revId": "a760678c08b571a4268d3331b76e790bb68d1d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
