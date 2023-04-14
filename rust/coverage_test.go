@@ -43,6 +43,11 @@ func TestCoverageFlags(t *testing.T) {
 			srcs: ["foo.rs"],
 			crate_name: "bar",
 			native_coverage: false,
+		}
+		rust_test {
+			name: "gcov_cov",
+			srcs: ["test.rs"],
+			flags: ["-Z profile"]
 		}`)
 
 	// Make sure native_coverage: false isn't creating a coverage variant.
@@ -59,6 +64,7 @@ func TestCoverageFlags(t *testing.T) {
 	libbarNoCovLink := ctx.ModuleForTests("libbar_nocov", "android_arm64_armv8-a_dylib").Rule("rustLink")
 	fizzCovLink := ctx.ModuleForTests("fizz_cov", "android_arm64_armv8-a_cov").Rule("rustLink")
 	buzzNoCovLink := ctx.ModuleForTests("buzzNoCov", "android_arm64_armv8-a").Rule("rustLink")
+	gcov_cov := ctx.ModuleForTests("gcov_cov", "android_arm64_armv8-a_cov").Rule("rustc")
 
 	rustcCoverageFlags := []string{"-C instrument-coverage", " -g "}
 	for _, flag := range rustcCoverageFlags {
@@ -76,6 +82,9 @@ func TestCoverageFlags(t *testing.T) {
 		}
 		if strings.Contains(libbarNoCov.Args["rustcFlags"], flag) {
 			t.Fatalf(containsErrorStr, flag, "libbar_cov", libbarNoCov.Args["rustcFlags"])
+		}
+		if !strings.Contains(gcov_cov.Args["rustcFlags"], flag) {
+			t.Fatalf(missingErrorStr, flag, "gcov_cov", gcov_cov.Args["rustcFlags"])
 		}
 	}
 
@@ -96,6 +105,64 @@ func TestCoverageFlags(t *testing.T) {
 		if strings.Contains(libbarNoCovLink.Args["linkFlags"], flag) {
 			t.Fatalf(containsErrorStr, flag, "libbar_cov", libbarNoCovLink.Args["linkFlags"])
 		}
+	}
+
+	missingErrorStr := "missing gcno file for '%s' module with coverage enabled; rustcFlags: %#v; ImplicitOutputs: %s"
+	containsErrorStr := "contains gcno file for '%s' module with coverage disabled; rustcFlags: %#v; ImplicitOutputs: %s"
+
+	foundGCNO := false
+	for _, path := range fizzCov.ImplicitOutputs {
+		if strings.Contains(path.String(), ".gcno") {
+			foundGCNO = true
+			break
+		}
+	}
+	if foundGCNO == true {
+		t.Fatalf(containsErrorStr, "fizz_cov", fizzCov.Args["rustcFlags"], fizzCov.ImplicitOutputs)
+	}
+
+	foundGCNO = false
+	for _, path := range libfooCov.ImplicitOutputs {
+		if strings.Contains(path.String(), ".gcno") {
+			foundGCNO = true
+			break
+		}
+	}
+	if foundGCNO == true {
+		t.Fatalf(containsErrorStr, "libfoo_cov dylib", libfooCov.Args["rustcFlags"], libfooCov.ImplicitOutputs)
+	}
+
+	foundGCNO = false
+	for _, path := range buzzNoCov.ImplicitOutputs {
+		if strings.Contains(path.String(), ".gcno") {
+			foundGCNO = true
+			break
+		}
+	}
+	if foundGCNO == true {
+		t.Fatalf(containsErrorStr, "buzzNoCov", buzzNoCov.Args["rustcFlags"], buzzNoCov.ImplicitOutputs)
+	}
+
+	foundGCNO = false
+	for _, path := range libbarNoCov.ImplicitOutputs {
+		if strings.Contains(path.String(), ".gcno") {
+			foundGCNO = true
+			break
+		}
+	}
+	if foundGCNO == true {
+		t.Fatalf(containsErrorStr, "libbar_cov", libbarNoCov.Args["rustcFlags"], libbarNoCov.ImplicitOutputs)
+	}
+
+	foundGCNO = false
+	for _, path := range gcov_cov.ImplicitOutputs {
+		if strings.Contains(path.String(), ".gcno") {
+			foundGCNO = true
+			break
+		}
+	}
+	if foundGCNO == false {
+		t.Fatalf(missingErrorStr, "gcov_cov", gcov_cov.Args["rustcFlags"], gcov_cov.ImplicitOutputs)
 	}
 
 }

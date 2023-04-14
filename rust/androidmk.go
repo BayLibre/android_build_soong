@@ -95,6 +95,13 @@ func (binary *binaryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.Andr
 		ret.DistFiles = android.MakeDefaultDistFiles(binary.distFile.Path())
 	}
 	ret.Class = "EXECUTABLES"
+
+	if binary.coverageOutputFile.Valid() {
+		ret.ExtraEntries = append(ret.ExtraEntries,
+			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+				entries.SetString("LOCAL_PREBUILT_COVERAGE_ARCHIVE", binary.coverageOutputFile.String())
+			})
+	}
 }
 
 func (test *testDecorator) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkEntries) {

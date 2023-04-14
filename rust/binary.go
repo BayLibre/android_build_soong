@@ -15,6 +15,8 @@
 package rust
 
 import (
+	"strings"
+
 	"android/soong/android"
 )
 
@@ -42,6 +44,9 @@ type binaryDecorator struct {
 	stripper Stripper
 
 	Properties BinaryCompilerProperties
+
+	// Output archive of gcno coverage information
+	coverageOutputFile android.OptionalPath
 }
 
 var _ compiler = (*binaryDecorator)(nil)
@@ -151,6 +156,15 @@ func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps Path
 	binary.baseCompiler.unstrippedOutputFile = outputFile
 
 	ret.kytheFile = TransformSrcToBinary(ctx, srcPath, deps, flags, outputFile).kytheFile
+
+	for _, flag := range flags.RustFlags {
+		modifiedFlag := strings.ReplaceAll(flag, " ", "")
+		if modifiedFlag == "-Zprofile" || modifiedFlag == "-Cprofile" {
+			gcnoFile := android.PathForModuleOut(ctx, fileName+".gcno")
+			binary.coverageOutputFile = transformCoverageFilesToZip(ctx, []android.Path{gcnoFile}, binary.getStem(ctx))
+		}
+	}
+
 	return ret
 }
 
@@ -187,4 +201,8 @@ func (binary *binaryDecorator) staticallyLinked() bool {
 
 func (binary *binaryDecorator) testBinary() bool {
 	return false
+}
+
+func (binary *binaryDecorator) coverageOutputFilePath() android.OptionalPath {
+	return binary.coverageOutputFile
 }

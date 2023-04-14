@@ -225,6 +225,7 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 
 	var inputs android.Paths
 	var implicits, linkImplicits, linkOrderOnly android.Paths
+	var implicitOutputs android.WritablePaths
 	var output buildOutput
 	var rustcFlags, linkFlags []string
 
@@ -357,12 +358,21 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		rustcOutputFile = android.PathForModuleOut(ctx, outputFile.Base()+".rsp")
 	}
 
+	for _, flag := range rustcFlags {
+		modifiedFlag := strings.ReplaceAll(flag, " ", "")
+		if modifiedFlag == "-Zprofile" || modifiedFlag == "-Cprofile" {
+			gcnoFile := android.PathForModuleOut(ctx, outputFile.Base()+".gcno")
+			implicitOutputs = append(implicitOutputs, gcnoFile)
+		}
+	}
+
 	ctx.Build(pctx, android.BuildParams{
-		Rule:        rustc,
-		Description: "rustc " + main.Rel(),
-		Output:      rustcOutputFile,
-		Inputs:      inputs,
-		Implicits:   implicits,
+		Rule:            rustc,
+		Description:     "rustc " + main.Rel(),
+		Output:          rustcOutputFile,
+		ImplicitOutputs: implicitOutputs,
+		Inputs:          inputs,
+		Implicits:       implicits,
 		Args: map[string]string{
 			"rustcFlags": strings.Join(rustcFlags, " "),
 			"libFlags":   strings.Join(libFlags, " "),
@@ -455,4 +465,23 @@ func Rustdoc(ctx ModuleContext, main android.Path, deps PathDeps,
 	})
 
 	return docTimestampFile
+}
+
+// Registers build statement to zip one or more coverage files.
+func transformCoverageFilesToZip(ctx android.ModuleContext,
+	coverageFiles android.Paths, baseName string) android.OptionalPath {
+
+	if len(coverageFiles) > 0 {
+		outputFile := android.PathForModuleOut(ctx, baseName+".zip")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        zip,
+			Description: "zip " + outputFile.Base(),
+			Inputs:      coverageFiles,
+			Output:      outputFile,
+		})
+
+		return android.OptionalPathForPath(outputFile)
+	}
+
+	return android.OptionalPath{}
 }
