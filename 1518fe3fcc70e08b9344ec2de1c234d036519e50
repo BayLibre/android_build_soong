@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50929d65_eea09c57",
+        "filename": "cc/config/x86_linux_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-14T20:08:48Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be necessary, we have protobuf in the tree.",
+      "revId": "1518fe3fcc70e08b9344ec2de1c234d036519e50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
