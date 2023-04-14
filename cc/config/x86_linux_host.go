@@ -106,6 +106,8 @@ var (
 		"resolv",
 		"rt",
 		"util",
+		"pulse",
+		"protobuf",
 	}, "-l")
 
 	muslCrtBeginStaticBinary, muslCrtEndStaticBinary   = []string{"libc_musl_crtbegin_static"}, []string{"libc_musl_crtend"}

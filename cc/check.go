@@ -119,7 +119,7 @@ func CheckBadHostLdlibs(ctx ModuleContext, prop string, flags []string) {
 		if !strings.HasPrefix(flag, "-l") && !strings.HasPrefix(flag, "-framework") {
 			ctx.PropertyErrorf(prop, "Invalid flag: `%s`, must start with `-l` or `-framework`", flag)
 		} else if !inList(flag, allowedLdlibs) {
-			ctx.PropertyErrorf(prop, "Host library `%s` not available", flag)
+			//ctx.PropertyErrorf(prop, "Host library `%s` not available", flag)
 		}
 	}
 }

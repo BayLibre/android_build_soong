@@ -16,6 +16,7 @@ package cc
 
 import (
 	"fmt"
+	"strings"
 
 	"android/soong/android"
 	"android/soong/cc/config"
@@ -511,6 +512,20 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 
 		flags.Local.LdFlags = append(flags.Local.LdFlags, linker.Properties.Host_ldlibs...)
 
+		if ctx.Host() {
+			for _, lib := range linker.Properties.Host_ldlibs {
+				lib = strings.TrimSpace(lib)
+				if strings.HasPrefix(lib, "-lpulse") {
+					flags.Global.LdFlags = append(flags.Global.LdFlags,
+						"-Lprebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib",
+						"-Lprebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/x86_64-linux-gnu",
+						"-Iprebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/include",
+						"-lpulse",
+					//"-lprotobuf", : Can't find
+					)
+				}
+			}
+		}
 		if !ctx.Windows() {
 			// Add -ldl, -lpthread, -lm and -lrt to host builds to match the default behavior of device
 			// builds
@@ -518,6 +533,11 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 				"-ldl",
 				"-lpthread",
 				"-lm",
+				//"-Lprebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib",
+				//"-Lprebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/lib/x86_64-linux-gnu",
+				//"-Iprebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/include",
+				//"-lpulse",
+				//"-lprotobuf", : Can't find
 			)
 			if !ctx.Darwin() {
 				flags.Global.LdFlags = append(flags.Global.LdFlags, "-lrt")
