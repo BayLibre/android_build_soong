@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "504d395c_0076ef98",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-04-14T09:33:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12823a84_6eeceeb7",
+      "range": {
+        "startLine": 162,
+        "startChar": 144,
+        "endLine": 162,
+        "endChar": 174
+      },
+      "revId": "ed582f8f5d71796e60928631a7baf1953e7ee9d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f69b0d15_4fe7d9b5",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9428c8_1a43c38f",
+        "filename": "snapshot/host_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-04-14T09:33:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f69b0d15_4fe7d9b5",
+      "range": {
+        "startLine": 118,
+        "startChar": 18,
+        "endLine": 118,
+        "endChar": 21
+      },
+      "revId": "ed582f8f5d71796e60928631a7baf1953e7ee9d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbf2bbdc_8768df3c",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-11T12:31:08Z",
       "side": 1,
       "message": "why do we have to get this separately? can\u0027t we use m.Name() instead?",
+      "range": {
+        "startLine": 129,
+        "startChar": 53,
+        "endLine": 129,
+        "endChar": 64
+      },
+      "revId": "ed582f8f5d71796e60928631a7baf1953e7ee9d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25443f96_269ac4d9",
+        "filename": "snapshot/snapshot_base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-04-14T09:33:55Z",
+      "side": 1,
+      "message": "In case of vendor-snapshot, we need ctx.ModuleName(m) from buildPrint\u0027s moduleInfo. I defined two functions of this for each use.",
+      "parentUuid": "cbf2bbdc_8768df3c",
       "range": {
         "startLine": 129,
         "startChar": 53,
