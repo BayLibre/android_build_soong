@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9639f4_8641ee69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-14T04:31:24Z",
+      "side": 1,
+      "message": "From go/fast-ninja-dashboard, there is more than 10% improvement in full build, and even in incremental build(go/fast-ninja-incremental-dashboard), it looks like it has slight improvement cpu utilization ratio even with current module-name based model.",
+      "revId": "f5c872f36b129d97c222df61760381c1449558f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
