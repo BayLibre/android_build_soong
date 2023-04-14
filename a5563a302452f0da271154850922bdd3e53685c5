@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36bcae75_ff17d26f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-14T09:56:44Z",
+      "side": 1,
+      "message": "LGTM, but this must be approved by the Soong owners.",
+      "revId": "a5563a302452f0da271154850922bdd3e53685c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
