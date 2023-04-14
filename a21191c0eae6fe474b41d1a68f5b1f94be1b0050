@@ -181,6 +181,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecc0d103_f1a99907",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-14T14:25:41Z",
+      "side": 1,
+      "message": "the normal procedure is to first merge the CL in internal master, then merge the change tweaked for aosp in aosp-master (with merged-in)",
+      "parentUuid": "69282201_3e44c803",
+      "revId": "a21191c0eae6fe474b41d1a68f5b1f94be1b0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4697182_2bf26dd0",
         "filename": "java/sdk_library.go",
         "patchSetId": 4

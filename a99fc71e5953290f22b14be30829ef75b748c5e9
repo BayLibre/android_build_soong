@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8466c6a_b4061b4c",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-14T14:25:41Z",
+      "side": 1,
+      "message": "Not really familiar with java_api_library. What\u0027s the intended relationship between that and java_sdk_library? Names seem very similar..",
+      "range": {
+        "startLine": 1787,
+        "startChar": 26,
+        "endLine": 1787,
+        "endChar": 42
+      },
+      "revId": "a99fc71e5953290f22b14be30829ef75b748c5e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e972ea1_11c5c3d3",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-14T14:25:41Z",
+      "side": 1,
+      "message": "The amount of test changes seems incredibly light? Seems like some asserts should be added that the right kind of modules are being created.",
+      "revId": "a99fc71e5953290f22b14be30829ef75b748c5e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
