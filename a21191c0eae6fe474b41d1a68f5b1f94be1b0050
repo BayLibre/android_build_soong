@@ -197,6 +197,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "794642ed_63198087",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-14T22:06:55Z",
+      "side": 1,
+      "message": "Acknowledged. Thank you for the suggestion!",
+      "parentUuid": "ecc0d103_f1a99907",
+      "revId": "a21191c0eae6fe474b41d1a68f5b1f94be1b0050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4697182_2bf26dd0",

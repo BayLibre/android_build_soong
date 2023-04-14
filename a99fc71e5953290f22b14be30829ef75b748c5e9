@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "641d5dba_9710695f",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-14T22:06:55Z",
+      "side": 1,
+      "message": "`java_api_library` module can be considered as a combination of `droidstubs` module and `java_library` module in that it generates stubs from API text file (instead of the source java files) and also compiles the generated stubs into a jar file. However, it does not have any functionality other than generating and compiling stubs, unlike how `droidstubs` module have other functionalities (like api check, etc).\n\nThe `java_api_library` generating changes [here](https://android-review.git.corp.google.com/c/platform/build/orchestrator/+/2367170)(and the child changes in the stack) generates `jar` file that encompasses the full api surface, but this change enables stubs to be generated per sdk_library api scope during from-text stub build.",
+      "parentUuid": "c5cbda08_7ba68f45",
+      "range": {
+        "startLine": 1787,
+        "startChar": 26,
+        "endLine": 1787,
+        "endChar": 42
+      },
+      "revId": "a99fc71e5953290f22b14be30829ef75b748c5e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e972ea1_11c5c3d3",
@@ -61,6 +85,24 @@
       "writtenOn": "2023-04-14T14:25:41Z",
       "side": 1,
       "message": "The amount of test changes seems incredibly light? Seems like some asserts should be added that the right kind of modules are being created.",
+      "revId": "a99fc71e5953290f22b14be30829ef75b748c5e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faff89f5_177b99e9",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-14T22:06:55Z",
+      "side": 1,
+      "message": "This change enforces that `java_api_library` is created inside `java_sdk_library` iff the module contributes to an api surface (specified via `apiLibGenAllowlist`). `config.SetApiLibraries([]string{\"foo\"})` in 38~40L sets `\"foo\"` as an api-surface contributing module, so the module is created in 127L. Do you believe that testing if module with the name `apiLibraryModuleName(\"foo\")` is created or not is not sufficient for testing? If so, can you suggest some additional functionalities that should be tested?",
+      "parentUuid": "8e972ea1_11c5c3d3",
       "revId": "a99fc71e5953290f22b14be30829ef75b748c5e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
