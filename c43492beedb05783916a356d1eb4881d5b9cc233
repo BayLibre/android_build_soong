@@ -241,6 +241,24 @@
       "parentUuid": "035ccc3a_2247e962",
       "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01019854_414800e7",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-04-15T01:42:31Z",
+      "side": 1,
+      "message": "It is implemented in aosp/2534670 and aosp/2534265.",
+      "parentUuid": "05729922_4830bdf8",
+      "revId": "c43492beedb05783916a356d1eb4881d5b9cc233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
