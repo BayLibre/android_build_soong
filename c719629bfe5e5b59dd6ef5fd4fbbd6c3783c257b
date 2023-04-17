@@ -188,6 +188,30 @@
       },
       "revId": "c719629bfe5e5b59dd6ef5fd4fbbd6c3783c257b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691187b1_c84b2869",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-17T13:07:30Z",
+      "side": 1,
+      "message": "This change itself LGTM, but I\u0027m worried with the other change: aosp/2532140. I left a comment there.",
+      "parentUuid": "08914d39_9fbe33d9",
+      "range": {
+        "startLine": 2049,
+        "startChar": 6,
+        "endLine": 2049,
+        "endChar": 38
+      },
+      "revId": "c719629bfe5e5b59dd6ef5fd4fbbd6c3783c257b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
