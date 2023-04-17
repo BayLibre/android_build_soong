@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a2622a2_e7a612b3",
+        "filename": "java/app_import.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-17T22:37:25Z",
+      "side": 1,
+      "message": "Can you leave a comment on why this is necessary?",
+      "range": {
+        "startLine": 54,
+        "startChar": 61,
+        "endLine": 54,
+        "endChar": 77
+      },
+      "revId": "a0e6300dbea918fda21b1ebb0d7816ad7eaf03a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb5dbd4_f353894d",
+        "filename": "java/app_import.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-17T22:37:25Z",
+      "side": 1,
+      "message": "nit: Print the path of the input file as well in the error message",
+      "range": {
+        "startLine": 55,
+        "startChar": 8,
+        "endLine": 55,
+        "endChar": 9
+      },
+      "revId": "a0e6300dbea918fda21b1ebb0d7816ad7eaf03a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e416494_ed3ac17b",
+        "filename": "java/app_import.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-17T22:37:25Z",
+      "side": 1,
+      "message": "This is unused, and can be dropped",
+      "range": {
+        "startLine": 60,
+        "startChar": 27,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "a0e6300dbea918fda21b1ebb0d7816ad7eaf03a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5d19cdf_2421933f",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-17T22:37:25Z",
+      "side": 1,
+      "message": "nit: Print the name of the input file with the improper alignment",
+      "range": {
+        "startLine": 253,
+        "startChar": 40,
+        "endLine": 253,
+        "endChar": 42
+      },
+      "revId": "a0e6300dbea918fda21b1ebb0d7816ad7eaf03a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
