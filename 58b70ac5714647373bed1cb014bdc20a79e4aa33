@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c095a56_17265979",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-17T22:43:32Z",
+      "side": 0,
+      "message": "This needs to be squashed into the previous change so there is a single change, not one that adds `staging` and one that replaces it with `Assignee`.",
+      "revId": "58b70ac5714647373bed1cb014bdc20a79e4aa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
