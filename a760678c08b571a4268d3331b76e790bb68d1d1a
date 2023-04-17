@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "597517a6_28969d7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-17T19:26:56Z",
+      "side": 1,
+      "message": "I think you are right. If we require this to be explicit in BUILD files, it will make the files very verbose. And when we migrate to checked-in BUILD files, it might also cause user fatigue.\n\nI have updated the CL to remove the default build system provided apex_available from BUILD files",
+      "parentUuid": "19b2b54f_b9171f63",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "a760678c08b571a4268d3331b76e790bb68d1d1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ebb4a012_75747139",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
