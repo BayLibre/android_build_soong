@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a5de46_da4e8815",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-17T22:13:38Z",
+      "side": 1,
+      "message": "These two flags weren\u0027t being passed via lldflags previously.  That may have been unintentional, but if so it should be fixed via a separate CL.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "9578061d3b4d90451cf0af5e6d2b3b82facfcf95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11dcc8db_3dc49f8b",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-17T22:13:38Z",
+      "side": 1,
+      "message": "What is this copy for?  If you need a separate copy of the list, use `append([]string(nil), armLdflags...)`",
+      "revId": "9578061d3b4d90451cf0af5e6d2b3b82facfcf95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7840ff77_12d8deb4",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-17T22:13:38Z",
+      "side": 1,
+      "message": "`armLldflags`\n\nI think separating this out into a separate function is just obfuscating what is happening here.  Can you inline this into the VariableFunc below?",
+      "range": {
+        "startLine": 189,
+        "startChar": 15,
+        "endLine": 189,
+        "endChar": 25
+      },
+      "revId": "9578061d3b4d90451cf0af5e6d2b3b82facfcf95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
