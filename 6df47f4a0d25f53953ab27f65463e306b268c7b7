@@ -70,6 +70,30 @@
       },
       "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48f09a32_22a93984",
+        "filename": "android/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-17T18:57:38Z",
+      "side": 1,
+      "message": "Since this change moves this logic in [CheckAvailableForApex](https://cs.android.com/android/_/android/platform/build/soong/+/93c52efc1591943238c96b58e51248a71f310194:android/apex.go;l\u003d452-454;bpv\u003d1;bpt\u003d0;drc\u003d8c9ae7ed6770b45f1337722a2e61cb22317659aa) inside ApexAvailable, I expect this to not break vendor modules. We can have an additional check in [markPlatformAvailability](https://cs.android.com/android/_/android/platform/build/soong/+/93c52efc1591943238c96b58e51248a71f310194:apex/apex.go;l\u003d1242;bpv\u003d1;bpt\u003d0;drc\u003d95cd6db590a5be0fa822cf8741454a0874cc259a) mutator to ignore/special-case the vendor variants if necessary. Something like\n```\nif mctx.Host() || mctx.Module().InstallInRecovery() || mctx.Vendor() {\n  return\n}\n```\n\nJooyung, is there a way to actually verify this? There was no diff in the ninja files with/without this change* in aosp. Is there a postsubmit build that I can trigger to test this?\n\n(* only when run with BUILD_BROKEN_DISABLE_BAZEL\u003dtrue. Without it, there are some diffs, but I believe the updated BUILD files are the correct ones https://diff.googleplex.com/#key\u003daFrWfhs4Phn5 cc +eakammer)",
+      "parentUuid": "d4153f81_fb31b2dc",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 2
+      },
+      "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
