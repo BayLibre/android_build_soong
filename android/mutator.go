@@ -747,12 +747,21 @@ func ApexAvailableTags(mod Module) bazel.StringListAttribute {
 		// TODO(b/218841706): hidl_interface has the apex_available prop, but it's
 		// defined directly as a prop and not via ApexModule, so this doesn't
 		// pick those props up.
-		attr.Value = ConvertApexAvailableToTags(am.apexModuleBase().ApexAvailable())
+		apexAvailable := am.apexModuleBase().ApexAvailable()
+		// If a user does not specify apex_available in Android.bp, then soong provides a default.
+		// To avoid verbosity of BUILD files, remove this default from user-facing BUILD files.
+		if len(am.apexModuleBase().ApexProperties.Apex_available) == 0 {
+			apexAvailable = []string{}
+		}
+		attr.Value = ConvertApexAvailableToTags(apexAvailable)
+
+		// TODO: Add desc
 	}
 	return attr
 }
 
 func ConvertApexAvailableToTags(apexAvailable []string) []string {
+	// TODO: Add desc
 	if len(apexAvailable) == 0 {
 		// We need nil specifically to make bp2build not add the tags property at all,
 		// instead of adding it with an empty list
