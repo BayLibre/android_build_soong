@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c6165ee_54c16697",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2023-04-17T22:36:00Z",
+      "side": 1,
+      "message": "@ccross Adding assignee. When crashes are found from fuzzing this is the person we will assign the bug to",
+      "revId": "a9dd38507dc40596709b48b897ffdb6416930a2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
