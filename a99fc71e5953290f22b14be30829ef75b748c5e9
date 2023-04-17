@@ -123,6 +123,24 @@
       "parentUuid": "faff89f5_177b99e9",
       "revId": "a99fc71e5953290f22b14be30829ef75b748c5e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55121467_a6aad9ea",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-04-17T19:15:10Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I have added a test case testing this property, as well as some other properties of the generated `java_api_library` module per api scope.",
+      "parentUuid": "3e33f44d_d42d89fd",
+      "revId": "a99fc71e5953290f22b14be30829ef75b748c5e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
