@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6de5c1b_483dda27",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-17T12:47:40Z",
+      "side": 1,
+      "message": "Outside of this one quick fix, this is a strange design to have folks interact with in an Android.bp file -- rather than forcing this into a filegroup, a new `aidl_library` type would be easier to use and better map to Bazel.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "256258587865f6e414e57faf3af256981e1df46a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
