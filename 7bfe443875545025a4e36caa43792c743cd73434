@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ded47f_385cc4fa",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-17T19:45:49Z",
+      "side": 0,
+      "message": "Has something changed since this was written so that no extra handling needs to be done?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "7bfe443875545025a4e36caa43792c743cd73434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
