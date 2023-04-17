@@ -105,6 +105,24 @@
       "parentUuid": "8e972ea1_11c5c3d3",
       "revId": "a99fc71e5953290f22b14be30829ef75b748c5e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e33f44d_d42d89fd",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-17T06:55:41Z",
+      "side": 1,
+      "message": "\u003e Do you believe that testing if module with the name apiLibraryModuleName(\"foo\") is created or not is not sufficient for testing? If so, can you suggest some additional functionalities that should be tested?\n\nI suggest you go through the code you\u0027ve written and think about what needs testing. Verifying the following does what you expect for the different scopes seems like a good idea, for example:\n\n```\n\n\t// Api surfaces are not independent of each other, but have subset relationships,\n\t// and so does the api files. To generate from-text stubs for api surfaces other than public,\n\t// all subset api domains\u0027 api_contriubtions must be added as well.\n\tscope :\u003d apiScope\n\tfor scope !\u003d nil {\n\t\tapiContributions \u003d append(apiContributions, module.stubsSourceModuleName(scope)+\".api.contribution\")\n\t\tscope \u003d scope.extends\n\t}\n\n\tprops.Api_contributions \u003d apiContributions\n```",
+      "parentUuid": "faff89f5_177b99e9",
+      "revId": "a99fc71e5953290f22b14be30829ef75b748c5e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
