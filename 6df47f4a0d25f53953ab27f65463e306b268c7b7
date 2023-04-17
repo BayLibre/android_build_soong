@@ -46,6 +46,30 @@
       },
       "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4153f81_fb31b2dc",
+        "filename": "android/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-17T13:07:41Z",
+      "side": 1,
+      "message": "For now, many vendor modules are used by vendor apexes without setting apex_available. I\u0027m afraid this change breaks them. FYI, we haven\u0027t enforced \"apex_available\" for vendor apexes because, unlike system-side apexes, vendor apexes are mostly specific to products/companies/...\n\nIIUC, setting `apex_available:[\"//apex_available:platform\"]` is not the same as \"not setting\". Probably preventing libs from being embedded in apexes.\n\nCan you check if this won\u0027t break vendor modules?",
+      "parentUuid": "7bb5fe9a_6980e73a",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 2
+      },
+      "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
