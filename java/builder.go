@@ -246,6 +246,18 @@ var (
 			CommandDeps: []string{"${config.ZipAlign}"},
 		},
 	)
+
+	checkZipAlignment = pctx.AndroidStaticRule("checkzipalign",
+		blueprint.RuleParams{
+			Command: "if ! ${config.ZipAlign} -c -p 4 $in > /dev/null; then " +
+				"echo $in: Improper package alignment >&2; " +
+				"exit 1; " +
+				"else " +
+				"touch $out; " +
+				"fi",
+			Description: "Check zip alignment",
+		},
+	)
 )
 
 func init() {
