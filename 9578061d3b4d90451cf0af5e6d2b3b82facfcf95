@@ -104,6 +104,30 @@
       },
       "revId": "9578061d3b4d90451cf0af5e6d2b3b82facfcf95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca490069_a0f1b701",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-04-18T04:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7840ff77_12d8deb4",
+      "range": {
+        "startLine": 189,
+        "startChar": 15,
+        "endLine": 189,
+        "endChar": 25
+      },
+      "revId": "9578061d3b4d90451cf0af5e6d2b3b82facfcf95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
