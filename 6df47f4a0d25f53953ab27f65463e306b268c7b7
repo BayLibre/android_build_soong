@@ -94,6 +94,30 @@
       },
       "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bff0aedf_cf4e8bb3",
+        "filename": "android/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-18T01:15:17Z",
+      "side": 1,
+      "message": "\u003e  We can have an additional check in markPlatformAvailability mutator to ignore/special-case the vendor variants if necessary. Something like\n\nSounds good to me.\n\n\u003e Jooyung, is there a way to actually verify this? There was no diff in the ninja files with/without this change* in aosp. Is there a postsubmit build that I can trigger to test this?\n\nFor now, there\u0027s no such target with vendor apex with a stub providing library in it, which I think would be affected by this change. There\u0027s a recent change which added a stub-providing (prebuilt) library to vendor partition: ag/22606973.\n\nI think Soong tests would be enough. I\u0027m happy to add it myself on top of this change.",
+      "parentUuid": "48f09a32_22a93984",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 2
+      },
+      "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
