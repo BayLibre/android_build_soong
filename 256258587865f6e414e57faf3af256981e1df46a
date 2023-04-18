@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ac70ae4_f111557a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-04-18T13:56:44Z",
+      "side": 1,
+      "message": "let\u0027s follow-up with a more principled solution in a separate CL",
+      "revId": "256258587865f6e414e57faf3af256981e1df46a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6de5c1b_483dda27",
