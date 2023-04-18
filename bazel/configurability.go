@@ -71,6 +71,7 @@ const (
 
 	AndroidAndInApex  = "android-in_apex"
 	AndroidAndNonApex = "android-non_apex"
+	AndroidPlatform   = "system"
 
 	InApex  = "in_apex"
 	NonApex = "non_apex"
@@ -203,6 +204,7 @@ var (
 	osAndInApexMap = map[string]string{
 		AndroidAndInApex:           "//build/bazel/rules/apex:android-in_apex",
 		AndroidAndNonApex:          "//build/bazel/rules/apex:android-non_apex",
+		AndroidPlatform:            "//build/bazel/rules/apex:system",
 		osDarwin:                   "//build/bazel/platforms/os:darwin",
 		osLinux:                    "//build/bazel/platforms/os:linux_glibc",
 		osLinuxMusl:                "//build/bazel/platforms/os:linux_musl",
