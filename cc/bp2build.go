@@ -1230,51 +1230,45 @@ func inApexConfigSetting(apexAvailable string) string {
 func setStubsForDynamicDeps(ctx android.BazelConversionPathContext, axis bazel.ConfigurationAxis,
 	config string, apexAvailable []string, dynamicLibs bazel.LabelList, dynamicDeps *bazel.LabelListAttribute, ind int) {
 
-	depsWithStubs := []bazel.Label{}
-	for _, l := range dynamicLibs.Includes {
-		dep, _ := ctx.ModuleFromName(l.OriginalModuleName)
-		if d, ok := dep.(*Module); ok && d.HasStubsVariants() {
-			depApexAvailable := d.ApexAvailable()
-			if !availableToSameApexes(apexAvailable, depApexAvailable) {
-				depsWithStubs = append(depsWithStubs, l)
-			}
-		}
-	}
-	if len(depsWithStubs) > 0 {
-		implDynamicDeps := bazel.SubtractBazelLabelList(dynamicLibs, bazel.MakeLabelList(depsWithStubs))
-		dynamicDeps.SetSelectValue(axis, config, implDynamicDeps)
-
-		stubLibLabels := []bazel.Label{}
-		for _, l := range depsWithStubs {
-			stubLabelInApiSurfaces := bazel.Label{
-				Label: apiSurfaceModuleLibCurrentPackage + strings.TrimPrefix(l.OriginalModuleName, ":"),
-			}
-			stubLibLabels = append(stubLibLabels, stubLabelInApiSurfaces)
-		}
-		inApexSelectValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndInApex)
-		nonApexSelectValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndNonApex)
-		defaultSelectValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.ConditionsDefaultConfigKey)
-		if axis == bazel.NoConfigAxis {
-			(&inApexSelectValue).Append(bazel.MakeLabelList(stubLibLabels))
-			(&nonApexSelectValue).Append(bazel.MakeLabelList(depsWithStubs))
-			(&defaultSelectValue).Append(bazel.MakeLabelList(depsWithStubs))
-			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndInApex, bazel.FirstUniqueBazelLabelList(inApexSelectValue))
-			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndNonApex, bazel.FirstUniqueBazelLabelList(nonApexSelectValue))
-			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.ConditionsDefaultConfigKey, bazel.FirstUniqueBazelLabelList(defaultSelectValue))
-		} else if config == bazel.OsAndroid {
-			(&inApexSelectValue).Append(bazel.MakeLabelList(stubLibLabels))
-			(&nonApexSelectValue).Append(bazel.MakeLabelList(depsWithStubs))
-			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndInApex, bazel.FirstUniqueBazelLabelList(inApexSelectValue))
-			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndNonApex, bazel.FirstUniqueBazelLabelList(nonApexSelectValue))
-		}
-	}
-
 	// Create a config_setting for each apex_available.
 	// This will be used to select impl of a dep if dep is available to the same apex.
 	for _, aa := range apexAvailable {
 		createInApexConfigSetting(ctx.(android.TopDownMutatorContext), aa)
 	}
 
+	useStubsInSelectForApexWithName := func(axis bazel.ConfigurationAxis, config string, apexName string, lib bazel.Label, dynamicDeps *bazel.LabelListAttribute) {
+		stubLabelInApiSurfaces := bazel.Label{
+			Label: apiSurfaceModuleLibCurrentPackage + strings.TrimPrefix(lib.OriginalModuleName, ":"),
+		}
+		// Create a select statement specific to this apex
+		inApexSelectValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, inApexConfigSetting(apexName))
+		(&inApexSelectValue).Append(bazel.MakeLabelList([]bazel.Label{stubLabelInApiSurfaces}))
+		dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, inApexConfigSetting(apexName), bazel.FirstUniqueBazelLabelList(inApexSelectValue))
+		// Delete the library from the common config for this apex
+		implDynamicDeps := dynamicDeps.SelectValue(axis, config)
+		implDynamicDeps = bazel.SubtractBazelLabelList(implDynamicDeps, bazel.MakeLabelList([]bazel.Label{lib}))
+		dynamicDeps.SetSelectValue(axis, config, implDynamicDeps)
+		// Set defaults. Defaults shouuld use impl and not stubs.
+		defaultSelectValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.ConditionsDefaultConfigKey)
+		if axis == bazel.NoConfigAxis {
+			(&defaultSelectValue).Append(bazel.MakeLabelList([]bazel.Label{lib}))
+			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.ConditionsDefaultConfigKey, bazel.FirstUniqueBazelLabelList(defaultSelectValue))
+		}
+	}
+
+	// Create an additional select for each apex this library could be included in.
+	for _, l := range dynamicLibs.Includes {
+		dep, _ := ctx.ModuleFromName(l.OriginalModuleName)
+		if c, ok := dep.(*Module); !ok || !c.HasStubsVariants() {
+			continue
+		}
+		for _, aa := range apexAvailable {
+			if !android.InList(aa, dep.(*Module).ApexAvailable()) {
+				// dep is not available to this apex, and therefore should be accessed via stubs in this apex.
+				useStubsInSelectForApexWithName(axis, config, aa, l, dynamicDeps)
+			}
+		}
+	}
 }
 
 func (la *linkerAttributes) convertStripProps(ctx android.BazelConversionPathContext, module *Module) {
@@ -1377,7 +1371,9 @@ func (la *linkerAttributes) finalize(ctx android.BazelConversionPathContext) {
 			}
 			stubsToRemove = append(stubsToRemove, stubLabelInApiSurfaces)
 		}
-		la.implementationDynamicDeps.Exclude(bazel.OsAndInApexAxis, bazel.AndroidAndInApex, bazel.MakeLabelList(stubsToRemove))
+		for _, aa := range ctx.Module().(*Module).ApexAvailable() {
+			la.implementationDynamicDeps.Exclude(bazel.OsAndInApexAxis, inApexConfigSetting(aa), bazel.MakeLabelList(stubsToRemove))
+		}
 	}
 
 	la.deps.ResolveExcludes()
