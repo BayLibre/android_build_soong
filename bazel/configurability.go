@@ -350,3 +350,11 @@ func (ca *ConfigurationAxis) less(other ConfigurationAxis) bool {
 	}
 	return ca.configurationType < other.configurationType
 }
+
+// ContainsExclusiveEntries returns true if the entries in this axis are mutually exclusive.
+// If true, this allows optimizations like dropping configs that have the same value as //conditions:default
+func (ca *ConfigurationAxis) ContainsExclusiveEntries() bool {
+	// osAndInApex is not mutually exclusive.
+	// It contains an android entry and a android_(apex|non_apex) entry
+	return ca.configurationType != osAndInApex
+}

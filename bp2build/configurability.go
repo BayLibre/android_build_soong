@@ -124,7 +124,9 @@ func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, []selects
 		emitEmptyList := list.EmitEmptyList || len(defaultVal.Includes) > 0
 		for config, labels := range configToLabels {
 			// Omit any entries in the map which match the default value, for brevity.
-			if config != bazel.ConditionsDefaultConfigKey && labels.Equals(defaultVal) {
+			if config != bazel.ConditionsDefaultConfigKey &&
+				labels.Equals(defaultVal) &&
+				axis.ContainsExclusiveEntries() {
 				continue
 			}
 			selectKey := axis.SelectKey(config)

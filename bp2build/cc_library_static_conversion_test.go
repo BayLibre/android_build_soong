@@ -1561,7 +1561,8 @@ cc_library_static {
 			}),
 			MakeBazelTarget("cc_library_static", "keep_with_stubs", AttrNameToString{
 				"implementation_dynamic_deps": `select({
-        "//build/bazel/rules/apex:android-in_apex": ["@api_surfaces//module-libapi/current:libm"],
+        "//build/bazel/rules/apex:android-in_foo": ["@api_surfaces//module-libapi/current:libm"],
+        "//build/bazel/rules/apex:android-non_apex": ["@api_surfaces//module-libapi/current:libm"],
         "//conditions:default": [":libm"],
     })`,
 				"system_dynamic_deps": `[]`,
@@ -1571,6 +1572,12 @@ cc_library_static {
 				"tags": `["apex_available=foo"]`,
 			}),
 			MakeBazelTarget("cc_library_static", "used_with_stubs", AttrNameToString{
+				"implementation_dynamic_deps": `select({
+        "//build/bazel/platforms/os:linux_bionic": [],
+        "//build/bazel/rules/apex:android-in_foo": [],
+        "//build/bazel/rules/apex:android-non_apex": ["@api_surfaces//module-libapi/current:libm"],
+        "//conditions:default": [],
+    })`,
 				"tags": `["apex_available=foo"]`,
 			}),
 		},
