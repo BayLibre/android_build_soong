@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ade73e_079b49b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-18T13:28:35Z",
+      "side": 1,
+      "message": "can you add this to Bazel as well?\n\nIt\u0027d probably be adding llvm-objcopy to the toolchain (similar to [this](http://cs/github/bazelbuild/bazel/tools/cpp/unix_cc_toolchain_config.bzl;l\u003d198;rcl\u003dd61e88ba376f657bb9b7eec9c51a4ac7e4d4f774))\n\nand using [`cc_common.get_tool_for_action`](https://bazel.build/versions/6.0.0/rules/lib/cc_common#get_tool_for_action) to write the action.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "dea1d039756fc3aaf334c85c01d4a242e025da78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
