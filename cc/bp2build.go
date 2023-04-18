@@ -1186,10 +1186,7 @@ func setStubsForDynamicDeps(ctx android.BazelConversionPathContext, axis bazel.C
 	for _, l := range dynamicLibs.Includes {
 		dep, _ := ctx.ModuleFromName(l.OriginalModuleName)
 		if d, ok := dep.(*Module); ok && d.HasStubsVariants() {
-			depApexAvailable := d.ApexAvailable()
-			if !availableToSameApexes(apexAvailable, depApexAvailable) {
-				depsWithStubs = append(depsWithStubs, l)
-			}
+			depsWithStubs = append(depsWithStubs, l)
 		}
 	}
 	if len(depsWithStubs) > 0 {
@@ -1203,21 +1200,17 @@ func setStubsForDynamicDeps(ctx android.BazelConversionPathContext, axis bazel.C
 			}
 			stubLibLabels = append(stubLibLabels, stubLabelInApiSurfaces)
 		}
-		inApexSelectValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndInApex)
-		nonApexSelectValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndNonApex)
+		inAndroidSelectValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.OsAndroid)
 		defaultSelectValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.ConditionsDefaultConfigKey)
 		if axis == bazel.NoConfigAxis {
-			(&inApexSelectValue).Append(bazel.MakeLabelList(stubLibLabels))
-			(&nonApexSelectValue).Append(bazel.MakeLabelList(depsWithStubs))
+			(&inAndroidSelectValue).Append(bazel.MakeLabelList(stubLibLabels))
 			(&defaultSelectValue).Append(bazel.MakeLabelList(depsWithStubs))
-			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndInApex, bazel.FirstUniqueBazelLabelList(inApexSelectValue))
-			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndNonApex, bazel.FirstUniqueBazelLabelList(nonApexSelectValue))
+			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.OsAndroid, bazel.FirstUniqueBazelLabelList(inAndroidSelectValue))
 			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.ConditionsDefaultConfigKey, bazel.FirstUniqueBazelLabelList(defaultSelectValue))
+
 		} else if config == bazel.OsAndroid {
-			(&inApexSelectValue).Append(bazel.MakeLabelList(stubLibLabels))
-			(&nonApexSelectValue).Append(bazel.MakeLabelList(depsWithStubs))
-			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndInApex, bazel.FirstUniqueBazelLabelList(inApexSelectValue))
-			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndNonApex, bazel.FirstUniqueBazelLabelList(nonApexSelectValue))
+			(&inAndroidSelectValue).Append(bazel.MakeLabelList(stubLibLabels))
+			dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.OsAndroid, bazel.FirstUniqueBazelLabelList(inAndroidSelectValue))
 		}
 	}
 }
@@ -1322,7 +1315,7 @@ func (la *linkerAttributes) finalize(ctx android.BazelConversionPathContext) {
 			}
 			stubsToRemove = append(stubsToRemove, stubLabelInApiSurfaces)
 		}
-		la.implementationDynamicDeps.Exclude(bazel.OsAndInApexAxis, bazel.AndroidAndInApex, bazel.MakeLabelList(stubsToRemove))
+		la.implementationDynamicDeps.Exclude(bazel.OsAndInApexAxis, bazel.OsAndroid, bazel.MakeLabelList(stubsToRemove))
 	}
 
 	la.deps.ResolveExcludes()

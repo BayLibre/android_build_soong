@@ -558,6 +558,8 @@ cc_library_shared {
 }
 
 func TestCcLibrarySharedStubs_UseImplementationInSameApex(t *testing.T) {
+	// TODO (spandandas): Re-enable with per-apex config_setting
+	t.Skip()
 	runCcLibrarySharedTestCase(t, Bp2buildTestCase{
 		Description:                "cc_library_shared stubs",
 		ModuleTypeUnderTest:        "cc_library_shared",
@@ -609,7 +611,7 @@ cc_library_shared {
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "b", AttrNameToString{
 				"implementation_dynamic_deps": `select({
-        "//build/bazel/rules/apex:android-in_apex": ["@api_surfaces//module-libapi/current:a"],
+        "//build/bazel/platforms/os:android": ["@api_surfaces//module-libapi/current:a"],
         "//conditions:default": [":a"],
     })`,
 				"tags": `["apex_available=apex_b"]`,
@@ -641,7 +643,7 @@ cc_library_shared {
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "b", AttrNameToString{
 				"implementation_dynamic_deps": `select({
-        "//build/bazel/rules/apex:android-in_apex": ["@api_surfaces//module-libapi/current:a"],
+        "//build/bazel/platforms/os:android": ["@api_surfaces//module-libapi/current:a"],
         "//conditions:default": [":a"],
     })`,
 				"tags": `[
@@ -682,7 +684,7 @@ cc_library_shared {
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "b", AttrNameToString{
 				"implementation_dynamic_deps": `select({
-        "//build/bazel/rules/apex:android-in_apex": ["@api_surfaces//module-libapi/current:a"],
+        "//build/bazel/platforms/os:android": ["@api_surfaces//module-libapi/current:a"],
         "//conditions:default": [":a"],
     })`,
 				"tags": `[
@@ -691,7 +693,10 @@ cc_library_shared {
     ]`,
 			}),
 			MakeBazelTarget("cc_library_shared", "c", AttrNameToString{
-				"implementation_dynamic_deps": `[":a"]`,
+				"implementation_dynamic_deps": `select({
+        "//build/bazel/platforms/os:android": ["@api_surfaces//module-libapi/current:a"],
+        "//conditions:default": [":a"],
+    })`,
 				"tags": `[
         "apex_available=//apex_available:platform",
         "apex_available=apex_a",
