@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b644747_14d88d2c",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-04-18T04:34:44Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "12a5de46_da4e8815",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "9578061d3b4d90451cf0af5e6d2b3b82facfcf95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11dcc8db_3dc49f8b",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-04-17T22:13:38Z",
       "side": 1,
       "message": "What is this copy for?  If you need a separate copy of the list, use `append([]string(nil), armLdflags...)`",
+      "revId": "9578061d3b4d90451cf0af5e6d2b3b82facfcf95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56dbcdb7_dcfe3dfc",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-04-18T04:34:44Z",
+      "side": 1,
+      "message": "I reverted this change. We don\u0027t need a separate copy.",
+      "parentUuid": "11dcc8db_3dc49f8b",
       "revId": "9578061d3b4d90451cf0af5e6d2b3b82facfcf95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
