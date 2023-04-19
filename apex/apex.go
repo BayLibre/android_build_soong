@@ -1240,13 +1240,15 @@ func apexTestForMutator(mctx android.BottomUpMutatorContext) {
 // be) available to platform
 // TODO(jiyong): move this to android/apex.go?
 func markPlatformAvailability(mctx android.BottomUpMutatorContext) {
-	// Host and recovery are not considered as platform
-	if mctx.Host() || mctx.Module().InstallInRecovery() {
+	am, ok := mctx.Module().(android.ApexModule)
+	if !ok {
 		return
 	}
 
-	am, ok := mctx.Module().(android.ApexModule)
-	if !ok {
+	// Host and recovery are not considered as platform
+	// Vendor variants are not considered as platform
+	if mctx.Host() || mctx.Module().InstallInRecovery() || mctx.Module().InstallInVendor() {
+		am.SetNotAvailableForPlatform()
 		return
 	}
 

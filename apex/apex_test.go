@@ -10201,3 +10201,13 @@ func TestCannedFsConfig_HasCustomConfig(t *testing.T) {
 	// Ensure that canned_fs_config has "cat my_config" at the end
 	ensureContains(t, cmd, `( echo '/ 1000 1000 0755'; echo '/apex_manifest.json 1000 1000 0644'; echo '/apex_manifest.pb 1000 1000 0644'; cat my_config ) >`)
 }
+
+func TestVendorLibrariesAreNotAvailableToPlatform(t *testing.T) {
+	ctx := testApex(t, `
+		cc_library {
+			name: "libvendor",
+			vendor: true,
+		}`)
+	libvendor := ctx.ModuleForTests("libvendor", "android_vendor.29_arm64_armv8-a_shared").Module().(*cc.Module)
+	android.AssertBoolEquals(t, "vendor libraries should not be available to platform", libvendor.NotAvailableForPlatform(), true)
+}
