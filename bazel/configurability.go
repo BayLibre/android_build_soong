@@ -269,9 +269,8 @@ func (ct configurationType) validateConfig(config string) {
 	case productVariables:
 		// do nothing
 	case osAndInApex:
-		if _, ok := osAndInApexMap[config]; !ok {
-			panic(fmt.Errorf("Unknown os+in_apex config: %s", config))
-		}
+		// do nothing
+		// this axis can contain additional per-apex keys
 	case inApex:
 		if _, ok := inApexMap[config]; !ok {
 			panic(fmt.Errorf("Unknown in_apex config: %s", config))
@@ -300,7 +299,10 @@ func (ca ConfigurationAxis) SelectKey(config string) string {
 		}
 		return fmt.Sprintf("%s:%s", productVariableBazelPackage, config)
 	case osAndInApex:
-		return osAndInApexMap[config]
+		if ret, exists := osAndInApexMap[config]; exists {
+			return ret
+		}
+		return config
 	case inApex:
 		return inApexMap[config]
 	default:
@@ -341,6 +343,12 @@ type ConfigurationAxis struct {
 	subType string
 	// used to keep track of which product variables are arch variant
 	outerAxisType configurationType
+}
+
+// ContainsExclusiveEntries returns true if the entries in this axis are mutually exclusive.
+// If true, this allows optimizations like dropping configs that have the same value as //conditions:default
+func (ca *ConfigurationAxis) ContainsExclusiveEntries() bool {
+	return ca.configurationType != osAndInApex
 }
 
 func (ca *ConfigurationAxis) less(other ConfigurationAxis) bool {
