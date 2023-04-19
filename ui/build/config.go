@@ -1548,7 +1548,7 @@ func (c *configImpl) SoongVarsFile() string {
 }
 
 func (c *configImpl) SoongNinjaFile() string {
-	return filepath.Join(c.SoongOutDir(), "build.ninja")
+	return filepath.Join(c.SoongOutDir(), "build."+c.TargetProduct()+".ninja")
 }
 
 func (c *configImpl) CombinedNinjaFile() string {
