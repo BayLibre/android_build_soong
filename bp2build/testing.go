@@ -317,6 +317,8 @@ type customProps struct {
 	One_to_many_prop *bool
 
 	Api *string // File describing the APIs of this module
+
+	Test_config_setting *bool // Used to test generation of config_setting targets
 }
 
 type customModule struct {
@@ -490,6 +492,27 @@ func (m *customModule) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
+
+	if proptools.Bool(m.props.Test_config_setting) {
+		m.createConfigSetting(ctx)
+	}
+
+}
+
+func (m *customModule) createConfigSetting(ctx android.TopDownMutatorContext) {
+	csa := bazel.ConfigSettingAttributes{
+		Flag_values: bazel.StringMapAttribute{
+			"//build/bazel/rules/apex:apex_name": "foo",
+		},
+	}
+	ca := android.CommonAttributes{
+		Name: "android-in_" + "foo",
+	}
+	ctx.CreateBazelConfigSetting(
+		csa,
+		ca,
+		ctx.ModuleDir(),
+	)
 }
 
 var _ android.ApiProvider = (*customModule)(nil)
