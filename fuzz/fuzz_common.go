@@ -339,7 +339,6 @@ type FuzzConfig struct {
 	// List of modules for monitoring coverage drops in directories (e.g. "libicu")
 	Target_modules []string `json:"target_modules,omitempty"`
 	// Specifies a bug assignee to replace default ISE assignment
-	Staging string `json:"staging,omitempty"`
 }
 
 type FuzzFrameworks struct {
