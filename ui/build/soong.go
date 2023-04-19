@@ -263,7 +263,7 @@ func bootstrapBlueprint(ctx Context, config Config) {
 	// Clean up some files for incremental builds across incompatible changes.
 	bootstrapEpochCleanup(ctx, config)
 
-	mainSoongBuildExtraArgs := []string{"-o", config.SoongNinjaFile()}
+	mainSoongBuildExtraArgs := []string{"-o", config.SoongNinjaFile(), "--soong_variables", config.SoongVarsFile()}
 	if config.EmptyNinjaFile() {
 		mainSoongBuildExtraArgs = append(mainSoongBuildExtraArgs, "--empty-ninja-file")
 	}
