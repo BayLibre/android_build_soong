@@ -3043,6 +3043,7 @@ cc_library {
 		ExpectedBazelTargets: makeCcLibraryTargets("foolib", AttrNameToString{
 			"implementation_dynamic_deps": `select({
         "//build/bazel/platforms/os:android": ["@api_surfaces//module-libapi/current:barlib"],
+        "//build/bazel/rules/apex:android-in_foo": ["@api_surfaces//module-libapi/current:barlib"],
         "//conditions:default": [":barlib"],
     })`,
 			"local_includes": `["."]`,
@@ -3100,6 +3101,10 @@ cc_library {
         "//build/bazel/platforms/os:linux_glibc": [":quxlib"],
         "//build/bazel/platforms/os:linux_musl": [":quxlib"],
         "//build/bazel/platforms/os:windows": [":quxlib"],
+        "//build/bazel/rules/apex:android-in_foo": [
+            "@api_surfaces//module-libapi/current:barlib",
+            "@api_surfaces//module-libapi/current:quxlib",
+        ],
         "//conditions:default": [
             ":barlib",
             ":quxlib",
@@ -4139,44 +4144,50 @@ cc_library {
 	name: "barlib",
 	stubs: { symbol_file: "bar.map.txt", versions: ["28", "29", "current"] },
 	bazel_module: { bp2build_available: false },
+	apex_available: ["//apex_available:platform",],
 }
 cc_library {
 	name: "bazlib",
 	stubs: { symbol_file: "bar.map.txt", versions: ["28", "29", "current"] },
 	bazel_module: { bp2build_available: false },
+	apex_available: ["//apex_available:platform",],
 }
 cc_library {
     name: "foo",
 	  shared_libs: ["barlib", "bazlib"],
     export_shared_lib_headers: ["bazlib"],
     apex_available: [
-        "apex_available:platform",
+        "//apex_available:platform",
     ],
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
 				"implementation_dynamic_deps": `select({
         "//build/bazel/platforms/os:android": ["@api_surfaces//module-libapi/current:barlib"],
+        "//build/bazel/rules/apex:android-non_apex": [":barlib"],
         "//conditions:default": [":barlib"],
     })`,
 				"dynamic_deps": `select({
         "//build/bazel/platforms/os:android": ["@api_surfaces//module-libapi/current:bazlib"],
+        "//build/bazel/rules/apex:android-non_apex": [":bazlib"],
         "//conditions:default": [":bazlib"],
     })`,
 				"local_includes": `["."]`,
-				"tags":           `["apex_available=apex_available:platform"]`,
+				"tags":           `["apex_available=//apex_available:platform"]`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
 				"implementation_dynamic_deps": `select({
         "//build/bazel/platforms/os:android": ["@api_surfaces//module-libapi/current:barlib"],
+        "//build/bazel/rules/apex:android-non_apex": [":barlib"],
         "//conditions:default": [":barlib"],
     })`,
 				"dynamic_deps": `select({
         "//build/bazel/platforms/os:android": ["@api_surfaces//module-libapi/current:bazlib"],
+        "//build/bazel/rules/apex:android-non_apex": [":bazlib"],
         "//conditions:default": [":bazlib"],
     })`,
 				"local_includes": `["."]`,
-				"tags":           `["apex_available=apex_available:platform"]`,
+				"tags":           `["apex_available=//apex_available:platform"]`,
 			}),
 		},
 	})

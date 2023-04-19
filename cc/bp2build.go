@@ -1268,6 +1268,28 @@ func setStubsForDynamicDeps(ctx android.BazelConversionPathContext, axis bazel.C
 		createInApexConfigSetting(ctx.(android.TopDownMutatorContext), aa)
 	}
 
+	// Create an additional select for each apex this library could be included in.
+	for _, l := range dynamicLibs.Includes {
+		dep, _ := ctx.ModuleFromName(l.OriginalModuleName)
+		if c, ok := dep.(*Module); !ok || !c.HasStubsVariants() {
+			continue
+		}
+		for _, aa := range apexAvailable {
+			if android.InList(aa, dep.(*Module).ApexAvailable()) {
+				inApexSelectValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, inApexConfigSetting(aa))
+				(&inApexSelectValue).Append(bazel.MakeLabelList([]bazel.Label{l}))
+				dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, inApexConfigSetting(aa), bazel.FirstUniqueBazelLabelList(inApexSelectValue))
+			} else {
+				stubLabelInApiSurfaces := bazel.Label{
+					Label: apiSurfaceModuleLibCurrentPackage + strings.TrimPrefix(l.OriginalModuleName, ":"),
+				}
+				inApexSelectValue := dynamicDeps.SelectValue(bazel.OsAndInApexAxis, inApexConfigSetting(aa))
+				(&inApexSelectValue).Append(bazel.MakeLabelList([]bazel.Label{stubLabelInApiSurfaces}))
+				dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, inApexConfigSetting(aa), bazel.FirstUniqueBazelLabelList(inApexSelectValue))
+
+			}
+		}
+	}
 }
 
 func (la *linkerAttributes) convertStripProps(ctx android.BazelConversionPathContext, module *Module) {
@@ -1371,6 +1393,9 @@ func (la *linkerAttributes) finalize(ctx android.BazelConversionPathContext) {
 			stubsToRemove = append(stubsToRemove, stubLabelInApiSurfaces)
 		}
 		la.implementationDynamicDeps.Exclude(bazel.OsAndInApexAxis, bazel.OsAndroid, bazel.MakeLabelList(stubsToRemove))
+		for _, aa := range ctx.Module().(*Module).ApexAvailable() {
+			la.implementationDynamicDeps.Exclude(bazel.OsAndInApexAxis, inApexConfigSetting(aa), bazel.MakeLabelList(stubsToRemove))
+		}
 	}
 
 	la.deps.ResolveExcludes()
