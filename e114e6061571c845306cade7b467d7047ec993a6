@@ -50,6 +50,23 @@
       "message": "See comment in https://android-review.git.corp.google.com/c/platform/build/soong/+/2494686",
       "revId": "e114e6061571c845306cade7b467d7047ec993a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b56d3561_95841454",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-19T12:59:55Z",
+      "side": 1,
+      "message": "curious about the workflow/methodology for whether something should go into this list or not: could you add a comment about that?\n\n- I\u0027m a little bit surprised \"metalava\" is in here, as it\u0027s not a particularly long-running target I think? but it is on the critical path for some long-running targets.\n\n- What about framework.jar? seems like that should be here, and maybe framework-minus-apex too",
+      "revId": "e114e6061571c845306cade7b467d7047ec993a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
