@@ -1544,11 +1544,11 @@ func (c *configImpl) KatiPackageNinjaFile() string {
 }
 
 func (c *configImpl) SoongVarsFile() string {
-	return filepath.Join(c.SoongOutDir(), "soong.variables")
+	return filepath.Join(c.SoongOutDir(), "soong."+c.TargetProduct()+".variables")
 }
 
 func (c *configImpl) SoongNinjaFile() string {
-	return filepath.Join(c.SoongOutDir(), "build.ninja")
+	return filepath.Join(c.SoongOutDir(), "build."+c.TargetProduct()+".ninja")
 }
 
 func (c *configImpl) CombinedNinjaFile() string {
