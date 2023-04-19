@@ -1898,3 +1898,36 @@ func TestGenerateApiBazelTargets(t *testing.T) {
 		Description:          "Generating API contribution Bazel targets for custom module",
 	})
 }
+
+func TestGenerateConfigSetting(t *testing.T) {
+	bp := `
+	custom {
+		name: "foo",
+		test_config_setting: true,
+	}
+	`
+	expectedBazelTargets := []string{
+		MakeBazelTargetNoRestrictions(
+			"config_setting",
+			"android-in_foo",
+			AttrNameToString{
+				"flag_values": `{
+        "//build/bazel/rules/apex:apex_name": "foo",
+    }`,
+			},
+		),
+		MakeBazelTarget(
+			"custom",
+			"foo",
+			AttrNameToString{},
+		),
+	}
+	registerCustomModule := func(ctx android.RegistrationContext) {
+		ctx.RegisterModuleType("custom", customModuleFactoryHostAndDevice)
+	}
+	RunBp2BuildTestCase(t, registerCustomModule, Bp2buildTestCase{
+		Blueprint:            bp,
+		ExpectedBazelTargets: expectedBazelTargets,
+		Description:          "Generating API contribution Bazel targets for custom module",
+	})
+}
