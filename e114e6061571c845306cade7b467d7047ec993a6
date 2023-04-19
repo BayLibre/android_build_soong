@@ -85,6 +85,24 @@
       "parentUuid": "b56d3561_95841454",
       "revId": "e114e6061571c845306cade7b467d7047ec993a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99bd3f6_73e81f4a",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-19T13:23:31Z",
+      "side": 1,
+      "message": "thanks! 👍",
+      "parentUuid": "09a0f264_31e90fec",
+      "revId": "e114e6061571c845306cade7b467d7047ec993a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
