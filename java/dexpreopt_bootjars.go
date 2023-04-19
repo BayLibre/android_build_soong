@@ -508,7 +508,7 @@ func (d *dexpreoptBootJars) GenerateSingletonBuildActions(ctx android.SingletonC
 		return
 	}
 
-	d.dexpreoptConfigForMake = android.PathForOutput(ctx, ctx.Config().DeviceName(), "dexpreopt.config")
+	d.dexpreoptConfigForMake = android.PathForOutput(ctx, "dexpreopt", "dexpreopt.config")
 	writeGlobalConfigForMake(ctx, d.dexpreoptConfigForMake)
 
 	global := dexpreopt.GetGlobalConfig(ctx)

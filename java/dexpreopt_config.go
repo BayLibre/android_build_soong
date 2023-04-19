@@ -108,7 +108,7 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 	return ctx.Config().Once(bootImageConfigKey, func() interface{} {
 		targets := dexpreoptTargets(ctx)
-		deviceDir := android.PathForOutput(ctx, ctx.Config().DeviceName())
+		deviceDir := android.PathForOutput(ctx, "dexpreopt")
 
 		configs := genBootImageConfigRaw(ctx)
 
@@ -221,7 +221,7 @@ func GetApexBootConfig(ctx android.PathContext) apexBootConfig {
 	return ctx.Config().Once(updatableBootConfigKey, func() interface{} {
 		apexBootJars := dexpreopt.GetGlobalConfig(ctx).ApexBootJars
 
-		dir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "apex_bootjars")
+		dir := android.PathForOutput(ctx, "dexpreopt", "apex_bootjars")
 		dexPaths := apexBootJars.BuildPaths(ctx, dir)
 		dexPathsByModuleName := apexBootJars.BuildPathsByModule(ctx, dir)
 
