@@ -67,6 +67,24 @@
       "message": "curious about the workflow/methodology for whether something should go into this list or not: could you add a comment about that?\n\n- I\u0027m a little bit surprised \"metalava\" is in here, as it\u0027s not a particularly long-running target I think? but it is on the critical path for some long-running targets.\n\n- What about framework.jar? seems like that should be here, and maybe framework-minus-apex too",
       "revId": "e114e6061571c845306cade7b467d7047ec993a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a0f264_31e90fec",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-19T13:11:56Z",
+      "side": 1,
+      "message": "yeah, i added metalava targets because it is on the critical path, and block lots of long-running targets.\n\nfor workflow, i uses build metrics to collect long-running targets in CI(refer to go/fast-ninja-dashboard)\n\ni recently updated this including frameworks packages.\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/allowlists/allowlists.go;l\u003d1613?q\u003dlibbt_packets\u0026ss\u003dandroid\n\nby the way, i am also working on making soong do these works based on module type, input size instead of listing up whole module names.\nhttps://android-review.git.corp.google.com/c/platform/build/soong/+/2525588\n\nif we decided to maintain allowlist based on target name, i will elaborate comment/workflow for that.",
+      "parentUuid": "b56d3561_95841454",
+      "revId": "e114e6061571c845306cade7b467d7047ec993a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
