@@ -85,7 +85,7 @@ func init() {
 	flag.BoolVar(&cmdlineArgs.BazelModeDev, "bazel-mode-dev", false, "use bazel for analysis of a large number of modules (less stable)")
 	flag.BoolVar(&cmdlineArgs.UseBazelProxy, "use-bazel-proxy", false, "communicate with bazel using unix socket proxy instead of spawning subprocesses")
 	flag.BoolVar(&cmdlineArgs.BuildFromTextStub, "build-from-text-stub", false, "build Java stubs from API text files instead of source files")
-
+	flag.BoolVar(&cmdlineArgs.EnsureAllowlistIntegrity, "ensure-allowlist-integrity", false, "verify that allowlisted modules are mixed-built")
 	// Flags that probably shouldn't be flags of soong_build, but we haven't found
 	// the time to remove them yet
 	flag.BoolVar(&cmdlineArgs.RunGoTests, "t", false, "build and run go tests during bootstrap")
@@ -288,6 +288,42 @@ func writeMetrics(configuration android.Config, eventHandler *metrics.EventHandl
 	maybeQuit(err, "error writing soong_build metrics %s", metricsFile)
 }
 
+func handleAllowlistIntegrityError(modules []string, configuration android.Config) {
+	if len(modules) == 0 || android.IsPlatformIncompatible(configuration.BuildOS, configuration.BuildArch) {
+		return
+	}
+
+	err := fmt.Errorf("Error: expected the following modules to be mixed_built: %s", modules)
+	maybeQuit(err, "")
+}
+
+func findModulesNotMixedBuilt(configuration android.Config, isStagingMode bool) []string {
+	retval := []string{}
+	forceEnabledModules := configuration.BazelModulesForceEnabledByFlag()
+
+	mixedBuildsEnabled := configuration.GetMixedBuildsEnabledModules()
+	for _, module := range allowlists.ProdMixedBuildsEnabledList {
+		if _, ok := mixedBuildsEnabled[module]; !ok && module != "" {
+			retval = append(retval, module)
+		}
+	}
+
+	if isStagingMode {
+		for _, module := range allowlists.StagingMixedBuildsEnabledList {
+			if _, ok := mixedBuildsEnabled[module]; !ok && module != "" {
+				retval = append(retval, module)
+			}
+		}
+	}
+
+	for module, _ := range forceEnabledModules {
+		if _, ok := mixedBuildsEnabled[module]; !ok && module != "" {
+			retval = append(retval, module)
+		}
+	}
+	return retval
+}
+
 func writeJsonModuleGraphAndActions(ctx *android.Context, cmdArgs android.CmdArgs) {
 	graphFile, graphErr := os.Create(shared.JoinPath(topDir, cmdArgs.ModuleGraphFile))
 	maybeQuit(graphErr, "graph err")
@@ -433,13 +469,19 @@ func main() {
 		writeMetrics(configuration, ctx.EventHandler, metricsDir)
 	default:
 		ctx.Register()
-		if configuration.IsMixedBuildsEnabled() {
+		isMixedBuildsEnabled := configuration.IsMixedBuildsEnabled()
+		if isMixedBuildsEnabled {
 			finalOutputFile = runMixedModeBuild(ctx, extraNinjaDeps)
 		} else {
 			finalOutputFile = runSoongOnlyBuild(ctx, extraNinjaDeps)
 		}
 		if ctx.Config().IsEnvTrue("SOONG_GENERATES_NINJA_HINT") {
 			writeNinjaHint(ctx)
+		}
+
+		if isMixedBuildsEnabled && cmdlineArgs.EnsureAllowlistIntegrity {
+			unallowlistedModules := findModulesNotMixedBuilt(configuration, cmdlineArgs.BazelModeStaging)
+			handleAllowlistIntegrityError(unallowlistedModules, configuration)
 		}
 		writeMetrics(configuration, ctx.EventHandler, metricsDir)
 	}

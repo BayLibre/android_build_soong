@@ -32,6 +32,16 @@ const (
 	Bp2BuildTopLevel = "."
 )
 
+type MixedBuildEnabledStatus int
+
+const (
+	MixedBuildEnabled = iota
+
+	TechnicalIncompatibility
+
+	ModuleIncompatibility
+)
+
 // FileGroupAsLibrary describes a filegroup module that is converted to some library
 // such as aidl_library or proto_library.
 type FileGroupAsLibrary interface {
@@ -350,20 +360,27 @@ func GetBp2BuildAllowList() Bp2BuildConversionAllowlist {
 // converted or handcrafted Bazel target. As a side effect, calling this
 // method will also log whether this module is mixed build enabled for
 // metrics reporting.
-func MixedBuildsEnabled(ctx BaseModuleContext) bool {
+func MixedBuildsEnabled(ctx BaseModuleContext) MixedBuildEnabledStatus {
 	module := ctx.Module()
 	apexInfo := ctx.Provider(ApexInfoProvider).(ApexInfo)
 	withinApex := !apexInfo.IsForPlatform()
+
+	platformIncompatible := IsPlatformIncompatible(ctx.Os(), ctx.Arch().ArchType)
+	if platformIncompatible {
+		ctx.Config().LogMixedBuild(ctx, false)
+		return TechnicalIncompatibility
+	}
+
 	mixedBuildEnabled := ctx.Config().IsMixedBuildsEnabled() &&
-		ctx.Os() != Windows && // Windows toolchains are not currently supported.
-		ctx.Os() != LinuxBionic && // Linux Bionic toolchains are not currently supported.
-		ctx.Os() != LinuxMusl && // Linux musl toolchains are not currently supported (b/259266326).
-		ctx.Arch().ArchType != Riscv64 && // TODO(b/262192655) Riscv64 toolchains are not currently supported.
 		module.Enabled() &&
 		convertedToBazel(ctx, module) &&
 		ctx.Config().BazelContext.IsModuleNameAllowed(module.Name(), withinApex)
 	ctx.Config().LogMixedBuild(ctx, mixedBuildEnabled)
-	return mixedBuildEnabled
+
+	if mixedBuildEnabled {
+		return MixedBuildEnabled
+	}
+	return ModuleIncompatibility
 }
 
 // ConvertedToBazel returns whether this module has been converted (with bp2build or manually) to Bazel.
@@ -386,6 +403,13 @@ type bazelOtherModuleContext interface {
 	OtherModuleType(m blueprint.Module) string
 	OtherModuleName(m blueprint.Module) string
 	OtherModuleDir(m blueprint.Module) string
+}
+
+func IsPlatformIncompatible(osType OsType, arch ArchType) bool {
+	return osType == Windows || // Windows toolchains are not currently supported.
+		osType == LinuxBionic || // Linux Bionic toolchains are not currently supported.
+		osType == LinuxMusl || // Linux musl toolchains are not currently supported (b/259266326).
+		arch == Riscv64 // TODO(b/262192655) Riscv64 toolchains are not currently supported.
 }
 
 func (b *BazelModuleBase) shouldConvertWithBp2build(ctx bazelOtherModuleContext, module blueprint.Module) bool {
