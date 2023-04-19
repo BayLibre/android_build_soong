@@ -16,6 +16,24 @@
       "message": "Bypassing presubmit because mixed_droid-incremental has been broken since April 14: https://groups.google.com/a/google.com/g/android-build-police/c/NUSU6585gLs/m/RoBnQToPBAAJ\n\nhttps://android-build.googleplex.com/builds/branches/aosp-master-bazel/grid?",
       "revId": "af4e33bcc864f30df3a2ed7e27ab8de99963730a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc95569_a10b365f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2023-04-19T17:19:11Z",
+      "side": 1,
+      "message": "The same presubmit fails on an empty change (comment only): https://android-review.git.corp.google.com/c/platform/build/soong/+/2546018\n\n@ccross For visibility. This code change adds the assignee field - when crashes are found from fuzzing this is the person we will assign the bug to.",
+      "parentUuid": "09163f43_5951f9ad",
+      "revId": "af4e33bcc864f30df3a2ed7e27ab8de99963730a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
