@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d47b9ab_d464bb87",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-19T14:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8716ba7_708b7997",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 41
+      },
+      "revId": "d62532d81f7633edd2503e13e1f94d6644830326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "201f7eaf_68e90de3",
@@ -124,6 +148,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92066198_819318ad",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-19T14:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73961a76_70b71e7c",
+      "revId": "d62532d81f7633edd2503e13e1f94d6644830326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "901649b7_45bb92be",
@@ -137,6 +179,30 @@
       "writtenOn": "2023-03-13T12:02:16Z",
       "side": 1,
       "message": "What I\u0027d expect you want to do here is to set `package_name`, but not `privapp_allowlist`, to make sure we use the same set of perms for both apps (just the package name differs)",
+      "range": {
+        "startLine": 3545,
+        "startChar": 15,
+        "endLine": 3547,
+        "endChar": 42
+      },
+      "revId": "d62532d81f7633edd2503e13e1f94d6644830326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb53996d_43a509b1",
+        "filename": "java/app_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 3547,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-19T14:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "901649b7_45bb92be",
       "range": {
         "startLine": 3545,
         "startChar": 15,
