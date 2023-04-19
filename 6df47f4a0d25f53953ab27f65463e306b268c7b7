@@ -118,6 +118,30 @@
       },
       "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed6d0575_26dac59f",
+        "filename": "android/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-19T23:43:23Z",
+      "side": 1,
+      "message": "Thanks Jooyung! I have created aosp/2549674 to ignore vendor variants in `markPlatformAvailability` mutator.\n\nI have also verified that all soong tests pass with this change.",
+      "parentUuid": "bff0aedf_cf4e8bb3",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 2
+      },
+      "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
