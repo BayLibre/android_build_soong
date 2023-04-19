@@ -263,7 +263,7 @@ func bootstrapBlueprint(ctx Context, config Config) {
 	// Clean up some files for incremental builds across incompatible changes.
 	bootstrapEpochCleanup(ctx, config)
 
-	mainSoongBuildExtraArgs := []string{"-o", config.SoongNinjaFile()}
+	mainSoongBuildExtraArgs := []string{"-o", config.SoongNinjaFile(), "--soong_variables", config.SoongVarsFile()}
 	if config.EmptyNinjaFile() {
 		mainSoongBuildExtraArgs = append(mainSoongBuildExtraArgs, "--empty-ninja-file")
 	}
@@ -306,11 +306,14 @@ func bootstrapBlueprint(ctx Context, config Config) {
 			specificArgs: mainSoongBuildExtraArgs,
 		},
 		{
-			name:         bp2buildFilesTag,
-			description:  fmt.Sprintf("converting Android.bp files to BUILD files at %s/bp2build", config.SoongOutDir()),
-			config:       config,
-			output:       config.Bp2BuildFilesMarkerFile(),
-			specificArgs: []string{"--bp2build_marker", config.Bp2BuildFilesMarkerFile()},
+			name:        bp2buildFilesTag,
+			description: fmt.Sprintf("converting Android.bp files to BUILD files at %s/bp2build", config.SoongOutDir()),
+			config:      config,
+			output:      config.Bp2BuildFilesMarkerFile(),
+			specificArgs: []string{
+				"--bp2build_marker", config.Bp2BuildFilesMarkerFile(),
+				"--soong_variables", config.SoongVarsFile(),
+			},
 		},
 		{
 			name:         bp2buildWorkspaceTag,
@@ -330,11 +333,14 @@ func bootstrapBlueprint(ctx Context, config Config) {
 			},
 		},
 		{
-			name:         queryviewTag,
-			description:  fmt.Sprintf("generating the Soong module graph as a Bazel workspace at %s", queryviewDir),
-			config:       config,
-			output:       config.QueryviewMarkerFile(),
-			specificArgs: []string{"--bazel_queryview_dir", queryviewDir},
+			name:        queryviewTag,
+			description: fmt.Sprintf("generating the Soong module graph as a Bazel workspace at %s", queryviewDir),
+			config:      config,
+			output:      config.QueryviewMarkerFile(),
+			specificArgs: []string{
+				"--bazel_queryview_dir", queryviewDir,
+				"--soong_variables", config.SoongVarsFile(),
+			},
 		},
 		{
 			name:         apiBp2buildTag,
@@ -344,11 +350,14 @@ func bootstrapBlueprint(ctx Context, config Config) {
 			specificArgs: []string{"--bazel_api_bp2build_dir", apiBp2buildDir},
 		},
 		{
-			name:         soongDocsTag,
-			description:  fmt.Sprintf("generating Soong docs at %s", config.SoongDocsHtml()),
-			config:       config,
-			output:       config.SoongDocsHtml(),
-			specificArgs: []string{"--soong_docs", config.SoongDocsHtml()},
+			name:        soongDocsTag,
+			description: fmt.Sprintf("generating Soong docs at %s", config.SoongDocsHtml()),
+			config:      config,
+			output:      config.SoongDocsHtml(),
+			specificArgs: []string{
+				"--soong_docs", config.SoongDocsHtml(),
+				"--soong_variables", config.SoongVarsFile(),
+			},
 		},
 	}
 
