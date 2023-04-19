@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6381ff_a7a39ace",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10212,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-19T23:43:32Z",
+      "side": 1,
+      "message": "This assertion checks soong implementation details. Is there a specific behavior we could test instead?",
+      "range": {
+        "startLine": 10212,
+        "startChar": 85,
+        "endLine": 10212,
+        "endChar": 126
+      },
+      "revId": "4ebca9eb421e429f930f476b3c906dead478c2f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
