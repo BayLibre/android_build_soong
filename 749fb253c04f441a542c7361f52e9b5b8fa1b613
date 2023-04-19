@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edae9c22_37013707",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-19T20:31:20Z",
+      "side": 1,
+      "message": "Did you manually regression test that the stderr was visible before your change (running script manually), and no longer is visible with your change?",
+      "revId": "749fb253c04f441a542c7361f52e9b5b8fa1b613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
