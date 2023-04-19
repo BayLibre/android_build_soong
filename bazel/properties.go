@@ -1424,3 +1424,12 @@ func TryVariableSubstitution(s string, productVariable string) (string, bool) {
 	sub := productVariableSubstitutionPattern.ReplaceAllString(s, "$("+productVariable+")")
 	return sub, s != sub
 }
+
+type StringMapAttribute map[string]string
+
+type ConfigSettingAttributes struct {
+	Flag_values StringMapAttribute
+	// TODO: Implement these if necessary
+	// Values
+	// Constraint_values
+}
