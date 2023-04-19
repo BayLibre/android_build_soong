@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ceaf71a_d3ebfc73",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-04-19T15:43:51Z",
+      "side": 0,
+      "message": "Some suggestions we might use to simplify logic:\n\n```\nc.BazelHandler !\u003d nil \u0026\u0026 (!isUbsanEnabled(c) || c.MinimalRuntimeNeeded())\n```\n\nIgnoring `c.BazelHandler` for now, this means we enabled mixed build when either\n1. Ubsan is not enabled\n2. Ubsan is enabled and minimal runtime used\n\n\nIn other words, we disabled mixed build when\n```\n!(!isUbsanEnabled(c)) || c.MinimalRuntimeNeeded())\n```\nwhich is the same as\n```\nisUbsanEnabled(c) \u0026\u0026 !c.MinimalRuntimeNeeded()\n```\n(See [De Morgan\u0027s Law](https://brilliant.org/wiki/de-morgans-laws/#:~:text\u003dDe%20Morgan\u0027s%20Laws%20describe%20how,disjunctions%20of%20propositions%20through%20negation.))\n\n\n```\nfunc shouldDisableMixedBuild(c *Module) {\n  enableMixedBuild \u003d !isUbsanEnabled(c)) || c.MinimalRuntimeNeeded())\n  \n  return (isUbsanEnabled(c) \u0026\u0026 !c.MinimalRuntimeNeeded()) \u0026\u0026\n    // This might be more maintainable. For any newly supported\n    // sanitizer in mixed build, we can add here:\n    // isFooSanitizer(c)\n}\n\nfunc sanitizersCheck(c *Module) bool {\n  // Enable if c has no sanitizer variant\n  if !c.sanitizer \u003d\u003d nil {\n    return True\n  }\n\n  sanitizeProps :\u003d \u0026c.sanitize.Properties.SanitizeMutated\n\n  unsupportedSanitizers :\u003d []*bool{\n    sanitizeProps.Safestack,\n    sanitizeProps.Cfi,\n    sanitizeProps.Scudo,\n    BoolPtr(len(c.sanitize.Properties.Sanitize.Recover) \u003e 0),\n    BoolPtr(c.sanitize.Properties.Sanitize.Blocklist !\u003d nil),\n  }\n\n  for _, unsuportedSanitizer :\u003d range unsupportedSanitizes {\n    if Bool(unsuportedSanitizer) \u003d\u003d true {\n      // Disable if c has at least one unsupported sanitizer\n      return False\n    } \n  }\n\n  return !shouldDisableMixedBuild(c)\n}\n```",
+      "revId": "2a1de1bfe6e571741e1f07959eb799f121533824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

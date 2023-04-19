@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a498e7d_c72cc7aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-04-19T15:43:51Z",
+      "side": 1,
+      "message": "The CL doesn\u0027t address this bug but rather just results to this bug being created. \n\nI think b/266568703 is a more appropriate bug for this CL because the test modules have some sanitizer variants that we don\u0027t support in mixed build yet.",
+      "revId": "63a318964fb923d30057113fe0a972c79ede29ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569fc015_2c5c2c09",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1947,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-04-19T15:43:51Z",
+      "side": 1,
+      "message": "We should move this for loop to before the previous one and just return False from here.",
+      "revId": "63a318964fb923d30057113fe0a972c79ede29ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2fa635f_43bb39d8",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5110,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-04-19T15:43:51Z",
+      "side": 1,
+      "message": "Nit: TestDisableSanitizerVariantsInMixedBuilds",
+      "revId": "63a318964fb923d30057113fe0a972c79ede29ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
