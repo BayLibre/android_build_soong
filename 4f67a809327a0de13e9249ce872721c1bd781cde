@@ -52,6 +52,24 @@
       "parentUuid": "e7677bea_f548dbd5",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e818b7_ab8ef05d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-20T13:36:11Z",
+      "side": 1,
+      "message": "In addition, with current impl, package.odex in out/soong/.intermediates is anyway rebuilt whenever lunch target is changed because package.odex in out/soong/.intermediates\u0027 dependency to bootclasspath jars of which path contains \u003cproduct name\u003e is changed. So, I think this CL doesn\u0027t have regression on current behavior.",
+      "parentUuid": "08ed891b_d1606b4b",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
