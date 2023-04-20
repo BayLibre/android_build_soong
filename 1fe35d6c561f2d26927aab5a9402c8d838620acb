@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94afdbce_4b17280c",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-20T08:56:22Z",
+      "side": 1,
+      "message": "Could you delete these as well?",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 555,
+        "endChar": 2
+      },
+      "revId": "1fe35d6c561f2d26927aab5a9402c8d838620acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
