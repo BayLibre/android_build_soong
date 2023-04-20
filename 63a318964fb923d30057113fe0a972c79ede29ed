@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b2ecbf8_8f85fc0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-20T14:17:02Z",
+      "side": 1,
+      "message": "I see the bug listing as not necessarily what the CL is fixing, but just what bug(s) give context on why this change is necessary. We\u0027re not building the tests in mixed builds, so IMO that bug gives less context about this CL than the one that I listed.\n\nI added b/253433725. Is that more useful?",
+      "parentUuid": "8a498e7d_c72cc7aa",
+      "revId": "63a318964fb923d30057113fe0a972c79ede29ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "569fc015_2c5c2c09",
         "filename": "cc/cc.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-19T15:43:51Z",
       "side": 1,
       "message": "We should move this for loop to before the previous one and just return False from here.",
+      "revId": "63a318964fb923d30057113fe0a972c79ede29ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "533b0593_ec19a758",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1947,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-20T14:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "569fc015_2c5c2c09",
       "revId": "63a318964fb923d30057113fe0a972c79ede29ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2023-04-19T15:43:51Z",
       "side": 1,
       "message": "Nit: TestDisableSanitizerVariantsInMixedBuilds",
+      "revId": "63a318964fb923d30057113fe0a972c79ede29ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "258a5ea5_52f399d4",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5110,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-20T14:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2fa635f_43bb39d8",
       "revId": "63a318964fb923d30057113fe0a972c79ede29ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

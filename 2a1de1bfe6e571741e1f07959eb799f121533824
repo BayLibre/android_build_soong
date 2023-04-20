@@ -34,6 +34,24 @@
       "parentUuid": "1ceaf71a_d3ebfc73",
       "revId": "2a1de1bfe6e571741e1f07959eb799f121533824",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac60c669_19f0b5e4",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-20T14:17:02Z",
+      "side": 0,
+      "message": "Thanks for the tip to just `return False` instead of keeping a variable around.\n\nI\u0027m not sure I see the benefit of splitting this function into two though. `shouldDisableMixedBuilds` is a less descriptive name for this particular function than `allSanitizersSupportedByBazel`, and IMO `checkSanitizers` and `shouldDisableMixedBuilds` are doing the same thing (checking for unsupported sanitizers) and so should be one implementation.\n\n----\n\nAbout this:\n```\nfunc shouldDisableMixedBuild(c *Module) {\n  return (isUbsanEnabled(c) \u0026\u0026 !c.MinimalRuntimeNeeded()) \u0026\u0026\n    // This might be more maintainable. For any newly supported\n    // sanitizer in mixed build, we can add here:\n    // !isFooSanitizerEnabled(c)\n}\n```\nI do agree that this reads easier, but I think we need to use the `for` loop so that if new sanitizers are added we still account for them and we don\u0027t have to keep this function in sync with the Soong sanitizers list.",
+      "parentUuid": "d99e535e_0f47717e",
+      "revId": "2a1de1bfe6e571741e1f07959eb799f121533824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
