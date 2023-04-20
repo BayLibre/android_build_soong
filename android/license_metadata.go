@@ -54,7 +54,7 @@ func buildLicenseMetadata(ctx ModuleContext, licenseMetadataFile WritablePath) {
 
 	var allDepMetadataFiles Paths
 	var allDepMetadataArgs []string
-	var allDepOutputFiles Paths
+	var allDepOutputFiles []string
 	var allDepMetadataDepSets []*PathsDepSet
 
 	ctx.VisitDirectDepsBlueprint(func(bpdep blueprint.Module) {
@@ -83,17 +83,19 @@ func buildLicenseMetadata(ctx ModuleContext, licenseMetadataFile WritablePath) {
 			allDepMetadataArgs = append(allDepMetadataArgs, info.LicenseMetadataPath.String()+depAnnotations)
 
 			if depInstallFiles := dep.base().installFiles; len(depInstallFiles) > 0 {
-				allDepOutputFiles = append(allDepOutputFiles, depInstallFiles.Paths()...)
+				for _, f := range depInstallFiles {
+					allDepOutputFiles = append(allDepOutputFiles, InstallPathToOnDevicePath(ctx, f))
+				}
 			} else if depOutputFiles, err := outputFilesForModule(ctx, dep, ""); err == nil {
 				depOutputFiles = PathsIfNonNil(depOutputFiles...)
-				allDepOutputFiles = append(allDepOutputFiles, depOutputFiles...)
+				allDepOutputFiles = append(allDepOutputFiles, depOutputFiles.Strings()...)
 			}
 		}
 	})
 
 	allDepMetadataFiles = SortedUniquePaths(allDepMetadataFiles)
 	sort.Strings(allDepMetadataArgs)
-	allDepOutputFiles = SortedUniquePaths(allDepOutputFiles)
+	allDepOutputFiles = SortedUniqueStrings(allDepOutputFiles)
 
 	var orderOnlyDeps Paths
 	var args []string
@@ -138,7 +140,7 @@ func buildLicenseMetadata(ctx ModuleContext, licenseMetadataFile WritablePath) {
 	}
 
 	args = append(args,
-		JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(allDepOutputFiles.Strings()), "-s "))
+		JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(allDepOutputFiles), "-s "))
 
 	// Install map
 	args = append(args,
@@ -149,10 +151,14 @@ func buildLicenseMetadata(ctx ModuleContext, licenseMetadataFile WritablePath) {
 		args = append(args,
 			JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(outputFiles.Strings()), "-t "))
 	}
+	installPathsOnDevice := []string{}
 
+	for _, f := range base.installFiles {
+		installPathsOnDevice = append(installPathsOnDevice, InstallPathToOnDevicePath(ctx, f))
+	}
 	// Installed files
 	args = append(args,
-		JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(base.installFiles.Strings()), "-i "))
+		JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(installPathsOnDevice), "-i "))
 
 	if isContainer {
 		args = append(args, "--is_container")
