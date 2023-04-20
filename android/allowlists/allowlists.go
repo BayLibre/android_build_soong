@@ -1497,6 +1497,7 @@ var (
 		"libutils_test",
 		"libutilscallstack",
 		"mediaswcodec",
+		"libc++",
 	}
 
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
