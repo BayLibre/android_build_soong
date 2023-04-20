@@ -5326,6 +5326,22 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			my-bootclasspath-fragment/index.csv
 			out/soong/.intermediates/frameworks/base/boot/platform-bootclasspath/android_common/hiddenapi-monolithic/index-from-classes.csv
 		`)
+
+		myApex := ctx.ModuleForTests("myapex", "android_common_myapex").Module()
+
+		overrideNames := []string{
+			"",
+			"libbar.myapex",
+			"libfoo.myapex",
+		}
+		mkEntries := android.AndroidMkEntriesForTest(t, ctx, myApex)
+		for i, e := range mkEntries {
+			g := e.OverrideName
+			if w := overrideNames[i]; w != g {
+				t.Errorf("Expected override name %q, got %q", w, g)
+			}
+		}
+
 	})
 
 	t.Run("prebuilt with source library preferred", func(t *testing.T) {

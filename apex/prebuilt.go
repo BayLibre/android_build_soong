@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"io"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -215,6 +216,10 @@ func (p *prebuiltCommon) initApexFilesForAndroidMk(ctx android.ModuleContext) {
 		}
 
 		return false
+	})
+
+	sort.Slice(p.apexFilesForAndroidMk, func(i, j int) bool {
+		return p.apexFilesForAndroidMk[i].androidMkModuleName < p.apexFilesForAndroidMk[j].androidMkModuleName
 	})
 }
 
