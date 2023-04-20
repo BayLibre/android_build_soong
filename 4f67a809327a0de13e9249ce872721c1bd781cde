@@ -16,6 +16,24 @@
       "message": "Do you (or Ulya) have any idea about why the name was encoded in the first place?",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7677bea_f548dbd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-20T10:53:14Z",
+      "side": 1,
+      "message": "Initially it was added in aosp/959792. The commit explains the need for a second dexpreopt.config written by Soong, but I\u0027m not sure if it has to be in `DeviceName()` subdirectory.\n\nColin: do you remember a reason for using device-specific subdirectory?\n\nMy understanding is, if we lunch a different target (with a different device name), it may have different dexpreopt.config (dexpreopt configuration depends on a product). If we overwrite it in the same location every time, it will cause rebuilds every time when re-lunching. So this commit optimizes the case when dexpreopt.config didn\u0027t change between lunches. Right?\n\nSecond less important question is, do we need the intermediate `dexpreopt` subdirectory? We don\u0027t use it for system_server jars: we create them in `out/soong/system_server_dexjars` (previously we used it but that was changed in aosp/1265799). Or else, should we move `out/soong/system_server_dexjars` to `out/soong/dexpreopt/system_server_dexjars` for uniformity (in a follow-up CL)?",
+      "parentUuid": "1ce6b1ce_1dbf0be2",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
