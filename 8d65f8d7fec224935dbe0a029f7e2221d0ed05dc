@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff60e268_b19e914b",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3045,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-20T16:42:10Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to do this. A human would never write this code, they\u0027d just link against what the library actually needs. I think instead of this, we\u0027d just add enforcement to the rules that you link against stubs when crossing an api surface. When within an api surface, the developer can choose between stubs and source freely.\n\nThis CL is recreating the complicated stubs/source selection logic from soong, which we want to remove in bazel.",
+      "revId": "8d65f8d7fec224935dbe0a029f7e2221d0ed05dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dea6e31d_b55fd41d",
