@@ -149,10 +149,14 @@ func buildLicenseMetadata(ctx ModuleContext, licenseMetadataFile WritablePath) {
 		args = append(args,
 			JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(outputFiles.Strings()), "-t "))
 	}
+	installPathsOnDevice := []string{}
 
+	for _, f := range base.installFiles {
+		installPathsOnDevice = append(installPathsOnDevice, InstallPathToOnDevicePath(ctx, f))
+	}
 	// Installed files
 	args = append(args,
-		JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(base.installFiles.Strings()), "-i "))
+		JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(installPathsOnDevice), "-i "))
 
 	if isContainer {
 		args = append(args, "--is_container")
