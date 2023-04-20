@@ -704,8 +704,6 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 		android.BuildNoticeHtmlOutputFromLicenseMetadata(
 			ctx, noticeFile, "", "",
 			[]string{
-				a.installDir.String() + "/",
-				android.PathForModuleInstall(ctx).String() + "/",
 				a.outputFile.String(),
 			})
 		builder := android.NewRuleBuilder(pctx, ctx)
