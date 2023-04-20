@@ -5690,9 +5690,9 @@ func TestPrebuiltSkipsSymbols(t *testing.T) {
 				}
 			`)
 			// Symbol files are installed by installing entries under ${OUT}/apex/{apex name}
-			android.AssertStringListContainsEquals(t, "Implicits",
-				ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule").Implicits.Strings(),
-				"out/soong/target/product/test_device/apex/myapex/apex_manifest.pb",
+			android.AssertStringListContainsEquals(t, "Installs",
+				ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().FilesToInstall().Strings(),
+				filepath.Join(ctx.Config().SoongOutDir(), "target/product/test_device/apex/myapex/apex_manifest.pb"),
 				tc.installSymbolFiles)
 		})
 	}
