@@ -34,6 +34,24 @@
       "parentUuid": "1ce6b1ce_1dbf0be2",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ed891b_d1606b4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-20T12:56:09Z",
+      "side": 1,
+      "message": "The case we want to optimize is this:\n\n1) lunch with target X, do the build\n2) lunch with target Y, do the \"incremental\" build.\n3) lunch with target X, do the \"incremental\" build.\n\nThe assumption here is that X and Y are sibling devices so that they have the same dexpreopt.config.\n\nIn this case, we\u0027d like to not run dexpreopt for the second and the third builds. \n\nHowever, if the path for dexpreopt.config has a target name in it, switching the lunch target changes the build command and the build rule is triggered.\n\n(of course, if dexpreopt.config changed for whatever reason, the build rule shall run anyway.)",
+      "parentUuid": "e7677bea_f548dbd5",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
