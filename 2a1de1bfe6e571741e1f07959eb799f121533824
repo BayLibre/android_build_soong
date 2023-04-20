@@ -52,6 +52,24 @@
       "parentUuid": "d99e535e_0f47717e",
       "revId": "2a1de1bfe6e571741e1f07959eb799f121533824",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "583b8525_e1f89dba",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-04-20T19:22:26Z",
+      "side": 0,
+      "message": "\u003e I\u0027m not sure I see the benefit of splitting this function into two though.\n\nYeah we don\u0027t need `shouldDisableMixedBuilds` if it doesn\u0027t seem useful. I was trying to decouple the logic to make the example read a little easier.\n\n\u003e I do agree that this reads easier, but I think we need to use the for loop so that if new sanitizers are added we still account for them and we don\u0027t have to keep this function in sync with the Soong sanitizers list.\n\nYou\u0027re right that we probably need to consider all sanitizers in our check here to make sure they are not enabled. However in our codebase, the pattern of using logical expression is seemingly more common than for loop because it provides the explicitness of what are enabled\n\nSee:\nhttp://cs/aosp-master/build/soong/cc/sanitize.go;l\u003d685-686;rcl\u003d7346c436e5a11ce08f6a80dcfeb8ef941ca30176\nhttp://cs/aosp-master/build/soong/cc/sanitize.go;l\u003d988-994;rcl\u003d7346c436e5a11ce08f6a80dcfeb8ef941ca30176\n\nWe can do the same to provide the explicitness of what are supported in mixed build\n\nCurrently, what we have is\n```\nfor sanitizer in all sanitizers:\n  if !check(sanitizer):\n    disable mixed build\n```\nwhich is same as\n```\nfunc checkSanitizers():\n  if check(sanA) \u0026\u0026 ... \u0026\u0026 check(sanZ):\n    enable mixed build\n  else:\n    disable mixed build\n```\n\n`check` is implemented as\n```\nfunc check(san):\n  if san is disabled:\n    return True\n  else:\n    if san \u003d\u003d intOverflow:\n      // Specially handled\n    else: // Add another else if block for other sanitizers.\n      return False       \n```",
+      "parentUuid": "ac60c669_19f0b5e4",
+      "revId": "2a1de1bfe6e571741e1f07959eb799f121533824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
