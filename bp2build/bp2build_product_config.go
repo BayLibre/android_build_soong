@@ -10,10 +10,7 @@ import (
 func CreateProductConfigFiles(
 	ctx *CodegenContext) ([]BazelFile, error) {
 	cfg := &ctx.config
-	targetProduct := "unknown"
-	if cfg.HasDeviceProduct() {
-		targetProduct = cfg.DeviceProduct()
-	}
+	targetProduct := "common"
 	targetBuildVariant := "user"
 	if cfg.Eng() {
 		targetBuildVariant = "eng"

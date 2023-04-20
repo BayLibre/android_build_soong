@@ -593,10 +593,7 @@ func NewBazelContext(c *config) (BazelContext, error) {
 	} else if c.Debuggable() {
 		targetBuildVariant = "userdebug"
 	}
-	targetProduct := "unknown"
-	if c.HasDeviceProduct() {
-		targetProduct = c.DeviceProduct()
-	}
+	targetProduct := "common"
 	dclaMixedBuildsEnabledList := []string{}
 	if c.BuildMode == BazelProdMode {
 		dclaMixedBuildsEnabledList = allowlists.ProdDclaMixedBuildsEnabledList
