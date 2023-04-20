@@ -485,7 +485,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		}
 		copyCommands = append(copyCommands, "mkdir -p "+destPathDir)
 
-		installMapPath := fi.builtFile
+		installMapPath := fi.builtFile.String()
 
 		// Copy the built file to the directory. But if the symlink optimization is turned
 		// on, place a symlink to the corresponding file in /system partition instead.
@@ -528,7 +528,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 				}
 			}
 
-			installMapPath = installedPath
+			installMapPath = android.InstallPathToOnDevicePath(ctx, installedPath)
 		}
 
 		// Copy the test files (if any)
@@ -546,7 +546,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			implicitInputs = append(implicitInputs, d.SrcPath)
 		}
 
-		installMapSet[installMapPath.String()+":"+fi.installDir+"/"+fi.builtFile.Base()] = true
+		installMapSet[installMapPath+":"+fi.installDir+"/"+fi.builtFile.Base()] = true
 	}
 	implicitInputs = append(implicitInputs, a.manifestPbOut)
 	if installSymbolFiles {
