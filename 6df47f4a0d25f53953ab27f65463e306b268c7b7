@@ -142,6 +142,30 @@
       },
       "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaaaec31_9c8800c7",
+        "filename": "android/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-20T04:10:05Z",
+      "side": 1,
+      "message": "After re-reading the code, I was wrong about this:\n\n\u003eIIUC, setting apex_available:[\"//apex_available:platform\"] is not the same as \"not setting\". Probably preventing libs from being embedded in apexes.\n\nThere\u0027ll be no problem with this enforcement because \"checkAvailable\" is already exempted for vendor apexes.\n\nThanks.",
+      "parentUuid": "ed6d0575_26dac59f",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 2
+      },
+      "revId": "6df47f4a0d25f53953ab27f65463e306b268c7b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
