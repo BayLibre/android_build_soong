@@ -22,6 +22,30 @@
       },
       "revId": "7bfe443875545025a4e36caa43792c743cd73434",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47d7152f_c46f6e53",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-04-20T15:49:55Z",
+      "side": 0,
+      "message": "I\u0027m not sure why historically they didn\u0027t want to support escaping but no extra handling needs to be done.",
+      "parentUuid": "f7ded47f_385cc4fa",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "7bfe443875545025a4e36caa43792c743cd73434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

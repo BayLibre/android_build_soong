@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba72fc8b_8bc23e8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-04-20T15:49:55Z",
+      "side": 1,
+      "message": "I didn\u0027t reproduce the problem from the partner bug. I was going to use the zip2zip tests cases,  merge this into aosp and have who filed the partner bug to cherry pick to the branch they need and verify",
+      "parentUuid": "569396a6_66b2831f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "c6a918aa116c958d3504b0172c86ff6067f45263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "190f6c1b_f14bb2ba",
         "filename": "cmd/zip2zip/zip2zip_test.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-17T19:45:49Z",
       "side": 1,
       "message": "This isn\u0027t intuitive to me. I would probably expect an error message to appear if `\\a` was provided as the argument since there is no `\\a` in the zip?",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 31
+      },
+      "revId": "c6a918aa116c958d3504b0172c86ff6067f45263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "164633d5_fe97dbda",
+        "filename": "cmd/zip2zip/zip2zip_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-04-20T15:49:55Z",
+      "side": 1,
+      "message": "zip2zip uses pathtools.Match which uses the same pattern matching rules as filepath.Match ( https://pkg.go.dev/path/filepath#Match ) the `\\\\a` pattern matches to `a`",
+      "parentUuid": "190f6c1b_f14bb2ba",
       "range": {
         "startLine": 406,
         "startChar": 0,
