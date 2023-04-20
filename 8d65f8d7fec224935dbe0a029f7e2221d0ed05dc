@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dea6e31d_b55fd41d",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4142,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-20T15:17:35Z",
+      "side": 1,
+      "message": "This does not be specified explicitly after aosp/2532140",
+      "range": {
+        "startLine": 4142,
+        "startChar": 1,
+        "endLine": 4142,
+        "endChar": 48
+      },
+      "revId": "8d65f8d7fec224935dbe0a029f7e2221d0ed05dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
