@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ce49c2_ed5e1c34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-20T04:07:54Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s confusing. but in this context, \"platform\" means \"non-apex\". So, this makes all vendor modules not available in /vendor partition.\n\nProbably, we don\u0027t need this change. I was too cautious about the other change.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "4ebca9eb421e429f930f476b3c906dead478c2f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee6381ff_a7a39ace",
