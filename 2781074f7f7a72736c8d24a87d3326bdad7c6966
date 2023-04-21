@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbef74a3_1872e79c",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3107,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-21T21:13:15Z",
+      "side": 1,
+      "message": "Again, I\u0027d expect these to be stubs given that `apex_available(foolib) !\u003d apexavailable(barlib)`",
+      "range": {
+        "startLine": 3104,
+        "startChar": 8,
+        "endLine": 3107,
+        "endChar": 10
+      },
+      "revId": "2781074f7f7a72736c8d24a87d3326bdad7c6966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e873024e_beb95c0e",
         "filename": "bp2build/cc_library_shared_conversion_test.go",
         "patchSetId": 3

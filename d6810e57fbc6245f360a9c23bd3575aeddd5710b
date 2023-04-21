@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd9cbd2_73abaafc",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3046,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-21T21:13:15Z",
+      "side": 1,
+      "message": "shouldn\u0027t this case use stubs as well since apex_available(foolib) !\u003d apexavailable(barlib)?",
+      "range": {
+        "startLine": 3046,
+        "startChar": 0,
+        "endLine": 3046,
+        "endChar": 65
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c935db_fd7e2236",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-21T21:13:15Z",
+      "side": 1,
+      "message": "these have the same apex_available, I would expect in Soong these always link against the implementation library",
+      "range": {
+        "startLine": 583,
+        "startChar": 8,
+        "endLine": 584,
+        "endChar": 96
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b998efe8_c9759892",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-21T21:13:15Z",
+      "side": 1,
+      "message": "Trying to reason through the logic:\n\nMy understanding is that currently in Soong we\u0027d get something like:\n\nif bar and foo have the same min sdk version:\n\n```\n        \"//build/bazel/rules/apex:android-in_apexbar\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n        \"//build/bazel/rules/apex:android-in_apexfoo\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n        \"//build/bazel/rules/apex:android-non_apex\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n ```\n        \n if bar and foo have different min sdk versions:\n \n ```\n        \"//build/bazel/rules/apex:android-in_apexbar\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n        \"//build/bazel/rules/apex:android-in_apexfoo\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \":libapexfoo_stable\",\n        ],\n        \"//build/bazel/rules/apex:android-non_apex\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n```\n\n\nI think the current logic for apexes is reasonable and valid, if verbose. We may need to evaluate the change to the platform logic a bit more as it seems like it\u0027ll introduce some discrepancies similar to the errors we\u0027ve been seeing currently.\n\nTo help reduce the BUILD file overhead, we could also consider migrating this as (doesn\u0027t have to be now, let\u0027s file a bug to evaluate):\n\n```\n        \"//build/bazel/platforms/os:android\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n```\n\nAt least in the cases of APEXes, there shouldn\u0027t be a different API available to this library for its deps since it has to successfully link against the stubs when in apex configuration and there is no longer an apex name specific defines in compilation.",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 10
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ac5c42_33f8699b",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1580,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-21T21:13:15Z",
+      "side": 1,
+      "message": "this should be absent, because they would still be getting libm via system shared libs -- or we need to update the handling for system_shared_libs to handle things correctly",
+      "range": {
+        "startLine": 1575,
+        "startChar": 0,
+        "endLine": 1580,
+        "endChar": 8
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f77db26a_58770168",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-21T21:13:15Z",
+      "side": 1,
+      "message": "Why can\u0027t we omit cases where we match the default value for exclusive entries?",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 37
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90df1369_34f570dc",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-21T21:13:15Z",
+      "side": 1,
+      "message": "would it help with deduplication if we determine whether we use stub/impl for all the apex available values and then set values if there are any differences?",
+      "range": {
+        "startLine": 1290,
+        "startChar": 0,
+        "endLine": 1290,
+        "endChar": 35
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

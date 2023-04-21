@@ -73,6 +73,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6188cf04_c898fbbd",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3045,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-21T21:13:15Z",
+      "side": 1,
+      "message": "Yes, I think we could consider long term some balance of e.g. you depend on api or impl and we pick the api domain for you.\n\nI think as we consider other domains as well, we can try to take into account which domains a module is actually building for and only create relevant select statements.",
+      "parentUuid": "214513e4_1026a8a4",
+      "revId": "8d65f8d7fec224935dbe0a029f7e2221d0ed05dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "dea6e31d_b55fd41d",
         "filename": "bp2build/cc_library_conversion_test.go",
         "patchSetId": 2
