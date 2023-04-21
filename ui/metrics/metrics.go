@@ -250,6 +250,7 @@ func (m *Metrics) SetBuildCommand(cmd []string) {
 func (m *Metrics) Dump(out string) error {
 	// ignore the error if the hostname could not be retrieved as it
 	// is not a critical metric to extract.
+	fmt.Println(out)
 	if hostname, err := os.Hostname(); err == nil {
 		m.metrics.Hostname = proto.String(hostname)
 	}
