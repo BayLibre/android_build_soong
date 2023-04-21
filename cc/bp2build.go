@@ -1236,6 +1236,10 @@ type stubSelectionInfo struct {
 
 func useStubOrImplInApexWithName(ssi stubSelectionInfo) {
 	lib := ssi.impl
+	// TODO: Remove //apex_available:platform from bionic libraries and remove this special case
+	if isBionic(lib.OriginalModuleName) && ssi.apexName == android.AvailableToPlatform {
+		ssi.sameApiDomain = false
+	}
 	if !ssi.sameApiDomain {
 		lib = bazel.Label{
 			Label: apiSurfaceModuleLibCurrentPackage + strings.TrimPrefix(lib.OriginalModuleName, ":"),
