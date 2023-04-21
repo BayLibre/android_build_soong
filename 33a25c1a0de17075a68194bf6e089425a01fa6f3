@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c5c489_556f6733",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-21T13:59:25Z",
+      "side": 0,
+      "message": "Should we add an explanation for why these are commented?",
+      "revId": "33a25c1a0de17075a68194bf6e089425a01fa6f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
