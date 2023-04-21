@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fd7a095_54217f4e",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3046,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-21T23:01:08Z",
+      "side": 1,
+      "message": "I think there are details here:\n1. We are creating a platform select statement even though `foolib` does not have //apex_available:platform\n2. We are making the platform variant of `foolib` link against impl of `barlib` (causing discrepancies with Soong)\n\nFor (2), in principle, we should not enforce an api boundary since barlib is a platform library, so all platform variants should be allowed to link against it freely. \n\nLiz, are you concerned that this might cause subtle differences between soong and Bazel which would be hard to debug?",
+      "parentUuid": "3fd9cbd2_73abaafc",
+      "range": {
+        "startLine": 3046,
+        "startChar": 0,
+        "endLine": 3046,
+        "endChar": 65
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1c935db_fd7e2236",
         "filename": "bp2build/cc_library_shared_conversion_test.go",
         "patchSetId": 4
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf068633_a6cbdf0c",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-21T23:01:08Z",
+      "side": 1,
+      "message": "Since `b` is not available to platform, WDYT about not having a platform variant of this library at all and always building this library in the context of an apex?\n\nOtherwise, `b build //b --config\u003dandroid` might not compile if we link it against stubs. You are right, Soong makes the platform variant of `b` link against impl of `a`, but that seems like an api boundary violation.",
+      "parentUuid": "f1c935db_fd7e2236",
+      "range": {
+        "startLine": 583,
+        "startChar": 8,
+        "endLine": 584,
+        "endChar": 96
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b998efe8_c9759892",
         "filename": "bp2build/cc_library_shared_conversion_test.go",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2023-04-21T21:13:15Z",
       "side": 1,
       "message": "Trying to reason through the logic:\n\nMy understanding is that currently in Soong we\u0027d get something like:\n\nif bar and foo have the same min sdk version:\n\n```\n        \"//build/bazel/rules/apex:android-in_apexbar\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n        \"//build/bazel/rules/apex:android-in_apexfoo\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n        \"//build/bazel/rules/apex:android-non_apex\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n ```\n        \n if bar and foo have different min sdk versions:\n \n ```\n        \"//build/bazel/rules/apex:android-in_apexbar\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n        \"//build/bazel/rules/apex:android-in_apexfoo\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \":libapexfoo_stable\",\n        ],\n        \"//build/bazel/rules/apex:android-non_apex\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n```\n\n\nI think the current logic for apexes is reasonable and valid, if verbose. We may need to evaluate the change to the platform logic a bit more as it seems like it\u0027ll introduce some discrepancies similar to the errors we\u0027ve been seeing currently.\n\nTo help reduce the BUILD file overhead, we could also consider migrating this as (doesn\u0027t have to be now, let\u0027s file a bug to evaluate):\n\n```\n        \"//build/bazel/platforms/os:android\": [\n            \"@api_surfaces//module-libapi/current:libplatform_stable\",\n            \"@api_surfaces//module-libapi/current:libapexfoo_stable\",\n        ],\n```\n\nAt least in the cases of APEXes, there shouldn\u0027t be a different API available to this library for its deps since it has to successfully link against the stubs when in apex configuration and there is no longer an apex name specific defines in compilation.",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 10
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d757416f_7b8c7c6e",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-21T23:01:08Z",
+      "side": 1,
+      "message": "Thanks for listing out the permutations Liz - these align with my understanding as well. FWIW, I believe Soong used to do something similar to what this CL proposes at one point. \n\nI can create a tracking bug to improve the readability of BUILD files wrt to stubs/impl selection.",
+      "parentUuid": "b998efe8_c9759892",
       "range": {
         "startLine": 657,
         "startChar": 0,
