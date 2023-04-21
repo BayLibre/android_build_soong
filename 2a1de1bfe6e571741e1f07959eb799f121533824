@@ -88,6 +88,24 @@
       "parentUuid": "583b8525_e1f89dba",
       "revId": "2a1de1bfe6e571741e1f07959eb799f121533824",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5afabdf_0aff136a",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-21T14:55:39Z",
+      "side": 0,
+      "message": "Hmm I do see that there are more instances of explicit listing of sanitizers, and I generally agree that that is clearer to the reader. However, I think if we frame this in terms of the failure modes, then I still prefer the loop here.\n\nMy thinking is that if we use the loop (option 2) and another sanitizer is added to the `Sanitizers` property without us knowing, then we will default to disabling mixed builds. However, if we use the explicit logic (option 1), then we might accidentally use a mixed-built module when we shouldn\u0027t have.\n\n(option 1) could fail silently if a new sanitizer is added that we didn\u0027t account for\n(option 2) will more often be correct because we defer to the Soong-built module when things are unknown",
+      "parentUuid": "d375cae5_3bcadb23",
+      "revId": "2a1de1bfe6e571741e1f07959eb799f121533824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

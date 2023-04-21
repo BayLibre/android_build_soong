@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7206de50_7a2ab6ee",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1917,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-21T14:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8a7c018_57fdab16",
+      "range": {
+        "startLine": 1917,
+        "startChar": 5,
+        "endLine": 1917,
+        "endChar": 34
+      },
+      "revId": "4d7f5832fd6cf9bfd6e162e470cca92bced73e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7d5536e_985f89e9",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-20T19:22:26Z",
       "side": 1,
       "message": "Nit: Can we name it `unsupportedSanitizers`? Do we have any group of unsupported sanitizers other than this one?",
+      "range": {
+        "startLine": 1923,
+        "startChar": 1,
+        "endLine": 1923,
+        "endChar": 27
+      },
+      "revId": "4d7f5832fd6cf9bfd6e162e470cca92bced73e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "002ae2b7_229497c9",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1923,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-21T14:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7d5536e_985f89e9",
       "range": {
         "startLine": 1923,
         "startChar": 1,
