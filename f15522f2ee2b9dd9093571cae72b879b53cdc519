@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57537a5d_223c2d93",
+        "filename": "starlark/starlark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-21T01:24:10Z",
+      "side": 1,
+      "message": "Added implementations of those common functions that throw errors saying you can\u0027t use them.",
+      "parentUuid": "450e52e0_e32e5ea4",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 11
+      },
+      "revId": "f15522f2ee2b9dd9093571cae72b879b53cdc519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e67fc723_3ca329d7",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b0f209_ec952963",
+        "filename": "starlark/starlark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-21T01:24:10Z",
+      "side": 1,
+      "message": "Fleshed out this cl more, so now it includes adding ninja deps.",
+      "parentUuid": "e67fc723_3ca329d7",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "f15522f2ee2b9dd9093571cae72b879b53cdc519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0315dd2c_e3c1df19",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-02-08T20:50:04Z",
       "side": 1,
       "message": "Are these real threads? Do we need some kind of access control on the shared variable?",
+      "range": {
+        "startLine": 142,
+        "startChar": 33,
+        "endLine": 142,
+        "endChar": 44
+      },
+      "revId": "f15522f2ee2b9dd9093571cae72b879b53cdc519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd2957c_e262292d",
+        "filename": "starlark/starlark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-21T01:24:10Z",
+      "side": 1,
+      "message": "Good catch, added a lock on the moduleCache.",
+      "parentUuid": "0315dd2c_e3c1df19",
       "range": {
         "startLine": 142,
         "startChar": 33,
