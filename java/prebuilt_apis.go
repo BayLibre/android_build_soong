@@ -135,6 +135,19 @@ func createApiModule(mctx android.LoadHookContext, name string, path string) {
 	mctx.CreateModule(genrule.GenRuleFactory, &genruleProps)
 }
 
+func createApiModuleVersionFile(mctx android.LoadHookContext, name string, version string) {
+	genruleProps := struct {
+		Name *string
+		Srcs []string
+		Out  []string
+		Cmd  *string
+	}{}
+	genruleProps.Name = proptools.StringPtr(name)
+	genruleProps.Out = []string{name}
+	genruleProps.Cmd = proptools.StringPtr("echo " + version + " > $(out)")
+	mctx.CreateModule(genrule.GenRuleFactory, &genruleProps)
+}
+
 func createEmptyFile(mctx android.LoadHookContext, name string) {
 	props := struct {
 		Name *string
@@ -260,6 +273,10 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 			}
 			// The extension version is always at least as new as the last sdk int version (potentially identical)
 			latest[k] = v
+			moduleName := PrebuiltApiModuleName(latest[k].module, latest[k].scope, "latest.version")
+			if strings.Contains(moduleName, "public") {
+				createApiModuleVersionFile(mctx, moduleName, strconv.Itoa(latest[k].version))
+			}
 		}
 	}
 
