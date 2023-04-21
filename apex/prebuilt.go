@@ -316,29 +316,31 @@ func prebuiltApexModuleCreatorMutator(ctx android.TopDownMutatorContext) {
 	}
 }
 
-func (p *prebuiltCommon) hasExportedDeps() bool {
-	return len(p.prebuiltCommonProperties.Exported_java_libs) > 0 ||
-		len(p.prebuiltCommonProperties.Exported_bootclasspath_fragments) > 0 ||
-		len(p.prebuiltCommonProperties.Exported_systemserverclasspath_fragments) > 0
+func (p *prebuiltCommon) getExportedDependencies() map[string]exportedDependencyTag {
+	dependencies := make(map[string]exportedDependencyTag)
+
+	for _, dep := range p.prebuiltCommonProperties.Exported_java_libs {
+		dependencies[dep] = exportedJavaLibTag
+	}
+
+	for _, dep := range p.prebuiltCommonProperties.Exported_bootclasspath_fragments {
+		dependencies[dep] = exportedBootclasspathFragmentTag
+	}
+
+	for _, dep := range p.prebuiltCommonProperties.Exported_systemserverclasspath_fragments {
+		dependencies[dep] = exportedSystemserverclasspathFragmentTag
+	}
+
+	return dependencies
 }
 
 // prebuiltApexContentsDeps adds dependencies onto the prebuilt apex module's contents.
 func (p *prebuiltCommon) prebuiltApexContentsDeps(ctx android.BottomUpMutatorContext) {
 	module := ctx.Module()
 
-	for _, dep := range p.prebuiltCommonProperties.Exported_java_libs {
+	for dep, tag := range p.getExportedDependencies() {
 		prebuiltDep := android.PrebuiltNameFromSource(dep)
-		ctx.AddDependency(module, exportedJavaLibTag, prebuiltDep)
-	}
-
-	for _, dep := range p.prebuiltCommonProperties.Exported_bootclasspath_fragments {
-		prebuiltDep := android.PrebuiltNameFromSource(dep)
-		ctx.AddDependency(module, exportedBootclasspathFragmentTag, prebuiltDep)
-	}
-
-	for _, dep := range p.prebuiltCommonProperties.Exported_systemserverclasspath_fragments {
-		prebuiltDep := android.PrebuiltNameFromSource(dep)
-		ctx.AddDependency(module, exportedSystemserverclasspathFragmentTag, prebuiltDep)
+		ctx.AddDependency(module, tag, prebuiltDep)
 	}
 }
 
@@ -606,7 +608,7 @@ func createApexSelectorModule(ctx android.TopDownMutatorContext, name string, ap
 // the listed modules need access to files from within the prebuilt .apex file.
 func (p *prebuiltCommon) createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerName string, apexFileSource string) {
 	// Only create the deapexer module if it is needed.
-	if !p.hasExportedDeps() {
+	if len(p.getExportedDependencies()) == 0 {
 		return
 	}
 
