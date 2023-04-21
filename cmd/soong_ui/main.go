@@ -193,6 +193,7 @@ func main() {
 
 	config := c.config(buildCtx, args...)
 	config.SetLogsPrefix(c.logsPrefix)
+	fmt.Println("current_soongUiLogsdir after SetLogsPrefix: ", config.LogsDir())
 	logsDir := config.LogsDir()
 	buildStarted = config.BuildStartedTimeOrDefault(buildStarted)
 
@@ -237,6 +238,7 @@ func logAndSymlinkSetup(buildCtx build.Context, config build.Config) {
 	log := buildCtx.ContextImpl.Logger
 	logsPrefix := config.GetLogsPrefix()
 	build.SetupOutDir(buildCtx, config)
+	fmt.Println("current_Logsdir after symlinkSetupOutDir241: ", config.LogsDir())
 	logsDir := config.LogsDir()
 
 	// Common list of metric file definition.
@@ -554,6 +556,7 @@ func buildActionConfig(ctx build.Context, args ...string) build.Config {
 
 func runMake(ctx build.Context, config build.Config, _ []string) {
 	logAndSymlinkSetup(ctx, config)
+	fmt.Println("current_Logsdir after symlinkSetupOutDirInRunMake559: ", config.LogsDir())
 	logsDir := config.LogsDir()
 	if config.IsVerbose() {
 		writer := ctx.Writer
@@ -701,6 +704,7 @@ func setMaxFiles(ctx build.Context) {
 }
 
 func updateTotalRealTime(ctx build.Context, config build.Config, args []string) {
+	fmt.Println("current_Logsdir in updateTotalRealTime: ", config.LogsDir())
 	soongMetricsFile := filepath.Join(config.LogsDir(), "soong_metrics")
 
 	//read file into proto

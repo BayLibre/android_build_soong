@@ -245,11 +245,13 @@ func (m *Metrics) SetBuildCommand(cmd []string) {
 	m.metrics.BuildCommand = proto.String(strings.Join(cmd, " "))
 }
 
-// Dump exports the collected metrics from the executed build to the file at
+//	Dump exports the collected metrics from the executed build to the file at
+//
 // out path.
 func (m *Metrics) Dump(out string) error {
 	// ignore the error if the hostname could not be retrieved as it
 	// is not a critical metric to extract.
+	fmt.Println(out)
 	if hostname, err := os.Hostname(); err == nil {
 		m.metrics.Hostname = proto.String(hostname)
 	}
