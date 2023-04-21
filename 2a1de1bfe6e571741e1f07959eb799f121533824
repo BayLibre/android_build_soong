@@ -106,6 +106,24 @@
       "parentUuid": "d375cae5_3bcadb23",
       "revId": "2a1de1bfe6e571741e1f07959eb799f121533824",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2ecf31_e11ed973",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-04-21T15:31:37Z",
+      "side": 0,
+      "message": "Yeah. You\u0027re right. Thanks for explaining!",
+      "parentUuid": "c5afabdf_0aff136a",
+      "revId": "2a1de1bfe6e571741e1f07959eb799f121533824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
