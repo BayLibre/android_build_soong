@@ -16,6 +16,46 @@
       "message": "PTAL - verified that no error messages are printed.",
       "revId": "6ce1202a27ed32dc4db438d1f11e21018bc44b19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9477952d_5f1e4b90",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-21T15:27:22Z",
+      "side": 1,
+      "message": "doesn\u0027t this suppress both stdout and sterr? Didn\u0027t we just want to suppress stderr?",
+      "revId": "6ce1202a27ed32dc4db438d1f11e21018bc44b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f52aeb_014fb4d8",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-21T15:27:22Z",
+      "side": 1,
+      "message": "Can we avoid using the local and just checking `if [[ $? -ne 1 ]]` here instead?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "6ce1202a27ed32dc4db438d1f11e21018bc44b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
