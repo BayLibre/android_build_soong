@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fabcf912_5ba7847b",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-21T15:51:47Z",
+      "side": 1,
+      "message": "Isn\u0027t it useful for debugging?:\n\n- If something strange happens during this invocation, we probably want to know about it.\n- If the invocation hangs, we can see where it stopped.\n\nI thought the attached bug b/278748024 (information spuriously showing up in presubmit failures) was due to stderr output only, not stdout. Is that not the case?",
+      "parentUuid": "d8c51c4f_d0c51eb8",
+      "revId": "6ce1202a27ed32dc4db438d1f11e21018bc44b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14f52aeb_014fb4d8",
