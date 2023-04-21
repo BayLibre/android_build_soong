@@ -135,6 +135,19 @@ func createApiModule(mctx android.LoadHookContext, name string, path string) {
 	mctx.CreateModule(genrule.GenRuleFactory, &genruleProps)
 }
 
+func createLatestApiModuleVersionFile(mctx android.LoadHookContext, name string, version string) {
+	genruleProps := struct {
+		Name *string
+		Srcs []string
+		Out  []string
+		Cmd  *string
+	}{}
+	genruleProps.Name = proptools.StringPtr(name)
+	genruleProps.Out = []string{name}
+	genruleProps.Cmd = proptools.StringPtr("echo " + version + " > $(out)")
+	mctx.CreateModule(genrule.GenRuleFactory, &genruleProps)
+}
+
 func createEmptyFile(mctx android.LoadHookContext, name string) {
 	props := struct {
 		Name *string
@@ -233,9 +246,10 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 	type latestApiInfo struct {
 		module, scope, path string
 		version             int
+		isExtensionApiFile  bool
 	}
 
-	getLatest := func(files []string) map[string]latestApiInfo {
+	getLatest := func(files []string, isExtensionApiFile bool) map[string]latestApiInfo {
 		m := make(map[string]latestApiInfo)
 		for _, f := range files {
 			module, version, scope := parseFinalizedPrebuiltPath(mctx, f)
@@ -245,20 +259,21 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 			key := module + "." + scope
 			info, exists := m[key]
 			if !exists || version > info.version {
-				m[key] = latestApiInfo{module, scope, f, version}
+				m[key] = latestApiInfo{module, scope, f, version, isExtensionApiFile}
 			}
 		}
 		return m
 	}
 
-	latest := getLatest(apiLevelFiles)
+	latest := getLatest(apiLevelFiles, false)
 	if p.properties.Extensions_dir != nil {
 		extensionApiFiles := globExtensionDirs(mctx, p, "api/*.txt")
-		for k, v := range getLatest(extensionApiFiles) {
+		for k, v := range getLatest(extensionApiFiles, true) {
 			if _, exists := latest[k]; !exists {
 				mctx.ModuleErrorf("Module %v finalized for extension %d but never during an API level; likely error", v.module, v.version)
 			}
 			// The extension version is always at least as new as the last sdk int version (potentially identical)
+			fmt.Printf("[gurpreetgs] module = %s\n", v.path)
 			latest[k] = v
 		}
 	}
@@ -267,6 +282,14 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 	for _, k := range android.SortedKeys(latest) {
 		info := latest[k]
 		name := PrebuiltApiModuleName(info.module, info.scope, "latest")
+		if info.scope == "public" {
+			latestVersionModuleName := PrebuiltApiModuleName(info.module, info.scope, "latest.extension.version")
+			if info.isExtensionApiFile {
+				createLatestApiModuleVersionFile(mctx, latestVersionModuleName, strconv.Itoa(info.version))
+			} else {
+				createLatestApiModuleVersionFile(mctx, latestVersionModuleName, "-1")
+			}
+		}
 		createApiModule(mctx, name, info.path)
 	}
 
