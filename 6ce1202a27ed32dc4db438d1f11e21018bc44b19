@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e235b98_7d82f494",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-21T15:57:30Z",
+      "side": 1,
+      "message": "See the comment I linked. \nstderr isn\u0027t printed by soong. It looks like the presubmit test is scraped by things resembling \"error\" or \"failure\" rather than stderr as a stream, or from error.log.\n\nIt would be messy, but we could inspect the output for the relevant error text. I kinda hate it TBH",
+      "parentUuid": "fabcf912_5ba7847b",
+      "revId": "6ce1202a27ed32dc4db438d1f11e21018bc44b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14f52aeb_014fb4d8",
