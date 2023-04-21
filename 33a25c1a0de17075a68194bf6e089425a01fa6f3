@@ -16,6 +16,24 @@
       "message": "Should we add an explanation for why these are commented?",
       "revId": "33a25c1a0de17075a68194bf6e089425a01fa6f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba4c2bd9_ed491d55",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-21T15:20:23Z",
+      "side": 0,
+      "message": "we have a comment at the top for cc_test_library -- it should probably have a bug, but that seems separate from this CL",
+      "parentUuid": "d7c5c489_556f6733",
+      "revId": "33a25c1a0de17075a68194bf6e089425a01fa6f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
