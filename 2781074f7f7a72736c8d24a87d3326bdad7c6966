@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e873024e_beb95c0e",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-21T19:51:32Z",
+      "side": 1,
+      "message": "I looked at deduping this, but I was unable to figure out a solution yet.",
+      "range": {
+        "startLine": 759,
+        "startChar": 36,
+        "endLine": 763,
+        "endChar": 39
+      },
+      "revId": "2781074f7f7a72736c8d24a87d3326bdad7c6966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
