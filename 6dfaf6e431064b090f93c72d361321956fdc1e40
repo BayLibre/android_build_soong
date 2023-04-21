@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f6d170_53930d04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-04-21T21:12:30Z",
+      "side": 1,
+      "message": "2 extremely minor points, so feel free to submit since this is verified and we can clean up the comments in a follow-up.",
+      "revId": "6dfaf6e431064b090f93c72d361321956fdc1e40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8850728_690256ec",
+        "filename": "cc/afdo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-04-21T21:12:30Z",
+      "side": 1,
+      "message": "nit: egg",
+      "range": {
+        "startLine": 78,
+        "startChar": 28,
+        "endLine": 78,
+        "endChar": 32
+      },
+      "revId": "6dfaf6e431064b090f93c72d361321956fdc1e40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a335f7_12c0ad8a",
+        "filename": "cc/afdo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-04-21T21:12:30Z",
+      "side": 1,
+      "message": "nit: missing the word \"time\"",
+      "range": {
+        "startLine": 83,
+        "startChar": 78,
+        "endLine": 83,
+        "endChar": 79
+      },
+      "revId": "6dfaf6e431064b090f93c72d361321956fdc1e40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
