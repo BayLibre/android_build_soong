@@ -1,0 +1,41 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000043278085",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/2424850?revision\u003d4",
+      "fixSuggestions": [
+        {
+          "fixId": "3fd6934b_03211072",
+          "description": "Buildifier Suggestion",
+          "replacements": [
+            {
+              "path": "starlark/main.bzl",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "c19d6428_8bceeebc",
+        "filename": "starlark/main.bzl",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2023-04-21T01:00:47Z",
+      "side": 1,
+      "message": "File is not formatted. Run `buildifier starlark/main.bzl` to format the file, or apply the suggested fix.",
+      "revId": "e86c0a6986a35bfd40d247817753fb189038c2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
