@@ -190,6 +190,8 @@ func DumpRBEMetrics(ctx Context, config Config, filename string) {
 		ctx.Fatal("RBE output dir variable not defined. Aborting metrics dumping.")
 	}
 	metricsFile := filepath.Join(outputDir, rbeMetricsPBFilename)
+	fmt.Println("metricsFile: ", metricsFile)
+	fmt.Println("filename: ", filename)
 
 	// Stop the proxy first in order to generate the RBE metrics protobuf file.
 	stopRBE(ctx, config)
