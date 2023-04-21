@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "addc8e0e_85adfc1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-21T16:09:07Z",
+      "side": 1,
+      "message": "There are some edge cases that this CL does not fully address. Going to mark this CL as WIP till then. Will add more unit tests and send it out for review (hopefully by EOD)",
+      "revId": "8d65f8d7fec224935dbe0a029f7e2221d0ed05dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff60e268_b19e914b",
         "filename": "bp2build/cc_library_conversion_test.go",
         "patchSetId": 2
@@ -14,6 +31,24 @@
       "writtenOn": "2023-04-20T16:42:10Z",
       "side": 1,
       "message": "I don\u0027t think we want to do this. A human would never write this code, they\u0027d just link against what the library actually needs. I think instead of this, we\u0027d just add enforcement to the rules that you link against stubs when crossing an api surface. When within an api surface, the developer can choose between stubs and source freely.\n\nThis CL is recreating the complicated stubs/source selection logic from soong, which we want to remove in bazel.",
+      "revId": "8d65f8d7fec224935dbe0a029f7e2221d0ed05dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "214513e4_1026a8a4",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3045,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-21T16:09:07Z",
+      "side": 1,
+      "message": "Discussed this with Cole offline. I think we will need _some_ amount of selects for cc libraries. This is because unlike Java, a single Soong cc_library module definition could be built for multiple api domains (system, vendor, apexes...). Each of these api domains use a different set of cflags. It _could_ be true that those cflags are not used to gate access to additional apis, and we _could_ force all variants to link against the most restrictive set. But bp2build does not have sufficient metadata to do that yet.\n\n\u003eThis CL is recreating the complicated stubs/source selection logic from soong, which we want to remove in bazel.\n\nI see it as incremental improvement since it removes some of Soong\u0027s mystery and makes things explicit in BUILD files. In Soong, a user specifies `shared_libs: [\"liblog\"]` in Android.bp, and Soong picks\n- liblog.ndk when that library is used in an app\n- liblog.lldk when that library is used in vendor \n- liblog.module_lib when what libary is used in an apex\n- liblog.impl when that library is used in platform\n\nThis is now explicit in BUILD files. \n\nHowever, as you pointed out, this comes at the risk of verbosity. I would like to propose that we revisit this when BUILD files are on the verge of being checked into the tree.",
+      "parentUuid": "ff60e268_b19e914b",
       "revId": "8d65f8d7fec224935dbe0a029f7e2221d0ed05dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
