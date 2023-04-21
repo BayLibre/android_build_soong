@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25366445_2e6fb620",
+        "filename": "cc/afdo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2023-04-21T21:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8850728_690256ec",
+      "range": {
+        "startLine": 78,
+        "startChar": 28,
+        "endLine": 78,
+        "endChar": 32
+      },
+      "revId": "6dfaf6e431064b090f93c72d361321956fdc1e40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52a335f7_12c0ad8a",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-04-21T21:12:30Z",
       "side": 1,
       "message": "nit: missing the word \"time\"",
+      "range": {
+        "startLine": 83,
+        "startChar": 78,
+        "endLine": 83,
+        "endChar": 79
+      },
+      "revId": "6dfaf6e431064b090f93c72d361321956fdc1e40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d5d686_17d83c7a",
+        "filename": "cc/afdo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2023-04-21T21:43:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a335f7_12c0ad8a",
       "range": {
         "startLine": 83,
         "startChar": 78,
