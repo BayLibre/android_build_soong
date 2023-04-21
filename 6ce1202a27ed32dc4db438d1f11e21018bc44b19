@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b71e2b_18026c67",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-21T16:22:53Z",
+      "side": 1,
+      "message": "Ahh, I see. I missed the relevant part of that comment.\n\nTIL. Soong is weird. Thanks.",
+      "parentUuid": "8e235b98_7d82f494",
+      "revId": "6ce1202a27ed32dc4db438d1f11e21018bc44b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14f52aeb_014fb4d8",
