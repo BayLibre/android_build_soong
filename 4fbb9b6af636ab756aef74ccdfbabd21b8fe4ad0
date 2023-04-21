@@ -16,6 +16,24 @@
       "message": "can you add some unit testing?",
       "revId": "4fbb9b6af636ab756aef74ccdfbabd21b8fe4ad0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbdf310e_e16dbe00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-21T19:52:23Z",
+      "side": 1,
+      "message": "I have added a unit test that uses the `custom` module type",
+      "parentUuid": "edf07e8f_29ab0876",
+      "revId": "4fbb9b6af636ab756aef74ccdfbabd21b8fe4ad0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
