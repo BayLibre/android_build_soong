@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8c51c4f_d0c51eb8",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-21T15:36:18Z",
+      "side": 1,
+      "message": "soong doesn\u0027t print to stderr. I don\u0027t see much use in printing stdout for this particular invocation since we\u0027re not inspecting it. https://buganizer.corp.google.com/issues/216742377#comment16",
+      "parentUuid": "9477952d_5f1e4b90",
+      "revId": "6ce1202a27ed32dc4db438d1f11e21018bc44b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14f52aeb_014fb4d8",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-04-21T15:27:22Z",
       "side": 1,
       "message": "Can we avoid using the local and just checking `if [[ $? -ne 1 ]]` here instead?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "6ce1202a27ed32dc4db438d1f11e21018bc44b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba2e2de3_8d6a1256",
+        "filename": "tests/mixed_mode_test.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-21T15:36:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14f52aeb_014fb4d8",
       "range": {
         "startLine": 95,
         "startChar": 0,
