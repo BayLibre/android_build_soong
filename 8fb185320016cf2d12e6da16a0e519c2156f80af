@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc165e0e_17a72f83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-22T04:56:35Z",
+      "side": 1,
+      "message": "This can be considered as a follow-up of commit 9551384f65eb77e43afbe3408d5437ce91804edd",
+      "revId": "8fb185320016cf2d12e6da16a0e519c2156f80af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
