@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64515dd3_2dd2c777",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-04-22T01:22:52Z",
+      "side": 1,
+      "message": "There are actually a lot of side effect files written to out.  I know it\u0027s slower, but for simplicity, I think we need to actually go in the opposite direction and stop separating the files. It makes it really complicated to know which one needs to be invalidated when.\n\nThe other option is to prefix *everything* with the lunch combo, but lots of files are in well-known places, so that\u0027s hard too.",
+      "revId": "fcb3fb0acff0942bc9e2611644a9d42caa0db38b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
