@@ -1,10 +1,15 @@
 package bp2build
 
 import (
+	"android/soong/android"
+	"android/soong/starlark_import"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/google/blueprint/proptools"
 )
 
 func CreateProductConfigFiles(
@@ -25,7 +30,12 @@ func CreateProductConfigFiles(
 	if !strings.HasPrefix(productVariablesFileName, "/") {
 		productVariablesFileName = filepath.Join(ctx.topDir, productVariablesFileName)
 	}
-	bytes, err := os.ReadFile(productVariablesFileName)
+	productVariablesBytes, err := os.ReadFile(productVariablesFileName)
+	if err != nil {
+		return nil, err
+	}
+	productVariables := android.ProductVariables{}
+	err = json.Unmarshal(productVariablesBytes, &productVariables)
 	if err != nil {
 		return nil, err
 	}
@@ -39,11 +49,16 @@ func CreateProductConfigFiles(
 		"{VARIANT}", targetBuildVariant,
 		"{PRODUCT_FOLDER}", currentProductFolder)
 
-	result := []BazelFile{
+	platformMappingContent, err := platformMappingContent(productReplacer.Replace("@soong_injection//{PRODUCT_FOLDER}:{PRODUCT}-{VARIANT}"), &productVariables)
+	if err != nil {
+		return nil, err
+	}
+
+	return []BazelFile{
 		newFile(
 			currentProductFolder,
 			"soong.variables.bzl",
-			`variables = json.decode("""`+strings.ReplaceAll(string(bytes), "\\", "\\\\")+`""")`),
+			`variables = json.decode("""`+strings.ReplaceAll(string(productVariablesBytes), "\\", "\\\\")+`""")`),
 		newFile(
 			currentProductFolder,
 			"BUILD",
@@ -99,6 +114,7 @@ product_labels = [
 			"product_config_platforms",
 			"common.bazelrc",
 			productReplacer.Replace(`
+build --platform_mappings=platform_mappings
 build --platforms @soong_injection//{PRODUCT_FOLDER}:{PRODUCT}-{VARIANT}_linux_x86_64
 
 build:android --platforms=@soong_injection//{PRODUCT_FOLDER}:{PRODUCT}-{VARIANT}
@@ -119,7 +135,37 @@ build --host_platform @soong_injection//{PRODUCT_FOLDER}:{PRODUCT}-{VARIANT}_lin
 			productReplacer.Replace(`
 build --host_platform @soong_injection//{PRODUCT_FOLDER}:{PRODUCT}-{VARIANT}_darwin_x86_64
 `)),
-	}
+		newFile(
+			"BP2BUILD_DIR",
+			"platform_mappings",
+			platformMappingContent),
+	}, nil
+}
 
+func platformMappingContent(mainProductLabel string, mainProductVariables *android.ProductVariables) (string, error) {
+	productsForTesting, err := starlark_import.GetStarlarkValue[map[string]string]("products_for_testing")
+	if err != nil {
+		return "", err
+	}
+	result := "platforms:\n"
+	result += platformMappingSingleProduct(mainProductLabel, mainProductVariables)
+	for product, productVariablesString := range productsForTesting {
+		productVariables := android.ProductVariables{}
+		err = json.Unmarshal([]byte(productVariablesString), &productVariables)
+		if err != nil {
+			return "", err
+		}
+		result += platformMappingSingleProduct("@//build/bazel/tests/products:"+product, &productVariables)
+	}
 	return result, nil
+}
+
+func platformMappingSingleProduct(label string, productVariables *android.ProductVariables) string {
+	buildSettings := ""
+	buildSettings += fmt.Sprintf("    --//build/bazel/product_config:apex_global_min_sdk_version_override=%s\n", proptools.String(productVariables.ApexGlobalMinSdkVersionOverride))
+	result := ""
+	for _, extension := range []string{"", "_linux_x86_64", "_linux_bionic_x86_64", "_linux_musl_x86", "_linux_musl_x86_64"} {
+		result += "  " + label + extension + "\n" + buildSettings
+	}
+	return result
 }

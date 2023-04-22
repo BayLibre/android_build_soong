@@ -80,6 +80,20 @@ func Codegen(ctx *CodegenContext) *CodegenMetrics {
 		os.Exit(1)
 	}
 	bp2buildFiles := CreateBazelFiles(ctx.Config(), nil, res.buildFileToTargets, ctx.mode)
+	injectionAndBp2buildFiles, err := CreateSoongInjectionDirFiles(ctx, res.metrics)
+	if err != nil {
+		fmt.Printf("%s\n", err.Error())
+		os.Exit(1)
+	}
+	injectionFiles := make([]BazelFile, 0, len(injectionAndBp2buildFiles))
+	for _, f := range injectionAndBp2buildFiles {
+		if strings.HasPrefix(f.Dir, "BP2BUILD_DIR") {
+			f.Dir = strings.TrimLeft(strings.TrimPrefix(f.Dir, "BP2BUILD_DIR"), "/")
+			bp2buildFiles = append(bp2buildFiles, f)
+		} else {
+			injectionFiles = append(injectionFiles, f)
+		}
+	}
 	writeFiles(ctx, bp2buildDir, bp2buildFiles)
 	// Delete files under the bp2build root which weren't just written. An
 	// alternative would have been to delete the whole directory and write these
@@ -88,11 +102,6 @@ func Codegen(ctx *CodegenContext) *CodegenMetrics {
 	// performance implications.
 	deleteFilesExcept(ctx, bp2buildDir, bp2buildFiles)
 
-	injectionFiles, err := CreateSoongInjectionDirFiles(ctx, res.metrics)
-	if err != nil {
-		fmt.Printf("%s\n", err.Error())
-		os.Exit(1)
-	}
 	writeFiles(ctx, android.PathForOutput(ctx, bazel.SoongInjectionDirName), injectionFiles)
 	starlarkDeps, err := starlark_import.GetNinjaDeps()
 	if err != nil {
