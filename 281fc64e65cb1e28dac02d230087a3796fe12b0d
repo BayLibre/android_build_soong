@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54855ea_4cb27894",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-04-22T00:10:10Z",
+      "side": 1,
+      "message": "the camera test target still fails?",
+      "revId": "281fc64e65cb1e28dac02d230087a3796fe12b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
