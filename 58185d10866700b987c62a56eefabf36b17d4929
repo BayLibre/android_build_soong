@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ae5c302_90594ca1",
+        "filename": "android/override_module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-22T05:00:45Z",
+      "side": 1,
+      "message": "This does two things:\n- set ReplacedByPrebuilt \u003d true\n- call HideFromMake()",
+      "range": {
+        "startLine": 309,
+        "startChar": 14,
+        "endLine": 309,
+        "endChar": 32
+      },
+      "revId": "58185d10866700b987c62a56eefabf36b17d4929",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
