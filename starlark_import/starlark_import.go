@@ -172,6 +172,11 @@ func cleanModuleName(moduleName string, callerDir string) (string, error) {
 		return "external/bazel-skylib/lib/dicts.bzl", nil
 	}
 
+	// We don't have full support for external repositories, but at least support skylib's dicts.
+	if moduleName == "@bazel_skylib//lib:dicts.bzl" {
+		return "external/bazel-skylib/lib/dicts.bzl", nil
+	}
+
 	localLoad := false
 	if strings.HasPrefix(moduleName, "@//") {
 		moduleName = moduleName[3:]
