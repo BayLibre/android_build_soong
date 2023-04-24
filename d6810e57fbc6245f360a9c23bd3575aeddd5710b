@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c486a3f3_57b173cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-24T19:39:02Z",
+      "side": 1,
+      "message": "For this scenario, I think we have the following options\n1. Look at apex_available of libfoo and libbar and emit an warning to devs \"the impl of this library is available for use in this apex\"\n2. Not do anything. Stub enforcement should only happen when we cross an api domain boundary. Within it, libraries are free to link against stubs if they choose to. If libfoo and libbar are in the same apex, libfoo _can_ still use stubs of libbar (although this might lead to cryptic link errors)\n\nfwiw, the scenario you described is when a stable library moves from one apex to another, which I dont think is a common occurence. I am also working on b/277651159 that enforces that stub libraries have only one apex_available.",
+      "parentUuid": "bd574ca4_1af42811",
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fd9cbd2_73abaafc",
         "filename": "bp2build/cc_library_conversion_test.go",
         "patchSetId": 4
