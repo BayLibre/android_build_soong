@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e349eef1_a2c92f60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-04-24T18:26:44Z",
+      "side": 1,
+      "message": "Have we reached an agreement on the approach or we need further discussion or maybe a quick write-up of a design and have it reviewed?",
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fd9cbd2_73abaafc",
