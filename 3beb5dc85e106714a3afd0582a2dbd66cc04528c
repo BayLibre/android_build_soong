@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc5a22f6_74015f60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-24T22:15:01Z",
+      "side": 1,
+      "message": "Link bug ID",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bd55320_82a66b47",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-24T22:15:01Z",
+      "side": 1,
+      "message": "These could use comments to explain them",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f4d6388_ebe60d38",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-24T22:15:01Z",
+      "side": 1,
+      "message": "One important piece to document here is that, based on the ordering of the assessment, TechnicalIncompatibility might actually mean \"both technical and module incompatibility\".",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f8cca9_00088818",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-24T22:15:01Z",
+      "side": 1,
+      "message": "This docstring is no longer accurate.",
+      "range": {
+        "startLine": 359,
+        "startChar": 3,
+        "endLine": 359,
+        "endChar": 21
+      },
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f436ba_7538267f",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-24T22:15:01Z",
+      "side": 1,
+      "message": "Why do we need to call IsPlatformIncompatible here? What is this protecting us from?",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6d2952_01455962",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-24T22:15:01Z",
+      "side": 1,
+      "message": "Can we check \"len(modules) \u003d\u003d 0\" in the caller instead?",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e89d4f_0fba5c83",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-24T22:15:01Z",
+      "side": 1,
+      "message": "doc? mention this meams \"not mixed-builds built for any variant\"",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc11c334_7596ed08",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-24T22:15:01Z",
+      "side": 1,
+      "message": "can\u0027t we add this in the `ifMixedBuildsEnabled stanza above, and just check EnsureAllowlistIntegrity there?",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
