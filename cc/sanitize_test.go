@@ -1246,3 +1246,69 @@ func TestCfi(t *testing.T) {
 		t.Errorf("non-CFI variant of baz not expected to contain CFI flags ")
 	}
 }
+
+func TestCfiProductVariables(t *testing.T) {
+	t.Parallel()
+
+	bp := `
+	cc_binary {
+		name: "requested_target",
+		static_libs: ["include_dir_lib"],
+	}
+
+	cc_library_static {
+		name: "no_product_var_lib",
+		srcs: ["baz.cpp"],
+  }
+`
+	includeDirBp := `
+	cc_library_static {
+		name: "include_dir_lib",
+		srcs: ["foo.cpp"],
+		static_libs: ["exclude_dir_lib"],
+	}
+`
+	excludeDirBp := `
+	cc_library_static {
+		name: "exclude_dir_lib",
+		srcs: ["bar.cpp"],
+		static_libs: ["no_product_var_lib"],
+	}
+`
+
+	buildOs := "android_arm64_armv8-a"
+	cfiSuffix := "_cfi"
+	staticSuffix := "_static"
+
+	result := android.GroupFixturePreparers(
+		prepareForCcTest,
+		android.FixtureModifyMockFS(func(fs android.MockFS) {
+			fs.Merge(android.MockFS{
+				"Android.bp":                  []byte(bp),
+				"cfi/include/path/Android.bp": []byte(includeDirBp),
+				"cfi/exclude/path/Android.bp": []byte(excludeDirBp),
+			})
+		}),
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+			variables.CFIIncludePaths = []string{"cfi/include/path"}
+			variables.CFIExcludePaths = []string{"cfi/exclude/path"}
+		}),
+	).RunTest(t)
+	ctx := result.TestContext
+
+	requestedTargetWithoutCfi := result.ModuleForTests("requested_target", buildOs)
+	includeDirLibWithCfi := result.ModuleForTests("include_dir_lib", buildOs+staticSuffix+cfiSuffix)
+	excludeDirLibNoCfi := result.ModuleForTests("exclude_dir_lib", buildOs+staticSuffix)
+	//excludeDirLibWithCfi := result.ModuleForTests("exclude_dir_lib", buildOs+staticSuffix+cfiSuffix)
+	noProductVarLibNoCfi := result.ModuleForTests("no_product_var_lib", buildOs+staticSuffix)
+
+	expectStaticLinkDep(t, ctx, requestedTargetWithoutCfi, includeDirLibWithCfi)
+	expectStaticLinkDep(t, ctx, includeDirLibWithCfi, excludeDirLibNoCfi)
+	expectStaticLinkDep(t, ctx, excludeDirLibNoCfi, noProductVarLibNoCfi)
+
+	includeDirLibWithCfiCflags := includeDirLibWithCfi.Rule("cc").Args["cFlags"]
+	if !strings.Contains(includeDirLibWithCfiCflags, "-fsanitize=cfi") {
+		t.Errorf("module in CFIIncludePaths does not have CFI flags: %+v", includeDirLibWithCfiCflags)
+	}
+
+}
