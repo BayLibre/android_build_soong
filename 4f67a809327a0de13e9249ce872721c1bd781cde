@@ -70,6 +70,24 @@
       "parentUuid": "08ed891b_d1606b4b",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca992ef_244c404c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-24T10:34:23Z",
+      "side": 1,
+      "message": "\u003e Second less important question is, do we need the intermediate dexpreopt subdirectory?\n\nCould be addressed in a follow-up CL if we decide that it\u0027s not needed.",
+      "parentUuid": "c9e818b7_ab8ef05d",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
