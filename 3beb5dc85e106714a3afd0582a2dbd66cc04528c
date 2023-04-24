@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2b5057_f43e4029",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-24T23:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc5a22f6_74015f60",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bd55320_82a66b47",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-24T22:15:01Z",
       "side": 1,
       "message": "These could use comments to explain them",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "503a250e_3b946d2d",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-24T23:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd55320_82a66b47",
       "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef7186d_f78e3faa",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-24T23:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f4d6388_ebe60d38",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7f8cca9_00088818",
@@ -65,6 +119,30 @@
       "writtenOn": "2023-04-24T22:15:01Z",
       "side": 1,
       "message": "This docstring is no longer accurate.",
+      "range": {
+        "startLine": 359,
+        "startChar": 3,
+        "endLine": 359,
+        "endChar": 21
+      },
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdb6d426_7f589b2d",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-24T23:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f8cca9_00088818",
       "range": {
         "startLine": 359,
         "startChar": 3,
@@ -94,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "790d91ec_0d99da5c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-24T23:51:26Z",
+      "side": 1,
+      "message": "If the module isn\u0027t enabled because of a technical incompatibility (say, it\u0027s a Windows machine) then we haven\u0027t tried to enable an unready module, which is what I saw as the primary use-case of the flag. Do you disagree?",
+      "parentUuid": "14f436ba_7538267f",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c6d2952_01455962",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 6
@@ -105,6 +201,24 @@
       "writtenOn": "2023-04-24T22:15:01Z",
       "side": 1,
       "message": "Can we check \"len(modules) \u003d\u003d 0\" in the caller instead?",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e825e2de_a8d5e41c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-24T23:51:26Z",
+      "side": 1,
+      "message": "moved the original call to here, thus irrelevant.",
+      "parentUuid": "2c6d2952_01455962",
       "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -126,6 +240,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c80dd59_a66d3442",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-24T23:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60e89d4f_0fba5c83",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc11c334_7596ed08",
@@ -139,6 +271,24 @@
       "writtenOn": "2023-04-24T22:15:01Z",
       "side": 1,
       "message": "can\u0027t we add this in the `ifMixedBuildsEnabled stanza above, and just check EnsureAllowlistIntegrity there?",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b340d40b_36d1e764",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-24T23:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc11c334_7596ed08",
       "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
