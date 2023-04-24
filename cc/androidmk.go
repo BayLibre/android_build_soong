@@ -125,9 +125,11 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 					}
 				}
 				if c.Properties.IsSdkVariant {
-					// Make the SDK variant uninstallable so that there are not two rules to install
-					// to the same location.
-					entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
+					if !c.AlwaysSdk() {
+						// Make the SDK variant uninstallable so that there are not two rules to install
+						// to the same location.
+						entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
+					}
 
 					if c.Properties.SdkAndPlatformVariantVisibleToMake {
 						// Add the unsuffixed name to SOONG_SDK_VARIANT_MODULES so that Make can rewrite

@@ -206,6 +206,7 @@ func createCcSdkVariantRules() []Rule {
 
 	return []Rule{
 		NeverAllow().
+			NotModuleType("cc_test").
 			NotIn(sdkVersionOnlyAllowedList...).
 			WithMatcher("sdk_variant_only", isSetMatcherInstance).
 			Because("sdk_variant_only can only be used in allowed projects"),
