@@ -262,6 +262,17 @@ var neverallowTests = []struct {
 		},
 	},
 	{
+		name: `"cc_test.sdk_variant_only" allowed`,
+		fs: map[string][]byte{
+			"Android.bp": []byte(`
+				cc_test {
+					name: "outside_allowed_list",
+					sdk_version: "current",
+					sdk_variant_only: true,
+				}`),
+		},
+	},
+	{
 		name: `"sdk_variant_only: false" outside allowed list`,
 		fs: map[string][]byte{
 			"Android.bp": []byte(`
@@ -388,6 +399,7 @@ var neverallowTests = []struct {
 var prepareForNeverAllowTest = GroupFixturePreparers(
 	FixtureRegisterWithContext(func(ctx RegistrationContext) {
 		ctx.RegisterModuleType("cc_library", newMockCcLibraryModule)
+		ctx.RegisterModuleType("cc_test", newMockCcLibraryModule)
 		ctx.RegisterModuleType("java_library", newMockJavaLibraryModule)
 		ctx.RegisterModuleType("java_library_host", newMockJavaLibraryModule)
 		ctx.RegisterModuleType("java_device_for_host", newMockJavaLibraryModule)
