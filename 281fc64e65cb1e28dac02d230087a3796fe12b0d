@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "755705b7_d3c62b76",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1500,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-24T13:53:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d657602b_e6308583",
+      "range": {
+        "startLine": 1500,
+        "startChar": 2,
+        "endLine": 1500,
+        "endChar": 11
+      },
+      "revId": "281fc64e65cb1e28dac02d230087a3796fe12b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f32627ee_732b5af5",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-04-24T05:49:58Z",
       "side": 1,
       "message": "I think `cc_stub_suite` implicitly adds `current` (aosp/2475090). If we are updating bp2build to add it explicitly, we can likely remove the implicit addition of `current` in the bazel rule.",
+      "range": {
+        "startLine": 769,
+        "startChar": 17,
+        "endLine": 769,
+        "endChar": 46
+      },
+      "revId": "281fc64e65cb1e28dac02d230087a3796fe12b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c0b1ad_3fec11f3",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-24T13:53:51Z",
+      "side": 1,
+      "message": "Okay I\u0027ll follow up with that. I think removing the automatic behavior in the Bazel rule may make sense and we can just have people explicitly set a `current` version if they want those stubs.",
+      "parentUuid": "f32627ee_732b5af5",
       "range": {
         "startLine": 769,
         "startChar": 17,
