@@ -88,6 +88,24 @@
       "parentUuid": "c9e818b7_ab8ef05d",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5745fe0d_4a3cf041",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-24T16:44:12Z",
+      "side": 1,
+      "message": "The general rule for whether something should share a directory or not between products is whether we expect the results to change.  Dexpreopt depends on CPU architecture and variant, so will change between most products.  Removing the product name will speed up builds between some product switches, but be much worse on others.  With the directory the speed will eventually stabilize, if you build X, then Y, then X, then Y, the first X and Y will be slow, but the second X and Y will be fast.  If you switch to no directory and X and Y are not the same CPU then every build will be slow as they will have clobbered each others artifacts.",
+      "parentUuid": "aca992ef_244c404c",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
