@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4a080c2_d2593c06",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3046,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-24T19:55:27Z",
+      "side": 1,
+      "message": "I have two concerns that may have different solutions:\n\n1. discrepancies between Soong and Bazel (we could reevaluate Soong\u0027s implementation)\n2. tests -- tests of apex code often link against the stubs currently because of the Soong logic -- in a number of ways they\u0027re already building differently than Soong (e.g. missing copt `-D__ANDROID_APEX__`), so perhaps it\u0027s fine. But I think it is worth considering what APIs a test should link against.",
+      "parentUuid": "2fd7a095_54217f4e",
+      "range": {
+        "startLine": 3046,
+        "startChar": 0,
+        "endLine": 3046,
+        "endChar": 65
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1c935db_fd7e2236",
         "filename": "bp2build/cc_library_shared_conversion_test.go",
         "patchSetId": 4
@@ -168,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "963f98ca_9e17646f",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-24T19:55:27Z",
+      "side": 1,
+      "message": "Related to my other comment, in concept, I think it makes sense not to have a platform variant of implementation libraries that are not accessible to the platform, but\n\n1. I believe Cole hit some cases that were relying on the platform variant existing in Soong related to flattened apexes (he may be able to weigh in more)\n2. Testing -- how do we support apexes testing their code?",
+      "parentUuid": "bf068633_a6cbdf0c",
+      "range": {
+        "startLine": 583,
+        "startChar": 8,
+        "endLine": 584,
+        "endChar": 96
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b998efe8_c9759892",
         "filename": "bp2build/cc_library_shared_conversion_test.go",
         "patchSetId": 4
@@ -203,6 +251,30 @@
       "side": 1,
       "message": "Thanks for listing out the permutations Liz - these align with my understanding as well. FWIW, I believe Soong used to do something similar to what this CL proposes at one point. \n\nI can create a tracking bug to improve the readability of BUILD files wrt to stubs/impl selection.",
       "parentUuid": "b998efe8_c9759892",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 10
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29cf92e7_c8fb3b02",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-24T19:55:27Z",
+      "side": 1,
+      "message": "sg, thanks!",
+      "parentUuid": "d757416f_7b8c7c6e",
       "range": {
         "startLine": 657,
         "startChar": 0,
