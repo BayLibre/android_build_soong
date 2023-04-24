@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd574ca4_1af42811",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-04-24T19:19:14Z",
+      "side": 1,
+      "message": "I have some concerns about the maintainability of the approach beyond being too verbose after bp2build is gone. If libfoo-\u003elibbar and they are not in the same apex libfoo will link against the stub variant of libbar, if in the future libbar is made available to the same apex as one of libfoo, how do the developers know that they need to change the build file for libfoo to reflect this?",
+      "parentUuid": "cf33b80c_04aa2fab",
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fd9cbd2_73abaafc",
         "filename": "bp2build/cc_library_conversion_test.go",
         "patchSetId": 4
