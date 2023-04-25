@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "01ccd844_1c9f27dd",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-25T15:55:05Z",
+      "side": 1,
+      "message": "I\u0027m never sure how I feel about `an`/`a` when referencing a function or variable name, but have it your way :)",
+      "parentUuid": "d0492bf7_fb24e71c",
+      "revId": "326f38f0fe0d994c8de1c63d954c310aa73a8ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2f9074bc_6e0b0232",
         "filename": "android/bazel_handler_test.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-25T15:44:13Z",
       "side": 1,
       "message": "there\u0027s really no \"ListContains\" method in all of our packages?",
+      "revId": "326f38f0fe0d994c8de1c63d954c310aa73a8ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e805e196_76515751",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-25T15:55:05Z",
+      "side": 1,
+      "message": "I could not find any. slices.contains exists in golang I think, but not at the version we use.",
+      "parentUuid": "2f9074bc_6e0b0232",
       "revId": "326f38f0fe0d994c8de1c63d954c310aa73a8ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2023-04-25T15:44:13Z",
       "side": 1,
       "message": "Contains",
+      "revId": "326f38f0fe0d994c8de1c63d954c310aa73a8ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "162c6b85_30834d3c",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-25T15:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4995bad9_3862c2f6",
       "revId": "326f38f0fe0d994c8de1c63d954c310aa73a8ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
