@@ -160,6 +160,24 @@
       "parentUuid": "a4c253df_d463a30e",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbef8d6e_ae756334",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-25T01:08:27Z",
+      "side": 1,
+      "message": "I think it\u0027s tradeoff between gain in similar products and lose in different products. And I think dexpreopting every app spends more time.\n\n1. Similar products\n * Save dexpreopt preparation time\n * Save **dexpreopt time for every app**\n2. Different products\n * Need to rebuild dexpreopt preparation time\n \nwhat if we append arch in the directory for dexpreopt? such as dexpreopt_arm64. I think it can cover lots of different products situation.",
+      "parentUuid": "a4c253df_d463a30e",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
