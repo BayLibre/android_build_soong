@@ -124,6 +124,24 @@
       "parentUuid": "5745fe0d_4a3cf041",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c253df_d463a30e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-25T00:47:58Z",
+      "side": 1,
+      "message": "I think it depends on the developer.  For e.g. framework developers I wouldn\u0027t be surprised if they switched between CF and whatever pixel they use as a development device.",
+      "parentUuid": "2476a852_d979c7e8",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
