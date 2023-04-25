@@ -1042,6 +1042,11 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 		return
 	}
 
+	if a.SocSpecific() || a.DeviceSpecific() || (a.ProductSpecific() && ctx.Config().EnforceProductPartitionInterface()) {
+		// Do not track dependency info for vendor apexes. It's for track system updatable apexes.
+		return
+	}
+
 	depInfos := android.DepNameToDepInfoMap{}
 	a.WalkPayloadDeps(ctx, func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
 		if from.Name() == to.Name() {

@@ -2067,6 +2067,44 @@ func TestTrackAllowedDeps_SkipWithoutAllowedDepsTxt(t *testing.T) {
 	}
 }
 
+func TestTrackAllowedDeps_SkipsVendorApexes(t *testing.T) {
+	check := func(isVendor, trackDeps bool) {
+		prop := ""
+		if isVendor {
+			prop = "vendor: true"
+		}
+		message := "do not track myapex"
+		if trackDeps {
+			message = "track myapex"
+		}
+		ctx := testApex(t, `
+			apex {
+				name: "myapex",
+				key: "myapex.key",
+				updatable: true,
+				min_sdk_version: "29",
+				`+prop+`
+			}
+
+			apex_key {
+				name: "myapex.key",
+				public_key: "testkey.avbpubkey",
+				private_key: "testkey.pem",
+			}
+		`, withFiles(android.MockFS{
+			"packages/modules/common/build/allowed_deps.txt": nil,
+		}))
+
+		depsinfo := ctx.SingletonForTests("apex_depsinfo_singleton")
+		inputs := depsinfo.Rule("generateApexDepsInfoFilesRule").BuildParams.Inputs.Strings()
+		android.AssertStringListContainsEquals(t, message, inputs,
+			"out/soong/.intermediates/myapex/android_common_myapex_image/depsinfo/flatlist.txt",
+			trackDeps)
+	}
+	check( /*isVendor*/ true /*trackDeps*/, false)
+	check( /*isVendor*/ false /*trackDeps*/, true)
+}
+
 func TestPlatformUsesLatestStubsFromApexes(t *testing.T) {
 	ctx := testApex(t, `
 		apex {
