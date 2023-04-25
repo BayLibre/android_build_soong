@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "207b2746_c628a00b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-25T09:51:59Z",
+      "side": 1,
+      "message": "IIUC this is so that you can set `updatable: true` on vendor apexes, which I think is not what we should ideally aim for? I think it\u0027d be better to have a separate attribute that enforces the invariants you want for vendor apexes (called something better than \"updatable\"!)",
+      "revId": "9cd979a7fb86c21f22d52eebf5c47ea2c8ec5ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c4de400_fd9de406",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
