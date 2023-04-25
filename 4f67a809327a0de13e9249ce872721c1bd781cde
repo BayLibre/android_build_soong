@@ -106,6 +106,24 @@
       "parentUuid": "aca992ef_244c404c",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2476a852_d979c7e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-25T00:30:17Z",
+      "side": 1,
+      "message": "Thanks, Colin. In practice, I believe switching across architectures is rarer than switching within the same architecture, especially in the CI environment. For example, we\u0027d like to build cf_x86_64_[phone|tablet|foldable] by the same build bot.\n\nWhen we switch across architectures (ex: Pixel and CF), there are many more factors that make it almost impossible to share artifacts. WDYT?",
+      "parentUuid": "5745fe0d_4a3cf041",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
