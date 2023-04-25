@@ -56,6 +56,30 @@
       },
       "revId": "a5563a302452f0da271154850922bdd3e53685c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd40cea_228d307c",
+        "filename": "snapshot/host_snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-04-25T09:06:58Z",
+      "side": 1,
+      "message": "The context was different between this and the snapshot.CopyFileRule().\nTo avoid duplication, I defined a new interface for this context and used the rule here.",
+      "parentUuid": "c73025f4_13fd1192",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 6
+      },
+      "revId": "a5563a302452f0da271154850922bdd3e53685c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
