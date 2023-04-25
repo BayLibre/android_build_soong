@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca27bc9_eae41f47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-25T00:35:22Z",
+      "side": 1,
+      "message": "There was a merge conflict, so I have uploaded a new patchset. Requesting another presubmit run via aosp/2558230",
+      "revId": "75dbca2eae78bb280b50828d3c2165bda5d87ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
