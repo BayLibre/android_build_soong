@@ -16,6 +16,24 @@
       "message": "This one shouldn\u0027t be necessary because the list will just be copied again in FirstUniqueStrings",
       "revId": "03704450a77e475f05ee6d164359551c1bf31b2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d298de26_4012c4c1",
+        "filename": "android/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-25T18:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7ad3f25_7e46ce14",
+      "revId": "03704450a77e475f05ee6d164359551c1bf31b2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
