@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3b36954_9f2ec6e0",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-25T16:34:25Z",
+      "side": 1,
+      "message": "Can you provide an example? \"Module incompatibility\" isn\u0027t self explanatory",
+      "parentUuid": "4ef7186d_f78e3faa",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7f8cca9_00088818",
         "filename": "android/bazel.go",
         "patchSetId": 6
@@ -190,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be7ea27e_ecc830d7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-25T16:34:25Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand your explanation. Can you please attempt again to describe the situation?\n\nIs this trying to guard against cases where not a single module was built with Bazel due to a host machine incompatbiility? (e.g. the build is on a Windows machine) ?",
+      "parentUuid": "790d91ec_0d99da5c",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c6d2952_01455962",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 6
@@ -219,6 +255,24 @@
       "side": 1,
       "message": "moved the original call to here, thus irrelevant.",
       "parentUuid": "2c6d2952_01455962",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab6d4837_ddabed33",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-25T16:34:25Z",
+      "side": 1,
+      "message": "I think we should make this relevant. handleError(...) sounds like we\u0027re definitely going to throw an error. \"maybeHandleError\" would be more appropriate, but I think that\u0027s not great, either. Lets have the caller check for the presence of an error, and then handleError() to actually render the error.",
+      "parentUuid": "e825e2de_a8d5e41c",
       "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -289,6 +343,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "bc11c334_7596ed08",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30d590e0_efbcf110",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-25T16:34:25Z",
+      "side": 1,
+      "message": "This is not what I was suggesting.\n\nI was suggesting above we have\n```\nif isMixedBuildsEnabled {\n  finalOutputFile \u003d runMixedModeBuild(ctx, extraNinjaDeps)\n} else\n```\n\nWhy not have:\n\n```\nif isMixedBuildsEnabled {\n  finalOutputFile \u003d runMixedModeBuild(ctx, extraNinjaDeps)\n  if cmdlineArgs.EnsureAllowlistIntegrity {\n     ...\n  }\n} else\n```\n\n?",
+      "parentUuid": "b340d40b_36d1e764",
       "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
