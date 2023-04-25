@@ -33,6 +33,29 @@
       "message": "Can I get an Owner\u0027s review for this CL?",
       "revId": "a5563a302452f0da271154850922bdd3e53685c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73025f4_13fd1192",
+        "filename": "snapshot/host_snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-04-25T02:38:35Z",
+      "side": 1,
+      "message": "anything wrong with the snapshot.CopyFileRule() so a copy has to be made here?",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 6
+      },
+      "revId": "a5563a302452f0da271154850922bdd3e53685c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
