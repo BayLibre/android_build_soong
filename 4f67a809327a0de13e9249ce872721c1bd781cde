@@ -196,6 +196,24 @@
       "parentUuid": "bbef8d6e_ae756334",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84995a65_00b28f86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-25T09:14:55Z",
+      "side": 1,
+      "message": "I think we can follow the directory rule of oat, odex, vdex files which exists in soong/.intermediate(which is product-agnostic) and depends on this dir. It uses only arch, so I think it makes sense that this dir also uses only arch for the parity.\n\nhttps://source.corp.google.com/android-internal/build/soong/dexpreopt/dexpreopt.go;l\u003d223;bpv\u003d1;bpt\u003d1?q\u003d%5Cboat%5Cb%20f:%5C.go\u0026sq\u003dpackage:%5Eandroid-internal$",
+      "parentUuid": "bbe327b7_bc91cc73",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
