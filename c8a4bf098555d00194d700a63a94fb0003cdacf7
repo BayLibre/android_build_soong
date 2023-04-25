@@ -16,6 +16,24 @@
       "message": "Can you use a python_binary_host for this instead of referencing it with SourcePathVariable directly?",
       "revId": "c8a4bf098555d00194d700a63a94fb0003cdacf7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fde9c3a_83d75fd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-25T16:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6a9c1f0_a9c5ef0f",
+      "revId": "c8a4bf098555d00194d700a63a94fb0003cdacf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
