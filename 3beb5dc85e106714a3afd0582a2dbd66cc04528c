@@ -124,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb43c8f_9d11270a",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-25T17:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3b36954_9f2ec6e0",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7f8cca9_00088818",
@@ -226,6 +244,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c577cb4_453d5d56",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-25T17:58:40Z",
+      "side": 1,
+      "message": "yes, exactly.\nThe flag is CI only so I don\u0027t see immediate harm in removing this, but if left up to me I\u0027d keep it.",
+      "parentUuid": "be7ea27e_ecc830d7",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c6d2952_01455962",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 6
@@ -273,6 +309,24 @@
       "side": 1,
       "message": "I think we should make this relevant. handleError(...) sounds like we\u0027re definitely going to throw an error. \"maybeHandleError\" would be more appropriate, but I think that\u0027s not great, either. Lets have the caller check for the presence of an error, and then handleError() to actually render the error.",
       "parentUuid": "e825e2de_a8d5e41c",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84915c51_0b1c1e0c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-25T17:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab6d4837_ddabed33",
       "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -361,6 +415,24 @@
       "side": 1,
       "message": "This is not what I was suggesting.\n\nI was suggesting above we have\n```\nif isMixedBuildsEnabled {\n  finalOutputFile \u003d runMixedModeBuild(ctx, extraNinjaDeps)\n} else\n```\n\nWhy not have:\n\n```\nif isMixedBuildsEnabled {\n  finalOutputFile \u003d runMixedModeBuild(ctx, extraNinjaDeps)\n  if cmdlineArgs.EnsureAllowlistIntegrity {\n     ...\n  }\n} else\n```\n\n?",
       "parentUuid": "b340d40b_36d1e764",
+      "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b927ce1e_e42e4249",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-25T17:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30d590e0_efbcf110",
       "revId": "3beb5dc85e106714a3afd0582a2dbd66cc04528c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
