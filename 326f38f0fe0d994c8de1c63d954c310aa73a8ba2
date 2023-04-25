@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0492bf7_fb24e71c",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-25T15:44:13Z",
+      "side": 1,
+      "message": "\"an issueBazelCommand request\"",
+      "revId": "326f38f0fe0d994c8de1c63d954c310aa73a8ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9074bc_6e0b0232",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-25T15:44:13Z",
+      "side": 1,
+      "message": "there\u0027s really no \"ListContains\" method in all of our packages?",
+      "revId": "326f38f0fe0d994c8de1c63d954c310aa73a8ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4995bad9_3862c2f6",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-04-25T15:44:13Z",
+      "side": 1,
+      "message": "Contains",
+      "revId": "326f38f0fe0d994c8de1c63d954c310aa73a8ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
