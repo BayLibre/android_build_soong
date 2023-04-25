@@ -925,6 +925,12 @@ type commonProperties struct {
 	// and don't create a rule to install the file.
 	SkipInstall bool `blueprint:"mutated"`
 
+	// UninstallableApexPlatformVariant is set by MakeUninstallable called by the apex
+	// mutator.  MakeUninstallable also sets HideFromMake.  UninstallableApexPlatformVariant
+	// is used to avoid adding install or packaging dependencies into libraries provided
+	// by apexes.
+	UninstallableApexPlatformVariant bool `blueprint:"mutated"`
+
 	// Whether the module has been replaced by a prebuilt
 	ReplacedByPrebuilt bool `blueprint:"mutated"`
 
@@ -2009,6 +2015,7 @@ func (m *ModuleBase) IsSkipInstall() bool {
 // have other side effects, in particular when it adds a NOTICE file target,
 // which other install targets might depend on.
 func (m *ModuleBase) MakeUninstallable() {
+	m.commonProperties.UninstallableApexPlatformVariant = true
 	m.HideFromMake()
 }
 
@@ -2043,13 +2050,25 @@ func (m *ModuleBase) computeInstallDeps(ctx ModuleContext) ([]*installPathsDepSe
 	var installDeps []*installPathsDepSet
 	var packagingSpecs []*packagingSpecsDepSet
 	ctx.VisitDirectDeps(func(dep Module) {
-		if IsInstallDepNeeded(ctx.OtherModuleDependencyTag(dep)) && !dep.IsHideFromMake() && !dep.IsSkipInstall() {
-			installDeps = append(installDeps, dep.base().installFilesDepSet)
+		if isInstallDepNeeded(dep, ctx.OtherModuleDependencyTag(dep)) {
+			if !dep.IsHideFromMake() && !dep.IsSkipInstall() {
+				installDeps = append(installDeps, dep.base().installFilesDepSet)
+			}
 			packagingSpecs = append(packagingSpecs, dep.base().packagingSpecsDepSet)
 		}
 	})
 
 	return installDeps, packagingSpecs
+}
+
+func isInstallDepNeeded(dep Module, tag blueprint.DependencyTag) bool {
+	if !IsInstallDepNeededTag(tag) {
+		return false
+	}
+	if dep.base().commonProperties.UninstallableApexPlatformVariant {
+		return false
+	}
+	return true
 }
 
 func (m *ModuleBase) FilesToInstall() InstallPaths {
