@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a9c1f0_a9c5ef0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-25T06:31:20Z",
+      "side": 1,
+      "message": "Can you use a python_binary_host for this instead of referencing it with SourcePathVariable directly?",
+      "revId": "c8a4bf098555d00194d700a63a94fb0003cdacf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
