@@ -276,6 +276,8 @@ func RemoveFromList(s string, list []string) (bool, []string) {
 // FirstUniqueStrings returns all unique elements of a slice of strings, keeping the first copy of
 // each.  It modifies the slice contents in place, and returns a subslice of the original slice.
 func FirstUniqueStrings(list []string) []string {
+	// Do not moodify the input in-place, operate on a copy instead.
+	list = CopyOf(list)
 	// 128 was chosen based on BenchmarkFirstUniqueStrings results.
 	if len(list) > 128 {
 		return firstUniqueStringsMap(list)
@@ -332,6 +334,8 @@ func LastUniqueStrings(list []string) []string {
 
 // SortedUniqueStrings returns what the name says
 func SortedUniqueStrings(list []string) []string {
+	// Do not moodify the input in-place, operate on a copy instead.
+	list = CopyOf(list)
 	unique := FirstUniqueStrings(list)
 	sort.Strings(unique)
 	return unique
