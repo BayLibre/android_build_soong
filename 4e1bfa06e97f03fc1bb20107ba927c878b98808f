@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18188d9e_a7d25d45",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-25T17:26:28Z",
+      "side": 1,
+      "message": "For a followup cl, we should consider making `SortedUniqueStrings` and `FirstUniqueStrings` not return anything so it\u0027s clear that they modify the input.",
+      "revId": "4e1bfa06e97f03fc1bb20107ba927c878b98808f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
