@@ -234,6 +234,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe6fdeea_33c1d366",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-25T21:41:20Z",
+      "side": 1,
+      "message": "I was running into issues with some of the platform variants failing to build, so if we were to remove platform variants (by making them `//platforms:incompatible` or something) that would be fine. Except I think doing that would be difficult because things (like tests) can depend on the platform variants from soong.",
+      "parentUuid": "963f98ca_9e17646f",
+      "range": {
+        "startLine": 583,
+        "startChar": 8,
+        "endLine": 584,
+        "endChar": 96
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b998efe8_c9759892",
         "filename": "bp2build/cc_library_shared_conversion_test.go",
         "patchSetId": 4
