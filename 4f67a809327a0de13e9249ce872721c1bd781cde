@@ -178,6 +178,24 @@
       "parentUuid": "a4c253df_d463a30e",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe327b7_bc91cc73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-25T02:33:14Z",
+      "side": 1,
+      "message": "The arch will help some, but the more you can encode in the directory name the more accurate it will be.  For native code we use the variant as the directory, which includes the architecture and cpu variant.  I don\u0027t know if anything else in the dexpreopt config tends to be different between products, but if there is something else it could be added to the directory name.",
+      "parentUuid": "bbef8d6e_ae756334",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
