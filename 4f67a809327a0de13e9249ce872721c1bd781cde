@@ -142,6 +142,24 @@
       "parentUuid": "2476a852_d979c7e8",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "701a084e_d56f4a45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-25T01:01:11Z",
+      "side": 1,
+      "message": "I do that a lot too, but isn\u0027t it the common expectation that the incremental build works very poor between the two, especially due to the slow rebuild of build.ninja?\n\nTo confirm this, I just built `framework-all` across aosp_arm64 and aosp_x86_64. Total 980 targets were rebuilt taking +5 min. I didn\u0027t look into that in detail, but it\u0027s probably because some java rules have some dependencies to the target name.",
+      "parentUuid": "a4c253df_d463a30e",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
