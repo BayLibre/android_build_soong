@@ -16,6 +16,24 @@
       "message": "For a followup cl, we should consider making `SortedUniqueStrings` and `FirstUniqueStrings` not return anything so it\u0027s clear that they modify the input.",
       "revId": "4e1bfa06e97f03fc1bb20107ba927c878b98808f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "177b5097_180abc41",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-25T18:14:25Z",
+      "side": 1,
+      "message": "Thanks Cole, that is a good point. One nit is that since these two functions dedupes elements, we likely need a return. To solve the underlying issue, I have created aosp/2562753 that updates these functions to operate on a copy instead.",
+      "parentUuid": "18188d9e_a7d25d45",
+      "revId": "4e1bfa06e97f03fc1bb20107ba927c878b98808f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
