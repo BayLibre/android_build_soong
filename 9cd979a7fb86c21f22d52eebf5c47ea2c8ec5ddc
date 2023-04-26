@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21b6c3a9_7dbf7deb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-26T08:04:45Z",
+      "side": 1,
+      "message": "I think it would be confusing if `updatable` meant something different with vendor apexes. I\u0027ve always associated `updatable` with Mainline modules, which has a clear set of checks and requirements. Similar to what Anton said in https://b.corp.google.com/issues/274041915#comment11.\n\nIs there a document somewhere that describes the key differences of updatable Mainline APEXes and updatable Vendor APEXes? It would help if these differences were clearly spelled out so we can reflect them at the build system level too, instead of implicitly toggling checks.",
+      "parentUuid": "5a050072_b413e709",
+      "revId": "9cd979a7fb86c21f22d52eebf5c47ea2c8ec5ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c4de400_fd9de406",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
