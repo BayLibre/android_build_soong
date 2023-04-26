@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "880182f1_59aa65ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-26T08:30:39Z",
+      "side": 1,
+      "message": "`checkUpdatable` is the key place where the \"updatability\" requirements are defined:\n(https://cs.android.com/android/platform/superproject/+/refs/heads/master:build/soong/apex/apex.go;drc\u003d7346c436e5a11ce08f6a80dcfeb8ef941ca30176;l\u003d3022?q\u003dcheckUpdatable)\n\n- should set `min_sdk_version`: cc modules rely on this to enable compile-time check on accidental access to new symbols.\n- should NOT set `use_platform_apis`: platform apis are not public API surface.\n- should NOT set `use_vndk_as_stable`: VNDK can\u0027t be used across releases.\n- should NOT set `future_updatable`\n- `classpath_fragments` should set `generate_classpaths_proto`\n- Java deps should use \"stable\" sdk version\n\nFor these checks vendor apexes are not that different from other updatable apexes. Those requirements shouldn\u0027t be specific to \"mainline\" apexes. \n\nHowever, allowed_deps check is not related to whether an apex is updatable or not. It\u0027s more like \"FYI\".\n\nI\u0027m not adding a special meaning to `updatable`. Instead, if we need a property to indicate a mainline module, then I think we need to be more explicit about it instead of relying \"updatable apex\".",
+      "parentUuid": "21b6c3a9_7dbf7deb",
+      "revId": "9cd979a7fb86c21f22d52eebf5c47ea2c8ec5ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c4de400_fd9de406",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
