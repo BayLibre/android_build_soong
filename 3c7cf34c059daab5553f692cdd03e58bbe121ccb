@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90415c21_0b1d6758",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-26T01:40:52Z",
+      "side": 1,
+      "message": "With this change, microdroid.img contains extra .so files:\n\u003e ./system/lib64/libartbase.so\n\u003e ./system/lib64/libartpalette.so\n\u003e ./system/lib64/libdexfile.so\n\nThey belong to art apex and shouldn\u0027t be in /system/lib.",
+      "revId": "3c7cf34c059daab5553f692cdd03e58bbe121ccb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
