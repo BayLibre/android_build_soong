@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceabff95_672d2d0d",
+        "filename": "android/api_levels.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:43:41Z",
+      "side": 1,
+      "message": "I reverted this change for now because of the merge conflict. I\u0027ll add the internal change to the bzl version of this on the internal branch in a followup cl, and then change it back to use starlark.",
+      "revId": "04f211bf25ce82a5365617837ad835b6562d5fef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
