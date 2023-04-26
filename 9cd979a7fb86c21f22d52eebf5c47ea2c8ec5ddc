@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a050072_b413e709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-26T00:46:15Z",
+      "side": 1,
+      "message": "Can we just use `updatable`? I don\u0027t think it\u0027s a good idea to introduce yet another property for \"updatability\", which is already served by `updatable` property. Instead, I think, if necessary, we\u0027d better have a new property for, for example, \"membership\"?\n\nWhat do you think, Jingwen?",
+      "parentUuid": "207b2746_c628a00b",
+      "revId": "9cd979a7fb86c21f22d52eebf5c47ea2c8ec5ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c4de400_fd9de406",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-25T09:37:22Z",
       "side": 1,
       "message": "I don\u0027t like that \"track myapex\" would still match if we have \"do not track myapex\" in the file. Are you able to provide something more specific? maybe \"\\ntrack myapex\"?\n\nI\u0027m not familiar with the contents of that file...",
+      "revId": "9cd979a7fb86c21f22d52eebf5c47ea2c8ec5ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57d85677_203bc398",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2078,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-26T00:46:15Z",
+      "side": 1,
+      "message": "`message` is an explanation for the assertion. It\u0027s not checked against the file.",
+      "parentUuid": "0c4de400_fd9de406",
       "revId": "9cd979a7fb86c21f22d52eebf5c47ea2c8ec5ddc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
