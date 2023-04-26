@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e9ff38_62af0661",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2023-04-26T16:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "114e5356_f08ec6a1",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 31
+      },
+      "revId": "3141b9572b3046db578544bd71a404868eb22bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82c28515_24879ac2",
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "Agreed. Or, as we discussed in the meeting maybe generate a version for all the modules (not just the ones in the extensions directory), falling back to the dessert release for any that do not.\n\nDid I miss a comment in the meeting that would explain why we can\u0027t do this?",
       "parentUuid": "82c28515_24879ac2",
+      "range": {
+        "startLine": 276,
+        "startChar": 82,
+        "endLine": 276,
+        "endChar": 89
+      },
+      "revId": "3141b9572b3046db578544bd71a404868eb22bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16fed691_037cd760",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2023-04-26T16:59:38Z",
+      "side": 1,
+      "message": "Changed the logic. Building for all the modules now.\nKeeping the name as latest.version as it is not just extensions now.\n\nmodule will get extension version as the last finalized version \nIf the module has never been finalized by sdk extensions, the SDK_INT will be assigned as last finalized version.",
+      "parentUuid": "d89c9b59_c5dabdb2",
       "range": {
         "startLine": 276,
         "startChar": 82,
