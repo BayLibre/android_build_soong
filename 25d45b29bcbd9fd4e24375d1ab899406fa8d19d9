@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20d6325b_16aa528b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-26T12:40:25Z",
+      "side": 1,
+      "message": "Mind adding soong integration tests to ensure that soong_build re-runs when a bzl dep changes?\n\nand a README on how to add a bzl constant and read it in soong code?",
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d56053b_c187f6ce",
+        "filename": "cmd/soong_build/queryview.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-26T12:40:25Z",
+      "side": 1,
+      "message": "is this needed for queryview?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45ebd737_712eda60",
+        "filename": "starlark/starlark.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-26T12:40:25Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 86
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2417cfe4_b0698af7",
+        "filename": "starlark/starlark.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-26T12:40:25Z",
+      "side": 1,
+      "message": "be",
+      "range": {
+        "startLine": 170,
+        "startChar": 46,
+        "endLine": 170,
+        "endChar": 49
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
