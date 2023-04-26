@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9856786e_696338bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-26T08:51:16Z",
+      "side": 1,
+      "message": "I\u0027ll abandon this change.\n\nBut I\u0027d like to claim that `updatable` shouldn\u0027t be used as a synonym for \"mainline\".\n\nMy suggestion is either\n- to use `is_mainline` (which can enforce `updatable`, by definition)\n- or, to use \"system \u0026\u0026 `updatable`\" (see below)\n\n\n```\n                     APEX\n     \n          |  updatable  | not updatable\n----------|-------------|---------------\nsystem    |             |\n----------|-------------|---------------\nother     |             |\npartition |             |\n----------|-------------|---------------\n```",
+      "parentUuid": "880182f1_59aa65ac",
+      "revId": "9cd979a7fb86c21f22d52eebf5c47ea2c8ec5ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c4de400_fd9de406",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
