@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a61c06_ac20ece5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Added an integration check that if a bzl file changes, bp2build reruns. Checking for soong_build reruns is kindof tricky because if bp2build reruns soong_build will also rerun. Which means the change to `ninjaDepsSingleton` is technically not necessary.\n\nAlso added the readme.",
+      "parentUuid": "20d6325b_16aa528b",
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d56053b_c187f6ce",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-04-26T12:40:25Z",
       "side": 1,
       "message": "is this needed for queryview?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb00f29_00635850",
+        "filename": "cmd/soong_build/queryview.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "And apibp2build. Added a comment.",
+      "parentUuid": "6d56053b_c187f6ce",
       "range": {
         "startLine": 50,
         "startChar": 1,
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "060d65a8_42633a11",
+        "filename": "starlark/starlark.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "I kindof wanted to keep this for easy uncommenting because at the moment it\u0027s the only way to check the starlark run time. startTime/endTime aren\u0027t reported anywhere.",
+      "parentUuid": "45ebd737_712eda60",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 86
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2417cfe4_b0698af7",
@@ -94,6 +160,30 @@
       "writtenOn": "2023-04-26T12:40:25Z",
       "side": 1,
       "message": "be",
+      "range": {
+        "startLine": 170,
+        "startChar": 46,
+        "endLine": 170,
+        "endChar": 49
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd678b8a_ca72a05c",
+        "filename": "starlark/starlark.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2417cfe4_b0698af7",
       "range": {
         "startLine": 170,
         "startChar": 46,
@@ -127,6 +217,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2575be2_d15b50bb",
+        "filename": "starlark/starlark.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb77e410_3e56d162",
+      "range": {
+        "startLine": 254,
+        "startChar": 70,
+        "endLine": 255,
+        "endChar": 73
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc98a557_d853127c",
@@ -140,6 +254,30 @@
       "writtenOn": "2023-04-26T14:09:30Z",
       "side": 1,
       "message": "int",
+      "range": {
+        "startLine": 74,
+        "startChar": 59,
+        "endLine": 74,
+        "endChar": 64
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ebcb905_268da30a",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc98a557_d853127c",
       "range": {
         "startLine": 74,
         "startChar": 59,
@@ -173,6 +311,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e0081e_f898fa5e",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "163aa309_12447388",
+      "range": {
+        "startLine": 79,
+        "startChar": 59,
+        "endLine": 79,
+        "endChar": 64
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71550d8b_30007376",
@@ -186,6 +348,30 @@
       "writtenOn": "2023-04-26T14:09:30Z",
       "side": 1,
       "message": "uint32",
+      "range": {
+        "startLine": 84,
+        "startChar": 59,
+        "endLine": 84,
+        "endChar": 64
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5687f53_c27185b1",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71550d8b_30007376",
       "range": {
         "startLine": 84,
         "startChar": 59,
@@ -219,6 +405,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8832f790_9a6cc523",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f7eec3a_1855dc9d",
+      "range": {
+        "startLine": 89,
+        "startChar": 59,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "083fb917_a924e2b8",
@@ -232,6 +442,30 @@
       "writtenOn": "2023-04-26T14:09:30Z",
       "side": 1,
       "message": "uint8",
+      "range": {
+        "startLine": 94,
+        "startChar": 59,
+        "endLine": 94,
+        "endChar": 63
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd2ed93e_bf09c8e7",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "083fb917_a924e2b8",
       "range": {
         "startLine": 94,
         "startChar": 59,
@@ -265,6 +499,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65edeb9b_35a18ce0",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e052b59_fa650d2a",
+      "range": {
+        "startLine": 99,
+        "startChar": 59,
+        "endLine": 99,
+        "endChar": 64
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f0b78dd_a5787afe",
@@ -278,6 +536,30 @@
       "writtenOn": "2023-04-26T14:09:30Z",
       "side": 1,
       "message": "nit: could we reword this as something like `\"Starlark type was \u003ctype\u003e, but %s was requested`?\n\nExample find/replace so that it\u0027s not too much of a hassle:\n```\ns/\"expected /\"Starlark type was /g\ns/, got %s/, but %s was requested/g\n```",
+      "range": {
+        "startLine": 103,
+        "startChar": 28,
+        "endLine": 103,
+        "endChar": 57
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4237fe4d_dea158b3",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f0b78dd_a5787afe",
       "range": {
         "startLine": 103,
         "startChar": 28,
@@ -313,6 +595,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b9350ad0_ca9fc8c3",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "I assume that would round to 0, which is probably fine. There are probably also intermediate (not too small or large) values that are expressible in float64 but will get rounded when converting to float32.\n\nThough TBH that might also be the case with the largest values as well, though I\u0027m not an expert on floats.",
+      "parentUuid": "1ea1688a_51740dfa",
+      "range": {
+        "startLine": 111,
+        "startChar": 39,
+        "endLine": 111,
+        "endChar": 49
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b1c098e9_8ad6bef6",
         "filename": "starlark/unmarshal.go",
         "patchSetId": 8
@@ -324,6 +630,24 @@
       "writtenOn": "2023-04-26T14:09:30Z",
       "side": 1,
       "message": "so for a tuple with heterogeneous types, the caller will call `UnmarshalReflect[[]interface{}](key)`?",
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3bd4422_51063d3e",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "I had to add support for that, but yes, it now works. Same for maps with heterogeneous values.",
+      "parentUuid": "b1c098e9_8ad6bef6",
       "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -345,6 +669,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d238e8_c7094ffa",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "929c7e92_e95abaa7",
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25bf3c06_5015f3cf",
@@ -358,6 +700,30 @@
       "writtenOn": "2023-04-26T14:09:30Z",
       "side": 1,
       "message": "nit: could we change this to something like `Starlark struct had field %s, but requested struct type did not`\n\nI feel like I might be confused which struct it was talking about if I got this error message",
+      "range": {
+        "startLine": 188,
+        "startChar": 29,
+        "endLine": 188,
+        "endChar": 77
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2f52ce_3b9cdc74",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-26T19:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25bf3c06_5015f3cf",
       "range": {
         "startLine": 188,
         "startChar": 29,
