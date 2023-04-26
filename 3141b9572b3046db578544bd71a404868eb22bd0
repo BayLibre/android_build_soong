@@ -134,6 +134,30 @@
       },
       "revId": "3141b9572b3046db578544bd71a404868eb22bd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfe58587_cf10c15a",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-04-26T18:04:10Z",
+      "side": 1,
+      "message": "why though? Now we don\u0027t know if the value in the file is an extension version or an sdk version, and those numbers can\u0027t be compared with each other. It\u0027s not clear to me how this is going to be used for non-extension versions",
+      "parentUuid": "16fed691_037cd760",
+      "range": {
+        "startLine": 276,
+        "startChar": 82,
+        "endLine": 276,
+        "endChar": 89
+      },
+      "revId": "3141b9572b3046db578544bd71a404868eb22bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
