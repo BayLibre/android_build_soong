@@ -16,6 +16,98 @@
       "message": "This isn\u0027t related to vendor/mainline problem. It\u0027s just to increase test coverage ;-)",
       "revId": "138acf2ff3b069f560f4c1f5f7d0deed1d293cbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51b7e9b_cc2dd5dc",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2034,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-26T11:22:57Z",
+      "side": 1,
+      "message": "nit: \"updatable myapex should generate depsinfo file\"",
+      "range": {
+        "startLine": 2034,
+        "startChar": 38,
+        "endLine": 2034,
+        "endChar": 50
+      },
+      "revId": "138acf2ff3b069f560f4c1f5f7d0deed1d293cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f162b9be_53eb2360",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-26T11:22:57Z",
+      "side": 1,
+      "message": "nit: \"non-updatable myapex2 should not generate depsinfo file\"",
+      "range": {
+        "startLine": 2036,
+        "startChar": 44,
+        "endLine": 2036,
+        "endChar": 80
+      },
+      "revId": "138acf2ff3b069f560f4c1f5f7d0deed1d293cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06079598_4c80a80c",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2041,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-26T11:22:57Z",
+      "side": 1,
+      "message": "nit: \"deps with stubs should be tracked in depsinfo as external dep\"",
+      "range": {
+        "startLine": 2041,
+        "startChar": 38,
+        "endLine": 2041,
+        "endChar": 56
+      },
+      "revId": "138acf2ff3b069f560f4c1f5f7d0deed1d293cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b057120b_67de2942",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-04-26T11:22:57Z",
+      "side": 1,
+      "message": "shouldn\u0027t run because..? please add the reason to the error message.",
+      "range": {
+        "startLine": 2066,
+        "startChar": 35,
+        "endLine": 2066,
+        "endChar": 48
+      },
+      "revId": "138acf2ff3b069f560f4c1f5f7d0deed1d293cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
