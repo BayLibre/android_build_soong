@@ -280,6 +280,9 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *stri
 
 	if len(selects) == 0 {
 		// No conditions (or all values are empty lists), so no need for a map.
+		if val, exists := selectMap[bazel.ConditionsDefaultSelectKey]; exists {
+			return prettyPrint(val, 0, emitZeroValues)
+		}
 		return "", nil
 	}
 
