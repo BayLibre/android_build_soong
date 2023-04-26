@@ -227,6 +227,9 @@ const (
 	os
 	osArch
 	productVariables
+	productVariablesAndArch
+	soongConfigVariables
+	soongVariablesAndOs
 	osAndInApex
 	inApex
 )
@@ -267,6 +270,12 @@ func (ct configurationType) validateConfig(config string) {
 		}
 	case productVariables:
 		// do nothing
+	case soongConfigVariables:
+		// do nothing
+	case productVariablesAndArch:
+		// do nothing
+	case soongVariablesAndOs:
+		// do nothing
 	case osAndInApex:
 		// do nothing
 		// this axis can contain additional per-apex keys
@@ -292,6 +301,24 @@ func (ca ConfigurationAxis) SelectKey(config string) string {
 	case osArch:
 		return platformOsArchMap[config]
 	case productVariables:
+		if strings.HasSuffix(config, ConditionsDefaultConfigKey) {
+			// e.g. "acme__feature1__conditions_default" or "android__board__conditions_default"
+			return ConditionsDefaultSelectKey
+		}
+		return fmt.Sprintf("%s:%s", productVariableBazelPackage, config)
+	case productVariablesAndArch:
+		if strings.HasSuffix(config, ConditionsDefaultConfigKey) {
+			// e.g. "acme__feature1__conditions_default" or "android__board__conditions_default"
+			return ConditionsDefaultSelectKey
+		}
+		return fmt.Sprintf("%s:%s", productVariableBazelPackage, config)
+	case soongConfigVariables:
+		if strings.HasSuffix(config, ConditionsDefaultConfigKey) {
+			// e.g. "acme__feature1__conditions_default" or "android__board__conditions_default"
+			return ConditionsDefaultSelectKey
+		}
+		return fmt.Sprintf("%s:%s", productVariableBazelPackage, config)
+	case soongVariablesAndOs:
 		if strings.HasSuffix(config, ConditionsDefaultConfigKey) {
 			// e.g. "acme__feature1__conditions_default" or "android__board__conditions_default"
 			return ConditionsDefaultSelectKey
@@ -325,11 +352,20 @@ var (
 )
 
 // ProductVariableConfigurationAxis returns an axis for the given product variable
-func ProductVariableConfigurationAxis(variable string, outerAxis ConfigurationAxis) ConfigurationAxis {
+func ProductVariableConfigurationAxis(isProductVariable bool, arch bool, variable string) ConfigurationAxis {
+	var ctype configurationType
+	if isProductVariable && arch {
+		ctype = productVariablesAndArch
+	} else if isProductVariable {
+		ctype = productVariables
+	} else if arch {
+		ctype = soongVariablesAndOs
+	} else {
+		ctype = soongConfigVariables
+	}
 	return ConfigurationAxis{
-		configurationType: productVariables,
+		configurationType: ctype,
 		subType:           variable,
-		outerAxisType:     outerAxis.configurationType,
 	}
 }
 
@@ -340,8 +376,6 @@ type ConfigurationAxis struct {
 	// some configuration types (e.g. productVariables) have multiple independent axes, subType helps
 	// distinguish between them without needing to list all 17 product variables.
 	subType string
-	// used to keep track of which product variables are arch variant
-	outerAxisType configurationType
 }
 
 func (ca *ConfigurationAxis) less(other ConfigurationAxis) bool {
