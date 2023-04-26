@@ -290,7 +290,7 @@ var (
 		"packages/modules/adb/tls":                           Bp2BuildDefaultTrueRecursively,
 		"packages/modules/Gki/libkver":                       Bp2BuildDefaultTrue,
 		"packages/modules/NetworkStack/common/captiveportal": Bp2BuildDefaultTrue,
-		"packages/modules/NeuralNetworks/apex":               Bp2BuildDefaultTrue,
+		"packages/modules/NeuralNetworks/apex":               Bp2BuildDefaultTrueRecursively,
 		"packages/providers/MediaProvider/tools/dialogs":     Bp2BuildDefaultFalse, // TODO(b/242834374)
 		"packages/screensavers/Basic":                        Bp2BuildDefaultTrue,
 		"packages/services/Car/tests/SampleRearViewCamera":   Bp2BuildDefaultFalse, // TODO(b/242834321)
