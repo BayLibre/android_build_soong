@@ -258,6 +258,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0eeff63_338daff9",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-26T04:36:14Z",
+      "side": 1,
+      "message": "For category (2), WDYT about building tests in the same configuration that apexes are built in, and not in their platform variants. e.g.\n```\ncc_test {\n  name: \"libneuralnetworks_test\",\n  dynamic_deps: select({\n     \"build/bazel/rules/apex:android-in_com.android.neuralnetworks\": [\n        \":libneuralnetworks\",\n        \"@api_surfaces//module-libapi/current:libnativewindow\" # platform lib\n      ],\n      \"\"build/bazel/rules/apex:android-in_com.android.neuralnetworks\": [\n        //platforms:incompatible\n       ],\n   )}\n}\n``` \n\nEach cc_test lists the test apex in their apex_available, so bp2build should have sufficient metadata to generate this BUILD file (there are some also some sparse uses of `test_for` but I believe those are amenable to this design too).\n\nThe pros\n1. You alluded to this in another thread, but this would test the artifact that **actually** goes on device. In Soong, the test for an apexlib links against platform variant of apexlib and not the apex variant (which is actually installed on the apex and compiled with a different set of cflags).\n \nThe cons\n1. Users would have to run tests as `b test //\u003cpath\u003e/apextest --config\u003d\u003capexconfig\u003e`.\n2. This would create a proliferation of configs in common.bazelrc\n\n\nSince my current proposal for tests is a _signifcant_ deviation from Soong, could we special case tests so that both bp2build and soong use equality of `apex_available` for stub/impl selection, and revisit this in an offline discussion?",
+      "parentUuid": "fe6fdeea_33c1d366",
+      "range": {
+        "startLine": 583,
+        "startChar": 8,
+        "endLine": 584,
+        "endChar": 96
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b998efe8_c9759892",
         "filename": "bp2build/cc_library_shared_conversion_test.go",
         "patchSetId": 4
@@ -350,6 +374,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a77181ba_3b6644ff",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1580,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-26T04:36:14Z",
+      "side": 1,
+      "message": "Ah thanks for catching this, I have fixed this now.",
+      "parentUuid": "21ac5c42_33f8699b",
+      "range": {
+        "startLine": 1575,
+        "startChar": 0,
+        "endLine": 1580,
+        "endChar": 8
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f77db26a_58770168",
@@ -373,6 +421,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3fb4e9c_5af07bf0",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-26T04:36:14Z",
+      "side": 1,
+      "message": "with aosp/2564550 that dedupes common elements, we do not need this anymore",
+      "parentUuid": "f77db26a_58770168",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 37
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90df1369_34f570dc",
@@ -386,6 +458,30 @@
       "writtenOn": "2023-04-21T21:13:15Z",
       "side": 1,
       "message": "would it help with deduplication if we determine whether we use stub/impl for all the apex available values and then set values if there are any differences?",
+      "range": {
+        "startLine": 1290,
+        "startChar": 0,
+        "endLine": 1290,
+        "endChar": 35
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "476868b2_d5d8bc5b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-26T04:36:14Z",
+      "side": 1,
+      "message": "with aosp/2564550 that dedupes common elements, we do not need this anymore",
+      "parentUuid": "90df1369_34f570dc",
       "range": {
         "startLine": 1290,
         "startChar": 0,
