@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3340f7f4_1090e3f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-26T08:38:33Z",
+      "side": 1,
+      "message": "This isn\u0027t related to vendor/mainline problem. It\u0027s just to increase test coverage ;-)",
+      "revId": "138acf2ff3b069f560f4c1f5f7d0deed1d293cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
