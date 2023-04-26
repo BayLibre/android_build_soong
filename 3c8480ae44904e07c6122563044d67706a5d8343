@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f97acdd0_319aa0f2",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-04-26T14:28:15Z",
+      "side": 1,
+      "message": "nit: we should be handling the error here",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 18
+      },
+      "revId": "3c8480ae44904e07c6122563044d67706a5d8343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
