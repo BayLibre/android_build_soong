@@ -619,6 +619,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "79150135_8586ca24",
+        "filename": "starlark/unmarshal.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-04-26T20:08:59Z",
+      "side": 1,
+      "message": "I mean depends on who you ask if 1e-45 is close enough to zero ;). My scientist friends might disagree with you.\n\nI think you\u0027re right about float conversions just rounding all sorts of values, though I\u0027m not very knowledgeable myself.",
+      "parentUuid": "b9350ad0_ca9fc8c3",
+      "range": {
+        "startLine": 111,
+        "startChar": 39,
+        "endLine": 111,
+        "endChar": 49
+      },
+      "revId": "25d45b29bcbd9fd4e24375d1ab899406fa8d19d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b1c098e9_8ad6bef6",
         "filename": "starlark/unmarshal.go",
         "patchSetId": 8
