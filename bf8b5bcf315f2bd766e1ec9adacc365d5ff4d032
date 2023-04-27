@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6499473_87949c5b",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-27T18:46:26Z",
+      "side": 1,
+      "message": "This is used for dexpreopting individual apps, which likely takes much less memory than dexpreopting the boot image.  Is it necessary here?",
+      "revId": "bf8b5bcf315f2bd766e1ec9adacc365d5ff4d032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
