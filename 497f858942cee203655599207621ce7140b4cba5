@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffeb2019_de128ada",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-04-27T23:07:32Z",
+      "side": 1,
+      "message": "What I see are:\n`sharedOrStaticLibraryBp2Build` in `cc/library.go`\n`bp2buildProto` in `cc/proto.go`\n`Bp2buildSysprop` in `cc/sysprop.go`\n`Bp2buildProtoProperties` in `proto.go`\nand `ConvertWithBp2build` in `genrule.go`\nMaybe not every occurrence above is within the scope?",
+      "parentUuid": "8790b311_3b33222e",
+      "revId": "497f858942cee203655599207621ce7140b4cba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a52002d1_28b7e0fa",
