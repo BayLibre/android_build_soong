@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d2dd96_0f633e7e",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2034,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-27T00:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51b7e9b_cc2dd5dc",
+      "range": {
+        "startLine": 2034,
+        "startChar": 38,
+        "endLine": 2034,
+        "endChar": 50
+      },
+      "revId": "138acf2ff3b069f560f4c1f5f7d0deed1d293cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f162b9be_53eb2360",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "016413eb_d91988ce",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-27T00:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f162b9be_53eb2360",
+      "range": {
+        "startLine": 2036,
+        "startChar": 44,
+        "endLine": 2036,
+        "endChar": 80
+      },
+      "revId": "138acf2ff3b069f560f4c1f5f7d0deed1d293cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06079598_4c80a80c",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-04-26T11:22:57Z",
       "side": 1,
       "message": "nit: \"deps with stubs should be tracked in depsinfo as external dep\"",
+      "range": {
+        "startLine": 2041,
+        "startChar": 38,
+        "endLine": 2041,
+        "endChar": 56
+      },
+      "revId": "138acf2ff3b069f560f4c1f5f7d0deed1d293cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d3c1f5c_402987fa",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2041,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-27T00:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06079598_4c80a80c",
       "range": {
         "startLine": 2041,
         "startChar": 38,
