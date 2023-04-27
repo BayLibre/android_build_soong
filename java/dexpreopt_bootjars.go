@@ -690,7 +690,7 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 		Flag(outputDir.Join(ctx, "*.oat").String()).
 		Flag(outputDir.Join(ctx, "*.invocation").String())
 
-	cmd := rule.Command()
+	cmd := rule.HighMem().Command()
 
 	extraFlags := ctx.Config().Getenv("ART_BOOT_IMAGE_EXTRA_ARGS")
 	if extraFlags == "" {
