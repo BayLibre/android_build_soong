@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600d0b39_4a5ace52",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-04-27T19:11:56Z",
+      "side": 1,
+      "message": "mind adding a test?",
+      "range": {
+        "startLine": 1208,
+        "startChar": 5,
+        "endLine": 1208,
+        "endChar": 30
+      },
+      "revId": "9d7232da7fa915f491300c82b80d423b7acc54ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3fccc47_072dd194",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-04-27T19:11:56Z",
+      "side": 1,
+      "message": "is this going to be used later?",
+      "range": {
+        "startLine": 1237,
+        "startChar": 5,
+        "endLine": 1237,
+        "endChar": 24
+      },
+      "revId": "9d7232da7fa915f491300c82b80d423b7acc54ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
