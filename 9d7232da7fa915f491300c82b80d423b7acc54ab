@@ -69,6 +69,30 @@
       },
       "revId": "9d7232da7fa915f491300c82b80d423b7acc54ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5c8632_b98e70cd",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-27T19:23:15Z",
+      "side": 1,
+      "message": "Yes, this will be used in aosp/2549671 (I could have done a better job at splitting up my CLs)\n\nWould you prefer that I move this section out of here and into aosp/2549671 where it is actually being used?",
+      "parentUuid": "d3fccc47_072dd194",
+      "range": {
+        "startLine": 1237,
+        "startChar": 5,
+        "endLine": 1237,
+        "endChar": 24
+      },
+      "revId": "9d7232da7fa915f491300c82b80d423b7acc54ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
