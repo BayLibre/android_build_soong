@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb82b14a_3cdf825b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2023-04-27T17:09:44Z",
+      "side": 1,
+      "message": "@ccross For your review - this name change affects a variable currently only used in example_fuzzer, used to redirect bug assignment to the provided e-mail.",
+      "revId": "44fc9a826bbda43df97bb61b36e5333e6c575cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
