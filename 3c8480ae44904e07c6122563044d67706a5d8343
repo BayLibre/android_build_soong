@@ -22,6 +22,30 @@
       },
       "revId": "3c8480ae44904e07c6122563044d67706a5d8343",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dacea165_aef1b98a",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-27T00:40:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f97acdd0_319aa0f2",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 18
+      },
+      "revId": "3c8480ae44904e07c6122563044d67706a5d8343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
