@@ -2028,14 +2028,6 @@ type ArchVariantContext interface {
 	PropertyErrorf(property, fmt string, args ...interface{})
 }
 
-// ArchVariantProperties represents a map of arch-variant config strings to a property interface{}.
-type ArchVariantProperties map[string]interface{}
-
-// ConfigurationAxisToArchVariantProperties represents a map of bazel.ConfigurationAxis to
-// ArchVariantProperties, such that each independent arch-variant axis maps to the
-// configs/properties for that axis.
-type ConfigurationAxisToArchVariantProperties map[bazel.ConfigurationAxis]ArchVariantProperties
-
 // GetArchVariantProperties returns a ConfigurationAxisToArchVariantProperties where the
 // arch-variant properties correspond to the values of the properties of the 'propertySet' struct
 // that are specific to that axis/configuration. Each axis is independent, containing
@@ -2054,9 +2046,9 @@ type ConfigurationAxisToArchVariantProperties map[bazel.ConfigurationAxis]ArchVa
 // For example: `arch: { x86: { Foo: ["bar"] } }, multilib: { lib32: {` Foo: ["baz"] } }`
 // will result in `Foo: ["bar", "baz"]` being returned for architecture x86, if the given
 // propertyset contains `Foo []string`.
-func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySet interface{}) ConfigurationAxisToArchVariantProperties {
+func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySet interface{}) bazel.SelectSequence[interface{}] {
 	// Return value of the arch types to the prop values for that arch.
-	axisToProps := ConfigurationAxisToArchVariantProperties{}
+	axisToProps := bazel.NewSelectSequence[interface{}]()
 
 	// Nothing to do for non-arch-specific modules.
 	if !m.ArchSpecific() {
@@ -2072,7 +2064,9 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 		srcType := reflect.ValueOf(generalProp).Type()
 		if srcType == dstType {
 			archProperties = m.archProperties[i]
-			axisToProps[bazel.NoConfigAxis] = ArchVariantProperties{"": generalProp}
+			generalPropsSelect := bazel.NewSelect[interface{}]()
+			generalPropsSelect.AddConditionsDefault(generalProp)
+			axisToProps.AddSelect(generalPropsSelect)
 			break
 		}
 	}
@@ -2082,7 +2076,7 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 		return axisToProps
 	}
 
-	archToProp := ArchVariantProperties{}
+	archToProp := bazel.NewSelect[interface{}]()
 	// For each arch type (x86, arm64, etc.)
 	for _, arch := range ArchTypeList() {
 		// Arch properties are sometimes sharded (see createArchPropTypeDesc() ).
@@ -2109,7 +2103,7 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 			}
 		}
 
-		archToProp[arch.Name] = mergeStructs(ctx, propertyStructs, propertySet)
+		archToProp.AddBranchFromComponents(mergeStructs(ctx, propertyStructs, propertySet), bazel.SelectBranchComponentArch(arch.Name))
 
 		// In soong, if multiple features match the current configuration, they're
 		// all used. In bazel, we have to have unambiguous select() statements, so
@@ -2131,14 +2125,20 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 			for _, feature := range features {
 				propsForCurrentFeatureSet = append(propsForCurrentFeatureSet, archFeaturePropertyStructs[feature]...)
 			}
-			archToProp[arch.Name+"-"+strings.Join(features, "-")] =
-				mergeStructs(ctx, propsForCurrentFeatureSet, propertySet)
+
+			featureBranchComponents := make([]bazel.SelectBranchComponent, 0, len(features)+1)
+			featureBranchComponents = append(featureBranchComponents, bazel.SelectBranchComponentArch(arch.Name))
+			for _, feature := range features {
+				featureBranchComponents = append(featureBranchComponents, bazel.SelectBranchComponentArchFeature(feature))
+			}
+			archToProp.AddBranchFromComponents(mergeStructs(ctx, propsForCurrentFeatureSet, propertySet),
+				featureBranchComponents...)
 		}
 	}
-	axisToProps[bazel.ArchConfigurationAxis] = archToProp
+	axisToProps.AddSelect(archToProp)
 
-	osToProp := ArchVariantProperties{}
-	archOsToProp := ArchVariantProperties{}
+	osToProp := bazel.NewSelect[interface{}]()
+	archOsToProp := bazel.NewSelect[interface{}]()
 
 	linuxStructs := getTargetStructs(ctx, archProperties, "Linux")
 	bionicStructs := getTargetStructs(ctx, archProperties, "Bionic")
@@ -2180,7 +2180,7 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 		if os.Class == Host && os != Windows {
 			osStructs = append(osStructs, hostNotWindowsStructs...)
 		}
-		osToProp[os.Name] = mergeStructs(ctx, osStructs, propertySet)
+		osToProp.AddBranchFromComponents(mergeStructs(ctx, osStructs, propertySet), bazel.SelectBranchComponentOS(os.Name))
 
 		// For arm, x86, ...
 		for _, arch := range osArchTypeMap[os] {
@@ -2211,16 +2211,17 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 			}
 
 			targetField := GetCompoundTargetField(os, arch)
-			targetName := fmt.Sprintf("%s_%s", os.Name, arch.Name)
 			targetStructs := getTargetStructs(ctx, archProperties, targetField)
 			osArchStructs = append(osArchStructs, targetStructs...)
 
-			archOsToProp[targetName] = mergeStructs(ctx, osArchStructs, propertySet)
+			archOsToProp.AddBranchFromComponents(mergeStructs(ctx, osArchStructs, propertySet),
+				bazel.SelectBranchComponentOS(os.Name),
+				bazel.SelectBranchComponentArch(arch.Name))
 		}
 	}
+	axisToProps.AddSelect(osToProp)
+	axisToProps.AddSelect(archOsToProp)
 
-	axisToProps[bazel.OsConfigurationAxis] = osToProp
-	axisToProps[bazel.OsArchConfigurationAxis] = archOsToProp
 	return axisToProps
 }
 

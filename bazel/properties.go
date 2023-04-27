@@ -292,88 +292,77 @@ type Attribute interface {
 	HasConfigurableValues() bool
 }
 
-type labelSelectValues map[string]*Label
-
-type configurableLabels map[ConfigurationAxis]labelSelectValues
-
-func (cl configurableLabels) setValueForAxis(axis ConfigurationAxis, config string, value *Label) {
-	if cl[axis] == nil {
-		cl[axis] = make(labelSelectValues)
-	}
-	cl[axis][config] = value
-}
-
 // Represents an attribute whose value is a single label
 type LabelAttribute struct {
 	Value *Label
 
-	ConfigurableValues configurableLabels
+	ConfigurableValues SelectSequence[*Label]
 }
 
-func (la *LabelAttribute) axisTypes() map[configurationType]bool {
-	types := map[configurationType]bool{}
-	for k := range la.ConfigurableValues {
-		if len(la.ConfigurableValues[k]) > 0 {
-			types[k.configurationType] = true
-		}
-	}
-	return types
-}
+//func (la *LabelAttribute) axisTypes() map[configurationType]bool {
+//	types := map[configurationType]bool{}
+//	for k := range la.ConfigurableValues {
+//		if len(la.ConfigurableValues[k]) > 0 {
+//			types[k.configurationType] = true
+//		}
+//	}
+//	return types
+//}
 
 // Collapse reduces the configurable axes of the label attribute to a single axis.
 // This is necessary for final writing to bp2build, as a configurable label
 // attribute can only be comprised by a single select.
 func (la *LabelAttribute) Collapse() error {
-	axisTypes := la.axisTypes()
-	_, containsOs := axisTypes[os]
-	_, containsArch := axisTypes[arch]
-	_, containsOsArch := axisTypes[osArch]
-	_, containsProductVariables := axisTypes[productVariables]
-	if containsProductVariables {
-		if containsOs || containsArch || containsOsArch {
-			if containsArch {
-				allProductVariablesAreArchVariant := true
-				for k := range la.ConfigurableValues {
-					if k.configurationType == productVariables && k.outerAxisType != arch {
-						allProductVariablesAreArchVariant = false
-					}
-				}
-				if !allProductVariablesAreArchVariant {
-					return fmt.Errorf("label attribute could not be collapsed as it has two or more unrelated axes")
-				}
-			} else {
-				return fmt.Errorf("label attribute could not be collapsed as it has two or more unrelated axes")
-			}
-		}
-	}
-	if (containsOs && containsArch) || (containsOsArch && (containsOs || containsArch)) {
-		// If a bool attribute has both os and arch configuration axes, the only
-		// way to successfully union their values is to increase the granularity
-		// of the configuration criteria to os_arch.
-		for osType, supportedArchs := range osToArchMap {
-			for _, supportedArch := range supportedArchs {
-				osArch := osArchString(osType, supportedArch)
-				if archOsVal := la.SelectValue(OsArchConfigurationAxis, osArch); archOsVal != nil {
-					// Do nothing, as the arch_os is explicitly defined already.
-				} else {
-					archVal := la.SelectValue(ArchConfigurationAxis, supportedArch)
-					osVal := la.SelectValue(OsConfigurationAxis, osType)
-					if osVal != nil && archVal != nil {
-						// In this case, arch takes precedence. (This fits legacy Soong behavior, as arch mutator
-						// runs after os mutator.
-						la.SetSelectValue(OsArchConfigurationAxis, osArch, *archVal)
-					} else if osVal != nil && archVal == nil {
-						la.SetSelectValue(OsArchConfigurationAxis, osArch, *osVal)
-					} else if osVal == nil && archVal != nil {
-						la.SetSelectValue(OsArchConfigurationAxis, osArch, *archVal)
-					}
-				}
-			}
-		}
-		// All os_arch values are now set. Clear os and arch axes.
-		delete(la.ConfigurableValues, ArchConfigurationAxis)
-		delete(la.ConfigurableValues, OsConfigurationAxis)
-	}
+	//axisTypes := la.axisTypes()
+	//_, containsOs := axisTypes[os]
+	//_, containsArch := axisTypes[arch]
+	//_, containsOsArch := axisTypes[osArch]
+	//_, containsProductVariables := axisTypes[productVariables]
+	//if containsProductVariables {
+	//	if containsOs || containsArch || containsOsArch {
+	//		if containsArch {
+	//			allProductVariablesAreArchVariant := true
+	//			for k := range la.ConfigurableValues {
+	//				if k.configurationType == productVariables && k.outerAxisType != arch {
+	//					allProductVariablesAreArchVariant = false
+	//				}
+	//			}
+	//			if !allProductVariablesAreArchVariant {
+	//				return fmt.Errorf("label attribute could not be collapsed as it has two or more unrelated axes")
+	//			}
+	//		} else {
+	//			return fmt.Errorf("label attribute could not be collapsed as it has two or more unrelated axes")
+	//		}
+	//	}
+	//}
+	//if (containsOs && containsArch) || (containsOsArch && (containsOs || containsArch)) {
+	//	// If a bool attribute has both os and arch configuration axes, the only
+	//	// way to successfully union their values is to increase the granularity
+	//	// of the configuration criteria to os_arch.
+	//	for osType, supportedArchs := range osToArchMap {
+	//		for _, supportedArch := range supportedArchs {
+	//			osArch := osArchString(osType, supportedArch)
+	//			if archOsVal := la.SelectValue(OsArchConfigurationAxis, osArch); archOsVal != nil {
+	//				// Do nothing, as the arch_os is explicitly defined already.
+	//			} else {
+	//				archVal := la.SelectValue(ArchConfigurationAxis, supportedArch)
+	//				osVal := la.SelectValue(OsConfigurationAxis, osType)
+	//				if osVal != nil && archVal != nil {
+	//					// In this case, arch takes precedence. (This fits legacy Soong behavior, as arch mutator
+	//					// runs after os mutator.
+	//					la.SetSelectValue(OsArchConfigurationAxis, osArch, *archVal)
+	//				} else if osVal != nil && archVal == nil {
+	//					la.SetSelectValue(OsArchConfigurationAxis, osArch, *osVal)
+	//				} else if osVal == nil && archVal != nil {
+	//					la.SetSelectValue(OsArchConfigurationAxis, osArch, *archVal)
+	//				}
+	//			}
+	//		}
+	//	}
+	//	// All os_arch values are now set. Clear os and arch axes.
+	//	delete(la.ConfigurableValues, ArchConfigurationAxis)
+	//	delete(la.ConfigurableValues, OsConfigurationAxis)
+	//}
 	return nil
 }
 
@@ -447,30 +436,12 @@ func (ctb configToBools) setValue(config string, value *bool) {
 	ctb[config] = *value
 }
 
-type configurableBools map[ConfigurationAxis]configToBools
-
-func (cb configurableBools) setValueForAxis(axis ConfigurationAxis, config string, value *bool) {
-	if cb[axis] == nil {
-		cb[axis] = make(configToBools)
-	}
-	cb[axis].setValue(config, value)
-}
-
 // BoolAttribute represents an attribute whose value is a single bool but may be configurable..
-type BoolAttribute struct {
-	Value *bool
-
-	ConfigurableValues configurableBools
-}
+type BoolAttribute Select[bool]
 
 // HasConfigurableValues returns whether there are configurable values for this attribute.
 func (ba BoolAttribute) HasConfigurableValues() bool {
-	for _, cfgToBools := range ba.ConfigurableValues {
-		if len(cfgToBools) > 0 {
-			return true
-		}
-	}
-	return false
+	return len(ba) > 1
 }
 
 // SetValue sets value for the no config axis
@@ -685,12 +656,9 @@ func (ll labelListSelectValues) HasConfigurableValues() bool {
 // LabelListAttribute is used to represent a list of Bazel labels as an
 // attribute.
 type LabelListAttribute struct {
-	// The non-configured attribute label list Value. Required.
-	Value LabelList
-
 	// The configured attribute label list Values. Optional
 	// a map of independent configurability axes
-	ConfigurableValues configurableLabelLists
+	ConfigurableValues SelectSequence[LabelList]
 
 	// If true, differentiate between "nil" and "empty" list. nil means that
 	// this attribute should not be specified at all, and "empty" means that
@@ -711,43 +679,10 @@ type LabelListAttribute struct {
 	Prepend bool
 }
 
-type configurableLabelLists map[ConfigurationAxis]labelListSelectValues
-
-func (cll configurableLabelLists) setValueForAxis(axis ConfigurationAxis, config string, list LabelList) {
-	if list.IsNil() {
-		if _, ok := cll[axis][config]; ok {
-			delete(cll[axis], config)
-		}
-		return
-	}
-	if cll[axis] == nil {
-		cll[axis] = make(labelListSelectValues)
-	}
-
-	cll[axis][config] = list
-}
-
-func (cll configurableLabelLists) Append(other configurableLabelLists, forceSpecifyEmptyList bool) {
-	for axis, otherSelects := range other {
-		selects := cll[axis]
-		if selects == nil {
-			selects = make(labelListSelectValues, len(otherSelects))
-		}
-		selects.appendSelects(otherSelects, forceSpecifyEmptyList)
-		cll[axis] = selects
-	}
-}
-
-func (lla *LabelListAttribute) Clone() *LabelListAttribute {
-	result := &LabelListAttribute{ForceSpecifyEmptyList: lla.ForceSpecifyEmptyList}
-	return result.Append(*lla)
-}
-
 // MakeLabelListAttribute initializes a LabelListAttribute with the non-arch specific value.
 func MakeLabelListAttribute(value LabelList) LabelListAttribute {
 	return LabelListAttribute{
-		Value:              value,
-		ConfigurableValues: make(configurableLabelLists),
+		ConfigurableValues: NewSelectSequence[LabelList](),
 	}
 }
 
@@ -756,117 +691,14 @@ func MakeSingleLabelListAttribute(value Label) LabelListAttribute {
 	return MakeLabelListAttribute(MakeLabelList([]Label{value}))
 }
 
-func (lla *LabelListAttribute) SetValue(list LabelList) {
-	lla.SetSelectValue(NoConfigAxis, "", list)
-}
-
-// SetSelectValue set a value for a bazel select for the given axis, config and value.
-func (lla *LabelListAttribute) SetSelectValue(axis ConfigurationAxis, config string, list LabelList) {
-	axis.validateConfig(config)
-	switch axis.configurationType {
-	case noConfig:
-		lla.Value = list
-	case arch, os, osArch, productVariables, osAndInApex, inApex:
-		if lla.ConfigurableValues == nil {
-			lla.ConfigurableValues = make(configurableLabelLists)
-		}
-		lla.ConfigurableValues.setValueForAxis(axis, config, list)
-	default:
-		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
-	}
-}
-
-// SelectValue gets a value for a bazel select for the given axis and config.
-func (lla *LabelListAttribute) SelectValue(axis ConfigurationAxis, config string) LabelList {
-	axis.validateConfig(config)
-	switch axis.configurationType {
-	case noConfig:
-		return lla.Value
-	case arch, os, osArch, productVariables, osAndInApex, inApex:
-		return lla.ConfigurableValues[axis][config]
-	default:
-		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
-	}
-}
-
-// SortedConfigurationAxes returns all the used ConfigurationAxis in sorted order.
-func (lla *LabelListAttribute) SortedConfigurationAxes() []ConfigurationAxis {
-	return SortedConfigurationAxes(lla.ConfigurableValues)
-}
-
-// Append all values, including os and arch specific ones, from another
-// LabelListAttribute to this LabelListAttribute. Returns this LabelListAttribute.
-func (lla *LabelListAttribute) Append(other LabelListAttribute) *LabelListAttribute {
-	forceSpecifyEmptyList := lla.ForceSpecifyEmptyList || other.ForceSpecifyEmptyList
-	if forceSpecifyEmptyList && lla.Value.IsNil() && !other.Value.IsNil() {
-		lla.Value.Includes = []Label{}
-	}
-	lla.Value.Append(other.Value)
-	if lla.ConfigurableValues == nil {
-		lla.ConfigurableValues = make(configurableLabelLists)
-	}
-	lla.ConfigurableValues.Append(other.ConfigurableValues, forceSpecifyEmptyList)
-	return lla
-}
-
-// Add inserts the labels for each axis of LabelAttribute at the end of corresponding axis's
-// LabelList within the LabelListAttribute
-func (lla *LabelListAttribute) Add(label *LabelAttribute) {
-	if label == nil {
-		return
-	}
-
-	lla.Value.Add(label.Value)
-	if lla.ConfigurableValues == nil && label.ConfigurableValues != nil {
-		lla.ConfigurableValues = make(configurableLabelLists)
-	}
-	for axis, _ := range label.ConfigurableValues {
-		if _, exists := lla.ConfigurableValues[axis]; !exists {
-			lla.ConfigurableValues[axis] = make(labelListSelectValues)
-		}
-		lla.ConfigurableValues[axis].addSelects(label.ConfigurableValues[axis])
-	}
-}
-
 // HasConfigurableValues returns true if the attribute contains axis-specific label list values.
 func (lla LabelListAttribute) HasConfigurableValues() bool {
-	for _, selectValues := range lla.ConfigurableValues {
-		if len(selectValues) > 0 {
-			return true
-		}
-	}
-	return false
-}
-
-// HasAxisSpecificValues returns true if the attribute contains axis specific label list values from a given axis
-func (lla LabelListAttribute) HasAxisSpecificValues(axis ConfigurationAxis) bool {
-	for _, values := range lla.ConfigurableValues[axis] {
-		if !values.IsNil() {
-			return true
-		}
-	}
-	return false
+	return lla.ConfigurableValues.HasConfigurableValues()
 }
 
 // IsEmpty returns true if the attribute has no values under any configuration.
 func (lla LabelListAttribute) IsEmpty() bool {
-	if len(lla.Value.Includes) > 0 {
-		return false
-	}
-	for axis, _ := range lla.ConfigurableValues {
-		if lla.ConfigurableValues[axis].HasConfigurableValues() {
-			return false
-		}
-	}
-	return true
-}
-
-// IsNil returns true if the attribute has not been set for any configuration.
-func (lla LabelListAttribute) IsNil() bool {
-	if lla.Value.Includes != nil {
-		return false
-	}
-	return !lla.HasConfigurableValues()
+	return lla.ConfigurableValues.IsEmpty()
 }
 
 // Exclude for the given axis, config, removes Includes in labelList from Includes and appends them
@@ -1100,162 +932,25 @@ func PartitionLabelListAttribute(ctx OtherModuleContext, lla *LabelListAttribute
 // StringAttribute corresponds to the string Bazel attribute type with
 // support for additional metadata, like configurations.
 type StringAttribute struct {
-	// The base value of the string attribute.
-	Value *string
-
-	// The configured attribute label list Values. Optional
-	// a map of independent configurability axes
-	ConfigurableValues configurableStrings
+	Select[string]
 }
 
-type configurableStrings map[ConfigurationAxis]stringSelectValues
-
-func (cs configurableStrings) setValueForAxis(axis ConfigurationAxis, config string, str *string) {
-	if cs[axis] == nil {
-		cs[axis] = make(stringSelectValues)
-	}
-	cs[axis][config] = str
-}
-
-type stringSelectValues map[string]*string
-
-// HasConfigurableValues returns true if the attribute contains axis-specific string values.
-func (sa StringAttribute) HasConfigurableValues() bool {
-	for _, selectValues := range sa.ConfigurableValues {
-		if len(selectValues) > 0 {
-			return true
-		}
-	}
-	return false
-}
-
-// SetValue sets the base, non-configured value for the Label
-func (sa *StringAttribute) SetValue(value string) {
-	sa.SetSelectValue(NoConfigAxis, "", &value)
-}
-
-// SetSelectValue set a value for a bazel select for the given axis, config and value.
-func (sa *StringAttribute) SetSelectValue(axis ConfigurationAxis, config string, str *string) {
-	axis.validateConfig(config)
-	switch axis.configurationType {
-	case noConfig:
-		sa.Value = str
-	case arch, os, osArch, productVariables:
-		if sa.ConfigurableValues == nil {
-			sa.ConfigurableValues = make(configurableStrings)
-		}
-		sa.ConfigurableValues.setValueForAxis(axis, config, str)
-	default:
-		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
-	}
-}
-
-// SelectValue gets a value for a bazel select for the given axis and config.
-func (sa *StringAttribute) SelectValue(axis ConfigurationAxis, config string) *string {
-	axis.validateConfig(config)
-	switch axis.configurationType {
-	case noConfig:
-		return sa.Value
-	case arch, os, osArch, productVariables:
-		if v, ok := sa.ConfigurableValues[axis][config]; ok {
-			return v
-		} else {
-			return nil
-		}
-	default:
-		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
-	}
-}
-
-// SortedConfigurationAxes returns all the used ConfigurationAxis in sorted order.
-func (sa *StringAttribute) SortedConfigurationAxes() []ConfigurationAxis {
-	return SortedConfigurationAxes(sa.ConfigurableValues)
-}
-
-// Collapse reduces the configurable axes of the string attribute to a single axis.
-// This is necessary for final writing to bp2build, as a configurable string
-// attribute can only be comprised by a single select.
-func (sa *StringAttribute) Collapse() error {
-	axisTypes := sa.axisTypes()
-	_, containsOs := axisTypes[os]
-	_, containsArch := axisTypes[arch]
-	_, containsOsArch := axisTypes[osArch]
-	_, containsProductVariables := axisTypes[productVariables]
-	if containsProductVariables {
-		if containsOs || containsArch || containsOsArch {
-			return fmt.Errorf("string attribute could not be collapsed as it has two or more unrelated axes")
-		}
-	}
-	if (containsOs && containsArch) || (containsOsArch && (containsOs || containsArch)) {
-		// If a bool attribute has both os and arch configuration axes, the only
-		// way to successfully union their values is to increase the granularity
-		// of the configuration criteria to os_arch.
-		for osType, supportedArchs := range osToArchMap {
-			for _, supportedArch := range supportedArchs {
-				osArch := osArchString(osType, supportedArch)
-				if archOsVal := sa.SelectValue(OsArchConfigurationAxis, osArch); archOsVal != nil {
-					// Do nothing, as the arch_os is explicitly defined already.
-				} else {
-					archVal := sa.SelectValue(ArchConfigurationAxis, supportedArch)
-					osVal := sa.SelectValue(OsConfigurationAxis, osType)
-					if osVal != nil && archVal != nil {
-						// In this case, arch takes precedence. (This fits legacy Soong behavior, as arch mutator
-						// runs after os mutator.
-						sa.SetSelectValue(OsArchConfigurationAxis, osArch, archVal)
-					} else if osVal != nil && archVal == nil {
-						sa.SetSelectValue(OsArchConfigurationAxis, osArch, osVal)
-					} else if osVal == nil && archVal != nil {
-						sa.SetSelectValue(OsArchConfigurationAxis, osArch, archVal)
-					}
-				}
-			}
-		}
-		/// All os_arch values are now set. Clear os and arch axes.
-		delete(sa.ConfigurableValues, ArchConfigurationAxis)
-		delete(sa.ConfigurableValues, OsConfigurationAxis)
-		// Verify post-condition; this should never fail, provided no additional
-		// axes are introduced.
-		if len(sa.ConfigurableValues) > 1 {
-			panic(fmt.Errorf("error in collapsing attribute: %#v", sa))
-		}
-	} else if containsProductVariables {
-		usedBaseValue := false
-		for a, configToProp := range sa.ConfigurableValues {
-			if a.configurationType == productVariables {
-				for c, p := range configToProp {
-					if p == nil {
-						sa.SetSelectValue(a, c, sa.Value)
-						usedBaseValue = true
-					}
-				}
-			}
-		}
-		if usedBaseValue {
-			sa.Value = nil
-		}
-	}
-	return nil
-}
-
-func (sa *StringAttribute) axisTypes() map[configurationType]bool {
-	types := map[configurationType]bool{}
-	for k := range sa.ConfigurableValues {
-		if strs := sa.ConfigurableValues[k]; len(strs) > 0 {
-			types[k.configurationType] = true
-		}
-	}
-	return types
-}
+//func (sa *StringAttribute) axisTypes() map[configurationType]bool {
+//	types := map[configurationType]bool{}
+//	for k := range sa.ConfigurableValues {
+//		if strs := sa.ConfigurableValues[k]; len(strs) > 0 {
+//			types[k.configurationType] = true
+//		}
+//	}
+//	return types
+//}
 
 // StringListAttribute corresponds to the string_list Bazel attribute type with
 // support for additional metadata, like configurations.
 type StringListAttribute struct {
-	// The base value of the string list attribute.
-	Value []string
-
 	// The configured attribute label list Values. Optional
 	// a map of independent configurability axes
-	ConfigurableValues configurableStringLists
+	ConfigurableValues SelectSequence[[]string]
 
 	// If a property has struct tag "variant_prepend", this value should
 	// be set to True, so that when bp2build generates BUILD.bazel, variant
@@ -1263,143 +958,24 @@ type StringListAttribute struct {
 	Prepend bool
 }
 
-// IsEmpty returns true if the attribute has no values under any configuration.
-func (sla StringListAttribute) IsEmpty() bool {
-	return len(sla.Value) == 0 && !sla.HasConfigurableValues()
-}
-
-type configurableStringLists map[ConfigurationAxis]stringListSelectValues
-
-func (csl configurableStringLists) Append(other configurableStringLists) {
-	for axis, otherSelects := range other {
-		selects := csl[axis]
-		if selects == nil {
-			selects = make(stringListSelectValues, len(otherSelects))
-		}
-		selects.appendSelects(otherSelects)
-		csl[axis] = selects
-	}
-}
-
-func (csl configurableStringLists) setValueForAxis(axis ConfigurationAxis, config string, list []string) {
-	if csl[axis] == nil {
-		csl[axis] = make(stringListSelectValues)
-	}
-	csl[axis][config] = list
-}
-
-type stringListSelectValues map[string][]string
-
-func (sl stringListSelectValues) appendSelects(other stringListSelectValues) {
-	for k, v := range other {
-		sl[k] = append(sl[k], v...)
-	}
-}
-
-func (sl stringListSelectValues) hasConfigurableValues(other stringListSelectValues) bool {
-	for _, val := range sl {
-		if len(val) > 0 {
-			return true
-		}
-	}
-	return false
-}
-
 // MakeStringListAttribute initializes a StringListAttribute with the non-arch specific value.
 func MakeStringListAttribute(value []string) StringListAttribute {
 	// NOTE: These strings are not necessarily unique or sorted.
-	return StringListAttribute{
-		Value:              value,
-		ConfigurableValues: make(configurableStringLists),
-	}
+	result := StringListAttribute{ConfigurableValues: NewSelectSequence[[]string]()}
+	sel := NewSelect[[]string]()
+	sel.AddConditionsDefault(value)
+	result.ConfigurableValues.AddSelect(sel)
+	return result
+}
+
+// IsEmpty returns true if the attribute has no values under any configuration.
+func (sla StringListAttribute) IsEmpty() bool {
+	return sla.ConfigurableValues.IsEmpty()
 }
 
 // HasConfigurableValues returns true if the attribute contains axis-specific string_list values.
 func (sla StringListAttribute) HasConfigurableValues() bool {
-	for _, selectValues := range sla.ConfigurableValues {
-		if len(selectValues) > 0 {
-			return true
-		}
-	}
-	return false
-}
-
-// Append appends all values, including os and arch specific ones, from another
-// StringListAttribute to this StringListAttribute
-func (sla *StringListAttribute) Append(other StringListAttribute) *StringListAttribute {
-	sla.Value = append(sla.Value, other.Value...)
-	if sla.ConfigurableValues == nil {
-		sla.ConfigurableValues = make(configurableStringLists)
-	}
-	sla.ConfigurableValues.Append(other.ConfigurableValues)
-	return sla
-}
-
-func (sla *StringListAttribute) Clone() *StringListAttribute {
-	result := &StringListAttribute{}
-	return result.Append(*sla)
-}
-
-// SetSelectValue set a value for a bazel select for the given axis, config and value.
-func (sla *StringListAttribute) SetSelectValue(axis ConfigurationAxis, config string, list []string) {
-	axis.validateConfig(config)
-	switch axis.configurationType {
-	case noConfig:
-		sla.Value = list
-	case arch, os, osArch, productVariables, osAndInApex:
-		if sla.ConfigurableValues == nil {
-			sla.ConfigurableValues = make(configurableStringLists)
-		}
-		sla.ConfigurableValues.setValueForAxis(axis, config, list)
-	default:
-		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
-	}
-}
-
-// SelectValue gets a value for a bazel select for the given axis and config.
-func (sla *StringListAttribute) SelectValue(axis ConfigurationAxis, config string) []string {
-	axis.validateConfig(config)
-	switch axis.configurationType {
-	case noConfig:
-		return sla.Value
-	case arch, os, osArch, productVariables, osAndInApex:
-		return sla.ConfigurableValues[axis][config]
-	default:
-		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
-	}
-}
-
-// SortedConfigurationAxes returns all the used ConfigurationAxis in sorted order.
-func (sla *StringListAttribute) SortedConfigurationAxes() []ConfigurationAxis {
-	return SortedConfigurationAxes(sla.ConfigurableValues)
-}
-
-// DeduplicateAxesFromBase ensures no duplication of items between the no-configuration value and
-// configuration-specific values. For example, if we would convert this StringListAttribute as:
-//
-//	["a", "b", "c"] + select({
-//	   "//condition:one": ["a", "d"],
-//	   "//conditions:default": [],
-//	})
-//
-// after this function, we would convert this StringListAttribute as:
-//
-//	["a", "b", "c"] + select({
-//	   "//condition:one": ["d"],
-//	   "//conditions:default": [],
-//	})
-func (sla *StringListAttribute) DeduplicateAxesFromBase() {
-	base := sla.Value
-	for axis, configToList := range sla.ConfigurableValues {
-		for config, list := range configToList {
-			remaining := SubtractStrings(list, base)
-			if len(remaining) == 0 {
-				delete(sla.ConfigurableValues[axis], config)
-			} else {
-				sla.ConfigurableValues[axis][config] = remaining
-			}
-		}
-	}
+	return sla.ConfigurableValues.HasConfigurableValues()
 }
 
 // TryVariableSubstitution, replace string substitution formatting within each string in slice with

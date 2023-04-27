@@ -17,8 +17,10 @@ package bazel
 import (
 	"fmt"
 	"math"
+	"reflect"
 	"sort"
 	"strings"
+	"sync"
 )
 
 const (
@@ -347,4 +349,239 @@ func (ca *ConfigurationAxis) less(other ConfigurationAxis) bool {
 		return ca.subType < other.subType
 	}
 	return ca.configurationType < other.configurationType
+}
+
+type SelectBranchComponentOS string
+
+func (c SelectBranchComponentOS) axis() string {
+	return "os"
+}
+
+type SelectBranchComponentArch string
+
+func (c SelectBranchComponentArch) axis() string {
+	return "arch"
+}
+
+type SelectBranchComponentArchVariant string
+
+func (c SelectBranchComponentArchVariant) axis() string {
+	return "arch_variant"
+}
+
+type SelectBranchComponentArchFeature string
+
+func (c SelectBranchComponentArchFeature) axis() string {
+	return "arch_feature_" + string(c)
+}
+
+type SelectBranchComponentProductVariable string
+
+func (c SelectBranchComponentProductVariable) axis() string {
+	return "product_variable_" + string(c)
+}
+
+type SelectBranchComponentSoongConfigBoolOrValueVariable struct {
+	namespace string
+	variable  string
+}
+
+func (c SelectBranchComponentSoongConfigBoolOrValueVariable) axis() string {
+	return "soong_config_" + c.namespace + "__" + c.variable
+}
+
+type SelectBranchComponentSoongConfigStringVariable struct {
+	namespace string
+	variable  string
+	value     string
+}
+
+func (c SelectBranchComponentSoongConfigStringVariable) axis() string {
+	// Don't take into account c.value, because you can't have two different values in the same
+	// select Branch. (but you can in the same select _statement_)
+	return "soong_config_" + c.namespace + "__" + c.variable
+}
+
+type SelectBranchComponent interface {
+	// If two SelectBranchComponents return the same axis, they cannot both be present in a single SelectBranch
+	axis() string
+}
+
+type requiresConstructor struct {
+	iPromiseIUsedTheConstructor bool
+}
+
+func (c requiresConstructor) verifyUsesConstructor() {
+	if !c.iPromiseIUsedTheConstructor {
+		panic("Use the New<Type> function instead of creating this type manually")
+	}
+}
+
+type SelectBranchComponentsLinkedList struct {
+	value []SelectBranchComponent
+	next  *SelectBranchComponentsLinkedList
+}
+
+var globalSelectBranches *SelectBranchComponentsLinkedList
+var globalSelectBranchesLock sync.Mutex
+
+var ConditionsDefaultBranch = NewSelectBranch()
+
+// SelectBranch represents a specific branch of a select statement in bazel. It's made up of
+// 0 or more SelectBranchComponents. If there are no SelectBranchComponents, the branch will
+// represent //conditions:default
+type SelectBranch struct {
+	// Use NewSelectBranch() instead of initializing this struct manually
+	requiresConstructor
+	// Impl is a pointer into globalSelectBranches in order to make SelectBranch comparable
+	impl *[]SelectBranchComponent
+}
+
+func NewSelectBranch(components ...SelectBranchComponent) SelectBranch {
+	// TODO sort components
+	for i, component := range components {
+		for j, component2 := range components {
+			if i != j {
+				if reflect.DeepEqual(component, component2) {
+					panic("Duplicate component in one SelectBranch")
+				}
+				if component.axis() == component2.axis() {
+					panic("Two different SelectBranchComponents has the same axis in one SelectBranch")
+				}
+			}
+		}
+	}
+	globalSelectBranchesLock.Lock()
+	defer globalSelectBranchesLock.Unlock()
+
+	curr := globalSelectBranches
+	for curr != nil {
+		if reflect.DeepEqual(curr.value, components) {
+			break
+		}
+		curr = curr.next
+	}
+
+	if curr == nil {
+		globalSelectBranches = &SelectBranchComponentsLinkedList{
+			value: components,
+			next:  globalSelectBranches,
+		}
+		curr = globalSelectBranches
+	}
+
+	return SelectBranch{
+		requiresConstructor: requiresConstructor{true},
+		impl:                &curr.value,
+	}
+}
+
+func MaybeGetSelectBranchComponent[T SelectBranchComponent](b SelectBranch) (T, bool) {
+	b.verifyUsesConstructor()
+	for _, component := range *b.impl {
+		if comp, ok := component.(T); ok {
+			return comp, true
+		}
+	}
+	var zero T
+	return zero, false
+}
+
+func (b SelectBranch) IsConditionsDefault() bool {
+	b.verifyUsesConstructor()
+	return len(*b.impl) == 0
+}
+
+type Select[T any] struct {
+	// Use NewSelect() instead of initializing this struct manually
+	requiresConstructor
+	impl map[SelectBranch]T
+}
+
+func NewSelect[T any]() Select[T] {
+	return Select[T]{
+		requiresConstructor: requiresConstructor{true},
+		impl:                make(map[SelectBranch]T),
+	}
+}
+
+// Only to be used for reading the branches. For writing, use AddBranch()
+func (s Select[T]) Impl() map[SelectBranch]T {
+	return s.impl
+}
+
+func (s Select[T]) HasConfigurableValues() bool {
+	if len(s.impl) > 1 {
+		return true
+	}
+	for branch := range s.impl {
+		return !branch.IsConditionsDefault()
+	}
+	return false
+}
+
+func (s Select[T]) IsEmpty() bool {
+	return len(s.impl) == 0
+}
+
+func (s Select[T]) AddBranch(branch SelectBranch, value T) {
+	s.verifyUsesConstructor()
+	branch.verifyUsesConstructor()
+	if _, ok := s.impl[branch]; ok {
+		panic("This branch already exists")
+	}
+	s.impl[branch] = value
+}
+
+func (s Select[T]) AddBranchFromComponents(value T, components ...SelectBranchComponent) {
+	s.AddBranch(NewSelectBranch(components...), value)
+}
+
+// AddConditionsDefault just provides some more clarity over calling AddBranchFromComponents without any components
+func (s Select[T]) AddConditionsDefault(value T) {
+	s.AddBranchFromComponents(value)
+}
+
+func MapSelects[T, V any](sel Select[T], mapper func(value T) V) Select[V] {
+	result := NewSelect[V]()
+	for branch, value := range sel.Impl() {
+		result.AddBranch(branch, mapper(value))
+	}
+	return result
+}
+
+// SelectSequence represents a series of Select statements that are added together when emitted as starlark
+type SelectSequence[T any] struct {
+	// Use NewSelectSequence() instead of initializing this struct manually
+	requiresConstructor
+	impl *[]Select[T]
+}
+
+func NewSelectSequence[T any]() SelectSequence[T] {
+	return SelectSequence[T]{
+		requiresConstructor: requiresConstructor{true},
+		impl:                &[]Select[T]{},
+	}
+}
+
+func (s SelectSequence[T]) AddSelect(sel Select[T]) {
+	*s.impl = append(*s.impl, sel)
+}
+
+func (s SelectSequence[T]) IsEmpty() bool {
+	for _, sel := range *s.impl {
+		if !sel.IsEmpty() {
+			return false
+		}
+	}
+	return true
+}
+
+func (s SelectSequence[T]) HasConfigurableValues() bool {
+	for _, sel := range *s.impl {
+		if sel.HasConfigurableValues() {
+			return true
+		}
+	}
+	return false
 }

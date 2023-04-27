@@ -1291,16 +1291,19 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 	requiredWithoutCycles = FirstUniqueStrings(requiredWithoutCycles)
 	required := depsToLabelList(requiredWithoutCycles)
 	archVariantProps := mod.GetArchVariantProperties(ctx, &commonProperties{})
-	for axis, configToProps := range archVariantProps {
-		for config, _props := range configToProps {
+	for _, sel := range archVariantProps {
+		requiredAxis := required.ConfigurableValues.NewSelect()
+		enabledAxis := enabledProperty.ConfigurableValues.NewSelect()
+		for _, branchAndValue := range *sel {
+			_props := branchAndValue.Value
 			if archProps, ok := _props.(*commonProperties); ok {
 				_, requiredWithoutCycles := RemoveFromList(ctx.ModuleName(), archProps.Required)
 				requiredWithoutCycles = FirstUniqueStrings(requiredWithoutCycles)
-				required.SetSelectValue(axis, config, depsToLabelList(requiredWithoutCycles).Value)
+				requiredAxis.AddBranch(branchAndValue.Branch, depsToLabelList(requiredWithoutCycles).Value)
 				if !neitherHostNorDevice {
 					if archProps.Enabled != nil {
-						if axis != bazel.OsConfigurationAxis || osSupport[config] {
-							enabledProperty.SetSelectValue(axis, config, archProps.Enabled)
+						if osComponent, ok := bazel.MaybeGetSelectBranchComponent[bazel.SelectBranchComponentOS](branchAndValue.Branch); !ok || osSupport[string(osComponent)] {
+							enabledAxis.AddBranch(branchAndValue.Branch, archProps.Enabled)
 						}
 					}
 				}
