@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "784caf9d_c76281bf",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-27T23:08:02Z",
+      "side": 1,
+      "message": "We try not to store pointers to other modules, they get invalidated at various points during the build.  install() is already calling SharedLibraryInstallLocation to compute the install path, can you store that instead of the android.Module for retrieval by the singleton?",
+      "revId": "097bf9aabec0d2f2812a968761247cfe18129d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4892eeb5_87b78cc4",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-27T23:08:02Z",
+      "side": 1,
+      "message": "This is the install location outside the fuzz packaging, not the module name.",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 11
+      },
+      "revId": "097bf9aabec0d2f2812a968761247cfe18129d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ce770b_23b45f6c",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-27T23:08:02Z",
+      "side": 1,
+      "message": "This looks like you are computing the same style string as `android.RuleBuilderInstalls`.  If you modified `FuzzSharedLibraries` to return an `android.RuleBuilderInstalls` (which is an array of tuples of android.Path and string) this would just be `s.SharedLibInstallStrings \u003d installs.String()`",
+      "revId": "097bf9aabec0d2f2812a968761247cfe18129d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
