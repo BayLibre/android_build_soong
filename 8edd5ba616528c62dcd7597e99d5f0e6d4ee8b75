@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5999f5_87f162fa",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-27T19:42:04Z",
+      "side": 1,
+      "message": "You never use a LinkableInterface method on this, OutputFileForModule takes an android.Module.",
+      "revId": "8edd5ba616528c62dcd7597e99d5f0e6d4ee8b75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2082491a_27821ae0",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-04-27T19:42:04Z",
+      "side": 1,
+      "message": "What is different about prebuilts here?  Why can\u0027t you use the value from sharedLibraries?",
+      "revId": "8edd5ba616528c62dcd7597e99d5f0e6d4ee8b75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
