@@ -214,6 +214,24 @@
       "parentUuid": "bbe327b7_bc91cc73",
       "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3477498d_c96689fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-27T05:02:21Z",
+      "side": 1,
+      "message": "I don\u0027t mind adding variants here, but could it be done later along with other similar places where Jeongik referenced?",
+      "parentUuid": "84995a65_00b28f86",
+      "revId": "4f67a809327a0de13e9249ce872721c1bd781cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
