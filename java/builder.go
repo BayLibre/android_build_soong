@@ -60,6 +60,7 @@ var (
 			CommandOrderOnly: []string{"${config.SoongJavacWrapper}"},
 			Rspfile:          "$out.rsp",
 			RspfileContent:   "$in",
+			Pool:             *android.HighmemPool,
 		}, map[string]*remoteexec.REParams{
 			"$javaTemplate": &remoteexec.REParams{
 				Labels:       map[string]string{"type": "compile", "lang": "java", "compiler": "javac"},

@@ -129,6 +129,7 @@ var (
 
 	// Used for processes that need significant RAM to ensure there are not too many running in parallel.
 	highmemPool = blueprint.NewBuiltinPool("highmem_pool")
+	HighmemPool = &highmemPool
 )
 
 func init() {
