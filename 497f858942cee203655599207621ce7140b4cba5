@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc4523b_7ef5d11d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-04-27T22:02:41Z",
+      "side": 1,
+      "message": "This is more like a question instead of a comment for this CL: is cc shared/static library a stub library? I saw `tags :\u003d android.ApexAvailableTags(module)` in its bp2build converter. Does it need to be replaced by `tags :\u003d android.ApexAvailableTagsWithoutTestApexes(ctx, module)`?",
+      "revId": "497f858942cee203655599207621ce7140b4cba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52002d1_28b7e0fa",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-04-27T22:02:41Z",
+      "side": 1,
+      "message": "nit: lower case?",
+      "revId": "497f858942cee203655599207621ce7140b4cba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
