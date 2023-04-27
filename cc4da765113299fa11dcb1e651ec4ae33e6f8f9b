@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe78c617_871c1a44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-27T19:38:05Z",
+      "side": 1,
+      "message": "imo this is the correct approach to solve the presubmit errors in aosp/2562753\n\nbuild error log: https://android-build.googleplex.com/builds/pending/P55444239/aosp_arm64-userdebug/latest/view/logs/build_error.log",
+      "revId": "cc4da765113299fa11dcb1e651ec4ae33e6f8f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
