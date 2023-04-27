@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b17f364c_770a0989",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-27T22:53:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb5999f5_87f162fa",
+      "revId": "8edd5ba616528c62dcd7597e99d5f0e6d4ee8b75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2082491a_27821ae0",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-27T19:42:04Z",
       "side": 1,
       "message": "What is different about prebuilts here?  Why can\u0027t you use the value from sharedLibraries?",
+      "revId": "8edd5ba616528c62dcd7597e99d5f0e6d4ee8b75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "240a02a8_27e97056",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-27T22:53:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2082491a_27821ae0",
       "revId": "8edd5ba616528c62dcd7597e99d5f0e6d4ee8b75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
