@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8790b311_3b33222e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-27T22:19:37Z",
+      "side": 1,
+      "message": "I think since we are not enforcing apex_available for [test apexes](https://cs.android.com/android/_/android/platform/build/soong/+/03cf3181d37f76adba59d43b17a3941e0f953be9:apex/apex.go;l\u003d3082-3085;drc\u003da4c93e3bfc5fe027b47eeef2f71e3044558e119b;bpv\u003d1;bpt\u003d0), we should drop those tags for static and shared libraries as well. Otherwise we might need to special case the apex validation aspect in Bazel to ignore the tags of test apexes.\n\nZi, do you think there are certain bp2build sections that are not covered by this CL?",
+      "parentUuid": "3cc4523b_7ef5d11d",
+      "revId": "497f858942cee203655599207621ce7140b4cba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a52002d1_28b7e0fa",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "\"Converts\"",
       "parentUuid": "a52002d1_28b7e0fa",
+      "revId": "497f858942cee203655599207621ce7140b4cba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88eeceb6_cf137b8e",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-27T22:19:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a600c82_11b39393",
       "revId": "497f858942cee203655599207621ce7140b4cba5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
