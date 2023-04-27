@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3596913f_9e959e35",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-04-27T19:45:33Z",
+      "side": 1,
+      "message": "Does this have to be a member function?\n\nI am not familiar with this custom rule testing, but I am little confused what is testing here with these hardcoded fields.",
+      "range": {
+        "startLine": 502,
+        "startChar": 9,
+        "endLine": 502,
+        "endChar": 21
+      },
+      "revId": "71684902cd8b77580c23b5c106cc9a7460912e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
