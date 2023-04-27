@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b8cc19_75b80685",
+        "filename": "starlark_import/starlark_import.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-27T17:14:53Z",
+      "side": 1,
+      "message": "It could be, but I added the argument check as an optimization as walking the directory hierarchy is probably slower.",
+      "parentUuid": "29bc0e42_0ba08223",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 2
+      },
+      "revId": "c9508aac4ccc605d90be2c92c4e4c46db45377fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b89eb58f_c738d583",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-27T13:15:04Z",
       "side": 1,
       "message": "nit: consider putting this into a separate \"remapModuleNames\" function.",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 173,
+        "endChar": 2
+      },
+      "revId": "c9508aac4ccc605d90be2c92c4e4c46db45377fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1239b481_3cc68643",
+        "filename": "starlark_import/starlark_import.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-27T17:14:53Z",
+      "side": 1,
+      "message": "Will handle in a followup cl.",
+      "parentUuid": "b89eb58f_c738d583",
       "range": {
         "startLine": 170,
         "startChar": 2,
