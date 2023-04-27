@@ -360,6 +360,7 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 	}
 
 	cmd := rule.Command().
+		HighMem().
 		Text(`ANDROID_LOG_TAGS="*:e"`).
 		Tool(globalSoong.Dex2oat).
 		Flag("--avoid-storing-invocation").
