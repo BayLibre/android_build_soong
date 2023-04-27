@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78f13baa_c498889f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-04-27T16:57:39Z",
+      "side": 1,
+      "message": "Some local test failures in udc-dev 😞\n\nFAILED: out/host/linux-x86/bin/go/soong-java/test/test.passed\n--- FAIL: TestDefaultAppTargetSdkVersionForUpdatableModules (0.11s)\n    app_test.go:3214: Updatable Module: Android.bp has no targetSdkVersion: could not find \"--targetSdkVersion  10000\" within \"--extract-native-libs\u003dtrue --has-no-code --targetSdkVersion  Tiramisu --minSdkVersion  29 --replaceMaxSdkVersionPlaceholder  \n10000 --raise-min-sdk-version --override-placeholder-version 340090000\"\n--- FAIL: TestEnforceDefaultAppTargetSdkVersionFlag (0.06s)\n    app_test.go:3298: Enforce Target SDK Version: Android.bp has current targetSdkVersion: could not find \"--targetSdkVersion  10000\" within \"--extract-native-libs\u003dtrue --has-no-code --targetSdkVersion  Tiramisu --minSdkVersion  29 --replaceMaxSdkVersi\nonPlaceholder  10000 --raise-min-sdk-version\"\n--- FAIL: TestEnforceDefaultAppTargetSdkVersionFlagForTests (0.04s)\n    app_test.go:3369: Enforce Target SDK Version: Android.bp has current targetSdkVersion: could not find \"--targetSdkVersion  10000\" within \"--extract-native-libs\u003dfalse --has-no-code --targetSdkVersion  Tiramisu --minSdkVersion  29 --replaceMaxSdkVers\nionPlaceholder  10000 --raise-min-sdk-version\"",
+      "revId": "c7b0b8216bd0414e3711f9638d7cae66958fa9e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
