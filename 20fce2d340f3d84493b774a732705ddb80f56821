@@ -16,6 +16,23 @@
       "message": "Please invite someone else from the build systems team for +2. I see Liz is just CC\u0027ed.",
       "revId": "20fce2d340f3d84493b774a732705ddb80f56821",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f151f4b_6d5d5a98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-28T12:39:58Z",
+      "side": 1,
+      "message": "I think this is something we can check from the apex available aspect, is that the intention on Bazel or for it to be part of a shared library with stubs check?",
+      "revId": "20fce2d340f3d84493b774a732705ddb80f56821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
