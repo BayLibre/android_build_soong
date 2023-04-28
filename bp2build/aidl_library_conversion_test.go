@@ -47,7 +47,6 @@ func TestAidlLibrary(t *testing.T) {
 				"srcs":                `["aidl/foo.aidl"]`,
 				"hdrs":                `["aidl/header.aidl"]`,
 				"strip_import_prefix": `"aidl"`,
-				"tags":                `["apex_available=//apex_available:anyapex"]`,
 			},
 		},
 		{
@@ -61,7 +60,6 @@ func TestAidlLibrary(t *testing.T) {
 			expectedBazelAttrs: AttrNameToString{
 				"srcs": `["aidl/foo.aidl"]`,
 				"hdrs": `["aidl/header.aidl"]`,
-				"tags": `["apex_available=//apex_available:anyapex"]`,
 			},
 		},
 	}
@@ -100,14 +98,12 @@ func TestAidlLibraryWithDeps(t *testing.T) {
 			MakeBazelTargetNoRestrictions("aidl_library", "bar", AttrNameToString{
 				"srcs": `["Bar.aidl"]`,
 				"hdrs": `["aidl/BarHeader.aidl"]`,
-				"tags": `["apex_available=//apex_available:anyapex"]`,
 			}),
 			MakeBazelTargetNoRestrictions("aidl_library", "foo", AttrNameToString{
 				"srcs":                `["aidl/Foo.aidl"]`,
 				"hdrs":                `["aidl/FooHeader.aidl"]`,
 				"strip_import_prefix": `"aidl"`,
 				"deps":                `[":bar"]`,
-				"tags":                `["apex_available=//apex_available:anyapex"]`,
 			}),
 		}
 		runAidlLibraryTestCase(t, Bp2buildTestCase{
