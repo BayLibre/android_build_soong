@@ -22,6 +22,10 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+var PrepareForTestWithAidlLibrary = android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
+	registerAidlLibraryBuildComponents(ctx)
+})
+
 func init() {
 	registerAidlLibraryBuildComponents(android.InitRegistrationContext)
 }
@@ -106,12 +110,12 @@ func (lib *AidlLibrary) IsMixedBuildSupported(ctx android.BaseModuleContext) boo
 	return false
 }
 
-type aidlLibraryInfo struct {
+type AidlLibraryInfo struct {
 	Srcs        android.Paths
 	IncludeDirs android.DepSet
 }
 
-var aidlLibraryProvider = blueprint.NewProvider(aidlLibraryInfo{})
+var AidlLibraryProvider = blueprint.NewProvider(AidlLibraryInfo{})
 
 func (lib *AidlLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	srcsDepSetBuilder := android.NewDepSetBuilder(android.PREORDER)
@@ -133,15 +137,15 @@ func (lib *AidlLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	srcsDepSetBuilder.Direct(srcs...)
 	includeDirsDepSetBuilder.Direct(includeDir)
 
-	for _, dep := range ctx.GetDirectDepsWithTag(aidlHeaderTag) {
-		if ctx.OtherModuleHasProvider(dep, aidlLibraryProvider) {
-			info := ctx.OtherModuleProvider(dep, aidlLibraryProvider).(aidlLibraryInfo)
+	for _, dep := range ctx.GetDirectDepsWithTag(AidlLibraryTag) {
+		if ctx.OtherModuleHasProvider(dep, AidlLibraryProvider) {
+			info := ctx.OtherModuleProvider(dep, AidlLibraryProvider).(AidlLibraryInfo)
 			includeDirsDepSetBuilder.Transitive(&info.IncludeDirs)
 		}
 	}
 
 	// TODO(b/279960133) Propagate headers and transitive srcs when aidl action sandboxes inputs
-	ctx.SetProvider(aidlLibraryProvider, aidlLibraryInfo{
+	ctx.SetProvider(AidlLibraryProvider, AidlLibraryInfo{
 		Srcs:        srcs,
 		IncludeDirs: *includeDirsDepSetBuilder.Build(),
 	})
@@ -165,10 +169,11 @@ type aidlDependencyTag struct {
 	name string
 }
 
-var aidlHeaderTag = aidlDependencyTag{name: "aidl header"}
+// AidlLibraryTag is used to tag a heaaders aidl_library for headers or a direct aidl_library from any modules
+var AidlLibraryTag = aidlDependencyTag{name: "aidl_library"}
 
 func (lib *AidlLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	for _, dep := range lib.properties.Deps {
-		ctx.AddDependency(lib, aidlHeaderTag, dep)
+		ctx.AddDependency(lib, AidlLibraryTag, dep)
 	}
 }
