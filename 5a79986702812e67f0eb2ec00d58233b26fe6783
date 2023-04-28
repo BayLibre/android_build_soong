@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba9105d_042948fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-04-28T22:12:55Z",
+      "side": 1,
+      "message": "Most of the errors seem to be along the lines of https://cs.android.com/android/platform/superproject/+/master:packages/modules/DnsResolver/doh/connection/driver.rs;l\u003d184;drc\u003d84e31cdf0fc70008f50a8fc5581cb564868e5858\n\nI don\u0027t really understand where the `Drop` is in that. `status_tx` is a `tokio::sync::watch::Sender` which does implement `Drop`, but the thing not being bound here is a `Result`, not that.",
+      "revId": "5a79986702812e67f0eb2ec00d58233b26fe6783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
