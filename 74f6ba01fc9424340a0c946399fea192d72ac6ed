@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4decfa11_ec447ec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-28T20:52:33Z",
+      "side": 1,
+      "message": "Since the api levels are updated as part of SDK finalization, you might also need to update this [finalization script](https://cs.android.com/android/_/android/platform/build/+/cda8aac19625f89cbec04e2b9c9106508079da04:tools/finalization/finalize-aidl-vndk-sdk-resources.sh;l\u003d121-125;drc\u003dd873b0e46b10584c8747524f0d1f1b4f84df5a9d;bpv\u003d1;bpt\u003d0)",
+      "revId": "74f6ba01fc9424340a0c946399fea192d72ac6ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
