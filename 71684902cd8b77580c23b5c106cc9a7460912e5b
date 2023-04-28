@@ -120,6 +120,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "142d1a09_da780e7a",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-28T19:48:28Z",
+      "side": 1,
+      "message": "Discussed this with Yu offline. Previously, the unit test for customModule was coupling the config_setting creation that is specific to apexes. I have removed some of the hardcoding here. \n\nI will add a unit test for verifying creation of apex specific config_settings in aosp/2549672",
+      "parentUuid": "3596913f_9e959e35",
+      "range": {
+        "startLine": 502,
+        "startChar": 9,
+        "endLine": 502,
+        "endChar": 21
+      },
+      "revId": "71684902cd8b77580c23b5c106cc9a7460912e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fbc164d7_081ab95e",
         "filename": "bp2build/testing.go",
         "patchSetId": 4
@@ -131,6 +155,30 @@
       "writtenOn": "2023-04-28T12:54:27Z",
       "side": 1,
       "message": "nit: This might feel a bit less hard-coded if e.g. it were based on the name of the module or `test_config_setting` took a string instead, but I think it\u0027s fine as is.",
+      "range": {
+        "startLine": 505,
+        "startChar": 42,
+        "endLine": 505,
+        "endChar": 45
+      },
+      "revId": "71684902cd8b77580c23b5c106cc9a7460912e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "641744b4_8042960c",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-28T19:48:28Z",
+      "side": 1,
+      "message": "Yu brought up this concern as well. I have updated the test to use the module name instead.",
+      "parentUuid": "fbc164d7_081ab95e",
       "range": {
         "startLine": 505,
         "startChar": 42,
