@@ -16,6 +16,24 @@
       "message": "This is used for dexpreopting individual apps, which likely takes much less memory than dexpreopting the boot image.  Is it necessary here?",
       "revId": "bf8b5bcf315f2bd766e1ec9adacc365d5ff4d032",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e4c6a08_168d15c2",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-28T17:51:16Z",
+      "side": 1,
+      "message": "you\u0027re right, and also it looks like the root cause is from dex2oat itself, not circumstance..",
+      "parentUuid": "c6499473_87949c5b",
+      "revId": "bf8b5bcf315f2bd766e1ec9adacc365d5ff4d032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
