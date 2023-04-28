@@ -34,6 +34,24 @@
       "parentUuid": "90415c21_0b1d6758",
       "revId": "3c7cf34c059daab5553f692cdd03e58bbe121ccb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "751ac0cb_6f3286a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-28T03:08:08Z",
+      "side": 1,
+      "message": "Verified that there\u0027s no diff for microdroid.",
+      "parentUuid": "fd769b5c_0881074e",
+      "revId": "3c7cf34c059daab5553f692cdd03e58bbe121ccb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

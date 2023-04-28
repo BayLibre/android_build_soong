@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3edb3de_984856dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-04-28T03:08:08Z",
+      "side": 1,
+      "message": "+1, but I\u0027m still concerned that it\u0027s adding more complexity. (Can\u0027t understand what all these flags means and how they interact.)",
+      "revId": "faa1c36af1567e7887112bfa8abe308aaa2e3771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
