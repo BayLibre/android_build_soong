@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca8e1323_3ff226ec",
+        "filename": "ui/metrics/bazel_metrics_proto/bazel_metrics.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-04-28T13:36:09Z",
+      "side": 1,
+      "message": "Isn\u0027t bazel implied by being in BazelMetrics? Maybe we just call this exit_code?",
+      "revId": "b03ee6e3a3f95cac464b265c42e392c36de4df3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
