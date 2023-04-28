@@ -15,10 +15,12 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
 	"android/soong/bazel"
+
 	"github.com/google/blueprint"
 
 	"android/soong/android"
@@ -124,9 +126,12 @@ func genAidl(ctx android.ModuleContext, rule *android.RuleBuilder, aidlFile andr
 	headerBn := outDir.Join(ctx, aidlPackage, "Bn"+shortName+".h")
 	headerBp := outDir.Join(ctx, aidlPackage, "Bp"+shortName+".h")
 
-	baseDir := strings.TrimSuffix(aidlFile.String(), aidlFile.Rel())
-	if baseDir != "" {
-		aidlFlags += " -I" + baseDir
+	baseDir := strings.TrimSuffix(aidlFile.String(), "/"+aidlFile.Rel())
+	includeDir := fmt.Sprintf(" -I%s ", baseDir)
+	// If the aidl file is provided by an aidl_library which propagates its own include dir
+	// aidlFlags already has the necessary include dir and we don't need to add it again
+	if !strings.Contains(aidlFlags, includeDir) {
+		aidlFlags += includeDir
 	}
 
 	cmd := rule.Command()
