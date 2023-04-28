@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "589317ed_467fe55d",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-28T18:11:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbe6078_b88e3133",
+      "range": {
+        "startLine": 1428,
+        "startChar": 5,
+        "endLine": 1428,
+        "endChar": 23
+      },
+      "revId": "71684902cd8b77580c23b5c106cc9a7460912e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af781250_ab850412",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-28T12:54:27Z",
       "side": 1,
       "message": "given that it\u0027s not clear if these are necessary, I think it\u0027s fine to omit the TODO, or we should file a bug to track if we think they are needed for something.",
+      "range": {
+        "startLine": 1432,
+        "startChar": 4,
+        "endLine": 1432,
+        "endChar": 8
+      },
+      "revId": "71684902cd8b77580c23b5c106cc9a7460912e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f610f7e2_9c230c43",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-04-28T18:11:19Z",
+      "side": 1,
+      "message": "Since the use case does not exist today, I have removed the TODOs for now.",
+      "parentUuid": "af781250_ab850412",
       "range": {
         "startLine": 1432,
         "startChar": 4,
