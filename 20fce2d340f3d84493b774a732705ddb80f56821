@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af400055_03999e30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-04-28T04:58:34Z",
+      "side": 1,
+      "message": "Please invite someone else from the build systems team for +2. I see Liz is just CC\u0027ed.",
+      "revId": "20fce2d340f3d84493b774a732705ddb80f56821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
