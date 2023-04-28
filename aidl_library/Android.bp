@@ -1,0 +1,17 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+bootstrap_go_package {
+    name: "soong-aidl-library",
+    pkgPath: "android/soong/aidl_library",
+    deps: [
+        "soong-android",
+    ],
+    srcs: [
+        "aidl_library.go",
+    ],
+    testSrcs: [
+        "aidl_library_test.go",
+    ],
+}
