@@ -19,10 +19,6 @@ import (
 	"testing"
 )
 
-var PrepareForTestWithAidlLibrary = android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
-	registerAidlLibraryBuildComponents(ctx)
-})
-
 func TestAidlLibrary(t *testing.T) {
 	t.Parallel()
 	ctx := android.GroupFixturePreparers(
@@ -50,7 +46,7 @@ func TestAidlLibrary(t *testing.T) {
 	).RunTest(t).TestContext
 
 	foo := ctx.ModuleForTests("foo", "").Module().(*AidlLibrary)
-	actualInfo := ctx.ModuleProvider(foo, aidlLibraryProvider).(aidlLibraryInfo)
+	actualInfo := ctx.ModuleProvider(foo, AidlLibraryProvider).(AidlLibraryInfo)
 
 	android.AssertArrayString(
 		t,
@@ -92,7 +88,7 @@ func TestAidlLibraryWithoutStripImportPrefix(t *testing.T) {
 	).RunTest(t).TestContext
 
 	foo := ctx.ModuleForTests("foo", "").Module().(*AidlLibrary)
-	actualInfo := ctx.ModuleProvider(foo, aidlLibraryProvider).(aidlLibraryInfo)
+	actualInfo := ctx.ModuleProvider(foo, AidlLibraryProvider).(AidlLibraryInfo)
 
 	android.AssertArrayString(
 		t,

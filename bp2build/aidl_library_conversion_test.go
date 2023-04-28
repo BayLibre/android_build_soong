@@ -19,7 +19,6 @@ import (
 
 	"android/soong/aidl_library"
 	"android/soong/android"
-	// "android/soong/android"
 )
 
 func runAidlLibraryTestCase(t *testing.T, tc Bp2buildTestCase) {
