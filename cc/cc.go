@@ -27,6 +27,7 @@ import (
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
+	"android/soong/aidl_library"
 	"android/soong/android"
 	"android/soong/bazel/cquery"
 	"android/soong/cc/config"
@@ -110,6 +111,9 @@ type Deps struct {
 	// Used by DepsMutator to pass system_shared_libs information to check_elf_file.py.
 	SystemSharedLibs []string
 
+	// Used by DepMutator to pass aidl_library modules to aidl compiler
+	AidlLibs []string
+
 	// If true, statically link the unwinder into native libraries/binaries.
 	StaticUnwinderIfLegacy bool
 
@@ -182,6 +186,9 @@ type PathDeps struct {
 	// For Darwin builds, the path to the second architecture's output that should
 	// be combined with this architectures's output into a FAT MachO file.
 	DarwinSecondArchOutput android.OptionalPath
+
+	// Paths to direct srcs and transitive include dirs from direct aidl_library deps
+	AidlLibraryInfos []aidl_library.AidlLibraryInfo
 }
 
 // LocalOrGlobalFlags contains flags that need to have values set globally by the build system or locally by the module
@@ -2697,6 +2704,14 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		}
 	}
 
+	if len(deps.AidlLibs) > 0 {
+		actx.AddDependency(
+			c,
+			aidl_library.AidlLibraryTag,
+			deps.AidlLibs...,
+		)
+	}
+
 	updateImportedLibraryDependency(ctx)
 }
 
@@ -2999,6 +3014,17 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		if depTag == android.DarwinUniversalVariantTag {
 			depPaths.DarwinSecondArchOutput = dep.(*Module).OutputFile()
 			return
+		}
+
+		if depTag == aidl_library.AidlLibraryTag {
+			if ctx.OtherModuleHasProvider(dep, aidl_library.AidlLibraryProvider) {
+				depPaths.AidlLibraryInfos = append(
+					depPaths.AidlLibraryInfos,
+					ctx.OtherModuleProvider(
+						dep,
+						aidl_library.AidlLibraryProvider).(aidl_library.AidlLibraryInfo),
+				)
+			}
 		}
 
 		ccDep, ok := dep.(LinkableInterface)
