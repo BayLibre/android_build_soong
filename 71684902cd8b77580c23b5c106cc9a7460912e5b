@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7dbe6078_b88e3133",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-28T12:54:27Z",
+      "side": 1,
+      "message": "can you add godocs for exported types/methods?",
+      "range": {
+        "startLine": 1428,
+        "startChar": 5,
+        "endLine": 1428,
+        "endChar": 23
+      },
+      "revId": "71684902cd8b77580c23b5c106cc9a7460912e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af781250_ab850412",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-28T12:54:27Z",
+      "side": 1,
+      "message": "given that it\u0027s not clear if these are necessary, I think it\u0027s fine to omit the TODO, or we should file a bug to track if we think they are needed for something.",
+      "range": {
+        "startLine": 1432,
+        "startChar": 4,
+        "endLine": 1432,
+        "endChar": 8
+      },
+      "revId": "71684902cd8b77580c23b5c106cc9a7460912e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3596913f_9e959e35",
         "filename": "bp2build/testing.go",
         "patchSetId": 4
@@ -19,6 +65,29 @@
         "startChar": 9,
         "endLine": 502,
         "endChar": 21
+      },
+      "revId": "71684902cd8b77580c23b5c106cc9a7460912e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc164d7_081ab95e",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-04-28T12:54:27Z",
+      "side": 1,
+      "message": "nit: This might feel a bit less hard-coded if e.g. it were based on the name of the module or `test_config_setting` took a string instead, but I think it\u0027s fine as is.",
+      "range": {
+        "startLine": 505,
+        "startChar": 42,
+        "endLine": 505,
+        "endChar": 45
       },
       "revId": "71684902cd8b77580c23b5c106cc9a7460912e5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
