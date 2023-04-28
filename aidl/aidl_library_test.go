@@ -46,7 +46,7 @@ func TestAidlLibrary(t *testing.T) {
 	).RunTest(t).TestContext
 
 	foo := ctx.ModuleForTests("foo", "").Module().(*AidlLibrary)
-	actualInfo := ctx.ModuleProvider(foo, AidlLibraryProvider).(AidlLibraryInfo)
+	actualInfo := ctx.ModuleProvider(foo, aidlLibraryProvider).(aidlLibraryInfo)
 
 	android.AssertArrayString(
 		t,
@@ -88,7 +88,7 @@ func TestAidlLibraryWithoutStripImportPrefix(t *testing.T) {
 	).RunTest(t).TestContext
 
 	foo := ctx.ModuleForTests("foo", "").Module().(*AidlLibrary)
-	actualInfo := ctx.ModuleProvider(foo, AidlLibraryProvider).(AidlLibraryInfo)
+	actualInfo := ctx.ModuleProvider(foo, aidlLibraryProvider).(aidlLibraryInfo)
 
 	android.AssertArrayString(
 		t,

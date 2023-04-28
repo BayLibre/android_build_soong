@@ -22,10 +22,6 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
-var PrepareForTestWithAidlLibrary = android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
-	registerAidlLibraryBuildComponents(ctx)
-})
-
 func init() {
 	registerAidlLibraryBuildComponents(android.InitRegistrationContext)
 }
@@ -33,6 +29,10 @@ func init() {
 func registerAidlLibraryBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("aidl_library", AidlLibraryFactory)
 }
+
+var PrepareForTestWithAidlLibrary = android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
+	registerAidlLibraryBuildComponents(ctx)
+})
 
 type aidlLibraryProperties struct {
 	// srcs lists files that are included in this module for aidl compilation
@@ -110,12 +110,12 @@ func (lib *AidlLibrary) IsMixedBuildSupported(ctx android.BaseModuleContext) boo
 	return false
 }
 
-type AidlLibraryInfo struct {
+type aidlLibraryInfo struct {
 	Srcs        android.Paths
 	IncludeDirs android.DepSet
 }
 
-var AidlLibraryProvider = blueprint.NewProvider(AidlLibraryInfo{})
+var aidlLibraryProvider = blueprint.NewProvider(aidlLibraryInfo{})
 
 func (lib *AidlLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	srcsDepSetBuilder := android.NewDepSetBuilder(android.PREORDER)
@@ -137,15 +137,15 @@ func (lib *AidlLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	srcsDepSetBuilder.Direct(srcs...)
 	includeDirsDepSetBuilder.Direct(includeDir)
 
-	for _, dep := range ctx.GetDirectDepsWithTag(AidlLibraryTag) {
-		if ctx.OtherModuleHasProvider(dep, AidlLibraryProvider) {
-			info := ctx.OtherModuleProvider(dep, AidlLibraryProvider).(AidlLibraryInfo)
+	for _, dep := range ctx.GetDirectDepsWithTag(aidlHeaderTag) {
+		if ctx.OtherModuleHasProvider(dep, aidlLibraryProvider) {
+			info := ctx.OtherModuleProvider(dep, aidlLibraryProvider).(aidlLibraryInfo)
 			includeDirsDepSetBuilder.Transitive(&info.IncludeDirs)
 		}
 	}
 
 	// TODO(b/279960133) Propagate headers and transitive srcs when aidl action sandboxes inputs
-	ctx.SetProvider(AidlLibraryProvider, AidlLibraryInfo{
+	ctx.SetProvider(aidlLibraryProvider, aidlLibraryInfo{
 		Srcs:        srcs,
 		IncludeDirs: *includeDirsDepSetBuilder.Build(),
 	})
@@ -162,18 +162,15 @@ func AidlLibraryFactory() android.Module {
 	return module
 }
 
-const aidlHeader = iota
-
 type aidlDependencyTag struct {
 	blueprint.BaseDependencyTag
 	name string
 }
 
-// AidlLibraryTag is used to tag a heaaders aidl_library for headers or a direct aidl_library from any modules
-var AidlLibraryTag = aidlDependencyTag{name: "aidl_library"}
+var aidlHeaderTag = aidlDependencyTag{name: "aidl header"}
 
 func (lib *AidlLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	for _, dep := range lib.properties.Deps {
-		ctx.AddDependency(lib, AidlLibraryTag, dep)
+		ctx.AddDependency(lib, aidlHeaderTag, dep)
 	}
 }

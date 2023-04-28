@@ -24,6 +24,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/aidl_library"
 	"android/soong/android"
 	"android/soong/bazel/cquery"
 )
@@ -38,6 +39,7 @@ func TestMain(m *testing.M) {
 
 var prepareForCcTest = android.GroupFixturePreparers(
 	PrepareForTestWithCcIncludeVndk,
+	aidl_library.PrepareForTestWithAidlLibrary,
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 		variables.DeviceVndkVersion = StringPtr("current")
 		variables.ProductVndkVersion = StringPtr("current")
@@ -4419,6 +4421,58 @@ func TestStubsLibReexportsHeaders(t *testing.T) {
 	if !strings.Contains(cFlags, "-Iinclude/libbar") {
 		t.Errorf("expected %q in cflags, got %q", "-Iinclude/libbar", cFlags)
 	}
+}
+
+func TestAidlLibraryWithHeader(t *testing.T) {
+	t.Parallel()
+	ctx := android.GroupFixturePreparers(
+		prepareForCcTest,
+		android.MockFS{
+			"package_bar/Android.bp": []byte(`
+			aidl_library {
+				name: "bar",
+				srcs: ["x/y/Bar.aidl"],
+				strip_import_prefix: "x",
+			}
+			`)}.AddToFixture(),
+		android.MockFS{
+			"package_foo/Android.bp": []byte(`
+			aidl_library {
+				name: "foo",
+				srcs: ["a/b/Foo.aidl"],
+				strip_import_prefix: "a",
+				deps: ["bar"],
+			}
+			cc_library {
+				name: "libfoo",
+				aidl: {
+					libs: ["foo"],
+				}
+			}
+			`),
+		}.AddToFixture(),
+	).RunTest(t).TestContext
+
+	libfoo := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_static")
+	manifest := android.RuleBuilderSboxProtoForTests(t, libfoo.Output("aidl.sbox.textproto"))
+	aidlCommand := manifest.Commands[0].GetCommand()
+	fmt.Println(aidlCommand)
+	expectedAidlFlag := "-Ipackage_foo/a"
+	if !strings.Contains(aidlCommand, expectedAidlFlag) {
+		t.Errorf("aidl command %q does not contain %q", aidlCommand, expectedAidlFlag)
+	}
+
+	outputs := strings.Join(libfoo.AllOutputs(), " ")
+
+	android.AssertStringDoesContain(t, "aaa", outputs, "gen/aidl/b/BpFoo.h")
+	android.AssertStringDoesContain(t, "aaa", outputs, "gen/aidl/b/BnFoo.h")
+	android.AssertStringDoesContain(t, "aaa", outputs, "gen/aidl/b/Foo.h")
+	android.AssertStringDoesContain(t, "aaa", outputs, "b/Foo.cpp")
+	// Confirm that the aidl header doesn't get compiled to cpp and h files
+	android.AssertStringDoesNotContain(t, "aaa", outputs, "gen/aidl/y/BpBar.h")
+	android.AssertStringDoesNotContain(t, "aaa", outputs, "gen/aidl/y/BnBar.h")
+	android.AssertStringDoesNotContain(t, "aaa", outputs, "gen/aidl/y/Bar.h")
+	android.AssertStringDoesNotContain(t, "aaa", outputs, "y/Bar.cpp")
 }
 
 func TestAidlFlagsPassedToTheAidlCompiler(t *testing.T) {
