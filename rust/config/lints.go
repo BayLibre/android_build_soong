@@ -55,6 +55,9 @@ var (
 		"-A clippy::unnecessary-wraps",
 		"-A clippy::unusual-byte-groupings",
 		"-A clippy::upper-case-acronyms",
+		// `let _ = foo.lock();` will immediately release a lock. Don't allow
+		// that.
+		"-D clippy::let-underscore-drop",
 	}
 
 	// Rust lints for vendor code.
