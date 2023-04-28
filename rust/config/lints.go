@@ -46,6 +46,9 @@ var (
 		"-A deprecated",
 		"-D missing-docs",
 		"-D warnings",
+		// `let _ = foo.lock();` will immediately release a lock. Don't allow
+		// that.
+		"-D let-underscore-drop",
 	}
 	// Default Clippy lints. These are applied on top of defaultRustcLints.
 	// It should be assumed that any warning lint will be promoted to a
