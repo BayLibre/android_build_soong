@@ -15,10 +15,13 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
+	"android/soong/aidl_library"
 	"android/soong/bazel"
+
 	"github.com/google/blueprint"
 
 	"android/soong/android"
@@ -124,9 +127,12 @@ func genAidl(ctx android.ModuleContext, rule *android.RuleBuilder, aidlFile andr
 	headerBn := outDir.Join(ctx, aidlPackage, "Bn"+shortName+".h")
 	headerBp := outDir.Join(ctx, aidlPackage, "Bp"+shortName+".h")
 
-	baseDir := strings.TrimSuffix(aidlFile.String(), aidlFile.Rel())
-	if baseDir != "" {
-		aidlFlags += " -I" + baseDir
+	baseDir := strings.TrimSuffix(aidlFile.String(), "/"+aidlFile.Rel())
+	includeDir := fmt.Sprintf(" -I%s ", baseDir)
+	// If the aidl file is provided by an aidl_library which propagates its own include dir
+	// aidlFlags already has the necessary include dir and we don't need to add it again
+	if !strings.Contains(aidlFlags, includeDir) {
+		aidlFlags += includeDir
 	}
 
 	cmd := rule.Command()
@@ -282,7 +288,10 @@ type generatedSourceInfo struct {
 	syspropOrderOnlyDeps android.Paths
 }
 
-func genSources(ctx android.ModuleContext, srcFiles android.Paths,
+func genSources(
+	ctx android.ModuleContext,
+	aidlLibraryInfos []aidl_library.AidlLibraryInfo,
+	srcFiles android.Paths,
 	buildFlags builderFlags) (android.Paths, android.Paths, generatedSourceInfo) {
 
 	var info generatedSourceInfo
@@ -352,6 +361,25 @@ func genSources(ctx android.ModuleContext, srcFiles android.Paths,
 		}
 	}
 
+	// TODO(b/279960133): Sandbox inputs to ensure aidl headers are explicitly specified
+	var cppFilesFromAidl android.Paths
+	for _, aidlLibraryInfo := range aidlLibraryInfos {
+		for _, aidlSrc := range aidlLibraryInfo.Srcs {
+			if aidlRule == nil {
+				aidlRule = android.NewRuleBuilder(pctx, ctx).Sbox(android.PathForModuleGen(ctx, "aidl"),
+					android.PathForModuleGen(ctx, "aidl.sbox.textproto"))
+			}
+			cppFile, aidlHeaders := genAidl(ctx, aidlRule, aidlSrc, buildFlags.aidlFlags)
+			cppFilesFromAidl = append(cppFilesFromAidl, cppFile)
+			info.aidlHeaders = append(info.aidlHeaders, aidlHeaders...)
+
+			// Use the generated headers as order only deps to ensure that they are up to date when
+			// needed.
+			// TODO: Reduce the size of the ninja file by using one order only dep for the whole rule
+			info.aidlOrderOnlyDeps = append(info.aidlOrderOnlyDeps, aidlHeaders...)
+		}
+	}
+
 	if aidlRule != nil {
 		aidlRule.Build("aidl", "gen aidl")
 	}
@@ -368,5 +396,5 @@ func genSources(ctx android.ModuleContext, srcFiles android.Paths,
 		deps = append(deps, rsGenerateCpp(ctx, rsFiles, buildFlags.rsFlags)...)
 	}
 
-	return srcFiles, deps, info
+	return append(srcFiles, cppFilesFromAidl...), deps, info
 }
