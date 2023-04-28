@@ -3333,7 +3333,8 @@ cc_library {
 	name: "foo",
 	aidl: {
 		libs: ["A_aidl"],
-	}
+	},
+	export_include_dirs: ["include"],
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTargetNoRestrictions("aidl_library", "A_aidl", AttrNameToString{
@@ -3343,15 +3344,19 @@ cc_library {
 				"tags":                `["apex_available=//apex_available:anyapex"]`,
 			}),
 			MakeBazelTarget("cc_aidl_library", "foo_cc_aidl_library", AttrNameToString{
-				"deps": `[":A_aidl"]`,
+				"deps":            `[":A_aidl"]`,
+				"local_includes":  `["."]`,
+				"export_includes": `["include"]`,
 			}),
 			MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
 				"implementation_whole_archive_deps": `[":foo_cc_aidl_library"]`,
 				"local_includes":                    `["."]`,
+				"export_includes":                   `["include"]`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
 				"implementation_whole_archive_deps": `[":foo_cc_aidl_library"]`,
 				"local_includes":                    `["."]`,
+				"export_includes":                   `["include"]`,
 			}),
 		},
 	})
@@ -3385,6 +3390,7 @@ cc_library {
 				"srcs": `["B.aidl"]`,
 			}),
 			MakeBazelTarget("cc_aidl_library", "foo_cc_aidl_library", AttrNameToString{
+				"local_includes": `["."]`,
 				"deps": `[
         ":A_aidl",
         ":foo_aidl_library",
@@ -3424,7 +3430,8 @@ cc_library {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_aidl_library", "foo_cc_aidl_library", AttrNameToString{
-				"deps": `["//path/to/A:A_aidl"]`,
+				"local_includes": `["."]`,
+				"deps":           `["//path/to/A:A_aidl"]`,
 			}),
 			MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
 				"implementation_whole_archive_deps": `[":foo_cc_aidl_library"]`,
@@ -3443,7 +3450,8 @@ func TestCcLibraryWithExportAidlHeaders(t *testing.T) {
 
 	expectedBazelTargets := []string{
 		MakeBazelTarget("cc_aidl_library", "foo_cc_aidl_library", AttrNameToString{
-			"deps": `[":foo_aidl_library"]`,
+			"local_includes": `["."]`,
+			"deps":           `[":foo_aidl_library"]`,
 		}),
 		MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
 			"whole_archive_deps": `[":foo_cc_aidl_library"]`,
@@ -3724,7 +3732,8 @@ cc_library_static {
 				"srcs": `["Foo.aidl"]`,
 			}),
 			MakeBazelTarget("cc_aidl_library", "foo_cc_aidl_library", AttrNameToString{
-				"deps": `[":foo_aidl_library"]`,
+				"local_includes": `["."]`,
+				"deps":           `[":foo_aidl_library"]`,
 				"implementation_deps": `[
         ":baz-static",
         ":bar-static",
