@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a65fc02_7c797825",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-29T19:19:31Z",
+      "side": 1,
+      "message": "The Java impact I m referring to is in https://cs.android.com/android/platform/superproject/+/master:build/soong/java/fuzz.go;drc\u003d431ddf9b7647a88bf36b004d94bfaff940c1f92b;l\u003d107",
+      "parentUuid": "dca11a49_43b8b114",
+      "revId": "097bf9aabec0d2f2812a968761247cfe18129d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4892eeb5_87b78cc4",
         "filename": "cc/fuzz.go",
         "patchSetId": 11
