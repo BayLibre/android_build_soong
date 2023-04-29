@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dca11a49_43b8b114",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-04-29T17:07:10Z",
+      "side": 1,
+      "message": "Let me rephrase my comment, @ccross do you think we can postpone the refactoring work or does the approach above leads to wrong build results?",
+      "parentUuid": "ea1cc867_8a443b8f",
+      "revId": "097bf9aabec0d2f2812a968761247cfe18129d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4892eeb5_87b78cc4",
         "filename": "cc/fuzz.go",
         "patchSetId": 11
