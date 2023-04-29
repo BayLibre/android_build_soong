@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0be29c_7e293674",
+        "filename": "android/license_metadata.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2023-04-29T00:16:48Z",
+      "side": 1,
+      "message": "I am uncomfortable with this change.\n\nThis code is exactly the code we need to replace entirely to fix the known, serious bug wrt. Soong license metadata.\n\nEven looking at this `if` structure, I don\u0027t know why we wouldn\u0027t append both the installFiles and the outputFilesForModule(...) files.",
+      "revId": "f41e9b6e27fd5e02cde595b3d12e89917daa12db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
