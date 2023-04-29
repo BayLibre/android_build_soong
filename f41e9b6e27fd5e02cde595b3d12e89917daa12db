@@ -52,6 +52,24 @@
       "parentUuid": "26153b37_0529dd69",
       "revId": "f41e9b6e27fd5e02cde595b3d12e89917daa12db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e843c91_998ee405",
+        "filename": "android/license_metadata.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-29T06:11:59Z",
+      "side": 1,
+      "message": "Understood. Is the bug you mentioned b/279017700? or is there any other bug tracking it? I can wait until the root cause is fixed.",
+      "parentUuid": "cb2aef03_a570b9ac",
+      "revId": "f41e9b6e27fd5e02cde595b3d12e89917daa12db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
