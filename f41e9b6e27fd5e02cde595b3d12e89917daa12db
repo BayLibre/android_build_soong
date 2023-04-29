@@ -16,6 +16,24 @@
       "message": "I am uncomfortable with this change.\n\nThis code is exactly the code we need to replace entirely to fix the known, serious bug wrt. Soong license metadata.\n\nEven looking at this `if` structure, I don\u0027t know why we wouldn\u0027t append both the installFiles and the outputFilesForModule(...) files.",
       "revId": "f41e9b6e27fd5e02cde595b3d12e89917daa12db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26153b37_0529dd69",
+        "filename": "android/license_metadata.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-04-29T02:08:57Z",
+      "side": 1,
+      "message": "I just wanna fix the superficial issue related to installed path first(as long as there is no regression) before the root cause is fixed in b/279017700.",
+      "parentUuid": "2b0be29c_7e293674",
+      "revId": "f41e9b6e27fd5e02cde595b3d12e89917daa12db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
