@@ -34,6 +34,24 @@
       "parentUuid": "2b0be29c_7e293674",
       "revId": "f41e9b6e27fd5e02cde595b3d12e89917daa12db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb2aef03_a570b9ac",
+        "filename": "android/license_metadata.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2023-04-29T04:43:35Z",
+      "side": 1,
+      "message": "That\u0027s my whole point. This code is very wrong. I am not convinced this change isn\u0027t making it worse or even impossible to fix.",
+      "parentUuid": "26153b37_0529dd69",
+      "revId": "f41e9b6e27fd5e02cde595b3d12e89917daa12db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
