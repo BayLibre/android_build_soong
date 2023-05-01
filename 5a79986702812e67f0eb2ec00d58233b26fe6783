@@ -34,6 +34,24 @@
       "parentUuid": "1ba9105d_042948fd",
       "revId": "5a79986702812e67f0eb2ec00d58233b26fe6783",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c549048_bd160a5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-05-01T19:57:20Z",
+      "side": 1,
+      "message": "\u003e Or maybe clippy should not diagnose this when the Drop impl is nested?\n\nThis idea is no good. `Mutex::lock()` would not be diagnosed if that were the case.",
+      "parentUuid": "957930b2_adb3d001",
+      "revId": "5a79986702812e67f0eb2ec00d58233b26fe6783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
