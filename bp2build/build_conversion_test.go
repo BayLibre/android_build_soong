@@ -1168,15 +1168,18 @@ func TestAllowlistingBp2buildTargetsExplicitly(t *testing.T) {
 
 func TestAllowlistingBp2buildTargetsWithConfig(t *testing.T) {
 	testCases := []struct {
-		moduleTypeUnderTest        string
-		moduleTypeUnderTestFactory android.ModuleFactory
-		expectedCount              map[string]int
-		description                string
-		bp2buildConfig             allowlists.Bp2BuildConfig
-		checkDir                   string
-		fs                         map[string]string
-		forceEnabledModules        []string
-		expectedErrorMessages      []string
+		moduleTypeUnderTest         string
+		moduleTypeUnderTestFactory  android.ModuleFactory
+		expectedCount               map[string]int
+		description                 string
+		bp2buildConfig              allowlists.Bp2BuildConfig
+		moduleAlwaysConvertList     []string
+		moduleDoNotConvertList      []string
+		moduleTypeAlwaysConvertList []string
+		checkDir                    string
+		fs                          map[string]string
+		forceEnabledModules         []string
+		expectedErrorMessages       []string
 	}{
 		{
 			description:                "test bp2build config package and subpackages config",
@@ -1260,46 +1263,51 @@ filegroup { name: "opt-out-h", bazel_module: { bp2build_available: false } }
 	}
 
 	dir := "."
-	for _, testCase := range testCases {
-		fs := make(map[string][]byte)
-		toParse := []string{
-			"Android.bp",
-		}
-		for f, content := range testCase.fs {
-			if strings.HasSuffix(f, "Android.bp") {
-				toParse = append(toParse, f)
+	for _, tc := range testCases {
+		t.Run(tc.description, func(t *testing.T) {
+			fs := make(map[string][]byte)
+			toParse := []string{
+				"Android.bp",
 			}
-			fs[f] = []byte(content)
-		}
-		config := android.TestConfig(buildDir, nil, "", fs)
-		config.AddForceEnabledModules(testCase.forceEnabledModules)
-		ctx := android.NewTestContext(config)
-		ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
-		allowlist := android.NewBp2BuildAllowlist().SetDefaultConfig(testCase.bp2buildConfig)
-		ctx.RegisterBp2BuildConfig(allowlist)
-		ctx.RegisterForBazelConversion()
-
-		_, errs := ctx.ParseFileList(dir, toParse)
-		android.FailIfErrored(t, errs)
-		_, errs = ctx.ResolveDependencies(config)
-		android.FailIfErrored(t, errs)
-
-		codegenCtx := NewCodegenContext(config, ctx.Context, Bp2Build, "")
-
-		// For each directory, test that the expected number of generated targets is correct.
-		for dir, expectedCount := range testCase.expectedCount {
-			bazelTargets, err := generateBazelTargetsForDir(codegenCtx, dir)
-			android.CheckErrorsAgainstExpectations(t, err, testCase.expectedErrorMessages)
-			if actualCount := len(bazelTargets); actualCount != expectedCount {
-				t.Fatalf(
-					"%s: Expected %d bazel target for %s package, got %d",
-					testCase.description,
-					expectedCount,
-					dir,
-					actualCount)
+			for f, content := range tc.fs {
+				if strings.HasSuffix(f, "Android.bp") {
+					toParse = append(toParse, f)
+				}
+				fs[f] = []byte(content)
 			}
+			config := android.TestConfig(buildDir, nil, "", fs)
+			config.AddForceEnabledModules(tc.forceEnabledModules)
+			ctx := android.NewTestContext(config)
+			ctx.RegisterModuleType(tc.moduleTypeUnderTest, tc.moduleTypeUnderTestFactory)
+			allowlist := android.NewBp2BuildAllowlist().SetDefaultConfig(tc.bp2buildConfig).
+				SetModuleAlwaysConvertList(tc.moduleAlwaysConvertList).
+				SetModuleTypeAlwaysConvertList(tc.moduleTypeAlwaysConvertList).
+				SetModuleDoNotConvertList(tc.moduleDoNotConvertList)
+			ctx.RegisterBp2BuildConfig(allowlist)
+			ctx.RegisterForBazelConversion()
 
-		}
+			_, errs := ctx.ParseFileList(dir, toParse)
+			android.FailIfErrored(t, errs)
+			_, errs = ctx.ResolveDependencies(config)
+			android.FailIfErrored(t, errs)
+
+			codegenCtx := NewCodegenContext(config, ctx.Context, Bp2Build, "")
+
+			// For each directory, test that the expected number of generated targets is correct.
+			for dir, expectedCount := range tc.expectedCount {
+				bazelTargets, err := generateBazelTargetsForDir(codegenCtx, dir)
+				android.CheckErrorsAgainstExpectations(t, err, tc.expectedErrorMessages)
+				if actualCount := len(bazelTargets); actualCount != expectedCount {
+					t.Fatalf(
+						"%s: Expected %d bazel target for %s package, got %d",
+						tc.description,
+						expectedCount,
+						dir,
+						actualCount)
+				}
+
+			}
+		})
 	}
 }
 
