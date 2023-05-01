@@ -1557,6 +1557,11 @@ var (
 		"test_com.android.neuralnetworks",
 		"libneuralnetworks",
 		"libneuralnetworks_static",
+		// M13: media.swcodec launch
+		"com.android.media.swcodec",
+		"test_com.android.media.swcodec",
+		"libstagefright_foundation",
+		"libcodec2_hidl@1.0",
 	}
 
 	// Staging-mode allowlist. Modules in this list are only built
@@ -1564,13 +1569,7 @@ var (
 	// which will soon be added to the prod allowlist.
 	// It is implicit that all modules in ProdMixedBuildsEnabledList will
 	// also be built - do not add them to this list.
-	StagingMixedBuildsEnabledList = []string{
-		// M13: media.swcodec launch
-		"com.android.media.swcodec",
-		"test_com.android.media.swcodec",
-		"libstagefright_foundation",
-		"libcodec2_hidl@1.0",
-	}
+	StagingMixedBuildsEnabledList = []string{}
 
 	// These should be the libs that are included by the apexes in the ProdMixedBuildsEnabledList
 	ProdDclaMixedBuildsEnabledList = []string{
