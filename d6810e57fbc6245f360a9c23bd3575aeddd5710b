@@ -161,6 +161,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f7ef2e_5598b139",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3046,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-01T21:50:01Z",
+      "side": 1,
+      "message": "I have the updated the logic to use stubs for now.\n\nThere are some tradeoffs with my original proposal, and I have created b/280343104 to discuss the pros/cons for handling platform variants logic.",
+      "parentUuid": "f4a080c2_d2593c06",
+      "range": {
+        "startLine": 3046,
+        "startChar": 0,
+        "endLine": 3046,
+        "endChar": 65
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1c935db_fd7e2236",
@@ -280,6 +304,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1a9dc1f_49b700b3",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-01T21:50:01Z",
+      "side": 1,
+      "message": "I discussed this with Liz offline. There are some tradeoffs here that we need to be cognizant about. I will be writing a doc discussing the pros/cons of this design idea as part of b/280343104\n\nFor now, I have updated the bp2build logic to use equality of apex_available for platform variants (i.e `//build/bazel/rules/apex:android-non_apex`)",
+      "parentUuid": "c0eeff63_338daff9",
+      "range": {
+        "startLine": 583,
+        "startChar": 8,
+        "endLine": 584,
+        "endChar": 96
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b998efe8_c9759892",
@@ -341,6 +389,30 @@
       "side": 1,
       "message": "sg, thanks!",
       "parentUuid": "d757416f_7b8c7c6e",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 668,
+        "endChar": 10
+      },
+      "revId": "d6810e57fbc6245f360a9c23bd3575aeddd5710b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20dc52be_b293c242",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-01T21:50:01Z",
+      "side": 1,
+      "message": "I have created b/280339069 to track this issue.",
+      "parentUuid": "29cf92e7_c8fb3b02",
       "range": {
         "startLine": 657,
         "startChar": 0,
