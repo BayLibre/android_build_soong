@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07db5a9d_08fd3a32",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-01T19:11:47Z",
+      "side": 1,
+      "message": "Not sure if this is a realistic example, but I was running into similar `LabelListAttribute` objects in aosp/2549671.",
+      "range": {
+        "startLine": 1937,
+        "startChar": 5,
+        "endLine": 1937,
+        "endChar": 40
+      },
+      "revId": "a9d99aa3c0ea97ac21e0cb11108e979fa01e07b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

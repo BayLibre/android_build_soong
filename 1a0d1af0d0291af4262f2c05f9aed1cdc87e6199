@@ -16,6 +16,24 @@
       "message": "TODO (spandandas): Add more unit tests",
       "revId": "1a0d1af0d0291af4262f2c05f9aed1cdc87e6199",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b1b2fc_9669a01c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-01T19:11:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72bcab59_6a77a94b",
+      "revId": "1a0d1af0d0291af4262f2c05f9aed1cdc87e6199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
