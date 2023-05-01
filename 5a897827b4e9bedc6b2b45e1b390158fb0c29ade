@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b6c9e9_c43dd7f3",
+        "filename": "apex/bp2build_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-01T23:56:18Z",
+      "side": 1,
+      "message": "Is this trying to fix b/279609939 or a different bug where allowlisting an override module by name doesn\u0027t work? The test cases here always allowlist the override module by name, so it should work without this cl no?",
+      "range": {
+        "startLine": 331,
+        "startChar": 5,
+        "endLine": 331,
+        "endChar": 39
+      },
+      "revId": "5a897827b4e9bedc6b2b45e1b390158fb0c29ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
