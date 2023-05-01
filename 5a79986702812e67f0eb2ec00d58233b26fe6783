@@ -16,6 +16,24 @@
       "message": "Most of the errors seem to be along the lines of https://cs.android.com/android/platform/superproject/+/master:packages/modules/DnsResolver/doh/connection/driver.rs;l\u003d184;drc\u003d84e31cdf0fc70008f50a8fc5581cb564868e5858\n\nI don\u0027t really understand where the `Drop` is in that. `status_tx` is a `tokio::sync::watch::Sender` which does implement `Drop`, but the thing not being bound here is a `Result`, not that.",
       "revId": "5a79986702812e67f0eb2ec00d58233b26fe6783",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "957930b2_adb3d001",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-05-01T19:48:12Z",
+      "side": 1,
+      "message": "It\u0027s patterns like this:\n\n```\nlet _: core::result::Result\u003c(), Vec::\u003ci8\u003e\u003e \u003d core::result::Result::Err(Vec::new());\n```\n\nNo one writes that directly of course, but the return type of https://docs.rs/tokio/latest/tokio/sync/oneshot/struct.Sender.html#method.send is `Result\u003c(), T\u003e`, and `T` here might contain `Vec`. The caller has a comment saying that the only error condition isn\u0027t interesting and that\u0027s why they\u0027re ignoring it.\n\nThe fixes are either an explicit `drop` of the result, or naming it `_ignore`. Or maybe clippy should not diagnose this when the `Drop` impl is nested? Alternatively, I could just drop this patch.\n\nmmaurer: wdyt? This diagnostic being off by default bit me the other day and it\u0027s very surprising behavior for values that are RAII scope guards like locks, but if it\u0027s a very uncommon problem maybe it isn\u0027t worth cluttering up the tree with explicit ignores.",
+      "parentUuid": "1ba9105d_042948fd",
+      "revId": "5a79986702812e67f0eb2ec00d58233b26fe6783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
