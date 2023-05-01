@@ -51,6 +51,23 @@
       "parentUuid": "7f151f4b_6d5d5a98",
       "revId": "20fce2d340f3d84493b774a732705ddb80f56821",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd593f20_faf35cc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-01T23:42:07Z",
+      "side": 1,
+      "message": "The TH failure seems like a flake. I ran this test using go/abtd, and the test seems to pass https://android-build.googleplex.com/builds/abtd/run/L37700000960357454",
+      "revId": "20fce2d340f3d84493b774a732705ddb80f56821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
