@@ -659,6 +659,21 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		s.Diag.Cfi = nil
 	}
 
+	// TODO(b/280478629): runtimes don't exist for musl arm64 yet.
+	if ctx.Os() == android.LinuxMusl && ctx.Arch().ArchType == android.Arm64 {
+		s.Address = nil
+		s.Hwaddress = nil
+		s.Thread = nil
+		s.Scudo = nil
+		s.Fuzzer = nil
+		s.Cfi = nil
+		s.Diag.Cfi = nil
+		s.Misc_undefined = nil
+		s.Undefined = nil
+		s.All_undefined = nil
+		s.Integer_overflow = nil
+	}
+
 	// Disable CFI for musl
 	if ctx.toolchain().Musl() {
 		s.Cfi = nil
