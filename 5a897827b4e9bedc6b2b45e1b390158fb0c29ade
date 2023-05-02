@@ -22,6 +22,30 @@
       },
       "revId": "5a897827b4e9bedc6b2b45e1b390158fb0c29ade",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7769a4fd_893fe02d",
+        "filename": "apex/bp2build_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-02T13:29:56Z",
+      "side": 1,
+      "message": "The root cause of issue was was when the non-override module was allowlisted by name, not by dir. E.g. in https://android-review.git.corp.google.com/c/platform/build/soong/+/2507016 you removed the allowlisting of `com.android.neuralnetworks` to instead allowlist the directory.\n\nWithout this CL, the test cases `explicit labels` and `allowed_by_dir` fail as well as the one I just added for `override_allowed_by_dir`.",
+      "parentUuid": "48b6c9e9_c43dd7f3",
+      "range": {
+        "startLine": 331,
+        "startChar": 5,
+        "endLine": 331,
+        "endChar": 39
+      },
+      "revId": "5a897827b4e9bedc6b2b45e1b390158fb0c29ade",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
