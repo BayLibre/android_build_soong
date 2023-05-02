@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "644f867b_1f2af631",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-02T08:36:45Z",
+      "side": 1,
+      "message": "When does this trigger? Can you craft an Android.bp file in the test that triggers this line?",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 73
+      },
+      "revId": "319d0b8bf613e9c5083cb3568e1944844378e0fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
