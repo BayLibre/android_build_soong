@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82817079_1e0d9835",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-02T17:51:59Z",
+      "side": 1,
+      "message": "This documentation and function name could be improved. (See: `The only \"false\" case is when it is disabled but not enabled` is immensely confusing) Consider:\n\n```\n// Returns true if a module was mixed_build allowlisted, but was only\n// ever successfully built with Soong.\n// TODO(b/ID): This should also return true if the module did not exist.\nfunc isAllowlistMisconfigured(...)\n```",
+      "revId": "3bb93dfd262bd13edd9ebe2609edc37cbcfc7072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb69cc6_41a638a0",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-02T17:51:59Z",
+      "side": 1,
+      "message": "This function and its documentation is no longer accurate. Rename and redocument? Perhaps make it as general as my suggestion above.",
+      "range": {
+        "startLine": 320,
+        "startChar": 43,
+        "endLine": 320,
+        "endChar": 56
+      },
+      "revId": "3bb93dfd262bd13edd9ebe2609edc37cbcfc7072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5000e09_d7896e7c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-02T17:51:59Z",
+      "side": 1,
+      "message": "Could you pull `module !\u003d \"\"` into the helper function, now? And maybe drop an explanation as to why this occurs.",
+      "revId": "3bb93dfd262bd13edd9ebe2609edc37cbcfc7072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
