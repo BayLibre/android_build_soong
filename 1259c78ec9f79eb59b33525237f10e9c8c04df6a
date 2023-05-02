@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eaa9d3c_7e6bdde7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-05-02T21:03:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d45ec65d_6b6867cd",
+      "revId": "1259c78ec9f79eb59b33525237f10e9c8c04df6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11af4a37_4d082f15",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c29e83e_cbff13e5",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-05-02T21:03:35Z",
+      "side": 1,
+      "message": "did you miss that it\u0027s also part of the previous line\u0027s sentence?",
+      "parentUuid": "11af4a37_4d082f15",
+      "revId": "1259c78ec9f79eb59b33525237f10e9c8c04df6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ea24af2_9fda74de",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 4
@@ -48,6 +84,24 @@
       "writtenOn": "2023-05-02T20:49:05Z",
       "side": 1,
       "message": "Could you assign a bug ID instead of your name, unless you\u0027re planning on working on this *immediately* after you submit this CL?",
+      "revId": "1259c78ec9f79eb59b33525237f10e9c8c04df6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7685f06_558f1ea4",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-05-02T21:03:35Z",
+      "side": 1,
+      "message": "I do plan on this. Expect a CL in an hour or so",
+      "parentUuid": "6ea24af2_9fda74de",
       "revId": "1259c78ec9f79eb59b33525237f10e9c8c04df6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
