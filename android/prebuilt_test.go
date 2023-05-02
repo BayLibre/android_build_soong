@@ -497,6 +497,31 @@ func TestPrebuilts(t *testing.T) {
 	}
 }
 
+func TestPrebuiltShouldNotChangePartition(t *testing.T) {
+	fs := MockFS{
+		"prebuilt_file": nil,
+	}
+	bp := `
+		source {
+			name: "bar",
+			vendor: true,
+		}
+		prebuilt {
+			name: "bar",
+			prefer: true,
+			srcs: ["prebuilt_file"],
+		}`
+	expectedError := `partition is different`
+	GroupFixturePreparers(
+		PrepareForTestWithArchMutator,
+		PrepareForTestWithPrebuilts,
+		fs.AddToFixture(),
+		FixtureRegisterWithContext(registerTestPrebuiltModules),
+	).
+		ExtendWithErrorHandler(FixtureExpectsAtLeastOneErrorMatchingPattern(expectedError)).
+		RunTestWithBp(t, bp)
+}
+
 func registerTestPrebuiltBuildComponents(ctx RegistrationContext) {
 	registerTestPrebuiltModules(ctx)
 
