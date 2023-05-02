@@ -90,6 +90,7 @@ type configImpl struct {
 	buildStartedTime         int64 // For metrics-upload-only - manually specify a build-started time
 	buildFromTextStub        bool
 	ensureAllowlistIntegrity bool // For CI builds - make sure modules are mixed-built
+	bazelExitCode            int  //for b runs
 
 	// From the product config
 	katiArgs        []string
