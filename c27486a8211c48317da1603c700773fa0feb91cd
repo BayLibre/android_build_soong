@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2b9937_3c7f6b3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-02T17:33:44Z",
+      "side": 1,
+      "message": "updated the subject, this mainly to keep sync with soong which links it as a whole archive.",
+      "parentUuid": "75bf126c_566cba31",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "c27486a8211c48317da1603c700773fa0feb91cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "11fe069f_28567f55",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-05-02T16:37:15Z",
       "side": 1,
       "message": "This is not related to this CL, but what is the use case of having `whole_archive_deps` and an implementation version of it in attributes? Is it possible to have just one of them?",
+      "revId": "c27486a8211c48317da1603c700773fa0feb91cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4bfae2_83274ff1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-02T17:33:44Z",
+      "side": 1,
+      "message": "most of the time we use whole archive deps because normally you want export them, the only other usage besides this buildversion lib I see is for some aidl libs",
+      "parentUuid": "11fe069f_28567f55",
       "revId": "c27486a8211c48317da1603c700773fa0feb91cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
