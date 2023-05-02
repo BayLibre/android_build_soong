@@ -116,6 +116,24 @@
       "parentUuid": "b5000e09_d7896e7c",
       "revId": "3bb93dfd262bd13edd9ebe2609edc37cbcfc7072",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f96b189_c097c1d8",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-02T20:49:05Z",
+      "side": 1,
+      "message": "It looks like you actually did this to what I was suggesting :) While I\u0027m happy that you also have the TODO in the helper method to better understand what\u0027s going on, this is all I was requesting :) Thanks!",
+      "parentUuid": "5c0d0fe1_4404ac85",
+      "revId": "3bb93dfd262bd13edd9ebe2609edc37cbcfc7072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45ec65d_6b6867cd",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-02T20:49:05Z",
+      "side": 1,
+      "message": "This doc string is still confusing. \"disabled and _not_ enabled\" is unclear, because \"enabled\" or \"disabled\" is not defined. (I know you mean that it\u0027s disabled in all variants, enabled in none, but that\u0027s a confusing concept and not explicitly stated here)\n\nI think it\u0027s possible to be less wordy and more precise. Try:\n\n```\n// Returns true if the given module has all of the following true:\n//   1. Is allowlisted to be built with Bazel.\n//   2. Has a variant which is *not* built with Bazel.\n//   3. Has no variant which is built with Bazel.\n// This indicates the allowlisting of this variant had no effect.\n```\n\nOr:\n\n```\n// Returns true if the given module is allowlisted, and is only\n// built with Soong (not with Bazel in any variant).\n```",
+      "revId": "1259c78ec9f79eb59b33525237f10e9c8c04df6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11af4a37_4d082f15",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-02T20:49:05Z",
+      "side": 1,
+      "message": "nit: \n\n```\n// TODO(b/280457637): Return true for nonexistent modules.\n```",
+      "revId": "1259c78ec9f79eb59b33525237f10e9c8c04df6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea24af2_9fda74de",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-02T20:49:05Z",
+      "side": 1,
+      "message": "Could you assign a bug ID instead of your name, unless you\u0027re planning on working on this *immediately* after you submit this CL?",
+      "revId": "1259c78ec9f79eb59b33525237f10e9c8c04df6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
