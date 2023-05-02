@@ -274,6 +274,16 @@ func ExampleRuleBuilderCommand_FlagWithRspFileInputList() {
 	// javac @out/soong/foo.rsp
 }
 
+func ExampleRuleBuilderCommand_FlagWithRspFileContent() {
+	ctx := builderContext()
+	fmt.Println(NewRuleBuilder(pctx, ctx).Command().
+		Tool(PathForSource(ctx, "javac")).
+		FlagWithRspFileContent("@", PathForOutput(ctx, "foo.rsp"), "bar").
+		String())
+	// Output:
+	// javac @out/soong/foo.rsp
+}
+
 func ExampleRuleBuilderCommand_String() {
 	ctx := builderContext()
 	fmt.Println(NewRuleBuilder(pctx, ctx).Command().
@@ -316,6 +326,7 @@ func TestRuleBuilder(t *testing.T) {
 					PathForSource(ctx, "RspInput"),
 					PathForOutput(ctx, "other/RspOutput2"),
 				}).
+			FlagWithRspFileContent("FlagWithRspFileContent=", PathForOutput(ctx, "rsp2"), "foo").
 			Implicit(PathForSource(ctx, "Implicit")).
 			ImplicitDepFile(PathForOutput(ctx, "module/ImplicitDepFile")).
 			ImplicitOutput(PathForOutput(ctx, "module/ImplicitOutput")).
@@ -354,7 +365,8 @@ func TestRuleBuilder(t *testing.T) {
 
 	wantInputs := PathsForSource(ctx, []string{"Implicit", "Input", "input", "input2", "input3"})
 	wantRspFileInputs := Paths{PathForSource(ctx, "RspInput"),
-		PathForOutput(ctx, "other/RspOutput2")}
+		PathForOutput(ctx, "other/RspOutput2"),
+	}
 	wantOutputs := PathsForOutput(ctx, []string{
 		"module/ImplicitOutput", "module/ImplicitSymlinkOutput", "module/Output", "module/SymlinkOutput",
 		"module/output", "module/output2", "module/output3"})
@@ -373,6 +385,7 @@ func TestRuleBuilder(t *testing.T) {
 		wantCommands := []string{
 			"out_local/soong/module/DepFile Flag FlagWithArg=arg FlagWithDepFile=out_local/soong/module/depfile " +
 				"FlagWithInput=input FlagWithOutput=out_local/soong/module/output FlagWithRspFileInputList=out_local/soong/rsp " +
+				"FlagWithRspFileContent=out_local/soong/rsp2 " +
 				"Input out_local/soong/module/Output out_local/soong/module/SymlinkOutput Text Tool after command2 old cmd",
 			"command2 out_local/soong/module/depfile2 input2 out_local/soong/module/output2 tool2",
 			"command3 input3 out_local/soong/module/output2 out_local/soong/module/output3 input3 out_local/soong/module/output2",
@@ -403,7 +416,8 @@ func TestRuleBuilder(t *testing.T) {
 		wantCommands := []string{
 			"__SBOX_SANDBOX_DIR__/out/DepFile Flag FlagWithArg=arg FlagWithDepFile=__SBOX_SANDBOX_DIR__/out/depfile " +
 				"FlagWithInput=input FlagWithOutput=__SBOX_SANDBOX_DIR__/out/output " +
-				"FlagWithRspFileInputList=out_local/soong/rsp Input __SBOX_SANDBOX_DIR__/out/Output " +
+				"FlagWithRspFileInputList=out_local/soong/rsp FlagWithRspFileContent=out_local/soong/rsp2 " +
+				"Input __SBOX_SANDBOX_DIR__/out/Output " +
 				"__SBOX_SANDBOX_DIR__/out/SymlinkOutput Text Tool after command2 old cmd",
 			"command2 __SBOX_SANDBOX_DIR__/out/depfile2 input2 __SBOX_SANDBOX_DIR__/out/output2 tool2",
 			"command3 input3 __SBOX_SANDBOX_DIR__/out/output2 __SBOX_SANDBOX_DIR__/out/output3 input3 __SBOX_SANDBOX_DIR__/out/output2",
@@ -433,7 +447,8 @@ func TestRuleBuilder(t *testing.T) {
 		wantCommands := []string{
 			"__SBOX_SANDBOX_DIR__/out/DepFile Flag FlagWithArg=arg FlagWithDepFile=__SBOX_SANDBOX_DIR__/out/depfile " +
 				"FlagWithInput=input FlagWithOutput=__SBOX_SANDBOX_DIR__/out/output " +
-				"FlagWithRspFileInputList=out_local/soong/rsp Input __SBOX_SANDBOX_DIR__/out/Output " +
+				"FlagWithRspFileInputList=out_local/soong/rsp FlagWithRspFileContent=out_local/soong/rsp2 " +
+				"Input __SBOX_SANDBOX_DIR__/out/Output " +
 				"__SBOX_SANDBOX_DIR__/out/SymlinkOutput Text __SBOX_SANDBOX_DIR__/tools/src/Tool after command2 old cmd",
 			"command2 __SBOX_SANDBOX_DIR__/out/depfile2 input2 __SBOX_SANDBOX_DIR__/out/output2 __SBOX_SANDBOX_DIR__/tools/src/tool2",
 			"command3 input3 __SBOX_SANDBOX_DIR__/out/output2 __SBOX_SANDBOX_DIR__/out/output3 input3 __SBOX_SANDBOX_DIR__/out/output2",
@@ -463,7 +478,8 @@ func TestRuleBuilder(t *testing.T) {
 		wantCommands := []string{
 			"__SBOX_SANDBOX_DIR__/out/DepFile Flag FlagWithArg=arg FlagWithDepFile=__SBOX_SANDBOX_DIR__/out/depfile " +
 				"FlagWithInput=input FlagWithOutput=__SBOX_SANDBOX_DIR__/out/output " +
-				"FlagWithRspFileInputList=__SBOX_SANDBOX_DIR__/out/rsp Input __SBOX_SANDBOX_DIR__/out/Output " +
+				"FlagWithRspFileInputList=__SBOX_SANDBOX_DIR__/out/rsp FlagWithRspFileContent=__SBOX_SANDBOX_DIR__/out/rsp2 " +
+				"Input __SBOX_SANDBOX_DIR__/out/Output " +
 				"__SBOX_SANDBOX_DIR__/out/SymlinkOutput Text __SBOX_SANDBOX_DIR__/tools/src/Tool after command2 old cmd",
 			"command2 __SBOX_SANDBOX_DIR__/out/depfile2 input2 __SBOX_SANDBOX_DIR__/out/output2 __SBOX_SANDBOX_DIR__/tools/src/tool2",
 			"command3 input3 __SBOX_SANDBOX_DIR__/out/output2 __SBOX_SANDBOX_DIR__/out/output3 input3 __SBOX_SANDBOX_DIR__/out/output2",
