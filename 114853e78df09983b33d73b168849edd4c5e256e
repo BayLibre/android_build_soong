@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a3c36f9_91f44856",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-02T00:22:18Z",
+      "side": 1,
+      "message": "I am little confused by the comments here, normally you want separate private and public with srcs vs. hdrs, is this something similar here?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 106
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67175a6f_398239b5",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-02T00:22:18Z",
+      "side": 1,
+      "message": "I don\u0027t see this being used/tested anywhere, is this for the coming changes?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
