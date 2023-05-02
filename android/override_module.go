@@ -47,8 +47,8 @@ type OverrideModule interface {
 
 	// Internal funcs to handle interoperability between override modules and prebuilts.
 	// i.e. cases where an overriding module, too, is overridden by a prebuilt module.
-	setOverriddenByPrebuilt(overridden bool)
-	getOverriddenByPrebuilt() bool
+	setOverriddenByPrebuilt(prebuilt Module)
+	getOverriddenByPrebuilt() Module
 
 	// Directory containing the Blueprint definition of the overriding module
 	setModuleDir(string)
@@ -61,7 +61,7 @@ type OverrideModuleBase struct {
 
 	overridingProperties []interface{}
 
-	overriddenByPrebuilt bool
+	overriddenByPrebuilt Module
 
 	moduleDir string
 }
@@ -97,11 +97,11 @@ func (o *OverrideModuleBase) GetOverriddenModuleName() string {
 	return proptools.String(o.moduleProperties.Base)
 }
 
-func (o *OverrideModuleBase) setOverriddenByPrebuilt(overridden bool) {
-	o.overriddenByPrebuilt = overridden
+func (o *OverrideModuleBase) setOverriddenByPrebuilt(prebuilt Module) {
+	o.overriddenByPrebuilt = prebuilt
 }
 
-func (o *OverrideModuleBase) getOverriddenByPrebuilt() bool {
+func (o *OverrideModuleBase) getOverriddenByPrebuilt() Module {
 	return o.overriddenByPrebuilt
 }
 
@@ -270,7 +270,7 @@ func overrideModuleDepsMutator(ctx BottomUpMutatorContext) {
 				panic("PrebuiltDepTag leads to a non-prebuilt module " + dep.Name())
 			}
 			if prebuilt.UsePrebuilt() {
-				module.setOverriddenByPrebuilt(true)
+				module.setOverriddenByPrebuilt(dep)
 				return
 			}
 		})
@@ -303,8 +303,10 @@ func performOverrideMutator(ctx BottomUpMutatorContext) {
 		ctx.AliasVariation(variants[0])
 		for i, o := range overrides {
 			mods[i+1].(OverridableModule).override(ctx, o)
-			if o.getOverriddenByPrebuilt() {
+			if prebuilt := o.getOverriddenByPrebuilt(); prebuilt != nil {
 				// The overriding module itself, too, is overridden by a prebuilt.
+				// Perform the same check for replacement
+				checkInvariantsForSourceAndPrebuilt(ctx, mods[i+1], prebuilt)
 				// Copy the flag and hide it in make
 				mods[i+1].ReplacedByPrebuilt()
 			}
