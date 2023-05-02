@@ -1555,12 +1555,11 @@ var (
 	}
 
 	// These should be the libs that are included by the apexes in the StagingMixedBuildsEnabledList
-	StagingDclaMixedBuildsEnabledList = []string{}
-
-	// TODO(b/269342245): Enable the rest of the DCLA libs
-	// "libssl",
-	// "libstagefright_flacdec",
-	// "libutils",
+	StagingDclaMixedBuildsEnabledList = []string{
+		"libssl",
+		"libstagefright_flacdec",
+		"libutils",
+	}
 
 	// TODO(b/273282046): Make this list customizable to support various targets.
 	// The list of modules which are expected to spend lots of build time.

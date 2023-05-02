@@ -50,6 +50,9 @@ DCLA_LIBS=(
   libc++.so
   libcrypto.so
   libcutils.so
+  libssl
+  libstagefright_flacdec
+  libutils
 )
 
 if [[ -z ${OUT_DIR+x} ]]; then
