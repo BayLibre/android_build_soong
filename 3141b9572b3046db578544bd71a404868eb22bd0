@@ -158,6 +158,30 @@
       },
       "revId": "3141b9572b3046db578544bd71a404868eb22bd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f856b7b_0b358748",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2023-05-02T15:31:18Z",
+      "side": 1,
+      "message": "As discussed offline. \nCreating .latest.version targets for all the latest modules.\nAdding \"-1\" to file which has not released as extension.",
+      "parentUuid": "dfe58587_cf10c15a",
+      "range": {
+        "startLine": 276,
+        "startChar": 82,
+        "endLine": 276,
+        "endChar": 89
+      },
+      "revId": "3141b9572b3046db578544bd71a404868eb22bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
