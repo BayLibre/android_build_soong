@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec49abd_367b7c3e",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-05-02T20:37:55Z",
+      "side": 1,
+      "message": "modified per meeting.",
+      "parentUuid": "82817079_1e0d9835",
+      "revId": "3bb93dfd262bd13edd9ebe2609edc37cbcfc7072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "feb69cc6_41a638a0",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63d216c2_05af67fb",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-05-02T20:37:55Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "feb69cc6_41a638a0",
+      "range": {
+        "startLine": 320,
+        "startChar": 43,
+        "endLine": 320,
+        "endChar": 56
+      },
+      "revId": "3bb93dfd262bd13edd9ebe2609edc37cbcfc7072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5000e09_d7896e7c",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-05-02T17:51:59Z",
       "side": 1,
       "message": "Could you pull `module !\u003d \"\"` into the helper function, now? And maybe drop an explanation as to why this occurs.",
+      "revId": "3bb93dfd262bd13edd9ebe2609edc37cbcfc7072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0d0fe1_4404ac85",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-05-02T20:37:55Z",
+      "side": 1,
+      "message": "TODO added, will follow up.",
+      "parentUuid": "b5000e09_d7896e7c",
       "revId": "3bb93dfd262bd13edd9ebe2609edc37cbcfc7072",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
