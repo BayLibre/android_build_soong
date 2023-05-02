@@ -299,6 +299,22 @@ func checkForAllowlistIntegrityError(configuration android.Config, isStagingMode
 	return fmt.Errorf("Error: expected the following modules to be mixed_built: %s", modules)
 }
 
+// Returns whether a module exists by checking its existence in
+// mixedBuildsEnabled. If not present there and present in mixedBuildsDisabled,
+// returns false. If not present in either or solely in mixedBuildsEnabled,
+// returns true.
+func moduleEnabled(module string, mixedBuildsEnabled map[string]struct{}, mixedBuildsDisabled map[string]struct{}) bool {
+	_, enabled := mixedBuildsEnabled[module]
+
+	if enabled {
+		return true
+	}
+
+	_, disabled := mixedBuildsDisabled[module]
+	return !disabled
+
+}
+
 // Returns the list of modules that should have been mixed_built (per the
 // allowlists and cmdline flags) but were not.
 func findModulesNotMixedBuiltForAnyVariant(configuration android.Config, isStagingMode bool) []string {
@@ -306,22 +322,23 @@ func findModulesNotMixedBuiltForAnyVariant(configuration android.Config, isStagi
 	forceEnabledModules := configuration.BazelModulesForceEnabledByFlag()
 
 	mixedBuildsEnabled := configuration.GetMixedBuildsEnabledModules()
+	mixedBuildsDisabled := configuration.GetMixedBuildsDisabledModules()
 	for _, module := range allowlists.ProdMixedBuildsEnabledList {
-		if _, ok := mixedBuildsEnabled[module]; !ok && module != "" {
+		if module != "" && !moduleEnabled(module, mixedBuildsEnabled, mixedBuildsDisabled) {
 			retval = append(retval, module)
 		}
 	}
 
 	if isStagingMode {
 		for _, module := range allowlists.StagingMixedBuildsEnabledList {
-			if _, ok := mixedBuildsEnabled[module]; !ok && module != "" {
+			if module != "" && !moduleEnabled(module, mixedBuildsEnabled, mixedBuildsDisabled) {
 				retval = append(retval, module)
 			}
 		}
 	}
 
 	for module, _ := range forceEnabledModules {
-		if _, ok := mixedBuildsEnabled[module]; !ok && module != "" {
+		if module != "" && !moduleEnabled(module, mixedBuildsEnabled, mixedBuildsDisabled) {
 			retval = append(retval, module)
 		}
 	}
