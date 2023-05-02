@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "082da174_c4720052",
+        "filename": "aidl_library/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-02T12:27:07Z",
+      "side": 1,
+      "message": "can you add a license header please?",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a3c36f9_91f44856",
         "filename": "aidl_library/aidl_library.go",
         "patchSetId": 5
@@ -26,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f05722b0_c30ff935",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-02T12:27:07Z",
+      "side": 1,
+      "message": "can we omit this until it is necessary?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67175a6f_398239b5",
         "filename": "aidl_library/aidl_library.go",
         "patchSetId": 5
@@ -42,6 +88,121 @@
         "startChar": 1,
         "endLine": 50,
         "endChar": 13
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e08400_4ed385c7",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-02T12:27:07Z",
+      "side": 1,
+      "message": "we should do this via a provider instead.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2fce947_1cf509e6",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-02T12:27:07Z",
+      "side": 1,
+      "message": "can you pull the bp2build into a separate CL?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42111ec4_f4a0c3b4",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-02T12:27:07Z",
+      "side": 1,
+      "message": "We don\u0027t need to add this a `IsMixedBuildSupported` method until it is supported by mixed builds.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48efa1ed_641343af",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-02T12:27:07Z",
+      "side": 1,
+      "message": "nit: s/header/dep",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc5b109a_7e703acd",
+        "filename": "bp2build/aidl_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-02T12:27:07Z",
+      "side": 1,
+      "message": "stale comment",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 27
       },
       "revId": "114853e78df09983b33d73b168849edd4c5e256e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
