@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edcb10fe_58c36f76",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-02T15:50:37Z",
+      "side": 1,
+      "message": "This is curiously ambiguous, I read it as \"generate profile only if no dexpreopt\", not as \"if no dexpreopt, generate only a profile\".",
+      "range": {
+        "startLine": 927,
+        "startChar": 1,
+        "endLine": 927,
+        "endChar": 76
+      },
+      "revId": "4ed08c66a6ecd59fd6d725893470d39fe9529722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a8f360_34fa25f2",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-02T15:50:37Z",
+      "side": 1,
+      "message": "Same",
+      "range": {
+        "startLine": 423,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 76
+      },
+      "revId": "4ed08c66a6ecd59fd6d725893470d39fe9529722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
