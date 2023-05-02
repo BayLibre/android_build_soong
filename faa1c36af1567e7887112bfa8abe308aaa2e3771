@@ -16,6 +16,24 @@
       "message": "+1, but I\u0027m still concerned that it\u0027s adding more complexity. (Can\u0027t understand what all these flags means and how they interact.)",
       "revId": "faa1c36af1567e7887112bfa8abe308aaa2e3771",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d9dd642_f092e0c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-05-02T04:26:11Z",
+      "side": 1,
+      "message": "Agreed on the complexity.  Part of the problem is the existing flags are vague and underdocumented.  I tried to make this flag very explicit, and I added a few more comments to cover the usage.  There\u0027s also a test that covers both sides of the desired behavior, not packaging apex libraries but still packaging uninstallable dependencies.",
+      "parentUuid": "e3edb3de_984856dc",
+      "revId": "faa1c36af1567e7887112bfa8abe308aaa2e3771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
