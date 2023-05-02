@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2163442_35e3a707",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-02T21:05:32Z",
+      "side": 1,
+      "message": "I did not -- I\u0027m indicating you can actually reduce the explanation a bit. But your call. Feel free to submit however.",
+      "parentUuid": "2c29e83e_cbff13e5",
+      "revId": "1259c78ec9f79eb59b33525237f10e9c8c04df6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ea24af2_9fda74de",
