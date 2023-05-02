@@ -305,6 +305,8 @@ func performOverrideMutator(ctx BottomUpMutatorContext) {
 			mods[i+1].(OverridableModule).override(ctx, o)
 			if o.getOverriddenByPrebuilt() {
 				// The overriding module itself, too, is overridden by a prebuilt.
+				// Perform the same check for replacement
+				checkInvariantsForSourceAndPrebuilt(ctx, mods[i+1], o)
 				// Copy the flag and hide it in make
 				mods[i+1].ReplacedByPrebuilt()
 			}
