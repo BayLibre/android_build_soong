@@ -430,8 +430,8 @@ func (r *RuleBuilder) RspFileInputs() Paths {
 	return rspFileInputs
 }
 
-func (r *RuleBuilder) rspFiles() []rspFileAndPaths {
-	var rspFiles []rspFileAndPaths
+func (r *RuleBuilder) rspFiles() []rspFileAndContents {
+	var rspFiles []rspFileAndContents
 	for _, c := range r.commands {
 		rspFiles = append(rspFiles, c.rspFiles...)
 	}
@@ -682,22 +682,28 @@ func (r *RuleBuilder) Build(name string, desc string) {
 	output := outputs[0]
 	implicitOutputs := outputs[1:]
 
-	var rspFile, rspFileContent string
-	var rspFileInputs Paths
-	if len(rspFiles) > 0 {
-		// The first rsp files uses Ninja's rsp file support for the rule
-		rspFile = rspFiles[0].file.String()
-		// Use "$in" for rspFileContent to avoid duplicating the list of files in the dependency
-		// list and in the contents of the rsp file.  Inputs to the rule that are not in the
-		// rsp file will be listed in Implicits instead of Inputs so they don't show up in "$in".
-		rspFileContent = "$in"
-		rspFileInputs = append(rspFileInputs, rspFiles[0].paths...)
-
-		for _, rspFile := range rspFiles[1:] {
+	var ninjaRspFilePath, ninjaRspFileContent string
+	var ninjaRspFileInputs Paths
+	ninjaRspFileUsed := false
+	for _, rspFile := range rspFiles {
+		if !ninjaRspFileUsed && len(rspFile.paths) > 0 {
+			// The first rsp file that uses path inputs uses Ninja's rsp file support for the rule
+			ninjaRspFilePath = rspFile.file.String()
+			// Use "$in" for RspFileContent to avoid duplicating the list of files in the dependency
+			// list and in the contents of the rsp file.  Inputs to the rule that are not in the
+			// rsp file will be listed in Implicits instead of Inputs so they don't show up in "$in".
+			ninjaRspFileContent = "$in"
+			ninjaRspFileInputs = append(ninjaRspFileInputs, rspFile.paths...)
+			ninjaRspFileUsed = true
+		} else {
 			// Any additional rsp files need an extra rule to write the file.
-			writeRspFileRule(r.ctx, rspFile.file, rspFile.paths)
-			// The main rule needs to depend on the inputs listed in the extra rsp file.
-			inputs = append(inputs, rspFile.paths...)
+			if len(rspFile.paths) > 0 {
+				writeRspFileRule(r.ctx, rspFile.file, rspFile.paths)
+				// The main rule needs to depend on the inputs listed in the extra rsp file.
+				inputs = append(inputs, rspFile.paths...)
+			} else {
+				WriteFileRule(r.ctx, rspFile.file, rspFile.content)
+			}
 			// The main rule needs to depend on the extra rsp file.
 			inputs = append(inputs, rspFile.file)
 		}
@@ -720,11 +726,11 @@ func (r *RuleBuilder) Build(name string, desc string) {
 			Command:        proptools.NinjaEscape(commandString),
 			CommandDeps:    proptools.NinjaEscapeList(tools.Strings()),
 			Restat:         r.restat,
-			Rspfile:        proptools.NinjaEscape(rspFile),
-			RspfileContent: rspFileContent,
+			Rspfile:        proptools.NinjaEscape(ninjaRspFilePath),
+			RspfileContent: ninjaRspFileContent,
 			Pool:           pool,
 		}),
-		Inputs:          rspFileInputs,
+		Inputs:          ninjaRspFileInputs,
 		Implicits:       inputs,
 		OrderOnly:       r.OrderOnlys(),
 		Validations:     r.Validations(),
@@ -754,12 +760,14 @@ type RuleBuilderCommand struct {
 	depFiles       WritablePaths
 	tools          Paths
 	packagedTools  []PackagingSpec
-	rspFiles       []rspFileAndPaths
+	rspFiles       []rspFileAndContents
 }
 
-type rspFileAndPaths struct {
-	file  WritablePath
-	paths Paths
+type rspFileAndContents struct {
+	file WritablePath
+	// Only one of paths or content should be set
+	paths   Paths
+	content string
 }
 
 func checkPathNotNil(path Path) {
@@ -1268,7 +1276,8 @@ func (c *RuleBuilderCommand) FlagWithDepFile(flag string, path WritablePath) *Ru
 // no separator between them.  The paths will be written to the rspfile.  If sbox is enabled, the
 // rspfile must be outside the sbox directory.  The first use of FlagWithRspFileInputList in any
 // RuleBuilderCommand of a RuleBuilder will use Ninja's rsp file support for the rule, additional
-// uses will result in an auxiliary rules to write the rspFile contents.
+// uses will result in an auxiliary rules to write the rspFile contents.  The paths will be treated
+// as input dependencies as if they were passed to Implicits.
 func (c *RuleBuilderCommand) FlagWithRspFileInputList(flag string, rspFile WritablePath, paths Paths) *RuleBuilderCommand {
 	// Use an empty slice if paths is nil, the non-nil slice is used as an indicator that the rsp file must be
 	// generated.
@@ -1276,17 +1285,26 @@ func (c *RuleBuilderCommand) FlagWithRspFileInputList(flag string, rspFile Writa
 		paths = Paths{}
 	}
 
-	c.rspFiles = append(c.rspFiles, rspFileAndPaths{rspFile, paths})
+	return c.flagWithRspFile(flag, rspFileAndContents{file: rspFile, paths: paths})
+}
 
+// FlagWithRspFileInputList adds the specified flag and path to an rspfile to the command line, with
+// no separator between them.  The content will be written to the rspfile.  If sbox is enabled, the
+// rspfile must be outside the sbox directory.  Any paths specified in content will not automatically
+// have a dependency on them and must be passed to Implicit.
+func (c *RuleBuilderCommand) FlagWithRspFileContent(flag string, rspFile WritablePath, content string) *RuleBuilderCommand {
+	return c.flagWithRspFile(flag, rspFileAndContents{file: rspFile, content: content})
+}
+
+func (c *RuleBuilderCommand) flagWithRspFile(flag string, rsp rspFileAndContents) *RuleBuilderCommand {
+	c.rspFiles = append(c.rspFiles, rsp)
 	if c.rule.sbox {
-		if _, isRel, _ := maybeRelErr(c.rule.outDir.String(), rspFile.String()); isRel {
+		if _, isRel, _ := maybeRelErr(c.rule.outDir.String(), rsp.file.String()); isRel {
 			panic(fmt.Errorf("FlagWithRspFileInputList rspfile %q must not be inside out dir %q",
-				rspFile.String(), c.rule.outDir.String()))
+				rsp.file.String(), c.rule.outDir.String()))
 		}
 	}
-
-	c.FlagWithArg(flag, c.PathForInput(rspFile))
-	return c
+	return c.FlagWithArg(flag, c.PathForInput(rsp.file))
 }
 
 // String returns the command line.
