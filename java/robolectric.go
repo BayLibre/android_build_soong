@@ -234,6 +234,10 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		installDeps = append(installDeps, installedData)
 	}
 
+	if r.jacocoReportClassesFile != nil {
+		ctx.InstallFile(installPath, ctx.ModuleName()+"-jacoco.jar", r.jacocoReportClassesFile)
+	}
+
 	r.installFile = ctx.InstallFile(installPath, ctx.ModuleName()+".jar", r.combinedJar, installDeps...)
 }
 
@@ -370,6 +374,7 @@ func RobolectricTestFactory() android.Module {
 
 	module.Module.dexpreopter.isTest = true
 	module.Module.linter.properties.Lint.Test = proptools.BoolPtr(true)
+	module.Module.properties.Instrument = true
 
 	module.testProperties.Test_suites = []string{"robolectric-tests"}
 
