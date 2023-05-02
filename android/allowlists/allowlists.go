@@ -747,6 +747,37 @@ var (
 
 		// Mainline Module Apps
 		"CaptivePortalLogin",
+
+		// deviceless tests
+		"HelloWorldHostTest",
+		"bluetooth-address-unit-tests",
+		"HalAudioStreamWorkerTest",
+		"HelloWorldHostTest",
+		"NeuralNetworksTest_logtag",
+		"NeuralNetworksTest_operations",
+		"NeuralNetworksTest_utils",
+		"Robolectric_resources_tests_upstream",
+		"Robolectric_sandbox_tests_upstream",
+		"Robolectric_utils_tests_upstream",
+		"android.hardware.audio.common.test.utility_tests",
+		"android.hardware.biometrics.fingerprint.WorkerThreadTest",
+		"binderRpcWireProtocolTest",
+		"binderUnitTest",
+		"binderUtilsHostTest",
+		"bluetooth-btlinux-hci-test",
+		"cpu_features-bit_utils_test",
+		"cts-inputmethodservice-common-host",
+		"fakeservicemanager_test",
+		"fastboot_test",
+		"libjavacore-unit-tests",
+		"liblp_test",
+		"loganalysis-tests",
+		"luni-host-tests",
+		"nanoapp_chqts_shared_tests",
+		"product-config-test",
+		"run_dex2oat_test",
+		"trebuchet-core-tests",
+		"tristate_test",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
@@ -795,7 +826,9 @@ var (
 		"tjbench",   // TODO(b/240563612): Stem property
 
 		// requires host tools for apexer
-		"apexer_test", "apexer_test_host_tools", "host_apex_verifier",
+		// "apexer_test",
+		"apexer_test_host_tools",
+		"host_apex_verifier",
 
 		// java bugs
 		"libbase_ndk",  // TODO(b/186826477): fails to link libctscamera2_jni for device (required for CtsCameraTestCases)
@@ -927,13 +960,13 @@ var (
 		"svcenc", "svcdec",
 
 		// Failing host cc_tests
-		"memunreachable_unit_test",
-		"libprocinfo_test",
-		"ziparchive-tests",
-		"gtest_isolated_tests",
-		"libunwindstack_unit_test",
-		"task_profiles_test",
-		"power_tests", // failing test on server, but not on host
+		// "memunreachable_unit_test",
+		// "libprocinfo_test",
+		// "ziparchive-tests",
+		// "gtest_isolated_tests",
+		// "libunwindstack_unit_test",
+		// "task_profiles_test",
+		// "power_tests", // failing test on server, but not on host
 
 		// reflect: call of reflect.Value.NumField on interface Value
 		// affects all cc_tests that depend on art_defaults
@@ -949,7 +982,9 @@ var (
 		"libnativebridge6-test-case",
 		"libnativebridge6prezygotefork",
 
-		"libandroidfw_tests", "aapt2_tests", // failing due to data path issues
+		// failing due to data path issues
+		// "libandroidfw_tests",
+		"aapt2_tests",
 
 		// error: overriding commands for target
 		// `out/host/linux-x86/nativetest64/gmock_tests/gmock_tests__cc_runner_test',
@@ -958,13 +993,13 @@ var (
 
 		// cc_test with unconverted deps, or are device-only (and not verified to pass yet)
 		"AMRWBEncTest",
-		"AmrnbDecoderTest",     // depends on unconverted modules: libaudioutils, libsndfile
-		"AmrnbEncoderTest",     // depends on unconverted modules: libaudioutils, libsndfile
-		"AmrwbDecoderTest",     // depends on unconverted modules: libsndfile, libaudioutils
-		"AmrwbEncoderTest",     // depends on unconverted modules: libaudioutils, libsndfile
-		"Mp3DecoderTest",       // depends on unconverted modules: libsndfile, libaudioutils
-		"Mpeg4H263DecoderTest", // depends on unconverted modules: libstagefright_foundation
-		"Mpeg4H263EncoderTest",
+		"AmrnbDecoderTest", // depends on unconverted modules: libaudioutils, libsndfile
+		"AmrnbEncoderTest", // depends on unconverted modules: libaudioutils, libsndfile
+		"AmrwbDecoderTest", // depends on unconverted modules: libsndfile, libaudioutils
+		"AmrwbEncoderTest", // depends on unconverted modules: libaudioutils, libsndfile
+		"Mp3DecoderTest",   // depends on unconverted modules: libsndfile, libaudioutils
+		// "Mpeg4H263DecoderTest", // depends on unconverted modules: libstagefright_foundation
+		// "Mpeg4H263EncoderTest",
 		"avcdec",
 		"avcenc",
 		"bionic-benchmarks-tests",
@@ -1014,9 +1049,9 @@ var (
 		"libBionicLoaderTests",  // depends on unconverted modules: libmeminfo
 		"libapexutil_tests",     // depends on unconverted modules: apex-info-list-tinyxml, libapexutil
 		"libcutils_sockets_test",
-		"libexpectedutils_test",
+		// "libexpectedutils_test",
 		"libhwbinder_latency",
-		"liblog-host-test", // failing tests
+		// "liblog-host-test", // failing tests
 		"libminijail_test",
 		"libminijail_unittest_gtest",
 		"libpackagelistparser_test",
@@ -1038,7 +1073,7 @@ var (
 		"memunreachable_binder_test", // depends on unconverted modules: libbinder
 		"memunreachable_test",
 		"metadata_tests",
-		"minijail0_cli_unittest_gtest",
+		// "minijail0_cli_unittest_gtest",
 		"mpeg2dec",
 		"mvcdec",
 		"ns_hidden_child_helper",
@@ -1050,8 +1085,8 @@ var (
 		"rappor-tests", // depends on unconverted modules: jsr305, guava
 		"scudo_unit_tests",
 		"stats-log-api-gen-test", // depends on unconverted modules: libstats_proto_host
-		"syscall_filter_unittest_gtest",
-		"sysprop_test", // depends on unconverted modules: libcom.android.sysprop.tests
+		// "syscall_filter_unittest_gtest",
+		// "sysprop_test", // depends on unconverted modules: libcom.android.sysprop.tests
 		"thread_exit_cb_helper",
 		"tls_properties_helper",
 		"ulp",
@@ -1423,7 +1458,7 @@ var (
 		"libc_musl_sysroot",
 
 		// TODO(b/266459895): depends on libunwindstack
-		"libutils_test",
+		// "libutils_test",
 
 		// Has dependencies on other tools like ziptool, bp2build'd data properties don't work with these tests atm
 		"ziparchive_tests_large",
