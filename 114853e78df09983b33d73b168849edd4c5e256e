@@ -259,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c3191aa_ce93b0cf",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-03T16:33:23Z",
+      "side": 1,
+      "message": "b/2577313",
+      "parentUuid": "c2fce947_1cf509e6",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42111ec4_f4a0c3b4",
@@ -319,6 +343,30 @@
       "writtenOn": "2023-05-02T12:27:07Z",
       "side": 1,
       "message": "nit: s/header/dep",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14c9e518_f1bae8cc",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-03T16:33:23Z",
+      "side": 1,
+      "message": "I renamed it to aidlLibraryTag.",
+      "parentUuid": "48efa1ed_641343af",
       "range": {
         "startLine": 168,
         "startChar": 4,
