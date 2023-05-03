@@ -3328,7 +3328,8 @@ cc_library {
 	name: "foo",
 	aidl: {
 		libs: ["A_aidl"],
-	}
+	},
+	export_include_dirs: ["include"],
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTargetNoRestrictions("aidl_library", "A_aidl", AttrNameToString{
@@ -3338,15 +3339,19 @@ cc_library {
 				"tags":                `["apex_available=//apex_available:anyapex"]`,
 			}),
 			MakeBazelTarget("cc_aidl_library", "foo_cc_aidl_library", AttrNameToString{
-				"deps": `[":A_aidl"]`,
+				"deps":            `[":A_aidl"]`,
+				"local_includes":  `["."]`,
+				"export_includes": `["include"]`,
 			}),
 			MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
 				"implementation_whole_archive_deps": `[":foo_cc_aidl_library"]`,
 				"local_includes":                    `["."]`,
+				"export_includes":                   `["include"]`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
 				"implementation_whole_archive_deps": `[":foo_cc_aidl_library"]`,
 				"local_includes":                    `["."]`,
+				"export_includes":                   `["include"]`,
 			}),
 		},
 	})
