@@ -16,6 +16,24 @@
       "message": "I was going to name it `android/soong/aidl` but it\u0027s conflicted with https://source.corp.google.com/aosp-master/system/tools/aidl/build/Android.bp;l\u003d26",
       "revId": "1ce8f32554ab8cf9b95e5d0157f535e4ba9b2f26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "395ba337_74541449",
+        "filename": "aidl_library/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-03T14:33:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "37ea479f_2af58d15",
+      "revId": "1ce8f32554ab8cf9b95e5d0157f535e4ba9b2f26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

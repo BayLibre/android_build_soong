@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c61efd7_195fd5c2",
+        "filename": "aidl_library/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-03T14:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "082da174_c4720052",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a3c36f9_91f44856",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b509f242_5cc3a421",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-03T14:33:07Z",
+      "side": 1,
+      "message": "Without input sandboxing, Soong only needs the include dirs to the headers in order to find the headers. In Bazel, the hdrs need to be specified explicitly in BUILD so that aidl compiler can find the hdrs in the sandbox.\n\nAt the moment, this is provided so that we can specify the hdrs in Android.bp which is to be converted to BUILD. As a follow-up CL, we will turn on input sandboxing in Soong aidl actions so that the behavior is more consistent.\n\nLet me know if this isn\u0027t clear.",
+      "parentUuid": "8a3c36f9_91f44856",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 106
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f05722b0_c30ff935",
         "filename": "aidl_library/aidl_library.go",
         "patchSetId": 5
@@ -60,6 +108,30 @@
       "writtenOn": "2023-05-02T12:27:07Z",
       "side": 1,
       "message": "can we omit this until it is necessary?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a07d5728_1024f67b",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-03T14:33:07Z",
+      "side": 1,
+      "message": "It is indeed needed for this scenario https://android-review.git.corp.google.com/c/platform/frameworks/base/+/2574736/2/core/java/Android.bp#39\n\nhttps://source.android.com/docs/core/architecture/aidl/aidl-backends#custom-parcelables\n\nSome aidl files are provided with custom cpp header declarations. The cc modules include the custom cpp headers from the top level.",
+      "parentUuid": "f05722b0_c30ff935",
       "range": {
         "startLine": 37,
         "startChar": 0,
@@ -116,6 +188,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2655a32c_c36c1b7d",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-03T14:33:07Z",
+      "side": 1,
+      "message": "Thanks. I removed it.",
+      "parentUuid": "67175a6f_398239b5",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 13
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "788a445d_62f03210",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-03T14:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e08400_4ed385c7",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2fce947_1cf509e6",
@@ -162,6 +282,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ccc3ef7_64967cf6",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-03T14:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42111ec4_f4a0c3b4",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48efa1ed_641343af",
@@ -198,6 +342,30 @@
       "writtenOn": "2023-05-02T12:27:07Z",
       "side": 1,
       "message": "stale comment",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "584007a5_f95158c4",
+        "filename": "bp2build/aidl_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-03T14:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc5b109a_7e703acd",
       "range": {
         "startLine": 22,
         "startChar": 1,
