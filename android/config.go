@@ -1054,15 +1054,19 @@ func (c *config) AlwaysUsePrebuiltSdks() bool {
 }
 
 func (c *config) MinimizeJavaDebugInfo() bool {
-	return Bool(c.productVariables.MinimizeJavaDebugInfo) && !Bool(c.productVariables.Eng)
+	return Bool(c.productVariables.MinimizeJavaDebugInfo) && !c.Eng()
 }
 
 func (c *config) Debuggable() bool {
-	return Bool(c.productVariables.Debuggable)
+	return c.productVariables.TargetBuildVariant == "userdebug" || c.productVariables.TargetBuildVariant == "eng"
 }
 
 func (c *config) Eng() bool {
-	return Bool(c.productVariables.Eng)
+	return c.productVariables.TargetBuildVariant == "eng"
+}
+
+func (c *config) TargetBuildVariant() string {
+	return c.productVariables.TargetBuildVariant
 }
 
 // DevicePrimaryArchType returns the ArchType for the first configured device architecture, or
