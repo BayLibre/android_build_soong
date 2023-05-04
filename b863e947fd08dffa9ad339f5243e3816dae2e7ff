@@ -68,6 +68,24 @@
       "message": "Can you add unit testing of this functionality?",
       "revId": "b863e947fd08dffa9ad339f5243e3816dae2e7ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89db31a5_8f38f0f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-04T12:59:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdd64185_c718bbc2",
+      "revId": "b863e947fd08dffa9ad339f5243e3816dae2e7ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
