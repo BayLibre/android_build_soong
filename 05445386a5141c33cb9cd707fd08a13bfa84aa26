@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93dd03c9_09080103",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-04T11:52:09Z",
+      "side": 1,
+      "message": "maybe call it `.extension_version` now that it\u0027s got -1 if there is no extension version?",
+      "range": {
+        "startLine": 285,
+        "startChar": 85,
+        "endLine": 285,
+        "endChar": 92
+      },
+      "revId": "05445386a5141c33cb9cd707fd08a13bfa84aa26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
