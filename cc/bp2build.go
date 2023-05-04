@@ -1273,6 +1273,7 @@ type stubSelectionInfo struct {
 	apexName      string
 	dynamicDeps   *bazel.LabelListAttribute
 	sameApiDomain bool
+	systemDep	bool
 }
 
 func useStubOrImplInApexWithName(ssi stubSelectionInfo) {
@@ -1296,10 +1297,17 @@ func useStubOrImplInApexWithName(ssi stubSelectionInfo) {
 		(&defaultSelectValue).Append(bazel.MakeLabelList([]bazel.Label{ssi.impl}))
 		ssi.dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.ConditionsDefaultConfigKey, bazel.FirstUniqueBazelLabelList(defaultSelectValue))
 	}
+	if ssi.systemDep {
+		// Create android-apex key that matches all apexes. All apexes should use stubs
+		// com.android.runtime is an exception, but its system_dynamic_deps is empty.
+		inAnyApexSelectValue := ssi.dynamicDeps.SelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndInApex)
+		(&inAnyApexSelectValue).Append(bazel.MakeLabelList([]bazel.Label{lib}))
+		ssi.dynamicDeps.SetSelectValue(bazel.OsAndInApexAxis, bazel.AndroidAndInApex, bazel.FirstUniqueBazelLabelList(inAnyApexSelectValue))
+	}
 }
 
 func setStubsForDynamicDeps(ctx android.BazelConversionPathContext, axis bazel.ConfigurationAxis,
-	config string, apexAvailable []string, dynamicLibs bazel.LabelList, dynamicDeps *bazel.LabelListAttribute, ind int, buildNonApexWithStubs bool) {
+	config string, apexAvailable []string, dynamicLibs bazel.LabelList, dynamicDeps *bazel.LabelListAttribute, ind int, systemDep bool) {
 
 	// Create a config_setting for each apex_available.
 	// This will be used to select impl of a dep if dep is available to the same apex.
@@ -1346,6 +1354,7 @@ func setStubsForDynamicDeps(ctx android.BazelConversionPathContext, axis bazel.C
 				apexName:      aa,
 				dynamicDeps:   dynamicDeps,
 				sameApiDomain: sameApiDomain,
+				systemDep: systemDep,
 			}
 			useStubOrImplInApexWithName(ssi)
 		}
