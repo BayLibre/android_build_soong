@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51fe9c1f_82f93b88",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2023-05-04T15:56:00Z",
+      "side": 1,
+      "message": "sorry about this.",
+      "parentUuid": "cb748adb_a5553faf",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 276,
+        "endChar": 51
+      },
+      "revId": "772079915076e449e8939f4ac993e1d46764a05a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99f5f5b1_ce46b692",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7b85c95_3db73bfc",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2023-05-04T15:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f5f5b1_ce46b692",
+      "range": {
+        "startLine": 286,
+        "startChar": 3,
+        "endLine": 286,
+        "endChar": 26
+      },
+      "revId": "772079915076e449e8939f4ac993e1d46764a05a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14d16823_263c7934",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-05-04T15:48:23Z",
       "side": 1,
       "message": "The name of this should include `extension` too.",
+      "range": {
+        "startLine": 288,
+        "startChar": 4,
+        "endLine": 288,
+        "endChar": 36
+      },
+      "revId": "772079915076e449e8939f4ac993e1d46764a05a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57ed49e8_2df85802",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2023-05-04T15:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14d16823_263c7934",
       "range": {
         "startLine": 288,
         "startChar": 4,
