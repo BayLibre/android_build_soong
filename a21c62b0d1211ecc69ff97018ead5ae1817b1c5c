@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e07670ae_693b2fce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-04T12:59:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d56a3712_1162247a",
+      "revId": "a21c62b0d1211ecc69ff97018ead5ae1817b1c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca1b6ead_ec20cb89",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-05-03T12:18:54Z",
       "side": 1,
       "message": "It would make sense to instead: either rename the function or return an enum (e.g. DexpreoptEnabled, DexpreoptProfileOnly)",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 56
+      },
+      "revId": "a21c62b0d1211ecc69ff97018ead5ae1817b1c5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1925fa2_8b86f65e",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-04T12:59:53Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t think the profile rule should belong to dexpreopt. It\u0027s unfortunate that it is the case now, which causes this bug. In the long term, we should move the profile rule out of dexpreopt. This function itself is fine: when it returns true, it means that dexpreopt is disabled and it has nothing to do with the profile rule.",
+      "parentUuid": "ca1b6ead_ec20cb89",
       "range": {
         "startLine": 105,
         "startChar": 0,
