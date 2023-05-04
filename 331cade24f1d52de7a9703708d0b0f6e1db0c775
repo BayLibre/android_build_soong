@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eacf028a_5d23fac5",
+        "filename": "python/tests/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-05-04T16:56:30Z",
+      "side": 1,
+      "message": "Could you remove this line as well? https://cs.android.com/android/platform/superproject/+/master:build/soong/python/python.go;l\u003d268;drc\u003dd82f036b89962ceaeb50bc7ff9c23bed7cd64131",
+      "revId": "331cade24f1d52de7a9703708d0b0f6e1db0c775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54177634_19067aa6",
+        "filename": "python/tests/runtest.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-05-04T16:56:30Z",
+      "side": 0,
+      "message": "Keep this line",
+      "revId": "12d170dc2ab1ba2cdc2e2dc5e0249ae58ed20dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
