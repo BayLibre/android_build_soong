@@ -469,6 +469,12 @@ type productVariables struct {
 	SourceRootDirs []string `json:",omitempty"`
 
 	AfdoProfiles []string `json:",omitempty"`
+
+	ProductManufacturer         string `json:",omitempty"`
+	ProductBrand                string `json:",omitempty"`
+	BuildFingerprintBuildNumber string `json:",omitempty"`
+	TargetBuildVariant          string `json:",omitempty"`
+	BuildVersionTags            string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
