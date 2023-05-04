@@ -22,6 +22,30 @@
       },
       "revId": "73d491196bae765a211d88af5c4e48accc8c10cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93656ff1_d4561fc7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-05-04T14:21:39Z",
+      "side": 1,
+      "message": "```\n// AOSP\nevents {\n  description: \"ninja_hint\"\n  name: \"soong_build\"\n  start_time: 1683191560103360721\n  real_time: 1784568254\n}\n\n// Internal\nevents {\n  description: \"ninja_hint\"\n  name: \"soong_build\"\n  start_time: 1683209699033574597\n  real_time: 2812586112\n}\n```\n\nIt\u0027s 1.7s, and 2.8s respectively.\n\ncc: @joeo@google.com",
+      "parentUuid": "aaf91718_ac42e187",
+      "range": {
+        "startLine": 260,
+        "startChar": 17,
+        "endLine": 260,
+        "endChar": 27
+      },
+      "revId": "73d491196bae765a211d88af5c4e48accc8c10cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
