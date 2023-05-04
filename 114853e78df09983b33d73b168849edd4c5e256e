@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14300f30_780f8c88",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-04T20:50:51Z",
+      "side": 1,
+      "message": "Thanks for the explanation",
+      "parentUuid": "b509f242_5cc3a421",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 106
+      },
+      "revId": "114853e78df09983b33d73b168849edd4c5e256e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f05722b0_c30ff935",
