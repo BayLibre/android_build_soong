@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf91718_ac42e187",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-04T09:22:12Z",
+      "side": 1,
+      "message": "What\u0027s the current time?",
+      "range": {
+        "startLine": 260,
+        "startChar": 17,
+        "endLine": 260,
+        "endChar": 27
+      },
+      "revId": "73d491196bae765a211d88af5c4e48accc8c10cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
