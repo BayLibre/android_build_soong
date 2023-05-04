@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "224c94ee_e27c6875",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2023-05-04T21:08:26Z",
+      "side": 1,
+      "message": "Doing this for all scopes instead of just public scope now. \nSo that all the scope targets can be built and compared later to have the same version for a module.",
+      "range": {
+        "startLine": 285,
+        "startChar": 2,
+        "endLine": 289,
+        "endChar": 3
+      },
+      "revId": "daa314ac97d5ab8076113ee7f269b4e4cc3cf620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
