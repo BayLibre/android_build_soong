@@ -191,7 +191,8 @@ var (
 		"external/zopfli":                        Bp2BuildDefaultTrueRecursively,
 		"external/zstd":                          Bp2BuildDefaultTrueRecursively,
 
-		"frameworks/av": Bp2BuildDefaultTrue,
+		"frameworks/av":                                      Bp2BuildDefaultTrue,
+		"frameworks/av/apex/testing":                         Bp2BuildDefaultTrue,
 		"frameworks/av/media/audioaidlconversion":            Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/media/codec2/components/aom":          Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/media/codecs":                         Bp2BuildDefaultTrueRecursively,
