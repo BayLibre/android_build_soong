@@ -46,6 +46,30 @@
       },
       "revId": "3420d978cf2d5fe614f12256595ff67be2ee6f98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5edfbbc7_92aa794b",
+        "filename": "python/tests/runtest.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2023-05-04T02:02:58Z",
+      "side": 0,
+      "message": "Re-added the py2-cmd tests, removed only the embedded launcher test.",
+      "parentUuid": "0880c952_20adc10f",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 88
+      },
+      "revId": "3420d978cf2d5fe614f12256595ff67be2ee6f98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
