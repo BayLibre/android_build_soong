@@ -1335,6 +1335,9 @@ func setStubsForDynamicDeps(ctx android.BazelConversionPathContext, axis bazel.C
 				// that tests of an apex library gets its implementation and not stubs.
 				// TODO (b/280343104): Discuss if we can drop this special handling for platform variants.
 				sameApiDomain = availableToSameApexes(apexAvailable, dep.(*Module).ApexAvailable())
+				if linkable, ok := ctx.Module().(LinkableInterface); ok && !linkable.Bootstrap() {
+					sameApiDomain = true
+				}
 			}
 			ssi := stubSelectionInfo{
 				impl:          l,
