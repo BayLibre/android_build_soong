@@ -590,12 +590,6 @@ func NewBazelContext(c *config) (BazelContext, error) {
 		return nil, fmt.Errorf("missing required env vars to use bazel: %s", missing)
 	}
 
-	targetBuildVariant := "user"
-	if c.Eng() {
-		targetBuildVariant = "eng"
-	} else if c.Debuggable() {
-		targetBuildVariant = "userdebug"
-	}
 	targetProduct := "unknown"
 	if c.HasDeviceProduct() {
 		targetProduct = c.DeviceProduct()
@@ -617,7 +611,7 @@ func NewBazelContext(c *config) (BazelContext, error) {
 		bazelDisabledModules:    disabledModules,
 		bazelDclaEnabledModules: dclaEnabledModules,
 		targetProduct:           targetProduct,
-		targetBuildVariant:      targetBuildVariant,
+		targetBuildVariant:      c.TargetBuildVariant(),
 	}, nil
 }
 

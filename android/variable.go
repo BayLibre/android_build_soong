@@ -279,8 +279,6 @@ type productVariables struct {
 	UseRBEJAVAC                  *bool    `json:",omitempty"`
 	UseRBER8                     *bool    `json:",omitempty"`
 	UseRBED8                     *bool    `json:",omitempty"`
-	Debuggable                   *bool    `json:",omitempty"`
-	Eng                          *bool    `json:",omitempty"`
 	Treble_linker_namespaces     *bool    `json:",omitempty"`
 	Enforce_vintf_manifest       *bool    `json:",omitempty"`
 	Uml                          *bool    `json:",omitempty"`
@@ -469,6 +467,11 @@ type productVariables struct {
 	SourceRootDirs []string `json:",omitempty"`
 
 	AfdoProfiles []string `json:",omitempty"`
+
+	ProductManufacturer string   `json:",omitempty"`
+	ProductBrand        string   `json:",omitempty"`
+	TargetBuildVariant  string   `json:",omitempty"`
+	BuildVersionTags    []string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {

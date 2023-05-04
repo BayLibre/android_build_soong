@@ -14,12 +14,6 @@ func CreateProductConfigFiles(
 	if cfg.HasDeviceProduct() {
 		targetProduct = cfg.DeviceProduct()
 	}
-	targetBuildVariant := "user"
-	if cfg.Eng() {
-		targetBuildVariant = "eng"
-	} else if cfg.Debuggable() {
-		targetBuildVariant = "userdebug"
-	}
 
 	productVariablesFileName := cfg.ProductVariablesFileName
 	if !strings.HasPrefix(productVariablesFileName, "/") {
@@ -32,11 +26,11 @@ func CreateProductConfigFiles(
 
 	// TODO(b/249685973): the name is product_config_platforms because product_config
 	// was already used for other files. Deduplicate them.
-	currentProductFolder := fmt.Sprintf("product_config_platforms/products/%s-%s", targetProduct, targetBuildVariant)
+	currentProductFolder := fmt.Sprintf("product_config_platforms/products/%s-%s", targetProduct, cfg.TargetBuildVariant())
 
 	productReplacer := strings.NewReplacer(
 		"{PRODUCT}", targetProduct,
-		"{VARIANT}", targetBuildVariant,
+		"{VARIANT}", cfg.TargetBuildVariant(),
 		"{PRODUCT_FOLDER}", currentProductFolder)
 
 	result := []BazelFile{

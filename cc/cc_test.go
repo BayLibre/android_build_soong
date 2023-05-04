@@ -4252,7 +4252,7 @@ func TestProductVariableDefaults(t *testing.T) {
 		android.PrepareForTestWithVariables,
 
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			variables.Debuggable = BoolPtr(true)
+			variables.TargetBuildVariant = "eng"
 		}),
 	).RunTestWithBp(t, bp)
 
