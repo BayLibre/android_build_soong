@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2451e655_f4acf91b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1986325
+      },
+      "writtenOn": "2023-05-05T16:24:30Z",
+      "side": 1,
+      "message": "@mattbuckley@google.com. revert build passed\n\nhttps://android-build.googleplex.com/builds/abtd/run/L45000000960476001",
+      "revId": "3d08c388b9e00cf98510cbd1408b5ffc3524e2ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
