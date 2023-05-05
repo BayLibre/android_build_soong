@@ -16,6 +16,24 @@
       "message": "Can this whole module entry be removed?",
       "revId": "b5d46289984228e8af73c2c5fa7240017c7de31c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "925b87d3_ecd29a07",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3377,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-05T22:53:08Z",
+      "side": 1,
+      "message": "Yeah, I think it should be safe to remove it now. I have dropped the entry.",
+      "parentUuid": "b88bb9e7_cc0752c0",
+      "revId": "b5d46289984228e8af73c2c5fa7240017c7de31c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
