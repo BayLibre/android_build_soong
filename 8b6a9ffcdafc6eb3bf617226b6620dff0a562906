@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac0ce546_f6239dc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-05T18:22:18Z",
+      "side": 1,
+      "message": "Agreed. I will be working on this as part of b/281077552 (Sorry I remember you mentioning this in another CL. I will be working on it in the upcoming week)",
+      "parentUuid": "4a760ccf_042d1fbf",
+      "range": {
+        "startLine": 22,
+        "startChar": 29,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94676a45_c2dcca92",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-05T17:14:59Z",
       "side": 1,
       "message": "can you add some comments for these?",
+      "range": {
+        "startLine": 1277,
+        "startChar": 5,
+        "endLine": 1277,
+        "endChar": 22
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2d8687f_9dd64b3e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-05T18:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94676a45_c2dcca92",
       "range": {
         "startLine": 1277,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca2cf9c_3e3e00f7",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1286,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-05T18:22:18Z",
+      "side": 1,
+      "message": "I think we already do the check for its parent [setStubsForDynamicDeps](https://cs.android.com/android/_/android/platform/build/soong/+/773e098dfddf0e027b63f2a074086011c52b6536:cc/bp2build.go;l\u003d1116;drc\u003dbd421e06d12c05fdf57d84d027ee15dbad09b2fd;bpv\u003d1;bpt\u003d0)",
+      "parentUuid": "480fbc6c_6efd2f7d",
+      "range": {
+        "startLine": 1286,
+        "startChar": 5,
+        "endLine": 1286,
+        "endChar": 32
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46947ad3_546ca746",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-05T17:14:59Z",
       "side": 1,
       "message": "should there be a note that this is to handle e.g. host?",
+      "range": {
+        "startLine": 1302,
+        "startChar": 19,
+        "endLine": 1302,
+        "endChar": 58
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb4d37d5_289b4c7c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1302,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-05T18:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46947ad3_546ca746",
       "range": {
         "startLine": 1302,
         "startChar": 19,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd1c75d4_c48e8fb2",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-05T18:22:18Z",
+      "side": 1,
+      "message": "Good point, I have moved this out of the for loop",
+      "parentUuid": "d03f6b35_b7199cc1",
+      "range": {
+        "startLine": 1323,
+        "startChar": 3,
+        "endLine": 1334,
+        "endChar": 72
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d77600eb_db359e67",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f140b8aa_99f2c974",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-05T18:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d77600eb_db359e67",
+      "range": {
+        "startLine": 1336,
+        "startChar": 21,
+        "endLine": 1336,
+        "endChar": 40
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc4ca80a_8986b3b9",
@@ -152,6 +296,30 @@
       "writtenOn": "2023-05-05T17:14:59Z",
       "side": 1,
       "message": "nit: should this be an else instead to prevent unnecessary searching? I expect its a relatively small impact as apex available lists should be small",
+      "range": {
+        "startLine": 1337,
+        "startChar": 20,
+        "endLine": 1337,
+        "endChar": 69
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c6e8d6_b9d638bb",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-05T18:22:18Z",
+      "side": 1,
+      "message": "Probably yes. I have moved this an else block to reduce the unnecessary search for //apex_available:platform.",
+      "parentUuid": "bc4ca80a_8986b3b9",
       "range": {
         "startLine": 1337,
         "startChar": 20,
