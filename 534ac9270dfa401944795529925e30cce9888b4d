@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c2657bb_b1a4859c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-05-05T21:04:49Z",
+      "side": 1,
+      "message": "There might be a simpler fix I\u0027m missing, but this seems to work in the meantime?",
+      "revId": "534ac9270dfa401944795529925e30cce9888b4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
