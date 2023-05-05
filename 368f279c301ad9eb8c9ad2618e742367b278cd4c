@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92517d18_95273d0d",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T19:52:21Z",
+      "side": 1,
+      "message": "throughout: godocs for exported types/methods",
+      "range": {
+        "startLine": 579,
+        "startChar": 5,
+        "endLine": 579,
+        "endChar": 24
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78abfec4_cf552425",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T19:52:21Z",
+      "side": 1,
+      "message": "can you add some comments around the special casings of conditions default keys in this function?",
+      "range": {
+        "startLine": 604,
+        "startChar": 0,
+        "endLine": 604,
+        "endChar": 63
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aecf365a_3f37f68d",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T19:52:21Z",
+      "side": 1,
+      "message": "can you add a commend about why config might be empty string?",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 649,
+        "endChar": 21
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf2681a5_270e5f4d",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T19:52:21Z",
+      "side": 1,
+      "message": "do we also need to handle `Arch`/`Multilib` here? Should we error out similar to below if we encounter them and implement them if/when needed?",
+      "range": {
+        "startLine": 877,
+        "startChar": 25,
+        "endLine": 877,
+        "endChar": 31
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616dffe9_836098d3",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T19:52:21Z",
+      "side": 1,
+      "message": "product variables don\u0027t support conditions default -- are these cases needed now they we split product variables and soong config vars?",
+      "range": {
+        "startLine": 304,
+        "startChar": 2,
+        "endLine": 314,
+        "endChar": 66
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e009ea_b0d30fe4",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T19:52:21Z",
+      "side": 1,
+      "message": "could we just use android here? \n\n`//build/bazel/product_variables:my_namespace__my_bool_variable__android` would be a specialization of android and thus selected over just android, and then android would be sufficient here?",
+      "range": {
+        "startLine": 1349,
+        "startChar": 8,
+        "endLine": 1349,
+        "endChar": 113
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
