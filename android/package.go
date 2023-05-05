@@ -39,8 +39,8 @@ type packageProperties struct {
 }
 
 type bazelPackageAttributes struct {
-	Default_visibility          []string
-	Default_applicable_licenses bazel.LabelListAttribute
+	Default_visibility       []string
+	Default_package_metadata bazel.LabelListAttribute
 }
 
 type packageModule struct {
@@ -53,13 +53,17 @@ type packageModule struct {
 var _ Bazelable = &packageModule{}
 
 func (p *packageModule) ConvertWithBp2build(ctx TopDownMutatorContext) {
+	defaultPacakgeMetadata := bazel.MakeLabelListAttribute(BazelLabelForModuleDeps(ctx, p.properties.Default_applicable_licenses))
+	// filegroup "default_metadata_file" is added by GenerateBazelTargets() in build_conversion.go.
+	defaultPacakgeMetadata.Value.Add(&bazel.Label{Label: ":default_metadata_file"})
+
 	ctx.CreateBazelTargetModule(
 		bazel.BazelTargetModuleProperties{
 			Rule_class: "package",
 		},
 		CommonAttributes{},
 		&bazelPackageAttributes{
-			Default_applicable_licenses: bazel.MakeLabelListAttribute(BazelLabelForModuleDeps(ctx, p.properties.Default_applicable_licenses)),
+			Default_package_metadata: defaultPacakgeMetadata,
 			// FIXME(asmundak): once b/221436821 is resolved
 			Default_visibility: []string{"//visibility:public"},
 		})
