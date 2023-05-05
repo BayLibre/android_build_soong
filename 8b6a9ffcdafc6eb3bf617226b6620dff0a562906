@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a760ccf_042d1fbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T17:14:59Z",
+      "side": 1,
+      "message": "We can do this in a follow-up but we should handle the [baseline apex available](https://cs.android.com/android/platform/superproject/+/refs/heads/master:build/soong/apex/apex.go;l\u003d3223;drc\u003d7346c436e5a11ce08f6a80dcfeb8ef941ca30176) in the general apex_available functionality since it has impacts on dep resolution both in Soong and Bazel.",
+      "range": {
+        "startLine": 22,
+        "startChar": 29,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94676a45_c2dcca92",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T17:14:59Z",
+      "side": 1,
+      "message": "can you add some comments for these?",
+      "range": {
+        "startLine": 1277,
+        "startChar": 5,
+        "endLine": 1277,
+        "endChar": 22
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "480fbc6c_6efd2f7d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1286,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T17:14:59Z",
+      "side": 1,
+      "message": "should we add something to not do this logic if it\u0027s not NoConfigAxis or Android axis?",
+      "range": {
+        "startLine": 1286,
+        "startChar": 5,
+        "endLine": 1286,
+        "endChar": 32
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46947ad3_546ca746",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1302,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T17:14:59Z",
+      "side": 1,
+      "message": "should there be a note that this is to handle e.g. host?",
+      "range": {
+        "startLine": 1302,
+        "startChar": 19,
+        "endLine": 1302,
+        "endChar": 58
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d03f6b35_b7199cc1",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T17:14:59Z",
+      "side": 1,
+      "message": "should we do this outside of the for loop since it seems independent of the dep?",
+      "range": {
+        "startLine": 1323,
+        "startChar": 3,
+        "endLine": 1334,
+        "endChar": 72
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77600eb_db359e67",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T17:14:59Z",
+      "side": 1,
+      "message": "can you add a TODO with a reference to the bug you filed about verbosity here?",
+      "range": {
+        "startLine": 1336,
+        "startChar": 21,
+        "endLine": 1336,
+        "endChar": 40
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4ca80a_8986b3b9",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-05T17:14:59Z",
+      "side": 1,
+      "message": "nit: should this be an else instead to prevent unnecessary searching? I expect its a relatively small impact as apex available lists should be small",
+      "range": {
+        "startLine": 1337,
+        "startChar": 20,
+        "endLine": 1337,
+        "endChar": 69
+      },
+      "revId": "8b6a9ffcdafc6eb3bf617226b6620dff0a562906",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
