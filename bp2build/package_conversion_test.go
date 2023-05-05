@@ -50,8 +50,11 @@ package {
 					"package",
 					"",
 					AttrNameToString{
-						"default_applicable_licenses": `[":my_license"]`,
-						"default_visibility":          `["//visibility:public"]`,
+						"default_package_metadata": `[
+        ":my_license",
+        ":default_metadata_file",
+    ]`,
+						"default_visibility": `["//visibility:public"]`,
 					},
 					android.HostAndDeviceDefault,
 				},

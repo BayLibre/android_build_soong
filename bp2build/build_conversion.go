@@ -377,6 +377,18 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (convers
 				content:   `filegroup(name = "bp2build_all_srcs", srcs = glob(["**/*"]))`,
 				ruleClass: "filegroup",
 			})
+			// Search for METADATA file in a package and add it to the package with:
+			//     package(default_package_metadata=[":default_metadata_file"])
+			// see ConvertWithBp2build() in package.go. The METADATA file can be accessed later on each
+			// module using attribute "applicable_licenses".
+			//
+			// Attribute "applicable_licenses" of "default_metadata_file" has to be set to [], otherwise
+			// Bazel reports cyclic reference error.
+			buildFileToTargets[dir] = append(buildFileToTargets[dir], BazelTarget{
+				name:      "default_metadata_file",
+				content:   `filegroup(name = "default_metadata_file", srcs = glob(["METADATA"]), applicable_licenses = [])`,
+				ruleClass: "filegroup",
+			})
 		}
 	}
 
