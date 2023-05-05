@@ -22,6 +22,30 @@
       },
       "revId": "3e6f6cdfea15f3e21cb02322018d004ef14e0d94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f16853e8_375709e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-05T18:40:30Z",
+      "side": 1,
+      "message": "Thanks for catching this! I have updated this to bp2build.",
+      "parentUuid": "7122206e_3ebd41e0",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "3e6f6cdfea15f3e21cb02322018d004ef14e0d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
