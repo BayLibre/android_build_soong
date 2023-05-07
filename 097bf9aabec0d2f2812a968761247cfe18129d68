@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22f2c8c8_3d34c8da",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-05-07T17:59:20Z",
+      "side": 1,
+      "message": "@ccross made the changes as per your comments. The current state is the m com.google.edgetpu.dba-fuzzer generates the libs folder containing the hal_runtime without the suffix. The packaging into a zip results in a the dependency but with the suffix being added to the libs. Any changes to the ModuleOutputFile results in an error. Any suggestions?",
+      "parentUuid": "4a65fc02_7c797825",
+      "revId": "097bf9aabec0d2f2812a968761247cfe18129d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4892eeb5_87b78cc4",
         "filename": "cc/fuzz.go",
         "patchSetId": 11
