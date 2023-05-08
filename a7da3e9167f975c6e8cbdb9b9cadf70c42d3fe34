@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b352822_e91ea86a",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-05-08T06:45:16Z",
+      "side": 1,
+      "message": "Thanks for catching this. Until now, we read combined list of VNDK libs including the snapshots to make the list of current vndk libs.",
+      "range": {
+        "startLine": 244,
+        "startChar": 50,
+        "endLine": 244,
+        "endChar": 76
+      },
+      "revId": "a7da3e9167f975c6e8cbdb9b9cadf70c42d3fe34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
