@@ -51,6 +51,24 @@
       "parentUuid": "3f0fba22_14f82299",
       "revId": "34c6d7d56f3b77195519320447af8a79102e57e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2241189e_db50f865",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-05-08T16:29:33Z",
+      "side": 1,
+      "message": "Actually, `SystemUIGoogle` was fine, but others like `m Traceur` were not (I just ran `m \u0026\u0026 find out/ proguard_configuration -empty` to find examples). Switching back and forth between `-printconfiguration` and `--pg-conf-output` I was able to repro each time, but that was with an internal checkout, I\u0027ll try again from aosp.",
+      "parentUuid": "846e6a45_b49cc638",
+      "revId": "34c6d7d56f3b77195519320447af8a79102e57e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
