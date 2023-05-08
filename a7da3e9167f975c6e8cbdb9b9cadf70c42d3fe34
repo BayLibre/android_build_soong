@@ -22,6 +22,29 @@
       },
       "revId": "a7da3e9167f975c6e8cbdb9b9cadf70c42d3fe34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa2a2697_753684ae",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-05-08T06:47:23Z",
+      "side": 1,
+      "message": "We have only one for this. (libft2.so)",
+      "range": {
+        "startLine": 407,
+        "startChar": 29,
+        "endLine": 407,
+        "endChar": 44
+      },
+      "revId": "a7da3e9167f975c6e8cbdb9b9cadf70c42d3fe34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
