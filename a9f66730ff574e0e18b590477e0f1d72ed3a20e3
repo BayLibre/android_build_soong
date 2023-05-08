@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1735adf4_2874f09b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2023-05-08T23:49:45Z",
+      "side": 1,
+      "message": "Isn\u0027t there a shared library that we need to build with the fuzz target to be able to use the libraries on the device?",
+      "revId": "a9f66730ff574e0e18b590477e0f1d72ed3a20e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
