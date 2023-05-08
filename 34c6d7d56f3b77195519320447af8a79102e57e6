@@ -87,6 +87,24 @@
       "parentUuid": "2241189e_db50f865",
       "revId": "34c6d7d56f3b77195519320447af8a79102e57e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fe2ce88_3650d1c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-05-08T17:58:48Z",
+      "side": 1,
+      "message": "In the bad cases, the files are just empty. I don\u0027t think R8 produces the proguard_configuration files directly in those cases, it\u0027s likely just the result of the `touch` command in the R8 soong rule? Here\u0027s a size diff of the files under the current `--pg-conf-output` versus using `-printconfiguration`: https://diff.googleplex.com/#key\u003d6dMhoufDMpvf . Most files are empty in the former.",
+      "parentUuid": "89a508a1_37cf0cdd",
+      "revId": "34c6d7d56f3b77195519320447af8a79102e57e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
