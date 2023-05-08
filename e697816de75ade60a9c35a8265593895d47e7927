@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92d011b4_8b3ab60a",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T21:33:10Z",
+      "side": 1,
+      "message": "should we add validation to check that at least one of srcs/hdrs is non-empty?",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "e697816de75ade60a9c35a8265593895d47e7927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018e77d7_6f08215e",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T21:33:10Z",
+      "side": 1,
+      "message": "this appears unused, should we be using this in `AidlLibraryInfo` instead?",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 18
+      },
+      "revId": "e697816de75ade60a9c35a8265593895d47e7927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87064a68_d0981b4f",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T21:33:10Z",
+      "side": 1,
+      "message": "this appears unused",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 23
+      },
+      "revId": "e697816de75ade60a9c35a8265593895d47e7927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f7aaff_a71428ba",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T21:33:10Z",
+      "side": 1,
+      "message": "this should be unnecessary unless we\u0027re planning to support multiple dependency types (which afaik, we aren\u0027t)",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "e697816de75ade60a9c35a8265593895d47e7927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
