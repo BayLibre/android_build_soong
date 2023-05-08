@@ -21,6 +21,7 @@ import (
 	"github.com/google/blueprint"
 
 	"android/soong/android"
+	"android/soong/bazel"
 )
 
 // OpenJDK 9 introduces the concept of "system modules", which replace the bootclasspath.  This
@@ -114,6 +115,7 @@ func SystemModulesFactory() android.Module {
 	module.AddProperties(&module.properties)
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
+	android.InitBazelModule(module)
 	return module
 }
 
@@ -129,6 +131,7 @@ var _ SystemModulesProvider = (*systemModulesImport)(nil)
 type SystemModules struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
+	android.BazelModuleBase
 
 	properties SystemModulesProperties
 
@@ -213,6 +216,7 @@ func systemModulesImportFactory() android.Module {
 	android.InitPrebuiltModule(module, &module.properties.Libs)
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
+	android.InitBazelModule(module)
 	return module
 }
 
@@ -280,4 +284,21 @@ func (p *systemModulesInfoProperties) AddToPropertySet(ctx android.SdkMemberCont
 		// Add the references to the libraries that form the system module.
 		propertySet.AddPropertyWithTag("libs", p.Libs, ctx.SnapshotBuilder().SdkMemberReferencePropertyTag(true))
 	}
+}
+
+type bazelJavaSystemModulesAttributes struct {
+	Deps bazel.LabelListAttribute
+}
+
+func (p SystemModules) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "java_system_modules",
+			Bzl_load_location: "//build/bazel/rules/java:java_system_modules.bzl",
+		},
+		android.CommonAttributes{Name: p.Name()},
+		&bazelJavaSystemModulesAttributes{
+			Deps: bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, p.properties.Libs)),
+		})
+
 }
