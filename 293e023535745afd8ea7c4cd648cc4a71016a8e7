@@ -22,6 +22,30 @@
       },
       "revId": "293e023535745afd8ea7c4cd648cc4a71016a8e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d923f82_3216f323",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-05-08T22:55:20Z",
+      "side": 1,
+      "message": "Uploaded the other version of the impl I had, which is like what you described.",
+      "parentUuid": "caecbdce_e685f658",
+      "range": {
+        "startLine": 387,
+        "startChar": 3,
+        "endLine": 391,
+        "endChar": 5
+      },
+      "revId": "293e023535745afd8ea7c4cd648cc4a71016a8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
