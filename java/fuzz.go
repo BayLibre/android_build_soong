@@ -30,7 +30,10 @@ import (
 const (
 	hostString   = "host"
 	targetString = "target"
+	deviceString = "device"
 )
+
+var artDeps = []string{"libdl_android"}
 
 type jniProperties struct {
 	// list of jni libs
@@ -72,6 +75,10 @@ func (j *JavaFuzzLibrary) IsSanitizerEnabledForJni(ctx android.BaseModuleContext
 }
 
 func (j *JavaFuzzLibrary) DepsMutator(mctx android.BottomUpMutatorContext) {
+	if j.Os().Class.String() == deviceString {
+		j.jniProperties.Jni_libs = append(j.jniProperties.Jni_libs, artDeps...)
+	}
+
 	if len(j.jniProperties.Jni_libs) > 0 {
 		if j.fuzzPackagedModule.FuzzProperties.Fuzz_config == nil {
 			config := &fuzz.FuzzConfig{}
