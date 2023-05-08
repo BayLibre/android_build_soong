@@ -170,6 +170,27 @@ func (service_privilege ServicePrivilege) isValidServicePrivilege() bool {
 	return false
 }
 
+type UseEmbeddedNativeLibs string
+
+const (
+	unknown_use_embedded_native_libs UseEmbeddedNativeLibs = "unknown_use_embedded_native_libs"
+	// Use the native libraries on the device, typically in /system directory
+	use_embedded = "use_embedded"
+	// Do not use any native libraries (ART will not be initialized)
+	use_none = "use_none"
+)
+
+func (use_embedded_native_libs UseEmbeddedNativeLibs) isValidUseEmbeddedNativeLibs() bool {
+	switch use_embedded_native_libs {
+	case "",
+		unknown_use_embedded_native_libs,
+		use_embedded,
+		use_none:
+		return true
+	}
+	return false
+}
+
 type UserData string
 
 const (
@@ -284,6 +305,10 @@ func IsValidConfig(fuzzModule FuzzPackagedModule, moduleName string) bool {
 		if !config.Automatically_route_to.isValidAutomaticallyRouteTo() {
 			panic(fmt.Errorf("Invalid automatically_route_to in fuzz config in %s", moduleName))
 		}
+
+		if !config.Use_embedded_native_libs.isValidUseEmbeddedNativeLibs() {
+			panic(fmt.Errorf("Invalid use_embedded_native_libs in fuzz config in %s", moduleName))
+		}
 	}
 	return true
 }
@@ -341,6 +366,8 @@ type FuzzConfig struct {
 	Target_modules []string `json:"target_modules,omitempty"`
 	// Specifies a bug assignee to replace default ISE assignment
 	Triage_assignee string `json:"triage_assignee,omitempty"`
+	// Specifies libs used to initialize ART (java only, 'none' for no initialization)
+	Use_embedded_native_libs UseEmbeddedNativeLibs `json:"use_embedded_native_libs,omitempty"`
 }
 
 type FuzzFrameworks struct {
