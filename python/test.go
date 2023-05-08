@@ -66,6 +66,10 @@ type TestProperties struct {
 
 	// Test options.
 	Test_options TestOptions
+
+	// list of device binary modules that should be installed alongside the test
+	// This property adds 64bit AND 32bit variants of the dependency
+	Data_device_bins_both []string `android:"arch_variant"`
 }
 
 type TestOptions struct {
@@ -103,6 +107,50 @@ func (p *PythonTestModule) init() android.Module {
 	}
 	return p
 }
+
+func (p *PythonTestModule) isTestHost() bool {
+	return p.hod == android.HostSupportedNoCross
+}
+
+var dataDeviceBinsTag = dependencyTag{name: "dataDeviceBins"}
+
+func (p *PythonTestModule) addDataDeviceBinsDeps(ctx android.BottomUpMutatorContext) {
+	if len(p.testProperties.Data_device_bins_both) < 1 {
+		return
+	}
+
+	var maybeAndroid32Target *android.Target
+	var maybeAndroid64Target *android.Target
+	android32TargetList := android.FirstTarget(ctx.Config().Targets[android.Android], "lib32")
+	android64TargetList := android.FirstTarget(ctx.Config().Targets[android.Android], "lib64")
+	if len(android32TargetList) > 0 {
+		maybeAndroid32Target = &android32TargetList[0]
+	}
+	if len(android64TargetList) > 0 {
+		maybeAndroid64Target = &android64TargetList[0]
+	}
+
+	if maybeAndroid32Target != nil {
+		ctx.AddFarVariationDependencies(
+			maybeAndroid32Target.Variations(),
+			dataDeviceBinsTag,
+			p.testProperties.Data_device_bins_both...,
+		)
+	}
+	if maybeAndroid64Target != nil {
+		ctx.AddFarVariationDependencies(
+			maybeAndroid64Target.Variations(),
+			dataDeviceBinsTag,
+			p.testProperties.Data_device_bins_both...,
+		)
+	}
+}
+
+//func (p *PythonTestModule) DepsMutator(ctx android.BottomUpMutatorContext) {
+//	if p.isTestHost() {
+//		p.addDataDeviceBinsDeps(ctx)
+//	}
+//}
 
 func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// We inherit from only the library's GenerateAndroidBuildActions, and then
@@ -151,6 +199,12 @@ func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext
 
 	for _, dataSrcPath := range android.PathsForModuleSrc(ctx, p.testProperties.Data) {
 		p.data = append(p.data, android.DataPath{SrcPath: dataSrcPath})
+	}
+
+	if p.isTestHost() && len(p.testProperties.Data_device_bins_both) > 0 {
+		ctx.VisitDirectDepsWithTag(dataDeviceBinsTag, func(dep android.Module) {
+			p.data = append(p.data, android.DataPath{SrcPath: android.OutputFileForModule(ctx, dep, "")})
+		})
 	}
 
 	// Emulate the data property for java_data dependencies.
