@@ -16,6 +16,7 @@ package python
 
 import (
 	"fmt"
+	"path/filepath"
 
 	"github.com/google/blueprint/proptools"
 
@@ -38,8 +39,13 @@ func NewTest(hod android.HostOrDeviceSupported) *PythonTestModule {
 	return &PythonTestModule{PythonBinaryModule: *NewBinary(hod)}
 }
 
+//func NewTestHost(hod android.HostOrDeviceSupported) *PythonTestHostModule {
+//	return &PythonTestHostModule{PythonTestModule: *NewTest(hod)}
+//}
+
 func PythonTestHostFactory() android.Module {
-	return NewTest(android.HostSupportedNoCross).init()
+	module := NewTest(android.HostSupportedNoCross)
+	return module.init()
 }
 
 func PythonTestFactory() android.Module {
@@ -66,6 +72,15 @@ type TestProperties struct {
 
 	// Test options.
 	Test_options TestOptions
+
+	// Install the test into a folder named for the module in all test suites.
+	Per_testcase_directory *bool
+}
+
+type HostTestProperties struct {
+	// list of device binary modules that should be installed alongside the test
+	// This property adds 64bit AND 32bit variants of the dependency
+	Data_device_bins_both []string `android:"arch_variant"`
 }
 
 type TestOptions struct {
@@ -86,15 +101,19 @@ type Metadata struct {
 type PythonTestModule struct {
 	PythonBinaryModule
 
-	testProperties TestProperties
-	testConfig     android.Path
-	data           []android.DataPath
+	testProperties     TestProperties
+	hostTestProperties HostTestProperties
+	testConfig         android.Path
+	data               []android.DataPath
 }
 
 func (p *PythonTestModule) init() android.Module {
 	p.AddProperties(&p.properties, &p.protoProperties)
 	p.AddProperties(&p.binaryProperties)
 	p.AddProperties(&p.testProperties)
+	if p.isHostTest() {
+		p.AddProperties(&p.hostTestProperties)
+	}
 	android.InitAndroidArchModule(p, p.hod, p.multilib)
 	android.InitDefaultableModule(p)
 	android.InitBazelModule(p)
@@ -104,6 +123,85 @@ func (p *PythonTestModule) init() android.Module {
 	return p
 }
 
+func (p *PythonTestModule) isHostTest() bool {
+	return p.hod == android.HostSupportedNoCross
+}
+
+func (p *PythonTestModule) dataDeviceBins() []string {
+	return p.hostTestProperties.Data_device_bins_both
+}
+
+var dataDeviceBinsTag = dependencyTag{name: "dataDeviceBins"}
+
+func (p *PythonTestModule) addDataDeviceBinsDeps(ctx android.BottomUpMutatorContext) {
+	var maybeAndroid32Target *android.Target
+	var maybeAndroid64Target *android.Target
+	android32TargetList := android.FirstTarget(ctx.Config().Targets[android.Android], "lib32")
+	android64TargetList := android.FirstTarget(ctx.Config().Targets[android.Android], "lib64")
+	if len(android32TargetList) > 0 {
+		maybeAndroid32Target = &android32TargetList[0]
+	}
+	if len(android64TargetList) > 0 {
+		maybeAndroid64Target = &android64TargetList[0]
+	}
+
+	if len(p.hostTestProperties.Data_device_bins_both) > 0 {
+		if maybeAndroid32Target == nil && maybeAndroid64Target == nil {
+			ctx.PropertyErrorf("data_device_bins_both", "no device targets available. Targets: %q", ctx.Config().Targets)
+			return
+		}
+		if maybeAndroid32Target != nil {
+			if p.Name() == "hidl_test_java" {
+				fmt.Println("32323232")
+				fmt.Println(maybeAndroid32Target.Variations())
+				fmt.Println(p.hostTestProperties.Data_device_bins_both)
+			}
+			ctx.AddFarVariationDependencies(
+				maybeAndroid32Target.Variations(),
+				dataDeviceBinsTag,
+				p.hostTestProperties.Data_device_bins_both...,
+			)
+		}
+		if maybeAndroid64Target != nil {
+			if p.Name() == "hidl_test_java" {
+				fmt.Println("64646464")
+				fmt.Println(maybeAndroid64Target.Variations())
+				fmt.Println(p.hostTestProperties.Data_device_bins_both)
+			}
+			ctx.AddFarVariationDependencies(
+				maybeAndroid64Target.Variations(),
+				dataDeviceBinsTag,
+				p.hostTestProperties.Data_device_bins_both...,
+			)
+		}
+	}
+}
+
+func (p *PythonTestModule) DepsMutator(ctx android.BottomUpMutatorContext) {
+	p.addDataDeviceBinsDeps(ctx)
+}
+
+// generate Tradefed configuration to push device bins to device for testing
+func (p *PythonTestModule) getConfigForTradeFed() []tradefed.Config {
+	var configs []tradefed.Config
+	dataDeviceBins := p.dataDeviceBins()
+	if len(dataDeviceBins) > 0 {
+		remoteDir := filepath.Join("/data/local/tests/unrestricted/", p.Name())
+		options := []tradefed.Option{{Name: "cleanup", Value: "true"}}
+		for _, bin := range dataDeviceBins {
+			fullPath := filepath.Join(remoteDir, bin)
+			options = append(options, tradefed.Option{Name: "push-file", Key: bin, Value: fullPath})
+			fmt.Println(fullPath)
+		}
+		configs = append(configs, tradefed.Object{
+			Type:    "target_preparer",
+			Class:   "com.android.tradefed.targetprep.PushFilePreparer",
+			Options: options,
+		})
+	}
+	return configs
+}
+
 func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// We inherit from only the library's GenerateAndroidBuildActions, and then
 	// just use buildBinary() so that the binary is not installed into the location
@@ -111,18 +209,24 @@ func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext
 	p.PythonLibraryModule.GenerateAndroidBuildActions(ctx)
 	p.buildBinary(ctx)
 
-	var configs []tradefed.Option
-	for _, metadata := range p.testProperties.Test_options.Metadata {
-		configs = append(configs, tradefed.Option{Name: "config-descriptor:metadata", Key: metadata.Name, Value: metadata.Value})
+	// configs := p.getConfigForTradeFed()
+	if p.Name() == "hidl_test_java" {
+		fmt.Println("1111111111111111111")
+		fmt.Println(p.OutputFiles(""))
 	}
 
+	var optionsForAutogenerated []tradefed.Option
+	for _, metadata := range p.testProperties.Test_options.Metadata {
+		optionsForAutogenerated = append(optionsForAutogenerated, tradefed.Option{Name: "config-descriptor:metadata", Key: metadata.Name, Value: metadata.Value})
+	}
 	runner := proptools.StringDefault(p.testProperties.Test_options.Runner, "tradefed")
 	if runner == "tradefed" {
 		p.testConfig = tradefed.AutoGenTestConfig(ctx, tradefed.AutoGenTestConfigOptions{
-			TestConfigProp:          p.testProperties.Test_config,
-			TestConfigTemplateProp:  p.testProperties.Test_config_template,
-			TestSuites:              p.binaryProperties.Test_suites,
-			OptionsForAutogenerated: configs,
+			TestConfigProp:         p.testProperties.Test_config,
+			TestConfigTemplateProp: p.testProperties.Test_config_template,
+			TestSuites:             p.binaryProperties.Test_suites,
+			//Config:                  configs,
+			OptionsForAutogenerated: optionsForAutogenerated,
 			AutoGenConfig:           p.binaryProperties.Auto_gen_config,
 			DeviceTemplate:          "${PythonBinaryHostTestConfigTemplate}",
 			HostTemplate:            "${PythonBinaryHostTestConfigTemplate}",
@@ -134,12 +238,13 @@ func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext
 
 		for _, testSuite := range p.binaryProperties.Test_suites {
 			if testSuite == "cts" {
-				configs = append(configs, tradefed.Option{Name: "test-suite-tag", Value: "cts"})
+				optionsForAutogenerated = append(optionsForAutogenerated, tradefed.Option{Name: "test-suite-tag", Value: "cts"})
 				break
 			}
 		}
 		p.testConfig = tradefed.AutoGenTestConfig(ctx, tradefed.AutoGenTestConfigOptions{
-			OptionsForAutogenerated: configs,
+			//Config:                  configs,
+			OptionsForAutogenerated: optionsForAutogenerated,
 			DeviceTemplate:          "${PythonBinaryHostMoblyTestConfigTemplate}",
 			HostTemplate:            "${PythonBinaryHostMoblyTestConfigTemplate}",
 		})
@@ -172,7 +277,8 @@ func (p *PythonTestModule) AndroidMkEntries() []android.AndroidMkEntries {
 
 	entries.ExtraEntries = append(entries.ExtraEntries,
 		func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
-			//entries.AddCompatibilityTestSuites(p.binaryProperties.Test_suites...)
+			entries.AddCompatibilityTestSuites(p.binaryProperties.Test_suites...)
+			entries.SetBoolIfTrue("LOCAL_COMPATIBILITY_PER_TESTCASE_DIRECTORY", Bool(p.testProperties.Per_testcase_directory))
 			if p.testConfig != nil {
 				entries.SetString("LOCAL_FULL_TEST_CONFIG", p.testConfig.String())
 			}
