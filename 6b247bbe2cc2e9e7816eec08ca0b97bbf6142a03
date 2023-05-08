@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddc00bac_68e48d30",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3707,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-08T19:06:05Z",
+      "side": 1,
+      "message": "I spoke to Liz offline, and we believe the existing unit tests for `test_com.android.apogee` should provide sufficient unit test coverage.",
+      "parentUuid": "f0e45720_f94fcd6c",
+      "range": {
+        "startLine": 3707,
+        "startChar": 0,
+        "endLine": 3707,
+        "endChar": 71
+      },
+      "revId": "6b247bbe2cc2e9e7816eec08ca0b97bbf6142a03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bca9596_d7701af1",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-08T18:52:38Z",
       "side": 1,
       "message": "can you file a bug for this instead?",
+      "range": {
+        "startLine": 1216,
+        "startChar": 9,
+        "endLine": 1216,
+        "endChar": 19
+      },
+      "revId": "6b247bbe2cc2e9e7816eec08ca0b97bbf6142a03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf486718_52bec71d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-08T19:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bca9596_d7701af1",
       "range": {
         "startLine": 1216,
         "startChar": 9,
