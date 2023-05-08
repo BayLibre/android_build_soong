@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f0fba22_14f82299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2023-05-08T06:43:42Z",
+      "side": 1,
+      "message": "I\u0027d be very surprised if this would change flakyness as both flags will hit the same underlying consumer in the R8 API. Do you have a build target we could investigate for the flakyness?",
+      "revId": "34c6d7d56f3b77195519320447af8a79102e57e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
