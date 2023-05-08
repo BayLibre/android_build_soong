@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6acea5ed_871263b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-05-08T16:58:24Z",
+      "side": 1,
+      "message": "Does the fix cover the mac build breakage too, which doesn\u0027t have the dex2oat binary available?",
+      "revId": "299441d1ee158bb1a2920ad568fc2689e2b51dc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
