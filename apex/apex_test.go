@@ -4187,6 +4187,123 @@ func TestVndkApexShouldNotProvideNativeLibs(t *testing.T) {
 	})
 }
 
+func TestVendorApexWithVndkPrebuilts(t *testing.T) {
+	ctx := testApex(t, "",
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+			variables.DeviceVndkVersion = proptools.StringPtr("27")
+		}),
+		android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
+			cc.RegisterVendorSnapshotModules(ctx)
+		}),
+		withFiles(map[string][]byte{
+			"vendor/foo/Android.bp": []byte(`
+				apex {
+					name: "myapex",
+					binaries: ["foo"],
+					key: "myapex.key",
+					min_sdk_version: "27",
+					vendor: true,
+				}
+
+				cc_binary {
+					name: "foo",
+					vendor: true,
+					srcs: ["abc.cpp"],
+					shared_libs: [
+						"libllndk",
+						"libvndk",
+					],
+					nocrt: true,
+					system_shared_libs: [],
+					stl: "none",
+					min_sdk_version: "27",
+				}
+
+				apex_key {
+					name: "myapex.key",
+					public_key: "testkey.avbpubkey",
+					private_key: "testkey.pem",
+				}
+			`),
+			// Simulate VNDK prebuilts with vendor_snapshot
+			"prebuilts/vndk/Android.bp": []byte(`
+				vndk_prebuilt_shared {
+					name: "libllndk",
+					version: "27",
+					vendor_available: true,
+					product_available: true,
+					target_arch: "arm64",
+					arch: {
+						arm64: {
+							srcs: ["arm64/libllndk.so"],
+						},
+					},
+				}
+
+				vndk_prebuilt_shared {
+					name: "libvndk",
+					version: "27",
+					vendor_available: true,
+					product_available: true,
+					target_arch: "arm64",
+					arch: {
+						arm64: {
+							srcs: ["arm64/libvndk.so"],
+						},
+					},
+					vndk: {
+						enabled: true,
+					},
+					min_sdk_version: "27",
+				}
+
+				vendor_snapshot {
+					name: "vendor_snapshot",
+					version: "27",
+					arch: {
+						arm64: {
+							vndk_libs: [
+								"libllndk",
+								"libvndk",
+							],
+							static_libs: [
+								"libclang_rt.builtins",
+							],
+						},
+					}
+				}
+
+				vendor_snapshot_static {
+					name: "libclang_rt.builtins",
+					version: "27",
+					target_arch: "arm64",
+					vendor: true,
+					arch: {
+						arm64: {
+							src: "libclang_rt.builtins-aarch64-android.a",
+						},
+					},
+				}
+			`),
+		}))
+
+	// Should embed the prebuilt VNDK library in the apex
+	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
+		"bin/foo",
+		"prebuilts/vndk/arm64/libvndk.so:lib64/libvndk.so",
+	})
+
+	// Should link foo with llndk and vndk
+	ldRule := ctx.ModuleForTests("foo", "android_vendor.27_arm64_armv8-a_myapex").Rule("ld")
+	android.AssertStringDoesContain(t, "should link to llndk", ldRule.Args["libFlags"], "prebuilts/vndk/arm64/libllndk.so")
+	android.AssertStringDoesContain(t, "should link to vndk", ldRule.Args["libFlags"], "prebuilts/vndk/arm64/libvndk.so")
+
+	// Should declare the LLNDK library as a "required" external dependency
+	manifestRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexManifestRule")
+	requireNativeLibs := names(manifestRule.Args["requireNativeLibs"])
+	ensureListContains(t, requireNativeLibs, "libllndk.so")
+}
+
 func TestDependenciesInApexManifest(t *testing.T) {
 	ctx := testApex(t, `
 		apex {
