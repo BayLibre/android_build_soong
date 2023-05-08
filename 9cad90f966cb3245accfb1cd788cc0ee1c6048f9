@@ -22,6 +22,53 @@
       },
       "revId": "9cad90f966cb3245accfb1cd788cc0ee1c6048f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38351fc4_c8a0563c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T18:10:24Z",
+      "side": 1,
+      "message": "I\u0027ll follow up on the thread about apex_available, there may be something more generalizable that would serve both tests, special cases like `test_broken_com.android.art` and other use cases as well that could work long term.",
+      "parentUuid": "362fb4a4_4685ea58",
+      "range": {
+        "startLine": 1218,
+        "startChar": 8,
+        "endLine": 1218,
+        "endChar": 45
+      },
+      "revId": "9cad90f966cb3245accfb1cd788cc0ee1c6048f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b53eec9_c548e13f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T18:10:24Z",
+      "side": 1,
+      "message": "nit: should we eventually share [this](https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/configurability.go;l\u003d158;drc\u003d4242f1046226d5071f5e5eff18c011231eda0c44) constant with the bazel package so they stay in sync with any potential refactors?",
+      "range": {
+        "startLine": 1251,
+        "startChar": 24,
+        "endLine": 1251,
+        "endChar": 60
+      },
+      "revId": "9cad90f966cb3245accfb1cd788cc0ee1c6048f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
