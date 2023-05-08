@@ -69,6 +69,30 @@
       },
       "revId": "9cad90f966cb3245accfb1cd788cc0ee1c6048f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb4f332d_5d9a40a8",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-08T19:07:53Z",
+      "side": 1,
+      "message": "Agreed, I can do this in a followup CL.",
+      "parentUuid": "6b53eec9_c548e13f",
+      "range": {
+        "startLine": 1251,
+        "startChar": 24,
+        "endLine": 1251,
+        "endChar": 60
+      },
+      "revId": "9cad90f966cb3245accfb1cd788cc0ee1c6048f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
