@@ -69,6 +69,24 @@
       "parentUuid": "846e6a45_b49cc638",
       "revId": "34c6d7d56f3b77195519320447af8a79102e57e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a508a1_37cf0cdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2023-05-08T17:02:23Z",
+      "side": 1,
+      "message": "Do the targets produce an output when using the pg rule flag? If so, what is the content of the file?",
+      "parentUuid": "2241189e_db50f865",
+      "revId": "34c6d7d56f3b77195519320447af8a79102e57e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
