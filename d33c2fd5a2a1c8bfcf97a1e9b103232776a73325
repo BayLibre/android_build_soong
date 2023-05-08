@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c590bbb8_7227a4fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-08T17:33:28Z",
+      "side": 1,
+      "message": "Did you test this with both failure and success?",
+      "revId": "d33c2fd5a2a1c8bfcf97a1e9b103232776a73325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1223e78e_0c50c972",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-08T17:33:28Z",
+      "side": 1,
+      "message": "Non-blocking, but you may want to consider writing some integration tests.",
+      "revId": "d33c2fd5a2a1c8bfcf97a1e9b103232776a73325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
