@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39510c1e_6ed5f62a",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 3338,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T21:40:00Z",
+      "side": 1,
+      "message": "should aidl_library have apex_available properties?",
+      "range": {
+        "startLine": 3338,
+        "startChar": 3,
+        "endLine": 3338,
+        "endChar": 73
+      },
+      "revId": "75524bcd967053dd5f93c551109c05356b482a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7b606ea_9185c1e3",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 3450,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T21:40:00Z",
+      "side": 1,
+      "message": "can you add a description to each test case?",
+      "range": {
+        "startLine": 3450,
+        "startChar": 1,
+        "endLine": 3450,
+        "endChar": 10
+      },
+      "revId": "75524bcd967053dd5f93c551109c05356b482a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae20adb0_e0f54121",
+        "filename": "cc/compiler.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T21:40:00Z",
+      "side": 1,
+      "message": "should we error out if you specify both .aidl files and aidl_library deps?",
+      "range": {
+        "startLine": 675,
+        "startChar": 30,
+        "endLine": 675,
+        "endChar": 37
+      },
+      "revId": "75524bcd967053dd5f93c551109c05356b482a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba23318e_699d2bbe",
+        "filename": "cc/compiler.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T21:40:00Z",
+      "side": 1,
+      "message": "instead of appending aidl srcs here, should we instead allow the libraryinfo to be used in the gen.go code.\n\nThis would prevent the checking if an include dir already exists in the gen.go code and make it easier to make the changes necessary to sandbox if you\u0027re depending on an aidl_library.",
+      "range": {
+        "startLine": 688,
+        "startChar": 2,
+        "endLine": 688,
+        "endChar": 46
+      },
+      "revId": "75524bcd967053dd5f93c551109c05356b482a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
