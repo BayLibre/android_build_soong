@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caecbdce_e685f658",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-08T05:58:43Z",
+      "side": 1,
+      "message": "Can you use finder.go to produce a list of METADATA files in the source tree, and use that information to decide whether to add this filegroup (and not need a glob)? There are about 1000 METADATA files in AOSP, and 7000 Android.bp files (packages), so doing this will save reduce 85% of unnecessary filegroups in the generated workspace.\n\nThe finder.go work should be similar to Android.bp.list dependencies.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/finder.go;l\u003d136-138;drc\u003d394aa32e8b10bf69414c1f326ff5ecf4007e11d1",
+      "range": {
+        "startLine": 387,
+        "startChar": 3,
+        "endLine": 391,
+        "endChar": 5
+      },
+      "revId": "293e023535745afd8ea7c4cd648cc4a71016a8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
