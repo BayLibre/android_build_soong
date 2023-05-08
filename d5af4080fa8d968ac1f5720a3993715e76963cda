@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6b72262_692dff55",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-05-08T20:59:49Z",
+      "side": 1,
+      "message": "This function doesn\u0027t take any destination file name (the `FileToZip` struct doesn\u0027t have a destination name).  `soong_zip -j` junks the path and keeps only the filename, so it is effectively using basename of file.SourceFilePath as the output file name.  I don\u0027t think soong_zip currently has a way to set the filename in the output when it differs from the input, but that shouldn\u0027t be to add.",
+      "revId": "d5af4080fa8d968ac1f5720a3993715e76963cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
