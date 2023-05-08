@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0e45720_f94fcd6c",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3707,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T18:52:38Z",
+      "side": 1,
+      "message": "can you add unit testing?",
+      "range": {
+        "startLine": 3707,
+        "startChar": 0,
+        "endLine": 3707,
+        "endChar": 71
+      },
+      "revId": "6b247bbe2cc2e9e7816eec08ca0b97bbf6142a03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bca9596_d7701af1",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-08T18:52:38Z",
+      "side": 1,
+      "message": "can you file a bug for this instead?",
+      "range": {
+        "startLine": 1216,
+        "startChar": 9,
+        "endLine": 1216,
+        "endChar": 19
+      },
+      "revId": "6b247bbe2cc2e9e7816eec08ca0b97bbf6142a03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
