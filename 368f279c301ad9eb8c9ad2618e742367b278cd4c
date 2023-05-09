@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4ce255d_b0da8c25",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-05-09T00:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92517d18_95273d0d",
+      "range": {
+        "startLine": 579,
+        "startChar": 5,
+        "endLine": 579,
+        "endChar": 24
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78abfec4_cf552425",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-05T19:52:21Z",
       "side": 1,
       "message": "can you add some comments around the special casings of conditions default keys in this function?",
+      "range": {
+        "startLine": 604,
+        "startChar": 0,
+        "endLine": 604,
+        "endChar": 63
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abfd73d7_86fa507e",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-05-09T00:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78abfec4_cf552425",
       "range": {
         "startLine": 604,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "855efc54_a51a7c94",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-05-09T00:49:36Z",
+      "side": 1,
+      "message": "Removed this if statement and the separate handling of the arch-less product variables above.",
+      "parentUuid": "aecf365a_3f37f68d",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 649,
+        "endChar": 21
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf2681a5_270e5f4d",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-05T19:52:21Z",
       "side": 1,
       "message": "do we also need to handle `Arch`/`Multilib` here? Should we error out similar to below if we encounter them and implement them if/when needed?",
+      "range": {
+        "startLine": 877,
+        "startChar": 25,
+        "endLine": 877,
+        "endChar": 31
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c118c3b3_7f9a377a",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-05-09T00:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf2681a5_270e5f4d",
       "range": {
         "startLine": 877,
         "startChar": 25,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79f91bf1_f98a3f8d",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-05-09T00:49:36Z",
+      "side": 1,
+      "message": "I realized I wasn\u0027t actually properly separating product variables and soong config variables into these axises, (which is why I needed to check for conditions default on the product config axis) and when I tried to, I ran into errors about properties having nil values that were hard to debug. So instead, I removed the extra axises and went back to what we had before.",
+      "parentUuid": "616dffe9_836098d3",
+      "range": {
+        "startLine": 304,
+        "startChar": 2,
+        "endLine": 314,
+        "endChar": 66
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8e009ea_b0d30fe4",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-05-05T19:52:21Z",
       "side": 1,
       "message": "could we just use android here? \n\n`//build/bazel/product_variables:my_namespace__my_bool_variable__android` would be a specialization of android and thus selected over just android, and then android would be sufficient here?",
+      "range": {
+        "startLine": 1349,
+        "startChar": 8,
+        "endLine": 1349,
+        "endChar": 113
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9005a0ff_fd8338ed",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-05-09T00:49:36Z",
+      "side": 1,
+      "message": "that is a good idea, but it would be tricky to implement because if there wasn\u0027t a branch with the variable set, it would cause us to output these flags if the variable was or wasn\u0027t set when it should really be only when it\u0027s not set. For example:\n\n```\nsoong_config_variables: {\n  my_bool_var: {\n    conditions_default: {\n      target: {\n        android: {\n          cflags: [\"-DFOO\"],\n        },\n      },\n    },\n  },\n},\n```\nwould emit:\n```\nselect({\n  \"//build/bazel/os:android\": [\"-DFOO\"],\n  \"//conditions:default\": [],\n})\n```\nWhen the current implementation would emit:\n```\nselect({\n \n \"//build/bazel/product_variables:my_namespace__my_bool_variable__conditions_default__android\": [\"-DBAZ\"],\n  \"//conditions:default\": [],\n})\n```\nA more sophisticated implementation could emit this, but I\u0027d rather not tackle that complexity at the moment:\n```\nselect({\n  \"//build/bazel/product_variables:my_namespace__my_bool_variable__android\": [],\n  \"//build/bazel/os:android\": [\"-DFOO\"],\n  \"//conditions:default\": [],\n})\n```\n\nI filed b/281568854 to handle this in a followup.",
+      "parentUuid": "a8e009ea_b0d30fe4",
       "range": {
         "startLine": 1349,
         "startChar": 8,
