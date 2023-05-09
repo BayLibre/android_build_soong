@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b8e5d7_8ae49c3b",
+        "filename": "android/package.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-09T07:26:17Z",
+      "side": 1,
+      "message": "This will not correctly re-run bp2build if someone adds or removes a METADATA file.\n\nI suggested using finder.go because it\u0027ll produce the full list of all METADATA files in the tree, and if you add that list file as an input, then bp2build will re-run if the list changes content (i.e. adding or removing METADATA files).\n\nAlso see:\n\n- https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/finder.go;l\u003d178-183;drc\u003d394aa32e8b10bf69414c1f326ff5ecf4007e11d1\n- https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d1236-1239;drc\u003d316b0158fe57ee7764235923e7c6f3d530da39c6",
+      "range": {
+        "startLine": 64,
+        "startChar": 21,
+        "endLine": 64,
+        "endChar": 87
+      },
+      "revId": "2919e41386b6a66973bb32ac4864c4eb7185fbb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
