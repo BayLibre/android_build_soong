@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f49dceb_96fb2ac6",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-09T04:00:05Z",
+      "side": 1,
+      "message": "Are all aidl_library(s) available to all apexes?",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 59
+      },
+      "revId": "72e6bd34c65f15791e1062c4e944b2e9f10a4e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
