@@ -151,6 +151,7 @@ func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext
 
 	for _, dataSrcPath := range android.PathsForModuleSrc(ctx, p.testProperties.Data) {
 		p.data = append(p.data, android.DataPath{SrcPath: dataSrcPath})
+		fmt.Println("11111111")
 	}
 
 	// Emulate the data property for java_data dependencies.
