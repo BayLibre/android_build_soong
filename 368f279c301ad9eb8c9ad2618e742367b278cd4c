@@ -281,6 +281,30 @@
       },
       "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf8c4751_133e143d",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-09T13:51:06Z",
+      "side": 1,
+      "message": "Yeah, I think it makes sense to defer for now and consider cleaning up closer to checking in files.",
+      "parentUuid": "9005a0ff_fd8338ed",
+      "range": {
+        "startLine": 1349,
+        "startChar": 8,
+        "endLine": 1349,
+        "endChar": 113
+      },
+      "revId": "368f279c301ad9eb8c9ad2618e742367b278cd4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
