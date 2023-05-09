@@ -157,6 +157,30 @@
       },
       "revId": "3cc7846b5887c130ba5ccb5a8f77d8a1a7358ab2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f9a7f3d_014bdc38",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-05-09T01:55:23Z",
+      "side": 1,
+      "message": "It\u0027s your call. I just wanted to point out \"Always Parse Structured Data In Tests\". In JSON, whitespaces between colon(:) don\u0027t change the semantic, but this check looks too brittle (it assumes, there should be no spaces). ;-)",
+      "parentUuid": "2557764e_b74b1fe1",
+      "range": {
+        "startLine": 32,
+        "startChar": 47,
+        "endLine": 32,
+        "endChar": 79
+      },
+      "revId": "3cc7846b5887c130ba5ccb5a8f77d8a1a7358ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
