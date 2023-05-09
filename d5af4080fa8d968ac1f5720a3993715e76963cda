@@ -34,6 +34,24 @@
       "parentUuid": "d6b72262_692dff55",
       "revId": "d5af4080fa8d968ac1f5720a3993715e76963cda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a26cdf38_d2f2b376",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-05-09T00:17:35Z",
+      "side": 1,
+      "message": "The patches to soong_zip fixed the issue with packaging the fuzzers.",
+      "parentUuid": "5284f44e_721d8b17",
+      "revId": "d5af4080fa8d968ac1f5720a3993715e76963cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
