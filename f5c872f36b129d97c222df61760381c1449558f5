@@ -97,6 +97,24 @@
       "message": "hold on. found one thing in the metrics",
       "revId": "f5c872f36b129d97c222df61760381c1449558f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "151f55a1_72006e68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-05-09T04:20:16Z",
+      "side": 1,
+      "message": "https://android-review.git.corp.google.com/c/platform/build/soong/+/2579614?usp\u003ddashboard\n\nThat CL makes writeNinjaHint be invoked in actual build phase(writing soong/build.ninja pahse). I think it resolves your worries.",
+      "parentUuid": "daf73ce1_9cc3e6b6",
+      "revId": "f5c872f36b129d97c222df61760381c1449558f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
