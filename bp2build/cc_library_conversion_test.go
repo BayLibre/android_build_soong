@@ -4523,3 +4523,48 @@ func TestCcLibraryCppFlagsInProductVariables(t *testing.T) {
 	},
 	)
 }
+
+func TestCcLibraryYaccConversion(t *testing.T) {
+	runCcLibraryTestCase(t, Bp2buildTestCase{
+		Description:                "cc_library is built from .y/.yy files",
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Blueprint: soongCcLibraryPreamble + `cc_library {
+    name: "a",
+    srcs: [
+	"a.cpp",
+	"a.yy",
+    ],
+    yacc: {
+	    flags: ["someYaccFlag"],
+	    gen_location_hh: true,
+	    gen_position_hh: true,
+	},
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_yacc_parser_gen", "a_yacc", AttrNameToString{
+				"src":             `"a.yy"`,
+				"flags":           `["someYaccFlag"]`,
+				"gen_location_hh": "True",
+				"gen_position_hh": "True",
+			}),
+			MakeBazelTarget("cc_library_shared", "a", AttrNameToString{
+				"srcs": `[
+        "a.cpp",
+        ":a_yacc",
+    ]`,
+				"implementation_deps": `[":a_yacc"]`,
+				"local_includes":      `["."]`,
+			}),
+			MakeBazelTarget("cc_library_static", "a_bp2build_cc_library_static", AttrNameToString{
+				"srcs": `[
+        "a.cpp",
+        ":a_yacc",
+    ]`,
+				"implementation_deps": `[":a_yacc"]`,
+				"local_includes":      `["."]`,
+			}),
+		},
+	})
+}
