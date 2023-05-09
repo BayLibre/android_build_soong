@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e131731c_c491a36e",
+        "filename": "device_config/device_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-09T15:30:22Z",
+      "side": 1,
+      "message": "At this point we don\u0027t have a guarantee that override modules have been run before this module, setting/retrieving overrideSetProviderKey in `GenerateAndroidBuildActions` would be better",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 63
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fed60d07_4b4d6c28",
+        "filename": "device_config/device_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-09T15:30:22Z",
+      "side": 1,
+      "message": "left this as a comment in the graph you drew, but we might need to make separate modules for the java as well to propagate the intermediate path for installation.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9ba6599_5cc3b5d8",
+        "filename": "device_config/device_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-09T15:30:22Z",
+      "side": 1,
+      "message": "probably want to do c++/rust as CreateModule rather than creating the actions here.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 13
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85407123_1c12e58a",
+        "filename": "device_config/device_config_override.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-09T15:30:22Z",
+      "side": 1,
+      "message": "pathdeps mutator is a post-deps mutator, if we move this to `GenerateAndroidBuildActions`, should be no issue",
+      "range": {
+        "startLine": 68,
+        "startChar": 21,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc635236_0e2517d4",
+        "filename": "device_config/device_config_override_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-09T15:30:22Z",
+      "side": 1,
+      "message": "would there be any advantage to using depsets or do we expect non-overlapping paths here?",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 57,
+        "endChar": 45
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e1dc271_b8a59493",
+        "filename": "device_config/init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-09T15:30:22Z",
+      "side": 1,
+      "message": "should these set restat?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 4
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
