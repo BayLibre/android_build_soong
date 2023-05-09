@@ -16,6 +16,24 @@
       "message": "Isn\u0027t there a shared library that we need to build with the fuzz target to be able to use the libraries on the device?",
       "revId": "a9f66730ff574e0e18b590477e0f1d72ed3a20e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "338cd5ff_f30e5086",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2023-05-09T14:06:32Z",
+      "side": 1,
+      "message": "@cobark@google.com Yes I have a task created for this sprint to address this.\n\nDo you think it makes more sense to add it to this CL?",
+      "parentUuid": "1735adf4_2874f09b",
+      "revId": "a9f66730ff574e0e18b590477e0f1d72ed3a20e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
