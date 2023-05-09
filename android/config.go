@@ -183,6 +183,10 @@ func (c Config) MaxPageSizeSupported() string {
 	return String(c.config.productVariables.DeviceMaxPageSizeSupported)
 }
 
+func (c Config) ReleaseDeviceConfigOverrides() []string {
+	return c.config.productVariables.ReleaseDeviceConfigOverrides
+}
+
 // A DeviceConfig object represents the configuration for a particular device
 // being built. For now there will only be one of these, but in the future there
 // may be multiple devices being built.

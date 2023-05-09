@@ -473,6 +473,8 @@ type productVariables struct {
 	ProductManufacturer string   `json:",omitempty"`
 	ProductBrand        string   `json:",omitempty"`
 	BuildVersionTags    []string `json:",omitempty"`
+
+	ReleaseDeviceConfigOverrides []string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
