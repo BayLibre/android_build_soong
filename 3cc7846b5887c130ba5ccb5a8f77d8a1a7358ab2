@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d90eb2f0_ae9c0f8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-05-09T00:59:56Z",
+      "side": 1,
+      "message": "A few nits, but LGTM",
+      "revId": "3cc7846b5887c130ba5ccb5a8f77d8a1a7358ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9925ac0_cb3bc75e",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-05-09T00:59:56Z",
+      "side": 1,
+      "message": "```suggestion\nfunc checkJsonContents(t *testing.T, ctx android.TestingSingleton, jsonPath, key, value string) {\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 67,
+        "endLine": 26,
+        "endChar": 108
+      },
+      "revId": "3cc7846b5887c130ba5ccb5a8f77d8a1a7358ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b585f97_fedde33a",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-05-09T00:59:56Z",
+      "side": 1,
+      "message": "nit: In tests, `ctx` is typically used for `TestContext`. In other check functions, `singleton` is used for `TestingSingleton` parameter.",
+      "range": {
+        "startLine": 26,
+        "startChar": 37,
+        "endLine": 26,
+        "endChar": 40
+      },
+      "revId": "3cc7846b5887c130ba5ccb5a8f77d8a1a7358ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "349d0bf8_6c977eea",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-05-09T00:59:56Z",
+      "side": 1,
+      "message": "nit: this seems to be tightly coupled with the implementation. Can we use jsonUnmarshal to check key/value?",
+      "range": {
+        "startLine": 32,
+        "startChar": 47,
+        "endLine": 32,
+        "endChar": 79
+      },
+      "revId": "3cc7846b5887c130ba5ccb5a8f77d8a1a7358ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
