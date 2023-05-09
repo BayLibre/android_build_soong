@@ -68,6 +68,12 @@ type TestProperties struct {
 	Test_options TestOptions
 }
 
+type TestHostProperties struct {
+	// if set to true, data property should only be packed in the python binaries,
+	// otherwise data property is also in test case folder structure.
+	Data_not_in_test_case_folder bool
+}
+
 type TestOptions struct {
 	android.CommonTestOptions
 
@@ -86,22 +92,30 @@ type Metadata struct {
 type PythonTestModule struct {
 	PythonBinaryModule
 
-	testProperties TestProperties
-	testConfig     android.Path
-	data           []android.DataPath
+	testProperties     TestProperties
+	testHostProperties TestHostProperties
+	testConfig         android.Path
+	data               []android.DataPath
 }
 
 func (p *PythonTestModule) init() android.Module {
 	p.AddProperties(&p.properties, &p.protoProperties)
 	p.AddProperties(&p.binaryProperties)
 	p.AddProperties(&p.testProperties)
+	if p.isTestHost() {
+		p.AddProperties(&p.testHostProperties)
+	}
 	android.InitAndroidArchModule(p, p.hod, p.multilib)
 	android.InitDefaultableModule(p)
 	android.InitBazelModule(p)
-	if p.hod == android.HostSupportedNoCross && p.testProperties.Test_options.Unit_test == nil {
+	if p.isTestHost() && p.testProperties.Test_options.Unit_test == nil {
 		p.testProperties.Test_options.Unit_test = proptools.BoolPtr(true)
 	}
 	return p
+}
+
+func (p *PythonTestModule) isTestHost() bool {
+	return p.hod == android.HostSupportedNoCross
 }
 
 func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -149,8 +163,10 @@ func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext
 
 	p.installedDest = ctx.InstallFile(installDir(ctx, "nativetest", "nativetest64", ctx.ModuleName()), p.installSource.Base(), p.installSource)
 
-	for _, dataSrcPath := range android.PathsForModuleSrc(ctx, p.testProperties.Data) {
-		p.data = append(p.data, android.DataPath{SrcPath: dataSrcPath})
+	if !p.isTestHost() || !p.testHostProperties.Data_not_in_test_case_folder {
+		for _, dataSrcPath := range android.PathsForModuleSrc(ctx, p.testProperties.Data) {
+			p.data = append(p.data, android.DataPath{SrcPath: dataSrcPath})
+		}
 	}
 
 	// Emulate the data property for java_data dependencies.
