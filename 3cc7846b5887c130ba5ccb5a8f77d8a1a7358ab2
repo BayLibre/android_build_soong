@@ -66,6 +66,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "771bbaf7_17351499",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-05-09T01:32:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9925ac0_cb3bc75e",
+      "range": {
+        "startLine": 26,
+        "startChar": 67,
+        "endLine": 26,
+        "endChar": 108
+      },
+      "revId": "3cc7846b5887c130ba5ccb5a8f77d8a1a7358ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ccdb9a0_3f25ae4e",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-05-09T01:32:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b585f97_fedde33a",
+      "range": {
+        "startLine": 26,
+        "startChar": 37,
+        "endLine": 26,
+        "endChar": 40
+      },
+      "revId": "3cc7846b5887c130ba5ccb5a8f77d8a1a7358ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "349d0bf8_6c977eea",
         "filename": "cc/vendor_snapshot_test.go",
         "patchSetId": 3
@@ -77,6 +125,30 @@
       "writtenOn": "2023-05-09T00:59:56Z",
       "side": 1,
       "message": "nit: this seems to be tightly coupled with the implementation. Can we use jsonUnmarshal to check key/value?",
+      "range": {
+        "startLine": 32,
+        "startChar": 47,
+        "endLine": 32,
+        "endChar": 79
+      },
+      "revId": "3cc7846b5887c130ba5ccb5a8f77d8a1a7358ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2557764e_b74b1fe1",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-05-09T01:32:54Z",
+      "side": 1,
+      "message": "The text is generated from `json.Marshal()`. So it will not be changed.",
+      "parentUuid": "349d0bf8_6c977eea",
       "range": {
         "startLine": 32,
         "startChar": 47,
