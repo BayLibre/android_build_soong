@@ -34,6 +34,24 @@
       "parentUuid": "64515dd3_2dd2c777",
       "revId": "fcb3fb0acff0942bc9e2611644a9d42caa0db38b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a04249d7_02b17d8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-05-09T08:30:19Z",
+      "side": 1,
+      "message": "Hi Joe,\n\nI renamed all files which can be varied based on the lunch target and affects build.ninja (which were build.ninja itself and soong.variables). Can you please let me know your thoughts if this would work, or you still want to rename other files?",
+      "parentUuid": "6f11b5dc_1becf065",
+      "revId": "fcb3fb0acff0942bc9e2611644a9d42caa0db38b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
