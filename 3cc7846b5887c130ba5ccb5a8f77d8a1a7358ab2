@@ -181,6 +181,30 @@
       },
       "revId": "3cc7846b5887c130ba5ccb5a8f77d8a1a7358ab2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a680026e_81141a2b",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-05-09T02:10:11Z",
+      "side": 1,
+      "message": "Yes, that must be the way to go. But the input text here is for ninja rule not for json itself. I have to trim out the following newline character to make it a string for json.Unmarshal. That is also text composition specific but not for any text input.\nThe correct way will be using regex to parse the text, but that\u0027s too much here. Still I think this will not break unless someone change the Marshal() with MarshalIndent().",
+      "parentUuid": "3f9a7f3d_014bdc38",
+      "range": {
+        "startLine": 32,
+        "startChar": 47,
+        "endLine": 32,
+        "endChar": 79
+      },
+      "revId": "3cc7846b5887c130ba5ccb5a8f77d8a1a7358ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
