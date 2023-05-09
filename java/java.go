@@ -2713,9 +2713,22 @@ func (m *Library) convertJavaResourcesAttributes(ctx android.TopDownMutatorConte
 		ctx.ModuleErrorf("bp2build doesn't support both java_resources and java_resource_dirs being set on the same module.")
 	}
 
-	if m.properties.Java_resources != nil {
+	if m.properties.Java_resources != nil && len(m.properties.Java_resources) > 0 {
+		if otherM, ok := ctx.ModuleFromName(m.properties.Java_resources[0]); ok && len(m.properties.Java_resources) == 1 {
+			if android.IsFilegroup(ctx, otherM) {
+				fg, _ := otherM.(android.FileGroupPath)
+				prefix := ctx.OtherModuleDir(otherM)
+				if fg.GetPath(ctx) != "" {
+					prefix += "/" + fg.GetPath(ctx)
+				}
+				resourceStripPrefix = proptools.StringPtr(prefix)
+			} else {
+				ctx.ModuleErrorf("bp2build doesn't support module type %v in java_resources", ctx.OtherModuleType(otherM))
+			}
+		} else {
+			resourceStripPrefix = proptools.StringPtr(ctx.ModuleDir())
+		}
 		resources.Append(android.BazelLabelForModuleSrc(ctx, m.properties.Java_resources))
-		resourceStripPrefix = proptools.StringPtr(ctx.ModuleDir())
 	}
 
 	//TODO(b/179889880) handle case where glob includes files outside package
