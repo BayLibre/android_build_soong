@@ -149,10 +149,6 @@ func (p *PythonTestModule) GenerateAndroidBuildActions(ctx android.ModuleContext
 
 	p.installedDest = ctx.InstallFile(installDir(ctx, "nativetest", "nativetest64", ctx.ModuleName()), p.installSource.Base(), p.installSource)
 
-	for _, dataSrcPath := range android.PathsForModuleSrc(ctx, p.testProperties.Data) {
-		p.data = append(p.data, android.DataPath{SrcPath: dataSrcPath})
-	}
-
 	// Emulate the data property for java_data dependencies.
 	for _, javaData := range ctx.GetDirectDepsWithTag(javaDataTag) {
 		for _, javaDataSrcPath := range android.OutputFilesForModule(ctx, javaData, "") {
