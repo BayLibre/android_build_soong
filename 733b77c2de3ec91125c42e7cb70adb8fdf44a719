@@ -16,6 +16,24 @@
       "message": "Have you verified that bazel metrics are uploaded and create records in the table?",
       "revId": "733b77c2de3ec91125c42e7cb70adb8fdf44a719",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3036bc6f_37656e01",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-05-10T05:20:03Z",
+      "side": 1,
+      "message": "I verified that the bazel proto was created and properly formatted.\n\nI can check plx tomorrow",
+      "parentUuid": "e8a163a6_3dd6473a",
+      "revId": "733b77c2de3ec91125c42e7cb70adb8fdf44a719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
