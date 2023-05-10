@@ -16,6 +16,24 @@
       "message": "Unfortunately RunBlueprint is what creates the list of globs that need to be written into the globs ninja file.",
       "revId": "12270b1029164423d3ef496929273f568498969c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ef65b46_36d271e9",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-10T21:29:45Z",
+      "side": 1,
+      "message": "Ugh. I seem to have misunderstood this, then. (And thus, I\u0027ll also need to figure out a regression test that actually verifies the globs are written correctly)\n\nSorry about this.",
+      "parentUuid": "65728caa_1ad89e3a",
+      "revId": "12270b1029164423d3ef496929273f568498969c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
