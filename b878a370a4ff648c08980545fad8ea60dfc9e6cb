@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b376cd_79c82ab3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-10T04:05:29Z",
+      "side": 1,
+      "message": "Should we also switch usage of aidl bins to source-built ones? https://cs.android.com/search?q\u003dprebuilts.*aidl%5C%22%20f:build%2Fbazel%20f:%5C.bzl",
+      "revId": "b878a370a4ff648c08980545fad8ea60dfc9e6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
