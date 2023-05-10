@@ -45,6 +45,46 @@ func testDexpreoptBoot(t *testing.T, ruleFile string, expectedInputs, expectedOu
 
 		platform_bootclasspath {
 			name: "platform-bootclasspath",
+			fragments: [
+				{
+					apex: "com.android.art",
+					module: "art-bootclasspath-fragment",
+				},
+			],
+		}
+
+		java_library {
+			name: "core-oj",
+			srcs: ["core-oj.java"],
+			installable: true,
+			apex_available: [
+				"com.android.art",
+			],
+		}
+
+		bootclasspath_fragment {
+			name: "art-bootclasspath-fragment",
+			image_name: "art",
+			contents: ["core-oj"],
+			apex_available: [
+				"com.android.art",
+			],
+			hidden_api: {
+				split_packages: ["*"],
+			},
+		}
+
+		apex {
+			name: "com.android.art",
+			key: "com.android.art.key",
+			bootclasspath_fragments: ["art-bootclasspath-fragment"],
+			updatable: false,
+		}
+
+		apex_key {
+			name: "com.android.art.key",
+			public_key: "com.android.art.avbpubkey",
+			private_key: "com.android.art.pem",
 		}
 	`
 
@@ -52,7 +92,9 @@ func testDexpreoptBoot(t *testing.T, ruleFile string, expectedInputs, expectedOu
 		java.PrepareForTestWithDexpreopt,
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo"),
-		java.FixtureConfigureBootJars("platform:foo", "system_ext:bar", "platform:baz"),
+		java.FixtureConfigureBootJars("com.android.art:core-oj", "platform:foo", "system_ext:bar", "platform:baz"),
+		PrepareForTestWithApexBuildComponents,
+		prepareForTestWithArtApex,
 	).RunTestWithBp(t, bp)
 
 	platformBootclasspath := result.ModuleForTests("platform-bootclasspath", "android_common")
@@ -80,26 +122,32 @@ func testDexpreoptBoot(t *testing.T, ruleFile string, expectedInputs, expectedOu
 }
 
 func TestDexpreoptBootJars(t *testing.T) {
-	ruleFile := "boot-foo.art"
+	ruleFile := "boot.art"
 
 	expectedInputs := []string{
-		"dex_artjars/android/apex/art_boot_images/javalib/arm64/boot.art",
+		"dex_bootjars_input/core-oj.jar",
 		"dex_bootjars_input/foo.jar",
 		"dex_bootjars_input/bar.jar",
 		"dex_bootjars_input/baz.jar",
+		"dex_artjars/boot.prof",
+		"dex_bootjars/boot.prof",
 	}
 
 	expectedOutputs := []string{
 		"dex_bootjars/android/system/framework/arm64/boot.invocation",
+		"dex_bootjars/android/system/framework/arm64/boot.art",
 		"dex_bootjars/android/system/framework/arm64/boot-foo.art",
 		"dex_bootjars/android/system/framework/arm64/boot-bar.art",
 		"dex_bootjars/android/system/framework/arm64/boot-baz.art",
+		"dex_bootjars/android/system/framework/arm64/boot.oat",
 		"dex_bootjars/android/system/framework/arm64/boot-foo.oat",
 		"dex_bootjars/android/system/framework/arm64/boot-bar.oat",
 		"dex_bootjars/android/system/framework/arm64/boot-baz.oat",
+		"dex_bootjars/android/system/framework/arm64/boot.vdex",
 		"dex_bootjars/android/system/framework/arm64/boot-foo.vdex",
 		"dex_bootjars/android/system/framework/arm64/boot-bar.vdex",
 		"dex_bootjars/android/system/framework/arm64/boot-baz.vdex",
+		"dex_bootjars_unstripped/android/system/framework/arm64/boot.oat",
 		"dex_bootjars_unstripped/android/system/framework/arm64/boot-foo.oat",
 		"dex_bootjars_unstripped/android/system/framework/arm64/boot-bar.oat",
 		"dex_bootjars_unstripped/android/system/framework/arm64/boot-baz.oat",
@@ -116,9 +164,9 @@ func TestDexpreoptBootZip(t *testing.T) {
 	expectedInputs := []string{}
 	for _, target := range ctx.Config().Targets[android.Android] {
 		for _, ext := range []string{".art", ".oat", ".vdex"} {
-			for _, jar := range []string{"foo", "bar", "baz"} {
+			for _, suffix := range []string{"", "-foo", "-bar", "-baz"} {
 				expectedInputs = append(expectedInputs,
-					filepath.Join("dex_bootjars", target.Os.String(), "system/framework", target.Arch.ArchType.String(), "boot-"+jar+ext))
+					filepath.Join("dex_bootjars", target.Os.String(), "system/framework", target.Arch.ArchType.String(), "boot"+suffix+ext))
 			}
 		}
 	}
