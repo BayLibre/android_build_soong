@@ -70,6 +70,30 @@
       },
       "revId": "8da56a62fd999c31f73e493301b5106bab72cc42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ca7fd11_6211825e",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4557,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-10T17:32:35Z",
+      "side": 1,
+      "message": "Since a single soong module can contain combination of *.cpp and *.yy (or .c and .y) srcs, would we need to repeat the implementation/dynamic deps in this design? Vinh, do you know how we handled this repition for aidl? Do aidl modules allow combination of *.cpp and *.aidl files in srcs?\n\n\ne.g. the BUILD file in this design option will be\n```\n# system/tools/aidl/BUILD.bazel\ncc_library_static (\n  name \u003d \"libaidl-common\",\n  srcs \u003d [\n     \"logging.cpp\",\n     ...\n     # But not aidl_language_y.yy\n  ]\n  implementation_deps \u003d [ # Needs to be here since the parent module needs them\n     \"libbase\",\n     \"liblog\",\n     ...\n  ],\n  whole_static_deps \u003d [\n     \"libaidl-common_yacc\",\n  ],\n)\n\ncc_yacc_static_library (\n  name \u003d \"libaidl-common_yacc\",\n  src \u003d \"aidl_language_y.yy\",\n  implementation_deps \u003d [ # Needs to be repeated here too\n     \"libbase\",\n     \"liblog\",\n     ..., # Although some might not be necessary\n  ],\n )\n ```",
+      "parentUuid": "c6af2a90_83e1a8da",
+      "range": {
+        "startLine": 4555,
+        "startChar": 0,
+        "endLine": 4557,
+        "endChar": 41
+      },
+      "revId": "8da56a62fd999c31f73e493301b5106bab72cc42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
