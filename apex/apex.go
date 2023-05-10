@@ -99,6 +99,10 @@ type apexBundleProperties struct {
 	// /system/sepolicy/apex/<module_name>_file_contexts.
 	File_contexts *string `android:"path"`
 
+	// Canonical name of this APEX bundle. Used to determine the path to the activated APEX on
+	// device (/apex/<apex_name>). If unspecified, follows the name property.
+	Apex_name *string
+
 	// By default, file_contexts is amended by force-labelling / and /apex_manifest.pb as system_file
 	// to avoid mistakes. When set as true, no force-labelling.
 	Use_file_contexts_as_is *bool
@@ -1062,7 +1066,7 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 	// This is the main part of this mutator. Mark the collected dependencies that they need to
 	// be built for this apexBundle.
 
-	apexVariationName := mctx.ModuleName() // could be com.android.foo
+	apexVariationName := proptools.StringDefault(a.properties.Apex_name, mctx.ModuleName()) // could be com.android.foo
 	a.properties.ApexVariationName = apexVariationName
 	testApexes := []string{}
 	if a.testApex {
@@ -3109,7 +3113,7 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 			return false
 		}
 
-		apexName := ctx.ModuleName()
+		apexName := proptools.StringDefault(a.properties.Apex_name, ctx.ModuleName())
 		fromName := ctx.OtherModuleName(from)
 		toName := ctx.OtherModuleName(to)
 
