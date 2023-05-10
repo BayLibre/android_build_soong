@@ -16,6 +16,23 @@
       "message": "+Pirama, Chris, + Ivan in case they have opinions here. I think this should be ok, as it\u0027s not actually adding more unstable feature flags (something we\u0027re being more careful about recently).",
       "revId": "efdb569c99231893376a42066da017fbefea2092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e41a364_6ddb982e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-05-10T04:46:42Z",
+      "side": 1,
+      "message": "For C++ code coverage, we moved to clang/llvm\u0027s FE-based instrumentation and no longer use gcov/gcno support.  The soong support only exists for a few legacy users.\n\nCan you provide motivation for adding support for Rust?",
+      "revId": "efdb569c99231893376a42066da017fbefea2092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
