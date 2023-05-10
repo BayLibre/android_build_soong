@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d72faa77_611b2bba",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-10T20:05:53Z",
+      "side": 1,
+      "message": "do we actually have a usecase for an `aidl_library` with only deps and no inputs? If not, let\u0027s not add functionality for that.",
+      "parentUuid": "336cffe6_6d2d9815",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "e697816de75ade60a9c35a8265593895d47e7927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "018e77d7_6f08215e",
         "filename": "aidl_library/aidl_library.go",
         "patchSetId": 11
