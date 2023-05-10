@@ -1666,6 +1666,8 @@ func (mod *Module) HostToolPath() android.OptionalPath {
 	}
 	if binary, ok := mod.compiler.(*binaryDecorator); ok {
 		return android.OptionalPathForPath(binary.baseCompiler.path)
+	} else if prebuilt, ok := mod.compiler.(*prebuiltBinaryDecorator); ok {
+		return android.OptionalPathForPath(prebuilt.baseCompiler.path)
 	} else if pm, ok := mod.compiler.(*procMacroDecorator); ok {
 		// Even though proc-macros aren't strictly "tools", since they target the compiler
 		// and act as compiler plugins, we treat them similarly.
