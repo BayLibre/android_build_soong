@@ -121,6 +121,13 @@ func runMixedModeBuild(ctx *android.Context, extraNinjaDeps []string) string {
 	bazelHook := func() error {
 		return ctx.Config().BazelContext.InvokeBazel(ctx.Config(), ctx)
 	}
+
+	// The glob files must be written before calling RunBlueprint, because the
+	// dependencies of the ninja file (ninjaDeps) must be generated before
+	// the ninja file is. (Otherwise, the ninja file will be regenerated
+	// again on next build!)
+	globFiles := writeBuildGlobsNinjaFile(ctx)
+
 	ctx.SetBeforePrepareBuildActionsHook(bazelHook)
 	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs.Args, bootstrap.DoEverything, ctx.Context, ctx.Config())
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
@@ -130,7 +137,7 @@ func runMixedModeBuild(ctx *android.Context, extraNinjaDeps []string) string {
 		panic("Bazel deps file not found: " + err.Error())
 	}
 	ninjaDeps = append(ninjaDeps, bazelPaths...)
-	ninjaDeps = append(ninjaDeps, writeBuildGlobsNinjaFile(ctx)...)
+	ninjaDeps = append(ninjaDeps, globFiles...)
 
 	writeDepFile(cmdlineArgs.OutFile, ctx.EventHandler, ninjaDeps)
 	return cmdlineArgs.OutFile
@@ -166,6 +173,12 @@ func runApiBp2build(ctx *android.Context, extraNinjaDeps []string) string {
 		panic(err)
 	}
 
+	// The glob files must be written before calling RunBlueprint, because the
+	// dependencies of the ninja file (ninjaDeps) must be generated before
+	// the ninja file is. (Otherwise, the ninja file will be regenerated
+	// again on next build!)
+	globFiles := writeBuildGlobsNinjaFile(ctx)
+
 	// Run the loading and analysis phase
 	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs.Args,
 		bootstrap.StopBeforePrepareBuildActions,
@@ -174,7 +187,7 @@ func runApiBp2build(ctx *android.Context, extraNinjaDeps []string) string {
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
 
 	// Add the globbed dependencies
-	ninjaDeps = append(ninjaDeps, writeBuildGlobsNinjaFile(ctx)...)
+	ninjaDeps = append(ninjaDeps, globFiles...)
 
 	// Run codegen to generate BUILD files
 	codegenContext := bp2build.NewCodegenContext(ctx.Config(), ctx, bp2build.ApiBp2build, topDir)
@@ -426,10 +439,14 @@ func runSoongOnlyBuild(ctx *android.Context, extraNinjaDeps []string) string {
 		stopBefore = bootstrap.DoEverything
 	}
 
+	// The glob files must be written before calling RunBlueprint, because the
+	// dependencies of the ninja file (ninjaDeps) must be generated before
+	// the ninja file is. (Otherwise, the ninja file will be regenerated
+	// again on next build!)
+	globListFiles := writeBuildGlobsNinjaFile(ctx)
+
 	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs.Args, stopBefore, ctx.Context, ctx.Config())
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
-
-	globListFiles := writeBuildGlobsNinjaFile(ctx)
 	ninjaDeps = append(ninjaDeps, globListFiles...)
 
 	// Convert the Soong module graph into Bazel BUILD files.
