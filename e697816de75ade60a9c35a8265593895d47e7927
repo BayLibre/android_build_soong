@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1dd284_d041dc19",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-10T20:47:23Z",
+      "side": 1,
+      "message": "Yeah that makes sense. There shouldn\u0027t be any reason to group aidl_library like that.\n\nDone https://android-review.git.corp.google.com/c/platform/build/soong/+/2571770/13..15",
+      "parentUuid": "d72faa77_611b2bba",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "e697816de75ade60a9c35a8265593895d47e7927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "018e77d7_6f08215e",
