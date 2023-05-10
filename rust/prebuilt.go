@@ -23,6 +23,7 @@ func init() {
 	android.RegisterModuleType("rust_prebuilt_dylib", PrebuiltDylibFactory)
 	android.RegisterModuleType("rust_prebuilt_rlib", PrebuiltRlibFactory)
 	android.RegisterModuleType("rust_prebuilt_proc_macro", PrebuiltProcMacroFactory)
+	android.RegisterModuleType("rust_prebuilt_binary", rustPrebuiltBinaryFactory)
 }
 
 type PrebuiltProperties struct {
@@ -44,6 +45,57 @@ type prebuiltProcMacroDecorator struct {
 
 	*procMacroDecorator
 	Properties PrebuiltProperties
+}
+
+type Sanitized struct {
+	None struct {
+		Srcs []string `android:"path,arch_variant"`
+	} `android:"arch_variant"`
+	Address struct {
+		Srcs []string `android:"path,arch_variant"`
+	} `android:"arch_variant"`
+	Hwaddress struct {
+		Srcs []string `android:"path,arch_variant"`
+	} `android:"arch_variant"`
+}
+
+type prebuiltLinkerProperties struct {
+	// a prebuilt library or binary. Can reference a genrule module that generates an executable file.
+	Srcs []string `android:"path,arch_variant"`
+
+	Sanitized Sanitized `android:"arch_variant"`
+
+	// Check the prebuilt ELF files (e.g. DT_SONAME, DT_NEEDED, resolution of undefined
+	// symbols, etc), default true.
+	Check_elf_files *bool
+
+	// if set, add an extra objcopy --prefix-symbols= step
+	Prefix_symbols *string
+
+	// Optionally provide an import library if this is a Windows PE DLL prebuilt.
+	// This is needed only if this library is linked by other modules in build time.
+	// Only makes sense for the Windows target.
+	Windows_import_lib *string `android:"path,arch_variant"`
+
+	// MixedBuildsDisabled is true if and only if building this prebuilt is explicitly disabled in mixed builds for either
+	// its static or shared version on the current build variant. This is to prevent Bazel targets for build variants with
+	// which either the static or shared version is incompatible from participating in mixed buiods. Please note that this
+	// is an override and does not fully determine whether Bazel or Soong will be used. For the full determination, see
+	// cc.ProcessBazelQueryResponse, cc.QueueBazelCall, and cc.MixedBuildsDisabled.
+	MixedBuildsDisabled bool `blueprint:"mutated"`
+}
+
+type prebuiltLinker struct {
+	android.Prebuilt
+
+	properties prebuiltLinkerProperties
+}
+
+type prebuiltBinaryLinker struct {
+	*binaryDecorator
+	prebuiltLinker
+
+	toolPath android.OptionalPath
 }
 
 func PrebuiltProcMacroFactory() android.Module {
@@ -88,6 +140,11 @@ func PrebuiltDylibFactory() android.Module {
 
 func PrebuiltRlibFactory() android.Module {
 	module, _ := NewPrebuiltRlib(android.HostAndDeviceSupported)
+	return module.Init()
+}
+
+func rustPrebuiltBinaryFactory() android.Module {
+	module, _ := NewPrebuiltBinary(android.HostSupported)
 	return module.Init()
 }
 
@@ -138,6 +195,20 @@ func NewPrebuiltRlib(hod android.HostOrDeviceSupported) (*Module, *prebuiltLibra
 	addSrcSupplier(module, prebuilt)
 
 	return module, prebuilt
+}
+
+func NewPrebuiltBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
+	module, binary := NewRustBinary(hod)
+	module.compiler = nil
+
+	prebuilt := &prebuiltBinaryLinker{
+		binaryDecorator: binary,
+	}
+
+	module.AddProperties(&prebuilt.properties)
+
+	android.InitPrebuiltModule(module, &prebuilt.properties.Srcs)
+	return module, binary
 }
 
 func (prebuilt *prebuiltLibraryDecorator) compilerProps() []interface{} {
