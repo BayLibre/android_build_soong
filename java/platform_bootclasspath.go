@@ -179,7 +179,6 @@ func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 
 	// Check the configuration of the boot modules.
 	// ART modules are checked by the art-bootclasspath-fragment.
-	b.checkPlatformModules(ctx, platformModules)
 	b.checkApexModules(ctx, apexModules)
 
 	b.generateClasspathProtoBuildActions(ctx)
@@ -215,22 +214,6 @@ func (b *platformBootclasspathModule) configuredJars(ctx android.ModuleContext) 
 	}
 
 	return jars
-}
-
-// checkPlatformModules ensures that the non-updatable modules supplied are not part of an
-// apex module.
-func (b *platformBootclasspathModule) checkPlatformModules(ctx android.ModuleContext, modules []android.Module) {
-	// TODO(satayev): change this check to only allow core-icu4j, all apex jars should not be here.
-	for _, m := range modules {
-		apexInfo := ctx.OtherModuleProvider(m, android.ApexInfoProvider).(android.ApexInfo)
-		fromUpdatableApex := apexInfo.Updatable
-		if fromUpdatableApex {
-			// error: this jar is part of an updatable apex
-			ctx.ModuleErrorf("module %q from updatable apexes %q is not allowed in the framework boot image", ctx.OtherModuleName(m), apexInfo.InApexVariants)
-		} else {
-			// ok: this jar is part of the platform or a non-updatable apex
-		}
-	}
 }
 
 // checkApexModules ensures that the apex modules supplied are not from the platform.

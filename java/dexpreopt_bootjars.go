@@ -295,6 +295,11 @@ type bootImageConfig struct {
 
 	// The "--single-image" argument.
 	singleImage bool
+
+	// Profiles imported from other boot image configs. Each element must represent a
+	// `bootclasspath_fragment` of an APEX (i.e., the `name` field of each element must refer to the
+	// `image_name` property of a `bootclasspath_fragment`).
+	profileImports []*bootImageConfig
 }
 
 // Target-dependent description of a boot image.
@@ -709,6 +714,20 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 
 	if profile != nil {
 		cmd.FlagWithInput("--profile-file=", profile)
+	}
+
+	fragments := make(map[string]android.Module)
+	ctx.VisitDirectDepsWithTag(bootclasspathFragmentDepTag, func(child android.Module) {
+		fragment := child.(commonBootclasspathFragment)
+		if fragment.imageName() != nil {
+			fragments[*fragment.imageName()] = child
+		}
+	})
+
+	for _, profileImport := range image.profileImports {
+		fragment := fragments[profileImport.name]
+		info := ctx.OtherModuleProvider(fragment, BootclasspathFragmentApexContentInfoProvider).(BootclasspathFragmentApexContentInfo)
+		cmd.FlagWithInput("--profile-file=", info.profilePathOnHost)
 	}
 
 	dirtyImageFile := "frameworks/base/config/dirty-image-objects"

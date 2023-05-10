@@ -259,6 +259,9 @@ type commonBootclasspathFragment interface {
 	// If it could not create the files then it will return nil. Otherwise, it will return a map from
 	// android.ArchType to the predefined paths of the boot image files.
 	produceBootImageFiles(ctx android.ModuleContext, imageConfig *bootImageConfig) bootImageOutputs
+
+	// imageName returns the `image_name` property of this fragment.
+	imageName() *string
 }
 
 var _ commonBootclasspathFragment = (*BootclasspathFragmentModule)(nil)
@@ -911,6 +914,10 @@ func (b *BootclasspathFragmentModule) AndroidMkEntries() []android.AndroidMkEntr
 	return entriesList
 }
 
+func (b *BootclasspathFragmentModule) imageName() *string {
+	return b.properties.Image_name
+}
+
 // Collect information for opening IDE project files in java/jdeps.go.
 func (b *BootclasspathFragmentModule) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Deps = append(dpInfo.Deps, b.properties.Contents...)
@@ -1205,6 +1212,10 @@ func (module *PrebuiltBootclasspathFragmentModule) produceBootImageFiles(ctx and
 	// Build boot image files for the android variants from the dex files provided by the contents
 	// of this module.
 	return buildBootImageVariantsForAndroidOs(ctx, imageConfig, profile)
+}
+
+func (b *PrebuiltBootclasspathFragmentModule) imageName() *string {
+	return b.properties.Image_name
 }
 
 var _ commonBootclasspathFragment = (*PrebuiltBootclasspathFragmentModule)(nil)
