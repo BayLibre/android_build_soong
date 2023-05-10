@@ -22,6 +22,30 @@
       },
       "revId": "72e6bd34c65f15791e1062c4e944b2e9f10a4e91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39db384a_18ea4faa",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-10T20:59:25Z",
+      "side": 1,
+      "message": "Good call. In fact, we shouldn\u0027t need it\u0027s already ignored by apex deps validation https://cs.android.com/android/platform/build/bazel/+/master:rules/apex/apex_deps_validation.bzl;l\u003d53;drc\u003d83ec19d8d4858142cab3e9905d8373ace74fde7b\n\nhttps://android-review.git.corp.google.com/c/platform/build/soong/+/2577313/3..4 removed it.",
+      "parentUuid": "7f49dceb_96fb2ac6",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 59
+      },
+      "revId": "72e6bd34c65f15791e1062c4e944b2e9f10a4e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
