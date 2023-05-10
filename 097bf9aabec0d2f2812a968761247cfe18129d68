@@ -90,6 +90,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e852157_9996dd63",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-05-10T20:29:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22f2c8c8_3d34c8da",
+      "revId": "097bf9aabec0d2f2812a968761247cfe18129d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4892eeb5_87b78cc4",
@@ -168,6 +186,24 @@
       "side": 1,
       "message": "Similar to comment above.",
       "parentUuid": "f8ce770b_23b45f6c",
+      "revId": "097bf9aabec0d2f2812a968761247cfe18129d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c8529d7_eee71422",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2023-05-10T20:29:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e66acde5_5ce5a37a",
       "revId": "097bf9aabec0d2f2812a968761247cfe18129d68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
