@@ -1588,3 +1588,25 @@ apex {
 			}),
 		}})
 }
+
+func TestApexBundleSimple_customApexName(t *testing.T) {
+	runApexTestCase(t, Bp2buildTestCase{
+		Description:                "apex - custom apex_name",
+		ModuleTypeUnderTest:        "apex",
+		ModuleTypeUnderTestFactory: apex.BundleFactory,
+		Filesystem:                 map[string]string{},
+		Blueprint: `
+apex {
+	name: "com.android.apogee",
+	apex_name: "custom.apex_name",
+	file_contexts: "file_contexts_file",
+}
+`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("apex", "com.android.apogee", AttrNameToString{
+				"apex_name":     `"custom.apex_name"`,
+				"file_contexts": `"file_contexts_file"`,
+				"manifest":      `"apex_manifest.json"`,
+			}),
+		}})
+}
