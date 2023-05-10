@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/dexpreopt"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -32,11 +33,14 @@ func fixtureSetPrebuiltHiddenApiDirProductVariable(prebuiltHiddenApiDir *string)
 	})
 }
 
-var prepareForTestWithDefaultPlatformBootclasspath = android.FixtureAddTextFile("frameworks/base/boot/Android.bp", `
-	platform_bootclasspath {
-		name: "platform-bootclasspath",
-	}
-`)
+var prepareForTestWithDefaultPlatformBootclasspath = android.GroupFixturePreparers(
+	android.FixtureAddTextFile("frameworks/base/boot/Android.bp", `
+		platform_bootclasspath {
+			name: "platform-bootclasspath",
+		}
+	`),
+	dexpreopt.FixtureDisableDexpreoptBootImages(true),
+)
 
 var hiddenApiFixtureFactory = android.GroupFixturePreparers(
 	prepareForJavaTest, PrepareForTestWithHiddenApiBuildComponents)

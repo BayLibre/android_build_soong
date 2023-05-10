@@ -18,14 +18,12 @@ import (
 	"testing"
 
 	"android/soong/android"
-	"android/soong/dexpreopt"
 )
 
 // Contains some simple tests for platform_bootclasspath.
 
 var prepareForTestWithPlatformBootclasspath = android.GroupFixturePreparers(
 	PrepareForTestWithJavaDefaultModules,
-	dexpreopt.PrepareForTestByEnablingDexpreopt,
 )
 
 func TestPlatformBootclasspath(t *testing.T) {
@@ -279,7 +277,8 @@ func TestPlatformBootclasspath_Dist(t *testing.T) {
 
 func TestPlatformBootclasspath_HiddenAPIMonolithicFiles(t *testing.T) {
 	result := android.GroupFixturePreparers(
-		hiddenApiFixtureFactory,
+		prepareForTestWithPlatformBootclasspath,
+		PrepareForTestWithHiddenApiBuildComponents,
 		PrepareForTestWithJavaSdkLibraryFiles,
 		FixtureWithLastReleaseApis("bar"),
 		FixtureConfigureBootJars("platform:foo", "platform:bar"),

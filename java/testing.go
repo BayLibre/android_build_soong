@@ -93,12 +93,14 @@ var PrepareForTestWithJavaDefaultModulesWithoutFakeDex2oatd = android.GroupFixtu
 // Test fixture preparer that will define default java modules, e.g. standard prebuilt modules.
 var PrepareForTestWithJavaDefaultModules = android.GroupFixturePreparers(
 	PrepareForTestWithJavaDefaultModulesWithoutFakeDex2oatd,
-	dexpreopt.PrepareForTestWithFakeDex2oatd,
+	dexpreopt.FixtureDisableDexpreoptBootImages(true),
+	dexpreopt.FixtureDisableDexpreopt(true),
 )
 
 // Provides everything needed by dexpreopt.
 var PrepareForTestWithDexpreopt = android.GroupFixturePreparers(
-	PrepareForTestWithJavaDefaultModules,
+	PrepareForTestWithJavaDefaultModulesWithoutFakeDex2oatd,
+	dexpreopt.PrepareForTestWithFakeDex2oatd,
 	dexpreopt.PrepareForTestByEnablingDexpreopt,
 )
 
