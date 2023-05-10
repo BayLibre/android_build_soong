@@ -94,6 +94,30 @@
       },
       "revId": "8da56a62fd999c31f73e493301b5106bab72cc42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab35631_7b12f813",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4557,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-10T23:29:04Z",
+      "side": 1,
+      "message": "Discussed this with Liz offline. To avoid duplication and for consistency, I have updated the implementation to wrap the generated file in a static library.",
+      "parentUuid": "7ca7fd11_6211825e",
+      "range": {
+        "startLine": 4555,
+        "startChar": 0,
+        "endLine": 4557,
+        "endChar": 41
+      },
+      "revId": "8da56a62fd999c31f73e493301b5106bab72cc42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
