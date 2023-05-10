@@ -46,6 +46,30 @@
       },
       "revId": "8da56a62fd999c31f73e493301b5106bab72cc42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6af2a90_83e1a8da",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4557,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-10T16:50:19Z",
+      "side": 1,
+      "message": "I believe for `aidl`, we had to propagate dependencies as well (see [test](https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/cc_library_conversion_test.go;l\u003d3605;drc\u003dbd421e06d12c05fdf57d84d027ee15dbad09b2fd)), perhaps @vinhdaitran@google.com could weight in on what we needed to do there.",
+      "parentUuid": "28223289_b6928469",
+      "range": {
+        "startLine": 4555,
+        "startChar": 0,
+        "endLine": 4557,
+        "endChar": 41
+      },
+      "revId": "8da56a62fd999c31f73e493301b5106bab72cc42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
