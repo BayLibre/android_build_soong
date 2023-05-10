@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8a163a6_3dd6473a",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-05-10T03:19:36Z",
+      "side": 1,
+      "message": "Have you verified that bazel metrics are uploaded and create records in the table?",
+      "revId": "733b77c2de3ec91125c42e7cb70adb8fdf44a719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
