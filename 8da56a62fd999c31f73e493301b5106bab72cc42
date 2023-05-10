@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83bed5da_dec2df57",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4557,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-10T14:19:07Z",
+      "side": 1,
+      "message": "This isn\u0027t very user friendly -- rather than repeating a_yacc in both places, can we create a `cc_static_library` in a macro, more similar to aidl/hidl/proto and link it as a whole_static_dep?",
+      "range": {
+        "startLine": 4555,
+        "startChar": 0,
+        "endLine": 4557,
+        "endChar": 41
+      },
+      "revId": "8da56a62fd999c31f73e493301b5106bab72cc42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
