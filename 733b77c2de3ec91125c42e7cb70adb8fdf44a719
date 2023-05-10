@@ -34,6 +34,24 @@
       "parentUuid": "e8a163a6_3dd6473a",
       "revId": "733b77c2de3ec91125c42e7cb70adb8fdf44a719",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04ed2b9_c9bcd8a1",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-05-10T14:58:49Z",
+      "side": 1,
+      "message": "My row appears in plx. Will ping offline about it",
+      "parentUuid": "3036bc6f_37656e01",
+      "revId": "733b77c2de3ec91125c42e7cb70adb8fdf44a719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
