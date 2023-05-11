@@ -70,6 +70,30 @@
       },
       "revId": "72e6bd34c65f15791e1062c4e944b2e9f10a4e91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1cce310_dee5a5fc",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-11T15:44:41Z",
+      "side": 1,
+      "message": "So I\u0027m adding it back. Generally, language-agnostic edge can be ignored from apex validation.",
+      "parentUuid": "2ed3ef53_03ff89ef",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 59
+      },
+      "revId": "72e6bd34c65f15791e1062c4e944b2e9f10a4e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
