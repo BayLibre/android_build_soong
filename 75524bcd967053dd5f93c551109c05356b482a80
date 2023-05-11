@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f964492_08b74edc",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 3338,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-11T17:59:14Z",
+      "side": 1,
+      "message": "`aidl_library` is language-agnostic and shouldn\u0027t need to have `apex_available` prop. We can just default it to anyapex or have it ignored by apex deps validation as we already do that here https://cs.android.com/android/platform/build/bazel/+/master:rules/apex/apex_deps_validation.bzl;l\u003d53;drc\u003d5962c4e0a3b75f2a6730800d8ab2a7c190ff1ca1",
+      "parentUuid": "39510c1e_6ed5f62a",
+      "range": {
+        "startLine": 3338,
+        "startChar": 3,
+        "endLine": 3338,
+        "endChar": 73
+      },
+      "revId": "75524bcd967053dd5f93c551109c05356b482a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7b606ea_9185c1e3",
         "filename": "bp2build/cc_library_conversion_test.go",
         "patchSetId": 12
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-08T21:40:00Z",
       "side": 1,
       "message": "can you add a description to each test case?",
+      "range": {
+        "startLine": 3450,
+        "startChar": 1,
+        "endLine": 3450,
+        "endChar": 10
+      },
+      "revId": "75524bcd967053dd5f93c551109c05356b482a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96c9d9b_98de8236",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 3450,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-11T17:59:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7b606ea_9185c1e3",
       "range": {
         "startLine": 3450,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43115d62_3ec68e97",
+        "filename": "cc/compiler.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-11T17:59:14Z",
+      "side": 1,
+      "message": "I think we shouldn\u0027t because it requires creating more modules than it should. `aidl_library` is provided to support strip import prefix and including aidl headers. Those aidl files without strip import prefix or aidl headers can be passed in via `srcs` prop.\n\nLet me know if you have any objection here.",
+      "parentUuid": "ae20adb0_e0f54121",
+      "range": {
+        "startLine": 675,
+        "startChar": 30,
+        "endLine": 675,
+        "endChar": 37
+      },
+      "revId": "75524bcd967053dd5f93c551109c05356b482a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba23318e_699d2bbe",
         "filename": "cc/compiler.go",
         "patchSetId": 12
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-08T21:40:00Z",
       "side": 1,
       "message": "instead of appending aidl srcs here, should we instead allow the libraryinfo to be used in the gen.go code.\n\nThis would prevent the checking if an include dir already exists in the gen.go code and make it easier to make the changes necessary to sandbox if you\u0027re depending on an aidl_library.",
+      "range": {
+        "startLine": 688,
+        "startChar": 2,
+        "endLine": 688,
+        "endChar": 46
+      },
+      "revId": "75524bcd967053dd5f93c551109c05356b482a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3fe6dc_1d57b6ce",
+        "filename": "cc/compiler.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-11T17:59:14Z",
+      "side": 1,
+      "message": "Done https://android-review.git.corp.google.com/c/platform/build/soong/+/2573470/15..17",
+      "parentUuid": "ba23318e_699d2bbe",
       "range": {
         "startLine": 688,
         "startChar": 2,
