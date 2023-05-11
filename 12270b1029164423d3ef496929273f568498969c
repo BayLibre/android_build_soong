@@ -70,6 +70,24 @@
       "parentUuid": "fdaca773_1049f1a7",
       "revId": "12270b1029164423d3ef496929273f568498969c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa000e9_8a3219ca",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-11T16:55:22Z",
+      "side": 1,
+      "message": "Yeah, my thoughts on alternatives here were:\n\n1. Add glob writing back to RunBlueprint\n2. (Feels hacky, but simplest approach), touch the build.ninja file after writing globs\n3. Refactor RunBlueprint to either:\n   a. Occur in two phases (processing and writing). We can thus call RunBlueprint, then write glob, then call WriteNinja.\n   b. Allow a pre-write \"hook\" function, and we add the function to write the glob file\n\nBefore I choose, however, I would like to answer the question raised in b/279674820#comment38",
+      "parentUuid": "1bfbbc65_3f08f1b7",
+      "revId": "12270b1029164423d3ef496929273f568498969c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
