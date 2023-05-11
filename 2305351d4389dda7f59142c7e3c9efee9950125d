@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae25e636_412645b5",
+        "filename": "rust/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-05-11T00:12:41Z",
+      "side": 1,
+      "message": "NewPrebuiltRlib has instead of this:\n```\nmodule.compiler \u003d prebuilt\n\naddSrcSupplier(module, prebuilt)\n\nreturn module, prebuilt\n```",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 22
+      },
+      "revId": "2305351d4389dda7f59142c7e3c9efee9950125d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
