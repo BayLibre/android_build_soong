@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "332bbaca_adb30bf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-05-11T20:49:24Z",
+      "side": 1,
+      "message": "Build failed with:\nhttps://android-build.googleplex.com/builds/pending/P56467417/aosp_cf_riscv64_phone-userdebug/latest/view/logs/build_error.log?legacy\n\n```\nld.lld: error: out/soong/.intermediates/art/runtime/libart/android_riscv64_static_afdo-libart_apex31/obj/.intermediates/art/runtime/libart_mterp.riscv64/gen/mterp_riscv64.o:(.text+0x81c2): relocation R_RISCV_JAL out of range: 4734022 is not in [-1048576, 1048575]; references NterpHotMethod\n\u003e\u003e\u003e referenced by mterp_riscv64.S:509 (out/soong/.intermediates/art/runtime/libart_mterp.riscv64/gen/mterp_riscv64.S:509)\n\u003e\u003e\u003e defined in lto.tmp\n\nld.lld: error: out/soong/.intermediates/art/runtime/libart/android_riscv64_static_afdo-libart_apex31/obj/art/runtime/arch/riscv64/quick_entrypoints_riscv64.o:(.text+0xd36): relocation R_RISCV_JAL out of range: 4656890 is not in [-1048576, 1048575]; references artInvokeObsoleteMethod\n\u003e\u003e\u003e referenced by quick_entrypoints_riscv64.S:279 (art/runtime/arch/riscv64/quick_entrypoints_riscv64.S:279)\n\u003e\u003e\u003e defined in lto.tmp\nclang-17: error: linker command failed with exit code 1 (use -v to see invocation)\n```",
+      "revId": "1fdd28fc70eeef354e9cbf242507e14e08ad3e79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
