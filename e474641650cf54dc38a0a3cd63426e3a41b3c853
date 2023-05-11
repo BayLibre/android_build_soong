@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "86bb4bde_47e9457a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-05-11T19:02:11Z",
+      "side": 1,
+      "message": "Maybe due to the racing exec stratgey?  Changing the command line may invalidate the remote cache, increasing the likelyhood that it runs locally?  I don\u0027t know how sandboxed the local runs are, maybe it copies all the files not just outputs?",
+      "parentUuid": "237448ae_42bdd141",
+      "revId": "e474641650cf54dc38a0a3cd63426e3a41b3c853",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6112edc1_19ce4f57",
         "filename": "java/dex.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2023-05-11T16:55:43Z",
       "side": 1,
       "message": "I wonder why this wasn\u0027t needed for `outDict`? I didn\u0027t see any issues with dict generation when using RBE, but didn\u0027t look too closely.",
+      "range": {
+        "startLine": 164,
+        "startChar": 47,
+        "endLine": 164,
+        "endChar": 56
+      },
+      "revId": "e474641650cf54dc38a0a3cd63426e3a41b3c853",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86feb2f_1954e30f",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-05-11T19:02:11Z",
+      "side": 1,
+      "message": "Can you add `${outDict}` here too?  I can\u0027t see any reason it wouldn\u0027t be needed here.",
+      "parentUuid": "6112edc1_19ce4f57",
       "range": {
         "startLine": 164,
         "startChar": 47,
