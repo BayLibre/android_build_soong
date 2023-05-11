@@ -118,6 +118,30 @@
       },
       "revId": "72e6bd34c65f15791e1062c4e944b2e9f10a4e91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3edb5d88_f365823c",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-11T20:08:11Z",
+      "side": 1,
+      "message": "I filed b/282044660 so we can address this.",
+      "parentUuid": "c195f95a_98602ed0",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 59
+      },
+      "revId": "72e6bd34c65f15791e1062c4e944b2e9f10a4e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
