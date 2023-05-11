@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f49b9e_bd9b361d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-05-11T01:35:06Z",
+      "side": 1,
+      "message": "The one presubmit failure here is pre-existing, and the revert isn\u0027t submitted yet. 😞",
+      "revId": "1c223017351e0a8d3fe490d78f4a8252ee914bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
