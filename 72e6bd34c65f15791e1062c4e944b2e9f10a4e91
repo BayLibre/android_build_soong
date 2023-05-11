@@ -46,6 +46,30 @@
       },
       "revId": "72e6bd34c65f15791e1062c4e944b2e9f10a4e91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed3ef53_03ff89ef",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-11T15:42:15Z",
+      "side": 1,
+      "message": "`apex_available:anyapex` should have been there because it\u0027s used by [apex available validation](https://cs.android.com/android/platform/build/bazel/+/master:rules/apex/apex_available.bzl;l\u003d53-54;drc\u003dab50d3a3a7245ce822befeac81f5b37c4fe32434). So I\u0027m adding it back.\n\nbp2build converter for filegroup to aidl_library also generates the same tag https://cs.android.com/android/platform/build/soong/+/master:android/filegroup.go;l\u003d122;drc\u003d256258587865f6e414e57faf3af256981e1df46a.",
+      "parentUuid": "39db384a_18ea4faa",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 59
+      },
+      "revId": "72e6bd34c65f15791e1062c4e944b2e9f10a4e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
