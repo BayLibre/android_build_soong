@@ -52,6 +52,24 @@
       "parentUuid": "4ef65b46_36d271e9",
       "revId": "12270b1029164423d3ef496929273f568498969c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bfbbc65_3f08f1b7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-05-11T16:46:27Z",
+      "side": 1,
+      "message": "For option 1, the glob output files are already set to `restat\u003d1`, and are only written by `bpglob` or `soong_build` if their output changes, so I\u0027m not sure how an extra checksum file would help.  The glob files are expected to change in this sequence, because the first analysis is producing a different list of globs than the previous build.\n\nYou could also touch the build.ninja file after writing the globs.\n\nThe other option is to put the glob writing back into `RunBlueprint`.",
+      "parentUuid": "fdaca773_1049f1a7",
+      "revId": "12270b1029164423d3ef496929273f568498969c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
