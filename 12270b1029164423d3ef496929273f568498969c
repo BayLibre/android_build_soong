@@ -34,6 +34,24 @@
       "parentUuid": "65728caa_1ad89e3a",
       "revId": "12270b1029164423d3ef496929273f568498969c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdaca773_1049f1a7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-05-11T13:08:18Z",
+      "side": 1,
+      "message": "No worries. It seems like I don\u0027t understand completely what\u0027s happening here, as per b/279674820#comment38 . Let\u0027s figure that out first.\n\nI can imagine two solutions:\n\n1. The principled one: add an extra action that writes a single file with the checksum of all glob files and set `restat\u003d1` on it so that if the checksum file doesn\u0027t change, downstream actions don\u0027t get re-run.\n\n2. The hacky one: `touch` the glob files and backdate them.",
+      "parentUuid": "4ef65b46_36d271e9",
+      "revId": "12270b1029164423d3ef496929273f568498969c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
