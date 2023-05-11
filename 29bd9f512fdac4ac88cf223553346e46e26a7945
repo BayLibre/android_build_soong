@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d64c67_29ac3d92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2023-05-11T19:13:40Z",
+      "side": 1,
+      "message": "The next error is\n\n```\npackages/modules/Bluetooth/tools/pdl/Android.bp:266:1: module \"pdl_rust_generator_tests_le_src\": host tool \"rustfmt\" missing output file\n```\n\nThat sounds like the tool isn\u0027t being run properly.  I looked in out/build.trace.gz but that didn\u0027t seem to contain any pertinent information.",
+      "revId": "29bd9f512fdac4ac88cf223553346e46e26a7945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
