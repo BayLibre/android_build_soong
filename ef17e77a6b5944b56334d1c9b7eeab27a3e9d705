@@ -37,6 +37,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa88332d_fa7cc88d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-11T07:53:37Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "94b02bb5_48b974cc",
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f613772d_c58b6007",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-11T07:53:37Z",
+      "side": 1,
+      "message": "I\u0027m genuinely curious how this change (which is probably as close to a no-op as possible) can cause a memory regression. Are you sure it\u0027s not noise?",
+      "parentUuid": "f3ad0882_92b74b86",
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bccff35e_7f0a8ec9",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -48,6 +84,30 @@
       "writtenOn": "2023-05-10T15:30:22Z",
       "side": 1,
       "message": "can you implement bp2build functionality for this as well?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ecb2bd9_5972eb8f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-11T07:53:37Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "bccff35e_7f0a8ec9",
       "range": {
         "startLine": 104,
         "startChar": 0,
