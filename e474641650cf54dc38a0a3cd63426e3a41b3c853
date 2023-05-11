@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "237448ae_42bdd141",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-05-11T16:55:43Z",
+      "side": 1,
+      "message": "I\u0027m still puzzled why it works with `-printconfiguration` but not with `--pg-conf-output`!",
+      "revId": "e474641650cf54dc38a0a3cd63426e3a41b3c853",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6112edc1_19ce4f57",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-05-11T16:55:43Z",
+      "side": 1,
+      "message": "I wonder why this wasn\u0027t needed for `outDict`? I didn\u0027t see any issues with dict generation when using RBE, but didn\u0027t look too closely.",
+      "range": {
+        "startLine": 164,
+        "startChar": 47,
+        "endLine": 164,
+        "endChar": 56
+      },
+      "revId": "e474641650cf54dc38a0a3cd63426e3a41b3c853",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
