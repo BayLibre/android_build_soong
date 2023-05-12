@@ -88,6 +88,24 @@
       "parentUuid": "1bfbbc65_3f08f1b7",
       "revId": "12270b1029164423d3ef496929273f568498969c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c13b5c80_4d2e6aa2",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-12T05:19:58Z",
+      "side": 1,
+      "message": "See b/279674820#comment42 for an explanation. I went with (2), because this hack already existed -- just somewhere else.",
+      "parentUuid": "2fa000e9_8a3219ca",
+      "revId": "12270b1029164423d3ef496929273f568498969c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
