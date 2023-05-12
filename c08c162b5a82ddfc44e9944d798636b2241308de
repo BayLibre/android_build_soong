@@ -48,6 +48,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2204c515_fa039632",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-12T14:19:02Z",
+      "side": 1,
+      "message": "FYI, another CL on this topic (aosp/2585519) broke bp2build-incremental. I created b/282160575 and I\u0027m working on the fix. Please don\u0027t revert the CL. The change needs to be in U.",
+      "revId": "c08c162b5a82ddfc44e9944d798636b2241308de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10ae50e5_04353208",
