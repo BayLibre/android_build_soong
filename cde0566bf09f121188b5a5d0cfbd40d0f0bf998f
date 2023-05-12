@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1b6699_c3933044",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-05-12T10:59:33Z",
+      "side": 1,
+      "message": "nit: newest?",
+      "range": {
+        "startLine": 545,
+        "startChar": 43,
+        "endLine": 545,
+        "endChar": 49
+      },
+      "revId": "cde0566bf09f121188b5a5d0cfbd40d0f0bf998f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7578528_4be2a146",
+        "filename": "tests/incrementality_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-05-12T10:59:33Z",
+      "side": 1,
+      "message": "nit: move this to `bootstrap_test.sh` ? (it already has a number of incrementality tests, e.g. `test_glob_noop_incremental`)",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "cde0566bf09f121188b5a5d0cfbd40d0f0bf998f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
