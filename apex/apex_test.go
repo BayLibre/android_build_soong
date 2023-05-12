@@ -968,9 +968,13 @@ func TestApexWithStubs(t *testing.T) {
 	// ... and not linking to the non-stub (impl) variant of mylib2
 	ensureNotContains(t, mylibLdFlags, "mylib2/android_arm64_armv8-a_shared/mylib2.so")
 
+	lib2Stubs := ctx.ModuleForTests("mylib2", "android_arm64_armv8-a_shared_current").Rule("genStubSrc")
+	ensureContains(t, lib2Stubs.Args["apiLevel"], "current")
+
 	// Ensure that mylib is linking with the non-stub (impl) of mylib3 (because mylib3 is in the same apex)
 	ensureContains(t, mylibLdFlags, "mylib3/android_arm64_armv8-a_shared_apex10000/mylib3.so")
 	// .. and not linking to the stubs variant of mylib3
+	ensureNotContains(t, mylibLdFlags, "mylib3/android_arm64_armv8-a_shared_current/mylib3.so")
 	ensureNotContains(t, mylibLdFlags, "mylib3/android_arm64_armv8-a_shared_12/mylib3.so")
 
 	// Comment out this test. Now it fails after the optimization of sharing "cflags" in cc/cc.go
@@ -986,9 +990,9 @@ func TestApexWithStubs(t *testing.T) {
 	// ensureNotContains(t, mylib2Cflags, "-include ")
 
 	// Ensure that genstub for platform-provided lib is invoked with --systemapi
-	ensureContains(t, ctx.ModuleForTests("mylib2", "android_arm64_armv8-a_shared_3").Rule("genStubSrc").Args["flags"], "--systemapi")
+	ensureContains(t, lib2Stubs.Args["flags"], "--systemapi")
 	// Ensure that genstub for apex-provided lib is invoked with --apex
-	ensureContains(t, ctx.ModuleForTests("mylib3", "android_arm64_armv8-a_shared_12").Rule("genStubSrc").Args["flags"], "--apex")
+	ensureContains(t, ctx.ModuleForTests("mylib3", "android_arm64_armv8-a_shared_current").Rule("genStubSrc").Args["flags"], "--apex")
 
 	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
 		"lib64/mylib.so",
