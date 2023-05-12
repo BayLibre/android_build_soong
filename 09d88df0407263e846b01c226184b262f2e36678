@@ -24,6 +24,47 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf408ef3_01068095",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-12T10:35:11Z",
+      "side": 1,
+      "message": "Good question! It was very tricky. There are two kinds of boot images: some are produced by bootclasspath_fragments (specificially, \"art\"), and some are produced by platform_bootclasspath (specifically, \"boot\" and \"mainline\").\n\n- For those produced by bootclasspath_fragments:\n  - If `installDirOnDevice` starts with \"apex/\", always install to `javalib/\u003cisa\u003e` of the APEX regardless of the rest of the string.\n  - Otherwise, install to the location specified by `installDirOnDevice`\n- For those produced by platform_bootclasspath:\n  - Always install to `installDirOnHost` regardless of `installDirOnDevice`\n\nBeside, boot images produced by bootclasspath_fragments will not be installable after aosp/2585513, so `installDirOnDevice` for those configs will have no effect.",
+      "parentUuid": "b0eae149_97abac95",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "09d88df0407263e846b01c226184b262f2e36678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3420fed8_c59e02ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-12T10:35:11Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "09d88df0407263e846b01c226184b262f2e36678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea54131d_e12f5738",
@@ -37,6 +78,30 @@
       "writtenOn": "2023-05-12T10:18:39Z",
       "side": 1,
       "message": "So we are relocating the boot image on device? Why is this needed?",
+      "range": {
+        "startLine": 211,
+        "startChar": 29,
+        "endLine": 211,
+        "endChar": 57
+      },
+      "revId": "09d88df0407263e846b01c226184b262f2e36678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc372170_9fd7d8a7",
+        "filename": "java/dexpreopt_config_testing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-12T10:35:11Z",
+      "side": 1,
+      "message": "aosp/2585513 removes the ability to install boot images by bootclasspath_fragments, so this boot image is not installable. After that change, this image is just for testing. Many of our tests assume that the ART boot image is located at this path, so we need to keep it.\n\nThe next CL makes the build system compile ART jars and framework jars together as the \"boot\" boot image.",
+      "parentUuid": "ea54131d_e12f5738",
       "range": {
         "startLine": 211,
         "startChar": 29,
