@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f461879_9104fd11",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-05-12T15:46:38Z",
+      "side": 1,
+      "message": "\"Uh excuse me. Which planet, which century?\"",
+      "parentUuid": "8ef8e858_5eb072e2",
+      "range": {
+        "startLine": 545,
+        "startChar": 43,
+        "endLine": 545,
+        "endChar": 49
+      },
+      "revId": "cde0566bf09f121188b5a5d0cfbd40d0f0bf998f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7578528_4be2a146",
