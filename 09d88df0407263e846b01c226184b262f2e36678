@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0eae149_97abac95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-12T10:18:39Z",
+      "side": 1,
+      "message": "What did they do then?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "09d88df0407263e846b01c226184b262f2e36678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea54131d_e12f5738",
+        "filename": "java/dexpreopt_config_testing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-12T10:18:39Z",
+      "side": 1,
+      "message": "So we are relocating the boot image on device? Why is this needed?",
+      "range": {
+        "startLine": 211,
+        "startChar": 29,
+        "endLine": 211,
+        "endChar": 57
+      },
+      "revId": "09d88df0407263e846b01c226184b262f2e36678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
