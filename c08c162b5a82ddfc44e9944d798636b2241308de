@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24967ce5_402f37fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-12T10:42:48Z",
+      "side": 1,
+      "message": "That\u0027s right.",
+      "parentUuid": "b92ea00a_b1ed9095",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "c08c162b5a82ddfc44e9944d798636b2241308de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10ae50e5_04353208",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-12T10:28:00Z",
       "side": 1,
       "message": "If we merge the two boot images, it would make sense to merge their configs as well. This can be done as a follow-up change, but I think this needs to be done in order to simplify the build system implementation as much as possible (so that it\u0027s back to one image with a single name and intermediate directory for artifacts, meaning that `dex_artjars` is no longer needed).",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "c08c162b5a82ddfc44e9944d798636b2241308de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d60272ca_a8a38194",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-12T10:42:48Z",
+      "side": 1,
+      "message": "Thanks for raising this. We had a long discussion in ART Module team meeting about this. It\u0027ll be very tricky to merge these two configs. Especially, many of our tests assume that there is an \"art\" boot image at \"apex/art_boot_images/javalib\", and they are built on `master-art`, where framework jars don\u0027t exist. Therefore, we need to keep this \"art\" boot image for now, to minimize the amount of changes.\n\nThe changes are targeted for U for a P1 bug, which was raised on 4 May and, unfortunately, the deadline is 12 May (today). To finish the work in time, I chose to go with this approach to minimize the amount of changes.\n\nWe need to clean up the code, but as a follow-up change, not in U.",
+      "parentUuid": "10ae50e5_04353208",
       "range": {
         "startLine": 62,
         "startChar": 2,
