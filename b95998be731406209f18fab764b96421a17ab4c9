@@ -16,6 +16,24 @@
       "message": "Hi Jiakai,\n\nObserved this change (patch set 2) is causing pinner regression\n\nhttps://screenshot.googleplex.com/6gdnTq58JJWquoA\n\nPlease fix this regression before merging this change",
       "revId": "b95998be731406209f18fab764b96421a17ab4c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9144fd3_438d8c2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-12T09:03:17Z",
+      "side": 1,
+      "message": "Thanks for reaching out. The file size change is expected. After this change, some file sizes are increased and some are decreased, and the total size is decreased. (See https://screenshot.googleplex.com/m9Ea7Ld9aUx49Sm)",
+      "parentUuid": "a04b7641_81ba9aab",
+      "revId": "b95998be731406209f18fab764b96421a17ab4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
