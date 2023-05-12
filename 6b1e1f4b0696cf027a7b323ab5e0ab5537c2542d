@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec4c1d8_66777dc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2023-05-12T22:13:20Z",
+      "side": 1,
+      "message": "Soong appears happy but when `rustfmt` is being run in `sbox` it can\u0027t find the `libLLVM-15-rust-dev.so` file.\n\nThe fact that it knows the full name leads me to believe that the rustPrebuiltToolSharedLibrary function correctly found the file but it\u0027s not being wired up correctly during execution.",
+      "revId": "6b1e1f4b0696cf027a7b323ab5e0ab5537c2542d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
