@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b92ea00a_b1ed9095",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-12T10:28:00Z",
+      "side": 1,
+      "message": "This ensures the boot image is used on device at first boot, right?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "c08c162b5a82ddfc44e9944d798636b2241308de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ae50e5_04353208",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-12T10:28:00Z",
+      "side": 1,
+      "message": "If we merge the two boot images, it would make sense to merge their configs as well. This can be done as a follow-up change, but I think this needs to be done in order to simplify the build system implementation as much as possible (so that it\u0027s back to one image with a single name and intermediate directory for artifacts, meaning that `dex_artjars` is no longer needed).",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "c08c162b5a82ddfc44e9944d798636b2241308de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
