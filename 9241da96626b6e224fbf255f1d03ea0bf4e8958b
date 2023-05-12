@@ -46,6 +46,30 @@
       },
       "revId": "9241da96626b6e224fbf255f1d03ea0bf4e8958b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3edca79_5640f7f5",
+        "filename": "apex/platform_bootclasspath_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-12T10:55:43Z",
+      "side": 0,
+      "message": "Ah, I suspected so but just wanted to confirm. Thanks.",
+      "parentUuid": "e24dde69_1cc32597",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 0
+      },
+      "revId": "9241da96626b6e224fbf255f1d03ea0bf4e8958b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
