@@ -22,6 +22,30 @@
       },
       "revId": "9241da96626b6e224fbf255f1d03ea0bf4e8958b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e24dde69_1cc32597",
+        "filename": "apex/platform_bootclasspath_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-12T10:50:56Z",
+      "side": 0,
+      "message": "I disabled dexpreopt for `java.PrepareForTestWithJavaDefaultModules`. Since this test is not about dexpreopt, it makes sense to me to use `java.PrepareForTestWithJavaDefaultModules` for this test, which excludes dex2oatd from dependencies as a result.",
+      "parentUuid": "37e7b18c_1193d46a",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 0
+      },
+      "revId": "9241da96626b6e224fbf255f1d03ea0bf4e8958b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
