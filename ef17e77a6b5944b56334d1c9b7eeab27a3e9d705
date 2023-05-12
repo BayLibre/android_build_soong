@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21255539_484917b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-12T21:52:57Z",
+      "side": 1,
+      "message": "This is likely peripheral to your immediate use case, but would you know what the value of `apex_name` should be for test apexes? \n\nIn general, should this property track the `name` property of `apex_manifest.json` of apexes?",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94b02bb5_48b974cc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
