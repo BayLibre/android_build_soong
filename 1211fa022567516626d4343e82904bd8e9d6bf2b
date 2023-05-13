@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e4fe2b_319ee5f9",
+        "filename": "device_config/device_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-05-13T06:24:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e131731c_c491a36e",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 63
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fed60d07_4b4d6c28",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-09T15:30:22Z",
       "side": 1,
       "message": "left this as a comment in the graph you drew, but we might need to make separate modules for the java as well to propagate the intermediate path for installation.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1edc286_ed86f921",
+        "filename": "device_config/device_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-05-13T06:24:16Z",
+      "side": 1,
+      "message": "Will do in followup cl.",
+      "parentUuid": "fed60d07_4b4d6c28",
       "range": {
         "startLine": 97,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1523c07_d2b9070d",
+        "filename": "device_config/device_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-05-13T06:24:16Z",
+      "side": 1,
+      "message": "I\u0027ll make a separate explicit module.",
+      "parentUuid": "b9ba6599_5cc3b5d8",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 13
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85407123_1c12e58a",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-09T15:30:22Z",
       "side": 1,
       "message": "pathdeps mutator is a post-deps mutator, if we move this to `GenerateAndroidBuildActions`, should be no issue",
+      "range": {
+        "startLine": 68,
+        "startChar": 21,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29887b4b_969ccc4c",
+        "filename": "device_config/device_config_override.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-05-13T06:24:16Z",
+      "side": 1,
+      "message": "If the provider is set in GenerateBuildActions, I don\u0027t think we need a mutator for this.",
+      "parentUuid": "85407123_1c12e58a",
       "range": {
         "startLine": 68,
         "startChar": 21,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12748240_9d94c231",
+        "filename": "device_config/device_config_override_set.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-05-13T06:24:16Z",
+      "side": 1,
+      "message": "updated CL changes this to module names.",
+      "parentUuid": "cc635236_0e2517d4",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 57,
+        "endChar": 45
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e1dc271_b8a59493",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-05-09T15:30:22Z",
       "side": 1,
       "message": "should these set restat?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 4
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec7fa37_864dc0be",
+        "filename": "device_config/init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-05-13T06:24:16Z",
+      "side": 1,
+      "message": "the first (cache one) should. added a TODO.  The code generation ones it\u0027s not necessary if the cache one does restat.",
+      "parentUuid": "4e1dc271_b8a59493",
       "range": {
         "startLine": 26,
         "startChar": 0,
