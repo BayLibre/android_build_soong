@@ -191,6 +191,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1089bb1f_31991f70",
+        "filename": "device_config/device_config_override.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-05-13T19:11:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "29887b4b_969ccc4c",
+      "range": {
+        "startLine": 68,
+        "startChar": 21,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "1211fa022567516626d4343e82904bd8e9d6bf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cc635236_0e2517d4",
         "filename": "device_config/device_config_override_set.go",
         "patchSetId": 1
