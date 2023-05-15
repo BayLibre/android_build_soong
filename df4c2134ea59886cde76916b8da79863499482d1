@@ -22,6 +22,30 @@
       },
       "revId": "df4c2134ea59886cde76916b8da79863499482d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01e82c6_a7d9599f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-15T21:28:21Z",
+      "side": 1,
+      "message": "I believe so. The template in yy might contain includes of header files in the current directory. e.g. system/tools/aidl/aidl_language_y.yy includes parser.h https://cs.android.com/android/_/android/platform/system/tools/aidl/+/7e74b1e8eabdbad33366a6bdcef7818f3ae58274:aidl_language_y.yy;l\u003d19;bpv\u003d1;bpt\u003d0;drc\u003d207c98ab02c7477d12953e946585b8df2597db60",
+      "parentUuid": "81412bc1_68a621cf",
+      "range": {
+        "startLine": 897,
+        "startChar": 1,
+        "endLine": 897,
+        "endChar": 54
+      },
+      "revId": "df4c2134ea59886cde76916b8da79863499482d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
