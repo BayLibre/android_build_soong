@@ -16,6 +16,29 @@
       "message": "Liz, I\u0027m not sure if you\u0027re the best person to review this but I\u0027m sure you will know who is.",
       "revId": "24297765558e6e27230c0511a3733ce307b558cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d775ba76_aa8dacb3",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-15T11:16:35Z",
+      "side": 1,
+      "message": "I suggest to use a regex to match everything with the jdk.internal prefix (like aosp/2162958). When we preload a new ART module on the source tree of a previous dessert release, the build will fail because the source tree won\u0027t have this allowlist update. We encountered this in the past (b/238426831) when preloading T ART on S and we ended up asking partners to take patches. It\u0027s too late to say this for T and U as we\u0027ll definitely run into the same problem when preloading V ART on T and U next year, but it\u0027s still good to use prefix matching so that we won\u0027t run into the same problem starting from V.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "24297765558e6e27230c0511a3733ce307b558cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
