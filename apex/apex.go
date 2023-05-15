@@ -404,7 +404,7 @@ type apexBundle struct {
 	///////////////////////////////////////////////////////////////////////////////////////////
 	// Inputs
 
-	// Keys for apex_paylaod.img
+	// Keys for apex_payload.img
 	publicKeyFile  android.Path
 	privateKeyFile android.Path
 
@@ -2605,9 +2605,16 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool { return a.depVisitor(&vctx, ctx, child, parent) })
 	vctx.normalizeFileInfo(ctx)
-	if a.privateKeyFile == nil {
-		ctx.PropertyErrorf("key", "private_key for %q could not be found", String(a.overridableProperties.Key))
-		return
+	if a.privateKeyFile == nil || a.publicKeyFile == nil {
+		if ctx.Config().AllowMissingDependencies() {
+			ctx.AddMissingDependencies([]string{String(a.overridableProperties.Key)})
+			// Create placeholder paths for later stages that expect paths.
+			a.privateKeyFile = android.PathForTesting("")
+			a.publicKeyFile = android.PathForTesting("")
+		} else {
+			ctx.PropertyErrorf("key", "private_key for %q could not be found", String(a.overridableProperties.Key))
+			return
+		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////
