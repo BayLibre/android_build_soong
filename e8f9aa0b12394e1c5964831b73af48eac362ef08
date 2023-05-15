@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dfd834f_03f8620c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-15T10:04:55Z",
+      "side": 1,
+      "message": "This should be `art/tools/buildbot-build.sh` for clarity.",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "e8f9aa0b12394e1c5964831b73af48eac362ef08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
