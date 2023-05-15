@@ -63,6 +63,30 @@
       },
       "revId": "24297765558e6e27230c0511a3733ce307b558cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc03f14_4746d0c1",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-15T11:51:46Z",
+      "side": 1,
+      "message": "Paul, what\u0027s your opinion?",
+      "parentUuid": "97b35eab_e518f1c4",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "24297765558e6e27230c0511a3733ce307b558cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
