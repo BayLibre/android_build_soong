@@ -39,6 +39,30 @@
       },
       "revId": "24297765558e6e27230c0511a3733ce307b558cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b35eab_e518f1c4",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2023-05-15T11:37:06Z",
+      "side": 1,
+      "message": "Can we just use\n```\njava\\..*\njdk\\..*\n```\ninstead of current list?",
+      "parentUuid": "d775ba76_aa8dacb3",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "24297765558e6e27230c0511a3733ce307b558cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
