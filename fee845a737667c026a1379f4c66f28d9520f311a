@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8027ac19_d97ad0e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-15T21:40:54Z",
+      "side": 1,
+      "message": "Assuming tests will be added and java_library/androidmk changes will be in a future CL",
+      "revId": "fee845a737667c026a1379f4c66f28d9520f311a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e83cd4e7_1ebaf9e1",
+        "filename": "device_config/device_config_definitions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-15T21:40:54Z",
+      "side": 1,
+      "message": "optional: could reuse [`android.JoinWithPrefixAndSeparator`](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/util.go;l\u003d53;drc\u003dcc4da765113299fa11dcb1e651ec4ae33e6f8f9b)",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "fee845a737667c026a1379f4c66f28d9520f311a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b6b0215_4ab33413",
+        "filename": "device_config/device_config_definitions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-15T21:40:54Z",
+      "side": 1,
+      "message": "optional: could use `VisitDirectDepsWithTag` here instead",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 20
+      },
+      "revId": "fee845a737667c026a1379f4c66f28d9520f311a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1fcbfd_b413b2b8",
+        "filename": "device_config/device_config_definitions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-15T21:40:54Z",
+      "side": 1,
+      "message": "Add implicit inputs of all the value files as well so builds are incrementally correct.",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "fee845a737667c026a1379f4c66f28d9520f311a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
