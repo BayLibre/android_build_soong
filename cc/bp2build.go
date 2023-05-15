@@ -1255,6 +1255,11 @@ func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversion
 
 	la.additionalLinkerInputs.SetSelectValue(axis, config, additionalLinkerInputs)
 	la.linkopts.SetSelectValue(axis, config, linkerFlags)
+	if axis == bazel.OsConfigurationAxis && (config == bazel.OsDarwin || config == bazel.OsLinux || config == bazel.OsWindows) {
+		lo := la.linkopts.SelectValue(axis, config)
+		lo = append(lo, props.Host_ldlibs...)
+		la.linkopts.SetSelectValue(axis, config, lo)
+	}
 
 	if axisFeatures != nil {
 		la.features.SetSelectValue(axis, config, axisFeatures)
