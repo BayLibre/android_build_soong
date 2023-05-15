@@ -161,7 +161,7 @@ var r8, r8RE = pctx.MultiCommandRemoteStaticRules("r8",
 		"$r8Template": &remoteexec.REParams{
 			Labels:          map[string]string{"type": "compile", "compiler": "r8"},
 			Inputs:          []string{"$implicits", "${config.R8Jar}"},
-			OutputFiles:     []string{"${outUsage}", "${outConfig}", "${outDict}"},
+			OutputFiles:     []string{"${outUsage}"},
 			ExecStrategy:    "${config.RER8ExecStrategy}",
 			ToolchainInputs: []string{"${config.JavaCmd}"},
 			Platform:        map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
@@ -399,16 +399,13 @@ func (d *dexer) compileDex(ctx android.ModuleContext, dexParams *compileDexParam
 			args["implicits"] = strings.Join(r8Deps.Strings(), ",")
 		}
 		ctx.Build(pctx, android.BuildParams{
-			Rule:        rule,
-			Description: "r8",
-			Output:      javalibJar,
-			ImplicitOutputs: android.WritablePaths{
-				proguardDictionary,
-				proguardUsageZip,
-				proguardConfiguration},
-			Input:     dexParams.classesJar,
-			Implicits: r8Deps,
-			Args:      args,
+			Rule:            rule,
+			Description:     "r8",
+			Output:          javalibJar,
+			ImplicitOutputs: android.WritablePaths{proguardDictionary, proguardUsageZip},
+			Input:           dexParams.classesJar,
+			Implicits:       r8Deps,
+			Args:            args,
 		})
 	} else {
 		d8Flags, d8Deps := d8Flags(dexParams.flags)
