@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e82bbd_1d403551",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-15T21:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5d97645_6087be0e",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "6b6843282e60a8548c1247e3d83cfaf9439fbd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38f40529_90bd3331",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-15T15:44:43Z",
       "side": 1,
       "message": "should we also be checking for the package_bar/x include?",
+      "range": {
+        "startLine": 4456,
+        "startChar": 0,
+        "endLine": 4456,
+        "endChar": 38
+      },
+      "revId": "6b6843282e60a8548c1247e3d83cfaf9439fbd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0172a64f_1a5da345",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 4456,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-15T21:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f40529_90bd3331",
       "range": {
         "startLine": 4456,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42808466_f460af4e",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 4463,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-15T21:09:37Z",
+      "side": 1,
+      "message": "Ahh thanks for calling this out. I changed it to \"aidl-generated header\"",
+      "parentUuid": "052e0f8b_afb9dc70",
+      "range": {
+        "startLine": 4463,
+        "startChar": 37,
+        "endLine": 4463,
+        "endChar": 40
+      },
+      "revId": "6b6843282e60a8548c1247e3d83cfaf9439fbd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71d2b21d_daad1c92",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-05-15T15:44:43Z",
       "side": 1,
       "message": "This can likely be deferred until sandboxing of the inputs, but at that point we won\u0027t want to share a rule between sandboxed/not.",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 58
+      },
+      "revId": "6b6843282e60a8548c1247e3d83cfaf9439fbd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14dc6d62_e09d660c",
+        "filename": "cc/gen.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-15T21:09:37Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "71d2b21d_daad1c92",
       "range": {
         "startLine": 360,
         "startChar": 0,
