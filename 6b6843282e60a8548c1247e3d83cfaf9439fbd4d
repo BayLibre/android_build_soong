@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a60e135_26cd953f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-15T15:44:43Z",
+      "side": 1,
+      "message": "looks good modulo comments",
+      "revId": "6b6843282e60a8548c1247e3d83cfaf9439fbd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d97645_6087be0e",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-15T15:44:43Z",
+      "side": 1,
+      "message": "can we add this just for the tests where it is necessary?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "6b6843282e60a8548c1247e3d83cfaf9439fbd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f40529_90bd3331",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 4456,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-15T15:44:43Z",
+      "side": 1,
+      "message": "should we also be checking for the package_bar/x include?",
+      "range": {
+        "startLine": 4456,
+        "startChar": 0,
+        "endLine": 4456,
+        "endChar": 38
+      },
+      "revId": "6b6843282e60a8548c1247e3d83cfaf9439fbd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "052e0f8b_afb9dc70",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 4463,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-15T15:44:43Z",
+      "side": 1,
+      "message": "these \"aaa\" are not very helpful",
+      "range": {
+        "startLine": 4463,
+        "startChar": 37,
+        "endLine": 4463,
+        "endChar": 40
+      },
+      "revId": "6b6843282e60a8548c1247e3d83cfaf9439fbd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71d2b21d_daad1c92",
+        "filename": "cc/gen.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-15T15:44:43Z",
+      "side": 1,
+      "message": "This can likely be deferred until sandboxing of the inputs, but at that point we won\u0027t want to share a rule between sandboxed/not.",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 58
+      },
+      "revId": "6b6843282e60a8548c1247e3d83cfaf9439fbd4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

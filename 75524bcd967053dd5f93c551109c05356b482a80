@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23065ebc_a4a399ad",
+        "filename": "cc/compiler.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-15T15:44:43Z",
+      "side": 1,
+      "message": "`aidl_library` + cc rule will be how it looks in Bazel, so I don\u0027t think it\u0027s an issue to introduce that in Soong as well, but I don\u0027t feel strongly about this.\n\nInstead perhaps the error should be if `aidl_library` and `aidl.include_dirs` are set as they serve similar purposes but the former enables sandboxing while the latter prevents it.\n\nLooking at the logic below for handling aidl library vs .aidl files. Without disallowing `aidl.include_dirs` with `aidl_library`, there could be aidl include dirs that would be incompatible with `aidl_library` srcs being sandboxed.",
+      "parentUuid": "43115d62_3ec68e97",
+      "range": {
+        "startLine": 675,
+        "startChar": 30,
+        "endLine": 675,
+        "endChar": 37
+      },
+      "revId": "75524bcd967053dd5f93c551109c05356b482a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba23318e_699d2bbe",
         "filename": "cc/compiler.go",
         "patchSetId": 12
