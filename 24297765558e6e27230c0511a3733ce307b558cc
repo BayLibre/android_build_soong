@@ -111,6 +111,30 @@
       },
       "revId": "24297765558e6e27230c0511a3733ce307b558cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6674d138_24acdc3e",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-05-15T12:52:47Z",
+      "side": 1,
+      "message": "If this is broken by train updates then that is an indication to me that this is not suitable for purpose and should either:\n1. Be modularized somehow.\n2. Discarded and replaced with something else if it provides some benefit.\n3. Just discarded if it provides no benefit.",
+      "parentUuid": "384c2b0c_4817caa2",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "24297765558e6e27230c0511a3733ce307b558cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
