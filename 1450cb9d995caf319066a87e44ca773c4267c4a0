@@ -22,6 +22,30 @@
       },
       "revId": "1450cb9d995caf319066a87e44ca773c4267c4a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4df501a0_907fd3c6",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4557,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-15T22:07:36Z",
+      "side": 1,
+      "message": "Thanks Liz, I have updated the CL to ignore those OSes",
+      "parentUuid": "3d39873a_0b148e4e",
+      "range": {
+        "startLine": 4557,
+        "startChar": 17,
+        "endLine": 4557,
+        "endChar": 29
+      },
+      "revId": "1450cb9d995caf319066a87e44ca773c4267c4a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
