@@ -1475,6 +1475,9 @@ type ModuleOutPathContext interface {
 }
 
 func pathForModuleOut(ctx ModuleOutPathContext) OutputPath {
+	if i, ok := ctx.(interface{ ModuleSoongConfigHash() string }); ok {
+		return PathForOutput(ctx, ".intermediates", ctx.ModuleDir(), ctx.ModuleName(), ctx.ModuleSubDir(), i.ModuleSoongConfigHash())
+	}
 	return PathForOutput(ctx, ".intermediates", ctx.ModuleDir(), ctx.ModuleName(), ctx.ModuleSubDir())
 }
 
