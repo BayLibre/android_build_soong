@@ -135,6 +135,30 @@
       },
       "revId": "24297765558e6e27230c0511a3733ce307b558cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55bca474_b18aaa4a",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-15T13:23:09Z",
+      "side": 1,
+      "message": "Agreed. Let\u0027s continue the discussion in b/282678719.",
+      "parentUuid": "6674d138_24acdc3e",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "24297765558e6e27230c0511a3733ce307b558cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
