@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d39873a_0b148e4e",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4557,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-15T21:44:55Z",
+      "side": 1,
+      "message": "host_ldlibs aren\u0027t used on android, linux_bionic, or musl: https://cs.android.com/android/platform/superproject/+/refs/heads/master:build/soong/cc/linker.go;l\u003d489;drc\u003d7346c436e5a11ce08f6a80dcfeb8ef941ca30176",
+      "range": {
+        "startLine": 4557,
+        "startChar": 17,
+        "endLine": 4557,
+        "endChar": 29
+      },
+      "revId": "1450cb9d995caf319066a87e44ca773c4267c4a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
