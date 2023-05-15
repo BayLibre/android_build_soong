@@ -15,6 +15,8 @@
 package android
 
 import (
+	"crypto/md5"
+	"encoding/hex"
 	"fmt"
 	"net/url"
 	"os"
@@ -710,6 +712,31 @@ func SortedUniqueNamedPaths(l NamedPaths) NamedPaths {
 	return l[:k+1]
 }
 
+// soongConfigTrace holds all references to VendorVars. Uses []string for blueprint:"mutated"
+type soongConfigTrace struct {
+	Bools   []string
+	Strings []string
+	IsSets  []string
+}
+
+// Returns hash of serialized trace records (empty string if there's no trace recorded)
+func (c *soongConfigTrace) hash() string {
+	if len(c.Bools) == 0 && len(c.Strings) == 0 && len(c.IsSets) == 0 {
+		return ""
+	}
+
+	serializedBools := strings.Join(c.Bools, "|")
+	serializedStrings := strings.Join(c.Strings, "|")
+	serializedIsSets := strings.Join(c.IsSets, "|")
+	all := []string{serializedBools, serializedStrings, serializedIsSets}
+
+	serializedValues := strings.Join(all, ";")
+
+	// Use MD5 for speed. We don't care collision or preimage attack
+	hash := md5.Sum([]byte(serializedValues))
+	return hex.EncodeToString(hash[:])
+}
+
 type nameProperties struct {
 	// The name of the module.  Must be unique across all modules.
 	Name *string
@@ -953,6 +980,10 @@ type commonProperties struct {
 
 	// Bazel conversion status
 	BazelConversionStatus BazelConversionStatus `blueprint:"mutated"`
+
+	// SoongConfigTrace records accesses to VendorVars (soong_config)
+	SoongConfigTrace     soongConfigTrace `blueprint:"mutated"`
+	SoongConfigTraceHash string           `blueprint:"mutated"`
 }
 
 // CommonAttributes represents the common Bazel attributes from which properties
@@ -3141,6 +3172,10 @@ func (m *moduleContext) ModuleSubDir() string {
 	return m.bp.ModuleSubDir()
 }
 
+func (m *moduleContext) ModuleSoongConfigHash() string {
+	return m.module.base().commonProperties.SoongConfigTraceHash
+}
+
 func (b *baseModuleContext) Target() Target {
 	return b.target
 }
@@ -3725,6 +3760,7 @@ func (m *moduleContext) TargetRequiredModuleNames() []string {
 
 func init() {
 	RegisterSingletonType("buildtarget", BuildTargetSingleton)
+	FinalDepsMutators(registerSoongConfigTraceMutator)
 }
 
 func BuildTargetSingleton() Singleton {
@@ -3905,4 +3941,25 @@ func (d *installPathsDepSet) ToList() InstallPaths {
 		return nil
 	}
 	return d.depSet.ToList().(InstallPaths)
+}
+
+func registerSoongConfigTraceMutator(ctx RegisterMutatorsContext) {
+	ctx.BottomUp("soongconfigtrace", soongConfigTraceMutator).Parallel()
+}
+
+// soongConfigTraceMutator propagates recorded soong_config trace to children. Also it normalizes
+// SoongConfigTrace to make it consistent.
+func soongConfigTraceMutator(ctx BottomUpMutatorContext) {
+	trace := &ctx.Module().base().commonProperties.SoongConfigTrace
+	ctx.VisitDirectDeps(func(m Module) {
+		childTrace := &m.base().commonProperties.SoongConfigTrace
+		trace.Bools = append(trace.Bools, childTrace.Bools...)
+		trace.Strings = append(trace.Strings, childTrace.Strings...)
+		trace.IsSets = append(trace.IsSets, childTrace.IsSets...)
+	})
+	trace.Bools = SortedUniqueStrings(trace.Bools)
+	trace.Strings = SortedUniqueStrings(trace.Strings)
+	trace.IsSets = SortedUniqueStrings(trace.IsSets)
+
+	ctx.Module().base().commonProperties.SoongConfigTraceHash = trace.hash()
 }
