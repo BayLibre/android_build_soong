@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f290304_17803300",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2614,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-15T10:29:44Z",
+      "side": 1,
+      "message": "You can add an `android.ErrorRule` that outputs this non-existent path. This will produce a better error message when the build system unexpectedly uses the non-existent path. Example:\n\nhttp://cs/android-internal/build/soong/apex/apex.go;l\u003d2688-2694;rcl\u003ddf072b7c66092ec9c974bf9853e8e6b783046e06",
+      "range": {
+        "startLine": 2613,
+        "startChar": 0,
+        "endLine": 2614,
+        "endChar": 65
+      },
+      "revId": "1b90d4c17990a806db70f6f71bea9eb1c46c4801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
