@@ -87,6 +87,30 @@
       },
       "revId": "24297765558e6e27230c0511a3733ce307b558cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "384c2b0c_4817caa2",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-05-15T12:51:18Z",
+      "side": 1,
+      "message": "The downside of using regular expressions like that is that it gives you very limited protection against accidentally (or intentionally) including packages that should not be there.\n\nThe question is what are the risks of doing that and I don\u0027t know as I don\u0027t know why this file was added in the first place.",
+      "parentUuid": "7cc03f14_4746d0c1",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "24297765558e6e27230c0511a3733ce307b558cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
