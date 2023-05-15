@@ -565,6 +565,11 @@ modules (`cc_defaults`, `java_defaults`, etc.), which can then be referenced
 by all of the vendor's other modules using the normal namespace and visibility
 rules.
 
+Modules affected by soong config variables (soong config modules and modules
+depending on such modules) will use hashed subdir for their Soong intermediates
+outputs. `m soong_config_trace` builds information about hashes to
+`$OUT_DIR/soong/soong_config_trace.json`.
+
 ## Build logic
 
 The build logic is written in Go using the
