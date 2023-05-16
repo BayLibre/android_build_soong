@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b0e1d3_c1ec6502",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-05-16T14:40:09Z",
+      "side": 1,
+      "message": "Ah newly configured presubmits won\u0027t run on existing changes.. But I checked oriole-userdebug target and I don\u0027t see any significant increase in fallbacks. This change should be good to go.",
+      "revId": "4026558dc7711d2fcc6be5cf568d867dbc1c66fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
