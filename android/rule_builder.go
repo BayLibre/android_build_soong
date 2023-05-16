@@ -1218,6 +1218,17 @@ func (c *RuleBuilderCommand) SymlinkOutputs(paths WritablePaths) *RuleBuilderCom
 // the command line, and causes RuleBuilder.Build file to set the depfile flag for ninja.  If multiple depfiles
 // are added to commands in a single RuleBuilder then RuleBuilder.Build will add an extra command to merge the
 // depfiles together.
+func (c *RuleBuilderCommand) ImplicitDepFiles(paths WritablePaths) *RuleBuilderCommand {
+	for _, path := range paths {
+		c.ImplicitDepFile(path)
+	}
+	return c
+}
+
+// ImplicitDepFile adds the specified depfile path to the paths returned by RuleBuilder.DepFiles without modifying
+// the command line, and causes RuleBuilder.Build file to set the depfile flag for ninja.  If multiple depfiles
+// are added to commands in a single RuleBuilder then RuleBuilder.Build will add an extra command to merge the
+// depfiles together.
 func (c *RuleBuilderCommand) ImplicitDepFile(path WritablePath) *RuleBuilderCommand {
 	c.depFiles = append(c.depFiles, path)
 	return c
