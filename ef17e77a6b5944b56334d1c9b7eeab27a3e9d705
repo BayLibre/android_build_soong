@@ -94,6 +94,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4594bb8a_200d5ddc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2023-05-16T14:52:03Z",
+      "side": 1,
+      "message": "Added unit tests.\nI\u0027m not aware of any other work required to ensure that paths don\u0027t collide.",
+      "parentUuid": "aa88332d_fa7cc88d",
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bccff35e_7f0a8ec9",
@@ -131,6 +149,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "bccff35e_7f0a8ec9",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbac5d83_8bb752c0",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2023-05-16T14:52:03Z",
+      "side": 1,
+      "message": "I don\u0027t know much about bp2build, what is required there for this functionality?",
+      "parentUuid": "9ecb2bd9_5972eb8f",
       "range": {
         "startLine": 104,
         "startChar": 0,
