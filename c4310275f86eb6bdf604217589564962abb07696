@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2e99f9_46d5ca87",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-16T21:18:08Z",
+      "side": 1,
+      "message": "this will override the previous value right?",
+      "range": {
+        "startLine": 1259,
+        "startChar": 14,
+        "endLine": 1259,
+        "endChar": 28
+      },
+      "revId": "c4310275f86eb6bdf604217589564962abb07696",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
