@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94187976_20a715f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-05-16T17:20:55Z",
+      "side": 1,
+      "message": "I think the `apex_name` for test APEXes should be the same as the `name` unless they have specific reason to change it.",
+      "parentUuid": "ca6a1057_0faf90f6",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94b02bb5_48b974cc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
