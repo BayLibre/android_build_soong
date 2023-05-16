@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e17d0c_d99b931b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-16T22:34:03Z",
+      "side": 1,
+      "message": "nit: it might be simpler to just append to linkerFlags as it does at line 1253 and let line 1257 to set the updated values. Also mind editing the test to cover this scenario?",
+      "range": {
+        "startLine": 1259,
+        "startChar": 2,
+        "endLine": 1259,
+        "endChar": 45
+      },
+      "revId": "a775d19989b46ab4fa75da105b6af477c7820239",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
