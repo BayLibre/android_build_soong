@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49be522_02deeb2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-16T16:44:27Z",
+      "side": 1,
+      "message": "nit: Can you add a short description about the behavior and why it has been implemented as such.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "3c5571fda271341d8bf0403e32eba4fb9ab8b837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
