@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea957424_1fd3c462",
+        "filename": "python/test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-16T22:25:17Z",
+      "side": 1,
+      "message": "should this be called data_device_bitness_both? or work similar to compile_multilib?\n\nhidl_test_java has target_required - does it need to be specified in both places? if it is specified in data_device_bitness_both but not in target_required, would that be an error?",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "bcdd3dcaf3489f36079ba438000fa446d337bc14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
