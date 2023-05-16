@@ -52,6 +52,24 @@
       "parentUuid": "10ca06d6_46b5c8d6",
       "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c42dbb_fab9d637",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-16T08:49:30Z",
+      "side": 1,
+      "message": "Just using arch identifier (or some other axis) isn\u0027t sufficient to map to all product variables that can influence the build, which currently is represented only by the $TARGET_PRODUCT and nothing lower-level than that.",
+      "parentUuid": "7c01a8da_de29a4f4",
+      "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
