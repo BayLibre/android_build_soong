@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ca06d6_46b5c8d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-16T07:22:15Z",
+      "side": 1,
+      "message": "Cole added this code in https://android-review.git.corp.google.com/c/platform/build/soong/+/2316418 for multi-product builds with Bazel. i.e. the idea that one can build for multiple products in a single bazel invocation. We initially planned for building multi-arch mainline modules, but the idea can be extended to more use cases, especially with RBE supporting wide graphs. Details: b/249685973\n\nPlease do not submit this unless you have a clear alternative plan on helping Bazel achieve the above, along with breaking down modules into product dependent and independent portions for the existing build system (without Bazel), which IMO is non-trivial given the complexity of the migration.",
+      "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
