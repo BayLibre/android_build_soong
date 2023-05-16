@@ -39,7 +39,6 @@ func TestMain(m *testing.M) {
 
 var prepareForCcTest = android.GroupFixturePreparers(
 	PrepareForTestWithCcIncludeVndk,
-	aidl_library.PrepareForTestWithAidlLibrary,
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 		variables.DeviceVndkVersion = StringPtr("current")
 		variables.ProductVndkVersion = StringPtr("current")
@@ -4452,7 +4451,7 @@ func TestAidlLibraryWithHeader(t *testing.T) {
 	).RunTest(t).TestContext
 
 	libfoo := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_static")
-	manifest := android.RuleBuilderSboxProtoForTests(t, libfoo.Output("aidl.sbox.textproto"))
+	manifest := android.RuleBuilderSboxProtoForTests(t, libfoo.Output("aidl_library.sbox.textproto"))
 	aidlCommand := manifest.Commands[0].GetCommand()
 
 	expectedAidlFlags := "-Ipackage_foo/a -Ipackage_bar/x"
@@ -4462,14 +4461,14 @@ func TestAidlLibraryWithHeader(t *testing.T) {
 
 	outputs := strings.Join(libfoo.AllOutputs(), " ")
 
-	android.AssertStringDoesContain(t, "aidl-generated header", outputs, "gen/aidl/b/BpFoo.h")
-	android.AssertStringDoesContain(t, "aidl-generated header", outputs, "gen/aidl/b/BnFoo.h")
-	android.AssertStringDoesContain(t, "aidl-generated header", outputs, "gen/aidl/b/Foo.h")
+	android.AssertStringDoesContain(t, "aidl-generated header", outputs, "gen/aidl_library/b/BpFoo.h")
+	android.AssertStringDoesContain(t, "aidl-generated header", outputs, "gen/aidl_library/b/BnFoo.h")
+	android.AssertStringDoesContain(t, "aidl-generated header", outputs, "gen/aidl_library/b/Foo.h")
 	android.AssertStringDoesContain(t, "aidl-generated cpp", outputs, "b/Foo.cpp")
 	// Confirm that the aidl header doesn't get compiled to cpp and h files
-	android.AssertStringDoesNotContain(t, "aidl-generated header", outputs, "gen/aidl/y/BpBar.h")
-	android.AssertStringDoesNotContain(t, "aidl-generated header", outputs, "gen/aidl/y/BnBar.h")
-	android.AssertStringDoesNotContain(t, "aidl-generated header", outputs, "gen/aidl/y/Bar.h")
+	android.AssertStringDoesNotContain(t, "aidl-generated header", outputs, "gen/aidl_library/y/BpBar.h")
+	android.AssertStringDoesNotContain(t, "aidl-generated header", outputs, "gen/aidl_library/y/BnBar.h")
+	android.AssertStringDoesNotContain(t, "aidl-generated header", outputs, "gen/aidl_library/y/Bar.h")
 	android.AssertStringDoesNotContain(t, "aidl-generated cpp", outputs, "y/Bar.cpp")
 }
 
@@ -4544,6 +4543,55 @@ func TestAidlFlagsWithMinSdkVersion(t *testing.T) {
 			if !strings.Contains(aidlCommand, expectedAidlFlag) {
 				t.Errorf("aidl command %q does not contain %q", aidlCommand, expectedAidlFlag)
 			}
+		})
+	}
+}
+
+func TestInvalidAidProp(t *testing.T) {
+	t.Parallel()
+
+	testCases := []struct {
+		description string
+		bp          string
+	}{
+		{
+			description: "Invalid use of aidl.libs and aidl.include_dirs",
+			bp: `
+			cc_library {
+				name: "foo",
+				aidl: {
+					libs: ["foo_aidl"],
+					include_dirs: ["bar/include"],
+				}
+			}
+			`,
+		},
+		{
+			description: "Invalid use of aidl.libs and aidl.local_include_dirs",
+			bp: `
+			cc_library {
+				name: "foo",
+				aidl: {
+					libs: ["foo_aidl"],
+					local_include_dirs: ["include"],
+				}
+			}
+			`,
+		},
+	}
+
+	for _, testCase := range testCases {
+		t.Run(testCase.description, func(t *testing.T) {
+			bp := `
+			aidl_library {
+				name: "foo_aidl",
+				srcs: ["Foo.aidl"],
+			} ` + testCase.bp
+			android.GroupFixturePreparers(
+				prepareForCcTest,
+				aidl_library.PrepareForTestWithAidlLibrary.
+					ExtendWithErrorHandler(android.FixtureExpectsOneErrorPattern("For aidl headers, please only use aidl.libs prop")),
+			).RunTestWithBp(t, bp)
 		})
 	}
 }
@@ -4795,17 +4843,17 @@ func TestIncludeDirsExporting(t *testing.T) {
 				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/b.h
 				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/Bnb.h
 				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/Bpb.h
-				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/y/Bar.h
-				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/y/BnBar.h
-				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/y/BpBar.h
+				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl_library/y/Bar.h
+				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl_library/y/BnBar.h
+				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl_library/y/BpBar.h
 			`),
 			expectedOrderOnlyDeps(`
 				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/b.h
 				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/Bnb.h
 				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/Bpb.h
-				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/y/Bar.h
-				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/y/BnBar.h
-				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl/y/BpBar.h
+				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl_library/y/Bar.h
+				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl_library/y/BnBar.h
+				.intermediates/libfoo/android_arm64_armv8-a_shared/gen/aidl_library/y/BpBar.h
 			`),
 		)
 	})
