@@ -53,6 +53,41 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d4c88c_4b50f48b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-05-16T08:05:27Z",
+      "side": 1,
+      "message": "Yes, the crash is here:\nhttps://android-build.googleplex.com/builds/git_master-art-host-linux-art-gtest-debug-gc/10135027/logs/build.log\n\nImplicit git dependency which pulls in 90MB of dependency is something we can avoid. This build rule isn\u0027t used by us so should in theory be ignored.",
+      "parentUuid": "1c3e1378_bac9c1a7",
+      "revId": "1b90d4c17990a806db70f6f71bea9eb1c46c4801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cefd8dc8_1a495b99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-05-16T08:05:27Z",
+      "side": 1,
+      "message": "Thanks Jingwen for taking a look. Can you still provide an owner reivew?",
+      "revId": "1b90d4c17990a806db70f6f71bea9eb1c46c4801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f290304_17803300",
