@@ -88,6 +88,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d05ac09_79737f78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-16T08:25:07Z",
+      "side": 1,
+      "message": "+1 OWNERS to resolve existing breakage. But let\u0027s find a better solution to reduce these fundamental incompatibilities between Soong and slim branches.",
+      "revId": "1b90d4c17990a806db70f6f71bea9eb1c46c4801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f290304_17803300",
