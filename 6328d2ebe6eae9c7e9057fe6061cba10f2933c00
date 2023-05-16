@@ -88,6 +88,24 @@
       "parentUuid": "8cbd8c1c_c25c2115",
       "revId": "6328d2ebe6eae9c7e9057fe6061cba10f2933c00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1783a8e_49cf53de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-05-16T05:53:26Z",
+      "side": 1,
+      "message": "Try this.\n\n```\nUSE_RBE\u003dfalse build/soong/soong_ui.bash --make-mode --skip-ninja --skip-config --soong-only --skip-soong-tests nothing\n```",
+      "parentUuid": "ab8fb6bf_7a726d5f",
+      "revId": "6328d2ebe6eae9c7e9057fe6061cba10f2933c00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
