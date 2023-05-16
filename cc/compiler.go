@@ -565,6 +565,11 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 			"-I"+android.PathForModuleGen(ctx, "yacc", ctx.ModuleDir()).String())
 	}
 
+	if len(compiler.Properties.Aidl.Libs) > 0 &&
+		(len(compiler.Properties.Aidl.Include_dirs) > 0 || len(compiler.Properties.Aidl.Local_include_dirs) > 0) {
+		ctx.ModuleErrorf("aidl.libs and (aidl.include_dirs or aidl.local_include_dirs) can't be set at the same time. For aidl headers, please only use aidl.libs prop")
+	}
+
 	if compiler.hasAidl(deps) {
 		flags.aidlFlags = append(flags.aidlFlags, compiler.Properties.Aidl.Flags...)
 		if len(compiler.Properties.Aidl.Local_include_dirs) > 0 {
