@@ -214,6 +214,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c4115a_4784ce16",
+        "filename": "cc/compiler.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-16T14:37:27Z",
+      "side": 1,
+      "message": "Acknowledged. I\u0027ll follow up in the next CL that enables sandboxing.",
+      "parentUuid": "23065ebc_a4a399ad",
+      "range": {
+        "startLine": 675,
+        "startChar": 30,
+        "endLine": 675,
+        "endChar": 37
+      },
+      "revId": "75524bcd967053dd5f93c551109c05356b482a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba23318e_699d2bbe",
