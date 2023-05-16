@@ -22,6 +22,30 @@
       },
       "revId": "c4310275f86eb6bdf604217589564962abb07696",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d8db842_7c118b01",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-16T21:31:48Z",
+      "side": 1,
+      "message": "I think since `ldflags` in Soong are not os/target specific, there should not be any overrides along this axis.\n\nDo you have an example Android.bp in mind that you suspect might not work?",
+      "parentUuid": "ab2e99f9_46d5ca87",
+      "range": {
+        "startLine": 1259,
+        "startChar": 14,
+        "endLine": 1259,
+        "endChar": 28
+      },
+      "revId": "c4310275f86eb6bdf604217589564962abb07696",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
