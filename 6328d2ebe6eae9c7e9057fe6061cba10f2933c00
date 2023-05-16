@@ -52,6 +52,24 @@
       "parentUuid": "ee4e0c31_a9004bd3",
       "revId": "6328d2ebe6eae9c7e9057fe6061cba10f2933c00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cbd8c1c_c25c2115",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-05-16T05:23:45Z",
+      "side": 1,
+      "message": "You can call `soong_ui.bash` directly without source / lunch.",
+      "parentUuid": "e11015b3_ee3636a8",
+      "revId": "6328d2ebe6eae9c7e9057fe6061cba10f2933c00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
