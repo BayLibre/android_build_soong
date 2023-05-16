@@ -34,6 +34,24 @@
       "parentUuid": "6508a561_5be896a6",
       "revId": "6328d2ebe6eae9c7e9057fe6061cba10f2933c00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e11015b3_ee3636a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-16T05:10:28Z",
+      "side": 1,
+      "message": "Doesn\u0027t TARGET_PRODUCT default to aosp_arm?\n\n```\n05:08:03 ~\n$ cd aosp/master-with-phones/\n05:08:06 ~/aosp/master-with-phones\n$ source build/envsetup.sh\nincluding vendor/google/misc/metrics_uploader_prebuilt/vendorsetup.sh\nincluding vendor/google/tools/atest/vendorsetup.sh\nincluding vendor/google/tools/vendorsetup.sh\n05:08:09 ~/aosp/master-with-phones\n$ get_build_var TARGET_PRODUCT\naosp_arm\n```\n\nIs it even possible for `m` to work with an empty TARGET_PRODUCT?",
+      "parentUuid": "ee4e0c31_a9004bd3",
+      "revId": "6328d2ebe6eae9c7e9057fe6061cba10f2933c00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
