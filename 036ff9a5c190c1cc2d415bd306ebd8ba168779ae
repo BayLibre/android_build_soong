@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "670da29b_fc5ca611",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-16T09:25:05Z",
+      "side": 1,
+      "message": "I understand the urgency to fix the build break, so please add tests to apex_test.go in a follow up.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex_test.go;l\u003d308;drc\u003d4abf2f45405ed8373b87d52133438cd2dd083b74",
+      "revId": "036ff9a5c190c1cc2d415bd306ebd8ba168779ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
