@@ -70,6 +70,24 @@
       "parentUuid": "e11015b3_ee3636a8",
       "revId": "6328d2ebe6eae9c7e9057fe6061cba10f2933c00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab8fb6bf_7a726d5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-16T05:26:09Z",
+      "side": 1,
+      "message": "Currently also returns aosp_arm (new shell): \n\n```\n05:25:21 ~/aosp/master-with-phones\n$ build/soong/soong_ui.bash --dumpvar-mode TARGET_PRODUCT\naosp_arm\n```",
+      "parentUuid": "8cbd8c1c_c25c2115",
+      "revId": "6328d2ebe6eae9c7e9057fe6061cba10f2933c00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
