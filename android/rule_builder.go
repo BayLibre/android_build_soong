@@ -1085,9 +1085,9 @@ func (c *RuleBuilderCommand) Implicit(path Path) *RuleBuilderCommand {
 // Implicits adds the specified input paths to the dependencies returned by RuleBuilder.Inputs without modifying the
 // command line.
 func (c *RuleBuilderCommand) Implicits(paths Paths) *RuleBuilderCommand {
-	for _, path := range paths {
-		c.addImplicit(path)
-	}
+	// for _, path := range paths {
+	// 	c.addImplicit(path)
+	// }
 	return c
 }
 
@@ -1210,6 +1210,17 @@ func (c *RuleBuilderCommand) SymlinkOutput(path WritablePath) *RuleBuilderComman
 func (c *RuleBuilderCommand) SymlinkOutputs(paths WritablePaths) *RuleBuilderCommand {
 	for _, path := range paths {
 		c.SymlinkOutput(path)
+	}
+	return c
+}
+
+// ImplicitDepFile adds the specified depfile path to the paths returned by RuleBuilder.DepFiles without modifying
+// the command line, and causes RuleBuilder.Build file to set the depfile flag for ninja.  If multiple depfiles
+// are added to commands in a single RuleBuilder then RuleBuilder.Build will add an extra command to merge the
+// depfiles together.
+func (c *RuleBuilderCommand) ImplicitDepFiles(paths WritablePaths) *RuleBuilderCommand {
+	for _, path := range paths {
+		c.ImplicitDepFile(path)
 	}
 	return c
 }
