@@ -47,8 +47,8 @@ func init() {
 func RegisterJavaFuzzBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_fuzz", JavaFuzzFactory)
 	ctx.RegisterModuleType("java_fuzz_host", JavaFuzzHostFactory)
-	ctx.RegisterSingletonType("java_fuzz_host_packaging", javaFuzzHostPackagingFactory)
-	ctx.RegisterSingletonType("java_fuzz_device_packaging", javaFuzzDevicePackagingFactory)
+	ctx.RegisterParallelSingletonType("java_fuzz_host_packaging", javaFuzzHostPackagingFactory)
+	ctx.RegisterParallelSingletonType("java_fuzz_device_packaging", javaFuzzDevicePackagingFactory)
 }
 
 type JavaFuzzLibrary struct {
