@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43ebe5a8_3b426424",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-16T08:42:18Z",
+      "side": 1,
+      "message": "Thanks. ALLOW_MISSING_DEPENDENCIES was designed for this, and I can\u0027t think of a better solution that would fix it for the short term.\n\nPlease file a TODO bug to remove this workaround; I\u0027m mostly concerned that it\u0027ll be added and the reason forgotten over time.",
+      "parentUuid": "75d4c88c_4b50f48b",
+      "revId": "1b90d4c17990a806db70f6f71bea9eb1c46c4801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f290304_17803300",
         "filename": "apex/apex.go",
         "patchSetId": 4
