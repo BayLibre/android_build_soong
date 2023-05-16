@@ -46,6 +46,30 @@
       },
       "revId": "c4310275f86eb6bdf604217589564962abb07696",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "894209c9_42939546",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-16T21:40:03Z",
+      "side": 1,
+      "message": "Are you saying there is no linker flags for linux/darwin/windows that can be set at line 1257? otherwise this will override it.",
+      "parentUuid": "5d8db842_7c118b01",
+      "range": {
+        "startLine": 1259,
+        "startChar": 14,
+        "endLine": 1259,
+        "endChar": 28
+      },
+      "revId": "c4310275f86eb6bdf604217589564962abb07696",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
