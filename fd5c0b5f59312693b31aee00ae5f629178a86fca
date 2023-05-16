@@ -88,6 +88,24 @@
       "parentUuid": "c4c42dbb_fab9d637",
       "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9189cc47_656bb262",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-05-16T18:01:11Z",
+      "side": 1,
+      "message": "Will this cl even reduce the number of outputs? They\u0027ll still be qualified by their config hash which will change even if the prefix doesn\u0027t change.\n\nEnvironment variables are currently load-time, so they\u0027ll cause reanalysis and rebuilding in bazel. But we can switch them to be build settings which would be more configuration orthogonal to the product, and then they\u0027ll go to a folder with the same product name but a different config hash.",
+      "parentUuid": "4d2c3e75_deca51db",
+      "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
