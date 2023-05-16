@@ -16,6 +16,24 @@
       "message": "Please also update all references to the unsuffixed build.ninja (otherwise postsubmit builds will fail):\n\nhttps://cs.android.com/search?q\u003d(%22soong%2Fbuild.ninja%22%20OR%20%22build.ninja%22)%20f:%5Ebuild%2Fsoong\n\nOnce you\u0027ve updated them, please trigger an ABTD run against all builds on ab/aosp-master-bazel and ab/git_master-bazel.",
       "revId": "6328d2ebe6eae9c7e9057fe6061cba10f2933c00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee4e0c31_a9004bd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-05-16T05:00:26Z",
+      "side": 1,
+      "message": "I changed a bit more, but rest of it can stay as it is (especially from tests) because build.ninja filename will be kept if there is no target product. Let me run some builds with ABTD as a follow-up.",
+      "parentUuid": "6508a561_5be896a6",
+      "revId": "6328d2ebe6eae9c7e9057fe6061cba10f2933c00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
