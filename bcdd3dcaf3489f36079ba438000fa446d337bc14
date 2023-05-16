@@ -22,6 +22,30 @@
       },
       "revId": "bcdd3dcaf3489f36079ba438000fa446d337bc14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d7e508_af6909de",
+        "filename": "python/test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-16T22:26:08Z",
+      "side": 1,
+      "message": "I see the name is existing.. okay. Still curious about the other question",
+      "parentUuid": "ea957424_1fd3c462",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "bcdd3dcaf3489f36079ba438000fa446d337bc14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
