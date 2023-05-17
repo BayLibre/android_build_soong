@@ -16,6 +16,23 @@
       "message": "Ah newly configured presubmits won\u0027t run on existing changes.. But I checked oriole-userdebug target and I don\u0027t see any significant increase in fallbacks. This change should be good to go.",
       "revId": "4026558dc7711d2fcc6be5cf568d867dbc1c66fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d622d3c0_781d583f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-05-17T04:16:54Z",
+      "side": 1,
+      "message": "presubmit failure is pre-existing.",
+      "revId": "4026558dc7711d2fcc6be5cf568d867dbc1c66fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
