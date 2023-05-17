@@ -106,6 +106,24 @@
       "parentUuid": "4d2c3e75_deca51db",
       "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572b6fc0_4b24a3fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-05-17T02:21:41Z",
+      "side": 1,
+      "message": "Intention of this change is to reduce # of build modules when lunch target has been changed into similar item (such as aosp_cf_phone to aosp_cf_foldable), so this is not about reducing # of outputs.\n\nWhat I\u0027m a bit confused from here is that, soong intermediates are target product agnostic as we discussed from b/282118864, while multiplatform builds will generate multiple variants from a single build. Are we expected to trigger multiplatform build with soong? or is it only for the bazel-only build scenario?",
+      "parentUuid": "9189cc47_656bb262",
+      "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
