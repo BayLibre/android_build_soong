@@ -247,6 +247,30 @@
       },
       "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba250b3_e2d757ed",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-17T08:11:34Z",
+      "side": 1,
+      "message": "The goal is to ensure that the bazel apex rule has the same logic here, given that Bazel is already productionized for a few modules.\n\n1) convert the apex_name property to a bazel attribute in apex.go#convertWithBp2build (https://cs.android.com/android/platform/superproject/+/refs/heads/master:build/soong/apex/apex.go;l\u003d3561;drc\u003d7346c436e5a11ce08f6a80dcfeb8ef941ca30176) and add tests in build/soong/bp2build/apex_conversion_test.go.\n2) Update build/bazel/rules/apex/apex.bzl to use the new apex_name parameter for the parts that should read it instead of the actual name attribute (https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl?q\u003df:apex.bzl)\n3) Update apex_transition to also decide between attr.name or attr.apex_name. https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/transition.bzl;l\u003d56;drc\u003dcbe31fbacec8c47475c3cb93ef8f1f89fe0287ae\n\nThen run `b test //build/bazel/...` and `b test //build/bazel/... --config\u003dandroid` to verify tests are passing as a first cut. There\u0027ll be more tests on presubmits.",
+      "parentUuid": "dbac5d83_8bb752c0",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
