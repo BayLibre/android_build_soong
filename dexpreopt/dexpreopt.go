@@ -351,12 +351,22 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 		}
 
 		// Generate command that saves host and target class loader context in shell variables.
-		clc, paths := ComputeClassLoaderContext(module.ClassLoaderContexts)
-		rule.Command().
+		paths := ComputeClassLoaderContext(module.ClassLoaderContexts)
+		clcCmd := rule.Command().
 			Text(`eval "$(`).Tool(globalSoong.ConstructContext).
 			Text(` --target-sdk-version ${target_sdk_version}`).
-			Text(clc).Implicits(paths).
-			Text(`)"`)
+			Implicits(paths)
+
+		if mctx, ok := ctx.(android.ModuleContext); ok {
+			clcCmd.FlagWithInput("--product-packages=", android.PathForModuleInPartitionInstall(mctx, "", "product_packages.txt").ToMakePath())
+			clcJsonPath := odexPath.ReplaceExtension(mctx, "class_loader_context.json")
+			android.WriteFileRule(mctx, clcJsonPath, module.ClassLoaderContexts.Dump())
+			clcCmd.FlagWithInput("--context-json=", clcJsonPath)
+		}
+
+		clcCmd.Text(`)"`)
+
+		fmt.Printf("%s %+v\n", module.Name, clcCmd)
 	}
 
 	// Devices that do not have a product partition use a symlink from /product to /system/product.
