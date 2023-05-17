@@ -124,6 +124,24 @@
       "parentUuid": "9189cc47_656bb262",
       "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124b2b63_b1c0cb70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-05-17T06:59:50Z",
+      "side": 1,
+      "message": "This setup is for Soong-less pure Bazel builds. It\u0027s nice because then one can build a full Mainline module (supporting every architecture) in a single invocation, no laborious re-analysis required, which makes build times *much* faster.",
+      "parentUuid": "572b6fc0_4b24a3fc",
+      "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
