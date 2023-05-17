@@ -178,6 +178,24 @@
       "parentUuid": "99bca11b_17b74a7f",
       "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0350d4_214e8716",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-05-17T07:23:28Z",
+      "side": 1,
+      "message": "I\u0027m not worried about Bazel at the moment.\n\nI\u0027m worried about ensuring that ostensibly product-agnostic modules are really product-agnostic because if you don\u0027t that, reusing modules built for one product for the build of another one is unsafe.\n\nHow about y\u0027all write up a design doc about how you think reuse of product-agnostic modules would work, then we discuss the necessary steps there?",
+      "parentUuid": "99bca11b_17b74a7f",
+      "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
