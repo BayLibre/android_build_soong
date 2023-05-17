@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdd5e4e2_d4d0af36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2023-05-17T19:31:30Z",
+      "side": 1,
+      "message": "Included in this change.",
+      "parentUuid": "8a2071ca_6c1b2d77",
+      "revId": "a9f66730ff574e0e18b590477e0f1d72ed3a20e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52296633_d117542c",
@@ -67,6 +85,30 @@
       "writtenOn": "2023-05-10T18:31:18Z",
       "side": 1,
       "message": "Can we comment this out and put a TODO or maybe delete it for now since we aren\u0027t planning on supporting this option until later (or maybe never who knows)",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 14
+      },
+      "revId": "a9f66730ff574e0e18b590477e0f1d72ed3a20e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d748f62d_0f41fcdc",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2023-05-17T19:31:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52296633_d117542c",
       "range": {
         "startLine": 187,
         "startChar": 2,
