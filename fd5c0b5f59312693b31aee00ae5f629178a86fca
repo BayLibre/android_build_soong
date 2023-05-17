@@ -142,6 +142,24 @@
       "parentUuid": "572b6fc0_4b24a3fc",
       "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99bca11b_17b74a7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-05-17T07:01:51Z",
+      "side": 1,
+      "message": "if we make this to have zero side effect for the Bazel-only builds, would this idea be acceptable then?",
+      "parentUuid": "124b2b63_b1c0cb70",
+      "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
