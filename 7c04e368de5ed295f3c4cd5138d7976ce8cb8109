@@ -50,6 +50,24 @@
       "message": "Unfortunately, I think this is actively harmful on CI machines.\n\nThe way that \"build_error.log\" operates, it parses stdout for any output that \"looks like an error\", and then trunctates the log to be a certain number of lines. In practice, a lot of the lines that would display with `-x` \"look like an error\", so using `-x` ends up making build_error.log unusuable.\n\nI\u0027ve started moving our other scripts to omit `-x` for this purpose. This is a step in the wrong direction there.\n\nIn the future, you can run `bash -x tests/run_integration_tests.sh` to add this option to a one-off local run for debugging purposes.",
       "revId": "7c04e368de5ed295f3c4cd5138d7976ce8cb8109",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f651bb_d95bd828",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2023-05-17T20:51:58Z",
+      "side": 1,
+      "message": "(yeah, i realised that i can do this by hand, but it takes _forever_ to rerun this :))",
+      "parentUuid": "911fbd78_c54ecbe7",
+      "revId": "7c04e368de5ed295f3c4cd5138d7976ce8cb8109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
