@@ -196,6 +196,24 @@
       "parentUuid": "99bca11b_17b74a7f",
       "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "885092d7_70c0c8be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-05-17T07:34:22Z",
+      "side": 1,
+      "message": "Sounds good. I don\u0027t want to rush. We will come back to you with a short design doc.\n\nJust one comment:\n\n\u003e reusing modules built for one product for the build of another one is unsafe.\n\nOf course, it\u0027s unsafe - if the builds were actually different. Even with this change, if the builds were actually different, they would have been rebuilt (i.e. clobbered, because they are built at the same path), which is bad for performance but is still safe.\n\nDo you think it would be considered unsafe even if the build rules (not only for the module itself, but also for all of its transitive dependencies) are exactly the same? We do the same for RBE, and we thought that this can be considered as a \"local\" cache.",
+      "parentUuid": "ed0350d4_214e8716",
+      "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
