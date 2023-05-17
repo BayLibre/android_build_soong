@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf7daa4_79bc23c0",
+        "filename": "tests/dcla_apex_comparison_test.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2023-05-17T19:38:36Z",
+      "side": 1,
+      "message": "what\u0027s this for? Is it a typo?",
+      "range": {
+        "startLine": 148,
+        "startChar": 27,
+        "endLine": 148,
+        "endChar": 49
+      },
+      "revId": "11a2c77f8d1af782cce364512ae97b23ddc65750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
