@@ -20,6 +20,7 @@ package dexpreopt
 import (
 	"fmt"
 	"reflect"
+	"sort"
 	"strings"
 	"testing"
 
@@ -96,11 +97,10 @@ func TestCLC(t *testing.T) {
 
 	fixClassLoaderContext(m)
 
-	var haveStr string
 	var havePaths android.Paths
 	var haveUsesLibsReq, haveUsesLibsOpt []string
 	if valid && validationError == nil {
-		haveStr, havePaths = ComputeClassLoaderContext(m)
+		havePaths = ComputeClassLoaderContext(m)
 		haveUsesLibsReq, haveUsesLibsOpt = m.UsesLibs()
 	}
 
@@ -108,29 +108,6 @@ func TestCLC(t *testing.T) {
 	t.Run("validate", func(t *testing.T) {
 		if !(valid && validationError == nil) {
 			t.Errorf("invalid class loader context")
-		}
-	})
-
-	// Test that class loader context structure is correct.
-	t.Run("string", func(t *testing.T) {
-		wantStr := " --host-context-for-sdk 29 " +
-			"PCL[out/soong/" + AndroidHidlManager + ".jar]#" +
-			"PCL[out/soong/" + AndroidHidlBase + ".jar]" +
-			" --target-context-for-sdk 29 " +
-			"PCL[/system/framework/" + AndroidHidlManager + ".jar]#" +
-			"PCL[/system/framework/" + AndroidHidlBase + ".jar]" +
-			" --host-context-for-sdk any " +
-			"PCL[out/soong/a.jar]#PCL[out/soong/b.jar]#PCL[out/soong/c.jar]#PCL[out/soong/d.jar]" +
-			"{PCL[out/soong/a2.jar]#PCL[out/soong/b2.jar]#PCL[out/soong/c2.jar]" +
-			"{PCL[out/soong/a1.jar]#PCL[out/soong/b1.jar]}}#" +
-			"PCL[out/soong/f.jar]#PCL[out/soong/a3.jar]#PCL[out/soong/b3.jar]" +
-			" --target-context-for-sdk any " +
-			"PCL[/system/a.jar]#PCL[/system/b.jar]#PCL[/system/c.jar]#PCL[/system/d.jar]" +
-			"{PCL[/system/a2.jar]#PCL[/system/b2.jar]#PCL[/system/c2.jar]" +
-			"{PCL[/system/a1.jar]#PCL[/system/b1.jar]}}#" +
-			"PCL[/system/f.jar]#PCL[/system/a3.jar]#PCL[/system/b3.jar]"
-		if wantStr != haveStr {
-			t.Errorf("\nwant class loader context: %s\nhave class loader context: %s", wantStr, haveStr)
 		}
 	})
 
@@ -143,9 +120,11 @@ func TestCLC(t *testing.T) {
 			"out/soong/a1.jar", "out/soong/b1.jar",
 			"out/soong/f.jar", "out/soong/a3.jar", "out/soong/b3.jar",
 		}
-		if !reflect.DeepEqual(wantPaths, havePaths.Strings()) {
-			t.Errorf("\nwant paths: %s\nhave paths: %s", wantPaths, havePaths)
-		}
+		actual := havePaths.Strings()
+		// The order does not matter.
+		sort.Strings(wantPaths)
+		sort.Strings(actual)
+		android.AssertArrayString(t, "", wantPaths, actual)
 	})
 
 	// Test for libraries that are added by the manifest_fixer.
@@ -234,49 +213,6 @@ func TestCLCNestedConditional(t *testing.T) {
 	m := make(ClassLoaderContextMap)
 	err := m.addContext(ctx, AnySdkVersion, "b", optional, buildPath(ctx, "b"), installPath(ctx, "b"), m1)
 	checkError(t, err, "nested class loader context shouldn't have conditional part")
-}
-
-// Test for SDK version order in conditional CLC: no matter in what order the libraries are added,
-// they end up in the order that agrees with PackageManager.
-func TestCLCSdkVersionOrder(t *testing.T) {
-	ctx := testContext()
-	optional := false
-	m := make(ClassLoaderContextMap)
-	m.AddContext(ctx, 28, "a", optional, buildPath(ctx, "a"), installPath(ctx, "a"), nil)
-	m.AddContext(ctx, 29, "b", optional, buildPath(ctx, "b"), installPath(ctx, "b"), nil)
-	m.AddContext(ctx, 30, "c", optional, buildPath(ctx, "c"), installPath(ctx, "c"), nil)
-	m.AddContext(ctx, AnySdkVersion, "d", optional, buildPath(ctx, "d"), installPath(ctx, "d"), nil)
-
-	valid, validationError := validateClassLoaderContext(m)
-
-	fixClassLoaderContext(m)
-
-	var haveStr string
-	if valid && validationError == nil {
-		haveStr, _ = ComputeClassLoaderContext(m)
-	}
-
-	// Test that validation is successful (all paths are known).
-	t.Run("validate", func(t *testing.T) {
-		if !(valid && validationError == nil) {
-			t.Errorf("invalid class loader context")
-		}
-	})
-
-	// Test that class loader context structure is correct.
-	t.Run("string", func(t *testing.T) {
-		wantStr := " --host-context-for-sdk 30 PCL[out/soong/c.jar]" +
-			" --target-context-for-sdk 30 PCL[/system/c.jar]" +
-			" --host-context-for-sdk 29 PCL[out/soong/b.jar]" +
-			" --target-context-for-sdk 29 PCL[/system/b.jar]" +
-			" --host-context-for-sdk 28 PCL[out/soong/a.jar]" +
-			" --target-context-for-sdk 28 PCL[/system/a.jar]" +
-			" --host-context-for-sdk any PCL[out/soong/d.jar]" +
-			" --target-context-for-sdk any PCL[/system/d.jar]"
-		if wantStr != haveStr {
-			t.Errorf("\nwant class loader context: %s\nhave class loader context: %s", wantStr, haveStr)
-		}
-	})
 }
 
 func TestCLCMExcludeLibs(t *testing.T) {
