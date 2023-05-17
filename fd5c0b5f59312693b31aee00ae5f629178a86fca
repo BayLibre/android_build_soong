@@ -160,6 +160,24 @@
       "parentUuid": "124b2b63_b1c0cb70",
       "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db74ff7_4e4b9f9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-17T07:22:14Z",
+      "side": 1,
+      "message": "Can we all take a pause on this change and regroup on a design doc that spells out the clear benefits vs costs, who this impacts, and alternatives considered? \n\nI\u0027m mostly concerned that we\u0027re going to be stuck discussing this without a clear understanding on what either teams are trying to (ultimately) do. We should be more aligned.",
+      "parentUuid": "99bca11b_17b74a7f",
+      "revId": "fd5c0b5f59312693b31aee00ae5f629178a86fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
