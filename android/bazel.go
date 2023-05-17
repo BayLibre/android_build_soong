@@ -46,6 +46,10 @@ const (
 	// that is not a platform incompatibility. Example: the module-type is not
 	// enabled, or is not bp2build-converted.
 	ModuleIncompatibility
+
+	// Missing dependencies. We can't query Bazel for modules if it has missing dependencies, there
+	// will be failures.
+	ModuleMissingDeps
 )
 
 // FileGroupAsLibrary describes a filegroup module that is converted to some library
@@ -367,6 +371,15 @@ func GetBp2BuildAllowList() Bp2BuildConversionAllowlist {
 // As a side effect, calling this method will also log whether this module is
 // mixed build enabled for metrics reporting.
 func MixedBuildsEnabled(ctx BaseModuleContext) MixedBuildEnabledStatus {
+	if ctx.Config().AllowMissingDependencies() {
+		missingDeps := ctx.getMissingDependencies()
+		// If there are missing dependencies, querying Bazel will fail. Soong instead fails at execution
+		// time, not loading/analysis. Fall back to Bazel to maintain that behavior.
+		if len(missingDeps) > 0 {
+			return ModuleMissingDeps
+		}
+	}
+
 	module := ctx.Module()
 	apexInfo := ctx.Provider(ApexInfoProvider).(ApexInfo)
 	withinApex := !apexInfo.IsForPlatform()
