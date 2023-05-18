@@ -16,6 +16,23 @@
       "message": "+2 to revert for now.",
       "revId": "fddeaff4a639c806e640283f9d53b42686524f2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70d2807_96a3a13c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-05-18T04:23:31Z",
+      "side": 1,
+      "message": "As I said in the https://b.corp.google.com/issues/283143307, I think it\u0027s a kind of trade-off, not a regression. Generating ninja hint spends 2-3 seconds, but it improves minutes in full build.",
+      "revId": "fddeaff4a639c806e640283f9d53b42686524f2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
