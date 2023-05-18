@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "185d5b4b_fbddba88",
+        "filename": "java/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2023-05-18T19:44:47Z",
+      "side": 1,
+      "message": "since we will be building all shared libraries of libdl_android also if we add it to jni_libs, do we know what other libraries are also going to be included here?\n\nIf we dont need them it would be nice to skip adding all shared libs for this library",
+      "range": {
+        "startLine": 36,
+        "startChar": 14,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "216c21a5494ac029547d71b85b025567bc3b53fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
