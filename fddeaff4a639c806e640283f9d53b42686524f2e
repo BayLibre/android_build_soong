@@ -51,6 +51,24 @@
       "parentUuid": "a70d2807_96a3a13c",
       "revId": "fddeaff4a639c806e640283f9d53b42686524f2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea50873_2763f004",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-05-18T06:08:23Z",
+      "side": 1,
+      "message": "Got it. Let\u0027s continue discussion in the bug.",
+      "parentUuid": "2b0199de_3c914339",
+      "revId": "fddeaff4a639c806e640283f9d53b42686524f2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
