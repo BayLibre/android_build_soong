@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00481990_0b953fb0",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3962,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-05-18T13:20:25Z",
+      "side": 1,
+      "message": "Do you want to provide a reverse mapping (from hash to configs) so that people can check which configs a given path is for?",
+      "range": {
+        "startLine": 3962,
+        "startChar": 1,
+        "endLine": 3962,
+        "endChar": 73
+      },
+      "revId": "e626a70b98b7fd10692024bbf46295848e8da911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "358fdae3_c1a54697",
         "filename": "android/paths.go",
         "patchSetId": 1
