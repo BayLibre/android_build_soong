@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92875b76_320b15b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-18T23:27:10Z",
+      "side": 1,
+      "message": "@spandandas@google.com Can I get a +2 for this CL? I lost the vote after uploading the latest patchset.",
+      "revId": "795319fadb84b4e65c9fb3defbaf25b612acd53b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
