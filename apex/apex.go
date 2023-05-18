@@ -879,6 +879,43 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddFarVariationDependencies(commonVariation, compatConfigTag, a.properties.Compat_configs...)
 }
 
+func (a *apexBundle) appDependencies(ctx android.BottomUpMutatorContext) []string {
+	isOverrideApex := a.GetOverriddenBy() != ""
+	if !isOverrideApex {
+		return a.overridableProperties.Apps
+	}
+
+	apexApps := map[string]string{}
+	var baseApps []string
+	for _, p := range ctx.PrimaryModule().GetProperties() {
+		properties, ok := p.(*overridableProperties)
+		if !ok {
+			continue
+		}
+		baseApps = properties.Apps
+	}
+	// override any base apps with their specified override
+	for _, appMapping := range a.overridableProperties.Apps {
+		split := strings.Split(appMapping, ":")
+		if len(split) != 2 {
+			ctx.PropertyErrorf("override_apps", "invalid entry %q in `apps` property: override_apexes must specify a mapping of form <base app>:<override app>", appMapping)
+		}
+		baseApp := split[0]
+		overrideApp := split[1]
+		if !android.InList(baseApp, baseApps) {
+			ctx.PropertyErrorf("override_apps", "the base APEX must contain all overriden apps, but does not contain app %q", baseApp)
+		}
+		apexApps[baseApp] = overrideApp
+	}
+	// add all remaining apps from base module
+	for _, app := range baseApps {
+		if _, exists := apexApps[app]; !exists {
+			apexApps[app] = app
+		}
+	}
+	return android.StringValues(apexApps)
+}
+
 // DepsMutator for the overridden properties.
 func (a *apexBundle) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
 	if a.overridableProperties.Allowed_files != nil {
@@ -886,7 +923,7 @@ func (a *apexBundle) OverridablePropertiesDepsMutator(ctx android.BottomUpMutato
 	}
 
 	commonVariation := ctx.Config().AndroidCommonTarget.Variations()
-	ctx.AddFarVariationDependencies(commonVariation, androidAppTag, a.overridableProperties.Apps...)
+	ctx.AddFarVariationDependencies(commonVariation, androidAppTag, a.appDependencies(ctx)...)
 	ctx.AddFarVariationDependencies(commonVariation, bpfTag, a.overridableProperties.Bpfs...)
 	if prebuilts := a.overridableProperties.Prebuilts; len(prebuilts) > 0 {
 		// For prebuilt_etc, use the first variant (64 on 64/32bit device, 32 on 32bit device)

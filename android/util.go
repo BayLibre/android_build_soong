@@ -95,8 +95,8 @@ func SortedKeys[T Ordered, V any](m map[T]V) []T {
 	return ret
 }
 
-// stringValues returns the values of the given string-valued map in randomized map order.
-func stringValues(m interface{}) []string {
+// StringValues returns the values of the given string-valued map in randomized map order.
+func StringValues(m interface{}) []string {
 	v := reflect.ValueOf(m)
 	if v.Kind() != reflect.Map {
 		panic(fmt.Sprintf("%#v is not a map", m))
@@ -114,7 +114,7 @@ func stringValues(m interface{}) []string {
 
 // SortedStringValues returns the values of the given string-valued map in the ascending order.
 func SortedStringValues(m interface{}) []string {
-	s := stringValues(m)
+	s := StringValues(m)
 	sort.Strings(s)
 	return s
 }
@@ -122,7 +122,7 @@ func SortedStringValues(m interface{}) []string {
 // SortedUniqueStringValues returns the values of the given string-valued map in the ascending order
 // with duplicates removed.
 func SortedUniqueStringValues(m interface{}) []string {
-	s := stringValues(m)
+	s := StringValues(m)
 	return SortedUniqueStrings(s)
 }
 
