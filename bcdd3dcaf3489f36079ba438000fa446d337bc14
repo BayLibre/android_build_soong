@@ -46,6 +46,30 @@
       },
       "revId": "bcdd3dcaf3489f36079ba438000fa446d337bc14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c1899e_aa4c3da5",
+        "filename": "python/test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-05-18T16:54:52Z",
+      "side": 1,
+      "message": "It wouldn\u0027t be an error if something is only specified data_device_bins_both but not in target_required. data_device_bins_both here works the same as it does in `java_test_host`: it only \u0027packs\u0027 the binaries to hidl_test_java output folder.",
+      "parentUuid": "b0d7e508_af6909de",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "bcdd3dcaf3489f36079ba438000fa446d337bc14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
