@@ -33,6 +33,24 @@
       "message": "As I said in the https://b.corp.google.com/issues/283143307, I think it\u0027s a kind of trade-off, not a regression. Generating ninja hint spends 2-3 seconds, but it improves minutes in full build.",
       "revId": "fddeaff4a639c806e640283f9d53b42686524f2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b0199de_3c914339",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-05-18T06:05:04Z",
+      "side": 1,
+      "message": "I\u0027d like to give this a revert anyway, for a few reasons:\n\n1. We didn\u0027t discuss this tradeoff, and I think we should do so with more care.\n2. We\u0027re not sure if this is truly only 2-3 seconds hit\n3. We\u0027re not sure that this truly improves minutes in full build\n4. We\u0027re not 100% sure that recent performance regressions are caused by this CL -- by giving this a trial reversion, we have better info on whether this is the only performance regression that occurred this day.\n\nRegardless, we shouldn\u0027t treat this tradeoff lightly.",
+      "parentUuid": "a70d2807_96a3a13c",
+      "revId": "fddeaff4a639c806e640283f9d53b42686524f2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
