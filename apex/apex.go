@@ -885,8 +885,41 @@ func (a *apexBundle) OverridablePropertiesDepsMutator(ctx android.BottomUpMutato
 		android.ExtractSourceDeps(ctx, a.overridableProperties.Allowed_files)
 	}
 
+	apexApps := map[string]string{}
+	isOverrideApex := a.GetOverriddenBy() != ""
+	if isOverrideApex {
+		var baseApps []string
+		for _, p := range ctx.PrimaryModule().GetProperties() {
+			properties, ok := p.(*overridableProperties)
+			if !ok {
+				continue
+			}
+			baseApps = properties.Apps
+		}
+		// add all base apps first
+		for _, app := range baseApps {
+			apexApps[app] = app
+		}
+		// override any base apps with their specified override
+		for _, appMapping := range a.overridableProperties.Apps {
+			split := strings.Split(appMapping, "|")
+			if len(split) != 2 {
+				ctx.PropertyErrorf("override_apps", "invalid entry %q in `apps` property: override_apexes must specify a mapping of form <base app>|<override app>", appMapping)
+			}
+			baseApp := split[0]
+			overrideApp := split[1]
+			if !android.InList(baseApp, baseApps) {
+				ctx.PropertyErrorf("override_apps", "base does not contain app %q", baseApp)
+			}
+			apexApps[baseApp] = overrideApp
+		}
+	}
+	apexAppsList := make([]string, 0, len(a.overridableProperties.Apps))
+	for _, overrideApp := range apexApps {
+		apexAppsList = append(apexAppsList, overrideApp)
+	}
 	commonVariation := ctx.Config().AndroidCommonTarget.Variations()
-	ctx.AddFarVariationDependencies(commonVariation, androidAppTag, a.overridableProperties.Apps...)
+	ctx.AddFarVariationDependencies(commonVariation, androidAppTag, apexAppsList...)
 	ctx.AddFarVariationDependencies(commonVariation, bpfTag, a.overridableProperties.Bpfs...)
 	if prebuilts := a.overridableProperties.Prebuilts; len(prebuilts) > 0 {
 		// For prebuilt_etc, use the first variant (64 on 64/32bit device, 32 on 32bit device)

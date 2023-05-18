@@ -6700,12 +6700,71 @@ func TestApexAvailable_CreatedForApex(t *testing.T) {
 	}
 }
 
+func TestOverrideApexError(t *testing.T) {
+	testApexError(t,
+		"invalid entry \"invalid_app\" in `apps` property: override_apexes must specify a mapping of form <base app>|<override app>",
+		`
+		apex {
+			name: "myapex",
+			apps: ["app"],
+			key: "myapex.key",
+		}
+		override_apex {
+			name: "override_myapex",
+			base: "myapex",
+			apps: ["invalid_app"],
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+		android_app {
+			name: "app",
+			apex_available: [ "myapex" ],
+		}
+		override_android_app {
+			name: "override_app",
+			base: "app",
+		}
+	    `,
+	)
+	testApexError(t,
+		"base does not contain app \"invalid_app\"",
+		`
+		apex {
+			name: "myapex",
+			apps: ["app"],
+			key: "myapex.key",
+		}
+		override_apex {
+			name: "override_myapex",
+			base: "myapex",
+			apps: ["invalid_app|override_app"],
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+		android_app {
+			name: "app",
+			apex_available: [ "myapex" ],
+		}
+		override_android_app {
+			name: "override_app",
+			base: "app",
+		}
+	    `,
+	)
+}
+
 func TestOverrideApex(t *testing.T) {
 	ctx := testApex(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
-			apps: ["app"],
+			apps: ["app", "base_only_app"],
 			bpfs: ["bpf"],
 			prebuilts: ["myetc"],
 			overrides: ["oldapex"],
@@ -6715,7 +6774,7 @@ func TestOverrideApex(t *testing.T) {
 		override_apex {
 			name: "override_myapex",
 			base: "myapex",
-			apps: ["override_app"],
+			apps: ["app|override_app"],
 			bpfs: ["overrideBpf"],
 			prebuilts: ["override_myetc"],
 			overrides: ["unknownapex"],
@@ -6744,6 +6803,15 @@ func TestOverrideApex(t *testing.T) {
 
 		android_app {
 			name: "app",
+			srcs: ["foo/bar/MyClass.java"],
+			package_name: "foo",
+			sdk_version: "none",
+			system_modules: "none",
+			apex_available: [ "myapex" ],
+		}
+
+		android_app {
+			name: "base_only_app",
 			srcs: ["foo/bar/MyClass.java"],
 			package_name: "foo",
 			sdk_version: "none",
@@ -6793,6 +6861,7 @@ func TestOverrideApex(t *testing.T) {
 
 	ensureNotContains(t, copyCmds, "image.apex/app/app@TEST.BUILD_ID/app.apk")
 	ensureContains(t, copyCmds, "image.apex/app/override_app@TEST.BUILD_ID/override_app.apk")
+	ensureContains(t, copyCmds, "image.apex/app/base_only_app@TEST.BUILD_ID/base_only_app.apk")
 
 	ensureNotContains(t, copyCmds, "image.apex/etc/bpf/bpf.o")
 	ensureContains(t, copyCmds, "image.apex/etc/bpf/overrideBpf.o")
@@ -6822,6 +6891,7 @@ func TestOverrideApex(t *testing.T) {
 	data.Custom(&builder, name, "TARGET_", "", data)
 	androidMk := builder.String()
 	ensureContains(t, androidMk, "LOCAL_MODULE := override_app.override_myapex")
+	ensureNotContains(t, androidMk, "LOCAL_MODULE := base_only_app.override_myapex")
 	ensureContains(t, androidMk, "LOCAL_MODULE := overrideBpf.o.override_myapex")
 	ensureContains(t, androidMk, "LOCAL_MODULE := apex_manifest.pb.override_myapex")
 	ensureContains(t, androidMk, "LOCAL_MODULE_STEM := override_myapex.apex")
