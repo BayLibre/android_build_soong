@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c96cb298_20ebc781",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-05-18T00:46:24Z",
+      "side": 1,
+      "message": "I guess this will need to be submitted in internal so that we can update APEX that override the `apps` property. Will reupload there",
+      "revId": "59d03b1009df82bca78c7c0a68883bf8e2487eff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
