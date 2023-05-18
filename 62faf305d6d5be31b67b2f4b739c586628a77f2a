@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d208ee_301b9ec5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-18T17:57:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09cbbda7_8a736a2c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69084a91_794d7872",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-18T15:18:42Z",
       "side": 1,
       "message": "Wow, are there so many fixed use cases? I thought there are a few. You can mention the approximate number in the commit message.",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 51
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ecd4e30_9b5b9404",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-18T17:57:35Z",
+      "side": 1,
+      "message": "I believe I mentioned in the doc for Roboleaf that there are a lot :)",
+      "parentUuid": "69084a91_794d7872",
       "range": {
         "startLine": 28,
         "startChar": 6,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab23c268_c1bfde6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-18T17:57:35Z",
+      "side": 1,
+      "message": "Thank you for the review!",
+      "parentUuid": "16e6072d_dd5b1568",
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "321d1c6c_51934534",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-05-18T15:18:42Z",
       "side": 1,
       "message": "Can we get a better error message here?",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 2
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21c521b4_a180efaa",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-18T17:57:35Z",
+      "side": 1,
+      "message": "I\u0027m just mimicking the method above. I think the JSON marshaling is not expected to fail, and if it does, it\u0027s worth a panic. It\u0027s not something that a build system user can deal with, unlike a defect in a .bp file.",
+      "parentUuid": "321d1c6c_51934534",
       "range": {
         "startLine": 424,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beca1547_24dfb24e",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-18T17:57:35Z",
+      "side": 1,
+      "message": "I didn\u0027t intend to use this structure in the new test. The structure in the new test focuses on testing the CLC string construction logic, and I believe it\u0027s stronger than this because it covers:\n\n1. Multiple SDK versions\n2. An optional and not installed library on the top level\n3. An optional and not installed library on a child level\n4. An optional and not installed library on a child level, being the only library on that level\n5. A required but not installed library\n\nIt doesn\u0027t contain something like \"f\" because \"f\" focuses on fixing the CLC structure, which is out of the scope of the Python script because it\u0027s done by Soong before the structure being passed to Python.",
+      "parentUuid": "2fe23113_abece6c1",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 3
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cd7dda5_968c5a3c",
@@ -133,6 +247,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc09466_3a827c57",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-18T17:57:35Z",
+      "side": 1,
+      "message": "It doesn\u0027t matter anymore. The Python script now determines the order, and I added tests to test the order there.",
+      "parentUuid": "5cd7dda5_968c5a3c",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 31
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1c3c751_d5508e16",
@@ -146,6 +284,30 @@
       "writtenOn": "2023-05-18T15:18:42Z",
       "side": 1,
       "message": "Is this test executed on a regular build? If not, it will be easy for someone to break things.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb9ff18_8a463145",
+        "filename": "scripts/construct_context_test.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-18T17:57:35Z",
+      "side": 1,
+      "message": "It is, as part of `v2/android-test-harness-team/suite/host_unit_tests`. You can see it run in presubmit.",
+      "parentUuid": "f1c3c751_d5508e16",
       "range": {
         "startLine": 17,
         "startChar": 0,
