@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09cbbda7_8a736a2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-18T15:18:42Z",
+      "side": 1,
+      "message": "Please add a detailed explanation why it\u0027s needed (to accommodate optional uses-libraries) and how moving to Ninja phase helps (by using an installed package list) and some explanation for the tests below (that they check and optional uses-library). Also it helps to know that it didn\u0027t work before.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69084a91_794d7872",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-18T15:18:42Z",
+      "side": 1,
+      "message": "Wow, are there so many fixed use cases? I thought there are a few. You can mention the approximate number in the commit message.",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 51
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16e6072d_dd5b1568",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-18T15:18:42Z",
+      "side": 1,
+      "message": "Thanks for working on this!",
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "321d1c6c_51934534",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-18T15:18:42Z",
+      "side": 1,
+      "message": "Can we get a better error message here?",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 2
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe23113_abece6c1",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-18T15:18:42Z",
+      "side": 1,
+      "message": "Should this comment be moved/copied to scripts/construct_context_test.py?\n\nI think you also changed the library structure (shortened the test a bit, I don\u0027t see some of these libs in the new test, e.g. \u0027f\u0027). Can you keep the original structure?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 3
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cd7dda5_968c5a3c",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-18T15:18:42Z",
+      "side": 1,
+      "message": "I think it does, as it reflects the order of libraries in CLC and that certainly does matter. Previously we used `DeepEqual` and that did not require sorting.",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 31
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c3c751_d5508e16",
+        "filename": "scripts/construct_context_test.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-18T15:18:42Z",
+      "side": 1,
+      "message": "Is this test executed on a regular build? If not, it will be easy for someone to break things.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
