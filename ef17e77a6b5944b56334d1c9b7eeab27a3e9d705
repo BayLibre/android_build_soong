@@ -271,6 +271,30 @@
       },
       "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24776507_8b5376dd",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1949655
+      },
+      "writtenOn": "2023-05-18T15:56:09Z",
+      "side": 1,
+      "message": "I\u0027ve added the conversion in apex.go and apex_conversion_test.go.\n\nI spent some time trying to update build/bazel/rules/apex/apex.bzl but I can\u0027t figure out how it works and where are the corresponding bazel parts. Could you please help with the bazel side of this change?",
+      "parentUuid": "fba250b3_e2d757ed",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
