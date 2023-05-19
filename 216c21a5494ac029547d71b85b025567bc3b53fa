@@ -46,6 +46,30 @@
       },
       "revId": "216c21a5494ac029547d71b85b025567bc3b53fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60859881_673c2af3",
+        "filename": "java/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2023-05-19T19:02:12Z",
+      "side": 1,
+      "message": "It\u0027s up to you, either way seems fine to me. I was just curious if we were ending up with like 20+ extra libraries or something. Looks like it\u0027s only shared library is ld_android though which is packaged up either way anyways.",
+      "parentUuid": "4f7ada5f_bd83991a",
+      "range": {
+        "startLine": 36,
+        "startChar": 14,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "216c21a5494ac029547d71b85b025567bc3b53fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
