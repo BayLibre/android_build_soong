@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b414c34_c339a05c",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-05-19T14:18:42Z",
+      "side": 1,
+      "message": "I don\u0027t feel super strongly about this, but I think it\u0027s a bit strange to submit this CL without the CL that creates this file and the corresponding rule. In general it\u0027s nice to have a topic that has both the bp2build converter and the initial rule implementation, that way you can also allowlist an example module and have it building on CI, to get some amount of \"integration\" test coverage from the start.",
+      "range": {
+        "startLine": 136,
+        "startChar": 21,
+        "endLine": 136,
+        "endChar": 74
+      },
+      "revId": "09796096c34e8ab50be13b2a9d5c9387db6e85e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
