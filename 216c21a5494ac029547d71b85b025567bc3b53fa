@@ -22,6 +22,30 @@
       },
       "revId": "216c21a5494ac029547d71b85b025567bc3b53fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f7ada5f_bd83991a",
+        "filename": "java/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2023-05-19T16:52:43Z",
+      "side": 1,
+      "message": "Whenever the package is built, the only additional library I\u0027m seeing is `dl_android.so`, indicating that no other shared libs are packaged with it.\n\nThat being said, would be it be cleaner to explicitly ignore it\u0027s shared deps?",
+      "parentUuid": "185d5b4b_fbddba88",
+      "range": {
+        "startLine": 36,
+        "startChar": 14,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "216c21a5494ac029547d71b85b025567bc3b53fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
