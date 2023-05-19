@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "969adf65_d9615c9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-19T11:15:10Z",
+      "side": 1,
+      "message": "Yes, I deleted it accidentally :) Added it back.",
+      "parentUuid": "e9b5a686_8a4bcd06",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69084a91_794d7872",
@@ -296,6 +320,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c4857eb_1442635d",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-19T11:15:10Z",
+      "side": 1,
+      "message": "I see. I added one more level of nested deps to the Python test.\n\nI think the structure in the Python test is quite readable since it\u0027s in a form of an object literal with proper indentation. A graphical comment doesn\u0027t bring much additional value. WDYT?",
+      "parentUuid": "880ff66b_ad541a2c",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 3
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cd7dda5_968c5a3c",
@@ -357,6 +405,30 @@
       "side": 1,
       "message": "But why do we have to sort them here? What happened to make them unordered?\n\nPython script receives a JSON file that was generated from the information in Soong data structures, so both must be ordered.",
       "parentUuid": "bcc09466_3a827c57",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 31
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13f43f6_5b35b822",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-19T11:15:10Z",
+      "side": 1,
+      "message": "\u003e But why do we have to sort them here?\n\nWe need to sort them because `AssertArrayString` is sensitive to order, while I want it to be insensitive to order.\n\n\u003e What happened to make them unordered?\n\nFor example, if `wantPaths` was `[\u0027a\u0027 ,\u0027b\u0027, \u0027c\u0027]` and `actual` was `[\u0027c\u0027, \u0027a\u0027 ,\u0027b\u0027]`, then `AssertArrayString` would fail, but I don\u0027t want it to fail because the order doesn\u0027t matter.\n\n\u003e Python script receives a JSON file that was generated from the information in Soong data structures, so both must be ordered.\n\nNo, that\u0027s a separate thing. This Soong test case tests `ComputeClassLoaderContext`, which now only returns a list of dependencies. The list of dependencies is for building the Ninja dependency graph and has nothing do to with CLC string construction anymore, so the test really shouldn\u0027t check the order.\n\nIn terms of the order in JSON file, line 97-105 in that Python script sorts the items passed by Soong through JSON, so the order in JSON doesn\u0027t matter.",
+      "parentUuid": "66b29301_899d81ad",
       "range": {
         "startLine": 124,
         "startChar": 2,
