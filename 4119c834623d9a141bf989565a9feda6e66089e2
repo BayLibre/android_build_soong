@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e57e889c_192c7d02",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-19T23:14:17Z",
+      "side": 1,
+      "message": "They are not the same, the SandboxingDenyModuleList lists the modules that are excluded from the sandboxing of genrule, i.e., they don\u0027t build when sandbox is enabled or the build doesn\u0027t generate valid output, so the individual team need to work on those modules and make them sandbox compatible and then remove them from the list. The DepfileAllowList allows these modules to use depfiles and fail all the depfiles usage otherwise. Apparently some modules that are in DepfileAllowList builds fine with sandbox enabled so they are not in the other list. Actually the next step is to ask all the owners of the genrule modules to examine if their modules work fine (not just build fine) with sandboxing, if not they need to add them to the SandboxingDenyModuleList even though they are not in it right now, so we may see some/all the modules in the DepfileAllowList get added to it later if this is what confuse you.",
+      "parentUuid": "946fd82d_f0add6ba",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "4119c834623d9a141bf989565a9feda6e66089e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06e4fa87_473c8ada",
         "filename": "genrule/genrule.go",
         "patchSetId": 6
@@ -60,6 +84,30 @@
       "writtenOn": "2023-05-19T22:00:18Z",
       "side": 1,
       "message": "This function returns a rule builder which might or might not sandbox inputs depending on the module name/dir. Can we extract the conditional logic to a separate called `shouldSandboxInputs` and just use it at the caller of this function instead?\n\nIf this function needs to be exported, can you add a comment?",
+      "range": {
+        "startLine": 1026,
+        "startChar": 5,
+        "endLine": 1026,
+        "endChar": 15
+      },
+      "revId": "4119c834623d9a141bf989565a9feda6e66089e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c74d4f_ef7103dd",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-19T23:14:17Z",
+      "side": 1,
+      "message": "I can rename it to better reflect this is to return a rule builder, the two potential values return from this function are both sandbox-enabled, just at different levels, one only sandboxing tools, the other also includes inputs.",
+      "parentUuid": "f5591a90_10a089a7",
       "range": {
         "startLine": 1026,
         "startChar": 5,
