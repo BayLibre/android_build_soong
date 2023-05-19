@@ -22,6 +22,30 @@
       },
       "revId": "09796096c34e8ab50be13b2a9d5c9387db6e85e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15587024_746bd1a6",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-19T21:49:49Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, Romain! I will upload an initial rule implementation CL and submit this CL with it.",
+      "parentUuid": "1b414c34_c339a05c",
+      "range": {
+        "startLine": 136,
+        "startChar": 21,
+        "endLine": 136,
+        "endChar": 74
+      },
+      "revId": "09796096c34e8ab50be13b2a9d5c9387db6e85e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
