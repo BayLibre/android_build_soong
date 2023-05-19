@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a80bb9_db113c77",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-05-19T10:00:35Z",
+      "side": 1,
+      "message": "changed to md5 (as we don\u0027t care about attacks here and we don\u0027t have blake)",
+      "parentUuid": "3dbe837c_57d2446d",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "e626a70b98b7fd10692024bbf46295848e8da911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00481990_0b953fb0",
@@ -77,6 +101,30 @@
       "writtenOn": "2023-05-18T11:00:45Z",
       "side": 1,
       "message": "hash :\u003d \"\"\nif hasHash {\n  hash :\u003d getHash()\n}\nreturn PathForOutput(ctx,.....,hash)\n\nnits: How about using PathForOutput once instead of twice? filepath.Join() ignores empty input.",
+      "range": {
+        "startLine": 1478,
+        "startChar": 1,
+        "endLine": 1480,
+        "endChar": 2
+      },
+      "revId": "e626a70b98b7fd10692024bbf46295848e8da911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "894df550_09436765",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-05-19T10:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "358fdae3_c1a54697",
       "range": {
         "startLine": 1478,
         "startChar": 1,
