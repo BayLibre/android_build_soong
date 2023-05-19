@@ -487,6 +487,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9d63efa_fa8f8750",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-19T12:12:44Z",
+      "side": 1,
+      "message": "Discussed offline. The order of `paths` doesn\u0027t really matter, so testing the order is out of the scope of this test case. The order in the JSON within each SDK versions does matter, and the Python script keeps it as is. Added a test below to test that the order is preserved when serialized to JSON.",
+      "parentUuid": "2a325c8d_54105e3a",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 31
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1c3c751_d5508e16",
