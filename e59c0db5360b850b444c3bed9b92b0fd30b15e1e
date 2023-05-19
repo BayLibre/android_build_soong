@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a2dd3f3_4089f241",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-05-19T18:36:37Z",
+      "side": 1,
+      "message": "Regarding the manual testing performed, I verified that the generated .ninja, .mk, and .json files were unchanged from before when:\n\n - singletons marked for parallel execution were run in parallel\n - singletons marked for parallel execution were run sequentially in reverse.\n \nAdditionally, I have reviewed the code in each of those singletons to confirm that none of them rely on other singletons for their generated behavior.  The remaining sequential singletons (phony, makevars, ninjadeps, and bootstrap) **do** need to run last, and in that order.",
+      "revId": "e59c0db5360b850b444c3bed9b92b0fd30b15e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
