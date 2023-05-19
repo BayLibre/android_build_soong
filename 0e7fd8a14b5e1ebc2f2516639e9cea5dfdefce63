@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08d8bb8_6fd93d4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-19T16:11:23Z",
+      "side": 1,
+      "message": "Could we merge core things to aidl_interface or aidl_interface_headers instead of creating a new aidl_library type?",
+      "revId": "0e7fd8a14b5e1ebc2f2516639e9cea5dfdefce63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
