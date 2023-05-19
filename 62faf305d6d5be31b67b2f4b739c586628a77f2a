@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9b5a686_8a4bcd06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-19T10:39:00Z",
+      "side": 1,
+      "message": "Thanks!\n\nNow missing commit headline (deleted accidentally?).",
+      "parentUuid": "d5d208ee_301b9ec5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69084a91_794d7872",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I believe I mentioned in the doc for Roboleaf that there are a lot :)",
       "parentUuid": "69084a91_794d7872",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 51
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a6627d_dcc40de0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-19T10:39:00Z",
+      "side": 1,
+      "message": "Yes, I probably thought it\u0027s the overall number, not all of them caused by optional uses-libraries.",
+      "parentUuid": "4ecd4e30_9b5b9404",
       "range": {
         "startLine": 28,
         "startChar": 6,
@@ -226,6 +274,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "880ff66b_ad541a2c",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-19T10:39:00Z",
+      "side": 1,
+      "message": "I see, but the python test must focus on the structure to some extent as well to check that we handle more than one-level nested libs correctly (since this Soong test doesn\u0027t test the structure anymore, as it does not compare the final strings).\n\nAlso, please include a graphical comment like this one in the python test to show tree structure --- it helps to understand what\u0027s going on in the test at a glance (or at least what the test author intended it to do).",
+      "parentUuid": "beca1547_24dfb24e",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 3
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5cd7dda5_968c5a3c",
         "filename": "dexpreopt/class_loader_context_test.go",
         "patchSetId": 7
@@ -273,6 +345,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66b29301_899d81ad",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-19T10:39:00Z",
+      "side": 1,
+      "message": "But why do we have to sort them here? What happened to make them unordered?\n\nPython script receives a JSON file that was generated from the information in Soong data structures, so both must be ordered.",
+      "parentUuid": "bcc09466_3a827c57",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 31
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1c3c751_d5508e16",
         "filename": "scripts/construct_context_test.py",
         "patchSetId": 7
@@ -308,6 +404,30 @@
       "side": 1,
       "message": "It is, as part of `v2/android-test-harness-team/suite/host_unit_tests`. You can see it run in presubmit.",
       "parentUuid": "f1c3c751_d5508e16",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "62faf305d6d5be31b67b2f4b739c586628a77f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb9a18ad_b80d590d",
+        "filename": "scripts/construct_context_test.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-05-19T10:39:00Z",
+      "side": 1,
+      "message": "Oh, good to know, thanks.",
+      "parentUuid": "afb9ff18_8a463145",
       "range": {
         "startLine": 17,
         "startChar": 0,
