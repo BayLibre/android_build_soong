@@ -760,6 +760,9 @@ var (
 		// aidl
 		"aidl",
 		"libaidl-common",
+
+		// Used by xsd_config
+		"xsdc",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
