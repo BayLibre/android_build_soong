@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "946fd82d_f0add6ba",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-19T22:00:18Z",
+      "side": 1,
+      "message": "1. Can we add some documentation/comment how these allowlist and denylists work with GenruleSandboxing product var? Reading `DepfileAllowList` and `SandboxingDenyModuleList`, I feel like we just need one or the other. `SandboxingDenyModuleList` has the modules that we don\u0027t enable inputs sandbox while `DepfileAllowList` has the modules that we allow using `depfile` prop. Aren\u0027t they the same thing?\n\n2. Can we consolidate SandboxingDenyPathList into SandboxingDenyModuleList for the sake of simplicity?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "4119c834623d9a141bf989565a9feda6e66089e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e4fa87_473c8ada",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-19T22:00:18Z",
+      "side": 1,
+      "message": "Can we add a TODO with a bug to remove this later?",
+      "range": {
+        "startLine": 598,
+        "startChar": 5,
+        "endLine": 598,
+        "endChar": 15
+      },
+      "revId": "4119c834623d9a141bf989565a9feda6e66089e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5591a90_10a089a7",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-19T22:00:18Z",
+      "side": 1,
+      "message": "This function returns a rule builder which might or might not sandbox inputs depending on the module name/dir. Can we extract the conditional logic to a separate called `shouldSandboxInputs` and just use it at the caller of this function instead?\n\nIf this function needs to be exported, can you add a comment?",
+      "range": {
+        "startLine": 1026,
+        "startChar": 5,
+        "endLine": 1026,
+        "endChar": 15
+      },
+      "revId": "4119c834623d9a141bf989565a9feda6e66089e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
