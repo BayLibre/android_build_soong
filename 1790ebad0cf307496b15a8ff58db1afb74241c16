@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2b905ae_14ab0310",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-05-19T15:38:17Z",
+      "side": 1,
+      "message": "nit: make these spaces",
+      "range": {
+        "startLine": 846,
+        "startChar": 0,
+        "endLine": 846,
+        "endChar": 2
+      },
+      "revId": "1790ebad0cf307496b15a8ff58db1afb74241c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a411688_92433e9a",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2719,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-05-19T15:38:17Z",
+      "side": 1,
+      "message": "how about\n```\nif fg, ok :\u003d otherM.(android.FileGroupPath); ok {\n```\nSince you created the FileGroupPath interface just for this purpose I think it\u0027s safe to use it also as your action criteria here.\n\nI\u0027m also thinking to reduce indentation we could merge this condition with the above one into a separate function like\n```\nif IsSingleFilegroup(ctx, m.properties.Java_resources) {\n...\n}\n```\n\nand define the `IsSingleFilegroup` function separately, for cosmetic reasons but also because, even though we have 2 \"ifs\" here, conceptually there\u0027s only one branching happening.\n\nThat means you lose the error messaging about module type below, but I think it\u0027s worth the tradeoff.",
+      "range": {
+        "startLine": 2718,
+        "startChar": 0,
+        "endLine": 2719,
+        "endChar": 43
+      },
+      "revId": "1790ebad0cf307496b15a8ff58db1afb74241c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eadeaa0_52b9f91d",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2724,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-05-19T15:38:17Z",
+      "side": 1,
+      "message": "Can this just be \n```\nresourceStripPrefix \u003d proptools.StringPtr(filepath.Join(ctx.OtherModuleDir(otherM), fg.GetPath(ctx))) \n``` ?",
+      "range": {
+        "startLine": 2720,
+        "startChar": 0,
+        "endLine": 2724,
+        "endChar": 53
+      },
+      "revId": "1790ebad0cf307496b15a8ff58db1afb74241c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

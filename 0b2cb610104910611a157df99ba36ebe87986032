@@ -16,6 +16,24 @@
       "message": "Are we good to allowlist this? The path property is being handled differently in bp2build for different cases but this is the filegroup in libauto_value_plugin, a blocker for a main line module",
       "revId": "0b2cb610104910611a157df99ba36ebe87986032",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ddc8fbf_d2816371",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-05-19T15:38:17Z",
+      "side": 0,
+      "message": "Yeah it should only be used by java modules, so in conjunction with the rest of your change I think we\u0027re good.",
+      "parentUuid": "061297d5_a8257d53",
+      "revId": "0b2cb610104910611a157df99ba36ebe87986032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
