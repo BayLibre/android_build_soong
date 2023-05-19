@@ -16,6 +16,24 @@
       "message": "maybe too wide than necessary, i.e. should I instead only add the sub-dir `bpf_headers`?",
       "revId": "6e5a5b18ee3c7244876871ff041959a04b2ee5d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ece1202_6b5dceee",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-19T17:56:55Z",
+      "side": 1,
+      "message": "If this builds, it\u0027s fine to leave as is for now.",
+      "parentUuid": "63953cda_075d9c2c",
+      "revId": "6e5a5b18ee3c7244876871ff041959a04b2ee5d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
