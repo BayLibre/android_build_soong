@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63953cda_075d9c2c",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-05-19T16:50:32Z",
+      "side": 1,
+      "message": "maybe too wide than necessary, i.e. should I instead only add the sub-dir `bpf_headers`?",
+      "revId": "6e5a5b18ee3c7244876871ff041959a04b2ee5d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
