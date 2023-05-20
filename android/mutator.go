@@ -291,6 +291,8 @@ type BottomUpMutator func(BottomUpMutatorContext)
 type BottomUpMutatorContext interface {
 	BaseMutatorContext
 
+	HasBp2buildInfo() bool
+
 	// AddDependency adds a dependency to the given module.  It returns a slice of modules for each
 	// dependency (some entries may be nil).
 	//
@@ -410,6 +412,10 @@ type bottomUpMutatorContext struct {
 	bp blueprint.BottomUpMutatorContext
 	baseModuleContext
 	finalPhase bool
+}
+
+func (b *bottomUpMutatorContext) HasBp2buildInfo() bool {
+	return b.Module().IsConvertedByBp2build()
 }
 
 func bottomUpMutatorContextFactory(ctx blueprint.BottomUpMutatorContext, a Module,
