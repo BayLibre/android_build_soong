@@ -17,6 +17,7 @@ package android
 import (
 	"bufio"
 	"errors"
+	"fmt"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -69,6 +70,9 @@ type BazelConversionStatus struct {
 
 	// MissingBp2buildDep stores the module names of direct dependency that were not found
 	MissingDeps []string `blueprint:"mutated"`
+
+	// Deps stores the module names of all direct dependencies
+	Deps []string `blueprint:"mutated"`
 }
 
 type BazelModuleProperties struct {
@@ -519,7 +523,13 @@ func bp2buildDefaultTrueRecursively(packagePath string, config allowlists.Bp2Bui
 }
 
 func registerBp2buildConversionMutator(ctx RegisterMutatorsContext) {
+	clearedNames := map[string]bool{}
+
 	ctx.TopDown("bp2build_conversion", convertWithBp2build).Parallel()
+	ctx.BottomUp("bp2build_deps", bp2buildDeps).Parallel()
+	ctx.BottomUp("bp2build_testpass", func(ctx BottomUpMutatorContext) {
+		doNothingForNow(ctx, clearedNames)
+	})
 }
 
 func convertWithBp2build(ctx TopDownMutatorContext) {
@@ -529,6 +539,24 @@ func convertWithBp2build(ctx TopDownMutatorContext) {
 	}
 
 	bModule.ConvertWithBp2build(ctx)
+}
+
+func bp2buildDeps(ctx BottomUpMutatorContext) {
+	ctx.AddDependency(ctx.Module(), nil, ctx.Module().GetBp2buildDeps()...)
+}
+
+func doNothingForNow(ctx BottomUpMutatorContext, clearedNames map[string]bool) {
+	if ctx.HasBp2buildInfo() {
+		ctx.VisitDirectDeps(func(dep Module) {
+			if ctx.OtherModuleDependencyTag(dep) != DefaultsDepTag {
+				_, depCleared := clearedNames[dep.Name()]
+				if depCleared || !dep.IsConvertedByBp2build() {
+					clearedNames[ctx.Module().Name()] = true
+					fmt.Println(ctx.Module().Name(), dep.Name(), len(clearedNames))
+				}
+			}
+		})
+	}
 }
 
 func registerApiBp2buildConversionMutator(ctx RegisterMutatorsContext) {

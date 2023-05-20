@@ -360,6 +360,8 @@ type BaseModuleContext interface {
 	// AddMissingBp2buildDep stores the module name of a direct dependency that was not found.
 	AddMissingBp2buildDep(dep string)
 
+	AddBp2buildDep(dep string)
+
 	Target() Target
 	TargetPrimary() bool
 
@@ -562,6 +564,7 @@ type Module interface {
 	Bp2buildTargets() []bp2buildInfo
 	GetUnconvertedBp2buildDeps() []string
 	GetMissingBp2buildDeps() []string
+	GetBp2buildDeps() []string
 
 	BuildParamsForTests() []BuildParams
 	RuleParamsForTests() map[blueprint.Rule]blueprint.RuleParams
@@ -1579,6 +1582,11 @@ func (b *baseModuleContext) AddMissingBp2buildDep(dep string) {
 	*missingDeps = append(*missingDeps, dep)
 }
 
+func (b *baseModuleContext) AddBp2buildDep(dep string) {
+	deps := &b.Module().base().commonProperties.BazelConversionStatus.Deps
+	*deps = append(*deps, dep)
+}
+
 // GetUnconvertedBp2buildDeps returns the list of module names of this module's direct dependencies that
 // were not converted to Bazel.
 func (m *ModuleBase) GetUnconvertedBp2buildDeps() []string {
@@ -1588,6 +1596,10 @@ func (m *ModuleBase) GetUnconvertedBp2buildDeps() []string {
 // GetMissingBp2buildDeps returns the list of module names that were not found in Android.bp files.
 func (m *ModuleBase) GetMissingBp2buildDeps() []string {
 	return FirstUniqueStrings(m.commonProperties.BazelConversionStatus.MissingDeps)
+}
+
+func (m *ModuleBase) GetBp2buildDeps() []string {
+	return FirstUniqueStrings(m.commonProperties.BazelConversionStatus.Deps)
 }
 
 func (m *ModuleBase) AddJSONData(d *map[string]interface{}) {

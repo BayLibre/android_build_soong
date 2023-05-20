@@ -94,6 +94,7 @@ type BazelConversionPathContext interface {
 	ModuleFromName(name string) (blueprint.Module, bool)
 	AddUnconvertedBp2buildDep(string)
 	AddMissingBp2buildDep(dep string)
+	AddBp2buildDep(dep string)
 }
 
 // BazelLabelForModuleDeps expects a list of reference to other modules, ("<module>"
@@ -405,6 +406,9 @@ func getOtherModuleLabel(ctx BazelConversionPathContext, dep, tag string,
 		return &bazel.Label{
 			Label: ":" + dep + "__BP2BUILD__MISSING__DEP",
 		}
+	}
+	if dep != "libc" {
+		ctx.AddBp2buildDep(dep)
 	}
 	if !convertedToBazel(ctx, m) {
 		ctx.AddUnconvertedBp2buildDep(dep)
