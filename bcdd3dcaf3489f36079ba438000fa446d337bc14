@@ -70,6 +70,30 @@
       },
       "revId": "bcdd3dcaf3489f36079ba438000fa446d337bc14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf247638_74545151",
+        "filename": "python/test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-05-22T16:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30c1899e_aa4c3da5",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "bcdd3dcaf3489f36079ba438000fa446d337bc14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
