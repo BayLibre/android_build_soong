@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d24c67f5_b493c991",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-05-22T18:41:02Z",
+      "side": 1,
+      "message": "In other places in Soong (e.g. https://cs.android.com/android/platform/superproject/+/master:build/soong/java/app.go;l\u003d89-94;drc\u003d7fecde9041bfe23bbcdfe8a91d596daa4a1ea462) \"use_embedded_native_libs\" means the opposite, use libraries that are inside the APK instead of the ones in /system.",
+      "revId": "216c21a5494ac029547d71b85b025567bc3b53fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "185d5b4b_fbddba88",
         "filename": "java/fuzz.go",
         "patchSetId": 4
