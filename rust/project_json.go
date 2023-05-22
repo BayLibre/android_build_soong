@@ -74,7 +74,7 @@ func rustProjectGeneratorSingleton() android.Singleton {
 }
 
 func init() {
-	android.RegisterParallelSingletonType("rust_project_generator", rustProjectGeneratorSingleton)
+	android.RegisterSingletonType("rust_project_generator", rustProjectGeneratorSingleton)
 }
 
 // sourceProviderVariantSource returns the path to the source file if this

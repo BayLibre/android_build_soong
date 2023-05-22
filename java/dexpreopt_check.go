@@ -28,7 +28,7 @@ func init() {
 }
 
 func RegisterDexpreoptCheckBuildComponents(ctx android.RegistrationContext) {
-	ctx.RegisterParallelSingletonModuleType("dexpreopt_systemserver_check", dexpreoptSystemserverCheckFactory)
+	ctx.RegisterSingletonModuleType("dexpreopt_systemserver_check", dexpreoptSystemserverCheckFactory)
 }
 
 // A build-time check to verify if all compilation artifacts of system server jars are installed

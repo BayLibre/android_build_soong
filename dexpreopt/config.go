@@ -197,7 +197,7 @@ var pctx = android.NewPackageContext("android/soong/dexpreopt")
 
 func init() {
 	pctx.Import("android/soong/android")
-	android.RegisterParallelSingletonType("dexpreopt-soong-config", func() android.Singleton {
+	android.RegisterSingletonType("dexpreopt-soong-config", func() android.Singleton {
 		return &globalSoongConfigSingleton{}
 	})
 }

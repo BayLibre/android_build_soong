@@ -15,7 +15,7 @@
 package android
 
 func init() {
-	RegisterParallelSingletonType("testsuites", testSuiteFilesFactory)
+	RegisterSingletonType("testsuites", testSuiteFilesFactory)
 }
 
 func testSuiteFilesFactory() Singleton {
