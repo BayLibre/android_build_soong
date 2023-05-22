@@ -319,6 +319,30 @@
       },
       "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af43a58f_aaf7fec7",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-22T16:13:11Z",
+      "side": 1,
+      "message": "apex_name is an existing concept that the build doesn\u0027t know about -- it\u0027s the `name` in `apex_manifest.json`, which is where the apex gets mounted on-device (e.g. `/apex/com.android.sdkext/`). It doesn\u0027t change just because the package name is `com.google.android.sdkext`, and it doesn\u0027t change just because a different soong module produces it. The point of the change is to have `apex_available` use this name instead of the build module name (or base module name).\n\nI don\u0027t think it\u0027s bad that the build system is made aware of it, in principle, but what we\u0027re trying to achieve is only to avoid having to duplicate apex_available rules for the two variants of com.android.extservices that we\u0027re trying to define. \n\nIf this CL is controversial, how do we feel about this less intrusive, albeit hackier approach (psuedo code):\n\n```\nif \"com.android.extservices\" in apex_available:\n  apex_available.append(\"com.android.extservices.sminus\")\n```",
+      "parentUuid": "d390dd12_8976d48c",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
