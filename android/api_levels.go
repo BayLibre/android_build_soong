@@ -22,7 +22,7 @@ import (
 )
 
 func init() {
-	RegisterParallelSingletonType("api_levels", ApiLevelsSingleton)
+	RegisterSingletonType("api_levels", ApiLevelsSingleton)
 }
 
 const previewAPILevelBase = 9000

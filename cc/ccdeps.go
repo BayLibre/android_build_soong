@@ -30,7 +30,7 @@ import (
 // The info file is generated in $OUT/module_bp_cc_depend.json.
 
 func init() {
-	android.RegisterParallelSingletonType("ccdeps_generator", ccDepsGeneratorSingleton)
+	android.RegisterSingletonType("ccdeps_generator", ccDepsGeneratorSingleton)
 }
 
 func ccDepsGeneratorSingleton() android.Singleton {

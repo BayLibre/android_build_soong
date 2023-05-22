@@ -3724,7 +3724,7 @@ func (m *moduleContext) TargetRequiredModuleNames() []string {
 }
 
 func init() {
-	RegisterParallelSingletonType("buildtarget", BuildTargetSingleton)
+	RegisterSingletonType("buildtarget", BuildTargetSingleton)
 }
 
 func BuildTargetSingleton() Singleton {

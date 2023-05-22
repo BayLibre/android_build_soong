@@ -28,7 +28,7 @@ import (
 
 func init() {
 	android.RegisterPreSingletonType("sdk_versions", sdkPreSingletonFactory)
-	android.RegisterParallelSingletonType("sdk", sdkSingletonFactory)
+	android.RegisterSingletonType("sdk", sdkSingletonFactory)
 	android.RegisterMakeVarsProvider(pctx, sdkMakeVars)
 }
 

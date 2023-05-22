@@ -19,7 +19,7 @@ import (
 )
 
 func init() {
-	android.RegisterParallelSingletonType("rustdoc", RustdocSingleton)
+	android.RegisterSingletonType("rustdoc", RustdocSingleton)
 }
 
 func RustdocSingleton() android.Singleton {
