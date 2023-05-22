@@ -209,6 +209,7 @@ func runKati(ctx Context, config Config, extraSuffix string, args []string, envF
 	// anyone trying to parse it as an integer will probably get "0".
 	cmd.Environment.Unset("HAS_BUILD_NUMBER")
 	buildNumber, ok := cmd.Environment.Get("BUILD_NUMBER")
+	cmd.Environment.Unset("BUILD_NUMBER")
 	if ok {
 		cmd.Environment.Set("HAS_BUILD_NUMBER", "true")
 		writeValueIfChanged(ctx, config, config.OutDir(), "file_name_tag.txt", buildNumber)
