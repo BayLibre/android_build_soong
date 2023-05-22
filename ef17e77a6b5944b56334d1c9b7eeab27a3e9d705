@@ -343,6 +343,30 @@
       },
       "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85275f4_fdd35c76",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-22T17:27:30Z",
+      "side": 1,
+      "message": "The goal you\u0027re describing isn\u0027t particularly controversial, but it\u0027s not clear from the CL/description alone what problem this is CL was trying to solve, making it difficult to review and advise what needs to be done in Bazel.\n\nancr@, can you update:\n\n* the CL description to clearly specify what the new property is necessary/used for\n* the comment for the property to mention what this will be used for -- it only mentions install location\n\nIf the change is only about `apex_available`:\n\n* can you add tests about the `apex_available` functionality with this property?\n* why are the `apexVariationName` changes necessary? Are we relying on other behaviors here? If so, can we document/add tests for them? If not, can we remove this portion of the change?\n* the relevant Bazel code is [here](https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex_available.bzl;l\u003d36;drc\u003d8888d9b40254999b87a6169b39d11fd8b9a4a1b2) for `apex_available`.\n\nIf there is needed functionality other than `apex_available` for the `apex_name` change, we can advise further after understanding what the requirements are.",
+      "parentUuid": "af43a58f_aaf7fec7",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
