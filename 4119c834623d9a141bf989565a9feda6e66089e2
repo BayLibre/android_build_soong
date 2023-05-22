@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d93604fa_722b8082",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-05-22T14:16:36Z",
+      "side": 1,
+      "message": "\u003e Actually the next step is to ask all the owners of the genrule modules to examine if their modules work fine (not just build fine) with sandboxing, if not they need to add them to the SandboxingDenyModuleList even though they are not in it right now, so we may see some/all the modules in the DepfileAllowList get added to it later if this is what confuse you.\n\nIs it true whatever genrule module that\u0027s not in `SandboxingDenyModuleList` should be `DepfileAllowList`? If so, can we just maintain one list and use `exist`/`not exist` conditional logic to imply the other list? If not, what module that can\u0027t fall into eigher of the lists?",
+      "parentUuid": "e57e889c_192c7d02",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "4119c834623d9a141bf989565a9feda6e66089e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06e4fa87_473c8ada",
         "filename": "genrule/genrule.go",
         "patchSetId": 6
