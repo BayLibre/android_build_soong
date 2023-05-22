@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c9059e_ba52fb05",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2872,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-22T14:04:05Z",
+      "side": 1,
+      "message": "double return?",
+      "range": {
+        "startLine": 2871,
+        "startChar": 1,
+        "endLine": 2872,
+        "endChar": 13
+      },
+      "revId": "f84ea432dcc069bdce011dfad74859b7ed70cccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
