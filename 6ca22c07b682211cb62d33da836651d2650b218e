@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24c436b_78fadfc9",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-22T09:13:04Z",
+      "side": 1,
+      "message": "can you also do it for an override_apex?",
+      "range": {
+        "startLine": 1592,
+        "startChar": 5,
+        "endLine": 1592,
+        "endChar": 40
+      },
+      "revId": "6ca22c07b682211cb62d33da836651d2650b218e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

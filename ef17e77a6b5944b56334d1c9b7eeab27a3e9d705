@@ -295,6 +295,30 @@
       },
       "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d390dd12_8976d48c",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-22T09:13:04Z",
+      "side": 1,
+      "message": "It depends on what you want this apex_name property to influence, then I can help point to the line of code in Bazel/Soong (if it exists). The API of the apex bazel rule are its providers (https://cs.android.com/android/platform/superproject/+/master:build/bazel/rules/apex/apex.bzl;l\u003d891-926;drc\u003d8efceb357b097cf977cb06ad9dc4f5b3089f9d6a), so that should be a good starting point.\n\nIf you\u0027d allow me to take a step back.. a source of confusion that isn\u0027t made easier by this CL is that there are still multiple \"names\" to an apex, and how they\u0027re consumed:\n\n* Soong module name / Bazel BUILD target name\n  * override_apex.base\n  * apex_available\n  * output file paths (intermediates, dist dir)\n* apex.package_name\n  * package manager\n  * PRODUCT_MANIFEST_PACKAGE_NAME_OVERRIDES\n* apex.apex_name (this CL)\n  * install file path (/apex/...) ?\n  * Soong variations? / Bazel configurations\n* apex_manifest.json\u0027s \"name\" entry\n  * ? \n\nIt would really help to clarify the design and role apex_name has with these other names. AFAICT apex_available checks are still using the Soong module name instead of this new apex_name property. Is that intentional?",
+      "parentUuid": "24776507_8b5376dd",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "ef17e77a6b5944b56334d1c9b7eeab27a3e9d705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
