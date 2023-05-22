@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89551907_de1583be",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2023-05-22T19:06:42Z",
+      "side": 1,
+      "message": "Thanks for pointing this out.\n\nUpdating the variable name to \"extract_native_libs\" for consistency with the other implementations.",
+      "parentUuid": "d24c67f5_b493c991",
+      "revId": "216c21a5494ac029547d71b85b025567bc3b53fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "185d5b4b_fbddba88",
         "filename": "java/fuzz.go",
         "patchSetId": 4
