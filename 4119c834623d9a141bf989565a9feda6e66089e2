@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3ef522_9ae68db4",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-22T22:03:17Z",
+      "side": 1,
+      "message": "that is not true, most of the 3500 modules are in neither of the lists, meaning they don\u0027t use depfiles and can be build with sandbox enabled.",
+      "parentUuid": "d93604fa_722b8082",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "4119c834623d9a141bf989565a9feda6e66089e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06e4fa87_473c8ada",
@@ -85,6 +109,30 @@
       "writtenOn": "2023-05-19T22:00:18Z",
       "side": 1,
       "message": "Can we add a TODO with a bug to remove this later?",
+      "range": {
+        "startLine": 598,
+        "startChar": 5,
+        "endLine": 598,
+        "endChar": 15
+      },
+      "revId": "4119c834623d9a141bf989565a9feda6e66089e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60b77b39_ea3c2ebe",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-22T22:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06e4fa87_473c8ada",
       "range": {
         "startLine": 598,
         "startChar": 5,
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "I can rename it to better reflect this is to return a rule builder, the two potential values return from this function are both sandbox-enabled, just at different levels, one only sandboxing tools, the other also includes inputs.",
       "parentUuid": "f5591a90_10a089a7",
+      "range": {
+        "startLine": 1026,
+        "startChar": 5,
+        "endLine": 1026,
+        "endChar": 15
+      },
+      "revId": "4119c834623d9a141bf989565a9feda6e66089e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dd9da43_78a1884a",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-22T22:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09c74d4f_ef7103dd",
       "range": {
         "startLine": 1026,
         "startChar": 5,
