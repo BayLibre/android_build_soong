@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11e2ce23_81905b5d",
+        "filename": "aidl_library/aidl_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-22T22:33:35Z",
+      "side": 1,
+      "message": "nit: this if statement can be combined with the one above to save a few lines.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 47
+      },
+      "revId": "c6b3a07af3b2c659b4d4528fe6033e2258cf5a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716e1cfa_885dc203",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 4565,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-22T22:33:35Z",
+      "side": 1,
+      "message": "Aidl?",
+      "range": {
+        "startLine": 4565,
+        "startChar": 16,
+        "endLine": 4565,
+        "endChar": 19
+      },
+      "revId": "c6b3a07af3b2c659b4d4528fe6033e2258cf5a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00e03a5_4f68cdab",
+        "filename": "cc/gen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-05-22T22:33:35Z",
+      "side": 1,
+      "message": "s/because//",
+      "range": {
+        "startLine": 309,
+        "startChar": 28,
+        "endLine": 309,
+        "endChar": 35
+      },
+      "revId": "c6b3a07af3b2c659b4d4528fe6033e2258cf5a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
