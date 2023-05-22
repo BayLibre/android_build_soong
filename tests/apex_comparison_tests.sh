@@ -74,7 +74,15 @@ BAZEL_MINIMAL="$(realpath $(call_bazel cquery --config=bp2build --config=android
 # # Build debugfs separately, as it's not a dep of apexer, but needs to be an explicit arg.
 call_bazel build --config=bp2build --config=linux_x86_64 //external/e2fsprogs/debugfs //system/apex/tools:deapexer
 DEBUGFS_PATH="$(realpath $(call_bazel cquery --config=bp2build --config=linux_x86_64 --config=ci --output=files //external/e2fsprogs/debugfs))"
-DEAPEXER="bazel-bin/system/apex/tools/deapexer"
+DEAPEXER_PATHS=( $(call_bazel cquery --config=bp2build --config=linux_x86_64 --config=ci --output=files //system/apex/tools:deapexer) )
+DEAPEXER=""
+for path in "${DEAPEXER_PATHS[@]}"
+do
+  if [[ $path == *deapexer ]]
+  then
+    DEAPEXER="$(realpath $path)"
+  fi
+done
 DEAPEXER="$DEAPEXER --debugfs_path=$DEBUGFS_PATH"
 
 #######
