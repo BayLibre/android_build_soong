@@ -22,6 +22,30 @@
       },
       "revId": "255ff7d4d13c38f680737bd4a44a68182a33e531",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d165a0b2_4588ce4b",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-23T05:39:37Z",
+      "side": 1,
+      "message": "yeah, why does this need the loop but debugfs_path doesn\u0027t?\n\nalternatively why not call `bazel run` directly:\n\n```\nfunction deapexer() {\n    DEBUGFS_PATH\u003d\"$(realpath $(call_bazel cquery --config\u003dbp2build --config\u003dlinux_x86_64 --config\u003dci --o\n    call_bazel run --config\u003dbp2build //system/apex/tools:deapexer --debugfs_path\u003d$DEBUGFS_PATH $@\n}\n\ndeapexer list \"$SOONG_APEX\" \u003e \"$SOONG_LIST\"\n\n```",
+      "parentUuid": "a9cbeadf_c7ea547a",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "255ff7d4d13c38f680737bd4a44a68182a33e531",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
