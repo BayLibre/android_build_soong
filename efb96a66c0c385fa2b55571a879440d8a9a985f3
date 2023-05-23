@@ -16,6 +16,29 @@
       "message": "Just me being on the careful side: I suspect that this is a breaking change for many folks who\u0027ve been relying on `out/soong/build.ninja` path in one way or another. There are two mitigating options:\n\n1) Keep an existing out/soong/build.ninja symlink pointing to the last generated build-$product.ninja. This would make this change transparent to users.\n2) Broadcast to soong-discuss@ and other lists, and setting a date to remove the compat symlink.",
       "revId": "efb96a66c0c385fa2b55571a879440d8a9a985f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5695b98b_581ccf76",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-23T08:00:34Z",
+      "side": 1,
+      "message": "Make this a variable so you can avoid calling SoongVarsFile() many times.\n\n```\ncommonArgs :\u003d []string{\"--soong_variables\", config.SoongVarsFile()}\n\nmainSoongBuildExtraArgs :\u003d append(commonArgs, \"-o\", config.SoongNinjaFile())\n\n...\n\npbfs :\u003d []PrimaryBuilderFactory{\n\t\t{\n\t\t\tname:         soongBuildTag,\n\t\t\tdescription:  fmt.Sprintf(\"analyzing Android.bp files and generating ninja file at %s\", config.SoongNinjaFile()),\n\t\t\tconfig:       config,\n\t\t\toutput:       config.SoongNinjaFile(),\n\t\t\tspecificArgs: mainSoongBuildExtraArgs,\n\t\t},\n\t\t{\n\t\t\tname:        bp2buildFilesTag,\n\t\t\tdescription: fmt.Sprintf(\"converting Android.bp files to BUILD files at %s/bp2build\", config.SoongOutDir()),\n\t\t\tconfig:      config,\n\t\t\toutput:      config.Bp2BuildFilesMarkerFile(),\n\t\t\tspecificArgs: append(commonArgs, \"--bp2build_marker\", config.Bp2BuildFilesMarkerFile()),\n\t\t},\n```",
+      "range": {
+        "startLine": 266,
+        "startChar": 68,
+        "endLine": 266,
+        "endChar": 111
+      },
+      "revId": "efb96a66c0c385fa2b55571a879440d8a9a985f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
