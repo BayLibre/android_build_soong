@@ -46,6 +46,30 @@
       },
       "revId": "255ff7d4d13c38f680737bd4a44a68182a33e531",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c7081b3_fee7ddd2",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-05-23T14:03:38Z",
+      "side": 1,
+      "message": "the `cquery` call returns two results for deapexer...the source file and the result of when everything is copied to the out directory. My guess as to why it\u0027s different from `debugfs_path` is that deapexer is kind of a prebuilt, so in some sense the source file is the same as the build artifact.",
+      "parentUuid": "d165a0b2_4588ce4b",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "255ff7d4d13c38f680737bd4a44a68182a33e531",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
