@@ -465,7 +465,7 @@ func dexpreoptBootJarsFactory() android.SingletonModule {
 }
 
 func RegisterDexpreoptBootJarsComponents(ctx android.RegistrationContext) {
-	ctx.RegisterParallelSingletonModuleType("dex_bootjars", dexpreoptBootJarsFactory)
+	ctx.RegisterSingletonModuleType("dex_bootjars", dexpreoptBootJarsFactory)
 }
 
 func SkipDexpreoptBootJars(ctx android.PathContext) bool {

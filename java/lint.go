@@ -705,7 +705,7 @@ func (l *lintSingleton) MakeVars(ctx android.MakeVarsContext) {
 var _ android.SingletonMakeVarsProvider = (*lintSingleton)(nil)
 
 func init() {
-	android.RegisterParallelSingletonType("lint",
+	android.RegisterSingletonType("lint",
 		func() android.Singleton { return &lintSingleton{} })
 
 	registerLintBuildComponents(android.InitRegistrationContext)
