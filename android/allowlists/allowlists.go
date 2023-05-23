@@ -771,6 +771,7 @@ var (
 		"java_import",
 		"java_import_host",
 		"java_sdk_library",
+		"java_test_host",
 		"sysprop_library",
 	}
 
@@ -1462,6 +1463,33 @@ var (
 
 		// python_test_host with test data
 		"sbom_writers_test",
+
+		// java_* modules with both java_resources and java_resource_dir
+		"CompilationTestCases",
+		"CtsCompilationTestCases",
+		"error_prone_android_framework_test",
+		"GtvLauncherXLaunchStateHostTestCases",
+		"libRobolectric_processor_upstream",
+		"Robolectric_processor_tests_upstream",
+		"Robolectric_processor_tests",
+		"tvts-mem-score-unit-tests",
+		"tvts-perf-cuj-unit-tests",
+
+		// needs includeDirsToProtoDeps support
+		"VtsVendorAtomHostJavaTest",
+
+		// java_test_host with xsdc
+		"xsdc-java-tests",
+
+		// java_test_host with resource_strip_prefix prop
+		"cts-dynamic-config",
+
+		// java_test_host that needs android_test_helper_apps
+		"PackageManagerServiceHostTests",
+		"CtsDomainVerificationHostTestCases",
+
+		//java_test_host that relies on CtsPackageManagerParsingHostTestGen
+		"CtsPackageManagerParsingHostTestCases",
 	}
 
 	MixedBuildsDisabledList = []string{
