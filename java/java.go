@@ -1416,6 +1416,8 @@ func TestHostFactory() android.Module {
 		nil,
 		nil)
 
+	android.InitBazelModule(module)
+
 	InitJavaModuleMultiTargets(module, android.HostSupported)
 
 	return module
@@ -3119,6 +3121,60 @@ func javaBinaryHostBp2Build(ctx android.TopDownMutatorContext, m *Binary) {
 
 	// Create the BazelTargetModule.
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, binAttrs)
+}
+
+type javaTestHostAttributes struct {
+	*javaCommonAttributes
+	Deps         bazel.LabelListAttribute
+	Runtime_deps bazel.LabelListAttribute
+}
+
+// javaTestHostBp2Build is for java_test_host bp2build.
+func javaTestHostBp2Build(ctx android.TopDownMutatorContext, m *TestHost) {
+	commonAttrs, bp2BuildInfo := m.convertLibraryAttrsBp2Build(ctx)
+	depLabels := bp2BuildInfo.DepLabels
+
+	deps := depLabels.Deps
+	deps.Append(depLabels.StaticDeps)
+
+	var runtimeDeps bazel.LabelListAttribute
+	if commonAttrs.Srcs.IsEmpty() {
+		// if there are no sources, then the dependencies can only be used at runtime
+		runtimeDeps = deps
+		deps = bazel.LabelListAttribute{}
+	}
+
+	attrs := &javaTestHostAttributes{
+		Runtime_deps: runtimeDeps,
+	}
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "java_test_host",
+		Bzl_load_location: "//build/bazel/rules/java:test_host.bzl",
+	}
+
+	if commonAttrs.Srcs.IsEmpty() {
+		attrs.javaCommonAttributes = commonAttrs
+		ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
+		return
+	}
+
+	libName := m.Name() + "_lib"
+	var libProps bazel.BazelTargetModuleProperties
+	if bp2BuildInfo.hasKotlin {
+		libProps = ktJvmLibraryBazelTargetModuleProperties()
+	} else {
+		libProps = javaLibraryBazelTargetModuleProperties()
+	}
+	libAttrs := &javaLibraryAttributes{
+		Deps:                 deps,
+		javaCommonAttributes: commonAttrs,
+	}
+
+	ctx.CreateBazelTargetModule(libProps, android.CommonAttributes{Name: libName}, libAttrs)
+	attrs.Runtime_deps.Add(&bazel.LabelAttribute{Value: &bazel.Label{Label: ":" + libName}})
+
+	// Create the BazelTargetModule.
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
 }
 
 type bazelJavaImportAttributes struct {
