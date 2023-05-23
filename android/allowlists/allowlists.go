@@ -1467,6 +1467,12 @@ var (
 
 		// python_test_host with test data
 		"sbom_writers_test",
+
+		// java_test_host modules and their unconverted deps
+		"tradefed",
+		"permissive_mte_test",
+		"HelloWorldHostTest",
+		"ICU4CTestRunner",
 	}
 
 	MixedBuildsDisabledList = []string{
