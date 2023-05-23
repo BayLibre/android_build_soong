@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "578dd457_7cd7dcd0",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2023-05-23T21:00:14Z",
+      "side": 1,
+      "message": "@ccross@android.com",
+      "parentUuid": "89551907_de1583be",
+      "revId": "216c21a5494ac029547d71b85b025567bc3b53fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "185d5b4b_fbddba88",
