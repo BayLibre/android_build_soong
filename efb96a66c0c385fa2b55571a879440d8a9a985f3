@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a0a6021_06189f3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-05-24T03:54:53Z",
+      "side": 1,
+      "message": "I added symlink with `out/soong/build.ninja`. I will announce to soong-discuss@ once this change is being merged, and then remove symlink after couple of weeks. Thanks.",
+      "parentUuid": "d2775f91_521a0969",
+      "revId": "efb96a66c0c385fa2b55571a879440d8a9a985f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5695b98b_581ccf76",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-05-23T08:00:34Z",
       "side": 1,
       "message": "Make this a variable so you can avoid calling SoongVarsFile() many times.\n\n```\ncommonArgs :\u003d []string{\"--soong_variables\", config.SoongVarsFile()}\n\nmainSoongBuildExtraArgs :\u003d append(commonArgs, \"-o\", config.SoongNinjaFile())\n\n...\n\npbfs :\u003d []PrimaryBuilderFactory{\n\t\t{\n\t\t\tname:         soongBuildTag,\n\t\t\tdescription:  fmt.Sprintf(\"analyzing Android.bp files and generating ninja file at %s\", config.SoongNinjaFile()),\n\t\t\tconfig:       config,\n\t\t\toutput:       config.SoongNinjaFile(),\n\t\t\tspecificArgs: mainSoongBuildExtraArgs,\n\t\t},\n\t\t{\n\t\t\tname:        bp2buildFilesTag,\n\t\t\tdescription: fmt.Sprintf(\"converting Android.bp files to BUILD files at %s/bp2build\", config.SoongOutDir()),\n\t\t\tconfig:      config,\n\t\t\toutput:      config.Bp2BuildFilesMarkerFile(),\n\t\t\tspecificArgs: append(commonArgs, \"--bp2build_marker\", config.Bp2BuildFilesMarkerFile()),\n\t\t},\n```",
+      "range": {
+        "startLine": 266,
+        "startChar": 68,
+        "endLine": 266,
+        "endChar": 111
+      },
+      "revId": "efb96a66c0c385fa2b55571a879440d8a9a985f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80690b0f_9319916f",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-05-24T03:54:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5695b98b_581ccf76",
       "range": {
         "startLine": 266,
         "startChar": 68,
