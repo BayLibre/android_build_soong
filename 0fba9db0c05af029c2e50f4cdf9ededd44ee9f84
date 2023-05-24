@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fae6174_c37b15e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-24T17:52:19Z",
+      "side": 1,
+      "message": "My understanding is that core_platform is a legacy api surface and most of its functionalities are available in the module_lib API surface. Of the three core modules, only conscrypt\u0027s core_platform apis are not available in module_lib, but looking at virtualization\u0027s source files, it is not using any of conscrypt\u0027s apis\n\nI tried to do this locally, but it failed because it would put module_current\u0027s jar on the classpath of the .impl module as well alongwith framework.jar. This does not make a lot of sense - infact it is disallowed by aosp/2054168",
+      "parentUuid": "326b32cf_9424533b",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cec60e6_2dc68b4d",
