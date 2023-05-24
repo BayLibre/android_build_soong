@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c347252_fc11a266",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-05-24T18:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2b905ae_14ab0310",
+      "range": {
+        "startLine": 846,
+        "startChar": 0,
+        "endLine": 846,
+        "endChar": 2
+      },
+      "revId": "1790ebad0cf307496b15a8ff58db1afb74241c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a411688_92433e9a",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe055aa_c4228d76",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2719,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-05-24T18:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a411688_92433e9a",
+      "range": {
+        "startLine": 2718,
+        "startChar": 0,
+        "endLine": 2719,
+        "endChar": 43
+      },
+      "revId": "1790ebad0cf307496b15a8ff58db1afb74241c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eadeaa0_52b9f91d",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-05-19T15:38:17Z",
       "side": 1,
       "message": "Can this just be \n```\nresourceStripPrefix \u003d proptools.StringPtr(filepath.Join(ctx.OtherModuleDir(otherM), fg.GetPath(ctx))) \n``` ?",
+      "range": {
+        "startLine": 2720,
+        "startChar": 0,
+        "endLine": 2724,
+        "endChar": 53
+      },
+      "revId": "1790ebad0cf307496b15a8ff58db1afb74241c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "188660e5_78bf1a59",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2724,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-05-24T18:22:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eadeaa0_52b9f91d",
       "range": {
         "startLine": 2720,
         "startChar": 0,
