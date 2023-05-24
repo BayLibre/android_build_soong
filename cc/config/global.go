@@ -330,6 +330,13 @@ func ExportStringList(name string, value []string) {
 	exportedVars.ExportStringList(name, value)
 }
 
+// AddKernelPageSizeFlag adds the -DTARGET_KERNEL_PAGE_SIZE flag.
+func AddKernelPageSizeFlag(ctx android.PackageVarContext, flags []string) []string {
+	kernelPageSizeFlag := "-DTARGET_KERNEL_PAGE_SIZE=" + ctx.Config().KernelPageSize()
+	flags = append(flags, kernelPageSizeFlag)
+	return flags
+}
+
 func init() {
 	if runtime.GOOS == "linux" {
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
@@ -348,7 +355,7 @@ func init() {
 	exportedVars.ExportStringList("CommonGlobalCflags", commonGlobalCflags)
 
 	pctx.VariableFunc("CommonGlobalCflags", func(ctx android.PackageVarContext) string {
-		flags := commonGlobalCflags
+		flags := AddKernelPageSizeFlag(ctx, commonGlobalCflags)
 
 		// http://b/131390872
 		// Automatically initialize any uninitialized stack variables.
@@ -398,8 +405,13 @@ func init() {
 	exportedVars.ExportStringListStaticVariable("NoOverride64GlobalCflags", noOverride64GlobalCflags)
 	exportedVars.ExportStringListStaticVariable("HostGlobalCflags", hostGlobalCflags)
 	exportedVars.ExportStringListStaticVariable("NoOverrideExternalGlobalCflags", noOverrideExternalGlobalCflags)
-	exportedVars.ExportStringListStaticVariable("CommonGlobalCppflags", commonGlobalCppflags)
 	exportedVars.ExportStringListStaticVariable("ExternalCflags", extraExternalCflags)
+
+	exportedVars.ExportStringList("CommonGlobalCppflags", commonGlobalCppflags)
+	pctx.VariableFunc("CommonGlobalCppflags", func(ctx android.PackageVarContext) string {
+		flags := AddKernelPageSizeFlag(ctx, commonGlobalCppflags)
+		return strings.Join(flags, " ")
+	})
 
 	exportedVars.ExportString("CStdVersion", CStdVersion)
 	exportedVars.ExportString("CppStdVersion", CppStdVersion)

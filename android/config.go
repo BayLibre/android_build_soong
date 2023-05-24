@@ -183,6 +183,11 @@ func (c Config) MaxPageSizeSupported() string {
 	return String(c.config.productVariables.DeviceMaxPageSizeSupported)
 }
 
+// KernelPageSize returns the kernel page size configuration.
+func (c Config) KernelPageSize() string {
+	return String(c.config.productVariables.DeviceKernelPageSize)
+}
+
 // The release version passed to aconfig, derived from RELEASE_VERSION
 func (c Config) ReleaseVersion() string {
 	return c.config.productVariables.ReleaseVersion
