@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "326b32cf_9424533b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-24T17:00:46Z",
+      "side": 1,
+      "message": "I am not quite sure if this is feasible, because IIUC core platform API surface and module lib api surface does not strictly have subset/superset relationships?\n\nThe [original CL](https://android-review.git.corp.google.com/c/platform/packages/modules/Virtualization/+/2310569) that added `stub_only_libs` to this module seems that `android_module_lib_stubs_current` should be passed as libs to `\"framework-virtualization\"`.",
+      "parentUuid": "cc685377_b1a3cae9",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cec60e6_2dc68b4d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
