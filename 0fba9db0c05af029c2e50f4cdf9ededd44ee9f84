@@ -284,6 +284,24 @@
       "parentUuid": "0cd19ac6_a353e667",
       "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025d000c_9be1223a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-24T18:01:18Z",
+      "side": 1,
+      "message": "If you want to have a config flag toggle whether from-text stubs are used, I could imagine a setup like this:\n\nstep 1\n- rename all the current `android_stubs_*_current` to have a `.from-source` suffix\n- add new java_library modules named `android_stubs_*_current`, and \n\nstep 2\n- change the java_library modules to be flaggable, using either `product_variables` or a custom soong config module type, and make its `static_libs` either the from-source module or the from-text module depending on the value of the flag",
+      "parentUuid": "6c0713d7_b8d2dce8",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
