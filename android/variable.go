@@ -95,6 +95,10 @@ type variableProperties struct {
 			Cflags []string
 		}
 
+		Kernel_page_size struct {
+			Cflags []string `android:"arch_variant"`
+		} `android:"arch_variant"`
+
 		Override_rs_driver struct {
 			Cflags []string
 		}
@@ -286,6 +290,7 @@ type productVariables struct {
 	Uml                          *bool    `json:",omitempty"`
 	Arc                          *bool    `json:",omitempty"`
 	MinimizeJavaDebugInfo        *bool    `json:",omitempty"`
+	Kernel_page_size             *string  `json:",omitempty"`
 
 	Check_elf_files *bool `json:",omitempty"`
 
@@ -528,6 +533,7 @@ func (v *productVariables) SetDefaultConfig() {
 		Malloc_pattern_fill_contents: boolPtr(false),
 		Safestack:                    boolPtr(false),
 		TrimmedApex:                  boolPtr(false),
+		Kernel_page_size:             stringPtr("4096"),
 
 		BootJars:     ConfiguredJarList{apexes: []string{}, jars: []string{}},
 		ApexBootJars: ConfiguredJarList{apexes: []string{}, jars: []string{}},
