@@ -175,8 +175,6 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 	// Flags specified in Android.bp
 	linkFlags = append(linkFlags, a.aaptProperties.Aaptflags...)
 
-	linkFlags = append(linkFlags, "--no-static-lib-packages")
-
 	// Find implicit or explicit asset and resource dirs
 	assetDirs := android.PathsWithOptionalDefaultForModuleSrc(ctx, a.aaptProperties.Asset_dirs, "assets")
 	resourceDirs := android.PathsWithOptionalDefaultForModuleSrc(ctx, a.aaptProperties.Resource_dirs, "res")
@@ -338,7 +336,7 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext android.SdkCon
 	linkDeps = append(linkDeps, libDeps...)
 	linkFlags = append(linkFlags, extraLinkFlags...)
 	if a.isLibrary {
-		linkFlags = append(linkFlags, "--static-lib")
+		linkFlags = append(linkFlags, "--static-lib", "--merge-only")
 	}
 
 	packageRes := android.PathForModuleOut(ctx, "package-res.apk")
@@ -363,25 +361,31 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext android.SdkCon
 
 	var compiledRes, compiledOverlay android.Paths
 
-	compiledOverlay = append(compiledOverlay, transitiveStaticLibs...)
-
-	if len(transitiveStaticLibs) > 0 {
-		// If we are using static android libraries, every source file becomes an overlay.
-		// This is to emulate old AAPT behavior which simulated library support.
-		for _, compiledResDir := range compiledResDirs {
-			compiledOverlay = append(compiledOverlay, compiledResDir...)
-		}
-	} else if a.isLibrary {
-		// Otherwise, for a static library we treat all the resources equally with no overlay.
+	if a.isLibrary {
+		// For a static library we treat all the resources equally with no overlay.
 		for _, compiledResDir := range compiledResDirs {
 			compiledRes = append(compiledRes, compiledResDir...)
 		}
-	} else if len(compiledResDirs) > 0 {
-		// Without static libraries, the first directory is our directory, which can then be
-		// overlaid by the rest.
-		compiledRes = append(compiledRes, compiledResDirs[0]...)
-		for _, compiledResDir := range compiledResDirs[1:] {
-			compiledOverlay = append(compiledOverlay, compiledResDir...)
+		// Treat static library dependencies of static libraries as imports.
+		linkDeps = append(linkDeps, transitiveStaticLibs...)
+		for _, staticLib := range transitiveStaticLibs {
+			linkFlags = append(linkFlags, "-I "+staticLib.String())
+		}
+	} else {
+		if len(transitiveStaticLibs) > 0 {
+			compiledOverlay = append(compiledOverlay, transitiveStaticLibs...)
+			// If we are using static android libraries, every source file becomes an overlay.
+			// This is to emulate old AAPT behavior which simulated library support.
+			for _, compiledResDir := range compiledResDirs {
+				compiledOverlay = append(compiledOverlay, compiledResDir...)
+			}
+		} else if len(compiledResDirs) > 0 {
+			// Without static libraries, the first directory is our directory, which can then be
+			// overlaid by the rest.
+			compiledRes = append(compiledRes, compiledResDirs[0]...)
+			for _, compiledResDir := range compiledResDirs[1:] {
+				compiledOverlay = append(compiledOverlay, compiledResDir...)
+			}
 		}
 	}
 
@@ -884,7 +888,7 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	linkFlags := []string{
 		"--static-lib",
-		"--no-static-lib-packages",
+		"--merge-only",
 		"--auto-add-overlay",
 	}
 
@@ -900,7 +904,13 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	linkDeps = append(linkDeps, libDeps...)
 	linkFlags = append(linkFlags, libFlags...)
 
-	overlayRes := append(android.Paths{flata}, transitiveStaticLibs...)
+	overlayRes := android.Paths{flata}
+
+	// Treat static library dependencies of static libraries as imports.
+	linkDeps = append(linkDeps, transitiveStaticLibs...)
+	for _, staticLib := range transitiveStaticLibs {
+		linkFlags = append(linkFlags, "-I "+staticLib.String())
+	}
 
 	aapt2Link(ctx, a.exportPackage, srcJar, proguardOptionsFile, rTxt, a.extraAaptPackagesFile,
 		linkFlags, linkDeps, nil, overlayRes, transitiveAssets, nil)
