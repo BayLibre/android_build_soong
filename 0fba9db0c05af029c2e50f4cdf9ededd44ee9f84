@@ -170,6 +170,24 @@
       "parentUuid": "9a2d7ab0_1e1f2fba",
       "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a58416ba_42a4b992",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-24T17:21:19Z",
+      "side": 1,
+      "message": "But wouldn\u0027t this be too hacky, I\u0027m afraid? Because it is completely ignoring module definition for two properties(libs and static libs) and adding another layer of magic which applies for only selective modules. Can you explain the benefit of this approach?\n\nThis change is also introducing a magic as well, but it is only replacing the from-source stub jar to from-text stub jar.",
+      "parentUuid": "a09c870b_67b5095a",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
