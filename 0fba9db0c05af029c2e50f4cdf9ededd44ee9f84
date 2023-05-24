@@ -206,6 +206,24 @@
       "parentUuid": "a58416ba_42a4b992",
       "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76a6dd70_8249d111",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-24T17:35:57Z",
+      "side": 1,
+      "message": "Not sure I really understand what the hacky part is. If I understand correctly, you\u0027ve defined modules that generate all the flavors of stubs from the txt files, and these stubs are equivalent to the from-source stubs (`android_stubs_current`)?\n\nWhat is the point of building `android_stubs_current` from the sources, in that case? I\u0027m not talking about ignoring any properties, I\u0027m talking about essentially renaming what is currently `android_stubs_current` to `android_stubs_current.from-source` and then making `android_stubs_current` depend on either from-source or from-text via `static_libs`.",
+      "parentUuid": "b8d253a4_44d69ee4",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
