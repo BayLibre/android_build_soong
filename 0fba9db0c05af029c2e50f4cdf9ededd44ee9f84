@@ -152,6 +152,24 @@
       "parentUuid": "b433a159_76f3c2c5",
       "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a09c870b_67b5095a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-24T17:11:56Z",
+      "side": 1,
+      "message": "\u003e `android_stubs_current.from-text` would be added as static libs to `android_stubs_current`\n\nyes, this is what I\u0027m suggesting",
+      "parentUuid": "9a2d7ab0_1e1f2fba",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
