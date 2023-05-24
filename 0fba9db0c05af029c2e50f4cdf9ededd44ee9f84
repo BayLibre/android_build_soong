@@ -92,6 +92,24 @@
       "parentUuid": "a97024ce_389d642b",
       "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b433a159_76f3c2c5",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-24T17:00:21Z",
+      "side": 1,
+      "message": "end of the day, the `android_stubs_current.from-text` module creates a .jar file, right? Can you make `android_stubs_current` just depend on that?",
+      "parentUuid": "2f9ce999_162aee0b",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
