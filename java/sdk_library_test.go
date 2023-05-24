@@ -1475,3 +1475,40 @@ func TestJavaSdkLibrary_ApiLibrary(t *testing.T) {
 		android.AssertStringEquals(t, "Module expected to contain full api surface api library", c.depApiSrcs, *m.properties.Dep_api_srcs)
 	}
 }
+
+func TestInternalDroidstubsFromTextStubLibs(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		PrepareForTestWithJavaSdkLibraryFiles,
+		FixtureWithLastReleaseApis("foo"),
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetBuildFromTextStub(true)
+		}),
+	).RunTestWithBp(t, `
+		java_sdk_library {
+			name: "foo",
+			srcs: ["a.java"],
+			system: {
+				enabled: true,
+			},
+			module_lib: {
+				enabled: true,
+			},
+			stub_only_libs: [
+				"android_module_lib_stubs_current",
+			],
+		}
+	`)
+
+	CheckModuleDependencies(t, result.TestContext, "foo.stubs.source.module_lib", "android_common", []string{
+		`android_module_lib_stubs_current.from-text`, //Stubs only lib replaced to from-text equivalent
+		`core-lambda-stubs.from-text`,
+		`ext`,
+		`foo-incompatibilities.api.module-lib.latest`,
+		`foo-removed.api.module-lib.latest`,
+		`foo.api.module-lib.latest`,
+		`framework`,
+		`stable-core-platform-api-stubs-system-modules.from-text`,
+		`stable.core.platform.api.stubs.from-text`,
+	})
+}

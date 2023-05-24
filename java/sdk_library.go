@@ -1973,6 +1973,8 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 		return
 	}
 
+	module.replaceFullApiSurfaceLibs(mctx.Config())
+
 	// If this builds against standard libraries (i.e. is not part of the core libraries)
 	// then assume it provides both system and test apis.
 	sdkDep := decodeSdkDep(mctx, android.SdkContext(&module.Library))
@@ -2051,6 +2053,37 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 	// Add the impl_only_libs and impl_only_static_libs *after* we're done using them in submodules.
 	module.properties.Libs = append(module.properties.Libs, module.sdkLibraryProperties.Impl_only_libs...)
 	module.properties.Static_libs = append(module.properties.Static_libs, module.sdkLibraryProperties.Impl_only_static_libs...)
+}
+
+var defaultJavaLibraries = []string{
+	"android_stubs_current",
+	"android_system_stubs_current",
+	"android_test_stubs_current",
+	"core.current.stubs",
+	"android_module_lib_stubs_current",
+	"android_system_server_stubs_current",
+}
+
+func replaceLibs(c android.Config, arr []string) []string {
+	for i, elem := range arr {
+		for _, lib := range defaultJavaLibraries {
+			if elem == lib {
+				arr[i] = android.JavaApiLibraryName(c, elem)
+				break
+			}
+		}
+	}
+
+	return arr
+}
+
+func (module *SdkLibrary) replaceFullApiSurfaceLibs(c android.Config) {
+	replaceLibs(c, module.properties.Libs)
+	replaceLibs(c, module.properties.Static_libs)
+	replaceLibs(c, module.sdkLibraryProperties.Stub_only_libs)
+	replaceLibs(c, module.sdkLibraryProperties.Stub_only_static_libs)
+	replaceLibs(c, module.sdkLibraryProperties.Impl_only_libs)
+	replaceLibs(c, module.sdkLibraryProperties.Impl_only_static_libs)
 }
 
 func (module *SdkLibrary) InitSdkLibraryProperties() {
