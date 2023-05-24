@@ -403,3 +403,27 @@ func TestGeneratedApiContributionVisibilityTest(t *testing.T) {
 
 	ctx.ModuleForTests("bar", "android_common")
 }
+
+func TestDroidstubsFromTextStubLibs(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetBuildFromTextStub(true)
+		}),
+	).RunTestWithBp(t, `
+		droidstubs {
+			name: "foo",
+			api_surface: "public",
+			libs: ["android_module_lib_stubs_current"]
+		}
+	`)
+
+	CheckModuleDependencies(t, result.TestContext, "foo", "android_common", []string{
+		`android_module_lib_stubs_current.from-text`,
+		`core-lambda-stubs.from-text`,
+		`ext`,
+		`framework`,
+		`stable-core-platform-api-stubs-system-modules.from-text`,
+		`stable.core.platform.api.stubs.from-text`,
+	})
+}

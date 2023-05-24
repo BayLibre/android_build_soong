@@ -260,6 +260,15 @@ func (j *Javadoc) TargetSdkVersion(ctx android.EarlyModuleContext) android.ApiLe
 	return j.SdkVersion(ctx).ApiLevel
 }
 
+var defaultJavaLibraries = []string{
+	"android_stubs_current",
+	"android_system_stubs_current",
+	"android_test_stubs_current",
+	"core.current.stubs",
+	"android_module_lib_stubs_current",
+	"android_system_server_stubs_current",
+}
+
 func (j *Javadoc) addDeps(ctx android.BottomUpMutatorContext) {
 	if ctx.Device() {
 		sdkDep := decodeSdkDep(ctx, android.SdkContext(j))
@@ -271,7 +280,14 @@ func (j *Javadoc) addDeps(ctx android.BottomUpMutatorContext) {
 		}
 	}
 
-	ctx.AddVariationDependencies(nil, libTag, j.properties.Libs...)
+	for _, lib := range j.properties.Libs {
+		for _, defaultLib := range defaultJavaLibraries {
+			if lib == defaultLib {
+				lib = android.JavaApiLibraryName(ctx.Config(), lib)
+			}
+		}
+		ctx.AddVariationDependencies(nil, libTag, lib)
+	}
 }
 
 func (j *Javadoc) collectAidlFlags(ctx android.ModuleContext, deps deps) droiddocBuilderFlags {
