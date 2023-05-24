@@ -134,6 +134,24 @@
       "parentUuid": "2f9ce999_162aee0b",
       "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a2d7ab0_1e1f2fba",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-24T17:04:24Z",
+      "side": 1,
+      "message": "That is possible, but I believe that would mean all static libs and libs would be ignored and only `android_stubs_current.from-text` would be added as static libs to `android_stubs_current` (because otherwise from-source stubs would be generated)?",
+      "parentUuid": "b433a159_76f3c2c5",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
