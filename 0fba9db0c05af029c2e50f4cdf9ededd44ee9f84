@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07adf266_0c9a80df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-24T16:54:50Z",
+      "side": 1,
+      "message": "Can you explain a bit more about how java libraries vs droidstubs would yield different results? I do not quite follow this.\n\nThis change is not adding a new dep on stubs, but is replacing a dep on from-source stub to from-text stub based on build configs.",
+      "parentUuid": "8cec60e6_2dc68b4d",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a97024ce_389d642b",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
@@ -54,6 +72,24 @@
       "writtenOn": "2023-05-24T16:42:30Z",
       "side": 1,
       "message": "Why don\u0027t you change it around so that android_stubs_current is built from text?",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9ce999_162aee0b",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-24T16:54:50Z",
+      "side": 1,
+      "message": "There is an equivalent `android_stubs_current.from-text` `java_api_library` module. I believe that `java_api_library` cannot be replaced with `java_library` as it both generates stubs and compiles the stubs, while `java_library` only compiles the stubs that are provided from `droidstubs`.",
+      "parentUuid": "a97024ce_389d642b",
       "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
