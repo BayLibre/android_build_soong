@@ -242,6 +242,24 @@
       "parentUuid": "76a6dd70_8249d111",
       "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c0713d7_b8d2dce8",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-24T17:48:07Z",
+      "side": 1,
+      "message": "Ah understood. That makes things more clear. In such case, I believe that `android_stubs_current` should be dynamically generated somewhere? (As the currently written out `android_stubs_current` will be replaced to `android_stubs_current.from-text`) Would combined_apis be the correct place to do so?\n\nMost problems are solved now, and this change is the remaining blocker for the launch. I was wondering if the cleanup could be done after the change, as the feature is in high demand.",
+      "parentUuid": "0cd19ac6_a353e667",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
