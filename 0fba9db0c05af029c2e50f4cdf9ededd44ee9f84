@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cec60e6_2dc68b4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-24T16:48:27Z",
+      "side": 1,
+      "message": "I\u0027m really not a fan of this change, because it\u0027s really strange to have these libraries resolve to different things depending on what depends on them (java libraries vs droidstubs would yield different results). It would be somewhat astonishing behavior from the user\u0027s perspective, and it would be extremely easy to re-introducing build time regressions just because you add a dep on a stub (that could be built from text, but isn\u0027t).",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a97024ce_389d642b",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
