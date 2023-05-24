@@ -70,6 +70,30 @@
       },
       "revId": "255ff7d4d13c38f680737bd4a44a68182a33e531",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363b1162_45b6afb2",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-24T07:02:24Z",
+      "side": 1,
+      "message": "Right, I see\n\n* bazel-out/aosp_cf_x86_64_foldable-userdebug_linux_x86_64-opt/bin/system/apex/tools/deapexer\n* system/apex/tools/deapexer.py\n\nThe former is the stub script for all python_binary targets. It\u0027s the entry point that setups the runfiles and then calls the real deapexer.py.\n\nSo calling deapexer.py here directly is not correct - you actually want the stub script entry point, which is the the same as calling `bazel run`.",
+      "parentUuid": "0c7081b3_fee7ddd2",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "255ff7d4d13c38f680737bd4a44a68182a33e531",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
