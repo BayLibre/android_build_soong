@@ -409,6 +409,7 @@ var (
 		// This is actually build/bazel/build.BAZEL symlinked to ./BUILD
 		".":/*recursive = */ false,
 
+		"packages/modules/adb/apex": false,
 		"build/bazel":/* recursive = */ true,
 		"build/make/core":/* recursive = */ false,
 		"build/bazel_common_rules":/* recursive = */ true,
