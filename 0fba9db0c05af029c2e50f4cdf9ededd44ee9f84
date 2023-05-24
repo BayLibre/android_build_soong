@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc685377_b1a3cae9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-24T16:51:07Z",
+      "side": 1,
+      "message": "Can the bp file of this java_sdk_library be changed from\n```\njava_sdk_library {\n    name: \"framework-virtualization\",\n    sdk_version: \"core_platform\",\n    stub_only_libs: [\n        \"android_module_lib_stubs_current\",\n    ],\n}\n\n```\n\nto\n```\njava_sdk_library {\n    name: \"framework-virtualization\",\n    sdk_version: \"module_current\",\n}\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cec60e6_2dc68b4d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
