@@ -188,6 +188,24 @@
       "parentUuid": "a09c870b_67b5095a",
       "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d253a4_44d69ee4",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-24T17:27:56Z",
+      "side": 1,
+      "message": "In the long term after when from-text stub build is defaulted, `android_stubs_current` will be generated from text stubs. At then, we would not need a switch between `android_stubs_current` and `android_stubs_current.from-text` at all, but I believe that this is a short term workaround for [this edge case](https://cs.android.com/android/platform/superproject/+/master:packages/modules/Virtualization/javalib/Android.bp;drc\u003de904035e44eb63a47f84eac0b62aafc8e196ba1d;l\u003d45).",
+      "parentUuid": "a58416ba_42a4b992",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
