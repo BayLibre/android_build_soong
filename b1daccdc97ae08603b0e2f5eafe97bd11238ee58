@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb27d4ec_bf2a30ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-05-25T20:24:19Z",
+      "side": 1,
+      "message": "It does a more semantic diff of the makefile so for example with the steps in my test in the commit message I got this out which lists modules that are missing/new in the build with the change, and then diffs the makevars for each module which are in both:\n```\n{\n  \"RefPath\": \"/tmp/zshKf9Pdj\",\n  \"OurPath\": \"/tmp/zshEDZJ1d\",\n  \"ExtraModules\": [\n    {\n      \"Name\": \"privapp_allowlist_.com.android.permission.flattened|class:ETC|target_arch:*\",\n      \"Location\": 620600,\n      \"Type\": \"apex.apexBundle.files\"\n    },\n    {\n      \"Name\": \"privapp_allowlist_.com.android.permission|class:ETC|target_arch:*\",\n      \"Location\": 620406,\n      \"Type\": \"apex.apexBundle.files\"\n    }\n  ],\n  \"MissingModules\": [\n    {\n      \"Name\": \"privapp_allowlist_com.android.permissioncontroller.xml.com.android.permission.flattened|class:ETC|target_arch:arm64\",\n      \"Location\": 620602,\n      \"Type\": \"apex.apexBundle.files\"\n    },\n    {\n      \"Name\": \"privapp_allowlist_com.android.permissioncontroller.xml.com.android.permission|class:ETC|target_arch:arm64\",\n      \"Location\": 620407,\n      \"Type\": \"apex.apexBundle.files\"\n    },\n    {\n      \"Name\": \"privapp_allowlist_com.android.permissioncontroller.xml|class:ETC|target_arch:arm64\",\n      \"Location\": 1645637,\n      \"Type\": \"type: prebuilt_etc, name: privapp_allowlist_com.android.permissioncontroller.xml, variant: android_arm64_armv8-2a_cortex-a55\"\n    }\n  ],\n  \"DiffModules\": [\n    {\n      \"Name\": \"PermissionController|class:APPS|target_arch:*\",\n      \"MissingVars\": [\n        \"LOCAL_REQUIRED_MODULES\"\n      ],\n      \"DiffVars\": [\n        {\n          \"Name\": \"LOCAL_SOONG_INSTALL_PAIRS\",\n          \"ExtraItems\": [\n            \"out/target/product/cheetah/system/etc/permissions/com.android.permissioncontroller.xml\"\n          ]\n        }\n      ],\n      \"RefLocation\": 99796,\n      \"OurLocation\": 99796,\n      \"Type\": \"type: android_app, name: PermissionController, variant: android_common\"\n    },\n    {\n      \"Name\": \"com.android.permission.flattened|class:|target_arch:*\",\n      \"DiffVars\": [\n        {\n          \"Name\": \"LOCAL_REQUIRED_MODULES\",\n          \"MissingItems\": [\n            \"privapp_allowlist_com.android.permissioncontroller.xml\",\n            \"privapp_allowlist_com.android.permissioncontroller.xml.com.android.permission.flattened:64\"\n          ],\n          \"ExtraItems\": [\n            \"privapp_allowlist_.com.android.permission.flattened\"\n          ]\n        }\n      ],\n      \"RefLocation\": 620718,\n      \"OurLocation\": 620715,\n      \"Type\": \"apex.apexBundle.flat\"\n    },\n    {\n      \"Name\": \"com.android.permission|class:ETC|target_arch:*\",\n      \"DiffVars\": [\n        {\n          \"Name\": \"LOCAL_REQUIRED_MODULES\",\n          \"MissingItems\": [\n            \"privapp_allowlist_com.android.permissioncontroller.xml\",\n            \"privapp_allowlist_com.android.permissioncontroller.xml.com.android.permission:64\"\n          ],\n          \"ExtraItems\": [\n            \"privapp_allowlist_.com.android.permission\"\n          ]\n        }\n      ],\n      \"RefLocation\": 620549,\n      \"OurLocation\": 620547,\n      \"Type\": \"apex.apexBundle\"\n    },\n    {\n      \"Name\": \"test_com.android.permission.flattened|class:|target_arch:*\",\n      \"DiffVars\": [\n        {\n          \"Name\": \"LOCAL_REQUIRED_MODULES\",\n          \"MissingItems\": [\n            \"privapp_allowlist_com.android.permissioncontroller.xml\"\n          ]\n        }\n      ],\n      \"RefLocation\": 1729421,\n      \"OurLocation\": 1729400,\n      \"Type\": \"apex.apexBundle.flat\"\n    },\n    {\n      \"Name\": \"test_com.android.permission|class:ETC|target_arch:*\",\n      \"DiffVars\": [\n        {\n          \"Name\": \"LOCAL_REQUIRED_MODULES\",\n          \"MissingItems\": [\n            \"privapp_allowlist_com.android.permissioncontroller.xml\"\n          ]\n        }\n      ],\n      \"RefLocation\": 1729392,\n      \"OurLocation\": 1729371,\n      \"Type\": \"apex.apexBundle\"\n    }\n  ]\n}\n```",
+      "parentUuid": "cc0e4f07_b3071c23",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "b1daccdc97ae08603b0e2f5eafe97bd11238ee58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1928f593_d888ed7d",
         "filename": "apex/apex.go",
         "patchSetId": 4
