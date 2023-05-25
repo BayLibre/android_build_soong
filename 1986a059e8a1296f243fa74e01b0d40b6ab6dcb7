@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7195d28d_5b8d6834",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1883,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-05-25T18:53:01Z",
+      "side": 1,
+      "message": "This didn\u0027t seem to be necessary according to the unit test and the makefile diff, but just to be safe, I put the privapp file first in the list.",
+      "revId": "1986a059e8a1296f243fa74e01b0d40b6ab6dcb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d875e89_1f92ea7a",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3658,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-05-25T18:53:01Z",
+      "side": 1,
+      "message": "tested that this assertion fails without the change in `app.go`",
+      "range": {
+        "startLine": 3658,
+        "startChar": 9,
+        "endLine": 3658,
+        "endChar": 28
+      },
+      "revId": "1986a059e8a1296f243fa74e01b0d40b6ab6dcb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
