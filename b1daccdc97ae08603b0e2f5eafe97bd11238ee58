@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1928f593_d888ed7d",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1883,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-25T19:02:23Z",
+      "side": 1,
+      "message": "curious about this one, was there a bug here as well (what were the effects if so)?",
+      "revId": "b1daccdc97ae08603b0e2f5eafe97bd11238ee58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9892115c_35e3540b",
+        "filename": "java/app_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3593,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-25T19:02:23Z",
+      "side": 1,
+      "message": "thanks for the thorough test case!",
+      "revId": "b1daccdc97ae08603b0e2f5eafe97bd11238ee58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
