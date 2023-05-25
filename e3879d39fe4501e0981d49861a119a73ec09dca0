@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dde208d8_95a74bb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-25T13:11:18Z",
+      "side": 1,
+      "message": "My understanding is that using the flag as `\"-xassembler-with-cpp\"` should work without a fix to Soong as well.",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "e3879d39fe4501e0981d49861a119a73ec09dca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
