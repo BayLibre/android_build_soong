@@ -16,6 +16,24 @@
       "message": "If this is only used by bionic it shouldn\u0027t be a global flag.  Add the product variable with a cflags property similar to https://cs.android.com/android/platform/superproject/+/master:build/soong/android/variable.go;l\u003d82-84;drc\u003dc1910c9e07b169b0c9c9f4195b755ab00ecc68ef, and then in bionic you can use:\n```\n    product_variables: {\n        kernel_page_size: {\n            cflags: [\"-DTARGET_KERNEL_PAGE_SIZE\u003d%s\"],\n        },\n    },\n```",
       "revId": "f0376f9ac01ef4916304cfd7c5d6fccc779349ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eb51221_2a5fa68d",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-05-25T00:50:55Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "cb3f5e74_d2d1e94a",
+      "revId": "f0376f9ac01ef4916304cfd7c5d6fccc779349ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
