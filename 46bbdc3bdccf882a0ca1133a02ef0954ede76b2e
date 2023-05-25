@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a941ee7_75332083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2023-05-25T20:05:34Z",
+      "side": 1,
+      "message": "I\u0027m assuming the landed in Android Studio, but we still need to update the platform\u0027s copy of the studio lint checks before we can merge this, or was that already done?",
+      "revId": "46bbdc3bdccf882a0ca1133a02ef0954ede76b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
