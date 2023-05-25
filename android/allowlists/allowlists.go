@@ -761,6 +761,10 @@ var (
 		// aidl
 		"aidl",
 		"libaidl-common",
+
+		// adb
+		"deployagent_lib",
+		"deployagent",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
@@ -857,7 +861,6 @@ var (
 		"apex_compression_test",                                      // depends on unconverted modules: soong_zip, com.android.example.apex
 		"apex_manifest_proto_java",                                   // b/210751803, depends on libprotobuf-java-full
 		"art-script",                                                 // depends on unconverted modules: dalvikvm, dex2oat
-		"bin2c_fastdeployagent",                                      // depends on unconverted modules: deployagent
 		"CarHTMLViewer",                                              // depends on unconverted modules android.car-stubs, car-ui-lib
 		"com.android.runtime",                                        // depends on unconverted modules: bionic-linker-config, linkerconfig
 		"currysrc",                                                   // depends on unconverted modules: currysrc_org.eclipse, guavalib, jopt-simple-4.9
