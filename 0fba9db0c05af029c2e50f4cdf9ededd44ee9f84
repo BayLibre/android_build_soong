@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "796eefa9_6773e46d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-25T09:04:22Z",
+      "side": 1,
+      "message": "What I meant is that depending on whether it\u0027s a droidstubs module or a java_library that depends on `android_module_lib_stubs_current`, you\u0027ll get different behavior (droidstubs would get it magically replaced by the from-text version but java_library would not). At least that\u0027s how I understood this change, but I might be misunderstanding it. 😊",
+      "parentUuid": "07adf266_0c9a80df",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a97024ce_389d642b",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
