@@ -51,6 +51,46 @@
       "parentUuid": "0cfb907d_422cf2fc",
       "revId": "8fb240622621985b092d7e4e410441cf2b970b8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b72aa6ed_196e8909",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-05-25T14:07:33Z",
+      "side": 1,
+      "message": "I only took a quick glance, but from that, this looks very reasonable.",
+      "revId": "8fb240622621985b092d7e4e410441cf2b970b8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ff64b6_336b11b9",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-05-25T14:07:33Z",
+      "side": 1,
+      "message": "nit: in order to avoid two separate traces having the same hash, you\u0027ll also need to escape `|` and `;` (otherwise you couldn\u0027t tell if e.g. `foo|bar` was two variables called `foo` and `bar` or one variable called `foo|bar`). Or else specifically prohibit the delimiters in variable names.",
+      "range": {
+        "startLine": 732,
+        "startChar": 28,
+        "endLine": 732,
+        "endChar": 32
+      },
+      "revId": "8fb240622621985b092d7e4e410441cf2b970b8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
