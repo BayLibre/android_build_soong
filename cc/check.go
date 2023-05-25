@@ -66,6 +66,8 @@ func CheckBadCompilerFlags(ctx BaseModuleContext, prop string, flags []string) {
 				// For now, we allow space characters in -DNAME=def form to allow use cases
 				// like -DNAME="value with string". Later, this check should be done more
 				// correctly to prevent multi flag cases like -DNAME=value -O2.
+			} else if args[0] == "-x" && args[1] == "assembler-with-cpp" {
+				// Allow this case. Used in packages/modules/Virtualization/pvmfw
 			} else {
 				ctx.PropertyErrorf(prop, "Bad flag: `%s` is not an allowed multi-word flag. Should it be split into multiple flags?", flag)
 			}
