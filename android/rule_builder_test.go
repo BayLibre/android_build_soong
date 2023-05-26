@@ -19,6 +19,7 @@ import (
 	"encoding/hex"
 	"fmt"
 	"path/filepath"
+	"reflect"
 	"regexp"
 	"strings"
 	"testing"
@@ -789,6 +790,38 @@ func TestRuleBuilderHashInputs(t *testing.T) {
 					t.Errorf("Expected command line to end with %q, got %q", w, g)
 				}
 			})
+		})
+	}
+}
+
+func TestSplitStringOnNinjaVarBoundary(t *testing.T) {
+	testcases := []struct {
+		name          string
+		str           string
+		expectedSplit []string
+	}{
+		{
+			name:          "single ninja var",
+			str:           "${asdf}",
+			expectedSplit: []string{"${asdf}"},
+		},
+		{
+			name:          "nested ninja var",
+			str:           "${asdf${asdf}}",
+			expectedSplit: []string{"${asdf${asdf}}"},
+		},
+		{
+			name:          "sharded strings",
+			str:           "<put something that is larger than the line length limit here>",
+			expectedSplit: []string{"${asdf${asdf}}"},
+		},
+	}
+	for _, tc := range testcases {
+		t.Run(tc.name, func(t *testing.T) {
+			actualSplit := splitStringOnNinjaVarBoundary(tc.str)
+			if !reflect.DeepEqual(actualSplit, tc.expectedSplit) {
+				t.Errorf("bad split: expected %v; got %v", tc.expectedSplit, actualSplit)
+			}
 		})
 	}
 }

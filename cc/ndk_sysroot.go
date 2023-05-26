@@ -158,7 +158,7 @@ func (n *ndkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 
 	combinedLicense := getNdkInstallBase(ctx).Join(ctx, "NOTICE")
 	ctx.Build(pctx, android.BuildParams{
-		Rule:        android.Cat,
+		Rule:        pctx.CatFilesRule(),
 		Description: "combine licenses",
 		Output:      combinedLicense,
 		Inputs:      licensePaths,
