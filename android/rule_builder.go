@@ -466,7 +466,25 @@ func (r *RuleBuilder) depFileMergerCmd(depFiles WritablePaths) *RuleBuilderComma
 
 // Build adds the built command line to the build graph, with dependencies on Inputs and Tools, and output files for
 // Outputs.
+func (r *RuleBuilder) BuildWithNinjaVars(name string, desc string, ctx ModuleContext, pctx PackageContext) {
+	r.build(name, desc, false, ctx, pctx)
+}
+
+// Build adds the built command line to the build graph, with dependencies on Inputs and Tools, and output files for
+// Outputs.
 func (r *RuleBuilder) Build(name string, desc string) {
+	r.build(name, desc, true, nil, pctx)
+}
+
+type ninjaParseContext struct {
+	ModuleContext
+}
+
+func (ctx ninjaParseContext) Config() interface{} {
+	return ctx.ModuleContext.Config()
+}
+
+func (r *RuleBuilder) build(name string, desc string, ninjaEscape bool, ctx ModuleContext, pctx PackageContext) {
 	name = ninjaNameEscape(name)
 
 	if len(r.missingDeps) > 0 {
@@ -611,12 +629,16 @@ func (r *RuleBuilder) Build(name string, desc string) {
 				name, r.sboxManifestPath.String(), r.outDir.String())
 		}
 
-		// Create a rule to write the manifest as a the textproto.
+		// Create a rule to write the manifest as textproto.
 		pbText, err := prototext.Marshal(&manifest)
 		if err != nil {
 			ReportPathErrorf(r.ctx, "sbox manifest failed to marshal: %q", err)
 		}
-		WriteFileRule(r.ctx, r.sboxManifestPath, string(pbText))
+		if ninjaEscape {
+			WriteFileRule(r.ctx, r.sboxManifestPath, string(pbText))
+		} else {
+			WriteFileNoEscapeNinjaRule(r.ctx, pctx, r.sboxManifestPath, string(pbText))
+		}
 
 		// Generate a new string to use as the command line of the sbox rule.  This uses
 		// a RuleBuilderCommand as a convenience method of building the command line, then
@@ -670,6 +692,7 @@ func (r *RuleBuilder) Build(name string, desc string) {
 			commandString = rewrapperCommand + " bash -c '" + strings.ReplaceAll(commandString, `'`, `'\''`) + "'"
 		}
 	} else {
+
 		// If not using sbox the rule will run the command directly, put the hash of the
 		// list of input files in a comment at the end of the command line to ensure ninja
 		// reruns the rule when the list of input files changes.

@@ -105,22 +105,6 @@ var (
 		},
 		"error")
 
-	Cat = pctx.AndroidStaticRule("Cat",
-		blueprint.RuleParams{
-			Command:     "cat $in > $out",
-			Description: "concatenate licenses $out",
-		})
-
-	// ubuntu 14.04 offcially use dash for /bin/sh, and its builtin echo command
-	// doesn't support -e option. Therefore we force to use /bin/bash when writing out
-	// content to file.
-	writeFile = pctx.AndroidStaticRule("writeFile",
-		blueprint.RuleParams{
-			Command:     `/bin/bash -c 'echo -e -n "$$0" > $out' $content`,
-			Description: "writing file $out",
-		},
-		"content")
-
 	// Used only when USE_GOMA=true is set, to restrict non-goma jobs to the local parallelism value
 	localPool = blueprint.NewBuiltinPool("local_pool")
 
@@ -170,7 +154,7 @@ func buildWriteFileRule(ctx BuilderContext, outputFile WritablePath, content str
 		content = "''"
 	}
 	ctx.Build(pctx, BuildParams{
-		Rule:        writeFile,
+		Rule:        pctx.WriteFileRule(),
 		Output:      outputFile,
 		Description: "write " + outputFile.Base(),
 		Args: map[string]string{
@@ -188,30 +172,102 @@ func WriteFileRule(ctx BuilderContext, outputFile WritablePath, content string) 
 // WriteFileRuleVerbatim creates a ninja rule to write contents to a file.  The contents will be
 // escaped so that the file contains exactly the contents passed to the function.
 func WriteFileRuleVerbatim(ctx BuilderContext, outputFile WritablePath, content string) {
-	// This is MAX_ARG_STRLEN subtracted with some safety to account for shell escapes
-	const SHARD_SIZE = 131072 - 10000
+	writeFileRule(ctx, outputFile, content, buildWriteFileRule)
+}
 
+// This is MAX_ARG_STRLEN subtracted with some safety to account for shell escapes
+const SHARD_SIZE = 131072 - 10000
+
+func splitStringOnNinjaVarBoundary(unexpandedStr string) []string {
+	if len(unexpandedStr) < SHARD_SIZE {
+		return []string{unexpandedStr}
+	}
+	splitStrings := []string{}
+	inVariable := 0
+	strStart := 0
+	variableStart := 0
+	for i := range unexpandedStr {
+		if i < len(unexpandedStr)-1 && unexpandedStr[i] == '$' && unexpandedStr[i+1] == '{' {
+			if inVariable == 0 {
+				variableStart = i
+			}
+			i += 1
+			inVariable += 1
+		}
+		if inVariable > 0 && unexpandedStr[i] == '}' {
+			inVariable -= 1
+		}
+		if i-strStart > SHARD_SIZE-1 {
+			if inVariable == 0 {
+				splitStrings = append(splitStrings, unexpandedStr[strStart:i+1])
+				strStart = i + 1
+			} else {
+				splitStrings = append(splitStrings, unexpandedStr[strStart:variableStart])
+				strStart = variableStart
+			}
+		}
+	}
+	if strStart != len(unexpandedStr) {
+		splitStrings = append(splitStrings, unexpandedStr[strStart:])
+	}
+	return splitStrings
+}
+
+func WriteFileNoEscapeNinjaRule(ctx BuilderContext, pctx PackageContext, outputFile WritablePath, content string) {
+	if len(content) > SHARD_SIZE {
+		var chunks WritablePaths
+		for i, splitString := range splitStringOnNinjaVarBoundary(content) {
+			tempPath := outputFile.ReplaceExtension(ctx, fmt.Sprintf("%s.%d", outputFile.Ext(), i))
+			chunks = append(chunks, tempPath)
+			ctx.Build(pctx, BuildParams{
+				Rule:        pctx.WriteFileRule(),
+				Output:      tempPath,
+				Description: "write " + tempPath.Base(),
+				Args: map[string]string{
+					"content": proptools.ShellEscapeIncludingSpaces(splitString),
+				},
+			})
+		}
+		ctx.Build(pctx, BuildParams{
+			Rule:        pctx.CatFilesRule(),
+			Inputs:      chunks.Paths(),
+			Output:      outputFile,
+			Description: "Merging to " + outputFile.Base(),
+		})
+	} else {
+		ctx.Build(pctx, BuildParams{
+			Rule:        pctx.WriteFileRule(),
+			Output:      outputFile,
+			Description: "write " + outputFile.Base(),
+			Args: map[string]string{
+				"content": proptools.ShellEscapeIncludingSpaces(content),
+			},
+		})
+	}
+}
+
+func writeFileRule(ctx BuilderContext, outputFile WritablePath, content string, buildWriteFileRuleFunc func(ctx BuilderContext, outputFile WritablePath, content string)) {
 	if len(content) > SHARD_SIZE {
 		var chunks WritablePaths
 		for i, c := range ShardString(content, SHARD_SIZE) {
 			tempPath := outputFile.ReplaceExtension(ctx, fmt.Sprintf("%s.%d", outputFile.Ext(), i))
-			buildWriteFileRule(ctx, tempPath, c)
+			buildWriteFileRuleFunc(ctx, tempPath, c)
 			chunks = append(chunks, tempPath)
 		}
 		ctx.Build(pctx, BuildParams{
-			Rule:        Cat,
+			Rule:        pctx.CatFilesRule(),
 			Inputs:      chunks.Paths(),
 			Output:      outputFile,
 			Description: "Merging to " + outputFile.Base(),
 		})
 		return
 	}
-	buildWriteFileRule(ctx, outputFile, content)
+	buildWriteFileRuleFunc(ctx, outputFile, content)
 }
 
 func CatFileRule(ctx BuilderContext, paths Paths, outputFile WritablePath) {
 	ctx.Build(pctx, BuildParams{
-		Rule:        Cat,
+		Rule:        pctx.CatFilesRule(),
 		Inputs:      paths,
 		Output:      outputFile,
 		Description: "combine files to " + outputFile.Base(),
@@ -232,7 +288,7 @@ func shellUnescape(s string) string {
 // in tests.
 func ContentFromFileRuleForTests(t *testing.T, params TestingBuildParams) string {
 	t.Helper()
-	if g, w := params.Rule, writeFile; g != w {
+	if g, w := params.Rule, pctx.WriteFileRule(); g != w {
 		t.Errorf("expected params.Rule to be %q, was %q", w, g)
 		return ""
 	}

@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/ui/metrics/bp2build_metrics_proto"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -255,7 +256,7 @@ func (b *BazelModuleBase) GetBazelLabel(ctx BazelConversionPathContext, module b
 	if b.ShouldConvertWithBp2build(ctx) {
 		return bp2buildModuleLabel(ctx, module)
 	}
-	panic(fmt.Errorf("requested non-existent label for module ", module.Name()))
+	panic(fmt.Errorf("requested non-existent label for module %q", module.Name()))
 }
 
 type Bp2BuildConversionAllowlist struct {

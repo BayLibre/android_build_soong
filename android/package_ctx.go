@@ -28,10 +28,39 @@ import (
 // some android-specific helper functions.
 type PackageContext struct {
 	blueprint.PackageContext
+	writeFileRule blueprint.Rule
+	catFilesRule  blueprint.Rule
 }
 
 func NewPackageContext(pkgPath string) PackageContext {
-	return PackageContext{blueprint.NewPackageContext(pkgPath)}
+	pctx := PackageContext{
+		PackageContext: blueprint.NewPackageContext(pkgPath),
+	}
+	// ubuntu 14.04 offcially use dash for /bin/sh, and its builtin echo command
+	// doesn't support -e option. Therefore we force to use /bin/bash when writing out
+	// content to file.
+	writeFile := pctx.AndroidStaticRule("writeFile",
+		blueprint.RuleParams{
+			Command:     `/bin/bash -c 'echo -e -n "$$0" > $out' $content`,
+			Description: "writing file $out",
+		},
+		"content")
+	cat := pctx.AndroidStaticRule("Cat",
+		blueprint.RuleParams{
+			Command:     "cat $in > $out",
+			Description: "concatenate licenses $out",
+		})
+	pctx.catFilesRule = cat
+	pctx.writeFileRule = writeFile
+	return pctx
+}
+
+func (pctx *PackageContext) WriteFileRule() blueprint.Rule {
+	return pctx.writeFileRule
+}
+
+func (pctx *PackageContext) CatFilesRule() blueprint.Rule {
+	return pctx.catFilesRule
 }
 
 // configErrorWrapper can be used with Path functions when a Context is not
