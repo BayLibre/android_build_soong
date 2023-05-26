@@ -28,10 +28,28 @@ import (
 // some android-specific helper functions.
 type PackageContext struct {
 	blueprint.PackageContext
+	// Rule to write a file with Ninja variables expanded
+	writeFileWithNinjaExpansion blueprint.Rule
 }
 
 func NewPackageContext(pkgPath string) PackageContext {
-	return PackageContext{blueprint.NewPackageContext(pkgPath)}
+	pctx := PackageContext{
+		PackageContext: blueprint.NewPackageContext(pkgPath),
+	}
+	writeFileWithNinjaExpansion := pctx.StaticRule("writeExpandedFileRule", blueprint.RuleParams{
+		Command:        `rm -rf ${out} && cat ${out}.rsp > ${out}`,
+		Rspfile:        "${out}.rsp",
+		RspfileContent: "${contents}",
+		Description:    "write file",
+	}, "contents")
+
+	pctx.writeFileWithNinjaExpansion = writeFileWithNinjaExpansion
+	return pctx
+}
+
+// WriteExpandedFileRule returns a rule to write a file with Ninja variables expanded
+func (pctx *PackageContext) WriteFileWithNinjaVariableExpansionRule() blueprint.Rule {
+	return pctx.writeFileWithNinjaExpansion
 }
 
 // configErrorWrapper can be used with Path functions when a Context is not
