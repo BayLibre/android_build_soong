@@ -31,7 +31,9 @@ type PackageContext struct {
 }
 
 func NewPackageContext(pkgPath string) PackageContext {
-	return PackageContext{blueprint.NewPackageContext(pkgPath)}
+	return PackageContext{
+		blueprint.NewPackageContext(pkgPath),
+	}
 }
 
 // configErrorWrapper can be used with Path functions when a Context is not
