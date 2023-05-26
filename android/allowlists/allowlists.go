@@ -1486,9 +1486,6 @@ var (
 		"libadb_pairing_connection_static",
 		"libadb_pairing_server", "libadb_pairing_server_static",
 
-		// TODO(b/240563612) Needing `stem` selection support for cc_binary
-		"crasher",
-
 		// java_import[_host] issues
 		// tradefed prebuilts depend on libprotobuf
 		"prebuilt_tradefed",

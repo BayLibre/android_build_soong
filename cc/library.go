@@ -408,6 +408,7 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		sharedTargetAttrs.Stubs_symbol_file = compilerAttrs.stubsSymbolFile
 	}
 
+	sharedTargetAttrs.Stem = compilerAttrs.stem
 	sharedTargetAttrs.Suffix = compilerAttrs.suffix
 
 	for axis, configToProps := range m.GetArchVariantProperties(ctx, &LibraryProperties{}) {
@@ -3072,6 +3073,7 @@ type bazelCcLibrarySharedAttributes struct {
 
 	Inject_bssl_hash bazel.BoolAttribute
 
+	Stem   bazel.StringAttribute
 	Suffix bazel.StringAttribute
 
 	bazelCcHeaderAbiCheckerAttributes
