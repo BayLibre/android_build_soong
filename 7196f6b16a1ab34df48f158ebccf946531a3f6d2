@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bdc088d_59882fee",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-26T23:28:38Z",
+      "side": 1,
+      "message": "Is there a reason why you have added these lines below the TODO above? At glance it does not seem to be related to the TODO description. Can you move these additions to before the TODO?",
+      "range": {
+        "startLine": 607,
+        "startChar": 0,
+        "endLine": 613,
+        "endChar": 0
+      },
+      "revId": "7196f6b16a1ab34df48f158ebccf946531a3f6d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
