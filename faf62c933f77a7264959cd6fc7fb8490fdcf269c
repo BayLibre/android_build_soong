@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc87f299_a0e81f5f",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 4015,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-05-26T06:30:26Z",
+      "side": 1,
+      "message": "instead of write file in soong phase, how about doing that in ninja? I am not sure about that, but write file directly in soong isn\u0027t common.(and it\u0027s a kind of side effect?)",
+      "range": {
+        "startLine": 4015,
+        "startChar": 11,
+        "endLine": 4015,
+        "endChar": 39
+      },
+      "revId": "faf62c933f77a7264959cd6fc7fb8490fdcf269c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
