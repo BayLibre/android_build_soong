@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "140b427e_b0258655",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 3972,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-05-26T09:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2287b9b8_82ce1d1c",
+      "range": {
+        "startLine": 3971,
+        "startChar": 0,
+        "endLine": 3972,
+        "endChar": 42
+      },
+      "revId": "5722aabeae502c8f0de074e2a0df79c3650165ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa99d88a_30c81101",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-26T07:51:41Z",
       "side": 1,
       "message": "Please add tests for this path.",
+      "range": {
+        "startLine": 1482,
+        "startChar": 1,
+        "endLine": 1482,
+        "endChar": 116
+      },
+      "revId": "5722aabeae502c8f0de074e2a0df79c3650165ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fac2c30_805e4a60",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-05-26T09:07:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa99d88a_30c81101",
       "range": {
         "startLine": 1482,
         "startChar": 1,
