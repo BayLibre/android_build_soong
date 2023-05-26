@@ -464,9 +464,19 @@ func (r *RuleBuilder) depFileMergerCmd(depFiles WritablePaths) *RuleBuilderComma
 		Inputs(depFiles.Paths())
 }
 
+// BuildWithNinjaVars adds the built command line to the build graph, with dependencies on Inputs and Tools, and output files for
+// Outputs. This function will not escape Ninja variables, so it may be used to write sandbox manifests using Ninja variables.
+func (r *RuleBuilder) BuildWithNinjaVars(name string, desc string, pctx PackageContext) {
+	r.build(name, desc, false, pctx)
+}
+
 // Build adds the built command line to the build graph, with dependencies on Inputs and Tools, and output files for
 // Outputs.
 func (r *RuleBuilder) Build(name string, desc string) {
+	r.build(name, desc, true, pctx)
+}
+
+func (r *RuleBuilder) build(name string, desc string, ninjaEscape bool, pctx PackageContext) {
 	name = ninjaNameEscape(name)
 
 	if len(r.missingDeps) > 0 {
@@ -611,12 +621,23 @@ func (r *RuleBuilder) Build(name string, desc string) {
 				name, r.sboxManifestPath.String(), r.outDir.String())
 		}
 
-		// Create a rule to write the manifest as a the textproto.
+		// Create a rule to write the manifest as textproto.
 		pbText, err := prototext.Marshal(&manifest)
 		if err != nil {
 			ReportPathErrorf(r.ctx, "sbox manifest failed to marshal: %q", err)
 		}
-		WriteFileRule(r.ctx, r.sboxManifestPath, string(pbText))
+		if ninjaEscape {
+			WriteFileRule(r.ctx, r.sboxManifestPath, string(pbText))
+		} else {
+			r.ctx.Build(pctx, BuildParams{
+				Rule:        pctx.WriteExpandedFileRule(),
+				Output:      r.sboxManifestPath,
+				Description: "write sbox manifest " + r.sboxManifestPath.Base(),
+				Args: map[string]string{
+					"contents": string(pbText),
+				},
+			})
+		}
 
 		// Generate a new string to use as the command line of the sbox rule.  This uses
 		// a RuleBuilderCommand as a convenience method of building the command line, then
@@ -670,6 +691,7 @@ func (r *RuleBuilder) Build(name string, desc string) {
 			commandString = rewrapperCommand + " bash -c '" + strings.ReplaceAll(commandString, `'`, `'\''`) + "'"
 		}
 	} else {
+
 		// If not using sbox the rule will run the command directly, put the hash of the
 		// list of input files in a comment at the end of the command line to ensure ninja
 		// reruns the rule when the list of input files changes.
