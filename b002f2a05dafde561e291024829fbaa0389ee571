@@ -16,6 +16,24 @@
       "message": "excellent ! love the generic solution!\n\nWould you mind converting init_kill_services_test or another test as an example? Or could you point to another tradefed config that uses this?",
       "revId": "b002f2a05dafde561e291024829fbaa0389ee571",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe6d84e_33257119",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-05-26T21:41:10Z",
+      "side": 1,
+      "message": "aosp/2607727 is a better example. \n\ninit_kill_services_test has other pending issues before it can be auto-generated.",
+      "parentUuid": "483d1cd0_9d6f5048",
+      "revId": "b002f2a05dafde561e291024829fbaa0389ee571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
