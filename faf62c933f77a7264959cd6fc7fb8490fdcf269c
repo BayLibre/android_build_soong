@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a12e2ea0_6b5d95f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-05-26T06:33:27Z",
+      "side": 1,
+      "message": "and how about updating https://android.googlesource.com/platform/build/soong/+/master/README.md#soong-config-variables as well(how soong config variables affects intermediate path, and how to debug?)?",
+      "revId": "faf62c933f77a7264959cd6fc7fb8490fdcf269c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc87f299_a0e81f5f",
