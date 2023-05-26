@@ -48,6 +48,47 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06aecf72_4e558b41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-26T07:16:27Z",
+      "side": 1,
+      "message": "cool, will give that a try sometime.",
+      "parentUuid": "bb27d4ec_bf2a30ac",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "b1daccdc97ae08603b0e2f5eafe97bd11238ee58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3047df1_2798a526",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-26T07:16:27Z",
+      "side": 1,
+      "message": "submitting this to get the automerging going",
+      "revId": "b1daccdc97ae08603b0e2f5eafe97bd11238ee58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1928f593_d888ed7d",
