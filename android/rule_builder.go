@@ -76,8 +76,7 @@ type RuleBuilderInstall struct {
 
 type RuleBuilderInstalls []RuleBuilderInstall
 
-// String returns the RuleBuilderInstalls in the form used by $(call copy-many-files) in Make, a space separated
-// list of from:to tuples.
+// String returns the RuleBuilderInstalls in the form used by $(call copy-many-filestuples.
 func (installs RuleBuilderInstalls) String() string {
 	sb := strings.Builder{}
 	for i, install := range installs {
@@ -91,9 +90,7 @@ func (installs RuleBuilderInstalls) String() string {
 	return sb.String()
 }
 
-// MissingDeps adds modules to the list of missing dependencies.  If MissingDeps
-// is called with a non-empty input, any call to Build will result in a rule
-// that will print an error listing the missing dependencies and fail.
+// MissingDeps and fail.
 // MissingDeps should only be called if Config.AllowMissingDependencies() is
 // true.
 func (r *RuleBuilder) MissingDeps(missingDeps []string) {
@@ -466,7 +463,25 @@ func (r *RuleBuilder) depFileMergerCmd(depFiles WritablePaths) *RuleBuilderComma
 
 // Build adds the built command line to the build graph, with dependencies on Inputs and Tools, and output files for
 // Outputs.
+func (r *RuleBuilder) BuildWithNinjaVars(name string, desc string, ctx ModuleContext, pctx PackageContext) {
+	r.build(name, desc, false, ctx, pctx)
+}
+
+// Build adds the built command line to the build graph, with dependencies on Inputs and Tools, and output files for
+// Outputs.
 func (r *RuleBuilder) Build(name string, desc string) {
+	r.build(name, desc, true, nil, pctx)
+}
+
+type ninjaParseContext struct {
+	ModuleContext
+}
+
+func (ctx ninjaParseContext) Config() interface{} {
+	return ctx.ModuleContext.Config()
+}
+
+func (r *RuleBuilder) build(name string, desc string, ninjaEscape bool, ctx ModuleContext, pctx PackageContext) {
 	name = ninjaNameEscape(name)
 
 	if len(r.missingDeps) > 0 {
@@ -521,6 +536,21 @@ func (r *RuleBuilder) Build(name string, desc string) {
 		manifest := sbox_proto.Manifest{}
 		command := sbox_proto.Command{}
 		manifest.Commands = append(manifest.Commands, &command)
+		if !ninjaEscape {
+			ruleParams := blueprint.RuleParams{
+				Command: commandString,
+			}
+			parsedCommandString, err := pctx.ParseNinjaString(ninjaParseContext{ctx}, commandString, &ruleParams)
+			if err != nil {
+				panic(err)
+			}
+			if ctx.ModuleName() == "libfizz_buzz" {
+				//fmt.Println("parsedCommandString")
+				//fmt.Println(commandString)
+				//fmt.Println(parsedCommandString)
+			}
+			commandString = parsedCommandString
+		}
 		command.Command = proto.String(commandString)
 
 		if depFile != nil {
@@ -670,6 +700,7 @@ func (r *RuleBuilder) Build(name string, desc string) {
 			commandString = rewrapperCommand + " bash -c '" + strings.ReplaceAll(commandString, `'`, `'\''`) + "'"
 		}
 	} else {
+
 		// If not using sbox the rule will run the command directly, put the hash of the
 		// list of input files in a comment at the end of the command line to ensure ninja
 		// reruns the rule when the list of input files changes.
@@ -715,9 +746,18 @@ func (r *RuleBuilder) Build(name string, desc string) {
 		pool = localPool
 	}
 
+	if ninjaEscape {
+		commandString = proptools.NinjaEscape(commandString)
+	}
+
+	if strings.Contains(commandString, "liboid_registry") {
+		//fmt.Println(commandString)
+		//fmt.Println(proptools.NinjaEscape(commandString))
+	}
+
 	r.ctx.Build(r.pctx, BuildParams{
 		Rule: r.ctx.Rule(pctx, name, blueprint.RuleParams{
-			Command:        proptools.NinjaEscape(commandString),
+			Command:        commandString,
 			CommandDeps:    proptools.NinjaEscapeList(tools.Strings()),
 			Restat:         r.restat,
 			Rspfile:        proptools.NinjaEscape(rspFile),
