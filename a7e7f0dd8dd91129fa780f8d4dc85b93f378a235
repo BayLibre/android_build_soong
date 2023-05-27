@@ -16,6 +16,24 @@
       "message": "nit: typo🙂",
       "revId": "a7e7f0dd8dd91129fa780f8d4dc85b93f378a235",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59d3f369_e90863a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-27T00:19:28Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "88871144_f53a0da3",
+      "revId": "a7e7f0dd8dd91129fa780f8d4dc85b93f378a235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
