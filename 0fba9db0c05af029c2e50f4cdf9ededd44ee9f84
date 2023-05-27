@@ -125,6 +125,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0d4e2cd_eff81753",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-27T06:39:31Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I have modified the CL so that the switching (between from-text and from-source) happens at sdk_library level instead of droidstubs, so that the behavior is consistent between the internally created modules of sdk_library. Please take a look!",
+      "parentUuid": "796eefa9_6773e46d",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a97024ce_389d642b",
