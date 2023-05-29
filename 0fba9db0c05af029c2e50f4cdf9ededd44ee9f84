@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ecd120b_cbdb5640",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-05-29T08:23:50Z",
+      "side": 1,
+      "message": "(the new patchset essentially has the same problem, where you\u0027ll get different things if you depend on the stubs in a java_sdk_library vs a java_library...)",
+      "parentUuid": "ef0aaf67_14670a87",
+      "revId": "0fba9db0c05af029c2e50f4cdf9ededd44ee9f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a97024ce_389d642b",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
