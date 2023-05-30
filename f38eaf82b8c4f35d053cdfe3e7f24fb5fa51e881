@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4302beb8_810b0c15",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-05-30T14:19:27Z",
+      "side": 1,
+      "message": "We might want to rename this now that it doesn\u0027t actually compute the CLC?",
+      "range": {
+        "startLine": 558,
+        "startChar": 5,
+        "endLine": 558,
+        "endChar": 30
+      },
+      "revId": "f38eaf82b8c4f35d053cdfe3e7f24fb5fa51e881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
