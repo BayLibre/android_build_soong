@@ -131,6 +131,9 @@ message MetricsBase {
 
   // The metric of critical path in build
   optional CriticalPathInfo critical_path_info = 33;
+
+  // The environment variable that has change value comparing to previous build.
+  repeated string changed_environment_variable = 34;
 }
 
 message BuildConfig {
