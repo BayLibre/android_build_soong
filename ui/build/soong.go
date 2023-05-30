@@ -457,7 +457,7 @@ func checkEnvironmentFile(currentEnv *Environment, envFile string) {
 		return v
 	}
 
-	if stale, _ := shared.StaleEnvFile(envFile, getenv); stale {
+	if stale, changedEnvironmentVariable, _ := shared.StaleEnvFile(envFile, getenv); stale {
 		os.Remove(envFile)
 	}
 }
