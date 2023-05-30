@@ -34,7 +34,7 @@ dist_targets = [
 ]
 
 java_library {
-    name: "core.current.stubs",
+    name: "core.current.stubs.from-source",
     visibility: ["//visibility:public"],
     static_libs: [
         "art.module.public.api.stubs",
@@ -199,7 +199,7 @@ core_platform_visibility = ["//visibility:public"]
 // API annotations are available to the dex tools that enable enforcement of runtime
 // accessibility. b/119068555
 java_library {
-    name: "legacy.core.platform.api.stubs",
+    name: "legacy.core.platform.api.stubs.from-source",
     visibility: core_platform_visibility,
     hostdex: true,
     compile_dex: true,
@@ -233,7 +233,7 @@ java_library {
 }
 
 java_library {
-    name: "stable.core.platform.api.stubs",
+    name: "stable.core.platform.api.stubs.from-source",
     visibility: core_platform_visibility,
     hostdex: true,
     compile_dex: true,
