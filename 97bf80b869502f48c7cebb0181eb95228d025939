@@ -123,6 +123,30 @@
       },
       "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af618050_76e4a3b9",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-30T15:13:09Z",
+      "side": 1,
+      "message": "I made the suggested changes.",
+      "parentUuid": "2227dbb6_ec61f206",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
