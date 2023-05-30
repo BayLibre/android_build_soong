@@ -43,7 +43,6 @@ var (
 	GlobalRustFlags = []string{
 		"-Z stack-protector=strong",
 		"-Z remap-cwd-prefix=.",
-		"-C codegen-units=1",
 		"-C debuginfo=2",
 		"-C opt-level=3",
 		"-C relocation-model=pic",
@@ -52,7 +51,6 @@ var (
 		// Use v0 mangling to distinguish from C++ symbols
 		"-C symbol-mangling-version=v0",
 		"--color always",
-		"-Zdylib-lto",
 	}
 
 	deviceGlobalRustFlags = []string{
