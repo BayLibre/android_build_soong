@@ -87,23 +87,15 @@ var (
 func init() {
 	pctx.SourcePathVariable("RustDefaultBase", RustDefaultBase)
 	pctx.VariableConfigMethod("HostPrebuiltTag", func(config android.Config) string {
-		if config.UseHostMusl() {
-			return "linux-musl-x86"
-		} else {
-			return config.PrebuiltOS()
-		}
+		return getHostPrebuiltTag(config)
 	})
-
 	pctx.VariableFunc("RustBase", func(ctx android.PackageVarContext) string {
-		if override := ctx.Config().Getenv("RUST_PREBUILTS_BASE"); override != "" {
-			return override
-		}
-		return "${RustDefaultBase}"
+		return rustPath(ctx).String()
 	})
-
+	pctx.VariableFunc("RustPath", func(ctx android.PackageVarContext) string {
+		return rustPath(ctx).String()
+	})
 	pctx.VariableFunc("RustVersion", getRustVersionPctx)
-
-	pctx.StaticVariable("RustPath", "${RustBase}/${HostPrebuiltTag}/${RustVersion}")
 	pctx.StaticVariable("RustBin", "${RustPath}/bin")
 
 	pctx.ImportAs("cc_config", "android/soong/cc/config")
@@ -122,4 +114,38 @@ func GetRustVersion(ctx android.PathContext) string {
 		return override
 	}
 	return RustDefaultVersion
+}
+
+func getHostPrebuiltTag(config android.Config) string {
+	if config.UseHostMusl() {
+		return "linux-musl-x86"
+	} else {
+		return config.PrebuiltOS()
+	}
+}
+
+func getRustBase(ctx android.PathContext) string {
+	rustBase := RustDefaultBase
+	if override := ctx.Config().Getenv("RUST_PREBUILTS_BASE"); override != "" {
+		rustBase = override
+	}
+	return rustBase
+}
+
+func RustPath(ctx android.PathContext, file string) android.SourcePath {
+	type rustToolKey string
+
+	key := android.NewCustomOnceKey(rustToolKey(file))
+
+	return ctx.Config().OnceSourcePath(key, func() android.SourcePath {
+		return rustPath(ctx).Join(ctx, file)
+	})
+}
+
+var rustPathKey = android.NewOnceKey("rustPath")
+
+func rustPath(ctx android.PathContext) android.SourcePath {
+	return ctx.Config().OnceSourcePath(rustPathKey, func() android.SourcePath {
+		return android.PathForSource(ctx, getRustBase(ctx), getHostPrebuiltTag(ctx.Config()), GetRustVersion(ctx))
+	})
 }
