@@ -147,6 +147,30 @@
       },
       "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c49a5ee_034907ce",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-05-30T15:47:50Z",
+      "side": 1,
+      "message": "That sounds reasonable to me. `java` is a restricted package that can only be provided by the JVM (or ART) so Apps should not contain any classes in that package (does ART protect against that). The `jdk` is probably less well protected but I don\u0027t see any reason why Apps should contain classes in that package.\n\nWe do have the ability to scan all apps to find the classes that they contain so I think we need to get into the habit of checking there before updating this.",
+      "parentUuid": "af618050_76e4a3b9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
