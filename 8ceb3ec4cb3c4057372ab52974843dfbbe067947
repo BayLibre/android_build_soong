@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7af075c_1af8d145",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-30T14:47:36Z",
+      "side": 1,
+      "message": "When writing Soong variables, do we need to limit the set of variables accessible as well? Or should we have two products, one that is \"system variables\" and one that has all variables?",
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cefea9a_3fb5cefa",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-30T14:47:36Z",
+      "side": 1,
+      "message": "should we indicate why we\u0027re doing this in the comment?",
+      "range": {
+        "startLine": 677,
+        "startChar": 3,
+        "endLine": 677,
+        "endChar": 97
+      },
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448fb1de_f6f547aa",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-30T14:47:36Z",
+      "side": 1,
+      "message": "Doesn\u0027t have to be this CL: To better re-use paths between different arches, should we also have arch in this path? Or is that a less-prioritized workflow for now?",
+      "range": {
+        "startLine": 724,
+        "startChar": 0,
+        "endLine": 725,
+        "endChar": 44
+      },
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8c7eb2_96050321",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-30T14:47:36Z",
+      "side": 1,
+      "message": "should we add comments about what current_product means?",
+      "range": {
+        "startLine": 89,
+        "startChar": 46,
+        "endLine": 89,
+        "endChar": 61
+      },
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
