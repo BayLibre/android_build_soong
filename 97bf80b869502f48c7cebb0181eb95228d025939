@@ -52,6 +52,29 @@
       "parentUuid": "f5fc1108_67f355d5",
       "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c290ff44_f79a5963",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-05-30T14:19:27Z",
+      "side": 1,
+      "message": "This pattern is dangerous.\n\nThe `javax` package covers libraries that are related to but not necessarily provided by the JDK. Those libraries come in different versions, do not provide Android level compatibility guarantees and can be added by Apps.\n\nAdding additional classes under the `javax` packages has a strong likelihood of causing app compatibility issues if you add a different version to that used by an app. At the very least adding classes under this package should only be done after ensuring that Apps do not embed these classes.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
