@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03fa3938_e00660f5",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-05-30T17:43:10Z",
+      "side": 1,
+      "message": "\"extract native libs\" means extract the compressed libraries from the APK into /data.  Maybe `use_platform_libs`?",
+      "revId": "2f61955e034d6470ee8ec9df9fd9c479220d23bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
