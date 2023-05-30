@@ -674,6 +674,9 @@ func (context *mixedBuildBazelContext) createBazelCommand(config Config, runName
 		// We don't need to set --host_platforms because it's set in bazelrc files
 		// that the bazel shell script wrapper passes
 
+		// Disable the TARGET_PRODUCT platform prefix in the intermediate outputs during a mixed builds
+		"--noexperimental_platform_in_output_dir",
+
 		// Suppress noise
 		"--ui_event_filters=-INFO",
 		"--noshow_progress",
