@@ -16,6 +16,24 @@
       "message": "There\u0027s b/282678719 that discusses this for ART in VIC. Do we have package compat issues for the UDC module as well?",
       "revId": "142cecb6d73873fc18651f801ae82c0f404581c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "499070f2_29eff48f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-30T13:13:22Z",
+      "side": 1,
+      "message": "Discussed offline. Yes, we do have the package compat issues for the UDC module. I added wide prefixes to fix the immediate problem with T, and the libcore team will find the best way forward.",
+      "parentUuid": "b75302e6_5458740a",
+      "revId": "142cecb6d73873fc18651f801ae82c0f404581c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
