@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "520c9f64_d10b0bcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-30T15:42:01Z",
+      "side": 1,
+      "message": "I think the partition-ness shouldn\u0027t be a platform constraint, but a build setting. So given some target X, if it has //:partition\u003dsystem, then Bazel will force an error if X depends on a vendor specific product var setting. \n\nI\u0027m not sure how to implement that from where we are, but creating two products doesn\u0027t seem like the right place to slice and dice this.",
+      "parentUuid": "a7af075c_1af8d145",
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cefea9a_3fb5cefa",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-05-30T14:47:36Z",
       "side": 1,
       "message": "should we indicate why we\u0027re doing this in the comment?",
+      "range": {
+        "startLine": 677,
+        "startChar": 3,
+        "endLine": 677,
+        "endChar": 97
+      },
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e62a12_b0078135",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-30T15:42:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cefea9a_3fb5cefa",
       "range": {
         "startLine": 677,
         "startChar": 3,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70ad5fab_8e165795",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-30T15:42:01Z",
+      "side": 1,
+      "message": "How would that work given that you\u0027d have to recompile to a different arch? I thought the current optimization only works for outputs that don\u0027t need recompilation, i.e. arm64 outputs between cheetah and panther, which can\u0027t be reused for an hypothetical x86_64 cheetah anyway.",
+      "parentUuid": "448fb1de_f6f547aa",
+      "range": {
+        "startLine": 724,
+        "startChar": 0,
+        "endLine": 725,
+        "endChar": 44
+      },
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a8c7eb2_96050321",
         "filename": "bp2build/bp2build_product_config.go",
         "patchSetId": 4
@@ -77,6 +143,30 @@
       "writtenOn": "2023-05-30T14:47:36Z",
       "side": 1,
       "message": "should we add comments about what current_product means?",
+      "range": {
+        "startLine": 89,
+        "startChar": 46,
+        "endLine": 89,
+        "endChar": 61
+      },
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e41816d_1cde1d0b",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-30T15:42:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a8c7eb2_96050321",
       "range": {
         "startLine": 89,
         "startChar": 46,
