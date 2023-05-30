@@ -22,6 +22,30 @@
       },
       "revId": "f38eaf82b8c4f35d053cdfe3e7f24fb5fa51e881",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2add7a3f_afdedda5",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-30T14:44:53Z",
+      "side": 1,
+      "message": "It still computes the dependencies that the CLC refers to. Renamed it and updated the comments to clarify this.",
+      "parentUuid": "4302beb8_810b0c15",
+      "range": {
+        "startLine": 558,
+        "startChar": 5,
+        "endLine": 558,
+        "endChar": 30
+      },
+      "revId": "f38eaf82b8c4f35d053cdfe3e7f24fb5fa51e881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
