@@ -171,6 +171,30 @@
       },
       "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4da9e25_eeeb110b",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-05-30T16:08:05Z",
+      "side": 1,
+      "message": "On a general note, don\u0027t we need to be more concerned about what to whitelist or not in master rather than here on android13-dev? Iiuc this list is to catch unintended packages when we develop at head, and from that perspective it could even be an option to disable this check entirely on this branch.\n\nIOW, Paul has good points, but perhaps they apply to master instead, while here we may want err on the side of being too lenient to avoid having to add more mandatory patches for OEMs.",
+      "parentUuid": "7c49a5ee_034907ce",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
