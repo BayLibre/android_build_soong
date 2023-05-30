@@ -54,6 +54,10 @@ var (
 		"-Zdylib-lto",
 	}
 
+	RustLinkerArgs = strings.Join([]string{
+		"-Wl,--as-needed",
+	}, " ")
+
 	deviceGlobalRustFlags = []string{
 		"-C panic=abort",
 		"-Z link-native-libraries=no",
@@ -101,10 +105,9 @@ func init() {
 
 	pctx.ImportAs("cc_config", "android/soong/cc/config")
 	pctx.StaticVariable("RustLinker", "${cc_config.ClangBin}/clang++")
-	pctx.StaticVariable("RustLinkerArgs", "-Wl,--as-needed")
+	pctx.StaticVariable("RustLinkerArgs", RustLinkerArgs)
 
 	pctx.StaticVariable("DeviceGlobalLinkFlags", strings.Join(deviceGlobalLinkFlags, " "))
-
 }
 
 func getRustVersionPctx(ctx android.PackageVarContext) string {
