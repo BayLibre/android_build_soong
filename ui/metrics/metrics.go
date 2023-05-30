@@ -248,6 +248,13 @@ func (m *Metrics) SetBuildCommand(cmd []string) {
 	m.metrics.BuildCommand = proto.String(strings.Join(cmd, " "))
 }
 
+// SetReAnalysisReason adds the changed environment variable to
+// ReAnalysisReason field.
+func (m *Metrics) SetReAnalysisReason(ChangedEnvironmentVariable string) {
+	m.metrics.ReAnalysisReason = append(m.metrics.ReAnalysisReason,
+		ChangedEnvironmentVariable)
+}
+
 // Dump exports the collected metrics from the executed build to the file at
 // out path.
 func (m *Metrics) Dump(out string) error {
