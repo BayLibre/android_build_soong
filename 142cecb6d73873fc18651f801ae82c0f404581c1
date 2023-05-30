@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b75302e6_5458740a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-05-30T12:00:50Z",
+      "side": 1,
+      "message": "There\u0027s b/282678719 that discusses this for ART in VIC. Do we have package compat issues for the UDC module as well?",
+      "revId": "142cecb6d73873fc18651f801ae82c0f404581c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
