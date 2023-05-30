@@ -15,12 +15,14 @@
 package rust
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
 	"github.com/google/blueprint"
 
 	"android/soong/android"
+	cc_config "android/soong/cc/config"
 	"android/soong/rust/config"
 )
 
@@ -88,6 +90,18 @@ var (
 			RspfileContent: "$in",
 		},
 		"outDir")
+
+	realcp = pctx.AndroidStaticRule("realcp",
+		blueprint.RuleParams{
+			Command:     "rm -f $out && cp $in $out",
+			Description: "cp $out",
+		})
+
+	symlink = pctx.AndroidStaticRule("symlink",
+		blueprint.RuleParams{
+			Command:     "rm -f $out && ln -s $in $out",
+			Description: "symlink $in $out",
+		})
 
 	// Cross-referencing:
 	_ = pctx.SourcePathVariable("rustExtractor",
@@ -352,17 +366,23 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	}
 
 	rustcOutputFile := outputFile
+	var rustcImplicitOutputs android.WritablePaths
 	usesLinker := crateType == "bin" || crateType == "dylib" || crateType == "cdylib" || crateType == "proc-macro"
 	if usesLinker {
 		rustcOutputFile = android.PathForModuleOut(ctx, outputFile.Base()+".rsp")
+		rustcImplicitOutputs = android.WritablePaths{
+			android.PathForModuleOut(ctx, outputFile.Base()+".rsp.whole.a"),
+			android.PathForModuleOut(ctx, outputFile.Base()+".rsp.a"),
+		}
 	}
 
 	ctx.Build(pctx, android.BuildParams{
-		Rule:        rustc,
-		Description: "rustc " + main.Rel(),
-		Output:      rustcOutputFile,
-		Inputs:      inputs,
-		Implicits:   implicits,
+		Rule:            rustc,
+		Description:     "rustc " + main.Rel(),
+		Output:          rustcOutputFile,
+		ImplicitOutputs: rustcImplicitOutputs,
+		Inputs:          inputs,
+		Implicits:       implicits,
 		Args: map[string]string{
 			"rustcFlags": strings.Join(rustcFlags, " "),
 			"libFlags":   strings.Join(libFlags, " "),
@@ -371,19 +391,75 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	})
 
 	if usesLinker {
+		sboxDirectory := "rustLink"
+		libc := ctx.Config().HostCcSharedLibPath(ctx, "libc++")
+		sboxLibc := android.PathForModuleOut(ctx, libc.Base()+".1")
 		ctx.Build(pctx, android.BuildParams{
-			Rule:        rustLink,
-			Description: "rustLink " + main.Rel(),
-			Output:      outputFile,
-			Inputs:      android.Paths{rustcOutputFile},
-			Implicits:   linkImplicits,
-			OrderOnly:   linkOrderOnly,
-			Args: map[string]string{
-				"linkFlags": strings.Join(linkFlags, " "),
-				"crtBegin":  strings.Join(deps.CrtBegin.Strings(), " "),
-				"crtEnd":    strings.Join(deps.CrtEnd.Strings(), " "),
-			},
+			Rule:   realcp,
+			Input:  libc,
+			Output: sboxLibc,
 		})
+		sboxOutputFile := android.PathForModuleOut(ctx, sboxDirectory, outputFile.Base())
+		rustLinkRule := android.NewRuleBuilder(pctx, ctx).
+			Sbox(
+				android.PathForModuleOut(ctx, sboxDirectory),
+				android.PathForModuleOut(ctx, sboxDirectory+".sbox.textproto"),
+			).
+			SandboxInputs()
+
+		clangBinPath := cc_config.ClangPath(ctx, "bin")
+		rustLinkRule.Command().
+			Flag(
+				fmt.Sprintf(
+					"PATH=$${PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
+					android.PathDirname(clangBinPath),
+				),
+			).
+			Flag(
+				fmt.Sprintf(
+					"LD_LIBRARY_PATH=$${LD_LIBRARY_PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
+					android.PathDirname(sboxLibc),
+				),
+			).
+			Tool(clangBinPath.Join(ctx, "clang++")).
+			ImplicitTool(clangBinPath.Join(ctx, "clang++.real")).
+			ImplicitTool(clangBinPath.Join(ctx, "lld")).
+			ImplicitTool(clangBinPath.Join(ctx, "ld.lld")).
+			ImplicitTool(sboxLibc).
+			Flag("-o").
+			Output(sboxOutputFile).
+			Inputs(deps.CrtBegin).
+			Flag("${config.RustLinkerArgs}").
+			FlagWithInput("@", rustcOutputFile).
+			Flags(linkFlags).
+			Inputs(deps.CrtEnd).
+			Implicits(rustcImplicitOutputs.Paths()).
+			Implicits(linkImplicits).
+			OrderOnlys(linkOrderOnly)
+		rustLinkRule.BuildWithNinjaVars("rustLink", "rustLink "+main.Rel(), ctx, pctx)
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   realcp,
+			Input:  sboxOutputFile,
+			Output: outputFile,
+		})
+
+		//blueprint.RuleParams{
+		//	Command: "${config.RustLinker} -o $out ${crtBegin} ${config.RustLinkerArgs} @$in ${linkFlags} ${crtEnd}",
+		//},
+		//"linkFlags", "crtBegin", "crtEnd")
+		//ctx.Build(pctx, android.BuildParams{
+		//	Rule:        rustLink,
+		//	Description: "rustLink " + main.Rel(),
+		//	Output:      outputFile,
+		//	Inputs:      android.Paths{rustcOutputFile},
+		//	Implicits:   linkImplicits,
+		//	OrderOnly:   linkOrderOnly,
+		//	Args: map[string]string{
+		//		"linkFlags": strings.Join(linkFlags, " "),
+		//		"crtBegin":  strings.Join(deps.CrtBegin.Strings(), " "),
+		//		"crtEnd":    strings.Join(deps.CrtEnd.Strings(), " "),
+		//	},
+		//})
 	}
 
 	if flags.EmitXrefs {

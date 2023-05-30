@@ -199,6 +199,12 @@ type Path interface {
 	RelativeToTop() Path
 }
 
+// Directory returns just the dirname of the file without the filename.
+func PathDirname(p Path) string {
+	pStr := p.String()
+	return pStr[:len(pStr)-len(p.Base())]
+}
+
 const (
 	OutDir      = "out"
 	OutSoongDir = OutDir + "/soong"
