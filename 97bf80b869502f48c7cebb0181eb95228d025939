@@ -16,6 +16,24 @@
       "message": "I thought this would have a merge path that ends up in AOSP master, but apparently that\u0027s not the case for platform/build/soong, for some reason: http://android-build/automerger_graph/project/android/platform%2Fbuild%2Fsoong",
       "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5fc1108_67f355d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-30T13:36:26Z",
+      "side": 1,
+      "message": "I think this change is just for partners to view and cherry-pick. I don\u0027t intend to merge this change. Should I?",
+      "parentUuid": "08287bdf_023597f6",
+      "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
