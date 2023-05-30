@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1889360b_a3a52308",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-30T16:01:19Z",
+      "side": 1,
+      "message": "Ah, fair. I believe @jiyong proposed setting some product variables to a default setting to ensure that the hash is the same across products. That piece looked like it was missing in the current implementation.\n\nI wasn\u0027t sure we\u0027d been able to move product variables to build settings yet, if so that\u0027s exciting.",
+      "parentUuid": "520c9f64_d10b0bcc",
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cefea9a_3fb5cefa",
@@ -120,6 +138,30 @@
       "side": 1,
       "message": "How would that work given that you\u0027d have to recompile to a different arch? I thought the current optimization only works for outputs that don\u0027t need recompilation, i.e. arm64 outputs between cheetah and panther, which can\u0027t be reused for an hypothetical x86_64 cheetah anyway.",
       "parentUuid": "448fb1de_f6f547aa",
+      "range": {
+        "startLine": 724,
+        "startChar": 0,
+        "endLine": 725,
+        "endChar": 44
+      },
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80dd3241_677c4b5d",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-05-30T16:01:19Z",
+      "side": 1,
+      "message": "Jiyong\u0027s long term proposal looked to have arch-specific paths, wanted to call this out.\n\nI don\u0027t think this is necessary for optimizing re-use between specific products, so it\u0027d be good to understand whether that solution is truly necessary.",
+      "parentUuid": "70ad5fab_8e165795",
       "range": {
         "startLine": 724,
         "startChar": 0,
