@@ -99,6 +99,30 @@
       },
       "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2227dbb6_ec61f206",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2023-05-30T15:11:06Z",
+      "side": 1,
+      "message": "I think we can leave `javax` packages as they were - there were no new javax packages added, and I don\u0027t think we\u0027ll add any soon. Similarly, maybe limit `jdk` to `jdk.internal.*` and add back `jdk.net`. For `java.*`, I think it\u0027s fine to have it like this for now. Paul, does that sound right?\n\nI\u0027ll try and understand better how we deal with this from now on. It\u0027s reasonable that we make sure we avoid package names that may already be used independently. At the same time we do sometimes need to add new ones (like `java.lang.runtime`) and carrying around patches for old releases to be included is not great, we should probably minimize the need for that.",
+      "parentUuid": "c74943a0_a71256a4",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "97bf80b869502f48c7cebb0181eb95228d025939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
