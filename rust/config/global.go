@@ -42,7 +42,6 @@ var (
 
 	GlobalRustFlags = []string{
 		"-Z remap-cwd-prefix=.",
-		"-C codegen-units=1",
 		"-C debuginfo=2",
 		"-C opt-level=3",
 		"-C relocation-model=pic",
@@ -54,7 +53,6 @@ var (
 		// TODO (b/267698452): Temporary workaround until the "no unstable
 		// features" policy is enforced.
 		"-A stable-features",
-		"-Zdylib-lto",
 	}
 
 	deviceGlobalRustFlags = []string{
