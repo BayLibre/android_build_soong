@@ -25,6 +25,7 @@ proto_library(
     srcs = [
         "bp2build_metrics_proto/bp2build_metrics.proto",
         "metrics_proto/metrics.proto",
+        "bazel_metrics_proto/bazel_metrics.proto",
     ],
     strip_import_prefix = "",
 )
