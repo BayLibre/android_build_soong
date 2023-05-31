@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2343a684_5cc770ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-05-31T19:27:30Z",
+      "side": 1,
+      "message": "I\u0027d like usta and/or a different TL to review as well.",
+      "revId": "932e4c892a08bb4894cc21f56383c84b9df9529f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
