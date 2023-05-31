@@ -78,7 +78,7 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 	if lto.Properties.LtoEnabled {
 		var ltoCFlag string
 		var ltoLdFlag string
-		if lto.ThinLTO() {
+		if lto.ThinLTO(ctx) {
 			ltoCFlag = "-flto=thin -fsplit-lto-unit"
 		} else {
 			ltoCFlag = "-flto=thin -fsplit-lto-unit"
@@ -119,14 +119,17 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 
 // Determine which LTO mode to use for the given module.
 func (lto *lto) LTO(ctx BaseModuleContext) bool {
-	if lto.Never() {
+	if lto.Never(ctx) {
 		return false
 	}
 	if ctx.Config().IsEnvTrue("DISABLE_LTO") {
 		return false
 	}
+	if ctx.Config().Eng() {
+		return false
+	}
 	// Module explicitly requests for LTO.
-	if lto.ThinLTO() {
+	if lto.ThinLTO(ctx) {
 		return true
 	}
 	// LP32 has many subtle issues and less test coverage.
@@ -145,16 +148,16 @@ func (lto *lto) LTO(ctx BaseModuleContext) bool {
 	return GlobalThinLTO(ctx)
 }
 
-func (lto *lto) ThinLTO() bool {
-	return lto != nil && proptools.Bool(lto.Properties.Lto.Thin)
+func (lto *lto) ThinLTO(ctx BaseModuleContext) bool {
+	return !ctx.Config().Eng() && lto != nil && proptools.Bool(lto.Properties.Lto.Thin)
 }
 
-func (lto *lto) Never() bool {
-	return lto != nil && proptools.Bool(lto.Properties.Lto.Never)
+func (lto *lto) Never(ctx BaseModuleContext) bool {
+	return ctx.Config().Eng() || (lto != nil && proptools.Bool(lto.Properties.Lto.Never))
 }
 
 func GlobalThinLTO(ctx android.BaseModuleContext) bool {
-	return ctx.Config().IsEnvTrue("GLOBAL_THINLTO")
+	return !ctx.Config().Eng() && ctx.Config().IsEnvTrue("GLOBAL_THINLTO")
 }
 
 // Propagate lto requirements down from binaries
