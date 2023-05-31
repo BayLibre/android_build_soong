@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c14d8ff_62b43515",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 3159,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-05-31T16:49:49Z",
+      "side": 1,
+      "message": "Is there a reason why the two `if commonAttrs.Srcs.IsEmpty()` branches are separated? It seems like L3147~3153 does not change `commonAttrs.Srcs`. Can we combine the two by defining `attrs` and `props` above the first if branch?",
+      "range": {
+        "startLine": 3141,
+        "startChar": 0,
+        "endLine": 3159,
+        "endChar": 2
+      },
+      "revId": "cc8247db07e199046219f55d19f1f5de009395f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ab385ff_ca1c554e",
         "filename": "java/java.go",
         "patchSetId": 10
