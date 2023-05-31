@@ -66,7 +66,7 @@ func (lto *lto) props() []interface{} {
 }
 
 func (lto *lto) begin(ctx BaseModuleContext) {
-	if ctx.Config().IsEnvTrue("DISABLE_LTO") {
+	if ctx.Config().IsEnvTrue("DISABLE_LTO") || ctx.Config().Eng() {
 		lto.Properties.NoLtoEnabled = true
 	}
 }
@@ -78,10 +78,14 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 		return flags
 	}
 
+	if ctx.Config().Eng() {
+		return flags
+	}
+
 	if lto.LTO(ctx) {
 		var ltoCFlag string
 		var ltoLdFlag string
-		if lto.ThinLTO() {
+		if lto.ThinLTO(ctx) {
 			ltoCFlag = "-flto=thin -fsplit-lto-unit"
 		} else {
 			ltoCFlag = "-flto=thin -fsplit-lto-unit"
@@ -97,7 +101,7 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fwhole-program-vtables")
 		}
 
-		if (lto.DefaultThinLTO(ctx) || lto.ThinLTO()) && ctx.Config().IsEnvTrue("USE_THINLTO_CACHE") {
+		if (lto.DefaultThinLTO(ctx) || lto.ThinLTO(ctx)) && ctx.Config().IsEnvTrue("USE_THINLTO_CACHE") {
 			// Set appropriate ThinLTO cache policy
 			cacheDirFormat := "-Wl,--thinlto-cache-dir="
 			cacheDir := android.PathForOutput(ctx, "thinlto-cache").String()
@@ -121,7 +125,7 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 }
 
 func (lto *lto) LTO(ctx BaseModuleContext) bool {
-	return lto.ThinLTO() || lto.DefaultThinLTO(ctx)
+	return !ctx.Config().Eng() && (lto.ThinLTO(ctx) || lto.DefaultThinLTO(ctx))
 }
 
 func (lto *lto) DefaultThinLTO(ctx BaseModuleContext) bool {
@@ -135,19 +139,19 @@ func (lto *lto) DefaultThinLTO(ctx BaseModuleContext) bool {
 	// FIXME: ThinLTO for VNDK produces different output.
 	// b/169217596
 	vndk := ctx.isVndk()
-	return GlobalThinLTO(ctx) && !lto.Never() && !lib32 && !cfi && !host && !test && !vndk
+	return GlobalThinLTO(ctx) && !lto.Never(ctx) && !lib32 && !cfi && !host && !test && !vndk
 }
 
-func (lto *lto) ThinLTO() bool {
-	return lto != nil && (proptools.Bool(lto.Properties.Lto.Thin) || lto.Properties.ThinEnabled)
+func (lto *lto) ThinLTO(ctx android.BaseModuleContext) bool {
+	return !ctx.Config().Eng() && (lto != nil && (proptools.Bool(lto.Properties.Lto.Thin) || lto.Properties.ThinEnabled))
 }
 
-func (lto *lto) Never() bool {
-	return lto != nil && (proptools.Bool(lto.Properties.Lto.Never) || lto.Properties.NoLtoEnabled)
+func (lto *lto) Never(ctx android.BaseModuleContext) bool {
+	return ctx.Config().Eng() || (lto != nil && (proptools.Bool(lto.Properties.Lto.Never) || lto.Properties.NoLtoEnabled))
 }
 
 func GlobalThinLTO(ctx android.BaseModuleContext) bool {
-	return ctx.Config().IsEnvTrue("GLOBAL_THINLTO")
+	return !ctx.Config().Eng() && ctx.Config().IsEnvTrue("GLOBAL_THINLTO")
 }
 
 // Propagate lto requirements down from binaries
@@ -155,8 +159,8 @@ func ltoDepsMutator(mctx android.TopDownMutatorContext) {
 	globalThinLTO := GlobalThinLTO(mctx)
 
 	if m, ok := mctx.Module().(*Module); ok {
-		thin := m.lto.ThinLTO()
-		never := m.lto.Never()
+		thin := m.lto.ThinLTO(mctx)
+		never := m.lto.Never(mctx)
 
 		mctx.WalkDeps(func(dep android.Module, parent android.Module) bool {
 			tag := mctx.OtherModuleDependencyTag(dep)
@@ -174,10 +178,10 @@ func ltoDepsMutator(mctx android.TopDownMutatorContext) {
 			}
 
 			if dep, ok := dep.(*Module); ok {
-				if !globalThinLTO && thin && !dep.lto.ThinLTO() {
+				if !globalThinLTO && thin && !dep.lto.ThinLTO(mctx) {
 					dep.lto.Properties.ThinDep = true
 				}
-				if globalThinLTO && never && !dep.lto.Never() {
+				if globalThinLTO && never && !dep.lto.Never(mctx) {
 					dep.lto.Properties.NoLtoDep = true
 				}
 			}
@@ -196,20 +200,20 @@ func ltoMutator(mctx android.BottomUpMutatorContext) {
 		// Create variations for LTO types required as static
 		// dependencies
 		variationNames := []string{""}
-		if !globalThinLTO && m.lto.Properties.ThinDep && !m.lto.ThinLTO() {
+		if !globalThinLTO && m.lto.Properties.ThinDep && !m.lto.ThinLTO(mctx) {
 			variationNames = append(variationNames, "lto-thin")
 		}
-		if globalThinLTO && m.lto.Properties.NoLtoDep && !m.lto.Never() {
+		if globalThinLTO && m.lto.Properties.NoLtoDep && !m.lto.Never(mctx) {
 			variationNames = append(variationNames, "lto-none")
 		}
 
 		// Use correct dependencies if LTO property is explicitly set
 		// (mutually exclusive)
-		if !globalThinLTO && m.lto.ThinLTO() {
+		if !globalThinLTO && m.lto.ThinLTO(mctx) {
 			mctx.SetDependencyVariation("lto-thin")
 		}
-		// Never must be the last, it overrides Thin.
-		if globalThinLTO && m.lto.Never() {
+		// Never must be the last, it overrides Thin or Full.
+		if globalThinLTO && m.lto.Never(mctx) {
 			mctx.SetDependencyVariation("lto-none")
 		}
 

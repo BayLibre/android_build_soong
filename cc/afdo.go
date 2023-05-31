@@ -65,11 +65,15 @@ func (afdo *afdo) props() []interface{} {
 
 // afdoEnabled returns true for binaries and shared libraries
 // that set afdo prop to True and there is a profile available
-func (afdo *afdo) afdoEnabled() bool {
-	return afdo != nil && afdo.Properties.Afdo
+func (afdo *afdo) afdoEnabled(mctx android.TopDownMutatorContext) bool {
+	return afdo != nil && afdo.Properties.Afdo && !mctx.Config().Eng()
 }
 
 func (afdo *afdo) flags(ctx ModuleContext, flags Flags) Flags {
+	if ctx.Config().Eng() {
+		return flags
+	}
+
 	if afdo.Properties.Afdo {
 		// We use `-funique-internal-linkage-names` to associate profiles to the right internal
 		// functions. This option should be used before generating a profile. Because a profile
@@ -142,7 +146,7 @@ var _ FdoProfileMutatorInterface = (*Module)(nil)
 
 // Propagate afdo requirements down from binaries and shared libraries
 func afdoDepsMutator(mctx android.TopDownMutatorContext) {
-	if m, ok := mctx.Module().(*Module); ok && m.afdo.afdoEnabled() {
+	if m, ok := mctx.Module().(*Module); ok && m.afdo.afdoEnabled(mctx) {
 		path := m.afdo.Properties.FdoProfilePath
 		mctx.WalkDeps(func(dep android.Module, parent android.Module) bool {
 			tag := mctx.OtherModuleDependencyTag(dep)
