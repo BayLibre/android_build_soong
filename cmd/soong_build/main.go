@@ -544,6 +544,7 @@ func main() {
 		}
 		writeMetrics(configuration, ctx.EventHandler, metricsDir)
 	}
+	addImplicitEnvDeps(configuration)
 	writeUsedEnvironmentFile(configuration)
 
 	// Touch the output file so that it's the newest file created by soong_build.
@@ -551,6 +552,13 @@ func main() {
 	// are ninja inputs to the main output file, then ninja would superfluously
 	// rebuild this output file on the next build invocation.
 	touch(shared.JoinPath(topDir, finalOutputFile))
+}
+
+// Registers certain environment variables as being implicit dependencies of
+// soong_build. Changes to these environment variables will result in
+// retriggering soong_build.
+func addImplicitEnvDeps(configuration android.Config) {
+	configuration.Getenv("USE_BAZEL_VERSION")
 }
 
 func writeUsedEnvironmentFile(configuration android.Config) {
