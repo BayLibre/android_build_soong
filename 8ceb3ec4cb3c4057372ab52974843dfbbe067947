@@ -196,6 +196,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9de649b_d0008914",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-05-31T12:38:51Z",
+      "side": 1,
+      "message": "\u003e re-use paths between different arches\n\nGiven that Android is mostly ARM (and will be for a while), I don\u0027t think the need for sharing Java artifacts across targets having different CPU architecture is high.",
+      "parentUuid": "b105d3e2_382f57cd",
+      "range": {
+        "startLine": 724,
+        "startChar": 0,
+        "endLine": 725,
+        "endChar": 44
+      },
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a8c7eb2_96050321",
