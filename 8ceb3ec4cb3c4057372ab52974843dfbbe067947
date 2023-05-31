@@ -172,6 +172,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b105d3e2_382f57cd",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-05-31T06:15:15Z",
+      "side": 1,
+      "message": "Oh, I misunderstood your first comment, sorry!  \n\nI think it really depends? Makes sense for native outputs, but not quite for Java outputs. Let me sit on this for a bit.",
+      "parentUuid": "80dd3241_677c4b5d",
+      "range": {
+        "startLine": 724,
+        "startChar": 0,
+        "endLine": 725,
+        "endChar": 44
+      },
+      "revId": "8ceb3ec4cb3c4057372ab52974843dfbbe067947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a8c7eb2_96050321",
