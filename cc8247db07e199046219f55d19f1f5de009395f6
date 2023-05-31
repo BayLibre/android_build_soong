@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11420463_17ebb98e",
+        "filename": "bp2build/java_test_host_conversion_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-31T16:39:06Z",
+      "side": 1,
+      "message": "nit: consider adding lib_a to the input blueprint. imo `BP2BUILD__MISSING__DEP` is an internal implementation detail, and should not be in user facing unit tests.\n\nTo reduce boilerplate in `ExpectedBazelTagets`, you can add `bp2build_available: false` to `lib_a` https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/java_plugin_conversion_test.go;l\u003d48?q\u003dbp2build.*available",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 39
+      },
+      "revId": "cc8247db07e199046219f55d19f1f5de009395f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab385ff_ca1c554e",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 3170,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-31T16:39:06Z",
+      "side": 1,
+      "message": "nit: consider encapsulating these in a struct",
+      "range": {
+        "startLine": 3170,
+        "startChar": 60,
+        "endLine": 3170,
+        "endChar": 151
+      },
+      "revId": "cc8247db07e199046219f55d19f1f5de009395f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
