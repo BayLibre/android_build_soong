@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f21ef646_b6c219e5",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-05-31T10:14:01Z",
+      "side": 0,
+      "message": "I\u0027m going to remove `use_file_contexts_as_is` property once this is merged. The property was a workaround anyway.",
+      "range": {
+        "startLine": 792,
+        "startChar": 11,
+        "endLine": 792,
+        "endChar": 34
+      },
+      "revId": "d5be864f810c67a7fbb1ea034dd8c2d566e7638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
