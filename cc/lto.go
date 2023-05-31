@@ -125,6 +125,9 @@ func (lto *lto) LTO(ctx BaseModuleContext) bool {
 	if ctx.Config().IsEnvTrue("DISABLE_LTO") {
 		return false
 	}
+	if ctx.Config().Eng() {
+		return false
+	}
 	// Module explicitly requests for LTO.
 	if lto.ThinLTO() {
 		return true
