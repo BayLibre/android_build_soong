@@ -544,6 +544,12 @@ func main() {
 		}
 		writeMetrics(configuration, ctx.EventHandler, metricsDir)
 	}
+
+	// Register certain environment variables as being implicit dependencies of
+	// soong_build. Changes to these environment variables will result in
+	// retriggering soong_build.
+	configuration.Getenv("USE_BAZEL_VERSION")
+
 	writeUsedEnvironmentFile(configuration)
 
 	// Touch the output file so that it's the newest file created by soong_build.
