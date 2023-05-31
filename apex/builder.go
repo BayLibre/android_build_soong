@@ -346,6 +346,10 @@ func (a *apexBundle) buildFileContexts(ctx android.ModuleContext) android.Output
 	output := android.PathForModuleOut(ctx, "file_contexts")
 	rule := android.NewRuleBuilder(pctx, ctx)
 
+	forceLabel := "u:object_r:system_file:s0"
+	if a.SocSpecific() {
+		forceLabel = "u:object_r:vendor_configs_file:s0"
+	}
 	switch a.properties.ApexType {
 	case imageApex:
 		// remove old file
@@ -356,8 +360,8 @@ func (a *apexBundle) buildFileContexts(ctx android.ModuleContext) android.Output
 		rule.Command().Text("echo").Text(">>").Output(output)
 		if !useFileContextsAsIs {
 			// force-label /apex_manifest.pb and / as system_file so that apexd can read them
-			rule.Command().Text("echo").Flag("/apex_manifest\\\\.pb u:object_r:system_file:s0").Text(">>").Output(output)
-			rule.Command().Text("echo").Flag("/ u:object_r:system_file:s0").Text(">>").Output(output)
+			rule.Command().Text("echo").Text("/apex_manifest\\\\.pb").Text(forceLabel).Text(">>").Output(output)
+			rule.Command().Text("echo").Text("/").Text(forceLabel).Text(">>").Output(output)
 		}
 	case flattenedApex:
 		// For flattened apexes, install path should be prepended.
@@ -373,8 +377,8 @@ func (a *apexBundle) buildFileContexts(ctx android.ModuleContext) android.Output
 		rule.Command().Text("echo").Text(">>").Output(output)
 		if !useFileContextsAsIs {
 			// force-label /apex_manifest.pb and / as system_file so that apexd can read them
-			rule.Command().Text("echo").Flag(apexPath + `/apex_manifest\\.pb u:object_r:system_file:s0`).Text(">>").Output(output)
-			rule.Command().Text("echo").Flag(apexPath + "/ u:object_r:system_file:s0").Text(">>").Output(output)
+			rule.Command().Text("echo").Text(apexPath + "/apex_manifest\\\\.pb").Text(forceLabel).Text(">>").Output(output)
+			rule.Command().Text("echo").Text(apexPath + "/").Text(forceLabel).Text(">>").Output(output)
 		}
 	default:
 		panic(fmt.Errorf("unsupported type %v", a.properties.ApexType))
