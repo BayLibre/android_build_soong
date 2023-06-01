@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9d4b60_7f568cf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2023-06-01T16:27:39Z",
+      "side": 1,
+      "message": "friendly bump @ccross@android.com",
+      "revId": "dbb6d0f5329e1f551fd47f2cf42fbab1566aa624",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
