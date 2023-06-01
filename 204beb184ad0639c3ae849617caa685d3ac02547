@@ -22,6 +22,30 @@
       },
       "revId": "204beb184ad0639c3ae849617caa685d3ac02547",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac9550f_ee34d531",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-01T19:16:39Z",
+      "side": 0,
+      "message": "Is there any consequence to any app being allowed to have an allowlist? I know this restriction is new, but I\u0027m not sure of how important it is.\n\nIf we do want to enforce this restriction, then I think having an allowlist with tracking bugs for apps that need to bypass the restriction would be the best thing to do here. That way we don\u0027t have to unbreak people if it\u0027s used incorrectly.",
+      "parentUuid": "9292ba7a_17d777d5",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 0
+      },
+      "revId": "204beb184ad0639c3ae849617caa685d3ac02547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
