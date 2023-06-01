@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3547b0aa_86204dd9",
+        "filename": "bp2build/java_test_host_conversion_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-06-01T22:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11420463_17ebb98e",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 39
+      },
+      "revId": "cc8247db07e199046219f55d19f1f5de009395f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78bfa96c_eab7cb49",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-31T16:51:51Z",
       "side": 1,
       "message": "I don\u0027t think we should have a specific `java_test_host` rule on the Bazel side. we can just rely on Bazel\u0027s `target_compatible_with` field, which is available for all rules and automatically computed by bp2build.",
+      "range": {
+        "startLine": 3151,
+        "startChar": 22,
+        "endLine": 3151,
+        "endChar": 36
+      },
+      "revId": "cc8247db07e199046219f55d19f1f5de009395f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a441f1_b24f58f9",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 3151,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-06-01T22:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78bfa96c_eab7cb49",
       "range": {
         "startLine": 3151,
         "startChar": 22,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21317a15_7498e176",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 3159,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-06-01T22:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c14d8ff_62b43515",
+      "range": {
+        "startLine": 3141,
+        "startChar": 0,
+        "endLine": 3159,
+        "endChar": 2
+      },
+      "revId": "cc8247db07e199046219f55d19f1f5de009395f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ab385ff_ca1c554e",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-05-31T16:39:06Z",
       "side": 1,
       "message": "nit: consider encapsulating these in a struct",
+      "range": {
+        "startLine": 3170,
+        "startChar": 60,
+        "endLine": 3170,
+        "endChar": 151
+      },
+      "revId": "cc8247db07e199046219f55d19f1f5de009395f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d17aa2_aaaf8fd4",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 3170,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-06-01T22:37:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab385ff_ca1c554e",
       "range": {
         "startLine": 3170,
         "startChar": 60,
