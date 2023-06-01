@@ -273,6 +273,8 @@ type JavaInfo struct {
 	// JacocoReportClassesFile is the path to a jar containing uninstrumented classes that will be
 	// instrumented by jacoco.
 	JacocoReportClassesFile android.Path
+
+	// TODO: Add device config declarations here?
 }
 
 var JavaInfoProvider = blueprint.NewProvider(JavaInfo{})
@@ -3130,9 +3132,9 @@ func javaBinaryHostBp2Build(ctx android.TopDownMutatorContext, m *Binary) {
 	}
 
 	libInfo := libraryCreationInfo{
-		deps: deps,
-		attrs: commonAttrs,
-		baseName: m.Name(),
+		deps:      deps,
+		attrs:     commonAttrs,
+		baseName:  m.Name(),
 		hasKotlin: bp2BuildInfo.hasKotlin,
 	}
 	libName := createLibraryTarget(ctx, libInfo)
@@ -3174,9 +3176,9 @@ func javaTestHostBp2Build(ctx android.TopDownMutatorContext, m *TestHost) {
 	}
 
 	libInfo := libraryCreationInfo{
-		deps: deps,
-		attrs: commonAttrs,
-		baseName: m.Name(),
+		deps:      deps,
+		attrs:     commonAttrs,
+		baseName:  m.Name(),
 		hasKotlin: bp2BuildInfo.hasKotlin,
 	}
 	libName := createLibraryTarget(ctx, libInfo)
@@ -3189,9 +3191,9 @@ func javaTestHostBp2Build(ctx android.TopDownMutatorContext, m *TestHost) {
 // libraryCreationInfo encapsulates the info needed to create java_library target from
 // java_binary_host or java_test_host.
 type libraryCreationInfo struct {
-	deps bazel.LabelListAttribute
-	attrs *javaCommonAttributes
-	baseName string
+	deps      bazel.LabelListAttribute
+	attrs     *javaCommonAttributes
+	baseName  string
 	hasKotlin bool
 }
 
