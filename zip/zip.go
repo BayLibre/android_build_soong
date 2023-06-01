@@ -255,6 +255,7 @@ type ZipWriter struct {
 	fs     pathtools.FileSystem
 
 	sha256Checksum bool
+	storeInternalSymlinks bool
 }
 
 type zipEntry struct {
@@ -282,6 +283,7 @@ type ZipArgs struct {
 	StoreSymlinks            bool
 	IgnoreMissingFiles       bool
 	Sha256Checksum           bool
+	StoreInternalSymlinks    bool
 
 	Stderr     io.Writer
 	Filesystem pathtools.FileSystem
@@ -306,6 +308,7 @@ func zipTo(args ZipArgs, w io.Writer) error {
 		stderr:             args.Stderr,
 		fs:                 args.Filesystem,
 		sha256Checksum:     args.Sha256Checksum,
+		storeInternalSymlinks: args.StoreInternalSymlinks,
 	}
 
 	if z.fs == nil {
@@ -508,6 +511,11 @@ func (z *ZipWriter) write(f io.Writer, pathMappings []pathMapping, manifest stri
 		jarSort(pathMappings)
 	}
 
+	m := map[string]struct{}{}
+	for _, ele := range pathMappings {
+		m[ele.src] = struct{}{}
+	}
+
 	go func() {
 		var err error
 		defer close(z.writeOps)
@@ -516,7 +524,7 @@ func (z *ZipWriter) write(f io.Writer, pathMappings []pathMapping, manifest stri
 			if emulateJar && ele.dest == jar.ManifestFile {
 				err = z.addManifest(ele.dest, ele.src, ele.zipMethod)
 			} else {
-				err = z.addFile(ele.dest, ele.src, ele.zipMethod, emulateJar, srcJar)
+				err = z.addFile(ele.dest, ele.src, ele.zipMethod, emulateJar, srcJar, m)
 			}
 			if err != nil {
 				z.errors <- err
@@ -615,13 +623,30 @@ func (z *ZipWriter) write(f io.Writer, pathMappings []pathMapping, manifest stri
 }
 
 // imports (possibly with compression) <src> into the zip at sub-path <dest>
-func (z *ZipWriter) addFile(dest, src string, method uint16, emulateJar, srcJar bool) error {
+func (z *ZipWriter) addFile(dest, src string, method uint16, emulateJar, srcJar bool, m map[string]struct{}) error {
 	var fileSize int64
 	var executable bool
 
 	var s os.FileInfo
 	var err error
-	if z.followSymlinks {
+	var a bool
+	var l string
+	a, _ = z.fs.IsSymlink(src)
+	if a {
+		l, _ = z.fs.Readlink(src)
+		if !filepath.IsAbs(l) {
+			l = filepath.Join(filepath.Dir(src), l)
+		}
+	}
+	followSymlink := pathtools.ShouldFollowSymlinks(true)
+	if z.storeInternalSymlinks && len(strings.TrimSpace(l)) > 0 {
+		_, ok := m[l]
+		if ok {
+			followSymlink = pathtools.ShouldFollowSymlinks(false)
+		}
+	}
+
+	if z.followSymlinks && followSymlink {
 		s, err = z.fs.Stat(src)
 	} else {
 		s, err = z.fs.Lstat(src)
