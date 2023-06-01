@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4be9e286_ee3222c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-06-01T21:49:50Z",
+      "side": 1,
+      "message": "Liz--- This is what I\u0027ve been thinking for how to do the java_device_config_library. I think this pattern new GeneratedJavaLibraryModule pattern here might be a good way to to java_aidl_library, java_proto_library. PTAL and let me know if you hate it.\n\nThis code is definitely not ready for submission, just putting the idea out there.",
+      "revId": "20a62aeb297e0f9cf9a210c9ae45e6fa81136172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
