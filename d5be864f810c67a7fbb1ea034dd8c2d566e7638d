@@ -22,6 +22,30 @@
       },
       "revId": "d5be864f810c67a7fbb1ea034dd8c2d566e7638d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f65464_8a21ace9",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2023-06-01T08:26:22Z",
+      "side": 0,
+      "message": "\u003e Unrelated to this CL, but do we have a similar error for ThinLTO + CFI?\n\nNo, we do not emit an error. sanitizer.go has a ton of hacks for CFI / fuzzer, it is easier to just ignore thinlto if CFI is enabled.",
+      "parentUuid": "978d4528_8ab11890",
+      "range": {
+        "startLine": 171,
+        "startChar": 3,
+        "endLine": 171,
+        "endChar": 75
+      },
+      "revId": "d5be864f810c67a7fbb1ea034dd8c2d566e7638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

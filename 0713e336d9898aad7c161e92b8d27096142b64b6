@@ -22,6 +22,30 @@
       },
       "revId": "0713e336d9898aad7c161e92b8d27096142b64b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "868e54f5_2e932f04",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2023-06-01T08:26:22Z",
+      "side": 1,
+      "message": "I will simplify this (as well as the rest of the logic) in a follow up CL.",
+      "parentUuid": "cf9dd4ec_62798035",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "0713e336d9898aad7c161e92b8d27096142b64b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
