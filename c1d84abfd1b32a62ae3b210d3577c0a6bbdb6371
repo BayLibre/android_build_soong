@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b2aaea9_8002ce5e",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-01T17:38:00Z",
+      "side": 1,
+      "message": "It may -- though I found typically not during a build failure. (I guess there are some cases where cquery might only return partial results, at which point it will indeed output a lot)\n\nSure, lets be safer on this.",
+      "parentUuid": "8aca9e17_16cdd173",
+      "revId": "c1d84abfd1b32a62ae3b210d3577c0a6bbdb6371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "212cadfb_e5483235",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 2
