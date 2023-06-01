@@ -42,9 +42,6 @@
 --disable_check NewApi
 # Disable ChromeOS specific checks
 --disable_check PermissionImpliesUnsupportedChromeOsHardware
-# Disable UnsafeImplicitIntentLaunch until it can avoid false positives/crash
-# TODO(265425607)
---disable_check UnsafeImplicitIntentLaunch
 # InvalidId will give errors on ids defined like android:id="@androidprv:id/contentPanel"
 --disable_check InvalidId
 
