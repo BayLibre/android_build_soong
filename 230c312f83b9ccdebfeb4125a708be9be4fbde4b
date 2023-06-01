@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d2617bc_90927f8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-06-01T23:07:52Z",
+      "side": 1,
+      "message": "Thanks! I bet this fixes the problem I ran into the other week. I\u0027ll have to try that CL again.",
+      "revId": "230c312f83b9ccdebfeb4125a708be9be4fbde4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
