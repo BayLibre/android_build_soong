@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aca9e17_16cdd173",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-06-01T16:29:05Z",
+      "side": 1,
+      "message": "nit: isn\u0027t output going to be spectacularly large?\ni.e. maybe stdout should be set unconditional of the err instead?",
+      "revId": "c1d84abfd1b32a62ae3b210d3577c0a6bbdb6371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212cadfb_e5483235",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-06-01T16:29:05Z",
+      "side": 1,
+      "message": "this comment seems misplaced or at least could be reworded\n\ni.e. the comment talks about environment variables in general however\nthis line is an unassigned read of a specific one",
+      "revId": "c1d84abfd1b32a62ae3b210d3577c0a6bbdb6371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba54950_63ada03e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1717,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-06-01T16:29:05Z",
+      "side": 1,
+      "message": "what does \"For debugging purposes only\" mean here?",
+      "revId": "c1d84abfd1b32a62ae3b210d3577c0a6bbdb6371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
