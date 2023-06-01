@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e4290a_43f13d87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-06-01T17:43:49Z",
+      "side": 1,
+      "message": "incremental build: https://android-build.googleplex.com/builds/abtd/run/L84800000961010806\nnon-incremental build: https://android-build.googleplex.com/builds/abtd/run/L86800000961020066\nCUJ: https://android-build.googleplex.com/builds/abtd/run/L26900000961020650",
+      "revId": "ebf4aa9556b426dbf4642d18e69763b038cf309f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
