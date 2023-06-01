@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0badc0c7_0a78ea27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-01T17:00:04Z",
+      "side": 1,
+      "message": "This LGTM assuming there aren\u0027t any implicit requirements on allowlist naming. I\u0027m not personally aware of any, but hopefully we\u0027ll find out in tests.",
+      "revId": "92d1f52790e83952bf305464f0083d8c05f4c557",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
