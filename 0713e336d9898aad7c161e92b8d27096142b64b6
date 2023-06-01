@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9dd4ec_62798035",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-06-01T04:29:40Z",
+      "side": 1,
+      "message": "Can this be simplified?  (with a comment that we\u0027re disabling LTO optimization unless LTO was explicitly enabled).",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 3
+      },
+      "revId": "0713e336d9898aad7c161e92b8d27096142b64b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

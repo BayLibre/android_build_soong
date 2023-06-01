@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "978d4528_8ab11890",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-06-01T04:29:40Z",
+      "side": 0,
+      "message": "Unrelated to this CL, but do we have a similar error for ThinLTO + CFI?",
+      "range": {
+        "startLine": 171,
+        "startChar": 3,
+        "endLine": 171,
+        "endChar": 75
+      },
+      "revId": "d5be864f810c67a7fbb1ea034dd8c2d566e7638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
