@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc9a1b08_6efab5d5",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-01T17:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b2aaea9_8002ce5e",
+      "revId": "c1d84abfd1b32a62ae3b210d3577c0a6bbdb6371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "212cadfb_e5483235",
@@ -53,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2980ab8a_4a133f29",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-01T17:43:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "212cadfb_e5483235",
+      "revId": "c1d84abfd1b32a62ae3b210d3577c0a6bbdb6371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ba54950_63ada03e",
@@ -66,6 +102,24 @@
       "writtenOn": "2023-06-01T16:29:05Z",
       "side": 1,
       "message": "what does \"For debugging purposes only\" mean here?",
+      "revId": "c1d84abfd1b32a62ae3b210d3577c0a6bbdb6371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "235e1313_76f5b2c8",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1717,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-01T17:43:04Z",
+      "side": 1,
+      "message": "Updated the comment.",
+      "parentUuid": "2ba54950_63ada03e",
       "revId": "c1d84abfd1b32a62ae3b210d3577c0a6bbdb6371",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
