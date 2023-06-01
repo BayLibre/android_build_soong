@@ -168,7 +168,7 @@ func AssertStringListContainsEquals(t *testing.T, message string, list []string,
 	}
 }
 
-// AssertArrayString checks if the expected and actual values are equal and if they are not then it
+// AssertArrayString checks if the expected anuactual values are equal and if they are not then it
 // reports an error prefixed with the supplied message and including a reason for why it failed.
 func AssertArrayString(t *testing.T, message string, expected, actual []string) {
 	t.Helper()

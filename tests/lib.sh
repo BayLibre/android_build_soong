@@ -2,7 +2,7 @@
 
 set -o pipefail
 
-HARDWIRED_MOCK_TOP=
+HARDWIRED_MOCK_TOP="/tmp/soong_test"
 # Uncomment this to be able to view the source tree after a test is run
 # HARDWIRED_MOCK_TOP=/tmp/td
 
@@ -56,7 +56,9 @@ function symlink_file {
   local file="$1"
 
   mkdir -p "$MOCK_TOP/$(dirname "$file")"
-  ln -s "$REAL_TOP/$file" "$MOCK_TOP/$file"
+  if [[ ! -e "$file" ]]; then
+    ln -s "$REAL_TOP/$file" "$MOCK_TOP/$file"
+  fi
 }
 
 function symlink_directory {
@@ -73,7 +75,8 @@ function symlink_directory {
 
     if [[ -e "$target" ]]; then
       if [[ ! -d "$source" || ! -d "$target" ]]; then
-        fail "Trying to symlink $dir twice"
+        #fail "Trying to symlink $dir twice"
+        continue
       fi
     else
       ln -s "$REAL_TOP/$dir/$i" "$MOCK_TOP/$dir/$i";
@@ -91,14 +94,14 @@ function create_mock_soong {
   symlink_directory prebuilts/go
   symlink_directory prebuilts/build-tools
   symlink_directory prebuilts/clang/host
-  symlink_directory external/compiler-rt
-  symlink_directory external/go-cmp
-  symlink_directory external/golang-protobuf
-  symlink_directory external/licenseclassifier
-  symlink_directory external/starlark-go
-  symlink_directory external/python
-  symlink_directory external/sqlite
-  symlink_directory external/spdx-tools
+  #symlink_directory external/compiler-rt
+  #symlink_directory external/go-cmp
+  #symlink_directory external/golang-protobuf
+  #symlink_directory external/licenseclassifier
+  #symlink_directory external/starlark-go
+  #symlink_directory external/python
+  #symlink_directory external/sqlite
+  #symlink_directory external/spdx-tools
   symlink_directory libcore
 
   touch "$MOCK_TOP/Android.bp"
@@ -113,7 +116,7 @@ function setup {
   info "Running test case \e[96;1m${FUNCNAME[1]}\e[0m"
   cd "$MOCK_TOP"
 
-  tar xzf "$WARMED_UP_MOCK_TOP" --warning=no-timestamp
+  #tar xzf "$WARMED_UP_MOCK_TOP" --warning=no-timestamp
 }
 
 # shellcheck disable=SC2120
@@ -121,18 +124,36 @@ function run_soong {
   USE_RBE=false build/soong/soong_ui.bash --make-mode --skip-ninja --skip-config --soong-only --skip-soong-tests "$@"
 }
 
+function symlink_cc_toolchain {
+  symlink_directory external
+  symlink_directory bionic/libc
+  symlink_directory bionic/libdl
+  symlink_directory bionic/libm
+  symlink_directory bionic/libstdc++
+  symlink_directory bionic/linker
+  symlink_directory bionic/build
+  symlink_directory bionic/tools
+  symlink_directory prebuilts/clang
+}
+
 function create_mock_bazel {
   copy_directory build/bazel
   copy_directory build/bazel_common_rules
 
+  symlink_cc_toolchain
+  symlink_directory system/tools/aidl
+  symlink_directory system/logging/liblog
+  symlink_directory system/core/libprocessgroup
+  symlink_directory system/core/libcutils
+  symlink_directory system/libbase
   symlink_directory packages/modules/common/build
   symlink_directory prebuilts/bazel
-  symlink_directory prebuilts/clang
   symlink_directory prebuilts/jdk
-  symlink_directory external/bazel-skylib
-  symlink_directory external/bazelbuild-rules_android
-  symlink_directory external/bazelbuild-rules_license
-  symlink_directory external/bazelbuild-kotlin-rules
+  symlink_directory prebuilts/rust
+  #symlink_directory external/bazel-skylib
+  #symlink_directory external/bazelbuild-rules_android
+  #symlink_directory external/bazelbuild-rules_license
+  #symlink_directory external/bazelbuild-kotlin-rules
 
   symlink_file WORKSPACE
   symlink_file BUILD

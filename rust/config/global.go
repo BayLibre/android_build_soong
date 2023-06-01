@@ -149,3 +149,12 @@ func rustPath(ctx android.PathContext) android.SourcePath {
 		return android.PathForSource(ctx, getRustBase(ctx), getHostPrebuiltTag(ctx.Config()), GetRustVersion(ctx))
 	})
 }
+
+func RustToolchainComponentsPaths(ctx android.PathContext) android.Paths {
+	return android.Paths{
+		RustPath(ctx, "lib/librustc_driver-538952ddf0f7d59a.so"),
+		RustPath(ctx, "lib/libstd-e4d585b827a2ecd8.so"),
+		RustPath(ctx, "lib/libLLVM-15-rust-dev.so"),
+		RustPath(ctx, "lib64/libc++.so.1"),
+	}
+}

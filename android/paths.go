@@ -2072,6 +2072,7 @@ func ModuleInstallPathContextForTesting(config Config) ModuleInstallPathContext 
 func Rel(ctx PathContext, basePath string, targetPath string) string {
 	rel, isRel := MaybeRel(ctx, basePath, targetPath)
 	if !isRel {
+		panic(fmt.Errorf("path %q is not under path %q", targetPath, basePath))
 		ReportPathErrorf(ctx, "path %q is not under path %q", targetPath, basePath)
 		return ""
 	}

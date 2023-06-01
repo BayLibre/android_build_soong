@@ -530,27 +530,23 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscape bool, ctx Modu
 
 	commandString := strings.Join(commands, " && ")
 
+	if !ninjaEscape {
+		ruleParams := blueprint.RuleParams{
+			Command: commandString,
+		}
+		parsedCommandString, err := pctx.ParseNinjaString(ninjaParseContext{ctx}, commandString, &ruleParams)
+		if err != nil {
+			panic(err)
+		}
+		commandString = parsedCommandString
+	}
+
 	if r.sbox {
 		// If running the command inside sbox, write the rule data out to an sbox
 		// manifest.textproto.
 		manifest := sbox_proto.Manifest{}
 		command := sbox_proto.Command{}
 		manifest.Commands = append(manifest.Commands, &command)
-		if !ninjaEscape {
-			ruleParams := blueprint.RuleParams{
-				Command: commandString,
-			}
-			parsedCommandString, err := pctx.ParseNinjaString(ninjaParseContext{ctx}, commandString, &ruleParams)
-			if err != nil {
-				panic(err)
-			}
-			if ctx.ModuleName() == "libfizz_buzz" {
-				//fmt.Println("parsedCommandString")
-				//fmt.Println(commandString)
-				//fmt.Println(parsedCommandString)
-			}
-			commandString = parsedCommandString
-		}
 		command.Command = proto.String(commandString)
 
 		if depFile != nil {

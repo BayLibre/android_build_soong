@@ -691,14 +691,16 @@ func LibraryMutator(mctx android.BottomUpMutatorContext) {
 			if v.(*Module).ModuleBase.ImageVariation().Variation == android.VendorRamdiskVariation {
 				// TODO(b/165791368)
 				// Disable dylib Vendor Ramdisk variations until we support these.
-				v.(*Module).Disable()
+				fmt.Println(mctx.ModuleName(), "1")
+				//v.(*Module).Disable()
 			}
 
 			variation := v.(*Module).ModuleBase.ImageVariation().Variation
 			if strings.HasPrefix(variation, cc.VendorVariationPrefix) {
 				// TODO(b/204303985)
 				// Disable vendor dylibs until they are supported
-				v.(*Module).Disable()
+				fmt.Println(mctx.ModuleName(), "2")
+				//v.(*Module).Disable()
 			}
 
 			if strings.HasPrefix(variation, cc.VendorVariationPrefix) &&
@@ -709,7 +711,8 @@ func LibraryMutator(mctx android.BottomUpMutatorContext) {
 				// cc.MutateImage runs before LibraryMutator, so vendor variations which are meant for rlibs only are
 				// produced for Dylibs; however, dylibs should not be enabled for boardVndkVersion for
 				// non-vendor proprietary modules.
-				v.(*Module).Disable()
+				fmt.Println(mctx.ModuleName(), "3")
+				//v.(*Module).Disable()
 			}
 
 		case "source":

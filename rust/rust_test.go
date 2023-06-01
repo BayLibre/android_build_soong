@@ -15,14 +15,17 @@
 package rust
 
 import (
+	"fmt"
 	"os"
 	"runtime"
 	"strings"
 	"testing"
 
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/encoding/prototext"
 
 	"android/soong/android"
+	"android/soong/cmd/sbox/sbox_proto"
 	"android/soong/genrule"
 )
 
@@ -36,6 +39,10 @@ var prepareForRustTest = android.GroupFixturePreparers(
 	android.PrepareForTestWithPrebuilts,
 
 	genrule.PrepareForTestWithGenRuleBuildComponents,
+
+	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
+		ctx.RegisterModuleType("prebuilt_build_tool", android.PrebuiltBuildToolFactory)
+	}),
 
 	PrepareForTestWithRustIncludeVndk,
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
@@ -485,4 +492,105 @@ func assertString(t *testing.T, got, expected string) {
 	if got != expected {
 		t.Errorf("expected %q got %q", expected, got)
 	}
+}
+
+func TestSandboxLinking(t *testing.T) {
+	ctx := testRust(t, `
+		prebuilt_build_tool {
+			name: "rustc",
+			src: "linux-x86/1.69.0/bin/rustc",
+			deps: [
+				"linux-x86/1.69.0/lib/librustc_driver-538952ddf0f7d59a.so",
+				"linux-x86/1.69.0/lib/libstd-e4d585b827a2ecd8.so",
+				"linux-x86/1.69.0/lib/libLLVM-15-rust-dev.so",
+				"linux-x86/1.69.0/lib64/libc++.so.1",
+			],
+		}
+rust_library {
+    name: "libnum_traits",
+    host_supported: true,
+    crate_name: "num_traits",
+    cargo_env_compat: true,
+    cargo_pkg_version: "0.2.15",
+    srcs: ["src/lib.rs"],
+    edition: "2015",
+    features: [
+        "default",
+        "std",
+    ],
+    cfgs: [
+        "has_copysign",
+        "has_div_euclid",
+        "has_i128",
+        "has_int_assignop_ref",
+        "has_leading_trailing_ones",
+        "has_reverse_bits",
+        "has_to_int_unchecked",
+    ],
+    product_available: true,
+    vendor_available: true,
+    min_sdk_version: "29",
+}
+
+		rust_library {
+			name: "libfizz_buzz",
+			crate_name:"fizz_buzz",
+			srcs: ["foo.rs"],
+		}
+		rust_binary {
+			name: "fizz-buzz",
+			crate_name:"fizz-buzz-bin",
+			srcs: ["foo.rs"],
+			dylibs: ["libfizz_buzz"],
+		}
+	`)
+
+	rustcSbox := ctx.ModuleForTests("fizz-buzz", "android_arm64_armv8-a").Rule("rustc")
+	fmt.Println(rustcSbox.RuleParams.Command)
+
+	writeFile := ctx.ModuleForTests("libnum_traits", "android_arm64_armv8-a_dylib").Rule("writeFile")
+	content := writeFile.BuildParams.Args["content"]
+	content = content[1 : len(content)-1]
+	content = strings.NewReplacer(
+		`\n`, "\n",
+		`\\`, `\`,
+		`'\''`, `'`,
+		"$$", "$",
+	).Replace(content)
+	fmt.Println(content)
+	manifestProto := sbox_proto.Manifest{}
+	err := prototext.Unmarshal([]byte(content), &manifestProto)
+	if err != nil {
+	}
+	if len(manifestProto.Commands) != 1 {
+		t.Errorf("expected 1 command; got %v", len(manifestProto.Commands))
+	}
+
+	rustc := manifestProto.Commands[0]
+	for _, i := range rustc.CopyBefore {
+		fmt.Println(i)
+	}
+
+	rustcCmd := proptools.String(rustc.Command)
+	flagCheck := func(flag string) {
+		android.AssertStringDoesContain(
+			t,
+			fmt.Sprintf(
+				"missing flag in rustc invocation; expected to find substring %q; got %q",
+				flag,
+				rustcCmd,
+			),
+			rustcCmd,
+			flag,
+		)
+	}
+	flagCheck("--emit link")
+	flagCheck("-o __SBOX_SANDBOX_DIR__/out/fizz-buzz.rsp")
+	flagCheck("--emit dep-info=__SBOX_SANDBOX_DIR__/out/fizz-buzz.d.raw")
+	fmt.Println(proptools.String(rustc.Command))
+
+	rustLink := ctx.ModuleForTests("fizz-buzz", "android_arm64_armv8-a").Rule("rustLink")
+	fmt.Println(rustLink.RuleParams.Command)
+
+	//TODO: test copybefore for all inputs that can be passed thru PathDeps
 }

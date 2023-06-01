@@ -422,10 +422,14 @@ type Deps struct {
 type PathDeps struct {
 	DyLibs          RustLibraries
 	RLibs           RustLibraries
+	Rustlibs        android.Paths
+	Stdlibs         android.Paths
 	LibDeps         android.Paths
 	WholeStaticLibs android.Paths
 	ProcMacros      RustLibraries
 	AfdoProfiles    android.Paths
+	Rustc           android.Path
+	RustcLibs       android.Paths
 
 	// depFlags and depLinkFlags are rustc and linker (clang) flags.
 	depFlags     []string
@@ -1065,6 +1069,7 @@ func (d dependencyTag) LicenseAnnotations() []android.LicenseAnnotation {
 var _ android.LicenseAnnotationsDependencyTag = dependencyTag{}
 
 var (
+	rustcDepTag         = dependencyTag{name: "rustc"}
 	customBindgenDepTag = dependencyTag{name: "customBindgenTag"}
 	rlibDepTag          = dependencyTag{name: "rlibTag", library: true}
 	dylibDepTag         = dependencyTag{name: "dylib", library: true, dynamic: true}
@@ -1366,6 +1371,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			}
 		} else {
 			switch {
+			case depTag == rustcDepTag:
+				rustc := ctx.OtherModuleProvider(dep, android.PrebuiltBuildToolInfoProvider).(android.PrebuiltBuildToolInfo)
+				depPaths.Rustc = rustc.Src
+				depPaths.RustcLibs = append(depPaths.RustcLibs, rustc.Deps...)
 			case depTag == cc.CrtBeginDepTag:
 				depPaths.CrtBegin = append(depPaths.CrtBegin, android.OutputFileForModule(ctx, dep, ""))
 			case depTag == cc.CrtEndDepTag:
@@ -1498,6 +1507,8 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		rlibDepVariations = append(rlibDepVariations,
 			blueprint.Variation{Mutator: "rust_stdlinkage", Variation: stdLinkage})
 	}
+
+	ctx.AddFarVariationDependencies([]blueprint.Variation{}, rustcDepTag, "rustc")
 
 	// rlibs
 	rlibDepVariations = append(rlibDepVariations, blueprint.Variation{Mutator: "rust_libraries", Variation: rlibVariation})
