@@ -46,6 +46,30 @@
       },
       "revId": "204beb184ad0639c3ae849617caa685d3ac02547",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a591e27_0e041584",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-06-01T19:23:47Z",
+      "side": 0,
+      "message": "I think the effects are that apps that aren\u0027t privileged and set an allowlist simply won\u0027t be granted the permissions. Winson, can you confirm?\n\nHaving the module name alter behavior is kind of annoying.. but I could probably use moduleName \u003d\u003d \"Bluetooth\" or override_app.Base() \u003d\u003d \"Bluetooth\". Would you prefer that Sam?",
+      "parentUuid": "3ac9550f_ee34d531",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 0
+      },
+      "revId": "204beb184ad0639c3ae849617caa685d3ac02547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
