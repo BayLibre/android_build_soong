@@ -12,13 +12,15 @@ bootstrap_go_package {
         "soong",
         "soong-android",
         "soong-bazel",
-        "soong-shared",
+        "soong-android",
+        "soong-java",
     ],
     srcs: [
         "device_config_definitions.go",
         "device_config_values.go",
         "device_config_value_set.go",
         "init.go",
+        "java_device_config_definitions_library.go",
         //"testing.go"
     ],
     /*

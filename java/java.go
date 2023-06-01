@@ -273,6 +273,8 @@ type JavaInfo struct {
 	// JacocoReportClassesFile is the path to a jar containing uninstrumented classes that will be
 	// instrumented by jacoco.
 	JacocoReportClassesFile android.Path
+
+	// TODO: Add device config declarations here?
 }
 
 var JavaInfoProvider = blueprint.NewProvider(JavaInfo{})
@@ -889,7 +891,6 @@ func (p *librarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberConte
 // compiled against the host bootclasspath.
 func LibraryFactory() android.Module {
 	module := &Library{}
-
 	module.addHostAndDeviceProperties()
 
 	module.initModuleAndImport(module)
@@ -897,6 +898,7 @@ func LibraryFactory() android.Module {
 	android.InitApexModule(module)
 	android.InitBazelModule(module)
 	InitJavaModule(module, android.HostAndDeviceSupported)
+
 	return module
 }
 
@@ -3213,3 +3215,4 @@ func (i *Import) QueueBazelCall(ctx android.BaseModuleContext) {
 func (i *Import) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
 	return true
 }
+
