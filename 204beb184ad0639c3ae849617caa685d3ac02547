@@ -118,6 +118,30 @@
       },
       "revId": "204beb184ad0639c3ae849617caa685d3ac02547",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b6d656_1fa50842",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-01T20:24:37Z",
+      "side": 0,
+      "message": "It sounds like bluetooth should probably be privileged, but since it\u0027s not I think it makes more sense to special case it than to allow other apps to misuse the property in the future. Especially if the error wouldn\u0027t be uncovered until boot time, having the build system notify you early would be less annoying.\n\nI agree that magic properties based on module names are pretty ugly, but I think we can mitigate that by making the error message mention the list of apps that are special cased. And we can point to a bug with more information.",
+      "parentUuid": "0c1b1fac_9dd240de",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 0
+      },
+      "revId": "204beb184ad0639c3ae849617caa685d3ac02547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
