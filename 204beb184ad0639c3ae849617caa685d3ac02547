@@ -94,6 +94,30 @@
       },
       "revId": "204beb184ad0639c3ae849617caa685d3ac02547",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c1b1fac_9dd240de",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1414465
+      },
+      "writtenOn": "2023-06-01T19:26:15Z",
+      "side": 0,
+      "message": "Whoops, we replied at the same time.\n\n\u003e I think the effects are that apps that aren\u0027t privileged and set an allowlist simply won\u0027t be granted the permissions. \n\nI actually think this is considered a factory config error and the device will refuse to boot, but I\u0027m not sure.",
+      "parentUuid": "4367cb05_6b1f9304",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 0
+      },
+      "revId": "204beb184ad0639c3ae849617caa685d3ac02547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
