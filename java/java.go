@@ -3074,24 +3074,14 @@ func javaBinaryHostBp2Build(ctx android.TopDownMutatorContext, m *Binary) {
 	// Attribute jvm_flags
 	var jvmFlags bazel.StringListAttribute
 	if m.binaryProperties.Jni_libs != nil {
-		jniLibPackages := map[string]bool{}
-		for _, jniLibLabel := range android.BazelLabelForModuleDeps(ctx, m.binaryProperties.Jni_libs).Includes {
-			jniLibPackage := jniLibLabel.Label
-			indexOfColon := strings.Index(jniLibLabel.Label, ":")
-			if indexOfColon > 0 {
-				// JNI lib from other package
-				jniLibPackage = jniLibLabel.Label[2:indexOfColon]
-			} else if indexOfColon == 0 {
-				// JNI lib in the same package of java_binary
-				packageOfCurrentModule := m.GetBazelLabel(ctx, m)
-				jniLibPackage = packageOfCurrentModule[2:strings.Index(packageOfCurrentModule, ":")]
-			}
-			if _, inMap := jniLibPackages[jniLibPackage]; !inMap {
-				jniLibPackages[jniLibPackage] = true
-			}
+		jniLibPackages := []string{}
+		for _, jniLib := range m.binaryProperties.Jni_libs {
+			jniLibModule, _ := ctx.ModuleFromName(jniLib)
+			otherDir := ctx.OtherModuleDir(jniLibModule)
+			jniLibPackages = append(jniLibPackages, filepath.Join(otherDir, jniLib))
 		}
 		jniLibPaths := []string{}
-		for jniLibPackage, _ := range jniLibPackages {
+		for _, jniLibPackage := range jniLibPackages {
 			// See cs/f:.*/third_party/bazel/.*java_stub_template.txt for the use of RUNPATH
 			jniLibPaths = append(jniLibPaths, "$${RUNPATH}"+jniLibPackage)
 		}
