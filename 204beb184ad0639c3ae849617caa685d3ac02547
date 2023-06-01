@@ -142,6 +142,30 @@
       },
       "revId": "204beb184ad0639c3ae849617caa685d3ac02547",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd0817b8_06298cbc",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-01T20:28:27Z",
+      "side": 0,
+      "message": "I\u0027m not sure that we have access to the sharedUserId. It looks like it\u0027s [set in the manifest](https://cs.android.com/android/platform/superproject/+/master:packages/modules/Bluetooth/android/app/AndroidManifest.xml;l\u003d5;drc\u003db0f9d6857f9fc6fb1ef28aefa379c191fc4819d5) which isn\u0027t accessible at this point in the build. But if it\u0027s one-to-one with the module name + override module name pair, then we could get away with that.",
+      "parentUuid": "69b6d656_1fa50842",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 0
+      },
+      "revId": "204beb184ad0639c3ae849617caa685d3ac02547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
