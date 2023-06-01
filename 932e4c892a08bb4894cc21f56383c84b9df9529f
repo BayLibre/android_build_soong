@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bea6fbf4_b2c8c26c",
+        "filename": "bazel/bazel_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-01T15:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "179c4117_63c68526",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 1
+      },
+      "revId": "932e4c892a08bb4894cc21f56383c84b9df9529f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5810198f_c714b549",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-06-01T06:51:36Z",
       "side": 1,
       "message": "does this need to be in a function? inline?",
+      "range": {
+        "startLine": 561,
+        "startChar": 1,
+        "endLine": 561,
+        "endChar": 42
+      },
+      "revId": "932e4c892a08bb4894cc21f56383c84b9df9529f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "441c0b57_eb1479cd",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-01T15:53:48Z",
+      "side": 1,
+      "message": "Style choice to help with documentation, but I can agree with you :) (grumble go visibility)",
+      "parentUuid": "5810198f_c714b549",
       "range": {
         "startLine": 561,
         "startChar": 1,
