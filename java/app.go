@@ -287,10 +287,6 @@ func (a *AndroidApp) OverridablePropertiesDepsMutator(ctx android.BottomUpMutato
 		ctx.AddDependency(ctx.Module(), certificateTag, cert)
 	}
 
-	if a.appProperties.Privapp_allowlist != nil && !Bool(a.appProperties.Privileged) {
-		ctx.PropertyErrorf("privapp_allowlist", "privileged must be set in order to use privapp_allowlist")
-	}
-
 	for _, cert := range a.appProperties.Additional_certificates {
 		cert = android.SrcIsModule(cert)
 		if cert != "" {
