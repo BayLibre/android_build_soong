@@ -273,6 +273,8 @@ type JavaInfo struct {
 	// JacocoReportClassesFile is the path to a jar containing uninstrumented classes that will be
 	// instrumented by jacoco.
 	JacocoReportClassesFile android.Path
+
+	// TODO: Add device config declarations here?
 }
 
 var JavaInfoProvider = blueprint.NewProvider(JavaInfo{})
@@ -889,7 +891,6 @@ func (p *librarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberConte
 // compiled against the host bootclasspath.
 func LibraryFactory() android.Module {
 	module := &Library{}
-
 	module.addHostAndDeviceProperties()
 
 	module.initModuleAndImport(module)
@@ -897,6 +898,7 @@ func LibraryFactory() android.Module {
 	android.InitApexModule(module)
 	android.InitBazelModule(module)
 	InitJavaModule(module, android.HostAndDeviceSupported)
+
 	return module
 }
 
@@ -3212,4 +3214,44 @@ func (i *Import) QueueBazelCall(ctx android.BaseModuleContext) {
 
 func (i *Import) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
 	return true
+}
+
+// Base class for a module that is a java library with generated source
+type GeneratedJavaLibraryModule struct {
+	Library
+	callbacks GeneratedJavaLibraryCallbacks
+}
+
+type GeneratedJavaLibraryCallbacks interface {
+	DepsMutator(module *GeneratedJavaLibraryModule, ctx android.BottomUpMutatorContext)
+	GenerateSourceJarBuildActions(ctx android.ModuleContext) android.Path
+}
+
+// Unlike regular module factoryies, this one take sthe callback interface
+// that lets you inject source files
+func GeneratedJavaLibraryModuleFactory(callbacks GeneratedJavaLibraryCallbacks, properties interface{}) android.Module {
+	module := &GeneratedJavaLibraryModule{
+		callbacks: callbacks,
+	}
+	module.addHostAndDeviceProperties()
+	module.initModuleAndImport(module)
+	android.InitApexModule(module)
+	android.InitBazelModule(module)
+	InitJavaModule(module, android.HostAndDeviceSupported)
+	if properties != nil {
+		module.AddProperties(properties)
+	}
+	return module
+}
+
+func (module *GeneratedJavaLibraryModule) DepsMutator(ctx android.BottomUpMutatorContext) {
+	module.callbacks.DepsMutator(module, ctx)
+	module.Library.DepsMutator(ctx)
+}
+
+func (module *GeneratedJavaLibraryModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// TODO: Disallow setting srcs, exclude_srcs, and maybe other properties too
+	srcJarPath := module.callbacks.GenerateSourceJarBuildActions(ctx)
+	module.Library.properties.Generated_srcjars = append(module.Library.properties.Generated_srcjars, srcJarPath)
+	module.Library.GenerateAndroidBuildActions(ctx)
 }
