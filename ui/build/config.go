@@ -16,6 +16,7 @@ package build
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"math/rand"
@@ -230,10 +231,15 @@ func UploadOnlyConfig(ctx Context, args ...string) Config {
 }
 
 func NewConfig(ctx Context, args ...string) Config {
+	defaultNinjaWeightListSource := NINJA_LOG
+	if _, err := os.Stat(ninjaLogFileName); errors.Is(err, os.ErrNotExist) {
+		ctx.Fatalln("$OUT/.ninja_log doesn't exist, use HINT_FROM_SOONG instead")
+		defaultNinjaWeightListSource = HINT_FROM_SOONG
+	}
 	ret := &configImpl{
 		environ:               OsEnvironment(),
 		sandboxConfig:         &SandboxConfig{},
-		ninjaWeightListSource: NINJA_LOG,
+		ninjaWeightListSource: defaultNinjaWeightListSource,
 	}
 
 	// Default matching ninja
