@@ -85,6 +85,9 @@ type ActionResultStats struct {
 
 	// Involuntary context switches
 	InvoluntaryContextSwitches uint64
+
+	ModuleName string
+	RuleName   string
 }
 
 // Counts describes the number of actions in each state

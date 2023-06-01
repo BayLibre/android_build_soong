@@ -174,6 +174,8 @@ func (n *NinjaReader) run() {
 						IOOutputKB:                 msg.EdgeFinished.GetIoOutputKb(),
 						VoluntaryContextSwitches:   msg.EdgeFinished.GetVoluntaryContextSwitches(),
 						InvoluntaryContextSwitches: msg.EdgeFinished.GetInvoluntaryContextSwitches(),
+						ModuleName:                 msg.EdgeFinished.GetModuleName(),
+						RuleName:                   msg.EdgeFinished.GetRuleName(),
 					},
 				})
 			}

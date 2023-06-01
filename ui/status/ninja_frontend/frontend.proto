@@ -79,6 +79,10 @@ message Status {
     optional uint64 voluntary_context_switches = 12;
     // Involuntary context switches
     optional uint64 involuntary_context_switches = 13;
+    // Name of the module which created the edge
+    optional string module_name = 14;
+    // Name of the rule which created the edge
+    optional string rule_name = 15;
   }
 
   message Message {

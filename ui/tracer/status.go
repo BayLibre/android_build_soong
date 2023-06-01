@@ -90,6 +90,8 @@ func (s *statusOutput) FinishAction(result status.ActionResult, counts status.Co
 			IOOutputKB:                 result.Stats.IOOutputKB,
 			VoluntaryContextSwitches:   result.Stats.VoluntaryContextSwitches,
 			InvoluntaryContextSwitches: result.Stats.InvoluntaryContextSwitches,
+			ModuleName:                 result.Stats.ModuleName,
+			RuleName:                   result.Stats.RuleName,
 		},
 	})
 }
@@ -104,6 +106,8 @@ type statsArg struct {
 	IOOutputKB                 uint64 `json:"io_output_kb"`
 	VoluntaryContextSwitches   uint64 `json:"voluntary_context_switches"`
 	InvoluntaryContextSwitches uint64 `json:"involuntary_context_switches"`
+	ModuleName                 string `json:"module_name"`
+	RuleName                   string `json:"rule_name"`
 }
 
 func (s *statusOutput) Flush()                                        {}
