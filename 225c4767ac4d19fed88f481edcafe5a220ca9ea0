@@ -16,6 +16,46 @@
       "message": "Thanks for the quick review!",
       "revId": "225c4767ac4d19fed88f481edcafe5a220ca9ea0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a055d7f_0888423c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-06-01T14:46:57Z",
+      "side": 1,
+      "message": "Is similar fix also required in `dexpreopt/dexpreopt.go` as per aosp/2304271?",
+      "revId": "225c4767ac4d19fed88f481edcafe5a220ca9ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d94433_98f05d52",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-06-01T14:46:57Z",
+      "side": 1,
+      "message": "nit: could have moved this to above condition (line 814)",
+      "range": {
+        "startLine": 819,
+        "startChar": 1,
+        "endLine": 821,
+        "endChar": 2
+      },
+      "revId": "225c4767ac4d19fed88f481edcafe5a220ca9ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
