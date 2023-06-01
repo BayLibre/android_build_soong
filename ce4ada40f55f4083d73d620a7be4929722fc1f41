@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3dd73fe_d6fef41c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2023-06-01T15:57:45Z",
+      "side": 1,
+      "message": "+2 pending update of lint from AS",
+      "revId": "ce4ada40f55f4083d73d620a7be4929722fc1f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
