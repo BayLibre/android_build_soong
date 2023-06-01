@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "45cca2ea_d96193a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-06-01T13:24:31Z",
+      "side": 1,
+      "message": "Could you add a short explanation for this change here for future reference?",
+      "revId": "d9ad13c8843d3f9fe53a0a38c7ca6f796d82ef9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "042aecdf_7716ea66",
