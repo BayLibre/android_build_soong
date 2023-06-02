@@ -16,6 +16,24 @@
       "message": "Unnecessary whitespace change",
       "revId": "b7550aa09af04e92ce24e5bf2594b312d8bc51f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "977b1f36_1e33b7c1",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1958854
+      },
+      "writtenOn": "2023-06-02T14:47:13Z",
+      "side": 0,
+      "message": "Ack - updated.",
+      "parentUuid": "637a5956_d973ef8b",
+      "revId": "b7550aa09af04e92ce24e5bf2594b312d8bc51f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
