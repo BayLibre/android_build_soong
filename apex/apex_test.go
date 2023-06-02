@@ -6717,6 +6717,118 @@ func TestApexAvailable_InvalidApexName(t *testing.T) {
 	}`)
 }
 
+func TestApexAvailable_ApexAvailableName(t *testing.T) {
+	testApexError(t, "\"myapex\" is not a valid apex name", `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		apps: ["AppFoo"],
+		apex_available_name: "com.android.myapex",
+		updatable: false,
+	}
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	android_app {
+		name: "AppFoo",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "myapex" ],
+	}`)
+
+	testApexError(t, "\"myapex\" is not a valid apex name", `
+	override_apex {
+		name: "myoverrideapex",
+		base: "myapex",
+		key: "myapex.key",
+		apps: ["AppFooOverride"],
+	}
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		apps: ["AppFoo"],
+		apex_available_name: "com.android.myapex",
+		updatable: false,
+	}
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	android_app {
+		name: "AppFooOverride",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "myapex" ],
+	}
+	android_app {
+		name: "AppFoo",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "com.android.myapex" ],
+	}`)
+
+	testApex(t, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		apps: ["AppFoo"],
+		apex_available_name: "com.android.myapex",
+		updatable: false,
+	}
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	android_app {
+		name: "AppFoo",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "com.android.myapex" ],
+	}`)
+
+	testApex(t, `
+	override_apex {
+		name: "myoverrideapex",
+		base: "myapex",
+		key: "myapex.key",
+		apps: ["AppFooOverride"],
+	}
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		apps: ["AppFoo"],
+		apex_available_name: "com.android.myapex",
+		updatable: false,
+	}
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	android_app {
+		name: "AppFooOverride",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "com.android.myapex" ],
+	}
+	android_app {
+		name: "AppFoo",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "com.android.myapex" ],
+	}`)
+}
+
 func TestApexAvailable_CheckForPlatform(t *testing.T) {
 	ctx := testApex(t, `
 	apex {
