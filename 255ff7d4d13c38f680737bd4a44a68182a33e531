@@ -94,6 +94,30 @@
       },
       "revId": "255ff7d4d13c38f680737bd4a44a68182a33e531",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e72e4ceb_dcb5a362",
+        "filename": "tests/apex_comparison_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-06-02T10:20:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "363b1162_45b6afb2",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "255ff7d4d13c38f680737bd4a44a68182a33e531",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
