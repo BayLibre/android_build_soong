@@ -1311,6 +1311,20 @@ func createCommand(cmd *RuleBuilderCommand, buildStatement *bazel.BuildStatement
 	// executionRoot is the action cwd.
 	cmd.Text(fmt.Sprintf("cd '%s' &&", executionRoot))
 
+	// Detect if output dir is actually a file created in a previous run
+	// e.g. we could have a bazel rule that generates a bin in bazel-out/<package>/mybin
+	// later we update the bazel rule to generate the bin in bazel-out/<package>/mybin/mybin
+	// In mixed builds, we should rm -f bazel-out/<package>/mybin when this happens
+	outputDirs := []string{}
+	for _, op := range buildStatement.OutputPaths {
+		outputDirs = append(outputDirs, filepath.Dir(op))
+	}
+	for _, od := range SortedUniqueStrings(outputDirs) {
+		// If output dir is a file, remove it
+		cmd.Text(fmt.Sprintf("[ -f %[1]s ] && rm -rf %[1]s", od))
+	}
+	cmd.Text(";") // Not && since outputDir is not a file in most cases
+
 	// Remove old outputs, as some actions might not rerun if the outputs are detected.
 	if len(buildStatement.OutputPaths) > 0 {
 		cmd.Text("rm -rf") // -r because outputs can be Bazel dir/tree artifacts.

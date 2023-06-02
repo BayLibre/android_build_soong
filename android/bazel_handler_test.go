@@ -138,7 +138,7 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
    { "id": 1, "label": "one" },
    { "id": 2, "label": "two" }]
 }`,
-			"cd 'test/exec_root' && rm -rf 'one' && touch foo",
+			"cd 'test/exec_root' && [ -f . ] && rm -rf . ; rm -rf 'one' && touch foo",
 		}, {`
 {
  "artifacts": [
@@ -157,7 +157,7 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
    { "id": 20, "label": "one.d", "parent_id": 30 },
    { "id": 30, "label": "parent" }]
 }`,
-			`cd 'test/exec_root' && rm -rf 'parent/one' && bogus command && sed -i'' -E 's@(^|\s|")bazel-out/@\1test/bazel_out/@g' 'parent/one.d'`,
+			`cd 'test/exec_root' && [ -f parent ] && rm -rf parent ; rm -rf 'parent/one' && bogus command && sed -i'' -E 's@(^|\s|")bazel-out/@\1test/bazel_out/@g' 'parent/one.d'`,
 		},
 	}
 
