@@ -1476,7 +1476,9 @@ var (
 		"permissive_mte_test",
 		"ICU4CTestRunner",
 
-		"HelloWorldHostTest",  // TODO(b/280452825): Convert HelloWorldHostTest to b test
+		"HelloWorldHostTest", // TODO(b/280452825): Convert HelloWorldHostTest to b test
+
+		"android.hardware.audio.effect", // TODO(b/249276008) needs min_sdk_version for Java aidl_interface backend
 	}
 
 	MixedBuildsDisabledList = []string{
