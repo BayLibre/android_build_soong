@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d0a37b4_ea66857e",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2023-06-02T13:42:43Z",
+      "side": 1,
+      "message": "unfortunately this will not affect the compat checks in frameworks/base/api/Android.bp (which invoke metalava in a \"custom\" way). Can we make it an error by default and `--hide` in androidx instead?",
+      "revId": "a1bf505ba592043d6b12982eef4947b809399205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
