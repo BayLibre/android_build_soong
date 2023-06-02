@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b237ad8_ae550e9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-02T04:00:28Z",
+      "side": 1,
+      "message": "There are some presubmit errors I need to resolve, marking as WIP till then",
+      "revId": "58e9a497779465a888d6d9162cc984d5c9dc72f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
