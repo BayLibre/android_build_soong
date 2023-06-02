@@ -16,6 +16,23 @@
       "message": "The alternative I considered to circumvent this for `stem` (b/240563612) was to generate the new bin in \u003clabel.name\u003e_intermediates/\u003cfilename\u003e. But that felt a little hacky, since it is not really an \"intermediate\" directory",
       "revId": "deaed2532e94a6097ec52b6ac535d1c46c4412a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5c50d3_c7a78449",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-02T03:57:07Z",
+      "side": 1,
+      "message": "I think I did not account for the `.runfiles_manifest` file, which is causing related presubmit errors https://android-build.corp.google.com/artifact/pending/P57685384/aosp_arm64-userdebug/latest/view/logs%2Fbuild_error.log\n\nMarking this CL as WIP till I figure out a solution",
+      "revId": "deaed2532e94a6097ec52b6ac535d1c46c4412a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
