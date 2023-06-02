@@ -39,6 +39,30 @@
       },
       "revId": "4f65a03d30a4f89ca3eeca70ada21cd79c43b220",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b8f306_21fa7011",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-06-02T14:55:54Z",
+      "side": 1,
+      "message": "Soong is strict on dependencies: if you add a library as a dependency, then the library must also be known by Soong. I.e., you cannot add a library defined in \"Android.mk\" as a dependency of an app defined in \"Android.bp\". Therefore, the case that you are worrying about doesn\u0027t exist.\n\nOn the contrary, Make is more lenient on dependencies: you can add anything to LOCAL_OPTIONAL_USES_LIBRARIES, no matter the libraries are built by Make or Soong, or even nobody. If nobody builds the libraries, the build will fail at the Ninja phase.",
+      "parentUuid": "d67cb7a9_eb8ac170",
+      "range": {
+        "startLine": 1394,
+        "startChar": 84,
+        "endLine": 1394,
+        "endChar": 120
+      },
+      "revId": "4f65a03d30a4f89ca3eeca70ada21cd79c43b220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
