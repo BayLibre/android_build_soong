@@ -47,7 +47,6 @@ var (
 		"-fno-exceptions",
 		"-Wno-multichar",
 
-		"-O2",
 		"-g",
 		"-fdebug-default-version=5",
 
@@ -372,6 +371,12 @@ func init() {
 
 		if ctx.Config().IsEnvTrue("ALLOW_UNKNOWN_WARNING_OPTION") {
 			flags = append(flags, "-Wno-error=unknown-warning-option")
+		}
+
+		if ctx.Config().Eng() {
+			flags = append(flags, "-O1")
+		} else {
+			flags = append(flags, "-O2")
 		}
 
 		return strings.Join(flags, " ")
