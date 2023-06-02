@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc5e08fa_c6777495",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-02T21:49:09Z",
+      "side": 1,
+      "message": "Can we use [neverallow](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/neverallow.go) to limit it to the usecases you need? This isn\u0027t an API we\u0027ll carry over to Bazel, so I\u0027d prefer to minimize use of it.",
+      "revId": "f6d185a0d464dab4114116c1bfc3ff06c59d5703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
