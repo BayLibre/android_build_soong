@@ -1113,6 +1113,7 @@ type linkerAttributes struct {
 	wholeArchiveDeps                 bazel.LabelListAttribute
 	implementationWholeArchiveDeps   bazel.LabelListAttribute
 	systemDynamicDeps                bazel.LabelListAttribute
+	usedSystemDynamicDepAsStaticDep  map[string]bool
 	usedSystemDynamicDepAsDynamicDep map[string]bool
 
 	useVersionLib                 bazel.BoolAttribute
@@ -1175,6 +1176,18 @@ func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversion
 	// https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/linker.go;l=247-249;drc=088b53577dde6e40085ffd737a1ae96ad82fc4b0
 	la.wholeArchiveDeps.SetSelectValue(axis, config, bazelLabelForWholeDepsExcludes(ctx, wholeStaticLibs, props.Exclude_static_libs))
 
+	if isBinary && module.StaticExecutable() {
+		usedSystemStatic := android.FilterListPred(staticLibs, func(s string) bool {
+			return android.InList(s, soongSystemSharedLibs) && !android.InList(s, props.Exclude_static_libs)
+		})
+
+		for _, el := range usedSystemStatic {
+			if la.usedSystemDynamicDepAsStaticDep == nil {
+				la.usedSystemDynamicDepAsStaticDep = map[string]bool{}
+			}
+			la.usedSystemDynamicDepAsStaticDep[el] = true
+		}
+	}
 	staticDeps := maybePartitionExportedAndImplementationsDepsExcludes(
 		ctx,
 		!isBinary,
@@ -1207,6 +1220,7 @@ func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversion
 	usedSystem := android.FilterListPred(sharedLibs, func(s string) bool {
 		return android.InList(s, soongSystemSharedLibs) && !android.InList(s, excludeSharedLibs)
 	})
+
 	for _, el := range usedSystem {
 		if la.usedSystemDynamicDepAsDynamicDep == nil {
 			la.usedSystemDynamicDepAsDynamicDep = map[string]bool{}
@@ -1598,6 +1612,15 @@ func (la *linkerAttributes) finalize(ctx android.BazelConversionPathContext) {
 			la.implementationDynamicDeps.Exclude(bazel.OsAndInApexAxis, inApexConfigSetting(aa), bazel.MakeLabelList(stubsToRemove))
 		}
 		la.implementationDynamicDeps.Exclude(bazel.OsAndInApexAxis, bazel.AndroidPlatform, bazel.MakeLabelList(stubsToRemove))
+	}
+	if la.systemDynamicDeps.IsNil() && len(la.usedSystemDynamicDepAsStaticDep) > 0 {
+		toRemove := bazelLabelForStaticDeps(ctx, android.SortedKeys(la.usedSystemDynamicDepAsStaticDep))
+		la.deps.Exclude(bazel.NoConfigAxis, "", toRemove)
+		la.deps.Exclude(bazel.OsConfigurationAxis, "android", toRemove)
+		la.deps.Exclude(bazel.OsConfigurationAxis, "linux_bionic", toRemove)
+		la.implementationDeps.Exclude(bazel.NoConfigAxis, "", toRemove)
+		la.implementationDeps.Exclude(bazel.OsConfigurationAxis, "android", toRemove)
+		la.implementationDeps.Exclude(bazel.OsConfigurationAxis, "linux_bionic", toRemove)
 	}
 
 	la.deps.ResolveExcludes()
