@@ -116,7 +116,7 @@ var (
 	// content to file.
 	writeFile = pctx.AndroidStaticRule("writeFile",
 		blueprint.RuleParams{
-			Command:     `/bin/bash -c 'echo -e -n "$$0" > $out' $content`,
+			Command:     `/bin/bash -c '[ -f $$(dirname $out) ] && rm -f $$(dirname $out) ; mkdir -p $$(dirname $out) && echo -e -n "$$0" > $out' $content`,
 			Description: "writing file $out",
 		},
 		"content")
