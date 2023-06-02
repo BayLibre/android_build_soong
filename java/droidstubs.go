@@ -530,6 +530,7 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 		Flag("--quiet").
 		Flag("--format=v2").
 		FlagWithArg("--repeat-errors-max ", "10").
+		FlagWithArg("--error ", "RemovedFinalStrict").
 		FlagWithArg("--hide ", "UnresolvedImport").
 		FlagWithArg("--hide ", "InvalidNullabilityOverride").
 		// b/223382732
