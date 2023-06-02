@@ -39,7 +39,7 @@ import (
 var (
 	_                 = pctx.HostBinToolVariable("bazelBuildRunfilesTool", "build-runfiles")
 	buildRunfilesRule = pctx.AndroidStaticRule("bazelBuildRunfiles", blueprint.RuleParams{
-		Command:     "${bazelBuildRunfilesTool} ${in} ${outDir}",
+		Command:     "mkdir -p ${outDir} && ${bazelBuildRunfilesTool} ${in} ${outDir}",
 		Depfile:     "",
 		Description: "",
 		CommandDeps: []string{"${bazelBuildRunfilesTool}"},
