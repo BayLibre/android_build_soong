@@ -16,6 +16,24 @@
       "message": "unfortunately this will not affect the compat checks in frameworks/base/api/Android.bp (which invoke metalava in a \"custom\" way). Can we make it an error by default and `--hide` in androidx instead?",
       "revId": "a1bf505ba592043d6b12982eef4947b809399205",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "837f4e39_e7559844",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-06-02T14:22:55Z",
+      "side": 1,
+      "message": "\u003e unfortunately this will not affect the compat checks in frameworks/base/api/Android.bp (which invoke metalava in a \"custom\" way\n\nYuck!\n\n\u003e Can we make it an error by default and --hide in androidx instead?\n\nYes. I was hoping to avoid making changes in AndroidX but it seems as though it fails with warnings too, so I have to `--hide` there anyway so making it default to error would reduce the changes I have to make.",
+      "parentUuid": "7d0a37b4_ea66857e",
+      "revId": "a1bf505ba592043d6b12982eef4947b809399205",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
