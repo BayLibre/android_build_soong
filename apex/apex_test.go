@@ -6717,6 +6717,226 @@ func TestApexAvailable_InvalidApexName(t *testing.T) {
 	}`)
 }
 
+func TestApexAvailable_ApexAvailableNameWithManyApexes(t *testing.T) {
+	var bp string
+	var appApexAvailable []string
+	apexTemplate := `
+		apex {
+			name: "%s",
+			key: "myapex.key",
+			apps: ["AppFoo"],
+			apex_available_name: "com.android.%s",
+			updatable: false,
+		}
+	`
+	mockFs := android.MockFS{}
+	for i := 0; i < 1; i++ {
+		apexName := "myapex"
+		numLetters := i/26 + 1
+		for j := 0; j < numLetters; j++ {
+			apexName += string(rune(i%26 + 65))
+		}
+		bp += fmt.Sprintf(apexTemplate, apexName, apexName)
+		appApexAvailable = append(appApexAvailable, fmt.Sprintf("\"com.android.%s\"", apexName))
+		sepolicyFile := fmt.Sprintf("system/sepolicy/apex/%s-file_contexts", apexName)
+		mockFs[sepolicyFile] = nil
+	}
+
+	context := android.GroupFixturePreparers(
+		android.PrepareForIntegrationTestWithAndroid,
+		PrepareForTestWithApexBuildComponents,
+		java.PrepareForTestWithDexpreopt,
+		android.FixtureMergeMockFs(mockFs),
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+			variables.BuildId = proptools.StringPtr("buildid")
+		}),
+	)
+	context.RunTestWithBp(t, bp+fmt.Sprintf(`
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+		android_app {
+			name: "AppFoo",
+			srcs: ["foo/bar/MyClass.java"],
+			sdk_version: "none",
+			system_modules: "none",
+			apex_available: [ %s ],
+		}`,
+		strings.Join(appApexAvailable, ","),
+	))
+}
+
+func TestApexAvailable_ApexAvailableName(t *testing.T) {
+	testApexError(t, "\"myapex\" is not a valid apex name", `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		apps: ["AppFoo"],
+		apex_available_name: "com.android.myapex",
+		updatable: false,
+	}
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	android_app {
+		name: "AppFoo",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "myapex" ],
+	}`)
+
+	testApexError(t, "\"myapex\" is not a valid apex name", `
+	override_apex {
+		name: "myoverrideapex",
+		base: "myapex",
+		key: "myapex.key",
+		apps: ["AppFooOverride"],
+	}
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		apps: ["AppFoo"],
+		apex_available_name: "com.android.myapex",
+		updatable: false,
+	}
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	android_app {
+		name: "AppFooOverride",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "myapex" ],
+	}
+	android_app {
+		name: "AppFoo",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "com.android.myapex" ],
+	}`)
+
+	testApex(t, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		apps: ["AppFoo"],
+		apex_available_name: "com.android.myapex",
+		updatable: false,
+	}
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	android_app {
+		name: "AppFoo",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "com.android.myapex" ],
+	}`)
+
+	testApex(t, `
+	override_apex {
+		name: "myoverrideapex",
+		base: "myapex",
+		key: "myapex.key",
+		apps: ["AppFooOverride"],
+	}
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		apps: ["AppFoo"],
+		apex_available_name: "com.android.myapex",
+		updatable: false,
+	}
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	android_app {
+		name: "AppFooOverride",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "com.android.myapex" ],
+	}
+	android_app {
+		name: "AppFoo",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "com.android.myapex" ],
+	}`)
+}
+
+func TestApexAvailable_ApexAvailableNameWithOverrides(t *testing.T) {
+	context := android.GroupFixturePreparers(
+		android.PrepareForIntegrationTestWithAndroid,
+		PrepareForTestWithApexBuildComponents,
+		java.PrepareForTestWithDexpreopt,
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/myapex-file_contexts":        nil,
+			"system/sepolicy/apex/myapex_sminus-file_contexts": nil,
+		}),
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+			variables.BuildId = proptools.StringPtr("buildid")
+		}),
+	)
+	context.RunTestWithBp(t, `
+	override_apex {
+		name: "myoverrideapex_sminus",
+		base: "myapex_sminus",
+	}
+	override_apex {
+		name: "myoverrideapex",
+		base: "myapex",
+	}
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		apps: ["AppFoo"],
+		updatable: false,
+	}
+	apex {
+		name: "myapex_sminus",
+		apex_available_name: "myapex",
+		key: "myapex.key",
+		apps: ["AppFoo_sminus"],
+		updatable: false,
+	}
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	android_app {
+		name: "AppFoo",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		system_modules: "none",
+		apex_available: [ "myapex" ],
+	}
+	android_app {
+		name: "AppFoo_sminus",
+		srcs: ["foo/bar/MyClass.java"],
+		sdk_version: "none",
+		min_sdk_version: "29",
+		system_modules: "none",
+		apex_available: [ "myapex" ],
+	}`)
+}
+
 func TestApexAvailable_CheckForPlatform(t *testing.T) {
 	ctx := testApex(t, `
 	apex {
