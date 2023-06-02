@@ -505,6 +505,8 @@ func (m *ApexModuleBase) SetNotAvailableForPlatform() {
 	m.ApexProperties.NotAvailableForPlatform = true
 }
 
+var ApexNameOnceKey OnceKey = NewCustomOnceKey("apexAvailableNameList")
+
 // This function makes sure that the apex_available property is valid
 func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 	for _, n := range m.ApexProperties.Apex_available {
@@ -512,7 +514,7 @@ func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 			continue
 		}
 		if !mctx.OtherModuleExists(n) && !mctx.Config().AllowMissingDependencies() {
-			mctx.PropertyErrorf("apex_available", "%q is not a valid module name", n)
+			mctx.PropertyErrorf("apex_available", "%q is not a valid apex name", n)
 		}
 	}
 }
