@@ -22,6 +22,7 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"sync"
 
 	"android/soong/bazel/cquery"
 
@@ -220,6 +221,10 @@ type apexBundleProperties struct {
 	// imageApex or flattenedApex depending on Config.FlattenApex(). When payload_type is zip,
 	// this becomes zipApex.
 	ApexType apexPackaging `blueprint:"mutated"`
+
+	// Name that dependencies can specify in their apex_available properties to refer to this module.
+	// If not specified, this defaults to Soong module name.
+	Apex_available_name *string
 }
 
 type ApexNativeDependencies struct {
@@ -796,6 +801,11 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	a.combineProperties(ctx)
 
+	apexNameMap := ctx.Config().Once(android.ApexNameOnceKey, func() interface{} {
+		return &sync.Map{}
+	}).(*sync.Map)
+	apexNameMap.Store(getApexAvailableName(ctx), true)
+
 	has32BitTarget := false
 	for _, target := range targets {
 		if target.Arch.ArchType.Multilib == "lib32" {
@@ -1325,6 +1335,18 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 			mctx.CreateAliasVariation("", apexBundleName)
 		}
 	}
+}
+
+func getApexAvailableName(ctx android.BaseModuleContext) string {
+	apexName := ctx.ModuleName()
+	for _, props := range ctx.Module().GetProperties() {
+		if apexProps, ok := props.(*apexBundleProperties); ok {
+			if apexProps.Apex_available_name != nil {
+				apexName = *apexProps.Apex_available_name
+			}
+		}
+	}
+	return apexName
 }
 
 // apexModuleTypeRequiresVariant determines whether the module supplied requires an apex specific
@@ -3133,7 +3155,7 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 			return false
 		}
 
-		apexName := ctx.ModuleName()
+		apexName := getApexAvailableName(ctx)
 		fromName := ctx.OtherModuleName(from)
 		toName := ctx.OtherModuleName(to)
 
