@@ -72,12 +72,6 @@ func (lto *lto) begin(ctx BaseModuleContext) {
 }
 
 func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
-	// TODO(b/131771163): Disable LTO when using explicit fuzzing configurations.
-	// LTO breaks fuzzer builds.
-	if inList("-fsanitize=fuzzer-no-link", flags.Local.CFlags) {
-		return flags
-	}
-
 	if lto.LTO(ctx) {
 		var ltoCFlag string
 		var ltoLdFlag string
