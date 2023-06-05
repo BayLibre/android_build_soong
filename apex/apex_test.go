@@ -6717,6 +6717,84 @@ func TestApexAvailable_InvalidApexName(t *testing.T) {
 	}`)
 }
 
+func TestApexAvailable_ApexAvailableNameWithVersionCodeError(t *testing.T) {
+	testApexError(t, "expected an integer between 0-9; got -1", `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			apex_available_name: "com.android.foo",
+			variant_version: "-1",
+			updatable: false,
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+	`)
+	testApexError(t, "expected an integer between 0-9; got 10", `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			apex_available_name: "com.android.foo",
+			variant_version: "10",
+			updatable: false,
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+	`)
+}
+
+func TestApexAvailable_ApexAvailableNameWithVersionCode(t *testing.T) {
+	context := android.GroupFixturePreparers(
+		android.PrepareForIntegrationTestWithAndroid,
+		PrepareForTestWithApexBuildComponents,
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/foo-file_contexts": nil,
+			"system/sepolicy/apex/bar-file_contexts": nil,
+		}),
+	)
+	result := context.RunTestWithBp(t, `
+		apex {
+			name: "foo",
+			key: "myapex.key",
+			apex_available_name: "com.android.foo",
+			variant_version: "0",
+			updatable: false,
+		}
+		apex {
+			name: "bar",
+			key: "myapex.key",
+			apex_available_name: "com.android.foo",
+			variant_version: "3",
+			updatable: false,
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+	`)
+
+	fooManifestRule := result.ModuleForTests("foo", "android_common_foo_image").Rule("apexManifestRule")
+	fooExpectedDefaultVersion := android.DefaultUpdatableModuleVersion
+	fooActualDefaultVersion := fooManifestRule.Args["default_version"]
+	if fooActualDefaultVersion != fooExpectedDefaultVersion {
+		t.Errorf("expected to find defaultVersion %q; got %q", fooExpectedDefaultVersion, fooActualDefaultVersion)
+	}
+
+	barManifestRule := result.ModuleForTests("bar", "android_common_bar_image").Rule("apexManifestRule")
+	defaultVersionInt, _ := strconv.Atoi(android.DefaultUpdatableModuleVersion)
+	barExpectedDefaultVersion := fmt.Sprint(defaultVersionInt + 3)
+	barActualDefaultVersion := barManifestRule.Args["default_version"]
+	if barActualDefaultVersion != barExpectedDefaultVersion {
+		t.Errorf("expected to find defaultVersion %q; got %q", barExpectedDefaultVersion, barActualDefaultVersion)
+	}
+}
+
 func TestApexAvailable_ApexAvailableNameWithManyApexes(t *testing.T) {
 	var bp string
 	var appApexAvailable []string
@@ -6730,7 +6808,7 @@ func TestApexAvailable_ApexAvailableNameWithManyApexes(t *testing.T) {
 		}
 	`
 	mockFs := android.MockFS{}
-	for i := 0; i < 1; i++ {
+	for i := 0; i < 100; i++ {
 		apexName := "myapex"
 		numLetters := i/26 + 1
 		for j := 0; j < numLetters; j++ {
