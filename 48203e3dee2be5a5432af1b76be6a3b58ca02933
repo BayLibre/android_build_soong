@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aaa7440_e8f4794f",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1400,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-06-05T13:51:26Z",
+      "side": 1,
+      "message": "Could we make this an error at this point or are you worried about potential breakages on other branches/vendor code?",
+      "range": {
+        "startLine": 1400,
+        "startChar": 0,
+        "endLine": 1400,
+        "endChar": 108
+      },
+      "revId": "48203e3dee2be5a5432af1b76be6a3b58ca02933",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
