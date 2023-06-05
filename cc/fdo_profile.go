@@ -16,6 +16,7 @@ package cc
 
 import (
 	"android/soong/android"
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 )
@@ -25,17 +26,51 @@ func init() {
 }
 
 func RegisterFdoProfileBuildComponents(ctx android.RegistrationContext) {
-	ctx.RegisterModuleType("fdo_profile", fdoProfileFactory)
+	ctx.RegisterModuleType("fdo_profile", FdoProfileFactory)
 }
 
 type fdoProfile struct {
 	android.ModuleBase
+	android.BazelModuleBase
 
 	properties fdoProfileProperties
 }
 
 type fdoProfileProperties struct {
 	Profile *string `android:"arch_variant"`
+}
+
+type bazelFdoProfileAttributes struct {
+	Profile bazel.StringAttribute
+}
+
+func (fp *fdoProfile) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	var profileAttr bazel.StringAttribute
+
+	archVariantProps := fp.GetArchVariantProperties(ctx, &fdoProfileProperties{})
+	for axis, configToProps := range archVariantProps {
+		for config, _props := range configToProps {
+			if archProps, ok := _props.(*fdoProfileProperties); ok {
+				if axis.String() == "arch" || axis.String() == "no_config" {
+					if archProps.Profile != nil {
+						profileAttr.SetSelectValue(axis, config, archProps.Profile)
+					}
+				}
+			}
+		}
+	}
+
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class: "fdo_profile",
+		},
+		android.CommonAttributes{
+			Name: fp.Name(),
+		},
+		&bazelFdoProfileAttributes{
+			Profile: profileAttr,
+		},
+	)
 }
 
 // FdoProfileInfo is provided by FdoProfileProvider
@@ -77,9 +112,10 @@ func fdoProfileMutator(ctx android.BottomUpMutatorContext) {
 	}
 }
 
-func fdoProfileFactory() android.Module {
+func FdoProfileFactory() android.Module {
 	m := &fdoProfile{}
 	m.AddProperties(&m.properties)
 	android.InitAndroidMultiTargetsArchModule(m, android.DeviceSupported, android.MultilibBoth)
+	android.InitBazelModule(m)
 	return m
 }
