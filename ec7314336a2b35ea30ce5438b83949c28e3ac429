@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5cbb9646_000339b6",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-06-05T21:38:17Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s actually correct to have global `\u003coptions\u003e` tags. I can\u0027t find a definitive source on this, but [this page](https://source.android.com/docs/core/tests/tradefed/architecture/xml-config) seems to imply you shouldn\u0027t put `\u003coption\u003e` tags directly in the `\u003cconfiguration\u003e` tag. \n\nI don\u0027t think we should have 2 methods to do the same thing because it\u0027s more confusing for users.\n\nAt the very least, the difference should be documented.",
+      "parentUuid": "bad55923_0323716f",
+      "revId": "ec7314336a2b35ea30ce5438b83949c28e3ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f9cca73_39258c73",
         "filename": "tradefed/autogen.go",
         "patchSetId": 2
