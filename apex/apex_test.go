@@ -6717,6 +6717,53 @@ func TestApexAvailable_InvalidApexName(t *testing.T) {
 	}`)
 }
 
+
+func TestApexAvailable_ApexAvailableNameWithVersionCode(t *testing.T) {
+	context := android.GroupFixturePreparers(
+		android.PrepareForIntegrationTestWithAndroid,
+		PrepareForTestWithApexBuildComponents,
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/foo-file_contexts": nil,
+			"system/sepolicy/apex/bar-file_contexts": nil,
+		}),
+	)
+	result := context.RunTestWithBp(t, `
+		apex {
+			name: "foo",
+			key: "myapex.key",
+			apex_available_name: "com.android.foo",
+			variant_version: "0",
+			updatable: false,
+		}
+		apex {
+			name: "bar",
+			key: "myapex.key",
+			apex_available_name: "com.android.foo",
+			variant_version: "3",
+			updatable: false,
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+	`)
+
+	fooManifestRule := result.ModuleForTests("foo", "android_common_foo_image").Rule("apexManifestRule")
+	fooExpectedDefaultVersion := android.DefaultUpdatableModuleVersion
+	fooActualDefaultVersion := fooManifestRule.Args["default_version"]
+	if fooActualDefaultVersion != fooExpectedDefaultVersion {
+		t.Errorf("expected to find defaultVersion %q; got %q", fooExpectedDefaultVersion, fooActualDefaultVersion)
+	}
+
+	barManifestRule := result.ModuleForTests("bar", "android_common_bar_image").Rule("apexManifestRule")
+	defaultVersionInt, _ := strconv.Atoi(android.DefaultUpdatableModuleVersion)
+	barExpectedDefaultVersion := fmt.Sprint(defaultVersionInt + 3)
+	barActualDefaultVersion := barManifestRule.Args["default_version"]
+	if barActualDefaultVersion != barExpectedDefaultVersion {
+		t.Errorf("expected to find defaultVersion %q; got %q", barExpectedDefaultVersion, barActualDefaultVersion)
+	}
+}
 func TestApexAvailable_ApexAvailableName(t *testing.T) {
 	testApexError(t, "\"myapex\" is not a valid apex name", `
 	apex {
