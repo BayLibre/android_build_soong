@@ -447,7 +447,7 @@ type compilerAttributes struct {
 	stem   bazel.StringAttribute
 	suffix bazel.StringAttribute
 
-	fdoProfile bazel.LabelAttribute
+	afdo bazel.BoolAttribute
 }
 
 type filterOutFn func(string) bool
@@ -903,10 +903,7 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 	(&compilerAttrs).cSrcs.Add(&convertedLSrcs.cSrcName)
 
 	if module.afdo != nil && module.afdo.Properties.Afdo {
-		fdoProfileDep := bp2buildFdoProfile(ctx, module)
-		if fdoProfileDep != nil {
-			(&compilerAttrs).fdoProfile.SetValue(*fdoProfileDep)
-		}
+		(&compilerAttrs).afdo.SetValue(proptools.BoolPtr(true))
 	}
 
 	if !compilerAttrs.syspropSrcs.IsEmpty() {
@@ -992,41 +989,6 @@ func addMuslSystemDynamicDeps(ctx android.Bp2buildMutatorContext, attrs linkerAt
 	if attrs.systemDynamicDeps.HasAxisSpecificValues(bazel.OsConfigurationAxis) && systemDynamicDeps.IsNil() {
 		attrs.systemDynamicDeps.SetSelectValue(bazel.OsConfigurationAxis, "linux_musl", android.BazelLabelForModuleDeps(ctx, config.MuslDefaultSharedLibraries))
 	}
-}
-
-type fdoProfileAttributes struct {
-	Absolute_path_profile string
-}
-
-func bp2buildFdoProfile(
-	ctx android.Bp2buildMutatorContext,
-	m *Module,
-) *bazel.Label {
-	for _, project := range globalAfdoProfileProjects {
-		// Ensure handcrafted BUILD file exists in the project
-		BUILDPath := android.ExistentPathForSource(ctx, project, "BUILD")
-		if BUILDPath.Valid() {
-			// We handcraft a BUILD file with fdo_profile targets that use the existing profiles in the project
-			// This implementation is assuming that every afdo profile in globalAfdoProfileProjects already has
-			// an associated fdo_profile target declared in the same package.
-			// TODO(b/260714900): Handle arch-specific afdo profiles (e.g. `<module-name>-arm<64>.afdo`)
-			path := android.ExistentPathForSource(ctx, project, m.Name()+".afdo")
-			if path.Valid() {
-				// FIXME: Some profiles only exist internally and are not released to AOSP.
-				// When generated BUILD files are checked in, we'll run into merge conflict.
-				// The cc_library_shared target in AOSP won't have reference to an fdo_profile target because
-				// the profile doesn't exist. Internally, the same cc_library_shared target will
-				// have reference to the fdo_profile.
-				// For more context, see b/258682955#comment2
-				fdoProfileLabel := "//" + strings.TrimSuffix(project, "/") + ":" + m.Name()
-				return &bazel.Label{
-					Label: fdoProfileLabel,
-				}
-			}
-		}
-	}
-
-	return nil
 }
 
 func bp2buildCcAidlLibrary(
