@@ -1019,6 +1019,9 @@ func (c *configImpl) NamedGlobFile(name string) string {
 }
 
 func (c *configImpl) UsedEnvFile(tag string) string {
+	if v, ok := c.environ.Get("TARGET_PRODUCT"); ok {
+		return shared.JoinPath(c.SoongOutDir(), usedEnvFile+"."+v+"."+tag)
+	}
 	return shared.JoinPath(c.SoongOutDir(), usedEnvFile+"."+tag)
 }
 
