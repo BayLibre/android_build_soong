@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bad55923_0323716f",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-06-05T21:31:11Z",
+      "side": 1,
+      "message": "I do feel that having this option to add more global options can be handy. And the current naming `tradefed_options` is generic for global options. How about let\u0027s keep both for now?",
+      "parentUuid": "25273d55_7c2e8484",
+      "revId": "ec7314336a2b35ea30ce5438b83949c28e3ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f9cca73_39258c73",
         "filename": "tradefed/autogen.go",
         "patchSetId": 2
