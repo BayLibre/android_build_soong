@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89902e91_74367c78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2023-06-05T17:56:30Z",
+      "side": 1,
+      "message": "The change makes sense to me but I\u0027m expecting @cparsons@google.com to properly vet this.\n\nAlso, are the build failure checks on the change expected?",
+      "revId": "5c5c57d0396deec4faf34acdab737aac1b196fce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
