@@ -33,6 +33,24 @@
       "message": "I think I did not account for the `.runfiles_manifest` file, which is causing related presubmit errors https://android-build.corp.google.com/artifact/pending/P57685384/aosp_arm64-userdebug/latest/view/logs%2Fbuild_error.log\n\nMarking this CL as WIP till I figure out a solution",
       "revId": "deaed2532e94a6097ec52b6ac535d1c46c4412a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e62a32_0bdc3038",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-05T16:34:24Z",
+      "side": 1,
+      "message": "I tried different hacks to solve this (e.g. aosp/2612255), but I was still running into incrementality issues. Specifically, the first run of `m` fails, but the subsequent invocation succeeds.\n\nI was unable to figure out the root cause though. I have created a hack in aosp/2606333 to generate the binary in a bin/ subdirectory of the output package directory to circumvent this mixed builds error.",
+      "parentUuid": "0a5c50d3_c7a78449",
+      "revId": "deaed2532e94a6097ec52b6ac535d1c46c4412a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
