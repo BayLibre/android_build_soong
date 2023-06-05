@@ -717,6 +717,9 @@ func (c *config) IsMixedBuildsEnabled() bool {
 		if len(c.productVariables.SanitizeDeviceArch) > 0 {
 			return false
 		}
+		if c.EmitXrefRules() {
+			return false
+		}
 		return true
 	}).(bool)
 
