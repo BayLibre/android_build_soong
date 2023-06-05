@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a50b237b_b6685e00",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-06-05T21:20:00Z",
+      "side": 1,
+      "message": "It doesn\u0027t have a way to indicate if it\u0027s in the `\u003ctest\u003e` tag or not. I\u0027m saying that we can just move it to be inside the `\u003ctest\u003e` tag, so it\u0027s the same as `TestRunnerOptions`. Then dedup it.",
+      "parentUuid": "aa240980_1cc9a789",
+      "revId": "ec7314336a2b35ea30ce5438b83949c28e3ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f9cca73_39258c73",
         "filename": "tradefed/autogen.go",
         "patchSetId": 2
