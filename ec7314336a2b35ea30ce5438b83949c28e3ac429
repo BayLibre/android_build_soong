@@ -181,6 +181,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68d2b465_5c7d9a59",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-06-05T23:22:56Z",
+      "side": 1,
+      "message": "So as I mentioned earlier, if the documentation you are referring to is the javastring docs, it\u0027s already there (https://screenshot.googleplex.com/v5Cb5WHntMHX7yA)\n\nAs for `deduplication`, I feel like we are coming in circles. From my earlier comments, options inside tradefed test configs can be both outside the test element and inside test element. Mixing these two usecases can be potentially wrong and undesired.",
+      "parentUuid": "85ed4006_d4b35f6d",
+      "revId": "ec7314336a2b35ea30ce5438b83949c28e3ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f9cca73_39258c73",
         "filename": "tradefed/autogen.go",
         "patchSetId": 2
