@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563a0d1d_12ec28a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-05T20:17:54Z",
+      "side": 1,
+      "message": "Have you tested with multiple changed environment variables? With no changed environment variables?",
+      "revId": "fe6f7524dcf47bb7e2ba719869b4139590086e42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f817dcdf_f8cc3e94",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-05T20:17:54Z",
+      "side": 1,
+      "message": "\"Set\" makes this sound like it is a variable that is either set or it is not. (Generally, Setting something that is already Set overwrites the old value). You probably want \"Add\" instead.",
+      "revId": "fe6f7524dcf47bb7e2ba719869b4139590086e42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad77c7fb_90a548c8",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-05T20:17:54Z",
+      "side": 1,
+      "message": "This probably merits a little more description. What does \"re_analysis\" mean?",
+      "revId": "fe6f7524dcf47bb7e2ba719869b4139590086e42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
