@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a650b1cc_74f56aca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-06-05T16:58:54Z",
+      "side": 1,
+      "message": "i see the chromium change also says\n```\nThis flag is set for targets where gdb is the dominant debugger, so\nWindows, Fuchsia, and Apple (i.e. MacOS, iPhone, iPad) do not have this\nset.\n```\nso that would exclude Android, where lldb is the dominant debugger. _why_ is this a problem for lldb?",
+      "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b82105cb_2d632447",
         "filename": "cc/config/arm64_device.go",
         "patchSetId": 2
