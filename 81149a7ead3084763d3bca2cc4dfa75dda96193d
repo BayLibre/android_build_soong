@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa243a8_6279de34",
+        "filename": "device_config/device_config_definitions_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-05T13:32:27Z",
+      "side": 1,
+      "message": "2023",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "81149a7ead3084763d3bca2cc4dfa75dda96193d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47a0585d_dcc4f46b",
+        "filename": "device_config/java_device_config_definitions_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-05T13:32:27Z",
+      "side": 1,
+      "message": "Should this check be above so they\u0027re all consolidated?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "81149a7ead3084763d3bca2cc4dfa75dda96193d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c9200d8_77992cd0",
+        "filename": "java/base.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-05T13:32:27Z",
+      "side": 1,
+      "message": "looks like some stale debugging",
+      "range": {
+        "startLine": 1089,
+        "startChar": 2,
+        "endLine": 1089,
+        "endChar": 104
+      },
+      "revId": "81149a7ead3084763d3bca2cc4dfa75dda96193d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1b85fe_fe7445b6",
+        "filename": "java/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-05T13:32:27Z",
+      "side": 1,
+      "message": "I would\u0027ve expected that 11 or 17 is the default now?",
+      "range": {
+        "startLine": 310,
+        "startChar": 15,
+        "endLine": 310,
+        "endChar": 29
+      },
+      "revId": "81149a7ead3084763d3bca2cc4dfa75dda96193d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65ccb611_cab7093b",
+        "filename": "java/generated_java_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-05T13:32:27Z",
+      "side": 1,
+      "message": "we may want to skip this portion for now and add it once we\u0027re converting specific module types",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 32
+      },
+      "revId": "81149a7ead3084763d3bca2cc4dfa75dda96193d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4573f484_be2b0267",
+        "filename": "java/generated_java_library_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-05T13:32:27Z",
+      "side": 1,
+      "message": "2023",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "81149a7ead3084763d3bca2cc4dfa75dda96193d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

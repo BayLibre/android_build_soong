@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5cd471_7285fda2",
+        "filename": "device_config/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-05T13:32:27Z",
+      "side": 0,
+      "message": "nit commented out line",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "82f0e5daae97807020831cb79280f516c55aea90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
