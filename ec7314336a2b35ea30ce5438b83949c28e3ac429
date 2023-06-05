@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85ed4006_d4b35f6d",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-06-05T22:18:01Z",
+      "side": 1,
+      "message": "You\u0027d document it in the comments on those properties so it shows up in go/Android.bp\n\nBut please just do the deduplication instead.",
+      "parentUuid": "e3193a0c_4e5454ef",
+      "revId": "ec7314336a2b35ea30ce5438b83949c28e3ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f9cca73_39258c73",
         "filename": "tradefed/autogen.go",
         "patchSetId": 2
