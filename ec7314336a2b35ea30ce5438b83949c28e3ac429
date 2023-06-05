@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b1bd07b_da43d29b",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-06-05T21:21:49Z",
+      "side": 1,
+      "message": "But some options are meant to be on the top level, e.g., global configs. Having them inside test element can be wrong.",
+      "parentUuid": "a50b237b_b6685e00",
+      "revId": "ec7314336a2b35ea30ce5438b83949c28e3ac429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f9cca73_39258c73",
         "filename": "tradefed/autogen.go",
         "patchSetId": 2
