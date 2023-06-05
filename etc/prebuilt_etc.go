@@ -38,6 +38,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/bazel"
+	"android/soong/bazel/cquery"
 	"android/soong/snapshot"
 )
 
@@ -146,6 +147,7 @@ type PrebuiltEtc struct {
 
 	sourceFilePath android.Path
 	outputFilePath android.OutputPath
+	filename       string // The name of the file on the device
 	// The base install location, e.g. "etc" for prebuilt_etc, "usr/share" for prebuilt_usr_share.
 	installDirBase string
 	// The base install location when soc_specific property is set to true, e.g. "firmware" for
@@ -330,6 +332,7 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		return
 	}
 	p.outputFilePath = android.PathForModuleOut(ctx, filename).OutputPath
+	p.filename = p.outputFilePath.Base()
 
 	if strings.Contains(filename, "/") {
 		ctx.PropertyErrorf("filename", "filename cannot contain separator '/'")
@@ -362,12 +365,29 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	// Call InstallFile even when uninstallable to make the module included in the package
-	installPath := ctx.InstallFile(p.installDirPath, p.outputFilePath.Base(), p.outputFilePath)
-	for _, sl := range p.properties.Symlinks {
-		ctx.InstallSymlink(p.installDirPath, sl, installPath)
+	ip := installProperties{
+		filename:    p.filename,
+		srcFilePath: p.outputFilePath,
+		symlinks:    p.properties.Symlinks,
 	}
+	p.addInstallRules(ctx, ip)
 }
 
+type installProperties struct {
+	filename    string
+	srcFilePath android.Path
+	symlinks    []string
+}
+
+// utility function to add install rules to the build graph.
+// Reduces code duplication between Soong and Mixed build analysis
+func (p *PrebuiltEtc) addInstallRules(ctx android.ModuleContext, ip installProperties) {
+	installPath := ctx.InstallFile(p.installDirPath, ip.filename, ip.srcFilePath)
+	for _, sl := range ip.symlinks {
+		ctx.InstallSymlink(p.installDirPath, sl, installPath)
+	}
+
+}
 func (p *PrebuiltEtc) AndroidMkEntries() []android.AndroidMkEntries {
 	nameSuffix := ""
 	if p.inRamdisk() && !p.onlyInRamdisk() {
@@ -390,7 +410,7 @@ func (p *PrebuiltEtc) AndroidMkEntries() []android.AndroidMkEntries {
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 				entries.SetString("LOCAL_MODULE_TAGS", "optional")
 				entries.SetString("LOCAL_MODULE_PATH", p.installDirPath.String())
-				entries.SetString("LOCAL_INSTALLED_MODULE_STEM", p.outputFilePath.Base())
+				entries.SetString("LOCAL_INSTALLED_MODULE_STEM", p.filename)
 				if len(p.properties.Symlinks) > 0 {
 					entries.AddStrings("LOCAL_MODULE_SYMLINKS", p.properties.Symlinks...)
 				}
@@ -780,4 +800,39 @@ func (module *PrebuiltEtc) ConvertWithBp2build(ctx android.TopDownMutatorContext
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: module.Name()}, attrs)
+}
+
+var _ android.MixedBuildBuildable = (*PrebuiltEtc)(nil)
+
+func (pe *PrebuiltEtc) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
+	return true
+}
+
+func (pe *PrebuiltEtc) QueueBazelCall(ctx android.BaseModuleContext) {
+	ctx.Config().BazelContext.QueueBazelRequest(
+		pe.GetBazelLabel(ctx, pe),
+		cquery.GetPrebuiltFileInfo,
+		android.GetConfigKey(ctx),
+	)
+}
+
+func (pe *PrebuiltEtc) ProcessBazelQueryResponse(ctx android.ModuleContext) {
+	bazelCtx := ctx.Config().BazelContext
+	pfi, err := bazelCtx.GetPrebuiltFileInfo(pe.GetBazelLabel(ctx, pe), android.GetConfigKey(ctx))
+	if err != nil {
+		ctx.ModuleErrorf(err.Error())
+		return
+	}
+
+	// Set properties for androidmk
+	pe.installDirPath = android.PathForModuleInstall(ctx, pfi.Dir)
+	pe.filename = pfi.Filename
+
+	// Installation rules
+	ip := installProperties{
+		filename:    pe.filename,
+		srcFilePath: android.PathForSource(ctx, pfi.Src),
+		// symlinks: pe.properties.Symlinks, // TODO: b/207489266 - Fully support all properties in prebuilt_file
+	}
+	pe.addInstallRules(ctx, ip)
 }
