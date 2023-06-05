@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "111788b7_89178dac",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-05T07:56:28Z",
+      "side": 1,
+      "message": "nit: call this apexMetadataEntry?",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 11
+      },
+      "revId": "be95390729415ee4572ae7e3fdf0deed3a0cf5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b09ee53_96c10681",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-05T07:56:28Z",
+      "side": 1,
+      "message": "should this be renamed as \"useLegacyFileContexts\"? Is this new way of labelling more \"correct\"?",
+      "range": {
+        "startLine": 364,
+        "startChar": 6,
+        "endLine": 364,
+        "endChar": 25
+      },
+      "revId": "be95390729415ee4572ae7e3fdf0deed3a0cf5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
