@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0c1345_cb741be8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-06-05T22:32:27Z",
+      "side": 1,
+      "message": "USE_RBE flag change will trigger multiple environment variables\u0027 value change:CC_WRAPPER and RBE_WRAPPER. I also verify that when no change environment variables change, the value of the field will be empty. Thanks!",
+      "parentUuid": "563a0d1d_12ec28a7",
+      "revId": "fe6f7524dcf47bb7e2ba719869b4139590086e42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f817dcdf_f8cc3e94",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97102514_cc9877a6",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-06-05T22:32:27Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. Updated.",
+      "parentUuid": "f817dcdf_f8cc3e94",
+      "revId": "fe6f7524dcf47bb7e2ba719869b4139590086e42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad77c7fb_90a548c8",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-06-05T20:17:54Z",
       "side": 1,
       "message": "This probably merits a little more description. What does \"re_analysis\" mean?",
+      "revId": "fe6f7524dcf47bb7e2ba719869b4139590086e42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae9cf52_ce1b60b4",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-06-05T22:32:27Z",
+      "side": 1,
+      "message": "Updated with the new variable name and descriptions.",
+      "parentUuid": "ad77c7fb_90a548c8",
       "revId": "fe6f7524dcf47bb7e2ba719869b4139590086e42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
