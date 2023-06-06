@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6447392_9888fad4",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6733,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-06T14:32:02Z",
+      "side": 1,
+      "message": "I don\u0027t know if this test is really doing much (and it\u0027s not the easiest to read). I added this because I was worried about concurrency issues at some point, and I wanted to make sure a large number of apexes would register their names properly.",
+      "range": {
+        "startLine": 6733,
+        "startChar": 1,
+        "endLine": 6733,
+        "endChar": 27
+      },
+      "revId": "2977efc0ed55a159985141e82a26bc8cd8c388f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
