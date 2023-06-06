@@ -401,7 +401,7 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		Features:                          *sharedFeatures,
 		bazelCcHeaderAbiCheckerAttributes: bp2buildParseAbiCheckerProps(ctx, m),
 
-		Fdo_profile: compilerAttrs.fdoProfile,
+		Afdo: compilerAttrs.afdo,
 	}
 
 	if compilerAttrs.stubsSymbolFile != nil && len(compilerAttrs.stubsVersions.Value) > 0 {
@@ -2991,7 +2991,7 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 
 			bazelCcHeaderAbiCheckerAttributes: bp2buildParseAbiCheckerProps(ctx, module),
 
-			Fdo_profile: compilerAttrs.fdoProfile,
+			Afdo: compilerAttrs.afdo,
 		}
 		if compilerAttrs.stubsSymbolFile != nil && len(compilerAttrs.stubsVersions.Value) > 0 {
 			sharedLibAttrs.Stubs_symbol_file = compilerAttrs.stubsSymbolFile
@@ -3076,7 +3076,7 @@ type bazelCcLibrarySharedAttributes struct {
 
 	bazelCcHeaderAbiCheckerAttributes
 
-	Fdo_profile bazel.LabelAttribute
+	Afdo bazel.BoolAttribute
 }
 
 type bazelCcStubSuiteAttributes struct {
