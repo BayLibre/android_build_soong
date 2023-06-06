@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a31ca3_26b1fc70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-06-06T17:25:16Z",
+      "side": 1,
+      "message": "They are the same, intentionally doing that to test no environment variable difference.",
+      "parentUuid": "8214ae0e_22385921",
+      "revId": "652a7df931c18c488b4fe634dc583719ac4cf585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1443b134_7eb873ce",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-06T03:41:57Z",
       "side": 1,
       "message": "nit: Put \"returns\" in a separate sentence. Also when there are multiple return values, naming them may help as documentation, e.g. ` func StaleEnvFile(...)(bool: isStale, []string changedKeys, err error)`\n\nnit: why not simply `(changes map[string] string, err error)` (I do hate the non-determinacy of key order with maps) but my main point being why\u0027d we only be interested in the keys and not the values?",
+      "revId": "652a7df931c18c488b4fe634dc583719ac4cf585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ef4cf1_676fad6b",
+        "filename": "shared/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-06-06T17:25:16Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. Updated the naming for better documentation. Talked offline regarding suggestion 2, this would require a new metrics which would need to wait a pipeline push and would use the current submessage implementation instead.",
+      "parentUuid": "1443b134_7eb873ce",
       "revId": "652a7df931c18c488b4fe634dc583719ac4cf585",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -65,6 +101,24 @@
       "writtenOn": "2023-06-06T15:55:21Z",
       "side": 1,
       "message": "or maybe more pithier would be to use the adjective \"used\", i.e. `used environment variables that have changed from the previous build` ?",
+      "parentUuid": "f49b6191_f0160864",
+      "revId": "652a7df931c18c488b4fe634dc583719ac4cf585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b756057a_1da87e73",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-06-06T17:25:16Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. Updated.",
       "parentUuid": "f49b6191_f0160864",
       "revId": "652a7df931c18c488b4fe634dc583719ac4cf585",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
