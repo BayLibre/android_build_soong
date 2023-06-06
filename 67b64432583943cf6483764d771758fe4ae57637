@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "745b1d48_a51d61dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-06-06T16:30:17Z",
+      "side": 1,
+      "message": "The other API surfaces are being defined in [this CL](https://android-review.git.corp.google.com/c/platform/frameworks/base/+/2610109). More context about why core and core platform API surface `java_library` are being separately defined here is available in [this comment thread](https://android-review.git.corp.google.com/c/platform/frameworks/base/+/2610109/comment/d542512e_d29015e1/)",
+      "parentUuid": "388c491e_bb0600c5",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "67b64432583943cf6483764d771758fe4ae57637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "07e3a374_06c26338",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
