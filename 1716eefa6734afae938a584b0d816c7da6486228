@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c942fe4_0716d1f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-06T18:23:53Z",
+      "side": 1,
+      "message": "Just as an extra check (if you have not already done so), please verify that `ls out/bazel_metrics.pb` shows a file directly after a `b build`.",
+      "revId": "1716eefa6734afae938a584b0d816c7da6486228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
