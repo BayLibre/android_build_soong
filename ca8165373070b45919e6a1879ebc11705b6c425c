@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0796ff9_f4251fb1",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-06-06T15:44:07Z",
+      "side": 1,
+      "message": "Maybe we can mention here that this should be the name of an apex",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 57
+      },
+      "revId": "ca8165373070b45919e6a1879ebc11705b6c425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
