@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "137e8625_7ce413f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-06T15:11:45Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "536b5223_de75a695",
+      "revId": "2977efc0ed55a159985141e82a26bc8cd8c388f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4baaaa6d_89f15d63",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-06-06T14:45:29Z",
       "side": 1,
       "message": "it makes sense to either update this error message for or to require that `apex_available_name` corresponds to _an_ apex somewhere.",
+      "range": {
+        "startLine": 529,
+        "startChar": 45,
+        "endLine": 529,
+        "endChar": 69
+      },
+      "revId": "2977efc0ed55a159985141e82a26bc8cd8c388f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7c8d5a8_cb62e3bc",
+        "filename": "android/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-06T15:11:45Z",
+      "side": 1,
+      "message": "reverted this after changing `apex_available_name` to be restricted to exist module names",
+      "parentUuid": "4baaaa6d_89f15d63",
       "range": {
         "startLine": 529,
         "startChar": 45,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9069531_3cf1f6b8",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-06T15:11:45Z",
+      "side": 1,
+      "message": "actually decided to remove this. It was just to make sure that the [`checkApexAvailableProperty`](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/apex.go;l\u003d514;drc\u003d934d5047ef159dee88da44e4d5a5db21d1e34a41) function could work properly by registering a list of valid `apex_available_names`.\n\nBut after discussing with Romain, I decided that we can just restrict `apex_available_name` to be existing module names and lift this restriction in the future if necessary.",
+      "parentUuid": "a00a62d3_2f32443c",
+      "range": {
+        "startLine": 804,
+        "startChar": 1,
+        "endLine": 804,
+        "endChar": 12
+      },
+      "revId": "2977efc0ed55a159985141e82a26bc8cd8c388f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6447392_9888fad4",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b706150e_ac9c9dd2",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6733,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-06T15:11:45Z",
+      "side": 1,
+      "message": "Got rid of this after making `apex_available_name` take an existing module name.",
+      "parentUuid": "b6447392_9888fad4",
+      "range": {
+        "startLine": 6733,
+        "startChar": 1,
+        "endLine": 6733,
+        "endChar": 27
+      },
+      "revId": "2977efc0ed55a159985141e82a26bc8cd8c388f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5169a0fc_e082bffc",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-06-06T14:45:29Z",
       "side": 1,
       "message": "given that there is no test description for each, using t.run to give a description or make these individual test functions may give clarity as to the goals of each test.",
+      "range": {
+        "startLine": 6771,
+        "startChar": 5,
+        "endLine": 6771,
+        "endChar": 40
+      },
+      "revId": "2977efc0ed55a159985141e82a26bc8cd8c388f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27bccd3e_7eee4d6f",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6771,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-06T15:11:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5169a0fc_e082bffc",
       "range": {
         "startLine": 6771,
         "startChar": 5,
