@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef21967_f1d98676",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1014491
+      },
+      "writtenOn": "2023-06-06T22:35:36Z",
+      "side": 1,
+      "message": "Does this require the newest version of `qemu-system-misc` package? If so, they are not available in all the testing setups yet",
+      "revId": "1ead4b26fd5a42404f664d8400544ab06f2ab7f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
