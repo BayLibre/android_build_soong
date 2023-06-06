@@ -770,6 +770,9 @@ var (
 
 		// Used by xsd_config
 		"xsdc",
+
+		// for platform_compat_config
+		"process-compat-config",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
