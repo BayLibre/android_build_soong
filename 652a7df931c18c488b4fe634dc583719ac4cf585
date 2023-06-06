@@ -50,6 +50,24 @@
       "message": "How about:\n\n\"Environment variables that have changed value since the previous build, which were responsible for retriggering build analysis.\nNote that not all changed environment variables result in analysis retriggering.\nIf there was no previous build, this list will be empty.\"",
       "revId": "652a7df931c18c488b4fe634dc583719ac4cf585",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "385e8ba9_cbd154fe",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-06-06T15:55:21Z",
+      "side": 1,
+      "message": "or maybe more pithier would be to use the adjective \"used\", i.e. `used environment variables that have changed from the previous build` ?",
+      "parentUuid": "f49b6191_f0160864",
+      "revId": "652a7df931c18c488b4fe634dc583719ac4cf585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
