@@ -1337,6 +1337,10 @@ func (c *configImpl) StartGoma() bool {
 }
 
 func (c *configImpl) UseRBE() bool {
+	authType, _ := c.rbeAuth()
+	if !c.StubbyExists() && strings.Contains(authType, "use_google_prod_creds"){
+		return false
+	}
 	if v, ok := c.Environment().Get("USE_RBE"); ok {
 		v = strings.TrimSpace(v)
 		if v != "" && v != "false" {
