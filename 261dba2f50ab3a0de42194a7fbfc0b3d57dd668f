@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b576ae5_be54c15a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-06T14:35:17Z",
+      "side": 1,
+      "message": "Can you add bp2build/Bazel support in a follow-up?",
+      "revId": "261dba2f50ab3a0de42194a7fbfc0b3d57dd668f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "647d6d1f_6f0c4d86",
+        "filename": "apex/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-06T14:35:17Z",
+      "side": 1,
+      "message": "@ancr@google.com do you want more restriction on this to only supported variants at this time or is 0-9 sufficient?",
+      "range": {
+        "startLine": 287,
+        "startChar": 60,
+        "endLine": 287,
+        "endChar": 83
+      },
+      "revId": "261dba2f50ab3a0de42194a7fbfc0b3d57dd668f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
