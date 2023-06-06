@@ -3,6 +3,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "536b5223_de75a695",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-06T14:45:29Z",
+      "side": 1,
+      "message": "Can you add bp2build/Bazel support in a follow-up?",
+      "revId": "2977efc0ed55a159985141e82a26bc8cd8c388f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4baaaa6d_89f15d63",
+        "filename": "android/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-06T14:45:29Z",
+      "side": 1,
+      "message": "it makes sense to either update this error message for or to require that `apex_available_name` corresponds to _an_ apex somewhere.",
+      "range": {
+        "startLine": 529,
+        "startChar": 45,
+        "endLine": 529,
+        "endChar": 69
+      },
+      "revId": "2977efc0ed55a159985141e82a26bc8cd8c388f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00a62d3_2f32443c",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-06T14:45:29Z",
+      "side": 1,
+      "message": "can you add a comment about why we\u0027re doing this?",
+      "range": {
+        "startLine": 804,
+        "startChar": 1,
+        "endLine": 804,
+        "endChar": 12
+      },
+      "revId": "2977efc0ed55a159985141e82a26bc8cd8c388f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6447392_9888fad4",
         "filename": "apex/apex_test.go",
         "patchSetId": 4
@@ -19,6 +82,29 @@
         "startChar": 1,
         "endLine": 6733,
         "endChar": 27
+      },
+      "revId": "2977efc0ed55a159985141e82a26bc8cd8c388f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5169a0fc_e082bffc",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6771,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-06T14:45:29Z",
+      "side": 1,
+      "message": "given that there is no test description for each, using t.run to give a description or make these individual test functions may give clarity as to the goals of each test.",
+      "range": {
+        "startLine": 6771,
+        "startChar": 5,
+        "endLine": 6771,
+        "endChar": 40
       },
       "revId": "2977efc0ed55a159985141e82a26bc8cd8c388f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
