@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8214ae0e_22385921",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-06-06T03:41:57Z",
+      "side": 1,
+      "message": "how are step 2 and step 3 different?",
+      "revId": "652a7df931c18c488b4fe634dc583719ac4cf585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1443b134_7eb873ce",
+        "filename": "shared/env.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2023-06-06T03:41:57Z",
+      "side": 1,
+      "message": "nit: Put \"returns\" in a separate sentence. Also when there are multiple return values, naming them may help as documentation, e.g. ` func StaleEnvFile(...)(bool: isStale, []string changedKeys, err error)`\n\nnit: why not simply `(changes map[string] string, err error)` (I do hate the non-determinacy of key order with maps) but my main point being why\u0027d we only be interested in the keys and not the values?",
+      "revId": "652a7df931c18c488b4fe634dc583719ac4cf585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f49b6191_f0160864",
         "filename": "ui/metrics/metrics_proto/metrics.proto",
         "patchSetId": 2
