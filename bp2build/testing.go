@@ -94,6 +94,11 @@ func RunBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.Regi
 	t.Helper()
 	bp2buildSetup := android.GroupFixturePreparers(
 		android.FixtureRegisterWithContext(registerModuleTypes),
+		// android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+		// 	variables.AfdoProfiles = []string{
+		// 		"foo://afdo_profiles_package:foo_afdo",
+		// 	}
+		// }),
 		SetBp2BuildTestRunner,
 	)
 	runBp2BuildTestCaseWithSetup(t, bp2buildSetup, tc)
