@@ -16,6 +16,24 @@
       "message": "I wrote https://android-review.git.corp.google.com/c/platform/build/soong/+/2616751 yesterday and forgot to mail it out. I\u0027ll abandon that CL.\n\nI also have a test in that CL that verifies the standalone b build\u0027s output file contains the product. Feel free to patch that in, or I can rebase and submit that test separately later.",
       "revId": "734ac0c087eb0e552cb7a48fa1e795b758e54f59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d40f7952_330bd39a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-06-07T18:14:38Z",
+      "side": 1,
+      "message": "Added the test.\n\nI think your other cl is currently incorrect because you didn\u0027t set --platforms and --host_platforms to current_product, so it still had a platform that varied by lunch target. But since you also didn\u0027t remove `--noexperimental_platform_in_output_dir`, the test didn\u0027t fail, and it didn\u0027t check that the hash was consistent across products.",
+      "parentUuid": "7aab4336_f0d0e608",
+      "revId": "734ac0c087eb0e552cb7a48fa1e795b758e54f59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
