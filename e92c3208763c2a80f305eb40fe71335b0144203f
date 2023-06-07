@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d273b91_c17cc508",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-06-07T21:47:14Z",
+      "side": 1,
+      "message": "nit: this can be simplified since if err \u003d\u003d nil you can still return info, err",
+      "range": {
+        "startLine": 424,
+        "startChar": 1,
+        "endLine": 424,
+        "endChar": 52
+      },
+      "revId": "e92c3208763c2a80f305eb40fe71335b0144203f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
