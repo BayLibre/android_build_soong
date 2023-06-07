@@ -1913,14 +1913,14 @@ func (c *Module) QueueBazelCall(ctx android.BaseModuleContext) {
 // IsMixedBuildSupported returns true if the module should be analyzed by Bazel
 // in any of the --bazel-mode(s).
 func (c *Module) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
-	if !allEnabledSanitizersSupportedByBazel(c) {
+	if !allEnabledSanitizersSupportedByBazel(ctx, c) {
 		//TODO(b/278772861) support sanitizers in Bazel rules
 		return false
 	}
 	return c.bazelHandler != nil
 }
 
-func allEnabledSanitizersSupportedByBazel(c *Module) bool {
+func allEnabledSanitizersSupportedByBazel(ctx android.BaseModuleContext, c *Module) bool {
 	if c.sanitize == nil {
 		return true
 	}
@@ -1947,7 +1947,11 @@ func allEnabledSanitizersSupportedByBazel(c *Module) bool {
 				return false
 			}
 		} else if san == cfi {
-			continue
+			apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+			// Only allow cfi if this is an apex variant
+			if apexInfo.IsForPlatform() {
+				return false
+			}
 		} else if c.sanitize.isSanitizerEnabled(san) {
 			return false
 		}
