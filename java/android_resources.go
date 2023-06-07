@@ -53,6 +53,11 @@ type overlayType int
 const (
 	device overlayType = iota + 1
 	product
+	autoGenerateOdm
+	autoGenerateOem
+	autoGenerateProduct
+	autoGenerateSystemExt
+	autoGenerateVendor
 )
 
 type rroDir struct {
@@ -106,6 +111,11 @@ func overlayResourceGlob(ctx android.ModuleContext, a *aapt, dir android.Path) (
 
 		appendOverlayData(ctx.Config().DeviceResourceOverlays(), device)
 		appendOverlayData(ctx.Config().ProductResourceOverlays(), product)
+		appendOverlayData(ctx.Config().AutoGenerateOdmRRODirs(), autoGenerateOdm)
+		appendOverlayData(ctx.Config().AutoGenerateOemRRODirs(), autoGenerateOem)
+		appendOverlayData(ctx.Config().AutoGenerateProductRRODirs(), autoGenerateProduct)
+		appendOverlayData(ctx.Config().AutoGenerateSystemExtRRODirs(), autoGenerateSystemExt)
+		appendOverlayData(ctx.Config().AutoGenerateVendorRRODirs(), autoGenerateVendor)
 		return overlayData
 	}).([]overlayGlobResult)
 
@@ -120,7 +130,12 @@ func overlayResourceGlob(ctx android.ModuleContext, a *aapt, dir android.Path) (
 			// If enforce RRO is enabled for this module and this overlay is not in the
 			// exclusion list, ignore the overlay.  The list of ignored overlays will be
 			// passed to Make to be turned into an RRO package.
-			if rroEnabled && !ctx.Config().EnforceRROExcludedOverlay(overlayModuleDir.String()) {
+			if (rroEnabled && !ctx.Config().EnforceRROExcludedOverlay(overlayModuleDir.String())) ||
+				data.overlayType == autoGenerateOdm ||
+				data.overlayType == autoGenerateOem ||
+				data.overlayType == autoGenerateProduct ||
+				data.overlayType == autoGenerateSystemExt ||
+				data.overlayType == autoGenerateVendor {
 				rroDirs = append(rroDirs, rroDir{overlayModuleDir, data.overlayType})
 			} else {
 				res = append(res, globbedResourceDir{

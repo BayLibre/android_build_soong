@@ -400,6 +400,26 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				if len(productRRODirs) > 0 {
 					entries.AddStrings("LOCAL_SOONG_PRODUCT_RRO_DIRS", productRRODirs.Strings()...)
 				}
+				autoGenerateOdmRRODirs := filterRRO(autoGenerateOdm)
+				if len(autoGenerateOdmRRODirs) > 0 {
+					entries.AddStrings("LOCAL_SOONG_AUTO_GENERATE_ODM_RRO_DIRS", autoGenerateOdmRRODirs.Strings()...)
+				}
+				autoGenerateOemRRODirs := filterRRO(autoGenerateOem)
+				if len(autoGenerateOemRRODirs) > 0 {
+					entries.AddStrings("LOCAL_SOONG_AUTO_GENERATE_OEM_RRO_DIRS", autoGenerateOemRRODirs.Strings()...)
+				}
+				autoGenerateProductRRODirs := filterRRO(autoGenerateProduct)
+				if len(autoGenerateProductRRODirs) > 0 {
+					entries.AddStrings("LOCAL_SOONG_AUTO_GENERATE_PRODUCT_RRO_DIRS", autoGenerateProductRRODirs.Strings()...)
+				}
+				autoGenerateSystemExtRRODirs := filterRRO(autoGenerateSystemExt)
+				if len(autoGenerateSystemExtRRODirs) > 0 {
+					entries.AddStrings("LOCAL_SOONG_AUTO_GENERATE_SYSTEM_EXT_RRO_DIRS", autoGenerateSystemExtRRODirs.Strings()...)
+				}
+				autoGenerateVendorRRODirs := filterRRO(autoGenerateVendor)
+				if len(autoGenerateVendorRRODirs) > 0 {
+					entries.AddStrings("LOCAL_SOONG_AUTO_GENERATE_VENDOR_RRO_DIRS", autoGenerateVendorRRODirs.Strings()...)
+				}
 
 				entries.SetBoolIfTrue("LOCAL_EXPORT_PACKAGE_RESOURCES", Bool(app.appProperties.Export_package_resources))
 

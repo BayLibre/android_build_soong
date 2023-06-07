@@ -913,6 +913,26 @@ func (c *config) ProductResourceOverlays() []string {
 	return c.productVariables.ProductResourceOverlays
 }
 
+func (c *config) AutoGenerateOdmRRODirs() []string {
+	return c.productVariables.AutoGenerateOdmRRODirs
+}
+
+func (c *config) AutoGenerateOemRRODirs() []string {
+	return c.productVariables.AutoGenerateOemRRODirs
+}
+
+func (c *config) AutoGenerateProductRRODirs() []string {
+	return c.productVariables.AutoGenerateProductRRODirs
+}
+
+func (c *config) AutoGenerateSystemExtRRODirs() []string {
+	return c.productVariables.AutoGenerateSystemExtRRODirs
+}
+
+func (c *config) AutoGenerateVendorRRODirs() []string {
+	return c.productVariables.AutoGenerateVendorRRODirs
+}
+
 func (c *config) PlatformDisplayVersionName() string {
 	return String(c.productVariables.Platform_display_version_name)
 }
