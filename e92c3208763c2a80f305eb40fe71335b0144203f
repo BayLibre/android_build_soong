@@ -22,6 +22,30 @@
       },
       "revId": "e92c3208763c2a80f305eb40fe71335b0144203f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "619b2160_0e7fad84",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-07T22:05:50Z",
+      "side": 1,
+      "message": "Done, thanks Yu",
+      "parentUuid": "1d273b91_c17cc508",
+      "range": {
+        "startLine": 424,
+        "startChar": 1,
+        "endLine": 424,
+        "endChar": 52
+      },
+      "revId": "e92c3208763c2a80f305eb40fe71335b0144203f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
