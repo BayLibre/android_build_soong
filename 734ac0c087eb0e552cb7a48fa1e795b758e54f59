@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aab4336_f0d0e608",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-07T05:22:26Z",
+      "side": 1,
+      "message": "I wrote https://android-review.git.corp.google.com/c/platform/build/soong/+/2616751 yesterday and forgot to mail it out. I\u0027ll abandon that CL.\n\nI also have a test in that CL that verifies the standalone b build\u0027s output file contains the product. Feel free to patch that in, or I can rebase and submit that test separately later.",
+      "revId": "734ac0c087eb0e552cb7a48fa1e795b758e54f59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
