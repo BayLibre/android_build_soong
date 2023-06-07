@@ -258,6 +258,12 @@ type ProductVariables struct {
 	EnforceRROTargets          []string `json:",omitempty"`
 	EnforceRROExcludedOverlays []string `json:",omitempty"`
 
+	AutoGenerateOdmRRODirs       []string `json:",omitempty"`
+	AutoGenerateOemRRODirs       []string `json:",omitempty"`
+	AutoGenerateProductRRODirs   []string `json:",omitempty"`
+	AutoGenerateSystemExtRRODirs []string `json:",omitempty"`
+	AutoGenerateVendorRRODirs    []string `json:",omitempty"`
+
 	AAPTCharacteristics *string  `json:",omitempty"`
 	AAPTConfig          []string `json:",omitempty"`
 	AAPTPreferredConfig *string  `json:",omitempty"`
