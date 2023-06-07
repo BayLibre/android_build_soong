@@ -16,6 +16,23 @@
       "message": "Does this require the newest version of `qemu-system-misc` package? If so, they are not available in all the testing setups yet",
       "revId": "1ead4b26fd5a42404f664d8400544ab06f2ab7f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd867fd0_58b2c8a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1014491
+      },
+      "writtenOn": "2023-06-07T16:58:02Z",
+      "side": 1,
+      "message": "(sorry didn\u0027t mean to reset the presubmit verified vote, was trying to launch actually relevant tests)",
+      "revId": "1ead4b26fd5a42404f664d8400544ab06f2ab7f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
