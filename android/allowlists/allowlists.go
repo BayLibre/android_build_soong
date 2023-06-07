@@ -1563,6 +1563,8 @@ var (
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
 	// in either prod mode or staging mode.
 	ProdMixedBuildsEnabledList = []string{
+		"libneuralnetworks",
+		"libneuralnetworks-1",
 		// M5: tzdata launch
 		"com.android.tzdata",
 		"test1_com.android.tzdata",
