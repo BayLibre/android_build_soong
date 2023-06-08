@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d6b6778_897380bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2012305
+      },
+      "writtenOn": "2023-06-08T15:19:34Z",
+      "side": 1,
+      "message": "I have news updates",
+      "revId": "c177e5ad21988e7f18ee884f04ace61700d50b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
