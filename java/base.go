@@ -496,6 +496,8 @@ type Module struct {
 	maxSdkVersion android.ApiLevel
 
 	sourceExtensions []string
+
+	aptGenSrcs android.OptionalPath
 }
 
 func (j *Module) CheckStableSdkVersion(ctx android.BaseModuleContext) error {
@@ -1276,6 +1278,11 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			classes := j.compileJavaClasses(ctx, jarName, -1, uniqueJavaFiles, srcJars, flags, extraJarDeps)
 			jars = append(jars, classes)
 		}
+
+		if len(flags.processorPath) > 0 {
+			j.aptGenSrcs = android.OptionalPathForPath(android.PathForModuleOut(ctx, "javac", "anno"))
+		}
+
 		if ctx.Failed() {
 			return
 		}
@@ -1833,6 +1840,9 @@ func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Paths = append(dpInfo.Paths, j.modulePaths...)
 	dpInfo.Static_libs = append(dpInfo.Static_libs, j.properties.Static_libs...)
 	dpInfo.Libs = append(dpInfo.Libs, j.properties.Libs...)
+	if j.aptGenSrcs.Valid() {
+		dpInfo.SrcJars = append(dpInfo.SrcJars, j.aptGenSrcs.Path().String())
+	}
 }
 
 func (j *Module) CompilerDeps() []string {
