@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bc70ac8_d72e2677",
+        "filename": "tests/stale_metrics_files_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-08T16:17:30Z",
+      "side": 1,
+      "message": "can you extract these to a list and then iterate over the list? Will be slightly more readable.\nSame with the prior list.\n\nThat will also better facilitate Jason\u0027s suggestion: have the error message including the missing file.",
+      "revId": "0119eb2dc74237335d0ae04af7b14361e9ed246d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfe77d50_06ff8918",
         "filename": "tests/stale_metrics_files_test.sh",
         "patchSetId": 5
