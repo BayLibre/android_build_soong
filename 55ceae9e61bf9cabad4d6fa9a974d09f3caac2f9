@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00cb1c14_d0917798",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2009035
+      },
+      "writtenOn": "2023-06-08T21:25:58Z",
+      "side": 1,
+      "message": "With this change, it is no longer possible to build AOSP for non-Zbb hardware. What is the recommendation here? Revert the change locally? Move Zbb to an architecture/CPU variant?",
+      "revId": "55ceae9e61bf9cabad4d6fa9a974d09f3caac2f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
