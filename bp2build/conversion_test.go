@@ -131,6 +131,10 @@ func TestCreateBazelFiles_Bp2Build_CreatesDefaultFiles(t *testing.T) {
 		},
 		{
 			dir:      "metrics",
+			basename: "converted_modules_types_props.txt",
+		},
+		{
+			dir:      "metrics",
 			basename: "BUILD.bazel",
 		},
 		{

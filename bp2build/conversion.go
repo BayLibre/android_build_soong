@@ -47,6 +47,9 @@ func soongInjectionFiles(cfg android.Config, metrics CodegenMetrics) ([]BazelFil
 
 	files = append(files, newFile("metrics", "converted_modules.txt", strings.Join(metrics.Serialize().ConvertedModules, "\n")))
 
+	convertedModuleTypeGroupedByProps, _ := json.Marshal(metrics.convertedModuleTypeGroupedByProps)
+	files = append(files, newFile("metrics", "converted_modules_types_props.txt", string(convertedModuleTypeGroupedByProps)))
+
 	convertedModulePathMap, err := json.MarshalIndent(metrics.convertedModulePathMap, "", "\t")
 	if err != nil {
 		panic(err)
