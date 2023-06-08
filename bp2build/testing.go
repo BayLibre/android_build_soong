@@ -137,6 +137,7 @@ func runBp2BuildTestCaseWithSetup(t *testing.T, extraPreparer android.FixturePre
 				})
 			}
 			ctx.RegisterBp2BuildConfig(bp2buildConfig)
+			ctx.SkipCloneModulesAfterMutators = true
 		}),
 		android.FixtureModifyEnv(func(env map[string]string) {
 			if tc.UnconvertedDepsMode == errorModulesUnconvertedDeps {
@@ -201,7 +202,11 @@ func (b *bazelTestRunner) PostParseProcessor(result android.CustomTestResult) {
 		return
 	}
 
-	codegenCtx := NewCodegenContext(config, ctx.Context, Bp2Build, "")
+	codegenMode := Bp2Build
+	if ctx.Config().BuildMode == android.ApiBp2build {
+		codegenMode = ApiBp2build
+	}
+	codegenCtx := NewCodegenContext(config, ctx.Context, codegenMode, "")
 	res, errs := GenerateBazelTargets(codegenCtx, false)
 	if bazelResult.CollateErrs(errs) {
 		return
