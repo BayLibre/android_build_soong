@@ -29,7 +29,8 @@ type CodegenMetrics struct {
 
 	// Map of converted modules and paths to call
 	// NOTE: NOT in the .proto
-	convertedModulePathMap map[string]string
+	convertedModulePathMap            map[string]string
+	convertedModuleTypeGroupedByProps map[string][]string
 }
 
 func CreateCodegenMetrics() CodegenMetrics {
@@ -39,7 +40,8 @@ func CreateCodegenMetrics() CodegenMetrics {
 			ConvertedModuleTypeCount: make(map[string]uint64),
 			TotalModuleTypeCount:     make(map[string]uint64),
 		},
-		convertedModulePathMap: make(map[string]string),
+		convertedModulePathMap:            make(map[string]string),
+		convertedModuleTypeGroupedByProps: make(map[string][]string),
 	}
 }
 
@@ -187,7 +189,17 @@ const (
 	Handcrafted
 )
 
-func (metrics *CodegenMetrics) AddConvertedModule(m blueprint.Module, moduleType string, dir string, conversionType ConversionType) {
+func contains(s []string, str string) bool {
+	for _, v := range s {
+		if v == str {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (metrics *CodegenMetrics) AddConvertedModule(m blueprint.Module, moduleType string, dir string, conversionType ConversionType, props map[string]string) {
 	//a package module has empty name
 	if moduleType == "package" {
 		return
@@ -198,6 +210,12 @@ func (metrics *CodegenMetrics) AddConvertedModule(m blueprint.Module, moduleType
 	metrics.convertedModulePathMap[moduleName] = "//" + dir
 	metrics.serialized.ConvertedModuleTypeCount[moduleType] += 1
 	metrics.serialized.TotalModuleTypeCount[moduleType] += 1
+
+	for key, _ := range props {
+		if !contains(metrics.convertedModuleTypeGroupedByProps[moduleType], key) {
+			metrics.convertedModuleTypeGroupedByProps[moduleType] = append(metrics.convertedModuleTypeGroupedByProps[moduleType], key)
+		}
+	}
 
 	if conversionType == Handcrafted {
 		metrics.serialized.HandCraftedModuleCount += 1
