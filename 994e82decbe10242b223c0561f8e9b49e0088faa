@@ -16,6 +16,23 @@
       "message": "LGTM, letting it for others to take an additional look",
       "revId": "994e82decbe10242b223c0561f8e9b49e0088faa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f3cd201_81f485aa",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-06-08T05:21:03Z",
+      "side": 1,
+      "message": "nit: spaces here and other `static_executable`s below?",
+      "revId": "994e82decbe10242b223c0561f8e9b49e0088faa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
