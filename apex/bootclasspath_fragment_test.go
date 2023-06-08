@@ -967,9 +967,9 @@ func TestBootclasspathFragment_AndroidNonUpdatable(t *testing.T) {
 
 	java.CheckModuleDependencies(t, result.TestContext, "mybootclasspathfragment", "android_common_apex10000", []string{
 		"android-non-updatable.stubs",
-		"android-non-updatable.stubs.module_lib",
 		"android-non-updatable.stubs.system",
 		"android-non-updatable.stubs.test",
+		"android-non-updatable.stubs.test_module_lib",
 		"art-bootclasspath-fragment",
 		"bar",
 		"dex2oatd",
@@ -979,7 +979,8 @@ func TestBootclasspathFragment_AndroidNonUpdatable(t *testing.T) {
 	nonUpdatablePublicStubs := getDexJarPath(result, "android-non-updatable.stubs")
 	nonUpdatableSystemStubs := getDexJarPath(result, "android-non-updatable.stubs.system")
 	nonUpdatableTestStubs := getDexJarPath(result, "android-non-updatable.stubs.test")
-	nonUpdatableModuleLibStubs := getDexJarPath(result, "android-non-updatable.stubs.module_lib")
+	//nonUpdatableModuleLibStubs := getDexJarPath(result, "android-non-updatable.stubs.module_lib")
+	nonUpdatableTestModuleLibStubs := getDexJarPath(result, "android-non-updatable.stubs.test_module_lib")
 
 	// Make sure that the fragment uses the android-non-updatable modules when generating the hidden
 	// API flags.
@@ -991,7 +992,7 @@ func TestBootclasspathFragment_AndroidNonUpdatable(t *testing.T) {
 
 	// Make sure that the module_lib non-updatable stubs are available for resolving references from
 	// the implementation boot dex jars provided by this module.
-	android.AssertStringDoesContain(t, "android-non-updatable widest", command, "--dependency-stub-dex="+nonUpdatableModuleLibStubs)
+	android.AssertStringDoesContain(t, "android-non-updatable widest", command, "--dependency-stub-dex="+nonUpdatableTestModuleLibStubs)
 
 	// Make sure that the appropriate non-updatable stubs are available for resolving references from
 	// the different API stubs provided by this module.
