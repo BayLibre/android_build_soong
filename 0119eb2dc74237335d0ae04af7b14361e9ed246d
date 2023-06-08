@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449219cb_5b1dd761",
+        "filename": "tests/stale_metrics_files_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-06-08T16:09:13Z",
+      "side": 1,
+      "message": "nit:Can you add \u0027set -e\u0027 to make sure the bash will stop if a command fails?",
+      "revId": "0119eb2dc74237335d0ae04af7b14361e9ed246d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe77d50_06ff8918",
+        "filename": "tests/stale_metrics_files_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-06-08T16:09:13Z",
+      "side": 1,
+      "message": "nit: Can you please add which file is missing in the error message?",
+      "revId": "0119eb2dc74237335d0ae04af7b14361e9ed246d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
