@@ -17,8 +17,10 @@ package android
 import (
 	"bufio"
 	"errors"
+	"fmt"
 	"strings"
 
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -73,6 +75,15 @@ type BazelConversionStatus struct {
 
 	// MissingBp2buildDep stores the module names of direct dependency that were not found
 	MissingDeps []string `blueprint:"mutated"`
+
+	// If non-nil, indicates that the module could not be converted successfully
+	// with bp2build. This will describe the reason the module could not be converted.
+	UnconvertedReason *UnconvertedReason
+}
+
+type UnconvertedReason struct {
+	ReasonType int
+	Detail     string
 }
 
 type BazelModuleProperties struct {
@@ -534,21 +545,54 @@ func bp2buildDefaultTrueRecursively(packagePath string, config allowlists.Bp2Bui
 
 func registerBp2buildConversionMutator(ctx RegisterMutatorsContext) {
 	ctx.TopDown("bp2build_conversion", convertWithBp2build).Parallel()
+	ctx.TopDown("seriously", metricsCollector).Parallel()
+}
+
+func metricsCollector(ctx TopDownMutatorContext) {
+	if ctx.ModuleName() == "pfw_defaults" {
+		fmt.Println("metricsCollector: pfw_defaults", ctx.Module().GetUnconvertedReason(), ctx.Module().GetUnconvertedReason() == nil, ctx.Module().base())
+	}
 }
 
 func convertWithBp2build(ctx TopDownMutatorContext) {
+	fmt.Println("Processing module", ctx.Module().Name(), ctx.ModuleName())
 	if ctx.Config().HasBazelBuildTargetInSource(ctx) {
 		// Defer to the BUILD target. Generating an additional target would
 		// cause a BUILD file conflict.
+		if ctx.ModuleName() == "pfw_defaults" {
+			fmt.Println("pfw_defaults: Defined in build file")
+		}
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_DEFINED_IN_BUILD_FILE, "")
 		return
 	}
 
 	bModule, ok := ctx.Module().(Bazelable)
-	if !ok || !bModule.shouldConvertWithBp2build(ctx, ctx.Module()) {
+	if !ok {
+		if ctx.ModuleName() == "pfw_defaults" {
+			fmt.Println("pfw_defaults: Type unsupported")
+		}
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, "")
+		return
+	}
+	if !bModule.shouldConvertWithBp2build(ctx, ctx.Module()) {
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_UNSUPPORTED, "wat")
+		if ctx.ModuleName() == "pfw_defaults" {
+			fmt.Println("pfw_defaults: Totally unsupported", ctx.Module().GetUnconvertedReason(), ctx.Module().GetUnconvertedReason() == nil)
+		}
 		return
 	}
 
+	// TODO: b/TODO - Allow this function to return an error describing an
+	// unsuccessful conversion.
 	bModule.ConvertWithBp2build(ctx)
+
+	if ctx.ModuleName() == "pfw_defaults" {
+		fmt.Println("pfw_defaults: Converted!", ctx.Module().base().GetUnconvertedReason())
+	}
+
+	if !ctx.Module().base().IsConvertedByBp2build() && ctx.Module().base().GetUnconvertedReason() == nil {
+		fmt.Println("Illegal convertWithBp2build invariant", ctx.Module().Name(), ctx.ModuleType())
+	}
 }
 
 func registerApiBp2buildConversionMutator(ctx RegisterMutatorsContext) {
