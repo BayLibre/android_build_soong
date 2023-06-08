@@ -266,7 +266,7 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (convers
 		dir := bpCtx.ModuleDir(m)
 		moduleType := bpCtx.ModuleType(m)
 		dirs[dir] = true
-
+		props, _ := getBuildProperties(bpCtx, m)
 		var targets []BazelTarget
 
 		switch ctx.Mode() {
@@ -283,12 +283,12 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (convers
 				// target in a BUILD file, we don't autoconvert them.
 
 				// Log the module.
-				metrics.AddConvertedModule(m, moduleType, dir, Handcrafted)
+				metrics.AddConvertedModule(m, moduleType, dir, Handcrafted, props.Attrs)
 			} else if aModule, ok := m.(android.Module); ok && aModule.IsConvertedByBp2build() {
 				// Handle modules converted to generated targets.
 
 				// Log the module.
-				metrics.AddConvertedModule(aModule, moduleType, dir, Generated)
+				metrics.AddConvertedModule(aModule, moduleType, dir, Generated, props.Attrs)
 
 				// Handle modules with unconverted deps. By default, emit a warning.
 				if unconvertedDeps := aModule.GetUnconvertedBp2buildDeps(); len(unconvertedDeps) > 0 {
