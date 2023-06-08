@@ -28,6 +28,7 @@ import (
 	"android/soong/android"
 	"android/soong/bazel"
 	"android/soong/starlark_fmt"
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
@@ -283,12 +284,12 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (convers
 				// target in a BUILD file, we don't autoconvert them.
 
 				// Log the module.
-				metrics.AddConvertedModule(m, moduleType, dir, Handcrafted)
+				metrics.AddUnconvertedModule(m, moduleType, dir, bp2build_metrics_proto.UnconvertedReasonType_DEFINED_IN_BUILD_FILE, "")
 			} else if aModule, ok := m.(android.Module); ok && aModule.IsConvertedByBp2build() {
 				// Handle modules converted to generated targets.
 
 				// Log the module.
-				metrics.AddConvertedModule(aModule, moduleType, dir, Generated)
+				metrics.AddConvertedModule(aModule, moduleType, dir)
 
 				// Handle modules with unconverted deps. By default, emit a warning.
 				if unconvertedDeps := aModule.GetUnconvertedBp2buildDeps(); len(unconvertedDeps) > 0 {
@@ -325,7 +326,7 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (convers
 				err := fmt.Errorf("Force Enabled Module %s not converted", m.Name())
 				errs = append(errs, err)
 			} else {
-				metrics.AddUnconvertedModule(moduleType)
+				metrics.AddUnconvertedModule(m, moduleType, dir, bp2build_metrics_proto.UnconvertedReasonType_UNSUPPORTED, "")
 				return
 			}
 		case QueryView:
