@@ -100,7 +100,7 @@ type CmdArgs struct {
 
 	UseBazelProxy bool
 
-	BuildFromTextStub bool
+	BuildFromSourceStub bool
 
 	EnsureAllowlistIntegrity bool
 }
@@ -305,9 +305,9 @@ type config struct {
 	// unix sockets, instead of spawning Bazel as a subprocess.
 	UseBazelProxy bool
 
-	// If buildFromTextStub is true then the Java API stubs are
-	// built from the signature text files, not the source Java files.
-	buildFromTextStub bool
+	// If buildFromSourceStub is true then the Java API stubs are
+	// built from the source Java files, not the signature text files.
+	buildFromSourceStub bool
 
 	// If ensureAllowlistIntegrity is true, then the presence of any allowlisted
 	// modules that aren't mixed-built for at least one variant will cause a build
@@ -494,14 +494,14 @@ func NewConfig(cmdArgs CmdArgs, availableEnv map[string]string) (Config, error) 
 		MultitreeBuild: cmdArgs.MultitreeBuild,
 		UseBazelProxy:  cmdArgs.UseBazelProxy,
 
-		buildFromTextStub: cmdArgs.BuildFromTextStub,
+		buildFromSourceStub: cmdArgs.BuildFromSourceStub,
 	}
 
 	config.deviceConfig = &deviceConfig{
 		config: config,
 	}
 
-	config.productVariables.Build_from_text_stub = boolPtr(config.buildFromTextStub)
+	config.productVariables.Build_from_text_stub = boolPtr(!config.buildFromSourceStub)
 
 	// Soundness check of the build and source directories. This won't catch strange
 	// configurations with symlinks, but at least checks the obvious case.
@@ -2015,7 +2015,7 @@ func (c *config) ApiSurfacesDir(s ApiSurface, version string) string {
 }
 
 func (c *config) BuildFromTextStub() bool {
-	return c.buildFromTextStub
+	return !c.buildFromSourceStub
 }
 
 // On top of checking the config, this method checks if the branch is not a partial repository and
@@ -2027,7 +2027,7 @@ func (c *config) BuildFromTextStubDependencySafe(ctx PathGlobContext) bool {
 }
 
 func (c *config) SetBuildFromTextStub(b bool) {
-	c.buildFromTextStub = b
+	c.buildFromSourceStub = !b
 	c.productVariables.Build_from_text_stub = boolPtr(b)
 }
 
