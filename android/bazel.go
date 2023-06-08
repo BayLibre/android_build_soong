@@ -17,8 +17,10 @@ package android
 import (
 	"bufio"
 	"errors"
+	"fmt"
 	"strings"
 
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -73,6 +75,19 @@ type BazelConversionStatus struct {
 
 	// MissingBp2buildDep stores the module names of direct dependency that were not found
 	MissingDeps []string `blueprint:"mutated"`
+
+	// If non-nil, indicates that the module could not be converted successfully
+	// with bp2build. This will describe the reason the module could not be converted.
+	UnconvertedReason *UnconvertedReason
+}
+
+// The reason a module could not be converted to a BUILD target via bp2build.
+// This should be akin to bp2build_metrics_proto.UnconvertedReason, but contains
+// types that are trivially serializable and reflection-compatible.
+type UnconvertedReason struct {
+	// Should correspond to a valid value in bp2build_metrics_proto.UnconvertedReasonType
+	ReasonType int
+	Detail     string
 }
 
 type BazelModuleProperties struct {
@@ -137,6 +152,12 @@ type Bazelable interface {
 	GetBazelLabel(ctx BazelConversionPathContext, module blueprint.Module) string
 	ShouldConvertWithBp2build(ctx BazelConversionContext) bool
 	shouldConvertWithBp2build(ctx bazelOtherModuleContext, module blueprint.Module) bool
+
+	// ConvertWithBp2build either converts the module to a Bazel build target or
+	// declares the module as unconvertible (for logging and metrics).
+	// Modules must implement this function to be bp2build convertible. The function
+	// must either create a Bazel target module (using ctx.CreateBazelTargetModule or
+	// its related functions), or declare itself unconvertible using ctx.MarkBp2buildUnconvertible.
 	ConvertWithBp2build(ctx TopDownMutatorContext)
 
 	// namespacedVariableProps is a map from a soong config variable namespace
@@ -540,15 +561,25 @@ func convertWithBp2build(ctx TopDownMutatorContext) {
 	if ctx.Config().HasBazelBuildTargetInSource(ctx) {
 		// Defer to the BUILD target. Generating an additional target would
 		// cause a BUILD file conflict.
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_DEFINED_IN_BUILD_FILE, "")
 		return
 	}
 
 	bModule, ok := ctx.Module().(Bazelable)
-	if !ok || !bModule.shouldConvertWithBp2build(ctx, ctx.Module()) {
+	if !ok {
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, "")
+		return
+	}
+	if !bModule.shouldConvertWithBp2build(ctx, ctx.Module()) {
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_UNSUPPORTED, "")
 		return
 	}
 
 	bModule.ConvertWithBp2build(ctx)
+
+	if !ctx.Module().base().IsConvertedByBp2build() && ctx.Module().base().GetUnconvertedReason() == nil {
+		panic(fmt.Errorf("illegal bp2build invariant: module '%s' was neither converted nor marked unconvertible."))
+	}
 }
 
 func registerApiBp2buildConversionMutator(ctx RegisterMutatorsContext) {

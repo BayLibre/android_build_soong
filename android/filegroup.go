@@ -21,6 +21,7 @@ import (
 
 	"android/soong/bazel"
 	"android/soong/bazel/cquery"
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 
 	"github.com/google/blueprint"
 )
@@ -111,6 +112,8 @@ func (fg *fileGroup) ConvertWithBp2build(ctx TopDownMutatorContext) {
 			if len(srcs.Value.Includes) > 1 {
 				ctx.ModuleErrorf("filegroup '%s' cannot contain a file with the same name", fg.Name())
 			}
+			// TODO: Perhaps use a new enum?
+			ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "src matching name")
 			return
 		}
 	}
