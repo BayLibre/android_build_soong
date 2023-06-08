@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5ab03e75_743dfb78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-08T14:49:45Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8b09bc28_11415ee2",
+      "range": {
+        "startLine": 15,
+        "startChar": 67,
+        "endLine": 15,
+        "endChar": 81
+      },
+      "revId": "598ac058a33b7084aaaac95b0e7b413903bb9cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8ee3f80e_96629453",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 3
@@ -49,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f3a40170_ad0980b5",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-08T14:49:45Z",
+      "side": 1,
+      "message": "My perception was that `ShouldKeepExistingBuildFileForDir` is not actually that cheap a call (because it has to do a lot of recursive-directory path logic in the worst case)\n\nThrough experimentation I can\u0027t find any reliable difference between having this call last or having it first.\n\nHowever, you may be right that Stat should in general be a slower call (File I/O is usually the bottleneck!), and it\u0027s also easier to optimize an allowlist lookup.\n\nGood observation :)",
+      "parentUuid": "8ee3f80e_96629453",
+      "range": {
+        "startLine": 785,
+        "startChar": 4,
+        "endLine": 786,
+        "endChar": 90
+      },
+      "revId": "598ac058a33b7084aaaac95b0e7b413903bb9cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1b7e584a_d4a8dd17",
         "filename": "tests/bp2build_bazel_test.sh",
         "patchSetId": 3
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-08T14:26:48Z",
       "side": 1,
       "message": "Unrelated to this change, but if we made the various allowlists in allowlists.go into separate data files we could also mock them in tests like this one so we don\u0027t have to \"pollute\" the prod one.",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 54
+      },
+      "revId": "598ac058a33b7084aaaac95b0e7b413903bb9cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c225c9d_f86e8ecb",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-08T14:49:45Z",
+      "side": 1,
+      "message": "+1 :) Agreed, great point.",
+      "parentUuid": "1b7e584a_d4a8dd17",
       "range": {
         "startLine": 245,
         "startChar": 0,
