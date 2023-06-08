@@ -16,6 +16,24 @@
       "message": "Testing ABTD with this revert for b/286320150",
       "revId": "1d2b7a6f73678895db63411d9bdcbe0abcb1443b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86eef2b_9af8f633",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1981565
+      },
+      "writtenOn": "2023-06-08T20:55:35Z",
+      "side": 1,
+      "message": "Also testing for b/286321982",
+      "parentUuid": "4d14312e_6a795aef",
+      "revId": "1d2b7a6f73678895db63411d9bdcbe0abcb1443b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
