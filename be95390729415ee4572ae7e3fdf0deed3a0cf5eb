@@ -45,6 +45,30 @@
       },
       "revId": "be95390729415ee4572ae7e3fdf0deed3a0cf5eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b3f6d0_a381cd90",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-06-08T00:01:49Z",
+      "side": 1,
+      "message": "There\u0027ll be a follow-up to remove this variable. (which means \"no conditionals\")",
+      "parentUuid": "1b09ee53_96c10681",
+      "range": {
+        "startLine": 364,
+        "startChar": 6,
+        "endLine": 364,
+        "endChar": 25
+      },
+      "revId": "be95390729415ee4572ae7e3fdf0deed3a0cf5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
