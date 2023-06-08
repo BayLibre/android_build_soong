@@ -1873,13 +1873,15 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	rule.Build("metalava", "metalava merged")
 
 	if depApiSrcsStubsJar == nil {
+		annoSrcJar := android.PathForModuleOut(ctx, ctx.ModuleName(), "anno.srcjar")
+
 		var flags javaBuilderFlags
 		flags.javaVersion = getStubsJavaVersion()
 		flags.javacFlags = strings.Join(al.properties.Javacflags, " ")
 		flags.classpath = classpath(classPaths)
 
 		TransformJavaToClasses(ctx, al.stubsJarWithoutStaticLibs, 0, android.Paths{},
-			android.Paths{al.stubsSrcJar}, flags, android.Paths{})
+			android.Paths{al.stubsSrcJar}, annoSrcJar, flags, android.Paths{})
 	}
 
 	builder := android.NewRuleBuilder(pctx, ctx)
