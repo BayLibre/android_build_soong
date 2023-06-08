@@ -64,12 +64,28 @@ trap cleanup EXIT
 declare -A GEN_PATH_MAP
 
 function find_gen_paths() {
-  for module in $MODULES; do
-    module_path=$(pathmod "$module")
+  local output=$(python3 -c "import json, os
+modules = '$MODULES'
+module_info = json.load(open('$ANDROID_PRODUCT_OUT/module-info.json'))
+module_map = dict()
+for module in modules.split():
+  if module not in module_info:
+    exit(1)
+  #module_map[module] = module_info[module]['path'][0]
+  label = module + '=' + module_info[module]['path'][0]
+  print(label)" 2>/dev/null)
+
+  module_map=($output)
+  IFS="="
+  for entry in "${module_map[@]}"; do
+    data=($entry)
+    module=${data[0]}
+    module_path=${data[1]}
     package_path=${module_path#$ANDROID_BUILD_TOP}
-    gen_path=$OUT_DIR/soong/.intermediates$package_path/$module
+    gen_path=$OUT_DIR/soong/.intermediates/$package_path/$module
     GEN_PATH_MAP[$module]=$gen_path
   done
+  IFS=" "
 }
 
 function store_outputs() {
@@ -88,7 +104,7 @@ function cmp_outputs() {
   local dir2=$1; shift
 
   for module in $MODULES; do
-    if ! diff -rq --exclude=genrule.sbox.textproto $dir1/$module $dir2/$module; then
+    if ! diff -rq --exclude=*.sbox.textproto $dir1/$module $dir2/$module; then
       PASS=false
       echo "$module differ"
     fi
