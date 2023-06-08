@@ -1878,6 +1878,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	al.stubsJarWithoutStaticLibs = android.PathForModuleOut(ctx, ctx.ModuleName(), "stubs.jar")
 	al.stubsJar = android.PathForModuleOut(ctx, ctx.ModuleName(), fmt.Sprintf("%s.jar", ctx.ModuleName()))
+	annoSrcJar := android.PathForModuleOut(ctx, ctx.ModuleName(), "anno.srcjar")
 
 	var flags javaBuilderFlags
 	flags.javaVersion = getStubsJavaVersion()
@@ -1885,7 +1886,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	flags.classpath = classpath(classPaths)
 
 	TransformJavaToClasses(ctx, al.stubsJarWithoutStaticLibs, 0, android.Paths{},
-		android.Paths{al.stubsSrcJar}, flags, android.Paths{})
+		android.Paths{al.stubsSrcJar}, annoSrcJar, flags, android.Paths{})
 
 	builder := android.NewRuleBuilder(pctx, ctx)
 	builder.Command().
