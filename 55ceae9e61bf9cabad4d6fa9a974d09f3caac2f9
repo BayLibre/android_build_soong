@@ -16,6 +16,24 @@
       "message": "With this change, it is no longer possible to build AOSP for non-Zbb hardware. What is the recommendation here? Revert the change locally? Move Zbb to an architecture/CPU variant?",
       "revId": "55ceae9e61bf9cabad4d6fa9a974d09f3caac2f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55604aba_6cdda31c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-06-08T22:38:00Z",
+      "side": 1,
+      "message": "yeah, you\u0027ll want to revert the change locally (and prepare for the others as we turn on Zba/Zbs/V). we don\u0027t plan on having a build system architecture variant for non-Zbb, since that\u0027s not something that will be a supported Android configuration.",
+      "parentUuid": "00cb1c14_d0917798",
+      "revId": "55ceae9e61bf9cabad4d6fa9a974d09f3caac2f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
