@@ -38,6 +38,8 @@ message Bp2BuildMetrics {
 
   // List of converted modules
   repeated string convertedModules = 5;
+  // Unconverted modules, mapped to the reason the module was not converted.
+  map<string, UnconvertedReason> unconvertedModules = 11;
 
   // Counts of converted modules by module type.
   map<string, uint64> convertedModuleTypeCount = 6;
@@ -62,4 +64,22 @@ message Event {
   // The real running time.
   // The number of nanoseconds elapsed since start_time.
   uint64 real_time = 3;
+}
+
+message UnconvertedReason {
+  // The type of reason that the module could not be converted.
+  UnconvertedReasonType type = 1;
+
+  // Descriptive details describing why the module could not be converted.
+  // This detail should be kept very short and should be in the context of
+  // the type. (Otherwise, this would significantly bloat metrics.)
+  string detail = 2;
+}
+
+enum UnconvertedReasonType {
+  UNKNOWN = 0;
+  DEFINED_IN_BUILD_FILE = 1;
+  DENYLISTED = 2;
+  CONVERSION_NOT_SUPPORTED = 3;
+  UNCONVERTED_DEP = 4;
 }
