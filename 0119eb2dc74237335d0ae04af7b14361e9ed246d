@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4ee2e8_ce1a7501",
+        "filename": "tests/stale_metrics_files_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-09T19:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "449219cb_5b1dd761",
+      "revId": "0119eb2dc74237335d0ae04af7b14361e9ed246d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bc70ac8_d72e2677",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5761b446_443beb57",
+        "filename": "tests/stale_metrics_files_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-09T19:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bc70ac8_d72e2677",
+      "revId": "0119eb2dc74237335d0ae04af7b14361e9ed246d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfe77d50_06ff8918",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-06-08T16:09:13Z",
       "side": 1,
       "message": "nit: Can you please add which file is missing in the error message?",
+      "revId": "0119eb2dc74237335d0ae04af7b14361e9ed246d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0046fd17_9e7e6c44",
+        "filename": "tests/stale_metrics_files_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-09T19:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfe77d50_06ff8918",
       "revId": "0119eb2dc74237335d0ae04af7b14361e9ed246d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

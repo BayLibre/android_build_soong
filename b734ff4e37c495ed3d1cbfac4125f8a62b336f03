@@ -34,6 +34,24 @@
       "parentUuid": "90f3475c_a4070d16",
       "revId": "b734ff4e37c495ed3d1cbfac4125f8a62b336f03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c33f2a9d_626b29d4",
+        "filename": "tests/stale_metrics_files_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-09T19:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22cbb5c2_9595f420",
+      "revId": "b734ff4e37c495ed3d1cbfac4125f8a62b336f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
