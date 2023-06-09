@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7354be07_8d3d84b9",
+        "filename": "android/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2007,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-09T16:02:09Z",
+      "side": 1,
+      "message": "HasBazelBuildTargetInSource? What is this, Java?\n\n(having a history of Java myself, sounds great. ;))",
+      "parentUuid": "59dbf185_9f4a9cb3",
+      "range": {
+        "startLine": 2007,
+        "startChar": 17,
+        "endLine": 2007,
+        "endChar": 35
+      },
+      "revId": "c15f47a0365a5915d64ed36c22fb5a7244f0e193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ca16787_bfc291c1",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-09T13:10:26Z",
       "side": 1,
       "message": "related to the topic of being able to test if the paths were inputs rather than code, we could probably do some unit test of this functionality if we implemented it in `soong/android` where we can use [`fs`](https://cs.android.com/android/platform/superproject/+/master:build/blueprint/pathtools/fs.go;drc\u003d2df87f3cd917d3469c6aef76e1fc257957bc5e16) that\u0027s private to [config](https://cs.android.com/android/platform/superproject/+/refs/heads/master:build/soong/android/config.go;l\u003d258;drc\u003d86f125f04aa49e0f235b6d3a198b1fc9aab99720) and we already have unit testing for [allowlisting config](https://cs.android.com/android/platform/superproject/+/refs/heads/master:build/soong/bp2build/build_conversion_test.go;l\u003d1170;drc\u003d86f125f04aa49e0f235b6d3a198b1fc9aab99720)",
+      "range": {
+        "startLine": 770,
+        "startChar": 5,
+        "endLine": 770,
+        "endChar": 26
+      },
+      "revId": "c15f47a0365a5915d64ed36c22fb5a7244f0e193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "495571c9_67a48464",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-09T16:02:09Z",
+      "side": 1,
+      "message": "This is a really good idea, thanks for the pointers.\n\nUnfortunately doing file I/O with `fs` is a bit of a pain right now. There\u0027s a dearth of helpful functions here (for example, there\u0027s not even a ReadFile)\n\nI\u0027m afraid this is really going to bloat the scope of this CL. Mind if I file a bug to improve this type of testing and defer this?",
+      "parentUuid": "6ca16787_bfc291c1",
       "range": {
         "startLine": 770,
         "startChar": 5,
@@ -72,6 +120,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d5baec36_3098b16e",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-09T16:02:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8b8d8c2_99f24c0a",
+      "range": {
+        "startLine": 776,
+        "startChar": 1,
+        "endLine": 776,
+        "endChar": 16
+      },
+      "revId": "c15f47a0365a5915d64ed36c22fb5a7244f0e193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f93cade5_37cbc5eb",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 5
@@ -83,6 +155,30 @@
       "writtenOn": "2023-06-09T13:10:26Z",
       "side": 1,
       "message": "nit: I personally find named captures more readable in retrieving the match, but I don\u0027t have a strong preference.",
+      "range": {
+        "startLine": 795,
+        "startChar": 50,
+        "endLine": 795,
+        "endChar": 58
+      },
+      "revId": "c15f47a0365a5915d64ed36c22fb5a7244f0e193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74ea0a96_6cab0c43",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-09T16:02:09Z",
+      "side": 1,
+      "message": "I agree in cases with more than one group -- I think this is OK as is.",
+      "parentUuid": "f93cade5_37cbc5eb",
       "range": {
         "startLine": 795,
         "startChar": 50,
