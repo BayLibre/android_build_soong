@@ -861,6 +861,7 @@ type bazelGensrcsAttributes struct {
 	Output_extension *string
 	Tools            bazel.LabelListAttribute
 	Cmd              string
+	Data             bazel.LabelListAttribute
 }
 
 const defaultShardSize = 50
@@ -972,9 +973,12 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		// in the Module struct, so use GetProperties and cast it
 		// to the known struct prop.
 		var outputExtension *string
+		var data bazel.LabelListAttribute
 		for _, propIntf := range m.GetProperties() {
 			if props, ok := propIntf.(*genSrcsProperties); ok {
 				outputExtension = props.Output_extension
+				dataFiles := android.BazelLabelForModuleSrc(ctx, props.Data)
+				data = bazel.MakeLabelListAttribute(dataFiles)
 				break
 			}
 		}
@@ -987,6 +991,7 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 			Output_extension: outputExtension,
 			Cmd:              cmd,
 			Tools:            tools,
+			Data:             data,
 		}
 		ctx.CreateBazelTargetModule(props, android.CommonAttributes{
 			Name: m.Name(),

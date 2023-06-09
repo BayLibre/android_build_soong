@@ -34,6 +34,7 @@ func TestGensrcs(t *testing.T) {
                 srcs: ["test/input.txt", ":external_files"],
                 tool_files: ["program.py"],
                 cmd: "$(location program.py) $(in) $(out)",
+                data: ["foo/file.txt"],
                 output_extension: "out",
                 bazel_module: { bp2build_available: true },
 			}`,
@@ -45,6 +46,7 @@ func TestGensrcs(t *testing.T) {
 				"tools":            `["program.py"]`,
 				"output_extension": `"out"`,
 				"cmd":              `"$(location program.py) $(SRC) $(OUT)"`,
+				"data":             `["foo/file.txt"]`,
 			},
 		},
 		{
