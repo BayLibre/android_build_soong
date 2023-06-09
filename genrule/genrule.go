@@ -203,12 +203,13 @@ var _ android.MixedBuildBuildable = (*Module)(nil)
 type taskFunc func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask
 
 type generateTask struct {
-	in         android.Paths
-	out        android.WritablePaths
-	depFile    android.WritablePath
-	copyTo     android.WritablePaths // For gensrcs to set on gensrcsMerge rule.
-	genDir     android.WritablePath
-	extraTools android.Paths // dependencies on tools used by the generator
+	in          android.Paths
+	out         android.WritablePaths
+	depFile     android.WritablePath
+	copyTo      android.WritablePaths // For gensrcs to set on gensrcsMerge rule.
+	genDir      android.WritablePath
+	extraTools  android.Paths // dependencies on tools used by the generator
+	extraInputs android.Paths
 
 	cmd string
 	// For gensrsc sharding.
@@ -551,6 +552,8 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 		g.rawCommands = append(g.rawCommands, rawCommand)
 
 		cmd.Text(rawCommand)
+		cmd.Implicits(srcFiles) // need to be able to reference other srcs
+		cmd.Implicits(task.extraInputs)
 		cmd.ImplicitOutputs(task.out)
 		cmd.Implicits(task.in)
 		cmd.ImplicitTools(tools)
@@ -733,6 +736,8 @@ func NewGenSrcs() *Module {
 		shards := android.ShardPaths(srcFiles, shardSize)
 		var generateTasks []generateTask
 
+		data := android.PathsForModuleSrc(ctx, properties.Data)
+
 		for i, shard := range shards {
 			var commands []string
 			var outFiles android.WritablePaths
@@ -811,15 +816,16 @@ func NewGenSrcs() *Module {
 			}
 
 			generateTasks = append(generateTasks, generateTask{
-				in:         shard,
-				out:        outFiles,
-				depFile:    outputDepfile,
-				copyTo:     copyTo,
-				genDir:     genDir,
-				cmd:        fullCommand,
-				shard:      i,
-				shards:     len(shards),
-				extraTools: extraTools,
+				in:          shard,
+				out:         outFiles,
+				depFile:     outputDepfile,
+				copyTo:      copyTo,
+				genDir:      genDir,
+				cmd:         fullCommand,
+				shard:       i,
+				shards:      len(shards),
+				extraTools:  extraTools,
+				extraInputs: data,
 			})
 		}
 
@@ -844,6 +850,10 @@ type genSrcsProperties struct {
 
 	// maximum number of files that will be passed on a single command line.
 	Shard_size *int64
+
+	// Additional files needed for build that are not tooling related. Note these cannot be referenced
+	// with $(location) or $(locations).
+	Data []string `android:"path"`
 }
 
 type bazelGensrcsAttributes struct {
