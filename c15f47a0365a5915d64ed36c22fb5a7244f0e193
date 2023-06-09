@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59dbf185_9f4a9cb3",
+        "filename": "android/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2007,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-09T01:49:01Z",
+      "side": 1,
+      "message": "nit: HasBazelBuildTargetInSource? HasExistingBazelBuildTarget? HasCheckedInBuildTarget?",
+      "range": {
+        "startLine": 2007,
+        "startChar": 17,
+        "endLine": 2007,
+        "endChar": 35
+      },
+      "revId": "c15f47a0365a5915d64ed36c22fb5a7244f0e193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
