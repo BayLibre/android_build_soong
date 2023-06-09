@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f93506_e635cc8c",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-09T18:10:29Z",
+      "side": 1,
+      "message": "These seem useful to be able to reference with `$(location)`",
+      "range": {
+        "startLine": 854,
+        "startChar": 68,
+        "endLine": 855,
+        "endChar": 37
+      },
+      "revId": "8a947062f6bfe1659178e806d12735e2ff161bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
