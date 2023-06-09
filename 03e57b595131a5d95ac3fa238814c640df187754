@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d23532_0ced70f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-09T16:44:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this belongs in AOSP.  AOSP does not have the full U APIs yet, so it can\u0027t be marked finalized.  AOSP will get finalized U after the U release.",
+      "revId": "03e57b595131a5d95ac3fa238814c640df187754",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
