@@ -22,6 +22,75 @@
       },
       "revId": "c15f47a0365a5915d64ed36c22fb5a7244f0e193",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca16787_bfc291c1",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-09T13:10:26Z",
+      "side": 1,
+      "message": "related to the topic of being able to test if the paths were inputs rather than code, we could probably do some unit test of this functionality if we implemented it in `soong/android` where we can use [`fs`](https://cs.android.com/android/platform/superproject/+/master:build/blueprint/pathtools/fs.go;drc\u003d2df87f3cd917d3469c6aef76e1fc257957bc5e16) that\u0027s private to [config](https://cs.android.com/android/platform/superproject/+/refs/heads/master:build/soong/android/config.go;l\u003d258;drc\u003d86f125f04aa49e0f235b6d3a198b1fc9aab99720) and we already have unit testing for [allowlisting config](https://cs.android.com/android/platform/superproject/+/refs/heads/master:build/soong/bp2build/build_conversion_test.go;l\u003d1170;drc\u003d86f125f04aa49e0f235b6d3a198b1fc9aab99720)",
+      "range": {
+        "startLine": 770,
+        "startChar": 5,
+        "endLine": 770,
+        "endChar": 26
+      },
+      "revId": "c15f47a0365a5915d64ed36c22fb5a7244f0e193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8b8d8c2_99f24c0a",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-09T13:10:26Z",
+      "side": 1,
+      "message": "can we leave a comment about the strategy we\u0027re using for name mapping?",
+      "range": {
+        "startLine": 776,
+        "startChar": 1,
+        "endLine": 776,
+        "endChar": 16
+      },
+      "revId": "c15f47a0365a5915d64ed36c22fb5a7244f0e193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f93cade5_37cbc5eb",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-09T13:10:26Z",
+      "side": 1,
+      "message": "nit: I personally find named captures more readable in retrieving the match, but I don\u0027t have a strong preference.",
+      "range": {
+        "startLine": 795,
+        "startChar": 50,
+        "endLine": 795,
+        "endChar": 58
+      },
+      "revId": "c15f47a0365a5915d64ed36c22fb5a7244f0e193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
