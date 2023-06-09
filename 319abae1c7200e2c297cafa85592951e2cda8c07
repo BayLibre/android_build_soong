@@ -16,6 +16,24 @@
       "message": "https://android-build.googleplex.com/builds/abtd/run/L20000000961170847",
       "revId": "319abae1c7200e2c297cafa85592951e2cda8c07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bbe1037_bf71036f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-06-09T01:14:04Z",
+      "side": 1,
+      "message": "It passed.",
+      "parentUuid": "8b0d9a57_a794488d",
+      "revId": "319abae1c7200e2c297cafa85592951e2cda8c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
