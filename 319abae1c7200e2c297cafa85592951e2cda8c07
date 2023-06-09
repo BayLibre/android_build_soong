@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0d9a57_a794488d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-06-09T01:00:17Z",
+      "side": 1,
+      "message": "https://android-build.googleplex.com/builds/abtd/run/L20000000961170847",
+      "revId": "319abae1c7200e2c297cafa85592951e2cda8c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
