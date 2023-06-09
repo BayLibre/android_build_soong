@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6559a1bf_8751332c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-09T16:32:09Z",
+      "side": 1,
+      "message": "I\u0027d rather we follow-up rather than defer having unit tests to a cleanup bug.\n\n`ReadFile` is a fairly simple wrapper that may not need to be part of `fs`. A handful of extra lines should be sufficient for the lack of `ReadFile`:\n\n```\nf, err :\u003d fs.Open(\u003c\u003e)\nif err !\u003d nil {\n   //handle error\n}\ndefer f.Close()\ncontents, err :\u003d ioutil.ReadAll(f)\n```",
+      "parentUuid": "495571c9_67a48464",
+      "range": {
+        "startLine": 770,
+        "startChar": 5,
+        "endLine": 770,
+        "endChar": 26
+      },
+      "revId": "c15f47a0365a5915d64ed36c22fb5a7244f0e193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8b8d8c2_99f24c0a",
