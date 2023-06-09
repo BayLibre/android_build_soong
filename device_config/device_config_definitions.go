@@ -38,6 +38,7 @@ type DefinitionsModule struct {
 	}
 
 	intermediatePath android.WritablePath
+	srcJarPath       android.WritablePath
 }
 
 func DefinitionsFactory() android.Module {
@@ -77,6 +78,8 @@ func (module *DefinitionsModule) DepsMutator(ctx android.BottomUpMutatorContext)
 
 func (module *DefinitionsModule) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {
+	case ".srcjar":
+		return []android.Path{module.srcJarPath}, nil
 	case "":
 		// The default output of this module is the intermediates format, which is
 		// not installable and in a private format that no other rules can handle
@@ -96,14 +99,6 @@ func joinAndPrefix(prefix string, values []string) string {
 	return sb.String()
 }
 
-// Provider published by device_config_value_set
-type definitionsProviderData struct {
-	namespace        string
-	intermediatePath android.WritablePath
-}
-
-var definitionsProviderKey = blueprint.NewProvider(definitionsProviderData{})
-
 func (module *DefinitionsModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// Get the values that came from the global RELEASE_DEVICE_CONFIG_VALUE_SETS flag
 	ctx.VisitDirectDeps(func(dep android.Module) {
@@ -122,11 +117,11 @@ func (module *DefinitionsModule) GenerateAndroidBuildActions(ctx android.ModuleC
 
 	// Intermediate format
 	inputFiles := android.PathsForModuleSrc(ctx, module.properties.Srcs)
-	intermediatePath := android.PathForModuleOut(ctx, "intermediate.json")
+	module.intermediatePath = android.PathForModuleOut(ctx, "intermediate.json")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        aconfigRule,
 		Inputs:      inputFiles,
-		Output:      intermediatePath,
+		Output:      module.intermediatePath,
 		Description: "device_config_definitions",
 		Args: map[string]string{
 			"release_version": ctx.Config().ReleaseVersion(),
@@ -135,9 +130,21 @@ func (module *DefinitionsModule) GenerateAndroidBuildActions(ctx android.ModuleC
 		},
 	})
 
-	ctx.SetProvider(definitionsProviderKey, definitionsProviderData{
-		namespace:        module.properties.Namespace,
-		intermediatePath: intermediatePath,
+	// Generated java inside a srcjar
+	module.srcJarPath = android.PathForModuleGen(ctx, ctx.ModuleName()+".srcjar")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        srcJarRule,
+		Input:       module.intermediatePath,
+		Output:      module.srcJarPath,
+		Description: "device_config.srcjar",
 	})
 
+	// TODO: C++
+
+	// Phony target for debugging convenience
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   blueprint.Phony,
+		Output: android.PathForPhony(ctx, ctx.ModuleName()),
+		Inputs: []android.Path{module.srcJarPath}, // TODO: C++
+	})
 }
