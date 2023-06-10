@@ -330,6 +330,13 @@ func ExportStringList(name string, value []string) {
 	exportedVars.ExportStringList(name, value)
 }
 
+// AddMaxPageSizeSupportedFlag adds the -DTARGET_MAX_PAGE_SIZE_SUPPORTED flag.
+func AddMaxPageSizeSupportedFlag(ctx android.PackageVarContext, flags []string) []string {
+  maxPageSizeSupportedFlag := "-DTARGET_MAX_PAGE_SIZE_SUPPORTED=" + ctx.Config().MaxPageSizeSupported()
+  flags = append(flags, maxPageSizeSupportedFlag)
+  return flags
+}
+
 func init() {
 	if runtime.GOOS == "linux" {
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
@@ -348,7 +355,7 @@ func init() {
 	exportedVars.ExportStringList("CommonGlobalCflags", commonGlobalCflags)
 
 	pctx.VariableFunc("CommonGlobalCflags", func(ctx android.PackageVarContext) string {
-		flags := commonGlobalCflags
+		flags := AddMaxPageSizeSupportedFlag(ctx, commonGlobalCflags)
 
 		// http://b/131390872
 		// Automatically initialize any uninitialized stack variables.
@@ -398,8 +405,13 @@ func init() {
 	exportedVars.ExportStringListStaticVariable("NoOverride64GlobalCflags", noOverride64GlobalCflags)
 	exportedVars.ExportStringListStaticVariable("HostGlobalCflags", hostGlobalCflags)
 	exportedVars.ExportStringListStaticVariable("NoOverrideExternalGlobalCflags", noOverrideExternalGlobalCflags)
-	exportedVars.ExportStringListStaticVariable("CommonGlobalCppflags", commonGlobalCppflags)
 	exportedVars.ExportStringListStaticVariable("ExternalCflags", extraExternalCflags)
+
+	exportedVars.ExportStringList("CommonGlobalCppflags", commonGlobalCppflags)
+	pctx.VariableFunc("CommonGlobalCppflags", func(ctx android.PackageVarContext) string {
+		flags := AddMaxPageSizeSupportedFlag(ctx, commonGlobalCppflags)
+		return strings.Join(flags, " ")
+	})
 
 	exportedVars.ExportString("CStdVersion", CStdVersion)
 	exportedVars.ExportString("CppStdVersion", CppStdVersion)
