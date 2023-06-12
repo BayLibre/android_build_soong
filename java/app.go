@@ -1592,6 +1592,20 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	deps := depLabels.Deps
 	deps.Append(depLabels.StaticDeps)
 
+	var jniDeps bazel.LabelListAttribute
+	archVariantProps := a.GetArchVariantProperties(ctx, &appProperties{})
+	for axis, configToProps := range archVariantProps {
+		for config, _props := range configToProps {
+			if archProps, ok := _props.(*appProperties); ok {
+				archJniLibs := android.BazelLabelForModuleDeps(
+					ctx,
+					android.LastUniqueStrings(android.CopyOf(archProps.Jni_libs)))
+				jniDeps.SetSelectValue(axis, config, archJniLibs)
+			}
+		}
+	}
+	deps.Append(jniDeps)
+
 	aapt := a.convertAaptAttrsWithBp2Build(ctx)
 
 	certificate, certificateName := android.BazelStringOrLabelFromProp(ctx, a.overridableAppProperties.Certificate)

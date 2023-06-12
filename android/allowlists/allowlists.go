@@ -764,6 +764,11 @@ var (
 
 		"libstagefright_headers",
 
+		// Apps with JNI libs
+		"libfuse",
+		"SimpleJNI",
+		"libsimplejni",
+
 		// aidl
 		"aidl",
 		"libaidl-common",
