@@ -21,6 +21,7 @@ specific-but-shared functionality among tests in package
 
 import (
 	"fmt"
+	"path/filepath"
 	"sort"
 	"strings"
 	"testing"
@@ -110,8 +111,18 @@ func RunApiBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.R
 
 func runBp2BuildTestCaseWithSetup(t *testing.T, extraPreparer android.FixturePreparer, tc Bp2buildTestCase) {
 	t.Helper()
-	dir := "."
+	dir := android.Bp2BuildTopLevel
+	rootBp := tc.Blueprint
 	filesystem := make(map[string][]byte)
+	if tc.Dir != "" {
+		dir = tc.Dir
+		rootBp = ""
+		if _, exists := tc.Filesystem[dir]; exists {
+			t.Errorf("Dir cannot be set to the path of a file in the testcase Filesystem")
+		}
+		dirpath := filepath.Join(tc.Dir, "Android.bp")
+		filesystem[dirpath] = []byte(tc.Blueprint)
+	}
 	for f, content := range tc.Filesystem {
 		filesystem[f] = []byte(content)
 	}
@@ -119,7 +130,7 @@ func runBp2BuildTestCaseWithSetup(t *testing.T, extraPreparer android.FixturePre
 	preparers := []android.FixturePreparer{
 		extraPreparer,
 		android.FixtureMergeMockFs(filesystem),
-		android.FixtureWithRootAndroidBp(tc.Blueprint),
+		android.FixtureWithRootAndroidBp(rootBp),
 		android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
 			ctx.RegisterModuleType(tc.ModuleTypeUnderTest, tc.ModuleTypeUnderTestFactory)
 		}),
@@ -128,7 +139,7 @@ func runBp2BuildTestCaseWithSetup(t *testing.T, extraPreparer android.FixturePre
 			// targets.
 			bp2buildConfig := android.NewBp2BuildAllowlist().SetDefaultConfig(
 				allowlists.Bp2BuildConfig{
-					android.Bp2BuildTopLevel: allowlists.Bp2BuildDefaultTrueRecursively,
+					dir: allowlists.Bp2BuildDefaultTrueRecursively,
 				},
 			)
 			for _, f := range tc.KeepBuildFileForDirs {
@@ -155,14 +166,9 @@ func runBp2BuildTestCaseWithSetup(t *testing.T, extraPreparer android.FixturePre
 		return
 	}
 
-	checkDir := dir
-	if tc.Dir != "" {
-		checkDir = tc.Dir
-	}
 	expectedTargets := map[string][]string{
-		checkDir: tc.ExpectedBazelTargets,
+		dir: tc.ExpectedBazelTargets,
 	}
-
 	result.CompareAllBazelTargets(t, tc.Description, expectedTargets, true)
 }
 
