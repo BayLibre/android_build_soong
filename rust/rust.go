@@ -41,6 +41,8 @@ func init() {
 		ctx.BottomUp("rust_begin", BeginMutator).Parallel()
 	})
 	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.TopDown("rust_lto_deps", ltoDepsMutator)
+		ctx.BottomUp("rust_lto", ltoMutator).Parallel()
 		ctx.BottomUp("rust_sanitizers", rustSanitizerRuntimeMutator).Parallel()
 	})
 	pctx.Import("android/soong/rust/config")
