@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4246ca47_223ee568",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-06-12T19:02:36Z",
+      "side": 1,
+      "message": "nit: not sure if the efficiency gain from this pre-allocation is worth the extra cognitive load of reading and understanding the extra line",
+      "range": {
+        "startLine": 225,
+        "startChar": 5,
+        "endLine": 225,
+        "endChar": 104
+      },
+      "revId": "e9d337d2e00599e3a3218bbc5f468ce46d6a0902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
