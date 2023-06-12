@@ -22,6 +22,30 @@
       },
       "revId": "e30a321a54b887a2612bb4918e39b431ab2cd986",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34e3bb6_52674de9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-12T19:46:56Z",
+      "side": 1,
+      "message": "Yes, I think I misunderstood how the Dir property was intended to be used. I tried using the `Filesystem` property XOR the `Dir` property and neither gave me what I wanted on its own, but the two together did.\n\nI uploaded aosp/2622675 to add a little more documentation.",
+      "parentUuid": "34988867_4765712b",
+      "range": {
+        "startLine": 11,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "e30a321a54b887a2612bb4918e39b431ab2cd986",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
