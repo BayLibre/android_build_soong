@@ -1713,6 +1713,20 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	deps := depLabels.Deps
 	deps.Append(depLabels.StaticDeps)
 
+	var jniDeps bazel.LabelListAttribute
+	archVariantProps := a.GetArchVariantProperties(ctx, &appProperties{})
+	for axis, configToProps := range archVariantProps {
+		for config, _props := range configToProps {
+			if archProps, ok := _props.(*appProperties); ok {
+				archJniLibs := android.BazelLabelForModuleDeps(
+					ctx,
+					android.LastUniqueStrings(android.CopyOf(archProps.Jni_libs)))
+				jniDeps.SetSelectValue(axis, config, archJniLibs)
+			}
+		}
+	}
+	deps.Append(jniDeps)
+
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "android_binary",
 		Bzl_load_location: "//build/bazel/rules/android:android_binary.bzl",

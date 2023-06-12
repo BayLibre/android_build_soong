@@ -16,6 +16,7 @@ package bp2build
 
 import (
 	"android/soong/android"
+	"android/soong/cc"
 	"android/soong/java"
 
 	"testing"
@@ -29,6 +30,7 @@ func runAndroidAppTestCase(t *testing.T, tc Bp2buildTestCase) {
 func registerAndroidAppModuleTypes(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
 	ctx.RegisterModuleType("java_library", java.LibraryFactory)
+	ctx.RegisterModuleType("cc_library_shared", cc.LibrarySharedFactory)
 }
 
 func TestMinimalAndroidApp(t *testing.T) {
@@ -78,7 +80,8 @@ func TestAndroidAppAllSupportedFields(t *testing.T) {
 			"manifest/AndroidManifest.xml": "",
 			"assets_/asset.png":            "",
 		},
-		Blueprint: SimpleModuleDoNotConvertBp2build("android_app", "static_lib_dep") + `
+		Blueprint: SimpleModuleDoNotConvertBp2build("android_app", "static_lib_dep") +
+			SimpleModuleDoNotConvertBp2build("cc_library_shared", "jni_lib") + `
 android_app {
 	name: "TestApp",
 	srcs: ["app.java"],
@@ -99,6 +102,7 @@ android_app {
 		obfuscate: false,
 		ignore_warnings: true,
 	},
+	jni_libs: ["jni_lib"],
 }
 `,
 		ExpectedBazelTargets: []string{
@@ -109,10 +113,13 @@ android_app {
         "resa/res.png",
         "resb/res.png",
     ]`,
-				"assets":           `["assets_/asset.png"]`,
-				"assets_dir":       `"assets_"`,
-				"custom_package":   `"com.google"`,
-				"deps":             `[":static_lib_dep"]`,
+				"assets":         `["assets_/asset.png"]`,
+				"assets_dir":     `"assets_"`,
+				"custom_package": `"com.google"`,
+				"deps": `[
+        ":static_lib_dep",
+        ":jni_lib",
+    ]`,
 				"java_version":     `"7"`,
 				"sdk_version":      `"current"`,
 				"certificate_name": `"foocert"`,
