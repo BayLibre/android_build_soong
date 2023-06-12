@@ -1486,6 +1486,12 @@ var (
 		"ICU4CTestRunner",
 
 		"HelloWorldHostTest", // TODO(b/280452825): Convert HelloWorldHostTest to b test
+
+		// depends on other //art modules
+		"libart-for-test",
+		"libart_generated_headers",
+		"libart-runtime-gtest",
+		"libartd-runtime-gtest",
 	}
 
 	MixedBuildsDisabledList = []string{
