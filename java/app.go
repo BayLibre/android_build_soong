@@ -837,7 +837,6 @@ func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
 		checkNativeSdkVersion = app.SdkVersion(ctx).Specified() &&
 			app.SdkVersion(ctx).Kind != android.SdkCorePlatform && !app.RequiresStableAPIs(ctx)
 	}
-
 	ctx.WalkDeps(func(module android.Module, parent android.Module) bool {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
@@ -1587,10 +1586,25 @@ type bazelAndroidAppAttributes struct {
 // ConvertWithBp2build is used to convert android_app to Bazel.
 func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	commonAttrs, bp2BuildInfo := a.convertLibraryAttrsBp2Build(ctx)
+
 	depLabels := bp2BuildInfo.DepLabels
 
 	deps := depLabels.Deps
 	deps.Append(depLabels.StaticDeps)
+
+	var jniDeps bazel.LabelListAttribute
+	archVariantProps := a.GetArchVariantProperties(ctx, &appProperties{})
+	for axis, configToProps := range archVariantProps {
+		for config, _props := range configToProps {
+			if archProps, ok := _props.(*appProperties); ok {
+				archJniLibs := android.BazelLabelForModuleDeps(
+					ctx,
+					android.LastUniqueStrings(android.CopyOf(archProps.Jni_libs)))
+				jniDeps.SetSelectValue(axis, config, archJniLibs)
+			}
+		}
+	}
+	deps.Append(jniDeps)
 
 	aapt := a.convertAaptAttrsWithBp2Build(ctx)
 
