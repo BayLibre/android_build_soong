@@ -52,6 +52,7 @@ type LTOProperties struct {
 	// since it is an object dependency of an LTO module.
 	LtoDep   bool `blueprint:"mutated"`
 	NoLtoDep bool `blueprint:"mutated"`
+	RustDep  bool `blueprint:"mutated"`
 
 	// Use -fwhole-program-vtables cflag.
 	Whole_program_vtables *bool
@@ -206,7 +207,7 @@ func ltoMutator(mctx android.BottomUpMutatorContext) {
 		if m.lto.Properties.LtoDep {
 			variationNames = append(variationNames, "lto-thin")
 		}
-		if m.lto.Properties.NoLtoDep {
+		if m.lto.Properties.NoLtoDep || m.lto.Properties.RustDep {
 			variationNames = append(variationNames, "lto-none")
 		}
 
@@ -239,6 +240,7 @@ func ltoMutator(mctx android.BottomUpMutatorContext) {
 				variation.Properties.HideFromMake = true
 				variation.lto.Properties.LtoDep = false
 				variation.lto.Properties.NoLtoDep = false
+				variation.lto.Properties.RustDep = false
 			}
 		}
 	}
