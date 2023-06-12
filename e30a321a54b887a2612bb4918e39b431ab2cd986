@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34988867_4765712b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-12T19:11:49Z",
+      "side": 1,
+      "message": "IIUC, this is WAI. `Dir` is where we look for `ExpectedBazelTargets`, and not where the root Android.bp file is generated.\n\nFor your specific use case, would it be possible to use a combination of `Dir` and `Filesystem` to test for dir-specific bp2build logic? (e.g. something like https://cs.android.com/android/platform/superproject/+/refs/heads/master:build/soong/bp2build/build_conversion_test.go;l\u003d1344-1363;drc\u003d97b5a9fa10025c4ed949ea2466806ddfe65fda9f;bpv\u003d0;bpt\u003d1)",
+      "range": {
+        "startLine": 11,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "e30a321a54b887a2612bb4918e39b431ab2cd986",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
