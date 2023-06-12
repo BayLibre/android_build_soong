@@ -59,6 +59,9 @@ func TestThinLtoDeps(t *testing.T) {
 
 	result := android.GroupFixturePreparers(
 		prepareForCcTest,
+		android.FixtureModifyEnv(func(env map[string]string) {
+			env["GLOBAL_THINLTO"] = "false"
+		}),
 	).RunTestWithBp(t, bp)
 
 	libLto := result.ModuleForTests("lto_enabled", "android_arm64_armv8-a_shared").Module()
