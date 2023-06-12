@@ -15,6 +15,7 @@
 package android
 
 import (
+	"path/filepath"
 	"strings"
 
 	"android/soong/bazel"
@@ -221,7 +222,14 @@ func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, m *ModuleBase, srcs baz
 						attrs.Strip_import_prefix = &path
 					}
 
-					for _, dir := range props.Proto.Include_dirs {
+					includeDirs := make([]string, 0, len(props.Proto.Include_dirs)+len(props.Proto.Local_include_dirs))
+					includeDirs = append(includeDirs, props.Proto.Include_dirs...)
+					for _, dir := range props.Proto.Local_include_dirs {
+						fmt.Println(ctx.ModuleDir(), dir)
+						includeDirs = append(includeDirs, filepath.Join(ctx.ModuleDir(), dir))
+					}
+					includeDirs = FirstUniqueStrings(includeDirs)
+					for _, dir := range includeDirs {
 						if dep, ok := includeDirsToProtoDeps[dir]; ok {
 							attrs.Deps.Add(bazel.MakeLabelAttribute(dep))
 						} else {
