@@ -1919,7 +1919,6 @@ func allEnabledSanitizersSupportedByBazel(c *Module) bool {
 		sanitizeProps.Cfi,
 		sanitizeProps.Scudo,
 		BoolPtr(len(c.sanitize.Properties.Sanitize.Recover) > 0),
-		BoolPtr(c.sanitize.Properties.Sanitize.Blocklist != nil),
 	}
 	for _, san := range unsupportedSanitizers {
 		if Bool(san) {
