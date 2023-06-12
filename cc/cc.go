@@ -955,6 +955,10 @@ func (c *Module) AddJSONData(d *map[string]interface{}) {
 	}
 }
 
+func (c *Module) SetLtoIsRustDep(isRustDep bool) {
+	c.lto.Properties.RustDep = isRustDep
+}
+
 func (c *Module) SetPreventInstall() {
 	c.Properties.PreventInstall = true
 }
