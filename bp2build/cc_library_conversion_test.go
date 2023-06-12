@@ -2382,6 +2382,43 @@ func TestCcLibraryProtoIncludeDirs(t *testing.T) {
 	})
 }
 
+func TestCcLibraryProtoLocalIncludeDirsInExternalProtobuf(t *testing.T) {
+	runCcLibraryTestCase(t, Bp2buildTestCase{
+		ModuleTypeUnderTest:        "cc_library",
+		ModuleTypeUnderTestFactory: cc.LibraryFactory,
+		Filesystem: map[string]string{
+			"external/protobuf/Android.bp": soongCcProtoPreamble + `
+				cc_library {
+					name: "foo",
+					srcs: ["foo.proto"],
+					include_build_directory: false,
+					proto: {
+						local_include_dirs: ["src"],
+					},
+				}
+			`,
+		},
+		Dir: "external/protobuf",
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("cc_lite_proto_library", "foo_cc_proto_lite", AttrNameToString{
+				"deps": `[":foo_proto"]`,
+			}),
+			MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
+				"deps":                              `[":libprotobuf-cpp-lite"]`,
+				"implementation_whole_archive_deps": `[":foo_cc_proto_lite"]`,
+			}),
+			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
+				"dynamic_deps":                      `[":libprotobuf-cpp-lite"]`,
+				"implementation_whole_archive_deps": `[":foo_cc_proto_lite"]`,
+			}),
+			MakeBazelTarget("proto_library", "foo_proto", AttrNameToString{
+				"srcs": `["foo.proto"]`,
+				"deps": `["//external/protobuf:libprotobuf-proto"]`,
+			}),
+		},
+	})
+}
+
 func TestCcLibraryProtoIncludeDirsUnknown(t *testing.T) {
 	runCcLibraryTestCase(t, Bp2buildTestCase{
 		ModuleTypeUnderTest:        "cc_library",
