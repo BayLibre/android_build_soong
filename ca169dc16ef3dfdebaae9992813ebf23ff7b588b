@@ -22,6 +22,30 @@
       },
       "revId": "ca169dc16ef3dfdebaae9992813ebf23ff7b588b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c52096a_59ac2122",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1788,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-06-12T20:44:47Z",
+      "side": 1,
+      "message": "gofmt disagrees. The decision to put spaces around the + is actually a little complicated in golang:\n\nhttps://github.com/golang/go/issues/34426#issuecomment-636452568",
+      "parentUuid": "bbe9d0fe_7efe66af",
+      "range": {
+        "startLine": 1788,
+        "startChar": 50,
+        "endLine": 1788,
+        "endChar": 51
+      },
+      "revId": "ca169dc16ef3dfdebaae9992813ebf23ff7b588b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
