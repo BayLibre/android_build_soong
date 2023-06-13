@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea5cfa1_db8c8650",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-06-13T22:44:55Z",
+      "side": 1,
+      "message": "The top level stubs library does not invoke `javac` anymore, as it does not compile the stubs but \"combine\"s the single static lib (either `myothersdklibrary.stubs.from-source` or `myothersdklibrary.stubs.from-text`). Thus the outdir is modifed with `/combined/` path element.",
+      "range": {
+        "startLine": 492,
+        "startChar": 54,
+        "endLine": 492,
+        "endChar": 62
+      },
+      "revId": "35cb57869ff50b8c7a751ebf4a2b987b3893676b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
