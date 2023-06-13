@@ -239,7 +239,6 @@ var (
 		"-Wno-error=deprecated",          // in external/googletest/googletest
 		// New warnings to be fixed after clang-r475365
 		"-Wno-error=single-bit-bitfield-constant-conversion", // http://b/243965903
-		"-Wno-error=enum-constexpr-conversion",               // http://b/243964282
 	}
 
 	noOverride64GlobalCflags = []string{}
