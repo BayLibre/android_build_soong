@@ -338,11 +338,12 @@ func firstUniqueMap[T comparable](in []T) []T {
 	return in[0:writeIndex]
 }
 
-// reverseSliceInPlace reverses the elements of a slice in place.
-func reverseSliceInPlace[T any](in []T) {
+// ReverseSliceInPlace reverses the elements of a slice in place.
+func ReverseSliceInPlace[T any](in []T) []T {
 	for i, j := 0, len(in)-1; i < j; i, j = i+1, j-1 {
 		in[i], in[j] = in[j], in[i]
 	}
+	return in
 }
 
 // reverseSlice returns a copy of a slice in reverse order.
