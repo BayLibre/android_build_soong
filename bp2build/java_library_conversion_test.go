@@ -379,7 +379,7 @@ func TestJavaLibraryResourcesExcludeFile(t *testing.T) {
 	})
 }
 
-func TestJavaLibraryResourcesFailsWithMultipleDirs(t *testing.T) {
+func TestJavaLibraryResourcesWithMultipleDirs(t *testing.T) {
 	runJavaLibraryTestCase(t, Bp2buildTestCase{
 		Filesystem: map[string]string{
 			"res/a.res":  "",
@@ -389,8 +389,23 @@ func TestJavaLibraryResourcesFailsWithMultipleDirs(t *testing.T) {
     name: "java-lib-1",
 	java_resource_dirs: ["res", "res1"],
 }`,
-		ExpectedErr:          fmt.Errorf("bp2build does not support more than one directory in java_resource_dirs (b/226423379)"),
-		ExpectedBazelTargets: []string{},
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("java_resources", "res_resources", AttrNameToString{
+				"resource_strip_prefix": `"res"`,
+				"resources":             `["res/a.res"]`,
+			}),
+			MakeBazelTarget("java_resources", "res1_resources", AttrNameToString{
+				"resource_strip_prefix": `"res1"`,
+				"resources":             `["res1/a.res"]`,
+			}),
+			MakeBazelTarget("java_library", "java-lib-1", AttrNameToString{
+				"additional_resources": `[
+        "res_resources",
+        "res1_resources",
+    ]`,
+			}),
+			MakeNeverlinkDuplicateTarget("java_library", "java-lib-1"),
+		},
 	})
 }
 

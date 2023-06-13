@@ -794,6 +794,9 @@ var (
 
 		// for platform_compat_config
 		"process-compat-config",
+
+		"emma",
+		"core-all",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{

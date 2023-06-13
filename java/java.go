@@ -2719,32 +2719,50 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 type javaResourcesAttributes struct {
 	Resources             bazel.LabelListAttribute
 	Resource_strip_prefix *string
+	Additional_resources  bazel.LabelListAttribute
 }
 
-func (m *Library) javaResourcesGetSingleFilegroupStripPrefix(ctx android.TopDownMutatorContext) (string, bool) {
-	if otherM, ok := ctx.ModuleFromName(m.properties.Java_resources[0]); ok && len(m.properties.Java_resources) == 1 {
+func (m *Library) javaResourcesGetSingleFilegroupStripPrefix(ctx android.TopDownMutatorContext, resource string) (*string, bool) {
+	if otherM, ok := ctx.ModuleFromName(resource); ok {
 		if fg, isFilegroup := otherM.(android.FileGroupPath); isFilegroup {
-			return filepath.Join(ctx.OtherModuleDir(otherM), fg.GetPath(ctx)), true
+			return proptools.StringPtr(filepath.Join(ctx.OtherModuleDir(otherM), fg.GetPath(ctx))), true
 		}
 	}
-	return "", false
+	return proptools.StringPtr(""), false
 }
 
 func (m *Library) convertJavaResourcesAttributes(ctx android.TopDownMutatorContext) *javaResourcesAttributes {
 	var resources bazel.LabelList
 	var resourceStripPrefix *string
 
-	if m.properties.Java_resources != nil && len(m.properties.Java_resource_dirs) > 0 {
-		ctx.ModuleErrorf("bp2build doesn't support both java_resources and java_resource_dirs being set on the same module.")
-	}
+	var additionalResources bazel.LabelList
+	additionalJavaResourcesMap := map[*string]bazel.LabelList{}
+
+	/*
+		if m.properties.Java_resources != nil && len(m.properties.Java_resource_dirs) > 0 {
+			ctx.ModuleErrorf("bp2build doesn't support both java_resources and java_resource_dirs being set on the same module.")
+		} */
 
 	if m.properties.Java_resources != nil {
-		if prefix, ok := m.javaResourcesGetSingleFilegroupStripPrefix(ctx); ok {
-			resourceStripPrefix = proptools.StringPtr(prefix)
-		} else {
+		for _, res := range m.properties.Java_resources {
+			if prefix, ok := m.javaResourcesGetSingleFilegroupStripPrefix(ctx, res); ok {
+				_, ok := additionalJavaResourcesMap[prefix]
+				if ok {
+					list := additionalJavaResourcesMap[prefix]
+					list.Append(android.BazelLabelForModuleSrc(ctx, []string{res}))
+				} else {
+					additionalJavaResourcesMap[prefix] = android.BazelLabelForModuleSrc(ctx, []string{res})
+				}
+
+			} else {
+				// not a file group
+				resources.Append(android.BazelLabelForModuleSrc(ctx, []string{res}))
+			}
+		}
+
+		if !resources.IsEmpty() {
 			resourceStripPrefix = proptools.StringPtr(ctx.ModuleDir())
 		}
-		resources.Append(android.BazelLabelForModuleSrc(ctx, m.properties.Java_resources))
 	}
 
 	//TODO(b/179889880) handle case where glob includes files outside package
@@ -2755,23 +2773,48 @@ func (m *Library) convertJavaResourcesAttributes(ctx android.TopDownMutatorConte
 		m.properties.Exclude_java_resources,
 	)
 
-	for i, resDep := range resDeps {
+	for _, resDep := range resDeps {
 		dir, files := resDep.dir, resDep.files
-
-		resources.Append(bazel.MakeLabelList(android.RootToModuleRelativePaths(ctx, files)))
 
 		// Bazel includes the relative path from the WORKSPACE root when placing the resource
 		// inside the JAR file, so we need to remove that prefix
-		resourceStripPrefix = proptools.StringPtr(dir.String())
-		if i > 0 {
-			// TODO(b/226423379) allow multiple resource prefixes
-			ctx.ModuleErrorf("bp2build does not support more than one directory in java_resource_dirs (b/226423379)")
+		prefix := proptools.StringPtr(dir.String())
+		_, ok := additionalJavaResourcesMap[prefix]
+		if ok {
+			list := additionalJavaResourcesMap[prefix]
+			list.Append(bazel.MakeLabelList(android.RootToModuleRelativePaths(ctx, files)))
+		} else {
+			additionalJavaResourcesMap[prefix] = bazel.MakeLabelList(android.RootToModuleRelativePaths(ctx, files))
+		}
+	}
+
+	if len(additionalJavaResourcesMap) > 0 {
+		for prefix, resLabels := range additionalJavaResourcesMap {
+			if resourceStripPrefix == nil && len(additionalJavaResourcesMap) == 1 {
+				resourceStripPrefix = prefix
+				resources = resLabels
+			} else {
+				name := *prefix + "_resources"
+				ctx.CreateBazelTargetModule(
+					bazel.BazelTargetModuleProperties{
+						Rule_class:        "java_resources",
+						Bzl_load_location: "//build/bazel/rules/java:java_resources.bzl",
+					},
+					android.CommonAttributes{Name: name},
+					&javaResourcesAttributes{
+						Resources:             bazel.MakeLabelListAttribute(resLabels),
+						Resource_strip_prefix: prefix,
+					},
+				)
+				additionalResources.Append(android.BazelLabelForModuleSrc(ctx, []string{name}))
+			}
 		}
 	}
 
 	return &javaResourcesAttributes{
 		Resources:             bazel.MakeLabelListAttribute(resources),
 		Resource_strip_prefix: resourceStripPrefix,
+		Additional_resources:  bazel.MakeLabelListAttribute(additionalResources),
 	}
 }
 
