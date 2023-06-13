@@ -194,7 +194,7 @@ func (d *DepSet[T]) toList(firstUniqueFunc func([]T) []T) []T {
 	})
 	list = firstUniqueFunc(list)
 	if d.reverse {
-		reverseSliceInPlace(list)
+		ReverseSliceInPlace(list)
 	}
 	return list
 }
