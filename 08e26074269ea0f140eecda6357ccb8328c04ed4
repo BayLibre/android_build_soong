@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ad3ab56_66a0f39c",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-13T18:55:03Z",
+      "side": 1,
+      "message": "Probably fine since this struct only contains reference types, but it would be slightly more efficient to make this a `*sandboxingAllowlistSets`.",
+      "range": {
+        "startLine": 1035,
+        "startChar": 57,
+        "endLine": 1035,
+        "endChar": 80
+      },
+      "revId": "08e26074269ea0f140eecda6357ccb8328c04ed4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
