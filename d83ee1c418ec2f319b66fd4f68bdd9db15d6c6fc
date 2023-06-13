@@ -22,6 +22,30 @@
       },
       "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8b892b_9053fa48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1996030
+      },
+      "writtenOn": "2023-06-13T20:07:53Z",
+      "side": 1,
+      "message": "I wanted to minimize any impact on build time that was only necessary for IDE integration. I have not measured the delta and it may be negligible.\n\nLet me know if you want me to add the zip step.",
+      "parentUuid": "074d855c_665bca22",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
