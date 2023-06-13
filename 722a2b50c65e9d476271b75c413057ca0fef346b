@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a61d22a_a1374cea",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-06-13T19:40:22Z",
+      "side": 0,
+      "message": "Unfortunately this doesn\u0027t build with GENRULE_SANDBOXING\u003dtrue as described in 3B in this doc: https://g3doc.corp.google.com/company/teams/android/teampages/platform-build/roboleaf/busy_beavers_sandboxing.md?cl\u003dhead, to enable sandboxing this flag needs to be set along with removing it from the list.",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 39
+      },
+      "revId": "722a2b50c65e9d476271b75c413057ca0fef346b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
