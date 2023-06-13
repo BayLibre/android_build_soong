@@ -204,8 +204,8 @@ func (a *AndroidApp) ExportedProguardFlagFiles() android.Paths {
 	return nil
 }
 
-func (a *AndroidApp) ExportedStaticPackages() android.Paths {
-	return nil
+func (a *AndroidApp) AaptStaticDepSet() *android.DepSet[aarDep] {
+	return a.aapt.staticDepSet
 }
 
 func (a *AndroidApp) OutputFile() android.Path {
