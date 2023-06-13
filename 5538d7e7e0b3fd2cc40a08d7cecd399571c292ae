@@ -22,6 +22,30 @@
       },
       "revId": "5538d7e7e0b3fd2cc40a08d7cecd399571c292ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8e91f40_ae578a02",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-13T13:34:12Z",
+      "side": 1,
+      "message": "Done. I added this comment as well. I figure it\u0027s okay to repeat the same thing in a few different docstrings since I might not read one depending on the context that brought me to this struct.",
+      "parentUuid": "42eeb4d5_d52ff1e4",
+      "range": {
+        "startLine": 79,
+        "startChar": 55,
+        "endLine": 80,
+        "endChar": 66
+      },
+      "revId": "5538d7e7e0b3fd2cc40a08d7cecd399571c292ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
