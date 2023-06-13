@@ -820,6 +820,9 @@ var (
 		"hal_unit_tests",
 
 		"merge_annotation_zips_test",
+
+		// java_resources with multiple resource_dirs
+		"emma",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
