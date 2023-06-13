@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f14d73fe_b9b702bb",
+        "filename": "java/kotlin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-13T18:14:57Z",
+      "side": 0,
+      "message": "Should this be a separate change, or be mentioned in the commit message?",
+      "revId": "722a2b50c65e9d476271b75c413057ca0fef346b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
