@@ -94,6 +94,30 @@
       },
       "revId": "722a2b50c65e9d476271b75c413057ca0fef346b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3d8db8f_e21fdd29",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-06-13T21:00:47Z",
+      "side": 0,
+      "message": "oh sorry, my bad.",
+      "parentUuid": "5ce73c0d_622a0844",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 39
+      },
+      "revId": "722a2b50c65e9d476271b75c413057ca0fef346b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
