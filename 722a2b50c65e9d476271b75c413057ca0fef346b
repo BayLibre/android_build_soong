@@ -46,6 +46,30 @@
       },
       "revId": "722a2b50c65e9d476271b75c413057ca0fef346b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2047251c_3d6f0fab",
+        "filename": "genrule/allowlists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-06-13T20:51:11Z",
+      "side": 0,
+      "message": "unless there are some new changes that my redo doesn\u0027t have, I got this error when commenting out it:\n\nThe failing command was run inside an sbox sandbox in temporary directory\nout/soong/.temp/sbox/a08378a15824817e096717e48d75b88469bd9cc1\nThe failing command line can be found in\nout/soong/.temp/sbox/a08378a15824817e096717e48d75b88469bd9cc1/sbox_command.0.bash\nexternal/protobuf/src: warning: directory does not exist.\ngoogle/protobuf/empty.proto: File not found.\ngoogle/protobuf/any.proto: File not found.",
+      "parentUuid": "54edc9bc_bb4f2a11",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 39
+      },
+      "revId": "722a2b50c65e9d476271b75c413057ca0fef346b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
