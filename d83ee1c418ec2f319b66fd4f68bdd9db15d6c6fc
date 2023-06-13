@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074d855c_665bca22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-13T18:24:48Z",
+      "side": 1,
+      "message": "Why not zip the anno directory into a srcjar?",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
