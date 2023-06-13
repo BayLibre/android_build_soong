@@ -16,6 +16,24 @@
       "message": "nit: is there a reason we have USE_RBE\u003dfalse here? It seems irrelevant",
       "revId": "b87b9badee431328688543432f94ddf421027748",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b6c9b6_8f853dee",
+        "filename": "tests/stale_metrics_files_test.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-13T18:08:07Z",
+      "side": 1,
+      "message": "I stole it from another test. I removed it from the build on l24 because I wanted to verify `rbe_metrics.pb`.\n\nCan remove it.",
+      "parentUuid": "19b47c7c_d1804de4",
+      "revId": "b87b9badee431328688543432f94ddf421027748",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
