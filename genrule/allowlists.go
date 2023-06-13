@@ -86,7 +86,11 @@ var (
 		"ltp_config_x86_64",
 		"vm-tests-tf-lib",
 		"hidl_cpp_impl_test_gen-headers",
+<<<<<<< PATCH SET (369f6c Remove pandora_experimental-python-gen-src from SandboxingDe)
+		"framework-cppstream-protos",
+=======
 		"pandora_experimental-python-gen-src",
+>>>>>>> BASE      (722a2b Merge "denylist new modules that have implicit proto deps")
 		"Refocus-rscript",
 		"RSTest_v11-rscript",
 		"RSTest_v16-rscript",
