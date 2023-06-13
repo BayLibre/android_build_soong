@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b47c7c_d1804de4",
+        "filename": "tests/stale_metrics_files_test.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-13T13:45:30Z",
+      "side": 1,
+      "message": "nit: is there a reason we have USE_RBE\u003dfalse here? It seems irrelevant",
+      "revId": "b87b9badee431328688543432f94ddf421027748",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
