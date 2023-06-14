@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cb92220_a653a06d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-14T12:46:33Z",
+      "side": 1,
+      "message": "Mind updating the earlier soong-discuss thread before submitting this?",
+      "revId": "d9efcabf74bbd935c85394860711f6076cd560ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
