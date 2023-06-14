@@ -200,9 +200,8 @@ type Path interface {
 }
 
 // Directory returns just the dirname of the file without the filename.
-func PathDirname(p Path) string {
-	pStr := p.String()
-	return pStr[:len(pStr)-len(p.Base())]
+func PathDirname(p string) string {
+	return p[:len(p)-len(filepath.Base(p))]
 }
 
 const (
@@ -2076,6 +2075,7 @@ func ModuleInstallPathContextForTesting(config Config) ModuleInstallPathContext 
 func Rel(ctx PathContext, basePath string, targetPath string) string {
 	rel, isRel := MaybeRel(ctx, basePath, targetPath)
 	if !isRel {
+		panic(fmt.Errorf("path %q is not under path %q", targetPath, basePath))
 		ReportPathErrorf(ctx, "path %q is not under path %q", targetPath, basePath)
 		return ""
 	}
