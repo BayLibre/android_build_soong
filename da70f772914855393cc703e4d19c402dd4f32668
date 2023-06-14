@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3262760_be155271",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-06-14T07:26:31Z",
+      "side": 1,
+      "message": "aosp/2489101 is no longer needed, feel free to revert it.",
+      "revId": "da70f772914855393cc703e4d19c402dd4f32668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
