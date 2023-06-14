@@ -90,8 +90,9 @@ type configImpl struct {
 	skipMetricsUpload        bool
 	buildStartedTime         int64 // For metrics-upload-only - manually specify a build-started time
 	buildFromTextStub        bool
-	ensureAllowlistIntegrity bool  // For CI builds - make sure modules are mixed-built
-	bazelExitCode            int32 // For b-runs - necessary for updating NonZeroExit
+	ensureAllowlistIntegrity bool   // For CI builds - make sure modules are mixed-built
+	bazelExitCode            int32  // For b runs - necessary for updating NonZeroExit
+	spongeId                 string // For b runs
 
 	// From the product config
 	katiArgs        []string
@@ -911,6 +912,8 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			} else {
 				ctx.Fatalf("Error parsing bazel-exit-code", err)
 			}
+		} else if strings.HasPrefix(arg, "--sponge-id=") {
+			c.spongeId = strings.TrimPrefix(arg, "--sponge-id=")
 		} else if len(arg) > 0 && arg[0] == '-' {
 			parseArgNum := func(def int) int {
 				if len(arg) > 2 {
