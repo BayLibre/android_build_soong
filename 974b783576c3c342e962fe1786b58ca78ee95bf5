@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "069ab34f_f841dad2",
+        "filename": "bp2build/fdo_profile_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-06-14T23:17:01Z",
+      "side": 1,
+      "message": "Please add a test that it function as expected when there aren\u0027t multiple variants.",
+      "revId": "974b783576c3c342e962fe1786b58ca78ee95bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
