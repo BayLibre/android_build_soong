@@ -459,7 +459,8 @@ func sdkDeps(ctx android.BottomUpMutatorContext, sdkContext android.SdkContext, 
 		ctx.AddVariationDependencies(nil, sdkLibTag, sdkDep.classpath...)
 		if d.effectiveOptimizeEnabled() && sdkDep.hasStandardLibs() {
 			ctx.AddVariationDependencies(nil, proguardRaiseTag,
-				android.JavaApiLibraryNames(ctx.Config(), config.LegacyCorePlatformBootclasspathLibraries)...,
+				config.LegacyCorePlatformBootclasspathLibraries[0],
+				android.JavaApiLibraryName(ctx.Config(), config.LegacyCorePlatformBootclasspathLibraries[1]),
 			)
 		}
 		if d.effectiveOptimizeEnabled() && sdkDep.hasFrameworkLibs() {
