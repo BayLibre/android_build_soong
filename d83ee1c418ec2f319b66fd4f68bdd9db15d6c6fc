@@ -46,6 +46,30 @@
       },
       "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d327745c_b44cd05d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-14T16:26:38Z",
+      "side": 1,
+      "message": "I\u0027d suggest experimenting with adding the zip step to the javac rules, it should be plenty fast on most builds.",
+      "parentUuid": "0e8b892b_9053fa48",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
