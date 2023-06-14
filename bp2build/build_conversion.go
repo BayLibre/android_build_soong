@@ -356,12 +356,18 @@ func generateBazelTargetsGoPackage(ctx *android.Context, g *bootstrap.GoPackage,
 	ca := android.CommonAttributes{
 		Name: g.Name(),
 	}
+
+	// Collect all the transitive deps. These need to be on the compile and link path
+	// Soong traversese the graph to collect these
+	// Bazel requires these to be listed in `deps` explicitly
+	transitiveDeps := transitiveGoDeps(g.Deps(), goModulesMap)
+
 	ga := goAttributes{
 		Importpath: bazel.StringAttribute{
 			Value: proptools.StringPtr(g.GoPkgPath()),
 		},
 		Srcs:                   goSrcLabels(g.Srcs(), g.LinuxSrcs(), g.DarwinSrcs()),
-		Deps:                   goDepLabels(g.Deps(), goModulesMap),
+		Deps:                   goDepLabels(transitiveDeps, goModulesMap),
 		Target_compatible_with: targetNotCompatibleWithAndroid(),
 	}
 
@@ -402,6 +408,50 @@ func createGoLibraryModuleMap(ctx *android.Context) nameToGoLibraryModule {
 		}
 	})
 	return ret
+}
+
+// Returns the deps in the transitive closure of a go target
+func transitiveGoDeps(directDeps []string, goModulesMap nameToGoLibraryModule) []string {
+	allDeps := directDeps
+	i := 0
+	for i < len(allDeps) {
+		curr := allDeps[i]
+		allDeps = append(allDeps, goModulesMap[curr].Deps...)
+		i += 1
+	}
+	allDeps = android.SortedUniqueStrings(allDeps)
+	return allDeps
+}
+
+func generateBazelTargetsGoBinary(ctx *android.Context, g *bootstrap.GoBinary, goModulesMap nameToGoLibraryModule) ([]BazelTarget, []error) {
+	ca := android.CommonAttributes{
+		Name: g.Name(),
+	}
+
+	// Collect all the transitive deps. These need to be on the compile and link path
+	// Soong traversese the graph to collect these
+	// Bazel requires these to be listed in `deps` explicitly
+	transitiveDeps := transitiveGoDeps(g.Deps(), goModulesMap)
+
+	ga := goAttributes{
+		Srcs:                   goSrcLabels(g.Srcs(), g.LinuxSrcs(), g.DarwinSrcs()),
+		Deps:                   goDepLabels(transitiveDeps, goModulesMap),
+		Target_compatible_with: targetNotCompatibleWithAndroid(),
+	}
+
+	bin := goBazelTarget{
+		targetName:            g.Name(),
+		targetPackage:         ctx.ModuleDir(g),
+		bazelRuleClass:        "go_binary",
+		bazelRuleLoadLocation: "@io_bazel_rules_go//go:def.bzl",
+		bazelAttributes:       []interface{}{&ca, &ga},
+	}
+	// TODO - b/284483729: Create go_test target from testSrcs
+	binTarget, err := generateBazelTarget(ctx, bin)
+	if err != nil {
+		return []BazelTarget{}, []error{err}
+	}
+	return []BazelTarget{binTarget}, nil
 }
 
 func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (conversionResults, []error) {
@@ -496,8 +546,10 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (convers
 				targets, targetErrs = generateBazelTargetsGoPackage(bpCtx, glib, nameToGoLibMap)
 				errs = append(errs, targetErrs...)
 				metrics.IncrementRuleClassCount("go_library")
-			} else if _, ok := m.(*bootstrap.GoBinary); ok {
-				// TODO - b/284483729: Create bazel targets for go binaries
+			} else if gbin, ok := m.(*bootstrap.GoBinary); ok {
+				targets, targetErrs = generateBazelTargetsGoBinary(bpCtx, gbin, nameToGoLibMap)
+				errs = append(errs, targetErrs...)
+				metrics.IncrementRuleClassCount("go_binary")
 			} else {
 				metrics.AddUnconvertedModule(m, moduleType, dir, android.UnconvertedReason{
 					ReasonType: int(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED),
