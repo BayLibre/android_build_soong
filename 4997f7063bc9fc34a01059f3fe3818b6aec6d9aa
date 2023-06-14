@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "045b5511_9e6cba26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-06-14T11:03:51Z",
+      "side": 1,
+      "message": "Liz is OOO and Yu is asleep, but the change looks trivial enough for me to approve.\n\n(Yu, feel free to countermand me if this is not as trivial as I think!)",
+      "revId": "4997f7063bc9fc34a01059f3fe3818b6aec6d9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
