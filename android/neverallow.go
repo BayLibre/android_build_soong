@@ -256,10 +256,10 @@ func createProhibitFrameworkAccessRules() []Rule {
 
 func createJavaExcludeStaticLibsRule() Rule {
 	return NeverAllow().
-		NotIn("build/soong").
+		NotIn("build/soong", "libcore").
 		ModuleType("java_library").
 		WithMatcher("exclude_static_libs", isSetMatcherInstance).
-		Because("exclude_static_libs property is only allowed for java modules defined in build/soong")
+		Because("exclude_static_libs property is only allowed for java modules defined in build/soong or libcore")
 }
 
 func neverallowMutator(ctx BottomUpMutatorContext) {
