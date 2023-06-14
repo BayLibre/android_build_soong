@@ -58,6 +58,7 @@ var (
 				"${config.ZipSyncCmd}",
 			},
 			CommandOrderOnly: []string{"${config.SoongJavacWrapper}"},
+			Restat:           true,
 			Rspfile:          "$out.rsp",
 			RspfileContent:   "$in",
 		}, map[string]*remoteexec.REParams{
