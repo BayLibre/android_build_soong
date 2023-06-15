@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6823d26c_a43d75a4",
+        "filename": "java/bootclasspath_fragment_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-15T22:30:52Z",
+      "side": 0,
+      "message": "Should this have been `android-non-updatable.stubs.module_lib.jar` when you originally wrote this unit test?",
+      "range": {
+        "startLine": 469,
+        "startChar": 120,
+        "endLine": 469,
+        "endChar": 161
+      },
+      "revId": "3d4d88d68e5b5796cf4d9d236793df5322a1eab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
