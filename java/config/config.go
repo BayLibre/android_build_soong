@@ -115,9 +115,6 @@ func init() {
 		// If a different javac is used the flag will be ignored and extra bridges will be inserted.
 		// The flag is implemented by https://android-review.googlesource.com/c/486427
 		`-XDskipDuplicateBridges=true`,
-
-		// b/65004097: prevent using java.lang.invoke.StringConcatFactory when using -target 1.9
-		`-XDstringConcat=inline`,
 	})
 
 	exportedVars.ExportStringListStaticVariable("JavaVmFlags", javaVmFlagsList)
