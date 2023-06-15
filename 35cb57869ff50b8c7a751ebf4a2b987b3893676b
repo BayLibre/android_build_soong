@@ -18,6 +18,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d574cc1b_f08edd49",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-06-15T16:42:30Z",
+      "side": 1,
+      "message": "nit: delete whether or if?",
+      "range": {
+        "startLine": 1391,
+        "startChar": 35,
+        "endLine": 1391,
+        "endChar": 45
+      },
+      "revId": "35cb57869ff50b8c7a751ebf4a2b987b3893676b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2ea5cfa1_db8c8650",
