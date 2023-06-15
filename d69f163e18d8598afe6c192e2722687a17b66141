@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e993b6_8bc28c66",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-15T10:14:39Z",
+      "side": 1,
+      "message": "nit: at least 1",
+      "range": {
+        "startLine": 150,
+        "startChar": 23,
+        "endLine": 150,
+        "endChar": 25
+      },
+      "revId": "d69f163e18d8598afe6c192e2722687a17b66141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8235903_e32a0152",
+        "filename": "android/defaults.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-15T10:14:39Z",
+      "side": 1,
+      "message": "technically defaults are supported in the conversion process by way of flattening the attributes - can we describe a type for that?",
+      "range": {
+        "startLine": 185,
+        "startChar": 54,
+        "endLine": 185,
+        "endChar": 92
+      },
+      "revId": "d69f163e18d8598afe6c192e2722687a17b66141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a1cd1d_49b7a69b",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-15T10:14:39Z",
+      "side": 1,
+      "message": "Mind adding a reason for this?",
+      "range": {
+        "startLine": 149,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 43
+      },
+      "revId": "d69f163e18d8598afe6c192e2722687a17b66141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "429d8f86_daf537c6",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-15T10:14:39Z",
+      "side": 1,
+      "message": "qq: what\u0027s api_bp2build used for today?",
+      "range": {
+        "startLine": 215,
+        "startChar": 38,
+        "endLine": 215,
+        "endChar": 49
+      },
+      "revId": "d69f163e18d8598afe6c192e2722687a17b66141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
