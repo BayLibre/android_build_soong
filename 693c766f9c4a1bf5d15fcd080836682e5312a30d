@@ -22,6 +22,30 @@
       },
       "revId": "693c766f9c4a1bf5d15fcd080836682e5312a30d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d949bd5f_d79f5e01",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-15T17:53:25Z",
+      "side": 1,
+      "message": "I think we might need a bigger hammer than a macro to ensure that go binaries are never built for android. Once BUILD files are checked in, users can use go_binary from rules_go directly in their BUILD files. I am not sure what that bigger hammer is though (maybe an aspect?)",
+      "parentUuid": "77dcc2bb_86f0bbb6",
+      "range": {
+        "startLine": 442,
+        "startChar": 26,
+        "endLine": 442,
+        "endChar": 56
+      },
+      "revId": "693c766f9c4a1bf5d15fcd080836682e5312a30d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
