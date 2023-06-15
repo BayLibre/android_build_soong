@@ -22,6 +22,30 @@
       },
       "revId": "e19eabbcc80a5a90dbdc1b238cf87e6c70f33714",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a45644_eddd49fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-06-15T01:37:18Z",
+      "side": 1,
+      "message": "Thanks for brining this up, and this is a very good point. However, I am unsure if the `java_system_modules` can be replaced, since it has dependency not only in stub `java_library`, but also prebuilts. \nTake [`core-public-stubs-system-modules`](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/core-libraries/Android.bp;drc\u003d67b64432583943cf6483764d771758fe4ae57637;l\u003d142) for example. Going down a couple layers of hierarchy (`\"core-public-stubs-system-modules\"` -\u003e `\"core-current-stubs-for-system-modules-no-annotations\"` -\u003e `\"core-current-stubs-for-system-modules\"`), it can be seen that the module has dependency on [two modules](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/core-libraries/Android.bp;drc\u003d67b64432583943cf6483764d771758fe4ae57637;l\u003d87), in which one of the two are [prebuilts](https://cs.android.com/android/platform/superproject/+/master:prebuilts/module_sdk/art/current/sdk/Android.bp;drc\u003d847dcd49951f9976d9ee00299c9aef9c62151fda;l\u003d212). \nOTOH, `core-public-stubs-system-modules.from-text` depends on the [from-text stub equivalent](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/core-libraries/TxtStubLibraries.bp;drc\u003db34bb067808deae66af79b5149d9210ca49349f2;l\u003d35) of the prebuilt.\n\nThus, removing `JavaApiLibraryName` would mean that the system modules would depend on the prebuilts even during from-text stub build, which I believe is not desired. Please CMIW!",
+      "parentUuid": "725827b4_42b13a2e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "e19eabbcc80a5a90dbdc1b238cf87e6c70f33714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
