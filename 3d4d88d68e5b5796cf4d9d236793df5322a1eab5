@@ -22,6 +22,30 @@
       },
       "revId": "3d4d88d68e5b5796cf4d9d236793df5322a1eab5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04dcb072_d6f424fb",
+        "filename": "java/bootclasspath_fragment_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-06-15T22:40:36Z",
+      "side": 0,
+      "message": "Based on the test title, it should have been checking if it does not contain `android-non-updatable.stubs.module_lib.jar`. However I was basically testing \"no multiple dependency stubs dex are added during from-text stub build\" as that was the root cause of b/279460171, so I believe that the name of the test was somewhat misleading. Thanks for pointing this out!",
+      "parentUuid": "6823d26c_a43d75a4",
+      "range": {
+        "startLine": 469,
+        "startChar": 120,
+        "endLine": 469,
+        "endChar": 161
+      },
+      "revId": "3d4d88d68e5b5796cf4d9d236793df5322a1eab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
