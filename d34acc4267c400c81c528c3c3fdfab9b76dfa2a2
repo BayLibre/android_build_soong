@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7aa866_6c2930b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-06-15T14:26:43Z",
+      "side": 1,
+      "message": "riscv64 build on forrest has passed: http://ab/P58442526",
+      "revId": "d34acc4267c400c81c528c3c3fdfab9b76dfa2a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
