@@ -16,6 +16,24 @@
       "message": "Mind updating the earlier soong-discuss thread before submitting this?",
       "revId": "d9efcabf74bbd935c85394860711f6076cd560ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5a2fb93_66d7b95c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-06-15T00:54:53Z",
+      "side": 1,
+      "message": "I was thinking about announcing after merging this change, but no problem at all. I\u0027ll send an email about this.",
+      "parentUuid": "4cb92220_a653a06d",
+      "revId": "d9efcabf74bbd935c85394860711f6076cd560ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
