@@ -159,7 +159,7 @@ func createApiModule(mctx android.LoadHookContext, name string, path string) {
 		Out  []string
 		Cmd  *string
 	}{}
-	genruleProps.Name = proptools.StringPtr(name)
+	genruleProps.Name = proptools.StringPtr(name + "-gen")
 	genruleProps.Srcs = []string{path}
 	genruleProps.Out = []string{name}
 	genruleProps.Cmd = proptools.StringPtr("cp $(in) $(out)")
@@ -173,7 +173,7 @@ func createLatestApiModuleExtensionVersionFile(mctx android.LoadHookContext, nam
 		Out  []string
 		Cmd  *string
 	}{}
-	genruleProps.Name = proptools.StringPtr(name)
+	genruleProps.Name = proptools.StringPtr(name + "-gen")
 	genruleProps.Out = []string{name}
 	genruleProps.Cmd = proptools.StringPtr("echo " + version + " > $(out)")
 	mctx.CreateModule(genrule.GenRuleFactory, &genruleProps)
@@ -185,7 +185,7 @@ func createEmptyFile(mctx android.LoadHookContext, name string) {
 		Cmd  *string
 		Out  []string
 	}{}
-	props.Name = proptools.StringPtr(name)
+	props.Name = proptools.StringPtr(name + "-gen")
 	props.Out = []string{name}
 	props.Cmd = proptools.StringPtr("touch $(genDir)/" + name)
 	mctx.CreateModule(genrule.GenRuleFactory, &props)
