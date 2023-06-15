@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e93a86_7066b663",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-06-15T18:55:10Z",
+      "side": 1,
+      "message": "I think you need to update the module name used in [sdk_library.go](https://cs.android.com/android/platform/build/soong/+/master:java/sdk_library.go;l\u003d1473-1475;drc\u003d1c92c3e09262d24947a6d314fe3be77329127a76)",
+      "revId": "d2ce0370dbf9d8682c723c5cfd9683eb8a937054",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
