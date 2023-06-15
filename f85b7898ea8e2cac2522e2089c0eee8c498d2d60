@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa06526d_754e9254",
+        "filename": "android/bazel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-15T21:35:52Z",
+      "side": 1,
+      "message": "nit: non-existent",
+      "revId": "f85b7898ea8e2cac2522e2089c0eee8c498d2d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "720e152c_1630efa7",
+        "filename": "android/bazel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-15T21:35:52Z",
+      "side": 1,
+      "message": "Looks like you missed the ctx.Module().Name() argument?",
+      "revId": "f85b7898ea8e2cac2522e2089c0eee8c498d2d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ce2cac_3d561c49",
+        "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-15T21:35:52Z",
+      "side": 1,
+      "message": "nit: add a blank line",
+      "revId": "f85b7898ea8e2cac2522e2089c0eee8c498d2d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
