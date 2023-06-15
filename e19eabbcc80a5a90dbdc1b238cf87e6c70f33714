@@ -70,6 +70,30 @@
       },
       "revId": "e19eabbcc80a5a90dbdc1b238cf87e6c70f33714",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f83fc2a4_19c4c476",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-06-15T02:16:51Z",
+      "side": 1,
+      "message": "Ah thanks for catching this. I totally understand your point. My general point is that we should verify that all dependencies of `java_system_modules` have the static-lib switching based on flag logic embedded (i.e. all dependencies are stub jar outputting `java_library` modules) to abandon every `my_system_modules.from-text`. I will spend some more time to verify this, and follow up here.",
+      "parentUuid": "685780f3_da52f973",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "e19eabbcc80a5a90dbdc1b238cf87e6c70f33714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
