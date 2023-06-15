@@ -46,6 +46,30 @@
       },
       "revId": "e19eabbcc80a5a90dbdc1b238cf87e6c70f33714",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685780f3_da52f973",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-15T02:03:43Z",
+      "side": 1,
+      "message": "`\"core-public-stubs-system-modules\"` uses the [from-source](https://cs.android.com/search?q\u003dname.*core-lambda-stubs-for-system-modules%20f:%5C.bp\u0026sq\u003d) equivalent of `core-lambda-stubs-for-system-modules` and not a prebuilt (you might have been searching in Android.bp and not .bp)\n\nMore generally, previously we had (a lot of pseudocode)\n```\n my_system_modules\n  |          |\n  v          v\n stublib     nonstublib\n\nmy_system_modules.from-text\n  |                     |\n  v                     v\n stublib.from-text     nonstublib\n```\n\nIIUC, you have changed java_sdk_library to\n```\nstublib ---\u003e stublib.from-source (if --from-text is missing)\nstublib ---\u003e stublib.from-text (if --from-text is present)\n```\n\nThen, can the build graph be just\n```\n           my_system_modules\n  |                            |\n  v                            v\n stublib (source or text)     nonstublib\n\n```\n\nWhy do we need `my_system_modules.from-text` at all?",
+      "parentUuid": "f3a45644_eddd49fb",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "e19eabbcc80a5a90dbdc1b238cf87e6c70f33714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
