@@ -94,6 +94,30 @@
       },
       "revId": "e19eabbcc80a5a90dbdc1b238cf87e6c70f33714",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206b367e_c7c79abb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-06-15T13:49:27Z",
+      "side": 1,
+      "message": "Agree with Spandan that conceptually I don\u0027t see the need for system modules to be \"involved\" in this: a `java_system_modules` just has `java_library` modules in its `libs`, so you should be able to have the `java_library` modules take care of the from-txt \u003c--\u003e from-source logic (including if one of them is actually from-txt \u003c--\u003e from prebuilts, though I\u0027d like to understand the reason for this better)",
+      "parentUuid": "f83fc2a4_19c4c476",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "e19eabbcc80a5a90dbdc1b238cf87e6c70f33714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
