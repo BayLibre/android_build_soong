@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "725827b4_42b13a2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-15T00:49:43Z",
+      "side": 1,
+      "message": "I think with the changes you made recently to put FromTextStub() inside java_sdk_library, we dont need .from-text equivalents of `java_system_modules` that we need to switch between. \n\nWe can delete this usage of `JavaApiLibraryName`, and the .from-text equivalents in build/soong/java/core-libraries/TxtStubLibraries.bp",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 48
+      },
+      "revId": "e19eabbcc80a5a90dbdc1b238cf87e6c70f33714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
