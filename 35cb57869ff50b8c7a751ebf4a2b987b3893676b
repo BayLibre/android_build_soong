@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e9111f82_e0622e75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-06-15T16:32:00Z",
+      "side": 1,
+      "message": "ping",
+      "revId": "35cb57869ff50b8c7a751ebf4a2b987b3893676b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2ea5cfa1_db8c8650",
         "filename": "sdk/bootclasspath_fragment_sdk_test.go",
         "patchSetId": 2
