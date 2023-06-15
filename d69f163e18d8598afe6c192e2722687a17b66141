@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "128edc63_6ededd78",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-15T19:29:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39e993b6_8bc28c66",
+      "range": {
+        "startLine": 150,
+        "startChar": 23,
+        "endLine": 150,
+        "endChar": 25
+      },
+      "revId": "d69f163e18d8598afe6c192e2722687a17b66141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8235903_e32a0152",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-15T10:14:39Z",
       "side": 1,
       "message": "technically defaults are supported in the conversion process by way of flattening the attributes - can we describe a type for that?",
+      "range": {
+        "startLine": 185,
+        "startChar": 54,
+        "endLine": 185,
+        "endChar": 92
+      },
+      "revId": "d69f163e18d8598afe6c192e2722687a17b66141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65d15a8a_500434c9",
+        "filename": "android/defaults.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-15T19:29:48Z",
+      "side": 1,
+      "message": "Can you elaborate on this? Do you mean that *in principle* we are converting defaults modules by using the inherited properties in other modules? Or do you mean that we actually convert these to Starlark constants / functions / macros that are depended on by other generated modules? (Do we do this anywhere?)",
+      "parentUuid": "a8235903_e32a0152",
       "range": {
         "startLine": 185,
         "startChar": 54,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6140a9_cabbeb2b",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-15T19:29:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7a1cd1d_49b7a69b",
+      "range": {
+        "startLine": 149,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 43
+      },
+      "revId": "d69f163e18d8598afe6c192e2722687a17b66141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "429d8f86_daf537c6",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-06-15T10:14:39Z",
       "side": 1,
       "message": "qq: what\u0027s api_bp2build used for today?",
+      "range": {
+        "startLine": 215,
+        "startChar": 38,
+        "endLine": 215,
+        "endChar": 49
+      },
+      "revId": "d69f163e18d8598afe6c192e2722687a17b66141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf81939_e7f93da8",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-15T19:29:48Z",
+      "side": 1,
+      "message": "I\u0027ve raised a separate thread about whether we can kill this mode (given that the original purpose for the mode is obsolete)",
+      "parentUuid": "429d8f86_daf537c6",
       "range": {
         "startLine": 215,
         "startChar": 38,
