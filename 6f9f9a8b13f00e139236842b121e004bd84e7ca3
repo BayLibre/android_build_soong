@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e456b1a7_2f119426",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-06-15T20:27:59Z",
+      "side": 1,
+      "message": "Please don\u0027t leave description blank.",
+      "revId": "6f9f9a8b13f00e139236842b121e004bd84e7ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f828b0f1_9454e5f7",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2151,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-06-15T20:27:59Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "6f9f9a8b13f00e139236842b121e004bd84e7ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
