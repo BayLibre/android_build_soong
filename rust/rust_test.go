@@ -15,14 +15,17 @@
 package rust
 
 import (
+	"fmt"
 	"os"
 	"runtime"
 	"strings"
 	"testing"
 
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/encoding/prototext"
 
 	"android/soong/android"
+	"android/soong/cmd/sbox/sbox_proto"
 	"android/soong/genrule"
 )
 
@@ -36,6 +39,10 @@ var prepareForRustTest = android.GroupFixturePreparers(
 	android.PrepareForTestWithPrebuilts,
 
 	genrule.PrepareForTestWithGenRuleBuildComponents,
+
+	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
+		ctx.RegisterModuleType("prebuilt_build_tool", android.PrebuiltBuildToolFactory)
+	}),
 
 	PrepareForTestWithRustIncludeVndk,
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
@@ -64,11 +71,14 @@ var rustMockedFiles = android.MockFS{
 
 // testRust returns a TestContext in which a basic environment has been setup.
 // This environment contains a few mocked files. See rustMockedFiles for the list of these files.
-func testRust(t *testing.T, bp string) *android.TestContext {
+func testRust(t *testing.T, bp string, preparers ...android.FixturePreparer) *android.TestContext {
 	skipTestIfOsNotSupported(t)
 	result := android.GroupFixturePreparers(
 		prepareForRustTest,
 		rustMockedFiles.AddToFixture(),
+		android.GroupFixturePreparers(
+			preparers...,
+		),
 	).
 		RunTestWithBp(t, bp)
 	return result.TestContext
@@ -485,4 +495,228 @@ func assertString(t *testing.T, got, expected string) {
 	if got != expected {
 		t.Errorf("expected %q got %q", expected, got)
 	}
+}
+
+func TestSandboxCompilation(t *testing.T) {
+	ctx := testRust(t, `
+		filegroup {
+			name: "libsrcs",
+			srcs: [
+				"extrasrc*.rs",
+			],
+			exclude_srcs: ["exclude_src.rs"],
+		}
+		rust_library {
+			name: "libfizz_buzz",
+			crate_name:"fizz_buzz",
+			srcs: ["foo.rs"],
+			compile_srcs: [":libsrcs"],
+		}
+		rust_binary {
+			name: "fizz-buzz",
+			crate_name:"fizz-buzz-bin",
+			srcs: ["foo.rs"],
+			dylibs: ["libfizz_buzz"],
+		}
+	`,
+		android.GroupFixturePreparers(
+			android.MockFS{
+				"extrasrc1.rs":   nil,
+				"extrasrc2.rs":   nil,
+				"exclude_src.rs": nil,
+			}.AddToFixture(),
+		),
+	)
+
+	writeFile := ctx.ModuleForTests("libfizz_buzz", "android_arm64_armv8-a_dylib").Rule("writeFile")
+	content := writeFile.BuildParams.Args["content"]
+	content = content[1 : len(content)-1]
+	content = strings.NewReplacer(
+		`\n`, "\n",
+		`\\`, `\`,
+		`'\''`, `'`,
+		"$$", "$",
+	).Replace(content)
+	manifestProto := sbox_proto.Manifest{}
+	err := prototext.Unmarshal([]byte(content), &manifestProto)
+	if err != nil {
+	}
+	if len(manifestProto.Commands) != 1 {
+		t.Errorf("expected 1 command; got %v", len(manifestProto.Commands))
+	}
+
+	rustc := manifestProto.Commands[0]
+	for _, i := range rustc.CopyBefore {
+		//TODO: test copybefore for all inputs that can be passed thru PathDeps
+		fmt.Println(i)
+	}
+
+	rustcCmd := proptools.String(rustc.Command)
+	flagCheck := func(flag string) {
+		android.AssertStringDoesContain(
+			t,
+			fmt.Sprintf(
+				"missing flag in rustc invocation; expected to find substring %q; got %q",
+				flag,
+				rustcCmd,
+			),
+			rustcCmd,
+			flag,
+		)
+	}
+	flagCheck("--emit link")
+	flagCheck("-o __SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.dylib.so.rsp")
+	flagCheck("--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.dylib.so.d.raw")
+
+	fmt.Println(manifestProto.Commands)
+}
+
+func checkForExpectedFlagInRustInvocation(t *testing.T, rustcCmd, flag string) {
+	t.Helper()
+	android.AssertStringDoesContain(
+		t,
+		fmt.Sprintf(
+			"missing flag in rustc invocation; expected to find substring %q; got %q",
+			flag,
+			rustcCmd,
+		),
+		rustcCmd,
+		flag,
+	)
+}
+func TestCrateRootSandboxCompilation(t *testing.T) {
+	ctx := testRust(t, `
+		filegroup {
+			name: "libsrcs",
+			srcs: ["src_filegroup.rs"],
+		}
+		rust_library {
+			name: "libfizz_buzz",
+			crate_name:"fizz_buzz",
+			crate_root: "foo.rs",
+			srcs: [
+				"src*.rs",
+				":libsrcs",
+			],
+		}
+	`,
+		android.GroupFixturePreparers(
+			android.MockFS{
+				"src1.rs":          nil,
+				"src2.rs":          nil,
+				"src3.rs":          nil,
+				"src4.rs":          nil,
+				"src_filegroup.rs": nil,
+			}.AddToFixture(),
+		),
+	)
+
+	writeFile := ctx.ModuleForTests("libfizz_buzz", "android_arm64_armv8-a_rlib_rlib-std").Rule("writeFile")
+	content := writeFile.BuildParams.Args["content"]
+	content = content[1 : len(content)-1]
+	content = strings.NewReplacer(
+		`\n`, "\n",
+		`\\`, `\`,
+		`'\''`, `'`,
+		"$$", "$",
+	).Replace(content)
+	manifestProto := sbox_proto.Manifest{}
+	err := prototext.Unmarshal([]byte(content), &manifestProto)
+	if err != nil {
+	}
+	if len(manifestProto.Commands) != 1 {
+		t.Errorf("expected 1 command; got %v", len(manifestProto.Commands))
+	}
+
+	expectedFilesToCopy := map[string]string{
+		"foo.rs":           "foo.rs",
+		"src1.rs":          "src1.rs",
+		"src2.rs":          "src2.rs",
+		"src3.rs":          "src3.rs",
+		"src4.rs":          "src4.rs",
+		"src_filegroup.rs": "src_filegroup.rs",
+	}
+	didCopyExpectedFiles := map[string]bool{}
+	for f, _ := range expectedFilesToCopy {
+		didCopyExpectedFiles[f] = false
+	}
+	rustc := manifestProto.Commands[0]
+	for _, copy := range rustc.CopyBefore {
+		filename := copy.GetFrom()
+		_, exists := expectedFilesToCopy[filename]
+		if exists && copy.GetTo() == expectedFilesToCopy[filename] {
+			didCopyExpectedFiles[filename] = true
+		}
+		fmt.Println(copy)
+	}
+	for f, didCopy := range didCopyExpectedFiles {
+		if !didCopy {
+			t.Errorf(
+				"expected to copy %q to %q, but did not",
+				f,
+				expectedFilesToCopy[f],
+			)
+		}
+	}
+
+	rustcCmd := proptools.String(rustc.Command)
+	checkForExpectedFlagInRustInvocation(t, rustcCmd, "--emit link")
+	checkForExpectedFlagInRustInvocation(t, rustcCmd, "-o __SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.rlib")
+	checkForExpectedFlagInRustInvocation(t, rustcCmd, "--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.rlib.d.raw")
+}
+
+func TestExtraSrcsDedup(t *testing.T) {
+	testRust(t, `
+		filegroup {
+			name: "libsrcs",
+			srcs: ["*.rs"],
+		}
+		rust_library {
+			name: "libfizz_buzz",
+			crate_name:"fizz_buzz",
+			crate_root: ["foo.rs"],
+			srcs: [":libsrcs"],
+		}
+	`,
+		android.GroupFixturePreparers(
+			android.MockFS{
+				"extrasrc1.rs": nil,
+				"extrasrc2.rs": nil,
+			}.AddToFixture(),
+		),
+	)
+}
+
+func TestMultipleFilegroupSrcs(t *testing.T) {
+	ctx := testRust(t, `
+		filegroup {
+			name: "libsrcs1",
+			srcs: ["1*.rs"],
+		}
+		filegroup {
+			name: "libsrcs2",
+			srcs: ["2*.rs"],
+		}
+		rust_library {
+			name: "libfizz_buzz",
+			crate_name:"fizz_buzz",
+			crate_root: "foo.rs",
+			srcs: [
+				":libsrcs1",
+				":libsrcs2",
+			],
+		}
+	`,
+		android.GroupFixturePreparers(
+			android.MockFS{
+				"1srcA.rs": nil,
+				"1srcB.rs": nil,
+				"2srcA.rs": nil,
+				"2srcB.rs": nil,
+			}.AddToFixture(),
+		),
+	)
+
+	// verify that we use the sandboxed action here
+	ctx.ModuleForTests("libfizz_buzz", "android_arm64_armv8-a_rlib_rlib-std").Rule("writeFile")
 }
