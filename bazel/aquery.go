@@ -454,7 +454,16 @@ func (a *aqueryArtifactHandler) depsetContentHashes(inputDepsetIds []uint32) ([]
 }
 
 func (a *aqueryArtifactHandler) normalActionBuildStatement(actionEntry *analysis_v2_proto.Action) (*BuildStatement, error) {
-	command := strings.Join(proptools.ShellEscapeListIncludingSpaces(actionEntry.Arguments), " ")
+	argsWithSingleQuotes := []string{}
+	for _, arg := range actionEntry.Arguments {
+		// If arg is an empty string, surround it with single quotes
+		if arg == "" {
+			argsWithSingleQuotes = append(argsWithSingleQuotes, "''")
+		} else {
+			argsWithSingleQuotes = append(argsWithSingleQuotes, arg)
+		}
+	}
+	command := strings.Join(proptools.ShellEscapeListIncludingSpaces(argsWithSingleQuotes), " ")
 	inputDepsetHashes, err := a.depsetContentHashes(actionEntry.InputDepSetIds)
 	if err != nil {
 		return nil, err
