@@ -1314,6 +1314,11 @@ func createCommand(cmd *RuleBuilderCommand, buildStatement *bazel.BuildStatement
 		cmd.Flag(pair.Key + "=" + pair.Value)
 	}
 
+	for key, val := range buildStatement.AdditionalEnv {
+		// Set per-action env variables, if any.
+		cmd.Flag(key + "=" + val)
+	}
+
 	// The actual Bazel action.
 	if len(buildStatement.Command) > 16*1024 {
 		commandFile := PathForBazelOut(ctx, buildStatement.OutputPaths[0]+".sh")
