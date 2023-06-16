@@ -818,7 +818,7 @@ func (c *RuleBuilderCommand) addOrderOnly(path Path) {
 // path with the placeholder prefix used for outputs in sbox.  If sbox is not enabled it returns the
 // original path.
 func (c *RuleBuilderCommand) PathForInput(path Path) string {
-	if c.rule.sbox {
+	if c != nil && c.rule.sbox {
 		rel, inSandbox := c.rule._sboxPathForInputRel(path)
 		if inSandbox {
 			rel = filepath.Join(sboxSandboxBaseDir, rel)
