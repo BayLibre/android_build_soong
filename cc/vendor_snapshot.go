@@ -319,7 +319,8 @@ var ccSnapshotAction snapshot.GenerateSnapshotAction = func(s snapshot.SnapshotS
 							stem = strings.TrimSuffix(stem, ext) + ".cfi" + ext
 							prop.Sanitize = "cfi"
 							prop.ModuleName += ".cfi"
-						} else if sanitizable.IsSanitizerEnabled(Hwasan) {
+						}
+						if sanitizable.IsSanitizerEnabled(Hwasan) {
 							// Same for the hwasan
 							ext := filepath.Ext(stem)
 							stem = strings.TrimSuffix(stem, ext) + ".hwasan" + ext
