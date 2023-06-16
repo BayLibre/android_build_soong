@@ -16,6 +16,24 @@
       "message": "Are Soong config variables the only variables that change between products? Wouldn\u0027t it possible for a module to be influenced by almost anything in soong.variables?",
       "revId": "b2fc95688c259c338eb8962b080f360e72d4c071",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d23585c4_56594494",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-06-16T06:20:33Z",
+      "side": 1,
+      "message": "No, a module can also be affected by other variables. But what we are targeting is incremental builds among a (conceptual) group of similar devices, e.g. same version of pixels and cuttlefish devices. Assuming that I think there are very few factors other than soong config.",
+      "parentUuid": "ce10b4e9_abba8ec7",
+      "revId": "b2fc95688c259c338eb8962b080f360e72d4c071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
