@@ -55,6 +55,10 @@ var (
 		"-Zdylib-lto",
 	}
 
+	RustLinkerArgs = strings.Join([]string{
+		"-Wl,--as-needed",
+	}, " ")
+
 	deviceGlobalRustFlags = []string{
 		"-C panic=abort",
 		"-Z link-native-libraries=no",
@@ -94,10 +98,9 @@ func init() {
 
 	pctx.ImportAs("cc_config", "android/soong/cc/config")
 	pctx.StaticVariable("RustLinker", "${cc_config.ClangBin}/clang++")
-	pctx.StaticVariable("RustLinkerArgs", "-Wl,--as-needed")
+	pctx.StaticVariable("RustLinkerArgs", RustLinkerArgs)
 
 	pctx.StaticVariable("DeviceGlobalLinkFlags", strings.Join(deviceGlobalLinkFlags, " "))
-
 }
 
 func getRustVersionPctx(ctx android.PackageVarContext) string {
@@ -143,4 +146,13 @@ func rustPath(ctx android.PathContext) android.SourcePath {
 	return ctx.Config().OnceSourcePath(rustPathKey, func() android.SourcePath {
 		return android.PathForSource(ctx, getRustBase(ctx), getHostPrebuiltTag(ctx.Config()), GetRustVersion(ctx))
 	})
+}
+
+func RustToolchainComponentsPaths(ctx android.PathContext) android.Paths {
+	return android.Paths{
+		RustPath(ctx, "lib/librustc_driver-538952ddf0f7d59a.so"),
+		RustPath(ctx, "lib/libstd-e4d585b827a2ecd8.so"),
+		RustPath(ctx, "lib/libLLVM-15-rust-dev.so"),
+		RustPath(ctx, "lib64/libc++.so.1"),
+	}
 }

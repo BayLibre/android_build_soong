@@ -2,7 +2,7 @@
 
 set -o pipefail
 
-HARDWIRED_MOCK_TOP=
+HARDWIRED_MOCK_TOP="/tmp/soong_test"
 # Uncomment this to be able to view the source tree after a test is run
 # HARDWIRED_MOCK_TOP=/tmp/td
 
@@ -56,7 +56,9 @@ function symlink_file {
   local file="$1"
 
   mkdir -p "$MOCK_TOP/$(dirname "$file")"
-  ln -s "$REAL_TOP/$file" "$MOCK_TOP/$file"
+  if [[ ! -e "$file" ]]; then
+    ln -s "$REAL_TOP/$file" "$MOCK_TOP/$file"
+  fi
 }
 
 function symlink_directory {
@@ -73,7 +75,8 @@ function symlink_directory {
 
     if [[ -e "$target" ]]; then
       if [[ ! -d "$source" || ! -d "$target" ]]; then
-        fail "Trying to symlink $dir twice"
+        #fail "Trying to symlink $dir twice"
+        continue
       fi
     else
       ln -s "$REAL_TOP/$dir/$i" "$MOCK_TOP/$dir/$i";
@@ -118,7 +121,7 @@ function create_mock_soong {
 }
 
 function setup {
-  cleanup_mock_top
+  #cleanup_mock_top
   mkdir -p "$MOCK_TOP"
 
   echo
@@ -142,6 +145,7 @@ function create_mock_bazel {
   symlink_directory prebuilts/bazel
   symlink_directory prebuilts/clang
   symlink_directory prebuilts/jdk
+  symlink_directory prebuilts/rust
   symlink_directory external/bazel-skylib
   symlink_directory external/bazelbuild-rules_android
   symlink_directory external/bazelbuild-rules_go
