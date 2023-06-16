@@ -199,6 +199,11 @@ type Path interface {
 	RelativeToTop() Path
 }
 
+// Directory returns just the dirname of the file without the filename.
+func PathDirname(p string) string {
+	return p[:len(p)-len(filepath.Base(p))]
+}
+
 const (
 	OutDir      = "out"
 	OutSoongDir = OutDir + "/soong"
@@ -2067,6 +2072,7 @@ func ModuleInstallPathContextForTesting(config Config) ModuleInstallPathContext 
 func Rel(ctx PathContext, basePath string, targetPath string) string {
 	rel, isRel := MaybeRel(ctx, basePath, targetPath)
 	if !isRel {
+		panic(fmt.Errorf("path %q is not under path %q", targetPath, basePath))
 		ReportPathErrorf(ctx, "path %q is not under path %q", targetPath, basePath)
 		return ""
 	}

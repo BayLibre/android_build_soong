@@ -155,7 +155,7 @@ func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps Path
 	}
 	binary.baseCompiler.unstrippedOutputFile = outputFile
 
-	ret.kytheFile = TransformSrcToBinary(ctx, srcPath, deps, flags, outputFile).kytheFile
+	ret.kytheFile = TransformSrcToBinary(ctx, binary, srcPath, deps, flags, outputFile).kytheFile
 	return ret
 }
 
