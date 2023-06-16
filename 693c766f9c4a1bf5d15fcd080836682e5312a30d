@@ -46,6 +46,30 @@
       },
       "revId": "693c766f9c4a1bf5d15fcd080836682e5312a30d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c9d5310_22f8f543",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-16T00:57:32Z",
+      "side": 1,
+      "message": "I haven\u0027t verified this, but you could add a bzl visiblity statement to rules_go\u0027s bzl files (i.e. a small fork) such that only //build/bazel/rules/go are allowed to use rules_go directly.",
+      "parentUuid": "d949bd5f_d79f5e01",
+      "range": {
+        "startLine": 442,
+        "startChar": 26,
+        "endLine": 442,
+        "endChar": 56
+      },
+      "revId": "693c766f9c4a1bf5d15fcd080836682e5312a30d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
