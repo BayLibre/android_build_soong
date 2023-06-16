@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"reflect"
+	"runtime"
 	"sort"
 	"strings"
 	"sync"
@@ -107,7 +108,9 @@ type BuildStatement struct {
 	OutputPaths  []string
 	SymlinkPaths []string
 	Env          []*analysis_v2_proto.KeyValuePair
-	Mnemonic     string
+	// env vars to be added to the command line in addition to aquery's Environment results
+	AdditionalEnv map[string]string
+	Mnemonic      string
 
 	// Inputs of this build statement, either as unexpanded depsets or expanded
 	// input paths. There should be no overlap between these fields; an input
@@ -453,6 +456,22 @@ func (a *aqueryArtifactHandler) depsetContentHashes(inputDepsetIds []uint32) ([]
 	return hashes, nil
 }
 
+// Creates a map of env variables that should be on the command line in addition to the ones returned by aquery
+func additionalEnvVars(actionEntry *analysis_v2_proto.Action) map[string]string {
+	switch actionEntry.Mnemonic {
+	case "GoToolchainBinaryBuild":
+		// Add GOROOT explicitly so that the builder util can find the standard libraries inside the cd'd execution root
+		//
+		// The GOROOT embeded in prebuilts/go/<os>-x86/bin/go is relative to BUILD_TOP
+		// https://cs.android.com/android/_/android/platform/prebuilts/build-tools/+/dab36b4a8d7584ffc5c4ad81219465bb01aa770f:build-prebuilts.sh;l=333;bpv=1;bpt=0;drc=b6758684d4e5145532f26de432099b4f5578cb27
+		// Add realpath so that this works inside the bazel's execution root
+		return map[string]string{
+			"GOROOT": fmt.Sprintf("$(realpath %s)", runtime.GOROOT()),
+		}
+	default:
+		return map[string]string{}
+	}
+}
 func (a *aqueryArtifactHandler) normalActionBuildStatement(actionEntry *analysis_v2_proto.Action) (*BuildStatement, error) {
 	command := strings.Join(proptools.ShellEscapeListIncludingSpaces(actionEntry.Arguments), " ")
 	inputDepsetHashes, err := a.depsetContentHashes(actionEntry.InputDepSetIds)
@@ -470,6 +489,7 @@ func (a *aqueryArtifactHandler) normalActionBuildStatement(actionEntry *analysis
 		OutputPaths:       outputPaths,
 		InputDepsetHashes: inputDepsetHashes,
 		Env:               actionEntry.EnvironmentVariables,
+		AdditionalEnv:     additionalEnvVars(actionEntry),
 		Mnemonic:          actionEntry.Mnemonic,
 	}
 	return buildStatement, nil
