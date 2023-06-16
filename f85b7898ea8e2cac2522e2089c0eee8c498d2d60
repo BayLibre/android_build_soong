@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af0374e_deda15e1",
+        "filename": "android/bazel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-16T13:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa06526d_754e9254",
+      "revId": "f85b7898ea8e2cac2522e2089c0eee8c498d2d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "720e152c_1630efa7",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f409e24_151bb3d9",
+        "filename": "android/bazel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-16T13:46:30Z",
+      "side": 1,
+      "message": "nice catch!! I thought my IDE or golint was supposed to warn about this...",
+      "parentUuid": "720e152c_1630efa7",
+      "revId": "f85b7898ea8e2cac2522e2089c0eee8c498d2d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53ce2cac_3d561c49",
@@ -48,6 +84,24 @@
       "writtenOn": "2023-06-15T21:35:52Z",
       "side": 1,
       "message": "nit: add a blank line",
+      "revId": "f85b7898ea8e2cac2522e2089c0eee8c498d2d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59bad60b_776e1f86",
+        "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-16T13:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ce2cac_3d561c49",
       "revId": "f85b7898ea8e2cac2522e2089c0eee8c498d2d60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
