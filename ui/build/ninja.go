@@ -194,6 +194,9 @@ func runNinjaForBuild(ctx Context, config Config) {
 
 			// LLVM compiler wrapper options
 			"TOOLCHAIN_RUSAGE_OUTPUT",
+
+			// primary builder for rules_go in mixed builds
+			"GOROOT",
 		}, config.BuildBrokenNinjaUsesEnvVars()...)...)
 	}
 

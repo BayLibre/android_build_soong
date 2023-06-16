@@ -453,8 +453,34 @@ func (a *aqueryArtifactHandler) depsetContentHashes(inputDepsetIds []uint32) ([]
 	return hashes, nil
 }
 
+// Removes empty args received from aquery.
+// Prevents parsing issues in ninja's bash actions.
+// e.g.
+// Input
+// [-embedroot  -embedroot blah -gcflags  -asmflags ]
+// Output
+// [-embedroot blah]
+func goCompilePackageArgs(args []string) []string {
+	ret := []string{}
+	i := 0
+	for i < len(args) {
+		if (strings.HasPrefix(args[i], "-")) && i + 1 < len(args) && args[i+1] == "" {
+			// If the argument is empty, skip it
+			i = i + 2
+		} else {
+			ret = append(ret, args[i])
+			i = i + 1
+		}
+	}
+	return ret
+}
+
 func (a *aqueryArtifactHandler) normalActionBuildStatement(actionEntry *analysis_v2_proto.Action) (*BuildStatement, error) {
-	command := strings.Join(proptools.ShellEscapeListIncludingSpaces(actionEntry.Arguments), " ")
+	args := actionEntry.Arguments
+	if actionEntry.Mnemonic == "GoCompilePkg" {
+		args = goCompilePackageArgs(args)
+	}
+	command := strings.Join(proptools.ShellEscapeListIncludingSpaces(args), " ")
 	inputDepsetHashes, err := a.depsetContentHashes(actionEntry.InputDepSetIds)
 	if err != nil {
 		return nil, err

@@ -390,8 +390,7 @@ func NewConfig(ctx Context, args ...string) Config {
 		// We're already using it
 		"USE_SOONG_UI",
 
-		// We should never use GOROOT/GOPATH from the shell environment
-		"GOROOT",
+		// We should never use GOPATH from the shell environment
 		"GOPATH",
 
 		// These should only come from Soong, not the environment.
@@ -447,6 +446,10 @@ func NewConfig(ctx Context, args ...string) Config {
 
 	// Tell python not to spam the source tree with .pyc files.
 	ret.environ.Set("PYTHONDONTWRITEBYTECODE", "1")
+
+	// Set GOROOT so the primary builder of rules_go can find the sdk in mixed builds
+	// This is not necessary for the compile and link go rules in build/blueprint since they explicitly set GOROOT
+	ret.environ.Set("GOROOT", runtime.GOROOT()) // TODO: Remove absolute paths
 
 	tmpDir := absPath(ctx, ret.TempDir())
 	ret.environ.Set("TMPDIR", tmpDir)
