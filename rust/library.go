@@ -530,13 +530,13 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 
 	// Call the appropriate builder for this library type
 	if library.rlib() {
-		ret.kytheFile = TransformSrctoRlib(ctx, srcPath, deps, flags, outputFile).kytheFile
+		ret.kytheFile = TransformSrctoRlib(ctx, library, srcPath, deps, flags, outputFile).kytheFile
 	} else if library.dylib() {
-		ret.kytheFile = TransformSrctoDylib(ctx, srcPath, deps, flags, outputFile).kytheFile
+		ret.kytheFile = TransformSrctoDylib(ctx, library, srcPath, deps, flags, outputFile).kytheFile
 	} else if library.static() {
-		ret.kytheFile = TransformSrctoStatic(ctx, srcPath, deps, flags, outputFile).kytheFile
+		ret.kytheFile = TransformSrctoStatic(ctx, library, srcPath, deps, flags, outputFile).kytheFile
 	} else if library.shared() {
-		ret.kytheFile = TransformSrctoShared(ctx, srcPath, deps, flags, outputFile).kytheFile
+		ret.kytheFile = TransformSrctoShared(ctx, library, srcPath, deps, flags, outputFile).kytheFile
 	}
 
 	if library.rlib() || library.dylib() {
@@ -583,8 +583,11 @@ func (library *libraryDecorator) srcPath(ctx ModuleContext, _ PathDeps) android.
 	if library.sourceProvider != nil {
 		// Assume the first source from the source provider is the library entry point.
 		return library.sourceProvider.Srcs()[0]
-	} else {
+	} else if library.baseCompiler.Properties.Crate_root == nil {
 		path, _ := srcPathFromModuleSrcs(ctx, library.baseCompiler.Properties.Srcs)
+		return path
+	} else {
+		path := android.PathForModuleSrc(ctx, *library.baseCompiler.Properties.Crate_root)
 		return path
 	}
 }
