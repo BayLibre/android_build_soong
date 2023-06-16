@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this belongs in AOSP.  AOSP does not have the full U APIs yet, so it can\u0027t be marked finalized.  AOSP will get finalized U after the U release.",
       "revId": "03e57b595131a5d95ac3fa238814c640df187754",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f94720eb_958775b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466604
+      },
+      "writtenOn": "2023-06-16T12:18:31Z",
+      "side": 1,
+      "message": "Noted. Abandoning. Colin pointed at me at a simpler solution offline.",
+      "parentUuid": "88d23532_0ced70f8",
+      "revId": "03e57b595131a5d95ac3fa238814c640df187754",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
