@@ -33,6 +33,24 @@
       "message": "Can you add a little bit more detail about what this means?",
       "revId": "2c8c4f8165e8e7adc69b304bba5f3afb3897c7dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "effcfc1c_1e13a5d1",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-16T18:26:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5d59000_4573c759",
+      "revId": "2c8c4f8165e8e7adc69b304bba5f3afb3897c7dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
