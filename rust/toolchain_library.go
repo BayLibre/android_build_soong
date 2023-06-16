@@ -18,6 +18,7 @@ package rust
 
 import (
 	"path"
+	"path/filepath"
 
 	"android/soong/android"
 	"android/soong/rust/config"
@@ -88,7 +89,7 @@ func initToolchainLibrary(module *Module, library *libraryDecorator) android.Mod
 
 func rustSetToolchainSource(ctx android.LoadHookContext) {
 	if toolchainLib, ok := ctx.Module().(*Module).compiler.(*toolchainLibraryDecorator); ok {
-		prefix := "linux-x86/" + GetRustPrebuiltVersion(ctx)
+		prefix := filepath.Join(config.HostPrebuiltTag(ctx.Config()), GetRustPrebuiltVersion(ctx))
 		versionedCrateRoot := path.Join(prefix, android.String(toolchainLib.Properties.Toolchain_crate_root))
 		versionedSrcs := make([]string, len(toolchainLib.Properties.Toolchain_srcs))
 		for i, src := range toolchainLib.Properties.Toolchain_srcs {
@@ -138,7 +139,7 @@ func rustToolchainRustcPrebuiltFactory() android.Module {
 			ctx.PropertyErrorf("toolchain_prebuilt_src", "must set path to rustc prebuilt")
 		}
 
-		prefix := "linux-x86/" + GetRustPrebuiltVersion(ctx)
+		prefix := filepath.Join(config.HostPrebuiltTag(ctx.Config()), GetRustPrebuiltVersion(ctx))
 		deps := make([]string, 0, len(toolchainProps.Toolchain_deps)+len(toolchainProps.Deps))
 		for _, d := range toolchainProps.Toolchain_deps {
 			deps = append(deps, path.Join(prefix, d))
