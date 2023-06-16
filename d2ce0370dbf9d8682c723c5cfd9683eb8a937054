@@ -34,6 +34,24 @@
       "parentUuid": "05e93a86_7066b663",
       "revId": "d2ce0370dbf9d8682c723c5cfd9683eb8a937054",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c28db2_07601a48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-16T15:01:10Z",
+      "side": 1,
+      "message": "yeah, it turns out this fix is significantly more difficult than I thought. We can\u0027t add -gen to just prebuilts, either, because sometimes the module depends on the non-prebuilt version, which does not have the -gen suffix.\n\nPerhaps we should instead just fix this in bp2build? IIRC we may depend on the \"out\" from a genrule as if it\u0027s a target, so it should make no difference for a Bazel target whether the name has a \"-gen\" suffix or not.",
+      "parentUuid": "27991e91_9234ec98",
+      "revId": "d2ce0370dbf9d8682c723c5cfd9683eb8a937054",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
