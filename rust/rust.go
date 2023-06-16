@@ -433,12 +433,13 @@ type Deps struct {
 }
 
 type PathDeps struct {
-	DyLibs          RustLibraries
-	RLibs           RustLibraries
+	Dylibs          *android.DepSet[RustLibrary]
+	Rlibs           *android.DepSet[RustLibrary]
+	ProcMacros      *android.DepSet[RustLibrary]
 	LibDeps         android.Paths
 	WholeStaticLibs android.Paths
-	ProcMacros      RustLibraries
 	AfdoProfiles    android.Paths
+	BuildToolDeps   android.Paths
 
 	// depFlags and depLinkFlags are rustc and linker (clang) flags.
 	depFlags     []string
@@ -480,6 +481,8 @@ type compiler interface {
 	compilerDeps(ctx DepsContext, deps Deps) Deps
 	crateName() string
 	rustdoc(ctx ModuleContext, flags Flags, deps PathDeps) android.OptionalPath
+	crateRoot(ctx ModuleContext) android.Path
+	compilationSourcesAndData(ctx ModuleContext) android.Paths
 
 	// Output directory in which source-generated code from dependencies is
 	// copied. This is equivalent to Cargo's OUT_DIR variable.
@@ -921,6 +924,15 @@ func (mod *Module) ccToolchain(ctx android.BaseModuleContext) cc_config.Toolchai
 func (d *Defaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 }
 
+type RustInfo struct {
+	TransitiveRlibs       *android.DepSet[RustLibrary]
+	TransitiveDylibs      *android.DepSet[RustLibrary]
+	TransitiveProcMacros  *android.DepSet[RustLibrary]
+	TransitiveLinkObjects *android.DepSet[android.Path]
+}
+
+var RustInfoProvider = blueprint.NewProvider(RustInfo{})
+
 func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	ctx := &moduleContext{
 		ModuleContext: actx,
@@ -1030,6 +1042,12 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 		ctx.Phony("rust", ctx.RustModule().OutputFile().Path())
 	}
+
+	ctx.SetProvider(RustInfoProvider, RustInfo{
+		TransitiveRlibs:      deps.Rlibs,
+		TransitiveDylibs:     deps.Dylibs,
+		TransitiveProcMacros: deps.ProcMacros,
+	})
 }
 
 func (mod *Module) deps(ctx DepsContext) Deps {
@@ -1088,6 +1106,7 @@ func (d dependencyTag) LicenseAnnotations() []android.LicenseAnnotation {
 var _ android.LicenseAnnotationsDependencyTag = dependencyTag{}
 
 var (
+	buildToolDepTag     = dependencyTag{name: "buildToolTag"}
 	customBindgenDepTag = dependencyTag{name: "customBindgenTag"}
 	rlibDepTag          = dependencyTag{name: "rlibTag", library: true}
 	dylibDepTag         = dependencyTag{name: "dylib", library: true, dynamic: true}
@@ -1221,10 +1240,25 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 	var transitiveAndroidMkSharedLibs []*android.DepSet[string]
 	var directAndroidMkSharedLibs []string
-
+	transitiveRlibs := android.NewDepSetBuilder[RustLibrary](android.PREORDER)
+	transitiveDylibs := android.NewDepSetBuilder[RustLibrary](android.PREORDER)
+	transitiveProcMacros := android.NewDepSetBuilder[RustLibrary](android.PREORDER)
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
+
+		rustInfo := ctx.OtherModuleProvider(dep, RustInfoProvider).(RustInfo)
+		if rustInfo.TransitiveDylibs != nil {
+			transitiveDylibs.Transitive(rustInfo.TransitiveDylibs)
+		}
+		if rustInfo.TransitiveRlibs != nil {
+			transitiveRlibs.Transitive(rustInfo.TransitiveRlibs)
+		}
+		if rustInfo.TransitiveProcMacros != nil {
+			transitiveProcMacros.Transitive(rustInfo.TransitiveProcMacros)
+		}
+		if rustInfo.TransitiveLinkObjects != nil {
+		}
 
 		if _, exists := skipModuleList[depName]; exists {
 			return
@@ -1248,9 +1282,12 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				directDylibDeps = append(directDylibDeps, rustDep)
 				mod.Properties.AndroidMkDylibs = append(mod.Properties.AndroidMkDylibs, makeLibName)
 				mod.Properties.SnapshotDylibs = append(mod.Properties.SnapshotDylibs, cc.BaseLibName(depName))
+				transitiveDylibs.Direct(RustLibrary{
+					Path:      rustDep.UnstrippedOutputFile(),
+					CrateName: rustDep.CrateName(),
+				})
 
 			case rlibDepTag:
-
 				rlib, ok := rustDep.compiler.(libraryInterface)
 				if !ok || !rlib.rlib() {
 					ctx.ModuleErrorf("mod %q not an rlib library", makeLibName)
@@ -1259,10 +1296,18 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				directRlibDeps = append(directRlibDeps, rustDep)
 				mod.Properties.AndroidMkRlibs = append(mod.Properties.AndroidMkRlibs, makeLibName)
 				mod.Properties.SnapshotRlibs = append(mod.Properties.SnapshotRlibs, cc.BaseLibName(depName))
+				transitiveRlibs.Direct(RustLibrary{
+					Path:      rustDep.UnstrippedOutputFile(),
+					CrateName: rustDep.CrateName(),
+				})
 
 			case procMacroDepTag:
 				directProcMacroDeps = append(directProcMacroDeps, rustDep)
 				mod.Properties.AndroidMkProcMacroLibs = append(mod.Properties.AndroidMkProcMacroLibs, makeLibName)
+				transitiveProcMacros.Direct(RustLibrary{
+					Path:      rustDep.UnstrippedOutputFile(),
+					CrateName: rustDep.CrateName(),
+				})
 			}
 
 			transitiveAndroidMkSharedLibs = append(transitiveAndroidMkSharedLibs, rustDep.transitiveAndroidMkSharedLibs)
@@ -1416,6 +1461,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			}
 		} else {
 			switch {
+			case depTag == buildToolDepTag:
+				buildTool := ctx.OtherModuleProvider(dep, android.PrebuiltBuildToolInfoProvider).(android.PrebuiltBuildToolInfo)
+				depPaths.BuildToolDeps = append(depPaths.BuildToolDeps, buildTool.Src)
+				depPaths.BuildToolDeps = append(depPaths.BuildToolDeps, buildTool.Deps...)
 			case depTag == cc.CrtBeginDepTag:
 				depPaths.CrtBegin = append(depPaths.CrtBegin, android.OutputFileForModule(ctx, dep, ""))
 			case depTag == cc.CrtEndDepTag:
@@ -1469,10 +1518,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		srcProviderDepFiles = append(srcProviderDepFiles, srcs...)
 	}
 
-	depPaths.RLibs = append(depPaths.RLibs, rlibDepFiles...)
-	depPaths.DyLibs = append(depPaths.DyLibs, dylibDepFiles...)
 	depPaths.LibDeps = append(depPaths.LibDeps, libDepFiles...)
-	depPaths.ProcMacros = append(depPaths.ProcMacros, procMacroDepFiles...)
 	depPaths.SrcDeps = append(depPaths.SrcDeps, srcProviderDepFiles...)
 
 	// Dedup exported flags from dependencies
@@ -1482,6 +1528,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	depPaths.depClangFlags = android.FirstUniqueStrings(depPaths.depClangFlags)
 	depPaths.depIncludePaths = android.FirstUniquePaths(depPaths.depIncludePaths)
 	depPaths.depSystemIncludePaths = android.FirstUniquePaths(depPaths.depSystemIncludePaths)
+
+	depPaths.Rlibs = transitiveRlibs.Build()
+	depPaths.Dylibs = transitiveDylibs.Build()
+	depPaths.ProcMacros = transitiveProcMacros.Build()
 
 	return depPaths
 }
@@ -1550,6 +1600,9 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		rlibDepVariations = append(rlibDepVariations,
 			blueprint.Variation{Mutator: "rust_stdlinkage", Variation: stdLinkage})
 	}
+
+	ctx.AddFarVariationDependencies([]blueprint.Variation{}, buildToolDepTag, "rustc")
+	ctx.AddFarVariationDependencies([]blueprint.Variation{}, buildToolDepTag, "clang++")
 
 	// rlibs
 	rlibDepVariations = append(rlibDepVariations, blueprint.Variation{Mutator: "rust_libraries", Variation: rlibVariation})

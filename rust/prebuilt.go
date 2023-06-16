@@ -146,7 +146,10 @@ func (prebuilt *prebuiltLibraryDecorator) compilerProps() []interface{} {
 }
 
 func (prebuilt *prebuiltLibraryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) buildOutput {
-	prebuilt.flagExporter.exportLinkDirs(android.PathsForModuleSrc(ctx, prebuilt.Properties.Link_dirs).Strings()...)
+	deps.linkDirs = append(deps.linkDirs, android.PathsForModuleSrc(ctx, prebuilt.Properties.Link_dirs).Strings()...)
+	prebuilt.flagExporter.exportLinkDirs(deps.linkDirs...)
+	prebuilt.flagExporter.exportLinkObjects(deps.linkObjects...)
+	prebuilt.flagExporter.exportLibDeps(deps.LibDeps...)
 	prebuilt.flagExporter.setProvider(ctx)
 
 	srcPath, paths := srcPathFromModuleSrcs(ctx, prebuilt.prebuiltSrcs())
