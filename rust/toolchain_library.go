@@ -37,7 +37,8 @@ func init() {
 
 type toolchainLibraryProperties struct {
 	// path to the toolchain source, relative to the top of the toolchain source
-	Toolchain_src *string `android:"arch_variant"`
+	Toolchain_src          *string  `android:"arch_variant"`
+	Toolchain_compile_srcs []string `android:"arch_variant"`
 }
 
 type toolchainLibraryDecorator struct {
@@ -84,14 +85,19 @@ func rustSetToolchainSource(ctx android.LoadHookContext) {
 	if toolchainLib, ok := ctx.Module().(*Module).compiler.(*toolchainLibraryDecorator); ok {
 		prefix := "linux-x86/" + GetRustPrebuiltVersion(ctx)
 		newSrcs := []string{path.Join(prefix, android.String(toolchainLib.Properties.Toolchain_src))}
+		newCompileSrcs := make([]string, len(toolchainLib.Properties.Toolchain_compile_srcs))
+		for i, src := range toolchainLib.Properties.Toolchain_compile_srcs {
+			newCompileSrcs[i] = path.Join(prefix, src)
+		}
 
 		type props struct {
-			Srcs []string
+			Srcs         []string
+			Compile_srcs []string
 		}
 		p := &props{}
 		p.Srcs = newSrcs
+		p.Compile_srcs = newCompileSrcs
 		ctx.AppendProperties(p)
-
 	} else {
 		ctx.ModuleErrorf("Called rustSetToolchainSource on a non-Rust Module.")
 	}
