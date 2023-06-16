@@ -69,6 +69,42 @@
       "message": "Tests please?",
       "revId": "b2fc95688c259c338eb8962b080f360e72d4c071",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69285cf1_f9d32246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-06-16T06:52:43Z",
+      "side": 1,
+      "message": "Mmm, I already have tests (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/soong_config_modules_test.go;l\u003d511;drc\u003d81b00a8db73491a4cac326853853be743000a2ac), and the bug was due to `if i, ok :\u003d ctx.(interface{ ModuleSoongConfigHash() string }); ok {` misbehaving for custom context like `cc.ModuleContext`.\n\nI think adding the function to `ModuleOutPathContext` is enough. Please reopen if you have remaining concenrs.",
+      "parentUuid": "16962b7e_8f29216b",
+      "revId": "b2fc95688c259c338eb8962b080f360e72d4c071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f75efb_bef325b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-06-16T06:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e809979_798a1e2f",
+      "revId": "b2fc95688c259c338eb8962b080f360e72d4c071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
