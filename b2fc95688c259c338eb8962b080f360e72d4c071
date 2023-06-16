@@ -34,6 +34,41 @@
       "parentUuid": "ce10b4e9_abba8ec7",
       "revId": "b2fc95688c259c338eb8962b080f360e72d4c071",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e809979_798a1e2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-16T06:25:04Z",
+      "side": 1,
+      "message": "That makes sense to me, but can you please make this limitation clear in the prop \ndocumentation? Feel free to do so in a follow-up.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;l\u003d990-992;drc\u003d370f13c3bd64c888d14dbdc81497f665b43b0e79",
+      "parentUuid": "d23585c4_56594494",
+      "revId": "b2fc95688c259c338eb8962b080f360e72d4c071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16962b7e_8f29216b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-16T06:25:04Z",
+      "side": 1,
+      "message": "Tests please?",
+      "revId": "b2fc95688c259c338eb8962b080f360e72d4c071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
