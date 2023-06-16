@@ -41,6 +41,7 @@ var (
 	hwasanCflags = []string{
 		"-fno-omit-frame-pointer",
 		"-Wno-frame-larger-than=",
+		"-mllvm", "-dom-tree-reachability-max-bbs-to-explore=128",
 		"-fsanitize-hwaddress-abi=platform",
 		"-mllvm", "-hwasan-use-after-scope=1",
 	}
