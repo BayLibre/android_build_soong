@@ -275,6 +275,14 @@ func FixtureModifyContext(mutator func(ctx *TestContext)) FixturePreparer {
 	})
 }
 
+// Modify the context, and
+func FixtureModifyContextWithMockFs(mutator func(ctx *TestContext)) FixturePreparer {
+	return newSimpleFixturePreparer(func(f *fixture) {
+		f.config.mockFileSystem("", f.mockFS)
+		mutator(f.ctx)
+	})
+}
+
 func FixtureRegisterWithContext(registeringFunc func(ctx RegistrationContext)) FixturePreparer {
 	return FixtureModifyContext(func(ctx *TestContext) { registeringFunc(ctx) })
 }
