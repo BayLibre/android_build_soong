@@ -486,7 +486,7 @@ func (r *RuleBuilder) Build(name string, desc string) {
 	r.build(name, desc, true, pctx)
 }
 
-func (r *RuleBuilder) build(name string, desc string, ninjaEscape bool, pctx PackageContext) {
+func (r *RuleBuilder) build(name string, desc string, ninjaEscapeCommandString bool, pctx PackageContext) {
 	name = ninjaNameEscape(name)
 
 	if len(r.missingDeps) > 0 {
@@ -634,7 +634,7 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscape bool, pctx Pac
 		if err != nil {
 			ReportPathErrorf(r.ctx, "sbox manifest failed to marshal: %q", err)
 		}
-		if ninjaEscape {
+		if ninjaEscapeCommandString {
 			WriteFileRule(r.ctx, r.sboxManifestPath, string(pbText))
 		} else {
 			r.ctx.Build(pctx, BuildParams{
@@ -744,9 +744,13 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscape bool, pctx Pac
 		pool = localPool
 	}
 
+	if ninjaEscapeCommandString {
+		commandString = proptools.NinjaEscape(commandString)
+	}
+
 	r.ctx.Build(r.pctx, BuildParams{
 		Rule: r.ctx.Rule(pctx, name, blueprint.RuleParams{
-			Command:        proptools.NinjaEscape(commandString),
+			Command:        commandString,
 			CommandDeps:    proptools.NinjaEscapeList(tools.Strings()),
 			Restat:         r.restat,
 			Rspfile:        proptools.NinjaEscape(rspFile),
