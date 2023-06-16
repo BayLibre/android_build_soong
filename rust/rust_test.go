@@ -15,14 +15,17 @@
 package rust
 
 import (
+	"fmt"
 	"os"
 	"runtime"
 	"strings"
 	"testing"
 
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/encoding/prototext"
 
 	"android/soong/android"
+	"android/soong/cmd/sbox/sbox_proto"
 	"android/soong/genrule"
 )
 
@@ -36,6 +39,10 @@ var prepareForRustTest = android.GroupFixturePreparers(
 	android.PrepareForTestWithPrebuilts,
 
 	genrule.PrepareForTestWithGenRuleBuildComponents,
+
+	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
+		ctx.RegisterModuleType("prebuilt_build_tool", android.PrebuiltBuildToolFactory)
+	}),
 
 	PrepareForTestWithRustIncludeVndk,
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
@@ -64,11 +71,14 @@ var rustMockedFiles = android.MockFS{
 
 // testRust returns a TestContext in which a basic environment has been setup.
 // This environment contains a few mocked files. See rustMockedFiles for the list of these files.
-func testRust(t *testing.T, bp string) *android.TestContext {
+func testRust(t *testing.T, bp string, preparers ...android.FixturePreparer) *android.TestContext {
 	skipTestIfOsNotSupported(t)
 	result := android.GroupFixturePreparers(
 		prepareForRustTest,
 		rustMockedFiles.AddToFixture(),
+		android.GroupFixturePreparers(
+			preparers...,
+		),
 	).
 		RunTestWithBp(t, bp)
 	return result.TestContext
@@ -484,5 +494,282 @@ func assertString(t *testing.T, got, expected string) {
 	t.Helper()
 	if got != expected {
 		t.Errorf("expected %q got %q", expected, got)
+	}
+}
+
+var (
+	sboxCompilationFiles = []string{
+		"prebuilts/rust/linux-x86/1.70.0/bin/rustc",
+		"prebuilts/clang/host/linux-x86/clang-r487747c/bin/llvm-ar",
+		"out/soong/.intermediates/defaults/rust/libaddr2line/android_arm64_armv8-a_rlib/libaddr2line.rlib",
+		"out/soong/.intermediates/defaults/rust/libadler/android_arm64_armv8-a_rlib/libadler.rlib",
+		"out/soong/.intermediates/defaults/rust/liballoc/android_arm64_armv8-a_rlib/liballoc.rlib",
+		"out/soong/.intermediates/defaults/rust/libcfg_if/android_arm64_armv8-a_rlib/libcfg_if.rlib",
+		"out/soong/.intermediates/defaults/rust/libcompiler_builtins/android_arm64_armv8-a_rlib/libcompiler_builtins.rlib",
+		"out/soong/.intermediates/defaults/rust/libcore/android_arm64_armv8-a_rlib/libcore.rlib",
+		"out/soong/.intermediates/defaults/rust/libgimli/android_arm64_armv8-a_rlib/libgimli.rlib",
+		"out/soong/.intermediates/defaults/rust/libhashbrown/android_arm64_armv8-a_rlib/libhashbrown.rlib",
+		"out/soong/.intermediates/defaults/rust/liblibc/android_arm64_armv8-a_rlib/liblibc.rlib",
+		"out/soong/.intermediates/defaults/rust/libmemchr/android_arm64_armv8-a_rlib/libmemchr.rlib",
+		"out/soong/.intermediates/defaults/rust/libminiz_oxide/android_arm64_armv8-a_rlib/libminiz_oxide.rlib",
+		"out/soong/.intermediates/defaults/rust/libobject/android_arm64_armv8-a_rlib/libobject.rlib",
+		"out/soong/.intermediates/defaults/rust/libpanic_unwind/android_arm64_armv8-a_rlib/libpanic_unwind.rlib",
+		"out/soong/.intermediates/defaults/rust/librustc_demangle/android_arm64_armv8-a_rlib/librustc_demangle.rlib",
+		"out/soong/.intermediates/defaults/rust/librustc_std_workspace_alloc/android_arm64_armv8-a_rlib/librustc_std_workspace_alloc.rlib",
+		"out/soong/.intermediates/defaults/rust/librustc_std_workspace_core/android_arm64_armv8-a_rlib/librustc_std_workspace_core.rlib",
+		"out/soong/.intermediates/defaults/rust/libstd_detect/android_arm64_armv8-a_rlib/libstd_detect.rlib",
+		"build/soong/scripts/mkcratersp.py",
+		"defaults/rust/linux-x86/1.69.0/bin/rustc",
+		"defaults/rust/linux-x86/1.69.0/lib/libLLVM-15-rust-dev.so",
+		"defaults/rust/linux-x86/1.69.0/lib/librustc_driver-538952ddf0f7d59a.so",
+		"defaults/rust/linux-x86/1.69.0/lib/libstd-e4d585b827a2ecd8.so",
+		"defaults/rust/linux-x86/1.69.0/lib64/libc++.so.1",
+	}
+	sboxCompilationFilesWithCc = android.Concat(sboxCompilationFiles, []string{
+		"defaults/cc/common",
+		"prebuilts/clang/host/linux-x86/clang-r487747c/bin/clang++",
+		"prebuilts/clang/host/linux-x86/clang-r487747c/bin/clang++.real",
+		"prebuilts/clang/host/linux-x86/clang-r487747c/bin/ld.lld",
+		"prebuilts/clang/host/linux-x86/clang-r487747c/bin/lld",
+		"out/soong/.intermediates/defaults/rust/libstd/android_arm64_armv8-a_dylib/unstripped/libstd.dylib.so",
+		"out/soong/.intermediates/defaults/cc/common/libc/android_arm64_armv8-a_shared/libc.so",
+		"out/soong/.intermediates/defaults/cc/common/libc/android_arm64_armv8-a_shared/libc.so.toc",
+		"out/soong/.intermediates/defaults/cc/common/libdl/android_arm64_armv8-a_shared/libdl.so",
+		"out/soong/.intermediates/defaults/cc/common/libdl/android_arm64_armv8-a_shared/libdl.so.toc",
+		"out/soong/.intermediates/defaults/cc/common/libm/android_arm64_armv8-a_shared/libm.so",
+		"out/soong/.intermediates/defaults/cc/common/libm/android_arm64_armv8-a_shared/libm.so.toc",
+		"out/soong/.intermediates/defaults/rust/liblog/android_arm64_armv8-a_shared/liblog.so",
+		"out/soong/.intermediates/defaults/rust/liblog/android_arm64_armv8-a_shared/liblog.so.toc",
+	})
+	sboxCompilationFilesShared = android.Concat(sboxCompilationFilesWithCc, []string{
+		"out/soong/.intermediates/defaults/cc/common/crtbegin_so/android_arm64_armv8-a/crtbegin_so.o",
+		"out/soong/.intermediates/defaults/cc/common/crtend_so/android_arm64_armv8-a/crtend_so.o",
+	})
+)
+
+func TestCrateRootSandboxCompilation(t *testing.T) {
+	ctx := testRust(t, `
+		filegroup {
+			name: "libsrcs1",
+			srcs: ["src_filegroup1.rs"],
+		}
+		filegroup {
+			name: "libsrcs2",
+			srcs: ["src_filegroup2.rs"],
+		}
+		rust_library {
+			name: "libfizz_buzz",
+			crate_name:"fizz_buzz",
+			crate_root: "foo.rs",
+			srcs: [
+				"src_lib*.rs",
+				":libsrcs1",
+				":libsrcs2",
+			],
+		}
+		rust_binary {
+			name: "fizz_buzz",
+			crate_name:"fizz_buzz",
+			crate_root: "foo.rs",
+			srcs: [
+				"src_lib*.rs",
+				":libsrcs1",
+				":libsrcs2",
+			],
+		}
+		rust_ffi {
+			name: "librust_ffi",
+			crate_name: "rust_ffi",
+			crate_root: "foo.rs",
+			static: {
+				enabled: true,
+				srcs: ["static_only.rs"],
+			},
+			shared: {
+				enabled: true,
+				srcs: ["shared_only.rs"],
+			},
+			srcs: ["src1.rs"],
+		}
+	`,
+		android.GroupFixturePreparers(
+			android.MockFS{
+				"src_lib1.rs":       nil,
+				"src_lib2.rs":       nil,
+				"src_lib3.rs":       nil,
+				"src_lib4.rs":       nil,
+				"src_filegroup1.rs": nil,
+				"src_filegroup2.rs": nil,
+				"static_only.rs":    nil,
+				"shared_only.rs":    nil,
+			}.AddToFixture(),
+		),
+	)
+
+	testcases := []struct {
+		name                string
+		moduleName          string
+		variant             string
+		expectedFilesToCopy []string
+		expectedFlags       []string
+	}{
+		{
+			name:       "rust_library dylib variant",
+			moduleName: "libfizz_buzz",
+			variant:    "android_arm64_armv8-a_dylib",
+			expectedFilesToCopy: android.Concat(sboxCompilationFilesShared, []string{
+				"foo.rs",
+				"src_lib1.rs",
+				"src_lib2.rs",
+				"src_lib3.rs",
+				"src_lib4.rs",
+				"src_filegroup1.rs",
+				"src_filegroup2.rs",
+				"out/soong/.intermediates/libfizz_buzz/android_arm64_armv8-a_dylib/out/src_filegroup1.rs",
+				"out/soong/.intermediates/libfizz_buzz/android_arm64_armv8-a_dylib/out/src_filegroup2.rs",
+				"out/soong/.intermediates/libfizz_buzz/android_arm64_armv8-a_dylib/libfizz_buzz.dylib.so.clippy",
+				"out/soong/.intermediates/libfizz_buzz/android_arm64_armv8-a_dylib/libc++.so.1",
+			}),
+			expectedFlags: []string{
+				"-C linker=build/soong/scripts/mkcratersp.py",
+				"--emit link",
+				"-o __SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.dylib.so.rsp",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.dylib.so.d.raw",
+				"foo.rs", // this is the entry point
+			},
+		},
+		{
+			name:       "rust_library rlib variant",
+			moduleName: "libfizz_buzz",
+			variant:    "android_arm64_armv8-a_rlib_rlib-std",
+			expectedFilesToCopy: android.Concat(sboxCompilationFiles, []string{
+				"foo.rs",
+				"src_lib1.rs",
+				"src_lib2.rs",
+				"src_lib3.rs",
+				"src_lib4.rs",
+				"src_filegroup1.rs",
+				"src_filegroup2.rs",
+				"out/soong/.intermediates/libfizz_buzz/android_arm64_armv8-a_rlib_rlib-std/out/src_filegroup1.rs",
+				"out/soong/.intermediates/libfizz_buzz/android_arm64_armv8-a_rlib_rlib-std/out/src_filegroup2.rs",
+				"out/soong/.intermediates/libfizz_buzz/android_arm64_armv8-a_rlib_rlib-std/libfizz_buzz.rlib.clippy",
+				"out/soong/.intermediates/defaults/rust/libstd/android_arm64_armv8-a_rlib/libstd.rlib",
+			}),
+			expectedFlags: []string{
+				"--emit link",
+				"-o __SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.rlib",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/libfizz_buzz.rlib.d.raw",
+				"foo.rs", // this is the entry point
+			},
+		},
+		{
+			name:       "rust_binary",
+			moduleName: "fizz_buzz",
+			variant:    "android_arm64_armv8-a",
+			expectedFilesToCopy: android.Concat(sboxCompilationFilesWithCc, []string{
+				"foo.rs",
+				"src_lib1.rs",
+				"src_lib2.rs",
+				"src_lib3.rs",
+				"src_lib4.rs",
+				"src_filegroup1.rs",
+				"src_filegroup2.rs",
+				"out/soong/.intermediates/fizz_buzz/android_arm64_armv8-a/out/src_filegroup1.rs",
+				"out/soong/.intermediates/fizz_buzz/android_arm64_armv8-a/out/src_filegroup2.rs",
+				"out/soong/.intermediates/fizz_buzz/android_arm64_armv8-a/fizz_buzz.clippy",
+				"out/soong/.intermediates/fizz_buzz/android_arm64_armv8-a/libc++.so.1",
+				"out/soong/.intermediates/defaults/cc/common/crtbegin_dynamic/android_arm64_armv8-a/crtbegin_dynamic.o",
+				"out/soong/.intermediates/defaults/cc/common/crtend_android/android_arm64_armv8-a/crtend_android.o",
+			}),
+			expectedFlags: []string{
+				"--emit link",
+				"-o __SBOX_SANDBOX_DIR__/out/soong/fizz_buzz",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/fizz_buzz.d.raw",
+				"foo.rs", // this is the entry point
+			},
+		},
+		{
+			name:       "rust_ffi static lib variant",
+			moduleName: "librust_ffi",
+			variant:    "android_arm64_armv8-a_static",
+			expectedFilesToCopy: android.Concat(sboxCompilationFiles, []string{
+				"foo.rs",
+				"src1.rs",
+				"static_only.rs",
+				"out/soong/.intermediates/librust_ffi/android_arm64_armv8-a_static/out/static_only.rs",
+				"out/soong/.intermediates/librust_ffi/android_arm64_armv8-a_static/librust_ffi.a.clippy",
+				"out/soong/.intermediates/defaults/rust/libstd/android_arm64_armv8-a_rlib/libstd.rlib",
+			}),
+			expectedFlags: []string{
+				"--emit link",
+				"-o __SBOX_SANDBOX_DIR__/out/soong/librust_ffi.a",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/librust_ffi.a.d.raw",
+				"foo.rs", // this is the entry point
+			},
+		},
+		{
+			name:       "rust_ffi shared lib variant",
+			moduleName: "librust_ffi",
+			variant:    "android_arm64_armv8-a_shared",
+			expectedFilesToCopy: android.Concat(sboxCompilationFilesShared, []string{
+				"foo.rs",
+				"src1.rs",
+				"shared_only.rs",
+				"out/soong/.intermediates/librust_ffi/android_arm64_armv8-a_shared/out/shared_only.rs",
+				"out/soong/.intermediates/librust_ffi/android_arm64_armv8-a_shared/librust_ffi.so.clippy",
+				"out/soong/.intermediates/librust_ffi/android_arm64_armv8-a_shared/libc++.so.1",
+			}),
+			expectedFlags: []string{
+				"--emit link",
+				"-o __SBOX_SANDBOX_DIR__/out/soong/librust_ffi.so",
+				"--emit dep-info=__SBOX_SANDBOX_DIR__/out/soong/librust_ffi.so.d.raw",
+				"foo.rs", // this is the entry point
+			},
+		},
+	}
+
+	for _, tc := range testcases {
+		t.Run(tc.name, func(t *testing.T) {
+			writeFile := ctx.ModuleForTests(tc.moduleName, tc.variant).Rule("writeExpandedFileRule")
+			contents := writeFile.BuildParams.Args["contents"]
+			manifestProto := sbox_proto.Manifest{}
+			err := prototext.Unmarshal([]byte(contents), &manifestProto)
+			if err != nil {
+				t.Errorf("expected no errors unmarshaling manifest proto; got %v", err)
+			}
+
+			if len(manifestProto.Commands) != 1 {
+				t.Errorf("expected 1 command; got %v", len(manifestProto.Commands))
+			}
+
+			// check that sandbox contains correct files
+			rustc := manifestProto.Commands[0]
+			actualFilesToCopy := []string{}
+			for _, copy := range rustc.CopyBefore {
+				actualFilesToCopy = append(actualFilesToCopy, copy.GetFrom())
+			}
+			_, expectedFilesNotCopied, unexpectedFilesCopied := android.ListSetDifference(tc.expectedFilesToCopy, actualFilesToCopy)
+			if len(expectedFilesNotCopied) > 0 {
+				fmt.Println(tc.expectedFilesToCopy)
+				t.Errorf("did not copy expected files to sbox: %v", expectedFilesNotCopied)
+			}
+			if len(unexpectedFilesCopied) > 0 {
+				t.Errorf("copied unexpected files to sbox: %v", unexpectedFilesCopied)
+			}
+
+			rustcCmd := proptools.String(rustc.Command)
+			for _, flag := range tc.expectedFlags {
+				android.AssertStringDoesContain(
+					t,
+					fmt.Sprintf(
+						"missing flag in rustc invocation; expected to find substring %q; got %q",
+						flag,
+						rustcCmd,
+					),
+					rustcCmd,
+					flag,
+				)
+			}
+		})
 	}
 }
