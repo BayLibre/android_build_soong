@@ -15,12 +15,14 @@
 package rust
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
 	"github.com/google/blueprint"
 
 	"android/soong/android"
+	cc_config "android/soong/cc/config"
 	"android/soong/rust/config"
 )
 
@@ -83,11 +85,23 @@ var (
 
 	cp = pctx.AndroidStaticRule("cp",
 		blueprint.RuleParams{
-			Command:        "cp `cat $outDir.rsp` $outDir",
+			Command:        "cp --parents `cat $outDir.rsp` $outDir",
 			Rspfile:        "${outDir}.rsp",
 			RspfileContent: "$in",
 		},
 		"outDir")
+
+	realcp = pctx.AndroidStaticRule("realcp",
+		blueprint.RuleParams{
+			Command:     "rm -f $out && cp $in $out",
+			Description: "cp $out",
+		})
+
+	symlink = pctx.AndroidStaticRule("symlink",
+		blueprint.RuleParams{
+			Command:     "rm -f $out && ln -s $in $out",
+			Description: "symlink $in $out",
+		})
 
 	// Cross-referencing:
 	_ = pctx.SourcePathVariable("rustExtractor",
@@ -128,36 +142,36 @@ func TransformSrcToBinary(ctx ModuleContext, mainSrc android.Path, deps PathDeps
 	outputFile android.WritablePath) buildOutput {
 	flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto=thin")
 
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "bin")
+	return transformSrctoCrate(ctx, nil, mainSrc, deps, flags, outputFile, "bin")
 }
 
-func TransformSrctoRlib(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
+func TransformSrctoRlib(ctx ModuleContext, c compiler, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath) buildOutput {
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "rlib")
+	return transformSrctoCrate(ctx, c, mainSrc, deps, flags, outputFile, "rlib")
 }
 
 func TransformSrctoDylib(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath) buildOutput {
 	flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto=thin")
 
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "dylib")
+	return transformSrctoCrate(ctx, nil, mainSrc, deps, flags, outputFile, "dylib")
 }
 
 func TransformSrctoStatic(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath) buildOutput {
 	flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto=thin")
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "staticlib")
+	return transformSrctoCrate(ctx, nil, mainSrc, deps, flags, outputFile, "staticlib")
 }
 
 func TransformSrctoShared(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath) buildOutput {
 	flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto=thin")
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "cdylib")
+	return transformSrctoCrate(ctx, nil, mainSrc, deps, flags, outputFile, "cdylib")
 }
 
 func TransformSrctoProcMacro(ctx ModuleContext, mainSrc android.Path, deps PathDeps,
 	flags Flags, outputFile android.WritablePath) buildOutput {
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "proc-macro")
+	return transformSrctoCrate(ctx, nil, mainSrc, deps, flags, outputFile, "proc-macro")
 }
 
 func rustLibsToPaths(libs RustLibraries) android.Paths {
@@ -168,18 +182,26 @@ func rustLibsToPaths(libs RustLibraries) android.Paths {
 	return paths
 }
 
-func makeLibFlags(deps PathDeps) []string {
+func makeLibFlags(deps PathDeps, ruleCmd *android.RuleBuilderCommand) []string {
 	var libFlags []string
 
 	// Collect library/crate flags
-	for _, lib := range deps.RLibs {
-		libFlags = append(libFlags, "--extern "+lib.CrateName+"="+lib.Path.String())
-	}
+	//for _, lib := range deps.RLibs {
+	//	libPath := ruleCmd.PathForInput(lib.Path)
+	//	libFlags = append(libFlags, "--extern "+lib.CrateName+"="+libPath)
+	//}
 	for _, lib := range deps.DyLibs {
-		libFlags = append(libFlags, "--extern "+lib.CrateName+"="+lib.Path.String())
+		libPath := ruleCmd.PathForInput(lib.Path)
+		libFlags = append(libFlags, "--extern "+lib.CrateName+"="+libPath)
 	}
-	for _, proc_macro := range deps.ProcMacros {
-		libFlags = append(libFlags, "--extern "+proc_macro.CrateName+"="+proc_macro.Path.String())
+	for _, procMacro := range deps.ProcMacros {
+		procMacroPath := ruleCmd.PathForInput(procMacro.Path)
+		libFlags = append(libFlags, "--extern "+procMacro.CrateName+"="+procMacroPath)
+	}
+	for lib, _ := range deps.TransitiveRlibs {
+		libPath := ruleCmd.PathForInput(lib.Path)
+		libFlags = append(libFlags, "-L "+android.PathDirname(libPath))
+		libFlags = append(libFlags, "--extern "+lib.CrateName+"="+libPath)
 	}
 
 	for _, path := range deps.linkDirs {
@@ -189,8 +211,77 @@ func makeLibFlags(deps PathDeps) []string {
 	return libFlags
 }
 
+func makeDepPaths(deps PathDeps) android.Paths {
+	depPaths := android.Paths{}
+	depPaths = append(depPaths, deps.Rustc)
+	for _, d := range deps.Stdlibs {
+		depPaths = append(depPaths, d)
+	}
+	for _, d := range deps.RustcLibs {
+		depPaths = append(depPaths, d)
+	}
+	for _, d := range deps.DyLibs {
+		depPaths = append(depPaths, d.Path)
+	}
+	//fmt.Println(deps.TransitiveRlibs)
+	for d, _ := range deps.TransitiveRlibs {
+		depPaths = append(depPaths, d.Path)
+	}
+	//for _, d := range deps.RLibs {
+	//	depPaths = append(depPaths, d.Path)
+	//}
+	for _, d := range deps.LibDeps {
+		depPaths = append(depPaths, d)
+	}
+	for _, d := range deps.WholeStaticLibs {
+		depPaths = append(depPaths, d)
+	}
+	for _, d := range deps.ProcMacros {
+		depPaths = append(depPaths, d.Path)
+	}
+	for _, d := range deps.AfdoProfiles {
+		depPaths = append(depPaths, d)
+	}
+
+	for _, d := range deps.linkObjects {
+		depPaths = append(depPaths, d)
+	}
+
+	//for _, d := range deps.depIncludePaths {
+	//	depPaths = append(depPaths, d)
+	//}
+	for _, d := range deps.depGeneratedHeaders {
+		depPaths = append(depPaths, d)
+	}
+	//for _, d := range deps.depSystemIncludePaths {
+	//	depPaths = append(depPaths, d)
+	//}
+
+	for _, d := range deps.SrcDeps {
+		depPaths = append(depPaths, d)
+	}
+	for _, d := range deps.srcProviderFiles {
+		depPaths = append(depPaths, d)
+	}
+	return depPaths
+}
+
 func rustEnvVars(ctx ModuleContext, deps PathDeps) []string {
 	var envVars []string
+
+	var libDirs []string
+	for _, lib := range deps.RustcLibs {
+		if strings.Contains(lib.String(), "prebuilts/rust") {
+			libDirs = append(libDirs, "__SBOX_SANDBOX_DIR__/"+android.PathDirname(lib.String()))
+		}
+	}
+	for _, lib := range deps.LibDeps {
+		libDirs = append(libDirs, "__SBOX_SANDBOX_DIR__/"+android.PathDirname(lib.String()))
+	}
+	envVars = append(envVars, fmt.Sprintf(
+		"LD_LIBRARY_PATH=%s:$${LD_LIBRARY_PATH}",
+		strings.Join(android.FirstUniqueStrings(libDirs), ":")),
+	)
 
 	// libstd requires a specific environment variable to be set. This is
 	// not officially documented and may be removed in the future. See
@@ -236,7 +327,7 @@ func rustEnvVars(ctx ModuleContext, deps PathDeps) []string {
 	return envVars
 }
 
-func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, flags Flags,
+func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath, crateType string) buildOutput {
 
 	var inputs android.Paths
@@ -270,7 +361,6 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	// Enable incremental compilation if requested by user
 	if ctx.Config().IsEnvTrue("SOONG_RUSTC_INCREMENTAL") {
 		incrementalPath := android.PathForOutput(ctx, "rustc").String()
-
 		rustcFlags = append(rustcFlags, "-Cincremental="+incrementalPath)
 	}
 
@@ -293,8 +383,6 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		linkFlags = append(linkFlags, dynamicLinker)
 	}
 
-	libFlags := makeLibFlags(deps)
-
 	// Collect dependencies
 	implicits = append(implicits, rustLibsToPaths(deps.RLibs)...)
 	implicits = append(implicits, rustLibsToPaths(deps.DyLibs)...)
@@ -314,16 +402,17 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		var outputs android.WritablePaths
 
 		for _, genSrc := range deps.SrcDeps {
-			if android.SuffixInList(outputs.Strings(), genSubDir+genSrc.Base()) {
-				ctx.PropertyErrorf("srcs",
-					"multiple source providers generate the same filename output: "+genSrc.Base())
+			outfile := filepath.Join(genSubDir, genSrc.String())
+			if android.SuffixInList(outputs.Strings(), outfile) {
+				ctx.PropertyErrorf("srcs", "multiple source providers generate the same filename output: "+genSrc.String())
 			}
-			outputs = append(outputs, android.PathForModuleOut(ctx, genSubDir+genSrc.Base()))
+			outfilePath := android.PathForModuleOut(ctx, outfile)
+			outputs = append(outputs, outfilePath)
 		}
 
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        cp,
-			Description: "cp " + moduleGenDir.Path().Rel(),
+			Description: "cp " + moduleGenDir.Path().Base(),
 			Outputs:     outputs,
 			Inputs:      deps.SrcDeps,
 			Args: map[string]string{
@@ -333,6 +422,25 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		implicits = append(implicits, outputs.Paths()...)
 	}
 
+	if comp != nil {
+		implicits = append(implicits, comp.compileData(ctx)...)
+	}
+
+	envVars = append(envVars, "AR="+cc_config.ClangPath(ctx, "bin/llvm-ar").String())
+	envVars = append(envVars, "ANDROID_RUST_VERSION="+config.GetRustVersion(ctx))
+
+	if ctx.RustModule().compiler.CargoEnvCompat() {
+		if _, ok := ctx.RustModule().compiler.(*binaryDecorator); ok {
+			envVars = append(envVars, "CARGO_BIN_NAME="+strings.TrimSuffix(outputFile.Base(), outputFile.Ext()))
+		}
+		envVars = append(envVars, "CARGO_CRATE_NAME="+ctx.RustModule().CrateName())
+		pkgVersion := ctx.RustModule().compiler.CargoPkgVersion()
+		if pkgVersion != "" {
+			envVars = append(envVars, "CARGO_PKG_VERSION="+pkgVersion)
+		}
+	}
+
+	libFlags := makeLibFlags(deps, nil)
 	if flags.Clippy {
 		clippyFile := android.PathForModuleOut(ctx, outputFile.Base()+".clippy")
 		ctx.Build(pctx, android.BuildParams{
@@ -352,39 +460,45 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		implicits = append(implicits, clippyFile)
 	}
 
-	rustcOutputFile := outputFile
 	usesLinker := crateType == "bin" || crateType == "dylib" || crateType == "cdylib" || crateType == "proc-macro"
-	if usesLinker {
-		rustcOutputFile = android.PathForModuleOut(ctx, outputFile.Base()+".rsp")
-	}
-
-	ctx.Build(pctx, android.BuildParams{
-		Rule:        rustc,
-		Description: "rustc " + main.Rel(),
-		Output:      rustcOutputFile,
-		Inputs:      inputs,
-		Implicits:   implicits,
-		Args: map[string]string{
-			"rustcFlags": strings.Join(rustcFlags, " "),
-			"libFlags":   strings.Join(libFlags, " "),
-			"envVars":    strings.Join(envVars, " "),
-		},
-	})
-
-	if usesLinker {
-		ctx.Build(pctx, android.BuildParams{
-			Rule:        rustLink,
-			Description: "rustLink " + main.Rel(),
-			Output:      outputFile,
-			Inputs:      android.Paths{rustcOutputFile},
-			Implicits:   linkImplicits,
-			OrderOnly:   linkOrderOnly,
-			Args: map[string]string{
-				"linkFlags": strings.Join(linkFlags, " "),
-				"crtBegin":  strings.Join(deps.CrtBegin.Strings(), " "),
-				"crtEnd":    strings.Join(deps.CrtEnd.Strings(), " "),
-			},
-		})
+	if comp != nil && comp.crateRoot(ctx) != nil {
+		compileInSandbox(
+			ctx,
+			comp,
+			main,
+			deps,
+			flags,
+			outputFile,
+			crateType,
+			envVars,
+			inputs,
+			implicits,
+			rustcFlags,
+			linkFlags,
+			linkImplicits,
+			linkOrderOnly,
+			usesLinker,
+		)
+	} else {
+		compile(
+			ctx,
+			comp,
+			main,
+			deps,
+			flags,
+			outputFile,
+			crateType,
+			envVars,
+			inputs,
+			implicits,
+			rustcFlags,
+			linkFlags,
+			linkImplicits,
+			linkOrderOnly,
+			usesLinker,
+			outputFile,
+			libFlags,
+		)
 	}
 
 	if flags.EmitXrefs {
@@ -404,6 +518,188 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		output.kytheFile = kytheFile
 	}
 	return output
+}
+
+func compile(
+	ctx ModuleContext,
+	comp compiler,
+	main android.Path,
+	deps PathDeps,
+	flags Flags,
+	outputFile android.WritablePath,
+	crateType string,
+	envVars []string,
+	inputs android.Paths,
+	implicits android.Paths,
+	rustcFlags []string,
+	linkFlags []string,
+	linkImplicits android.Paths,
+	linkOrderOnly android.Paths,
+	usesLinker bool,
+	rustcOutputFile android.WritablePath,
+	libFlags []string,
+) {
+	if usesLinker {
+		rustcOutputFile = android.PathForModuleOut(ctx, outputFile.Base()+".rsp")
+	}
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        rustc,
+		Description: "rustc " + main.Rel(),
+		Output:      rustcOutputFile,
+		Inputs:      inputs,
+		Implicits:   implicits,
+		Args: map[string]string{
+			"rustcFlags": strings.Join(rustcFlags, " "),
+			"libFlags":   strings.Join(libFlags, " "),
+			"envVars":    strings.Join(envVars, " "),
+		},
+	})
+	if usesLinker {
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        rustLink,
+			Description: "rustLink " + main.Rel(),
+			Output:      outputFile,
+			Inputs:      android.Paths{rustcOutputFile},
+			Implicits:   linkImplicits,
+			OrderOnly:   linkOrderOnly,
+			Args: map[string]string{
+				"linkFlags": strings.Join(linkFlags, " "),
+				"crtBegin":  strings.Join(deps.CrtBegin.Strings(), " "),
+				"crtEnd":    strings.Join(deps.CrtEnd.Strings(), " "),
+			},
+		})
+	}
+}
+
+func compileInSandbox(
+	ctx ModuleContext,
+	comp compiler,
+	main android.Path,
+	deps PathDeps,
+	flags Flags,
+	outputFile android.WritablePath,
+	crateType string,
+	envVars []string,
+	inputs android.Paths,
+	implicits android.Paths,
+	rustcFlags []string,
+	linkFlags []string,
+	linkImplicits android.Paths,
+	linkOrderOnly android.Paths,
+	usesLinker bool,
+) {
+	clangBinPath := cc_config.ClangPath(ctx, "bin")
+
+	sboxDirectory := "rustc"
+	rustcSboxOutputFile := android.PathForModuleOut(ctx, sboxDirectory, outputFile.Base())
+	depFile := android.PathForModuleOut(ctx, sboxDirectory, rustcSboxOutputFile.Base()+".d")
+	depInfoFile := android.PathForModuleOut(ctx, sboxDirectory, rustcSboxOutputFile.Base()+".d.raw")
+	var rustcImplicitOutputs android.WritablePaths
+
+	if usesLinker {
+		rustcSboxOutputFile = android.PathForModuleOut(ctx, sboxDirectory, rustcSboxOutputFile.Base()+".rsp")
+		rustcImplicitOutputs = android.WritablePaths{
+			android.PathForModuleOut(ctx, sboxDirectory, rustcSboxOutputFile.Base()+".whole.a"),
+			android.PathForModuleOut(ctx, sboxDirectory, rustcSboxOutputFile.Base()+".a"),
+		}
+	}
+
+	mkCrateRspPy := android.PathForSource(ctx, "build", "soong", "scripts", "mkcratersp.py")
+	rustcRule := android.NewRuleBuilder(pctx, ctx).
+		Sbox(
+			android.PathForModuleOut(ctx, sboxDirectory),
+			android.PathForModuleOut(ctx, sboxDirectory+".sbox.textproto"),
+		).
+		SandboxInputs()
+
+	rustcCmd := rustcRule.Command()
+	envVars = append(envVars, "AR="+rustcCmd.PathForTool(cc_config.ClangPath(ctx, "bin/llvm-ar")))
+	libFlags := makeLibFlags(deps, rustcCmd)
+
+	rustcCmd.
+		Flags(envVars).
+		Flag(
+			fmt.Sprintf(
+				"PATH=$${PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
+				android.PathDirname(clangBinPath.String()),
+			),
+		).
+		Tool(config.RustPath(ctx, "bin/rustc")).
+		ImplicitTool(clangBinPath.Join(ctx, "llvm-ar")).
+		FlagWithInput("-C linker=", mkCrateRspPy).
+		Flag("--emit link").
+		Flag("-o").
+		Output(rustcSboxOutputFile).
+		FlagWithOutput("--emit dep-info=", depInfoFile).
+		Inputs(inputs).
+		Flags(libFlags).
+		Implicits(makeDepPaths(deps)).
+		Implicits(implicits).
+		Flags(rustcFlags).
+		ImplicitOutputs(rustcImplicitOutputs)
+
+	depfileCreationCmd := rustcRule.Command()
+	depfileCreationCmd.
+		Flag(fmt.Sprintf(
+			`grep "^%s:" %s >`,
+			depfileCreationCmd.PathForOutput(rustcSboxOutputFile),
+			depfileCreationCmd.PathForOutput(depInfoFile),
+		)).
+		DepFile(depFile)
+
+	//depFileValidationCmd := rustcRule.Command()
+	//depFileValidationCmd.
+	//	Flag(fmt.Sprintf(
+	//		`echo "%s" > srcs.inputs && \
+	//		[[ -z $$(\
+	//			comm -13 \
+	//			<(cat srcs.inputs | xargs realpath | sort -u) \
+	//			<(cat %s | awk -F ":" '{print $$2}' | tr " " "\n" | xargs realpath | sort -u) | \
+	//			grep "\.rs$$") \
+	//		]]`,
+	//		strings.Join(android.Map(deps.SrcDeps, depFileValidationCmd.PathForInput), "\n"),
+	//		depFileValidationCmd.PathForOutput(depInfoFile),
+	//	))
+
+	if usesLinker {
+		sboxOutputFile := android.PathForModuleOut(ctx, sboxDirectory, outputFile.Base())
+		rustLinkCmd := rustcRule.Command()
+		rustLinkCmd.
+			Flag(
+				fmt.Sprintf(
+					"PATH=$${PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
+					android.PathDirname(clangBinPath.String()),
+				),
+			).
+			Tool(clangBinPath.Join(ctx, "clang++")).
+			ImplicitTool(clangBinPath.Join(ctx, "clang++.real")).
+			ImplicitTool(clangBinPath.Join(ctx, "lld")).
+			ImplicitTool(clangBinPath.Join(ctx, "ld.lld")).
+			Flag("-o").
+			Output(sboxOutputFile).
+			Inputs(deps.CrtBegin).
+			Flag("${config.RustLinkerArgs}").
+			FlagWithInput("@", rustcSboxOutputFile).
+			Flags(linkFlags).
+			Inputs(deps.CrtEnd).
+			Implicits(rustcImplicitOutputs.Paths()).
+			Implicits(makeDepPaths(deps)).
+			Implicits(linkImplicits).
+			OrderOnlys(linkOrderOnly)
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   realcp,
+			Input:  sboxOutputFile,
+			Output: outputFile,
+		})
+	} else {
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   realcp,
+			Input:  rustcSboxOutputFile,
+			Output: outputFile,
+		})
+	}
+
+	rustcRule.BuildWithNinjaVars("rustcSandbox", "rustcSandbox "+main.Rel(), ctx, pctx)
 }
 
 func Rustdoc(ctx ModuleContext, main android.Path, deps PathDeps,
@@ -426,7 +722,7 @@ func Rustdoc(ctx ModuleContext, main android.Path, deps PathDeps,
 	crateName := ctx.RustModule().CrateName()
 	rustdocFlags = append(rustdocFlags, "--crate-name "+crateName)
 
-	rustdocFlags = append(rustdocFlags, makeLibFlags(deps)...)
+	rustdocFlags = append(rustdocFlags, makeLibFlags(deps, nil)...)
 	docTimestampFile := android.PathForModuleOut(ctx, "rustdoc.timestamp")
 
 	// Silence warnings about renamed lints for third-party crates

@@ -34,7 +34,7 @@ import (
 )
 
 const sboxSandboxBaseDir = "__SBOX_SANDBOX_DIR__"
-const sboxOutSubDir = "out"
+const sboxOutSubDir = "out/soong"
 const sboxToolsSubDir = "tools"
 const sboxOutDir = sboxSandboxBaseDir + "/" + sboxOutSubDir
 
@@ -533,6 +533,17 @@ func (r *RuleBuilder) build(name string, desc string, ninjaEscape bool, ctx Modu
 
 	commandString := strings.Join(commands, " && ")
 
+	if !ninjaEscape {
+		ruleParams := blueprint.RuleParams{
+			Command: commandString,
+		}
+		parsedCommandString, err := pctx.ParseNinjaString(ninjaParseContext{ctx}, commandString, &ruleParams)
+		if err != nil {
+			panic(err)
+		}
+		commandString = parsedCommandString
+	}
+
 	if r.sbox {
 		// If running the command inside sbox, write the rule data out to an sbox
 		// manifest.textproto.
@@ -812,7 +823,7 @@ func (c *RuleBuilderCommand) addOrderOnly(path Path) {
 // path with the placeholder prefix used for outputs in sbox.  If sbox is not enabled it returns the
 // original path.
 func (c *RuleBuilderCommand) PathForInput(path Path) string {
-	if c.rule.sbox {
+	if c != nil && c.rule.sbox {
 		rel, inSandbox := c.rule._sboxPathForInputRel(path)
 		if inSandbox {
 			rel = filepath.Join(sboxSandboxBaseDir, rel)
