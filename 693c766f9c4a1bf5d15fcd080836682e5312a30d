@@ -70,6 +70,30 @@
       },
       "revId": "693c766f9c4a1bf5d15fcd080836682e5312a30d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c187751f_8f404d3e",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-16T00:58:37Z",
+      "side": 1,
+      "message": "https://bazel.build/concepts/visibility#load-visibility",
+      "parentUuid": "0c9d5310_22f8f543",
+      "range": {
+        "startLine": 442,
+        "startChar": 26,
+        "endLine": 442,
+        "endChar": 56
+      },
+      "revId": "693c766f9c4a1bf5d15fcd080836682e5312a30d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
