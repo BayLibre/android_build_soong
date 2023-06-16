@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7798646b_f103c619",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-16T18:07:08Z",
+      "side": 1,
+      "message": "is it impossible that m.Name()+\"-gen\" is also the name of a module?\n\nDo we care either way? I would guess it\u0027s unlikely but debugging this might be a huge pain. Maybe add some debug statement indicating that we changed it?",
+      "revId": "b7950a93df57d3c10706f6557c3cf28ecfa17a98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
