@@ -42,7 +42,6 @@ var (
 		"-fno-omit-frame-pointer",
 		"-Wno-frame-larger-than=",
 		"-fsanitize-hwaddress-abi=platform",
-		"-mllvm", "-hwasan-use-after-scope=1",
 	}
 
 	// ThinLTO performs codegen during link time, thus these flags need to
@@ -60,6 +59,7 @@ var (
 		// GlobalISel is the default at -O0 on aarch64.
 		"--aarch64-enable-global-isel-at-O=-1",
 		"-fast-isel=false",
+		"-hwasan-use-after-scope=1",
 	}
 
 	cfiBlocklistPath     = "external/compiler-rt/lib/cfi"
