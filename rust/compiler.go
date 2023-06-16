@@ -78,6 +78,9 @@ type BaseCompilerProperties struct {
 	// `srcs`.
 	Crate_root *string `android:"path,arch_variant"`
 
+	// TODO doc
+	Compile_data []string `android:"path,arch_variant"`
+
 	// name of the lint set that should be used to validate this module.
 	//
 	// Possible values are "default" (for using a sensible set of lints
@@ -330,6 +333,20 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 
 func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathDeps) buildOutput {
 	panic(fmt.Errorf("baseCrater doesn't know how to crate things!"))
+}
+
+func (compile *baseCompiler) crateRoot(ctx ModuleContext) android.Path {
+	if compile.Properties.Crate_root != nil {
+		return android.PathForModuleSrc(ctx, *compile.Properties.Crate_root)
+	}
+	return nil
+}
+
+func (compile *baseCompiler) compileData(ctx ModuleContext) android.Paths {
+	return android.PathsForModuleSrc(ctx, android.Concat(
+		compile.Properties.Srcs,
+		compile.Properties.Compile_data,
+	))
 }
 
 func (compiler *baseCompiler) rustdoc(ctx ModuleContext, flags Flags,
