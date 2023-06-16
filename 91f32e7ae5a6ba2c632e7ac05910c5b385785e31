@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88a40331_1a2647fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-06-16T23:15:30Z",
+      "side": 1,
+      "message": "There may be a cleaner way of doing this, thought I\u0027d throw this up for discussion.",
+      "revId": "91f32e7ae5a6ba2c632e7ac05910c5b385785e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
