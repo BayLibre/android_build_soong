@@ -562,7 +562,8 @@ func TestSandboxLinking(t *testing.T) {
 	rustcSbox := ctx.ModuleForTests("fizz-buzz", "android_arm64_armv8-a").Rule("rustc")
 	fmt.Println(rustcSbox.RuleParams.Command)
 
-	writeFile := ctx.ModuleForTests("libnum_traits", "android_arm64_armv8-a_dylib").Rule("writeFile")
+	//writeFile := ctx.ModuleForTests("libnum_traits", "android_arm64_armv8-a_dylib").Rule("writeFile")
+	writeFile := ctx.ModuleForTests("libnum_traits", "linux_glibc_x86_dylib").Rule("writeFile")
 	content := writeFile.BuildParams.Args["content"]
 	content = content[1 : len(content)-1]
 	content = strings.NewReplacer(

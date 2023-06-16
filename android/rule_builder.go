@@ -34,7 +34,7 @@ import (
 )
 
 const sboxSandboxBaseDir = "__SBOX_SANDBOX_DIR__"
-const sboxOutSubDir = "out"
+const sboxOutSubDir = "out/soong"
 const sboxToolsSubDir = "tools"
 const sboxOutDir = sboxSandboxBaseDir + "/" + sboxOutSubDir
 

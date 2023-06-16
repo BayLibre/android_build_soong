@@ -271,7 +271,9 @@ func rustEnvVars(ctx ModuleContext, deps PathDeps) []string {
 
 	var libDirs []string
 	for _, lib := range deps.RustcLibs {
-		libDirs = append(libDirs, "__SBOX_SANDBOX_DIR__/"+android.PathDirname(lib.String()))
+		if strings.Contains(lib.String(), "prebuilts/rust") {
+			libDirs = append(libDirs, "__SBOX_SANDBOX_DIR__/"+android.PathDirname(lib.String()))
+		}
 	}
 	for _, lib := range deps.LibDeps {
 		libDirs = append(libDirs, "__SBOX_SANDBOX_DIR__/"+android.PathDirname(lib.String()))
@@ -521,57 +523,58 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 	//})
 
 	if usesLinker {
-		////sboxDirectory = "rustLink"
-		//libc := ctx.Config().HostCcSharedLibPath(ctx, "libc++")
-		//sboxLibc := android.PathForModuleOut(ctx, libc.Base()+".1")
-		//ctx.Build(pctx, android.BuildParams{
-		//	Rule:   realcp,
-		//	Input:  libc,
-		//	Output: sboxLibc,
-		//})
-		//sboxOutputFile := android.PathForModuleOut(ctx, sboxDirectory, outputFile.Base())
-		////rustLinkRule := android.NewRuleBuilder(pctx, ctx).
-		////	Sbox(
-		////		android.PathForModuleOut(ctx, sboxDirectory),
-		////		android.PathForModuleOut(ctx, sboxDirectory+".sbox.textproto"),
-		////	).
-		////	SandboxInputs()
+		//sboxDirectory = "rustLink"
+		libc := ctx.Config().HostCcSharedLibPath(ctx, "libc++")
+		sboxLibc := android.PathForModuleOut(ctx, libc.Base()+".1")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   realcp,
+			Input:  libc,
+			Output: sboxLibc,
+		})
+		sboxOutputFile := android.PathForModuleOut(ctx, sboxDirectory, outputFile.Base())
+		//rustLinkRule := android.NewRuleBuilder(pctx, ctx).
+		//	Sbox(
+		//		android.PathForModuleOut(ctx, sboxDirectory),
+		//		android.PathForModuleOut(ctx, sboxDirectory+".sbox.textproto"),
+		//	).
+		//	SandboxInputs()
 
-		////clangBinPath := cc_config.ClangPath(ctx, "bin")
-		//rustLinkCmd := rustcRule.Command()
-		//rustLinkCmd.
-		//	Flag(
-		//		fmt.Sprintf(
-		//			"PATH=$${PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
-		//			android.PathDirname(clangBinPath.String()),
-		//		),
-		//	).
-		//	Flag(
-		//		fmt.Sprintf(
-		//			"LD_LIBRARY_PATH=$${LD_LIBRARY_PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
-		//			android.PathDirname(sboxLibc.String()),
-		//		),
-		//	).
-		//	Tool(clangBinPath.Join(ctx, "clang++")).
-		//	ImplicitTool(clangBinPath.Join(ctx, "clang++.real")).
-		//	ImplicitTool(clangBinPath.Join(ctx, "lld")).
-		//	ImplicitTool(clangBinPath.Join(ctx, "ld.lld")).
-		//	ImplicitTool(sboxLibc).
-		//	Flag("-o").
-		//	Output(sboxOutputFile).
-		//	Inputs(deps.CrtBegin).
-		//	Flag("${config.RustLinkerArgs}").
-		//	FlagWithInput("@", rustcSboxOutputFile).
-		//	Flags(linkFlags).
-		//	Inputs(deps.CrtEnd).
-		//	Implicits(rustcImplicitOutputs.Paths()).
-		//	Implicits(linkImplicits).
-		//	OrderOnlys(linkOrderOnly)
-		//ctx.Build(pctx, android.BuildParams{
-		//	Rule:   realcp,
-		//	Input:  sboxOutputFile,
-		//	Output: outputFile,
-		//})
+		//clangBinPath := cc_config.ClangPath(ctx, "bin")
+		rustLinkCmd := rustcRule.Command()
+		rustLinkCmd.
+			Flag(
+				fmt.Sprintf(
+					"PATH=$${PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
+					android.PathDirname(clangBinPath.String()),
+				),
+			).
+			Flag(
+				fmt.Sprintf(
+					"LD_LIBRARY_PATH=$${LD_LIBRARY_PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
+					android.PathDirname(sboxLibc.String()),
+				),
+			).
+			Tool(clangBinPath.Join(ctx, "clang++")).
+			ImplicitTool(clangBinPath.Join(ctx, "clang++.real")).
+			ImplicitTool(clangBinPath.Join(ctx, "lld")).
+			ImplicitTool(clangBinPath.Join(ctx, "ld.lld")).
+			ImplicitTool(sboxLibc).
+			Flag("-o").
+			Output(sboxOutputFile).
+			Inputs(deps.CrtBegin).
+			Flag("${config.RustLinkerArgs}").
+			FlagWithInput("@", rustcSboxOutputFile).
+			Flags(linkFlags).
+			Inputs(deps.CrtEnd).
+			Implicits(rustcImplicitOutputs.Paths()).
+			Implicits(makeDepPaths(deps)).
+			Implicits(linkImplicits).
+			OrderOnlys(linkOrderOnly)
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   realcp,
+			Input:  sboxOutputFile,
+			Output: outputFile,
+		})
 
 		//ctx.Build(pctx, android.BuildParams{
 		//	Rule:        rustLink,
