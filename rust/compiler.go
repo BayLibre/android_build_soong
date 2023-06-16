@@ -78,6 +78,9 @@ type BaseCompilerProperties struct {
 	// `srcs`.
 	Crate_root *string `android:"path,arch_variant"`
 
+	// TODO doc
+	Compile_data []string `android:"path,arch_variant"`
+
 	// name of the lint set that should be used to validate this module.
 	//
 	// Possible values are "default" (for using a sensible set of lints
@@ -332,6 +335,20 @@ func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathD
 	panic(fmt.Errorf("baseCrater doesn't know how to crate things!"))
 }
 
+func (compile *baseCompiler) crateRoot(ctx ModuleContext) android.Path {
+	if compile.Properties.Crate_root != nil {
+		return android.PathForModuleSrc(ctx, *compile.Properties.Crate_root)
+	}
+	return nil
+}
+
+func (compile *baseCompiler) compileData(ctx ModuleContext) android.Paths {
+	return android.PathsForModuleSrc(ctx, android.Concat(
+		compile.Properties.Srcs,
+		compile.Properties.Compile_data,
+	))
+}
+
 func (compiler *baseCompiler) rustdoc(ctx ModuleContext, flags Flags,
 	deps PathDeps) android.OptionalPath {
 
@@ -364,6 +381,7 @@ func (compiler *baseCompiler) strippedOutputFilePath() android.OptionalPath {
 
 func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	deps.Rlibs = append(deps.Rlibs, compiler.Properties.Rlibs...)
+	deps.TransitiveRlibs = append(deps.TransitiveRlibs, compiler.Properties.Rlibs...)
 	deps.Dylibs = append(deps.Dylibs, compiler.Properties.Dylibs...)
 	deps.Rustlibs = append(deps.Rustlibs, compiler.Properties.Rustlibs...)
 	deps.ProcMacros = append(deps.ProcMacros, compiler.Properties.Proc_macros...)
