@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"reflect"
+	"runtime"
 	"sort"
 	"strings"
 	"sync"
@@ -107,7 +108,9 @@ type BuildStatement struct {
 	OutputPaths  []string
 	SymlinkPaths []string
 	Env          []*analysis_v2_proto.KeyValuePair
-	Mnemonic     string
+	// env vars to be added to the command line in addition to aquery's Environment results
+	AdditionalEnv map[string]string
+	Mnemonic      string
 
 	// Inputs of this build statement, either as unexpanded depsets or expanded
 	// input paths. There should be no overlap between these fields; an input
@@ -477,6 +480,22 @@ func commandString(actionEntry *analysis_v2_proto.Action) string {
 	}
 }
 
+// Creates a map of env variables that should be on the command line in addition to the ones returned by aquery
+func additionalEnvVars(actionEntry *analysis_v2_proto.Action) map[string]string {
+	switch actionEntry.Mnemonic {
+	case "GoToolchainBinaryBuild":
+		// Add GOROOT explicitly when building rules_go's primary builder
+		// Unlike b's execution root, mixed build execution root contains a symlink to prebuilts/go
+		// This causes issues for `GOCACHE=$(mktemp -d) go build ...`
+		return map[string]string{
+			// Add realpath so that this works inside the bazel's execution root
+			"GOROOT": fmt.Sprintf("$(realpath %s)", runtime.GOROOT()),
+		}
+	default:
+		return map[string]string{}
+	}
+}
+
 func (a *aqueryArtifactHandler) normalActionBuildStatement(actionEntry *analysis_v2_proto.Action) (*BuildStatement, error) {
 	command := commandString(actionEntry)
 	inputDepsetHashes, err := a.depsetContentHashes(actionEntry.InputDepSetIds)
@@ -494,6 +513,7 @@ func (a *aqueryArtifactHandler) normalActionBuildStatement(actionEntry *analysis
 		OutputPaths:       outputPaths,
 		InputDepsetHashes: inputDepsetHashes,
 		Env:               actionEntry.EnvironmentVariables,
+		AdditionalEnv:     additionalEnvVars(actionEntry),
 		Mnemonic:          actionEntry.Mnemonic,
 	}
 	return buildStatement, nil
