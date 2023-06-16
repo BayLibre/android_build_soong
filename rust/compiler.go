@@ -76,6 +76,9 @@ type BaseCompilerProperties struct {
 	// TODO doc
 	Crate_root *string `android:"path,arch_variant"`
 
+	// TODO doc
+	Compile_data []string `android:"path,arch_variant"`
+
 	// name of the lint set that should be used to validate this module.
 	//
 	// Possible values are "default" (for using a sensible set of lints
@@ -337,6 +340,10 @@ func (compile *baseCompiler) crateRoot(ctx ModuleContext) android.Path {
 	return android.PathForModuleSrc(ctx, *compile.Properties.Crate_root)
 }
 
+func (compile *baseCompiler) compileData(ctx ModuleContext) android.Paths {
+	return android.PathsForModuleSrc(ctx, append(compile.Properties.Srcs, compile.Properties.Compile_data...))
+}
+
 func (compiler *baseCompiler) rustdoc(ctx ModuleContext, flags Flags,
 	deps PathDeps) android.OptionalPath {
 
@@ -369,6 +376,7 @@ func (compiler *baseCompiler) strippedOutputFilePath() android.OptionalPath {
 
 func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	deps.Rlibs = append(deps.Rlibs, compiler.Properties.Rlibs...)
+	deps.TransitiveRlibs = append(deps.TransitiveRlibs, compiler.Properties.Rlibs...)
 	deps.Dylibs = append(deps.Dylibs, compiler.Properties.Dylibs...)
 	deps.Rustlibs = append(deps.Rustlibs, compiler.Properties.Rustlibs...)
 	deps.ProcMacros = append(deps.ProcMacros, compiler.Properties.Proc_macros...)

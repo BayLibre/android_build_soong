@@ -79,6 +79,7 @@ func (fuzzer *fuzzDecorator) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	}
 	deps.SharedLibs = append(deps.SharedLibs, "libc++")
 	deps.Rlibs = append(deps.Rlibs, "liblibfuzzer_sys")
+	deps.TransitiveRlibs = append(deps.TransitiveRlibs, "liblibfuzzer_sys")
 
 	deps = fuzzer.binaryDecorator.compilerDeps(ctx, deps)
 
