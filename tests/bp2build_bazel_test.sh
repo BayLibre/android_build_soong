@@ -137,7 +137,7 @@ EOF
   outdir=out2
   trap "rm -rf $outdir" EXIT
   # Modify OUT_DIR in a subshell so it doesn't affect the top level one.
-  (export OUT_DIR=$outdir; run_soong bp2build && run_bazel build --config=bp2build --config=ci //a:g)
+  (export OUT_DIR=$outdir; run_soong bp2build && run_bazel build --config=ci //a:g)
 }
 
 function test_different_absolute_outdir {
@@ -157,7 +157,7 @@ EOF
   outdir=$(mktemp -t -d st.XXXXX)
   trap 'rm -rf $outdir' EXIT
   # Modify OUT_DIR in a subshell so it doesn't affect the top level one.
-  (export OUT_DIR=$outdir; run_soong bp2build && run_bazel build --config=bp2build --config=ci //a:g)
+  (export OUT_DIR=$outdir; run_soong bp2build && run_bazel build --config=ci //a:g)
 }
 
 function _bp2build_generates_all_buildfiles {
@@ -214,7 +214,7 @@ EOF
   fi
 
   # NOTE: We don't actually use the extra BUILD file for anything here
-  run_bazel build --config=android --config=bp2build --config=ci //foo/...
+  run_bazel build --config=android --config=ci //foo/...
 
   local -r the_answer_file="$(find -L bazel-out -name the_answer.txt)"
   if [[ ! -f "${the_answer_file}" ]]; then
@@ -259,7 +259,7 @@ genrule {
 EOF
 
   run_soong bp2build
-  run_bazel build --config=android --config=bp2build --config=ci //testpkg/keep_build_file:print_origin
+  run_bazel build --config=android --config=ci //testpkg/keep_build_file:print_origin
 
   local -r output_file="$(find -L bazel-out -name origin.txt)"
   if [[ ! -f "${output_file}" ]]; then
@@ -283,7 +283,7 @@ EOF
   # TODO: b/286059878 - Remove this clean after the underlying bug is fixed.
   run_soong clean
   run_soong bp2build
-  run_bazel build --config=android --config=bp2build --config=ci //testpkg/keep_build_file:print_origin
+  run_bazel build --config=android --config=ci //testpkg/keep_build_file:print_origin
   if ! grep from_bazel "${output_file}"; then
     fail "Expected to find 'from_bazel' in '${output_file}'"
   fi
@@ -361,10 +361,10 @@ EOF
 
   run_soong bp2build
 
-  run_bazel build --config=android --config=bp2build --config=ci //a:qq
+  run_bazel build --config=android --config=ci //a:qq
   local -r output_mtime1=$(stat -c "%y" bazel-bin/a/_objs/qq/qq.o)
 
-  run_bazel build --config=android --config=bp2build --config=ci //a:qq
+  run_bazel build --config=android --config=ci //a:qq
   local -r output_mtime2=$(stat -c "%y" bazel-bin/a/_objs/qq/qq.o)
 
   if [[ "$output_mtime1" != "$output_mtime2" ]]; then
@@ -375,7 +375,7 @@ EOF
 #define QQ 2
 EOF
 
-  run_bazel build --config=android --config=bp2build --config=ci //a:qq
+  run_bazel build --config=android --config=ci //a:qq
   local -r output_mtime3=$(stat -c "%y" bazel-bin/a/_objs/qq/qq.o)
 
   if [[ "$output_mtime1" == "$output_mtime3" ]]; then
@@ -466,7 +466,7 @@ EOF
 EOF
 
   export TARGET_PRODUCT=aosp_arm; run_soong bp2build
-  local -r output=$(run_bazel cquery //a:qq --output=files --config=android --config=bp2build --config=ci)
+  local -r output=$(run_bazel cquery //a:qq --output=files --config=android --config=ci)
   if [[ ! $(echo ${output} | grep "bazel-out/aosp_arm") ]]; then
     fail "Did not find the product name '${TARGET_PRODUCT}' in the output path. This can cause " \
       "unnecessary rebuilds when toggling between products as bazel outputs for different products will " \

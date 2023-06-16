@@ -15,7 +15,7 @@ function test_bazel_smoke {
 
   run_soong bp2build
 
-  run_bazel info --config=bp2build
+  run_bazel info
 }
 
 function test_add_irrelevant_file {

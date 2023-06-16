@@ -55,12 +55,12 @@ trap cleanup EXIT
 build/soong/soong_ui.bash --make-mode BP2BUILD_VERBOSE=1 --skip-soong-tests bp2build
 
 # Number of CppCompile actions with arch variant flag
-actions_with_arch_variant_num=$(call_bazel aquery --config=bp2build --config=ci --config=android \
+actions_with_arch_variant_num=$(call_bazel aquery --config=ci --config=android \
   'mnemonic("CppCompile", deps(//build/bazel/examples/apex/minimal:build.bazel.examples.apex.minimal))' | grep -c \'-march=$ARCH_VARIANT_CFLAG\')
 
 # Number of all CppCompile actions
 all_cppcompile_actions_num=0
-aquery_summary=$(call_bazel aquery --config=bp2build --config=ci --config=android --output=summary \
+aquery_summary=$(call_bazel aquery --config=ci --config=android --output=summary \
   'mnemonic("CppCompile", deps(//build/bazel/examples/apex/minimal:build.bazel.examples.apex.minimal))' \
   | egrep -o '.*opt-ST.*: ([0-9]+)$' \
   | cut -d: -f2 -)
@@ -81,7 +81,7 @@ fi
 if [ $CPU_VARIANT_CFLAG ]
 then
   # Number of CppCompiler actions with cpu variant flag
-  actions_with_cpu_variant_num=$(call_bazel aquery --config=bp2build --config=ci --config=android \
+  actions_with_cpu_variant_num=$(call_bazel aquery --config=ci --config=android \
     'mnemonic("CppCompile", deps(//build/bazel/examples/apex/minimal:build.bazel.examples.apex.minimal))' | grep -c "\-mcpu=$CPU_VARIANT_CFLAG")
 
   if [ $actions_with_cpu_variant_num -eq $all_cppcompile_actions_num ]

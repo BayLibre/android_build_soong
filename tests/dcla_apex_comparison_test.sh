@@ -148,9 +148,9 @@ for product in "${TARGET_PRODUCTS[@]}"; do
   bazel_apexes=()
   if [[ -n ${TEST_BAZEL+x} ]] && [ "${TEST_BAZEL}" = true ]; then
     export TARGET_PRODUCT="${product/module/aosp}"
-    call_bazel build --config=bp2build --config=ci --config=android "${BAZEL_TARGETS[@]}"
+    call_bazel build --config=ci --config=android "${BAZEL_TARGETS[@]}"
     for target in "${BAZEL_TARGETS[@]}"; do
-      apex_path="$(realpath $(call_bazel cquery --config=bp2build --config=android --config=ci --output=files $target))"
+      apex_path="$(realpath $(call_bazel cquery --config=android --config=ci --output=files $target))"
       mkdir -p ${OUTPUT_DIR}/${product}
       bazel_apex="bazel_$(basename $apex_path)"
       mv $apex_path ${OUTPUT_DIR}/${product}/${bazel_apex}
