@@ -73,6 +73,9 @@ type BaseCompilerProperties struct {
 	// If no source file is defined, a single generated source module can be defined to be used as the main source.
 	Srcs []string `android:"path,arch_variant"`
 
+	// TODO doc
+	Compile_srcs []string `android:"path,arch_variant"`
+
 	// name of the lint set that should be used to validate this module.
 	//
 	// Possible values are "default" (for using a sensible set of lints
@@ -220,6 +223,10 @@ func (compiler *baseCompiler) preferRlib() bool {
 	return Bool(compiler.Properties.Prefer_rlib)
 }
 
+func (compiler *baseCompiler) compileSrcs(ctx android.ModuleMissingDepsPathContext) android.Paths {
+	return android.PathsForModuleSrc(ctx, compiler.Properties.Compile_srcs)
+}
+
 func (compiler *baseCompiler) stdLinkage(ctx *depsContext) RustLinkage {
 	// For devices, we always link stdlibs in as dylibs by default.
 	if compiler.preferRlib() {
@@ -359,6 +366,7 @@ func (compiler *baseCompiler) strippedOutputFilePath() android.OptionalPath {
 
 func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	deps.Rlibs = append(deps.Rlibs, compiler.Properties.Rlibs...)
+	deps.TransitiveRlibs = append(deps.TransitiveRlibs, compiler.Properties.Rlibs...)
 	deps.Dylibs = append(deps.Dylibs, compiler.Properties.Dylibs...)
 	deps.Rustlibs = append(deps.Rustlibs, compiler.Properties.Rustlibs...)
 	deps.ProcMacros = append(deps.ProcMacros, compiler.Properties.Proc_macros...)

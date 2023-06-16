@@ -1,0 +1,670 @@
+cc_library {
+    name: "libprotobuf-cpp-full",
+    srcs: ["libprotobuf-cpp-full.c"],
+    no_libcrt: true,
+    nocrt: true,
+    system_shared_libs: [],
+    export_include_dirs: ["libprotobuf-cpp-full-includes"],
+}
+cc_library {
+    name: "libclang_rt.asan",
+    srcs: ["libclang_rt.asan.c"],
+    no_libcrt: true,
+    nocrt: true,
+    system_shared_libs: [],
+}
+cc_library {
+    name: "libclang_rt.hwasan_static",
+    srcs: ["libclang_rt.hwasan_static.c"],
+    no_libcrt: true,
+    nocrt: true,
+    system_shared_libs: [],
+}
+rust_library_rlib {
+    name: "libaddr2line",
+    crate_name: "addr2line",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "libadler",
+    crate_name: "adler",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "liballoc",
+    crate_name: "alloc",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "libcfg_if",
+    crate_name: "cfg_if",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "libcompiler_builtins",
+    crate_name: "compiler_builtins",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "libcore",
+    crate_name: "core",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "libgimli",
+    crate_name: "gimli",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "libhashbrown",
+    crate_name: "hashbrown",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "liblibc",
+    crate_name: "libc",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "libmemchr",
+    crate_name: "memchr",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "libminiz_oxide",
+    crate_name: "miniz_oxide",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "libobject",
+    crate_name: "object",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "libpanic_unwind",
+    crate_name: "panic_unwind",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "librustc_demangle",
+    crate_name: "rustc_demangle",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "librustc_std_workspace_alloc",
+    crate_name: "rustc_std_workspace_alloc",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "librustc_std_workspace_core",
+    crate_name: "rustc_std_workspace_core",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library_rlib {
+    name: "libstd_detect",
+    crate_name: "std_detect",
+    enabled:true,
+    srcs: ["foo.rs"],
+    no_stdlibs: true,
+    product_available: true,
+    host_supported: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    sysroot: true,
+    apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
+    min_sdk_version: "29",
+}
+rust_library {
+    name: "libprotobuf",
+    crate_name: "protobuf",
+    srcs: ["foo.rs"],
+    host_supported: true,
+}
+rust_library {
+    name: "libprotobuf_deprecated",
+    crate_name: "protobuf",
+    srcs: ["foo.rs"],
+    host_supported: true,
+}
+rust_library {
+    name: "libgrpcio",
+    crate_name: "grpcio",
+    srcs: ["foo.rs"],
+    host_supported: true,
+}
+rust_library {
+    name: "libfutures",
+    crate_name: "futures",
+    srcs: ["foo.rs"],
+    host_supported: true,
+}
+rust_library {
+    name: "liblibfuzzer_sys",
+    crate_name: "libfuzzer_sys",
+    srcs:["foo.rs"],
+    host_supported: true,
+}
+rust_library {
+    name: "libcriterion",
+    crate_name: "criterion",
+    srcs:["foo.rs"],
+    host_supported: true,
+}
+
+cc_defaults {
+    name: "toolchain_libs_defaults",
+    host_supported: true,
+    vendor_available: true,
+    product_available: true,
+    recovery_available: true,
+    no_libcrt: true,
+    sdk_version: "minimum",
+    nocrt: true,
+    system_shared_libs: [],
+    stl: "none",
+    check_elf_files: false,
+    sanitize: {
+        never: true,
+    },
+    apex_available: [
+        "//apex_available:anyapex",
+        "//apex_available:platform",
+    ],
+}
+
+cc_library {
+    name: "libc",
+    srcs: ["libc.c"],
+    defaults: ["linux_bionic_supported"],
+    no_libcrt: true,
+    nocrt: true,
+    stl: "none",
+    system_shared_libs: [],
+    recovery_available: true,
+    stubs: {
+        versions: ["27", "28", "29"],
+    },
+    llndk: {
+        symbol_file: "libc.map.txt",
+    },
+}
+cc_library {
+    name: "liblog",
+    srcs: ["liblog.c"],
+    defaults: ["linux_bionic_supported"],
+    no_libcrt: true,
+    nocrt: true,
+    stl: "none",
+    system_shared_libs: [],
+    recovery_available: true,
+    stubs: {
+        versions: ["27", "28", "29"],
+    },
+    apex_available: [
+        "//apex_available:platform",
+        "myapex"
+    ],
+    llndk: {
+        symbol_file: "libc.map.txt",
+    },
+}
+cc_library {
+    name: "libm",
+    srcs: ["libm.c"],
+    defaults: ["linux_bionic_supported"],
+    no_libcrt: true,
+    nocrt: true,
+    stl: "none",
+    system_shared_libs: [],
+    recovery_available: true,
+    stubs: {
+        versions: ["27", "28", "29"],
+    },
+    apex_available: [
+        "//apex_available:platform",
+        "myapex"
+    ],
+    llndk: {
+        symbol_file: "libc.map.txt",
+    },
+}
+
+// Coverage libraries
+cc_library {
+    name: "libprofile-extras",
+    srcs: ["libprofile-extras.c"],
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    product_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    system_shared_libs: [],
+    stl: "none",
+}
+cc_library {
+    name: "libprofile-clang-extras",
+    srcs: ["libprofile-clang-extras.c"],
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    product_available: true,
+    recovery_available: true,
+    native_coverage: false,
+    system_shared_libs: [],
+    stl: "none",
+}
+cc_library {
+    name: "libprofile-extras_ndk",
+    srcs: ["libprofile-extras_ndk.c"],
+    vendor_available: true,
+    product_available: true,
+    native_coverage: false,
+    system_shared_libs: [],
+    stl: "none",
+    sdk_version: "current",
+}
+cc_library {
+    name: "libprofile-clang-extras_ndk",
+    srcs: ["libprofile-clang-extras_ndk.c"],
+    vendor_available: true,
+    product_available: true,
+    native_coverage: false,
+    system_shared_libs: [],
+    stl: "none",
+    sdk_version: "current",
+}
+
+cc_library {
+    name: "libdl",
+    srcs: ["libdl.c"],
+    defaults: ["linux_bionic_supported"],
+    no_libcrt: true,
+    nocrt: true,
+    stl: "none",
+    system_shared_libs: [],
+    recovery_available: true,
+    stubs: {
+        versions: ["27", "28", "29"],
+    },
+    apex_available: [
+        "//apex_available:platform",
+        "myapex"
+    ],
+    llndk: {
+        symbol_file: "libc.map.txt",
+    },
+}
+cc_library {
+    name: "libft2",
+    srcs: ["libft2.c"],
+    no_libcrt: true,
+    nocrt: true,
+    system_shared_libs: [],
+    recovery_available: true,
+    llndk: {
+        symbol_file: "libc.map.txt",
+        private: true,
+    }
+}
+cc_library {
+    name: "libc++_static",
+    srcs: ["libc++_static.c"],
+    no_libcrt: true,
+    nocrt: true,
+    system_shared_libs: [],
+    stl: "none",
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    product_available: true,
+    recovery_available: true,
+    host_supported: true,
+    min_sdk_version: "29",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+}
+cc_library {
+    name: "libc++",
+    srcs: ["libc++.c"],
+    no_libcrt: true,
+    nocrt: true,
+    system_shared_libs: [],
+    stl: "none",
+    vendor_available: true,
+    product_available: true,
+    recovery_available: true,
+    host_supported: true,
+    min_sdk_version: "29",
+    vndk: {
+        enabled: true,
+        support_system_process: true,
+    },
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+}
+cc_library {
+    name: "libc++demangle",
+    srcs: ["libc++demangle.c"],
+    no_libcrt: true,
+    nocrt: true,
+    system_shared_libs: [],
+    stl: "none",
+    host_supported: false,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    product_available: true,
+    recovery_available: true,
+    min_sdk_version: "29",
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+}
+
+cc_defaults {
+    name: "crt_defaults",
+    defaults: ["linux_bionic_supported"],
+    recovery_available: true,
+    vendor_available: true,
+    vendor_ramdisk_available: true,
+    product_available: true,
+    native_bridge_supported: true,
+    stl: "none",
+    min_sdk_version: "16",
+    crt: true,
+    system_shared_libs: [],
+    apex_available: [
+        "//apex_available:platform",
+        "//apex_available:anyapex",
+    ],
+}
+
+cc_object {
+    name: "crtbegin_so",
+    defaults: ["crt_defaults"],
+    srcs: ["crtbegin_so.c"],
+    objs: ["crtbrand"],
+}
+
+cc_object {
+    name: "crtbegin_dynamic",
+    defaults: ["crt_defaults"],
+    srcs: ["crtbegin_dynamic.c"],
+    objs: ["crtbrand"],
+}
+
+cc_object {
+    name: "crtbegin_static",
+    defaults: ["crt_defaults"],
+    srcs: ["crtbegin_static.c"],
+    objs: ["crtbrand"],
+}
+
+cc_object {
+    name: "crtend_so",
+    defaults: ["crt_defaults"],
+    srcs: ["crtend_so.c"],
+    objs: ["crtbrand"],
+}
+
+cc_object {
+    name: "crtend_android",
+    defaults: ["crt_defaults"],
+    srcs: ["crtend_android.c"],
+    objs: ["crtbrand"],
+}
+
+cc_object {
+    name: "crtbrand",
+    defaults: ["crt_defaults"],
+    srcs: ["crtbrand.c"],
+}
+
+cc_library {
+    name: "libprotobuf-cpp-lite",
+    srcs: ["libprotobuf-cpp-lite.c"],
+}
+
+cc_library {
+    name: "ndk_libunwind",
+    srcs: ["ndk_libunwind.c"],
+    sdk_version: "minimum",
+    stl: "none",
+    system_shared_libs: [],
+}
+
+ndk_library {
+    name: "libc",
+    first_version: "minimum",
+    symbol_file: "libc.map.txt",
+}
+
+ndk_library {
+    name: "libm",
+    first_version: "minimum",
+    symbol_file: "libc.map.txt",
+}
+
+ndk_library {
+    name: "libdl",
+    first_version: "minimum",
+    symbol_file: "libc.map.txt",
+}
+
+ndk_prebuilt_shared_stl {
+    name: "ndk_libc++_shared",
+    export_include_dirs: ["ndk_libc++_shared"],
+}
+
+ndk_prebuilt_static_stl {
+    name: "ndk_libandroid_support",
+    export_include_dirs: ["ndk_libandroid_support"],
+}
+
+cc_library_static {
+    name: "libgoogle-benchmark",
+    srcs: ["libgoogle-benchmark.c"],
+    sdk_version: "current",
+    stl: "none",
+    system_shared_libs: [],
+}
+
+cc_library_static {
+    name: "note_memtag_heap_async",
+    srcs: ["note_memtag_heap_async.c"],
+}
+
+cc_library_static {
+    name: "note_memtag_heap_sync",
+    srcs: ["note_memtag_heap_sync.c"],
+}
+
+cc_library {
+    name: "libc_musl",
+    srcs: ["libc_musl.c"],
+    host_supported: true,
+    no_libcrt: true,
+    nocrt: true,
+    system_shared_libs: [],
+    stl: "none",
+}
