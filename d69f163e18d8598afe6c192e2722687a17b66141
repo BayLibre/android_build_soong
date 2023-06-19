@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a559225f_aae4ebe9",
+        "filename": "android/defaults.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-06-19T08:25:23Z",
+      "side": 1,
+      "message": "The former - e.g. something like \"we\u0027re handling it! but not as bazel modules\".",
+      "parentUuid": "65d15a8a_500434c9",
+      "range": {
+        "startLine": 185,
+        "startChar": 54,
+        "endLine": 185,
+        "endChar": 92
+      },
+      "revId": "d69f163e18d8598afe6c192e2722687a17b66141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7a1cd1d_49b7a69b",
