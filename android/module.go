@@ -3806,7 +3806,6 @@ func (m *moduleContext) TargetRequiredModuleNames() []string {
 func init() {
 	RegisterParallelSingletonType("buildtarget", BuildTargetSingleton)
 	RegisterParallelSingletonType("soongconfigtrace", soongConfigTraceSingletonFunc)
-	FinalDepsMutators(registerSoongConfigTraceMutator)
 }
 
 func BuildTargetSingleton() Singleton {

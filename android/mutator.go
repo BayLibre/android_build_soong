@@ -68,6 +68,10 @@ func registerMutatorsForBazelConversion(ctx *Context, bp2buildMutators []Registe
 // collateGloballyRegisteredMutators constructs the list of mutators that have been registered
 // with the InitRegistrationContext and will be used at runtime.
 func collateGloballyRegisteredMutators() sortableComponents {
+	// ensure soong config trace mutator runs after all other mutators
+	// because some final deps mutators add more dependencies
+	finalDeps = append(finalDeps, registerSoongConfigTraceMutator)
+
 	// ensure mixed builds mutator is the last mutator
 	finalDeps = append(finalDeps, registerMixedBuildsMutator)
 	return collateRegisteredMutators(preArch, preDeps, postDeps, finalDeps)
