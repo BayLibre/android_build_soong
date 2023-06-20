@@ -2778,11 +2778,12 @@ func (m *Library) convertJavaResourcesAttributes(ctx android.TopDownMutatorConte
 type javaCommonAttributes struct {
 	*javaResourcesAttributes
 	*kotlinAttributes
-	Srcs         bazel.LabelListAttribute
-	Plugins      bazel.LabelListAttribute
-	Javacopts    bazel.StringListAttribute
-	Sdk_version  bazel.StringAttribute
-	Java_version bazel.StringAttribute
+	Srcs                      bazel.LabelListAttribute
+	Plugins                   bazel.LabelListAttribute
+	Javacopts                 bazel.StringListAttribute
+	Sdk_version               bazel.StringAttribute
+	Java_version              bazel.StringAttribute
+	Errorprone_always_enabled bazel.BoolAttribute
 }
 
 type javaDependencyLabels struct {
@@ -2924,26 +2925,47 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		staticDeps.Add(&bazel.Label{Label: ":" + javaAidlLibName})
 	}
 
-	var javacopts []string
+	var javacopts bazel.StringListAttribute //[]string
+	plugins := bazel.MakeLabelListAttribute(
+		android.BazelLabelForModuleDeps(ctx, m.properties.Plugins),
+	)
 	if m.properties.Javacflags != nil {
-		javacopts = append(javacopts, m.properties.Javacflags...)
+		javacopts = bazel.MakeStringListAttribute(m.properties.Javacflags)
 	}
 
 	epEnabled := m.properties.Errorprone.Enabled
-	//TODO(b/227504307) add configuration that depends on RUN_ERROR_PRONE environment variable
-	if Bool(epEnabled) {
-		javacopts = append(javacopts, m.properties.Errorprone.Javacflags...)
+	var errorproneAlwaysEnabled bazel.BoolAttribute
+	if epEnabled == nil {
+		if m.properties.Errorprone.Javacflags != nil {
+			javacopts.SetSelectValue(bazel.ErrorProneAxis, bazel.ErrorproneDisabled, []string{"-XepDisableAllChecks"})
+			javacopts.SetSelectValue(bazel.ErrorProneAxis, bazel.ConditionsDefaultConfigKey, m.properties.Errorprone.Javacflags)
+		}
+		plugins.SetSelectValue(
+			bazel.ErrorProneAxis,
+			bazel.ConditionsDefaultConfigKey,
+			android.BazelLabelForModuleDeps(ctx, m.properties.Errorprone.Extra_check_modules),
+		)
+		plugins.SetSelectValue(
+			bazel.ErrorProneAxis,
+			bazel.ErrorproneDisabled,
+			bazel.LabelList{Includes: []bazel.Label{}},
+		)
+	} else if *epEnabled == true {
+		plugins.Append(bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, m.properties.Errorprone.Extra_check_modules)))
+		javacopts.Append(bazel.MakeStringListAttribute(m.properties.Errorprone.Javacflags))
+		errorproneAlwaysEnabled.Value = epEnabled
+	} else {
+		javacopts.Append(bazel.MakeStringListAttribute([]string{"-XepDisableAllChecks"}))
 	}
 
 	commonAttrs := &javaCommonAttributes{
-		Srcs:                    javaSrcs,
-		javaResourcesAttributes: m.convertJavaResourcesAttributes(ctx),
-		Plugins: bazel.MakeLabelListAttribute(
-			android.BazelLabelForModuleDeps(ctx, m.properties.Plugins),
-		),
-		Javacopts:    bazel.MakeStringListAttribute(javacopts),
-		Java_version: bazel.StringAttribute{Value: m.properties.Java_version},
-		Sdk_version:  bazel.StringAttribute{Value: m.deviceProperties.Sdk_version},
+		Srcs:                      javaSrcs,
+		javaResourcesAttributes:   m.convertJavaResourcesAttributes(ctx),
+		Plugins:                   plugins,
+		Javacopts:                 javacopts,
+		Java_version:              bazel.StringAttribute{Value: m.properties.Java_version},
+		Sdk_version:               bazel.StringAttribute{Value: m.deviceProperties.Sdk_version},
+		Errorprone_always_enabled: errorproneAlwaysEnabled,
 	}
 
 	for axis, configToProps := range archVariantProps {
