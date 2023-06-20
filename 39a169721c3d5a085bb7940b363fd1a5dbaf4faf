@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08be4d5b_241eb9ee",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-20T15:56:42Z",
+      "side": 1,
+      "message": "nit: rather than panic-ing, if we append the error we can unit test this more easily.",
+      "range": {
+        "startLine": 334,
+        "startChar": 5,
+        "endLine": 334,
+        "endChar": 10
+      },
+      "revId": "39a169721c3d5a085bb7940b363fd1a5dbaf4faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
