@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b9554e_72e2a61c",
+        "filename": "android/defaults.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-20T15:47:51Z",
+      "side": 1,
+      "message": "I\u0027m not sure it makes sense to label them as \"converted\" in metrics, then. I think it\u0027s WAI to mark certain modules as \"not converted\" if we have no intention of them being Bazel targets. (Package may be another example)\n\nI could see the argument, however, that this may disrupt our bp2build conversion counts. Maybe we should make a separate enum value for \"WILL_NEVER_CONVERT\" ? \nBut this is also solvable with better bp2build progress support, so I think it\u0027s not worth maintaining programmatically in bp2build.",
+      "parentUuid": "a559225f_aae4ebe9",
+      "range": {
+        "startLine": 185,
+        "startChar": 54,
+        "endLine": 185,
+        "endChar": 92
+      },
+      "revId": "d69f163e18d8598afe6c192e2722687a17b66141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7a1cd1d_49b7a69b",
