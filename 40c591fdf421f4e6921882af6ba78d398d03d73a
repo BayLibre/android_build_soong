@@ -16,6 +16,23 @@
       "message": "see https://android-build.googleplex.com/builds/abtd/run/L25300000961432088",
       "revId": "40c591fdf421f4e6921882af6ba78d398d03d73a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a990db_1f6735db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-20T19:04:55Z",
+      "side": 1,
+      "message": "formatting seems off",
+      "revId": "40c591fdf421f4e6921882af6ba78d398d03d73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
