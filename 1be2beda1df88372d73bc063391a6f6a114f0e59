@@ -16,6 +16,23 @@
       "message": "@cparsons@google.com ping 😊",
       "revId": "1be2beda1df88372d73bc063391a6f6a114f0e59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d9da65_61930369",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1341,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-06-20T16:28:26Z",
+      "side": 1,
+      "message": "Could you add a comment here as to the rationale? (I guess we should be somewhat vague, because this is open source code) The commit description describes this as a  \"misconfiguration\", but I guess this is expected in some cases?",
+      "revId": "1be2beda1df88372d73bc063391a6f6a114f0e59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
