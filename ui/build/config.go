@@ -74,7 +74,6 @@ type configImpl struct {
 	checkbuild               bool
 	dist                     bool
 	jsonModuleGraph          bool
-	apiBp2build              bool // Generate BUILD files for Soong modules that contribute APIs
 	bp2build                 bool
 	queryview                bool
 	reportMkMetrics          bool // Collect and report mk2bp migration progress metrics.
@@ -947,8 +946,6 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.jsonModuleGraph = true
 		} else if arg == "bp2build" {
 			c.bp2build = true
-		} else if arg == "api_bp2build" {
-			c.apiBp2build = true
 		} else if arg == "queryview" {
 			c.queryview = true
 		} else if arg == "soong_docs" {
@@ -1048,7 +1045,7 @@ func (c *configImpl) SoongBuildInvocationNeeded() bool {
 		return true
 	}
 
-	if !c.JsonModuleGraph() && !c.Bp2Build() && !c.Queryview() && !c.SoongDocs() && !c.ApiBp2build() {
+	if !c.JsonModuleGraph() && !c.Bp2Build() && !c.Queryview() && !c.SoongDocs() {
 		// Command line was empty, the default Ninja target is built
 		return true
 	}
@@ -1146,10 +1143,6 @@ func (c *configImpl) QueryviewMarkerFile() string {
 	return shared.JoinPath(c.SoongOutDir(), "queryview.marker")
 }
 
-func (c *configImpl) ApiBp2buildMarkerFile() string {
-	return shared.JoinPath(c.SoongOutDir(), "api_bp2build.marker")
-}
-
 func (c *configImpl) ModuleGraphFile() string {
 	return shared.JoinPath(c.SoongOutDir(), "module-graph.json")
 }
@@ -1189,10 +1182,6 @@ func (c *configImpl) JsonModuleGraph() bool {
 
 func (c *configImpl) Bp2Build() bool {
 	return c.bp2build
-}
-
-func (c *configImpl) ApiBp2build() bool {
-	return c.apiBp2build
 }
 
 func (c *configImpl) Queryview() bool {
