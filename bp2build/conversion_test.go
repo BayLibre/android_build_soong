@@ -173,6 +173,14 @@ func TestCreateBazelFiles_Bp2Build_CreatesDefaultFiles(t *testing.T) {
 			dir:      "allowlists",
 			basename: "mixed_build_staging_allowlist.txt",
 		},
+		{
+			dir:      "allowlists",
+			basename: "strongly_verified.txt",
+		},
+		{
+			dir:      "allowlists",
+			basename: "weakly_verified.txt",
+		},
 	}
 
 	if len(files) != len(expectedFilePaths) {

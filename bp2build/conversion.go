@@ -73,9 +73,18 @@ func soongInjectionFiles(cfg android.Config, metrics CodegenMetrics) ([]BazelFil
 	files = append(files, newFile("api_levels", "platform_versions.bzl", platformVersionContents(cfg)))
 
 	files = append(files, newFile("allowlists", GeneratedBuildFileName, ""))
+
+	// Mixed builds allowlists, i.e. what `m` reads.
 	// TODO(b/262781701): Create an alternate soong_build entrypoint for writing out these files only when requested
 	files = append(files, newFile("allowlists", "mixed_build_prod_allowlist.txt", strings.Join(android.GetBazelEnabledModules(android.BazelProdMode), "\n")+"\n"))
 	files = append(files, newFile("allowlists", "mixed_build_staging_allowlist.txt", strings.Join(android.GetBazelEnabledModules(android.BazelStagingMode), "\n")+"\n"))
+
+	// Roboleaf allowlist v2.
+	// TODO(b/285631638): replace this strongly verifiedlist with the allowlist v2 generated one.
+	// NOTE: Be careful when adding modules to the strongly verified list! Downstream tools like atest may use this list to change default user behavior.
+	files = append(files, newFile("allowlists", "strongly_verified.txt", ""))
+	// TODO(b/285631638): replace this weakly verified list with the allowlist v2 generated one. Currently it's just the full set of converted modules.
+	files = append(files, newFile("allowlists", "weakly_verified.txt", strings.Join(android.SortedStringKeys(metrics.convertedModulePathMap), "\n")+"\n"))
 
 	return files, nil
 }
