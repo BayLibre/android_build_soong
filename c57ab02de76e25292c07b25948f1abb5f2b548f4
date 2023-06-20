@@ -16,6 +16,24 @@
       "message": "Should we cherrypick this into Wear? (if we haven\u0027t already)\n+tyiu",
       "revId": "c57ab02de76e25292c07b25948f1abb5f2b548f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9682ed9_8dce2e8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1969256
+      },
+      "writtenOn": "2023-06-20T16:06:22Z",
+      "side": 1,
+      "message": "We can CP this change and do some testing.",
+      "parentUuid": "0176b706_adaeaa10",
+      "revId": "c57ab02de76e25292c07b25948f1abb5f2b548f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
