@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70154d4d_53994054",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-06-20T14:22:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e456b1a7_2f119426",
+      "revId": "6f9f9a8b13f00e139236842b121e004bd84e7ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f828b0f1_9454e5f7",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-15T20:27:59Z",
       "side": 1,
       "message": "Same here",
+      "revId": "6f9f9a8b13f00e139236842b121e004bd84e7ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "887522f1_0c70474a",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2151,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-06-20T14:22:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f828b0f1_9454e5f7",
       "revId": "6f9f9a8b13f00e139236842b121e004bd84e7ca3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
