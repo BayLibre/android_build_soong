@@ -16,6 +16,24 @@
       "message": "There may be a cleaner way of doing this, thought I\u0027d throw this up for discussion.",
       "revId": "91f32e7ae5a6ba2c632e7ac05910c5b385785e31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cef33ed_28d23f2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-20T13:46:41Z",
+      "side": 1,
+      "message": "I think this should be fine. There is at least [one precedent of doing this](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/app_import.go;l\u003d38;drc\u003dccb20f47d5318a9146a365daa2b2dc3549ad3763), and I think it\u0027s pretty clear what the intention is.",
+      "parentUuid": "88a40331_1a2647fc",
+      "revId": "91f32e7ae5a6ba2c632e7ac05910c5b385785e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
