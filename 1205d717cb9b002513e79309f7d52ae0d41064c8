@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19e17497_fa625e64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-06-20T19:14:22Z",
+      "side": 1,
+      "message": "Nit: provide abtd link in the description",
+      "revId": "1205d717cb9b002513e79309f7d52ae0d41064c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
