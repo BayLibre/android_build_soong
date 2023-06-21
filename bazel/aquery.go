@@ -18,6 +18,8 @@ import (
 	"crypto/sha256"
 	"encoding/base64"
 	"fmt"
+	"io/fs"
+	ospkg "os"
 	"path/filepath"
 	"reflect"
 	"sort"
@@ -28,6 +30,7 @@ import (
 
 	"github.com/google/blueprint/metrics"
 	"github.com/google/blueprint/proptools"
+	"google.golang.org/protobuf/encoding/prototext"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -325,6 +328,17 @@ func (a *aqueryArtifactHandler) artifactPathsFromDepsetHash(depsetHash string) (
 func AqueryBuildStatements(aqueryJsonProto []byte, eventHandler *metrics.EventHandler) ([]*BuildStatement, []AqueryDepset, error) {
 	aqueryProto := &analysis_v2_proto.ActionGraphContainer{}
 	err := proto.Unmarshal(aqueryJsonProto, aqueryProto)
+
+	textProto, err := prototext.MarshalOptions{
+		Multiline: true,
+	}.Marshal(aqueryProto)
+	if err != nil {
+		return nil, nil, err
+	}
+	err = ospkg.WriteFile("/tmp/aquery_output.txt", textProto, fs.ModePerm)
+	if err != nil {
+		return nil, nil, err
+	}
 	if err != nil {
 		return nil, nil, err
 	}
@@ -644,6 +658,10 @@ func (a *aqueryArtifactHandler) actionToBuildStatement(actionEntry *analysis_v2_
 		return nil, nil
 	// Skip "Fail" actions, which are placeholder actions designed to always fail.
 	case "Fail":
+		return nil, nil
+	// TODO: b/288292933 RepoMappingManifest needs to output its contents to aquery.
+	// However it appears to not be used for anything so we can ignore it for now.
+	case "RepoMappingManifest":
 		return nil, nil
 	case "BaselineCoverage":
 		return nil, nil
