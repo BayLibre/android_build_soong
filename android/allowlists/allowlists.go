@@ -1593,6 +1593,9 @@ var (
 		"test_com.android.neuralnetworks",
 		"libneuralnetworks",
 		"libneuralnetworks_static",
+		// M13: media.swcodec launch
+		"com.android.media.swcodec",
+		"test_com.android.media.swcodec",
 	}
 
 	// Staging-mode allowlist. Modules in this list are only built
@@ -1601,9 +1604,6 @@ var (
 	// It is implicit that all modules in ProdMixedBuildsEnabledList will
 	// also be built - do not add them to this list.
 	StagingMixedBuildsEnabledList = []string{
-		// M13: media.swcodec launch
-		"com.android.media.swcodec",
-		"test_com.android.media.swcodec",
 		"libstagefright_foundation",
 		"libcodec2_hidl@1.0",
 	}
@@ -1614,13 +1614,12 @@ var (
 		"libc++",
 		"libcrypto",
 		"libcutils",
-	}
-
-	// These should be the libs that are included by the apexes in the StagingMixedBuildsEnabledList
-	StagingDclaMixedBuildsEnabledList = []string{
 		"libstagefright_flacdec",
 		"libutils",
 	}
+
+	// These should be the libs that are included by the apexes in the StagingMixedBuildsEnabledList
+	StagingDclaMixedBuildsEnabledList = []string{}
 
 	// TODO(b/269342245): Enable the rest of the DCLA libs
 	// "libssl",
