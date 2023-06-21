@@ -399,6 +399,9 @@ func main() {
 	var wg sync.WaitGroup
 	for i := 0; i < jobs; i++ {
 		wg.Add(1)
+		// To smooth out the spikes in memory usage, skew the
+		// initial starting time of the jobs by a small amount.
+		time.Sleep(15 * time.Second)
 		go func() {
 			defer wg.Done()
 			for {
@@ -526,23 +529,31 @@ func runSoongUiForProduct(mpctx *mpContext, product string) {
 	mpctx.Status.StartAction(action)
 	defer cleanupAfterProduct(outDir, productZip)
 
-	before := time.Now()
-	err = cmd.Run()
+	var errOutput string
 
-	if !*onlyConfig && !*onlySoong {
-		katiBuildNinjaFile := filepath.Join(outDir, "build-"+product+".ninja")
-		if after, err := os.Stat(katiBuildNinjaFile); err == nil && after.ModTime().After(before) {
-			err := copyFile(consoleLogPath, filepath.Join(filepath.Dir(consoleLogPath), "std_full.log"))
-			if err != nil {
-				log.Fatalf("Error copying log file: %s", err)
+	// If the command is "Killed", retry it once: memory spikes likely aligned to cause OOM.
+	for maxTries := 2; maxTries > 0; maxTries-- {
+		before := time.Now()
+		err = cmd.Run()
+
+		if !*onlyConfig && !*onlySoong {
+			katiBuildNinjaFile := filepath.Join(outDir, "build-"+product+".ninja")
+			if after, err := os.Stat(katiBuildNinjaFile); err == nil && after.ModTime().After(before) {
+				err := copyFile(consoleLogPath, filepath.Join(filepath.Dir(consoleLogPath), "std_full.log"))
+				if err != nil {
+					log.Fatalf("Error copying log file: %s", err)
+				}
 			}
 		}
-	}
-	var errOutput string
-	if err == nil {
-		errOutput = ""
-	} else {
-		errOutput = errMsgFromLog(consoleLogPath)
+		if err == nil {
+			errOutput = ""
+			break
+		} else {
+			errOutput = errMsgFromLog(consoleLogPath)
+			if !strings.Contains(errOutput, "\n> Killed\n") {
+				break
+			}
+		}
 	}
 
 	mpctx.Status.FinishAction(status.ActionResult{
