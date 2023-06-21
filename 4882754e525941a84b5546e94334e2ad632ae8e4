@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e65a063_7cf9dbae",
+        "filename": "ui/tracer/status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-21T01:27:53Z",
+      "side": 1,
+      "message": "Maybe return nil if rawTags is empty to avoid allocating an empty map?",
+      "revId": "4882754e525941a84b5546e94334e2ad632ae8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
