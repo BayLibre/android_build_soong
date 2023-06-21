@@ -52,6 +52,24 @@
       "parentUuid": "6735ca31_b261daa0",
       "revId": "4882754e525941a84b5546e94334e2ad632ae8e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84d6837_79846b0e",
+        "filename": "ui/tracer/status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-06-21T20:16:24Z",
+      "side": 1,
+      "message": "Oh, TIL. Will change that then.",
+      "parentUuid": "3d98ccc2_b605972e",
+      "revId": "4882754e525941a84b5546e94334e2ad632ae8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
