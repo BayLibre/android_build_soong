@@ -645,6 +645,10 @@ func (a *aqueryArtifactHandler) actionToBuildStatement(actionEntry *analysis_v2_
 	// Skip "Fail" actions, which are placeholder actions designed to always fail.
 	case "Fail":
 		return nil, nil
+	// TODO(b/288292933): RepoMappingManifest needs to output its contents to aquery.
+	// However it appears to not be used for anything so we can ignore it for now.
+	case "RepoMappingManifest":
+		return nil, nil
 	case "BaselineCoverage":
 		return nil, nil
 	case "Symlink", "SolibSymlink", "ExecutableSymlink":
