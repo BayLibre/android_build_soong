@@ -34,6 +34,24 @@
       "parentUuid": "8e65a063_7cf9dbae",
       "revId": "4882754e525941a84b5546e94334e2ad632ae8e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d98ccc2_b605972e",
+        "filename": "ui/tracer/status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-21T20:15:37Z",
+      "side": 1,
+      "message": "Reads on nil maps are well-defined, and I wouldn\u0027t expect the caller to try to write to it.\n\nFinishAction is called for every action on a single thread.  It\u0027s usually not too hot, but when ninja is lots of tiny actions in a row on 128 processors it can be the limiting factor.",
+      "parentUuid": "6735ca31_b261daa0",
+      "revId": "4882754e525941a84b5546e94334e2ad632ae8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
