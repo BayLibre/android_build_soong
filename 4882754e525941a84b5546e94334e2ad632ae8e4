@@ -16,6 +16,24 @@
       "message": "Maybe return nil if rawTags is empty to avoid allocating an empty map?",
       "revId": "4882754e525941a84b5546e94334e2ad632ae8e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6735ca31_b261daa0",
+        "filename": "ui/tracer/status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-06-21T18:08:40Z",
+      "side": 1,
+      "message": "Users of the value then have to deal with a nullable type, whereas an empty map behaves correctly. Is FinishAction particularly hot code?",
+      "parentUuid": "8e65a063_7cf9dbae",
+      "revId": "4882754e525941a84b5546e94334e2ad632ae8e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
