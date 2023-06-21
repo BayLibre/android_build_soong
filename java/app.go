@@ -521,7 +521,7 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 	a.dexpreopter.preventInstall = a.appProperties.PreventInstall
 
 	if ctx.ModuleName() != "framework-res" {
-		a.Module.compile(ctx, a.aaptSrcJar)
+		a.Module.compile(ctx, a.transitiveAaptRJars)
 	}
 
 	return a.dexJarFile.PathOrNil()

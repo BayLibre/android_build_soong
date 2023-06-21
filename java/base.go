@@ -1048,7 +1048,7 @@ func (module *Module) addGeneratedSrcJars(path android.Path) {
 	module.properties.Generated_srcjars = append(module.properties.Generated_srcjars, path)
 }
 
-func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
+func (j *Module) compile(ctx android.ModuleContext, aaptRJars android.Paths) {
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.deviceProperties.Aidl.Export_include_dirs)
 
 	deps := j.collectDeps(ctx)
@@ -1086,9 +1086,6 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 	srcJars := srcFiles.FilterByExt(".srcjar")
 	srcJars = append(srcJars, deps.srcJars...)
-	if aaptSrcJar != nil {
-		srcJars = append(srcJars, aaptSrcJar)
-	}
 	srcJars = append(srcJars, j.properties.Generated_srcjars...)
 	srcFiles = srcFiles.FilterOutByExt(".srcjar")
 
@@ -1130,6 +1127,8 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 	var kotlinJars android.Paths
 	var kotlinHeaderJars android.Paths
+
+	flags.classpath = append(flags.classpath, aaptRJars...)
 
 	if srcFiles.HasExt(".kt") {
 		// When using kotlin sources turbine is used to generate annotation processor sources,
