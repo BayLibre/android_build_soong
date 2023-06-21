@@ -94,6 +94,30 @@
       },
       "revId": "693c766f9c4a1bf5d15fcd080836682e5312a30d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "147963b8_5506389d",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-21T00:52:17Z",
+      "side": 1,
+      "message": "Thanks Jin, I think I like this approach. I will followup in a separate CL/discussion thread.",
+      "parentUuid": "c187751f_8f404d3e",
+      "range": {
+        "startLine": 442,
+        "startChar": 26,
+        "endLine": 442,
+        "endChar": 56
+      },
+      "revId": "693c766f9c4a1bf5d15fcd080836682e5312a30d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
