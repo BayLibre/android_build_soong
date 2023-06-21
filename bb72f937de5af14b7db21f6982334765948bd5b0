@@ -22,6 +22,30 @@
       },
       "revId": "bb72f937de5af14b7db21f6982334765948bd5b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee5d4b20_e5a880dc",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-21T19:13:11Z",
+      "side": 1,
+      "message": "resolving as optional",
+      "parentUuid": "23710925_a89a5214",
+      "range": {
+        "startLine": 500,
+        "startChar": 28,
+        "endLine": 500,
+        "endChar": 47
+      },
+      "revId": "bb72f937de5af14b7db21f6982334765948bd5b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
