@@ -70,6 +70,30 @@
       },
       "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b6d4940_7545c195",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1996030
+      },
+      "writtenOn": "2023-06-21T04:26:58Z",
+      "side": 1,
+      "message": "Updated the change to include the zip step. \n\nHow can I verify the remote execution portion of the change?",
+      "parentUuid": "d327745c_b44cd05d",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
