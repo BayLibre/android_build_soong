@@ -473,7 +473,8 @@ type compiler interface {
 	compilerDeps(ctx DepsContext, deps Deps) Deps
 	crateName() string
 	rustdoc(ctx ModuleContext, flags Flags, deps PathDeps) android.OptionalPath
-	compileSrcs(ctx android.ModuleMissingDepsPathContext) android.Paths
+	crateRoot(ctx ModuleContext) android.Path
+	compileSrcs(ctx ModuleContext) android.Paths
 
 	// Output directory in which source-generated code from dependencies is
 	// copied. This is equivalent to Cargo's OUT_DIR variable.
