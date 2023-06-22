@@ -16,6 +16,24 @@
       "message": "Colin, is it safe to delete this check?",
       "revId": "1f0315b4a5560015e04cd625f67d07f47780b004",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b490e380_11ce4188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-22T04:06:39Z",
+      "side": 1,
+      "message": "What value are you getting instead of uint32max?  Can you check for that value instead?",
+      "parentUuid": "defaae8d_139ef884",
+      "revId": "1f0315b4a5560015e04cd625f67d07f47780b004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
