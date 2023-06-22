@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f4d6f7_b26a59ea",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-22T21:06:09Z",
+      "side": 1,
+      "message": "We\u0027ll need to think about how to do this in Bazel since there is no equivalent of a Singleton. Per product should be feasible in that case though.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "3e6451030ec99044a37165afe77028074b9948f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
