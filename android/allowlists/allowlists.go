@@ -805,6 +805,8 @@ var (
 		"rs-headers",
 		"rs_script_api",
 		"libRSDispatch",
+
+		"dagger2",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
