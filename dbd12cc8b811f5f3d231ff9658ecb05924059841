@@ -33,6 +33,24 @@
       "message": "@joeo@google.com @bbadour@google.com Is there any updates on this?",
       "revId": "dbd12cc8b811f5f3d231ff9658ecb05924059841",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c83099_bbd230ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2023-06-22T15:53:10Z",
+      "side": 1,
+      "message": "No, it\u0027s not. Compliancelint is warning-only. You can merge your change with the warnings.",
+      "parentUuid": "3bd499f6_0973a2fa",
+      "revId": "dbd12cc8b811f5f3d231ff9658ecb05924059841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
