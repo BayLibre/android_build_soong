@@ -184,8 +184,8 @@ func (c Config) ReleaseVersion() string {
 }
 
 // The flag values files passed to aconfig, derived from RELEASE_VERSION
-func (c Config) ReleaseAconfigValueSets() []string {
-	return c.config.productVariables.ReleaseAconfigValueSets
+func (c Config) ReleaseDeviceConfigValueSets() []string {
+	return c.config.productVariables.ReleaseDeviceConfigValueSets
 }
 
 // A DeviceConfig object represents the configuration for a particular device

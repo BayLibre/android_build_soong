@@ -12,28 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package aconfig
+package device_config
 
 import (
+	"strings"
 	"testing"
 
 	"android/soong/android"
 )
 
-func TestAconfigValues(t *testing.T) {
+func TestDeviceConfigDefinitions(t *testing.T) {
 	bp := `
-				aconfig_values {
-					name: "module_name",
-					srcs: [ "blah.aconfig_values" ],
-					package: "foo.package"
-				}
-			`
+		device_config_definitions {
+			name: "module_name",
+			package: "com.example.package",
+			srcs: ["foo.aconfig"],
+		}
+	`
 	result := runTest(t, android.FixtureExpectsNoErrors, bp)
 
-	module := result.ModuleForTests("module_name", "").Module().(*ValuesModule)
+	module := result.ModuleForTests("module_name", "").Module().(*DefinitionsModule)
 
 	// Check that the provider has the right contents
-	depData := result.ModuleProvider(module, valuesProviderKey).(valuesProviderData)
-	android.AssertStringEquals(t, "package", "foo.package", depData.Package)
-	android.AssertPathsEndWith(t, "srcs", []string{"blah.aconfig_values"}, depData.Values)
+	depData := result.ModuleProvider(module, definitionsProviderKey).(definitionsProviderData)
+	android.AssertStringEquals(t, "package", depData.Package, "com.example.package")
+	if !strings.HasSuffix(depData.IntermediatePath.String(), "/intermediate.pb") {
+		t.Errorf("Missing intermediates path in provider: %s", depData.IntermediatePath.String())
+	}
 }

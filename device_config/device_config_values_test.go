@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package aconfig
+package device_config
 
 import (
 	"testing"
@@ -20,24 +20,20 @@ import (
 	"android/soong/android"
 )
 
-func TestAconfigValueSet(t *testing.T) {
+func TestDeviceConfigValues(t *testing.T) {
 	bp := `
-				aconfig_values {
-					name: "one",
+				device_config_values {
+					name: "module_name",
 					srcs: [ "blah.aconfig_values" ],
 					package: "foo.package"
-				}
-
-				aconfig_value_set {
-					name: "module_name",
-          values: [ "one" ],
 				}
 			`
 	result := runTest(t, android.FixtureExpectsNoErrors, bp)
 
-	module := result.ModuleForTests("module_name", "").Module().(*ValueSetModule)
+	module := result.ModuleForTests("module_name", "").Module().(*ValuesModule)
 
 	// Check that the provider has the right contents
-	depData := result.ModuleProvider(module, valueSetProviderKey).(valueSetProviderData)
-	android.AssertStringEquals(t, "AvailablePackages", "blah.aconfig_values", depData.AvailablePackages["foo.package"][0].String())
+	depData := result.ModuleProvider(module, valuesProviderKey).(valuesProviderData)
+	android.AssertStringEquals(t, "package", "foo.package", depData.Package)
+	android.AssertPathsEndWith(t, "srcs", []string{"blah.aconfig_values"}, depData.Values)
 }

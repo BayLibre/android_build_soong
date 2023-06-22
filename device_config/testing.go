@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package aconfig
+package device_config
 
 import (
 	"testing"
@@ -20,10 +20,10 @@ import (
 	"android/soong/android"
 )
 
-var PrepareForTestWithAconfigBuildComponents = android.FixtureRegisterWithContext(registerBuildComponents)
+var PrepareForTestWithDeviceConfigBuildComponents = android.FixtureRegisterWithContext(registerBuildComponents)
 
 func runTest(t *testing.T, errorHandler android.FixtureErrorHandler, bp string) *android.TestResult {
-	return android.GroupFixturePreparers(PrepareForTestWithAconfigBuildComponents).
+	return android.GroupFixturePreparers(PrepareForTestWithDeviceConfigBuildComponents).
 		ExtendWithErrorHandler(errorHandler).
 		RunTestWithBp(t, bp)
 }
