@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efb22ef1_6b40621f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-06-22T02:08:54Z",
+      "side": 1,
+      "message": "This should help eliminate the alignment of the initial spike of memory usage in all of the tasks, causing the OOM issues.\n\nA more complete solution requires more investigation before implementation.",
+      "revId": "610ebf0312213442d24380056cb72afed526dd9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
