@@ -22,6 +22,30 @@
       },
       "revId": "ad7c37ab87528d3a342e5a6d3eaaf5efd720fc3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6dfed8f_b7f831fc",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-22T15:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a8e58b4_d8c46997",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 43
+      },
+      "revId": "ad7c37ab87528d3a342e5a6d3eaaf5efd720fc3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
