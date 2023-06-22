@@ -2937,7 +2937,20 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	epJavacflags := m.properties.Errorprone.Javacflags
 	var errorproneAlwaysEnabled bazel.BoolAttribute
 	if epEnabled == nil {
-		//TODO(b/227504307) add configuration that depends on RUN_ERROR_PRONE environment variable
+		if epJavacflags != nil {
+			javacopts.SetSelectValue(bazel.ErrorProneAxis, bazel.ErrorproneDisabled, []string{"-XepDisableAllChecks"})
+			javacopts.SetSelectValue(bazel.ErrorProneAxis, bazel.ConditionsDefaultConfigKey, epJavacflags)
+		}
+		plugins.SetSelectValue(
+			bazel.ErrorProneAxis,
+			bazel.ConditionsDefaultConfigKey,
+			android.BazelLabelForModuleDeps(ctx, m.properties.Errorprone.Extra_check_modules),
+		)
+		plugins.SetSelectValue(
+			bazel.ErrorProneAxis,
+			bazel.ErrorproneDisabled,
+			bazel.LabelList{Includes: []bazel.Label{}},
+		)
 	} else if *epEnabled == true {
 		plugins.Append(bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, m.properties.Errorprone.Extra_check_modules)))
 		javacopts.Append(bazel.MakeStringListAttribute(epJavacflags))
