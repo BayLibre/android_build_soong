@@ -2953,6 +2953,10 @@ func javaXsdTargetName(xsd android.XsdConfigBp2buildTargets) string {
 	return xsd.JavaBp2buildTargetName()
 }
 
+func bp2buildCleanupErrorproneFlags(javacflags []string) bool {
+	return inList("-XepDisableAllChecks", javacflags)
+}
+
 // convertLibraryAttrsBp2Build returns a javaCommonAttributes struct with
 // converted attributes shared across java_* modules and a bp2BuildJavaInfo struct
 // which has other non-attribute information needed for bp2build conversion
@@ -3081,6 +3085,10 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.Bp2buildMutatorContext
 
 	epEnabled := m.properties.Errorprone.Enabled
 	epJavacflags := m.properties.Errorprone.Javacflags
+	if flagsDisabled := bp2buildCleanupErrorproneFlags(epJavacflags); !flagsDisabled {
+		epEnabled = &flagsDisabled
+	}
+
 	var errorproneForceEnable bazel.BoolAttribute
 	if epEnabled == nil {
 		if epJavacflags != nil {
