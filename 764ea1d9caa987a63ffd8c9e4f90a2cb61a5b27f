@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b13e91fa_50cd3d05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-06-22T20:32:33Z",
+      "side": 1,
+      "message": "This has been annoying me since a while.",
+      "revId": "764ea1d9caa987a63ffd8c9e4f90a2cb61a5b27f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
