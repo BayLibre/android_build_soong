@@ -34,6 +34,23 @@
       "parentUuid": "0340a435_a0ff635a",
       "revId": "eec1b3fe267af06e41c140590cc8bbb9b823fe52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a21f4c_2e87c655",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-06-22T17:24:31Z",
+      "side": 1,
+      "message": "+1 this is a great cleanup, thanks! Do you also plan to remove these androidMkForFiles entries eventually? This is essentially the build of flattened apexes, which still remains because image apexes also build flattened apexes through this code.",
+      "revId": "eec1b3fe267af06e41c140590cc8bbb9b823fe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
