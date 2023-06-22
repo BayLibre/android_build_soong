@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dae580a5_2236bc47",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1960090
+      },
+      "writtenOn": "2023-06-22T17:12:28Z",
+      "side": 1,
+      "message": "nit: is it better to use something like `g, ok :\u003d m.(*bootstrap.GoPackage); ok` as condition here? This makes it consistent with the other conditions above, and `generateBazelTargetsGoPackage` can actually accept a go package instead a module to be converted.",
+      "range": {
+        "startLine": 496,
+        "startChar": 5,
+        "endLine": 496,
+        "endChar": 49
+      },
+      "revId": "bb72f937de5af14b7db21f6982334765948bd5b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23710925_a89a5214",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 4
