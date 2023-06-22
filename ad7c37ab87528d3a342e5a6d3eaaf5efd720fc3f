@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a8e58b4_d8c46997",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-22T13:58:11Z",
+      "side": 1,
+      "message": "I realize this hasn\u0027t really changed, but a comment about why we reverse here would be nice",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 43
+      },
+      "revId": "ad7c37ab87528d3a342e5a6d3eaaf5efd720fc3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
