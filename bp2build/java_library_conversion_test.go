@@ -217,26 +217,6 @@ java_plugin {
 	})
 }
 
-func TestJavaLibraryErrorproneJavacflagsErrorproneDisabledByDefault(t *testing.T) {
-	runJavaLibraryTestCase(t, Bp2buildTestCase{
-		Blueprint: `java_library {
-    name: "java-lib-1",
-    srcs: ["a.java"],
-    javacflags: ["-Xsuper-fast"],
-    errorprone: {
-        javacflags: ["-Xep:SpeedLimit:OFF"],
-    },
-}`,
-		ExpectedBazelTargets: []string{
-			MakeBazelTarget("java_library", "java-lib-1", AttrNameToString{
-				"javacopts": `["-Xsuper-fast"]`,
-				"srcs":      `["a.java"]`,
-			}),
-			MakeNeverlinkDuplicateTarget("java_library", "java-lib-1"),
-		},
-	})
-}
-
 func TestJavaLibraryErrorproneDisabledManually(t *testing.T) {
 	runJavaLibraryTestCase(t, Bp2buildTestCase{
 		Blueprint: `java_library {
@@ -257,6 +237,82 @@ func TestJavaLibraryErrorproneDisabledManually(t *testing.T) {
 			}),
 			MakeNeverlinkDuplicateTarget("java_library", "java-lib-1"),
 		},
+	})
+}
+
+func TestJavaLibraryErrorproneDefaultAppend(t *testing.T) {
+	runJavaLibraryTestCaseWithRegistrationCtxFunc(t, Bp2buildTestCase{
+		Blueprint: `java_library {
+    name: "java-lib-1",
+    srcs: ["a.java"],
+    plugins: ["plugin1"],
+    javacflags: ["-Xsuper-fast"],
+    errorprone: {
+    javacflags: ["-Xep:SpeedLimit:OFF"],
+    extra_check_modules: ["plugin2"],
+    },
+}
+
+java_plugin {
+    name: "plugin1",
+    bazel_module: { bp2build_available: false },
+}
+
+java_plugin {
+    name: "plugin2",
+    srcs: ["b.java"],
+    bazel_module: { bp2build_available: false },
+}`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("java_library", "java-lib-1", AttrNameToString{
+				"javacopts": `["-Xsuper-fast"] + select({
+        "//build/bazel/rules/java/errorprone:errorprone_globally_disabled": ["-XepDisableAllChecks"],
+        "//conditions:default": ["-Xep:SpeedLimit:OFF"],
+    })`,
+				"plugins": `[":plugin1"] + select({
+        "//build/bazel/rules/java/errorprone:errorprone_globally_disabled": [],
+        "//conditions:default": [":plugin2"],
+    })`,
+				"srcs": `["a.java"]`,
+			}),
+			MakeNeverlinkDuplicateTarget("java_library", "java-lib-1"),
+		},
+	}, func(ctx android.RegistrationContext) {
+		ctx.RegisterModuleType("java_plugin", java.PluginFactory)
+	})
+}
+func TestJavaLibraryErrorproneDefault(t *testing.T) {
+	runJavaLibraryTestCaseWithRegistrationCtxFunc(t, Bp2buildTestCase{
+		Blueprint: `java_library {
+    name: "java-lib-1",
+    srcs: ["a.java"],
+    errorprone: {
+    javacflags: ["-Xep:SpeedLimit:OFF"],
+    extra_check_modules: ["plugin2"],
+    },
+}
+
+java_plugin {
+    name: "plugin2",
+    srcs: ["b.java"],
+    bazel_module: { bp2build_available: false },
+}`,
+		ExpectedBazelTargets: []string{
+			MakeBazelTarget("java_library", "java-lib-1", AttrNameToString{
+				"javacopts": `select({
+        "//build/bazel/rules/java/errorprone:errorprone_globally_disabled": ["-XepDisableAllChecks"],
+        "//conditions:default": ["-Xep:SpeedLimit:OFF"],
+    })`,
+				"plugins": `select({
+        "//build/bazel/rules/java/errorprone:errorprone_globally_disabled": [],
+        "//conditions:default": [":plugin2"],
+    })`,
+				"srcs": `["a.java"]`,
+			}),
+			MakeNeverlinkDuplicateTarget("java_library", "java-lib-1"),
+		},
+	}, func(ctx android.RegistrationContext) {
+		ctx.RegisterModuleType("java_plugin", java.PluginFactory)
 	})
 }
 
