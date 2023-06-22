@@ -30,8 +30,8 @@ type DefinitionsModule struct {
 		// aconfig files, relative to this Android.bp file
 		Srcs []string `android:"path"`
 
-		// Release config flag package
-		Package string
+		// Release config flag namespace
+		Namespace string
 
 		// Values from TARGET_RELEASE / RELEASE_DEVICE_CONFIG_VALUE_SETS
 		Values []string `blueprint:"mutated"`
@@ -64,13 +64,13 @@ func (module *DefinitionsModule) DepsMutator(ctx android.BottomUpMutatorContext)
 		ctx.PropertyErrorf("srcs", "missing source files")
 		return
 	}
-	if len(module.properties.Package) == 0 {
-		ctx.PropertyErrorf("package", "missing package property")
+	if len(module.properties.Namespace) == 0 {
+		ctx.PropertyErrorf("namespace", "missing namespace property")
 	}
 
 	// Add a dependency on the device_config_value_sets defined in
 	// RELEASE_DEVICE_CONFIG_VALUE_SETS, and add any device_config_values that
-	// match our package.
+	// match our namespace.
 	valuesFromConfig := ctx.Config().ReleaseDeviceConfigValueSets()
 	ctx.AddDependency(ctx.Module(), implicitValuesTag, valuesFromConfig...)
 }
@@ -98,8 +98,8 @@ func joinAndPrefix(prefix string, values []string) string {
 
 // Provider published by device_config_value_set
 type definitionsProviderData struct {
-	Package          string
-	IntermediatePath android.WritablePath
+	namespace        string
+	intermediatePath android.WritablePath
 }
 
 var definitionsProviderKey = blueprint.NewProvider(definitionsProviderData{})
@@ -112,7 +112,7 @@ func (module *DefinitionsModule) GenerateAndroidBuildActions(ctx android.ModuleC
 			return
 		}
 		depData := ctx.OtherModuleProvider(dep, valueSetProviderKey).(valueSetProviderData)
-		valuesFiles, ok := depData.AvailablePackages[module.properties.Package]
+		valuesFiles, ok := depData.AvailableNamespaces[module.properties.Namespace]
 		if ok {
 			for _, path := range valuesFiles {
 				module.properties.Values = append(module.properties.Values, path.String())
@@ -130,14 +130,14 @@ func (module *DefinitionsModule) GenerateAndroidBuildActions(ctx android.ModuleC
 		Description: "device_config_definitions",
 		Args: map[string]string{
 			"release_version": ctx.Config().ReleaseVersion(),
-			"package":         module.properties.Package,
+			"namespace":       module.properties.Namespace,
 			"values":          joinAndPrefix(" --values ", module.properties.Values),
 		},
 	})
 
 	ctx.SetProvider(definitionsProviderKey, definitionsProviderData{
-		Package:          module.properties.Package,
-		IntermediatePath: intermediatePath,
+		namespace:        module.properties.Namespace,
+		intermediatePath: intermediatePath,
 	})
 
 }

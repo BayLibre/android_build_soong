@@ -25,7 +25,7 @@ func TestDeviceConfigDefinitions(t *testing.T) {
 	bp := `
 		device_config_definitions {
 			name: "module_name",
-			package: "com.example.package",
+			namespace: "com.example.package",
 			srcs: ["foo.aconfig"],
 		}
 	`
@@ -35,8 +35,8 @@ func TestDeviceConfigDefinitions(t *testing.T) {
 
 	// Check that the provider has the right contents
 	depData := result.ModuleProvider(module, definitionsProviderKey).(definitionsProviderData)
-	android.AssertStringEquals(t, "package", depData.Package, "com.example.package")
-	if !strings.HasSuffix(depData.IntermediatePath.String(), "/intermediate.pb") {
-		t.Errorf("Missing intermediates path in provider: %s", depData.IntermediatePath.String())
+	android.AssertStringEquals(t, "namespace", depData.namespace, "com.example.package")
+	if !strings.HasSuffix(depData.intermediatePath.String(), "/intermediate.pb") {
+		t.Errorf("Missing intermediates path in provider: %s", depData.intermediatePath.String())
 	}
 }
