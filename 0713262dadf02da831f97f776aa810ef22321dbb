@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3115385_e473525d",
+        "filename": "third_party/zip/struct.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-22T16:24:32Z",
+      "side": 1,
+      "message": "We sync this code with upstream, so I\u0027d prefer to keep this in android_test.go",
+      "revId": "0713262dadf02da831f97f776aa810ef22321dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
