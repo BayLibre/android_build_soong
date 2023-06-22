@@ -190,7 +190,8 @@ func TestZip64P7ZipRecords(t *testing.T) {
 		t.Errorf("wanted directoryRecords %d, got %d", w, g)
 	}
 
-	if g, w := d.directorySize, uint64(uint32max); g != w {
+	expectedDirSize := directoryHeaderLen + zip64ExtraBuf + len("large") // name of header
+	if g, w := d.directorySize, uint64(expectedDirSize); g != w {
 		t.Errorf("wanted directorySize %d, got %d", w, g)
 	}
 

@@ -62,7 +62,8 @@ const (
 	uint32max = (1 << 32) - 1
 
 	// extra header id's
-	zip64ExtraId = 0x0001 // zip64 Extended Information Extra Field
+	zip64ExtraId  = 0x0001 // zip64 Extended Information Extra Field
+	zip64ExtraBuf = 48     // 4x uint16 + 5x uint64
 )
 
 // FileHeader describes a file within a zip file.
