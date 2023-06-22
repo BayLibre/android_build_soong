@@ -2247,9 +2247,7 @@ func TestJavaApiLibraryDepApiSrcs(t *testing.T) {
 	manifest := m.Output("metalava.sbox.textproto")
 	sboxProto := android.RuleBuilderSboxProtoForTests(t, manifest)
 	manifestCommand := sboxProto.Commands[0].GetCommand()
-
-	android.AssertStringDoesContain(t, "Command expected to contain module srcjar file", manifestCommand, "bar1-stubs.srcjar")
-	android.AssertStringDoesContain(t, "Command expected to contain output files list text file flag", manifestCommand, "--out __SBOX_SANDBOX_DIR__/out/sources.txt")
+	android.AssertStringDoesContain(t, "Command expected to contain dep_api_srcs output jar", manifestCommand, "lib1.jar")
 }
 
 func TestJavaApiLibraryFilegroupInput(t *testing.T) {
