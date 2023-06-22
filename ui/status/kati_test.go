@@ -65,7 +65,7 @@ func TestKatiNormalCase(t *testing.T) {
 	parser.parseLine("out/build-aosp_arm.ninja is missing, regenerating...")
 	output.Expect(t, Counts{})
 
-	parser.parseLine("[1/1] initializing build system ...")
+	parser.parseLine("[1/1] initializing legacy Make module parser ...")
 	output.Expect(t, Counts{
 		TotalActions:    1,
 		RunningActions:  1,
@@ -118,7 +118,7 @@ func TestKatiExtraIncludes(t *testing.T) {
 		st: status.StartTool(),
 	}
 
-	parser.parseLine("[1/1] initializing build system ...")
+	parser.parseLine("[1/1] initializing legacy Make module parser ...")
 	parser.parseLine("[2/5] including out/soong/Android-aosp_arm.mk ...")
 	output.Expect(t, Counts{
 		TotalActions:    5,
@@ -164,7 +164,7 @@ func TestKatiFailOnError(t *testing.T) {
 		st: status.StartTool(),
 	}
 
-	parser.parseLine("[1/1] initializing build system ...")
+	parser.parseLine("[1/1] initializing legacy Make module parser ...")
 	parser.parseLine("[2/5] inclduing out/soong/Android-aosp_arm.mk ...")
 	parser.parseLine("build/make/tools/Android.mk:19: error: testing")
 	parser.flushAction()
