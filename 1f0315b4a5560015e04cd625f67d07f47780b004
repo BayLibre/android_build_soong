@@ -34,6 +34,24 @@
       "parentUuid": "defaae8d_139ef884",
       "revId": "1f0315b4a5560015e04cd625f67d07f47780b004",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4720c16b_ad52653f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-22T05:40:14Z",
+      "side": 1,
+      "message": "Checking for the value sounds good, I have updated the test accordingly.",
+      "parentUuid": "b490e380_11ce4188",
+      "revId": "1f0315b4a5560015e04cd625f67d07f47780b004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
