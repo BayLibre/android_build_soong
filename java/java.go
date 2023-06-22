@@ -2937,20 +2937,26 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	epJavacflags := m.properties.Errorprone.Javacflags
 	var errorproneAlwaysEnabled bazel.BoolAttribute
 	if epEnabled == nil {
-		if epJavacflags != nil {
-			javacopts.SetSelectValue(bazel.ErrorProneAxis, bazel.ErrorproneDisabled, []string{"-XepDisableAllChecks"})
-			javacopts.SetSelectValue(bazel.ErrorProneAxis, bazel.ConditionsDefaultConfigKey, epJavacflags)
-		}
-		plugins.SetSelectValue(
-			bazel.ErrorProneAxis,
-			bazel.ConditionsDefaultConfigKey,
-			android.BazelLabelForModuleDeps(ctx, m.properties.Errorprone.Extra_check_modules),
-		)
-		plugins.SetSelectValue(
-			bazel.ErrorProneAxis,
-			bazel.ErrorproneDisabled,
-			bazel.LabelList{Includes: []bazel.Label{}},
-		)
+		/*if epJavacflags != nil && slices.Contains(epJavacflags, "-XepDisableAllChecks") {
+			if len(epJavacflags) == 1 && m.properties.Errorprone.Extra_check_modules == nil {
+				javacopts.Append(bazel.MakeStringListAttribute([]string{"-XepDisableAllChecks"}))
+			}
+		} else { */
+			if epJavacflags != nil {
+				javacopts.SetSelectValue(bazel.ErrorProneAxis, bazel.ErrorproneDisabled, []string{"-XepDisableAllChecks"})
+				javacopts.SetSelectValue(bazel.ErrorProneAxis, bazel.ConditionsDefaultConfigKey, epJavacflags)
+			}
+			plugins.SetSelectValue(
+				bazel.ErrorProneAxis,
+				bazel.ConditionsDefaultConfigKey,
+				android.BazelLabelForModuleDeps(ctx, m.properties.Errorprone.Extra_check_modules),
+			)
+			plugins.SetSelectValue(
+				bazel.ErrorProneAxis,
+				bazel.ErrorproneDisabled,
+				bazel.LabelList{Includes: []bazel.Label{}},
+			)
+		//}
 	} else if *epEnabled == true {
 		plugins.Append(bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, m.properties.Errorprone.Extra_check_modules)))
 		javacopts.Append(bazel.MakeStringListAttribute(epJavacflags))
