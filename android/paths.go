@@ -1601,6 +1601,11 @@ func ensureTestOnly() {
 	if PrefixInList(os.Args, "-test.") {
 		return
 	}
+	// b test <go_test> runs the built go test without any additional args
+	// relax this check for all bazel built binaries
+	if SubstringInList(os.Args, "execroot/__main__/bazel-out") {
+		return
+	}
 	panic(fmt.Errorf("Not in test. Command line:\n  %s", strings.Join(os.Args, "\n  ")))
 }
 
