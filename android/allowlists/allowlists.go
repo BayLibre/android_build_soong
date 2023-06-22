@@ -914,6 +914,10 @@ var (
 		// java_resources with multiple resource_dirs
 		"emma",
 
+		//errorprone ?
+		"modules-utils-preconditions-srcs",
+		"dagger2",
+
 		// NDK STL
 		"ndk_libc++abi",
 		"ndk_libunwind",
