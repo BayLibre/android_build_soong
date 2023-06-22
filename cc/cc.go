@@ -25,6 +25,7 @@ import (
 	"strings"
 
 	"android/soong/ui/metrics/bp2build_metrics_proto"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -1922,7 +1923,32 @@ func (c *Module) IsMixedBuildSupported(ctx android.BaseModuleContext) bool {
 		//TODO(b/278772861) support sanitizers in Bazel rules
 		return false
 	}
+	if !imageVariantIsSupportedByBazel(c) {
+		return false
+	}
 	return c.bazelHandler != nil
+}
+
+func imageVariantSupportedByBazel(c *Module) bool {
+	if c.IsLlndk() {
+		return false
+	}
+	if c.InVendor() {
+		return false
+	}
+	if c.InProduct() {
+		false
+	}
+	if c.InRamdisk() {
+		false
+	}
+	if c.InVendorRamdisk() {
+		false
+	}
+	if c.InRecovery() {
+		false
+	}
+	return true
 }
 
 func allEnabledSanitizersSupportedByBazel(ctx android.BaseModuleContext, c *Module) bool {
