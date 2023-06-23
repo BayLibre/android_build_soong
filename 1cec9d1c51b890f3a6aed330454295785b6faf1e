@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c472bb77_06c878d5",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-23T16:03:27Z",
+      "side": 1,
+      "message": "nit: I think since we only support non-vendor apexes currently, we can replace the check with\n```\nreturn c.InAnyApex() \u0026\u0026 c.ImageVariation().Variation \u003d\u003d android.CoreVariation\n```",
+      "revId": "1cec9d1c51b890f3a6aed330454295785b6faf1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
