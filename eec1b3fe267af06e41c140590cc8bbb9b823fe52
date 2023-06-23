@@ -51,6 +51,24 @@
       "message": "+1 this is a great cleanup, thanks! Do you also plan to remove these androidMkForFiles entries eventually? This is essentially the build of flattened apexes, which still remains because image apexes also build flattened apexes through this code.",
       "revId": "eec1b3fe267af06e41c140590cc8bbb9b823fe52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d886053c_24c336b5",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-06-23T01:17:44Z",
+      "side": 1,
+      "message": "Hmm, I thought this is shared between image/flattened. For image apexes, these are installed for symbols.\n\nHowever, it looks like these are also handled in soong installs, not in make files. If it turns out that it\u0027s not used any more, then, yeah, I\u0027ll remove it as well.",
+      "parentUuid": "c7a21f4c_2e87c655",
+      "revId": "eec1b3fe267af06e41c140590cc8bbb9b823fe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
