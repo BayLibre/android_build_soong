@@ -94,6 +94,30 @@
       },
       "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3feaf524_ee580b85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-23T14:33:35Z",
+      "side": 1,
+      "message": "Local builds use RBE by default, so if the new srcjars exist and contain the right files then the RBE side is working fine.  +kousikk for whether the extra actions for every javac compile will cause any load issues.",
+      "parentUuid": "3b6d4940_7545c195",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
