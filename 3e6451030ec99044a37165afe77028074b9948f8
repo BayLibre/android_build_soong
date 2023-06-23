@@ -22,6 +22,30 @@
       },
       "revId": "3e6451030ec99044a37165afe77028074b9948f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d3b5d30_0ac0e07c",
+        "filename": "aconfig/all_aconfig_declarations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-06-23T15:49:16Z",
+      "side": 1,
+      "message": "I think for this we can also do a two step build with bazel query and some script.  This isn\u0027t actually needed from every build. They just need to pull it from some CI target.",
+      "parentUuid": "95f4d6f7_b26a59ea",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "3e6451030ec99044a37165afe77028074b9948f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
