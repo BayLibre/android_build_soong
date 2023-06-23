@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ea4b8d_9000aada",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-23T04:40:25Z",
+      "side": 1,
+      "message": "Thanks Zi. Using type assertion like you suggested sounds like the better option. I have updated the implementation.",
+      "parentUuid": "dae580a5_2236bc47",
+      "range": {
+        "startLine": 496,
+        "startChar": 5,
+        "endLine": 496,
+        "endChar": 49
+      },
+      "revId": "bb72f937de5af14b7db21f6982334765948bd5b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23710925_a89a5214",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "resolving as optional",
       "parentUuid": "23710925_a89a5214",
+      "range": {
+        "startLine": 500,
+        "startChar": 28,
+        "endLine": 500,
+        "endChar": 47
+      },
+      "revId": "bb72f937de5af14b7db21f6982334765948bd5b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8355e6fb_ca119a12",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-23T04:40:25Z",
+      "side": 1,
+      "message": "Thanks Sam for catching this typo. Since I am now doing type assertion like Zi suggested, this typo does not appear anymore.",
+      "parentUuid": "ee5d4b20_e5a880dc",
       "range": {
         "startLine": 500,
         "startChar": 28,
