@@ -1615,6 +1615,8 @@ var (
 		"libcutils",
 		"libstagefright_flacdec",
 		"libutils",
+                "libstagefright_foundation",
+		"libcodec2_hidl@1.0",
 	}
 
 	// These should be the libs that are included by the apexes in the StagingMixedBuildsEnabledList
