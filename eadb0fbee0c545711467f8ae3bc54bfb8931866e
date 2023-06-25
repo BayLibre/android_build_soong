@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c079692f_8e7b4e6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-25T04:08:07Z",
+      "side": 1,
+      "message": "No objection to this, an alternative would be to print a message suggesting looking at `error.log` if an error occurred.",
+      "revId": "eadb0fbee0c545711467f8ae3bc54bfb8931866e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
