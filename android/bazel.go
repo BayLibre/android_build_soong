@@ -152,8 +152,7 @@ type Bazelable interface {
 	HasHandcraftedLabel() bool
 	HandcraftedLabel() string
 	GetBazelLabel(ctx BazelConversionPathContext, module blueprint.Module) string
-	ShouldConvertWithBp2build(ctx BazelConversionContext) bool
-	shouldConvertWithBp2build(ctx bazelOtherModuleContext, module blueprint.Module) bool
+	isBp2buildAllowlisted(ctx bazelOtherModuleContext, module blueprint.Module) bool
 
 	// ConvertWithBp2build either converts the module to a Bazel build target or
 	// declares the module as unconvertible (for logging and metrics).
@@ -252,10 +251,7 @@ func (b *BazelModuleBase) GetBazelLabel(ctx BazelConversionPathContext, module b
 	if b.HasHandcraftedLabel() {
 		return b.HandcraftedLabel()
 	}
-	if b.ShouldConvertWithBp2build(ctx) {
-		return bp2buildModuleLabel(ctx, module)
-	}
-	panic(fmt.Errorf("requested non-existent label for module ", module.Name()))
+	return bp2buildModuleLabel(ctx, module)
 }
 
 type Bp2BuildConversionAllowlist struct {
@@ -414,9 +410,18 @@ func MixedBuildsEnabled(ctx BaseModuleContext) MixedBuildEnabledStatus {
 	module := ctx.Module()
 	apexInfo := ctx.Provider(ApexInfoProvider).(ApexInfo)
 	withinApex := !apexInfo.IsForPlatform()
+
+	isModuleConvertedToBazel := func() bool {
+		b, ok := module.(Bazelable)
+		if !ok {
+			return false
+		}
+		return (b.bazelProps().Bazel_module.CanConvertToBazel && b.isBp2buildAllowlisted(ctx, module)) || b.HasHandcraftedLabel()
+	}
+
 	mixedBuildEnabled := ctx.Config().IsMixedBuildsEnabled() &&
 		module.Enabled() &&
-		convertedToBazel(ctx, module) &&
+		isModuleConvertedToBazel() &&
 		ctx.Config().BazelContext.IsModuleNameAllowed(module.Name(), withinApex)
 	ctx.Config().LogMixedBuild(ctx, mixedBuildEnabled)
 
@@ -424,20 +429,6 @@ func MixedBuildsEnabled(ctx BaseModuleContext) MixedBuildEnabledStatus {
 		return MixedBuildEnabled
 	}
 	return ModuleIncompatibility
-}
-
-// ConvertedToBazel returns whether this module has been converted (with bp2build or manually) to Bazel.
-func convertedToBazel(ctx BazelConversionContext, module blueprint.Module) bool {
-	b, ok := module.(Bazelable)
-	if !ok {
-		return false
-	}
-	return b.shouldConvertWithBp2build(ctx, module) || b.HasHandcraftedLabel()
-}
-
-// ShouldConvertWithBp2build returns whether the given BazelModuleBase should be converted with bp2build
-func (b *BazelModuleBase) ShouldConvertWithBp2build(ctx BazelConversionContext) bool {
-	return b.shouldConvertWithBp2build(ctx, ctx.Module())
 }
 
 type bazelOtherModuleContext interface {
@@ -455,18 +446,7 @@ func isPlatformIncompatible(osType OsType, arch ArchType) bool {
 		arch == Riscv64 // TODO(b/262192655) Riscv64 toolchains are not currently supported.
 }
 
-func (b *BazelModuleBase) shouldConvertWithBp2build(ctx bazelOtherModuleContext, module blueprint.Module) bool {
-	if !b.bazelProps().Bazel_module.CanConvertToBazel {
-		return false
-	}
-
-	// In api_bp2build mode, all soong modules that can provide API contributions should be converted
-	// This is irrespective of its presence/absence in bp2build allowlists
-	if ctx.Config().BuildMode == ApiBp2build {
-		_, providesApis := module.(ApiProvider)
-		return providesApis
-	}
-
+func (b *BazelModuleBase) isBp2buildAllowlisted(ctx bazelOtherModuleContext, module blueprint.Module) bool {
 	propValue := b.bazelProperties.Bazel_module.Bp2build_available
 	packagePath := moduleDirWithPossibleOverride(ctx, module)
 
@@ -572,9 +552,14 @@ func bp2buildConversionMutator(ctx TopDownMutatorContext) {
 		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, "")
 		return
 	}
-	// TODO: b/285631638 - Differentiate between denylisted modules and missing bp2build capabilities.
-	if !bModule.shouldConvertWithBp2build(ctx, ctx.Module()) {
-		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_UNSUPPORTED, "")
+
+	if !bModule.bazelProps().Bazel_module.CanConvertToBazel {
+		// TODO: Should we even be using CanConvertToBazel?
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED, "CanConvertToBazel")
+		return
+	}
+	if !bModule.isBp2buildAllowlisted(ctx, ctx.Module()) {
+		ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_DENYLISTED, "")
 		return
 	}
 	bModule.ConvertWithBp2build(ctx)

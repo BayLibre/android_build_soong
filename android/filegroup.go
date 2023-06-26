@@ -312,7 +312,7 @@ func (fg *fileGroup) ShouldConvertToProtoLibrary(ctx BazelConversionPathContext)
 }
 
 func (fg *fileGroup) shouldConvertToLibrary(ctx BazelConversionPathContext, suffix string) bool {
-	if len(fg.properties.Srcs) == 0 || !fg.ShouldConvertWithBp2build(ctx) {
+	if len(fg.properties.Srcs) == 0 {
 		return false
 	}
 	for _, src := range fg.properties.Srcs {

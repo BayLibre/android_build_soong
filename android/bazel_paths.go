@@ -411,9 +411,6 @@ func getOtherModuleLabel(ctx BazelConversionPathContext, dep, tag string,
 			Label: ":" + dep + "__BP2BUILD__MISSING__DEP",
 		}
 	}
-	if !convertedToBazel(ctx, m) {
-		ctx.AddUnconvertedBp2buildDep(dep)
-	}
 	label := BazelModuleLabel(ctx, ctx.Module())
 	otherLabel := labelFromModule(ctx, m)
 
@@ -430,11 +427,10 @@ func getOtherModuleLabel(ctx BazelConversionPathContext, dep, tag string,
 
 func BazelModuleLabel(ctx BazelConversionPathContext, module blueprint.Module) string {
 	// TODO(b/165114590): Convert tag (":name{.tag}") to corresponding Bazel implicit output targets.
-	if !convertedToBazel(ctx, module) {
-		return bp2buildModuleLabel(ctx, module)
+	if b, ok := module.(Bazelable); ok && b.HasHandcraftedLabel() {
+		return b.HandcraftedLabel()
 	}
-	b, _ := module.(Bazelable)
-	return b.GetBazelLabel(ctx, module)
+	return bp2buildModuleLabel(ctx, module)
 }
 
 func bazelShortLabel(label string) string {
