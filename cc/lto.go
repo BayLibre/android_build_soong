@@ -47,6 +47,7 @@ type LTOProperties struct {
 	} `android:"arch_variant"`
 
 	LtoEnabled bool `blueprint:"mutated"`
+	LtoDefault bool `blueprint:"mutated"`
 
 	// Dep properties indicate that this module needs to be built with LTO
 	// since it is an object dependency of an LTO module.
@@ -66,6 +67,7 @@ func (lto *lto) props() []interface{} {
 }
 
 func (lto *lto) begin(ctx BaseModuleContext) {
+	lto.Properties.LtoDefault = lto.defaultLTO(ctx)
 	lto.Properties.LtoEnabled = lto.LTO(ctx)
 }
 
@@ -76,12 +78,11 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 		return flags
 	}
 	if lto.Properties.LtoEnabled {
-		var ltoCFlag string
+		ltoCFlag := "-flto=thin -fsplit-lto-unit"
 		var ltoLdFlag string
-		if lto.ThinLTO() {
-			ltoCFlag = "-flto=thin -fsplit-lto-unit"
-		} else {
-			ltoCFlag = "-flto=thin -fsplit-lto-unit"
+
+		// Implicit LTO, do not enable optimization.
+		if !lto.ThinLTO() {
 			ltoLdFlag = "-Wl,--lto-O0"
 		}
 
@@ -129,10 +130,10 @@ func (lto *lto) LTO(ctx BaseModuleContext) bool {
 	if lto.ThinLTO() {
 		return true
 	}
-	// LP32 has many subtle issues and less test coverage.
-	if ctx.Arch().ArchType.Multilib == "lib32" {
-		return false
-	}
+	return lto.Properties.LtoDefault
+}
+
+func (lto *lto) defaultLTO(ctx BaseModuleContext) bool {
 	// Performance and binary size are less important for host binaries and tests.
 	if ctx.Host() || ctx.testBinary() || ctx.testLibrary() {
 		return false
@@ -154,15 +155,13 @@ func (lto *lto) Never() bool {
 }
 
 func GlobalThinLTO(ctx android.BaseModuleContext) bool {
-	return ctx.Config().IsEnvTrue("GLOBAL_THINLTO")
+	return !ctx.Config().IsEnvFalse("GLOBAL_THINLTO")
 }
 
 // Propagate lto requirements down from binaries
 func ltoDepsMutator(mctx android.TopDownMutatorContext) {
-	defaultLTOMode := GlobalThinLTO(mctx)
-
 	if m, ok := mctx.Module().(*Module); ok {
-		if m.lto == nil || m.lto.Properties.LtoEnabled == defaultLTOMode {
+		if m.lto == nil || m.lto.Properties.LtoEnabled == m.lto.Properties.LtoDefault {
 			return
 		}
 
