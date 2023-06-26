@@ -16,6 +16,52 @@
       "message": "This CL requires disabling mixed builds for vendor, product, etc (implemented and merged in aosp/2634949). That Cl is not in git_master yet, so I tested this change by creating a duplicate of it in this CL stack",
       "revId": "da2ae59d76465b9e60e120c785ba5006fa3314c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa9ba62_af371823",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1973,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-26T16:51:23Z",
+      "side": 1,
+      "message": "This portion looks unchanged but is mentioned in the CL description, do you have a separate CL for that change?",
+      "range": {
+        "startLine": 1971,
+        "startChar": 0,
+        "endLine": 1973,
+        "endChar": 3
+      },
+      "revId": "da2ae59d76465b9e60e120c785ba5006fa3314c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c5a317_8faf6729",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1993,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-26T16:51:23Z",
+      "side": 1,
+      "message": "Is this fine? In bp2build we\u0027re now _always_ allowing access to implementation rather than stubs if we\u0027re in the correct domain. It\u0027s likely worth doing some analysis to verify or instead always using stubs if there are multiple potential apexes.",
+      "range": {
+        "startLine": 1992,
+        "startChar": 19,
+        "endLine": 1993,
+        "endChar": 27
+      },
+      "revId": "da2ae59d76465b9e60e120c785ba5006fa3314c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
