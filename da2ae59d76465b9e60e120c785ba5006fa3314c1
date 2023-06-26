@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a16340d_392ad8bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-26T04:06:25Z",
+      "side": 1,
+      "message": "This CL requires disabling mixed builds for vendor, product, etc (implemented and merged in aosp/2634949). That Cl is not in git_master yet, so I tested this change by creating a duplicate of it in this CL stack",
+      "revId": "da2ae59d76465b9e60e120c785ba5006fa3314c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
