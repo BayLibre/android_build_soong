@@ -16,6 +16,24 @@
       "message": "Adding an unresolved note that aosp/2619797 needs to land first.",
       "revId": "65c3d73d479149e78cf3f343fac94e4d23940ef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bfc398e_838e6b20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-06-26T16:22:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "334b7548_789d0b46",
+      "revId": "65c3d73d479149e78cf3f343fac94e4d23940ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
