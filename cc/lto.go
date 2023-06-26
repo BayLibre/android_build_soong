@@ -76,12 +76,11 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 		return flags
 	}
 	if lto.Properties.LtoEnabled {
-		var ltoCFlag string
+		ltoCFlag := "-flto=thin -fsplit-lto-unit"
 		var ltoLdFlag string
-		if lto.ThinLTO() {
-			ltoCFlag = "-flto=thin -fsplit-lto-unit"
-		} else {
-			ltoCFlag = "-flto=thin -fsplit-lto-unit"
+
+		// Implicit LTO, do not enable optimization.
+		if !lto.ThinLTO() {
 			ltoLdFlag = "-Wl,--lto-O0"
 		}
 
@@ -129,12 +128,8 @@ func (lto *lto) LTO(ctx BaseModuleContext) bool {
 	if lto.ThinLTO() {
 		return true
 	}
-	// LP32 has many subtle issues and less test coverage.
-	if ctx.Arch().ArchType.Multilib == "lib32" {
-		return false
-	}
-	// Performance and binary size are less important for host binaries and tests.
-	if ctx.Host() || ctx.testBinary() || ctx.testLibrary() {
+	// TODO: Cannot enable for Windows yet.
+	if ctx.Windows() {
 		return false
 	}
 	// FIXME: ThinLTO for VNDK produces different output.
@@ -154,7 +149,7 @@ func (lto *lto) Never() bool {
 }
 
 func GlobalThinLTO(ctx android.BaseModuleContext) bool {
-	return ctx.Config().IsEnvTrue("GLOBAL_THINLTO")
+	return !ctx.Config().IsEnvFalse("GLOBAL_THINLTO")
 }
 
 // Propagate lto requirements down from binaries
