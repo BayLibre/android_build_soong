@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c6c8cf0_d3c16b01",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-06-26T18:43:26Z",
+      "side": 1,
+      "message": "do we need to also add these to the DCLA allowlist?",
+      "range": {
+        "startLine": 1594,
+        "startChar": 2,
+        "endLine": 1596,
+        "endChar": 0
+      },
+      "revId": "e303fe5b786790edaa69f1fd6588b71713ce713e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
