@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d016d879_d9d5a7d0",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1619,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-26T18:21:34Z",
+      "side": 1,
+      "message": "Good point, I have moved this to the allowlisting CL. But I have lost your +2 on this CL",
+      "parentUuid": "1309d3ce_a1f9bceb",
+      "range": {
+        "startLine": 1618,
+        "startChar": 1,
+        "endLine": 1619,
+        "endChar": 23
+      },
+      "revId": "da2ae59d76465b9e60e120c785ba5006fa3314c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fa9ba62_af371823",
