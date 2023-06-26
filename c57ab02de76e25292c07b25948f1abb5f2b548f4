@@ -52,6 +52,24 @@
       "parentUuid": "b9682ed9_8dce2e8d",
       "revId": "c57ab02de76e25292c07b25948f1abb5f2b548f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42abff1e_48b544fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2023-06-26T16:32:45Z",
+      "side": 1,
+      "message": "I agree. The savings are significant, and Wear will pick this change up eventually, might as well do it now.",
+      "parentUuid": "578075c6_2c84c4a0",
+      "revId": "c57ab02de76e25292c07b25948f1abb5f2b548f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
