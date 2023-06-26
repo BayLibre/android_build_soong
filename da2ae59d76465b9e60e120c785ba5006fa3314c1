@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1231fadf_3b85c3dc",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1973,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-26T17:58:49Z",
+      "side": 1,
+      "message": "Agreed, I have filed b/288906815 for this.",
+      "parentUuid": "4e2a005c_03c2d39d",
+      "range": {
+        "startLine": 1971,
+        "startChar": 0,
+        "endLine": 1973,
+        "endChar": 3
+      },
+      "revId": "da2ae59d76465b9e60e120c785ba5006fa3314c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4c5a317_8faf6729",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "I\u0027m not concerned about the cflags, but rather building against an implementation where one should build against stubs\n\nA case like: https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/cc_library_shared_conversion_test.go;l\u003d654-671;drc\u003de266787aed74a6b2f3368f9eee4d263386074c9f\n\nwould be relevant. if e.g. we were building `apexbar` and instead chose `apexfoo` as the domain.\n\nIf we\u0027re confident this is not relevant for the current use cases, it\u0027s fine to submit this; otherwise, please file a bug as a followup.",
       "parentUuid": "f9fa8fd7_8a3fead3",
+      "range": {
+        "startLine": 1992,
+        "startChar": 19,
+        "endLine": 1993,
+        "endChar": 27
+      },
+      "revId": "da2ae59d76465b9e60e120c785ba5006fa3314c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18c9c04_bf3daa27",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1993,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-26T17:58:49Z",
+      "side": 1,
+      "message": "I think using this hack should work for our use case (albeit add more complexity). \nBut I have also created b/288905586 to track any potential issues that might stem out of this hack.",
+      "parentUuid": "a877d295_3a995d7e",
       "range": {
         "startLine": 1992,
         "startChar": 19,
