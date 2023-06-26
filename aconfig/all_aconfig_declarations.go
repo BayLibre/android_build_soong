@@ -45,7 +45,7 @@ func (this *allAconfigDeclarationsSingleton) GenerateBuildActions(ctx android.Si
 	})
 
 	// Generate build action for aconfig
-	this.intermediatePath = android.PathForIntermediates(ctx, "all_aconfig_declarations.pb")
+	this.intermediatePath = android.PathForIntermediates(ctx, "all_aconfig_declarations.textproto")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        allDeclarationsRule,
 		Inputs:      cacheFiles,

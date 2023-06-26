@@ -58,7 +58,7 @@ var (
 	// For all_aconfig_declarations
 	allDeclarationsRule = pctx.AndroidStaticRule("all_aconfig_declarations_dump",
 		blueprint.RuleParams{
-			Command: `${aconfig} dump --format protobuf --out ${out} ${cache_files}`,
+			Command: `${aconfig} dump --format textproto --out ${out} ${cache_files}`,
 			CommandDeps: []string{
 				"${aconfig}",
 			},
