@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43968500_53043297",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1973,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-26T17:26:28Z",
+      "side": 1,
+      "message": "I think this section is relevant because I am adding `libstagefright_foundation` and `libcodec2_hidl@1.0` to `ProdDclaMixedBuildsEnabledList`.\n\nBefore this change\n```\n# Platform variants\n- GetApexConfigKey returns nil\n- Cquery requests platform configuration of these two libraries for platform variants\n\n# Apex variants\n- GetApexConfigKey returns nil !\n- Cquery requests platform configuration of these two libraries for apex variants !\n```\n\nAfter this change which adds this two libs to the allowlist, platform variants remains the same, but for apex variants, we pass an apexKey to the cquery call",
+      "parentUuid": "8fa9ba62_af371823",
+      "range": {
+        "startLine": 1971,
+        "startChar": 0,
+        "endLine": 1973,
+        "endChar": 3
+      },
+      "revId": "da2ae59d76465b9e60e120c785ba5006fa3314c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4c5a317_8faf6729",
         "filename": "cc/cc.go",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2023-06-26T16:51:23Z",
       "side": 1,
       "message": "Is this fine? In bp2build we\u0027re now _always_ allowing access to implementation rather than stubs if we\u0027re in the correct domain. It\u0027s likely worth doing some analysis to verify or instead always using stubs if there are multiple potential apexes.",
+      "range": {
+        "startLine": 1992,
+        "startChar": 19,
+        "endLine": 1993,
+        "endChar": 27
+      },
+      "revId": "da2ae59d76465b9e60e120c785ba5006fa3314c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9fa8fd7_8a3fead3",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1993,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-26T17:26:28Z",
+      "side": 1,
+      "message": "Yes, I believe so. This relies on the fact that Soong does deduping of apex variants based on min_sdk_version of apexes\n```\ncc_lib{name: somelib}\n\n# apexes containing somelib\ncom.android.foo, min_sdk_version: 29\ncom.android.bar, min_sdk_version: 29\n\ncom.android.baz, min_sdk_version: 30\n```\n\nThis will create two groups of apexInfo\n```\nGroup1: [com.android.foo, com.android.bar], 29\nGroup2: [com.android.baz] 30\n```\n\nI think for the cquery call for `somelib_apex29`, we can pass either of `com.android.foo` _or_ `com.android.bar`. The cflafgs of both these two variants are same (both in Soong and Bazel).\n\nTo test this, I created a mock apex_test module with all the defaults of test_com.android.foo, and this builds fine\n```\napex_test { \n    name: \"com.android.mytest\", \n    manifest: \"test_manifest_codec.json\", \n    file_contexts: \":com.android.media.swcodec-file_contexts\", \n    defaults: [\"com.android.media.swcodec-defaults\"], \n    installable: false, \n}\n```\n\nIs there a specific scenario that you think we should test further?",
+      "parentUuid": "d4c5a317_8faf6729",
       "range": {
         "startLine": 1992,
         "startChar": 19,
