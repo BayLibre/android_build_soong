@@ -99,7 +99,6 @@ const (
 	Fuzzer
 	Memtag_heap
 	Memtag_stack
-	Memtag_globals
 	cfi // cfi is last to prevent it running before incompatible mutators
 )
 
@@ -112,7 +111,6 @@ var Sanitizers = []SanitizerType{
 	Fuzzer,
 	Memtag_heap,
 	Memtag_stack,
-	Memtag_globals,
 	cfi, // cfi is last to prevent it running before incompatible mutators
 }
 
@@ -135,8 +133,6 @@ func (t SanitizerType) variationName() string {
 		return "memtag_heap"
 	case Memtag_stack:
 		return "memtag_stack"
-	case Memtag_globals:
-		return "memtag_globals"
 	case Fuzzer:
 		return "fuzzer"
 	default:
@@ -155,8 +151,6 @@ func (t SanitizerType) name() string {
 		return "memtag_heap"
 	case Memtag_stack:
 		return "memtag_stack"
-	case Memtag_globals:
-		return "memtag_globals"
 	case tsan:
 		return "thread"
 	case intOverflow:
@@ -178,7 +172,7 @@ func (t SanitizerType) registerMutators(ctx android.RegisterMutatorsContext) {
 		sanitizer := &sanitizerSplitMutator{t}
 		ctx.TopDown(t.variationName()+"_markapexes", sanitizer.markSanitizableApexesMutator)
 		ctx.Transition(t.variationName(), sanitizer)
-	case Memtag_heap, Memtag_stack, Memtag_globals, intOverflow:
+	case Memtag_heap, Memtag_stack, intOverflow:
 		// do nothing
 	default:
 		panic(fmt.Errorf("unknown SanitizerType %d", t))
@@ -218,8 +212,6 @@ func (*Module) SanitizerSupported(t SanitizerType) bool {
 	case Memtag_heap:
 		return true
 	case Memtag_stack:
-		return true
-	case Memtag_globals:
 		return true
 	default:
 		return false
@@ -275,9 +267,6 @@ type SanitizeUserProps struct {
 	// Memory-tagging stack instrumentation, only available on arm64
 	// Adds instrumentation to detect stack buffer overflows and use-after-scope using MTE.
 	Memtag_stack *bool `android:"arch_variant"`
-	// Memory-tagging globals instrumentation, only available on arm64
-	// Adds instrumentation to detect global buffer overflows using MTE.
-	Memtag_globals *bool `android:"arch_variant"`
 
 	// A modifier for ASAN and HWASAN for write only instrumentation
 	Writeonly *bool `android:"arch_variant"`
@@ -353,8 +342,6 @@ type sanitizeMutatedProperties struct {
 	Memtag_heap *bool `blueprint:"mutated"`
 	// Whether Memory-tagging stack instrumentation is enabled for this module
 	Memtag_stack *bool `blueprint:"mutated"`
-	// Whether Memory-tagging globals instrumentation is enabled for this module
-	Memtag_globals *bool `android:"arch_variant"`
 
 	// Whether a modifier for ASAN and HWASAN for write only instrumentation is enabled for this
 	// module
@@ -438,7 +425,6 @@ func (p *sanitizeMutatedProperties) copyUserPropertiesToMutated(userProps *Sanit
 	p.Integer_overflow = userProps.Integer_overflow
 	p.Memtag_heap = userProps.Memtag_heap
 	p.Memtag_stack = userProps.Memtag_stack
-	p.Memtag_globals = userProps.Memtag_globals
 	p.Safestack = userProps.Safestack
 	p.Scs = userProps.Scs
 	p.Scudo = userProps.Scudo
@@ -566,10 +552,6 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			s.Memtag_stack = proptools.BoolPtr(true)
 		}
 
-		if found, globalSanitizers = removeFromList("memtag_globals", globalSanitizers); found && s.Memtag_globals == nil {
-			s.Memtag_globals = proptools.BoolPtr(true)
-		}
-
 		if len(globalSanitizers) > 0 {
 			ctx.ModuleErrorf("unknown global sanitizer option %s", globalSanitizers[0])
 		}
@@ -650,7 +632,6 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	if ctx.Arch().ArchType != android.Arm64 || !ctx.toolchain().Bionic() || ctx.Host() {
 		s.Memtag_heap = nil
 		s.Memtag_stack = nil
-		s.Memtag_globals = nil
 	}
 
 	// Also disable CFI if ASAN is enabled.
@@ -660,7 +641,6 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		// HWASAN and ASAN win against MTE.
 		s.Memtag_heap = nil
 		s.Memtag_stack = nil
-		s.Memtag_globals = nil
 	}
 
 	// Disable sanitizers that depend on the UBSan runtime for windows/darwin builds.
@@ -731,8 +711,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 	if ctx.Os() != android.Windows && (Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) || Bool(s.Thread) ||
 		Bool(s.Fuzzer) || Bool(s.Safestack) || Bool(s.Cfi) || Bool(s.Integer_overflow) || len(s.Misc_undefined) > 0 ||
-		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs) || Bool(s.Memtag_heap) || Bool(s.Memtag_stack) ||
-		Bool(s.Memtag_globals)) {
+		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs) || Bool(s.Memtag_heap) || Bool(s.Memtag_stack)) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 
@@ -908,7 +887,7 @@ func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--no-fatal-warnings")
 	}
 
-	if (Bool(sanProps.Memtag_heap) || Bool(sanProps.Memtag_stack) || Bool(sanProps.Memtag_globals)) && ctx.binary() {
+	if (Bool(sanProps.Memtag_heap) || Bool(sanProps.Memtag_stack)) && ctx.binary() {
 		if Bool(sanProps.Diag.Memtag_heap) {
 			flags.Local.LdFlags = append(flags.Local.LdFlags, "-fsanitize-memtag-mode=sync")
 		} else {
@@ -1031,8 +1010,6 @@ func (s *sanitize) getSanitizerBoolPtr(t SanitizerType) *bool {
 		return s.Properties.SanitizeMutated.Memtag_heap
 	case Memtag_stack:
 		return s.Properties.SanitizeMutated.Memtag_stack
-	case Memtag_globals:
-		return s.Properties.SanitizeMutated.Memtag_globals
 	case Fuzzer:
 		return s.Properties.SanitizeMutated.Fuzzer
 	default:
@@ -1049,7 +1026,6 @@ func (sanitize *sanitize) isUnsanitizedVariant() bool {
 		!sanitize.isSanitizerEnabled(scs) &&
 		!sanitize.isSanitizerEnabled(Memtag_heap) &&
 		!sanitize.isSanitizerEnabled(Memtag_stack) &&
-		!sanitize.isSanitizerEnabled(Memtag_globals) &&
 		!sanitize.isSanitizerEnabled(Fuzzer)
 }
 
@@ -1071,12 +1047,10 @@ func (sanitize *sanitize) SetSanitizer(t SanitizerType, b bool) {
 		sanitize.Properties.SanitizeMutated.Address = bPtr
 		// For ASAN variant, we need to disable Memtag_stack
 		sanitize.Properties.SanitizeMutated.Memtag_stack = nil
-		sanitize.Properties.SanitizeMutated.Memtag_globals = nil
 	case Hwasan:
 		sanitize.Properties.SanitizeMutated.Hwaddress = bPtr
 		// For HWAsan variant, we need to disable Memtag_stack
 		sanitize.Properties.SanitizeMutated.Memtag_stack = nil
-		sanitize.Properties.SanitizeMutated.Memtag_globals = nil
 	case tsan:
 		sanitize.Properties.SanitizeMutated.Thread = bPtr
 	case intOverflow:
@@ -1090,8 +1064,6 @@ func (sanitize *sanitize) SetSanitizer(t SanitizerType, b bool) {
 	case Memtag_stack:
 		sanitize.Properties.SanitizeMutated.Memtag_stack = bPtr
 		// We do not need to disable ASAN or HWASan here, as there is no Memtag_stack variant.
-	case Memtag_globals:
-		sanitize.Properties.Sanitize.Memtag_globals = bPtr
 	case Fuzzer:
 		sanitize.Properties.SanitizeMutated.Fuzzer = bPtr
 	default:
@@ -1577,13 +1549,6 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 
 		if Bool(sanProps.Memtag_stack) {
 			sanitizers = append(sanitizers, "memtag-stack")
-		}
-
-		if Bool(sanProps.Memtag_globals) {
-			sanitizers = append(sanitizers, "memtag-globals")
-			// TODO(mitchp): For now, enable memtag-heap with memtag-globals because the linker
-			// isn't new enough (https://reviews.llvm.org/differential/changeset/?ref=4243566).
-			sanitizers = append(sanitizers, "memtag-heap")
 		}
 
 		if Bool(sanProps.Fuzzer) {
