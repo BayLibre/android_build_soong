@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b6bb727_13f23422",
+        "filename": "android/bazel.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-06-26T02:18:52Z",
+      "side": 1,
+      "message": "Missing %q here? My local test failed with this.",
+      "range": {
+        "startLine": 258,
+        "startChar": 51,
+        "endLine": 258,
+        "endChar": 60
+      },
+      "revId": "39a169721c3d5a085bb7940b363fd1a5dbaf4faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08be4d5b_241eb9ee",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 11
