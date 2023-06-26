@@ -16,6 +16,24 @@
       "message": "No objection to this, an alternative would be to print a message suggesting looking at `error.log` if an error occurred.",
       "revId": "eadb0fbee0c545711467f8ae3bc54bfb8931866e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c451d7ab_5dc7c234",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-06-26T00:44:17Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "c079692f_8e7b4e6e",
+      "revId": "eadb0fbee0c545711467f8ae3bc54bfb8931866e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
