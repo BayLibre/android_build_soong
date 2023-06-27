@@ -22,6 +22,30 @@
       },
       "revId": "96cb4061cb9bd445d518c6225bd92d6419f1a167",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b57d29_77145d0f",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-27T18:44:44Z",
+      "side": 1,
+      "message": "I think my wording might have been confusing (I have updated it in a latest patchset).\n\nAn example to demonstrate the discrepancy between Soong and Bazel would be the build graph of `soong_zip`\n```\n# Android.bp\nblueprint_go_binary {\n  name: \"soong_zip\",\n  deps: [\"soong-zip\",\n  srcs: [\"main.go\"]\n}\nbootstrap_go_package {\n    name: \"soong-zip\",\n    deps: [\n        \"android-archive-zip\",\n        \"blueprint-pathtools\",\n        \"soong-jar\",\n        \"soong-response\",\n    ],\n    srcs: [\n        \"zip.go\",\n        \"rate_limit.go\",\n    ],\n}\n```\n\nThe imports in the main file of the top-level soong_zip binary are\n```\n\t\"android/soong/response\"\n\t\"android/soong/zip\"\n\n```\n\nYou are correct, the BUILD file for soong_zip only needs the direct deps\n```\n# \"Correct\" BUILD file\ngo_binary (\n  name: \"soong_zip\",\n  deps: [\n     \"//...soong-zip\",\n     \"//...soong-response\",\n ]\n)\n```\n\nBut bp2build does not know which are the direct imports. That will require scanning the .go files. So for now, I am just putting every transitive dep in the generated BUILD file\n```\n# generated BUILD file\ngo_binary (\n  name: \"soong_zip\",\n  deps: [\n     \"//...soong-zip\",\n     \"//...soong-response\",\n     \"//...blueprint-pathtools\", # not required\n     \"//...soong-jar\", # not required\n     \"//...android-archive-zip\", # not required\n  ]\n)\n```\n\nWould you recommend that we cleanup Soong to make it more Bazel-like instead?\n\n\n\u003e Alteratively do we need to be migrating libraries differently to correctly handle transitive deps?\n\nI think we need similar handling for bootstrap_go_package --\u003e go_library as well (included in this CL)",
+      "parentUuid": "80b9f7c1_171ac8b2",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 59
+      },
+      "revId": "96cb4061cb9bd445d518c6225bd92d6419f1a167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
