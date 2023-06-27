@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "004ac2e5_2b157691",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-06-27T11:36:11Z",
+      "side": 1,
+      "message": "It could be useful to explain this Merged-In and why we don\u0027t want this change to merge downstream.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "67bb95440dc6a8f39d9ee030b92f80de82a3eb7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "06ba07f4_a52b2a5f",
