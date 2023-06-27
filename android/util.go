@@ -25,12 +25,12 @@ import (
 )
 
 // CopyOf returns a new slice that has the same contents as s.
-func CopyOf(s []string) []string {
+func CopyOf[T any](s []T) []T {
 	// If the input is nil, return nil and not an empty list
 	if s == nil {
 		return s
 	}
-	return append([]string{}, s...)
+	return append([]T(nil), s...)
 }
 
 // Concat returns a new slice concatenated from the two input slices. It does not change the input
@@ -280,20 +280,16 @@ func RemoveFromList(s string, list []string) (bool, []string) {
 // FirstUniqueStrings returns all unique elements of a slice of strings, keeping the first copy of
 // each.  It modifies the slice contents in place, and returns a subslice of the original slice.
 func FirstUniqueStrings(list []string) []string {
-	// Do not moodify the input in-place, operate on a copy instead.
-	list = CopyOf(list)
-	// 128 was chosen based on BenchmarkFirstUniqueStrings results.
-	if len(list) > 128 {
-		return firstUnique(list)
-	}
 	return firstUnique(list)
 }
 
 // firstUnique returns all unique elements of a slice, keeping the first copy of each.  It
 // modifies the slice contents in place, and returns a subslice of the original slice.
 func firstUnique[T comparable](slice []T) []T {
-	// 4 was chosen based on Benchmark_firstUnique results.
-	if len(slice) > 4 {
+	// Do not moodify the input in-place, operate on a copy instead.
+	slice = CopyOf(slice)
+	// 128 was chosen based on BenchmarkFirstUniqueStrings results.
+	if len(slice) > 128 {
 		return firstUniqueMap(slice)
 	}
 	return firstUniqueList(slice)
