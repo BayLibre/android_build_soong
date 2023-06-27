@@ -46,6 +46,30 @@
       },
       "revId": "96cb4061cb9bd445d518c6225bd92d6419f1a167",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfdaf731_20aee646",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-27T21:08:05Z",
+      "side": 1,
+      "message": "I think that seems reasonable for now, but let\u0027s file a bug to follow-up on how to make this minimal, e.g. we might consider running gazelle before checking in build files.",
+      "parentUuid": "e6b57d29_77145d0f",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 59
+      },
+      "revId": "96cb4061cb9bd445d518c6225bd92d6419f1a167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
