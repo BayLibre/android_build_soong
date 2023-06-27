@@ -22,6 +22,30 @@
       },
       "revId": "e303fe5b786790edaa69f1fd6588b71713ce713e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea3dd5fa_e7013190",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-27T01:38:16Z",
+      "side": 1,
+      "message": "We discussed this offline, and decided to remove the special casing of dcla libraries altogether (aosp/2638680).",
+      "parentUuid": "4c6c8cf0_d3c16b01",
+      "range": {
+        "startLine": 1594,
+        "startChar": 2,
+        "endLine": 1596,
+        "endChar": 0
+      },
+      "revId": "e303fe5b786790edaa69f1fd6588b71713ce713e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
