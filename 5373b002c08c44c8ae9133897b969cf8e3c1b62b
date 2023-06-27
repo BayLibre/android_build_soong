@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210c8dcb_2fbd05e5",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-27T14:54:25Z",
+      "side": 1,
+      "message": "why is this Soong function necessary to run `b test`?\n\nFrom https://google.github.io/eng-practices/review/developer/small-cls.html#what_is_small:\n\n* The CL is not so small that its implications are difficult to understand.\n\nThis CL seems to have potentially broader implications than necessary for your change, have we verified it is safe outside of the use of go?",
+      "range": {
+        "startLine": 1604,
+        "startChar": 0,
+        "endLine": 1608,
+        "endChar": 2
+      },
+      "revId": "5373b002c08c44c8ae9133897b969cf8e3c1b62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
