@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80b9f7c1_171ac8b2",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-27T13:46:08Z",
+      "side": 1,
+      "message": "this seems unexpected since the documentation mentions direct imports only: https://github.com/bazelbuild/rules_go/blob/6bca142831c8d24af8f488c99870e58d91067565/docs/go/core/rules.md#go_binary-deps.\n\nIs this because Soong doesn\u0027t require you to include all the deps that you import? \n\nAlteratively do we need to be migrating libraries differently to correctly handle transitive deps?",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 59
+      },
+      "revId": "96cb4061cb9bd445d518c6225bd92d6419f1a167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
