@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16c844aa_08c812ab",
+        "filename": "bp2build/go_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-27T13:22:59Z",
+      "side": 1,
+      "message": "should/could we make it such that binaries always embed a `go_source` rather than repeating the `srcs`?",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 5
+      },
+      "revId": "b9eea2e978a3a68540a706c4cdbcd60f281f3263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
