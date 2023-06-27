@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f77bceb_9c3927a3",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-27T13:47:29Z",
+      "side": 1,
+      "message": "can you share more aquery/cquery details in a bug or email thread? It\u0027d be good to understand if there are alternatives to get this information from Bazel rather than Soong.",
+      "range": {
+        "startLine": 486,
+        "startChar": 7,
+        "endLine": 486,
+        "endChar": 29
+      },
+      "revId": "027a71495e7493a5a4f167b8f9251d9d83ede52d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
