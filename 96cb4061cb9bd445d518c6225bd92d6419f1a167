@@ -70,6 +70,30 @@
       },
       "revId": "96cb4061cb9bd445d518c6225bd92d6419f1a167",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a144dc4_7e8e4271",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-27T21:28:31Z",
+      "side": 1,
+      "message": "Thanks Liz, I have created b/289115640 to clean this up before we check-in these BUILD files.",
+      "parentUuid": "cfdaf731_20aee646",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 59
+      },
+      "revId": "96cb4061cb9bd445d518c6225bd92d6419f1a167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
