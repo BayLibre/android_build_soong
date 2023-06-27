@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f570d7ef_c5569c0b",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-06-27T20:40:48Z",
+      "side": 1,
+      "message": "Agreed. In the long run [b/276495719](https://b.corp.google.com/issues/276495719) seems to be the most optimal solution, but at the moment this flag has to be passed because of the reason you have mentioned. So far I have not encountered any compile failures caused from missing class file when running `m --build-from-text-stub`, but more robust way to collect all class files should be applied in the future forward fix.",
+      "parentUuid": "ef35e542_a6afc150",
+      "range": {
+        "startLine": 1785,
+        "startChar": 31,
+        "endLine": 1785,
+        "endChar": 32
+      },
+      "revId": "255065dc4870bf4584ee2567bbe2412c29b6fa47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ab420af_f7e6c5f3",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-06-27T20:25:32Z",
       "side": 1,
       "message": "Since you are reusing `stubsDir`, would this cause .class files to appear in the .srcjar?",
+      "range": {
+        "startLine": 1868,
+        "startChar": 17,
+        "endLine": 1870,
+        "endChar": 39
+      },
+      "revId": "255065dc4870bf4584ee2567bbe2412c29b6fa47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecd14810_aad9e0a1",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1870,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-06-27T20:40:48Z",
+      "side": 1,
+      "message": "`stubsDir` is only used to create the pattern file in `extractApiSrcs()`, thus the files in the directory is not affected (`list_files`) does not modify the contents in the input directory. \nThus, `stubsSrcJar` will remain to contain only the generated from-text stub java files, regardless of whether `dep_api_srcs` property is set in the module definition.",
+      "parentUuid": "9ab420af_f7e6c5f3",
       "range": {
         "startLine": 1868,
         "startChar": 17,
