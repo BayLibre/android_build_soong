@@ -22,6 +22,30 @@
       },
       "revId": "027a71495e7493a5a4f167b8f9251d9d83ede52d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96e8eabc_57ef3f68",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-27T20:43:41Z",
+      "side": 1,
+      "message": "I have created b/289102849 to discuss alternatives to this hack (One option suggested by Liz there is to sandbox this action in mixed builds as well)",
+      "parentUuid": "0f77bceb_9c3927a3",
+      "range": {
+        "startLine": 486,
+        "startChar": 7,
+        "endLine": 486,
+        "endChar": 29
+      },
+      "revId": "027a71495e7493a5a4f167b8f9251d9d83ede52d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
