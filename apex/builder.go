@@ -491,7 +491,7 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 		}
 		copyCommands = append(copyCommands, "mkdir -p "+destPathDir)
 
-		installMapPath := fi.builtFile
+		installMapPath := fi.builtFile.String()
 
 		// Copy the built file to the directory. But if the symlink optimization is turned
 		// on, place a symlink to the corresponding file in /system partition instead.
@@ -530,7 +530,7 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 				}
 			}
 
-			installMapPath = installedPath
+			installMapPath = android.InstallPathToOnDevicePath(ctx, installedPath)
 		}
 
 		// Copy the test files (if any)
@@ -548,7 +548,7 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 			implicitInputs = append(implicitInputs, d.SrcPath)
 		}
 
-		installMapSet[installMapPath.String()+":"+fi.installDir+"/"+fi.builtFile.Base()] = true
+		installMapSet[installMapPath+":"+fi.installDir+"/"+fi.builtFile.Base()] = true
 	}
 	implicitInputs = append(implicitInputs, a.manifestPbOut)
 
@@ -675,10 +675,7 @@ func (a *apexBundle) buildApex(ctx android.ModuleContext) {
 		htmlGzNotice := android.PathForModuleOut(ctx, "NOTICE.html.gz")
 		android.BuildNoticeHtmlOutputFromLicenseMetadata(
 			ctx, htmlGzNotice, "", "",
-			[]string{
-				android.PathForModuleInstall(ctx).String() + "/",
-				android.PathForModuleInPartitionInstall(ctx, "apex").String() + "/",
-			})
+			[]string{})
 		noticeAssetPath := android.PathForModuleOut(ctx, "NOTICE", "NOTICE.html.gz")
 		builder := android.NewRuleBuilder(pctx, ctx)
 		builder.Command().Text("cp").
