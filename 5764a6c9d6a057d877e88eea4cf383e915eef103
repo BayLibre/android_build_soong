@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e230fd69_d573a376",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-06-27T13:33:42Z",
+      "side": 1,
+      "message": "Thanks for the review! Please also take a look at the other change when you get a chance. It\u0027s almost the same. It\u0027s unfortunate that we have to write the same logic twice.",
+      "revId": "5764a6c9d6a057d877e88eea4cf383e915eef103",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
