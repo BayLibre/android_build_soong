@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82db72dc_021fe017",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-06-27T13:23:23Z",
+      "side": 1,
+      "message": "This comment needs updating.",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 12
+      },
+      "revId": "f1886a2bec19186472c3a618cc18847467f2b663",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96f4ccb9_2d69039a",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-06-27T13:23:23Z",
+      "side": 1,
+      "message": "Extend this comment to explain why you need individual files per module, and what rsync and grep commands are doing (essentially all the useful information you added in commit message).",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 70
+      },
+      "revId": "f1886a2bec19186472c3a618cc18847467f2b663",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
