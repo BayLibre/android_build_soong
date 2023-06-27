@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e24a8a3_4014b585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-27T20:25:32Z",
+      "side": 1,
+      "message": "I think the code itself looks fine, but I dont have sufficient context to review the methodology used here to get hiddenapi equivalence. Would it be helpful to create a short design doc and have it reviewed by folks on the art team?",
+      "revId": "255065dc4870bf4584ee2567bbe2412c29b6fa47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef35e542_a6afc150",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-27T20:25:32Z",
+      "side": 1,
+      "message": "I know that this is required because you are generating file match patterns in aosp/2635796, but this can lead to cryptic errors (.jar file missing .class file)",
+      "range": {
+        "startLine": 1785,
+        "startChar": 31,
+        "endLine": 1785,
+        "endChar": 32
+      },
+      "revId": "255065dc4870bf4584ee2567bbe2412c29b6fa47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab420af_f7e6c5f3",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1870,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-27T20:25:32Z",
+      "side": 1,
+      "message": "Since you are reusing `stubsDir`, would this cause .class files to appear in the .srcjar?",
+      "range": {
+        "startLine": 1868,
+        "startChar": 17,
+        "endLine": 1870,
+        "endChar": 39
+      },
+      "revId": "255065dc4870bf4584ee2567bbe2412c29b6fa47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
