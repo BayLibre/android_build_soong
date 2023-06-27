@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3745219e_92ede34e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-27T14:56:03Z",
+      "side": 1,
+      "message": "is this in order to run Soong tests with Bazel? There\u0027s no particular need to build/test Soong with Bazel -- perhaps we can omit migration of those modules to Bazel?",
+      "range": {
+        "startLine": 21,
+        "startChar": 34,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "5373b002c08c44c8ae9133897b969cf8e3c1b62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "210c8dcb_2fbd05e5",
         "filename": "android/paths.go",
         "patchSetId": 1
