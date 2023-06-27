@@ -34,6 +34,24 @@
       "parentUuid": "649f1266_aa63fda0",
       "revId": "bedf5bbceddaf4c54b50a3a504cc46ed78c1ad00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f5e77d_a8c99ea3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2023-06-27T11:21:23Z",
+      "side": 1,
+      "message": "I don\u0027t have enough context to say anything with certainty. However, it does look pretty random that you change `GOROOT` for some specific actions and that, to the `GOROOT` with which Soong happens to run.\n\nHow are the standard libraries under `prebuilts/go` are found? (it\u0027s kinda weird that they are found because `prebuilts/go` is just a random directory as far as the Go toolchain is concerned)\n\nThe canonical approach seems to be to use `go_wrap_sdk()` repository rule to register Go toolchains. Maybe you can use that to point to `prebuilts/go`?",
+      "parentUuid": "85f2556d_3a182438",
+      "revId": "bedf5bbceddaf4c54b50a3a504cc46ed78c1ad00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
