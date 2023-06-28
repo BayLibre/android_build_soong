@@ -50,6 +50,24 @@
       "message": "You should add these dependencies to your manifest instead",
       "revId": "621e6d235dbfbd2213da76aa15b7ffeaec22a355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cba8384f_1973730b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-06-28T17:18:52Z",
+      "side": 1,
+      "message": "Oh, I hadn\u0027t looked at the Android.bp change here -- it\u0027s very unlikely that this change was the root cause, as the build error is complaining about missing dependencies.",
+      "parentUuid": "4647778a_d4a8de6c",
+      "revId": "621e6d235dbfbd2213da76aa15b7ffeaec22a355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
