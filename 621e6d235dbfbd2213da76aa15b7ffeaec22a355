@@ -16,6 +16,23 @@
       "message": "We are trying to get a good build of tradefed for this week\u0027s release. It\u0027s the last one before next week\u0027s production freeze. Would really appreciate any timely help if anyone can review and confirm that this revert is needed to fix the build failure mentioned in the bug.",
       "revId": "621e6d235dbfbd2213da76aa15b7ffeaec22a355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba7b6f8_9bcc5661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2023-06-28T07:15:35Z",
+      "side": 1,
+      "message": "test_suites target are broken as of ToT. So presubmit won\u0027t pass till the tree is fixed.",
+      "revId": "621e6d235dbfbd2213da76aa15b7ffeaec22a355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
