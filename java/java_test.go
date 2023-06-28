@@ -2483,3 +2483,50 @@ func TestSdkLibraryProvidesSystemModulesToApiLibrary(t *testing.T) {
 	classPathFlag := "--classpath __SBOX_SANDBOX_DIR__/out/.intermediates/bar/android_common/turbine-combined/bar.jar"
 	android.AssertStringDoesContain(t, "command expected to contain classpath flag", manifestCommand, classPathFlag)
 }
+
+func TestApiLibraryDroidstubsDependency(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		PrepareForTestWithJavaSdkLibraryFiles,
+		FixtureWithLastReleaseApis("foo"),
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetApiLibraries([]string{"foo"})
+		}),
+		android.FixtureMergeMockFs(
+			map[string][]byte{
+				"A.java": nil,
+			},
+		),
+	).RunTestWithBp(t, `
+		java_api_library {
+			name: "foo",
+			api_contributions: [
+				"api-stubs-docs-non-updatable.api.contribution",
+			],
+			enable_validation: true,
+		}
+		java_api_library {
+			name: "bar",
+			api_contributions: [
+				"api-stubs-docs-non-updatable.api.contribution",
+			],
+			enable_validation: false,
+		}
+	`)
+
+	currentApiTimestampPath := "api-stubs-docs-non-updatable/android_common/metalava/check_current_api.timestamp"
+	foo := result.ModuleForTests("foo", "android_common").Module().(*ApiLibrary)
+	fooValidationPathsString := strings.Join(foo.validationPaths.Strings(), " ")
+	bar := result.ModuleForTests("bar", "android_common").Module().(*ApiLibrary)
+	barValidationPathsString := strings.Join(bar.validationPaths.Strings(), " ")
+	android.AssertStringDoesContain(t,
+		"Module expected to have validation",
+		fooValidationPathsString,
+		currentApiTimestampPath,
+	)
+	android.AssertStringDoesNotContain(t,
+		"Module expected to not have validation",
+		barValidationPathsString,
+		currentApiTimestampPath,
+	)
+}
