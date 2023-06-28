@@ -2474,3 +2474,46 @@ func TestSdkLibraryProvidesSystemModulesToApiLibrary(t *testing.T) {
 	m := result.ModuleForTests(apiScopePublic.apiLibraryModuleName("foo"), "android_common").Module().(*ApiLibrary)
 	android.AssertStringEquals(t, "Module expected to contain a system module", "baz", *m.properties.System_modules)
 }
+
+func TestApiLibraryDroidstubsDependency(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		PrepareForTestWithJavaSdkLibraryFiles,
+		FixtureWithLastReleaseApis("foo"),
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetApiLibraries([]string{"foo"})
+		}),
+		android.FixtureMergeMockFs(
+			map[string][]byte{
+				"A.java": nil,
+			},
+		),
+	).RunTestWithBp(t, `
+		java_api_library {
+			name: "foo",
+			api_contributions: [
+				"api-stubs-docs-non-updatable.api.contribution",
+			],
+			enable_validation: true,
+		}
+		java_api_library {
+			name: "bar",
+			api_contributions: [
+				"api-stubs-docs-non-updatable.api.contribution",
+			],
+			enable_validation: false,
+		}
+	`)
+	android.AssertBoolEquals(t,
+		"Module expected to depend on the droidstub module", true,
+		CheckModuleDependency(t, result.TestContext, "foo", "android_common",
+			"api-stubs-docs-non-updatable",
+		),
+	)
+	android.AssertBoolEquals(t,
+		"Module expected to not depend on the droidstub module", false,
+		CheckModuleDependency(t, result.TestContext, "bar", "android_common",
+			"api-stubs-docs-non-updatable",
+		),
+	)
+}
