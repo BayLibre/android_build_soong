@@ -233,6 +233,7 @@ var (
 		"frameworks/hardware/interfaces/stats/aidl":          Bp2BuildDefaultTrue,
 		"frameworks/libs/modules-utils/build":                Bp2BuildDefaultTrueRecursively,
 		"frameworks/libs/net/common/native":                  Bp2BuildDefaultTrueRecursively,
+		"frameworks/libs/net/common/netd":                    Bp2BuildDefaultTrueRecursively,
 		"frameworks/native":                                  Bp2BuildDefaultTrue,
 		"frameworks/native/libs/adbd_auth":                   Bp2BuildDefaultTrueRecursively,
 		"frameworks/native/libs/arect":                       Bp2BuildDefaultTrueRecursively,
@@ -304,6 +305,7 @@ var (
 		"packages/apps/Protips":                              Bp2BuildDefaultTrue,
 		"packages/apps/SafetyRegulatoryInfo":                 Bp2BuildDefaultTrue,
 		"packages/apps/WallpaperPicker":                      Bp2BuildDefaultTrue,
+		"packages/modules/DnsResolver":                       Bp2BuildDefaultTrueRecursively,
 		"packages/modules/NeuralNetworks/driver/cache":       Bp2BuildDefaultTrueRecursively,
 		"packages/modules/StatsD/lib/libstatssocket":         Bp2BuildDefaultTrueRecursively,
 		"packages/modules/adb":                               Bp2BuildDefaultTrue,
@@ -440,6 +442,7 @@ var (
 		"external/bazelbuild-rules_license":/* recursive = */ true,
 		"external/bazelbuild-rules_go":/* recursive = */ true,
 		"external/bazelbuild-rules_python":/* recursive = */ true,
+		"external/bazelbuild-rules_rust":/* recursive = */ true,
 		"external/bazelbuild-kotlin-rules":/* recursive = */ true,
 		"external/bazel-skylib":/* recursive = */ true,
 		"external/protobuf":/* recursive = */ false,
@@ -467,6 +470,7 @@ var (
 		"prebuilts/sdk/tools":/* recursive = */ false,
 		"prebuilts/r8":/* recursive = */ false,
 		"prebuilts/runtime":/* recursive = */ false,
+		"prebuilts/rust": true,
 
 		// not recursive due to conflicting workspace paths in tools/atest/bazel/rules
 		"tools/asuite/atest":/* recursive = */ false,
@@ -477,6 +481,8 @@ var (
 
 		// Used for testing purposes only. Should not actually exist in the real source tree.
 		"testpkg/keep_build_file":/* recursive = */ false,
+
+		"external/rust/crates/libc": true,
 	}
 
 	Bp2buildModuleAlwaysConvertList = []string{
@@ -870,6 +876,11 @@ var (
 	// the "prebuilt_" prefix to the name, so that it's differentiable from
 	// the source versions within Soong's module graph.
 	Bp2buildModuleDoNotConvertList = []string{
+		"libdoh_fuzz_ffi",
+		"libdoh_ffi_for_test",
+		"doh_unit_test",
+		"libdoh_ffi",
+		"libnetd_resolv",
 		// TODO(b/263326760): Failed already.
 		"minijail_compiler_unittest",
 		"minijail_parser_unittest",
