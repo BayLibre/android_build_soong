@@ -68,6 +68,24 @@
       "parentUuid": "4647778a_d4a8de6c",
       "revId": "621e6d235dbfbd2213da76aa15b7ffeaec22a355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a3bbf2_00b74a44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-06-28T17:22:36Z",
+      "side": 1,
+      "message": "Oh, it\u0027s not the Android.bp, but the dep added via `all_aconfig_declarations_dump`. Regardless, unless we\u0027re not expecting this to be created for every build, the manifest needs to be fixed instead.",
+      "parentUuid": "cba8384f_1973730b",
+      "revId": "621e6d235dbfbd2213da76aa15b7ffeaec22a355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
