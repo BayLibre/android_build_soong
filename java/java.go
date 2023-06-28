@@ -1768,6 +1768,12 @@ func (al *ApiLibrary) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBui
 	}
 }
 
+func (al *ApiLibrary) addValidation(ctx android.ModuleContext, cmd *android.RuleBuilderCommand, validationPaths android.Paths) {
+	for _, validationPath := range validationPaths {
+		cmd.Validation(validationPath)
+	}
+}
+
 // This method extracts the stub class files from the stub jar file provided
 // from full_api_surface_stub module instead of compiling the srcjar generated from invoking metalava.
 // This method is used because metalava can generate compilable from-text stubs only when
@@ -1806,6 +1812,7 @@ func (al *ApiLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	apiContributions := al.properties.Api_contributions
 	for _, apiContributionName := range apiContributions {
 		ctx.AddDependency(ctx.Module(), javaApiContributionTag, apiContributionName)
+		ctx.AddDependency(ctx.Module(), metalavaCurrentApiTimestampTag, strings.TrimSuffix(apiContributionName, ".api.contribution"))
 	}
 	ctx.AddVariationDependencies(nil, libTag, al.properties.Libs...)
 	ctx.AddVariationDependencies(nil, staticLibTag, al.properties.Static_libs...)
@@ -1840,8 +1847,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		android.PathForModuleOut(ctx, "metalava.sbox.textproto")).
 		SandboxInputs()
 
-	var stubsDir android.OptionalPath
-	stubsDir = android.OptionalPathForPath(android.PathForModuleOut(ctx, "metalava", "stubsDir"))
+	stubsDir := android.OptionalPathForPath(android.PathForModuleOut(ctx, "metalava", "stubsDir"))
 	rule.Command().Text("rm -rf").Text(stubsDir.String())
 	rule.Command().Text("mkdir -p").Text(stubsDir.String())
 
@@ -1851,6 +1857,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var classPaths android.Paths
 	var staticLibs android.Paths
 	var depApiSrcsStubsJar android.Path
+	var validationPaths android.Paths
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		tag := ctx.OtherModuleDependencyTag(dep)
 		switch tag {
@@ -1869,6 +1876,10 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		case depApiSrcsTag:
 			provider := ctx.OtherModuleProvider(dep, JavaInfoProvider).(JavaInfo)
 			depApiSrcsStubsJar = provider.HeaderJars[0]
+		case metalavaCurrentApiTimestampTag:
+			if currentApiTimestampProvider, ok := dep.(CurrentApiTimestampProvider); ok {
+				validationPaths = append(validationPaths, currentApiTimestampProvider.CurrentApiTimestamp())
+			}
 		}
 	})
 
@@ -1890,6 +1901,10 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if migratingNullability {
 		previousApi := android.PathForModuleSrc(ctx, String(al.properties.Previous_api))
 		cmd.FlagWithInput("--migrate-nullness ", previousApi)
+	}
+
+	if !ctx.Config().IsEnvTrue("DISABLE_STUB_VALIDATION") {
+		al.addValidation(ctx, cmd, validationPaths)
 	}
 
 	al.stubsSrcJar = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"-"+"stubs.srcjar")
