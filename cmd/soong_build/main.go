@@ -92,6 +92,7 @@ func init() {
 	// Flags that probably shouldn't be flags of soong_build, but we haven't found
 	// the time to remove them yet
 	flag.BoolVar(&cmdlineArgs.RunGoTests, "t", false, "build and run go tests during bootstrap")
+	flag.BoolVar(&cmdlineArgs.DisableStubValidation, "disable-stub-validation", false, "disable validation action when generating Java stubs using signature files")
 
 	// Disable deterministic randomization in the protobuf package, so incremental
 	// builds with unrelated Soong changes don't trigger large rebuilds (since we

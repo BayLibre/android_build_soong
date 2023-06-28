@@ -1755,6 +1755,28 @@ func (al *ApiLibrary) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBui
 	}
 }
 
+func (al *ApiLibrary) getApiCheckPhonyTargets() []string {
+	var apiCheckPhonyTargets []string
+	for _, apiContributionName := range al.properties.Api_contributions {
+
+		// Finding the phony target based on the naming of the dependency java_api_contribution
+		// module is fragile, but adding another property in the api contribution module provider
+		// disables java_api_contribution module to be converted as filegroup in bazel.
+		// Thus, java_api_contribution should only provide the api file,
+		// and the check api phony target is found using heuristics.
+		providerDroidstubsName := strings.TrimSuffix(apiContributionName, ".api.contribution")
+		apiCheckPhonyTargets = append(apiCheckPhonyTargets, providerDroidstubsName+"-check-current-api")
+	}
+
+	return apiCheckPhonyTargets
+}
+
+func (al *ApiLibrary) addValidation(ctx android.ModuleContext, cmd *android.RuleBuilderCommand, phonyTargets []string) {
+	for _, phonyTarget := range phonyTargets {
+		cmd.Validation(android.PathForPhony(ctx, phonyTarget))
+	}
+}
+
 // This method extracts the stub class files from the stub jar file provided
 // from full_api_surface_stub module instead of compiling the srcjar generated from invoking metalava.
 // This method is used because metalava can generate compilable from-text stubs only when
@@ -1808,8 +1830,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		android.PathForModuleOut(ctx, "metalava.sbox.textproto")).
 		SandboxInputs()
 
-	var stubsDir android.OptionalPath
-	stubsDir = android.OptionalPathForPath(android.PathForModuleOut(ctx, "metalava", "stubsDir"))
+	stubsDir := android.OptionalPathForPath(android.PathForModuleOut(ctx, "metalava", "stubsDir"))
 	rule.Command().Text("rm -rf").Text(stubsDir.String())
 	rule.Command().Text("mkdir -p").Text(stubsDir.String())
 
@@ -1853,6 +1874,10 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	cmd := metalavaStubCmd(ctx, rule, srcFiles, homeDir)
 
 	al.stubsFlags(ctx, cmd, stubsDir)
+
+	if !ctx.Config().DisableStubValidation() {
+		al.addValidation(ctx, cmd, al.getApiCheckPhonyTargets())
+	}
 
 	al.stubsSrcJar = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"-"+"stubs.srcjar")
 	al.stubsJarWithoutStaticLibs = android.PathForModuleOut(ctx, "metalava", "stubs.jar")

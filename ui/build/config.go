@@ -93,6 +93,7 @@ type configImpl struct {
 	ensureAllowlistIntegrity bool   // For CI builds - make sure modules are mixed-built
 	bazelExitCode            int32  // For b runs - necessary for updating NonZeroExit
 	besId                    string // For b runs, to identify the BuildEventService logs
+	disableStubValidation    bool
 
 	// From the product config
 	katiArgs        []string
@@ -545,6 +546,10 @@ func NewConfig(ctx Context, args ...string) Config {
 		ret.environ.Set("UNSAFE_DISABLE_HIDDENAPI_FLAGS", "true")
 	}
 
+	if ret.DisableStubValidation() {
+		ret.environ.Set("DISABLE_STUB_VALIDATION", "true")
+	}
+
 	bpd := ret.BazelMetricsDir()
 	if err := os.RemoveAll(bpd); err != nil {
 		ctx.Fatalf("Unable to remove bazel profile directory %q: %v", bpd, err)
@@ -883,6 +888,8 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			}
 		} else if arg == "--build-from-text-stub" {
 			c.buildFromTextStub = true
+		} else if arg == "--disable-stub-validation" {
+			c.disableStubValidation = true
 		} else if strings.HasPrefix(arg, "--build-command=") {
 			buildCmd := strings.TrimPrefix(arg, "--build-command=")
 			// remove quotations
@@ -1794,6 +1801,10 @@ func (c *configImpl) BuildStartedTimeOrDefault(defaultTime time.Time) time.Time 
 
 func (c *configImpl) BazelExitCode() int32 {
 	return c.bazelExitCode
+}
+
+func (c *configImpl) DisableStubValidation() bool {
+	return c.disableStubValidation
 }
 
 func GetMetricsUploader(topDir string, env *Environment) string {

@@ -104,6 +104,8 @@ type CmdArgs struct {
 	BuildFromTextStub bool
 
 	EnsureAllowlistIntegrity bool
+
+	DisableStubValidation bool
 }
 
 // Build modes that soong_build can run as.
@@ -304,6 +306,10 @@ type config struct {
 
 	// List of Api libraries that contribute to Api surfaces.
 	apiLibraries map[string]struct{}
+
+	// If true, validation action for checking sync between source Java files
+	// and API signature files will not be run
+	disableStubValidation bool
 }
 
 type deviceConfig struct {
@@ -508,7 +514,8 @@ func NewConfig(cmdArgs CmdArgs, availableEnv map[string]string) (Config, error) 
 		MultitreeBuild: cmdArgs.MultitreeBuild,
 		UseBazelProxy:  cmdArgs.UseBazelProxy,
 
-		buildFromTextStub: cmdArgs.BuildFromTextStub,
+		buildFromTextStub:     cmdArgs.BuildFromTextStub,
+		disableStubValidation: cmdArgs.DisableStubValidation,
 	}
 
 	config.deviceConfig = &deviceConfig{
@@ -1691,6 +1698,10 @@ func (c *config) ProductHiddenAPIStubsSystem() []string {
 
 func (c *config) ProductHiddenAPIStubsTest() []string {
 	return c.productVariables.ProductHiddenAPIStubsTest
+}
+
+func (c *config) DisableStubValidation() bool {
+	return c.disableStubValidation
 }
 
 func (c *deviceConfig) TargetFSConfigGen() []string {

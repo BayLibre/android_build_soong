@@ -174,6 +174,9 @@ func (pb PrimaryBuilderFactory) primaryBuilderInvocation() bootstrap.PrimaryBuil
 	if pb.config.buildFromTextStub {
 		commonArgs = append(commonArgs, "--build-from-text-stub")
 	}
+	if pb.config.disableStubValidation {
+		commonArgs = append(commonArgs, "--disable-stub-validation")
+	}
 
 	commonArgs = append(commonArgs, "-l", filepath.Join(pb.config.FileListDir(), "Android.bp.list"))
 	invocationEnv := make(map[string]string)
@@ -289,6 +292,9 @@ func bootstrapBlueprint(ctx Context, config Config) {
 	}
 	if config.ensureAllowlistIntegrity {
 		mainSoongBuildExtraArgs = append(mainSoongBuildExtraArgs, "--ensure-allowlist-integrity")
+	}
+	if config.disableStubValidation {
+		mainSoongBuildExtraArgs = append(mainSoongBuildExtraArgs, "--disable-stub-validation")
 	}
 
 	queryviewDir := filepath.Join(config.SoongOutDir(), "queryview")
