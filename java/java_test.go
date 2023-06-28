@@ -2483,3 +2483,46 @@ func TestSdkLibraryProvidesSystemModulesToApiLibrary(t *testing.T) {
 	classPathFlag := "--classpath __SBOX_SANDBOX_DIR__/out/.intermediates/bar/android_common/turbine-combined/bar.jar"
 	android.AssertStringDoesContain(t, "command expected to contain classpath flag", manifestCommand, classPathFlag)
 }
+
+func TestApiLibraryDroidstubsDependency(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		PrepareForTestWithJavaSdkLibraryFiles,
+		FixtureWithLastReleaseApis("foo"),
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetApiLibraries([]string{"foo"})
+		}),
+		android.FixtureMergeMockFs(
+			map[string][]byte{
+				"A.java": nil,
+			},
+		),
+	).RunTestWithBp(t, `
+		java_api_library {
+			name: "foo",
+			api_contributions: [
+				"api-stubs-docs-non-updatable.api.contribution",
+			],
+			enable_validation: true,
+		}
+		java_api_library {
+			name: "bar",
+			api_contributions: [
+				"api-stubs-docs-non-updatable.api.contribution",
+			],
+			enable_validation: false,
+		}
+	`)
+	android.AssertBoolEquals(t,
+		"Module expected to depend on the droidstub module", true,
+		CheckModuleHasDependency(t, result.TestContext, "foo", "android_common",
+			"api-stubs-docs-non-updatable",
+		),
+	)
+	android.AssertBoolEquals(t,
+		"Module expected to not depend on the droidstub module", false,
+		CheckModuleHasDependency(t, result.TestContext, "bar", "android_common",
+			"api-stubs-docs-non-updatable",
+		),
+	)
+}
