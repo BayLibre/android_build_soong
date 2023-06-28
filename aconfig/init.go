@@ -54,15 +54,6 @@ var (
 			},
 			Restat: true,
 		})
-
-	// For all_aconfig_declarations
-	allDeclarationsRule = pctx.AndroidStaticRule("all_aconfig_declarations_dump",
-		blueprint.RuleParams{
-			Command: `${aconfig} dump --format protobuf --out ${out} ${cache_files}`,
-			CommandDeps: []string{
-				"${aconfig}",
-			},
-		}, "cache_files")
 )
 
 func init() {
@@ -76,5 +67,4 @@ func registerBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("aconfig_values", ValuesFactory)
 	ctx.RegisterModuleType("aconfig_value_set", ValueSetFactory)
 	ctx.RegisterModuleType("java_aconfig_library", JavaDeclarationsLibraryFactory)
-	ctx.RegisterParallelSingletonType("all_aconfig_declarations", AllAconfigDeclarationsFactory)
 }
