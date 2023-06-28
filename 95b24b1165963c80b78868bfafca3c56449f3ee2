@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "032329b4_06a6fd7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-28T03:12:17Z",
+      "side": 1,
+      "message": "Failure looks unrelated at first glance, will run presubmits again",
+      "revId": "95b24b1165963c80b78868bfafca3c56449f3ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
