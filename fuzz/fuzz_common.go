@@ -367,7 +367,10 @@ type FuzzConfig struct {
 	// Specifies a bug assignee to replace default ISE assignment
 	Triage_assignee string `json:"triage_assignee,omitempty"`
 	// Specifies libs used to initialize ART (java only, 'use_none' for no initialization)
-	Use_platform_libs UsePlatformLibs `json:"use_platform_libs,omitempty"`
+	Use_platform_libs UsePlatformLibs `json:"use_platform_libs,omitempty"`	
+	// Specifies whether fuzz target should check presubmitted code changes for crashes.
+	// Defaults to false.
+	Use_for_presubmit *bool `json:"use_for_presubmit,omitempty"`
 }
 
 type FuzzFrameworks struct {
