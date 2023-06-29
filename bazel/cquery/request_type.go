@@ -12,6 +12,8 @@ var (
 	GetApexInfo         = &getApexInfoType{}
 	GetCcUnstrippedInfo = &getCcUnstrippedInfoType{}
 	GetPrebuiltFileInfo = &getPrebuiltFileInfo{}
+
+	GetBazelSandwichInfo = &getBazelSandwichInfo{}
 )
 
 type CcAndroidMkInfo struct {
@@ -421,6 +423,47 @@ type PrebuiltFileInfo struct {
 // Starlark given in StarlarkFunctionBody.
 func (g getPrebuiltFileInfo) ParseResult(rawString string) (PrebuiltFileInfo, error) {
 	var info PrebuiltFileInfo
+	err := parseJson(rawString, &info)
+	return info, err
+}
+
+type getBazelSandwichInfo struct{}
+
+// Name returns a string name for this request type. Such request type names must be unique,
+// and must only consist of alphanumeric characters.
+func (g getBazelSandwichInfo) Name() string {
+	return "getBazelSandwichInfo"
+}
+
+// StarlarkFunctionBody returns a starlark function body to process this request type.
+// The returned string is the body of a Starlark function which obtains
+// all request-relevant information about a target and returns a string containing
+// this information.
+// The function should have the following properties:
+//   - The arguments are `target` (a configured target) and `id_string` (the label + configuration).
+//   - The return value must be a string.
+//   - The function body should not be indented outside of its own scope.
+func (g getBazelSandwichInfo) StarlarkFunctionBody() string {
+	return `
+p = providers(target)
+bazel_sandwich_info = p.get("@bazel_sandwich//:bazel_sandwich_info.bzl%BazelSandwichInfo")
+if not bazel_sandwich_info:
+  fail("%s did not provide BazelSandwichInfo" % id_string)
+
+return json.encode({
+	"Symlinks": bazel_sandwich_info.files,
+})`
+}
+
+type BazelSandwichInfo struct {
+	Symlinks map[string]string
+}
+
+// ParseResult returns a value obtained by parsing the result of the request's Starlark function.
+// The given rawString must correspond to the string output which was created by evaluating the
+// Starlark given in StarlarkFunctionBody.
+func (g getBazelSandwichInfo) ParseResult(rawString string) (BazelSandwichInfo, error) {
+	var info BazelSandwichInfo
 	err := parseJson(rawString, &info)
 	return info, err
 }
