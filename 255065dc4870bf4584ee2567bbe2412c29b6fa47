@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c87045a9_3c4fdba6",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-06-29T18:29:20Z",
+      "side": 1,
+      "message": "I feel like the naming of this function and even of the `dep_api_srcs` property becomes a bit wonky after this change since we\u0027re actually reading the class files. In fact I\u0027m not sure I liked the name before this change, as it was really unclear to me what this did :). do you think it would be misleading to call the property \"full_api_surface_stubs\"? Can be in a subsequent change, and also would be nice some comments to document this property and the difference in behavior with and without it (I assume that when it\u0027s not set, we do actually generate stubs from `metalava` since there\u0027s no existing strub jar to extract class files from?)",
+      "range": {
+        "startLine": 1763,
+        "startChar": 22,
+        "endLine": 1763,
+        "endChar": 36
+      },
+      "revId": "255065dc4870bf4584ee2567bbe2412c29b6fa47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef35e542_a6afc150",
         "filename": "java/java.go",
         "patchSetId": 2
