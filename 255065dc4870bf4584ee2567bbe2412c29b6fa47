@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b7d064e_b9b3b303",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-06-29T21:21:59Z",
+      "side": 1,
+      "message": "I agree that the property would be more intuitive when renamed to `full_api_surface_stubs`. I\u0027ve modified the name and the documentation of the property.",
+      "parentUuid": "c87045a9_3c4fdba6",
+      "range": {
+        "startLine": 1763,
+        "startChar": 22,
+        "endLine": 1763,
+        "endChar": 36
+      },
+      "revId": "255065dc4870bf4584ee2567bbe2412c29b6fa47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef35e542_a6afc150",
