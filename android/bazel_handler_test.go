@@ -138,7 +138,7 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
    { "id": 1, "label": "one" },
    { "id": 2, "label": "two" }]
 }`,
-			"cd 'test/exec_root' && rm -rf 'one' && touch foo",
+			"mkdir -p 'test/exec_root' && cd 'test/exec_root' && rm -rf 'one' && touch foo",
 		}, {`
 {
  "artifacts": [
@@ -157,7 +157,7 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
    { "id": 20, "label": "one.d", "parent_id": 30 },
    { "id": 30, "label": "parent" }]
 }`,
-			`cd 'test/exec_root' && rm -rf 'parent/one' && bogus command && sed -i'' -E 's@(^|\s|")bazel-out/@\1test/bazel_out/@g' 'parent/one.d'`,
+			`mkdir -p 'test/exec_root' && cd 'test/exec_root' && rm -rf 'parent/one' && bogus command && sed -i'' -E 's@(^|\s|")bazel-out/@\1test/bazel_out/@g' 'parent/one.d'`,
 		},
 	}
 
@@ -180,7 +180,7 @@ func TestInvokeBazelPopulatesBuildStatements(t *testing.T) {
 
 		cmd := RuleBuilderCommand{}
 		ctx := builderContextForTests{PathContextForTesting(TestConfig("out", nil, "", nil))}
-		createCommand(&cmd, got[0], "test/exec_root", "test/bazel_out", ctx)
+		createCommand(&cmd, got[0], "test/exec_root", "test/bazel_out", ctx, map[string]bazel.AqueryDepset{})
 		if actual, expected := cmd.buf.String(), testCase.command; expected != actual {
 			t.Errorf("expected: [%s], actual: [%s]", expected, actual)
 		}
