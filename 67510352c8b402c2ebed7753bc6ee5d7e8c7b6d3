@@ -16,6 +16,23 @@
       "message": "we need to sync the code, it was well out of sync with head, the staging dcla libs need to be moved to prod as well.",
       "revId": "67510352c8b402c2ebed7753bc6ee5d7e8c7b6d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6969026c_ac6f25a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-29T20:57:01Z",
+      "side": 1,
+      "message": "Would it be ok to abandon this CL now?",
+      "revId": "67510352c8b402c2ebed7753bc6ee5d7e8c7b6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
