@@ -22,6 +22,30 @@
       },
       "revId": "d8a4da7a0094ce45c0499a986d5da534de5d77d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1786f2_62266a7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-06-29T22:36:21Z",
+      "side": 1,
+      "message": "I can leave that up to you/the team. I just wanted to be safe.",
+      "parentUuid": "cd0ca22c_3fd1c76b",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "d8a4da7a0094ce45c0499a986d5da534de5d77d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
