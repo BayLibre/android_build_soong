@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc46f4dd_c4cd56a2",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-29T16:46:18Z",
+      "side": 0,
+      "message": "It looks like we are still building `xref_java`. Is there a reason why we need to drop this from the comment?",
+      "range": {
+        "startLine": 38,
+        "startChar": 32,
+        "endLine": 38,
+        "endChar": 41
+      },
+      "revId": "df9c3441aa12df7bce9e25d024fd07ba7f4e47ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
