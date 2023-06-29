@@ -92,11 +92,10 @@ type configKey struct {
 type ApexConfigKey struct {
 	WithinApex     bool
 	ApexSdkVersion string
-	ApiDomain      string
 }
 
 func (c ApexConfigKey) String() string {
-	return fmt.Sprintf("%s_%s_%s", withinApexToString(c.WithinApex), c.ApexSdkVersion, c.ApiDomain)
+	return fmt.Sprintf("%s_%s", withinApexToString(c.WithinApex), c.ApexSdkVersion)
 }
 
 func withinApexToString(withinApex bool) string {
@@ -738,7 +737,6 @@ def _config_node_transition_impl(settings, attr):
         "@//build/bazel/rules/apex:within_apex": attr.within_apex,
         "@//build/bazel/rules/apex:min_sdk_version": attr.apex_sdk_version,
         "@//build/bazel/rules/apex:apex_name": apex_name,
-        "@//build/bazel/rules/apex:api_domain": attr.api_domain,
     }
 
     return outputs
@@ -751,7 +749,6 @@ _config_node_transition = transition(
         "@//build/bazel/rules/apex:within_apex",
         "@//build/bazel/rules/apex:min_sdk_version",
         "@//build/bazel/rules/apex:apex_name",
-        "@//build/bazel/rules/apex:api_domain",
     ],
 )
 
@@ -765,7 +762,6 @@ config_node = rule(
         "os"      : attr.string(mandatory = True),
         "within_apex" : attr.bool(default = False),
         "apex_sdk_version" : attr.string(mandatory = True),
-        "api_domain" : attr.string(mandatory = True),
         "deps"    : attr.label_list(cfg = _config_node_transition, allow_files = True),
         "_allowlist_function_transition": attr.label(default = "@bazel_tools//tools/allowlists/function_transition_allowlist"),
     },
@@ -827,7 +823,6 @@ config_node(name = "%s",
     os = "%s",
     within_apex = %s,
     apex_sdk_version = "%s",
-    api_domain = "%s",
     deps = [%s],
     testonly = True, # Unblocks testonly deps.
 )
@@ -861,11 +856,6 @@ config_node(name = "%s",
 		osString := configTokens[1]
 		withinApex := "False"
 		apexSdkVerString := ""
-		apiDomainString := ""
-		if osString == "android" {
-			// api domains are meaningful only for device variants
-			apiDomainString = "system"
-		}
 		targetString := fmt.Sprintf("%s_%s", osString, archString)
 		if len(configTokens) > 2 {
 			targetString += "_" + configTokens[2]
@@ -877,13 +867,9 @@ config_node(name = "%s",
 			targetString += "_" + configTokens[3]
 			apexSdkVerString = configTokens[3]
 		}
-		if len(configTokens) > 4 {
-			apiDomainString = configTokens[4]
-			targetString += "_" + apiDomainString
-		}
 		allLabels = append(allLabels, fmt.Sprintf("\":%s\"", targetString))
 		labelsString := strings.Join(labels, ",\n            ")
-		configNodesSection += fmt.Sprintf(configNodeFormatString, targetString, archString, osString, withinApex, apexSdkVerString, apiDomainString,
+		configNodesSection += fmt.Sprintf(configNodeFormatString, targetString, archString, osString, withinApex, apexSdkVerString,
 			labelsString)
 	}
 
@@ -988,14 +974,11 @@ def get_arch(target):
 
   within_apex = buildoptions.get("//build/bazel/rules/apex:within_apex")
   apex_sdk_version = buildoptions.get("//build/bazel/rules/apex:min_sdk_version")
-  api_domain = buildoptions.get("//build/bazel/rules/apex:api_domain")
 
   if within_apex:
     config_key += "|within_apex"
   if apex_sdk_version != None and len(apex_sdk_version) > 0:
     config_key += "|" + apex_sdk_version
-  if api_domain != None and len(api_domain) > 0:
-    config_key += "|" + api_domain
 
   return config_key
 
@@ -1402,10 +1385,6 @@ func getConfigString(key cqueryKey) string {
 		keyString += "|" + key.configKey.apexKey.ApexSdkVersion
 	}
 
-	if len(key.configKey.apexKey.ApiDomain) > 0 {
-		keyString += "|" + key.configKey.apexKey.ApiDomain
-	}
-
 	return keyString
 }
 
@@ -1424,7 +1403,6 @@ func GetConfigKeyApexVariant(ctx BaseModuleContext, apexKey *ApexConfigKey) conf
 		configKey.apexKey = ApexConfigKey{
 			WithinApex:     apexKey.WithinApex,
 			ApexSdkVersion: apexKey.ApexSdkVersion,
-			ApiDomain:      apexKey.ApiDomain,
 		}
 	}
 
