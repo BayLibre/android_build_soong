@@ -199,6 +199,7 @@ var (
 		"-Werror=int-to-pointer-cast",
 		"-Werror=pointer-to-int-cast",
 		"-Werror=xor-used-as-pow",
+		"-Werror=reorder-init-list",
 		// http://b/161386391 for -Wno-void-pointer-to-enum-cast
 		"-Wno-void-pointer-to-enum-cast",
 		// http://b/161386391 for -Wno-void-pointer-to-int-cast
@@ -215,8 +216,6 @@ var (
 		// new warnings are fixed.
 		"-Wno-tautological-constant-compare",
 		"-Wno-tautological-type-limit-compare",
-		// http://b/145210666
-		"-Wno-reorder-init-list",
 		// http://b/145211066
 		"-Wno-implicit-int-float-conversion",
 		// New warnings to be fixed after clang-r377782.
