@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8f97e3_46493e3c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-06-29T14:25:51Z",
+      "side": 1,
+      "message": "I suggest using `image.target.Os \u003d\u003d android.Android`, just to be consistent with the lines below.",
+      "range": {
+        "startLine": 802,
+        "startChar": 4,
+        "endLine": 802,
+        "endChar": 40
+      },
+      "revId": "4c4f120de4b1299fddfa5e7b7d105c652ba32473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
