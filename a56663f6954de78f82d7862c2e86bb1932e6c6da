@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abc7b153_b51e599d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-06-29T20:55:33Z",
+      "side": 1,
+      "message": "Can we disable the failing test case rather than disabling the whole test (e.g. this line https://cs.android.com/android/platform/superproject/+/master:build/soong/tests/dcla_apex_comparison_test.sh;l\u003d55;drc\u003d7301fc8aeb38e8a37fb73d58cef22a18adb349fa instead?) This would prevent unexpected regressions in other libraries",
+      "revId": "a56663f6954de78f82d7862c2e86bb1932e6c6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
