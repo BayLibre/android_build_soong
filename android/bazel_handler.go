@@ -176,6 +176,8 @@ type BazelContext interface {
 	// (for example, that it is MixedBuildBuildable).
 	IsModuleNameAllowed(moduleName string, withinApex bool) bool
 
+	IsModuleDclaAllowed(moduleName string) bool
+
 	// Returns the bazel output base (the root directory for all bazel intermediate outputs).
 	OutputBase() string
 
@@ -311,6 +313,10 @@ func (m MockBazelContext) InvokeBazel(_ Config, _ invokeBazelContext) error {
 }
 
 func (m MockBazelContext) IsModuleNameAllowed(_ string, _ bool) bool {
+	return true
+}
+
+func (m MockBazelContext) IsModuleDclaAllowed(_ string) bool {
 	return true
 }
 
@@ -455,6 +461,10 @@ func (n noopBazelContext) IsModuleNameAllowed(_ string, _ bool) bool {
 	return false
 }
 
+func (n noopBazelContext) IsModuleDclaAllowed(_ string) bool {
+	return false
+}
+
 func (m noopBazelContext) BuildStatementsToRegister() []*bazel.BuildStatement {
 	return []*bazel.BuildStatement{}
 }
@@ -588,11 +598,15 @@ func (context *mixedBuildBazelContext) IsModuleNameAllowed(moduleName string, wi
 	if context.bazelEnabledModules[moduleName] {
 		return true
 	}
-	if withinApex && context.bazelDclaEnabledModules[moduleName] {
+	if withinApex && context.IsModuleDclaAllowed(moduleName) {
 		return true
 	}
 
 	return false
+}
+
+func (context *mixedBuildBazelContext) IsModuleDclaAllowed(moduleName string) bool {
+	return context.bazelDclaEnabledModules[moduleName]
 }
 
 func pwdPrefix() string {
