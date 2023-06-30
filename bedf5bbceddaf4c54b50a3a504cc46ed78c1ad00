@@ -70,6 +70,24 @@
       "parentUuid": "19f5e77d_a8c99ea3",
       "revId": "bedf5bbceddaf4c54b50a3a504cc46ed78c1ad00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a7575c_482aa6ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-30T03:22:38Z",
+      "side": 1,
+      "message": "Liz suggested that we can sandbox this action in mixed builds as well. I have an implementation for it in aosp/2646239",
+      "parentUuid": "5d3ad88d_b411470a",
+      "revId": "bedf5bbceddaf4c54b50a3a504cc46ed78c1ad00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
