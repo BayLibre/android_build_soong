@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "129e02ac_ed9199ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-30T20:07:48Z",
+      "side": 1,
+      "message": "Delaying submission for trunk stable freeze",
+      "revId": "863cdd0705c437d45dbe9d96c37753b12b3c2fc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
