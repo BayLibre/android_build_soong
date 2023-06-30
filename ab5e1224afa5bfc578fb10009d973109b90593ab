@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b89d10_8f48947b",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-06-30T18:59:55Z",
+      "side": 1,
+      "message": "Let\u0027s either rename or have this transformation apply to bootclasspath_fragments as well",
+      "range": {
+        "startLine": 462,
+        "startChar": 28,
+        "endLine": 462,
+        "endChar": 64
+      },
+      "revId": "ab5e1224afa5bfc578fb10009d973109b90593ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
