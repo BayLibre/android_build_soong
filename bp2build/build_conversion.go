@@ -435,6 +435,28 @@ var (
 		"soong-ui-build",
 		"textnotice",
 		"xmlnotice",
+
+		// These are soong tests that cannot be run by b
+		// Theses tests have a guard that prevent usage outside a test environment
+		// The guard (`ensureTestOnly`) looks for a `-test` in os.Args, which is present in soong's gotestrunner, but missing in `b test`
+		"aidl-soong-rules",
+		"soong-aidl-library",
+		"soong-android",
+		"soong-android-sdk",
+		"soong-apex",
+		"soong-cc",
+		"soong-etc",
+		"soong-filesystem",
+		"soong-genrule",
+		"soong-java",
+		"soong-provenance",
+		"soong-rust",
+		"soong-sdk",
+		"soong-sh",
+		"soong-snapshot",
+		"soong-sysprop",
+		"soong-wayland-protocol-codegen",
+		"soong-xml",
 	}
 )
 
