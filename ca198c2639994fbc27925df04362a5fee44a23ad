@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c3fe4a_34ac1675",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-30T00:01:45Z",
+      "side": 1,
+      "message": "Since there is no functional change since Romain\u0027s +2 and we are likely to revisit this, I am giving my +2 to unblock",
+      "revId": "ca198c2639994fbc27925df04362a5fee44a23ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
