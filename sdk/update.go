@@ -458,8 +458,11 @@ be unnecessary as every module in the sdk already has its own licenses property.
 		module = module.transform(pruneEmptySetTransformer{})
 
 		// Transform the module module to make it suitable for use in the snapshot.
-		module.transform(snapshotTransformer)
-		bpFile.AddModule(module)
+		module = module.transform(snapshotTransformer)
+		module = module.transform(emptyClasspathContentsTransformation{})
+		if module != nil {
+			bpFile.AddModule(module)
+		}
 	}
 
 	// generate Android.bp
@@ -848,6 +851,19 @@ func (t snapshotTransformation) transformProperty(_ string, value interface{}, t
 	} else {
 		return value, tag
 	}
+}
+
+type emptyClasspathContentsTransformation struct {
+	identityTransformation
+}
+
+func (t emptyClasspathContentsTransformation) transformModule(module *bpModule) *bpModule {
+	if module.moduleType == "prebuilt_systemserverclasspath_fragment" {
+		if len(module.bpPropertySet.properties["contents"].([]string)) == 0 {
+			return nil
+		}
+	}
+	return module
 }
 
 type pruneEmptySetTransformer struct {
