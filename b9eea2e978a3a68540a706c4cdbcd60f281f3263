@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52273875_ab992bda",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-30T21:12:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe435961_b73dfefc",
+      "range": {
+        "startLine": 496,
+        "startChar": 20,
+        "endLine": 496,
+        "endChar": 23
+      },
+      "revId": "b9eea2e978a3a68540a706c4cdbcd60f281f3263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16c844aa_08c812ab",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-27T13:22:59Z",
       "side": 1,
       "message": "should/could we make it such that binaries always embed a `go_source` rather than repeating the `srcs`?",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 5
+      },
+      "revId": "b9eea2e978a3a68540a706c4cdbcd60f281f3263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "643f21c1_01b47beb",
+        "filename": "bp2build/go_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-30T21:12:27Z",
+      "side": 1,
+      "message": "I think I like your suggestion more than my original implementation. I have updated this to use `go_source` and reduce duplication",
+      "parentUuid": "16c844aa_08c812ab",
       "range": {
         "startLine": 161,
         "startChar": 3,
