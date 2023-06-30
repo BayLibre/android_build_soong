@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47d9b65_5b30e9e9",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-06-30T20:11:22Z",
+      "side": 0,
+      "message": "No objection to removing, but this only applies to modules with `instruction_set: \"arm\"`, which are relatively rare, and are likely to be the most performance sensitive.",
+      "revId": "fa076a74f8a128785f2a8bed17c7d55e7f10f8aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
