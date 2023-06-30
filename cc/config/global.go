@@ -48,7 +48,6 @@ var (
 		"-Wno-multichar",
 
 		"-O2",
-		"-g1",
 		"-fdebug-default-version=5",
 
 		"-fno-strict-aliasing",
@@ -372,6 +371,19 @@ func init() {
 
 		if ctx.Config().IsEnvTrue("ALLOW_UNKNOWN_WARNING_OPTION") {
 			flags = append(flags, "-Wno-error=unknown-warning-option")
+		}
+
+		switch ctx.Config().getEnv("CLANG_DEFAULT_DEBUG_LEVEL") {
+		case "0":
+			flags = append(flags, "-g0")
+		case "1":
+			flags = append(flags, "-g1")
+		case "2":
+			flags = append(flags, "-g2")
+		case "3":
+			flags = append(flags, "-g3")
+		default:
+			flags = append(flags, "-g")
 		}
 
 		return strings.Join(flags, " ")
