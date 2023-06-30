@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13e42db_430268a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-06-30T20:38:34Z",
+      "side": 1,
+      "message": "Discussed this with Liz offline, and for now I have created aosp/2646184 to denylist these tests in bp2build",
+      "parentUuid": "d550e9c1_2a4e0179",
+      "range": {
+        "startLine": 21,
+        "startChar": 34,
+        "endLine": 21,
+        "endChar": 52
+      },
+      "revId": "5373b002c08c44c8ae9133897b969cf8e3c1b62b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "210c8dcb_2fbd05e5",
