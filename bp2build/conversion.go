@@ -4,8 +4,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"reflect"
+	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"android/soong/android"
 	"android/soong/apex"
@@ -142,7 +144,14 @@ func CreateBazelFiles(ruleShims map[string]RuleShim, buildToTargets map[string]B
 
 func createBuildFiles(buildToTargets map[string]BazelTargets, mode CodegenMode) []BazelFile {
 	files := make([]BazelFile, 0, len(buildToTargets))
+	const topn = 50
+	type Pair struct {
+		t   int64
+		dir string
+	}
+	top := make([]Pair, topn+1)
 	for _, dir := range android.SortedKeys(buildToTargets) {
+		var ts = time.Now()
 		targets := buildToTargets[dir]
 		targets.sort()
 
@@ -169,6 +178,12 @@ func createBuildFiles(buildToTargets map[string]BazelTargets, mode CodegenMode) 
 		}
 		content += targets.String()
 		files = append(files, newFile(dir, GeneratedBuildFileName, content))
+		delta := time.Now().Sub(ts).Microseconds()
+		top[0] = Pair{t: delta, dir: dir}
+		sort.Slice(top, func(i int, j int) bool { return top[i].t < top[j].t })
+	}
+	for i := topn; i > 0; i -= 1 {
+		fmt.Printf("USTA: %s = %d\n", top[i].dir, top[i].t)
 	}
 	return files
 }
