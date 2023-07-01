@@ -253,6 +253,8 @@ func (r conversionResults) BuildDirToTargets() map[string]BazelTargets {
 }
 
 func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (conversionResults, []error) {
+	ctx.Context().EventHandler.Begin("GeneratrBazelTargets")
+	defer ctx.Context().EventHandler.End("GeneratrBazelTargets")
 	buildFileToTargets := make(map[string]BazelTargets)
 
 	// Simple metrics tracking for bp2build

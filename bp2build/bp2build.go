@@ -15,11 +15,12 @@
 package bp2build
 
 import (
-	"android/soong/starlark_import"
 	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"android/soong/starlark_import"
 
 	"android/soong/android"
 	"android/soong/bazel"
@@ -79,7 +80,10 @@ func Codegen(ctx *CodegenContext) *CodegenMetrics {
 		fmt.Printf("ERROR: Encountered %d error(s): \nERROR: %s", len(errs), strings.Join(errMsgs, "\n"))
 		os.Exit(1)
 	}
-	bp2buildFiles := CreateBazelFiles(ctx.Config(), nil, res.buildFileToTargets, ctx.mode)
+	var bp2buildFiles []BazelFile
+	ctx.Context().EventHandler.Do("CreateBazelFile", func() {
+		bp2buildFiles = CreateBazelFiles(ctx.Config(), nil, res.buildFileToTargets, ctx.mode)
+	})
 	writeFiles(ctx, bp2buildDir, bp2buildFiles)
 	// Delete files under the bp2build root which weren't just written. An
 	// alternative would have been to delete the whole directory and write these
