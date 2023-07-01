@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/ui/metrics/bp2build_metrics_proto"
+
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
@@ -1097,7 +1098,16 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		j.expandJarjarRules = android.PathForModuleSrc(ctx, *j.properties.Jarjar_rules)
 	}
 
-	jarName := ctx.ModuleName() + ".jar"
+	// Stem() returns the module name when the stem property is not set.
+	// However, Module name does not always equal ctx.ModuleName()
+	// as the module may be overriding the base module.
+	// Thus, when the stem property is not set and
+	// struct name and context name does not match, prioritize the context module name.
+	jarNameBase := j.Stem()
+	if jarNameBase == j.Name() && j.Name() != ctx.ModuleName() {
+		jarNameBase = ctx.ModuleName()
+	}
+	jarName := jarNameBase + ".jar"
 
 	var uniqueJavaFiles android.Paths
 	set := make(map[string]bool)
