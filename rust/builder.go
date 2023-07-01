@@ -356,6 +356,7 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	usesLinker := crateType == "bin" || crateType == "dylib" || crateType == "cdylib" || crateType == "proc-macro"
 	if usesLinker {
 		rustcOutputFile = android.PathForModuleOut(ctx, outputFile.Base()+".rsp")
+		rustcFlags = append(rustcFlags, "-C opt-level=0")
 	}
 
 	ctx.Build(pctx, android.BuildParams{
