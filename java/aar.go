@@ -554,6 +554,8 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 
 	a.hideApexVariantFromMake = !ctx.Provider(android.ApexInfoProvider).(android.ApexInfo).IsForPlatform()
 
+	a.stem = proptools.StringDefault(a.overridableDeviceProperties.Stem, ctx.ModuleName())
+
 	ctx.CheckbuildFile(a.proguardOptionsFile)
 	ctx.CheckbuildFile(a.exportPackage)
 	ctx.CheckbuildFile(a.aaptSrcJar)
