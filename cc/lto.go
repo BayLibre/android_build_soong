@@ -91,7 +91,7 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 		flags.Local.LdFlags = append(flags.Local.LdFlags, ltoCFlag)
 		flags.Local.LdFlags = append(flags.Local.LdFlags, ltoLdFlag)
 
-		if Bool(lto.Properties.Whole_program_vtables) {
+		if BoolDefault(lto.Properties.Whole_program_vtables, true) {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fwhole-program-vtables")
 		}
 
