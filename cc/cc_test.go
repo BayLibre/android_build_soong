@@ -4979,7 +4979,7 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 
 	conly := []string{"-fPIC", "${config.CommonGlobalConlyflags}"}
 	cppOnly := []string{"-fPIC", "${config.CommonGlobalCppflags}", "${config.DeviceGlobalCppflags}", "${config.ArmCppflags}"}
-	ltoFlags := []string{"-flto=thin", "-fsplit-lto-unit"}
+	ltoFlags := []string{"-flto=thin", "-fsplit-lto-unit", "-fwhole-program-vtables"}
 
 	cflags := []string{"-Werror", "-std=candcpp"}
 	cstd := []string{"-std=gnu17", "-std=conly"}
