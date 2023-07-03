@@ -34,6 +34,23 @@
       "parentUuid": "88a40331_1a2647fc",
       "revId": "91f32e7ae5a6ba2c632e7ac05910c5b385785e31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2a4941_b51fdfb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2023-07-03T05:02:10Z",
+      "side": 1,
+      "message": "I actually removed the prints to stdout here:\nhttps://googleplex-android-review.git.corp.google.com/c/platform/tools/base/+/23843643",
+      "revId": "91f32e7ae5a6ba2c632e7ac05910c5b385785e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
