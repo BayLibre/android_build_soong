@@ -1705,6 +1705,7 @@ func getAmlAbisConfig() []archConfig {
 	return []archConfig{
 		{"arm64", "armv8-a", "", []string{"arm64-v8a"}},
 		{"arm", "armv7-a-neon", "", []string{"armeabi-v7a"}},
+		{"riscv64", "", "", []string{"riscv64"}},
 		{"x86_64", "", "", []string{"x86_64"}},
 		{"x86", "", "", []string{"x86"}},
 	}
