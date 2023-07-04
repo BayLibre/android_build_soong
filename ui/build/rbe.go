@@ -64,12 +64,7 @@ func getRBEVars(ctx Context, config Config) map[string]string {
 		"RBE_platform":      "container-image=" + remoteexec.DefaultImage,
 	}
 	if config.StartRBE() {
-		name, err := config.rbeSockAddr(absPath(ctx, config.TempDir()))
-		if err != nil {
-			ctx.Fatalf("Error retrieving socket address: %v", err)
-			return nil
-		}
-		vars["RBE_server_address"] = fmt.Sprintf("unix://%v", name)
+		vars["RBE_server_address"] = fmt.Sprintf("127.0.0.1:8000")
 	}
 
 	rf := 1.0

@@ -61,6 +61,8 @@ var sandboxConfig struct {
 }
 
 func (c *Cmd) sandboxSupported() bool {
+	return false
+
 	if !c.Sandbox.Enabled {
 		return false
 	}
