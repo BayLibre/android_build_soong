@@ -568,6 +568,15 @@ type feature interface {
 	props() []interface{}
 }
 
+// generator is the interface to generate code and have the output of that code added as a source
+// file for this library.
+// TODO: Right now, it is just being used for generated_cc_library, but we may clean up aidl and
+// proto to use this as well.
+type generator interface {
+	generatorInit(ctx BaseModuleContext)
+	generatorDeps(ctx DepsContext, deps Deps) Deps
+}
+
 // compiler is the interface for a compiler helper object. Different module decorators may implement
 // this helper differently.
 type compiler interface {
@@ -850,6 +859,7 @@ type Module struct {
 	// type-specific logic. These members may reference different objects or the same object.
 	// Functions of these decorators will be invoked to initialize and register type-specific
 	// build statements.
+	generators   []generator
 	compiler     compiler
 	linker       linker
 	installer    installer
@@ -2302,6 +2312,9 @@ func (c *Module) toolchain(ctx android.BaseModuleContext) config.Toolchain {
 }
 
 func (c *Module) begin(ctx BaseModuleContext) {
+	for _, g := range c.generators {
+		g.generatorInit(ctx)
+	}
 	if c.compiler != nil {
 		c.compiler.compilerInit(ctx)
 	}
@@ -2337,6 +2350,9 @@ func (c *Module) begin(ctx BaseModuleContext) {
 func (c *Module) deps(ctx DepsContext) Deps {
 	deps := Deps{}
 
+	for _, g := range c.generators {
+		g.generatorDeps(ctx, deps)
+	}
 	if c.compiler != nil {
 		deps = c.compiler.compilerDeps(ctx, deps)
 	}
