@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d36d1f_601257f6",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-05T17:26:12Z",
+      "side": 1,
+      "message": "This seems like a general problem with `j.Stem()`, and not something that should only be fixed here.  Unfortunately that gets a little tricky, because `j.Stem()` is called from outside the modules\u0027 ModuleContext (in androidmk.go, which is called from a Singleton, and in `gatherPossibleApexModuleNamesAndStems`, which calls it on dependencies.  I think the right solution is to compute the stem once early in `GenerateAndroidBuildActions` based on `ctx.ModuleName()` instead of `Name()`, and store it for return by `j.Stem()`.",
+      "revId": "51442f838c343273f58021ad9fbc6acbc4161cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
