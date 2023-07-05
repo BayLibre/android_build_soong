@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "714acbe7_c0e3487f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-07-05T13:54:42Z",
+      "side": 1,
+      "message": "+pedroql since this will mainly Mainline module SDK builds. The build time increases by 2 mins to 25 mins total - cf. http://android-build/build-details/10430652/targets/mainline_modules_sdks-userdebug (baseline) vs http://android-build/build-details/P59301646/targets/mainline_modules_sdks-userdebug (this CL).\n\nThis CL currently fail presubmit due to build errors, which are a catch-22 because it needs prebuilts to exist on master-art branches. I\u0027ll fix that with http://googleplex-r.android.com/q/topic:%22riscv-prebuilts-udc-dev-plus-aosp%22+author:mast and http://r.android.com/q/topic:%22riscv-prebuilts%22+author:mast before submitting this.",
+      "revId": "0aed4c07ef8b9682d0cf13196f7c4831233f2118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
