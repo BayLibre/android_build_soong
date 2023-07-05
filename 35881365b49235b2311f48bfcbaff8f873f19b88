@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c113ec5_baf478ef",
+        "filename": "sdk/systemserverclasspath_fragment_sdk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-05T13:24:26Z",
+      "side": 1,
+      "message": "in a followup, can we also check in these tests against an expected snapshot rather than just the comment?",
+      "range": {
+        "startLine": 131,
+        "startChar": 39,
+        "endLine": 131,
+        "endChar": 61
+      },
+      "revId": "35881365b49235b2311f48bfcbaff8f873f19b88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
