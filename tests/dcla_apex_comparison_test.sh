@@ -37,11 +37,9 @@ MODULES=(
   com.android.art.testing
   com.android.btservices
   com.android.conscrypt
-  com.android.i18n
   com.android.media
   com.android.media.swcodec
   com.android.resolv
-  com.android.runtime
   com.android.tethering
 )
 
