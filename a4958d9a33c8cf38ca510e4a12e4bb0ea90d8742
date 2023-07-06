@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "141c0aad_23585251",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2020551
+      },
+      "writtenOn": "2023-07-06T20:12:04Z",
+      "side": 1,
+      "message": "Yeah, if you\u0027ve got a recent lldb with those changes - it should be fine with simple template names.",
+      "parentUuid": "75bfbd5b_42541d08",
+      "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b82105cb_2d632447",
         "filename": "cc/config/arm64_device.go",
         "patchSetId": 2
