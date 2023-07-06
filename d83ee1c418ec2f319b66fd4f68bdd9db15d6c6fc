@@ -142,6 +142,30 @@
       },
       "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167da105_c302f424",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-06T18:35:39Z",
+      "side": 1,
+      "message": "I\u0027d expect an inflated number of actions for this specific CL as it changes the command line and will force every javac rule to rerun.  I\u0027d expect it to at most double the number of soong_zip calls in a typical build after submission.  The cache hit rate should be at least as high as the cache hit rate for the existing soong_zip rules.",
+      "parentUuid": "5321b8fa_330db415",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
