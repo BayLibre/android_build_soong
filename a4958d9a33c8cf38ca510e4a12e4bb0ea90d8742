@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80377a22_671f37bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-07-06T17:37:40Z",
+      "side": 1,
+      "message": "broken link",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a650b1cc_74f56aca",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -32,6 +55,24 @@
       "side": 1,
       "message": "From what i found:\n- https://reviews.llvm.org/D111477 and\n- https://reviews.llvm.org/D134378 \n\nfixed the issues with lldb. cc: @blaikie to confirm if lldb now supports `-gsimple-template-names`",
       "parentUuid": "a650b1cc_74f56aca",
+      "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75bfbd5b_42541d08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-07-06T17:37:40Z",
+      "side": 1,
+      "message": "those changes are old enough we should have them in our lldb prebuilt, no, so you could try them yourself?\n\n(finding out how to use lldb on Android is probably a useful exercise anyway if you haven\u0027t done it before. see https://source.android.com/docs/core/tests/debug/gdb for details.)",
+      "parentUuid": "df46e5d0_b88430ab",
       "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
