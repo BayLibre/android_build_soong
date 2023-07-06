@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16173e90_47bff424",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-07-06T23:05:49Z",
+      "side": 1,
+      "message": "This improved the ninja build time much better when building similar targets by sharing the same out directory. (See b/290130959)",
+      "revId": "69e134e7daddb0efb82ba9468eedcf9670c6a832",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
