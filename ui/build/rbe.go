@@ -70,6 +70,7 @@ func getRBEVars(ctx Context, config Config) map[string]string {
 			return nil
 		}
 		vars["RBE_server_address"] = fmt.Sprintf("unix://%v", name)
+		// vars["RBE_server_address"] = fmt.Sprintf("unix:///tmp/reproxy.sock")
 	}
 
 	rf := 1.0
