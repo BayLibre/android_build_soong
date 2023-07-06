@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ab3699_e14c373c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-07-06T17:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80377a22_671f37bb",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a650b1cc_74f56aca",
@@ -108,6 +132,24 @@
       "side": 1,
       "message": "makes sense. i\u0027ll fix this.",
       "parentUuid": "b82105cb_2d632447",
+      "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068fc0a6_15e5cfd2",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-07-06T17:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32472aa9_401d9337",
       "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
