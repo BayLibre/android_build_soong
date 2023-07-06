@@ -34,6 +34,24 @@
       "parentUuid": "c5aed64c_16f47483",
       "revId": "db9ce128ef090a45f8191bd96a3d1668db3acee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e772df36_404c75ed",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-07-06T05:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83a6e563_f4760d74",
+      "revId": "db9ce128ef090a45f8191bd96a3d1668db3acee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
