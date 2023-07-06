@@ -1928,6 +1928,10 @@ func (c *deviceConfig) RequiresInsecureExecmemForSwiftshader() bool {
 	return c.config.productVariables.RequiresInsecureExecmemForSwiftshader
 }
 
+func (c *deviceConfig) Release_aidl_use_unfrozen() *string {
+	return c.config.productVariables.Release_aidl_use_unfrozen
+}
+
 func (c *config) SelinuxIgnoreNeverallows() bool {
 	return c.productVariables.SelinuxIgnoreNeverallows
 }

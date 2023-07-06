@@ -456,6 +456,8 @@ type productVariables struct {
 
 	SelinuxIgnoreNeverallows bool `json:",omitempty"`
 
+	Release_aidl_use_unfrozen *string `json:",omitempty"`
+
 	SepolicyFreezeTestExtraDirs         []string `json:",omitempty"`
 	SepolicyFreezeTestExtraPrebuiltDirs []string `json:",omitempty"`
 
