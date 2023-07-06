@@ -474,6 +474,8 @@ type productVariables struct {
 
 	ReleaseVersion          string   `json:",omitempty"`
 	ReleaseAconfigValueSets []string `json:",omitempty"`
+
+	DeprecateVndk *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
