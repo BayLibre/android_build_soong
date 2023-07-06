@@ -118,6 +118,30 @@
       },
       "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5321b8fa_330db415",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2023-07-06T18:29:15Z",
+      "side": 1,
+      "message": "Apologies - missed this. It sounds like an extra soong_zip action for every Javac action?\n\nAs a sanity check, the presubmits on this change indicate that we are doing ~6500 soong_zip actions and prior to this change, we were doin about 2000 per typical build.\n\nThe median remote exec time of soong_zip seems to be about 1-2s, so its not going to be occupying the pool.\n\nAlso, I think these actions have a high cache hit rate? If so, I wouldn\u0027t be worried about this load increase on the java16 pool. I would give a heads up to bili@ / abdelaal@  before merging this change so they can watch out for issues.",
+      "parentUuid": "3feaf524_ee580b85",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "d83ee1c418ec2f319b66fd4f68bdd9db15d6c6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
