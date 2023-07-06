@@ -466,7 +466,7 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 		manifestPath := android.PathForModuleOut(ctx, manifestName)
 
 		// Use a RuleBuilder to create a rule that runs the command inside an sbox sandbox.
-		rule := getSandboxedRuleBuilder(ctx, android.NewRuleBuilder(pctx, ctx).Sbox(task.genDir, manifestPath))
+		rule := getSandboxedRuleBuilder(ctx, android.NewRuleBuilder(pctx, ctx).Sbox(task.genDir, manifestPath)).Restat()
 		cmd := rule.Command()
 
 		for _, out := range task.out {
