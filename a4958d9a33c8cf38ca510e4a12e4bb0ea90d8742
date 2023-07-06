@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df46e5d0_b88430ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-07-06T17:01:15Z",
+      "side": 1,
+      "message": "From what i found:\n- https://reviews.llvm.org/D111477 and\n- https://reviews.llvm.org/D134378 \n\nfixed the issues with lldb. cc: @blaikie to confirm if lldb now supports `-gsimple-template-names`",
+      "parentUuid": "a650b1cc_74f56aca",
+      "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b82105cb_2d632447",
         "filename": "cc/config/arm64_device.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-05T16:57:47Z",
       "side": 1,
       "message": "this isn\u0027t arm64-specific, so seems like it should go in global configuration for all architectures. (it\u0027s likely _more_ valuable for arm32!)",
+      "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32472aa9_401d9337",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-07-06T17:01:15Z",
+      "side": 1,
+      "message": "makes sense. i\u0027ll fix this.",
+      "parentUuid": "b82105cb_2d632447",
       "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
