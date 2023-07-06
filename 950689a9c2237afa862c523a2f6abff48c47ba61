@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc7a8c7_9b326a88",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1275,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-07-06T23:10:51Z",
+      "side": 1,
+      "message": "Can you file a go/bazel-bug for pcloudy@?",
+      "range": {
+        "startLine": 1274,
+        "startChar": 0,
+        "endLine": 1275,
+        "endChar": 32
+      },
+      "revId": "950689a9c2237afa862c523a2f6abff48c47ba61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
