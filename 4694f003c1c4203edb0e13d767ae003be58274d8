@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31857dc5_39049950",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-07-07T14:14:55Z",
+      "side": 1,
+      "message": "Can you split this into a short headline and body?",
+      "revId": "4694f003c1c4203edb0e13d767ae003be58274d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94823066_a4f079c4",
+        "filename": "ui/metrics/bp2build_progress_metrics_proto/bp2build.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-07-07T14:14:55Z",
+      "side": 1,
+      "message": "Nit: Let\u0027s split this CL into two and have the CL with heuristics implementation in the same topic with this change.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 59
+      },
+      "revId": "4694f003c1c4203edb0e13d767ae003be58274d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
