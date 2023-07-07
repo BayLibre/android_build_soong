@@ -16,6 +16,24 @@
       "message": "Can you add more context here?  What is presubmit packaging?  Why do we need two sets of packaging?  Is there a bug or a doc to link to?",
       "revId": "8cba4a37645d95da366fab3b945304180d58dec6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d871428_c6d6ec6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2023-07-07T19:12:41Z",
+      "side": 1,
+      "message": "Hi Colin, sorry for not having included that context. The bug is b/261477150.  \n\nAt 16GB, the \u0027haiku\u0027 package we\u0027ve been creating is too large for AB teams\u0027 presubmit-enabled branches. We need a substantially smaller \u0027haiku-presubmit\u0027 package that includes only fuzzers with a given flag: https://android-review.git.corp.google.com/c/platform/build/soong/+/2644754\n\nOnce \u0027haiku-presubmit\u0027 is built on a presubmit-enabled branch, we would be able to trigger builds of these fuzzers when new code changes are submitted to AOSP. We\u0027d then be able to trigger presubmit tests running the fuzzers to find regressions on these incoming changes.",
+      "parentUuid": "c46da275_e0d77a5e",
+      "revId": "8cba4a37645d95da366fab3b945304180d58dec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
