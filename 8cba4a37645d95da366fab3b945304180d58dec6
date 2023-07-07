@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46da275_e0d77a5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-07T18:47:00Z",
+      "side": 1,
+      "message": "Can you add more context here?  What is presubmit packaging?  Why do we need two sets of packaging?  Is there a bug or a doc to link to?",
+      "revId": "8cba4a37645d95da366fab3b945304180d58dec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
