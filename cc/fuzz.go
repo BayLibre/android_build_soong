@@ -29,6 +29,7 @@ import (
 func init() {
 	android.RegisterModuleType("cc_fuzz", LibFuzzFactory)
 	android.RegisterParallelSingletonType("cc_fuzz_packaging", fuzzPackagingFactory)
+	android.RegisterParallelSingletonType("cc_fuzz_presubmit_packaging", fuzzPackagingFactoryPresubmit)
 }
 
 type FuzzProperties struct {
@@ -357,12 +358,29 @@ type ccRustFuzzPackager struct {
 	allFuzzTargetsName               string
 }
 
+type ccPresubmitFuzzPackager struct {
+	fuzz.FuzzPackager
+	fuzzPackagingArchModules         string
+	fuzzTargetSharedDepsInstallPairs string
+	allFuzzTargetsName               string
+}
+
 func fuzzPackagingFactory() android.Singleton {
 
 	fuzzPackager := &ccRustFuzzPackager{
 		fuzzPackagingArchModules:         "SOONG_FUZZ_PACKAGING_ARCH_MODULES",
 		fuzzTargetSharedDepsInstallPairs: "FUZZ_TARGET_SHARED_DEPS_INSTALL_PAIRS",
 		allFuzzTargetsName:               "ALL_FUZZ_TARGETS",
+	}
+	return fuzzPackager
+}
+
+func fuzzPackagingFactoryPresubmit() android.Singleton {
+
+	fuzzPackager := &ccPresubmitFuzzPackager{
+		fuzzPackagingArchModules:         "SOONG_PRESUBMIT_FUZZ_PACKAGING_ARCH_MODULES",
+		fuzzTargetSharedDepsInstallPairs: "PRESUBMIT_FUZZ_TARGET_SHARED_DEPS_INSTALL_PAIRS",
+		allFuzzTargetsName:               "ALL_PRESUBMIT_FUZZ_TARGETS",
 	}
 	return fuzzPackager
 }
@@ -437,6 +455,98 @@ func (s *ccRustFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) 
 }
 
 func (s *ccRustFuzzPackager) MakeVars(ctx android.MakeVarsContext) {
+	packages := s.Packages.Strings()
+	sort.Strings(packages)
+	sort.Strings(s.FuzzPackager.SharedLibInstallStrings)
+	// TODO(mitchp): Migrate this to use MakeVarsContext::DistForGoal() when it's
+	// ready to handle phony targets created in Soong. In the meantime, this
+	// exports the phony 'fuzz' target and dependencies on packages to
+	// core/main.mk so that we can use dist-for-goals.
+
+	ctx.Strict(s.fuzzPackagingArchModules, strings.Join(packages, " "))
+
+	ctx.Strict(s.fuzzTargetSharedDepsInstallPairs,
+		strings.Join(s.FuzzPackager.SharedLibInstallStrings, " "))
+
+	// Preallocate the slice of fuzz targets to minimise memory allocations.
+	s.PreallocateSlice(ctx, s.allFuzzTargetsName)
+}
+
+func (s *ccPresubmitFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
+	// Map between each architecture + host/device combination, and the files that
+	// need to be packaged (in the tuple of {source file, destination folder in
+	// archive}).
+	archDirs := make(map[fuzz.ArchOs][]fuzz.FileToZip)
+
+	// List of individual fuzz targets, so that 'make fuzz' also installs the targets
+	// to the correct output directories as well.
+	s.FuzzTargets = make(map[string]bool)
+
+	// Map tracking whether each shared library has an install rule to avoid duplicate install rules from
+	// multiple fuzzers that depend on the same shared library.
+	sharedLibraryInstalled := make(map[string]bool)
+
+	ctx.VisitAllModules(func(module android.Module) {
+		ccModule, ok := module.(LinkableInterface)
+		if !ok || ccModule.PreventInstall() {
+			return
+		}
+
+		// Discard non-fuzz targets.
+		if ok := fuzz.IsValid(ccModule.FuzzModuleStruct()); !ok {
+			return
+		}
+
+		sharedLibsInstallDirPrefix := "lib"
+		if !ccModule.IsFuzzModule() {
+			return
+		}
+
+		hostOrTargetString := "presubmit-target"
+		if ccModule.Target().HostCross {
+			hostOrTargetString = "presubmit-host_cross"
+		} else if ccModule.Host() {
+			hostOrTargetString = "presubmit-host"
+		}
+
+		fpm := fuzz.FuzzPackagedModule{}
+		if ok {
+			fpm = ccModule.FuzzPackagedModule()
+		}
+
+		intermediatePath := "fuzz"
+
+		archString := ccModule.Target().Arch.ArchType.String()
+		archDir := android.PathForIntermediates(ctx, intermediatePath, hostOrTargetString, archString)
+		archOs := fuzz.ArchOs{HostOrTarget: hostOrTargetString, Arch: archString, Dir: archDir.String()}
+
+		var files []fuzz.FileToZip
+		builder := android.NewRuleBuilder(pctx, ctx)
+
+		// Package the corpus, data, dict and config into a zipfile.
+		files = s.PackageArtifacts(ctx, module, fpm, archDir, builder)
+
+		// Package shared libraries
+		files = append(files, GetSharedLibsToZip(ccModule.FuzzSharedLibraries(), ccModule, &s.FuzzPackager, archString, sharedLibsInstallDirPrefix, &sharedLibraryInstalled)...)
+
+		// The executable.
+		files = append(files, fuzz.FileToZip{SourceFilePath: android.OutputFileForModule(ctx, ccModule, "unstripped")})
+		if fpm.FuzzProperties.Fuzz_config == nil {
+			return
+		}
+		if !BoolDefault(fpm.FuzzProperties.Fuzz_config.Use_for_presubmit, false){
+			return
+		}
+		archDirs[archOs], ok = s.BuildZipFile(ctx, module, fpm, files, builder, archDir, archString, hostOrTargetString, archOs, archDirs)
+		if fpm.FuzzProperties.Fuzz_config == nil || !ok {
+			return
+		}
+	})
+
+	s.CreateFuzzPackage(ctx, archDirs, fuzz.Cc, pctx)
+}
+
+func (s *ccPresubmitFuzzPackager) MakeVars(ctx android.MakeVarsContext) {
 	packages := s.Packages.Strings()
 	sort.Strings(packages)
 	sort.Strings(s.FuzzPackager.SharedLibInstallStrings)
