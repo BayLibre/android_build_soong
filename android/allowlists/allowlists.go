@@ -448,7 +448,7 @@ var (
 		"prebuilts/abi-dumps/ndk":/* recursive = */ true,
 		"prebuilts/bazel":/* recursive = */ true,
 		"prebuilts/bundletool":/* recursive = */ true,
-		"prebuilts/clang/host/linux-x86":/* recursive = */ false,
+		"prebuilts/clang/host/linux-x86":/* recursive = */ true,
 		"prebuilts/clang-tools":/* recursive = */ true,
 		"prebuilts/gcc":/* recursive = */ true,
 		"prebuilts/build-tools":/* recursive = */ true,
