@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e440a870_d898396c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-07-07T19:40:22Z",
+      "side": 1,
+      "message": "This really should get a \"Bug\" number in it. I\u0027d suggest:\n\nBug: http://b/31600139",
+      "revId": "3e0091be00f5a9b1363497deab7260fbcc991a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a83a384e_9384e0f3",
@@ -49,6 +66,24 @@
       "side": 1,
       "message": "yeah, please let us know if you do see anything... hopefully even if you do it\u0027ll be localized to some library and we can move this into its .bp file, but if not, at least we\u0027ll be able to put this back with specific data!\n\ni\u0027ll refrain from submitting until monday anyway... (because although i\u0027m worried about this option _causing_ arm32-specific bugs, there\u0027s obviously also the possibility of the opposite.)",
       "parentUuid": "042db6a6_d5150904",
+      "revId": "3e0091be00f5a9b1363497deab7260fbcc991a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57310f74_0457fddf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-07-07T19:40:22Z",
+      "side": 1,
+      "message": "I had a CL doing this same thing, but never was able to get the performance metrics I wanted run on it for other configs. I don\u0027t think I was ever going to devote more time to it either though, so if we\u0027re all ok with this, you have my +2.",
+      "parentUuid": "da234bc9_2448e9d0",
       "revId": "3e0091be00f5a9b1363497deab7260fbcc991a5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
