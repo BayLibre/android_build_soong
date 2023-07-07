@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f052464b_d4bd1c4f",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-07T20:49:42Z",
+      "side": 1,
+      "message": "should we also prepend with ERROR: or FAILED: so scripts that filter things out will find it?",
+      "range": {
+        "startLine": 74,
+        "startChar": 40,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "28b4817bad90b11d9da9579812ff90c69b87a647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
