@@ -16,6 +16,23 @@
       "message": "b/31600139 has some related discussion and tests done on mokey.",
       "revId": "3e0091be00f5a9b1363497deab7260fbcc991a5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "042db6a6_d5150904",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2023-07-07T18:26:30Z",
+      "side": 1,
+      "message": "I have no objections from the mokey/Go side, although I defer to the toolchain experts for a +2.  cc\u0027ing rajekumar@ just as an FYI.",
+      "revId": "3e0091be00f5a9b1363497deab7260fbcc991a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
