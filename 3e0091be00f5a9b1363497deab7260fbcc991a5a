@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a83a384e_9384e0f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-07-07T18:21:28Z",
+      "side": 1,
+      "message": "b/31600139 has some related discussion and tests done on mokey.",
+      "revId": "3e0091be00f5a9b1363497deab7260fbcc991a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
