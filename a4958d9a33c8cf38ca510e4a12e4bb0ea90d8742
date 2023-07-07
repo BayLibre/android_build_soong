@@ -121,6 +121,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d83fe3c_4884765d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-07-07T19:56:13Z",
+      "side": 1,
+      "message": "Tested linux-x86/clang-r487747c/bin/lldb with the testcase posted in https://lists.llvm.org/pipermail/llvm-dev/2021-June/150903.html and it works.\n\n```\nim loo -t \u0027t1\u003cint\u003e\u0027                          \n1 match found in /usr/local/google/home/appujee/aosp-master-with-phones/a.out:\nid \u003d {0x0000002b}, name \u003d \"t1\u003cint\u003e\", byte-size \u003d 4, decl \u003d a.h:2, compiler_type \u003d \"template\u003c\u003e struct t1\u003cint\u003e {\n    int t;\n}\"\n```",
+      "parentUuid": "141c0aad_23585251",
+      "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b82105cb_2d632447",
         "filename": "cc/config/arm64_device.go",
         "patchSetId": 2
