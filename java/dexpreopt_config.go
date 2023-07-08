@@ -250,6 +250,8 @@ func bcpForDexpreopt(ctx android.PathContext, withUpdatable bool) (android.Writa
 
 var defaultBootclasspathKey = android.NewOnceKey("defaultBootclasspath")
 
+var copyOf = android.CopyOf
+
 func init() {
 	android.RegisterMakeVarsProvider(pctx, dexpreoptConfigMakevars)
 }

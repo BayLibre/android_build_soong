@@ -630,3 +630,5 @@ func contains(l []string, s string) bool {
 	}
 	return false
 }
+
+var copyOf = android.CopyOf

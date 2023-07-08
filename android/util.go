@@ -25,12 +25,12 @@ import (
 )
 
 // CopyOf returns a new slice that has the same contents as s.
-func CopyOf[T any](s []T) []T {
+func CopyOf(s []string) []string {
 	// If the input is nil, return nil and not an empty list
 	if s == nil {
 		return s
 	}
-	return append([]T{}, s...)
+	return append([]string{}, s...)
 }
 
 // Concat returns a new slice concatenated from the two input slices. It does not change the input

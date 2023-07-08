@@ -299,7 +299,7 @@ func generateSameDirRoboTestConfigJar(ctx android.ModuleContext, outputFile andr
 func (r *robolectricTest) generateRoboSrcJar(ctx android.ModuleContext, outputFile android.WritablePath,
 	instrumentedApp *AndroidApp) {
 
-	srcJarArgs := android.CopyOf(instrumentedApp.srcJarArgs)
+	srcJarArgs := copyOf(instrumentedApp.srcJarArgs)
 	srcJarDeps := append(android.Paths(nil), instrumentedApp.srcJarDeps...)
 
 	for _, m := range ctx.GetDirectDepsWithTag(roboCoverageLibsTag) {
