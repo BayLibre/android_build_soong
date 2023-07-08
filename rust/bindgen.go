@@ -63,7 +63,7 @@ var (
 	//TODO(ivanlozano) Switch this to RuleBuilder
 	bindgen = pctx.AndroidStaticRule("bindgen",
 		blueprint.RuleParams{
-			Command: "CLANG_PATH=$bindgenClang LIBCLANG_PATH=$bindgenLibClang RUSTFMT=${config.RustBin}/rustfmt " +
+			Command: "CLANG_PATH=$bindgenClang LIBCLANG_PATH=$bindgenLibClang RUSTFMT=${config.RustBin}/rustfmt BINDGEN_PATH=$bindgenCmd " +
 				"$cmd $flags $in -o $out -- -MD -MF $out.d $cflags",
 			CommandDeps: []string{"$cmd"},
 			Deps:        blueprint.DepsGCC,
