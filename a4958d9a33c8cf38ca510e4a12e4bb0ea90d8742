@@ -137,6 +137,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2467e99_039d16c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-07-08T01:07:56Z",
+      "side": 1,
+      "message": "works on device debugging as well.\n\n```\n(lldb) im loo -t \u0027t1\u003cint\u003e\u0027\nBest match found in /tmp/gdbclient-binary-102660:\nid \u003d {0x00000243}, name \u003d \"t1\u003cint\u003e\", byte-size \u003d 4, decl \u003d a.h:2, compiler_type \u003d \"template\u003c\u003e struct t1\u003cint\u003e {\n    int t;\n}\"\n```",
+      "parentUuid": "2d83fe3c_4884765d",
+      "revId": "a4958d9a33c8cf38ca510e4a12e4bb0ea90d8742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b82105cb_2d632447",
