@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e31bf8_3aee1f5c",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2786,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-07-10T14:29:31Z",
+      "side": 1,
+      "message": "How about Errorprone_force_enable?",
+      "range": {
+        "startLine": 2786,
+        "startChar": 1,
+        "endLine": 2786,
+        "endChar": 26
+      },
+      "revId": "8070037a0675d44887fdaca0c16ceb4f5c29cc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2744838_e95f19da",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2940,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-07-10T14:29:31Z",
+      "side": 1,
+      "message": "Could we set the `-XepDisableAllChecks` here instead of in the macros in aosp/2639031 for this pre-RUN_ERROR_PRONE handling step? Or are there manual targets that would slip through the cracks?",
+      "range": {
+        "startLine": 2940,
+        "startChar": 2,
+        "endLine": 2940,
+        "endChar": 92
+      },
+      "revId": "8070037a0675d44887fdaca0c16ceb4f5c29cc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f127d789_22aa37e7",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2941,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-07-10T14:29:31Z",
+      "side": 1,
+      "message": "(*epEnabled \u003d\u003d true) \u003d\u003d *epEnabled",
+      "range": {
+        "startLine": 2941,
+        "startChar": 21,
+        "endLine": 2941,
+        "endChar": 29
+      },
+      "revId": "8070037a0675d44887fdaca0c16ceb4f5c29cc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
