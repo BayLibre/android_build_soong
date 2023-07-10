@@ -813,8 +813,8 @@ func checkFrameworkBootImageConfig(t *testing.T, result *android.TestResult, mut
 			},
 		},
 		profileInstalls: []normalizedInstall{
+			{from: "out/soong/.intermediates/default/java/dex_bootjars/android_common/boot/boot.prof", to: "/system/etc/boot-image.prof"},
 			{from: "out/soong/dexpreopt_arm64/dex_bootjars/boot.bprof", to: "/system/etc/boot-image.bprof"},
-			{from: "out/soong/.intermediates/frameworks/base/boot/platform-bootclasspath/android_common/boot/boot.prof", to: "/system/etc/boot-image.prof"},
 		},
 		profileLicenseMetadataFile: expectedLicenseMetadataFile,
 	}
