@@ -123,7 +123,6 @@ var (
 	}
 
 	SandboxingDenyPathList = []string{
-		"art/test",
 		"external/perfetto",
 	}
 )
