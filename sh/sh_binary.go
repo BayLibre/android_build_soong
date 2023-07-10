@@ -502,7 +502,7 @@ func ShBinaryHostFactory() android.Module {
 // sh_test defines a shell script based test module.
 func ShTestFactory() android.Module {
 	module := &ShTest{}
-	initShBinaryModule(&module.ShBinary, false)
+	initShBinaryModule(&module.ShBinary, true)
 	module.AddProperties(&module.testProperties)
 
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibFirst)
@@ -512,7 +512,7 @@ func ShTestFactory() android.Module {
 // sh_test_host defines a shell script based test module that runs on a host.
 func ShTestHostFactory() android.Module {
 	module := &ShTest{}
-	initShBinaryModule(&module.ShBinary, false)
+	initShBinaryModule(&module.ShBinary, true)
 	module.AddProperties(&module.testProperties)
 	// Default sh_test_host to unit_tests = true
 	if module.testProperties.Test_options.Unit_test == nil {
@@ -548,6 +548,12 @@ type bazelShBinaryAttributes struct {
 	// visibility
 }
 
+type bazelShTestAttributes struct {
+	Srcs bazel.LabelListAttribute
+	Data bazel.LabelListAttribute
+	Tags bazel.StringListAttribute
+}
+
 func (m *ShBinary) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	srcs := bazel.MakeLabelListAttribute(
 		android.BazelLabelForModuleSrc(ctx, []string{*m.properties.Src}))
@@ -573,6 +579,31 @@ func (m *ShBinary) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		Bzl_load_location: "//build/bazel/rules:sh_binary.bzl",
 	}
 
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
+}
+
+func (m *ShTest) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	srcs := bazel.MakeLabelListAttribute(
+		android.BazelLabelForModuleSrc(ctx, []string{*m.properties.Src}))
+
+	combinedData := append(m.testProperties.Data, m.testProperties.Data_bins...)
+	combinedData = append(combinedData, m.testProperties.Data_libs...)
+
+	data := bazel.MakeLabelListAttribute(
+		android.BazelLabelForModuleSrc(ctx, combinedData))
+
+	tags := bazel.MakeStringListAttribute(
+		m.testProperties.Test_options.Tags)
+
+	attrs := &bazelShTestAttributes{
+		Srcs: srcs,
+		Data: data,
+		Tags: tags,
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class: "sh_test",
+	}
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
 }
 
