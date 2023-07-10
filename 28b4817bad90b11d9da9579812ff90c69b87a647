@@ -22,6 +22,30 @@
       },
       "revId": "28b4817bad90b11d9da9579812ff90c69b87a647",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b90807ea_841cd2bd",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-07-10T08:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f052464b_d4bd1c4f",
+      "range": {
+        "startLine": 74,
+        "startChar": 40,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "28b4817bad90b11d9da9579812ff90c69b87a647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
