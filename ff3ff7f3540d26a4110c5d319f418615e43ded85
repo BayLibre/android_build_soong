@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c90af8e2_f6331b57",
+        "filename": "java/aar.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-07-10T15:23:24Z",
+      "side": 0,
+      "message": "Was this redundant somehow?",
+      "range": {
+        "startLine": 412,
+        "startChar": 43,
+        "endLine": 412,
+        "endChar": 68
+      },
+      "revId": "ff3ff7f3540d26a4110c5d319f418615e43ded85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
