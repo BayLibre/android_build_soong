@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e0a6d26_3ad7d905",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-10T14:35:38Z",
+      "side": 1,
+      "message": "The other environment variables being set here are not Soong modules.\n\n`$(location bindgen)` with bindgen as a dep for the script is the Soong way to find dependencies (this is also how Bazel will find similar dependencies for commands, so it will also ease migration)",
+      "revId": "7ba977c19f6c896007ae682073ecdc8c7875bce7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
