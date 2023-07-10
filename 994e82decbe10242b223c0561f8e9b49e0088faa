@@ -33,6 +33,24 @@
       "message": "nit: spaces here and other `static_executable`s below?",
       "revId": "994e82decbe10242b223c0561f8e9b49e0088faa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6ce041f_a3631274",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-10T14:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f3cd201_81f485aa",
+      "revId": "994e82decbe10242b223c0561f8e9b49e0088faa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
