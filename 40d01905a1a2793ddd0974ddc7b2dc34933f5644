@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "233b52ef_b3f74055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-07-10T18:19:53Z",
+      "side": 1,
+      "message": "discussed offline: may be worth thinking about how to make it easy to add additional axes in the future. maybe we should file a bug about it",
+      "revId": "40d01905a1a2793ddd0974ddc7b2dc34933f5644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
