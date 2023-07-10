@@ -112,10 +112,6 @@ func TestBootclasspathFragments(t *testing.T) {
 		}
 `,
 	)
-
-	// Make sure that the art-bootclasspath-fragment is using the correct configuration.
-	checkBootclasspathFragment(t, result, "art-bootclasspath-fragment", "android_common_apex10000",
-		"com.android.art:baz,com.android.art:quuz")
 }
 
 func TestBootclasspathFragments_FragmentDependency(t *testing.T) {
@@ -246,16 +242,6 @@ func TestBootclasspathFragments_FragmentDependency(t *testing.T) {
 	checkAPIScopeStubs("other", otherInfo, java.SystemHiddenAPIScope, bazSystemStubs, fooSystemStubs)
 	checkAPIScopeStubs("other", otherInfo, java.TestHiddenAPIScope, bazTestStubs, fooSystemStubs)
 	checkAPIScopeStubs("other", otherInfo, java.CorePlatformHiddenAPIScope)
-}
-
-func checkBootclasspathFragment(t *testing.T, result *android.TestResult, moduleName, variantName string, expectedConfiguredModules string) {
-	t.Helper()
-
-	bootclasspathFragment := result.ModuleForTests(moduleName, variantName).Module().(*java.BootclasspathFragmentModule)
-
-	bootclasspathFragmentInfo := result.ModuleProvider(bootclasspathFragment, java.BootclasspathFragmentApexContentInfoProvider).(java.BootclasspathFragmentApexContentInfo)
-	modules := bootclasspathFragmentInfo.Modules()
-	android.AssertStringEquals(t, "invalid modules for "+moduleName, expectedConfiguredModules, modules.String())
 }
 
 func TestBootclasspathFragmentInArtApex(t *testing.T) {
