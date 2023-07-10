@@ -291,7 +291,7 @@ func (b BazelTestResult) CompareBazelTargets(t *testing.T, description string, e
 		for i, actualTarget := range actualTargets {
 			if w, g := expectedContents[i], actualTarget.content; w != g {
 				t.Errorf(
-					"%s[%d]: Expected generated Bazel target to be `%s`, got `%s`",
+					"%s[%d]: Expected generated Bazel target to be\n `%s`, got\n `%s`",
 					description, i, w, g)
 			}
 		}

@@ -21,7 +21,7 @@ import (
 	"android/soong/sh"
 )
 
-func TestShBinaryLoadStatement(t *testing.T) {
+func TestShTestLoadStatement(t *testing.T) {
 	testCases := []struct {
 		bazelTargets           BazelTargets
 		expectedLoadStatements string
@@ -29,10 +29,9 @@ func TestShBinaryLoadStatement(t *testing.T) {
 		{
 			bazelTargets: BazelTargets{
 				BazelTarget{
-					name:      "sh_binary_target",
-					ruleClass: "sh_binary",
+					name:      "sh_test_target",
+					ruleClass: "sh_test",
 					// Note: no bzlLoadLocation for native rules
-					// TODO(ruperts): Could open source the existing, experimental Starlark sh_ rules?
 				},
 			},
 			expectedLoadStatements: ``,
@@ -48,44 +47,56 @@ func TestShBinaryLoadStatement(t *testing.T) {
 	}
 }
 
-func runShTestTestCase(t *testing.T, tc Bp2buildTestCase) {
+func runShTestBinaryTestCase(t *testing.T, tc Bp2buildTestCase) {
 	t.Helper()
 	RunBp2BuildTestCase(t, func(ctx android.RegistrationContext) {}, tc)
 }
 
-func TestShBinarySimple(t *testing.T) {
-	runShTestTestCase(t, Bp2buildTestCase{
-		Description:                "sh_binary test",
-		ModuleTypeUnderTest:        "sh_binary",
-		ModuleTypeUnderTestFactory: sh.ShBinaryFactory,
-		Blueprint: `sh_binary {
-    name: "foo",
-    src: "foo.sh",
-    filename: "foo.exe",
-    sub_dir: "sub",
-    bazel_module: { bp2build_available: true },
+func TestShTestSimple(t *testing.T) {
+	runShTestBinaryTestCase(t, Bp2buildTestCase{
+		Description:                "sh_test test",
+		ModuleTypeUnderTest:        "sh_test",
+		ModuleTypeUnderTestFactory: sh.ShTestFactory,
+		Blueprint: `sh_test{
+    name: "sts-rootcanal-sidebins",
+    src: "empty.sh",
+    test_suites: [
+        "sts",
+        "sts-lite",
+    ],
+    data_bins: [
+        "android.hardware.bluetooth@1.1-service.sim",
+        "android.hardware.bluetooth@1.1-impl-sim"
+    ],
+    data: ["android.hardware.bluetooth@1.1-service.sim.rc"],
+    test_options:{tags: ["no-remote"],
+	},
 }`,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("sh_binary", "foo", AttrNameToString{
-				"srcs":     `["foo.sh"]`,
-				"filename": `"foo.exe"`,
-				"sub_dir":  `"sub"`,
+			MakeBazelTarget("sh_test", "sts-rootcanal-sidebins", AttrNameToString{
+				"srcs": `["empty.sh"]`,
+				"data": `[
+        "android.hardware.bluetooth@1.1-service.sim.rc",
+        "android.hardware.bluetooth@1.1-service.sim",
+        "android.hardware.bluetooth@1.1-impl-sim",
+    ]`,
+				"tags": `["no-remote"]`,
 			})},
 	})
 }
 
-func TestShBinaryDefaults(t *testing.T) {
-	runShTestTestCase(t, Bp2buildTestCase{
-		Description:                "sh_binary test",
-		ModuleTypeUnderTest:        "sh_binary",
-		ModuleTypeUnderTestFactory: sh.ShBinaryFactory,
-		Blueprint: `sh_binary {
+func TestShTestBinaryDefaults(t *testing.T) {
+	runShTestBinaryTestCase(t, Bp2buildTestCase{
+		Description:                "sh_test test",
+		ModuleTypeUnderTest:        "sh_test",
+		ModuleTypeUnderTestFactory: sh.ShTestFactory,
+		Blueprint: `sh_test {
     name: "foo",
     src: "foo.sh",
     bazel_module: { bp2build_available: true },
 }`,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("sh_binary", "foo", AttrNameToString{
+			MakeBazelTarget("sh_test", "foo", AttrNameToString{
 				"srcs": `["foo.sh"]`,
 			})},
 	})
