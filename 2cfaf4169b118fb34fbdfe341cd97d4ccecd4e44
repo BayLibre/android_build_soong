@@ -22,6 +22,30 @@
       },
       "revId": "2cfaf4169b118fb34fbdfe341cd97d4ccecd4e44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6644011c_55448807",
+        "filename": "cc/lto.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2023-07-11T08:43:15Z",
+      "side": 1,
+      "message": "Done. This workaround is not required now.",
+      "parentUuid": "a96eed8e_08d6fb4f",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 10
+      },
+      "revId": "2cfaf4169b118fb34fbdfe341cd97d4ccecd4e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
