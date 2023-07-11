@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c70798ef_260b7500",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-11T15:18:43Z",
+      "side": 1,
+      "message": "But only under certain conditions, right? Can you clarify that in commit message?",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "fcfb854b83787ed8c4bc7589b397806e6f29a7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c1e65e3_27220d19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-11T15:18:43Z",
+      "side": 1,
+      "message": "AFAIK we had `m dump-oat-boot` before and it generated arch-specific text dumps for the full boot image (one that includes framework). Can you list here what files are produced by this command, and how it\u0027s different to to what it did before?",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "fcfb854b83787ed8c4bc7589b397806e6f29a7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b75293b_e645cace",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-11T15:18:43Z",
+      "side": 1,
+      "message": "Is UFFD GC enabled by `-Xgc:CMC`? Out of curiosity, what does the abbreviation stand for?",
+      "range": {
+        "startLine": 996,
+        "startChar": 34,
+        "endLine": 996,
+        "endChar": 44
+      },
+      "revId": "fcfb854b83787ed8c4bc7589b397806e6f29a7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
