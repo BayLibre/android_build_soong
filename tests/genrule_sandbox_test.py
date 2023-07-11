@@ -75,18 +75,50 @@ def _find_outputs_for_modules(modules, out_dir, target_product):
           module_to_outs[name].update(act["Outputs"])
   return module_to_outs
 
+def _find_outputs_for_all_genrules(out_dir, target_product):
+  query_output = subprocess.check_output([
+    'prebuilts/build-tools/linux-x86/bin/ninja',
+    '-f',
+    os.path.join(out_dir, f'combined-{target_product}.ninja'),
+    '-t',
+    'query',
+    'all_genrules'
+  ], text=True)
+
+  # the output starts with:
+  #
+  # all_genrules:
+  #   input: phony
+  #
+  # and ends with:
+  #
+  # outputs:
+  #
+  # so cut off those lines
+  return [x.strip() for x in query_output.splitlines()[2:-1]]
 
 def _compare_outputs(module_to_outs, tempdir) -> dict[str, list[str]]:
   different_modules = collections.defaultdict(list)
   for module, outs in module_to_outs.items():
     for out in outs:
       try:
-        subprocess.check_output(["diff", os.path.join(tempdir, out), out])
+        subprocess.check_output(["diff", os.path.join(tempdir, out), out], text=True)
       except subprocess.CalledProcessError as e:
         different_modules[module].append(e.stdout)
 
   return different_modules
 
+def _compare_outputs_without_module_information(all_outs, tempdir) -> dict[str, str]:
+  file_to_diff = {}
+  num_no_diffs = 0
+  for out in all_outs:
+    try:
+      subprocess.check_output(["diff", os.path.join(tempdir, out), out], text=True)
+      num_no_diffs += 1
+    except subprocess.CalledProcessError as e:
+      file_to_diff[out] = e.stdout
+  print(f"{num_no_diffs} files has no diffs")
+  return file_to_diff
 
 def main():
   parser = argparse.ArgumentParser()
@@ -116,29 +148,52 @@ def main():
   args = parser.parse_args()
   os.chdir(get_top())
 
+  modules = set(args.modules)
+  all_genrules = False
+  if "all" in modules:
+    all_genrules = True
+    if len(modules) > 1:
+      sys.exit("Cannot name other modules along with 'all'")
+
   out_dir = os.environ.get("OUT_DIR", "out")
 
-  print("finding output files for the modules...")
-  module_to_outs = _find_outputs_for_modules(set(args.modules), out_dir, args.target_product)
-  if not module_to_outs:
-    sys.exit("No outputs found")
+  if all_genrules:
+    print("finding output files for all genrules...")
+    _build_with_soong(['nothing'], args.target_product)
+    all_outs = _find_outputs_for_all_genrules(out_dir, args.target_product)
+    if not all_outs:
+      sys.exit("No outputs found")
 
-  if args.output_paths_only:
-    for m, o in module_to_outs.items():
-      print(f"{m} outputs: {o}")
-    sys.exit(0)
+    if args.output_paths_only:
+      for o in all_outs.items():
+        print(o)
+      sys.exit(0)
+  else:
+    print("finding output files for the modules...")
+    module_to_outs = _find_outputs_for_modules(set(args.modules), out_dir, args.target_product)
+    if not module_to_outs:
+      sys.exit("No outputs found")
 
-  all_outs = list(set.union(*module_to_outs.values()))
+    if args.output_paths_only:
+      for m, o in module_to_outs.items():
+        print(f"{m} outputs: {o}")
+      sys.exit(0)
+
+    all_outs = list(set.union(*module_to_outs.values()))
+
+  # Using all_outs when building all genrules makes the command line too long
+  to_build = ["all_genrules"] if all_genrules else all_outs
 
   print("building without sandboxing...")
-  _build_with_soong(all_outs, args.target_product)
+  _build_with_soong(to_build, args.target_product)
+
   with tempfile.TemporaryDirectory() as tempdir:
     for f in all_outs:
       subprocess.check_call(["cp", "--parents", f, tempdir])
 
     print("building with sandboxing...")
     _build_with_soong(
-        all_outs,
+        to_build,
         args.target_product,
         # We've verified these build without sandboxing already, so do the sandboxing build
         # with keep_going = True so that we can find all the genrules that fail to build with
@@ -147,15 +202,24 @@ def main():
         extra_env={"GENRULE_SANDBOXING": "true"},
     )
 
-    diffs = _compare_outputs(module_to_outs, tempdir)
+    if all_genrules:
+      diffs = _compare_outputs_without_module_information(all_outs, tempdir)
+    else:
+      diffs = _compare_outputs(module_to_outs, tempdir)
     if len(diffs) == 0:
       print("All modules are correct")
     elif args.show_diff:
-      for m, d in diffs.items():
-        print(f"Module {m} has diffs {d}")
+      if all_genrules:
+        for file, diff in diffs.items():
+          print(f"{file}:")
+          print(diff)
+      else:
+        for m, d in diffs.items():
+          print(f"Module {m} has diffs {d}")
     else:
-      print(f"Modules {list(diffs.keys())} have diffs")
-
+      print(f"Modules/files with diffs:")
+      for m in diffs.keys():
+        print(m)
 
 if __name__ == "__main__":
   main()
