@@ -257,26 +257,32 @@ func (fuzzBin *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 }
 
 func PackageFuzzModule(ctx android.ModuleContext, fuzzPackagedModule fuzz.FuzzPackagedModule, pctx android.PackageContext) fuzz.FuzzPackagedModule {
-	fuzzPackagedModule.Corpus = android.PathsForModuleSrc(ctx, fuzzPackagedModule.FuzzProperties.Corpus)
-	builder := android.NewRuleBuilder(pctx, ctx)
-	intermediateDir := android.PathForModuleOut(ctx, "corpus")
-	for _, entry := range fuzzPackagedModule.Corpus {
-		builder.Command().Text("cp").
-			Input(entry).
-			Output(intermediateDir.Join(ctx, entry.Base()))
+	// Copy inputs to dir, using name as its rule name
+	copyFiles := func(name string, dir android.ModuleOutPath, inputs android.Paths) {
+		builder := android.NewRuleBuilder(pctx, ctx)
+		rspfile := android.PathForModuleOut(ctx, name+".rsp")
+		if len(inputs) > 0 {
+			cmd := builder.Command()
+			cmd.Text("for f in").
+				FlagWithRspFileInputList("$(cat ", rspfile, inputs).Text(");").
+				Text("do cp $f ").
+				Text(cmd.PathForOutput(dir)).
+				Text("; done")
+			for _, entry := range inputs {
+				cmd.ImplicitOutput(dir.Join(ctx, entry.Base()))
+			}
+		}
+		builder.Build("copy_"+name, "copy "+name)
 	}
-	builder.Build("copy_corpus", "copy corpus")
+
+	fuzzPackagedModule.Corpus = android.PathsForModuleSrc(ctx, fuzzPackagedModule.FuzzProperties.Corpus)
+	intermediateDir := android.PathForModuleOut(ctx, "corpus")
+	copyFiles("corpus", intermediateDir, fuzzPackagedModule.Corpus)
 	fuzzPackagedModule.CorpusIntermediateDir = intermediateDir
 
 	fuzzPackagedModule.Data = android.PathsForModuleSrc(ctx, fuzzPackagedModule.FuzzProperties.Data)
-	builder = android.NewRuleBuilder(pctx, ctx)
 	intermediateDir = android.PathForModuleOut(ctx, "data")
-	for _, entry := range fuzzPackagedModule.Data {
-		builder.Command().Text("cp").
-			Input(entry).
-			Output(intermediateDir.Join(ctx, entry.Rel()))
-	}
-	builder.Build("copy_data", "copy data")
+	copyFiles("data", intermediateDir, fuzzPackagedModule.Data)
 	fuzzPackagedModule.DataIntermediateDir = intermediateDir
 
 	if fuzzPackagedModule.FuzzProperties.Dictionary != nil {
