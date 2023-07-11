@@ -16,6 +16,29 @@
       "message": "This change won\u0027t be merged until July 14",
       "revId": "913231b7d70f22166fc9e3c44daf11dc7f865c4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e9836ab_420f5ada",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2276,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-07-11T07:42:08Z",
+      "side": 1,
+      "message": "I thought when we deprecate VNDK (hence, setting DEPRECATE_VNDK) there will be no VNDK-Ext and no VNDK_USE_CORE_VARIANT etc. Then should we guard the entire section here?",
+      "range": {
+        "startLine": 2243,
+        "startChar": 0,
+        "endLine": 2276,
+        "endChar": 4
+      },
+      "revId": "913231b7d70f22166fc9e3c44daf11dc7f865c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
