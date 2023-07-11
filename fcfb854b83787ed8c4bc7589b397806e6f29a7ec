@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a7a0ced_95eac23e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-11T15:28:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c70798ef_260b7500",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "fcfb854b83787ed8c4bc7589b397806e6f29a7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c1e65e3_27220d19",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "465d8259_1ffff5ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-11T15:28:01Z",
+      "side": 1,
+      "message": "This does not change anything for now. With aosp/2652081, two additional commands `m dump-oat-art` and `m dump-oat-mainline` will be available.",
+      "parentUuid": "2c1e65e3_27220d19",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "fcfb854b83787ed8c4bc7589b397806e6f29a7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b75293b_e645cace",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-07-11T15:18:43Z",
       "side": 1,
       "message": "Is UFFD GC enabled by `-Xgc:CMC`? Out of curiosity, what does the abbreviation stand for?",
+      "range": {
+        "startLine": 996,
+        "startChar": 34,
+        "endLine": 996,
+        "endChar": 44
+      },
+      "revId": "fcfb854b83787ed8c4bc7589b397806e6f29a7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a366ec_042bda05",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-11T15:28:01Z",
+      "side": 1,
+      "message": "Yes, UFFD GC is enabled by `-Xgc:CMC`. CMC stands for \"concurrent mark compact\", which is the official name of the UFFD GC.",
+      "parentUuid": "9b75293b_e645cace",
       "range": {
         "startLine": 996,
         "startChar": 34,
