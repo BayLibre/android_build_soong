@@ -472,6 +472,19 @@ func commandString(actionEntry *analysis_v2_proto.Action) string {
 			}
 		}
 		return strings.Join(argsEscaped, " ")
+	case "CppLink":
+		// Move -lc++ before libc++_static.a
+		// This ensures that symbols can be imported from shared lib at runtime, rather than being statically embedded within.
+		// Prevents .so size bloat
+		argsCleaned := actionEntry.Arguments
+		for i, _ := range argsCleaned {
+			if argsCleaned[i] == "-lc++" && strings.HasSuffix(argsCleaned[i-1], "liblibc++_static.a") {
+				argsCleaned[i] = argsCleaned[i-1]
+				argsCleaned[i-1] = argsCleaned[i-2]
+				argsCleaned[i-2] = "-lc++"
+			}
+		}
+		return strings.Join(proptools.ShellEscapeListIncludingSpaces(argsCleaned), " ")
 	default:
 		return strings.Join(proptools.ShellEscapeListIncludingSpaces(actionEntry.Arguments), " ")
 	}
