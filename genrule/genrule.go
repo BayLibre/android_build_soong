@@ -614,6 +614,9 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 	}
 
 	g.outputFiles = outputFiles.Paths()
+	for _, f := range g.outputFiles {
+		ctx.CheckbuildFile(f)
+	}
 }
 
 func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
