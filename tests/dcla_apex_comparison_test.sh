@@ -158,7 +158,7 @@ for product in "${TARGET_PRODUCTS[@]}"; do
     done
   fi
 
-  all_modeuls=(${MODULES[@]} ${bazel_apexes[@]})
+  all_modeuls=(${MODULES[@]})
   extract_dcla_libs "${product}" "${all_modeuls[@]}"
   compare_dcla_libs "${product}" "${all_modeuls[@]}"
 done
