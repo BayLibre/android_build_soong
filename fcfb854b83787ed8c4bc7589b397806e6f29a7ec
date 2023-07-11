@@ -140,6 +140,30 @@
       },
       "revId": "fcfb854b83787ed8c4bc7589b397806e6f29a7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4329e762_bbc06b2d",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-11T15:40:29Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "36a366ec_042bda05",
+      "range": {
+        "startLine": 996,
+        "startChar": 34,
+        "endLine": 996,
+        "endChar": 44
+      },
+      "revId": "fcfb854b83787ed8c4bc7589b397806e6f29a7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
