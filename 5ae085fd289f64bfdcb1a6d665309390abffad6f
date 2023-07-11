@@ -16,6 +16,24 @@
       "message": "You need more than just setting restat.  The current rule always writes to `$out` so ninja will always see an updated timestamp and consider the output modified.  For jar outputs you can add `-write_if_changed` to the soong_zip command.  In this case the soong_zip command may be run in RBE, so you also have to get rewrapper to not rewrite the files, which seems to be supported by `--preserve_unchanged_output_mtime` according to b/192886711.",
       "revId": "5ae085fd289f64bfdcb1a6d665309390abffad6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9871affb_0e0681ca",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-07-11T17:56:37Z",
+      "side": 1,
+      "message": "For this pass, I went with the more traditional approach of \"rebuild it in a tmp file, and copy to $out if it changed\".  That means we rebuild the current jar (and see that it is unchanged), but don\u0027t rebuild anything depending on it, rather than having the tool decide that it didn\u0027t change during creation.",
+      "parentUuid": "d055bd08_264e0131",
+      "revId": "5ae085fd289f64bfdcb1a6d665309390abffad6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
