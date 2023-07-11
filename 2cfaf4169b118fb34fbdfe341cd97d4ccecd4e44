@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a96eed8e_08d6fb4f",
+        "filename": "cc/lto.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-07-11T05:40:01Z",
+      "side": 1,
+      "message": "Is there a bug?",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 10
+      },
+      "revId": "2cfaf4169b118fb34fbdfe341cd97d4ccecd4e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
