@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7239750e_5a255d08",
+        "filename": "android/configured_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-11T15:37:59Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s weird. :)",
+      "parentUuid": "4cceb510_90ec28d8",
+      "range": {
+        "startLine": 316,
+        "startChar": 17,
+        "endLine": 316,
+        "endChar": 25
+      },
+      "revId": "4a16b93641f38a96b2f4efbf7f94ae0d9c9d0d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d95a2789_e9bc3a71",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-07-11T15:27:39Z",
       "side": 1,
       "message": "Was device name previously part of the directory name, or does this commit change it? I\u0027m asking because there was some work recently focused on getting rid of device-specific subdirectories in dexpreopt intermediate files. If this commit doesn\u0027t change things, it\u0027s ok. Otherwise we need to dig a bit deeper.",
+      "range": {
+        "startLine": 267,
+        "startChar": 28,
+        "endLine": 267,
+        "endChar": 38
+      },
+      "revId": "4a16b93641f38a96b2f4efbf7f94ae0d9c9d0d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f58c4723_b70c6e7f",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-11T15:37:59Z",
+      "side": 1,
+      "message": "I\u0027m aware of that change. It was done by aosp/2546714. However, it was problematic because it assumes that there is at least one Android target, which is not necessarily true. It\u0027s possible that we are only building for host rather than Android, in which case the code would crash.\n\nThere are some tests that removes all Android targets to test the behavior for the case where we are not building for Android. However, those tests didn\u0027t catch the issue because they didn\u0027t trigger the dexpreopt code path. I observed crashes on those tests after making the changes in aosp/2652081 because the dexpreopt code path is now triggered in those tests after the implementation change.\n\nI updated the CL description to mention this fallback.",
+      "parentUuid": "d95a2789_e9bc3a71",
       "range": {
         "startLine": 267,
         "startChar": 28,
