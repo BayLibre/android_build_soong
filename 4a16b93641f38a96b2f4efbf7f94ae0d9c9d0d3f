@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f133531_3ba661bf",
+        "filename": "apex/dexpreopt_bootjars_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-11T15:38:50Z",
+      "side": 0,
+      "message": "But they were different, weren\u0027t they?",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 53
+      },
+      "revId": "4a16b93641f38a96b2f4efbf7f94ae0d9c9d0d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

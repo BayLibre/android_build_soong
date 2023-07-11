@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe3d50a5_a31c2ea6",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-11T15:38:50Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be the same rule as on line 894 (I think it previously was)?",
+      "range": {
+        "startLine": 937,
+        "startChar": 2,
+        "endLine": 937,
+        "endChar": 43
+      },
+      "revId": "771a33ff5e8a11d1574d7895cf52fb7304103fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
