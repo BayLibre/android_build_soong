@@ -15,6 +15,7 @@ bootstrap_go_package {
         "soong-shared",
     ],
     srcs: [
+        "all_genrules_singleton.go",
         "allowlists.go",
         "genrule.go",
         "locations.go",
