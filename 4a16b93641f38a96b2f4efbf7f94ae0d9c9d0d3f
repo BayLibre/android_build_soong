@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfbca04b_fd5edfca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-11T15:27:39Z",
+      "side": 1,
+      "message": "Thank you making dexpreopt simpler!",
+      "revId": "4a16b93641f38a96b2f4efbf7f94ae0d9c9d0d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cceb510_90ec28d8",
+        "filename": "android/configured_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-11T15:27:39Z",
+      "side": 1,
+      "message": "Weird, isn\u0027t it, that we have \"platform\" for \"system\" and \"system_ext\" for \"system_ext\". :)",
+      "range": {
+        "startLine": 316,
+        "startChar": 17,
+        "endLine": 316,
+        "endChar": 25
+      },
+      "revId": "4a16b93641f38a96b2f4efbf7f94ae0d9c9d0d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d95a2789_e9bc3a71",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-11T15:27:39Z",
+      "side": 1,
+      "message": "Was device name previously part of the directory name, or does this commit change it? I\u0027m asking because there was some work recently focused on getting rid of device-specific subdirectories in dexpreopt intermediate files. If this commit doesn\u0027t change things, it\u0027s ok. Otherwise we need to dig a bit deeper.",
+      "range": {
+        "startLine": 267,
+        "startChar": 28,
+        "endLine": 267,
+        "endChar": 38
+      },
+      "revId": "4a16b93641f38a96b2f4efbf7f94ae0d9c9d0d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
