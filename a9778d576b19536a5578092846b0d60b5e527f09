@@ -22,6 +22,30 @@
       },
       "revId": "a9778d576b19536a5578092846b0d60b5e527f09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6b8ccd3_b2292222",
+        "filename": "cc/lto.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2023-07-11T05:59:10Z",
+      "side": 0,
+      "message": "Yes, this is fixed now.",
+      "parentUuid": "7e31f24c_998a3c02",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "a9778d576b19536a5578092846b0d60b5e527f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
