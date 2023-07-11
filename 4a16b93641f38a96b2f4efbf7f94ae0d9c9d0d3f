@@ -110,6 +110,30 @@
       },
       "revId": "4a16b93641f38a96b2f4efbf7f94ae0d9c9d0d3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6e07468_6851ecbc",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-11T15:42:50Z",
+      "side": 1,
+      "message": "Thanks for explaining!\n\nJeongik FYI ^^",
+      "parentUuid": "f58c4723_b70c6e7f",
+      "range": {
+        "startLine": 267,
+        "startChar": 28,
+        "endLine": 267,
+        "endChar": 38
+      },
+      "revId": "4a16b93641f38a96b2f4efbf7f94ae0d9c9d0d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
