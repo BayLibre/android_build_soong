@@ -4194,11 +4194,13 @@ cc_library {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
-				"features":       `["sanitizer_blocklist_foo_blocklist_txt"]`,
+				// We check for the path . because the test bp is in the current directory
+				"features":       `["sanitizer_blocklist_._foo_blocklist_txt"]`,
 				"local_includes": `["."]`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
-				"features":       `["sanitizer_blocklist_foo_blocklist_txt"]`,
+				// We check for the path . because the test bp is in the current directory
+				"features":       `["sanitizer_blocklist_._foo_blocklist_txt"]`,
 				"local_includes": `["."]`,
 			}),
 		},
