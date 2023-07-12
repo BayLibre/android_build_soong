@@ -1817,9 +1817,10 @@ func bp2buildSanitizerFeatures(ctx android.BazelConversionPathContext, m *Module
 			}
 			blocklist := sanitizerProps.Sanitize.Blocklist
 			if blocklist != nil {
-				// Format the blocklist name to be used in a feature name
-				blocklistFeatureSuffix := strings.Replace(strings.ToLower(*blocklist), ".", "_", -1)
-				features = append(features, "ubsan_blocklist_"+blocklistFeatureSuffix)
+				// Format the blocklist name and path to be used in a feature name
+				blocklistFeaturePathSuffix := strings.Replace(strings.ToLower(ctx.ModuleDir()), "/", "_", -1)
+				blocklistFeatureNameSuffix := strings.Replace(strings.ToLower(*blocklist), ".", "_", -1)
+				features = append(features, "ubsan_blocklist_"+blocklistFeaturePathSuffix+"_"+blocklistFeatureNameSuffix)
 			}
 			if sanitizerProps.Sanitize.Cfi != nil && !proptools.Bool(sanitizerProps.Sanitize.Cfi) {
 				features = append(features, "-android_cfi")
