@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577556f9_fe600ab5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-12T21:20:14Z",
+      "side": 1,
+      "message": "Are these build failures reproducible? Is this CL at fault?",
+      "revId": "b481ad731033989b384e825ada2c103a014f8702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c5a1701_75743227",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-12T21:20:14Z",
+      "side": 1,
+      "message": "may be worth adding a comment that the `.` in this case is for the current directory  or changing the test to instead be in a separate blueprint like https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/cc_library_conversion_test.go;l\u003d246;drc\u003d523c5c65972f903e2fe26ef0310c84d1e65636b8",
+      "range": {
+        "startLine": 1921,
+        "startChar": 41,
+        "endLine": 1921,
+        "endChar": 42
+      },
+      "revId": "b481ad731033989b384e825ada2c103a014f8702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f65a324_e2326836",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-12T21:20:14Z",
+      "side": 1,
+      "message": "can you add information about _why_ we\u0027re doing the name/path?",
+      "range": {
+        "startLine": 1820,
+        "startChar": 5,
+        "endLine": 1820,
+        "endChar": 70
+      },
+      "revId": "b481ad731033989b384e825ada2c103a014f8702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a3661e_f2a0bcb0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-12T21:20:14Z",
+      "side": 1,
+      "message": "why is this prefixed with ubsan? should it just be `san_blocklist`?",
+      "range": {
+        "startLine": 1823,
+        "startChar": 33,
+        "endLine": 1823,
+        "endChar": 49
+      },
+      "revId": "b481ad731033989b384e825ada2c103a014f8702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
