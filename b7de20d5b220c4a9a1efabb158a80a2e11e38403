@@ -22,6 +22,30 @@
       },
       "revId": "b7de20d5b220c4a9a1efabb158a80a2e11e38403",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6988020b_bddbfddd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-12T17:56:39Z",
+      "side": 1,
+      "message": "There is one. I forgot to send it to you. Sorry for the confusion.",
+      "parentUuid": "4076009c_22a651e0",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "b7de20d5b220c4a9a1efabb158a80a2e11e38403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
