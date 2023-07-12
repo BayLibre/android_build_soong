@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e75e1291_f668c7a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-12T17:10:10Z",
+      "side": 1,
+      "message": "\u003e Also, is there no build/make change that should be submitted in the same topic (since you are adding a new make variable)?\n\nCan you also explain this --- I thought a change in make would be needed to pass the variable via global dexpreopt config.",
+      "parentUuid": "0fe23faa_fb41add8",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "83fb4552e2e27a5ccc4a8aadeb527b419901a409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55a7e991_cb9de7a2",
         "filename": "android/configured_jars.go",
         "patchSetId": 1
