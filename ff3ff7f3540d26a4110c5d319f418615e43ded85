@@ -22,6 +22,30 @@
       },
       "revId": "ff3ff7f3540d26a4110c5d319f418615e43ded85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db8e04e5_2a1961e0",
+        "filename": "java/aar.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-12T19:56:00Z",
+      "side": 0,
+      "message": "Since all the transitive asset packages are merged at the end there was no need to extract the transitive assets here.  I\u0027ve updated it to be more consistent by not including the transitive assets into a library\u0027s package-res.apk at all.",
+      "parentUuid": "c90af8e2_f6331b57",
+      "range": {
+        "startLine": 412,
+        "startChar": 43,
+        "endLine": 412,
+        "endChar": 68
+      },
+      "revId": "ff3ff7f3540d26a4110c5d319f418615e43ded85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
