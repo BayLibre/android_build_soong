@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32937207_7514e0ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-12T14:28:39Z",
+      "side": 1,
+      "message": "Can you add this functionality for Bazel as well? Bazel is the builder of a number of cc-targets in Android\u0027s build",
+      "revId": "add6375a104dfdd6f6a78bd6ec08c46b358823c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
