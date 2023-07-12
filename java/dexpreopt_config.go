@@ -52,8 +52,7 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 	return ctx.Config().Once(bootImageConfigRawKey, func() interface{} {
 		global := dexpreopt.GetGlobalConfig(ctx)
 
-		artBootImageName := "art" // Keep this local to avoid accidental references.
-		artModules := global.ArtApexJars
+		artBootImageName := "art"           // Keep this local to avoid accidental references.
 		frameworkModules := global.BootJars // This includes `global.ArtApexJars`.
 		mainlineBcpModules := global.ApexBootJars
 		frameworkSubdir := "system/framework"
@@ -66,7 +65,7 @@ func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig 
 			enabledIfExists:      "art-bootclasspath-fragment",
 			stem:                 bootImageStem,
 			installDir:           "apex/art_boot_images/javalib",
-			modules:              artModules,
+			modules:              global.TestOnlyArtBootImageJars,
 			preloadedClassesFile: "art/build/boot/preloaded-classes",
 			compilerFilter:       "speed-profile",
 			singleImage:          false,
