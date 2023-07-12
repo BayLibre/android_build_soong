@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50cc5e11_aa26090a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-12T23:00:40Z",
+      "side": 1,
+      "message": "Bypassing presubmit. This CL stack has PV+2, but one of its ancestors has PV-2 from a previous run (I ran presubmit on that ancestor outside of the full CL stack).\n\nPosted this question on internal chat https://chat.google.com/room/AAAAi1Oyf-A/P_VaWUQ4nsk",
+      "revId": "6aad58c6c57e4835cf91bf4072632a4eede714f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
