@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab1de798_485dde69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-12T17:48:39Z",
+      "side": 1,
+      "message": "Thanks for the thorough review! It\u0027s a large change, and I couldn\u0027t further split it. I appreciate your patience!",
+      "revId": "d38ac9f5777bb9f9d71868dd215c8b6fe265c96f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
