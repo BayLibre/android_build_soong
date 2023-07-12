@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d29f3b_d833ed83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-12T23:20:43Z",
+      "side": 1,
+      "message": "This is a copy of aosp/2631954 that was created to reset the PV-2 vote and allow submission of the CL stack",
+      "revId": "b932158e018899f02d454379e488a52d2f17f16c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
