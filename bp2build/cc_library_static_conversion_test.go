@@ -1918,7 +1918,8 @@ cc_library_static {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo", AttrNameToString{
-				"features":       `["sanitizer_blocklist_foo_blocklist_txt"]`,
+				// We check for the path . because the test bp is in the current directory
+				"features":       `["sanitizer_blocklist_._foo_blocklist_txt"]`,
 				"local_includes": `["."]`,
 			}),
 		},
