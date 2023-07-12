@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd2db56_1059b0a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-12T17:50:35Z",
+      "side": 1,
+      "message": "Sorry for the confusion. I added both CLs to a topic.",
+      "parentUuid": "e75e1291_f668c7a1",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "83fb4552e2e27a5ccc4a8aadeb527b419901a409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55a7e991_cb9de7a2",
