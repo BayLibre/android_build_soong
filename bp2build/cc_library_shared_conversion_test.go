@@ -1225,7 +1225,8 @@ cc_library_shared {
 `,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
-				"features":       `["ubsan_blocklist_foo_blocklist_txt"]`,
+				// We check for the path . because the test bp is in the current directory
+				"features":       `["ubsan_blocklist_._foo_blocklist_txt"]`,
 				"local_includes": `["."]`,
 			}),
 		},
