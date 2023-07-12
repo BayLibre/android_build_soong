@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3f32ef_3759396c",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2786,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-07-12T15:59:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3e31bf8_3aee1f5c",
+      "range": {
+        "startLine": 2786,
+        "startChar": 1,
+        "endLine": 2786,
+        "endChar": 26
+      },
+      "revId": "8070037a0675d44887fdaca0c16ceb4f5c29cc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2744838_e95f19da",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8198ec7c_de6b4421",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2940,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-07-12T15:59:05Z",
+      "side": 1,
+      "message": "would have to add this flag to all bp2build tests then remove it when we enable errorprone for modules that default to the environment variable",
+      "parentUuid": "b2744838_e95f19da",
+      "range": {
+        "startLine": 2940,
+        "startChar": 2,
+        "endLine": 2940,
+        "endChar": 92
+      },
+      "revId": "8070037a0675d44887fdaca0c16ceb4f5c29cc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f127d789_22aa37e7",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-07-10T14:29:31Z",
       "side": 1,
       "message": "(*epEnabled \u003d\u003d true) \u003d\u003d *epEnabled",
+      "range": {
+        "startLine": 2941,
+        "startChar": 21,
+        "endLine": 2941,
+        "endChar": 29
+      },
+      "revId": "8070037a0675d44887fdaca0c16ceb4f5c29cc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac75d070_7053a532",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2941,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2023-07-12T15:59:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f127d789_22aa37e7",
       "range": {
         "startLine": 2941,
         "startChar": 21,
