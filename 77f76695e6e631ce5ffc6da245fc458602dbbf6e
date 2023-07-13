@@ -33,6 +33,24 @@
       "message": "Which ninja variables need to propagate into the sandbox?",
       "revId": "77f76695e6e631ce5ffc6da245fc458602dbbf6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b45d6482_3320bae2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-07-13T20:58:19Z",
+      "side": 1,
+      "message": "These are the variables from `build/soong/rust/config` (mainly from [`rust/config/global.go`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/rust/config/global.go;l\u003d1;drc\u003d464f3b381eac9bdf6957f7d6ad23e8a4569c38cd) and then the [variables from `cc_config` that are referenced by those rust variables](https://cs.android.com/search?q\u003dcc_config\u0026sq\u003d\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain:build%2Fsoong%2Frust%2Fconfig%2F).\n\nI was thinking that expanding these variables in Go would take up too much space in our Ninja file, so I was looking for a way to let Ninja evaluate the vars itself.",
+      "parentUuid": "a77b68d2_0077af92",
+      "revId": "77f76695e6e631ce5ffc6da245fc458602dbbf6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
