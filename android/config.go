@@ -1980,14 +1980,13 @@ func (c *config) GetMixedBuildsDisabledModules() map[string]struct{} {
 	return c.mixedBuildDisabledModules
 }
 
-func (c *config) LogMixedBuild(ctx BaseModuleContext, useBazel bool) {
-	moduleName := ctx.Module().Name()
+func (c *config) LogMixedBuild(qualifiedModuleName string, useBazel bool) {
 	c.mixedBuildsLock.Lock()
 	defer c.mixedBuildsLock.Unlock()
 	if useBazel {
-		c.mixedBuildEnabledModules[moduleName] = struct{}{}
+		c.mixedBuildEnabledModules[qualifiedModuleName] = struct{}{}
 	} else {
-		c.mixedBuildDisabledModules[moduleName] = struct{}{}
+		c.mixedBuildDisabledModules[qualifiedModuleName] = struct{}{}
 	}
 }
 

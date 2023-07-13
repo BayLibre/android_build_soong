@@ -284,6 +284,7 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (convers
 				// target in a BUILD file, we don't autoconvert them.
 
 				// Log the module.
+				fmt.Println("Defined in build file: ", m.Name())
 				metrics.AddUnconvertedModule(m, moduleType, dir,
 					android.UnconvertedReason{
 						ReasonType: int(bp2build_metrics_proto.UnconvertedReasonType_DEFINED_IN_BUILD_FILE),
@@ -337,6 +338,7 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (convers
 				}
 				return
 			} else {
+				fmt.Println("Totally unsupported: ", m.Name(), moduleType)
 				metrics.AddUnconvertedModule(m, moduleType, dir, android.UnconvertedReason{
 					ReasonType: int(bp2build_metrics_proto.UnconvertedReasonType_TYPE_UNSUPPORTED),
 				})

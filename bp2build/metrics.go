@@ -190,6 +190,9 @@ func (metrics *CodegenMetrics) AddConvertedModule(m blueprint.Module, moduleType
 	}
 	// Undo prebuilt_ module name prefix modifications
 	moduleName := android.RemoveOptionalPrebuiltPrefix(m.Name())
+	if moduleName == "libc" {
+		fmt.Println("Converted", m.Name(), "libc", dir)
+	}
 	metrics.serialized.ConvertedModules = append(metrics.serialized.ConvertedModules, moduleName)
 	metrics.convertedModulePathMap[moduleName] = "//" + dir
 	metrics.serialized.ConvertedModuleTypeCount[moduleType] += 1
@@ -203,8 +206,12 @@ func (metrics *CodegenMetrics) AddUnconvertedModule(m blueprint.Module, moduleTy
 	if moduleType == "package" {
 		return
 	}
+
 	// Undo prebuilt_ module name prefix modifications
 	moduleName := android.RemoveOptionalPrebuiltPrefix(m.Name())
+	if moduleName == "libc" {
+		fmt.Println("Unconverted", m.Name(), "libc", dir)
+	}
 	metrics.serialized.UnconvertedModules[moduleName] = &bp2build_metrics_proto.UnconvertedReason{
 		Type:   bp2build_metrics_proto.UnconvertedReasonType(reason.ReasonType),
 		Detail: reason.Detail,

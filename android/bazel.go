@@ -394,9 +394,16 @@ func GetBp2BuildAllowList() Bp2BuildConversionAllowlist {
 // As a side effect, calling this method will also log whether this module is
 // mixed build enabled for metrics reporting.
 func MixedBuildsEnabled(ctx BaseModuleContext) MixedBuildEnabledStatus {
+	var moduleName string
+	if ctx.Namespace().Path != "." {
+		moduleName = fmt.Sprintf("//%s:%s", ctx.Namespace().Path, ctx.ModuleName())
+	} else {
+		moduleName = ctx.ModuleName()
+	}
+	//fmt.Println("@@@", moduleName)
 	platformIncompatible := isPlatformIncompatible(ctx.Os(), ctx.Arch().ArchType)
 	if platformIncompatible {
-		ctx.Config().LogMixedBuild(ctx, false)
+		ctx.Config().LogMixedBuild(moduleName, false)
 		return TechnicalIncompatibility
 	}
 
@@ -406,7 +413,7 @@ func MixedBuildsEnabled(ctx BaseModuleContext) MixedBuildEnabledStatus {
 		// time, not loading/analysis. disable mixed builds and fall back to Soong to maintain that
 		// behavior.
 		if len(missingDeps) > 0 {
-			ctx.Config().LogMixedBuild(ctx, false)
+			ctx.Config().LogMixedBuild(moduleName, false)
 			return ModuleMissingDeps
 		}
 	}
@@ -417,8 +424,8 @@ func MixedBuildsEnabled(ctx BaseModuleContext) MixedBuildEnabledStatus {
 	mixedBuildEnabled := ctx.Config().IsMixedBuildsEnabled() &&
 		module.Enabled() &&
 		convertedToBazel(ctx, module) &&
-		ctx.Config().BazelContext.IsModuleNameAllowed(module.Name(), withinApex)
-	ctx.Config().LogMixedBuild(ctx, mixedBuildEnabled)
+		ctx.Config().BazelContext.IsModuleNameAllowed(moduleName, withinApex)
+	ctx.Config().LogMixedBuild(moduleName, mixedBuildEnabled)
 
 	if mixedBuildEnabled {
 		return MixedBuildEnabled
@@ -557,9 +564,11 @@ func bp2buildDefaultTrueRecursively(packagePath string, config allowlists.Bp2Bui
 
 func registerBp2buildConversionMutator(ctx RegisterMutatorsContext) {
 	ctx.TopDown("bp2build_conversion", bp2buildConversionMutator).Parallel()
+	ctx.TopDown("bp2build_write", bp2buildConversionMutator).Parallel()
 }
 
 func bp2buildConversionMutator(ctx TopDownMutatorContext) {
+	ctx.Namespace()
 	if ctx.Config().HasBazelBuildTargetInSource(ctx) {
 		// Defer to the BUILD target. Generating an additional target would
 		// cause a BUILD file conflict.
