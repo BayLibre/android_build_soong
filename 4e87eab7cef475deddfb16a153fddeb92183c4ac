@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f73c83f_fc71cb43",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1330,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-13T18:20:41Z",
+      "side": 1,
+      "message": "do we need a unique directory per mixed build sandboxed action or just one for all mixed build actions?\n\ndo these get cleaned up? if not there\u0027s some potential for filling up storage space with one-off directories.",
+      "range": {
+        "startLine": 1330,
+        "startChar": 0,
+        "endLine": 1330,
+        "endChar": 24
+      },
+      "revId": "4e87eab7cef475deddfb16a153fddeb92183c4ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

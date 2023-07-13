@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "380a6c65_fdd7f2c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-13T18:20:41Z",
+      "side": 1,
+      "message": "Generally looks good, but a couple questions on the performance implications and more unit testing",
+      "revId": "e2678844be0dbf4b73bc3f08efed4dfbb408d1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f59564_7f1e6b87",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-13T18:20:41Z",
+      "side": 1,
+      "message": "since we only need `mkdir` when in sbox, can we only add it in those cases or do we not know at this point if that\u0027s necessary yet?",
+      "range": {
+        "startLine": 1348,
+        "startChar": 0,
+        "endLine": 1349,
+        "endChar": 83
+      },
+      "revId": "e2678844be0dbf4b73bc3f08efed4dfbb408d1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "498366ae_a7d89aa9",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1395,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-13T18:20:41Z",
+      "side": 1,
+      "message": "Perhaps @cparsons@google.com recalls better why we stopped listing direct artifacts, but does this have implications for size of the ninja file and/or unnecessary incremental builds?",
+      "range": {
+        "startLine": 1392,
+        "startChar": 0,
+        "endLine": 1395,
+        "endChar": 59
+      },
+      "revId": "e2678844be0dbf4b73bc3f08efed4dfbb408d1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78bf1e26_cfa19bf1",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-13T18:20:41Z",
+      "side": 1,
+      "message": "Can you add some additional unit test coverage?",
+      "range": {
+        "startLine": 132,
+        "startChar": 27,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "e2678844be0dbf4b73bc3f08efed4dfbb408d1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f194e36_75970a1b",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-13T18:20:41Z",
+      "side": 1,
+      "message": "godocs please :)",
+      "range": {
+        "startLine": 73,
+        "startChar": 23,
+        "endLine": 73,
+        "endChar": 46
+      },
+      "revId": "e2678844be0dbf4b73bc3f08efed4dfbb408d1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

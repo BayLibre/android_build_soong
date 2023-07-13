@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "283dc023_a31373ab",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-13T18:20:41Z",
+      "side": 0,
+      "message": "was this just unused? if it\u0027s just a cleanup can we move it to a separate CL?",
+      "range": {
+        "startLine": 585,
+        "startChar": 2,
+        "endLine": 585,
+        "endChar": 13
+      },
+      "revId": "06f3c9bb42f0698db80a0f6fe8194627e7573f7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
