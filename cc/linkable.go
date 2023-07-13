@@ -87,6 +87,12 @@ type Snapshottable interface {
 	// SnapshotStaticLibs returns the list of static library dependencies for this module.
 	SnapshotStaticLibs() []string
 
+	// SnapshotDylibs returns the list of dylib library dependencies for this module.
+	SnapshotDylibs() []string
+
+	// SnapshotRlibs returns the list of rlib library dependencies for this module.
+	SnapshotRlibs() []string
+
 	// IsSnapshotPrebuilt returns true if this module is a snapshot prebuilt.
 	IsSnapshotPrebuilt() bool
 }
