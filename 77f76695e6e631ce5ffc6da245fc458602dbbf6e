@@ -16,6 +16,23 @@
       "message": "c",
       "revId": "77f76695e6e631ce5ffc6da245fc458602dbbf6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a77b68d2_0077af92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-13T16:30:10Z",
+      "side": 1,
+      "message": "Which ninja variables need to propagate into the sandbox?",
+      "revId": "77f76695e6e631ce5ffc6da245fc458602dbbf6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
