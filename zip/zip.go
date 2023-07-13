@@ -282,6 +282,7 @@ type ZipArgs struct {
 	StoreSymlinks            bool
 	IgnoreMissingFiles       bool
 	Sha256Checksum           bool
+	DoNotWrite               bool
 
 	Stderr     io.Writer
 	Filesystem pathtools.FileSystem
@@ -400,7 +401,7 @@ func Zip(args ZipArgs) error {
 
 	var zipErr error
 
-	if !args.WriteIfChanged {
+	if !args.WriteIfChanged && !args.DoNotWrite {
 		f, err := os.Create(args.OutputFilePath)
 		if err != nil {
 			return err
