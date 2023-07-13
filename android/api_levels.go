@@ -283,6 +283,9 @@ var FirstNonLibAndroidSupportVersion = uncheckedFinalApiLevel(21)
 // a core-for-system-modules.jar for the module-lib API scope.
 var LastWithoutModuleLibCoreSystemModules = uncheckedFinalApiLevel(31)
 
+// The first API level that introduced the riscv64 ABI.
+var FirstRiscv64Version = uncheckedFinalApiLevel(35)
+
 // ReplaceFinalizedCodenames returns the API level number associated with that API level
 // if the `raw` input is the codename of an API level has been finalized.
 // If the input is *not* a finalized codename, the input is returned unmodified.
