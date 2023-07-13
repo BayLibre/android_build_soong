@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a9e90fd_e03a3987",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-07-13T13:46:52Z",
+      "side": 1,
+      "message": "It\u0027s definitley not this CL, but it seems pretty consistent. It\u0027s been happening on all of my CLs.",
+      "parentUuid": "577556f9_fe600ab5",
+      "revId": "b481ad731033989b384e825ada2c103a014f8702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c5a1701_75743227",
@@ -77,6 +95,30 @@
       "writtenOn": "2023-07-12T21:20:14Z",
       "side": 1,
       "message": "why is this prefixed with ubsan? should it just be `san_blocklist`?",
+      "range": {
+        "startLine": 1823,
+        "startChar": 33,
+        "endLine": 1823,
+        "endChar": 49
+      },
+      "revId": "b481ad731033989b384e825ada2c103a014f8702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c4d59f9_67f55115",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-07-13T13:46:52Z",
+      "side": 1,
+      "message": "There\u0027s another CL changing that. I\u0027ll merge them when the time comes.",
+      "parentUuid": "12a3661e_f2a0bcb0",
       "range": {
         "startLine": 1823,
         "startChar": 33,
