@@ -16,6 +16,24 @@
       "message": "Ping Liz?",
       "revId": "0fe6db30f635ae90f76b67f340a59da761a52367",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4745689f_4eea9432",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-13T14:35:20Z",
+      "side": 1,
+      "message": "Sorry, I followed up in chat that the sheet did not cover all the modules that the allowlist allowlisting was added for -- will update the sheet with the failing modules and we can work on refining the allowlist for the relevant modules.",
+      "parentUuid": "46b332c4_e357c22a",
+      "revId": "0fe6db30f635ae90f76b67f340a59da761a52367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
