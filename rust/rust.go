@@ -404,7 +404,6 @@ func (mod *Module) XrefRustFiles() android.Paths {
 type Deps struct {
 	Dylibs          []string
 	Rlibs           []string
-	TransitiveRlibs []string
 	Rustlibs        []string
 	Stdlibs         []string
 	ProcMacros      []string
@@ -426,14 +425,13 @@ type PathDeps struct {
 	DyLibs          RustLibraries
 	RLibs           RustLibraries
 	TransitiveRlibs TransitiveRlibsDepSet
-	Rustlibs        android.Paths
 	Stdlibs         android.Paths
 	LibDeps         android.Paths
 	WholeStaticLibs android.Paths
 	ProcMacros      RustLibraries
 	AfdoProfiles    android.Paths
 	Rustc           android.Path
-	RustcLibs       android.Paths
+	RustcDeps       android.Paths
 
 	// depFlags and depLinkFlags are rustc and linker (clang) flags.
 	depFlags     []string
@@ -1408,7 +1406,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			case depTag == rustcDepTag:
 				rustc := ctx.OtherModuleProvider(dep, android.PrebuiltBuildToolInfoProvider).(android.PrebuiltBuildToolInfo)
 				depPaths.Rustc = rustc.Src
-				depPaths.RustcLibs = append(depPaths.RustcLibs, rustc.Deps...)
+				depPaths.RustcDeps = append(depPaths.RustcDeps, rustc.Deps...)
 			case depTag == cc.CrtBeginDepTag:
 				depPaths.CrtBegin = append(depPaths.CrtBegin, android.OutputFileForModule(ctx, dep, ""))
 			case depTag == cc.CrtEndDepTag:

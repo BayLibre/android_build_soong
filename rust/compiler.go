@@ -378,7 +378,6 @@ func (compiler *baseCompiler) strippedOutputFilePath() android.OptionalPath {
 
 func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	deps.Rlibs = append(deps.Rlibs, compiler.Properties.Rlibs...)
-	deps.TransitiveRlibs = append(deps.TransitiveRlibs, compiler.Properties.Rlibs...)
 	deps.Dylibs = append(deps.Dylibs, compiler.Properties.Dylibs...)
 	deps.Rustlibs = append(deps.Rustlibs, compiler.Properties.Rustlibs...)
 	deps.ProcMacros = append(deps.ProcMacros, compiler.Properties.Proc_macros...)

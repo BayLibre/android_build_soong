@@ -40,10 +40,6 @@ var prepareForRustTest = android.GroupFixturePreparers(
 
 	genrule.PrepareForTestWithGenRuleBuildComponents,
 
-	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
-		ctx.RegisterModuleType("prebuilt_build_tool", android.PrebuiltBuildToolFactory)
-	}),
-
 	PrepareForTestWithRustIncludeVndk,
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 		variables.DeviceVndkVersion = StringPtr("current")
@@ -499,7 +495,7 @@ func assertString(t *testing.T, got, expected string) {
 
 var (
 	sboxCompilationFiles = []string{
-		"prebuilts/rust/linux-x86/1.70.0/bin/rustc",
+		"defaults/rust/linux-x86/1.69.0/bin/rustc",
 		"prebuilts/clang/host/linux-x86/clang-r487747c/bin/llvm-ar",
 		"out/soong/.intermediates/defaults/rust/libaddr2line/android_arm64_armv8-a_rlib/libaddr2line.rlib",
 		"out/soong/.intermediates/defaults/rust/libadler/android_arm64_armv8-a_rlib/libadler.rlib",
@@ -750,7 +746,6 @@ func TestCrateRootSandboxCompilation(t *testing.T) {
 			}
 			_, expectedFilesNotCopied, unexpectedFilesCopied := android.ListSetDifference(tc.expectedFilesToCopy, actualFilesToCopy)
 			if len(expectedFilesNotCopied) > 0 {
-				fmt.Println(tc.expectedFilesToCopy)
 				t.Errorf("did not copy expected files to sbox: %v", expectedFilesNotCopied)
 			}
 			if len(unexpectedFilesCopied) > 0 {
