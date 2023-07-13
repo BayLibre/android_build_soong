@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b46a326_07f4c2cd",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-13T18:17:01Z",
+      "side": 1,
+      "message": "This will change the behavior a little, as it will write the entire zip to memory instead of streaming it to disk.  You\u0027d get a slightly better measurement with:\n\n```suggestion\n\tif args.DoNotWrite {\n\t    out \u003d io.Discard\n\t} else if !args.WriteIfChanged {\n```",
+      "revId": "2dd251b225571c8b303e897a783edf7e3555f7a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed468b8_48027c4f",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-13T18:17:01Z",
+      "side": 1,
+      "message": "```suggestion\n\tif args.WriteIfChanged \u0026\u0026 !args.DoNotWrite {\n```",
+      "revId": "2dd251b225571c8b303e897a783edf7e3555f7a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
