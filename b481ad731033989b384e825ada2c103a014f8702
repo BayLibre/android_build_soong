@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6026fb5d_eaa6106c",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-07-13T15:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c5a1701_75743227",
+      "range": {
+        "startLine": 1921,
+        "startChar": 41,
+        "endLine": 1921,
+        "endChar": 42
+      },
+      "revId": "b481ad731033989b384e825ada2c103a014f8702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f65a324_e2326836",
@@ -72,6 +96,30 @@
       "writtenOn": "2023-07-12T21:20:14Z",
       "side": 1,
       "message": "can you add information about _why_ we\u0027re doing the name/path?",
+      "range": {
+        "startLine": 1820,
+        "startChar": 5,
+        "endLine": 1820,
+        "endChar": 70
+      },
+      "revId": "b481ad731033989b384e825ada2c103a014f8702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9135b66_b832d00a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-07-13T15:50:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f65a324_e2326836",
       "range": {
         "startLine": 1820,
         "startChar": 5,
