@@ -73,6 +73,11 @@ type BaseCompilerProperties struct {
 	// If no source file is defined, a single generated source module can be defined to be used as the main source.
 	Srcs []string `android:"path,arch_variant"`
 
+	// Entry point that is passed to rustc to begin the compilation. E.g. main.rs or lib.rs.
+	// If this property is defined, then then this file will be used instead of the one provided in
+	// `srcs`.
+	Crate_root *string `android:"path,arch_variant"`
+
 	// name of the lint set that should be used to validate this module.
 	//
 	// Possible values are "default" (for using a sensible set of lints
