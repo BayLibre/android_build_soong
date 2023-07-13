@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3fd2e3b_136f57df",
+        "filename": "java/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-07-13T19:38:08Z",
+      "side": 1,
+      "message": "This is to preserve the current behavior with `override_android_app`, especially when its base module sets the stem property.",
+      "parentUuid": "5c37de71_27741271",
+      "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f65255b_70245d51",
         "filename": "java/base.go",
         "patchSetId": 4
@@ -48,6 +66,24 @@
       "writtenOn": "2023-07-13T18:00:12Z",
       "side": 1,
       "message": "You could panic if j.stem is empty here to catch cases where GenerateAndroidBuildActions didn\u0027t set j.stem, or when this is called before GenerateAndroidBuildActions.",
+      "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e065985b_d06ac06b",
+        "filename": "java/base.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-07-13T19:38:08Z",
+      "side": 1,
+      "message": "I agree with your point. However, since neither `Module` or `ModuleWithStem` as `GenerateAndroidBuildActions`, I was unsure about where this would have to be set, other than setting this for `GenerateAndroidBuildActions` of each modules that call `Stem()`.",
+      "parentUuid": "9f65255b_70245d51",
       "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
