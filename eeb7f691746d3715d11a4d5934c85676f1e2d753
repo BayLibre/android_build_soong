@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "921b19b9_2aaf2927",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-13T23:44:37Z",
+      "side": 1,
+      "message": "I\u0027m still not clear why this needs to manually use `a.Name()` instead of `ctx.ModuleName()` through `a.Stem()`.  Can you add a comment here?",
+      "revId": "eeb7f691746d3715d11a4d5934c85676f1e2d753",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
