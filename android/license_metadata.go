@@ -137,12 +137,15 @@ func buildLicenseMetadata(ctx ModuleContext, licenseMetadataFile WritablePath) {
 		orderOnlyDeps = append(orderOnlyDeps, allDepMetadataFiles...)
 	}
 
-	args = append(args,
-		JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(allDepOutputFiles.Strings()), "-s "))
+	allDepOutputFilePaths := allDepOutputFiles.Strings()
+	changePathsToProductOutVar(ctx, &allDepOutputFilePaths)
+	args = append(args, JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(allDepOutputFilePaths), "-s "))
 
 	// Install map
+	licenseInstallMap := base.licenseInstallMap
+	changePathsToProductOutVar(ctx, &licenseInstallMap)
 	args = append(args,
-		JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(base.licenseInstallMap), "-m "))
+		JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(licenseInstallMap), "-m "))
 
 	// Built files
 	if len(outputFiles) > 0 {
@@ -151,8 +154,9 @@ func buildLicenseMetadata(ctx ModuleContext, licenseMetadataFile WritablePath) {
 	}
 
 	// Installed files
-	args = append(args,
-		JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(base.installFiles.Strings()), "-i "))
+	installedFilePaths := base.installFiles.Strings()
+	changePathsToProductOutVar(ctx, &installedFilePaths)
+	args = append(args, JoinWithPrefix(proptools.NinjaAndShellEscapeListIncludingSpaces(installedFilePaths), "-i "))
 
 	if isContainer {
 		args = append(args, "--is_container")
@@ -172,6 +176,15 @@ func buildLicenseMetadata(ctx ModuleContext, licenseMetadataFile WritablePath) {
 		LicenseMetadataPath:   licenseMetadataFile,
 		LicenseMetadataDepSet: NewDepSet(TOPOLOGICAL, Paths{licenseMetadataFile}, allDepMetadataDepSets),
 	})
+}
+
+func changePathsToProductOutVar(ctx ModuleContext, paths *[]string) {
+	productOutRootDir := ctx.Config().outDir + "/target/product/"
+	for i, path := range *paths {
+		if after, found := strings.CutPrefix(path, productOutRootDir); found {
+			(*paths)[i] = "{PRODUCT_OUT}" + after[strings.Index(after, "/"):]
+		}
+	}
 }
 
 func isContainerFromFileExtensions(installPaths InstallPaths, builtPaths Paths) bool {
