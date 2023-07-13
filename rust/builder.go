@@ -212,7 +212,7 @@ func collectImplicits(deps PathDeps) android.Paths {
 	depPaths = append(depPaths, deps.srcProviderFiles...)
 	depPaths = append(depPaths, deps.LibDeps...)
 	depPaths = append(depPaths, deps.linkObjects...)
-	depPaths = append(depPaths, deps.RustcLibs...)
+	depPaths = append(depPaths, deps.RustcDeps...)
 	depPaths = append(depPaths, deps.Rustc)
 	return depPaths
 }
@@ -221,7 +221,7 @@ func rustEnvVars(ctx ModuleContext, deps PathDeps) []string {
 	var envVars []string
 
 	var libDirs []string
-	for _, lib := range deps.RustcLibs {
+	for _, lib := range deps.RustcDeps {
 		if strings.Contains(lib.String(), "prebuilts/rust") {
 			libDirs = append(libDirs, "__SBOX_SANDBOX_DIR__/"+android.PathDirname(lib.String()))
 		}
@@ -578,7 +578,7 @@ func compileInSandbox(
 				android.PathDirname(clangBinPath.String()),
 			),
 		).
-		Tool(config.RustPath(ctx, "bin/rustc")).
+		Tool(deps.Rustc).
 		ImplicitTool(clangBinPath.Join(ctx, "llvm-ar")).
 		FlagWithInput("-C linker=", mkCrateRspPy).
 		Flag("--emit link").
