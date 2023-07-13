@@ -16,6 +16,40 @@
       "message": "ping :)",
       "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c37de71_27741271",
+        "filename": "java/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-13T18:00:12Z",
+      "side": 1,
+      "message": "Why does AndroidApp need to override the Module implementation?",
+      "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f65255b_70245d51",
+        "filename": "java/base.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-13T18:00:12Z",
+      "side": 1,
+      "message": "You could panic if j.stem is empty here to catch cases where GenerateAndroidBuildActions didn\u0027t set j.stem, or when this is called before GenerateAndroidBuildActions.",
+      "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
