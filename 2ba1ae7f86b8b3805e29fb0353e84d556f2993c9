@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6620716a_39684d23",
+        "filename": "java/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-07-13T23:41:46Z",
+      "side": 1,
+      "message": "Since `a.Stem()` is removed, I believe that we can leave `a.stem` as it is.",
+      "parentUuid": "c98cad9b_3458701b",
+      "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c37de71_27741271",
@@ -88,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c6994a7_98427f38",
+        "filename": "java/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-07-13T23:41:46Z",
+      "side": 1,
+      "message": "This was because `a.installApkName` was calling `a.Stem()` in `AndroidApp.generateAndroidBuildActions`. I believe that inlining this enables the override to be removed.",
+      "parentUuid": "bf46e156_75c1e58c",
+      "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f65255b_70245d51",
@@ -137,6 +173,24 @@
       "side": 1,
       "message": "I think its fine to set it where you did, but `if (stem \u003d\u003d \"\") { panic(\"Stem() called before stem was set\") }` here would make it obvious if you missed a spot, or if newly added module type later needs to set it.",
       "parentUuid": "e065985b_d06ac06b",
+      "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "842503f3_dfe0c56f",
+        "filename": "java/base.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-07-13T23:41:46Z",
+      "side": 1,
+      "message": "Done. Thanks for the recommendation!",
+      "parentUuid": "89892ac4_1ff3ddb8",
       "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
