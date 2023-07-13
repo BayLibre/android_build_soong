@@ -52,6 +52,24 @@
       "parentUuid": "4745689f_4eea9432",
       "revId": "0fe6db30f635ae90f76b67f340a59da761a52367",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9acec929_e344ae97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-13T14:45:23Z",
+      "side": 1,
+      "message": "These appear to be art \"tests\" in the form of genrules that are not dependencies of `m droid`\n\nI queried the json module graph for all the genrule-typed modules under art/test. I\u0027ve updated the sheet but also started looking into these. It appears there\u0027s a python script that has some underspecified dependencies that need correcting.",
+      "parentUuid": "1ca4cff4_19cc7905",
+      "revId": "0fe6db30f635ae90f76b67f340a59da761a52367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
