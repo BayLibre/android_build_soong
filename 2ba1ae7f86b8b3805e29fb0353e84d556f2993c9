@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c98cad9b_3458701b",
+        "filename": "java/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-13T20:12:59Z",
+      "side": 1,
+      "message": "Maybe deliberately leave this blank so that `a.stem` (or `a.Module.Stem()`) and `a.Stem()` can\u0027t give different results?",
+      "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c37de71_27741271",
         "filename": "java/app.go",
         "patchSetId": 4
@@ -55,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf46e156_75c1e58c",
+        "filename": "java/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-13T20:12:59Z",
+      "side": 1,
+      "message": "Can you leave a comment here on why this is necessary?  Is it because it gets called before AndroidApp.generateAndroidBuildActions?",
+      "parentUuid": "d3fd2e3b_136f57df",
+      "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f65255b_70245d51",
         "filename": "java/base.go",
         "patchSetId": 4
@@ -84,6 +119,24 @@
       "side": 1,
       "message": "I agree with your point. However, since neither `Module` or `ModuleWithStem` as `GenerateAndroidBuildActions`, I was unsure about where this would have to be set, other than setting this for `GenerateAndroidBuildActions` of each modules that call `Stem()`.",
       "parentUuid": "9f65255b_70245d51",
+      "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89892ac4_1ff3ddb8",
+        "filename": "java/base.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-13T20:12:59Z",
+      "side": 1,
+      "message": "I think its fine to set it where you did, but `if (stem \u003d\u003d \"\") { panic(\"Stem() called before stem was set\") }` here would make it obvious if you missed a spot, or if newly added module type later needs to set it.",
+      "parentUuid": "e065985b_d06ac06b",
       "revId": "2ba1ae7f86b8b3805e29fb0353e84d556f2993c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
