@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c4cfb2_89f6fa1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-13T21:13:40Z",
+      "side": 1,
+      "message": "Doing string checks outside tests is usually an antipattern - it makes implementation details load-bearing.\n\nI understand that you\u0027d need to make a few functions public to do this, but I think that avoiding string searching will make this more maintainable.",
+      "revId": "538b59c8f7f29308274ed799a124fb9dfeba4ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2501ee5_102cadc5",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-13T21:13:40Z",
+      "side": 1,
+      "message": "Maybe unconditionally do stem \u003d m.(*libraryDecorator).GetStem() rather than reconstructing it?\nhttps://cs.android.com/android/platform/superproject/main/+/main:build/soong/rust/library.go;l\u003d607;bpv\u003d1;bpt\u003d1",
+      "revId": "538b59c8f7f29308274ed799a124fb9dfeba4ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50fc1e09_9383f491",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-13T21:13:40Z",
+      "side": 1,
+      "message": "Is this the best way to check this? Maybe we should be calling https://cs.android.com/android/platform/superproject/main/+/main:build/soong/rust/library.go;l\u003d208;bpv\u003d1;bpt\u003d1 instead?",
+      "range": {
+        "startLine": 347,
+        "startChar": 25,
+        "endLine": 347,
+        "endChar": 62
+      },
+      "revId": "538b59c8f7f29308274ed799a124fb9dfeba4ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
