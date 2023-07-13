@@ -34,6 +34,24 @@
       "parentUuid": "46b332c4_e357c22a",
       "revId": "0fe6db30f635ae90f76b67f340a59da761a52367",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca4cff4_19cc7905",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160213
+      },
+      "writtenOn": "2023-07-13T14:36:55Z",
+      "side": 1,
+      "message": "Oh I see. I thought I had run m droid with this off the allowlist and nothing failed, but maybe I\u0027m thinking of another CL.\n\nWhat did you use to find other failing tests? `m droid` or another build command?",
+      "parentUuid": "4745689f_4eea9432",
+      "revId": "0fe6db30f635ae90f76b67f340a59da761a52367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
