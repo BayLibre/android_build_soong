@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e04407bb_833dc26e",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-07-13T18:45:19Z",
+      "side": 1,
+      "message": "Yeah, I\u0027d actually worked that out right after uploading and have that locally 😊 Thanks though.",
+      "parentUuid": "2b46a326_07f4c2cd",
+      "revId": "2dd251b225571c8b303e897a783edf7e3555f7a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ed468b8_48027c4f",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-13T18:17:01Z",
       "side": 1,
       "message": "```suggestion\n\tif args.WriteIfChanged \u0026\u0026 !args.DoNotWrite {\n```",
+      "revId": "2dd251b225571c8b303e897a783edf7e3555f7a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "517e1972_24156335",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-07-13T18:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ed468b8_48027c4f",
       "revId": "2dd251b225571c8b303e897a783edf7e3555f7a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

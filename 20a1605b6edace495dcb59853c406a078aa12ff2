@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a40367b_2d8c0bdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-07-13T18:45:19Z",
+      "side": 1,
+      "message": "```\n$ python -m timeit -s \"import os\" -r 10 \"os.system(\u0027soong_zip -write_if_changed -o foo.zip -D prebuilts/sdk\u0027)\"\n1 loop, best of 10: 8.37 sec per loop\n$ python -m timeit -s \"import os\" -r 10 \"os.system(\u0027soong_zip -o foo.zip -D prebuilts/sdk\u0027)\"      \n1 loop, best of 10: 5.39 sec per loop\n$ python -m timeit -s \"import os\" -r 10 \"os.system(\u0027soong_zip -n -o foo.zip -D prebuilts/sdk\u0027)\"\n1 loop, best of 10: 3.66 sec per loop\n```",
+      "revId": "20a1605b6edace495dcb59853c406a078aa12ff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
