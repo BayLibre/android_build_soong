@@ -140,6 +140,30 @@
       },
       "revId": "8070037a0675d44887fdaca0c16ceb4f5c29cc93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "229d0a8a_911d41b7",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2941,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-07-13T15:06:24Z",
+      "side": 1,
+      "message": "I mean you can just write `else if *epEnabled {`",
+      "parentUuid": "ac75d070_7053a532",
+      "range": {
+        "startLine": 2941,
+        "startChar": 21,
+        "endLine": 2941,
+        "endChar": 29
+      },
+      "revId": "8070037a0675d44887fdaca0c16ceb4f5c29cc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
