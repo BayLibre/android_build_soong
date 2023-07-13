@@ -70,6 +70,24 @@
       "parentUuid": "1ca4cff4_19cc7905",
       "revId": "0fe6db30f635ae90f76b67f340a59da761a52367",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4c3375_7e78f737",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160213
+      },
+      "writtenOn": "2023-07-13T14:51:54Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll abandon this change then.",
+      "parentUuid": "9acec929_e344ae97",
+      "revId": "0fe6db30f635ae90f76b67f340a59da761a52367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
