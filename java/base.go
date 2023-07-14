@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/ui/metrics/bp2build_metrics_proto"
+
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
@@ -1533,7 +1534,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 					false, nil, nil)
 				if *j.dexProperties.Uncompress_dex {
 					combinedAlignedJar := android.PathForModuleOut(ctx, "dex-withres-aligned", jarName).OutputPath
-					TransformZipAlign(ctx, combinedAlignedJar, combinedJar)
+					TransformZipAlign(ctx, combinedAlignedJar, combinedJar, nil)
 					dexOutputFile = combinedAlignedJar
 				} else {
 					dexOutputFile = combinedJar

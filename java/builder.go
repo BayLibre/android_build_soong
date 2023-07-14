@@ -259,6 +259,19 @@ var (
 			Description: "Check zip alignment",
 		},
 	)
+
+	checkBelowTargetSdk30ForNonPreprocessedApks = pctx.AndroidStaticRule("checkBelowTargetSdk30ForNonPreprocessedApks",
+		blueprint.RuleParams{
+			Command: "if [[ $$(${config.Aapt2Cmd} dump badging $in | grep targetSdkVersion | sed 's/[^0-9]//g') -ge 30 ]]; then " +
+				"echo '$in: Prebuilt, presigned apks with targetSdkVersion >= 30 must set preprocessed: true in the Android.bp definition (because they must be signed with signature v2, and the build system would wreck that signature otherwise)' >&2; " +
+				"exit 1; " +
+				"else " +
+				"touch $out; " +
+				"fi",
+			CommandDeps: []string{"${config.Aapt2Cmd}"},
+			Description: "Check zip alignment",
+		},
+	)
 )
 
 func init() {
@@ -660,12 +673,13 @@ func GenerateMainClassManifest(ctx android.ModuleContext, outputFile android.Wri
 	android.WriteFileRule(ctx, outputFile, "Main-Class: "+mainClass+"\n")
 }
 
-func TransformZipAlign(ctx android.ModuleContext, outputFile android.WritablePath, inputFile android.Path) {
+func TransformZipAlign(ctx android.ModuleContext, outputFile android.WritablePath, inputFile android.Path, validations android.Paths) {
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        zipalign,
 		Description: "align",
 		Input:       inputFile,
 		Output:      outputFile,
+		Validations: validations,
 	})
 }
 
