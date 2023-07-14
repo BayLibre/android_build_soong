@@ -178,14 +178,10 @@ func (c Config) MaxPageSizeSupported() string {
 	return String(c.config.productVariables.DeviceMaxPageSizeSupported)
 }
 
-// The release version passed to aconfig, derived from RELEASE_VERSION
-func (c Config) ReleaseVersion() string {
-	return c.config.productVariables.ReleaseVersion
-}
-
-// The flag values files passed to aconfig, derived from RELEASE_VERSION
-func (c Config) ReleaseAconfigValueSets() []string {
-	return c.config.productVariables.ReleaseAconfigValueSets
+// PageSizeAgnostic returns true when AOSP is page size agnostic,
+// othersise it returns false.
+func (c Config) PageSizeAgnostic() bool {
+	return Bool(c.config.productVariables.DevicePageSizeAgnostic)
 }
 
 // A DeviceConfig object represents the configuration for a particular device

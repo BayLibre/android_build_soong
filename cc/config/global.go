@@ -376,19 +376,8 @@ func init() {
 			flags = append(flags, "-Wno-error=unknown-warning-option")
 		}
 
-		switch ctx.Config().Getenv("CLANG_DEFAULT_DEBUG_LEVEL") {
-		case "debug_level_0":
-			flags = append(flags, "-g0")
-		case "debug_level_1":
-			flags = append(flags, "-g1")
-		case "debug_level_2":
-			flags = append(flags, "-g2")
-		case "debug_level_3":
-			flags = append(flags, "-g3")
-		case "debug_level_g":
-			flags = append(flags, "-g")
-		default:
-			flags = append(flags, "-g")
+		if ctx.Config().PageSizeAgnostic() {
+			flags = append(flags, "-DTARGET_PAGE_SIZE_AGNOSTIC=1")
 		}
 
 		return strings.Join(flags, " ")
@@ -415,8 +404,16 @@ func init() {
 	exportedVars.ExportStringListStaticVariable("NoOverride64GlobalCflags", noOverride64GlobalCflags)
 	exportedVars.ExportStringListStaticVariable("HostGlobalCflags", hostGlobalCflags)
 	exportedVars.ExportStringListStaticVariable("NoOverrideExternalGlobalCflags", noOverrideExternalGlobalCflags)
-	exportedVars.ExportStringListStaticVariable("CommonGlobalCppflags", commonGlobalCppflags)
 	exportedVars.ExportStringListStaticVariable("ExternalCflags", extraExternalCflags)
+
+	exportedVars.ExportStringList("CommonGlobalCppflags", commonGlobalCppflags)
+	pctx.VariableFunc("CommonGlobalCppflags", func(ctx android.PackageVarContext) string {
+		flags := commonGlobalCppflags
+		if ctx.Config().PageSizeAgnostic() {
+			flags = append(flags, "-DTARGET_PAGE_SIZE_AGNOSTIC=1")
+		}
+		return strings.Join(flags, " ")
+	})
 
 	exportedVars.ExportString("CStdVersion", CStdVersion)
 	exportedVars.ExportString("CppStdVersion", CppStdVersion)
