@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b918d5ed_d5162d8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-14T02:17:56Z",
+      "side": 1,
+      "message": "What\u0027s the use case for building rust on darwin?  We only build a few SDK tools for darwin.",
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b8a9722_a86f908d",
         "filename": "rust/config/global.go",
         "patchSetId": 2
