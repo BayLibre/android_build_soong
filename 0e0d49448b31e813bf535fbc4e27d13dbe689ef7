@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bf1b0e7_8c1a6441",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2023-07-14T22:15:22Z",
+      "side": 1,
+      "message": "Thanks for the clarification. This project is definitely targeted only at host mac binaries, which I assumed were covered under the \"platform-tools\" category mentioned in go/android-macos-deprecation .\n\nThanks for the instructions, I\u0027ll file a bug with more details. What I can see so far is that the error has something to do with universal binary support: the l64.lld failure stops when I manually pull out the arm64 inputs and create a pure x86_64 executable.",
+      "parentUuid": "35b2675e_f7875d6b",
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b8a9722_a86f908d",
         "filename": "rust/config/global.go",
         "patchSetId": 2
@@ -127,6 +145,30 @@
       "side": 1,
       "message": "I don\u0027t think this does the right thing, because it sets the RustLinkerArgs without regard to what you\u0027re building - presumably if you are building a device binary on MacOS, you should still have `-Wl,--as-needed` because we aren\u0027t using tools from the host?",
       "parentUuid": "5b8a9722_a86f908d",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66eccd16_fd4aa9a2",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2023-07-14T22:15:22Z",
+      "side": 1,
+      "message": "Yeah this is a bit of a shortcut relying on the fact that device binaries are unsupported. I\u0027ll find a better place to put it to avoid actively contributing to bit-rot there.",
+      "parentUuid": "890f96bf_681eba60",
       "range": {
         "startLine": 106,
         "startChar": 1,
