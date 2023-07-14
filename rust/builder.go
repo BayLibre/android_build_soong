@@ -244,6 +244,10 @@ func rustEnvVars(ctx ModuleContext, deps PathDeps) []string {
 
 	envVars = append(envVars, "AR=${cc_config.ClangBin}/llvm-ar")
 
+	if ctx.Darwin() {
+		envVars = append(envVars, "ANDROID_RUST_DARWIN=true")
+	}
+
 	return envVars
 }
 
@@ -294,6 +298,10 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	// Collect linker flags
 	linkFlags = append(linkFlags, flags.GlobalLinkFlags...)
 	linkFlags = append(linkFlags, flags.LinkFlags...)
+
+	if !ctx.Darwin() {
+		linkFlags = append(linkFlags, "-Wl,--as-needed")
+	}
 
 	// Check if this module needs to use the bootstrap linker
 	if ctx.RustModule().Bootstrap() && !ctx.RustModule().InRecovery() && !ctx.RustModule().InRamdisk() && !ctx.RustModule().InVendorRamdisk() {
