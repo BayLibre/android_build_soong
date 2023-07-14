@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e153afa_bd13a56a",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-14T20:50:53Z",
+      "side": 1,
+      "message": "Seems fine. One more thing for me to grump at Go about.",
+      "parentUuid": "7d2f4265_dd402b66",
+      "revId": "538b59c8f7f29308274ed799a124fb9dfeba4ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50fc1e09_9383f491",
