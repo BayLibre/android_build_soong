@@ -15,6 +15,7 @@
 package config
 
 import (
+	"runtime"
 	"strings"
 
 	"android/soong/android"
@@ -102,7 +103,11 @@ func init() {
 
 	pctx.ImportAs("cc_config", "android/soong/cc/config")
 	pctx.StaticVariable("RustLinker", "${cc_config.ClangBin}/clang++")
-	pctx.StaticVariable("RustLinkerArgs", "-Wl,--as-needed")
+	if runtime.GOOS == "darwin" {
+		pctx.StaticVariable("RustLinkerArgs", "")
+	} else {
+		pctx.StaticVariable("RustLinkerArgs", "-Wl,--as-needed")
+	}
 
 	pctx.StaticVariable("DeviceGlobalLinkFlags", strings.Join(deviceGlobalLinkFlags, " "))
 
