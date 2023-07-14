@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e106bfa2_b52e69c0",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-14T20:43:41Z",
+      "side": 1,
+      "message": "Can you do this without copy and pasting all this code?  Ideally `ccRustFuzzPackager` can do this in a single pass over all of the modules to produce two zip files and two sets of makevars.  At the very least you should be able to add a field to `ccRustFuzzPackager` to tell it whether it is packaging everything or just presubmit modules, and then have `fuzzPackagingFactory` and `fuzzPackagingFactoryPresubmit` each return a separate instance of `ccRustFuzzPackager`.",
+      "revId": "1fe68d8513112149505aa2edae945c339408f696",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
