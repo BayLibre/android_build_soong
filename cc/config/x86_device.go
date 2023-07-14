@@ -35,6 +35,7 @@ var (
 
 	x86Ldflags = []string{
 		"-Wl,--hash-style=gnu",
+		"-Wl,-z,max-page-size=16384",
 	}
 
 	x86ArchVariantCflags = map[string][]string{
