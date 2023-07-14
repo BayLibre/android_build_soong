@@ -22,6 +22,30 @@
       },
       "revId": "eaf40eed904e3d3c8c8390955dab38a6dbc1179a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d9da63_0a4da282",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-14T11:14:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c12e1fd_58c219d9",
+      "range": {
+        "startLine": 497,
+        "startChar": 0,
+        "endLine": 501,
+        "endChar": 2
+      },
+      "revId": "eaf40eed904e3d3c8c8390955dab38a6dbc1179a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
