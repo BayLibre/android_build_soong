@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8a9722_a86f908d",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2023-07-14T02:15:19Z",
+      "side": 1,
+      "message": "It didn\u0027t seem like I could override `RustLinkerArgs` from `config_darwin.go` once it was already set here, so this seemed less messy than having every file but `config_darwin.go` include these `RustLinkerArgs`.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
