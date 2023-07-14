@@ -34,6 +34,24 @@
       "parentUuid": "5cbcfb20_726079ef",
       "revId": "a5b120252a3f181921139008d3643de74017d424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a8f60a_c6ea9315",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-14T23:05:37Z",
+      "side": 1,
+      "message": "What fails if `bar.stem` is `bar`?  Even if that is a change in behavior it\u0027s probably beneficial, as it means something like `data: [\":bar\"]` is likely to get a `bar.apk` not a `foo.apk`.\n\nThis is probably good for now though, and changing the behavior can go in a later CL.",
+      "parentUuid": "96a10d5f_8e5c8865",
+      "revId": "a5b120252a3f181921139008d3643de74017d424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
