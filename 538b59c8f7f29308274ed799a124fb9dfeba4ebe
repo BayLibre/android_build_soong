@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc3b3813_f3dd369d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2023-07-14T16:48:50Z",
+      "side": 1,
+      "message": "Thanks! You\u0027re absolutely right.",
+      "parentUuid": "61c4cfb2_89f6fa1b",
+      "revId": "538b59c8f7f29308274ed799a124fb9dfeba4ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2501ee5_102cadc5",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2f4265_dd402b66",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2023-07-14T16:48:50Z",
+      "side": 1,
+      "message": "We can\u0027t easily reference `rust.*` from `cc` due to a circular dependency. This isn\u0027t in itself a deal breaker since we could refactor this out into `LinkableInterface`.\n\nHowever, the functions which calculate the stem, `cc.libraryDecorator.getLibName` and `rust.libraryDecorator.getStem`, require `cc.BaseModuleContext` and `rust.ModuleContext` respectively. I don\u0027t believe the module context (even the base `android.*` equivalent) is available at this point.\n\nThe final output filename may have other context-related aspects that go into it (for example Rust will produce a different DylibSuffix depending on the target toolchain, https://source.corp.google.com/h/android/platform/superproject/main/+/main:build/soong/rust/config/darwin_host.go;l\u003d94-96).\n\nI think this is why the existing code above does a similar reconstruction from `libPath.Base()`.\n \nHere, the specific `.rlib-std` string isn\u0027t load-bearing; it can be anything since all it does is serve to differentiate the variant filenames in the vendor snapshot.\n\nMarking this potentially resolved but feel free to reopen if you disagree.",
+      "parentUuid": "b2501ee5_102cadc5",
+      "revId": "538b59c8f7f29308274ed799a124fb9dfeba4ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50fc1e09_9383f491",
@@ -48,6 +84,30 @@
       "writtenOn": "2023-07-13T21:13:40Z",
       "side": 1,
       "message": "Is this the best way to check this? Maybe we should be calling https://cs.android.com/android/platform/superproject/main/+/main:build/soong/rust/library.go;l\u003d208;bpv\u003d1;bpt\u003d1 instead?",
+      "range": {
+        "startLine": 347,
+        "startChar": 25,
+        "endLine": 347,
+        "endChar": 62
+      },
+      "revId": "538b59c8f7f29308274ed799a124fb9dfeba4ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb98ff7b_51f7516c",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2023-07-14T16:48:50Z",
+      "side": 1,
+      "message": "Ah that\u0027s a good catch, thanks!",
+      "parentUuid": "50fc1e09_9383f491",
       "range": {
         "startLine": 347,
         "startChar": 25,
