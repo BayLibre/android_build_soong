@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3e4e98_f3a49e1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2023-07-14T18:53:18Z",
+      "side": 1,
+      "message": "I\u0027ve cherry picked Patch Set 2 of this Reland to a local tree and verified that we do _not_ get b/291252863.\n\nI\u0027ll defer the +2 to folks who actually know this code.",
+      "revId": "ab8d138d42c4dc631319132e3943ae564678f15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
