@@ -284,6 +284,10 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	linkFlags = append(linkFlags, flags.GlobalLinkFlags...)
 	linkFlags = append(linkFlags, flags.LinkFlags...)
 
+	if !ctx.Darwin() {
+		linkFlags = append(linkFlags, "-Wl,--as-needed")
+	}
+
 	// Check if this module needs to use the bootstrap linker
 	if ctx.RustModule().Bootstrap() && !ctx.RustModule().InRecovery() && !ctx.RustModule().InRamdisk() && !ctx.RustModule().InVendorRamdisk() {
 		dynamicLinker := "-Wl,-dynamic-linker,/system/bin/bootstrap/linker"
