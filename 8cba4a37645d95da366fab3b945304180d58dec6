@@ -34,6 +34,24 @@
       "parentUuid": "c46da275_e0d77a5e",
       "revId": "8cba4a37645d95da366fab3b945304180d58dec6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "192fada7_80be7f21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2023-07-14T00:21:18Z",
+      "side": 1,
+      "message": "@ccross I was hoping to gently follow-up on this if you happen to have had a chance to review - My understanding was that these new packaging and GenerateBuildActions functions were needed given that \u0027haiku-presubmit\u0027 needed different fields from the existing \u0027haiku\u0027 for the phony rule in https://android-review.git.corp.google.com/c/platform/build/+/2652359.",
+      "parentUuid": "5d871428_c6d6ec6d",
+      "revId": "8cba4a37645d95da366fab3b945304180d58dec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
