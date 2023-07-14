@@ -1,0 +1,39 @@
+// Copyright 2022 Google Inc. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package soong_build_bazel_metrics;
+option go_package = "android/soong/ui/metrics/bazel_build_metrics_proto";
+
+message BazelBuildTarget {
+  // The invocation_id used by BES to identify this build
+  optional string invocation_id = 1;
+
+  // The post-expansion build target
+  optional string target_id = 2;
+
+  // The build's status, e.g. PASSED, BUILT, SKIPPED
+  optional string status = 3;
+
+  // Optional attributes, examples include Type, Tags
+  map<string, string> target_attributes = 4;
+
+  //Test attributes, such as size
+  map<string, string> test_attributes = 5;
+
+  // The build's duration. Usually a composite map of 
+  // seconds and nanos
+  map<string, int64> duration = 6;
+}
