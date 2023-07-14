@@ -22,6 +22,30 @@
       },
       "revId": "06f3c9bb42f0698db80a0f6fe8194627e7573f7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d3de73a_d3cb8cd3",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-14T00:47:30Z",
+      "side": 0,
+      "message": "Sorry for the noise, yes this is unrelated cleanup for a variable that was never used. I have moved this into aosp/2657401",
+      "parentUuid": "283dc023_a31373ab",
+      "range": {
+        "startLine": 585,
+        "startChar": 2,
+        "endLine": 585,
+        "endChar": 13
+      },
+      "revId": "06f3c9bb42f0698db80a0f6fe8194627e7573f7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -22,6 +22,30 @@
       },
       "revId": "4e87eab7cef475deddfb16a153fddeb92183c4ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea49646_eae2c2fa",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1330,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-14T00:47:30Z",
+      "side": 1,
+      "message": "I think my naming was a little misleading. This is really an intermediates directory for a specific mixed build action and not the true sandbox directory, which is `out/soong/.temp/sbox/\u003csome_hash\u003e`. `sbox` will cleanup `out/soong/.temp/sbox/\u003csome_hash\u003e` after building.\n\nThis intermediate directory should also likely be per action since `RuleBuilder + sbox` wipes it out before building https://cs.android.com/android/_/android/platform/build/soong/+/4d9dbdab7a8a5b0074805b4861aca2129320b044:android/rule_builder.go;l\u003d134-139;drc\u003dd079e0b2708ce0f4cce470db929f28dd8d2b0e80;bpv\u003d1;bpt\u003d0\n\n(I have updated the variable and function names, and also relevant comments)",
+      "parentUuid": "9f73c83f_fc71cb43",
+      "range": {
+        "startLine": 1330,
+        "startChar": 0,
+        "endLine": 1330,
+        "endChar": 24
+      },
+      "revId": "4e87eab7cef475deddfb16a153fddeb92183c4ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

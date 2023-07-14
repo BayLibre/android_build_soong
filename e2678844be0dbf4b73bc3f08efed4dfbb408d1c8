@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "799d5530_5fb63961",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-14T00:47:30Z",
+      "side": 1,
+      "message": "I think adding it to just the sboxed actions should be sufficient. Also has the good benefit of making the ninja file slightly smaller.",
+      "parentUuid": "f9f59564_7f1e6b87",
+      "range": {
+        "startLine": 1348,
+        "startChar": 0,
+        "endLine": 1349,
+        "endChar": 83
+      },
+      "revId": "e2678844be0dbf4b73bc3f08efed4dfbb408d1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "498366ae_a7d89aa9",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-07-13T18:20:41Z",
       "side": 1,
       "message": "Perhaps @cparsons@google.com recalls better why we stopped listing direct artifacts, but does this have implications for size of the ninja file and/or unnecessary incremental builds?",
+      "range": {
+        "startLine": 1392,
+        "startChar": 0,
+        "endLine": 1395,
+        "endChar": 59
+      },
+      "revId": "e2678844be0dbf4b73bc3f08efed4dfbb408d1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e31c6d0_66d76e24",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1395,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-14T00:47:30Z",
+      "side": 1,
+      "message": "Yes, this will increase the size of the ninja file. On aosp, the size of the ninja file for cf will increase from 3391 MB to 3435 MB `(1.29%)`. I have added this number to the CL desc.\n\nHowever, this number was also generated when only sboxing the single go action I am interested in. I experimented by sboxing every mixed build action, and that increased that file to 3534 `(4.24%)`. This is still a partial picture. As we build more of the build graph using mixed builds (and **sboxing turned on**), this number will increase.\n\nfwiw, I think this is solvable (one option is to make some changes to rulebuilder + sbox). Can the optimization of this be deferred till when this becomes a bottleneck?",
+      "parentUuid": "498366ae_a7d89aa9",
       "range": {
         "startLine": 1392,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "227aa2dc_6f691acb",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-14T00:47:30Z",
+      "side": 1,
+      "message": "I have added some additional coverage. It is likely not adequate since it does not check that rule.Sbox was actually called. That will require me to get a handle to a context object via some setup.\n\nWould it be ok to increase the coverage in a followup CL?",
+      "parentUuid": "78bf1e26_cfa19bf1",
+      "range": {
+        "startLine": 132,
+        "startChar": 27,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "e2678844be0dbf4b73bc3f08efed4dfbb408d1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f194e36_75970a1b",
         "filename": "android/rule_builder.go",
         "patchSetId": 3
@@ -100,6 +172,30 @@
       "writtenOn": "2023-07-13T18:20:41Z",
       "side": 1,
       "message": "godocs please :)",
+      "range": {
+        "startLine": 73,
+        "startChar": 23,
+        "endLine": 73,
+        "endChar": 46
+      },
+      "revId": "e2678844be0dbf4b73bc3f08efed4dfbb408d1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2686843c_fc744b31",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-14T00:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f194e36_75970a1b",
       "range": {
         "startLine": 73,
         "startChar": 23,
