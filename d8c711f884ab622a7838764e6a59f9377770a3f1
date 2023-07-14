@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38973d3a_632bfea6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2023-07-14T16:09:34Z",
+      "side": 1,
+      "message": "I\u0027ve verified on a local build that b/291252863 goes away with this revert.",
+      "revId": "d8c711f884ab622a7838764e6a59f9377770a3f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
