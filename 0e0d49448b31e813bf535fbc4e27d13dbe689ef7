@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d862a1e2_e036cbd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-14T21:24:28Z",
+      "side": 1,
+      "message": "The Rust team is under the impression that platform builds for Darwin are currently totally unsupported+unstaffed. We only have the toolchain still updating so that if we do have to turn it on, the mac build will not have bitrotted.\n\nIf you expect this to be load bearing, please consult with srhines@ about whether we can commit to the mac variants of rustc working.",
+      "parentUuid": "104c3bd5_f6de3cf0",
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b8a9722_a86f908d",
         "filename": "rust/config/global.go",
         "patchSetId": 2
@@ -67,6 +85,30 @@
       "writtenOn": "2023-07-14T02:15:19Z",
       "side": 1,
       "message": "It didn\u0027t seem like I could override `RustLinkerArgs` from `config_darwin.go` once it was already set here, so this seemed less messy than having every file but `config_darwin.go` include these `RustLinkerArgs`.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "890f96bf_681eba60",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-14T21:24:28Z",
+      "side": 1,
+      "message": "I don\u0027t think this does the right thing, because it sets the RustLinkerArgs without regard to what you\u0027re building - presumably if you are building a device binary on MacOS, you should still have `-Wl,--as-needed` because we aren\u0027t using tools from the host?",
+      "parentUuid": "5b8a9722_a86f908d",
       "range": {
         "startLine": 106,
         "startChar": 1,
