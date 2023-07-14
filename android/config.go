@@ -188,6 +188,12 @@ func (c Config) ReleaseAconfigValueSets() []string {
 	return c.config.productVariables.ReleaseAconfigValueSets
 }
 
+// PageSizeAgnostic returns true when AOSP is page size agnostic,
+// othersise it returns false.
+func (c Config) PageSizeAgnostic() bool {
+	return Bool(c.config.productVariables.DevicePageSizeAgnostic)
+}
+
 // A DeviceConfig object represents the configuration for a particular device
 // being built. For now there will only be one of these, but in the future there
 // may be multiple devices being built.
