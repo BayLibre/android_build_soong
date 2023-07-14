@@ -16,6 +16,24 @@
       "message": "Would it work if you put `a.Name()` into `a.stem`?",
       "revId": "a5b120252a3f181921139008d3643de74017d424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96a10d5f_8e5c8865",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-07-14T21:42:37Z",
+      "side": 1,
+      "message": "I believe it would be problematic when the base module does not set the `a.stem` property.\nFor instance:\n```\nandroid_app {\n    name: \"foo\",\n    srcs: [\"a.java\"],\n    sdk_version: \"current\",\n}\n\noverride_android_app {\n    name: \"bar\",\n    base: \"foo\",\n}\n```\nIn the above example, `bar.stem` is expected to be `foo`, not `bar`. However, `bar.installApkPath` is expected to be `bar.java`, not `foo.java`. Therefore, due to the difference in the expected behavior or `stem` and `installApkName`, I believe that the property of the two cannot be shared.\n\nI\u0027ve added documentation for `a.stem`.",
+      "parentUuid": "5cbcfb20_726079ef",
+      "revId": "a5b120252a3f181921139008d3643de74017d424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
