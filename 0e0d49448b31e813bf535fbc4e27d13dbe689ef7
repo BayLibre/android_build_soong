@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35b2675e_f7875d6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-07-14T21:52:24Z",
+      "side": 1,
+      "message": "Just to clarify, we do support building Host Mac binaries with this toolchain, but we do not support building device code (like the rest of the platform) with that toolchain, so please be cautious as you go.\n\nAs for ld64.lld failure at https://paste.googleplex.com/5240358861537280, can you run the failing command with `--reproduce\u003d/tmp/repro.tar`? This will produce a `/tmp/repro.tar` file with all the necessary inputs/flags to the crash. You can then file a go/android-llvm-bug with that (which I\u0027ll also see).",
+      "parentUuid": "d862a1e2_e036cbd3",
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b8a9722_a86f908d",
         "filename": "rust/config/global.go",
         "patchSetId": 2
