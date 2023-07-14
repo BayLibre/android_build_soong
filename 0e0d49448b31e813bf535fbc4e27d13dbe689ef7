@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68520e00_32c6229a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2023-07-14T03:19:17Z",
+      "side": 1,
+      "message": "The eventual goal is [building the Cuttlefish host tools on darwin](http://go/cf-macos). In this case, the dependency comes from [`secure_env`](https://cs.android.com/android/platform/superproject/main/+/main:device/google/cuttlefish/host/commands/secure_env/Android.bp;l\u003d151;drc\u003d206bb9f9cca5f81411da6ddd583f0e25147289b1) to [`libkmr_cf_ffi`](https://cs.android.com/android/platform/superproject/+/master:device/google/cuttlefish/host/commands/secure_env/rust/Android.bp;l\u003d48;drc\u003d008a2761144a83505bb1b5720921f7b31337a10f) which is a `rust_ffi_host` target and has a collection of indirect rust crate dependencies.",
+      "parentUuid": "b918d5ed_d5162d8a",
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b8a9722_a86f908d",
         "filename": "rust/config/global.go",
         "patchSetId": 2
