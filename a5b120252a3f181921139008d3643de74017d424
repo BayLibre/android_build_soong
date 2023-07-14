@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cbcfb20_726079ef",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-14T20:38:22Z",
+      "side": 1,
+      "message": "Would it work if you put `a.Name()` into `a.stem`?",
+      "revId": "a5b120252a3f181921139008d3643de74017d424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
