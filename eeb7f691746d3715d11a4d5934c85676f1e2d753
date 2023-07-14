@@ -34,6 +34,24 @@
       "parentUuid": "921b19b9_2aaf2927",
       "revId": "eeb7f691746d3715d11a4d5934c85676f1e2d753",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f41edaa_a9b87976",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-07-14T00:55:47Z",
+      "side": 1,
+      "message": "Taking back what I\u0027ve said -- I believe that a.Name() is essential here. I have added documentation explaining it.",
+      "parentUuid": "4061af0e_a0854c49",
+      "revId": "eeb7f691746d3715d11a4d5934c85676f1e2d753",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
