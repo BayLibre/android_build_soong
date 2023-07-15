@@ -52,6 +52,24 @@
       "parentUuid": "96a10d5f_8e5c8865",
       "revId": "a5b120252a3f181921139008d3643de74017d424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4648d9a0_1e379f29",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-07-15T00:49:09Z",
+      "side": 1,
+      "message": "It does not seem to introduce any breakage in build, but it leads to change in the name of the out jar (from `.../foo/.../foo.jar` to `.../foo/.../bar.jar`, the out jar still exist in base module boundary). Would the change still be beneficial in such case? If so, I will file a bug to track this.",
+      "parentUuid": "77a8f60a_c6ea9315",
+      "revId": "a5b120252a3f181921139008d3643de74017d424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
