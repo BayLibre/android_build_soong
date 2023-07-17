@@ -180,10 +180,12 @@ type BazelContext interface {
 	OutputBase() string
 
 	// Returns build statements which should get registered to reflect Bazel's outputs.
-	BuildStatementsToRegister() []*bazel.BuildStatement
+	// If error is non-nil, then error occurred retrieving this information from Bazel.
+	BuildStatementsToRegister() ([]*bazel.BuildStatement, error)
 
 	// Returns the depsets defined in Bazel's aquery response.
-	AqueryDepsets() []bazel.AqueryDepset
+	// If error is non-nil, then error occurred retrieving this information from Bazel.
+	AqueryDepsets() ([]bazel.AqueryDepset, error)
 }
 
 type bazelRunner interface {
@@ -217,6 +219,13 @@ type mixedBuildBazelContext struct {
 
 	// Depsets which should be used for Bazel's build statements.
 	depsets []bazel.AqueryDepset
+
+	// A wait group which tracks acquisition of Bazel action results, as this
+	// is done asynchronously to blueprint processing. This group should be
+	// waited on before reading from buildStatements or depsets.
+	bazelResultsWg *sync.WaitGroup
+	// If not nil, then an error occurred during acquisition of Bazel results.
+	bazelResultsError error
 
 	// Per-module allowlist/denylist functionality to control whether analysis of
 	// modules are handled by Bazel. For modules which do not have a Bazel definition
@@ -316,12 +325,12 @@ func (m MockBazelContext) IsModuleNameAllowed(_ string, _ bool) bool {
 
 func (m MockBazelContext) OutputBase() string { return m.OutputBaseDir }
 
-func (m MockBazelContext) BuildStatementsToRegister() []*bazel.BuildStatement {
-	return []*bazel.BuildStatement{}
+func (m MockBazelContext) BuildStatementsToRegister() ([]*bazel.BuildStatement, error) {
+	return []*bazel.BuildStatement{}, nil
 }
 
-func (m MockBazelContext) AqueryDepsets() []bazel.AqueryDepset {
-	return []bazel.AqueryDepset{}
+func (m MockBazelContext) AqueryDepsets() ([]bazel.AqueryDepset, error) {
+	return []bazel.AqueryDepset{}, nil
 }
 
 var _ BazelContext = MockBazelContext{}
@@ -455,12 +464,12 @@ func (n noopBazelContext) IsModuleNameAllowed(_ string, _ bool) bool {
 	return false
 }
 
-func (m noopBazelContext) BuildStatementsToRegister() []*bazel.BuildStatement {
-	return []*bazel.BuildStatement{}
+func (m noopBazelContext) BuildStatementsToRegister() ([]*bazel.BuildStatement, error) {
+	return []*bazel.BuildStatement{}, nil
 }
 
-func (m noopBazelContext) AqueryDepsets() []bazel.AqueryDepset {
-	return []bazel.AqueryDepset{}
+func (m noopBazelContext) AqueryDepsets() ([]bazel.AqueryDepset, error) {
+	return []bazel.AqueryDepset{}, nil
 }
 
 func AddToStringSet(set map[string]bool, items []string) {
@@ -1138,37 +1147,51 @@ func (context *mixedBuildBazelContext) runAquery(config Config, ctx invokeBazelC
 	eventHandler := ctx.GetEventHandler()
 	eventHandler.Begin("aquery")
 	defer eventHandler.End("aquery")
-	// Issue an aquery command to retrieve action information about the bazel build tree.
-	//
-	// Use jsonproto instead of proto; actual proto parsing would require a dependency on Bazel's
-	// proto sources, which would add a number of unnecessary dependencies.
-	extraFlags := []string{"--output=proto", "--include_file_write_contents"}
-	if Bool(config.productVariables.ClangCoverage) {
-		extraFlags = append(extraFlags, "--collect_code_coverage")
-		paths := make([]string, 0, 2)
-		if p := config.productVariables.NativeCoveragePaths; len(p) > 0 {
-			for i := range p {
-				// TODO(b/259404593) convert path wildcard to regex values
-				if p[i] == "*" {
-					p[i] = ".*"
+
+	// TODO: This is a proof of concept easy hack to avoid dealing with downstream
+	// event reporting in an async way.
+	eventHandler = &metrics.EventHandler{}
+
+	context.bazelResultsWg = &sync.WaitGroup{}
+	processAquery := func() {
+		context.bazelResultsWg.Add(1)
+		defer context.bazelResultsWg.Done()
+
+		// Issue an aquery command to retrieve action information about the bazel build tree.
+		//
+		// Use jsonproto instead of proto; actual proto parsing would require a dependency on Bazel's
+		// proto sources, which would add a number of unnecessary dependencies.
+		extraFlags := []string{"--output=proto", "--include_file_write_contents"}
+		if Bool(config.productVariables.ClangCoverage) {
+			extraFlags = append(extraFlags, "--collect_code_coverage")
+			paths := make([]string, 0, 2)
+			if p := config.productVariables.NativeCoveragePaths; len(p) > 0 {
+				for i := range p {
+					// TODO(b/259404593) convert path wildcard to regex values
+					if p[i] == "*" {
+						p[i] = ".*"
+					}
 				}
+				paths = append(paths, JoinWithPrefixAndSeparator(p, "+", ","))
 			}
-			paths = append(paths, JoinWithPrefixAndSeparator(p, "+", ","))
+			if p := config.productVariables.NativeCoverageExcludePaths; len(p) > 0 {
+				paths = append(paths, JoinWithPrefixAndSeparator(p, "-", ","))
+			}
+			if len(paths) > 0 {
+				extraFlags = append(extraFlags, "--instrumentation_filter="+strings.Join(paths, ","))
+			}
 		}
-		if p := config.productVariables.NativeCoverageExcludePaths; len(p) > 0 {
-			paths = append(paths, JoinWithPrefixAndSeparator(p, "-", ","))
+		aqueryOutput, _, err := context.issueBazelCommand(context.createBazelCommand(config, bazel.AqueryBuildRootRunName, aqueryCmd,
+			extraFlags...), context.paths, eventHandler)
+		if err != nil {
+			context.bazelResultsError = err
 		}
-		if len(paths) > 0 {
-			extraFlags = append(extraFlags, "--instrumentation_filter="+strings.Join(paths, ","))
-		}
+
+		context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements([]byte(aqueryOutput), eventHandler)
 	}
-	aqueryOutput, _, err := context.issueBazelCommand(context.createBazelCommand(config, bazel.AqueryBuildRootRunName, aqueryCmd,
-		extraFlags...), context.paths, eventHandler)
-	if err != nil {
-		return err
-	}
-	context.buildStatements, context.depsets, err = bazel.AqueryBuildStatements([]byte(aqueryOutput), eventHandler)
-	return err
+
+	go processAquery()
+	return nil
 }
 
 func (context *mixedBuildBazelContext) generateBazelSymlinks(config Config, ctx invokeBazelContext) error {
@@ -1182,12 +1205,14 @@ func (context *mixedBuildBazelContext) generateBazelSymlinks(config Config, ctx 
 	return err
 }
 
-func (context *mixedBuildBazelContext) BuildStatementsToRegister() []*bazel.BuildStatement {
-	return context.buildStatements
+func (context *mixedBuildBazelContext) BuildStatementsToRegister() ([]*bazel.BuildStatement, error) {
+	context.bazelResultsWg.Wait()
+	return context.buildStatements, context.bazelResultsError
 }
 
-func (context *mixedBuildBazelContext) AqueryDepsets() []bazel.AqueryDepset {
-	return context.depsets
+func (context *mixedBuildBazelContext) AqueryDepsets() ([]bazel.AqueryDepset, error) {
+	context.bazelResultsWg.Wait()
+	return context.depsets, context.bazelResultsError
 }
 
 func (context *mixedBuildBazelContext) OutputBase() string {
@@ -1222,7 +1247,15 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		ctx.AddNinjaFileDeps(file)
 	}
 
-	for _, depset := range ctx.Config().BazelContext.AqueryDepsets() {
+	var depsets []bazel.AqueryDepset
+	var buildStatements []*bazel.BuildStatement
+
+	depsets, err = ctx.Config().BazelContext.AqueryDepsets()
+	if err != nil {
+		ctx.Errorf("Error processing Bazel aquery results: %s", err)
+		return
+	}
+	for _, depset := range depsets {
 		var outputs []Path
 		var orderOnlies []Path
 		for _, depsetDepHash := range depset.TransitiveDepSetHashes {
@@ -1249,7 +1282,12 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 
 	executionRoot := path.Join(ctx.Config().BazelContext.OutputBase(), "execroot", "__main__")
 	bazelOutDir := path.Join(executionRoot, "bazel-out")
-	for index, buildStatement := range ctx.Config().BazelContext.BuildStatementsToRegister() {
+	buildStatements, err = ctx.Config().BazelContext.BuildStatementsToRegister()
+	if err != nil {
+		ctx.Errorf("Error processing Bazel aquery results: %s", err)
+		return
+	}
+	for index, buildStatement := range buildStatements {
 		// nil build statements are a valid case where we do not create an action because it is
 		// unnecessary or handled by other processing
 		if buildStatement == nil {
