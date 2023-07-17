@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf756e46_2bca539e",
+        "filename": "ui/metrics/bazel_build_proto/bazel_build.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-07-17T13:02:34Z",
+      "side": 1,
+      "message": "2023",
+      "revId": "1c8216718c0af1d2bb276d4099371b42c06bcdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34490bc3_5eef5bc7",
+        "filename": "ui/metrics/bazel_build_proto/bazel_build.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-07-17T13:02:34Z",
+      "side": 1,
+      "message": "This could use some more explanation.",
+      "revId": "1c8216718c0af1d2bb276d4099371b42c06bcdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1324522c_3e5b2371",
+        "filename": "ui/metrics/bazel_build_proto/bazel_build.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-07-17T13:02:34Z",
+      "side": 1,
+      "message": "Is there a reason this can\u0027t be an enum?",
+      "revId": "1c8216718c0af1d2bb276d4099371b42c06bcdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883cf688_5b20bc96",
+        "filename": "ui/metrics/bazel_build_proto/bazel_build.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-07-17T13:02:34Z",
+      "side": 1,
+      "message": "Why are we storing target_attributes and test_attributes? It\u0027s not obvious to me how these relate to your proposed set of use cases as discussed in your offline design.",
+      "revId": "1c8216718c0af1d2bb276d4099371b42c06bcdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87de2398_4d59f43e",
+        "filename": "ui/metrics/bazel_build_proto/bazel_build.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-07-17T13:02:34Z",
+      "side": 1,
+      "message": "What is a \"composite map of seconds and nanos\" ? What is the unit for this duration? How will we know which values are seconds, and which are nanos?",
+      "revId": "1c8216718c0af1d2bb276d4099371b42c06bcdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
