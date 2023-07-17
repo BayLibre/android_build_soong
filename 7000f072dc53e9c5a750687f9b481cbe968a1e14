@@ -16,6 +16,24 @@
       "message": "Does this need to be a global -D flag? If it\u0027s only used for `getpagesize()`, can\u0027t we just define it with soong config variables on bionic like these ones? https://cs.android.com/android/platform/superproject/main/+/refs/heads/main:bionic/libc/Android.bp;l\u003d129;drc\u003d31fc69f67fc49b1a08f5561ae62d098106da6565",
       "revId": "7000f072dc53e9c5a750687f9b481cbe968a1e14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e116a76_6d31494c",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-17T17:24:02Z",
+      "side": 1,
+      "message": "+1 Keeping it in bionic will also help make sure someone doesn\u0027t accidentally rely on it elsewhere at compile time.",
+      "parentUuid": "521a23bb_0ad457ab",
+      "revId": "7000f072dc53e9c5a750687f9b481cbe968a1e14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
