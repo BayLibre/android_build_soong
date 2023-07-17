@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10e93d4_a375625b",
+        "filename": "ui/metrics/bazel_build_proto/bazel_build.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-07-17T18:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf756e46_2bca539e",
+      "revId": "1c8216718c0af1d2bb276d4099371b42c06bcdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34490bc3_5eef5bc7",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-07-17T13:02:34Z",
       "side": 1,
       "message": "This could use some more explanation.",
+      "revId": "1c8216718c0af1d2bb276d4099371b42c06bcdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c607f2ed_f477fa2d",
+        "filename": "ui/metrics/bazel_build_proto/bazel_build.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-07-17T18:25:59Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "34490bc3_5eef5bc7",
       "revId": "1c8216718c0af1d2bb276d4099371b42c06bcdcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee637f71_84354070",
+        "filename": "ui/metrics/bazel_build_proto/bazel_build.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-07-17T18:25:59Z",
+      "side": 1,
+      "message": "Please see the screenshot in the bug for examples.\n\nTarget_Attributes contain information like `Type: (Java|Shell)` which would help us for querying on specific starlark/bp2build output types.\n\nPerhaps it\u0027s better to transform this before loading, I\u0027ll ping offline.",
+      "parentUuid": "883cf688_5b20bc96",
+      "revId": "1c8216718c0af1d2bb276d4099371b42c06bcdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87de2398_4d59f43e",
         "filename": "ui/metrics/bazel_build_proto/bazel_build.proto",
         "patchSetId": 3
@@ -82,6 +136,24 @@
       "writtenOn": "2023-07-17T13:02:34Z",
       "side": 1,
       "message": "What is a \"composite map of seconds and nanos\" ? What is the unit for this duration? How will we know which values are seconds, and which are nanos?",
+      "revId": "1c8216718c0af1d2bb276d4099371b42c06bcdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a46ae6d_63686736",
+        "filename": "ui/metrics/bazel_build_proto/bazel_build.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-07-17T18:25:59Z",
+      "side": 1,
+      "message": "The keys are \"seconds\" and \"nanos\", the values are the count of each. \n\nSee previous comment about transforming, perhaps we should just use nanos and have it represent the entire field.",
+      "parentUuid": "87de2398_4d59f43e",
       "revId": "1c8216718c0af1d2bb276d4099371b42c06bcdcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
