@@ -288,6 +288,37 @@ func SubtractBazelLabelList(haystack LabelList, needle LabelList) LabelList {
 	return result
 }
 
+func FirstUniqueBazelLabelListAttribute(attr LabelListAttribute) LabelListAttribute {
+	var result LabelListAttribute
+	result.Value = FirstUniqueBazelLabelList(attr.Value)
+	if attr.HasConfigurableValues() {
+		result.ConfigurableValues = make(configurableLabelLists)
+	}
+	for axis, configToLabels := range attr.ConfigurableValues {
+		for c, l := range configToLabels {
+			result.SetSelectValue(axis, c, FirstUniqueBazelLabelList(l))
+		}
+	}
+
+	return result
+}
+
+// Subtract needle from haystack
+func SubtractBazelLabelListAttribute(haystack LabelListAttribute, needle LabelListAttribute) LabelListAttribute {
+	var result LabelListAttribute
+	result.Value = SubtractBazelLabelList(haystack.Value, needle.Value)
+	if haystack.HasConfigurableValues() {
+		result.ConfigurableValues = make(configurableLabelLists)
+	}
+	for axis, configToLabels := range haystack.ConfigurableValues {
+		for haystackConfig, haystackLabels := range configToLabels {
+			result.SetSelectValue(axis, haystackConfig, SubtractBazelLabelList(haystackLabels, needle.SelectValue(axis, haystackConfig)))
+		}
+	}
+
+	return result
+}
+
 type Attribute interface {
 	HasConfigurableValues() bool
 }
