@@ -52,6 +52,24 @@
       "parentUuid": "83a6e563_f4760d74",
       "revId": "db9ce128ef090a45f8191bd96a3d1668db3acee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ee4ba5_f6678c8e",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-07-17T11:44:06Z",
+      "side": 1,
+      "message": "I found some genrules are using the output files as a timestamp to trigger build rules. (https://source.corp.google.com/search?q\u003df:bp$%20tools:.*libndk_translation_.*_cmp\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main) There could be more that I couldn\u0027t find.\nLet me go back to the patchset2 to define \"write_if_changed\" property to use `restat`.",
+      "parentUuid": "e772df36_404c75ed",
+      "revId": "db9ce128ef090a45f8191bd96a3d1668db3acee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
