@@ -15,6 +15,7 @@
 package java
 
 import (
+	"fmt"
 	"testing"
 
 	"android/soong/android"
@@ -327,7 +328,7 @@ func TestD8(t *testing.T) {
 		fooD8.Args["d8Flags"], staticLibHeader.String())
 }
 
-func TestProguardFlagsInheritance(t *testing.T) {
+func TestProguardFlagsInheritanceStaticLibs(t *testing.T) {
 	result := PrepareForTestWithJavaDefaultModules.RunTestWithBp(t, `
 		android_app {
 			name: "app",
@@ -379,4 +380,212 @@ func TestProguardFlagsInheritance(t *testing.T) {
 		appR8.Args["r8Flags"], "secondary.flags")
 	android.AssertStringDoesContain(t, "expected tertiary_lib's proguard flags from inherited dep",
 		appR8.Args["r8Flags"], "tertiary.flags")
+}
+
+func TestProguardFlagsInheritance(t *testing.T) {
+	directDepFlagsFileName := "direct_dep.flags"
+	transitiveDepFlagsFileName := "transitive_dep.flags"
+	bp := `
+		android_app {
+			name: "app",
+			static_libs: ["app_dep"], // this must be static_libs to initate dexing
+			platform_apis: true,
+		}
+
+		java_library {
+			name: "app_dep",
+			%s: ["dep"],
+		}
+
+		java_library {
+			name: "dep",
+			%s: ["transitive_dep"],
+			optimize: {
+				enabled: true,
+				proguard_flags_files: ["direct_dep.flags"],
+				export_proguard_flags_files: %v,
+			},
+		}
+
+		java_library {
+			name: "transitive_dep",
+			optimize: {
+				enabled: true,
+				proguard_flags_files: ["transitive_dep.flags"],
+				export_proguard_flags_files: %v,
+			},
+		}
+	`
+
+	testcases := []struct {
+		name                           string
+		depType                        string
+		depExportsFlagsFiles           bool
+		transitiveDepType              string
+		transitiveDepExportsFlagsFiles bool
+		expectedFlagsFiles             []string
+	}{
+		{
+			name:                           "libs_export_libs_export",
+			depType:                        "libs",
+			depExportsFlagsFiles:           true,
+			transitiveDepType:              "libs",
+			transitiveDepExportsFlagsFiles: true,
+			expectedFlagsFiles:             []string{directDepFlagsFileName, transitiveDepFlagsFileName},
+		},
+		{
+			name:                           "static_export_libs_export",
+			depType:                        "static_libs",
+			depExportsFlagsFiles:           true,
+			transitiveDepType:              "libs",
+			transitiveDepExportsFlagsFiles: true,
+			expectedFlagsFiles:             []string{directDepFlagsFileName, transitiveDepFlagsFileName},
+		},
+		{
+			name:                           "libs_no-export_static_export",
+			depType:                        "libs",
+			depExportsFlagsFiles:           false,
+			transitiveDepType:              "static_libs",
+			transitiveDepExportsFlagsFiles: true,
+			expectedFlagsFiles:             []string{transitiveDepFlagsFileName},
+		},
+		{
+			name:                           "static_no-export_static_export",
+			depType:                        "static_libs",
+			depExportsFlagsFiles:           false,
+			transitiveDepType:              "static_libs",
+			transitiveDepExportsFlagsFiles: true,
+			expectedFlagsFiles:             []string{directDepFlagsFileName, transitiveDepFlagsFileName},
+		},
+		{
+			name:                           "libs_export_libs_no-export",
+			depType:                        "libs",
+			depExportsFlagsFiles:           true,
+			transitiveDepType:              "libs",
+			transitiveDepExportsFlagsFiles: false,
+			expectedFlagsFiles:             []string{directDepFlagsFileName},
+		},
+		{
+			name:                           "static_export_libs_no-export",
+			depType:                        "static_libs",
+			depExportsFlagsFiles:           true,
+			transitiveDepType:              "libs",
+			transitiveDepExportsFlagsFiles: false,
+			expectedFlagsFiles:             []string{directDepFlagsFileName},
+		},
+		{
+			name:                           "libs_no-export_static_no-export",
+			depType:                        "libs",
+			depExportsFlagsFiles:           false,
+			transitiveDepType:              "static_libs",
+			transitiveDepExportsFlagsFiles: false,
+			expectedFlagsFiles:             []string{},
+		},
+		{
+			name:                           "static_no-export_static_no-export",
+			depType:                        "static_libs",
+			depExportsFlagsFiles:           false,
+			transitiveDepType:              "static_libs",
+			transitiveDepExportsFlagsFiles: false,
+			expectedFlagsFiles:             []string{directDepFlagsFileName, transitiveDepFlagsFileName},
+		},
+		{
+			name:                           "libs_no-export_libs_export",
+			depType:                        "libs",
+			depExportsFlagsFiles:           false,
+			transitiveDepType:              "libs",
+			transitiveDepExportsFlagsFiles: true,
+			expectedFlagsFiles:             []string{transitiveDepFlagsFileName},
+		},
+		{
+			name:                           "static_no-export_libs_export",
+			depType:                        "static_libs",
+			depExportsFlagsFiles:           false,
+			transitiveDepType:              "libs",
+			transitiveDepExportsFlagsFiles: true,
+			expectedFlagsFiles:             []string{directDepFlagsFileName, transitiveDepFlagsFileName},
+		},
+		{
+			name:                           "libs_export_static_export",
+			depType:                        "libs",
+			depExportsFlagsFiles:           true,
+			transitiveDepType:              "static_libs",
+			transitiveDepExportsFlagsFiles: true,
+			expectedFlagsFiles:             []string{directDepFlagsFileName, transitiveDepFlagsFileName},
+		},
+		{
+			name:                           "static_export_static_export",
+			depType:                        "static_libs",
+			depExportsFlagsFiles:           true,
+			transitiveDepType:              "static_libs",
+			transitiveDepExportsFlagsFiles: true,
+			expectedFlagsFiles:             []string{directDepFlagsFileName, transitiveDepFlagsFileName},
+		},
+		{
+			name:                           "libs_no-export_libs_no-export",
+			depType:                        "libs",
+			depExportsFlagsFiles:           false,
+			transitiveDepType:              "libs",
+			transitiveDepExportsFlagsFiles: false,
+			expectedFlagsFiles:             []string{},
+		},
+		{
+			name:                           "static_no-export_libs_no-export",
+			depType:                        "static_libs",
+			depExportsFlagsFiles:           false,
+			transitiveDepType:              "libs",
+			transitiveDepExportsFlagsFiles: false,
+			expectedFlagsFiles:             []string{directDepFlagsFileName},
+		},
+		{
+			name:                           "libs_export_static_no-export",
+			depType:                        "libs",
+			depExportsFlagsFiles:           true,
+			transitiveDepType:              "static_libs",
+			transitiveDepExportsFlagsFiles: false,
+			expectedFlagsFiles:             []string{directDepFlagsFileName, transitiveDepFlagsFileName},
+		},
+		{
+			name:                           "static_export_static_no-export",
+			depType:                        "static_libs",
+			depExportsFlagsFiles:           true,
+			transitiveDepType:              "static_libs",
+			transitiveDepExportsFlagsFiles: false,
+			expectedFlagsFiles:             []string{directDepFlagsFileName, transitiveDepFlagsFileName},
+		},
+	}
+
+	for _, tc := range testcases {
+		t.Run(tc.name, func(t *testing.T) {
+			result := PrepareForTestWithJavaDefaultModules.RunTestWithBp(t,
+				fmt.Sprintf(
+					bp,
+					tc.depType,
+					tc.transitiveDepType,
+					tc.depExportsFlagsFiles,
+					tc.transitiveDepExportsFlagsFiles,
+				),
+			)
+			app := result.ModuleForTests("app", "android_common")
+			appR8 := app.Rule("r8")
+
+			shouldHaveDepFlags := android.InList(directDepFlagsFileName, tc.expectedFlagsFiles)
+			if shouldHaveDepFlags {
+				android.AssertStringDoesContain(t, "expected deps's proguard flags",
+					appR8.Args["r8Flags"], directDepFlagsFileName)
+			} else {
+				android.AssertStringDoesNotContain(t, "did not expect deps's proguard flags",
+					appR8.Args["r8Flags"], directDepFlagsFileName)
+			}
+
+			shouldHaveTransitiveDepFlags := android.InList(transitiveDepFlagsFileName, tc.expectedFlagsFiles)
+			if shouldHaveTransitiveDepFlags {
+				android.AssertStringDoesContain(t, "expected transitive deps's proguard flags",
+					appR8.Args["r8Flags"], transitiveDepFlagsFileName)
+			} else {
+				android.AssertStringDoesNotContain(t, "did not expect transitive deps's proguard flags",
+					appR8.Args["r8Flags"], transitiveDepFlagsFileName)
+			}
+		})
+	}
 }

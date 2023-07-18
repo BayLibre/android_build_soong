@@ -316,6 +316,9 @@ func (a *AndroidTestHelperApp) GenerateAndroidBuildActions(ctx android.ModuleCon
 func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.checkAppSdkVersions(ctx)
 	a.generateAndroidBuildActions(ctx)
+	if ctx.Failed() {
+		return
+	}
 	a.generateJavaUsedByApex(ctx)
 }
 
@@ -480,16 +483,9 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 }
 
 func (a *AndroidApp) proguardBuildActions(ctx android.ModuleContext) {
-	var staticLibProguardFlagFiles android.Paths
-	ctx.VisitDirectDeps(func(m android.Module) {
-		if lib, ok := m.(LibraryDependency); ok && ctx.OtherModuleDependencyTag(m) == staticLibTag {
-			staticLibProguardFlagFiles = append(staticLibProguardFlagFiles, lib.ExportedProguardFlagFiles()...)
-		}
-	})
-
-	staticLibProguardFlagFiles = android.FirstUniquePaths(staticLibProguardFlagFiles)
-
-	a.Module.extraProguardFlagFiles = append(a.Module.extraProguardFlagFiles, staticLibProguardFlagFiles...)
+	proguardSpecInfo := a.collectProguardSpecInfo(ctx)
+	ctx.SetProvider(ProguardSpecInfoProvider, proguardSpecInfo)
+	a.Module.extraProguardFlagFiles = append(a.Module.extraProguardFlagFiles, proguardSpecInfo.TransitiveProguardFlagsFiles.ToList()...)
 	a.Module.extraProguardFlagFiles = append(a.Module.extraProguardFlagFiles, a.proguardOptionsFile)
 }
 
