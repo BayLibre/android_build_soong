@@ -45,6 +45,11 @@ var (
 	bd    = testZipEntry{"b/d", 0700, []byte("baz")}
 	be    = testZipEntry{"b/e", 0700, []byte("")}
 
+	service1a        = testZipEntry{"META-INF/services/service1", 0755, []byte("class1\nclass2\n")}
+	service1b        = testZipEntry{"META-INF/services/service1", 0755, []byte("class1\nclass3\n")}
+	service1combined = testZipEntry{"META-INF/services/service1", 0755, []byte("class1\nclass2\nclass3\n")}
+	service2         = testZipEntry{"META-INF/services/service2", 0755, []byte("class1\nclass2\n")}
+
 	metainfDir     = testZipEntry{jar.MetaDir, os.ModeDir | 0755, nil}
 	manifestFile   = testZipEntry{jar.ManifestFile, 0755, []byte("manifest")}
 	manifestFile2  = testZipEntry{jar.ManifestFile, 0755, []byte("manifest2")}
@@ -236,6 +241,15 @@ func TestMergeZips(t *testing.T) {
 				"in1": true,
 			},
 		},
+		{
+			name: "services",
+			in: [][]testZipEntry{
+				{service1a, service2},
+				{service1b},
+			},
+			jar: true,
+			out: []testZipEntry{service1combined, service2},
+		},
 	}
 
 	for _, test := range testCases {
@@ -256,7 +270,7 @@ func TestMergeZips(t *testing.T) {
 
 			closeErr := writer.Close()
 			if closeErr != nil {
-				t.Fatal(err)
+				t.Fatal(closeErr)
 			}
 
 			if test.err != "" {
@@ -266,6 +280,8 @@ func TestMergeZips(t *testing.T) {
 					t.Fatal("incorrect err, want:", test.err, "got:", err)
 				}
 				return
+			} else if err != nil {
+				t.Fatal("unexpected err: ", err)
 			}
 
 			if !bytes.Equal(want, out.Bytes()) {
