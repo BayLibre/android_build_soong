@@ -569,3 +569,14 @@ func CheckDuplicate(values []string) (duplicate string, found bool) {
 	}
 	return "", false
 }
+
+// Map takes an list, ts, of type T and a function that transforms an object of
+// type T to an object of type V, and returns a list containing the transformed
+// input list.
+func Map[T any, V any](ts []T, f func(t T) V) []V {
+	vs := make([]V, len(ts))
+	for i := range ts {
+		vs[i] = f(ts[i])
+	}
+	return vs
+}

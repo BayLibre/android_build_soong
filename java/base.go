@@ -1537,7 +1537,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 	if ctx.Device() && (Bool(j.properties.Installable) || Bool(compileDex)) {
 		if j.hasCode(ctx) {
 			if j.shouldInstrumentStatic(ctx) {
-				j.dexer.extraProguardFlagFiles = append(j.dexer.extraProguardFlagFiles,
+				j.dexer.proguardFlagFiles = append(j.dexer.proguardFlagFiles,
 					android.PathForSource(ctx, "build/make/core/proguard.jacoco.flags"))
 			}
 			// Dex compilation
@@ -1668,6 +1668,40 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars, extraClasspath
 
 func (j *Module) useCompose() bool {
 	return android.InList("androidx.compose.runtime_runtime", j.properties.Static_libs)
+}
+
+func (j *Module) collectProguardSpecInfo(ctx android.ModuleContext) ProguardSpecInfo {
+	unconditionallyExportedProguardFlags := []*android.DepSet[android.Path]{}
+	proguardFlagsForThisModule := []*android.DepSet[android.Path]{}
+
+	ctx.VisitDirectDeps(func(m android.Module) {
+		depProguardInfo := ctx.OtherModuleProvider(m, ProguardSpecInfoProvider).(ProguardSpecInfo)
+		depTag := ctx.OtherModuleDependencyTag(m)
+
+		if depProguardInfo.unconditionallyExportedProguardFlags != nil {
+			unconditionallyExportedProguardFlags = append(unconditionallyExportedProguardFlags, depProguardInfo.unconditionallyExportedProguardFlags)
+			proguardFlagsForThisModule = append(proguardFlagsForThisModule, depProguardInfo.unconditionallyExportedProguardFlags)
+		}
+
+		if depTag == staticLibTag && depProguardInfo.TransitiveProguardFlagsFiles != nil {
+			if proptools.Bool(j.dexProperties.Optimize.Export_proguard_flags_files) {
+				unconditionallyExportedProguardFlags = append(unconditionallyExportedProguardFlags, depProguardInfo.TransitiveProguardFlagsFiles)
+			}
+			proguardFlagsForThisModule = append(proguardFlagsForThisModule, depProguardInfo.TransitiveProguardFlagsFiles)
+		}
+	})
+
+	exportedFlagsFiles := android.ExistentPathsForModuleSrc(ctx, j.dexProperties.Optimize.Proguard_flags_files)
+	unconditionallyExportedFlagsFiles := android.Paths{}
+	if proptools.Bool(j.dexProperties.Optimize.Export_proguard_flags_files) {
+		unconditionallyExportedFlagsFiles = exportedFlagsFiles
+	}
+
+	return ProguardSpecInfo{
+		TransitiveProguardFlagsFiles:         android.NewDepSet[android.Path](android.POSTORDER, exportedFlagsFiles, proguardFlagsForThisModule),
+		unconditionallyExportedProguardFlags: android.NewDepSet[android.Path](android.POSTORDER, unconditionallyExportedFlagsFiles, unconditionallyExportedProguardFlags),
+	}
+
 }
 
 // Returns a copy of the supplied flags, but with all the errorprone-related

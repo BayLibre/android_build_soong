@@ -71,6 +71,10 @@ type DexProperties struct {
 
 		// Specifies the locations of files containing proguard flags.
 		Proguard_flags_files []string `android:"path"`
+
+		// If true, transitive reverse dependencies of this module will have this
+		// module's proguard spec appended to their optimization action
+		Export_proguard_flags_files *bool
 	}
 
 	// Keep the data uncompressed. We always need uncompressed dex for execution,
@@ -87,10 +91,10 @@ type dexer struct {
 	dexProperties DexProperties
 
 	// list of extra proguard flag files
-	extraProguardFlagFiles android.Paths
-	proguardDictionary     android.OptionalPath
-	proguardConfiguration  android.OptionalPath
-	proguardUsageZip       android.OptionalPath
+	proguardFlagFiles     android.Paths
+	proguardDictionary    android.OptionalPath
+	proguardConfiguration android.OptionalPath
+	proguardUsageZip      android.OptionalPath
 
 	providesTransitiveHeaderJars
 }
@@ -283,10 +287,8 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 		android.PathForSource(ctx, "build/make/core/proguard.flags"),
 	}
 
-	flagFiles = append(flagFiles, d.extraProguardFlagFiles...)
+	flagFiles = append(flagFiles, d.proguardFlagFiles...)
 	// TODO(ccross): static android library proguard files
-
-	flagFiles = append(flagFiles, android.PathsForModuleSrc(ctx, opt.Proguard_flags_files)...)
 
 	r8Flags = append(r8Flags, android.JoinWithPrefix(flagFiles.Strings(), "-include "))
 	r8Deps = append(r8Deps, flagFiles...)

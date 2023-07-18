@@ -29,7 +29,6 @@ import (
 )
 
 type AndroidLibraryDependency interface {
-	LibraryDependency
 	ExportPackage() android.Path
 	ResourcesNodeDepSet() *android.DepSet[*resourcesNode]
 	RRODirsDepSet() *android.DepSet[rroDir]
@@ -695,6 +694,8 @@ type AndroidLibrary struct {
 	androidLibraryProperties androidLibraryProperties
 
 	aarFile android.WritablePath
+
+	exportedProguardFlagFiles android.Paths
 }
 
 var _ android.OutputFileProducer = (*AndroidLibrary)(nil)
@@ -743,8 +744,7 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	a.linter.manifest = a.aapt.manifestPath
 	a.linter.resources = a.aapt.resourceFiles
 
-	a.Module.extraProguardFlagFiles = append(a.Module.extraProguardFlagFiles,
-		a.proguardOptionsFile)
+	a.Module.proguardFlagFiles = append(a.Module.proguardFlagFiles, a.proguardOptionsFile)
 
 	var extraSrcJars android.Paths
 	var extraCombinedJars android.Paths
@@ -770,17 +770,9 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 		ctx.CheckbuildFile(a.aarFile)
 	}
 
-	a.exportedProguardFlagFiles = append(a.exportedProguardFlagFiles,
-		android.PathsForModuleSrc(ctx, a.dexProperties.Optimize.Proguard_flags_files)...)
-
-	ctx.VisitDirectDeps(func(m android.Module) {
-		if ctx.OtherModuleDependencyTag(m) == staticLibTag {
-			if lib, ok := m.(LibraryDependency); ok {
-				a.exportedProguardFlagFiles = append(a.exportedProguardFlagFiles, lib.ExportedProguardFlagFiles()...)
-			}
-		}
-	})
-	a.exportedProguardFlagFiles = android.FirstUniquePaths(a.exportedProguardFlagFiles)
+	proguardSpecInfo := a.collectProguardSpecInfo(ctx)
+	ctx.SetProvider(ProguardSpecInfoProvider, proguardSpecInfo)
+	a.exportedProguardFlagFiles = proguardSpecInfo.TransitiveProguardFlagsFiles.ToList()
 
 	prebuiltJniPackages := android.Paths{}
 	ctx.VisitDirectDeps(func(module android.Module) {
