@@ -16,6 +16,23 @@
       "message": "gentle ping?",
       "revId": "b384b0b64d14c640160e93caddd850371ee03a30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad06f6e_b6ab55d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-07-18T08:23:18Z",
+      "side": 1,
+      "message": "Adding Liz for cc rules.",
+      "revId": "b384b0b64d14c640160e93caddd850371ee03a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
