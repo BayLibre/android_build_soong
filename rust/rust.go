@@ -431,19 +431,21 @@ type Deps struct {
 	CrtBegin, CrtEnd []string
 }
 
-type TransitiveRlibsDepSet = *android.DepSet[RustLibrary]
+type TransitiveRustLibraryDepSet = *android.DepSet[RustLibrary]
 
 type PathDeps struct {
-	DyLibs          RustLibraries
-	RLibs           RustLibraries
-	TransitiveRlibs TransitiveRlibsDepSet
-	Stdlibs         android.Paths
-	LibDeps         android.Paths
-	WholeStaticLibs android.Paths
-	ProcMacros      RustLibraries
-	AfdoProfiles    android.Paths
-	Rustc           android.Path
-	RustcDeps       android.Paths
+	DyLibs               RustLibraries
+	TransitiveDylibs     TransitiveRustLibraryDepSet
+	RLibs                RustLibraries
+	TransitiveRlibs      TransitiveRustLibraryDepSet
+	Stdlibs              android.Paths
+	LibDeps              android.Paths
+	WholeStaticLibs      android.Paths
+	ProcMacros           RustLibraries
+	TransitiveProcMacros TransitiveRustLibraryDepSet
+	AfdoProfiles         android.Paths
+	Rustc                android.Path
+	RustcDeps            android.Paths
 
 	// depFlags and depLinkFlags are rustc and linker (clang) flags.
 	depFlags     []string
@@ -928,7 +930,9 @@ func (d *Defaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 }
 
 type RustInfo struct {
-	TransitiveRlibs TransitiveRlibsDepSet
+	TransitiveRlibs      TransitiveRustLibraryDepSet
+	TransitiveDylibs     TransitiveRustLibraryDepSet
+	TransitiveProcMacros TransitiveRustLibraryDepSet
 }
 
 var RustInfoProvider = blueprint.NewProvider(RustInfo{})
@@ -1044,7 +1048,9 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 
 	ctx.SetProvider(RustInfoProvider, RustInfo{
-		TransitiveRlibs: deps.TransitiveRlibs,
+		TransitiveRlibs:      deps.TransitiveRlibs,
+		TransitiveDylibs:     deps.TransitiveDylibs,
+		TransitiveProcMacros: deps.TransitiveProcMacros,
 	})
 }
 
@@ -1237,13 +1243,21 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	}
 
 	transitiveRlibs := android.NewDepSetBuilder[RustLibrary](android.PREORDER)
+	transitiveDylibs := android.NewDepSetBuilder[RustLibrary](android.PREORDER)
+	transitiveProcMacros := android.NewDepSetBuilder[RustLibrary](android.PREORDER)
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
 
 		rustInfo := ctx.OtherModuleProvider(dep, RustInfoProvider).(RustInfo)
+		if rustInfo.TransitiveDylibs != nil {
+			transitiveDylibs.Transitive(rustInfo.TransitiveDylibs)
+		}
 		if rustInfo.TransitiveRlibs != nil {
 			transitiveRlibs.Transitive(rustInfo.TransitiveRlibs)
+		}
+		if rustInfo.TransitiveProcMacros != nil {
+			transitiveProcMacros.Transitive(rustInfo.TransitiveProcMacros)
 		}
 
 		if _, exists := skipModuleList[depName]; exists {
@@ -1263,6 +1277,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				directDylibDeps = append(directDylibDeps, rustDep)
 				mod.Properties.AndroidMkDylibs = append(mod.Properties.AndroidMkDylibs, makeLibName)
 				mod.Properties.SnapshotDylibs = append(mod.Properties.SnapshotDylibs, cc.BaseLibName(depName))
+				transitiveDylibs.Direct(RustLibrary{
+					Path:      rustDep.UnstrippedOutputFile(),
+					CrateName: rustDep.CrateName(),
+				})
 
 			case rlibDepTag:
 				rlib, ok := rustDep.compiler.(libraryInterface)
@@ -1273,14 +1291,18 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				directRlibDeps = append(directRlibDeps, rustDep)
 				mod.Properties.AndroidMkRlibs = append(mod.Properties.AndroidMkRlibs, makeLibName)
 				mod.Properties.SnapshotRlibs = append(mod.Properties.SnapshotRlibs, cc.BaseLibName(depName))
-
 				transitiveRlibs.Direct(RustLibrary{
 					Path:      rustDep.UnstrippedOutputFile(),
 					CrateName: rustDep.CrateName(),
 				})
+
 			case procMacroDepTag:
 				directProcMacroDeps = append(directProcMacroDeps, rustDep)
 				mod.Properties.AndroidMkProcMacroLibs = append(mod.Properties.AndroidMkProcMacroLibs, makeLibName)
+				transitiveProcMacros.Direct(RustLibrary{
+					Path:      rustDep.UnstrippedOutputFile(),
+					CrateName: rustDep.CrateName(),
+				})
 			}
 
 			if android.IsSourceDepTagWithOutputTag(depTag, "") {
@@ -1438,6 +1460,8 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		}
 	})
 	depPaths.TransitiveRlibs = transitiveRlibs.Build()
+	depPaths.TransitiveDylibs = transitiveDylibs.Build()
+	depPaths.TransitiveProcMacros = transitiveProcMacros.Build()
 
 	var rlibDepFiles RustLibraries
 	for _, dep := range directRlibDeps {

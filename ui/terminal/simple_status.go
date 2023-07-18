@@ -56,6 +56,7 @@ func (s *simpleStatusOutput) FinishAction(result status.ActionResult, counts sta
 	if str == "" {
 		str = result.Command
 	}
+	str += "\nasdf2"
 
 	progress := s.formatter.progress(counts) + str
 

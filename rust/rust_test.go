@@ -299,8 +299,8 @@ func TestDepsTracking(t *testing.T) {
 		t.Errorf("shared cc_library not being passed to rustc linkFlags %#v", rustLink.Args["linkFlags"])
 	}
 
-	if !android.SuffixInList(rustLink.OrderOnly.Strings(), "cc_stubs_dep.so") {
-		t.Errorf("shared cc dep not being passed as order-only to rustc %#v", rustLink.OrderOnly.Strings())
+	if !android.SuffixInList(rustLink.Implicits.Strings(), "cc_stubs_dep.so") {
+		t.Errorf("shared cc dep not being passed as implicit to rustc %#v", rustLink.OrderOnly.Strings())
 	}
 
 	if !android.SuffixInList(rustLink.Implicits.Strings(), "cc_stubs_dep.so.toc") {
