@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/ui/metrics/bp2build_metrics_proto"
+
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
@@ -1636,6 +1637,59 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 func (j *Module) useCompose() bool {
 	return android.InList("androidx.compose.runtime_runtime", j.properties.Static_libs)
+}
+
+func (j *Module) collectProguardSpecInfo(ctx android.ModuleContext) ProguardSpecInfo {
+	transitiveStaticDepsProguardFlagsFiles := android.Paths{}
+	transitiveSharedDepsProguardFlagsFiles := android.Paths{}
+	transitiveStaticDepsProguardFlagsDepSets := []*android.DepSet[android.Path]{}
+	transitiveSharedDepsProguardFlagsDepSets := []*android.DepSet[android.Path]{}
+
+	ctx.VisitDirectDeps(func(m android.Module) {
+		depJavaInfo := ctx.OtherModuleProvider(m, ProguardSpecInfoProvider).(ProguardSpecInfo)
+		depTag := ctx.OtherModuleDependencyTag(m)
+		exportSharedLibProguardFlags := depTag == libTag && proptools.Bool(depJavaInfo.Export_proguard_flags_files)
+
+		// exported shared deps are propagated transitively up the dependency chain
+		if depJavaInfo.transitiveSharedDepsProguardFlagsFiles != nil {
+			transitiveSharedDepsProguardFlagsDepSets = append(transitiveSharedDepsProguardFlagsDepSets, depJavaInfo.transitiveSharedDepsProguardFlagsFiles)
+		}
+
+		if depTag == staticLibTag {
+			// always export proguard specs for static dependencies
+			transitiveStaticDepsProguardFlagsFiles = append(transitiveStaticDepsProguardFlagsFiles, depJavaInfo.DirectProguardFlagsFiles...)
+			if depJavaInfo.transitiveStaticDepsProguardFlagsFiles != nil {
+				transitiveStaticDepsProguardFlagsDepSets = append(transitiveStaticDepsProguardFlagsDepSets, depJavaInfo.transitiveStaticDepsProguardFlagsFiles)
+			}
+		} else if exportSharedLibProguardFlags {
+			transitiveSharedDepsProguardFlagsFiles = append(transitiveSharedDepsProguardFlagsFiles, depJavaInfo.DirectProguardFlagsFiles...)
+			// add transitive static deps of an exported shared dep to the shared flags files depset
+			if depJavaInfo.transitiveStaticDepsProguardFlagsFiles != nil {
+				transitiveSharedDepsProguardFlagsDepSets = append(transitiveSharedDepsProguardFlagsDepSets, depJavaInfo.transitiveStaticDepsProguardFlagsFiles)
+			}
+		}
+	})
+
+	transitiveSharedDepsProguardFlagsDepSets = append(transitiveSharedDepsProguardFlagsDepSets,
+		android.NewDepSet[android.Path](android.PREORDER, transitiveSharedDepsProguardFlagsFiles, []*android.DepSet[android.Path]{}),
+	)
+	transitiveStaticDepsProguardFlagsDepSets = append(transitiveStaticDepsProguardFlagsDepSets,
+		android.NewDepSet[android.Path](android.PREORDER, transitiveStaticDepsProguardFlagsFiles, []*android.DepSet[android.Path]{}),
+	)
+	transitiveStaticDepsProguardFlagsDepSet := android.NewDepSet[android.Path](android.PREORDER, android.Paths{}, transitiveSharedDepsProguardFlagsDepSets)
+	transitiveStaticDepsProguatdFlagsDepSet := android.NewDepSet[android.Path](android.PREORDER, android.Paths{}, transitiveStaticDepsProguardFlagsDepSets)
+
+	return ProguardSpecInfo{
+		DirectProguardFlagsFiles: android.PathsForModuleSrc(ctx, j.dexProperties.Optimize.Proguard_flags_files),
+		TransitiveDepsProguardFlagsFiles: android.NewDepSet[android.Path](android.PREORDER, android.Paths{}, []*android.DepSet[android.Path]{
+			transitiveStaticDepsProguardFlagsDepSet,
+			transitiveStaticDepsProguatdFlagsDepSet,
+		}),
+		Export_proguard_flags_files:            j.dexProperties.Optimize.Export_proguard_flags_files,
+		transitiveSharedDepsProguardFlagsFiles: transitiveStaticDepsProguardFlagsDepSet,
+		transitiveStaticDepsProguardFlagsFiles: transitiveStaticDepsProguatdFlagsDepSet,
+	}
+
 }
 
 // Returns a copy of the supplied flags, but with all the errorprone-related

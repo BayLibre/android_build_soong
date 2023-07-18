@@ -480,16 +480,9 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 }
 
 func (a *AndroidApp) proguardBuildActions(ctx android.ModuleContext) {
-	var staticLibProguardFlagFiles android.Paths
-	ctx.VisitDirectDeps(func(m android.Module) {
-		if lib, ok := m.(LibraryDependency); ok && ctx.OtherModuleDependencyTag(m) == staticLibTag {
-			staticLibProguardFlagFiles = append(staticLibProguardFlagFiles, lib.ExportedProguardFlagFiles()...)
-		}
-	})
-
-	staticLibProguardFlagFiles = android.FirstUniquePaths(staticLibProguardFlagFiles)
-
-	a.Module.extraProguardFlagFiles = append(a.Module.extraProguardFlagFiles, staticLibProguardFlagFiles...)
+	proguardSpecInfo := a.collectProguardSpecInfo(ctx)
+	ctx.SetProvider(ProguardSpecInfoProvider, proguardSpecInfo)
+	a.Module.extraProguardFlagFiles = append(a.Module.extraProguardFlagFiles, proguardSpecInfo.TransitiveDepsProguardFlagsFiles.ToList()...)
 	a.Module.extraProguardFlagFiles = append(a.Module.extraProguardFlagFiles, a.proguardOptionsFile)
 }
 
