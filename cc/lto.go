@@ -67,10 +67,25 @@ func (lto *lto) props() []interface{} {
 }
 
 func (lto *lto) begin(ctx BaseModuleContext) {
+	if !ctx.static() && ctx.isCfi() && lto.Never() {
+		ctx.PropertyErrorf("lto.Never", "CFI requires LTO")
+	}
+	if !ctx.static() && ctx.isFuzzer() && lto.ThinLTO() {
+		ctx.PropertyErrorf("lto.ThinLTO", "Fuzzer does not support LTO")
+	}
+
+	lto.calcLto(ctx)
+}
+
+func (lto *lto) calcLto(ctx BaseModuleContext) {
 	// First, determine the module indepedent default LTO mode.
 	ltoDefault := GlobalThinLTO(ctx)
 	if ctx.Config().IsEnvTrue("DISABLE_LTO") {
 		ltoDefault = false
+	} else if ctx.isCfi() {
+		ltoDefault = true
+	} else if ctx.isFuzzer() {
+		ltoDefault = true
 	} else if ctx.Host() {
 		// Performance and binary size are less important for host binaries.
 		ltoDefault = false
@@ -84,6 +99,10 @@ func (lto *lto) begin(ctx BaseModuleContext) {
 	ltoEnabled := ltoDefault
 	if lto.Never() {
 		ltoEnabled = false
+	} else if ctx.isCfi() {
+		ltoEnabled = true
+	} else if ctx.isFuzzer() {
+		ltoEnabled = true
 	} else if lto.ThinLTO() {
 		// Module explicitly requests for LTO.
 		ltoEnabled = true
@@ -101,11 +120,8 @@ func (lto *lto) begin(ctx BaseModuleContext) {
 }
 
 func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
-	// TODO(b/131771163): CFI and Fuzzer controls LTO flags by themselves.
-	// This has be checked late because these properties can be mutated.
-	if ctx.isCfi() || ctx.isFuzzer() {
-		return flags
-	}
+	lto.calcLto(ctx)
+
 	if lto.Properties.LtoEnabled {
 		ltoCFlags := []string{"-flto=thin", "-fsplit-lto-unit"}
 		var ltoLdFlags []string

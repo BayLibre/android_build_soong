@@ -66,13 +66,12 @@ var (
 	cfiBlocklistFilename = "cfi_blocklist.txt"
 	cfiEnableFlag        = "-fsanitize=cfi"
 	cfiCrossDsoFlag      = "-fsanitize-cfi-cross-dso"
-	cfiCflags            = []string{"-flto", cfiCrossDsoFlag,
+	cfiCflags            = []string{cfiCrossDsoFlag,
 		sanitizeIgnorelistPrefix + cfiBlocklistPath + "/" + cfiBlocklistFilename}
 	// -flto and -fvisibility are required by clang when -fsanitize=cfi is
 	// used, but have no effect on assembly files
-	cfiAsflags = []string{"-flto", "-fvisibility=default"}
-	cfiLdflags = []string{"-flto", cfiCrossDsoFlag, cfiEnableFlag,
-		"-Wl,-plugin-opt,O1"}
+	cfiAsflags = []string{"-fvisibility=default"}
+	cfiLdflags = []string{cfiCrossDsoFlag, cfiEnableFlag}
 	cfiExportsMapPath      = "build/soong/cc/config"
 	cfiExportsMapFilename  = "cfi_exports.map"
 	cfiAssemblySupportFlag = "-fno-sanitize-cfi-canonical-jump-tables"
@@ -414,9 +413,9 @@ func init() {
 	// Leave out "-flto" from the slices exported to bazel, as we will use the
 	// dedicated LTO feature for this. For C Flags and Linker Flags, also leave
 	// out the cross DSO flag which will be added separately under the correct conditions.
-	exportedVars.ExportStringList("CfiCFlags", append(cfiCflags[2:], cfiEnableFlag))
-	exportedVars.ExportStringList("CfiLdFlags", cfiLdflags[2:])
-	exportedVars.ExportStringList("CfiAsFlags", cfiAsflags[1:])
+	exportedVars.ExportStringList("CfiCFlags", append(cfiCflags[1:], cfiEnableFlag))
+	exportedVars.ExportStringList("CfiLdFlags", cfiLdflags[1:])
+	exportedVars.ExportStringList("CfiAsFlags", cfiAsflags)
 
 	exportedVars.ExportString("SanitizeIgnorelistPrefix", sanitizeIgnorelistPrefix)
 	exportedVars.ExportString("CfiCrossDsoFlag", cfiCrossDsoFlag)
@@ -845,12 +844,6 @@ func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 	if Bool(sanProps.Fuzzer) {
 		flags.Local.CFlags = append(flags.Local.CFlags, "-fsanitize=fuzzer-no-link")
-
-		// TODO(b/131771163): LTO and Fuzzer support is mutually incompatible.
-		_, flags.Local.LdFlags = removeFromList("-flto", flags.Local.LdFlags)
-		_, flags.Local.CFlags = removeFromList("-flto", flags.Local.CFlags)
-		flags.Local.LdFlags = append(flags.Local.LdFlags, "-fno-lto")
-		flags.Local.CFlags = append(flags.Local.CFlags, "-fno-lto")
 
 		// TODO(b/142430592): Upstream linker scripts for sanitizer runtime libraries
 		// discard the sancov_lowest_stack symbol, because it's emulated TLS (and thus
