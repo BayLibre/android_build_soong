@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad77339_f428e9d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-07-18T01:54:35Z",
+      "side": 1,
+      "message": "Update the comment as well.",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "845eaace1893764d80c1f083ade520a9def8b486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e086fb6_8dcf7c72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-07-18T01:54:35Z",
+      "side": 1,
+      "message": "Anyway, the images built with `KEEP_VNDK` may not compatible with the images without `KEEP_VNDK`. So this will add some more complexity on treble, and must be removed asap when we resolve the apex issue.",
+      "revId": "845eaace1893764d80c1f083ade520a9def8b486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6733d745_b60ef0c9",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2023-07-18T01:54:35Z",
+      "side": 1,
+      "message": "I think it also can be renamed to KeepVndk()",
+      "range": {
+        "startLine": 1358,
+        "startChar": 17,
+        "endLine": 1358,
+        "endChar": 33
+      },
+      "revId": "845eaace1893764d80c1f083ade520a9def8b486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
