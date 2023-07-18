@@ -302,3 +302,17 @@ func NoneableString(value starlark.Value) (*string, error) {
 		return nil, fmt.Errorf("expected string or none, got %q", value.Type())
 	}
 }
+
+// NoneableBool converts a starlark.Value to a bool pointer. If the starlark.Value is NoneType,
+// a nil pointer will be returned instead. All other types of starlark values are errors.
+func NoneableBool(value starlark.Value) (*bool, error) {
+	switch v := value.(type) {
+	case starlark.Bool:
+		result := bool(v)
+		return &result, nil
+	case starlark.NoneType:
+		return nil, nil
+	default:
+		return nil, fmt.Errorf("expected bool or none, got %q", value.Type())
+	}
+}
