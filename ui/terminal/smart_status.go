@@ -138,6 +138,7 @@ func (s *smartStatusOutput) StartAction(action *status.Action, counts status.Cou
 	if str == "" {
 		str = action.Command
 	}
+	str += "\nasdf"
 
 	progress := s.formatter.progress(counts)
 

@@ -336,14 +336,17 @@ func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathD
 }
 
 func (compile *baseCompiler) crateRoot(ctx ModuleContext) android.Path {
-	if compile.Properties.Crate_root == nil {
-		return nil
+	if compile.Properties.Crate_root != nil {
+		return android.PathForModuleSrc(ctx, *compile.Properties.Crate_root)
 	}
-	return android.PathForModuleSrc(ctx, *compile.Properties.Crate_root)
+	return nil
 }
 
 func (compile *baseCompiler) compileData(ctx ModuleContext) android.Paths {
-	return android.PathsForModuleSrc(ctx, append(compile.Properties.Srcs, compile.Properties.Compile_data...))
+	return android.PathsForModuleSrc(ctx, android.Concat(
+		compile.Properties.Srcs,
+		compile.Properties.Compile_data,
+	))
 }
 
 func (compiler *baseCompiler) rustdoc(ctx ModuleContext, flags Flags,

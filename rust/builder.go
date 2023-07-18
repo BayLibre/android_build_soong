@@ -180,7 +180,7 @@ func makeLibFlags(deps PathDeps, ruleCmd *android.RuleBuilderCommand) []string {
 	var libFlags []string
 
 	// Collect library/crate flags
-	for _, lib := range deps.TransitiveRlibs.ToList() {
+	for _, lib := range deps.RLibs {
 		libPath := ruleCmd.PathForInput(lib.Path)
 		libFlags = append(libFlags, "--extern "+lib.CrateName+"="+libPath)
 	}
@@ -191,6 +191,11 @@ func makeLibFlags(deps PathDeps, ruleCmd *android.RuleBuilderCommand) []string {
 	for _, procMacro := range deps.ProcMacros {
 		procMacroPath := ruleCmd.PathForInput(procMacro.Path)
 		libFlags = append(libFlags, "--extern "+procMacro.CrateName+"="+procMacroPath)
+	}
+	for _, lib := range deps.TransitiveRlibs.ToList() {
+		libPath := ruleCmd.PathForInput(lib.Path)
+		//libFlags = append(libFlags, "--extern "+lib.CrateName+"="+libPath)
+		libFlags = append(libFlags, "-L "+android.PathDirname(libPath))
 	}
 
 	for _, path := range deps.linkDirs {
@@ -356,17 +361,16 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 		var outputs android.WritablePaths
 
 		for _, genSrc := range deps.SrcDeps {
-			outfile := filepath.Join(genSubDir, genSrc.String())
-			if android.SuffixInList(outputs.Strings(), outfile) {
-				ctx.PropertyErrorf("srcs", "multiple source providers generate the same filename output: "+genSrc.String())
+			if android.SuffixInList(outputs.Strings(), genSubDir+genSrc.Base()) {
+				ctx.PropertyErrorf("srcs",
+					"multiple source providers generate the same filename output: "+genSrc.Base())
 			}
-			outfilePath := android.PathForModuleOut(ctx, outfile)
-			outputs = append(outputs, outfilePath)
+			outputs = append(outputs, android.PathForModuleOut(ctx, genSubDir+genSrc.Base()))
 		}
 
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        cpDir,
-			Description: "cp " + moduleGenDir.Path().Base(),
+			Description: "cp " + moduleGenDir.Path().Rel(),
 			Outputs:     outputs,
 			Inputs:      deps.SrcDeps,
 			Args: map[string]string{
@@ -445,7 +449,6 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 			linkFlags,
 			linkImplicits,
 			usesLinker,
-			outputFile,
 			libFlags,
 		)
 	}
@@ -484,9 +487,9 @@ func compile(
 	linkFlags []string,
 	linkImplicits android.Paths,
 	usesLinker bool,
-	rustcOutputFile android.WritablePath,
 	libFlags []string,
 ) {
+	rustcOutputFile := outputFile
 	if usesLinker {
 		rustcOutputFile = android.PathForModuleOut(ctx, outputFile.Base()+".rsp")
 	}
@@ -551,11 +554,17 @@ func compileInSandbox(
 	}
 
 	libc := ctx.Config().HostCcSharedLibPath(ctx, "libc++")
-	sboxLibc := android.PathForModuleOut(ctx, libc.Base()+".1")
+	sboxLibc := android.PathForModuleOut(ctx, libc.Base())
 	ctx.Build(pctx, android.BuildParams{
 		Rule:   cp,
 		Input:  libc,
 		Output: sboxLibc,
+	})
+	sboxLibc1 := android.PathForModuleOut(ctx, libc.Base()+".1")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   cp,
+		Input:  libc,
+		Output: sboxLibc1,
 	})
 
 	mkCrateRspPy := android.PathForSource(ctx, "build", "soong", "scripts", "mkcratersp.py")
@@ -569,6 +578,20 @@ func compileInSandbox(
 	rustcCmd := rustcRule.Command()
 	envVars = append(envVars, "AR="+rustcCmd.PathForTool(cc_config.ClangPath(ctx, "bin/llvm-ar")))
 	libFlags := makeLibFlags(deps, rustcCmd)
+
+	var libDirs []string
+	for _, lib := range deps.RustcDeps {
+		if strings.Contains(lib.String(), "prebuilts/rust") {
+			libDirs = append(libDirs, "__SBOX_SANDBOX_DIR__/"+android.PathDirname(lib.String()))
+		}
+	}
+	for _, lib := range deps.LibDeps {
+		libDirs = append(libDirs, "__SBOX_SANDBOX_DIR__/"+android.PathDirname(lib.String()))
+	}
+	envVars = append(envVars, fmt.Sprintf(
+		"LD_LIBRARY_PATH=%s:$${LD_LIBRARY_PATH}",
+		strings.Join(android.FirstUniqueStrings(libDirs), ":")),
+	)
 
 	rustcCmd.
 		Flags(envVars).
@@ -622,11 +645,18 @@ func compileInSandbox(
 					android.PathDirname(sboxLibc.String()),
 				),
 			).
+			Flag(
+				fmt.Sprintf(
+					"LD_LIBRARY_PATH=$${LD_LIBRARY_PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
+					android.PathDirname(sboxLibc1.String()),
+				),
+			).
 			Tool(clangBinPath.Join(ctx, "clang++")).
 			ImplicitTool(clangBinPath.Join(ctx, "clang++.real")).
 			ImplicitTool(clangBinPath.Join(ctx, "lld")).
 			ImplicitTool(clangBinPath.Join(ctx, "ld.lld")).
 			ImplicitTool(sboxLibc).
+			ImplicitTool(sboxLibc1).
 			Flag("-o").
 			Output(linkerSboxOutputFile).
 			Inputs(deps.CrtBegin).

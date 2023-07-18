@@ -114,7 +114,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "$(location) > $(out)",
 			`,
-			expect: "__SBOX_SANDBOX_DIR__/tools/out/bin/tool > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "__SBOX_SANDBOX_DIR__/tools/out/bin/tool > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "empty location tool2",
@@ -123,7 +123,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "$(location) > $(out)",
 			`,
-			expect: "__SBOX_SANDBOX_DIR__/tools/out/bin/tool > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "__SBOX_SANDBOX_DIR__/tools/out/bin/tool > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "empty location tool file",
@@ -132,7 +132,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "$(location) > $(out)",
 			`,
-			expect: "__SBOX_SANDBOX_DIR__/tools/src/tool_file1 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "__SBOX_SANDBOX_DIR__/tools/src/tool_file1 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "empty location tool file fg",
@@ -141,7 +141,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "$(location) > $(out)",
 			`,
-			expect: "__SBOX_SANDBOX_DIR__/tools/src/tool_file1 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "__SBOX_SANDBOX_DIR__/tools/src/tool_file1 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "empty location tool and tool file",
@@ -151,7 +151,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "$(location) > $(out)",
 			`,
-			expect: "__SBOX_SANDBOX_DIR__/tools/out/bin/tool > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "__SBOX_SANDBOX_DIR__/tools/out/bin/tool > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "tool",
@@ -160,7 +160,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "$(location tool) > $(out)",
 			`,
-			expect: "__SBOX_SANDBOX_DIR__/tools/out/bin/tool > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "__SBOX_SANDBOX_DIR__/tools/out/bin/tool > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "tool2",
@@ -169,7 +169,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "$(location :tool) > $(out)",
 			`,
-			expect: "__SBOX_SANDBOX_DIR__/tools/out/bin/tool > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "__SBOX_SANDBOX_DIR__/tools/out/bin/tool > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "tool file",
@@ -178,7 +178,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "$(location tool_file1) > $(out)",
 			`,
-			expect: "__SBOX_SANDBOX_DIR__/tools/src/tool_file1 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "__SBOX_SANDBOX_DIR__/tools/src/tool_file1 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "tool file fg",
@@ -187,7 +187,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "$(location :1tool_file) > $(out)",
 			`,
-			expect: "__SBOX_SANDBOX_DIR__/tools/src/tool_file1 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "__SBOX_SANDBOX_DIR__/tools/src/tool_file1 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "tool files",
@@ -196,7 +196,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "$(locations :tool_files) > $(out)",
 			`,
-			expect: "__SBOX_SANDBOX_DIR__/tools/src/tool_file1 __SBOX_SANDBOX_DIR__/tools/src/tool_file2 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "__SBOX_SANDBOX_DIR__/tools/src/tool_file1 __SBOX_SANDBOX_DIR__/tools/src/tool_file2 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "in1",
@@ -205,7 +205,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "cat $(in) > $(out)",
 			`,
-			expect: "cat in1 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "cat in1 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "in1 fg",
@@ -214,7 +214,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "cat $(in) > $(out)",
 			`,
-			expect: "cat in1 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "cat in1 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "ins",
@@ -223,7 +223,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "cat $(in) > $(out)",
 			`,
-			expect: "cat in1 in2 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "cat in1 in2 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "ins fg",
@@ -232,7 +232,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "cat $(in) > $(out)",
 			`,
-			expect: "cat in1 in2 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "cat in1 in2 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "location in1",
@@ -241,7 +241,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "cat $(location in1) > $(out)",
 			`,
-			expect: "cat in1 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "cat in1 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "location in1 fg",
@@ -250,7 +250,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "cat $(location :1in) > $(out)",
 			`,
-			expect: "cat in1 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "cat in1 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "location ins",
@@ -259,7 +259,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "cat $(location in1) > $(out)",
 			`,
-			expect: "cat in1 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "cat in1 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "location ins fg",
@@ -268,7 +268,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "cat $(locations :ins) > $(out)",
 			`,
-			expect: "cat in1 in2 > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "cat in1 in2 > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "outs",
@@ -276,7 +276,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out", "out2"],
 				cmd: "echo foo > $(out)",
 			`,
-			expect: "echo foo > __SBOX_SANDBOX_DIR__/out/out __SBOX_SANDBOX_DIR__/out/out2",
+			expect: "echo foo > __SBOX_SANDBOX_DIR__/out/soong/out __SBOX_SANDBOX_DIR__/out/soong/out2",
 		},
 		{
 			name: "location out",
@@ -284,7 +284,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out", "out2"],
 				cmd: "echo foo > $(location out2)",
 			`,
-			expect: "echo foo > __SBOX_SANDBOX_DIR__/out/out2",
+			expect: "echo foo > __SBOX_SANDBOX_DIR__/out/soong/out2",
 		},
 		{
 			name:       "depfile",
@@ -294,7 +294,7 @@ func TestGenruleCmd(t *testing.T) {
 				depfile: true,
 				cmd: "echo foo > $(out) && touch $(depfile)",
 			`,
-			expect: "echo foo > __SBOX_SANDBOX_DIR__/out/out && touch __SBOX_DEPFILE__",
+			expect: "echo foo > __SBOX_SANDBOX_DIR__/out/soong/out && touch __SBOX_DEPFILE__",
 		},
 		{
 			name: "gendir",
@@ -302,7 +302,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "echo foo > $(genDir)/foo && cp $(genDir)/foo $(out)",
 			`,
-			expect: "echo foo > __SBOX_SANDBOX_DIR__/out/foo && cp __SBOX_SANDBOX_DIR__/out/foo __SBOX_SANDBOX_DIR__/out/out",
+			expect: "echo foo > __SBOX_SANDBOX_DIR__/out/soong/foo && cp __SBOX_SANDBOX_DIR__/out/soong/foo __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "$",
@@ -310,7 +310,7 @@ func TestGenruleCmd(t *testing.T) {
 				out: ["out"],
 				cmd: "echo $$ > $(out)",
 			`,
-			expect: "echo $ > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "echo $ > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 
 		{
@@ -426,7 +426,7 @@ func TestGenruleCmd(t *testing.T) {
 
 			allowMissingDependencies: true,
 
-			expect: "cat '***missing srcs :missing***' > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "cat '***missing srcs :missing***' > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 		{
 			name: "tool allow missing dependencies",
@@ -438,7 +438,7 @@ func TestGenruleCmd(t *testing.T) {
 
 			allowMissingDependencies: true,
 
-			expect: "'***missing tool :missing***' > __SBOX_SANDBOX_DIR__/out/out",
+			expect: "'***missing tool :missing***' > __SBOX_SANDBOX_DIR__/out/soong/out",
 		},
 	}
 
@@ -573,7 +573,7 @@ func TestGenSrcs(t *testing.T) {
 				cmd: "$(location) $(in) > $(out)",
 			`,
 			cmds: []string{
-				"bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in1.txt > __SBOX_SANDBOX_DIR__/out/in1.h' && bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in2.txt > __SBOX_SANDBOX_DIR__/out/in2.h'",
+				"bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in1.txt > __SBOX_SANDBOX_DIR__/out/soong/in1.h' && bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in2.txt > __SBOX_SANDBOX_DIR__/out/soong/in2.h'",
 			},
 			deps: []string{
 				"out/soong/.intermediates/gen/gen/gensrcs/in1.h",
@@ -593,8 +593,8 @@ func TestGenSrcs(t *testing.T) {
 				shard_size: 2,
 			`,
 			cmds: []string{
-				"bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in1.txt > __SBOX_SANDBOX_DIR__/out/in1.h' && bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in2.txt > __SBOX_SANDBOX_DIR__/out/in2.h'",
-				"bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in3.txt > __SBOX_SANDBOX_DIR__/out/in3.h'",
+				"bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in1.txt > __SBOX_SANDBOX_DIR__/out/soong/in1.h' && bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in2.txt > __SBOX_SANDBOX_DIR__/out/soong/in2.h'",
+				"bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in3.txt > __SBOX_SANDBOX_DIR__/out/soong/in3.h'",
 			},
 			deps: []string{
 				"out/soong/.intermediates/gen/gen/gensrcs/in1.h",
@@ -617,8 +617,8 @@ func TestGenSrcs(t *testing.T) {
 				shard_size: 2,
 			`,
 			cmds: []string{
-				"bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in1.txt --extra_input=baz.txt > __SBOX_SANDBOX_DIR__/out/in1.h' && bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in2.txt --extra_input=baz.txt > __SBOX_SANDBOX_DIR__/out/in2.h'",
-				"bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in3.txt --extra_input=baz.txt > __SBOX_SANDBOX_DIR__/out/in3.h'",
+				"bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in1.txt --extra_input=baz.txt > __SBOX_SANDBOX_DIR__/out/soong/in1.h' && bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in2.txt --extra_input=baz.txt > __SBOX_SANDBOX_DIR__/out/soong/in2.h'",
+				"bash -c '__SBOX_SANDBOX_DIR__/tools/out/bin/tool in3.txt --extra_input=baz.txt > __SBOX_SANDBOX_DIR__/out/soong/in3.h'",
 			},
 			deps: []string{
 				"out/soong/.intermediates/gen/gen/gensrcs/in1.h",
@@ -772,7 +772,7 @@ func TestGenruleDefaults(t *testing.T) {
 
 	gen := result.Module("gen", "").(*Module)
 
-	expectedCmd := "cp in1 __SBOX_SANDBOX_DIR__/out/out"
+	expectedCmd := "cp in1 __SBOX_SANDBOX_DIR__/out/soong/out"
 	android.AssertStringEquals(t, "cmd", expectedCmd, gen.rawCommands[0])
 
 	expectedSrcs := []string{"in1"}
@@ -1082,7 +1082,7 @@ func TestGenruleWithGlobPaths(t *testing.T) {
 				}
 				`,
 			additionalFiles: android.MockFS{"inn$1.txt": nil},
-			expectedCmd:     "cp 'inn$1.txt' __SBOX_SANDBOX_DIR__/out/out.txt",
+			expectedCmd:     "cp 'inn$1.txt' __SBOX_SANDBOX_DIR__/out/soong/out.txt",
 		},
 		{
 			name: "multiple file in directory with $ sign",
@@ -1095,7 +1095,7 @@ func TestGenruleWithGlobPaths(t *testing.T) {
 				}
 				`,
 			additionalFiles: android.MockFS{"inn$1.txt": nil, "inn$2.txt": nil},
-			expectedCmd:     "cp 'inn$1.txt' 'inn$2.txt' __SBOX_SANDBOX_DIR__/out",
+			expectedCmd:     "cp 'inn$1.txt' 'inn$2.txt' __SBOX_SANDBOX_DIR__/out/soong",
 		},
 		{
 			name: "file in directory with other shell unsafe character",
@@ -1108,7 +1108,7 @@ func TestGenruleWithGlobPaths(t *testing.T) {
 				}
 				`,
 			additionalFiles: android.MockFS{"inn@1.txt": nil},
-			expectedCmd:     "cp 'inn@1.txt' __SBOX_SANDBOX_DIR__/out/out.txt",
+			expectedCmd:     "cp 'inn@1.txt' __SBOX_SANDBOX_DIR__/out/soong/out.txt",
 		},
 		{
 			name: "glob location param with filepath containing $",
@@ -1134,7 +1134,7 @@ func TestGenruleWithGlobPaths(t *testing.T) {
 				}
 				`,
 			additionalFiles: android.MockFS{"a/inn$1.txt": nil},
-			expectedCmd:     "cp '__SBOX_SANDBOX_DIR__/tools/src/a/inn$1.txt' __SBOX_SANDBOX_DIR__/out/out.txt",
+			expectedCmd:     "cp '__SBOX_SANDBOX_DIR__/tools/src/a/inn$1.txt' __SBOX_SANDBOX_DIR__/out/soong/out.txt",
 		},
 	}
 

@@ -401,15 +401,15 @@ func TestRuleBuilder(t *testing.T) {
 		addCommands(rule)
 
 		wantCommands := []string{
-			"__SBOX_SANDBOX_DIR__/out/DepFile Flag FlagWithArg=arg FlagWithDepFile=__SBOX_SANDBOX_DIR__/out/depfile " +
-				"FlagWithInput=input FlagWithOutput=__SBOX_SANDBOX_DIR__/out/output " +
-				"FlagWithRspFileInputList=out_local/soong/rsp Input __SBOX_SANDBOX_DIR__/out/Output " +
-				"__SBOX_SANDBOX_DIR__/out/SymlinkOutput Text Tool after command2 old cmd",
-			"command2 __SBOX_SANDBOX_DIR__/out/depfile2 input2 __SBOX_SANDBOX_DIR__/out/output2 tool2",
-			"command3 input3 __SBOX_SANDBOX_DIR__/out/output2 __SBOX_SANDBOX_DIR__/out/output3 input3 __SBOX_SANDBOX_DIR__/out/output2",
+			"__SBOX_SANDBOX_DIR__/out/soong/DepFile Flag FlagWithArg=arg FlagWithDepFile=__SBOX_SANDBOX_DIR__/out/soong/depfile " +
+				"FlagWithInput=input FlagWithOutput=__SBOX_SANDBOX_DIR__/out/soong/output " +
+				"FlagWithRspFileInputList=out_local/soong/rsp Input __SBOX_SANDBOX_DIR__/out/soong/Output " +
+				"__SBOX_SANDBOX_DIR__/out/soong/SymlinkOutput Text Tool after command2 old cmd",
+			"command2 __SBOX_SANDBOX_DIR__/out/soong/depfile2 input2 __SBOX_SANDBOX_DIR__/out/soong/output2 tool2",
+			"command3 input3 __SBOX_SANDBOX_DIR__/out/soong/output2 __SBOX_SANDBOX_DIR__/out/soong/output3 input3 __SBOX_SANDBOX_DIR__/out/soong/output2",
 		}
 
-		wantDepMergerCommand := "out_local/soong/host/" + ctx.Config().PrebuiltOS() + "/bin/dep_fixer __SBOX_SANDBOX_DIR__/out/DepFile __SBOX_SANDBOX_DIR__/out/depfile __SBOX_SANDBOX_DIR__/out/ImplicitDepFile __SBOX_SANDBOX_DIR__/out/depfile2"
+		wantDepMergerCommand := "out_local/soong/host/" + ctx.Config().PrebuiltOS() + "/bin/dep_fixer __SBOX_SANDBOX_DIR__/out/soong/DepFile __SBOX_SANDBOX_DIR__/out/soong/depfile __SBOX_SANDBOX_DIR__/out/soong/ImplicitDepFile __SBOX_SANDBOX_DIR__/out/soong/depfile2"
 
 		AssertDeepEquals(t, "rule.Commands()", wantCommands, rule.Commands())
 
@@ -431,15 +431,15 @@ func TestRuleBuilder(t *testing.T) {
 		addCommands(rule)
 
 		wantCommands := []string{
-			"__SBOX_SANDBOX_DIR__/out/DepFile Flag FlagWithArg=arg FlagWithDepFile=__SBOX_SANDBOX_DIR__/out/depfile " +
-				"FlagWithInput=input FlagWithOutput=__SBOX_SANDBOX_DIR__/out/output " +
-				"FlagWithRspFileInputList=out_local/soong/rsp Input __SBOX_SANDBOX_DIR__/out/Output " +
-				"__SBOX_SANDBOX_DIR__/out/SymlinkOutput Text __SBOX_SANDBOX_DIR__/tools/src/Tool after command2 old cmd",
-			"command2 __SBOX_SANDBOX_DIR__/out/depfile2 input2 __SBOX_SANDBOX_DIR__/out/output2 __SBOX_SANDBOX_DIR__/tools/src/tool2",
-			"command3 input3 __SBOX_SANDBOX_DIR__/out/output2 __SBOX_SANDBOX_DIR__/out/output3 input3 __SBOX_SANDBOX_DIR__/out/output2",
+			"__SBOX_SANDBOX_DIR__/out/soong/DepFile Flag FlagWithArg=arg FlagWithDepFile=__SBOX_SANDBOX_DIR__/out/soong/depfile " +
+				"FlagWithInput=input FlagWithOutput=__SBOX_SANDBOX_DIR__/out/soong/output " +
+				"FlagWithRspFileInputList=out_local/soong/rsp Input __SBOX_SANDBOX_DIR__/out/soong/Output " +
+				"__SBOX_SANDBOX_DIR__/out/soong/SymlinkOutput Text __SBOX_SANDBOX_DIR__/tools/src/Tool after command2 old cmd",
+			"command2 __SBOX_SANDBOX_DIR__/out/soong/depfile2 input2 __SBOX_SANDBOX_DIR__/out/soong/output2 __SBOX_SANDBOX_DIR__/tools/src/tool2",
+			"command3 input3 __SBOX_SANDBOX_DIR__/out/soong/output2 __SBOX_SANDBOX_DIR__/out/soong/output3 input3 __SBOX_SANDBOX_DIR__/out/soong/output2",
 		}
 
-		wantDepMergerCommand := "__SBOX_SANDBOX_DIR__/tools/out/bin/dep_fixer __SBOX_SANDBOX_DIR__/out/DepFile __SBOX_SANDBOX_DIR__/out/depfile __SBOX_SANDBOX_DIR__/out/ImplicitDepFile __SBOX_SANDBOX_DIR__/out/depfile2"
+		wantDepMergerCommand := "__SBOX_SANDBOX_DIR__/tools/out/bin/dep_fixer __SBOX_SANDBOX_DIR__/out/soong/DepFile __SBOX_SANDBOX_DIR__/out/soong/depfile __SBOX_SANDBOX_DIR__/out/soong/ImplicitDepFile __SBOX_SANDBOX_DIR__/out/soong/depfile2"
 
 		AssertDeepEquals(t, "rule.Commands()", wantCommands, rule.Commands())
 
@@ -461,15 +461,15 @@ func TestRuleBuilder(t *testing.T) {
 		addCommands(rule)
 
 		wantCommands := []string{
-			"__SBOX_SANDBOX_DIR__/out/DepFile Flag FlagWithArg=arg FlagWithDepFile=__SBOX_SANDBOX_DIR__/out/depfile " +
-				"FlagWithInput=input FlagWithOutput=__SBOX_SANDBOX_DIR__/out/output " +
-				"FlagWithRspFileInputList=__SBOX_SANDBOX_DIR__/out/rsp Input __SBOX_SANDBOX_DIR__/out/Output " +
-				"__SBOX_SANDBOX_DIR__/out/SymlinkOutput Text __SBOX_SANDBOX_DIR__/tools/src/Tool after command2 old cmd",
-			"command2 __SBOX_SANDBOX_DIR__/out/depfile2 input2 __SBOX_SANDBOX_DIR__/out/output2 __SBOX_SANDBOX_DIR__/tools/src/tool2",
-			"command3 input3 __SBOX_SANDBOX_DIR__/out/output2 __SBOX_SANDBOX_DIR__/out/output3 input3 __SBOX_SANDBOX_DIR__/out/output2",
+			"__SBOX_SANDBOX_DIR__/out/soong/DepFile Flag FlagWithArg=arg FlagWithDepFile=__SBOX_SANDBOX_DIR__/out/soong/depfile " +
+				"FlagWithInput=input FlagWithOutput=__SBOX_SANDBOX_DIR__/out/soong/output " +
+				"FlagWithRspFileInputList=__SBOX_SANDBOX_DIR__/out/soong/rsp Input __SBOX_SANDBOX_DIR__/out/soong/Output " +
+				"__SBOX_SANDBOX_DIR__/out/soong/SymlinkOutput Text __SBOX_SANDBOX_DIR__/tools/src/Tool after command2 old cmd",
+			"command2 __SBOX_SANDBOX_DIR__/out/soong/depfile2 input2 __SBOX_SANDBOX_DIR__/out/soong/output2 __SBOX_SANDBOX_DIR__/tools/src/tool2",
+			"command3 input3 __SBOX_SANDBOX_DIR__/out/soong/output2 __SBOX_SANDBOX_DIR__/out/soong/output3 input3 __SBOX_SANDBOX_DIR__/out/soong/output2",
 		}
 
-		wantDepMergerCommand := "__SBOX_SANDBOX_DIR__/tools/out/bin/dep_fixer __SBOX_SANDBOX_DIR__/out/DepFile __SBOX_SANDBOX_DIR__/out/depfile __SBOX_SANDBOX_DIR__/out/ImplicitDepFile __SBOX_SANDBOX_DIR__/out/depfile2"
+		wantDepMergerCommand := "__SBOX_SANDBOX_DIR__/tools/out/bin/dep_fixer __SBOX_SANDBOX_DIR__/out/soong/DepFile __SBOX_SANDBOX_DIR__/out/soong/depfile __SBOX_SANDBOX_DIR__/out/soong/ImplicitDepFile __SBOX_SANDBOX_DIR__/out/soong/depfile2"
 
 		AssertDeepEquals(t, "rule.Commands()", wantCommands, rule.Commands())
 

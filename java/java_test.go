@@ -2248,6 +2248,8 @@ func TestJavaApiLibraryFullApiSurfaceStub(t *testing.T) {
 	sboxProto := android.RuleBuilderSboxProtoForTests(t, manifest)
 	manifestCommand := sboxProto.Commands[0].GetCommand()
 	android.AssertStringDoesContain(t, "Command expected to contain full_api_surface_stub output jar", manifestCommand, "lib1.jar")
+	android.AssertStringDoesContain(t, "Command expected to contain module srcjar file", manifestCommand, "bar1-stubs.srcjar")
+	android.AssertStringDoesContain(t, "Command expected to contain output files list text file flag", manifestCommand, "--out __SBOX_SANDBOX_DIR__/out/soong/sources.txt")
 }
 
 func TestJavaApiLibraryFilegroupInput(t *testing.T) {
