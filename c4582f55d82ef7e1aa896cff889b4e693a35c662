@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab74bca5_0349ac79",
+        "filename": "rust/toolchain_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-07-18T17:44:07Z",
+      "side": 1,
+      "message": "All of the files specified in `toolchain_srcs` in aosp/2654319 are more like `data`. Should we introduce `Toolchain_data` to include files that are used at compile time and runtime similar to Bazel? https://github.com/bazelbuild/rules_rust/blob/main/docs/defs.md#rust_library",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "c4582f55d82ef7e1aa896cff889b4e693a35c662",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
