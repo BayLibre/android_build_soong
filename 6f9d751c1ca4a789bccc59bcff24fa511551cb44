@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08e6a42_3be33311",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-18T21:35:38Z",
+      "side": 1,
+      "message": "Can we also have the test case use `data_libs`?",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6518b9_4a7e5794",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-18T21:35:38Z",
+      "side": 1,
+      "message": "you shouldn\u0027t ever need to change a properties struct to make a bp2build change.\n\n`ShTest` [embeds](https://cs.android.com/android/platform/superproject/main/+/refs/heads/main:build/soong/sh/sh_binary.go;l\u003d167;drc\u003d84c211366fe898b3d08337521c7cdb5e93691122) `ShBinary`, accessing the properties from `ShBinary` should give you access to the properties you need.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 42
+      },
+      "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f64106d_3e828994",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-18T21:35:38Z",
+      "side": 1,
+      "message": "Is there a reason we can\u0027t continue to use `initShBinaryModule` ? -- it\u0027s ensuring that the embedded binary properties get added in addition to the test-specific properties.",
+      "range": {
+        "startLine": 515,
+        "startChar": 1,
+        "endLine": 515,
+        "endChar": 17
+      },
+      "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf1d54a_4183ccbb",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-18T21:35:38Z",
+      "side": 1,
+      "message": "Sorry, I made an error in the bug I filed -- This should be `Data_libs`, not `Data_device_libs`.",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 74
+      },
+      "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e7ecad_777cbe0b",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-18T21:35:38Z",
+      "side": 1,
+      "message": "Given that we\u0027re going to have a macro in the follow-up, it may make sense to go ahead and add a bzl_load_location",
+      "range": {
+        "startLine": 615,
+        "startChar": 23,
+        "endLine": 615,
+        "endChar": 24
+      },
+      "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
