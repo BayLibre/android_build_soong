@@ -327,7 +327,7 @@ func TestD8(t *testing.T) {
 		fooD8.Args["d8Flags"], staticLibHeader.String())
 }
 
-func TestProguardFlagsInheritance(t *testing.T) {
+func TestProguardFlagsInheritanceStaticLibs(t *testing.T) {
 	result := PrepareForTestWithJavaDefaultModules.RunTestWithBp(t, `
 		android_app {
 			name: "app",
@@ -379,4 +379,228 @@ func TestProguardFlagsInheritance(t *testing.T) {
 		appR8.Args["r8Flags"], "secondary.flags")
 	android.AssertStringDoesContain(t, "expected tertiary_lib's proguard flags from inherited dep",
 		appR8.Args["r8Flags"], "tertiary.flags")
+}
+
+// This test tests that proguard specs are properly propagated with a dependency stucture
+// that looks like the following graph.
+// This graph tests a few cases:
+// 1) proguard specs from direct static dependencies ARE propagated (static)
+// 2) proguard specs from direct shared dependencies ARE NOT propagated unless exported (static_shared)
+// 3) proguard specs from static libraries that are dependencies of a non-exported shared library ARE NOT propagated (static_shared_static)
+// 4) proguard specs from transitive shared dependencies ARE propagated when exported (static_shared_shared)
+// 5) proguard specs static dependencies of an exported shared library ARE propagated (static_shared_shared_static)
+// 6) proguard specs from unexported shared dependencies of an exported shared dependency ARE NOT propagated (static_shared_shared_shared)
+// |                                           ┌────────────────────────────────────┐
+// |                                           │               static               │
+// |                                           └────────────────────────────────────┘
+// |                                             │
+// |                                             │ shared
+// |                                             ▼
+// | ┌─────────────────────────────┐  static   ┌────────────────────────────────────┐
+// | │    static_shared_static     │ ◀──────── │           static_shared            │
+// | └─────────────────────────────┘           └────────────────────────────────────┘
+// |                                             │
+// |                                             │ shared
+// |                                             ▼
+// | ┌─────────────────────────────┐  static   ┌────────────────────────────────────┐
+// | │ static_shared_shared_static │ ◀──────── │        static_shared_shared        │
+// | └─────────────────────────────┘           └────────────────────────────────────┘
+// |                                             │
+// |                                             │ shared
+// |                                             ▼
+// |                                           ┌────────────────────────────────────┐
+// |                                           │    static_shared_shared_shared     │
+// |                                           └────────────────────────────────────┘
+// |                                             │
+// |                                             │ static
+// |                                             ▼
+// |                                           ┌────────────────────────────────────┐
+// |                                           │ static_shared_shared_shared_static │
+// |                                           └────────────────────────────────────┘
+func TestProguardFlagsInheritanceLibs(t *testing.T) {
+	result := PrepareForTestWithJavaDefaultModules.RunTestWithBp(t, `
+		android_app {
+			name: "app",
+			static_libs: ["static"],
+			platform_apis: true,
+		}
+
+		java_library {
+			name: "static",
+			libs: ["static_shared"],
+			optimize: {
+				proguard_flags_files: ["static.flags"],
+			},
+		}
+
+		java_library {
+			name: "static_shared",
+			libs: ["static_shared_shared"],
+			static_libs: ["static_shared_static"],
+			optimize: {
+				proguard_flags_files: ["static_shared.flags"],
+			},
+		}
+
+		java_library {
+			name: "static_shared_static",
+			optimize: {
+				proguard_flags_files: ["static_shared_static.flags"],
+			},
+		}
+
+		java_library {
+			name: "static_shared_shared",
+			libs: ["static_shared_shared_shared"],
+			static_libs: ["static_shared_shared_static"],
+			optimize: {
+				proguard_flags_files: ["static_shared_shared.flags"],
+				export_proguard_flags_files: true,
+			},
+		}
+
+		java_library {
+			name: "static_shared_shared_static",
+			optimize: {
+				proguard_flags_files: ["static_shared_shared_static.flags"],
+			},
+		}
+
+		java_library {
+			name: "static_shared_shared_shared",
+			static_libs: ["static_shared_shared_shared_static"],
+			optimize: {
+				proguard_flags_files: ["static_shared_shared_shared.flags"],
+			},
+		}
+	`)
+
+	app := result.ModuleForTests("app", "android_common")
+	appR8 := app.Rule("r8")
+	android.AssertStringDoesContain(t, "expected static's proguard flags from direct dep",
+		appR8.Args["r8Flags"], "static.flags")
+	android.AssertStringDoesContain(t, "expected static's proguard flags from direct dep",
+		appR8.Args["r8Flags"], "static.flags")
+	android.AssertStringDoesContain(t, "expected static_shared_shared's proguard flags from inherited dep",
+		appR8.Args["r8Flags"], "static_shared_shared.flags")
+	android.AssertStringDoesContain(t, "expected static_shared_shared_static's proguard flags from inherited dep",
+		appR8.Args["r8Flags"], "static_shared_shared_static.flags")
+	android.AssertStringDoesNotContain(t, "did not expect static_shared's proguard flags from inherited dep",
+		appR8.Args["r8Flags"], "static_shared.flags")
+	android.AssertStringDoesNotContain(t, "did not expect static_shared_static's proguard flags from inherited dep",
+		appR8.Args["r8Flags"], "static_shared_static.flags")
+	android.AssertStringDoesNotContain(t, "did not expect static_shared_shared's proguard flags from inherited dep",
+		appR8.Args["r8Flags"], "static_shared_shared_shared.flags")
+}
+
+// This test tests that proguard specs are properly propagated with a dependency stucture
+// that looks like the following graph.
+// This graph tests a few cases:
+// 1) proguard specs from direct static dependencies ARE propagated (static)
+// 2) proguard specs from direct shared dependencies ARE NOT propagated unless exported (static_shared)
+// 3) proguard specs from static libraries that are dependencies of a non-exported shared library ARE NOT propagated (static_shared_static)
+// 4) proguard specs from transitive shared dependencies ARE propagated when exported (static_shared_shared)
+// 5) proguard specs static dependencies of an exported shared library ARE propagated (static_shared_shared_static)
+// 6) proguard specs from unexported shared dependencies of an exported shared dependency ARE NOT propagated (static_shared_shared_shared)
+// |                                                   ┌────────────────────────────────────────────┐
+// |                                                   │               static_android               │
+// |                                                   └────────────────────────────────────────────┘
+// |                                                     │
+// |                                                     │ shared
+// |                                                     ▼
+// | ┌─────────────────────────────────────┐  static   ┌────────────────────────────────────────────┐
+// | │    static_android_shared_static     │ ◀──────── │           static_android_shared            │
+// | └─────────────────────────────────────┘           └────────────────────────────────────────────┘
+// |                                                     │
+// |                                                     │ shared
+// |                                                     ▼
+// | ┌─────────────────────────────────────┐  static   ┌────────────────────────────────────────────┐
+// | │ static_android_shared_shared_static │ ◀──────── │        static_android_shared_shared        │
+// | └─────────────────────────────────────┘           └────────────────────────────────────────────┘
+// |                                                     │
+// |                                                     │ shared
+// |                                                     ▼
+// |                                                   ┌────────────────────────────────────────────┐
+// |                                                   │    static_android_shared_shared_shared     │
+// |                                                   └────────────────────────────────────────────┘
+// |                                                     │
+// |                                                     │ static
+// |                                                     ▼
+// |                                                   ┌────────────────────────────────────────────┐
+// |                                                   │ static_android_shared_shared_shared_static │
+// |                                                   └────────────────────────────────────────────┘
+func TestProguardFlagsInheritanceAndroidLibrary(t *testing.T) {
+	result := PrepareForTestWithJavaDefaultModules.RunTestWithBp(t, `
+		android_app {
+			name: "app",
+			static_libs: ["static_android"],
+			platform_apis: true,
+		}
+
+		android_library {
+			name: "static_android",
+			libs: ["static_android_shared"],
+			optimize: {
+				proguard_flags_files: ["static_android.flags"],
+			},
+		}
+
+		java_library {
+			name: "static_android_shared",
+			libs: ["static_android_shared_shared"],
+			static_libs: ["static_android_shared_static"],
+			optimize: {
+				proguard_flags_files: ["static_android_shared.flags"],
+			},
+		}
+
+		java_library {
+			name: "static_android_shared_static",
+			optimize: {
+				proguard_flags_files: ["static_android_shared_static.flags"],
+			},
+		}
+
+		java_library {
+			name: "static_android_shared_shared",
+			libs: ["static_android_shared_shared_shared"],
+			static_libs: ["static_android_shared_shared_static"],
+			optimize: {
+				proguard_flags_files: ["static_android_shared_shared.flags"],
+				export_proguard_flags_files: true,
+			},
+		}
+
+		java_library {
+			name: "static_android_shared_shared_static",
+			optimize: {
+				proguard_flags_files: ["static_android_shared_shared_static.flags"],
+			},
+		}
+
+		java_library {
+			name: "static_android_shared_shared_shared",
+			static_libs: ["static_android_shared_shared_shared_static"],
+			optimize: {
+				proguard_flags_files: ["static_android_shared_shared_shared.flags"],
+			},
+		}
+	`)
+
+	app := result.ModuleForTests("app", "android_common")
+	appR8 := app.Rule("r8")
+	android.AssertStringDoesContain(t, "expected static's proguard flags from direct dep",
+		appR8.Args["r8Flags"], "static.flags")
+	android.AssertStringDoesContain(t, "expected static_android's proguard flags from direct dep",
+		appR8.Args["r8Flags"], "static_android.flags")
+	android.AssertStringDoesContain(t, "expected static_android_shared_shared's proguard flags from inherited dep",
+		appR8.Args["r8Flags"], "static_android_shared_shared.flags")
+	android.AssertStringDoesContain(t, "expected static_android_shared_shared_static's proguard flags from inherited dep",
+		appR8.Args["r8Flags"], "static_android_shared_shared_static.flags")
+	android.AssertStringDoesNotContain(t, "did not expect static_android_shared's proguard flags from inherited dep",
+		appR8.Args["r8Flags"], "static_android_shared.flags")
+	android.AssertStringDoesNotContain(t, "did not expect static_android_shared_static's proguard flags from inherited dep",
+		appR8.Args["r8Flags"], "static_android_shared_static.flags")
+	android.AssertStringDoesNotContain(t, "did not expect static_shared_shared's proguard flags from inherited dep",
+		appR8.Args["r8Flags"], "static_android_shared_shared_shared.flags")
 }
