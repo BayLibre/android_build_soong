@@ -22,6 +22,30 @@
       },
       "revId": "c4582f55d82ef7e1aa896cff889b4e693a35c662",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5487c6bb_f390824a",
+        "filename": "rust/toolchain_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-07-18T18:05:30Z",
+      "side": 1,
+      "message": "Do you mean aosp/2626248? aosp/2654319 adds new properties for a `prebuilt_build_tool`-like module type, but doesn\u0027t use `toolchain_srcs`.\n\nI\u0027m happy to add a `toolchain_data` property, but I think that the current uses of `toolchain_srcs` in aosp/2626248 are all compile-time only dependencies since they\u0027re only ingested by `rustc` but aren\u0027t used at runtime, and so I think they should be `srcs` and not `data`. Could you give a link to what you think would be better as a `data` property?",
+      "parentUuid": "ab74bca5_0349ac79",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "c4582f55d82ef7e1aa896cff889b4e693a35c662",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
