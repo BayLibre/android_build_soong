@@ -1670,6 +1670,42 @@ func (j *Module) useCompose() bool {
 	return android.InList("androidx.compose.runtime_runtime", j.properties.Static_libs)
 }
 
+func (j *Module) collectProguardSpecInfo(ctx android.ModuleContext) ProguardSpecInfo {
+	unconditionallyExportedProguardFlagsDepsets := []*android.DepSet[android.Path]{}
+	proguardFlagsForThisModuleDepsets := []*android.DepSet[android.Path]{}
+
+	ctx.VisitDirectDeps(func(m android.Module) {
+		depJavaInfo := ctx.OtherModuleProvider(m, ProguardSpecInfoProvider).(ProguardSpecInfo)
+		depTag := ctx.OtherModuleDependencyTag(m)
+
+		if depJavaInfo.unconditionallyExportedProugardFlags != nil {
+			unconditionallyExportedProguardFlagsDepsets = append(unconditionallyExportedProguardFlagsDepsets, depJavaInfo.unconditionallyExportedProugardFlags)
+		}
+
+		if depTag == staticLibTag && depJavaInfo.TransitiveProguardFlagsFiles != nil {
+			if proptools.Bool(j.dexProperties.Optimize.Export_proguard_flags_files) {
+				unconditionallyExportedProguardFlagsDepsets = append(unconditionallyExportedProguardFlagsDepsets, depJavaInfo.TransitiveProguardFlagsFiles)
+			} else {
+				proguardFlagsForThisModuleDepsets = append(proguardFlagsForThisModuleDepsets, depJavaInfo.TransitiveProguardFlagsFiles)
+			}
+		}
+	})
+
+	proguardFlagsForThisModuleDepsets = android.Concat(unconditionallyExportedProguardFlagsDepsets, proguardFlagsForThisModuleDepsets)
+
+	exportedFlagsFiles := android.PathsForModuleSrc(ctx, j.dexProperties.Optimize.Proguard_flags_files)
+	unconditionallyExportedFlagsFiles := android.Paths{}
+	if proptools.Bool(j.dexProperties.Optimize.Export_proguard_flags_files) {
+		unconditionallyExportedFlagsFiles = exportedFlagsFiles
+	}
+
+	return ProguardSpecInfo{
+		TransitiveProguardFlagsFiles:         android.NewDepSet[android.Path](android.PREORDER, exportedFlagsFiles, proguardFlagsForThisModuleDepsets),
+		unconditionallyExportedProugardFlags: android.NewDepSet[android.Path](android.PREORDER, unconditionallyExportedFlagsFiles, unconditionallyExportedProguardFlagsDepsets),
+	}
+
+}
+
 // Returns a copy of the supplied flags, but with all the errorprone-related
 // fields copied to the regular build's fields.
 func enableErrorproneFlags(flags javaBuilderFlags) javaBuilderFlags {
