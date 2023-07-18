@@ -224,6 +224,27 @@ var (
 	}, "jar_name", "partition", "main_class")
 )
 
+type ProguardSpecInfo struct {
+	// DirectProguardFlagsFiles is a list of paths to proguard flags files that is specified by this
+	// module in the Android.bp file.
+	DirectProguardFlagsFiles android.Paths
+
+	// TransitiveDepsProguardSpecFiles is a depset of paths to proguard flags files that are exported from
+	// all transitive deps. This list includes all proguard flags files from any static dependencies of shared
+	// deps, and all proguard flags files from libs dependencies which set `export_proguard_spec: true`.
+	TransitiveDepsProguardFlagsFiles *android.DepSet[android.Path]
+
+	// Export_proguard_flags_files indicates whether a libs dependency should export its proguard flags files.
+	Export_proguard_flags_files *bool
+
+	// implemenation detail to store transitive proguard flags files from static deps
+	transitiveStaticDepsProguardFlagsFiles *android.DepSet[android.Path]
+	// implemenation detail to store transitive proguard flags files from shared deps
+	transitiveSharedDepsProguardFlagsFiles *android.DepSet[android.Path]
+}
+
+var ProguardSpecInfoProvider = blueprint.NewProvider(ProguardSpecInfo{})
+
 // JavaInfo contains information about a java module for use by modules that depend on it.
 type JavaInfo struct {
 	// HeaderJars is a list of jars that can be passed as the javac classpath in order to link
@@ -300,11 +321,6 @@ type UsesLibraryDependency interface {
 	DexJarBuildPath() OptionalDexJarPath
 	DexJarInstallPath() android.Path
 	ClassLoaderContexts() dexpreopt.ClassLoaderContextMap
-}
-
-// Provides transitive Proguard flag files to downstream DEX jars.
-type LibraryDependency interface {
-	ExportedProguardFlagFiles() android.Paths
 }
 
 // TODO(jungjw): Move this to kythe.go once it's created.
@@ -612,16 +628,7 @@ func normalizeJavaVersion(ctx android.BaseModuleContext, javaVersion string) jav
 
 type Library struct {
 	Module
-
-	exportedProguardFlagFiles android.Paths
-
 	InstallMixin func(ctx android.ModuleContext, installPath android.Path) (extraInstallDeps android.Paths)
-}
-
-var _ LibraryDependency = (*Library)(nil)
-
-func (j *Library) ExportedProguardFlagFiles() android.Paths {
-	return j.exportedProguardFlagFiles
 }
 
 var _ android.ApexModule = (*Library)(nil)
@@ -720,14 +727,7 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		j.installFile = ctx.InstallFile(installDir, j.Stem()+".jar", j.outputFile, extraInstallDeps...)
 	}
 
-	j.exportedProguardFlagFiles = append(j.exportedProguardFlagFiles,
-		android.PathsForModuleSrc(ctx, j.dexProperties.Optimize.Proguard_flags_files)...)
-	ctx.VisitDirectDeps(func(m android.Module) {
-		if lib, ok := m.(LibraryDependency); ok && ctx.OtherModuleDependencyTag(m) == staticLibTag {
-			j.exportedProguardFlagFiles = append(j.exportedProguardFlagFiles, lib.ExportedProguardFlagFiles()...)
-		}
-	})
-	j.exportedProguardFlagFiles = android.FirstUniquePaths(j.exportedProguardFlagFiles)
+	ctx.SetProvider(ProguardSpecInfoProvider, j.collectProguardSpecInfo(ctx))
 }
 
 func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {

@@ -29,7 +29,6 @@ import (
 )
 
 type AndroidLibraryDependency interface {
-	LibraryDependency
 	ExportPackage() android.Path
 	ExportedRRODirs() []rroDir
 	ExportedStaticPackages() android.Paths
@@ -517,7 +516,8 @@ type AndroidLibrary struct {
 
 	aarFile android.WritablePath
 
-	exportedStaticPackages android.Paths
+	exportedStaticPackages    android.Paths
+	exportedProguardFlagFiles android.Paths
 }
 
 var _ android.OutputFileProducer = (*AndroidLibrary)(nil)
@@ -577,21 +577,22 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 		ctx.CheckbuildFile(a.aarFile)
 	}
 
-	a.exportedProguardFlagFiles = append(a.exportedProguardFlagFiles,
-		android.PathsForModuleSrc(ctx, a.dexProperties.Optimize.Proguard_flags_files)...)
 	ctx.VisitDirectDeps(func(m android.Module) {
 		if ctx.OtherModuleDependencyTag(m) == staticLibTag {
-			if lib, ok := m.(LibraryDependency); ok {
-				a.exportedProguardFlagFiles = append(a.exportedProguardFlagFiles, lib.ExportedProguardFlagFiles()...)
-			}
 			if alib, ok := m.(AndroidLibraryDependency); ok {
 				a.exportedStaticPackages = append(a.exportedStaticPackages, alib.ExportPackage())
 				a.exportedStaticPackages = append(a.exportedStaticPackages, alib.ExportedStaticPackages()...)
 			}
 		}
 	})
-	a.exportedProguardFlagFiles = android.FirstUniquePaths(a.exportedProguardFlagFiles)
 	a.exportedStaticPackages = android.FirstUniquePaths(a.exportedStaticPackages)
+
+	proguardSpecInfo := a.collectProguardSpecInfo(ctx)
+	a.exportedProguardFlagFiles = android.Concat(
+		proguardSpecInfo.DirectProguardFlagsFiles,
+		proguardSpecInfo.TransitiveDepsProguardFlagsFiles.ToList(),
+	)
+	ctx.SetProvider(ProguardSpecInfoProvider, proguardSpecInfo)
 
 	prebuiltJniPackages := android.Paths{}
 	ctx.VisitDirectDeps(func(module android.Module) {
