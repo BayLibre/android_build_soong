@@ -369,7 +369,7 @@ func FixtureModifyEnv(mutator func(env map[string]string)) FixturePreparer {
 
 // Allow access to the product variables when preparing the fixture.
 type FixtureProductVariables struct {
-	*ProductVariables
+	*productVariables
 }
 
 // Modify product variables.

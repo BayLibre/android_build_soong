@@ -75,7 +75,7 @@ func TestSdkSpecFrom(t *testing.T) {
 
 	config := NullConfig("", "")
 
-	config.productVariables = ProductVariables{
+	config.productVariables = productVariables{
 		Platform_sdk_version:              intPtr(31),
 		Platform_sdk_codename:             stringPtr("Tiramisu"),
 		Platform_version_active_codenames: []string{"Tiramisu"},

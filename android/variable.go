@@ -185,7 +185,7 @@ type variableProperties struct {
 
 var defaultProductVariables interface{} = variableProperties{}
 
-type ProductVariables struct {
+type productVariables struct {
 	// Suffix to add to generated Makefiles
 	Make_suffix *string `json:",omitempty"`
 
@@ -489,8 +489,8 @@ func stringPtr(v string) *string {
 	return &v
 }
 
-func (v *ProductVariables) SetDefaultConfig() {
-	*v = ProductVariables{
+func (v *productVariables) SetDefaultConfig() {
+	*v = productVariables{
 		BuildNumberFile: stringPtr("build_number.txt"),
 
 		Platform_version_name:                  stringPtr("S"),

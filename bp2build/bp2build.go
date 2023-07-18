@@ -80,12 +80,6 @@ func Codegen(ctx *CodegenContext) *CodegenMetrics {
 		os.Exit(1)
 	}
 	bp2buildFiles := CreateBazelFiles(ctx.Config(), nil, res.buildFileToTargets, ctx.mode)
-	injectionFiles, additionalBp2buildFiles, err := CreateSoongInjectionDirFiles(ctx, res.metrics)
-	if err != nil {
-		fmt.Printf("%s\n", err.Error())
-		os.Exit(1)
-	}
-	bp2buildFiles = append(bp2buildFiles, additionalBp2buildFiles...)
 	writeFiles(ctx, bp2buildDir, bp2buildFiles)
 	// Delete files under the bp2build root which weren't just written. An
 	// alternative would have been to delete the whole directory and write these
@@ -94,6 +88,11 @@ func Codegen(ctx *CodegenContext) *CodegenMetrics {
 	// performance implications.
 	deleteFilesExcept(ctx, bp2buildDir, bp2buildFiles)
 
+	injectionFiles, err := CreateSoongInjectionDirFiles(ctx, res.metrics)
+	if err != nil {
+		fmt.Printf("%s\n", err.Error())
+		os.Exit(1)
+	}
 	writeFiles(ctx, android.PathForOutput(ctx, bazel.SoongInjectionDirName), injectionFiles)
 	starlarkDeps, err := starlark_import.GetNinjaDeps()
 	if err != nil {
@@ -108,20 +107,20 @@ func Codegen(ctx *CodegenContext) *CodegenMetrics {
 // This includes
 // 1. config value(s) that are hardcoded in Soong
 // 2. product_config variables
-func CreateSoongInjectionDirFiles(ctx *CodegenContext, metrics CodegenMetrics) ([]BazelFile, []BazelFile, error) {
+func CreateSoongInjectionDirFiles(ctx *CodegenContext, metrics CodegenMetrics) ([]BazelFile, error) {
 	var ret []BazelFile
 
-	productConfigInjectionFiles, productConfigBp2BuildDirFiles, err := CreateProductConfigFiles(ctx)
+	productConfigFiles, err := CreateProductConfigFiles(ctx)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	ret = append(ret, productConfigInjectionFiles...)
+	ret = append(ret, productConfigFiles...)
 	injectionFiles, err := soongInjectionFiles(ctx.Config(), metrics)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	ret = append(injectionFiles, ret...)
-	return ret, productConfigBp2BuildDirFiles, nil
+	ret = append(ret, injectionFiles...)
+	return ret, nil
 }
 
 // Get the output directory and create it if it doesn't exist.
