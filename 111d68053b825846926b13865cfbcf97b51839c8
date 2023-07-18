@@ -16,6 +16,23 @@
       "message": "Builds completed: https://android-build.googleplex.com/builds/abtd/run/L94000000962025596",
       "revId": "111d68053b825846926b13865cfbcf97b51839c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "075e364b_5fa050ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-07-18T14:15:15Z",
+      "side": 1,
+      "message": "+ccross for OWNERS...",
+      "revId": "111d68053b825846926b13865cfbcf97b51839c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
