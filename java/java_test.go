@@ -94,9 +94,12 @@ func testJavaWithFS(t *testing.T, bp string, fs android.MockFS) (*android.TestCo
 // that it did not change the test behavior unexpectedly.
 //
 // deprecated
-func testJava(t *testing.T, bp string) (*android.TestContext, android.Config) {
+func testJava(t *testing.T, bp string, fixtures ...android.FixturePreparer) (*android.TestContext, android.Config) {
 	t.Helper()
-	result := prepareForJavaTest.RunTestWithBp(t, bp)
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		android.GroupFixturePreparers(fixtures...),
+	).RunTestWithBp(t, bp)
 	return result.TestContext, result.Config
 }
 

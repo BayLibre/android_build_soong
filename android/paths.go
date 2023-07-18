@@ -405,6 +405,22 @@ func PathsForModuleSrc(ctx ModuleMissingDepsPathContext, paths []string) Paths {
 	return PathsForModuleSrcExcludes(ctx, paths, nil)
 }
 
+type ExistentPathsForModuleSrcContext interface {
+	ModuleWithDepsPathContext
+	PathGlobContext
+}
+
+func ExistentPathsForModuleSrc(ctx ExistentPathsForModuleSrcContext, paths []string) Paths {
+	modulePaths := Map(paths, func(p string) string {
+		path, err := pathForSource(ctx, ctx.ModuleDir(), p)
+		if err != nil {
+			reportPathError(ctx, err)
+		}
+		return path.String()
+	})
+	return ExistentPathsForSources(ctx, modulePaths)
+}
+
 type SourceInput struct {
 	Context      ModuleMissingDepsPathContext
 	Paths        []string
