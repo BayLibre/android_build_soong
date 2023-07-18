@@ -16,6 +16,24 @@
       "message": "(build system will - or was? - freeze. so joeo)",
       "revId": "8b85d81ac3779c5696b7dcd0340aa54a5b350f50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f03c4b_fb1f09dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2023-07-18T06:27:50Z",
+      "side": 1,
+      "message": "resolved",
+      "parentUuid": "20553abe_bf429ec9",
+      "revId": "8b85d81ac3779c5696b7dcd0340aa54a5b350f50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
