@@ -988,6 +988,7 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 
 	tags := android.ApexAvailableTagsWithoutTestApexes(ctx, m)
 
+	bazelName := m.Name()
 	if ctx.ModuleType() == "gensrcs" {
 		props := bazel.BazelTargetModuleProperties{
 			Rule_class:        "gensrcs",
@@ -1015,7 +1016,6 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 				break
 			}
 		}
-		bazelName := m.Name()
 		for _, out := range outs {
 			if out == bazelName {
 				// This is a workaround to circumvent a Bazel warning where a genrule's
@@ -1040,6 +1040,50 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 			Tags: tags,
 		}, attrs)
 	}
+
+	if len(m.properties.Export_include_dirs) > 0 {
+		includeDirs := make([]string, len(m.properties.Export_include_dirs)*2)
+		for i, dir := range m.properties.Export_include_dirs {
+			includeDirs[i*2] = dir
+			includeDirs[i*2+1] = filepath.Clean(filepath.Join(ctx.ModuleDir(), dir))
+		}
+		attrs := &ccHeaderLibraryAttrs{
+			Hdrs:            []string{":" + bazelName},
+			Export_includes: includeDirs,
+		}
+		props := bazel.BazelTargetModuleProperties{
+			Rule_class:        "cc_library_headers",
+			Bzl_load_location: "//build/bazel/rules/cc:cc_library_headers.bzl",
+		}
+		ctx.CreateBazelTargetModule(props, android.CommonAttributes{
+			Name: m.genruleHeaderLibraryTargetName(),
+			Tags: tags,
+		}, attrs)
+
+	}
+}
+
+func (m *Module) genruleHeaderLibraryTargetName() string {
+	return m.Name() + "__header_library"
+}
+
+func GenruleCcHeaderLabelMapper(ctx bazel.OtherModuleContext, label bazel.Label) (string, bool) {
+	mod, exists := ctx.ModuleFromName(label.OriginalModuleName)
+	if !exists {
+		return label.Label, false
+	}
+	if m, ok := mod.(*Module); ok {
+		if len(m.properties.Export_include_dirs) > 0 {
+			return m.genruleHeaderLibraryTargetName(), true
+		}
+	}
+	return label.Label, false
+}
+
+type ccHeaderLibraryAttrs struct {
+	Hdrs []string
+
+	Export_includes []string
 }
 
 var Bool = proptools.Bool

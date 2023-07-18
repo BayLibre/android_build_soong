@@ -22,6 +22,7 @@ import (
 	"android/soong/android"
 	"android/soong/bazel"
 	"android/soong/cc/config"
+	"android/soong/genrule"
 
 	"github.com/google/blueprint"
 
@@ -44,6 +45,8 @@ const (
 	rScriptSrcPartition = "renderScript"
 
 	xsdSrcPartition = "xsd"
+
+	genrulePartition = "genrule"
 
 	hdrPartition = "hdr"
 
@@ -172,8 +175,9 @@ func groupSrcsByExtension(ctx android.BazelConversionPathContext, srcs bazel.Lab
 
 func partitionHeaders(ctx android.BazelConversionPathContext, hdrs bazel.LabelListAttribute) bazel.PartitionToLabelListAttribute {
 	labels := bazel.LabelPartitions{
-		xsdSrcPartition: bazel.LabelPartition{LabelMapper: android.XsdLabelMapper(xsdConfigCppTarget)},
-		hdrPartition:    bazel.LabelPartition{Keep_remainder: true},
+		xsdSrcPartition:  bazel.LabelPartition{LabelMapper: android.XsdLabelMapper(xsdConfigCppTarget)},
+		genrulePartition: bazel.LabelPartition{LabelMapper: genrule.GenruleCcHeaderLabelMapper},
+		hdrPartition:     bazel.LabelPartition{Keep_remainder: true},
 	}
 	return bazel.PartitionLabelListAttribute(ctx, &hdrs, labels)
 }
@@ -419,6 +423,10 @@ type compilerAttributes struct {
 	xsdSrcs       bazel.LabelListAttribute
 	exportXsdSrcs bazel.LabelListAttribute
 
+	// genrule headers
+	genruleHeaders       bazel.LabelListAttribute
+	exportGenruleHeaders bazel.LabelListAttribute
+
 	// Lex sources and options
 	lSrcs   bazel.LabelListAttribute
 	llSrcs  bazel.LabelListAttribute
@@ -579,6 +587,37 @@ func (ca *compilerAttributes) convertProductVariables(ctx android.BazelConversio
 	}
 }
 
+func includesFromLabelListAttribute(attr bazel.LabelListAttribute, existingLocal, existingAbsolute bazel.StringListAttribute) (bazel.StringListAttribute, bazel.StringListAttribute) {
+	localAttr := existingLocal.Clone()
+	absoluteAttr := existingAbsolute.Clone()
+	if !attr.Value.IsEmpty() {
+		l, a := includesFromLabelList(attr.Value, existingLocal.Value, existingAbsolute.Value)
+		localAttr.SetSelectValue(bazel.NoConfigAxis, "", l)
+		absoluteAttr.SetSelectValue(bazel.NoConfigAxis, "", a)
+	}
+	for axis, configToLabels := range attr.ConfigurableValues {
+		for c, labels := range configToLabels {
+			local := existingLocal.SelectValue(axis, c)
+			absolute := existingAbsolute.SelectValue(axis, c)
+			l, a := includesFromLabelList(labels, local, absolute)
+			localAttr.SetSelectValue(axis, c, l)
+			absoluteAttr.SetSelectValue(axis, c, a)
+		}
+	}
+	return *localAttr, *absoluteAttr
+}
+
+func (ca *compilerAttributes) includesFromHeaders(ctx android.BazelConversionPathContext, implHdrs, hdrs bazel.LabelListAttribute) {
+	local, absolute := includesFromLabelListAttribute(implHdrs, ca.localIncludes, ca.absoluteIncludes)
+	localExport, absoluteExport := includesFromLabelListAttribute(hdrs, ca.includes.Includes, ca.includes.AbsoluteIncludes)
+
+	ca.localIncludes = local
+	ca.absoluteIncludes = absolute
+
+	ca.includes.Includes = localExport
+	ca.includes.AbsoluteIncludes = absoluteExport
+}
+
 func (ca *compilerAttributes) finalize(ctx android.BazelConversionPathContext, implementationHdrs, exportHdrs bazel.LabelListAttribute) {
 	ca.srcs.ResolveExcludes()
 	partitionedSrcs := groupSrcsByExtension(ctx, ca.srcs)
@@ -599,10 +638,18 @@ func (ca *compilerAttributes) finalize(ctx android.BazelConversionPathContext, i
 
 	ca.hdrs = partitionedHdrs[hdrPartition]
 
+	ca.includesFromHeaders(ctx, partitionedImplHdrs[hdrPartition], partitionedHdrs[hdrPartition])
+
 	xsdSrcs := bazel.SubtractBazelLabelListAttribute(partitionedSrcs[xsdSrcPartition], partitionedHdrs[xsdSrcPartition])
 	xsdSrcs.Append(partitionedImplHdrs[xsdSrcPartition])
 	ca.exportXsdSrcs = partitionedHdrs[xsdSrcPartition]
 	ca.xsdSrcs = bazel.FirstUniqueBazelLabelListAttribute(xsdSrcs)
+
+	ca.genruleHeaders = partitionedImplHdrs[genrulePartition]
+	ca.exportGenruleHeaders = partitionedHdrs[genrulePartition]
+	if !partitionedHdrs[genrulePartition].IsEmpty() {
+		fmt.Println(partitionedHdrs[genrulePartition])
+	}
 
 	ca.srcs = partitionedSrcs[cppSrcPartition]
 	ca.cSrcs = partitionedSrcs[cSrcPartition]
@@ -688,13 +735,20 @@ func packageFromLabel(label string) (string, bool) {
 }
 
 // includesFromLabelList extracts relative/absolute includes from a bazel.LabelList>
-func includesFromLabelList(labelList bazel.LabelList) (relative, absolute []string) {
+func includesFromLabelList(labelList bazel.LabelList, existingRel, existingAbs []string) ([]string, []string) {
+	var relative, absolute []string
 	for _, hdr := range labelList.Includes {
 		if pkg, hasPkg := packageFromLabel(hdr.Label); hasPkg {
 			absolute = append(absolute, pkg)
 		} else if pkg != "" {
 			relative = append(relative, pkg)
 		}
+	}
+	if len(relative)+len(existingRel) != 0 {
+		relative = android.FirstUniqueStrings(append(append([]string{}, existingRel...), relative...))
+	}
+	if len(absolute)+len(existingAbs) != 0 {
+		absolute = android.FirstUniqueStrings(append(append([]string{}, existingAbs...), absolute...))
 	}
 	return relative, absolute
 }
@@ -817,21 +871,6 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 			implementationHdrs.SetSelectValue(axis, cfg, headers.implementation)
 			exportHdrs.SetSelectValue(axis, cfg, headers.export)
 
-			exportIncludes, exportAbsoluteIncludes := includesFromLabelList(headers.export)
-			compilerAttrs.includes.Includes.SetSelectValue(axis, cfg, exportIncludes)
-			compilerAttrs.includes.AbsoluteIncludes.SetSelectValue(axis, cfg, exportAbsoluteIncludes)
-
-			includes, absoluteIncludes := includesFromLabelList(headers.implementation)
-			currAbsoluteIncludes := compilerAttrs.absoluteIncludes.SelectValue(axis, cfg)
-			currAbsoluteIncludes = android.FirstUniqueStrings(append(currAbsoluteIncludes, absoluteIncludes...))
-
-			compilerAttrs.absoluteIncludes.SetSelectValue(axis, cfg, currAbsoluteIncludes)
-
-			currIncludes := compilerAttrs.localIncludes.SelectValue(axis, cfg)
-			currIncludes = android.FirstUniqueStrings(append(currIncludes, includes...))
-
-			compilerAttrs.localIncludes.SetSelectValue(axis, cfg, currIncludes)
-
 			if libraryProps, ok := archVariantLibraryProperties[axis][cfg].(*LibraryProperties); ok {
 				if axis == bazel.NoConfigAxis {
 					if libraryProps.Stubs.Symbol_file != nil {
@@ -871,6 +910,9 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 	(&linkerAttrs).finalize(ctx)
 
 	(&compilerAttrs.srcs).Add(bp2BuildYasm(ctx, module, compilerAttrs))
+
+	(&linkerAttrs).deps.Append(compilerAttrs.exportGenruleHeaders)
+	(&linkerAttrs).implementationDeps.Append(compilerAttrs.genruleHeaders)
 
 	(&linkerAttrs).wholeArchiveDeps.Append(compilerAttrs.exportXsdSrcs)
 	(&linkerAttrs).implementationWholeArchiveDeps.Append(compilerAttrs.xsdSrcs)
