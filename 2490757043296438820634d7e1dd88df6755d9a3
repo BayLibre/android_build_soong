@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6fca7d0_6ac8b681",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2023-07-18T21:22:33Z",
+      "side": 1,
+      "message": "Added new config option to build module path \n\"cc_fuzz.fuzz_config.exclude_paths_from_reports\"\n\nmore information on how this option will be used can be seen here:\nhttps://docs.google.com/document/d/1-_lWhlee504w-XzSWpWiOguFU0TIoWmH6cq966am_Rc/edit",
+      "revId": "2490757043296438820634d7e1dd88df6755d9a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
