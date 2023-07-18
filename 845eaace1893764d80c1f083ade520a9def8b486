@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f6c99e0f_4e147de3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-07-18T02:05:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fad77339_f428e9d5",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "845eaace1893764d80c1f083ade520a9def8b486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1e086fb6_8dcf7c72",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2023-07-18T01:54:35Z",
       "side": 1,
       "message": "I think it also can be renamed to KeepVndk()",
+      "range": {
+        "startLine": 1358,
+        "startChar": 17,
+        "endLine": 1358,
+        "endChar": 33
+      },
+      "revId": "845eaace1893764d80c1f083ade520a9def8b486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a028567b_8d39cd0f",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-07-18T02:05:59Z",
+      "side": 1,
+      "message": "It requires too much modification from soong. If possible, I\u0027d like to use this approach within soong for gradual changes.",
+      "parentUuid": "6733d745_b60ef0c9",
       "range": {
         "startLine": 1358,
         "startChar": 17,
