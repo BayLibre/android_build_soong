@@ -51,6 +51,9 @@ func init() {
 // preparer.
 var PrepareForTestWithGenRuleBuildComponents = android.GroupFixturePreparers(
 	android.FixtureRegisterWithContext(RegisterGenruleBuildComponents),
+	android.FixtureRegisterWithContext(func (ctx android.RegistrationContext) {
+		android.RegisterToolsDepsMutator(ctx)
+	}),
 )
 
 // Prepare a fixture to use all genrule module types, mutators and singletons fully.
@@ -65,10 +68,6 @@ func RegisterGenruleBuildComponents(ctx android.RegistrationContext) {
 
 	ctx.RegisterModuleType("gensrcs", GenSrcsFactory)
 	ctx.RegisterModuleType("genrule", GenRuleFactory)
-
-	ctx.FinalDepsMutators(func(ctx android.RegisterMutatorsContext) {
-		ctx.BottomUp("genrule_tool_deps", toolDepsMutator).Parallel()
-	})
 }
 
 var (
@@ -102,21 +101,6 @@ type SourceFileGenerator interface {
 type HostToolProvider interface {
 	android.HostToolProvider
 }
-
-type hostToolDependencyTag struct {
-	blueprint.BaseDependencyTag
-	android.LicenseAnnotationToolchainDependencyTag
-	label string
-}
-
-func (t hostToolDependencyTag) AllowDisabledModuleDependency(target android.Module) bool {
-	// Allow depending on a disabled module if it's replaced by a prebuilt
-	// counterpart. We get the prebuilt through android.PrebuiltGetPreferred in
-	// GenerateAndroidBuildActions.
-	return target.IsReplacedByPrebuilt()
-}
-
-var _ android.AllowDisabledModuleDependency = (*hostToolDependencyTag)(nil)
 
 type generatorProperties struct {
 	// The command to run on one or more input files. Cmd supports substitution of a few variables.
@@ -242,16 +226,8 @@ func (g *Module) OutputFiles(tag string) (android.Paths, error) {
 var _ android.SourceFileProducer = (*Module)(nil)
 var _ android.OutputFileProducer = (*Module)(nil)
 
-func toolDepsMutator(ctx android.BottomUpMutatorContext) {
-	if g, ok := ctx.Module().(*Module); ok {
-		for _, tool := range g.properties.Tools {
-			tag := hostToolDependencyTag{label: tool}
-			if m := android.SrcIsModule(tool); m != "" {
-				tool = m
-			}
-			ctx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), tag, tool)
-		}
-	}
+func (g *Module) RuleBuiltTools(ctx android.BaseModuleContext) []string{
+	return g.properties.Tools
 }
 
 func (g *Module) ProcessBazelQueryResponse(ctx android.ModuleContext) {
@@ -320,7 +296,7 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 
 		ctx.VisitDirectDepsBlueprint(func(module blueprint.Module) {
 			switch tag := ctx.OtherModuleDependencyTag(module).(type) {
-			case hostToolDependencyTag:
+			case android.HostToolDependencyTag:
 				tool := ctx.OtherModuleName(module)
 				if m, ok := module.(android.Module); ok {
 					// Necessary to retrieve any prebuilt replacement for the tool, since
@@ -353,22 +329,22 @@ func (g *Module) generateCommonBuildActions(ctx android.ModuleContext) {
 						// sandbox.
 						packagedTools = append(packagedTools, specs...)
 						// Assume that the first PackagingSpec of the module is the tool.
-						addLocationLabel(tag.label, packagedToolLocation{specs[0]})
+						addLocationLabel(tag.Label, packagedToolLocation{specs[0]})
 					} else {
 						tools = append(tools, path.Path())
-						addLocationLabel(tag.label, toolLocation{android.Paths{path.Path()}})
+						addLocationLabel(tag.Label, toolLocation{android.Paths{path.Path()}})
 					}
 				case bootstrap.GoBinaryTool:
 					// A GoBinaryTool provides the install path to a tool, which will be copied.
 					p := android.PathForGoBinary(ctx, t)
 					tools = append(tools, p)
-					addLocationLabel(tag.label, toolLocation{android.Paths{p}})
+					addLocationLabel(tag.Label, toolLocation{android.Paths{p}})
 				default:
 					ctx.ModuleErrorf("%q is not a host tool provider", tool)
 					return
 				}
 
-				seenTools[tag.label] = true
+				seenTools[tag.Label] = true
 			}
 		})
 

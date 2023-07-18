@@ -597,6 +597,13 @@ type Module interface {
 	// TransitivePackagingSpecs returns the PackagingSpecs for this module and any transitive
 	// dependencies with dependency tags for which IsInstallDepNeeded() returns true.
 	TransitivePackagingSpecs() []PackagingSpec
+
+	// RuleBuiltTools returns the list of host tools (e.g. code generators) that are used to build this module.
+	// e.g. ["metalava", "aidl-cpp", ...]
+	//
+	// `tool_deps` mutator will use this list to add a dependency on those host tools.
+	// This ensures that `TransitivePackagingSpecs` of these tools are copied if sandboxing is turned on.
+	RuleBuiltTools(ctx BaseModuleContext) []string
 }
 
 // Qualified id for a module
@@ -1561,6 +1568,15 @@ type ModuleBase struct {
 
 	// The path to the generated license metadata file for the module.
 	licenseMetadataFile WritablePath
+}
+
+var (
+	emptyList = []string{}
+)
+
+func (mb *ModuleBase) RuleBuiltTools(ctx BaseModuleContext) []string {
+	// The default is an empty list. Each module type that uses a tool with transitive deps should override this.
+	return emptyList
 }
 
 // A struct containing all relevant information about a Bazel target converted via bp2build.
@@ -4068,4 +4084,39 @@ func XsdConfigBp2buildTarget(ctx BazelConversionPathContext, mod blueprint.Modul
 	// Append the language specific target name
 	ret += targetName(xsd)
 	return ret
+}
+
+type HostToolDependencyTag struct {
+	blueprint.BaseDependencyTag
+	LicenseAnnotationToolchainDependencyTag
+	Label string
+}
+
+func (t HostToolDependencyTag) AllowDisabledModuleDependency(target Module) bool {
+	// Allow depending on a disabled module if it's replaced by a prebuilt
+	// counterpart. We get the prebuilt through android.PrebuiltGetPreferred in
+	// GenerateAndroidBuildActions.
+	return target.IsReplacedByPrebuilt()
+}
+
+var _ AllowDisabledModuleDependency = (*HostToolDependencyTag)(nil)
+
+func init() {
+	RegisterToolsDepsMutator(InitRegistrationContext)
+}
+
+func RegisterToolsDepsMutator(ctx RegistrationContext) {
+	ctx.FinalDepsMutators(func(ctx RegisterMutatorsContext) {
+		ctx.BottomUp("tool_deps", toolDepsMutator).Parallel()
+	})
+}
+
+func toolDepsMutator(ctx BottomUpMutatorContext) {
+	for _, tool := range ctx.Module().RuleBuiltTools(ctx) {
+		tag := HostToolDependencyTag{Label: tool}
+		if m := SrcIsModule(tool); m != "" {
+			tool = m
+		}
+		ctx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), tag, tool)
+	}
 }
