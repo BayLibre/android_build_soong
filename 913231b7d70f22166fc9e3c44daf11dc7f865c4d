@@ -87,6 +87,30 @@
       },
       "revId": "913231b7d70f22166fc9e3c44daf11dc7f865c4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea41c34e_5c898459",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2276,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-07-18T01:27:07Z",
+      "side": 1,
+      "message": "As mentioned above, let\u0027s revisit this part when removing VNDK APEX. This change is to install VNDK libraries into vendor / product partition.",
+      "parentUuid": "56279545_46f546ad",
+      "range": {
+        "startLine": 2243,
+        "startChar": 0,
+        "endLine": 2276,
+        "endChar": 4
+      },
+      "revId": "913231b7d70f22166fc9e3c44daf11dc7f865c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
