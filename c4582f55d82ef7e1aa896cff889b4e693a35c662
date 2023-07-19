@@ -70,6 +70,30 @@
       },
       "revId": "c4582f55d82ef7e1aa896cff889b4e693a35c662",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91805cb_20f7643f",
+        "filename": "rust/toolchain_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-07-19T15:15:49Z",
+      "side": 1,
+      "message": "I think that the `*.rs` files should be in the `srcs` property though. That matches the description exactly: `list of rust files used to build the library`.\n\nAre you worried about the (1) `.md` files and (2) the `.rs` files that come from different directories? I can understand wanting those to be specified in a different property.\n\nFor (1), would you prefer that these are in a `compile_data` property?\n\nFor (2), I\u0027m not totally sure why `rustc` needs them, but it did complain until I added these as `srcs`. I can follow up and document why they\u0027re needed and that might help determine what property they should go under.",
+      "parentUuid": "0a3e662d_a096e56f",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "c4582f55d82ef7e1aa896cff889b4e693a35c662",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
