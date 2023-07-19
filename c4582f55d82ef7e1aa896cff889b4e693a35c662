@@ -46,6 +46,30 @@
       },
       "revId": "c4582f55d82ef7e1aa896cff889b4e693a35c662",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a3e662d_a096e56f",
+        "filename": "rust/toolchain_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-07-19T15:04:50Z",
+      "side": 1,
+      "message": "\u003e Do you mean aosp/2626248?\n\nYes\n\n\u003e Could you give a link to what you think would be better as a data property?\n\n[rust_library](https://github.com/bazelbuild/rules_rust/blob/main/docs/defs.md#rust_library) rule has 4 attributes to supply rust files\n1. `crate_root`: the entry file passed to `rustc` for building a crate.\n2. `srcs`: list of rust files used to build the library. `crate_root` can be left unset of one of the `srcs` has a file named `lib.rs`\n3. `compile_data`: list of rust files used at compile time\n4. `data`: list of rust files used at compile time and [runtime](https://github.com/daivinhtran/rules_rust/blob/main/rust/private/rustc.bzl#L1367-L1369).\n\nYou are right that the other files are (and were) currently ingested by rustc. That means `Toolchain_compile_data` or just `Compile_data` is a better name for the sake of making it easier to convert 1-to-1 props in Soong and attributes to Bazel.\n\nSince now that we have a chance to do it better, I think it\u0027s good to err on the side of Bazel\u0027s convention to ease the conversion.",
+      "parentUuid": "5487c6bb_f390824a",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "c4582f55d82ef7e1aa896cff889b4e693a35c662",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
