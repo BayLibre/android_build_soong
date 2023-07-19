@@ -963,7 +963,7 @@ func (c *config) FinalApiLevels() []ApiLevel {
 
 func (c *config) PreviewApiLevels() []ApiLevel {
 	var levels []ApiLevel
-	for i, codename := range c.PlatformVersionActiveCodenames() {
+	for i, codename := range c.PlatformVersionAllPreviewCodenames() {
 		levels = append(levels, ApiLevel{
 			value:     codename,
 			number:    i,

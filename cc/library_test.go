@@ -204,6 +204,7 @@ func TestStubsVersions(t *testing.T) {
 	`
 	config := TestConfig(t.TempDir(), android.Android, nil, bp, nil)
 	config.TestProductVariables.Platform_version_active_codenames = []string{"R"}
+	config.TestProductVariables.Platform_version_all_preview_codenames = []string{"R"}
 	ctx := testCcWithConfig(t, config)
 
 	variants := ctx.ModuleVariantsForTests("libfoo")
@@ -228,6 +229,7 @@ func TestStubsVersions_NotSorted(t *testing.T) {
 	`
 	config := TestConfig(t.TempDir(), android.Android, nil, bp, nil)
 	config.TestProductVariables.Platform_version_active_codenames = []string{"R"}
+	config.TestProductVariables.Platform_version_all_preview_codenames = []string{"R"}
 	testCcErrorWithConfig(t, `"libfoo" .*: versions: not sorted`, config)
 }
 
