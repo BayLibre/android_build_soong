@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a35efa6_92f82500",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-07-19T03:26:25Z",
+      "side": 1,
+      "message": "Added data_libs as well. Thanks!",
+      "parentUuid": "e08e6a42_3be33311",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d6518b9_4a7e5794",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-18T21:35:38Z",
       "side": 1,
       "message": "you shouldn\u0027t ever need to change a properties struct to make a bp2build change.\n\n`ShTest` [embeds](https://cs.android.com/android/platform/superproject/main/+/refs/heads/main:build/soong/sh/sh_binary.go;l\u003d167;drc\u003d84c211366fe898b3d08337521c7cdb5e93691122) `ShBinary`, accessing the properties from `ShBinary` should give you access to the properties you need.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 42
+      },
+      "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "296c3cbe_06b04216",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-07-19T03:26:25Z",
+      "side": 1,
+      "message": "Updated. Thanks!",
+      "parentUuid": "3d6518b9_4a7e5794",
       "range": {
         "startLine": 107,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5b71a6_2b35d869",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-07-19T03:26:25Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. Updated.",
+      "parentUuid": "6f64106d_3e828994",
+      "range": {
+        "startLine": 515,
+        "startChar": 1,
+        "endLine": 515,
+        "endChar": 17
+      },
+      "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cf1d54a_4183ccbb",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad600832_04d020fe",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-07-19T03:26:25Z",
+      "side": 1,
+      "message": "no worries. Updated to use Data_libs.",
+      "parentUuid": "8cf1d54a_4183ccbb",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 74
+      },
+      "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66e7ecad_777cbe0b",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-07-18T21:35:38Z",
       "side": 1,
       "message": "Given that we\u0027re going to have a macro in the follow-up, it may make sense to go ahead and add a bzl_load_location",
+      "range": {
+        "startLine": 615,
+        "startChar": 23,
+        "endLine": 615,
+        "endChar": 24
+      },
+      "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbb6a1d_6234c500",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-07-19T03:26:25Z",
+      "side": 1,
+      "message": "Yes, I plan to add it in the follow-up CL. Thanks!",
+      "parentUuid": "66e7ecad_777cbe0b",
       "range": {
         "startLine": 615,
         "startChar": 23,
