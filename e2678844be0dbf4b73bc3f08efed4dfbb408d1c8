@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bad11a4f_74dbcc89",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1395,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-19T14:22:28Z",
+      "side": 1,
+      "message": "This seems reasonable, but it may be good to file a bug or document about the latter if we sbox everything as that\u0027ll be relevant if we sandbox all mixed build actions.",
+      "parentUuid": "1e31c6d0_66d76e24",
+      "range": {
+        "startLine": 1392,
+        "startChar": 0,
+        "endLine": 1395,
+        "endChar": 59
+      },
+      "revId": "e2678844be0dbf4b73bc3f08efed4dfbb408d1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78bf1e26_cfa19bf1",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "I have added some additional coverage. It is likely not adequate since it does not check that rule.Sbox was actually called. That will require me to get a handle to a context object via some setup.\n\nWould it be ok to increase the coverage in a followup CL?",
       "parentUuid": "78bf1e26_cfa19bf1",
+      "range": {
+        "startLine": 132,
+        "startChar": 27,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "e2678844be0dbf4b73bc3f08efed4dfbb408d1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6255387_5ce78483",
+        "filename": "android/bazel_handler_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-19T14:22:28Z",
+      "side": 1,
+      "message": "This seems similar to how sbox is usually tested. seems reasonable for now",
+      "parentUuid": "227aa2dc_6f691acb",
       "range": {
         "startLine": 132,
         "startChar": 27,
