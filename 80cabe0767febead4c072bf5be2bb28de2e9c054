@@ -39,6 +39,30 @@
       },
       "revId": "80cabe0767febead4c072bf5be2bb28de2e9c054",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3a2df1f_e7437ec7",
+        "filename": "java/dex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-07-19T21:01:44Z",
+      "side": 1,
+      "message": "The current implementation exports flags referenced by _this target only_ and any flags that it receives via transitive **static** dependencies.\n\nSo basically if library A sets `export_proguard_flags_files: true` and it ends up in the transitive closure of a reverse dep (say C -static_libs-\u003e B -libs-\u003e A -static_libs-\u003e X), then C will get flags files from B, A, and X.\n\nIf B sets `export_proguard_flags_files: false` (the default), and we have this dep structure (C -libs-\u003e B -libs-\u003e A -static_libs-\u003e X), then C will get flags files from _only_ A and X.\n\n----\n\nI was going back and forth on the right semantics for this a few times. Does this make sense to you?\n\nBasically to rephrase, if a lib sets `export_proguard_flags_files: true` its flags files will end up getting referenced for every rdep above it regardless of the \"linking\" strategy (i.e. this is a really broad effect).",
+      "parentUuid": "267cc351_39964746",
+      "range": {
+        "startLine": 76,
+        "startChar": 28,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "80cabe0767febead4c072bf5be2bb28de2e9c054",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
