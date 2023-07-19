@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "465fafc7_1a693536",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-07-19T20:50:19Z",
+      "side": 1,
+      "message": "Thanks Sam!\n\nDefer to Romain or others for more detailed review.",
+      "revId": "80cabe0767febead4c072bf5be2bb28de2e9c054",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267cc351_39964746",
+        "filename": "java/dex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-07-19T20:50:19Z",
+      "side": 1,
+      "message": "Just to confirm, will *only* flags referenced by this target be exported? Or will any that it inherits also be exported?\n\nShould we also call out that this generally should only be overridden for standalone libraries referenced via `libs` that have explicit Proguard semantics, e.g., annotation libraries? In practice, is this implicitly true for `static_libs` refs, and implicitly false for `libs` refs, unless explicitly specified? In which case, let\u0027s state that there.",
+      "range": {
+        "startLine": 76,
+        "startChar": 28,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "80cabe0767febead4c072bf5be2bb28de2e9c054",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
