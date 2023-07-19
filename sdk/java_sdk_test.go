@@ -361,6 +361,7 @@ func TestSnapshotWithJavaLibrary_MinSdkVersion(t *testing.T) {
 			prepareForSdkTestWithJava,
 			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 				variables.Platform_version_active_codenames = []string{"S", "Tiramisu", "Unfinalized"}
+				variables.Platform_version_all_preview_codenames = []string{"S", "Tiramisu", "Unfinalized"}
 			}),
 			android.FixtureMergeEnv(map[string]string{
 				"SOONG_SDK_SNAPSHOT_TARGET_BUILD_RELEASE": targetBuildRelease,

@@ -35,21 +35,22 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 	envCopy["PATH"] = os.Getenv("PATH")
 
 	config := &config{
-		productVariables: ProductVariables{
-			DeviceName:                          stringPtr("test_device"),
-			DeviceProduct:                       stringPtr("test_product"),
-			Platform_sdk_version:                intPtr(30),
-			Platform_sdk_codename:               stringPtr("S"),
-			Platform_base_sdk_extension_version: intPtr(1),
-			Platform_version_active_codenames:   []string{"S", "Tiramisu"},
-			DeviceSystemSdkVersions:             []string{"14", "15"},
-			Platform_systemsdk_versions:         []string{"29", "30"},
-			AAPTConfig:                          []string{"normal", "large", "xlarge", "hdpi", "xhdpi", "xxhdpi"},
-			AAPTPreferredConfig:                 stringPtr("xhdpi"),
-			AAPTCharacteristics:                 stringPtr("nosdcard"),
-			AAPTPrebuiltDPI:                     []string{"xhdpi", "xxhdpi"},
-			UncompressPrivAppDex:                boolPtr(true),
-			ShippingApiLevel:                    stringPtr("30"),
+		productVariables: productVariables{
+			DeviceName:                             stringPtr("test_device"),
+			DeviceProduct:                          stringPtr("test_product"),
+			Platform_sdk_version:                   intPtr(30),
+			Platform_sdk_codename:                  stringPtr("S"),
+			Platform_base_sdk_extension_version:    intPtr(1),
+			Platform_version_active_codenames:      []string{"S", "Tiramisu"},
+			Platform_version_all_preview_codenames: []string{"S", "Tiramisu"},
+			DeviceSystemSdkVersions:                []string{"14", "15"},
+			Platform_systemsdk_versions:            []string{"29", "30"},
+			AAPTConfig:                             []string{"normal", "large", "xlarge", "hdpi", "xhdpi", "xxhdpi"},
+			AAPTPreferredConfig:                    stringPtr("xhdpi"),
+			AAPTCharacteristics:                    stringPtr("nosdcard"),
+			AAPTPrebuiltDPI:                        ]string{"xhdpi", "xxhdpi"},
+			UncompressPrivAppDex:                   boolPtr(true),
+			ShippingApiLevel:                       stringPtr("30"),
 		},
 
 		outDir:       buildDir,
