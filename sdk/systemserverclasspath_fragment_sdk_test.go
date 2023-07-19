@@ -123,6 +123,7 @@ func TestSnapshotWithEmptySystemServerClasspathFragment(t *testing.T) {
 		}),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 			variables.Platform_version_active_codenames = []string{"UpsideDownCake"}
+			variables.Platform_version_all_preview_codenames = []string{"UpsideDownCake"}
 		}),
 		prepareForSdkTestWithApex,
 		android.FixtureWithRootAndroidBp(commonSdk),
