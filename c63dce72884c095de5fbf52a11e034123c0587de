@@ -16,6 +16,24 @@
       "message": "nit: lets get consistent whitespacing/indentation",
       "revId": "c63dce72884c095de5fbf52a11e034123c0587de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d22f31a_4136025a",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-07-19T23:41:03Z",
+      "side": 1,
+      "message": "done, I am using gerrit editor",
+      "parentUuid": "4946b288_4964b3fc",
+      "revId": "c63dce72884c095de5fbf52a11e034123c0587de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
