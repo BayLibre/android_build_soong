@@ -193,6 +193,7 @@ func TestJavaSdkLibrary_UpdatableLibrary(t *testing.T) {
 		}),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 			variables.Platform_version_active_codenames = []string{"Tiramisu", "U", "V", "W", "X"}
+			variables.Platform_version_all_preview_codenames = []string{"Tiramisu", "U", "V", "W", "X"}
 		}),
 	).RunTestWithBp(t,
 		`
@@ -294,6 +295,7 @@ func TestJavaSdkLibrary_UpdatableLibrary_Validation_MinAndMaxDeviceSdk(t *testin
 		}),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 			variables.Platform_version_active_codenames = []string{"Tiramisu", "U", "V"}
+			variables.Platform_version_all_preview_codenames = []string{"Tiramisu", "U", "V"}
 		}),
 	).ExtendWithErrorHandler(android.FixtureExpectsAllErrorsToMatchAPattern(
 		[]string{
@@ -321,6 +323,7 @@ func TestJavaSdkLibrary_UpdatableLibrary_Validation_MinAndMaxDeviceSdkAndModuleM
 		}),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 			variables.Platform_version_active_codenames = []string{"Tiramisu", "U", "V"}
+			variables.Platform_version_all_preview_codenames = []string{"Tiramisu", "U", "V"}
 		}),
 	).ExtendWithErrorHandler(android.FixtureExpectsAllErrorsToMatchAPattern(
 		[]string{

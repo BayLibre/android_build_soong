@@ -4637,6 +4637,7 @@ func TestNonDigitMinSdkVersionInClangTriple(t *testing.T) {
 		prepareForCcTest,
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 			variables.Platform_version_active_codenames = []string{"UpsideDownCake", "Tiramisu"}
+			variables.Platform_version_all_preview_codenames = []string{"UpsideDownCake", "Tiramisu"}
 		}),
 	).RunTestWithBp(t, bp)
 	ctx := result.TestContext
