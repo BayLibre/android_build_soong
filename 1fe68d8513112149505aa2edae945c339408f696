@@ -16,6 +16,24 @@
       "message": "Can you do this without copy and pasting all this code?  Ideally `ccRustFuzzPackager` can do this in a single pass over all of the modules to produce two zip files and two sets of makevars.  At the very least you should be able to add a field to `ccRustFuzzPackager` to tell it whether it is packaging everything or just presubmit modules, and then have `fuzzPackagingFactory` and `fuzzPackagingFactoryPresubmit` each return a separate instance of `ccRustFuzzPackager`.",
       "revId": "1fe68d8513112149505aa2edae945c339408f696",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85eb4f5b_7023b1a2",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1953187
+      },
+      "writtenOn": "2023-07-20T16:33:31Z",
+      "side": 1,
+      "message": "Thanks very much for this guidance Colin! - I\u0027ve cleaned up the code using your latter suggestion (we needed \u0027--make-mode haiku-presubmit\u0027 and \u0027--make-mode haiku\u0027 to build only their own zip files).",
+      "parentUuid": "e106bfa2_b52e69c0",
+      "revId": "1fe68d8513112149505aa2edae945c339408f696",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
