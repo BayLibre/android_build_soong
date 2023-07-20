@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da24c2fd_e6e4dc22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-20T16:59:33Z",
+      "side": 1,
+      "message": "in general looks good",
+      "revId": "f91058a5f4d8a5ea4dc285a6ed99ca69f0cdad19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84ace969_03843483",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-20T16:59:33Z",
+      "side": 1,
+      "message": "do we need to re-export it or only its headers?\nfor installation, it should effectively re-export.\n\nTo re-export the headers you can also set `deps.ReexportSharedLibHeaders`",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 92
+      },
+      "revId": "f91058a5f4d8a5ea4dc285a6ed99ca69f0cdad19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff8a922d_f640c7aa",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-20T16:59:33Z",
+      "side": 1,
+      "message": "do we need to set `ReexportGeneratedHeaders` https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d131;drc\u003d12a1f9182d41fc08aee18ece94a30177bccb273c for these to be useful?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 65
+      },
+      "revId": "f91058a5f4d8a5ea4dc285a6ed99ca69f0cdad19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
