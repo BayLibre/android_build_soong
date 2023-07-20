@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3253027a_ed09ed24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2023-07-20T01:26:01Z",
+      "side": 1,
+      "message": "Filed b/291830024 for this.",
+      "parentUuid": "0bf1b0e7_8c1a6441",
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b8a9722_a86f908d",
         "filename": "rust/config/global.go",
         "patchSetId": 2
@@ -169,6 +187,30 @@
       "side": 1,
       "message": "Yeah this is a bit of a shortcut relying on the fact that device binaries are unsupported. I\u0027ll find a better place to put it to avoid actively contributing to bit-rot there.",
       "parentUuid": "890f96bf_681eba60",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba6c547_aec95115",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2023-07-20T01:26:01Z",
+      "side": 1,
+      "message": "Moved into `rust/builder.go` under a `!ctx.Darwin()` test.",
+      "parentUuid": "66eccd16_fd4aa9a2",
       "range": {
         "startLine": 106,
         "startChar": 1,
