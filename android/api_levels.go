@@ -174,7 +174,7 @@ func (l ApiLevel) EffectiveVersionString(ctx EarlyModuleContext) (string, error)
 	// min_sdk_version: `UpsideDownCake`
 	// RETURN
 	// UpsideDownCake and not VanillaIceCream
-	for _, preview := range ctx.Config().PreviewApiLevels() {
+	for _, preview := range ctx.Config().ActivePreviewApiLevels() {
 		if l.String() == preview.String() {
 			return preview.String(), nil
 		}
@@ -340,7 +340,8 @@ func ApiLevelFromUserWithConfig(config Config, raw string) (ApiLevel, error) {
 		return FutureApiLevel, nil
 	}
 
-	for _, preview := range config.PreviewApiLevels() {
+	// Note that ApiLevelFromUser will return the preview API level even if inactive.
+	for _, preview := range config.AllPreviewApiLevels() {
 		if raw == preview.String() {
 			return preview, nil
 		}

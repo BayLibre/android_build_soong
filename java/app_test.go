@@ -1351,6 +1351,7 @@ func TestAppSdkVersion(t *testing.T) {
 						variables.Platform_sdk_version = &test.platformSdkInt
 						variables.Platform_sdk_codename = &test.platformSdkCodename
 						variables.Platform_version_active_codenames = test.activeCodenames
+						variables.Platform_version_all_preview_codenames = test.activeCodenames
 						variables.Platform_sdk_final = &test.platformSdkFinal
 					}),
 					FixtureWithPrebuiltApis(map[string][]string{
@@ -3328,6 +3329,7 @@ func TestTargetSdkVersionManifestFixer(t *testing.T) {
 				variables.Platform_sdk_codename = &platform_sdk_codename
 				variables.Platform_sdk_version = &platform_sdk_version
 				variables.Platform_version_active_codenames = []string{platform_sdk_codename}
+				variables.Platform_version_all_preview_codenames = []string{platform_sdk_codename}
 				// create a non-empty list if unbundledBuild==true
 				if testCase.unbundledBuild {
 					variables.Unbundled_build_apps = []string{"apex_a", "apex_b"}
@@ -3424,6 +3426,7 @@ func TestDefaultAppTargetSdkVersionForUpdatableModules(t *testing.T) {
 				variables.Platform_sdk_version = &platform_sdk_version
 				variables.Platform_sdk_codename = &platform_sdk_codename
 				variables.Platform_version_active_codenames = []string{platform_sdk_codename}
+				variables.Platform_version_all_preview_codenames = []string{platform_sdk_codename}
 				variables.Unbundled_build = proptools.BoolPtr(true)
 				variables.Unbundled_build_apps = []string{"sampleModule"}
 			}),
@@ -3760,6 +3763,7 @@ func TestTargetSdkVersionMtsTests(t *testing.T) {
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 			variables.Platform_sdk_codename = &platformSdkCodename
 			variables.Platform_version_active_codenames = []string{platformSdkCodename}
+			variables.Platform_version_all_preview_codenames = []string{platformSdkCodename}
 		}),
 	)
 	for _, testCase := range testCases {
