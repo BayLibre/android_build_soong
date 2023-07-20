@@ -16,6 +16,23 @@
       "message": "Thanks for the reviews!",
       "revId": "ec6d2e8d832c048a2aba2a898dc431dd0b03e030",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b6c0cf_eb4c1128",
+        "filename": "scripts/mkcratersp.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-20T16:33:46Z",
+      "side": 1,
+      "message": "This is still a host-target confusion - mkcratersp.py is invoked for all linking, not just host linking. Only host linking will be using ld64, target linking will still be using lld and want the else branch.",
+      "revId": "ec6d2e8d832c048a2aba2a898dc431dd0b03e030",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
