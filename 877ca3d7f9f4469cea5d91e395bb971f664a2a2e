@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe9c74e_2ee6fba6",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-20T18:59:44Z",
+      "side": 1,
+      "message": "CreateHeaderAndroid contains a fix that prevents using a data descriptor when the file is being stored uncompressed: https://cs.android.com/android/platform/superproject/main/+/main:build/soong/third_party/zip/android.go;l\u003d172-176;drc\u003d45e2f1405dcae0498c35b780717256dc619e4e05.\n\nWhen a data descriptor is used for a file in the zip file, the file header that comes before the contents has 0 for the compressed and uncompressed sizes, then comes the payload, and then the data descriptor with the real compressed and uncompressed sizes.  Java\u0027s jar tools read zip files from a stream with no seeking.  When it comes to a file with a data descriptor it has to read the header, then read the payload, and then somehow know when to stop reading the payload and start reading the data descriptor.  For a compressed file, the deflate compression format has an end signifier, so it can stop when the decompressor says its done.  A stored file\u0027s payload has no end signifier, its just raw data.  Some unzip implementations can get the payload length from the central directory at the end of the zip file, but that requires seeking.\n\nSo for compatibility with Java we ensure the uncompressed sizes of stored zip entries is written in the header before the payload and prevent use of a data descriptor.\n\nAll of this may be somewhat obsolete, I think the upstream Go zip implementation might do the right thing now, but we\u0027re currently using a forked older version with a few additions like this.",
+      "parentUuid": "b43db675_c8dcee06",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 40
+      },
+      "revId": "877ca3d7f9f4469cea5d91e395bb971f664a2a2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86d4d471_96370d90",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-20T18:47:12Z",
       "side": 1,
       "message": "produce?",
+      "range": {
+        "startLine": 27,
+        "startChar": 73,
+        "endLine": 27,
+        "endChar": 80
+      },
+      "revId": "877ca3d7f9f4469cea5d91e395bb971f664a2a2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e21c5beb_38b5a45d",
+        "filename": "jar/services.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-20T18:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86d4d471_96370d90",
       "range": {
         "startLine": 27,
         "startChar": 73,
