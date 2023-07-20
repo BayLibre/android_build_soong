@@ -107,6 +107,30 @@ func genYacc(ctx android.ModuleContext, rule *android.RuleBuilder, yaccFile andr
 	return ret
 }
 
+func (c *Module) RuleBuiltTools(ctx android.BaseModuleContext) []string {
+	ret := []string{}
+	// If this module has aidl srcs, add `aidl-cpp` to its deps.
+	// This tool will be used to generate c/cpp srcs in a sandbox
+	if c.hasAidlSrcs(ctx) {
+		ret = append(ret, "aidl-cpp")
+	}
+	return ret
+}
+
+func (c *Module) hasAidlSrcs(ctx android.BaseModuleContext) bool {
+	// A cc module can have an .aidl file via 4 pathways
+	// 1. local `Srcs` (might be a glob pattern)
+	// 2. `Srcs` of a filegroup `:module`
+	// 3. Outputs of a genrule `:module{tag}`
+	// 4. Dep on an `aidl_library`
+	//
+	// Of these only (4) is known during final deps mutator stage
+	// (1) - (3) are calculated in GenerateAndroidBuildActions
+
+	// For this POC, sandbox just libservices
+	return c.Name() == "libservices"
+}
+
 func genAidl(
 	ctx android.ModuleContext,
 	rule *android.RuleBuilder,
@@ -134,10 +158,17 @@ func genAidl(
 	headerBp := outDir.Join(ctx, aidlPackage, "Bp"+shortName+".h")
 
 	cmd := rule.Command()
-	cmd.BuiltTool("aidl-cpp").
+	if ctx.ModuleName() == "libservices" {
+		// Sandbox transitive deps automatically
+		cmd.BuiltToolWithDeps(ctx, "aidl-cpp")
+	} else {
+		// Sandbox transitive deps one by one
+		cmd.BuiltTool("aidl-cpp").
 		// libc++ is default stl for aidl-cpp (a cc_binary_host module)
-		ImplicitTool(ctx.Config().HostCcSharedLibPath(ctx, "libc++")).
-		FlagWithDepFile("-d", depFile).
+		ImplicitTool(ctx.Config().HostCcSharedLibPath(ctx, "libc++"))
+	}
+
+	cmd.FlagWithDepFile("-d", depFile).
 		Flag("--ninja").
 		Flag(aidlFlags).
 		Input(aidlFile).
@@ -346,7 +377,7 @@ func genSources(
 		case ".aidl":
 			if aidlRule == nil {
 				aidlRule = android.NewRuleBuilder(pctx, ctx).Sbox(android.PathForModuleGen(ctx, "aidl"),
-					android.PathForModuleGen(ctx, "aidl.sbox.textproto"))
+					android.PathForModuleGen(ctx, "aidl.sbox.textproto")).SandboxInputs()
 			}
 			baseDir := strings.TrimSuffix(srcFile.String(), srcFile.Rel())
 			cppFile, aidlHeaders := genAidl(

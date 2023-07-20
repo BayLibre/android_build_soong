@@ -3199,6 +3199,11 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			return
 		}
 
+		// TODO: Add desc
+		if _, isRbToolDep := depTag.(android.HostToolDependencyTag); isRbToolDep {
+			return
+		}
+
 		if dep.Target().Os != ctx.Os() {
 			ctx.ModuleErrorf("OS mismatch between %q and %q", ctx.ModuleName(), depName)
 			return
