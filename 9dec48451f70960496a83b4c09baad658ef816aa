@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c51e8dc6_0f0f800a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-20T19:39:11Z",
+      "side": 1,
+      "message": "The change looks good modulo the python syntax error",
+      "revId": "9dec48451f70960496a83b4c09baad658ef816aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6263951f_e3e346a7",
+        "filename": "java/app_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-20T19:39:11Z",
+      "side": 1,
+      "message": "nit: Add these to a list, and replace with `android.InList`",
+      "range": {
+        "startLine": 270,
+        "startChar": 59,
+        "endLine": 270,
+        "endChar": 147
+      },
+      "revId": "9dec48451f70960496a83b4c09baad658ef816aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ace4b22f_d912668d",
+        "filename": "scripts/check_target_sdk_less_than_30.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-20T19:39:11Z",
+      "side": 1,
+      "message": "You might have missed a comma here",
+      "range": {
+        "startLine": 12,
+        "startChar": 35,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "9dec48451f70960496a83b4c09baad658ef816aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
