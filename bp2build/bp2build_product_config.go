@@ -166,6 +166,7 @@ func platformMappingContent(mainProductLabel string, mainProductVariables *andro
 func platformMappingSingleProduct(label string, productVariables *android.ProductVariables) string {
 	buildSettings := ""
 	buildSettings += fmt.Sprintf("    --//build/bazel/product_config:apex_global_min_sdk_version_override=%s\n", proptools.String(productVariables.ApexGlobalMinSdkVersionOverride))
+	buildSettings += fmt.Sprintf("    --//build/bazel/product_config:device_abi=%s\n", strings.Join(productVariables.DeviceAbi, ","))
 	result := ""
 	for _, extension := range []string{"", "_linux_x86_64", "_linux_bionic_x86_64", "_linux_musl_x86", "_linux_musl_x86_64"} {
 		result += "  " + label + extension + "\n" + buildSettings
@@ -180,5 +181,10 @@ func starlarkMapToProductVariables(in map[string]starlark.Value) (android.Produc
 	if err != nil {
 		return result, err
 	}
+	result.DeviceAbi, err = starlark_import.Unmarshal[[]string](in["DeviceAbi"])
+	if err != nil {
+		return result, err
+	}
+
 	return result, nil
 }
