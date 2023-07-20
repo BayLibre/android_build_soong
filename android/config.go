@@ -171,6 +171,10 @@ func (c Config) RunningInsideUnitTest() bool {
 	return c.config.TestProductVariables != nil
 }
 
+func (c Config) DoHiddenApiChecks() bool {
+	return !c.IsEnvTrue("UNSAFE_DISABLE_HIDDENAPI_FLAGS") && !Bool(c.productVariables.Eng)
+}
+
 // MaxPageSizeSupported returns the max page size supported by the device. This
 // value will define the ELF segment alignment for binaries (executables and
 // shared libraries).
