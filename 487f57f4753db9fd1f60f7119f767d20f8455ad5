@@ -22,6 +22,30 @@
       },
       "revId": "487f57f4753db9fd1f60f7119f767d20f8455ad5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74482c52_2b3e6851",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-07-20T19:03:46Z",
+      "side": 1,
+      "message": "Good catch. I don\u0027t want to complicate this too much, so instead I just made it that if the targetSdkVersion is not a number it\u0027s also a failure. Because ideally we want presigned without preprocessed to never work, this is just allowing some things through so that I don\u0027t have to change all the current modules.",
+      "parentUuid": "8701bf42_81cc9465",
+      "range": {
+        "startLine": 265,
+        "startChar": 60,
+        "endLine": 265,
+        "endChar": 100
+      },
+      "revId": "487f57f4753db9fd1f60f7119f767d20f8455ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
