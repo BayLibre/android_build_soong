@@ -489,7 +489,7 @@ func TestRuleBuilder(t *testing.T) {
 func testRuleBuilderFactory() Module {
 	module := &testRuleBuilderModule{}
 	module.AddProperties(&module.properties)
-	InitAndroidModule(module)
+	InitAndroidArchModule(module, HostSupported, MultilibFirst)
 	return module
 }
 
@@ -501,7 +501,52 @@ type testRuleBuilderModule struct {
 		Restat      bool
 		Sbox        bool
 		Sbox_inputs bool
+		Tools []string
 	}
+}
+
+func (t *testRuleBuilderModule) RuleBuiltTools(ctx BaseModuleContext) []string {
+	return t.properties.Tools
+}
+
+// A helper module type that is used as a tool of rule_builder_test
+func testRuleBuilderToolFactory() Module {
+	module := &testRuleBuilderToolModule{}
+	module.AddProperties(&module.properties)
+	InitAndroidArchModule(module, HostSupported, MultilibFirst)
+	return module
+}
+
+type testRuleBuilderToolModule struct {
+	ModuleBase
+	properties struct {
+		Shared_libraries []string
+	}
+}
+
+func (t *testRuleBuilderToolModule) DepsMutator(ctx BottomUpMutatorContext) {
+	// Add a dependency on packaging_deps with a installdep tag
+	ctx.AddDependency(ctx.Module(), installDepTag{}, t.properties.Shared_libraries...)
+}
+
+func (t *testRuleBuilderToolModule) GenerateAndroidBuildActions(ctx ModuleContext) {}
+
+// A helper module type that is a used as a shared lib of tools of rule_builder_test
+type testRuleBuilderToolDepModule struct {
+	ModuleBase
+}
+
+func testRuleBuilderToolDepFactory() Module {
+	module := &testRuleBuilderToolDepModule{}
+	InitAndroidArchModule(module, HostSupported, MultilibFirst)
+	return module
+}
+
+func (td *testRuleBuilderToolDepModule) GenerateAndroidBuildActions(ctx ModuleContext) {
+	installPath := PathForModuleInstall(ctx, "lib")
+	filePath := PathForModuleOut(ctx, ctx.ModuleName())
+	// Install the file in out/. A separate unit test will verify that this transitive dep is copied to a sandbox
+	ctx.InstallFile(installPath, ctx.ModuleName(), filePath)
 }
 
 func (t *testRuleBuilderModule) GenerateAndroidBuildActions(ctx ModuleContext) {
@@ -518,7 +563,7 @@ func (t *testRuleBuilderModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	rspFileContents2 := PathsForSource(ctx, []string{"rsp_in2"})
 	manifestPath := PathForModuleOut(ctx, "sbox.textproto")
 
-	testRuleBuilder_Build(ctx, in, implicit, orderOnly, validation, out, outDep, outDir,
+	testRuleBuilder_Build(ctx, in, t.properties.Tools, implicit, orderOnly, validation, out, outDep, outDir,
 		manifestPath, t.properties.Restat, t.properties.Sbox, t.properties.Sbox_inputs,
 		rspFile, rspFileContents, rspFile2, rspFileContents2)
 }
@@ -543,12 +588,12 @@ func (t *testRuleBuilderSingleton) GenerateBuildActions(ctx SingletonContext) {
 	rspFileContents2 := PathsForSource(ctx, []string{"rsp_in2"})
 	manifestPath := PathForOutput(ctx, "singleton/sbox.textproto")
 
-	testRuleBuilder_Build(ctx, in, implicit, orderOnly, validation, out, outDep, outDir,
+	testRuleBuilder_Build(ctx, in, []string{}, implicit, orderOnly, validation, out, outDep, outDir,
 		manifestPath, true, false, false,
 		rspFile, rspFileContents, rspFile2, rspFileContents2)
 }
 
-func testRuleBuilder_Build(ctx BuilderContext, in Paths, implicit, orderOnly, validation Path,
+func testRuleBuilder_Build(ctx BuilderContext, in Paths, tools []string, implicit, orderOnly, validation Path,
 	out, outDep, outDir, manifestPath WritablePath,
 	restat, sbox, sboxInputs bool,
 	rspFile WritablePath, rspFileContents Paths, rspFile2 WritablePath, rspFileContents2 Paths) {
@@ -572,6 +617,19 @@ func testRuleBuilder_Build(ctx BuilderContext, in Paths, implicit, orderOnly, va
 		ImplicitDepFile(outDep).
 		FlagWithRspFileInputList("@", rspFile, rspFileContents).
 		FlagWithRspFileInputList("@", rspFile2, rspFileContents2)
+	for _, tool := range tools {
+		if sbox {
+			// Use BuiltToolWithDeps to check that the transitive deps are copied to sbox
+			mCtx, ok := ctx.(ModuleContext)
+			if !ok {
+				panic("In sandbox tools test, could not cast android.BuilderContext to android.ModuleContext")
+			}
+			rule.Command().BuiltToolWithDeps(mCtx, tool)
+		} else {
+			// Use BuiltTool for non-sandboxed actions
+			rule.Command().BuiltTool(tool)
+		}
+	}
 
 	if restat {
 		rule.Restat()
@@ -580,10 +638,16 @@ func testRuleBuilder_Build(ctx BuilderContext, in Paths, implicit, orderOnly, va
 	rule.Build("rule", "desc")
 }
 
-var prepareForRuleBuilderTest = FixtureRegisterWithContext(func(ctx RegistrationContext) {
-	ctx.RegisterModuleType("rule_builder_test", testRuleBuilderFactory)
-	ctx.RegisterSingletonType("rule_builder_test", testRuleBuilderSingletonFactory)
-})
+var prepareForRuleBuilderTest = GroupFixturePreparers(
+	PrepareForTestWithAndroidBuildComponents,
+	FixtureRegisterWithContext(func(ctx RegistrationContext) {
+		ctx.RegisterModuleType("rule_builder_test", testRuleBuilderFactory)
+		ctx.RegisterSingletonType("rule_builder_test", testRuleBuilderSingletonFactory)
+		ctx.RegisterModuleType("rule_builder_tool", testRuleBuilderToolFactory)
+		ctx.RegisterModuleType("rule_builder_tool_dep", testRuleBuilderToolDepFactory)
+		RegisterToolsDepsMutator(ctx)
+	}),
+)
 
 func TestRuleBuilder_Build(t *testing.T) {
 	fs := MockFS{
@@ -607,6 +671,19 @@ func TestRuleBuilder_Build(t *testing.T) {
 			srcs: ["in"],
 			sbox: true,
 			sbox_inputs: true,
+		}
+		rule_builder_test {
+			name: "foo_sbox_tool_deps",
+			sbox: true,
+			sbox_inputs: true,
+			tools: ["tool_with_deps"],
+		}
+		rule_builder_tool {
+			name: "tool_with_deps",
+			shared_libraries: ["some_shared_library"],
+		}
+		rule_builder_tool_dep {
+			name: "some_shared_library",
 		}
 	`
 
@@ -708,6 +785,11 @@ func TestRuleBuilder_Build(t *testing.T) {
 		module := result.ModuleForTests("foo_sbox_inputs", "")
 		check(t, module.Output("gen/foo_sbox_inputs"), module.Output(rspFile2),
 			cmd, outFile, depFile, rspFile, rspFile2, false, []string{manifest}, []string{sbox})
+	})
+	t.Run("sbox tools and transitive install deps", func(t *testing.T) {
+		sboxManifest := result.ModuleForTests("foo_sbox_tool_deps", "linux_glibc_x86_64").Rule("writeFile").Args["content"]
+		// Check that the manifest contains a copy command for the tranitive dep of the host tool used in this rule
+		AssertStringDoesContain(t, "Transitive packaging dep of host tool was not copied to sbox", sboxManifest, "tools/out/lib/some_shared_library")
 	})
 	t.Run("singleton", func(t *testing.T) {
 		outFile := filepath.Join("out/soong/singleton/gen/baz")

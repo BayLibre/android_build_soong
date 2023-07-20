@@ -1042,6 +1042,32 @@ func (c *RuleBuilderCommand) BuiltTool(tool string) *RuleBuilderCommand {
 	return c.builtToolWithoutDeps(tool)
 }
 
+// TODO: godocs
+func (c *RuleBuilderCommand) BuiltToolWithDeps(ctx ModuleContext, tool string) *RuleBuilderCommand {
+	return c.addPackagingDeps(ctx, tool).BuiltTool(tool)
+}
+
+func (c *RuleBuilderCommand) addPackagingDeps(ctx ModuleContext, tool string) *RuleBuilderCommand {
+	depIsBuiltToolWithName := func(dep Module) bool {
+		_, hostToolDep := ctx.OtherModuleDependencyTag(dep).(HostToolDependencyTag)
+		return dep.Name() == tool && hostToolDep
+	}
+
+	var ps []PackagingSpec
+
+	// Get the transitive packaging specs for this tool
+	ctx.VisitDirectDepsIf(depIsBuiltToolWithName, func(dep Module) {
+		ps = dep.TransitivePackagingSpecs()
+	})
+
+	if ps == nil {
+		// TODO: Better error handling
+		ctx.ModuleErrorf("Could not find PackagingSpecs for tool: %s. This can be caused if this tool is not listed in `RuleBuiltToolDeps` of this module type\n", tool)
+	}
+
+	return c.ImplicitPackagedTools(ps)
+}
+
 // builtToolWithoutDeps is similar to BuiltTool, but doesn't add any dependencies.  It is used
 // internally by RuleBuilder for helper tools that are known to be compiled statically.
 func (c *RuleBuilderCommand) builtToolWithoutDeps(tool string) *RuleBuilderCommand {
