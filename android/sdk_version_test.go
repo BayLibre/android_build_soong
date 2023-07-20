@@ -79,6 +79,7 @@ func TestSdkSpecFrom(t *testing.T) {
 		Platform_sdk_version:              intPtr(31),
 		Platform_sdk_codename:             stringPtr("Tiramisu"),
 		Platform_version_active_codenames: []string{"Tiramisu"},
+		Platform_version_all_preview_codenames: []string{"Tiramisu"},
 	}
 
 	for _, tc := range testCases {
