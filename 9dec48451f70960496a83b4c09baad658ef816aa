@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a588e70d_8851519b",
+        "filename": "java/app_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-07-20T19:51:11Z",
+      "side": 1,
+      "message": "I think this is fine, I\u0027ll remove them right after aosp/2668017 is submitted.",
+      "parentUuid": "6263951f_e3e346a7",
+      "range": {
+        "startLine": 270,
+        "startChar": 59,
+        "endLine": 270,
+        "endChar": 147
+      },
+      "revId": "9dec48451f70960496a83b4c09baad658ef816aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ace4b22f_d912668d",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-07-20T19:39:11Z",
       "side": 1,
       "message": "You might have missed a comma here",
+      "range": {
+        "startLine": 12,
+        "startChar": 35,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "9dec48451f70960496a83b4c09baad658ef816aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc2fcce_47bdf382",
+        "filename": "scripts/check_target_sdk_less_than_30.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-07-20T19:51:11Z",
+      "side": 1,
+      "message": "Oops, sorry, I had only tested this before I added the stampfile argument.",
+      "parentUuid": "ace4b22f_d912668d",
       "range": {
         "startLine": 12,
         "startChar": 35,
