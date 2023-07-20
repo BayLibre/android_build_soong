@@ -223,6 +223,7 @@ var prepareForApexTest = android.GroupFixturePreparers(
 		// "Tiramisu" needs to be in the next line for compatibility with soong code,
 		// not because of these tests specifically (it's not used by the tests)
 		variables.Platform_version_active_codenames = []string{"Q", "Tiramisu"}
+		variables.Platform_version_all_preview_codenames = []string{"Q", "Tiramisu"}
 		variables.Platform_vndk_version = proptools.StringPtr("29")
 		variables.BuildId = proptools.StringPtr("TEST.BUILD_ID")
 	}),
@@ -1239,6 +1240,7 @@ func TestApex_PlatformUsesLatestStubFromApex(t *testing.T) {
 			variables.Platform_sdk_codename = proptools.StringPtr("Z")
 			variables.Platform_sdk_final = proptools.BoolPtr(false)
 			variables.Platform_version_active_codenames = []string{"Z"}
+			variables.Platform_version_all_preview_codenames = []string{"Z"}
 		}),
 	)
 
@@ -1877,6 +1879,7 @@ func TestApexMinSdkVersion_SupportsCodeNames(t *testing.T) {
 	`,
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 			variables.Platform_version_active_codenames = []string{"R"}
+			variables.Platform_version_all_preview_codenames = []string{"R"}
 		}),
 	)
 
@@ -1919,6 +1922,7 @@ func TestApexMinSdkVersion_SupportsCodeNames_JavaLibs(t *testing.T) {
 	`,
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 			variables.Platform_version_active_codenames = []string{"S"}
+			variables.Platform_version_all_preview_codenames = []string{"S"}
 			variables.Platform_sdk_codename = proptools.StringPtr("S")
 		}),
 	)
@@ -2723,6 +2727,7 @@ func TestApexMinSdkVersion_WorksWithSdkCodename(t *testing.T) {
 		func(variables android.FixtureProductVariables) {
 			variables.Platform_sdk_codename = proptools.StringPtr("S")
 			variables.Platform_version_active_codenames = []string{"S"}
+			variables.Platform_version_all_preview_codenames = []string{"S"}
 		},
 	)
 	testApexError(t, `libbar.*: should support min_sdk_version\(S\)`, `
@@ -2754,6 +2759,7 @@ func TestApexMinSdkVersion_WorksWithActiveCodenames(t *testing.T) {
 	withSAsActiveCodeNames := android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 		variables.Platform_sdk_codename = proptools.StringPtr("S")
 		variables.Platform_version_active_codenames = []string{"S", "T"}
+		variables.Platform_version_all_preview_codenames = []string{"S", "T"}
 	})
 	ctx := testApex(t, `
 		apex {
