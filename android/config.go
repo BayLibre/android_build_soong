@@ -934,9 +934,29 @@ func (c *config) FinalApiLevels() []ApiLevel {
 	return levels
 }
 
-func (c *config) PreviewApiLevels() []ApiLevel {
+// Returns all preview API levels that are marked 'active'. This excludes
+// preview APIs that are greater than the target SDK.
+//
+// E.g. If the preview APIs 'UpsideDownCake' and 'VanillaIceCream' are declared
+// but the target API is 'UpsideDownCake', this will return 'UpsideDownCake' only.
+//
+// For functions that need to process targets that may mention preview versions
+// greater than the target, use AllPreviewApiLevels.
+func (c *config) ActivePreviewApiLevels() []ApiLevel {
 	var levels []ApiLevel
-	for i, codename := range c.PlatformVersionActiveCodenames() {
+	for i, codename := range c.PlatformVersionAllPreviewCodenames() {
+		levels = append(levels, ApiLevel{
+			value:     codename,
+			number:    i,
+			isPreview: true,
+		})
+	}
+	return levels
+}
+
+func (c *config) AllPreviewApiLevels() []ApiLevel {
+	var levels []ApiLevel
+	for i, codename := range c.PlatformVersionAllPreviewCodenames() {
 		levels = append(levels, ApiLevel{
 			value:     codename,
 			number:    i,
@@ -948,7 +968,7 @@ func (c *config) PreviewApiLevels() []ApiLevel {
 
 func (c *config) LatestPreviewApiLevel() ApiLevel {
 	level := NoneApiLevel
-	for _, l := range c.PreviewApiLevels() {
+	for _, l := range c.ActivePreviewApiLevels() {
 		if l.GreaterThan(level) {
 			level = l
 		}
@@ -959,7 +979,7 @@ func (c *config) LatestPreviewApiLevel() ApiLevel {
 func (c *config) AllSupportedApiLevels() []ApiLevel {
 	var levels []ApiLevel
 	levels = append(levels, c.FinalApiLevels()...)
-	return append(levels, c.PreviewApiLevels()...)
+	return append(levels, c.ActivePreviewApiLevels()...)
 }
 
 // DefaultAppTargetSdk returns the API level that platform apps are targeting.

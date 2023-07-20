@@ -90,6 +90,11 @@ func platformVersionContents(cfg android.Config) string {
 		platformVersionActiveCodenames = append(platformVersionActiveCodenames, fmt.Sprintf("%q", codename))
 	}
 
+	platformVersionAllPreviewCodenames := make([]string, 0, len(cfg.PlatformVersionAllPreviewCodenames()))
+	for _, codename := range cfg.PlatformVersionAllPreviewCodenames() {
+		platformVersionAllPreviewCodenames = append(platformVersionACodenames, fmt.Sprintf("%q", codename))
+	}
+
 	platformSdkVersion := "None"
 	if cfg.RawPlatformSdkVersion() != nil {
 		platformSdkVersion = strconv.Itoa(*cfg.RawPlatformSdkVersion())
@@ -101,8 +106,9 @@ platform_versions = struct(
     platform_sdk_version = %s,
     platform_sdk_codename = %q,
     platform_version_active_codenames = [%s],
+    platform_version_all_preview_codenames = [%s],
 )
-`, starlark_fmt.PrintBool(cfg.PlatformSdkFinal()), platformSdkVersion, cfg.PlatformSdkCodename(), strings.Join(platformVersionActiveCodenames, ", "))
+`, starlark_fmt.PrintBool(cfg.PlatformSdkFinal()), platformSdkVersion, cfg.PlatformSdkCodename(), strings.Join(platformVersionActiveCodenames, ", "), strings.Join(platformVersionAllPreviewCodenames, ", "))
 }
 
 func CreateBazelFiles(
