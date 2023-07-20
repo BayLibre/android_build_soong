@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8701bf42_81cc9465",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-20T03:39:44Z",
+      "side": 1,
+      "message": "Can `targetSdkVersion` ever be a codename/letter? If it is, then we might need to use the api levels map here as well",
+      "range": {
+        "startLine": 265,
+        "startChar": 60,
+        "endLine": 265,
+        "endChar": 100
+      },
+      "revId": "487f57f4753db9fd1f60f7119f767d20f8455ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
