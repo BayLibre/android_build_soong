@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "194e253c_3b155b52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2023-07-20T22:16:37Z",
+      "side": 1,
+      "message": "This shortens the incremental build time for an incremental build of \u0027framework\u0027 after adding a comment to Settings.java by ~20 seconds.",
+      "revId": "feff3f3f99a1ddadd5687cf9a6138dd2c1ccfc3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
