@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b43db675_c8dcee06",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-07-20T18:47:12Z",
+      "side": 1,
+      "message": "Mostly for my curiosity do you mind summarizing what this change and the related one in zip/android.go do and why they\u0027re needed?",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 40
+      },
+      "revId": "877ca3d7f9f4469cea5d91e395bb971f664a2a2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86d4d471_96370d90",
+        "filename": "jar/services.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-07-20T18:47:12Z",
+      "side": 1,
+      "message": "produce?",
+      "range": {
+        "startLine": 27,
+        "startChar": 73,
+        "endLine": 27,
+        "endChar": 80
+      },
+      "revId": "877ca3d7f9f4469cea5d91e395bb971f664a2a2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
