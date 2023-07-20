@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3860e1dd_79a7b322",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-07-20T21:11:49Z",
+      "side": 1,
+      "message": "(for values of \"now\" that include \"when my bionic change goes in\" anyway...)",
+      "revId": "c9642681bdaa67d07009b80fbfdf586fca03409f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
