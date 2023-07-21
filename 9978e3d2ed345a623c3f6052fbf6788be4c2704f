@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "831f1443_ba2fe056",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-21T23:31:01Z",
+      "side": 1,
+      "message": "Thanks for implementing this. The code looks good overall, but adding Liz and Romain for +2s",
+      "revId": "9978e3d2ed345a623c3f6052fbf6788be4c2704f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d95ac2_9023837f",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-21T23:31:01Z",
+      "side": 1,
+      "message": "nit: I would put this in a file and make --allowlist point to the file. Will make the command more readable, and the ninja file will be smaller as well.",
+      "range": {
+        "startLine": 1135,
+        "startChar": 3,
+        "endLine": 1141,
+        "endChar": 86
+      },
+      "revId": "9978e3d2ed345a623c3f6052fbf6788be4c2704f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
