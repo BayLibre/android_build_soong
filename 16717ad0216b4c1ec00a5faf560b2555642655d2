@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630f16c9_7531d6a8",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2178,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-21T13:22:49Z",
+      "side": 1,
+      "message": "should this be `deps.GeneratedHeaders`/`deps.ReexportGeneratedHeaders` so that rdeps get access to the generated headers?",
+      "range": {
+        "startLine": 2178,
+        "startChar": 7,
+        "endLine": 2178,
+        "endChar": 20
+      },
+      "revId": "16717ad0216b4c1ec00a5faf560b2555642655d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
