@@ -1,0 +1,7 @@
+Landroid/bluetooth/BluetoothAdapter$2;->apply(Ljava/lang/Object;)Ljava/lang/Object;
+Landroid/bluetooth/BluetoothAdapter$3;->apply(Ljava/lang/Object;)Ljava/lang/Object;
+Landroid/bluetooth/BluetoothAdapter$4;->apply(Ljava/lang/Object;)Ljava/lang/Object;
+Landroid/bluetooth/BluetoothAdapter$5;->apply(Ljava/lang/Object;)Ljava/lang/Object;
+Landroid/bluetooth/BluetoothDevice$2;->apply(Ljava/lang/Object;)Ljava/lang/Object;
+Landroid/bluetooth/BluetoothMap$2;->apply(Ljava/lang/Object;)Ljava/lang/Object;
+Landroid/bluetooth/BluetoothSap$2;->apply(Ljava/lang/Object;)Ljava/lang/Object;
