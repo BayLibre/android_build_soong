@@ -1129,6 +1129,12 @@ func buildRuleValidateOverlappingCsvFiles(ctx android.BuilderContext, name strin
 		command.FlagWithArg("--implementation-flag ", implementationFlag)
 	}
 
+	// TODO(b/292291070) : Remove when signature files include overriding method signatures
+	if ctx.Config().BuildFromTextStub() {
+		command.FlagWithInput("--allowlist ",
+			android.PathForSource(ctx, "build/soong/java/text_stub_hiddenapi_allowlist.txt"))
+	}
+
 	// If validation passes then update the file that records that.
 	command.Text("&& touch").Output(validFile)
 	rule.Build(name+"Validation", desc+" validation")
