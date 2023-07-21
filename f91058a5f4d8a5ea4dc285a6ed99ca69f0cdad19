@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3714c902_efbb7a19",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-07-21T04:09:49Z",
+      "side": 1,
+      "message": "(capturing offline discussion): It\u0027d be nice if we could avoid having all clients say that they need to link against server_configurable_flags, but soong doesn\u0027t support that.\n\nI\u0027ll leave this TODO here.",
+      "parentUuid": "84ace969_03843483",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 92
+      },
+      "revId": "f91058a5f4d8a5ea4dc285a6ed99ca69f0cdad19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff8a922d_f640c7aa",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-07-20T16:59:33Z",
       "side": 1,
       "message": "do we need to set `ReexportGeneratedHeaders` https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d131;drc\u003d12a1f9182d41fc08aee18ece94a30177bccb273c for these to be useful?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 65
+      },
+      "revId": "f91058a5f4d8a5ea4dc285a6ed99ca69f0cdad19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae2aa0d_83f5514a",
+        "filename": "aconfig/cc_aconfig_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-07-21T04:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff8a922d_f640c7aa",
       "range": {
         "startLine": 97,
         "startChar": 1,
