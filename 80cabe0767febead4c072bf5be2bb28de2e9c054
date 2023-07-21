@@ -135,6 +135,30 @@
       },
       "revId": "80cabe0767febead4c072bf5be2bb28de2e9c054",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff1590f_c114ebde",
+        "filename": "java/dex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-07-21T14:26:53Z",
+      "side": 1,
+      "message": "To be clear the cases you were discussing above are unaffected by this change",
+      "parentUuid": "4fa5674d_02b9cf98",
+      "range": {
+        "startLine": 76,
+        "startChar": 28,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "80cabe0767febead4c072bf5be2bb28de2e9c054",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
