@@ -111,6 +111,30 @@
       },
       "revId": "80cabe0767febead4c072bf5be2bb28de2e9c054",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa5674d_02b9cf98",
+        "filename": "java/dex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-07-21T14:23:04Z",
+      "side": 1,
+      "message": "Discussed offline at length with Sam, we will very slightly change the logic so that if we have \n```\nC --------\u003e B (exports: NO) ------------\u003e A (exports: YES)\n    libs                    static_libs     \n```\nthen C will see A\u0027s proguard flags.\n\nWe can then simplify the provider to only have 2 depsets, one \"unconditionally exported\" set, and one set that represents the flags that this module would use if R8 needed to be run on it (\"static\").\n\nThe logic is then, if exports:YES, unconditional set \u003d static set \u003d this module\u0027s flag + its libs unconditional sets + its static libs static sets. If exports:NO, unconditional_set \u003d its libs unconditional sets, static \u003d this module\u0027s flag + its libs unconditional sets + its static libs static sets.\n\nWe\u0027ll right a bunch of small unit tests with 3 modules like above with all relevant combinations of `libs`, `static_libs`, exports yes/no to make the logic clearer",
+      "parentUuid": "8ff2a423_e9be9724",
+      "range": {
+        "startLine": 76,
+        "startChar": 28,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "80cabe0767febead4c072bf5be2bb28de2e9c054",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
