@@ -22,6 +22,30 @@
       },
       "revId": "16717ad0216b4c1ec00a5faf560b2555642655d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c2ed53_a2682dbf",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2178,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-07-21T16:07:58Z",
+      "side": 1,
+      "message": "Almost. It needs to be ReexportedDeps to find its way over to the .cpp file.",
+      "parentUuid": "630f16c9_7531d6a8",
+      "range": {
+        "startLine": 2178,
+        "startChar": 7,
+        "endLine": 2178,
+        "endChar": 20
+      },
+      "revId": "16717ad0216b4c1ec00a5faf560b2555642655d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
