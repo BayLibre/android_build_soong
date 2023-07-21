@@ -10553,7 +10553,6 @@ func TestTrimmedApex(t *testing.T) {
 			src: "libc.so",
 			min_sdk_version: "29",
 			recovery_available: true,
-			vendor_available: true,
 		}
 		api_imports {
 			name: "api_imports",
