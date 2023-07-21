@@ -137,6 +137,17 @@ def compare_signature_flags(monolithic_flags_dict, modular_flags_dict,
                 (signature, modular_flags, monolithic_flags))
     return mismatching_signatures
 
+def handle_allowlist(
+        mismatching_signatures: list[tuple[str, list[str], list[str]]],
+        allowlist: set[str] = set()
+    ) -> list[tuple[str, list[str], list[str]]]:
+    # If there are no mismatching signatures or allowlist, no mismatches have to be handled
+    if not mismatching_signatures or not allowlist:
+        return mismatching_signatures
+
+    return [signature for signature in mismatching_signatures
+            if signature[0] not in allowlist]
+
 
 def main(argv):
     args_parser = argparse.ArgumentParser(
@@ -166,6 +177,13 @@ def main(argv):
         "member. Specify as many times as necessary to define the "
         "implementation flag set. If this is not specified then the "
         "implementation flag set is empty.")
+    args_parser.add_argument(
+        "--allowlist",
+        action="extend",
+        nargs="+",
+        help="An entry of flags that will be handled as allowlist when mismatching signatures are found."
+        "The entry must be a hiddenapi format signature, without api flags."
+    )
     args = args_parser.parse_args(argv[1:])
 
     # Read in all the flags into the trie
@@ -179,6 +197,7 @@ def main(argv):
     # of flags and compare them.
     failed = False
     module_pairs = args.module_flags or []
+    allowlist = set(args.allowlist) or set()
     for modular_pair in module_pairs:
         parts = modular_pair.split(":")
         modular_flags_path = parts[0]
@@ -191,12 +210,15 @@ def main(argv):
         mismatching_signatures = compare_signature_flags(
             monolithic_flags_subset_dict, modular_flags_dict,
             implementation_flags)
-        if mismatching_signatures:
+        allowlist_handled_mismatching_signatures = \
+        handle_allowlist(mismatching_signatures, allowlist)
+
+        if allowlist_handled_mismatching_signatures:
             failed = True
             print("ERROR: Hidden API flags are inconsistent:")
             print("< " + modular_flags_path)
             print("> " + monolithic_flags_path)
-            for mismatch in mismatching_signatures:
+            for mismatch in allowlist_handled_mismatching_signatures:
                 signature = mismatch[0]
                 print()
                 print("< " + ",".join([signature] + mismatch[1]))

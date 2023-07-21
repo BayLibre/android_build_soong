@@ -1129,6 +1129,19 @@ func buildRuleValidateOverlappingCsvFiles(ctx android.BuilderContext, name strin
 		command.FlagWithArg("--implementation-flag ", implementationFlag)
 	}
 
+	// TODO(b/292291070) : Remove when signature files include overriding method signatures
+	if ctx.Config().BuildFromTextStub() {
+		command.FlagWithList("--allowlist ", []string{
+			"'Landroid/bluetooth/BluetoothAdapter$2;->apply(Ljava/lang/Object;)Ljava/lang/Object;'",
+			"'Landroid/bluetooth/BluetoothAdapter$3;->apply(Ljava/lang/Object;)Ljava/lang/Object;'",
+			"'Landroid/bluetooth/BluetoothAdapter$4;->apply(Ljava/lang/Object;)Ljava/lang/Object;'",
+			"'Landroid/bluetooth/BluetoothAdapter$5;->apply(Ljava/lang/Object;)Ljava/lang/Object;'",
+			"'Landroid/bluetooth/BluetoothDevice$2;->apply(Ljava/lang/Object;)Ljava/lang/Object;'",
+			"'Landroid/bluetooth/BluetoothMap$2;->apply(Ljava/lang/Object;)Ljava/lang/Object;'",
+			"'Landroid/bluetooth/BluetoothSap$2;->apply(Ljava/lang/Object;)Ljava/lang/Object;'",
+		}, " ")
+	}
+
 	// If validation passes then update the file that records that.
 	command.Text("&& touch").Output(validFile)
 	rule.Build(name+"Validation", desc+" validation")
