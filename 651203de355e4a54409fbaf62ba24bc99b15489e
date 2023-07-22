@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9077ccc2_5b215d4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-22T01:56:20Z",
+      "side": 1,
+      "message": "The bp2build failure is unrelated and appears in postsubmit as well",
+      "revId": "651203de355e4a54409fbaf62ba24bc99b15489e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
