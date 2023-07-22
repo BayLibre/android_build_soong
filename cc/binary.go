@@ -281,6 +281,7 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 			flags.Global.LdFlags = append(flags.Global.LdFlags,
 				"-nostdlib",
 				"-Bstatic",
+				"-Wl,--no-demangle",
 				"-Wl,--gc-sections",
 			)
 		} else { // not static
@@ -319,6 +320,7 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 				"-pie",
 				"-nostdlib",
 				"-Bdynamic",
+				"-Wl,--no-demangle",
 				"-Wl,--gc-sections",
 				"-Wl,-z,nocopyreloc",
 			)
