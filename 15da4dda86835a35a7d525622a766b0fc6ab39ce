@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4429d54d_cc7a57f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-22T00:31:04Z",
+      "side": 1,
+      "message": "anyway, because this is breaking, I don\u0027t think we can merge it. However, uploading since I had it locally.\n\nthe idea I have is this:\n- turn it on\n- diff the output tree\n- then manually remove the libraries one by one that it removes automatically\n\nThis could be used as an easy way to trim dependencies, if someone wanted to go through them.",
+      "revId": "15da4dda86835a35a7d525622a766b0fc6ab39ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
