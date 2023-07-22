@@ -1160,6 +1160,7 @@ func (library *libraryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Fla
 		if ctx.toolchain().Bionic() {
 			f = append(f,
 				"-nostdlib",
+				"-Wl,--as-needed",
 				"-Wl,--gc-sections",
 			)
 		}
