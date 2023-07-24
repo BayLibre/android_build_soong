@@ -39,6 +39,30 @@
       },
       "revId": "651203de355e4a54409fbaf62ba24bc99b15489e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "818bfc15_2275ad06",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-24T18:24:56Z",
+      "side": 1,
+      "message": "I dont have a strong opinion on this, but I think it might be nice to keep it here. \n\nIf we move it to line 740 and make it more generic, it might be confusing to devs as to why we are not deduping\n- Other properties like `Dynamic_deps`, `Whole_archive_deps`\n- The configurable axes like os\n\nThe con is some code and work duplication, but `FirstUniqueBazelLabelList` is backed by a map implementation, so it should not be too slow.",
+      "parentUuid": "a0249b38_9f0e56a2",
+      "range": {
+        "startLine": 766,
+        "startChar": 27,
+        "endLine": 766,
+        "endChar": 52
+      },
+      "revId": "651203de355e4a54409fbaf62ba24bc99b15489e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
