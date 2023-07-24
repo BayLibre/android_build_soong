@@ -16,6 +16,29 @@
       "message": "The bp2build failure is unrelated and appears in postsubmit as well",
       "revId": "651203de355e4a54409fbaf62ba24bc99b15489e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0249b38_9f0e56a2",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2023-07-24T17:56:12Z",
+      "side": 1,
+      "message": "nit: maybe move this out of this method to right before creating the bazel target around line 740 since it is not unique to this method, and should be done only once?",
+      "range": {
+        "startLine": 766,
+        "startChar": 27,
+        "endLine": 766,
+        "endChar": 52
+      },
+      "revId": "651203de355e4a54409fbaf62ba24bc99b15489e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
