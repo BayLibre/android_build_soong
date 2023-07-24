@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74281095_ed632d72",
+        "filename": "android/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-07-24T20:07:59Z",
+      "side": 1,
+      "message": "what\u0027s the difference between this and AllPreviewApiLevels?",
+      "range": {
+        "startLine": 947,
+        "startChar": 28,
+        "endLine": 947,
+        "endChar": 62
+      },
+      "revId": "b58a28a31dcfcd85402c6ddf79bfd2ba53f5a85d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
