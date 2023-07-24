@@ -189,11 +189,21 @@ func readdirToMap(dir string) map[string]os.FileInfo {
 }
 
 // Creates a symbolic link at dst pointing to src
-func symlinkIntoForest(topdir, dst, src string) uint64 {
-	srcPath := shared.JoinPath(topdir, src)
-	dstPath := shared.JoinPath(topdir, dst)
+func symlinkIntoForest(topdir, dst, src string, prefix string) uint64 {
+	// b/259191764 - Make all symlinks relative
+	dst = filepath.Join(prefix, dst)
+	src = filepath.Join(prefix, src)
+	basePath := filepath.Dir(dst)
+	var dstPath string
+	srcPath, err := filepath.Rel(basePath, src)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to find relative path for symlinking: %s\n", err)
+		os.Exit(1)
+	} else {
+		dstPath = dst
+	}
 
-	// Check if a symlink already exists.
+	// Check whether a symlink already exists.
 	if dstInfo, err := os.Lstat(dstPath); err != nil {
 		if !os.IsNotExist(err) {
 			fmt.Fprintf(os.Stderr, "Failed to lstat '%s': %s", dst, err)
@@ -213,6 +223,7 @@ func symlinkIntoForest(topdir, dst, src string) uint64 {
 	}
 
 	// Create symlink.
+
 	if err := os.Symlink(srcPath, dstPath); err != nil {
 		fmt.Fprintf(os.Stderr, "Cannot create symlink at '%s' pointing to '%s': %s", dst, src, err)
 		os.Exit(1)
@@ -284,7 +295,7 @@ func maybeWriteVersionFile(topdir, forest string) error {
 // contain every file in buildFilesDir and srcDir excluding the files in
 // instructions. Collects every directory encountered during the traversal of
 // srcDir .
-func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *instructionsNode, forestDir string, buildFilesDir string, srcDir string) {
+func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *instructionsNode, forestDir string, buildFilesDir string, srcDir string, prefix string) {
 	defer context.wg.Done()
 
 	if instructions != nil && instructions.excluded {
@@ -385,7 +396,7 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 
 		if instructionsChild != nil && instructionsChild.excluded {
 			if bExists {
-				context.symlinkCount.Add(symlinkIntoForest(context.topdir, forestChild, buildFilesChild))
+				context.symlinkCount.Add(symlinkIntoForest(context.topdir, forestChild, buildFilesChild, prefix))
 			}
 			continue
 		}
@@ -398,25 +409,25 @@ func plantSymlinkForestRecursive(context *symlinkForestContext, instructions *in
 				// Not in the source tree, but we have to exclude something from under
 				// this subtree, so descend
 				context.wg.Add(1)
-				go plantSymlinkForestRecursive(context, instructionsChild, forestChild, buildFilesChild, srcChild)
+				go plantSymlinkForestRecursive(context, instructionsChild, forestChild, buildFilesChild, srcChild, prefix)
 			} else {
 				// Not in the source tree, symlink BUILD file
-				context.symlinkCount.Add(symlinkIntoForest(context.topdir, forestChild, buildFilesChild))
+				context.symlinkCount.Add(symlinkIntoForest(context.topdir, forestChild, buildFilesChild, prefix))
 			}
 		} else if !bExists {
 			if sDir && instructionsChild != nil {
 				// Not in the build file tree, but we have to exclude something from
 				// under this subtree, so descend
 				context.wg.Add(1)
-				go plantSymlinkForestRecursive(context, instructionsChild, forestChild, buildFilesChild, srcChild)
+				go plantSymlinkForestRecursive(context, instructionsChild, forestChild, buildFilesChild, srcChild, prefix)
 			} else {
 				// Not in the build file tree, symlink source tree, carry on
-				context.symlinkCount.Add(symlinkIntoForest(context.topdir, forestChild, srcChild))
+				context.symlinkCount.Add(symlinkIntoForest(context.topdir, forestChild, srcChild, prefix))
 			}
 		} else if sDir && bDir {
 			// Both are directories. Descend.
 			context.wg.Add(1)
-			go plantSymlinkForestRecursive(context, instructionsChild, forestChild, buildFilesChild, srcChild)
+			go plantSymlinkForestRecursive(context, instructionsChild, forestChild, buildFilesChild, srcChild, prefix)
 		} else if !sDir && !bDir {
 			// Neither is a directory. Merge them.
 			srcBuildFile := shared.JoinPath(context.topdir, srcChild)
@@ -481,8 +492,21 @@ func PlantSymlinkForest(verbose bool, topdir string, forest string, buildFiles s
 
 	instructions := instructionsFromExcludePathList(exclude)
 	go func() {
+		// b/259191764 - relative symlinks this requires changing dir to $TOP
+		wd, err := os.Getwd()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Failed to obtain current working directory %s\n", err)
+			os.Exit(1)
+		}
+		// prefix to use for relativizing symlinks
+		prefix, err := filepath.Rel(wd, topdir)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Failed to find relative directory %s\n", err)
+			os.Exit(1)
+		}
+
 		context.wg.Add(1)
-		plantSymlinkForestRecursive(context, instructions, forest, buildFiles, ".")
+		plantSymlinkForestRecursive(context, instructions, forest, buildFiles, ".", prefix)
 		context.wg.Wait()
 		close(context.depCh)
 	}()
