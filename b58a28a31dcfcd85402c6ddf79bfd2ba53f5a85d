@@ -22,6 +22,30 @@
       },
       "revId": "b58a28a31dcfcd85402c6ddf79bfd2ba53f5a85d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9471061_0c67e925",
+        "filename": "android/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-07-24T22:00:36Z",
+      "side": 1,
+      "message": "Thanks for catching! Issue during merge to AOSP.",
+      "parentUuid": "74281095_ed632d72",
+      "range": {
+        "startLine": 947,
+        "startChar": 28,
+        "endLine": 947,
+        "endChar": 62
+      },
+      "revId": "b58a28a31dcfcd85402c6ddf79bfd2ba53f5a85d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
