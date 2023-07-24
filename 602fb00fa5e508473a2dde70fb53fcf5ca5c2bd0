@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d98b9b0_41d55c32",
+        "filename": "cc/orderfile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-07-24T19:13:21Z",
+      "side": 1,
+      "message": "nit: copy paste error.",
+      "revId": "602fb00fa5e508473a2dde70fb53fcf5ca5c2bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ed1d3b_908c7e68",
+        "filename": "cc/orderfile.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-07-24T19:13:21Z",
+      "side": 1,
+      "message": "Unnecessary comment",
+      "revId": "602fb00fa5e508473a2dde70fb53fcf5ca5c2bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
