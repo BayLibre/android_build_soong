@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0827a377_33a8e249",
+        "filename": "android/test_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-07-24T20:02:58Z",
+      "side": 1,
+      "message": "these are not preview codenames",
+      "range": {
+        "startLine": 45,
+        "startChar": 52,
+        "endLine": 45,
+        "endChar": 67
+      },
+      "revId": "aec12fda411be78549b81b4dec3e56a36abc2b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
