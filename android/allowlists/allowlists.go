@@ -208,6 +208,10 @@ var (
 		"frameworks/av/media/audioaidlconversion":            Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/media/codec2/components/aom":          Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/media/codecs":                         Bp2BuildDefaultTrueRecursively,
+		"frameworks/av/media/codec2":                         Bp2BuildDefaultFalseRecursively,
+		"frameworks/av/media/codec2/hidl/1.0/utils":          Bp2BuildDefaultTrue,
+		"frameworks/av/media/codec2/hidl/1.1/utils":          Bp2BuildDefaultTrue,
+		"frameworks/av/media/codec2/hidl/1.2/utils":          Bp2BuildDefaultTrue,
 		"frameworks/av/media/liberror":                       Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/media/libmediahelper":                 Bp2BuildDefaultTrue,
 		"frameworks/av/media/libshmem":                       Bp2BuildDefaultTrueRecursively,
@@ -668,12 +672,14 @@ var (
 
 		//system/core/fs_mgr
 		"libfs_mgr",
+		/*
+			"libcodec2_hidl@1.0",
+			"libcodec2_hidl@1.1",
+			"libcodec2_hidl@1.2",
+			"libcodec2_hidl_plugin_stub",
+			"libcodec2_hidl_plugin",
 
-		"libcodec2_hidl@1.0",
-		"libcodec2_hidl@1.1",
-		"libcodec2_hidl@1.2",
-		"libcodec2_hidl_plugin_stub",
-		"libcodec2_hidl_plugin",
+		*/
 		"libstagefright_bufferqueue_helper_novndk",
 		"libGLESv2",
 		"libEGL",
