@@ -1,0 +1,47 @@
+#!/bin/bash -eu
+
+set -o pipefail
+
+# Test that relative symlinks work by recreating the bug in b/259191764
+# In some cases, developers prefer to move their checkouts. This causes
+# issues in that symlinked files (namely, the bazel wrapper script)
+# cannot be found. As such, we implemented relative symlinks so that a
+# moved checkout doesn't need a full clean before rebuilding.
+# The bazel output base will still need to be removed, as Starlark
+# doesn't seem to support relative symlinks yet.
+
+source "$(dirname "$0")/lib.sh"
+
+function create_android_bp {
+  mkdir -p a
+  touch a/g.txt
+  cat > a/Android.bp <<'EOF'
+filegroup {
+    name: "g",
+    srcs: ["g.txt"],
+    bazel_module: {bp2build_available: true},
+  }
+EOF
+}
+
+function test_movable_top {
+  setup
+
+  create_android_bp
+
+  # A directory under $MOCK_TOP
+  outdir=out2
+
+  # Modify OUT_DIR in a subshell so it doesn't affect the top level one.
+  (export OUT_DIR=$outdir; run_soong bp2build && run_bazel build --config=bp2build --config=ci //a:g)
+
+  move_mock_top
+
+  trap "rm -rf $outdir" EXIT
+
+  # remove the bazel output base
+  rm -rf $outdir/bazel/output_user_root
+  (export OUT_DIR=$outdir; run_soong bp2build && run_bazel build --config=bp2build --config=ci //a:g)
+}
+
+scan_and_run_tests
