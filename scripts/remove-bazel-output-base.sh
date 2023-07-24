@@ -1,0 +1,38 @@
+#!/bin/bash -eu
+
+###############
+# Removes the Bazel output base.
+# This is intended to solve an issue when a build top is moved.
+# Starlark symlinks are absolute and a moved build top will have many
+# dangling symlinks and fail to function as intended.
+# You MUST lunch again after moving your build top, before running this.
+###############
+
+if [[ ! -v ANDROID_BUILD_TOP ]]; then
+    echo "ANDROID_BUILD_TOP not found in environment. Please run lunch before running this script"
+    exit 1
+fi
+
+if [[ ! -v OUT_DIR ]]; then
+    dir_to_remove="$ANDROID_BUILD_TOP/out/"
+else
+    dir_to_remove="$ANDROID_BUILD_TOP/$OUT_DIR/"
+fi
+
+if [[ ! -d $dir_to_remove ]]; then
+    echo "The specified output directory doesn't exist."
+    echo "Have you rerun lunch since moving directories?"
+    exit 1
+fi
+
+delete_output=$dir_to_remove/bazel/output/
+ninja_file=`ls $dir_to_remove/soong/build*ninja`
+
+
+read -p "Are you sure you want to remove $dir_to_remove/bazel/output/ and the ninja file $ninja_file? Y/N " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+   rm -rf $dir_to_remove/bazel/output
+   rm $dir_to_remove/soong/build*ninja
+fi
