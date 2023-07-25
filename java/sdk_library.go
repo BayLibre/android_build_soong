@@ -1807,7 +1807,7 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 	props.Libs = append(props.Libs, module.sdkLibraryProperties.Stub_only_libs...)
 	props.Libs = append(props.Libs, "stub-annotations")
 	props.Static_libs = module.sdkLibraryProperties.Stub_only_static_libs
-	props.Full_api_surface_stub = proptools.StringPtr(apiScope.kind.DefaultJavaLibraryName() + ".from-text")
+	props.Full_api_surface_stub = proptools.StringPtr(apiScope.kind.DefaultJavaLibraryName())
 
 	// android_module_lib_stubs_current.from-text only comprises api contributions from art, conscrypt and i18n.
 	// Thus, replace with android_module_lib_stubs_current_full.from-text, which comprises every api domains.
