@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2efd13bb_b781afe0",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-07-25T10:23:48Z",
+      "side": 1,
+      "message": "Use strings.Builder to avoid creating a new string on every `+\u003d`?",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 14
+      },
+      "revId": "ae9423ec0d6e00974f2f7560022c9e6a8b6596ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b1cb244_b3372da2",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-07-25T10:23:48Z",
+      "side": 1,
+      "message": "Could you add tests for this function?",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 34
+      },
+      "revId": "ae9423ec0d6e00974f2f7560022c9e6a8b6596ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
