@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ee27aa2_fa6f120a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2023-07-25T18:21:51Z",
+      "side": 1,
+      "message": "Is it common to have \"revert revert\" changes, or is the practice to reword as \"reland\" changes?",
+      "revId": "5d3ec54b6b38ab85b0d3ef7634e697b3ae9fefb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
