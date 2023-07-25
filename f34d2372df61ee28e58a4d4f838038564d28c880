@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad4f4012_feb6679a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-25T04:39:23Z",
+      "side": 1,
+      "message": "New approach, much simpler. I\u0027m wondering if there are any security issues with running a shell on the value of a module property.",
+      "revId": "f34d2372df61ee28e58a4d4f838038564d28c880",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
