@@ -16,6 +16,23 @@
       "message": "Adding android-llvm-review to make sure that they are aware of this change, but I think it\u0027s a good suggestion.",
       "revId": "20af9da246730a3ad7e6821d959d3010fad4cae1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4decd6_a286f817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2023-07-25T01:32:56Z",
+      "side": 1,
+      "message": "Would adding it to deviceGlobalLdflags cover all the instances in this CL?",
+      "revId": "20af9da246730a3ad7e6821d959d3010fad4cae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
