@@ -16,6 +16,24 @@
       "message": "Is it common to have \"revert revert\" changes, or is the practice to reword as \"reland\" changes?",
       "revId": "5d3ec54b6b38ab85b0d3ef7634e697b3ae9fefb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ce7295_0ac82aba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-07-25T19:55:12Z",
+      "side": 1,
+      "message": "Not sure if there\u0027s a preferred approach, looks like both are fairly common? https://android-review.git.corp.google.com/q/%22Revert+%5C%22Revert%22+branch:main vs https://android-review.git.corp.google.com/q/%22Reland+%22+branch:main",
+      "parentUuid": "9ee27aa2_fa6f120a",
+      "revId": "5d3ec54b6b38ab85b0d3ef7634e697b3ae9fefb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
