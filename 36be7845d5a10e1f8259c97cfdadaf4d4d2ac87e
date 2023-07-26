@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34cdd3d_253d25b4",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-26T12:31:37Z",
+      "side": 0,
+      "message": "does this need to be removed in the bzl file as well?",
+      "range": {
+        "startLine": 686,
+        "startChar": 1,
+        "endLine": 686,
+        "endChar": 9
+      },
+      "revId": "36be7845d5a10e1f8259c97cfdadaf4d4d2ac87e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

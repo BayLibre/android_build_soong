@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "070e47c3_f9ece5ca",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-26T12:31:37Z",
+      "side": 1,
+      "message": "I this change is scoped to `Isolated`, but in a follow-up it would be nice to change Gtest to a `*bool` and only write it in a BUILD file when it was set in an Android.bp file.",
+      "range": {
+        "startLine": 685,
+        "startChar": 7,
+        "endLine": 685,
+        "endChar": 11
+      },
+      "revId": "71772c75a097a3c73457375f10fa3848913a79f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
