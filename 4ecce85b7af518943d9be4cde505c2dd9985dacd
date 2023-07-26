@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8013eb6d_a7ffda2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-07-26T14:55:59Z",
+      "side": 1,
+      "message": "but that\u0027s the missing piece that makes this a _partial_ revert... did you mean to say \"CFI\" here instead?",
+      "range": {
+        "startLine": 13,
+        "startChar": 19,
+        "endLine": 13,
+        "endChar": 37
+      },
+      "revId": "4ecce85b7af518943d9be4cde505c2dd9985dacd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
