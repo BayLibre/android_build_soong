@@ -16,6 +16,24 @@
       "message": "Nit: the description misspells \u0027dependencies\u0027.",
       "revId": "14f3246312dae27144d7063f8568f51446510429",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ff30c5_98bea449",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-07-26T18:57:48Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "f38ed7ba_76289066",
+      "revId": "14f3246312dae27144d7063f8568f51446510429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
