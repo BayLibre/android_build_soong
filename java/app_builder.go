@@ -258,7 +258,10 @@ func TransformJniLibsToJar(
 		rule = zipRE
 		args["implicits"] = strings.Join(deps.Strings(), ",")
 	}
-	jniJarPath := android.PathForModuleOut(ctx, jniJarOutputPathString)
+	var jniJarPath android.WritablePath = android.PathForModuleOut(ctx, jniJarOutputPathString)
+	if len(prebuiltJniPackages) == 0 {
+		jniJarPath = outputFile
+	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        rule,
 		Description: "zip jni libs",
@@ -266,12 +269,14 @@ func TransformJniLibsToJar(
 		Implicits:   deps,
 		Args:        args,
 	})
-	ctx.Build(pctx, android.BuildParams{
-		Rule:        mergeAssetsRule,
-		Description: "merge prebuilt JNI packages",
-		Inputs:      append(prebuiltJniPackages, jniJarPath),
-		Output:      outputFile,
-	})
+	if len(prebuiltJniPackages) > 0 {
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        mergeAssetsRule,
+			Description: "merge prebuilt JNI packages",
+			Inputs:      append(prebuiltJniPackages, jniJarPath),
+			Output:      outputFile,
+		})
+	}
 }
 
 func (a *AndroidApp) generateJavaUsedByApex(ctx android.ModuleContext) {
