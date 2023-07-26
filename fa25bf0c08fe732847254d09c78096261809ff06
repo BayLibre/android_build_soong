@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a768acc_389a844b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-26T19:32:15Z",
+      "side": 1,
+      "message": "this still looks very tightly coupled with Soong -- is it necessary to migrate?\n\nIf there are things that depend on Soong code that are not tightly coupled, would it be possible for us to refactor out the common code/logic?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "fa25bf0c08fe732847254d09c78096261809ff06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
