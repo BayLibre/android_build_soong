@@ -187,15 +187,17 @@ func (p *PythonBinaryModule) bp2buildBinaryProperties(ctx android.TopDownMutator
 			"same time.", p.Name())
 	}
 
+	defaultMain := android.BazelLabelForModuleSrcSingle(ctx, p.Name()+".py")
+
 	attrs := &bazelPythonBinaryAttributes{
-		Main:           nil,
+		// main is required.
+		Main:           &defaultMain,
 		Srcs:           baseAttrs.Srcs,
 		Deps:           baseAttrs.Deps,
 		Python_version: pyVersion,
 		Imports:        baseAttrs.Imports,
 	}
 
-	// main is optional.
 	if p.binaryProperties.Main != nil {
 		main := android.BazelLabelForModuleSrcSingle(ctx, *p.binaryProperties.Main)
 		attrs.Main = &main
@@ -223,7 +225,8 @@ func (p *PythonTestModule) ConvertWithBp2build(ctx android.TopDownMutatorContext
 
 	props := bazel.BazelTargetModuleProperties{
 		// Use the native py_binary rule.
-		Rule_class: "py_test",
+		Rule_class:        "py_test",
+		Bzl_load_location: "//build/bazel/rules/python:py_test.bzl",
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
