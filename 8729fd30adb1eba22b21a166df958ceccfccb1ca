@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba90a15_e266e8fa",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3747,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-07-26T04:15:34Z",
+      "side": 1,
+      "message": "nit: Can we split this into separate lines for readability?\n\n\n```suggestion\n\t// There\u0027ll be no such thing like VNDK once it\u0027s deprecated.\n\tif (ctx.Config().IsVndkDeprecated()) {\n\t\treturn false;\n\t}\n\treturn proptools.Bool(a.properties.Use_vndk_as_stable)\n```",
+      "range": {
+        "startLine": 3747,
+        "startChar": 1,
+        "endLine": 3747,
+        "endChar": 91
+      },
+      "revId": "8729fd30adb1eba22b21a166df958ceccfccb1ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
