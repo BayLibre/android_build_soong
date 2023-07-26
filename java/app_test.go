@@ -1742,7 +1742,7 @@ func TestJNIABI(t *testing.T) {
 	for _, test := range testCases {
 		t.Run(test.name, func(t *testing.T) {
 			app := ctx.ModuleForTests(test.name, "android_common")
-			jniLibZip := app.Output(jniJarOutputPathString)
+			jniLibZip := app.Output("jnilibs.zip")
 			var abis []string
 			args := strings.Fields(jniLibZip.Args["jarArgs"])
 			for i := 0; i < len(args); i++ {
