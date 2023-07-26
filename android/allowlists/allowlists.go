@@ -813,6 +813,8 @@ var (
 		"chre_flatbuffers",
 		"event_logger",
 		"hal_unit_tests",
+
+		"merge_annotation_zips_test",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
