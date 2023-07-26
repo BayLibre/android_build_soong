@@ -22,6 +22,30 @@
       },
       "revId": "36be7845d5a10e1f8259c97cfdadaf4d4d2ac87e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61346b66_b4d88639",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-26T17:43:17Z",
+      "side": 0,
+      "message": "Yes I think so, I have removed this in the sibling CL aosp/2669992",
+      "parentUuid": "d34cdd3d_253d25b4",
+      "range": {
+        "startLine": 686,
+        "startChar": 1,
+        "endLine": 686,
+        "endChar": 9
+      },
+      "revId": "36be7845d5a10e1f8259c97cfdadaf4d4d2ac87e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

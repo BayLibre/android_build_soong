@@ -22,6 +22,30 @@
       },
       "revId": "71772c75a097a3c73457375f10fa3848913a79f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "191e4147_82e5c389",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-26T17:43:17Z",
+      "side": 1,
+      "message": "Agreed, this will make the BUILD files less verbose without loss of information. I have implemented it in aosp/2677917",
+      "parentUuid": "070e47c3_f9ece5ca",
+      "range": {
+        "startLine": 685,
+        "startChar": 7,
+        "endLine": 685,
+        "endChar": 11
+      },
+      "revId": "71772c75a097a3c73457375f10fa3848913a79f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
