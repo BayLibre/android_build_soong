@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f38ed7ba_76289066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2023-07-26T18:55:44Z",
+      "side": 1,
+      "message": "Nit: the description misspells \u0027dependencies\u0027.",
+      "revId": "14f3246312dae27144d7063f8568f51446510429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
