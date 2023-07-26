@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cd7ead8_9f29081f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-07-26T14:44:24Z",
+      "side": 1,
+      "message": "I think this denylist can be created programmatically. Marking it as WIP till I try that out.",
+      "revId": "8d0fd27f0f17fcd222051a0a6841db94ba824d4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
