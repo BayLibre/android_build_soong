@@ -50,6 +50,24 @@
       "message": "joeo: Ping.",
       "revId": "16f57dcdaf619c72288eaa03ea2e807d913413f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "250de19c_3c7df59b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2023-07-27T03:51:56Z",
+      "side": 1,
+      "message": "Ping^2.",
+      "parentUuid": "5756c4cf_11b1d309",
+      "revId": "16f57dcdaf619c72288eaa03ea2e807d913413f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
