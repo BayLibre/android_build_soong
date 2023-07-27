@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0afea3ec_3b783750",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-07-27T18:27:22Z",
+      "side": 1,
+      "message": "i think you mean \"reverts the last remaining piece of\", right? i was about to say \"no it doesn\u0027t, because that commit touched lto.go too\", but it looks like that change was already reverted?",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "1a5bba7b73384426040104ce66eaf49292bed542",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
