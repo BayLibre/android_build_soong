@@ -878,7 +878,7 @@ func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		flags.Local.LdFlags = append(flags.Local.LdFlags, `-Wl,-rpath,\$$ORIGIN`)
 	}
 
-	if Bool(sanProps.Cfi) {
+	if Bool(sanProps.Cfi) && ctx.Config().Getenv("MOLD_PATH") == "" {
 		if ctx.Arch().ArchType == android.Arm {
 			// __cfi_check needs to be built as Thumb (see the code in linker_cfi.cpp). LLVM is not set up
 			// to do this on a function basis, so force Thumb on the entire module.
@@ -921,8 +921,18 @@ func (s *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		flags.Local.CFlags = append(flags.Local.CFlags, intOverflowCflags...)
 	}
 
-	if len(s.Properties.Sanitizers) > 0 {
-		sanitizeArg := "-fsanitize=" + strings.Join(s.Properties.Sanitizers, ",")
+	sanitizers := s.Properties.Sanitizers
+	if ctx.Config().Getenv("MOLD_PATH") != "" {
+		sanitizers = nil
+		for _, s := range s.Properties.Sanitizers {
+			if !strings.HasPrefix(s, "cfi") {
+				sanitizers = append(sanitizers, s)
+			}
+		}
+	}
+
+	if len(sanitizers) > 0 {
+		sanitizeArg := "-fsanitize=" + strings.Join(sanitizers, ",")
 		flags.Local.CFlags = append(flags.Local.CFlags, sanitizeArg)
 		flags.Local.AsFlags = append(flags.Local.AsFlags, sanitizeArg)
 		flags.Local.LdFlags = append(flags.Local.LdFlags, sanitizeArg)

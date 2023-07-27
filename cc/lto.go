@@ -103,7 +103,7 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 	if ctx.isCfi() || ctx.isFuzzer() {
 		return flags
 	}
-	if lto.Properties.LtoEnabled {
+	if lto.Properties.LtoEnabled && ctx.Config().Getenv("MOLD_PATH") == "" {
 		ltoCFlags := []string{"-flto=thin", "-fsplit-lto-unit"}
 		var ltoLdFlags []string
 

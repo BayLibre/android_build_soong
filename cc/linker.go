@@ -546,7 +546,7 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 					config.VersionScriptFlagPrefix+versionScript.String())
 				flags.LdFlagsDeps = append(flags.LdFlagsDeps, versionScript.Path())
 
-				if linker.sanitize.isSanitizerEnabled(cfi) {
+				if linker.sanitize.isSanitizerEnabled(cfi) && ctx.Config().Getenv("MOLD_PATH") == "" {
 					cfiExportsMap := android.PathForSource(ctx, cfiExportsMapPath+"/"+cfiExportsMapFilename)
 					flags.Local.LdFlags = append(flags.Local.LdFlags,
 						config.VersionScriptFlagPrefix+cfiExportsMap.String())

@@ -129,9 +129,15 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("HWADDRESS_SANITIZER_CONFIG_EXTRA_CFLAGS", strings.Join(hwasanCflags, " "))
 	ctx.Strict("HWADDRESS_SANITIZER_GLOBAL_OPTIONS", strings.Join(hwasanGlobalOptions, ","))
 
-	ctx.Strict("CFI_EXTRA_CFLAGS", strings.Join(cfiCflags, " "))
-	ctx.Strict("CFI_EXTRA_ASFLAGS", strings.Join(cfiAsflags, " "))
-	ctx.Strict("CFI_EXTRA_LDFLAGS", strings.Join(cfiLdflags, " "))
+	if ctx.Config().Getenv("MOLD_PATH") == "" {
+		ctx.Strict("CFI_EXTRA_CFLAGS", strings.Join(cfiCflags, " "))
+		ctx.Strict("CFI_EXTRA_ASFLAGS", strings.Join(cfiAsflags, " "))
+		ctx.Strict("CFI_EXTRA_LDFLAGS", strings.Join(cfiLdflags, " "))
+	} else {
+		ctx.Strict("CFI_EXTRA_CFLAGS", "")
+		ctx.Strict("CFI_EXTRA_ASFLAGS", "")
+		ctx.Strict("CFI_EXTRA_LDFLAGS", "")
+	}
 
 	ctx.Strict("INTEGER_OVERFLOW_EXTRA_CFLAGS", strings.Join(intOverflowCflags, " "))
 

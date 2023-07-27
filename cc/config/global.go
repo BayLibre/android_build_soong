@@ -148,7 +148,7 @@ var (
 	}
 
 	commonGlobalLldflags = []string{
-		"-fuse-ld=lld",
+		"-fuse-ld=${Linker}",
 		"-Wl,--icf=safe",
 	}
 
@@ -396,6 +396,14 @@ func init() {
 			flags = append(noOverrideGlobalCflags, llvmNextExtraCommonGlobalCflags...)
 		}
 		return strings.Join(flags, " ")
+	})
+	exportedVars.ExportVariableConfigMethod("Linker", func(config android.Config) string {
+		moldPath := config.Getenv("MOLD_PATH")
+		if moldPath != "" {
+  			return moldPath
+		} else {
+  			return "lld"
+		}
 	})
 
 	exportedVars.ExportStringListStaticVariable("NoOverride64GlobalCflags", noOverride64GlobalCflags)
