@@ -1306,11 +1306,12 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				}
 			}
 			linkObject := ccDep.OutputFile()
-			linkPath := linkPathFromFilePath(linkObject.Path())
-
 			if !linkObject.Valid() {
 				ctx.ModuleErrorf("Invalid output file when adding dep %q to %q", depName, ctx.ModuleName())
+				return
 			}
+
+			linkPath := linkPathFromFilePath(linkObject.Path())
 
 			exportDep := false
 			switch {

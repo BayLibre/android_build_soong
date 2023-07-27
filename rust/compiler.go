@@ -320,6 +320,17 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 		flags.LinkFlags = append(flags.LinkFlags, cc.RpathFlags(ctx)...)
 	}
 
+	if !ctx.toolchain().Bionic() && ctx.Os() != android.LinuxMusl {
+		if !ctx.Windows() {
+			// Add -ldl, -lpthread, -lm and -lrt to host builds to match the default behavior of device
+			// builds
+			flags.LinkFlags = append(flags.LinkFlags,
+				"-ldl",
+				"-lpthread",
+				"-lm",
+			)
+		}
+	}
 	return flags
 }
 
