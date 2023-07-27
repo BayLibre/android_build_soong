@@ -33,6 +33,24 @@
       "message": "This is still a host-target confusion - mkcratersp.py is invoked for all linking, not just host linking. Only host linking will be using ld64, target linking will still be using lld and want the else branch.",
       "revId": "ec6d2e8d832c048a2aba2a898dc431dd0b03e030",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07f6910_b67aa91a",
+        "filename": "scripts/mkcratersp.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2023-07-27T03:45:48Z",
+      "side": 1,
+      "message": "Good point, thanks. I\u0027ve changed it now to be managed by an environment variable controlled by `ctx.Darwin()`.",
+      "parentUuid": "23b6c0cf_eb4c1128",
+      "revId": "ec6d2e8d832c048a2aba2a898dc431dd0b03e030",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
