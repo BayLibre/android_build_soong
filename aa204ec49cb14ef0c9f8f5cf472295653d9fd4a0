@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e4f38d2_6e12e39d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-07-27T22:27:14Z",
+      "side": 1,
+      "message": "(we need a libyuv fix before this compiles [https://github.com/google/android-riscv64/issues/38#issuecomment-1652515652 and following], and i\u0027ve seen some qemu crashes with the platform compiled to use V that we need to look at first. i\u0027ve uploaded this so that people can reproduce my [negative so far] results...)",
+      "revId": "aa204ec49cb14ef0c9f8f5cf472295653d9fd4a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
