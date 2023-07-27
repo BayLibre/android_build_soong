@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9712bd6a_e55340e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-07-27T23:10:31Z",
+      "side": 1,
+      "message": "LGTM, but the latest patchset of [ag/24145146](https://googleplex-android-review.git.corp.google.com/c/platform/build/soong/+/24145146) should be applied here and this CL should be first submitted, as described in [the comment](https://googleplex-android-review.git.corp.google.com/c/platform/build/soong/+/24145146/comments/fbac5721_def56290)",
+      "revId": "f7284cb4cd1894e7b2fc8d5c6c72f3730068934c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
