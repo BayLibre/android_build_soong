@@ -267,14 +267,12 @@ func rustSanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 		var depTag blueprint.DependencyTag
 		var deps []string
 
-		if mod.IsSanitizerEnabled(cc.Asan) ||
-			(mod.IsSanitizerEnabled(cc.Fuzzer) && (mctx.Arch().ArchType != android.Arm64 || !mctx.Os().Bionic())) {
+		if mod.IsSanitizerEnabled(cc.Asan) {
 			variations = append(variations,
 				blueprint.Variation{Mutator: "link", Variation: "shared"})
 			depTag = cc.SharedDepTag()
 			deps = []string{config.LibclangRuntimeLibrary(mod.toolchain(mctx), "asan")}
-		} else if mod.IsSanitizerEnabled(cc.Hwasan) ||
-			(mod.IsSanitizerEnabled(cc.Fuzzer) && mctx.Arch().ArchType == android.Arm64 && mctx.Os().Bionic()) {
+		} else if mod.IsSanitizerEnabled(cc.Hwasan) {
 			// TODO(b/204776996): HWASan for static Rust binaries isn't supported yet.
 			if binary, ok := mod.compiler.(binaryInterface); ok {
 				if binary.staticallyLinked() {
