@@ -16,6 +16,24 @@
       "message": "Looks fine, please add tests.",
       "revId": "9139df5761fccf2cd23f3c7790e14343813cdf85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3547b114_fd0a0926",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-27T02:00:08Z",
+      "side": 1,
+      "message": "I added some basic tests, not sure what more to do because we\u0027re not actually running the command. `AndroidStaticRule` doesn\u0027t expand the variables (I think `RuleBuilder` might, which is why I left a TODO). Suggestions?",
+      "parentUuid": "c32e16af_e9be854c",
+      "revId": "9139df5761fccf2cd23f3c7790e14343813cdf85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
