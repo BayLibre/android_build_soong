@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd126eb8_e49255f5",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-07-27T16:03:17Z",
+      "side": 1,
+      "message": "Could you add tests for this function? Or some way to validate the `bazel_sandwich:` code path against different bazelSandwichJson and outDir inputs.",
+      "range": {
+        "startLine": 594,
+        "startChar": 32,
+        "endLine": 594,
+        "endChar": 69
+      },
+      "revId": "23b124fb40a2894156a6d3c48ad4a59d6d16dbd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
