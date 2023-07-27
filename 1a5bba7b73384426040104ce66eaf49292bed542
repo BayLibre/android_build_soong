@@ -22,6 +22,30 @@
       },
       "revId": "1a5bba7b73384426040104ce66eaf49292bed542",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "416c6725_e94d0e58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1978766
+      },
+      "writtenOn": "2023-07-27T18:34:07Z",
+      "side": 1,
+      "message": "\u003e i think you mean \"reverts the last remaining piece of\", right?\n\nyes. stealing your text to update the commit message.\n\nThe lto change was reverted as we enabled lto recently.",
+      "parentUuid": "0afea3ec_3b783750",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "1a5bba7b73384426040104ce66eaf49292bed542",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
