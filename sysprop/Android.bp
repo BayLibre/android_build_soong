@@ -8,10 +8,12 @@ bootstrap_go_package {
     deps: [
         "blueprint",
         "soong",
+        "soong-aidl-library",
         "soong-android",
         "soong-bp2build",
         "soong-cc",
         "soong-java",
+        "soong-rust",
     ],
     srcs: [
         "sysprop_library.go",
