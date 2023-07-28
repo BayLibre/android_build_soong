@@ -16,6 +16,24 @@
       "message": "We try to avoid printing warnings, nobody does anything about them and they make it hard to find errors.",
       "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3a5786_cf5ef043",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-07-28T23:29:44Z",
+      "side": 1,
+      "message": "I can remove this, but just to confirm - the reason it\u0027s there is because I\u0027m silently ignoring a flag the user might have provided. Is it alright to drop in this case because they aren\u0027t supposed to be using RS anyways?",
+      "parentUuid": "bab65cec_3d558f8f",
+      "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
