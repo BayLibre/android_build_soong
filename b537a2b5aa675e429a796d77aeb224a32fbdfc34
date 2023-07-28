@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4bec373_53ce835f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975910
+      },
+      "writtenOn": "2023-07-28T23:23:16Z",
+      "side": 1,
+      "message": "that\u0027s exactly why I started hacking this up, when then I found it\u0027s the same\nbut in our final apk we see deflated not stored libraries, at this point I\u0027m clueless as when it happens",
+      "parentUuid": "a087ebaf_7a1a99f2",
+      "revId": "b537a2b5aa675e429a796d77aeb224a32fbdfc34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3595accc_4d4034ac",
         "filename": "java/app_builder.go",
         "patchSetId": 1
