@@ -34,6 +34,24 @@
       "parentUuid": "bab65cec_3d558f8f",
       "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e4aefbd_e1363615",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-28T23:35:41Z",
+      "side": 1,
+      "message": "If it\u0027s important we sometimes collect the warnings into a file instead of printing them so somebody can go through and burn down the warnings, but it\u0027s probably just as easy to locally make it an error or warning and do a build to see the failures.",
+      "parentUuid": "1e3a5786_cf5ef043",
+      "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
