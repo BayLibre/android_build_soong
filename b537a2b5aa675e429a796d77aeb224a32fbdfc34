@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a087ebaf_7a1a99f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-28T23:19:39Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary, `-L 0` is equivalent to `-s` on every file.  `-L 0` sets `noCompression` at https://cs.android.com/android/platform/superproject/main/+/refs/heads/main:build/soong/zip/zip.go;l\u003d322;drc\u003d445b0c6988530d6a265849b2b0cac225d13954db, which triggers using `zip.Store` at https://cs.android.com/android/platform/superproject/main/+/refs/heads/main:build/soong/zip/zip.go;l\u003d463;drc\u003d445b0c6988530d6a265849b2b0cac225d13954db.  This is verified by the test at https://cs.android.com/android/platform/superproject/main/+/refs/heads/main:build/soong/zip/zip_test.go;l\u003d198-211;drc\u003d25ff305370712354a8a6f903825833893be275cc.",
+      "revId": "b537a2b5aa675e429a796d77aeb224a32fbdfc34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
