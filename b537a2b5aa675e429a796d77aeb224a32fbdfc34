@@ -16,6 +16,46 @@
       "message": "I don\u0027t think this is necessary, `-L 0` is equivalent to `-s` on every file.  `-L 0` sets `noCompression` at https://cs.android.com/android/platform/superproject/main/+/refs/heads/main:build/soong/zip/zip.go;l\u003d322;drc\u003d445b0c6988530d6a265849b2b0cac225d13954db, which triggers using `zip.Store` at https://cs.android.com/android/platform/superproject/main/+/refs/heads/main:build/soong/zip/zip.go;l\u003d463;drc\u003d445b0c6988530d6a265849b2b0cac225d13954db.  This is verified by the test at https://cs.android.com/android/platform/superproject/main/+/refs/heads/main:build/soong/zip/zip_test.go;l\u003d198-211;drc\u003d25ff305370712354a8a6f903825833893be275cc.",
       "revId": "b537a2b5aa675e429a796d77aeb224a32fbdfc34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeedbfab_2b8bb913",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975910
+      },
+      "writtenOn": "2023-07-28T23:21:30Z",
+      "side": 1,
+      "message": "I feel like I\u0027m missing something important as to why that\u0027s needed for us, as that would likely mean any embedded library never worked till now?\n\nAs can be seen here https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/jni/com_android_internal_content_NativeLibraryHelper.cpp;l\u003d197 any app with extractNativeLibs set to false requires native libraries in zips to be stored, not deflated.\n\nOur setup is as following:\nlib_with_jni.aar is an AAR with only a JNI library in it, libjni.so\n\nandroid_library_import {\n    name: \"lib_with_jni-nodeps\",\n    aars: [\"lib_with_jni.aar\"],\n    extract_jni: true,\n}\n\nandroid_library {\n   name: \"lib_with_jni-lib\",\n   sdk_version: \"current\",\n   min_sdk_version: \"33\",\n   static_libs: [\"lib_with_jni-nodeps\"],\n}\n\nandroid_app {\n    name: \"app_with_jni\",\n    \u003csnip\u003e\n    static_libs: [\"lib_with_jni-lib\"],\n    use_embedded_native_libs: true,\n}\n\nThe final APK has lib/$ARCH/libjni.so zipped as defN ( deflate ) and can\u0027t be installed via adb install and/or included in system images ( as the lib won\u0027t be extracted per manifest entry )",
+      "revId": "b537a2b5aa675e429a796d77aeb224a32fbdfc34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3595accc_4d4034ac",
+        "filename": "java/app_builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1975910
+      },
+      "writtenOn": "2023-07-28T23:21:30Z",
+      "side": 1,
+      "message": "This likely needs to be redone with something like a path builder?",
+      "range": {
+        "startLine": 246,
+        "startChar": 35,
+        "endLine": 246,
+        "endChar": 77
+      },
+      "revId": "b537a2b5aa675e429a796d77aeb224a32fbdfc34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
