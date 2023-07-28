@@ -122,3 +122,9 @@
 --warning_check RemoteViewLayout
 --warning_check SupportAnnotationUsage
 --warning_check UniqueConstants
+
+--warning_check ExpiredTargetSdkVersion
+--warning_check ForegroundServicePermission
+--warning_check ObsoleteSdkInt
+--warning_check UnspecifiedRegisterReceiverFlag
+--warning_check WearStandaloneAppFlag
