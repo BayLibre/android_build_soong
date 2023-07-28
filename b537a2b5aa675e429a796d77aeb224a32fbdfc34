@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18576d79_64a60285",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975910
+      },
+      "writtenOn": "2023-07-28T23:33:53Z",
+      "side": 1,
+      "message": "Replying to myself since it\u0027s likely caused by extract_jni not caring about the embedded flag.\nIt works by extracting the jni and moving them in a .zip that\u0027ll be then merged with the final apk, but that .zip uses defN instead of store, so in the end we get deflated jni with the manifest entry requesting stored...\nForce adding a -L 0 in the `extractJNI` command seems to solve the issue.",
+      "parentUuid": "aeedbfab_2b8bb913",
+      "revId": "b537a2b5aa675e429a796d77aeb224a32fbdfc34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3595accc_4d4034ac",
