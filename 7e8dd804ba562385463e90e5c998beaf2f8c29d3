@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab65cec_3d558f8f",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-28T23:25:44Z",
+      "side": 1,
+      "message": "We try to avoid printing warnings, nobody does anything about them and they make it hard to find errors.",
+      "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
