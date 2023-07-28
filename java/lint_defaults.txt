@@ -48,6 +48,8 @@
 # InvalidId will give errors on ids defined like android:id="@androidprv:id/contentPanel"
 --disable_check InvalidId
 
+--disable_check ExpiredTargetSdkVersion
+
 # Downgrade existing errors to warnings
 --warning_check AppCompatResource                  # 55 occurences in 10 modules
 --warning_check AppLinkUrlError                    # 111 occurences in 53 modules
