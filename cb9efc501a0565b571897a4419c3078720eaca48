@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da7094d6_e94889ed",
+        "filename": "cc/orderfile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 2015671
+      },
+      "writtenOn": "2023-07-28T17:37:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d60ab721_1faf5bf8",
+      "revId": "cb9efc501a0565b571897a4419c3078720eaca48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1f52ebd_e86f46e7",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdc7540c_18fd4a6d",
+        "filename": "cc/orderfile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 2015671
+      },
+      "writtenOn": "2023-07-28T17:37:17Z",
+      "side": 1,
+      "message": "It is used in makevars.go (https://android.googlesource.com/platform/build/soong/+/refs/heads/main/cc/makevars.go#124). I had taken this from pgo.go which is almost similar to the way I use it. I did not make my own key in makevars.go because both pgo.go and afdo.go were using it too.",
+      "parentUuid": "a1f52ebd_e86f46e7",
+      "revId": "cb9efc501a0565b571897a4419c3078720eaca48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c77174f9_ed24bee5",
         "filename": "cc/orderfile.go",
         "patchSetId": 4
@@ -65,6 +101,30 @@
       "writtenOn": "2023-07-27T17:29:12Z",
       "side": 1,
       "message": "```suggestion\n\treturn Bool(props.Orderfile.Instrumentation)\n```",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 90
+      },
+      "revId": "cb9efc501a0565b571897a4419c3078720eaca48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "345464c9_db8c8f88",
+        "filename": "cc/orderfile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 2015671
+      },
+      "writtenOn": "2023-07-28T17:37:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c77174f9_ed24bee5",
       "range": {
         "startLine": 75,
         "startChar": 8,
@@ -98,6 +158,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "997538c6_feabb5e1",
+        "filename": "cc/orderfile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 2015671
+      },
+      "writtenOn": "2023-07-28T17:37:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeac7cfb_8be27242",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 90
+      },
+      "revId": "cb9efc501a0565b571897a4419c3078720eaca48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f35d355_f9cbf6ff",
@@ -111,6 +195,30 @@
       "writtenOn": "2023-07-27T17:29:12Z",
       "side": 1,
       "message": "```suggestion\n\treturn android.OptionalPath{}\n```",
+      "range": {
+        "startLine": 116,
+        "startChar": 16,
+        "endLine": 116,
+        "endChar": 40
+      },
+      "revId": "cb9efc501a0565b571897a4419c3078720eaca48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a861621d_884e5dcb",
+        "filename": "cc/orderfile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 2015671
+      },
+      "writtenOn": "2023-07-28T17:37:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f35d355_f9cbf6ff",
       "range": {
         "startLine": 116,
         "startChar": 16,
