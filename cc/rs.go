@@ -17,6 +17,7 @@ package cc
 import (
 	"path/filepath"
 	"runtime"
+	"strconv"
 	"strings"
 
 	"android/soong/android"
@@ -106,6 +107,9 @@ func rsFlags(ctx ModuleContext, flags Flags, properties *BaseCompilerProperties)
 			// Nothing
 		default:
 			targetApi = android.GetNumericSdkVersion(ctx.sdkVersion())
+			// Convert any preview codenames to a numeric value.
+			targetApiLevel := android.ApiLevelOrPanic(ctx, targetApi)
+			targetApi = strconv.Itoa(targetApiLevel.FinalOrPreviewInt())
 		}
 	}
 
