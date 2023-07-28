@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e4c567_dddb37b7",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-07-28T17:27:02Z",
+      "side": 0,
+      "message": "I think we can keep this and just revert the other cl.",
+      "revId": "9b7a0e7084bef1e1ee0e29784397c282cb62ccb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
