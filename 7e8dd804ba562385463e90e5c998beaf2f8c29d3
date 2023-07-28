@@ -70,6 +70,24 @@
       "parentUuid": "2e4aefbd_e1363615",
       "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1c799b2_4415b5be",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-28T23:51:30Z",
+      "side": 1,
+      "message": "It\u0027s not easy, I wouldn\u0027t recommend it in this case.  How many warnings do you get in the current build?  If there\u0027s no new RS APIs between N and current, what\u0027s the downside of ignoring the version the user set?  Maybe just put a TODO bug here to come back and fix them up later?",
+      "parentUuid": "da18e321_1f5f9902",
+      "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
