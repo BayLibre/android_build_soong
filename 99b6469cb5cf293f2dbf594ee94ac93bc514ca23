@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8a11556_d87adfaf",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-07-28T23:28:52Z",
+      "side": 1,
+      "message": "+1 Agree. This is in part why this logic is needed, because the code below passes it to target-api, which MUST contain a numeric. Is the suggestion to rename this function?",
+      "parentUuid": "138578ac_36656fab",
+      "range": {
+        "startLine": 109,
+        "startChar": 23,
+        "endLine": 109,
+        "endChar": 43
+      },
+      "revId": "99b6469cb5cf293f2dbf594ee94ac93bc514ca23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89f2e0ba_2fdb9c0b",
         "filename": "cc/rs.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-28T23:24:38Z",
       "side": 1,
       "message": "Should all of this just be `android.ApiLevelOrPanic(ctx, ctx.sdkVersion())`?  I don\u0027t think `system_current` or `test_current` makes sense for native modules, we don\u0027t have the equivalent of `@SystemApi` or `@TestApi`.",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 60
+      },
+      "revId": "99b6469cb5cf293f2dbf594ee94ac93bc514ca23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b5d6929_c42f536a",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-07-28T23:28:52Z",
+      "side": 1,
+      "message": "I think what this is silently trying to do is not return an \u0027int\u0027 for anything that contains \u0027current\u0027. The \u0027target-api\u0027 cannot accept a string, so they leave it unfilled so that llvm-rs-cc doesn\u0027t get the flag and assumes DEVELOPMENT_API instead.\n\nPerhaps:\n1) ApiLevelOrPanic\n2) If IsCurrent, don\u0027t pass flag.\n3) If MinApiLevel \u003e N, don\u0027t pass flag.\n4) Otherwise, convert to int and pass flag.",
+      "parentUuid": "89f2e0ba_2fdb9c0b",
       "range": {
         "startLine": 105,
         "startChar": 2,
