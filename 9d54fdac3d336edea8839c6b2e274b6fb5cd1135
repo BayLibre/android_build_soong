@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cb46d63_07a94c8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-07-28T21:15:38Z",
+      "side": 1,
+      "message": "nit: Can you locally verify if this change works for `m --build-from-text-stub` as well? I am pretty sure that it will, but just wanted to make sure.",
+      "revId": "9d54fdac3d336edea8839c6b2e274b6fb5cd1135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba4dfc4_7c789f6b",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-07-28T21:15:38Z",
+      "side": 1,
+      "message": "Thanks for catching this!",
+      "revId": "9d54fdac3d336edea8839c6b2e274b6fb5cd1135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
