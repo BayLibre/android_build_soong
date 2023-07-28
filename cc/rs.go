@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"runtime"
 	"strconv"
@@ -114,7 +115,20 @@ func rsFlags(ctx ModuleContext, flags Flags, properties *BaseCompilerProperties)
 	}
 
 	if targetApi != "" {
-		flags.rsFlags = append(flags.rsFlags, "-target-api "+targetApi)
+		// The 'target-api' command-line flag is limited to versions between
+		// SLANG_MINIMUM_TARGET_API and Nougat, the last version to introduce
+		// new APIs, see http://b/35767071. For architectures that have a
+		// minimum version that exceeds Nougat, default to the development API
+		// as this is the minimum version that can build.
+		minTargetArch := MinApiForArch(ctx, ctx.Target().Arch.ArchType)
+		maxRsArch := android.ApiLevelFrom(ctx, "N")
+		if minTargetArch.GreaterThan(maxRsArch) {
+			fmt.Printf("Warning: Min target API level %q higher than" +
+				" maximum Renderscript API %q, using development" +
+				" API instead.\n", minTargetArch, maxRsArch)
+		} else {
+			flags.rsFlags = append(flags.rsFlags, "-target-api "+targetApi)
+		}
 	}
 
 	flags.rsFlags = append(flags.rsFlags, "-Wall", "-Werror")
