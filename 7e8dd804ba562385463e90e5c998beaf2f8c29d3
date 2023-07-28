@@ -52,6 +52,24 @@
       "parentUuid": "1e3a5786_cf5ef043",
       "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da18e321_1f5f9902",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-07-28T23:38:22Z",
+      "side": 1,
+      "message": "My gut reaction is that it\u0027s not important, but at the same time it\u0027s one of those things where you\u0027ll set the version, then be completely stumped as to why the build is ignoring you. If there\u0027s an example of how the build system writes warnings to a file somewhere, I think I\u0027d prefer it - this will go away once RS is removed.",
+      "parentUuid": "2e4aefbd_e1363615",
+      "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
