@@ -237,15 +237,14 @@ func TransformJniLibsToJar(
 		"-j", // junk paths, they will be added back with -P arguments
 	}
 
-	if uncompressJNI {
-		jarArgs = append(jarArgs, "-L", "0")
-	}
-
 	for _, j := range jniLibs {
 		deps = append(deps, j.path)
 		jarArgs = append(jarArgs,
 			"-P", targetToJniDir(j.target),
 			"-f", j.path.String())
+		if uncompressJNI {
+			jarArgs = append(jarArgs, "-s", targetToJniDir(j.target)+"/"+j.path.Base())
+		}
 	}
 
 	rule := zip

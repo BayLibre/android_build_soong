@@ -6306,7 +6306,7 @@ func TestApexWithApps(t *testing.T) {
 
 	appZipRule := ctx.ModuleForTests("AppFoo", "android_common_apex10000").Description("zip jni libs")
 	// JNI libraries are uncompressed
-	if args := appZipRule.Args["jarArgs"]; !strings.Contains(args, "-L 0") {
+	if args := appZipRule.Args["jarArgs"]; !strings.Contains(args, "-s lib/arm64-v8a/libjni.so") {
 		t.Errorf("jni libs are not uncompressed for AppFoo")
 	}
 	// JNI libraries including transitive deps are

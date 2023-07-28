@@ -1881,7 +1881,7 @@ func TestJNIPackaging(t *testing.T) {
 			}
 
 			if jniLibZip.Rule != nil {
-				if g, w := !strings.Contains(jniLibZip.Args["jarArgs"], "-L 0"), test.compressed; g != w {
+				if g, w := !strings.Contains(jniLibZip.Args["jarArgs"], "-s lib/arm64-v8a/libjni.so"), test.compressed; g != w {
 					t.Errorf("expected jni compressed %v, got %v", w, g)
 				}
 
