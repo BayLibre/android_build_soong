@@ -17,7 +17,6 @@ package build
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"sort"
@@ -309,7 +308,7 @@ func cleanOldFiles(ctx Context, basePath, newFile string) {
 // cleanEmptyDirs will delete a directory if it contains no files.
 // If a deletion occurs, then it also recurses upwards to try and delete empty parent directories.
 func cleanEmptyDirs(ctx Context, dir string) {
-	files, err := ioutil.ReadDir(dir)
+	files, err := os.ReadDir(dir)
 	if err != nil {
 		ctx.Println("Could not read directory while trying to clean empty dirs: ", dir)
 		return

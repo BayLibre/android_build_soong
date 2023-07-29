@@ -17,7 +17,6 @@ package build
 import (
 	"android/soong/ui/logger"
 	"bytes"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -61,7 +60,7 @@ func TestCleanOldFiles(t *testing.T) {
 		sort.Strings(names)
 
 		var foundNames []string
-		if foundFiles, err := ioutil.ReadDir(dir); err == nil {
+		if foundFiles, err := os.ReadDir(dir); err == nil {
 			for _, fi := range foundFiles {
 				foundNames = append(foundNames, fi.Name())
 			}

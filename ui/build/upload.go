@@ -19,7 +19,6 @@ package build
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"time"
@@ -57,7 +56,7 @@ func pruneMetricsFiles(paths []string) []string {
 		}
 
 		if fi.IsDir() {
-			if l, err := ioutil.ReadDir(p); err != nil {
+			if l, err := os.ReadDir(p); err != nil {
 				_, _ = fmt.Fprintf(os.Stderr, "Failed to find files under %s\n", p)
 			} else {
 				files := make([]string, 0, len(l))
