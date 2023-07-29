@@ -88,6 +88,24 @@
       "parentUuid": "da18e321_1f5f9902",
       "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121a53e3_4f5687f8",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-07-29T00:24:10Z",
+      "side": 1,
+      "message": "Ack. I get four warnings, it\u0027s not particularly noisy. Given that it only happens for riscv64 and isn\u0027t going to happen to anyone unless we add yet another architecture, the likelihood of an issue cropping up is low. I\u0027ll make a note here if anyone reviews this code later, but I\u0027ll drop the print out for now.",
+      "parentUuid": "b1c799b2_4415b5be",
+      "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
