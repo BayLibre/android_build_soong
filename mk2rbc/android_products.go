@@ -17,7 +17,6 @@ package mk2rbc
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -60,7 +59,7 @@ func (l *localDirEval) SetFunc(_ string, _ func([]string) []string) {
 // UpdateProductConfigMap emulates this build logic by processing the
 // assignments to PRODUCT_MAKEFILES in the file passed to it.
 func UpdateProductConfigMap(configMap map[string]string, configMakefile string) error {
-	contents, err := ioutil.ReadFile(configMakefile)
+	contents, err := os.ReadFile(configMakefile)
 	if err != nil {
 		return err
 	}

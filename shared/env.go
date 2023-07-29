@@ -20,7 +20,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"sort"
 )
 
@@ -62,7 +62,7 @@ func EnvFileContents(envDeps map[string]string) ([]byte, error) {
 // Failing to read or parse the file also causes it to return true.
 func StaleEnvFile(filepath string, getenv func(string) string) (isStale bool,
 	changedEnvironmentVariable []string, err error) {
-	data, err := ioutil.ReadFile(filepath)
+	data, err := os.ReadFile(filepath)
 	if err != nil {
 		return true, nil, err
 	}
@@ -100,7 +100,7 @@ func StaleEnvFile(filepath string, getenv func(string) string) (isStale bool,
 // as a map[string]string.
 func EnvFromFile(envFile string) (map[string]string, error) {
 	result := make(map[string]string)
-	data, err := ioutil.ReadFile(envFile)
+	data, err := os.ReadFile(envFile)
 	if err != nil {
 		return result, err
 	}

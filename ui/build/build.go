@@ -15,7 +15,6 @@
 package build
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"sync"
@@ -49,7 +48,7 @@ func SetupOutDir(ctx Context, config Config) {
 	ensureEmptyFileExists(ctx, filepath.Join(config.OutDir(), ".out-dir"))
 
 	if buildDateTimeFile, ok := config.environ.Get("BUILD_DATETIME_FILE"); ok {
-		err := ioutil.WriteFile(buildDateTimeFile, []byte(config.buildDateTime), 0666) // a+rw
+		err := os.WriteFile(buildDateTimeFile, []byte(config.buildDateTime), 0666) // a+rw
 		if err != nil {
 			ctx.Fatalln("Failed to write BUILD_DATETIME to file:", err)
 		}
@@ -143,15 +142,15 @@ func checkCaseSensitivity(ctx Context, config Config) {
 	lowerData := "a"
 	upperData := "B"
 
-	if err := ioutil.WriteFile(lowerCase, []byte(lowerData), 0666); err != nil { // a+rw
+	if err := os.WriteFile(lowerCase, []byte(lowerData), 0666); err != nil { // a+rw
 		ctx.Fatalln("Failed to check case sensitivity:", err)
 	}
 
-	if err := ioutil.WriteFile(upperCase, []byte(upperData), 0666); err != nil { // a+rw
+	if err := os.WriteFile(upperCase, []byte(upperData), 0666); err != nil { // a+rw
 		ctx.Fatalln("Failed to check case sensitivity:", err)
 	}
 
-	res, err := ioutil.ReadFile(lowerCase)
+	res, err := os.ReadFile(lowerCase)
 	if err != nil {
 		ctx.Fatalln("Failed to check case sensitivity:", err)
 	}
@@ -300,10 +299,10 @@ func Build(ctx Context, config Config) {
 		runKatiBuild(ctx, config)
 		runKatiPackage(ctx, config)
 
-		ioutil.WriteFile(config.LastKatiSuffixFile(), []byte(config.KatiSuffix()), 0666) // a+rw
+		os.WriteFile(config.LastKatiSuffixFile(), []byte(config.KatiSuffix()), 0666) // a+rw
 	} else if what&RunKatiNinja != 0 {
 		// Load last Kati Suffix if it exists
-		if katiSuffix, err := ioutil.ReadFile(config.LastKatiSuffixFile()); err == nil {
+		if katiSuffix, err := os.ReadFile(config.LastKatiSuffixFile()); err == nil {
 			ctx.Verboseln("Loaded previous kati config:", string(katiSuffix))
 			config.SetKatiSuffix(string(katiSuffix))
 		}

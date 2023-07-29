@@ -17,7 +17,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -158,7 +157,7 @@ func writeTextProto(output string, message proto.Message, writeIfChanged bool) e
 	if writeIfChanged {
 		err = pathtools.WriteFileIfChanged(output, data, 0666)
 	} else {
-		err = ioutil.WriteFile(output, data, 0666)
+		err = os.WriteFile(output, data, 0666)
 	}
 
 	if err != nil {
@@ -174,7 +173,7 @@ func mergeProtos(output string, inputs []string, stripPrefix string, writeIfChan
 	mappings := symbols_map_proto.Mappings{}
 	for _, input := range inputs {
 		mapping := symbols_map_proto.Mapping{}
-		data, err := ioutil.ReadFile(input)
+		data, err := os.ReadFile(input)
 		if err != nil {
 			if ignoreMissingFiles && os.IsNotExist(err) {
 				// Merge mode is used on a list of files in the packaging directory.  If multiple

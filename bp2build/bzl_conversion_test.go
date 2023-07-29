@@ -15,7 +15,6 @@
 package bp2build
 
 import (
-	"io/ioutil"
 	"os"
 	"strings"
 	"testing"
@@ -25,7 +24,7 @@ import (
 
 func setUp() {
 	var err error
-	buildDir, err = ioutil.TempDir("", "bazel_queryview_test")
+	buildDir, err = os.MkdirTemp("", "bazel_queryview_test")
 	if err != nil {
 		panic(err)
 	}

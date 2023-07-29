@@ -20,7 +20,6 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -220,7 +219,7 @@ var bpTemplate = template.Must(template.New("bp").Parse(`
 `))
 
 func rerunForRegen(filename string) error {
-	buf, err := ioutil.ReadFile(filename)
+	buf, err := os.ReadFile(filename)
 	if err != nil {
 		return err
 	}
@@ -268,7 +267,7 @@ func rerunForRegen(filename string) error {
 		return err
 	}
 
-	return ioutil.WriteFile(filename, output, 0666)
+	return os.WriteFile(filename, output, 0666)
 }
 
 func main() {

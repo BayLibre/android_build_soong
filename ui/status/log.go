@@ -19,7 +19,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -258,7 +257,7 @@ func writeToFile(pb proto.Message, outputPath string) (err error) {
 	}
 
 	tempPath := outputPath + ".tmp"
-	err = ioutil.WriteFile(tempPath, []byte(data), 0644)
+	err = os.WriteFile(tempPath, []byte(data), 0644)
 	if err != nil {
 		return err
 	}

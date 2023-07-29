@@ -15,7 +15,7 @@
 package fs
 
 import (
-	"io/ioutil"
+	"io"
 	"path/filepath"
 	"reflect"
 	"sort"
@@ -75,7 +75,7 @@ func Read(t *testing.T, path string, filesystem *MockFs) string {
 		t.Fatalf(err.Error())
 	}
 	defer reader.Close()
-	bytes, err := ioutil.ReadAll(reader)
+	bytes, err := io.ReadAll(reader)
 	if err != nil {
 		t.Fatal(err.Error())
 	}

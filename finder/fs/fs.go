@@ -19,7 +19,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"os/user"
 	"path/filepath"
@@ -121,7 +120,7 @@ func (osFs) Rename(oldPath string, newPath string) error {
 }
 
 func (osFs) WriteFile(path string, data []byte, perm os.FileMode) error {
-	return ioutil.WriteFile(path, data, perm)
+	return os.WriteFile(path, data, perm)
 }
 
 func (osFs) Remove(path string) error {
@@ -369,7 +368,7 @@ func (m *MockFs) Open(path string) (io.ReadCloser, error) {
 		io.Closer
 		*bytes.Reader
 	}{
-		ioutil.NopCloser(nil),
+		io.NopCloser(nil),
 		bytes.NewReader(file.bytes),
 	}, nil
 

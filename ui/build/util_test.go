@@ -16,7 +16,6 @@ package build
 
 import (
 	"bytes"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
@@ -30,7 +29,7 @@ func TestEnsureEmptyDirs(t *testing.T) {
 		t.Error(err)
 	})
 
-	tmpDir, err := ioutil.TempDir("", "")
+	tmpDir, err := os.MkdirTemp("", "")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -52,7 +51,7 @@ func TestEnsureEmptyDirs(t *testing.T) {
 }
 
 func TestCopyFile(t *testing.T) {
-	tmpDir, err := ioutil.TempDir("", "test_copy_file")
+	tmpDir, err := os.MkdirTemp("", "test_copy_file")
 	if err != nil {
 		t.Fatalf("failed to create temporary directory to hold test text files: %v", err)
 	}
@@ -60,7 +59,7 @@ func TestCopyFile(t *testing.T) {
 
 	data := []byte("fake data")
 	src := filepath.Join(tmpDir, "src.txt")
-	if err := ioutil.WriteFile(src, data, 0755); err != nil {
+	if err := os.WriteFile(src, data, 0755); err != nil {
 		t.Fatalf("failed to create a src file %q for copying: %v", src, err)
 	}
 
@@ -75,7 +74,7 @@ func TestCopyFile(t *testing.T) {
 		t.Errorf("got %d, expecting %d for copied bytes", l, len(data))
 	}
 
-	dstData, err := ioutil.ReadFile(dst)
+	dstData, err := os.ReadFile(dst)
 	if err != nil {
 		t.Fatalf("got %v, expecting nil error reading dst %q file", err, dst)
 	}
@@ -86,14 +85,14 @@ func TestCopyFile(t *testing.T) {
 }
 
 func TestCopyFileErrors(t *testing.T) {
-	tmpDir, err := ioutil.TempDir("", "test_copy_file_errors")
+	tmpDir, err := os.MkdirTemp("", "test_copy_file_errors")
 	if err != nil {
 		t.Fatalf("failed to create temporary directory to hold test text files: %v", err)
 	}
 	defer os.Remove(tmpDir)
 
 	srcExists := filepath.Join(tmpDir, "src_exist.txt")
-	if err := ioutil.WriteFile(srcExists, []byte("fake data"), 0755); err != nil {
+	if err := os.WriteFile(srcExists, []byte("fake data"), 0755); err != nil {
 		t.Fatalf("failed to create a src file %q for copying: %v", srcExists, err)
 	}
 

@@ -1,7 +1,6 @@
 package proc
 
 import (
-	"io/ioutil"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -21,7 +20,7 @@ func NewProcStatus(pid int, fileSystem fs.FileSystem) (*ProcStatus, error) {
 	}
 	defer r.Close()
 
-	data, err := ioutil.ReadAll(r)
+	data, err := io.ReadAll(r)
 	if err != nil {
 		return &ProcStatus{}, err
 	}

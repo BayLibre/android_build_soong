@@ -31,7 +31,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -249,7 +248,7 @@ func ParseBranch(name string) Branch {
 }
 
 func ParseProduct(p ProductBranch) ProductLog {
-	soongLog, err := ioutil.ReadFile(filepath.Join(p.Branch, p.Name, "soong.log"))
+	soongLog, err := os.ReadFile(filepath.Join(p.Branch, p.Name, "soong.log"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -289,7 +288,7 @@ func ParseProduct(p ProductBranch) ProductLog {
 }
 
 func ScanProduct(settings []Setting, l ProductLog) {
-	stdLog, err := ioutil.ReadFile(filepath.Join(l.Branch, l.Name, "std_full.log"))
+	stdLog, err := os.ReadFile(filepath.Join(l.Branch, l.Name, "std_full.log"))
 	if err != nil {
 		log.Fatal(err)
 	}

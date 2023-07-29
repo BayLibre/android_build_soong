@@ -16,7 +16,6 @@ package response
 
 import (
 	"io"
-	"io/ioutil"
 	"strings"
 	"unicode"
 )
@@ -28,7 +27,7 @@ func ReadRspFile(r io.Reader) ([]string, error) {
 	var files []string
 	var file []byte
 
-	buf, err := ioutil.ReadAll(r)
+	buf, err := io.ReadAll(r)
 	if err != nil {
 		return nil, err
 	}

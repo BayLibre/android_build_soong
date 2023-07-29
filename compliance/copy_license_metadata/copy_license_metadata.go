@@ -17,7 +17,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -112,7 +111,7 @@ func readMetadata(file string, metadata *license_metadata_proto.LicenseMetadata)
 	if file == "" {
 		return fmt.Errorf("source metadata file (-d) required")
 	}
-	buf, err := ioutil.ReadFile(file)
+	buf, err := os.ReadFile(file)
 	if err != nil {
 		return fmt.Errorf("error reading textproto %q: %w", file, err)
 	}
@@ -132,7 +131,7 @@ func writeMetadata(file string, metadata *license_metadata_proto.LicenseMetadata
 	}
 
 	if file != "" {
-		err = ioutil.WriteFile(file, buf, 0666)
+		err = os.WriteFile(file, buf, 0666)
 		if err != nil {
 			return fmt.Errorf("error writing textproto %q: %w", file, err)
 		}

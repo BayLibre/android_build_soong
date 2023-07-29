@@ -15,7 +15,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -106,14 +105,14 @@ func Test_filesHaveSameContents(t *testing.T) {
 			fileB := filepath.Join(tempDir, "b")
 
 			if !tt.missingA {
-				err := ioutil.WriteFile(fileA, []byte(tt.a), 0666)
+				err := os.WriteFile(fileA, []byte(tt.a), 0666)
 				if err != nil {
 					t.Fatalf("failed to write %s: %s", fileA, err)
 				}
 			}
 
 			if !tt.missingB {
-				err := ioutil.WriteFile(fileB, []byte(tt.b), 0666)
+				err := os.WriteFile(fileB, []byte(tt.b), 0666)
 				if err != nil {
 					t.Fatalf("failed to write %s: %s", fileB, err)
 				}

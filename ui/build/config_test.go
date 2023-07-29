@@ -18,7 +18,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -240,7 +239,7 @@ func TestConfigCheckTopDir(t *testing.T) {
 			})
 
 			// Create the root source tree.
-			rootDir, err := ioutil.TempDir("", "")
+			rootDir, err := os.MkdirTemp("", "")
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -254,7 +253,7 @@ func TestConfigCheckTopDir(t *testing.T) {
 					t.Errorf("failed to create %s directory: %v", dir, err)
 				}
 				f := filepath.Join(rootDir, srcDirFileCheck)
-				if err := ioutil.WriteFile(f, []byte{}, 0644); err != nil {
+				if err := os.WriteFile(f, []byte{}, 0644); err != nil {
 					t.Errorf("failed to create file %s: %v", f, err)
 				}
 			}
@@ -333,7 +332,7 @@ func setTop(t *testing.T, dir string) func() {
 func createBuildFiles(t *testing.T, topDir string, buildFiles []string) {
 	for _, buildFile := range buildFiles {
 		buildFile = filepath.Join(topDir, buildFile)
-		if err := ioutil.WriteFile(buildFile, []byte{}, 0644); err != nil {
+		if err := os.WriteFile(buildFile, []byte{}, 0644); err != nil {
 			t.Errorf("failed to create file %s: %v", buildFile, err)
 		}
 	}
@@ -505,7 +504,7 @@ func TestConfigGetTargets(t *testing.T) {
 			})
 
 			// Create the root source tree.
-			topDir, err := ioutil.TempDir("", "")
+			topDir, err := os.MkdirTemp("", "")
 			if err != nil {
 				t.Fatalf("failed to create temp dir: %v", err)
 			}
@@ -618,7 +617,7 @@ func TestConfigFindBuildFile(t *testing.T) {
 				t.Fatalf("Got unexpected error: %v", err)
 			})
 
-			topDir, err := ioutil.TempDir("", "")
+			topDir, err := os.MkdirTemp("", "")
 			if err != nil {
 				t.Fatalf("failed to create temp dir: %v", err)
 			}
@@ -760,7 +759,7 @@ func testGetConfigArgs(t *testing.T, tt buildActionTestCase, action BuildAction)
 	}
 
 	// Create the root source tree.
-	topDir, err := ioutil.TempDir("", "")
+	topDir, err := os.MkdirTemp("", "")
 	if err != nil {
 		t.Fatalf("failed to create temp dir: %v", err)
 	}
@@ -771,7 +770,7 @@ func testGetConfigArgs(t *testing.T, tt buildActionTestCase, action BuildAction)
 
 	if tt.rootSymlink {
 		// Create a secondary root source tree which points to the true root source tree.
-		symlinkTopDir, err := ioutil.TempDir("", "")
+		symlinkTopDir, err := os.MkdirTemp("", "")
 		if err != nil {
 			t.Fatalf("failed to create symlink temp dir: %v", err)
 		}
@@ -794,7 +793,7 @@ func testGetConfigArgs(t *testing.T, tt buildActionTestCase, action BuildAction)
 		t.Fatalf("Failed to create %s directory: %v", rootBuildFileDir, err)
 	}
 
-	if err := ioutil.WriteFile(srcDirFileCheck, []byte{}, 0644); err != nil {
+	if err := os.WriteFile(srcDirFileCheck, []byte{}, 0644); err != nil {
 		t.Fatalf("failed to create %s file: %v", srcDirFileCheck, err)
 	}
 
@@ -1211,7 +1210,7 @@ func TestGetMetricsUploaderApp(t *testing.T) {
 			})
 
 			// Create the root source tree.
-			topDir, err := ioutil.TempDir("", "")
+			topDir, err := os.MkdirTemp("", "")
 			if err != nil {
 				t.Fatalf("failed to create temp dir: %v", err)
 			}
@@ -1226,7 +1225,7 @@ func TestGetMetricsUploaderApp(t *testing.T) {
 				if err := os.MkdirAll(filepath.Join(topDir, metricsUploaderDir), 0755); err != nil {
 					t.Errorf("failed to create %s directory: %v", metricsUploaderDir, err)
 				}
-				if err := ioutil.WriteFile(filepath.Join(topDir, metricsUploaderPath), []byte{}, 0644); err != nil {
+				if err := os.WriteFile(filepath.Join(topDir, metricsUploaderPath), []byte{}, 0644); err != nil {
 					t.Errorf("failed to create file %s: %v", expected, err)
 				}
 			}

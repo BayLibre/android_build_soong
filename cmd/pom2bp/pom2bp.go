@@ -21,7 +21,6 @@ import (
 	"encoding/xml"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path"
@@ -708,7 +707,7 @@ var bazelDepsTemplate = template.Must(template.New("bp").Parse(`
 `))
 
 func parse(filename string) (*Pom, error) {
-	data, err := ioutil.ReadFile(filename)
+	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
@@ -734,7 +733,7 @@ func parse(filename string) (*Pom, error) {
 }
 
 func rerunForRegen(filename string) error {
-	buf, err := ioutil.ReadFile(filename)
+	buf, err := os.ReadFile(filename)
 	if err != nil {
 		return err
 	}
@@ -794,7 +793,7 @@ func rerunForRegen(filename string) error {
 		filename = strings.TrimSuffix(filename, ".mk") + ".bp"
 	}
 
-	return ioutil.WriteFile(filename, output, 0666)
+	return os.WriteFile(filename, output, 0666)
 }
 
 func main() {
@@ -1001,7 +1000,7 @@ Usage: %s [--rewrite <regex>=<replace>] [--exclude <module>] [--extra-static-lib
 	}
 
 	if prepend != "" {
-		contents, err := ioutil.ReadFile(prepend)
+		contents, err := os.ReadFile(prepend)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "Error reading", prepend, err)
 			os.Exit(1)

@@ -17,7 +17,6 @@ package mk2rbc
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -27,7 +26,7 @@ import (
 // Extracts the list of product config variables from a file, calling
 // given registrar for each variable.
 func FindConfigVariables(mkFile string, vr variableRegistrar) error {
-	mkContents, err := ioutil.ReadFile(mkFile)
+	mkContents, err := os.ReadFile(mkFile)
 	if err != nil {
 		return err
 	}

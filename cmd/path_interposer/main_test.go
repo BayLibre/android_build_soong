@@ -16,7 +16,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"os"
 	"path/filepath"
 	"testing"
@@ -30,7 +30,7 @@ var origPATH string
 func TestMain(m *testing.M) {
 	os.Exit(func() int {
 		var err error
-		tmpDir, err = ioutil.TempDir("", "interposer_test")
+		tmpDir, err = os.MkdirTemp("", "interposer_test")
 		if err != nil {
 			panic(err)
 		}
@@ -47,13 +47,13 @@ func TestMain(m *testing.M) {
 }
 
 func setup(t *testing.T) string {
-	f, err := ioutil.TempFile(tmpDir, "interposer")
+	f, err := os.CreateTemp(tmpDir, "interposer")
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer f.Close()
 
-	err = ioutil.WriteFile(f.Name()+"_origpath", []byte(origPATH), 0666)
+	err = os.WriteFile(f.Name()+"_origpath", []byte(origPATH), 0666)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -155,7 +155,7 @@ func TestInterposer(t *testing.T) {
 				}
 			}
 
-			exitCode, err := Main(ioutil.Discard, ioutil.Discard, interposer, testCase.args, mainOpts{
+			exitCode, err := Main(io.Discard, io.Discard, interposer, testCase.args, mainOpts{
 				sendLog: logFunc,
 				config:  logConfig,
 			})
@@ -186,7 +186,7 @@ func TestMissingPath(t *testing.T) {
 		t.Fatal("Failed to remove:", err)
 	}
 
-	exitCode, err := Main(ioutil.Discard, ioutil.Discard, interposer, []string{"true"}, mainOpts{})
+	exitCode, err := Main(io.Discard, io.Discard, interposer, []string{"true"}, mainOpts{})
 	if err != usage {
 		t.Errorf("Unexpected error:\n got: %v\nwant: %v", err, usage)
 	}

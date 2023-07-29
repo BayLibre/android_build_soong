@@ -39,7 +39,7 @@ const (
 
 var (
 	// For testing purpose.
-	tmpDir = ioutil.TempDir
+	tmpDir = os.MkdirTemp
 )
 
 // pruneMetricsFiles iterates the list of paths, checking if a path exist.
@@ -125,7 +125,7 @@ func UploadMetrics(ctx Context, config Config, simpleOutput bool, buildStarted t
 	}
 
 	pbFile := filepath.Join(tmpDir, uploadPbFilename)
-	if err := ioutil.WriteFile(pbFile, data, 0644); err != nil {
+	if err := os.WriteFile(pbFile, data, 0644); err != nil {
 		ctx.Fatalf("failed to write the marshaled metrics upload protobuf to %q: %v\n", pbFile, err)
 	}
 

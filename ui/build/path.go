@@ -16,7 +16,6 @@ package build
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -155,7 +154,7 @@ func SetupPath(ctx Context, config Config) {
 	}
 
 	// Save the original $PATH in a file.
-	if err := ioutil.WriteFile(interposer+"_origpath", []byte(origPath), 0777); err != nil {
+	if err := os.WriteFile(interposer+"_origpath", []byte(origPath), 0777); err != nil {
 		ctx.Fatalln("Failed to write original path:", err)
 	}
 

@@ -17,7 +17,7 @@ package main
 import (
 	"bytes"
 	"html/template"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"sort"
 
@@ -112,7 +112,7 @@ func writeDocs(ctx *android.Context, filename string) error {
 	buf := &bytes.Buffer{}
 	err = tmpl.Execute(buf, packages)
 	if err == nil {
-		err = ioutil.WriteFile(filename, buf.Bytes(), 0666)
+		err = os.WriteFile(filename, buf.Bytes(), 0666)
 	}
 
 	// Now, produce per-package module lists with detailed information, and a list
@@ -141,7 +141,7 @@ func writeDocs(ctx *android.Context, filename string) error {
 			return err
 		}
 		pkgFileName := filepath.Join(filepath.Dir(filename), pkg.Name+".html")
-		err = ioutil.WriteFile(pkgFileName, buf.Bytes(), 0666)
+		err = os.WriteFile(pkgFileName, buf.Bytes(), 0666)
 		if err != nil {
 			return err
 		}
@@ -154,7 +154,7 @@ func writeDocs(ctx *android.Context, filename string) error {
 	// Write out list of keywords. This includes all module and property names, which is useful for
 	// building syntax highlighters.
 	keywordsFilename := filepath.Join(filepath.Dir(filename), "keywords.txt")
-	err = ioutil.WriteFile(keywordsFilename, keywordsBuf.Bytes(), 0666)
+	err = os.WriteFile(keywordsFilename, keywordsBuf.Bytes(), 0666)
 
 	return err
 }

@@ -35,7 +35,6 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -102,7 +101,7 @@ func Main(stdout, stderr io.Writer, interposer string, args []string, opts mainO
 		return 1, usage
 	}
 
-	origPath, err := ioutil.ReadFile(origPathFile)
+	origPath, err := os.ReadFile(origPathFile)
 	if err != nil {
 		if os.IsNotExist(err) {
 			return 1, usage

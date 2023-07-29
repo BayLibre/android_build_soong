@@ -22,7 +22,6 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 
@@ -45,7 +44,7 @@ func main() {
 	var firstInput []byte
 
 	for i, arg := range flag.Args() {
-		input, err := ioutil.ReadFile(arg)
+		input, err := os.ReadFile(arg)
 		if err != nil {
 			log.Fatalf("Error opening %q: %v", arg, err)
 		}
@@ -67,13 +66,13 @@ func main() {
 
 	if *output == "" || *output == flag.Arg(0) {
 		if !bytes.Equal(firstInput, new) {
-			err := ioutil.WriteFile(flag.Arg(0), new, 0666)
+			err := os.WriteFile(flag.Arg(0), new, 0666)
 			if err != nil {
 				log.Fatalf("Failed to write: %v", err)
 			}
 		}
 	} else {
-		err := ioutil.WriteFile(*output, new, 0666)
+		err := os.WriteFile(*output, new, 0666)
 		if err != nil {
 			log.Fatalf("Failed to write to %q: %v", *output, err)
 		}

@@ -22,7 +22,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -219,7 +218,7 @@ func createCommandScript(rawCommand, scriptPath, scriptPathInSandbox string) (*e
 
 // readManifest reads an sbox manifest from a textproto file.
 func readManifest(file string) (*sbox_proto.Manifest, error) {
-	manifestData, err := ioutil.ReadFile(file)
+	manifestData, err := os.ReadFile(file)
 	if err != nil {
 		return nil, fmt.Errorf("error reading manifest %q: %w", file, err)
 	}
@@ -688,7 +687,7 @@ func clearOutputDirectory(copies []*sbox_proto.Copy, outputDir string, write wri
 func rewriteDepFiles(ins []string, out string) error {
 	var mergedDeps []string
 	for _, in := range ins {
-		data, err := ioutil.ReadFile(in)
+		data, err := os.ReadFile(in)
 		if err != nil {
 			return err
 		}
@@ -714,7 +713,7 @@ func rewriteDepFiles(ins []string, out string) error {
 		return fmt.Errorf("failed to create %q: %w", outDir, err)
 	}
 
-	return ioutil.WriteFile(out, deps.Print(), 0666)
+	return os.WriteFile(out, deps.Print(), 0666)
 }
 
 // joinPath wraps filepath.Join but returns file without appending to dir if file is

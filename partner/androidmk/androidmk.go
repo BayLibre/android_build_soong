@@ -18,7 +18,6 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 
 	"android/soong/androidmk/androidmk"
@@ -40,7 +39,7 @@ func main() {
 		usage()
 	}
 	filePathToRead := flag.Arg(0)
-	b, err := ioutil.ReadFile(filePathToRead)
+	b, err := os.ReadFile(filePathToRead)
 	if err != nil {
 		fmt.Println(err.Error())
 		return

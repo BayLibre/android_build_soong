@@ -33,7 +33,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -157,7 +156,7 @@ func New(out io.Writer) *stdLogger {
 func NewWithMetrics(out io.Writer, m *metrics.Metrics) *stdLogger {
 	return &stdLogger{
 		stderr:     log.New(out, "", log.Ltime),
-		fileLogger: log.New(ioutil.Discard, "", log.Ldate|log.Lmicroseconds|log.Llongfile),
+		fileLogger: log.New(io.Discard, "", log.Ldate|log.Lmicroseconds|log.Llongfile),
 		metrics:    m,
 	}
 }

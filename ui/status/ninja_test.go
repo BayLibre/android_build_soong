@@ -15,7 +15,7 @@
 package status
 
 import (
-	"io/ioutil"
+	"io"
 	"os"
 	"path/filepath"
 	"testing"
@@ -26,14 +26,14 @@ import (
 
 // Tests that closing the ninja reader when nothing has opened the other end of the fifo is fast.
 func TestNinjaReader_Close(t *testing.T) {
-	tempDir, err := ioutil.TempDir("", "ninja_test")
+	tempDir, err := os.MkdirTemp("", "ninja_test")
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer os.RemoveAll(tempDir)
 
 	stat := &Status{}
-	nr := NewNinjaReader(logger.New(ioutil.Discard), stat.StartTool(), filepath.Join(tempDir, "fifo"))
+	nr := NewNinjaReader(logger.New(io.Discard), stat.StartTool(), filepath.Join(tempDir, "fifo"))
 
 	start := time.Now()
 

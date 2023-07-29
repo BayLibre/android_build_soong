@@ -22,7 +22,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -1749,7 +1748,7 @@ func parserPath(path string, fs pathtools.FileSystem) (tree *parser.File, err er
 		return tree, err
 	}
 	defer f.Close()
-	fileContent, _ := ioutil.ReadAll(f)
+	fileContent, _ := io.ReadAll(f)
 	tree, err = parse(path, bytes.NewBufferString(string(fileContent)))
 	if err != nil {
 		return tree, err

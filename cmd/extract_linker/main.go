@@ -23,7 +23,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"strconv"
@@ -91,7 +90,7 @@ func main() {
 		fmt.Fprintf(script, "    KEEP(*(%s));\n", sectionName)
 		fmt.Fprintln(script, "  }")
 
-		buffer, _ := ioutil.ReadAll(prog.Open())
+		buffer, _ := io.ReadAll(prog.Open())
 		bytesToAsm(asm, buffer)
 
 		// Fill in zeros for any BSS sections. It would be nice to keep
@@ -122,13 +121,13 @@ func main() {
 	fmt.Fprintln(script, "INSERT BEFORE .note.android.embedded_linker;")
 
 	if asmPath != "" {
-		if err := ioutil.WriteFile(asmPath, asm.Bytes(), 0777); err != nil {
+		if err := os.WriteFile(asmPath, asm.Bytes(), 0777); err != nil {
 			log.Fatalf("Unable to write %q: %v", asmPath, err)
 		}
 	}
 
 	if scriptPath != "" {
-		if err := ioutil.WriteFile(scriptPath, script.Bytes(), 0777); err != nil {
+		if err := os.WriteFile(scriptPath, script.Bytes(), 0777); err != nil {
 			log.Fatalf("Unable to write %q: %v", scriptPath, err)
 		}
 	}

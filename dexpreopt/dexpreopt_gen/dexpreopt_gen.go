@@ -18,7 +18,6 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -96,7 +95,7 @@ func main() {
 	// plus "/soong" but doing so apparently breaks dexpreopt
 	ctx := &builderContext{android.NullConfig(*outDir, *outDir)}
 
-	globalSoongConfigData, err := ioutil.ReadFile(*globalSoongConfigPath)
+	globalSoongConfigData, err := os.ReadFile(*globalSoongConfigPath)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error reading global Soong config %q: %s\n", *globalSoongConfigPath, err)
 		os.Exit(2)
@@ -108,7 +107,7 @@ func main() {
 		os.Exit(2)
 	}
 
-	globalConfigData, err := ioutil.ReadFile(*globalConfigPath)
+	globalConfigData, err := os.ReadFile(*globalConfigPath)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error reading global config %q: %s\n", *globalConfigPath, err)
 		os.Exit(2)
@@ -120,7 +119,7 @@ func main() {
 		os.Exit(2)
 	}
 
-	moduleConfigData, err := ioutil.ReadFile(*moduleConfigPath)
+	moduleConfigData, err := os.ReadFile(*moduleConfigPath)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error reading module config %q: %s\n", *moduleConfigPath, err)
 		os.Exit(2)

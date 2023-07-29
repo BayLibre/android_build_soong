@@ -18,7 +18,6 @@ import (
 	"context"
 	"encoding/gob"
 	"fmt"
-	"io/ioutil"
 	"net"
 	"os"
 	"path/filepath"
@@ -55,7 +54,7 @@ func procFallback(name string) (string, func(), error) {
 }
 
 func tmpFallback(name string) (addr string, cleanup func(), err error) {
-	d, err := ioutil.TempDir("/tmp", "log_sock")
+	d, err := os.MkdirTemp("/tmp", "log_sock")
 	if err != nil {
 		cleanup = func() {}
 		return

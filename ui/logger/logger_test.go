@@ -18,7 +18,6 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -29,7 +28,7 @@ import (
 )
 
 func TestCreateFileWithRotation(t *testing.T) {
-	dir, err := ioutil.TempDir("", "test-rotation")
+	dir, err := os.MkdirTemp("", "test-rotation")
 	if err != nil {
 		t.Fatalf("Failed to get TempDir: %v", err)
 	}
@@ -76,7 +75,7 @@ func TestCreateFileWithRotation(t *testing.T) {
 	}
 
 	expectFileContents := func(name, expected string) {
-		data, err := ioutil.ReadFile(filepath.Join(dir, name))
+		data, err := os.ReadFile(filepath.Join(dir, name))
 		if err != nil {
 			t.Errorf("Error reading file: %v", err)
 			return

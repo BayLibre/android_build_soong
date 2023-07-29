@@ -17,7 +17,6 @@ package mk2rbc
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"regexp"
 	"strings"
@@ -40,7 +39,7 @@ func FindSoongVariables(mkFile string, includeFileScope mkparser.Scope, registra
 }
 
 func (ctx *context) doFind(mkFile string) error {
-	mkContents, err := ioutil.ReadFile(mkFile)
+	mkContents, err := os.ReadFile(mkFile)
 	if err != nil {
 		return err
 	}

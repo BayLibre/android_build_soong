@@ -27,7 +27,7 @@ import (
 )
 
 func TestCleanOldFiles(t *testing.T) {
-	dir, err := ioutil.TempDir("", "testcleanoldfiles")
+	dir, err := os.MkdirTemp("", "testcleanoldfiles")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -48,7 +48,7 @@ func TestCleanOldFiles(t *testing.T) {
 	}
 	runCleanOldFiles := func(names ...string) {
 		data := []byte(strings.Join(names, " "))
-		if err := ioutil.WriteFile(filepath.Join(dir, ".installed"), data, 0666); err != nil {
+		if err := os.WriteFile(filepath.Join(dir, ".installed"), data, 0666); err != nil {
 			t.Fatal(err)
 		}
 
