@@ -7047,7 +7047,7 @@ func TestApexAvailable_CheckForPlatform(t *testing.T) {
 	// libfoo2 however can be available to platform because it depends on libbaz which provides
 	// stubs
 	libfoo2 := ctx.ModuleForTests("libfoo2", "android_arm64_armv8-a_shared").Module().(*cc.Module)
-	if libfoo2.NotAvailableForPlatform() == true {
+	if libfoo2.NotAvailableForPlatform() {
 		t.Errorf("%q should be available to platform", libfoo2.String())
 	}
 }

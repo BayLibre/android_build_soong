@@ -65,7 +65,7 @@ func GetTestConfigAttributes(
 	// 3) CTS tests and no template specified.
 	// CTS Modules can be used for test data, so test config files must be explicitly specified.
 	if (attrs.Template_test_config != nil) ||
-		proptools.Bool(autoGenConfig) == false ||
+		!proptools.Bool(autoGenConfig) ||
 		(template == nil && !android.InList("cts", testSuites)) {
 
 		return attrs

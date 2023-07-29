@@ -2094,8 +2094,8 @@ func (s *sdk) createMemberSnapshot(ctx *memberContext, member *sdkMember, bpModu
 	// with implicitly enabled OS variants when the snapshot is used, which might
 	// be different from this run (e.g. different build OS).
 	if ctx.memberType.IsHostOsDependent() {
-		hostSupported := bpModule.getValue("host_supported") == true // Missing means false.
-		if hostSupported {
+		hostSupported := bpModule.getValue("host_supported") // Missing means false.
+		if hostSupported != nil {
 			hostPropertySet := targetPropertySet.AddPropertySet("host")
 			hostPropertySet.AddProperty("enabled", false)
 		}

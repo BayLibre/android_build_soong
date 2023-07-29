@@ -1001,7 +1001,7 @@ func VariableMutator(mctx BottomUpMutatorContext) {
 		val = val.Elem()
 
 		// For bools, check that the value is true
-		if val.Kind() == reflect.Bool && val.Bool() == false {
+		if val.Kind() == reflect.Bool && !val.Bool() {
 			continue
 		}
 

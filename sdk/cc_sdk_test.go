@@ -58,7 +58,7 @@ func testSdkWithCc(t *testing.T, bp string) *android.TestResult {
 // Contains tests for SDK members provided by the cc package.
 
 func TestSingleDeviceOsAssumption(t *testing.T) {
-	// Mock a module with DeviceSupported() == true.
+	// Mock a module with DeviceSupported().
 	s := &sdk{}
 	android.InitAndroidArchModule(s, android.DeviceSupported, android.MultilibCommon)
 

@@ -420,7 +420,7 @@ func (s *ccRustFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) 
 		} else if ccModule.Host() {
 			hostOrTargetString = "host"
 		}
-		if s.onlyIncludePresubmits == true {
+		if s.onlyIncludePresubmits {
 			hostOrTargetString = "presubmit-" + hostOrTargetString
 		}
 
@@ -447,7 +447,7 @@ func (s *ccRustFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) 
 		// The executable.
 		files = append(files, fuzz.FileToZip{SourceFilePath: android.OutputFileForModule(ctx, ccModule, "unstripped")})
 
-		if s.onlyIncludePresubmits == true {
+		if s.onlyIncludePresubmits {
 			if fpm.FuzzProperties.Fuzz_config == nil {
 				return
 			}

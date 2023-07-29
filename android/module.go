@@ -2057,7 +2057,7 @@ func (m *ModuleBase) HideFromMake() {
 
 // IsHideFromMake returns true if HideFromMake was previously called.
 func (m *ModuleBase) IsHideFromMake() bool {
-	return m.commonProperties.HideFromMake == true
+	return m.commonProperties.HideFromMake
 }
 
 // SkipInstall marks this variant to not create install rules when ctx.Install* are called.
@@ -2408,7 +2408,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	m.installFilesDepSet = NewDepSet[InstallPath](TOPOLOGICAL, nil, dependencyInstallFiles)
 
 	// Temporarily continue to call blueprintCtx.GetMissingDependencies() to maintain the previous behavior of never
-	// reporting missing dependency errors in Blueprint when AllowMissingDependencies == true.
+	// reporting missing dependency errors in Blueprint when AllowMissingDependencies is true.
 	// TODO: This will be removed once defaults modules handle missing dependency errors
 	blueprintCtx.GetMissingDependencies()
 

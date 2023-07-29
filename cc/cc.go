@@ -2194,7 +2194,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		actx.PropertyErrorf("apex_available",
 			"Stub libraries should have a single apex_available (test apexes excluded). Got %v", c.ApexAvailable())
 	}
-	if c.Properties.Clang != nil && *c.Properties.Clang == false {
+	if c.Properties.Clang != nil && !*c.Properties.Clang {
 		ctx.PropertyErrorf("clang", "false (GCC) is no longer supported")
 	} else if c.Properties.Clang != nil && !ctx.DeviceConfig().BuildBrokenClangProperty() {
 		ctx.PropertyErrorf("clang", "property is deprecated, see Changes.md file")

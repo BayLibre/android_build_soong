@@ -326,7 +326,7 @@ func (m sdkVersionTargetingMatcher) matches(config TargetConfig) bool {
 	// TODO (b274518686) This check should only be used while SHA based targeting is active
 	// Once we have switched to an SDK version, this can be changed to throw an error if
 	// it was accidentally set
-	if config.skipSdkCheck == true {
+	if config.skipSdkCheck {
 		return true
 	}
 	if m.SdkVersionTargeting == nil {

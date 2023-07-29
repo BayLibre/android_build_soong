@@ -133,7 +133,7 @@ func (vndk *vndkdep) typeName() string {
 	return "native:vendor:vndkspext"
 }
 
-// VNDK link type check from a module with UseVndk() == true.
+// VNDK link type check from a module with UseVndk().
 func (vndk *vndkdep) vndkCheckLinkType(ctx android.BaseModuleContext, to *Module, tag blueprint.DependencyTag) {
 	if to.linker == nil {
 		return

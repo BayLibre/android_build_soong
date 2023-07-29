@@ -345,7 +345,7 @@ func (sanitize *sanitize) isSanitizerExplicitlyDisabled(t cc.SanitizerType) bool
 		return true
 	}
 	sanitizerVal := sanitize.getSanitizerBoolPtr(t)
-	return sanitizerVal != nil && *sanitizerVal == false
+	return sanitizerVal != nil && !*sanitizerVal
 }
 
 // There isn't an analog of the method above (ie:isSanitizerExplicitlyEnabled)
@@ -359,7 +359,7 @@ func (sanitize *sanitize) isSanitizerEnabled(t cc.SanitizerType) bool {
 	}
 
 	sanitizerVal := sanitize.getSanitizerBoolPtr(t)
-	return sanitizerVal != nil && *sanitizerVal == true
+	return sanitizerVal != nil && *sanitizerVal
 }
 
 func (sanitize *sanitize) getSanitizerBoolPtr(t cc.SanitizerType) *bool {

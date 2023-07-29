@@ -74,7 +74,7 @@ type pgo struct {
 }
 
 func (props *PgoProperties) isInstrumentation() bool {
-	return props.Pgo.Instrumentation != nil && *props.Pgo.Instrumentation == true
+	return props.Pgo.Instrumentation != nil && *props.Pgo.Instrumentation
 }
 
 func (pgo *pgo) props() []interface{} {
@@ -214,12 +214,12 @@ func (pgo *pgo) begin(ctx BaseModuleContext) {
 		pgoBenchmarksMap[b] = true
 	}
 
-	if pgoBenchmarksMap["all"] == true || pgoBenchmarksMap["ALL"] == true {
+	if pgoBenchmarksMap["all"] || pgoBenchmarksMap["ALL"] {
 		pgo.Properties.ShouldProfileModule = true
 		pgo.Properties.PgoInstrLink = pgo.Properties.isInstrumentation()
 	} else {
 		for _, b := range pgo.Properties.Pgo.Benchmarks {
-			if pgoBenchmarksMap[b] == true {
+			if pgoBenchmarksMap[b] {
 				pgo.Properties.ShouldProfileModule = true
 				pgo.Properties.PgoInstrLink = pgo.Properties.isInstrumentation()
 				break

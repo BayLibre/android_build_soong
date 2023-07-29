@@ -159,7 +159,7 @@ func PrintResults(branch Branch) {
 			log := devices[device]
 
 			if setting.behavior == DefaultTrue {
-				if log.BuildBroken[n] == nil || *log.BuildBroken[n] == false {
+				if log.BuildBroken[n] == nil || !*log.BuildBroken[n] {
 					if log.HasBroken[n] > 0 {
 						printed = true
 						plural := ""
@@ -175,7 +175,7 @@ func PrintResults(branch Branch) {
 			} else if setting.behavior == DefaultFalse {
 				if log.BuildBroken[n] == nil {
 					// Nothing to be done
-				} else if *log.BuildBroken[n] == false {
+				} else if !*log.BuildBroken[n] {
 					printed = true
 					fmt.Printf("  %s sets %s := false, which is the default and can be removed\n", device, setting.name)
 				} else if log.HasBroken[n] == 0 {
