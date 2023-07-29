@@ -162,7 +162,7 @@ type PrimaryBuilderFactory struct {
 }
 
 func (pb PrimaryBuilderFactory) primaryBuilderInvocation() bootstrap.PrimaryBuilderInvocation {
-	commonArgs := make([]string, 0, 0)
+	commonArgs := make([]string, 0)
 
 	if !pb.config.skipSoongTests {
 		commonArgs = append(commonArgs, "-t")
@@ -581,7 +581,7 @@ func runSoong(ctx Context, config Config) {
 		cmd.RunAndStreamOrFatal()
 	}
 
-	targets := make([]string, 0, 0)
+	targets := make([]string, 0)
 
 	if config.JsonModuleGraph() {
 		targets = append(targets, config.ModuleGraphFile())

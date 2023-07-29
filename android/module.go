@@ -1731,7 +1731,7 @@ func reflectionValue(value reflect.Value) string {
 			return "{}"
 		}
 		length := value.NumField()
-		vals := make([]string, length, length)
+		vals := make([]string, length)
 		for i := 0; i < length; i++ {
 			sTyp := value.Type().Field(i)
 			if proptools.ShouldSkipProperty(sTyp) {
@@ -1750,7 +1750,7 @@ func reflectionValue(value reflect.Value) string {
 
 func sliceReflectionValue(value reflect.Value) []string {
 	length := value.Len()
-	vals := make([]string, length, length)
+	vals := make([]string, length)
 	for i := 0; i < length; i++ {
 		vals[i] = reflectionValue(value.Index(i))
 	}
