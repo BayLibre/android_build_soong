@@ -158,8 +158,6 @@ func TestProjectJsonProcMacroDep(t *testing.T) {
 			if procMacro {
 				t.Fatalf("'librust' is not a proc macro crate, but is marked with is_proc_macro=true")
 			}
-		default:
-			break
 		}
 	}
 

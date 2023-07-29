@@ -97,7 +97,6 @@ func (p *prebuiltEtcXml) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 					"dtd": schema.String(),
 				},
 			})
-			break
 		case ".xsd":
 			ctx.Build(pctx, android.BuildParams{
 				Rule:        xmllintXsd,
@@ -109,7 +108,6 @@ func (p *prebuiltEtcXml) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 					"xsd": schema.String(),
 				},
 			})
-			break
 		default:
 			ctx.PropertyErrorf("schema", "not supported extension: %q", schema.Ext())
 		}
