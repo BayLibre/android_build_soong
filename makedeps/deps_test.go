@@ -17,7 +17,6 @@ package makedeps
 import (
 	"bytes"
 	"io"
-	"io/ioutil"
 	"os"
 	"testing"
 )
@@ -199,7 +198,7 @@ b: e`,
 
 func BenchmarkParsing(b *testing.B) {
 	// Write it out to a file to most closely match ninja's perftest
-	tmpfile, err := ioutil.TempFile("", "depfile")
+	tmpfile, err := os.CreateTemp("", "depfile")
 	if err != nil {
 		b.Fatal("Failed to create temp file:", err)
 	}
@@ -326,7 +325,7 @@ func BenchmarkParsing(b *testing.B) {
 	b.ResetTimer()
 
 	for n := 0; n < b.N; n++ {
-		depfile, err := ioutil.ReadFile(tmpfile.Name())
+		depfile, err := os.ReadFile(tmpfile.Name())
 		if err != nil {
 			b.Fatal("Failed to read dep file:", err)
 		}

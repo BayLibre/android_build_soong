@@ -20,7 +20,6 @@ import (
 	"fmt"
 	"hash/crc32"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 )
@@ -130,7 +129,7 @@ func (zf *ZipArtifactFile) Extract(ctx context.Context, dir string,
 				return
 			}
 		} else if zf.Mode()&os.ModeSymlink != 0 {
-			target, err := ioutil.ReadAll(r)
+			target, err := io.ReadAll(r)
 			if err != nil {
 				d.err = err
 				return

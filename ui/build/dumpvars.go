@@ -17,7 +17,6 @@ package build
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -55,7 +54,7 @@ func DumpMakeVars(ctx Context, config Config, goals, vars []string) (map[string]
 	var ret map[string]string
 	if len(makeVars) > 0 {
 		// It's not safe to use the same TMPDIR as the build, as that can be removed.
-		tmpDir, err := ioutil.TempDir("", "dumpvars")
+		tmpDir, err := os.MkdirTemp("", "dumpvars")
 		if err != nil {
 			return nil, err
 		}

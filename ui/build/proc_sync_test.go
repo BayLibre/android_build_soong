@@ -16,7 +16,7 @@ package build
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -28,7 +28,7 @@ import (
 
 // some util methods and data structures that aren't directly part of a test
 func makeLockDir() (path string, err error) {
-	return ioutil.TempDir("", "soong_lock_test")
+	return os.MkdirTemp("", "soong_lock_test")
 }
 func lockOrFail(t *testing.T) (lock fileLock) {
 	lockDir, err := makeLockDir()
@@ -204,7 +204,7 @@ func getLockAndExit(lockpath string) {
 }
 
 func TestLockFirstTrySucceeds(t *testing.T) {
-	noopLogger := logger.New(ioutil.Discard)
+	noopLogger := logger.New(io.Discard)
 	lock := testLockCountingTo(0)
 	waiter := newCountWaiter(0)
 	err := lockSynchronous(lock, waiter, noopLogger)
@@ -216,7 +216,7 @@ func TestLockFirstTrySucceeds(t *testing.T) {
 	}
 }
 func TestLockThirdTrySucceeds(t *testing.T) {
-	noopLogger := logger.New(ioutil.Discard)
+	noopLogger := logger.New(io.Discard)
 	lock := testLockCountingTo(2)
 	waiter := newCountWaiter(2)
 	err := lockSynchronous(lock, waiter, noopLogger)
@@ -228,7 +228,7 @@ func TestLockThirdTrySucceeds(t *testing.T) {
 	}
 }
 func TestLockTimedOut(t *testing.T) {
-	noopLogger := logger.New(ioutil.Discard)
+	noopLogger := logger.New(io.Discard)
 	lock := testLockCountingTo(3)
 	waiter := newCountWaiter(2)
 	err := lockSynchronous(lock, waiter, noopLogger)

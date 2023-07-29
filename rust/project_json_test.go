@@ -16,8 +16,8 @@ package rust
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"path/filepath"
+	"os"
 	"sort"
 	"strings"
 	"testing"
@@ -36,7 +36,7 @@ func testProjectJson(t *testing.T, bp string) []byte {
 	// The JSON file is generated via WriteFileToOutputDir. Therefore, it
 	// won't appear in the Output of the TestingSingleton. Manually verify
 	// it exists.
-	content, err := ioutil.ReadFile(filepath.Join(result.Config.SoongOutDir(), rustProjectJsonFileName))
+	content, err := os.ReadFile(filepath.Join(result.Config.SoongOutDir(), rustProjectJsonFileName))
 	if err != nil {
 		t.Errorf("rust-project.json has not been generated")
 	}

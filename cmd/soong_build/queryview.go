@@ -17,7 +17,6 @@ package main
 import (
 	"android/soong/starlark_import"
 	"io/fs"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 
@@ -95,7 +94,7 @@ func writeReadOnlyFile(dir string, f bp2build.BazelFile) error {
 	pathToFile := filepath.Join(dir, f.Basename)
 
 	// 0444 is read-only
-	err := ioutil.WriteFile(pathToFile, []byte(f.Contents), 0444)
+	err := os.WriteFile(pathToFile, []byte(f.Contents), 0444)
 
 	return err
 }
@@ -108,7 +107,7 @@ func writeReadWriteFile(dir string, f bp2build.BazelFile) error {
 	pathToFile := filepath.Join(dir, f.Basename)
 
 	// 0644 is read-write
-	err := ioutil.WriteFile(pathToFile, []byte(f.Contents), 0644)
+	err := os.WriteFile(pathToFile, []byte(f.Contents), 0644)
 
 	return err
 }

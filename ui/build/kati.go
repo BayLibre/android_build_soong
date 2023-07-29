@@ -17,7 +17,6 @@ package build
 import (
 	"crypto/md5"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/user"
 	"path/filepath"
@@ -59,7 +58,7 @@ func genKatiSuffix(ctx Context, config Config) {
 		ctx.Verbosef("Kati ninja suffix too long: %q", katiSuffix)
 		ctx.Verbosef("Replacing with: %q", shortSuffix)
 
-		if err := ioutil.WriteFile(strings.TrimSuffix(config.KatiBuildNinjaFile(), "ninja")+"suf", []byte(katiSuffix), 0777); err != nil {
+		if err := os.WriteFile(strings.TrimSuffix(config.KatiBuildNinjaFile(), "ninja")+"suf", []byte(katiSuffix), 0777); err != nil {
 			ctx.Println("Error writing suffix file:", err)
 		}
 	} else {
@@ -70,13 +69,13 @@ func genKatiSuffix(ctx Context, config Config) {
 func writeValueIfChanged(ctx Context, config Config, dir string, filename string, value string) {
 	filePath := filepath.Join(dir, filename)
 	previousValue := ""
-	rawPreviousValue, err := ioutil.ReadFile(filePath)
+	rawPreviousValue, err := os.ReadFile(filePath)
 	if err == nil {
 		previousValue = string(rawPreviousValue)
 	}
 
 	if previousValue != value {
-		if err = ioutil.WriteFile(filePath, []byte(value), 0666); err != nil {
+		if err = os.WriteFile(filePath, []byte(value), 0666); err != nil {
 			ctx.Fatalf("Failed to write: %v", err)
 		}
 	}
@@ -291,7 +290,7 @@ func cleanCopyHeaders(ctx Context, config Config) {
 
 	// Read and parse the list of copied headers from a file in the product
 	// output directory.
-	data, err := ioutil.ReadFile(filepath.Join(config.ProductOut(), ".copied_headers_list"))
+	data, err := os.ReadFile(filepath.Join(config.ProductOut(), ".copied_headers_list"))
 	if err != nil {
 		if os.IsNotExist(err) {
 			return

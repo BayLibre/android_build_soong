@@ -20,7 +20,6 @@ import (
 	"fmt"
 	"hash/crc32"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -192,7 +191,7 @@ func (oz *OutputZip) addManifest(manifestPath string) error {
 			return err
 		}
 	}
-	contents, err := ioutil.ReadFile(manifestPath)
+	contents, err := os.ReadFile(manifestPath)
 	if err == nil {
 		fh, buf, err := jar.ManifestFileContents(contents)
 		if err == nil {
@@ -204,7 +203,7 @@ func (oz *OutputZip) addManifest(manifestPath string) error {
 
 // Adds an entry with given name and contents read from given file
 func (oz *OutputZip) addZipEntryFromFile(name string, path string) error {
-	buf, err := ioutil.ReadFile(path)
+	buf, err := os.ReadFile(path)
 	if err == nil {
 		fh := &zip.FileHeader{
 			Name:               name,

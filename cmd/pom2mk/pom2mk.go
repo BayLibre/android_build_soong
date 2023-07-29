@@ -20,7 +20,6 @@ import (
 	"encoding/xml"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -268,7 +267,7 @@ include $(BUILD_STATIC_JAVA_LIBRARY)
 `))
 
 func parse(filename string) (*Pom, error) {
-	data, err := ioutil.ReadFile(filename)
+	data, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
@@ -294,7 +293,7 @@ func parse(filename string) (*Pom, error) {
 }
 
 func rerunForRegen(filename string) error {
-	buf, err := ioutil.ReadFile(filename)
+	buf, err := os.ReadFile(filename)
 	if err != nil {
 		return err
 	}
@@ -342,7 +341,7 @@ func rerunForRegen(filename string) error {
 		return err
 	}
 
-	return ioutil.WriteFile(filename, output, 0666)
+	return os.WriteFile(filename, output, 0666)
 }
 
 func main() {

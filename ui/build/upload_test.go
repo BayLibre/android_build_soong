@@ -16,7 +16,6 @@ package build
 
 import (
 	"errors"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -75,7 +74,7 @@ func TestPruneMetricsFiles(t *testing.T) {
 	}
 
 	for _, f := range files {
-		if err := ioutil.WriteFile(f, []byte{}, 0777); err != nil {
+		if err := os.WriteFile(f, []byte{}, 0777); err != nil {
 			t.Fatalf("got %v, expecting nil error on writing file %q", err, f)
 		}
 	}
@@ -122,7 +121,7 @@ func TestUploadMetrics(t *testing.T) {
 				t.Fatalf("got unexpected error: %v", err)
 			})
 
-			outDir, err := ioutil.TempDir("", "")
+			outDir, err := os.MkdirTemp("", "")
 			if err != nil {
 				t.Fatalf("failed to create out directory: %v", outDir)
 			}
@@ -149,7 +148,7 @@ func TestUploadMetrics(t *testing.T) {
 				for _, f := range tt.files {
 					filename := filepath.Join(outDir, f)
 					metricsFiles = append(metricsFiles, filename)
-					if err := ioutil.WriteFile(filename, []byte("test file"), 0644); err != nil {
+					if err := os.WriteFile(filename, []byte("test file"), 0644); err != nil {
 						t.Fatalf("failed to create a fake metrics file %q for uploading: %v", filename, err)
 					}
 				}
@@ -197,7 +196,7 @@ func TestUploadMetricsErrors(t *testing.T) {
 				}
 			})
 
-			outDir, err := ioutil.TempDir("", "")
+			outDir, err := os.MkdirTemp("", "")
 			if err != nil {
 				t.Fatalf("failed to create out directory: %v", outDir)
 			}
@@ -210,7 +209,7 @@ func TestUploadMetricsErrors(t *testing.T) {
 			defer func() { tmpDir = orgTmpDir }()
 
 			metricsFile := filepath.Join(outDir, "metrics_file_1")
-			if err := ioutil.WriteFile(metricsFile, []byte("test file"), 0644); err != nil {
+			if err := os.WriteFile(metricsFile, []byte("test file"), 0644); err != nil {
 				t.Fatalf("failed to create a fake metrics file %q for uploading: %v", metricsFile, err)
 			}
 

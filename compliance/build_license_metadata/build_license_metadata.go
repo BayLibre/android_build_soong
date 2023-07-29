@@ -17,7 +17,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -186,7 +185,7 @@ func writeMetadata(file string, metadata *license_metadata_proto.LicenseMetadata
 	}
 
 	if file != "" {
-		err = ioutil.WriteFile(file, buf, 0666)
+		err = os.WriteFile(file, buf, 0666)
 		if err != nil {
 			return fmt.Errorf("error writing textproto %q: %w", file, err)
 		}

@@ -23,7 +23,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -61,7 +60,7 @@ func openAndProcess(filename string, out io.Writer, fixRequest bpfix.FixRequest)
 // If in == nil, the source is the contents of the file with the given filename.
 func processFile(filename string, in io.Reader, out io.Writer, fixRequest bpfix.FixRequest) error {
 	// load the input file
-	src, err := ioutil.ReadAll(in)
+	src, err := io.ReadAll(in)
 	if err != nil {
 		return err
 	}
@@ -92,7 +91,7 @@ func processFile(filename string, in io.Reader, out io.Writer, fixRequest bpfix.
 			fmt.Fprintln(out, filename)
 		}
 		if *write {
-			err = ioutil.WriteFile(filename, res, 0644)
+			err = os.WriteFile(filename, res, 0644)
 			if err != nil {
 				return err
 			}
@@ -161,14 +160,14 @@ func Run() {
 }
 
 func diff(b1, b2 []byte) (data []byte, err error) {
-	f1, err := ioutil.TempFile("", "bpfix")
+	f1, err := os.CreateTemp("", "bpfix")
 	if err != nil {
 		return
 	}
 	defer os.Remove(f1.Name())
 	defer f1.Close()
 
-	f2, err := ioutil.TempFile("", "bpfix")
+	f2, err := os.CreateTemp("", "bpfix")
 	if err != nil {
 		return
 	}

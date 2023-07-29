@@ -15,7 +15,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -198,7 +197,7 @@ func Test_mergeProtos(t *testing.T) {
 			} else if tt.error != "" {
 				t.Fatalf("missing error %q", tt.error)
 			} else {
-				data, err := ioutil.ReadFile(output)
+				data, err := os.ReadFile(output)
 				if err != nil {
 					t.Fatalf("failed to read output file %s: %s", output, err)
 				}

@@ -15,7 +15,6 @@
 package shared
 
 import (
-	"io/ioutil"
 	"os"
 
 	"google.golang.org/protobuf/proto"
@@ -29,7 +28,7 @@ func Save(pb proto.Message, filepath string) (err error) {
 		return err
 	}
 	tempFilepath := filepath + ".tmp"
-	if err := ioutil.WriteFile(tempFilepath, []byte(data), 0644 /* rw-r--r-- */); err != nil {
+	if err := os.WriteFile(tempFilepath, []byte(data), 0644 /* rw-r--r-- */); err != nil {
 		return err
 	}
 

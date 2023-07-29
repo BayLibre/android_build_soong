@@ -16,7 +16,6 @@ package build
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -49,7 +48,7 @@ func TestDumpRBEMetrics(t *testing.T) {
 			tmpDir := t.TempDir()
 
 			rbeBootstrapCmd := filepath.Join(tmpDir, bootstrapCmd)
-			if err := ioutil.WriteFile(rbeBootstrapCmd, []byte(rbeBootstrapProgram), 0755); err != nil {
+			if err := os.WriteFile(rbeBootstrapCmd, []byte(rbeBootstrapProgram), 0755); err != nil {
 				t.Fatalf("failed to create a fake bootstrap command file %s: %v", rbeBootstrapCmd, err)
 			}
 
@@ -105,7 +104,7 @@ func TestDumpRBEMetricsErrors(t *testing.T) {
 			tmpDir := t.TempDir()
 
 			rbeBootstrapCmd := filepath.Join(tmpDir, bootstrapCmd)
-			if err := ioutil.WriteFile(rbeBootstrapCmd, []byte(tt.bootstrapProgram), 0755); err != nil {
+			if err := os.WriteFile(rbeBootstrapCmd, []byte(tt.bootstrapProgram), 0755); err != nil {
 				t.Fatalf("failed to create a fake bootstrap command file %s: %v", rbeBootstrapCmd, err)
 			}
 

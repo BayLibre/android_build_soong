@@ -17,7 +17,6 @@ package android
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -85,7 +84,7 @@ func maybeAddInternalPluginsToAllowlist(ctx SingletonContext) {
 		ctx.AddNinjaFileDeps(path.String())
 		absPath := absolutePath(path.String())
 		var moreAllowed map[string]bool
-		data, err := ioutil.ReadFile(absPath)
+		data, err := os.ReadFile(absPath)
 		if err != nil {
 			ctx.Errorf("Failed to open internal plugins path %q %q", internalPluginsPath, err)
 		}

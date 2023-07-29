@@ -16,7 +16,7 @@ package finder
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"os"
 	"path/filepath"
@@ -52,7 +52,7 @@ func newFinderAndErr(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParam
 		cacheParams.WorkingDirectory = "/cwd"
 	}
 
-	logger := log.New(ioutil.Discard, "", 0)
+	logger := log.New(io.Discard, "", 0)
 	f, err := newImpl(cacheParams, filesystem, logger, cachePath, numThreads)
 	return f, err
 }
@@ -738,7 +738,7 @@ func TestCorruptedCacheBody(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	cacheData, err := ioutil.ReadAll(cacheReader)
+	cacheData, err := io.ReadAll(cacheReader)
 	if err != nil {
 		t.Fatal(err)
 	}

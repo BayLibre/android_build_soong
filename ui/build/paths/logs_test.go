@@ -16,7 +16,6 @@ package paths
 
 import (
 	"context"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -30,7 +29,7 @@ func TestSendLog(t *testing.T) {
 		t.Skip("skipping in short mode, sometimes hangs")
 	}
 	t.Run("Short name", func(t *testing.T) {
-		d, err := ioutil.TempDir("", "s")
+		d, err := os.MkdirTemp("", "s")
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -41,7 +40,7 @@ func TestSendLog(t *testing.T) {
 	})
 
 	testLongName := func(t *testing.T, lookup socketAddrFunc) {
-		d, err := ioutil.TempDir("", strings.Repeat("s", 150))
+		d, err := os.MkdirTemp("", strings.Repeat("s", 150))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -108,7 +107,7 @@ func testSendLog(t *testing.T, socket string, lookup socketAddrFunc) {
 }
 
 func TestSendLogError(t *testing.T) {
-	d, err := ioutil.TempDir("", "log_socket")
+	d, err := os.MkdirTemp("", "log_socket")
 	if err != nil {
 		t.Fatal(err)
 	}

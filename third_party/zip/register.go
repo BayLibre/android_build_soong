@@ -8,7 +8,6 @@ import (
 	"compress/flate"
 	"errors"
 	"io"
-	"io/ioutil"
 	"sync"
 )
 
@@ -111,7 +110,7 @@ var (
 	}
 
 	decompressors = map[uint16]Decompressor{
-		Store:   ioutil.NopCloser,
+		Store:   io.NopCloser,
 		Deflate: newFlateReader,
 	}
 )

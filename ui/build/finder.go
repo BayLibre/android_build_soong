@@ -16,7 +16,7 @@ package build
 
 import (
 	"bytes"
-	"io/ioutil"
+	"io"
 	"os"
 	"path/filepath"
 	"strings"
@@ -94,7 +94,7 @@ func NewSourceFinder(ctx Context, config Config) (f *finder.Finder) {
 		IncludeSuffixes: []string{".bzl", ".mk"},
 	}
 	dumpDir := config.FileListDir()
-	f, err = finder.New(cacheParams, filesystem, logger.New(ioutil.Discard),
+	f, err = finder.New(cacheParams, filesystem, logger.New(io.Discard),
 		filepath.Join(dumpDir, "files.db"))
 	if err != nil {
 		ctx.Fatalf("Could not create module-finder: %v", err)
@@ -233,9 +233,9 @@ func FindSources(ctx Context, config Config, f *finder.Finder) {
 func dumpListToFile(ctx Context, config Config, list []string, filePath string) (err error) {
 	desiredText := strings.Join(list, "\n")
 	desiredBytes := []byte(desiredText)
-	actualBytes, readErr := ioutil.ReadFile(filePath)
+	actualBytes, readErr := os.ReadFile(filePath)
 	if readErr != nil || !bytes.Equal(desiredBytes, actualBytes) {
-		err = ioutil.WriteFile(filePath, desiredBytes, 0777)
+		err = os.WriteFile(filePath, desiredBytes, 0777)
 		if err != nil {
 			return err
 		}

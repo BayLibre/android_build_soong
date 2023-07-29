@@ -24,7 +24,6 @@ import (
 	"hash"
 	"hash/crc32"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"sort"
@@ -156,7 +155,7 @@ func (b *FileArgsBuilder) List(name string) *FileArgsBuilder {
 	}
 	defer f.Close()
 
-	list, err := ioutil.ReadAll(f)
+	list, err := io.ReadAll(f)
 	if err != nil {
 		b.err = err
 		return b
@@ -767,7 +766,7 @@ func (z *ZipWriter) addManifest(dest string, src string, _ uint16) error {
 			return err
 		}
 
-		contents, err = ioutil.ReadAll(f)
+		contents, err = io.ReadAll(f)
 		f.Close()
 		if err != nil {
 			return err
@@ -779,7 +778,7 @@ func (z *ZipWriter) addManifest(dest string, src string, _ uint16) error {
 		return err
 	}
 
-	reader := &byteReaderCloser{bytes.NewReader(buf), ioutil.NopCloser(nil)}
+	reader := &byteReaderCloser{bytes.NewReader(buf), io.NopCloser(nil)}
 
 	return z.writeFileContents(fh, reader)
 }
@@ -835,7 +834,7 @@ func (z *ZipWriter) writeFileContents(header *zip.FileHeader, r pathtools.Reader
 			last := !(start+parallelBlockSize < fileSize)
 			var dict []byte
 			if start >= windowSize {
-				dict, err = ioutil.ReadAll(io.NewSectionReader(r, start-windowSize, windowSize))
+				dict, err = io.ReadAll(io.NewSectionReader(r, start-windowSize, windowSize))
 				if err != nil {
 					return err
 				}
@@ -974,7 +973,7 @@ func (z *ZipWriter) compressWholeFile(ze *zipEntry, r io.ReadSeeker, compressCha
 			return nil, err
 		}
 
-		buf, err := ioutil.ReadAll(reader)
+		buf, err := io.ReadAll(reader)
 		if err != nil {
 			return nil, err
 		}

@@ -19,7 +19,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"runtime/pprof"
@@ -97,7 +96,7 @@ func run() error {
 	if verbose {
 		writer = os.Stderr
 	} else {
-		writer = ioutil.Discard
+		writer = io.Discard
 	}
 
 	// TODO: replace Lshortfile with Llongfile when bug 63821638 is done

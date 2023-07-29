@@ -177,13 +177,13 @@ func installCleanIfNecessary(ctx Context, config Config) {
 	ensureDirectoriesExist(ctx, filepath.Dir(configFile))
 
 	writeConfig := func() {
-		err := ioutil.WriteFile(configFile, []byte(currentConfig), 0666) // a+rw
+		err := os.WriteFile(configFile, []byte(currentConfig), 0666) // a+rw
 		if err != nil {
 			ctx.Fatalln("Failed to write product config:", err)
 		}
 	}
 
-	previousConfigBytes, err := ioutil.ReadFile(configFile)
+	previousConfigBytes, err := os.ReadFile(configFile)
 	if err != nil {
 		if os.IsNotExist(err) {
 			// Just write the new config file, no old config file to worry about.
@@ -239,12 +239,12 @@ func cleanOldFiles(ctx Context, basePath, newFile string) {
 	}
 
 	var newData, oldData []byte
-	if data, err := ioutil.ReadFile(newFile); err == nil {
+	if data, err := os.ReadFile(newFile); err == nil {
 		newData = data
 	} else {
 		ctx.Fatalf("Failed to read list of installable files (%q): %v", newFile, err)
 	}
-	if data, err := ioutil.ReadFile(oldFile); err == nil {
+	if data, err := os.ReadFile(oldFile); err == nil {
 		oldData = data
 	} else {
 		ctx.Fatalf("Failed to read list of installable files (%q): %v", oldFile, err)

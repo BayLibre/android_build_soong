@@ -15,9 +15,9 @@
 package android
 
 import (
-	"io/ioutil"
 	"runtime"
 	"sort"
+	"os"
 
 	"github.com/google/blueprint/metrics"
 	"google.golang.org/protobuf/proto"
@@ -114,7 +114,7 @@ func WriteMetrics(config Config, eventHandler *metrics.EventHandler, metricsFile
 	if err != nil {
 		return err
 	}
-	err = ioutil.WriteFile(absolutePath(metricsFile), buf, 0666)
+	err = os.WriteFile(absolutePath(metricsFile), buf, 0666)
 	if err != nil {
 		return err
 	}

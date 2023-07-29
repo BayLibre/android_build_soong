@@ -15,7 +15,6 @@
 package android
 
 import (
-	"io/ioutil"
 	"os"
 	"testing"
 )
@@ -24,7 +23,7 @@ var buildDir string
 
 func setUp() {
 	var err error
-	buildDir, err = ioutil.TempDir("", "android_test")
+	buildDir, err = os.MkdirTemp("", "android_test")
 	if err != nil {
 		panic(err)
 	}

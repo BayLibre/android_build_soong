@@ -18,7 +18,6 @@ import (
 	"archive/zip"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -84,5 +83,5 @@ func main() {
 		data = append(data, "\n"...)
 	}
 
-	must(ioutil.WriteFile(*outputFile, data, 0666))
+	must(os.WriteFile(*outputFile, data, 0666))
 }

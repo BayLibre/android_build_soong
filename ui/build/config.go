@@ -19,7 +19,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"math/rand"
 	"os"
 	"os/exec"
@@ -267,7 +266,7 @@ func loadEnvConfig(ctx Context, config *configImpl, bc string) error {
 	}
 	for _, dir := range configDirs {
 		cfgFile := filepath.Join(os.Getenv("TOP"), dir, fmt.Sprintf("%s.%s", bc, jsonSuffix))
-		envVarsJSON, err := ioutil.ReadFile(cfgFile)
+		envVarsJSON, err := os.ReadFile(cfgFile)
 		if err != nil {
 			continue
 		}

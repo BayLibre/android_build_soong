@@ -15,7 +15,6 @@
 package cc
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"testing"
@@ -109,7 +108,7 @@ var testDataTests = []struct {
 }
 
 func TestDataTests(t *testing.T) {
-	buildDir, err := ioutil.TempDir("", "soong_test_test")
+	buildDir, err := os.MkdirTemp("", "soong_test_test")
 	if err != nil {
 		t.Fatal(err)
 	}

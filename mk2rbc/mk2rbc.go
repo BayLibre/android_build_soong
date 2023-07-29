@@ -28,7 +28,6 @@ import (
 	"fmt"
 	"io"
 	"io/fs"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -2186,7 +2185,7 @@ func (ss *StarlarkScript) HasErrors() bool {
 func Convert(req Request) (*StarlarkScript, error) {
 	reader := req.Reader
 	if reader == nil {
-		mkContents, err := ioutil.ReadFile(req.MkFile)
+		mkContents, err := os.ReadFile(req.MkFile)
 		if err != nil {
 			return nil, err
 		}

@@ -19,7 +19,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -58,7 +57,7 @@ func writeFile(filename string, in io.Reader, perm os.FileMode) error {
 }
 
 func writeSymlink(filename string, in io.Reader) error {
-	b, err := ioutil.ReadAll(in)
+	b, err := io.ReadAll(in)
 	if err != nil {
 		return err
 	}
@@ -154,7 +153,7 @@ func main() {
 		if len(files) > 0 {
 			data += "\n"
 		}
-		must(ioutil.WriteFile(*outputFile, []byte(data), 0666))
+		must(os.WriteFile(*outputFile, []byte(data), 0666))
 	}
 }
 
