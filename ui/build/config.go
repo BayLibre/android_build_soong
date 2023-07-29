@@ -50,8 +50,8 @@ var (
 )
 
 func init() {
-	rand.Seed(time.Now().UnixNano())
-	rbeRandPrefix = rand.Intn(1000)
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	rbeRandPrefix = r.Intn(1000)
 }
 
 type Config struct{ *configImpl }
