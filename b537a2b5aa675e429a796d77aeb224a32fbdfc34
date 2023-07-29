@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51cb41a_3b86f3e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975910
+      },
+      "writtenOn": "2023-07-29T10:46:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c4bec373_53ce835f",
+      "revId": "b537a2b5aa675e429a796d77aeb224a32fbdfc34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3595accc_4d4034ac",
@@ -84,6 +102,30 @@
       "writtenOn": "2023-07-28T23:21:30Z",
       "side": 1,
       "message": "This likely needs to be redone with something like a path builder?",
+      "range": {
+        "startLine": 246,
+        "startChar": 35,
+        "endLine": 246,
+        "endChar": 77
+      },
+      "revId": "b537a2b5aa675e429a796d77aeb224a32fbdfc34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de3c14a7_c5af9d9c",
+        "filename": "java/app_builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1975910
+      },
+      "writtenOn": "2023-07-29T10:46:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3595accc_4d4034ac",
       "range": {
         "startLine": 246,
         "startChar": 35,

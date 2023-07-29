@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4676f5_9bd0ddac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975910
+      },
+      "writtenOn": "2023-07-29T10:46:09Z",
+      "side": 1,
+      "message": "What kind of tests would I add to verify this doesn\u0027t get broken in the future?\n\nSorry for the spam, but I didn\u0027t notice the rule got moved outside of app_import, now it\u0027s re-using existing code",
+      "revId": "111674f5ae3782e7ff83e4c9e3ad6bf23deae167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
