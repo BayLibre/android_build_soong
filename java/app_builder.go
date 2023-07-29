@@ -225,6 +225,13 @@ func BuildBundleModule(ctx android.ModuleContext, outputFile android.WritablePat
 	})
 }
 
+var deflateJnisRule = pctx.AndroidStaticRule("deflateJnis",
+	blueprint.RuleParams{
+		Command: `if (zipinfo -i {in} 'lib/*.so' 2>/dev/null | grep -v ' stor ' >/dev/null) ; then
+					${config.Zip2ZipCmd} -0 'lib/**/*.so' -i ${in} -o ${out}
+				  ; else cp -f %s %s; fi`,
+	})
+
 func TransformJniLibsToJar(
 	ctx android.ModuleContext,
 	outputFile android.WritablePath,
@@ -257,8 +264,11 @@ func TransformJniLibsToJar(
 		args["implicits"] = strings.Join(deps.Strings(), ",")
 	}
 	var jniJarPath android.WritablePath = android.PathForModuleOut(ctx, "jniJarOutput.zip")
+	var mergeJniJarPath android.WritablePath = android.PathForModuleOut(ctx, "mergeJniJarOutput.zip")
 	if len(prebuiltJniPackages) == 0 {
 		jniJarPath = outputFile
+	} else if !uncompressJNI {
+		mergeJniJarPath = outputFile
 	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        rule,
@@ -272,8 +282,17 @@ func TransformJniLibsToJar(
 			Rule:        mergeAssetsRule,
 			Description: "merge prebuilt JNI packages",
 			Inputs:      append(prebuiltJniPackages, jniJarPath),
-			Output:      outputFile,
+			Output:      mergeJniJarPath,
 		})
+
+		if uncompressJNI {
+			ctx.Build(pctx, android.BuildParams{
+				Rule:        deflateJnisRule,
+				Description: "deflate prebuilt JNI packages libraries",
+				Input:       mergeJniJarPath,
+				Output:      outputFile,
+			})
+		}
 	}
 }
 
