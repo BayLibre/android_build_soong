@@ -131,7 +131,7 @@ func stopRBE(ctx Context, config Config) {
 
 	if !config.Environment().IsEnvTrue("ANDROID_QUIET_BUILD") && len(output) > 0 {
 		fmt.Fprintln(ctx.Writer, "")
-		fmt.Fprintln(ctx.Writer, fmt.Sprintf("%s", output))
+		fmt.Fprintln(ctx.Writer, string(output))
 	}
 }
 

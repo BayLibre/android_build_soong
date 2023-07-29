@@ -1725,7 +1725,7 @@ func reflectionValue(value reflect.Value) string {
 	case reflect.Int64:
 		return fmt.Sprintf("%d", value.Int())
 	case reflect.String:
-		return fmt.Sprintf("%s", value.String())
+		return value.String()
 	case reflect.Struct:
 		if value.IsZero() {
 			return "{}"

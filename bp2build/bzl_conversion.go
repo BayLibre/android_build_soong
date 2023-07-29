@@ -178,7 +178,7 @@ func extractPropertyDescriptions(name string, t reflect.Type) []property {
 
 	// TODO: handle android:paths tags, they should be changed to label types
 
-	starlarkAttrType := fmt.Sprintf("%s", t.Name())
+	starlarkAttrType := t.Name()
 	props := make([]property, 0)
 
 	switch t.Kind() {
