@@ -16,7 +16,6 @@ package bp2build
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -167,7 +166,7 @@ func mergeBuildFiles(output string, srcBuildFile string, generatedBuildFile stri
 // Calls readdir() and returns it as a map from the basename of the files in dir
 // to os.FileInfo.
 func readdirToMap(dir string) map[string]os.FileInfo {
-	entryList, err := ioutil.ReadDir(dir)
+	entryList, err := os.ReadDir(dir)
 	result := make(map[string]os.FileInfo)
 
 	if err != nil {
@@ -182,7 +181,11 @@ func readdirToMap(dir string) map[string]os.FileInfo {
 	}
 
 	for _, fi := range entryList {
-		result[fi.Name()] = fi
+		result[fi.Name()], err = fi.Info()
+		if err != nil {
+			fmt.Errorf("Directory entry %q changed during processing of the directory: %q", fi.Name(), err)
+			os.Exit(1)
+		}
 	}
 
 	return result

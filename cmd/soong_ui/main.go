@@ -18,7 +18,6 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -632,7 +631,7 @@ func populateExternalDistDir(ctx build.Context, config build.Config) {
 }
 
 func populateExternalDistDirHelper(ctx build.Context, config build.Config, internalDistDirPath string, externalDistDirPath string) {
-	files, err := ioutil.ReadDir(internalDistDirPath)
+	files, err := os.ReadDir(internalDistDirPath)
 	if err != nil {
 		ctx.Fatalf("Can't read internal distdir %s: %s", internalDistDirPath, err)
 	}
