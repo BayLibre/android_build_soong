@@ -151,7 +151,7 @@ func CheckProdCreds(ctx Context, config Config) {
 	}
 	if !config.StubbyExists() && prodCredsAuthType(config) {
 		fmt.Fprintln(ctx.Writer, "")
-		fmt.Fprintln(ctx.Writer, fmt.Sprintf("\033[33mWARNING: %q binary not found in $PATH, follow go/build-fast-without-stubby instead for authenticating with RBE.\033[0m", "stubby"))
+		fmt.Fprintf(ctx.Writer, "\033[33mWARNING: %q binary not found in $PATH, follow go/build-fast-without-stubby instead for authenticating with RBE.\033[0m\n", "stubby")
 		fmt.Fprintln(ctx.Writer, "")
 		return
 	}
@@ -207,7 +207,7 @@ func PrintOutDirWarning(ctx Context, config Config) {
 	if config.UseRBE() && config.OutDir() != defaultOutDir {
 		fmt.Fprintln(ctx.Writer, "")
 		fmt.Fprintln(ctx.Writer, "\033[33mWARNING:\033[0m")
-		fmt.Fprintln(ctx.Writer, fmt.Sprintf("Setting OUT_DIR to a path other than %v may result in slow RBE builds.", defaultOutDir))
+		fmt.Fprintf(ctx.Writer, "Setting OUT_DIR to a path other than %v may result in slow RBE builds.\n", defaultOutDir)
 		fmt.Fprintln(ctx.Writer, "See http://go/android_rbe_out_dir for a workaround.")
 		fmt.Fprintln(ctx.Writer, "")
 	}

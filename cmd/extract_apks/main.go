@@ -333,7 +333,7 @@ func (m sdkVersionTargetingMatcher) matches(config TargetConfig) bool {
 		return true
 	}
 	if len(m.Value) > 1 {
-		log.Fatal(fmt.Sprintf("sdk_version_targeting should not have multiple values:%#v", m.Value))
+		log.Fatalf("sdk_version_targeting should not have multiple values:%#v", m.Value)
 	}
 	// Inspect only sdkVersionTargeting.Value.
 	// Even though one of the SdkVersionTargeting.Alternatives values may be

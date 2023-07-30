@@ -456,14 +456,14 @@ func TestUpdatableApps_JniLibShouldBeBuiltAgainstMinSdkVersion(t *testing.T) {
 		}
 	}
 	if !crtbeginFound {
-		t.Error(fmt.Sprintf(
+		t.Errorf(
 			"expected implicit with suffix %q, have the following implicits:\n%s",
-			expectedCrtBegin, strings.Join(implicits, "\n")))
+			expectedCrtBegin, strings.Join(implicits, "\n"))
 	}
 	if !crtendFound {
-		t.Error(fmt.Sprintf(
+		t.Errorf(
 			"expected implicit with suffix %q, have the following implicits:\n%s",
-			expectedCrtEnd, strings.Join(implicits, "\n")))
+			expectedCrtEnd, strings.Join(implicits, "\n"))
 	}
 }
 
