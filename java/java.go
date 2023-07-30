@@ -1820,8 +1820,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		android.PathForModuleOut(ctx, "metalava.sbox.textproto")).
 		SandboxInputs()
 
-	var stubsDir android.OptionalPath
-	stubsDir = android.OptionalPathForPath(android.PathForModuleOut(ctx, "metalava", "stubsDir"))
+	stubsDir := android.OptionalPathForPath(android.PathForModuleOut(ctx, "metalava", "stubsDir"))
 	rule.Command().Text("rm -rf").Text(stubsDir.String())
 	rule.Command().Text("mkdir -p").Text(stubsDir.String())
 

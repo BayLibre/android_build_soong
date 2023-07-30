@@ -1064,9 +1064,7 @@ func (f *Finder) wasModified() bool {
 }
 
 func (f *Finder) setModified() {
-	var newVal int32
-	newVal = 1
-	atomic.StoreInt32(&f.modifiedFlag, newVal)
+	atomic.StoreInt32(&f.modifiedFlag, 1)
 }
 
 // sortedDirEntries exports directory entries to facilitate dumping them to the external cache
