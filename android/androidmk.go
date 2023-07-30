@@ -680,7 +680,7 @@ func (a *AndroidMkEntries) write(w io.Writer) {
 }
 
 func (a *AndroidMkEntries) FooterLinesForTests() []string {
-	return strings.Split(string(a.footer.Bytes()), "\n")
+	return strings.Split(a.footer.String(), "\n")
 }
 
 // AndroidMkSingleton is a singleton to collect Android.mk data from all modules and dump them into

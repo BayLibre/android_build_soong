@@ -101,7 +101,7 @@ func TestJavacColorize(t *testing.T) {
 			if err != nil {
 				t.Errorf("error: %q", err)
 			}
-			got := string(buf.Bytes())
+			got := buf.String()
 			if got != test.out {
 				t.Errorf("expected %q got %q", test.out, got)
 			}
