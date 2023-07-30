@@ -106,6 +106,24 @@
       "parentUuid": "b1c799b2_4415b5be",
       "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a7abcb1_ad26e7ca",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1279898
+      },
+      "writtenOn": "2023-07-30T05:12:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "121a53e3_4f5687f8",
+      "revId": "7e8dd804ba562385463e90e5c998beaf2f8c29d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
