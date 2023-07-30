@@ -313,12 +313,10 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 	}
 
 	var archs []android.ArchType
-	var images android.Paths
 	var imagesDeps []android.OutputPaths
 	for _, target := range targets {
 		archs = append(archs, target.Arch.ArchType)
 		variant := bootImage.getVariant(target)
-		images = append(images, variant.imagePathOnHost)
 		imagesDeps = append(imagesDeps, variant.imagesDeps)
 	}
 	// The image locations for all Android variants are identical.

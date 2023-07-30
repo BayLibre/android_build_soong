@@ -144,11 +144,9 @@ func (stub *stubDecorator) implementationModuleName(name string) string {
 }
 
 func ndkLibraryVersions(ctx android.BaseMutatorContext, from android.ApiLevel) []string {
-	var versions []android.ApiLevel
 	versionStrs := []string{}
 	for _, version := range ctx.Config().AllSupportedApiLevels() {
 		if version.GreaterThanOrEqualTo(from) {
-			versions = append(versions, version)
 			versionStrs = append(versionStrs, version.String())
 		}
 	}
