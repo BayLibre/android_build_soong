@@ -311,10 +311,7 @@ func (e *embeddableInModuleAndImport) initModuleAndImport(module android.Module)
 // the one provided by ApexModuleBase.
 func (e *embeddableInModuleAndImport) depIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
 	// dependencies other than the static linkage are all considered crossing APEX boundary
-	if staticLibTag == ctx.OtherModuleDependencyTag(dep) {
-		return true
-	}
-	return false
+	return staticLibTag == ctx.OtherModuleDependencyTag(dep)
 }
 
 // OptionalDexJarPath can be either unset, hold a valid path to a dex jar file,

@@ -395,10 +395,7 @@ func parseRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 
 func isAllowedFromOutsideVendor(pkg string, name string) bool {
 	if pkg == "vendor" {
-		if name == "__subpackages__" {
-			return true
-		}
-		return false
+		return name == "__subpackages__"
 	}
 
 	return !isAncestor("vendor", pkg)

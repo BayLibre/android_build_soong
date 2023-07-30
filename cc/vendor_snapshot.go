@@ -26,29 +26,17 @@ import (
 
 // Checks if the target image would contain VNDK
 func includeVndk(image snapshot.SnapshotImage) bool {
-	if image.ImageName() == snapshot.VendorSnapshotImageName {
-		return true
-	}
-
-	return false
+	return image.ImageName() == snapshot.VendorSnapshotImageName
 }
 
 // Check if the module is VNDK private
 func isPrivate(image snapshot.SnapshotImage, m LinkableInterface) bool {
-	if image.ImageName() == snapshot.VendorSnapshotImageName && m.IsVndkPrivate() {
-		return true
-	}
-
-	return false
+	return image.ImageName() == snapshot.VendorSnapshotImageName && m.IsVndkPrivate()
 }
 
 // Checks if target image supports VNDK Ext
 func supportsVndkExt(image snapshot.SnapshotImage) bool {
-	if image.ImageName() == snapshot.VendorSnapshotImageName {
-		return true
-	}
-
-	return false
+	return image.ImageName() == snapshot.VendorSnapshotImageName
 }
 
 // Determines if the module is a candidate for snapshot.

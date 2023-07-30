@@ -2527,13 +2527,9 @@ var _ android.ApexModule = (*SdkLibraryImport)(nil)
 // Implements android.ApexModule
 func (module *SdkLibraryImport) DepIsInSameApex(mctx android.BaseModuleContext, dep android.Module) bool {
 	depTag := mctx.OtherModuleDependencyTag(dep)
-	if depTag == xmlPermissionsFileTag {
-		return true
-	}
-
 	// None of the other dependencies of the java_sdk_library_import are in the same apex
 	// as the one that references this module.
-	return false
+	return depTag == xmlPermissionsFileTag
 }
 
 // Implements android.ApexModule
