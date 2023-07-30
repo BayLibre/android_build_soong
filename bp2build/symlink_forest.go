@@ -183,7 +183,7 @@ func readdirToMap(dir string) map[string]os.FileInfo {
 	for _, fi := range entryList {
 		result[fi.Name()], err = fi.Info()
 		if err != nil {
-			fmt.Errorf("Directory entry %q changed during processing of the directory: %q", fi.Name(), err)
+			fmt.Fprintf(os.Stderr, "Directory entry %q changed during processing of the directory: %q\n", fi.Name(), err)
 			os.Exit(1)
 		}
 	}

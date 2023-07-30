@@ -230,7 +230,7 @@ func getBazelArg() string {
 
 	if count > 1 {
 		// Can't set more than one
-		fmt.Errorf("Only one bazel mode is permitted to be set.")
+		fmt.Fprintf(os.Stderr, "Only one bazel mode is permitted to be set.\n")
 		os.Exit(1)
 	}
 
