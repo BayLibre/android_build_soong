@@ -205,7 +205,7 @@ func (s *smartStatusOutput) Flush() {
 	if s.postFailureActionCount > 0 {
 		s.requestLine()
 		if s.postFailureActionCount == 1 {
-			s.print(fmt.Sprintf("There was 1 action that completed after the action that failed. See verbose.log.gz for its output."))
+			s.print("There was 1 action that completed after the action that failed. See verbose.log.gz for its output.")
 		} else {
 			s.print(fmt.Sprintf("There were %d actions that completed after the action that failed. See verbose.log.gz for their output.", s.postFailureActionCount))
 		}
@@ -432,7 +432,7 @@ func (ansiImpl) setScrollingMargins(top, bottom int) string {
 
 func (ansiImpl) resetScrollingMargins() string {
 	// Set Top and Bottom Margins DECSTBM
-	return fmt.Sprintf("\x1b[r")
+	return "\x1b[r"
 }
 
 func (ansiImpl) red() string {
