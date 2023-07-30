@@ -264,9 +264,7 @@ func applyNamespacedVariableDefaults(defaultDep Defaults, ctx TopDownMutatorCont
 		if dst[namespace] == nil {
 			dst[namespace] = []interface{}{}
 		}
-		for _, i := range src[namespace] {
-			dst[namespace] = append(dst[namespace], i)
-		}
+		dst[namespace] = append(dst[namespace], src[namespace]...)
 	}
 
 	b.setNamespacedVariableProps(dst)

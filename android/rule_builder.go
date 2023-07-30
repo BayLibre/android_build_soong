@@ -387,9 +387,7 @@ func (r *RuleBuilder) DepFiles() WritablePaths {
 	var depFiles WritablePaths
 
 	for _, c := range r.commands {
-		for _, depFile := range c.depFiles {
-			depFiles = append(depFiles, depFile)
-		}
+		depFiles = append(depFiles, c.depFiles...)
 	}
 
 	return depFiles

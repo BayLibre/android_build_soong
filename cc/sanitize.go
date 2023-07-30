@@ -453,9 +453,7 @@ func (p *sanitizeMutatedProperties) copyUserPropertiesToMutated(userProps *Sanit
 	p.Writeonly = userProps.Writeonly
 
 	p.Misc_undefined = make([]string, 0, len(userProps.Misc_undefined))
-	for _, v := range userProps.Misc_undefined {
-		p.Misc_undefined = append(p.Misc_undefined, v)
-	}
+	p.Misc_undefined = append(p.Misc_undefined, userProps.Misc_undefined...)
 
 	p.Diag.Cfi = userProps.Diag.Cfi
 	p.Diag.Integer_overflow = userProps.Diag.Integer_overflow
@@ -463,9 +461,7 @@ func (p *sanitizeMutatedProperties) copyUserPropertiesToMutated(userProps *Sanit
 	p.Diag.Undefined = userProps.Diag.Undefined
 
 	p.Diag.Misc_undefined = make([]string, 0, len(userProps.Diag.Misc_undefined))
-	for _, v := range userProps.Diag.Misc_undefined {
-		p.Diag.Misc_undefined = append(p.Diag.Misc_undefined, v)
-	}
+	p.Diag.Misc_undefined = append(p.Diag.Misc_undefined, userProps.Diag.Misc_undefined...)
 }
 
 func (sanitize *sanitize) begin(ctx BaseModuleContext) {

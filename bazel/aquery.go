@@ -292,9 +292,7 @@ func (a *aqueryArtifactHandler) getInputPaths(depsetIds []uint32) ([]string, err
 		if err != nil {
 			return nil, err
 		}
-		for _, inputPath := range inputArtifacts {
-			inputPaths = append(inputPaths, inputPath)
-		}
+		inputPaths = append(inputPaths, inputArtifacts...)
 	}
 
 	return inputPaths, nil

@@ -32,9 +32,7 @@ func dexpreoptTargets(ctx android.PathContext) []android.Target {
 		}
 	}
 	// We may also need the images on host in order to run host-based tests.
-	for _, target := range ctx.Config().Targets[ctx.Config().BuildOS] {
-		targets = append(targets, target)
-	}
+	targets = append(targets, ctx.Config().Targets[ctx.Config().BuildOS]...)
 
 	return targets
 }

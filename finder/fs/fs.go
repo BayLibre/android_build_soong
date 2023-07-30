@@ -108,10 +108,7 @@ func (osFs) ReadDir(path string) (contents []DirEntryInfo, err error) {
 	if err != nil {
 		return nil, err
 	}
-	for _, entry := range entries {
-		contents = append(contents, entry)
-	}
-
+	contents = append(contents, entries...)
 	return contents, nil
 }
 
