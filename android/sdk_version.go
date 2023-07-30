@@ -254,7 +254,7 @@ func SdkSpecFromWithConfig(config Config, str string) SdkSpec {
 		} else {
 			kindString = str[0:sep]
 		}
-		versionString := str[sep+1 : len(str)]
+		versionString := str[sep+1:]
 
 		var kind SdkKind
 		switch kindString {
