@@ -253,27 +253,27 @@ func transformSubpackagePath(cfg Config, dir string, path bazel.Label) bazel.Lab
 		newPath.Label = path.Label
 		return newPath
 	}
-	if strings.HasPrefix(path.Label, "./") {
-		// Drop "./" for consistent handling of paths.
-		// Specifically, to not let "." be considered a package boundary.
-		// Say `inputPath` is `x/Android.bp` and that file has some module
-		// with `srcs=["y/a.c", "z/b.c"]`.
-		// And say the directory tree is:
-		//     x
-		//     ├── Android.bp
-		//     ├── y
-		//     │   ├── a.c
-		//     │   └── Android.bp
-		//     └── z
-		//         └── b.c
-		// Then bazel equivalent labels in srcs should be:
-		//   //x/y:a.c, x/z/b.c
-		// The above should still be the case if `x/Android.bp` had
-		//   srcs=["./y/a.c", "./z/b.c"]
-		// However, if we didn't strip "./", we'd get
-		//   //x/./y:a.c, //x/.:z/b.c
-		path.Label = strings.TrimPrefix(path.Label, "./")
-	}
+
+	// Drop "./" for consistent handling of paths.
+	// Specifically, to not let "." be considered a package boundary.
+	// Say `inputPath` is `x/Android.bp` and that file has some module
+	// with `srcs=["y/a.c", "z/b.c"]`.
+	// And say the directory tree is:
+	//     x
+	//     ├── Android.bp
+	//     ├── y
+	//     │   ├── a.c
+	//     │   └── Android.bp
+	//     └── z
+	//         └── b.c
+	// Then bazel equivalent labels in srcs should be:
+	//   //x/y:a.c, x/z/b.c
+	// The above should still be the case if `x/Android.bp` had
+	//   srcs=["./y/a.c", "./z/b.c"]
+	// However, if we didn't strip "./", we'd get
+	//   //x/./y:a.c, //x/.:z/b.c
+	path.Label = strings.TrimPrefix(path.Label, "./")
+
 	pathComponents := strings.Split(path.Label, "/")
 	newLabel := ""
 	foundPackageBoundary := false
@@ -295,10 +295,7 @@ func transformSubpackagePath(cfg Config, dir string, path bazel.Label) bazel.Lab
 	}
 	if foundPackageBoundary {
 		// Ensure paths end up looking like //bionic/... instead of //./bionic/...
-		moduleDir := dir
-		if strings.HasPrefix(moduleDir, ".") {
-			moduleDir = moduleDir[1:]
-		}
+		moduleDir := strings.TrimPrefix(dir, ".")
 		// Make the path into an absolute label (e.g. //bionic/libc/foo:bar.h instead of just foo:bar.h)
 		if moduleDir == "" {
 			newLabel = "//" + newLabel

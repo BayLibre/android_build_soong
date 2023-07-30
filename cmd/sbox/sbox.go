@@ -275,9 +275,7 @@ func runCommand(command *sbox_proto.Command, tempDir string, commandIndex int) (
 		rawCommand = strings.Replace(rawCommand, depFilePlaceholder, depFile, -1)
 	}
 
-	if strings.Contains(rawCommand, sandboxDirPlaceholder) {
-		rawCommand = strings.Replace(rawCommand, sandboxDirPlaceholder, pathToTempDirInSbox, -1)
-	}
+	rawCommand = strings.Replace(rawCommand, sandboxDirPlaceholder, pathToTempDirInSbox, -1)
 
 	// Emulate ninja's behavior of creating the directories for any output files before
 	// running the command.

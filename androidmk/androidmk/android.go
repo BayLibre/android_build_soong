@@ -351,9 +351,7 @@ func classifyLocalOrGlobalPath(value bpparser.Expression) (string, bpparser.Expr
 
 		local := secondOperand
 		if s, ok := secondOperand.(*bpparser.String); ok {
-			if strings.HasPrefix(s.Value, "/") {
-				s.Value = s.Value[1:]
-			}
+			s.Value = strings.TrimPrefix(s.Value, "/")
 		}
 		return "local", local, nil
 	case *bpparser.String:

@@ -1655,9 +1655,7 @@ func getModuleAbsolutePath() string {
 		argPath = strings.TrimPrefix(argPath, ".")
 	}
 	argPath = strings.TrimSuffix(argPath, "Android.mk")
-	if strings.HasSuffix(argPath, "/") {
-		argPath = strings.TrimSuffix(argPath, "/")
-	}
+	argPath = strings.TrimSuffix(argPath, "/")
 	if len(argPath) > 0 && !strings.HasPrefix(argPath, "/") {
 		argPath = "/" + argPath
 	}
