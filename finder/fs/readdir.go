@@ -31,11 +31,11 @@ const (
 
 func readdir(path string) ([]DirEntryInfo, error) {
 	f, err := os.Open(path)
-	defer f.Close()
-
 	if err != nil {
 		return nil, err
 	}
+	defer f.Close()
+
 	// This implicitly switches the fd to non-blocking mode, which is less efficient than what
 	// file.ReadDir does since it will keep a thread blocked and not just a goroutine.
 	fd := int(f.Fd())

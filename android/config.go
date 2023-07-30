@@ -323,6 +323,9 @@ func loadConfig(config *config) error {
 func loadFromConfigFile(configurable *ProductVariables, filename string) error {
 	// Try to open the file
 	configFileReader, err := os.Open(filename)
+	if err != nil {
+		return err
+	}
 	defer configFileReader.Close()
 	if os.IsNotExist(err) {
 		// Need to create a file, so that blueprint & ninja don't get in
