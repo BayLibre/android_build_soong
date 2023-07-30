@@ -474,9 +474,7 @@ type configToBools map[string]bool
 
 func (ctb configToBools) setValue(config string, value *bool) {
 	if value == nil {
-		if _, ok := ctb[config]; ok {
-			delete(ctb, config)
-		}
+		delete(ctb, config)
 		return
 	}
 	ctb[config] = *value
@@ -750,9 +748,7 @@ type configurableLabelLists map[ConfigurationAxis]labelListSelectValues
 
 func (cll configurableLabelLists) setValueForAxis(axis ConfigurationAxis, config string, list LabelList) {
 	if list.IsNil() {
-		if _, ok := cll[axis][config]; ok {
-			delete(cll[axis], config)
-		}
+		delete(cll[axis], config)
 		return
 	}
 	if cll[axis] == nil {
