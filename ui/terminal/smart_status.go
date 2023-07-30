@@ -100,7 +100,7 @@ func NewSmartStatusOutput(w io.Writer, formatter formatter) status.StatusOutput 
 		}
 
 		// Hide the cursor to prevent seeing it bouncing around
-		fmt.Fprintf(s.writer, ansi.hideCursor())
+		fmt.Fprint(s.writer, ansi.hideCursor())
 
 		// Configure the empty action table
 		s.actionTable()
@@ -220,12 +220,12 @@ func (s *smartStatusOutput) Flush() {
 		s.actionTable()
 
 		// Reset the scrolling region to the whole terminal
-		fmt.Fprintf(s.writer, ansi.resetScrollingMargins())
+		fmt.Fprint(s.writer, ansi.resetScrollingMargins())
 		_, height, _ := termSize(s.writer)
 		// Move the cursor to the top of the now-blank, previously non-scrolling region
-		fmt.Fprintf(s.writer, ansi.setCursor(height-s.tableHeight, 1))
+		fmt.Fprint(s.writer, ansi.setCursor(height-s.tableHeight, 1))
 		// Turn the cursor back on
-		fmt.Fprintf(s.writer, ansi.showCursor())
+		fmt.Fprint(s.writer, ansi.showCursor())
 	}
 }
 

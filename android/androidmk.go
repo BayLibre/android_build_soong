@@ -526,7 +526,7 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 	a.Target_required = append(a.Target_required, amod.TargetRequiredModuleNames()...)
 
 	for _, distString := range a.GetDistForGoals(mod) {
-		fmt.Fprintf(&a.header, distString)
+		fmt.Fprint(&a.header, distString)
 	}
 
 	fmt.Fprintf(&a.header, "\ninclude $(CLEAR_VARS)  # type: %s, name: %s, variant: %s\n", ctx.ModuleType(mod), base.BaseModuleName(), ctx.ModuleSubDir(mod))
