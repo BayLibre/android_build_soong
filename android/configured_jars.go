@@ -16,7 +16,6 @@ package android
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"path/filepath"
 	"strings"
@@ -216,7 +215,7 @@ func (l *ConfiguredJarList) UnmarshalJSON(b []byte) error {
 
 func (l *ConfiguredJarList) MarshalJSON() ([]byte, error) {
 	if len(l.apexes) != len(l.jars) {
-		return nil, errors.New(fmt.Sprintf("Inconsistent ConfiguredJarList: apexes: %q, jars: %q", l.apexes, l.jars))
+		return nil, fmt.Errorf("Inconsistent ConfiguredJarList: apexes: %q, jars: %q", l.apexes, l.jars)
 	}
 
 	list := make([]string, 0, len(l.apexes))
