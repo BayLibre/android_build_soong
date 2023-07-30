@@ -758,7 +758,7 @@ func splitArgs(args []string) (newArgs []string, dirs []string) {
 
 	for _, arg := range args {
 		// It's a dash argument if it starts with "-" or it's a key=value pair, it's not a directory.
-		if strings.IndexRune(arg, '-') == 0 || strings.IndexRune(arg, '=') != -1 {
+		if strings.IndexRune(arg, '-') == 0 || strings.ContainsRune(arg, '=') {
 			newArgs = append(newArgs, arg)
 			continue
 		}
