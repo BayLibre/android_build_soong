@@ -52,6 +52,8 @@ func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) DepsMutator(module *ja
 	} else {
 		ctx.AddDependency(ctx.Module(), declarationsTag, declarations)
 	}
+	// Add aconfig-annotations-lib as a shared library dependency. It will not be available at runtime.
+	module.AddLibrary("aconfig-annotations-lib")
 }
 
 func (callbacks *JavaAconfigDeclarationsLibraryCallbacks) GenerateSourceJarBuildActions(module *java.GeneratedJavaLibraryModule, ctx android.ModuleContext) android.Path {

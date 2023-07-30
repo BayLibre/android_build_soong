@@ -59,6 +59,10 @@ func GeneratedJavaLibraryModuleFactory(moduleName string, callbacks GeneratedJav
 	return module
 }
 
+func (module *GeneratedJavaLibraryModule) AddLibrary(lib string) {
+	module.properties.Libs = append(module.properties.Libs, lib)
+}
+
 func (module *GeneratedJavaLibraryModule) DepsMutator(ctx android.BottomUpMutatorContext) {
 	module.callbacks.DepsMutator(module, ctx)
 	module.Library.DepsMutator(ctx)
