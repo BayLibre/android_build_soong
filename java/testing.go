@@ -214,10 +214,8 @@ func FixtureWithPrebuiltApisAndExtensions(apiLevel2Modules map[string][]string, 
 	for release, modules := range apiLevel2Modules {
 		mockFS.Merge(prebuiltApisFilesForModules([]string{release}, modules))
 	}
-	if extensionLevel2Modules != nil {
-		for release, modules := range extensionLevel2Modules {
-			mockFS.Merge(prebuiltExtensionApiFiles([]string{release}, modules))
-		}
+	for release, modules := range extensionLevel2Modules {
+		mockFS.Merge(prebuiltExtensionApiFiles([]string{release}, modules))
 	}
 	return android.GroupFixturePreparers(
 		android.FixtureAddTextFile(path, bp),
