@@ -23,8 +23,8 @@ import (
 )
 
 var (
-	ndkVariantRegex  = regexp.MustCompile("ndk\\.([a-zA-Z0-9]+)")
-	stubVariantRegex = regexp.MustCompile("apex\\.([a-zA-Z0-9]+)")
+	ndkVariantRegex  = regexp.MustCompile(`ndk\.([a-zA-Z0-9]+)`)
+	stubVariantRegex = regexp.MustCompile(`apex\.([a-zA-Z0-9]+)`)
 )
 
 func init() {

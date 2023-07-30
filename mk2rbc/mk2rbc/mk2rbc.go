@@ -284,7 +284,7 @@ var converted = make(map[string]*mk2rbc.StarlarkScript)
 
 //goland:noinspection RegExpRepeatedSpace
 var cpNormalizer = regexp.MustCompile(
-	"#  Copyright \\(C\\) 20.. The Android Open Source Project")
+	`#  Copyright \(C\) 20.. The Android Open Source Project`)
 
 const cpNormalizedCopyright = "#  Copyright (C) 20xx The Android Open Source Project"
 const copyright = `#
