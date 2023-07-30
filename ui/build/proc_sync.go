@@ -138,7 +138,7 @@ func (s sleepWaiter) wait() {
 	time.Sleep(s.sleepInterval)
 }
 func (s *sleepWaiter) checkDeadline() (done bool, remainder string) {
-	remainingSleep := s.deadline.Sub(time.Now())
+	remainingSleep := time.Until(s.deadline)
 	numSecondsRounded := math.Floor(remainingSleep.Seconds()*10+0.5) / 10
 	if remainingSleep > 0 {
 		return false, fmt.Sprintf("%vs", numSecondsRounded)
