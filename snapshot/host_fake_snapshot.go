@@ -134,7 +134,7 @@ func (c *hostFakeSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 		}
 	})
 	// Update any module prebuilt information
-	for idx, _ := range jsonData {
+	for idx := range jsonData {
 		if _, ok := prebuilts[jsonData[idx].ModuleName]; ok {
 			// Prebuilt exists for this module
 			jsonData[idx].Prebuilt = true

@@ -177,7 +177,7 @@ func (s *apexKeysText) GenerateBuildActions(ctx android.SingletonContext) {
 
 	// iterating over map does not give consistent ordering in golang
 	var moduleNames []string
-	for key, _ := range apexKeyMap {
+	for key := range apexKeyMap {
 		moduleNames = append(moduleNames, key)
 	}
 	sort.Strings(moduleNames)

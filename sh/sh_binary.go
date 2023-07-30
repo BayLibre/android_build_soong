@@ -455,7 +455,7 @@ func (s *ShTest) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.AddStrings("LOCAL_TEST_DATA", path+":"+rel)
 				}
 				relPaths := make([]string, 0)
-				for relPath, _ := range s.dataModules {
+				for relPath := range s.dataModules {
 					relPaths = append(relPaths, relPath)
 				}
 				sort.Strings(relPaths)

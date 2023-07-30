@@ -54,7 +54,7 @@ func deleteFilesExcept(ctx *CodegenContext, rootOutputPath android.OutputPath, e
 		filePath := filepath.Join(bazelFile.Dir, bazelFile.Basename)
 		delete(filesToDelete, filePath)
 	}
-	for f, _ := range filesToDelete {
+	for f := range filesToDelete {
 		absPath := shared.JoinPath(bp2buildDirAbs, f)
 		if err := os.RemoveAll(absPath); err != nil {
 			fmt.Printf("ERROR deleting %s: %s", absPath, err)

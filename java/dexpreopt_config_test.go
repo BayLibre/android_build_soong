@@ -48,7 +48,7 @@ func TestImageNames(t *testing.T) {
 	ctx := &android.TestPathContext{TestResult: result}
 	configs := genBootImageConfigs(ctx)
 	namesFromConfigs := make([]string, 0, len(configs))
-	for name, _ := range configs {
+	for name := range configs {
 		namesFromConfigs = append(namesFromConfigs, name)
 	}
 	sort.Strings(namesFromConfigs)

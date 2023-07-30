@@ -597,7 +597,7 @@ func (s *FuzzPackager) CreateFuzzPackage(ctx android.SingletonContext, archDirs 
 
 func (s *FuzzPackager) PreallocateSlice(ctx android.MakeVarsContext, targets string) {
 	fuzzTargets := make([]string, 0, len(s.FuzzTargets))
-	for target, _ := range s.FuzzTargets {
+	for target := range s.FuzzTargets {
 		fuzzTargets = append(fuzzTargets, target)
 	}
 

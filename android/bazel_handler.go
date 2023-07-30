@@ -1396,7 +1396,7 @@ func createCommand(cmd *RuleBuilderCommand, buildStatement *bazel.BuildStatement
 		if buildStatement.ShouldRunInSbox {
 			// Bazel depsets are phony targets that are used to group files.
 			// We need to copy the grouped files into the sandbox
-			ds, _ := depsetHashToDepset[inputDepsetHash]
+			ds := depsetHashToDepset[inputDepsetHash]
 			cmd.Implicits(PathsForBazelOut(ctx, ds.DirectArtifacts))
 		} else {
 			otherDepsetName := bazelDepsetName(inputDepsetHash)

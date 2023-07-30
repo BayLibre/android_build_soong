@@ -306,7 +306,7 @@ func (s *smartStatusOutput) stopActionTableTick() {
 func (s *smartStatusOutput) startSigwinch() {
 	signal.Notify(s.sigwinch, syscall.SIGWINCH)
 	go func() {
-		for _ = range s.sigwinch {
+		for range s.sigwinch {
 			s.lock.Lock()
 			s.updateTermSize()
 			if s.tableMode {

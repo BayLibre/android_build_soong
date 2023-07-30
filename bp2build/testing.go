@@ -671,7 +671,7 @@ func makeCcStubSuiteTargets(name string, attrs AttrNameToString) string {
 	}
 
 	stubSuiteAttrs := AttrNameToString{}
-	for key, _ := range attrs {
+	for key := range attrs {
 		if _, stubSuiteAttr := STUB_SUITE_ATTRS[key]; stubSuiteAttr {
 			stubSuiteAttrs[STUB_SUITE_ATTRS[key]] = attrs[key]
 		} else {

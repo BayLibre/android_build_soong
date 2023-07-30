@@ -99,12 +99,12 @@ func (ll *LabelList) Equals(other LabelList) bool {
 	if len(ll.Includes) != len(other.Includes) || len(ll.Excludes) != len(other.Excludes) {
 		return false
 	}
-	for i, _ := range ll.Includes {
+	for i := range ll.Includes {
 		if ll.Includes[i] != other.Includes[i] {
 			return false
 		}
 	}
-	for i, _ := range ll.Excludes {
+	for i := range ll.Excludes {
 		if ll.Excludes[i] != other.Excludes[i] {
 			return false
 		}
@@ -199,7 +199,7 @@ func UniqueSortedBazelLabels(originalLabels []Label) []Label {
 		uniqueLabelsSet[l] = true
 	}
 	var uniqueLabels []Label
-	for l, _ := range uniqueLabelsSet {
+	for l := range uniqueLabelsSet {
 		uniqueLabels = append(uniqueLabels, l)
 	}
 	sort.SliceStable(uniqueLabels, func(i, j int) bool {
@@ -855,7 +855,7 @@ func (lla *LabelListAttribute) Add(label *LabelAttribute) {
 	if lla.ConfigurableValues == nil && label.ConfigurableValues != nil {
 		lla.ConfigurableValues = make(configurableLabelLists)
 	}
-	for axis, _ := range label.ConfigurableValues {
+	for axis := range label.ConfigurableValues {
 		if _, exists := lla.ConfigurableValues[axis]; !exists {
 			lla.ConfigurableValues[axis] = make(labelListSelectValues)
 		}
@@ -888,7 +888,7 @@ func (lla LabelListAttribute) IsEmpty() bool {
 	if len(lla.Value.Includes) > 0 {
 		return false
 	}
-	for axis, _ := range lla.ConfigurableValues {
+	for axis := range lla.ConfigurableValues {
 		if lla.ConfigurableValues[axis].HasConfigurableValues() {
 			return false
 		}
@@ -1125,7 +1125,7 @@ func PartitionLabelListAttribute(ctx OtherModuleContext, lla *LabelListAttribute
 
 	partitionLabelList(NoConfigAxis, "")
 	for axis, configToList := range lla.ConfigurableValues {
-		for config, _ := range configToList {
+		for config := range configToList {
 			partitionLabelList(axis, config)
 		}
 	}

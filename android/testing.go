@@ -1158,7 +1158,7 @@ func AndroidMkEntriesForTest(t *testing.T, ctx *TestContext, mod blueprint.Modul
 	}
 
 	entriesList := p.AndroidMkEntries()
-	for i, _ := range entriesList {
+	for i := range entriesList {
 		entriesList[i].fillInEntries(ctx, mod)
 	}
 	return entriesList

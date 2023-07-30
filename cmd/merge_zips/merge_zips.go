@@ -330,7 +330,7 @@ func (oz *OutputZip) alphanumericSorted() []string {
 
 func (oz *OutputZip) writeEntries(entries []string) error {
 	for _, entry := range entries {
-		source, _ := oz.sourceByDest[entry]
+		source := oz.sourceByDest[entry]
 		if err := source.WriteToZip(entry, oz.outputWriter); err != nil {
 			return err
 		}

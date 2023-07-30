@@ -172,7 +172,7 @@ func TestCLCJson(t *testing.T) {
 	restored := fromJsonClassLoaderContext(ctx, jsonCLC)
 	android.AssertIntEquals(t, "The size of the maps should be the same.", len(m), len(restored))
 	for k := range m {
-		a, _ := m[k]
+		a := m[k]
 		b, ok := restored[k]
 		android.AssertBoolEquals(t, "The both maps should have the same keys.", ok, true)
 		android.AssertIntEquals(t, "The size of the elements should be the same.", len(a), len(b))

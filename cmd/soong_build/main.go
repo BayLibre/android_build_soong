@@ -394,7 +394,7 @@ func findMisconfiguredModules(configuration android.Config, isStagingMode bool) 
 		}
 	}
 
-	for module, _ := range forceEnabledModules {
+	for module := range forceEnabledModules {
 		if isAllowlistMisconfiguredForModule(module, mixedBuildsEnabled, mixedBuildsDisabled) {
 			retval = append(retval, module)
 		}

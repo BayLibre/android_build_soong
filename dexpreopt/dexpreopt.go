@@ -92,7 +92,7 @@ func GenerateDexpreoptRule(ctx android.BuilderContext, globalSoong *GlobalSoongC
 
 			generateDM := shouldGenerateDM(module, global)
 
-			for archIdx, _ := range module.Archs {
+			for archIdx := range module.Archs {
 				dexpreoptCommand(ctx, globalSoong, global, module, rule, archIdx, profile, appImage,
 					generateDM, productPackages)
 			}

@@ -285,7 +285,7 @@ func FixtureModifyMockFS(mutator func(fs MockFS)) FixturePreparer {
 		mutator(f.mockFS)
 
 		// Make sure that invalid paths were not added to the mock filesystem.
-		for p, _ := range f.mockFS {
+		for p := range f.mockFS {
 			validateFixtureMockFSPath(p)
 		}
 	})

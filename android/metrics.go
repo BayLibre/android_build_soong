@@ -88,12 +88,12 @@ func collectMetrics(config Config, eventHandler *metrics.EventHandler) *soong_me
 	}
 	mixedBuildsInfo := soong_metrics_proto.MixedBuildsInfo{}
 	mixedBuildEnabledModules := make([]string, 0, len(config.mixedBuildEnabledModules))
-	for module, _ := range config.mixedBuildEnabledModules {
+	for module := range config.mixedBuildEnabledModules {
 		mixedBuildEnabledModules = append(mixedBuildEnabledModules, module)
 	}
 
 	mixedBuildDisabledModules := make([]string, 0, len(config.mixedBuildDisabledModules))
-	for module, _ := range config.mixedBuildDisabledModules {
+	for module := range config.mixedBuildDisabledModules {
 		mixedBuildDisabledModules = append(mixedBuildDisabledModules, module)
 	}
 	// Sorted for deterministic output.

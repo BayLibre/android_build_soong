@@ -241,7 +241,7 @@ type ErrorHintGenerator struct {
 
 func newErrorHintGenerator(allErrorHints map[string]string) *ErrorHintGenerator {
 	var allErrorHintPatterns []string
-	for errorHintPattern, _ := range allErrorHints {
+	for errorHintPattern := range allErrorHints {
 		allErrorHintPatterns = append(allErrorHintPatterns, errorHintPattern)
 	}
 	allErrorHintPatternsRegex := strings.Join(allErrorHintPatterns[:], "|")

@@ -363,7 +363,7 @@ func (s sdkMemberTraitSet) Subtract(other SdkMemberTraitSet) SdkMemberTraitSet {
 	}
 
 	var remainder []SdkMemberTrait
-	for trait, _ := range s {
+	for trait := range s {
 		if !other.Contains(trait) {
 			remainder = append(remainder, trait)
 		}
@@ -374,7 +374,7 @@ func (s sdkMemberTraitSet) Subtract(other SdkMemberTraitSet) SdkMemberTraitSet {
 
 func (s sdkMemberTraitSet) String() string {
 	list := []string{}
-	for trait, _ := range s {
+	for trait := range s {
 		list = append(list, trait.SdkPropertyName())
 	}
 	sort.Strings(list)

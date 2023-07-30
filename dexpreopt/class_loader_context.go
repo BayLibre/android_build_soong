@@ -308,7 +308,7 @@ func (clcMap ClassLoaderContextMap) addContext(ctx android.ModuleInstallPathCont
 	}
 
 	// Nested class loader context shouldn't have conditional part (it is allowed only at the top level).
-	for ver, _ := range nestedClcMap {
+	for ver := range nestedClcMap {
 		if ver != AnySdkVersion {
 			_, clcPaths := ComputeClassLoaderContextDependencies(nestedClcMap)
 			return fmt.Errorf("nested class loader context shouldn't have conditional part: %+v", clcPaths)

@@ -335,7 +335,7 @@ func addToOSGroup(osName string, files android.Paths, allGroups, subsetGroups ma
 func addAllOSGroup(ctx android.SingletonContext, module android.Module, phonyTargetGroups map[string]android.Paths, groupName string, objTidyName string) {
 	if len(phonyTargetGroups) > 0 {
 		var targets android.Paths
-		for group, _ := range phonyTargetGroups {
+		for group := range phonyTargetGroups {
 			targets = append(targets, android.PathForPhony(ctx, objTidyModuleGroupName(module, group, objTidyName)))
 		}
 		phonyTargetGroups[groupName] = targets
