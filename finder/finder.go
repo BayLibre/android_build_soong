@@ -835,7 +835,7 @@ func (f *Finder) loadBytes(id int, data []byte) (m *pathMap, dirsToWalk []string
 	// thereby improving parallelism of subsequent searches
 	tempMap.UpdateNumDescendentsRecursive()
 
-	f.verbosef("Statted inodes of block %v in %v\n", id, time.Now().Sub(unmarshalDate))
+	f.verbosef("Statted inodes of block %v in %v\n", id, time.Since(unmarshalDate))
 	return tempMap, dirsToWalk, nil
 }
 
@@ -1003,7 +1003,7 @@ func (f *Finder) startFromExternalCache() (err error) {
 	}
 	f.verbosef("Loaded db and statted known dirs in %v\n", time.Since(startTime))
 	f.threadPool.Wait()
-	f.verbosef("Loaded db and statted all dirs in %v\n", time.Now().Sub(startTime))
+	f.verbosef("Loaded db and statted all dirs in %v\n", time.Since(startTime))
 
 	return err
 }
@@ -1042,7 +1042,7 @@ func (f *Finder) startWithoutExternalCache() {
 
 	f.threadPool.Wait()
 
-	f.verbosef("Scanned filesystem (not using cache) in %v\n", time.Now().Sub(startTime))
+	f.verbosef("Scanned filesystem (not using cache) in %v\n", time.Since(startTime))
 }
 
 // isInfoUpToDate tells whether <new> can confirm that results computed at <old> are still valid
@@ -1178,7 +1178,7 @@ func (f *Finder) dumpDb() error {
 		return err
 	}
 
-	f.verbosef("Wrote db in %v\n", time.Now().Sub(serializeDate))
+	f.verbosef("Wrote db in %v\n", time.Since(serializeDate))
 	return nil
 
 }
