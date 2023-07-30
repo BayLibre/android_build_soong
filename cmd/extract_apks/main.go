@@ -30,15 +30,14 @@ import (
 	"google.golang.org/protobuf/proto"
 
 	"android/soong/cmd/extract_apks/bundle_proto"
-	android_bundle_proto "android/soong/cmd/extract_apks/bundle_proto"
 	"android/soong/third_party/zip"
 )
 
 type TargetConfig struct {
 	sdkVersion int32
-	screenDpi  map[android_bundle_proto.ScreenDensity_DensityAlias]bool
+	screenDpi  map[bundle_proto.ScreenDensity_DensityAlias]bool
 	// Map holding <ABI alias>:<its sequence number in the flag> info.
-	abis             map[android_bundle_proto.Abi_AbiAlias]int
+	abis             map[bundle_proto.Abi_AbiAlias]int
 	allowPrereleased bool
 	stem             string
 	skipSdkCheck     bool
@@ -46,7 +45,7 @@ type TargetConfig struct {
 
 // An APK set is a zip archive. An entry 'toc.pb' describes its contents.
 // It is a protobuf message BuildApkResult.
-type Toc *android_bundle_proto.BuildApksResult
+type Toc *bundle_proto.BuildApksResult
 
 type ApkSet struct {
 	path    string
@@ -81,7 +80,7 @@ func (apkSet *ApkSet) getToc() (Toc, error) {
 		return nil, err
 	}
 	rc.Close()
-	buildApksResult := new(android_bundle_proto.BuildApksResult)
+	buildApksResult := new(bundle_proto.BuildApksResult)
 	if err = proto.Unmarshal(bytes, buildApksResult); err != nil {
 		return nil, err
 	}
@@ -95,14 +94,14 @@ func (apkSet *ApkSet) close() {
 // Matchers for selection criteria
 
 type abiTargetingMatcher struct {
-	*android_bundle_proto.AbiTargeting
+	*bundle_proto.AbiTargeting
 }
 
 func (m abiTargetingMatcher) matches(config TargetConfig) bool {
 	if m.AbiTargeting == nil {
 		return true
 	}
-	if _, ok := config.abis[android_bundle_proto.Abi_UNSPECIFIED_CPU_ARCHITECTURE]; ok {
+	if _, ok := config.abis[bundle_proto.Abi_UNSPECIFIED_CPU_ARCHITECTURE]; ok {
 		return true
 	}
 	// Find the one that appears first in the abis flags.
@@ -130,7 +129,7 @@ func (m abiTargetingMatcher) matches(config TargetConfig) bool {
 }
 
 type apkDescriptionMatcher struct {
-	*android_bundle_proto.ApkDescription
+	*bundle_proto.ApkDescription
 }
 
 func (m apkDescriptionMatcher) matches(config TargetConfig, allAbisMustMatch bool) bool {
@@ -138,7 +137,7 @@ func (m apkDescriptionMatcher) matches(config TargetConfig, allAbisMustMatch boo
 }
 
 type apkTargetingMatcher struct {
-	*android_bundle_proto.ApkTargeting
+	*bundle_proto.ApkTargeting
 }
 
 func (m apkTargetingMatcher) matches(config TargetConfig, allAbisMustMatch bool) bool {
@@ -151,7 +150,7 @@ func (m apkTargetingMatcher) matches(config TargetConfig, allAbisMustMatch bool)
 }
 
 type languageTargetingMatcher struct {
-	*android_bundle_proto.LanguageTargeting
+	*bundle_proto.LanguageTargeting
 }
 
 func (m languageTargetingMatcher) matches(_ TargetConfig) bool {
@@ -163,18 +162,18 @@ func (m languageTargetingMatcher) matches(_ TargetConfig) bool {
 }
 
 type moduleMetadataMatcher struct {
-	*android_bundle_proto.ModuleMetadata
+	*bundle_proto.ModuleMetadata
 }
 
 func (m moduleMetadataMatcher) matches(config TargetConfig) bool {
 	return m.ModuleMetadata == nil ||
-		(m.GetDeliveryType() == android_bundle_proto.DeliveryType_INSTALL_TIME &&
+		(m.GetDeliveryType() == bundle_proto.DeliveryType_INSTALL_TIME &&
 			moduleTargetingMatcher{m.Targeting}.matches(config) &&
 			!m.IsInstant)
 }
 
 type moduleTargetingMatcher struct {
-	*android_bundle_proto.ModuleTargeting
+	*bundle_proto.ModuleTargeting
 }
 
 func (m moduleTargetingMatcher) matches(config TargetConfig) bool {
@@ -185,18 +184,18 @@ func (m moduleTargetingMatcher) matches(config TargetConfig) bool {
 
 // A higher number means a higher priority.
 // This order must be kept identical to bundletool's.
-var multiAbiPriorities = map[android_bundle_proto.Abi_AbiAlias]int{
-	android_bundle_proto.Abi_ARMEABI:     1,
-	android_bundle_proto.Abi_ARMEABI_V7A: 2,
-	android_bundle_proto.Abi_ARM64_V8A:   3,
-	android_bundle_proto.Abi_X86:         4,
-	android_bundle_proto.Abi_X86_64:      5,
-	android_bundle_proto.Abi_MIPS:        6,
-	android_bundle_proto.Abi_MIPS64:      7,
+var multiAbiPriorities = map[bundle_proto.Abi_AbiAlias]int{
+	bundle_proto.Abi_ARMEABI:     1,
+	bundle_proto.Abi_ARMEABI_V7A: 2,
+	bundle_proto.Abi_ARM64_V8A:   3,
+	bundle_proto.Abi_X86:         4,
+	bundle_proto.Abi_X86_64:      5,
+	bundle_proto.Abi_MIPS:        6,
+	bundle_proto.Abi_MIPS64:      7,
 }
 
 type multiAbiTargetingMatcher struct {
-	*android_bundle_proto.MultiAbiTargeting
+	*bundle_proto.MultiAbiTargeting
 }
 
 type multiAbiValue []*bundle_proto.Abi
@@ -240,7 +239,7 @@ func (t multiAbiTargetingMatcher) matches(config TargetConfig, allAbisMustMatch 
 	if t.MultiAbiTargeting == nil {
 		return true
 	}
-	if _, ok := config.abis[android_bundle_proto.Abi_UNSPECIFIED_CPU_ARCHITECTURE]; ok {
+	if _, ok := config.abis[bundle_proto.Abi_UNSPECIFIED_CPU_ARCHITECTURE]; ok {
 		return true
 	}
 
@@ -294,19 +293,19 @@ func (t multiAbiTargetingMatcher) matches(config TargetConfig, allAbisMustMatch 
 }
 
 type screenDensityTargetingMatcher struct {
-	*android_bundle_proto.ScreenDensityTargeting
+	*bundle_proto.ScreenDensityTargeting
 }
 
 func (m screenDensityTargetingMatcher) matches(config TargetConfig) bool {
 	if m.ScreenDensityTargeting == nil {
 		return true
 	}
-	if _, ok := config.screenDpi[android_bundle_proto.ScreenDensity_DENSITY_UNSPECIFIED]; ok {
+	if _, ok := config.screenDpi[bundle_proto.ScreenDensity_DENSITY_UNSPECIFIED]; ok {
 		return true
 	}
 	for _, v := range m.GetValue() {
 		switch x := v.GetDensityOneof().(type) {
-		case *android_bundle_proto.ScreenDensity_DensityAlias_:
+		case *bundle_proto.ScreenDensity_DensityAlias_:
 			if _, ok := config.screenDpi[x.DensityAlias]; ok {
 				return true
 			}
@@ -318,7 +317,7 @@ func (m screenDensityTargetingMatcher) matches(config TargetConfig) bool {
 }
 
 type sdkVersionTargetingMatcher struct {
-	*android_bundle_proto.SdkVersionTargeting
+	*bundle_proto.SdkVersionTargeting
 }
 
 func (m sdkVersionTargetingMatcher) matches(config TargetConfig) bool {
@@ -344,7 +343,7 @@ func (m sdkVersionTargetingMatcher) matches(config TargetConfig) bool {
 }
 
 type textureCompressionFormatTargetingMatcher struct {
-	*android_bundle_proto.TextureCompressionFormatTargeting
+	*bundle_proto.TextureCompressionFormatTargeting
 }
 
 func (m textureCompressionFormatTargetingMatcher) matches(_ TargetConfig) bool {
@@ -356,7 +355,7 @@ func (m textureCompressionFormatTargetingMatcher) matches(_ TargetConfig) bool {
 }
 
 type userCountriesTargetingMatcher struct {
-	*android_bundle_proto.UserCountriesTargeting
+	*bundle_proto.UserCountriesTargeting
 }
 
 func (m userCountriesTargetingMatcher) matches(_ TargetConfig) bool {
@@ -368,7 +367,7 @@ func (m userCountriesTargetingMatcher) matches(_ TargetConfig) bool {
 }
 
 type variantTargetingMatcher struct {
-	*android_bundle_proto.VariantTargeting
+	*bundle_proto.VariantTargeting
 }
 
 func (m variantTargetingMatcher) matches(config TargetConfig, allAbisMustMatch bool) bool {
@@ -519,8 +518,8 @@ var (
 	outputFile   = flag.String("o", "", "output file for primary entry")
 	zipFile      = flag.String("zip", "", "output file containing additional extracted entries")
 	targetConfig = TargetConfig{
-		screenDpi: map[android_bundle_proto.ScreenDensity_DensityAlias]bool{},
-		abis:      map[android_bundle_proto.Abi_AbiAlias]int{},
+		screenDpi: map[bundle_proto.ScreenDensity_DensityAlias]bool{},
+		abis:      map[bundle_proto.Abi_AbiAlias]int{},
 	}
 	extractSingle = flag.Bool("extract-single", false,
 		"extract a single target and output it uncompressed. only available for standalone apks and apexes.")
@@ -540,11 +539,11 @@ func (a abiFlagValue) String() string {
 
 func (a abiFlagValue) Set(abiList string) error {
 	for i, abi := range strings.Split(abiList, ",") {
-		v, ok := android_bundle_proto.Abi_AbiAlias_value[abi]
+		v, ok := bundle_proto.Abi_AbiAlias_value[abi]
 		if !ok {
 			return fmt.Errorf("bad ABI value: %q", abi)
 		}
-		targetConfig.abis[android_bundle_proto.Abi_AbiAlias(v)] = i
+		targetConfig.abis[bundle_proto.Abi_AbiAlias(v)] = i
 	}
 	return nil
 }
@@ -563,15 +562,15 @@ func (s screenDensityFlagValue) Set(densityList string) error {
 		return nil
 	}
 	if densityList == "all" {
-		targetConfig.screenDpi[android_bundle_proto.ScreenDensity_DENSITY_UNSPECIFIED] = true
+		targetConfig.screenDpi[bundle_proto.ScreenDensity_DENSITY_UNSPECIFIED] = true
 		return nil
 	}
 	for _, density := range strings.Split(densityList, ",") {
-		v, found := android_bundle_proto.ScreenDensity_DensityAlias_value[density]
+		v, found := bundle_proto.ScreenDensity_DensityAlias_value[density]
 		if !found {
 			return fmt.Errorf("bad screen density value: %q", density)
 		}
-		targetConfig.screenDpi[android_bundle_proto.ScreenDensity_DensityAlias(v)] = true
+		targetConfig.screenDpi[bundle_proto.ScreenDensity_DensityAlias(v)] = true
 	}
 	return nil
 }
