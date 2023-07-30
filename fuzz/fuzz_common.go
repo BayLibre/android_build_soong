@@ -224,16 +224,16 @@ type FuzzedCodeUsage string
 
 const (
 	undefined FuzzedCodeUsage = "undefined"
-	unknown                   = "unknown"
+	unknown FuzzedCodeUsage = "unknown"
 	// The code being fuzzed exists in a shipped version of Android and runs on
 	// devices in production.
-	shipped = "shipped"
+	shipped FuzzedCodeUsage = "shipped"
 	// The code being fuzzed is not yet in a shipping version of Android, but it
 	// will be at some point in the future.
-	future_version = "future_version"
+	future_version FuzzedCodeUsage = "future_version"
 	// The code being fuzzed is not in a shipping version of Android, and there
 	// are no plans to ship it in the future.
-	experimental = "experimental"
+	experimental FuzzedCodeUsage = "experimental"
 )
 
 func (fuzzed_code_usage FuzzedCodeUsage) isValidFuzzedCodeUsage() bool {
