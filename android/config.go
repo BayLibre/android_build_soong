@@ -1545,7 +1545,7 @@ func (c *deviceConfig) OverridePackageNameFor(name string) string {
 }
 
 func findOverrideValue(overrides []string, name string, errorMsg string) (newValue string, overridden bool) {
-	if overrides == nil || len(overrides) == 0 {
+	if len(overrides) == 0 {
 		return "", false
 	}
 	for _, o := range overrides {
