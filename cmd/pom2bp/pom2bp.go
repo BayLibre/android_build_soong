@@ -373,11 +373,10 @@ func InitRefreshMod(poms []*Pom) error {
 func BazelifyExtraDeps(extraDeps ExtraDeps, modules map[string]*Pom) error {
 	for _, deps := range extraDeps {
 		for _, dep := range deps {
-			bazelName, err := BpNameToBazelTarget(dep, modules)
+			_, err := BpNameToBazelTarget(dep, modules)
 			if err != nil {
 				return err
 			}
-			dep = bazelName
 		}
 
 	}

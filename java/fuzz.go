@@ -203,10 +203,7 @@ func (s *javaFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 			files = append(files, fuzz.FileToZip{SourceFilePath: fPath})
 		}
 
-		archDirs[archOs], ok = s.BuildZipFile(ctx, module, javaFuzzModule.fuzzPackagedModule, files, builder, archDir, archString, hostOrTargetString, archOs, archDirs)
-		if !ok {
-			return
-		}
+		archDirs[archOs], _ = s.BuildZipFile(ctx, module, javaFuzzModule.fuzzPackagedModule, files, builder, archDir, archString, hostOrTargetString, archOs, archDirs)
 	})
 	s.CreateFuzzPackage(ctx, archDirs, fuzz.Java, pctx)
 }

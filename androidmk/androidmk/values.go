@@ -74,6 +74,9 @@ func makeToStringExpression(ms *mkparser.MakeString, file *bpFile) (bpparser.Exp
 				return nil, fmt.Errorf("Unexpected list value %s", ms.Dump())
 			}
 			val, err = addValues(val, stringToStringValue(ret[0]))
+			if err != nil {
+				return nil, err
+			}
 		} else {
 			name, err := extractVariableName(ms.Variables[i].Name, file)
 			if err != nil {

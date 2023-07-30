@@ -3334,7 +3334,6 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				linkFile = android.OptionalPathForPath(sharedLibraryInfo.SharedLibrary)
 				depFile = sharedLibraryInfo.TableOfContents
 
-				ptr = &depPaths.SharedLibs
 				switch libDepTag.Order {
 				case earlyLibraryDependency:
 					ptr = &depPaths.EarlySharedLibs

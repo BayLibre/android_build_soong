@@ -275,6 +275,9 @@ func typeOfStarlarkValue(value starlark.Value) (reflect.Type, error) {
 				return nil, err
 			}
 			valueTypeI, err := typeOfStarlarkValue(value)
+			if err != nil {
+				return nil, err
+			}
 			if valueType.Kind() != reflect.Interface && valueTypeI != valueType {
 				// If we see conflicting value types, change the result value type to an empty interface
 				valueType = reflect.TypeOf([]interface{}{}).Elem()

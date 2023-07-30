@@ -158,7 +158,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			s.Address = proptools.BoolPtr(true)
 		}
 
-		if found, globalSanitizers = android.RemoveFromList("fuzzer", globalSanitizers); found && s.Fuzzer == nil {
+		if found, _ = android.RemoveFromList("fuzzer", globalSanitizers); found && s.Fuzzer == nil {
 			// TODO(b/204776996): HWASan for static Rust binaries isn't supported yet, and fuzzer enables HWAsan
 			if !ctx.RustModule().StaticExecutable() {
 				s.Fuzzer = proptools.BoolPtr(true)
@@ -166,7 +166,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		}
 
 		// Global Diag Sanitizers
-		if found, globalSanitizersDiag = android.RemoveFromList("memtag_heap", globalSanitizersDiag); found &&
+		if found, _ = android.RemoveFromList("memtag_heap", globalSanitizersDiag); found &&
 			s.Diag.Memtag_heap == nil && Bool(s.Memtag_heap) {
 			s.Diag.Memtag_heap = proptools.BoolPtr(true)
 		}

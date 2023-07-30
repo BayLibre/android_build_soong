@@ -1485,7 +1485,6 @@ func (f *Finder) listMatches(node *pathMap,
 
 	dirNames, fileNames := filter(entries)
 
-	subDirs = []*pathMap{}
 	filePaths = make([]string, 0, len(fileNames))
 	for _, fileName := range fileNames {
 		filePaths = append(filePaths, joinCleanPaths(node.path, fileName))

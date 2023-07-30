@@ -65,12 +65,12 @@ func TestMockFs_LstatStatSymlinks(t *testing.T) {
 	stat, err = filesystem.Lstat("/tmp/links/broken")
 	assertStat(t, stat, err, "broken", os.ModeSymlink)
 
-	stat, err = filesystem.Stat("/tmp/links/broken")
+	_, err = filesystem.Stat("/tmp/links/broken")
 	assertErr(t, err, "stat /tmp/links/nothingHere: file does not exist")
 
 	stat, err = filesystem.Lstat("/tmp/links/recursive")
 	assertStat(t, stat, err, "recursive", os.ModeSymlink)
 
-	stat, err = filesystem.Stat("/tmp/links/recursive")
+	_, err = filesystem.Stat("/tmp/links/recursive")
 	assertErr(t, err, "read /tmp/links/recursive: too many levels of symbolic links")
 }

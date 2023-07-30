@@ -589,6 +589,9 @@ func (m *MockFs) Rename(sourcePath string, destPath string) error {
 
 	// validate dest parent exists
 	destPath, err = m.resolve(destPath, false)
+	if err != nil {
+		return err
+	}
 	destParentPath := filepath.Dir(destPath)
 	destParentDir, err := m.getDir(destParentPath, false)
 	if err != nil {
@@ -806,11 +809,13 @@ func (m *MockFs) getDir(path string, createIfMissing bool) (dir *mockDir, err er
 		}
 	}
 	return childDir, nil
-
 }
 
 func (m *MockFs) Remove(path string) (err error) {
 	path, err = m.resolve(path, false)
+	if err != nil {
+		return err
+	}
 	parentPath, leaf := pathSplit(path)
 	if len(leaf) == 0 {
 		return fmt.Errorf("Cannot remove %v\n", path)

@@ -192,12 +192,14 @@ func (oz *OutputZip) addManifest(manifestPath string) error {
 		}
 	}
 	contents, err := os.ReadFile(manifestPath)
-	if err == nil {
-		fh, buf, err := jar.ManifestFileContents(contents)
-		if err == nil {
-			_, err = oz.addZipEntry(jar.ManifestFile, ZipEntryFromBuffer{fh, buf})
-		}
+	if err != nil {
+		return err
 	}
+	fh, buf, err := jar.ManifestFileContents(contents)
+	if err != nil {
+		return err
+	}
+	_, err = oz.addZipEntry(jar.ManifestFile, ZipEntryFromBuffer{fh, buf})
 	return err
 }
 

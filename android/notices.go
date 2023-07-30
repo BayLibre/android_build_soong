@@ -76,7 +76,7 @@ func buildNoticeOutputFromLicenseMetadata(
 	if libraryName != "" {
 		cmd = cmd.FlagWithArg("--product ", libraryName)
 	}
-	cmd = cmd.Inputs(modulesLicenseMetadata(ctx, modules...))
+	cmd.Inputs(modulesLicenseMetadata(ctx, modules...))
 	rule.Build(ruleName, "container notice file")
 }
 

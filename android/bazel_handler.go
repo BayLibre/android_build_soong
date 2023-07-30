@@ -1131,7 +1131,7 @@ func (context *mixedBuildBazelContext) runCquery(config Config, ctx invokeBazelC
 func writeFileBytesIfChanged(path string, contents []byte, perm os.FileMode) error {
 	oldContents, err := os.ReadFile(path)
 	if err != nil || !bytes.Equal(contents, oldContents) {
-		err = os.WriteFile(path, contents, perm)
+		return os.WriteFile(path, contents, perm)
 	}
 	return nil
 }

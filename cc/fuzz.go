@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -457,6 +458,7 @@ func (s *ccRustFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) 
 		}
 		archDirs[archOs], ok = s.BuildZipFile(ctx, module, fpm, files, builder, archDir, archString, hostOrTargetString, archOs, archDirs)
 		if !ok {
+			fmt.Errorf("failed to build zip file for %q", module.Name())
 			return
 		}
 	})

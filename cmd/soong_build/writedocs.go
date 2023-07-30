@@ -113,6 +113,9 @@ func writeDocs(ctx *android.Context, filename string) error {
 	err = tmpl.Execute(buf, packages)
 	if err == nil {
 		err = os.WriteFile(filename, buf.Bytes(), 0666)
+		if err != nil {
+			return err
+		}
 	}
 
 	// Now, produce per-package module lists with detailed information, and a list

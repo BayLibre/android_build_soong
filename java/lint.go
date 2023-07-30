@@ -647,7 +647,6 @@ func (l *lintSingleton) generateLintReportZips(ctx android.SingletonContext) {
 	}
 
 	var outputs []*lintOutputs
-	var dirs []string
 	ctx.VisitAllModules(func(m android.Module) {
 		if ctx.Config().KatiEnabled() && !m.ExportedToMake() {
 			return
@@ -666,8 +665,6 @@ func (l *lintSingleton) generateLintReportZips(ctx android.SingletonContext) {
 			outputs = append(outputs, l.lintOutputs())
 		}
 	})
-
-	dirs = android.SortedUniqueStrings(dirs)
 
 	zip := func(outputPath android.WritablePath, get func(*lintOutputs) android.Path) {
 		var paths android.Paths

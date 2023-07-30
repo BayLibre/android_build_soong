@@ -700,7 +700,7 @@ func TestCanUseCache(t *testing.T) {
 
 	// run the second finder
 	finder2 := finderWithSameParams(t, finder)
-	foundPaths = finder2.FindNamedAt("/tmp", "findme.txt")
+	finder2.FindNamedAt("/tmp", "findme.txt")
 	// check results
 	fs.AssertSameReadDirCalls(t, filesystem.ReadDirCalls, []string{})
 	fs.AssertSameReadDirCalls(t, filesystem.StatCalls, statCalls)
