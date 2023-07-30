@@ -73,8 +73,6 @@ func (n *NinjaReader) Close() {
 	case <-timeoutCh:
 		n.status.Error(fmt.Sprintf("ninja fifo didn't finish after %s", NINJA_READER_CLOSE_TIMEOUT.String()))
 	}
-
-	return
 }
 
 func (n *NinjaReader) run() {

@@ -79,7 +79,6 @@ func (c *cmakelistsGeneratorSingleton) GenerateBuildActions(ctx android.Singleto
 	dir := filepath.Join(android.AbsSrcDirForExistingUseCases(), cLionAggregateProjectsDirectory)
 	filepath.Walk(dir, linkAggregateCMakeListsFiles)
 
-	return
 }
 
 func getEnvVariable(name string, ctx android.SingletonContext) string {

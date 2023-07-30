@@ -148,7 +148,6 @@ func fieldsByIndex(v reflect.Value, index []int, values *[]reflect.Value) {
 		return
 	}
 	fieldsByIndex(v.Field(index[0]), index[1:], values)
-	return
 }
 
 func isSliceOfStruct(v reflect.Value) bool {

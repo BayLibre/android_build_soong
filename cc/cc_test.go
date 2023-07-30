@@ -155,7 +155,6 @@ func testCcError(t *testing.T, pattern string, bp string) {
 	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
 	config.TestProductVariables.Platform_vndk_version = StringPtr("29")
 	testCcErrorWithConfig(t, pattern, config)
-	return
 }
 
 // testCcErrorProductVndk runs tests using the prepareForCcTest
@@ -170,7 +169,6 @@ func testCcErrorProductVndk(t *testing.T, pattern string, bp string) {
 	config.TestProductVariables.ProductVndkVersion = StringPtr("current")
 	config.TestProductVariables.Platform_vndk_version = StringPtr("29")
 	testCcErrorWithConfig(t, pattern, config)
-	return
 }
 
 const (

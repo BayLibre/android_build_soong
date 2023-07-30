@@ -896,8 +896,6 @@ func (handler *ccLibraryBazelHandler) generateStaticBazelBuildActions(ctx androi
 			Direct(outputFilePath).
 			Build(),
 	})
-
-	return
 }
 
 // generateSharedBazelBuildActions constructs the SharedLibraryInfo Soong
