@@ -778,7 +778,7 @@ func filesHaveSameContents(a, b string) bool {
 			return false
 		}
 
-		if bytes.Compare(bufA[:toRead], bufB[:toRead]) != 0 {
+		if !bytes.Equal(bufA[:toRead], bufB[:toRead]) {
 			return false
 		}
 

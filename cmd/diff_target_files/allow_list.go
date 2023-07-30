@@ -189,7 +189,7 @@ func diffIgnoringMatchingLines(a *ZipArtifactFile, b *ZipArtifactFile, ignoreMat
 		return false, err
 	}
 
-	return bytes.Compare(bufA, bufB) == 0, nil
+	return bytes.Equal(bufA, bufB), nil
 }
 
 func applyAllowLists(diff zipDiff, allowLists []allowList) (zipDiff, error) {

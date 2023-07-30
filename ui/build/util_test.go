@@ -79,7 +79,7 @@ func TestCopyFile(t *testing.T) {
 		t.Fatalf("got %v, expecting nil error reading dst %q file", err, dst)
 	}
 
-	if bytes.Compare(data, dstData) != 0 {
+	if !bytes.Equal(data, dstData) {
 		t.Errorf("got %q, expecting data %q from dst %q text file", string(data), string(dstData), dst)
 	}
 }

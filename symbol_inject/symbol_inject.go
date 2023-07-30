@@ -70,7 +70,7 @@ func InjectStringSymbol(file *File, w io.Writer, symbol, value, from string) err
 		if err != nil {
 			return err
 		}
-		if bytes.Compare(existing, expected) != 0 {
+		if !bytes.Equal(existing, expected) {
 			return fmt.Errorf("existing symbol contents %q did not match expected value %q",
 				string(existing), string(expected))
 		}
