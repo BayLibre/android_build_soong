@@ -16,6 +16,24 @@
       "message": "Can you move the new variable in here?",
       "revId": "496d122ce0eeeebaeeb1fc58ceeaf42df444e32c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe204f5e_8a6a1fd7",
+        "filename": "java/app_builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1975910
+      },
+      "writtenOn": "2023-07-31T19:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "379e87ed_bb58a29b",
+      "revId": "496d122ce0eeeebaeeb1fc58ceeaf42df444e32c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
