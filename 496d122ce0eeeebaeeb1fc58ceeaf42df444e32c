@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "379e87ed_bb58a29b",
+        "filename": "java/app_builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-07-31T19:13:18Z",
+      "side": 1,
+      "message": "Can you move the new variable in here?",
+      "revId": "496d122ce0eeeebaeeb1fc58ceeaf42df444e32c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
