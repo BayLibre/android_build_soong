@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fd0c445_fba74fb3",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1944425
+      },
+      "writtenOn": "2023-07-31T15:34:26Z",
+      "side": 1,
+      "message": "I think your idea of moving this lib or these annotations into the flag lib i great. Will we move these annotations into that lib? Thank you",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "d0a5edb18dbd8b8a74370a84e94478f7d7ab991e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
