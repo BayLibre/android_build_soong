@@ -234,6 +234,30 @@
       },
       "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6fc5653_427ff982",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-31T18:43:51Z",
+      "side": 1,
+      "message": "Considering this is going to become necessary immediately, I\u0027d recommend considering either:\n1. making this change now, so it\u0027s not necessary to change the relevant tests later\n2. making that change in a CL separate from the related test configuration changes",
+      "parentUuid": "1cbb6a1d_6234c500",
+      "range": {
+        "startLine": 615,
+        "startChar": 23,
+        "endLine": 615,
+        "endChar": 24
+      },
+      "revId": "6f9d751c1ca4a789bccc59bcff24fa511551cb44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
