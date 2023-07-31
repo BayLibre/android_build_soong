@@ -205,6 +205,8 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 	if Bool(s.Hwaddress) {
 		s.Address = nil
+		// Rust SCS does not support hwaddress
+		s.Scs = nil
 	}
 
 	// Memtag_heap is only implemented on AArch64.
