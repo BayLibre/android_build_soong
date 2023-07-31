@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67912312_48d3b94a",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2023-07-31T14:41:16Z",
+      "side": 1,
+      "message": "Is there a reason to provide only an rlib? (Dylib linkage is the default on platform, rust.RustLibraryFactory would provide both)",
+      "range": {
+        "startLine": 679,
+        "startChar": 23,
+        "endLine": 679,
+        "endChar": 45
+      },
+      "revId": "e9dd425b72a17dc312b019e57e54d38bc9c15ae9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
