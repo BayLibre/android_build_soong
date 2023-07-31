@@ -46,6 +46,30 @@
       },
       "revId": "fa25bf0c08fe732847254d09c78096261809ff06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd7029dc_ecca1ece",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-07-31T17:44:16Z",
+      "side": 1,
+      "message": "I would expect everything to work today because Soong is building all of inputs/outputs, but the coupling _inside_ the code is based on the assumption of Soong paths, etc which is why it is linking against Soong.\n\nI\u0027d suspect that to use this in Bazel we\u0027d need to rewriting it heavily to not rely on Soong path handling etc.",
+      "parentUuid": "78416db6_310a8b7d",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "fa25bf0c08fe732847254d09c78096261809ff06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
