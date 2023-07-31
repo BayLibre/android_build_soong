@@ -16,6 +16,24 @@
       "message": "I\u0027m not familiar with Go style, but it seems weird to call the same method three times in a row. Maybe do something like\n\n```go\nparts \u003d strings.Split(pkgVersion, \".\")\nmajor \u003d parts[0]\nminor \u003d parts[1]\npatch \u003d parts[2]\n```",
       "revId": "f181b6aeef4cce813b33b8f519a3039855cdff3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92578a19_0298e09a",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2023-07-31T13:32:18Z",
+      "side": 1,
+      "message": "Ah yes -- thanks! I\u0027ve cleaned it up a bit more.",
+      "parentUuid": "b68427f5_5c9919be",
+      "revId": "f181b6aeef4cce813b33b8f519a3039855cdff3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
