@@ -51,6 +51,24 @@
       "message": "Why is this needed?",
       "revId": "7a49aebfad621075dd28c0c29f3eb96f994dd6e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb956d3_8c43d689",
+        "filename": "sysprop/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 2029430
+      },
+      "writtenOn": "2023-07-31T15:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02ab17d4_d0b7fd31",
+      "revId": "7a49aebfad621075dd28c0c29f3eb96f994dd6e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
