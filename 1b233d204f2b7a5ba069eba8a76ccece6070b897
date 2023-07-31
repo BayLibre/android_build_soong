@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c668e3c0_a474d5b3",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-07-31T18:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20969897_0ab4c7a7",
+      "range": {
+        "startLine": 1405,
+        "startChar": 2,
+        "endLine": 1405,
+        "endChar": 42
+      },
+      "revId": "1b233d204f2b7a5ba069eba8a76ccece6070b897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a75e2beb_200ac85b",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-31T11:48:21Z",
       "side": 1,
       "message": "nit: make it clear that `target/product/emulator_x86_64/system` is deliberately not here.",
+      "range": {
+        "startLine": 1264,
+        "startChar": 2,
+        "endLine": 1264,
+        "endChar": 117
+      },
+      "revId": "1b233d204f2b7a5ba069eba8a76ccece6070b897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0186aeb2_b7388ed9",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-07-31T18:55:14Z",
+      "side": 1,
+      "message": "Added a comment.",
+      "parentUuid": "a75e2beb_200ac85b",
       "range": {
         "startLine": 1264,
         "startChar": 2,
