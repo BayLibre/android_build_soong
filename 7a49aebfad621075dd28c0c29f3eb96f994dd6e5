@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9fe790c_012ca360",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-07-31T14:18:30Z",
+      "side": 1,
+      "message": "The usual syntax for this is:\n\n```\nBug: 270547306\n```\n\nwithout the `b/` part.",
+      "revId": "7a49aebfad621075dd28c0c29f3eb96f994dd6e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ab17d4_d0b7fd31",
+        "filename": "sysprop/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-07-31T14:18:30Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "revId": "7a49aebfad621075dd28c0c29f3eb96f994dd6e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
