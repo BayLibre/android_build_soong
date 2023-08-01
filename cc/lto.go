@@ -137,8 +137,12 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 
 		// If the module does not have a profile, be conservative and limit cross TU inline
 		// limit to 5 LLVM IR instructions, to balance binary size increase and performance.
-		if !ctx.Darwin() && !ctx.isPgoCompile() && !ctx.isAfdoCompile() {
-			ltoLdFlags = append(ltoLdFlags, "-Wl,-plugin-opt,-import-instr-limit=5")
+		if lto.ThinLTO() && !ctx.Darwin() {
+			if ctx.isPgoCompile() || ctx.isAfdoCompile() {
+				ltoLdFlags = append(ltoLdFlags, "-Wl,-plugin-opt,-import-instr-limit=30")
+			} else {
+				ltoLdFlags = append(ltoLdFlags, "-Wl,-plugin-opt,-import-instr-limit=5")
+			}
 		}
 
 		flags.Local.CFlags = append(flags.Local.CFlags, ltoCFlags...)
