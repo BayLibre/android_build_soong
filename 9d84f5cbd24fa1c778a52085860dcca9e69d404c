@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df657aeb_f99f9b3e",
+        "filename": "java/base.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-01T15:48:17Z",
+      "side": 1,
+      "message": "Let\u0027s omit the type of the variable in the variable name, (e.g. `unconditionallyExportedProguardFlagsDepsets` -\u003e `unconditionallyExportedProguardFlags`) I think it will make for shorter lines and improve readability, see https://google.github.io/styleguide/go/decisions#variable-names",
+      "range": {
+        "startLine": 1673,
+        "startChar": 0,
+        "endLine": 1673,
+        "endChar": 86
+      },
+      "revId": "9d84f5cbd24fa1c778a52085860dcca9e69d404c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4015f169_04557358",
+        "filename": "java/base.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1678,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-01T15:48:17Z",
+      "side": 1,
+      "message": "depProguardInfo?",
+      "range": {
+        "startLine": 1678,
+        "startChar": 2,
+        "endLine": 1678,
+        "endChar": 13
+      },
+      "revId": "9d84f5cbd24fa1c778a52085860dcca9e69d404c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9fa1e05_90953aa4",
+        "filename": "java/base.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-01T15:48:17Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tif depJavaInfo.unconditionallyExportedProugardFlags !\u003d nil {\n\t\t\tunconditionallyExportedProguardFlagsDepsets \u003d append(unconditionallyExportedProguardFlagsDepsets, depJavaInfo.unconditionallyExportedProugardFlags)\n\t\t\tproguardFlagsForThisModuleDepsets \u003d append(proguardFlagsForThisModuleDepsets, depJavaInfo.unconditionallyExportedProugardFlags)\n\t\t}\n\n\t\tif depTag \u003d\u003d staticLibTag \u0026\u0026 depJavaInfo.TransitiveProguardFlagsFiles !\u003d nil {\n\t\t\tif proptools.Bool(j.dexProperties.Optimize.Export_proguard_flags_files) {\n\t\t\t\tunconditionallyExportedProguardFlagsDepsets \u003d append(unconditionallyExportedProguardFlagsDepsets, depJavaInfo.TransitiveProguardFlagsFiles)\n\t\t\t} \n\t\t\tproguardFlagsForThisModuleDepsets \u003d append(proguardFlagsForThisModuleDepsets, depJavaInfo.TransitiveProguardFlagsFiles)\n\t\t\t}\n\t\t}\n\t})\n```\n\nIn my mind I thought this would look more like the above. Does this still pass your tests? I prefer it because it makes it clearer that the transitive part of the depsets is fully created during the dep visit (by removing line 1694)",
+      "range": {
+        "startLine": 1681,
+        "startChar": 0,
+        "endLine": 1694,
+        "endChar": 131
+      },
+      "revId": "9d84f5cbd24fa1c778a52085860dcca9e69d404c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f018228_5ac20e67",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-01T15:48:17Z",
+      "side": 1,
+      "message": "Typo Prougard -\u003e Proguard",
+      "range": {
+        "startLine": 234,
+        "startChar": 24,
+        "endLine": 234,
+        "endChar": 32
+      },
+      "revId": "9d84f5cbd24fa1c778a52085860dcca9e69d404c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
