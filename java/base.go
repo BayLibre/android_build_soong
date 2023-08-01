@@ -1691,7 +1691,7 @@ func (j *Module) collectProguardSpecInfo(ctx android.ModuleContext) ProguardSpec
 		}
 	})
 
-	exportedFlagsFiles := android.ExistentPathsForModuleSrc(ctx, j.dexProperties.Optimize.Proguard_flags_files)
+	exportedFlagsFiles := android.PathsForModuleSrc(ctx, j.dexProperties.Optimize.Proguard_flags_files)
 	unconditionallyExportedFlagsFiles := android.Paths{}
 	if proptools.Bool(j.dexProperties.Optimize.Export_proguard_flags_files) {
 		unconditionallyExportedFlagsFiles = exportedFlagsFiles

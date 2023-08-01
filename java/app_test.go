@@ -3485,11 +3485,7 @@ func TestExportedProguardFlagFiles(t *testing.T) {
 				proguard_flags_files: ["lib1proguard.cfg"],
 			}
 		}
-	`,
-		android.FixtureMergeMockFs(android.MockFS{
-			"lib1proguard.cfg": nil,
-		}),
-	)
+	`)
 
 	m := ctx.ModuleForTests("foo", "android_common")
 	hasLib1Proguard := false

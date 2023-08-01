@@ -329,15 +329,7 @@ func TestD8(t *testing.T) {
 }
 
 func TestProguardFlagsInheritanceStaticLibs(t *testing.T) {
-	result := android.GroupFixturePreparers(
-		PrepareForTestWithJavaDefaultModules,
-		android.FixtureMergeMockFs(android.MockFS{
-			"primary.flags":         nil,
-			"primary_android.flags": nil,
-			"secondary.flags":       nil,
-			"tertiary.flags":        nil,
-		}),
-	).RunTestWithBp(t, `
+	result := PrepareForTestWithJavaDefaultModules.RunTestWithBp(t, `
 		android_app {
 			name: "app",
 			static_libs: [
@@ -564,13 +556,7 @@ func TestProguardFlagsInheritance(t *testing.T) {
 
 	for _, tc := range testcases {
 		t.Run(tc.name, func(t *testing.T) {
-			result := android.GroupFixturePreparers(
-				PrepareForTestWithJavaDefaultModules,
-				android.FixtureMergeMockFs(android.MockFS{
-					directDepFlagsFileName:     nil,
-					transitiveDepFlagsFileName: nil,
-				}),
-			).RunTestWithBp(t,
+			result := PrepareForTestWithJavaDefaultModules.RunTestWithBp(t,
 				fmt.Sprintf(
 					bp,
 					tc.depType,
