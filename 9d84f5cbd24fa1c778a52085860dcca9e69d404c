@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15194ff6_bff8b40a",
+        "filename": "java/base.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-01T21:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df657aeb_f99f9b3e",
+      "range": {
+        "startLine": 1673,
+        "startChar": 0,
+        "endLine": 1673,
+        "endChar": 86
+      },
+      "revId": "9d84f5cbd24fa1c778a52085860dcca9e69d404c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4015f169_04557358",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-01T15:48:17Z",
       "side": 1,
       "message": "depProguardInfo?",
+      "range": {
+        "startLine": 1678,
+        "startChar": 2,
+        "endLine": 1678,
+        "endChar": 13
+      },
+      "revId": "9d84f5cbd24fa1c778a52085860dcca9e69d404c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "415123a6_ea0592cb",
+        "filename": "java/base.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1678,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-01T21:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4015f169_04557358",
       "range": {
         "startLine": 1678,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd0a555_a9332ee9",
+        "filename": "java/base.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-01T21:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9fa1e05_90953aa4",
+      "range": {
+        "startLine": 1681,
+        "startChar": 0,
+        "endLine": 1694,
+        "endChar": 131
+      },
+      "revId": "9d84f5cbd24fa1c778a52085860dcca9e69d404c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f018228_5ac20e67",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-08-01T15:48:17Z",
       "side": 1,
       "message": "Typo Prougard -\u003e Proguard",
+      "range": {
+        "startLine": 234,
+        "startChar": 24,
+        "endLine": 234,
+        "endChar": 32
+      },
+      "revId": "9d84f5cbd24fa1c778a52085860dcca9e69d404c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b20b93_086e5c48",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-01T21:48:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f018228_5ac20e67",
       "range": {
         "startLine": 234,
         "startChar": 24,
