@@ -1011,16 +1011,7 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 			Tags: tags,
 		}, attrs)
 	} else {
-		// The Out prop is not in an immediately accessible field
-		// in the Module struct, so use GetProperties and cast it
-		// to the known struct prop.
-		var outs []string
-		for _, propIntf := range m.GetProperties() {
-			if props, ok := propIntf.(*genRuleProperties); ok {
-				outs = props.Out
-				break
-			}
-		}
+		outs := m.RawOutputFiles()
 		bazelName := m.Name()
 		for _, out := range outs {
 			if out == bazelName {
@@ -1046,6 +1037,22 @@ func (m *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 			Tags: tags,
 		}, attrs)
 	}
+}
+
+// RawOutputFfiles returns the raw outputs specified in Android.bp
+// This does not contain the fully resolved path relative to the top of the tree
+func (g *Module) RawOutputFiles() []string {
+	// The Out prop is not in an immediately accessible field
+	// in the Module struct, so use GetProperties and cast it
+	// to the known struct prop.
+	var outs []string
+	for _, propIntf := range g.GetProperties() {
+		if props, ok := propIntf.(*genRuleProperties); ok {
+			outs = props.Out
+			break
+		}
+	}
+	return outs
 }
 
 var Bool = proptools.Bool
