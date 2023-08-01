@@ -48,6 +48,8 @@ var (
 		"-Wno-multichar",
 
 		"-O2",
+		"-mllvm",
+		"-hot-cold-split=true",
 		"-fdebug-default-version=5",
 
 		"-fno-strict-aliasing",
