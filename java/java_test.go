@@ -2334,34 +2334,71 @@ java_test_host {
 }
 
 func TestJavaExcludeStaticLib(t *testing.T) {
-	ctx, _ := testJava(t, `
-	java_library {
-		name: "bar",
-	}
-	java_library {
-		name: "foo",
-	}
-	java_library {
-		name: "baz",
-		static_libs: [
-			"foo",
-			"bar",
-		],
-		exclude_static_libs: [
-			"bar",
-		],
-	}
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		android.FixtureMergeMockFs(map[string][]byte{
+			"frameworks/base/Android.bp": nil,
+		}),
+	).
+		RunTestWithBp(t, `
+		java_library {
+			name: "bar",
+		}
+		java_library {
+			name: "foo",
+		}
+		java_library {
+			name: "baz",
+			static_libs: [
+				"foo",
+				"bar",
+			],
+			exclude_static_libs: [
+				"bar",
+			],
+		}
 	`)
 
-	// "bar" not included as dependency of "baz"
-	CheckModuleDependencies(t, ctx, "baz", "android_common", []string{
-		`core-lambda-stubs`,
-		`ext`,
-		`foo`,
-		`framework`,
-		`stable-core-platform-api-stubs-system-modules`,
-		`stable.core.platform.api.stubs`,
-	})
+	// "baz" does not depend on "bar" if frameworks/base directory exists
+	android.AssertBoolEquals(t, "baz expected to not depend on bar", false,
+		CheckModuleHasDependency(t, result.TestContext, "baz", "android_common", "bar"))
+}
+
+func TestJavaFromTextStaticLibsWithoutFrameworksBase(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetBuildFromTextStub(true)
+		}),
+	).
+		RunTestWithBp(t, `
+		java_library {
+			name: "bar",
+		}
+		java_library {
+			name: "foo.from-text",
+		}
+		java_library {
+			name: "baz",
+			static_libs: [
+				"foo.from-text",
+				"bar",
+			],
+			exclude_static_libs: [
+				"bar",
+			],
+		}
+	`)
+
+	// "baz" depends on "bar" because exclude_static_libs is not respected
+	// if frameworks/base directory does not exist
+	android.AssertBoolEquals(t, "baz expected to depend on bar", true,
+		CheckModuleHasDependency(t, result.TestContext, "baz", "android_common", "bar"))
+
+	// "baz" does not depends on "foo.from-text" because static libs with ".from-text" suffix
+	// are removed if frameworks/base directory does not exist
+	android.AssertBoolEquals(t, "baz not expected to depend on foo.from-text", false,
+		CheckModuleHasDependency(t, result.TestContext, "baz", "android_common", "foo.from-text"))
 }
 
 func TestJavaLibraryWithResourcesStem(t *testing.T) {
