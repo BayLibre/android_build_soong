@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5378c748_ef2eea35",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-02T22:18:55Z",
+      "side": 1,
+      "message": "I think if there was previously a concurrent map access then there is now a data race on the `closed` field.  There is no synchronization between the writer and the readers, which could be in different goroutines.\n\nFor example, a call to `StartAction` could have finished checking `cp.closed` and moved on to `cp.criticalPath.StartAction` when another goroutines enters `Flush`, updates `cp.closed` too late, and then calls `cp.criticalPath.criticalPath()` concurrently.",
+      "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
