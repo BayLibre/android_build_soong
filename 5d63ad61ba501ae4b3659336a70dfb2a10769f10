@@ -33,6 +33,24 @@
       "message": "I think if there was previously a concurrent map access then there is now a data race on the `closed` field.  There is no synchronization between the writer and the readers, which could be in different goroutines.\n\nFor example, a call to `StartAction` could have finished checking `cp.closed` and moved on to `cp.criticalPath.StartAction` when another goroutines enters `Flush`, updates `cp.closed` too late, and then calls `cp.criticalPath.criticalPath()` concurrently.",
       "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a8798dd_bb0edf12",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-08-02T23:43:00Z",
+      "side": 1,
+      "message": "I thought StartAction() FinishAction() Flush() are called from status.go, and status.go has a lock for them. https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/ui/status/status.go;l\u003d283?q\u003d%22FinishAction%22%20s.lock\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main\n\nWe\u0027d better add a lock for critical_path_logger? or is it okay to rely on status.go?",
+      "parentUuid": "5378c748_ef2eea35",
+      "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
