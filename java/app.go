@@ -200,10 +200,6 @@ func (a *AndroidApp) IsInstallable() bool {
 	return Bool(a.properties.Installable)
 }
 
-func (a *AndroidApp) ExportedProguardFlagFiles() android.Paths {
-	return nil
-}
-
 func (a *AndroidApp) ResourcesNodeDepSet() *android.DepSet[*resourcesNode] {
 	return a.aapt.resourcesNodesDepSet
 }
@@ -482,8 +478,11 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 func (a *AndroidApp) proguardBuildActions(ctx android.ModuleContext) {
 	var staticLibProguardFlagFiles android.Paths
 	ctx.VisitDirectDeps(func(m android.Module) {
-		if lib, ok := m.(LibraryDependency); ok && ctx.OtherModuleDependencyTag(m) == staticLibTag {
-			staticLibProguardFlagFiles = append(staticLibProguardFlagFiles, lib.ExportedProguardFlagFiles()...)
+		depTag := ctx.OtherModuleDependencyTag(m)
+		depProguardInfo := ctx.OtherModuleProvider(m, ProguardSpecInfoProvider).(ProguardSpecInfo)
+		staticLibProguardFlagFiles = append(staticLibProguardFlagFiles, depProguardInfo.UnconditionallyExportedProguardFlags.ToList()...)
+		if depTag == staticLibTag || depProguardInfo.Export_proguard_flags_files {
+			staticLibProguardFlagFiles = append(staticLibProguardFlagFiles, depProguardInfo.ProguardFlagsFiles.ToList()...)
 		}
 	})
 
