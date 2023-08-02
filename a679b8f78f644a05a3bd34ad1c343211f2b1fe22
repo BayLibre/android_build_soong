@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331a6808_267786a4",
+        "filename": "android/util.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-02T23:57:40Z",
+      "side": 1,
+      "message": "a",
+      "range": {
+        "startLine": 573,
+        "startChar": 13,
+        "endLine": 573,
+        "endChar": 15
+      },
+      "revId": "a679b8f78f644a05a3bd34ad1c343211f2b1fe22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "135b8930_b04ae12c",
+        "filename": "java/base.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-02T23:57:40Z",
+      "side": 1,
+      "message": "can we make it so that if `j` is an app we do this, but if not we use the standard PathForModuleSrc, so that we don\u0027t allow for the introduction of any more regressions than are currently possible?",
+      "range": {
+        "startLine": 1694,
+        "startChar": 1,
+        "endLine": 1694,
+        "endChar": 108
+      },
+      "revId": "a679b8f78f644a05a3bd34ad1c343211f2b1fe22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
