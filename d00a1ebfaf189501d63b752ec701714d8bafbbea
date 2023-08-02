@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26fed0eb_0fc67ad2",
+        "filename": "java/app.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-02T18:50:47Z",
+      "side": 1,
+      "message": "Discussed offline, as we\u0027re now adding this module\u0027s proguard files to `extraProguardFlagFiles` we should probably rename this to something like `allProguardFlagFiles` and use this in dex.go instead of the combination of `extraProguardFlagFiles`.\n\nUnfortunately we have to temporarily deal with the possibility that an android_app with disabled optimization can specify a non-existent flag file, and we newly call PathForModuleSrc on this flag file which can cause a Soong failure. For now I propose that we make it \"ok\" for there to be a missing file just in the case where the module is an app *and* optimize is disabled (can check for this in collectProguardSpecInfo)",
+      "range": {
+        "startLine": 485,
+        "startChar": 10,
+        "endLine": 485,
+        "endChar": 32
+      },
+      "revId": "d00a1ebfaf189501d63b752ec701714d8bafbbea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81750475_7c7b7941",
+        "filename": "java/base.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1689,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-02T18:50:47Z",
+      "side": 1,
+      "message": "I think this `else` is not needed",
+      "range": {
+        "startLine": 1689,
+        "startChar": 4,
+        "endLine": 1689,
+        "endChar": 11
+      },
+      "revId": "d00a1ebfaf189501d63b752ec701714d8bafbbea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
