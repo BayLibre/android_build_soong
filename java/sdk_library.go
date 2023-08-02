@@ -1513,6 +1513,35 @@ func (module *SdkLibrary) contributesToApiSurface(c android.Config) bool {
 	return exists
 }
 
+// The listed modules are the special java_sdk_libraries where apiScope.kind do not match the
+// api surface that the module contribute to. For example, the public droidstubs and java_library
+// do not contribute to the public api surface, but contributes to the core platform api surface.
+// This method returns the full api surface stub lib that
+// the generated java_api_library should depend on.
+func (module *SdkLibrary) alternativeFullApiSurfaceStubLib() string {
+	moduleFullApiSurfaceStubLibMap := map[string]string{
+		"legacy.i18n.module.platform.api": "legacy.core.platform.api.stubs",
+		"stable.i18n.module.platform.api": "stable.core.platform.api.stubs",
+		"conscrypt.module.platform.api":   "stable.core.platform.api.stubs",
+	}
+	fullApisurfaceStubLib := moduleFullApiSurfaceStubLibMap[module.Name()]
+	return fullApisurfaceStubLib
+}
+
+// The listed modules' stubs contents do not match the corresponding txt files,
+// but require additional api contributions to generate the full stubs.
+// This method returns the name of the additional api contribution module
+// for corresponding sdk_library modules.
+func (module *SdkLibrary) apiLibraryAdditionalApiContribution() string {
+	additionalApiContributions := map[string]string{
+		"legacy.i18n.module.platform.api": "i18n.module.public.api.stubs.source.api.contribution",
+		"stable.i18n.module.platform.api": "i18n.module.public.api.stubs.source.api.contribution",
+		"conscrypt.module.platform.api":   "conscrypt.module.public.api.stubs.source.api.contribution",
+	}
+	additionalApiContribution := additionalApiContributions[module.Name()]
+	return additionalApiContribution
+}
+
 func childModuleVisibility(childVisibility []string) []string {
 	if childVisibility == nil {
 		// No child visibility set. The child will use the visibility of the sdk_library.
@@ -1778,7 +1807,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 	mctx.CreateModule(DroidstubsFactory, &props).(*Droidstubs).CallHookIfAvailable(mctx)
 }
 
-func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, apiScope *apiScope) {
+func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, apiScope *apiScope, alternativeFullApiSurfaceStub string) {
 	props := struct {
 		Name                  *string
 		Visibility            []string
@@ -1801,6 +1830,10 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 		apiContributions = append(apiContributions, module.stubsSourceModuleName(scope)+".api.contribution")
 		scope = scope.extends
 	}
+	additionalApiContribution := module.apiLibraryAdditionalApiContribution()
+	if additionalApiContribution != "" {
+		apiContributions = append(apiContributions, additionalApiContribution)
+	}
 
 	props.Api_contributions = apiContributions
 	props.Libs = module.properties.Libs
@@ -1808,6 +1841,9 @@ func (module *SdkLibrary) createApiLibrary(mctx android.DefaultableHookContext, 
 	props.Libs = append(props.Libs, "stub-annotations")
 	props.Static_libs = module.sdkLibraryProperties.Stub_only_static_libs
 	props.Full_api_surface_stub = proptools.StringPtr(apiScope.kind.DefaultJavaLibraryName() + ".from-text")
+	if alternativeFullApiSurfaceStub != "" {
+		props.Full_api_surface_stub = proptools.StringPtr(alternativeFullApiSurfaceStub)
+	}
 
 	// android_module_lib_stubs_current.from-text only comprises api contributions from art, conscrypt and i18n.
 	// Thus, replace with android_module_lib_stubs_current_full.from-text, which comprises every api domains.
@@ -2062,9 +2098,10 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 
 		module.createStubsLibrary(mctx, scope)
 
-		contributesToApiSurface := module.contributesToApiSurface(mctx.Config())
+		alternativeFullApiSurfaceStubLib := module.alternativeFullApiSurfaceStubLib()
+		contributesToApiSurface := module.contributesToApiSurface(mctx.Config()) || alternativeFullApiSurfaceStubLib != ""
 		if contributesToApiSurface {
-			module.createApiLibrary(mctx, scope)
+			module.createApiLibrary(mctx, scope, alternativeFullApiSurfaceStubLib)
 		}
 
 		module.createTopLevelStubsLibrary(mctx, scope, contributesToApiSurface)
