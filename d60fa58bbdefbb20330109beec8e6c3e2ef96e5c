@@ -16,6 +16,24 @@
       "message": "I\u0027m not 100% sure that it is strictly necessary to use `RecentlyX` instead of just `X`. The only difference should be that Kotlin treats nullability issues related to items annotated with `RecentlyX` as warnings and nullability issues related to items annotated with `X` as errors.\n\nAlso, I\u0027m not sure that the existing code always uses the previous API as the basis for nullability migration. I have not dug through Soong. It could very well use a fixed version, e.g. version 30. Even if it does use the previous api there is no need for it to always do that. So, it may be better to make the property more specific, e.g. `nullability_base_api` or something like that.",
       "revId": "d60fa58bbdefbb20330109beec8e6c3e2ef96e5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00d66481_e00d4693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-02T17:59:25Z",
+      "side": 1,
+      "message": "I have observed from [presubmit failures](https://android-build.corp.google.com/artifact/pending/P60408460/cf_arm64_only_phone-trunk_staging-userdebug/latest/view/logs%2Fbuild_error.log) that treating nullability issues as warnings are necessary for some packages. \n\nSoong currently [hardcodes some selected packages](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/Android.bp;drc\u003d43649f1d9b36249dcfe5ecd2d0e11a4cbf88cf65;l\u003d496) to treat nullability issues as warnings, but this is not enough to resolve build failures, and hardcoding currently failing packages instead of passing `--migrate-nullness` as input to metalava will lead to larger discrepancy between from-text stub and from-source stubs.",
+      "parentUuid": "5228be68_b3183e12",
+      "revId": "d60fa58bbdefbb20330109beec8e6c3e2ef96e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
