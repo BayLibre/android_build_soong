@@ -2312,27 +2312,37 @@ java_test_host {
 }
 
 func TestJavaExcludeStaticLib(t *testing.T) {
-	ctx, _ := testJava(t, `
-	java_library {
-		name: "bar",
-	}
-	java_library {
-		name: "foo",
-	}
-	java_library {
-		name: "baz",
-		static_libs: [
-			"foo",
-			"bar",
-		],
-		exclude_static_libs: [
-			"bar",
-		],
-	}
-	`)
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.SetBuildFromTextStub(true)
+		}),
+		android.FixtureMergeMockFs(map[string][]byte{
+			"frameworks/base/Android.bp": nil,
+		}),
+	).
+		RunTestWithBp(t, `
+		java_library {
+			name: "bar",
+		}
+		java_library {
+			name: "foo",
+		}
+		java_library {
+			name: "baz",
+			static_libs: [
+				"foo",
+				"bar",
+			],
+			exclude_static_libs: [
+				"bar",
+			],
+		}
+		`)
 
 	// "bar" not included as dependency of "baz"
-	CheckModuleDependencies(t, ctx, "baz", "android_common", []string{
+	// if frameworks/base directory exists and is from-text stub build
+	CheckModuleDependencies(t, result.TestContext, "baz", "android_common", []string{
 		`core-lambda-stubs`,
 		`ext`,
 		`foo`,

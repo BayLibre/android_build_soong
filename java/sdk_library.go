@@ -1901,7 +1901,7 @@ func (module *SdkLibrary) createTopLevelStubsLibrary(
 
 	// Add the stub compiling java_library/java_api_library as static lib based on build config
 	staticLib := module.sourceStubLibraryModuleName(apiScope)
-	if mctx.Config().BuildFromTextStub() && contributesToApiSurface {
+	if mctx.Config().BuildFromTextStubDependencySafe(mctx) && contributesToApiSurface {
 		staticLib = module.apiLibraryModuleName(apiScope)
 	}
 	props.Static_libs = append(props.Static_libs, staticLib)

@@ -764,7 +764,22 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 
 	libDeps := ctx.AddVariationDependencies(nil, libTag, j.properties.Libs...)
 
-	j.properties.Static_libs = android.RemoveListFromList(j.properties.Static_libs, j.properties.Exclude_static_libs)
+	// Exclude_static_libs property is used exclusively to link against correct static libs based on
+	// stub build configuration, when removing from-source libs during from-text stub build.
+	// During partial repo builds, there is no guarantee that the from-text static libs exists,
+	// thus the exclude_static_libs property is not respected, regardless of the build config
+	if ctx.Config().BuildFromTextStubDependencySafe(ctx) {
+		j.properties.Static_libs = android.RemoveListFromList(j.properties.Static_libs, j.properties.Exclude_static_libs)
+	} else {
+		fromTextLibsRemovedStaticLibs := []string{}
+		for _, staticLib := range j.properties.Static_libs {
+			if !strings.HasSuffix(staticLib, ".from-text") {
+				fromTextLibsRemovedStaticLibs = append(fromTextLibsRemovedStaticLibs, staticLib)
+			}
+		}
+		j.properties.Static_libs = fromTextLibsRemovedStaticLibs
+	}
+
 	ctx.AddVariationDependencies(nil, staticLibTag, j.properties.Static_libs...)
 
 	// Add dependency on libraries that provide additional hidden api annotations.

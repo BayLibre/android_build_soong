@@ -2050,6 +2050,14 @@ func (c *config) BuildFromTextStub() bool {
 	return c.buildFromTextStub
 }
 
+// On top of checking the config, this method checks if the branch is not a partial repository and
+// frameworks/base directory exists.
+// This method should be used instead of BuildFromTextStub() if the module has dependency
+// on the module defined in frameworks/base directory.
+func (c *config) BuildFromTextStubDependencySafe(ctx PathGlobContext) bool {
+	return c.BuildFromTextStub() && c.FrameworksBaseDirExists(ctx)
+}
+
 func (c *config) SetBuildFromTextStub(b bool) {
 	c.buildFromTextStub = b
 	c.productVariables.Build_from_text_stub = boolPtr(b)
