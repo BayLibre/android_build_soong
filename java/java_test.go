@@ -2322,7 +2322,7 @@ java_test_host {
 }
 
 func TestJavaExcludeStaticLib(t *testing.T) {
-	ctx, _ := testJava(t, `
+	ctx, _ := testJavaWithFS(t, `
 	java_library {
 		name: "bar",
 	}
@@ -2339,7 +2339,10 @@ func TestJavaExcludeStaticLib(t *testing.T) {
 			"bar",
 		],
 	}
-	`)
+	`,
+		map[string][]byte{
+			"frameworks/base/Android.bp": nil,
+		})
 
 	// "bar" not included as dependency of "baz"
 	CheckModuleDependencies(t, ctx, "baz", "android_common", []string{
