@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88dd7a63_9405463e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-02T21:44:08Z",
+      "side": 1,
+      "message": "Had offline discussion with @spandandas@google.com -- placing `android_module_lib_stuvs_current_full.from-text` does not resolve missing dependency issues for art branches, and the module should exist under frameworks/base to resolve the issue, and from-text stub build should not be enabled for art branches.",
+      "parentUuid": "34e549de_901f6655",
+      "range": {
+        "startLine": 14,
+        "startChar": 36,
+        "endLine": 15,
+        "endChar": 45
+      },
+      "revId": "7b19b0c701f9562576cfc9c3c6304017f36d5a97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf97d273_d572b17c",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-02T17:45:58Z",
       "side": 1,
       "message": "nit: //visibility:public is the default visibility, so I think we do not need to explicitly specify this.",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "7b19b0c701f9562576cfc9c3c6304017f36d5a97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "478e264d_38270ab7",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-02T21:44:08Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I have removed this prop.",
+      "parentUuid": "cf97d273_d572b17c",
       "range": {
         "startLine": 69,
         "startChar": 4,
