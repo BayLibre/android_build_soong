@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83245e96_d6a9170c",
+        "filename": "java/app.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-02T19:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26fed0eb_0fc67ad2",
+      "range": {
+        "startLine": 485,
+        "startChar": 10,
+        "endLine": 485,
+        "endChar": 32
+      },
+      "revId": "d00a1ebfaf189501d63b752ec701714d8bafbbea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81750475_7c7b7941",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-02T18:50:47Z",
       "side": 1,
       "message": "I think this `else` is not needed",
+      "range": {
+        "startLine": 1689,
+        "startChar": 4,
+        "endLine": 1689,
+        "endChar": 11
+      },
+      "revId": "d00a1ebfaf189501d63b752ec701714d8bafbbea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c57322d_10abd946",
+        "filename": "java/base.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1689,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-02T19:36:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81750475_7c7b7941",
       "range": {
         "startLine": 1689,
         "startChar": 4,
