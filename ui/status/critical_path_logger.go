@@ -35,17 +35,27 @@ func NewCriticalPathLogger(log logger.Logger, criticalPath *CriticalPath) Status
 type criticalPathLogger struct {
 	log          logger.Logger
 	criticalPath *CriticalPath
+	closed       bool
 }
 
 func (cp *criticalPathLogger) StartAction(action *Action, counts Counts) {
+	if cp.closed {
+		return
+	}
 	cp.criticalPath.StartAction(action)
 }
 
 func (cp *criticalPathLogger) FinishAction(result ActionResult, counts Counts) {
+	if cp.closed {
+		return
+	}
 	cp.criticalPath.FinishAction(result.Action)
 }
 
 func (cp *criticalPathLogger) Flush() {
+	// Flush is called when your outputs should be flushed / closed. No
+	// output is expected after this call.
+	cp.closed = true
 	criticalPath, elapsedTime, criticalTime := cp.criticalPath.criticalPath()
 
 	if len(criticalPath) > 0 {
