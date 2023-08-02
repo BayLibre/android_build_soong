@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b422bea_c09d3270",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-08-02T08:30:09Z",
+      "side": 1,
+      "message": "nit: it\u0027s not obvious what this is, and the linked bug doesn\u0027t explain it either. Please make commit descriptions more descriptive.",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "7a2a870ed612b984e194cae68882ada765a2f854",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad70a009_c31fa253",
+        "filename": "tests/sbom_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-08-02T08:30:09Z",
+      "side": 1,
+      "message": "should this test fail with a different error if not found?",
+      "range": {
+        "startLine": 256,
+        "startChar": 6,
+        "endLine": 256,
+        "endChar": 27
+      },
+      "revId": "7a2a870ed612b984e194cae68882ada765a2f854",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
