@@ -52,6 +52,24 @@
       "parentUuid": "00d66481_e00d4693",
       "revId": "d60fa58bbdefbb20330109beec8e6c3e2ef96e5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "add14aac_41a5ac9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-02T22:27:28Z",
+      "side": 1,
+      "message": "I agree that there should be a more robust way to enforce the code owners to maintain their code based on nullability change. Filed [bug](https://b.corp.google.com/issues/294282503) to track this.",
+      "parentUuid": "c80052ac_63162057",
+      "revId": "d60fa58bbdefbb20330109beec8e6c3e2ef96e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
