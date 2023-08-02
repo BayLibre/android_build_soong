@@ -770,17 +770,9 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 		ctx.CheckbuildFile(a.aarFile)
 	}
 
-	a.exportedProguardFlagFiles = append(a.exportedProguardFlagFiles,
-		android.PathsForModuleSrc(ctx, a.dexProperties.Optimize.Proguard_flags_files)...)
-
-	ctx.VisitDirectDeps(func(m android.Module) {
-		if ctx.OtherModuleDependencyTag(m) == staticLibTag {
-			if lib, ok := m.(LibraryDependency); ok {
-				a.exportedProguardFlagFiles = append(a.exportedProguardFlagFiles, lib.ExportedProguardFlagFiles()...)
-			}
-		}
-	})
-	a.exportedProguardFlagFiles = android.FirstUniquePaths(a.exportedProguardFlagFiles)
+	proguardSpecInfo := a.collectProguardSpecInfo(ctx)
+	ctx.SetProvider(ProguardSpecInfoProvider, proguardSpecInfo)
+	a.exportedProguardFlagFiles = proguardSpecInfo.TransitiveProguardFlagsFiles.ToList()
 
 	prebuiltJniPackages := android.Paths{}
 	ctx.VisitDirectDeps(func(module android.Module) {
