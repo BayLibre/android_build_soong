@@ -87,6 +87,24 @@
       "parentUuid": "6ccbcf18_f9c6ea9a",
       "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53fae589_15cb4961",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-08-03T05:26:18Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/cmd/soong_ui/main.go;l\u003d228?q\u003ddefer%20%5C(%5C)%20criticalPa%20f:soong\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main\n\n```\n\n\tdefer func() {\n\t\tstat.Finish()\n\t\tcriticalPath.WriteToMetrics(met)\n\t\tmet.Dump(soongMetricsFile)\n\t\tif !config.SkipMetricsUpload() {\n\t\t\tbuild.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, metricsFiles...)\n\t\t}\n\t}()\n```\n\nYeah, but stat.Finish() which calls each one\u0027s Flush() is invoked before met.Dump(soongMetricsFile).",
+      "parentUuid": "6ccbcf18_f9c6ea9a",
+      "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
