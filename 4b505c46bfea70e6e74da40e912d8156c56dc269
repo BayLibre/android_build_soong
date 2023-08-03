@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6943a74_a5eefdac",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-03T18:58:14Z",
+      "side": 1,
+      "message": "Agreed, this implementation does not handle the generic case where genrules might generate file types like .aidl/.yacc/... I have filed b/294404181 for this.\n\nI think adding this for Java sounds good. It was not on my critical path since the tests I am working on are primarily cc tests. I will add this partition to java.go in a followup CL.",
+      "parentUuid": "0c1e38e4_6f724b29",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 32
+      },
+      "revId": "4b505c46bfea70e6e74da40e912d8156c56dc269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7ee2718_1094b4a6",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-03T17:53:01Z",
       "side": 1,
       "message": "this seems like an unwanted API outside of bp2build mode, can we limit its usage to bp2build somehow?",
+      "range": {
+        "startLine": 1092,
+        "startChar": 17,
+        "endLine": 1092,
+        "endChar": 31
+      },
+      "revId": "4b505c46bfea70e6e74da40e912d8156c56dc269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "638e7a42_561a4b31",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-03T18:58:14Z",
+      "side": 1,
+      "message": "Limiting it to bp2build sounds reasonable. I have implemented this by looking at `ctx.Config().BuildMode`",
+      "parentUuid": "d7ee2718_1094b4a6",
       "range": {
         "startLine": 1092,
         "startChar": 17,
