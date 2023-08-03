@@ -359,15 +359,22 @@ func (this *stubDecorator) dumpAbi(ctx ModuleContext, symbolList android.Path) {
 	})
 }
 
-func findNextApiLevel(ctx ModuleContext, apiLevel android.ApiLevel) *android.ApiLevel {
+func findPrevApiLevel(ctx ModuleContext, apiLevel android.ApiLevel) *android.ApiLevel {
 	apiLevels := append(ctx.Config().AllSupportedApiLevels(),
 		android.FutureApiLevel)
-	for _, api := range apiLevels {
-		if api.GreaterThan(apiLevel) {
-			return &api
+	if len(apiLevels) == 0 {
+		panic(fmt.Errorf("apiLevels are empty"))
+	}
+	if apiLevel.EqualTo(apiLevels[0]) {
+		return nil
+	}
+	for i := len(apiLevels) - 1; i >= 0; i-- {
+		if apiLevels[i].LessThan(apiLevel) {
+			return &apiLevels[i]
 		}
 	}
-	return nil
+	panic(fmt.Errorf("could not determine which API level precedes "+
+		"API level %s, that is not the first: %s", apiLevel, apiLevels[0]))
 }
 
 func (this *stubDecorator) diffAbi(ctx ModuleContext) {
@@ -401,22 +408,18 @@ func (this *stubDecorator) diffAbi(ctx ModuleContext) {
 	}
 	this.abiDiffPaths = append(this.abiDiffPaths, abiDiffPath)
 
-	// Also ensure that the ABI of the next API level (if there is one) matches
-	// this API level. *New* ABI is allowed, but any changes to APIs that exist
-	// in this API level are disallowed.
-	if !this.apiLevel.IsCurrent() {
-		nextApiLevel := findNextApiLevel(ctx, this.apiLevel)
-		if nextApiLevel == nil {
-			panic(fmt.Errorf("could not determine which API level follows "+
-				"non-current API level %s", this.apiLevel))
-		}
-		nextAbiDiffPath := android.PathForModuleOut(ctx,
-			"abidiff_next.timestamp")
-		nextAbiDump := this.findPrebuiltAbiDump(ctx, *nextApiLevel)
-		if !nextAbiDump.Valid() {
+	// Also ensure that the ABI of this API level is compatible with previous
+	// API level (if there is one). *New* ABI is allowed, but any changes to
+	// APIs that existed in previous API levels are disallowed.
+	prevApiLevel := findPrevApiLevel(ctx, this.apiLevel)
+	if prevApiLevel != nil {
+		prevAbiDiffPath := android.PathForModuleOut(ctx,
+			"abidiff_prev.timestamp")
+		prevAbiDump := this.findPrebuiltAbiDump(ctx, *prevApiLevel)
+		if !prevAbiDump.Valid() {
 			ctx.Build(pctx, android.BuildParams{
 				Rule:   android.ErrorRule,
-				Output: nextAbiDiffPath,
+				Output: prevAbiDiffPath,
 				Args: map[string]string{
 					"error": missingPrebuiltError,
 				},
@@ -424,16 +427,18 @@ func (this *stubDecorator) diffAbi(ctx ModuleContext) {
 		} else {
 			ctx.Build(pctx, android.BuildParams{
 				Rule: stgdiff,
-				Description: fmt.Sprintf("abidiff %s %s", this.abiDumpPath,
-					nextAbiDump),
-				Output: nextAbiDiffPath,
-				Inputs: android.Paths{this.abiDumpPath, nextAbiDump.Path()},
+				Description: fmt.Sprintf(
+					"Comparing ABI %s with next API level ABI %s",
+					prevAbiDump,
+					this.abiDumpPath),
+				Output: prevAbiDiffPath,
+				Inputs: android.Paths{prevAbiDump.Path(), this.abiDumpPath},
 				Args: map[string]string{
 					"args": "--format=small --ignore=interface_addition",
 				},
 			})
 		}
-		this.abiDiffPaths = append(this.abiDiffPaths, nextAbiDiffPath)
+		this.abiDiffPaths = append(this.abiDiffPaths, prevAbiDiffPath)
 	}
 }
 
