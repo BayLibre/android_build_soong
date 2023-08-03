@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e8e1790_08777ddf",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-03T13:19:16Z",
+      "side": 1,
+      "message": "do we need to handle any special casing e.g. `dexpreoptgen`?",
+      "range": {
+        "startLine": 437,
+        "startChar": 8,
+        "endLine": 437,
+        "endChar": 13
+      },
+      "revId": "648524232130d5c44e201df4328c4c9e81fa026b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
