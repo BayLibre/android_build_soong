@@ -51,6 +51,24 @@
       "parentUuid": "5378c748_ef2eea35",
       "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ccbcf18_f9c6ea9a",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-03T05:12:11Z",
+      "side": 1,
+      "message": "Then where did the concurrent map access come from?  If status.go was holding the lock when it called Flush then StartAction or FinishAction shouldn\u0027t have been able to be called.",
+      "parentUuid": "6a8798dd_bb0edf12",
+      "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
