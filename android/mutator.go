@@ -17,6 +17,7 @@ package android
 import (
 	"android/soong/bazel"
 	"android/soong/ui/metrics/bp2build_metrics_proto"
+	"path/filepath"
 
 	"github.com/google/blueprint"
 )
@@ -230,6 +231,7 @@ type Bp2buildMutatorContext interface {
 	BazelConversionPathContext
 
 	CreateBazelTargetModule(bazel.BazelTargetModuleProperties, CommonAttributes, interface{})
+	CreateBazelTargetModuleInDir(bazel.BazelTargetModuleProperties, string, CommonAttributes, interface{})
 }
 
 // PreArchBp2BuildMutators adds mutators to be register for converting Android Blueprint modules
@@ -272,6 +274,11 @@ type TopDownMutatorContext interface {
 	// any platform for which this bool attribute is false.
 	CreateBazelTargetModuleWithRestrictions(bazel.BazelTargetModuleProperties, CommonAttributes, interface{}, bazel.BoolAttribute)
 
+	// CreateBazelTargetModuleInDir creates a BazelTargetModule in `dir` directory by calling the
+	// factory method, just like in CreateModule, but also requires
+	// BazelTargetModuleProperties containing additional metadata for the
+	// bp2build codegenerator.
+	CreateBazelTargetModuleInDir(props bazel.BazelTargetModuleProperties, dir string, ca CommonAttributes, attrs interface{})
 	// MarkBp2buildUnconvertible registers the current module as "unconvertible to bp2build" for the
 	// given reason.
 	MarkBp2buildUnconvertible(reasonType bp2build_metrics_proto.UnconvertedReasonType, detail string)
@@ -712,7 +719,7 @@ func (t *topDownMutatorContext) CreateBazelTargetModule(
 	bazelProps bazel.BazelTargetModuleProperties,
 	commonAttrs CommonAttributes,
 	attrs interface{}) {
-	t.createBazelTargetModule(bazelProps, commonAttrs, attrs, bazel.BoolAttribute{})
+	t.createBazelTargetModule(bazelProps, t.ModuleDir(), commonAttrs, attrs, bazel.BoolAttribute{})
 }
 
 func (t *topDownMutatorContext) CreateBazelTargetModuleWithRestrictions(
@@ -720,7 +727,22 @@ func (t *topDownMutatorContext) CreateBazelTargetModuleWithRestrictions(
 	commonAttrs CommonAttributes,
 	attrs interface{},
 	enabledProperty bazel.BoolAttribute) {
-	t.createBazelTargetModule(bazelProps, commonAttrs, attrs, enabledProperty)
+	t.createBazelTargetModule(bazelProps, t.ModuleDir(), commonAttrs, attrs, enabledProperty)
+}
+
+func (t *topDownMutatorContext) CreateBazelTargetModuleInDir(
+	bazelProps bazel.BazelTargetModuleProperties,
+	dir string,
+	commonAttrs CommonAttributes,
+	attrs interface{}) {
+	// Restrict its use to dirs that contain an Android.bp file.
+	// There are several places in bp2build where we use the existence of Android.bp/BUILD on the filesystem
+	// to curate a compatible label for src files (e.g. headers for cc).
+	// If we arbritrarily create BUILD files, then it might render those curated labels incompatible.
+	if exists, _, _ := t.Config().fs.Exists(filepath.Join(dir, "Android.bp")); !exists {
+		t.ModuleErrorf("CreateBazelTargetModuleInDir cannot be used for dir: %v since it does not contain an Android.bp file", dir)
+	}
+	t.createBazelTargetModule(bazelProps, dir, commonAttrs, attrs, bazel.BoolAttribute{})
 }
 
 func (t *topDownMutatorContext) MarkBp2buildUnconvertible(
@@ -845,13 +867,14 @@ func ConvertApexAvailableToTagsWithoutTestApexes(ctx BaseModuleContext, apexAvai
 
 func (t *topDownMutatorContext) createBazelTargetModule(
 	bazelProps bazel.BazelTargetModuleProperties,
+	dir string,
 	commonAttrs CommonAttributes,
 	attrs interface{},
 	enabledProperty bazel.BoolAttribute) {
 	constraintAttributes := commonAttrs.fillCommonBp2BuildModuleAttrs(t, enabledProperty)
 	mod := t.Module()
 	info := bp2buildInfo{
-		Dir:             t.OtherModuleDir(mod),
+		Dir:             dir,
 		BazelProps:      bazelProps,
 		CommonAttrs:     commonAttrs,
 		ConstraintAttrs: constraintAttributes,
