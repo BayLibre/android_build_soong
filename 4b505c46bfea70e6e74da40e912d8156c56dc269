@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c1e38e4_6f724b29",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-03T17:53:01Z",
+      "side": 1,
+      "message": "it may be worth looking into whether we need something like this for other genrule cases and if we need to make it more extensible for those uses -- doesn\u0027t need to block this but worth filing a bug/looking into\n\nDo we have similar usecases to this in Java as well?",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 32
+      },
+      "revId": "4b505c46bfea70e6e74da40e912d8156c56dc269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ee2718_1094b4a6",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-03T17:53:01Z",
+      "side": 1,
+      "message": "this seems like an unwanted API outside of bp2build mode, can we limit its usage to bp2build somehow?",
+      "range": {
+        "startLine": 1092,
+        "startChar": 17,
+        "endLine": 1092,
+        "endChar": 31
+      },
+      "revId": "4b505c46bfea70e6e74da40e912d8156c56dc269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
