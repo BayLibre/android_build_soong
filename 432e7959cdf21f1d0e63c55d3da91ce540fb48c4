@@ -22,6 +22,30 @@
       },
       "revId": "432e7959cdf21f1d0e63c55d3da91ce540fb48c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1efbd37_d5793920",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-03T17:15:45Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "7c193562_e84e652e",
+      "range": {
+        "startLine": 263,
+        "startChar": 94,
+        "endLine": 263,
+        "endChar": 100
+      },
+      "revId": "432e7959cdf21f1d0e63c55d3da91ce540fb48c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
