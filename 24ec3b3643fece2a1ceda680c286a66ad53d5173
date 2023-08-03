@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5745b446_538e6a3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956160
+      },
+      "writtenOn": "2023-08-03T18:52:23Z",
+      "side": 1,
+      "message": "No, this won\u0027t work, because prebuilts for previous API level doesn\u0027t necessarily exist. Abandoning this change.",
+      "revId": "24ec3b3643fece2a1ceda680c286a66ad53d5173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
