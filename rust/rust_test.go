@@ -592,18 +592,16 @@ func TestCrateRootSandboxCompilation(t *testing.T) {
 			srcs: ["src1.rs"],
 		}
 	`,
-		android.GroupFixturePreparers(
-			android.MockFS{
-				"src_lib1.rs":       nil,
-				"src_lib2.rs":       nil,
-				"src_lib3.rs":       nil,
-				"src_lib4.rs":       nil,
-				"src_filegroup1.rs": nil,
-				"src_filegroup2.rs": nil,
-				"static_only.rs":    nil,
-				"shared_only.rs":    nil,
-			}.AddToFixture(),
-		),
+		android.FixtureMergeMockFs(android.MockFS{
+			"src_lib1.rs":       nil,
+			"src_lib2.rs":       nil,
+			"src_lib3.rs":       nil,
+			"src_lib4.rs":       nil,
+			"src_filegroup1.rs": nil,
+			"src_filegroup2.rs": nil,
+			"static_only.rs":    nil,
+			"shared_only.rs":    nil,
+		}),
 	)
 
 	testcases := []struct {

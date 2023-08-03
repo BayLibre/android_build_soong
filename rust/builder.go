@@ -180,22 +180,17 @@ func makeLibFlags(deps PathDeps, ruleCmd *android.RuleBuilderCommand) []string {
 	var libFlags []string
 
 	// Collect library/crate flags
-	for _, lib := range deps.RLibs {
+	for _, lib := range deps.Rlibs.ToListDirect() {
 		libPath := ruleCmd.PathForInput(lib.Path)
 		libFlags = append(libFlags, "--extern "+lib.CrateName+"="+libPath)
 	}
-	for _, lib := range deps.DyLibs {
+	for _, lib := range deps.Dylibs.ToListDirect() {
 		libPath := ruleCmd.PathForInput(lib.Path)
 		libFlags = append(libFlags, "--extern "+lib.CrateName+"="+libPath)
 	}
-	for _, procMacro := range deps.ProcMacros {
+	for _, procMacro := range deps.ProcMacros.ToListDirect() {
 		procMacroPath := ruleCmd.PathForInput(procMacro.Path)
 		libFlags = append(libFlags, "--extern "+procMacro.CrateName+"="+procMacroPath)
-	}
-	for _, lib := range deps.TransitiveRlibs.ToList() {
-		libPath := ruleCmd.PathForInput(lib.Path)
-		//libFlags = append(libFlags, "--extern "+lib.CrateName+"="+libPath)
-		libFlags = append(libFlags, "-L "+android.PathDirname(libPath))
 	}
 
 	for _, path := range deps.linkDirs {
@@ -207,12 +202,9 @@ func makeLibFlags(deps PathDeps, ruleCmd *android.RuleBuilderCommand) []string {
 
 func collectImplicits(deps PathDeps) android.Paths {
 	depPaths := android.Paths{}
-	depPaths = append(depPaths, rustLibsToPaths(deps.TransitiveRlibs.ToList())...)
-	depPaths = append(depPaths, rustLibsToPaths(deps.TransitiveDylibs.ToList())...)
-	depPaths = append(depPaths, rustLibsToPaths(deps.TransitiveProcMacros.ToList())...)
-	depPaths = append(depPaths, rustLibsToPaths(deps.DyLibs)...)
-	depPaths = append(depPaths, rustLibsToPaths(deps.ProcMacros)...)
-	depPaths = append(depPaths, deps.Stdlibs...)
+	depPaths = append(depPaths, rustLibsToPaths(deps.Rlibs.ToList())...)
+	depPaths = append(depPaths, rustLibsToPaths(deps.Dylibs.ToList())...)
+	depPaths = append(depPaths, rustLibsToPaths(deps.ProcMacros.ToList())...)
 	depPaths = append(depPaths, deps.AfdoProfiles...)
 	depPaths = append(depPaths, deps.WholeStaticLibs...)
 	depPaths = append(depPaths, deps.SrcDeps...)
