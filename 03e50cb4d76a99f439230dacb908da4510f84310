@@ -34,6 +34,24 @@
       "parentUuid": "ddf91a83_88953f13",
       "revId": "03e50cb4d76a99f439230dacb908da4510f84310",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69548565_430e1fea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-08-03T16:36:55Z",
+      "side": 1,
+      "message": "the problem was that it generates new ninja file for glob, but use the old one.\n\nhttps://android-review.git.corp.google.com/c/platform/build/soong/+/2693106 is the forward fix. but if breakage is severe, revert this would be better.",
+      "parentUuid": "97e93435_dac0ec0a",
+      "revId": "03e50cb4d76a99f439230dacb908da4510f84310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
