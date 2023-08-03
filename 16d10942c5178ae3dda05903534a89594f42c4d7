@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b711b7_497d17b0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-03T16:52:36Z",
+      "side": 1,
+      "message": "I don\u0027t think that naming would be accurate, as `match[0]` is the whole match, not just the package name.",
+      "parentUuid": "5b061558_d9613c77",
+      "range": {
+        "startLine": 1062,
+        "startChar": 2,
+        "endLine": 1062,
+        "endChar": 7
+      },
+      "revId": "16d10942c5178ae3dda05903534a89594f42c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9550310d_508ca77c",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e8f581_54844f24",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-03T16:52:36Z",
+      "side": 1,
+      "message": "yeah, but there isn\u0027t really an easy way to detect that. Because you can\u0027t just check that a BUILD/BUILD.bazel exists, you\u0027d also have to parse/evaluate it to make sure the target exists. This is just a best-effort attempt for now.",
+      "parentUuid": "9550310d_508ca77c",
+      "range": {
+        "startLine": 1066,
+        "startChar": 3,
+        "endLine": 1066,
+        "endChar": 60
+      },
+      "revId": "16d10942c5178ae3dda05903534a89594f42c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ba56725_f43d326c",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-08-03T08:29:15Z",
       "side": 1,
       "message": "... which aren\u0027t always available in every branch.",
+      "range": {
+        "startLine": 145,
+        "startChar": 18,
+        "endLine": 145,
+        "endChar": 74
+      },
+      "revId": "16d10942c5178ae3dda05903534a89594f42c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01751a93_e30864af",
+        "filename": "tests/lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-03T16:52:36Z",
+      "side": 1,
+      "message": "It\u0027s not really so much a branch issue, because we only run this test on aosp-main anyways. It\u0027s just an effort to avoid slowing down the test by pulling in a bunch more stuff.",
+      "parentUuid": "8ba56725_f43d326c",
       "range": {
         "startLine": 145,
         "startChar": 18,
