@@ -126,6 +126,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c67eabcb_2be4b02c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2023-08-03T23:32:21Z",
+      "side": 1,
+      "message": "Resolving based on discussion with @adelva@google.com and @joeo@google.com",
+      "parentUuid": "3253027a_ed09ed24",
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b8a9722_a86f908d",
@@ -211,6 +229,30 @@
       "side": 1,
       "message": "Moved into `rust/builder.go` under a `!ctx.Darwin()` test.",
       "parentUuid": "66eccd16_fd4aa9a2",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e2843f_c9b7d5d7",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2023-08-03T23:32:21Z",
+      "side": 1,
+      "message": "PTAL - There ended up being some presubmit failures related to this change. Turns out the `-Wl,--as-needed` flag needs to be [before `@$in`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/rust/builder.go;l\u003d48;drc\u003df445562840786b5f0f011df2d8ccb882d0f95ffd). Putting it too late caused the [`arch_test_src_lib`](https://cs.android.com/android/platform/superproject/main/+/main:external/crosvm/arch/Android.bp;l\u003d14;drc\u003d91f5702caea085c6a2591d8ede6759c718aff508) executable to produce missing symbol errors at runtime. I suspect this is related to its dependency on [`libgbm`](https://cs.android.com/android/platform/superproject/main/+/main:external/minigbm/Android.bp;l\u003d144;drc\u003d33261816d3c790268397b134eced8f28ae4fe16a) having some odd interaction with [`allow_undefined_symbols`](https://cs.android.com/android/platform/superproject/main/+/main:external/minigbm/Android.bp;l\u003d159;drc\u003d33261816d3c790268397b134eced8f28ae4fe16a).",
+      "parentUuid": "8ba6c547_aec95115",
       "range": {
         "startLine": 106,
         "startChar": 1,
