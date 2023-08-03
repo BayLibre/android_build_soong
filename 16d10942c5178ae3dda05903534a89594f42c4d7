@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b061558_d9613c77",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-08-03T08:29:15Z",
+      "side": 1,
+      "message": "nit: packageNameMatch",
+      "range": {
+        "startLine": 1062,
+        "startChar": 2,
+        "endLine": 1062,
+        "endChar": 7
+      },
+      "revId": "16d10942c5178ae3dda05903534a89594f42c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9550310d_508ca77c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-08-03T08:29:15Z",
+      "side": 1,
+      "message": "It looks like the regex capture group is only the directory/package name here, and not files. So it\u0027s possible that the directory exists but not the file. Would that be an issue?",
+      "range": {
+        "startLine": 1066,
+        "startChar": 3,
+        "endLine": 1066,
+        "endChar": 60
+      },
+      "revId": "16d10942c5178ae3dda05903534a89594f42c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba56725_f43d326c",
+        "filename": "tests/lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-08-03T08:29:15Z",
+      "side": 1,
+      "message": "... which aren\u0027t always available in every branch.",
+      "range": {
+        "startLine": 145,
+        "startChar": 18,
+        "endLine": 145,
+        "endChar": 74
+      },
+      "revId": "16d10942c5178ae3dda05903534a89594f42c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
