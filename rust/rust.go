@@ -445,7 +445,6 @@ type PathDeps struct {
 	WholeStaticLibs      android.Paths
 	ProcMacros           RustLibraries
 	AfdoProfiles         android.Paths
-	Rustc                android.Path
 	RustcDeps            android.Paths
 
 	// depFlags and depLinkFlags are rustc and linker (clang) flags.
@@ -1444,7 +1443,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			switch {
 			case depTag == rustcDepTag:
 				rustc := ctx.OtherModuleProvider(dep, android.PrebuiltBuildToolInfoProvider).(android.PrebuiltBuildToolInfo)
-				depPaths.Rustc = rustc.Src
+				depPaths.RustcDeps = append(depPaths.RustcDeps, rustc.Src)
 				depPaths.RustcDeps = append(depPaths.RustcDeps, rustc.Deps...)
 			case depTag == cc.CrtBeginDepTag:
 				depPaths.CrtBegin = append(depPaths.CrtBegin, android.OutputFileForModule(ctx, dep, ""))

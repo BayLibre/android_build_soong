@@ -220,7 +220,6 @@ func collectImplicits(deps PathDeps) android.Paths {
 	depPaths = append(depPaths, deps.LibDeps...)
 	depPaths = append(depPaths, deps.linkObjects...)
 	depPaths = append(depPaths, deps.RustcDeps...)
-	depPaths = append(depPaths, deps.Rustc)
 	return depPaths
 }
 
@@ -367,9 +366,6 @@ func transformSrctoCrate(ctx ModuleContext, comp compiler, main android.Path, de
 		})
 		implicits = append(implicits, outputs.Paths()...)
 	}
-
-	envVars = append(envVars, "AR="+cc_config.ClangPath(ctx, "bin/llvm-ar").String())
-	envVars = append(envVars, "ANDROID_RUST_VERSION="+config.GetRustVersion(ctx))
 
 	if ctx.RustModule().compiler.CargoEnvCompat() {
 		if _, ok := ctx.RustModule().compiler.(*binaryDecorator); ok {
@@ -565,7 +561,6 @@ func compileInSandbox(
 		SandboxInputs()
 
 	rustcCmd := rustcRule.Command()
-	envVars = append(envVars, "AR="+rustcCmd.PathForTool(cc_config.ClangPath(ctx, "bin/llvm-ar")))
 	libFlags := makeLibFlags(deps, rustcCmd)
 
 	var libDirs []string
@@ -586,7 +581,7 @@ func compileInSandbox(
 		Flags(envVars).
 		Flag(
 			fmt.Sprintf(
-				"PATH=$${PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
+				"PATH=$${PATH}:__SBOX_SANDBOX_DIR__/%s",
 				android.PathDirname(clangBinPath.String()),
 			),
 		).
@@ -624,19 +619,19 @@ func compileInSandbox(
 		rustLinkCmd.
 			Flag(
 				fmt.Sprintf(
-					"PATH=$${PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
+					"PATH=$${PATH}:__SBOX_SANDBOX_DIR__/%s",
 					android.PathDirname(clangBinPath.String()),
 				),
 			).
 			Flag(
 				fmt.Sprintf(
-					"LD_LIBRARY_PATH=$${LD_LIBRARY_PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
+					"LD_LIBRARY_PATH=$${LD_LIBRARY_PATH}:__SBOX_SANDBOX_DIR__/%s",
 					android.PathDirname(sboxLibc.String()),
 				),
 			).
 			Flag(
 				fmt.Sprintf(
-					"LD_LIBRARY_PATH=$${LD_LIBRARY_PATH}:__SBOX_SANDBOX_DIR__/tools/src/%s",
+					"LD_LIBRARY_PATH=$${LD_LIBRARY_PATH}:__SBOX_SANDBOX_DIR__/%s",
 					android.PathDirname(sboxLibc1.String()),
 				),
 			).

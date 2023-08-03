@@ -858,11 +858,10 @@ func sboxPathForToolRel(ctx BuilderContext, path Path) string {
 	toolDir := pathForInstall(ctx, ctx.Config().BuildOS, ctx.Config().BuildArch, "", false)
 	relOutSoong, isRelOutSoong, _ := maybeRelErr(toolDir.String(), path.String())
 	if isRelOutSoong {
-		// The tool is in the Soong output directory, it will be copied to __SBOX_OUT_DIR__/tools/out
-		return filepath.Join(sboxToolsSubDir, "out", relOutSoong)
+		// The tool is in the Soong output directory, it will be copied to __SBOX_OUT_DIR__/out
+		return filepath.Join("out", relOutSoong)
 	}
-	// The tool is in the source directory, it will be copied to __SBOX_OUT_DIR__/tools/src
-	return filepath.Join(sboxToolsSubDir, "src", path.String())
+	return filepath.Join(path.String())
 }
 
 func (r *RuleBuilder) _sboxPathForInputRel(path Path) (rel string, inSandbox bool) {
