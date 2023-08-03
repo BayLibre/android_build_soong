@@ -205,6 +205,7 @@ func collectImplicits(deps PathDeps) android.Paths {
 	depPaths = append(depPaths, rustLibsToPaths(deps.Rlibs.ToList())...)
 	depPaths = append(depPaths, rustLibsToPaths(deps.Dylibs.ToList())...)
 	depPaths = append(depPaths, rustLibsToPaths(deps.ProcMacros.ToList())...)
+	depPaths = append(depPaths, deps.TransitiveLinkObjects.ToList()...)
 	depPaths = append(depPaths, deps.AfdoProfiles...)
 	depPaths = append(depPaths, deps.WholeStaticLibs...)
 	depPaths = append(depPaths, deps.SrcDeps...)
@@ -560,6 +561,9 @@ func compileInSandbox(
 		if strings.Contains(lib.String(), "prebuilts/rust") {
 			libDirs = append(libDirs, "__SBOX_SANDBOX_DIR__/"+android.PathDirname(lib.String()))
 		}
+	}
+	for _, lib := range deps.TransitiveLinkObjects.ToList() {
+		libDirs = append(libDirs, "__SBOX_SANDBOX_DIR__/"+android.PathDirname(lib.String()))
 	}
 	for _, lib := range deps.LibDeps {
 		libDirs = append(libDirs, "__SBOX_SANDBOX_DIR__/"+android.PathDirname(lib.String()))
