@@ -69,6 +69,24 @@
       "parentUuid": "6a8798dd_bb0edf12",
       "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a0e503_c4e4f19b",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-03T05:15:27Z",
+      "side": 1,
+      "message": "The map read came through metrics, not through status.go:\n```\ngoroutine 1 [running]:\nandroid/soong/ui/status.(*CriticalPath).criticalPath(0xc00028e000)\n\tbuild/soong/ui/status/critical_path.go:109 +0x12b\nandroid/soong/ui/status.(*CriticalPath).WriteToMetrics(0xc00028e000, 0xc00026e000)\n\tbuild/soong/ui/status/critical_path.go:151 +0x95\nmain.main.func2()\n\tbuild/soong/cmd/soong_ui/main.go:223 +0xd5\nmain.main()\n\tbuild/soong/cmd/soong_ui/main.go:231 +0x16d1\n```",
+      "parentUuid": "6ccbcf18_f9c6ea9a",
+      "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
