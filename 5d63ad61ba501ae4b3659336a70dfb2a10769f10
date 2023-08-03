@@ -105,6 +105,24 @@
       "parentUuid": "6ccbcf18_f9c6ea9a",
       "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cd464af_5040c53f",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-03T05:29:40Z",
+      "side": 1,
+      "message": "I think the problem is deeper in status.go.  The metrics are not written until after `stat.Finish()` has been called, which is documented as:\n```\n// Finish will call Flush on all the outputs, generally flushing or closing all\n// of their outputs. Do not call any other functions on this instance or any\n// associated ToolStatus instances after this has been called.\n```\n\nBut nothing from status.go calls tells the ninja reader goroutine to stop sending data, so if ninja is still running it will happily call the `ToolStatus` methods.  I think when `Finish()` is called it needs to either signal the `ToolStatus` inputs to tell them to stop sending data, or to ignore any further data sent from `ToolStatus` inputs.",
+      "parentUuid": "b8a0e503_c4e4f19b",
+      "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
