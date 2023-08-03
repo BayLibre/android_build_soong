@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b9893f_2570a7bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-03T21:11:40Z",
+      "side": 1,
+      "message": "This was already reverted in aosp/2692966",
+      "revId": "805cbdb2de7aecbebf9b18f78b34ee20f20520d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
