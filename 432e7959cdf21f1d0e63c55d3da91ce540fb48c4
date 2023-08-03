@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c193562_e84e652e",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-08-03T16:18:37Z",
+      "side": 1,
+      "message": "isn\u0027t this just `strings.ToLower(key)`? then you can omit lines 252 and 253.",
+      "range": {
+        "startLine": 263,
+        "startChar": 94,
+        "endLine": 263,
+        "endChar": 100
+      },
+      "revId": "432e7959cdf21f1d0e63c55d3da91ce540fb48c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
