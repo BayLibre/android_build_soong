@@ -16,6 +16,23 @@
       "message": "There was regression in incremental build, but this CL fixes it as well.",
       "revId": "f35851be0f5a90e8bd8154176d2d5e6e582d861d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4ef754_e9961a61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-08-03T17:36:21Z",
+      "side": 1,
+      "message": "Given the failure mode of the previous change that was reverted can I also suggest that you test (in 3 separate tests) what happens when you add/remove/rename a file that is matched by a glob. Each one should cause the ninja file to be regenerated.",
+      "revId": "f35851be0f5a90e8bd8154176d2d5e6e582d861d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
