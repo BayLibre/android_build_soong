@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a68f26e_550a4ef7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-08-03T16:42:08Z",
+      "side": 1,
+      "message": "I reverted aosp/2687246 as it was quickest and safest. So that change will need to be merged into this one.",
+      "revId": "cdd99b3883182927dfd0be1da4870e398910d1ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
