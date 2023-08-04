@@ -86,6 +86,24 @@
       "parentUuid": "1625e06e_f4217162",
       "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290efa4e_40db69c8",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-08-04T19:05:23Z",
+      "side": 1,
+      "message": "This C/C++ flag __BIONIC_NO_PAGE_SIZE_MACRO will be used in ART, Perfetto, etc. Basically in all the places where PAGE_SIZE is used.\n\nFor 4k targets, PAGE_SIZE will have the value 4096. For page size agnostic targets, PAGE_SIZE will have the function call getpagesize().\n\nIn nutshell, PAGE_SIZE is always defined.",
+      "parentUuid": "033c9465_4acbed93",
+      "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
