@@ -176,6 +176,24 @@
       "parentUuid": "973fab4f_610aafd2",
       "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72125ede_f3104b0d",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-04T19:19:22Z",
+      "side": 1,
+      "message": "Aha! Thanks for the ref. Not defining PAGE_SIZE means every call site will need to be fixed, but that\u0027s okay.\n\nThen to answer Colin\u0027s question, we can\u0027t use \u0027ifndef PAGE_SIZE\u0027 because we aren\u0027t changing sys/user.h\u0027s default behavior. However, I do really like this suggestion if most parts of the codebase do \"#ifdef PAGE_SIZE\" because we would not need to go back and fix all those individual codepoints.\n\nStill, a global include would be needed so that sys/user.h could say:\n\n```\n#ifndef __BIONIC_NO_PAGE_SIZE_MACRO\n#define PAGE_SIZE 4096\n#endif\n```\n\n(or equivalent) The code referencing that should still use \u0027#ifndef PAGE_SIZE\u0027 for future compat.",
+      "parentUuid": "a28fc261_3ef1b1df",
+      "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
