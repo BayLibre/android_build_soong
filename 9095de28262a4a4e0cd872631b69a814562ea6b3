@@ -68,6 +68,24 @@
       "parentUuid": "7462712c_e0ac89d1",
       "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "033c9465_4acbed93",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-04T18:58:51Z",
+      "side": 1,
+      "message": "I was assuming that this flag would control the existence of the PAGE_SIZE macro, but that\u0027s not what aosp/2675944 does.  Is there a reason this can\u0027t just be `ifndef PAGE_SIZE`?",
+      "parentUuid": "1625e06e_f4217162",
+      "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
