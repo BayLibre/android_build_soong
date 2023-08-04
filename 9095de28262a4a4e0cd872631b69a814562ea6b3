@@ -140,6 +140,24 @@
       "parentUuid": "578ffb15_729a480d",
       "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "973fab4f_610aafd2",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-04T19:16:14Z",
+      "side": 1,
+      "message": "Can whatever contains `#define PAGE_SIZE getpagesize()` also set `#define __BIONIC_NO_PAGE_SIZE_MACRO`?\n\nAlso, minor nit, `__BIONIC_NO_PAGE_SIZE_MACRO` is misleading as there is apparently still a PAGE_SIZE macro, it\u0027s just doesn\u0027t evaluate to a constant.\n\nIf this has to be set globally it should be done directly in Soong similar to aosp/2620545, but we\u0027d really like to avoid that if at all possible.\n\nFYI, Musl libc handles this by never setting PAGE_SIZE on arm64, and everything in the tree that compiles for host has already been \"fixed\" to not use PAGE_SIZE, e.g. aosp/2135646.",
+      "parentUuid": "578ffb15_729a480d",
+      "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
