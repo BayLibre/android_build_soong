@@ -137,13 +137,16 @@ filegroup {
 		path: "proto",
 }`,
 		ExpectedBazelTargets: []string{
-			MakeBazelTargetNoRestrictions("proto_library", "foo_bp2build_converted", AttrNameToString{
+			MakeBazelTargetNoRestrictions("proto_library", "foo_proto", AttrNameToString{
 				"srcs":                `["proto/foo.proto"]`,
 				"strip_import_prefix": `"proto"`,
 				"tags": `[
         "apex_available=//apex_available:anyapex",
         "manual",
     ]`,
+			}),
+			MakeBazelTargetNoRestrictions("alias", "foo_bp2build_converted", AttrNameToString{
+				"actual": `"//.:foo_proto"`,
 			}),
 			MakeBazelTargetNoRestrictions("filegroup", "foo", AttrNameToString{
 				"srcs": `["proto/foo.proto"]`}),
@@ -167,6 +170,30 @@ filegroup {
 				"srcs": `[
         "foo.proto",
         "buf.cpp",
+    ]`}),
+		}})
+}
+
+func TestFilegroupWithProtoInDifferentPackage(t *testing.T) {
+	runFilegroupTestCase(t, Bp2buildTestCase{
+		Description: "filegroup with .proto in different package",
+		Filesystem: map[string]string{
+			"subdir/Android.bp": "",
+		},
+		Blueprint: `
+filegroup {
+    name: "foo",
+    srcs: ["subdir/foo.proto"],
+}`,
+		Dir: "subdir", // check in subdir
+		ExpectedBazelTargets: []string{
+			MakeBazelTargetNoRestrictions("proto_library", "foo_proto", AttrNameToString{
+				"srcs":                `["//subdir:foo.proto"]`,
+				"import_prefix":       `"subdir"`,
+				"strip_import_prefix": `""`,
+				"tags": `[
+        "apex_available=//apex_available:anyapex",
+        "manual",
     ]`}),
 		}})
 }
