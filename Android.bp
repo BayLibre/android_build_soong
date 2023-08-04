@@ -40,6 +40,12 @@ cc_defaults {
             enabled: true,
         },
     },
+
+    product_variables: {
+        device_page_size_agnostic: {
+            cflags: ["-D__BIONIC_NO_PAGE_SIZE_MACRO"],
+        },
+    },
 }
 
 //
