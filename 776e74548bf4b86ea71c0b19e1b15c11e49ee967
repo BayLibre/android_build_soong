@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8326353d_87d062ac",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-04T21:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b9bcfa3_7695d439",
+      "range": {
+        "startLine": 56,
+        "startChar": 202,
+        "endLine": 56,
+        "endChar": 209
+      },
+      "revId": "776e74548bf4b86ea71c0b19e1b15c11e49ee967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9388417b_235f573e",
@@ -65,6 +89,54 @@
         "startChar": 43,
         "endLine": 266,
         "endChar": 45
+      },
+      "revId": "776e74548bf4b86ea71c0b19e1b15c11e49ee967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37c2e7b7_9d7cc0e1",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-04T21:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a201642_efd97f29",
+      "range": {
+        "startLine": 266,
+        "startChar": 43,
+        "endLine": 266,
+        "endChar": 45
+      },
+      "revId": "776e74548bf4b86ea71c0b19e1b15c11e49ee967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c4e1713_bdc205db",
+        "filename": "bp2build/bp2build_product_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-04T21:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9388417b_235f573e",
+      "range": {
+        "startLine": 266,
+        "startChar": 72,
+        "endLine": 266,
+        "endChar": 74
       },
       "revId": "776e74548bf4b86ea71c0b19e1b15c11e49ee967",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
