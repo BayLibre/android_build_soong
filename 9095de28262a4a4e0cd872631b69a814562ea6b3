@@ -33,6 +33,23 @@
       "message": "There have been a couple of threads on this and discussion about alternative with pros/cons (e.g. genrule). Given LLVM team request to avoid genrule, and that this is a build variant (which if accepted, we would remove the flag), in order to move forward, I feel strongly we do need this type of global change. It doesn\u0027t affect the normal builds and can be removed. Thank you.",
       "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7462712c_e0ac89d1",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-04T18:52:51Z",
+      "side": 1,
+      "message": "`linux_bionic_supported` isn\u0027t the right place for this, it is used by all modules that want to support running bionic on the host.  Where do you need this set besides bionic?",
+      "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
