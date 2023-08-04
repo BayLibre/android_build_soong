@@ -104,6 +104,24 @@
       "parentUuid": "033c9465_4acbed93",
       "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578ffb15_729a480d",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-04T19:07:35Z",
+      "side": 1,
+      "message": "Right, PAGE_SIZE is still defined when __BIONIC_NO_PAGE_SIZE_MACRO is.\n\nOne thing though, we don\u0027t actually need to make any changes on host or set __BIONIC_NO_PAGE_SIZE_MACRO on host. It would be okay to set it on device builds only. We can completely ignore host things or keep them at 4k.\n\nIs there a place you would recommend Colin to set this for device?",
+      "parentUuid": "033c9465_4acbed93",
+      "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
