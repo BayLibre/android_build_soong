@@ -50,6 +50,24 @@
       "message": "`linux_bionic_supported` isn\u0027t the right place for this, it is used by all modules that want to support running bionic on the host.  Where do you need this set besides bionic?",
       "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1625e06e_f4217162",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-08-04T18:54:38Z",
+      "side": 1,
+      "message": "right now, they don\u0027t need this. but they\u0027ll need it when it comes to having the hack in \u003csys/user.h\u003e --- at that point all _users_ of bionic will need this. (though i do wonder if it should be _more_ global even than this in that case, because it wouldn\u0027t just be _host_ bionic.)",
+      "parentUuid": "7462712c_e0ac89d1",
+      "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
