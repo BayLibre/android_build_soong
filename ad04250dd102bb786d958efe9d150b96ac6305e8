@@ -70,6 +70,29 @@
       },
       "revId": "ad04250dd102bb786d958efe9d150b96ac6305e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1129caca_eb7e3361",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-08-04T09:43:02Z",
+      "side": 1,
+      "message": "This could be `m.DeviceSupported()`, but it still has the same issue where a `cc_test_host` that needs `RootTargetPreparer` would not get the auto-generated configs.",
+      "range": {
+        "startLine": 746,
+        "startChar": 52,
+        "endLine": 746,
+        "endChar": 56
+      },
+      "revId": "ad04250dd102bb786d958efe9d150b96ac6305e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
