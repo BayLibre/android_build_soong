@@ -230,6 +230,24 @@
       "parentUuid": "ddf892e7_be3f140f",
       "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461615ee_b3249dab",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-08-04T23:04:33Z",
+      "side": 1,
+      "message": "For Android U, I set up a global flag and configured it in bazel and soong aosp/2529029. I can do something similar.\n\nI will abandon this patch and add the product variable back here: https://android-review.git.corp.google.com/c/platform/bionic/+/2675944/10/libdl/Android.bp in order to submit the cl aosp/2675944",
+      "parentUuid": "c6f3e5ae_fe2f57a6",
+      "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
