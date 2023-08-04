@@ -158,6 +158,24 @@
       "parentUuid": "578ffb15_729a480d",
       "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08279a50_1d20b170",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-08-04T19:18:22Z",
+      "side": 1,
+      "message": "\u003e Can whatever contains #define PAGE_SIZE getpagesize() also set #define __BIONIC_NO_PAGE_SIZE_MACRO?\n\nno, because that\u0027s the whole point --- `__BIONIC_NO_PAGE_SIZE_MACRO` is like `_FILE_OFFSET_BITS`, telling bionic how to behave.\n\n\u003e FYI, Musl libc handles this by never setting PAGE_SIZE on arm64, and everything in the tree that compiles for host has already been \"fixed\" to not use PAGE_SIZE, e.g. aosp/2135646.\n\nindeed, and we may end up there one year, but during the experimental period, we don\u0027t want to affect innocent bystanders (ndk users in particular), and want _not_ having PAGE_SIZE to be opt-in.",
+      "parentUuid": "973fab4f_610aafd2",
+      "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
