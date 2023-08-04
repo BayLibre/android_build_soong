@@ -16,6 +16,47 @@
       "message": "Liz, would you have any reservations against expanding the bp2build API this way?",
       "revId": "7c6bab45d46f819c20b67d1178cce484e339ec38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f79a76a7_7f7c3f2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-04T13:20:29Z",
+      "side": 1,
+      "message": "I think there are likely a few ways this will be useful.",
+      "parentUuid": "0fb6c4d9_ec227917",
+      "revId": "7c6bab45d46f819c20b67d1178cce484e339ec38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a7d64fe_226e1422",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-04T13:20:29Z",
+      "side": 1,
+      "message": "I\u0027d recommend adding dir to `CommonAttributes` and using the current module\u0027s directory if unset to prevent a proliferation of methods.",
+      "range": {
+        "startLine": 267,
+        "startChar": 60,
+        "endLine": 267,
+        "endChar": 76
+      },
+      "revId": "7c6bab45d46f819c20b67d1178cce484e339ec38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
