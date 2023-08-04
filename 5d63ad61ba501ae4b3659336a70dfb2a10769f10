@@ -123,6 +123,24 @@
       "parentUuid": "b8a0e503_c4e4f19b",
       "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002f21db_de14d5c9",
+        "filename": "ui/status/critical_path_logger.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2023-08-04T15:40:31Z",
+      "side": 1,
+      "message": "yeah, i agree that we\u0027d better fix the root cause..\n\n\u003e ignore any further data sent from ToolStatus inputs.\n\nfor this, we should add similar logic in status.go instead of here. doesn\u0027t we?",
+      "parentUuid": "5cd464af_5040c53f",
+      "revId": "5d63ad61ba501ae4b3659336a70dfb2a10769f10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
