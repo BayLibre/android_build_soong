@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb6c4d9_ec227917",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-04T02:30:54Z",
+      "side": 1,
+      "message": "Liz, would you have any reservations against expanding the bp2build API this way?",
+      "revId": "7c6bab45d46f819c20b67d1178cce484e339ec38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
