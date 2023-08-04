@@ -22,6 +22,30 @@
       },
       "revId": "d0a5edb18dbd8b8a74370a84e94478f7d7ab991e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd1e0e1e_c9249684",
+        "filename": "aconfig/java_aconfig_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1944425
+      },
+      "writtenOn": "2023-08-04T18:33:25Z",
+      "side": 1,
+      "message": "The generated code will dep on the new Aconfig lib anyway, so if we move this annotation into the the Aconfig lib, then we don\u0027t need to add it here.",
+      "parentUuid": "4fd0c445_fba74fb3",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "d0a5edb18dbd8b8a74370a84e94478f7d7ab991e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
