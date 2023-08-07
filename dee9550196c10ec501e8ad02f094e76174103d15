@@ -22,6 +22,30 @@
       },
       "revId": "dee9550196c10ec501e8ad02f094e76174103d15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b05196_990607a2",
+        "filename": "android/mutator.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-07T18:46:54Z",
+      "side": 1,
+      "message": "Good point, I think I will need to modify this as part of `proto.include_dirs` support in b/284998427 and b/285140726. e.g. `external/protobuf/java` is one of the `proto.include_dirs` blocking Zi\u0027s work. It contains a BUILD file, but does not contain an Android.bp file.\n\nI will address this in a followup CL.",
+      "parentUuid": "e36a3a30_4428f01f",
+      "range": {
+        "startLine": 772,
+        "startChar": 0,
+        "endLine": 775,
+        "endChar": 0
+      },
+      "revId": "dee9550196c10ec501e8ad02f094e76174103d15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
