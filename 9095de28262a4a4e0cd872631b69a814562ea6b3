@@ -266,6 +266,24 @@
       "parentUuid": "461615ee_b3249dab",
       "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abc0e748_e4feaf1a",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-08-07T18:23:43Z",
+      "side": 1,
+      "message": "As per pcc:\n\n```\nFWIW, I would prefer -D__BIONIC_NO_PAGE_SIZE_MACRO instead of a genrule if\npossible. Genrules on header files cause problems for cross-referencing tools in\ntext editors (e.g. finding the definition of PAGE_SIZE will take you to the\ngenerated file that you don\u0027t want to edit instead of the source file that you\nwant to edit).\n```\n\nhttps://android-review.git.corp.google.com/c/platform/bionic/+/2675944",
+      "parentUuid": "88cc34fc_e02f4885",
+      "revId": "9095de28262a4a4e0cd872631b69a814562ea6b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
