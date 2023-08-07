@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df25f2e_72850931",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4918,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-07T17:18:29Z",
+      "side": 1,
+      "message": "Should we also cover the case where the profo is not in the subpackage? \n\nWhat if the proto files are in a filegroup module in a package outside of `foo`?",
+      "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
