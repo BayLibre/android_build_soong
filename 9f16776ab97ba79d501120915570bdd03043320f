@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "061f9339_109a3c0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-07T17:09:36Z",
+      "side": 1,
+      "message": "Can you add  a unit test to make sure that the target gets created in the correct directory?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "9f16776ab97ba79d501120915570bdd03043320f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
