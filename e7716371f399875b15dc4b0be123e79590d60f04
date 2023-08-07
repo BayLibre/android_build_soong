@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd389873_531af32d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-08-07T21:25:58Z",
+      "side": 1,
+      "message": "Updated. Thanks.",
+      "parentUuid": "bd4f2bbb_dc4f49ed",
+      "revId": "e7716371f399875b15dc4b0be123e79590d60f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2976a460_08d82446",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c3c5352_7622c72e",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-08-07T21:25:58Z",
+      "side": 1,
+      "message": "Updated. Thanks.",
+      "parentUuid": "2976a460_08d82446",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "e7716371f399875b15dc4b0be123e79590d60f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20a7aff0_95039801",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-07-31T18:43:51Z",
       "side": 1,
       "message": "you can omit this test, it isn\u0027t covering anything not handled above.",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 29
+      },
+      "revId": "e7716371f399875b15dc4b0be123e79590d60f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a059307_3ed9c3de",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1964705
+      },
+      "writtenOn": "2023-08-07T21:25:58Z",
+      "side": 1,
+      "message": "Deleted. Thanks.",
+      "parentUuid": "20a7aff0_95039801",
       "range": {
         "startLine": 91,
         "startChar": 5,
