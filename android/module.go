@@ -1439,7 +1439,10 @@ func productVariableConfigEnableLabels(ctx *topDownMutatorContext) []bazel.Label
 				ctx.ModuleErrorf("Could not convert product variable %s property", proptools.PropertyNameForField(propName))
 			}
 
-			if *flag {
+			if flag == nil {
+				// soong config var is not used to set `enabled`. nothing to do.
+				continue
+			} else if *flag {
 				axis := productConfigProp.ConfigurationAxis()
 				targetLabel := axis.SelectKey(productConfigProp.SelectKey())
 				productConfigEnablingTargets = append(productConfigEnablingTargets, bazel.Label{
