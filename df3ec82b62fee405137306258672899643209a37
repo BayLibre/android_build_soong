@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f119bab_0f6161da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-07T21:40:27Z",
+      "side": 1,
+      "message": "fyi, I have added a `manual` tag to the alias in the latest patchset, since the target of the alias contains a `manual` tag too",
+      "revId": "df3ec82b62fee405137306258672899643209a37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
