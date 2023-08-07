@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3036140e_2bf2892f",
+        "filename": "android/proto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-07T18:50:06Z",
+      "side": 1,
+      "message": "Ack. Can you add a documentation here explaining this or specify that only package labels are expected as input?",
+      "parentUuid": "6eb3b512_01f75561",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a36635c5_f948d762",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Probably not, but I am not sure. This code branch exists at ToT as well, and I purposely did not alter/cleanup the logic when nesting.",
       "parentUuid": "a36635c5_f948d762",
+      "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f96e7b2c_4e905d3f",
+        "filename": "android/proto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-07T18:50:06Z",
+      "side": 1,
+      "message": "I just realized that this was not introduced by your change as well. Thanks for the explanation!",
+      "parentUuid": "70eb2855_049e3d26",
       "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
