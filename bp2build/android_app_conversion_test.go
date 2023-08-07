@@ -149,6 +149,7 @@ func TestAndroidAppCertIsModule(t *testing.T) {
 android_app {
         name: "TestApp",
         certificate: ":foocert",
+    sdk_version: "current",
 }
 `,
 		ExpectedBazelTargets: []string{
@@ -156,6 +157,7 @@ android_app {
 				"certificate":    `":foocert"`,
 				"manifest":       `"AndroidManifest.xml"`,
 				"resource_files": `[]`,
+				"sdk_version":    `"current"`, // use as default
 			}),
 		}})
 }
@@ -172,6 +174,7 @@ func TestAndroidAppCertIsSrcFile(t *testing.T) {
 android_app {
         name: "TestApp",
         certificate: "foocert",
+    sdk_version: "current",
 }
 `,
 		ExpectedBazelTargets: []string{
@@ -179,6 +182,7 @@ android_app {
 				"certificate":    `"foocert"`,
 				"manifest":       `"AndroidManifest.xml"`,
 				"resource_files": `[]`,
+				"sdk_version":    `"current"`, // use as default
 			}),
 		}})
 }
@@ -195,6 +199,7 @@ func TestAndroidAppCertIsNotSrcOrModule(t *testing.T) {
 android_app {
         name: "TestApp",
         certificate: "foocert",
+    sdk_version: "current",
 }
 `,
 		ExpectedBazelTargets: []string{
@@ -202,6 +207,7 @@ android_app {
 				"certificate_name": `"foocert"`,
 				"manifest":         `"AndroidManifest.xml"`,
 				"resource_files":   `[]`,
+				"sdk_version":      `"current"`, // use as default
 			}),
 		}})
 }
@@ -212,22 +218,20 @@ func TestAndroidAppLibs(t *testing.T) {
 		ModuleTypeUnderTest:        "android_app",
 		ModuleTypeUnderTestFactory: java.AndroidAppFactory,
 		Filesystem:                 map[string]string{},
-		Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
+		Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "foocert") +
+			simpleModuleDoNotConvertBp2build("java_library", "barLib") + `
 android_app {
         name: "foo",
-				libs: ["barLib"]
-}
-java_library{
-       name: "barLib",
+				libs: ["barLib"],
+    sdk_version: "current",
 }
 `,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("java_library", "barLib", AttrNameToString{}),
-			MakeNeverlinkDuplicateTarget("java_library", "barLib"),
 			MakeBazelTarget("android_binary", "foo", AttrNameToString{
 				"manifest":       `"AndroidManifest.xml"`,
 				"resource_files": `[]`,
 				"deps":           `[":barLib-neverlink"]`,
+				"sdk_version":    `"current"`, // use as default
 			}),
 		}})
 }
@@ -240,21 +244,18 @@ func TestAndroidAppKotlinSrcs(t *testing.T) {
 		Filesystem: map[string]string{
 			"res/res.png": "",
 		},
-		Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "foocert") + `
+		Blueprint: simpleModuleDoNotConvertBp2build("filegroup", "foocert") +
+			simpleModuleDoNotConvertBp2build("java_library", "barLib") + `
 android_app {
         name: "foo",
         srcs: ["a.java", "b.kt"],
         certificate: ":foocert",
         manifest: "fooManifest.xml",
-        libs: ["barLib"]
-}
-java_library{
-      name:   "barLib",
+        libs: ["barLib"],
+    sdk_version: "current",
 }
 `,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("java_library", "barLib", AttrNameToString{}),
-			MakeNeverlinkDuplicateTarget("java_library", "barLib"),
 			MakeBazelTarget("android_library", "foo_kt", AttrNameToString{
 				"srcs": `[
         "a.java",
@@ -263,11 +264,13 @@ java_library{
 				"manifest":       `"fooManifest.xml"`,
 				"resource_files": `["res/res.png"]`,
 				"deps":           `[":barLib-neverlink"]`,
+				"sdk_version":    `"current"`, // use as default
 			}),
 			MakeBazelTarget("android_binary", "foo", AttrNameToString{
 				"deps":        `[":foo_kt"]`,
 				"certificate": `":foocert"`,
 				"manifest":    `"fooManifest.xml"`,
+				"sdk_version": `"current"`, // use as default
 			}),
 		}})
 }
@@ -288,25 +291,27 @@ android_app {
         certificate: "foocert",
         manifest: "fooManifest.xml",
         libs:        ["barLib"],
+    sdk_version: "current",
 }
 java_library{
       name:   "barLib",
+    bazel_module: { bp2build_available: false },
 }
 `,
 		ExpectedBazelTargets: []string{
-			MakeBazelTarget("java_library", "barLib", AttrNameToString{}),
-			MakeNeverlinkDuplicateTarget("java_library", "barLib"),
 			MakeBazelTarget("android_library", "foo_kt", AttrNameToString{
 				"srcs":           `["a.java"]`,
 				"common_srcs":    `["b.kt"]`,
 				"manifest":       `"fooManifest.xml"`,
 				"resource_files": `["res/res.png"]`,
 				"deps":           `[":barLib-neverlink"]`,
+				"sdk_version":    `"current"`, // use as default
 			}),
 			MakeBazelTarget("android_binary", "foo", AttrNameToString{
 				"deps":             `[":foo_kt"]`,
 				"certificate_name": `"foocert"`,
 				"manifest":         `"fooManifest.xml"`,
+				"sdk_version":      `"current"`, // use as default
 			}),
 		}})
 }
@@ -326,6 +331,7 @@ android_app {
         certificate: ":foocert",
         manifest: "fooManifest.xml",
         kotlincflags: ["-flag1", "-flag2"],
+    sdk_version: "current",
 }
 `,
 		ExpectedBazelTargets: []string{
@@ -340,11 +346,13 @@ android_app {
         "-flag1",
         "-flag2",
     ]`,
+				"sdk_version": `"current"`, // use as default
 			}),
 			MakeBazelTarget("android_binary", "foo", AttrNameToString{
 				"deps":        `[":foo_kt"]`,
 				"certificate": `":foocert"`,
 				"manifest":    `"fooManifest.xml"`,
+				"sdk_version": `"current"`,
 			}),
 		}})
 }
