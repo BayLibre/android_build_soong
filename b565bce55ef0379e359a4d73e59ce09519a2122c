@@ -22,6 +22,30 @@
       },
       "revId": "b565bce55ef0379e359a4d73e59ce09519a2122c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1154854d_6afdb563",
+        "filename": "android/prebuilt_build_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-08-07T15:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "552b3a4c_b4ed38f3",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 16
+      },
+      "revId": "b565bce55ef0379e359a4d73e59ce09519a2122c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
