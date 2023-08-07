@@ -279,7 +279,7 @@ func (test *testDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 
 	flags.Local.CFlags = append(flags.Local.CFlags, "-DGTEST_HAS_STD_STRING")
 	if ctx.Host() {
-		flags.Local.CFlags = append(flags.Local.CFlags, "-O0", "-g")
+		flags.Local.CFlags = append(flags.Local.CFlags, "-Og", "-g")
 
 		switch ctx.Os() {
 		case android.Windows:
