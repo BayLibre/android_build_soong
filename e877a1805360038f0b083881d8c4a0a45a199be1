@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2edc460_ddd63354",
+        "filename": "android/proto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-07T17:34:41Z",
+      "side": 1,
+      "message": "Is this purposed to find package or directory? Per [Packages](https://bazel.build/concepts/build-ref#packages), it is defined as a directory that includes `BUILD/BUILD.bazel` files. Or is this caught earlier in Bazel and `directProtoSrcs` are guaranteed to include package dirs only?",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a36635c5_f948d762",
+        "filename": "android/proto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-07T17:34:41Z",
+      "side": 1,
+      "message": "nit: is this purposefully shadowing `ok` defined in L244?",
+      "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1df25f2e_72850931",
         "filename": "bp2build/cc_library_conversion_test.go",
         "patchSetId": 3
