@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb3b512_01f75561",
+        "filename": "android/proto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-07T18:40:00Z",
+      "side": 1,
+      "message": "`directProtoSrcs` are guaranteed to have labels curated by package since it was created using [TransformSubpackagePaths](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/android/bazel_paths.go;l\u003d315-317?q\u003dTransform.*package%20f:build%2Fsoong\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain)",
+      "parentUuid": "d2edc460_ddd63354",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a36635c5_f948d762",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-08-07T17:34:41Z",
       "side": 1,
       "message": "nit: is this purposefully shadowing `ok` defined in L244?",
+      "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70eb2855_049e3d26",
+        "filename": "android/proto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-07T18:40:00Z",
+      "side": 1,
+      "message": "Probably not, but I am not sure. This code branch exists at ToT as well, and I purposely did not alter/cleanup the logic when nesting.",
+      "parentUuid": "a36635c5_f948d762",
       "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -90,6 +132,24 @@
       "side": 1,
       "message": "For example\n\n```\n# package_foo/Android.bp\ncc_library {\n  name: \"lib_with_proto\",\n  srcs \u003d [\":bar_proto\", \"foo.proto\"],\n}\n```\n\n```\n# package_bar/Android.bp\nfilegroup {\n  name: \"bar_proto\",\n  srcs: [\"bar.proto\"],\n}\n```\n\n```\n# package_foo/foo.proto\nimport \"package_bar/bar.proto\"\n```\n\nIIUC, aosp/2693013 still assumes that that `bar_proto` is in a subpackage of `package_foo`. In the above example, it isn\u0027t.",
       "parentUuid": "2f69286f_c2f26d41",
+      "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea1a4bb_d55aa0bc",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4918,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-07T18:40:00Z",
+      "side": 1,
+      "message": "I believe in this example, this CL stack will be a no-op since it only looks at the local `srcs` and not the ones inherited from a filegroup.\n\n- foo.proto is next to `lib_with_proto`\n- bar.proto is next to `bar_proto`\n  \nAt ToT, we will create a `proto_library` and `cc_proto_library` next to the .proto files, and they get combined at the top level `lib_with_proto`. \n\n(One nit in the example is that Soong will likely require `foo.proto` to look like)\n```\n# package_foo/foo.proto\nimport \"bar.proto\"\n```",
+      "parentUuid": "cd3020b4_b3d45b4f",
       "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
