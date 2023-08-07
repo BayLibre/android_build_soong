@@ -74,6 +74,24 @@
       "parentUuid": "1df25f2e_72850931",
       "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd3020b4_b3d45b4f",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4918,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-07T17:38:09Z",
+      "side": 1,
+      "message": "For example\n\n```\n# package_foo/Android.bp\ncc_library {\n  name: \"lib_with_proto\",\n  srcs \u003d [\":bar_proto\", \"foo.proto\"],\n}\n```\n\n```\n# package_bar/Android.bp\nfilegroup {\n  name: \"bar_proto\",\n  srcs: [\"bar.proto\"],\n}\n```\n\n```\n# package_foo/foo.proto\nimport \"package_bar/bar.proto\"\n```\n\nIIUC, aosp/2693013 still assumes that that `bar_proto` is in a subpackage of `package_foo`. In the above example, it isn\u0027t.",
+      "parentUuid": "2f69286f_c2f26d41",
+      "revId": "e877a1805360038f0b083881d8c4a0a45a199be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
