@@ -49,7 +49,7 @@ android_library {
 		},
         manifest: "manifest/AndroidManifest.xml",
         static_libs: ["static_lib_dep"],
-        java_version: "7",
+        sdk_version: "current",
 }
 `,
 		ExpectedBazelTargets: []string{
@@ -66,12 +66,9 @@ android_library {
 					"resource_files": `["res/res.png"]`,
 					"deps":           `[":static_lib_dep"]`,
 					"exports":        `[":static_lib_dep"]`,
-					"java_version":   `"7"`,
+					"sdk_version":    `"current"`, // use as default
 				}),
-			MakeNeverlinkDuplicateTargetWithAttrs(
-				"android_library",
-				"TestLib",
-				AttrNameToString{"java_version": `"7"`}),
+			MakeNeverlinkDuplicateTarget("android_library", "TestLib"),
 		}})
 }
 
@@ -91,6 +88,7 @@ android_library {
         srcs: [],
         manifest: "AndroidManifest.xml",
         libs: ["lib_dep"],
+    sdk_version: "current",
 }
 `,
 		ExpectedErr:          fmt.Errorf("Module has direct dependencies but no sources. Bazel will not allow this."),
@@ -121,6 +119,7 @@ android_library_import {
         name: "TestImport",
         aars: ["import.aar"],
         static_libs: ["static_lib_dep", "static_import_dep"],
+    sdk_version: "current",
 }
 `,
 			ExpectedBazelTargets: []string{
@@ -133,7 +132,8 @@ android_library_import {
         ":static_lib_dep",
         ":static_import_dep",
     ]`,
-						"exports": `[":static_import_dep"]`,
+						"exports":     `[":static_import_dep"]`,
+						"sdk_version": `"current"`, // use as default
 					},
 				),
 				MakeNeverlinkDuplicateTarget("android_library", "TestImport"),
@@ -156,6 +156,7 @@ android_library {
         name: "TestLib",
         srcs: ["a.java", "b.kt"],
         common_srcs: ["c.kt"],
+    sdk_version: "current",
 }
 `,
 		ExpectedBazelTargets: []string{
@@ -170,6 +171,7 @@ android_library {
 					"common_srcs":    `["c.kt"]`,
 					"manifest":       `"AndroidManifest.xml"`,
 					"resource_files": `[]`,
+					"sdk_version":    `"current"`, // use as default
 				}),
 			MakeNeverlinkDuplicateTarget("android_library", "TestLib"),
 		}})
@@ -189,6 +191,7 @@ android_library {
         name: "TestLib",
         srcs: ["a.java", "b.kt"],
         kotlincflags: ["-flag1", "-flag2"],
+    sdk_version: "current",
 }
 `,
 		ExpectedBazelTargets: []string{
@@ -206,6 +209,7 @@ android_library {
     ]`,
 					"manifest":       `"AndroidManifest.xml"`,
 					"resource_files": `[]`,
+					"sdk_version":    `"current"`, // use as default
 				}),
 			MakeNeverlinkDuplicateTarget("android_library", "TestLib"),
 		}})
