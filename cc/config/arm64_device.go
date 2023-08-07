@@ -91,6 +91,10 @@ var (
 			// Use cortex-a53 because kryo385 is not supported in clang.
 			"-mcpu=cortex-a53",
 		},
+		"kryo785": []string{
+			// Disable SVE instructions because Qualcomm disabled SVE in firmware.
+			"-mcpu=cortex-a510+nosve",
+		},
 		"exynos-m1": []string{
 			"-mcpu=exynos-m1",
 		},
