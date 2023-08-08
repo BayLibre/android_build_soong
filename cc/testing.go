@@ -552,6 +552,7 @@ var PrepareForTestWithCcBuildComponents = android.GroupFixturePreparers(
 		ctx.RegisterModuleType("vndk_prebuilt_shared", VndkPrebuiltSharedFactory)
 
 		RegisterVndkLibraryTxtTypes(ctx)
+		RegisterLlndkLibraryTxtType(ctx)
 	}),
 
 	// Additional files needed in tests that disallow non-existent source files.
@@ -716,6 +717,7 @@ func CreateTestContext(config android.Config) *android.TestContext {
 	RegisterRecoverySnapshotModules(ctx)
 	ctx.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
 	RegisterVndkLibraryTxtTypes(ctx)
+	RegisterLlndkLibraryTxtType(ctx)
 
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
 	android.RegisterPrebuiltMutators(ctx)

@@ -389,6 +389,12 @@ func checkVndkLibrariesOutput(t *testing.T, ctx *android.TestContext, module str
 	assertArrayString(t, got, expected)
 }
 
+func checkLlndkLibrariesOutput(t *testing.T, ctx *android.TestContext, module string, expected []string) {
+	t.Helper()
+	got := ctx.ModuleForTests(module, "android_common").Module().(*llndkLibrariesTxtModule).fileNames
+	assertArrayString(t, got, expected)
+}
+
 func TestVndk(t *testing.T) {
 	t.Parallel()
 	bp := `
@@ -2481,7 +2487,7 @@ func TestMakeLinkType(t *testing.T) {
 		[]string{"libvndk.so", "libvndkprivate.so"})
 	checkVndkLibrariesOutput(t, ctx, "vndksp.libraries.txt",
 		[]string{"libc++.so", "libvndksp.so"})
-	checkVndkLibrariesOutput(t, ctx, "llndk.libraries.txt",
+	checkLlndkLibrariesOutput(t, ctx, "llndk.libraries.txt",
 		[]string{"libc.so", "libdl.so", "libft2.so", "libllndk.so", "libllndkprivate.so", "libm.so"})
 	checkVndkLibrariesOutput(t, ctx, "vndkprivate.libraries.txt",
 		[]string{"libft2.so", "libllndkprivate.so", "libvndkprivate.so"})
