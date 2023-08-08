@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6396951b_4eb31501",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381966
+      },
+      "writtenOn": "2023-08-08T03:17:32Z",
+      "side": 1,
+      "message": "Testcop is not avialable so I BCO by myself.",
+      "revId": "14e0956931b76971ea8d1317730dda261ca0775b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
