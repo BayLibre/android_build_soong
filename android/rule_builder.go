@@ -34,8 +34,7 @@ import (
 )
 
 const sboxSandboxBaseDir = "__SBOX_SANDBOX_DIR__"
-const sboxOutSubDir = "out"
-const sboxToolsSubDir = "tools"
+const sboxOutSubDir = "out/soong"
 const sboxOutDir = sboxSandboxBaseDir + "/" + sboxOutSubDir
 
 // RuleBuilder provides an alternative to ModuleContext.Rule and ModuleContext.Build to add a command line to the build
@@ -837,11 +836,10 @@ func sboxPathForToolRel(ctx BuilderContext, path Path) string {
 	toolDir := pathForInstall(ctx, ctx.Config().BuildOS, ctx.Config().BuildArch, "", false)
 	relOutSoong, isRelOutSoong, _ := maybeRelErr(toolDir.String(), path.String())
 	if isRelOutSoong {
-		// The tool is in the Soong output directory, it will be copied to __SBOX_OUT_DIR__/tools/out
-		return filepath.Join(sboxToolsSubDir, "out", relOutSoong)
+		// The tool is in the Soong output directory, it will be copied to __SBOX_OUT_DIR__/out
+		return filepath.Join(sboxOutSubDir, relOutSoong)
 	}
-	// The tool is in the source directory, it will be copied to __SBOX_OUT_DIR__/tools/src
-	return filepath.Join(sboxToolsSubDir, "src", path.String())
+	return filepath.Join(path.String())
 }
 
 func (r *RuleBuilder) _sboxPathForInputRel(path Path) (rel string, inSandbox bool) {
@@ -876,7 +874,7 @@ func (r *RuleBuilder) sboxPathsForInputsRel(paths Paths) []string {
 }
 
 func sboxPathForPackagedToolRel(spec PackagingSpec) string {
-	return filepath.Join(sboxToolsSubDir, "out", spec.relPathInPackage)
+	return filepath.Join(sboxOutSubDir, spec.relPathInPackage)
 }
 
 // PathForPackagedTool takes a PackageSpec for a tool and returns the corresponding path for the
