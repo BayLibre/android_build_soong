@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8437010f_105eaebf",
+        "filename": "java/aapt2.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-08T18:56:56Z",
+      "side": 1,
+      "message": "It\u0027s relatively small in AOSP, 7498 lines using 1613730 bytes.  It will also go away once resource processor is used everywhere (b/294256649), but that may take a while.",
+      "parentUuid": "e0910400_f136d5d7",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 24
+      },
+      "revId": "f3b7bada56c306da91008324957da7e537e2da99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b066900_e812d194",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-08T15:28:06Z",
       "side": 1,
       "message": "what\u0027s the intended use case for this?",
+      "range": {
+        "startLine": 1028,
+        "startChar": 0,
+        "endLine": 1031,
+        "endChar": 3
+      },
+      "revId": "f3b7bada56c306da91008324957da7e537e2da99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb8a20e_67c75b1a",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-08T18:56:56Z",
+      "side": 1,
+      "message": "This will be needed to replace https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/Android.bp;l\u003d133;drc\u003d43649f1d9b36249dcfe5ecd2d0e11a4cbf88cf65 once framework-res uses resource processor.",
+      "parentUuid": "9b066900_e812d194",
       "range": {
         "startLine": 1028,
         "startChar": 0,
