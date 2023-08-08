@@ -1240,6 +1240,24 @@ cc_binary {
     srcs: ["main.cc"],
     defaults: ["alphabet_sample_cc_defaults"],
     enabled: false,
+}
+
+alphabet_cc_defaults {
+    name: "alphabet_sample_cc_defaults_conditions_default",
+    soong_config_variables: {
+        special_build: {
+		conditions_default: {
+			enabled: false,
+		},
+	},
+    },
+}
+
+cc_binary {
+    name: "alphabet_binary_conditions_default",
+    srcs: ["main.cc"],
+    defaults: ["alphabet_sample_cc_defaults_conditions_default"],
+    enabled: false,
 }`
 
 	runSoongConfigModuleTypeTest(t, Bp2buildTestCase{
@@ -1253,7 +1271,13 @@ cc_binary {
     local_includes = ["."],
     srcs = ["main.cc"],
     target_compatible_with = ["//build/bazel/product_variables:alphabet_module__special_build"],
-)`}})
+)`,
+			MakeBazelTarget("cc_binary", "alphabet_binary_conditions_default", AttrNameToString{
+				"local_includes":         `["."]`,
+				"srcs":                   `["main.cc"]`,
+				"target_compatible_with": `["@platforms//:incompatible"]`,
+			}),
+		}})
 }
 
 func TestSoongConfigModuleType_ProductVariableIgnoredIfEnabledByDefault(t *testing.T) {

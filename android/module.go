@@ -1448,6 +1448,10 @@ func productVariableConfigEnableLabels(ctx *topDownMutatorContext) []bazel.Label
 				productConfigEnablingTargets = append(productConfigEnablingTargets, bazel.Label{
 					Label: targetLabel,
 				})
+			} else if scp, isSoongConfigProperty := productConfigProp.(SoongConfigProperty); isSoongConfigProperty && scp.value == bazel.ConditionsDefaultConfigKey {
+				// productVariableConfigEnableLabels runs only if `enabled: false` is set
+				// conditions_default { enabled: false} is a no-op in this case
+				continue
 			} else {
 				// TODO(b/210546943): handle negative case where `enabled: false`
 				ctx.ModuleErrorf("`enabled: false` is not currently supported for configuration variables. See b/210546943", proptools.PropertyNameForField(propName))
