@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0910400_f136d5d7",
+        "filename": "java/aapt2.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-08T15:28:06Z",
+      "side": 1,
+      "message": "Do we see a big increase in the ninja file size due to repeating these / are we expecting that gradually genJar usage will decrease and any increase now would be temporary?",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 24
+      },
+      "revId": "f3b7bada56c306da91008324957da7e537e2da99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b066900_e812d194",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-08T15:28:06Z",
+      "side": 1,
+      "message": "what\u0027s the intended use case for this?",
+      "range": {
+        "startLine": 1028,
+        "startChar": 0,
+        "endLine": 1031,
+        "endChar": 3
+      },
+      "revId": "f3b7bada56c306da91008324957da7e537e2da99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
