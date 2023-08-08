@@ -97,6 +97,7 @@ type variableProperties struct {
 
 		Device_page_size_agnostic struct {
 			Cflags []string `android:"arch_variant"`
+			Export_system_include_dirs []string  `android:"arch_variant"`
 		} `android:"arch_variant"`
 
 		Override_rs_driver struct {
