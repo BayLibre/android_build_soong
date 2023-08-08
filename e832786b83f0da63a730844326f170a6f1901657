@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f99bb12_de7c3879",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1445,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-08T03:49:52Z",
+      "side": 1,
+      "message": "nit: The function is called `productVariableConfigEnableAttribute` now.",
+      "range": {
+        "startLine": 1445,
+        "startChar": 7,
+        "endLine": 1445,
+        "endChar": 40
+      },
+      "revId": "e832786b83f0da63a730844326f170a6f1901657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
