@@ -1547,6 +1547,8 @@ var (
 		"libart_generated_headers",
 		"libart-runtime-gtest",
 		"libartd-runtime-gtest",
+		"libart-unstripped",
+		"check_cfi",
 	}
 
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
