@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca0f1894_90f850cf",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-09T23:38:32Z",
+      "side": 1,
+      "message": "You don\u0027t need this change, we apply cflags to both .c and .cpp files.",
+      "revId": "2d40673066b94422a279c5dd1b6936fc7a4e7fd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
