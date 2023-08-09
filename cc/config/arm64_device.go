@@ -100,8 +100,23 @@ func init() {
 		return strings.Join(flags, " ")
 	})
 
-	exportedVars.ExportStringListStaticVariable("Arm64Cflags", arm64Cflags)
-	exportedVars.ExportStringListStaticVariable("Arm64Cppflags", arm64Cppflags)
+	exportedVars.ExportStringList("Arm64Cflags", arm64Cflags)
+	pctx.VariableFunc("Arm64Cflags", func(ctx android.PackageVarContext) string {
+		flags := arm64Cflags
+		if ctx.Config().PageSizeAgnostic() {
+			flags = append(flags, "-D__BIONIC_NO_PAGE_SIZE_MACRO")
+		}
+		return strings.Join(flags, " ")
+	})
+
+	exportedVars.ExportStringList("Arm64Cppflags", arm64Cppflags)
+	pctx.VariableFunc("Arm64Cppflags", func(ctx android.PackageVarContext) string {
+		flags := arm64Cppflags
+		if ctx.Config().PageSizeAgnostic() {
+			flags = append(flags, "-D__BIONIC_NO_PAGE_SIZE_MACRO")
+		}
+		return strings.Join(flags, " ")
+	})
 
 	exportedVars.ExportVariableReferenceDict("Arm64ArchVariantCflags", arm64ArchVariantCflagsVar)
 	exportedVars.ExportVariableReferenceDict("Arm64CpuVariantCflags", arm64CpuVariantCflagsVar)
