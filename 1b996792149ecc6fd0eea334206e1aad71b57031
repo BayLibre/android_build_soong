@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b651aa8f_75d241cf",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-08-09T15:14:41Z",
+      "side": 1,
+      "message": "I see that this pattern is all over our tests, but this function setup is redundant.\n\n- We only have one test case in this function. Why are we iterating over testCases?\n- We have zero expected load statements. Why not just test that len is zero ?\n\nSame for the below function.",
+      "revId": "1b996792149ecc6fd0eea334206e1aad71b57031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ecc4bd_b886f42b",
+        "filename": "bp2build/sh_test_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2023-08-09T15:14:41Z",
+      "side": 1,
+      "message": "This currently doesn\u0027t do anything. Can we just have callers call RunBp2BuildTestCase ?",
+      "revId": "1b996792149ecc6fd0eea334206e1aad71b57031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
