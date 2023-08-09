@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "423b0796_9a60719b",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-08-09T15:05:14Z",
+      "side": 1,
+      "message": "Is there any reason for these to be two separate if statements, rather than just one with all three clauses?",
+      "revId": "d9cdca1e82df6ecc067ce0a600f9f23720aa7479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5039b9c_c7cc113c",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-08-09T15:05:14Z",
+      "side": 1,
+      "message": "Why not on Windows? It would be useful for this comment to explain why you\u0027re doing this, not just what it\u0027s doing.",
+      "revId": "d9cdca1e82df6ecc067ce0a600f9f23720aa7479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
