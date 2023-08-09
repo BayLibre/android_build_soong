@@ -66,7 +66,8 @@ function diff_files {
 
 function test_sbom_aosp_cf_x86_64_phone {
   # Setup
-  out_dir="$(setup)"
+  #out_dir="$(setup)"
+  out_dir="tmp.mUnGwG"
 
   # Test
   # m droid, build sbom later in case additional dependencies might be built and included in partition images.
@@ -85,13 +86,8 @@ function test_sbom_aosp_cf_x86_64_phone {
   lz4=$out_dir/host/linux-x86/bin/lz4
 
   declare -A diff_excludes
-  diff_excludes[product]="\
-    -I /product/etc/aconfig_flags.textproto \
-    -I /product/etc/build_flags.json"
   diff_excludes[vendor]="\
-    -I /vendor/lib64/libkeystore2_crypto.so \
-    -I /vendor/etc/aconfig_flags.textproto \
-    -I /vendor/etc/build_flags.json"
+    -I /vendor/lib64/libkeystore2_crypto.so"
   diff_excludes[system]="\
     -I /bin \
     -I /bugreports \
@@ -111,8 +107,6 @@ function test_sbom_aosp_cf_x86_64_phone {
     -I /odm/priv-app \
     -I /odm/usr \
     -I /sdcard \
-    -I /system/etc/aconfig_flags.textproto \
-    -I /system/etc/build_flags.json \
     -I /system/lib64/android.hardware.confirmationui@1.0.so \
     -I /system/lib64/android.hardware.confirmationui-V1-ndk.so \
     -I /system/lib64/android.hardware.keymaster@4.1.so \
@@ -142,9 +136,6 @@ function test_sbom_aosp_cf_x86_64_phone {
     -I /system/lib/vndk-sp-29 \
     -I /system/usr/icu \
     -I /vendor_dlkm/etc"
-  diff_excludes[system_ext]="\
-    -I /system_ext/etc/aconfig_flags.textproto \
-    -I /system_ext/etc/build_flags.json"
 
   # Example output of dump.erofs is as below, and the data used in the test start
   # at line 11. Column 1 is inode id, column 2 is inode type and column 3 is name.
@@ -241,7 +232,7 @@ function test_sbom_aosp_cf_x86_64_phone {
   verify_package_verification_code "$product_out/sbom.spdx"
 
   # Teardown
-  cleanup "${out_dir}"
+  #cleanup "${out_dir}"
 }
 
 function verify_package_verification_code {
