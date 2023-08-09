@@ -16,6 +16,57 @@
       "message": "Hello @joeo@google.com @ccross@android.com, will you be able to take a look at this change?",
       "revId": "2a757193d82f3a0df6311eedf7d03989e0dcf119",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d386cb8_3d5997c2",
+        "filename": "android/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-09T20:59:34Z",
+      "side": 1,
+      "message": "This seems like a complicated way to get a boolean flag here vs. just using `c.IsEnvTrue(\"DISABLE_STUB_VALIDATION\")`, and letting users set that environment variable directly.",
+      "revId": "2a757193d82f3a0df6311eedf7d03989e0dcf119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6077a5e8_32eaeb9e",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-09T20:59:34Z",
+      "side": 1,
+      "message": "Can this depend on `checkCurrentApiTimestamp` instead?  Make-style phony rules like the ones used for `*-check-current-api` are always considered dirty.  That\u0027s probably not a problem here where only the validation rule depends on it, but try to ensure real rules don\u0027t depend on phony rules.",
+      "revId": "2a757193d82f3a0df6311eedf7d03989e0dcf119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e600d4_d0dfcae7",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-09T20:59:34Z",
+      "side": 1,
+      "message": "Does this get read somewhere?",
+      "revId": "2a757193d82f3a0df6311eedf7d03989e0dcf119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
