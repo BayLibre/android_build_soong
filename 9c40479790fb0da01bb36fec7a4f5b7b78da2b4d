@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe42422b_f7cc5c55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-09T14:03:41Z",
+      "side": 1,
+      "message": "In general looks good, but can you add some unit testing?",
+      "revId": "9c40479790fb0da01bb36fec7a4f5b7b78da2b4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655af11c_28a54a45",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-09T14:03:41Z",
+      "side": 1,
+      "message": "more comments about this rule may be useful.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "9c40479790fb0da01bb36fec7a4f5b7b78da2b4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc6b1a4_7472f315",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-09T14:03:41Z",
+      "side": 1,
+      "message": "does this need to be added for every package context? would it make sense to instead add this only when needed e.g. in a Once if the rule does not exist yet?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "9c40479790fb0da01bb36fec7a4f5b7b78da2b4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
