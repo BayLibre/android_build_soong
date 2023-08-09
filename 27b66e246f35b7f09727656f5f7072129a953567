@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1eb9766_98356116",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-09T17:06:52Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be in CommonGlobalCflags, that would affect host compiles too.  It could be in DeviceGlobalCflags, but putting it in arch variant cflags in build/soong/cc/config/arm64_device.go might both be easier and handle the bazel side automatically, since I think bazel gets the toolchain flags from Soong?",
+      "revId": "27b66e246f35b7f09727656f5f7072129a953567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
