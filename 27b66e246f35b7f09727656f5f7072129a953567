@@ -34,6 +34,24 @@
       "parentUuid": "b1eb9766_98356116",
       "revId": "27b66e246f35b7f09727656f5f7072129a953567",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d22403f_444553fc",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-08-09T18:07:20Z",
+      "side": 1,
+      "message": "Another reason to define the variable in the host is that it will be used in zipalign, which run in the host. See aosp/2429593.\n\nLet me know if that makes sense.",
+      "parentUuid": "946defd2_22b8cac4",
+      "revId": "27b66e246f35b7f09727656f5f7072129a953567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
