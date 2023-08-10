@@ -22,6 +22,30 @@
       },
       "revId": "8171a828a59bd4a827f39ed99bcdc4077ecc2b1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27b35c9d_87e67fbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-10T17:16:28Z",
+      "side": 1,
+      "message": "\u003e  think we also set attrs.Strip_import_prefix \u003d \"\" in line 25\n\nCorrection: line 256 in android/proto.go",
+      "parentUuid": "9126eac4_c49c8f17",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "8171a828a59bd4a827f39ed99bcdc4077ecc2b1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
