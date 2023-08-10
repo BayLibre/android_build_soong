@@ -17,6 +17,7 @@ package cc
 import (
 	"fmt"
 	"path/filepath"
+	"strings"
 
 	"github.com/google/blueprint"
 
@@ -39,10 +40,20 @@ var (
 			CommandDeps: []string{"$preprocessor"},
 		},
 		"preprocessor")
+
+	buildFolder = pctx.AndroidStaticRule("buildFolder",
+		blueprint.RuleParams{
+			Command:        "$buildFolderCmd $dstDir @$rspFile",
+			CommandDeps:    []string{"$buildFolderCmd"},
+			Rspfile:        "$rspFile",
+			RspfileContent: "--src_files $in --dst_paths $out",
+		},
+		"dstDir", "rspFile")
 )
 
 func init() {
 	pctx.SourcePathVariable("versionerCmd", "prebuilts/clang-tools/${config.HostPrebuiltTag}/bin/versioner")
+	pctx.HostBinToolVariable("buildFolderCmd", "build_folder")
 }
 
 // Returns the NDK base include path for use with sdk_version current. Usable with -I.
@@ -162,17 +173,11 @@ func ndkHeadersFactory() android.Module {
 }
 
 type versionedHeaderProperties struct {
-	// Base directory of the headers being installed. As an example:
-	//
-	// versioned_ndk_headers {
-	//     name: "foo",
-	//     from: "include",
-	//     to: "",
-	// }
-	//
-	// Will install $SYSROOT/usr/include/foo/bar/baz.h. If `from` were instead
-	// "include/foo", it would have installed $SYSROOT/usr/include/bar/baz.h.
-	From *string
+
+	// List of headers to install. Glob compatible. Common case is "include/**/*.h". To strip
+	// a prefix from the installed path (like the "include" folder), use a filegroup with the "path"
+	// attribute. Will install $SYSROOT/usr/include/<relative path of sources>
+	Srcs []string `android:"path"`
 
 	// Install path within the sysroot. This is relative to usr/include.
 	To *string
@@ -197,11 +202,6 @@ type versionedHeaderModule struct {
 	licensePath  android.Path
 }
 
-// Return the glob pattern to find all .h files beneath `dir`
-func headerGlobPattern(dir string) string {
-	return filepath.Join(dir, "**", "*.h")
-}
-
 func (m *versionedHeaderModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if String(m.properties.License) == "" {
 		ctx.PropertyErrorf("license", "field is required")
@@ -209,26 +209,65 @@ func (m *versionedHeaderModule) GenerateAndroidBuildActions(ctx android.ModuleCo
 
 	m.licensePath = android.PathForModuleSrc(ctx, String(m.properties.License))
 
-	fromSrcPath := android.PathForModuleSrc(ctx, String(m.properties.From))
+	srcFiles := android.PathsForModuleSrc(ctx, m.properties.Srcs)
+	if len(srcFiles) == 0 {
+		ctx.ModuleErrorf("srcs %q matched zero files", strings.Join(m.properties.Srcs, ","))
+	}
+
 	toOutputPath := getCurrentIncludePath(ctx).Join(ctx, String(m.properties.To))
-	srcFiles := ctx.GlobFiles(headerGlobPattern(fromSrcPath.String()), nil)
-	var installPaths []android.WritablePath
-	for _, header := range srcFiles {
-		installDir := getHeaderInstallDir(ctx, header, String(m.properties.From), String(m.properties.To))
-		installPath := installDir.Join(ctx, header.Base())
-		installPaths = append(installPaths, installPath)
-		m.installPaths = append(m.installPaths, installPath)
-	}
-
-	if len(m.installPaths) == 0 {
-		ctx.ModuleErrorf("glob %q matched zero files", String(m.properties.From))
-	}
-
-	processHeadersWithVersioner(ctx, fromSrcPath, toOutputPath, srcFiles, installPaths)
+	_, m.installPaths = processLooseHeadersWithVersioner(ctx, srcFiles, toOutputPath, func(ctx android.ModuleContext, x android.InstallPath, y string) android.WritablePath {
+		return x.Join(ctx, y)
+	})
 }
 
-func processHeadersWithVersioner(ctx android.ModuleContext, srcDir, outDir android.Path,
-	srcFiles android.Paths, installPaths []android.WritablePath) android.Path {
+// processLooseHeadersWithVersioner takes all the files in srcFiles, copies them to a staging dir,
+// and then runs processHeadersWithVersioner on that staging dir. This is because the versioner tool
+// can only take headers from a single folder, but we want to all srcFiles to come from different
+// folders. The need for a generic and the joiner argument here is to allow different types of
+// outDir paths. (android.InstallPath and android.ModuleGenPath in this case)
+func processLooseHeadersWithVersioner[
+	P interface {
+		android.WritablePath
+	}](
+	ctx android.ModuleContext,
+	srcFiles android.Paths,
+	outDir P,
+	joiner func(ctx android.ModuleContext, x P, y string) android.WritablePath,
+) (android.Path, android.Paths) {
+
+	stagingDirPath := android.PathForModuleGen(ctx, "versioner_staging_dir")
+	stagedFiles := make(android.WritablePaths, len(srcFiles))
+	installPaths := make(android.WritablePaths, len(srcFiles))
+
+	for i, header := range srcFiles {
+		installPaths[i] = joiner(ctx, outDir, header.Rel()) //outDir.Join(ctx, header.Rel())
+		stagedFiles[i] = stagingDirPath.Join(ctx, header.Rel())
+	}
+
+	// The sources could come from different directories, but the versioner tool expects
+	// them to all be in one directory. Copy the files into a staging directory to satisfy
+	// this requirement.
+	rspFile := android.PathForModuleGen(ctx, "versioner_staging_dir.rsp")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:    buildFolder,
+		Inputs:  srcFiles,
+		Outputs: stagedFiles,
+		Args: map[string]string{
+			"dstDir":  stagingDirPath.String(),
+			"rspFile": rspFile.String(),
+		},
+	})
+
+	return processHeadersWithVersioner(ctx, stagingDirPath, outDir, stagedFiles.Paths(), installPaths), installPaths.Paths()
+}
+
+func processHeadersWithVersioner(
+	ctx android.ModuleContext,
+	srcDir android.Path,
+	outDir android.Path,
+	srcFiles android.Paths,
+	installPaths []android.WritablePath,
+) android.Path {
 	// The versioner depends on a dependencies directory to simplify determining include paths
 	// when parsing headers. This directory contains architecture specific directories as well
 	// as a common directory, each of which contains symlinks to the actually directories to

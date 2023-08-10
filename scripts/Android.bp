@@ -254,3 +254,16 @@ python_test_host {
         "modify_permissions_allowlist.py",
     ],
 }
+
+python_binary_host {
+    name: "build_folder",
+    main: "build_folder.py",
+    srcs: [
+        "build_folder.py",
+    ],
+    version: {
+        py3: {
+            embedded_launcher: true,
+        },
+    },
+}

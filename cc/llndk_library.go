@@ -31,7 +31,7 @@ type llndkLibraryProperties struct {
 
 	// Which headers to process with versioner. This really only handles
 	// bionic/libc/include right now.
-	Export_preprocessed_headers []string
+	Export_preprocessed_headers []string `android:"path"`
 
 	// Whether the system library uses symbol versions.
 	Unversioned *bool
