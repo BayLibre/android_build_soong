@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "741f2b06_78c3392c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-10T18:13:57Z",
+      "side": 1,
+      "message": "I think this makes sense to me now, thanks for the fix!",
+      "revId": "589d91923bd043f0de626345972550dc320e1b05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "780e6bb8_9dd588c5",
+        "filename": "android/proto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-10T18:13:57Z",
+      "side": 1,
+      "message": "nit: I think this comment is no longer relevant?",
+      "range": {
+        "startLine": 282,
+        "startChar": 5,
+        "endLine": 282,
+        "endChar": 79
+      },
+      "revId": "589d91923bd043f0de626345972550dc320e1b05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
