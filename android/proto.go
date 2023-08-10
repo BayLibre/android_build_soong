@@ -271,11 +271,14 @@ func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, m *ModuleBase, srcs baz
 
 			tags := ApexAvailableTagsWithoutTestApexes(ctx.(TopDownMutatorContext), ctx.Module())
 
-			// Since we are creating the proto_library in a subpackage, create an import_prefix relative to the current package
-			if rel, err := filepath.Rel(ctx.ModuleDir(), pkg); err != nil {
+			// Since we are creating the proto_library in a subpackage, strip the import_prefix relative to the current package
+			moduleDir := ctx.ModuleDir()
+			if rel, err := filepath.Rel(moduleDir, pkg); err != nil {
 				ctx.ModuleErrorf("Could not get relative path for %v %v", pkg, err)
 			} else if rel != "." {
-				attrs.Import_prefix = &rel
+				// path has to be absolute since it is not relative to the current package
+				dir := string(filepath.Separator) + moduleDir
+				attrs.Strip_import_prefix = &dir
 			}
 
 			ctx.CreateBazelTargetModule(
