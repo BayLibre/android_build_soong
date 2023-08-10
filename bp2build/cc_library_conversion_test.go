@@ -4930,6 +4930,9 @@ cc_library_static {
 	   "bar/bar.proto", // Different package because there is a bar/Android.bp
 	   "baz/subbaz/baz.proto", // Different package because there is baz/subbaz/Android.bp
 	],
+	proto: {
+		canonical_path_from_root: true,
+	}
 }
 ` + simpleModuleDoNotConvertBp2build("cc_library", "libprotobuf-cpp-lite"),
 		Filesystem: map[string]string{
@@ -4963,8 +4966,7 @@ cc_library_static {
 	tc.Dir = "bar"
 	tc.ExpectedBazelTargets = []string{
 		MakeBazelTarget("proto_library", "foo_proto", AttrNameToString{
-			"srcs":          `["//bar:bar.proto"]`,
-			"import_prefix": `"bar"`,
+			"srcs": `["//bar:bar.proto"]`,
 		}),
 	}
 	runCcLibraryTestCase(t, tc)
@@ -4973,8 +4975,7 @@ cc_library_static {
 	tc.Dir = "baz/subbaz"
 	tc.ExpectedBazelTargets = []string{
 		MakeBazelTarget("proto_library", "foo_proto", AttrNameToString{
-			"srcs":          `["//baz/subbaz:baz.proto"]`,
-			"import_prefix": `"baz/subbaz"`,
+			"srcs": `["//baz/subbaz:baz.proto"]`,
 		}),
 	}
 	runCcLibraryTestCase(t, tc)
