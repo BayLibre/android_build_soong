@@ -46,6 +46,30 @@
       },
       "revId": "8171a828a59bd4a827f39ed99bcdc4077ecc2b1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1d9181_6e8e835d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2023-08-10T18:01:24Z",
+      "side": 1,
+      "message": "cc has a confusing behavior around `canonical_path_from_root`:https://cs.android.com/android/platform/superproject/main/+/refs/heads/main:build/soong/cc/proto.go;l\u003d126-128;drc\u003d34edaadf5297f2c066d2cb09a5cc9366dc35b24b that basically lets you use the full OR relative path\n\nI fixed this to only set `Import_prefix` if you\u0027re not canonical_path_from_root, I think this should better reflect expected behavior that you can use the full path from repository root, not that you have \u003crelative-path\u003e/\u003crepository-path\u003e as it was previously.",
+      "parentUuid": "27b35c9d_87e67fbb",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "8171a828a59bd4a827f39ed99bcdc4077ecc2b1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
