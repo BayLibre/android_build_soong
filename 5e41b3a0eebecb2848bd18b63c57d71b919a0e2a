@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24b8567_2ead9a3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-11T17:42:48Z",
+      "side": 1,
+      "message": "Changing to from text sounds right to me, but I am not sure of the motivation. Should from-source and from-text have the same hiddenapi signatures once we address the overridden methods issue?",
+      "range": {
+        "startLine": 11,
+        "startChar": 40,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "5e41b3a0eebecb2848bd18b63c57d71b919a0e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "65b41d37_7e2712fb",
@@ -14,6 +37,92 @@
       "writtenOn": "2023-08-11T17:15:19Z",
       "side": 1,
       "message": "Seems a bit hacky but since core_platform is destined to be retired should be ok? I\u0027d like Spandan to take a look as well though. Thanks!",
+      "revId": "5e41b3a0eebecb2848bd18b63c57d71b919a0e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1feb58d5_6aec4df8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-11T17:42:48Z",
+      "side": 1,
+      "message": "LGTM modulo some nits",
+      "revId": "5e41b3a0eebecb2848bd18b63c57d71b919a0e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c182753_e48f2d03",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1520,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-11T17:42:48Z",
+      "side": 1,
+      "message": "nit: should we consider making this explicit in Android.bp files?",
+      "range": {
+        "startLine": 1516,
+        "startChar": 0,
+        "endLine": 1520,
+        "endChar": 51
+      },
+      "revId": "5e41b3a0eebecb2848bd18b63c57d71b919a0e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "758acb91_cb6bd7c4",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-11T17:42:48Z",
+      "side": 1,
+      "message": "nit: Instead of two map[string]string with the same keys, can we make a map[string]\u003cSomeStructWithFullAndAdditinalApiInfo\u003e?\n\nWe can also move it into a var() block so that we dont create a map in every function call",
+      "range": {
+        "startLine": 1536,
+        "startChar": 31,
+        "endLine": 1536,
+        "endChar": 48
+      },
+      "revId": "5e41b3a0eebecb2848bd18b63c57d71b919a0e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9cc17b_5a5c0fbd",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-11T17:42:48Z",
+      "side": 1,
+      "message": "How do we handle `additionalApiContribution` hierarchy for the other api surfaces? e.g. system has an additional contribution from public, but it looks like we are not special-casing it here?",
+      "range": {
+        "startLine": 1833,
+        "startChar": 1,
+        "endLine": 1833,
+        "endChar": 26
+      },
       "revId": "5e41b3a0eebecb2848bd18b63c57d71b919a0e2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
