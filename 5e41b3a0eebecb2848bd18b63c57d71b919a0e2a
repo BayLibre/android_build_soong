@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba2eff0_b292d40c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-11T18:58:11Z",
+      "side": 1,
+      "message": "That would really depend by the option that we choose to go for -- if we go for the option to insert all overridden methods, the signatures are likely to be the same, but the same is not guaranteed if we choose to go for the option to add minimum overriding methods.\n\nRegardless, I believe that all inputs to hiddenapi csv generation should be from-text stubs libraries during from-text stub build, not a mixture of from-text stub libraries and from-source stub libraries.",
+      "parentUuid": "e24b8567_2ead9a3f",
+      "range": {
+        "startLine": 11,
+        "startChar": 40,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "5e41b3a0eebecb2848bd18b63c57d71b919a0e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "65b41d37_7e2712fb",
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6dee91e2_cdbbcd24",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1520,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-11T18:58:11Z",
+      "side": 1,
+      "message": "Since the listed modules are being dynamically created from `java_sdk_library`, I believe it would be difficult to make this explicit in the Android.bp files. We could create a new property in `java_sdk_library` to make this explicit, but I believe its not worth it to support this single use case.",
+      "parentUuid": "4c182753_e48f2d03",
+      "range": {
+        "startLine": 1516,
+        "startChar": 0,
+        "endLine": 1520,
+        "endChar": 51
+      },
+      "revId": "5e41b3a0eebecb2848bd18b63c57d71b919a0e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "758acb91_cb6bd7c4",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -94,6 +142,30 @@
       "writtenOn": "2023-08-11T17:42:48Z",
       "side": 1,
       "message": "nit: Instead of two map[string]string with the same keys, can we make a map[string]\u003cSomeStructWithFullAndAdditinalApiInfo\u003e?\n\nWe can also move it into a var() block so that we dont create a map in every function call",
+      "range": {
+        "startLine": 1536,
+        "startChar": 31,
+        "endLine": 1536,
+        "endChar": 48
+      },
+      "revId": "5e41b3a0eebecb2848bd18b63c57d71b919a0e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f8ed05c_53eb4096",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-11T18:58:11Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "758acb91_cb6bd7c4",
       "range": {
         "startLine": 1536,
         "startChar": 31,
@@ -117,6 +189,30 @@
       "writtenOn": "2023-08-11T17:42:48Z",
       "side": 1,
       "message": "How do we handle `additionalApiContribution` hierarchy for the other api surfaces? e.g. system has an additional contribution from public, but it looks like we are not special-casing it here?",
+      "range": {
+        "startLine": 1833,
+        "startChar": 1,
+        "endLine": 1833,
+        "endChar": 26
+      },
+      "revId": "5e41b3a0eebecb2848bd18b63c57d71b919a0e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee03ec8_79af7f2e",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-11T18:58:11Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. The affected modules only create public api scope java_(api)_library, thus api scope handling was not done here. I\u0027ve nested the function calls under public api scope checking just to be more robust.",
+      "parentUuid": "9b9cc17b_5a5c0fbd",
       "range": {
         "startLine": 1833,
         "startChar": 1,
