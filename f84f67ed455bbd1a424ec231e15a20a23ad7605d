@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5097a1d_ab6a3bd9",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1123518
+      },
+      "writtenOn": "2023-08-11T19:45:01Z",
+      "side": 1,
+      "message": "No need to chance. Just put *.sh in data: directly in bp file.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 1
+      },
+      "revId": "f84f67ed455bbd1a424ec231e15a20a23ad7605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
