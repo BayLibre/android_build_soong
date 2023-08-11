@@ -24,6 +24,7 @@ import (
 	"sync"
 
 	"android/soong/bazel"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -410,7 +411,7 @@ type ccLibraryProperties struct {
 	Apex_available     []string
 	Min_sdk_version    *string
 	Bazel_module       struct {
-		Bp2build_available *bool
+		Label *string
 	}
 }
 
@@ -428,6 +429,9 @@ type javaLibraryProperties struct {
 	SyspropPublicStub string
 	Apex_available    []string
 	Min_sdk_version   *string
+	Bazel_module      struct {
+		Bp2build_available *bool
+	}
 }
 
 func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
@@ -492,11 +496,8 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 	ccProps.Host_supported = m.properties.Host_supported
 	ccProps.Apex_available = m.ApexProperties.Apex_available
 	ccProps.Min_sdk_version = m.properties.Cpp.Min_sdk_version
-	// A Bazel macro handles this, so this module does not need to be handled
-	// in bp2build
-	// TODO(b/237810289) perhaps do something different here so that we aren't
-	//                   also disabling these modules in mixed builds
-	ccProps.Bazel_module.Bp2build_available = proptools.BoolPtr(false)
+	ccProps.Bazel_module.Label = proptools.StringPtr(
+		fmt.Sprintf("//%s:%s", ctx.ModuleDir(), m.CcImplementationModuleName()))
 	ctx.CreateModule(cc.LibraryFactory, &ccProps)
 
 	scope := "internal"
@@ -541,6 +542,11 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 		SyspropPublicStub: publicStub,
 		Apex_available:    m.ApexProperties.Apex_available,
 		Min_sdk_version:   m.properties.Java.Min_sdk_version,
+		Bazel_module: struct {
+			Bp2build_available *bool
+		}{
+			Bp2build_available: proptools.BoolPtr(false),
+		},
 	})
 
 	if publicStub != "" {
@@ -558,6 +564,11 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 			Sdk_version: proptools.StringPtr("core_current"),
 			Libs:        []string{javaSyspropStub},
 			Stem:        proptools.StringPtr(m.BaseModuleName()),
+			Bazel_module: struct {
+				Bp2build_available *bool
+			}{
+				Bp2build_available: proptools.BoolPtr(false),
+			},
 		})
 	}
 
