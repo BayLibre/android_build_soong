@@ -261,6 +261,30 @@
       },
       "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47c0c453_31f376c9",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2023-08-11T20:26:47Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "c8e2843f_c9b7d5d7",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
