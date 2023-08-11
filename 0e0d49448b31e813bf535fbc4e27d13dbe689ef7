@@ -285,6 +285,30 @@
       },
       "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c1a686_7a0e30c0",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2023-08-11T20:44:49Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "parentUuid": "47c0c453_31f376c9",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "0e0d49448b31e813bf535fbc4e27d13dbe689ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
