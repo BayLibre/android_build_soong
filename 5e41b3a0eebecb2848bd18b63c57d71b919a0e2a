@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65b41d37_7e2712fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-11T17:15:19Z",
+      "side": 1,
+      "message": "Seems a bit hacky but since core_platform is destined to be retired should be ok? I\u0027d like Spandan to take a look as well though. Thanks!",
+      "revId": "5e41b3a0eebecb2848bd18b63c57d71b919a0e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
