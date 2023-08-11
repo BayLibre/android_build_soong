@@ -39,25 +39,35 @@ const (
 	vndkUsingCoreVariantLibrariesTxt = "vndkcorevariant.libraries.txt"
 )
 
-func VndkLibrariesTxtModules(vndkVersion string) []string {
+func VndkLibrariesTxtModules(vndkVersion string, ctx android.BaseModuleContext) []string {
 	if vndkVersion == "current" {
-		return []string{
-			llndkLibrariesTxt,
+		result := []string{
 			vndkCoreLibrariesTxt,
 			vndkSpLibrariesTxt,
 			vndkPrivateLibrariesTxt,
 			vndkProductLibrariesTxt,
 		}
+
+		if !ctx.Config().IsVndkDeprecated() {
+			result = append(result, llndkLibrariesTxt)
+		}
+
+		return result
 	}
 	// Snapshot vndks have their own *.libraries.VER.txt files.
 	// Note that snapshots don't have "vndkcorevariant.libraries.VER.txt"
-	return []string{
-		insertVndkVersion(llndkLibrariesTxt, vndkVersion),
+	result := []string{
 		insertVndkVersion(vndkCoreLibrariesTxt, vndkVersion),
 		insertVndkVersion(vndkSpLibrariesTxt, vndkVersion),
 		insertVndkVersion(vndkPrivateLibrariesTxt, vndkVersion),
 		insertVndkVersion(vndkProductLibrariesTxt, vndkVersion),
 	}
+
+	if !ctx.Config().IsVndkDeprecated() {
+		result = append(result, insertVndkVersion(llndkLibrariesTxt, vndkVersion))
+	}
+
+	return result
 }
 
 type VndkProperties struct {
@@ -520,7 +530,9 @@ func insertVndkVersion(filename string, vndkVersion string) string {
 
 func (txt *vndkLibrariesTxt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var filename string
-	if BoolDefault(txt.properties.Insert_vndk_version, true) {
+	shouldInsertVndkVersion := BoolDefault(txt.properties.Insert_vndk_version, true)
+	llndkInSystem := ctx.Config().IsVndkDeprecated() && txt.Name() == llndkLibrariesTxt
+	if shouldInsertVndkVersion && !llndkInSystem {
 		filename = insertVndkVersion(txt.Name(), ctx.DeviceConfig().PlatformVndkVersion())
 	} else {
 		filename = txt.Name()
