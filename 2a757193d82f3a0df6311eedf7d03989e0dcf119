@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ec59d3_5922b93d",
+        "filename": "android/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-12T01:10:11Z",
+      "side": 1,
+      "message": "Agreed. Removed the boolean flag, switched to using the environment variable and updated the tests accordingly.",
+      "parentUuid": "8d386cb8_3d5997c2",
+      "revId": "2a757193d82f3a0df6311eedf7d03989e0dcf119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6077a5e8_32eaeb9e",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c70492b_8643d713",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-12T01:10:11Z",
+      "side": 1,
+      "message": "I am not quite sure if that is feasible -- The `java_api_contribution` modules passed as `al.properties.Api_contributions` are being [dynamically created inside `droidstubs`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/java/droidstubs.go;drc\u003df8aaaa13f4fb87cc0f7bd5231f2334499d174109;l\u003d187), which happens before `GenerateAndroidBuildActions` where `checkCurrentApiTimestamp` is initialized. Thus I cannot think of a way to pass the file via provider when the module is being created. Please let me know if there is a way to do so.",
+      "parentUuid": "6077a5e8_32eaeb9e",
+      "revId": "2a757193d82f3a0df6311eedf7d03989e0dcf119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9e600d4_d0dfcae7",
         "filename": "ui/build/config.go",
         "patchSetId": 5
@@ -65,6 +101,24 @@
       "writtenOn": "2023-08-09T20:59:34Z",
       "side": 1,
       "message": "Does this get read somewhere?",
+      "revId": "2a757193d82f3a0df6311eedf7d03989e0dcf119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe198e08_ac377026",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-12T01:10:11Z",
+      "side": 1,
+      "message": "This is not being read at the moment, removed. Thanks for pointing out!",
+      "parentUuid": "c9e600d4_d0dfcae7",
       "revId": "2a757193d82f3a0df6311eedf7d03989e0dcf119",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
