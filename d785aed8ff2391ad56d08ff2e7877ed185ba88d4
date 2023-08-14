@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a960095f_6d78550e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-14T14:13:56Z",
+      "side": 1,
+      "message": "Iiuc, the main change in this version from the previous iteration is that you\u0027re not changing anything in app.go, and in particular you don\u0027t call `collectProguardSpecInfo` for apps, only for libraries, is that right?\nIf so, then we\u0027re still relying on [this logic](https://source.corp.google.com/h/android/platform/superproject/main/+/main:build/soong/java/app.go;l\u003d482-494;drc\u003d002764c8ee67dbcfc58b571fa68ca68d807089fe) to compute the proguard flags of an app, so any direct lib deps of the app won\u0027t pass up its flags even if it sets exports to true. I think it\u0027s a good idea to not call collectProguardSpecInfo in app.go so you don\u0027t have to call PathForModuleSrc on the flags of the app itself, since that\u0027s the where the issue is coming from, but I think we should fix `proguardBuildActions` in app.go to read the correct set of flags from lib deps",
+      "revId": "d785aed8ff2391ad56d08ff2e7877ed185ba88d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d5c478a_c1ec5921",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1701,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-14T14:13:56Z",
+      "side": 1,
+      "message": "How about we just call this one `ProguardFlagFiles` (the fact that this contains transitive information is kind of encoded in the use of a DepSet), then `proguardFlagsForThisModule` can be `transitiveProguardFlags` or `transitiveProguardFlagFiles`, and `exportedFlagFiles`... I don\u0027t have a really great name for, we could just do away with the variable, or call it `proguardFlagsForThisModule` or `localProguardFlagFiles`... Or something else ^^ up to you",
+      "range": {
+        "startLine": 1701,
+        "startChar": 2,
+        "endLine": 1701,
+        "endChar": 30
+      },
+      "revId": "d785aed8ff2391ad56d08ff2e7877ed185ba88d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
