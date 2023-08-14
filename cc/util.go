@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/snapshot"
 )
 
@@ -116,4 +117,27 @@ func installMapListFileRule(ctx android.SingletonContext, m map[string]string, p
 		txtBuilder.WriteString(m[k])
 	}
 	return snapshot.WriteStringToFileRule(ctx, txtBuilder.String(), path)
+}
+
+// removeFromStringListAttribute removes all instances of the specified value from all configurations
+// of the givenStringListAttribute
+func removeFromStringListAttribute(sla *bazel.StringListAttribute, toRemove string) {
+	if removed, removalResult := removeFromList(toRemove, sla.Value); removed {
+		if len(removalResult) > 0 {
+			sla.Value = removalResult
+		} else {
+			sla.Value = nil
+		}
+	}
+	for axis, slsv := range sla.ConfigurableValues {
+		for config, sl := range slsv {
+			if removed, removalResult := removeFromList(toRemove, sl); removed {
+				if len(removalResult) > 0 {
+					sla.SetSelectValue(axis, config, removalResult)
+				} else {
+					sla.SetSelectValue(axis, config, nil)
+				}
+			}
+		}
+	}
 }

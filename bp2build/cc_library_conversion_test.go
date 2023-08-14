@@ -4771,7 +4771,6 @@ cc_library {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
-				"features":       `["android_cfi"]`,
 				"local_includes": `["."]`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
@@ -4800,10 +4799,6 @@ cc_library {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
-				"features": `select({
-        "//build/bazel/platforms/os:android": ["android_cfi"],
-        "//conditions:default": [],
-    })`,
 				"local_includes": `["."]`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
@@ -4834,10 +4829,7 @@ cc_library {
 }`,
 		ExpectedBazelTargets: []string{
 			MakeBazelTarget("cc_library_static", "foo_bp2build_cc_library_static", AttrNameToString{
-				"features": `[
-        "android_cfi",
-        "android_cfi_assembly_support",
-    ]`,
+				"features":       `["android_cfi_assembly_support"]`,
 				"local_includes": `["."]`,
 			}),
 			MakeBazelTarget("cc_library_shared", "foo", AttrNameToString{
