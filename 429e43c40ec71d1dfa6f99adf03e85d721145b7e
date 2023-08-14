@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dbb81c7_b7d501d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-14T14:16:39Z",
+      "side": 1,
+      "message": "Since we\u0027re going a shorter route for now I\u0027m going to remove myself from the attention set of this one, we can revisit later",
+      "revId": "429e43c40ec71d1dfa6f99adf03e85d721145b7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
