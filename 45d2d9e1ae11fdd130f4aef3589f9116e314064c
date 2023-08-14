@@ -191,6 +191,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea39d82_8cad3f68",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-08-14T05:01:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a938198d_b28f79d9",
+      "range": {
+        "startLine": 67,
+        "startChar": 44,
+        "endLine": 67,
+        "endChar": 61
+      },
+      "revId": "45d2d9e1ae11fdd130f4aef3589f9116e314064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c63727d_f4216ef5",
@@ -276,6 +300,30 @@
       "side": 1,
       "message": "Done as suggested.",
       "parentUuid": "c21a7689_eb724c3e",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 534,
+        "endChar": 76
+      },
+      "revId": "45d2d9e1ae11fdd130f4aef3589f9116e314064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07ea732_b6e99cd8",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-08-14T05:01:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f32a6ede_7a9aa6c1",
       "range": {
         "startLine": 533,
         "startChar": 0,
