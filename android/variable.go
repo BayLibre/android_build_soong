@@ -184,6 +184,10 @@ type variableProperties struct {
 			Cflags []string
 			Cmd    *string
 		}
+
+		DevicePageSizeAgnostic struct {
+			Cmd *string
+		}
 	} `android:"arch_variant"`
 }
 
