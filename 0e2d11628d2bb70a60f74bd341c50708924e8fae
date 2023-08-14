@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c252a4e8_2ce04a07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-14T19:04:27Z",
+      "side": 1,
+      "message": "nit: did you intend to have this here in addition to l.19?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "0e2d11628d2bb70a60f74bd341c50708924e8fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
