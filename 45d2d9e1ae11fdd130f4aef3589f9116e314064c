@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "570cd2ba_fa76b215",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-08-14T04:54:11Z",
+      "side": 1,
+      "message": "Done. Thx.",
+      "parentUuid": "3c64ab13_f7bb52ca",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "45d2d9e1ae11fdd130f4aef3589f9116e314064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65da0938_13b8677c",
@@ -145,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a938198d_b28f79d9",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-08-14T04:54:11Z",
+      "side": 1,
+      "message": "You are right. I misunderstood the code. I think llndk libraries txt for existing VNDK should be installed as it is. Code updated.",
+      "parentUuid": "08382b96_84f583ef",
+      "range": {
+        "startLine": 67,
+        "startChar": 44,
+        "endLine": 67,
+        "endChar": 61
+      },
+      "revId": "45d2d9e1ae11fdd130f4aef3589f9116e314064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c63727d_f4216ef5",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -204,6 +252,30 @@
       "side": 1,
       "message": "How about this?\n\n```\nfilename :\u003d txt.Name()\n\ninsertVndkVersion :\u003d BoolDefault(txt.properties.Insert_vndk_version, true)\n// why??\nif ctx.Config().IsVndkDeprecated() \u0026\u0026 filename \u003d\u003d llndkLibrariesTxt {\n  insertVndkVersion \u003d false\n}\n\nif insertVndkVersion {\n  filename \u003d insertVndkVersion(filename, ...)\n}\n```\n\nI think the comment with the reason why we don\u0027t insert vndk version to llndk.libraries.txt would be helpful.",
       "parentUuid": "57f2a08e_4f1b8d88",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 534,
+        "endChar": 76
+      },
+      "revId": "45d2d9e1ae11fdd130f4aef3589f9116e314064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f32a6ede_7a9aa6c1",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-08-14T04:54:11Z",
+      "side": 1,
+      "message": "Done as suggested.",
+      "parentUuid": "c21a7689_eb724c3e",
       "range": {
         "startLine": 533,
         "startChar": 0,
