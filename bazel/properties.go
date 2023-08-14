@@ -22,6 +22,7 @@ import (
 	"sort"
 	"strings"
 
+	"android/soong/android"
 	"github.com/google/blueprint"
 )
 
@@ -1294,6 +1295,29 @@ type StringListAttribute struct {
 // IsEmpty returns true if the attribute has no values under any configuration.
 func (sla StringListAttribute) IsEmpty() bool {
 	return len(sla.Value) == 0 && !sla.HasConfigurableValues()
+}
+
+// RemoveFromAllConfigs removes all instances of the specified value from all configurations
+// of the givenStringListAttribute
+func (sla *StringListAttribute) RemoveFromAllConfigs(toRemove string) {
+	if removed, removalResult := android.RemoveFromList(toRemove, sla.Value); removed {
+		if len(removalResult) > 0 {
+			sla.Value = removalResult
+		} else {
+			sla.Value = nil
+		}
+	}
+	for axis, slsv := range sla.ConfigurableValues {
+		for config, sl := range slsv {
+			if removed, removalResult := android.RemoveFromList(toRemove, sl); removed {
+				if len(removalResult) > 0 {
+					sla.SetSelectValue(axis, config, removalResult)
+				} else {
+					sla.SetSelectValue(axis, config, nil)
+				}
+			}
+		}
+	}
 }
 
 type configurableStringLists map[ConfigurationAxis]stringListSelectValues
