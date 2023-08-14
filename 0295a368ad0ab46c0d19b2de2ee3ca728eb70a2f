@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf53b46e_1911e57a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-14T14:44:40Z",
+      "side": 1,
+      "message": "Logic looks great, just a few nits and some extra testing. Thanks Alix!",
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24170e0e_94bee54c",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-14T14:44:40Z",
+      "side": 1,
+      "message": "I think it would be worth adding a few more test cases since we have quite a few branching options:\n- we should try to exercise the logic that triggers when two filegroups have the same prefix, or when a filegroup has the same prefix as a resource dir\n- we should also exercise the logic of having non-filegroup `java_resources` files alongside `java_resource_dirs`\n\nbasically make sure we have a test that covers any of the branching you\u0027ve introduced",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 1
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d734d60_001d706c",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2728,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-14T14:44:40Z",
+      "side": 1,
+      "message": "How about we rename this `getResourceFilegroupStripPrefix` since it\u0027s not just about \"single\" filegroups anymore",
+      "range": {
+        "startLine": 2728,
+        "startChar": 18,
+        "endLine": 2728,
+        "endChar": 60
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a14372_9da7530e",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2728,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-14T14:44:40Z",
+      "side": 1,
+      "message": "I think `filegroup` or `resourceFilegroup` is more representative of what this variable is than `resource`",
+      "range": {
+        "startLine": 2728,
+        "startChar": 96,
+        "endLine": 2728,
+        "endChar": 104
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bbc81e4_cebc311a",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2741,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-14T14:44:40Z",
+      "side": 1,
+      "message": "We can declare this closer to where it\u0027s used, before the final loop",
+      "range": {
+        "startLine": 2741,
+        "startChar": 1,
+        "endLine": 2741,
+        "endChar": 40
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff36968_bd108947",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2746,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-14T14:44:40Z",
+      "side": 1,
+      "message": "I think we can remove this one now?",
+      "range": {
+        "startLine": 2744,
+        "startChar": 0,
+        "endLine": 2746,
+        "endChar": 2
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce37a35_e12a2db2",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2783,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-14T14:44:40Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tif _, ok :\u003d additionalJavaResourcesMap[prefix]; ok {\n```\n\nTo be consistent with above",
+      "range": {
+        "startLine": 2782,
+        "startChar": 0,
+        "endLine": 2783,
+        "endChar": 9
+      },
+      "revId": "0295a368ad0ab46c0d19b2de2ee3ca728eb70a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
