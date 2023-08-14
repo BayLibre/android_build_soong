@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c64ab13_f7bb52ca",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-08-14T02:51:32Z",
+      "side": 1,
+      "message": "Ack, can you leave a TODO. Otherwise, the code looks confusing.",
+      "parentUuid": "6d8cd340_c62f072e",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "45d2d9e1ae11fdd130f4aef3589f9116e314064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65da0938_13b8677c",
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08382b96_84f583ef",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-08-14T02:51:32Z",
+      "side": 1,
+      "message": "Yeah it\u0027s prebuilt_etc, but this is for the dependency from vndk apex to llndk.library.txt. If we omit it in this list (result), the vndk apex won\u0027t have llndk.library.txt.\n\n\u003e he older versions of VNDK APEX should have llndk.libraries.txt in it. No?\n\nIf an old VNDK APEX still needs llndk.libraries.txt then the build script needs to support it.\n\nOtherwise (if we don\u0027t need llndk.libraries.txt in older VNDK APEXes), then it should be okay.",
+      "parentUuid": "1e5f23c2_dee2d12a",
+      "range": {
+        "startLine": 67,
+        "startChar": 44,
+        "endLine": 67,
+        "endChar": 61
+      },
+      "revId": "45d2d9e1ae11fdd130f4aef3589f9116e314064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c63727d_f4216ef5",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "I defined one more variable. Hope this works.",
       "parentUuid": "7c63727d_f4216ef5",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 534,
+        "endChar": 76
+      },
+      "revId": "45d2d9e1ae11fdd130f4aef3589f9116e314064c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21a7689_eb724c3e",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-08-14T02:51:32Z",
+      "side": 1,
+      "message": "How about this?\n\n```\nfilename :\u003d txt.Name()\n\ninsertVndkVersion :\u003d BoolDefault(txt.properties.Insert_vndk_version, true)\n// why??\nif ctx.Config().IsVndkDeprecated() \u0026\u0026 filename \u003d\u003d llndkLibrariesTxt {\n  insertVndkVersion \u003d false\n}\n\nif insertVndkVersion {\n  filename \u003d insertVndkVersion(filename, ...)\n}\n```\n\nI think the comment with the reason why we don\u0027t insert vndk version to llndk.libraries.txt would be helpful.",
+      "parentUuid": "57f2a08e_4f1b8d88",
       "range": {
         "startLine": 533,
         "startChar": 0,
