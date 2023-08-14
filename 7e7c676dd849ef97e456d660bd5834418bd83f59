@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0192936b_93c5928c",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-14T18:48:36Z",
+      "side": 1,
+      "message": "nit: TODO message for every usages of `sanitizersEnabled` may not be necessary as there is the identical TODO message at where its defined. Removing it there will easily identify its usages to be removed.",
+      "revId": "7e7c676dd849ef97e456d660bd5834418bd83f59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
