@@ -264,6 +264,6 @@ python_binary_host {
     version: {
         py3: {
             embedded_launcher: true,
-        }
-    }
+        },
+    },
 }
