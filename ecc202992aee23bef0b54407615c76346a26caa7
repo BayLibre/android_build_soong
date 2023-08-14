@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b66247_99817e6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-08-14T23:04:13Z",
+      "side": 1,
+      "message": "If this doesn\u0027t work, I\u0027ll do a bulk explicit opt-in for the most impactful, known-good targets \u003d/",
+      "revId": "ecc202992aee23bef0b54407615c76346a26caa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
