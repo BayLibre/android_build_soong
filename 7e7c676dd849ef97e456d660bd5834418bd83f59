@@ -16,6 +16,24 @@
       "message": "nit: TODO message for every usages of `sanitizersEnabled` may not be necessary as there is the identical TODO message at where its defined. Removing it there will easily identify its usages to be removed.",
       "revId": "7e7c676dd849ef97e456d660bd5834418bd83f59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e96c730_c1a89e20",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-08-14T19:29:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0192936b_93c5928c",
+      "revId": "7e7c676dd849ef97e456d660bd5834418bd83f59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
