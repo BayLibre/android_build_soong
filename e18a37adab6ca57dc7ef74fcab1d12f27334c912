@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93662f20_1b4ef826",
+        "filename": "bp2build/genrule_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-08-14T18:51:05Z",
+      "side": 1,
+      "message": "Out of curiosity, why are we creating this in a subdirectory?",
+      "range": {
+        "startLine": 845,
+        "startChar": 5,
+        "endLine": 848,
+        "endChar": 31
+      },
+      "revId": "e18a37adab6ca57dc7ef74fcab1d12f27334c912",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
