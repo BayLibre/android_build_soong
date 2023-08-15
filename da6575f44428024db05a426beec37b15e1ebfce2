@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "471ca0d4_f6afc145",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-08-15T22:25:12Z",
+      "side": 1,
+      "message": "I add the two `--api...` because at the time I did not understand what the command did and I was trying to ensure consistent behavior with what metalava did before.",
+      "revId": "da6575f44428024db05a426beec37b15e1ebfce2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
