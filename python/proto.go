@@ -19,7 +19,7 @@ import (
 )
 
 func genProto(ctx android.ModuleContext, protoFile android.Path, flags android.ProtoFlags) android.Path {
-	srcsZipFile := android.PathForModuleGen(ctx, protoFile.Base()+".srcszip")
+	srcsZipFile := android.PathForModuleGen(ctx, protoFile.Rel()+".srcszip")
 
 	outDir := srcsZipFile.ReplaceExtension(ctx, "tmp")
 	depFile := srcsZipFile.ReplaceExtension(ctx, "srcszip.d")
