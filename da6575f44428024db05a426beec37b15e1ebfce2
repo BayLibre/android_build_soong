@@ -16,6 +16,23 @@
       "message": "I add the two `--api...` because at the time I did not understand what the command did and I was trying to ensure consistent behavior with what metalava did before.",
       "revId": "da6575f44428024db05a426beec37b15e1ebfce2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "634bf268_8b7113bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-15T22:32:24Z",
+      "side": 1,
+      "message": "Thanks for cleaning this up!",
+      "revId": "da6575f44428024db05a426beec37b15e1ebfce2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
