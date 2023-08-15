@@ -22,6 +22,30 @@
       },
       "revId": "f3afde10dcd02775b8664f154aaa98077749e26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "755f96fa_bde5b867",
+        "filename": "python/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2023-08-15T18:33:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f332fa2_fee8922a",
+      "range": {
+        "startLine": 22,
+        "startChar": 56,
+        "endLine": 22,
+        "endChar": 59
+      },
+      "revId": "f3afde10dcd02775b8664f154aaa98077749e26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
