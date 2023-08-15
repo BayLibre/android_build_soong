@@ -1733,7 +1733,6 @@ func metalavaStubCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 
 	cmd.Flag("--color").
 		Flag("--quiet").
-		Flag("--format=v2").
 		Flag("--include-annotations").
 		// The flag makes nullability issues as warnings rather than errors by replacing
 		// @Nullable/@NonNull in the listed packages APIs with @RecentlyNullable/@RecentlyNonNull,
@@ -1744,14 +1743,6 @@ func metalavaStubCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 		FlagWithArg("--hide ", "UnresolvedImport").
 		FlagWithArg("--hide ", "InvalidNullabilityOverride").
 		FlagWithArg("--hide ", "ChangedDefault")
-
-	// Force metalava to ignore classes on the classpath when an API file contains missing classes.
-	// See b/285140653 for more information.
-	cmd.FlagWithArg("--api-class-resolution ", "api")
-
-	// Force metalava to sort overloaded methods by their order in the source code.
-	// See b/285312164 for more information.
-	cmd.FlagWithArg("--api-overloaded-method-order ", "source")
 
 	return cmd
 }
@@ -1914,7 +1905,7 @@ func (al *ApiLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		FlagWithArg("-C ", stubsDir.String()).
 		FlagWithArg("-D ", stubsDir.String())
 
-	rule.Build("metalava", "metalava merged")
+	rule.Build("metalava", "metalava merged text")
 
 	if depApiSrcsStubsJar == nil {
 		var flags javaBuilderFlags
