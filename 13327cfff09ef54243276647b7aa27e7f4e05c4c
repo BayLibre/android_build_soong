@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed1dfb3_b7fc23a3",
+        "filename": "rust/compiler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-08-15T22:58:03Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this documentation read \"it will be used as the entry point for the crate. The srcs attribute is then interpreted as a list of all source files potentially used in compilation, including the entrypoint.\" or something similar? My understanding is that `srcs` will not be ignored with this feature, but will instead be used to figure out what to provide to the sandbox or remote compiler.",
+      "revId": "13327cfff09ef54243276647b7aa27e7f4e05c4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d91713_6f53e5e2",
+        "filename": "rust/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-08-15T22:58:03Z",
+      "side": 1,
+      "message": "Nit:\n```\nreturn android.PathForModuleSrc(ctx, *library.baseCompiler.Properties.Crate_root)\n```\n- there\u0027s no reason to temporarily assign it to a variable. That\u0027s done in the other one only to grab the first element of the tuple.",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 13
+      },
+      "revId": "13327cfff09ef54243276647b7aa27e7f4e05c4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c46fd0_076a1bd2",
+        "filename": "rust/toolchain_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-08-15T22:58:03Z",
+      "side": 1,
+      "message": "Why is this relative to the crate root? That doesn\u0027t match what e.g. cc does.",
+      "revId": "13327cfff09ef54243276647b7aa27e7f4e05c4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
