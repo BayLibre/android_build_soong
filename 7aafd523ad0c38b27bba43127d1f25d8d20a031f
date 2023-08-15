@@ -22,6 +22,30 @@
       },
       "revId": "7aafd523ad0c38b27bba43127d1f25d8d20a031f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5df218a_799cdbdb",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-15T17:23:10Z",
+      "side": 0,
+      "message": "Technically yes, though you may want to just consider readding the product variable in that case.",
+      "parentUuid": "5cf2e4ad_f894ab29",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 23
+      },
+      "revId": "7aafd523ad0c38b27bba43127d1f25d8d20a031f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
