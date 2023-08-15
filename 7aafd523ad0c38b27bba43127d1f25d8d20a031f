@@ -46,6 +46,30 @@
       },
       "revId": "7aafd523ad0c38b27bba43127d1f25d8d20a031f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d84d7635_8ebf4836",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-08-15T17:27:10Z",
+      "side": 0,
+      "message": "if we have to read the DevicePageSizeAgnostic product variable, then we can\u0027t remove it. Or Am I missing something?",
+      "parentUuid": "a5df218a_799cdbdb",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 23
+      },
+      "revId": "7aafd523ad0c38b27bba43127d1f25d8d20a031f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
