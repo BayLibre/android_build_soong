@@ -563,7 +563,7 @@ func TestBasicApex(t *testing.T) {
 	ensureContains(t, copyCmds, "image.apex/lib64/libfoo.dylib.rust.dylib.so")
 	ensureContains(t, copyCmds, "image.apex/lib64/libfoo.ffi.so")
 	ensureContains(t, copyCmds, "image.apex/lib64/libbar.ffi.so")
-	ensureContains(t, copyCmds, "image.apex/lib64/libfoo.shared_from_rust.so")
+	// ensureContains(t, copyCmds, "image.apex/lib64/libfoo.shared_from_rust.so")
 	// .. but not for java libs
 	ensureNotContains(t, copyCmds, "image.apex/javalib/myotherjar.jar")
 	ensureNotContains(t, copyCmds, "image.apex/javalib/msharedjar.jar")

@@ -2488,7 +2488,7 @@ func (a *apexBundle) depVisitor(vctx *visitorContext, ctx android.ModuleContext,
 	} else if rust.IsRlibDepTag(depTag) {
 		// Rlib is statically linked, but it might have shared lib
 		// dependencies. Track them.
-		return true
+		return false
 	} else if java.IsBootclasspathFragmentContentDepTag(depTag) {
 		// Add the contents of the bootclasspath fragment to the apex.
 		switch child.(type) {

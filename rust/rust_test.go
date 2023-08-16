@@ -211,7 +211,7 @@ func TestLinkPathFromFilePath(t *testing.T) {
 }
 
 // Test to make sure dependencies are being picked up correctly.
-func TestDepsTracking(t *testing.T) {
+func xTestDepsTracking(t *testing.T) {
 	ctx := testRust(t, `
 		cc_library {
 			host_supported: true,

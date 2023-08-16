@@ -1280,7 +1280,9 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				exportedInfo := ctx.OtherModuleProvider(dep, FlagExporterInfoProvider).(FlagExporterInfo)
 				depPaths.linkDirs = append(depPaths.linkDirs, exportedInfo.LinkDirs...)
 				depPaths.depFlags = append(depPaths.depFlags, exportedInfo.Flags...)
-				depPaths.linkObjects = append(depPaths.linkObjects, exportedInfo.LinkObjects...)
+				if depTag != rlibDepTag {
+					depPaths.linkObjects = append(depPaths.linkObjects, exportedInfo.LinkObjects...)
+				}
 				depPaths.LibDeps = append(depPaths.LibDeps, exportedInfo.LibDeps...)
 			}
 
