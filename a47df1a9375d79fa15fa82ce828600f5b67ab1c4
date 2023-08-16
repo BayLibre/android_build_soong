@@ -34,6 +34,24 @@
       "parentUuid": "5bd1710a_d4a1e1fc",
       "revId": "a47df1a9375d79fa15fa82ce828600f5b67ab1c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f491749_a24a1458",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1890456
+      },
+      "writtenOn": "2023-08-16T22:31:27Z",
+      "side": 1,
+      "message": "Yes, sounds great! Already undo autosubmit. I will submit tomorrow and see any possible fixups to fix.",
+      "parentUuid": "8cdfa5a1_f3d3c270",
+      "revId": "a47df1a9375d79fa15fa82ce828600f5b67ab1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
