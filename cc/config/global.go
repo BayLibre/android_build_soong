@@ -67,10 +67,6 @@ var (
 		// not emit the table by default on Android since NDK still uses GNU binutils.
 		"-faddrsig",
 
-		// Turn on -fcommon explicitly, since Clang now defaults to -fno-common. The cleanup bug
-		// tracking this is http://b/151457797.
-		"-fcommon",
-
 		// Help catch common 32/64-bit errors.
 		"-Werror=int-conversion",
 
@@ -277,6 +273,7 @@ var (
 	// Extra cflags for external third-party projects to disable warnings that
 	// are infeasible to fix in all the external projects and their upstream repos.
 	extraExternalCflags = []string{
+		"-fcommon",
 		"-Wno-enum-compare",
 		"-Wno-enum-compare-switch",
 
