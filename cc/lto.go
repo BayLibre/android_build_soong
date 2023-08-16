@@ -87,6 +87,10 @@ func (lto *lto) begin(ctx BaseModuleContext) {
 	} else if lto.ThinLTO() {
 		// Module explicitly requests for LTO.
 		ltoEnabled = true
+	} else if ctx.binary() || ctx.staticBinary() {
+		// ThinLTO makes some constructor functions not called in executables
+		// http://b/295944813
+		ltoEnabled = false
 	} else if ctx.testBinary() || ctx.testLibrary() {
 		// Do not enable LTO for tests for better debugging.
 		ltoEnabled = false
@@ -162,7 +166,7 @@ func (lto *lto) Never() bool {
 }
 
 func GlobalThinLTO(ctx android.BaseModuleContext) bool {
-	return ctx.Config().IsEnvTrue("GLOBAL_THINLTO")
+	return !ctx.Config().IsEnvFalse("GLOBAL_THINLTO")
 }
 
 // Propagate lto requirements down from binaries
