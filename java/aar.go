@@ -23,6 +23,7 @@ import (
 	"android/soong/android"
 	"android/soong/bazel"
 	"android/soong/dexpreopt"
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -1228,6 +1229,8 @@ func AARImportFactory() android.Module {
 type bazelAapt struct {
 	Manifest       bazel.Label
 	Resource_files bazel.LabelListAttribute
+	Assets_dir     bazel.StringAttribute
+	Assets         bazel.LabelListAttribute
 }
 
 type bazelAndroidLibrary struct {
@@ -1242,7 +1245,7 @@ type bazelAndroidLibraryImport struct {
 	Sdk_version bazel.StringAttribute
 }
 
-func (a *aapt) convertAaptAttrsWithBp2Build(ctx android.TopDownMutatorContext) *bazelAapt {
+func (a *aapt) convertAaptAttrsWithBp2Build(ctx android.TopDownMutatorContext) (*bazelAapt, bool) {
 	manifest := proptools.StringDefault(a.aaptProperties.Manifest, "AndroidManifest.xml")
 
 	resourceFiles := bazel.LabelList{
@@ -1252,10 +1255,24 @@ func (a *aapt) convertAaptAttrsWithBp2Build(ctx android.TopDownMutatorContext) *
 		files := android.RootToModuleRelativePaths(ctx, androidResourceGlob(ctx, dir))
 		resourceFiles.Includes = append(resourceFiles.Includes, files...)
 	}
+
+	assetsDir := bazel.StringAttribute{}
+	var assets bazel.LabelList
+	for i, dir := range android.PathsWithOptionalDefaultForModuleSrc(ctx, a.aaptProperties.Asset_dirs, "assets") {
+		if i > 0 {
+			ctx.MarkBp2buildUnconvertible(bp2build_metrics_proto.UnconvertedReasonType_PROPERTY_UNSUPPORTED, "multiple asset_dirs")
+			return &bazelAapt{}, false
+		}
+		assetsDir.Value = proptools.StringPtr(dir.Rel())
+		assets = bazel.MakeLabelList(android.RootToModuleRelativePaths(ctx, androidResourceGlob(ctx, dir)))
+
+	}
 	return &bazelAapt{
 		android.BazelLabelForModuleSrcSingle(ctx, manifest),
 		bazel.MakeLabelListAttribute(resourceFiles),
-	}
+		assetsDir,
+		bazel.MakeLabelListAttribute(assets),
+	}, true
 }
 
 func (a *AARImport) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
@@ -1328,6 +1345,10 @@ func (a *AndroidLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) 
 	name := a.Name()
 	props := AndroidLibraryBazelTargetModuleProperties()
 
+	aaptAttrs, supported := a.convertAaptAttrsWithBp2Build(ctx)
+	if !supported {
+		return
+	}
 	ctx.CreateBazelTargetModule(
 		props,
 		android.CommonAttributes{Name: name},
@@ -1337,7 +1358,7 @@ func (a *AndroidLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) 
 				Deps:                 deps,
 				Exports:              depLabels.StaticDeps,
 			},
-			a.convertAaptAttrsWithBp2Build(ctx),
+			aaptAttrs,
 		},
 	)
 
