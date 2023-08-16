@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd1710a_d4a1e1fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-08-16T22:28:21Z",
+      "side": 1,
+      "message": "Adding a comment to resolve here, as I\u0027m not sure you want \"Autosubmit\" for this CL that has the possibility of breaking some builds that aren\u0027t covered well in presubmit. You may want to submit this at the start of a working day to handle minor fixups (and not churn all of Android building/rebuilding the world).",
+      "revId": "a47df1a9375d79fa15fa82ce828600f5b67ab1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
