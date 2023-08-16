@@ -84,11 +84,12 @@ var (
 		// color codes if it is not running in a terminal.
 		"-fcolor-diagnostics",
 
-		// Warnings from clang-7.0
+		// -Wsign-compare is incompatible with the Google style guidance to use
+		// signed integers as loop indices.
 		"-Wno-sign-compare",
 
-		// Disable -Winconsistent-missing-override until we can clean up the existing
-		// codebase for it.
+		// -Winconsistent-missing-override causes excessive warning spam from AIDL generated code,
+		// which redeclares pure virtual methods in versioned interfaces
 		"-Wno-inconsistent-missing-override",
 
 		// Warnings from clang-10
@@ -96,10 +97,43 @@ var (
 		"-Wno-c99-designator",
 
 		// Many old files still have GNU designator syntax.
-		"-Wno-gnu-designator",
+		"-Wno-error=gnu-designator",
 
 		// Warnings from clang-12
-		"-Wno-gnu-folding-constant",
+		"-Wno-error=gnu-folding-constant",
+
+		// http://b/161386391 for -Wno-void-pointer-to-enum-cast
+		"-Wno-error=void-pointer-to-enum-cast",
+		// http://b/161386391 for -Wno-void-pointer-to-int-cast
+		"-Wno-error=void-pointer-to-int-cast",
+		// http://b/161386391 for -Wno-pointer-to-int-cast
+		"-Wno-error=pointer-to-int-cast",
+
+		// http://b/145210666
+		"-Wno-error=reorder-init-list",
+		// http://b/145211066
+		"-Wno-error=implicit-int-float-conversion",
+		// New warnings to be fixed after clang-r377782.
+		"-Wno-error=tautological-overlap-compare", // http://b/148815696
+		// New warnings to be fixed after clang-r383902.
+		"-Wno-error=deprecated-copy",                      // http://b/153746672
+		"-Wno-error=range-loop-construct",                 // http://b/153747076
+		"-Wno-error=zero-as-null-pointer-constant",        // http://b/68236239
+		"-Wno-error=deprecated-anon-enum-enum-conversion", // http://b/153746485
+		"-Wno-error=pessimizing-move",                     // http://b/154270751
+		// New warnings to be fixed after clang-r399163
+		"-Wno-error=non-c-typedef-for-linkage", // http://b/161304145
+		// New warnings to be fixed after clang-r428724
+		"-Wno-error=align-mismatch", // http://b/193679946
+		// New warnings to be fixed after clang-r433403
+		"-Wno-error=unused-but-set-variable",  // http://b/197240255
+		"-Wno-error=unused-but-set-parameter", // http://b/197240255
+		// New warnings to be fixed after clang-r468909
+		"-Wno-error=deprecated-builtins", // http://b/241601211
+		"-Wno-error=deprecated",          // in external/googletest/googletest
+		// New warnings to be fixed after clang-r475365
+		"-Wno-error=single-bit-bitfield-constant-conversion", // http://b/243965903
+		"-Wno-error=enum-constexpr-conversion",               // http://b/243964282
 
 		// Calls to the APIs that are newer than the min sdk version of the caller should be
 		// guarded with __builtin_available.
@@ -194,102 +228,76 @@ var (
 		"-Wno-gnu-include-next",
 	}
 
+	// These flags are appended after the module's cflags, so they cannot be
+	// overridden from Soong files. This is mainly useful for high severity
+	// warnings. Do not add any warning disables to this list.
 	noOverrideGlobalCflags = []string{
 		"-Werror=bool-operation",
 		"-Werror=format-insufficient-args",
-		"-Werror=implicit-int-float-conversion",
 		"-Werror=int-in-bool-context",
 		"-Werror=int-to-pointer-cast",
 		"-Werror=pointer-to-int-cast",
 		"-Werror=xor-used-as-pow",
-		// http://b/161386391 for -Wno-void-pointer-to-enum-cast
-		"-Wno-void-pointer-to-enum-cast",
-		// http://b/161386391 for -Wno-void-pointer-to-int-cast
-		"-Wno-void-pointer-to-int-cast",
-		// http://b/161386391 for -Wno-pointer-to-int-cast
-		"-Wno-pointer-to-int-cast",
 		"-Werror=fortify-source",
-
 		"-Werror=address-of-temporary",
 		"-Werror=null-dereference",
 		"-Werror=return-type",
 
 		// http://b/72331526 Disable -Wtautological-* until the instances detected by these
 		// new warnings are fixed.
-		"-Wno-tautological-constant-compare",
-		"-Wno-tautological-type-limit-compare",
-		// http://b/145210666
-		"-Wno-reorder-init-list",
-		// http://b/145211066
-		"-Wno-implicit-int-float-conversion",
-		// New warnings to be fixed after clang-r377782.
-		"-Wno-tautological-overlap-compare", // http://b/148815696
-		// New warnings to be fixed after clang-r383902.
-		"-Wno-deprecated-copy",                      // http://b/153746672
-		"-Wno-range-loop-construct",                 // http://b/153747076
-		"-Wno-zero-as-null-pointer-constant",        // http://b/68236239
-		"-Wno-deprecated-anon-enum-enum-conversion", // http://b/153746485
-		"-Wno-pessimizing-move",                     // http://b/154270751
-		// New warnings to be fixed after clang-r399163
-		"-Wno-non-c-typedef-for-linkage", // http://b/161304145
-		// New warnings to be fixed after clang-r428724
-		"-Wno-align-mismatch", // http://b/193679946
-		// New warnings to be fixed after clang-r433403
-		"-Wno-error=unused-but-set-variable",  // http://b/197240255
-		"-Wno-error=unused-but-set-parameter", // http://b/197240255
-		// New warnings to be fixed after clang-r468909
-		"-Wno-error=deprecated-builtins", // http://b/241601211
-		"-Wno-error=deprecated",          // in external/googletest/googletest
-		// New warnings to be fixed after clang-r475365
-		"-Wno-error=single-bit-bitfield-constant-conversion", // http://b/243965903
-		"-Wno-error=enum-constexpr-conversion",               // http://b/243964282
+		"-Wno-error=tautological-constant-compare",
+		"-Wno-error=tautological-type-limit-compare",
 	}
 
 	noOverride64GlobalCflags = []string{}
 
+	// Similar to noOverrideGlobalCflags, but applies only to external projects.
+	// This is should only be used to disable things from noOverrideGlobalCflags.
 	noOverrideExternalGlobalCflags = []string{
 		// http://b/191699019
-		"-Wno-format-insufficient-args",
-		"-Wno-sizeof-array-div",
-		"-Wno-incompatible-function-pointer-types",
-		"-Wno-unused-but-set-variable",
-		"-Wno-unused-but-set-parameter",
-		"-Wno-unqualified-std-cast-call",
-		"-Wno-bitwise-instead-of-logical",
-		"-Wno-misleading-indentation",
-		"-Wno-array-parameter",
-		"-Wno-gnu-offsetof-extensions",
+		"-Wno-error=format-insufficient-args",
+
+		// For some reason this needs to be in this section and not in
+		// extraExternalCflags to make external/llvm compile.
+		"-Wno-error=bitwise-instead-of-logical",
 	}
 
 	// Extra cflags for external third-party projects to disable warnings that
 	// are infeasible to fix in all the external projects and their upstream repos.
 	extraExternalCflags = []string{
-		"-Wno-enum-compare",
-		"-Wno-enum-compare-switch",
+		"-Wno-error=enum-compare",
+		"-Wno-error=enum-compare-switch",
 
 		// http://b/72331524 Allow null pointer arithmetic until the instances detected by
 		// this new warning are fixed.
-		"-Wno-null-pointer-arithmetic",
+		"-Wno-error=null-pointer-arithmetic",
 
 		// Bug: http://b/29823425 Disable -Wnull-dereference until the
 		// new instances detected by this warning are fixed.
-		"-Wno-null-dereference",
+		"-Wno-error=null-dereference",
 
 		// http://b/145211477
-		"-Wno-pointer-compare",
-		"-Wno-final-dtor-non-final-class",
+		"-Wno-error=pointer-compare",
+		"-Wno-error=final-dtor-non-final-class",
 
 		// http://b/165945989
-		"-Wno-psabi",
+		"-Wno-error=psabi",
 
 		// http://b/199369603
-		"-Wno-null-pointer-subtraction",
+		"-Wno-error=null-pointer-subtraction",
 
 		// http://b/175068488
-		"-Wno-string-concatenation",
+		"-Wno-error=string-concatenation",
 
 		// http://b/239661264
-		"-Wno-deprecated-non-prototype",
+		"-Wno-error=deprecated-non-prototype",
+
+		"-Wno-error=sizeof-array-div",
+		"-Wno-error=incompatible-function-pointer-types",
+		"-Wno-error=unqualified-std-cast-call",
+		"-Wno-error=misleading-indentation",
+		"-Wno-error=array-parameter",
+		"-Wno-error=gnu-offsetof-extensions",
 	}
 
 	llvmNextExtraCommonGlobalCflags = []string{
