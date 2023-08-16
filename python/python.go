@@ -240,7 +240,6 @@ var (
 	pyVersion2               = "PY2"
 	pyVersion3               = "PY3"
 	pyVersion2And3           = "PY2ANDPY3"
-	internalPath             = "internal"
 )
 
 type basePropertiesProvider interface {
@@ -425,9 +424,15 @@ func (p *PythonLibraryModule) GenerateAndroidBuildActions(ctx android.ModuleCont
 			return
 		}
 	}
-	// If property Is_internal is set, prepend pkgPath with internalPath
+	// If property Is_internal is set, prepend pkgPath
 	if proptools.BoolDefault(p.properties.Is_internal, false) {
-		pkgPath = filepath.Join(internalPath, pkgPath)
+		if pkgPath == "stdlib" {
+			// Legacy support
+			pkgPath = filepath.Join("internal", pkgPath)
+		} else {
+			// Used for python3.11+
+			pkgPath = filepath.Join("lib", pkgPath)
+		}
 	}
 
 	// generate src:destination path mappings for this module
@@ -467,8 +472,10 @@ func (p *PythonLibraryModule) genModulePathMappings(ctx android.ModuleContext, p
 			continue
 		}
 		runfilesPath := filepath.Join(pkgPath, s.Rel())
-		if err := isValidPythonPath(runfilesPath); err != nil {
-			ctx.PropertyErrorf("srcs", err.Error())
+		if !proptools.BoolDefault(p.properties.Is_internal, false) {
+			if err := isValidPythonPath(runfilesPath); err != nil {
+				ctx.PropertyErrorf("srcs", err.Error())
+			}
 		}
 		if !checkForDuplicateOutputPath(ctx, destToPySrcs, runfilesPath, s.String(), p.Name(), p.Name()) {
 			p.srcsPathMappings = append(p.srcsPathMappings, pathMapping{dest: runfilesPath, src: s})
