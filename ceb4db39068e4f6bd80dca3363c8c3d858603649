@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238e4906_5a275921",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2023-08-16T02:20:29Z",
+      "side": 1,
+      "message": "TODO: Find a way to not hardcode this.",
+      "range": {
+        "startLine": 76,
+        "startChar": 26,
+        "endLine": 76,
+        "endChar": 40
+      },
+      "revId": "ceb4db39068e4f6bd80dca3363c8c3d858603649",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
