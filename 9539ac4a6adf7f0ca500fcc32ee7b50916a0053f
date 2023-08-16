@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca8904c_ec9e715d",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-16T21:25:04Z",
+      "side": 1,
+      "message": "Nit: Consider calling FirstUniqueBazelLabels instead of recreating the logic.",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 2
+      },
+      "revId": "9539ac4a6adf7f0ca500fcc32ee7b50916a0053f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
