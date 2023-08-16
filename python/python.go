@@ -461,14 +461,19 @@ func (p *PythonLibraryModule) genModulePathMappings(ctx android.ModuleContext, p
 	destToPySrcs := make(map[string]string)
 	destToPyData := make(map[string]string)
 
+	// Disable path checks for the stdlib, as it includes a "." in the version string
+	isInternal := proptools.BoolDefault(p.properties.Is_internal, false)
+
 	for _, s := range expandedSrcs {
 		if s.Ext() != pyExt && s.Ext() != protoExt {
 			ctx.PropertyErrorf("srcs", "found non (.py|.proto) file: %q!", s.String())
 			continue
 		}
 		runfilesPath := filepath.Join(pkgPath, s.Rel())
-		if err := isValidPythonPath(runfilesPath); err != nil {
-			ctx.PropertyErrorf("srcs", err.Error())
+		if !isInternal {
+			if err := isValidPythonPath(runfilesPath); err != nil {
+				ctx.PropertyErrorf("srcs", err.Error())
+			}
 		}
 		if !checkForDuplicateOutputPath(ctx, destToPySrcs, runfilesPath, s.String(), p.Name(), p.Name()) {
 			p.srcsPathMappings = append(p.srcsPathMappings, pathMapping{dest: runfilesPath, src: s})
