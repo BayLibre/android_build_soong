@@ -96,6 +96,9 @@ type BaseProperties struct {
 	// list of the Python libraries compatible both with Python2 and Python3.
 	Libs []string `android:"arch_variant"`
 
+	// TODO
+	Exclude_libs []string `android:"arch_variant"`
+
 	Version struct {
 		// Python2-specific properties, including whether Python2 is supported for this module
 		// and version-specific sources, exclusions and dependencies.
@@ -322,7 +325,7 @@ func (p *PythonLibraryModule) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 
 	// Add python library dependencies for this python version variation
-	ctx.AddVariationDependencies(versionVariation, pythonLibTag, android.LastUniqueStrings(p.properties.Libs)...)
+	ctx.AddVariationDependencies(versionVariation, pythonLibTag, android.LastUniqueStrings(android.RemoveListFromList(p.properties.Libs, p.properties.Exclude_libs))...)
 
 	// Emulate the data property for java_data but with the arch variation overridden to "common"
 	// so that it can point to java modules.
@@ -387,7 +390,7 @@ func (p *PythonLibraryModule) AddDepsOnPythonLauncherAndStdlib(ctx android.Botto
 			p.properties.Actual_version, ctx.ModuleName()))
 	}
 	targetVariations := targetForDeps.Variations()
-	if ctx.ModuleName() != stdLib {
+	if !proptools.BoolDefault(p.properties.Is_internal, false) {
 		stdLibVariations := make([]blueprint.Variation, 0, len(targetVariations)+1)
 		stdLibVariations = append(stdLibVariations, blueprint.Variation{Mutator: "python_version", Variation: p.properties.Actual_version})
 		stdLibVariations = append(stdLibVariations, targetVariations...)
@@ -461,14 +464,19 @@ func (p *PythonLibraryModule) genModulePathMappings(ctx android.ModuleContext, p
 	destToPySrcs := make(map[string]string)
 	destToPyData := make(map[string]string)
 
+	// Disable path checks for the stdlib, as it includes a "." in the version string
+	isInternal := proptools.BoolDefault(p.properties.Is_internal, false)
+
 	for _, s := range expandedSrcs {
 		if s.Ext() != pyExt && s.Ext() != protoExt {
 			ctx.PropertyErrorf("srcs", "found non (.py|.proto) file: %q!", s.String())
 			continue
 		}
 		runfilesPath := filepath.Join(pkgPath, s.Rel())
-		if err := isValidPythonPath(runfilesPath); err != nil {
-			ctx.PropertyErrorf("srcs", err.Error())
+		if !isInternal {
+			if err := isValidPythonPath(runfilesPath); err != nil {
+				ctx.PropertyErrorf("srcs", err.Error())
+			}
 		}
 		if !checkForDuplicateOutputPath(ctx, destToPySrcs, runfilesPath, s.String(), p.Name(), p.Name()) {
 			p.srcsPathMappings = append(p.srcsPathMappings, pathMapping{dest: runfilesPath, src: s})
