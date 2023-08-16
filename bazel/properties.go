@@ -194,13 +194,13 @@ func (ll *LabelList) Partition(predicate func(label Label) bool) (LabelList, Lab
 // UniqueSortedBazelLabels takes a []Label and deduplicates the labels, and returns
 // the slice in a sorted order.
 func UniqueSortedBazelLabels(originalLabels []Label) []Label {
-	uniqueLabelsSet := make(map[Label]bool)
-	for _, l := range originalLabels {
-		uniqueLabelsSet[l] = true
-	}
+	uniqueLabelsSet := make(map[string]bool)
 	var uniqueLabels []Label
-	for l, _ := range uniqueLabelsSet {
-		uniqueLabels = append(uniqueLabels, l)
+	for _, l := range originalLabels {
+		if _, exists := uniqueLabelsSet[l.Label]; !exists {
+			uniqueLabels = append(uniqueLabels, l)
+		}
+		uniqueLabelsSet[l.Label] = true
 	}
 	sort.SliceStable(uniqueLabels, func(i, j int) bool {
 		return uniqueLabels[i].Label < uniqueLabels[j].Label
@@ -210,13 +210,13 @@ func UniqueSortedBazelLabels(originalLabels []Label) []Label {
 
 func FirstUniqueBazelLabels(originalLabels []Label) []Label {
 	var labels []Label
-	found := make(map[Label]bool, len(originalLabels))
+	found := make(map[string]bool, len(originalLabels))
 	for _, l := range originalLabels {
-		if _, ok := found[l]; ok {
+		if _, ok := found[l.Label]; ok {
 			continue
 		}
 		labels = append(labels, l)
-		found[l] = true
+		found[l.Label] = true
 	}
 	return labels
 }
