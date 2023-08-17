@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d15d754_5e39963f",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2023-08-17T17:16:25Z",
+      "side": 1,
+      "message": "I feel binary() covers staticBinary(), as in https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/binary.go;l\u003d247?q\u003dbinary.go\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain:build%2Fsoong%2F",
+      "range": {
+        "startLine": 90,
+        "startChar": 27,
+        "endLine": 90,
+        "endChar": 45
+      },
+      "revId": "36e80a1068123cef477797b0594abb4be649e57d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
