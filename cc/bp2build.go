@@ -1023,6 +1023,13 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 
 	addMuslSystemDynamicDeps(ctx, linkerAttrs)
 
+	// Dedupe all deps.
+	(&linkerAttrs).deps = bazel.FirstUniqueBazelLabelListAttribute((&linkerAttrs).deps)
+	(&linkerAttrs).implementationDeps = bazel.FirstUniqueBazelLabelListAttribute((&linkerAttrs).implementationDeps)
+	(&linkerAttrs).implementationDynamicDeps = bazel.FirstUniqueBazelLabelListAttribute((&linkerAttrs).implementationDynamicDeps)
+	(&linkerAttrs).wholeArchiveDeps = bazel.FirstUniqueBazelLabelListAttribute((&linkerAttrs).wholeArchiveDeps)
+	(&linkerAttrs).implementationWholeArchiveDeps = bazel.FirstUniqueBazelLabelListAttribute((&linkerAttrs).implementationWholeArchiveDeps)
+
 	return baseAttributes{
 		compilerAttrs,
 		linkerAttrs,
