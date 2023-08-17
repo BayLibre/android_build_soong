@@ -213,6 +213,7 @@ var (
 		"-Werror=address-of-temporary",
 		"-Werror=null-dereference",
 		"-Werror=return-type",
+		"-Werror=incompatible-function-pointer-types",
 
 		// http://b/72331526 Disable -Wtautological-* until the instances detected by these
 		// new warnings are fixed.
@@ -251,7 +252,6 @@ var (
 		// http://b/191699019
 		"-Wno-format-insufficient-args",
 		"-Wno-sizeof-array-div",
-		"-Wno-incompatible-function-pointer-types",
 		"-Wno-unused-but-set-variable",
 		"-Wno-unused-but-set-parameter",
 		"-Wno-unqualified-std-cast-call",
