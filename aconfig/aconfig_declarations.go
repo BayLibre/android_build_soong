@@ -35,7 +35,7 @@ type DeclarationsModule struct {
 		Package string
 
 		// Values from TARGET_RELEASE / RELEASE_ACONFIG_VALUE_SETS
-		Values []string `blueprint:"mutated"`
+		Values []android.Path `blueprint:"mutated"`
 	}
 
 	intermediatePath android.WritablePath
@@ -88,11 +88,11 @@ func (module *DeclarationsModule) OutputFiles(tag string) (android.Paths, error)
 	}
 }
 
-func joinAndPrefix(prefix string, values []string) string {
+func joinAndPrefix(prefix string, values []android.Path) string {
 	var sb strings.Builder
 	for _, v := range values {
 		sb.WriteString(prefix)
-		sb.WriteString(v)
+		sb.WriteString(v.String())
 	}
 	return sb.String()
 }
@@ -124,18 +124,20 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		depData := ctx.OtherModuleProvider(dep, valueSetProviderKey).(valueSetProviderData)
 		valuesFiles, ok := depData.AvailablePackages[module.properties.Package]
 		if ok {
-			for _, path := range valuesFiles {
-				module.properties.Values = append(module.properties.Values, path.String())
-			}
+			module.properties.Values = append(module.properties.Values, valuesFiles...)
 		}
 	})
 
 	// Intermediate format
 	inputFiles := android.PathsForModuleSrc(ctx, module.properties.Srcs)
+	implicits := []android.Path{}
+	implicits = append(implicits, inputFiles...)
+	implicits = append(implicits, module.properties.Values...)
 	intermediatePath := android.PathForModuleOut(ctx, "intermediate.pb")
 	defaultPermission := ctx.Config().ReleaseAconfigFlagDefaultPermission()
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        aconfigRule,
+		Implicits:   implicits,
 		Output:      intermediatePath,
 		Description: "aconfig_declarations",
 		Args: map[string]string{
