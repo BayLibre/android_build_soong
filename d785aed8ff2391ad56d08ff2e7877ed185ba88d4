@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1801b7a6_f93e93e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-17T23:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a960095f_6d78550e",
+      "revId": "d785aed8ff2391ad56d08ff2e7877ed185ba88d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d5c478a_c1ec5921",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-08-14T14:13:56Z",
       "side": 1,
       "message": "How about we just call this one `ProguardFlagFiles` (the fact that this contains transitive information is kind of encoded in the use of a DepSet), then `proguardFlagsForThisModule` can be `transitiveProguardFlags` or `transitiveProguardFlagFiles`, and `exportedFlagFiles`... I don\u0027t have a really great name for, we could just do away with the variable, or call it `proguardFlagsForThisModule` or `localProguardFlagFiles`... Or something else ^^ up to you",
+      "range": {
+        "startLine": 1701,
+        "startChar": 2,
+        "endLine": 1701,
+        "endChar": 30
+      },
+      "revId": "d785aed8ff2391ad56d08ff2e7877ed185ba88d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e037b95c_ce0c4995",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1701,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2023-08-17T23:06:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d5c478a_c1ec5921",
       "range": {
         "startLine": 1701,
         "startChar": 2,
