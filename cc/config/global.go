@@ -216,6 +216,7 @@ var (
 		"-Werror=address-of-temporary",
 		"-Werror=null-dereference",
 		"-Werror=return-type",
+		"-Werror=incompatible-function-pointer-types",
 
 		// http://b/72331526 Disable -Wtautological-* until the instances detected by these
 		// new warnings are fixed.
@@ -257,10 +258,6 @@ var (
 		// http://b/296422292
 		// Usually signals a mistake and should be a hard error.
 		"-Wno-sizeof-array-div",
-		// http://b/296321145
-		// Indicates potential memory or stack corruption, so should be changed
-		// to a hard error. Currently triggered by some vendor code.
-		"-Wno-incompatible-function-pointer-types",
 		// http://b/296321508
 		// Introduced in response to a critical security vulnerability and
 		// should be a hard error - it requires only whitespace changes to fix.
