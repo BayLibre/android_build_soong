@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da7966c6_c5a93137",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-17T17:22:49Z",
+      "side": 1,
+      "message": "is_internal seems like something that could be simplified/removed if we just add internal/ to the pkg_path manually.",
+      "revId": "339a63f04469ebf69a0b3ca729243eefd838a572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
