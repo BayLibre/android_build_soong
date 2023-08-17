@@ -191,6 +191,7 @@ var (
 		"external/ow2-asm":                       Bp2BuildDefaultTrueRecursively,
 		"external/pcre":                          Bp2BuildDefaultTrueRecursively,
 		"external/protobuf":                      Bp2BuildDefaultTrueRecursively,
+		"external/python/pyfakefs/pyfakefs":      Bp2BuildDefaultTrueRecursively,
 		"external/python/pyyaml/lib/yaml":        Bp2BuildDefaultTrueRecursively,
 		"external/python/six":                    Bp2BuildDefaultTrueRecursively,
 		"external/python/jinja/src":              Bp2BuildDefaultTrueRecursively,
@@ -417,10 +418,12 @@ var (
 		"system/tools/xsdc/utils":                                Bp2BuildDefaultTrueRecursively,
 		"system/unwinding/libunwindstack":                        Bp2BuildDefaultTrueRecursively,
 
-		"tools/apifinder":                            Bp2BuildDefaultTrue,
-		"tools/apksig":                               Bp2BuildDefaultTrue,
-		"tools/external_updater":                     Bp2BuildDefaultTrueRecursively,
-		"tools/metalava":                             Bp2BuildDefaultTrue,
+		"tools/apifinder":        Bp2BuildDefaultTrue,
+		"tools/apksig":           Bp2BuildDefaultTrue,
+		"tools/asuite":           Bp2BuildDefaultTrue,
+		"tools/asuite/atest":     Bp2BuildDefaultTrue,
+		"tools/external_updater": Bp2BuildDefaultTrueRecursively,
+		"tools/metalava":         Bp2BuildDefaultTrue,
 		"tools/platform-compat/java/android/compat":  Bp2BuildDefaultTrueRecursively,
 		"tools/tradefederation/prebuilts/filegroups": Bp2BuildDefaultTrueRecursively,
 	}
@@ -1578,6 +1581,9 @@ var (
 
 		// Depends on the module defined in the directory not bp2build default allowed
 		"ota_from_raw_img",
+
+		"atest_script_help.sh",
+		"atest_tradefed.sh",
 	}
 
 	// Bazel prod-mode allowlist. Modules in this list are built by Bazel
