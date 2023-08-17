@@ -251,7 +251,6 @@ var (
 		// http://b/191699019
 		"-Wno-format-insufficient-args",
 		"-Wno-sizeof-array-div",
-		"-Wno-incompatible-function-pointer-types",
 		"-Wno-unused-but-set-variable",
 		"-Wno-unused-but-set-parameter",
 		"-Wno-unqualified-std-cast-call",
