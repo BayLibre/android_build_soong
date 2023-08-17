@@ -485,6 +485,8 @@ type ProductVariables struct {
 
 	ReleaseAconfigFlagDefaultPermission string `json:",omitempty"`
 
+	ReleasePlatformVersionCodenameRel bool `json:",omitempty"`
+
 	KeepVndk *bool `json:",omitempty"`
 }
 

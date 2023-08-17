@@ -212,6 +212,11 @@ func (c Config) ReleaseAconfigFlagDefaultPermission() string {
 	return c.config.productVariables.ReleaseAconfigFlagDefaultPermission
 }
 
+// The flag value, derived from ReleasePlatformVersionCodenameRel
+func (c Config) ReleasePlatformVersionCodenameRel() bool {
+	return c.config.productVariables.ReleasePlatformVersionCodenameRel
+}
+
 // A DeviceConfig object represents the configuration for a particular device
 // being built. For now there will only be one of these, but in the future there
 // may be multiple devices being built.
