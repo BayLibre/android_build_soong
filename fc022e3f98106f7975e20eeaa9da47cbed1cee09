@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26539f35_40778889",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-08-17T04:34:39Z",
+      "side": 1,
+      "message": "How about making three choices: host_with_device, host_without_device, device? And  run validation on the Starlark side such that `host_with_device` and `host_without_device` are mutually exclusive.\n\nThen you might not need `devicelessOnHost`.",
+      "range": {
+        "startLine": 761,
+        "startChar": 2,
+        "endLine": 762,
+        "endChar": 25
+      },
+      "revId": "fc022e3f98106f7975e20eeaa9da47cbed1cee09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ace9ef_0b642369",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2023-08-17T04:34:39Z",
+      "side": 1,
+      "message": "This would be reused for other module types, so consider making this a function in the `android` package (build/soong/android)",
+      "range": {
+        "startLine": 757,
+        "startChar": 1,
+        "endLine": 770,
+        "endChar": 2
+      },
+      "revId": "fc022e3f98106f7975e20eeaa9da47cbed1cee09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
