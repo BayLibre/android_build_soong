@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c47a8a_41290f42",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-17T22:47:10Z",
+      "side": 1,
+      "message": "`strings.HasPrefix(m, \"//\")`",
+      "range": {
+        "startLine": 381,
+        "startChar": 7,
+        "endLine": 381,
+        "endChar": 47
+      },
+      "revId": "219d4a91a4ba4d91a5a36a526a84d32359a0edc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
