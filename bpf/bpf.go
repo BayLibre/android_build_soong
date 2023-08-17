@@ -154,6 +154,7 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		"-isystem bionic/libc/kernel/uapi/asm-arm64",
 		"-isystem bionic/libc/kernel/android/uapi",
 		"-I       frameworks/libs/net/common/native/bpf_headers/include/bpf",
+		"-I       packages/modules/Connectivity/libs/common/native/bpf_headers/include/bpf",
 		// TODO(b/149785767): only give access to specific file with AID_* constants
 		"-I       system/core/libcutils/include",
 		"-I " + ctx.ModuleDir(),
