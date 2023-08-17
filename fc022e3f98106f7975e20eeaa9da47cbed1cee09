@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcdb4614_b8fa9e45",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1890551
+      },
+      "writtenOn": "2023-08-17T21:29:46Z",
+      "side": 1,
+      "message": "Good point. Done",
+      "parentUuid": "26539f35_40778889",
+      "range": {
+        "startLine": 761,
+        "startChar": 2,
+        "endLine": 762,
+        "endChar": 25
+      },
+      "revId": "fc022e3f98106f7975e20eeaa9da47cbed1cee09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88ace9ef_0b642369",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-17T04:34:39Z",
       "side": 1,
       "message": "This would be reused for other module types, so consider making this a function in the `android` package (build/soong/android)",
+      "range": {
+        "startLine": 757,
+        "startChar": 1,
+        "endLine": 770,
+        "endChar": 2
+      },
+      "revId": "fc022e3f98106f7975e20eeaa9da47cbed1cee09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1852e14_14534862",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1890551
+      },
+      "writtenOn": "2023-08-17T21:29:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88ace9ef_0b642369",
       "range": {
         "startLine": 757,
         "startChar": 1,
