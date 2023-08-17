@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c0e19e9_d5bdc474",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2023-08-17T17:22:36Z",
+      "side": 1,
+      "message": "It seems to break a lot of build tests. Because android_arm64_armv8-a_static is converted into android_arm64_armv8-a_static_lto-none.",
+      "revId": "36e80a1068123cef477797b0594abb4be649e57d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d15d754_5e39963f",
