@@ -686,6 +686,9 @@ type testBinaryAttributes struct {
 
 	tidyAttributes
 	tradefed.TestConfigAttributes
+
+	Deviceless_on_host *bool
+	Runs_on            bazel.StringListAttribute
 }
 
 // testBinaryBp2build is the bp2build converter for cc_test modules. A cc_test's
@@ -730,6 +733,8 @@ func testBinaryBp2build(ctx android.TopDownMutatorContext, m *Module) {
 
 	addImplicitGtestDeps(ctx, &testBinaryAttrs, gtest, gtestIsolated)
 
+	var unitTest *bool
+
 	for _, testProps := range m.GetProperties() {
 		if p, ok := testProps.(*TestBinaryProperties); ok {
 			useVendor := false // TODO Bug: 262914724
@@ -745,8 +750,27 @@ func testBinaryBp2build(ctx android.TopDownMutatorContext, m *Module) {
 				&testInstallBase,
 			)
 			testBinaryAttrs.TestConfigAttributes = testConfigAttributes
+			unitTest = p.Test_options.Unit_test
 		}
 	}
+
+	var runsOn []string
+	devicelessOnHost := false
+
+	if m.ModuleBase.HostSupported() && m.ModuleBase.DeviceSupported() {
+		runsOn = []string{"host", "device"}
+		devicelessOnHost = true
+	} else if m.ModuleBase.HostSupported() {
+		runsOn = []string{"host"}
+		if gtest || (unitTest != nil && *unitTest) {
+			devicelessOnHost = true
+		}
+	} else if m.ModuleBase.DeviceSupported() {
+		runsOn = []string{"device"}
+	}
+
+	testBinaryAttrs.Runs_on = bazel.MakeStringListAttribute(runsOn)
+	testBinaryAttrs.Deviceless_on_host = &devicelessOnHost
 
 	// TODO (b/262914724): convert to tradefed_cc_test and tradefed_cc_test_host
 	ctx.CreateBazelTargetModule(
