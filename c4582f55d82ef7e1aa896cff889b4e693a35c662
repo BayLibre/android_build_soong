@@ -94,6 +94,30 @@
       },
       "revId": "c4582f55d82ef7e1aa896cff889b4e693a35c662",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "342f14ee_7d5e6200",
+        "filename": "rust/toolchain_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-17T15:27:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b91805cb_20f7643f",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "c4582f55d82ef7e1aa896cff889b4e693a35c662",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "359cc894_2f3820fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-17T15:27:31Z",
+      "side": 1,
+      "message": "Beside Matthew\u0027s comments, LGTM.",
+      "revId": "13327cfff09ef54243276647b7aa27e7f4e05c4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ed1dfb3_b7fc23a3",
