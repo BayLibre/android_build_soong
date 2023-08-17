@@ -36,6 +36,9 @@ type DeclarationsModule struct {
 
 		// Values from TARGET_RELEASE / RELEASE_ACONFIG_VALUE_SETS
 		Values []string `blueprint:"mutated"`
+
+		// Implicit dependencies of create-cache rule.
+		ImplicitDeps android.Paths
 	}
 
 	intermediatePath android.WritablePath
@@ -126,6 +129,7 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 		if ok {
 			for _, path := range valuesFiles {
 				module.properties.Values = append(module.properties.Values, path.String())
+				module.properties.ImplicitDeps = append(module.properties.ImplicitDeps, path)
 			}
 		}
 	})
@@ -134,8 +138,14 @@ func (module *DeclarationsModule) GenerateAndroidBuildActions(ctx android.Module
 	inputFiles := android.PathsForModuleSrc(ctx, module.properties.Srcs)
 	intermediatePath := android.PathForModuleOut(ctx, "intermediate.pb")
 	defaultPermission := ctx.Config().ReleaseAconfigFlagDefaultPermission()
+
+	// It is not clear why changes in Srcs are not triggering "intermediate.pb" rebuild,
+	// so we add it as a separate dependency instead (b/279503561).
+	module.properties.ImplicitDeps = append(module.properties.ImplicitDeps, inputFiles...)
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        aconfigRule,
+		Implicits:   module.properties.ImplicitDeps,
 		Output:      intermediatePath,
 		Description: "aconfig_declarations",
 		Args: map[string]string{
