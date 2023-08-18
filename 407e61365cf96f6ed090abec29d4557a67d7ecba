@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32eb6cf_bfd3c624",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-08-18T18:17:17Z",
+      "side": 1,
+      "message": "The reason for `-Wno` instead of `-Wno-error\u003d` is to reduce build warning spam both for developers and automated builds. Many of these warnings are not worth fixing, or they might be lower in priority than many other tasks that would be more beneficial (external/ cleanups also tend to be very slow and difficult). I\u0027m not opposed to having a mode for the build where it does use `-Wno-error\u003d` instead, but you\u0027d have to modify Soong further to support varying between these.\n\nAs written though, I have to reject this CL because the tradeoff of creating lots of build warning spam for nearly every other developer is much worse than having to hack the Soong rules to embark on cleanup CLs.",
+      "revId": "407e61365cf96f6ed090abec29d4557a67d7ecba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84706675_b9262cfd",
+        "filename": "cc/config/global.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-08-18T18:17:17Z",
+      "side": 1,
+      "message": "Changes like this are great for making this more understandable. Can you break this out into a separate CL or just retain these kinds of improvements?",
+      "revId": "407e61365cf96f6ed090abec29d4557a67d7ecba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f6075ab_44d16eff",
+        "filename": "cc/config/global.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-08-18T18:17:17Z",
+      "side": 1,
+      "message": "I\u0027m also not opposed to moving warnings out of the no-override list, but again, these should be part of a separate change that justifies why we are moving them. There are lots of builds that also don\u0027t necessarily get run in a regular presubmit, so having movement here can accidentally cause build breakages. And every edit to this list triggers a full rebuild for everyone, so it would be good not to be landing/reverting edits unless we\u0027re sure that it will stick.",
+      "revId": "407e61365cf96f6ed090abec29d4557a67d7ecba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
