@@ -319,6 +319,20 @@ func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.generateJavaUsedByApex(ctx)
 }
 
+func (a *AndroidApp) MinSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel {
+	defaultMinSdkVersion := a.Module.MinSdkVersion(ctx)
+	overrideMinSdkValue := ctx.DeviceConfig().ApexGlobalMinSdkVersionOverride()
+	if proptools.Bool(a.appProperties.Updatable) && overrideMinSdkValue != "" {
+		overrideApiLevel := android.ApiLevelFrom(ctx, overrideMinSdkValue)
+		if !overrideApiLevel.IsInvalid() &&
+			!overrideApiLevel.IsNone() &&
+			overrideApiLevel.CompareTo(defaultMinSdkVersion) > 0 {
+			return overrideApiLevel
+		}
+	}
+	return defaultMinSdkVersion
+}
+
 func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {
 	if a.Updatable() {
 		if !a.SdkVersion(ctx).Stable() {
