@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12ebcac4_9825c7ba",
+        "filename": "sysprop/sysprop_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2023-08-18T20:51:06Z",
+      "side": 0,
+      "message": "Has this been a no-op before this CL?",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "c21f48def3a24fc388d100abfd07759f6672c421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
