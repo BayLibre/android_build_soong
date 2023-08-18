@@ -355,6 +355,7 @@ type goAttributes struct {
 	Srcs                   bazel.LabelListAttribute
 	Deps                   bazel.LabelListAttribute
 	Data                   bazel.LabelListAttribute
+	Out                    bazel.StringAttribute
 	Target_compatible_with bazel.LabelListAttribute
 
 	// attributes for the dynamically generated go_test target
@@ -621,7 +622,10 @@ func generateBazelTargetsGoBinary(ctx *android.Context, g *bootstrap.GoBinary, g
 
 	// Create a go_binary target
 	ga := goAttributes{
-		Deps:                   goDepLabels(transitiveDeps, goModulesMap),
+		Deps: goDepLabels(transitiveDeps, goModulesMap),
+		Out: bazel.StringAttribute{
+			Value: proptools.StringPtr(g.Name()),
+		},
 		Target_compatible_with: targetNotCompatibleWithAndroid(),
 	}
 

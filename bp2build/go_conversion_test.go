@@ -139,6 +139,7 @@ bootstrap_go_package {
         "//bar:baz",
     ]`,
 				"srcs": `["main.go"]`,
+				"out":  `"foo"`,
 			},
 			android.HostSupported,
 		)},
@@ -162,6 +163,7 @@ blueprint_go_binary {
 				AttrNameToString{
 					"deps":  `[]`,
 					"embed": `[":foo-source"]`,
+					"out":   `"foo"`,
 				},
 				android.HostSupported,
 			),
@@ -201,6 +203,7 @@ blueprint_go_binary {
 			AttrNameToString{
 				"deps": `[]`,
 				"srcs": `["//subdir:main.go"]`,
+				"out":  `"foo"`,
 			},
 			android.HostSupported,
 		)},
