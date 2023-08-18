@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7bddd22_1b6f57ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1962375
+      },
+      "writtenOn": "2023-08-18T22:09:07Z",
+      "side": 1,
+      "message": "[ABTD run](https://android-build.googleplex.com/builds/abtd/run/L88900000962650430) on the FKBB built successfully.",
+      "revId": "37d6d451490c41fcc9b1ff5102084b467e0d6b2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
