@@ -93,6 +93,7 @@ func (w *Writer) Close() error {
 			eb.uint64(h.UncompressedSize64)
 			eb.uint64(h.CompressedSize64)
 			eb.uint64(h.offset)
+			h.Extra = stripExtras(h.Extra)
 			h.Extra = append(h.Extra, buf[:]...)
 		} else {
 			b.uint32(h.CompressedSize)
