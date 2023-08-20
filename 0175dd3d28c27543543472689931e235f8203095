@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e12b34b_033899b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-08-20T16:38:35Z",
+      "side": 1,
+      "message": "This won\u0027t work. I hid TARGET_RELEASE from everything else so people don\u0027t write ifeq ($(TARGET_RELEASE),next).\n\nI\u0027ve had several people come to me and ask how to write that conditional, and I\u0027ve pointed them at the flagging mechanism.  So I think the block is working.\n\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/make/core/release_config.mk;l\u003d104",
+      "revId": "0175dd3d28c27543543472689931e235f8203095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
