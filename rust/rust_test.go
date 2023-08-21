@@ -846,10 +846,12 @@ func TestSandboxCompilation(t *testing.T) {
 			err := prototext.Unmarshal([]byte(contents), &manifestProto)
 			if err != nil {
 				t.Errorf("expected no errors unmarshaling manifest proto; got %v", err)
+				return
 			}
 
 			if len(manifestProto.Commands) != 1 {
 				t.Errorf("expected 1 command; got %v", len(manifestProto.Commands))
+				return
 			}
 
 			// check that sandbox contains correct files
@@ -876,6 +878,113 @@ func TestSandboxCompilation(t *testing.T) {
 					flag,
 				)
 			}
+		})
+	}
+}
+
+func TestSandboxDepfileComparison(t *testing.T) {
+	ctx := testRust(t, `
+		rust_library {
+			name: "libfizz_buzz",
+			crate_name:"fizz_buzz",
+			crate_root: "foo.rs",
+			srcs: [
+				"src_lib*.rs",
+			],
+			compile_data: [
+				"compile_data1.txt",
+				"compile_data2.txt",
+			],
+			dylib: {
+				srcs: ["dylib_only.rs"],
+			},
+			rlib: {
+				srcs: ["rlib_only.rs"],
+			},
+		}
+	`,
+		android.FixtureMergeMockFs(android.MockFS{
+			"src_lib1.rs": nil,
+			"src_lib2.rs": nil,
+			"src_lib3.rs": nil,
+			"src_lib4.rs": nil,
+		}),
+	)
+
+	testcases := []struct {
+		name                           string
+		moduleName                     string
+		variant                        string
+		expectedDepfileComparisonFiles []string
+	}{
+		{
+			name:       "rust_library (dylib)",
+			moduleName: "libfizz_buzz",
+			variant:    "android_arm64_armv8-a_dylib",
+			expectedDepfileComparisonFiles: []string{
+				"foo.rs",
+				"src_lib1.rs",
+				"src_lib2.rs",
+				"src_lib3.rs",
+				"src_lib4.rs",
+				"compile_data1.txt",
+				"compile_data2.txt",
+				"dylib_only.rs",
+			},
+		},
+		{
+			name:       "rust_library (rlib dylib-std)",
+			moduleName: "libfizz_buzz",
+			variant:    "android_arm64_armv8-a_rlib_dylib-std",
+			expectedDepfileComparisonFiles: []string{
+				"foo.rs",
+				"src_lib1.rs",
+				"src_lib2.rs",
+				"src_lib3.rs",
+				"src_lib4.rs",
+				"compile_data1.txt",
+				"compile_data2.txt",
+				"dylib_only.rs",
+			},
+		},
+		{
+			name:       "rust_library (rlib rlib-std)",
+			moduleName: "libfizz_buzz",
+			variant:    "android_arm64_armv8-a_rlib_rlib-std",
+			expectedDepfileComparisonFiles: []string{
+				"foo.rs",
+				"src_lib1.rs",
+				"src_lib2.rs",
+				"src_lib3.rs",
+				"src_lib4.rs",
+				"compile_data1.txt",
+				"compile_data2.txt",
+				"rlib_only.rs",
+			},
+		},
+	}
+
+	for _, tc := range testcases {
+		t.Run(tc.name, func(t *testing.T) {
+			writeFile := ctx.ModuleForTests(tc.moduleName, tc.variant).Rule("writeExpandedFileRule")
+			contents := writeFile.BuildParams.Args["contents"]
+			manifestProto := sbox_proto.Manifest{}
+			err := prototext.Unmarshal([]byte(contents), &manifestProto)
+			if err != nil {
+				t.Errorf("expected no errors unmarshaling manifest proto; got %v", err)
+				return
+			}
+
+			if len(manifestProto.Commands) != 1 {
+				t.Errorf("expected 1 command; got %v", len(manifestProto.Commands))
+				return
+			}
+
+			// check that sandbox contains correct files
+			rustc := manifestProto.Commands[0]
+			fmt.Println(rustc)
+
+			// TODO finish this test: figure out where the RSP file is written
 		})
 	}
 }
