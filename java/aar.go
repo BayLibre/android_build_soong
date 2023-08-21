@@ -1223,6 +1223,7 @@ func AARImportFactory() android.Module {
 type bazelAapt struct {
 	Manifest       bazel.Label
 	Resource_files bazel.LabelListAttribute
+	Resource_zips  bazel.LabelListAttribute
 	Assets_dir     bazel.StringAttribute
 	Assets         bazel.LabelListAttribute
 }
@@ -1268,10 +1269,10 @@ func (a *aapt) convertAaptAttrsWithBp2Build(ctx android.TopDownMutatorContext) (
 
 	}
 	return &bazelAapt{
-		android.BazelLabelForModuleSrcSingle(ctx, manifest),
-		bazel.MakeLabelListAttribute(resourceFiles),
-		assetsDir,
-		bazel.MakeLabelListAttribute(assets),
+		Manifest:       android.BazelLabelForModuleSrcSingle(ctx, manifest),
+		Resource_files: bazel.MakeLabelListAttribute(resourceFiles),
+		Assets_dir:     assetsDir,
+		Assets:         bazel.MakeLabelListAttribute(assets),
 	}, true
 }
 
