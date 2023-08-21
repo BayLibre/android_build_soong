@@ -1665,13 +1665,19 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		Certificate_name: certificateName,
 		Manifest_values:  manifestValues,
 	}
+	props := bazel.BazelTargetModuleProperties{}
+	if ctx.ModuleName() == "framework-res" {
+		props.Rule_class = "framework_resources"
+		props.Bzl_load_location = "//build/bazel/rules/android:framework_resources.bzl"
+	} else {
+		props.Rule_class = "android_binary"
+		props.Bzl_load_location = "//build/bazel/rules/android:android_binary.bzl"
 
-	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "android_binary",
-		Bzl_load_location: "//build/bazel/rules/android:android_binary.bzl",
 	}
 
-	if !bp2BuildInfo.hasKotlin {
+	if ctx.ModuleName() == "framework-res" {
+		appAttrs.bazelAapt = aapt
+	} else if !bp2BuildInfo.hasKotlin {
 		appAttrs.javaCommonAttributes = commonAttrs
 		appAttrs.bazelAapt = aapt
 		appAttrs.Deps = deps
