@@ -22,6 +22,30 @@
       },
       "revId": "b6e6f99521cee714c066fa33369d8d38f5cca17a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "decb6d71_ffa9632e",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-08-21T18:05:27Z",
+      "side": 1,
+      "message": "Vinh brought this up as well. dylibs themselves set `LOCAL_DYLIB_LIBRARIES` to point to their transitive dylib deps, and make walks the `LOCAL_DYLIB_LIBRARIES` links recursively. And an rlib cannot link to a dylib in soong (except the stdlib). These two reasons make dylibs not a problem.\n\nrlibs can link to cc shared libraries though.\n\nI think that means we could also fix this problem by making make walk `LOCAL_RLIB_LIBRARIES` to look for more `LOCAL_SHARED_LIBRARIES`. But it would be the first instance of walking some deps without actually installing them as shared libraries.",
+      "parentUuid": "172e7c22_92343484",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 54
+      },
+      "revId": "b6e6f99521cee714c066fa33369d8d38f5cca17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
