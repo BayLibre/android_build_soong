@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc9acec_338327bc",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2023-08-21T19:22:48Z",
+      "side": 1,
+      "message": "Should we just use [minSdkVersionFromValue](https://source.corp.google.com/h/android/platform/superproject/main/+/main:build/soong/apex/apex.go;l\u003d2946-2956;drc\u003d4ed512b3c7c5ef53e4b82117d5021fc0ccb9b6d5) from apex.go so the logic is exactly the same?",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 26
+      },
+      "revId": "06b93195e2b22a57d72e9c84692373ef67b4f229",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
