@@ -1640,7 +1640,7 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	// TODO(b/274474008 ): Directly convert deviceProperties.Min_sdk_version in bp2build
 	// MinSdkVersion(ctx) calls SdkVersion(ctx) if no value for min_sdk_version is set
 	minSdkVersion := a.MinSdkVersion(ctx)
-	if !minSdkVersion.IsPreview() && !minSdkVersion.IsInvalid() {
+	if !minSdkVersion.IsInvalid() {
 		if minSdkStr, err := minSdkVersion.EffectiveVersionString(ctx); err == nil {
 			manifestValues.MinSdkVersion = &minSdkStr
 		}
@@ -1654,7 +1654,7 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	}
 
 	targetSdkVersion := a.TargetSdkVersion(ctx)
-	if !targetSdkVersion.IsPreview() && !targetSdkVersion.IsInvalid() {
+	if !targetSdkVersion.IsInvalid() {
 		if targetSdkStr, err := targetSdkVersion.EffectiveVersionString(ctx); err == nil {
 			manifestValues.TargetSdkVersion = &targetSdkStr
 		}
@@ -1667,7 +1667,6 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		Certificate_name: certificateName,
 		Manifest_values:  manifestValues,
 	}
-
 	if !BoolDefault(a.dexProperties.Optimize.Enabled, true) {
 		appAttrs.Optimize = proptools.BoolPtr(false)
 	} else {
@@ -1703,12 +1702,20 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 
 	}
 
-	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "android_binary",
-		Bzl_load_location: "//build/bazel/rules/android:android_binary.bzl",
+	props := bazel.BazelTargetModuleProperties{}
+	if ctx.ModuleName() == "framework-res" {
+		props.Rule_class = "framework_resources"
+		props.Bzl_load_location = "//build/bazel/rules/android:framework_resources.bzl"
+	} else {
+		props.Rule_class = "android_binary"
+		props.Bzl_load_location = "//build/bazel/rules/android:android_binary.bzl"
 	}
 
-	if !bp2BuildInfo.hasKotlin {
+	if ctx.ModuleName() == "framework-res" {
+		aapt.Resource_zips = bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, a.aaptProperties.Resource_zips))
+		appAttrs.bazelAapt = aapt
+		appAttrs.Proguard_specs.Value.Includes = nil
+	} else if !bp2BuildInfo.hasKotlin {
 		appAttrs.javaCommonAttributes = commonAttrs
 		appAttrs.bazelAapt = aapt
 		appAttrs.Deps = deps
